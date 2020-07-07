@@ -11,17 +11,17 @@ ms.topic: article
 ms.date: 03/26/2020
 ms.author: juliako
 ms.openlocfilehash: 545dbcfb1db5595ff5b2047ec44afa8a065d816d
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82594848"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>Video Indexer widgetek beágyazása az alkalmazásokba
 
 Ebből a cikkből megtudhatja, hogyan ágyazhat be Video Indexer widgeteket az alkalmazásaiba. Video Indexer támogatja a három típusú widget beágyazását az alkalmazásokba: *kognitív betekintést*, *lejátszót*és *szerkesztőt*.
 
-A 2. verziótól kezdődően a widget alap URL-címe tartalmazza a megadott fiók régióját. Például az USA nyugati régiójában lévő fiók a következőt hozza `https://www.videoindexer.ai/embed/insights/.../?location=westus2`létre:.
+A 2. verziótól kezdődően a widget alap URL-címe tartalmazza a megadott fiók régióját. Például az USA nyugati régiójában lévő fiók a következőt hozza létre: `https://www.videoindexer.ai/embed/insights/.../?location=westus2` .
 
 ## <a name="widget-types"></a>Vezérlőtípusok
 
@@ -29,20 +29,20 @@ A 2. verziótól kezdődően a widget alap URL-címe tartalmazza a megadott fió
 
 A Kognitív elemzési vezérlő az összes vizuális elemzést tartalmazza, amely a videóindexelési folyamat során lett kinyerve. A kognitív bepillantások widget a következő opcionális URL-paramétereket támogatja:
 
-|Name|Meghatározás|Leírás|
+|Name|Definíció|Leírás|
 |---|---|---|
 |`widgets` | Vesszővel elválasztott sztringek | Lehetővé teszi a megjeleníteni kívánt adatfelismerések szabályozását.<br/>Példa: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,keywords` a csak a felhasználók és a kulcsszavak felhasználói felületi felismeréseit jeleníti meg.<br/>Elérhető lehetőségek: személyek, animatedCharacters, kulcsszavak, címkék, érzelmek, érzelmek, témakörök, kulcsképek, átiratok, OCR, hangszórók, jelenetek és namedEntities.|
 |`controls`|Vesszővel elválasztott sztringek|Lehetővé teszi a megjeleníteni kívánt vezérlők szabályozását.<br/>Példa: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?controls=search,download` csak a keresési lehetőség és a letöltés gomb megjelenítése.<br/>Elérhető lehetőségek: keresés, letöltés, előzetes beállítás, nyelv.|
 |`language`|Rövid nyelvi kód (nyelv neve)|Az ellenőrzési nyelv szabályozása.<br/>Például: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=es-es` <br/>vagy`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=spanish`|
 |`locale` | Egy rövid nyelvi kód | A felhasználói felület nyelvének szabályozása. Az alapértelmezett érték `en`. <br/>Példa: `locale=de`.|
 |`tab` | Az alapértelmezett kijelölt lap | Az alapértelmezés **Insights** szerint megjelenített adatvizsgálatok lapot vezérli. <br/>Példa: `tab=timeline` a bepillantást jeleníti meg az **Idősor** lapon.|
-|`location` ||A `location` paraméternek szerepelnie kell a beágyazott hivatkozásokban. lásd: a [régió nevének beolvasása](regions.md). Ha a fiókja előzetes verzióban érhető `trial` el, a értéket a hely értékére kell használni. `trial`a `location` paraméter alapértelmezett értéke.| 
+|`location` ||A `location` paraméternek szerepelnie kell a beágyazott hivatkozásokban. lásd: a [régió nevének beolvasása](regions.md). Ha a fiókja előzetes verzióban érhető el, a `trial` értéket a hely értékére kell használni. `trial`a paraméter alapértelmezett értéke `location` .| 
 
 ### <a name="player-widget"></a>Lejátszó vezérlő
 
 A Player widget Adaptív átviteli sebesség használatával is továbbíthatja a videót. A Player widget a következő opcionális URL-paramétereket támogatja.
 
-|Name|Meghatározás|Leírás|
+|Name|Definíció|Leírás|
 |---|---|---|
 |`t` | Másodperc az elejétől | A lejátszó a megadott időpontból kezdi a lejátszást.<br/> Példa: `t=60`. |
 |`captions` | Nyelvi kód | A megadott nyelven beolvassa a feliratot a widget betöltésével, hogy elérhető legyen a **feliratok** menüben.<br/> Példa: `captions=en-US`. |
@@ -50,18 +50,18 @@ A Player widget Adaptív átviteli sebesség használatával is továbbíthatja 
 |`type`| | Aktiválja a hanglejátszó bőrét (a videó rész törlődik).<br/> Példa: `type=audio`. |
 |`autoplay` | Logikai érték | Azt jelzi, hogy a játékosnak be kell-e játszania a videót a betöltéskor. Az alapértelmezett érték `true`.<br/> Példa: `autoplay=false`. |
 |`language`/`locale` | Nyelvi kód | A lejátszó nyelvének szabályozása. Az alapértelmezett érték `en-US`.<br/>Példa: `language=de-DE`.|
-|`location` ||A `location` paraméternek szerepelnie kell a beágyazott hivatkozásokban. lásd: a [régió nevének beolvasása](regions.md). Ha a fiókja előzetes verzióban érhető `trial` el, a értéket a hely értékére kell használni. `trial`a `location` paraméter alapértelmezett értéke.| 
+|`location` ||A `location` paraméternek szerepelnie kell a beágyazott hivatkozásokban. lásd: a [régió nevének beolvasása](regions.md). Ha a fiókja előzetes verzióban érhető el, a `trial` értéket a hely értékére kell használni. `trial`a paraméter alapértelmezett értéke `location` .| 
 
 ### <a name="editor-widget"></a>Szerkesztői widget
 
 A szerkesztői widgettel új projekteket hozhat létre, és kezelheti a videókban észlelt eredményeket. A szerkesztői widget a következő opcionális URL-paramétereket támogatja.
 
-|Name|Meghatározás|Leírás|
+|Name|Definíció|Leírás|
 |---|---|---|
 |`accessToken`<sup>*</sup> | Sztring | Hozzáférést biztosít azokhoz a videókhoz, amelyek csak a widget beágyazásához használt fiókban találhatók.<br> A szerkesztő widgethez a `accessToken` paraméter szükséges. |
 |`language` | Nyelvi kód | A lejátszó nyelvének szabályozása. Az alapértelmezett érték `en-US`.<br/>Példa: `language=de-DE`. |
 |`locale` | Egy rövid nyelvi kód | Az adatfelismerés nyelvét vezérli. Az alapértelmezett érték `en`.<br/>Példa: `language=de`. |
-|`location` ||A `location` paraméternek szerepelnie kell a beágyazott hivatkozásokban. lásd: a [régió nevének beolvasása](regions.md). Ha a fiókja előzetes verzióban érhető `trial` el, a értéket a hely értékére kell használni. `trial`a `location` paramete alapértelmezett értéke.| 
+|`location` ||A `location` paraméternek szerepelnie kell a beágyazott hivatkozásokban. lásd: a [régió nevének beolvasása](regions.md). Ha a fiókja előzetes verzióban érhető el, a `trial` értéket a hely értékére kell használni. `trial`a paramete alapértelmezett értéke `location` .| 
 
 <sup>*</sup>A tulajdonosnak körültekintően kell megadnia `accessToken` .
 
@@ -69,7 +69,7 @@ A szerkesztői widgettel új projekteket hozhat létre, és kezelheti a videókb
 
 Ebből a szakaszból megtudhatja, hogyan ágyazhatja be a nyilvános és a magánjellegű tartalmakat az alkalmazásokba.
 
-A `location` paraméternek szerepelnie kell a beágyazott hivatkozásokban. lásd: a [régió nevének beolvasása](regions.md). Ha a fiókja előzetes verzióban érhető `trial` el, a értéket a hely értékére kell használni. `trial`a `location` paramete alapértelmezett értéke. Például: `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`.
+A `location` paraméternek szerepelnie kell a beágyazott hivatkozásokban. lásd: a [régió nevének beolvasása](regions.md). Ha a fiókja előzetes verzióban érhető el, a `trial` értéket a hely értékére kell használni. `trial`a paramete alapértelmezett értéke `location` . Példa: `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`.
 
 > [!IMPORTANT]
 > Ha megoszt egy hivatkozást a **lejátszóhoz** **vagy az** adatelérési eszközhöz, a hozzáférési jogkivonatot fogja tartalmazni, és megadja a csak olvasási jogosultságokat a fiókjához.
@@ -85,16 +85,16 @@ A `location` paraméternek szerepelnie kell a beágyazott hivatkozásokban. lás
 
 ### <a name="private-content"></a>Magánjellegű tartalom
 
-Privát videó beágyazásához át kell adnia egy hozzáférési jogkivonatot az IFRAME `src` -attribútumban:
+Privát videó beágyazásához át kell adnia egy hozzáférési jogkivonatot az `src` iframe-attribútumban:
 
 `https://www.videoindexer.ai/embed/[insights | player]/<accountId>/<videoId>/?accessToken=<accessToken>`
     
 Az alábbi módszerek egyikével szerezheti be a kognitív ismereteket ismertető widget tartalmát:
 
 - Az eredmények [lekérése widget](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) API.<br/>
-- A [videó-hozzáférési jogkivonat beolvasása](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Access-Token?). Adja hozzá lekérdezési paraméterként az URL-címhez. Ezt az URL-címet `src` állítsa be az IFRAME értékeként a korábban látható módon.
+- A [videó-hozzáférési jogkivonat beolvasása](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Access-Token?). Adja hozzá lekérdezési paraméterként az URL-címhez. Ezt az URL-címet állítsa `src` be az IFRAME értékeként a korábban látható módon.
 
-A beágyazott widget szerkesztési információinak megadásához olyan hozzáférési jogkivonatot kell átadnia, amely szerkesztési engedélyeket tartalmaz. Használja az információ [beolvasása widgetet](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) vagy a `&allowEdit=true` [videó-hozzáférési token beszerzése elemet](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Access-Token?) .
+A beágyazott widget szerkesztési információinak megadásához olyan hozzáférési jogkivonatot kell átadnia, amely szerkesztési engedélyeket tartalmaz. Használja az információ [beolvasása widgetet](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) vagy a [videó-hozzáférési token beszerzése elemet](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Access-Token?) `&allowEdit=true` .
 
 ## <a name="widgets-interaction"></a>Vezérlőinterakciók
 
@@ -106,7 +106,7 @@ A kognitív betekintő widget interakcióba léphet az alkalmazás egy videójá
 
 Video Indexer widgetek más összetevőkkel való kommunikációjának lekéréséhez a Video Indexer szolgáltatás:
 
-- A kereszthivatkozások közötti kommunikáció HTML5-módszerét `postMessage`használja.
+- A kereszthivatkozások közötti kommunikáció HTML5-módszerét használja `postMessage` .
 - ellenőrzi az üzenetet a VideoIndexer.ai forráson.
 
 Ha saját lejátszó kódot valósít meg, és integrálja a kognitív betekintő widgeteket, az Ön felelőssége, hogy ellenőrizze a VideoIndexer.ai származó üzenet eredetét.
@@ -234,15 +234,15 @@ Ha saját [Azure Media Player](https://aka.ms/azuremediaplayer)segítségével �
 
 ### <a name="cognitive-insights-widget"></a>Kognitív elemzési vezérlő
 
-Kiválaszthatja, hogy milyen típusú bepillantást szeretne. Ehhez adja meg azokat értékként a következő URL-paraméterhez, amelyet a rendszer a beolvasott beágyazási kódhoz adott hozzá (az API-ból vagy a webalkalmazásból `&widgets=<list of wanted widgets>`):.
+Kiválaszthatja, hogy milyen típusú bepillantást szeretne. Ehhez adja meg azokat értékként a következő URL-paraméterhez, amelyet a rendszer a beolvasott beágyazási kódhoz adott hozzá (az API-ból vagy a webalkalmazásból): `&widgets=<list of wanted widgets>` .
 
-A lehetséges értékek a következők `people`: `animatedCharacters` , `keywords` `labels` `sentiments` `emotions` `topics` `scenes` `namedEntities`,,,,,,,,,, és. `keyframes` `transcript` `ocr` `speakers`
+A lehetséges értékek a következők:,,,,,,,,,,, `people` `animatedCharacters` `keywords` `labels` `sentiments` `emotions` `topics` `keyframes` `transcript` `ocr` `speakers` `scenes` és `namedEntities` .
 
 Ha például olyan widgetet szeretne beágyazni, amely csak személyeket és kulcsszavakat tartalmaz, az iframe Beágyazási URL-címe a következőképpen fog kinézni:
 
 `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,keywords`
 
-Az IFRAME-ablak címe testreszabható az IFRAME URL-cím megadásával `&title=<YourTitle>` is. (Testreszabja a HTML `<title>` -értéket).
+Az IFRAME-ablak címe testreszabható az IFRAME URL-cím megadásával is `&title=<YourTitle>` . (Testreszabja a HTML `<title>` -értéket).
    
 Ha például azt szeretné, hogy az IFRAME-ablak a "MyInsights" címet adja meg, az URL-cím a következőhöz hasonló lesz:
 
@@ -268,7 +268,7 @@ A beágyazási URL-cím ezután a következőképpen fog kinézni:
 
 #### <a name="autoplay"></a>Robotpilota
 
-Alapértelmezés szerint a lejátszó elkezdi lejátszani a videót. az előző beágyazási URL-címre `&autoplay=false` való átadással dönthet úgy, hogy nem.
+Alapértelmezés szerint a lejátszó elkezdi lejátszani a videót. `&autoplay=false`az előző beágyazási URL-címre való átadással dönthet úgy, hogy nem.
 
 ## <a name="code-samples"></a>Kódminták
 

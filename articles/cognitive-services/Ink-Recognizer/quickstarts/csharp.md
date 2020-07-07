@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 06/30/2020
 ms.author: aahi
-ms.openlocfilehash: c24d055f1904453d2f512a278f00e23c6fea1d9b
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: f61566c3d5efa7f973141253353fde7e4893bc6e
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80371378"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85986074"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-c"></a>Gyors útmutató: Digitális tinta felismerése a tinta felismerő REST API és C #
 
@@ -33,10 +33,10 @@ Ennek a rövid útmutatónak a forráskódja a [githubon](https://go.microsoft.c
 
 - A [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) bármely kiadása.
 - [Newtonsoft.Json](https://www.newtonsoft.com/json)
-    - A Newtonsoft. JSON telepítése NuGet-csomagként a Visual Studióban:
+    - Newtonsoft.Jstelepítése NuGet-csomagként a Visual Studióban:
         1. Kattintson a jobb gombbal a **megoldás-kezelőre**
         2. Kattintson a **NuGet-csomagok kezelése...** lehetőségre.
-        3. A csomag `Newtonsoft.Json` keresése és telepítése
+        3. `Newtonsoft.Json`A csomag keresése és telepítése
 - Ha Linux/MacOS rendszert használ, az alkalmazás a [mono](https://www.mono-project.com/)használatával futtatható.
 
 - Ebben a rövid útmutatóban a jelen rövid útmutatóban szereplő tollvonási adatsorok a [githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Vision/InkRecognition/quickstart/example-ink-strokes.json)találhatók.
@@ -51,23 +51,23 @@ Ennek a rövid útmutatónak a forráskódja a [githubon](https://go.microsoft.c
     
     [!code-csharp[import statements](~/cognitive-services-rest-samples/dotnet/Vision/InkRecognition/quickstart/recognizeInk.cs?name=imports)]
 
-2. Hozzon létre változókat az előfizetési kulcshoz és a végponthoz, valamint a JSON-fájlhoz. A végpontot később az API `inkRecognitionUrl` -hoz való hozzáféréshez fogja kombinálni. 
+2. Hozzon létre változókat az előfizetési kulcshoz és a végponthoz, valamint a JSON-fájlhoz. A végpontot később az `inkRecognitionUrl` API-hoz való hozzáféréshez fogja kombinálni. 
 
     [!code-csharp[endpoint file and key variables](~/cognitive-services-rest-samples/dotnet/Vision/InkRecognition/quickstart/recognizeInk.cs?name=vars)]
 
 ## <a name="create-a-function-to-send-requests"></a>Függvény létrehozása a kérelmek küldéséhez
 
-1. Hozzon létre egy nevű `Request` új aszinkron függvényt, amely a fent létrehozott változókat veszi fel.
+1. Hozzon létre egy nevű új aszinkron függvényt `Request` , amely a fent létrehozott változókat veszi fel.
 
-2. Állítsa be az ügyfél biztonsági protokollját és fejléc-információit egy `HttpClient` objektum használatával. Ügyeljen arra, hogy hozzáadja az előfizetési kulcsot `Ocp-Apim-Subscription-Key` a fejléchez. Ezután hozzon `StringContent` létre egy objektumot a kérelemhez.
+2. Állítsa be az ügyfél biztonsági protokollját és fejléc-információit egy `HttpClient` objektum használatával. Ügyeljen arra, hogy hozzáadja az előfizetési kulcsot a `Ocp-Apim-Subscription-Key` fejléchez. Ezután hozzon létre egy `StringContent` objektumot a kérelemhez.
  
-3. Küldje el a kérelmet `PutAsync()`a-val. Ha a kérelem sikeres, küldje vissza a választ.  
+3. Küldje el a kérelmet a-val `PutAsync()` . Ha a kérelem sikeres, küldje vissza a választ.  
     
     [!code-csharp[request example method](~/cognitive-services-rest-samples/dotnet/Vision/InkRecognition/quickstart/recognizeInk.cs?name=request)]
 
 ## <a name="send-an-ink-recognition-request"></a>Kézírás-felismerési kérelem küldése
 
-1. Hozzon létre egy nevű `recognizeInk()`új függvényt. Hozza létre a kérést, és küldje el `Request()` úgy, hogy meghívja a függvényt a végponttal, az előfizetési kulccsal, az API URL-címével és a digitális tinta körvonalával kapcsolatos adataival.
+1. Hozzon létre egy nevű új függvényt `recognizeInk()` . Hozza létre a kérést, és küldje el úgy, hogy meghívja a `Request()` függvényt a végponttal, az előfizetési kulccsal, az API URL-címével és a digitális tinta körvonalával kapcsolatos adataival.
 
 2. Deszerializálja a JSON-objektumot, és írja a konzolba. 
     
@@ -75,7 +75,7 @@ Ennek a rövid útmutatónak a forráskódja a [githubon](https://go.microsoft.c
 
 ## <a name="load-your-digital-ink-data"></a>A digitális tinta adatai betöltése
 
-Hozzon létre egy `LoadJson()` nevű függvényt a szabadkézi adat JSON-fájljának betöltéséhez. A `StreamReader` és `JsonTextReader` a használatával hozza létre `JObject` és küldje vissza.
+Hozzon létre egy nevű függvényt `LoadJson()` a szabadkézi adat JSON-fájljának betöltéséhez. A és a használatával `StreamReader` `JsonTextReader` hozza létre `JObject` és küldje vissza.
 
 [!code-csharp[load the JSON file](~/cognitive-services-rest-samples/dotnet/Vision/InkRecognition/quickstart/recognizeInk.cs?name=loadJson)]
 
@@ -83,7 +83,7 @@ Hozzon létre egy `LoadJson()` nevű függvényt a szabadkézi adat JSON-fájlj�
 
 1. Az alkalmazás fő metódusában töltse be a JSON-adatait a fent létrehozott függvénnyel. 
 
-2. Hívja meg `recognizeInk()` a fent létrehozott függvényt. Ezzel `System.Console.ReadKey()` a paranccsal megtarthatja a konzolablak megnyitását az alkalmazás futtatása után.
+2. Hívja meg a `recognizeInk()` fent létrehozott függvényt. Ezzel a paranccsal `System.Console.ReadKey()` megtarthatja a konzolablak megnyitását az alkalmazás futtatása után.
     
     [!code-csharp[file main method](~/cognitive-services-rest-samples/dotnet/Vision/InkRecognition/quickstart/recognizeInk.cs?name=main)]
 
@@ -96,7 +96,7 @@ Futtassa az alkalmazást. A sikeres válaszokat JSON formátumban adja vissza a 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [REST API referenciája](https://go.microsoft.com/fwlink/?linkid=2089907)
+> [REST API-referencia](https://go.microsoft.com/fwlink/?linkid=2089907)
 
 
 Ha szeretné megtudni, hogyan működik a Ink-felismerési API egy digitális, a GitHubon futó alkalmazásban, tekintse meg az alábbi példákat a GitHubon:

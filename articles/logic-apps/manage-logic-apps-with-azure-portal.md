@@ -10,10 +10,10 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 04/29/2020
 ms.openlocfilehash: d80972cd200b8f85e14d316c4c06a38f88ac81b5
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82598164"
 ---
 # <a name="manage-logic-apps-in-the-azure-portal"></a>Logikai alkalmazások kezelése a Azure Portalban
@@ -34,7 +34,7 @@ A logikai alkalmazás megkereséséhez és megnyitásához kövesse az alábbi l
 
 1. Jelentkezzen be az [Azure Portalba](https://portal.azure.com) az Azure-fiókjával.
 
-1. Az Azure Search sávban írja be `logic apps`a kifejezést, majd válassza a **Logic apps**lehetőséget.
+1. Az Azure Search sávban írja be a kifejezést `logic apps` , majd válassza a **Logic apps**lehetőséget.
 
    ![A "Logic Apps" megkeresése és kiválasztása](./media/manage-logic-apps-with-azure-portal/find-select-logic-apps.png)
 
@@ -54,12 +54,12 @@ A logikai alkalmazás megkereséséhez és megnyitásához kövesse az alábbi l
 
 1. A **Tulajdonságok** panelen megtekintheti és átmásolhatja a logikai alkalmazással kapcsolatos alábbi adatokat:
 
-   * **Név**
+   * **Name (Név)**
    * **Erőforrás-azonosító**
    * **Erőforráscsoport**
    * **Hely**
    * **Típus** 
-   * **Előfizetés neve**
+   * **Subscription Name**
    * **Előfizetés azonosítója**
    * **Hozzáférési végpont**
    * **Futásidejű kimenő IP-címek**
@@ -176,7 +176,7 @@ A logikai alkalmazás törlése a következő módokon befolyásolja a munkafoly
 
    ![Több logikai alkalmazás törlése](./media/manage-logic-apps-with-azure-portal/delete-multiple-logic-apps.png)
 
-1. Amikor megjelenik a megerősítő mező `yes`, írja be a szöveget, majd válassza a **Törlés**lehetőséget.
+1. Amikor megjelenik a megerősítő mező, írja be a szöveget `yes` , majd válassza a **Törlés**lehetőséget.
 
    ![A logikai alkalmazások törlésének megerősítése](./media/manage-logic-apps-with-azure-portal/delete-confirmation-multiple-logic-apps.png)
 

@@ -9,10 +9,10 @@ ms.date: 12/16/2019
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 883042c94576014c3bdeabd38516d9531c8fd3dc
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82606857"
 ---
 # <a name="azure-security-benchmark-introduction"></a>Az Azure Security teljesítményteszt bemutatása
@@ -32,9 +32,9 @@ Az Azure Security benchmark dokumentációja a biztonsági vezérlőket és a sz
 
 A "Control", a "benchmark" és az "Baseline" kifejezések gyakran az Azure biztonsági teljesítményteszt dokumentációjában használatosak, és fontos tisztában lenni azzal, hogy az Azure hogyan használja ezeket a feltételeket. 
 
-| Időtartam | Leírás | Példa |
+| Kifejezés | Leírás | Példa |
 |--|--|--|
-| Vezérlés | A **vezérlő** egy olyan szolgáltatás vagy tevékenység magas szintű leírása, amelyet kezelni kell, és nem a technológiára vagy a megvalósításra jellemző. | Az adatvédelem az egyik biztonsági vezérlő. Ez a vezérlő olyan konkrét műveleteket tartalmaz, amelyeket meg kell oldani az adatvédelem biztosítása érdekében. |
+| Szabályozás | A **vezérlő** egy olyan szolgáltatás vagy tevékenység magas szintű leírása, amelyet kezelni kell, és nem a technológiára vagy a megvalósításra jellemző. | Az adatvédelem az egyik biztonsági vezérlő. Ez a vezérlő olyan konkrét műveleteket tartalmaz, amelyeket meg kell oldani az adatvédelem biztosítása érdekében. |
 | Külső viszonyítási alap | A **teljesítménytesztek** biztonsági javaslatokat tartalmaznak egy adott technológiára, például az Azure-ra. Az ajánlásokat azon vezérlőelem kategorizálja, amelyhez tartoznak. | Az Azure biztonsági teljesítményteszt az Azure platformra jellemző biztonsági ajánlásokat tartalmazza  |
 | Alapkonfiguráció | Az **baseline** alapkonfiguráció a szervezet biztonsági követelményei. A biztonsági követelmények a teljesítményteszt ajánlásain alapulnak. Az egyes szervezetek határozzák meg, hogy melyik teljesítményteszt-ajánlásokat kell tartalmazniuk az alaptervbe. | A contoso vállalat a biztonsági alaptervet úgy hozza létre, hogy az Azure biztonsági Teljesítménytesztben meghatározott javaslatok megkövetelését választja. |
 

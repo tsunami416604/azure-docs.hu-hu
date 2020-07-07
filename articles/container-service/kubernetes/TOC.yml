@@ -1,58 +1,15 @@
 - name: A Kubernetes az Azure-on
   href: ./index.yml
 - name: Áttekintés
-  items:
-    - name: A Kubernetes az Azure-on
-      href: container-service-intro-kubernetes.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
-  items:
-    - name: A Kubernetes az Azure-on
-      href: container-service-kubernetes-walkthrough.md
-- name: oktatóanyagokat
-  items:
-    - name: 1 – Tárolórendszerképek létrehozása
-      href: container-service-tutorial-kubernetes-prepare-app.md
-    - name: 2 – Tárolóregisztrációs adatbázis létrehozása
-      href: container-service-tutorial-kubernetes-prepare-acr.md
-    - name: 3 – Kubernetes-fürt létrehozása
-      href: container-service-tutorial-kubernetes-deploy-cluster.md
-    - name: 4 – Alkalmazás futtatása
-      href: container-service-tutorial-kubernetes-deploy-application.md
-    - name: 5 – Alkalmazás skálázása
-      href: container-service-tutorial-kubernetes-scale.md
-    - name: 6 – Alkalmazás frissítése
-      href: container-service-tutorial-kubernetes-app-update.md
-    - name: 7 – Monitorozás a Log Analytics használatával
-      href: container-service-tutorial-kubernetes-monitor.md
+- name: Oktatóanyagok
 - name: Alapelvek
-  items:
-    - name: Szolgáltatásnév – Kubernetes
-      href: container-service-kubernetes-service-principal.md
 - name: Útmutatók
   items:
-    - name: Kubernetes Windowszal
-      href: container-service-kubernetes-windows-walkthrough.md
-    - name: Kubernetes webes felület
-      href: container-service-kubernetes-ui.md
-    - name: Helm-diagramok használata
-      href: container-service-kubernetes-helm.md
     - name: Adatok megőrzése az Azure Files segítségével
       href: ../../aks/azure-files.md?toc=%2fazure%2fcontainer-service%2fkubernetes%2ftoc.json
-    - name: Vázlat használata az ACS-sel
-      href: container-service-draft-up.md
-    - name: Fürt méretezése
-      href: container-service-scale.md
-    - name: Monitoring
-      items:
-        - name: Figyelés a Log Analytics használatával
-          href: container-service-kubernetes-oms.md
-        - name: Monitorozás a Datadoggal
-          href: container-service-kubernetes-datadog.md
-        - name: Monitorozás a Sysdiggel
-          href: container-service-kubernetes-sysdig.md
-        - name: Monitorozás CoScale-lel
-          href: container-service-kubernetes-coscale.md
+    - name: Figyelés
     - name: Spring Boot-alkalmazások üzembe helyezése
       items:
         - name: Spring Boot-alkalmazás üzembe helyezése Linux rendszeren az Azure Container Service-ben
@@ -73,8 +30,6 @@
   items:
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: GYIK
-      href: container-service-faq.md
     - name: Sablonok – ACS Engine
       href: 'https://github.com/Azure/acs-engine'
     - name: Díjszabás

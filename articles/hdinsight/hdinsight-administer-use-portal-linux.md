@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/24/2020
 ms.openlocfilehash: 05d057be76a1b468f892b3123080e32a948153ae
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82598498"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Apache Hadoop-fürtök kezelése a HDInsight-ben a Azure Portal használatával
@@ -43,7 +43,7 @@ Válassza ki a fürt nevét a [**HDInsight-fürtök**](#showClusters) lapon.  Ek
 
 **Felső menü:**  
 
-| Elem| Leírás |
+| Item| Leírás |
 |---|---|
 |Áthelyezés|Áthelyezi a fürtöt egy másik erőforráscsoporthoz vagy egy másik előfizetésbe.|
 |Törlés|Törli a fürtöt. |
@@ -53,24 +53,24 @@ Válassza ki a fürt nevét a [**HDInsight-fürtök**](#showClusters) lapon.  Ek
 
   - **Bal felső menü**
 
-    | Elem| Leírás |
+    | Item| Leírás |
     |---|---|
     |Áttekintés|A fürt általános információit tartalmazza.|
     |Tevékenységnapló|Tevékenységek naplóinak megjelenítése és lekérdezése.|
     |Hozzáférés-vezérlés (IAM)|Szerepkör-hozzárendelések használata.  Lásd: [szerepkör-hozzárendelések használata az Azure-előfizetések erőforrásaihoz való hozzáférés kezeléséhez](../role-based-access-control/role-assignments-portal.md).|
     |Címkék|Lehetővé teszi a kulcs/érték párok beállítását a Cloud Services egyéni besorolásának meghatározásához. Létrehozhat például egy **Project**nevű kulcsot, majd közös értéket használhat egy adott projekthez társított összes szolgáltatáshoz.|
     |Problémák diagnosztizálása és megoldása|Hibaelhárítási információk megjelenítése.|
-    |Első lépések|Megjeleníti a HDInsight használatának megkezdéséhez segítséget biztosító információkat.|
+    |Gyorsútmutató|Megjeleníti a HDInsight használatának megkezdéséhez segítséget biztosító információkat.|
     |Eszközök|Súgó a HDInsight-hez kapcsolódó eszközökről.|
 
   - **Beállítások menü**  
 
-    | Elem| Leírás |
+    | Item| Leírás |
     |---|---|
     |Fürt mérete|A fürt munkavégző csomópontjainak megkeresése, növelése és csökkentése. Lásd: [fürtök méretezése](hdinsight-administer-use-portal-linux.md#scale-clusters).|
     |Kvóta korlátai|Az előfizetéshez használt és elérhető magok megjelenítése.|
     |SSH + fürt bejelentkezés|A fürthöz a Secure Shell (SSH) kapcsolat használatával történő kapcsolódáshoz szükséges utasításokat jeleníti meg. További információ: az [SSH használata a HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).|
-    |1. generációs Data Lake Storage|Hozzáférési Data Lake Storage Gen1 konfigurálása.  Lásd [: gyors útmutató: fürtök beállítása a HDInsight-ben](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).|
+    |Data Lake Storage Gen1|Hozzáférési Data Lake Storage Gen1 konfigurálása.  Lásd [: gyors útmutató: fürtök beállítása a HDInsight-ben](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).|
     |Tárfiókok|Tekintse meg a Storage-fiókokat és a kulcsokat. A Storage-fiókok konfigurálása a fürt létrehozási folyamata során történik.|
     |Alkalmazások|HDInsight-alkalmazások hozzáadása/eltávolítása.  Lásd: [Egyéni HDInsight-alkalmazások telepítése](hdinsight-apps-install-custom-applications.md).|
     |Parancsfájlok műveletei|Futtasson bash-parancsfájlokat a fürtön. Lásd: [a Linux-alapú HDInsight-fürtök testreszabása parancsfájl-művelettel](hdinsight-hadoop-customize-cluster-linux.md).|
@@ -82,7 +82,7 @@ Válassza ki a fürt nevét a [**HDInsight-fürtök**](#showClusters) lapon.  Ek
 
   - **Figyelés menü**
 
-    | Elem| Leírás |
+    | Item| Leírás |
     |---|---|
     |Riasztások|A riasztások és műveletek kezelése.|
     |Mérőszámok|A fürt metrikáinak figyelése Azure Monitor naplókban.|
@@ -91,7 +91,7 @@ Válassza ki a fürt nevét a [**HDInsight-fürtök**](#showClusters) lapon.  Ek
 
   - **Támogatás + hibaelhárítás menü**
 
-    | Elem| Leírás |
+    | Item| Leírás |
     |---|---|
     |Erőforrás állapota|Lásd: az [Azure Resource Health áttekintése](../service-health/resource-health-overview.md).|
     |Új támogatási kérelem|Lehetővé teszi, hogy támogatási jegyet hozzon létre a Microsoft támogatási szolgálatával.|
@@ -100,7 +100,7 @@ Válassza ki a fürt nevét a [**HDInsight-fürtök**](#showClusters) lapon.  Ek
 
 A [fürt kezdőlapjának](#homePage) **Beállítások** területén válassza a **Tulajdonságok**lehetőséget.
 
-|Elem | Leírás |
+|Item | Leírás |
 |---|---|
 |HOSTNAME|Fürt neve.|
 |FÜRT URL-CÍME|A Ambari webes felületének URL-címe.|
@@ -196,7 +196,7 @@ A [fürt kezdőlapján](#homePage):
 1. Válassza az **SSH + fürt bejelentkezés** lehetőséget a **Beállítások**területen.
 2. Válassza a **hitelesítő adatok visszaállítása**lehetőséget.
 3. Adja meg és erősítse meg az új jelszót a szövegmezőben.
-4. Kattintson az **OK** gombra.
+4. Válassza az **OK** lehetőséget.
 
 A jelszó a fürt összes csomópontján módosul.
 

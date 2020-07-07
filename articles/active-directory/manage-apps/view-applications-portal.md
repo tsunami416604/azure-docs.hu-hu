@@ -1,82 +1,78 @@
 ---
-title: Rövid útmutató – bérlői alkalmazások megtekintése Azure Active Directory használatával
-description: Ebben a rövid útmutatóban a Azure Portal használatával tekintheti meg az Azure Active Directory (Azure AD) bérlőben lévő alkalmazásokat.
+title: 'Rövid útmutató: a Azure Active Directory (Azure AD) bérlőt használó alkalmazások listájának megtekintése'
+description: Ebben a rövid útmutatóban a Azure Portal segítségével megtekintheti azoknak az alkalmazásoknak a listáját, amelyek regisztrálva vannak a Azure Active Directory (Azure AD) bérlő az Identitáskezelés során való használatára.
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 04/09/2019
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce3a1a55683b0882984a4986cf59853933954274
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 3d04953789dc3fc864dd2809783b0d214a91738f
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84763006"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85983118"
 ---
-# <a name="quickstart-view-your-azure-active-directory-tenant-applications"></a>Gyors útmutató: Azure Active Directory bérlői alkalmazások megtekintése
+# <a name="quickstart-view-the-list-of-applications-that-are-using-your-azure-active-directory-azure-ad-tenant-for-identity-management"></a>Rövid útmutató: a Azure Active Directory (Azure AD) bérlőt használó alkalmazások listájának megtekintése
 
-Ebben a rövid útmutatóban az Azure Portal használatával tekintheti meg az Azure Active Directory- (Azure AD-) bérlő alkalmazásait.
+Az Azure AD használatának első lépései a szervezet által használt alkalmazásokhoz tartozó identitás-és engedélyezési felügyeleti (IAM) rendszerként. Ebben a rövid útmutatóban megtekintheti az alkalmazásokat, más néven alkalmazásokat, amelyek már be vannak állítva az Azure AD-bérlő használatára az identitás-szolgáltatóként.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="prerequisites"></a>Előfeltételek
 
-Az eredmények megtekintéséhez legalább egy alkalmazásnak lennie kell az Azure AD-bérlőn. Az alkalmazás hozzáadásának lépéseit lásd az [Alkalmazás hozzáadása](add-application-portal.md) rövid útmutatóban.
+Az Azure AD-bérlőben regisztrált alkalmazások megtekintéséhez a következőkre lesz szüksége:
 
-Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure AD-bérlő globális rendszergazdájaként, felhőalkalmazás- vagy alkalmazás-rendszergazdaként.
+- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="find-the-list-of-tenant-applications"></a>A bérlői alkalmazások listájának megkeresése
+>[!IMPORTANT]
+>Az ebben a rövid útmutatóban ismertetett lépések teszteléséhez nem éles környezet használatát javasoljuk.
 
-Az Azure AD-bérlői alkalmazások az Azure Portal **Vállalati alkalmazások** szakaszában tekinthetők meg.
+## <a name="find-the-list-of-applications-in-your-tenant"></a>A bérlőben található alkalmazások listájának megkeresése
 
-A bérlői alkalmazások megkeresésének lépései:
+Az Azure AD-bérlőben regisztrált alkalmazások a Azure Portal **vállalati alkalmazások** szakaszában tekinthetők meg.
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
-1. A **Azure Active Directory** ablaktáblán válassza a **vállalati alkalmazások**lehetőséget.
-1. Az **alkalmazás típusa** legördülő menüben válassza a **minden alkalmazás**lehetőséget, majd kattintson az **alkalmaz**gombra. Ekkor egy véletlenszerűen kiválasztott minta jelenik meg a bérlői alkalmazásokból.
-1. További alkalmazások megtekintéséhez válassza a lista alján található **továbbiak betöltés** lehetőséget. A bérlői alkalmazások számától függően a listában való görgetés helyett hasznosabbnak bizonyulhat [az adott alkalmazás megkeresése](#search-for-a-tenant-application).
+A bérlőben regisztrált alkalmazások megtekintése:
+
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com).
+2. A bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
+3. A **Azure Active Directory** ablaktáblán válassza a **vállalati alkalmazások**lehetőséget.
+4. Az **alkalmazás típusa** legördülő menüben válassza a **minden alkalmazás**lehetőséget, majd kattintson az **alkalmaz**gombra. Ekkor egy véletlenszerűen kiválasztott minta jelenik meg a bérlői alkalmazásokból.
+5. További alkalmazások megtekintéséhez válassza a lista alján található **továbbiak betöltés** lehetőséget. Ha a bérlő számos alkalmazást tartalmaz, könnyebben kereshet egy adott alkalmazást a lista görgetése helyett. Az adott alkalmazásra vonatkozó keresés a rövid útmutató későbbi részében szerepel.
 
 ## <a name="select-viewing-options"></a>Megtekintési beállítások kiválasztása
 
 Válassza ki a beállításokat a keresett elemek alapján.
 
 1. Az alkalmazásokat az **alkalmazás típusa**, az **alkalmazás állapota**és az **alkalmazás láthatósága**alapján tekintheti meg.
-1. Az **Alkalmazás típusa** területen az alábbi beállítások egyikét választhatja ki:
-
+2. Az **Alkalmazás típusa** területen az alábbi beállítások egyikét választhatja ki:
     - **Vállalati alkalmazások** – a nem a Microsoft által fejlesztett alkalmazások megjelenítése.
     - **Microsoft-alkalmazások** – a Microsoft által fejlesztett alkalmazások megjelenítése.
     - **Minden alkalmazás** – a nem a Microsoft által fejlesztett alkalmazások és a Microsoft-alkalmazások együttes megjelenítése.
+3. Az **Alkalmazás állapota** területen a **Bármely**, **Letiltva** vagy **Engedélyezve** lehetőségek közül választhat. A **Bármely** beállítás magában foglalja a letiltott és az engedélyezett alkalmazásokat is.
+4. Az **Alkalmazás láthatósága** területen a **Bármely** vagy a **Rejtett** lehetőségek közül választhat. A **rejtett** beállítás megjeleníti a bérlőben található alkalmazásokat, de a felhasználók számára nem láthatók.
+5. A kívánt beállítások kiválasztása után válassza az **alkalmaz**lehetőséget.
 
-1. Az **Alkalmazás állapota** területen a **Bármely**, **Letiltva** vagy **Engedélyezve** lehetőségek közül választhat. A **Bármely** beállítás magában foglalja a letiltott és az engedélyezett alkalmazásokat is.
-1. Az **Alkalmazás láthatósága** területen a **Bármely** vagy a **Rejtett** lehetőségek közül választhat. A **rejtett** beállítás megjeleníti a bérlőben található alkalmazásokat, de a felhasználók számára nem láthatók.
-1. A kívánt beállítások kiválasztása után válassza az **alkalmaz**lehetőséget.
-
-## <a name="search-for-a-tenant-application"></a>Bérlői alkalmazás keresése
+## <a name="search-for-an-application"></a>Alkalmazás keresése
 
 Egy adott alkalmazás megkeresése:
 
 1. Az **alkalmazás típusa** menüben válassza a **minden alkalmazás**lehetőséget, majd kattintson az **alkalmaz**gombra.
-1. Adja meg a megkeresni kívánt alkalmazás nevét. Ha az alkalmazás hozzá lett adva az Azure AD-bérlőhöz, az megjelenik a keresési eredmények között. Ez a példa azt mutatja, hogy a GitHub még nem lett hozzáadva a bérlői alkalmazásokhoz.
-
+2. Adja meg a megkeresni kívánt alkalmazás nevét. Ha az alkalmazás hozzá lett adva az Azure AD-bérlőhöz, az megjelenik a keresési eredmények között. Ez a példa azt mutatja, hogy a GitHub még nem lett hozzáadva a bérlői alkalmazásokhoz.
     ![Példa egy olyan alkalmazást mutat be, amely még nem lett hozzáadva a bérlőhöz](media/view-applications-portal/search-for-tenant-application.png)
-
-1. Próbálkozzon az alkalmazásnév első néhány betűjének beírásával. Ebben a példában az összes olyan alkalmazás látható, amelyek neve a **Sales** sztringgel kezdődik.
-
+3. Próbálkozzon az alkalmazásnév első néhány betűjének beírásával. Ebben a példában az összes olyan alkalmazás látható, amelyek neve a **Sales** sztringgel kezdődik.
     ![Példa az összes értékesítést elindító alkalmazásra](media/view-applications-portal/search-by-prefix.png)
 
 ## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan tekintheti meg az alkalmazásokat az Azure AD-bérlőben. Megtanulta, hogyan szűrheti az alkalmazások listáját az alkalmazás típusa, állapota és láthatósága alapján. Emellett azt is megtanulta, hogyan kereshet meg egy adott alkalmazást.
 
-Most, hogy megtalálta a keresett alkalmazást, továbbra is [hozzáadhat további alkalmazásokat a bérlőhöz](add-application-portal.md). Vagy kiválaszthatja az alkalmazást a tulajdonságok és a konfigurációs beállítások megtekintéséhez vagy szerkesztéséhez. Konfigurálhat például egyszeri bejelentkezést.
-
-> [!div class="nextstepaction"]
-> [Egyszeri bejelentkezés konfigurálása](configure-single-sign-on-non-gallery-applications.md)
+- [Alkalmazás hozzáadása](add-application-portal.md)
+- [Alkalmazás konfigurálása](add-application-portal-configure.md)
+- [Egyszeri bejelentkezés beállítása](add-application-portal-setup-sso.md)
+- [Alkalmazás törlése](delete-application-portal.md)
