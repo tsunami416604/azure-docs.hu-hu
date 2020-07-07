@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: ejarvi
 ms.openlocfilehash: 22568c7c23771f143f6cd583114949c380d15e3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80066922"
 ---
 # <a name="azure-disk-encryption-for-linux-microsoftazuresecurityazurediskencryptionforlinux"></a>Linux-Azure Disk Encryption (Microsoft. Azure. Security. AzureDiskEncryptionForLinux)
@@ -41,7 +41,7 @@ A Azure Disk Encryption (ADE) bővítmény sémájának két verziója létezik:
 - v 1.1 – egy újabb ajánlott séma, amely nem használ Azure Active Directory (HRE) tulajdonságokat.
 - v 0.1 – egy régebbi séma, amelyhez Azure Active Directory (HRE) tulajdonság szükséges. 
 
-A célként használandó séma kiválasztásához `typeHandlerVersion` a tulajdonságot a használni kívánt séma verziójával egyenlő értékre kell állítani.
+A célként használandó séma kiválasztásához a `typeHandlerVersion` tulajdonságot a használni kívánt séma verziójával egyenlő értékre kell állítani.
 
 ### <a name="schema-v11-no-aad-recommended"></a>Séma v 1.1: nincs HRE (ajánlott)
 
@@ -76,9 +76,9 @@ A v 1.1 séma használata javasolt, és nem igényel Azure Active Directory (HRE
 
 ### <a name="schema-v01-with-aad"></a>A Schema v 0.1: a HRE 
 
-Az 0,1-es `AADClientID` séma használatához `AADClientSecret` és `AADClientCertificate`a vagy a vagy a.
+Az 0,1 `AADClientID` -es séma használatához és a vagy a vagy a `AADClientSecret` `AADClientCertificate` .
 
-Használat `AADClientSecret`:
+Használat `AADClientSecret` :
 
 ```json
 {
@@ -108,7 +108,7 @@ Használat `AADClientSecret`:
 }
 ```
 
-Használat `AADClientCertificate`:
+Használat `AADClientCertificate` :
 
 ```json
 {
@@ -141,11 +141,11 @@ Használat `AADClientCertificate`:
 
 ### <a name="property-values"></a>Tulajdonságértékek
 
-| Name (Név) | Érték/példa | Adattípus |
+| Name | Érték/példa | Adattípus |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | dátum |
 | közzétevő | Microsoft. Azure. Security | sztring |
-| type | AzureDiskEncryptionForLinux | sztring |
+| típus | AzureDiskEncryptionForLinux | sztring |
 | typeHandlerVersion | 1,1, 0,1 | int |
 | (0,1 séma) AADClientID | XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX | guid | 
 | (0,1 séma) AADClientSecret | jelszó | sztring |
@@ -173,7 +173,7 @@ A sablon v 0.1-es sémán alapuló központi telepítésére példaként tekints
 > - A Linux rendszerű virtuális gépek titkosításának letiltása csak az adatkötetek esetében támogatott. Ha az operációsrendszer-kötet titkosítva van, a rendszer nem támogatja az adatvagy operációsrendszer-köteteken. 
 
 >[!NOTE]
-> Ha `VolumeType` a paraméter értéke mind, az adatlemezek csak akkor lesznek titkosítva, ha megfelelően vannak csatlakoztatva.
+> Ha a `VolumeType` paraméter értéke mind, az adatlemezek csak akkor lesznek titkosítva, ha megfelelően vannak csatlakoztatva.
 
 ## <a name="troubleshoot-and-support"></a>Hibakeresés és támogatás
 

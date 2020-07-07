@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.openlocfilehash: 8725a822c575ce80b9810d56bfd072241ded4c86
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80157942"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Az Azure IoT Central-alkalmazásban lévő eszközök kezelése
@@ -51,7 +51,7 @@ Eszköz hozzáadása az Azure IoT Central-alkalmazáshoz:
 
 1. A **szimulált** váltógomb be- **vagy** **kikapcsolása**. Egy valós eszköz az Azure IoT Central-alkalmazáshoz csatlakoztatott fizikai eszközhöz. Egy szimulált eszközön az Azure IoT Central által létrehozott mintaadatok láthatók.
 
-1. Kattintson a **Létrehozás**gombra.
+1. Kattintson a **Létrehozás** lehetőségre.
 
 1. Ez az eszköz most megjelenik az eszköz listájában ehhez a sablonhoz. Válassza ki az eszközt az eszköz részletei lap megjelenítéséhez, amely az eszköz összes nézetét tartalmazza.
 

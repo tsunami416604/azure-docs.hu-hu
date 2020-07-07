@@ -6,12 +6,12 @@ ms.author: t-trtr
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 06/04/2020
-ms.openlocfilehash: fe06d68a7e618b728e314d539dd83dfdf93beaed
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.openlocfilehash: 7acdee98e5e433567a3d177400ee4e7043d0895c
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85368209"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921571"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>Oktatóanyag: az Azure Key Vault-szolgáltató konfigurálása és futtatása a Secrets Store CSI-illesztőprogramhoz a Kubernetes-ben
 
@@ -280,27 +280,27 @@ kubectl apply -f podIdentityAndBinding.yaml
 Ezután üzembe helyezi a pod-t. A következő kód a telepítési YAML-fájl, amely az előző lépésben a pod Identity kötést használja. Mentse ezt a fájlt *podBindingDeployment. YAML*néven.
 
 ```yml
-kind: Pod
 apiVersion: v1
+kind: Pod
 metadata:
-    name: nginx-secrets-store-inline
-    labels:
+  name: nginx-secrets-store-inline
+  labels:
     aadpodidbinding: azure-pod-identity-binding-selector
 spec:
-    containers:
+  containers:
     - name: nginx
-        image: nginx
-        volumeMounts:
+      image: nginx
+      volumeMounts:
         - name: secrets-store-inline
-        mountPath: "/mnt/secrets-store"
-        readOnly: true
-    volumes:
+          mountPath: "/mnt/secrets-store"
+          readOnly: true
+  volumes:
     - name: secrets-store-inline
-        csi:
+      csi:
         driver: secrets-store.csi.k8s.io
         readOnly: true
         volumeAttributes:
-            secretProviderClass: azure-kvname
+          secretProviderClass: azure-kvname
 ```
 
 Futtassa a következő parancsot a pod üzembe helyezéséhez:
@@ -339,7 +339,7 @@ kubectl exec -it nginx-secrets-store-inline -- cat /mnt/secrets-store/secret1
 
 Ellenőrizze, hogy a titkos kód tartalma megjelenik-e.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Key Vault helyreállításának biztosításához lásd:
 > [!div class="nextstepaction"]

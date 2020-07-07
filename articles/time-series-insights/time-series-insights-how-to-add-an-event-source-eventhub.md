@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.custom: seodec18
 ms.openlocfilehash: 021ac5fccf4d694895ab9941bd46dd2388f49af9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81407463"
 ---
 # <a name="add-an-event-hub-event-source-to-your-time-series-insights-environment"></a>Event hub-eseményforrás hozzáadása a Time Series Insights-környezethez
@@ -50,7 +50,7 @@ Az alkalmazások fogyasztói csoportokat használnak az adatok Azure-Event Hubsb
 
 1. A **fogyasztói csoportok** lapon adjon meg egy új egyedi értéket a **név**mezőben.  Akkor használja ezt a nevet, amikor új eseményforrás hoz létre a Time Series Insights környezetben.
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 ## <a name="add-a-new-event-source"></a>Új eseményforrás hozzáadása
 
@@ -62,7 +62,7 @@ Az alkalmazások fogyasztói csoportokat használnak az adatok Azure-Event Hubsb
 
    [![Az eseményforrás területen válassza a Hozzáadás gombot](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-add-an-event-source.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-add-an-event-source.png#lightbox)
 
-1. Adjon meg egy értéket az **eseményforrás neve** számára, amely egyedi a Time Series Insights környezetben, például: `Contoso-TSI-GA-Event-Hub-ES`.
+1. Adjon meg egy értéket az **eseményforrás neve** számára, amely egyedi a Time Series Insights környezetben, például: `Contoso-TSI-GA-Event-Hub-ES` .
 
 1. A **forrás**mezőben válassza az **Event hub**elemet.
 
@@ -107,7 +107,7 @@ Az alkalmazások fogyasztói csoportokat használnak az adatok Azure-Event Hubsb
 
 1. Adja hozzá az Event hub-hoz hozzáadott dedikált Time Series Insights fogyasztói csoport nevét.
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
    Az eseményforrás létrehozása után Time Series Insights automatikusan megkezdi az adatátvitelt a környezetbe.
 

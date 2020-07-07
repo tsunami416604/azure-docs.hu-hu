@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: spelluru
 ms.openlocfilehash: f9bf807884ab5592fa320532f3ca10a223081263
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81393327"
 ---
 # <a name="azure-iot-hub-as-an-event-grid-source"></a>Azure-IoT Hub Event Grid forrásként
@@ -153,7 +153,7 @@ Minden esemény ugyanazt a legfelső szintű adatértéket tartalmazza:
 | tulajdonos | sztring | Az esemény tárgyra mutató, a közzétevő által megadott elérési út. |
 | eventType | sztring | Az eseményforráshoz felvett eseménytípusok egyike. |
 | eventTime | sztring | Az esemény a szolgáltató UTC-ideje alapján történő létrehozásakor. |
-| data | objektum | IoT Hub az eseményekre vonatkozó adatgyűjtést.  |
+| adatok | objektum | IoT Hub az eseményekre vonatkozó adatgyűjtést.  |
 | dataVersion | sztring | Az adatobjektum sémaverziója. A sémaverziót a közzétevő határozza meg. |
 | metadataVersion | sztring | Az esemény metaadatok sémaverziója. A legfelső szintű tulajdonságokra az Event Grid határozza meg a sémát. Az értéket az Event Grid adja meg. |
 
@@ -162,7 +162,7 @@ Az adatobjektum minden IoT Hub eseményhez a következő tulajdonságokat tartal
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | hubName | sztring | Azon IoT Hub neve, ahová az eszközt létrehozták vagy törölték. |
-| deviceId | sztring | Az eszköz egyedi azonosítója. Ez a kis-és nagybetűket megkülönböztető karakterlánc legfeljebb 128 karakter hosszúságú lehet, és támogatja az ASCII 7 bites alfanumerikus karaktereket, valamint `- : . + % _ # * ? ! ( ) , = @ ; $ '`a következő speciális karaktereket:. |
+| deviceId | sztring | Az eszköz egyedi azonosítója. Ez a kis-és nagybetűket megkülönböztető karakterlánc legfeljebb 128 karakter hosszúságú lehet, és támogatja az ASCII 7 bites alfanumerikus karaktereket, valamint a következő speciális karaktereket: `- : . + % _ # * ? ! ( ) , = @ ; $ '` . |
 
 Az adatobjektum tartalma eltér az egyes esemény-közzétevők esetében. 
 
@@ -170,7 +170,7 @@ A **csatlakoztatott eszköz** és az **eszköz leválasztott** IoT hub eseménye
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| moduleId | sztring | A modul egyedi azonosítója. Ez a mező csak modul-eszközök esetén kimenet. Ez a kis-és nagybetűket megkülönböztető karakterlánc legfeljebb 128 karakter hosszúságú lehet, és támogatja az ASCII 7 bites alfanumerikus karaktereket, valamint `- : . + % _ # * ? ! ( ) , = @ ; $ '`a következő speciális karaktereket:. |
+| moduleId | sztring | A modul egyedi azonosítója. Ez a mező csak modul-eszközök esetén kimenet. Ez a kis-és nagybetűket megkülönböztető karakterlánc legfeljebb 128 karakter hosszúságú lehet, és támogatja az ASCII 7 bites alfanumerikus karaktereket, valamint a következő speciális karaktereket: `- : . + % _ # * ? ! ( ) , = @ ; $ '` . |
 | deviceConnectionStateEventInfo | objektum | Az eszköz kapcsolati állapotával kapcsolatos események adatai
 | Sorszám | sztring | Egy szám, amely segít jelezni az eszköz csatlakoztatott vagy leválasztott eseményeinek sorrendjét. A legutóbbi eseménynél az előző eseménynél nagyobb sorszám szerepel. Ez a szám több mint 1, de szigorúan növekszik. Lásd: [a sorozatszám használata](../iot-hub/iot-hub-how-to-order-connection-state-events.md). |
 
@@ -184,7 +184,7 @@ Az **eszköz telemetria** IoT hub esemény esetén az adatobjektum tartalmazza a
 
 Az **eszköz által létrehozott** és az **eszköz törölte** IoT hub eseményeket, az adatobjektum a következő tulajdonságokat tartalmazza:
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Típus | Description |
 | -------- | ---- | ----------- |
 | ikereszköz | objektum | A Twin eszközre vonatkozó információ, amely az alkalmazás-eszköz metaadatainak Felhőbeli ábrázolása. | 
 | deviceID | sztring | Az eszköz egyedi azonosítója. | 
@@ -195,7 +195,7 @@ Az **eszköz által létrehozott** és az **eszköz törölte** IoT hub esemény
 | connectionState | sztring | Azt jelzi, hogy az eszköz csatlakoztatva van-e, vagy le van választva. | 
 | lastActivityTime | sztring | Az utolsó tevékenység ISO8601 időbélyegzője. | 
 | cloudToDeviceMessageCount | egész szám | Az eszközre küldött Felhőbeli üzenetek száma. | 
-| authenticationType | sztring | Az eszközhöz használt hitelesítési típus: vagy `SAS`, `SelfSigned`, vagy `CertificateAuthority`. |
+| authenticationType | sztring | Az eszközhöz használt hitelesítési típus: vagy `SAS` , `SelfSigned` , vagy `CertificateAuthority` . |
 | x509Thumbprint | sztring | Az ujjlenyomat a x509 tanúsítvány egyedi értéke, amely általában egy adott tanúsítvány megkeresésére szolgál a tanúsítványtárolóban. Az ujjlenyomatot a rendszer dinamikusan hozza létre az SHA1 algoritmus használatával, és fizikailag nem létezik a tanúsítványban. | 
 | primaryThumbprint | sztring | Az x509-tanúsítvány elsődleges ujjlenyomata. |
 | secondaryThumbprint | sztring | A x509-tanúsítvány másodlagos ujjlenyomata. | 

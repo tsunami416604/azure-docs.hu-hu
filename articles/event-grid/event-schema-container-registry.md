@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: spelluru
 ms.openlocfilehash: 7e33feb04edf42f1e2a32b9b8c8e2fd214692f31
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81393366"
 ---
 # <a name="azure-container-registry-as-an-event-grid-source"></a>Azure Container Registry Event Grid forrásként
@@ -164,7 +164,7 @@ Egy esemény a következő legfelső szintű adattal rendelkezik:
 | eventType | sztring | Az eseményforráshoz felvett eseménytípusok egyike. |
 | eventTime | sztring | Az esemény a szolgáltató UTC-ideje alapján történő létrehozásakor. |
 | id | sztring | Az esemény egyedi azonosítója. |
-| data | objektum | BLOB Storage-események |
+| adatok | objektum | BLOB Storage-események |
 | dataVersion | sztring | Az adatobjektum sémaverziója. A sémaverziót a közzétevő határozza meg. |
 | metadataVersion | sztring | Az esemény metaadatok sémaverziója. A legfelső szintű tulajdonságokra az Event Grid határozza meg a sémát. Az értéket az Event Grid adja meg. |
 
@@ -188,12 +188,12 @@ A célobjektum a következő tulajdonságokkal rendelkezik:
 | hossz | egész szám | A tartalom bájtjainak száma. Ugyanaz, mint a size mező. |
 | tárház | sztring | A tárház neve. |
 | címke | sztring | A címke neve. |
-| név | sztring | A diagram neve. |
+| name | sztring | A diagram neve. |
 | version | sztring | A diagram verziója. |
 
 A kérelem objektum a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Típus | Description |
 | -------- | ---- | ----------- |
 | id | sztring | Az eseményt kezdeményező kérelem azonosítója. |
 | addr | sztring | Az eseményt kezdeményező ügyfél-kapcsolat IP-címe vagy állomásneve, illetve esetleg portja. Ez az érték a szabványos HTTP-kérelem RemoteAddr. |

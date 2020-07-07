@@ -1,6 +1,6 @@
 ---
 title: 'Oktatóanyag: SQL-alapú lekérdezés Azure Cosmos DBban?'
-description: 'Oktatóanyag: az SQL-lekérdezésekkel való lekérdezés Azure Cosmos DB a THW Query Playground használatával'
+description: 'Oktatóanyag: megtudhatja, hogyan lehet lekérdezéseket lekérdezni Azure Cosmos DB SQL-lekérdezésekkel a lekérdezési játszótér használatával'
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.custom: tutorial-develop, mvc
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 7e83ed0f9e635ed24b7e6115eeaaa9057d422c69
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e8d1498520ea0c59372ec4e1096b6f2b4bcf885f
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74870071"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921118"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-sql-api"></a>Oktatóanyag: Az Azure Cosmos DB lekérdezése az SQL API használatával
 
@@ -56,6 +56,7 @@ A cikkben szereplő SQL-lekérdezések a következő mintadokumentumot használj
   "isRegistered": false
 }
 ```
+
 ## <a name="where-can-i-run-sql-queries"></a>Hol futtathatok SQL-lekérdezéseket?
 
 Az Azure Portalon az Adatkezelővel futtathat lekérdezéseket a [REST API-n és az SDK-n](sql-api-sdk-dotnet.md) keresztül. Emellett használhatja még a [Tesztlekérdezéseket](https://www.documentdb.com/sql/demo) is, amelyek a mintaadatok meglévő készletén futtatnak lekérdezéseket.
@@ -65,17 +66,19 @@ További tudnivalók az SQL-lekérdezésekről:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez az oktatóanyag feltételezi, hogy rendelkezik egy Azure Cosmos DB-fiókkal és -gyűjteménnyel. Nem rendelkezik ezekkel? Kövesse az [5 perces gyorsútmutató lépéseit](create-cosmosdb-resources-portal.md).
+Ez az oktatóanyag feltételezi, hogy rendelkezik egy Azure Cosmos DB-fiókkal és -gyűjteménnyel. Nem rendelkezik ezekkel az erőforrásokkal? Kövesse az [5 perces gyorsútmutató lépéseit](create-cosmosdb-resources-portal.md).
 
 ## <a name="example-query-1"></a>1. példalekérdezés
 
-A fenti mintacsalád dokumentumban a következő SQL-lekérdezés olyan dokumentumokat ad vissza, amelyek azonosítót tartalmazó mezői megegyeznek a következővel: `WakefieldFamily`. Mivel ez egy `SELECT *` utasítás, a lekérdezés kimenete a teljes JSON-dokumentum:
+A fenti minta családi dokumentum miatt a következő SQL-lekérdezés azokat a dokumentumokat adja vissza, amelyekben az azonosító mező megfelel `WakefieldFamily` . Mivel ez egy `SELECT *` utasítás, a lekérdezés kimenete a teljes JSON-dokumentum:
 
 **Lekérdezés**
 
+```sql
     SELECT * 
     FROM Families f 
     WHERE f.id = "WakefieldFamily"
+```
 
 **Results (Eredmények)**
 
@@ -110,18 +113,29 @@ A fenti mintacsalád dokumentumban a következő SQL-lekérdezés olyan dokument
 
 ## <a name="example-query-2"></a>2. példalekérdezés
 
-A következő lekérdezés a család összes olyan gyermekének utónevét adja vissza, amelyek azonosítója egyezik a `WakefieldFamily` kifejezéssel, az évfolyamuk szerint rendezve.
+A következő lekérdezés az összes olyan gyermek nevét adja vissza a családban, amelynek AZONOSÍTÓjának egyezését a `WakefieldFamily` besorolásuk szerint rendezi.
 
 **Lekérdezés**
 
+```sql
     SELECT c.givenName 
     FROM Families f 
     JOIN c IN f.children 
     WHERE f.id = 'WakefieldFamily'
+```
 
 **Results (Eredmények)**
 
-[ { "givenName": "Jesse" }, { "givenName": "Lisa" } ]
+```
+[
+    {
+        "givenName": "Jesse"
+    },
+    {
+        "givenName": "Lisa"
+    }
+]
+```
 
 
 ## <a name="next-steps"></a>További lépések

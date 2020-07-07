@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: ejarvi
 ms.openlocfilehash: e975e1757b77b4aab52a59d1f0709ef9cadae94e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80066866"
 ---
 # <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>Windows Azure Disk Encryption (Microsoft. Azure. Security. AzureDiskEncryption)
@@ -40,7 +40,7 @@ A Azure Disk Encryption (ADE) bővítmény sémájának két verziója létezik:
 - v 2.2 – egy újabb ajánlott séma, amely nem használ Azure Active Directory (HRE) tulajdonságokat.
 - v 1.1 – egy régebbi séma, amelyhez Azure Active Directory (HRE) tulajdonság szükséges. 
 
-A célként használandó séma kiválasztásához `typeHandlerVersion` a tulajdonságot a használni kívánt séma verziójával egyenlő értékre kell állítani.
+A célként használandó séma kiválasztásához a `typeHandlerVersion` tulajdonságot a használni kívánt séma verziójával egyenlő értékre kell állítani.
 
 ### <a name="schema-v22-no-aad-recommended"></a>Schema v 2.2: nincs HRE (ajánlott)
 
@@ -74,9 +74,9 @@ A v 2.2 séma minden új virtuális gép esetében ajánlott, és nem igényel A
 
 ### <a name="schema-v11-with-aad"></a>Schema v 1.1: a HRE 
 
-Az 1,1-es `aadClientID` séma megköveteli `aadClientSecret` , `AADClientCertificate` hogy az új virtuális gépek esetében ne legyen ajánlott, vagy a vagy a vagy a.
+Az 1,1-es séma megköveteli `aadClientID` , `aadClientSecret` hogy az `AADClientCertificate` új virtuális gépek esetében ne legyen ajánlott, vagy a vagy a vagy a.
 
-Használat `aadClientSecret`:
+Használat `aadClientSecret` :
 
 ```json
 {
@@ -106,7 +106,7 @@ Használat `aadClientSecret`:
 }
 ```
 
-Használat `AADClientCertificate`:
+Használat `AADClientCertificate` :
 
 ```json
 {
@@ -139,11 +139,11 @@ Használat `AADClientCertificate`:
 
 ### <a name="property-values"></a>Tulajdonságértékek
 
-| Name (Név) | Érték/példa | Adattípus |
+| Name | Érték/példa | Adattípus |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | dátum |
 | közzétevő | Microsoft. Azure. Security | sztring |
-| type | AzureDiskEncryption | sztring |
+| típus | AzureDiskEncryption | sztring |
 | typeHandlerVersion | 2,2, 1,1 | sztring |
 | (1,1 séma) AADClientID | XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX | guid | 
 | (1,1 séma) AADClientSecret | jelszó | sztring |
@@ -164,7 +164,7 @@ A sablon 2.0-s verzión alapuló központi telepítésének példáját az Azure
 Az 1.1-es séma alapján történő központi telepítésre példa: Azure Gyorsindítás sablon [201-encrypt-Running-Windows-VM](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm).
 
 >[!NOTE]
-> Ha `VolumeType` a paraméter értéke mind, az adatlemezek csak akkor lesznek titkosítva, ha megfelelően vannak formázva. 
+> Ha a `VolumeType` paraméter értéke mind, az adatlemezek csak akkor lesznek titkosítva, ha megfelelően vannak formázva. 
 
 ## <a name="troubleshoot-and-support"></a>Hibakeresés és támogatás
 

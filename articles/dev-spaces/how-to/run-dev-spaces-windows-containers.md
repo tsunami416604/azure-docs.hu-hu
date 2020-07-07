@@ -6,10 +6,10 @@ ms.topic: conceptual
 description: Ismerje meg, hogyan futtathat Azure dev-helyeket meglévő fürtön Windows-tárolókkal
 keywords: Azure dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Windows-tárolók
 ms.openlocfilehash: 0b3f221c9e62343a02ba8742e4cf988c7cf26c12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80240486"
 ---
 # <a name="interact-with-windows-containers-using-azure-dev-spaces"></a>Windows-tárolók használata az Azure dev Spaces használatával
@@ -54,7 +54,7 @@ kubectl taint node aksnpwin987654 sku=win-node:NoSchedule
 
 Futtassa a Windows-szolgáltatást az AK-fürtön, és ellenőrizze, hogy *futó* állapotban van-e. Ez a cikk egy [minta alkalmazást][sample-application] használ a fürtön futó Windows-és Linux-szolgáltatások bemutatására.
 
-A minta alkalmazás klónozása a GitHubról, majd `dev-spaces/samples/existingWindowsBackend/mywebapi-windows` a címtárba való belépés:
+A minta alkalmazás klónozása a GitHubról, majd a `dev-spaces/samples/existingWindowsBackend/mywebapi-windows` címtárba való belépés:
 
 ```console
 git clone https://github.com/Azure/dev-spaces
@@ -91,7 +91,7 @@ az aks use-dev-spaces -g myResourceGroup -n myAKSCluster --space dev --yes
 
 ## <a name="update-your-windows-service-for-dev-spaces"></a>Windows-szolgáltatás frissítése a fejlesztői tárhelyekhez
 
-Ha egy már futó tárolóval rendelkező meglévő névtérben engedélyezi a dev Spaces szolgáltatást, a dev Spaces szolgáltatás alapértelmezés szerint megkísérli a névtérben futó új tárolók kiválasztását. A dev Spaces emellett a névtérben már futó, szolgáltatáshoz létrehozott új tárolókat is megpróbálja kipróbálni. Ha meg szeretné akadályozni, hogy a fejlesztői területek a névtérben futó tárolót használjanak, adja hozzá a `deployment.yaml` *No-proxy* fejlécet a következőhöz:.
+Ha egy már futó tárolóval rendelkező meglévő névtérben engedélyezi a dev Spaces szolgáltatást, a dev Spaces szolgáltatás alapértelmezés szerint megkísérli a névtérben futó új tárolók kiválasztását. A dev Spaces emellett a névtérben már futó, szolgáltatáshoz létrehozott új tárolókat is megpróbálja kipróbálni. Ha meg szeretné akadályozni, hogy a fejlesztői területek a névtérben futó tárolót használjanak, adja hozzá a *No-proxy* fejlécet a következőhöz: `deployment.yaml` .
 
 Hozzáadás `azds.io/no-proxy: "true"` a `existingWindowsBackend/mywebapi-windows/charts/templates/deployment.yaml` fájlhoz:
 
@@ -112,7 +112,7 @@ spec:
         azds.io/no-proxy: "true"
 ```
 
-A `helm list` használatával listázhatja a Windows-szolgáltatás központi telepítését:
+A használatával `helm list` listázhatja a Windows-szolgáltatás központi telepítését:
 
 ```cmd
 $ helm list --namespace dev
@@ -120,17 +120,17 @@ NAME              REVISION  UPDATED                     STATUS      CHART       
 windows-service 1           Wed Jul 24 15:45:59 2019    DEPLOYED    mywebapi-0.1.0  1.0         dev  
 ```
 
-A fenti példában az *üzemelő példány neve Windows-Service*. Frissítse Windows-szolgáltatását az új konfigurációval `helm upgrade`a használatával:
+A fenti példában az *üzemelő példány neve Windows-Service*. Frissítse Windows-szolgáltatását az új konfigurációval a használatával `helm upgrade` :
 
 ```cmd
 helm upgrade windows-service . --namespace dev
 ```
 
-A `deployment.yaml`frissítése óta a fejlesztői tárhelyek nem fogják kipróbálni és kiépíteni a szolgáltatást.
+A frissítése óta a `deployment.yaml` fejlesztői tárhelyek nem fogják kipróbálni és kiépíteni a szolgáltatást.
 
 ## <a name="run-your-linux-application-with-azure-dev-spaces"></a>Linux-alkalmazás futtatása az Azure dev Spaces-szel
 
-Navigáljon a `webfrontend` címtárhoz, és `azds prep` a `azds up` és a parancsok használatával futtassa a Linux-alkalmazást a fürtön.
+Navigáljon a `webfrontend` címtárhoz, és a `azds prep` és a parancsok használatával futtassa a Linux-alkalmazást a `azds up` fürtön.
 
 ```console
 cd ../../webfrontend-linux/
@@ -161,7 +161,7 @@ Service 'webfrontend' port 'http' is available at http://dev.webfrontend.abcdef0
 Service 'webfrontend' port 80 (http) is available via port forwarding at http://localhost:57648
 ```
 
-A szolgáltatás futtatásához nyissa meg a nyilvános URL-címet, amely a azds up parancs kimenetében jelenik meg. Ebben a példában a nyilvános URL-cím `http://dev.webfrontend.abcdef0123.eus.azds.io/`a következő:. Navigáljon a szolgáltatáshoz egy böngészőben, és kattintson a felül található *Névjegy* elemre. Ellenőrizze, hogy megjelenik-e a *mywebapi* szolgáltatás azon üzenete, amely a tároló által használt Windows-verziót tartalmazza.
+A szolgáltatás futtatásához nyissa meg a nyilvános URL-címet, amely a azds up parancs kimenetében jelenik meg. Ebben a példában a nyilvános URL-cím a következő: `http://dev.webfrontend.abcdef0123.eus.azds.io/` . Navigáljon a szolgáltatáshoz egy böngészőben, és kattintson a felül található *Névjegy* elemre. Ellenőrizze, hogy megjelenik-e a *mywebapi* szolgáltatás azon üzenete, amely a tároló által használt Windows-verziót tartalmazza.
 
 ![Minta alkalmazás, amely a Windows-verziót mutatja a mywebapi](../media/run-dev-spaces-windows-containers/sample-app.png)
 

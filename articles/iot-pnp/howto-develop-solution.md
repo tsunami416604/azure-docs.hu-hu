@@ -10,10 +10,10 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
 ms.openlocfilehash: e349aadfd629202b1c8cdb5c53a88e0a6c2e06de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80159217"
 ---
 # <a name="connect-to-and-interact-with-an-iot-plug-and-play-preview-device"></a>Kapcsolódás IoT Plug and Play előnézeti eszközhöz
@@ -30,21 +30,21 @@ npm install
 
 ## <a name="run-the-service-samples"></a>A szolgáltatási minták futtatása
 
-A Node. js szolgáltatási SDK képességeinek megismeréséhez használja a következő mintákat. Győződjön meg arról, `IOTHUB_CONNECTION_STRING` hogy a környezeti változó a használt rendszerhéjban van beállítva:
+A következő minták segítségével megismerheti a Node.js Service SDK képességeit. Győződjön meg arról, hogy a `IOTHUB_CONNECTION_STRING` környezeti változó a használt rendszerhéjban van beállítva:
 
 ### <a name="retrieve-a-digital-twin-and-list-the-interfaces"></a>Digitális iker beolvasása és a felületek listázása
 
-a **get_digital_twin. js** beolvassa az eszközhöz társított digitális IKeret, és kinyomtatja az összetevőjét a parancssorból. Nem igényli, hogy a futó eszköz mintája sikeres legyen.
+**get_digital_twin.js** beolvassa az eszközhöz társított digitális IKeret, és kinyomtatja az összetevőjét a parancssorból. Nem igényli, hogy a futó eszköz mintája sikeres legyen.
 
-a **get_digital_twin_interface_instance. js** lekérdezi az eszközhöz társított digitális Twin egyetlen interfész-példányát, és kiírja a parancssorból. Nem igényli, hogy az eszköz minta fusson.
+**get_digital_twin_interface_instance.js** beolvassa az eszközhöz társított digitális Twin-példányokat, és kiírja a parancssorból. Nem igényli, hogy az eszköz minta fusson.
 
 ### <a name="get-and-set-properties-using-the-node-service-sdk"></a>Tulajdonságok beolvasása és beállítása a Node Service SDK használatával
 
-a **update_digital_twin. js** a teljes javítás használatával frissít egy írható tulajdonságot az eszköz Digital Twin eszközein. Ha szeretne, több tulajdonságot is frissíthet több felületen. Ahhoz, hogy sikeres legyen, az eszköz mintájának egy időben kell futnia. A siker úgy néz ki, mint az eszköz mintája, amely egy olyan tulajdonság frissítését nyomtatja ki a szolgáltatásban, amely egy frissített digitális Twin-t nyomtat a terminálon.
+**update_digital_twin.js** frissít egy írható tulajdonságot az eszköz Digital Twin-re egy teljes javítás használatával. Ha szeretne, több tulajdonságot is frissíthet több felületen. Ahhoz, hogy sikeres legyen, az eszköz mintájának egy időben kell futnia. A siker úgy néz ki, mint az eszköz mintája, amely egy olyan tulajdonság frissítését nyomtatja ki a szolgáltatásban, amely egy frissített digitális Twin-t nyomtat a terminálon.
 
 ### <a name="send-a-command-and-retrieve-the-response-using-the-node-service-sdk"></a>Parancs küldése és a válasz beolvasása a Node Service SDK használatával
 
-**invoke_command. js** egy szinkron parancsot hív meg az eszköz Digital Twin-fájlján. Ahhoz, hogy sikeres legyen, az eszköz mintájának egy időben kell futnia. A siker úgy néz ki, mint az eszköz mintája, hogy a rendszer kinyomtassa a parancsot, és a szolgáltatás ügyfele kinyomtatja a parancs eredményét a terminálon.
+**invoke_command.js** egy szinkron parancsot hív meg az eszköz Digital Twin szolgáltatásában. Ahhoz, hogy sikeres legyen, az eszköz mintájának egy időben kell futnia. A siker úgy néz ki, mint az eszköz mintája, hogy a rendszer kinyomtassa a parancsot, és a szolgáltatás ügyfele kinyomtatja a parancs eredményét a terminálon.
 
 ### <a name="connect-to-the-public-repository-and-retrieve-a-model-definition-using-the-node-service-sdk"></a>Kapcsolódás a nyilvános tárházhoz és a modell definíciójának beolvasása a Node Service SDK használatával
 
@@ -70,7 +70,7 @@ Ez a minta letölti az **ModelDiscovery** felületet, és kinyomtatja ezt a mode
 
 ### <a name="run-queries-in-iot-hub-based-on-capability-models-and-interfaces"></a>Lekérdezések futtatása IoT Hub a képességi modellek és felületek alapján
 
-A IoT Hub lekérdezési nyelv `HAS_INTERFACE` támogatja `HAS_CAPABILITYMODEL` a következő példákban láthatókat:
+A IoT Hub lekérdezési nyelv támogatja a `HAS_INTERFACE` `HAS_CAPABILITYMODEL` következő példákban láthatókat:
 
 ```sql
 select * from devices where HAS_INTERFACE('id without version', version)

@@ -6,10 +6,10 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 09/16/2019
 ms.openlocfilehash: 7b7fff913c177703f959bfa103c8e310d01059e2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81391827"
 ---
 # <a name="custom-role-definition-artifact-in-azure-managed-applications"></a>Egyéni szerepkör-definíciós összetevő a Azure Managed Applications
@@ -20,11 +20,11 @@ Ez a cikk áttekintést nyújt az egyéni szerepkör-definíciós összetevőrő
 
 ## <a name="custom-role-definition-artifact"></a>Egyéni szerepkör-definíciós összetevő
 
-A customRoleDefinition. JSON nevű egyéni szerepkör-definíciót kell megadnia. Helyezze el ugyanazon a szinten, mint a createUiDefinition. JSON és a mainTemplate. JSON fájl a felügyelt alkalmazás definícióját létrehozó. zip csomagban. A. zip csomag létrehozásával és a felügyelt alkalmazás definíciójának közzétételével kapcsolatos további információkért lásd: [felügyelt alkalmazás definíciójának közzététele.](publish-service-catalog-app.md)
+A (z) customRoleDefinition.jsegyéni szerepkör-definíciós összetevőt kell megadnia. Helyezze el ugyanarra a szintre, mint createUiDefinition.jsbe-és mainTemplate.jsa. zip csomagban, amely létrehoz egy felügyelt alkalmazás definícióját. A. zip csomag létrehozásával és a felügyelt alkalmazás definíciójának közzétételével kapcsolatos további információkért lásd: [felügyelt alkalmazás definíciójának közzététele.](publish-service-catalog-app.md)
 
 ## <a name="custom-role-definition-schema"></a>Egyéni szerepkör-definíciós séma
 
-A customRoleDefinition. JSON fájl legfelső szintű `roles` tulajdonsága a szerepkörök tömbje. Ezek a szerepkörök a felügyelt alkalmazás működéséhez szükséges engedélyek. Jelenleg csak a beépített szerepkörök engedélyezettek, de több szerepkör is megadható. A szerepköröket a szerepkör-definíció vagy a szerepkör neve is hivatkozhat.
+A fájl customRoleDefinition.jsegy olyan legfelső szintű `roles` tulajdonsággal rendelkezik, amely a szerepkörök tömbje. Ezek a szerepkörök a felügyelt alkalmazás működéséhez szükséges engedélyek. Jelenleg csak a beépített szerepkörök engedélyezettek, de több szerepkör is megadható. A szerepköröket a szerepkör-definíció vagy a szerepkör neve is hivatkozhat.
 
 Egyéni szerepkör-definíciók JSON-mintája:
 
@@ -49,7 +49,7 @@ Egyéni szerepkör-definíciók JSON-mintája:
 
 ## <a name="roles"></a>Szerepkörök
 
-A szerepkörök vagy a `$.properties.roleName` következőkből állnak: `id`
+A szerepkörök vagy a következőkből állnak `$.properties.roleName` `id` :
 
 ```json
 {
@@ -61,7 +61,7 @@ A szerepkörök vagy a `$.properties.roleName` következőkből állnak: `id`
 ```
 
 > [!NOTE]
-> Használhatja a vagy `id` `roleName` a mezőt is. Csak egy szükséges. Ezekkel a mezőkkel lehet megkeresni a szerepkör-definíciót, amelyet alkalmazni kell. Ha mindkettő meg van adva, `id` a program a mezőt fogja használni.
+> Használhatja a `id` vagy a mezőt is `roleName` . Csak egy szükséges. Ezekkel a mezőkkel lehet megkeresni a szerepkör-definíciót, amelyet alkalmazni kell. Ha mindkettő meg van adva, a `id` program a mezőt fogja használni.
 
 |Tulajdonság|Kötelező?|Leírás|
 |---------|---------|---------|

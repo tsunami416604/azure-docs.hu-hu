@@ -1,23 +1,25 @@
 ---
-title: Keresési alkalmazás létrehozása Azure Portal
+title: Bemutató alkalmazás létrehozása Azure Portal
 titleSuffix: Azure Cognitive Search
-description: Futtassa az alkalmazás létrehozása (előzetes verzió) varázslót, amellyel HTML-lapokat és parancsfájlokat hozhat létre egy operatív webalkalmazáshoz. Az oldalon található egy keresősáv, az eredmények, az oldalsáv és a typeahead támogatása.
+description: Futtassa a demó alkalmazás létrehozása (előzetes verzió) varázslót, amellyel HTML-lapokat és parancsfájlokat hozhat létre egy operatív webalkalmazáshoz. Az oldalon található egy keresősáv, az eredmények, az oldalsáv és a typeahead támogatása.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 06/07/2020
-ms.openlocfilehash: 6c956c937027b16d51141ded4de5ff9b019c37d4
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.date: 07/01/2020
+ms.openlocfilehash: 11dd12fce669d6b6a027eb182d5f9e6e493577ad
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488171"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955692"
 ---
-# <a name="quickstart-create-a-search-app-in-the-portal-azure-cognitive-search"></a>Gyors útmutató: keresési alkalmazás létrehozása a portálon (Azure Cognitive Search)
+# <a name="quickstart-create-a-demo-app-in-the-portal-azure-cognitive-search"></a>Rövid útmutató: bemutató alkalmazás létrehozása a portálon (Azure Cognitive Search)
 
-A Azure Portal alkalmazás **létrehozása** varázslóval létrehozhat egy letölthető, "localhost" stílusú webalkalmazást, amely böngészőben fut. A konfigurációtól függően a létrehozott alkalmazás az első használat során működik, és élő kapcsolattal csatlakozik egy távoli indexhez. Egy alapértelmezett alkalmazás tartalmazhatja a keresősáv, az eredmények, a Sidebar-szűrők és a typeahead támogatását.
+A Azure Portal a **bemutató alkalmazás létrehozása** varázslóval létrehozhat egy letölthető, "localhost" stílusú webes alkalmazást, amely böngészőben fut. A konfigurációtól függően a létrehozott alkalmazás első használatban működik, és egy élő írásvédett kapcsolattal rendelkezik egy távoli indexhez. Egy alapértelmezett alkalmazás tartalmazhatja a keresősáv, az eredmények, a Sidebar-szűrők és a typeahead támogatását.
+
+A bemutató alkalmazás segítségével megjelenítheti, hogyan fog működni az index egy ügyfélalkalmazás számára, de nem éles környezetekhez készült. Az ügyfélalkalmazások olyan biztonságot, hibakezelés és üzemeltetési logikát tartalmaznak, amelyet a generált HTML-oldal nem biztosít. Ha készen áll egy ügyfélalkalmazás létrehozására, tekintse [meg az első keresőalkalmazás létrehozása a .net SDK](tutorial-csharp-create-first-app.md) -val című témakört a következő lépésekhez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -45,7 +47,7 @@ Ha az index használatra kész, lépjen tovább a következő lépésre.
 
 1. Válassza a *Realestate-US-Sample-index* elemet a meglévő indexek listájából.
 
-1. A varázsló elindításához az index lap tetején válassza a **Search alkalmazás létrehozása (előzetes verzió)** lehetőséget.
+1. A varázsló elindításához az index lap tetején kattintson a **bemutató alkalmazás létrehozása (előzetes verzió)** elemre.
 
 1. A varázsló első lapján jelölje be a **több eredetű erőforrás-megosztás (CORS) engedélyezése** lehetőséget az CORS támogatásának hozzáadásához az index definíciójában. Ez a lépés nem kötelező, de a helyi webalkalmazás nem csatlakozik a távoli indexhez.
 
@@ -85,7 +87,7 @@ Az alábbi képernyőfelvételen a varázsló azon beállításai láthatók, am
 
 ## <a name="create-download-and-execute"></a>Létrehozás, letöltés és végrehajtás
 
-1. A HTML-fájl létrehozásához válassza a **keresési alkalmazás létrehozása** lehetőséget.
+1. A HTML-fájl létrehozásához válassza a **bemutató alkalmazás létrehozása** lehetőséget.
 
 1. Ha a rendszer kéri, válassza az **alkalmazás letöltése** lehetőséget a fájl letöltéséhez.
 
@@ -104,7 +106,7 @@ A bal oldali navigációs panelen a **minden erőforrás** vagy **erőforráscso
 
 Ha ingyenes szolgáltatást használ, ne feledje, hogy Ön legfeljebb három indexet, indexelő és adatforrást használhat. A portálon törölheti az egyes elemeket, hogy a korlát alatt maradjon. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Habár az alapértelmezett alkalmazás a kezdeti feltárás és a kis feladatok esetében hasznos, az API-k korán történő áttekintése segít megérteni a fogalmakat és a munkafolyamatot mélyebb szinten:
 

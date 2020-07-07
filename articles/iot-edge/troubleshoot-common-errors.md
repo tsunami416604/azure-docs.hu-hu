@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: ed93d24bc06a6622a8ace2b0ab6b44582da001c0
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82783746"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Az Azure IoT Edge gyakori problémái és azok megoldásai
@@ -75,7 +75,7 @@ Alapértelmezés szerint a IoT Edge elindítják a modulokat a saját elkülön�
 
 **1. lehetőség: DNS-kiszolgáló beállítása a tároló motorjának beállításaiban**
 
-Adja meg a környezethez tartozó DNS-kiszolgálót a tároló motorjának beállításaiban, amelyek a motor által indított összes tároló modulra érvényesek lesznek. Hozzon létre egy `daemon.json` nevű fájlt a használni kívánt DNS-kiszolgáló megadásával. Például:
+Adja meg a környezethez tartozó DNS-kiszolgálót a tároló motorjának beállításaiban, amelyek a motor által indított összes tároló modulra érvényesek lesznek. Hozzon létre egy nevű fájlt `daemon.json` a használni kívánt DNS-kiszolgáló megadásával. Például:
 
 ```json
 {
@@ -85,7 +85,7 @@ Adja meg a környezethez tartozó DNS-kiszolgálót a tároló motorjának beál
 
 A fenti példa egy nyilvánosan elérhető DNS-szolgáltatásra állítja be a DNS-kiszolgálót. Ha a peremhálózati eszköz nem fér hozzá ehhez az IP-címhez a környezetében, cserélje le az elérhető DNS-kiszolgáló címére.
 
-Helyezze `daemon.json` a megfelelő helyre a platformhoz:
+Helyezze a `daemon.json` megfelelő helyre a platformhoz:
 
 | Platform | Hely |
 | --------- | -------- |
@@ -149,7 +149,7 @@ A probléma kétféleképpen oldható fel:
 
 Ha a IoT Edge eszköz átjáróként működik, akkor meg kell keresnie és le kell állítania a 443, 5671 vagy 8883 portot használó folyamatot. A 443-es port hibája általában azt jelenti, hogy a másik folyamat egy webkiszolgáló.
 
-Ha nem szükséges a IoT Edge eszköz átjáróként való használata, akkor eltávolíthatja a port kötéseit a edgeHub modul létrehozási beállításaiból. A létrehozási beállításokat a Azure Portal vagy közvetlenül a Deployment. JSON fájlban módosíthatja.
+Ha nem szükséges a IoT Edge eszköz átjáróként való használata, akkor eltávolíthatja a port kötéseit a edgeHub modul létrehozási beállításaiból. A létrehozási beállításokat a Azure Portalban, vagy közvetlenül a fájlban lévő deployment.jslehet módosítani.
 
 Az Azure Portalon:
 
@@ -165,11 +165,11 @@ Az Azure Portalon:
 
 6. Mentse a módosításokat, és hozza létre a központi telepítést.
 
-Az Deployment. JSON fájlban:
+A fájl deployment.js:
 
-1. Nyissa meg a IoT Edge eszközön alkalmazott Deployment. JSON fájlt.
+1. Nyissa meg a deployment.jst a IoT Edge eszközön alkalmazott fájlon.
 
-2. Keresse meg `edgeHub` a beállításokat a edgeAgent kívánt tulajdonságai szakaszban:
+2. Keresse meg a `edgeHub` beállításokat a edgeAgent kívánt tulajdonságai szakaszban:
 
    ```json
    "edgeHub": {
@@ -183,7 +183,7 @@ Az Deployment. JSON fájlban:
    }
    ```
 
-3. Távolítsa `createOptions` el a sort, és a `image` sor végén található záró vesszőt a következő előtt:
+3. Távolítsa el a `createOptions` sort, és a sor végén található záró vesszőt a következő `image` előtt:
 
    ```json
    "edgeHub": {
@@ -222,7 +222,7 @@ Ha ezt a hibát látja, akkor a virtuális gép DNS-nevének konfigurálásával
    ![A virtuális gép DNS-nevének konfigurálása](./media/troubleshoot/configure-dns.png)
 
 3. Adjon meg egy értéket a **DNS-név címkéhez** , majd válassza a **Mentés**lehetőséget.
-4. Másolja az új DNS-nevet, amelynek formátuma ** \<DNSnamelabel\>.\< jelenlegi\>. cloudapp.Azure.com**.
+4. Másolja az új DNS-nevet, amelynek formátuma legyen ** \<DNSnamelabel\> . \<vmlocation\> cloudapp.azure.com**.
 5. A virtuális gépen belül a következő paranccsal állíthatja be a IoT Edge futtatókörnyezetet a DNS-névvel:
 
    * Linux rendszeren:
@@ -241,15 +241,15 @@ Ha ezt a hibát látja, akkor a virtuális gép DNS-nevének konfigurálásával
 
 **Megfigyelt viselkedés:**
 
-A Windows rendszeren való használatakor `Get-WinEvent` EventLogException kap.
+A Windows rendszeren való használatakor EventLogException kap `Get-WinEvent` .
 
 **Alapvető ok:**
 
-A `Get-WinEvent` PowerShell-parancs egy beállításjegyzékbeli bejegyzésre támaszkodik, amely a naplók egy adott `ProviderName`alapján való megtalálásához szükséges.
+A `Get-WinEvent` PowerShell-parancs egy beállításjegyzékbeli bejegyzésre támaszkodik, amely a naplók egy adott alapján való megtalálásához szükséges `ProviderName` .
 
 **Felbontás**
 
-Adja meg a IoT Edge démon beállításjegyzékbeli bejegyzését. Hozzon létre egy **iotedge. reg** fájlt a következő tartalommal, és importálja a Windows beállításjegyzékbe úgy, hogy duplán rákattint `reg import iotedge.reg` rá, vagy használja a parancsot:
+Adja meg a IoT Edge démon beállításjegyzékbeli bejegyzését. Hozzon létre egy **iotedge. reg** fájlt a következő tartalommal, és importálja a Windows beállításjegyzékbe úgy, hogy duplán rákattint rá, vagy használja a `reg import iotedge.reg` parancsot:
 
 ```reg
 Windows Registry Editor Version 5.00
@@ -276,7 +276,7 @@ Az IoT Edge hub esetében állítsa be a **OptimizeForPerformance** környezeti 
 
 Az Azure Portalon:
 
-A IoT hub válassza ki a IoT Edge eszközt, majd az eszköz adatai lapon válassza a **modulok** > **futtatókörnyezet-beállítások**megadása lehetőséget. Hozzon létre egy környezeti változót a *OptimizeForPerformance* nevű IoT Edge hub-modulhoz, amely *hamis*értékre van beállítva.
+A IoT hub válassza ki a IoT Edge eszközt, majd az eszköz adatai lapon válassza a **modulok**  >  **futtatókörnyezet-beállítások**megadása lehetőséget. Hozzon létre egy környezeti változót a *OptimizeForPerformance* nevű IoT Edge hub-modulhoz, amely *hamis*értékre van beállítva.
 
 ![A OptimizeForPerformance hamis értékre van állítva](./media/troubleshoot/optimizeforperformance-false.png)
 
@@ -300,7 +300,7 @@ Az üzembe helyezési jegyzékben:
 
 **Megfigyelt viselkedés:**
 
-Egy egyéni IoT Edge modul nem tud üzenetet küldeni az IoT Edge hubhoz 404 `Module not found` -as hibával. A IoT Edge démon a következő üzenetet nyomtatja ki a naplókba:
+Egy egyéni IoT Edge modul nem tud üzenetet küldeni az IoT Edge hubhoz 404-as `Module not found` hibával. A IoT Edge démon a következő üzenetet nyomtatja ki a naplókba:
 
 ```output
 Error: Time:Thu Jun  4 19:44:58 2018 File:/usr/sdk/src/c/provisioning_client/adapters/hsm_client_http_edge.c Func:on_edge_hsm_http_recv Line:364 executing HTTP request fails, status=404, response_buffer={"message":"Module not found"}u, 04 )
@@ -314,7 +314,7 @@ A IoT Edge démon a edgeHub csatlakozó összes modulhoz biztonsági okokból k�
 
 A verzió 1.0.7 kezdve az összes modul-folyamat jogosult a kapcsolódásra. További információ: a [1.0.7 kiadásának changelog](https://github.com/Azure/iotedge/blob/master/CHANGELOG.md#iotedged-1).
 
-Ha a 1.0.7-re való frissítés nem lehetséges, végezze el a következő lépéseket. Győződjön meg arról, hogy az egyéni IoT Edge modul ugyanazt a folyamat-azonosítót használja az üzenetek edgeHub való küldéséhez. Ügyeljen például arra, hogy `ENTRYPOINT` a Docker `CMD` -fájlban lévő parancs helyett a parancsot adja meg. A `CMD` parancs egy folyamat azonosítóját vezeti a modulhoz, valamint egy másik folyamat-azonosítót a fő programot futtató bash parancshoz `ENTRYPOINT` , de egyetlen folyamat-azonosítóhoz vezet.
+Ha a 1.0.7-re való frissítés nem lehetséges, végezze el a következő lépéseket. Győződjön meg arról, hogy az egyéni IoT Edge modul ugyanazt a folyamat-azonosítót használja az üzenetek edgeHub való küldéséhez. Ügyeljen például arra, hogy a `ENTRYPOINT` `CMD` Docker-fájlban lévő parancs helyett a parancsot adja meg. A `CMD` parancs egy folyamat azonosítóját vezeti a modulhoz, valamint egy másik folyamat-azonosítót a fő programot futtató bash parancshoz, de `ENTRYPOINT` egyetlen folyamat-azonosítóhoz vezet.
 
 ## <a name="iot-edge-module-deploys-successfully-then-disappears-from-device"></a>IoT Edge modul üzembe helyezése sikeresen megtörtént, majd eltűnik az eszközről
 

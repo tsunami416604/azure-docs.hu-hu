@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.custom: seodec18
 ms.openlocfilehash: 754d1b80236d138693987cccee7a218ccd96b16b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81383892"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-ga-environment-using-c"></a>Adatok lekérdezése a Azure Time Series Insights GA-környezetből C használatával #
@@ -23,7 +23,7 @@ ms.locfileid: "81383892"
 Ez a C# példa azt szemlélteti, hogyan használható a [GA lekérdezési API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query) -k Azure Time Series Insights GA-környezetek adatainak lekérdezéséhez.
 
 > [!TIP]
-> A GA C# kód mintáinak [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample)megtekintése a következő helyen:.
+> A GA C# kód mintáinak megtekintése a következő helyen: [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample) .
 
 ## <a name="summary"></a>Összefoglalás
 
@@ -64,9 +64,9 @@ Javasoljuk, hogy a Visual Studio legújabb verzióját használja:
 A mintakód két kötelező függőséggel rendelkezik:
 
 * [Microsoft. IdentityModel. clients. ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) -3.13.9 csomag.
-* [Newtonsoft. JSON](https://www.nuget.org/packages/Newtonsoft.Json) -9.0.1 csomag.
+* [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json) -9.0.1 csomag.
 
-Töltse le a csomagokat a Visual Studio 2019-ban a **Build** > **Build megoldás** kiválasztásával.
+Töltse le a csomagokat a Visual Studio 2019-ban a **Build**  >  **Build megoldás** kiválasztásával.
 
 Azt is megteheti, hogy hozzáadja a csomagokat a [NuGet 2.12 +](https://www.nuget.org/)használatával:
 

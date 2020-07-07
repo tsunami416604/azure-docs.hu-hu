@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2910933e2c57a8bc80a220726462b02915c4a8eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80246517"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Bejelentkezési tevékenységre vonatkozó jelentések az Azure Active Directory portálon
@@ -30,7 +30,7 @@ A Azure Active Directory (Azure AD) jelentéskészítési architektúrája a kö
 
 - **Tevékenység** 
     - **Bejelentkezések** – információk a felügyelt alkalmazások és a felhasználói bejelentkezési tevékenységek használatáról.
-    - **A naplók** - [naplózása](concept-audit-logs.md) rendszertevékenység-információkat biztosít a felhasználókról és a csoport kezeléséről, a felügyelt alkalmazásokról és a címtár-tevékenységekről.
+    - **Naplók**  -  A [naplók](concept-audit-logs.md) rendszertevékenységi információkat biztosítanak a felhasználókról és a csoport kezeléséről, a felügyelt alkalmazásokról és a címtárbeli tevékenységekről.
 - **Biztonság** 
     - **Kockázatos bejelentkezések** – a [kockázatos bejelentkezés](concept-risky-sign-ins.md) egy olyan bejelentkezési kísérlet, amely nem a felhasználói fiók legitim tulajdonosa.
     - **Kockázatnak** kitett felhasználók – a [kockázatos felhasználók](concept-user-at-risk.md) egy olyan felhasználói fiókra vonatkozó jelző, amely esetleg sérült.
@@ -146,7 +146,7 @@ A **hely** – a hálózatról kezdeményezett hely:
 ![Ügyfélalkalmazás-szűrő](./media/concept-sign-ins/client-app-filter.png)
 
 
-|Name (Név)|Modern hitelesítés|Leírás|
+|Name|Modern hitelesítés|Leírás|
 |---|:-:|---|
 |Hitelesített SMTP| |Az e-mail-üzenetek küldéséhez használja a POP és az IMAP-ügyfél.|
 |Automatikus észlelési| |Az Outlook és az EAS-ügyfelek használják a postaládák keresésére és az Exchange Online-ban való kapcsolódására.|

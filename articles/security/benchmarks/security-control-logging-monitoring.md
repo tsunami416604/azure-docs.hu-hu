@@ -8,10 +8,10 @@ ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: e58df0997c62a131a3c9987369f8e076a62d6654
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81408345"
 ---
 # <a name="security-control-logging-and-monitoring"></a>Biztonsági ellenőrzés: naplózás és figyelés
@@ -64,7 +64,7 @@ Az Azure-erőforrások diagnosztikai beállításainak engedélyezése a naplóz
 
 | Azure-azonosító | CIS-azonosítók | Felelősséget |
 |--|--|--|
-| 2.4 | 6,2, 6,3 | Ügyfél |
+| 2,4 | 6,2, 6,3 | Ügyfél |
 
 Ha a számítási erőforrás a Microsoft tulajdonában van, akkor a Microsoft feladata a figyelése. Ha a számítási erőforrás a szervezet tulajdonában van, akkor az Ön felelőssége, hogy figyelje. A Azure Security Center az operációs rendszer figyelésére használható. Az operációs rendszer Security Center által összegyűjtött adatok közé tartozik az operációs rendszer típusa és verziója, az operációs rendszer (Windows-eseménynaplók), a futó folyamatok, a gép neve, az IP-címek és a bejelentkezett felhasználó. A Log Analytics ügynök az összeomlási memóriaképek fájljait is gyűjti.
 

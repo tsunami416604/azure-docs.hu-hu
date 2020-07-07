@@ -1,16 +1,16 @@
 ---
 title: Az Azure Management áttekintése – Azure-irányítás
 description: Az Azure-alkalmazások és-erőforrások kezelésével kapcsolatos területek áttekintése, amelyek az Azure felügyeleti eszközein található tartalmakra mutató hivatkozásokat tartalmaznak.
-ms.date: 05/22/2020
+ms.date: 07/06/2020
 ms.topic: overview
-ms.openlocfilehash: e293ab743b7c3b49a13cab97200c136a9bd044f5
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 00e42f05e07a6aba2fcada973d57c11e0ab98ca7
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83828147"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85956339"
 ---
-# <a name="overview-of-management-services-in-azure"></a>Az Azure-beli felügyeleti szolgáltatások áttekintése
+# <a name="what-are-the-azure-management-areas"></a>Mik az Azure felügyeleti területei?
 
 Az Azure-beli irányítás az Azure-felügyelet egyik aspektusa. Ez a cikk az erőforrások Azure-beli üzembe helyezésére és karbantartására szolgáló különböző felügyeleti területeket ismerteti.
 
@@ -48,7 +48,14 @@ Kezelheti erőforrásai és adatai biztonságát. A biztonsági program magában
 
 A védelem arra utal, hogy az alkalmazások és az adatszolgáltatások elérhetők maradnak, még a szabályozáson kívüli kimaradások esetén is. Az Azure-ban erről a védelemről két szolgáltatás gondoskodik. Az [Azure Backup](../backup/backup-introduction-to-azure-backup.md) helyreállítható biztonsági másolatokat készít az adatokról, és azokat a felhőben vagy helyszíni gépeken tárolja. A [Azure site Recovery](../site-recovery/site-recovery-overview.md) az üzletmenet folytonosságát és az azonnali helyreállítást biztosítja a katasztrófák során.
 
-## <a name="migrate"></a>Migrate (Áttelepítés)
+## <a name="migrate"></a>Migrate
 
 A migrálás a helyszíni gépen futó számítási feladatok átvitelét jelenti az Azure-fehőbe.
 A [Azure Migrate](../migrate/migrate-overview.md) egy olyan szolgáltatás, amely segít a helyszíni virtuális gépek Azure-ba való áttelepítésének értékelésében. [A Azure site Recovery a](../site-recovery/migrate-tutorial-on-premises-azure.md) virtuális gépeket a helyszíni rendszerből vagy [Amazon Web Servicesból](../site-recovery/migrate-tutorial-aws-azure.md)telepíti át. Az [Azure Database Migration](../dms/dms-overview.md) segítséget nyújt az adatbázis-források Azure-beli adatplatformokra való áttelepítésében.
+
+## <a name="next-steps"></a>Következő lépések
+
+Az Azure irányításával kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
+
+- Lásd: az [Azure irányítási központja](./index.yml).
+- Tekintse [meg az Azure-beli Cloud bevezetési keretrendszer irányítását](/azure/cloud-adoption-framework/govern/)

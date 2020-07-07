@@ -272,13 +272,13 @@
     - name: Visszajelzések a Batchhez
       href: 'https://feedback.azure.com/forums/269742-batch'
     - name: Microsoft Q&A kérdések oldala a Batchhez
-      href: 'https://docs.microsoft.com/answers/topics/azure-batch.html'
+      href: /answers/topics/azure-batch.html
     - name: Batch Shipyard
       href: 'https://github.com/Azure/batch-shipyard'
     - name: Blog
       href: 'https://blogs.technet.microsoft.com/windowshpc/'
     - name: HPC az Azure-on
-      href: 'https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/'
+      href: /azure/architecture/topics/high-performance-computing/
     - name: Díjszabás
       href: 'https://azure.microsoft.com/pricing/details/batch/'
     - name: Díjkalkulátor

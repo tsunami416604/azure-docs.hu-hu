@@ -4,12 +4,12 @@ description: Kapcsolódjon az Azure Blockchain Service networkhez a MetaMask has
 ms.date: 09/12/2019
 ms.topic: quickstart
 ms.reviewer: janders
-ms.openlocfilehash: c0bad9efde44ce53f6b0656af3ac4af32ffe051d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: abb2479b81d4811b311d27fb0be9900f2827e939
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79205111"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920579"
 ---
 # <a name="quickstart-use-metamask-to-connect-and-deploy-a-smart-contract"></a>Gyors útmutató: az MetaMask használata intelligens szerződéshez való kapcsolódáshoz és üzembe helyezéshez
 
@@ -59,11 +59,11 @@ A Remix egy böngészőalapú szilárdtest-fejlesztési környezet. A MetaMask �
 1. A böngészőjében lépjen a `https://remix.ethereum.org` helyre.
 1. Válassza az **új fájl** elemet a **Kezdőlap** lap **fájl**területén.
 
-    Nevezze el az új `simple.sol`fájlt.
+    Nevezze el az új fájlt `simple.sol` .
 
     ![Fájl létrehozása](./media/connect-metamask/create-file.png)
 
-    Kattintson az **OK** gombra.
+    Válassza az **OK** lehetőséget.
 1. A Remix Editorban illessze be a következő **egyszerű intelligens szerződés** kódját.
 
     ```solidity
@@ -128,9 +128,9 @@ A Remix egy böngészőalapú szilárdtest-fejlesztési környezet. A MetaMask �
 
 A Remix hibakeresési panelje a blockchain tranzakcióinak részleteit jeleníti meg:
 
-    ![Debug history](./media/connect-metamask/debug.png)
+![Hibakeresési előzmények](./media/connect-metamask/debug.png)
 
-    You can see the **simple** contract creation, transaction for **simple.add**, and call to **simple.get**.
+Megtekintheti az **egyszerű** szerződések létrehozását, a tranzakciót **egyszerűre. adja hozzá**, és hívja a **Simple. Get**.
 
 A MetaMask lévő tranzakciók előzményeinek megtekintéséhez nyissa meg a MetaMask böngésző bővítményét, és tekintse meg az **Előzmények** szakaszt a központilag telepített szerződés és tranzakciók naplójához.
 

@@ -10,10 +10,10 @@ ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 754c106db42f3f0695ad023e736993bee82e9757
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82133923"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-the-azure-portal"></a>Azure IoT Edge modulok üzembe helyezése a Azure Portal
@@ -43,7 +43,7 @@ A Azure Portal tartalmaz egy varázslót, amely végigvezeti az üzembe helyezé
 1. A lap **IoT Edge modulok** szakaszában válassza a **Hozzáadás**lehetőséget.
 1. Tekintse meg a modulok típusát a legördülő menüből:
 
-   * **IoT Edge modul** – megadja a modul nevét és a tároló rendszerképének URI-ját. A minta SimulatedTemperatureSensor-modul képuri-ja például a következő `mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0`:. Ha a modul rendszerképét egy privát tároló beállításjegyzékében tárolja, adja hozzá a hitelesítő adatokat ezen a lapon a rendszerkép eléréséhez.
+   * **IoT Edge modul** – megadja a modul nevét és a tároló rendszerképének URI-ját. A minta SimulatedTemperatureSensor-modul képuri-ja például a következő: `mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0` . Ha a modul rendszerképét egy privát tároló beállításjegyzékében tárolja, adja hozzá a hitelesítő adatokat ezen a lapon a rendszerkép eléréséhez.
    * **Piactér modul** – az Azure piactéren üzemeltetett modulok. Egyes piactér-modulok további konfigurálást igényelnek, ezért tekintse át a modul részleteit az [Azure marketplace IoT Edge modulok](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules) listájában.
    * **Azure stream Analytics modul** – Azure stream Analytics munkaterhelés által generált modulok.
 
@@ -53,7 +53,7 @@ A Azure Portal tartalmaz egy varázslót, amely végigvezeti az üzembe helyezé
 
 ### <a name="specify-routes"></a>Útvonalak meghatározása
 
-Az **útvonalak** lapon megadhatja, hogyan adja át az üzeneteket a modulok és a IoT hub között. Az üzenetek név/érték párokkal vannak kiépítve. Alapértelmezés szerint az útvonalat a rendszer **route (útvonal** ) néven adja meg, és a **/messages/\* -ből $upstreamba**kerül, ami azt jelenti, hogy bármely modulból kimenetet küld az IoT hubhoz.  
+Az **útvonalak** lapon megadhatja, hogyan adja át az üzeneteket a modulok és a IoT hub között. Az üzenetek név/érték párokkal vannak kiépítve. Alapértelmezés szerint az útvonalat a rendszer **route (útvonal** ) néven adja meg, és a **/messages/-ből \* $upstreamba**kerül, ami azt jelenti, hogy bármely modulból kimenetet küld az IoT hubhoz.  
 
 Adja hozzá vagy frissítse az útvonalakat a [deklarált útvonalak](module-composition.md#declare-routes)információi közül, majd válassza a **Tovább: felülvizsgálat + létrehozás** lehetőséget a varázsló következő lépésének folytatásához.
 

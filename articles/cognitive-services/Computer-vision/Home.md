@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 05/27/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: cfd8dd7474cf7926ef2230e6be53a967a97645db
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 3e1c67ee91298b9e8d0c3c427988c9966771aeaa
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85554401"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920571"
 ---
 # <a name="what-is-computer-vision"></a>Mi a Computer Vision?
 
@@ -48,9 +48,9 @@ Elemezheti a képeket, hogy információkat szolgáltasson a vizualizáció szol
 |**[Miniatűr létrehozása](concept-generating-thumbnails.md)**|Elemzi a kép tartalmát, hogy megfelelő miniatűrt tudjon létrehozni a képhez. Computer Vision először egy kiváló minőségű miniatűrt hoz létre, majd a képen található objektumokat elemzi a *fontos terület*meghatározásához. Computer Vision ezután megvágja a képet, hogy megfeleljen a fontos terület követelményeinek. Igény szerint a létrehozott miniatűr az eredeti képtől eltérő oldalaránnyal is rendelkezhet.|
 |**[A fontos terület beszerzése](concept-generating-thumbnails.md#area-of-interest)**|Egy rendszerkép tartalmának elemzése a *fontos terület*koordinátáinak visszaadásához. A rendszerkép kivágása és a miniatűr létrehozása helyett a Computer Vision a régió határolókeret koordinátáit adja vissza, így a hívó alkalmazás igény szerint módosíthatja az eredeti rendszerképet.|
 
-## <a name="detect-text-from-images"></a>Képekből származó szöveg észlelése
+## <a name="optical-character-recognition-ocr"></a>Optikai karakterfelismerés (OCR)
 
-A Computer Vision [text észlelési](concept-recognizing-text.md) API-k API-val kinyerheti a nyomtatott és a kézírásos szöveget a képekből egy géppel olvasható karakteres adatfolyamba. Az olvasási API a legújabb modelleket használja, és számos felületen és háttéren, például nyugtán, plakáton, névjegykártyán, levélen és táblán is működik szöveggel. A két szöveges észlelési API támogatja a nyomtatott szövegek [több nyelven](./language-support.md)való kinyerését.
+A Computer Vision az optikai karakterfelismerési [(OCR)](concept-recognizing-text.md) képességeket is tartalmazza. Az új olvasási API használatával kinyerheti a nyomtatott és a kézírásos szöveget a képekből és a dokumentumokból. A legújabb modelleket használja, és számos felületen és háttérbeli szöveggel működik együtt. Ezek az inclue-visszaigazolások, plakátok, névjegykártyák, levelek és táblák. A két OCR API támogatja a nyomtatott szövegek [több nyelven](./language-support.md)való kinyerését.
 
 ## <a name="moderate-content-in-images"></a>Képek tartalmának moderálása
 

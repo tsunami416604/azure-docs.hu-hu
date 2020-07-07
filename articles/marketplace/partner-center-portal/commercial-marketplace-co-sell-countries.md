@@ -8,10 +8,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2019
 ms.openlocfilehash: 097fe2c394cb48a13fbc9cb253ef4df9c9959713
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80277056"
 ---
 # <a name="co-sell-country-and-region-codes"></a>Ország-és régiókódok közös értékesítése
@@ -129,7 +129,7 @@ Ha egy névjegy egynél több országot vagy régiót érint, adja meg a két be
 | Magyarország                             | HU        |
 | Izland                             | IS        |
 | India                               | IN        |
-| Indonézia                           | ID (Azonosító)        |
+| Indonézia                           | ID        |
 | Irán                                | IR        |
 | Irak                                | IQ        |
 | Írország                             | IE        |
@@ -262,11 +262,11 @@ Ha egy névjegy egynél több országot vagy régiót érint, adja meg a két be
 | Egyesült Királyság                      | GB        |
 | Egyesült Államok                       | USA        |
 | Uruguay                             | UY        |
-| Amerikai Egyesült Államok lakatlan külbirtokai               | UM        |
+| Az Amerikai Egyesült Államok lakatlan külbirtokai               | UM        |
 | Amerikai Virgin-szigetek                 | VI        |
 | Üzbegisztán                          | UZ        |
 | Vanuatu                             | JE        |
-| Vatikáni Városállam                        | VA        |
+| Vatikán                        | VA        |
 | Venezuela                           | VE        |
 | Vietnam                             | VN        |
 | Wallis és Futuna                   | WF        |

@@ -9,12 +9,12 @@ ms.reviewer: dseven
 ms.author: matjazl
 author: matjazl
 ms.date: 10/13/2019
-ms.openlocfilehash: d274160cc2ed1102dfc8fd11df358b34e40d9923
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 068af40ed42d0211eed6e1a315016bb8ecc40d05
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "84872556"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954213"
 ---
 # <a name="add-data-to-audit-logs-by-using-custom-http-headers"></a>Az egyéni HTTP-fejlécek használatával adhat hozzá adatnaplókat a naplókhoz
 
@@ -36,7 +36,7 @@ A különböző típusú információk rögzítéséhez egyéni fejléceket hasz
 > [!IMPORTANT]
 > Ügyeljen arra, hogy az egyéni fejlécekben elküldött adatok tárolása a Microsoft belső naplózási rendszerében 30 nappal az Azure-naplók figyelése után történik. Javasoljuk, hogy az egyéni fejlécekhez való hozzáadás előtt titkosítsa az adatokat. Az ügyfél-fejléceken keresztül nem adhat át PHI-információkat.
 
-A következő elnevezési konvenciót kell használnia a HTTP-fejlécekhez: X-MS-AZUREFHIR-AUDIT-AUDIT- \< name>.
+A következő elnevezési konvenciót kell használnia a HTTP-fejlécekhez: X-MS-AZUREFHIR-AUDIT-AUDIT- \<name> .
 
 Ezek a HTTP-fejlécek szerepelnek a naplóba felvett egyik tulajdonságlapon is. Például:
 
@@ -63,7 +63,7 @@ A naplóba való felvételkor az értékek vesszővel tagolt listával vannak ko
  
 Legfeljebb 10 egyedi fejlécet adhat hozzá (a különböző értékekkel rendelkező fejlécek ismétlődéseit csak eggyel számítjuk). Egy fejléc értékének maximális hossza 2048 karakter.
 
-Ha a tűzvédelmi C# ügyféloldali API-függvénytárat használja, a kód a következőhöz hasonló lesz:
+Ha a Firefly C# ügyféloldali API-függvénytárat használja, a kód a következőhöz hasonló:
 
 ```C#
 FhirClient client;

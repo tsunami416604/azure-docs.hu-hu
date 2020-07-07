@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 4b6331977cc2237801b84647e4edeb5d789cb9e8
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: c251b70d1988be82821f1e133151dae1ac6d1bc9
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85482462"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921296"
 ---
-# <a name="accessing-external-storage-in-synapse-sql"></a>Külső tároló elérése a szinapszis SQL-ben
+# <a name="accessing-external-storage-in-synapse-sql-on-demand"></a>Külső tároló elérése a szinapszis SQL-ben (igény szerint)
 
-Ez a dokumentum azt ismerteti, hogyan olvasható be a felhasználó az Azure Storage-ban tárolt fájlokból származó adatokból a szinapszis SQL-ben (igény szerinti és készlet). A felhasználók a következő beállításokkal férhetnek hozzá a tárolóhoz:
+Ez a dokumentum azt ismerteti, hogyan olvasható be a felhasználó az Azure Storage-ban tárolt fájlokból származó adatokból a szinapszis SQL-ben (igény szerint). A felhasználók a következő beállításokkal férhetnek hozzá a tárolóhoz:
 
 - [OpenRowset](develop-openrowset.md) függvény, amely alkalmi lekérdezéseket tesz lehetővé az Azure Storage-ban található fájlokon.
 - Külső [tábla](develop-tables-external-tables.md) , amely a külső fájlok készletére épülő, előre definiált adatstruktúra.
@@ -65,9 +65,9 @@ A OPENROWSET lehetővé teszi a felhasználó számára, hogy lekérdezze a kül
 
 ```sql
 SELECT * FROM
- OPENROWSET(BULK 'file/path/*.csv',
+ OPENROWSET(BULK 'file/path/*.parquet',
  DATASOURCE = MyAzureInvoices,
- FORMAT= 'csv') as rows
+ FORMAT= 'parquet') as rows
 ```
 
 Az adatbázis-VEZÉRLÉSi engedéllyel rendelkező felhasználónak létre kell hoznia egy adatbázis-HATÓKÖRű HITELESÍTő adatot, amelyet a rendszer a tároló és a külső ADATFORRÁS eléréséhez fog használni, amely megadja az adatforrás és a hitelesítő adatok URL-címét:
@@ -142,8 +142,8 @@ FROM dbo.DimProductsExternal
 ```
 
 A hívónak az alábbi engedélyekkel kell rendelkeznie az információk olvasásához:
-- Engedély kiválasztása külső táblában
-- Az adatbázis HATÓKÖRén belüli HITELESÍTő adatokra HIVATKOZik, ha az adatforrás HITELESÍTő adatokkal rendelkezik
+- `SELECT`engedély a külső táblán
+- `REFERENCES DATABASE SCOPED CREDENTIAL`engedély `DATA SOURCE` , ha rendelkezik`CREDENTIAL`
 
 ## <a name="permissions"></a>Engedélyek
 
@@ -151,13 +151,13 @@ A következő táblázat a fent felsorolt műveletekhez szükséges engedélyeke
 
 | Lekérdezés | Szükséges engedélyek|
 | --- | --- |
-| OPENROWSET (BULK) adatforrás nélkül | A TÖMEGES rendszergazdai SQL-bejelentkezés FELÜGYELETéhez HIVATKOZÁSokkal rendelkező HITELESÍTő adatok szükségesek:: \<URL> sas által védett tároló esetén |
-| OPENROWSET (TÖMEGES) adatforrással hitelesítő adatok nélkül | TÖMEGES RENDSZERGAZDA FELÜGYELETE |
-| OPENROWSET (TÖMEGES) adatforrással, hitelesítő adatokkal | A TÖMEGES RENDSZERGAZDAI HIVATKOZÁS ADATBÁZIS-HATÓKÖRŰ HITELESÍTŐ ADATAINAK KEZELÉSE |
-| KÜLSŐ ADATFORRÁS LÉTREHOZÁSA | AZ ADATBÁZIS-HATÓKÖRÖN BELÜLI HITELESÍTŐ ADATOKRA HIVATKOZÓ KÜLSŐ ADATFORRÁS MÓDOSÍTÁSA |
-| KÜLSŐ TÁBLA LÉTREHOZÁSA | CREATE TABLE, BÁRMILYEN SÉMA MÓDOSÍTÁSA, BÁRMILYEN KÜLSŐ FÁJLFORMÁTUM MÓDOSÍTÁSA, BÁRMILYEN KÜLSŐ ADATFORRÁS MÓDOSÍTÁSA |
-| KIVÁLASZTÁS KÜLSŐ TÁBLÁBÓL | TÁBLA KIVÁLASZTÁSA |
-| CETAS | Táblázat létrehozásához – CREATE TABLE bármely séma módosítása bármilyen adatforrásra + bármilyen külső FÁJLFORMÁTUMra módosítható. Adatok beolvasása: rendszergazdai TÖMEGES műveletek + REFERENCIÁk a hitelesítő adatokhoz, vagy a lekérdezés + R/W engedéllyel rendelkező tábla/nézet/függvény tábla kijelölése a tároláshoz |
+| OPENROWSET (BULK) adatforrás nélkül | `ADMINISTER BULK ADMIN`, `ADMINISTER DATABASE BULK ADMIN` vagy az SQL-bejelentkezéshez hivatkozásokkal rendelkező hitelesítő adatok szükségesek:: \<URL> sas által védett tároló esetén |
+| OPENROWSET (TÖMEGES) adatforrással hitelesítő adatok nélkül | `ADMINISTER BULK ADMIN`vagy `ADMINISTER DATABASE BULK ADMIN` |
+| OPENROWSET (TÖMEGES) adatforrással, hitelesítő adatokkal | `ADMINISTER BULK ADMIN`, `ADMINISTER DATABASE BULK ADMIN` , vagy`REFERENCES DATABASE SCOPED CREDENTIAL` |
+| KÜLSŐ ADATFORRÁS LÉTREHOZÁSA | `ALTER ANY EXTERNAL DATA SOURCE` és `REFERENCES DATABASE SCOPED CREDENTIAL` |
+| KÜLSŐ TÁBLA LÉTREHOZÁSA | `CREATE TABLE`, `ALTER ANY SCHEMA` , `ALTER ANY EXTERNAL FILE FORMAT` és`ALTER ANY EXTERNAL DATA SOURCE` |
+| KIVÁLASZTÁS KÜLSŐ TÁBLÁBÓL | `SELECT TABLE` és `REFERENCES DATABASE SCOPED CREDENTIAL` |
+| CETAS | Tábla létrehozása:, `CREATE TABLE` , `ALTER ANY SCHEMA` `ALTER ANY DATA SOURCE` , és `ALTER ANY EXTERNAL FILE FORMAT` . Az adat olvasása: `ADMIN BULK OPERATIONS` vagy a `REFERENCES CREDENTIAL` `SELECT TABLE` lekérdezés + R/W engedélyének minden táblája/nézete/funkciója a Storage-ban |
 
 ## <a name="next-steps"></a>További lépések
 
