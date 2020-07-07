@@ -6,7 +6,6 @@ ms.date: 12/04/2018
 ms.custom: tracking-python
 ms.openlocfilehash: 809cb006e1ea40e31d079b40febee6a09714731f
 ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/01/2020
 ms.locfileid: "85832100"
@@ -103,7 +102,7 @@ A projekt lapon a **megosztás** menüt is használhatja egy hivatkozás beszerz
 
 ![Projekt megosztási parancsa](media/quickstarts/share-project-command.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Jupyter-jegyzetfüzet létrehozása és futtatása lineáris regresszióhoz](tutorial-create-run-jupyter-notebook.md)

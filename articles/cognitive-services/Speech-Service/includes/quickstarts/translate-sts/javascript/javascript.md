@@ -4,12 +4,11 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: 88d03e5b8090687930f729e3d55be1ece392ec30
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: HT
+ms.openlocfilehash: abd34ddf39bd8e64740d3edd4a2bf4f44851c07e
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85839055"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86035506"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -41,7 +40,7 @@ Hozzon létre egy új fájlt a mappában `index.html` néven, és nyissa meg a f
 Ha egy webkiszolgálón szeretné futtatni a weblapot, opcionálisan megadhat egy jogkivonatforrást a bemutató alkalmazáshoz.
 Így az előfizetői azonosítója soha nem fog kikerülni a kiszolgálóról, közben viszont a felhasználóknak úgy teheti lehetővé a beszédfelismerési képességek használatát, hogy ők maguk semmilyen engedélyezési kódot nem adnak meg.
 
-Hozzon létre egy új fájlt `token.php` néven. Ebben a példában feltételezzük, hogy a webkiszolgáló támogatja a PHP parancsnyelv használatát. Írja be a következő kódot:
+Hozzon létre egy új fájlt `token.php` néven. Ebben a példában feltételezzük, hogy a webkiszolgáló támogatja a PHP programozási nyelvet a curl enabled használatával. Írja be a következő kódot:
 
 ```php
 <?php
@@ -67,12 +66,12 @@ echo curl_exec($ch);
 
 ## <a name="build-and-run-the-sample-locally"></a>A minta helyi buildelése és futtatása
 
-Az alkalmazás elindításához kattintson duplán az index.html fájlra, vagy nyissa meg az index.html fájlt kedvenc webböngészőjében. Egy egyszerű grafikus felhasználói felületet fog bevezetni, amely lehetővé teszi az előfizetési kulcs és [régió](../../../../regions.md) megadását és a bemeneti szöveg szintézisének elindítását.
+Az alkalmazás elindításához kattintson duplán az index.html fájlra, vagy nyissa meg az index.html fájlt kedvenc webböngészőjében. Egy egyszerű grafikus felhasználói felületet fog bevezetni, amely lehetővé teszi az előfizetési kulcs és a [régió](../../../../regions.md) megadását, valamint a bemeneti beszéd szövegének átírását.
 
 ## <a name="build-and-run-the-sample-via-a-web-server"></a>A minta buildelése és futtatása webkiszolgáló használatával
 
-Az alkalmazás elindításához nyissa meg a kedvenc webböngészőjét, és mutasson arra a nyilvános URL-címre, amelyen a mappát üzemelteti, adja meg a [régióját](../../../../regions.md), és aktiválja a bemeneti szöveg szintézisét. Ha konfigurálva van, az beszerez egy jogkivonatot a jogkivonatforrásból.
+Az alkalmazás elindításához nyissa meg a kedvenc webböngészőjét, és mutasson arra a nyilvános URL-címre, amelyen a mappát üzemelteti, adja meg a [régióját](../../../../regions.md), és aktiválja a szövegbeviteli beszéd szövegének átírását. Ha konfigurálva van, az beszerez egy jogkivonatot a jogkivonatforrásból.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [footer](./footer.md)]
