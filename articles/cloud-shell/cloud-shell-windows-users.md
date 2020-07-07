@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/03/2018
 ms.author: damaerte
 ms.openlocfilehash: 4fc4f6523eb19294cabdf6b5b910dd346a877502
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67204139"
 ---
 # <a name="powershell-in-azure-cloud-shell-for-windows-users"></a>PowerShell a Cloud Shellben Windows-felhasználóknak
@@ -32,11 +32,11 @@ Ennek a változásnak az a része, hogy az Cloud Shell PowerShell-felülete ném
 A fájlrendszer megkülönbözteti a kis-és nagybetűket a Windowsban, míg a Linux rendszeren a kis-és nagybetűk megkülönböztetésére is.
 Korábban `file.txt` és `FILE.txt` ugyanezt a fájlt tekintették, de mostantól különböző fájloknak számítanak.
 A fájlrendszerben a megfelelő burkolatot kell használni `tab-completing` .
-A PowerShell-specifikus élmények `tab-completing` , például a parancsmagok neve, paramétere és értéke nem megkülönbözteti a kis-és nagybetűket.
+A PowerShell-specifikus élmények, például a `tab-completing` parancsmagok neve, paramétere és értéke nem megkülönbözteti a kis-és nagybetűket.
 
 ## <a name="windows-powershell-aliases-vs-linux-utilities"></a>Windows PowerShell-aliasok vs Linux-segédprogramok
 
-Egyes meglévő PowerShell-aliasok nevei megegyeznek a beépített Linux- `cat`parancsokkal, például`ls` `sort` `sleep`:,, stb. A PowerShell Core 6-ban a beépített Linux-parancsokkal ütköző aliasok el lettek távolítva.
+Egyes meglévő PowerShell-aliasok nevei megegyeznek a beépített Linux-parancsokkal, például:,, `cat` `ls` `sort` `sleep` stb. A PowerShell Core 6-ban a beépített Linux-parancsokkal ütköző aliasok el lettek távolítva.
 Alább láthatók azok a közös aliasok, amelyek el lettek távolítva, valamint egyenértékű parancsaik:  
 
 |Alias eltávolítva   |Egyenértékű parancs   |
@@ -59,13 +59,13 @@ Most a felhasználó $HOME könyvtára is megmarad a munkamenetek között.
 ## <a name="powershell-profile"></a>PowerShell-profil
 
 Alapértelmezés szerint a rendszer nem hozza létre a felhasználó PowerShell-profilját.
-A profil létrehozásához hozzon létre `PowerShell` egy könyvtárat `$HOME/.config`a alatt.
+A profil létrehozásához hozzon létre egy `PowerShell` könyvtárat a alatt `$HOME/.config` .
 
 ```azurepowershell-interactive
 mkdir (Split-Path $profile.CurrentUserAllHosts)
 ```
 
-`$HOME/.config/PowerShell`A alkalmazásban a profil fájljait ( `profile.ps1` és/vagy `Microsoft.PowerShell_profile.ps1`) hozhatja létre.
+A alkalmazásban `$HOME/.config/PowerShell` a profil fájljait ( `profile.ps1` és/vagy) hozhatja létre `Microsoft.PowerShell_profile.ps1` .
 
 ## <a name="whats-new-in-powershell-core-6"></a>A PowerShell Core 6 újdonságai
 

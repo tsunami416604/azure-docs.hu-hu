@@ -14,10 +14,10 @@ ms.date: 09/10/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 33d52f871de75a7f7d34016b040e44d6f1623fd8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "70101263"
 ---
 # <a name="disaster-recovery-principles"></a>Vész-helyreállítási alapelvek
@@ -64,7 +64,7 @@ A következő lépés a második SAP HANA példány telepítése a DR Azure-rég
 
 - Hajtsa végre a [biztonsági mentés és visszaállítás](hana-backup-restore.md)című témakörben leírt tárolási pillanatkép-előkészítés 2. lépését.
 - Hozzon létre egy nyilvános kulcsot a HANA nagyméretű példányok DR egységéhez, ha még nem tette meg. Tekintse meg a [biztonsági mentés és visszaállítás](hana-backup-restore.md)című témakör a tárolási pillanatkép-előkészítés 3. lépését.
-- Tartsa karban a *HANABackupCustomerDetails. txt fájlt* az új HANA-példánnyal, és ellenőrizze, hogy megfelelően működik-e a kapcsolat a tárolóval.  
+- Tartsa karban a *HANABackupCustomerDetails.txt* az új HANA-példánnyal, és ellenőrizze, hogy megfelelően működik-e a kapcsolat a tárolóval.  
 - Állítsa le az újonnan telepített SAP HANA példányt a HANA nagyméretű példány-egységen a DR Azure-régióban.
 - Válassza le ezeket a PRD-köteteket, és lépjen kapcsolatba SAP HANA az Azure Service Management szolgáltatásban. A kötetek nem maradhatnak csatlakoztatva az egységhez, mert nem tudnak hozzáférni a tárolási replikálási célként való működéshez.  
 

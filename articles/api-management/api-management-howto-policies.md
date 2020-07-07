@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: apimpm
 ms.openlocfilehash: c10939b50a66cd608d27a71f02d959fbc2380f59
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "70072306"
 ---
 # <a name="policies-in-azure-api-management"></a>Az Azure API Management szabályzatai
@@ -38,7 +38,7 @@ Az engedélyezett utasításokra kattintva a rendszer hozzáadja a megfelelő XM
 > 
 > 
 
-A konfiguráció a,, és `inbound` `on-error`rendszerre `outbound`van osztva `backend`. A megadott házirend-utasítások sorozata egy kérelem és egy válasz megadásával hajtható végre.
+A konfiguráció a,, és rendszerre van osztva `inbound` `backend` `outbound` `on-error` . A megadott házirend-utasítások sorozata egy kérelem és egy válasz megadásával hajtható végre.
 
 ```xml
 <policies>
@@ -58,7 +58,7 @@ A konfiguráció a,, és `inbound` `on-error`rendszerre `outbound`van osztva `ba
 </policies> 
 ```
 
-Ha hiba történik a kérelem feldolgozása során `inbound`, a, `backend`a, a és a `outbound` szakaszok hátralévő lépései kimaradnak, és a végrehajtás a `on-error` szakaszban szereplő utasításokra ugrik. Ha házirend-utasításokat helyez a `on-error` szakaszba, áttekintheti a hibát a `context.LastError` tulajdonság használatával, megvizsgálhatja és testreszabhatja a `set-body` hibát a szabályzat használatával, és konfigurálhatja, hogy mi történjen, ha hiba történik. A beépített lépések és a házirend-utasítások feldolgozása során esetlegesen előforduló hibák esetén hibakódok találhatók. További információ: hibakezelés [API Management házirendekben](/azure/api-management/api-management-error-handling-policies).
+Ha hiba történik a kérelem feldolgozása során, a, a, a és a szakaszok hátralévő `inbound` lépései `backend` `outbound` kimaradnak, és a végrehajtás a szakaszban szereplő utasításokra ugrik `on-error` . Ha házirend-utasításokat helyez a `on-error` szakaszba, áttekintheti a hibát a `context.LastError` tulajdonság használatával, megvizsgálhatja és testreszabhatja a hibát a szabályzat használatával, `set-body` és konfigurálhatja, hogy mi történjen, ha hiba történik. A beépített lépések és a házirend-utasítások feldolgozása során esetlegesen előforduló hibák esetén hibakódok találhatók. További információ: hibakezelés [API Management házirendekben](/azure/api-management/api-management-error-handling-policies).
 
 ## <a name="how-to-configure-policies"></a><a name="scopes"> </a>Szabályzatok konfigurálása
 
@@ -88,7 +88,7 @@ Ha globális szintű szabályzattal és egy API-ra konfigurált szabályzattal r
 </policies>
 ```
 
-A fenti példában szereplő házirend-definícióban `cross-domain` az utasítás végrehajtása előtt végre kell hajtania az utasítást, amelyet a szabályzat követ `find-and-replace` . 
+A fenti példában szereplő házirend-definícióban az `cross-domain` utasítás végrehajtása előtt végre kell hajtania az utasítást, amelyet a szabályzat követ `find-and-replace` . 
 
 ### <a name="restrict-incoming-requests"></a>Bejövő kérelmek korlátozása
 
@@ -96,7 +96,7 @@ Ha új utasítást szeretne hozzáadni a bejövő kérelmek megadott IP-címekre
 
 ![Korlátozási szabályzatok][policies-restrict]
 
-Ez egy XML-kódrészletet ad hozzá `inbound` az elemhez, amely útmutatást nyújt az utasítás konfigurálásához.
+Ez egy XML-kódrészletet ad hozzá az `inbound` elemhez, amely útmutatást nyújt az utasítás konfigurálásához.
 
 ```xml
 <ip-filter action="allow | forbid">

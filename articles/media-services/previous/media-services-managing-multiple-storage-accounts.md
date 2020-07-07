@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.openlocfilehash: 252d5e551dad56108ad952eb0c7c3b39df0585d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "69901778"
 ---
 # <a name="managing-media-services-assets-across-multiple-storage-accounts"></a>Media Services-eszközök kezelése több Storage-fiókon keresztül  
@@ -40,7 +40,7 @@ Ha több Storage-fiókot csatol a Media Services-fiókjához, a következő szem
 * Az elsődleges Storage-fiók az Media Services fiók létrehozási ideje alatt jelzett. Az alapértelmezett Storage-fiók jelenleg nem módosítható. 
 * Ha egy ritka elérésű Storage-fiókot szeretne hozzáadni az AMS-fiókhoz, a Storage-fióknak blob típusúnak kell lennie, és nem elsődleges értékre kell állítania.
 
-Egyéb szempontok:
+Egyéb megfontolások:
 
 A Media Services a **IAssetFile.name** tulajdonság értékét használja a streaming tartalom URL-címeinek létrehozásakor (például http://{WAMSAccount}. Origin. Mediaservices. Windows. net/{GUID}/{IAssetFile. name}/streamingParameters.) Emiatt a százalékos kódolás nem engedélyezett. A Name (név) tulajdonság értéke nem lehet a következő [százalék-kódolásra fenntartott karakterek](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)egyike:! * ' ();: @ &= + $,/?% # [] ". Emellett csak egy "." lehet. a fájlnévkiterjesztés.
 

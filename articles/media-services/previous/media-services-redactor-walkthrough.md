@@ -16,10 +16,10 @@ ms.date: 03/20/2019
 ms.author: ril
 ms.reviewer: juliako
 ms.openlocfilehash: a8db8de6ef062dcf757f3d264379677d6550ea3a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "69997681"
 ---
 # <a name="redact-faces-with-azure-media-analytics-walkthrough"></a>Arcok kivonása Azure Media Analytics bemutatóval
@@ -67,11 +67,11 @@ A kimenet tartalmazni fog egy széljegyzeteket tartalmazó JSON-fájlt, amely a 
 
     ![Arcszerkesztés](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough005.png)
 
-2. Választható Töltsön fel egy "Dance_idlist. txt" fájlt, amely tartalmazza a kitakarni kívánt azonosítók sortöréssel tagolt listáját. 
+2. Választható Töltsön fel egy "Dance_idlist.txt" fájlt, amely tartalmazza a kitakarni kívánt azonosítók sortöréssel tagolt listáját. 
 
     ![Arcszerkesztés](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough006.png)
 
-3. Választható Végezze el a jegyzetek. JSON fájl szerkesztését, például a határolókeret szegélyének növelését. 
+3. Választható Szerkessze a annotations.jsa fájlban, például növelje a határolókeret határait. 
 4. Kattintson a jobb gombbal a kimeneti eszközre az első lépésből, válassza ki a redactor, és futtassa a **kivonási** módot. 
 
     ![Arcszerkesztés](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough007.png)
@@ -95,11 +95,11 @@ Ha a fejlesztők a JSON-megjegyzési adatokat szeretnék elemezni, tekintse meg 
     ![Arcszerkesztés](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough009.png)
 
 2.  Az FFMPEG-t [innen](https://ffmpeg.org/download.html)töltheti le. A projekt eredetileg a be1d324 (2016-10-04) verzióval lett kifejlesztve statikus összekapcsolással. 
-3.  Másolja az FFmpeg. exe és a ffprobe. exe fájlt ugyanarra a kimeneti mappára, mint a AzureMediaRedactor. exe fájlt. 
+3.  Másolja ffmpeg.exe és ffprobe.exe ugyanarra a kimeneti mappára, mint AzureMediaRedactor.exe. 
 
     ![Arcszerkesztés](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough010.png)
 
-4. Futtassa a AzureMediaRedactor. exe fájlt. 
+4. AzureMediaRedactor.exe futtatása. 
 
 ### <a name="use-the-tool"></a>Az eszköz használata
 
@@ -113,10 +113,10 @@ Ha a fejlesztők a JSON-megjegyzési adatokat szeretnék elemezni, tekintse meg 
     
     ![Arcszerkesztés](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough012.png)
 
-5.  Az alsó szövegmező a Face ID-val fog frissülni. Hozzon létre egy "idlist. txt" nevű fájlt a következő azonosítókkal egy sortöréssel tagolt listaként. 
+5.  Az alsó szövegmező a Face ID-val fog frissülni. Hozzon létre egy "idlist.txt" nevű fájlt ezekkel az azonosítókkal egy sortöréssel tagolt listaként. 
 
     >[!NOTE]
-    > A idlist. txt fájlt ANSI-ben kell menteni. A Jegyzettömb használatával mentheti az ANSI-t.
+    > A idlist.txtt ANSI-ben kell menteni. A Jegyzettömb használatával mentheti az ANSI-t.
     
 6.  Töltse fel ezt a fájlt a kimeneti eszközre az 1. lépésben. Töltse fel az eredeti videót az eszközre, és állítsa be elsődleges eszközként. 
 7.  A kivonási feladatoknak az objektumon való futtatása "kivonás" módban a végső kitakart videó lekéréséhez. 

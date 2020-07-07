@@ -16,10 +16,10 @@ ms.date: 04/02/2019
 ms.author: rimayber
 ms.reviewer: dgoddard, stegag, steveesp, minale, btalb, prachank
 ms.openlocfilehash: bb23484903ac3ce129c6e7a7a27e0765c227fb1d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68297786"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>TCP/IP teljesítmény-hangolás Azure-beli virtuális gépekhez
@@ -213,17 +213,17 @@ A `Get-NetTCPSetting` PowerShell-parancs használatával megtekintheti az egyes 
 Get-NetTCPSetting
 ```
 
-A kezdeti TCP-ablakméret és a TCP-méretezési tényező a Windowsban a `Set-NetTCPSetting` PowerShell-parancs használatával állítható be. További információ: [set-NetTCPSetting](https://docs.microsoft.com/powershell/module/nettcpip/set-nettcpsetting?view=win10-ps).
+A kezdeti TCP-ablakméret és a TCP-méretezési tényező a Windowsban a PowerShell-parancs használatával állítható be `Set-NetTCPSetting` . További információ: [set-NetTCPSetting](https://docs.microsoft.com/powershell/module/nettcpip/set-nettcpsetting?view=win10-ps).
 
 ```powershell
 Set-NetTCPSetting
 ```
 
-Ezek a következő érvényes TCP-beállítások `AutoTuningLevel`:
+Ezek a következő érvényes TCP-beállítások `AutoTuningLevel` :
 
 | | | | |
 |-|-|-|-|
-|**AutoTuningLevel**|**Skálázási tényező**|**Skálázási szorzó**|**A maximális<br/>ablakméret kiszámításához használandó képlet**|
+|**AutoTuningLevel**|**Skálázási tényező**|**Skálázási szorzó**|**A <br/> Maximális ablakméret kiszámításához használandó képlet**|
 |Letiltva|None|None|Ablak mérete|
 |Korlátozott hozzáférésű|4|2 ^ 4|Ablak mérete * (2 ^ 4)|
 |Szigorúan korlátozott|2|2 ^ 2|Ablak mérete * (2 ^ 2)|
@@ -359,7 +359,7 @@ A NTttcp egy olyan eszköz, amellyel tesztelheti a Linux vagy Windows rendszerű
 
 A iPerf nevű eszköz használatával tesztelheti a különböző virtuálisgép-típusok teljesítményét, a gyorsított hálózatkezelést stb. a iPerf Linux és Windows rendszereken is elérhető. a iPerf a TCP-t vagy az UDP-t használhatja a teljes hálózati teljesítmény teszteléséhez. a iPerf TCP-átviteli sebességének tesztelését a cikkben tárgyalt tényezők befolyásolják (például késés és RTT). Így az UDP jobb eredményeket eredményezhet, ha csak a maximális átviteli sebességet szeretné tesztelni.
 
-További információval a következő cikkek szolgálnak:
+További információért lásd a következő cikkeket:
 
 - [Expressroute hálózati teljesítményének hibaelhárítása](https://docs.microsoft.com/azure/expressroute/expressroute-troubleshooting-network-performance)
 

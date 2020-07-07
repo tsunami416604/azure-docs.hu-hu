@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
 ms.openlocfilehash: 18e93ce18ed746612996399dc1aeb258abd26165
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "69637211"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-java"></a>A Twilio használata a hang-és SMS-funkciókhoz Java-ban
@@ -28,7 +28,7 @@ A Twilio egy telefonos webszolgáltatási API, amely lehetővé teszi a meglév�
 A **Twilio Voice** lehetővé teszi az alkalmazások számára telefonhívások készítését és fogadását. A **TWILIO SMS** lehetővé teszi az alkalmazások számára az SMS-üzenetek készítését és fogadását. A **Twilio-ügyfél** lehetővé teszi, hogy alkalmazásai lehetővé tegyék a hangalapú kommunikációt a meglévő internetkapcsolatok, például a mobil kapcsolatok használatával.
 
 ## <a name="twilio-pricing-and-special-offers"></a><a id="Pricing"></a>A Twilio díjszabása és különleges ajánlataink
-A Twilio díjszabásával kapcsolatos információk a [Twilio díjszabásában][twilio_pricing]érhetők el. Az Azure-ügyfelek [különleges ajánlatot][special_offer]kapnak: 1000-es vagy 1000-os ingyenes kredit Az ajánlatra való feliratkozáshoz vagy további információért látogasson el [https://ahoy.twilio.com/azure][special_offer]ide.
+A Twilio díjszabásával kapcsolatos információk a [Twilio díjszabásában][twilio_pricing]érhetők el. Az Azure-ügyfelek [különleges ajánlatot][special_offer]kapnak: 1000-es vagy 1000-os ingyenes kredit Az ajánlatra való feliratkozáshoz vagy további információért látogasson el ide [https://ahoy.twilio.com/azure][special_offer] .
 
 ## <a name="concepts"></a><a id="Concepts"></a>Alapelvek
 A Twilio API egy REST-alapú API, amely hang-és SMS-funkciókat biztosít az alkalmazásokhoz. Az ügyféloldali kódtárak több nyelven is elérhetők; a listákat lásd: [TWILIO API-kódtárak][twilio_libraries].
@@ -36,21 +36,21 @@ A Twilio API egy REST-alapú API, amely hang-és SMS-funkciókat biztosít az al
 A Twilio API legfontosabb szempontjai a Twilio-műveletek és a Twilio Markup Language (TwiML).
 
 ### <a name="twilio-verbs"></a><a id="Verbs"></a>Twilio-műveletek
-Az API a Twilio-műveletek használatát teszi lehetővé; például a ** &lt;Say&gt; ** művelet arra utasítja a Twilio, hogy hallhatóan kézbesítse az üzenetet egy híváson.
+Az API a Twilio-műveletek használatát teszi lehetővé; például a ** &lt; Say &gt; ** művelet arra utasítja a Twilio, hogy hallhatóan kézbesítse az üzenetet egy híváson.
 
 A következő lista az Twilio-műveletek listáját tartalmazza.
 
-* Dial: a hívó csatlakoztatása egy másik telefonhoz. ** &lt;&gt;**
-* Összegyűjtése: a telefon billentyűzetén megadott numerikus számjegyeket gyűjti. ** &lt;&gt;**
-* Vonalbontás: egy hívást ér véget. ** &lt;&gt;**
-* Lejátszás: hangfájl lejátszása. ** &lt;&gt;**
-* Üzenetsor: adja hozzá a-t a hívók várólistához. ** &lt;&gt;**
-* Szüneteltetés: csendes várakozás a megadott számú másodpercre. ** &lt;&gt;**
-* Rekord: a hívó hangját rögzíti, és egy, a rögzítést tartalmazó fájl URL-címét adja vissza. ** &lt;&gt;**
-* Átirányítás: egy hívás vagy SMS átadása a TwiML egy másik URL-címen keresztül. ** &lt;&gt;**
-* Elutasítás: elutasítja a Twilio-szám bejövő hívását a számlázás nélkül. ** &lt;&gt;**
-* **Tegyük&gt;fel, hogy a szöveget a híváson végzett beszédre alakítja &lt;** át.
-* SMS: SMS-üzenet küldése. ** &lt;&gt;**
+* ** &lt; Dial &gt; **: a hívó csatlakoztatása egy másik telefonhoz.
+* Összegyűjtése: a telefon billentyűzetén megadott numerikus számjegyeket gyűjti. ** &lt; &gt; **
+* ** &lt; Vonalbontás &gt; **: egy hívást ér véget.
+* ** &lt; Lejátszás &gt; **: hangfájl lejátszása.
+* ** &lt; Üzenetsor &gt; **: adja hozzá a-t a hívók várólistához.
+* ** &lt; Szüneteltetés &gt; **: csendes várakozás a megadott számú másodpercre.
+* ** &lt; Rekord &gt; **: a hívó hangját rögzíti, és egy, a rögzítést tartalmazó fájl URL-címét adja vissza.
+* ** &lt; Átirányítás &gt; **: egy hívás vagy SMS átadása a TWIML egy másik URL-címen keresztül.
+* ** &lt; Elutasítás &gt; **: elutasítja a Twilio-szám bejövő hívását a számlázás nélkül.
+* ** &lt; Tegyük &gt; **fel, hogy a szöveget a híváson végzett beszédre alakítja át.
+* ** &lt; SMS &gt; **: SMS-üzenet küldése.
 
 ### <a name="twiml"></a><a id="TwiML"></a>TwiML
 A TwiML XML-alapú utasításokat tartalmaz a Twilio műveletek alapján, amelyek tájékoztatják a Twilio, hogy hogyan dolgozzák fel a hívást vagy az SMS-t.
@@ -74,7 +74,7 @@ Ha készen áll egy Twilio-fiók beszerzésére, regisztráljon a [Twilio kipró
 Amikor regisztrál egy Twilio-fiókra, megkapja a fiók AZONOSÍTÓját és a hitelesítési jogkivonatot. Mindkettőre szükség lesz a Twilio API-hívások létrehozásához. A fiókjához való jogosulatlan hozzáférés megakadályozása érdekében őrizze meg biztonságos hitelesítési tokenjét. A fiók azonosítója és a hitelesítési token a Twilio- [konzolon][twilio_console], a **fiók SID** és **hitelesítési jogkivonat**mezőjében látható.
 
 ## <a name="create-a-java-application"></a><a id="create_app"></a>Java-alkalmazás létrehozása
-1. Szerezze be a Twilio JAR-t, és adja hozzá a Java Build elérési útjához és a háborús üzembe helyezési szerelvényhez. A [https://github.com/twilio/twilio-java][twilio_java]-ben letöltheti a GitHub-forrásokat, és LÉTREHOZHAT saját jar-t, vagy letöltheti az előre elkészített jar-t (függőségekkel vagy anélkül).
+1. Szerezze be a Twilio JAR-t, és adja hozzá a Java Build elérési útjához és a háborús üzembe helyezési szerelvényhez. A [https://github.com/twilio/twilio-java][twilio_java] -ben letöltheti a GitHub-forrásokat, és létrehozhat saját jar-t, vagy letöltheti az előre elkészített jar-t (függőségekkel vagy anélkül).
 2. Győződjön meg arról, hogy a JDK **hitesítésszolgáltatói** -tárolója tartalmazza a Equifax biztonságos hitelesítésszolgáltatói tanúsítványát MD5 ujjlenyomattal 67: CB: 9D: C0:13:24:8a: 82:9b: B2:17:1e: D1:1b: ec: D4 (a sorozatszám 35: de: F4: CF és az SHA1 ujjlenyomata D2:32:09: ad: 23: d3:14:23:21:74: E4:0D: 7F: 9D: 62:13:97:86:63:3a). Ez a hitelesítésszolgáltató (CA) tanúsítványa a [https://api.twilio.com][twilio_api_service] szolgáltatáshoz, amelyet a rendszer Twilio API-k használatakor hív meg. A JDK **hitesítésszolgáltatói** -tárolójának a megfelelő hitelesítésszolgáltatói tanúsítvánnyal való biztosításával kapcsolatos információkért lásd a [tanúsítvány hozzáadása a Java hitelesítésszolgáltatói tanúsítványtárolóhoz][add_ca_cert]című témakört.
 
 A Java-Twilio ügyféloldali kódtár használatának részletes utasításait az [Azure-beli Java-alkalmazások Twilio használatával hívhatják meg][howto_phonecall_java].
@@ -127,7 +127,7 @@ Az alábbiakban bemutatjuk, hogyan lehet kimenő hívást kezdeményezni a **Cal
     Call.creator(to, from, uri).create();
 ```
 
-További információ a **Call. Creator** metódusnak átadott paraméterekről: [https://www.twilio.com/docs/api/rest/making-calls][twilio_rest_making_calls].
+További információ a **Call. Creator** metódusnak átadott paraméterekről: [https://www.twilio.com/docs/api/rest/making-calls][twilio_rest_making_calls] .
 
 Ahogy említettük, ez a kód egy Twilio által biztosított helyet használ a TwiML válasz visszaadásához. Ehelyett használhatja a saját webhelyét, hogy megadja a TwiML választ; További információkért lásd: [TwiML-válaszok megadása egy Java-alkalmazásban az Azure-ban](#howto_provide_twiml_responses).
 
@@ -153,10 +153,10 @@ A következő bemutatja, hogyan küldhet SMS-üzenetet az **üzenet** osztály h
     Message sms = Message.creator(to, from, body).create();
 ```
 
-További információ az **üzenet. Creator** metódusban átadott paraméterekről: [https://www.twilio.com/docs/api/rest/sending-sms][twilio_rest_sending_sms].
+További információ az **üzenet. Creator** metódusban átadott paraméterekről: [https://www.twilio.com/docs/api/rest/sending-sms][twilio_rest_sending_sms] .
 
 ## <a name="how-to-provide-twiml-responses-from-your-own-website"></a><a id="howto_provide_twiml_responses"></a>Útmutató: TwiML-válaszok megadása saját webhelyről
-Amikor az alkalmazás kezdeményez egy hívást a Twilio API-ra, például a **CallCreator. Create** metódussal, a Twilio elküldi a kérést egy olyan URL-címre, amely egy TwiML-válasz visszaadására vár. A fenti példa a Twilio által megadott URL- [https://twimlets.com/message][twimlet_message_url]címet használja. (Noha a TwiML webszolgáltatások számára készült, a böngészőben megtekintheti a TwiML. Kattintson [https://twimlets.com/message][twimlet_message_url] például egy üres ** &lt;válasz&gt; ** elem megjelenítéséhez; egy másik példaként kattintson [https://twimlets.com/message?Message%5B0%5D=Hello%20World%21][twimlet_message_url_hello_world] ide egy ** &lt;olyan válasz&gt; ** elem megjelenítéséhez, amely tartalmaz egy ** &lt;Say&gt; ** elemet.)
+Amikor az alkalmazás kezdeményez egy hívást a Twilio API-ra, például a **CallCreator. Create** metódussal, a Twilio elküldi a kérést egy olyan URL-címre, amely egy TwiML-válasz visszaadására vár. A fenti példa a Twilio által megadott URL-címet használja [https://twimlets.com/message][twimlet_message_url] . (Noha a TwiML webszolgáltatások számára készült, a böngészőben megtekintheti a TwiML. Ha például egy [https://twimlets.com/message][twimlet_message_url] üres ** &lt; válaszüzenetet &gt; ** szeretne megtekinteni, kattintson ide egy olyan [https://twimlets.com/message?Message%5B0%5D=Hello%20World%21][twimlet_message_url_hello_world] ** &lt; &gt; Válasz** elem megjelenítéséhez, amely tartalmaz egy ** &lt; Say &gt; ** elemet.)
 
 Ahelyett, hogy a Twilio által megadott URL-címet kellene megadnia, létrehozhat egy saját URL-helyet, amely a HTTP-válaszokat adja vissza. A helyet bármilyen nyelven létrehozhatja, amely a HTTP-válaszokat adja vissza; Ez a témakör feltételezi, hogy az URL-címet egy JSP-lapon fogja üzemeltetni.
 
@@ -183,9 +183,9 @@ A következő JSP-lap egy olyan TwiML-választ eredményez, amely egy bizonyos s
     </Response>
 ```
 
-A **ApiVersion** paraméter a Twilio hangkérések (nem SMS-kérelmek) esetében érhető el. A hang-és SMS-kérelmek Twilio elérhető kérelmek paramétereinek megtekintéséhez lásd: <https://www.twilio.com/docs/api/twiml/twilio_request> és <https://www.twilio.com/docs/api/twiml/sms/twilio_request>. A **RoleName** környezeti változó egy Azure-telepítés részeként érhető el. (Ha egyéni környezeti változókat szeretne hozzáadni, hogy azok a **System. GETENV**használatával is felvehetők legyenek, tekintse meg a környezeti változók szakaszt a [különböző szerepkörök konfigurációs beállításainál][misc_role_config_settings].)
+A **ApiVersion** paraméter a Twilio hangkérések (nem SMS-kérelmek) esetében érhető el. A hang-és SMS-kérelmek Twilio elérhető kérelmek paramétereinek megtekintéséhez lásd: <https://www.twilio.com/docs/api/twiml/twilio_request> és <https://www.twilio.com/docs/api/twiml/sms/twilio_request> . A **RoleName** környezeti változó egy Azure-telepítés részeként érhető el. (Ha egyéni környezeti változókat szeretne hozzáadni, hogy azok a **System. GETENV**használatával is felvehetők legyenek, tekintse meg a környezeti változók szakaszt a [különböző szerepkörök konfigurációs beállításainál][misc_role_config_settings].)
 
-Miután beállította a JSP-lapot a TwiML-válaszok megadására, használja a JSP-oldal URL-címét a **Call. Creator** metódusnak átadott URL-címként. Ha például egy MyTwiML nevű webalkalmazást helyez üzembe egy Azure-beli üzemeltetett szolgáltatásban, és a JSP-oldal neve MyTwiML. jsp, az URL-cím átadható a **Call. creatornak** , ahogyan az a következő képen látható:
+Miután beállította a JSP-lapot a TwiML-válaszok megadására, használja a JSP-oldal URL-címét a **Call. Creator** metódusnak átadott URL-címként. Ha például egy MyTwiML nevű webalkalmazást helyez üzembe egy Azure által üzemeltetett szolgáltatásban, és a JSP-oldal neve mytwiml.jsp, az URL-cím átadható a **Call. creatornak** , ahogyan az a következő képen látható:
 
 ```java
     // Declare To and From numbers and the URL of your JSP page

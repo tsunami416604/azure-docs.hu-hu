@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4743195fc79d43571ec79a13b8518edc7e81379b
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67109295"
 ---
 # <a name="determine-multi-factor-authentication-requirements-for-your-hybrid-identity-solution"></a>A többtényezős hitelesítési követelmények meghatározása a hibrid identitás megoldásához
@@ -58,6 +58,6 @@ Az előző kérdések megválaszolása után megtudhatja, hogy van-e már implem
 ## <a name="next-steps"></a>További lépések
 [Hibrid identitás-bevezetési stratégia definiálása](plan-hybrid-identity-design-considerations-identity-adoption-strategy.md)
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 [Tervezési szempontok áttekintése](plan-hybrid-identity-design-considerations-overview.md)
 

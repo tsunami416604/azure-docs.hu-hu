@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: agummadi
 ms.openlocfilehash: 2912488286745bf8d2e567d09e445b0a44dc7c39
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67672178"
 ---
 # <a name="network-monitoring-solutions"></a>Hálózati figyelési megoldások 
@@ -70,7 +70,7 @@ A NPM for ExpressRoute átfogó ExpressRoute-figyelést biztosít az Azure-beli 
 
 ![Régiók közötti forgalmat mutató geo-Térkép](./media/network-monitoring-overview/expressroute-topology-map.png) 
 
-További információkért tekintse át a következő cikkeket:
+További információért tekintse át a következő cikkeket:
 
 * [Network Performance Monitor for ExpressRoute konfigurálása](../expressroute/how-to-npm.md)
 * [Blogbejegyzés](https://aka.ms/NPMExRmonitorGA)
@@ -86,7 +86,7 @@ A szolgáltatás-kapcsolat figyelésével mostantól tesztelheti az alkalmazáso
 * A hálózatban található gyors elérésű pontok meghatározása, amelyek gyenge alkalmazások teljesítményét okozhatják
 * Az Office 365-alkalmazások elérhetőségének monitorozása a Microsoft Office 365, a Dynamics 365, a Skype vállalati verzió és más Microsoft-szolgáltatások beépített tesztek használatával
 
-További információkért tekintse át a következő cikkeket:
+További információért tekintse át a következő cikkeket:
 
 * [Network Performance Monitor konfigurálása a figyelési szolgáltatás végpontjai számára](../azure-monitor/insights/network-performance-monitor-service-connectivity.md#configuration)
 * [Blogbejegyzés](https://aka.ms/svcendptmonitor)

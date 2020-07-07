@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: article
 keywords: Kinect, Windows, v2, Azure Kinect, összehasonlítás, SDK, különbségek, hardver, szoftver
 ms.openlocfilehash: ec105cef0c52b02c763487fbe5b2d8c018315f4c
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67452513"
 ---
 # <a name="azure-kinect-and-kinect-windows-v2-comparison"></a>Az Azure Kinect és a Kinect Windows v2 összehasonlítása
@@ -71,7 +71,7 @@ Az Azure Kinect SDK szolgáltatáskészlet különbözik a Kinect for Windows v2
 | | BodyIndexFrame | Body Tracking SDK  |
 | Koordináta-leképezés|CoordinateMapper| [Sensor SDK – rendszerkép-átalakítások](use-image-transformation.md) |
 |Arcfelismerés | FaceFrame | [Cognitive Services: Face](https://azure.microsoft.com/services/cognitive-services/face/)       |
-|    Beszédfelismerés    |    N/A                      |    [Cognitive Services: beszéd](https://azure.microsoft.com/services/cognitive-services/directory/speech/)     |
+|    Beszédfelismerés    |    N.A.                      |    [Cognitive Services: beszéd](https://azure.microsoft.com/services/cognitive-services/directory/speech/)     |
 
 ## <a name="next-steps"></a>További lépések
 

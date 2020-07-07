@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 04/24/2015
 ms.author: gwallace
 ms.openlocfilehash: 22b33d7b4b0ff69a2e751cadff70453f73ed4f8e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "69876806"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-from-azure"></a>A Twilio használata a hang-és SMS-funkciókhoz az Azure-ban
@@ -38,7 +38,7 @@ A Twilio API egy REST-alapú API, amely hang-és SMS-funkciókat biztosít az al
 A Twilio API legfontosabb szempontjai a Twilio-műveletek és a Twilio Markup Language (TwiML).
 
 ### <a name="twilio-verbs"></a><a id="Verbs"></a>Twilio-műveletek
-Az API a Twilio-műveletek használatát teszi lehetővé; például a ** &lt;Say&gt; ** művelet arra utasítja a Twilio, hogy hallhatóan kézbesítse az üzenetet egy híváson.
+Az API a Twilio-műveletek használatát teszi lehetővé; például a ** &lt; Say &gt; ** művelet arra utasítja a Twilio, hogy hallhatóan kézbesítse az üzenetet egy híváson.
 
 A következő lista az Twilio-műveletek listáját tartalmazza.  Ismerje meg a többi műveletet és képességeket a [Twilio Markup Language dokumentációján](https://www.twilio.com/docs/api/twiml)keresztül.
 
@@ -98,7 +98,7 @@ Az útmutatóban megadott minták a Twilio. API függvénytárat használják.
 
 A kódtárak [telepíthetők a NuGet csomagkezelő bővítménnyel](https://www.twilio.com/docs/csharp/install) , amely a Visual Studio 2010-ig elérhető a 2015-ig.  A forráskód a [githubon][twilio_github_repo]fut, amely tartalmaz egy, a kódtárak használatára vonatkozó teljes dokumentációt tartalmazó wikit.
 
-Alapértelmezés szerint a Microsoft Visual Studio 2010 telepíti a NuGet 1,2-es verzióját. A Twilio-kódtárak telepítéséhez a NuGet vagy újabb 1,6 verzióra van szükség. A NuGet telepítésével vagy frissítésével kapcsolatos információkért [https://nuget.org/][nuget]lásd:.
+Alapértelmezés szerint a Microsoft Visual Studio 2010 telepíti a NuGet 1,2-es verzióját. A Twilio-kódtárak telepítéséhez a NuGet vagy újabb 1,6 verzióra van szükség. A NuGet telepítésével vagy frissítésével kapcsolatos információkért lásd: [https://nuget.org/][nuget] .
 
 > [!NOTE]
 > A NuGet legújabb verziójának telepítéséhez először el kell távolítania a betöltött verziót a Visual Studio Extension Manager használatával. Ehhez a Visual studiót rendszergazdaként kell futtatnia. Ellenkező esetben az Eltávolítás gomb le van tiltva.
@@ -139,7 +139,7 @@ var call = CallResource.Create(
     }
 ```
 
-További információ a **CallResource. Create** metódusban átadott paraméterekről: [https://www.twilio.com/docs/api/rest/making-calls][twilio_rest_making_calls].
+További információ a **CallResource. Create** metódusban átadott paraméterekről: [https://www.twilio.com/docs/api/rest/making-calls][twilio_rest_making_calls] .
 
 Ahogy említettük, ez a kód egy Twilio által biztosított helyet használ a TwiML válasz visszaadásához. Ehelyett használhatja a saját webhelyét a TwiML-válasz megadásához. További információ [: How to: TwiML-válaszok megadása a saját webhelyéről](#howto_provide_twiml_responses).
 
@@ -171,10 +171,10 @@ catch (TwilioException ex)
 ```
 
 ## <a name="how-to-provide-twiml-responses-from-your-own-website"></a><a id="howto_provide_twiml_responses"></a>Útmutató: TwiML-válaszok megadása saját webhelyről
-Amikor az alkalmazás kezdeményezi a Twilio API-t, például a **CallResource. Create** metódussal, a Twilio a kérelmet egy olyan URL-címre küldi, amely egy TwiML-válasz visszaadására vár. Példa a következőre [: Hogyan lehet kimenő hívást](#howto_make_call) használni a Twilio által biztosított URL- [https://twimlets.com/message][twimlet_message_url] cím használatával a válasz visszaadásához.
+Amikor az alkalmazás kezdeményezi a Twilio API-t, például a **CallResource. Create** metódussal, a Twilio a kérelmet egy olyan URL-címre küldi, amely egy TwiML-válasz visszaadására vár. Példa a következőre [: Hogyan lehet kimenő hívást](#howto_make_call) használni a Twilio által biztosított URL-cím használatával [https://twimlets.com/message][twimlet_message_url] a válasz visszaadásához.
 
 > [!NOTE]
-> Míg a TwiML a webszolgáltatások számára készült, megtekintheti a TwiML a böngészőben. Ha például egy üres [https://twimlets.com/message][twimlet_message_url] `<Response>` elemet szeretne megtekinteni, kattintson ide: egy másik példaként kattintással [https://twimlets.com/message?Message%5B0%5D=Hello%20World](https://twimlets.com/message?Message%5B0%5D=Hello%20World) megtekintheti `<Response>` a &lt;Say&gt; elemet tartalmazó elemet.
+> Míg a TwiML a webszolgáltatások számára készült, megtekintheti a TwiML a böngészőben. Ha például egy [https://twimlets.com/message][twimlet_message_url] üres elemet szeretne megtekinteni, `<Response>` kattintson ide egy olyan [https://twimlets.com/message?Message%5B0%5D=Hello%20World](https://twimlets.com/message?Message%5B0%5D=Hello%20World) elem megjelenítéséhez, `<Response>` amely egy &lt; Say elemet tartalmaz &gt; .
 >
 
 Ahelyett, hogy a Twilio által megadott URL-címet kellene megadnia, létrehozhat egy saját URL-helyet, amely a HTTP-válaszokat adja vissza. A helyet bármilyen nyelven létrehozhatja, amely a HTTP-válaszokat adja vissza. Ez a témakör feltételezi, hogy az URL-címet egy ASP.NET általános kezelője fogja üzemeltetni.
@@ -251,7 +251,7 @@ namespace WebRole1
 }
 ```
 
-További információ a TwiML: [https://www.twilio.com/docs/api/twiml](https://www.twilio.com/docs/api/twiml).
+További információ a TwiML: [https://www.twilio.com/docs/api/twiml](https://www.twilio.com/docs/api/twiml) .
 
 Miután beállította a TwiML-válaszok megadásának módját, átadhatja ezt az URL-címet a **CallResource. Create** metódusnak. Ha például egy MyTwiML nevű webalkalmazást helyez üzembe egy Azure Cloud Service-ben, és a ASP.NET-kezelő neve MyTwiML. ashx, az URL-cím átadható a **CallResource. Create** néven az alábbi kódrészletben látható módon:
 

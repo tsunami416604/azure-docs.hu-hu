@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: wesmc
 ms.openlocfilehash: e70ee8843e467af152eedefdf7e03a4ea869e4a6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "69638230"
 ---
 # <a name="azure-iot-hub-get-started-with-physical-devices-tutorials"></a>Azure IoT Hub Ismerkedés a fizikai eszközökkel – oktatóanyagok
@@ -22,7 +22,7 @@ Ezek az oktatóanyagok bemutatják az Azure IoT Hub és az eszköz SDK-kat. Az o
 
 | IoT-eszköz                       | Programozási nyelv |
 |---------------------------------|----------------------|
-| Málna PI                    | [Node. js](iot-hub-raspberry-pi-kit-node-get-started.md), [C](iot-hub-raspberry-pi-kit-c-get-started.md)  |
+| Málna PI                    | [Node.js](iot-hub-raspberry-pi-kit-node-get-started.md), [C](iot-hub-raspberry-pi-kit-c-get-started.md)  |
 | IoT fejlesztői készlet                      | [Arduino a VSCode](iot-hub-arduino-iot-devkit-az3166-get-started.md)     |
 
 [!INCLUDE [iot-hub-get-started-extended](../../includes/iot-hub-get-started-extended.md)]

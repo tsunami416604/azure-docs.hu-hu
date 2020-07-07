@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/18/2016
 ms.author: mikejo
 ms.openlocfilehash: 21270d3c7143ce063ffe30d939368b9813e9072e
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "70094098"
 ---
 # <a name="testing-the-performance-of-a-cloud-service-locally-in-the-azure-compute-emulator-using-the-visual-studio-profiler"></a>Felhőalapú szolgáltatás teljesítményének tesztelése helyileg az Azure számítási emulátorban a Visual Studio Profiler használatával
@@ -30,7 +30,7 @@ A felhőbe való üzembe helyezés előtt érdemes lehet az alkalmazás helyi pr
 Ez a cikk a profilkészítés CPU-mintavételezési módszerét ismerteti, amely helyileg is elvégezhető az emulátorban. A CPU-mintavételezés olyan profilkészítési módszer, amely nem zavaró. Egy kijelölt mintavételi időszakban a Profiler pillanatképet készít a hívási veremről. Az adatok gyűjtése egy adott időszakon belül történik, és egy jelentésben jelenik meg. Ez a profilkészítési módszer általában azt jelzi, hogy hol történik a CPU-munka nagy részét képező számítási igényű alkalmazás.  Ez lehetőséget nyújt arra, hogy a "gyors elérésű útvonalra" koncentráljon, ahol az alkalmazás a legtöbb időt tölti.
 
 ## <a name="1-configure-visual-studio-for-profiling"></a>1: a Visual Studio konfigurálása profilkészítéshez
-Először is van néhány Visual Studio konfigurációs lehetőség, amely a profilkészítés során hasznos lehet. A profilkészítési jelentések értelmezéséhez szüksége lesz az alkalmazáshoz tartozó szimbólumokra (. pdb fájlokra), valamint a rendszerkönyvtárakhoz tartozó szimbólumokra is. Érdemes meggyőződnie arról, hogy az elérhető szimbólum-kiszolgálókra hivatkozik. Ehhez a Visual Studióban a **Tools (eszközök** ) menüben válassza a **Beállítások**, majd a **hibakeresés**, majd a **szimbólumok**elemet. Győződjön meg arról, hogy a Microsoft Symbol kiszolgálók szerepelnek a **Symbol file (. PDB) helyein**.  Hivatkozhat https://referencesource.microsoft.com/symbolsarra is, hogy további szimbólumokat tartalmazó fájlok is szerepelhetnek.
+Először is van néhány Visual Studio konfigurációs lehetőség, amely a profilkészítés során hasznos lehet. A profilkészítési jelentések értelmezéséhez szüksége lesz az alkalmazáshoz tartozó szimbólumokra (. pdb fájlokra), valamint a rendszerkönyvtárakhoz tartozó szimbólumokra is. Érdemes meggyőződnie arról, hogy az elérhető szimbólum-kiszolgálókra hivatkozik. Ehhez a Visual Studióban a **Tools (eszközök** ) menüben válassza a **Beállítások**, majd a **hibakeresés**, majd a **szimbólumok**elemet. Győződjön meg arról, hogy a Microsoft Symbol kiszolgálók szerepelnek a **Symbol file (. PDB) helyein**.  Hivatkozhat arra is https://referencesource.microsoft.com/symbols , hogy további szimbólumokat tartalmazó fájlok is szerepelhetnek.
 
 ![Szimbólum beállításai][4]
 
@@ -83,13 +83,13 @@ Ha a Profilert egy folyamathoz szeretné csatolni, az **elemzés** menüben vál
 
 ![Profil csatolása lehetőség][6]
 
-Feldolgozói szerepkör esetén keresse meg a WaWorkerHost. exe folyamatot.
+Feldolgozói szerepkör esetén keresse meg a WaWorkerHost.exe folyamatot.
 
 ![WaWorkerHost folyamat][7]
 
 Ha a projekt mappája egy hálózati meghajtón található, a Profiler megkéri, hogy adjon meg egy másik helyet a profilkészítési jelentések mentéséhez.
 
- A WaIISHost. exe fájlhoz csatolva is csatolhat webes szerepkörhöz.
+ A webes szerepkörökhöz úgy is kapcsolódhat, hogy WaIISHost.exehoz csatolja.
 Ha az alkalmazásban több feldolgozói szerepkör is található, akkor a folyamatazonosító kell használnia, hogy megkülönböztesse őket. A folyamatazonosító programozott módon kérdezheti le a Process objektum elérésével. Ha például hozzáadja ezt a kódot a RoleEntryPoint származtatott osztályának futtatási metódusához egy szerepkörben, a számítási emulátor felhasználói felületén megtekintheti a naplót, amelyből megtudhatja, hogy milyen folyamathoz csatlakozhat.
 
 ```csharp
@@ -160,7 +160,7 @@ Gratulálunk! A Profiler elindult.
 * Ha a Profiler menüben nincs engedélyezve a csatolás/leválasztás lehetőség, futtassa a teljesítmény varázslót.
 * Az alkalmazás állapotának megtekintéséhez használja a számítási emulátor felhasználói felületét. 
 * Ha problémák merülnek fel az emulátorban, vagy csatolja a Profilert, állítsa le a Compute Emulator, majd indítsa újra. Ha ez nem oldja meg a problémát, próbálja meg újraindítani. Ez a probléma akkor fordulhat elő, ha a számítási emulátor használatával felfüggeszti és eltávolítja a futó központi telepítéseket.
-* Ha a parancssorból bármelyik profilkészítési parancsot használta, különösen a globális beállításokat, győződjön meg arról, hogy a VSPerfClrEnv/globaloff meghívása megtörtént, és hogy a VsPerfMon. exe le lett állítva.
+* Ha a parancssorból bármelyik profilkészítési parancsot használta, különösen a globális beállításokat, győződjön meg arról, hogy a VSPerfClrEnv/globaloff meghívása megtörtént, és hogy a VsPerfMon.exe le lett állítva.
 * Ha mintavételezéskor a "PRF0025: nem gyűjtött adatokat" üzenet jelenik meg, ellenőrizze, hogy a csatlakoztatott folyamat rendelkezik-e CPU-tevékenységgel. Előfordulhat, hogy a számítási munkát nem végző alkalmazások nem hoznak létre mintavételi adatmennyiséget.  Az is lehetséges, hogy a folyamat kilépett a mintavételezés befejezése előtt. Ellenőrizze, hogy egy profilkészítési szerepkör futtatási metódusa nem áll-e le.
 
 ## <a name="next-steps"></a>Következő lépések

@@ -16,10 +16,10 @@ ms.date: 03/14/2019
 ms.author: juliako
 ms.reviewer: anilmur
 ms.openlocfilehash: 4767f7bb5ba02c838c0e21721e55a6564a14acd1
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "69016659"
 ---
 # <a name="comparison-of-azure-on-demand-media-encoders"></a>Az Azure igény szerinti adathordozó-kódolóinak összehasonlítása  
@@ -35,7 +35,7 @@ Az alábbi táblázat a Media Encoder Standard (MES) és a Media Encoder Premium
 |Feltételes logika alkalmazása kódolás közben<br/>(Ha például a bemenet HD, akkor kódolja a 5,1 hangot)|Nem|Igen|
 |Kódolt feliratok|Nem|[Igen](media-services-premium-workflow-encoder-formats.md#closed_captioning)|
 |[A Dolby® professzionális hangzásának javítása](https://www.dolby.com/us/en/technologies/dolby-professional-loudness-solutions.pdf)<br/> a párbeszéd intelligenciával™|Nem|Igen|
-|Kiküszöbölhető, inverz telecine|Basic|Szórási minőség|
+|Kiküszöbölhető, inverz telecine|Alapszintű|Szórási minőség|
 |Fekete szegélyek észlelése és eltávolítása <br/>(pillarboxes, postafiókok)|Nem|Igen|
 |Miniatűr létrehozása|[Igen](media-services-dotnet-generate-thumbnail-with-mes.md)|[Igen](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4)|
 |Videók levágása/vágása és összefűzése|[Igen](media-services-advanced-encoding-with-mes.md#trim_video)|Igen|

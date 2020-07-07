@@ -16,10 +16,10 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: anilmur
 ms.openlocfilehash: 259e32d55f25c4a146b7ff358eb503763dd5fab2
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "69016583"
 ---
 # <a name="encode-an-asset-with-media-encoder-standard-using-net"></a>Adategység kódolása Media Encoder Standard a .NET használatával  
@@ -46,9 +46,9 @@ Media Encoder Standard az [itt](https://go.microsoft.com/fwlink/?linkid=618336&c
 ### <a name="input-and-output-metadata"></a>Bemeneti és kimeneti metaadatok
 Ha a MES használatával kódol egy bemeneti adategységet (vagy eszközöket), a rendszer az adott kódolási feladat sikeres befejezésekor egy kimeneti eszközt kap. A kimeneti eszköz a használt kódolási beállításkészlet alapján video-, hang-, miniatűr-, jegyzékfájl-és egyéb adatokat tartalmaz.
 
-A kimeneti eszköz egy olyan fájlt is tartalmaz, amely tartalmazza a bemeneti adategység metaadatait. A metaadatok XML-fájljának neve a következő formátumú: <asset_id>_metadata. XML (például 41114ad3-eb5e-4c57-8d92-5354e2b7d4a4_metadata. xml), ahol <asset_id> a bemeneti eszköz AssetId értéke. A bemeneti metaadatok XML-fájljának sémája [itt](media-services-input-metadata-schema.md)van leírva.
+A kimeneti eszköz egy olyan fájlt is tartalmaz, amely tartalmazza a bemeneti adategység metaadatait. A metaadatok XML-fájljának neve a következő formátumú: <asset_id # C1_metadata.xml (például 41114ad3-eb5e-4c57-8d92-5354e2b7d4a4_metadata.xml), ahol <asset_id> a bemeneti eszköz AssetId értéke. A bemeneti metaadatok XML-fájljának sémája [itt](media-services-input-metadata-schema.md)van leírva.
 
-A kimeneti eszköz egy olyan fájlt is tartalmaz, amely tartalmazza a kimeneti eszköz metaadatait. A metaadatok XML-fájljának neve a következő formátumú: <source_file_name>_manifest. XML (például BigBuckBunny_manifest. xml). A kimeneti metaadatok XML-fájljának sémája [itt](media-services-output-metadata-schema.md)van leírva.
+A kimeneti eszköz egy olyan fájlt is tartalmaz, amely tartalmazza a kimeneti eszköz metaadatait. A metaadatok XML-fájljának neve a következő formátumú: <source_file_name # C1_manifest.xml (például BigBuckBunny_manifest.xml). A kimeneti metaadatok XML-fájljának sémája [itt](media-services-output-metadata-schema.md)van leírva.
 
 Ha meg szeretné vizsgálni a két metaadat-fájl egyikét, létrehozhat egy SAS-keresőt, és letöltheti a fájlt a helyi számítógépre. Talál egy példát arra, hogyan hozhat létre SAS-lokátort, és hogyan tölthet le egy fájlt a Media Services .NET SDK-bővítmények használatával.
 
@@ -70,7 +70,7 @@ A következő kódrészlet a Media Services .NET SDK-t használja a következő 
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Egy Visual Studio-projekt létrehozása és konfigurálása
 
-Állítsa be a fejlesztési környezetet, és töltse fel az app. config fájlt a következő témakörben ismertetett módon: [Media Services fejlesztés a .net](media-services-dotnet-how-to-use.md)-tel. 
+Állítsa be a fejlesztési környezetet, és töltse fel a app.config fájlt a következő témakörben leírtak szerint: [Media Services fejlesztés a .net](media-services-dotnet-how-to-use.md)-tel. 
 
 #### <a name="example"></a>Példa 
 
@@ -210,6 +210,6 @@ namespace MediaEncoderStandardSample
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-steps"></a>További lépések
-[Miniatűr készítése Media Encoder standard használatával a .net](media-services-dotnet-generate-thumbnail-with-mes.md)
--[Media Services kódolásának áttekintése](media-services-encode-asset.md)
+[Miniatűr készítése a .net](media-services-dotnet-generate-thumbnail-with-mes.md) 
+ -Media Encoder standard használatával [Media Services kódolás áttekintése](media-services-encode-asset.md)
 

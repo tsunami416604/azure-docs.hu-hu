@@ -16,10 +16,10 @@ ms.date: 10/30/2014
 ms.author: erikre
 ms.reviewer: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork
 ms.openlocfilehash: 8ae948e9c79cff4cd0c896b250743fd9dc521752
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67876506"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java"></a>E-mailek küldése a SendGrid használatával Java-ból
@@ -41,7 +41,7 @@ További információ: <https://sendgrid.com>.
 [!INCLUDE [sendgrid-sign-up](../includes/sendgrid-sign-up.md)]
 
 ## <a name="how-to-use-the-javaxmail-libraries"></a>Útmutató: a javax. mail kódtárak használata
-Szerezze be a javax. mail kódtárakat, például <https://www.oracle.com/technetwork/java/javamail> a-ból, és importálja őket a kódra. Magas szinten a javax. mail függvénytár használatának folyamata az SMTP használatával történő e-mailek küldéséhez az alábbiakat kell tennie:
+Szerezze be a javax. mail kódtárakat, például a-ból, <https://www.oracle.com/technetwork/java/javamail> és importálja őket a kódra. Magas szinten a javax. mail függvénytár használatának folyamata az SMTP használatával történő e-mailek küldéséhez az alábbiakat kell tennie:
 
 1. Itt adhatja meg az SMTP-értékeket, beleértve az SMTP-kiszolgálót, amely a SendGrid smtp.sendgrid.net.
 
