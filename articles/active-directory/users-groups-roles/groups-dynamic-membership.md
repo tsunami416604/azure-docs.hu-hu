@@ -15,10 +15,10 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3370a2631a81ce36fd994da73c871fb1e409c667
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84728367"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>A Azure Active Directory csoportok dinamikus tagsági szabályai
@@ -69,7 +69,7 @@ A zárójelek egyetlen kifejezés esetében nem kötelezőek. A tagsági szabál
 Olyan tagsági szabály, amely automatikusan feltölt egy csoportot a felhasználók vagy az eszközök számára egy bináris kifejezés, amely igaz vagy hamis eredményt eredményez. Egy egyszerű szabály három része:
 
 - Tulajdonság
-- Operátor
+- Művelet
 - Érték
 
 Egy kifejezésen belüli részek sorrendje fontos a szintaktikai hibák elkerülése érdekében.
@@ -160,7 +160,7 @@ Ha egy felhasználói attribútum értékét össze szeretné hasonlítani szám
 
 
 ### <a name="using-the--match-operator"></a>A-Match operátor használata 
-A **-Match** operátor a reguláris kifejezések egyeztetésére szolgál. Angol nyelvű Példák:
+A **-Match** operátor a reguláris kifejezések egyeztetésére szolgál. Példák:
 
 ```
 user.displayName -match "Da.*"   

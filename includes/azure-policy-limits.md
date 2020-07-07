@@ -7,10 +7,10 @@ ms.topic: include
 ms.date: 04/23/2020
 ms.author: dacoulte
 ms.openlocfilehash: e9faea1d5913a19dfdeff662e26992529dc1b22d
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84466951"
 ---
 A Azure Policyhoz tartozó egyes objektumtípusok maximális száma. A _Hatókör_ bejegyzés az előfizetést vagy a [felügyeleti csoportot](../articles/governance/management-groups/overview.md) jelöli.

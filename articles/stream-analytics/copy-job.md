@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.openlocfilehash: 258fc30f3e4a4ba374ada89c03b824ff5e27718e
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82612265"
 ---
 # <a name="copy-or-back-up-azure-stream-analytics-jobs"></a>Azure Stream Analytics feladatok másolása vagy biztonsági mentése
@@ -39,7 +39,7 @@ A Visual Studio Code vagy a Visual Studio használatával másolhatja vagy bizto
 
     ![ASA-feladatok exportálása a Visual Studio Code-ban](./media/stream-analytics-manage-job/copy-backup-stream-analytics-jobs.png)
 
-3. Ha más néven szeretné közzétenni a feladatot egy másik régióban vagy biztonsági másolatban, válassza a **kiválasztás az előfizetések közül** lehetőséget a\*lekérdezés-szerkesztőben (. asaql) való közzétételhez, és kövesse az utasításokat.
+3. Ha más néven szeretné közzétenni a feladatot egy másik régióban vagy biztonsági másolatban, válassza a **kiválasztás az előfizetések közül** lehetőséget a lekérdezés-szerkesztőben (. asaql) való közzétételhez, \* és kövesse az utasításokat.
 
     ![Közzététel az Azure-ban a Visual Studio Code-ban](./media/quick-create-vs-code/submit-job.png)
 
@@ -47,7 +47,7 @@ A Visual Studio Code vagy a Visual Studio használatával másolhatja vagy bizto
 
 1. Kövesse az [üzembe helyezett Azure stream Analyticsi feladat exportálása projekt utasításait](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-vs-tools#export-jobs-to-a-project).
 
-2. Nyissa \*meg a. asaql fájlt a Lekérdezéstervezőben, válassza az **elküldés az Azure** -ba lehetőséget a parancsfájl-szerkesztőben, és kövesse az utasításokat a feladat egy másik régióba vagy biztonsági másolatba való közzétételéhez egy új néven.
+2. Nyissa meg a \* . asaql fájlt a Lekérdezéstervezőben, válassza az **elküldés az Azure** -ba lehetőséget a parancsfájl-szerkesztőben, és kövesse az utasításokat a feladat egy másik régióba vagy biztonsági másolatba való közzétételéhez egy új néven.
 
 ## <a name="next-steps"></a>További lépések
 

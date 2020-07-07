@@ -16,10 +16,10 @@ ms.author: kenwith
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6b81e792d3b3bf491b281e09c00f48a7ad56fa47
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84763635"
 ---
 # <a name="centralize-application-management-with-azure-ad"></a>Az alkalmazások kezelésének központosítása az Azure AD-vel
@@ -89,6 +89,6 @@ Az identitás csak akkor lehet a vezérlési síkon, ha mindent a felhőben és 
 - [Alkalmazáskezelés](https://docs.microsoft.com/azure/active-directory/manage-apps/index)
 - [Alkalmazások üzembe helyezése](https://docs.microsoft.com/azure/active-directory/app-provisioning/user-provisioning)
 - [Hibrid biztonságos hozzáférés](https://docs.microsoft.com/azure/active-directory/manage-apps/secure-hybrid-access)
-- [Identitáskezelés](https://docs.microsoft.com/azure/active-directory/governance/identity-governance-overview)
+- [Identitás-szabályozás](https://docs.microsoft.com/azure/active-directory/governance/identity-governance-overview)
 - [Microsoft-identitásplatform](https://docs.microsoft.com/azure/active-directory/develop/v2-overview)
 - [Identitás biztonsága](https://docs.microsoft.com/azure/active-directory/conditional-access/index)

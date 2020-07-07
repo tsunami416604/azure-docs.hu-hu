@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1a2fd4a4649b38434d196e8f4203966efdff876
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 21428738873f60d2173df53f5b9f1d108ee5eff4
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/01/2020
-ms.locfileid: "85606562"
+ms.locfileid: "85798697"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-experience-cloud"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Experience Cloud szolgáltatással
 
@@ -86,32 +86,32 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     a. Az **azonosító** szövegmezőbe írja be a következő mintákat használó URL-címet:
     
-        ```https
-        https://<cluster>.medallia.com/sso/<company>
-        https://<cluster>.medallia.ca/sso/<company>
-        https://<cluster>.medallia.eu/sso/<company>
-        https://<cluster>.medallia.au/sso/<company>
-        ```
+    ```http
+    https://<cluster>.medallia.com/sso/<company>
+    https://<cluster>.medallia.ca/sso/<company>
+    https://<cluster>.medallia.eu/sso/<company>
+    https://<cluster>.medallia.au/sso/<company>
+    ```
 
     b. A **Válasz URL-címe** szövegmezőbe írja be a következő mintákat használó URL-címet:
 
-        ```https
-        https://<cluster>.medallia.com/sso/<company>/logonSubmit.do
-        https://<cluster>.medallia.ca/sso/<company>/logonSubmit.do
-        https://<cluster>.medallia.eu/sso/<company>/logonSubmit.do
-        https://<cluster>.medallia.au/sso/<company>/logonSubmit.do
-        ```
+    ```http
+    https://<cluster>.medallia.com/sso/<company>/logonSubmit.do
+    https://<cluster>.medallia.ca/sso/<company>/logonSubmit.do
+    https://<cluster>.medallia.eu/sso/<company>/logonSubmit.do
+    https://<cluster>.medallia.au/sso/<company>/logonSubmit.do
+    ```
 
 1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minták használatával:
 
-        ```https
-        https://<cluster>.medallia.com/sso/<company>
-        https://<cluster>.medallia.ca/sso/<company>
-        https://<cluster>.medallia.eu/sso/<company>
-        https://<cluster>.medallia.au/sso/<company>
-        ```
+    ```http
+    https://<cluster>.medallia.com/sso/<company>
+    https://<cluster>.medallia.ca/sso/<company>
+    https://<cluster>.medallia.eu/sso/<company>
+    https://<cluster>.medallia.au/sso/<company>
+    ```
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Ha ezeket az értékeket szeretné megkapni, forduljon a felhőalapú ügyfélszolgálati [csapathoz](mailto:support@medallia.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.

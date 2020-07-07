@@ -2,7 +2,7 @@
 title: Példák Azure PowerShell parancsfájlokra
 description: Azure PowerShell szkriptek segítségével létrehozhat és kezelhet Azure SQL Database és az Azure SQL felügyelt példányának erőforrásait.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: development
 ms.custom: sqldbrb=2
 ms.devlang: PowerShell
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: cb8abf563834e23472589cd65bfe4196131d0138
-ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
+ms.openlocfilehash: 77220fabc78dd10b4299219ef84c1f6eb32ba82e
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84718546"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85987310"
 ---
 # <a name="azure-powershell-samples-for-azure-sql-database-and-azure-sql-managed-instance"></a>Azure PowerShell minták a Azure SQL Database és az Azure SQL felügyelt példányaihoz
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -32,7 +32,7 @@ Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanya
 
 A következő táblázat az Azure SQL Database-hez elérhető Azure PowerShell-példaszkriptekre mutató hivatkozásokat tartalmaz.
 
-| |  |
+|Hivatkozás|Leírás|
 |---|---|
 |**Önálló adatbázisok és rugalmas készletek létrehozása és konfigurálása**||
 | [Egyetlen adatbázis létrehozása és a kiszolgálói szintű tűzfalszabály konfigurálása](scripts/create-and-configure-database-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Ez a PowerShell-parancsfájl egyetlen adatbázist hoz létre, és egy kiszolgálói szintű IP-tűzfalszabály konfigurálását végzi. |
@@ -64,7 +64,7 @@ További információ az [egyadatbázisos Azure POWERSHELL API-](single-database
 
 A következő táblázat az Azure SQL felügyelt példányának Azure PowerShell parancsfájljaira mutató hivatkozásokat tartalmaz.
 
-| |  |
+|Hivatkozás|Leírás|
 |---|---|
 |**Felügyelt példányok létrehozása és konfigurálása**||
 | [Felügyelt példány létrehozása és kezelése](../managed-instance/scripts/create-configure-managed-instance-powershell.md) | Ez a PowerShell-szkript bemutatja, hogyan hozhat létre és kezelhet felügyelt példányokat Azure PowerShell használatával. |

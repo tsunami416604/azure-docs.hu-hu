@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
-ms.openlocfilehash: 29e24166218a6757cded9d1b002321800ab0c073
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bfed93a4ed13878448d21b95d265e49bf0260742
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80055480"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85798255"
 ---
 # <a name="tutorial-get-started-with-log-analytics-queries"></a>Oktatóanyag: Log Analytics lekérdezések első lépései
 
@@ -37,6 +37,7 @@ A jelen oktatóanyagban ismertetett lépések többségének végrehajtásához 
 Használhatja a saját környezetét is, ha a Azure Monitor használatával gyűjti be a naplózási adatokat legalább egy Azure-erőforráson. Log Analytics munkaterület megnyitásához a Azure Monitor bal oldali navigációs sávján válassza a **naplók**lehetőséget. 
 
 ## <a name="understand-the-schema"></a>A séma bemutatása
+ 
 A *sémák* a logikai kategóriák alatt csoportosított táblák gyűjteményei. A bemutató séma több kategóriát is tartalmaz a figyelési megoldásokból. A **LogManagement** kategória például a Windows-és syslog-eseményeket, a teljesítményadatokat és az ügynök szívveréseit tartalmazza.
 
 A séma táblái a Log Analytics munkaterület **táblák** lapján jelennek meg. A táblák oszlopokat tartalmaznak, amelyek mindegyike az oszlop neve melletti ikon által megjelenített adattípussal rendelkezik. Az **Event** tábla például olyan szöveges oszlopokat tartalmaz, mint a **számítógép** és a numerikus oszlopok, például a **EventCategory**.
@@ -50,6 +51,7 @@ A Log Analytics megnyílik egy új, üres lekérdezéssel a **lekérdezés-szerk
 ![Log Analytics](media/get-started-portal/homepage.png)
 
 ### <a name="write-a-query"></a>Lekérdezés írása
+
 Azure Monitor a naplózási lekérdezések a Kusto lekérdezési nyelvének egy verzióját használják. A lekérdezések egy Táblanév vagy egy [keresési](/azure/kusto/query/searchoperator) paranccsal kezdődhetnek. 
 
 A következő lekérdezés az **Event** tábla összes rekordját lekérdezi:
@@ -86,13 +88,13 @@ Az **időtartomány** vezérlőelem használatához válassza ki azt a felső s�
 - Ha a lekérdezés explicit módon beállít egy szűrőt a **TimeGenerated**, akkor az időválasztó vezérlőelem a **lekérdezésben jelenik meg**, és le van tiltva, hogy megakadályozza az ütközést.
 
 ### <a name="run-a-query"></a>Lekérdezés futtatása
-Lekérdezés futtatásához vigye a kurzort a lekérdezésbe, és válassza a **Futtatás** gombot a felső sávban, **vagy nyomja le**+az**ENTER**billentyűt. A lekérdezés addig fut, amíg nem talál üres sort.
+Lekérdezés futtatásához vigye a kurzort a lekérdezésbe, és válassza a **Futtatás** gombot a felső sávban, **vagy nyomja le**az + **ENTER**billentyűt. A lekérdezés addig fut, amíg nem talál üres sort.
 
 ## <a name="filter-results"></a>Szűrés eredményei
-A Log Analytics legfeljebb 10 000 rekordra korlátozza az eredményeket. Egy általános lekérdezés, `Event` például túl sok eredményt ad vissza, hasznosnak bizonyulhat. A lekérdezési eredményeket szűrheti a lekérdezésben szereplő táblák elemeinek korlátozásával, vagy explicit módon hozzáadhat egy szűrőt az eredményekhez. A táblázat elemeinek szűrése új eredményhalmazt ad vissza, míg egy explicit szűrő a meglévő eredményhalmaz esetében érvényes.
+A Log Analytics legfeljebb 10 000 rekordra korlátozza az eredményeket. Egy általános lekérdezés `Event` , például túl sok eredményt ad vissza, hasznosnak bizonyulhat. A lekérdezési eredményeket szűrheti a lekérdezésben szereplő táblák elemeinek korlátozásával, vagy explicit módon hozzáadhat egy szűrőt az eredményekhez. A táblázat elemeinek szűrése új eredményhalmazt ad vissza, míg egy explicit szűrő a meglévő eredményhalmaz esetében érvényes.
 
 ### <a name="filter-by-restricting-table-elements"></a>Szűrés a táblázat elemeinek korlátozásával
-A lekérdezés `Event` eredményeinek szűrése a **hibák** eseményeire a lekérdezésben szereplő táblák elemeinek korlátozásával:
+`Event`A lekérdezés eredményeinek szűrése a **hibák** eseményeire a lekérdezésben szereplő táblák elemeinek korlátozásával:
 
 1. A lekérdezés eredményei között válassza ki a legördülő nyilat minden olyan rekord mellett, amely a **EventLevelName** oszlopban **hibát** tartalmaz. 
    
@@ -110,7 +112,7 @@ A lekérdezés `Event` eredményeinek szűrése a **hibák** eseményeire a lek�
 1. Válassza a **Futtatás** lehetőséget az új lekérdezés futtatásához.
 
 ### <a name="filter-by-explicitly-filtering-results"></a>Szűrés az eredmények explicit szűrésével
-A `Event` lekérdezés eredményeinek szűrése a **hibák** eseményeire a lekérdezés eredményeinek szűrésével:
+A lekérdezés eredményeinek szűrése a `Event` **hibák** eseményeire a lekérdezés eredményeinek szűrésével:
 
 1. A lekérdezés eredményei között válassza a **szűrő** ikont a **EventLevelName**oszlopfejléc mellett. 
    
@@ -118,7 +120,7 @@ A `Event` lekérdezés eredményeinek szűrése a **hibák** eseményeire a lek�
    
 1. Válassza a **szűrő**lehetőséget.
    
-   ![Szűrés](media/get-started-portal/filter.png)
+   ![Szűrő](media/get-started-portal/filter.png)
 
 ## <a name="sort-group-and-select-columns"></a>Oszlopok rendezése, csoportosítása és kiválasztása
 Ha a lekérdezési eredményeket egy adott oszlop szerint szeretné rendezni (például **TimeGenerated [UTC]**), válassza az oszlop fejlécét. A növekvő és a csökkenő sorrend közötti váltáshoz válassza újra a fejlécet.
@@ -156,6 +158,7 @@ Megváltoztathatja a nézet tulajdonságait, például az x és az y tengelyt, v
 Saját maga is megadhatja a lekérdezés előnyben részesített nézetét a [Render](/azure/kusto/query/renderoperator) operátor használatával.
 
 ## <a name="pin-results-to-a-dashboard"></a>Eredmények rögzítése egy irányítópulton
+
 Egy eredmény táblázat vagy diagram Log Analyticsból egy megosztott Azure-irányítópultra való rögzítéséhez válassza a **rögzítés az irányítópulton** lehetőséget a felső sávon. 
 
 ![Rögzítés az irányítópulton](media/get-started-portal/pin-dashboard.png)
@@ -171,9 +174,11 @@ A megosztott irányítópulthoz rögzített táblázat vagy diagram a következ�
 - A sok különálló kategóriával rendelkező diagramok automatikusan csoportosítják a kevésbé feltöltött kategóriákat egyetlen **más** raktárhelyre.
 
 ## <a name="save-load-or-export-queries"></a>Lekérdezések mentése, betöltése vagy exportálása
+
 A lekérdezés létrehozása után mentheti vagy megoszthatja a lekérdezést vagy az eredményeket másokkal. 
 
 ### <a name="save-queries"></a>Lekérdezések mentése
+
 Lekérdezés mentése:
 
 1. Válassza a **Mentés** lehetőséget a felső sávon.

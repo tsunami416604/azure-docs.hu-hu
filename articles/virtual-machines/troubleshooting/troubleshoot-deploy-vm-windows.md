@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
 ms.openlocfilehash: 03804229221c2b1deb94f6c32a5be9defd304ff6
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82628282"
 ---
 # <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>Windows rendszerű virtuális gépek Azure-beli üzembe helyezése során előforduló problémák elhárítása
@@ -31,7 +31,11 @@ Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a ka
 [!INCLUDE [virtual-machines-windows-troubleshoot-deploy-vm-top](../../../includes/virtual-machines-windows-troubleshoot-deploy-vm-top.md)]
 
 ## <a name="the-cluster-cannot-support-the-requested-vm-size"></a>A fürt nem támogatja a kért VM-méretet
-\<Properties supportTopicIds = "123456789" resourceTags = "Windows" productPesIds = "1234, 5678"/>
+\<properties
+supportTopicIds="123456789"
+resourceTags="windows"
+productPesIds="1234, 5678"
+/>
 - Próbálja megismételni a kérést kisebb virtuálisgép-méret használatával.
 - Ha a kért virtuális gép mérete nem módosítható:
     - Állítsa le az összes virtuális gépet a rendelkezésre állási csoportból. Kattintson **Az erőforráscsoportok >** az erőforráscsoport > **erőforrások** > a rendelkezésre állási csoport > **Virtual Machines** a virtuális gép > **leállítása**elemre.
@@ -40,7 +44,11 @@ Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a ka
 
 
 ## <a name="the-cluster-does-not-have-free-resources"></a>A fürt nem rendelkezik szabad erőforrásokkal
-\<Properties supportTopicIds = "123456789" resourceTags = "Windows" productPesIds = "1234, 5678"/>
+\<properties
+supportTopicIds="123456789"
+resourceTags="windows"
+productPesIds="1234, 5678"
+/>
 - Később próbálja megismételni a kérést.
 - Ha az új virtuális gép egy másik rendelkezésre állási csoport része lehet
     - Hozzon létre egy virtuális gépet egy másik rendelkezésre állási készletben (ugyanabban a régióban).

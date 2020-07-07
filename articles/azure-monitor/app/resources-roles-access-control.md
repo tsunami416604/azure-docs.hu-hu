@@ -4,10 +4,10 @@ description: A szervezet adatai tulajdonosai, közreműködői és olvasói.
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.openlocfilehash: ee14fee66e3aa6f4e8d999f6f98debe361387515
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82628237"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Erőforrások, szerepkörök és hozzáférés-vezérlés a Application Insightsban
@@ -15,7 +15,7 @@ ms.locfileid: "82628237"
 A [Microsoft Azure szerepköralapú hozzáférés-vezérlés](../../role-based-access-control/role-assignments-portal.md)használatával szabályozhatja, hogy ki olvasta és frissítse az adataihoz való hozzáférést az Azure [Application Insightsban][start].
 
 > [!IMPORTANT]
-> Rendeljen hozzá hozzáférést az **erőforráscsoport vagy az előfizetés** azon felhasználóihoz, amelyekhez az alkalmazás-erőforrás tartozik – nem az erőforráshoz. Rendelje hozzá a **Application Insights összetevő közreműködői** szerepkört. Ez biztosítja a webes tesztekhez és riasztásokhoz való hozzáférés egységes vezérlését az alkalmazás-erőforrással együtt. [További információ](#access).
+> Rendeljen hozzá hozzáférést az **erőforráscsoport vagy az előfizetés** azon felhasználóihoz, amelyekhez az alkalmazás-erőforrás tartozik – nem az erőforráshoz. Rendelje hozzá a **Application Insights összetevő közreműködői** szerepkört. Ez biztosítja a webes tesztekhez és riasztásokhoz való hozzáférés egységes vezérlését az alkalmazás-erőforrással együtt. [További információk](#access).
 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
