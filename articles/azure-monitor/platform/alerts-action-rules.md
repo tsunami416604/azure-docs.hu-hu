@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.subservice: alerts
 ms.openlocfilehash: 6585890395d7656f239ac3098cd374ecd4757842
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80618992"
 ---
 # <a name="action-rules-preview"></a>Műveleti szabályok (előzetes verzió)
@@ -102,7 +102,7 @@ Ha a váltásban a **műveleti csoport** lehetőséget választja, akkor adjon h
 ### <a name="action-rule-details"></a>Műveleti szabály részletei
 
 Utolsó lépésként adja meg a következő adatokat a műveleti szabályhoz:
-* Name (Név)
+* Name
 * Az erőforráscsoport, amelyben mentve van
 * Leírás 
 

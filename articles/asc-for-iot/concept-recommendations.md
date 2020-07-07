@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/24/2019
 ms.author: mlottner
 ms.openlocfilehash: 213595ac69efc90ec855b2891641e1f00bd1ba92
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81311546"
 ---
 # <a name="security-recommendations"></a>Biztonsági javaslatok
@@ -33,7 +33,7 @@ Ebben a cikkben a IoT Hub és/vagy IoT-eszközökön aktiválható javaslatok li
 
 Az eszközökre vonatkozó javaslatok betekintést és javaslatokat nyújtanak az eszközök biztonsági helyzetének javítására.
 
-| Severity | Name (Név)                                                      | Adatforrás | Leírás                                                                                                                                                                                           |
+| Severity | Name                                                      | Adatforrás | Leírás                                                                                                                                                                                           |
 |----------|-----------------------------------------------------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Közepes   | Portok megnyitása az eszközön                                      | Ügynök       | Figyelő végpont található az eszközön.                                                                                                                                                        |
 | Közepes   | Az egyik láncban megtalálhatók a megengedhető tűzfal-szabályzatok. | Ügynök       | Engedélyezett tűzfal-házirend található (bemenet/kimenet). A tűzfal házirendjének alapértelmezés szerint el kell utasítania az összes forgalmat, és meg kell határoznia azokat a szabályokat, amelyek lehetővé teszik a szükséges kommunikációt az eszközön                               |
@@ -45,7 +45,7 @@ Az eszközökre vonatkozó javaslatok betekintést és javaslatokat nyújtanak a
 
 A működési javaslatok betekintést és javaslatokat nyújtanak a biztonsági ügynökök konfigurációjának javítására.
 
-| Severity | Name (Név)                                    | Adatforrás | Leírás                                                                       |
+| Severity | Name                                    | Adatforrás | Leírás                                                                       |
 |----------|-----------------------------------------|-------------|-----------------------------------------------------------------------------------|
 | Alacsony      | Az ügynök nem használt üzeneteket küld          | Ügynök       | az elmúlt 24 órában 10% vagy több biztonsági üzenet kisebb volt, mint 4 KB.  |
 | Alacsony      | A biztonsági Twin konfiguráció nem optimális | Ügynök       | A biztonsági Twin konfiguráció nem optimális.                                        |
@@ -56,7 +56,7 @@ A működési javaslatok betekintést és javaslatokat nyújtanak a biztonsági 
 
 Az ajánlási riasztások betekintést és javaslatokat nyújtanak a környezet biztonsági helyzetének javítására szolgáló műveletekhez.
 
-| Severity | Name (Név)                                                     | Adatforrás | Leírás                                                                                                                                                                                                             |
+| Severity | Name                                                     | Adatforrás | Leírás                                                                                                                                                                                                             |
 |----------|----------------------------------------------------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Magasság     | Több eszköz által használt azonos hitelesítési hitelesítő adatok | IoT Hub     | IoT Hub hitelesítési hitelesítő adatokat több eszköz is használja. Ez arra utalhat, hogy egy törvénytelen eszköz megszemélyesít egy legitim eszközt. Az ismétlődő hitelesítő adatok használata növeli az eszköz megszemélyesítésének kockázatát egy rosszindulatú színész által. |
 | Közepes   | Az alapértelmezett IP-szűrési házirendet meg kell tagadni                  | IoT Hub     | Az IP-szűrési konfigurációnak meg kell határoznia az engedélyezett forgalomra vonatkozó szabályokat, és alapértelmezés szerint meg kell tagadnia az összes többi forgalmat.                                                                                                     |

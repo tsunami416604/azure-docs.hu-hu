@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: a3a2317554f02dc1f1198d8019bbfdb50e3cc71c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81409766"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>A vész-helyreállítási szolgáltatás beállítása a VMware virtuális gépek/fizikai kiszolgálók esetében
@@ -64,7 +64,7 @@ Ezután futtassa a Plannert a következő módon:
 5. Elemezze a [jelentés javaslatait](site-recovery-vmware-deployment-planner-analyze-report.md) és a [költségbecslést](site-recovery-vmware-deployment-planner-cost-estimation.md).
 
 >[!NOTE]
-> Alapértelmezés szerint az eszköz a profilhoz van konfigurálva, és a jelentést legfeljebb 1000 virtuális gépre állítja elő. Ezt a korlátot megváltoztathatja a MaxVMsSupported kulcs értékének növelésével a ASRDeploymentPlanner. exe. config fájlban.
+> Alapértelmezés szerint az eszköz a profilhoz van konfigurálva, és a jelentést legfeljebb 1000 virtuális gépre állítja elő. Ezt a korlátot módosíthatja úgy, hogy növeli a MaxVMsSupported kulcs értékét a ASRDeploymentPlanner.exe.config fájlban.
 
 ## <a name="plan-target-azure-requirements-and-capacity"></a>A cél (Azure) követelményeinek és kapacitásának megtervezése
 
@@ -95,7 +95,7 @@ A határértékek egy órán belül Site Recovery által támogatott feladatátv
 
 Mit jelent a megfelelés? Azure-beli virtuális gép indításához az Azure-nak egyes illesztőprogramoknak rendszerindítási indítási állapotban kell lennie, és az olyan szolgáltatásokat, mint a DHCP, az automatikus indítást kell beállítani.
 - Azok a gépek, amelyek megfelelnek a követelményeknek, már rendelkeznek ezekkel a beállításokkal.
-- A Windows rendszert futtató gépek esetében proaktív módon ellenőrizhető a megfelelőség, és szükség esetén megfelelővé teheti azokat. [További információ](site-recovery-failover-to-azure-troubleshoot.md#failover-failed-with-error-id-170010).
+- A Windows rendszert futtató gépek esetében proaktív módon ellenőrizhető a megfelelőség, és szükség esetén megfelelővé teheti azokat. [További információk](site-recovery-failover-to-azure-troubleshoot.md#failover-failed-with-error-id-170010).
 - A Linux rendszerű gépeket csak a feladatátvétel időpontjában kell megfelelni.
 
 **A gép megfelel az Azure-nak?** | **Azure-beli virtuális gépek korlátai (felügyelt lemez feladatátvétele)**
@@ -155,7 +155,7 @@ A feldolgozási kiszolgáló kapacitását az adatváltozások aránya befolyás
 
 **CPU** | **Memory (Memória)** | **Lemez gyorsítótára** | **Adatforgalom aránya**
  --- | --- | --- | --- 
-12 vCPU<br> 2 szoftvercsatorna * 6 mag @ 2,5 GHz | 24 GB | 1 GB | Akár 2 TB naponta
+12 vCPU<br> 2 szoftvercsatorna * 6 mag @ 2,5 GHz | 24 GB | 1 GB | Akár 2 TB naponta
 
 Állítsa be a Process Servert a következőképpen:
 

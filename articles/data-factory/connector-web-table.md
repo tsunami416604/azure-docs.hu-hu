@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
 ms.openlocfilehash: 0eb4d37342685c13027a69bb6cb85f618fa63f20
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81410216"
 ---
 # <a name="copy-data-from-web-table-by-using-azure-data-factory"></a>Adatok másolása webes táblából Azure Data Factory használatával
@@ -59,12 +59,12 @@ A webes tábla társított szolgáltatása a következő tulajdonságokat támog
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A Type tulajdonságot a következőre kell beállítani: **web** |Igen |
+| típus | A Type tulajdonságot a következőre kell beállítani: **web** |Igen |
 | url | A webes forrás URL-címe |Igen |
 | authenticationType | Az engedélyezett érték: **Anonymous**. |Igen |
 | Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . A saját üzemeltetésű Integration Runtime az [Előfeltételek](#prerequisites)szakaszban említettek szerint kell megadni. |Igen |
 
-**Például**
+**Példa:**
 
 ```json
 {
@@ -91,11 +91,11 @@ Ha adatokat szeretne másolni a webtáblából, állítsa be az adatkészlet Typ
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **Webtable** | Igen |
+| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **Webtable** | Igen |
 | path |A táblázatot tartalmazó erőforrás relatív URL-címe. |Nem. Ha nincs megadva az elérési út, a rendszer csak a társított szolgáltatás definíciójában megadott URL-címet használja. |
 | index |Az erőforrásban található tábla indexe A HTML-lapokban található táblázat indexének beolvasásához szükséges lépésekért lásd: [index beolvasása egy html-oldalon](#get-index-of-a-table-in-an-html-page) . |Igen |
 
-**Például**
+**Példa:**
 
 ```json
 {
@@ -123,7 +123,7 @@ A tevékenységek definiálásához elérhető csoportok és tulajdonságok telj
 
 Az adatok webtáblából való másolásához a másolási tevékenységben állítsa be a forrás típusát a **Websource**értékre, a további tulajdonságok nem támogatottak.
 
-**Például**
+**Példa:**
 
 ```json
 "activities":[
@@ -162,7 +162,7 @@ Egy olyan tábla indexének lekéréséhez, amelyet az [adatkészlet tulajdonsá
 2. Kattintson a **New Query (új lekérdezés** ) elemre az eszköztáron, mutasson a **más forrásokból** lehetőségre, és kattintson **a from web**
 
     ![Power Query menü](./media/copy-data-from-web-table/PowerQuery-Menu.png)
-3. A **from web (webes** verzió) párbeszédpanelen adja meg az **URL-címet** , amelyet a társított szolgáltatás JSON- https://en.wikipedia.org/wiki/) ban kíván használni (például: az adatkészlethez megadott elérési úttal együtt (például: AFI% 27s_100_Years... 100_Movies), majd kattintson **az OK**gombra.
+3. A **from web (webes** verzió) párbeszédpanelen adja meg az **URL-címet** , amelyet a társított szolgáltatás JSON-ban kíván használni (például: az https://en.wikipedia.org/wiki/) adatkészlethez megadott elérési ÚTTAL együtt (például: AFI% 27s_100_Years... 100_Movies), majd kattintson **az OK**gombra.
 
     ![Webes párbeszédpanelen](./media/copy-data-from-web-table/FromWeb-DialogBox.png)
 

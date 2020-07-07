@@ -10,10 +10,10 @@ ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.openlocfilehash: 7504826f267d717f30c5e88621578412c744e5f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81383512"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>Data Lake Tools for Visual Studio használata az Azure HDInsight való kapcsolódáshoz és Apache Hive lekérdezések futtatásához
@@ -42,7 +42,7 @@ A Visual Studio verziójának Data Lake eszközeinek telepítéséhez kövesse a
 
     A Visual Studio telepítése során győződjön meg róla, hogy tartalmazza az **Azure-fejlesztési** számítási feladatot, illetve az **adattárolási és-feldolgozási** munkaterhelést.  
 
-    Meglévő Visual Studio-telepítések esetén nyissa meg az ide menüsort, és válassza az **eszközök** > **beolvasása eszközök és szolgáltatások** lehetőséget a Visual Studio telepítőjének megnyitásához. A **munkaterhelések** lapon válasszon ki legalább egy Azure-beli **fejlesztési** munkaterhelést (a **web & felhő**alatt). Vagy válassza ki az **adattárolási és-feldolgozási** munkaterhelést ( **más eszközkészletek**alatt).
+    Meglévő Visual Studio-telepítések esetén nyissa meg az ide menüsort, és válassza az **eszközök**  >  **beolvasása eszközök és szolgáltatások** lehetőséget a Visual Studio telepítőjének megnyitásához. A **munkaterhelések** lapon válasszon ki legalább egy Azure-beli **fejlesztési** munkaterhelést (a **web & felhő**alatt). Vagy válassza ki az **adattárolási és-feldolgozási** munkaterhelést ( **más eszközkészletek**alatt).
 
   ![Számítási feladatok kiválasztása, Visual Studio telepítő](./media/apache-hadoop-visual-studio-tools-get-started/vs-installation.png)
 
@@ -58,7 +58,7 @@ Ezt követően győződjön meg arról, hogy a legújabb verzióra frissíti Dat
 
 2. A **Start** ablakban válassza a **Folytatás kód nélkül**lehetőséget.
 
-3. A Visual Studio ide menüsorban válassza a **bővítmények** > **kezelése bővítmények**lehetőséget.
+3. A Visual Studio ide menüsorban válassza a **bővítmények**  >  **kezelése bővítmények**lehetőséget.
 
 4. A **Bővítmények kezelése** párbeszédpanelen bontsa ki a **frissítések** csomópontot.
 
@@ -88,9 +88,9 @@ Csatlakozás az Azure-előfizetéshez:
 
 2. A **Start** ablakban válassza a **Folytatás kód nélkül**lehetőséget.
 
-3. Az ide menüsorban válassza a**Server Explorer** **megtekintése** > lehetőséget.
+3. Az ide menüsorban válassza a **View**  >  **Server Explorer**megtekintése lehetőséget.
 
-4. A **Server Explorerben**kattintson a jobb gombbal az **Azure**elemre, válassza a **Kapcsolódás Microsoft Azure előfizetéshez**lehetőséget, és fejezze be a hitelesítési folyamatot. A **Server Explorerben**bontsa ki az **Azure** > **HDInsight** a meglévő HDInsight-fürtök listájának megtekintéséhez.
+4. A **Server Explorerben**kattintson a jobb gombbal az **Azure**elemre, válassza a **Kapcsolódás Microsoft Azure előfizetéshez**lehetőséget, és fejezze be a hitelesítési folyamatot. A **Server Explorerben**bontsa ki az **Azure**  >  **HDInsight** a meglévő HDInsight-fürtök listájának megtekintéséhez.
 
 5. Ha nem rendelkezik fürtökkel, hozzon létre egyet a Azure Portal, Azure PowerShell vagy a HDInsight SDK használatával. További információ: [fürtök beállítása a HDInsight-ben](../hdinsight-hadoop-provision-linux-clusters.md).
 
@@ -104,7 +104,7 @@ Miután csatlakozott az Azure-előfizetéshez, végrehajthatja a következő fel
 
 Csatlakozás az Azure Portalhoz a Visual Studióból:
 
-1. A **Server Explorerben**bontsa ki az **Azure** > **HDInsight** elemet, és válassza ki a fürtöt.
+1. A **Server Explorerben**bontsa ki az **Azure**  >  **HDInsight** elemet, és válassza ki a fürtöt.
 
 2. Kattintson a jobb gombbal egy HDInsight-fürtre, és válassza **a fürt kezelése Azure Portalban**lehetőséget.
 
@@ -112,7 +112,7 @@ Csatlakozás az Azure Portalhoz a Visual Studióból:
 
 Tegye fel kérdéseit, vagy küldjön visszajelzést a Visual Studiótól:
 
-1. A Server Explorerben válassza az **Azure** > **HDInsight**lehetőséget.
+1. A Server Explorerben válassza az **Azure**  >  **HDInsight**lehetőséget.
 
 2. Kattintson a jobb gombbal a **HDInsight** elemre, és válassza az **MSDN-fórum** lehetőséget a kérdések feltevéséhez, vagy **küldjön visszajelzést** a visszajelzésről.
 
@@ -125,11 +125,11 @@ HDInsight-fürt összekapcsolása:
 
 1. Kattintson a jobb gombbal a **HDInsight**elemre, majd válassza a **HDInsight-fürt csatolása** lehetőséget a **HDInsight-fürt csatolása** párbeszédpanel megjelenítéséhez.
 
-2. Adja meg a **kapcsolatok URL** -címét `https://CLUSTERNAME.azurehdinsight.net`az űrlapon. A **fürt neve** automatikusan betöltődik az URL-cím fürt neve részével, amikor egy másik mezőre lép. Ezután adjon meg egy **felhasználónevet** és egy **jelszót**, majd kattintson a **Tovább gombra**.
+2. Adja meg a **kapcsolatok URL-címét** az űrlapon `https://CLUSTERNAME.azurehdinsight.net` . A **fürt neve** automatikusan betöltődik az URL-cím fürt neve részével, amikor egy másik mezőre lép. Ezután adjon meg egy **felhasználónevet** és egy **jelszót**, majd kattintson a **Tovább gombra**.
 
     ![Fürt, HDInsight, Visual Studio csatolása](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-link-cluster-dialog.png)
 
-3. Válassza a **Finish** (Befejezés) elemet. Ha a fürt csatolása sikeres, a fürt megjelenik a **HDInsight** csomópont alatt.
+3. Válassza a **Befejezés** gombot. Ha a fürt csatolása sikeres, a fürt megjelenik a **HDInsight** csomópont alatt.
 
 Egy csatolt fürt frissítéséhez kattintson a jobb gombbal a fürtre, és válassza a **Szerkesztés**lehetőséget. Ezután frissítheti a fürt adatait.
 
@@ -156,19 +156,19 @@ Az [Apache Hive](https://hive.apache.org) egy Hadoop-alapú adattárház-infrast
 
 A Data Lake Tools for Visual Studio használatával megtekintheti a kaptár-feladatokon belül található tudnivalókat. A Data Lake Tools for Visual Studio begyűjti és a felszínre hozza bizonyos Hive-feladatok YARN-naplóit.
 
-A **Server Explorerben**válassza az **Azure** > **HDInsight** lehetőséget, majd válassza ki a fürtöt.  Ez a csomópont a **Kiszolgálókezelő** kiindulási pontja a követendő szakaszokhoz.
+A **Server Explorerben**válassza az **Azure**  >  **HDInsight** lehetőséget, majd válassza ki a fürtöt.  Ez a csomópont a **Kiszolgálókezelő** kiindulási pontja a követendő szakaszokhoz.
 
 ### <a name="view-hivesampletable"></a>A hivesampletable megtekintése
 
-Az összes HDInsight-fürthöz egy alapértelmezett minta nevű `hivesampletable`struktúra-tábla tartozik.  
+Az összes HDInsight-fürthöz egy alapértelmezett minta nevű struktúra-tábla tartozik `hivesampletable` .  
 
-A fürtből válassza a **kaptár adatbázisok** > **alapértelmezett** > **hivesampletable**elemet.
+A fürtből válassza a **kaptár adatbázisok**  >  **alapértelmezett**  >  **hivesampletable**elemet.
 
-* A `hivesampletable` séma megtekintése:
+* A séma megtekintése `hivesampletable` :
 
-    Bontsa ki a **hivesampletable**. Megjelennek az `hivesampletable` oszlopok nevei és adattípusai.
+    Bontsa ki a **hivesampletable**. Megjelennek az oszlopok nevei és adattípusai `hivesampletable` .
 
-* Az `hivesampletable` adatmegjelenítés:
+* Az adatmegjelenítés `hivesampletable` :
 
     Kattintson a jobb gombbal a **hivesampletable**elemre, majd válassza a **felső 100-sorok megtekintése**lehetőséget. A 100 találatok listája a **kaptár tábla: hivesampletable** ablakban jelenik meg. Ez a művelet egyenértékű a következő kaptár-lekérdezés futtatásával a kaptár ODBC-illesztő használatával:
 
@@ -180,7 +180,7 @@ A fürtből válassza a **kaptár adatbázisok** > **alapértelmezett** > **hive
 
 Hive-tábla létrehozásához használhatja a grafikus felhasználói felületet vagy a Hive-lekérdezéseket. A kaptár-lekérdezések használatáról a [kaptár-lekérdezések létrehozása és futtatása](#create-and-run-hive-queries)című témakörben olvashat bővebben.
 
-1. A fürtből válassza a **kaptár adatbázisok** > **alapértelmezett**lehetőséget.
+1. A fürtből válassza a **kaptár adatbázisok**  >  **alapértelmezett**lehetőséget.
 
 2. Kattintson a jobb gombbal az **alapértelmezett**elemre, majd válassza a **tábla létrehozása**lehetőséget.
 
@@ -205,7 +205,7 @@ Ad-hoc lekérdezés létrehozása és futtatása:
 
 2. Adja meg a kaptár-lekérdezést.
 
-    A Hive szerkesztője támogatja az IntelliSense-t. A Data Lake Tools for Visual Studio támogatja a távoli metaadatok betöltését a Hive-szkript szerkesztésekor. Ha például a (z) `SELECT * FROM`értéket adja meg, az IntelliSense felsorolja az összes javasolt táblanév nevét. Amikor megad egy táblanevet, az IntelliSense listázza az oszlopneveket. Az eszközök a legtöbb Hive DML-utasítást, -segédlekérdezést és beépített UDF-et támogatják.
+    A Hive szerkesztője támogatja az IntelliSense-t. A Data Lake Tools for Visual Studio támogatja a távoli metaadatok betöltését a Hive-szkript szerkesztésekor. Ha például a (z) értéket adja meg `SELECT * FROM` , az IntelliSense felsorolja az összes javasolt táblanév nevét. Amikor megad egy táblanevet, az IntelliSense listázza az oszlopneveket. Az eszközök a legtöbb Hive DML-utasítást, -segédlekérdezést és beépített UDF-et támogatják.
 
     ![IntelliSense 1. példa, kaptár ad-hoc lekérdezés, HDInsight-fürt, Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-intellisense-table-names.png)
 
@@ -248,7 +248,7 @@ Ad-hoc lekérdezés létrehozása és futtatása:
 
 Hive-megoldás létrehozása és futtatása:
 
-1. A menüsávban válassza a **fájl** > **új** > **projekt**lehetőséget.
+1. A menüsávban válassza a **fájl**  >  **új**  >  **projekt**lehetőséget.
 
 2. Az **új projekt létrehozása** ablakban jelölje be a keresőmezőbe, és írja be a **kaptár**kifejezést. Ezután válassza ki a **kaptár alkalmazást** , és kattintson a **Tovább gombra**.
 
@@ -310,11 +310,11 @@ Hive-feladatok megtekintése:
 
 ## <a name="run-apache-pig-scripts"></a>Apache Pig-parancsfájlok futtatása
 
-1. A menüsávban válassza a **fájl** > **új** > **projekt**lehetőséget.
+1. A menüsávban válassza a **fájl**  >  **új**  >  **projekt**lehetőséget.
 
 2. A **Start** ablakban jelölje be a keresőmezőbe, és írja be a **Pig**kifejezést. Ezután válassza a **Pig-alkalmazás** lehetőséget, majd kattintson a **Tovább gombra**.
 
-3. Az **új projekt konfigurálása** ablakban adja meg a **projekt nevét**, majd válasszon ki vagy hozzon létre egy **helyet** a projekt számára. Ezután válassza a **Létrehozás**lehetőséget.
+3. Az **új projekt konfigurálása** ablakban adja meg a **projekt nevét**, majd válasszon ki vagy hozzon létre egy **helyet** a projekt számára. Ezután kattintson a **Létrehozás** elemre.
 
 4. Az IDE- **megoldáskezelő** ablaktáblán kattintson duplán a **script. Pig** elemre a parancsfájl megnyitásához.
 

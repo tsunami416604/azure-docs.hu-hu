@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/04/2019
 ms.openlocfilehash: c433fc5d919a57476097257cac1b7176a9da598d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81410690"
 ---
 # <a name="copy-data-from-azure-database-for-mariadb-using-azure-data-factory"></a>Adatok másolása Azure Database for MariaDB használatával Azure Data Factory 
@@ -47,11 +47,11 @@ Azure Database for MariaDB társított szolgáltatás a következő tulajdonság
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A Type tulajdonságot a következőre kell beállítani: **AzureMariaDB** | Igen |
-| connectionString | Azure Database for MariaDBhoz való kapcsolódáshoz használandó kapcsolati karakterlánc. Megtalálhatja a Azure Portal-> az Azure Database for MariaDB-> kapcsolatok karakterláncait – > ADO.NET egyet. <br/> A jelszót a Azure Key Vaultban is elhelyezheti, és `pwd` lekérheti a konfigurációt a kapcsolatok sztringből. További részletekért tekintse meg a következő mintákat, és [tárolja a hitelesítő adatokat Azure Key Vault](store-credentials-in-key-vault.md) cikkben. | Igen |
+| típus | A Type tulajdonságot a következőre kell beállítani: **AzureMariaDB** | Igen |
+| connectionString | Azure Database for MariaDBhoz való kapcsolódáshoz használandó kapcsolati karakterlánc. Megtalálhatja a Azure Portal-> az Azure Database for MariaDB-> kapcsolatok karakterláncait – > ADO.NET egyet. <br/> A jelszót a Azure Key Vaultban is elhelyezheti, és lekérheti a `pwd` konfigurációt a kapcsolatok sztringből. További részletekért tekintse meg a következő mintákat, és [tárolja a hitelesítő adatokat Azure Key Vault](store-credentials-in-key-vault.md) cikkben. | Igen |
 | Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. |Nem |
 
-**Például**
+**Példa:**
 
 ```json
 {
@@ -103,10 +103,10 @@ Az adatok Azure Database for MariaDBból történő másolásához a következő
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **AzureMariaDBTable** | Igen |
+| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **AzureMariaDBTable** | Igen |
 | tableName | A tábla neve. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
 
-**Például**
+**Példa**
 
 ```json
 {
@@ -133,10 +133,10 @@ Az adatok Azure Database for MariaDBból történő másolásához a másolási 
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **AzureMariaDBSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például: `"SELECT * FROM MyTable"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
+| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **AzureMariaDBSource** | Igen |
+| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Példa: `"SELECT * FROM MyTable"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
 
-**Például**
+**Példa:**
 
 ```json
 "activities":[

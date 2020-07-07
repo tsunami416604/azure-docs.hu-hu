@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.openlocfilehash: a0e75957a0ab49394dab56f2b7fb847dee4b43cb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81413681"
 ---
 # <a name="flatten-transformation-in-mapping-data-flow"></a>Átalakítás összeolvasztása a leképezési adatfolyamban
@@ -20,7 +20,7 @@ ms.locfileid: "81413681"
 
 A összeolvasztási transzformáció használatával a tömb értékeit hierarchikus struktúrákba, például JSON-ba helyezheti el, és lefordíthatja őket különálló sorokba. Ez a folyamat denormalizálás néven ismert.
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>Konfiguráció
 
 A összeolvasztási transzformáció a következő konfigurációs beállításokat tartalmazza
 
@@ -68,7 +68,7 @@ Tekintse meg a következő JSON-objektumot az alábbi példákban a lelapul áta
 
 | Legördülő | Legördülő gyökér | Vetület |
 | --------- | ----------- | ---------- |
-| termékek. ügyfelek | None | név <br> ügyfél = termékek. ügyfél |
+| termékek. ügyfelek | None | name <br> ügyfél = termékek. ügyfél |
 
 #### <a name="output"></a>Kimenet
 
@@ -86,7 +86,7 @@ Tekintse meg a következő JSON-objektumot az alábbi példákban a lelapul áta
 
 | Legördülő | Legördülő gyökér | Vetület |
 | --------- | ----------- | ---------- |
-| áruk. Orders. szállított. orderItems | None | név <br> Rendeléskód = termékek. Orders. Rendeléskód <br> itemName = termékek. Orders. szállított. orderItems. itemName <br> itemQty = termékek. Orders. szállított. orderItems. itemQty <br> hely = hely |
+| áruk. Orders. szállított. orderItems | None | name <br> Rendeléskód = termékek. Orders. Rendeléskód <br> itemName = termékek. Orders. szállított. orderItems. itemName <br> itemQty = termékek. Orders. szállított. orderItems. itemQty <br> hely = hely |
 
 #### <a name="output"></a>Kimenet
 
@@ -107,7 +107,7 @@ Tekintse meg a következő JSON-objektumot az alábbi példákban a lelapul áta
 
 | Legördülő | Legördülő gyökér | Vetület |
 | --------- | ----------- | ---------- |
-| termékek. megrendelések | termékek. megrendelések | név <br> áruk. Orders. szállított. orderItems. itemName <br> termékek. ügyfelek <br> location |
+| termékek. megrendelések | termékek. megrendelések | name <br> áruk. Orders. szállított. orderItems. itemName <br> termékek. ügyfelek <br> location |
 
 #### <a name="output"></a>Kimenet
 
@@ -123,7 +123,7 @@ Tekintse meg a következő JSON-objektumot az alábbi példákban a lelapul áta
 
 | Legördülő | Legördülő gyökér | Vetület |
 | --------- | ----------- | ---------- |
-| áruk. Orders. szállított. orderItem | termékek. megrendelések |név <br> Rendeléskód = termékek. Orders. Rendeléskód <br> itemName = termékek. Orders. szállított. orderItems. itemName <br> itemQty = termékek. Orders. szállított. orderItems. itemQty <br> hely = hely |
+| áruk. Orders. szállított. orderItem | termékek. megrendelések |name <br> Rendeléskód = termékek. Orders. Rendeléskód <br> itemName = termékek. Orders. szállított. orderItems. itemName <br> itemQty = termékek. Orders. szállított. orderItems. itemQty <br> hely = hely |
 
 #### <a name="output"></a>Kimenet
 
@@ -141,7 +141,7 @@ Tekintse meg a következő JSON-objektumot az alábbi példákban a lelapul áta
 
 ## <a name="data-flow-script"></a>Adatfolyamszkript
 
-### <a name="syntax"></a>Szintaxis
+### <a name="syntax"></a>Syntax
 
 ```
 <incomingStream>

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: spelluru
 ms.openlocfilehash: fd65c20f07a091fa1fc8a6cbf003986e1096ebe3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81393341"
 ---
 # <a name="azure-event-hubs-as-an-event-grid-source"></a>Azure-Event Hubs Event Grid forrásként
@@ -57,20 +57,20 @@ Ez a példa egy Event hub-esemény sémáját jeleníti meg, amikor a rögzíté
 
 Egy esemény a következő legfelső szintű adattal rendelkezik:
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Típus | Description |
 | -------- | ---- | ----------- |
 | témakör | sztring | Az eseményforrás teljes erőforrás-elérési útja. Ez a mező nem írható. Az értéket az Event Grid adja meg. |
 | tulajdonos | sztring | Az esemény tárgyra mutató, a közzétevő által megadott elérési út. |
 | eventType | sztring | Az eseményforráshoz felvett eseménytípusok egyike. |
 | eventTime | sztring | Az esemény a szolgáltató UTC-ideje alapján történő létrehozásakor. |
 | id | sztring | Az esemény egyedi azonosítója. |
-| data | objektum | Event hub-események adatvédelme. |
+| adatok | objektum | Event hub-események adatvédelme. |
 | dataVersion | sztring | Az adatobjektum sémaverziója. A sémaverziót a közzétevő határozza meg. |
 | metadataVersion | sztring | Az esemény metaadatok sémaverziója. A legfelső szintű tulajdonságokra az Event Grid határozza meg a sémát. Az értéket az Event Grid adja meg. |
 
 Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Típus | Description |
 | -------- | ---- | ----------- |
 | fileUrl | sztring | A rögzítési fájl elérési útja. |
 | fileType | sztring | A rögzítési fájl fájltípusa. |

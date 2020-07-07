@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 06/3/2019
 ms.author: Zhchia
 ms.openlocfilehash: 68e17ba1dd5981e565e56d6c8137f77d33ad755b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81393494"
 ---
 # <a name="tutorial-configure-envoy-for-automatic-user-provisioning"></a>Oktatóanyag: a megbízottat konfigurálása automatikus felhasználó-kiépítési folyamathoz
@@ -136,7 +136,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
    |név. formázott|Sztring|
    |phoneNumbers [type EQ "Mobile"]. Value|Sztring|
    |phoneNumbers [type EQ "work"]. Value|Sztring|
-   |locale|Sztring|
+   |területi beállítás|Sztring|
 
 10. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása a megbízottat**lehetőséget.
 
@@ -171,7 +171,7 @@ Miután konfigurálta az üzembe helyezést, a következő erőforrásokkal figy
 * Ellenőrizze a [folyamatjelző sáv](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) állapotát a kiépítési ciklus állapotának megtekintéséhez és a Befejezés befejezéséhez.
 * Ha úgy tűnik, hogy a kiépítési konfiguráció sérült állapotban van, az alkalmazás Karanténba kerül. További információ a karanténba [helyezett állapotokról](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

@@ -4,10 +4,10 @@ description: Az erőforrások új erőforráscsoporthoz vagy előfizetésbe val�
 ms.topic: conceptual
 ms.date: 03/02/2020
 ms.openlocfilehash: ffb5f8be81d3628084d127db404ab994d4d5b938
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80631499"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
@@ -156,7 +156,7 @@ GET <location-url>
 Authorization: Bearer <access-token>
 ```
 
-Amíg a művelet még fut, továbbra is megkapja a 202 állapotkódot. Várjon az `retry-after` értékben szereplő másodpercek számát, mielőtt újra próbálkozik. Ha az áthelyezési művelet sikeresen érvényesítve lett, a 204-as állapotkód jelenik meg. Ha az áthelyezés ellenőrzése sikertelen, hibaüzenet jelenik meg, például:
+Amíg a művelet még fut, továbbra is megkapja a 202 állapotkódot. Várjon az értékben szereplő másodpercek számát, `retry-after` mielőtt újra próbálkozik. Ha az áthelyezési művelet sikeresen érvényesítve lett, a 204-as állapotkód jelenik meg. Ha az áthelyezés ellenőrzése sikertelen, hibaüzenet jelenik meg, például:
 
 ```json
 {"error":{"code":"ResourceMoveProviderValidationFailed","message":"<message>"...}}
@@ -208,7 +208,7 @@ plan=$(az resource show -g OldRG -n ExamplePlan --resource-type "Microsoft.Web/s
 az resource move --destination-group newgroup --ids $webapp $plan
 ```
 
-Új előfizetésre való áttéréshez adja meg `--destination-subscription-id` a paramétert.
+Új előfizetésre való áttéréshez adja meg a `--destination-subscription-id` paramétert.
 
 Ha hibaüzenetet kap, tekintse meg [Az Azure-erőforrások új erőforráscsoporthoz vagy előfizetésbe való áthelyezésével kapcsolatos](troubleshoot-move.md)témakört.
 

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/08/2019
 ms.author: sutalasi
 ms.openlocfilehash: 2bbb02df782439d934e96e7c16f28b9c11cc01fe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81408639"
 ---
 # <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Azure Disk Encryption-kompatibilis virtuális gépek replikálása egy másik Azure-régióba
@@ -42,7 +42,7 @@ Ha engedélyezni szeretné a lemezes titkosítást használó virtuális gépek 
 
 Az engedélyek kezeléséhez nyissa meg a Key Vault-erőforrást a portálon. Adja meg a felhasználóhoz szükséges engedélyeket. Az alábbi példa bemutatja, hogyan engedélyezheti az engedélyeket a Key Vault *ContosoWeb2Keyvault*, amely a forrásoldali régióban található.
 
-1. Nyissa meg a **Home** > **Vaults** > **ContosoWeb2KeyVault > hozzáférési házirendeket**.
+1. Nyissa meg a **Home**  >  **Vaults**  >  **ContosoWeb2KeyVault > hozzáférési házirendeket**.
 
    ![Key Vault-engedélyek ablak](./media/azure-to-azure-how-to-enable-replication-ade-vms/key-vault-permission-1.png)
 
@@ -60,9 +60,9 @@ Az engedélyek hibaelhárításához tekintse meg a cikk későbbi részében ta
 ## <a name="copy-disk-encryption-keys-to-the-dr-region-by-using-the-powershell-script"></a>Lemezes titkosítási kulcsok másolása a DR régióba a PowerShell-parancsfájl használatával
 
 1. [Nyissa meg a "CopyKeys" nyers parancsfájl kódját](https://aka.ms/ade-asr-copy-keys-code).
-2. Másolja a szkriptet egy fájlba, és nevezze el **copy-Keys. ps1**néven.
+2. Másolja a szkriptet egy fájlba, és nevezze el **Copy-keys.ps1**.
 3. Nyissa meg a Windows PowerShell alkalmazást, és keresse meg azt a mappát, ahová a fájlt mentette.
-4. Futtassa a copy-Keys. ps1 programot.
+4. Copy-keys.ps1 végrehajtása.
 5. Adja meg az Azure-beli hitelesítő adatokat a bejelentkezéshez.
 6. Válassza ki a virtuális gépek **Azure-előfizetését** .
 7. Várjon, amíg betölti az erőforráscsoportok betöltését, majd válassza ki a virtuális gépekhez tartozó **erőforráscsoportot** .
@@ -86,7 +86,7 @@ Ebben a példában az elsődleges Azure-régió Kelet-Ázsia, a másodlagos rég
     - **Forrás-előfizetés**: az előfizetés, amelyhez a forrás virtuális gépek tartoznak. Minden olyan előfizetés lehet, amely ugyanabban a Azure Active Directory bérlőben található, mint a Recovery Services-tároló.
     - **Erőforráscsoport**: az erőforráscsoport, amelyhez a forrás virtuális gépek tartoznak. A következő lépésben a kiválasztott erőforráscsoport összes virtuális gépe szerepel a védelemben.
 
-3. **Virtual Machines** > **válassza a virtuális gépek lehetőséget**, és válassza ki a replikálni kívánt virtuális gépeket. Csak olyan gépeket választhat, amelyeken használható a replikáció funkció. Ezután kattintson **az OK gombra**.
+3. **Virtual Machines**  >  **válassza a virtuális gépek lehetőséget**, és válassza ki a replikálni kívánt virtuális gépeket. Csak olyan gépeket választhat, amelyeken használható a replikáció funkció. Ezután kattintson **az OK gombra**.
 
 4. A **Beállítások**területen a következő cél-hely beállításokat állíthatja be.
 
@@ -118,7 +118,7 @@ Az alábbi lépéseket követve módosíthatja a Site Recovery alapértelmezett 
    - A céllemez **titkosítási kulcstárolójának**kiválasztásához válassza ki a cél lemez titkosítási kulcstárolót az előfizetés célhelyén található kulcstartók listájából.
    - A **cél kulcsú titkosítási Key**Vault esetében válassza ki a célként megadott kulcs titkosítási kulcsának tárolóját az előfizetés célhelyén található kulcstartók listájából.
 
-3. Válassza a **cél erőforrás** > létrehozása a**replikáció engedélyezése**lehetőséget.
+3. Válassza a **cél erőforrás létrehozása**a  >  **replikáció engedélyezése**lehetőséget.
 4. Miután a virtuális gépek engedélyezettek a replikáláshoz, a virtuális gépek állapotát a **replikált elemek**területen tekintheti meg.
 
 >[!NOTE]
@@ -129,7 +129,7 @@ A következő esetekben frissítenie kell a cél virtuális gép titkosítási b
   - Engedélyezte Site Recovery replikációt a virtuális gépen. Később engedélyezte a lemez titkosítását a forrásoldali virtuális gépen.
   - Engedélyezte Site Recovery replikációt a virtuális gépen. Később megváltoztatta a lemez titkosítási kulcsát vagy a kulcs titkosítási kulcsát a forrás virtuális gépen.
 
-[Egy parancsfájl](#copy-disk-encryption-keys-to-the-dr-region-by-using-the-powershell-script) használatával másolhatja a titkosítási kulcsokat a célként megadott régióba, majd frissítheti a cél titkosítási beállításokat a **Recovery Services** > -tároló*replikált elemek* > **tulajdonságai** > **számítás és hálózat**lehetőségnél.
+[Egy parancsfájl](#copy-disk-encryption-keys-to-the-dr-region-by-using-the-powershell-script) használatával másolhatja a titkosítási kulcsokat a célként megadott régióba, majd frissítheti a cél titkosítási beállításokat a **Recovery Services**-tároló  >  *replikált elemek*  >  **tulajdonságai**  >  **számítás és hálózat**lehetőségnél.
 
 ![Az ADE-beállítások frissítése párbeszédpanel](./media/azure-to-azure-how-to-enable-replication-ade-vms/update-ade-settings.png)
 
@@ -141,7 +141,7 @@ Azure Site Recovery legalább olvasási engedéllyel kell rendelkeznie a forrás
 **A javítás módja:** Függetlenül attól, hogy Ön előfizetés-rendszergazda-e, vagy sem, fontos, hogy kérjen engedélyt a kulcstartón.
 
 1. Lépjen a forrás régió Key vaultba, amely ebben a példában a "ContososourceKeyvault" > **hozzáférési szabályzatok** 
-2. A **válasszon** felhasználói nevet a felhasználó kiválasztása területen például a következőt adja meg: "dradmin@contoso.com"
+2. A **válasszon** felhasználói nevet a felhasználó kiválasztása területen például a következőt adja meg: " dradmin@contoso.com "
 3. A **kulcs engedélyei** területen válassza a beolvasás lehetőséget. 
 4. A **titok engedélye** területen válassza a beolvasás lehetőséget. 
 5. A hozzáférési házirend mentése
@@ -153,7 +153,7 @@ A forrástartomány Key Vault összes engedélyével rendelkezik. A védelem sor
 
 A [célként megadott Key vaulthoz](#required-user-permissions) szükséges engedély
 
-**A javítás módja:** Lépjen a **Home** > **Keyvaults** > kulcstartók**ContosotargetKeyvault** > **hozzáférési szabályzatok lehetőségre** , és adja hozzá a megfelelő engedélyeket.
+**A javítás módja:** Lépjen a **Home**kulcstartók  >  **Keyvaults**  >  **ContosotargetKeyvault**  >  **hozzáférési szabályzatok lehetőségre** , és adja hozzá a megfelelő engedélyeket.
 
 ## <a name="next-steps"></a>További lépések
 

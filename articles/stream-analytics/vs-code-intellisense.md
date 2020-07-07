@@ -7,10 +7,10 @@ ms.author: sujie
 ms.date: 4/11/2020
 ms.topic: conceptual
 ms.openlocfilehash: 25ece3174cd65df9c665888d913cf6b9029904b1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81394396"
 ---
 # <a name="intellisense-in-azure-stream-analytics-tools-for-visual-studio-code"></a>IntelliSense Azure Stream Analytics Visual Studio Code-eszközökön
@@ -21,9 +21,9 @@ Az IntelliSense [stream Analytics lekérdezési nyelvhez](https://docs.microsoft
 
 ## <a name="intellisense-features"></a>IntelliSense-funkciók
 
-A VS Code Stream Analytics eszközeinek IntelliSense-funkcióit egy nyelvi szolgáltatás látja el. A nyelvi szolgáltatás elemzi a forráskódot, és intelligens kódokat biztosít a nyelvi szemantika alapján. Ha egy nyelvi szolgáltatás képes a lehetséges befejezésre, az IntelliSense-javaslatok beírásakor. Ha folytatja a beírást, a rendszer szűri a tagok, például a változók és a metódusok listáját úgy, hogy csak olyan tagokat tartalmazzon, amelyek tartalmazzák a beírt karaktereket. Ha megnyomja `Tab` a `Enter` vagy a billentyűt, az IntelliSense beszúrja a kiválasztott tagot.
+A VS Code Stream Analytics eszközeinek IntelliSense-funkcióit egy nyelvi szolgáltatás látja el. A nyelvi szolgáltatás elemzi a forráskódot, és intelligens kódokat biztosít a nyelvi szemantika alapján. Ha egy nyelvi szolgáltatás képes a lehetséges befejezésre, az IntelliSense-javaslatok beírásakor. Ha folytatja a beírást, a rendszer szűri a tagok, például a változók és a metódusok listáját úgy, hogy csak olyan tagokat tartalmazzon, amelyek tartalmazzák a beírt karaktereket. Ha megnyomja a `Tab` vagy a `Enter` billentyűt, az IntelliSense beszúrja a kiválasztott tagot.
 
-Az IntelliSense bármely szerkesztő ablakban aktiválható egy trigger karakter, például a pont karakter `.`beírásával.
+Az IntelliSense bármely szerkesztő ablakban aktiválható egy trigger karakter, például a pont karakter beírásával `.` .
 
 ![IntelliSense-Újratöltés](./media/vs-code-intellisense/auto-completion.gif)
 

@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.custom: seodec18
 ms.openlocfilehash: b564373780da5bba71bc46ddbac3dc69a0c94a4a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81382785"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Azure Time Series Insights Explorer
@@ -75,7 +75,7 @@ Az eseményforrás a Time Series Insights-környezethez való csatlakoztatását
          |---------|---------|---------|
          |**<**, **>**, **<=**, **>=**    |  **Double**, **datetime**, **TimeSpan**       |         |
          |**=**, **!=**,**<>**     | **Karakterlánc**, **bool**, **Double**, **datetime**, **TimeSpan**, **Null**        |         |
-         |**IN**     | **Karakterlánc**, **bool**, **Double**, **datetime**, **TimeSpan**, **Null**        |  Az összes operandusnak azonos típusúnak vagy **Null** konstansnak kell lennie.        |
+         |**A**     | **Karakterlánc**, **bool**, **Double**, **datetime**, **TimeSpan**, **Null**        |  Az összes operandusnak azonos típusúnak vagy **Null** konstansnak kell lennie.        |
          |**RENDELKEZIK**     | **Sztring**        |  A jobb oldalon csak konstans karakterlánc-literálok engedélyezettek. Üres karakterlánc és **Null érték** nem engedélyezett.       |
 
       - **Példák lekérdezésekre**

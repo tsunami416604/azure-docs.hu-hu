@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: spelluru
 ms.openlocfilehash: d5d50bbde927efd4aee0cedd69486a52ab8c328b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81394331"
 ---
 # <a name="azure-media-services-as-an-event-grid-source"></a>Azure Media Services Event Grid forrásként
@@ -47,7 +47,7 @@ A feladatok több feladatot is tartalmazhatnak (ha úgy állította be az átala
 
 Az egyes **feladatok** magasabb szinten lesznek, mint a **JobOutput**, így a feladatok kimeneti eseményei egy adott feladatokon belül kerülnek beindításra. 
 
-A-ben lévő `JobFinished` `JobCanceled` `JobError` hibaüzenetek az egyes feladatok kimenetének összesített eredményeit jelenítik meg – ha mindegyik elkészült. Míg a feladat kimeneti eseményei az egyes feladatok befejeződése után következnek be. Ha például kódolási kimenettel rendelkezik, amelyet egy videó-elemzési kimenet követ, akkor a végső JobFinished esemény előtt két eseményt kell beolvasnia, mielőtt az összesített adatokat beolvassa.
+A-ben lévő hibaüzenetek az `JobFinished` `JobCanceled` `JobError` egyes feladatok kimenetének összesített eredményeit jelenítik meg – ha mindegyik elkészült. Míg a feladat kimeneti eseményei az egyes feladatok befejeződése után következnek be. Ha például kódolási kimenettel rendelkezik, amelyet egy videó-elemzési kimenet követ, akkor a végső JobFinished esemény előtt két eseményt kell beolvasnia, mielőtt az összesített adatokat beolvassa.
 
 | Eseménytípus | Leírás |
 | ---------- | ----------- |
@@ -75,7 +75,7 @@ A Media Services az alább leírt **élő** események típusait is kibocsátja.
 
 ### <a name="stream-level-events"></a>Stream szintű események
 
-Adatfolyam-szintű események jönnek létre adatfolyamként vagy kapcsolatonként. Minden eseményhez tartozik `StreamId` egy paraméter, amely a kapcsolat vagy a stream azonosítására szolgál. Minden adatfolyam vagy-kapcsolatok egy vagy több különböző típusú sávot tartalmaz. Előfordulhat például, hogy egy kódoló egyik csatlakoztatása egy hangsávval és négy videóval rendelkezik. A stream-események típusai a következők:
+Adatfolyam-szintű események jönnek létre adatfolyamként vagy kapcsolatonként. Minden eseményhez tartozik egy `StreamId` paraméter, amely a kapcsolat vagy a stream azonosítására szolgál. Minden adatfolyam vagy-kapcsolatok egy vagy több különböző típusú sávot tartalmaz. Előfordulhat például, hogy egy kódoló egyik csatlakoztatása egy hangsávval és négy videóval rendelkezik. A stream-események típusai a következők:
 
 | Eseménytípus | Leírás |
 | ---------- | ----------- |
@@ -659,7 +659,7 @@ Egy esemény a következő legfelső szintű adattal rendelkezik:
 | eventType | sztring | Az eseményforráshoz felvett eseménytípusok egyike. Például: "Microsoft. Media. JobStateChange". |
 | eventTime | sztring | Az esemény a szolgáltató UTC-ideje alapján történő létrehozásakor. |
 | id | sztring | Az esemény egyedi azonosítója. |
-| data | objektum | Media Services az eseményekre vonatkozó adatgyűjtést. |
+| adatok | objektum | Media Services az eseményekre vonatkozó adatgyűjtést. |
 | dataVersion | sztring | Az adatobjektum sémaverziója. A sémaverziót a közzétevő határozza meg. |
 | metadataVersion | sztring | Az esemény metaadatok sémaverziója. A legfelső szintű tulajdonságokra az Event Grid határozza meg a sémát. Az értéket az Event Grid adja meg. |
 
@@ -667,8 +667,8 @@ Egy esemény a következő legfelső szintű adattal rendelkezik:
 
 [Regisztrálja a feladatok állapotának változási eseményeit](../media-services/latest/job-state-events-cli-how-to.md)
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 - [A Media Service-eseményeket tartalmazó EventGrid .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/)
 - [Media Services események definíciói](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/eventgrid/data-plane/Microsoft.Media/stable/2018-01-01/MediaServices.json)
-- [Élő események hibakódjai](../media-services/latest/live-event-error-codes.md)
+- [Élő események hibakódja](../media-services/latest/live-event-error-codes.md)

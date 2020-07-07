@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 1/30/2020
 ms.author: mlottner
 ms.openlocfilehash: 4dd7ca8f926862487b9505731c0662e68ee3d7c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81311277"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>Biztonsági modul üzembe helyezése a IoT Edge eszközön
@@ -131,7 +131,7 @@ Hajtsa végre az egyes lépéseket a Azure Security Center IoT való IoT Edge te
 
 1. Kattintson a **Mentés** gombra.
 
-1. Kattintson a **Tovább** gombra.
+1. Válassza a **Tovább** lehetőséget.
 
 #### <a name="step-3-specify-routes"></a>3. lépés: útvonalak meghatározása
 
@@ -147,7 +147,7 @@ Hajtsa végre az egyes lépéseket a Azure Security Center IoT való IoT Edge te
     "ASCForIoTRoute": "FROM /messages/modules/azureiotsecurity/* INTO $upstream"
     ```
 
-1. Kattintson a **Tovább** gombra.
+1. Válassza a **Tovább** lehetőséget.
 
 #### <a name="step-4-review-deployment"></a>4. lépés: az üzembe helyezés áttekintése
 
@@ -165,7 +165,7 @@ Ha problémába ütközik, a tároló naplói a legjobb módszer a IoT Edge bizt
 
 1. Ellenőrizze, hogy a következő tárolók futnak-e:
 
-   | Name (Név) | KÉP |
+   | Name | KÉP |
    | --- | --- |
    | azureiotsecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:1.0.2 |
    | edgeHub | mcr.microsoft.com/azureiotedge-hub:1.0.8.3 |
@@ -179,7 +179,7 @@ Ha problémába ütközik, a tároló naplói a legjobb módszer a IoT Edge bizt
 
    `sudo docker logs azureiotsecurity`
 
-1. A részletes naplókhoz adja hozzá a következő környezeti változót a **azureiotsecurity** modul telepítéséhez: `logLevel=Debug`.
+1. A részletes naplókhoz adja hozzá a következő környezeti változót a **azureiotsecurity** modul telepítéséhez: `logLevel=Debug` .
 
 ## <a name="next-steps"></a>További lépések
 
