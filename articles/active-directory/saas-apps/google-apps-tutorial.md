@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f87a80d5300b58b9f888d3e485d5e9dbf90c4a80
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 091129d1fbca4141e9841af6a9991d44a6663801
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/01/2020
-ms.locfileid: "85608698"
+ms.locfileid: "85799190"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-google-cloud-g-suite-connector"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Google Cloud (G Suite) összekötővel
 
@@ -129,19 +129,19 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     b. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:
 
-        ```https
-        google.com/a/<yourdomain.com>
-        google.com
-        https://google.com
-        https://google.com/a/<yourdomain.com>
-        ```
+    ```http
+    google.com/a/<yourdomain.com>
+    google.com
+    https://google.com
+    https://google.com/a/<yourdomain.com>
+    ```
 
     c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: 
 
-        ```https
-        https://www.google.com
-        https://www.google.com/a/<yourdomain.com>
-        ```
+    ```http
+    https://www.google.com
+    https://www.google.com/a/<yourdomain.com>
+    ```
 
 1. Ha az **alapszintű SAML-konfiguráció** szakaszban szeretné konfigurálni a **Google Cloud platform** , hajtsa végre a következő lépéseket:
 
@@ -149,19 +149,19 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     b. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:
     
-        ```https
-        google.com/a/<yourdomain.com>
-        google.com
-        https://google.com
-        https://google.com/a/<yourdomain.com>
-        ```
+    ```http
+    google.com/a/<yourdomain.com>
+    google.com
+    https://google.com
+    https://google.com/a/<yourdomain.com>
+    ```
     
     c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: 
     
-        ```https
-        https://www.google.com
-        https://www.google.com/a/<yourdomain.com>
-        ```
+    ```http
+    https://www.google.com
+    https://www.google.com/a/<yourdomain.com>
+    ```
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. A Google Cloud (G Suite) összekötő nem ad meg entitás-azonosító/azonosító értéket az egyszeri bejelentkezés konfigurációjában, így ha törli a **tartományi specifikus kiállítói** beállítást, az azonosító értéke a következő lesz: `google.com` . Ha bejelöli a **tartományra jellemző kiállítói** lehetőséget, az lesz `google.com/a/<yourdomainname.com>` . A **tartomány-specifikus kiállítói** beállítás bejelöléséhez vagy a kijelölés kikapcsolásához lépjen a **Google Cloud (G Suite)-összekötő egyszeri bejelentkezésre szolgáló SSO** szakaszra, amelyet az oktatóanyag későbbi részében ismertet. További információért forduljon a [Google Cloud (G Suite) Connector ügyfél-támogatási csapatához](https://www.google.com/contact/).

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 06/30/2020
 ms.author: aahi
-ms.openlocfilehash: d2cd4e56477ea39587ce318538c9ddd84c51b03b
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: bc7dfcef45917081ec9ea1e97f4c36e4348dd9e7
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75448122"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985275"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-java"></a>Gyors útmutató: Digitális tinta felismerése a kézírás-felismerő REST API és Javával
 
@@ -31,7 +31,7 @@ Ennek a rövid útmutatónak a forráskódja a [githubon](https://go.microsoft.c
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- A [Java&trade; Development Kit (JDK) 7-es](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) vagy újabb verziója.
+- A [Java &trade; Development Kit (JDK) 7-es](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) vagy újabb verziója.
 
 - A kódtárak importálása a Maven adattárból
     - [JSON a Java-](https://mvnrepository.com/artifact/org.json/json) csomagban
@@ -55,23 +55,23 @@ Ennek a rövid útmutatónak a forráskódja a [githubon](https://go.microsoft.c
 
 ## <a name="create-a-function-to-send-requests"></a>Függvény létrehozása a kérelmek küldéséhez
 
-1. Hozzon létre egy nevű `sendRequest()` új függvényt, amely a fent létrehozott változókat veszi igénybe. Ezután hajtsa végre a következő lépéseket.
+1. Hozzon létre egy nevű új függvényt `sendRequest()` , amely a fent létrehozott változókat veszi igénybe. Ezután hajtsa végre a következő lépéseket.
 
-2. Hozzon `CloseableHttpClient` létre egy objektumot, amely küldhet kérelmeket az API-nak. Küldje el a kérést `HttpPut` egy kérelem objektumnak a végpont és a kézírás-felismerő URL-címének kombinálásával.
+2. Hozzon létre egy `CloseableHttpClient` objektumot, amely küldhet kérelmeket az API-nak. Küldje el a kérést egy `HttpPut` kérelem objektumnak a végpont és a kézírás-felismerő URL-címének kombinálásával.
 
-3. A kérelem `setHeader()` funkciójának használatával állítsa be a `Content-Type` fejlécet `application/json`, és adja hozzá az előfizetési kulcsot `Ocp-Apim-Subscription-Key` a fejléchez.
+3. A kérelem `setHeader()` funkciójának használatával állítsa be a `Content-Type` fejlécet `application/json` , és adja hozzá az előfizetési kulcsot a `Ocp-Apim-Subscription-Key` fejléchez.
 
 4. Használja a kérelem `setEntity()` függvényét az elküldeni kívánt adathoz.   
 
-5. A kérelem elküldéséhez használja az ügyfél `execute()` függvényét, és mentse egy `CloseableHttpResponse` objektumba. 
+5. A `execute()` kérelem elküldéséhez használja az ügyfél függvényét, és mentse egy `CloseableHttpResponse` objektumba. 
 
-6. Hozzon `HttpEntity` létre egy objektumot a válasz tartalmának tárolására. Szerezze be a tartalmat `getEntity()`a-val. Ha a válasz nem üres, küldje vissza.
+6. Hozzon létre egy `HttpEntity` objektumot a válasz tartalmának tárolására. Szerezze be a tartalmat a-val `getEntity()` . Ha a válasz nem üres, küldje vissza.
     
     [!code-java[send a request](~/cognitive-services-rest-samples/java/InkRecognition/quickstart/RecognizeInk.java?name=sendRequest)]
 
 ## <a name="send-an-ink-recognition-request"></a>Kézírás-felismerési kérelem küldése
 
-Hozzon létre egy `recognizeInk()` nevű metódust a szabadkézi körvonal adatai felismeréséhez. Hívja meg `sendRequest()` a fent létrehozott metódust a végponttal, az URL-lel, az előfizetési kulccsal és a JSON-adataival. Szerezze be az eredményt, és nyomtassa ki a-konzolra.
+Hozzon létre egy nevű metódust a `recognizeInk()` szabadkézi körvonal adatai felismeréséhez. Hívja `sendRequest()` meg a fent létrehozott metódust a végponttal, az URL-lel, az előfizetési kulccsal és a JSON-adataival. Szerezze be az eredményt, és nyomtassa ki a-konzolra.
 
 [!code-java[recognizeInk](~/cognitive-services-rest-samples/java/InkRecognition/quickstart/RecognizeInk.java?name=recognizeInk)]
 
@@ -91,7 +91,7 @@ Futtassa az alkalmazást. A sikeres válaszokat JSON formátumban adja vissza a 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [REST API referenciája](https://go.microsoft.com/fwlink/?linkid=2089907)
+> [REST API-referencia](https://go.microsoft.com/fwlink/?linkid=2089907)
 
 
 Ha szeretné megtudni, hogyan működik a Ink-felismerési API egy digitális, a GitHubon futó alkalmazásban, tekintse meg az alábbi példákat a GitHubon:

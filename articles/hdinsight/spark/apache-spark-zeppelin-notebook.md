@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
 ms.openlocfilehash: 931114a56d774c506b0b33fe4f4fc39e564c06c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82195094"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Apache Zeppelin-notebookok használata Apache Spark-fürtökön az Azure HDInsight rendszerében
@@ -22,7 +22,7 @@ A HDInsight Spark-fürtök közé tartoznak az [Apache Zeppelin](https://zeppeli
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Apache Spark-fürt megléte a HDInsightban. További útmutatásért lásd: [Apache Spark-fürt létrehozása az Azure HDInsightban](apache-spark-jupyter-spark-sql.md).
-* A fürtök elsődleges tárolójának URI-sémája. A séma az Azure `wasb://` Blob Storage `abfs://` esetében Azure Data Lake Storage Gen2 vagy `adl://` Azure Data Lake Storage Gen1 esetében lenne. Ha a biztonságos átvitel engedélyezve van a Blob Storage számára, akkor az `wasbs://`URI a következő lesz:.  További információ: [biztonságos átvitel megkövetelése az Azure Storage-ban](../../storage/common/storage-require-secure-transfer.md) .
+* A fürtök elsődleges tárolójának URI-sémája. A séma az `wasb://` Azure Blob Storage esetében `abfs://` Azure Data Lake Storage Gen2 vagy Azure Data Lake Storage Gen1 esetében lenne `adl://` . Ha a biztonságos átvitel engedélyezve van a Blob Storage számára, akkor az URI a következő lesz: `wasbs://` .  További információ: [biztonságos átvitel megkövetelése az Azure Storage-ban](../../storage/common/storage-require-secure-transfer.md) .
 
 ## <a name="launch-an-apache-zeppelin-notebook"></a>Apache Zeppelin-jegyzetfüzet elindítása
 
@@ -33,7 +33,7 @@ A HDInsight Spark-fürtök közé tartoznak az [Apache Zeppelin](https://zeppeli
    >
    > `https://CLUSTERNAME.azurehdinsight.net/zeppelin`
 
-2. Hozzon létre új notebookot. A fejléc panelen navigáljon a **Jegyzetfüzet** > **új Megjegyzés létrehozása**elemére.
+2. Hozzon létre új notebookot. A fejléc panelen navigáljon a **Jegyzetfüzet**  >  **új Megjegyzés létrehozása**elemére.
 
     ![Új Zeppelin-jegyzetfüzet létrehozása](./media/apache-spark-zeppelin-notebook/hdinsight-create-zeppelin-notebook.png "Új Zeppelin-jegyzetfüzet létrehozása")
 
@@ -43,7 +43,7 @@ A HDInsight Spark-fürtök közé tartoznak az [Apache Zeppelin](https://zeppeli
 
     ![Zeppelin notebook állapota](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-connected.png "Zeppelin notebook állapota")
 
-4. Töltse be a mintaadatokat egy ideiglenes táblába. Amikor létrehoz egy Spark-fürtöt a HDInsight-ben, a rendszer `hvac.csv`átmásolja a minta adatfájlt a `\HdiSamples\SensorSampleData\hvac`társított Storage-fiókba.
+4. Töltse be a mintaadatokat egy ideiglenes táblába. Amikor létrehoz egy Spark-fürtöt a HDInsight-ben, a rendszer átmásolja a minta adatfájlt `hvac.csv` a társított Storage-fiókba `\HdiSamples\SensorSampleData\hvac` .
 
     Illessze be a következő kódrészletet az új jegyzetfüzetben alapértelmezés szerint létrehozott üres bekezdésbe.
 
@@ -93,7 +93,7 @@ A HDInsight Spark-fürtök közé tartoznak az [Apache Zeppelin](https://zeppeli
 
     ![Spark SQL-utasítás futtatása a notebook1 használatával](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-1.png "Spark SQL-utasítás futtatása a notebook1 használatával")
 
-7. A Spark SQL-utasításokat a lekérdezésben szereplő változók használatával is futtathatja. A következő kódrészlet bemutatja, hogyan definiálhat egy változót `Temp`a lekérdezésben a lekérdezéssel megadható lehetséges értékekkel. A lekérdezés első futtatásakor a legördülő menü automatikusan kitöltődik a változóhoz megadott értékekkel.
+7. A Spark SQL-utasításokat a lekérdezésben szereplő változók használatával is futtathatja. A következő kódrészlet bemutatja, hogyan definiálhat egy változót a lekérdezésben a lekérdezéssel megadható `Temp` lehetséges értékekkel. A lekérdezés első futtatásakor a legördülő menü automatikusan kitöltődik a változóhoz megadott értékekkel.
 
     ```sql
     %sql  
@@ -125,7 +125,7 @@ Ebből a cikkből megtudhatja, hogyan használhatja a [Spark-CSV-](https://searc
 
     ![Tolmács beállításai1 módosítása](./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-1.png "Tolmács beállításai1 módosítása")
 
-3. Navigáljon a `livy.spark.jars.packages`kulcshoz, és állítsa be az értékét `group:id:version`a következő formátumban:. Ha tehát a [Spark-CSV](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) csomagot szeretné használni, a kulcs értékét a értékre kell állítania `com.databricks:spark-csv_2.10:1.4.0`.
+3. Navigáljon a kulcshoz `livy.spark.jars.packages` , és állítsa be az értékét a következő formátumban: `group:id:version` . Ha tehát a [Spark-CSV](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) csomagot szeretné használni, a kulcs értékét a értékre kell állítania `com.databricks:spark-csv_2.10:1.4.0` .
 
     ![Tolmács settings2 módosítása](./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-2.png "Tolmács settings2 módosítása")
 
@@ -151,20 +151,20 @@ A Zeppelin jegyzetfüzetek a fürt átjárócsomópontokkal lesznek mentve. Teh�
 
 Ez a művelet JSON-fájlként menti a jegyzetfüzetet a letöltési helyen.
 
-## <a name="use-shiro-to-configure-access-to-zeppelin-interpreters-in-enterprise-security-package-esp-clusters"></a>A `Shiro` használatával konfigurálhatja a Zeppelin-tolmácsokhoz való hozzáférést Enterprise Security Package (ESP) fürtökben
+## <a name="use-shiro-to-configure-access-to-zeppelin-interpreters-in-enterprise-security-package-esp-clusters"></a>`Shiro`A használatával konfigurálhatja a Zeppelin-tolmácsokhoz való hozzáférést Enterprise Security Package (ESP) fürtökben
 
-A fentiekben leírtak szerint a `%sh` tolmács nem támogatott a HDInsight 4,0-től kezdődően. Emellett mivel `%sh` a tolmács olyan biztonsági problémákat is bevezet, mint például a parancssori felületi parancsok használata, a HDINSIGHT 3,6 ESP-fürtökből is el lett távolítva. Ez azt `%sh` jelenti, hogy az értelmező nem érhető el, ha az **új Megjegyzés létrehozása** vagy a tolmács felhasználói felülete alapértelmezés szerint lehetőségre kattint.
+A fentiekben leírtak szerint a `%sh` tolmács nem támogatott a HDInsight 4,0-től kezdődően. Emellett mivel a `%sh` tolmács olyan biztonsági problémákat is bevezet, mint például a parancssori felületi parancsok használata, a HDInsight 3,6 ESP-fürtökből is el lett távolítva. Ez azt jelenti, hogy `%sh` az értelmező nem érhető el, ha az **új Megjegyzés létrehozása** vagy a tolmács felhasználói felülete alapértelmezés szerint lehetőségre kattint.
 
-Az emelt szintű tartományi felhasználók a `Shiro.ini` fájl segítségével szabályozhatják a tolmács felhasználói felületének elérését. Csak ezek a felhasználók hozhatnak `%sh` létre új tolmácsokat, és állíthatnak `%sh` be engedélyeket az egyes új tolmácsok számára. A `shiro.ini` fájl használatával történő hozzáférés vezérléséhez kövesse az alábbi lépéseket:
+Az emelt szintű tartományi felhasználók a `Shiro.ini` fájl segítségével szabályozhatják a tolmács felhasználói felületének elérését. Csak ezek a felhasználók hozhatnak létre új `%sh` tolmácsokat, és állíthatnak be engedélyeket az egyes új `%sh` tolmácsok számára. A fájl használatával történő hozzáférés vezérléséhez `shiro.ini` kövesse az alábbi lépéseket:
 
-1. Adjon meg egy új szerepkört egy meglévő tartományi csoport neve alapján. A következő példában `adminGroupName` a HRE Kiemelt jogosultságú felhasználók csoportja. Ne használjon speciális karaktereket vagy szóközöket a csoport nevében. A szerepkör engedélyeinek megadása utáni `=` karakterek. `*`azt jelenti, hogy a csoport teljes körű engedélyekkel rendelkezik.
+1. Adjon meg egy új szerepkört egy meglévő tartományi csoport neve alapján. A következő példában a `adminGroupName` HRE Kiemelt jogosultságú felhasználók csoportja. Ne használjon speciális karaktereket vagy szóközöket a csoport nevében. A `=` szerepkör engedélyeinek megadása utáni karakterek. `*`azt jelenti, hogy a csoport teljes körű engedélyekkel rendelkezik.
 
     ```
     [roles]
     adminGroupName = *
     ```
 
-2. Adja hozzá az új szerepkört a Zeppelin-tolmácsokhoz való hozzáféréshez. A következő példában a összes felhasználója `adminGroupName` hozzáférést kap a Zeppelin-tolmácsokhoz, és új tolmácsokat hozhat létre. Több szerepkört is beállíthat a zárójelek között `roles[]`, vesszővel elválasztva. Ezután a szükséges engedélyekkel rendelkező felhasználók hozzáférhetnek a Zeppelin-tolmácsokhoz.
+2. Adja hozzá az új szerepkört a Zeppelin-tolmácsokhoz való hozzáféréshez. A következő példában a összes felhasználója `adminGroupName` hozzáférést kap a Zeppelin-tolmácsokhoz, és új tolmácsokat hozhat létre. Több szerepkört is beállíthat a zárójelek között `roles[]` , vesszővel elválasztva. Ezután a szükséges engedélyekkel rendelkező felhasználók hozzáférhetnek a Zeppelin-tolmácsokhoz.
 
     ```
     [urls]
@@ -193,7 +193,7 @@ Ilyen esetben a következő lépéseket kell elvégeznie, mielőtt elkezdené a 
 
 A szolgáltatás Ambari való ellenőrzéséhez navigáljon `https://CLUSTERNAME.azurehdinsight.net/#/main/services/ZEPPELIN/summary` oda, ahol a CLUSTERNAME a fürt neve.
 
-A szolgáltatás parancssorból való érvényesítéséhez az SSH-t a fő csomóponthoz kell bejelentkeznie. Váltson a felhasználóra a Zeppelin `sudo su zeppelin`parancs használatával. Állapot parancsai:
+A szolgáltatás parancssorból való érvényesítéséhez az SSH-t a fő csomóponthoz kell bejelentkeznie. Váltson a felhasználóra a Zeppelin parancs használatával `sudo su zeppelin` . Állapot parancsai:
 
 |Parancs |Leírás |
 |---|---|
@@ -203,22 +203,22 @@ A szolgáltatás parancssorból való érvényesítéséhez az SSH-t a fő csom�
 
 ### <a name="log-locations"></a>Naplók helye
 
-|Szolgáltatás |Útvonal |
+|Szolgáltatás |Elérési út |
 |---|---|
 |Zeppelin – kiszolgáló|/usr/hdp/current/zeppelin-server/|
 |Kiszolgálói naplók|/var/log/zeppelin|
-|Konfiguráció-értelmező `Shiro`,, site. XML, log4j|/usr/HDP/current/Zeppelin-Server/conf vagy/etc/Zeppelin/conf|
+|Konfiguráció-értelmező, `Shiro` , site.xml, log4j|/usr/HDP/current/Zeppelin-Server/conf vagy/etc/Zeppelin/conf|
 |PID-könyvtár|/var/run/zeppelin|
 
 ### <a name="enable-debug-logging"></a>Hibakeresési naplózás engedélyezése
 
 1. Navigáljon `https://CLUSTERNAME.azurehdinsight.net/#/main/services/ZEPPELIN/summary` oda, ahol a CLUSTERNAME a fürt neve.
 
-1. Navigáljon a **konfigurációk** > **speciális Zeppelin-log4j-Properties** > **log4j_properties_content**.
+1. Navigáljon a **konfigurációk**  >  **speciális Zeppelin-log4j-Properties**  >  **log4j_properties_content**.
 
-1. Módosítás `log4j.appender.dailyfile.Threshold = INFO` a `log4j.appender.dailyfile.Threshold = DEBUG`következőre:.
+1. Módosítás a következőre: `log4j.appender.dailyfile.Threshold = INFO` `log4j.appender.dailyfile.Threshold = DEBUG` .
 
-1. Hozzáadás `log4j.logger.org.apache.zeppelin.realm=DEBUG`.
+1. Hozzáadás `log4j.logger.org.apache.zeppelin.realm=DEBUG` .
 
 1. Mentse a módosításokat, és indítsa újra a szolgáltatást.
 

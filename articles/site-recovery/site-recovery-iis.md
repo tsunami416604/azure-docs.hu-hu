@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.author: mayg
 ms.openlocfilehash: dfed398124ca20771e169f6f9e7d08d4d799ee1e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80478292"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>Vész-helyreállítás beállítása többrétegű IIS-alapú webalkalmazáshoz
@@ -58,7 +58,7 @@ A cikkben szereplő példák esetében a VMware virtuális gépeket az IIS 7,5-e
 
 ### <a name="source-and-target"></a>Forrás és cél
 
-Forgatókönyv | Egy másodlagos helyre | Az Azure-ba
+Eset | Egy másodlagos helyre | Az Azure-ba
 --- | --- | ---
 Hyper-V | Igen | Igen
 VMware | Igen | Igen
@@ -69,7 +69,7 @@ Azure|NA|Igen
 
 Az összes IIS-webfarm virtuális gép az Azure-ba történő replikálásának megkezdéséhez kövesse a [feladatátvétel tesztelése az Azure-ban](site-recovery-test-failover-to-azure.md)című témakör útmutatását site Recovery.
 
-Ha statikus IP-címet használ, megadhatja azt az IP-címet, amelyet el szeretne végezni a virtuális gépen. Az IP-cím beállításához nyissa meg a **számítási és hálózati beállítások** > **cél IP**-címet.
+Ha statikus IP-címet használ, megadhatja azt az IP-címet, amelyet el szeretne végezni a virtuális gépen. Az IP-cím beállításához nyissa meg a **számítási és hálózati beállítások**  >  **cél IP**-címet.
 
 ![A cél IP-cím megadását bemutató képernyőkép a Site Recovery számítási és hálózati ablaktáblán](./media/site-recovery-active-directory/dns-target-ip.png)
 
@@ -97,7 +97,7 @@ Ahhoz, hogy az IIS-webfarm megfelelően működjön, előfordulhat, hogy művele
 #### <a name="dns-update"></a>DNS-frissítés
 Ha a DNS dinamikus DNS-frissítésre van konfigurálva, a virtuális gépek általában az új IP-címmel frissítik a DNS-t az indításkor. Ha explicit lépést szeretne hozzáadni a DNS-nek a virtuális gépek új IP-címeivel való frissítéséhez, adjon hozzá egy [parancsfájlt a DNS IP-](https://aka.ms/asr-dns-update) címének frissítés utáni feladatátvételi művelete helyreállítási terv csoportjain.  
 
-#### <a name="connection-string-in-an-applications-webconfig"></a>Kapcsolati sztring az alkalmazás Web. config fájljában
+#### <a name="connection-string-in-an-applications-webconfig"></a>Az alkalmazás web.configban található kapcsolatok karakterlánca
 A kapcsolatok karakterlánca határozza meg azt az adatbázist, amellyel a webhely kommunikál. Ha a kapcsolatok karakterlánca a virtuális gép nevét adja meg, a feladatátvételt követő további lépések nem szükségesek. Az alkalmazás automatikusan tud kommunikálni az adatbázissal. Továbbá, ha a virtuális gép IP-címe megmarad, nem kell frissítenie a kapcsolódási karakterláncot. 
 
 Ha a kapcsolódási karakterlánc IP-cím használatával hivatkozik az adatbázis virtuális gépre, frissíteni kell a feladatátvételt követően. A következő kapcsolódási karakterlánc például a-adatbázisra mutat az IP-127.0.1.2:

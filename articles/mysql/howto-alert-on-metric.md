@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: f91efb7f99b826b6c1db330fb480013ab2486bdc
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82508258"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mysql"></a>Az Azure Portal használatával riasztásokat állíthat be a metrikákkal kapcsolatban Azure Database for MySQL 
@@ -25,7 +25,7 @@ A következő műveletek elvégzéséhez beállíthatja a riasztást:
 * Webhook meghívása
 
 A riasztási szabályokkal kapcsolatos információkat a használatával konfigurálhatja és kérheti le:
-* [Azure Portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
+* [Azure Portalra](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
 * [Azure CLI](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
 * [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/metricalerts)
 
@@ -38,7 +38,7 @@ A riasztási szabályokkal kapcsolatos információkat a használatával konfigu
 
 3. Válassza a **metrika hozzáadása riasztás** (+ ikon) lehetőséget.
 
-4. Megnyílik a **szabály létrehozása** lap az alább látható módon. Adja meg a szükséges információkat:
+4. Megnyílik a **szabály létrehozása** lap az alább látható módon. Adja meg a kötelező adatokat:
 
    ![Metrikus riasztási űrlap hozzáadása](./media/howto-alert-on-metric/4-add-rule-form.png)
 

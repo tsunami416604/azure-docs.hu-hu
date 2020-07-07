@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87ceeeb1a712c37bc74e12e910645013d77e8df6
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 32bccdf538b637b7706824b4cf5499bed63af9dc
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/01/2020
-ms.locfileid: "85605321"
+ms.locfileid: "85799156"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ivanti-service-manager-ism"></a>Oktatóanyag: Azure Active Directory integráció a Ivanti-Service Managerokkal (ISM)
 
@@ -109,11 +109,11 @@ Az Azure AD egyszeri bejelentkezés Ivanti Service Manager (ISM) szolgáltatáss
 
     a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:
     
-        ```https
-        https://<customer>.saasit.com/
-        https://<customer>.saasiteu.com/
-        https://<customer>.saasitau.com/
-        ```
+    ```http
+    https://<customer>.saasit.com/
+    https://<customer>.saasiteu.com/
+    https://<customer>.saasitau.com/
+    ```
 
     b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<customer>/handlers/sso/SamlAssertionConsumerHandler.ashx`
 

@@ -4,10 +4,10 @@ description: Ez a cikk azt ismerteti, hogyan konfigurálhatja a figyelési Kuber
 ms.topic: conceptual
 ms.date: 03/27/2020
 ms.openlocfilehash: 958f5ab33edcd280f5673391eba907728f1153c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80373309"
 ---
 # <a name="configure-gpu-monitoring-with-azure-monitor-for-containers"></a>A GPU-figyelés konfigurálása a Azure Monitor for containers szolgáltatással

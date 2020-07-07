@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: cawa
 ms.openlocfilehash: bcacd5d2ed9e325383ec7ae75002ae0a6213111c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81429758"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>Titkos alkalmazás-beállítások biztonságos mentése webalkalmazásokhoz
@@ -22,7 +22,7 @@ ms.locfileid: "81429758"
 ## <a name="overview"></a>Áttekintés
 Ez a cikk azt ismerteti, hogyan lehet biztonságosan menteni a titkos alkalmazások konfigurációs beállításait az Azure-alkalmazásokhoz.
 
-A webalkalmazások konfigurációs beállításait hagyományosan a web. config fájlba menti a rendszer. Ezzel a gyakorlattal ellenőrizheti a titkos beállításokat, például a Felhőbeli hitelesítő adatokat a nyilvános forráskódú vezérlő rendszerekhez, például a GitHubhoz. Eközben nehéz lehet követni a legjobb biztonsági gyakorlatot, mert a forráskód módosításához és a fejlesztési beállítások újrakonfigurálásához szükséges terhek is megváltozhatnak.
+Az összes webalkalmazás-konfigurációs beállítást a rendszer a konfigurációs fájlokba (például Web.config) menti. Ezzel a gyakorlattal ellenőrizheti a titkos beállításokat, például a Felhőbeli hitelesítő adatokat a nyilvános forráskódú vezérlő rendszerekhez, például a GitHubhoz. Eközben nehéz lehet követni a legjobb biztonsági gyakorlatot, mert a forráskód módosításához és a fejlesztési beállítások újrakonfigurálásához szükséges terhek is megváltozhatnak.
 
 Annak érdekében, hogy a fejlesztési folyamat biztonságos legyen, az eszközök és a keretrendszer kódtárai úgy jönnek létre, hogy az alkalmazás titkos beállításait biztonságosan, minimális vagy forráskód-módosítás nélkül mentse.
 
@@ -87,7 +87,7 @@ Ha már létrehozta a webalkalmazást, adja meg a webalkalmazáshoz való hozzá
 
         private static string GetKeyVaultEndpoint() => Environment.GetEnvironmentVariable("KEYVAULT_ENDPOINT");
     ```
-6. Adja hozzá a Key Vault URL-címét a launchsettings. JSON fájlhoz. A környezeti változó neve *KEYVAULT_ENDPOINT* a 6. lépésben hozzáadott kódban van meghatározva.
+6. Adja hozzá a Key Vault URL-címét launchsettings.jsfájlhoz. A környezeti változó neve *KEYVAULT_ENDPOINT* a 6. lépésben hozzáadott kódban van meghatározva.
 
     ![Key Vault URL-cím hozzáadása projekt környezeti változóként](../media/vs-secure-secret-appsettings/add-keyvault-url.png)
 
@@ -117,7 +117,7 @@ Ha gyors prototípust ír, és nem szeretné kiépíteni az Azure-erőforrásoka
     </root>
     ```
 
-3. Adja meg a titkos fájlt, hogy a Configuration Builder legyen a web. config fájlban. Ezt a szakaszt a *appSettings* szakasz előtt helyezze el.
+3. Adja meg a titkos fájlt, hogy az Web.config fájlban lévő Configuration Builder legyen. Ezt a szakaszt a *appSettings* szakasz előtt helyezze el.
 
     ```xml
     <configBuilders>
@@ -151,7 +151,7 @@ A projekthez tartozó Key Vault konfigurálásához kövesse az ASP.NET Core sza
    Microsoft.Configuration.ConfigurationBuilders.UserSecrets
    ```
 
-2. Adja meg Key Vault Configuration Builder a web. config fájlban. Ezt a szakaszt a *appSettings* szakasz előtt helyezze el. Cserélje le a *vaultName* nevet a Key Vault nevére, ha a Key Vault nyilvános Azure-ban van, vagy ha szuverén felhőt használ, a teljes URI-t használja.
+2. Adja meg a Web.config Key Vault Configuration Builder-t. Ezt a szakaszt a *appSettings* szakasz előtt helyezze el. Cserélje le a *vaultName* nevet a Key Vault nevére, ha a Key Vault nyilvános Azure-ban van, vagy ha szuverén felhőt használ, a teljes URI-t használja.
 
     ```xml
     <configSections>

@@ -14,10 +14,10 @@ ms.date: 07/04/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8485f3474da18e052bc0eab6c053be084ef884a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82192416"
 ---
 # <a name="operating-system-upgrade"></a>Operációs rendszer frissítése
@@ -94,9 +94,9 @@ Az Azure HANA nagyméretű példányain (I. típus) lévő SAP nem indítható �
 #### <a name="execution-steps"></a>Végrehajtási lépések
 
 
-*   Parancs `multipath -ll` végrehajtása.
+*   `multipath -ll`Parancs végrehajtása.
 *   Szerezze be a logikai egység AZONOSÍTÓját, amelynek mérete körülbelül 50G, vagy használja a parancsot:`fdisk -l | grep mapper`
-*   Fájl `/etc/default/grub_installdevice` frissítése a sorral `/dev/mapper/<LUN ID>`. Példa:/dev/Mapper/3600a09803830372f483f495242534a56
+*   `/etc/default/grub_installdevice`Fájl frissítése a sorral `/dev/mapper/<LUN ID>` . Példa:/dev/Mapper/3600a09803830372f483f495242534a56
 >[!NOTE]
 >A LUN-azonosító a kiszolgálóról a kiszolgálóra változik.
 
@@ -119,7 +119,7 @@ A módosítások érvénybe lépéséhez újraindítás szükséges. Futtassa `l
 
 
 ### <a name="kernel-parameters"></a>Kernel-paraméterek
-   Győződjön meg `transparent_hugepage` `numa_balancing` `processor.max_cstate`arról, hogy a, a, `ignore_ce` a `intel_idle.max_cstate` és a megfelelő beállítás van alkalmazva.
+   Győződjön meg arról, hogy a, a, a és a megfelelő beállítás `transparent_hugepage` `numa_balancing` `processor.max_cstate` `ignore_ce` `intel_idle.max_cstate` van alkalmazva.
 
 * intel_idle. max_cstate = 1
 * processzor. max_cstate = 1
@@ -130,7 +130,7 @@ A módosítások érvénybe lépéséhez újraindítás szükséges. Futtassa `l
 
 #### <a name="execution-steps"></a>Végrehajtási lépések
 
-* Adja hozzá ezeket a paramétereket `GRB_CMDLINE_LINUX` a fájl sorához`/etc/default/grub`
+* Adja hozzá ezeket a paramétereket a `GRB_CMDLINE_LINUX` fájl sorához`/etc/default/grub`
 ```
 intel_idle.max_cstate=1 processor.max_cstate=1 transparent_hugepage=never numa_balancing=disable mce=ignore_ce
 ```

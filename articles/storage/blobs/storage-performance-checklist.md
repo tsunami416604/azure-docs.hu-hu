@@ -9,10 +9,10 @@ ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: b94725d4d3eb9fd6f13a39d00486b4ab085b9ef9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80473935"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>A blob Storage teljesítmény-és méretezhetőségi ellenőrzőlistája
@@ -32,9 +32,9 @@ Ez a cikk bevált eljárásokat szervez a teljesítményre vonatkozóan a blob S
 | &nbsp; |Méretezhetőségi célok |[Egyszerre több ügyfél fér hozzá egyetlen blobhoz?](#multiple-clients-accessing-a-single-blob-concurrently) |
 | &nbsp; |Méretezhetőségi célok |[Az alkalmazása a méretezhetőségi célokon belül marad egyetlen blob esetében?](#bandwidth-and-operations-per-blob) |
 | &nbsp; |Particionálás |[Az elnevezési konvenció úgy lett kialakítva, hogy jobb terheléselosztást lehessen kialakítani?](#partitioning) |
-| &nbsp; |Hálózat |[A szükséges teljesítmény elérése érdekében az ügyféloldali eszközök megfelelően nagy sávszélességgel és kis késéssel rendelkeznek?](#throughput) |
-| &nbsp; |Hálózat |[Az ügyféloldali eszközök magas színvonalú hálózati kapcsolattal rendelkeznek?](#link-quality) |
-| &nbsp; |Hálózat |[Az ügyfélalkalmazás ugyanabban a régióban található, mint a Storage-fiók?](#location) |
+| &nbsp; |Hálózatkezelés |[A szükséges teljesítmény elérése érdekében az ügyféloldali eszközök megfelelően nagy sávszélességgel és kis késéssel rendelkeznek?](#throughput) |
+| &nbsp; |Hálózatkezelés |[Az ügyféloldali eszközök magas színvonalú hálózati kapcsolattal rendelkeznek?](#link-quality) |
+| &nbsp; |Hálózatkezelés |[Az ügyfélalkalmazás ugyanabban a régióban található, mint a Storage-fiók?](#location) |
 | &nbsp; |Közvetlen ügyfél-hozzáférés |[Közös hozzáférésű aláírásokat (SAS) és több eredetű erőforrás-megosztást (CORS) használ az Azure Storage-hoz való közvetlen hozzáférés engedélyezéséhez?](#sas-and-cors) |
 | &nbsp; |Gyorsítótárazás |[Az alkalmazás gyorsítótárazza a gyakran használt és ritkán módosított adatait?](#reading-data) |
 | &nbsp; |Gyorsítótárazás |[Az alkalmazás batch-frissítése az ügyfélen végzett gyorsítótárazással történik, majd feltölti őket nagyobb készletekbe?](#uploading-data-in-batches) |
@@ -115,7 +115,7 @@ Az ilyen műveletek gyakoriságának csökkentéséhez kövesse az ajánlott elj
   
 - Az Azure Storage-ban használt particionálási sémával kapcsolatos további információkért lásd [: Azure Storage: magas rendelkezésre állású felhőalapú tárolási szolgáltatás erős konzisztencia](https://sigops.org/sosp/sosp11/current/2011-Cascais/printable/11-calder.pdf)használatával.
 
-## <a name="networking"></a>Hálózat
+## <a name="networking"></a>Hálózatkezelés
 
 Az alkalmazás fizikai hálózati korlátai jelentős hatással lehetnek a teljesítményre. A következő szakaszok ismertetik néhány korlátozást a felhasználók számára.  
 
@@ -123,7 +123,7 @@ Az alkalmazás fizikai hálózati korlátai jelentős hatással lehetnek a telje
 
 A sávszélesség és a hálózati kapcsolat minősége fontos szerepet játszik az alkalmazás teljesítményében, az alábbi szakaszokban leírtak szerint.
 
-#### <a name="throughput"></a>Átviteli sebesség
+#### <a name="throughput"></a>Teljesítmény
 
 A sávszélesség miatt a probléma gyakran az ügyfél képességei. A nagyobb méretű Azure-példányok nagyobb kapacitású hálózati adapterekkel rendelkeznek, ezért érdemes nagyobb méretű virtuális gépeket használni, ha egy gépről nagyobb hálózati korlátokra van szüksége. Ha egy helyszíni alkalmazásból fér hozzá az Azure Storage-hoz, ugyanez a szabály vonatkozik rá: Ismerje meg az ügyféleszközök hálózati képességeit és a hálózati kapcsolatot az Azure Storage-beli helyhez, vagy javítsa azokat igény szerint, vagy tervezze meg az alkalmazását a képességein belül.
 
@@ -236,7 +236,7 @@ Az Azure Storage számos megoldást kínál a Blobok másolására és áthelyez
 
 ### <a name="blob-copy-apis"></a>BLOB-másolási API-k
 
-Ha a blobokat a Storage-fiókok között szeretné másolni, használja a [put blokkot az URL-](/rest/api/storageservices/put-block-from-url) címről művelettel. A művelet szinkron módon másolja az adatforrásokat bármely URL-címről egy blokk-blobba. A művelet `Put Block from URL` használata jelentősen csökkentheti a szükséges sávszélességet, ha a Storage-fiókok között telepíti át az adatforgalmat. Mivel a másolási művelet a szolgáltatás oldalán zajlik, nem kell letöltenie és újra feltöltenie az adatfájlokat.
+Ha a blobokat a Storage-fiókok között szeretné másolni, használja a [put blokkot az URL-](/rest/api/storageservices/put-block-from-url) címről művelettel. A művelet szinkron módon másolja az adatforrásokat bármely URL-címről egy blokk-blobba. A `Put Block from URL` művelet használata jelentősen csökkentheti a szükséges sávszélességet, ha a Storage-fiókok között telepíti át az adatforgalmat. Mivel a másolási művelet a szolgáltatás oldalán zajlik, nem kell letöltenie és újra feltöltenie az adatfájlokat.
 
 Ha ugyanazon a Storage-fiókon belül szeretne Adatmásolást készíteni, használja a [blob másolása](/rest/api/storageservices/Copy-Blob) műveletet. Az adatok ugyanabban a Storage-fiókban való másolása általában gyorsan elvégezhető.  
 

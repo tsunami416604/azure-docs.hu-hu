@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: c07c518b4898f64e7ef726ec173c7e31083dae7d
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: df057ec236b32b1a7e7c0e2b089a6df88433e7ba
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/01/2020
-ms.locfileid: "85605374"
+ms.locfileid: "85799173"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itslearning"></a>Oktatóanyag: Azure Active Directory integráció a itslearning
 
@@ -107,10 +107,10 @@ Az Azure AD egyszeri bejelentkezés itslearning való konfigurálásához hajtsa
 
     a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet:
     
-        ```https
-        https://www.itslearning.com/index.aspx
-        https://us1.itslearning.com/index.aspx
-        ```
+    ```http
+    https://www.itslearning.com/index.aspx
+    https://us1.itslearning.com/index.aspx
+    ```
 
     b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet:`urn:mace:saml2v2.no:services:com.itslearning`
 

@@ -14,10 +14,10 @@ ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: f3bb4dd1c564e5f6c4a8ee1bb5bf7424a74a339e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81533989"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>A MSAL használata nemzeti Felhőbeli környezetben
@@ -66,7 +66,7 @@ Az alábbi oktatóanyagok bemutatják, hogyan hozhat létre .NET Core 2,2 MVC-we
 
 ## <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-A MSAL. js-alkalmazás szuverén felhőkhöz való engedélyezése:
+MSAL.js alkalmazásának engedélyezése a szuverén felhők esetében:
 
 ### <a name="step-1-register-your-application"></a>1. lépés: Alkalmazás regisztrálása
 
@@ -101,7 +101,7 @@ Kövesse a [JavaScript oktatóanyag](tutorial-v2-javascript-spa.md#create-your-p
 
 ### <a name="step-4-configure-your-javascript-spa"></a>4. lépés: a JavaScript SPA konfigurálása
 
-A Project `index.html` beállítása során létrehozott fájlban adja meg az alkalmazás regisztrációs adatait. Adja hozzá a következő kódot a `<script></script>` címkén belül a `index.html` fájl törzsében:
+A `index.html` Project beállítása során létrehozott fájlban adja meg az alkalmazás regisztrációs adatait. Adja hozzá a következő kódot a `<script></script>` címkén belül a fájl törzsében `index.html` :
 
 ```javascript
 const msalConfig = {
@@ -125,7 +125,7 @@ Ebben a kódban:
 - `Enter_the_Application_Id_here`az alkalmazás **(ügyfél) azonosítójának** értéke a regisztrált alkalmazáshoz.
 - `Enter_the_Tenant_Info_Here`az a következő lehetőségek egyikére van beállítva:
     - Ha az alkalmazás támogatja a **szervezeti címtárban lévő fiókokat**, cserélje le ezt az értéket a BÉRLŐi azonosítóra vagy a bérlő nevére (például contoso.microsoft.com).
-    - Ha az alkalmazás **minden szervezeti címtárban támogatja a fiókokat**, cserélje le `organizations`ezt az értéket a következőre:.
+    - Ha az alkalmazás **minden szervezeti címtárban támogatja a fiókokat**, cserélje le ezt az értéket a következőre: `organizations` .
 
     Az összes országos felhőhöz tartozó hitelesítési végpontok megkereséséhez tekintse meg az [Azure ad-hitelesítési végpontokat](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints).
 
@@ -184,7 +184,7 @@ Példa a szolgáltatóra:
 
 ## <a name="objective-c"></a>[Objective-C](#tab/objc)
 
-Az iOS és a macOS rendszerhez készült MSAL használhatók a jogkivonatok beszerzésére az országos felhőkben, `MSALPublicClientApplication`de a létrehozásakor további konfigurálásra is szükség van.
+Az iOS és a macOS rendszerhez készült MSAL használhatók a jogkivonatok beszerzésére az országos felhőkben, de a létrehozásakor további konfigurálásra is szükség van `MSALPublicClientApplication` .
 
 Ha például azt szeretné, hogy az alkalmazása több-bérlős alkalmazás legyen egy nemzeti felhőben (itt az USA kormánya), akkor a következőket írhatja:
 
@@ -207,7 +207,7 @@ MSALPublicClientApplication *application =
 
 ## <a name="swift"></a>[Swift](#tab/swift)
 
-Az iOS és a macOS rendszerhez készült MSAL használhatók a jogkivonatok beszerzésére az országos felhőkben, `MSALPublicClientApplication`de a létrehozásakor további konfigurálásra is szükség van.
+Az iOS és a macOS rendszerhez készült MSAL használhatók a jogkivonatok beszerzésére az országos felhőkben, de a létrehozásakor további konfigurálásra is szükség van `MSALPublicClientApplication` .
 
 Ha például azt szeretné, hogy az alkalmazása több-bérlős alkalmazás legyen egy nemzeti felhőben (itt az USA kormánya), akkor a következőket írhatja:
 

@@ -2,7 +2,8 @@
 title: Feladat automatizálása
 description: A feladatütemezés használata Transact-SQL (T-SQL) parancsfájlok futtatásához egy vagy több adatbázison keresztül
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
+ms.subservice: features
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: overview
@@ -10,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 03/10/2020
-ms.openlocfilehash: 1b27eac1a8b5989734d3451bf21c5b13dd5cc0af
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 537c989271800c15444d5323cfce8e133c8eeeba
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220570"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85984648"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>Felügyeleti feladatok automatizálása adatbázis-feladatok használatával
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -54,8 +55,8 @@ A következő feladatütemezés-technológiák érhetők el:
 
 | |Rugalmas feladatok |SQL-ügynök |
 |---------|---------|---------|
-|Hatókör | A Azure SQL Database és/vagy adattárházban lévő adatbázisok száma ugyanabban az Azure-felhőben, mint a feladatsor. A célok lehetnek különböző kiszolgálókon, előfizetéseken és/vagy régiókban. <br><br>A célcsoportok állhatnak egyedi adatbázisokból vagy adattárházakból, illetve egy kiszolgáló, készlet vagy szegmenstérkép összes adatbázisából (a feladat futásidejében dinamikusan számba véve). | Az SQL-ügynökkel megegyező példányban lévő egyes adatbázisok. |
-|Támogatott API-k és eszközök | Portál, PowerShell, T-SQL, Azure Resource Manager | T-SQL, SQL Server Management Studio (SSMS) |
+|**Hatókör** | A Azure SQL Database és/vagy adattárházban lévő adatbázisok száma ugyanabban az Azure-felhőben, mint a feladatsor. A célok lehetnek különböző kiszolgálókon, előfizetéseken és/vagy régiókban. <br><br>A célcsoportok állhatnak egyedi adatbázisokból vagy adattárházakból, illetve egy kiszolgáló, készlet vagy szegmenstérkép összes adatbázisából (a feladat futásidejében dinamikusan számba véve). | Az SQL-ügynökkel megegyező példányban lévő egyes adatbázisok. |
+|**Támogatott API-k és eszközök** | Portál, PowerShell, T-SQL, Azure Resource Manager | T-SQL, SQL Server Management Studio (SSMS) |
 
 ## <a name="sql-agent-jobs"></a>SQL Agent-feladatok
 

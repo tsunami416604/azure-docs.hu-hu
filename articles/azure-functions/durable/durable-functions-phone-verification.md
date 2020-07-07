@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
 ms.openlocfilehash: 4e0f71369bc02fdce5625d9c74e1d52264ed86be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335747"
 ---
 # <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Emberi interakció Durable Functions – telefonos ellenőrzési minta
@@ -40,16 +40,16 @@ Ez a cikk végigvezeti a minta alkalmazás következő funkcióiról:
 
 ### <a name="e4_smsphoneverification-orchestrator-function"></a>E4_SmsPhoneVerification Orchestrator függvény
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/PhoneVerification.cs?range=17-70)]
 
 > [!NOTE]
-> Előfordulhat, hogy először nem nyilvánvaló, de ez a Orchestrator függvény teljesen determinisztikus. Ez azért determinisztikus, mert `CurrentUtcDateTime` a tulajdonság az időzítő lejárati idejének kiszámítására szolgál, és ugyanezt az értéket adja vissza a Orchestrator-kód ezen pontján lévő összes visszajátszás esetében. Ez a viselkedés fontos annak biztosítása érdekében, hogy `winner` ugyanaz az eredmény legyen minden ismétlődő `Task.WhenAny`hívástól.
+> Előfordulhat, hogy először nem nyilvánvaló, de ez a Orchestrator függvény teljesen determinisztikus. Ez azért determinisztikus, mert a `CurrentUtcDateTime` tulajdonság az időzítő lejárati idejének kiszámítására szolgál, és ugyanezt az értéket adja vissza a Orchestrator-kód ezen pontján lévő összes visszajátszás esetében. Ez a viselkedés fontos annak biztosítása érdekében, hogy ugyanaz az `winner` eredmény legyen minden ismétlődő hívástól `Task.WhenAny` .
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-A **E4_SmsPhoneVerification** függvény a standard *function. JSON* fájlt használja a Orchestrator függvényekhez.
+A **E4_SmsPhoneVerification** függvény a standard *function.jst* használja a Orchestrator függvényekhez.
 
 [!code-json[Main](~/samples-durable-functions/samples/javascript/E4_SmsPhoneVerification/function.json)]
 
@@ -58,7 +58,7 @@ Itt látható a függvényt megvalósító kód:
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E4_SmsPhoneVerification/index.js)]
 
 > [!NOTE]
-> Előfordulhat, hogy először nem nyilvánvaló, de ez a Orchestrator függvény teljesen determinisztikus. Ez azért determinisztikus, mert `currentUtcDateTime` a tulajdonság az időzítő lejárati idejének kiszámítására szolgál, és ugyanezt az értéket adja vissza a Orchestrator-kód ezen pontján lévő összes visszajátszás esetében. Ez a viselkedés fontos annak biztosítása érdekében, hogy `winner` ugyanaz az eredmény legyen minden ismétlődő `context.df.Task.any`hívástól.
+> Előfordulhat, hogy először nem nyilvánvaló, de ez a Orchestrator függvény teljesen determinisztikus. Ez azért determinisztikus, mert a `currentUtcDateTime` tulajdonság az időzítő lejárati idejének kiszámítására szolgál, és ugyanezt az értéket adja vissza a Orchestrator-kód ezen pontján lévő összes visszajátszás esetében. Ez a viselkedés fontos annak biztosítása érdekében, hogy ugyanaz az `winner` eredmény legyen minden ismétlődő hívástól `context.df.Task.any` .
 
 ---
 
@@ -78,16 +78,16 @@ A felhasználó egy négyjegyű kóddal rendelkező SMS-üzenetet kap. Az ellen�
 
 A **E4_SendSmsChallenge** függvény a Twilio kötés használatával küldi el az SMS-üzenetet a négyjegyű kóddal a végfelhasználónak.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/PhoneVerification.cs?range=72-89)]
 
 > [!NOTE]
-> A mintakód futtatásához telepítenie `Microsoft.Azure.WebJobs.Extensions.Twilio` kell a Nuget csomagot.
+> A mintakód futtatásához telepítenie kell a `Microsoft.Azure.WebJobs.Extensions.Twilio` Nuget csomagot.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-A *function. JSON* a következőképpen van definiálva:
+A *function.jsa* következő módon van definiálva:
 
 [!code-json[Main](~/samples-durable-functions/samples/javascript/E4_SendSmsChallenge/function.json)]
 
@@ -120,7 +120,7 @@ Location: http://{host}/runtime/webhooks/durabletask/instances/741c65651d4c40cea
 
 A Orchestrator függvény a megadott telefonszámot fogadja, és azonnal SMS-üzenetet küld egy véletlenszerűen generált 4 számjegyű ellenőrző kóddal &mdash; , például *2168*. A függvény ezután 90 másodpercet vár a válaszra.
 
-A kóddal való válaszadáshoz `{eventName}` használhatja `SmsChallengeResponse` [ `RaiseEventAsync` a (.net) vagy `raiseEvent` a (JavaScript)](durable-functions-instance-management.md) függvényt egy másik függvényen belül, vagy meghívhatja a fenti 202-válaszban hivatkozott **sendEventUrl** http post webhookot, az esemény nevére cserélve:
+A kóddal való válaszadáshoz használhatja a [ `RaiseEventAsync` (.net) vagy a `raiseEvent` (JavaScript)](durable-functions-instance-management.md) függvényt egy másik függvényen belül, vagy meghívhatja a fenti 202-válaszban hivatkozott **sendEventUrl** http post webhookot, az `{eventName}` esemény nevére cserélve `SmsChallengeResponse` :
 
 ```
 POST http://{host}/runtime/webhooks/durabletask/instances/741c65651d4c40cea29acdd5bb47baf1/raiseEvent/SmsChallengeResponse?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
@@ -130,7 +130,7 @@ Content-Type: application/json
 2168
 ```
 
-Ha ezt az időzítő lejárata előtt küldi el, a rendszer befejeződik, `output` és a mező értéke `true`, amely sikeres ellenőrzést jelez.
+Ha ezt az időzítő lejárata előtt küldi el, a rendszer befejeződik, és a `output` mező értéke `true` , amely sikeres ellenőrzést jelez.
 
 ```
 GET http://{host}/runtime/webhooks/durabletask/instances/741c65651d4c40cea29acdd5bb47baf1?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
@@ -144,7 +144,7 @@ Content-Type: application/json; charset=utf-8
 {"runtimeStatus":"Completed","input":"+1425XXXXXXX","output":true,"createdTime":"2017-06-29T19:10:49Z","lastUpdatedTime":"2017-06-29T19:12:23Z"}
 ```
 
-Ha engedélyezte az időzítő érvényességét, vagy ha négyszer adja meg a kódot, akkor lekérdezheti az állapotot, és megtekintheti `false` az előkészítési függvény kimenetét, ami azt jelzi, hogy a telefon ellenőrzése nem sikerült.
+Ha engedélyezte az időzítő érvényességét, vagy ha négyszer adja meg a kódot, akkor lekérdezheti az állapotot, és megtekintheti az előkészítési `false` függvény kimenetét, ami azt jelzi, hogy a telefon ellenőrzése nem sikerült.
 
 ```
 HTTP/1.1 200 OK
@@ -156,7 +156,7 @@ Content-Length: 145
 
 ## <a name="next-steps"></a>További lépések
 
-Ez a példa a Durable Functions, különösen `WaitForExternalEvent` és API- `CreateTimer` k fejlett képességeit mutatja be. Megismerte, hogy ezek hogyan kombinálhatók a `Task.WaitAny` szolgáltatással egy megbízható időtúllépési rendszer megvalósításához, ami gyakran hasznos a valós emberekkel való interakcióhoz. Ha többet szeretne megtudni a Durable Functions használatáról, tekintse meg az egyes témakörök részletes lefedettségét biztosító cikkek sorozatát.
+Ez a példa a Durable Functions, különösen és API-k fejlett képességeit mutatja `WaitForExternalEvent` be `CreateTimer` . Megismerte, hogy ezek hogyan kombinálhatók a szolgáltatással `Task.WaitAny` egy megbízható időtúllépési rendszer megvalósításához, ami gyakran hasznos a valós emberekkel való interakcióhoz. Ha többet szeretne megtudni a Durable Functions használatáról, tekintse meg az egyes témakörök részletes lefedettségét biztosító cikkek sorozatát.
 
 > [!div class="nextstepaction"]
 > [Ugrás a sorozat első cikkére](durable-functions-bindings.md)

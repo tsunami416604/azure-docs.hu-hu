@@ -14,10 +14,10 @@ ms.date: 03/24/2020
 author: mlearned
 ms.custom: mvc
 ms.openlocfilehash: 55c6cbc18e37368dd47c47227041024b13987c47
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82233210"
 ---
 # <a name="create-a-cicd-pipeline-for-github-repo-using-azure-devops-starter"></a>CI/CD-folyamat létrehozása a GitHub-tárházhoz az Azure DevOps Starter használatával
@@ -32,12 +32,12 @@ Az alábbiakat fogja elvégezni:
 > * Azure-DevOps és Azure-előfizetés konfigurálása 
 > * Módosítások elvégzése a GitHubon, és automatikus üzembe helyezése az Azure-ban
 > * Az Azure-folyamatok CI/CD-folyamatának vizsgálata
-> * Az erőforrások eltávolítása
+> * Erőforrások felszabadítása
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés. Létrehozhat egy ingyenes fiókot a [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/) segítségével.
-* Hozzáférés egy olyan GitHubhoz vagy külső git-tárházhoz, amely .NET, Java, PHP, Node. js, Python vagy statikus webes kódot tartalmaz.
+* Hozzáférés egy olyan GitHubhoz vagy külső git-tárházhoz, amely .NET-, Java-, PHP-, Node.js-, Python-vagy statikus webes kódot tartalmaz.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
@@ -107,7 +107,7 @@ Az Azure DevOps Starter automatikusan konfigurálja a CI/CD-folyamatokat az Azur
 
 1. Válassza az **Eseményindítók** fület. Azure DevOps projects automatikusan létrehoz egy CI-eseményindítót néhány alapértelmezett beállítással. Olyan eseményindítókat is beállíthat, mint például a **folyamatos integráció lehetővé tétele** , hogy minden egyes kód módosításakor futtasson egy buildet. Az eseményindítókat beállíthatja úgy is, hogy az adott időpontokban futtatandó buildek ütemezhetők legyenek.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs szüksége Azure App Servicera és az oktatóanyagban létrehozott kapcsolódó erőforrásokra, törölheti őket. Használja a **delete** funkciót a DevOps projects irányítópulton.
 
