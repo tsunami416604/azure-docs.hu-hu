@@ -14,10 +14,10 @@ ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: adf3c5b5cd40a9ea3f07ba9c92cfc4544ca60f1e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80154746"
 ---
 # <a name="single-page-applications"></a>Egyoldalas alkalmazások
@@ -26,7 +26,7 @@ ms.locfileid: "80154746"
 
 Az egyoldalas alkalmazások (SPAs) jellemzően JavaScript megjelenítési rétegként (előtér) vannak strukturálva, amely a böngészőben fut, valamint egy webes API-háttérrendszer, amely egy kiszolgálón fut, és megvalósítja az alkalmazás üzleti logikáját. Ha többet szeretne megtudni az implicit engedélyezési támogatásról, és segít eldönteni, hogy megfelelő-e az alkalmazási forgatókönyvhöz, tekintse meg [a OAuth2 implicit engedélyezési folyamat Azure Active Directoryban való megismerését](v1-oauth2-implicit-grant-flow.md)ismertető témakört.
 
-Ebben a forgatókönyvben, amikor a felhasználó bejelentkezik, a JavaScript előtér [Active Directory-hitelesítési tárt használ a javascripthez (ADAL. JS)](https://github.com/AzureAD/azure-activedirectory-library-for-js) és az implicit engedélyezési engedély megadása az azonosító jogkivonat (id_token) Azure ad-ből való beszerzéséhez. A rendszer gyorsítótárazza a tokent, és az ügyfél a tulajdonosi jogkivonatként csatolja a kérést a webes API-háttér felé irányuló hívásokhoz, amely a OWIN-alapú middleware használatával biztosítva van.
+Ebben a forgatókönyvben, amikor a felhasználó bejelentkezik, a JavaScript előtér [Active Directory-hitelesítési tárt használ a javascripthez (ADAL.JS)](https://github.com/AzureAD/azure-activedirectory-library-for-js) és az implicit engedélyezési jogosultságot az azonosító jogkivonat (Id_token) Azure ad-ből való beszerzéséhez. A rendszer gyorsítótárazza a tokent, és az ügyfél a tulajdonosi jogkivonatként csatolja a kérést a webes API-háttér felé irányuló hívásokhoz, amely a OWIN-alapú middleware használatával biztosítva van.
 
 ## <a name="diagram"></a>Ábra
 
@@ -56,12 +56,12 @@ Az alkalmazás regisztrálását követően úgy kell konfigurálni, hogy az OAu
 
 ## <a name="token-expiration"></a>Jogkivonat lejárata
 
-A ADAL. js használata a következőkkel segít:
+A ADAL.js használata a következőkkel segít:
 
 * Lejárt jogkivonat frissítése
 * Hozzáférési jogkivonat kérése webes API-erőforrás meghívásához
 
-A sikeres hitelesítés után az Azure AD egy cookie-t ír a felhasználó böngészőjében egy munkamenet létrehozásához. Figyelje meg, hogy a munkamenet létezik a felhasználó és az Azure AD között (nem a felhasználó és a webalkalmazás között). Ha egy jogkivonat lejár, a ADAL. js ezt a munkamenetet használja egy másik jogkivonat csendes beszerzéséhez. A ADAL. js egy rejtett iFrame használatával küldi el és fogadja el a kérést az OAuth implicit engedélyezési protokollal. A ADAL. js ugyanezt a mechanizmust is használhatja a más webes API-erőforrások elérési jogkivonatának csendes beszerzéséhez, feltéve, hogy ezek az erőforrások támogatják az eltérő eredetű erőforrás-megosztást (CORS), a felhasználó címtárában vannak regisztrálva, és a bejelentkezés során a felhasználónak meg kell adnia a szükséges belekötést.
+A sikeres hitelesítés után az Azure AD egy cookie-t ír a felhasználó böngészőjében egy munkamenet létrehozásához. Figyelje meg, hogy a munkamenet létezik a felhasználó és az Azure AD között (nem a felhasználó és a webalkalmazás között). Ha egy jogkivonat lejár, ADAL.js ezt a munkamenetet használja egy másik jogkivonat csendes beszerzéséhez. A ADAL.js rejtett iFrame használatával küldi el és fogadja el a kérelmet a OAuth implicit engedélyezési protokollal. A ADAL.js ugyanezt a mechanizmust is használhatja a más webes API-erőforrások elérési jogkivonatának csendes beszerzéséhez, feltéve, hogy ezek az erőforrások támogatják az eltérő eredetű erőforrás-megosztást (CORS), regisztrálva vannak a felhasználói címtárban, és a felhasználó a bejelentkezés során megadta a szükséges beleegyezett.
 
 ## <a name="next-steps"></a>További lépések
 

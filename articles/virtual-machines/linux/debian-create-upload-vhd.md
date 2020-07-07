@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 11/13/2018
 ms.author: guybo
 ms.openlocfilehash: d54f7a11d929c31fee29a788eb3a2ae2cc8f2703
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80066718"
 ---
 # <a name="prepare-a-debian-vhd-for-azure"></a>Debian VHD előkészítése az Azure-hoz
@@ -42,9 +42,9 @@ Elérhetők az Azure-hoz készült Debian virtuális merevlemezek, például az 
 ## <a name="manually-prepare-a-debian-vhd"></a>Debian virtuális merevlemez manuális előkészítése
 1. A Hyper-V kezelőjében válassza ki a virtuális gépet.
 2. Kattintson a **Kapcsolódás** elemre a virtuális gép konzoljának megnyitásához.
-3. Ha ISO-vel telepítette az operációs rendszert, akkor megjegyzésbe helyezi a (`deb cdrom`z) `/etc/apt/source.list`"" elemhez kapcsolódó összes sort.
+3. Ha ISO-vel telepítette az operációs rendszert, akkor megjegyzésbe helyezi a (z `deb cdrom` ) "" elemhez kapcsolódó összes sort `/etc/apt/source.list` .
 
-4. Szerkessze `/etc/default/grub` a fájlt, és módosítsa a **GRUB_CMDLINE_LINUX** paramétert az alábbiak szerint, hogy további kernel-paramétereket tartalmazzon az Azure-hoz.
+4. Szerkessze a `/etc/default/grub` fájlt, és módosítsa a **GRUB_CMDLINE_LINUX** paramétert az alábbiak szerint, hogy további kernel-paramétereket tartalmazzon az Azure-hoz.
    
         GRUB_CMDLINE_LINUX="console=tty0 console=ttyS0,115200n8 earlyprintk=ttyS0,115200"
 

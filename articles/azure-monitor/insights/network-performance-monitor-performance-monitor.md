@@ -7,10 +7,10 @@ author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
 ms.openlocfilehash: 126cca9d3606b378e59e4f4e1c5b52d985d19d94
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80055693"
 ---
 # <a name="network-performance-monitor-solution-performance-monitoring"></a>Network Performance Monitor megoldás: teljesítményfigyelés
@@ -26,7 +26,7 @@ A [Network Performance monitor](network-performance-monitor.md) Teljesítményfi
 
 ![Hálózati teljesítményfigyelő](media/network-performance-monitor-performance-monitor/npm-performance-monitor.png)
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>Konfiguráció
 A Network Performance Monitor konfigurációjának megnyitásához nyissa meg a [Network Performance monitor megoldást](network-performance-monitor.md), és válassza a **Konfigurálás**lehetőséget.
 
 ![A Network Performance Monitor konfigurálása](media/network-performance-monitor-performance-monitor/npm-configure-button.png)
@@ -94,7 +94,7 @@ A protokoll kiválasztása előtt vegye figyelembe a következő információkat
 
 Ha az üzembe helyezés során az ICMP használatát választotta, akkor az alapértelmezett figyelési szabály szerkesztésével bármikor átválthat a TCP-re.
 
-1.  **Monitor** Nyissa **meg a** >> **Configure**Hálózatfigyelő konfigurálása> **figyelőt**. Ezután válassza az **alapértelmezett szabály**lehetőséget. 
+1. Nyissa **meg a Hálózatfigyelő**   >  **Monitor**   >  **konfigurálása**   >  **figyelőt**. Ezután válassza az **alapértelmezett szabály**lehetőséget. 
 2. Görgessen a **protokoll** szakaszhoz, és válassza ki a használni kívánt protokollt. 
 3. A beállítás alkalmazásához válassza a **Mentés** lehetőséget. 
 

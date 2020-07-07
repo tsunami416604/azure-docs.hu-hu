@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 02/04/2020
 ms.author: anzaman
 ms.openlocfilehash: 19067bbbaf93c9abc9a9220b09dd482ce9115655
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80127984"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-api"></a>Nyelvi modell testreszabása a Video Indexer API-val
@@ -105,7 +105,7 @@ A válasz metaadatokat biztosít az újonnan betanított nyelvi modellhez, valam
 }
 ```
 
-`id` A visszaadott egyedi azonosító, amely a nyelvi modellek megkülönböztetésére szolgál, `languageModelId` míg a videók [feltöltéséhez](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) és a videó API-k [újraindexeléséhez](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) (más néven `linguisticModelId` video Indexer feltöltési/újraindexelési API-khoz) is használható.
+A visszaadott `id` egyedi azonosító, amely a nyelvi modellek megkülönböztetésére szolgál, míg a videók `languageModelId` [feltöltéséhez](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) és a videó API-k [újraindexeléséhez](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) (más néven `linguisticModelId` video Indexer feltöltési/újraindexelési API-khoz) is használható.
 
 ## <a name="delete-a-language-model"></a>Nyelvi modell törlése
 
@@ -157,11 +157,11 @@ A válasz metaadatokat biztosít az újonnan betanított nyelvi modellhez, valam
 }
 ```
 
-`id` A válaszban visszaadott fájlok használatával töltse le a fájl tartalmát.
+A `id` válaszban visszaadott fájlok használatával töltse le a fájl tartalmát.
 
 ## <a name="update-a-file-from-a-language-model"></a>Fájl frissítése nyelvi modellből
 
-A [fájl frissítése](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model-file?&pattern=update) lehetővé teszi egy fájl nevének és `enable` állapotának frissítését egy egyéni nyelvi modellben a megadott fiókban.
+A [fájl frissítése](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model-file?&pattern=update) lehetővé teszi `enable` egy fájl nevének és állapotának frissítését egy egyéni nyelvi modellben a megadott fiókban.
 
 ### <a name="response"></a>Válasz
 
@@ -177,7 +177,7 @@ A válasz metaadatokat biztosít az alábbi JSON-kimenet formátumát követően
 }
 ```
 
-`id` Használja a válaszban visszaadott fájl tartalmát a fájl tartalmának letöltéséhez.
+Használja a `id` válaszban visszaadott fájl tartalmát a fájl tartalmának letöltéséhez.
 
 ## <a name="get-a-specific-language-model"></a>Adott nyelvi modell beszerzése
 
@@ -213,7 +213,7 @@ A válasz metaadatokat biztosít a megadott nyelvi modellhez, valamint a modell 
 }
 ```
 
-`id` Használja a válaszban visszaadott fájl tartalmát a fájl tartalmának letöltéséhez.
+Használja a `id` válaszban visszaadott fájl tartalmát a fájl tartalmának letöltéséhez.
 
 ## <a name="get-all-the-language-models"></a>Az összes nyelvi modell lekérése
 

@@ -8,10 +8,10 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 11aa4a80deba4df14c239e69910ea38bac1b9c55
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80063518"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-cli"></a>Azure Database for MySQL tűzfalszabályok létrehozása és kezelése az Azure CLI használatával
@@ -42,7 +42,7 @@ Az az **login** paranccsal biztonságosan összekapcsolhatja az Azure CLI-t az A
     ```
    A parancs kimenete a következő lépésben használandó kódot eredményez.
 
-2. Nyisson meg egy webböngészőt a lap [https://aka.ms/devicelogin](https://aka.ms/devicelogin)megnyitásához, majd írja be a kódot.
+2. Nyisson meg egy webböngészőt a lap megnyitásához [https://aka.ms/devicelogin](https://aka.ms/devicelogin) , majd írja be a kódot.
 
 3. A parancssorban jelentkezzen be az Azure-beli hitelesítő adataival.
 

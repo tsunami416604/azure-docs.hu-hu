@@ -4,10 +4,10 @@ description: A tároló lemezképeit az Azure API-k használatával importálhat
 ms.topic: article
 ms.date: 03/16/2020
 ms.openlocfilehash: caf7a47ac8f7ff0e72d2e049a7013542d274a225
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80051928"
 ---
 # <a name="import-container-images-to-a-container-registry"></a>Tároló-lemezképek importálása egy tároló-beállításjegyzékbe
@@ -44,7 +44,7 @@ Egy rendszerkép Azure Container registrybe való importálásához az identitá
 
 ### <a name="import-from-docker-hub"></a>Importálás a Docker hub-ból
 
-Például az az [ACR import][az-acr-import] paranccsal importálhatja a multi-Architecture `hello-world:latest` rendszerképet a Docker hub-ból egy *myregistry*nevű beállításjegyzékbe. Mivel `hello-world` a a Docker hub hivatalos rendszerképe, ez a rendszerkép az alapértelmezett `library` tárházban található. Adja meg az adattár nevét és opcionálisan egy címkét a `--source` rendszerkép paraméter értékében. (A képet a jegyzékfájlja alapján is azonosíthatja, a címke alapján, amely a rendszerkép egy adott verzióját garantálja.)
+Például az az [ACR import][az-acr-import] paranccsal importálhatja a multi-Architecture `hello-world:latest` rendszerképet a Docker hub-ból egy *myregistry*nevű beállításjegyzékbe. Mivel a `hello-world` a Docker hub hivatalos rendszerképe, ez a rendszerkép az alapértelmezett `library` tárházban található. Adja meg az adattár nevét és opcionálisan egy címkét a `--source` rendszerkép paraméter értékében. (A képet a jegyzékfájlja alapján is azonosíthatja, a címke alapján, amely a rendszerkép egy adott verzióját garantálja.)
  
 ```azurecli
 az acr import \
@@ -53,7 +53,7 @@ az acr import \
   --image hello-world:latest
 ```
 
-A `az acr repository show-manifests` következő parancs futtatásával ellenőrizheti, hogy a képhez több jegyzékfájl is társítva van-e:
+A következő parancs futtatásával ellenőrizheti, hogy a képhez több jegyzékfájl is társítva van-e `az acr repository show-manifests` :
 
 ```azurecli
 az acr repository show-manifests \
@@ -100,7 +100,7 @@ az acr import \
   --image aci-helloworld:latest
 ```
 
-Az alábbi példa egy képet a manifest Digest (SHA-256 kivonat, amely a következőképpen `sha256:...`jelenik meg) alapján importál a címke helyett:
+Az alábbi példa egy képet a manifest Digest (SHA-256 kivonat, amely a következőképpen jelenik meg) alapján importál a `sha256:...` címke helyett:
 
 ```azurecli
 az acr import \
@@ -110,7 +110,7 @@ az acr import \
 
 ### <a name="import-from-a-registry-in-a-different-subscription"></a>Importálás egy másik előfizetésben lévő beállításjegyzékből
 
-A következő példában a *mysourceregistry* egy másik előfizetésben található a *myregistry* ugyanazon a Active Directory bérlőn. Adja meg a forrás-beállításjegyzék erőforrás-AZONOSÍTÓját `--registry` a (z) paraméterrel. Figyelje meg, `--source` hogy a paraméter csak a forrás tárházat és a címkét adja meg, nem a beállításjegyzék bejelentkezési kiszolgálójának nevét.
+A következő példában a *mysourceregistry* egy másik előfizetésben található a *myregistry* ugyanazon a Active Directory bérlőn. Adja meg a forrás-beállításjegyzék erőforrás-AZONOSÍTÓját a (z `--registry` ) paraméterrel. Figyelje `--source` meg, hogy a paraméter csak a forrás tárházat és a címkét adja meg, nem a beállításjegyzék bejelentkezési kiszolgálójának nevét.
 
 ```azurecli
 az acr import \

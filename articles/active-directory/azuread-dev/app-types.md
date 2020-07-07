@@ -14,10 +14,10 @@ ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: c290cbf36fd53d5afb5fd805cda896fb6879bb4b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80154950"
 ---
 # <a name="application-types-in-v10"></a>Alkalmazások típusai a v 1.0-ban
@@ -72,7 +72,7 @@ A kiépítés világossá válik, ha tudomásul veszi, hogy az alkalmazások ké
 
 ### <a name="additional-considerations-when-developing-single-tenant-or-multi-tenant-apps"></a>További szempontok egyetlen bérlő vagy több-bérlős alkalmazások fejlesztéséhez
 
-További szempontokat is figyelembe kell venni, amikor több-bérlős alkalmazást fejlesztenek egyetlen bérlős alkalmazás helyett. Ha például az alkalmazást több címtárban is elérhetővé teszi a felhasználók számára, szüksége lesz egy olyan mechanizmusra, amely meghatározza, hogy melyik bérlőn van. Egyetlen bérlői alkalmazásnak csak a saját címtárában kell megkeresnie egy felhasználó számára, míg a több-bérlős alkalmazásnak egy adott felhasználót kell azonosítania az Azure AD összes könyvtárából. A feladat elvégzéséhez az Azure AD egy közös hitelesítési végpontot biztosít, ahol a több-bérlős alkalmazások a bérlői végpontok helyett a bejelentkezési kéréseket is megadhatják. Ez a végpont `https://login.microsoftonline.com/common` az Azure ad összes könyvtárára vonatkozik, míg a bérlő-specifikus végpont lehet `https://login.microsoftonline.com/contoso.onmicrosoft.com`. A közös végpontot különösen fontos figyelembe venni az alkalmazás fejlesztésekor, mert a bejelentkezés, a kijelentkezés és a jogkivonat-érvényesítés során több bérlő kezeléséhez szükséges logikára van szükség.
+További szempontokat is figyelembe kell venni, amikor több-bérlős alkalmazást fejlesztenek egyetlen bérlős alkalmazás helyett. Ha például az alkalmazást több címtárban is elérhetővé teszi a felhasználók számára, szüksége lesz egy olyan mechanizmusra, amely meghatározza, hogy melyik bérlőn van. Egyetlen bérlői alkalmazásnak csak a saját címtárában kell megkeresnie egy felhasználó számára, míg a több-bérlős alkalmazásnak egy adott felhasználót kell azonosítania az Azure AD összes könyvtárából. A feladat elvégzéséhez az Azure AD egy közös hitelesítési végpontot biztosít, ahol a több-bérlős alkalmazások a bérlői végpontok helyett a bejelentkezési kéréseket is megadhatják. Ez a végpont `https://login.microsoftonline.com/common` Az Azure ad összes könyvtárára vonatkozik, míg a bérlő-specifikus végpont lehet `https://login.microsoftonline.com/contoso.onmicrosoft.com` . A közös végpontot különösen fontos figyelembe venni az alkalmazás fejlesztésekor, mert a bejelentkezés, a kijelentkezés és a jogkivonat-érvényesítés során több bérlő kezeléséhez szükséges logikára van szükség.
 
 Ha jelenleg egy bérlői alkalmazást fejleszt, de számos szervezet számára elérhetővé szeretné tenni azt, egyszerűen módosíthatja az alkalmazást és annak konfigurációját az Azure AD-ben, hogy az informatikai részleg képes legyen a több-bérlős működésre. Emellett az Azure AD ugyanazt az aláíró kulcsot használja az összes címtárban található összes tokenhez, függetlenül attól, hogy egyetlen bérlő vagy több-bérlős alkalmazásban biztosít hitelesítést.
 

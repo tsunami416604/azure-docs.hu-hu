@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 01/24/2018
 ms.openlocfilehash: 30b0c7c87f6d55586b931be1445b175ce58565d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80055902"
 ---
 # <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>Active Directory replikáció állapotának figyelése Azure Monitor
@@ -41,10 +41,10 @@ Ha nem kívánja közvetlenül csatlakoztatni a tartományvezérlőket a Azure M
 
 1. Győződjön meg arról, hogy a számítógép a AD Replication Status megoldás használatával figyelni kívánt tartomány tagja.
 2. Ha még nincs csatlakoztatva, [csatlakoztassa a Windows rendszerű számítógépet Azure monitor](../../azure-monitor/platform/om-agents.md) vagy [csatlakoztassa a meglévő Operations Manager-környezettel Azure monitorhoz](../../azure-monitor/platform/om-agents.md).
-3. A számítógépen állítsa be a következő beállításkulcsot:<br>Kulcs: **HKEY_LOCAL_MACHINE \System\currentcontrolset\services\healthservice\parameters\management csoportok\<ManagementGroupName> \solutions\adreplication**<br>Érték: **IsTarget**<br>Érték: **true**
+3. A számítógépen állítsa be a következő beállításkulcsot:<br>Kulcs: **HKEY_LOCAL_MACHINE \System\currentcontrolset\services\healthservice\parameters\management csoportok \<ManagementGroupName> \Solutions\ADReplication**<br>Érték: **IsTarget**<br>Érték: **true**
 
    > [!NOTE]
-   > Ezek a módosítások addig nem lépnek érvénybe, amíg újra nem indítja a Microsoft monitoring Agent szolgáltatást (HealthService. exe).
+   > Ezek a módosítások addig nem lépnek érvénybe, amíg újra nem indítja a Microsoft monitoring Agent szolgáltatást (HealthService.exe).
    > ### <a name="install-solution"></a>Megoldás telepítése
    > A **Active Directory Replication status** megoldás a log Analytics-munkaterülethez való hozzáadásához kövesse a [figyelési megoldás telepítése](solutions.md#install-a-monitoring-solution) című témakörben ismertetett eljárást. Nincs szükség további konfigurációra.
 
@@ -135,7 +135,7 @@ A: nem, csak egyetlen tartományvezérlőt kell hozzáadnia. Ha több tartomány
 V: Igen. Megadhatja a beállításkulcs értékét az engedélyezéséhez. Lásd: a [nem tartományvezérlő engedélyezése](#enable-non-domain-controller).
 
 **K: Mi az adatgyűjtés folyamatának neve?**
-A: AdvisorAssessment. exe
+A: AdvisorAssessment.exe
 
 **K: mennyi időt vesz igénybe az adatok gyűjtése?**
 A: az adatgyűjtési idő a Active Directory környezet méretétől függ, de általában kevesebb, mint 15 percet vesz igénybe.

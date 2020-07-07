@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: de6bb3fe0879a69467283e93a04a355876a02cba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80246687"
 ---
 # <a name="how-to-transfer-a-payload-between-device-and-dps"></a>Adattartalom átvitele az eszköz és a DPS között
@@ -54,7 +54,7 @@ Ha az egyéni kiosztási szabályzat webhooka bizonyos adatmennyiséget szeretne
    ```
 
 ## <a name="sdk-support"></a>SDK-támogatás
-Ez a funkció C, C#, JAVA és Node. js [ügyféloldali SDK](https://docs.microsoft.com/azure/iot-dps/)-k esetén érhető el.  
+Ez a funkció C, C#, JAVA és Node.js [ügyféloldali SDK](https://docs.microsoft.com/azure/iot-dps/)-k esetében érhető el.  
 
 ## <a name="next-steps"></a>További lépések
 * Fejlesztés az Azure IoT Hub és az Azure-hoz készült [Azure IOT SDK]( https://github.com/Azure/azure-iot-sdks) -val IoT hub Device Provisioning Service

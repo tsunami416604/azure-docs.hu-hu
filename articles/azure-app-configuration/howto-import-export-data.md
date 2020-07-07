@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: lcozzens
 ms.openlocfilehash: 5b3d6d0561d7d6d6b23cb4f579b0988850da9771
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80056867"
 ---
 # <a name="import-or-export-configuration-data"></a>Konfigurációs adatok importálása vagy exportálása
@@ -28,7 +28,7 @@ Az adatimportálás az [Azure Portal](https://portal.azure.com) vagy az [Azure C
 
 1. Keresse meg az alkalmazás konfigurációs tárolóját, és válassza az **Importálás/exportálás** lehetőséget az **Operations (műveletek** ) menüből.
 
-1. Az **Importálás** lapon válassza a **forrás szolgáltatás** > **konfigurációs fájl**elemet.
+1. Az **Importálás** lapon válassza a **forrás szolgáltatás**  >  **konfigurációs fájl**elemet.
 
 1. Válassza ki **a nyelvet** , és válassza ki a kívánt bemeneti típust.
 
@@ -52,11 +52,11 @@ Az adatexportálás az [Azure Portal](https://portal.azure.com) vagy az [Azure C
 
 1. Keresse meg az alkalmazás konfigurációs tárolóját, és válassza az **Importálás/exportálás**lehetőséget.
 
-1. Az **Exportálás** lapon válassza a **cél szolgáltatás** > **konfigurációs fájl**elemet.
+1. Az **Exportálás** lapon válassza a **cél szolgáltatás**  >  **konfigurációs fájl**elemet.
 
 1. Opcionálisan megadhat egy **előtagot** , és kiválaszthat egy **címkét** és egy időpontot az exportálandó kulcsok számára.
 
-1. Válasszon ki egy **Fájltípus** > -**elválasztó**elemet.
+1. Válasszon ki egy **Fájltípus**-  >  **elválasztó**elemet.
 
 1. Az Exportálás befejezéséhez kattintson az **alkalmaz** gombra.
 

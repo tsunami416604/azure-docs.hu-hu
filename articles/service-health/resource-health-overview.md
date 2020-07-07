@@ -4,10 +4,10 @@ description: A Azure Resource Health áttekintése
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.openlocfilehash: 7a1dfe5e93d0e19aeb343d113a24ed882a5b3f69
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80159251"
 ---
 # <a name="resource-health-overview"></a>Resource Health áttekintése
@@ -80,7 +80,7 @@ A Resource Health **állapotának előzményei** részben akár 30 napig is elé
 
 ![Resource Health események listája az elmúlt két hétben](./media/resource-health-overview/history-blade.png)
 
-## <a name="get-started"></a>Bevezetés
+## <a name="get-started"></a>Első lépések
 
 Resource Health megnyitása egy erőforráshoz:
 

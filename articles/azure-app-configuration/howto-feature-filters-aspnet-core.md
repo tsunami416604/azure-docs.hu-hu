@@ -8,10 +8,10 @@ ms.author: lcozzens
 ms.topic: conceptual
 ms.date: 3/9/2020
 ms.openlocfilehash: 181c97615985283011834dcf9145810b1563fb4a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80057003"
 ---
 # <a name="use-feature-filters-to-enable-a-feature-for-a-subset-of-users"></a>Szolgáltatás-szűrők használata a szolgáltatások egy részhalmaza számára történő engedélyezéséhez
@@ -29,7 +29,7 @@ Létrehozhat egy saját szolgáltatáskészlet-szűrőt is, amely megvalósítja
 
 ## <a name="registering-a-feature-filter"></a>Szolgáltatás szűrőjének regisztrálása
 
-A szolgáltatás szűréséhez hívja meg a `AddFeatureFilter` metódust, és adja meg a szolgáltatás szűrőjének nevét. Például a következő kód regisztrálása `PercentageFilter`:
+A szolgáltatás szűréséhez hívja meg a `AddFeatureFilter` metódust, és adja meg a szolgáltatás szűrőjének nevét. Például a következő kód regisztrálása `PercentageFilter` :
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -43,7 +43,7 @@ public void ConfigureServices(IServiceCollection services)
 
 Egyes szolgáltatási szűrők további beállításokkal rendelkeznek. A szolgáltatás például `PercentageFilter` egy százalék alapján aktiválja a szolgáltatást. Ez a beállítás határozza meg a használni kívánt százalékos arányt.
 
-Ezeket a beállításokat konfigurálhatja az Azure-alkalmazások konfigurációjában definiált funkciók jelzői számára. Az alábbi lépéseket `PercentageFilter` követve például engedélyezheti a funkció jelzőjét a kérelmek 50%-ában egy webalkalmazásnak:
+Ezeket a beállításokat konfigurálhatja az Azure-alkalmazások konfigurációjában definiált funkciók jelzői számára. Az alábbi lépéseket követve például `PercentageFilter` engedélyezheti a funkció jelzőjét a kérelmek 50%-ában egy webalkalmazásnak:
 
 1. Kövesse a gyors üzembe helyezési útmutató [: szolgáltatás-jelzők hozzáadása egy ASP.net Core alkalmazáshoz](./quickstart-feature-flag-aspnet-core.md) webalkalmazás létrehozásához a szolgáltatás jelölőjét.
 

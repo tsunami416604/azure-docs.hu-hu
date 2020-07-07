@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2cd782cdab625934fe60617142e5ac0baf756398
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80128763"
 ---
 # <a name="troubleshooting-devices-using-the-dsregcmd-command"></a>Eszközök hibaelhárítása a dsregcmd parancs használatával
@@ -136,7 +136,7 @@ Ez a szakasz felsorolja az eszközre jelenleg bejelentkezett felhasználó kül�
 - **WorkplaceJoined:** – az "igen" értékre állítva, ha az Azure ad-beli regisztrált fiókok hozzá lettek adva az eszközhöz az aktuális Ntuser-környezetben.
 - **WamDefaultSet:** – állítsa Igen értékre, ha a bejelentkezett felhasználóhoz LÉTREJÖN egy WAM alapértelmezett webfiók. Ez a mező hibát jelez, ha a dsreg/status rendszergazda jogú parancssorból fut. 
 - **WamDefaultAuthority:** – az Azure ad-ben "szervezetek" értékre van állítva.
-- **WamDefaultId:** – mindig "https://login.microsoft.com" az Azure ad-hez.
+- **WamDefaultId:** – mindig " https://login.microsoft.com " az Azure ad-hez.
 - **WamDefaultGUID:** – a WAM szolgáltató (Azure AD/Microsoft-fiók) GUID azonosítója az alapértelmezett WAM webfiókhoz. 
 
 ### <a name="sample-user-state-output"></a>Felhasználói állapot kimenetének mintája

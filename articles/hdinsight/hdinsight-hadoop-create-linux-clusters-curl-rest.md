@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/10/2019
 ms.openlocfilehash: 2680304bd73bdbae35b29b89f38ae2665615f5e7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80239915"
 ---
 # <a name="create-apache-hadoop-clusters-using-the-azure-rest-api"></a>Apache Hadoop-fürtök létrehozása az Azure REST API használatával
@@ -24,13 +24,13 @@ Megtudhatja, hogyan hozhat létre HDInsight-fürtöt egy Azure Resource Manager 
 Az Azure REST API lehetővé teszi, hogy felügyeleti műveleteket hajtson végre az Azure platformon üzemeltetett szolgáltatásokon, beleértve az új erőforrások, például a HDInsight-fürtök létrehozását.
 
 > [!NOTE]  
-> A jelen dokumentumban ismertetett lépések a [curl (https://curl.haxx.se/) ](https://curl.haxx.se/) segédprogrammal kommunikálnak az Azure REST API használatával.
+> A jelen dokumentumban ismertetett lépések a [curl ( https://curl.haxx.se/) ](https://curl.haxx.se/) segédprogrammal kommunikálnak az Azure REST API használatával.
 
 ## <a name="create-a-template"></a>Sablon létrehozása
 
 Azure Resource Manager sablonok olyan JSON-dokumentumok, amelyek egy **erőforráscsoportot** és az összes erőforrást (például HDInsight) írják le. Ez a sablon alapú megközelítés lehetővé teszi, hogy meghatározza a HDInsight szükséges erőforrásokat egy sablonban.
 
-A következő JSON-dokumentum a sablon és a paraméterek fájljának egyesítése [https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password), amely egy Linux-alapú fürtöt hoz létre jelszó használatával az SSH-felhasználói fiók védelméhez.
+A következő JSON-dokumentum a sablon és a paraméterek fájljának egyesítése [https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password) , amely egy Linux-alapú fürtöt hoz létre jelszó használatával az SSH-felhasználói fiók védelméhez.
 
    ```json
    {
@@ -214,7 +214,7 @@ Ez a példa a jelen dokumentum lépéseiben használatos. Cserélje le a **Param
 
 ## <a name="sign-in-to-your-azure-subscription"></a>Jelentkezzen be az Azure-előfizetésbe
 
-Kövesse az [Azure CLI használatának első](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) lépései című cikkben ismertetett lépéseket, és kapcsolódjon az `az login` előfizetéséhez a paranccsal.
+Kövesse az [Azure CLI használatának első](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) lépései című cikkben ismertetett lépéseket, és kapcsolódjon az előfizetéséhez a `az login` paranccsal.
 
 ## <a name="create-a-service-principal"></a>Egyszerű szolgáltatás létrehozása
 
@@ -235,10 +235,10 @@ Kövesse az [Azure CLI használatának első](https://docs.microsoft.com/cli/azu
    az ad app create --display-name "exampleapp" --homepage "https://www.contoso.org" --identifier-uris "https://www.contoso.org/example" --password <Your password> --query 'appId'
    ```
 
-    Cserélje le a `--display-name`, `--homepage`, és `--identifier-uris` értékeit a saját értékeire. Adja meg az új Active Directory bejegyzéshez tartozó jelszót.
+    Cserélje le a `--display-name` ,, és értékeit a `--homepage` `--identifier-uris` saját értékeire. Adja meg az új Active Directory bejegyzéshez tartozó jelszót.
 
    > [!NOTE]  
-   > A `--home-page` és `--identifier-uris` az értékek nem szükségesek az interneten futó tényleges weblapra hivatkozni. Egyedi URI-azonosítóknak kell lenniük.
+   > A `--home-page` és az `--identifier-uris` értékek nem szükségesek az interneten futó tényleges weblapra hivatkozni. Egyedi URI-azonosítóknak kell lenniük.
 
    A parancs által visszaadott érték az új alkalmazáshoz tartozó __alkalmazás azonosítója__ . Mentse ezt az értéket.
 
@@ -270,7 +270,7 @@ curl -X "POST" "https://login.microsoftonline.com/$TENANTID/oauth2/token" \
 --data-urlencode "resource=https://management.azure.com/"
 ```
 
-A, a és `$PASSWORD` a értéket a korábban beszerzett vagy felhasznált értékekre állítja be `$TENANTID` `$APPID`
+`$TENANTID`A, `$APPID` a és a `$PASSWORD` értéket a korábban beszerzett vagy felhasznált értékekre állítja be.
 
 Ha ez a kérelem sikeres, egy 200 sorozatú választ kap, és a válasz törzse JSON-dokumentumot tartalmaz.
 
@@ -290,10 +290,10 @@ A kérelem által visszaadott JSON-dokumentum egy **access_token**nevű elemet t
 
 Erőforráscsoport létrehozásához használja a következőt.
 
-* Állítsa `$SUBSCRIPTIONID` be az egyszerű szolgáltatás létrehozásakor kapott előfizetés-azonosítót.
+* Állítsa be `$SUBSCRIPTIONID` az egyszerű szolgáltatás létrehozásakor kapott előfizetés-azonosítót.
 * Állítsa `$ACCESSTOKEN` az előző lépésben kapott hozzáférési jogkivonatra.
-* A `DATACENTERLOCATION` helyére írja be azt az adatközpontot, amelyben létre kívánja hozni az erőforráscsoportot és az erőforrásokat. Például: "USA déli középső régiója".
-* Állítsa `$RESOURCEGROUPNAME` be az ehhez a csoporthoz használni kívánt nevet:
+* A helyére írja `DATACENTERLOCATION` be azt az adatközpontot, amelyben létre kívánja hozni az erőforráscsoportot és az erőforrásokat. Például: "USA déli középső régiója".
+* Állítsa be `$RESOURCEGROUPNAME` az ehhez a csoporthoz használni kívánt nevet:
 
 ```bash
 curl -X "PUT" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resourcegroups/$RESOURCEGROUPNAME?api-version=2015-01-01" \
@@ -304,13 +304,13 @@ curl -X "PUT" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resour
 }'
 ```
 
-Ha ez a kérelem sikeres, egy 200 sorozatú választ kap, és a válasz törzse tartalmaz egy JSON-dokumentumot, amely a csoportra vonatkozó információkat tartalmazza. A `"provisioningState"` elem a értéket tartalmazza `"Succeeded"`.
+Ha ez a kérelem sikeres, egy 200 sorozatú választ kap, és a válasz törzse tartalmaz egy JSON-dokumentumot, amely a csoportra vonatkozó információkat tartalmazza. A `"provisioningState"` elem a értéket tartalmazza `"Succeeded"` .
 
 ## <a name="create-a-deployment"></a>Központi telepítés létrehozása
 
 A következő parancs használatával telepítse a sablont az erőforráscsoporthoz.
 
-* Állítsa `$DEPLOYMENTNAME` be a központi telepítéshez használni kívánt nevet.
+* Állítsa be `$DEPLOYMENTNAME` a központi telepítéshez használni kívánt nevet.
 
 ```bash
 curl -X "PUT" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resourcegroups/$RESOURCEGROUPNAME/providers/microsoft.resources/deployments/$DEPLOYMENTNAME?api-version=2015-01-01" \
@@ -320,7 +320,7 @@ curl -X "PUT" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resour
 ```
 
 > [!NOTE]  
-> Ha a sablont egy fájlba mentette, a következő parancsot használhatja a helyett `-d "{ template and parameters}"`:
+> Ha a sablont egy fájlba mentette, a következő parancsot használhatja a helyett `-d "{ template and parameters}"` :
 >
 > `--data-binary "@/path/to/file.json"`
 
@@ -339,7 +339,7 @@ curl -X "GET" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resour
 -H "Content-Type: application/json"
 ```
 
-Ez a parancs egy JSON-dokumentumot ad vissza, amely a telepítési műveletre vonatkozó információkat tartalmaz. Az `"provisioningState"` elem tartalmazza a központi telepítés állapotát. Ha ez az elem tartalmazza a értékét `"Succeeded"`, a központi telepítés sikeresen befejeződött.
+Ez a parancs egy JSON-dokumentumot ad vissza, amely a telepítési műveletre vonatkozó információkat tartalmaz. Az `"provisioningState"` elem tartalmazza a központi telepítés állapotát. Ha ez az elem tartalmazza a értékét `"Succeeded"` , a központi telepítés sikeresen befejeződött.
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 

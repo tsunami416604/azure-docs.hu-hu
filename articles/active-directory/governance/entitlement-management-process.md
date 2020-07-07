@@ -17,10 +17,10 @@ ms.author: barclayn
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e4ff270977449bb80f97073342dc0c726a3f2316
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80128524"
 ---
 # <a name="request-process-and-email-notifications-in-azure-ad-entitlement-management"></a>Kérelmek feldolgozása és e-mail-értesítések az Azure AD-jogosultságok kezelésében
@@ -33,9 +33,9 @@ Egy hozzáférési csomaghoz hozzáféréssel rendelkező felhasználónak hozz�
 
 ![Jóváhagyási folyamat diagramja](./media/entitlement-management-process/request-process.png)
 
-| Állapot | Leírás |
+| Állam | Leírás |
 | --- | --- |
-| Submitted (Elküldve) | A felhasználó kérelmet küld. |
+| Elküldve | A felhasználó kérelmet küld. |
 | Jóváhagyás függőben | Ha egy hozzáférési csomagra vonatkozó házirend jóváhagyást igényel, a kérés függőben lévő jóváhagyásra kerül. |
 | Lejárt | Ha egyetlen jóváhagyó sem hagyja jóvá a kérést a jóváhagyási kérelem időkorlátján belül, a kérelem lejár. Ha újra próbálkozik, a felhasználónak újra el kell küldenie a kérést. |
 | Megtagadva | A jóváhagyó megtagadja a kérelmet. |
