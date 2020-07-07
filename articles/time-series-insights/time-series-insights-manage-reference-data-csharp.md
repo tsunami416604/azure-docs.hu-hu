@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.custom: seodec18
 ms.openlocfilehash: f0ce0f7d90540274d24a7e0248e6f197b74033a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81416980"
 ---
 # <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-using-c"></a>Azure Time Series Insights-környezethez tartozó GA-referenciák kezelése C használatával #
@@ -23,7 +23,7 @@ ms.locfileid: "81416980"
 Ez a cikk bemutatja, hogyan egyesítheti a C#, a [MSAL.net](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)és a Azure Active Directoryt, hogy programozott API-kéréseket lehessen készíteni a Azure Time Series Insights GA [Reference adatkezelés API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)-hoz.
 
 > [!TIP]
-> A GA C# kód mintáinak [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample)megtekintése a következő helyen:.
+> A GA C# kód mintáinak megtekintése a következő helyen: [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample) .
 
 ## <a name="summary"></a>Összefoglalás
 
@@ -48,7 +48,7 @@ A mintakód fordítása és futtatása előtt végezze el a következő lépése
    | --- | --- |
    | uuid | Sztring | 
 
-1. Konfigurálja Azure Time Series Insights-környezetét Azure Active Directory a [hitelesítés és engedélyezés](time-series-insights-authentication-and-authorization.md)című témakörben leírtak szerint. Használja `http://localhost:8080/` **átirányítási URI**-ként.
+1. Konfigurálja Azure Time Series Insights-környezetét Azure Active Directory a [hitelesítés és engedélyezés](time-series-insights-authentication-and-authorization.md)című témakörben leírtak szerint. Használja `http://localhost:8080/` **ÁTirányítási URI**-ként.
 
 1. Telepítse a szükséges projekt-függőségeket.
 
@@ -66,7 +66,7 @@ Javasoljuk, hogy a Visual Studio és a **NETCore. app**legújabb verzióját has
 A mintakód két kötelező függőséggel rendelkezik:
 
 * MSAL.NET [Microsoft. Identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client/) -4.7.1 csomag.
-* [Newtonsoft. JSON](https://www.nuget.org/packages/Newtonsoft.Json) -12.0.3 csomag.
+* [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json) -12.0.3 csomag.
 
 Adja hozzá a csomagokat a [NuGet 2.12 +](https://www.nuget.org/)használatával:
 
@@ -75,7 +75,7 @@ Adja hozzá a csomagokat a [NuGet 2.12 +](https://www.nuget.org/)használatával
 
 Vagy
 
-1. `csharp-tsi-msal-ga-sample.csproj` Fájl deklarálása:
+1. Fájl deklarálása `csharp-tsi-msal-ga-sample.csproj` :
 
     ```XML
     <Project Sdk="Microsoft.NET.Sdk">

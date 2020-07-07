@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.openlocfilehash: b1d941fbf86d453a56a5157ed988a32173c614fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81461531"
 ---
 # <a name="scenario-azure-hdinsight-clusters-with-disk-encryption-lose-key-vault-access"></a>Forgatókönyv: a lemez titkosításával rendelkező Azure HDInsight-fürtök elvesztik Key Vault hozzáférését
@@ -20,7 +20,7 @@ Ez a cikk az Azure HDInsight-fürtökkel való interakció során felmerülő pr
 
 ## <a name="issue"></a>Probléma
 
-A Resource Health központ (RHC) riasztása `The HDInsight cluster is unable to access the key for BYOK encryption at rest`BRING Your Own Key (BYOK) fürtöknél jelenik meg, ahol a fürtcsomópontok elvesztették a hozzáférést az ügyfeleknek Key Vault (kV). Hasonló riasztások is megtekinthetők az Apache Ambari felhasználói felületén.
+A Resource Health központ (RHC) riasztása `The HDInsight cluster is unable to access the key for BYOK encryption at rest` bring your own Key (BYOK) fürtöknél jelenik meg, ahol a fürtcsomópontok elvesztették a hozzáférést az ügyfeleknek Key Vault (kV). Hasonló riasztások is megtekinthetők az Apache Ambari felhasználói felületén.
 
 ## <a name="cause"></a>Ok
 

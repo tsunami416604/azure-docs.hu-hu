@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.openlocfilehash: 35d61e896a395c3044a51780fef72d54c211a31f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81417184"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>ForEach-tevékenység Azure Data Factory
@@ -23,8 +23,8 @@ ms.locfileid: "81417184"
 
 A ForEach tevékenység a folyamat ismétlődő vezérlési folyamatát határozza meg. Ez a tevékenység egy gyűjtemény megismétlésére, valamint egy megadott ciklustevékenység végrehajtására szolgál. E tevékenység ciklusos megvalósítása hasonló a Foreach ciklusos szerkezetéhez a programozási nyelvek esetében.
 
-## <a name="syntax"></a>Szintaxis
-A tulajdonságokat a cikk későbbi részében ismertetjük. Az Items tulajdonság a gyűjtemény és a gyűjtemény minden eleme a következő szintaxissal látható `@item()` módon hivatkozik rá:  
+## <a name="syntax"></a>Syntax
+A tulajdonságokat a cikk későbbi részében ismertetjük. Az Items tulajdonság a gyűjtemény és a gyűjtemény minden eleme a `@item()` következő szintaxissal látható módon hivatkozik rá:  
 
 ```json
 {  
@@ -72,8 +72,8 @@ A tulajdonságokat a cikk későbbi részében ismertetjük. Az Items tulajdons�
 
 Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
-név | A for-each tevékenység neve. | Sztring | Igen
-type | **Foreach** értékre kell állítani | Sztring | Igen
+name | A for-each tevékenység neve. | Sztring | Igen
+típus | **Foreach** értékre kell állítani | Sztring | Igen
 isSequential | Meghatározza, hogy a hurkot egymás után vagy párhuzamosan kell-e végrehajtani.  Egyidejűleg legfeljebb 20 hurok-iteráció hajtható végre. Ha például egy ForEach-tevékenység egy másolási tevékenységhez képest 10 különböző forrás-és fogadó adatkészlettel rendelkezik, és a **isSequential** értéke hamis, akkor az összes másolat egyszerre lesz végrehajtva. Az alapértelmezett érték a false. <br/><br/> Ha a "isSequential" értéke false (hamis), akkor ellenőrizze, hogy van-e megfelelő konfiguráció több végrehajtható fájl futtatásához. Ellenkező esetben ezt a tulajdonságot körültekintően kell használni az írási ütközések elkerülése érdekében. További információ: [párhuzamos végrehajtás](#parallel-execution) szakasz. | Logikai | Nem. Az alapértelmezett érték a false.
 batchCount | A párhuzamos végrehajtások számának szabályozásához használandó kötegek száma (ha a isSequential hamis értékre van állítva). Ez a felső egyidejűségi korlát, de a for-each tevékenység nem mindig lesz végrehajtva ennél a számnál | Egész szám (legfeljebb 50) | Nem. Az alapértelmezett érték 20.
 Elemek | Egy kifejezés, amely egy JSON-tömböt ad vissza, amelyet a rendszer megismétel. | Kifejezés (amely egy JSON-tömböt ad vissza) | Igen
@@ -83,7 +83,7 @@ Tevékenységek | A végrehajtandó tevékenységek. | Tevékenységek listája 
 Ha a **isSequential** hamis értékre van állítva, a tevékenység párhuzamosan, legfeljebb 20 egyidejű ismétléssel közelíthető meg. Ezt a beállítást körültekintően kell használni. Ha az egyidejű ismétlések ugyanarra a mappára, de különböző fájlokra is érvényesek, ez a megközelítés rendben van. Ha az egyidejű ismétlések egyidejű, ugyanazon a fájlon vannak írva, ez a megközelítés valószínűleg hibát okoz. 
 
 ## <a name="iteration-expression-language"></a>Iterációs kifejezés nyelve
-A ForEach tevékenységben adjon meg egy olyan tömböt, amelyet meg kell ismételni a tulajdonság **elemeinél**. " A `@item()` használatával megismételheti a foreach tevékenység egyetlen enumerálását. Ha például az **elemek** tömb: [1, 2, 3], `@item()` az első iterációban az 1 értéket adja vissza, a második iterációban 2, a harmadik iterációban pedig 3.
+A ForEach tevékenységben adjon meg egy olyan tömböt, amelyet meg kell ismételni a tulajdonság **elemeinél**. " A használatával `@item()` megismételheti a foreach tevékenység egyetlen enumerálását. Ha például az **elemek** tömb: [1, 2, 3], `@item()` az első iterációban az 1 értéket adja vissza, a második iterációban 2, a harmadik iterációban pedig 3.
 
 ## <a name="iterating-over-a-single-activity"></a>Iteráció egyetlen tevékenységen keresztül
 **Forgatókönyv:** Másolja az Azure blobban található ugyanabból a forrásfájl-fájlból az Azure blobban található több célfájlba.
@@ -195,7 +195,7 @@ A ForEach tevékenységben adjon meg egy olyan tömböt, amelyet meg kell ismét
 Több tevékenység is megismételhető (például másolási és webes tevékenységek) egy ForEach-tevékenységben. Ebben a forgatókönyvben azt javasoljuk, hogy több tevékenységet is elkülönítse egy külön folyamatba. Ezt követően használhatja a folyamat [ExecutePipeline tevékenységét](control-flow-execute-pipeline-activity.md) a foreach tevékenységgel, hogy meghívja a különálló folyamatot több tevékenységgel. 
 
 
-### <a name="syntax"></a>Szintaxis
+### <a name="syntax"></a>Syntax
 
 ```json
 {

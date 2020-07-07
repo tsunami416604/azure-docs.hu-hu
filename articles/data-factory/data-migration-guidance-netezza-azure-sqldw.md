@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 9/03/2019
 ms.openlocfilehash: a0263880262da95f4d26ee8388da464e9a59efca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81416454"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-netezza-server-to-azure"></a>A helyszíni Netezza-kiszolgálóról az Azure-ba történő Migrálás Azure Data Factory használata 
@@ -157,7 +157,7 @@ Ha két órán belül nem tölthető be az Azure-ba, és a saját üzemeltetés�
 
 Tartsa figyelemmel a CPU-és memóriahasználat figyelését a saját üzemeltetésű IR-gépen, és készen áll a gép vertikális felskálázására vagy a több gépre való skálázásra, amikor azt látja, hogy a processzor és a memória teljes mértékben használatban van. 
 
-Ha sávszélesség-szabályozási hibát tapasztal, ahogy azt Azure Data Factory másolási tevékenység jelzi, csökkentse a párhuzamosságot vagy `parallelCopies` a beállítást a Azure Data Factoryban, vagy növelje a hálózat és az adattárak sávszélességének vagy I/O-műveleteinek másodpercenkénti (IOPS) korlátait. 
+Ha sávszélesség-szabályozási hibát tapasztal, ahogy azt Azure Data Factory másolási tevékenység jelzi, csökkentse a párhuzamosságot vagy a `parallelCopies` beállítást a Azure Data Factoryban, vagy növelje a hálózat és az adattárak sávszélességének vagy I/O-műveleteinek másodpercenkénti (IOPS) korlátait. 
 
 
 ### <a name="estimate-your-pricing"></a>A díjszabás becslése 
@@ -174,7 +174,7 @@ Tegyük fel, hogy az alábbi utasítások teljesülnek:
 
 - Az 50 TB-os kötet 500 partícióra van osztva, és mindegyik másolási tevékenység egy partíciót helyez el.
 
-- Minden másolási tevékenység egy saját üzemeltetésű, négy gépen üzemelő IR-vel van konfigurálva, és 20 megabájt/másodperc (MB/s) sebesség elérését éri el. (A másolási tevékenységen belül a 4 értékre `parallelCopies` van állítva, és az adatoknak a táblából való betöltéséhez szükséges minden szál 5 MB/s adatátviteli sebességet érhet el.)
+- Minden másolási tevékenység egy saját üzemeltetésű, négy gépen üzemelő IR-vel van konfigurálva, és 20 megabájt/másodperc (MB/s) sebesség elérését éri el. (A másolási tevékenységen belül a `parallelCopies` 4 értékre van állítva, és az adatoknak a táblából való betöltéséhez szükséges minden szál 5 MB/s adatátviteli sebességet érhet el.)
 
 - A ForEach Egyidejűség értéke 3, az összesített átviteli sebesség pedig 60 MBps.
 

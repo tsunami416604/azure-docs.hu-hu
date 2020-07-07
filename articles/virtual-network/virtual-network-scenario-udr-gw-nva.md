@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2016
 ms.author: kumud
 ms.openlocfilehash: 80a9397838e90a2af504125b2dc4c4ef39251d4e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81455362"
 ---
 # <a name="virtual-appliance-scenario"></a>Virtuális berendezés forgatókönyve
@@ -34,7 +34,7 @@ Ez egy szabványos peremhálózati hálózat (más néven DMZ) forgatókönyv eg
 |  | Előnyök | Hátrányok |
 | --- | --- | --- |
 | NSG |Díjmentes. <br/>Integrálva van az Azure-RBAC. <br/>Azure Resource Manager-sablonokban létrehozhatók szabályok. |Az összetettség nagyobb környezetekben változhat. |
-| Tűzfal |Az adatsík teljes körű vezérlése. <br/>Központi felügyelet a tűzfal konzolján keresztül. |A tűzfal berendezésének díja. <br/>Nincs integrálva az Azure RBAC. |
+| Firewall |Az adatsík teljes körű vezérlése. <br/>Központi felügyelet a tűzfal konzolján keresztül. |A tűzfal berendezésének díja. <br/>Nincs integrálva az Azure RBAC. |
 
 Az alábbi megoldás a tűzfal virtuális készülékeit használja a peremhálózat (DMZ)/Protected hálózati forgatókönyv megvalósításához.
 

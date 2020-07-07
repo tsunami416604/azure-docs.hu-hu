@@ -13,10 +13,10 @@ ms.date: 12/13/2019
 ms.author: borisb
 ms.custom: ''
 ms.openlocfilehash: bbb6665299ce9b6521eeb8801d8621dfbdc17f4a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81683491"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Az Azure-beli Oracle Database Enterprise Edition hivatkozási architektúrái
@@ -154,7 +154,7 @@ Az Oracle horizontális felskálázása elsősorban a következő összetevőkb�
 
 - Szegmens **adatbázisok** – a szegmens adatbázisok az Oracle-adatbázisok. Az egyes adatbázisok a gyors indítási feladatátvételt (FSFO) használó Broker-konfigurációban az Oracle-adatőr használatával replikálódnak. Az egyes szegmenseken nem kell beállítania az adatvédelem feladatátvételét és replikálását. Ezt a rendszer automatikusan konfigurálja és telepíti a megosztott adatbázis létrehozásakor. Ha egy adott szegmens meghibásodása meghiúsul, az Oracle-megosztás automatikusan feladatátvételt hajt végre az elsődlegesről a készenléti állapotba.
 
-Az Oracle-alapú többszintű adatbázisok üzembe helyezéséhez és kezeléséhez két interfész használható: Oracle Enterprise Manager Cloud Control `GDSCTL` GUI és/vagy a parancssori segédprogram. A Felhőbeli vezérlés használatával akár a rendelkezésre állás és a teljesítmény különböző szegmenseit is figyelheti. A `GDSCTL DEPLOY` parancs automatikusan létrehozza a szegmenseket és a hozzájuk tartozó figyelőket. Emellett a parancs automatikusan telepíti a rendszerszintű magas rendelkezésre állású, a rendszergazda által megadott replikációs konfigurációt.
+Az Oracle-alapú többszintű adatbázisok üzembe helyezéséhez és kezeléséhez két interfész használható: Oracle Enterprise Manager Cloud Control GUI és/vagy a `GDSCTL` parancssori segédprogram. A Felhőbeli vezérlés használatával akár a rendelkezésre állás és a teljesítmény különböző szegmenseit is figyelheti. A `GDSCTL DEPLOY` parancs automatikusan létrehozza a szegmenseket és a hozzájuk tartozó figyelőket. Emellett a parancs automatikusan telepíti a rendszerszintű magas rendelkezésre állású, a rendszergazda által megadott replikációs konfigurációt.
 
 Az adatbázisok többféleképpen is elvégezhető:
 

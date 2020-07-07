@@ -12,10 +12,10 @@ ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 08/01/2018
 ms.openlocfilehash: 4620ef5b6a72afbe86b0ace33328a769eab31e5e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81418269"
 ---
 # <a name="copy-data-from-amazon-marketplace-web-service-using-azure-data-factory"></a>Adatok másolása az Amazon Marketplace webszolgáltatásból Azure Data Factory használatával
@@ -47,9 +47,9 @@ Az Amazon Marketplace webszolgáltatás társított szolgáltatása a következ�
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A Type tulajdonságot a következőre kell beállítani: **AmazonMWS** | Igen |
+| típus | A Type tulajdonságot a következőre kell beállítani: **AmazonMWS** | Igen |
 | endpoint | Az Amazon MWS-kiszolgáló végpontja (azaz mws.amazonservices.com)  | Igen |
-| marketplaceID | Az Amazon Marketplace-azonosító, amelyről le szeretné kérni az adatok beolvasását. Az adatok több piactér-azonosítóból való lekéréséhez vesszővel (`,`) válassza el őket. (A2EUQ1WTGCTBG2)  | Igen |
+| marketplaceID | Az Amazon Marketplace-azonosító, amelyről le szeretné kérni az adatok beolvasását. Az adatok több piactér-azonosítóból való lekéréséhez vesszővel () válassza el őket `,` . (A2EUQ1WTGCTBG2)  | Igen |
 | sellerID | Az Amazon Seller azonosítója.  | Igen |
 | mwsAuthToken | Az Amazon MWS hitelesítési jogkivonat. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen |
 | accessKeyId | Az adateléréshez használt hozzáférési kulcs azonosítója.  | Igen |
@@ -58,7 +58,7 @@ Az Amazon Marketplace webszolgáltatás társított szolgáltatása a következ�
 | useHostVerification | Megadja, hogy szükséges-e az állomásnév a kiszolgáló tanúsítványában, hogy egyezzen a kiszolgáló állomásneve a TLS-kapcsolaton keresztüli csatlakozáskor. Az alapértelmezett érték az igaz.  | Nem |
 | usePeerVerification | Megadja, hogy a rendszer ellenőrizze-e a kiszolgáló identitását TLS-kapcsolaton keresztül. Az alapértelmezett érték az igaz.  | Nem |
 
-**Például**
+**Példa:**
 
 ```json
 {
@@ -91,10 +91,10 @@ Az adatok az Amazon Marketplace webszolgáltatásból való másolásához áll�
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **AmazonMWSObject** | Igen |
+| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **AmazonMWSObject** | Igen |
 | tableName | A tábla neve. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
 
-**Például**
+**Példa**
 
 ```json
 {
@@ -122,10 +122,10 @@ Az adatok az Amazon Marketplace webszolgáltatásból való másolásához áll�
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **AmazonMWSSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például: `"SELECT * FROM Orders where  Amazon_Order_Id = 'xx'"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
+| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **AmazonMWSSource** | Igen |
+| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Példa: `"SELECT * FROM Orders where  Amazon_Order_Id = 'xx'"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
 
-**Például**
+**Példa:**
 
 ```json
 "activities":[

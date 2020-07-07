@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
 ms.openlocfilehash: d236b9f8800b644a0aa51597d01df1c1442475ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81416775"
 ---
 # <a name="copy-data-from-phoenix-using-azure-data-factory"></a>Adatok másolása a Phoenixből Azure Data Factory használatával 
@@ -50,10 +50,10 @@ A Phoenixhez társított szolgáltatás a következő tulajdonságokat támogatj
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A Type tulajdonságot a következőre kell beállítani: **Phoenix** | Igen |
+| típus | A Type tulajdonságot a következőre kell beállítani: **Phoenix** | Igen |
 | gazda | A Phoenix-kiszolgáló IP-címe vagy állomásneve. (192.168.222.160)  | Igen |
 | port | A Phoenix-kiszolgáló által az ügyfélkapcsolatok figyeléséhez használt TCP-port. Az alapértelmezett érték a 8765. Ha csatlakozik az Azure Hdinsight-hoz, a 443-as portot kell megadnia. | Nem |
-| httpPath | A Phoenix-kiszolgálónak megfelelő részleges URL-cím. (azaz/Gateway/sandbox/Phoenix/Version). Itt `/hbasephoenix0` adhatja meg, hogy hdinsight-fürtöt használ-e.  | Nem |
+| httpPath | A Phoenix-kiszolgálónak megfelelő részleges URL-cím. (azaz/Gateway/sandbox/Phoenix/Version). Itt adhatja meg, `/hbasephoenix0` hogy hdinsight-fürtöt használ-e.  | Nem |
 | authenticationType | A Phoenix-kiszolgálóhoz való kapcsolódáshoz használt hitelesítési módszer. <br/>Az engedélyezett értékek: **Anonymous**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Igen |
 | felhasználónév | A Phoenix-kiszolgálóhoz való kapcsolódáshoz használt Felhasználónév.  | Nem |
 | jelszó | A felhasználónévnek megfelelő jelszó. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Nem |
@@ -65,9 +65,9 @@ A Phoenixhez társított szolgáltatás a következő tulajdonságokat támogatj
 | Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. |Nem |
 
 >[!NOTE]
->Ha a fürt nem támogatja a ragadós munkamenetet (pl. HDInsight), explicit módon adja hozzá a csomópont-indexet a http- `/hbasephoenix0` elérésiút- `/hbasephoenix`beállítás végén, például adja meg a helyett a értéket.
+>Ha a fürt nem támogatja a ragadós munkamenetet (pl. HDInsight), explicit módon adja hozzá a csomópont-indexet a http-elérésiút-beállítás végén, például adja meg a helyett a értéket `/hbasephoenix0` `/hbasephoenix` .
 
-**Például**
+**Példa:**
 
 ```json
 {
@@ -97,12 +97,12 @@ Az adatok Phoenixből való másolásához állítsa az adatkészlet Type (típu
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **PhoenixObject** | Igen |
+| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **PhoenixObject** | Igen |
 | séma | A séma neve. |Nem (ha a "lekérdezés" van megadva a tevékenység forrásában)  |
 | tábla | A tábla neve. |Nem (ha a "lekérdezés" van megadva a tevékenység forrásában)  |
-| tableName | A sémával rendelkező tábla neve. Ez a tulajdonság visszamenőleges kompatibilitás esetén támogatott. A `schema` és `table` az új számítási feladatok használata. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
+| tableName | A sémával rendelkező tábla neve. Ez a tulajdonság visszamenőleges kompatibilitás esetén támogatott. `schema`A és `table` az új számítási feladatok használata. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
 
-**Például**
+**Példa**
 
 ```json
 {
@@ -129,10 +129,10 @@ Az adatok Phoenixből való másolásához állítsa a forrás típusát a máso
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **PhoenixSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például: `"SELECT * FROM MyTable"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
+| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **PhoenixSource** | Igen |
+| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Példa: `"SELECT * FROM MyTable"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
 
-**Például**
+**Példa:**
 
 ```json
 "activities":[

@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 9c3292a31e5f750c16933acf94509e0ad226080a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81534312"
 ---
 # <a name="public-client-and-confidential-client-applications"></a>Nyilvános ügyfél és bizalmas ügyfélalkalmazások
@@ -26,15 +26,15 @@ A Microsoft Authentication Library (MSAL) két típusú ügyfelet határoz meg: 
 - A **bizalmas ügyfélalkalmazások** olyan alkalmazások, amelyek kiszolgálókon futnak (webalkalmazások, web API-alkalmazások vagy akár Service/Daemon-alkalmazások). A rendszer nehéznek tekinti a hozzáférést, és emiatt képes megtartani az alkalmazás titkos kulcsát. A bizalmas ügyfelek a konfigurációs idő titkát is tárolhatják. Az ügyfél minden példánya külön konfigurációval rendelkezik (beleértve az ügyfél-azonosítót és az ügyfél titkos kulcsát). Ezek az értékek nehézek a végfelhasználók kinyeréséhez. A webalkalmazás a leggyakoribb bizalmas ügyfél. Az ügyfél-azonosító a webböngészőn keresztül érhető el, de a titkos kulcsot csak a hátsó csatornán át kell adni, és soha nem kerül közvetlenül elérhetővé.
 
     Bizalmas ügyfélalkalmazások: <BR>
-    ![Web App](media/msal-client-applications/web-app.png) ![web API](media/msal-client-applications/web-api.png) ![démon/szolgáltatás](media/msal-client-applications/daemon-service.png)
+    ![Web App ](media/msal-client-applications/web-app.png) ![ web API ](media/msal-client-applications/web-api.png) ![ démon/szolgáltatás](media/msal-client-applications/daemon-service.png)
 
 - A **nyilvános ügyfélalkalmazások** olyan alkalmazások, amelyek az eszközökön vagy asztali számítógépeken, vagy egy böngészőben futnak. Nem megbízhatók az alkalmazás titkainak biztonságos megőrzése érdekében, így csak a felhasználó nevében férnek hozzá a webes API-khoz. (Csak a nyilvános ügyfelek folyamatait támogatják.) A nyilvános ügyfelek nem rendelkezhetnek a konfigurációs idő titkával, így nem rendelkeznek az ügyfél titkos kulcsaival.
 
     Nyilvános ügyfélalkalmazások: <BR>
-    ![Asztali alkalmazás](media/msal-client-applications/desktop-app.png) ![böngészővel nem](media/msal-client-applications/browserless-app.png) ![rendelkező API Mobile-alkalmazás](media/msal-client-applications/mobile-app.png)
+    ![Asztali alkalmazás ](media/msal-client-applications/desktop-app.png) ![ böngészővel nem rendelkező API ](media/msal-client-applications/browserless-app.png) ![ Mobile-alkalmazás](media/msal-client-applications/mobile-app.png)
 
 > [!NOTE]
-> A MSAL. js-ben nincs a nyilvános és a bizalmas ügyfélalkalmazások elkülönítése.  A MSAL. js a felhasználói ügynökön alapuló alkalmazásokként, a nyilvános ügyfeleknél, amelyekben az ügyfél kódját hajtja végre egy felhasználói ügynökben, például egy böngészőben. Ezek az ügyfelek nem tárolják a titkos kulcsokat, mert a böngésző környezete nyíltan elérhető.
+> MSAL.js a nyilvános és a bizalmas ügyfélalkalmazások elkülönítése nem történik meg.  A MSAL.js a felhasználói ügynökön alapuló alkalmazásokként, a nyilvános ügyfeleknél, amelyekben az ügyfél kódját hajtja végre egy felhasználói ügynökben, például egy böngészőben. Ezek az ügyfelek nem tárolják a titkos kulcsokat, mert a böngésző környezete nyíltan elérhető.
 
 ## <a name="comparing-the-client-types"></a>Az ügyfél típusának összehasonlítása
 Íme néhány hasonlóság és különbség a nyilvános ügyfél és a bizalmas ügyfélalkalmazások számára:
@@ -49,4 +49,4 @@ Ha már használta a ADAL-t, észreveheti, hogy a ADAL hitelesítési környezet
 Ismerkedjen meg a következőkkel:
 - [Ügyfélalkalmazás konfigurációs beállításai](msal-client-application-configuration.md)
 - [Ügyfélalkalmazások példányainak MSAL.NET használatával](msal-net-initializing-client-applications.md)
-- [Ügyfélalkalmazások példányainak MSAL. js használatával történő példánya](msal-js-initializing-client-applications.md)
+- [Ügyfélalkalmazások példányainak MSAL.jshasználatával történő példánya](msal-js-initializing-client-applications.md)

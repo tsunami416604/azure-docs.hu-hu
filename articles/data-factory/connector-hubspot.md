@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 01/08/2020
 ms.author: jingwang
 ms.openlocfilehash: 2d60a1b03da6fdf4af6b0d0378456c08d927f451
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81415203"
 ---
 # <a name="copy-data-from-hubspot-using-azure-data-factory-preview"></a>Adatok másolása a HubSpot a Azure Data Factory használatával (előzetes verzió)
@@ -50,7 +50,7 @@ A HubSpot társított szolgáltatás a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A Type tulajdonságot a következőre kell beállítani: **HubSpot** | Igen |
+| típus | A Type tulajdonságot a következőre kell beállítani: **HubSpot** | Igen |
 | ügyfél-azonosító | A HubSpot-alkalmazáshoz társított ügyfél-azonosító. Ebből a témakörből megtudhatja, hogyan hozhat létre alkalmazást a [HubSpot-ben](https://developers.hubspot.com/docs/faq/how-do-i-create-an-app-in-hubspot). | Igen |
 | clientSecret | A HubSpot-alkalmazáshoz társított ügyfél-titok. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen |
 | accessToken | A OAuth-integráció kezdeti hitelesítése során kapott hozzáférési jogkivonat. [Itt](https://developers.hubspot.com/docs/methods/oauth2/get-access-and-refresh-tokens)megtudhatja, hogyan érheti el a hozzáférési tokent az ügyfél-azonosítóval és a titkos kulccsal. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen |
@@ -59,7 +59,7 @@ A HubSpot társított szolgáltatás a következő tulajdonságokat támogatja:
 | useHostVerification | Megadja, hogy szükséges-e az állomásnév a kiszolgáló tanúsítványában, hogy egyezzen a kiszolgáló állomásneve a TLS-kapcsolaton keresztüli csatlakozáskor. Az alapértelmezett érték az igaz.  | Nem |
 | usePeerVerification | Megadja, hogy a rendszer ellenőrizze-e a kiszolgáló identitását TLS-kapcsolaton keresztül. Az alapértelmezett érték az igaz.  | Nem |
 
-**Például**
+**Példa:**
 
 ```json
 {
@@ -93,10 +93,10 @@ Az adatok HubSpot való másolásához állítsa az adatkészlet Type (típus) t
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **HubspotObject** | Igen |
+| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **HubspotObject** | Igen |
 | tableName | A tábla neve. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
 
-**Például**
+**Példa**
 
 ```json
 {
@@ -123,10 +123,10 @@ Az adatok HubSpot való másolásához állítsa a forrás típusát a másolás
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **HubspotSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például: `"SELECT * FROM Companies where Company_Id = xxx"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
+| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **HubspotSource** | Igen |
+| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Példa: `"SELECT * FROM Companies where Company_Id = xxx"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
 
-**Például**
+**Példa:**
 
 ```json
 "activities":[

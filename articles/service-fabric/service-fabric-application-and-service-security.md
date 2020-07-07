@@ -4,10 +4,10 @@ description: Annak áttekintése, hogy miként futtathatók biztonságosan a Ser
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.openlocfilehash: c97c5345a1a18cce8c44508542f12d3642d2b8f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81461429"
 ---
 # <a name="service-fabric-application-and-service-security"></a>Service Fabric alkalmazás és szolgáltatás biztonsága
@@ -42,7 +42,7 @@ A API Management közvetlenül integrálható Service Fabricekkel, így lehetőv
 ## <a name="manage-application-secrets"></a>Titkos alkalmazáskulcsok kezelése
 A titkok lehetnek bármilyen bizalmas információk, például a tárolási kapcsolatok karakterláncai, jelszavai vagy más olyan értékek, amelyeket nem szabad egyszerű szövegben kezelni. Ez a cikk a kulcsok és titkok kezeléséhez Azure Key Vault használ. Azonban az alkalmazásokban a titkos kódok *használatával* a felhőalapú platform-agnosztikus lehetővé teszi, hogy az alkalmazások a bárhol üzemeltetett fürtön legyenek telepítve.
 
-A szolgáltatás konfigurációs beállításainak a [szolgáltatás konfigurációs csomagjain][config-package]keresztül történő kezelésének ajánlott módja. A konfigurációs csomagok verziója és frissítése a felügyelt működés közbeni frissítésekkel, az állapot-ellenőrzés és az automatikus visszaállítás használatával történik. Ez a globális konfigurációhoz javasolt, mivel ez csökkenti a globális szolgáltatás kimaradásának esélyét. A titkosított titkok nem kivételek. A Service Fabric beépített funkciókkal rendelkezik az értékek titkosításához és visszafejtéséhez a konfigurációs csomag beállításainak. XML fájljában a tanúsítvány titkosítása segítségével.
+A szolgáltatás konfigurációs beállításainak a [szolgáltatás konfigurációs csomagjain][config-package]keresztül történő kezelésének ajánlott módja. A konfigurációs csomagok verziója és frissítése a felügyelt működés közbeni frissítésekkel, az állapot-ellenőrzés és az automatikus visszaállítás használatával történik. Ez a globális konfigurációhoz javasolt, mivel ez csökkenti a globális szolgáltatás kimaradásának esélyét. A titkosított titkok nem kivételek. A Service Fabric beépített funkciókkal rendelkezik a konfigurációs csomagban található értékek titkosításához és visszafejtéséhez Settings.xml fájlban a tanúsítvány titkosítása segítségével.
 
 Az alábbi ábrán egy Service Fabric alkalmazás titkos felügyeletének alapszintű folyamata látható:
 
@@ -52,8 +52,8 @@ A folyamat négy fő lépésből áll:
 
 1. Szerezze be az titkosítási-tanúsítványt.
 2. Telepítse a tanúsítványt a fürtben.
-3. Titkosítsa a titkos értékeket, amikor egy alkalmazást telepít a tanúsítvánnyal, és beilleszti őket a szolgáltatás Settings. xml konfigurációs fájljába.
-4. A titkosított értékeket a Settings. XML fájlból olvashatja, ha ugyanazzal a titkosítási-tanúsítvánnyal végez visszafejtést. 
+3. Titkosítsa a titkos értékeket, amikor egy alkalmazást telepít a tanúsítvánnyal, és beilleszti őket egy szolgáltatás Settings.xml konfigurációs fájljába.
+4. Az azonos titkosítási-tanúsítvánnyal való visszafejtéssel a Settings.xmlban lévő titkosított értékeket is olvashatja. 
 
 A [Azure Key Vault][key-vault-get-started] a tanúsítványok biztonságos tárolási helyeként, valamint az Azure-beli Service Fabric-fürtökön telepített tanúsítványok beszerzésének módjaként használatos. Ha nem telepíti az Azure-t, nincs szükség a Key Vault használatára a titkok kezeléséhez Service Fabric alkalmazásokban.
 
@@ -66,7 +66,7 @@ Az alkalmazás jegyzékfájlja kijelenti, hogy a szolgáltatás (ok) és a bizto
 
 A rendszerbiztonsági tag megadásakor létrehozhat és létrehozhat felhasználói csoportokat is, hogy az egyes csoportokhoz hozzá lehessen adni egy vagy több felhasználót, hogy azok együtt felügyelhetők legyenek. Ez akkor hasznos, ha több felhasználó van a különböző szolgáltatási belépési pontokhoz, és szükségük van bizonyos, a csoport szintjén elérhető általános jogosultságokra.
 
-Alapértelmezés szerint Service Fabric alkalmazások a Fabric. exe folyamat alatt futó fiók alatt futnak. A Service Fabric lehetővé teszi az alkalmazások futtatását helyi felhasználói fiókkal vagy helyi rendszerfiókkal, amely az alkalmazás jegyzékfájljában van megadva. További információ: [szolgáltatás futtatása helyi felhasználói fiók vagy helyi rendszerfiók](service-fabric-application-runas-security.md).  [A szolgáltatás indítási parancsfájlját helyi felhasználóként vagy rendszerfiókként is futtathatja](service-fabric-run-script-at-service-startup.md).
+Alapértelmezés szerint Service Fabric alkalmazások azon a fiókon futnak, amelyen a Fabric.exe folyamat fut. A Service Fabric lehetővé teszi az alkalmazások futtatását helyi felhasználói fiókkal vagy helyi rendszerfiókkal, amely az alkalmazás jegyzékfájljában van megadva. További információ: [szolgáltatás futtatása helyi felhasználói fiók vagy helyi rendszerfiók](service-fabric-application-runas-security.md).  [A szolgáltatás indítási parancsfájlját helyi felhasználóként vagy rendszerfiókként is futtathatja](service-fabric-run-script-at-service-startup.md).
 
 Ha Service Fabric futtat egy önálló Windows-fürtön, akkor [Active Directory tartományi fiókok](service-fabric-run-service-as-ad-user-or-group.md) vagy [csoportosan felügyelt](service-fabric-run-service-as-gmsa.md)szolgáltatásfiókok alatt futtathat egy szolgáltatást.
 

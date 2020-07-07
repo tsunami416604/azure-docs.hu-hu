@@ -7,10 +7,10 @@ ms.date: 09/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18
 ms.openlocfilehash: fcc7c5b8fa182cace6e3dae0b1cae4cd41c5dcb9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81532582"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Az alkalmazás üzembe helyezése az Azure App Service FTP/S használatával
@@ -29,7 +29,7 @@ Az alkalmazáshoz tartozó FTP/S végpont már aktív. Az FTP/S központi telep�
 
     ![Válassza ki az alkalmazást.](media/app-service-continuous-deployment/select-your-app.png)
 
-3. Válassza ki az **üzembehelyezési központ** > **FTP** > -**irányítópultját**.
+3. Válassza ki az **üzembehelyezési központ**  >  **FTP**-  >  **irányítópultját**.
 
     ![FTP-irányítópult megnyitása](./media/app-service-deploy-ftp/open-dashboard.png)
 
@@ -60,7 +60,7 @@ Javasoljuk, hogy az alkalmazáshoz tartozó **hitelesítő adatok** használatá
 >
 > - függőségek visszaállítása (például NuGet, NPM, PIP és zeneszerzői automatizálások)
 > - a .NET bináris fájljainak összeállítása
-> - a web. config generációja (itt a [Node. js példa](https://github.com/projectkudu/kudu/wiki/Using-a-custom-web.config-for-Node-apps))
+> - web.config generációja (itt egy [Node.js példa](https://github.com/projectkudu/kudu/wiki/Using-a-custom-web.config-for-Node-apps))
 > 
 > Létrehozza ezeket a szükséges fájlokat manuálisan a helyi gépen, majd telepítse azokat az alkalmazással együtt.
 >
@@ -69,7 +69,7 @@ Javasoljuk, hogy az alkalmazáshoz tartozó **hitelesítő adatok** használatá
 
 A fokozott biztonság érdekében csak a TLS/SSL protokollt használó FTP-t engedélyezze. Ha nem használja az FTP-telepítést, le is tilthatja az FTP-t és a FTPS.
 
-Az alkalmazás erőforrás-lapja [Azure Portalban](https://portal.azure.com)válassza a **konfiguráció** > **általános beállítások** lehetőséget a bal oldali navigációs sávon.
+Az alkalmazás erőforrás-lapja [Azure Portalban](https://portal.azure.com)válassza a **konfiguráció**  >  **általános beállítások** lehetőséget a bal oldali navigációs sávon.
 
 A titkosítatlan FTP letiltásához válassza a **FTPS csak** **FTP-állapotban**lehetőséget. Az FTP és a FTPS teljes letiltásához válassza a **Letiltva**lehetőséget. Amikor végzett, kattintson a **Mentés** gombra. Ha **csak a FTPS**-t használja, a webalkalmazás **TLS/SSL-beállítások** paneljére kell kikényszeríteni a TLS 1,2-es vagy újabb verzióját. A TLS 1,0 és 1,1 **csak a FTPS**esetében támogatott.
 

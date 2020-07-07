@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
 ms.openlocfilehash: f2d10a6150a6e6957b303ca391c97e166342111c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81417249"
 ---
 # <a name="copy-data-from-hbase-using-azure-data-factory"></a>Adatok másolása a HBase a Azure Data Factory használatával 
@@ -50,10 +50,10 @@ A HBase társított szolgáltatás a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A Type tulajdonságot a következőre kell beállítani: **HBase** | Igen |
-| gazda | A HBase-kiszolgáló IP-címe vagy állomásneve. azaz.  `[clustername].azurehdinsight.net`, `192.168.222.160`)  | Igen |
+| típus | A Type tulajdonságot a következőre kell beállítani: **HBase** | Igen |
+| gazda | A HBase-kiszolgáló IP-címe vagy állomásneve. azaz.  `[clustername].azurehdinsight.net`, `192.168.222.160` )  | Igen |
 | port | Az a TCP-port, amelyet a HBase-példány az ügyfélkapcsolatok figyelésére használ. Az alapértelmezett érték a 9090. Ha csatlakozik az Azure Hdinsight-hoz, a 443-as portot kell megadnia. | Nem |
-| httpPath | A HBase-kiszolgálónak megfelelő részleges URL-cím, `/hbaserest0` például a hdinsight-fürt használata esetén. | Nem |
+| httpPath | A HBase-kiszolgálónak megfelelő részleges URL-cím, például a `/hbaserest0` hdinsight-fürt használata esetén. | Nem |
 | authenticationType | A HBase-kiszolgálóhoz való kapcsolódáshoz használt hitelesítési módszer. <br/>Az engedélyezett értékek: **Névtelen**, **alapszintű** | Igen |
 | felhasználónév | A HBase-példányhoz való kapcsolódáshoz használt Felhasználónév.  | Nem |
 | jelszó | A felhasználónévnek megfelelő jelszó. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Nem |
@@ -64,7 +64,7 @@ A HBase társított szolgáltatás a következő tulajdonságokat támogatja:
 | Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. |Nem |
 
 >[!NOTE]
->Ha a fürt nem támogatja a ragadós munkamenetet (pl. HDInsight), explicit módon adja hozzá a csomópont-indexet a http- `/hbaserest0` elérésiút- `/hbaserest`beállítás végén, például adja meg a helyett a értéket.
+>Ha a fürt nem támogatja a ragadós munkamenetet (pl. HDInsight), explicit módon adja hozzá a csomópont-indexet a http-elérésiút-beállítás végén, például adja meg a helyett a értéket `/hbaserest0` `/hbaserest` .
 
 **Példa a Hdinsight HBase:**
 
@@ -131,10 +131,10 @@ Az adatok HBase való másolásához állítsa az adatkészlet Type (típus) tul
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **HBaseObject** | Igen |
+| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **HBaseObject** | Igen |
 | tableName | A tábla neve. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
 
-**Például**
+**Példa**
 
 ```json
 {
@@ -161,10 +161,10 @@ Az adatok HBase való másolásához állítsa a forrás típusát a másolás t
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **HBaseSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például: `"SELECT * FROM MyTable"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
+| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **HBaseSource** | Igen |
+| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Példa: `"SELECT * FROM MyTable"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
 
-**Például**
+**Példa:**
 
 ```json
 "activities":[

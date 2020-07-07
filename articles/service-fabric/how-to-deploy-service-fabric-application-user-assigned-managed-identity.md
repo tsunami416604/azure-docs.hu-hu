@@ -4,10 +4,10 @@ description: Ez a cikk bemutatja, hogyan telepítheti Service Fabric alkalmazás
 ms.topic: article
 ms.date: 12/09/2019
 ms.openlocfilehash: 9aef81db7a455b72c83cf96898a0c228f1c382fd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81415629"
 ---
 # <a name="deploy-service-fabric-application-with-a-user-assigned-managed-identity"></a>Service Fabric alkalmazás központi telepítése felhasználó által hozzárendelt felügyelt identitással
@@ -18,7 +18,7 @@ Service Fabric alkalmazás felügyelt identitással való üzembe helyezéséhez
 > 
 > Az Azure-erőforrásként nem telepített alkalmazások **nem** rendelkezhetnek felügyelt identitásokkal. 
 >
-> A felügyelt identitással Service Fabric alkalmazások telepítése API-verzióval `"2019-06-01-preview"`támogatott. Ugyanezt az API-verziót használhatja az alkalmazás típusa, az alkalmazás típusa és a szolgáltatás erőforrásai esetében is.
+> A felügyelt identitással Service Fabric alkalmazások telepítése API-verzióval támogatott `"2019-06-01-preview"` . Ugyanezt az API-verziót használhatja az alkalmazás típusa, az alkalmazás típusa és a szolgáltatás erőforrásai esetében is.
 >
 
 ## <a name="user-assigned-identity"></a>Felhasználó által hozzárendelt identitás
@@ -62,7 +62,7 @@ A fenti példában a felhasználóhoz rendelt identitás erőforrásának neve m
 
 ### <a name="application-package"></a>Alkalmazáscsomag
 
-1. A Azure Resource Manager sablon `managedIdentities` szakaszában meghatározott minden identitáshoz adjon hozzá egy `<ManagedIdentity>` címkét az alkalmazás-jegyzékfájlban a **rendszerbiztonsági** tag szakaszban. Az `Name` attribútumnak meg kell egyeznie a `name` `managedIdentities` szakaszban meghatározott tulajdonsággal.
+1. A Azure Resource Manager sablon szakaszában meghatározott minden identitáshoz `managedIdentities` adjon hozzá egy `<ManagedIdentity>` címkét az alkalmazás-jegyzékfájlban a **rendszerbiztonsági** tag szakaszban. Az `Name` attribútumnak meg kell egyeznie a `name` szakaszban meghatározott tulajdonsággal `managedIdentities` .
 
     **ApplicationManifest.xml**
 
@@ -86,7 +86,7 @@ A fenti példában a felhasználóhoz rendelt identitás erőforrásának neve m
       </ServiceManifestImport>
     ```
 
-3. Frissítse a szolgáltatás jegyzékfájlját, és adjon hozzá egy **ManagedIdentity** az **erőforrások** szakaszban az alkalmazás jegyzékfájljának megfelelő `IdentityBindingPolicy` `ServiceIdentityRef` névvel:
+3. Frissítse a szolgáltatás jegyzékfájlját, és adjon hozzá egy **ManagedIdentity** az **erőforrások** szakaszban az `ServiceIdentityRef` `IdentityBindingPolicy` alkalmazás jegyzékfájljának megfelelő névvel:
 
     **ServiceManifest.xml**
 

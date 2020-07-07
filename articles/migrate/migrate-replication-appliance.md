@@ -4,10 +4,10 @@ description: Ismerje meg az ügynök-alapú VMWare-áttelepítés Azure Migrate 
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.openlocfilehash: 85641f514fc4367f02901eb1dd394cfa204c3ec4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81535213"
 ---
 # <a name="replication-appliance"></a>Replikációs berendezés
@@ -69,7 +69,7 @@ Hálózati adapter típusa | VMXNET3
 
 A MySQL-t telepíteni kell a replikációs berendezést futtató gépre. Ezt a metódusok egyikével telepítheti.
 
-**Módszer** | **Részletek**
+**Metódus** | **Részletek**
 --- | ---
 Manuális letöltés és telepítés | Töltse le a MySQL-alkalmazást & helyezze a mappába a C:\Temp\ASRSetup, majd telepítse manuálisan.<br/> A készülék a MySQL beállítása után már telepítve lesz.
 Online letöltés nélkül | Helyezze a MySQL Installer alkalmazást a C:\Temp\ASRSetup. mappába. Ha telepíti a készüléket, és rákattint a MySQL letöltésére és telepítésére, a telepítő a hozzáadott telepítőt fogja használni.
@@ -79,7 +79,7 @@ Letöltés és telepítés Azure Migrate | Ha telepíti a készüléket, és a r
 
 A replikációs berendezésnek hozzá kell férnie ezekhez az URL-címekhez az Azure nyilvános felhőben.
 
-**URL** | **Részletek**
+**URL-cím** | **Részletek**
 --- | ---
 \*.backup.windowsazure.com | A replikált adatátvitelhez és a koordinációhoz használatos
 \*.store.core.windows.net | A replikált adatátvitelhez és a koordinációhoz használatos
@@ -88,15 +88,15 @@ A replikációs berendezésnek hozzá kell férnie ezekhez az URL-címekhez az A
 https:\//management.azure.com | Replikációs felügyeleti műveletekhez és koordináláshoz használatos
 *.services.visualstudio.com | Telemetria célra használatos (opcionális)
 time.windows.com | A rendszer és a globális idő közötti időszinkronizálás ellenőrzéséhez.
-https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https:\//login.Live.com <br/> https:\//Graph.Windows.net <br/> https:\//login.windows.net <br/> https:\//www.Live.com <br/> https:\//www.microsoft.com  | A készülék beállításához hozzá kell férnie az URL-címekhez. A hozzáférés-vezérléshez és az identitások kezeléséhez használják Azure Active Directory
-https:\//dev.mysql.com/get/downloads/MySQLInstaller/MySQL-Installer-Community-5.7.20.0.msi | A MySQL letöltésének befejezéséhez. Néhány régióban a letöltés átirányítva lesz a CDN URL-címére. Szükség esetén győződjön meg arról, hogy a CDN URL-címe is engedélyezett.
+https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https: \/ /login.Live.com <br/> https: \/ /Graph.Windows.net <br/> https:\//login.windows.net <br/> https: \/ /www.Live.com <br/> https: \/ /www.microsoft.com  | A készülék beállításához hozzá kell férnie az URL-címekhez. A hozzáférés-vezérléshez és az identitások kezeléséhez használják Azure Active Directory
+https: \/ /dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | A MySQL letöltésének befejezéséhez. Néhány régióban a letöltés átirányítva lesz a CDN URL-címére. Szükség esetén győződjön meg arról, hogy a CDN URL-címe is engedélyezett.
 
 
 ## <a name="azure-government-url-access"></a>URL-hozzáférés Azure Government
 
 A replikációs berendezésnek hozzá kell férnie Azure Government-beli URL-címekhez.
 
-**URL** | **Részletek**
+**URL-cím** | **Részletek**
 --- | ---
 \*. backup.windowsazure.us | A replikált adatátvitelhez és a koordinációhoz használatos
 \*.store.core.windows.net | A replikált adatátvitelhez és a koordinációhoz használatos
@@ -105,8 +105,8 @@ A replikációs berendezésnek hozzá kell férnie Azure Government-beli URL-cí
 https:\//management.usgovcloudapi.net | Replikációs felügyeleti műveletekhez és koordináláshoz használatos
 *.services.visualstudio.com | Telemetria célra használatos (opcionális)
 time.nist.gov | A rendszer és a globális idő közötti időszinkronizálás ellenőrzéséhez.
-https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https:\//login.Live.com <br/> https:\//Graph.Windows.net <br/> https:\//login.windows.net <br/> https:\//www.Live.com <br/> https:\//www.microsoft.com  | A készüléknek a PETESEJTekkel való beállításához hozzáféréssel kell rendelkeznie az URL-címekhez. A hozzáférés-vezérléshez és az identitáskezeléshoz használják Azure Active Directory.
-https:\//dev.mysql.com/get/downloads/MySQLInstaller/MySQL-Installer-Community-5.7.20.0.msi | A MySQL letöltésének befejezéséhez. Néhány régióban a letöltés átirányítva lesz a CDN URL-címére. Szükség esetén győződjön meg arról, hogy a CDN URL-címe is engedélyezett.
+https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https: \/ /login.Live.com <br/> https: \/ /Graph.Windows.net <br/> https:\//login.windows.net <br/> https: \/ /www.Live.com <br/> https: \/ /www.microsoft.com  | A készüléknek a PETESEJTekkel való beállításához hozzáféréssel kell rendelkeznie az URL-címekhez. A hozzáférés-vezérléshez és az identitáskezeléshoz használják Azure Active Directory.
+https: \/ /dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | A MySQL letöltésének befejezéséhez. Néhány régióban a letöltés átirányítva lesz a CDN URL-címére. Szükség esetén győződjön meg arról, hogy a CDN URL-címe is engedélyezett.
 
 ## <a name="port-access"></a>Port-hozzáférés
 

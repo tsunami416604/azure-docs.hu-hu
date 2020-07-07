@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: bdf69a9ff7b3260b47042f296a47826e3c52387b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81460647"
 ---
 # <a name="storsimple-virtual-array-best-practices"></a>A StorSimple Virtual Array ajánlott eljárásai
@@ -84,7 +84,7 @@ Az eddigi helyi szinten szükséges teljes terület a következő: 240 GB + 120 
 Másodszor, legalább annyi lemezterületre van szükségünk a helyi szinten, mint a legnagyobb egyszeri foglalás. Ez a további összeg abban az esetben használatos, ha egy Felhőbeli pillanatképből kell visszaállítani. Ebben a példában a legnagyobb helyi foglalás 330 GB (beleértve a fájlrendszer fenntartását is), így azt a 690 GB-ra kell felvenni: 690 GB + 330 GB = 1020 GB.
 Ha ezt követően további visszaállításokat hajtottunk végre, az előző visszaállítási műveletből bármikor felszabadítható a terület.
 
-Harmadszor, a helyi Pillanatképek tárolására a teljes helyi tárterület 15%-át, így csak a 85%-a érhető el. Ebben a példában ez körülbelül 1020 GB = 0,85&ast;kiépített adatlemez TB volt. Tehát a kiépített adatlemez lenne (1020&ast;(1/0.85)) = 1200 GB = 1,20 TB ~ 1,25 TB (kerekítés a legközelebbi kvartilis)
+Harmadszor, a helyi Pillanatképek tárolására a teljes helyi tárterület 15%-át, így csak a 85%-a érhető el. Ebben a példában ez körülbelül 1020 GB = 0,85 &ast; kiépített adatlemez TB volt. Tehát a kiépített adatlemez lenne (1020 &ast; (1/0.85)) = 1200 GB = 1,20 TB ~ 1,25 TB (kerekítés a legközelebbi kvartilis)
 
 A nem várt növekedés és az új visszaállítások esetében a 1,25 – 1,5 TB körüli helyi lemezt kell kiépíteni.
 
@@ -107,7 +107,7 @@ A helyi szinten szükséges teljes terület a következő: 240 GB + 330 GB = 570
 
 A visszaállításhoz szükséges minimális helyi terület 330 GB.
 
-a teljes lemez 15%-a a pillanatképek tárolására szolgál, így csak 0,85 érhető el. Tehát a lemez mérete (900&ast;(1/0.85)) = 1,06 TB ~ 1,25 TB (kerekítés a legközelebbi kvartilis)
+a teljes lemez 15%-a a pillanatképek tárolására szolgál, így csak 0,85 érhető el. Tehát a lemez mérete (900 &ast; (1/0.85)) = 1,06 TB ~ 1,25 TB (kerekítés a legközelebbi kvartilis)
 
 A váratlan növekedéssel a 1,25-1,5 TB-os helyi lemez kiépítését is kiépítheti.
 
@@ -121,7 +121,7 @@ Ezért javasoljuk, hogy:
 * Győződjön meg arról, hogy a virtuális tömb a Active Directory saját szervezeti egységében (OU) van.
 * Győződjön meg arról, hogy a virtuális tömbhöz nincsenek alkalmazva csoportházirend-objektumok (GPO-k). Az öröklés letiltásával biztosíthatja, hogy a virtuális tömb (gyermek csomópont) ne örökölje automatikusan a szülő csoportházirend-objektumait. További információkért keresse fel az [öröklés tiltása](https://technet.microsoft.com/library/cc731076.aspx)lehetőséget.
 
-### <a name="networking"></a>Hálózat
+### <a name="networking"></a>Hálózatkezelés
 A virtuális tömb hálózati konfigurációja a helyi webes felületen keresztül történik. A virtuális hálózati adapter azon a hypervisoron keresztül engedélyezhető, amelyben a virtuális tömb ki van építve. A [hálózati beállítások](storsimple-virtual-array-deploy3-fs-setup.md) lapon konfigurálhatja a virtuális hálózati adapter IP-címét, alhálózatát és átjáróját.  Az eszköz elsődleges és másodlagos DNS-kiszolgálóját, időbeállításait és opcionális proxybeállításait is megadhatja. A hálózati konfiguráció többsége egyszeri beállítás. A virtuális tömb üzembe helyezése előtt tekintse át a [StorSimple hálózati követelményeit](storsimple-ova-system-requirements.md#networking-requirements) .
 
 A virtuális tömb üzembe helyezésekor javasoljuk, hogy kövesse az alábbi ajánlott eljárásokat:
@@ -287,6 +287,6 @@ Előfordulhat, hogy több virtuális tömböt kell központilag telepíteni ahho
 * Több virtuális tömb üzembe helyezése esetén javasolt a terheléselosztási perspektívából a tömböt a különböző hypervisor-gazdagépekre terjeszteni.
 * Több virtuális tömb (ha fájlkiszolgáló vagy iSCSI-kiszolgálóként van konfigurálva) elosztott fájlrendszer névtérben is üzembe helyezhető. A részletes lépésekért látogasson el a [hibrid felhőalapú tárolás telepítési útmutatóját a elosztott fájlrendszer névtér megoldásához](https://www.microsoft.com/download/details.aspx?id=45507). Elosztott fájlrendszer replikáció használata jelenleg nem ajánlott a virtuális tömbben való használathoz. 
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 Ismerje meg, hogyan [felügyelheti a StorSimple virtuális tömböt](storsimple-virtual-array-manager-service-administration.md) a StorSimple Manager szolgáltatáson keresztül.
 

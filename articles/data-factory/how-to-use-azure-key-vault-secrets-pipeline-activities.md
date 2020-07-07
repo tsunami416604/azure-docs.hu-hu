@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: chlound
 ms.openlocfilehash: f2531ebfd8b1eafc04fa6eda660b0eec3d1147f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81417077"
 ---
 # <a name="use-azure-key-vault-secrets-in-pipeline-activities"></a>Azure Key Vault-beli titkos kulcsok használata a folyamattevékenységekben
@@ -53,7 +53,7 @@ Ez a funkció az adatok gyári felügyelt identitására támaszkodik.  Ismerje 
     |---------|---------|
     |Biztonságos kimenet     |True (Igaz)         |
     |URL-cím     |[A titkos URI-érték]? API-Version = 7.0         |
-    |Módszer     |GET         |
+    |Metódus     |GET         |
     |Hitelesítés     |MSI         |
     |Erőforrás        |https://vault.azure.net       |
 
@@ -65,7 +65,7 @@ Ez a funkció az adatok gyári felügyelt identitására támaszkodik.  Ismerje 
     > [!CAUTION]
     > Állítsa a Secure output (biztonságos kimenet) beállítást igaz értékre, hogy megakadályozza a titkos érték egyszerű szövegként való naplózását.  Az értéket használó további tevékenységeknek a biztonságos bemenet beállítását True értékre kell állítani.
 
-5. Ha egy másik tevékenységben szeretné használni az értéket, használja a következő kódú kifejezést ** @activity("Web1"). output. Value**.
+5. Ha egy másik tevékenységben szeretné használni az értéket, használja a következő kódú kifejezést ** @activity ("Web1"). output. Value**.
 
     ![Kód kifejezése](media/how-to-use-azure-key-vault-secrets-pipeline-activities/usewebactivity.png)
 

@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 63873a4f8301d3cb20488b02b32200f476922276
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81417946"
 ---
 # <a name="until-activity-in-azure-data-factory"></a>A tevékenység Azure Data Factory
@@ -23,7 +23,7 @@ ms.locfileid: "81417946"
 
 Az Until tevékenység ugyanazokat a funkciókat biztosítja, mint a programnyelvek Do-Until ciklusos szerkezete. Egy tevékenységkészletet futtat le ciklusosan addig, amíg a tevékenységhez rendelt feltétel igaz értéket nem ad vissza. Megadhat egy időtúllépési értéket az Until tevékenységhez a Data Factoryban. 
 
-## <a name="syntax"></a>Szintaxis
+## <a name="syntax"></a>Syntax
 
 ```json
 {
@@ -55,13 +55,13 @@ Az Until tevékenység ugyanazokat a funkciókat biztosítja, mint a programnyel
 
 Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
-név | A `Until` tevékenység neve. | Sztring | Igen
-type | **Csak**a értékre kell beállítani. | Sztring | Igen
+name | A tevékenység neve `Until` . | Sztring | Igen
+típus | **Csak**a értékre kell beállítani. | Sztring | Igen
 kifejezés | Igaz vagy hamis értéket megadó kifejezés | Kifejezés.  | Igen
-timeout | A do-ig hurkos időtúllépés a megadott idő után. | Sztring. `d.hh:mm:ss`vagy `hh:mm:ss`. Az alapértelmezett érték 7 nap. Maximális érték: 90 nap. | Nem
-Tevékenységek | Azoknak a tevékenységeknek a készlete, amelyeket a kifejezés `true`kiértékelése után hajt végre. | Tevékenységek tömbje. |  Igen
+timeout | A do-ig hurkos időtúllépés a megadott idő után. | Sztring. `d.hh:mm:ss`(vagy) `hh:mm:ss` . Az alapértelmezett érték 7 nap. Maximális érték: 90 nap. | Nem
+Tevékenységek | Azoknak a tevékenységeknek a készlete, amelyeket a kifejezés kiértékelése után hajt végre `true` . | Tevékenységek tömbje. |  Igen
 
-## <a name="example-1"></a>1. példa
+## <a name="example-1"></a>1\. példa
 
 > [!NOTE]
 > Ez a szakasz JSON-definíciókat és PowerShell-parancsokat tartalmaz a folyamat futtatásához. A Data Factory-adatfolyamatok Azure PowerShell és JSON-definíciók használatával történő létrehozásával kapcsolatos részletes útmutatásért lásd [: oktatóanyag: az adatfeldolgozó létrehozása a Azure PowerShell használatával](quickstart-create-data-factory-powershell.md).
@@ -117,10 +117,10 @@ Ebben a példában a folyamat két tevékenységgel rendelkezik: **eddig** és *
 
 ```
 
-## <a name="example-2"></a>2. példa 
+## <a name="example-2"></a>2\. példa 
 Az ebben a példában szereplő folyamat adatokat másol egy bemeneti mappából egy hurok kimeneti mappájába. A hurok akkor leáll, ha az Ismétlési paraméter értéke false (hamis) értékre van állítva, vagy egy perc elteltével időtúllépés történik.   
 
-### <a name="pipeline-with-until-activity-adfv2quickstartpipelinejson"></a>Folyamat a tevékenységig (Adfv2QuickStartPipeline. JSON)
+### <a name="pipeline-with-until-activity-adfv2quickstartpipelinejson"></a>Folyamat a tevékenységig (Adfv2QuickStartPipeline.jsbekapcsolva)
 
 ```json
 {
@@ -193,7 +193,7 @@ Az ebben a példában szereplő folyamat adatokat másol egy bemeneti mappából
 ```
 
 
-### <a name="azure-storage-linked-service-azurestoragelinkedservicejson"></a>Azure Storage társított szolgáltatás (AzureStorageLinkedService. JSON)
+### <a name="azure-storage-linked-service-azurestoragelinkedservicejson"></a>Azure Storage társított szolgáltatás (AzureStorageLinkedService.jsbekapcsolva)
 
 ```json
 {
@@ -207,7 +207,7 @@ Az ebben a példában szereplő folyamat adatokat másol egy bemeneti mappából
 }
 ```
 
-### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>Paraméteres Azure Blob-adatkészlet (BlobDataset. JSON)
+### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>Paraméteres Azure Blob-adatkészlet (BlobDataset.jsbekapcsolva)
 A folyamat beállítja a **folderPath** a folyamat **outputPath1** vagy **outputPath2** paraméterének értékére. 
 
 ```json
@@ -234,7 +234,7 @@ A folyamat beállítja a **folderPath** a folyamat **outputPath1** vagy **output
 }
 ```
 
-### <a name="pipeline-parameter-json-pipelineparametersjson"></a>Adatcsatorna-paraméter JSON (PipelineParameters. JSON)
+### <a name="pipeline-parameter-json-pipelineparametersjson"></a>Adatcsatorna-paraméter JSON-je (PipelineParameters.jsbekapcsolva)
 
 ```json
 {

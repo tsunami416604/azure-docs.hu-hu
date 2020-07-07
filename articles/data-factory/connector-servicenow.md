@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
 ms.openlocfilehash: bc48f651a1adb099017e8f47d9fa6bcfa8078fa1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81415351"
 ---
 # <a name="copy-data-from-servicenow-using-azure-data-factory"></a>Adatok másolása a ServiceNow a Azure Data Factory használatával
@@ -46,8 +46,8 @@ A ServiceNow társított szolgáltatás a következő tulajdonságokat támogatj
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A Type tulajdonságot a következőre kell beállítani: **ServiceNow** | Igen |
-| endpoint | A ServiceNow-kiszolgáló (`http://<instance>.service-now.com`) végpontja.  | Igen |
+| típus | A Type tulajdonságot a következőre kell beállítani: **ServiceNow** | Igen |
+| endpoint | A ServiceNow-kiszolgáló () végpontja `http://<instance>.service-now.com` .  | Igen |
 | authenticationType | A használni kívánt hitelesítési típus. <br/>Az engedélyezett értékek a következők: **Alapszintű**, **OAuth2** | Igen |
 | felhasználónév | Az alap-és OAuth2 hitelesítéshez a ServiceNow-kiszolgálóhoz való kapcsolódáshoz használt Felhasználónév.  | Igen |
 | jelszó | Az alapszintű és a OAuth2 hitelesítéshez tartozó felhasználónévhez tartozó jelszó. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen |
@@ -57,7 +57,7 @@ A ServiceNow társított szolgáltatás a következő tulajdonságokat támogatj
 | useHostVerification | Megadja, hogy szükséges-e az állomásnév a kiszolgáló tanúsítványában, hogy egyezzen a kiszolgáló állomásneve a TLS-kapcsolaton keresztüli csatlakozáskor. Az alapértelmezett érték az igaz.  | Nem |
 | usePeerVerification | Megadja, hogy a rendszer ellenőrizze-e a kiszolgáló identitását TLS-kapcsolaton keresztül. Az alapértelmezett érték az igaz.  | Nem |
 
-**Például**
+**Példa:**
 
 ```json
 {
@@ -85,10 +85,10 @@ Az adatok ServiceNow való másolásához állítsa az adatkészlet Type (típus
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **ServiceNowObject** | Igen |
+| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **ServiceNowObject** | Igen |
 | tableName | A tábla neve. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
 
-**Például**
+**Példa**
 
 ```json
 {
@@ -115,19 +115,19 @@ Az adatok ServiceNow való másolásához állítsa a forrás típusát a másol
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **ServiceNowSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például: `"SELECT * FROM Actual.alm_asset"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
+| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **ServiceNowSource** | Igen |
+| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Példa: `"SELECT * FROM Actual.alm_asset"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
 
 A lekérdezésben a ServiceNow sémájának és oszlopának megadásakor vegye figyelembe a következőket, és **tekintse meg a [teljesítményre vonatkozó tippeket](#performance-tips) a másolás teljesítményének következményeiről**.
 
-- **Séma:** határozza meg a `Actual` sémát `Display` a ServiceNow-lekérdezésben vagy a (z) mezőben, amelyet a `sysparm_display_value` [ServiceNow REST API](https://developer.servicenow.com/app.do#!/rest_api_doc?v=jakarta&id=r_AggregateAPI-GET)-k hívásakor igaz vagy hamis paraméterként is megtekintheti. 
-- **Oszlop:** a séma alatt `Actual` lévő tényleges érték oszlopának neve `[column name]_value`, míg a (z) `Display` séma területen `[column name]_display_value`a megjelenítési érték szerepel. Vegye figyelembe, hogy az oszlop nevének leképezése szükséges a lekérdezésben használt sémához.
+- **Séma:** határozza meg a sémát a `Actual` `Display` ServiceNow-lekérdezésben vagy a (z) mezőben, amelyet a `sysparm_display_value` [ServiceNow REST API](https://developer.servicenow.com/app.do#!/rest_api_doc?v=jakarta&id=r_AggregateAPI-GET)-k hívásakor igaz vagy hamis paraméterként is megtekintheti. 
+- **Oszlop:** a séma alatt lévő tényleges érték oszlopának neve `Actual` `[column name]_value` , míg a (z) séma területen a megjelenítési érték `Display` szerepel `[column name]_display_value` . Vegye figyelembe, hogy az oszlop nevének leképezése szükséges a lekérdezésben használt sémához.
 
 **Példa lekérdezésre:** 
- `SELECT col_value FROM Actual.alm_asset` vagy 
+ `SELECT col_value FROM Actual.alm_asset` VAGY 
 `SELECT col_display_value FROM Display.alm_asset`
 
-**Például**
+**Példa:**
 
 ```json
 "activities":[

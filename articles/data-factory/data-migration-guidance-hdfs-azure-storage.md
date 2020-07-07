@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 8/30/2019
 ms.openlocfilehash: 63b657e77172282225a9bc890b2f185b0f4d42a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81417136"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-hadoop-cluster-to-azure-storage"></a>A helyszíni Hadoop-fürtről az Azure Storage-ba történő Migrálás Azure Data Factory használata 
@@ -53,7 +53,7 @@ További információ: [másolási tevékenység teljesítményének útmutatój
 
 ## <a name="resilience"></a>Rugalmasság
 
-Data Factory DistCp módban különböző DistCp parancssori paramétereket használhat (például `-i`a hibák figyelmen kívül hagyása vagy `-update`az adatok írása, ha a forrásfájl és a célfájl mérete különbözik) a rugalmasság különböző szintjein.
+Data Factory DistCp módban különböző DistCp parancssori paramétereket használhat (például a `-i` hibák figyelmen kívül hagyása vagy az `-update` adatok írása, ha a forrásfájl és a célfájl mérete különbözik) a rugalmasság különböző szintjein.
 
 A Data Factory natív integrációs modulban egyetlen másolási tevékenység futtatásakor Data Factory beépített újrapróbálkozási mechanizmussal rendelkezik. Képes az adattárakban vagy a mögöttes hálózaton lévő átmeneti hibák bizonyos szintjének kezelésére. 
 
@@ -108,9 +108,9 @@ Ha a másolási feladatok hálózati vagy adattárbeli átmeneti problémák mia
 
 ### <a name="delta-data-migration"></a>Különbözeti adatáttelepítés 
 
-Data Factory DistCp módban a DistCp parancssori paramétert `-update`használhatja, ha a forrásfájl és a célfájl mérete eltér a különbözeti adatáttelepítés során, akkor az adatírást.
+Data Factory DistCp módban a DistCp parancssori paramétert használhatja `-update` , ha a forrásfájl és a célfájl mérete eltér a különbözeti adatáttelepítés során, akkor az adatírást.
 
-Data Factory natív integrációs módban az új vagy módosított fájlok HDFS való azonosításának leghatékonyabb módja egy időpartíciós elnevezési konvenció használata. Ha a HDFS lévő adatok időszelet-információval vannak ellátva a fájl-vagy mappanév (például */yyyy/MM/DD/file.csv*) számára, a folyamat könnyen azonosítható, hogy mely fájlok és mappák legyenek növekményes másolásra.
+Data Factory natív integrációs módban az új vagy módosított fájlok HDFS való azonosításának leghatékonyabb módja egy időpartíciós elnevezési konvenció használata. Ha a HDFS lévő adatok időszelet-információval lettek particionálva a fájl-vagy mappanév (például */yyyy/mm/dd/file.csv*) esetében, a folyamat könnyen azonosítható, hogy mely fájlok és mappák legyenek növekményes másolásra.
 
 Ha a HDFS lévő adatai nem particionálják az időkorlátot, Data Factory az új vagy módosított fájlokat a **LastModifiedDate** érték használatával azonosíthatja. Data Factory megkeresi az összes fájlt a HDFS-ből, és csak az új és frissített fájlokat másolja, amelyeknek az utolsó módosítási időbélyege nagyobb, mint a megadott érték. 
 

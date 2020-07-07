@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: spelluru
 ms.openlocfilehash: 40bff9585e64163039a8847ff868c982ffb20414
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81458249"
 ---
 # <a name="azure-key-vault-as-event-grid-source"></a>Azure Key Vault Event Grid forrásként
@@ -67,7 +67,7 @@ Az alábbi példa a **Microsoft. kulcstartó. SecretNewVersionCreated**sémájá
 
 Egy esemény a következő legfelső szintű adattal rendelkezik:
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Típus | Description |
 | ---------- | ----------- |---|
 | id | sztring | Az eseményt kiváltó objektum azonosítója |
 | vaultName | sztring | Az eseményt kiváltó objektum kulcstárolójának neve |

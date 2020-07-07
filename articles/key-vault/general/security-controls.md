@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
 ms.openlocfilehash: cd6602f68b63e2c236e7f3905d33b88fbda36ed2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81429862"
 ---
 # <a name="security-controls-for-azure-key-vault"></a>A Azure Key Vault biztonsági vezérlői
@@ -51,7 +51,7 @@ Ez a cikk a Azure Key Vault beépített biztonsági vezérlőket dokumentálja.
 |---|---|--|
 | Kiszolgálóoldali titkosítás nyugalmi állapotban: Microsoft által felügyelt kulcsok | Igen | Minden objektum titkosítva van. |
 | Kiszolgálóoldali titkosítás nyugalmi állapotban: ügyfél által felügyelt kulcsok (BYOK) | Igen | Az ügyfél a Key Vault összes kulcsát vezérli. Ha a hardveres biztonsági modul (HSM) által támogatott kulcsok meg vannak adva, akkor a 2. FIPS szintű HSM védi a kulcsot, a tanúsítványt vagy a titkos kulcsot. |
-| Oszlop szintű titkosítás (Azure Data Services)| N/A |  |
+| Oszlop szintű titkosítás (Azure Data Services)| N.A. |  |
 | Az átvitel közbeni titkosítás (például ExpressRoute titkosítás, VNet titkosítás és VNet-VNet titkosítás)| Igen | Minden kommunikáció titkosított API-hívásokon keresztül történik |
 | Titkosított API-hívások| Igen | HTTPS használatával. |
 

@@ -10,10 +10,10 @@ ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
 ms.openlocfilehash: 58f542238c952088777ed9809b57dae3cdb9cf12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81457263"
 ---
 # <a name="azure-monitor-data-platform"></a>Azure Monitor adatplatform
@@ -23,7 +23,7 @@ A napjainkban a Felhőbeli és a helyszíni szolgáltatásokra támaszkodó elos
 A [Azure monitor](../overview.md) különböző forrásokból származó adatokat gyűjt és összesít egy közös adatplatformba, ahol elemzésre, vizualizációra és riasztásra is használható. Egységes felhasználói élményt nyújt több forrásból származó adatokon, ami részletes elemzéseket nyújt az összes figyelt erőforrásról, akár más olyan szolgáltatásokból származó adatokból, amelyek az adataikat a Azure Monitor tárolják.
 
 
-![Azure Monitor – áttekintés](media/data-platform/overview.png)
+![Az Azure Monitor áttekintése](media/data-platform/overview.png)
 
 ## <a name="observability-data-in-azure-monitor"></a>Megfigyelt adatszolgáltatások Azure Monitor
 A mérőszámokat, a naplókat és az elosztott nyomkövetéseket általában a megfigyelés három pillérének nevezzük. Ezek a különböző típusú adatok, amelyeket a figyelő eszköznek össze kell gyűjtenie, és elemezni kell, hogy elegendő legyen a figyelt rendszer megfelelő megfigyelése. A megfigyelés úgy érhető el, ha több pillérből származó adatokkal korrelál, és az adatok összesítése a figyelt erőforrások teljes készlete között történik. Mivel a Azure Monitor különböző forrásokból származó adatok tárolására szolgálnak, az adatok összekapcsolhatók és elemezhetők a közös eszközkészletek használatával. Emellett a több Azure-előfizetésre és-bérlőre vonatkozó adatokkal is összefügg, valamint más szolgáltatásokra vonatkozó adatok üzemeltetése mellett.
