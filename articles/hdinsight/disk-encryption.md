@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.openlocfilehash: 732709dbcb5ebe54025a963379128f1a1e74183e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81536301"
 ---
 # <a name="customer-managed-key-disk-encryption"></a>Ügyfél által felügyelt kulcson alapuló lemeztitkosítás
@@ -22,7 +22,7 @@ A HDInsight összes felügyelt lemeze az Azure Storage Service Encryption (SSE) 
 
 Ez a dokumentum nem foglalkozik az Azure Storage-fiókban tárolt adataival. Az Azure Storage encryption szolgáltatással kapcsolatos további információkért lásd: [Az Azure Storage titkosítása inaktív adatokhoz](../storage/common/storage-service-encryption.md). Előfordulhat, hogy a fürtök egy vagy több mellékelt Azure Storage-fiókkal rendelkeznek, amelyekben a titkosítási kulcsok Microsoft által felügyelt vagy felhasználó által felügyelt, de a titkosítási szolgáltatás eltérő.
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 
 Az ügyfél által felügyelt kulcs titkosítása egy egylépéses folyamat, amelyet a fürt létrehozása során a további díjak nélkül kezelnek. Mindössze annyit kell tennie, hogy felügyelt identitásként regisztrálja a HDInsight-t Azure Key Vault és hozzáadja a titkosítási kulcsot a fürt létrehozásakor.
 
@@ -35,7 +35,7 @@ A Key vaultban lévő kulcsok biztonságos elforgatásához használhatja a Azur
 |Fürt típusa |OPERÁCIÓSRENDSZER-lemez (felügyelt lemez) |Adatlemez (felügyelt lemez) |Ideiglenes adatlemez (helyi SSD) |
 |---|---|---|---|
 |Kafka, HBase gyorsított írásokkal|[SSE titkosítás](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#encryption)|SSE titkosítás + opcionális CMK-titkosítás|Nem kötelező CMK-titkosítás|
-|Minden más fürt (Spark, Interactive, Hadoop, gyorsított írások nélkül HBase)|SSE titkosítás|N/A|Nem kötelező CMK-titkosítás|
+|Minden más fürt (Spark, Interactive, Hadoop, gyorsított írások nélkül HBase)|SSE titkosítás|N.A.|Nem kötelező CMK-titkosítás|
 
 ## <a name="get-started-with-customer-managed-keys"></a>Ismerkedés az ügyfél által felügyelt kulcsokkal
 
@@ -62,7 +62,7 @@ A HDInsight csak a Azure Key Vaultt támogatja. Ha rendelkezik saját kulcstart�
 
 ## <a name="create-key"></a>Kulcs létrehozása
 
-1. Az új kulcstartóban navigáljon a **Beállítások** > **kulcsok** > **+ Létrehozás/importálás**elemre.
+1. Az új kulcstartóban navigáljon a **Beállítások**  >  **kulcsok**  >  **+ Létrehozás/importálás**elemre.
 
     ![Új kulcs létrehozása a Azure Key Vaultban](./media/disk-encryption/create-new-key.png "Új kulcs létrehozása a Azure Key Vaultban")
 
@@ -80,7 +80,7 @@ A HDInsight csak a Azure Key Vaultt támogatja. Ha rendelkezik saját kulcstart�
 
 ## <a name="create-access-policy"></a>Hozzáférési szabályzat létrehozása
 
-1. Az új kulcstartóban navigáljon a **Beállítások** > **hozzáférési szabályzatok** > **+ hozzáférési házirend hozzáadása**elemre.
+1. Az új kulcstartóban navigáljon a **Beállítások**  >  **hozzáférési szabályzatok**  >  **+ hozzáférési házirend hozzáadása**elemre.
 
     ![Új Azure Key Vault hozzáférési szabályzat létrehozása](./media/disk-encryption/key-vault-access-policy.png)
 
@@ -94,7 +94,7 @@ A HDInsight csak a Azure Key Vaultt támogatja. Ha rendelkezik saját kulcstart�
 
     ![A rendszerbiztonsági tag kiválasztása Azure Key Vault hozzáférési házirendhez](./media/disk-encryption/azure-portal-add-access-policy.png)
 
-1. Válassza a **Hozzáadás** lehetőséget.
+1. Válassza a **Hozzáadás** elemet.
 
 1. Kattintson a **Mentés** gombra.
 
@@ -153,7 +153,7 @@ New-AzResourceGroupDeployment `
   -managedIdentityName $managedIdentityName
 ```
 
-Az erőforrás- `azuredeploy.json`kezelési sablon tartalma:
+Az erőforrás-kezelési sablon tartalma `azuredeploy.json` :
 
 ```json
 {

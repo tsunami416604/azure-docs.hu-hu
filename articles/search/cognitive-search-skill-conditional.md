@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: b5f1fc7f877854dd06fbbe09ff82e47208fa12d0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72792051"
 ---
 # <a name="conditional-cognitive-skill"></a>Feltételes kognitív képességek
@@ -72,7 +72,7 @@ A következő elemek egy kifejezés érvényes értékei:
         "= !true"
     ```
 
--   Numerikus operátorokat használó kifejezések (+,-, \*,/,%) <br/>
+-   Numerikus operátorokat használó kifejezések (+,-, \* ,/,%) <br/>
     Példák: 
     ```
         "= $(/document/sentiment) + 0.5"         // addition
@@ -85,11 +85,11 @@ Mivel a feltételes képesség támogatja a kiértékelést, ezt kisebb átalak�
 ## <a name="skill-inputs"></a>Szaktudás bemenetei
 A bemenetek megkülönböztetik a kis-és nagybetűket.
 
-| Input (Bemenet)   | Leírás |
+| Bevitel   | Leírás |
 |-------------|-------------|
-| feltétel   | Ez a bemenet egy [kiértékelt mező](#evaluated-fields) , amely az értékelendő feltételt jelöli. Ezt az állapotot egy logikai értékre (*true* vagy *false*) kell kiértékelni.   <br/>  Példák: <br/> "= true" <br/> "= $ (/Document/Language) = =" FR " <br/> "= $ (/Document/Pages/\*/Language) = = $ (/Document/expectedLanguage)" <br/> |
-| whenTrue    | Ez a bemenet egy [kiértékelt mező](#evaluated-fields) , amely a visszatérési értéket jelöli, ha a feltétel *igaz*értékre van kiértékelve. Az állandó sztringeket szimpla idézőjelek ("és") szerint kell megadni. <br/>Mintavételezési értékek: <br/> "=" szerződés ""<br/>"= $ (/document/contractType)" <br/> "= $ (/Document/Entities/\*)" <br/> |
-| whenFalse   | Ez a bemenet egy [kiértékelt mező](#evaluated-fields) , amely a visszatérési értéket jelöli, ha a feltétel *hamis*értékre van kiértékelve. <br/>Mintavételezési értékek: <br/> "=" szerződés ""<br/>"= $ (/document/contractType)" <br/> "= $ (/Document/Entities/\*)" <br/>
+| feltétel   | Ez a bemenet egy [kiértékelt mező](#evaluated-fields) , amely az értékelendő feltételt jelöli. Ezt az állapotot egy logikai értékre (*true* vagy *false*) kell kiértékelni.   <br/>  Példák: <br/> "= true" <br/> "= $ (/Document/Language) = =" FR " <br/> "= $ (/Document/Pages/ \* /Language) = = $ (/Document/expectedLanguage)" <br/> |
+| whenTrue    | Ez a bemenet egy [kiértékelt mező](#evaluated-fields) , amely a visszatérési értéket jelöli, ha a feltétel *igaz*értékre van kiértékelve. Az állandó sztringeket szimpla idézőjelek ("és") szerint kell megadni. <br/>Mintavételezési értékek: <br/> "=" szerződés ""<br/>"= $ (/document/contractType)" <br/> "= $ (/Document/Entities/ \* )" <br/> |
+| whenFalse   | Ez a bemenet egy [kiértékelt mező](#evaluated-fields) , amely a visszatérési értéket jelöli, ha a feltétel *hamis*értékre van kiértékelve. <br/>Mintavételezési értékek: <br/> "=" szerződés ""<br/>"= $ (/document/contractType)" <br/> "= $ (/Document/Entities/ \* )" <br/>
 
 ## <a name="skill-outputs"></a>Szaktudás kimenetei
 Egyetlen kimenetre van szükség, amelyet egyszerűen "output"-nek nevezünk. A *whenFalse* értéket adja vissza, ha a feltétel hamis vagy *whenTrue* , ha a feltétel igaz.

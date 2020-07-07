@@ -4,10 +4,10 @@ description: Felügyelt identitások használata az Azure Service Fabric alkalma
 ms.topic: article
 ms.date: 10/09/2019
 ms.openlocfilehash: 8f1f355d6add16f3b3ec25bc569f9b198a8d6778
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81461565"
 ---
 # <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services"></a>Service Fabric alkalmazás felügyelt identitásának kihasználása az Azure-szolgáltatások eléréséhez
@@ -52,8 +52,8 @@ ahol:
 | ------- | ----------- |
 | `GET` | A HTTP-művelet, amely azt jelzi, hogy a végpontról kívánja beolvasni az adatait. Ebben az esetben egy OAuth hozzáférési jogkivonat. | 
 | `https://localhost:2377/metadata/identity/oauth2/token` | A felügyelt identitás végpontja Service Fabric alkalmazásokhoz, amelyeket a IDENTITY_ENDPOINT környezeti változón keresztül adnak meg. |
-| `api-version` | Egy lekérdezési karakterlánc paraméter, amely megadja a felügyelt Identity token szolgáltatás API-verzióját; jelenleg az egyetlen elfogadott érték a `2019-07-01-preview`, és a változás változhat. |
-| `resource` | Egy lekérdezési karakterlánc paraméter, amely a cél erőforrás alkalmazás-azonosító URI azonosítóját jelzi. Ez a kiállított jogkivonat `aud` (célközönség) jogcímeként jelenik meg. Ez a példa jogkivonatot kér a Azure Key Vault eléréséhez, amelynek az alkalmazás-azonosító\/URI-ja https:/Vault.Azure.net/. |
+| `api-version` | Egy lekérdezési karakterlánc paraméter, amely megadja a felügyelt Identity token szolgáltatás API-verzióját; jelenleg az egyetlen elfogadott érték a `2019-07-01-preview` , és a változás változhat. |
+| `resource` | Egy lekérdezési karakterlánc paraméter, amely a cél erőforrás alkalmazás-azonosító URI azonosítóját jelzi. Ez a `aud` kiállított jogkivonat (célközönség) jogcímeként jelenik meg. Ez a példa jogkivonatot kér a Azure Key Vault eléréséhez, amelynek az alkalmazás-azonosító URI-ja https: \/ /Vault.Azure.net/. |
 | `Secret` | Egy HTTP-kérelem fejlécének mezője, amelyet a Service Fabric felügyelt Identity jogkivonat szolgáltatás igényel Service Fabric-szolgáltatásokhoz a hívó hitelesítéséhez. Ezt az értéket az SF Runtime IDENTITY_HEADER környezeti változón keresztül kapja meg. |
 
 
@@ -74,8 +74,8 @@ ahol:
 | ------- | ----------- |
 | `token_type` | A jogkivonat típusa; Ebben az esetben egy "tulajdonos" hozzáférési token, ami azt jelenti, hogy a token tulajdonosa ("birtokosa") a jogkivonat tárgya. |
 | `access_token` | A kért hozzáférési jogkivonat. Biztonságos REST API hívásakor a jogkivonat a `Authorization` kérelem fejléc mezőjébe ágyazva "tulajdonos" tokenként van beágyazva, ami lehetővé teszi, hogy az API hitelesítse a hívót. | 
-| `expires_on` | A hozzáférési token lejárati időbélyegzője; a (z) "1970-01-01T0:0: 0Z UTC" számú másodpercet jelöli, és megfelel `exp` a jogkivonat jogcímenek. Ebben az esetben a jogkivonat a 2019-08-08T06:10:11 + 00:00 (az RFC 3339-ben) lejár|
-| `resource` | Az erőforrás, amelyhez a hozzáférési jogkivonat ki lett állítva, a kérelem `resource` lekérdezési karakterlánc paraméterén keresztül lett megadva; megfelel a jogkivonat "AUD" jogcímének. |
+| `expires_on` | A hozzáférési token lejárati időbélyegzője; a (z) "1970-01-01T0:0: 0Z UTC" számú másodpercet jelöli, és megfelel a jogkivonat `exp` jogcímenek. Ebben az esetben a jogkivonat a 2019-08-08T06:10:11 + 00:00 (az RFC 3339-ben) lejár|
+| `resource` | Az erőforrás, amelyhez a hozzáférési jogkivonat ki lett állítva, a `resource` kérelem lekérdezési karakterlánc paraméterén keresztül lett megadva; a jogkivonat "AUD" jogcímének felel meg. |
 
 
 ## <a name="acquiring-an-access-token-using-c"></a>Hozzáférési jogkivonat beszerzése a C használatával #
@@ -345,7 +345,7 @@ Minta hiba:
 
 A következő lista a felügyelt identitásokra jellemző jellemző Service Fabric hibák listáját tartalmazza:
 
-| Kód | Üzenet | Leírás | 
+| Code | Üzenet | Leírás | 
 | ----------- | ----- | ----------------- |
 | SecretHeaderNotFound | A titkos kód nem található a kérelem fejlécében. | A hitelesítési kódot nem adta meg a kérelem. | 
 | ManagedIdentityNotFound | Nem található felügyelt identitás a megadott alkalmazás-gazdagéphez. | Az alkalmazás nem rendelkezik identitással, vagy a hitelesítési kód ismeretlen. |

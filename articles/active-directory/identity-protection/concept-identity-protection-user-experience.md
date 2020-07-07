@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cc10fb4f9894a355c9eed024ae9f87747214999b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72886999"
 ---
 # <a name="user-experiences-with-azure-ad-identity-protection"></a>Felhasználói élmény Azure AD Identity Protection
@@ -80,7 +80,7 @@ A rendszergazdák dönthetnek úgy, hogy a kockázati szintjétől függően let
 
 Az informatikai munkatársak a [felhasználók letiltásának feloldása](howto-identity-protection-remediate-unblock.md#unblocking-based-on-user-risk) című szakaszban szereplő utasításokat követve engedélyezhetik a felhasználóknak a bejelentkezést.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 - [Kockázatok szervizelése és a felhasználók blokkolásának feloldása](howto-identity-protection-remediate-unblock.md)
 

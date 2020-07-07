@@ -3,7 +3,7 @@ title: Példák az Azure CLI parancsfájlokra
 titleSuffix: Azure SQL Database & SQL Managed Instance
 description: Azure CLI-szkriptek példák a Azure SQL Database és az Azure SQL felügyelt példányának létrehozására és kezelésére
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: service
 ms.custom: overview-samples, mvc, sqldbrb=2
 ms.devlang: azurecli
@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 02/03/2019
-ms.openlocfilehash: 1f63b8adfabb9de427fd19a992f913d032aa9d8b
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: cc762c3c10c087a8c0db5bd17f9c38b8f9d26134
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85251517"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85982767"
 ---
 # <a name="azure-cli-samples-for-azure-sql-database-and-sql-managed-instance"></a>Azure CLI-minták Azure SQL Database és SQL felügyelt példányhoz 
  
@@ -35,7 +35,7 @@ Ha a parancssori felület helyi telepítése és használata mellett dönt, a t�
 
 Az alábbi táblázat az Azure CLI parancsfájlokra mutató hivatkozásokat tartalmaz, amelyek a Azure SQL Database egyetlen és készletezett adatbázisait kezelik. 
 
-| | |
+|Terület|Leírás|
 |---|---|
 |**Adatbázisok létrehozása a Azure SQL Databaseban**||
 | [Önálló adatbázis létrehozása és egy tűzfalszabály konfigurálása](scripts/create-and-configure-database-cli.md) | Létrehoz egy SQL Database, és konfigurál egy kiszolgálói szintű tűzfalszabály-szabályt. |
@@ -63,7 +63,7 @@ További információ az [Egyadatbázisos Azure CLI API-](single-database-manage
 
 Az alábbi táblázat a felügyelt Azure SQL-példányokra mutató hivatkozásokat tartalmaz az Azure CLI parancsfájlokra.
 
-| | |
+|Terület|Leírás|
 |---|---|
 | **SQL felügyelt példány létrehozása**||
 | [SQL felügyelt példány létrehozása](../../sql-database/scripts/sql-database-create-configure-managed-instance-cli.md)| Létrehoz egy SQL felügyelt példányt. |

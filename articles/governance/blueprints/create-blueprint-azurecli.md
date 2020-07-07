@@ -3,16 +3,16 @@ title: 'Rövid útmutató: terv létrehozása az Azure CLI-vel'
 description: Ebben a rövid útmutatóban Azure-tervezeteket használ az összetevők létrehozásához, definiálásához és üzembe helyezéséhez az Azure CLI használatával.
 ms.date: 06/02/2020
 ms.topic: quickstart
-ms.openlocfilehash: 7d144edca0794679e67358ff820e1508736ba723
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 30a450fc7eab55424da7ce971ad234cbf2248b30
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84613667"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85969668"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-azure-cli"></a>Gyors útmutató: Azure Blueprint megadása és hozzárendelése az Azure CLI-vel
 
-A tervek létrehozásának és hozzárendelésének elsajátítása lehetővé teszi a közös minták definiálását, hogy újrahasználható és gyorsan üzembe helyezhető konfigurációkat dolgozhasson ki Resource Manager-sablonok, szabályzatok, biztonsági és egyéb szempontok alapján. Ez az oktatóanyag bemutatja, hogyan hajthatja végre az Azure Blueprints használatával a tervek a szervezeten belüli létrehozásával, közzétételével és hozzárendelésével kapcsolatos olyan általános feladatokat, mint az alábbiak:
+A tervrajzok létrehozásának és hozzárendelésének megismerése lehetővé teszi a közös minták meghatározását, amelyekkel a Azure Resource Manager sablonok (ARM-sablonok), a házirendek, a biztonság és egyebek alapján újrafelhasználható és gyorsan telepíthető konfigurációk fejleszthetők. Ez az oktatóanyag bemutatja, hogyan hajthatja végre az Azure Blueprints használatával a tervek a szervezeten belüli létrehozásával, közzétételével és hozzárendelésével kapcsolatos olyan általános feladatokat, mint az alábbiak:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -46,14 +46,14 @@ Ez a bővítmény mindenhol működik, ahol az Azure CLI használható, beleért
 
 ## <a name="create-a-blueprint"></a>Terv létrehozása
 
-A megfelelőségi szabványminták definiálásának első lépése, hogy összeállítunk egy tervet az elérhető erőforrásokból. Létrehozzuk a „MyBlueprint” nevű tervet az előfizetés szerepkör- és szabályzat-hozzárendeléseinek konfigurálására. Ezután hozzáadunk egy erőforráscsoportot, egy Resource Manager-sablont és egy szerepkör-hozzárendelést az erőforráscsoporton.
+A megfelelőségi szabványminták definiálásának első lépése, hogy összeállítunk egy tervet az elérhető erőforrásokból. Létrehozzuk a „MyBlueprint” nevű tervet az előfizetés szerepkör- és szabályzat-hozzárendeléseinek konfigurálására. Ezután hozzáadunk egy erőforráscsoportot, egy ARM-sablont és egy szerepkör-hozzárendelést az erőforráscsoporthoz.
 
 > [!NOTE]
 > Az Azure CLI használatakor a _terv_ objektum először jön létre. Mindegyik hozzáadott, paraméterekkel rendelkező _összetevő_ esetében a paramétereket előre definiálni kell a kezdeti _terven_.
 
 1. Hozza létre a kezdeti _terv_ objektumot. A **Parameters** paraméter egy JSON-fájlt fog tartalmazni, amely tartalmazza az összes terv szintű paramétert. A paraméterek a hozzárendelés során vannak megadva, és a későbbi lépésekben hozzáadott összetevők használják azokat.
 
-   - JSON-fájl – blueprintparms. JSON
+   - JSON-fájl – blueprintparms.jsbekapcsolva
 
      ```json
      {
@@ -115,7 +115,7 @@ A megfelelőségi szabványminták definiálásának első lépése, hogy össze
      ```
 
      > [!NOTE]
-     > A terv-definíciók importálásakor használja a filename _Blueprint. JSON_ fájlt.
+     > A terv definícióinak importálásakor használja a filename _blueprint.js_ .
      > Ezt a fájlnevet a [terv importálásának](/cli/azure/ext/blueprint/blueprint#ext-blueprint-az-blueprint-import)meghívásakor használja a rendszer.
 
      A terv objektum alapértelmezés szerint az alapértelmezett előfizetésben jön létre. A felügyeleti csoport megadásához használja a **managementgroup**paramétert. Az előfizetés megadásához használja a paraméter- **előfizetést**.
@@ -141,7 +141,7 @@ A megfelelőségi szabványminták definiálásának első lépése, hogy össze
 
 1. Szabályzat-hozzárendelés hozzáadása az előfizetésben. Ez a példa az _Apply címkét és az alapértelmezett értékét_ használja a beépített szabályzathoz a (z) GUID azonosítóval `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71` .
 
-   - JSON-fájl – artifacts\policyTags.json
+   - JSON-fájl – artifacts\policyTags.jsbekapcsolva
 
      ```json
      {
@@ -168,7 +168,7 @@ A megfelelőségi szabványminták definiálásának első lépése, hogy össze
 
 1. Egy másik szabályzat-hozzárendelés hozzáadása egy Storage-címke számára (a _storageAccountType_ paraméter ismételt felhasználásával) az előfizetésen. Ez az újabb szabályzat-hozzárendelési összetevő bemutatja, hogy a terveken definiált paramétereket több összetevő is használhatja. A példában a **storageAccountType** használatával beállítunk egy címkét az erőforráscsoporton. Ez az érték a következő lépésben létrehozott tárfiókkal kapcsolatos információkat szolgáltat. Ez a példa az _Apply címkét és az alapértelmezett értékét_ használja a beépített szabályzathoz a (z) GUID azonosítóval `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71` .
 
-   - JSON-fájl – artifacts\policyStorageTags.json
+   - JSON-fájl – artifacts\policyStorageTags.jsbekapcsolva
 
      ```json
      {
@@ -193,9 +193,9 @@ A megfelelőségi szabványminták definiálásának első lépése, hogy össze
         --parameters artifacts\policyStorageTags.json
      ```
 
-1. Sablon hozzáadása az erőforráscsoport alatt. A Resource Manager-sablonok **sablon** paramétere a sablon normál JSON-összetevőit tartalmazza. A sablon újra felhasználja a **storageAccountType**, a **tagName** és a **tagValue** tervparamétert is, mivel továbbadja azokat a sablonnak. A terv paraméterei a sablonhoz a paraméter **paramétereinek** használatával és a sablon JSON-ban érhetők el, amelyet a kulcs-érték párok az érték beadására használnak. A terv és a sablon paramétereinek nevei megegyeznek.
+1. Sablon hozzáadása az erőforráscsoport alatt. Az ARM-sablonhoz tartozó **template** paraméter tartalmazza a sablon normál JSON-összetevőit. A sablon újra felhasználja a **storageAccountType**, a **tagName** és a **tagValue** tervparamétert is, mivel továbbadja azokat a sablonnak. A terv paraméterei a sablonhoz a paraméter **paramétereinek** használatával és a sablon JSON-ban érhetők el, amelyet a kulcs-érték párok az érték beadására használnak. A terv és a sablon paramétereinek nevei megegyeznek.
 
-   - JSON Azure Resource Manager sablonfájl – artifacts\templateStorage.json
+   - JSON ARM-sablon fájlja – artifacts\templateStorage.jsbekapcsolva
 
      ```json
      {
@@ -249,7 +249,7 @@ A megfelelőségi szabványminták definiálásának első lépése, hogy össze
      }
      ```
 
-   - JSON Azure Resource Manager sablon paraméter fájl – artifacts\templateStorageParams.json
+   - JSON ARM-sablon paraméter fájl – artifacts\templateStorageParams.jsbekapcsolva
 
      ```json
      {
@@ -303,7 +303,7 @@ Miután közzétett egy tervet az Azure CLI-vel, hozzárendelhető egy előfizet
 
 1. A tervpéldányt a futtatásához rendelje hozzá egy előfizetéshez. Mivel a **közreműködők** és a **tulajdonosi** paraméterek a rendszerbiztonsági tag objectIds tömbjét igénylik a szerepkör-hozzárendelés megadásához, használja [Azure Active Directory Graph API](../../active-directory/develop/active-directory-graph-api.md) , hogy összegyűjtse az objectIds a saját felhasználók, csoportok vagy egyszerű szolgáltatások **paramétereinek** használatára.
 
-   - JSON-fájl – blueprintAssignment. JSON
+   - JSON-fájl – blueprintAssignment.jsbekapcsolva
 
      ```json
      {
@@ -371,7 +371,7 @@ Eltávolíthatja a terveket az előfizetésekből. Az eltávolítás gyakori mű
 az blueprint assignment delete --name 'assignMyBlueprint'
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban létrehozott, hozzárendelt és eltávolított egy tervet az Azure CLI-vel. Ha többet szeretne megtudni az Azure-tervezetekről, folytassa a terv életciklusával foglalkozó cikkel.
 

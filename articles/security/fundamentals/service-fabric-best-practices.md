@@ -8,10 +8,10 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 01/16/2019
 ms.openlocfilehash: 4548bf77c01194802c2e6203bcbf9fbd240370a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81461650"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Az Azure Service Fabric ajánlott biztonsági eljárásai
@@ -87,7 +87,7 @@ A [fürt tanúsítványának](../../service-fabric/service-fabric-windows-cluste
 
 Továbbá kövesse az alábbi eljárásokat:
 -   Hozza létre a tanúsítványokat a termelési fürtökhöz a megfelelően konfigurált Windows Server Certificate Service használatával. A tanúsítványokat egy jóváhagyott hitelesítésszolgáltatótól (CA) is beszerezheti.
--   Soha ne használjon ideiglenes vagy tesztelési tanúsítványt az üzemi fürtökhöz, ha a tanúsítványt a MakeCert. exe vagy egy hasonló eszköz használatával hozták létre.
+-   Soha ne használjon ideiglenes vagy tesztelési tanúsítványt az üzemi fürtökhöz, ha a tanúsítvány MakeCert.exe vagy hasonló eszköz használatával lett létrehozva.
 -   Önaláírt tanúsítványt használhat a tesztelési fürtökhöz, de az éles fürtök esetében nem.
 
 Ha a fürt nem biztonságos, bárki csatlakozhat a fürthöz névtelenül, és felügyeleti műveleteket hajthat végre. Emiatt az X. 509 tanúsítványok vagy a Windows Biztonság használatával mindig biztonságos üzemi fürtöket használjon.
@@ -99,7 +99,7 @@ A Service Fabric az alkalmazások által használt erőforrásokat is biztonság
 
 -   Active Directory tartományi csoport vagy felhasználó használata: futtassa a szolgáltatást egy Active Directory felhasználói vagy csoportfiók hitelesítő adatai alatt. Ügyeljen arra, hogy a tartományon belül Active Directoryt használjon, és ne Azure Active Directory. A tartományhoz tartozó más erőforrásokhoz való hozzáférés, amelyek tartományi felhasználó vagy csoport használatával kaptak engedélyeket. Például olyan erőforrásokat, mint a fájlmegosztás.
 
--   Biztonsági hozzáférési házirend kiosztása HTTP-és HTTPS-végpontokhoz: adja meg azt a **SecurityAccessPolicy** -tulajdonságot, **amely egy futtató házirendet** alkalmaz egy szolgáltatásra, ha a szolgáltatás jegyzékfájlja http-vel deklarálja a végponti erőforrásokat. A HTTP-végpontok számára lefoglalt portok megfelelő hozzáférés-vezérlésű listája a szolgáltatás által futtatott futtató felhasználói fiókhoz. Ha a házirend nincs beállítva, a http. sys nem fér hozzá a szolgáltatáshoz, és az ügyféltől érkező hívásokkal hibák jelentkezhetnek.
+-   Biztonsági hozzáférési házirend kiosztása HTTP-és HTTPS-végpontokhoz: adja meg azt a **SecurityAccessPolicy** -tulajdonságot, **amely egy futtató házirendet** alkalmaz egy szolgáltatásra, ha a szolgáltatás jegyzékfájlja http-vel deklarálja a végponti erőforrásokat. A HTTP-végpontok számára lefoglalt portok megfelelő hozzáférés-vezérlésű listája a szolgáltatás által futtatott futtató felhasználói fiókhoz. Ha a házirend nincs beállítva, http.sys nem fér hozzá a szolgáltatáshoz, és az ügyféltől érkező hívásokkal kapcsolatos hibák jelentkezhetnek.
 
 Ha meg szeretné tudni, hogyan használhatja a biztonsági házirendeket egy Service Fabric fürtben, tekintse meg az [alkalmazás biztonsági házirendjeinek konfigurálása](../../service-fabric/service-fabric-application-runas-security.md)című témakört.
 

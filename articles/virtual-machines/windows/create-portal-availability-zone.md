@@ -10,10 +10,10 @@ ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: ''
 ms.openlocfilehash: b8a5f6543bc265605361b7875fad5232d428e27e
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82208992"
 ---
 # <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-the-azure-portal"></a>Windows rendszerű virtuális gép létrehozása rendelkezésre állási zónában a Azure Portal
@@ -40,7 +40,7 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
     ![Virtuális gép méretének kiválasztása](./media/create-portal-availability-zone/create-windows-vm-portal-sizes.png)  
 
-5. A **Beállítások** > **magas rendelkezésre állása**területen válassza ki az egyik számú zónát a **rendelkezésre állási zóna** legördülő listából, tartsa meg a fennmaradó alapértékeket, majd kattintson **az OK**gombra.
+5. A **Beállítások**  >  **magas rendelkezésre állása**területen válassza ki az egyik számú zónát a **rendelkezésre állási zóna** legördülő listából, tartsa meg a fennmaradó alapértékeket, majd kattintson **az OK**gombra.
 
     ![Rendelkezésre állási zóna kiválasztása](./media/create-portal-availability-zone/create-windows-vm-portal-availability-zone.png)
 

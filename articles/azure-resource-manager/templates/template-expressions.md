@@ -4,10 +4,10 @@ description: A Azure Resource Manager-sablonok deklaratív JSON-szintaxisát ism
 ms.topic: conceptual
 ms.date: 03/17/2020
 ms.openlocfilehash: baddedae1b918502e579d2ed230e0779960f45e7
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82203828"
 ---
 # <a name="syntax-and-expressions-in-azure-resource-manager-templates"></a>Szintaxis és kifejezések a Azure Resource Manager-sablonokban
@@ -29,7 +29,7 @@ A Azure Resource Manager a sablonban használható [függvényeket](template-fun
 },
 ```
 
-A kifejezésen belül a szintaxis `resourceGroup()` meghívja az egyik olyan függvényt, amelyet a Resource Manager biztosít a sablonon belüli használatra. Ebben az esetben ez a [resourceGroup](template-functions-resource.md#resourcegroup) függvény. A JavaScripthez hasonlóan a függvények hívásai is a `functionName(arg1,arg2,arg3)`következőképpen vannak formázva:. A szintaxis `.location` egy tulajdonságot kérdez le a függvény által visszaadott objektumból.
+A kifejezésen belül a szintaxis `resourceGroup()` meghívja az egyik olyan függvényt, amelyet a Resource Manager biztosít a sablonon belüli használatra. Ebben az esetben ez a [resourceGroup](template-functions-resource.md#resourcegroup) függvény. A JavaScripthez hasonlóan a függvények hívásai is a következőképpen vannak formázva: `functionName(arg1,arg2,arg3)` . A szintaxis `.location` egy tulajdonságot kérdez le a függvény által visszaadott objektumból.
 
 A sablon függvények és azok paramétereinek kis-és nagybetűk megkülönböztetése. A Resource Manager például feloldja a **változókat ("var1")** és a **változókat ("var1")** . A kiértékeléskor, ha a függvény kifejezetten nem módosítja a kis-és nagybetűket (például toUpper vagy toLower), a függvény megőrzi a kis-és nagybetűket. Bizonyos erőforrástípusok rendelkezhetnek a függvények kiértékelésének módjától eltérő eseti követelményekkel.
 
@@ -47,13 +47,13 @@ A legtöbb függvény ugyanúgy működik, hogy az erőforráscsoport, az előfi
 
 ## <a name="escape-characters"></a>Escape-karakterek
 
-Ahhoz, hogy egy literális sztring bal oldali zárójelmel `[` kezdődjön, és jobb oldali `]`szögletes zárójelet adjon meg, de nem értelmezhető kifejezésként, vegyen fel egy extra zárójelet `[[`a sztring elindításához. Például a következő változó:
+Ahhoz, hogy egy literális sztring bal oldali zárójelmel kezdődjön `[` , és jobb oldali szögletes zárójelet `]` adjon meg, de nem értelmezhető kifejezésként, vegyen fel egy extra zárójelet a sztring elindításához `[[` . Például a következő változó:
 
 ```json
 "demoVar1": "[[test value]"
 ```
 
-Feloldás a `[test value]`következőhöz:.
+Feloldás a következőhöz: `[test value]` .
 
 Ha azonban a literál sztring nem egy szögletes zárójelre végződik, ne hagyja ki az első zárójelet. Például a következő változó:
 
@@ -61,7 +61,7 @@ Ha azonban a literál sztring nem egy szögletes zárójelre végződik, ne hagy
 "demoVar2": "[test] value"
 ```
 
-Feloldás a `[test] value`következőhöz:.
+Feloldás a következőhöz: `[test] value` .
 
 Ha az idézőjeleket egy kifejezésben szeretné kipróbálni, például egy JSON-objektum hozzáadását a sablonban, használja a fordított perjelet.
 
@@ -93,7 +93,7 @@ A paraméterek értékeinek átadásakor az Escape-karakterek használata attól
 }
 ```
 
-Ha az alapértelmezett értéket használja, a sablon visszaadja `[test value]`a értéket.
+Ha az alapértelmezett értéket használja, a sablon visszaadja a értéket `[test value]` .
 
 Ha azonban a parancssorban adja meg a paraméter értékét, a karakterek értelmezése szó szerint történik. Az előző sablon üzembe helyezése az alábbiakkal:
 
@@ -101,13 +101,13 @@ Ha azonban a parancssorban adja meg a paraméter értékét, a karakterek értel
 New-AzResourceGroupDeployment -ResourceGroupName demoGroup -TemplateFile azuredeploy.json -demoParam1 "[[test value]"
 ```
 
-Visszatérési érték `[[test value]`. Ehelyett használja a következőket:
+Visszatérési érték `[[test value]` . Ehelyett használja a következőket:
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName demoGroup -TemplateFile azuredeploy.json -demoParam1 "[test value]"
 ```
 
-Ugyanez a formázás vonatkozik az értékek egy paraméter fájlból való átadásakor. A karakterek értelmezése szó szerint történik. Az előző sablonnal való használat esetén a következő paramétert adja vissza `[test value]`:
+Ugyanez a formázás vonatkozik az értékek egy paraméter fájlból való átadásakor. A karakterek értelmezése szó szerint történik. Az előző sablonnal való használat esetén a következő paramétert adja vissza `[test value]` :
 
 ```json
 {

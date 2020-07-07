@@ -6,10 +6,10 @@ services: container-service
 ms.topic: article
 ms.date: 06/04/2019
 ms.openlocfilehash: ed849ec928cc09cd0e8911929c4abc6ae54b1536
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82208040"
 ---
 # <a name="connect-with-rdp-to-azure-kubernetes-service-aks-cluster-windows-server-nodes-for-maintenance-or-troubleshooting"></a>Kapcsolódás RDP-vel az Azure Kubernetes Service (ak) fürthöz Windows Server-csomópontok karbantartáshoz vagy hibaelhárításhoz
@@ -22,7 +22,7 @@ Ebből a cikkből megtudhatja, hogyan hozható létre RDP-kapcsolat egy AK-csom�
 
 Ez a cikk feltételezi, hogy rendelkezik egy meglévő AK-fürttel egy Windows Server-csomóponttal. Ha AK-fürtre van szüksége, tekintse meg a következő cikket: [AK-fürt létrehozása Windows-tárolóval az Azure CLI használatával][aks-windows-cli]. Szüksége lesz a Windows Server-csomópontra, amelyet a hibakereséshez használni szeretne. Szüksége lesz egy RDP-ügyfélre is, például a [Microsoft távoli asztalra][rdp-mac].
 
-Szüksége lesz az Azure CLI 2.0.61 vagy újabb verziójára is, valamint a telepítésre és konfigurálásra. A `az --version` verzió megkereséséhez futtassa a parancsot. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
+Szüksége lesz az Azure CLI 2.0.61 vagy újabb verziójára is, valamint a telepítésre és konfigurálásra.  `az --version`A verzió megkereséséhez futtassa a parancsot. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
 
 ## <a name="deploy-a-virtual-machine-to-the-same-subnet-as-your-cluster"></a>Virtuális gép üzembe helyezése a fürttel azonos alhálózaton
 
@@ -83,7 +83,7 @@ az network nsg rule create --name tempRDPAccess --resource-group $CLUSTER_RG --n
 
 ## <a name="get-the-node-address"></a>A csomópont-címek beolvasása
 
-A Kubernetes-fürtök kezeléséhez a [kubectl][kubectl], a Kubernetes parancssori ügyfélprogramot kell használnia. Ha Azure Cloud Shellt használ, `kubectl` már telepítve van. A helyi `kubectl` telepítéshez használja az az [AK install-CLI][az-aks-install-cli] parancsot:
+A Kubernetes-fürtök kezeléséhez a [kubectl][kubectl], a Kubernetes parancssori ügyfélprogramot kell használnia. Ha Azure Cloud Shellt használ, `kubectl` már telepítve van. A helyi telepítéshez `kubectl` használja az az [AK install-CLI][az-aks-install-cli] parancsot:
     
 ```azurecli-interactive
 az aks install-cli

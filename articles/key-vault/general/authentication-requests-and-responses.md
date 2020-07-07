@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 33e3bc13e67e268b82bf517033b4b1c7c51c361f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81430889"
 ---
 # <a name="authentication-requests-and-responses"></a>Hitelesítés, kérelmek és válaszok
@@ -23,7 +23,7 @@ Azure Key Vault támogatja a JSON formátumú kérelmeket és válaszokat. A Azu
 
 Ez a témakör a Azure Key Vault szolgáltatásra vonatkozó jellemzőket ismerteti. Az Azure REST-felületek (például hitelesítés/engedélyezés és hozzáférési token beszerzése) használatával kapcsolatos általános információkért tekintse meg az [azure REST API referenciát](https://docs.microsoft.com/rest/api/azure).
 
-## <a name="request-url"></a>Kérés URL-címe  
+## <a name="request-url"></a>URL-cím kérése  
  A kulcskezelő műveletek a HTTP POST használatával végeznek HTTP-TÖRLÉSt, beolvasást, javítást, PUT és HTTP POST és titkosítási műveleteket a meglévő kulcsfontosságú objektumokon. Azok az ügyfelek, amelyek nem támogatják az adott HTTP-műveleteket, a HTTP-BEJEGYZÉST is használhatják az X-HTTP-Request fejléc használatával a kívánt művelet megadásához. azok a kérelmek, amelyek általában nem igénylik a törzset, üres törzset is tartalmazhatnak a HTTP POST használatakor, például ha a POST törlés helyett a POST parancsot használják.  
 
  A Azure Key Vault objektumainak működéséhez az alábbi URL-címek használhatók:  
@@ -45,7 +45,7 @@ Ez a témakör a Azure Key Vault szolgáltatásra vonatkozó jellemzőket ismert
 
  A Azure Key Vault protokoll verziói a Date számozási sémát egy {éééé} használatával követik. {MM}. {DD} formátum.  
 
-## <a name="request-body"></a>A kérelem törzse  
+## <a name="request-body"></a>Kérelem törzse  
  A HTTP-specifikációnak megfelelően a GET műveletekhez nem tartozhatnak kérelem törzse, és a POST és PUT műveleteknek kérelem törzstel kell rendelkezniük. A TÖRLÉSi műveletek törzse nem kötelező a HTTP-ben.  
 
  Hacsak a művelet leírása másként nincs jelezve, a kérelem törzsének tartalomtípusa csak Application/JSON lehet, és tartalmaznia kell egy szerializált JSON-objektumot, amely a tartalomtípusnak felel meg.  
@@ -113,5 +113,5 @@ WWW-Authenticate: Bearer authorization="…", resource="…"
 
 -   engedélyezés: a OAuth2-engedélyezési szolgáltatás címe, amely a kérelem hozzáférési jogkivonatának beszerzésére használható.  
 
--   erőforrás: az engedélyezési kérelemben használni kívánt`https://vault.azure.net`erőforrás () neve.  
+-   erőforrás: az `https://vault.azure.net` engedélyezési kérelemben használni kívánt erőforrás () neve.  
 

@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: virtual-network
 author: asudbring
 ms.service: virtual-network
@@ -9,10 +9,10 @@ ms.date: 03/01/2020
 ms.author: allensu
 ms.custom: include file
 ms.openlocfilehash: 81db46b52c9b4fe800f2fbfeadad966995d66e12
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78244989"
 ---
 ## <a name="create-the-virtual-network"></a>A virtuális hálózat létrehozása
@@ -27,10 +27,10 @@ Ebben a szakaszban létre fog hozni egy virtuális hálózatot és alhálózatot
     |------------------|-----------------------------------------------------------------|
     | **Projekt részletei**  |                                                                 |
     | Előfizetés     | Válassza ki az Azure-előfizetését                                  |
-    | Erőforráscsoport   | Válassza az **új létrehozása**elemet, adja meg ** \<az erőforrás-csoport neve>nevet **, majd kattintson az OK gombra, vagy válasszon ki egy meglévő ** \<erőforráscsoport-nevet>** paraméterek alapján. |
+    | Erőforráscsoport   | Válassza az **új létrehozása**elemet, írja be **\<resource-group-name>** , majd kattintson az OK gombra, vagy válasszon ki egy meglévőt **\<resource-group-name>** paraméterek alapján. |
     | **Példány részletei** |                                                                 |
-    | Name (Név)             | Adja meg ** \<a virtuális hálózat neve>**                                    |
-    | Régió           | ** \<Régió kiválasztása – név>** |
+    | Name             | Be**\<virtual-network-name>**                                    |
+    | Régió           | Válassza**\<region-name>** |
 
 3. Válassza az **IP-címek** lapot, vagy válassza a **következő: IP-címek** gombot az oldal alján.
 
@@ -38,7 +38,7 @@ Ebben a szakaszban létre fog hozni egy virtuális hálózatot és alhálózatot
 
     | Beállítás            | Érték                      |
     |--------------------|----------------------------|
-    | IPv4-címterület | Adja meg ** \<az IPv4-címtartomány>** |
+    | IPv4-címterület | Be**\<IPv4-address-space>** |
 
 5. Az **alhálózat neve**alatt válassza ki az **alapértelmezett**szót.
 
@@ -46,11 +46,11 @@ Ebben a szakaszban létre fog hozni egy virtuális hálózatot és alhálózatot
 
     | Beállítás            | Érték                      |
     |--------------------|----------------------------|
-    | Alhálózat neve | Adja meg ** \<az alhálózat neve>** |
-    | Alhálózati címtartomány | Adja meg ** \<az alhálózat-címtartomány>**
+    | Alhálózat neve | Be**\<subnet-name>** |
+    | Alhálózati címtartomány | Be**\<subnet-address-range>**
 
 7. Kattintson a **Mentés** gombra.
 
 8. Válassza a **felülvizsgálat + létrehozás** lapot, vagy kattintson a **felülvizsgálat + létrehozás** gombra.
 
-9. Kattintson a **Létrehozás** gombra.
+9. Válassza a **Létrehozás** lehetőséget.

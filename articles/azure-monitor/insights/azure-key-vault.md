@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/27/2019
 ms.openlocfilehash: 7da2fa2ddfbd9c71563dd8bd2e17b14c6dee62b3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81455444"
 ---
 # <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Azure Key Vault elemzési megoldás a Azure Monitor
@@ -50,7 +50,7 @@ A Azure Key Vault megoldás telepítéséhez és konfigurálásához kövesse az
 8. A *Mentés* gombra kattintva engedélyezheti a diagnosztika naplózását log Analytics munkaterületre.
 
 ### <a name="enable-key-vault-diagnostics-using-powershell"></a>Key Vault diagnosztika engedélyezése a PowerShell használatával
-A következő PowerShell-parancsfájl egy példát `Set-AzDiagnosticSetting` mutat be a Key Vault erőforrás-naplózásának engedélyezésére:
+A következő PowerShell-parancsfájl egy példát mutat be a `Set-AzDiagnosticSetting` Key Vault erőforrás-naplózásának engedélyezésére:
 ```
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
 
@@ -132,10 +132,10 @@ A frissített megoldás használata:
 2. Engedélyezze a Azure Key Vault megoldást az [Solutions Gallery Azure monitor-megoldások hozzáadása](../../azure-monitor/insights/solutions.md) című témakörben ismertetett eljárás használatával.
 3. A mentett lekérdezések, irányítópultok vagy riasztások frissítése az új adattípus használatára
    + A típus a következőtől változik: AzureDiagnostics. A ResourceType használatával szűrheti Key Vault naplókat.
-   + A: `KeyVaults`helyett használja a`AzureDiagnostics | where ResourceType'=="VAULTS"`
+   + A: helyett `KeyVaults` használja a`AzureDiagnostics | where ResourceType'=="VAULTS"`
    + Mezők: (a mezők nevei megkülönböztetik a kis-és nagybetűket)
-   + Minden olyan mezőnél, amely a névben \_s \_, d vagy \_g utótaggal rendelkezik, módosítsa az első karaktert a kisbetű értékre.
-   + Minden olyan mezőnél, amelynél a \_név utótagja szerepel, az adat a beágyazott mezők nevei alapján egyedi mezőkbe van bontva. A hívó egyszerű felhasználóneve például egy mezőben tárolódik.`identity_claim_http_schemas_xmlsoap_org_ws_2005_05_identity_claims_upn_s`
+   + Minden olyan mezőnél, amely \_ \_ a névben s, d vagy g utótaggal rendelkezik \_ , módosítsa az első karaktert a kisbetű értékre.
+   + Minden olyan mezőnél, amelynél a \_ név utótagja szerepel, az adat a beágyazott mezők nevei alapján egyedi mezőkbe van bontva. A hívó egyszerű felhasználóneve például egy mezőben tárolódik.`identity_claim_http_schemas_xmlsoap_org_ws_2005_05_identity_claims_upn_s`
    + A mező CallerIpAddress CallerIPAddress módosult
    + A RemoteIPCountry mező már nem létezik
 4. Távolítsa el a *Key Vault Analytics (elavult)* megoldást. Ha a PowerShellt használja, használja a`Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "KeyVault" -Enabled $false`

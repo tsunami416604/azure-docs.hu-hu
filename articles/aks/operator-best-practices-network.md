@@ -6,10 +6,10 @@ services: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
 ms.openlocfilehash: 560a832821f5e5ff2fbbc2d66252945951d69511
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82208057"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Hálózati kapcsolatra és biztonságra vonatkozó ajánlott eljárások az Azure Kubernetes Service-ben (AKS)
@@ -71,7 +71,7 @@ Az Azure Load Balancer az ügyfelek adatforgalmát az AK-fürtben lévő alkalma
  * Egy bejövő *erőforrás*, és
  * Bejövő *adatkezelő*
 
-A bejövő erőforrás egy YAML-jegyzék, `kind: Ingress` amely meghatározza a gazdagépet, a tanúsítványokat és a szabályokat, amelyekkel átirányíthatja a FORGALMAT az AK-fürtön futó szolgáltatásokra. Az alábbi példa YAML-jegyzék a *MyApp.com* forgalmát a két szolgáltatás, a *blogservice* vagy a *storeservice*egyikére terjeszti. Az ügyfél egy szolgáltatásra vagy a másikra irányítja az általuk elért URL-cím alapján.
+A bejövő erőforrás egy YAML-jegyzék, `kind: Ingress` amely meghatározza a gazdagépet, a tanúsítványokat és a szabályokat, amelyekkel átirányíthatja a forgalmat az AK-fürtön futó szolgáltatásokra. Az alábbi példa YAML-jegyzék a *MyApp.com* forgalmát a két szolgáltatás, a *blogservice* vagy a *storeservice*egyikére terjeszti. Az ügyfél egy szolgáltatásra vagy a másikra irányítja az általuk elért URL-cím alapján.
 
 ```yaml
 kind: Ingress

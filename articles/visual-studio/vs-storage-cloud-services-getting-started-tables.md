@@ -14,10 +14,10 @@ ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 5c42d65b5e2c46fcdbe1b0725f2ebce881722db3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72299989"
 ---
 # <a name="getting-started-with-azure-table-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Ismerkedés az Azure Table Storage-hez és a Visual Studióhoz kapcsolódó szolgáltatásokkal (felhőszolgáltatás-projektek)
@@ -28,7 +28,7 @@ Ez a cikk azt ismerteti, hogyan kezdheti el az Azure Table Storage használatát
 
 Az Azure Table Storage szolgáltatás lehetővé teszi nagy mennyiségű strukturált adattárolás tárolását. A szolgáltatás egy NoSQL-adattár, amely az Azure-felhőn belüli és kívüli hitelesített hívásokat fogadja el. Az Azure-táblák strukturált, nem relációs adatok tárolására alkalmasak.
 
-A kezdéshez először létre kell hoznia egy táblát a Storage-fiókban. Bemutatjuk, hogyan hozhat létre egy Azure-táblázatot a kódban, valamint hogyan végezhet el alapszintű táblákat és entitásokkal kapcsolatos műveleteket, például tábla entitások hozzáadását, módosítását, olvasását és olvasását. A minták C\# kódban vannak megírva, és a [.net-hez készült Microsoft Azure Storage ügyféloldali kódtárat](https://msdn.microsoft.com/library/azure/dn261237.aspx)használják.
+A kezdéshez először létre kell hoznia egy táblát a Storage-fiókban. Bemutatjuk, hogyan hozhat létre egy Azure-táblázatot a kódban, valamint hogyan végezhet el alapszintű táblákat és entitásokkal kapcsolatos műveleteket, például tábla entitások hozzáadását, módosítását, olvasását és olvasását. A minták C kódban vannak megírva \# , és a [.net-hez készült Microsoft Azure Storage ügyféloldali kódtárat](https://msdn.microsoft.com/library/azure/dn261237.aspx)használják.
 
 **Megjegyzés:** Az Azure Storage-hívásokat végrehajtó API-k némelyike aszinkron módon történik. Lásd: [aszinkron programozás aszinkron módon, és](https://msdn.microsoft.com/library/hh191443.aspx) további információra számíthat. Az alábbi kód az aszinkron programozási módszerek használatát feltételezi.
 
@@ -89,7 +89,7 @@ Ha hozzá szeretne adni egy entitást egy táblához, hozzon létre egy osztály
         public string PhoneNumber { get; set; }
     }
 
-Az entitásokat érintő tábla-műveletek a korábban a "hozzáférési táblázatok a kódban" című részében létrehozott **CloudTable** objektum használatával hajthatók végre. A **TableOperation** objektum a végrehajtani kívánt műveletet jelöli. A következő mintakód bemutatja, hogyan hozhat létre egy **CloudTable** objektumot és egy **CustomerEntity** objektumot. A művelet előkészítéséhez létrejön egy **TableOperation** , amely beszúrja az ügyfél entitást a táblába. Végül a műveletet a **CloudTable. ExecuteAsync**meghívásával hajtja végre.
+Az entitásokat érintő tábla-műveletek a korábban a "hozzáférési táblázatok a kódban" című részében létrehozott **CloudTable** objektum használatával hajthatók végre. A **TableOperation** objektum a végrehajtani kívánt műveletet jelöli. A következő mintakód bemutatja, hogyan hozhat létre egy **CloudTable** objektumot és egy **CustomerEntity** objektumot. A művelet előkészítéséhez létrejön egy **TableOperation** , amely beszúrja az ügyfél entitást a táblába. Végezetül **CloudTable.ExecuteAsync**meghívásával hajtja végre a műveletet.
 
     // Create a new customer entity.
     CustomerEntity customer1 = new CustomerEntity("Harp", "Walter");
@@ -104,7 +104,7 @@ Az entitásokat érintő tábla-műveletek a korábban a "hozzáférési táblá
 
 
 ## <a name="insert-a-batch-of-entities"></a>Entitásköteg beszúrása
-Egyetlen írási művelettel több entitást is beszúrhat egy táblába. A következő mintakód két entitást hoz létre ("Jeff Smith" és "ben Smith"), hozzáadja őket egy **tablebatchoperation művelethez** objektumhoz az Insert metódus használatával, majd elindítja a műveletet a **CloudTable. ExecuteBatchAsync**hívásával.
+Egyetlen írási művelettel több entitást is beszúrhat egy táblába. A következő mintakód két entitást hoz létre ("Jeff Smith" és "ben Smith"), hozzáadja őket egy **tablebatchoperation művelethez** objektumhoz az Insert metódus használatával, majd elindítja a műveletet **CloudTable.ExecuteBatchAsync**meghívásával.
 
     // Create the batch operation.
     TableBatchOperation batchOperation = new TableBatchOperation();

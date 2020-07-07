@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
 ms.openlocfilehash: eb7e891c031be5ac01295905d5c3304dc6818737
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80478963"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>A fizikai kiszolgáló vész-helyreállítási konfigurációs kiszolgálójának kezelése
@@ -47,7 +47,7 @@ A táblázat összefoglalja a helyszíni konfigurációs kiszolgáló számító
 A konfigurációs kiszolgáló telepítési fájljának legújabb verziója a Site Recovery portálon érhető el. Emellett közvetlenül a [Microsoft letöltőközpontból](https://aka.ms/unifiedsetup)is letölthető.
 
 1. Jelentkezzen be a Azure Portalba, és keresse meg a Recovery Services-tárolót.
-2. Keresse meg **site Recovery infrastruktúra** > -**konfigurációs kiszolgálókat** (a VMware & fizikai gépeknél).
+2. Keresse meg **site Recovery infrastruktúra**  >  -**konfigurációs kiszolgálókat** (a VMware & fizikai gépeknél).
 3. Kattintson a **+ kiszolgálók** gombra.
 4. A **kiszolgáló hozzáadása** lapon kattintson a letöltés gombra a regisztrációs kulcs letöltéséhez. Erre a kulcsra szüksége lesz a konfigurációs kiszolgáló telepítése során a Azure Site Recovery szolgáltatásban való regisztráláshoz.
 5. A konfigurációs kiszolgáló legújabb verziójának letöltéséhez kattintson a **Microsoft Azure site Recovery egyesített telepítő** hivatkozására.
@@ -87,7 +87,7 @@ A konfigurációs kiszolgáló telepítési fájljának legújabb verziója a Si
 11. Az **Összefoglalás** területen ellenőrizze az adatokat, majd kattintson a **Telepítés** gombra. A telepítés után a rendszer létrehoz egy hozzáférési kódot. Erre szüksége lesz, amikor engedélyezi a replikálást, ezért másolja le, és tárolja biztonságos helyen.
 
 
-A regisztráció befejeződése után a kiszolgáló megjelenik a tároló **Beállítások** > **kiszolgálók** paneljén.
+A regisztráció befejeződése után a kiszolgáló megjelenik a tároló **Beállítások**  >  **kiszolgálók** paneljén.
 
 
 ## <a name="install-from-the-command-line"></a>Telepítés parancssorból
@@ -118,12 +118,12 @@ Futtassa a telepítőfájlt a következőképpen:
 |/PSIP|Kötelező|A replikációs adatátvitelhez használni kívánt hálózati adapter IP-címe| Bármilyen érvényes IP-cím|
 |/CSIP|Kötelező|Annak a hálózati adapternek az IP-címe, amelyen a konfigurációs kiszolgáló figyel| Bármilyen érvényes IP-cím|
 |/PassphraseFilePath|Kötelező|A jelszófájl teljes elérési útja|Érvényes fájlelérési út|
-|/BypassProxy|Optional|Megadja, hogy a konfigurációs kiszolgáló proxy nélkül csatlakozik az Azure-hoz.|Az érték beszerzése innen: Venu|
-|/ProxySettingsFilePath|Optional|Proxybeállítások (Az alapértelmezett proxyhoz hitelesítés vagy egyéni proxy szükséges).|A fájlnak az alább megadott formátumúnak kell lennie|
-|DataTransferSecurePort|Optional|Az adatreplikációhoz használni kívánt PSIP-port száma| Érvényes portszám (az alapértelmezett érték 9433)|
-|/SkipSpaceCheck|Optional|Gyorsítótárlemez terület-ellenőrzésének kihagyása| |
+|/BypassProxy|Választható|Megadja, hogy a konfigurációs kiszolgáló proxy nélkül csatlakozik az Azure-hoz.|Az érték beszerzése innen: Venu|
+|/ProxySettingsFilePath|Választható|Proxybeállítások (Az alapértelmezett proxyhoz hitelesítés vagy egyéni proxy szükséges).|A fájlnak az alább megadott formátumúnak kell lennie|
+|DataTransferSecurePort|Választható|Az adatreplikációhoz használni kívánt PSIP-port száma| Érvényes portszám (az alapértelmezett érték 9433)|
+|/SkipSpaceCheck|Választható|Gyorsítótárlemez terület-ellenőrzésének kihagyása| |
 |/AcceptThirdpartyEULA|Kötelező|Ez a jelölő a külső féltől származó végfelhasználói licencszerződés elfogadását jelzi| |
-|/ShowThirdpartyEULA|Optional|Külső felektől származó végfelhasználói licenszszerződés megjelenítése. Bemenetként való megadása esetén figyelmen kívül hagyja a többi paramétert.| |
+|/ShowThirdpartyEULA|Választható|Külső felektől származó végfelhasználói licenszszerződés megjelenítése. Bemenetként való megadása esetén figyelmen kívül hagyja a többi paramétert.| |
 
 
 
@@ -151,7 +151,7 @@ ProxyPassword="Password"
 A konfigurációs kiszolgáló számítógép proxybeállításait a következőképpen módosíthatja:
 
 1. Jelentkezzen be a konfigurációs kiszolgálóra.
-2. Indítsa el a cspsconfigtool. exe fájlt az asztalán található parancsikon használatával.
+2. Indítsa el a cspsconfigtool.exet az asztalon található parancsikon használatával.
 3. Kattintson a tároló **regisztrációja** fülre.
 4. Töltsön le egy új adattár-regisztrációs fájlt a portálról, és adja meg az eszközt bemenetként.
 
@@ -172,7 +172,7 @@ A konfigurációs kiszolgáló számítógép proxybeállításait a következő
 
 ## <a name="reregister-a-configuration-server-with-the-same-vault"></a>Konfigurációs kiszolgáló újraregisztrálása ugyanazzal a tárolóval
 1. Jelentkezzen be a konfigurációs kiszolgálóra.
-2. Indítsa el a cspsconfigtool. exe fájlt az asztalán található parancsikon használatával.
+2. Indítsa el a cspsconfigtool.exet az asztalon található parancsikon használatával.
 3. Kattintson a tároló **regisztrációja** fülre.
 4. Töltsön le egy új regisztrációs fájlt a portálról, és adja meg az eszközt bemenetként.
       ![regisztráció – konfigurációs kiszolgáló](./media/physical-manage-configuration-server/register-csconfiguration-server.png)
@@ -202,7 +202,7 @@ A konfigurációs kiszolgáló számítógép proxybeállításait a következő
     reg delete HKLM\Software\Microsoft\Azure Site Recovery\Registration
     net stop dra
     ```
-3. Indítsa el a cspsconfigtool. exe fájlt az asztalán található parancsikon használatával.
+3. Indítsa el a cspsconfigtool.exet az asztalon található parancsikon használatával.
 4. Kattintson a tároló **regisztrációja** fülre.
 5. Töltsön le egy új regisztrációs fájlt a portálról, és adja meg az eszközt bemenetként.
 6. Adja meg a proxykiszolgáló adatait, és kattintson a **regisztrálás** gombra.  
@@ -242,7 +242,7 @@ A kiszolgálót a következőképpen frissítheti:
 
 
 ### <a name="delete-the-configuration-server-from-azure-portal"></a>A konfigurációs kiszolgáló törlése Azure Portal
-1. Azure Portal a tároló menüjében keresse meg **site Recovery infrastruktúra** > -**konfigurációs kiszolgálók** elemet.
+1. Azure Portal a tároló menüjében keresse meg **site Recovery infrastruktúra**-  >  **konfigurációs kiszolgálók** elemet.
 2. Kattintson a leszerelni kívánt konfigurációs kiszolgálóra.
 3. A konfigurációs kiszolgáló részletei lapon kattintson a **Törlés** gombra.
 4. A kiszolgáló törlésének megerősítéséhez kattintson az **Igen** gombra.
@@ -303,7 +303,7 @@ A konfigurációs kiszolgálóknak a 2016. május előtt történő központi te
 
 ### <a name="renew-the-certificate"></a>A tanúsítvány megújítása
 
-1. A tárolóban nyissa meg **site Recovery infrastruktúra** > -**konfigurációs kiszolgálót**, és kattintson a szükséges konfigurációs kiszolgálóra.
+1. A tárolóban nyissa meg **site Recovery infrastruktúra**-  >  **konfigurációs kiszolgálót**, és kattintson a szükséges konfigurációs kiszolgálóra.
 2. A lejárati dátum a **konfigurációs kiszolgáló állapota** területen jelenik meg
 3. Kattintson a **tanúsítványok megújítása**elemre. 
 

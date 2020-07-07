@@ -1,9 +1,8 @@
 ---
-title: Azure Resource Manager-sablonok
-titleSuffix: Azure SQL Database & SQL Managed Instance
+title: Azure Resource Manager sablonok – Azure SQL Database & SQL felügyelt példánya
 description: Azure SQL Database és az Azure SQL felügyelt példányának létrehozásához és konfigurálásához használjon Azure Resource Manager sablonokat.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: service
 ms.custom: overview-samples sqldbrb=2
 ms.devlang: ''
@@ -12,23 +11,23 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 02/04/2019
-ms.openlocfilehash: 76b9b1301a0aeee24b698b15a3871754de8ca0b9
-ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
+ms.openlocfilehash: ee2c6580285246d3b170602e507aed038b2507f4
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84718801"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85983638"
 ---
 # <a name="azure-resource-manager-templates-for-azure-sql-database--sql-managed-instance"></a>Azure SQL Database & SQL felügyelt példányának Azure Resource Manager sablonjai
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Azure Resource Manager-sablonok lehetővé teszik az infrastruktúra kódként való definiálását és a megoldások üzembe helyezését az Azure-felhőben Azure SQL Database és az Azure SQL felügyelt példányain.
+Az Azure Resource Manager-sablonok lehetővé teszik az infrastruktúra kódként történő meghatározását és a megoldások üzembe helyezését az Azure-felhőben az Azure SQL Database és a felügyelt Azure SQL-példány esetében.
 
 ## <a name="azure-sql-database"></a>[Azure SQL Database](#tab/single-database)
 
 Az alábbi táblázat a Azure SQL Database Azure Resource Manager sablonjaira mutató hivatkozásokat tartalmaz.
 
-| |  |
+|Hivatkozás |Leírás|
 |---|---|
 | [SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-database-transparent-encryption-create) | Ez a Azure Resource Manager sablon egyetlen adatbázist hoz létre a Azure SQL Databaseban, és konfigurálja a kiszolgálói szintű IP-tűzfalszabályok beállításait. |
 | [Kiszolgáló](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-logical-server) | Ez a Azure Resource Manager-sablon létrehoz egy kiszolgálót a Azure SQL Databasehoz. |
@@ -47,7 +46,7 @@ Az alábbi táblázat a Azure SQL Database Azure Resource Manager sablonjaira mu
 
 A következő táblázat hivatkozásokat tartalmaz az Azure SQL felügyelt példányának Azure Resource Manager sablonjaira.
 
-| |  |
+|Hivatkozás|Leírás|
 |---|---|
 | [SQL felügyelt példány egy új VNet](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sqlmi-new-vnet) | Ez a Azure Resource Manager sablon létrehoz egy új, konfigurált Azure-beli virtuális hálózatot és felügyelt példányt a virtuális hálózaton. |
 | [Az SQL felügyelt példányának hálózati környezete](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment) | Ez a központi telepítés létrehoz egy konfigurált Azure-beli virtuális hálózatot két alhálózattal, amelyek közül az egyik a felügyelt példányokhoz lesz hozzárendelve, és egy másik, ahol más erőforrásokat (például virtuális gépeket, App Service környezeteket stb.) helyezhet el. Ez a sablon egy megfelelően konfigurált hálózati környezetet hoz létre, ahol felügyelt példányokat helyezhet üzembe. |

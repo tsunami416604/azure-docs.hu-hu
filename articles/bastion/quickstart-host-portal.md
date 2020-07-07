@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.date: 03/11/2020
 ms.author: charwen
 ms.openlocfilehash: 3c2780c8c99fd4568a7213b625ce785d3a99129c
-ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84743983"
 ---
 # <a name="quickstart-connect-to-a-virtual-machine-using-a-private-ip-address-and-azure-bastion"></a>Gyors útmutató: Kapcsolódás virtuális géphez magánhálózati IP-cím és Azure-alapú megerősített kapcsolat használatával
@@ -41,7 +41,7 @@ Ez a rövid útmutató bemutatja, hogyan csatlakozhat egy virtuális géphez egy
 
 Amikor egy meglévő virtuális gép használatával hoz létre egy megerősített gazdagépet a portálon, a különböző beállítások automatikusan megegyeznek a virtuális géppel és/vagy a virtuális hálózattal.
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com). Nyissa meg a virtuális gépet, majd kattintson a **Kapcsolódás**elemre.
+1. Nyissa meg a [Azure Portal](https://portal.azure.com). Nyissa meg a virtuális gépet, majd kattintson a **Kapcsolódás**elemre.
 
    ![virtuális gép beállításai](./media/quickstart-host-portal/vm-settings.png)
 1. A legördülő listából válassza a **Bastion**lehetőséget.

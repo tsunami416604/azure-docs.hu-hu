@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 04/30/2020
 ms.author: apimpm
 ms.openlocfilehash: dd49680da6f52e32ddb52dbdb23ad5e8f627a91e
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82205065"
 ---
 # <a name="configure-local-metrics-and-logs-for-azure-api-management-self-hosted-gateway"></a>Helyi mérőszámok és naplók konfigurálása az Azure API Management saját üzemeltetésű átjáróhoz
@@ -122,7 +122,7 @@ spec:
     app: sputnik-metrics
 ```
 
-Mentse a konfigurációkat egy nevű `metrics.yaml` fájlba, és az alábbi parancs használatával végezze el az összes beállítását a fürtön:
+Mentse a konfigurációkat egy nevű fájlba `metrics.yaml` , és az alábbi parancs használatával végezze el az összes beállítását a fürtön:
 
 ```console
 kubectl apply -f metrics.yaml
@@ -136,7 +136,7 @@ NAME                                   READY   STATUS    RESTARTS   AGE
 sputnik-metrics-f6d97548f-4xnb7        2/2     Running   0          1m
 ```
 
-Futtassa az alábbi parancsot, és győződjön meg arról, hogy a szolgáltatások futnak. Jegyezze fel a statisztikát `CLUSTER-IP` és `PORT` a statisztikailag felhasználható szolgáltatást, később szükség lesz rá. A Prometheus-irányítópultot a és `EXTERNAL-IP` `PORT`a használatával érheti el.
+Futtassa az alábbi parancsot, és győződjön meg arról, hogy a szolgáltatások futnak. Jegyezze fel a `CLUSTER-IP` statisztikát és a statisztikailag felhasználható `PORT` szolgáltatást, később szükség lesz rá. A Prometheus-irányítópultot a és a használatával érheti el `EXTERNAL-IP` `PORT` .
 
 ```console
 kubectl get services
@@ -151,10 +151,10 @@ Most, hogy mind a statd, mind a Prometheus üzembe lett helyezve, frissítjük a
 
 | Mező  | Alapértelmezett | Leírás |
 | ------------- | ------------- | ------------- |
-| telemetria. Metrics. local  | `none` | Lehetővé teszi a naplózást a statisztikán keresztül. Az érték lehet `none` `statsd`. |
-| telemetria. mérőszámok. local. statd. Endpoint  | n/a | A statisztikai végpontot határozza meg. |
-| telemetria. mérőszámok. local. destatd. mintavételezés  | n/a | Meghatározza a metrikák mintavételezési sebességét. Az érték lehet 0 és 1. emelkedés pl`0.5`|
-| telemetria. mérőszámok. local. statd. tag – Format  | n/a | A statisztikailag kimutatott exportőr [címkézési formátuma](https://github.com/prometheus/statsd_exporter#tagging-extensions). Az érték lehet `none` `librato`:, `dogStatsD`, `influxDB`,. |
+| telemetria. Metrics. local  | `none` | Lehetővé teszi a naplózást a statisztikán keresztül. Az érték lehet `none` `statsd` . |
+| telemetria. mérőszámok. local. statd. Endpoint  | n.a. | A statisztikai végpontot határozza meg. |
+| telemetria. mérőszámok. local. destatd. mintavételezés  | n.a. | Meghatározza a metrikák mintavételezési sebességét. Az érték lehet 0 és 1. emelkedés pl`0.5`|
+| telemetria. mérőszámok. local. statd. tag – Format  | n.a. | A statisztikailag kimutatott exportőr [címkézési formátuma](https://github.com/prometheus/statsd_exporter#tagging-extensions). Az érték lehet:,, `none` `librato` `dogStatsD` , `influxDB` . |
 
 Íme egy példa konfiguráció:
 
@@ -185,11 +185,11 @@ kubectl rollout restart deployment/<deployment-name>
 
 ### <a name="view-the-metrics"></a>A metrikák megtekintése
 
-Most már mindent üzembe helyezett és konfigurált, a saját üzemeltetésű átjárónak statisztikán keresztül kell jelentenie a metrikákat. A Prometheus felveszi a mérőszámokat a statisztikából. Nyissa meg a Prometheus `EXTERNAL-IP` -irányítópultot `PORT` a és a Prometheus szolgáltatás használatával. 
+Most már mindent üzembe helyezett és konfigurált, a saját üzemeltetésű átjárónak statisztikán keresztül kell jelentenie a metrikákat. A Prometheus felveszi a mérőszámokat a statisztikából. Nyissa meg a Prometheus-irányítópultot a `EXTERNAL-IP` és a `PORT` Prometheus szolgáltatás használatával. 
 
 Hajtson végre néhány API-hívást a saját üzemeltetésű átjárón keresztül, ha minden megfelelően van konfigurálva, a következő metrikákat kell megtekinteni:
 
-| Metrika  | Leírás |
+| Metric  | Leírás |
 | ------------- | ------------- |
 | Kérelmek  | API-kérelmek száma az adott időszakban |
 | DurationInMS | A kérelem átjáróhoz való megérkezése és a teljes válasz elküldése között eltelt ezredmásodpercek száma |
@@ -198,25 +198,25 @@ Hajtson végre néhány API-hívást a saját üzemeltetésű átjárón kereszt
 
 ## <a name="logs"></a>Naplók
 
-A saját üzemeltetésű átjáró alapértelmezés szerint a és `stdout` `stderr` a naplókat is megjeleníti. A naplók egyszerűen megtekinthetők a következő parancs használatával:
+A saját üzemeltetésű átjáró alapértelmezés szerint a és a naplókat is megjeleníti `stdout` `stderr` . A naplók egyszerűen megtekinthetők a következő parancs használatával:
 
 ```console
 kubectl logs <pod-name>
 ```
 
-Ha a saját üzemeltetésű átjáró üzembe helyezése az Azure Kubernetes szolgáltatásban történik, engedélyezheti [Azure monitor a tárolók](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview) számára `stderr` a számítási feladatokhoz és a munkaterhelések összegyűjtéséhez `stdout` , valamint a naplófájlok megtekintéséhez log Analytics. 
+Ha a saját üzemeltetésű átjáró üzembe helyezése az Azure Kubernetes szolgáltatásban történik, engedélyezheti [Azure monitor a tárolók](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview) számára a számítási `stdout` `stderr` feladatokhoz és a munkaterhelések összegyűjtéséhez, valamint a naplófájlok megtekintéséhez log Analytics. 
 
-A saját üzemeltetésű átjáró számos protokollt is támogat, `localsyslog` `rfc5424`például:, és. `journal` Az alábbi táblázat összefoglalja az összes támogatott lehetőséget. 
+A saját üzemeltetésű átjáró számos protokollt is támogat, például: `localsyslog` , `rfc5424` és `journal` . Az alábbi táblázat összefoglalja az összes támogatott lehetőséget. 
 
 | Mező  | Alapértelmezett | Leírás |
 | ------------- | ------------- | ------------- |
-| telemetria. logs. STD  | `text` | Engedélyezi a naplózást a standard streamek számára. Az érték lehet `none`, `text`,`json` |
-| telemetria. logs. local  | `none` | Engedélyezi a helyi naplózást. Az érték lehet `none`a `auto`, `localsyslog`, `rfc5424`,,`journal`  |
-| telemetria. logs. local. localsyslog. Endpoint  | n/a | Megadja a localsyslog-végpontot.  |
-| telemetria. logs. local. localsyslog. Facility  | n/a | Meghatározza a [localsyslog.](https://en.wikipedia.org/wiki/Syslog#Facility) emelkedés pl`7` 
-| telemetria. logs. local. rfc5424. Endpoint  | n/a | Megadja a rfc5424-végpontot.  |
-| telemetria. logs. local. rfc5424. Facility  | n/a | Meghatározza a létesítmény kódját [rfc5424](https://tools.ietf.org/html/rfc5424). emelkedés pl`7`  |
-| telemetria. logs. local. Journal. Endpoint  | n/a | Megadja a napló végpontját.  |
+| telemetria. logs. STD  | `text` | Engedélyezi a naplózást a standard streamek számára. Az érték lehet `none` , `text` ,`json` |
+| telemetria. logs. local  | `none` | Engedélyezi a helyi naplózást. Az érték lehet `none` a,, `auto` `localsyslog` , `rfc5424` ,`journal`  |
+| telemetria. logs. local. localsyslog. Endpoint  | n.a. | Megadja a localsyslog-végpontot.  |
+| telemetria. logs. local. localsyslog. Facility  | n.a. | Meghatározza a [localsyslog.](https://en.wikipedia.org/wiki/Syslog#Facility) emelkedés pl`7` 
+| telemetria. logs. local. rfc5424. Endpoint  | n.a. | Megadja a rfc5424-végpontot.  |
+| telemetria. logs. local. rfc5424. Facility  | n.a. | Meghatározza a létesítmény kódját [rfc5424](https://tools.ietf.org/html/rfc5424). emelkedés pl`7`  |
+| telemetria. logs. local. Journal. Endpoint  | n.a. | Megadja a napló végpontját.  |
 
 Példa a helyi naplózási konfigurációra:
 

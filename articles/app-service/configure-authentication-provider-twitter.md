@@ -8,10 +8,10 @@ ms.custom:
 - seodec18
 - fasttrack-edit
 ms.openlocfilehash: 11c913b12b4dcb7d2a5ffa532064b347b82904ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80519911"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-twitter-login"></a>A App Service vagy Azure Functions alkalmazás konfigurálása a Twitter-bejelentkezés használatára
@@ -26,7 +26,7 @@ A cikkben ismertetett eljárás végrehajtásához olyan Twitter-fiókra van sz�
 
 1. Jelentkezzen be a [Azure Portalba] , és lépjen az alkalmazáshoz. Másolja az **URL-címet**. Ezt fogja használni a Twitter-alkalmazás konfigurálásához.
 1. Lépjen a [Twitter-fejlesztők] webhelyére, jelentkezzen be a Twitter-fiókja hitelesítő adataival, és válassza az **alkalmazás létrehozása**lehetőséget.
-1. Adja meg az alkalmazás **nevét** és **leírását** az új alkalmazáshoz. Illessze be az alkalmazás **URL-címét** a **webhely URL-** címe mezőbe. A **visszahívási URL-címek** szakaszban adja meg app Service alkalmazásának HTTPS URL-címét, `/.auth/login/twitter/callback`és fűzze hozzá az elérési utat. Például: `https://contoso.azurewebsites.net/.auth/login/twitter/callback`.
+1. Adja meg az alkalmazás **nevét** és **leírását** az új alkalmazáshoz. Illessze be az alkalmazás **URL-címét** a **webhely URL-** címe mezőbe. A **visszahívási URL-címek** szakaszban adja meg app Service alkalmazásának HTTPS URL-címét, és fűzze hozzá az elérési utat `/.auth/login/twitter/callback` . Például: `https://contoso.azurewebsites.net/.auth/login/twitter/callback`.
 1. A lap alján írja be a legalább 100 karaktert a **mondja el, hogyan használja ezt az alkalmazást**, majd válassza a **Létrehozás**lehetőséget. Az előugró ablakban kattintson az újbóli **Létrehozás** gombra. Megjelenik az alkalmazás részletei.
 1. Válassza a **kulcsok és hozzáférési tokenek** fület.
 
@@ -40,10 +40,10 @@ A cikkben ismertetett eljárás végrehajtásához olyan Twitter-fiókra van sz�
 ## <a name="add-twitter-information-to-your-application"></a><a name="secrets"> </a>Twitter-információk hozzáadása az alkalmazáshoz
 
 1. Nyissa meg az alkalmazást a [Azure Portalban].
-1. Válassza a **Beállítások** > **hitelesítés/engedélyezés**lehetőséget, és győződjön meg arról, hogy a **app Service hitelesítés** **be van kapcsolva**.
+1. Válassza a **Beállítások**  >  **hitelesítés/engedélyezés**lehetőséget, és győződjön meg arról, hogy a **app Service hitelesítés** **be van kapcsolva**.
 1. Válassza a **Twitter**lehetőséget.
-1. Illessze be a `API key` korábban `API secret key` beszerzett értékeket.
-1. Kattintson az **OK** gombra.
+1. Illessze be a `API key` `API secret key` korábban beszerzett értékeket.
+1. Válassza az **OK** lehetőséget.
 
    ![Képernyőkép a Mobile App Twitter-beállításairól][1]
 
@@ -71,5 +71,5 @@ Most már készen áll a Twitter használatára a hitelesítéshez az alkalmazá
 
 [Twitter-fejlesztők]: https://go.microsoft.com/fwlink/p/?LinkId=268300
 [twitter.com]: https://go.microsoft.com/fwlink/p/?LinkID=268287
-[Azure Portal]: https://portal.azure.com/
+[Azure Portalra]: https://portal.azure.com/
 [xamarin]: ../app-services-mobile-app-xamarin-ios-get-started-users.md

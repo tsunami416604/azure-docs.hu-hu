@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de9abcca8d5b02b58bd5d4550dcb100a90853f7f
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 5842d21f9fb35cd8fddc5521d630d597aedcc2ba
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85505970"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85983149"
 ---
 # <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>Oktatóanyag: a felhasználók számára lehetővé teszi a fiók zárolásának feloldását vagy a jelszavak alaphelyzetbe állítását Azure Active Directory önkiszolgáló jelszó-visszaállítás használatával
 
@@ -79,6 +79,7 @@ Ha a felhasználóknak fel kell oldaniuk a fiókját, vagy alaphelyzetbe kell á
     * *E-mail*
     * *Mobiltelefon*
     * *Irodai telefon*
+    * *Biztonsági kérdések*
 
 1. A hitelesítési módszerek alkalmazásához válassza a **Mentés**lehetőséget.
 
@@ -126,7 +127,7 @@ Ha a SSPR engedélyezve és konfigurálva van, tesztelje a SSPR folyamatot egy o
 
 1. A jelszó alaphelyzetbe állításához kövesse az ellenőrzési lépéseket. Ha elkészült, kapnia kell egy e-mailt arról, hogy a jelszó alaphelyzetbe állt.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ebben a sorozatban a következő oktatóanyagban konfigurálhatja a jelszó visszaírási. Ez a szolgáltatás az Azure AD-SSPR visszaadott jelszavakat egy helyszíni AD-környezetbe írja. Ha továbbra is ezt az oktatóanyag-sorozatot szeretné használni a jelszó-visszaírási konfigurálásához, ne tiltsa le a SSPR.
 

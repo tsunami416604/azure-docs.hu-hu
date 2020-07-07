@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: tomfitz
 ms.openlocfilehash: 5dc219747b9cc74b6c6aac8ab190ebfbe5ae9b32
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81458283"
 ---
 # <a name="access-key-vault-secret-when-deploying-azure-managed-applications"></a>Key Vault titok elérése Azure Managed Applications telepítésekor
@@ -36,7 +36,7 @@ Ez a cikk azt ismerteti, hogyan konfigurálható a Key Vault a felügyelt alkalm
 
 ## <a name="add-service-as-contributor"></a>Szolgáltatás hozzáadása közreműködőként
 
-1. Válassza a **hozzáférés-vezérlés (iam)** lehetőséget.
+1. Válassza a **Hozzáférés-vezérlés (IAM)** lehetőséget.
 
    ![Hozzáférés-vezérlés kiválasztása](./media/key-vault-access/access-control.png)
 

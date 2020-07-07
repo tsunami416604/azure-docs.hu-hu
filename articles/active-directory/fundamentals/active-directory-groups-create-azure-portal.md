@@ -14,10 +14,10 @@ ms.reviewer: krbain
 ms.custom: it-pro, seodec18, contperfq4
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e4539fe1d8f5fbfab8e73de3a9ac35baa154b142
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85604352"
 ---
 # <a name="create-a-basic-group-and-add-members-using-azure-active-directory"></a>Hozzon létre egy alapszintű csoportot, és vegyen fel tagokat Azure Active Directory használatával
@@ -63,7 +63,7 @@ Az alapszintű csoport létrehozása és a tagok felvétele történhet egyszerr
 
 1. Válasszon egy előre definiált **tagsági típust (kötelező).** A tagsági típusokkal kapcsolatos további információkért lásd: [csoport-és tagsági típusok](#membership-types).
 
-1. Kattintson a **Létrehozás** gombra. A csoport létrehozása megtörtént és készen áll a tagok hozzáadására.
+1. Válassza a **Létrehozás** lehetőséget. A csoport létrehozása megtörtént és készen áll a tagok hozzáadására.
 
 1. Válassza ki a **Tagok** területet a **Csoport** lapon, és utána kezdje el megkeresni a csoportba felvenni kívánt tagokat a **Tagok kiválasztása** lapon.
 
