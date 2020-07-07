@@ -8,10 +8,10 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 46bfab6935d08ac28ced7f392892ade6f68a0492
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79530852"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-vnet-service-endpoints-using-azure-cli"></a>Azure Database for MariaDB VNet-szolgáltatásbeli végpontok létrehozása és kezelése az Azure CLI-vel
@@ -57,7 +57,7 @@ A virtuális hálózatok és az Azure-szolgáltatási erőforrások tartozhatnak
 
 ### <a name="sample-script"></a>Példaszkript
 
-Ez a minta parancsfájl egy Azure Database for MariaDB kiszolgáló létrehozásához, egy VNet, egy VNet szolgáltatás végpontjának létrehozásához és a kiszolgáló VNet-szabállyal való biztonságossá tételéhez használható. A minta parancsfájlban módosítsa a rendszergazdai felhasználónevet és jelszót. Cserélje le a `az account set --subscription` parancsban használt SubscriptionID a saját előfizetés-azonosítójával.
+Ez a minta parancsfájl egy Azure Database for MariaDB kiszolgáló létrehozásához, egy VNet, egy VNet szolgáltatás végpontjának létrehozásához és a kiszolgáló VNet-szabállyal való biztonságossá tételéhez használható. A minta parancsfájlban módosítsa a rendszergazdai felhasználónevet és jelszót. Cserélje le a parancsban használt SubscriptionID a `az account set --subscription` saját előfizetés-azonosítójával.
 
 ```azurecli-interactive
 # To find the name of an Azure region in the CLI run this command: az account list-locations

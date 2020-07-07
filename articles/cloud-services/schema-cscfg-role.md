@@ -10,10 +10,10 @@ caps.latest.revision: 12
 author: tgore03
 ms.author: tagore
 ms.openlocfilehash: b64f9d27e382a39b132593502fed32c565af473a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79528421"
 ---
 # <a name="azure-cloud-services-config-role-schema"></a>Az Azure Cloud Services konfigurációjának szerepkör-sémája
@@ -39,20 +39,20 @@ Az alábbi példa az `Role` elemet és annak alárendelt elemeit mutatja be.
 </ServiceConfiguration>
 ```
 
-Az alábbi táblázat az `Role` elem attribútumait ismerteti.
+Az alábbi táblázat az elem attribútumait ismerteti `Role` .
 
 | Attribútum | Leírás |
 | --------- | ----------- |
-| név   | Kötelező. Megadja a szerepkör nevét. A névnek meg kell egyeznie a szolgáltatás definíciós fájljában szereplő szerepkörhöz megadott névvel.|
+| name   | Kötelező. Megadja a szerepkör nevét. A névnek meg kell egyeznie a szolgáltatás definíciós fájljában szereplő szerepkörhöz megadott névvel.|
 | vmName | Választható. Megadja a virtuális gép DNS-nevét. A névnek 10 karakternél rövidebbnek kell lennie.|
 
-Az alábbi táblázat az `Role` elem alárendelt elemeit ismerteti.
+Az alábbi táblázat az elem alárendelt elemeit ismerteti `Role` .
 
 | Elem | Leírás |
 | ------- | ----------- |
-| példányszám | Kötelező. A szerepkörhöz telepítendő példányok számát adja meg. A példányok számát az `count` attribútum egész szám határozza meg.|
-| Beállítás   | Választható. Megadja a beállítás nevét és értékét egy szerepkörhöz tartozó beállítások gyűjteményében. A beállítás nevét az `name` attribútum egy karakterlánca határozza meg, a beállítás értékét pedig egy karakterlánc adja meg az `value` attribútumhoz.|
-| Tanúsítvány | Választható. A szerepkörhöz társítandó szolgáltatás tanúsítványának nevét, ujjlenyomatát és algoritmusát adja meg. A tanúsítvány nevét az `name` attribútum egy karakterlánca határozza meg. A tanúsítvány ujjlenyomatát olyan hexadecimális számokból álló karakterlánc határozza meg, amely nem tartalmaz `thumbprint` szóközt az attribútumhoz. A hexadecimális számoknak számjegyek és nagybetűs alfanumerikus karakterek használatával kell szerepelniük. A tanúsítvány-algoritmust az `thumbprintAlgorithm` attribútum karakterlánca határozza meg.|
+| példányszám | Kötelező. A szerepkörhöz telepítendő példányok számát adja meg. A példányok számát az attribútum egész szám határozza meg `count` .|
+| Beállítás   | Választható. Megadja a beállítás nevét és értékét egy szerepkörhöz tartozó beállítások gyűjteményében. A beállítás nevét az attribútum egy karakterlánca határozza meg `name` , a beállítás értékét pedig egy karakterlánc adja meg az `value` attribútumhoz.|
+| Tanúsítvány | Választható. A szerepkörhöz társítandó szolgáltatás tanúsítványának nevét, ujjlenyomatát és algoritmusát adja meg. A tanúsítvány nevét az attribútum egy karakterlánca határozza meg `name` . A tanúsítvány ujjlenyomatát olyan hexadecimális számokból álló karakterlánc határozza meg, amely nem tartalmaz szóközt az `thumbprint` attribútumhoz. A hexadecimális számoknak számjegyek és nagybetűs alfanumerikus karakterek használatával kell szerepelniük. A tanúsítvány-algoritmust az attribútum karakterlánca határozza meg `thumbprintAlgorithm` .|
 
 ## <a name="see-also"></a>Lásd még:
 [Cloud Service (klasszikus) konfigurációs séma](schema-cscfg-file.md)
