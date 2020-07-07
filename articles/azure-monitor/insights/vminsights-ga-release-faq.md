@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 01/31/2020
 ms.openlocfilehash: df96ceb47bf33b734f2127bade50af18713a97a0
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82581363"
 ---
 # <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>Azure Monitor for VMs általánosan elérhető (GA) gyakran ismételt kérdések
@@ -44,17 +44,17 @@ Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName <resource-grou
 
 ## <a name="what-should-i-do-about-the-performance-counters-in-my-workspace-if-i-install-the-vminsights-solution"></a>Mi a teendő a saját munkaterület teljesítményszámlálói esetében, ha a VMInsights-megoldást telepítem?
 
-Az előző módszer, amely lehetővé teszi Azure Monitor for VMs használt teljesítményszámlálók használatát a munkaterületen. Az aktuális verzió egy nevű `InsightsMetrics`táblában tárolja ezeket az adattárakat. Dönthet úgy, hogy letiltja ezeket a teljesítményszámlálók a munkaterületen, ha már nincs szüksége rájuk. 
+Az előző módszer, amely lehetővé teszi Azure Monitor for VMs használt teljesítményszámlálók használatát a munkaterületen. Az aktuális verzió egy nevű táblában tárolja ezeket az adattárakat `InsightsMetrics` . Dönthet úgy, hogy letiltja ezeket a teljesítményszámlálók a munkaterületen, ha már nincs szüksége rájuk. 
 
 >[!NOTE]
->Ha vannak olyan riasztási szabályok, amelyek hivatkoznak ezekre `Perf` a számlálóra a táblában, frissítenie kell őket a `InsightsMetrics` táblázatban tárolt új adatértékekre való hivatkozáshoz. Tekintse meg a dokumentációt, például a táblázatra hivatkozó log-lekérdezéseket.
+>Ha vannak olyan riasztási szabályok, amelyek hivatkoznak ezekre a számlálóra a `Perf` táblában, frissítenie kell őket a táblázatban tárolt új adatértékekre való hivatkozáshoz `InsightsMetrics` . Tekintse meg a dokumentációt, például a táblázatra hivatkozó log-lekérdezéseket.
 >
 
-Ha úgy dönt, hogy a teljesítményszámlálók engedélyezve vannak, akkor a (z) [Log Analytics díjszabás [( `Perf` https://azure.microsoft.com/pricing/details/monitor/)) alapján a táblázatban betöltött és tárolt adatmennyiség után kell fizetnie.
+Ha úgy dönt, hogy a teljesítményszámlálók engedélyezve vannak, akkor a `Perf` (z) [log Analytics díjszabás [() alapján a táblázatban betöltött és tárolt adatmennyiség után kell fizetnie https://azure.microsoft.com/pricing/details/monitor/) .
 
 ## <a name="how-will-this-change-affect-my-alert-rules"></a>Hogyan befolyásolja ez a változás a riasztási szabályokat?
 
-Ha olyan [naplózási riasztásokat](../platform/alerts-unified-log.md) hozott létre, `Perf` amelyek a (z) munkaterületen engedélyezett teljesítményszámlálók célzási teljesítménymutatóit kérdezik le, akkor ezeket `InsightsMetrics` a szabályokat úgy kell frissíteni, hogy a táblázatra hivatkozzon. `ServiceMapComputer_CL` Ez az útmutató a és `ServiceMapProcess_CL`a használatával történő naplózási keresési szabályokra is vonatkozik, mivel ezek az `VMComputer` adathalmazok és `VMProcess` táblákra vannak áthelyezve.
+Ha olyan [naplózási riasztásokat](../platform/alerts-unified-log.md) hozott létre, amelyek a (z `Perf` ) munkaterületen engedélyezett teljesítményszámlálók célzási teljesítménymutatóit kérdezik le, akkor ezeket a szabályokat úgy kell frissíteni, hogy a `InsightsMetrics` táblázatra hivatkozzon. Ez az útmutató a és a használatával történő naplózási keresési szabályokra is vonatkozik `ServiceMapComputer_CL` `ServiceMapProcess_CL` , mivel ezek az adathalmazok `VMComputer` és táblákra vannak áthelyezve `VMProcess` .
 
 Frissíteni fogjuk ezt a GYIK-t és a dokumentációt, amely tartalmazza például a begyűjtött adathalmazokra vonatkozó naplóbeli keresési riasztási szabályokat.
 
@@ -62,31 +62,31 @@ Frissíteni fogjuk ezt a GYIK-t és a dokumentációt, amely tartalmazza példá
 
 A számlázás továbbra is a Log Analytics munkaterületen betöltött és megőrzött adatmennyiségen alapul.
 
-A begyűjtött gépi szintű teljesítményadatok azonos méretűek, mint a `Perf` táblázatban tárolt adatok, és körülbelül azonos mennyiségre lesznek számítva.
+A begyűjtött gépi szintű teljesítményadatok azonos méretűek, mint a táblázatban tárolt adatok, `Perf` és körülbelül azonos mennyiségre lesznek számítva.
 
 ## <a name="what-if-i-only-want-to-use-service-map"></a>Mi a teendő, ha csak a Service Map szeretném használni?
 
 Ez rendben van. A rendszer a közelgő frissítéssel kapcsolatos Azure Monitor for VMs megtekintésekor megjelenő utasításokat fogja látni a Azure Portalban. A kiadást követően az új verzióra való frissítést kérő üzenet jelenik meg. Ha inkább csak a [Maps](vminsights-maps.md) szolgáltatást szeretné használni, válassza a nem a frissítés lehetőséget, és folytassa a Azure monitor for VMS Maps szolgáltatás használatát, valamint a munkaterületről vagy az irányítópult csempéről elérhető Service Map megoldást.
 
-Ha úgy dönt, hogy manuálisan engedélyezte a teljesítményszámlálók számát a munkaterületen, akkor előfordulhat, hogy az adatok megtekinthetők a Azure Monitor alapján megtekintett teljesítmény-diagramokban. Az új megoldás kiadása után a rendszer frissíti a teljesítmény diagramokat a `InsightsMetrics` táblázatban tárolt adat lekérdezéséhez. Ha az adott táblából származó adatokkal szeretné megtekinteni ezeket a diagramokat, a Azure Monitor for VMs új verziójára kell frissítenie.
+Ha úgy dönt, hogy manuálisan engedélyezte a teljesítményszámlálók számát a munkaterületen, akkor előfordulhat, hogy az adatok megtekinthetők a Azure Monitor alapján megtekintett teljesítmény-diagramokban. Az új megoldás kiadása után a rendszer frissíti a teljesítmény diagramokat a táblázatban tárolt adat lekérdezéséhez `InsightsMetrics` . Ha az adott táblából származó adatokkal szeretné megtekinteni ezeket a diagramokat, a Azure Monitor for VMs új verziójára kell frissítenie.
 
-Az adatok áthelyezésének módosításai `ServiceMapComputer_CL` és `ServiceMapProcess_CL` a Service Map és Azure monitor for VMS is hatással vannak, így továbbra is meg kell terveznie ezt a frissítést.
+Az adatok áthelyezésének módosításai `ServiceMapComputer_CL` és a `ServiceMapProcess_CL` Service Map és Azure monitor for VMS is hatással vannak, így továbbra is meg kell terveznie ezt a frissítést.
 
-Ha úgy döntött, hogy nem frissít a **VMInsights** -megoldásra, továbbra is biztosítjuk a teljesítmény-munkafüzetek örökölt verzióit, amelyek a `Perf` táblázatban található adatokra hivatkoznak.  
+Ha úgy döntött, hogy nem frissít a **VMInsights** -megoldásra, továbbra is biztosítjuk a teljesítmény-munkafüzetek örökölt verzióit, amelyek a táblázatban található adatokra hivatkoznak `Perf` .  
 
 ## <a name="will-the-service-map-data-sets-also-be-stored-in-insightsmetrics"></a>A rendszer a Service Map adatkészleteket is tárolja a InsightsMetrics-ben?
 
-Ha mindkét megoldást használja, az adatkészletek nem lesznek duplikálva. Mindkét ajánlat megosztja azokat az adatkészleteket, amelyeket a `VMComputer` rendszer a (korábban ServiceMapComputer_CL `VMProcess` ), (korábban ServiceMapProcess_CL `VMConnection`), `VMBoundPort` a és a táblákban tárol, és így tárolja a gyűjtött térképi adatkészleteket.  
+Ha mindkét megoldást használja, az adatkészletek nem lesznek duplikálva. Mindkét ajánlat megosztja azokat az adatkészleteket, amelyeket a rendszer a `VMComputer` (korábban ServiceMapComputer_CL), `VMProcess` (korábban ServiceMapProcess_CL), a `VMConnection` és `VMBoundPort` a táblákban tárol, és így tárolja a gyűjtött térképi adatkészleteket.  
 
 A `InsightsMetrics` táblázat tárolja azokat a virtuális gépeket, folyamatokat és szolgáltatási adatkészleteket, amelyeket gyűjtünk, és csak akkor lesznek feltöltve, ha a Azure monitor for VMS és a VM-elemzés megoldást használja. A Service Map megoldás nem gyűjti és nem tárolja az adatokat a `InsightsMetrics` táblában.
 
 ## <a name="will-i-be-double-charged-if-i-have-the-service-map-and-vminsights-solutions-in-my-workspace"></a>Kell-e dupla díjat fizetni, ha a saját munkaterületen van Service Map-és VMInsights-megoldásom?
 
-Nem, a két megoldás közösen tárolja a (korábban ServiceMapComputer_CL), `VMComputer` `VMProcess` (korábban ServiceMapProcess_CL) `VMConnection`, és `VMBoundPort`rendszerekben tárolt Térkép-adatkészleteket. Ha mindkét megoldás szerepel a munkaterületen, akkor nem számítunk fel díjat.
+Nem, a két megoldás közösen tárolja a `VMComputer` (korábban ServiceMapComputer_CL), `VMProcess` (korábban ServiceMapProcess_CL), és rendszerekben tárolt Térkép-adatkészleteket `VMConnection` `VMBoundPort` . Ha mindkét megoldás szerepel a munkaterületen, akkor nem számítunk fel díjat.
 
 ## <a name="if-i-remove-either-the-service-map-or-vminsights-solution-will-it-remove-my-data"></a>Ha eltávolítom vagy a Service Map vagy a VMInsights megoldást, akkor eltávolítja az adataimat?
 
-Nem, a két megoldás közösen tárolja a (korábban ServiceMapComputer_CL), `VMComputer` `VMProcess` (korábban ServiceMapProcess_CL) `VMConnection`, és `VMBoundPort`rendszerekben tárolt Térkép-adatkészleteket. Ha eltávolítja az egyik megoldást, ezek az adatkészletek azt észlelik, hogy még mindig van olyan megoldás, amely az adatmennyiséget használja, és a Log Analytics munkaterületen marad. Mindkét megoldást el kell távolítania a munkaterületről abból a célból, hogy az adatok el legyenek távolítva belőle.
+Nem, a két megoldás közösen tárolja a `VMComputer` (korábban ServiceMapComputer_CL), `VMProcess` (korábban ServiceMapProcess_CL), és rendszerekben tárolt Térkép-adatkészleteket `VMConnection` `VMBoundPort` . Ha eltávolítja az egyik megoldást, ezek az adatkészletek azt észlelik, hogy még mindig van olyan megoldás, amely az adatmennyiséget használja, és a Log Analytics munkaterületen marad. Mindkét megoldást el kell távolítania a munkaterületről abból a célból, hogy az adatok el legyenek távolítva belőle.
 
 ## <a name="health-feature-is-in-limited-public-preview"></a>A Health funkció korlátozott nyilvános előzetes verzióban érhető el
 
@@ -100,9 +100,9 @@ Azt tervezzük, hogy a Azure Monitor for VMs a GA-ban, a 2020-es verzióban ind�
 
 Az állapotfigyelő funkciót használó meglévő ügyfelek továbbra is hozzáférhetnek hozzájuk, de nem lesznek elérhetők az új ügyfelek számára.  
 
-A szolgáltatás eléréséhez adja hozzá a következő funkció jelzőjét `feature.vmhealth=true` a Azure Portal URL-címhez [https://portal.azure.com](https://portal.azure.com). Példa `https://portal.azure.com/?feature.vmhealth=true`.
+A szolgáltatás eléréséhez adja hozzá a következő funkció jelzőjét `feature.vmhealth=true` a Azure Portal URL-címhez [https://portal.azure.com](https://portal.azure.com) . Példa `https://portal.azure.com/?feature.vmhealth=true` .
 
-Ezt a rövid URL-címet is használhatja, amely automatikusan beállítja a szolgáltatás jelölőjét: [https://aka.ms/vmhealthpreview](https://aka.ms/vmhealthpreview).
+Ezt a rövid URL-címet is használhatja, amely automatikusan beállítja a szolgáltatás jelölőjét: [https://aka.ms/vmhealthpreview](https://aka.ms/vmhealthpreview) .
 
 Meglévő ügyfélként továbbra is használhatja az állapotfigyelő szolgáltatást olyan virtuális gépeken, amelyek a meglévő munkaterület-beállításhoz vannak csatlakoztatva az állapotfigyelő funkcióval.  
 

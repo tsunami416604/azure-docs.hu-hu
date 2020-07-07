@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.openlocfilehash: 772521a8d3181721270d7fe4dbd11b7807c8d90e
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82583665"
 ---
 # <a name="create-a-new-device-template-version"></a>Új sablon-verzió létrehozása
@@ -30,7 +30,7 @@ Ahhoz, hogy a kezelő használhassa a verziót, közzé kell tennie minden olyan
 
 ## <a name="versioning-rules"></a>Verziószámozási szabályok
 
-Ez a szakasz az eszközök sablonjaira vonatkozó verziószámozási szabályokat összegzi. A DCMs és a illesztőfelületek verziószáma is szerepel. A következő kódrészlet a DCM-et mutatja be egy környezeti érzékelő eszközhöz. A DCM két csatolóval rendelkezik: **DeviceInformation** és **EnvironmentalSensor**. A verziószámok a`@id` mezők végén láthatók. Ha meg szeretné tekinteni ezeket az információkat a IoT Central felhasználói felületen, válassza az **identitás megtekintése** lehetőséget az eszköz sablonjának szerkesztőjében.
+Ez a szakasz az eszközök sablonjaira vonatkozó verziószámozási szabályokat összegzi. A DCMs és a illesztőfelületek verziószáma is szerepel. A következő kódrészlet a DCM-et mutatja be egy környezeti érzékelő eszközhöz. A DCM két csatolóval rendelkezik: **DeviceInformation** és **EnvironmentalSensor**. A verziószámok a mezők végén láthatók `@id` . Ha meg szeretné tekinteni ezeket az információkat a IoT Central felhasználói felületen, válassza az **identitás megtekintése** lehetőséget az eszköz sablonjának szerkesztőjében.
 
 ```json
 {
@@ -105,7 +105,7 @@ Eszköz sablonjának verziója:
 1. Nyissa meg az **eszközök sablonjai** lapot.
 1. Válassza ki azt az eszközt, amelyen a verziót szeretné.
 1. Kattintson a lap tetején található **Version (verzió** ) gombra, és adjon meg egy új nevet a sablonnak. IoT Central egy új nevet javasol, amelyet szerkeszthet.
-1. Kattintson a **Létrehozás**gombra.
+1. Kattintson a **Létrehozás** lehetőségre.
 1. Most az eszköz sablonja vázlat módban van. Láthatja, hogy a felületek még mindig zárolva vannak. A módosítani kívánt felületek verziója.
 
 ## <a name="version-an-interface"></a>Illesztőfelület verziója
@@ -118,7 +118,7 @@ Illesztőfelület verziója:
 1. Válassza ki a Piszkozat módban lévő sablont.
 1. Válassza ki azt a felületet, amelyet közzé szeretne tenni, és szerkeszteni kívánja a közzétett módban.
 1. Kattintson a **verzió** gombra a csatoló oldal tetején.
-1. Kattintson a **Létrehozás**gombra.
+1. Kattintson a **Létrehozás** lehetőségre.
 1. Most az illesztőfelület vázlat módban van. A meglévő testreszabások és nézetek megszakítása nélkül hozzáadhat vagy szerkesztheti a felület képességeit.
 
 ## <a name="migrate-a-device-across-versions"></a>Eszköz migrálása a verziók között

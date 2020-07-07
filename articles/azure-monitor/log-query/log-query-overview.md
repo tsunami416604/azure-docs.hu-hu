@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 06/19/2019
 ms.openlocfilehash: 6cd2a28ddbe970385ff44deec2158c257937982e
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82591652"
 ---
 # <a name="overview-of-log-queries-in-azure-monitor"></a>A Azure Monitor lévő naplók áttekintése
@@ -76,7 +76,7 @@ A nyelv és a gyakori függvények bevezetésére szolgáló naplózási lekérd
 
 
 ## <a name="what-is-log-analytics"></a>Mi az a Log Analytics?
-A Log Analytics a Azure Portal elsődleges eszköze a naplók írásához és az eredmények interaktív elemzéséhez. Akkor is, ha a naplózási lekérdezést Azure Monitorban máshol használják, általában a Log Analytics használatával fogja írni és tesztelni a lekérdezést.
+A Log Analytics az Azure Portal elsődleges eszköze a naplólekérdezések írásához, és az eredményeik interaktív elemzéséhez. Akkor is, ha a naplózási lekérdezést Azure Monitorban máshol használják, általában a Log Analytics használatával fogja írni és tesztelni a lekérdezést.
 
 A Azure Portal több helyről is elindítható Log Analytics. A Log Analytics számára elérhetővé tett adatmennyiséget az elindításának módját határozza meg. További részletekért lásd a [lekérdezési hatókört](scope.md) .
 

@@ -3,16 +3,16 @@ title: 'Oktatóanyag: új erőforrások megvédése zárolásokkal'
 description: Ebben az oktatóanyagban az Azure-tervrajzok erőforrás-zárolási lehetőségeit csak olvasható módon használja, és nem törli az újonnan telepített erőforrások elleni védelemhez.
 ms.date: 05/06/2020
 ms.topic: tutorial
-ms.openlocfilehash: 90ffb0f5b8c1b6d3919b05abf778c5082bfee0dc
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: 738c627d350c5e11b41a65d159cf2cc7de807334
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864164"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85969641"
 ---
 # <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>Oktatóanyag: új erőforrások biztosítása az Azure BluePrints erőforrás-zárolásokkal
 
-Az Azure-tervrajzok [erőforrás-zárolásai](../concepts/resource-locking.md)révén az újonnan telepített erőforrásokat védetté teheti, akár a _tulajdonos_ szerepkörrel rendelkező fiókkal. Ezt a védelmet a Resource Manager-sablon által létrehozott erőforrások tervrajz-definíciójában adhatja hozzá.
+Az Azure-tervrajzok [erőforrás-zárolásai](../concepts/resource-locking.md)révén az újonnan telepített erőforrásokat védetté teheti, akár a _tulajdonos_ szerepkörrel rendelkező fiókkal. Ezt a védelmet a Azure Resource Manager-sablon (ARM-sablon) által létrehozott erőforrások tervrajz-definíciójában adhatja hozzá.
 
 Ebben az oktatóanyagban a következő lépéseket hajtja végre:
 
@@ -25,7 +25,7 @@ Ebben az oktatóanyagban a következő lépéseket hajtja végre:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free).
 
 ## <a name="create-a-blueprint-definition"></a>Terv definíciójának létrehozása
 
@@ -55,8 +55,7 @@ Először hozza létre a terv definícióját.
 1. Sablon hozzáadása az erőforráscsoport alatt:
    1. Válassza a **RGtoLock** bejegyzés alatt az összetevők **hozzáadása** sort.
    1. Válassza ki **Azure Resource Manager sablont** az összetevő **típusa**területen, állítsa a **lelet megjelenítendő nevét** **StorageAccount**értékre, és hagyja üresen a **leírást** .
-   1. A **sablon** lapon illessze be az alábbi Resource Manager-sablont a szerkesztő mezőbe.
-      A sablon beillesztése után a **Hozzáadás** gombra kattintva adja hozzá az összetevőt a tervhez.
+   1. A **sablon** lapon illessze be a következő ARM-sablont a szerkesztő mezőbe. A sablon beillesztése után a **Hozzáadás** gombra kattintva adja hozzá az összetevőt a tervhez.
 
    ```json
    {
@@ -166,7 +165,7 @@ A **terv kiosztásának meghatározása sikeres** portál értesítése után l�
 
 ## <a name="inspect-resources-deployed-by-the-assignment"></a>A hozzárendelés által üzembe helyezett erőforrások vizsgálata
 
-A hozzárendelés létrehozza az erőforráscsoport _TestingBPLocks_ és a Resource Manager-sablon összetevő által üzembe helyezett Storage-fiókot. Az új erőforráscsoport és a kiválasztott zárolási állapot a hozzárendelés részletei lapon látható.
+A hozzárendelés létrehozza az erőforráscsoport _TestingBPLocks_ és az ARM-sablon által üzembe helyezett Storage-fiókot. Az új erőforráscsoport és a kiválasztott zárolási állapot a hozzárendelés részletei lapon látható.
 
 1. A bal oldali panelen válassza a **Minden szolgáltatás** lehetőséget. Keresse meg és válassza ki a **tervrajzokat**.
 
@@ -188,7 +187,7 @@ A hozzárendelés létrehozza az erőforráscsoport _TestingBPLocks_ és a Resou
 
 1. Jelölje ki a megtagadási hozzárendelést, majd a bal oldalon válassza ki a **megtagadott engedélyek** lapot.
 
-   A megtagadási hozzárendelés megakadályozza a és a **\*** **művelet** konfigurációjának összes műveletét, de az olvasási hozzáférés engedélyezése a ** \*/Read** kizárásával **.**
+   A megtagadási hozzárendelés megakadályozza a és a **\*** **művelet** konfigurációjának összes műveletét, de az olvasási hozzáférés engedélyezése a **NotActions** ** \* /READ** kizárásával.
 
 1. A Azure Portal navigációs menüben válassza a **TestingBPLocks-hozzáférés-vezérlés (iam)** lehetőséget. Ezután válassza ki az **Áttekintés** lapot a bal oldalon, majd az **erőforráscsoport törlése** gombot. Írja be a **TestingBPLocks** nevet a törlés megerősítéséhez, majd kattintson a **Törlés** gombra a panel alján.
 
@@ -216,7 +215,7 @@ Az erőforráscsoport biztonsága azt mutatja, hogy a terv hozzárendelése már
 
 Ha a **terv-hozzárendelés eltávolítása sikeres** portál értesítés jelenik meg, lépjen a következő lépésre.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha elkészült ezzel az Oktatóanyaggal, törölje ezeket az erőforrásokat:
 

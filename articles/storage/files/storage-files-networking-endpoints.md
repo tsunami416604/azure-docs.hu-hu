@@ -8,10 +8,10 @@ ms.date: 3/19/2020
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 0859b034cf0caa60039fbf9eb4dd9be54448a940
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85510319"
 ---
 # <a name="configuring-azure-files-network-endpoints"></a>Azure Files hálózati végpontok konfigurálása
@@ -153,7 +153,7 @@ Ha a Storage-fiókot adott virtuális hálózatokra korlátozza, a megadott virt
 
 ---
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 - [Azure Files hálózati megfontolások](storage-files-networking-overview.md)
-- [DNS-továbbítás konfigurálása az Azure Fileshoz](storage-files-networking-dns.md)
+- [A Azure Files DNS-továbbításának konfigurálása](storage-files-networking-dns.md)
 - [S2S VPN konfigurálása Azure Fileshoz](storage-files-configure-s2s-vpn.md)

@@ -1,16 +1,16 @@
 ---
 title: Erőforrások rendszerezése felügyeleti csoportokkal – Azure-irányítás
 description: Megismerheti a felügyeleti csoportokat és azok használatának módját, valamint a hozzájuk tartozó engedélyek működését.
-ms.date: 04/15/2020
+ms.date: 07/06/2020
 ms.topic: overview
-ms.openlocfilehash: 43c8bb2bdb71b0b75d2fcc31451952214978093c
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: b3d031b68ee7dba9c80ee0c7e97898bb8b439a47
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773151"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963682"
 ---
-# <a name="organize-your-resources-with-azure-management-groups"></a>Erőforrások rendszerezése az Azure Management Groups segítségével
+# <a name="what-are-azure-management-groups"></a>Mik azok az Azure felügyeleti csoportok?
 
 Ha a vállalatnak sok előfizetése van, jól jöhet egy módszer, hogy hatékonyan kezelje az előfizetésekhez való hozzáférést, a szabályzatokat és a megfelelőséget. Az Azure Management Groups előfizetések fölötti hatókörszintet biztosít. Az előfizetéseket „felügyeleti csoportok” nevű tárolókba rendezheti, és az irányítási feltételeket alkalmazhatja a felügyeleti csoportokra. A felügyeleti csoporton belüli összes előfizetés automatikusan örökli a felügyeleti csoportra alkalmazott feltételeket. A felügyeleti csoportok nagy léptékű, nagyvállalati szintű felügyeletet tesznek lehetővé, függetlenül az előfizetése típusától.
 A felügyeleti csoporton belüli összes előfizetésnek ugyanazzal az Azure Active Directory-bérlővel kell megbízhatósági kapcsolatban állnia.
@@ -199,6 +199,4 @@ A felügyeleti csoportokkal kapcsolatos további tudnivalókért lásd:
 
 - [Felügyeleti csoportok létrehozása az Azure-erőforrások rendszerezéséhez](./create.md)
 - [Felügyeleti csoportok módosítása, törlése és kezelése](./manage.md)
-- [Felügyeleti csoportok áttekintése az Azure PowerShell Erőforrások moduljában](/powershell/module/az.resources#resources)
-- [Felügyeleti csoportok áttekintése a REST API-ban](/rest/api/resources/managementgroups)
-- [Felügyeleti csoportok áttekintése az Azure CLI-ben](/cli/azure/account/management-group)
+- Tekintse [meg az erőforrás-hierarchia védelemének](./how-to/protect-resource-hierarchy.md) lehetőségeit.

@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan védheti meg a titkos értékeket egy Service F
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.openlocfilehash: 18090dd3e4046da2069e3035be4edb4d2f979204
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82583229"
 ---
 # <a name="manage-encrypted-secrets-in-service-fabric-applications"></a>Titkosított titkok kezelése Service Fabric alkalmazásokban
@@ -24,9 +24,9 @@ A titkosítási tanúsítvány beállítása és a titkok titkosítása a Window
 * [Titkosítási tanúsítvány beállítása és a titkok titkosítása Linux-fürtökön.][secret-management-linux-specific-link]
 
 ## <a name="specify-encrypted-secrets-in-an-application"></a>Titkosított titkok meghatározása egy alkalmazásban
-Az előző lépés leírja, hogyan titkosíthatja a titkos kódot egy tanúsítvánnyal, és hogyan hozhat létre Base-64 kódolású karakterláncot az alkalmazásokban való használathoz. Ez a Base-64 kódolású karakterlánc a szolgáltatás Settings. XML fájljában, illetve titkosított [környezeti változóként][environment-variables-link] is megadható titkosított [paraméterként][parameters-link] a szolgáltatás ServiceManifest. XML fájljában.
+Az előző lépés leírja, hogyan titkosíthatja a titkos kódot egy tanúsítvánnyal, és hogyan hozhat létre Base-64 kódolású karakterláncot az alkalmazásokban való használathoz. Ez az alapszintű 64-kódolású karakterlánc a szolgáltatás Settings.xml titkosított [paramétereként][parameters-link] vagy egy szolgáltatás ServiceManifest.xml titkosított [környezeti változóként][environment-variables-link] adható meg.
 
-A szolgáltatás Settings. xml konfigurációs fájljában adja meg a `IsEncrypted` titkosított [paramétert][parameters-link] a következőre `true`beállított attribútummal:
+A szolgáltatás Settings.xml konfigurációs fájljában adja meg a titkosított [paramétert][parameters-link] a következő `IsEncrypted` értékkel `true` :
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -36,7 +36,7 @@ A szolgáltatás Settings. xml konfigurációs fájljában adja meg a `IsEncrypt
   </Section>
 </Settings>
 ```
-A szolgáltatás ServiceManifest. XML fájljában adja meg a `Type` titkosított [környezeti változót][environment-variables-link] a következő értékre `Encrypted`:
+A szolgáltatás ServiceManifest.xml fájljában adja meg a titkosított [környezeti változót][environment-variables-link] a következő `Type` értékkel `Encrypted` :
 ```xml
 <CodePackage Name="Code" Version="1.0.0">
   <EnvironmentVariables>
@@ -45,7 +45,7 @@ A szolgáltatás ServiceManifest. XML fájljában adja meg a `Type` titkosított
 </CodePackage>
 ```
 
-A titkokat a Service Fabric alkalmazásban is fel kell venni egy tanúsítvány megadásával az alkalmazás jegyzékfájljában. Adjon hozzá egy **SecretsCertificate** elemet a **ApplicationManifest. xml fájlhoz** , és adja meg a kívánt tanúsítvány ujjlenyomatát.
+A titkokat a Service Fabric alkalmazásban is fel kell venni egy tanúsítvány megadásával az alkalmazás jegyzékfájljában. Adjon hozzá egy **SecretsCertificate** elemet a **ApplicationManifest.xmlhoz** , és adja meg a kívánt tanúsítvány ujjlenyomatát.
 
 ```xml
 <ApplicationManifest … >
@@ -64,8 +64,8 @@ A titkokat a Service Fabric alkalmazásban is fel kell venni egy tanúsítvány 
 ### <a name="inject-application-secrets-into-application-instances"></a>Alkalmazási titkok behelyezése az alkalmazás példányaiba
 Ideális esetben a különböző környezetekben történő üzembe helyezésnek a lehető legautomatizáltnak kell lennie. Ezt úgy teheti meg, hogy a titkos titkosítást egy Build környezetben hajtja végre, és a titkosított titkokat paraméterekként adja meg az alkalmazás példányainak létrehozásakor.
 
-#### <a name="use-overridable-parameters-in-settingsxml"></a>Overridable paraméterek használata a Settings. xml fájlban
-A Settings. xml konfigurációs fájl lehetővé teszi az alkalmazások létrehozási idején elérhető Overridable paraméterek használatát. A paraméter `MustOverride` értékének megadása helyett használja az attribútumot:
+#### <a name="use-overridable-parameters-in-settingsxml"></a>Overridable paraméterek használata a Settings.xmlban
+A Settings.xml konfigurációs fájl lehetővé teszi az alkalmazások létrehozási idején elérhető Overridable paraméterek használatát. A `MustOverride` paraméter értékének megadása helyett használja az attribútumot:
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -76,7 +76,7 @@ A Settings. xml konfigurációs fájl lehetővé teszi az alkalmazások létreho
 </Settings>
 ```
 
-A Settings. xml fájlban lévő értékek felülbírálásához deklaráljon egy felülbírálási paramétert a szolgáltatáshoz a ApplicationManifest. xml fájlban:
+A Settings.xml értékeinek felülbírálásához deklaráljon egy felülbírálási paramétert a szolgáltatáshoz a ApplicationManifest.xmlban:
 
 ```xml
 <ApplicationManifest ... >
@@ -99,13 +99,13 @@ A Settings. xml fájlban lévő értékek felülbírálásához deklaráljon egy
 
 Az érték mostantól az alkalmazás egy példányának létrehozásakor is megadható *Application paraméterként* . Az alkalmazás-példányok létrehozásához a PowerShell vagy a C# nyelven írt parancsfájl használatával lehet egyszerű integrációt létrehozni egy összeállítási folyamat során.
 
-A PowerShell használatával a paramétert a `New-ServiceFabricApplication` parancs a következő [kivonatoló táblázatként](https://technet.microsoft.com/library/ee692803.aspx)biztosítja:
+A PowerShell használatával a paramétert a parancs a következő `New-ServiceFabricApplication` [kivonatoló táblázatként](https://technet.microsoft.com/library/ee692803.aspx)biztosítja:
 
 ```powershell
 New-ServiceFabricApplication -ApplicationName fabric:/MyApp -ApplicationTypeName MyAppType -ApplicationTypeVersion 1.0.0 -ApplicationParameter @{"MySecret" = "I6jCCAeYCAxgFhBXABFxzAt ... gNBRyeWFXl2VydmjZNwJIM="}
 ```
 
-A C# használatával az alkalmazás paramétereinek megadása a `ApplicationDescription` következőképpen történik: `NameValueCollection`
+A C# használatával az alkalmazás paramétereinek megadása a `ApplicationDescription` következőképpen történik `NameValueCollection` :
 
 ```csharp
 FabricClient fabricClient = new FabricClient();

@@ -4,10 +4,10 @@ description: Ismerje meg, hogy az Azure-beli virtuális gépen futó SQL Server 
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: f1e3ecae5d643b8e32f8f4f07808d56cdc421163
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82791374"
 ---
 # <a name="soft-delete-for-sql-server-in-azure-vm-and-sap-hana-in-azure-vm-workloads"></a>Az Azure-beli virtuális gépeken futó SQL Server-kiszolgáló és a SAP HANA Azure-beli virtuális gépek számítási feladatainak törlése
@@ -93,7 +93,7 @@ A [Soft delete](backup-azure-security-feature-cloud.md) egy biztonsági funkció
 ## <a name="soft-delete-for-sql-server-in-vm-using-azure-powershell"></a>Az SQL Server rendszerhez készült Soft delete Azure PowerShell használatával
 
 >[!NOTE]
->Az az. Recoveryservices szolgáltatónál verziója szükséges ahhoz, hogy a Azure PowerShell a Soft delete használatával a minimális 2.2.0-t használja. A `Install-Module -Name Az.RecoveryServices -Force` legújabb verziójának beszerzéséhez használja a következőt:.
+>Az az. Recoveryservices szolgáltatónál verziója szükséges ahhoz, hogy a Azure PowerShell a Soft delete használatával a minimális 2.2.0-t használja. `Install-Module -Name Az.RecoveryServices -Force`A legújabb verziójának beszerzéséhez használja a következőt:.
 
 A Azure PowerShell használatára vonatkozó lépések sorrendjének megegyeznek az Azure Portalban, a fentiekben ismertetett módon.
 

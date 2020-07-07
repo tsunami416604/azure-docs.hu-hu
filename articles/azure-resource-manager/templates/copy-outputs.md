@@ -4,10 +4,10 @@ description: A másolási művelettel Azure Resource Manager sablonban több alk
 ms.topic: conceptual
 ms.date: 04/17/2020
 ms.openlocfilehash: 50c4b4b8f301ad88d3dfde98ace1aed4431693db
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82583427"
 ---
 # <a name="output-iteration-in-arm-templates"></a>Kimeneti iteráció az ARM-sablonokban
@@ -16,7 +16,7 @@ Ez a cikk bemutatja, hogyan hozhat létre egynél több értéket egy kimenethez
 
 A másolást [erőforrásokkal](copy-resources.md), [erőforrásokkal](copy-properties.md)és [változókkal](copy-variables.md)is elvégezheti.
 
-## <a name="syntax"></a>Szintaxis
+## <a name="syntax"></a>Syntax
 
 A másolási elem a következő általános formátumú:
 

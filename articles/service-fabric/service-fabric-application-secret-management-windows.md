@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan állíthat be titkosítási tanúsítványt és
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.openlocfilehash: eb4909d62a2627c368f24dab572b25c6f1df30ec
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82583288"
 ---
 # <a name="set-up-an-encryption-certificate-and-encrypt-secrets-on-windows-clusters"></a>Titkosítási tanúsítvány beállítása és a titkok titkosítása Windows-fürtökön
@@ -16,13 +16,13 @@ Ez a cikk bemutatja, hogyan állíthat be titkosítási tanúsítványt, és hog
 A [Azure Key Vault][key-vault-get-started] a tanúsítványok biztonságos tárolási helyeként, valamint az Azure-beli Service Fabric-fürtökön telepített tanúsítványok beszerzésének módjaként használatos. Ha nem telepíti az Azure-t, nincs szükség a Key Vault használatára a titkok kezeléséhez Service Fabric alkalmazásokban. Azonban az alkalmazásokban a titkos kódok *használatával* a felhőalapú platform-agnosztikus lehetővé teszi, hogy az alkalmazások a bárhol üzemeltetett fürtön legyenek telepítve. 
 
 ## <a name="obtain-a-data-encipherment-certificate"></a>Titkosítási-tanúsítvány beszerzése
-Az titkosítási-tanúsítvány szigorúan a szolgáltatás beállításaiban található [Paraméterek][parameters-link] titkosítására és visszafejtésére szolgál. az XML-és [környezeti változók][environment-variables-link] a szolgáltatás ServiceManifest. XML fájljában jelennek meg. Nem használatos a titkosított szöveg hitelesítéséhez vagy aláírásához. A tanúsítványnak meg kell felelnie a következő követelményeknek:
+A titkosítási-tanúsítványokat szigorúan a szolgáltatás Settings.xml és [környezeti változói][environment-variables-link] által használt [Paraméterek][parameters-link] titkosítására és visszafejtésére használják a szolgáltatás ServiceManifest.xml. Nem használatos a titkosított szöveg hitelesítéséhez vagy aláírásához. A tanúsítványnak meg kell felelnie a következő követelményeknek:
 
 * A tanúsítványnak tartalmaznia kell egy titkos kulcsot.
 * A tanúsítványt létre kell hozni a személyes információcsere (. pfx) fájlba exportálható kulcscsere-fájlhoz.
 * A tanúsítvány használatának tartalmaznia kell az adatok titkosítási (10), és nem tartalmazhat kiszolgálói hitelesítést vagy ügyfél-hitelesítést. 
   
-  Ha például egy önaláírt tanúsítványt hoz létre a PowerShell használatával, a jelzőt a `KeyUsage` következőre kell `DataEncipherment`beállítani:
+  Ha például egy önaláírt tanúsítványt hoz létre a PowerShell használatával, a jelzőt a következőre `KeyUsage` kell beállítani `DataEncipherment` :
   
   ```powershell
   New-SelfSignedCertificate -Type DocumentEncryptionCert -KeyUsage DataEncipherment -Subject mydataenciphermentcert -Provider 'Microsoft Enhanced Cryptographic Provider v1.0'

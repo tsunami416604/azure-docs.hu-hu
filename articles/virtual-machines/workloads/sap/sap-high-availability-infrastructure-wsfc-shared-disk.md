@@ -17,10 +17,10 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: f5e0eda72f39a70f02b596a8fd69728336eac333
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82594814"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>Az Azure-infrastruktúra előkészítése az SAP-hez a Windows feladatátvevő fürt és az SAP ASCS/SCS közös lemezének használatával
@@ -194,9 +194,9 @@ _**1. ábra:** SAP magas rendelkezésre állású Azure Resource Manager paramé
   A sablonok létrehozása:
 
   * **Virtuális gépek**:
-    * SAP Application Server Virtual Machines \<:\>SAPSystemSID-di\<-Number\>
-    * ASCS/SCS-fürt virtuális gépei \<:\>SAPSystemSID-ASCS\<-Number\>
-    * Adatbázis-kezelő \<fürt\>: SAPSystemSID-\<db-Number\>
+    * SAP Application Server virtuális gépek: \<SAPSystemSID\> -di-\<Number\>
+    * ASCS/SCS-fürt virtuális gépei: \<SAPSystemSID\> -ASCS-\<Number\>
+    * Adatbázis-kezelő fürt: \<SAPSystemSID\> -db-\<Number\>
 
   * **Hálózati kártyák az összes virtuális géphez, társított IP-címekkel**:
     * \<SAPSystemSID\>-NIC-di-\<Number\>
@@ -206,16 +206,16 @@ _**1. ábra:** SAP magas rendelkezésre állású Azure Resource Manager paramé
   * **Azure Storage-fiókok (csak nem felügyelt lemezek esetén)**:
 
   * **Rendelkezésre állási csoportok** a következőhöz:
-    * SAP Application Server virtuális gépek: \<SAPSystemSID\>-avset-di
-    * SAP ASCS/SCS-fürt virtuális gépei \<:\>SAPSystemSID-avset-ASCS
-    * Adatbázis-kezelő fürt virtuális \<gépei\>: SAPSystemSID-avset-db
+    * SAP Application Server-alapú virtuális gépek: \<SAPSystemSID\> -avset-di
+    * SAP-ASCS/SCS-fürt virtuális gépei: \<SAPSystemSID\> -avset-ASCS
+    * Adatbázis-kezelő fürt virtuális gépei: \<SAPSystemSID\> -avset-db
 
   * **Azure belső terheléselosztó**:
-    * A ASCS/SCS-példány összes portja és az IP \<-\>cím SAPSystemSID-LB-ASCS
-    * Az SQL Server adatbázis-kezelő és az IP- \<SAPSystemSID\>-LB-db összes portjával
+    * A ASCS/SCS-példány összes portja és IP \<SAPSystemSID\> -címe – LB-ASCS
+    * Az SQL Server adatbázis-kezelő és az IP-cím \<SAPSystemSID\> – LB-db összes portjával
 
-  * **Hálózati biztonsági csoport**: \<SAPSystemSID\>-NSG-ASCs-0  
-    * Nyitott külső RDP protokoll (RDP) porttal a \<SAPSystemSID\>-ASCs-0 virtuális géphez
+  * **Hálózati biztonsági csoport**: \<SAPSystemSID\> -NSG-ASCs-0  
+    * Nyitott külső RDP protokoll (RDP) porttal a \<SAPSystemSID\> -ASCs-0 virtuális géphez
 
 > [!NOTE]
 > Alapértelmezés szerint a hálózati kártyák és az Azure belső terheléselosztó összes IP-címe dinamikus. Módosítsa statikus IP-címekre. Ezt a cikket a cikk későbbi részében ismertetjük.
@@ -305,7 +305,7 @@ A ASCS/SCS multi-SID sablon beállításához a [ASCS/SCS multi-SID sablonban][s
 - **Új vagy meglévő alhálózat**: beállíthatja, hogy új virtuális hálózatot és alhálózatot hozzon létre, vagy meglévő alhálózatot használjon. Ha már van olyan virtuális hálózata, amely a helyszíni hálózathoz csatlakozik, válassza a **meglévő**lehetőséget.
 - **Alhálózati azonosító**: Ha a virtuális gépet egy olyan meglévő VNet szeretné telepíteni, amelyben egy alhálózat van megadva, a virtuális gépet hozzá kell rendelni, nevezze el az adott alhálózat azonosítóját. Az azonosító általában a következőképpen néz ki:
 
-  /Subscriptions/\<előfizetés-\>azonosító\</resourceGroups/-erőforráscsoport\>neve\</Providers/Microsoft.Network/virtualNetworks/virtuális hálózat\>neve\</Subnets/alhálózat neve\>
+  /Subscriptions/ \<subscription id\> /ResourceGroups/ \<resource group name\> /providers/Microsoft.Network/virtualNetworks/ \<virtual network name\> /Subnets/\<subnet name\>
 
 A sablon egy Azure Load Balancer példányt telepít, amely több SAP-rendszert is támogat:
 
@@ -410,7 +410,7 @@ A DNS-kiszolgálón manuálisan is létrehozhatja a másik két virtuális gazda
 ## <a name="set-static-ip-addresses-for-the-sap-virtual-machines"></a><a name="84c019fe-8c58-4dac-9e54-173efd4b2c30"></a>Statikus IP-címek beállítása az SAP-beli virtuális gépekhez
 Miután telepítette a virtuális gépeket a fürtben való használatra, statikus IP-címeket kell megadnia az összes virtuális géphez. Ezt megteheti az Azure Virtual Network konfigurációjában, nem pedig a vendég operációs rendszeren.
 
-1. A Azure Portal válassza az **erőforráscsoport** > **hálózati kártya** > **beállításai** > **IP-cím**elemet.
+1. A Azure Portal válassza az **erőforráscsoport**  >  **hálózati kártya**  >  **beállításai**  >  **IP-cím**elemet.
 2. Az **IP-címek** ablaktábla **hozzárendelés**területén válassza a **statikus**lehetőséget. Az **IP-cím** mezőbe írja be a használni kívánt IP-címet.
 
    > [!NOTE]
@@ -479,15 +479,15 @@ A szükséges belső terheléselosztási végpontok létrehozásához először 
 
 | Szolgáltatás/terheléselosztási szabály neve | Alapértelmezett portszámok | Beton portok (a 00-as példánnyal rendelkező ASCS-példány esetében) (10-ESEK) |
 | --- | --- | --- |
-| Sorba helyezni-kiszolgáló/ *lbrule3200* |32\<példányszám\> |3200 |
-| ABAP üzenetkezelő kiszolgáló/ *lbrule3600* |36\<példányszám\> |3600 |
-| Belső ABAP üzenet/ *lbrule3900* |39\<példányszám\> |3900 |
-| Message Server HTTP/ *Lbrule8100* |81\<példányszám\> |8100 |
-| SAP Start Service ASCS HTTP/ *Lbrule50013* |5\<példányszám\>13 |50013 |
-| SAP Start Service ASCS HTTPS/ *Lbrule50014* |5\<példányszám\>14 |50014 |
-| Sorba helyezni-replikáció/ *Lbrule50016* |5\<példányszám\>16 |50016 |
-| SAP Start Service ERS HTTP- *Lbrule51013* |5\<példányszám\>13 |51013 |
-| SAP Start Service ERS HTTP- *Lbrule51014* |5\<példányszám\>14 |51014 |
+| Sorba helyezni-kiszolgáló/ *lbrule3200* |32\<InstanceNumber\> |3200 |
+| ABAP üzenetkezelő kiszolgáló/ *lbrule3600* |36\<InstanceNumber\> |3600 |
+| Belső ABAP üzenet/ *lbrule3900* |39\<InstanceNumber\> |3900 |
+| Message Server HTTP/ *Lbrule8100* |81\<InstanceNumber\> |8100 |
+| SAP Start Service ASCS HTTP/ *Lbrule50013* |5 \<InstanceNumber\> 13 |50013 |
+| SAP Start Service ASCS HTTPS/ *Lbrule50014* |5 \<InstanceNumber\> 14 |50014 |
+| Sorba helyezni-replikáció/ *Lbrule50016* |5 \<InstanceNumber\> 16 |50016 |
+| SAP Start Service ERS HTTP- *Lbrule51013* |5 \<InstanceNumber\> 13 |51013 |
+| SAP Start Service ERS HTTP- *Lbrule51014* |5 \<InstanceNumber\> 14 |51014 |
 | Rendszerfelügyeleti webszolgáltatások (WinRM) *Lbrule5985* | |5985 |
 | Fájlmegosztás *Lbrule445* | |445 |
 
@@ -497,15 +497,15 @@ Ezután hozza létre ezeket a terheléselosztási végpontokat az SAP NetWeaver 
 
 | Szolgáltatás/terheléselosztási szabály neve | Alapértelmezett portszámok | Beton portok (a 01-es példánnyal rendelkező SCS-példány esetében) (11-ESEK) |
 | --- | --- | --- |
-| Sorba helyezni-kiszolgáló/ *lbrule3201* |32\<példányszám\> |3201 |
-| Átjárókiszolgáló/ *lbrule3301* |33\<példányszám\> |3301 |
-| Java-üzenet kiszolgálója/ *lbrule3900* |39\<példányszám\> |3901 |
-| Message Server HTTP/ *Lbrule8101* |81\<példányszám\> |8101 |
-| SAP Start Service SCS HTTP/ *Lbrule50113* |5\<példányszám\>13 |50113 |
-| SAP Start Service SCS HTTPS/ *Lbrule50114* |5\<példányszám\>14 |50114 |
-| Sorba helyezni-replikáció/ *Lbrule50116* |5\<példányszám\>16 |50116 |
-| SAP Start Service ERS HTTP- *Lbrule51113* |5\<példányszám\>13 |51113 |
-| SAP Start Service ERS HTTP- *Lbrule51114* |5\<példányszám\>14 |51114 |
+| Sorba helyezni-kiszolgáló/ *lbrule3201* |32\<InstanceNumber\> |3201 |
+| Átjárókiszolgáló/ *lbrule3301* |33\<InstanceNumber\> |3301 |
+| Java-üzenet kiszolgálója/ *lbrule3900* |39\<InstanceNumber\> |3901 |
+| Message Server HTTP/ *Lbrule8101* |81\<InstanceNumber\> |8101 |
+| SAP Start Service SCS HTTP/ *Lbrule50113* |5 \<InstanceNumber\> 13 |50113 |
+| SAP Start Service SCS HTTPS/ *Lbrule50114* |5 \<InstanceNumber\> 14 |50114 |
+| Sorba helyezni-replikáció/ *Lbrule50116* |5 \<InstanceNumber\> 16 |50116 |
+| SAP Start Service ERS HTTP- *Lbrule51113* |5 \<InstanceNumber\> 13 |51113 |
+| SAP Start Service ERS HTTP- *Lbrule51114* |5 \<InstanceNumber\> 14 |51114 |
 | WinRM *Lbrule5985* | |5985 |
 | Fájlmegosztás *Lbrule445* | |445 |
 
@@ -521,7 +521,7 @@ _**5. ábra:** Alapértelmezett ASCS/SCS terheléselosztási szabályok az Azure
 
 Ha az SAP-ASCS vagy az SCS-példányokhoz eltérő számokat szeretne használni, akkor a portok nevét és értékeit az alapértelmezett értékekkel kell módosítania.
 
-1. A Azure Portal válassza a ** \<SID\>-LB-ASCs terheléselosztó** > terheléselosztási**szabályok**elemet.
+1. A Azure Portal válassza a ** \<SID\> -LB-ASCs**terheléselosztó terheléselosztási  >  **szabályokat**.
 2. Az SAP-ASCS vagy az SCS-példányhoz tartozó összes terheléselosztási szabály esetében módosítsa a következő értékeket:
 
    * Name
@@ -550,7 +550,7 @@ A Azure Load Balancer belső terheléselosztó zárja be a kapcsolatokat, ha a k
 
 Ha az SAP ASCS/SCS-példányt mindkét fürtcsomóponton szeretné felvenni, először adja hozzá ezeket a Windows-beállításjegyzékbeli bejegyzéseket az SAP ASCS/SCS-hez készült Windows-fürtcsomópontokon:
 
-| Útvonal | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
+| Elérési út | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
 | --- | --- |
 | Változó neve |`KeepAliveTime` |
 | Változó típusa |REG_DWORD (decimális) |
@@ -561,7 +561,7 @@ Ha az SAP ASCS/SCS-példányt mindkét fürtcsomóponton szeretné felvenni, el�
 
 Ezt követően adja hozzá ezt a Windows beállításjegyzékbeli bejegyzést az SAP ASCS/SCS-hez készült Windows-fürtcsomópontok esetében:
 
-| Útvonal | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
+| Elérési út | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
 | --- | --- |
 | Változó neve |`KeepAliveInterval` |
 | Változó típusa |REG_DWORD (decimális) |
@@ -724,7 +724,7 @@ A fürt fájlmegosztás-megosztásának konfigurálása a következő feladatoka
 
    _**26. ábra:** Tanúsító fájlmegosztás kiválasztása_
 
-4. Adja meg a fájlmegosztás UNC elérési útját (példánkban: \\domcontr-0\FSW). Ha meg szeretné tekinteni az elvégezhető módosítások listáját, válassza a **tovább**lehetőséget.
+4. Adja meg a fájlmegosztás UNC elérési útját (példánkban: \\ domcontr-0\FSW). Ha meg szeretné tekinteni az elvégezhető módosítások listáját, válassza a **tovább**lehetőséget.
 
    ![27. ábra: a tanúsító megosztáshoz tartozó fájlmegosztás helyének meghatározása][sap-ha-guide-figure-3026]
 
@@ -769,7 +769,7 @@ A .NET-keretrendszer 3,5 kétféleképpen adható hozzá:
 
   _**30. ábra:** Telepítési folyamatjelző sáv a .NET-keretrendszer 3,5-es verziójának a szerepkörök és szolgáltatások hozzáadása varázsló használatával történő telepítésekor_
 
-- Használja a DISM. exe parancssori eszközt. Ilyen típusú telepítés esetén el kell érnie a SxS könyvtárat a Windows telepítési adathordozóján. Írja be a következő parancsot egy rendszergazda jogú parancssorba:
+- Használja a dism.exe parancssori eszközt. Ilyen típusú telepítés esetén el kell érnie a SxS könyvtárat a Windows telepítési adathordozóján. Írja be a következő parancsot egy rendszergazda jogú parancssorba:
 
   ```
   Dism /online /enable-feature /featurename:NetFx3 /All /Source:installation_media_drive:\sources\sxs /LimitAccess

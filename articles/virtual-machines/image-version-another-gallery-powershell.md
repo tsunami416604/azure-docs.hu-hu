@@ -10,10 +10,10 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.openlocfilehash: 10cd8514b529f29f68ea3df14cdc208dd8fdd556
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82796927"
 ---
 # <a name="copy-an-image-from-another-gallery"></a>Rendszerkép másolása egy másik gyűjteményből
@@ -39,7 +39,7 @@ Információra van szüksége a forrás rendszerkép-definíciójában, hogy má
 
 A [Get-AzResource](/powershell/module/az.resources/get-azresource) parancsmaggal megjelenítheti a meglévő galériák, képdefiníciók és képverziók adatait.
 
-Az eredmények formátuma `gallery\image definition\image version`.
+Az eredmények formátuma `gallery\image definition\image version` .
 
 ```azurepowershell-interactive
 Get-AzResource `
@@ -47,7 +47,7 @@ Get-AzResource `
    Format-Table -Property Name,ResourceGroupName
 ```
 
-Ha már rendelkezik az összes szükséges információval, a [Get-AzGalleryImageVersion](/powershell/module/az.compute/get-azgalleryimageversion)használatával lekérheti a forrás rendszerkép VERZIÓjának azonosítóját. `1.0.0` Ebben a példában bemutatjuk a `myImageDefinition` definíció rendszerképének verzióját a `myGallery` forrás-katalógusban az `myResourceGroup` erőforráscsoporthoz.
+Ha már rendelkezik az összes szükséges információval, a [Get-AzGalleryImageVersion](/powershell/module/az.compute/get-azgalleryimageversion)használatával lekérheti a forrás rendszerkép VERZIÓjának azonosítóját. Ebben a példában bemutatjuk a `1.0.0` definíció rendszerképének verzióját a forrás-katalógusban az `myImageDefinition` `myGallery` `myResourceGroup` erőforráscsoporthoz.
 
 ```azurepowershell-interactive
 $sourceImgVer = Get-AzGalleryImageVersion `
@@ -147,7 +147,7 @@ $job = $imageVersion = New-AzGalleryImageVersion `
    -asJob 
 ```
 
-Eltarthat egy ideig, amíg replikálja a rendszerképet az összes megcélzott régióba, így létrehoztunk egy feladatot, hogy nyomon kövessük a folyamat előrehaladását. A feladatok előrehaladásának megtekintéséhez írja be a következőt `$job.State`:.
+Eltarthat egy ideig, amíg replikálja a rendszerképet az összes megcélzott régióba, így létrehoztunk egy feladatot, hogy nyomon kövessük a folyamat előrehaladását. A feladatok előrehaladásának megtekintéséhez írja be a következőt: `$job.State` .
 
 ```azurepowershell-interactive
 $job.State
@@ -156,7 +156,7 @@ $job.State
 > [!NOTE]
 > Meg kell várnia, amíg a rendszerkép verziója teljesen elkészült és replikálva lett ahhoz, hogy ugyanazt a felügyelt képet használhassa egy másik rendszerkép-verzió létrehozásához.
 >
-> A rendszerképet a prémium tárolóban is tárolhatja egy hozzáadási `-StorageAccountType Premium_LRS`vagy a [zóna redundáns tárterületével](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) , `-StorageAccountType Standard_ZRS` ha létrehozza a rendszerkép verzióját.
+> A rendszerképet a prémium tárolóban is tárolhatja egy hozzáadási `-StorageAccountType Premium_LRS` vagy a [zóna redundáns tárterületével](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) , `-StorageAccountType Standard_ZRS` Ha létrehozza a rendszerkép verzióját.
 >
 
 

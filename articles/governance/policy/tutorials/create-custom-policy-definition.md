@@ -3,12 +3,12 @@ title: 'Oktatóanyag: egyéni szabályzat-definíció létrehozása'
 description: Ebben az oktatóanyagban egy egyéni szabályzat-definíciót Azure Policy az Azure-erőforrásokra vonatkozó egyéni üzleti szabályok érvénybe léptetéséhez.
 ms.date: 06/16/2020
 ms.topic: tutorial
-ms.openlocfilehash: f8702e84923762b2f417eee882a473228d6bafb8
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: bff5596049a141f06f5c189f2e5673efed1ed6bf
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84888154"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970824"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>Oktatóanyag: egyéni szabályzat-definíció létrehozása
 
@@ -53,7 +53,7 @@ Az üzleti követelménytől függően az Azure-erőforrás, amellyel a Azure Po
 Az Azure-erőforrások tulajdonságai számos módon meghatározhatók. Ebben az oktatóanyagban a következőket fogjuk megtekinteni:
 
 - Azure Policy-bővítmény VSCode-hoz
-- Resource Manager-sablonok
+- Azure Resource Manager sablonok (ARM-sablonok)
   - Meglévő erőforrás exportálása
   - Létrehozási élmény
   - Gyorsindítás sablonok (GitHub)
@@ -64,7 +64,7 @@ Az Azure-erőforrások tulajdonságai számos módon meghatározhatók. Ebben az
 
 A [vs Code bővítmény](../how-to/extension-for-vscode.md#search-for-and-view-resources) használatával böngészheti az erőforrásokat a környezetben, és megtekintheti a Resource Manager-tulajdonságokat az egyes erőforrásokon.
 
-### <a name="resource-manager-templates"></a>Resource Manager-sablonok
+### <a name="arm-templates"></a>ARM-sablonok
 
 A felügyelni kívánt tulajdonságot több módon is megtekintheti egy [Resource Manager-sablonban](../../../azure-resource-manager/templates/template-tutorial-create-encrypted-storage-accounts.md) .
 
@@ -144,12 +144,11 @@ Ez az információ azt jelzi, hogy a tulajdonság típusa és a **supportsHttpsT
 
 #### <a name="quickstart-templates-on-github"></a>Gyors útmutató sablonok a GitHubon
 
-A GitHubon futó Azure rövid útmutató [sablonjai](https://github.com/Azure/azure-quickstart-templates) több száz Resource Manager-sablonnal rendelkeznek, amelyek különböző erőforrásokhoz készültek. Ezek a sablonok nagyszerű módot biztosítanak a keresett erőforrás-tulajdonság megkeresésére. Előfordulhat, hogy egyes tulajdonságok úgy tűnik, hogy mit keres, de mást is vezérel.
+A GitHubon található Azure rövid útmutató- [sablonok](https://github.com/Azure/azure-quickstart-templates) több száz ARM-sablonból állnak, amelyek különböző erőforrásokhoz készültek. Ezek a sablonok nagyszerű módot biztosítanak a keresett erőforrás-tulajdonság megkeresésére. Előfordulhat, hogy egyes tulajdonságok úgy tűnik, hogy mit keres, de mást is vezérel.
 
 #### <a name="resource-reference-docs"></a>Erőforrás-referenciák dokumentációja
 
-A **supportsHttpsTrafficOnly** helyes tulajdonságának ellenőrzéséhez ellenőrizze a Storage- [fiók erőforrásának](/azure/templates/microsoft.storage/2018-07-01/storageaccounts) Resource Manager-sablonra vonatkozó hivatkozását a tárolási szolgáltatón.
-A Properties objektum érvényes paraméterek listáját tartalmazza. Az [StorageAccountPropertiesCreateParameters-Object](/azure/templates/microsoft.storage/2018-07-01/storageaccounts#storageaccountpropertiescreateparameters-object) hivatkozás kiválasztásával egy elfogadható tulajdonságokat tartalmazó táblázat látható. **supportsHttpsTrafficOnly** jelennek meg, és a Leírás megfelel az üzleti igényeknek.
+A **supportsHttpsTrafficOnly** helyes tulajdonságának ellenőrzéséhez ellenőrizze a Storage- [fiók erőforrásának](/azure/templates/microsoft.storage/2018-07-01/storageaccounts) ARM-sablonra vonatkozó hivatkozását a tárolási szolgáltatón. A Properties objektum érvényes paraméterek listáját tartalmazza. Az [StorageAccountPropertiesCreateParameters-Object](/azure/templates/microsoft.storage/2018-07-01/storageaccounts#storageaccountpropertiescreateparameters-object) hivatkozás kiválasztásával egy elfogadható tulajdonságokat tartalmazó táblázat látható. **supportsHttpsTrafficOnly** jelennek meg, és a Leírás megfelel az üzleti igényeknek.
 
 ### <a name="azure-resource-explorer"></a>Azure Resource Explorer
 
@@ -219,7 +218,7 @@ az graph query -q "Resources | where type=~'microsoft.storage/storageaccounts' |
 Search-AzGraph -Query "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1"
 ```
 
-Az eredmények ugyanúgy néznek ki, mint a Resource Manager-sablonokban és a Azure Erőforrás-kezelő. Az Azure Resource Graph eredményei azonban _az aliasok tömb_ _kivetítésével_ is tartalmazhatják az [alias](../concepts/definition-structure.md#aliases) részleteit:
+Az eredmények ugyanúgy néznek ki, mint az ARM-sablonokban és a Azure Erőforrás-kezelőon. Az Azure Resource Graph eredményei azonban _az aliasok tömb_ _kivetítésével_ is tartalmazhatják az [alias](../concepts/definition-structure.md#aliases) részleteit:
 
 ```kusto
 Resources

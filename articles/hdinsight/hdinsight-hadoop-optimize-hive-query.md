@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/14/2020
 ms.openlocfilehash: c81d70577c5e7b852d315bdb91993d15624a7336
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82791493"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Apache Hive-lekérdezések optimalizálása az Azure HDInsightban
 
 Az Azure HDInsight számos különböző típusú fürttel és technológiával rendelkezhet Apache Hive lekérdezések futtatásával. A számítási feladatok teljesítményének optimalizálása érdekében válassza ki a megfelelő fürtöt.
 
-Válassza például az **interaktív lekérdezési** fürt típusa lehetőséget az interaktív `ad hoc`lekérdezések optimalizálásához. Válassza az Apache **Hadoop** -fürt típusa lehetőséget a Batch-folyamatként használt kaptár-lekérdezések optimalizálásához. A **Spark** -és **HBase** -fürtök a kaptár-lekérdezéseket is futtathatják. A különböző HDInsight-fürtökön futó kaptár-lekérdezések futtatásával kapcsolatos további információkért lásd: [Mi az a Apache Hive és a HiveQL az Azure HDInsight?](hadoop/hdinsight-use-hive.md)című témakörben.
+Válassza például az **interaktív lekérdezési** fürt típusa lehetőséget az `ad hoc` interaktív lekérdezések optimalizálásához. Válassza az Apache **Hadoop** -fürt típusa lehetőséget a Batch-folyamatként használt kaptár-lekérdezések optimalizálásához. A **Spark** -és **HBase** -fürtök a kaptár-lekérdezéseket is futtathatják. A különböző HDInsight-fürtökön futó kaptár-lekérdezések futtatásával kapcsolatos további információkért lásd: [Mi az a Apache Hive és a HiveQL az Azure HDInsight?](hadoop/hdinsight-use-hive.md)című témakörben.
 
 A Hadoop-HDInsight-fürtök nem alapértelmezett teljesítményre vannak optimalizálva. Ez a cikk a kaptárak leggyakoribb teljesítmény-optimalizálási módszereit ismerteti, amelyeket a lekérdezésekre alkalmazhat.
 
@@ -198,6 +198,6 @@ Több optimalizálási módszer is megvizsgálható, például:
 Ebben a cikkben több általános kaptár-lekérdezés optimalizálási módszerét is megtanulta. További információt a következő cikkekben talál:
 
 * [Apache Hive használata a HDInsight](hadoop/hdinsight-use-hive.md)
-* [Apache Hive optimalizálása](./optimize-hive-ambari.md)
+* [Az Apache Hive optimalizálása](./optimize-hive-ambari.md)
 * [Repülési késleltetési adatelemzések elemzése a HDInsight interaktív lekérdezés használatával](./interactive-query/interactive-query-tutorial-analyze-flight-data.md)
 * [Twitter-adataik elemzése a HDInsight Apache Hive használatával](hdinsight-analyze-twitter-data-linux.md)

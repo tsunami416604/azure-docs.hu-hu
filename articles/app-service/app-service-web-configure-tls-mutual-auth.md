@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 10/01/2019
 ms.custom: seodec18
 ms.openlocfilehash: 143317cd424428d7f480f4880d3aab750853890b
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82592366"
 ---
 # <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>A TLS kölcsönös hitelesítés konfigurálása Azure App Servicehoz
@@ -24,7 +24,7 @@ A Azure App Service-alkalmazáshoz való hozzáférést a különböző típusú
 
 ## <a name="enable-client-certificates"></a>Ügyféltanúsítványok engedélyezése
 
-Ha az alkalmazást az Ügyféltanúsítványok megköveteléséhez szeretné beállítani, **akkor a bejövő** tanúsítvány megkövetelése lehetőségre kattintva megadhatja az Azure Portal **konfiguráció** > **általános beállítások** elemét, `clientCertEnabled` vagy be kell állítania az `true`alkalmazás beállítását a következőre:. A beállítás megadásához futtassa a következő parancsot a [Cloud Shellban](https://shell.azure.com).
+Ha az alkalmazást az Ügyféltanúsítványok megköveteléséhez szeretné beállítani, **akkor a bejövő** tanúsítvány megkövetelése lehetőségre kattintva megadhatja az Azure Portal **konfiguráció**  >  **általános beállítások** elemét, vagy be kell állítania az `clientCertEnabled` alkalmazás beállítását a következőre: `true` . A beállítás megadásához futtassa a következő parancsot a [Cloud Shellban](https://shell.azure.com).
 
 ```azurecli-interactive
 az webapp update --set clientCertEnabled=true --name <app_name> --resource-group <group_name>
@@ -34,7 +34,7 @@ az webapp update --set clientCertEnabled=true --name <app_name> --resource-group
 
 Ha engedélyezi a kölcsönös hitelesítést az alkalmazáshoz, az alkalmazás gyökerében lévő összes elérési útnak szüksége lesz az ügyféltanúsítvány elérésére. Annak engedélyezéséhez, hogy bizonyos elérési utak nyitva maradjanak a névtelen hozzáféréshez, a kizárási útvonalakat az alkalmazás konfigurációjának részeként is meghatározhatja.
 
-A kizárási útvonalakat úgy konfigurálhatja, hogy kiválasztja a **konfiguráció** > **általános beállításai** lehetőséget, és meghatározza a kizárási útvonalat. Ebben a példában az alkalmazás `/public` elérési útja nem kér ügyféltanúsítványt.
+A kizárási útvonalakat úgy konfigurálhatja, hogy kiválasztja a **konfiguráció**  >  **általános beállításai** lehetőséget, és meghatározza a kizárási útvonalat. Ebben a példában az `/public` alkalmazás elérési útja nem kér ügyféltanúsítványt.
 
 ![Tanúsítvány kizárási elérési útjai][exclusion-paths]
 
@@ -45,7 +45,7 @@ App Service a kérelem TLS-megszakítása a frontend Load balancerben történik
 
 A ASP.NET esetében az ügyféltanúsítvány a **HttpRequest. ClientCertificate** tulajdonságon keresztül érhető el.
 
-Más alkalmazások (node. js, PHP stb.) esetén az ügyfél-tanúsítvány az alkalmazásban a `X-ARR-ClientCert` kérelem fejlécében Base64 kódolású értékkel érhető el.
+Más alkalmazások (Node.js, PHP stb.) esetében az ügyfél-tanúsítvány az alkalmazásban a kérelem fejlécében Base64 kódolású értékkel érhető el `X-ARR-ClientCert` .
 
 ## <a name="aspnet-sample"></a>ASP.NET minta
 
@@ -171,9 +171,9 @@ Más alkalmazások (node. js, PHP stb.) esetén az ügyfél-tanúsítvány az al
     }
 ```
 
-## <a name="nodejs-sample"></a>Node. js-minta
+## <a name="nodejs-sample"></a>Node.js minta
 
-A következő Node. js-mintakód beolvassa a `X-ARR-ClientCert` fejlécet, és a [Node-Forge](https://github.com/digitalbazaar/forge) használatával átalakítja a Base64 kódolású PEM-karakterláncot egy tanúsítvány objektummá, és érvényesíti azt:
+A következő Node.js mintakód beolvassa a `X-ARR-ClientCert` fejlécet, és a [Node-Forge](https://github.com/digitalbazaar/forge) használatával átalakítja a BASE64 kódolású PEM-karakterláncot egy tanúsítvány objektummá, és érvényesíti azt:
 
 ```javascript
 import { NextFunction, Request, Response } from 'express';
@@ -218,7 +218,7 @@ export class AuthorizationHandler {
 
 ## <a name="java-sample"></a>Java-minta
 
-A következő Java- `X-ARR-ClientCert` osztály kódolja a tanúsítványt egy `X509Certificate` példányba. `certificateIsValid()`ellenőrzi, hogy a Tanúsítvány ujjlenyomata megegyezik-e a konstruktorban megadott névvel, és hogy a tanúsítvány nem járt-e le.
+A következő Java-osztály kódolja a tanúsítványt `X-ARR-ClientCert` egy `X509Certificate` példányba. `certificateIsValid()`ellenőrzi, hogy a Tanúsítvány ujjlenyomata megegyezik-e a konstruktorban megadott névvel, és hogy a tanúsítvány nem járt-e le.
 
 
 ```java

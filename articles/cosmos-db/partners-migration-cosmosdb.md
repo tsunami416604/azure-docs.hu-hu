@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.openlocfilehash: ad5ed2b45a182c1f33f33ca1f6d4e3212c61b6a2
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82791731"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Azure Cosmos DB NoSQL áttelepítési és alkalmazásfejlesztés-partnerek
@@ -21,32 +21,32 @@ A NoSQL migrálása révén számos tapasztalt rendszerintegrátori partnert és
 
 |**Partner**  |**Képességek & felület**  |**Támogatott országok/régiók**  |
 |---------|---------|---------|
-|[Striim](https://www.striim.com/)    |  Folyamatos, valós idejű adatáthelyezés, adatáttelepítés|   USA   |
-| [10thMagnitude](https://www.10thmagnitude.com/) | IoT, kiskereskedelmi (leltár), operatív elemzés (Spark), kiszolgáló nélküli architektúra, alkalmazásfejlesztés | USA |
-|[Altoros Development LLC](https://www.altoros.com/)  |  IoT, megszemélyesítési kereskedelem (leltár), kiszolgáló nélküli architektúrák NoSQL Migrálás, alkalmazásfejlesztés|   USA |
+|[Striim](https://www.striim.com/)    |  Folyamatos, valós idejű adatáthelyezés, adatáttelepítés|   Amerikai Egyesült Államok   |
+| [10thMagnitude](https://www.10thmagnitude.com/) | IoT, kiskereskedelmi (leltár), operatív elemzés (Spark), kiszolgáló nélküli architektúra, alkalmazásfejlesztés | Amerikai Egyesült Államok |
+|[Altoros Development LLC](https://www.altoros.com/)  |  IoT, megszemélyesítési kereskedelem (leltár), kiszolgáló nélküli architektúrák NoSQL Migrálás, alkalmazásfejlesztés|   Amerikai Egyesült Államok |
 |[Avanade](https://www.avanade.com/) | IoT, kiskereskedelmi (leltár), kiszolgáló nélküli architektúra, alkalmazásfejlesztés | Ausztria, Németország, Svájc, Olaszország, Norvégia, Spanyolország, Egyesült Királyság, Kanada |
 |[Accenture](https://www.accenture.com/) | IoT, kiskereskedelmi (leltár), kiszolgáló nélküli architektúra, alkalmazásfejlesztés |Globális|
 |[Bluemetal](https://www.bluemetal.com/)     |  IoT, személyre szabási kiskereskedelmi (leltár), működési elemzés a nagyvállalati & SMC, AI-képek megjegyzése, eszköz-ellenőrzés, NoSQL Migrálás, alkalmazásfejlesztés     |    Észak-Amerika, Ázsia – csendes-óceáni térség     |
-|[Capax Global LLC](https://www.capaxglobal.com/) | IoT, megszemélyesítés, kiskereskedelmi (leltár), operatív elemzés (Spark), kiszolgáló nélküli architektúra, alkalmazásfejlesztés|    USA     |  
+|[Capax Global LLC](https://www.capaxglobal.com/) | IoT, megszemélyesítés, kiskereskedelmi (leltár), operatív elemzés (Spark), kiszolgáló nélküli architektúra, alkalmazásfejlesztés|    Amerikai Egyesült Államok     |  
 | [Capgemini](https://www.capgemini.com/) | Kiskereskedelmi (leltár), IoT, operatív elemzés (Spark), alkalmazásfejlesztés | Egyesült Államok, Franciaország, Egyesült Királyság, Hollandia, Finnország  |
 | [Cognizant azért](https://www.cognizant.com/) | IoT, személyre szabás, kiskereskedelmi (leltár), operatív elemzés (Spark), alkalmazásfejlesztés |Egyesült Államok, Kanada, Egyesült Királyság, Dánia, Hollandia, Svájc, Ausztrália, Japán |
-|[Infosys](https://www.infosys.com/)     | Alkalmazás-fejlesztés      |    USA    |  
+|[Infosys](https://www.infosys.com/)     | Alkalmazás-fejlesztés      |    Amerikai Egyesült Államok    |  
 | [Lagash rendszerek](https://www.lagash.com/) | IoT, kiszolgáló nélküli architektúra, alkalmazásfejlesztés | Argentína, Chile, Kolumbia, Mexikó|
 | [Lambda3 informatika](https://www.lambda3.com.br/) | Valós idejű személyre szabás, kiskereskedelmi leltár, alkalmazások fejlesztése | Brazília|
-|[Neal-elemzés](https://www.nealanalytics.com/)    |     Személyre szabás, kiskereskedelmi (leltár), operatív elemzés (Spark), alkalmazásfejlesztés  |    USA     |  
-|[Gyakorlatias Works szoftver Inc](https://www.pragmaticworks.com/)    |   NoSQL migrálása      |   USA      |
+|[Neal-elemzés](https://www.nealanalytics.com/)    |     Személyre szabás, kiskereskedelmi (leltár), operatív elemzés (Spark), alkalmazásfejlesztés  |    Amerikai Egyesült Államok     |  
+|[Gyakorlatias Works szoftver Inc](https://www.pragmaticworks.com/)    |   NoSQL migrálása      |   Amerikai Egyesült Államok      |
 | [A Ricoh digitális szolgáltatásai](https://www.ricoh.com/) | IoT, valós idejű személyre szabás, kiskereskedelmi leltár, NoSQL Migrálás | Egyesült Királyság  |
-|[SNP-technológiák](https://www.snp.com/) | NoSQL migrálása| USA |
+|[SNP-technológiák](https://www.snp.com/) | NoSQL migrálása| Amerikai Egyesült Államok |
 | [Solidsoft válasz](https://www.reply.com/solidsoft-reply/) | NoSQL migrálása | Horvátország, Svédország, Dánia, Írország, Bulgária, Szlovénia, Ciprus, Málta, Litvánia, Cseh Köztársaság, Izland és Svájc és Liechtenstein|
 | [Spanyol pont technológiák](https://www.spanishpoint.ie/) | NoSQL migrálása| Írország|
 | [Syone](https://www.syone.com/) | NoSQL migrálása| Portugália|
-|[Tallantól](https://www.tallan.com/)    |  Alkalmazás-fejlesztés      |    USA     |
+|[Tallantól](https://www.tallan.com/)    |  Alkalmazás-fejlesztés      |    Amerikai Egyesült Államok     |
 | [TKR](https://www.tcs.com/) | Alkalmazás-fejlesztés | Egyesült Államok, Egyesült Királyság, Franciaország, Malajzia, Dánia, Norvégia, Svédország|
-|[VTeamLabs](https://www.vteamlabs.com/)    | Személyre szabás, kiskereskedelmi (leltár), IoT, játék, operatív elemzés (Spark), kiszolgáló nélküli architektúra, NoSQL Migrálás, alkalmazásfejlesztés       |  USA      |  
+|[VTeamLabs](https://www.vteamlabs.com/)    | Személyre szabás, kiskereskedelmi (leltár), IoT, játék, operatív elemzés (Spark), kiszolgáló nélküli architektúra, NoSQL Migrálás, alkalmazásfejlesztés       |  Amerikai Egyesült Államok      |  
 | [White Duck GmbH](https://whiteducksoftware.com/) |Új alkalmazások fejlesztése, alkalmazás-háttérrendszer, dokumentum-alapú adattárolási tár| Németország |
 | [Kinyitás](https://www.xpand-it.com/) | Új alkalmazások fejlesztése | Portugália, Egyesült Királyság|
-| [Vass](https://hanu.com/) | IoT, alkalmazásfejlesztés | USA|
-| [Szoftveres szoftverek](https://www.incyclesoftware.com/) | NoSQL-áttelepítés, kiszolgáló nélküli architektúra, alkalmazásfejlesztés| USA|
+| [Vass](https://hanu.com/) | IoT, alkalmazásfejlesztés | Amerikai Egyesült Államok|
+| [Szoftveres szoftverek](https://www.incyclesoftware.com/) | NoSQL-áttelepítés, kiszolgáló nélküli architektúra, alkalmazásfejlesztés| Amerikai Egyesült Államok|
 | [Orion](https://www.orioninc.com/) | Személyre szabás, kiskereskedelmi (leltár), operatív elemzés (Spark), IoT, alkalmazásfejlesztés| Egyesült Államok, Kanada|
 
 ## <a name="next-steps"></a>További lépések

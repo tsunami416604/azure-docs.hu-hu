@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/29/2020
 ms.openlocfilehash: 2dae0f662eefa7f7b1f56d057cd47f1cb92244ce
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82592060"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Azure HDInsight-fürtök méretezése
@@ -35,8 +35,8 @@ A Microsoft a következő segédprogramokat biztosítja a fürtök méretezésé
 |[PowerShell Az](https://docs.microsoft.com/powershell/azure)|[`Set-AzHDInsightClusterSize`](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize) `-ClusterName CLUSTERNAME -TargetInstanceCount NEWSIZE`|
 |[PowerShell AzureRM](https://docs.microsoft.com/powershell/azure/azurerm) |[`Set-AzureRmHDInsightClusterSize`](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) `-ClusterName CLUSTERNAME -TargetInstanceCount NEWSIZE`|
 |[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) | [`az hdinsight resize`](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) `--resource-group RESOURCEGROUP --name CLUSTERNAME --workernode-count NEWSIZE`|
-|[Klasszikus Azure CLI](hdinsight-administer-use-command-line.md)|`azure hdinsight cluster resize CLUSTERNAME NEWSIZE` |
-|[Azure Portal](https://portal.azure.com)|Nyissa meg a HDInsight-fürt panelt, válassza ki a **fürt méretét** a bal oldali menüben, majd a fürt mérete panelen írja be a munkavégző csomópontok számát, majd kattintson a Mentés gombra.|  
+|[Azure klasszikus parancssori felület](hdinsight-administer-use-command-line.md)|`azure hdinsight cluster resize CLUSTERNAME NEWSIZE` |
+|[Azure Portalra](https://portal.azure.com)|Nyissa meg a HDInsight-fürt panelt, válassza ki a **fürt méretét** a bal oldali menüben, majd a fürt mérete panelen írja be a munkavégző csomópontok számát, majd kattintson a Mentés gombra.|  
 
 ![Azure Portal méretezési fürt beállítása](./media/hdinsight-scaling-best-practices/azure-portal-settings-nodes.png)
 
@@ -80,7 +80,7 @@ Az adatcsomópontok számának módosításának következményei a HDInsight á
 
     A következő lépésekkel kiegyensúlyozhatja a topológiát a Storm felhasználói felületének használatával.
 
-    1. Nyissa meg `https://CLUSTERNAME.azurehdinsight.net/stormui` a webböngészőben `CLUSTERNAME` , ahol a a Storm-fürt neve. Ha a rendszer kéri, adja meg a fürt létrehozásakor megadott HDInsight-Fürtfelügyelő (rendszergazda) nevét és jelszavát.
+    1. Nyissa meg a `https://CLUSTERNAME.azurehdinsight.net/stormui` webböngészőben, ahol `CLUSTERNAME` a a Storm-fürt neve. Ha a rendszer kéri, adja meg a fürt létrehozásakor megadott HDInsight-Fürtfelügyelő (rendszergazda) nevét és jelszavát.
 
     1. Válassza ki a megismételni kívánt topológiát, majd kattintson az **újraelosztás** gombra. Adja meg az újraelosztási művelet végrehajtása előtti késleltetést.
 
@@ -120,13 +120,13 @@ Ha el szeretné kerülni, hogy a futó feladatok leskálázási művelet közben
 A függőben lévő és futó feladatok listájának megtekintéséhez a következő lépéseket követve használhatja a fonal **Resource Manager felhasználói felületét**:
 
 1. A [Azure Portal](https://portal.azure.com/)válassza ki a fürtöt.  A fürt megnyílik egy új portál oldalon.
-2. A fő nézetből navigáljon a **fürt irányítópultok** > **Ambari kezdőlapra**. Adja meg a fürt hitelesítő adatait.
+2. A fő nézetből navigáljon a **fürt irányítópultok**  >  **Ambari kezdőlapra**. Adja meg a fürt hitelesítő adatait.
 3. A Ambari felhasználói felületén válassza a **fonal** elemet a szolgáltatások listájában a bal oldali menüben.  
 4. A fonal lapon válassza a **gyors hivatkozások** lehetőséget, majd vigye az egérmutatót az aktív fő csomópont fölé, majd válassza a **Resource Manager felhasználói felület**lehetőséget.
 
     ![Apache Ambari – a Resource Manager felhasználói felületének gyors hivatkozásai](./media/hdinsight-scaling-best-practices/resource-manager-ui1.png)
 
-A Resource Manager felhasználói felületét közvetlenül is elérheti `https://<HDInsightClusterName>.azurehdinsight.net/yarnui/hn/cluster`.
+A Resource Manager felhasználói felületét közvetlenül is elérheti `https://<HDInsightClusterName>.azurehdinsight.net/yarnui/hn/cluster` .
 
 Ekkor megjelenik a feladatok listája, valamint a jelenlegi állapotuk. A képernyőképen egy jelenleg futó feladatot futtatunk:
 
@@ -148,7 +148,7 @@ yarn application -kill "application_1499348398273_0003"
 
 Amikor lekicsinyít egy fürtöt, a HDInsight az Apache Ambari felügyeleti felületét használja az extra feldolgozói csomópontok leszereléséhez. A csomópontok replikálják a HDFS-blokkokat más online munkavégző csomópontokra. Ezt követően a HDInsight biztonságosan méretezi a fürtöt. A skálázási művelet során a HDFS csökkentett módba kerül. A skálázás befejeződése után HDFS kell lennie. Bizonyos esetekben azonban a HDFS a replikálás alatt álló blokkolás miatt egy méretezési művelet során csökkentett módban ragadja meg.
 
-Alapértelmezés szerint az HDFS 1 `dfs.replication` értékkel van konfigurálva, amely azt határozza meg, hogy az egyes állományrendszerek hány példánya érhető el. A rendszer a fájl minden példányát a fürt egy másik csomópontján tárolja.
+Alapértelmezés szerint az HDFS `dfs.replication` 1 értékkel van konfigurálva, amely azt határozza meg, hogy az egyes állományrendszerek hány példánya érhető el. A rendszer a fájl minden példányát a fürt egy másik csomópontján tárolja.
 
 Ha a blokkoló példányok várt száma nem érhető el, a HDFS biztonságos módba lép, és a Ambari riasztásokat hoz létre. A HDFS csökkentett módba léphetnek a skálázási művelethez. Előfordulhat, hogy a fürt biztonságos módban akad, ha a szükséges számú csomópont nem észlelhető a replikáláshoz.
 
@@ -162,7 +162,7 @@ org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot create director
 org.apache.http.conn.HttpHostConnectException: Connect to active-headnode-name.servername.internal.cloudapp.net:10001 [active-headnode-name.servername. internal.cloudapp.net/1.1.1.1] failed: Connection refused
 ```
 
-Tekintse át a csomópontok nevét a `/var/log/hadoop/hdfs/` mappából, a fürt méretezésének időpontja közelében, hogy a rendszer mikor adta meg a biztonságos üzemmódot. A naplófájlok neve `Hadoop-hdfs-namenode-<active-headnode-name>.*`.
+Tekintse át a csomópontok nevét a `/var/log/hadoop/hdfs/` mappából, a fürt méretezésének időpontja közelében, hogy a rendszer mikor adta meg a biztonságos üzemmódot. A naplófájlok neve `Hadoop-hdfs-namenode-<active-headnode-name>.*` .
 
 A probléma alapvető oka az volt, hogy a struktúra a HDFS ideiglenes fájljaitól függ a lekérdezések futtatása során. Ha a HDFS biztonságos módba lép, a struktúra nem tud lekérdezéseket futtatni, mert nem tud írni a HDFS. A HDFS lévő ideiglenes fájlok az egyes munkavégző csomópont virtuális gépekhez csatlakoztatott helyi meghajtón találhatók. A fájlok replikálása más munkavégző csomópontok között három replikán, minimumon történik.
 
@@ -171,7 +171,7 @@ A probléma alapvető oka az volt, hogy a struktúra a HDFS ideiglenes fájljait
 A HDInsight csökkentett módban való használatának megakadályozása többféle módon is elvégezhető:
 
 * A HDInsight skálázása előtt állítsa le az összes struktúra-feladatot. Másik lehetőségként ütemezze a skálázási folyamatot, hogy elkerülje a kaptár-feladatok futtatásának ütközését.
-* A skálázás előtt törölje manuálisan a `tmp` kaptárt a HDFS.
+* `tmp`A skálázás előtt törölje manuálisan a kaptárt a HDFS.
 * Csak három munkavégző csomópontra, minimumra HDInsight le. Ne legyen alacsonyabb, mint egy feldolgozói csomópont.
 * Ha szükséges, futtassa a parancsot a biztonságos mód elhagyása érdekében.
 
@@ -187,7 +187,7 @@ A struktúra-feladatok skálázása előtt állítsa le a kaptár-feladatokat, �
 
 Ha a struktúra az ideiglenes fájlok mögött maradt, akkor manuálisan is törölheti ezeket a fájlokat a csökkentett mód elkerülése érdekében.
 
-1. Annak ellenőrzéséhez, hogy a rendszer melyik helyet használja a struktúra ideiglenes fájljaihoz, tekintse meg a `hive.exec.scratchdir` konfigurációs tulajdonságot. Ez a paraméter a következőn belül `/etc/hive/conf/hive-site.xml`van beállítva:
+1. Annak ellenőrzéséhez, hogy a rendszer melyik helyet használja a struktúra ideiglenes fájljaihoz, tekintse meg a `hive.exec.scratchdir` konfigurációs tulajdonságot. Ez a paraméter a következőn belül van beállítva `/etc/hive/conf/hive-site.xml` :
 
     ```xml
     <property>
@@ -198,7 +198,7 @@ Ha a struktúra az ideiglenes fájlok mögött maradt, akkor manuálisan is tör
 
 1. Állítsa le a kaptár-szolgáltatásokat, és ellenőrizze, hogy az összes lekérdezés és feladat befejeződött-e.
 
-1. Sorolja fel a fenti, a fentiekben ismertetett `hdfs://mycluster/tmp/hive/` Scratch könyvtár tartalmát, és ellenőrizze, hogy a fájl tartalmazza-e a következő fájlokat:
+1. Sorolja fel a fenti, a fentiekben ismertetett Scratch könyvtár tartalmát, `hdfs://mycluster/tmp/hive/` és ellenőrizze, hogy a fájl tartalmazza-e a következő fájlokat:
 
     ```bash
     hadoop fs -ls -R hdfs://mycluster/tmp/hive/hive
@@ -262,7 +262,7 @@ A skálázási művelet elvégzése után néhány percen belül automatikusan k
 
 ## <a name="next-steps"></a>További lépések
 
-* [Azure HDInsight-fürtök automatikus méretezése](hdinsight-autoscale-clusters.md)
+* [Azure HDInsight-fürtök automatikus skálázása](hdinsight-autoscale-clusters.md)
 
 A HDInsight-fürt méretezésével kapcsolatos részletes információkért lásd:
 

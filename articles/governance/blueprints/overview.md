@@ -3,12 +3,12 @@ title: Az Azure Blueprints áttekintése
 description: Ismerje meg, hogyan hozhat létre, határozhat meg és helyezhet üzembe összetevőket az Azure-környezetben az Azure BluePrints szolgáltatásban.
 ms.date: 05/06/2020
 ms.topic: overview
-ms.openlocfilehash: 68baeb8030caa17a9880cb0846688f1db6a15c87
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: 3a7cece81027bd8ac79250f2f2cd08da637b5f0b
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864504"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970926"
 ---
 # <a name="what-is-azure-blueprints"></a>Mi az az Azure Blueprints?
 
@@ -18,20 +18,20 @@ A tervekkel deklaratív módon, összehangoltan helyezhetők üzembe különböz
 
 - Szerepkör-hozzárendelések
 - Szabályzat-hozzárendelések
-- Azure Resource Manager-sablonok
+- Azure Resource Manager sablonok (ARM-sablonok)
 - Erőforráscsoportok
 
 Az Azure Blueprints szolgáltatást a globális terjesztésű [Azure Cosmos DB](../../cosmos-db/introduction.md) támogatja. A tervobjektumok több Azure-régióba vannak replikálva. Ez a replikálás alacsony késést, magas rendelkezésre állást és konzisztens hozzáférést biztosít a terv objektumaihoz, függetlenül attól, hogy az Azure-tervrajzok mely régiókban helyezik üzembe az erőforrásokat.
 
-## <a name="how-its-different-from-resource-manager-templates"></a>Miben különbözik ez a Resource Manager-sablonoktól?
+## <a name="how-its-different-from-arm-templates"></a>Miben különbözik az ARM-sablonoktól
 
-A szolgáltatás úgy van megtervezve, hogy segítsen a _környezet beállításában_. Ez a beállítás gyakran erőforráscsoportok, szabályzatok, szerepkör-hozzárendelések és Resource Manager-sablonok üzembe helyezését is magában foglalja. A terv egy olyan csomag, amely egyesíti az egyes _összetevők típusait_ , és lehetővé teszi a csomag összeállítását és verzióját, beleértve a CI/CD-folyamatokat. Végül minden csomag egy előfizetéshez van rendelve egyetlen műveletben, amely felügyelhető és nyomon követhető.
+A szolgáltatás úgy van megtervezve, hogy segítsen a _környezet beállításában_. Ez a beállítás gyakran erőforráscsoport, szabályzatok, szerepkör-hozzárendelések és ARM-sablonok központi telepítéseit tartalmazza. A terv egy olyan csomag, amely egyesíti az egyes _összetevők típusait_ , és lehetővé teszi a csomag összeállítását és verzióját, beleértve a CI/CD-folyamatokat. Végül minden csomag egy előfizetéshez van rendelve egyetlen műveletben, amely felügyelhető és nyomon követhető.
 
-Szinte mindent, amit a üzembe helyezéshez szeretne foglalni az Azure-tervekben, Resource Manager-sablonnal is elvégezhető. Azonban a Resource Manager-sablonok olyan dokumentumok, amelyek nem léteznek natív módon az Azure-ban – minden sablon tárolása helyileg vagy a verziókövetési rendszerben történik. A sablonok felhasználhatók egy vagy több Azure-erőforrás üzembe helyezéséhez, azonban az erőforrások üzembe helyezése után a sablonnal való aktív kapcsolat elveszik.
+Szinte minden, amit az Azure-tervezetekben szeretne felvenni az üzembe helyezéshez, ARM-sablonnal is elvégezhető. Az ARM-sablon azonban olyan dokumentum, amely nem létezik natív módon az Azure-ban – mindegyiket helyileg vagy a verziókövetés tárolja. A sablonok felhasználhatók egy vagy több Azure-erőforrás üzembe helyezéséhez, azonban az erőforrások üzembe helyezése után a sablonnal való aktív kapcsolat elveszik.
 
 Az Azure-tervezetek esetében a terv meghatározása (mit _kell_ telepíteni) és a terv-hozzárendelés (mi _volt_ az üzembe helyezett) közötti kapcsolat megmarad. Ez a kapcsolat lehetővé teszi az üzembe helyezett összetevők hatékonyabb nyomon követését és naplózását. Az Azure-tervrajzok egyszerre több előfizetést is frissíthetnek, amelyekre ugyanezen terv vonatkozik.
 
-Nem kell választani a Resource Manager-sablonok és a tervek között. Minden terv nulla vagy több Resource Manager-sablon _tervelemet_ tartalmazhat. Ez a támogatás azt jelenti, hogy a Resource Manager-sablonok könyvtárainak fejlesztésére és karbantartására tett korábbi erőfeszítések az Azure-tervezetekben újrafelhasználhatók.
+Nem kell választania egy ARM-sablon és egy terv között. Minden tervezet nulla vagy több ARM _-sablonból_állhat. Ez a támogatás azt jelenti, hogy az ARM-sablonok könyvtárainak fejlesztésére és karbantartására tett korábbi erőfeszítések az Azure-tervezetekben újrafelhasználhatók.
 
 ## <a name="how-its-different-from-azure-policy"></a>Miben különbözik ez az Azure Policytól?
 
@@ -49,8 +49,8 @@ A tervek _tervelemekből_ állnak. Az Azure-tervezetek jelenleg a következő er
 
 |Erőforrás  | Hierarchialehetőségek| Leírás  |
 |---------|---------|---------|
-|Erőforráscsoportok | Előfizetés | Hozzon létre egy új erőforráscsoportot, amelyet a tervben szereplő többi tervelem fog használni.  Ezekkel a helyőrző erőforráscsoportokkal az erőforrások a kívánt módon rendezhetők el, és kijelölhetők a tervbe foglalt szabályzat- és szerepkör-hozzárendelési tervelemek, valamint az Azure Resource Manager-sablonok hatókörkorlátai. |
-|Azure Resource Manager-sablon | Előfizetés, erőforráscsoport | A sablonok, beleértve a beágyazott és a csatolt sablonokat, összetett környezetek létrehozásához használatosak. Ilyen környezetek lehetnek például a SharePoint-farmok, az Azure Automation-állapotkonfigurációk vagy a Log Analytics-munkaterületek. |
+|Erőforráscsoportok | Előfizetés | Hozzon létre egy új erőforráscsoportot, amelyet a tervben szereplő többi tervelem fog használni.  Ezek a helyőrző erőforráscsoportok lehetővé teszik az erőforrások rendszerezését, és a benne foglalt szabályzatok és szerepkör-hozzárendelési összetevők és ARM-sablonok hatókör-korlátozását. |
+|ARM-sablon | Előfizetés, erőforráscsoport | A sablonok, beleértve a beágyazott és a csatolt sablonokat, összetett környezetek létrehozásához használatosak. Ilyen környezetek lehetnek például a SharePoint-farmok, az Azure Automation-állapotkonfigurációk vagy a Log Analytics-munkaterületek. |
 |Szabályzat-hozzárendelés | Előfizetés, erőforráscsoport | Lehetővé teszi egy szabályzat vagy kezdeményezés hozzárendelését ahhoz az előfizetéshez, amelyhez a terv hozzá van rendelve. A szabályzatnak vagy kezdeményezésnek a terv meghatározási helyének hatókörén belül kell lennie. Ha a szabályzat vagy kezdeményezés paraméterekkel rendelkezik, ezeket a paramétereket a terv létrehozásakor vagy hozzárendelésekor lehet hozzárendelni. |
 |Szerepkör-hozzárendelés | Előfizetés, erőforráscsoport | Egy meglévő felhasználót vagy csoportot hozzáadhat egy beépített szerepkörhöz, és ezzel biztosíthatja, hogy a megfelelő személyek mindig a megfelelő hozzáféréssel rendelkezzenek az erőforrásokhoz. A szerepkör-hozzárendelések meghatározhatók az egész előfizetésre, vagy leszűkíthetők egy bizonyos erőforráscsoportra, amely a tervben található. |
 
@@ -60,9 +60,7 @@ Tervdefiníció létrehozásakor meg kell határozni a terv mentési helyét. A 
 
 ### <a name="blueprint-parameters"></a>Tervparaméterek
 
-A tervekkel paraméterek rendelhetők a szabályzatokhoz/kezdeményezésekhez, vagy az Azure Resource Manager-sablonokhoz.
-Amikor bármilyen _összetevőt_ ad hozzá a tervhez, a szerző eldönti, hogy mindegyik tervhozzárendeléshez megad egy meghatározott értéket, vagy hagyja, hogy az egyes tervhozzárendelések értéke hozzárendeléskor legyen megadva.
-Ez a fajta rugalmasság biztosítja azt a választási lehetőséget, hogy a terv minden felhasználásakor egy előre meghatározott értéket használunk-e, vagy hagyjuk, hogy az értékről a hozzárendeléskor lehessen dönteni.
+A tervrajzok egy házirend/kezdeményezés vagy egy ARM-sablon számára is átadhatják a paramétereket. Amikor bármilyen _összetevőt_ ad hozzá a tervhez, a szerző eldönti, hogy mindegyik tervhozzárendeléshez megad egy meghatározott értéket, vagy hagyja, hogy az egyes tervhozzárendelések értéke hozzárendeléskor legyen megadva. Ez a fajta rugalmasság biztosítja azt a választási lehetőséget, hogy a terv minden felhasználásakor egy előre meghatározott értéket használunk-e, vagy hagyjuk, hogy az értékről a hozzárendeléskor lehessen dönteni.
 
 > [!NOTE]
 > A terv rendelkezhet saját paraméterekkel, de ezeket jelenleg csak úgy lehet létrehozni, ha a tervet REST API-ból hozzunk létre, nem a portálról.
@@ -71,8 +69,8 @@ További információkért tekintse meg a [tervparamétereket](./concepts/parame
 
 ### <a name="blueprint-publishing"></a>Tervek közzététele
 
-Amikor létrehozunk egy tervet, az **Vázlat** módban van. Ha a terv készen áll a hozzárendelésre, **közzé kell tenni**. A közzétételhez meg kell adni egy **verzió** sztringet (ez betűket, számokat és kötőjeleket tartalmazhat, és legfeljebb 20 karakter hosszú lehet), valamint **változási megjegyzések** is megadhatók, de ez nem kötelező. A **verzió** megkülönbözteti a tervet annak jövőbeli módosított változataitól, és lehetővé teszi az egyes verziók hozzárendelését. A verziókezelés azt is jelenti, hogy egy adott terv különböző **verziói** is hozzárendelhetők ugyanahhoz az előfizetéshez. Ha a tervben további változások történnek, a **közzétett**
-**verzió** továbbra is létezik, ahogy a nem **közzétett módosítások**is. Miután elvégeztük a kívánt módosításokat, a frissített tervet **közzétesszük** egy új és egyedi **verzióval**, amely innentől kezdve szintén hozzárendelhető lesz.
+Amikor létrehozunk egy tervet, az **Vázlat** módban van. Ha a terv készen áll a hozzárendelésre, **közzé kell tenni**. A közzétételhez meg kell adni egy **verzió** sztringet (ez betűket, számokat és kötőjeleket tartalmazhat, és legfeljebb 20 karakter hosszú lehet), valamint **változási megjegyzések** is megadhatók, de ez nem kötelező. A **verzió** megkülönbözteti a tervet annak jövőbeli módosított változataitól, és lehetővé teszi az egyes verziók hozzárendelését. A verziókezelés azt is jelenti, hogy egy adott terv különböző **verziói** is hozzárendelhetők ugyanahhoz az előfizetéshez. Ha a tervben további változások történnek, a **közzétett** 
+ **verzió** továbbra is létezik, ahogy a nem **közzétett módosítások**is. Miután elvégeztük a kívánt módosításokat, a frissített tervet **közzétesszük** egy új és egyedi **verzióval**, amely innentől kezdve szintén hozzárendelhető lesz.
 
 ## <a name="blueprint-assignment"></a>Tervek hozzárendelése
 
@@ -115,7 +113,7 @@ A következő beépített szerepkörök érhetők el:
 Ha ezek a beépített szerepkörök nem felelnek meg a biztonsági követelményeinek, létrehozhat [egyéni szerepköröket](../../role-based-access-control/custom-roles.md).
 
 > [!NOTE]
-> Ha rendszer által hozzárendelt felügyelt identitást használ, az Azure-tervezetekhez tartozó egyszerű szolgáltatás **tulajdonosi** szerepkört igényel a hozzárendelt előfizetésben az üzembe helyezés engedélyezése érdekében. A portál használata esetén ezt a szerepkört a rendszer automatikusan biztosítja és visszavonja az üzembe helyezéshez. A REST API használata esetén a szerepkört manuálisan kell biztosítani, de az üzembe helyezés befejeződése a rendszer szintén automatikusan visszavonja. Ha felhasználó által hozzárendelt felügyelt identitást használ, csak a terv-hozzárendelést létrehozó `Microsoft.Blueprint/blueprintAssignments/write` felhasználónak van szüksége az engedélyre, amely a **tulajdonos** és a **Blueprint operátor** beépített szerepköreiben is megtalálható.
+> Ha rendszer által hozzárendelt felügyelt identitást használ, az Azure-tervezetekhez tartozó egyszerű szolgáltatás **tulajdonosi** szerepkört igényel a hozzárendelt előfizetésben az üzembe helyezés engedélyezése érdekében. A portál használata esetén ezt a szerepkört a rendszer automatikusan biztosítja és visszavonja az üzembe helyezéshez. A REST API használata esetén a szerepkört manuálisan kell biztosítani, de az üzembe helyezés befejeződése a rendszer szintén automatikusan visszavonja. Ha felhasználó által hozzárendelt felügyelt identitást használ, csak a terv-hozzárendelést létrehozó felhasználónak van szüksége az `Microsoft.Blueprint/blueprintAssignments/write` engedélyre, amely a **tulajdonos** és a **Blueprint operátor** beépített szerepköreiben is megtalálható.
 
 ## <a name="naming-limits"></a>Elnevezési korlátok
 

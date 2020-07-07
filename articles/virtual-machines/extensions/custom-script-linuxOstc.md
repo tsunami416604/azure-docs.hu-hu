@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: danis
 ms.openlocfilehash: 1ca20f2c8cda84c241391f67ac542faa4a1f5ecd
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82594712"
 ---
 # <a name="use-the-azure-custom-script-extension-version-1-with-linux-virtual-machines"></a>Az egyéni Azure script Extension 1. verziójának használata Linux rendszerű virtuális gépekkel
@@ -122,10 +122,10 @@ Ezeket az elemeket bizalmas adatokként kell kezelni, és meg kell adni a bőví
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | dátum |
 | közzétevő | Microsoft. OSTCExtensions | sztring |
-| type | CustomScriptForLinux | sztring |
+| típus | CustomScriptForLinux | sztring |
 | typeHandlerVersion | 1.5 | int |
 | fileUris (például) | `https://github.com/MyProject/Archive/MyPythonScript.py` | tömb |
-| commandToExecute (például) | Python- \<MyPythonScript.py My-param1\> | sztring |
+| commandToExecute (például) | Python-MyPythonScript.py\<my-param1\> | sztring |
 | enableInternalDNSCheck | igaz | logikai |
 | storageAccountName (például) | examplestorageacct | sztring |
 | storageAccountKey (például) | TmJK/1N3AbAZ3q/+ hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg = = | sztring |
@@ -260,7 +260,7 @@ az vm extension set
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-Az egyéni szkriptek bővítményének futtatásakor a szkript az alábbi példához hasonló könyvtárba jön létre vagy töltődik le. A parancs kimenete is ebbe a könyvtárba kerül a `stdout` és `stderr` a fájlokba.
+Az egyéni szkriptek bővítményének futtatásakor a szkript az alábbi példához hasonló könyvtárba jön létre vagy töltődik le. A parancs kimenete is ebbe a könyvtárba kerül a `stdout` és a `stderr` fájlokba.
 
 ```bash
 /var/lib/waagent/Microsoft.OSTCExtensions.CustomScriptForLinux-<version>/download/1
