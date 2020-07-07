@@ -7,10 +7,14 @@
 - name: Rövid útmutatók
   expanded: true
   items:
-    - name: Szolgáltatás létrehozása – Portál
-      href: quickstart-create-data-migration-service-portal.md
-    - name: Szolgáltatás létrehozása hibrid módban – Portál
-      href: quickstart-create-data-migration-service-hybrid-portal.md
+    - name: Szolgáltatás létrehozása
+      items:
+        - name: Portál
+          href: quickstart-create-data-migration-service-portal.md
+        - name: ARM-sablon
+          href: create-dms-resource-manager-template.md
+        - name: hibrid módban (Portál)
+          href: quickstart-create-data-migration-service-hybrid-portal.md
 - name: Alapelvek
   items:
     - name: Előfeltételek

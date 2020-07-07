@@ -133,6 +133,8 @@
               href: howto-use-app-templates.md
             - name: Alkalmazásállapot monitorozása
               href: howto-monitor-application-health.md
+            - name: Az alkalmazásról
+              href: howto-get-app-info.md
         - name: Kezelés más helyekről
           items:
             - name: Kezelés az Azure Portalról

@@ -208,14 +208,14 @@
       items:
         - name: Mi az SQL Database?
           href: database/sql-database-paas-overview.md
+        - name: Újdonságok
+          href: database/doc-changes-updates-release-notes.md?&tabs=single-database
         - name: Önálló adatbázisok
           href: database/single-database-overview.md
         - name: Rugalmas készletek
           href: database/elastic-pool-overview.md
         - name: Logikai SQL Server-kiszolgálók
           href: database/logical-servers.md
-        - name: Kibocsátási megjegyzések
-          href: database/doc-changes-updates-release-notes.md?&tabs=single-database
         - name: Szolgáltatásszintek
           items:
             - name: Kiszolgáló nélküli
@@ -654,13 +654,13 @@
       items:
         - name: Mi az a felügyelt SQL-példány?
           href: managed-instance/sql-managed-instance-paas-overview.md
+        - name: Újdonságok
+          href: database/doc-changes-updates-release-notes.md?&tabs=managed-instance
         - name: Példánykészletek
           href: managed-instance/instance-pools-overview.md
         - name: Gyakori kérdések
           displayName: faq
           href: managed-instance/frequently-asked-questions-faq.md
-        - name: Kibocsátási megjegyzések
-          href: database/doc-changes-updates-release-notes.md?&tabs=managed-instance
     - name: Rövid útmutatók
       href: managed-instance/quickstart-content-reference-guide.md
       items:
@@ -883,92 +883,99 @@
           items:
             - name: Mi az az SQL Server-virtuálisgép?
               href: virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md
-            - name: Dokumentummódosítások
+            - name: Újdonságok
               href: virtual-machines/windows/doc-changes-updates-release-notes.md
         - name: Rövid útmutatók
           items:
-            - name: SQL-alapú virtuális gép létrehozása – portál
+            - name: SQL-alapú virtuális gép létrehozása
+              items: null
+            - name: Portál
               href: virtual-machines/windows/sql-vm-create-portal-quickstart.md
-            - name: SQL-alapú virtuális gép létrehozása – PowerShell
+            - name: PowerShell
               href: virtual-machines/windows/sql-vm-create-powershell-quickstart.md
+            - name: ARM-sablon
+              href: virtual-machines/windows/create-sql-vm-resource-manager-template.md
         - name: Alapelvek
           items:
-            - name: Ajánlott eljárások
-              items:
-                - name: A teljesítménnyel kapcsolatos ajánlott eljárások
-                  href: virtual-machines/windows/performance-guidelines-best-practices.md
-                - name: Biztonsági szempontok
-                  href: virtual-machines/windows/security-considerations-best-practices.md
-                - name: Alkalmazásminták
-                  href: virtual-machines/windows/application-patterns-development-strategies.md
             - name: Üzleti folytonosság
               items:
-                - name: Magas rendelkezésre állású lehetőségek
+                - name: Áttekintés
                   href: virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md
-                - name: Always On rendelkezésre állási csoport
-                  href: virtual-machines/windows/availability-group-overview.md
                 - name: Biztonsági mentés és visszaállítás
                   href: virtual-machines/windows/backup-restore.md
-                - name: Automatikus biztonsági mentés az SQL Server 2014-hez
-                  href: virtual-machines/windows/automated-backup-sql-2014.md
-                - name: Automatikus biztonsági mentés az SQL Server 2016-os vagy újabb verziójához
-                  href: virtual-machines/windows/automated-backup.md
+                - name: Azure Storage biztonsági mentéshez
+                  href: virtual-machines/windows/azure-storage-sql-server-backup-restore-use.md
+                - name: Always On rendelkezésre állási csoport
+                  href: virtual-machines/windows/availability-group-overview.md
+                - name: Feladatátvevőfürt-példány
+                  href: virtual-machines/windows/failover-cluster-instance-overview.md
+            - name: Ajánlott eljárások
+              items:
+                - name: Teljesítmény
+                  href: virtual-machines/windows/performance-guidelines-best-practices.md
+                - name: Biztonság
+                  href: virtual-machines/windows/security-considerations-best-practices.md
+                - name: Fürtkonfiguráció
+                  href: virtual-machines/windows/hadr-cluster-best-practices.md
+                - name: Alkalmazásminták
+                  href: virtual-machines/windows/application-patterns-development-strategies.md
             - name: Kezelés
               items:
                 - name: Dedikált gazdagép
                   href: virtual-machines/windows/dedicated-host.md
-                - name: Az Azure Portallal
-                  href: virtual-machines/windows/manage-sql-vm-portal.md
                 - name: Az SQL 2008 és R2 támogatásának kibővítése
                   href: virtual-machines/windows/sql-server-2008-extend-end-of-support.md
-                - name: Kapcsolódás virtuális géphez
-                  href: virtual-machines/windows/ways-to-connect-to-sql.md
-                - name: A tárolás konfigurálása
+        - name: Útmutatók
+          items:
+            - name: Csatlakozás az SQL Servert futtató virtuális géphez
+              href: virtual-machines/windows/ways-to-connect-to-sql.md
+            - name: SQL Servert futtató virtuális gép létrehozása
+              items:
+                - name: A portál használata
+                  href: virtual-machines/windows/create-sql-vm-portal.md
+                - name: Azure PowerShell használatával
+                  href: virtual-machines/windows/create-sql-vm-powershell.md
+            - name: Kezelés
+              items:
+                - name: Az Azure Portallal
+                  href: virtual-machines/windows/manage-sql-vm-portal.md
+                - name: Licencmodell
+                  displayName: 'ahb, ahub, payg, change, modify, update'
+                  href: virtual-machines/windows/licensing-model-azure-hybrid-benefit-ahb-change.md
+                - name: Kiadás
+                  displayName: 'change, modify, update'
+                  href: virtual-machines/windows/change-sql-server-edition.md
+                - name: Storage
                   href: virtual-machines/windows/storage-configuration.md
+                - name: Azure Key Vault-integráció
+                  href: virtual-machines/windows/azure-key-vault-integration-configure.md
+                - name: Regisztrálás az SQL VM erőforrás-szolgáltatónál
+                  displayName: 'resource provider, registration'
+                  items:
+                    - name: Egyetlen virtuális gép
+                      href: virtual-machines/windows/sql-vm-resource-provider-register.md
+                    - name: Több virtuális gép tömeges regisztrálása
+                      href: virtual-machines/windows/sql-vm-resource-provider-bulk-register.md
                 - name: Felügyeleti feladatok automatizálása
                   items:
                     - name: Microsoft SQL Server IaaS-ügynök bővítmény használata
                       href: virtual-machines/windows/sql-server-iaas-agent-extension-automate-management.md
                     - name: Automatikus javítás
                       href: virtual-machines/windows/automated-patching.md
-                    - name: Azure Key Vault-integráció konfigurálása
-                      href: virtual-machines/windows/azure-key-vault-integration-configure.md
-        - name: Útmutatók
-          items:
-            - name: SQL-alapú virtuális gép létrehozása
-              items:
-                - name: A portál használata
-                  href: virtual-machines/windows/create-sql-vm-portal.md
-                - name: Azure PowerShell használatával
-                  href: virtual-machines/windows/create-sql-vm-powershell.md
-            - name: Regisztrálás az SQL VM erőforrás-szolgáltatónál
-              displayName: 'resource provider, registration'
-              items:
-                - name: Egyetlen virtuális gép
-                  href: virtual-machines/windows/sql-vm-resource-provider-register.md
-                - name: Több virtuális gép tömeges regisztrálása
-                  href: virtual-machines/windows/sql-vm-resource-provider-bulk-register.md
-            - name: Kezelés
-              items:
-                - name: Licencelési modell
-                  displayName: 'ahb, ahub, payg, change, modify, update'
-                  href: virtual-machines/windows/licensing-model-azure-hybrid-benefit-ahb-change.md
-                - name: Kiadás
-                  displayName: 'change, modify, update'
-                  href: virtual-machines/windows/change-sql-server-edition.md
-                - name: Verzió
-                  displayName: 'change, modify, update'
-                  href: virtual-machines/windows/change-sql-server-version.md
-                - name: Az Azure Storage használata biztonsági mentéshez és visszaállításhoz
-                  href: virtual-machines/windows/azure-storage-sql-server-backup-restore-use.md
             - name: Migrate (Áttelepítés)
               items:
                 - name: SQL Server-adatbázis virtuális gépre
                   href: virtual-machines/windows/migrate-to-vm-from-sql-server.md
                 - name: Virtuális gép új régióba
                   href: virtual-machines/windows/move-sql-vm-different-region.md
-            - name: Magas rendelkezésre állás konfigurálása
+            - name: Az üzletmenet folytonossága
               items:
+                - name: Biztonsági mentés és visszaállítás
+                  items:
+                    - name: Automatikus biztonsági mentés (SQL 2016+)
+                      href: virtual-machines/windows/automated-backup.md
+                    - name: Automatikus biztonsági mentés (SQL 2014)
+                      href: virtual-machines/windows/automated-backup-sql-2014.md
                 - name: Always On rendelkezésre állási csoport
                   items:
                     - name: Azure SQL VM CLI
@@ -989,12 +996,30 @@
                           href: virtual-machines/windows/availability-group-load-balancer-portal-configure.md
                         - name: Load Balancer – Azure PowerShell
                           href: virtual-machines/windows/availability-group-listener-powershell-configure.md
-                - name: Feladatátvevőfürt-példány
+                - name: Feladatátvevőfürt-példány (FCI)
                   items:
-                    - name: Közvetlen tárolóhelyekkel
-                      href: virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure.md
-                    - name: Prémium fájlmegosztással
-                      href: virtual-machines/windows/failover-cluster-instance-premium-file-share-manually-configure.md
+                    - name: Virtuális gép előkészítése FCI-hez
+                      href: virtual-machines/windows/failover-cluster-instance-prepare-vm.md
+                    - name: 'FCI létrehozása a következővel:'
+                      items:
+                        - name: Azure megosztott lemezek (SQL2019+)
+                          href: virtual-machines/windows/failover-cluster-instance-azure-shared-disks-manually-configure.md
+                        - name: Közvetlen tárolóhelyek (Win2016+)
+                          href: virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure.md
+                        - name: Prémium fájlmegosztás (Win2012+)
+                          href: virtual-machines/windows/failover-cluster-instance-premium-file-share-manually-configure.md
+                    - name: Elosztott hálózat neve (DNN)
+                      items:
+                        - name: DNN létrehozása FCI-hez
+                          href: virtual-machines/windows/hadr-distributed-network-name-dnn-configure.md
+                        - name: Funkció együttműködése a DNN-nel
+                          href: virtual-machines/windows/failover-cluster-instance-dnn-interoperability.md
+                        - name: Az FCI DNN és az SQL Server funkciói
+                          href: virtual-machines/windows/failover-cluster-instance-dnn-interoperability.md
+                - name: Kapcsolat konfigurálása
+                  items:
+                    - name: Virtuális hálózat neve (VNN)
+                      href: virtual-machines/windows/hadr-vnn-azure-load-balancer-configure.md
         - name: Referencia
           items:
             - name: Azure PowerShell

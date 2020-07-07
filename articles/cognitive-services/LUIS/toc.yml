@@ -60,6 +60,8 @@
           href: luis-nodejs-tutorial-bf-v4.md
 - name: Alapelvek
   items:
+    - name: Mesterséges intelligencia
+      href: artificial-intelligence.md
     - name: Fejlesztési életciklus
       href: luis-concept-app-iteration.md
     - name: Az alkalmazás megtervezése

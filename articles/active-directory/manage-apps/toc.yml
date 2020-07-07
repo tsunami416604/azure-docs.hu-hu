@@ -7,10 +7,16 @@
       href: what-is-application-management.md
 - name: Rövid útmutatók
   items:
-    - name: Vállalati alkalmazások megtekintése
+    - name: Az alkalmazásai megtekintése
       href: view-applications-portal.md
-    - name: Felhőalkalmazás hozzáadása a katalógusból
+    - name: Alkalmazás felvétele
       href: add-application-portal.md
+    - name: Alkalmazás konfigurálása
+      href: add-application-portal-configure.md
+    - name: Egyszeri bejelentkezés beállítása
+      href: add-application-portal-setup-sso.md
+    - name: Alkalmazás törlése
+      href: delete-application-portal.md
 - name: Oktatóanyagok
   items:
     - name: 'Integrált katalógusalkalmazások (pl. ServiceNow, Salesforce, Dropbox)'

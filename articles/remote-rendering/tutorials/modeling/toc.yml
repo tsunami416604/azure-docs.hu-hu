@@ -1,2 +1,4 @@
-- name: Fizikai alapú renderelési anyagok beállítása a Mayában
+- name: Fizikai alapú renderelési anyagok beállítása az Autodesk Mayában
   href: maya-material-setup.md
+- name: Fizikai alapú renderelési anyagok beállítása az Autodesk 3DSMaxban
+  href: 3dsmax-material-setup.md

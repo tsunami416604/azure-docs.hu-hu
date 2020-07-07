@@ -230,6 +230,8 @@
               href: sql/data-loading-best-practices.md
             - name: Oszlopcentrikus tömörítés
               href: sql/data-load-columnstore-compression.md
+            - name: Az adatok betöltésének áttekintése
+              href: sql/load-data-overview.md
         - name: Fejlesztés
           items:
             - name: Áttekintés
@@ -362,8 +364,10 @@
       items:
         - name: Folyamatfuttatások
           href: monitoring/how-to-monitor-pipeline-runs.md
-        - name: Spark-alkalmazások
+        - name: Apache Spark-alkalmazások
           href: monitoring/how-to-monitor-spark-applications.md
+        - name: Apache Spark-alkalmazás részletei
+          href: monitoring/apache-spark-applications.md
         - name: Synapse SQL
           items:
             - name: A 2. generációs gyorsítótár monitorozása

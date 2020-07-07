@@ -99,6 +99,10 @@
     - name: Vendégkonfigurációval rendelkező virtuális gépek naplózása
       displayName: 'provider, tools, definition'
       href: ./concepts/guest-configuration.md
+    - name: Biztonság
+      items:
+        - name: Biztonsági alapkonfiguráció az Azure biztonsági teljesítményteszthez
+          href: ./concepts/azure-security-benchmark-baseline.md
 - name: Útmutatók
   items:
     - name: Azure Policy-bővítmény VSCode-hoz

@@ -389,6 +389,8 @@
               href: log-query/unify-app-resource-data.md
         - name: Példák és útmutatás
           items:
+            - name: Példa a lekérdezésekre
+              href: log-query/saved-queries.md
             - name: Példák naplólekérdezésekre
               href: log-query/examples.md
             - name: Példák intelligens elemzésre
@@ -1125,6 +1127,8 @@
               href: learn/tutorial-logs-dashboards.md
             - name: Alkalmazásadatokat használó irányítópult
               href: learn/tutorial-app-dashboards.md
+            - name: Log Analytics-irányítópult frissítése
+              href: log-query/dashboard-upgrade.md
         - name: Adatok küldése a Grafana számára
           href: platform/grafana-plugin.md
     - name: Egyéni adatgyűjtés és -elemzés
@@ -1200,6 +1204,10 @@
           href: app/custom-endpoints.md
         - name: Azure Functions
           href: app/azure-functions-supported-features.md
+        - name: Kibocsátási megjegyzések
+          items:
+            - name: Webalkalmazás-bővítmény
+              href: app/web-app-extension-release-notes.md
         - name: Adatmodell
           items:
             - name: Áttekintés

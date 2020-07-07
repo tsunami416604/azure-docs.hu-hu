@@ -130,6 +130,8 @@
       href: rest-error-codes.md
     - name: Gyakori paraméterek és fejlécek
       href: common-parameters-and-headers.md
+    - name: Key Vault-verziók
+      href: versions.md
     - name: Azure PowerShell
       href: /powershell/module/az.keyvault/?view=azps-1.2.0#key_vault
     - name: Azure CLI

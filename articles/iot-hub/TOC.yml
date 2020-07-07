@@ -25,6 +25,8 @@
           href: quickstart-send-telemetry-android.md
         - name: iOS
           href: quickstart-send-telemetry-ios.md
+        - name: Xamarin.Forms
+          href: quickstart-send-telemetry-xamarinforms.md
     - name: Eszköz vezérlése
       items:
         - name: Node.js
@@ -324,6 +326,8 @@
           href: iot-hub-distributed-tracing.md
         - name: IP-szűrés konfigurálása
           href: iot-hub-ip-filtering.md
+        - name: Nyilvános hálózati hozzáférés kezelése
+          href: iot-hub-public-network-access.md
         - name: Nagy méretekben történő automatikus eszközfelügyelet
           items:
             - name: Az Azure Portal használata

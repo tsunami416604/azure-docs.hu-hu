@@ -86,6 +86,8 @@
           href: container-instances-start-command.md
         - name: Parancs végrehajtása (exec)
           href: container-instances-exec.md
+        - name: Telepítési tároló futtatása (init)
+          href: container-instances-init-container.md
         - name: Felügyelt identitás használata (előzetes verzió)
           href: container-instances-managed-identity.md
         - name: GPU-erőforrások használata (előzetes verzió)

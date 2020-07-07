@@ -146,6 +146,10 @@
       href: preprocess-text.md
     - name: Rejtett Dirichlet-lefoglalás
       href: latent-dirichlet-allocation.md
+    - name: Vowpal Wabbit modell pontozása
+      href: score-vowpal-wabbit-model.md
+    - name: Vowpal Wabbit modell betanítása
+      href: train-vowpal-wabbit-model.md
 - name: Számítógépes látástechnológia
   items:
     - name: Képátalakítás alkalmazása

@@ -49,7 +49,7 @@
               href: QuickStarts/node-thumb.md
             - name: Python
               href: QuickStarts/python-thumb.md
-        - name: Szöveg kinyerése (Computer Vision – Read API)
+        - name: Szöveg kinyerése (Read API)
           items:
             - name: C#
               href: QuickStarts/CSharp-hand-text.md
@@ -59,7 +59,7 @@
               href: QuickStarts/javascript-hand-text.md
             - name: Python
               href: QuickStarts/python-hand-text.md
-        - name: Nyomtatott szöveg kinyerése (OCR)
+        - name: Szöveg kinyerése (OCR API)
           items:
             - name: C#
               href: QuickStarts/CSharp-print-text.md
@@ -105,7 +105,7 @@
       href: concept-detecting-color-schemes.md
     - name: Intelligens körbevágású miniatűrök
       href: concept-generating-thumbnails.md
-    - name: Szövegfelismerés
+    - name: Optikai karakterfelismerés (OCR)
       href: concept-recognizing-text.md
     - name: Felnőtteknek szóló tartalom észlelése
       href: concept-detecting-adult-content.md

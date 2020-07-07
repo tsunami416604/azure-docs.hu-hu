@@ -200,6 +200,8 @@
       href: storage-resource-deletion-errors.md
     - name: Klasszikus tárerőforrások törlésekor jelentkező hibák
       href: storage-classic-cannot-delete-storage-account-container-vhd.md
+    - name: A virtuális merevlemez nem támogatott a virtuális gépek Azure-ban való létrehozásakor
+      href: vhd-not-supported-vm-azure.md
     - name: Beágyazott virtualizálás használata
       href: troubleshoot-vm-by-use-nested-virtualization.md
 - name: Virtuális gép teljesítményével kapcsolatos problémák

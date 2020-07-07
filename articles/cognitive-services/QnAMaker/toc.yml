@@ -28,6 +28,8 @@
       href: Quickstarts/batch-testing.md
 - name: Alapelvek
   items:
+    - name: Tudásbázis megtervezése
+      href: Concepts/plan.md
     - name: Azure-erőforrások
       href: Concepts/azure-resources.md
     - name: Együttműködés másokkal

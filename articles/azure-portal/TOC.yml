@@ -43,8 +43,8 @@
       items:
         - name: Azure-támogatáskérés létrehozása
           href: supportability/how-to-create-azure-support-request.md
-        - name: Fájlok feltöltése támogatáskérésekhez
-          href: supportability/how-to-use-file-uploader.md
+        - name: Azure-támogatáskérés kezelése
+          href: supportability/how-to-manage-azure-support-request.md
         - name: Kvótanövelések kérése
           items:
             - name: Számítási vCPU-korlátok növelése
