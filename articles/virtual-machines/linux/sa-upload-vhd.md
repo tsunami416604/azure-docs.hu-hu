@@ -9,10 +9,9 @@ ms.date: 07/10/2017
 ms.author: cynthn
 ms.custom: storage accounts
 ms.openlocfilehash: 7ec9b670f8b2eb1731511deb1d01cfc7db55054f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81758572"
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli"></a>Linuxos virtuális gép feltöltése és létrehozása egyéni lemezről az Azure CLI-vel
@@ -26,7 +25,7 @@ Ha gyorsan el kell végeznie a feladatot, a következő szakasz részletesen ism
 
 Győződjön meg arról, hogy a legújabb [Azure CLI](/cli/azure/install-az-cli2) telepítve van és be van jelentkezve egy Azure-fiókba az [az login](/cli/azure/reference-index)használatával.
 
-Az alábbi példákban cserélje le a példában szereplő paraméterek nevét a saját értékeire. Példa paraméterek neveire `myResourceGroup` `mystorageaccount`, és `mydisks`.
+Az alábbi példákban cserélje le a példában szereplő paraméterek nevét a saját értékeire. Példa paraméterek neveire `myResourceGroup` , `mystorageaccount` és `mydisks` .
 
 Először hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. A következő példában létrehozunk egy `WestUs` nevű erőforráscsoportot a `myResourceGroup` helyen:
 
@@ -34,27 +33,27 @@ Először hozzon létre egy erőforráscsoportot az [az group create](/cli/azure
 az group create --name myResourceGroup --location westus
 ```
 
-Hozzon létre egy Storage-fiókot, amely a virtuális lemezeket az [az Storage Account Create](/cli/azure/storage/account)paranccsal fogja tárolni. A következő példában létrehozunk egy nevű `mystorageaccount`Storage-fiókot:
+Hozzon létre egy Storage-fiókot, amely a virtuális lemezeket az [az Storage Account Create](/cli/azure/storage/account)paranccsal fogja tárolni. A következő példában létrehozunk egy nevű Storage-fiókot `mystorageaccount` :
 
 ```azurecli
 az storage account create --resource-group myResourceGroup --location westus \
   --name mystorageaccount --kind Storage --sku Standard_LRS
 ```
 
-Sorolja fel a Storage-fiókhoz tartozó hozzáférési kulcsokat az [az Storage Account Keys List](/cli/azure/storage/account/keys)paranccsal. Jegyezze fel a `key1`következőket:
+Sorolja fel a Storage-fiókhoz tartozó hozzáférési kulcsokat az [az Storage Account Keys List](/cli/azure/storage/account/keys)paranccsal. Jegyezze fel a `key1` következőket:
 
 ```azurecli
 az storage account keys list --resource-group myResourceGroup --account-name mystorageaccount
 ```
 
-Hozzon létre egy tárolót a Storage-fiókon belül az az [Storage Container Create](/cli/azure/storage/container)paranccsal kapott tárolási kulccsal. A következő példa létrehoz egy nevű `mydisks` tárolót a tárolási kulcs értékének `key1`használatával:
+Hozzon létre egy tárolót a Storage-fiókon belül az az [Storage Container Create](/cli/azure/storage/container)paranccsal kapott tárolási kulccsal. A következő példa létrehoz egy nevű tárolót `mydisks` a tárolási kulcs értékének használatával `key1` :
 
 ```azurecli
 az storage container create --account-name mystorageaccount \
     --account-key key1 --name mydisks
 ```
 
-Végül töltse fel a virtuális merevlemezt az az [Storage blob upload](/cli/azure/storage/blob)paranccsal létrehozott tárolóba. Adja meg a virtuális merevlemez helyi elérési `/path/to/disk/mydisk.vhd`útját a következőben:
+Végül töltse fel a virtuális merevlemezt az az [Storage blob upload](/cli/azure/storage/blob)paranccsal létrehozott tárolóba. Adja meg a virtuális merevlemez helyi elérési útját a következőben `/path/to/disk/mydisk.vhd` :
 
 ```azurecli
 az storage blob upload --account-name mystorageaccount \
@@ -62,7 +61,7 @@ az storage blob upload --account-name mystorageaccount \
     --file /path/to/disk/mydisk.vhd --name myDisk.vhd
 ```
 
-Adja meg a lemez (`--image`) URI-ját az [az VM Create](/cli/azure/vm)paranccsal. Az alábbi példa egy nevű `myVM` virtuális gépet hoz létre a korábban feltöltött virtuális lemez használatával:
+Adja meg a lemez () URI-JÁT az `--image` [az VM Create](/cli/azure/vm)paranccsal. Az alábbi példa egy nevű virtuális GÉPET hoz létre `myVM` a korábban feltöltött virtuális lemez használatával:
 
 ```azurecli
 az vm create --resource-group myResourceGroup --location westus \
@@ -78,11 +77,11 @@ A célként megadott Storage-fióknak meg kell egyeznie, mint ahol a virtuális 
 A következő lépések elvégzéséhez a következőkre lesz szüksége:
 
 * **Linux operációs rendszer. vhd-fájlba telepítve** – [Azure által támogatott Linux-disztribúció](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) telepítése (vagy a [nem támogatott disztribúciók információinak](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)megjelenítése) virtuális lemezre VHD formátumban. Több eszköz létezik a virtuális gép és a virtuális merevlemez létrehozásához:
-  * Telepítse és konfigurálja a [QEMU](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) -t vagy a [KVM](https://www.linux-kvm.org/page/RunningKVM)-t, ügyelve arra, hogy a VHD-t használja képformátumként. Ha szükséges, [konvertálhat egy képet](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) a használatával `qemu-img convert`.
+  * Telepítse és konfigurálja a [QEMU](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) -t vagy a [KVM](https://www.linux-kvm.org/page/RunningKVM)-t, ügyelve arra, hogy a VHD-t használja képformátumként. Ha szükséges, [konvertálhat egy képet](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) a használatával `qemu-img convert` .
   * A Hyper-V-t [Windows 10](https://msdn.microsoft.com/virtualization/hyperv_on_windows/quick_start/walkthrough_install) vagy [Windows Server 2012/2012 R2](https://technet.microsoft.com/library/hh846766.aspx)rendszeren is használhatja.
 
 > [!NOTE]
-> Az újabb VHDX formátum nem támogatott az Azure-ban. Amikor létrehoz egy virtuális gépet, a VHD formátumot kell megadnia formátumként. Szükség esetén a VHDX-lemezeket a vagy a [`qemu-img convert`](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) [`Convert-VHD`](https://technet.microsoft.com/library/hh848454.aspx) PowerShell-parancsmag használatával is konvertálhatja VHD-re. Emellett az Azure nem támogatja a dinamikus virtuális merevlemezek feltöltését, ezért a feltöltés előtt át kell alakítania a lemezeket a statikus VHD-k között. Az Azure-ba való feltöltés folyamata során olyan eszközöket használhat, mint például az [Azure VHD-segédprogramok](https://github.com/Microsoft/azure-vhd-utils-for-go) , amelyek a dinamikus lemezek átalakítására szolgálnak.
+> Az újabb VHDX formátum nem támogatott az Azure-ban. Amikor létrehoz egy virtuális gépet, a VHD formátumot kell megadnia formátumként. Szükség esetén a VHDX-lemezeket [`qemu-img convert`](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) a vagy a PowerShell-parancsmag használatával is konvertálhatja VHD-re [`Convert-VHD`](https://technet.microsoft.com/library/hh848454.aspx) . Emellett az Azure nem támogatja a dinamikus virtuális merevlemezek feltöltését, ezért a feltöltés előtt át kell alakítania a lemezeket a statikus VHD-k között. Az Azure-ba való feltöltés folyamata során olyan eszközöket használhat, mint például az [Azure VHD-segédprogramok](https://github.com/Microsoft/azure-vhd-utils-for-go) , amelyek a dinamikus lemezek átalakítására szolgálnak.
 > 
 > 
 
@@ -92,7 +91,7 @@ A következő lépések elvégzéséhez a következőkre lesz szüksége:
 
 Győződjön meg arról, hogy a legújabb [Azure CLI](/cli/azure/install-az-cli2) telepítve van és be van jelentkezve egy Azure-fiókba az [az login](/cli/azure/reference-index)használatával.
 
-Az alábbi példákban cserélje le a példában szereplő paraméterek nevét a saját értékeire. Példa paraméterek neveire `myResourceGroup` `mystorageaccount`, és `mydisks`.
+Az alábbi példákban cserélje le a példában szereplő paraméterek nevét a saját értékeire. Példa paraméterek neveire `myResourceGroup` , `mystorageaccount` és `mydisks` .
 
 <a id="prepimage"> </a>
 
@@ -103,7 +102,7 @@ Az Azure különböző Linux-disztribúciókat támogat (lásd a [támogatott di
 * **[Debian Linux](debian-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Oracle Linux](oracle-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Red Hat Enterprise Linux](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
-* **[SLES & openSUSE](suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
+* **[SLES és openSUSE](suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Ubuntu](create-upload-ubuntu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Egyéb – nem támogatott disztribúciók](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 
@@ -127,7 +126,7 @@ az group create --name myResourceGroup --location westus
 
 Hozzon létre egy Storage-fiókot az egyéni lemez és a virtuális gépek számára az [az Storage Account Create](/cli/azure/storage/account)paranccsal. Az egyéni lemezről létrehozott nem felügyelt lemezekkel rendelkező virtuális gépeknek ugyanabban a Storage-fiókban kell lenniük, mint a lemezzel. 
 
-A következő példa létrehoz egy nevű `mystorageaccount` Storage-fiókot a korábban létrehozott erőforráscsoporthoz:
+A következő példa létrehoz egy nevű Storage `mystorageaccount` -fiókot a korábban létrehozott erőforráscsoporthoz:
 
 ```azurecli
 az storage account create --resource-group myResourceGroup --location westus \
@@ -155,12 +154,12 @@ data:    key2  Ww0T7g4UyYLaBnLYcxIOTVziGAAHvU+wpwuPvK4ZG0CDFwu/mAxS/YYvAQGHocq1w
 info:    storage account keys list command OK
 ```
 
-Jegyezze `key1` fel, hogy a következő lépésekben azt fogja használni, hogy együttműködjön a Storage-fiókkal.
+Jegyezze fel, hogy a `key1` következő lépésekben azt fogja használni, hogy együttműködjön a Storage-fiókkal.
 
 ## <a name="create-a-storage-container"></a>Storage-tároló létrehozása
 Ugyanúgy, ahogy különböző címtárakat hoz létre a helyi fájlrendszer logikus rendszerezéséhez, a lemezeket a Storage-fiókon belül hozhatja létre. A Storage-fiók tetszőleges számú tárolót tartalmazhat. Hozzon létre egy tárolót az [az Storage Container Create](/cli/azure/storage/container)paranccsal.
 
-A következő példában létrehozunk egy nevű `mydisks`tárolót:
+A következő példában létrehozunk egy nevű tárolót `mydisks` :
 
 ```azurecli
 az storage container create \
@@ -180,11 +179,11 @@ az storage blob upload --account-name mystorageaccount \
 ```
 
 ## <a name="create-the-vm"></a>Virtuális gép létrehozása
-A nem felügyelt lemezekkel rendelkező virtuális gépek létrehozásához adja meg a lemez (`--image`) URI-ját az [az VM Create](/cli/azure/vm)paranccsal. Az alábbi példa egy nevű `myVM` virtuális gépet hoz létre a korábban feltöltött virtuális lemez használatával:
+A nem felügyelt lemezekkel rendelkező virtuális gépek létrehozásához adja meg a lemez () URI-JÁT az `--image` [az VM Create](/cli/azure/vm)paranccsal. Az alábbi példa egy nevű virtuális GÉPET hoz létre `myVM` a korábban feltöltött virtuális lemez használatával:
 
-A `--image` paramétert az [az VM Create](/cli/azure/vm) paranccsal adhatja meg, hogy az egyéni lemezre mutasson. Győződjön meg `--storage-account` arról, hogy az megfelel az egyéni lemez tárolására használt Storage-fióknak. Nem kell ugyanazt a tárolót használnia, mint a virtuális gépek tárolására szolgáló egyéni lemezt. Ügyeljen arra, hogy a további tárolókat ugyanúgy hozza létre, mint a korábbi lépéseket az egyéni lemez feltöltése előtt.
+A `--image` paramétert az [az VM Create](/cli/azure/vm) paranccsal adhatja meg, hogy az egyéni lemezre mutasson. Győződjön meg arról, hogy `--storage-account` az megfelel az egyéni lemez tárolására használt Storage-fióknak. Nem kell ugyanazt a tárolót használnia, mint a virtuális gépek tárolására szolgáló egyéni lemezt. Ügyeljen arra, hogy a további tárolókat ugyanúgy hozza létre, mint a korábbi lépéseket az egyéni lemez feltöltése előtt.
 
-Az alábbi példa egy nevű `myVM` virtuális gépet hoz létre az egyéni lemezről:
+Az alábbi példa egy nevű virtuális gépet hoz létre az `myVM` Egyéni lemezről:
 
 ```azurecli
 az vm create --resource-group myResourceGroup --location westus \
@@ -200,7 +199,7 @@ Továbbra is meg kell adnia vagy válaszolnia kell az alkalmazáshoz, az az **VM
 ## <a name="resource-manager-template"></a>Resource Manager-sablon
 Azure Resource Manager sablonok JavaScript Object Notation (JSON) fájlok, amelyek meghatározzák a létrehozni kívánt környezetet. A sablonok különböző erőforrás-szolgáltatókkal (például számítás vagy hálózat) vannak lebontva. Használhat meglévő sablonokat, vagy írhat sajátot is. További információ a [Resource Manager és a sablonok használatáról](../../azure-resource-manager/management/overview.md).
 
-A sablon `Microsoft.Compute/virtualMachines` szolgáltatóján belül egy olyan `storageProfile` csomóponttal rendelkezik, amely a virtuális gép konfigurációs adatait tartalmazza. A szerkeszteni kívánt két fő paraméter az `image` egyéni lemezre és az új virtuális gép virtuális lemezére mutató `vhd` URI. Az alábbi példa egy egyéni lemez használatára szolgáló JSON-példát mutat be:
+A `Microsoft.Compute/virtualMachines` sablon szolgáltatóján belül egy olyan `storageProfile` csomóponttal rendelkezik, amely a virtuális gép konfigurációs adatait tartalmazza. A szerkeszteni kívánt két fő paraméter az `image` `vhd` Egyéni lemezre és az új virtuális gép virtuális lemezére mutató URI. Az alábbi példa egy egyéni lemez használatára szolgáló JSON-példát mutat be:
 
 ```json
 "storageProfile": {
@@ -220,7 +219,7 @@ A sablon `Microsoft.Compute/virtualMachines` szolgáltatóján belül egy olyan 
 
 [Ezzel a meglévő sablonnal létrehozhat egy virtuális gépet egyéni rendszerképből](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image) , vagy megtekintheti [saját Azure Resource Manager sablonjainak létrehozását](../../azure-resource-manager/templates/template-syntax.md). 
 
-Miután konfigurálta a sablont, az [az Group Deployment Create](/cli/azure/group/deployment) paranccsal hozhatja létre a virtuális gépeket. Adja meg a JSON-sablon URI-JÁT `--template-uri` a paraméterrel:
+Miután konfigurálta a sablont, az [az Group Deployment Create](/cli/azure/group/deployment) paranccsal hozhatja létre a virtuális gépeket. Adja meg a JSON-sablon URI-JÁT a `--template-uri` paraméterrel:
 
 ```azurecli
 az group deployment create --resource-group myNewResourceGroup \

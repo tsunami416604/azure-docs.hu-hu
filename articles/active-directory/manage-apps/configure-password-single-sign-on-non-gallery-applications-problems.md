@@ -16,10 +16,9 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9620a6ad584f20a0956e6a29c89609d79832f4d2
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84763448"
 ---
 # <a name="problems-configuring-password-single-sign-on-for-a-non-gallery-application"></a>Problémák a nem katalógusbeli alkalmazások jelszavas egyszeri bejelentkezésének konfigurálásakor
@@ -42,7 +41,7 @@ Az egyéni alkalmazások bejelentkezési mezőinek rögzítése kétféleképpen
 
 Ha a jelszó-alapú egyszeri bejelentkezést az automatikus bejelentkezési mező rögzítése használatával szeretné konfigurálni, kövesse az alábbi lépéseket:
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com/). Jelentkezzen be globális rendszergazdaként vagy társ-rendszergazdaként.
+1. Nyissa meg a [Azure Portal](https://portal.azure.com/). Jelentkezzen be globális rendszergazdaként vagy társ-rendszergazdaként.
 
 2. A bal oldali navigációs ablaktáblán a **minden szolgáltatás** elemre kattintva nyissa meg az Azure ad bővítményt.
 
@@ -75,7 +74,7 @@ A bővítmény telepítéséhez tekintse meg a jelen cikk [hozzáférési panel 
 
 Ha a jelszó-alapú egyszeri bejelentkezést szeretné beállítani egy alkalmazáshoz a manuális bejelentkezési mező rögzítése segítségével, kövesse az alábbi lépéseket:
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com/). Jelentkezzen be globális rendszergazdaként vagy társ-rendszergazdaként.
+1. Nyissa meg a [Azure Portal](https://portal.azure.com/). Jelentkezzen be globális rendszergazdaként vagy társ-rendszergazdaként.
 
 2. A bal oldali navigációs ablaktáblán a **minden szolgáltatás** elemre kattintva nyissa meg az Azure ad bővítményt.
 

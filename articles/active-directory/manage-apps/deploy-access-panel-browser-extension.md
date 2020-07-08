@@ -16,10 +16,9 @@ ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 94c434a2892060acfdd56c496a31e41597c21357
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84763431"
 ---
 # <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>Útmutató: a hozzáférési panel bővítményének üzembe helyezése az Internet Explorer csoportházirend használatával
@@ -33,7 +32,7 @@ A hozzáférési panel kiterjesztése a [Chrome](https://go.microsoft.com/fwLink
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Beállította [Active Directory tartományi szolgáltatások](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx), és csatlakoztatta a felhasználói gépeket a tartományhoz.
-* A Csoportházirend objektum (GPO) szerkesztéséhez a "beállítások szerkesztése" engedéllyel kell rendelkeznie. Alapértelmezés szerint a következő biztonsági csoportok tagjai rendelkeznek ezzel az engedéllyel: tartományi rendszergazdák, vállalati rendszergazdák és Csoportházirend létrehozói tulajdonosok. [További információ.](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx)
+* A Csoportházirend objektum (GPO) szerkesztéséhez a "beállítások szerkesztése" engedéllyel kell rendelkeznie. Alapértelmezés szerint a következő biztonsági csoportok tagjai rendelkeznek ezzel az engedéllyel: tartományi rendszergazdák, vállalati rendszergazdák és Csoportházirend létrehozói tulajdonosok. [Részletek](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx)
 
 ## <a name="step-1-create-the-distribution-point"></a>1. lépés: a terjesztési pont létrehozása
 
@@ -166,7 +165,7 @@ Az alábbi lépéseket követve ellenőrizheti, hogy a bővítmény központi te
 
    ![Annak ellenőrzése, hogy a hozzáférési panel bővítmény telepítve és engedélyezve van-e](./media/deploy-access-panel-browser-extension/verify-install.png)
 
-## <a name="learn-more"></a>Részletek
+## <a name="learn-more"></a>Tudjon meg többet
 
 * [Alkalmazás-hozzáférés és egyszeri bejelentkezés Azure Active Directory](what-is-single-sign-on.md)
 * [Az Internet Explorerhez készült hozzáférési panel bővítmény hibaelhárítása](manage-access-panel-browser-extension.md)

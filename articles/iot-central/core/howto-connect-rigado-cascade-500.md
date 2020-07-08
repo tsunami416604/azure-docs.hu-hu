@@ -11,10 +11,9 @@ ms.author: avneets
 author: avneet723
 ms.date: 11/27/2019
 ms.openlocfilehash: 3e6026e683d46ca9062c5c139fcd7febd7df9bd1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81758249"
 ---
 # <a name="connect-a-rigado-cascade-500-gateway-device-to-your-azure-iot-central-application"></a>Rigado Cascade 500-átjáró eszköz csatlakoztatása az Azure IoT Central-alkalmazáshoz
@@ -41,9 +40,9 @@ A Cascade 500 Gateway-eszköz Azure IoT Central Application-példányba való be
 
 Lépcsőzetes 500-eszköz sablonjának hozzáadása: 
 
-1. Navigáljon a bal oldali ablaktáblán található ***eszközök*** lapra, majd válassza a **+ új**: új eszköz sablon létrehozása elemet. ![](./media/howto-connect-rigado-cascade-500/device-template-new.png)
+1. Navigáljon a bal oldali ablaktáblán található ***eszközök*** lapra, majd válassza a **+ új**: ![ új eszköz sablon létrehozása elemet.](./media/howto-connect-rigado-cascade-500/device-template-new.png)
 1. Az oldalon lehetőség van ***egyéni sablon létrehozására*** vagy ***egy előre konfigurált sablon használatára***
-1. Válassza ki a C500 az előre konfigurált eszközök listájából az alább látható módon: válassza a C500 ![-eszköz sablonja lehetőséget.](./media/howto-connect-rigado-cascade-500/device-template-preconfigured.png)
+1. Válassza ki a C500 az előre konfigurált eszközök listájából az alább látható módon: ![ válassza a C500-eszköz sablonja lehetőséget.](./media/howto-connect-rigado-cascade-500/device-template-preconfigured.png)
 1. A ***Tovább gombra*** kattintva folytassa a következő lépéssel. 
 1. A következő képernyőn válassza a ***Létrehozás*** elemet a C500-eszköz sablonjának a IoT Central alkalmazásba való beléptetéséhez.
 
@@ -54,8 +53,8 @@ Most le kell kérnie az Azure IoT Central-alkalmazás **hatókör-azonosítójá
 1. Navigáljon a **felügyelet** elemre a bal oldali ablaktáblán, és kattintson az **eszköz csatlakoztatása**elemre. 
 2. Jegyezze fel IoT Central alkalmazás **hatókör-azonosítóját** .
 ![Alkalmazás-hatókör azonosítója](./media/howto-connect-rigado-cascade-500/app-scope-id.png)
-3. Most kattintson a **kulcsok megtekintése** elemre, és jegyezze fel az elsődleges **kulcs**
-![elsődleges kulcsát](./media/howto-connect-rigado-cascade-500/primary-key-sas.png)  
+3. Most kattintson a **kulcsok megtekintése** elemre, és jegyezze fel az elsődleges **kulcs** 
+ ![ elsődleges kulcsát](./media/howto-connect-rigado-cascade-500/primary-key-sas.png)  
 
 ## <a name="contact-rigado-to-connect-the-gateway"></a>Az átjáróhoz való kapcsolódáshoz forduljon a Rigado-hez 
 

@@ -11,10 +11,9 @@ ms.date: 08/26/2019
 ms.author: robinsh
 ms.custom: mqtt
 ms.openlocfilehash: 620e0213733d278a28ec1bcad4b031f5764ccda9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81733137"
 ---
 # <a name="get-started-with-device-twins-net"></a>Ismerkedés az eszközökhöz készült ikrek (.NET) használatával
@@ -67,7 +66,7 @@ Ebben a szakaszban egy .NET-konzol alkalmazást hoz létre a C# használatával,
 
 1. Megoldáskezelő kattintson a jobb gombbal a **AddTagsAndQuery** projektre, majd válassza a **NuGet-csomagok kezelése**lehetőséget.
 
-1. Válassza a **Tallózás** lehetőséget, és keresse meg a **Microsoft. Azure. Devices**elemet. Válassza az **Install** (Telepítés) lehetőséget.
+1. Válassza a **Tallózás** lehetőséget, és keresse meg a **Microsoft. Azure. Devices**elemet. Válassza a **Telepítés** gombot.
 
     ![NuGet Package Manager (NuGet-csomagkezelő) ablak](./media/iot-hub-csharp-csharp-twin-getstarted/nuget-package-addtagsandquery-app.png)
 
@@ -79,7 +78,7 @@ Ebben a szakaszban egy .NET-konzol alkalmazást hoz létre a C# használatával,
     using Microsoft.Azure.Devices;
     ```
 
-1. Adja hozzá a **Program** osztályhoz a következő mezőket: A `{iot hub connection string}` helyére írja be az [IoT hub-kapcsolatok karakterláncának lekérése](#get-the-iot-hub-connection-string)során másolt IoT hubi kapcsolatok karakterláncát.
+1. Adja hozzá a **Program** osztályhoz a következő mezőket: A helyére írja `{iot hub connection string}` be az [IoT hub-kapcsolatok karakterláncának lekérése](#get-the-iot-hub-connection-string)során másolt IoT hubi kapcsolatok karakterláncát.
 
     ```csharp  
     static RegistryManager registryManager;
@@ -141,13 +140,13 @@ A következő szakaszban létrehoz egy olyan eszközt, amely jelentést készít
 
 Ebben a szakaszban egy olyan .NET-konzol alkalmazást hoz létre, amely a **myDeviceId**-hez csatlakozik a központhoz, majd frissíti a jelentett tulajdonságokat, hogy tartalmazza a mobil hálózaton keresztül csatlakoztatott adatokat.
 
-1. A Visual Studióban válassza a **fájl** > **új** > **projekt**lehetőséget. Az **új projekt létrehozása**területen válassza a **konzol alkalmazás (.NET-keretrendszer)** lehetőséget, majd kattintson a **tovább**gombra.
+1. A Visual Studióban válassza a **fájl**  >  **új**  >  **projekt**lehetőséget. Az **új projekt létrehozása**területen válassza a **konzol alkalmazás (.NET-keretrendszer)** lehetőséget, majd kattintson a **tovább**gombra.
 
 1. Az **új projekt konfigurálása**területen nevezze el a projekt **ReportConnectivity**. A **megoldáshoz**válassza a **Hozzáadás a megoldáshoz**lehetőséget, majd válassza a **Létrehozás**lehetőséget.
 
 1. Megoldáskezelő kattintson a jobb gombbal a **ReportConnectivity** projektre, majd válassza a **NuGet-csomagok kezelése**lehetőséget.
 
-1. Válassza a **Tallózás** lehetőséget, és keresse meg a **Microsoft. Azure. Devices. Client**elemet. Válassza az **Install** (Telepítés) lehetőséget.
+1. Válassza a **Tallózás** lehetőséget, és keresse meg a **Microsoft. Azure. Devices. Client**elemet. Válassza a **Telepítés** gombot.
 
    Ez a lépés letölti, telepíti és hozzáadja az [Azure IoT Device SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) NuGet csomagra és annak függőségeire mutató hivatkozást.
 
@@ -159,7 +158,7 @@ Ebben a szakaszban egy olyan .NET-konzol alkalmazást hoz létre, amely a **myDe
     using Newtonsoft.Json;
     ```
 
-1. Adja hozzá a **Program** osztályhoz a következő mezőket: A `{device connection string}` helyére írja be az [új eszköz regisztrálása az IoT hub](#register-a-new-device-in-the-iot-hub)-ban feljegyzett eszköz-csatlakoztatási karakterláncot.
+1. Adja hozzá a **Program** osztályhoz a következő mezőket: A helyére írja `{device connection string}` be az [új eszköz regisztrálása az IoT hub](#register-a-new-device-in-the-iot-hub)-ban feljegyzett eszköz-csatlakoztatási karakterláncot.
 
     ```csharp  
     static string DeviceConnectionString = "HostName=<yourIotHubName>.azure-devices.net;DeviceId=<yourIotDeviceName>;SharedAccessKey=<yourIotDeviceAccessKey>";
@@ -234,7 +233,7 @@ Ebben a szakaszban egy olyan .NET-konzol alkalmazást hoz létre, amely a **myDe
 
 1. Megoldáskezelő kattintson a jobb gombbal a megoldásra, majd válassza az **indítási projektek beállítása**lehetőséget.
 
-1. Az **Általános tulajdonságok** > **indítási projekt**területen válassza a **több indítási projekt**lehetőséget. A **ReportConnectivity**területen válassza a **kezdés** **műveletet**. A módosítások mentéséhez kattintson az **OK** gombra.  
+1. Az **Általános tulajdonságok**  >  **indítási projekt**területen válassza a **több indítási projekt**lehetőséget. A **ReportConnectivity**területen válassza a **kezdés** **műveletet**. A módosítások mentéséhez kattintson az **OK** gombra.  
 
 1. Az alkalmazás futtatásához kattintson a jobb gombbal a **ReportConnectivity** projektre, és válassza a **hibakeresés**lehetőséget, majd **indítsa el az új példányt**. Ekkor meg kell jelennie az alkalmazásnak, és a kapcsolat küldése ***jelentett tulajdonságnak***kell lennie.
 
@@ -242,7 +241,7 @@ Ebben a szakaszban egy olyan .NET-konzol alkalmazást hoz létre, amely a **myDe
 
    Miután az eszköz bejelentette a kapcsolati adatait, mindkét lekérdezésben szerepelnie kell.
 
-1. Kattintson a jobb gombbal a **AddTagsAndQuery** projektre, és válassza a **hibakeresés** > **új példány elindítása** lehetőséget a lekérdezések ismételt futtatásához. Ezúttal a **myDeviceId** mindkét lekérdezési eredményben szerepelnie kell.
+1. Kattintson a jobb gombbal a **AddTagsAndQuery** projektre, és válassza a **hibakeresés**  >  **új példány elindítása** lehetőséget a lekérdezések ismételt futtatásához. Ezúttal a **myDeviceId** mindkét lekérdezési eredményben szerepelnie kell.
 
     ![Az eszköz kapcsolata sikeresen jelezve](./media/iot-hub-csharp-csharp-twin-getstarted/tagappsuccess.png)
 

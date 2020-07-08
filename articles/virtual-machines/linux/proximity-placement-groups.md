@@ -8,10 +8,9 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2019
 ms.author: cynthn
 ms.openlocfilehash: f89b28e7a3c29e45efa2796788e27325c01d7098
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81759247"
 ---
 # <a name="deploy-vms-to-proximity-placement-groups-using-azure-cli"></a>Virtuális gépek üzembe helyezése a közelségi csoportokba az Azure CLI használatával
@@ -22,7 +21,7 @@ A közelségi elhelyezési csoport olyan logikai csoport, amely biztosítja, hog
 
 
 ## <a name="create-the-proximity-placement-group"></a>A közelségi elhelyezési csoport létrehozása
-Hozzon létre egy közelségi elhelyezési csoportot a használatával [`az ppg create`](/cli/azure/ppg#az-ppg-create). 
+Hozzon létre egy közelségi elhelyezési csoportot a használatával [`az ppg create`](/cli/azure/ppg#az-ppg-create) . 
 
 ```azurecli-interactive
 az group create --name myPPGGroup --location westus
@@ -63,11 +62,11 @@ az ppg show --name myppg --resource-group myppggroup --query "virtualMachines"
 ```
 
 ## <a name="availability-sets"></a>Rendelkezésre állási csoportok
-A közelségi elhelyezési csoportban is létrehozhat egy rendelkezésre állási csoportot. Használja ugyanazt `--ppg` a paramétert az [az VM rendelkezésre állása-set Create](/cli/azure/vm/availability-set#az-vm-availability-set-create) paranccsal, és hozzon létre egy rendelkezésre állási csoportot, és a rendelkezésre állási csoportban lévő összes virtuális gép is ugyanabban a közelségi elhelyezési csoportban lesz létrehozva.
+A közelségi elhelyezési csoportban is létrehozhat egy rendelkezésre állási csoportot. Használja ugyanazt a `--ppg` paramétert az [az VM rendelkezésre állása-set Create](/cli/azure/vm/availability-set#az-vm-availability-set-create) paranccsal, és hozzon létre egy rendelkezésre állási csoportot, és a rendelkezésre állási csoportban lévő összes virtuális gép is ugyanabban a közelségi elhelyezési csoportban lesz létrehozva.
 
 ## <a name="scale-sets"></a>Méretezési csoportok
 
-Létrehozhat egy méretezési csoportot is a közelségi elhelyezési csoportban. Használja ugyanazt `--ppg` a paramétert az az [vmss Create](/cli/azure/vmss?view=azure-cli-latest#az-vmss-create) paranccsal egy méretezési csoport létrehozásához, és az összes példány ugyanabban a közelségi elhelyezési csoportban lesz létrehozva.
+Létrehozhat egy méretezési csoportot is a közelségi elhelyezési csoportban. Használja ugyanazt a `--ppg` paramétert az az [vmss Create](/cli/azure/vmss?view=azure-cli-latest#az-vmss-create) paranccsal egy méretezési csoport létrehozásához, és az összes példány ugyanabban a közelségi elhelyezési csoportban lesz létrehozva.
 
 ## <a name="next-steps"></a>További lépések
 

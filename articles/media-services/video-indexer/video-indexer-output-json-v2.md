@@ -11,10 +11,9 @@ ms.topic: article
 ms.date: 12/09/2019
 ms.author: juliako
 ms.openlocfilehash: 5e3501ea8bc327f0dd906a42702194abce18c5fd
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84656578"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-api"></a>Vizsgálja meg az API által létrehozott Video Indexer kimenetet
@@ -38,7 +37,7 @@ Ez a cikk a **video index API lekérése** által VISSZAadott JSON-tartalmat viz
 
 ## <a name="root-elements"></a>Gyökérszintű elemek
 
-|Name|Leírás|
+|Name|Description|
 |---|---|
 |accountId|A lista VI-fiókjának azonosítója.|
 |id|A lista azonosítója.|
@@ -98,7 +97,7 @@ Ez a szakasz az információk összegzését jeleníti meg.
 
 ## <a name="videos"></a>videók
 
-|Name|Leírás|
+|Name|Description|
 |---|---|
 |accountId|A videó VI-fiókjának azonosítója.|
 |id|A videó azonosítója.|
@@ -203,7 +202,7 @@ esetben|A blokk időtartományait tartalmazó lista.|
 
 #### <a name="transcript"></a>átirat
 
-|Name|Leírás|
+|Name|Description|
 |---|---|
 |id|A sor azonosítója.|
 |szöveg|Maga a átirat.|
@@ -241,7 +240,7 @@ Példa:
 
 #### <a name="ocr"></a>OCR
 
-|Name|Leírás|
+|Name|Description|
 |---|---|
 |id|Az OCR-sor azonosítója.|
 |szöveg|Az OCR szövege.|
@@ -276,7 +275,7 @@ Példa:
 
 #### <a name="keywords"></a>kulcsszavak
 
-|Name|Leírás|
+|Name|Description|
 |---|---|
 |id|A kulcsszó azonosítója.|
 |szöveg|A kulcsszó szövege.|
@@ -307,7 +306,7 @@ Példa:
 
 #### <a name="faces"></a>arcok
 
-|Name|Leírás|
+|Name|Description|
 |---|---|
 |id|A Face azonosító.|
 |name|Az arc neve. Ez lehet ismeretlen #0, egy azonosított híresség vagy egy felhasználó által betanított személy.|
@@ -352,7 +351,7 @@ Példa:
 
 #### <a name="labels"></a>Címkék
 
-|Name|Leírás|
+|Name|Description|
 |---|---|
 |id|A címke azonosítója|
 |name|A címke neve (például "számítógép", "TV").|
@@ -411,7 +410,7 @@ Példa:
 
 #### <a name="scenes"></a>jelenetek
 
-|Name|Leírás|
+|Name|Description|
 |---|---|
 |id|A jelenet azonosítója.|
 |esetben|A jelenet időtartományának listája (a jelenet csak 1 példányt tartalmazhat).|
@@ -444,7 +443,7 @@ Példa:
 
 #### <a name="shots"></a>lövések
 
-|Name|Leírás|
+|Name|Description|
 |---|---|
 |id|A shot azonosítója.|
 |Kulcsképek|A lövésen belüli kulcsképek listája (mindegyik rendelkezik AZONOSÍTÓval és a példányok időtartományának listájával). Mindegyik kulcsképek-példányhoz tartozik egy thumbnailId mező, amely tartalmazza a kulcs miniatűrje AZONOSÍTÓját.|
@@ -494,7 +493,7 @@ Példa:
 
 Az üzleti és a termék márkanevei a szöveg átiratának és/vagy a videó OCR-nek a beszédében észlelhetők. Ez nem tartalmazza a márkák vagy embléma-észlelés vizualizációs felismerését.
 
-|Name|Leírás|
+|Name|Description|
 |---|---|
 |id|A márka azonosítója.|
 |name|A márkák neve.|
@@ -553,7 +552,7 @@ Az üzleti és a termék márkanevei a szöveg átiratának és/vagy a videó OC
 
 #### <a name="statistics"></a>statisztikák
 
-|Name|Leírás|
+|Name|Description|
 |---|---|
 |CorrespondenceCount|A videóban található Levelezések száma.|
 |SpeakerWordCount|A beszélő szavak száma.|
@@ -563,7 +562,7 @@ Az üzleti és a termék márkanevei a szöveg átiratának és/vagy a videó OC
 
 #### <a name="audioeffects"></a>audioEffects
 
-|Name|Leírás|
+|Name|Description|
 |---|---|
 |id|A hanghatás azonosítója.|
 |típus|A hanghatás típusa (például: taps, beszéd, csend).|
@@ -592,7 +591,7 @@ Az üzleti és a termék márkanevei a szöveg átiratának és/vagy a videó OC
 
 Az érzelmeket a sentimentType mező alapján összesítjük (pozitív/semleges/negatív). Például: 0-0,1, 0,1-0.2.
 
-|Name|Leírás|
+|Name|Description|
 |---|---|
 |id|Az érzelmi azonosító.|
 |averageScore |Az adott érzelmi típus összes példányának átlaga – pozitív/semleges/negatív|
@@ -631,7 +630,7 @@ A visualContentModeration blokk olyan időtartományokat tartalmaz, amelyeknek a
 
 A felnőtt vagy zamatos tartalmat tartalmazó videók csak privát nézethez érhetők el. A felhasználóknak lehetősége van arra, hogy a tartalom emberi felülvizsgálatára vonatkozó kérelmet küldjenek, amely esetben a IsAdult attribútum az emberi felülvizsgálat eredményét fogja tartalmazni.
 
-|Name|Leírás|
+|Name|Description|
 |---|---|
 |id|A vizuális tartalom moderálásának azonosítója.|
 |adultScore|A felnőtt pontszám (a tartalom moderátora).|
@@ -667,7 +666,7 @@ A felnőtt vagy zamatos tartalmat tartalmazó videók csak privát nézethez ér
 
 #### <a name="textualcontentmoderation"></a>textualContentModeration 
 
-|Name|Leírás|
+|Name|Description|
 |---|---|
 |id|A szöveges tartalom moderálásának azonosítója.|
 |bannedWordsCount |A tiltott szavak száma.|
@@ -677,7 +676,7 @@ A felnőtt vagy zamatos tartalmat tartalmazó videók csak privát nézethez ér
 
 A Video Indexer az érzelmeket beszéd és hangjelek alapján azonosítja. Az azonosított érzelem a következőket jelenthetheti: Joy, szomorúság, harag vagy félelem.
 
-|Name|Leírás|
+|Name|Description|
 |---|---|
 |id|Az érzelem azonosítója.|
 |típus|A beszéd-és hangjelzések alapján azonosított érzelem pillanata. Az érzelem lehet: Joy, szomorúság, düh vagy félelem.|
@@ -767,7 +766,7 @@ A Video Indexer az érzelmeket beszéd és hangjelek alapján azonosítja. Az az
 
 Video Indexer a fő témaköröket a átiratokból származtatja. Ha lehetséges, a 2. szintű [IPTC](https://iptc.org/standards/media-topics/) -besorolás szerepel. 
 
-|Name|Leírás|
+|Name|Description|
 |---|---|
 |id|A témakör azonosítója.|
 |name|A témakör neve, például: "gyógyszeripar".|
@@ -808,7 +807,7 @@ Video Indexer a fő témaköröket a átiratokból származtatja. Ha lehetséges
 . . .
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Video Indexer fejlesztői portál](https://api-portal.videoindexer.ai)
 

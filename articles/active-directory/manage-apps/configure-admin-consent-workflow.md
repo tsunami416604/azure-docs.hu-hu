@@ -13,10 +13,9 @@ ms.author: kenwith
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e4871af354d68a8d6dcaf3170271959146f57cba
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84763618"
 ---
 # <a name="configure-the-admin-consent-workflow-preview"></a>Rendszergazdai engedélyezési munkafolyamat (előzetes verzió) konfigurálása
@@ -110,7 +109,7 @@ A kérelmező e-mail-értesítéseket fog kapni, ha:
 * A kérést a rendszer megtagadta vagy letiltotta
 * A kérelem jóváhagyása megtörtént
  
-## <a name="audit-logs"></a>Naplók 
+## <a name="audit-logs"></a>Auditnaplók 
  
 Az alábbi táblázat a rendszergazdai engedélyezési munkafolyamathoz elérhető forgatókönyveket és naplózási értékeket ismerteti. 
 

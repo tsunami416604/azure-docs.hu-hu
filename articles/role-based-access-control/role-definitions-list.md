@@ -15,10 +15,9 @@ ms.date: 06/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 9819b90ba390e8601cc33a17338ce9b16bf3b3cc
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84982492"
 ---
 # <a name="list-azure-role-definitions"></a>Azure-szerepkör-definíciók listázása
@@ -356,7 +355,7 @@ A szerepkör-definíciók listázásához használja a [szerepkör-definíciók 
 1. Cserélje le a *{Filter}* helyére azt a feltételt, amelyet alkalmazni szeretne a szerepkör-definíciós lista szűréséhez.
 
     > [!div class="mx-tableFixed"]
-    > | Szűrés | Leírás |
+    > | Szűrés | Description |
     > | --- | --- |
     > | `$filter=atScopeAndBelow()` | Felsorolja a megadott hatókör és az alhatókörek szerepkör-definícióit. |
     > | `$filter=type+eq+'{type}'` | Felsorolja a megadott típusú szerepkör-definíciókat. A szerepkör típusa lehet `CustomRole` vagy `BuiltInRole` . |

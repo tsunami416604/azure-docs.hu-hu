@@ -7,18 +7,17 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/01/2018
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 573269da1ca6b9ee09b493f4e758e78121d6c2f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 1ad71d75eb80f15c09e0a4dff4edc4a0eaae9e1b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75422866"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85603927"
 ---
 # <a name="restore-or-remove-a-recently-deleted-user-using-azure-active-directory"></a>Nemrég törölt felhasználó visszaállítása vagy eltávolítása a Azure Active Directory használatával
 A felhasználó törlése után a fiók 30 napig felfüggesztett állapotban marad. A 30 napos időszak alatt a felhasználói fiók visszaállítható az összes tulajdonságával együtt. A 30 napos időszak után a rendszer automatikusan és véglegesen törli a felhasználót.

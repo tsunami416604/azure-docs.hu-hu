@@ -8,18 +8,17 @@ ms.assetid: f8b932bc-8b4f-42b5-a2d3-f2c076234a78
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/06/2018
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20ec1d1909a53a9de29e12be33957acfd1643698
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 4c695a63705cce90bb0bf6b3cf787d9e6481b888
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80128824"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85603893"
 ---
 # <a name="assign-or-remove-licenses-in-the-azure-active-directory-portal"></a>Licencek kiosztása vagy eltávolítása a Azure Active Directory portálon
 
@@ -37,7 +36,7 @@ Az Azure AD szolgáltatáshoz több engedélyezési csomag is elérhető, többe
 
 Az egyes licencelési csomagokkal és a hozzájuk kapcsolódó licencelési adatokkal kapcsolatos információkért lásd: [milyen licencre van szükségem?](https://azure.microsoft.com/pricing/details/active-directory/).
 
-Nem minden Microsoft-szolgáltatás érhető el minden helyen. Ahhoz, hogy egy licencet hozzá lehessen rendelni egy csoporthoz, meg kell adnia az összes tag **használati helyét** . Ezt az értéket megadhatja az **Azure &gt; ad &gt; Azure Active Directory &gt; felhasználói profil beállításai** területén. Minden olyan felhasználó, akinek a használati helye nincs megadva, örökli az Azure AD-szervezet helyét.
+Nem minden Microsoft-szolgáltatás érhető el minden helyen. Ahhoz, hogy egy licencet hozzá lehessen rendelni egy csoporthoz, meg kell adnia az összes tag **használati helyét** . Ezt az értéket megadhatja az Azure AD **Azure Active Directory &gt; felhasználói &gt; profil &gt; beállításai** területén. Minden olyan felhasználó, akinek a használati helye nincs megadva, örökli az Azure AD-szervezet helyét.
 
 ## <a name="view-license-plans-and-plan-details"></a>A licencelési csomagok és a csomag részleteinek megtekintése
 
@@ -82,7 +81,7 @@ Győződjön meg arról, hogy a licenccel rendelkező Azure AD-szolgáltatás ha
     A **licenc-hozzárendelési** oldal frissítései megjelenítik, hogy a felhasználó ki van-e választva, és hogy a hozzárendelések konfigurálva vannak-e.
 
     > [!NOTE]
-    > Nem minden Microsoft-szolgáltatás érhető el minden helyen. Ahhoz, hogy egy licencet a felhasználóhoz lehessen rendelni, meg kell adnia a **használat helyét**. Ezt az értéket megadhatja az **Azure &gt; ad &gt; Azure Active Directory &gt; felhasználói profil beállításai** területén. Minden olyan felhasználó, akinek a használati helye nincs megadva, örökli az Azure AD-szervezet helyét.
+    > Nem minden Microsoft-szolgáltatás érhető el minden helyen. Ahhoz, hogy egy licencet a felhasználóhoz lehessen rendelni, meg kell adnia a **használat helyét**. Ezt az értéket megadhatja az Azure AD **Azure Active Directory &gt; felhasználói &gt; profil &gt; beállításai** területén. Minden olyan felhasználó, akinek a használati helye nincs megadva, örökli az Azure AD-szervezet helyét.
 
 1. Válassza a **Hozzárendelés** elemet.
 

@@ -12,10 +12,9 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: b984ee7ed662bf089e7bcb6fc7e948fb61ed1209
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81733216"
 ---
 # <a name="device-to-cloud-communications-guidance"></a>Az eszközről a felhőbe irányuló kommunikációs útmutató
@@ -37,8 +36,8 @@ Itt látható az eszközről a felhőbe irányuló különböző kommunikációs
 | Forgatókönyv | Telemetria idősorozat és riasztások. Például 256 – KB-os érzékelő adatkötegek 5 percenként elküldve. | Elérhető képességek és kikötések. Például az eszköz aktuális kapcsolati módja, például a mobil vagy a WiFi. Hosszan futó munkafolyamatok, például a konfiguráció és a szoftverfrissítések szinkronizálása. | Médiafájlok. Nagyméretű (általában tömörített) telemetria kötegek. |
 | Tárolás és lekérés | Ideiglenesen tárolta IoT Hub, legfeljebb 7 nap. Csak szekvenciális olvasás. | Az eszköz Twin IoT Hub tárolja. Beolvasható a [IoT hub lekérdezési nyelv](iot-hub-devguide-query-language.md)használatával. | A felhasználó által megadott Azure Storage-fiókban tárolva. |
 | Méret | Akár 256 KB-os üzenet. | A jelentett tulajdonságok maximális mérete 32 KB. | Az Azure Blob Storage által támogatott maximális fájlméret. |
-| Frequency | Magas. További információ: [IoT hub korlátok](iot-hub-devguide-quotas-throttling.md). | Közepes. További információ: [IoT hub korlátok](iot-hub-devguide-quotas-throttling.md). | Alacsony. További információ: [IoT hub korlátok](iot-hub-devguide-quotas-throttling.md). |
-| Protocol (Protokoll) | Minden protokollon elérhető. | A MQTT vagy a AMQP használatával érhető el. | Bármely protokoll használata esetén elérhető, de HTTPS-t igényel az eszközön. |
+| Gyakoriság | Magas. További információ: [IoT hub korlátok](iot-hub-devguide-quotas-throttling.md). | Közepes. További információ: [IoT hub korlátok](iot-hub-devguide-quotas-throttling.md). | Alacsony. További információ: [IoT hub korlátok](iot-hub-devguide-quotas-throttling.md). |
+| Protokoll | Minden protokollon elérhető. | A MQTT vagy a AMQP használatával érhető el. | Bármely protokoll használata esetén elérhető, de HTTPS-t igényel az eszközön. |
 
 Előfordulhat, hogy egy alkalmazásnak telemetria idősorozatként vagy riasztásként is el kell küldenie az adatokat, és elérhetővé kell tennie azt az eszköz Twin szolgáltatásában. Ebben az esetben az alábbi lehetőségek közül választhat:
 

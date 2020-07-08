@@ -4,12 +4,11 @@ description: Ebből a cikkből megtudhatja, hogyan állíthatja helyre a fájlok
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: 68fa3bb2b17da01004220f5876911fa3289a2e7c
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
-ms.translationtype: MT
+ms.openlocfilehash: ded26718f176629f6c53ae90abf3c7e69b4df893
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85124987"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027165"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Fájlok helyreállítása az Azure-beli virtuális gépek biztonsági másolatából
 
@@ -182,7 +181,7 @@ mount [RAID Disk Path] [/mountpath]
 
 Ha a RAID-lemezen van egy másik LVM konfigurálva, akkor használja a fenti eljárást az LVM-partíciók esetében, de használja a kötet nevét a RAID-lemez nevének helyén.
 
-## <a name="system-requirements"></a>Rendszerkövetelmények
+## <a name="system-requirements"></a>System requirements (Rendszerkövetelmények)
 
 ### <a name="for-windows-os"></a>Windows operációs rendszer esetén
 
@@ -247,9 +246,9 @@ A hozzáférés `download.microsoft.com` szükséges a biztonságos csatorna lé
 
 ## <a name="file-recovery-from-virtual-machine-backups-having-large-disks"></a>A fájlok helyreállítása a nagyméretű lemezekkel rendelkező virtuális gépekről
 
-Ez a szakasz azt ismerteti, hogyan hajtható végre a fájlok helyreállítása a több mint 16 lemezzel rendelkező Azure-beli virtuális gépekről, és az egyes lemezek mérete meghaladja a 32 TB-ot.
+Ez a szakasz azt ismerteti, hogyan hajtható végre a fájlok helyreállítása a több mint 16 lemezzel rendelkező Azure-beli virtuális gépekről, vagy az egyes lemezek mérete meghaladja a 4 TB-ot.
 
-Mivel a fájl-helyreállítási folyamat az összes lemezt csatlakoztatja a biztonsági mentésből, amikor nagy számú lemez (>16) vagy nagyméretű lemez (> 32 TB) van használatban, a következő műveleti pontok ajánlottak:
+Mivel a fájl-helyreállítási folyamat az összes lemezt csatlakoztatja a biztonsági mentésből, amikor nagy számú lemez (>16) vagy nagyméretű lemez (> 4 TB) van használatban, a következő műveleti pontok ajánlottak:
 
 - A fájlok helyreállításához külön helyreállítási kiszolgálót (Azure VM D2v3 virtuális gépeket) kell megőrizni. Ezt csak a fájl-helyreállításhoz használhatja, majd leállíthatja, ha nincs rá szükség. Az eredeti gépen való visszaállítás nem ajánlott, mert jelentős hatással lesz a virtuális gépre.
 - Ezután futtassa egyszer a parancsfájlt annak vizsgálatához, hogy a fájl-helyreállítási művelet sikeres-e.

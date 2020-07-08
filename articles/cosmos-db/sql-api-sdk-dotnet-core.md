@@ -9,10 +9,9 @@ ms.topic: reference
 ms.date: 05/11/2020
 ms.author: anfeldma
 ms.openlocfilehash: fdc3d4244daa1f3b3d12898d6de42128ae1670ec
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85392046"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-v2-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB .NET Core SDK v2 az SQL API-hoz: kibocsátási megjegyzések és erőforrások
@@ -37,7 +36,7 @@ ms.locfileid: "85392046"
 |**SDK letöltése**| [NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/)|
 |**API-dokumentáció**|[.NET API-referenciák dokumentációja](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet)|
 |**Példák**|[.NET-kód minták](sql-api-dotnet-samples.md)|
-|**Bevezetés**|[Ismerkedés a Azure Cosmos DB .NET-tel](sql-api-sdk-dotnet.md)|
+|**Első lépések**|[Ismerkedés a Azure Cosmos DB .NET-tel](sql-api-sdk-dotnet.md)|
 |**Webalkalmazás-oktatóanyag**|[Webalkalmazás-fejlesztés Azure Cosmos DB](sql-api-dotnet-application.md)|
 |**Jelenleg támogatott keretrendszer**|[.NET Standard 1,6 és .NET Standard 1,5](https://www.nuget.org/packages/NETStandard.Library)|
 

@@ -4,10 +4,9 @@ description: Ez a cikk a SQL Server Azure-ba történő biztonsági mentését i
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.openlocfilehash: e0a555125e50a974ae51a08d7870cdc3ec12fd39
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84021092"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Információk az Azure-beli virtuális gépeken futó SQL Server Backupról
@@ -148,7 +147,7 @@ catch
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Tudnivalók SQL Server adatbázisok biztonsági](backup-sql-server-database-azure-vms.md) mentéséről.
 * [Tudnivalók a](restore-sql-database-azure-vm.md) SQL Server adatbázisok biztonsági másolatának visszaállításáról.

@@ -12,10 +12,9 @@ ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 01/14/2020
 ms.openlocfilehash: e5fd842e47c606c8f41aafe72253c1c4a1e885f3
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84324393"
 ---
 # <a name="configure-and-manage-content-reference---azure-sql-database"></a>Tartalmi referenciák konfigurálása és kezelése – Azure SQL Database
@@ -134,6 +133,6 @@ Ebben a cikkben a különböző útmutatókra, parancsfájlokra és magyarázato
 - [SaaS-videóindexelő](saas-tenancy-video-index-wingtip-brk3120-20171011.md)
 - [SaaS-alkalmazásbiztonság](saas-tenancy-elastic-tools-multi-tenant-row-level-security.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ [Az Azure SQL felügyelt példányaival kapcsolatos útmutatókról](../managed-instance/how-to-content-reference-guide.md)

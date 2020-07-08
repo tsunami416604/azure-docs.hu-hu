@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 06/09/2020
 ms.author: cherylmc
 ms.openlocfilehash: 5022efacf33a2c07f1388666b5de26ee86322739
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84636733"
 ---
 # <a name="expressroute-global-reach"></a>Az ExpressRoute Global Reach
@@ -50,7 +49,7 @@ A ExpressRoute Global Reach jelenleg a következő helyeken támogatottak.
 
 A ExpressRoute-áramköröket a fenti országokban vagy régióban található ExpressRoute-összevonási [helyeken](expressroute-locations.md) kell létrehozni. Ahhoz, hogy a ExpressRoute Global Reach a [különböző geopolitikai régiók](expressroute-locations.md)között, az áramkörnek prémium SKU-nak kell lennie.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 1. [A Global Reach GYIK megtekintése](expressroute-faqs.md#globalreach)
 2. [További információ a Global Reach engedélyezéséről](expressroute-howto-set-global-reach.md)
 3. [Megtudhatja, hogyan kapcsolhat ExpressRoute-áramkört a virtuális hálózathoz](expressroute-howto-linkvnet-arm.md)

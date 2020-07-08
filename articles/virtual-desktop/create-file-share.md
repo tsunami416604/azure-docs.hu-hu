@@ -8,12 +8,11 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: eea6f901a7228d7ed411d27296e1fb44a41d9f72
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
-ms.translationtype: MT
+ms.openlocfilehash: 7c6b37cd8c127bf3c7643b39d54bfcdb8093c58c
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85361336"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027392"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-ad-ds"></a>Profil tároló létrehozása Azure Files és AD DS
 
@@ -62,7 +61,7 @@ Fájlmegosztás létrehozása:
 
 3. Válassza a **+ fájlmegosztás**lehetőséget, hozzon létre egy új fájlmegosztási **profilt**, majd adjon meg egy megfelelő kvótát, vagy hagyja üresen a mezőt a kvóta nélkül.
 
-4. Kattintson a **Létrehozás** gombra.
+4. Válassza a **Létrehozás** lehetőséget.
 
 ## <a name="enable-active-directory-authentication"></a>Active Directory hitelesítés engedélyezése
 
@@ -81,12 +80,12 @@ Ezután engedélyeznie kell Active Directory (AD-) hitelesítést. Ennek a szab�
 
 A Storage-fiókban tárolt FSLogix-profilokkal rendelkező összes felhasználónak hozzá kell rendelnie a Storage file-adat SMB-megosztás közreműködői szerepkört.
 
-A Windows rendszerű virtuális asztali munkamenet-gazdagépekre bejelentkező felhasználóknak hozzáférési engedélyekkel kell rendelkezniük a fájlmegosztás eléréséhez. Az Azure-fájlmegosztás hozzáférésének biztosítása magában foglalja a megosztási szinten, valamint az NTFS-szinten a hagyományos Windows-megosztáshoz hasonlóan az engedélyek konfigurálását.
+A Windows Virtual Desktop-munkamenetgazdákra bejelentkező felhasználóknak hozzáférési engedélyekre van szüksége a fájlmegosztás eléréséhez. Az Azure-fájlmegosztásokhoz való hozzáférés biztosítása magában foglalja az engedélyeknek a megosztás szintjén, valamint az NTFS-szinten történő konfigurálását, egy hagyományos Windows-megosztáshoz hasonlóan.
 
 A megosztási szint engedélyeinek konfigurálásához rendeljen hozzá minden felhasználót a megfelelő hozzáférési engedélyekkel rendelkező szerepkörhöz. Az engedélyek az egyes felhasználókhoz vagy az Azure AD-csoportokhoz is hozzárendelhetők. További információ: [hozzáférési engedélyek kiosztása identitáshoz](../storage/files/storage-files-identity-ad-ds-assign-permissions.md).
 
 >[!NOTE]
->Azokat a fiókokat vagy csoportokat, amelyekhez engedélyeket rendel, létre kell hozni a tartományban, és szinkronizálni kell őket az Azure AD-vel. Az Azure AD-ben létrehozott fiókok nem működnek.
+>Azokat a fiókokat vagy csoportokat, amelyekhez engedélyeket rendel, a tartományban kell létrehozni, és szinkronizálni kell az Azure AD-vel. Az Azure AD-ben létrehozott fiókok nem fognak működni.
 
 Szerepköralapú hozzáférés-vezérlési (RBAC) engedélyek kiosztása:
 
@@ -94,19 +93,21 @@ Szerepköralapú hozzáférés-vezérlési (RBAC) engedélyek kiosztása:
 
 2. Nyissa meg a [Storage-fiók beállítása](#set-up-a-storage-account)című ben létrehozott Storage-fiókot.
 
-3. Válassza a **Access Control (iam)** lehetőséget.
+3. Válassza a **fájlmegosztás**lehetőséget, majd válassza ki a használni kívánt fájlmegosztás nevét.
 
-4. Válassza **a szerepkör-hozzárendelés hozzáadása**lehetőséget.
+4. Válassza a **Access Control (iam)** lehetőséget.
 
-5. A **szerepkör-hozzárendelés hozzáadása** lapon válassza a **tárolási fájl adat SMB-megosztás emelt szintű közreműködő** elemet a rendszergazdai fiókhoz.
+5. Válassza **a szerepkör-hozzárendelés hozzáadása**lehetőséget.
 
-     A FSLogix-profilokhoz tartozó felhasználói engedélyek hozzárendeléséhez kövesse az alábbi utasításokat. Ha azonban az 5. lépésre lép, válassza ki a **Storage file-adatsmb-megosztás közreműködője** helyet.
+6. A **szerepkör-hozzárendelés hozzáadása** lapon válassza a **tárolási fájl adat SMB-megosztás emelt szintű közreműködő** elemet a rendszergazdai fiókhoz.
 
-6. Kattintson a **Mentés** gombra.
+     Ha engedélyeket szeretne a felhasználókhoz rendelni az FSLogix-profiljukhoz kapcsolódóan, kövesse ugyanezeket a lépéseket. Ha azonban az 5. lépésre lép, válassza ki a **Storage file-adatsmb-megosztás közreműködője** helyet.
+
+7. Kattintson a **Mentés** gombra.
 
 ## <a name="assign-users-permissions-on-the-azure-file-share"></a>Felhasználói engedélyek kiosztása az Azure-fájlmegosztás számára
 
-Miután hozzárendelte a RBAC-engedélyeket a felhasználókhoz, a következő lépésben konfigurálnia kell az NTFS-engedélyeket.
+Miután RBAC-engedélyeket rendelt a felhasználókhoz, a következő teendő az NTFS-engedélyek konfigurálása.
 
 Első lépésként ismernie kell két dolgot a Azure Portal:
 
@@ -151,7 +152,7 @@ Az NTFS-engedélyek konfigurálása:
 
 1. Nyisson meg egy parancssort egy tartományhoz csatlakoztatott virtuális gépen.
 
-2. Futtassa az alábbi parancsmagot az Azure-fájlmegosztás csatlakoztatásához, és rendeljen hozzá egy meghajtóbetűjelet:
+2. Futtassa a következő parancsmagot az Azure-fájlmegosztás csatlakoztatásához, és rendeljen hozzá egy meghajtó-betűjelet: 
 
      ```powershell
      net use <desired-drive-letter>: <UNC-pat> <SA-key> /user:Azure\<SA-name>
@@ -192,15 +193,15 @@ Az NTFS-engedélyek konfigurálása:
 
 ## <a name="configure-fslogix-on-session-host-vms"></a>FSLogix konfigurálása a munkamenet-gazdagépen futó virtuális gépeken
 
-Ez a szakasz bemutatja, hogyan konfigurálhat egy virtuális gépet a FSLogix használatával. A munkamenet-gazdagépek minden egyes konfigurálásakor követnie kell ezeket az utasításokat. A konfigurálás megkezdése előtt kövesse a [FSLogix letöltése és telepítése](/fslogix/install-ht)című témakör utasításait. Több lehetőség is rendelkezésre áll, amelyek biztosítják, hogy a beállításkulcsok be legyenek állítva az összes munkamenet-gazdagépen. Ezeket a beállításokat megadhatja egy rendszerképben, vagy konfigurálhatja a csoportházirendet.
+Ez a szakasz bemutatja, hogyan konfigurálhatók a virtuális gépek az FSLogixszal. Ezeket az utasításokat mindig követnie kell, amikor munkamenetgazdát konfigurál. A konfigurálás megkezdése előtt kövesse a [FSLogix letöltése és telepítése](/fslogix/install-ht)című témakör utasításait. Számos lehetőség áll rendelkezésre annak biztosítására, hogy beállításkulcsok beállítása mindegyik munkamenetgazdán megtörténjen. Ezeket a beállításokat megadhatja egy rendszerképben, vagy konfigurálhat csoportszabályzatot.
 
-A FSLogix konfigurálása a munkamenet-gazda virtuális gépen:
+FSLogix konfigurálása a munkamenetgazda virtuális gépén:
 
 1. RDP a Windows rendszerű virtuális asztali címkészlet munkamenet-gazda virtuális gépén.
 
 2. [Töltse le és telepítse a FSLogix](/fslogix/install-ht).
 
-5. Kövesse a [Profile-tároló beállításjegyzék-beállításainak konfigurálása](/fslogix/configure-profile-container-tutorial#configure-profile-container-registry-settings)című témakör utasításait:
+5. Kövesse a [profiltároló beállításjegyzék-beállításainak konfigurálását](/fslogix/configure-profile-container-tutorial#configure-profile-container-registry-settings) ismertető cikk útmutatását:
 
     - Navigáljon a **számítógép**  >  **HKEY_LOCAL_MACHINE**  >  **szoftver**  >  **FSLogix**.
 

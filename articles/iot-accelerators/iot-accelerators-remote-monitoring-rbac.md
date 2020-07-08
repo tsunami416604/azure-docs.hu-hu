@@ -9,12 +9,11 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
 ms.custom: has-adal-ref
-ms.openlocfilehash: 2774fc1374bf7fa3ed171258e8b1b51cfdb4b8b1
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
-ms.translationtype: MT
+ms.openlocfilehash: e41d3b47408d29a0463eed5f23117801be107c27
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612945"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920725"
 ---
 # <a name="configure-role-based-access-controls-in-the-remote-monitoring-solution-accelerator"></a>Szerepköralapú hozzáférés-vezérlés konfigurálása a távoli figyelési megoldás gyorssegédében
 
@@ -29,19 +28,19 @@ A **rendszergazdai** szerepkör bármely felhasználója teljes hozzáféréssel
 | Engedély            | Rendszergazda | Csak olvasási engedély |
 |----------------       |-------|-----------|
 | Megoldás megtekintése         | Igen   | Igen       |
-| Riasztások frissítése         | Igen   | Nem        |
-| Riasztások törlése         | Igen   | Nem        |
-| Eszközök létrehozása        | Igen   | Nem        |
-| Eszközök frissítése        | Igen   | Nem        |
-| Eszközök törlése        | Igen   | Nem        |
-| Erőforráscsoportok létrehozása  | Igen   | Nem        |
-| Eszközbeállítások frissítése  | Igen   | Nem        |
-| Eszközbeállítások törlése  | Igen   | Nem        |
-| Szabályok létrehozása          | Igen   | Nem        |
-| Frissítési szabályok          | Igen   | Nem        |
-| Szabályok törlése          | Igen   | Nem        |
-| Feladatok létrehozása           | Igen   | Nem        |
-| SIM-kezelés frissítése | Igen   | Nem        |
+| Riasztások frissítése         | Yes   | Nem        |
+| Riasztások törlése         | Yes   | Nem        |
+| Eszközök létrehozása        | Yes   | Nem        |
+| Eszközök frissítése        | Yes   | Nem        |
+| Eszközök törlése        | Yes   | Nem        |
+| Erőforráscsoportok létrehozása  | Yes   | Nem        |
+| Eszközbeállítások frissítése  | Yes   | Nem        |
+| Eszközbeállítások törlése  | Yes   | Nem        |
+| Szabályok létrehozása          | Yes   | Nem        |
+| Frissítési szabályok          | Yes   | Nem        |
+| Szabályok törlése          | Yes   | Nem        |
+| Feladatok létrehozása           | Yes   | Nem        |
+| SIM-kezelés frissítése | Yes   | Nem        |
 
 Alapértelmezés szerint a megoldást telepítő felhasználó automatikusan hozzárendeli a **rendszergazdai** szerepkört, és egy Azure Active Directory alkalmazás tulajdonosa. Az alkalmazás tulajdonosaként a Azure Portalon keresztül rendelhet hozzá szerepköröket más felhasználókhoz. Ha azt szeretné, hogy egy másik felhasználó szerepköröket rendeljen a megoldáshoz, akkor azt is be kell állítani a Azure Portal alkalmazás-tulajdonosként.
 
@@ -50,7 +49,7 @@ Alapértelmezés szerint a megoldást telepítő felhasználó automatikusan hoz
 
 ## <a name="add-or-remove-users"></a>Felhasználók hozzáadása vagy eltávolítása
 
-Azure Active Directory alkalmazás tulajdonosaként a Azure Portal használatával hozzáadhat vagy eltávolíthat egy felhasználót a szerepkörhöz a távoli figyelési megoldásból. A következő lépések a távoli figyelési megoldás üzembe helyezésekor létrehozott [Azure Active Directory Enterprise alkalmazást](../active-directory/manage-apps/add-application-portal.md#find-your-azure-ad-tenant-application) használják.
+Azure Active Directory alkalmazás tulajdonosaként a Azure Portal használatával hozzáadhat vagy eltávolíthat egy felhasználót a szerepkörhöz a távoli figyelési megoldásból. A következő lépések a távoli figyelési megoldás üzembe helyezésekor létrehozott [Azure Active Directory Enterprise alkalmazást](../active-directory/manage-apps/view-applications-portal.md) használják.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
@@ -72,7 +71,7 @@ Azure Active Directory alkalmazás tulajdonosaként a Azure Portal használatáv
 
 1. A felhasználó szerepkörhöz rendeléséhez kattintson a **szerepkör kiválasztása, nincs kiválasztva** lehetőségre, és válassza ki a **rendszergazda** vagy a **csak olvasás** szerepkört a felhasználó számára. Kattintson a **kiválasztás**, majd a **hozzárendelés**elemre.
 
-    ![Szerepkör kiválasztása](media/iot-accelerators-remote-monitoring-rbac/selectrole.png)
+    ![Válasszon szerepkört](media/iot-accelerators-remote-monitoring-rbac/selectrole.png)
 
 1. A felhasználó mostantól hozzáférhet a távoli figyelési megoldáshoz a szerepkör által meghatározott engedélyekkel.
 
@@ -139,11 +138,11 @@ A következő lépések azt ismertetik, hogyan adhat hozzá szerepkört egy alka
 
 ### <a name="define-a-policy-for-the-new-role"></a>Szabályzat definiálása az új szerepkörhöz
 
-Miután hozzáadta a szerepkört az alkalmazáshoz a Azure Portalban, meg kell adnia egy házirendet a [roles. JSON](https://github.com/Azure/remote-monitoring-services-dotnet/blob/master/auth/Services/data/policies/roles.json) fájlban ahhoz a szerepkörhöz, amely az eszközök felügyeletéhez szükséges engedélyeket rendeli hozzá.
+Miután hozzáadta a szerepkört az alkalmazáshoz a Azure Portalban, meg kell adnia egy házirendet a [roles.jsn](https://github.com/Azure/remote-monitoring-services-dotnet/blob/master/auth/Services/data/policies/roles.json) azon szerepkörhöz, amely az eszközök felügyeletéhez szükséges engedélyeket rendeli hozzá.
 
 1. A [távoli monitorozási fürtszolgáltatások](https://github.com/Azure/remote-monitoring-services-dotnet) tárházának klónozása a githubról a helyi gépre.
 
-1. Szerkessze az **Auth/Services/adat/házirend/roles. JSON** fájlt, és adja hozzá a **ManageDevices** szerepkörhöz tartozó házirendet az alábbi kódrészletben látható módon. Az **azonosító** és a **szerepkör** értékének meg kell egyeznie az alkalmazás jegyzékfájljának az előző szakaszban szereplő szerepkör-definícióval. Az engedélyezett műveletek listája lehetővé teszi, hogy valaki a **ManageDevices** -szerepkörben a megoldáshoz kapcsolódó eszközöket hozzon létre, frissítsen és töröljön:
+1. Szerkessze a fájl **Auth/szolgáltatások/adat/házirendek/roles.jselemét** , és adja hozzá a **ManageDevices** szerepkörhöz tartozó házirendet az alábbi kódrészletben látható módon. Az **azonosító** és a **szerepkör** értékének meg kell egyeznie az alkalmazás jegyzékfájljának az előző szakaszban szereplő szerepkör-definícióval. Az engedélyezett műveletek listája lehetővé teszi, hogy valaki a **ManageDevices** -szerepkörben a megoldáshoz kapcsolódó eszközöket hozzon létre, frissítsen és töröljön:
 
     ```json
     {
@@ -185,7 +184,7 @@ Miután hozzáadta a szerepkört az alkalmazáshoz a Azure Portalban, meg kell a
     }
     ```
 
-1. Ha befejezte a **szolgáltatások/adat/házirendek/szerepkörök. JSON** fájl szerkesztését, építse újra, majd telepítse újra a hitelesítési és engedélyezési szolgáltatást a megoldás-gyorsító felé.
+1. Ha befejezte a **szolgáltatások/adatházirendek/roles.js** fájl szerkesztését, építse újra, majd telepítse újra a hitelesítési és engedélyezési szolgáltatást a megoldás-gyorsító felé.
 
 ### <a name="how-the-web-ui-enforces-permissions"></a>A webes felhasználói felület engedélyeinek érvényesítése
 
@@ -213,7 +212,7 @@ A **ManageDevices** szerepkörben **Eszközkezelő** nevű felhasználó esetén
 }
 ```
 
-A [webes felületen](https://github.com/Azure/pcs-remote-monitoring-webui/) a [deviceDelete. js](https://github.com/Azure/pcs-remote-monitoring-webui/blob/master/src/components/pages/devices/flyouts/deviceDelete/deviceDelete.js) fájl következő kódrészlete azt mutatja be, hogy az engedélyek hogyan lesznek kikényszerítve a deklaratív módon:
+A [webes felületen](https://github.com/Azure/pcs-remote-monitoring-webui/) lévő [deviceDelete.js](https://github.com/Azure/pcs-remote-monitoring-webui/blob/master/src/components/pages/devices/flyouts/deviceDelete/deviceDelete.js) következő kódrészlete azt mutatja be, hogy az engedélyek hogyan lesznek kikényszerítve a deklaratív módon:
 
 ```json
 <FlyoutContent>
@@ -225,7 +224,7 @@ A [webes felületen](https://github.com/Azure/pcs-remote-monitoring-webui/) a [d
 </FlyoutContent>
 ```
 
-További információ: [védett összetevők](https://github.com/Azure/pcs-remote-monitoring-webui/blob/master/src/components/shared/protected/README.md). A [authModel. js](https://github.com/Azure/pcs-remote-monitoring-webui/blob/master/src/services/models/authModels.js) fájlban további engedélyeket is megadhat.
+További információ: [védett összetevők](https://github.com/Azure/pcs-remote-monitoring-webui/blob/master/src/components/shared/protected/README.md). További engedélyeket is megadhat a [authModel.js](https://github.com/Azure/pcs-remote-monitoring-webui/blob/master/src/services/models/authModels.js) fájlban.
 
 ### <a name="how-the-microservices-enforce-permissions"></a>A szolgáltatásokra vonatkozó engedélyek érvényesítése
 

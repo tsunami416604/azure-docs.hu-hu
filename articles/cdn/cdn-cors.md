@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 63919d7770746025189f3d6e578919b2fc2799c3
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
-ms.translationtype: MT
+ms.openlocfilehash: 89adc283fa9d6edc49536cb9459a479710c94435
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84884916"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921165"
 ---
 # <a name="using-azure-cdn-with-cors"></a>Azure CDN használata a CORS
 ## <a name="what-is-cors"></a>Mi az a CORS?
@@ -82,7 +81,9 @@ Ezt kétféleképpen teheti meg a prémium szabályok motorral. Mindkét esetben
 #### <a name="one-regular-expression-with-all-valid-origins"></a>Egy reguláris kifejezés az összes érvényes eredetgel
 Ebben az esetben hozzon létre egy reguláris kifejezést, amely tartalmazza az összes engedélyezni kívánt eredetet: 
 
-    https?:\/\/(www\.contoso\.com|contoso\.com|www\.microsoft\.com|microsoft.com\.com)$
+```http
+https?:\/\/(www\.contoso\.com|contoso\.com|www\.microsoft\.com|microsoft.com\.com)$
+```
 
 > [!TIP]
 > A **Verizon Azure CDN Premium a Perl-** [kompatibilis reguláris kifejezéseket](https://pcre.org/) használja a reguláris kifejezések motorjának.  A reguláris kifejezéseket például az [101](https://regex101.com/) -as reguláris kifejezésekkel ellenőrizheti.  Vegye figyelembe, hogy a "/" karakter a reguláris kifejezésekben érvényes, ezért nem kell megszöknie, azonban az adott karakter kimaradása ajánlott eljárásnak minősül, és néhány regex-érvényesítő által várt.

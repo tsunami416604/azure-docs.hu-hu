@@ -9,10 +9,9 @@ ms.topic: reference
 ms.date: 05/11/2020
 ms.author: anfeldma
 ms.openlocfilehash: 878b2685eb46af567f4dc7f50f0d10ca244143d3
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85392012"
 ---
 # <a name="azure-cosmos-db-net-sdk-v2-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK v2 az SQL API-hoz: letöltési és kibocsátási megjegyzések
@@ -37,7 +36,7 @@ ms.locfileid: "85392012"
 |**SDK letöltése**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)|
 |**API-dokumentáció**|[.NET API-referenciák dokumentációja](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet)|
 |**Példák**|[.NET-kód minták](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples)|
-|**Bevezetés**|[Ismerkedés a Azure Cosmos DB .NET SDK-val](sql-api-get-started.md)|
+|**Első lépések**|[Ismerkedés a Azure Cosmos DB .NET SDK-val](sql-api-get-started.md)|
 |**Webalkalmazás-oktatóanyag**|[Webalkalmazás-fejlesztés Azure Cosmos DB](sql-api-dotnet-application.md)|
 |**Jelenleg támogatott keretrendszer**|[Microsoft .NET-keretrendszer 4.5](https://www.microsoft.com/download/details.aspx?id=30653)|
 

@@ -17,10 +17,9 @@ ms.date: 9/18/2018
 ms.author: aanandr
 ms.custom: ''
 ms.openlocfilehash: 7cae4b579a933c03ec3a08a00ef032c57d15093f
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84710014"
 ---
 # <a name="deploy-the-azure-virtual-network-container-network-interface-plug-in"></a>Az Azure Virtual Network tárolóalapú hálózati adaptere beépülő moduljának üzembe helyezése
@@ -31,7 +30,7 @@ Az Azure Virtual Network tárolóalapú hálózati adapterének beépülő modul
 
 Az ACS-motor üzembe helyez egy Kubernetes-fürtöt az Azure Resource Manager-sablon használatával A fürtkonfiguráció egy JSON-fájlban van meghatározva, amelyet a sablon létrehozásakor a rendszer továbbít az eszköznek. A támogatott fürtbeállítások teljes listájával és a beállítások leírásával kapcsolatos további részletekért tekintse meg a [Microsoft Azure Container Service Engine – Fürtdefiníció](https://github.com/Azure/acs-engine/blob/master/docs/clusterdefinition.md) című részt. Ez a beépülő modul az ACS-motor használatával létrehozott fürtök alapértelmezett hálózatkezelési beépülő modulja. A következő hálózatkonfigurációs beállítások fontosak a beépül modul konfigurálásakor:
 
-  | Beállítás                              | Leírás                                                                                                           |
+  | Beállítás                              | Description                                                                                                           |
   |--------------------------------------|------------------------------------------------------------------------------------------------------                 |
   | firstConsecutiveStaticIP             | A fő csomópontnak kiosztott IP-cím. Ez egy kötelező beállítás.                                     |
   | clusterSubnet a kubernetesConfig alatt | Annak a virtuális hálózati alhálózatnak a CIDR-je, amelyben a fürt üzembe lett helyezve, és amelyből az IP-címek ki lettek osztva a podok számára.   |

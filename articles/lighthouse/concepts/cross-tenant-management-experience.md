@@ -3,12 +3,11 @@ title: Bérlők közötti felügyeleti megoldások
 description: Az Azure-beli delegált erőforrás-kezelés lehetővé teszi a több-bérlős felügyeleti élményt.
 ms.date: 05/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 225a7f7725762c6887858366b134a7ad9a7b8eb6
-ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
-ms.translationtype: MT
+ms.openlocfilehash: ef2fe2ecd72234312a750e206b8920f4ea7eaa02
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85052680"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920594"
 ---
 # <a name="cross-tenant-management-experiences"></a>Bérlők közötti felügyeleti megoldások
 
@@ -33,9 +32,9 @@ Az Azure-beli delegált erőforrás-kezelés nagyobb rugalmasságot biztosít a 
 
 A delegált erőforrásokon közvetlenül a portálon, vagy API-k és felügyeleti eszközök (például az Azure CLI és a Azure PowerShell) használatával is elvégezheti a felügyeleti feladatokat. A rendszer minden meglévő API-t felhasználhat a delegált erőforrások használata esetén, ha a funkció támogatott a több-bérlős felügyelet esetében, és a felhasználó rendelkezik a megfelelő engedélyekkel.
 
-A Azure PowerShell [Get-AzSubscription parancsmag](https://docs.microsoft.com/powershell/module/Az.Accounts/Get-AzSubscription?view=azps-3.5.0) megjeleníti az egyes előfizetések **tenantID** , így azonosíthatja, hogy a visszaadott előfizetés a szolgáltatói bérlőhöz vagy egy felügyelt ügyfél bérlőhöz tartozik-e.
+A Azure PowerShell [Get-AzSubscription parancsmag](/powershell/module/Az.Accounts/Get-AzSubscription?view=azps-3.5.0) megjeleníti az egyes előfizetések **tenantID** , így azonosíthatja, hogy a visszaadott előfizetés a szolgáltatói bérlőhöz vagy egy felügyelt ügyfél bérlőhöz tartozik-e.
 
-Hasonlóképpen, az Azure CLI-parancsok, például az [az Account List](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-list) a **HomeTenantId** és a **managedByTenants** attribútumot jelenítik meg.
+Hasonlóképpen, az Azure CLI-parancsok, például az [az Account List](/cli/azure/account?view=azure-cli-latest#az-account-list) a **HomeTenantId** és a **managedByTenants** attribútumot jelenítik meg.
 
 > [!TIP]
 > Ha nem látja ezeket az értékeket az Azure CLI használatakor, a következő lépésekkel próbálja meg törölni a gyorsítótárat `az account clear` `az login --identity` .

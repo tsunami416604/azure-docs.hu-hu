@@ -4,10 +4,9 @@ description: Ez a cikk az Azure Event Hubs-erőforrásokhoz való hozzáférés 
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: 6a2d7385f82864e8d378055333377fb9c3f73c19
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85323114"
 ---
 # <a name="authorizing-access-to-event-hubs-resources-using-shared-access-signatures"></a>A Event Hubs-erőforrásokhoz való hozzáférés engedélyezése közös hozzáférési aláírások használatával

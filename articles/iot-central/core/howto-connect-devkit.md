@@ -9,10 +9,9 @@ ms.service: iot-central
 services: iot-central
 manager: jeffya
 ms.openlocfilehash: bcf1dd2f89cf049d7da5b56170b2c13874c83ba4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81756809"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>MXChip-IoT fejlesztői készlet-eszköz csatlakoztatása az Azure IoT Central-alkalmazáshoz
@@ -46,7 +45,7 @@ Az cikkben ismertetett lépések elvégzéséhez az alábbi erőforrásokra lesz
 
     ![Új eszköz](media/howto-connect-devkit/new-device.png)
 
-1. Az előugró ablakban adja meg az **eszköz azonosítóját** `SampleDevKit` és az **eszköz nevét** `MXChip IoT DevKit - Sample`. Győződjön meg arról, hogy a **szimulált** beállítás ki van kapcsolva. Ezután válassza a **Létrehozás**lehetőséget.
+1. Az előugró ablakban adja meg az **eszköz azonosítóját** és az `SampleDevKit` **eszköz nevét** `MXChip IoT DevKit - Sample` . Győződjön meg arról, hogy a **szimulált** beállítás ki van kapcsolva. Ezután kattintson a **Létrehozás** elemre.
 
     ![Eszköz azonosítója és neve](media/howto-connect-devkit/device-id-name.png)
 
@@ -69,7 +68,7 @@ Az cikkben ismertetett lépések elvégzéséhez az alábbi erőforrásokra lesz
 
 1. A számítógépen vagy a táblaszámítógépen kapcsolódjon az eszköz képernyőjén megjelenő WiFi-hálózathoz. A Wi-Fi-hálózat az **az-** és a MAC-címe után kezdődik. Ha csatlakozik ehhez a hálózathoz, nem rendelkezik internet-hozzáféréssel. Ez az állapot várható, és az eszköz konfigurálásakor csak rövid idő alatt csatlakozhat ehhez a hálózathoz.
 
-1. Nyissa meg a webböngészőt [http://192.168.0.1/](http://192.168.0.1/), és navigáljon a címre. A következő weblap jelenik meg:
+1. Nyissa meg a webböngészőt, és navigáljon a címre [http://192.168.0.1/](http://192.168.0.1/) . A következő weblap jelenik meg:
 
     ![Konfiguráció felhasználói felülete](media/howto-connect-devkit/config-ui.png)
 

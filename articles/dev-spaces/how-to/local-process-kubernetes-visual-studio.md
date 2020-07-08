@@ -1,18 +1,17 @@
 ---
-title: Helyi folyamat használata a Kubernetes és a Visual Studio (előzetes verzió) használatával
+title: Helyi folyamat és Kubernetes használata a Visual Studióval (előzetes verzió)
 services: azure-dev-spaces
 ms.date: 06/02/2020
 ms.topic: conceptual
 description: Ismerje meg, hogyan használható a helyi folyamat a Kubernetes a Visual Studióval a fejlesztői számítógép Kubernetes-fürthöz való összekapcsolásához az Azure dev Spaces használatával
 keywords: Helyi folyamat a Kubernetes, az Azure dev Spaces, a dev Spaces, a Docker, a Kubernetes, az Azure, az AK, az Azure Kubernetes Service, a containers
 ms.openlocfilehash: 8e89baeac8d9042a87685ed1268ed694db8d9455
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84316802"
 ---
-# <a name="use-local-process-with-kubernetes-with-visual-studio-preview"></a>Helyi folyamat használata a Kubernetes és a Visual Studio (előzetes verzió) használatával
+# <a name="use-local-process-with-kubernetes-with-visual-studio-preview"></a>Helyi folyamat és Kubernetes használata a Visual Studióval (előzetes verzió)
 
 A Kubernetes helyi folyamata lehetővé teszi a kód futtatását és hibakeresését a fejlesztői számítógépen, miközben továbbra is csatlakozik a Kubernetes-fürthöz a többi alkalmazással vagy szolgáltatással. Ha például nagyméretű, több függő szolgáltatásokkal és adatbázisokkal rendelkező, nagy üzemi architektúrával rendelkezik, a függőségek replikálása a fejlesztői számítógépen nehéz lehet. Emellett a belső hurkok fejlesztése során a kód a Kubernetes-fürthöz való létrehozása és üzembe helyezése is lassú, időigényes és nehéz a hibakeresővel való használatra.
 

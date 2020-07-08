@@ -8,10 +8,9 @@ ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.openlocfilehash: eb13dbb7e4cfbbb1b2ea42ea1753e7615df03a7d
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85512169"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Az Azure Storage Emulator használata fejlesztéshez és teszteléshez
@@ -323,7 +322,7 @@ Nincsenek eltérések az emulátorban található üzenetsor-tároláshoz.
 * A Storage Emulator grafikus felhasználói felülete elavult. Egy parancsfájl-parancssori felület váltotta fel. A parancssori felület részletes ismertetését lásd a Storage Emulator parancssori eszköz dokumentációjában. A grafikus felület továbbra is megtalálható a 3,0-es verzióban, de csak akkor érhető el, ha a számítási emulátor telepítve van, ha a jobb gombbal a rendszertálca ikonra kattint, és kiválasztja a Storage Emulator felhasználói felületének megjelenítése lehetőséget.
 * Az Azure Storage-szolgáltatások 2013-08-15-es verziója már teljes mértékben támogatott. (Ezt a verziót korábban csak a Storage Emulator 2.2.1 előzetes verziója támogatja.)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Értékelje ki a többplatformos, Közösség által karbantartott nyílt forráskódú Storage Emulator- [Azurite](https://github.com/azure/azurite). 
 * A .NET-et [használó Azure Storage-minták](../storage-samples-dotnet.md) több, az alkalmazás fejlesztésekor felhasználható kódrészletre mutató hivatkozásokat is tartalmaznak.

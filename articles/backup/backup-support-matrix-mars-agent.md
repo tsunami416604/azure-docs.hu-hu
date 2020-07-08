@@ -4,10 +4,9 @@ description: Ez a cikk a Microsoft Azure Recovery Services (MARS) ügynököt fu
 ms.date: 08/30/2019
 ms.topic: conceptual
 ms.openlocfilehash: 6085bc647c06b5907282460a2d8706b8549e1bc2
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84709878"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Támogatási mátrix a Microsoft Azure Recovery Services-(MARS-) ügynökkel való biztonsági mentéshez
@@ -41,7 +40,7 @@ Telepítés biztonsági mentési kiszolgálóra | A DPM vagy a MABS Azure-ba val
 
 Ha a MARS-ügynököt használja az adatok biztonsági mentésére, az ügynök pillanatképet készít az adatokról, és egy helyi gyorsítótár-mappában tárolja azt, mielőtt elküldi az adatokat az Azure-ba. A gyorsítótár (Scratch) mappája több követelményt is tartalmaz:
 
-**Gyorsítótár** | **Részletek**
+**Cache** | **Részletek**
 --- | ---
 Méret |  A gyorsítótár mappában lévő szabad területnek legalább 5 – 10%-ának kell lennie a biztonsági mentési adatai teljes méretének.
 Hely | A gyorsítótár mappájának helyileg kell lennie a biztonsági mentés alatt álló gépen, és online állapotban kell lennie. A gyorsítótár mappája nem lehet hálózati megosztáson, cserélhető adathordozón vagy offline köteten.

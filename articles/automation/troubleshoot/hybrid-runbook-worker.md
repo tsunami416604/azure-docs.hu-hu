@@ -10,13 +10,12 @@ ms.date: 11/25/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 28b6b09c679e37ca4ecd901371e65bffb27ecba4
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83680999"
 ---
-# <a name="troubleshoot-hybrid-runbook-worker-issues"></a>Hibrid Runbook-feldolgozói problémák elhárítása
+# <a name="troubleshoot-hybrid-runbook-worker-issues"></a>Hibrid runbook-feldolgozó hibáinak elhárítása
 
 Ez a cikk a Azure Automation Hybrid Runbook-feldolgozókkal kapcsolatos problémák elhárításával és megoldásával kapcsolatos információkat tartalmaz. Általános információk: a [hibrid Runbook Worker áttekintése](../automation-hybrid-runbook-worker.md).
 
@@ -234,17 +233,17 @@ A naplók tárolása helyileg történik minden hibrid feldolgozón a következ�
 
 A hibrid feldolgozók a [Runbook kimenetét és üzeneteit](../automation-runbook-output-and-messages.md) ugyanúgy küldik el Azure Automationnak, mint a felhőben futó Runbook-feladatok kimenetének és üzeneteinek küldése. A részletes és a folyamat-adatfolyamokat ugyanúgy engedélyezheti, mint a runbookok.
 
-### <a name="scenario-orchestratorsandboxexe-cant-connect-to-office-365-through-proxy"></a><a name="no-orchestrator-sandbox-connect-O365"></a>Forgatókönyv: a Orchestrator. sandbox. exe nem tud kapcsolódni az Office 365-hez proxyn keresztül
+### <a name="scenario-orchestratorsandboxexe-cant-connect-to-office-365-through-proxy"></a><a name="no-orchestrator-sandbox-connect-O365"></a>Forgatókönyv: Orchestrator.Sandbox.exe nem tud kapcsolódni az Office 365-hez proxyn keresztül
 
 #### <a name="issue"></a>Probléma
 
 Egy Windows Hybrid Runbook Worker-példányon futó parancsfájl nem tud a várt módon csatlakozni az Office 365-Orchestrator a homokozóban. A szkript a [MsolService](https://docs.microsoft.com/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) kapcsolatot használja a kapcsolathoz. 
 
-Ha a **Orchestrator. sandbox. exe. config fájlt** állítja be a proxy és a megkerülési lista beállításához, a sandbox továbbra sem csatlakozik megfelelően. Úgy tűnik, hogy a várt módon működik egy **Powershell_ise. exe. config** fájl ugyanazzal a proxy-és megkerülési listával. A Service Management Automation (SMA) naplók és a PowerShell-naplók nem biztosítanak semmilyen információt a proxyval kapcsolatban.
+Ha úgy módosítja **Orchestrator.Sandbox.exe.config** a proxy és a mellőzési lista beállításához, a sandbox továbbra sem csatlakozik megfelelően. Úgy tűnik, hogy a várt módon működik egy **Powershell_ise.exe.config** -fájl, amely azonos proxy-és megkerülési lista-beállításokkal rendelkezik. A Service Management Automation (SMA) naplók és a PowerShell-naplók nem biztosítanak semmilyen információt a proxyval kapcsolatban.
 
 #### <a name="cause"></a>Ok
 
-A-kiszolgálón lévő Active Directory összevonási szolgáltatások (AD FS) (AD FS) kapcsolat nem kerülheti el a proxyt. Ne feledje, hogy egy PowerShell-homokozó a naplózott felhasználóként fut. Egy Orchestrator-homokozó azonban nagy mértékben testre szabott, és figyelmen kívül hagyhatja a **Orchestrator. sandbox. exe. config** fájl beállításait. Speciális kóddal rendelkezik a gép vagy Log Analytics ügynök proxy-beállításainak kezelésére, de más egyéni proxybeállítások kezelésére nem. 
+A-kiszolgálón lévő Active Directory összevonási szolgáltatások (AD FS) (AD FS) kapcsolat nem kerülheti el a proxyt. Ne feledje, hogy egy PowerShell-homokozó a naplózott felhasználóként fut. Egy Orchestrator-homokozó azonban nagy mértékben testre szabott, és figyelmen kívül hagyhatja a **Orchestrator.Sandbox.exe.config** fájl beállításait. Speciális kóddal rendelkezik a gép vagy Log Analytics ügynök proxy-beállításainak kezelésére, de más egyéni proxybeállítások kezelésére nem. 
 
 #### <a name="resolution"></a>Megoldás:
 

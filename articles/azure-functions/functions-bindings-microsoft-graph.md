@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 12/20/2017
 ms.author: cshoe
 ms.openlocfilehash: ef746186717f3eb6bb93263c7f86c26606f65ea9
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84322515"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Azure Functions-kötések Microsoft Graph
@@ -75,7 +74,7 @@ Az Auth token bemeneti kötése egy Azure AD-tokent kap egy adott erőforráshoz
 
 Ez a szakasz a következő alszakaszokat tartalmazza:
 
-* [Például](#auth-token---example)
+* [Példa](#auth-token---example)
 * [Attribútumok](#auth-token---attributes)
 * [Konfigurálás](#auth-token---configuration)
 * [Használat](#auth-token---usage)
@@ -91,7 +90,7 @@ Tekintse meg a nyelvspecifikus példát:
 
 A következő példa beolvassa a felhasználói profil adatait.
 
-A *function. JSON* fájl definiál egy http-triggert, amely jogkivonat-beviteli kötést eredményez:
+A fájl *function.js* egy olyan http-triggert határoz meg, amely token bemeneti kötéssel rendelkezik:
 
 ```json
 {
@@ -138,7 +137,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, string
 
 A következő példa beolvassa a felhasználói profil adatait.
 
-A *function. JSON* fájl definiál egy http-triggert, amely jogkivonat-beviteli kötést eredményez:
+A fájl *function.js* egy olyan http-triggert határoz meg, amely token bemeneti kötéssel rendelkezik:
 
 ```json
 {
@@ -203,9 +202,9 @@ A [C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a
 
 ### <a name="auth-token---configuration"></a>Hitelesítési jogkivonat – konfiguráció
 
-Az alábbi táblázat a *function. JSON* fájlban és az attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti `Token` .
+Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `Token` .
 
-|function. JSON-tulajdonság | Attribútum tulajdonsága |Leírás|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
 |**név**| n.a. |Kötelező – a hitelesítési jogkivonat kódjában használt változó neve. Lásd: [hitelesítési jogkivonat bemeneti kötésének használata kódból](#token-input-code).|
 |**típusa**| n.a. |Kötelező – a következőre kell beállítani: `token` .|
@@ -233,7 +232,7 @@ Az Excel-táblázat bemeneti kötése beolvassa a OneDrive-ben tárolt Excel-tá
 
 Ez a szakasz a következő alszakaszokat tartalmazza:
 
-* [Például](#excel-input---example)
+* [Példa](#excel-input---example)
 * [Attribútumok](#excel-input---attributes)
 * [Konfigurálás](#excel-input---configuration)
 * [Használat](#excel-input---usage)
@@ -247,7 +246,7 @@ Tekintse meg a nyelvspecifikus példát:
 
 #### <a name="excel-input---c-script-example"></a>Excel input – C# parancsfájl – példa
 
-A következő *function. JSON* fájl definiál egy olyan http-triggert, amely egy Excel bemeneti kötéssel rendelkezik:
+A fájl következő *function.js* egy olyan http-triggert határoz meg, amely egy Excel bemeneti kötéssel rendelkezik:
 
 ```json
 {
@@ -292,7 +291,7 @@ public static IActionResult Run(HttpRequest req, string[][] excelTableData, ILog
 
 #### <a name="excel-input---javascript-example"></a>Excel-bemenet – JavaScript-példa
 
-A következő *function. JSON* fájl definiál egy olyan http-triggert, amely egy Excel bemeneti kötéssel rendelkezik:
+A fájl következő *function.js* egy olyan http-triggert határoz meg, amely egy Excel bemeneti kötéssel rendelkezik:
 
 ```json
 {
@@ -338,9 +337,9 @@ A [C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a
 
 ### <a name="excel-input---configuration"></a>Excel-bemenet – konfiguráció
 
-Az alábbi táblázat a *function. JSON* fájlban és az attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti `Excel` .
+Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `Excel` .
 
-|function. JSON-tulajdonság | Attribútum tulajdonsága |Leírás|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
 |**név**| n.a. |Kötelező – az Excel-táblázat függvény kódjában használt változó neve. Lásd: [Excel-táblázat bemeneti kötésének használata kódból](#excel-input-code).|
 |**típusa**| n.a. |Kötelező – a következőre kell beállítani: `excel` .|
@@ -382,7 +381,7 @@ Az Excel kimeneti kötése módosítja a OneDrive-ben tárolt Excel-táblázat t
 
 Ez a szakasz a következő alszakaszokat tartalmazza:
 
-* [Például](#excel-output---example)
+* [Példa](#excel-output---example)
 * [Attribútumok](#excel-output---attributes)
 * [Konfigurálás](#excel-output---configuration)
 * [Használat](#excel-output---usage)
@@ -398,7 +397,7 @@ Tekintse meg a nyelvspecifikus példát:
 
 A következő példa sorokat szúr be egy Excel-táblába.
 
-A *function. JSON* fájl egy olyan http-triggert határoz meg, amely Excel kimeneti kötéssel rendelkezik:
+A fájl *function.js* egy Excel kimeneti KÖTÉSű http-triggert definiál:
 
 ```json
 {
@@ -452,7 +451,7 @@ public static async Task Run(HttpRequest req, IAsyncCollector<object> newExcelRo
 
 A következő példa sorokat szúr be egy Excel-táblába.
 
-A *function. JSON* fájl egy olyan http-triggert határoz meg, amely Excel kimeneti kötéssel rendelkezik:
+A fájl *function.js* egy Excel kimeneti KÖTÉSű http-triggert definiál:
 
 ```json
 {
@@ -500,9 +499,9 @@ A [C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a
 
 ### <a name="excel-output---configuration"></a>Excel-kimenet – konfiguráció
 
-Az alábbi táblázat a *function. JSON* fájlban és az attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti `Excel` .
+Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `Excel` .
 
-|function. JSON-tulajdonság | Attribútum tulajdonsága |Leírás|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
 |**név**| n.a. |Kötelező – a hitelesítési jogkivonat kódjában használt változó neve. Lásd: [Excel-táblázat kimeneti kötésének használata kódból](#excel-output-code).|
 |**típusa**| n.a. |Kötelező – a következőre kell beállítani: `excel` .|
@@ -526,7 +525,7 @@ Ehhez a kötéshez a következő Azure AD-engedélyek szükségesek:
 
 A kötés a következő típusokat teszi elérhetővé a .NET-függvények számára:
 - karakterlánc [] []
-- Newtonsoft. JSON. LINQ. JObject
+- Newtonsoft.Jsbekapcsolva. LINQ. JObject
 - Microsoft. Graph. WorkbookTable
 - Egyéni objektumtípusok (a strukturális modell kötésének használatával)
 
@@ -541,7 +540,7 @@ A OneDrive fájl bemeneti kötése beolvassa a OneDrive-ben tárolt fájl tartal
 
 Ez a szakasz a következő alszakaszokat tartalmazza:
 
-* [Például](#file-input---example)
+* [Példa](#file-input---example)
 * [Attribútumok](#file-input---attributes)
 * [Konfigurálás](#file-input---configuration)
 * [Használat](#file-input---usage)
@@ -557,7 +556,7 @@ Tekintse meg a nyelvspecifikus példát:
 
 A következő példa egy OneDrive tárolt fájlt olvas be.
 
-A *function. JSON* fájl definiál egy http-triggert egy OneDrive-fájl bemeneti kötésével:
+A fájl *function.js* egy http-triggert határoz meg egy OneDrive-fájl bemeneti kötésével:
 
 ```json
 {
@@ -601,7 +600,7 @@ public static void Run(HttpRequestMessage req, Stream myOneDriveFile, ILogger lo
 
 A következő példa egy OneDrive tárolt fájlt olvas be.
 
-A *function. JSON* fájl definiál egy http-triggert egy OneDrive-fájl bemeneti kötésével:
+A fájl *function.js* egy http-triggert határoz meg egy OneDrive-fájl bemeneti kötésével:
 
 ```json
 {
@@ -646,9 +645,9 @@ A [C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a
 
 ### <a name="file-input---configuration"></a>Fájl bemenete – konfiguráció
 
-Az alábbi táblázat a *function. JSON* fájlban és az attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti `OneDrive` .
+Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `OneDrive` .
 
-|function. JSON-tulajdonság | Attribútum tulajdonsága |Leírás|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
 |**név**| n.a. |Kötelező – a fájlhoz tartozó függvény kódjában használt változó neve. Lásd: [OneDrive-fájl bemeneti kötésének használata kódból](#onedrive-input-code).|
 |**típusa**| n.a. |Kötelező – a következőre kell beállítani: `onedrive` .|
@@ -669,7 +668,7 @@ Ehhez a kötéshez a következő Azure AD-engedélyek szükségesek:
 
 A kötés a következő típusokat teszi elérhetővé a .NET-függvények számára:
 - bájt []
-- Stream
+- Adatfolyam
 - sztring
 - Microsoft. Graph. DriveItem
 
@@ -685,7 +684,7 @@ A OneDrive fájl kimeneti kötése módosítja a OneDrive-ben tárolt fájl tart
 
 Ez a szakasz a következő alszakaszokat tartalmazza:
 
-* [Például](#file-output---example)
+* [Példa](#file-output---example)
 * [Attribútumok](#file-output---attributes)
 * [Konfigurálás](#file-output---configuration)
 * [Használat](#file-output---usage)
@@ -701,7 +700,7 @@ Tekintse meg a nyelvspecifikus példát:
 
 Az alábbi példa egy, a OneDrive-ben tárolt fájlba ír.
 
-A *function. JSON* fájl egy http-triggert definiál OneDrive kimeneti kötéssel:
+A fájl *function.js* a OneDrive kimeneti kötést tartalmazó http-triggert definiál:
 
 ```json
 {
@@ -729,7 +728,7 @@ A *function. JSON* fájl egy http-triggert definiál OneDrive kimeneti kötésse
 }
 ```
 
-A C#-szkript a lekérdezési karakterlánc szövegét írja le, és egy szövegfájlba (FunctionsTest. txt néven adja meg az előző példában definiált módon) a hívó OneDrive gyökerénél:
+A C# parancsfájl a lekérdezési karakterlánc szövegét írja le, és egy szövegfájlba (FunctionsTest.txt az előző példában definiált módon) a hívó OneDrive gyökerére írja:
 
 ```csharp
 using System.Net;
@@ -751,7 +750,7 @@ public static async Task Run(HttpRequest req, ILogger log, Stream myOneDriveFile
 
 Az alábbi példa egy, a OneDrive-ben tárolt fájlba ír.
 
-A *function. JSON* fájl egy http-triggert definiál OneDrive kimeneti kötéssel:
+A fájl *function.js* a OneDrive kimeneti kötést tartalmazó http-triggert definiál:
 
 ```json
 {
@@ -779,7 +778,7 @@ A *function. JSON* fájl egy http-triggert definiál OneDrive kimeneti kötésse
 }
 ```
 
-A JavaScript-kód beolvassa a lekérdezési karakterlánc szövegét, és egy szövegfájlba (FunctionsTest. txt fájlba) írja azt a hívó OneDrive gyökerében.
+A JavaScript-kód beolvassa a lekérdezési karakterlánc szövegét, és egy szövegfájlba (FunctionsTest.txt a fenti konfigurációban meghatározott módon) írja a hívó OneDrive gyökerébe.
 
 ```js
 module.exports = function (context, req) {
@@ -794,9 +793,9 @@ A [C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a
 
 ### <a name="file-output---configuration"></a>Fájl kimenete – konfiguráció
 
-Az alábbi táblázat a *function. JSON* fájlban és az attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti `OneDrive` .
+Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `OneDrive` .
 
-|function. JSON-tulajdonság | Attribútum tulajdonsága |Leírás|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
 |**név**| n.a. |Kötelező – a fájlhoz tartozó függvény kódjában használt változó neve. Lásd: [OneDrive-fájl kimeneti kötésének használata kódból](#onedrive-output-code).|
 |**típusa**| n.a. |Kötelező – a következőre kell beállítani: `onedrive` .|
@@ -817,7 +816,7 @@ Ehhez a kötéshez a következő Azure AD-engedélyek szükségesek:
 
 A kötés a következő típusokat teszi elérhetővé a .NET-függvények számára:
 - bájt []
-- Stream
+- Adatfolyam
 - sztring
 - Microsoft. Graph. DriveItem
 
@@ -832,7 +831,7 @@ Az Outlook-üzenet kimeneti kötése e-mail üzenetet küld az Outlookon kereszt
 
 Ez a szakasz a következő alszakaszokat tartalmazza:
 
-* [Például](#outlook-output---example)
+* [Példa](#outlook-output---example)
 * [Attribútumok](#outlook-output---attributes)
 * [Konfigurálás](#outlook-output---configuration)
 * [Használat](#outlook-output---usage)
@@ -848,7 +847,7 @@ Tekintse meg a nyelvspecifikus példát:
 
 Az alábbi példa egy e-mailt küld az Outlookon keresztül.
 
-A *function. JSON* fájl egy http-triggert definiál egy Outlook-üzenet kimeneti kötésével:
+A fájl *function.js* egy Outlook-üzenet kimeneti kötésével rendelkező http-triggert definiál:
 
 ```json
 {
@@ -903,7 +902,7 @@ public class Recipient {
 
 Az alábbi példa egy e-mailt küld az Outlookon keresztül.
 
-A *function. JSON* fájl egy http-triggert definiál egy Outlook-üzenet kimeneti kötésével:
+A fájl *function.js* egy Outlook-üzenet kimeneti kötésével rendelkező http-triggert definiál:
 
 ```json
 {
@@ -945,9 +944,9 @@ A [C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a
 
 ### <a name="outlook-output---configuration"></a>Outlook kimenet – konfiguráció
 
-Az alábbi táblázat a *function. JSON* fájlban és az attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti `Outlook` .
+Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `Outlook` .
 
-|function. JSON-tulajdonság | Attribútum tulajdonsága |Leírás|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
 |**név**| n.a. |Kötelező – a levelezési üzenethez tartozó függvény kódjában használt változó neve. Lásd: [Outlook-üzenet kimeneti kötésének használata kódból](#outlook-output-code).|
 |**típusa**| n.a. |Kötelező – a következőre kell beállítani: `outlook` .|
@@ -967,7 +966,7 @@ Ehhez a kötéshez a következő Azure AD-engedélyek szükségesek:
 
 A kötés a következő típusokat teszi elérhetővé a .NET-függvények számára:
 - Microsoft. Graph. Message
-- Newtonsoft. JSON. LINQ. JObject
+- Newtonsoft.Jsbekapcsolva. LINQ. JObject
 - sztring
 - Egyéni objektumtípusok (a strukturális modell kötésének használatával)
 
@@ -997,7 +996,7 @@ A Microsoft Graph webhook-trigger lehetővé teszi, hogy a függvény reagáljon
 
 Ez a szakasz a következő alszakaszokat tartalmazza:
 
-* [Például](#webhook-trigger---example)
+* [Példa](#webhook-trigger---example)
 * [Attribútumok](#webhook-trigger---attributes)
 * [Konfigurálás](#webhook-trigger---configuration)
 * [Használat](#webhook-trigger---usage)
@@ -1013,7 +1012,7 @@ Tekintse meg a nyelvspecifikus példát:
 
 Az alábbi példa a beérkező Outlook-üzenetekhez tartozó webhookokat kezeli. Webhook-trigger használatához létre kell [hoznia egy előfizetést](#webhook-output---example), és [frissítheti az előfizetést](#webhook-subscription-refresh) , hogy megakadályozza a lejáratát.
 
-A *function. JSON* fájl egy webhook-triggert definiál:
+A fájl *function.js* webhook-triggert definiál:
 
 ```json
 {
@@ -1052,7 +1051,7 @@ public static async Task Run(Message msg, ILogger log)
 
 Az alábbi példa a beérkező Outlook-üzenetekhez tartozó webhookokat kezeli. Webhook-trigger használatához létre kell [hoznia egy előfizetést](#webhook-output---example), és [frissítheti az előfizetést](#webhook-subscription-refresh) , hogy megakadályozza a lejáratát.
 
-A *function. JSON* fájl egy webhook-triggert definiál:
+A fájl *function.js* webhook-triggert definiál:
 
 ```json
 {
@@ -1088,9 +1087,9 @@ A [C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a
 
 ### <a name="webhook-trigger---configuration"></a>Webhook-trigger – konfiguráció
 
-Az alábbi táblázat a *function. JSON* fájlban és az attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti `GraphWebhookTrigger` .
+Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `GraphWebhookTrigger` .
 
-|function. JSON-tulajdonság | Attribútum tulajdonsága |Leírás|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
 |**név**| n.a. |Kötelező – a levelezési üzenethez tartozó függvény kódjában használt változó neve. Lásd: [Outlook-üzenet kimeneti kötésének használata kódból](#outlook-output-code).|
 |**típusa**| n.a. |Kötelező – a következőre kell beállítani: `graphWebhook` .|
@@ -1116,7 +1115,7 @@ A Microsoft Graph webhook bemeneti kötése lehetővé teszi a Function app ált
 
 Ez a szakasz a következő alszakaszokat tartalmazza:
 
-* [Például](#webhook-input---example)
+* [Példa](#webhook-input---example)
 * [Attribútumok](#webhook-input---attributes)
 * [Konfigurálás](#webhook-input---configuration)
 * [Használat](#webhook-input---usage)
@@ -1132,7 +1131,7 @@ Tekintse meg a nyelvspecifikus példát:
 
 A következő példa lekéri a hívó felhasználó összes előfizetését, és törli őket.
 
-A *function. JSON* fájl olyan http-triggert definiál, amely előfizetési beviteli kötést és előfizetési kimeneti kötést használ, amely a DELETE műveletet használja:
+A fájl *function.js* egy előfizetési bemeneti KÖTÉSSEL rendelkező http-triggert és egy előfizetési kimeneti kötést határoz meg, amely a DELETE műveletet használja:
 
 ```json
 {
@@ -1186,7 +1185,7 @@ public static async Task Run(HttpRequest req, string[] existingSubscriptions, IA
 
 A következő példa lekéri a hívó felhasználó összes előfizetését, és törli őket.
 
-A *function. JSON* fájl olyan http-triggert definiál, amely előfizetési beviteli kötést és előfizetési kimeneti kötést használ, amely a DELETE műveletet használja:
+A fájl *function.js* egy előfizetési bemeneti KÖTÉSSEL rendelkező http-triggert és egy előfizetési kimeneti kötést határoz meg, amely a DELETE műveletet használja:
 
 ```json
 {
@@ -1240,9 +1239,9 @@ A [C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a
 
 ### <a name="webhook-input---configuration"></a>Webhook bemenete – konfiguráció
 
-Az alábbi táblázat a *function. JSON* fájlban és az attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti `GraphWebhookSubscription` .
+Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `GraphWebhookSubscription` .
 
-|function. JSON-tulajdonság | Attribútum tulajdonsága |Leírás|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
 |**név**| n.a. |Kötelező – a levelezési üzenethez tartozó függvény kódjában használt változó neve. Lásd: [Outlook-üzenet kimeneti kötésének használata kódból](#outlook-output-code).|
 |**típusa**| n.a. |Kötelező – a következőre kell beállítani: `graphWebhookSubscription` .|
@@ -1254,7 +1253,7 @@ Az alábbi táblázat a *function. JSON* fájlban és az attribútumban beállí
 A kötés a következő típusokat teszi elérhetővé a .NET-függvények számára:
 - karakterlánc []
 - Egyéni objektumtípus-tömbök
-- Newtonsoft. JSON. LINQ. JObject []
+- Newtonsoft.Jsbekapcsolva. LINQ. JObject []
 - Microsoft. Graph. előfizetés []
 
 
@@ -1267,7 +1266,7 @@ A webhook előfizetésének kimeneti kötése lehetővé teszi a Microsoft Graph
 
 Ez a szakasz a következő alszakaszokat tartalmazza:
 
-* [Például](#webhook-output---example)
+* [Példa](#webhook-output---example)
 * [Attribútumok](#webhook-output---attributes)
 * [Konfigurálás](#webhook-output---configuration)
 * [Használat](#webhook-output---usage)
@@ -1283,7 +1282,7 @@ Tekintse meg a nyelvspecifikus példát:
 
 A következő példa létrehoz egy előfizetést. [Frissítheti az előfizetést](#webhook-subscription-refresh) , hogy megakadályozza a lejáratát.
 
-A *function. JSON* fájl egy előfizetési kimenettel rendelkező http-triggert definiál a Create művelet használatával:
+A fájl *function.js* egy előfizetési kimenettel rendelkező http-triggert határoz meg a Create művelet használatával:
 
 ```json
 {
@@ -1333,7 +1332,7 @@ public static HttpResponseMessage run(HttpRequestMessage req, out string clientS
 
 A következő példa létrehoz egy előfizetést. [Frissítheti az előfizetést](#webhook-subscription-refresh) , hogy megakadályozza a lejáratát.
 
-A *function. JSON* fájl egy előfizetési kimenettel rendelkező http-triggert definiál a Create művelet használatával:
+A fájl *function.js* egy előfizetési kimenettel rendelkező http-triggert határoz meg a Create művelet használatával:
 
 ```json
 {
@@ -1381,9 +1380,9 @@ A [C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a
 
 ### <a name="webhook-output---configuration"></a>Webhook kimenete – konfiguráció
 
-Az alábbi táblázat a *function. JSON* fájlban és az attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti `GraphWebhookSubscription` .
+Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `GraphWebhookSubscription` .
 
-|function. JSON-tulajdonság | Attribútum tulajdonsága |Leírás|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
 |**név**| n.a. |Kötelező – a levelezési üzenethez tartozó függvény kódjában használt változó neve. Lásd: [Outlook-üzenet kimeneti kötésének használata kódból](#outlook-output-code).|
 |**típusa**| n.a. |Kötelező – a következőre kell beállítani: `graphWebhookSubscription` .|
@@ -1428,7 +1427,7 @@ Tekintse meg a nyelvspecifikus példát:
 
 Az alábbi példa az alkalmazás identitását használja az előfizetés frissítéséhez.
 
-A *function. JSON* egy előfizetési bemeneti kötést és egy előfizetési kimeneti kötést tartalmazó időzítő triggert definiál:
+A *function.js* egy előfizetési bemeneti kötést és egy előfizetési kimeneti kötést tartalmazó időzítő triggert definiál:
 
 ```json
 {
@@ -1479,7 +1478,7 @@ public static void Run(TimerInfo myTimer, string[] existingSubscriptions, IColle
 
 Az alábbi példa az alkalmazás identitását használja az előfizetés frissítéséhez.
 
-A *function. JSON* egy előfizetési bemeneti kötést és egy előfizetési kimeneti kötést tartalmazó időzítő triggert definiál:
+A *function.js* egy előfizetési bemeneti kötést és egy előfizetési kimeneti kötést tartalmazó időzítő triggert definiál:
 
 ```json
 {
@@ -1529,7 +1528,7 @@ module.exports = function (context) {
 
 Az alábbi példa a felhasználói identitást használja az előfizetés frissítéséhez.
 
-A *function. JSON* fájl egy időzítő triggert határoz meg, és elhalasztja az előfizetés bemeneti kötését a következő függvény kódjában:
+A fájl *function.js* egy időzítő-triggert határoz meg, és elhalasztja az előfizetés bemeneti kötését a következő függvény kódjában:
 
 ```json
 {
@@ -1583,7 +1582,7 @@ public class UserSubscription {
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [További információ az Azure functions-eseményindítók és-kötésekről](functions-triggers-bindings.md)

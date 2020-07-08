@@ -9,10 +9,9 @@ ms.date: 01/23/2017
 ms.author: twooley
 ms.subservice: common
 ms.openlocfilehash: a5c0e9bf94a9953e107de148792af2e39f8bac24
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85512298"
 ---
 # <a name="repairing-an-import-job"></a>Importálási feladat javítása
@@ -97,7 +96,7 @@ Az eszköz ezután megírja a problémás fájl elérési útját a következőr
   
 Miután elvégezte a szükséges fájlok elérhetővé tételét az eszköz számára, vagy az elérésiút-leképezési fájl frissítését, az importálási folyamat befejezéséhez futtassa újra az eszközt.  
   
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
  
 * [Az Azure import/export eszköz beállítása](storage-import-export-tool-setup-v1.md)   
 * [Merevlemezek előkészítése importálási feladatokhoz](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   

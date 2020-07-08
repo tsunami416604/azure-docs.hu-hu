@@ -3,12 +3,11 @@ title: A DPM és az Azure Backup Server kapcsolat nélküli biztonsági mentése
 description: A Azure Backup segítségével az Azure import/export szolgáltatással küldhet adathálózatot a hálózatról. Ez a cikk a DPM és a Azure Backup Server offline biztonsági mentési munkafolyamatát ismerteti.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: bb9b3599e74e74058598acd53f5156459c0b74fb
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
-ms.translationtype: MT
+ms.openlocfilehash: 0ff6198eed4e3e365b443a51e5c63534c2cf0973
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85374933"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921254"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-mabs"></a>A DPM és a Azure Backup Server offline biztonsági mentési munkafolyamata (MABS)
 
@@ -102,9 +101,7 @@ Az ebben a szakaszban található információk segítségével elvégezheti az 
 
 ## <a name="prepare-sata-drives-and-ship-to-azure"></a>A SATA-meghajtók előkészítése és a szállítás az Azure-ba
 
-A *AzureOfflineBackupDiskPrep* segédprogram előkészíti a legközelebbi Azure-adatközpontba küldendő SATA-meghajtókat. Ez a segédprogram a Azure Backup Agent telepítési könyvtárában érhető el (a következő elérési úton):
-
-    *\Microsoft Azure Recovery Services Agent\Utils\\*
+A *AzureOfflineBackupDiskPrep* segédprogram előkészíti a legközelebbi Azure-adatközpontba küldendő SATA-meghajtókat. Ez a segédprogram a Azure Backup Agent telepítési könyvtárában érhető el (a következő elérési úton):`*\Microsoft Azure Recovery Services Agent\Utils\\*`
 
 1. Nyissa meg a könyvtárat, és másolja a **AzureOfflineBackupDiskPrep** könyvtárat egy másik számítógépre, AMELYEN a SATA-meghajtók csatlakoznak. A csatlakoztatott SATA meghajtókkal rendelkező számítógépen ügyeljen a következőre:
 
@@ -119,9 +116,9 @@ A *AzureOfflineBackupDiskPrep* segédprogram előkészíti a legközelebbi Azure
 
 1. Nyisson meg egy rendszergazda jogú parancssort a másolási számítógépen a *AzureOfflineBackupDiskPrep* segédprogram címtárával az aktuális könyvtárként. Futtassa az alábbi parancsot:
 
-        ```cmd
-        .\AzureOfflineBackupDiskPrep.exe s:<Staging Location Path>
-        ```
+    ```console
+    .\AzureOfflineBackupDiskPrep.exe s:<Staging Location Path>
+    ```
 
     | Paraméter | Leírás |
     | --- | --- |
@@ -198,6 +195,6 @@ Az importálási feladatok befejeződése után a kezdeti biztonsági mentési a
 
 A következő ütemezett online replika-létrehozási feladat időpontjában Data Protection Manager a kezdeti biztonsági másolaton végzi a növekményes biztonsági mentést.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Az Azure import/export szolgáltatás munkafolyamatával kapcsolatos kérdésekért lásd: [a Microsoft Azure import/export szolgáltatás használata az adatok blob Storage-tárolóba történő átviteléhez](../storage/common/storage-import-export-service.md).

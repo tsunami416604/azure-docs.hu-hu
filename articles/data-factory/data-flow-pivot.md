@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/30/2019
 ms.openlocfilehash: a0084c3e8185f615e7ac2a2b8c212f1ebf022c08
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83683304"
 ---
 # <a name="pivot-transformation-in-mapping-data-flow"></a>Kimutatás-átalakítás a leképezési adatfolyamban
@@ -81,7 +80,7 @@ A pivot átalakítás csak a Group By és a csuklós oszlopokat fogja feltervezn
 
 ## <a name="data-flow-script"></a>Adatfolyamszkript
 
-### <a name="syntax"></a>Szintaxis
+### <a name="syntax"></a>Syntax
 
 ```
 <incomingStreamName>

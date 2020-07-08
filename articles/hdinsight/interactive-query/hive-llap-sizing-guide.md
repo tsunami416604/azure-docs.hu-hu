@@ -8,10 +8,9 @@ ms.author: aadnaik
 ms.reviewer: HDI HiveLLAP Team
 ms.date: 05/05/2020
 ms.openlocfilehash: a9b86f09ade0d437436779ef3e4a17fcdede2cf0
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83664962"
 ---
 # <a name="azure-hdinsight-interactive-query-cluster-hive-llap-sizing-guide"></a>Az Azure HDInsight interaktív lekérdezési fürt (kaptár LLAP) méretezési útmutatója
@@ -39,7 +38,7 @@ Ez a dokumentum ismerteti a HDInsight interaktív lekérdezési fürt (kaptár L
 | Tez. am. Resource. Memory. MB | 4096 (MB) | A TEZ AppMaster által használandó memória mérete (MB) |
 | kaptár. Kiszolgáló2. TEZ. Sessions. per. default. üzenetsor | <number_of_worker_nodes> |A kaptár. Kiszolgáló2. TEZ. default. Queues nevű üzenetsor-munkamenetek száma. Ez a szám a lekérdezési koordinátorok számának felel meg (TEZ AMs) |
 | kaptár. TEZ. Container. size | 4096 (MB) | Megadott TEZ-tároló mérete (MB) |
-| kaptár. llap. Daemon. NUM. végrehajtók | 12 | Végrehajtók száma LLAP démonban | 
+| hive.llap.daemon.num.executors | 12 | Végrehajtók száma LLAP démonban | 
 | kaptár. llap. IO. szálkészlet munkaszála belépett. size | 12 | Végrehajtók szál-készletének mérete |
 | kaptár. llap. Daemon. fonal. Container. MB | 77824 (MB) | Az egyes LLAP-démonok által használt teljes memória (MB) (memória/démon)
 | kaptár. llap. IO. Memory. size | 235520 (MB) | A gyorsítótár mérete (MB/LLAP) démon által megadott SSD-gyorsítótár engedélyezve |
@@ -119,9 +118,9 @@ A D14 v2 Worker csomópontnál a HDI 4,0 – az ajánlott érték (80 GB-4 GB)) 
 (A HDI 3,6 esetében az ajánlott érték a **74 GB** , mert a Slider am esetében további ~ 2 GB-ot kell lefoglalni.)  
 
 #### <a name="8-determining-number-of-executors-per-llap-daemon"></a>**8. a végrehajtók számának meghatározása LLAP démon alapján**  
-Konfiguráció: ***kaptár. llap. Daemon. NUM. végrehajtók***, ***kaptár. llap. IO. szálkészlet munkaszála belépett. size***
+Konfiguráció: ***hive.llap.daemon.num.executors***, ***kaptár. llap. IO. szálkészlet munkaszála belépett. size***
 
-***kaptár. llap. Daemon. NUM. végrehajtók***:   
+***hive.llap.daemon.num.executors***:   
 Ez a konfiguráció szabályozza azon végrehajtók számát, akik a feladatokat párhuzamosan futtathatják LLAP Daemon-ban. Ez az érték a virtuális mag számától, a végrehajtó által megadott memória mennyiségétől és a LLAP démon számára elérhető teljes memória mennyiségétől függ. Általában azt szeretnénk, hogy ez az érték minél közelebb legyen a virtuális mag számához.
 A D14 v2 virtuális gépeken 16 virtuális mag van. Az összes virtuális mag azonban nem végezhető el, mert más szolgáltatások, például a NodeManager, a DataNode, a metrikák monitorozása stb. is szükség van a rendelkezésre álló virtuális mag. 
 

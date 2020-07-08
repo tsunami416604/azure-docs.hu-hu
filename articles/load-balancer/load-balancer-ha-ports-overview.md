@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2019
 ms.author: allensu
-ms.openlocfilehash: e60d44278bb568b1aaaf416fddf35d02596a5ee2
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
-ms.translationtype: MT
+ms.openlocfilehash: da776c679d5ded6f53cd0d224828fffee058d37d
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84674652"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920609"
 ---
 # <a name="high-availability-ports-overview"></a>Magas rendelkezésre állású portok – áttekintés
 
@@ -97,7 +96,7 @@ Ha a forgatókönyve megköveteli, hogy egynél több portot kell konfigurálnia
 - A flow-szimmetria (elsősorban a NVA-forgatókönyvek esetében) a háttér-példány és egyetlen hálózati adapter (és egy IP-konfiguráció) esetében csak akkor támogatott, ha a fenti ábrán látható módon használja, és a HA portok terheléselosztási szabályait használja. Semmilyen más esetben nincs megadva. Ez azt jelenti, hogy két vagy több Load Balancer erőforrás és a hozzájuk tartozó szabályok független döntéseket hoznak, és soha nem koordinálják őket. Tekintse meg a [hálózati virtuális berendezések](#nva)leírását és ábráját. Ha több hálózati adaptert használ, vagy a NVA egy nyilvános és belső Load Balancer között használja, a flow-szimmetria nem érhető el.  Ezt megteheti, ha a forrás NAT'ing a bejövő forgalmat a készülék IP-címére, hogy a válaszok ugyanarra a NVA érkezzenek.  Javasoljuk azonban, hogy egyetlen hálózati adaptert használjon, és használja a fenti ábrán látható hivatkozási architektúrát.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [HA portok konfigurálása belső standard Load Balancer](load-balancer-configure-ha-ports.md)
+- Megtudhatja, hogyan konfigurálhat HA portokat a ILB a portálon keresztül (tutorial-Load-Balancer-standard-Internal-Portal. mdl # Create-a-Load-Balancer-rule), [PowerShell](load-balancer-get-started-ilb-arm-ps.md#create-the-configuration-rules-probe-and-load-balancer), [CLI](load-balancer-get-started-ilb-arm-cli.md#create-the-load-balancer-rule)vagy [sablonok](load-balancer-get-started-ilb-arm-template.md).
 - [Tudnivalók a standard Load Balancer](load-balancer-standard-overview.md)
