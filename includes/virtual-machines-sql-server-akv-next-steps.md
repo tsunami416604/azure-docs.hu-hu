@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
 ms.openlocfilehash: e0ff4e91ed55a37e710a5655e7da9ec76b7d1dd5
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84014696"
 ---
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Azure Key Vault integráció engedélyezése után engedélyezheti SQL Server titkosítását az SQL-alapú virtuális gépen. Először létre kell hoznia egy aszimmetrikus kulcsot a kulcstartóban és egy szimmetrikus kulcsot a virtuális gépen SQL Serveron belül. Ezt követően a T-SQL-utasítások végrehajtásával engedélyezheti az adatbázisok és a biztonsági másolatok titkosítását.
 

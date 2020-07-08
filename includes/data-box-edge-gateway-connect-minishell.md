@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/06/2019
 ms.author: alkohli
 ms.openlocfilehash: 348f7bdd333da4f4a6cb41a438b7aee08d6a6bbb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67179581"
 ---
 Az ügyfél operációs rendszertől függően az eszközhöz való távoli kapcsolódás eljárásai eltérőek.
@@ -28,7 +28,7 @@ Az alábbi lépéseket követve távolról csatlakozhat a Windows-ügyfelekről.
 
     $ip = "<device_ip>"
 
-    Cserélje `<device_ip>` le az eszközt az eszköz IP-címére.
+    Cserélje le az `<device_ip>` eszközt az eszköz IP-címére.
 
 4. Az eszköz IP-címének az ügyfél megbízható gazdagépek listájához való hozzáadásához írja be a következő parancsot:
 
@@ -59,7 +59,7 @@ Az alábbi lépéseket követve távolról csatlakozhat a Windows-ügyfelekről.
 Azon a Linux-ügyfélen, amelyet a kapcsolódáshoz használni fog:
 
 - [Telepítse a Linux rendszerhez készült legújabb PowerShell Core](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-linux?view=powershell-6) -t a githubról az SSH távelérési szolgáltatásának beszerzéséhez. 
-- [Csak az NTLM `gss-ntlmssp` -modulból telepítse a csomagot](https://github.com/Microsoft/omi/blob/master/Unix/doc/setup-ntlm-omi.md). Ubuntu-ügyfelek esetén használja a következő parancsot:
+- [Csak az `gss-ntlmssp` NTLM-modulból telepítse a csomagot](https://github.com/Microsoft/omi/blob/master/Unix/doc/setup-ntlm-omi.md). Ubuntu-ügyfelek esetén használja a következő parancsot:
     - `sudo apt-get install gss-ntlmssp`
 
 További információért nyissa meg a [PowerShell távoli ELJÁRÁSHÍVÁS SSH](https://docs.microsoft.com/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core?view=powershell-6)-val című témakört.

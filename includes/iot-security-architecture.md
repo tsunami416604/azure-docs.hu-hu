@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: iot-fundamentals
 author: robinsh
 ms.service: iot-fundamentals
@@ -9,10 +9,10 @@ ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: a2eafd6bb34b897f3492ddcffd6841f0fabc4ca7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73034546"
 ---
 A rendszer tervezésekor fontos megérteni a rendszer potenciális veszélyforrásait, és ennek megfelelően hozzá kell adnia a megfelelő védelmi lehetőségeket, ahogy a rendszert tervezték és felépíteni. Fontos, hogy megtervezze a terméket a kezdetektől a biztonsággal szem előtt tartva, mert megértette, hogy a támadók hogyan veszélyeztethetik a rendszereket, így biztosítható, hogy a megfelelő enyhítések a kezdetektől fogva megtörténjenek.
@@ -177,7 +177,7 @@ A **szolgáltatás megtagadása (D)**: az eszközök nem tudnak működni vagy k
 
 **Jogosultságszint-emelés (E)**: egy adott függvényt használó eszköz kényszeríthető valamilyen másra. Például, ha egy olyan szelepet nyitunk meg, amely a nyílt félidőben van kiválasztva, megnyithatja az egész utat.
 
-| **Összetevő** | **Threat** | **Kezelés** | **Kockázat** | **Végrehajtása** |
+| **Összetevő** | **Fenyegetés** | **Kezelés** | **Kockázat** | **Megvalósítás** |
 | --- | --- | --- | --- | --- |
 | Eszköz |S |Identitás kiosztása az eszközhöz és az eszköz hitelesítése |Az eszköz vagy az eszköz egy részének cseréje egy másik eszközre. Honnan tudhatja, hogy a megfelelő eszközről van szó? |Az eszköz hitelesítése Transport Layer Security (TLS) vagy IPSec használatával. Az infrastruktúrának támogatnia kell az előmegosztott kulcs (PSK) használatát azokon az eszközökön, amelyek nem képesek a teljes aszimmetrikus titkosítás kezelésére. Az Azure AD és a [OAuth](https://www.rfc-editor.org/pdfrfc/rfc6755.txt.pdf) kihasználása |
 || TRID |Alkalmazzon tamperproof mechanizmusokat az eszközre, például azáltal, hogy a kulcsokat és egyéb titkosítási anyagokat nem lehet kinyerni az eszközről. |A kockázat az, hogy valaki illetéktelenül módosítja az eszközt (fizikai interferencia). Hogyan biztos benne, hogy az eszköz nem lett illetéktelenül módosítva. |A leghatékonyabb megoldás egy platformmegbízhatósági modul (TPM) képesség, amely lehetővé teszi a kulcsok tárolását olyan speciális, chipes áramkörben, amelyből a kulcsok nem olvashatók, de csak olyan titkosítási műveletekhez használhatók, amelyek használják a kulcsot, de soha nem hozzák nyilvánosságra a kulcsot. Az eszköz memóriájának titkosítása. Az eszköz kulcskezelő szolgáltatásának kezelése. A kód aláírása. |
@@ -220,7 +220,7 @@ A **szolgáltatás megtagadása (D)**: az eszközök nem tudnak működni vagy k
 
 Az eszközök, az eszközök és a helyszíni átjárók, valamint az eszközök és a Felhőbeli átjáró közötti kommunikációs útvonal elleni fenyegetések. Az alábbi táblázat az eszközön/VPN-en található nyitott szoftvercsatornák használatával kapcsolatos útmutatást tartalmaz:
 
-| **Összetevő** | **Threat** | **Kezelés** | **Kockázat** | **Végrehajtása** |
+| **Összetevő** | **Fenyegetés** | **Kezelés** | **Kockázat** | **Megvalósítás** |
 | --- | --- | --- | --- | --- |
 | Eszköz IoT Hub |TID |D TLS (PSK/RSA) a forgalom titkosításához |Az eszköz és az átjáró közötti kommunikáció lehallgatásának vagy megzavarásának megakadályozása |Biztonság a protokoll szintjén. Egyéni protokollok esetén meg kell állapítania, hogyan kell védelemmel ellátni. A legtöbb esetben a kommunikáció az eszközről a IoT Hubra történik (az eszköz kezdeményezi a kapcsolatot). |
 | Eszközről az eszközre |TID |D TLS (PSK/RSA) a forgalom titkosításához. |Az eszközök közötti átvitel során beolvasott adatforgalom. Illetéktelenül módosítható az adatkezelés. Az eszköz túlterhelése új kapcsolatokkal |A protokoll szintjének biztonsága (MQTT/AMQP/HTTP/CoAP. Egyéni protokollok esetén meg kell állapítania, hogyan kell védelemmel ellátni. A DoS-fenyegetés enyhítése egy Felhőbeli vagy egy helyszíni átjárón keresztüli társ-eszköz, és csak a hálózat felé irányuló ügyfelekként működhet. Előfordulhat, hogy a társítás közvetlen kapcsolatot létesít a társak között, miután az átjáró felügyelte azt. |
@@ -244,7 +244,7 @@ Az eszközök, az eszközök és a helyszíni átjárók, valamint az eszközök
 
 Minden eszköz és mező átjárója rendelkezik valamilyen tárolási formával (ideiglenes az adatok sorba állításához, az operációs rendszer (OS) rendszerképének tárolásához).
 
-| **Összetevő** | **Threat** | **Kezelés** | **Kockázat** | **Végrehajtása** |
+| **Összetevő** | **Fenyegetés** | **Kezelés** | **Kockázat** | **Megvalósítás** |
 | --- | --- | --- | --- | --- |
 | Eszköz tárterülete |TRID |Storage-titkosítás, a naplók aláírása |Adatok olvasása a tárolóból (személyes adatok), a telemetria-adatokkal való illetéktelen módosítás. Az üzenetsor-kezelési vagy a gyorsítótárazott parancs-vezérlési adattal való illetéktelen módosítás. A konfigurációs vagy a belső vezérlőprogram frissítési csomagjainak a gyorsítótárba vagy helyileg történő gyorsítótárazása közben történő illetéktelen módosításával az operációs rendszer és/vagy a rendszerösszetevők biztonsága is sérül |Titkosítás, üzenet-hitelesítési kód (MAC) vagy digitális aláírás. Ahol lehetséges, az erőforrás-hozzáférés-vezérlési listák (ACL-ek) vagy engedélyek használatával történő erős hozzáférés-vezérlés. |
 | Eszköz operációs rendszerének képe |TRID | |Az operációs rendszer/replacing az operációs rendszer összetevőinek illetéktelen módosítása |Írásvédett operációsrendszer-partíció, aláírt operációsrendszer-rendszerkép, titkosítás |
@@ -263,9 +263,9 @@ A vezérlőrendszer (vagy vezérlő) olyan szoftveres megoldás, amely egy eszk�
 
 A köztes fizikai vezérlési felületek olyanok, amelyekben a logika szabályozza a fizikai vezérlő felületének működését, például hogy egy egyenértékű függvényt távolról lehet kezdeményezni, vagy a távoli bemenettel való ütközés elkerülhető – az ilyen közbenső vezérlési felületek fogalmilag egy helyi vezérlési rendszerhez vannak csatolva, amely ugyanazt a mögöttes funkciót használja, mint bármely más távvezérlési rendszer, amelyet az eszköz párhuzamosan A Felhőbeli számítástechnika leggyakoribb fenyegetéseit a [Cloud Security Alliance (CSA)](https://cloudsecurityalliance.org/articles/csa-releases-top-threats-to-cloud-computing-deep-dive/) lapon olvashatja.
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
-További információkért tekintse át a következő cikkeket:
+További információért tekintse át a következő cikkeket:
 
 * [SDL Threat Modeling Tool](https://www.microsoft.com/sdl/adopt/threatmodeling.aspx)
 * [Microsoft Azure IoT-hivatkozás architektúrája](https://azure.microsoft.com/updates/microsoft-azure-iot-reference-architecture-available/)

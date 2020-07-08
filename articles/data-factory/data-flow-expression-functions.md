@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/15/2019
 ms.openlocfilehash: 9894bb2c6ead38b2770f572f7f5000c770d555e7
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84267749"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>Adatátalakítási kifejezések a leképezési adatfolyamban
@@ -1012,6 +1012,6 @@ ___
 <code><b>rowNumber() => integer</b></code><br/><br/>
 Szekvenciális sorszámozást rendel egy ablak soraihoz, 1-től kezdődően.* ``rowNumber()``  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Ismerje meg a Expression Builder használatát](concepts-data-flow-expression-builder.md).

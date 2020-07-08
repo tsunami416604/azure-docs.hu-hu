@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 01/09/2020
 ms.openlocfilehash: dbeaa58da109c5afceb03a560e69e0c8bf63ad42
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81768128"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Log Analytics munkaterület kezelése Azure Resource Manager sablonok használatával
@@ -51,13 +51,13 @@ A következő példa egy munkaterületet hoz létre egy sablon használatával a
 > [!WARNING]
 > A következő sablon létrehoz egy Log Analytics munkaterületet, és konfigurálja az adatgyűjtést. Ez módosíthatja a számlázási beállításokat. Az Azure-környezetben való alkalmazás előtt tekintse át a [használat és a költségek kezelése Azure monitor naplókkal](manage-cost-storage.md) című témakört a log Analytics munkaterületen összegyűjtött adatok számlázásának megismeréséhez.
 
-A kapacitás foglalása esetén a kiválasztott kapacitás foglalása az adatfeldolgozáshoz: az SKU `CapacityReservation` megadása és a tulajdonsághoz `capacityReservationLevel`tartozó érték (GB). Az alábbi lista a konfiguráláskor a támogatott értékeket és viselkedést ismerteti.
+A kapacitás foglalása esetén a kiválasztott kapacitás foglalása az adatfeldolgozáshoz: az SKU megadása `CapacityReservation` és a tulajdonsághoz tartozó érték (GB) `capacityReservationLevel` . Az alábbi lista a konfiguráláskor a támogatott értékeket és viselkedést ismerteti.
 
 - A foglalási korlát beállítása után 31 napon belül nem válthat másik SKU-ra.
 
 - A foglalási érték beállítása után 31 napon belül megnövelheti azt.
 
-- A 100-as számú többszörös `capacityReservationLevel` értéke csak a 50000 maximális értékkel állítható be.
+- A 100-as számú többszörös értéke csak a `capacityReservationLevel` 50000 maximális értékkel állítható be.
 
 - Ha megnövelte a foglalási szintet, az időzítő alaphelyzetbe áll, és a frissítéstől számított további 31 napig nem módosítható.  
 
@@ -155,7 +155,7 @@ A kapacitás foglalása esetén a kiválasztott kapacitás foglalása az adatfel
 
 2. Szerkessze a sablont, hogy megfeleljen a követelményeinek. Hozzon létre egy [Resource Manager-paramétereket tartalmazó fájlt](../../azure-resource-manager/templates/parameter-files.md) ahelyett, hogy a paramétereket beágyazott értékként adja át. Tekintse át a [Microsoft. OperationalInsights/munkaterületek sablonjának](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/2015-11-01-preview/workspaces) hivatkozását, hogy megtudja, milyen tulajdonságokat és értékeket támogat a rendszer. 
 
-3. Mentse ezt a fájlt **deploylaworkspacetemplate. JSON** néven egy helyi mappába.
+3. Mentse ezt a fájlt **deploylaworkspacetemplate.jsként** egy helyi mappába.
 
 4. Készen áll a sablon üzembe helyezésére. A munkaterület létrehozásához használja a PowerShellt vagy a parancssort, és adja meg a munkaterület nevét és helyét a parancs részeként. A munkaterület nevének globálisan egyedinek kell lennie az összes Azure-előfizetésen belül.
 
@@ -680,7 +680,7 @@ Az Azure rövid útmutató sablonjának katalógusa számos Log Analytics sablon
 * [Azure-Web Apps figyelése meglévő Log Analytics munkaterület használatával](https://azure.microsoft.com/documentation/templates/101-webappazure-oms-monitoring/)
 * [Meglévő Storage-fiók hozzáadása a Log Analytics](https://azure.microsoft.com/resources/templates/oms-existing-storage-account/)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Windows-ügynök üzembe helyezése az Azure-beli virtuális gépeken Resource Manager-sablon használatával](../../virtual-machines/extensions/oms-windows.md).
 

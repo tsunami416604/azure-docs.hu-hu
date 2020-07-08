@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: a9699eae17657e96b38b3bccc95e8f84326efbb3
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84259473"
 ---
 # <a name="describe-a-service-fabric-cluster-by-using-cluster-resource-manager"></a>Service Fabric-fürt leírása a fürterőforrás-kezelő használatával
@@ -237,7 +237,7 @@ Az előző elrendezésben, ha a **TargetReplicaSetSize** értéke öt, és a ren
 
 |  | FD0 | FD1 | FD2 ÁRAMLÁSMEGOSZTÓ | FD3 | FD4 | UDTotal |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
-| **UD0** |N/A |N/A |N/A |N/A |N/A |N/A |
+| **UD0** |N.A. |N.A. |N.A. |N.A. |N.A. |N.A. |
 | **UD1** |R2 | | | | |1 |
 | **UD2** | |R3 |R4 | | |2 |
 | **UD3** | | | |R1 | |1 |
@@ -247,7 +247,7 @@ Az előző elrendezésben, ha a **TargetReplicaSetSize** értéke öt, és a ren
 ## <a name="configuring-fault-and-upgrade-domains"></a>A hibák és a frissítési tartományok konfigurálása
 Az Azure által üzemeltetett Service Fabric üzemelő példányok esetében a tartalék tartományok és a frissítési tartományok automatikusan definiálva vannak. Service Fabric felveszi és felhasználja a környezeti információkat az Azure-ból.
 
-Ha saját fürtöt hoz létre (vagy egy adott topológiát szeretne futtatni a fejlesztésben), megadhatja a tartalék tartományt, és saját kezűleg is frissítheti a tartományi adatokat. Ebben a példában egy kilenc csomópontos helyi fejlesztési fürtöt adunk meg, amely három adatközpontra terjed ki (mindkettő három racktel). Ezen a fürtön három frissítési tartomány is szerepel a három adatközpontban. Íme egy példa a ClusterManifest. XML konfigurációjában:
+Ha saját fürtöt hoz létre (vagy egy adott topológiát szeretne futtatni a fejlesztésben), megadhatja a tartalék tartományt, és saját kezűleg is frissítheti a tartományi adatokat. Ebben a példában egy kilenc csomópontos helyi fejlesztési fürtöt adunk meg, amely három adatközpontra terjed ki (mindkettő három racktel). Ezen a fürtön három frissítési tartomány is szerepel a három adatközpontban. A ClusterManifest.xml konfigurációjának példája:
 
 ```xml
   <Infrastructure>
@@ -268,7 +268,7 @@ Ha saját fürtöt hoz létre (vagy egy adott topológiát szeretne futtatni a f
   </Infrastructure>
 ```
 
-Ez a példa az ClusterConfig. JSON fájlt használja az önálló telepítésekhez:
+Ez a példa ClusterConfig.jst használ a különálló központi telepítésekhez:
 
 ```json
 "nodes": [
@@ -401,7 +401,7 @@ A Node tulajdonságban megadott érték karakterlánc, logikai vagy hosszú lehe
 
 Csak azok a csomópontok kerülhetnek rá a szolgáltatásba, ahol az általános elhelyezési megkötés utasítása az "igaz" értékre van kiértékelve. A tulajdonsággal nem rendelkező csomópontok nem egyeznek meg a tulajdonságot tartalmazó elhelyezési korlátozásokkal.
 
-Tegyük fel, hogy a következő csomópont-tulajdonságokat definiálták egy csomópont-típushoz a ClusterManifest. xml fájlban:
+Tegyük fel, hogy a következő csomópont-tulajdonságokat definiálták egy csomópont-típushoz a ClusterManifest.xmlban:
 
 ```xml
     <NodeType Name="NodeType01">
@@ -413,7 +413,7 @@ Tegyük fel, hogy a következő csomópont-tulajdonságokat definiálták egy cs
     </NodeType>
 ```
 
-Az alábbi példa a ClusterConfig. JSON fájlon keresztül meghatározott csomópont-tulajdonságokat jeleníti meg az Azure által üzemeltetett fürtök önálló telepítései vagy template. JSON fájljában. 
+Az alábbi példa a ClusterConfig.json keresztül meghatározott csomópont-tulajdonságokat jeleníti meg az önálló telepítések esetén, vagy az Azure által üzemeltetett fürtökön Template.js. 
 
 > [!NOTE]
 > A Azure Resource Manager-sablonban a csomópont típusa általában paraméteres. A NodeType01 helyett a következőképpen fog kinézni `"[parameters('vmNodeType1Name')]"` .
@@ -505,7 +505,7 @@ await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton –Metric @("ClientConnections,High,1024,0)
 ```
 
-Láthatja a fürt jegyzékfájljában definiált kapacitásokat. Íme egy példa a ClusterManifest. XML fájlra:
+Láthatja a fürt jegyzékfájljában definiált kapacitásokat. Íme egy példa a ClusterManifest.xmlra:
 
 ```xml
     <NodeType Name="NodeType03">
@@ -515,7 +515,7 @@ Láthatja a fürt jegyzékfájljában definiált kapacitásokat. Íme egy példa
     </NodeType>
 ```
 
-Íme egy példa a ClusterConfig. JSON-n keresztül meghatározott kapacitásokra a különálló központi telepítések vagy a template. JSON esetében az Azure által üzemeltetett fürtök esetében: 
+Az alábbi példa az Azure által üzemeltetett fürtökre való ClusterConfig.json, az önálló üzembe helyezésekhez vagy az Template.js-on keresztül definiált kapacitásokra mutat példát: 
 
 ```json
 "nodeTypes": [
@@ -548,7 +548,7 @@ A pufferelt kapacitás a fürterőforrás-kezelő egy másik funkciója. Lehető
 
 A pufferelt kapacitás globálisan van megadva az összes csomóponthoz. A fenntartott kapacitáshoz választott érték a fürtben található hibák és frissítési tartományok függvénye. A további hibatűrési és frissítési tartományok azt jelentik, hogy alacsonyabb számot választhat a pufferelt kapacitáshoz. Ha több tartománya van, előfordulhat, hogy a fürt kisebb mennyisége nem érhető el a frissítések és a hibák során. A pufferelt kapacitás megadása csak akkor hasznos, ha egy metrika csomópont-kapacitását is megadja.
 
-Íme egy példa arra, hogyan lehet pufferelt kapacitást megadni a ClusterManifest. xml fájlban:
+Íme egy példa a pufferelt kapacitás megadására a ClusterManifest.xmlban:
 
 ```xml
         <Section Name="NodeBufferPercentage">
@@ -557,7 +557,7 @@ A pufferelt kapacitás globálisan van megadva az összes csomóponthoz. A fennt
         </Section>
 ```
 
-Íme egy példa arra, hogyan lehet pufferelt kapacitást megadni a ClusterConfig. JSON használatával a különálló központi telepítések vagy a template. JSON esetében az Azure által üzemeltetett fürtökhöz:
+Az alábbi példa bemutatja, hogyan határozhat meg pufferelt kapacitást ClusterConfig.jshasználatával a különálló központi telepítések esetén, vagy Template.jsaz Azure által üzemeltetett fürtökhöz:
 
 ```json
 "fabricSettings": [
@@ -615,7 +615,7 @@ LoadMetricInformation     :
                             MaxNodeLoadNodeId     : 2cc648b6770be1bc9824fa995d5b68b1
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * A fürterőforrás-kezelő architektúrájának és információinak folyamatáról további információt a [fürterőforrás-kezelő architektúrájának áttekintése](service-fabric-cluster-resource-manager-architecture.md)című témakörben talál.
 * A Lemeztöredezettség-mentesítő mérőszámok meghatározása az egyik módszer a csomópontok terhelésének konszolidálására a kiterjedésük helyett. A töredezettségmentesítés konfigurálásával kapcsolatos további információkért lásd: [a metrikák és a betöltések töredezettségmentesítése Service Fabric](service-fabric-cluster-resource-manager-defragmentation-metrics.md).
 * Kezdje a kezdetektől, és [Ismerkedjen meg Service Fabric fürterőforrás-kezelővel](service-fabric-cluster-resource-manager-introduction.md).

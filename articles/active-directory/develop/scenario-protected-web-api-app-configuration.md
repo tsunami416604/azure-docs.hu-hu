@@ -13,10 +13,10 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 073eca94ad93c69811b02abe2c8649940a394e8e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80882471"
 ---
 # <a name="protected-web-api-code-configuration"></a>Védett webes API: kód konfigurálása
@@ -134,7 +134,7 @@ Az előző kódrészlet a [Microsoft. Identity. Web/WebApiServiceCollectionExten
 
 ## <a name="token-validation"></a>Jogkivonat ellenőrzése
 
-Az előző kódrészletben a JwtBearer middleware, például az OpenID Connect middleware a web Appsben, a (z `TokenValidationParameters`) értéke alapján érvényesíti a jogkivonatot. A tokent szükség szerint visszafejti a rendszer, a jogcímeket kinyeri, és ellenőrzi az aláírást. A middleware ezt követően ellenőrzi a tokent, hogy ellenőrzi az alábbi adatforrást:
+Az előző kódrészletben a JwtBearer middleware, például az OpenID Connect middleware a web Appsben, a (z) értéke alapján érvényesíti a jogkivonatot `TokenValidationParameters` . A tokent szükség szerint visszafejti a rendszer, a jogcímeket kinyeri, és ellenőrzi az aláírást. A middleware ezt követően ellenőrzi a tokent, hogy ellenőrzi az alábbi adatforrást:
 
 - Célközönség: a jogkivonat a webes API-t célozza meg.
 - Sub: olyan alkalmazás számára lett kiadva, amely számára engedélyezett a webes API meghívása.
@@ -167,7 +167,7 @@ A legtöbb esetben nem kell módosítania a paramétereket. Azok az alkalmazáso
 
 A bejövő hozzáférési jogkivonatokat is ellenőrizheti Azure Functionsban. Ilyen érvényesítési példákat a [Microsoft .net](https://github.com/Azure-Samples/ms-identity-dotnet-webapi-azurefunctions), a [NodeJS](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-azurefunctions)és a [Python](https://github.com/Azure-Samples/ms-identity-python-webapi-azurefunctions)tartalmaz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Hatókörök és alkalmazás-szerepkörök ellenőrzése a kódban](scenario-protected-web-api-verification-scope-app-roles.md)

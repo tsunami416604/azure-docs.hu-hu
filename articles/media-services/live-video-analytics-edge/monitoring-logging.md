@@ -4,10 +4,10 @@ description: Ez a cikk áttekintést nyújt az élő videók elemzéséről IoT 
 ms.topic: reference
 ms.date: 04/27/2020
 ms.openlocfilehash: 807b0623159e0b50285b89da2835e9dd6cb037aa
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84261211"
 ---
 # <a name="monitoring-and-logging"></a>Monitorozás és naplózás
@@ -16,7 +16,7 @@ Ebből a cikkből megtudhatja, hogyan fogadhat eseményeket az élő videó-elem
 
 Azt is megismerheti, hogyan szabályozhatja a modul által generált naplókat.
 
-## <a name="taxonomy-of-events"></a>Események taxonómiae
+## <a name="taxonomy-of-events"></a>Az események osztályozása
 
 A IoT Edge élő videó-elemzések eseményeket bocsátanak ki vagy telemetria az alábbi besorolásnak megfelelően.
 
@@ -25,7 +25,7 @@ A IoT Edge élő videó-elemzések eseményeket bocsátanak ki vagy telemetria a
 * Működés: a felhasználó által végrehajtott műveletek részeként vagy egy [adathordozó-gráf](media-graph-concept.md)végrehajtása során generált események.
    
    * Kötet: várhatóan alacsony (néhány percenként, vagy akár alacsonyabb arányban).
-   * Angol nyelvű Példák:
+   * Példák:
 
       Rögzítés elindítva (alább), rögzítés leállítva
       
@@ -47,7 +47,7 @@ A IoT Edge élő videó-elemzések eseményeket bocsátanak ki vagy telemetria a
 * Diagnosztika: olyan események, amelyek segítenek diagnosztizálni a problémákat és/vagy a teljesítménnyel kapcsolatos problémákat.
 
    * Kötet: lehet magas (percenként többször is).
-   * Angol nyelvű Példák:
+   * Példák:
    
       Az RTSP- [SDP](https://en.wikipedia.org/wiki/Session_Description_Protocol) kapcsolatos információk (alább) vagy a bejövő videóban található hézagok.
 
@@ -68,7 +68,7 @@ A IoT Edge élő videó-elemzések eseményeket bocsátanak ki vagy telemetria a
 * Elemzés: a videó-elemzés részeként generált események.
 
    * Kötet: lehet magas (több alkalommal percenként vagy gyakrabban).
-   * Angol nyelvű Példák:
+   * Példák:
       
       A rendszer észlelte a mozgást (alább), a következtetés eredményét.
    ```      
@@ -100,7 +100,7 @@ A IoT Edge élő videó-elemzések eseményeket bocsátanak ki vagy telemetria a
    ```
 A modul által kibocsátott eseményeket a rendszer a [IoT Edge hubhoz](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub)továbbítja, és innen más célhelyekre is átirányítható. 
 
-## <a name="controlling-events"></a>Események szabályozása
+## <a name="controlling-events"></a>Az események irányítása
 
 A következő modul-Twin tulajdonságokat használhatja a modul [Twin JSON-sémájában](module-twin-configuration-schema.md)leírtaknak megfelelően az élő videó Analytics IoT Edge modulban közzétett operatív és diagnosztikai események vezérléséhez.
 
@@ -178,7 +178,7 @@ Az Eseménytípus a következő sémának megfelelő névtérhez van rendelve:
 
 `Microsoft.Media.Graph.{EventClass}.{EventType}`
 
-#### <a name="event-classes"></a>Események osztályai
+#### <a name="event-classes"></a>Eseményosztályok
 
 |Osztály neve|Leírás|
 |---|---|
@@ -188,7 +188,7 @@ Az Eseménytípus a következő sémának megfelelő névtérhez van rendelve:
 
 Az események típusai az egyes események osztályokra jellemzőek.
 
-Angol nyelvű Példák:
+Példák:
 
 * Microsoft. Media. Graph. Analytics. következtetés
 * Microsoft. Media. Graph. Diagnostics. AuthorizationError
@@ -243,6 +243,6 @@ Ezután a modul bináris formában fogja írni a hibakeresési naplókat az (esz
 
 [Gyakori kérdések](faq.md#monitoring-and-metrics)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[Folyamatos videofelvétel](continuous-video-recording-tutorial.md)
+[Folyamatos videófelvétel](continuous-video-recording-tutorial.md)

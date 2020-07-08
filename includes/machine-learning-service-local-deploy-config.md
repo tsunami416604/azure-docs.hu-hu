@@ -13,7 +13,7 @@ ms.locfileid: "79477272"
 ---
 A dokumentumtérkép bejegyzései a `deploymentconfig.json` [LocalWebservice. deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservicedeploymentconfiguration?view=azure-ml-py)paramétereit képezik le. A következő táblázat ismerteti a JSON-dokumentum entitásai és a metódus paramétereinek megfeleltetését:
 
-| JSON-entitás | Metódus paramétere | Description |
+| JSON-entitás | Metódus paramétere | Leírás |
 | ----- | ----- | ----- |
 | `computeType` | NA | A számítási cél. Helyi célok esetén az értéknek a következőnek kell lennie: `local` . |
 | `port` | `port` | A helyi port, amelyen elérhetővé kívánja tenni a szolgáltatás HTTP-végpontját. |
