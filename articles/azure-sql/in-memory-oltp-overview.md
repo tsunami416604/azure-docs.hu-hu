@@ -2,8 +2,8 @@
 title: Memóriabeli technológiák
 description: A memóriában tárolt technológiák nagy mértékben javítják a tranzakciós és elemzési számítási feladatok teljesítményét Azure SQL Database és az Azure SQL felügyelt példányain.
 services: sql-database
-ms.service: sql-database
-ms.subservice: development
+ms.service: sql-db-mi
+ms.subservice: ''
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/19/2019
-ms.openlocfilehash: c5208edc6038db0f9d45bb8fe10f3a96b5051b4c
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 43527e8e5860e0bbfc50643210156be943d2f174
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560555"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985190"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-azure-sql-database-and-azure-sql-managed-instance"></a>Teljesítmény optimalizálása a memóriában lévő technológiák használatával Azure SQL Database és az Azure SQL felügyelt példányain
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -74,7 +74,7 @@ További információ a SQL Server memóriában történő használatáról:
 - [Útmutató a oszlopcentrikus indexekhez](/sql/relational-databases/indexes/columnstore-indexes-overview)
 - Hibrid tranzakciós/analitikus feldolgozás (HTAP), más néven [valós idejű operatív elemzés](/sql/relational-databases/indexes/get-started-with-columnstore-for-real-time-operational-analytics)
 
-## <a name="in-memory-oltp"></a>Memóriabeli OLTP
+## <a name="in-memory-oltp"></a>Memóriában tárolt OLTP
 
 A memóriában tárolt OLTP technológia rendkívül gyors adatelérési műveleteket tesz lehetővé azáltal, hogy az összes adatmennyiséget megtartja a memóriában. Emellett a speciális indexeket, a lekérdezések natív fordítását és az adatzárolás nélküli adatelérést is használja a OLTP számítási feladatok teljesítményének növeléséhez. A memóriában tárolt OLTP-adatmennyiséget kétféleképpen rendezheti:
 
@@ -187,7 +187,7 @@ Ha **fürtözött** oszlopcentrikus indextel rendelkezik, a teljes táblázat el
 
 <a id="install_oltp_manuallink" name="install_oltp_manuallink"></a>
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [1. gyors útmutató: memóriában tárolt OLTP-technológiák a T-SQL teljesítményének növeléséhez](https://msdn.microsoft.com/library/mt694156.aspx)
 - [Memóriában tárolt OLTP használata meglévő Azure SQL-alkalmazásokban](in-memory-oltp-configure.md)
@@ -212,6 +212,6 @@ Ha **fürtözött** oszlopcentrikus indextel rendelkezik, a teljes táblázat el
 
 ### <a name="tools"></a>Eszközök
 
-- [Azure Portal](https://portal.azure.com/)
+- [Azure Portalra](https://portal.azure.com/)
 - [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx)
 - [SQL Server Data Tools (SSDT)](https://msdn.microsoft.com/library/mt204009.aspx)

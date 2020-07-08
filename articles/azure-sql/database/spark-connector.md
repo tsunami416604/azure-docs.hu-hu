@@ -2,7 +2,7 @@
 title: A Spark-összekötő használata Microsoft Azure SQL-sel és SQL Server
 description: Megtudhatja, hogyan használhatja a Spark-összekötőt az Azure SQL Database, az Azure SQL felügyelt példányával és a SQL Serverával.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: development
 ms.custom: sqldbrb=2
 ms.devlang: ''
@@ -11,12 +11,12 @@ author: denzilribeiro
 ms.author: denzilr
 ms.reviewer: carlrab
 ms.date: 09/25/2018
-ms.openlocfilehash: eb48773b2816ac801ea1ddc6752a86b13ca7dd1d
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: cb7fb7f6c44f9e1c4a9b073c666543a2e892582a
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343302"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985499"
 ---
 # <a name="accelerate-real-time-big-data-analytics-using-the-spark-connector"></a>Valós idejű big data elemzések felgyorsítása a Spark-összekötő használatával 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -228,7 +228,7 @@ df.bulkCopyToSqlDB(bulkCopyConfig, bulkCopyMetadata)
 //df.bulkCopyToSqlDB(bulkCopyConfig) if no metadata is specified.
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha még nem tette meg, töltse le a Spark-összekötőt az [Azure-sqldb-Spark GitHub adattárból](https://github.com/Azure/azure-sqldb-spark) , és fedezze fel a további forrásokat a tárházban:
 

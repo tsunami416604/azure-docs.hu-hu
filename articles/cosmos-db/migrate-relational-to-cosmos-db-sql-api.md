@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: thvankra
-ms.openlocfilehash: f79ad56d8083e7ef75279eb2a07e1d35a50c45b5
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 860b78df8df0d3c6946785a94e40141689278cd0
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85261103"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023142"
 ---
 # <a name="migrate-one-to-few-relational-data-into-azure-cosmos-db-sql-api-account"></a>Egy-a-többhöz kapcsolódó adat migrálása Azure Cosmos DB SQL API-fiókba
 
@@ -48,8 +48,7 @@ FROM Orders o;
 
 A lekérdezés eredményei az alábbiak szerint jelennek meg: 
 
-![Rendelés részletei](./media/migrate-relational-to-cosmos-sql-api/for-json-query-result.png#lightbox)
-
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/for-json-query-result.png" alt-text="Rendelés részletei" lightbox="./media/migrate-relational-to-cosmos-sql-api/for-json-query-result.png":::
 
 Ideális esetben egyetlen Azure Data Factory (ADF) másolási tevékenységgel szeretné lekérdezni az SQL-adatokat forrásként, és közvetlenül a megfelelő JSON-objektumokként írja be a kimenetet Azure Cosmos DB fogadóba. Jelenleg nem lehet végrehajtani a szükséges JSON-transzformációt egy másolási tevékenységben. Ha a fenti lekérdezés eredményét egy Azure Cosmos DB SQL API-tárolóba próbálja átmásolni, a várt JSON-tömb helyett a OrderDetails mezőt fogjuk látni a dokumentum sztring tulajdonságában.
 

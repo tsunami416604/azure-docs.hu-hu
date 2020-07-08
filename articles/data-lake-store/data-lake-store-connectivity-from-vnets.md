@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 01/31/2018
 ms.author: elsung
-ms.openlocfilehash: 080f1a55e70946281a11af44176600abfc5bc0e2
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 5793e1659f18818b85748dc0f2979895318ea913
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85515712"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985407"
 ---
 # <a name="access-azure-data-lake-storage-gen1-from-vms-within-an-azure-vnet"></a>Hozzáférési Azure Data Lake Storage Gen1 egy Azure-VNET belüli virtuális gépekről
 Azure Data Lake Storage Gen1 egy nyilvános internetes IP-címeken futó, Minden olyan kiszolgáló, amely csatlakozhat a nyilvános internethez, jellemzően Azure Data Lake Storage Gen1 végpontokhoz is csatlakozhat. Alapértelmezés szerint az Azure virtuális hálózatok-ban található összes virtuális gép hozzáfér az internethez, így a Azure Data Lake Storage Gen1hoz is hozzáférhet. Előfordulhat azonban, hogy a virtuális gépeket egy VNET konfigurálja, hogy ne legyen hozzáférése az internethez. Ilyen virtuális gépek esetén a Azure Data Lake Storage Gen1hoz való hozzáférés is korlátozott. Az Azure virtuális hálózatok-beli virtuális gépek nyilvános internet-hozzáférésének blokkolása az alábbi módszerek bármelyikével végezhető el:
@@ -31,14 +31,18 @@ Ebből a cikkből megtudhatja, hogyan engedélyezheti az Azure-beli virtuális g
 ## <a name="enabling-connectivity-to-azure-data-lake-storage-gen1-from-vms-with-restricted-connectivity"></a>A korlátozott kapcsolattal rendelkező virtuális gépekről Azure Data Lake Storage Gen1 való kapcsolódás engedélyezése
 Az ilyen virtuális gépekről való Azure Data Lake Storage Gen1 eléréséhez konfigurálnia kell azokat a régió IP-címének eléréséhez, ahol a Azure Data Lake Storage Gen1 fiók elérhető. Az Data Lake Storage Gen1-fiók régiói IP-címeit a fiókok () DNS-neveinek feloldásával azonosíthatja `<account>.azuredatalakestore.net` . A fiókok DNS-neveinek feloldásához olyan eszközöket is használhat, mint az **nslookup**. Nyisson meg egy parancssort a számítógépen, és futtassa a következő parancsot:
 
-    nslookup mydatastore.azuredatalakestore.net
+```console
+nslookup mydatastore.azuredatalakestore.net
+```
 
 A kimenet az alábbihoz hasonló. A **cím** tulajdonság értéke a Data Lake Storage Gen1 fiókjához tartozó IP-cím.
 
-    Non-authoritative answer:
-    Name:    1434ceb1-3a4b-4bc0-9c69-a0823fd69bba-mydatastore.projectcabostore.net
-    Address:  104.44.88.112
-    Aliases:  mydatastore.azuredatalakestore.net
+```output
+Non-authoritative answer:
+Name:    1434ceb1-3a4b-4bc0-9c69-a0823fd69bba-mydatastore.projectcabostore.net
+Address:  104.44.88.112
+Aliases:  mydatastore.azuredatalakestore.net
+```
 
 
 ### <a name="enabling-connectivity-from-vms-restricted-by-using-nsg"></a>A NSG használatával korlátozott virtuális gépekről való kapcsolódás engedélyezése

@@ -278,6 +278,8 @@
               href: service-fabric-backup-restore-service-trigger-restore.md
             - name: Partíció igény szerinti biztonsági mentése
               href: service-fabric-backup-restore-service-ondemand-backup.md
+            - name: A Reliable Collections biztonsági mentésének offline megtekintése és szerkesztése
+              href: backup-explorer.md
         - name: Inicializáló kódcsomagok
           href: initializer-codepackages.md
         - name: Futtatás befejezésig

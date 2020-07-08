@@ -2,18 +2,19 @@
 title: Kvóta növelésének kérése
 description: Ez az oldal azt ismerteti, hogyan lehet támogatási kérést létrehozni a Azure SQL Database és az Azure SQL felügyelt példányaira vonatkozó kvóták növelésére.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
+ms.subservice: service
 ms.topic: conceptual
 author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: sstein
 ms.date: 06/04/2020
-ms.openlocfilehash: bded7c33493c63a565ebab2dda2dccd320c6aecb
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 4557d2ecdb49cd50396986f0ea30277f50ecf9f7
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84456649"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85987285"
 ---
 # <a name="request-quota-increases-for-azure-sql-database-and-sql-managed-instance"></a>A kérelmek kvótájának növekedése Azure SQL Database és az SQL felügyelt példányainál
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]

@@ -109,6 +109,8 @@
           href: concepts-data-encryption-mysql.md
         - name: Azure AD-hitelesítés
           href: concepts-azure-ad-authentication.md
+        - name: Infrastruktúra kettős titkosítása
+          href: concepts-infrastructure-double-encryption.md
         - name: Biztonsági alapkonfiguráció
           href: security-baseline.md
     - name: Az üzletmenet folytonossága
@@ -276,6 +278,10 @@
           href: howto-data-encryption-cli.md
         - name: Adattitkosítás ellenőrzése
           href: howto-data-encryption-validation.md
+    - name: Infrastruktúra kettős titkosítása
+      items:
+        - name: Infrastruktúra kettős titkosításának konfigurálása
+          href: howto-double-encryption.md
     - name: Azure AD-integráció
       items:
         - name: Az Azure AD-integráció konfigurálása

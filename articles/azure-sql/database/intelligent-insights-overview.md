@@ -2,7 +2,7 @@
 title: Az adatbázis teljesítményének figyelése Intelligent Insights
 description: A Azure SQL Database és az Azure SQL felügyelt példányának Intelligent Insights a beépített intelligenciával folyamatosan figyeli az adatbázis-használatot mesterséges intelligencia használatával, és felismeri a gyenge teljesítményt okozó zavaró eseményeket.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: performance
 ms.custom: sqldbrb=2
 ms.devlang: ''
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 06/12/2020
-ms.openlocfilehash: 937eee69c17d207dc348a25fe2a5e6611480db0f
-ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
+ms.openlocfilehash: 96557a6049b316a69c32e96012206eab128e024a
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84743456"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85986504"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance-preview"></a>Intelligent Insights AI használata az adatbázis teljesítményének figyelésére és hibakeresésére (előzetes verzió)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]

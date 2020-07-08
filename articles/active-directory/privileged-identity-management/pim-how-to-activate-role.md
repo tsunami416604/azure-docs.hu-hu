@@ -10,22 +10,22 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 06/28/2019
+ms.date: 07/06/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 203b09ab7287d148b4a5e613b6198b6ad44c7234
-ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
+ms.openlocfilehash: 433ccecdc5eee5314114d020571761ee82afd6b9
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84743966"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024101"
 ---
 # <a name="activate-my-azure-ad-roles-in-pim"></a>Saját Azure AD-szerepkörök aktiválása a PIM-ben
 
 A Azure Active Directory (Azure AD) Privileged Identity Management (PIM) leegyszerűsíti, hogy a vállalatok hogyan kezelhetik az Azure AD-ban és más Microsoft-online szolgáltatások, például az Office 365-ban vagy a Microsoft Intuneban található erőforrásokhoz való  
 
-Ha rendszergazdai szerepkörre jogosult, ez azt jelenti, hogy aktiválhatja ezt a szerepkört, ha jogosultsági szintű műveleteket kell végrehajtania. Ha például alkalmanként felügyeli az Office 365-funkciókat, a szervezete Kiemelt szerepkörű rendszergazdái nem hozhatnak állandó globális rendszergazdát, mivel ez a szerepkör más szolgáltatásokra is hatással van. Ehelyett jogosult az Azure AD-szerepkörökre, például az Exchange Online-rendszergazdára. Ha a jogosultságai szükségesek, a szerepkör aktiválásához kérheti a rendszergazda vezérlését, és megadhatja az előre meghatározott időszakot.
+Ha már jogosult rendszergazdai szerepkörre, aktiválnia kell a szerepkör-hozzárendelést, ha emelt szintű műveleteket kell végrehajtania. Ha például alkalmanként felügyeli az Office 365-funkciókat, a szervezete Kiemelt szerepkörű rendszergazdái nem hozhatnak állandó globális rendszergazdát, mivel ez a szerepkör más szolgáltatásokra is hatással van. Ehelyett jogosult az Azure AD-szerepkörökre, például az Exchange Online-rendszergazdára. Ha a jogosultságai szükségesek, a szerepkör aktiválásához kérheti a rendszergazda vezérlését, és megadhatja az előre meghatározott időszakot.
 
 Ez a cikk azoknak a rendszergazdáknak szól, akiknek aktiválniuk kell az Azure AD-szerepkört Privileged Identity Managementban.
 
@@ -42,7 +42,7 @@ A 2019-es verziótól kezdődően a Privileged Identity Management Azure AD-szer
 
 ## <a name="activate-a-role"></a>Szerepkör aktiválása
 
-Ha egy Azure AD-szerepkört kell feltételezni, az aktiválást az Privileged Identity Management **saját szerepkörök** navigációs kapcsolójának használatával kérheti le.
+Ha egy Azure AD-szerepkört kell feltételezni, az aktiválást az Privileged Identity Management-ban megjelenő **saját szerepkörök** megnyitásával kérheti le.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
@@ -56,7 +56,7 @@ Ha egy Azure AD-szerepkört kell feltételezni, az aktiválást az Privileged Id
 
     ![Azure AD-szerepkörök – a jogosult szerepkörök listája](./media/pim-how-to-activate-role/activate-link.png)
 
-1. Az aktiválás ablaktábla megnyitásához kattintson az **aktiválás** elemre.
+1. Az aktiválás lap megnyitásához kattintson az **aktiválás** elemre.
 
     ![Azure AD-szerepkörök – az aktiválási oldal az időtartamot és a hatókört tartalmazza](./media/pim-how-to-activate-role/activate-page.png)
 
@@ -76,29 +76,9 @@ Ha egy Azure AD-szerepkört kell feltételezni, az aktiválást az Privileged Id
 
 1. Válassza az **aktiválás**lehetőséget.
 
-    Ha a szerepkörhöz nincs szükség jóváhagyásra, az aktiválva lesz, és a rendszer hozzáadja az aktív szerepkörök listájához. Ha a szerepkört szeretné használni, kövesse a következő szakaszban ismertetett lépéseket.
-
-    ![Befejezte az aktiválás panel hatókörét, kezdési idejét, időtartamát és okát](./media/pim-how-to-activate-role/azure-ad-activation-status.png)
-
     Ha a [szerepkör jóváhagyást kér](pim-resource-roles-approval-workflow.md) az aktiváláshoz, a böngésző jobb felső sarkában megjelenik egy értesítés, amely arról tájékoztatja, hogy a kérés jóváhagyása függőben van.
 
     ![Aktiválási kérelem függőben lévő jóváhagyási értesítés](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate-notification.png)
-
-## <a name="use-a-role-immediately-after-activation"></a>Az aktiválás után azonnal használjon szerepkört
-
-Ha az aktiválást követően bármilyen késleltetést észlel, kövesse az alábbi lépéseket az Azure AD-szerepkörök azonnali használatához.
-
-1. Nyissa meg Azure AD Privileged Identity Management.
-
-1. A **saját szerepkörök** lehetőség kiválasztásával megtekintheti a jogosult Azure ad-szerepköröket és az Azure-erőforrás-szerepkörök listáját.
-
-1. Válassza az **Azure ad-szerepkörök**elemet.
-
-1. Válassza az **aktív szerepkörök** lapot.
-
-1. Ha a szerepkör aktív, jelentkezzen ki a portálról, majd jelentkezzen be újra.
-
-    A szerepkörnek mostantól elérhetőnek kell lennie a használatra.
 
 ## <a name="view-the-status-of-your-requests"></a>A kérések állapotának megtekintése
 
@@ -133,8 +113,6 @@ Ha nem igényel olyan szerepkör aktiválását, amely jóváhagyást igényel, 
 Amikor Privileged Identity Managementban aktiválja a szerepkört, előfordulhat, hogy az aktiválás nem terjed ki azonnal az összes olyan portálra, amelyhez Kiemelt szerepkör szükséges. Néha az is előfordul, hogy még ha a módosítás propagálása meg is történik, a portálon történő webes gyorsítótárazás miatt a módosítás nem lép azonnal életbe. Ha az aktiválás késleltetve van, a következő műveleteket kell végrehajtania.
 
 1. Jelentkezzen ki az Azure Portalról, majd jelentkezzen be újra.
-
-    Ha aktivál egy Azure AD-szerepkört, látni fogja az aktiválás szakaszait. Ha az összes szakasz kész, megjelenik a **Kijelentkezés** hivatkozás. Ezt a hivatkozást a kijelentkezéshez használhatja. Ez a legtöbb esetben megoldja az aktiválási késleltetést.
 
 1. A Privileged Identity Managementban ellenőrizze, hogy a szerepkör tagja-e a listához.
 

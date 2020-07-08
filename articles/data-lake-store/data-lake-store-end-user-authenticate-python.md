@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.custom: has-adal-ref, tracking-python
-ms.openlocfilehash: c8333d50217581b0681f9f19c10d2583c71ac759
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 848ee67fd0a8c75308265cd39f5c5040cbac51fe
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85511234"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85984980"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-python"></a>Végfelhasználói hitelesítés Azure Data Lake Storage Gen1 a Python használatával
 > [!div class="op_single_selector"]
@@ -48,7 +48,7 @@ A Data Lake Storage Gen1 Python használatával való használatához három mod
 
 A modulok telepítéséhez használja a következő parancsokat.
 
-```
+```console
 pip install azure-mgmt-resource
 pip install azure-mgmt-datalake-store
 pip install azure-datalake-store
@@ -88,30 +88,34 @@ pip install azure-datalake-store
 
 A következő kódrészlettel végezheti el a hitelesítést az Azure AD-vel a Data Lake Storage Gen1 fiókban található Fiókkezelés-műveletekhez. A következő kódrészlet használható az alkalmazás többtényezős hitelesítés használatával történő hitelesítéséhez. Adja meg az alábbi értékeket egy meglévő Azure AD **natív** alkalmazáshoz.
 
-    authority_host_url = "https://login.microsoftonline.com"
-    tenant = "FILL-IN-HERE"
-    authority_url = authority_host_url + '/' + tenant
-    client_id = 'FILL-IN-HERE'
-    redirect = 'urn:ietf:wg:oauth:2.0:oob'
-    RESOURCE = 'https://management.core.windows.net/'
+```python
+authority_host_url = "https://login.microsoftonline.com"
+tenant = "FILL-IN-HERE"
+authority_url = authority_host_url + '/' + tenant
+client_id = 'FILL-IN-HERE'
+redirect = 'urn:ietf:wg:oauth:2.0:oob'
+RESOURCE = 'https://management.core.windows.net/'
 
-    context = adal.AuthenticationContext(authority_url)
-    code = context.acquire_user_code(RESOURCE, client_id)
-    print(code['message'])
-    mgmt_token = context.acquire_token_with_device_code(RESOURCE, code, client_id)
-    armCreds = AADTokenCredentials(mgmt_token, client_id, resource = RESOURCE)
+context = adal.AuthenticationContext(authority_url)
+code = context.acquire_user_code(RESOURCE, client_id)
+print(code['message'])
+mgmt_token = context.acquire_token_with_device_code(RESOURCE, code, client_id)
+armCreds = AADTokenCredentials(mgmt_token, client_id, resource = RESOURCE)
+```
 
 ### <a name="for-filesystem-operations"></a>Fájlrendszerbeli műveletekhez
 
 Ezzel a művelettel hitelesítheti az Azure AD-t a fájlrendszerbeli műveletek Data Lake Storage Gen1 fiókban való hitelesítéséhez. A következő kódrészlet használható az alkalmazás többtényezős hitelesítés használatával történő hitelesítéséhez. Adja meg az alábbi értékeket egy meglévő Azure AD **natív** alkalmazáshoz.
 
-    adlCreds = lib.auth(tenant_id='FILL-IN-HERE', resource = 'https://datalake.azure.net/')
+```console
+adlCreds = lib.auth(tenant_id='FILL-IN-HERE', resource = 'https://datalake.azure.net/')
+```
 
 ## <a name="end-user-authentication-without-multi-factor-authentication"></a>Végfelhasználói hitelesítés többtényezős hitelesítés nélkül
 
 Ez elavult. További információ: Azure- [hitelesítés a PYTHON SDK használatával](/azure/python/python-sdk-azure-authenticate).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a cikkben megtanulta, hogyan használható a végfelhasználói hitelesítés a Azure Data Lake Storage Gen1 a Python használatával történő hitelesítéshez. A következő cikkekből megtudhatja, hogyan használható a Python a Azure Data Lake Storage Gen1 való együttműködéshez.
 
 * [Fiókkezelés Data Lake Storage Gen1 a Python használatával](data-lake-store-get-started-python.md)

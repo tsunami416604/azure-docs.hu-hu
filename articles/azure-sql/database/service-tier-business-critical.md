@@ -3,8 +3,8 @@ title: üzletileg kritikus szolgáltatási szintet
 titleSuffix: Azure SQL Database & Azure SQL Managed Instance
 description: Ismerje meg az üzleti szempontból kritikus szolgáltatási szintet Azure SQL Database és az Azure SQL felügyelt példányát.
 services: sql-database
-ms.service: sql-database
-ms.subservice: service
+ms.service: sql-db-mi
+ms.subservice: features
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 12/04/2018
-ms.openlocfilehash: c619a9b295f77d4af39332e12ff5dec263025f5f
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 0067811316a8afd26828050d81215ecb5748c841
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84322063"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85986690"
 ---
 # <a name="business-critical-tier---azure-sql-database-and-azure-sql-managed-instance"></a>Üzletileg kritikus réteg-Azure SQL Database és az Azure SQL felügyelt példánya 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -59,7 +59,7 @@ A legfontosabb ok, amiért érdemes kiválasztania üzletileg kritikus szolgált
 - **Magasabb rendelkezésre állás** – a többszintű konfigurációban üzletileg kritikus szint az 99,995%-os rendelkezésre állást garantálja, az általános célú szint 99,99%-ában.
 - A Geo-replikációval konfigurált **gyors geo-helyreállítási** üzletileg kritikusi réteg 5 sec-os garantált helyreállítási időcélkitűzéssel (RPO) rendelkezik, és 30 mp-es helyreállítási időszakot (RTO) biztosít a telepített órák 100%-ában.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Megtalálhatja az erőforrás jellemzőit (magok, I/O, memória) üzletileg kritikus szinten az [SQL felügyelt példányában](../managed-instance/resource-limits.md#service-tier-characteristics), az önálló adatbázist a [virtuális mag-modellben](resource-limits-vcore-single-databases.md#business-critical---provisioned-compute---gen4) vagy a [DTU modellben](resource-limits-dtu-single-databases.md#premium-service-tier), vagy a rugalmas készletet a [virtuális mag-modellben](resource-limits-vcore-elastic-pools.md#business-critical---provisioned-compute---gen4) és a [DTU-modellben](resource-limits-dtu-elastic-pools.md#premium-elastic-pool-limits).
 - Ismerkedjen meg [általános célú](service-tier-general-purpose.md) -és [nagy kapacitású](service-tier-hyperscale.md) -szintekkel.

@@ -2,7 +2,7 @@
 title: Erőforrások skálázása
 description: Ez a cikk azt ismerteti, hogyan méretezheti az adatbázist Azure SQL Database és SQL felügyelt példányon a lefoglalt erőforrások hozzáadásával vagy eltávolításával.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: ''
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnik, carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: 19c75952846067d338d0956391a4b78bbb7d0d26
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 180fca9ae40bc07be762665a3d16270e905d2e02
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84323467"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85984141"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>Adatbázis-erőforrások dinamikus méretezése minimális állásidővel
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -71,7 +71,7 @@ Az erőforrások méretezése a legegyszerűbb és a leghatékonyabb módszer az
 - Az [olvasási felskálázás](read-scale-out.md) egy elérhető szolgáltatás, amelyben egy írásvédett replikát kap az adatairól, ahol a csak olvasható lekérdezéseket, például jelentéseket futtathat. A csak olvasási jogosultsággal rendelkező replikák az elsődleges adatbázis erőforrás-használatának befolyásolása nélkül kezelik az írásvédett munkaterhelést.
 - Az [adatbázis](elastic-scale-introduction.md) -skálázás olyan technikák összessége, amelyek lehetővé teszik az adatmegosztást több adatbázisra, és egymástól függetlenül méretezheti azokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ az adatbázis-teljesítmény javításáról az adatbázis kódjának módosításával: [teljesítményre vonatkozó javaslatok keresése és alkalmazása](database-advisor-find-recommendations-portal.md).
 - További információ a beépített adatbázis-intelligenciával való optimalizálásáról: [automatikus hangolás](automatic-tuning-overview.md).

@@ -2,7 +2,7 @@
 title: JSON-adatok használata
 description: A Azure SQL Database és az Azure SQL felügyelt példánya lehetővé teszi, hogy JavaScript Object Notation (JSON) formátumban elemezze, lekérdezze és formázza az adatelemzést.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: development
 ms.custom: sqldbrb=2
 ms.devlang: ''
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 04/19/2020
-ms.openlocfilehash: c94aac5d90611f6fca2d697d23d0c8d1bcf6a359
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: b138263ff48d5be24d9453b82eef4a3e9fb0d31b
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84048433"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85986310"
 ---
 # <a name="getting-started-with-json-features-in-azure-sql-database-and-azure-sql-managed-instance"></a>Ismerkedés a JSON-funkciókkal Azure SQL Database és az Azure SQL felügyelt példányában
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -192,7 +192,7 @@ END
 
 A JSON-tömbként formázott és a tárolt eljárás paraméterként megadott gyűjteménye elemezhető, és beszúrható az Orders (megrendelések) táblába.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha szeretné megtudni, hogyan integrálhatja a JSON-t az alkalmazásba, tekintse meg ezeket az erőforrásokat:
 

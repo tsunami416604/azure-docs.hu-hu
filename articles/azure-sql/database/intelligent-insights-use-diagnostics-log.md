@@ -2,7 +2,7 @@
 title: Intelligent Insights teljesítmény diagnosztikai naplója
 description: A Intelligent Insights diagnosztikai naplót biztosít a Azure SQL Database és az Azure SQL felügyelt példányának teljesítményével kapcsolatos problémákról
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: performance
 ms.custom: sqldbrb=2
 ms.devlang: ''
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 06/12/2020
-ms.openlocfilehash: 2088f007be1542defed6f8c1a3aa42233b3ef9ee
-ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
+ms.openlocfilehash: 398a96dc505309e565b13cb42f610d8571b9413e
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84743422"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85986327"
 ---
 # <a name="use-the-intelligent-insights-performance-diagnostics-log-of-azure-sql-database-and-azure-sql-managed-instance-performance-issues"></a>A Azure SQL Database és az Azure SQL felügyelt példányok teljesítményével kapcsolatos problémák Intelligent Insights teljesítmény diagnosztikai naplójának használata
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]

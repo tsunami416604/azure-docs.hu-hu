@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 01/30/2017
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: 87067f5720ef821571e897e934413c3baed86ff4
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 5819717443de1d5742d46994dca2f23579e527a0
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84727177"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85986456"
 ---
 # <a name="getting-arp-tables-in-the-resource-manager-deployment-model"></a>ARP-táblák lekérése a Resource Manager-alapú üzemi modellben
 > [!div class="op_single_selector"]
@@ -44,10 +44,12 @@ Az ARP-táblázatok segítségével ellenőrizheti a 2. réteg konfigurációjá
 
 Példa ARP-táblázatra: 
 
-        Age InterfaceProperty IpAddress  MacAddress    
-        --- ----------------- ---------  ----------    
-         10 On-Prem           10.0.0.1   ffff.eeee.dddd
-          0 Microsoft         10.0.0.2   aaaa.bbbb.cccc
+```output
+Age InterfaceProperty IpAddress  MacAddress    
+--- ----------------- ---------  ----------    
+ 10 On-Prem           10.0.0.1   ffff.eeee.dddd
+  0 Microsoft         10.0.0.2   aaaa.bbbb.cccc
+```
 
 
 A következő szakasz arról nyújt tájékoztatást, hogyan tekintheti meg az ExpressRoute Edge-útválasztók által látott ARP-táblákat. 
@@ -71,66 +73,78 @@ Ez a szakasz útmutatást nyújt arról, hogy miként tekintheti meg egymással 
 ### <a name="arp-tables-for-azure-private-peering"></a>ARP-táblák az Azure Private-társához
 A következő parancsmag az Azure privát társának ARP-táblázatait tartalmazza
 
-        # Required Variables
-        $RG = "<Your Resource Group Name Here>"
-        $Name = "<Your ExpressRoute Circuit Name Here>"
+```azurepowershell
+# Required Variables
+$RG = "<Your Resource Group Name Here>"
+$Name = "<Your ExpressRoute Circuit Name Here>"
 
-        # ARP table for Azure private peering - Primary path
-        Get-AzExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType AzurePrivatePeering -DevicePath Primary
+# ARP table for Azure private peering - Primary path
+Get-AzExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType AzurePrivatePeering -DevicePath Primary
 
-        # ARP table for Azure private peering - Secondary path
-        Get-AzExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType AzurePrivatePeering -DevicePath Secondary 
+# ARP table for Azure private peering - Secondary path
+Get-AzExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType AzurePrivatePeering -DevicePath Secondary 
+```
 
 A minta kimenete alább látható az egyik elérési útra
 
-        Age InterfaceProperty IpAddress  MacAddress    
-        --- ----------------- ---------  ----------    
-         10 On-Prem           10.0.0.1   ffff.eeee.dddd
-          0 Microsoft         10.0.0.2   aaaa.bbbb.cccc
+```output
+Age InterfaceProperty IpAddress  MacAddress    
+--- ----------------- ---------  ----------    
+ 10 On-Prem           10.0.0.1   ffff.eeee.dddd
+  0 Microsoft         10.0.0.2   aaaa.bbbb.cccc
+```
 
 
 ### <a name="arp-tables-for-azure-public-peering"></a>ARP-táblák az Azure nyilvános társának
 A következő parancsmag az Azure nyilvános társ-összevonásához használható ARP-táblákat tartalmazza
 
-        # Required Variables
-        $RG = "<Your Resource Group Name Here>"
-        $Name = "<Your ExpressRoute Circuit Name Here>"
+```azurepowershell
+# Required Variables
+$RG = "<Your Resource Group Name Here>"
+$Name = "<Your ExpressRoute Circuit Name Here>"
 
-        # ARP table for Azure public peering - Primary path
-        Get-AzExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType AzurePublicPeering -DevicePath Primary
+# ARP table for Azure public peering - Primary path
+Get-AzExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType AzurePublicPeering -DevicePath Primary
 
-        # ARP table for Azure public peering - Secondary path
-        Get-AzExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType AzurePublicPeering -DevicePath Secondary 
+# ARP table for Azure public peering - Secondary path
+Get-AzExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType AzurePublicPeering -DevicePath Secondary 
+```
 
 
 A minta kimenete alább látható az egyik elérési útra
 
-        Age InterfaceProperty IpAddress  MacAddress    
-        --- ----------------- ---------  ----------    
-         10 On-Prem           64.0.0.1   ffff.eeee.dddd
-          0 Microsoft         64.0.0.2   aaaa.bbbb.cccc
+```output
+Age InterfaceProperty IpAddress  MacAddress    
+--- ----------------- ---------  ----------    
+ 10 On-Prem           64.0.0.1   ffff.eeee.dddd
+  0 Microsoft         64.0.0.2   aaaa.bbbb.cccc
+```
 
 
 ### <a name="arp-tables-for-microsoft-peering"></a>ARP-táblák a Microsoft-partnerek számára
 A következő parancsmag a Microsoft-partnerek ARP-tábláit biztosítja
 
-        # Required Variables
-        $RG = "<Your Resource Group Name Here>"
-        $Name = "<Your ExpressRoute Circuit Name Here>"
+```azurepowershell
+# Required Variables
+$RG = "<Your Resource Group Name Here>"
+$Name = "<Your ExpressRoute Circuit Name Here>"
 
-        # ARP table for Microsoft peering - Primary path
-        Get-AzExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType MicrosoftPeering -DevicePath Primary
+# ARP table for Microsoft peering - Primary path
+Get-AzExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType MicrosoftPeering -DevicePath Primary
 
-        # ARP table for Microsoft peering - Secondary path
-        Get-AzExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType MicrosoftPeering -DevicePath Secondary 
+# ARP table for Microsoft peering - Secondary path
+Get-AzExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType MicrosoftPeering -DevicePath Secondary 
+```
 
 
 A minta kimenete alább látható az egyik elérési útra
 
-        Age InterfaceProperty IpAddress  MacAddress    
-        --- ----------------- ---------  ----------    
-         10 On-Prem           65.0.0.1   ffff.eeee.dddd
-          0 Microsoft         65.0.0.2   aaaa.bbbb.cccc
+```output
+Age InterfaceProperty IpAddress  MacAddress    
+--- ----------------- ---------  ----------    
+ 10 On-Prem           65.0.0.1   ffff.eeee.dddd
+  0 Microsoft         65.0.0.2   aaaa.bbbb.cccc
+```
 
 
 ## <a name="how-to-use-this-information"></a>Az információk használata
@@ -142,24 +156,30 @@ A társítások ARP-táblázata a 2. réteg konfigurációjának és a kapcsolat
 * A Microsoft IP-címének utolsó oktettje mindig páros szám lesz.
 * Ugyanez a MAC-címe fog megjelenni a Microsoft oldalán mind a 3 (elsődleges, mind a másodlagos) partner számára. 
 
-        Age InterfaceProperty IpAddress  MacAddress    
-        --- ----------------- ---------  ----------    
-         10 On-Prem           65.0.0.1   ffff.eeee.dddd
-          0 Microsoft         65.0.0.2   aaaa.bbbb.cccc
+```output
+Age InterfaceProperty IpAddress  MacAddress    
+--- ----------------- ---------  ----------    
+ 10 On-Prem           65.0.0.1   ffff.eeee.dddd
+  0 Microsoft         65.0.0.2   aaaa.bbbb.cccc
+```
 
 ### <a name="arp-table-when-on-premises--connectivity-provider-side-has-problems"></a>ARP-tábla, ha a helyszíni/kapcsolati szolgáltató oldalán problémák léptek fel
 Ha problémák merülnek fel a helyszíni vagy a kapcsolati szolgáltatóval kapcsolatban, láthatja, hogy az ARP-táblában vagy a helyszíni MAC-címen csak egy bejegyzés jelenik meg. Ekkor megjelenik a Microsoft oldalán használt MAC-cím és IP-cím közötti leképezés. 
   
-       Age InterfaceProperty IpAddress  MacAddress    
-       --- ----------------- ---------  ----------    
-         0 Microsoft         65.0.0.2   aaaa.bbbb.cccc
+```output
+Age InterfaceProperty IpAddress  MacAddress    
+--- ----------------- ---------  ----------    
+  0 Microsoft         65.0.0.2   aaaa.bbbb.cccc
+```
 
 vagy
        
-       Age InterfaceProperty IpAddress  MacAddress    
-       --- ----------------- ---------  ----------   
-         0 On-Prem           65.0.0.1   Incomplete
-         0 Microsoft         65.0.0.2   aaaa.bbbb.cccc
+```output
+Age InterfaceProperty IpAddress  MacAddress    
+--- ----------------- ---------  ----------   
+  0 On-Prem           65.0.0.1   Incomplete
+  0 Microsoft         65.0.0.2   aaaa.bbbb.cccc
+```
 
 
 > [!NOTE]

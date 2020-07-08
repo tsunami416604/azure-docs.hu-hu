@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 6624c8072c60793771d4f4b9943e15f1b276cd34
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 9c84b35318637f5b89e6c88c0ebb3fd6616533fc
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85604692"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023125"
 ---
 # <a name="debug-errors-when-authoring-a-custom-commands-application"></a>Hibakeresési hibák egyéni parancsok alkalmazásának létrehozásakor
 
@@ -35,17 +35,17 @@ Egyéni parancsok alkalmazásának törlésekor az egyéni parancsok megpróbál
 Ha a LUIS-alkalmazás törlése sikertelen volt, lépjen a [Luis](https://www.luis.ai/) -fiókjába, és törölje azokat manuálisan.
 
 ### <a name="toomanyrequests"></a>TooManyRequests
-Ha egyszerre nagy mennyiségű alkalmazást próbál meg törölni, valószínű, hogy a "TooManyRequests" hibaüzeneteket fogja látni. Ez azt jelenti, hogy a törlési kérelmeket az Azure szabályozza. 
+Ha nagy számú alkalmazást próbál meg egyszerre törölni, akkor valószínű, hogy "TooManyRequests" hibaüzenetek jelennek meg. Ezek a hibák azt jelentik, hogy a törlési kérelmeket az Azure szabályozza. 
 
-Frissítse az oldalt, és próbálkozzon kevesebb alkalmazás törlésével.
+Frissítse a lapot, és próbálkozzon kevesebb alkalmazás törlésével.
 
 ## <a name="errors-when-modifying-an-application"></a>Hiba történt egy alkalmazás módosításakor
 
 ### <a name="cant-delete-a-parameter-or-a-web-endpoint"></a>Nem lehet törölni egy paramétert vagy egy webes végpontot
-A paramétert nem lehet törölni, ha használatban van. Távolítsa el a paraméter hivatkozásait bármilyen beszédes válaszban, példa mondatokat, feltételeket, műveleteket, majd próbálkozzon újra.
+A paramétert nem lehet törölni, ha használatban van. Távolítsa el a paraméter hivatkozásait bármilyen beszédes válaszban, minta mondatokban, feltételekben, műveletekben, és próbálkozzon újra.
 
 ### <a name="cant-delete-a-web-endpoint"></a>Nem lehet törölni a webes végpontot
-Használat közben nem törölhet webes végpontot. A webes végpont eltávolítása előtt távolítsa el a webes végpontot használó **hívási webes végponti** műveletet.
+Használat közben nem törölhet webes végpontot. A webes végpont eltávolítása előtt távolítsa el a webes végpontot használó **hívási webes végpontok** műveleteit.
 
 ## <a name="errors-when-training-an-application"></a>Hibák az alkalmazás betanításakor
 ### <a name="built-in-intents"></a>Beépített leképezések
@@ -53,18 +53,18 @@ A LUIS beépített igen/nem szándékkal rendelkezik. A csak az "igen", a "No" k
 
 | Kulcsszó | Változatok | 
 | ------- | --------- | 
-| Igen | Persze, OK |
-| Nem | Nem, nem | 
+| Yes | Persze, OK |
+| No | Nem, nem | 
 
 ### <a name="common-sample-sentences"></a>Gyakori minta mondatok
 Az egyéni parancsok nem teszik lehetővé a különböző parancsok közötti közös példákban szereplő mondatok használatát. Egy alkalmazás betanítása meghiúsulhat, ha az egyik parancsban szereplő egyes mondatok már egy másik parancsban vannak definiálva. 
 
-Ügyeljen arra, hogy a különböző parancsok között ne legyenek közös példák. 
+Győződjön meg arról, hogy nem rendelkezik a különböző parancsok között megosztott általános példákkal. 
 
 Az ajánlott eljárás a minta mondatok különböző parancsokban való kiegyensúlyozására: a [Luis ajánlott eljárása](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-best-practices).
 
 ### <a name="empty-sample-sentences"></a>Üres minta mondatok
-Minden parancshoz legalább 1 minta mondatnak kell lennie.
+Minden parancshoz legalább egy minta mondatnak kell lennie.
 
 ### <a name="undefined-parameter-in-sample-sentences"></a>Nem definiált paraméter a minta mondatokban
 Egy vagy több paraméter a minta mondatokban van használatban, de nincs definiálva.
@@ -88,7 +88,9 @@ A LUIS-képzés bevált gyakorlata a [Luis ajánlott eljárása](https://docs.mi
 ### <a name="reassign-to-e0-authoring-resource"></a>Ismételt hozzárendelés E0-létrehozási erőforráshoz
 A LUIS nem támogatja a LUIS-alkalmazás újbóli hozzárendelését a E0-készítő erőforráshoz.
 
-Ha módosítania kell a szerzői erőforrást a F0-ből a E0-be, vagy másik E0-erőforrásra kell váltania, akkor hozza létre újra az alkalmazást.
+Ha módosítania kell a szerzői erőforrást a F0-ből a E0-be, vagy másik E0-erőforrásra kell váltania, hozza létre újra az alkalmazást. 
+
+Meglévő alkalmazások gyors exportálásához és egy új alkalmazásba történő importálásához tekintse meg a [folyamatos üzembe helyezés az Azure DevOps](./how-to-custom-commands-deploy-cicd.md)című témakört.
 
 ### <a name="save-button-is-disabled"></a>A Mentés gomb le van tiltva
 Ha soha nem rendel hozzá LUIS-előrejelzési erőforrást az alkalmazáshoz, a Mentés gomb le lesz tiltva, ha a szerzői erőforrást előrejelzési erőforrás hozzáadása nélkül próbálja meg módosítani.

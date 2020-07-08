@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 10/18/2019
+ms.date: 07/02/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9550684ad154f28a02ee347fd0a79c1ec286beb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: db61a3f9034908043695bc7db3a16551bf4659c3
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74382184"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024077"
 ---
 # <a name="azure-active-directory-identity-protection---security-overview"></a>Azure Active Directory Identity Protection – biztonsági áttekintés
 
@@ -56,7 +56,7 @@ A "nem védett kockázatos bejelentkezések" csempe a legutóbbi hét azon siker
 
 ### <a name="legacy-authentication"></a>Örökölt hitelesítés
 
-Az "örökölt hitelesítés" csempe a szervezet korábbi hitelesítésének múlt heti számát mutatja. Az örökölt hitelesítési protokollok nem támogatják a modern biztonsági módszereket, például az MFA-t. A régi hitelesítés megakadályozása érdekében alkalmazhat feltételes hozzáférési szabályzatot is. Az "örökölt hitelesítés" csempére kattintva átirányítjuk a "személyazonosság biztonságos pontszáma" értékre.
+Az "örökölt hitelesítés" csempe a szervezetében található kockázattal rendelkező örökölt hitelesítések múlt heti számát jeleníti meg. Az örökölt hitelesítési protokollok nem támogatják a modern biztonsági módszereket, például az MFA-t. A régi hitelesítés megakadályozása érdekében alkalmazhat feltételes hozzáférési szabályzatot is. Az "örökölt hitelesítés" csempére kattintva átirányítjuk a "személyazonosság biztonságos pontszáma" értékre.
 
 ### <a name="identity-secure-score"></a>Identitás biztonságos pontszáma
 

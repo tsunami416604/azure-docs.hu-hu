@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 2032ba11c307adda7035d64828d5089da49bedba
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 1c9b0b48c7862990cfa2c8ba38bde0851058a228
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307812"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023023"
 ---
 # <a name="debug-errors-when-running-a-custom-commands-application"></a>Hibakeresési hibák egyéni parancsok alkalmazásának futtatásakor
 
@@ -27,9 +27,8 @@ Ha a Custom commands alkalmazást [(a SPEECH SDK-val)](./how-to-custom-commands-
 
 | Hibakód | Részletek |
 | ------- | -------- |
-| 401 | AuthenticationFailure: a WebSocket frissítése hitelesítési hiba miatt meghiúsult |
-| 1000 | Túllépte a maximális WebSocket-kapcsolat üresjárati időtartamát (> 300 000 MS) |
-| 1002 | A kiszolgáló a (z) 404 állapotkódot adta vissza, amikor a rendszer a következő állapotkódot várta: "101". |
+| [401](#error-401) | AuthenticationFailure: a WebSocket frissítése hitelesítési hiba miatt meghiúsult |
+| [1002](#error-1002)] | A kiszolgáló a (z) 404 állapotkódot adta vissza, amikor a rendszer a következő állapotkódot várta: "101". |
 
 ### <a name="error-401"></a>401-es hiba
 - Az ügyfélalkalmazás által megadott régió nem egyezik az egyéni parancs alkalmazásának régiójával.
@@ -37,9 +36,6 @@ Ha a Custom commands alkalmazást [(a SPEECH SDK-val)](./how-to-custom-commands-
 - A beszédfelismerési erőforrás kulcsa érvénytelen
     
     Győződjön meg arról, hogy a beszédfelismerési erőforrás kulcsa helyes.
-
-### <a name="error-1000"></a>1000-es hiba 
-Az üresjárati kapcsolatokat 5 perc után a kiszolgáló leállítja. Próbálkozzon újra a kapcsolódással.
 
 ### <a name="error-1002"></a>1002-es hiba 
 - Az egyéni alkalmazásproxy nincs közzétéve
@@ -49,10 +45,12 @@ Az üresjárati kapcsolatokat 5 perc után a kiszolgáló leállítja. Próbálk
 - Az egyéni parancs applicationId érvénytelen.
 
     Győződjön meg arról, hogy az egyéni Command Application ID helyes.
-
-- Egy egyéni, a beszédfelismerési erőforráson kívüli parancssori alkalmazást próbál elérni
+ Egyéni parancs alkalmazása a beszédfelismerési erőforráson kívül
 
     Győződjön meg arról, hogy az egyéni Command alkalmazás a beszédfelismerési erőforrás alatt jön létre.
+
+A kapcsolati problémák elhárításával kapcsolatos további információkért a [Windows hangsegéd-ügyfél hibaelhárítása](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/tree/master/clients/csharp-wpf#troubleshooting) című témakörben olvashat bővebben.
+
 
 ## <a name="dialog-is-canceled"></a>Párbeszédablak megszakítva
 
@@ -70,14 +68,14 @@ A CancelledDialog esemény az alább felsorolt lemondási kódot és leírást t
 
 | Lemondási kód | Lemondás leírása |
 | ------- | --------------- | ----------- |
-| MaxTurnThresholdReached | A Turns megengedett maximális száma után nem történt előrehaladás |
-| RecognizerQuotaExceeded | A felismerő használati kvóta túllépve |
-| RecognizerConnectionFailed | Nem sikerült csatlakozni a felismerőhöz |
-| RecognizerUnauthorized | Ez az alkalmazás nem érhető el a jelenlegi előfizetéssel |
-| RecognizerInputExceededAllowedLength | A bemenet meghaladja a felismerő maximális támogatott hosszát |
-| RecognizerNotFound | A felismerő nem található |
-| RecognizerInvalidQuery | Érvénytelen lekérdezés a felismerő számára |
-| RecognizerError | A felismerő hibát ad vissza. |
+| [MaxTurnThresholdReached](#no-progress-was-made-after-the-max-number-of-turns-allowed) | A Turns megengedett maximális száma után nem történt előrehaladás |
+| [RecognizerQuotaExceeded](#recognizer-usage-quota-exceeded) | A felismerő használati kvóta túllépve |
+| [RecognizerConnectionFailed](#connection-to-the-recognizer-failed) | Nem sikerült csatlakozni a felismerőhöz |
+| [RecognizerUnauthorized](#this-application-cannot-be-accessed-with-the-current-subscription) | Ez az alkalmazás nem érhető el a jelenlegi előfizetéssel |
+| [RecognizerInputExceededAllowedLength](#input-exceeds-the-maximum-supported-length) | A bemenet meghaladja a felismerő maximális támogatott hosszát |
+| [RecognizerNotFound](#recognizer-not-found) | A felismerő nem található |
+| [RecognizerInvalidQuery](#invalid-query-for-the-recognizer) | Érvénytelen lekérdezés a felismerő számára |
+| [RecognizerError](#recognizer-return-an-error) | A felismerő hibát ad vissza. |
 
 ### <a name="no-progress-was-made-after-the-max-number-of-turns-allowed"></a>A Turns megengedett maximális száma után nem történt előrehaladás
 Ha bizonyos számú fordulat után nem sikerül frissíteni a szükséges tárolóhelyet, a rendszer megszakítja a párbeszédpanelt. A Build-in Max szám 3.

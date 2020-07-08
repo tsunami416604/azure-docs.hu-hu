@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 07/02/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1dcc91c6a7b823cd89b3ce4bf4d611b9923f87d
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: d1d30a32a58dd2385a214d813307c645c56afdc8
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558731"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024452"
 ---
 # <a name="conditional-access-grant"></a>Feltételes hozzáférés: Engedélyezés
 
@@ -39,6 +39,7 @@ A rendszergazdák dönthetnek úgy, hogy egy vagy több vezérlőt kényszeríte
 - [Hibrid Azure AD-hez csatlakoztatott eszköz megkövetelése](../devices/concept-azure-ad-join-hybrid.md)
 - [Jóváhagyott ügyfélalkalmazás megkövetelése](app-based-conditional-access.md)
 - [Alkalmazásvédelmi szabályzat megkövetelése](app-protection-based-conditional-access.md)
+- [Jelszó módosításának megkövetelése](#require-password-change)
 
 Ha a rendszergazdák úgy döntenek, hogy kombinálják ezeket a beállításokat, a következő módszereket választhatják ki:
 
@@ -135,11 +136,26 @@ Ez a beállítás a következő ügyfélalkalmazások esetében érvényes:
 
 Tekintse meg a következő cikket [: How to: app Protection-házirend és egy jóváhagyott ügyfélalkalmazás a Cloud app Accesshez feltételes hozzáféréssel](app-protection-based-conditional-access.md) a konfigurációs példákhoz.
 
+### <a name="require-password-change"></a>Jelszó módosításának megkövetelése 
+
+Ha a rendszer felhasználói kockázatot észlel, a felhasználói kockázati házirend feltételeit használva a rendszergazdák az Azure AD önkiszolgáló jelszó-visszaállítási funkciójával biztonságosan módosíthatják a jelszót. Ha a rendszer a felhasználói kockázatot észleli, a felhasználók önkiszolgáló jelszó-visszaállítást végezhetnek el önkiszolgáló megoldásként, ez a felhasználó kockázati eseményét fogja letiltani, hogy megakadályozza a rendszergazdák számára a szükségtelen zajt. 
+
+Amikor a rendszer kéri a felhasználótól, hogy változtassa meg a jelszavát, először a többtényezős hitelesítés végrehajtásához szükséges. Győződjön meg arról, hogy az összes felhasználó regisztrálva van a többtényezős hitelesítéshez, így azok a fiókhoz tartozó kockázat észlelése esetén is felkészültek.  
+
+> [!WARNING]
+> A felhasználói kockázati házirend elindítása előtt a felhasználóknak előzőleg regisztrálniuk kell magukat az önkiszolgáló jelszó-visszaállításhoz. 
+
+Ha a jelszó-módosítási vezérlő használatával konfigurál egy házirendet, a rendszer néhány korlátozást is tartalmaz.  
+
+1. A szabályzatot hozzá kell rendelni az "összes felhőalapú alkalmazáshoz". Ez megakadályozza, hogy egy másik alkalmazás használatával a támadók megváltoztassák a felhasználó jelszavát, és a fiók kockázatának visszaállítását. Ehhez egyszerűen egy másik alkalmazásba kell bejelentkeznie. 
+1. A jelszó megkövetelése nem használható más vezérlőkkel, például megfelelő eszköz megkövetelésével.  
+1. A jelszó-módosítási vezérlő csak a felhasználó-és csoport-hozzárendelési feltétellel, a Cloud app-hozzárendelési feltétellel (amely az összes értékre kell állítani) és a felhasználói kockázati feltételekkel használható. 
+
 ### <a name="terms-of-use"></a>Használati feltételek
 
 Ha a szervezet létrehozta a használati feltételeket, az engedélyezési vezérlők területen további beállítások is láthatók. Ezek a beállítások lehetővé teszik a rendszergazdák számára, hogy a szabályzat által védett erőforrások elérésének feltétele megkövetelje a használati feltételek visszaigazolását. A használati feltételekkel kapcsolatos további információkért tekintse meg a cikkben [Azure Active Directory használati feltételeket](terms-of-use.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Feltételes hozzáférés: munkamenet-vezérlők](concept-conditional-access-session.md)
 

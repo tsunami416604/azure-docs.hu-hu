@@ -9,18 +9,18 @@ ms.date: 06/28/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-ms.reviewer: sandeo
+ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9d8c0cd803424e117bd4dc7a3382b7b32df2d05
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 149b01401cd6feb7610510efeb1ad9a3c69f3ecf
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78672704"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024043"
 ---
 # <a name="how-sso-to-on-premises-resources-works-on-azure-ad-joined-devices"></a>Hogyan működik az SSO a helyszíni erőforrásokkal az Azure AD-hez csatlakoztatott eszközökön
 
-Valószínűleg nem meglepő, hogy egy Azure Active Directory (Azure AD) csatlakoztatott eszköz egyszeri bejelentkezéses (SSO) élményt biztosít a bérlő felhőalapú alkalmazásai számára. Ha a környezet helyszíni Active Directory (AD) rendelkezik, kiterjesztheti az SSO-élményt ezeken az eszközökön.
+Valószínűleg nem meglepő, hogy egy Azure Active Directory (Azure AD) csatlakoztatott eszköz egyszeri bejelentkezéses (SSO) élményt biztosít a bérlő felhőalapú alkalmazásai számára. Ha a környezet helyszíni Active Directory (AD), kiterjesztheti ezen eszközök egyszeri bejelentkezéses felületét olyan erőforrásokra és alkalmazásokra, amelyek helyszíni AD-t is használnak. 
 
 Ez a cikk a működésének módját ismerteti.
 
@@ -30,19 +30,19 @@ Ez a cikk a működésének módját ismerteti.
 
 ## <a name="how-it-works"></a>Működés 
 
-Mivel csak egyetlen felhasználónevet és jelszót kell megjegyeznie, az SSO leegyszerűsíti a hozzáférést az erőforrásokhoz, és javítja a környezet biztonságát. Az Azure AD-hez csatlakoztatott eszközzel a felhasználók már rendelkeznek egyszeri bejelentkezéssel a környezetében lévő felhőalapú alkalmazásokhoz. Ha a környezet rendelkezik Azure AD-val és helyszíni AD-vel, érdemes kiterjesztenie az egyszeri bejelentkezés hatókörét a helyszíni üzletági (LOB) alkalmazások, a fájlmegosztás és a nyomtatók számára.
+Az Azure AD-hez csatlakoztatott eszközzel a felhasználók már rendelkeznek egyszeri bejelentkezéssel a környezetében lévő felhőalapú alkalmazásokhoz. Ha a környezet rendelkezik Azure AD-val és helyszíni AD-vel, érdemes kiterjesztenie az SSO-élmény hatókörét a helyszíni üzletági (LOB) alkalmazások, a fájlmegosztás és a nyomtatók számára.
 
 Az Azure AD-hez csatlakoztatott eszközök nem rendelkeznek a helyszíni AD-környezettel kapcsolatos ismeretekkel, mivel azok nem csatlakoznak hozzá. A helyszíni AD-vel kapcsolatos további információkat azonban Azure AD Connect használatával is megadhat.
 
 Az Azure AD-t és a helyszíni AD-t egyaránt tartalmazó környezetek is ismertek hibrid környezettel. Ha hibrid környezettel rendelkezik, valószínű, hogy már rendelkezik Azure AD Connect központilag, hogy szinkronizálja a helyszíni identitás adatait a felhőbe. A szinkronizálási folyamat részeként Azure AD Connect szinkronizálja a helyszíni felhasználói adatokat az Azure AD-vel. Amikor egy felhasználó egy hibrid környezetben jelentkezik be egy Azure AD-hez csatlakoztatott eszközre:
 
-1. Az Azure AD elküldi annak a helyszíni tartománynak a nevét, amelyhez a felhasználó visszaesik az eszközhöz.
-1. A helyi biztonsági szervezet (LSA) szolgáltatás engedélyezi a Kerberos-hitelesítést az eszközön.
+1. Az Azure AD a felhasználó helyszíni tartományának adatait visszaküldi az eszközre az [elsődleges frissítési jogkivonattal](concept-primary-refresh-token.md) együtt.
+1. A helyi biztonsági szervezet (LSA) szolgáltatás lehetővé teszi a Kerberos és az NTLM hitelesítés használatát az eszközön.
 
-A felhasználó helyszíni környezetében a Kerberost kérő erőforráshoz való hozzáférési kísérlet során az eszköz:
+A Kerberost vagy NTLM-t kérő erőforráshoz való hozzáférési kísérlet során a felhasználó helyszíni környezetében az eszköz:
 
 1. Elküldi a helyszíni tartományi adatokat és a felhasználói hitelesítő adatokat a helyi tartományvezérlőnek a hitelesített felhasználó beszerzéséhez.
-1. Az AD-hez csatlakoztatott erőforrások eléréséhez használt Kerberos [-jegy (TGT)](/windows/desktop/secauthn/ticket-granting-tickets) fogadása. Ha a HRE kapcsolódási tartomány TGT beolvasására tett kísérlet meghiúsul (a kapcsolódó DCLocator időtúllépése késleltetheti), a Hitelesítőadat-kezelő bejegyzéseit, vagy a felhasználó kaphat egy hitelesítési előugrót, amely a cél erőforráshoz tartozó hitelesítő adatokat kér le.
+1. Kerberos [-jegy (TGT)](/windows/desktop/secauthn/ticket-granting-tickets) vagy NTLM-token fogadása a helyszíni erőforrás vagy alkalmazás által támogatott protokoll alapján. Ha a tartomány Kerberos-TGT vagy NTLM-jogkivonatának beolvasására tett kísérlet meghiúsul (a kapcsolódó DCLocator időtúllépése késleltetést okozhat), a Hitelesítőadat-kezelő bejegyzéseinek megkeresése vagy a felhasználó kaphat egy hitelesítési felugró ablakot, amely a cél erőforráshoz tartozó hitelesítő adatokat kér le.
 
 Minden, a **Windows rendszerhez integrált hitelesítéshez** konfigurált alkalmazás ZÖKKENŐMENTESEN egyszeri bejelentkezést kap, amikor egy felhasználó megpróbál hozzáférni azokhoz.
 

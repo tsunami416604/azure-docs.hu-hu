@@ -3,7 +3,7 @@ title: Feladatátvételi csoport konfigurálása
 titleSuffix: Azure SQL Database & SQL Managed Instance
 description: A Azure Portal, az Azure CLI és a PowerShell használatával megtudhatja, hogyan konfigurálhat egy automatikus feladatátvételi csoportot egy Azure SQL Databasehoz (az önálló és a készletezett) és az SQL felügyelt példányokhoz.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: high-availability
 ms.custom: sqldbrb=2
 ms.devlang: ''
@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/14/2019
-ms.openlocfilehash: 32543dffa492770d7217fb07652e41baf603ebcc
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 6c85fce45bcfa63d921297b068066b8f6e814223
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85250910"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85987130"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Feladatátvételi csoport konfigurálása Azure SQL Databasehoz
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -342,7 +342,7 @@ Feladatátvétel a másodlagos kiszolgálóra:
 > [!IMPORTANT]
 > Ha törölnie kell a másodlagos adatbázist, a törlése előtt távolítsa el a feladatátvételi csoportból. Ha egy másodlagos adatbázist töröl a feladatátvételi csoportból való eltávolítása előtt, akkor kiszámíthatatlan viselkedést okozhat.
 
-## <a name="sql-managed-instance"></a>SQL Managed Instance
+## <a name="sql-managed-instance"></a>Felügyelt SQL-példány
 
 A Azure Portal vagy a PowerShell használatával hozzon létre egy feladatátvételi csoportot a felügyelt Azure SQL-példány két felügyelt példánya között.
 

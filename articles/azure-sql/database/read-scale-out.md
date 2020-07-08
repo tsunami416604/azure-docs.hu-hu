@@ -2,8 +2,8 @@
 title: Replika-lekérdezések olvasása
 description: A Azure SQL Database a csak olvasható replikák kapacitásával képes a csak olvasási terhelések terheléselosztására, az úgynevezett olvasási felskálázással.
 services: sql-database
-ms.service: sql-database
-ms.subservice: scale-out
+ms.service: sql-db-mi
+ms.subservice: high-availability
 titleSuffix: Azure SQL Database & SQL Managed Instance
 ms.custom: sqldbrb=1
 ms.devlang: ''
@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
 ms.date: 06/03/2019
-ms.openlocfilehash: 3883e56108c71d46465dbce94876724fc5664bcf
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: a043eb5eed8f5554e42a113a3d7963be94da8a49
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84737818"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985567"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads"></a>Csak olvasható tevékenységprofil terheléselosztása csak olvasható replikák használatával
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]

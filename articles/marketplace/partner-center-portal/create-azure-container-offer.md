@@ -6,25 +6,27 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/19/2020
-ms.openlocfilehash: f7f0a466f288031474b100f42c9ba41aafb9ff9a
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.date: 06/17/2020
+ms.openlocfilehash: c3cd5ed952ddb40157ee16246d4d1669d47ed6b9
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85515545"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85984503"
 ---
-# <a name="create-an-azure-container-offer"></a>Azure Container-ajánlat létrehozása
+# <a name="create-an-azure-container-offer-in-azure-marketplace"></a>Azure Container-ajánlat létrehozása az Azure Marketplace-en
 
-Ez a cikk bemutatja, hogyan hozhat létre és tehet közzé egy tároló-ajánlatot az Azure Marketplace-en. A Kezdés előtt [hozzon létre egy kereskedelmi Piactéri fiókot a partner Centerben](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) , ha még nem tette meg. Győződjön meg róla, hogy a fiókja regisztrálva van a kereskedelmi piactér programban.
+Ez a cikk bemutatja, hogyan hozhat létre és tehet közzé egy tároló-ajánlatot az Azure Marketplace-en. A Kezdés előtt [hozzon létre egy kereskedelmi Piactéri fiókot a partner Centerben](create-account.md) , ha még nem tette meg. Győződjön meg róla, hogy a fiókja regisztrálva van a kereskedelmi piactér programban.
 
 ## <a name="create-a-new-offer"></a>Új ajánlat létrehozása
 
 1. Jelentkezzen be a [partner központba](https://partner.microsoft.com/dashboard/home).
+
 2. A bal oldali navigációs menüben válassza a **kereskedelmi piactér**  >  **– Áttekintés**lehetőséget.
+
 3. Az Áttekintés lapon válassza az **+ új ajánlat**  >  **Azure-tároló**elemet.
 
-    ![A bal oldali navigációs menü ábrázolása.](./media/new-offer-azure-container.png)
+   ![A bal oldali navigációs menü ábrázolása.](./media/new-offer-azure-container.png)
 
 > [!TIP]
 > Az ajánlat közzétételét követően a partner Centerben végzett módosítások csak az ajánlat ismételt közzététele után jelennek meg a kirakatokban. Győződjön meg arról, hogy a módosítások végrehajtása után mindig újra közzé kell tennie a módosításokat.
@@ -48,12 +50,12 @@ Válassza a **Létrehozás** lehetőséget az ajánlat létrehozásához és a f
 
 Az **ajánlat áttekintése** oldalon láthatók az ajánlat közzétételéhez szükséges lépések (a befejezett és a közelgő), valamint az egyes lépések befejezésének időtartamát.
 
-Ezen az oldalon különböző hivatkozások jelennek meg az ajánlat aktuális állapota alapján. Példa:
+Ezen az oldalon különböző hivatkozások jelennek meg az ajánlat aktuális állapota alapján. Például:
 
-- Ha az ajánlat Piszkozat- [törlési ajánlat](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#delete-a-draft-offer)
-- Ha az ajánlat élő – [az ajánlat értékesítésének leállítása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan)
-- Ha az ajánlat előzetes verzióban érhető [el](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status#publisher-approval)
-- Ha még nem fejezte be a közzétevő kijelentkezését – [Közzététel megszakítása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#cancel-publishing)
+- Ha az ajánlat Piszkozat- [törlési ajánlat](update-existing-offer.md#delete-a-draft-offer)
+- Ha az ajánlat élő – [az ajánlat értékesítésének leállítása](update-existing-offer.md#stop-selling-an-offer-or-plan)
+- Ha az ajánlat előzetes verzióban érhető [el](publishing-status.md#publisher-approval)
+- Ha még nem fejezte be a közzétevő kijelentkezését – [Közzététel megszakítása](update-existing-offer.md#cancel-publishing)
 
 ## <a name="offer-setup"></a>Ajánlat beállítása
 
@@ -65,12 +67,12 @@ Ha az ajánlatot a kereskedelmi piactéren a partner centerrel teszi közzé, ak
 
 1. **Válassza ki a kívánt érdeklődő célhelyet, ahová az ügyfél-érdeklődőket küldeni szeretné**. A partner Center a következő CRM-rendszereket támogatja:
 
-   - [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics) ügyfél-engagement
-   - [Marketo](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-marketo)
-   - [Salesforce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
+   - [Dynamics 365](commercial-marketplace-lead-management-instructions-dynamics.md) ügyfél-engagement
+   - [Marketo](commercial-marketplace-lead-management-instructions-marketo.md)
+   - [Salesforce](commercial-marketplace-lead-management-instructions-salesforce.md)
 
    > [!NOTE]
-   > Ha a CRM-rendszer nem szerepel a fentiekben, az [Azure Table](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table) vagy a [https-végpont](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https) használatával tárolhatja az ügyfelek vezető adatait, majd exportálhatja az adatait a CRM-rendszerbe.
+   > Ha a CRM-rendszer nem szerepel a fentiekben, az [Azure Table](commercial-marketplace-lead-management-instructions-azure-table.md) vagy a [https-végpont](commercial-marketplace-lead-management-instructions-https.md) használatával tárolhatja az ügyfelek vezető adatait, majd exportálhatja az adatait a CRM-rendszerbe.
 
 2. Az ajánlat összekötése a vezető célhoz a partner Centerben való közzététel során.
 3. Győződjön meg arról, hogy a vezető célhoz való kapcsolódás megfelelően van konfigurálva. Miután közzétette a partner Centerben, érvényesítjük a kapcsolatot, és elküldünk egy tesztelési érdeklődőt. Miközben az ajánlat előzetes verziójának megtekintése előtt megtekinti az ajánlatot, tesztelheti az érdeklődői kapcsolatokat is, ha az előnézeti környezetben próbálja megvásárolni az ajánlatot.
@@ -78,9 +80,9 @@ Ha az ajánlatot a kereskedelmi piactéren a partner centerrel teszi közzé, ak
 
 Íme néhány további érdeklődő felügyeleti erőforrás:
 
-- [Az érdeklődők kezelése – áttekintés](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads)
-- [Gyakori kérdések az érdeklődők kezeléséről](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [Az érdeklődők konfigurálásának gyakori hibái](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#publishing-config-errors)
+- [Az érdeklődők kezelése – áttekintés](commercial-marketplace-get-customer-leads.md)
+- [Gyakori kérdések az érdeklődők kezeléséről](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)
+- [Az érdeklődők konfigurálásának gyakori hibái](../lead-management-for-cloud-marketplace.md#publishing-config-errors)
 - Az [érdeklődők kezelése – áttekintés](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (ellenőrizze, hogy ki van-e kapcsolva az előugró ablakok blokkolása)
 
 A folytatás előtt válassza a **Piszkozat mentése** lehetőséget.
@@ -91,7 +93,12 @@ Ezen a lapon megadhatja az ajánlatnak a piactéren való csoportosításához h
 
 #### <a name="category"></a>Kategória
 
-Válasszon legalább egyet, és legfeljebb öt kategóriát. Ezek a kategóriák arra szolgálnak, hogy az ajánlatot a piactér megfelelő keresési területein helyezze el, és az ajánlat részletei lapon jelennek meg. Az ajánlat leírásában ismertesse, hogy az ajánlat hogyan támogatja ezeket a kategóriákat. A tárolók **a tárolók területen** jelennek meg, majd a **tároló lemezképek** kategóriája.
+Válassza ki a kategóriákat és alkategóriákat, hogy az ajánlatot a piactér megfelelő keresési területein helyezze el. Ügyeljen arra, hogy az ajánlata milyen módon támogassa ezeket a kategóriákat az ajánlat leírásában. A következők szerint válasszon:
+
+- Legalább egy és legfeljebb két kategória, beleértve az elsődleges és a másodlagos kategóriát is (opcionális).
+- Legfeljebb két alkategória lehet minden elsődleges és/vagy másodlagos kategóriához. Ha nem alkalmazható alkategória az ajánlatra, válassza a **nem alkalmazható**lehetőséget.
+
+Tekintse meg a kategóriák és alkategóriák teljes listáját az [ajánlatban az ajánlott eljárásokat felsorolva](../gtm-offer-listing-best-practices.md). A tárolók mindig **a tárolók alatt,** majd a **tároló lemezképek** kategóriájában jelennek meg.
 
 #### <a name="legal"></a>Jogi tudnivalók
 
@@ -100,13 +107,13 @@ Meg kell adnia az ajánlat használati feltételeit. Két lehetőség érhető e
 - A Microsoft kereskedelmi piactér standard szerződését használhatja.
 - Adja meg a saját használati feltételeit.
 
-##### <a name="standard-contract-for-the-microsoft-commercial-marketplace"></a>Standard szintű szerződés a Microsoft kereskedelmi piactérről
+#### <a name="standard-contract-for-the-microsoft-commercial-marketplace"></a>Standard szintű szerződés a Microsoft kereskedelmi piactérről
 
 A kereskedelmi piactéren a tranzakciókat megkönnyítő standard szintű szerződési sablon nyújt segítséget. Dönthet úgy is, hogy a standard szerződés keretében kínálja a megoldását, amelyet az ügyfeleknek csak egyszer kell ellenőriznie és elfogadni. Ez jó megoldás, ha nem szeretne egyéni használati feltételeket létrehozni.
 
-A standard szintű szerződéssel kapcsolatos további tudnivalókért tekintse meg [a Microsoft kereskedelmi piactérre vonatkozó standard szintű szerződést](https://docs.microsoft.com/azure/marketplace/standard-contract). Letöltheti a [standard szerződés](https://go.microsoft.com/fwlink/?linkid=2041178) PDF-fájlját is (Győződjön meg róla, hogy az előugró ablakok blokkolása ki van kapcsolva).
+A standard szintű szerződéssel kapcsolatos további tudnivalókért tekintse meg [a Microsoft kereskedelmi piactérre vonatkozó standard szintű szerződést](../standard-contract.md). Letöltheti a [standard szerződés](https://go.microsoft.com/fwlink/?linkid=2041178) PDF-fájlját is (Győződjön meg róla, hogy az előugró ablakok blokkolása ki van kapcsolva).
 
-A normál szerződés használatához jelölje be a **szabványos szerződés használata a Microsoft kereskedelmi piactérhez** jelölőnégyzetet, majd kattintson az **elfogadás**gombra.
+A standard szintű szerződés használatához válassza a * * standard szerződést a Microsoft kereskedelmi piactéren] (.. /standard-contract.md)
 
 > [!NOTE]
 > Miután közzétette az ajánlatot a Microsoft kereskedelmi piactérre vonatkozó standard szerződéssel, nem használhatja a saját egyéni használati feltételeit. A standard szerződés keretében vagy a saját használati feltételeinek megfelelően kínálja megoldását.
@@ -177,7 +184,7 @@ A **CSP-program elérhetősége** szakaszban adja meg a hivatkozást ( **CSP-pro
 
 #### <a name="additional-marketplace-listing-resources"></a>További erőforrások listázása a piactéren
 
-Az ajánlatok listájának létrehozásával kapcsolatos további tudnivalókért tekintse meg az ajánlott [eljárások listáját](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices) ismertető témakört.
+Az ajánlatok listájának létrehozásával kapcsolatos további tudnivalókért tekintse meg az ajánlott [eljárások listáját](../gtm-offer-listing-best-practices.md) ismertető témakört.
 
 ### <a name="marketplace-images"></a>Marketplace-rendszerképek
 
@@ -275,11 +282,11 @@ Ezen a lapon kiválaszthatja, hogy a terv mely felhőknél érhető el. Az ezen 
 
 #### <a name="azure-regions"></a>Azure-régiók
 
-Az Azure-beli tárolók ajánlatait az **Azure Global**-ban automatikusan elérhetővé kell tenni.  A tervet a kereskedelmi piactért használó összes globális Azure-régióban használhatja. Részletekért lásd: a [földrajzi Elérhetőség és a pénznemek támogatása](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies).
+Az Azure-beli tárolók ajánlatait az **Azure Global**-ban automatikusan elérhetővé kell tenni.  A tervet a kereskedelmi piactért használó összes globális Azure-régióban használhatja. Részletekért lásd: a [földrajzi Elérhetőség és a pénznemek támogatása](../marketplace-geo-availability-currencies.md).
 
-Válassza a [**Azure Government**](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome) lehetőséget a megoldás megjelenítéséhez. Ez egy kormányzati közösségi felhő, amely az Egyesült Államok szövetségi, állami és helyi vagy törzsi szerveinek ügyfeleinek, valamint az azok kiszolgálására jogosult partnereknek szóló szabályozott hozzáféréssel rendelkezik. Közzétevőként Ön felelős a felhőalapú Közösség megfelelőségi ellenőrzésével, biztonsági intézkedéseivel és ajánlott eljárásaival. A Azure Government fizikailag elkülönített adatközpontokat és hálózatokat használ (csak az Egyesült Államokban található).
+Válassza a [**Azure Government**](../../azure-government/documentation-government-welcome.md) lehetőséget a megoldás megjelenítéséhez. Ez egy kormányzati közösségi felhő, amely szabályozott hozzáféréssel rendelkezik az Egyesült Államok szövetségi, S] (..) ügyfeleihez. /Marketplace-geo-Availability-currencies.MD) em. Közzétevőként Ön felelős a felhőalapú Közösség megfelelőségi ellenőrzésével, biztonsági intézkedéseivel és ajánlott eljárásaival. A Azure Government fizikailag elkülönített adatközpontokat és hálózatokat használ (csak az Egyesült Államokban található).
 
-A Azure Government való [Közzététel](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners) előtt tesztelje és erősítse meg a megoldást az adott területen belül, mivel az eredmények eltérőek lehetnek. A megoldás létrehozásához és teszteléséhez kérjen egy próbaverziós fiókot [Microsoft Azure Government próbaverzióból](https://azure.microsoft.com/global-infrastructure/government/request/).
+A Azure Government való [Közzététel](../../azure-government/documentation-government-manage-marketplace-partners.md) előtt tesztelje és erősítse meg a megoldást az adott területen belül, mivel az eredmények eltérőek lehetnek. A megoldás létrehozásához és teszteléséhez kérjen egy próbaverziós fiókot [Microsoft Azure Government próbaverzióból](https://azure.microsoft.com/global-infrastructure/government/request/).
 
 > [!NOTE]
 > Miután közzétette és elérhetővé tette a csomagot egy adott régióban, nem távolíthatja el a régiót.
@@ -337,7 +344,7 @@ Ezt a mezőt a következő esetekben használja a rendszer:
 
 A tároló lemezképeit privát [Azure Container Registryban](https://azure.microsoft.com/services/container-registry/)kell tárolni. A **technikai konfiguráció** lapon adja meg a tároló rendszerkép-tárházának hivatkozási adatait a Azure Container Registryon belül.
 
-Az ajánlat közzététele után a rendszer átmásolja a tároló képét az Azure Marketplace-re egy adott nyilvános tároló beállításjegyzékében. A rendszer minden, a tároló képét használó kérelmet az Azure piactér nyilvános tárolójának beállításjegyzékében, nem pedig a saját privát szolgáltatásában szolgál ki. Részletekért lásd: [Az Azure Container műszaki eszközeinek előkészítése](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-technical-assets).
+Az ajánlat közzététele után a rendszer átmásolja a tároló képét az Azure Marketplace-re egy adott nyilvános tároló beállításjegyzékében. A rendszer minden, a tároló képét használó kérelmet az Azure piactér nyilvános tárolójának beállításjegyzékében, nem pedig a saját privát szolgáltatásában szolgál ki. Részletekért lásd: [Az Azure Container műszaki eszközeinek előkészítése](create-azure-container-technical-assets.md).
 
 ### <a name="image-repository-details"></a>Rendszerkép-tárház részletei
 
@@ -345,11 +352,11 @@ Adja meg a következő információkat a **rendszerkép-tárház részletei** la
 
 **Azure-előfizetés azonosítója** – adja meg az előfizetés azonosítóját, ahol a rendszer a használati adatokat tartalmazza, és a szolgáltatások számlázása a tároló képét tartalmazó Azure Container Registry. Ezt az azonosítót a Azure Portal [előfizetések oldalán](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) találja.
 
-**Azure-erőforráscsoport neve** – adja meg az [erőforráscsoport](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal) nevét, amely tartalmazza a Azure Container Registry a tároló képével. Az erőforráscsoport számára elérhetőnek kell lennie az előfizetés-AZONOSÍTÓban (fent). A nevet a Azure Portal [erőforráscsoportok](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceGroups) lapján találja.
+**Azure-erőforráscsoport neve** – adja meg az [erőforráscsoport](../../azure-resource-manager/management/manage-resource-groups-portal.md) nevét, amely tartalmazza a Azure Container Registry a tároló képével. Az erőforráscsoport számára elérhetőnek kell lennie az előfizetés-AZONOSÍTÓban (fent). A nevet a Azure Portal [erőforráscsoportok](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceGroups) lapján találja.
 
-**Azure Container Registry neve** – adja meg a tároló képével rendelkező [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-intro) nevét. A tároló-beállításjegyzéknek a korábban megadott Azure-erőforráscsoporthoz kell tartoznia. Csak a beállításjegyzék nevét adja meg, ne a teljes bejelentkezési kiszolgáló nevét. Ügyeljen arra, hogy kihagyja a **azurecr.IO** a névben. A beállításjegyzék neve a Azure Portal [tároló-nyilvántartások lapján](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ContainerRegistry%2Fregistries) található.
+**Azure Container Registry neve** – adja meg a tároló képével rendelkező [Azure Container Registry](../../container-registry/container-registry-intro.md) nevét. A tároló-beállításjegyzéknek a korábban megadott Azure-erőforráscsoporthoz kell tartoznia. Csak a beállításjegyzék nevét adja meg, ne a teljes bejelentkezési kiszolgáló nevét. Ügyeljen arra, hogy kihagyja a **azurecr.IO** a névben. A beállításjegyzék neve a Azure Portal [tároló-nyilvántartások lapján](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ContainerRegistry%2Fregistries) található.
 
-**Rendszergazdai Felhasználónév a Azure Container Registryhoz** – adja meg a Azure Container Registryhoz társított [rendszergazdai felhasználónevet](https://docs.microsoft.com/azure/container-registry/container-registry-authentication#admin-account) a tároló képével. A felhasználónévnek és a jelszónak meg kell győződnie arról, hogy a vállalata hozzáférhessen a beállításjegyzékhez. A rendszergazdai Felhasználónév és jelszó beszerzéséhez állítsa a **rendszergazdai** jogosultsággal rendelkező tulajdonságot **true** értékre az Azure parancssori felület (CLI) használatával. Igény szerint beállíthatja, hogy a **rendszergazda felhasználó** Azure Portal **engedélyezze** .
+**A Azure Container Registry rendszergazdai felhasználóneve** – adja meg a [rendszergazdai felhasználónevet](../../container-registry/container-registry-authentication.md#admin-account), amely a tároló képével rendelkező Azure Container Registryhoz van társítva. A felhasználónévnek és a jelszónak meg kell győződnie arról, hogy a vállalata hozzáférhessen a beállításjegyzékhez. A rendszergazdai Felhasználónév és jelszó beszerzéséhez állítsa a **rendszergazdai** jogosultsággal rendelkező tulajdonságot **true** értékre az Azure parancssori felület (CLI) használatával. Igény szerint beállíthatja, hogy a **rendszergazda felhasználó** Azure Portal **engedélyezze** .
 
  :::image type="content" source="media/azure-create-container-offer-images/azure-create-12-update-container-registry-edit.png" alt-text="A tároló-beállításjegyzék frissítése párbeszédpanelt mutatja be.":::
 
@@ -357,7 +364,7 @@ Adja meg a következő információkat a **rendszerkép-tárház részletei** la
 
 :::image type="content" source="media/azure-create-container-offer-images/azure-create-13-access-keys.png" alt-text="A hozzáférési kulcs menüjét mutatja be.":::
 
-**A tárház neve a Azure Container Registryon belül**. Adja meg a rendszerképet tartalmazó Azure Container Registry adattár nevét. Adja meg az adattár nevét, amikor a rendszerképet a beállításjegyzékbe küldi. A tárház nevét a [Container Registry](https://azure.microsoft.com/services/container-registry/)  >  **adattárak** lapon találja. További információ: [a Container Registry-Tárházak megtekintése Azure Portalban](https://docs.microsoft.com/azure/container-registry/container-registry-repositories).
+**A tárház neve a Azure Container Registryon belül**. Adja meg a rendszerképet tartalmazó Azure Container Registry adattár nevét. Adja meg az adattár nevét, amikor a rendszerképet a beállításjegyzékbe küldi. A tárház nevét a [Container Registry](https://azure.microsoft.com/services/container-registry/)  >  **adattárak** lapon találja. További információ: [a Container Registry-Tárházak megtekintése Azure Portalban](../../container-registry/container-registry-repositories.md).
 
 > [!NOTE]
 > A név beállítása után nem módosítható. Egyedi nevet adjon a fiókjában található összes ajánlathoz.
@@ -370,7 +377,7 @@ A frissítések közzétételekor az ügyfeleknek képesnek kell lenniük automa
 
 Ennek a mezőnek tartalmaznia kell egy **legújabb** címkét, amely a lemezkép legújabb verziójára mutat az összes támogatott platformon. Tartalmaznia kell egy Version címkét is (például a XX. xx. xx-es verziójától kezdődően, ahol XX egy szám). Az ügyfeleknek több platform megcélzásához [jegyzékfájl-címkéket](https://github.com/estesp/manifest-tool) kell használniuk. A jegyzékfájl által hivatkozott összes címkét is fel kell venni, hogy fel lehessen tölteni őket.
 
-Az összes manifest-címkének (kivéve a legújabb címkét) X. Y **-** vagy x. y. Z értékkel kell kezdődnie, ahol az x, y és Z érték egész szám lehet. Ha például egy **legújabb** címke a 1.0.1-Linux-x64, 1.0.1-Linux-arm32 és a 1.0.1-Windows-arm32 értékre mutat, ezt a mezőt fel kell venni a mezőbe. Részletekért lásd: [Az Azure Container műszaki eszközeinek előkészítése](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-technical-assets).
+Az összes manifest-címkének (kivéve a legújabb címkét) X. Y **-** vagy x. y. Z értékkel kell kezdődnie, ahol az x, y és Z érték egész szám lehet. Ha például egy **legújabb** címke a 1.0.1-Linux-x64, 1.0.1-Linux-arm32 és a 1.0.1-Windows-arm32 értékre mutat, ezt a mezőt fel kell venni a mezőbe. Részletekért lásd: [Az Azure Container műszaki eszközeinek előkészítése](create-azure-container-technical-assets.md).
 
 > [!NOTE]
 > Ne feledje, hogy adjon hozzá egy teszt címkét a képhez, hogy a tesztelés során azonosítható legyen a rendszerkép.
@@ -397,4 +404,4 @@ Az ajánlat nyilvános közzétételéhez lépjen a partner Center webhelyre, é
 
 ## <a name="next-step"></a>Következő lépés
 
-- [Meglévő ajánlat frissítése a kereskedelmi piactéren](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer)
+- [Meglévő ajánlat frissítése a kereskedelmi piactéren](update-existing-offer.md)

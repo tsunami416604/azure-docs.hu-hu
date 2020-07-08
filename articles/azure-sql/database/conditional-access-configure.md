@@ -1,8 +1,9 @@
 ---
 title: Feltételes hozzáférés
 description: Megtudhatja, hogyan konfigurálhatja a feltételes hozzáférést Azure SQL Database, az Azure SQL felügyelt példányához és az Azure szinapszis Analytics szolgáltatáshoz.
+titleSuffix: Azure SQL Database & SQL Managed Instance & Azure Synapse Analytics
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: security
 ms.topic: conceptual
 author: GithubMirek
@@ -11,12 +12,12 @@ ms.reviewer: vanto
 ms.custom: sqldbrb=1
 ms.date: 04/28/2020
 tag: azure-synpase
-ms.openlocfilehash: 96ba8dac13e2044d3e561a931e4e8d0760e75050
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 67fef7b192caf064cd7c3b4b6af8923b153ee5b1
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195470"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985346"
 ---
 # <a name="conditional-access-with-azure-sql-database-and-azure-synapse-analytics"></a>Feltételes hozzáférés a Azure SQL Database és az Azure szinapszis Analytics használatával
 

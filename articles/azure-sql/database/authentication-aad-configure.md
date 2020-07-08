@@ -3,7 +3,7 @@ title: Az Azure Active Directory-fiókon alapuló hitelesítés konfigurálása
 titleSuffix: Azure SQL Database & SQL Managed Instance & Azure Synapse Analytics
 description: Megtudhatja, hogyan csatlakozhat a SQL Databasehoz, az SQL felügyelt példányához és az Azure szinapszis Analyticshez Azure Active Directory hitelesítéssel, az Azure AD konfigurálása után.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: security
 ms.custom: azure-synapse, has-adal-ref, sqldbrb=2
 ms.devlang: ''
@@ -12,12 +12,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 03/27/2020
-ms.openlocfilehash: eaad361ba82ee6adf139174c728c2ef9ffa94849
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: f5ef4c701cab8b9e94f89607bf643699e95ccad0
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310903"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85984900"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Azure AD-hitelesítés konfigurálása és kezelése az Azure SQL-sel
 
@@ -188,7 +188,7 @@ Az Azure AD-rendszergazda kiépítéséhez hajtsa végre a következő Azure Pow
 
 Az SQL felügyelt példányához az Azure AD-rendszergazda üzembe helyezéséhez és kezeléséhez használt parancsmagok az alábbi táblázatban láthatók:
 
-| Parancsmag neve | Leírás |
+| Parancsmag neve | Description |
 | --- | --- |
 | [Set-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlinstanceactivedirectoryadministrator) |Kiépít egy Azure AD-rendszergazdát a jelenlegi előfizetésben található SQL felügyelt példányhoz. (Az aktuális előfizetésből kell származnia)|
 | [Remove-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlinstanceactivedirectoryadministrator) |Eltávolít egy Azure AD-rendszergazdát az SQL által felügyelt példányhoz az aktuális előfizetésben. |
@@ -216,7 +216,7 @@ Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGro
 
 Az SQL felügyelt példányához az alábbi CLI-parancsok meghívásával is kiépítheti az Azure AD-rendszergazdát:
 
-| Parancs | Leírás |
+| Parancs | Description |
 | --- | --- |
 |[az SQL mi ad-admin Create](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-create) | Kiépíti az SQL felügyelt példányának Azure Active Directory rendszergazdáját (az aktuális előfizetésből kell származnia). |
 |[az SQL mi ad-admin delete](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-delete) | Eltávolít egy Azure Active Directory rendszergazdát az SQL felügyelt példányához. |
@@ -279,7 +279,7 @@ A PowerShell-parancsmagok futtatásához Azure PowerShell kell telepítenie és 
 
 Az Azure AD-rendszergazdák üzembe helyezéséhez és kezeléséhez használt parancsmagok a SQL Database és az Azure szinapszis számára:
 
-| Parancsmag neve | Leírás |
+| Parancsmag neve | Description |
 | --- | --- |
 | [Set-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlserveractivedirectoryadministrator) |Kiépít egy Azure Active Directory rendszergazdát a SQL Database vagy az Azure szinapszis-t üzemeltető kiszolgáló számára. (Az aktuális előfizetésből kell származnia) |
 | [Remove-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlserveractivedirectoryadministrator) |Eltávolít egy Azure Active Directory rendszergazdát a SQL Database vagy az Azure szinapszis-t futtató kiszolgáló számára.|
@@ -293,7 +293,7 @@ A következő parancsfájl egy **DBA_Group** `40b79501-b343-44ed-9ce7-da4c8cc735
 Set-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -ServerName "demo_server" -DisplayName "DBA_Group"
 ```
 
-A **DisplayName** beviteli paraméter az Azure ad megjelenítendő nevét vagy az egyszerű felhasználónevet is elfogadja. Például: ``DisplayName="John Smith"`` és ``DisplayName="johns@contoso.com"`` . Az Azure AD-csoportok esetében csak az Azure AD megjelenítendő neve támogatott.
+A **DisplayName** beviteli paraméter az Azure ad megjelenítendő nevét vagy az egyszerű felhasználónevet is elfogadja. Például: ``DisplayName="John Smith"`` és ``DisplayName="johns@contoso.com"``. Az Azure AD-csoportok esetében csak az Azure AD megjelenítendő neve támogatott.
 
 > [!NOTE]
 > Az Azure PowerShell parancs ```Set-AzSqlServerActiveDirectoryAdministrator``` nem akadályozza meg, hogy az Azure ad-rendszergazdák kiépítsék a nem támogatott felhasználók számára. Nem támogatott felhasználó is kiépíthető, de nem tud kapcsolódni egy adatbázishoz.
@@ -324,7 +324,7 @@ Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -Se
 
 Az Azure AD-rendszergazdák üzembe helyezéséhez hívja a következő CLI-parancsokat:
 
-| Parancs | Leírás |
+| Parancs | Description |
 | --- | --- |
 |[az SQL Server ad-admin Create](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-create) | Kiépít egy Azure Active Directory rendszergazdát a SQL Database vagy az Azure szinapszis-t üzemeltető kiszolgáló számára. (Az aktuális előfizetésből kell származnia) |
 |[az SQL Server ad-admin delete](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-delete) | Eltávolít egy Azure Active Directory rendszergazdát a SQL Database vagy az Azure szinapszis-t futtató kiszolgáló számára. |
@@ -343,7 +343,7 @@ További információ a CLI-parancsokról: [az SQL Server](/cli/azure/sql/server
 A következő szoftvereket kell telepítenie minden olyan ügyfélszámítógépen, amelyről az alkalmazások vagy a felhasználók az Azure AD-identitások használatával csatlakoznak SQL Database vagy Azure Szinapszishoz:
 
 - A .NET-keretrendszer 4,6-es vagy újabb verziója [https://msdn.microsoft.com/library/5a4x27ek.aspx](https://msdn.microsoft.com/library/5a4x27ek.aspx) .
-- Azure Active Directory hitelesítési könyvtár a SQL Serverhoz (*ADAL. DLL*). Alább láthatók a letöltési hivatkozások, amelyek a ADAL tartalmazó legújabb SSMS, ODBC és OLE DB illesztőprogramot telepítik *. DLL* -függvénytár.
+- SQL Server (*ADAL.DLL*) Azure Active Directory hitelesítési könyvtára. Az alábbi letöltési hivatkozások segítségével telepítheti a *ADAL.DLL* könyvtárat tartalmazó legújabb SSMS, ODBC és OLE DB illesztőprogramot.
   - [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
   - [ODBC-illesztő, 17 SQL Server](https://www.microsoft.com/download/details.aspx?id=56567)
   - [OLE DB 18. illesztőprogram SQL Server](https://www.microsoft.com/download/details.aspx?id=56730)
@@ -351,9 +351,9 @@ A következő szoftvereket kell telepítenie minden olyan ügyfélszámítógép
 Ezeket a követelményeket az alábbiak szerint teljesítheti:
 
 - A [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) vagy [SQL Server Data Tools](/sql/ssdt/download-sql-server-data-tools-ssdt) legújabb verziójának telepítése megfelel a .NET-keretrendszer 4,6-es követelményének.
-  - A SSMS a ADAL x86-os verzióját telepíti *. DLL*.
-  - A SSDT a ADAL amd64 verzióját telepíti *. DLL*.
-  - A [Visual Studio letöltések](https://www.visualstudio.com/downloads/download-visual-studio-vs) legújabb Visual Studio verziója megfelel a .NET-keretrendszer 4,6-es követelményének, de nem telepíti a ADAL szükséges amd64-es verzióját *. DLL*.
+  - A SSMS a *ADAL.DLL*x86-os verzióját telepíti.
+  - A SSDT telepíti a *ADAL.DLL*amd64-es verzióját.
+  - A [Visual Studio letöltések](https://www.visualstudio.com/downloads/download-visual-studio-vs) legújabb Visual Studio verziója megfelel a .NET-keretrendszer 4,6-es követelményének, de nem telepíti a *ADAL.DLL*szükséges amd64-es verzióját.
 
 ## <a name="create-contained-users-mapped-to-azure-ad-identities"></a>Az Azure AD-identitásokhoz hozzárendelt, foglalt felhasználók létrehozása
 

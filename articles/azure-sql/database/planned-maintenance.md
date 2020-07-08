@@ -2,8 +2,8 @@
 title: Az Azure karbantartási eseményeinek tervezése
 description: Megtudhatja, hogyan készítheti elő a tervezett karbantartási eseményeket a Azure SQL Database és az Azure SQL felügyelt példányain.
 services: sql-database
-ms.service: sql-database
-ms.subservice: operations
+ms.service: sql-db-mi
+ms.subservice: service
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: carlrab
 ms.date: 01/30/2019
-ms.openlocfilehash: 524eaa0cfd2137f2b88102bfa5c514d5248cc743
-ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
+ms.openlocfilehash: 5bdc3eb8c118c19f90ce1fd92ac5ee156719dacd
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84718625"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85987208"
 ---
 # <a name="plan-for-azure-maintenance-events-in-azure-sql-database-and-azure-sql-managed-instance"></a>Az Azure karbantartási eseményeinek megtervezése Azure SQL Database és az Azure SQL felügyelt példányain
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]

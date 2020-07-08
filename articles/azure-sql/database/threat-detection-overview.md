@@ -1,9 +1,9 @@
 ---
-title: Advanced Threat Protection
+title: Fejlett fenyegetésvédelem
 titleSuffix: Azure SQL Database, SQL Managed Instance, & Azure Synapse Analytics
 description: A komplex veszélyforrások elleni védelem rendellenes adatbázis-tevékenységeket észlel a Azure SQL Database, az Azure SQL felügyelt példányában és az Azure szinapszis Analyticsben rejlő lehetséges biztonsági fenyegetéseket jelezve.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: security
 ms.devlang: ''
 ms.custom: sqldbrb=2
@@ -13,12 +13,12 @@ ms.author: ronmat
 ms.reviewer: vanto, carlrab
 ms.date: 02/05/2020
 tags: azure-synapse
-ms.openlocfilehash: 351c37d20360518e5cd341fd6e14d25c62e87c08
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 822d4267d5b163ddda50302e2caea5c3ade3b7c4
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84321529"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985371"
 ---
 # <a name="advanced-threat-protection-for-azure-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Komplex veszélyforrások elleni védelem a Azure SQL Database, az SQL felügyelt példánya és az Azure szinapszis Analytics számára
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -63,7 +63,7 @@ Kattintson a komplex **veszélyforrások elleni védelem riasztása** lehetősé
 
    ![Komplex veszélyforrások elleni védelem alert2](./media/threat-detection-overview/threat_detection_alert_atp.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a komplex [veszélyforrások elleni védelemről Azure SQL Database & Azure szinapszisban](threat-detection-configure.md).
 - További információ [az összetett veszélyforrások elleni védelemről az Azure SQL felügyelt példányain](../managed-instance/threat-detection-configure.md).

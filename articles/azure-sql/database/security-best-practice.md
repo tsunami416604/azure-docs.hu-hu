@@ -2,7 +2,7 @@
 title: Forgatókönyv a közös biztonsági követelmények kezeléséhez
 titleSuffix: Azure SQL Database & Azure SQL Managed Instance
 description: Ez a cikk a Azure SQL Database és az Azure SQL felügyelt példányának általános biztonsági követelményeit és ajánlott eljárásait ismerteti
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: security
 ms.custom: sqldbrb=2
 author: VanMSFT
@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: 5a35d9f9ff611576f26a55cb5792bc4b1718bee0
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 8104302afa84446e2d57c7156f33bc0160e31472
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84323841"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85986779"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>A közös biztonsági követelmények kezelése a Azure SQL Database és az Azure SQL felügyelt példányával
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -59,8 +59,6 @@ Ha másként nincs megadva, javasoljuk, hogy kövesse az egyes szakaszokban fels
 - [Microsoft Operational Security Assurance (OSA) eljárások](https://www.microsoft.com/securityengineering/osa/practices): gyakorlat #1 – 6 és #9
 - [NIST speciális kiadvány 800-53 biztonsági vezérlők](https://nvd.nist.gov/800-53): AC-5, AC-6
 - [PCI DSS](https://www.pcisecuritystandards.org/document_library): 6.3.2, 6.4.2
-
-### <a name="feedback"></a>Visszajelzés
 
 Azt tervezzük, hogy továbbra is frissítjük az itt felsorolt ajánlásokat és ajánlott eljárásokat. Adja meg a dokumentum bemenetét vagy helyesbítéseit a cikk alján található **visszajelzési** hivatkozás használatával.
 
@@ -141,7 +139,7 @@ Az Azure Multi-Factor Authentication további biztonságot nyújt azáltal, hogy
   - SQL Server Data Tools (SSDT) által támogatott interaktív hitelesítés használata. Tekintse meg a [SQL Server Data Tools (SSDT) Azure Active Directory támogatását](https://docs.microsoft.com/sql/ssdt/azure-active-directory?view=azuresqldb-current)ismertető cikket.
   - Használjon más, Multi-Factor Authentication támogató SQL-eszközöket.
     - A SSMS varázsló támogatja az adatbázis exportálását/kinyerését és üzembe helyezését  
-    - [sqlpackage. exe](https://docs.microsoft.com/sql/tools/sqlpackage): "/ua" beállítás
+    - [sqlpackage.exe](https://docs.microsoft.com/sql/tools/sqlpackage): "/ua" kapcsoló
     - [Sqlcmd segédprogram](https://docs.microsoft.com/sql/tools/sqlcmd-utility): Option-G (interaktív)
     - [BCP-segédprogram](https://docs.microsoft.com/sql/tools/bcp-utility): Option-G (interaktív)
 
@@ -285,7 +283,7 @@ A feladatok elkülönítése – más néven a vámok elkülönítése – azt a
 
 **Megvalósítás**:
 
-- Azonosítsa a feladatok elkülönítésének szükséges szintjét. Angol nyelvű Példák:
+- Azonosítsa a feladatok elkülönítésének szükséges szintjét. Példák:
   - Fejlesztési, tesztelési és éles környezetek között
   - Biztonság – a bizalmas feladatok és az adatbázis-adminisztrátor (DBA) felügyeleti szintű feladatai és fejlesztői feladatok.
     - Példák: auditor, biztonsági szabályzat létrehozása szerepköralapú biztonsághoz (RLS), SQL Database objektumok implementálása DDL-engedélyekkel.
@@ -800,6 +798,6 @@ A legtöbb biztonsági szabvány a működés folytonossága szempontjából az 
 
 - További üzletmenet-folytonossági funkciók, például automatikus feladatátvételi csoportok a különböző Azure-térségek az itt leírtak szerint konfigurálhatók: [az üzletmenet folytonosságának áttekintése](business-continuity-high-availability-disaster-recover-hadr-overview.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse át [a Azure SQL Database biztonsági funkcióinak áttekintését](security-overview.md)

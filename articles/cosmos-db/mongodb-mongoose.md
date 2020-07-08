@@ -9,12 +9,12 @@ ms.date: 03/20/2020
 author: timsander1
 ms.author: tisande
 ms.custom: seodec18
-ms.openlocfilehash: 05298ac0b76f93ba8249cc72910d33b58a9889e4
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 2ccd352950117d8427809616f78f4a0691319cdf
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85263126"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023669"
 ---
 # <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>Node.js mongúz-alkalmazás összekötése Azure Cosmos DB
 
@@ -194,7 +194,7 @@ Ez a szakasz ismerteti, hogyan érheti el ezt Azure Cosmos DB API-MongoDB. Ez a 
 
 1. Most, hogy bekerül a Azure Portalba, két, Cosmos DBban létrehozott gyűjteményt láthat.
 
-    ![Node.js oktatóanyag – képernyőkép a Azure Portalről, amely egy Azure Cosmos DB fiókot jelenít meg, és több gyűjtemény neve van kiemelve – csomópont-adatbázis][multiple-coll]
+   :::image type="content" source="./media/mongodb-mongoose/mongo-mutliple-collections.png" alt-text="Node.js oktatóanyag – képernyőkép a Azure Portalről, amely egy Azure Cosmos DB fiókot jelenít meg, és több gyűjtemény neve van kiemelve – csomópont-adatbázis":::
 
 1. Végül olvassa el Cosmos DB adatait. Mivel az alapértelmezett Mongoose működési modellt használjuk, az olvasások megegyeznek bármely más Mongoose olvasással.
 
@@ -299,7 +299,7 @@ Itt létrehozunk egy alapszintű objektummodellt, meghatározunk egy megkülönb
 
 1. Ha most visszatér az Azure Portalra, láthatja, hogy egyetlen gyűjteménye van ```alldata``` néven, amelyben a „Family” (Család) és a „VacationDestinations” (Nyaralási úti célok) adatai is szerepelnek.
 
-    ![Node.js oktatóanyag – képernyőkép a Azure Portalról, amely egy Azure Cosmos DB fiókot jelenít meg a kiválasztott gyűjtemény neve – csomópont-adatbázis][alldata]
+   :::image type="content" source="./media/mongodb-mongoose/mongo-collections-alldata.png" alt-text="Node.js oktatóanyag – képernyőkép a Azure Portalról, amely egy Azure Cosmos DB fiókot jelenít meg a kiválasztott gyűjtemény neve – csomópont-adatbázis":::
 
 1. Azt is észreveheti, hogy minden objektum rendelkezik egy másik, ```__type``` nevű attribútummal, amely segít megkülönböztetni a két különböző objektummodellt.
 
@@ -323,6 +323,4 @@ Amint láthatja, a Mongoose diszkriminátorok könnyen használhatók. Tehát ha
 - Ismerje meg, hogyan [használhatja a Robo 3T](mongodb-robomongo.md) -t a Azure Cosmos db API-MongoDB.
 - Ismerkedjen meg a MongoDB- [mintákkal](mongodb-samples.md) Azure Cosmos db API-val a MongoDB.
 
-[alldata]: ./media/mongodb-mongoose/mongo-collections-alldata.png
-[multiple-coll]: ./media/mongodb-mongoose/mongo-mutliple-collections.png
 [dbleveltp]: ./media/mongodb-mongoose/db-level-throughput.png

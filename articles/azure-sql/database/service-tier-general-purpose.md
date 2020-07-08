@@ -3,8 +3,8 @@ title: általános célú szolgáltatási szintet
 titleSuffix: Azure SQL Database & Azure SQL Managed Instance
 description: Ismerkedjen meg a Azure SQL Database és az Azure SQL felügyelt példányának általános célú szolgáltatási szintjével.
 services: sql-database
-ms.service: sql-database
-ms.subservice: service
+ms.service: sql-db-mi
+ms.subservice: features
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 02/07/2019
-ms.openlocfilehash: 9c0e8ea478ada9fa8b899c548abd22e0d5020537
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: ee218253309995e721c97f4a7f7b4547b32f7c36
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84321988"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85986641"
 ---
 # <a name="general-purpose-service-tier---azure-sql-database-and-azure-sql-managed-instance"></a>Általános célú Service réteg-Azure SQL Database és az Azure SQL felügyelt példánya
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -53,7 +53,7 @@ Az adatbázismotor vagy az operációs rendszer frissítésekor az alapul szolg�
 
 A általános célú szolgáltatási szinten a Azure SQL Database és az Azure SQL felügyelt példányának alapértelmezett szolgáltatási szintje, amelyet az általános munkaterhelések többsége számára terveztek. Ha a legtöbb esetben egy teljes körűen felügyelt adatbázismotor 99,99%-os SLA-val, valamint 5 és 10 MS közötti tárolási késéssel rendelkezik, amely megfelel az Azure-beli virtuális gépek SQL Servernek a legtöbb esetben, a általános célú szint az Ön számára.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Megkeresheti az [SQL felügyelt példányában](../managed-instance/resource-limits.md#service-tier-characteristics)található általános célú/standard csomag (magok, I/O, memória) erőforrás-jellemzőit (mag, I/O, memória [), valamint](resource-limits-dtu-single-databases.md#single-database-storage-sizes-and-compute-sizes)a [virtuális mag-modellben](resource-limits-vcore-elastic-pools.md#general-purpose---provisioned-compute---gen4) és a [DTU-modellben](resource-limits-dtu-elastic-pools.md#standard-elastic-pool-limits)található [virtuális mag](resource-limits-vcore-single-databases.md#general-purpose---provisioned-compute---gen4) -modellben vagy rugalmas készletben.
 - Ismerkedjen meg [üzletileg kritikus](service-tier-business-critical.md) -és [nagy kapacitású](service-tier-hyperscale.md) -szintekkel.

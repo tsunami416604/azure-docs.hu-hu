@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: 49b159434497d4b455a338ba88058d73d7de10ee
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 6e853edf5b7ba756aaedceaf59b1f7d1d7e48b39
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773134"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985426"
 ---
 # <a name="solutions-on-azure-virtual-machines"></a>Megoldások az Azure Virtual Machines szolgáltatásban
 
@@ -69,6 +69,9 @@ az vm list-skus
     --size dc 
     --query "[?family=='standardDCSv2Family']"
 ```
+### <a name="dedicated-host-requirements"></a>Dedikált gazdagépekre vonatkozó követelmények
+Ha **Standard_DC8_v2** virtuálisgép-méretet helyez üzembe a DCSv2 sorozatú VM-családban, a teljes gazdagépet elfoglalja, és a többi Bérlővel vagy előfizetéssel nem lesz megosztva. Ez a VM SKU-család biztosítja a szükséges elkülönítést a megfelelőségi és biztonsági szabályozási követelmények teljesítése érdekében, amelyeket általában egy dedikált gazda szolgáltatással lehet elérni. Ha **Standard_DC8_v2** SKU-t választja, a fizikai gazdagép kiosztja az összes rendelkezésre álló hardver-erőforrást, beleértve az EPC memóriát csak a virtuális géphez. Vegye figyelembe, hogy ez a funkció az infrastruktúra megtervezése és a **Standard_DC8_v2** összes funkciója támogatott lesz. Ez a központi telepítés nem azonos az [Azure dedikált gazdagép](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts) szolgáltatásával, amelyet más Azure-beli virtuálisgép-családok is biztosítanak.
+
 
 ## <a name="deployment-considerations"></a>Telepítési szempontok
 

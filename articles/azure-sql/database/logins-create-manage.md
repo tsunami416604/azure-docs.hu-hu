@@ -4,7 +4,7 @@ titleSuffix: Azure SQL Database & SQL Managed Instance & Azure Synapse Analytics
 description: Ismerje meg, hogy a Azure SQL Database, az SQL felügyelt példánya és az Azure szinapszis Hogyan hitelesíti a felhasználókat a bejelentkezések és a felhasználói fiókok használatával való hozzáféréshez. Azt is megtudhatja, hogyan adhat meg adatbázis-szerepköröket és explicit engedélyeket a bejelentkezések és a felhasználók számára a műveletek és a lekérdezési adatok elvégzéséhez.
 keywords: sql database biztonság,adatbázis biztonságának felügyelete,bejelentkezési biztonság,adatbázis biztonsága,adatbázis-hozzáférés
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: security
 ms.custom: sqldbrb=3
 ms.devlang: ''
@@ -13,12 +13,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/23/2020
-ms.openlocfilehash: ebd55151a4b1656ec1187117b7c4b6da9d37e161
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: fbcec1ace45927561c56449cd8ca0c8d3306b3bd
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85298464"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85986283"
 ---
 # <a name="authorize-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Adatbázis-hozzáférés engedélyezése SQL Database, SQL felügyelt példányhoz és az Azure szinapszis Analytics szolgáltatáshoz
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]

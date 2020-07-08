@@ -1,8 +1,9 @@
 ---
 title: Az ügyfél által felügyelt transzparens adattitkosítás (TDE)
 description: Bring Your Own Key (BYOK) transzparens adattitkosítás (TDE) támogatása a SQL Database és az Azure szinapszis Analytics Azure Key Vault használatával. TDE a BYOK áttekintése, előnyei, hogyan működik, megfontolások és javaslatok.
+titleSuffix: Azure SQL Database & SQL Managed Instance & Azure Synapse Analytics
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: security
 ms.custom: seo-lt-2019, azure-synapse
 ms.devlang: ''
@@ -11,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
-ms.openlocfilehash: 51187a81865d9efa098e2c25cccdead01ed6dc74
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 32347f6d943565eeca7c37a9cdd2cf511e39ddb3
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84321308"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985309"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Azure SQL transzparens adattitkosítás ügyfél által felügyelt kulccsal
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -29,6 +30,9 @@ A Azure SQL Database és az Azure szinapszis Analytics esetében a TDE-védő a 
 
 > [!IMPORTANT]
 > Azok a szolgáltatás által felügyelt TDE használó felhasználók, akik az ügyfél által felügyelt TDE szeretnék használni, az adatváltási folyamat során titkosítva maradnak, és az adatbázisfájlok nem lesznek újra titkosítva. Ha egy szolgáltatás által felügyelt kulcsról egy ügyfél által felügyelt kulcsra vált át, csak a ADATTITKOSÍTÁSI kulcsot újratitkosítására van szükség, amely gyors és online művelet.
+
+> [!NOTE]
+> A platform által felügyelt kulcsokkal rendelkező Azure SQL-ügyfelek számára az inaktív adatok titkosításának két rétegét, az infrastruktúra-titkosítást (AES-256 titkosítási algoritmus használatával) végezheti el. Ez egy kiegészítő titkosítási réteget is tartalmaz, amely a TDE és az ügyfél által felügyelt kulcsokkal együtt már elérhető. Ekkor az ügyfeleknek hozzáférést kell kérniük ehhez a képességhez. Ha érdekli ezt a funkciót, forduljon a következőhöz: AzureSQLDoubleEncryptionAtRest@service.microsoft.com .
 
 ## <a name="benefits-of-the-customer-managed-tde"></a>Az ügyfél által felügyelt TDE előnyei
 
@@ -127,7 +131,7 @@ A kulcshoz való hozzáférés visszaállítását követően az adatbázis viss
 
 - Ha a kulcs-hozzáférés 8 órán belül helyreáll, az adatbázis a következő órában automatikusan meggyógyítható.
 
-- Ha a kulcshoz való hozzáférés 8 óránál hosszabb idő után helyreáll, az automatikus gyógyulás nem lehetséges, és az adatbázis visszaállítása további lépéseket igényel a portálon, és az adatbázis méretétől függően jelentős időt vehet igénybe. Miután az adatbázis ismét online állapotba került, korábban konfigurálta a kiszolgálói szintű beállításokat, például a [feladatátvételi csoport](auto-failover-group-overview.md) konfigurációját, az időponthoz tartozó visszaállítási előzményeket, a címkék pedig **elvesznek**. Ezért javasoljuk olyan értesítési rendszer megvalósítását, amely lehetővé teszi, hogy 8 órán belül azonosítsa és kezelje az alapul szolgáló kulcsfontosságú hozzáférési problémákat.
+- Ha a rendszer 8 óránál hosszabb idő után állítja vissza a kulcsot, az automatikus javítás nem lehetséges, az adatbázis visszaállításához további lépésekre van szükség a portálon, és a folyamat az adatbázis méretétől függően jelentős időmennyiséget vehet igénybe. Miután az adatbázis ismét online állapotba került, korábban konfigurálta a kiszolgálói szintű beállításokat, például a [feladatátvételi csoport](auto-failover-group-overview.md) konfigurációját, az időponthoz tartozó visszaállítási előzményeket, a címkék pedig **elvesznek**. Ezért javasoljuk olyan értesítési rendszer megvalósítását, amely lehetővé teszi, hogy 8 órán belül azonosítsa és kezelje az alapul szolgáló kulcsfontosságú hozzáférési problémákat.
 
 ### <a name="accidental-tde-protector-access-revocation"></a>Véletlen TDE-védő hozzáférés visszavonása
 
@@ -196,7 +200,7 @@ Ha el szeretné kerülni, hogy a kulcsfontosságú anyagok hiányában a Geo-rep
 
 A feladatátvétel teszteléséhez kövesse az [aktív geo-replikáció áttekintése](active-geo-replication-overview.md)című témakör lépéseit. A feladatátvételi tesztet rendszeresen kell elvégezni annak ellenőrzéséhez, hogy a SQL Database megőrizte-e a Key vaultok hozzáférési engedélyét.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő PowerShell-parancsfájlokat is érdemes megtekinteni az ügyfél által felügyelt TDE tartozó általános műveletekhez:
 
