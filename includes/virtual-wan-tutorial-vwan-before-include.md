@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -9,14 +9,14 @@ ms.date: 09/12/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 945d701a2a7dffc259c601b4dab9fa1333ccc066
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74896614"
 ---
 A konfiguráció elindítása előtt ellenőrizze, hogy teljesülnek-e az alábbi feltételek:
 
 * Ha már rendelkezik olyan virtuális hálózattal, amelyhez csatlakozni szeretne, ellenőrizze, hogy a helyszíni hálózat egyik alhálózata sem fedi-e egymást. A virtuális hálózat nem igényel átjáró-alhálózatot, és nem rendelkezhet virtuális hálózati átjárókkal. Ha nem rendelkezik virtuális hálózattal, létrehozhat egyet a cikkben ismertetett lépések segítségével.
 * Igényeljen egy IP-címtartományt az elosztó régiójában. A hub egy virtuális hálózat, és a hub-régióhoz megadott címtartomány nem fedi át a meglévő virtuális hálózatot, amelyhez csatlakozik. Nem fedi átfedésben a helyszíni kapcsolatokhoz kapcsolódó címtartományt is. Ha nem ismeri a helyszíni hálózati konfigurációjában található IP-címtartományok körét, akkor egyeztessen valakivel, aki ezeket az adatokat megadhatja Önnek.
-* Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+* Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).

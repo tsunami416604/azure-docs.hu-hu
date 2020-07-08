@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -9,10 +9,10 @@ ms.date: 04/08/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 0df74b82c847c9738d97d2001573666714c17672
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81008340"
 ---
 ## <a name="limitations"></a>Korlátozások
@@ -27,12 +27,12 @@ ms.locfileid: "81008340"
 
 ### <a name="deploy-a-premium-ssd-as-a-shared-disk"></a>Prémium SSD üzembe helyezése megosztott lemezként
 
-Ha olyan felügyelt lemezt kíván üzembe helyezni, amelyen engedélyezve van a megosztott lemez szolgáltatás `maxShares` , használja az új tulajdonságot, és adjon meg egy 1-nél nagyobb értéket. Így a lemez több virtuális gépen is megosztható.
+Ha olyan felügyelt lemezt kíván üzembe helyezni, amelyen engedélyezve van a megosztott lemez szolgáltatás, használja az új tulajdonságot, `maxShares` és adjon meg egy 1-nél nagyobb értéket. Így a lemez több virtuális gépen is megosztható.
 
 > [!IMPORTANT]
-> A értéke `maxShares` csak akkor állítható be vagy módosítható, ha egy lemez le van választva az összes virtuális gépről. Tekintse meg az engedélyezett értékek [lemezének méretét](#disk-sizes) `maxShares`.
+> A értéke `maxShares` csak akkor állítható be vagy módosítható, ha egy lemez le van választva az összes virtuális gépről. Tekintse meg az engedélyezett értékek [lemezének méretét](#disk-sizes) `maxShares` .
 
-A következő sablon használata előtt cserélje le `[parameters('dataDiskName')]` `[resourceGroup().location]` `[parameters('dataDiskSizeGB')]`a, a, `[parameters('maxShares')]` a és a értéket a saját értékeire.
+A következő sablon használata előtt cserélje le a, a, a `[parameters('dataDiskName')]` `[resourceGroup().location]` és a `[parameters('dataDiskSizeGB')]` `[parameters('maxShares')]` értéket a saját értékeire.
 
 ```json
 { 
@@ -77,10 +77,10 @@ A következő sablon használata előtt cserélje le `[parameters('dataDiskName'
 
 #### <a name="cli"></a>parancssori felület
 
-Ha olyan felügyelt lemezt kíván üzembe helyezni, amelyen engedélyezve van a megosztott `maxShares` lemez szolgáltatás, módosítsa a paramétert 1-nél nagyobb értékre. Így a lemez több virtuális gépen is megosztható.
+Ha olyan felügyelt lemezt kíván üzembe helyezni, amelyen engedélyezve van a megosztott lemez szolgáltatás, módosítsa a `maxShares` paramétert 1-nél nagyobb értékre. Így a lemez több virtuális gépen is megosztható.
 
 > [!IMPORTANT]
-> A értéke `maxShares` csak akkor állítható be vagy módosítható, ha egy lemez le van választva az összes virtuális gépről. Tekintse meg az engedélyezett értékek [lemezének méretét](#disk-sizes) `maxShares`.
+> A értéke `maxShares` csak akkor állítható be vagy módosítható, ha egy lemez le van választva az összes virtuális gépről. Tekintse meg az engedélyezett értékek [lemezének méretét](#disk-sizes) `maxShares` .
 
 ```azurecli
 #Creating an Ultra shared Disk 
@@ -95,12 +95,12 @@ az disk show -g rg1 -n clidisk
 
 #### <a name="azure-resource-manager"></a>Azure Resource Manager
 
-Ha a megosztott lemez funkciót engedélyező felügyelt lemezt kíván telepíteni, használja a `maxShares` tulajdonságot, és adjon meg egy 1-nél nagyobb értéket. Így a lemez több virtuális gépen is megosztható.
+Ha a megosztott lemez funkciót engedélyező felügyelt lemezt kíván telepíteni, használja a tulajdonságot, `maxShares` és adjon meg egy 1-nél nagyobb értéket. Így a lemez több virtuális gépen is megosztható.
 
 > [!IMPORTANT]
-> A értéke `maxShares` csak akkor állítható be vagy módosítható, ha egy lemez le van választva az összes virtuális gépről. Tekintse meg az engedélyezett értékek [lemezének méretét](#disk-sizes) `maxShares`.
+> A értéke `maxShares` csak akkor állítható be vagy módosítható, ha egy lemez le van választva az összes virtuális gépről. Tekintse meg az engedélyezett értékek [lemezének méretét](#disk-sizes) `maxShares` .
 
-A következő sablon használata előtt cserélje le `[parameters('dataDiskName')]` `[resourceGroup().location]` `[parameters('dataDiskSizeGB')]` `[parameters('maxShares')]` `[parameters('diskIOPSReadWrite')]` `[parameters('diskMBpsReadWrite')]` `[parameters('diskIOPSReadOnly')]`a,,,,,, és `[parameters('diskMBpsReadOnly')]` értéket a saját értékeire.
+A következő sablon használata előtt cserélje le a,,,,,, `[parameters('dataDiskName')]` `[resourceGroup().location]` `[parameters('dataDiskSizeGB')]` `[parameters('maxShares')]` `[parameters('diskIOPSReadWrite')]` `[parameters('diskMBpsReadWrite')]` `[parameters('diskIOPSReadOnly')]` és `[parameters('diskMBpsReadOnly')]` értéket a saját értékeire.
 
 ```json
 {
@@ -170,7 +170,7 @@ A következő sablon használata előtt cserélje le `[parameters('dataDiskName'
 
 ### <a name="using-azure-shared-disks-with-your-vms"></a>Az Azure-beli megosztott lemezek használata a virtuális gépekkel
 
-Miután telepített egy megosztott lemezt a használatával `maxShares>1`, csatlakoztathatja a lemezt egy vagy több virtuális géphez.
+Miután telepített egy megosztott lemezt a `maxShares>1` használatával, csatlakoztathatja a lemezt egy vagy több virtuális géphez.
 
 > [!IMPORTANT]
 > A lemezt megosztó virtuális gépeket ugyanabban a [közelségi elhelyezési csoportban](../articles/virtual-machines/windows/proximity-placement-groups.md)kell telepíteni.

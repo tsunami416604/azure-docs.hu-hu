@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/14/2019
 ms.author: glenga
 ms.openlocfilehash: 1c2196f1f834002b76dbea555b54a5162655ec1c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77205695"
 ---
 ## <a name="local-settings-file"></a>Local settings file (Helyi beállításfájl)
@@ -37,7 +37,7 @@ A (z) local.settings.jsfájl tárolja az Alkalmazásbeállítások, a kapcsolato
 
 Ezek a beállítások akkor támogatottak, ha helyileg futtatja a projekteket:
 
-| Beállítás      | Leírás                            |
+| Beállítás      | Description                            |
 | ------------ | -------------------------------------- |
 | **`IsEncrypted`** | Ha ez a beállítás a értékre van beállítva `true` , az összes érték helyi számítógép kulccsal lesz titkosítva. `func settings`Parancsokkal használható. Az alapértelmezett érték: `false` . |
 | **`Values`** | Az Alkalmazásbeállítások és a kapcsolódási karakterláncok tömbje, amely akkor használatos, amikor egy projekt helyileg fut. Ezek a kulcs-érték (String-String) párok megfelelnek az Azure-beli Function alkalmazás beállításainak, például: [`AzureWebJobsStorage`] . Számos eseményindító és kötés olyan tulajdonsággal rendelkezik, amely egy kapcsolati karakterlánc-alkalmazásra vonatkozó beállításra hivatkozik, például `Connection` a [blob Storage eseményindítóhoz](../articles/azure-functions/functions-bindings-storage-blob-trigger.md#configuration). Ezen tulajdonságok esetében a tömbben definiált Alkalmazásbeállítás szükséges `Values` . <br/>[`AzureWebJobsStorage`]a kötelező Alkalmazásbeállítások a HTTP-n kívüli eseményindítók esetében. <br/>A functions Runtime 2. x és újabb verziójához a [ `FUNCTIONS_WORKER_RUNTIME` ] beállítás szükséges, amelyet a projekthez a Core Tools generál. <br/> Ha az [Azure Storage-emulátor](../articles/storage/common/storage-use-emulator.md) helyileg van telepítve, és a értékre van állítva [`AzureWebJobsStorage`] `UseDevelopmentStorage=true` , a Core Tools az emulátort használja. Az emulátor a fejlesztés során hasznos, de a telepítés előtt tesztelni kell egy tényleges tárolási kapcsolatban.<br/> Az értékeknek karakterláncnak és nem JSON-objektumoknak vagy tömböknek kell lenniük. A nevek beállítása nem tartalmazhat kettőspontot ( `:` ) vagy dupla aláhúzást ( `__` ). Ezeket a karaktereket a futtatókörnyezet foglalta le.  |

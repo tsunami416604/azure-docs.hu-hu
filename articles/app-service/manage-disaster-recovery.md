@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 06/09/2020
 ms.custom: subject-moving-resources
 ms.openlocfilehash: 8c57cf5054bea898370cdccc7bea4243877d27b5
-ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84947077"
 ---
 # <a name="move-an-app-service-app-to-another-region"></a>App Service alkalmazás áthelyezése másik régióba
@@ -47,7 +47,7 @@ Bizonyos erőforrások, például az importált tanúsítványok vagy a hibrid k
 
 1. A **biztonsági mentés visszaállítása** lapon konfigurálja a visszaállítási műveletet az alábbi táblázat szerint. Ha elkészült, kattintson **az OK**gombra.
 
-   | Beállítás | Érték | Leírás |
+   | Beállítás | Érték | Description |
    |-|-|-|
    | **Pillanatkép (előzetes verzió)** | Válasszon ki egy pillanatképet. | A két legutóbbi pillanatkép elérhető. |
    | **Cél visszaállítása** | **Meglévő alkalmazás** | Kattintson a lenti megjegyzésre, és **kattintson ide a visszaállítási cél alkalmazás módosításához** , és válassza ki a kívánt alkalmazást. Katasztrófa esetén a pillanatképet csak egy másik Azure-régióban lévő alkalmazásra lehet visszaállítani. |

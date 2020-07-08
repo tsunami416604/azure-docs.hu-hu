@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 06/15/2020
 ms.openlocfilehash: 146deba7a0ef1e0dc5ffe03f9ad414e752058274
-ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84945375"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Mi figyeli a Azure Monitor?
@@ -23,7 +23,7 @@ Az alapvető megállapítások és megoldások a Azure Monitor részét képezik
 
 Az egyes alkalmazásokhoz és szolgáltatásokhoz testreszabott figyelési funkciókkal szolgálnak. A naplók és a metrikák összegyűjtését és elemzését végzik.
 
-| Elemzések | Leírás |
+| Elemzések | Description |
 |:---|:---|
 | [Application Insights](app/app-insights-overview.md) | Bővíthető Application Performance Management (APM) szolgáltatás az élő webalkalmazások bármely platformon való figyeléséhez. |
 | [Azure Monitor tárolók számára](insights/container-insights-overview.md) | Az Azure Kubernetes Service (ak) szolgáltatásban üzemeltetett Azure Container Instances vagy felügyelt Kubernetes-fürtökön üzembe helyezett tároló-munkaterhelések teljesítményét figyeli. |
@@ -40,7 +40,7 @@ Az egyes alkalmazásokhoz és szolgáltatásokhoz testreszabott figyelési funkc
 
 A megoldások egy adott alkalmazáshoz vagy szolgáltatáshoz testreszabott naplózási lekérdezéseken és nézeteken alapulnak. Csak a naplók gyűjtésére és elemzésére szolgálnak, és az elemzések során időben elavultak.
 
-| Megoldás | Leírás |
+| Megoldás | Description |
 |:---|:---|
 | [Ügynök állapota](insights/solution-agenthealth.md) | Log Analytics ügynökök állapotának és konfigurációjának elemzése. |
 | [Riasztások kezelése](platform/alert-management-solution.md) | System Center Operations Manager, Nagios vagy Zabbix által gyűjtött riasztások elemzése. |
@@ -111,12 +111,12 @@ A következő táblázat az Azure-szolgáltatásokat és a Azure Monitorbe gyűj
 |ExpressRoute | Igen | Igen | No |  |
 |Firewall | Igen | Igen | No |  |
 |Front Door | Igen | Igen | No |  |
-|Függvények | Igen | Igen | No |  |
+|Functions | Igen | Igen | No |  |
 |HDInsight | No | Yes | No |  |
 |HPC Cache | Nem | Nem | Nem |  |
 |Information Protection | No | Yes | No |  |
 |Intune | No | Yes | No |  |
-|IoT Central | Nem | Nem | Nem |  |
+|IoT-központ | Nem | Nem | Nem |  |
 |IoT Hub | Igen | Igen | No |  |
 |Key Vault | Igen | Igen | [Igen](insights/key-vaults-insights-overview.md) |  |
 |Kubernetes Service (AKS) | No | Nem | [Igen](insights/container-insights-overview.md)  |  |
@@ -155,7 +155,7 @@ A következő táblázat az Azure-szolgáltatásokat és a Azure Monitorbe gyűj
 |SQL Database | Igen | Igen | No |  |
 |SQL Server Stretch Database | Igen | Igen | No |  |
 |Verem | Nem | Nem | Nem |  |
-|Tárolás | Yes | No | [Igen](insights/storage-insights-overview.md) |  |
+|Storage | Yes | No | [Igen](insights/storage-insights-overview.md) |  |
 |Tárolási gyorsítótár | Nem | Nem | Nem |  |
 |Storage Sync Services | Nem | Nem | Nem |  |
 |Stream Analytics | Igen | Igen | No |  |
@@ -174,7 +174,7 @@ A következő táblázat az Azure-szolgáltatásokat és a Azure Monitorbe gyűj
 ## <a name="product-integrations"></a>Termék-integrációk
 Az alábbi táblázatban szereplő szolgáltatások és megoldások egy Log Analytics munkaterületen tárolják az adatokat, így a Azure Monitor által gyűjtött egyéb naplózási adatokkal is elemezhetők.
 
-| Termék/szolgáltatás | Leírás |
+| Termék/szolgáltatás | Description |
 |:---|:---|
 | [Azure Automation](/azure/automation/) | Az operációs rendszer frissítéseinek kezelése és a változások nyomon követése Windows és Linux rendszerű számítógépeken. Lásd: [change Tracking](../automation/change-tracking.md) és [Update Management](../automation/automation-update-management.md). |
 | [Azure Information Protection](https://docs.microsoft.com/azure/information-protection/) | A dokumentumok és e-mailek besorolása és opcionális védelemmel való ellátása. Lásd: [Azure Information Protection központi jelentéskészítése](https://docs.microsoft.com/azure/information-protection/reports-aip#configure-a-log-analytics-workspace-for-the-reports). |
@@ -196,7 +196,7 @@ Az alábbi táblázatban szereplő szolgáltatások és megoldások egy Log Anal
 ## <a name="other-solutions"></a>Egyéb megoldások
 Más megoldások is elérhetők különböző alkalmazások és szolgáltatások figyelésére, de az aktív fejlesztés leállt, és előfordulhat, hogy az összes régióban nem érhető el. Ezeket az Azure Log Analytics adatfeldolgozási szolgáltatói szerződése szabályozza.
 
-| Megoldás | Leírás |
+| Megoldás | Description |
 |:---|:---|
 | [Active Directory állapot-ellenőrzési](insights/ad-assessment.md) | A Active Directory környezetek kockázatának és állapotának felmérése. |
 | [Active Directory replikáció állapota](insights/ad-replication-status.md) | Rendszeresen figyeli a Active Directory környezetet bármilyen replikációs hiba esetén. |
@@ -210,7 +210,7 @@ Más megoldások is elérhetők különböző alkalmazások és szolgáltatások
 
 ## <a name="third-party-integration"></a>Harmadik féltől származó integráció
 
-| Megoldás | Leírás |
+| Megoldás | Description |
 |:---|:---|
 | [ITSM](platform/itsmc-overview.md) | Az IT Service Management-összekötő (ITSMC) lehetővé teszi, hogy az Azure-t egy támogatott IT Service Management- (ITSM-) termékhez/szolgáltatáshoz kapcsolja.  |
 

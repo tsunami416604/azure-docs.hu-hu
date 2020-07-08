@@ -6,10 +6,10 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/21/2020
 ms.openlocfilehash: 469b402c694bcfae5a826c03ea35dbef2c365148
-ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84945409"
 ---
 # <a name="explore-azure-monitor-for-azure-cache-for-redis-preview"></a>Ismerkedés az Azure cache Azure Monitor Redis (előzetes verzió)
@@ -23,7 +23,7 @@ Az Azure cache for Redis (előzetes verzió) Redis Azure Monitor-erőforrásaiho
 
 Ez a cikk segít megérteni az új figyelési élmény előnyeit. Azt is bemutatja, hogyan lehet módosítani és alkalmazkodni a felhasználói élményhez, hogy illeszkedjenek a szervezet egyedi igényeihez.
 
-## <a name="introduction"></a>Bevezetés
+## <a name="introduction"></a>Introduction (Bevezetés)
 
 A felhasználói élmény megkezdése előtt tisztában kell lennie azzal, hogy az Azure cache Azure Monitor for Redis vizuálisan hogyan jeleníti meg az információkat.
 
@@ -79,7 +79,7 @@ Ha a kék színnel jelölt Redis-erőforráshoz az Azure cache elemet választja
 - **Gyorsítótár-tévesztések**
 - **Hibák (max.)**
 
-### <a name="operations"></a>Üzemeltetés
+### <a name="operations"></a>Műveletek
 
 Amikor kiválasztja a **műveletek** elemet a lap tetején, megnyílik a munkafüzet sablonjának **műveleti** táblázata. Ezeket az oszlopokat jeleníti meg:
 

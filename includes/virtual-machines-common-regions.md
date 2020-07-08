@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
@@ -9,10 +9,10 @@ ms.date: 05/28/2019
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 5e3f25727204343de107bacb9fc99d6cfb77d76f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76020917"
 ---
 Fontos átlátni, hogy a virtuális gépek hol és hogyan működnek az Azure-ban, illetve hogy a teljesítmény, a rendelkezésre állás és a redundancia maximalizálása terén milyen lehetőségek vannak. Ez a cikk az Azure rendelkezésre állással és redundanciával kapcsolatos szolgáltatásairól nyújt áttekintést.
@@ -74,8 +74,8 @@ A következő táblázat a tárreplikáció típusai közötti különbségek r�
 
 | Replikációs stratégia | LRS | ZRS | GRS | RA-GRS |
 |:--- |:--- |:--- |:--- |:--- |
-| A rendszer több intézményben replikálja az adatokat. |Nem |Igen |Igen |Igen |
-| Az adatok a másodlagos és az elsődleges helyről is olvashatók. |Nem |Nem |Nem |Igen |
+| A rendszer több intézményben replikálja az adatokat. |No |Igen |Igen |Igen |
+| Az adatok a másodlagos és az elsődleges helyről is olvashatók. |Nem |Nem |Nem |Yes |
 | A külön csomópontokon fenntartott adatmásolatok száma. |3 |3 |6 |6 |
 
 [Az Azure tárreplikációs lehetőségeiről itt](../articles/storage/common/storage-redundancy.md) olvashat bővebben. További információ a felügyelt lemezekről: [Azure Managed Disks – áttekintés](../articles/virtual-machines/windows/managed-disks-overview.md).
