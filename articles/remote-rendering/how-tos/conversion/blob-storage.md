@@ -6,10 +6,9 @@ ms.author: jakras
 ms.date: 02/04/2020
 ms.topic: how-to
 ms.openlocfilehash: 6f0605077bd131c54f27e3bf46240331557fd92e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80681648"
 ---
 # <a name="use-azure-blob-storage-for-model-conversion"></a>Modellek átalakítása az Azure Blob Storage használatával
@@ -27,7 +26,7 @@ A [modell-átalakítási](model-conversion.md) szolgáltatáshoz hozzáférésse
 
 A Storage-fiók és a blob-tárolók létrehozása a következő eszközök egyikével végezhető el:
 
-- [Azure Portal](https://portal.azure.com)
+- [Azure Portalra](https://portal.azure.com)
 - [az Command Line](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 - [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
 - SDK-k (C#, Python...)
@@ -57,7 +56,7 @@ SAS URI-t az alábbiak egyikével lehet létrehozni:
   - kattintson a jobb gombbal a tároló "közös hozzáférési aláírás beolvasása" elemre (olvasás, hozzáférés listázása beviteli tárolóhoz, írási hozzáférés a kimeneti tárolóhoz)
 - SDK-k (C#, Python...)
 
-Egy példa a közös hozzáférésű aláírások használatára az eszköz átalakításában a [PowerShell-példa parancsfájljainak](../../samples/powershell-example-scripts.md#script-conversionps1)átalakítás. ps1 részében látható.
+Példa a közös hozzáférési aláírások eszköz-átalakításban való használatára a [PowerShell-példa parancsfájljainak](../../samples/powershell-example-scripts.md#script-conversionps1)Conversion.ps1.
 
 ## <a name="upload-an-input-model"></a>Bemeneti modell feltöltése
 
@@ -70,7 +69,7 @@ A modellek átalakításának megkezdéséhez fel kell töltenie azt a következ
 - [Storage SDK használata (Python, C#...)](https://docs.microsoft.com/azure/storage/)
 - [Az Azure Storage REST API-k használata](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api)
 
-Az adatok átalakítására való feltöltésre példaként tekintse meg a [PowerShell-példa parancsfájljainak](../../samples/powershell-example-scripts.md#script-conversionps1)Conversion. ps1 kiterjesztését.
+Az adatok átalakítására való feltöltésre példaként tekintse meg a PowerShell- [példa parancsfájljainak](../../samples/powershell-example-scripts.md#script-conversionps1)Conversion.ps1.
 
 ## <a name="get-a-sas-uri-for-the-converted-model"></a>SAS URI beszerzése az átalakított modellhez
 

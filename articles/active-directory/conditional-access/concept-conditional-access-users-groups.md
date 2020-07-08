@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 17312e44714c8bdb20e22ad9aeb950e46eb71e3e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80755252"
 ---
 # <a name="conditional-access-users-and-groups"></a>Feltételes hozzáférés: felhasználók és csoportok
@@ -36,7 +35,7 @@ A feltételes hozzáférési szabályzat létrehozásakor a következő beállí
    - Minden olyan felhasználó, aki szerepel a címtárban, beleértve a B2B vendégeket is.
 - Felhasználók és csoportok kiválasztása
    - Minden vendég és külső felhasználó
-      - Ez a beállítás tartalmazza a B2B-vendégeket és a külső felhasználókat, `user type` beleértve az attribútummal rendelkező összes felhasználót `guest`. Ez a kijelölés minden olyan külső felhasználóra érvényes, amely egy másik szervezettől, például egy felhőalapú megoldás-szolgáltatótól (CSP) bejelentkezett. 
+      - Ez a beállítás tartalmazza a B2B-vendégeket és a külső felhasználókat, beleértve az attribútummal rendelkező összes felhasználót `user type` `guest` . Ez a kijelölés minden olyan külső felhasználóra érvényes, amely egy másik szervezettől, például egy felhőalapú megoldás-szolgáltatótól (CSP) bejelentkezett. 
    - Címtárbeli szerepkörök
       - Lehetővé teszi a rendszergazdák számára, hogy kiválasszanak bizonyos Azure AD-címtárbeli szerepköröket a hozzárendelés meghatározásához. Előfordulhat például, hogy a szervezetek szigorúbb házirendet hoznak létre a globális rendszergazdai szerepkörrel rendelkező felhasználók számára.
    - Felhasználók és csoportok
@@ -52,7 +51,7 @@ Ha a szervezetek egyaránt tartalmaznak és kizárnak egy felhasználót vagy cs
 A feltételes hozzáférési szabályzat létrehozásakor a következő beállítások választhatók ki.
 
 - Minden vendég és külső felhasználó
-   - Ez a beállítás tartalmazza a B2B-vendégeket és a külső felhasználókat, `user type` beleértve az attribútummal rendelkező összes felhasználót `guest`. Ez a kijelölés minden olyan külső felhasználóra érvényes, amely egy másik szervezettől, például egy felhőalapú megoldás-szolgáltatótól (CSP) bejelentkezett. 
+   - Ez a beállítás tartalmazza a B2B-vendégeket és a külső felhasználókat, beleértve az attribútummal rendelkező összes felhasználót `user type` `guest` . Ez a kijelölés minden olyan külső felhasználóra érvényes, amely egy másik szervezettől, például egy felhőalapú megoldás-szolgáltatótól (CSP) bejelentkezett. 
 - Címtárbeli szerepkörök
    - Lehetővé teszi a rendszergazdák számára, hogy kiválasszanak bizonyos Azure AD-címtárbeli szerepköröket a hozzárendelés meghatározásához. Előfordulhat például, hogy a szervezetek szigorúbb házirendet hoznak létre a globális rendszergazdai szerepkörrel rendelkező felhasználók számára.
 - Felhasználók és csoportok

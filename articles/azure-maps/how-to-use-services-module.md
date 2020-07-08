@@ -9,21 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.openlocfilehash: 6e9d1f35d021c3381f9c2887dfb1c150bb720871
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80804656"
 ---
 # <a name="use-the-azure-maps-services-module"></a>A Azure Maps Services modul használata
 
-A Azure Maps web SDK egy *Services modult*biztosít. Ez a modul egy segítő könyvtár, amely megkönnyíti a Azure Maps REST-szolgáltatások használatát a web-vagy Node. js-alkalmazásokban JavaScript vagy írógéppel használatával.
+A Azure Maps web SDK egy *Services modult*biztosít. Ez a modul egy segítő könyvtár, amely megkönnyíti a Azure Maps REST-szolgáltatások használatát a webes vagy Node.js alkalmazásokban JavaScript vagy írógéppel használatával.
 
 ## <a name="use-the-services-module-in-a-webpage"></a>Weblapon található szolgáltatások modul használata
 
 1. Hozzon létre egy új HTML-fájlt.
 1. Töltse be a Azure Maps Services modult. Kétféleképpen is betöltheti:
-    - Használja az Azure Maps Services modul globálisan üzemeltetett, Azure Content Delivery Network verzióját. Adjon hozzá egy parancsfájl-hivatkozást `<head>` a fájl eleméhez:
+    - Használja az Azure Maps Services modul globálisan üzemeltetett, Azure Content Delivery Network verzióját. Adjon hozzá egy parancsfájl-hivatkozást a `<head>` fájl eleméhez:
 
         ```html
         <script src="https://atlas.microsoft.com/sdk/javascript/service/2/atlas-service.min.js"></script>
@@ -160,7 +159,7 @@ A Azure Maps web SDK egy *Services modult*biztosít. Ez a modul egy segítő kö
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="A szolgáltatások modul használata" src="//codepen.io/azuremaps/embed/zbXGMR/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Tekintse meg a tollat a <a href='https://codepen.io/azuremaps/pen/zbXGMR/'>szolgáltatások modullal</a> Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() használatával a <a href='https://codepen.io'>CodePen</a>.
+Tekintse meg a tollat a <a href='https://codepen.io/azuremaps/pen/zbXGMR/'>szolgáltatások modullal</a> Azure Maps () használatával a <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 <br/>
@@ -169,7 +168,7 @@ Tekintse meg a tollat a <a href='https://codepen.io/azuremaps/pen/zbXGMR/'>szolg
 
 A Azure Maps web SDK támogatja a Azure Government-felhőt. A Azure Maps web SDK eléréséhez használt összes JavaScript és CSS URL-cím változatlan marad, azonban a következő feladatokat kell elvégezni a Azure Maps platform Azure Government Cloud-verziójához való kapcsolódáshoz.
 
-Az interaktív térkép vezérlőelem használatakor adja hozzá a következő kódrészletet az `Map` osztály egy példányának létrehozása előtt. 
+Az interaktív térkép vezérlőelem használatakor adja hozzá a következő kódrészletet az osztály egy példányának létrehozása előtt `Map` . 
 
 ```javascript
 atlas.setDomain('atlas.azure.us');
@@ -177,13 +176,13 @@ atlas.setDomain('atlas.azure.us');
 
 Győződjön meg arról, hogy a Térkép és a szolgáltatások hitelesítése során Azure Maps hitelesítési adatokat használ a Azure Government Cloud platformon.
 
-A szolgáltatások modul használatakor a szolgáltatás tartományát be kell állítani az API URL-végpontok példányának létrehozásakor. A következő kód például létrehozza a `SearchURL` osztály egy példányát, és a tartományt a Azure Government felhőre mutat.
+A szolgáltatások modul használatakor a szolgáltatás tartományát be kell állítani az API URL-végpontok példányának létrehozásakor. A következő kód például létrehozza a osztály egy példányát, `SearchURL` és a tartományt a Azure Government felhőre mutat.
 
 ```javascript
 var searchURL = new atlas.service.SearchURL(pipeline, 'atlas.azure.us');
 ```
 
-Ha közvetlenül fér hozzá a Azure Maps REST-szolgáltatásokhoz, módosítsa az `atlas.azure.us`URL-tartományt a következőre:. Ha például a Search API szolgáltatást használja, módosítsa az URL-tartományt a `https://atlas.microsoft.com/search/` következőre `https://atlas.azure.us/search/`:.
+Ha közvetlenül fér hozzá a Azure Maps REST-szolgáltatásokhoz, módosítsa az URL-tartományt a következőre: `atlas.azure.us` . Ha például a Search API szolgáltatást használja, módosítsa az URL-tartományt a következőre: `https://atlas.microsoft.com/search/` `https://atlas.azure.us/search/` .
 
 ## <a name="next-steps"></a>További lépések
 

@@ -6,10 +6,9 @@ ms.author: flborn
 ms.date: 03/09/2020
 ms.topic: article
 ms.openlocfilehash: e3acfc15b0c12822e48009bef4aabadac701fb2d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80680075"
 ---
 # <a name="the-arrinspector-inspection-tool"></a>Az ArrInspector ellenőrző eszköz
@@ -20,20 +19,20 @@ A ArrInspector egy webalapú eszköz, amely egy futó Azure távoli renderelési
 
 ## <a name="connecting-to-the-arrinspector"></a>Csatlakozás a ArrInspector
 
-Miután megszerezte az ARR- `mixedreality.azure.com`kiszolgáló hostname (végződés) értékét, kapcsolódjon a [ConnectToArrInspectorAsync](../../how-tos/frontend-apis.md#connect-to-arr-inspector)használatával. Ez a függvény létrehoz `StartArrInspector.html` egy eszközt azon az eszközön, amelyen az alkalmazás fut. A ArrInspector elindításához nyissa meg a fájlt egy böngészőben (Edge, Firefox vagy Chrome) egy számítógépen. A fájl csak 24 órán keresztül érvényes.
+Miután megszerezte az ARR-kiszolgáló hostname (végződés `mixedreality.azure.com` ) értékét, kapcsolódjon a [ConnectToArrInspectorAsync](../../how-tos/frontend-apis.md#connect-to-arr-inspector)használatával. Ez a függvény létrehoz egy `StartArrInspector.html` eszközt azon az eszközön, amelyen az alkalmazás fut. A ArrInspector elindításához nyissa meg a fájlt egy böngészőben (Edge, Firefox vagy Chrome) egy számítógépen. A fájl csak 24 órán keresztül érvényes.
 
-Ha a meghívásos `ConnectToArrInspectorAsync` alkalmazás már fut egy számítógépen:
+Ha a meghívásos alkalmazás `ConnectToArrInspectorAsync` már fut egy számítógépen:
 
 * Ha az Unity-integrációt használja, előfordulhat, hogy automatikusan elindul.
-* Ellenkező esetben a ( *\\LocalAppData\\) [Your_app]\\AC\\Temp felhasználói mappákban*található fájlt fogja megtalálni.
+* Ellenkező esetben a ( * \\ LocalAppData) \\ [your_app] \\ AC \\ temp felhasználói mappákban*található fájlt fogja megtalálni.
 
 Ha az alkalmazás HoloLens fut:
 
 1. A HoloLens elérése a [Windows-eszköz portál](https://docs.microsoft.com/windows/mixed-reality/using-the-windows-device-portal)használatával.
 1. Nyissa meg a *System > file Explorer programot*.
-1. Navigáljon a *felhasználói\\mappák\\LocalAppData [your_app\\]\\AC Temp*.
-1. Mentse a *StartArrInspector. html fájlt* a számítógépre.
-1. Nyissa meg a *StartArrInspector. html fájlt* a munkamenet ArrInspector betöltéséhez.
+1. Navigáljon a *felhasználói mappák \\ LocalAppData \\ [your_app] \\ AC \\ temp*.
+1. Mentse *StartArrInspector.html* -t a számítógépre.
+1. Nyissa meg *StartArrInspector.html* -t a munkamenet ArrInspector betöltéséhez.
 
 ## <a name="the-performance-panel"></a>A teljesítmény panel
 
@@ -57,14 +56,14 @@ A függőleges tartomány alapértelmezés szerint a jelenleg megjelenített ér
 
 A napló panel a kiszolgáló oldalán létrehozott naplóüzenetek listáját jeleníti meg. Kapcsolat esetén a rendszer akár 200 korábbi naplóbejegyzést is megjelenít, és az újakat fogja nyomtatni.
 
-A lista alapján szűrheti a napló típusát `[Error/Warning/Info/Debug]` a felül található gombokkal.
+A lista alapján szűrheti a napló típusát a felül található `[Error/Warning/Info/Debug]` gombokkal.
 ![Naplók szűrése gombok](./media/log-filter.png)
 
 ## <a name="the-timing-data-capture-panel"></a>Az időzítési adatrögzítés panel
 
 ![Időzítési adatrögzítés](./media/timing-data-capture.png)
 
-Ez a panel az időzítési információk rögzítésére szolgál a kiszolgálóról, és letölti azt. A fájl a [Chrome nyomkövetési JSON-formátumot](https://docs.google.com/document/d/1CvAClvFfyA5R-PhYUmn5OOQtYMH4h6I0nSsKchNAySU/edit)használja. Az adatellenőrzéshez nyissa meg a Chrome- `Chrome://tracing` t az URL-címen, és húzza a letöltött fájlt a lapra. Az időzítési adatok folyamatos gyűjtése rögzített méretű gyűrűs pufferben történik. Ha kiírja, a rögzítés csak az azonnali múltbeli adatokat tartalmazza, azaz néhány másodpercet néhány percre.
+Ez a panel az időzítési információk rögzítésére szolgál a kiszolgálóról, és letölti azt. A fájl a [Chrome nyomkövetési JSON-formátumot](https://docs.google.com/document/d/1CvAClvFfyA5R-PhYUmn5OOQtYMH4h6I0nSsKchNAySU/edit)használja. Az adatellenőrzéshez nyissa meg a Chrome-t az URL-címen, `Chrome://tracing` és húzza a letöltött fájlt a lapra. Az időzítési adatok folyamatos gyűjtése rögzített méretű gyűrűs pufferben történik. Ha kiírja, a rögzítés csak az azonnali múltbeli adatokat tartalmazza, azaz néhány másodpercet néhány percre.
 
 ## <a name="the-scene-inspection-panel"></a>A jelenet ellenőrzési panelje
 
@@ -113,7 +112,7 @@ Az élő frissítés újbóli engedélyezésekor az összes panel alaphelyzetbe 
 
 Alapértelmezés szerint az eszköz csatlakozik az ArrInspector-t kiszolgáló, ugyanazon a gazdagépen futó ARR-kiszolgálóhoz. Azonban konfigurálhatja egy másik kiszolgáló vizsgálatára, feltéve, hogy egy ARR-példányt futtat a megnyitott szerszámozási porton.
 
-Ehhez nyissa meg a címsor bal oldalán található főmenüt, és válassza a *gazdagép konfigurációja*lehetőséget. Kattintson az **új gazdagép hozzáadása**elemre, és adja meg a nevet és az állomásnevet. Az *állomásnév* csak a-ban `.mixedreality.azure.com`végződő állomásnevet használja, ne `http://` tartalmazzon vagy egy portot.
+Ehhez nyissa meg a címsor bal oldalán található főmenüt, és válassza a *gazdagép konfigurációja*lehetőséget. Kattintson az **új gazdagép hozzáadása**elemre, és adja meg a nevet és az állomásnevet. Az *állomásnév* csak a-ban végződő állomásnevet használja `.mixedreality.azure.com` , ne tartalmazzon `http://` vagy egy portot.
 
 ![Gazdagép konfigurációja](./media/host-configuration.png)
 

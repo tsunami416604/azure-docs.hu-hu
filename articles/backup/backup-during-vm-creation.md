@@ -4,10 +4,9 @@ description: Ismerteti, hogyan engedélyezhető a biztonsági mentés, ha Azure-
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.openlocfilehash: 7739109eb8bad88c9b723e67e13adc78c127499a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80672811"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>Biztonsági mentés engedélyezése Azure-beli virtuális gép létrehozásakor
@@ -50,12 +49,12 @@ Ha még nem jelentkezett be a fiókjába, jelentkezzen be a [Azure Portalba](htt
 
 ## <a name="azure-backup-resource-group-for-virtual-machines"></a>Virtual Machines Azure Backup erőforráscsoport
 
-A Backup szolgáltatás egy külön erőforráscsoportot (RG) hoz létre, amely eltér a virtuális gép erőforráscsoporthoz, amely a visszaállítási pontok gyűjteményét (RPC) tárolja. Az RPC a felügyelt virtuális gépek azonnali helyreállítási pontjait üzemelteti. A Backup szolgáltatás által létrehozott erőforráscsoport alapértelmezett elnevezési formátuma a (z) `AzureBackupRG_<Geo>_<number>`:. Például: *AzureBackupRG_northeurope_1*. Most testreszabhatja Azure Backup által létrehozott erőforráscsoport-nevet.
+A Backup szolgáltatás egy külön erőforráscsoportot (RG) hoz létre, amely eltér a virtuális gép erőforráscsoporthoz, amely a visszaállítási pontok gyűjteményét (RPC) tárolja. Az RPC a felügyelt virtuális gépek azonnali helyreállítási pontjait üzemelteti. A Backup szolgáltatás által létrehozott erőforráscsoport alapértelmezett elnevezési formátuma a (z `AzureBackupRG_<Geo>_<number>` ):. Például: *AzureBackupRG_northeurope_1*. Most testreszabhatja Azure Backup által létrehozott erőforráscsoport-nevet.
 
 Megjegyzés:
 
 1. Használhatja a RG alapértelmezett nevét, vagy szerkesztheti a vállalati követelmények szerint.
-2. Adja meg a RG neve mintát bemenetként a virtuális gép biztonsági mentési szabályzatának létrehozásakor. A RG nevének a következő formátumúnak kell lennie `<alpha-numeric string>* n <alpha-numeric string>`:. az "n" kifejezés egy egész számmal (1-től kezdődően) van lecserélve, és az első RG megtelte esetén felskálázásra szolgál. Egy RG jelenleg legfeljebb 600 távoli eljáráshívások lehet.
+2. Adja meg a RG neve mintát bemenetként a virtuális gép biztonsági mentési szabályzatának létrehozásakor. A RG nevének a következő formátumúnak kell lennie: `<alpha-numeric string>* n <alpha-numeric string>` . az "n" kifejezés egy egész számmal (1-től kezdődően) van lecserélve, és az első RG megtelte esetén felskálázásra szolgál. Egy RG jelenleg legfeljebb 600 távoli eljáráshívások lehet.
               ![Válassza ki a nevet a szabályzat létrehozásakor](./media/backup-during-vm-creation/create-policy.png)
 3. A mintában az alábbi RG-elnevezési szabályoknak kell szerepelnie, és a teljes hossz nem haladhatja meg a maximálisan megengedett RG-név hosszát.
     1. Az erőforráscsoportok nevei csak alfanumerikus karaktereket, pontokat, aláhúzást, kötőjelet és zárójelet tartalmazhatnak. Nem végződhet ponttal.

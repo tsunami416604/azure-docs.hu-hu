@@ -6,10 +6,9 @@ services: container-service
 ms.topic: article
 ms.date: 03/04/2019
 ms.openlocfilehash: 08a9682434605fffde73c835e7a9e9d6971d7ff0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80803382"
 ---
 # <a name="use-a-static-public-ip-address-for-egress-traffic-in-azure-kubernetes-service-aks"></a>Statikus nyilvános IP-cím használata a kimenő forgalomhoz az Azure Kubernetes szolgáltatásban (ak)
@@ -22,17 +21,17 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre és használhat egy statikus
 
 Ez a cikk feltételezi, hogy rendelkezik egy meglévő AK-fürttel. Ha AK-fürtre van szüksége, tekintse meg az AK gyors üzembe helyezését [Az Azure CLI használatával][aks-quickstart-cli] vagy [a Azure Portal használatával][aks-quickstart-portal].
 
-Szüksége lesz az Azure CLI 2.0.59 vagy újabb verziójára is, valamint a telepítésre és konfigurálásra. A `az --version` verzió megkereséséhez futtassa a parancsot. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
+Szüksége lesz az Azure CLI 2.0.59 vagy újabb verziójára is, valamint a telepítésre és konfigurálásra.  `az --version`A verzió megkereséséhez futtassa a parancsot. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
 
 ## <a name="egress-traffic-overview"></a>Kimenő forgalom áttekintése
 
-Az AK-fürtök kimenő forgalma [Azure Load Balancer konvenciókat][outbound-connections]követi. Az első Kubernetes-szolgáltatás `LoadBalancer` létrehozása előtt egy AK-fürt ügynök-csomópontjai nem tartoznak egyetlen Azure Load Balancer-készletbe sem. Ebben a konfigurációban a csomópontok nem rendelkeznek példány-szintű nyilvános IP-címmel. Az Azure a kimenő forgalmat olyan nyilvános forrású IP-címekre fordítja le, amely nem konfigurálható vagy determinisztikus.
+Az AK-fürtök kimenő forgalma [Azure Load Balancer konvenciókat][outbound-connections]követi. Az első Kubernetes-szolgáltatás létrehozása előtt `LoadBalancer` egy AK-fürt ügynök-csomópontjai nem tartoznak egyetlen Azure Load Balancer-készletbe sem. Ebben a konfigurációban a csomópontok nem rendelkeznek példány-szintű nyilvános IP-címmel. Az Azure a kimenő forgalmat olyan nyilvános forrású IP-címekre fordítja le, amely nem konfigurálható vagy determinisztikus.
 
-Ha létrejön egy Kubernetes-szolgáltatás `LoadBalancer` , az ügynök csomópontjai hozzáadódnak egy Azure Load Balancer készlethez. A kimenő forgalom esetében az Azure a terheléselosztó által konfigurált első nyilvános IP-címet fordítja le. Ez a nyilvános IP-cím csak az adott erőforrás élettartama esetén érvényes. Ha törli a Kubernetes terheléselosztó szolgáltatást, a rendszer a társított terheléselosztó és az IP-cím is törlődik. Ha egy adott IP-címet szeretne hozzárendelni, vagy IP-címet kíván megőrizni az újratelepített Kubernetes-szolgáltatásokhoz, létrehozhat és használhat statikus nyilvános IP-címet.
+Ha létrejön egy Kubernetes-szolgáltatás, az `LoadBalancer` ügynök csomópontjai hozzáadódnak egy Azure Load Balancer készlethez. A kimenő forgalom esetében az Azure a terheléselosztó által konfigurált első nyilvános IP-címet fordítja le. Ez a nyilvános IP-cím csak az adott erőforrás élettartama esetén érvényes. Ha törli a Kubernetes terheléselosztó szolgáltatást, a rendszer a társított terheléselosztó és az IP-cím is törlődik. Ha egy adott IP-címet szeretne hozzárendelni, vagy IP-címet kíván megőrizni az újratelepített Kubernetes-szolgáltatásokhoz, létrehozhat és használhat statikus nyilvános IP-címet.
 
 ## <a name="create-a-static-public-ip"></a>Statikus nyilvános IP-cím létrehozása
 
-Kérje le az erőforráscsoport nevét az az [az AK show][az-aks-show] paranccsal, és adja `--query nodeResourceGroup` hozzá a lekérdezési paramétert. A következő példa lekéri a csomópont-erőforráscsoportot az AK-fürt neve *myAKSCluster* az erőforráscsoport neve *myResourceGroup*:
+Kérje le az erőforráscsoport nevét az az [az AK show][az-aks-show] paranccsal, és adja hozzá a `--query nodeResourceGroup` lekérdezési paramétert. A következő példa lekéri a csomópont-erőforráscsoportot az AK-fürt neve *myAKSCluster* az erőforráscsoport neve *myResourceGroup*:
 
 ```azurecli-interactive
 $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
@@ -73,7 +72,7 @@ $ az network public-ip list --resource-group MC_myResourceGroup_myAKSCluster_eas
 
 ## <a name="create-a-service-with-the-static-ip"></a>Szolgáltatás létrehozása a statikus IP-címmel
 
-Egy statikus nyilvános IP-címmel rendelkező szolgáltatás létrehozásához adja hozzá a `loadBalancerIP` tulajdonságot és a statikus nyilvános IP-cím értékét a YAML jegyzékfájlhoz. Hozzon létre egy `egress-service.yaml` nevű fájlt, és másolja a következő YAML. Adja meg az előző lépésben létrehozott saját nyilvános IP-címet.
+Egy statikus nyilvános IP-címmel rendelkező szolgáltatás létrehozásához adja hozzá a `loadBalancerIP` tulajdonságot és a statikus nyilvános IP-cím értékét a YAML jegyzékfájlhoz. Hozzon létre egy nevű fájlt `egress-service.yaml` , és másolja a következő YAML. Adja meg az előző lépésben létrehozott saját nyilvános IP-címet.
 
 ```yaml
 apiVersion: v1
@@ -87,7 +86,7 @@ spec:
   - port: 80
 ```
 
-Hozza létre a szolgáltatást és az üzembe `kubectl apply` helyezést a paranccsal.
+Hozza létre a szolgáltatást és az üzembe helyezést a `kubectl apply` paranccsal.
 
 ```console
 kubectl apply -f egress-service.yaml
@@ -97,7 +96,7 @@ Ez a szolgáltatás egy új előtér-IP-címet konfigurál a Azure Load Balancer
 
 ## <a name="verify-egress-address"></a>Kimenő forgalom ellenőrzésének ellenőrzése
 
-Annak ellenőrzéséhez, hogy a statikus nyilvános IP-cím használatban van-e, használhatja a DNS-alapú `checkip.dyndns.org`keresés szolgáltatást, például:.
+Annak ellenőrzéséhez, hogy a statikus nyilvános IP-cím használatban van-e, használhatja a DNS-alapú keresés szolgáltatást, például: `checkip.dyndns.org` .
 
 Alapszintű *Debian* Pod elindítása és csatlakoztatása:
 
@@ -105,7 +104,7 @@ Alapszintű *Debian* Pod elindítása és csatlakoztatása:
 kubectl run -it --rm aks-ip --image=debian --generator=run-pod/v1
 ```
 
-Webhelynek a tárolóból való eléréséhez használja `apt-get` a t a `curl` tárolóba való telepítéshez.
+Webhelynek a tárolóból való eléréséhez használja a `apt-get` t `curl` a tárolóba való telepítéshez.
 
 ```console
 apt-get update && apt-get install curl -y

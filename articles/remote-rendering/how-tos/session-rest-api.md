@@ -6,17 +6,16 @@ ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: article
 ms.openlocfilehash: 46560f067e020236031487677ad4f48a9560d4e1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80681245"
 ---
 # <a name="use-the-session-management-rest-api"></a>A munkamenet-kezelési REST API használata
 
 Az Azure távoli renderelési funkciójának használatához létre kell hoznia egy *munkamenetet*. Minden egyes munkamenet megfelel egy virtuális géphez (VM), amely az Azure-ban van lefoglalva, és arra vár, hogy csatlakoztasson egy ügyfélszámítógépet. Amikor egy eszköz csatlakozik a szolgáltatáshoz, a virtuális gép megjeleníti a kért adatforrásokat, és a videó streamként szolgáltatja az eredményt. A munkamenet létrehozása során kiválaszthatja, hogy melyik kiszolgálót szeretné futtatni, amely meghatározza a díjszabást. Ha a munkamenetet már nem szükséges, le kell állítani. Ha a munkamenet *címbérleti ideje* lejár, a rendszer automatikusan leállítja, ha nem állítja be manuálisan.
 
-Egy PowerShell-szkriptet adunk a *RenderingSession. ps1*nevű *Scripts* mappában található [ARR Samples adattárban](https://github.com/Azure/azure-remote-rendering) , amely a szolgáltatás használatát mutatja be. A szkriptet és annak konfigurációját itt találja: [példa PowerShell-parancsfájlok](../samples/powershell-example-scripts.md)
+Biztosítunk egy PowerShell-szkriptet az [ARR Samples adattárában](https://github.com/Azure/azure-remote-rendering) a *Scripts* mappában, amelyet a *RenderingSession.ps1*nevezünk, amely a szolgáltatás használatát mutatja be. A szkriptet és annak konfigurációját itt találja: [példa PowerShell-parancsfájlok](../samples/powershell-example-scripts.md)
 
 > [!TIP]
 > A lapon felsorolt PowerShell-parancsok célja, hogy kiegészítsék egymást. Ha az összes parancsfájlt ugyanabban a PowerShell-parancssorban futtatja, akkor azok egymásra épülnek.
@@ -46,7 +45,7 @@ $accountKey = "*******************************************="
 
 ## <a name="common-request-headers"></a>Gyakori kérelmek fejlécei
 
-* Az *engedélyezési* fejlécnek "`Bearer TOKEN`" értékűnek kell lennie, ahol`TOKEN`a "" a [biztonságos jogkivonat szolgáltatás által visszaadott](tokens.md)hitelesítési jogkivonat.
+* Az *engedélyezési* fejlécnek "" értékűnek kell lennie `Bearer TOKEN` , ahol a " `TOKEN` " a [biztonságos jogkivonat szolgáltatás által visszaadott](tokens.md)hitelesítési jogkivonat.
 
 ### <a name="example-script-request-a-token"></a>Példa szkriptre: jogkivonatot kér
 
@@ -65,7 +64,7 @@ $token = $response.AccessToken;
 
 Ez a parancs létrehoz egy munkamenetet. Az új munkamenet AZONOSÍTÓját adja vissza. Minden más parancshoz szüksége lesz a munkamenet-AZONOSÍTÓra.
 
-| URI | Módszer |
+| URI | Metódus |
 |-----------|:-----------|
 | /v1/accounts/*accountId*/Sessions/Create | POST |
 
@@ -124,7 +123,7 @@ Ez a parancs frissíti a munkamenet paramétereit. Jelenleg csak egy munkamenet 
 > [!IMPORTANT]
 > A címbérleti időt mindig a munkamenet kezdete óta teljes idő adja meg. Ez azt jelenti, hogy ha egy órás bérlettel rendelkező munkamenetet hozott létre, és egy másik órára szeretné kiterjeszteni a címbérleti időt, a maxLeaseTime két órára kell frissítenie.
 
-| URI | Módszer |
+| URI | Metódus |
 |-----------|:-----------|
 | /v1/accounts/*accountID*/Sessions/*munkamenet* -azonosító | JAVÍTÁS |
 
@@ -164,7 +163,7 @@ RawContentLength  : 0
 
 Ez a parancs az aktív munkamenetek listáját adja vissza.
 
-| URI | Módszer |
+| URI | Metódus |
 |-----------|:-----------|
 | /v1/accounts/*accountId*/Sessions | GET |
 
@@ -207,7 +206,7 @@ RawContentLength  : 2
 
 Ez a parancs egy munkamenetre vonatkozó adatokat ad vissza, például a virtuális gép állomásnevét.
 
-| URI | Módszer |
+| URI | Metódus |
 |-----------|:-----------|
 | /v1/accounts/*accountId*/Sessions/*munkamenet*-/Properties | GET |
 
@@ -250,7 +249,7 @@ RawContentLength  : 60
 
 Ez a parancs leállítja a munkamenetet. A lefoglalt virtuális gép hamarosan visszaigénylésre kerül.
 
-| URI | Módszer |
+| URI | Metódus |
 |-----------|:-----------|
 | /v1/accounts/*accountId*/Sessions/*munkamenet* -azonosító | DELETE |
 
