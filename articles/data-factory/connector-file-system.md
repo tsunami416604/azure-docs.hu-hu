@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 06/12/2020
 ms.author: jingwang
 ms.openlocfilehash: 6307c8c003e7ab57f3db33e95805264ee4b99bfa
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84738617"
 ---
 # <a name="copy-data-to-or-from-a-file-system-by-using-azure-data-factory"></a>Adatok másolása fájlrendszerből vagy rendszerbe a Azure Data Factory használatával
@@ -73,7 +73,7 @@ A fájlrendszerhez társított szolgáltatás a következő tulajdonságokat tá
 >[!NOTE]
 >Felhasználói felületen keresztüli szerzői műveletek esetén nem szükséges dupla fordított perjelet () megadnia, `\\` mint a JSON-n keresztül, adjon meg egy fordított perjelet.
 
-**Például**
+**Példa:**
 
 ```json
 {
@@ -110,7 +110,7 @@ A fájlrendszer a következő tulajdonságokat támogatja a `location` Format-al
 | folderPath | A mappa elérési útja. Ha a mappa szűréséhez helyettesítő karaktert szeretne használni, hagyja ki ezt a beállítást, és a tevékenység forrásának beállításai között válassza a lehetőséget. | No       |
 | fileName   | A fájlnév a megadott folderPath alatt. Ha helyettesítő karaktereket szeretne használni a fájlok szűréséhez, hagyja ki ezt a beállítást, és a tevékenység forrásának beállításai között válassza a lehetőséget. | No       |
 
-**Például**
+**Példa:**
 
 ```json
 {
@@ -162,7 +162,7 @@ A fájlrendszer a következő tulajdonságokat támogatja a `storeSettings` Form
 | modifiedDatetimeEnd      | Ugyanaz, mint a fenti.                                               | No                                            |
 | maxConcurrentConnections | A tárolási tárolóhoz való kapcsolódáshoz szükséges kapcsolatok száma egyidejűleg. Csak akkor kell megadni, ha az egyidejű kapcsolódást szeretné korlátozni az adattárral. | No                                            |
 
-**Például**
+**Példa:**
 
 ```json
 "activities":[
@@ -215,7 +215,7 @@ A fájlrendszer a következő tulajdonságokat támogatja a `storeSettings` Form
 | copyBehavior             | Meghatározza a másolási viselkedést, ha a forrás fájl-alapú adattárból származó fájlok.<br/><br/>Az engedélyezett értékek a következők:<br/><b>-PreserveHierarchy (alapértelmezett)</b>: megőrzi a fájl-hierarchiát a célmappában. A forrásfájl a forrás mappájához relatív elérési útja megegyezik a célfájl relatív elérési útjával.<br/><b>-FlattenHierarchy</b>: a forrás mappából származó összes fájl a célmappa első szintjén van. A célként megadott fájlok automatikusan generált névvel rendelkeznek. <br/><b>-MergeFiles</b>: az összes fájlt egyesíti a forrás mappájából egy fájlba. Ha meg van adva a fájl neve, az egyesített fájl neve a megadott név. Ellenkező esetben ez egy automatikusan létrehozott fájl neve. | No       |
 | maxConcurrentConnections | Az adattárhoz való kapcsolódáshoz szükséges kapcsolatok száma. Csak akkor kell megadni, ha az egyidejű kapcsolódást szeretné korlátozni az adattárral. | No       |
 
-**Például**
+**Példa:**
 
 ```json
 "activities":[
@@ -319,7 +319,7 @@ A tulajdonságok részleteinek megismeréséhez tekintse meg a [tevékenység t�
 >[!NOTE]
 >Ha a "fileFilter" tulajdonságot használta a fájl szűrőhöz, a rendszer továbbra is támogatja a-t, míg a rendszer a "fileName" kifejezéshez hozzáadott új szűrő funkció használatát javasolja.
 
-**Például**
+**Példa:**
 
 ```json
 {
@@ -357,7 +357,7 @@ A tulajdonságok részleteinek megismeréséhez tekintse meg a [tevékenység t�
 | rekurzív | Azt jelzi, hogy az adatok rekurzív módon olvashatók-e az almappákból, vagy csak a megadott mappából. Vegye figyelembe, hogy ha a rekurzív értéke TRUE (igaz), a fogadó pedig a fájl alapú tároló, akkor a rendszer nem másolja/hozza létre az üres mappát/almappát a fogadóban.<br/>Az engedélyezett értékek: **true** (alapértelmezett), **false** | No |
 | maxConcurrentConnections | A tárolási tárolóhoz való kapcsolódáshoz szükséges kapcsolatok száma egyidejűleg. Csak akkor kell megadni, ha az egyidejű kapcsolódást szeretné korlátozni az adattárral. | No |
 
-**Például**
+**Példa:**
 
 ```json
 "activities":[
@@ -397,7 +397,7 @@ A tulajdonságok részleteinek megismeréséhez tekintse meg a [tevékenység t�
 | copyBehavior | Meghatározza a másolási viselkedést, ha a forrás fájl-alapú adattárból származó fájlok.<br/><br/>Az engedélyezett értékek a következők:<br/><b>-PreserveHierarchy (alapértelmezett)</b>: megőrzi a fájl-hierarchiát a célmappában. A forrásfájl a forrás mappájához relatív elérési útja megegyezik a célfájl relatív elérési útjával.<br/><b>-FlattenHierarchy</b>: a forrás mappából származó összes fájl a célmappa első szintjén van. A célfájl automatikusan generált névvel rendelkezik. <br/><b>-MergeFiles</b>: az összes fájlt egyesíti a forrás mappájából egy fájlba. Az egyesítés során nem történik meg a rekordok deduplikálása. Ha a fájl neve meg van adva, az egyesített fájlnév a megadott név lesz. Ellenkező esetben az automatikusan létrehozott fájlnév lenne. | No |
 | maxConcurrentConnections | A tárolási tárolóhoz való kapcsolódáshoz szükséges kapcsolatok száma egyidejűleg. Csak akkor kell megadni, ha az egyidejű kapcsolódást szeretné korlátozni az adattárral. | No |
 
-**Például**
+**Példa:**
 
 ```json
 "activities":[

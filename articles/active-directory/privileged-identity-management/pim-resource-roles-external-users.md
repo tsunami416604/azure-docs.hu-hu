@@ -16,10 +16,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 046a0d61bb7a6d715a1d732790d2b472b3e83c13
-ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84743779"
 ---
 # <a name="invite-guest-users-and-assign-azure-resource-roles-in-privileged-identity-management"></a>Vendég felhasználók meghívása és Azure-beli erőforrás-szerepkörök kiosztása Privileged Identity Management
@@ -53,7 +53,7 @@ Ha B2B-együttműködést használ, egy külső felhasználót is meghívhat ven
 
 Győződjön meg arról, hogy meg tudja hívni a vendégeket a szervezetbe, ellenőrizze a vendég együttműködési beállításait.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Jelentkezzen be [Azure Portalba](https://portal.azure.com/).
 
 1. Válassza a **Azure Active Directory**  >  **felhasználói beállítások**lehetőséget.
 

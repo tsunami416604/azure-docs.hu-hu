@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cad6c41b465e14b11d4fa7b8e7fa6037d49e8eae
-ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84742912"
 ---
 # <a name="start-using-privileged-identity-management"></a>A Privileged Identity Management használatának első lépései
@@ -63,7 +63,7 @@ A Privileged Identity Management beállítása után megismerheti a módját.
 
 ![Navigációs ablak Privileged Identity Management feladatok és kezelési beállítások megjelenítése](./media/pim-getting-started/pim-quickstart-tasks.png)
 
-| Feladat + kezelés | Leírás |
+| Feladat + kezelés | Description |
 | --- | --- |
 | **Saját szerepkörök**  | Megjeleníti az Önhöz hozzárendelt jogosult és aktív szerepkörök listáját. Itt aktiválhatja az Önhöz rendelt elérhető szerepköröket. |
 | **Saját kérések** | Megjeleníti a jogosult szerepkör-hozzárendelések aktiválásához függőben lévő kéréseit. |

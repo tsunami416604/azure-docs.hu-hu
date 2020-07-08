@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 06/12/2020
 ms.author: jingwang
 ms.openlocfilehash: 7f34e21ad787726b7fae059bd5752cf40ecf46bc
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84738600"
 ---
 # <a name="copy-data-from-ftp-server-by-using-azure-data-factory"></a>Adatok másolása az FTP-kiszolgálóról Azure Data Factory használatával
@@ -135,7 +135,7 @@ A következő tulajdonságok támogatottak az FTP számára a `location` Format-
 | folderPath | A mappa elérési útja. Ha a mappa szűréséhez helyettesítő karaktert szeretne használni, hagyja ki ezt a beállítást, és a tevékenység forrásának beállításai között válassza a lehetőséget. | No       |
 | fileName   | A fájlnév a megadott folderPath alatt. Ha helyettesítő karaktereket szeretne használni a fájlok szűréséhez, hagyja ki ezt a beállítást, és a tevékenység forrásának beállításai között válassza a lehetőséget. | No       |
 
-**Például**
+**Példa:**
 
 ```json
 {
@@ -185,7 +185,7 @@ A következő tulajdonságok támogatottak az FTP `storeSettings` Formátum alap
 | useBinaryTransfer | Adja meg, hogy a bináris átviteli módot kívánja-e használni. Az értékek a bináris üzemmód (alapértelmezett) és a False for ASCII esetében igazak. |No |
 | maxConcurrentConnections | Az adattárhoz való kapcsolódáshoz szükséges kapcsolatok száma. Csak akkor kell megadni, ha az egyidejű kapcsolódást szeretné korlátozni az adattárral. | No |
 
-**Például**
+**Példa:**
 
 ```json
 "activities":[
@@ -281,7 +281,7 @@ A tulajdonságok részleteinek megismeréséhez tekintse meg a [tevékenység t�
 >[!NOTE]
 >Ha a "fileFilter" tulajdonságot használta a fájl szűrőhöz, a rendszer továbbra is támogatja a-t, míg a rendszer a "fileName" kifejezéshez hozzáadott új szűrő funkció használatát javasolja.
 
-**Például**
+**Példa:**
 
 ```json
 {
@@ -317,7 +317,7 @@ A tulajdonságok részleteinek megismeréséhez tekintse meg a [tevékenység t�
 | rekurzív | Azt jelzi, hogy az adatok rekurzív módon olvashatók-e az alárendelt mappákból, vagy csak a megadott mappából. Vegye figyelembe, hogy ha a rekurzív értéke TRUE (igaz), a fogadó pedig a fájl alapú tároló, akkor a rendszer nem másolja/hozza létre az üres mappát/almappát a fogadóban.<br/>Az engedélyezett értékek: **true** (alapértelmezett), **false** | No |
 | maxConcurrentConnections | A tárolási tárolóhoz való kapcsolódáshoz szükséges kapcsolatok száma egyidejűleg. Csak akkor kell megadni, ha az egyidejű kapcsolódást szeretné korlátozni az adattárral. | No |
 
-**Például**
+**Példa:**
 
 ```json
 "activities":[

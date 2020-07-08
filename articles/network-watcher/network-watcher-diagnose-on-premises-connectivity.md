@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 632a1eb7b7ac53bd3d7df3f2722d6e53277c7926
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84738753"
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>Helyszíni kapcsolatok diagnosztizálása VPN-átjárók használatával

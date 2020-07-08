@@ -1,5 +1,5 @@
 ---
-title: Modell üzembe helyezése Cognitive Searchhoz való használatra
+title: Modell üzembe helyezése a Cognitive Searchcsel történő használatra
 titleSuffix: Azure Machine Learning
 description: Ebből a cikkből megtudhatja, hogyan használhatja a Azure Machine Learningt modell üzembe helyezéséhez az Azure Cognitive Search használatával. A Cognitive Search a Azure Machine Learning által üzembe helyezett modelleket egyéni képességként használhatja a keresési élmény gazdagítása érdekében.
 services: machine-learning
@@ -11,13 +11,13 @@ author: larryfr
 ms.reviewer: larryfr
 ms.date: 06/11/2020
 ms.openlocfilehash: c8b25e1d3ef2d2b780d88fbf2ba6c6568b4a804d
-ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84744958"
 ---
-# <a name="deploy-a-model-for-use-with-cognitive-search"></a>Modell üzembe helyezése Cognitive Searchhoz való használatra
+# <a name="deploy-a-model-for-use-with-cognitive-search"></a>Modell üzembe helyezése a Cognitive Searchcsel történő használatra
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Ebből a cikkből megtudhatja, hogyan használhatja a Azure Machine Learningt modell üzembe helyezéséhez az [Azure Cognitive Search](../search/search-what-is-azure-search.md)használatával.

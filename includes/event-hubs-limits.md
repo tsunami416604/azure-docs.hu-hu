@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: event-hubs
 author: spelluru
 ms.service: event-hubs
@@ -9,17 +9,17 @@ ms.date: 05/22/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 333f2317fcc834a10b7336bbda9a43ba16a7ad38
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84317423"
 ---
 Az alábbi táblázatok az [Azure Event Hubsra](https://azure.microsoft.com/services/event-hubs/)vonatkozó kvótákat és korlátokat biztosítanak. További információ a Event Hubs díjszabásáról: [Event Hubs díjszabása](https://azure.microsoft.com/pricing/details/event-hubs/).
 
 A következő korlátok az alapszintű és a standard szintű csomagokban vannak meghatározva. 
 
-| Korlát | Hatókör | Megjegyzések | Érték |
+| Korlát | Hatókör | Jegyzetek | Érték |
 | --- | --- | --- | --- |
 | Event Hubs névterek száma/előfizetés |Előfizetés |- |100 |
 | Az Event hubok száma névtérben |Névtér |Az új Event hub létrehozására vonatkozó további kérelmeket a rendszer elutasítja. |10 |
@@ -33,7 +33,7 @@ A következő korlátok az alapszintű és a standard szintű csomagokban vannak
 | A virtuális hálózat (VNet) és az IP-konfigurációs szabályok száma | Entitás | - | 128 | 
 
 ### <a name="event-hubs-basic-and-standard---quotas-and-limits"></a>Alapszintű és standard – kvóták és korlátozások Event Hubs
-| Korlát | Hatókör | Megjegyzések | Basic | Standard |
+| Korlát | Hatókör | Jegyzetek | Alapszintű | Standard |
 | --- | --- | --- | -- | --- |
 | Event Hubs esemény maximális mérete|Entitás | &nbsp; | 256 KB | 1 MB |
 | Fogyasztói csoportok száma az Event hub-ban |Entitás | &nbsp; |1 |20 |
@@ -46,7 +46,7 @@ A következő korlátok az alapszintű és a standard szintű csomagokban vannak
 ### <a name="event-hubs-dedicated---quotas-and-limits"></a>Dedikált Event Hubs – kvóták és korlátok
 Az dedikált Event Hubs ajánlat számlázása rögzített havi díjszabással történik, amely legalább 4 órányi használatot biztosít. A dedikált szint a standard csomag összes funkcióját felkínálja, de nagyvállalati kapacitást és korlátokat biztosít az ügyfelek számára igényes számítási feladatokkal. 
 
-| Funkció | Korlátok |
+| Szolgáltatás | Korlátok |
 | --- | ---|
 | Sávszélesség |  20 ke |
 | Névterek | 50/CU |

@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/08/2020
 ms.openlocfilehash: 082a4e863760d4b327e00de2e6721e306ebb9d78
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84740091"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-postgresql-using-powershell"></a>Olvasási replikák létrehozása és kezelése a Azure Database for PostgreSQL a PowerShell használatával
@@ -50,7 +50,7 @@ Get-AzPostgreSqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 
 A `New-AzPostgreSqlServerReplica` parancshoz a következő paraméterek szükségesek:
 
-| Beállítás | Példaérték | Leírás  |
+| Beállítás | Példaérték | Description  |
 | --- | --- | --- |
 | ResourceGroupName |  myResourceGroup |  Az az erőforráscsoport, amelyben a replika-kiszolgáló létrejön.  |
 | Name | mydemoreplicaserver | A létrehozott új replika-kiszolgáló neve. |
@@ -79,7 +79,7 @@ Get-AzMariaDReplica -ResourceGroupName myresourcegroup -ServerName mydemoserver
 
 A `Get-AzMariaDReplica` parancshoz a következő paraméterek szükségesek:
 
-| Beállítás | Példaérték | Leírás  |
+| Beállítás | Példaérték | Description  |
 | --- | --- | --- |
 | ResourceGroupName |  myResourceGroup |  Az az erőforráscsoport, amelybe a replika-kiszolgáló létre lesz hozva.  |
 | ServerName | mydemoserver | A főkiszolgáló neve vagy azonosítója. |

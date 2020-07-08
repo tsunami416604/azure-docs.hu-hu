@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 02/24/2020
 ms.author: cherylmc
 ms.openlocfilehash: 98f1f3d02d8433dd88fed844a587a961ea9f8c82
-ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84744289"
 ---
 # <a name="connect-using-ssh-to-a-linux-virtual-machine-using-azure-bastion"></a>Kapcsolódás az SSH-val egy Linux rendszerű virtuális géphez az Azure Bastion használatával
@@ -47,7 +47,7 @@ Ha SSH-n keresztül szeretne csatlakozni a Linux rendszerű virtuális géphez, 
 
 ## <a name="connect-using-username-and-password"></a><a name="username"></a>Kapcsolat: Felhasználónév és jelszó használata
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com). Keresse meg azt a virtuális gépet, amelyhez csatlakozni szeretne, majd kattintson a **Kapcsolódás** elemre, és válassza a **kilépési pont lehetőséget** .
+1. Nyissa meg a [Azure Portal](https://portal.azure.com). Keresse meg azt a virtuális gépet, amelyhez csatlakozni szeretne, majd kattintson a **Kapcsolódás** elemre, és válassza a **kilépési pont lehetőséget** .
 
    ![Kapcsolódás](./media/bastion-connect-vm-ssh/connect.png)
 1. Miután rákattintott a Bastion elemre, egy oldalsó sáv jelenik meg, amely három lapot – RDP, SSH és Bastion – tartalmaz. Ha a megerősített szolgáltatás a virtuális hálózathoz lett kiépítve, a megerősített lap alapértelmezés szerint aktív. Ha nem hozott létre a virtuális hálózatra vonatkozó kiépítést, olvassa el a következő témakört: a [Bastion konfigurálása](bastion-create-host-portal.md).
@@ -58,7 +58,7 @@ Ha SSH-n keresztül szeretne csatlakozni a Linux rendszerű virtuális géphez, 
 
 ## <a name="connect-manually-enter-a-private-key"></a><a name="privatekey"></a>Kapcsolat: manuálisan adjon meg egy titkos kulcsot
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com). Keresse meg azt a virtuális gépet, amelyhez csatlakozni szeretne, majd kattintson a **Kapcsolódás** elemre, és válassza a **kilépési pont lehetőséget** .
+1. Nyissa meg a [Azure Portal](https://portal.azure.com). Keresse meg azt a virtuális gépet, amelyhez csatlakozni szeretne, majd kattintson a **Kapcsolódás** elemre, és válassza a **kilépési pont lehetőséget** .
 
    ![Kapcsolódás](./media/bastion-connect-vm-ssh/connect.png)
 1. Miután rákattintott a Bastion elemre, egy oldalsó sáv jelenik meg, amely három lapot – RDP, SSH és Bastion – tartalmaz. Ha a megerősített szolgáltatás a virtuális hálózathoz lett kiépítve, a megerősített lap alapértelmezés szerint aktív. Ha nem hozott létre a virtuális hálózatra vonatkozó kiépítést, olvassa el a következő témakört: a [Bastion konfigurálása](bastion-create-host-portal.md).
@@ -70,7 +70,7 @@ Ha SSH-n keresztül szeretne csatlakozni a Linux rendszerű virtuális géphez, 
 
 ## <a name="connect-using-a-private-key-file"></a><a name="ssh"></a>Összekapcsolás: titkos kulcsfájl használata
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com). Keresse meg azt a virtuális gépet, amelyhez csatlakozni szeretne, majd kattintson a **Kapcsolódás** elemre, és válassza a **kilépési pont lehetőséget** .
+1. Nyissa meg a [Azure Portal](https://portal.azure.com). Keresse meg azt a virtuális gépet, amelyhez csatlakozni szeretne, majd kattintson a **Kapcsolódás** elemre, és válassza a **kilépési pont lehetőséget** .
 
    ![Kapcsolódás](./media/bastion-connect-vm-ssh/connect.png)
 1. Miután rákattintott a Bastion elemre, egy oldalsó sáv jelenik meg, amely három lapot – RDP, SSH és Bastion – tartalmaz. Ha a megerősített szolgáltatás a virtuális hálózathoz lett kiépítve, a megerősített lap alapértelmezés szerint aktív. Ha nem hozott létre a virtuális hálózatra vonatkozó kiépítést, olvassa el a következő témakört: a [Bastion konfigurálása](bastion-create-host-portal.md).

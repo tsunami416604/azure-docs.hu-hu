@@ -9,10 +9,10 @@ ms.date: 05/20/2020
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: e2540bceab17e6f37fd94b28df3814ccffa1c81e
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84466902"
 ---
 Az alábbi táblázat az Azure általános célú v1, v2, blob Storage és a blob Storage-fiókokra vonatkozó alapértelmezett korlátokat ismerteti. A *bejövő* forgalom korlátja a Storage-fiókba küldendő összes adattal vonatkozik. A *kimenő* forgalom korlátja a Storage-fiókból kapott összes adattal vonatkozik.

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/11/2019
 ms.author: cynthn
 ms.openlocfilehash: 3733989ad6eed113e37c87eb7da6748cec10e34d
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84485758"
 ---
 Az Azure-beli virtuális gépek (VM-EK) egységes módon történő létrehozásához és kezeléséhez általában az automatizálás valamilyen formája szükséges. Számos eszköz és megoldás lehetővé teszi, hogy automatizálja az Azure-infrastruktúra teljes üzembe helyezését és a felügyeleti életciklusát. Ez a cikk az Azure-ban használható infrastruktúra-automatizálási eszközöket ismerteti. Ezek az eszközök általában a következő megközelítések egyikéhez illeszkednek:
@@ -143,5 +143,5 @@ Az alábbiak végrehajtásának módját ismerheti meg:
 - [Töltse le a virtuális gép sablonját](../articles/virtual-machines/windows/download-template.md).
 - [Hozzon létre egy Azure rendszerkép-szerkesztői sablont](../articles/virtual-machines/linux/image-builder-json.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Számos különböző lehetőség áll rendelkezésre az infrastruktúra-automatizálási eszközök használatára az Azure-ban. Ön szabadon használhatja az igényeinek és környezetének legmegfelelőbb megoldást. A kezdéshez és az Azure-ba beépített eszközök kipróbálásához lásd: [Linux](../articles/virtual-machines/linux/tutorial-automate-vm-deployment.md) vagy [Windows rendszerű](../articles/virtual-machines/windows/tutorial-automate-vm-deployment.md) virtuális gép testreszabásának automatizálása.

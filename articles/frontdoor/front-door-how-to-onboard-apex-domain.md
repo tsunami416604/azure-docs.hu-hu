@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 5/21/2019
 ms.author: sharadag
 ms.openlocfilehash: d8f08f7cde54aaf705872c8c45bc18eb4a27df77
-ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84743592"
 ---
-# <a name="onboard-a-root-or-apex-domain-on-your-front-door"></a>Egy gyökér-vagy APEX-tartomány beléptetése az előtérben
+# <a name="onboard-a-root-or-apex-domain-on-your-front-door"></a>Gyökértartomány vagy Apex-tartomány előkészítése a Front Dooron
 Az Azure bevezető ajtaja CNAME rekordokat használ a tartomány tulajdonjogának ellenőrzéséhez az egyéni tartományok bevezetéséhez. Emellett a bevezető ajtó nem teszi elérhetővé az előtér-profilhoz társított előtérbeli IP-címet, így az APEX tartománya nem rendelhető hozzá IP-címhez, ha a cél az, hogy bemutassa az Azure-ba.
 
 A DNS protokoll megakadályozza a CNAME rekordok hozzárendelését a zóna csúcsán. Ha például a tartománya a `contoso.com` ; CNAME rekordokat hozhat létre a számára, `somelabel.contoso.com` de saját maga nem hozhat létre CNAME-t `contoso.com` . Ez a korlátozás olyan alkalmazás-tulajdonosoknak nyújt problémát, akik elosztott terhelésű alkalmazásokat vezetnek be az Azure bejárati ajtó mögött. Mivel a bejárati ajtó profiljának használata szükséges egy CNAME rekord létrehozásához, nem lehet az első ajtón lévő profilra mutatni a zóna csúcspontján.
