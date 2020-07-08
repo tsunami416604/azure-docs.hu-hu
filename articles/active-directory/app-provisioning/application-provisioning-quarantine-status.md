@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 04/28/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: d8b50bfdd894d36b96fb3a53eab7c43c5b1fe11a
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.openlocfilehash: e5c0b00873cd97b255eff7e001f8b54cf0397462
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84782109"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024570"
 ---
 # <a name="application-provisioning-in-quarantine-status"></a>Alkalmazás üzembe helyezése a karantén állapotában
 
@@ -46,7 +46,7 @@ Három módon ellenőrizhető, hogy egy alkalmazás karanténba helyezve van-e:
 
 ## <a name="why-is-my-application-in-quarantine"></a>Miért van a karanténba helyezett alkalmazásom?
 
-|Leírás|Javasolt művelet|
+|Description|Javasolt művelet|
 |---|---|
 |**Scim megfelelőségi probléma:** HTTP/404 nem található válasz lett visszaadva a várt HTTP/200 OK válasz helyett. Ebben az esetben az Azure AD-kiépítési szolgáltatás kérelmet küldött a célalkalmazás számára, és váratlan választ kapott.|Tekintse meg a rendszergazdai hitelesítő adatok szakaszt, és ellenőrizze, hogy az alkalmazás a bérlői URL-cím megadását igényli-e, és hogy az URL helyes-e. Ha nem jelenik meg a probléma, forduljon az alkalmazás fejlesztői szolgálatához, és győződjön meg arról, hogy a szolgáltatásuk SCIM-kompatibilis. https://tools.ietf.org/html/rfc7644#section-3.4.2 |
 |**Érvénytelen hitelesítő adatok:** Ha a célalkalmazás hozzáférésének engedélyezését kísérli meg, a rendszer választ kapott a célalkalmazástól, amely jelzi, hogy a megadott hitelesítő adatok érvénytelenek.|Lépjen a létesítési konfiguráció felhasználói felületének rendszergazdai hitelesítő adatok szakaszára, és engedélyezze újra a hozzáférést érvényes hitelesítő adatokkal. Ha az alkalmazás szerepel a katalógusban, tekintse át az alkalmazás konfigurációját ismertető oktatóanyagot a további szükséges lépésekhez.|
@@ -75,3 +75,6 @@ A probléma megoldása után indítsa újra a kiépítési feladatot. Az alkalma
 - [A kiépítési feladatok újraindításához használja a](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http)Microsoft Graph. Az újraindítást teljes mértékben szabályozhatja. Dönthet úgy, hogy törli a letéteket (a karantén állapotának újraindításához), a karantén törlését (az alkalmazás karanténból való eltávolítását) vagy a vízjelek törlését. Használja az alábbi kérelmet:
  
        `POST /servicePrincipals/{id}/synchronization/jobs/{jobId}/restart`
+       
+Cserélje le az "{id}" értéket az alkalmazás-azonosító értékére, és cserélje le a (z) {jobId} kifejezést a [szinkronizálási feladatokhoz tartozó azonosítóra](https://docs.microsoft.com/graph/api/resources/synchronization-configure-with-directory-extension-attributes?view=graph-rest-beta&tabs=http#list-synchronization-jobs-in-the-context-of-the-service-principal). 
+
