@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 02/07/2019
 ms.author: mihansen
-ms.openlocfilehash: 034fbf93c4a73b5ee733c72ab6d1f458c3ae003b
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 7f92395f19d84f904493af458d1334f8013fd263
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84872117"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85808029"
 ---
 # <a name="features"></a>Szolgáltatások
 
@@ -59,7 +59,7 @@ Az összes keresési paraméter típusa támogatott.
 | Dátum/dátum/idő         | Igen       | Igen       | Igen       |         |
 | Sztring                | Igen       | Igen       | Igen       |         |
 | Jogkivonat                 | Igen       | Igen       | Igen       |         |
-| Referencia             | Igen       | Igen       | Igen       |         |
+| Hivatkozás             | Igen       | Igen       | Igen       |         |
 | Kompozit             | Igen       | Igen       | Igen       |         |
 | Mennyiség              | Igen       | Igen       | Igen       |         |
 | URI                   | Igen       | Igen       | Igen       |         |
@@ -90,7 +90,7 @@ Az összes keresési paraméter típusa támogatott.
 | `_security`             | Igen       | Igen       | Igen       |         |
 | `_text`                 | Nem        | Nem        | Nem        |         |
 | `_content`              | Nem        | Nem        | Nem        |         |
-| `_list`                 | Nem        | Nem        | Nem        |         |
+| `_list`                 | Nem        | Igen       | Igen       |         |
 | `_has`                  | Nem        | Nem        | Nem        |         |
 | `_type`                 | Igen       | Igen       | Igen       |         |
 | `_query`                | Nem        | Nem        | Nem        |         |

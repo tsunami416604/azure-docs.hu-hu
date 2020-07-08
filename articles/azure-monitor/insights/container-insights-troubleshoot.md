@@ -3,18 +3,19 @@ title: A tárolók Azure Monitor hibáinak megoldása | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan lehet elhárítani és elhárítani a tárolók Azure Monitorével kapcsolatos problémákat.
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 736a7d271fc330d775d4d6cc271083e36d750ede
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: bc4105dc23445c29364961501f93e42f8c3b683d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85337859"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85800443"
 ---
 # <a name="troubleshooting-azure-monitor-for-containers"></a>A tárolók Azure Monitor hibaelhárítása
 
 Ha az Azure Kubernetes Service (ak) fürt figyelését konfigurálja Azure Monitor a tárolók számára, előfordulhat, hogy az adatgyűjtés vagy a jelentéskészítés állapotát megakadályozó probléma merülhet fel. Ez a cikk néhány gyakori problémát és hibaelhárítási lépést részletez.
 
 ## <a name="authorization-error-during-onboarding-or-update-operation"></a>Engedélyezési hiba a bevezetési vagy frissítési művelet közben
+
 A tárolók Azure Monitorának engedélyezése vagy a fürt frissítése a metrikák gyűjtésének támogatásához a következőhöz hasonló hibaüzenetet kaphat: *az ügyfél <felhasználói identitása> a (z) <felhasználó objectId>) nem jogosult a (z) "Microsoft. Authorization/roleAssignments/Write" művelet végrehajtására a hatókörön* kívül
 
 A bevezetési vagy frissítési folyamat során a rendszer a fürt erőforrásán kísérli meg a **figyelési metrikák közzétevő** szerepkör-hozzárendelésének megadását. A felhasználónak a tárolók Azure Monitor engedélyezését kezdeményező vagy a metrikák gyűjtését támogató frissítéshez hozzáféréssel kell rendelkeznie a **Microsoft. Authorization/roleAssignments/Write** engedélyhez az AK fürterőforrás-hatókörén. Ehhez az engedélyhez csak a **tulajdonos** és a **felhasználói hozzáférés rendszergazdai** beépített szerepköreinek tagjai kapnak hozzáférést. Ha a biztonsági szabályzatok részletességi szintű engedélyek hozzárendelését igénylik, javasoljuk, hogy [Egyéni szerepköröket](../../role-based-access-control/custom-roles.md) tekintse meg, és rendelje hozzá azokat a felhasználókat, akiknek szükségük van rá.
@@ -29,6 +30,7 @@ Ezt a szerepkört manuálisan is megadhatja a Azure Portal az alábbi lépések 
 4. A szerepkör hozzárendelésének befejezéséhez kattintson a **Mentés** gombra.
 
 ## <a name="azure-monitor-for-containers-is-enabled-but-not-reporting-any-information"></a>A tárolók Azure Monitor engedélyezve vannak, de nem jelentenek információt
+
 Ha a tárolók Azure Monitor sikeresen engedélyezve és konfigurálva van, de nem tekintheti meg az állapotadatokat, vagy a rendszer nem ad vissza eredményeket egy napló lekérdezésből, a következő lépésekkel diagnosztizálhatja a problémát:
 
 1. Az ügynök állapotának ellenőrzéséhez futtassa a parancsot:
@@ -117,7 +119,7 @@ Az alábbi táblázat összefoglalja a Azure Monitor for containers használata 
 | Hibaüzenet`Error retrieving data` | Az Azure Kubernetes Service-fürt állapota és a teljesítmény figyelése mellett kapcsolat jön létre a fürt és az Azure Log Analytics munkaterület között. A fürt összes figyelési adatait egy Log Analytics munkaterület használatával lehet tárolni. Ez a hiba akkor fordulhat elő, ha a Log Analytics munkaterület törölve lett. Ellenőrizze, hogy a munkaterület törölve lett-e, és ha igen, akkor újra engedélyeznie kell a fürt figyelését Azure Monitor a tárolók számára, és meg kell adnia egy meglévőt, vagy létre kell hoznia egy új munkaterületet. Az ismételt engedélyezéshez [le kell tiltania](container-insights-optout.md) a fürt figyelését, és újra [engedélyeznie](container-insights-enable-new-cluster.md) kell a tárolók Azure monitorét. |
 | `Error retrieving data`Azure Monitor hozzáadása a tárolók számára az az AK CLI használatával | Ha a használatával engedélyezi a figyelést `az aks cli` , akkor előfordulhat, hogy a tárolók Azure monitor nem megfelelően vannak telepítve. Győződjön meg arról, hogy telepítve van-e a megoldás. Ehhez lépjen a Log Analytics munkaterületre, és ellenőrizze, hogy elérhető-e a megoldás a bal oldali ablaktáblán a **megoldások** lehetőség kiválasztásával. A probléma megoldásához újra kell telepítenie a megoldást a [Azure monitor a tárolók telepítésére](container-insights-onboard.md) vonatkozó utasításokat követve. |
 
-A probléma diagnosztizálása érdekében az [itt](https://github.com/Microsoft/OMS-docker/tree/ci_feature_prod/Troubleshoot#troubleshooting-script)elérhető hibaelhárítási parancsfájlt biztosítunk.
+A probléma diagnosztizálása érdekében az [itt](https://raw.githubusercontent.com/microsoft/Docker-Provider/ci_dev/scripts/troubleshoot/TroubleshootError_nonAzureK8s.ps1)elérhető hibaelhárítási parancsfájlt biztosítunk.
 
 ## <a name="azure-monitor-for-containers-agent-replicaset-pods-are-not-scheduled-on-non-azure-kubernetes-cluster"></a>A containers Agent ReplicaSet-hüvelyek Azure Monitor nem az Azure Kubernetes-fürtön vannak ütemezve
 

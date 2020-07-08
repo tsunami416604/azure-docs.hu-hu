@@ -11,12 +11,12 @@ ms.date: 05/19/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6f06e9ad03face5082950ecedd3f73b97dc6ae4
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: a5b59942731c8ca7b29de30e160d8370c9cf76ef
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85360928"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807638"
 ---
 # <a name="install-the-azure-ad-connect-cloud-provisioning-agent"></a>Az Azure AD Connect felhőalapú jogosultságkiosztási ügynök telepítése
 Ez a dokumentum végigvezeti a Azure Active Directory-(Azure AD-) kapcsolat létesítési ügynökének telepítési folyamatán, és azt, hogy miként konfigurálható először a Azure Portal.
@@ -34,7 +34,8 @@ Azure AD Connect kiépítés telepítése és konfigurálása a következő lép
 Az ügynök telepítéséhez kövesse az alábbi lépéseket.
 
 1. Jelentkezzen be arra a kiszolgálóra, amelyet vállalati rendszergazdai engedélyekkel fog használni.
-1. Nyissa meg az Azure Portalt. A bal oldalon válassza a **Azure Active Directory**lehetőséget.
+1. Jelentkezzen be a Azure Portalba, majd lépjen a **Azure Active Directoryra**.
+1. A bal oldali menüben válassza a **Azure ad Connect**lehetőséget.
 1. Válassza a **felügyelet létesítése (előzetes verzió)**  >  **minden ügynök áttekintése**elemet.
 1. Töltse le a Azure AD Connect kiépítési ügynököt a Azure Portalból.
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: masnider
 ms.custom: sfrev
-ms.openlocfilehash: a9266c2a8d2ad179cfdb12e367a14f37d1abc9b3
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: dc429500081e65bf3fdf4d7f7557d2423f56ee23
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84710286"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611730"
 ---
 # <a name="service-fabric-terminology-overview"></a>Service Fabric terminológia áttekintése
 
@@ -116,7 +116,7 @@ Az alkalmazások lemezképtároló szolgáltatásra történő központi telepí
 
 **Javításkezelő szolgáltatás**: ez egy opcionális rendszerszolgáltatás, amely lehetővé teszi a javítási műveletek végrehajtását a fürtön olyan módon, amely biztonságos, automatizálható és átlátható. A Repair Manager használatban van:
 
-   - Az Azure karbantartási javításait [ezüst és arany tartósságú](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) Azure Service Fabric-fürtökön végezheti el.
+   - Az Azure karbantartási javításait [ezüst és arany tartósságú](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster) Azure Service Fabric-fürtökön végezheti el.
    - Javítási műveletek végrehajtása javítás-előkészítési [alkalmazáshoz](service-fabric-patch-orchestration-application.md)
 
 ## <a name="deployment-and-application-models"></a>Üzembe helyezési és alkalmazási modellek

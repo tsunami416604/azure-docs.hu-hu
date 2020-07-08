@@ -16,12 +16,12 @@ ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 491a8f00de2fcd4c977a1856005b4358a4b62bd6
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: b0a0ee226fcddb3bfc216e1e160b5571fde59a41
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85359789"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807587"
 ---
 # <a name="post-configuration-tasks-for-hybrid-azure-ad-join"></a>Hibrid Azure AD-csatlakozás konfigurálása utáni feladatok
 
@@ -86,15 +86,10 @@ Ez a telepítő egy ütemezett feladatot hoz létre a felhasználó környezeté
 
 ## <a name="10-configure-group-policy-to-allow-device-registration"></a>10. konfigurálja a csoportházirendet az eszközök regisztrálásának engedélyezéséhez
 
-* Hozzon létre egy csoportházirend-objektumot a Active Directoryban – ha még nincs létrehozva.
-* Nevezze el (a hibrid Azure AD-csatlakozás).
-* Szerkesztés & ugrás: Számítógép konfigurációja > házirendek > Felügyeleti sablonok > Windows-összetevők > eszköz regisztrálása
-* Engedélyezés: tartományhoz csatlakoztatott számítógépek regisztrálása eszközként
-* Alkalmazza, és kattintson az OK gombra.
-* Csatolja a GPO-t az Ön által választott helyhez (szervezeti egység, biztonsági csoport vagy a tartományhoz az összes eszköz esetében).
+További információ a hibrid Azure AD JOIN egyéni eszközökhöz való engedélyezéséről: [hibrid Azure ad-csatlakozás vezérelt](../devices/hybrid-azuread-join-control.md)ellenőrzése.
 
->[!NOTE]
->A 2012R2 a **Számítógép konfigurációja > házirendek > Felügyeleti sablonok > Windows-összetevők > Workplace JOIN > automatikusan munkahelyi csatlakozás ügyfélszámítógépeken**
+> [!NOTE]
+> Az 2012 R2 házirend-beállításai a **Számítógép konfigurációja > házirendek > Felügyeleti sablonok > Windows-összetevők > Workplace JOIN > automatikusan munkahelyi csatlakoztatási ügyfélszámítógépeken**.
 
 ## <a name="next-steps"></a>További lépések
 [Az eszköz visszaírási konfigurálása](how-to-connect-device-writeback.md)

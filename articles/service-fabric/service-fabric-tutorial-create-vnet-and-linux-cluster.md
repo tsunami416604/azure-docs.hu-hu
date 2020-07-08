@@ -4,12 +4,12 @@ description: Megismerheti, hogyan helyezhet üzembe egy Linux-alapú Service Fab
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: mvc
-ms.openlocfilehash: a9026e46f2fd386892af5a3d8f4ec8d7e0c9f649
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1d6edc086233d757269c12e323241bc4bf55249f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81411008"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611696"
 ---
 # <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>Linux Service Fabric-fürt üzembe helyezése Azure-beli virtuális hálózaton
 
@@ -54,8 +54,8 @@ A **Microsoft.ServiceFabric/clusters** erőforrásban a rendszer üzembe helyez 
 * Operációs rendszer: (Ubuntu 16,04 LTS/Ubuntu 18,04 LTS) (a sablon paramétereinek megfelelően konfigurálható)
 * tanúsítványon alapuló védelem (a sablon paramétereiben konfigurálható);
 * engedélyezve van a [DNS szolgáltatás](service-fabric-dnsservice.md);
-* bronz szintű [tartóssági szint](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) (a sablon paramétereiben konfigurálható);
-* ezüst szintű [megbízhatósági szint](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) (a sablon paramétereiben konfigurálható);
+* bronz szintű [tartóssági szint](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster) (a sablon paramétereiben konfigurálható);
+* ezüst szintű [megbízhatósági szint](service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster) (a sablon paramétereiben konfigurálható);
 * ügyfélkapcsolati végpont: 19000 (a sablon paramétereiben konfigurálható);
 * HTTP-átjáró végpontja: 19080 (a sablon paramétereiben konfigurálható).
 
@@ -81,14 +81,14 @@ Ha további alkalmazásportokra van szükség, akkor módosítania kell a Micros
 
 A **AzureDeploy. Parameters** fájl számos, a fürt és a kapcsolódó erőforrások üzembe helyezéséhez használt értéket deklarál. Néhány paraméter, amelyeket lehet, hogy módosítani kell az üzembe helyezéshez:
 
-|Paraméter|Példaérték|Megjegyzések|
+|Paraméter|Példaérték|Jegyzetek|
 |---|---||
 |adminUserName|vmadmin| Rendszergazdai felhasználónév a fürt virtuális gépeihez. |
 |adminPassword|Password#1234| Rendszergazdai jelszó a fürt virtuális gépeihez.|
 |clusterName|mysfcluster123| A fürt neve. |
 |location|southcentralus| A fürt helye. |
 |certificateThumbprint|| <p>Önaláírt tanúsítvány létrehozása vagy tanúsítványfájl megadása esetén az értéknek üresnek kell lennie.</p><p>Ha meglévő, egy kulcstárolóba korábban feltöltött tanúsítványt szeretne használni, adja meg a tanúsítvány SHA1 ujjlenyomatának értékét. Például: „6190390162C988701DB5676EB81083EA608DCCF3” </p>|
-|certificateUrlValue|| <p>Önaláírt tanúsítvány létrehozása vagy tanúsítványfájl megadása esetén az értéknek üresnek kell lennie.</p><p>Ha meglévő, egy kulcstárolóba korábban feltöltött tanúsítványt szeretne használni, adja meg a tanúsítvány URL-címét. Példa: "https:\//mykeyvault.Vault.Azure.net:443/Secrets/mycertificate/02bea722c9ef4009a76c5052bcbf8346".</p>|
+|certificateUrlValue|| <p>Önaláírt tanúsítvány létrehozása vagy tanúsítványfájl megadása esetén az értéknek üresnek kell lennie.</p><p>Ha meglévő, egy kulcstárolóba korábban feltöltött tanúsítványt szeretne használni, adja meg a tanúsítvány URL-címét. Példa: "https: \/ /mykeyvault.Vault.Azure.net:443/Secrets/mycertificate/02bea722c9ef4009a76c5052bcbf8346".</p>|
 |sourceVaultValue||<p>Önaláírt tanúsítvány létrehozása vagy tanúsítványfájl megadása esetén az értéknek üresnek kell lennie.</p><p>Ha meglévő, egy kulcstárolóba korábban feltöltött tanúsítványt szeretne használni, adja meg a forrástároló értékét. For example, "/subscriptions/333cc2c84-12fa-5778-bd71-c71c07bf873f/resourceGroups/MyTestRG/providers/Microsoft.KeyVault/vaults/MYKEYVAULT".</p>|
 
 <a id="createvaultandcert" name="createvaultandcert_anchor"></a>
@@ -160,7 +160,7 @@ Az `sfctl cluster health` parancs futtatásával ellenőrizze, hogy csatlakozik-
 sfctl cluster health
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha nem azonnal tér rá a következő cikkre, érdemes [törölnie a fürtöt](service-fabric-cluster-delete.md) a felmerülő költségek elkerülése érdekében.
 
