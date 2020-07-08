@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -9,10 +9,10 @@ ms.date: 03/12/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: feaf72de1d2c578d2b2d0df9e86ec0fbe0b49445
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79371742"
 ---
 Az eszköz-alagút sikeres létrehozásához az alábbi követelményeknek kell teljesülniük:
@@ -28,7 +28,7 @@ Az eszköz-alagút sikeres létrehozásához az alábbi követelményeknek kell 
 
 Miután konfigurálta a virtuális hálózati átjárót, és telepítette az ügyféltanúsítványt a Windows 10-ügyfél helyi számítógép tárolójába, az alábbi példákkal konfigurálhatja az ügyfél-eszköz alagutat:
 
-1. Másolja a következő szöveget, és mentse a ***devicecert. ps1***néven.
+1. Másolja az alábbi szöveget, és mentse ***devicecert.ps1ként ***.
 
    ```
    Param(
@@ -80,7 +80,7 @@ Miután konfigurálta a virtuális hálózati átjárót, és telepítette az ü
    $Message = "Complete."
    Write-Host "$Message"
    ```
-1. Másolja az alábbi szöveget, és mentse ***VPNProfile. XML*** néven a **devicecert. ps1**fájl mappájába. Szerkessze a következő szöveget a környezetének megfelelően.
+1. Másolja az alábbi szöveget, és mentse ***VPNProfile.xmlként*** ugyanabba a mappába, mint **devicecert.ps1**. Szerkessze a következő szöveget a környezetének megfelelően.
 
    * `<Servers>azuregateway-1234-56-78dc.cloudapp.net</Servers> <= Can be found in the VpnSettings.xml in the downloaded profile zip file`
    * `<Address>192.168.3.5</Address> <= IP of resource in the vnet or the vnet address space`
@@ -124,7 +124,7 @@ Miután konfigurálta a virtuális hálózati átjárót, és telepítette az ü
    ```
 
    ![powershell](./media/vpn-gateway-vwan-always-on-device/powershell.png)
-1. A PowerShellben váltson arra a mappára, ahol a **devicecert. ps1** és az **VPNProfile. xml fájl** található, és futtassa a következő parancsot:
+1. A PowerShellben váltson arra a mappára, ahol **devicecert.ps1** és **VPNProfile.xml** található, és futtassa a következő parancsot:
 
    ```powershell
    .\devicecert.ps1 .\VPNProfile.xml MachineCertTest

@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 03/19/2020
 ms.author: mimart
 ms.openlocfilehash: af11283f9e9dbd925ec994dcb1d96393332b90fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80117089"
 ---
 ## <a name="use-custom-page-content"></a>Egyéni oldal tartalmának használata
@@ -46,7 +46,7 @@ Ahelyett, hogy az egyéni oldal tartalmait a semmiből hozza létre, testreszabh
 
 A következő táblázat felsorolja a Azure AD B2C által biztosított alapértelmezett oldal tartalmát. Töltse le a fájlokat, és használja kiindulási pontként a saját egyéni oldalai létrehozásához.
 
-| Alapértelmezett lap | Leírás | Tartalom definíciójának azonosítója<br/>(csak egyéni házirend) |
+| Alapértelmezett lap | Description | Tartalom definíciójának azonosítója<br/>(csak egyéni házirend) |
 |:-----------------------|:--------|-------------|
 | [exception.html](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **Hiba lap**. Ez az oldal akkor jelenik meg, ha kivételt vagy hibát észlel. | *API. error* |
 | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) |  **Saját maga által érvényesített oldal**. Ezt a fájlt egyéni oldalként használhatja a közösségi fiók regisztrálása lap, a helyi fiók regisztrálása oldal, a helyi fiók bejelentkezési oldala, a jelszó alaphelyzetbe állítása és egyebek. Az űrlap különböző beviteli vezérlőket tartalmazhat, például a következőket: szövegbeviteli mező, jelszó-beviteli mező, választógomb, egyszeres kijelölés legördülő lista és többszörös kijelölés jelölőnégyzet. | *API. localaccountsignin*, API. *localaccountsignup*, *API. localaccountpasswordreset*, *API. selfasserted* |
@@ -89,7 +89,7 @@ A folyamat áttekintése:
 
 Hozzon létre egy egyéni oldal tartalmát a termék márkaneve nevével a címben.
 
-1. Másolja a következő HTML-kódrészletet. Jól formázott HTML5 egy olyan üres elemmel, amelynek neve * \< div id = "API" \> \< /div \> * , amely a * \< törzs \> * címkén belül található. Ez az elem azt jelzi, hogy hol kell beszúrni Azure AD B2C tartalmat.
+1. Másolja a következő HTML-kódrészletet. Jól formázott HTML5 egy üres elemmel, amelynek neve *\<div id="api"\>\</div\>* a címkék között található *\<body\>* . Ez az elem azt jelzi, hogy hol kell beszúrni Azure AD B2C tartalmat.
 
    ```html
    <!DOCTYPE html>

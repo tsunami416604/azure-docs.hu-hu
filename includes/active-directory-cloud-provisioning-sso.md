@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 10/16/2019
 ms.author: billmath
 ms.openlocfilehash: 3aa1571b46938b03f556fa124d3f0a2a70f2c5c3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79504275"
 ---
 ## <a name="steps-to-enable-single-sign-on"></a>Az egyszeri bejelentkezés engedélyezésének lépései
@@ -24,17 +24,17 @@ A Felhőbeli kiépítés egyszeri bejelentkezéssel működik.  Jelenleg nincs l
 ### <a name="step-2-import-the-seamless-sso-powershell-module"></a>2. lépés: a zökkenőmentes SSO PowerShell-modul importálása
 
 1. Töltse le és telepítse az [Azure ad PowerShellt](https://docs.microsoft.com/powershell/azure/active-directory/overview).
-2. Tallózással keresse `%programfiles%\Microsoft Azure Active Directory Connect` meg a mappát.
-3. Importálja a zökkenőmentes SSO PowerShell-modult a következő `Import-Module .\AzureADSSO.psd1`parancs használatával:.
+2. Tallózással keresse meg a `%programfiles%\Microsoft Azure Active Directory Connect` mappát.
+3. Importálja a zökkenőmentes SSO PowerShell-modult a következő parancs használatával: `Import-Module .\AzureADSSO.psd1` .
 
 ### <a name="step-3-get-the-list-of-active-directory-forests-on-which-seamless-sso-has-been-enabled"></a>3. lépés: azon Active Directory erdők listájának beolvasása, amelyeken engedélyezve van a zökkenőmentes egyszeri bejelentkezés
 
-1. Futtassa a PowerShellt rendszergazdaként. A PowerShellben hívja `New-AzureADSSOAuthenticationContext`meg a t. Ha a rendszer kéri, adja meg a bérlő globális rendszergazdai hitelesítő adatait.
-2. Hívás `Get-AzureADSSOStatus`. Ez a parancs a Active Directory erdők listáját tartalmazza (tekintse meg a "tartományok" listát), amelyen a funkció engedélyezve van.
+1. Futtassa a PowerShellt rendszergazdaként. A PowerShellben hívja meg a t `New-AzureADSSOAuthenticationContext` . Ha a rendszer kéri, adja meg a bérlő globális rendszergazdai hitelesítő adatait.
+2. Hívás `Get-AzureADSSOStatus` . Ez a parancs a Active Directory erdők listáját tartalmazza (tekintse meg a "tartományok" listát), amelyen a funkció engedélyezve van.
 
 ### <a name="step-4-enable-seamless-sso-for-each-active-directory-forest"></a>4. lépés: a zökkenőmentes SSO engedélyezése minden Active Directory erdőben
 
-1. Hívás `Enable-AzureADSSOForest`. Ha a rendszer kéri, adja meg a kívánt Active Directory erdő tartományi rendszergazdai hitelesítő adatait.
+1. Hívás `Enable-AzureADSSOForest` . Ha a rendszer kéri, adja meg a kívánt Active Directory erdő tartományi rendszergazdai hitelesítő adatait.
 
    > [!NOTE]
    >A tartományi rendszergazdai hitelesítő adatok felhasználónevet a SAM-fiók nevének formátumában kell megadni (contoso\johndoe vagy contoso. com\johndoe). A Felhasználónév tartomány részeként a tartományi rendszergazda tartományvezérlőjét kell megkeresni a DNS használatával.
@@ -46,4 +46,4 @@ A Felhőbeli kiépítés egyszeri bejelentkezéssel működik.  Jelenleg nincs l
 
 ### <a name="step-5-enable-the-feature-on-your-tenant"></a>5. lépés A szolgáltatás engedélyezése a bérlőn
 
-Ha be szeretné kapcsolni a szolgáltatást a bérlőn, `Enable-AzureADSSO -Enable $true`hívja a következőt:.
+Ha be szeretné kapcsolni a szolgáltatást a bérlőn, hívja a következőt: `Enable-AzureADSSO -Enable $true` .

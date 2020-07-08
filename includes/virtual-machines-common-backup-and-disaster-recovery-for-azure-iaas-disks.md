@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: storage
 author: roygara
 ms.service: storage
@@ -9,10 +9,10 @@ ms.date: 06/05/2018
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 6981b6acaf0281c1643e2d8ac3933e0fa892e3c2
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84124362"
 ---
 Ez a cikk bemutatja, hogyan tervezheti meg a IaaS virtuális gépek és lemezek biztonsági mentését és a vész-helyreállítást (DR) az Azure-ban. Ez a dokumentum a felügyelt és a nem felügyelt lemezeket is tartalmazza.
@@ -107,7 +107,7 @@ A nem felügyelt lemezek esetében használhatja a helyileg redundáns tárolás
 
  A következő táblázat a DR számára elérhető megoldások összegzését tartalmazza.
 
-| Eset | Automatikus replikáció | DR megoldás |
+| Forgatókönyv | Automatikus replikáció | DR megoldás |
 | --- | --- | --- |
 | Premium SSD-lemezek | Helyi ([helyileg redundáns tárolás](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
 | Felügyelt lemezek | Helyi ([helyileg redundáns tárolás](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
@@ -233,7 +233,7 @@ Több lemezzel rendelkező virtuális gépek esetén az azonos koordinált vissz
 
 A virtuális gépen futó SQL Server saját beépített képességekkel rendelkezik a SQL Server-adatbázis Azure Blob Storage-ba vagy fájlmegosztásba való biztonsági mentéséhez. Ha a Storage-fiók földrajzilag redundáns tárolást vagy olvasási hozzáférésű geo-redundáns tárolót használ, a biztonsági másolatok a Storage-fiók másodlagos adatközpontjában, a korábban tárgyalt korlátozásokkal érhetők el. További információ: [SQL Server biztonsági mentése és visszaállítása az Azure Virtual Machines szolgáltatásban](../articles/azure-sql/virtual-machines/windows/azure-storage-sql-server-backup-restore-use.md). A biztonsági mentés és a visszaállítás mellett [SQL Server AlAlwaysOnon rendelkezésre állási csoportok](../articles/azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md) is kezelhetik az adatbázisok másodlagos replikáit. Ez a képesség nagy mértékben csökkenti a vész-helyreállítási időt.
 
-## <a name="other-considerations"></a>Egyéb szempontok
+## <a name="other-considerations"></a>További szempontok
 
 Ebből a cikkből megtudhatta, hogyan készíthet biztonsági mentést a virtuális gépekről és a lemezekről a vész-helyreállítás támogatásáról, valamint arról, hogyan használhatja ezeket a biztonsági másolatokat vagy pillanatképeket az adatok helyreállításához. A Azure Resource Manager modellel sok ember használ sablonokat a virtuális gépek és egyéb infrastruktúra létrehozásához az Azure-ban. Sablon használatával létrehozhat egy virtuális gépet, amely minden alkalommal ugyanazzal a konfigurációval rendelkezik. Ha egyéni rendszerképeket használ a virtuális gépek létrehozásához, akkor azt is meg kell győződnie arról, hogy a lemezképek védelme egy olvasási hozzáférésű geo-redundáns Storage-fiók használatával történik.
 

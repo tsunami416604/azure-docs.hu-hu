@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: storage
 author: roygara
 ms.service: storage
@@ -9,10 +9,10 @@ ms.date: 12/26/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: a67ad4c5010cf93ff55123013a35c697ce5971f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77597818"
 ---
 Az Azure-fájlmegosztás *tárolási fiókokra*van telepítve, amelyek a tárolók megosztott készletét képviselő legfelső szintű objektumok. Ez a tárterület több fájlmegosztás, valamint más tárolási erőforrások, például blob-tárolók, várólisták vagy táblák üzembe helyezésére is használható. A Storage-fiókba telepített összes tárolási erőforrás megosztja az adott tárolási fiókra érvényes korlátokat. A Storage-fiók jelenlegi korlátainak megtekintéséhez lásd: [Azure Files skálázhatósági és teljesítményi célok](../articles/storage/files/storage-files-scale-targets.md).

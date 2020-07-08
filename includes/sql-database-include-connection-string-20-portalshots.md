@@ -11,16 +11,16 @@ ms.topic: include
 ms.date: 07/13/2018
 ms.author: ninarn
 ms.openlocfilehash: 6ead2e0ea326b5c3f2e76e7aa9cc4ab3c50d4154
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67179199"
 ---
 ### <a name="obtain-the-connection-string-from-the-azure-portal"></a>A Azure Portal a kapcsolatok karakterláncának beszerzése
 A [Azure Portal](https://portal.azure.com/) használatával szerezze be azt a kapcsolódási karakterláncot, amely szükséges ahhoz, hogy az ügyfélprogram működjön a Azure SQL Databaseval.
 
-1. Válassza **a minden szolgáltatás** > **SQL-adatbázisok**lehetőséget.
+1. Válassza **a minden szolgáltatás**  >  **SQL-adatbázisok**lehetőséget.
 
 2. Adja meg az adatbázis nevét az **SQL-adatbázisok** panel bal felső sarkában található szűrő szövegmezőbe.
 
@@ -34,7 +34,7 @@ A [Azure Portal](https://portal.azure.com/) használatával szerezze be azt a ka
 
     ![Az adatbázis ADO-kapcsolatok karakterláncának másolása][20-CopyAdoConnectionString]
 
-7. Szükség szerint szerkessze a kapcsolatok karakterláncát. például illessze be a jelszót a kapcsolatok karakterlánccá, vagy távolítsa el a&lt;"&gt;@ servername" nevet a felhasználónévből, ha a Felhasználónév vagy a kiszolgálónév túl hosszú.
+7. Szükség szerint szerkessze a kapcsolatok karakterláncát. például illessze be a jelszót a kapcsolatok karakterlánccá, vagy távolítsa el a "@ &lt; servername &gt; " nevet a felhasználónévből, ha a Felhasználónév vagy a kiszolgálónév túl hosszú.
 
 8. Az egyik formátumban vagy egy másikban illessze be a kapcsolatok karakterláncának adatait az ügyfélalkalmazás kódjába.
 

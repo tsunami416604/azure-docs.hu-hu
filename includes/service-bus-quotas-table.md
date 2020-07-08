@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: service-bus-messaging
 author: spelluru
 ms.service: service-bus-messaging
@@ -9,15 +9,15 @@ ms.date: 12/13/2018
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: b19dc7a85fafa1a4d875c84db9bbefabb3cd5a7d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77651727"
 ---
 A következő táblázat a Azure Service Bus üzenetkezelésre vonatkozó kvóta-információkat sorolja fel. További információ a Service Bus díjszabásáról és egyéb kvótáról: [Service Bus díjszabása](https://azure.microsoft.com/pricing/details/service-bus/).
 
-| Kvóta neve | Hatókör | Megjegyzések | Érték |
+| Kvóta neve | Hatókör | Jegyzetek | Érték |
 | --- | --- | --- | --- |
 | Egy Azure-előfizetéshez tartozó alapszintű vagy standard névterek maximális száma |Névtér |A Azure Portal a további alapszintű vagy standard szintű névterek további kérelmeit a rendszer elutasítja. |100|
 | Prémium szintű névterek maximális száma az Azure-előfizetések esetében |Névtér |A portál a további prémium szintű névterek további kérelmeit is elutasítja. |100 |
@@ -34,7 +34,7 @@ A következő táblázat a Azure Service Bus üzenetkezelésre vonatkozó kvóta
 | Üzenetsor, témakör vagy előfizetési entitás üzenet-tulajdonságának mérete |Entitás | A rendszer létrehozza a kivétel **SerializationException** . |Az üzenetsor maximális mérete az egyes tulajdonságokhoz 32 000. Az összes tulajdonság összesített mérete nem haladhatja meg a 64 000-ot. Ez a korlát a [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)teljes fejlécére vonatkozik, amely a felhasználói tulajdonságokat és a rendszer tulajdonságait, például a [sorszám](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber), a [label](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.label)és a [MessageID](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.messageid). |
 | Előfizetések száma témakör szerint |Entitás |A további előfizetések létrehozására vonatkozó további kérelmeket a rendszer elutasítja. Ennek eredményeképpen, ha a portálon keresztül van konfigurálva, hibaüzenet jelenik meg. Ha a felügyeleti API hívja meg, a hívási kód kivételt kap. |2 000/témakör a standard szinthez. |
 | SQL-szűrők száma egy témakörben |Entitás |A rendszer elutasítja a további szűrők létrehozására vonatkozó további kérelmeket a témakörben, és kivételt kapott a hívó kód. |2000 |
-| Korrelációs szűrők száma egy témakörben |Entitás |A rendszer elutasítja a további szűrők létrehozására vonatkozó további kérelmeket a témakörben, és kivételt kapott a hívó kód. |100 000 |
+| Korrelációs szűrők száma egy témakörben |Entitás |A rendszer elutasítja a további szűrők létrehozására vonatkozó további kérelmeket a témakörben, és kivételt kapott a hívó kód. |100.000 |
 | SQL-szűrők vagy-műveletek mérete |Névtér |A rendszer elutasítja a további szűrők létrehozására vonatkozó további kérelmeket, és a hívási kód kivételt kap. |A szűrési feltétel karakterláncának maximális hossza: 1 024 (1 K).<br /><br />Szabály műveleti karakterláncának maximális hossza: 1 024 (1 K).<br /><br />Kifejezések maximális száma szabály szerint művelet: 32. |
 | [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) -szabályok száma névtér, üzenetsor vagy témakör szerint |Entitás, névtér |A további szabályok létrehozására vonatkozó további kérelmeket a rendszer elutasítja, és a hívó kód kivételt kap. |Szabályok maximális száma az entitás típusa szerint: 12. <br /><br /> A Service Bus névterekben konfigurált szabályok minden típusra érvényesek: várólisták, témakörök. |
 | Üzenetek száma tranzakció szerint | Tranzakció | A rendszer elutasítja a további bejövő üzeneteket, és kivételt jelent a következő: "nem lehet több mint 100 üzenetet küldeni egyetlen tranzakcióban" a hívó kód fogadja. | 100 <br /><br /> Mind a **Send ()** , mind a **SendAsync ()** művelethez. |

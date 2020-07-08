@@ -10,10 +10,10 @@ ms.date: 08/16/2019
 ms.author: dsindona
 ms.custom: include file
 ms.openlocfilehash: cf6a5730f92eba8f0a4e63bf40a4d2b50f76eb3a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82131107"
 ---
 Ha a partner centeren keresztül tesz közzé ajánlatot a piactéren, az ajánlatot a CRM-rendszerhez kell csatlakoznia. Így azonnal megkaphatja az ügyfelek kapcsolattartási adatait, miután az ügyfél kifejezte érdeklődését vagy üzembe helyezi a terméket.
