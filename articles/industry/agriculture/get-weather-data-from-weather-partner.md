@@ -5,12 +5,11 @@ author: sunasing
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: sunasing
-ms.openlocfilehash: 4ab42509930e76989a67f45deb33e370e6e9adf4
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
-ms.translationtype: MT
+ms.openlocfilehash: 66138fb04b1053215a2c2ec07cec1b56e38fed0b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194739"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85800647"
 ---
 # <a name="get-weather-data-from-weather-partners"></a>Időjárási adatok beolvasása a partnerektől
 
@@ -140,10 +139,7 @@ A FarmBeats-adatközpont időjárási adatainak beszerzéséhez kövesse az alá
 
 ## <a name="query-ingested-weather-data"></a>Betöltött időjárási adatmennyiség lekérdezése
 
-Az időjárási feladatok befejezése után lekérdezheti a betöltött időjárási adatokból a modelleket vagy a gyakorlatban használható elemzéseket. Az időjárási adatok FarmBeats kétféleképpen lehet elérni és lekérdezni:
-
-- API és
-- Time Series Insights (ÁME).
+Az időjárási feladatok befejezése után lekérdezheti a betöltött időjárási adatokból a FarmBeats Datahub REST API-k használatával modelleket vagy gyakorlatban hasznosítható elemzéseket készíthet.
 
 ### <a name="query-using-rest-api"></a>Lekérdezés REST API használatával
 
@@ -209,20 +205,6 @@ Az időjárási FarmBeats REST API használatával történő lekérdezéséhez 
 
 Az előző példában a válasz két időbélyeg esetében tartalmaz adatokkal együtt a mérték nevét ("hőmérséklet") és a jelentett időjárási adatok értékeit a két időbélyegben. A jelentett értékek típusának és egységének értelmezéséhez a kapcsolódó időjárási adatmodellre kell hivatkoznia (a fenti 2. lépésben leírtak szerint).
 
-### <a name="query-using-azure-time-series-insights-tsi"></a>Lekérdezés Azure Time Series Insights (ÁME) használatával
-
-A FarmBeats [Azure Time Series Insights (ÁME)](https://azure.microsoft.com/services/time-series-insights/) szolgáltatást használ az adatok betöltésére, tárolására, lekérdezésére és megjelenítésére a IoT-skálán – a nagy mértékben környezetfüggő és idősorozatra optimalizált adatok.
-
-Az időjárási adatértékek egy EventHub érkeznek, majd az FarmBeats-erőforráscsoporthoz tartozó ÁME-környezetbe vannak leküldve. Az adatok közvetlenül az ÁME-ből kérhetők le. További információ: az [ÁME dokumentációja](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-explorer).
-
-Kövesse az alábbi lépéseket az ÁME-beli adatmegjelenítéshez:
-
-1. Lépjen a **Azure Portal**  >  **FarmBeats DataHub erőforráscsoporthoz** > válassza a **Time Series Insights** Environment (ÁME-XXXX) > **adatelérési házirendek**lehetőséget. Felhasználó hozzáadása olvasó vagy közreműködői hozzáféréssel.
-
-2. Nyissa meg **Time Series Insights** környezet **Áttekintés** lapját (ÁME-XXXX), és válassza ki a **Time Series Insights Explorer URL-címét**. Mostantól megjelenítheti a betöltött időjárási adatmennyiséget.
-
-Az adott időjárási adatok tárolása, lekérdezése és megjelenítése mellett az ÁME is lehetővé teszi az integrációt egy Power BI irányítópulton. További információ: [Time Series Insights adatainak megjelenítése Power BIban](https://docs.microsoft.com/azure/time-series-insights/how-to-connect-power-bi).
-
 ## <a name="appendix"></a>Függelék
 
 |        Partner   |  Részletek   |
@@ -236,7 +218,7 @@ Az adott időjárási adatok tárolása, lekérdezése és megjelenítése melle
 | DockerDetails - partnerCredentials | a partner API meghívására szolgáló hitelesítő adatok a Docker-ben. A partnernek ezeket az információkat az ügyfelek által támogatott hitelesítési mechanizmus alapján kell megadnia az ügyfeleknek. Felhasználónév/jelszó vagy API-kulcsok. |
 | partnerType | "Weather" (a FarmBeats más típusai az "érzékelő" és a "képek")  |
 |  name   |   A partner kívánt neve a FarmBeats-rendszeren   |
-|  leírás |  Leírás   |
+|  leírás |  Description   |
 
 ## <a name="next-steps"></a>További lépések
 

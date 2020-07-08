@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2019
 ms.author: anavin
-ms.openlocfilehash: 0577b61cd30ef0f8fd5fc8ef1593d210c00bb25c
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
-ms.translationtype: MT
+ms.openlocfilehash: 3fd958ba1ef4ec4b8a198bcd5da497dc191be73d
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300084"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040605"
 ---
 # <a name="what-is-azure-virtual-network"></a>Mi az Azure Virtual Network?
 
@@ -52,7 +51,7 @@ A VNet összes erőforrása alapértelmezés szerint képes kommunikálni az int
 Az Azure-erőforrások biztonságosan kommunikálnak egymással az alábbi módok egyikével:
 
 - **Virtuális hálózaton keresztül**: Virtuális gépeket és számos egyéb típusú Azure-erőforrást is üzembe helyezhet egy virtuális hálózaton (pl. Azure App Service Environment-környezetek, Azure Kubernetes Service (AKS) és Azure Virtual Machine Scale Sets). A virtuális hálózatokon üzembe helyezhető Azure-erőforrások teljes listájáért lásd: [Virtuális hálózati szolgáltatás integrálása](virtual-network-for-azure-services.md).
-- **Virtuális hálózati szolgáltatásvégponton keresztül**: Kibővítheti virtuális hálózatának privát címterét és identitását az Azure-szolgáltatási erőforrásokra (pl. Azure Storage-fiókokra és Azure SQL-adatbázisokra) egy közvetlen kapcsolaton keresztül. A szolgáltatásvégpontok segítségével biztosíthatja, hogy kritikus fontosságú Azure-szolgáltatási erőforrásai csak egy virtuális hálózaton legyenek elérhetőek. További információ: [A virtuális hálózati szolgáltatásvégpontok áttekintése](virtual-network-service-endpoints-overview.md).
+- **Virtuális hálózati szolgáltatás végpontján keresztül**: kiterjesztheti a virtuális hálózat privát címterület-területét és a virtuális hálózat identitását az Azure-szolgáltatások erőforrásaira, például az Azure Storage-fiókokra és a Azure SQL Databaseokra közvetlen kapcsolaton keresztül. A szolgáltatásvégpontok segítségével biztosíthatja, hogy kritikus fontosságú Azure-szolgáltatási erőforrásai csak egy virtuális hálózaton legyenek elérhetőek. További információ: [A virtuális hálózati szolgáltatásvégpontok áttekintése](virtual-network-service-endpoints-overview.md).
 - **A VNet**-társításon keresztül: a virtuális hálózatokat összekapcsolhatja egymással, így a virtuális hálózatban lévő erőforrások a virtuális hálózatok közötti kommunikációt is lehetővé teszik. Az összekacsolt virtuális hálózatok lehetnek azonos vagy eltérő Azure-régiókban. További információ: [Virtuális hálózatok közötti társviszony létesítése](virtual-network-peering-overview.md).
 
 ## <a name="communicate-with-on-premises-resources"></a>Kommunikáció helyszíni erőforrásokkal

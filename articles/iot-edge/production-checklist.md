@@ -12,10 +12,9 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 128504c59690476afef03aa82a03d69769968e99
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84431924"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Felkészülés a IoT Edge-megoldás éles környezetben történő üzembe helyezésére
@@ -131,7 +130,7 @@ A timeToLiveSecs paraméter alapértelmezett értéke 7200 másodperc, amely ké
 
 Ha tesztelési forgatókönyveket éles környezetbe helyez át, ne felejtse el eltávolítani az üzembe helyezési jegyzékből a hibakeresési konfigurációkat. Győződjön meg arról, hogy az üzembe helyezési jegyzékekben egyik modul rendszerképe sem rendelkezik ** \. hibakeresési** utótaggal. Ha hozzáadta a létrehozási beállításokat a modulok számára a hibakereséshez, távolítsa el ezeket a létrehozási beállításokat is.
 
-## <a name="container-management"></a>Tárolók kezelése
+## <a name="container-management"></a>Tárolókezelés
 
 * **Fontos**
   * A tároló-beállításjegyzékhez való hozzáférés kezelése
@@ -181,7 +180,7 @@ Szerezze be a lemezképeket a Docker pull paranccsal a privát beállításjegyz
 | [Azure IoT Edge ügynök](https://hub.docker.com/_/microsoft-azureiotedge-agent) | `docker pull mcr.microsoft.com/azureiotedge-agent` |
 | [Azure IoT Edge HUb](https://hub.docker.com/_/microsoft-azureiotedge-hub) | `docker pull mcr.microsoft.com/azureiotedge-hub` |
 
-Ezután frissítse a rendszerkép hivatkozásait a edgeAgent és a edgeHub rendszermodulok telepítési. template. JSON fájljában. Cserélje le a `mcr.microsoft.com` -t a beállításjegyzék nevére és a kiszolgáló mindkét modulra.
+Ezután frissítse a képhivatkozásokat a fájl deployment.template.jsa edgeAgent és a edgeHub rendszer-modulok esetében. Cserélje le a `mcr.microsoft.com` -t a beállításjegyzék nevére és a kiszolgáló mindkét modulra.
 
 * edgeAgent:
 
@@ -320,7 +319,7 @@ Ezt megteheti az egyes modulok **createOptions** . Például:
 
 A leghatékonyabb IoT Edge üzembe helyezési forgatókönyv esetén érdemes lehet az éles üzembe helyezést a tesztelési és CI/CD-folyamatokba integrálni. Azure IoT Edge több CI/CD platformot támogat, beleértve az Azure DevOps is. További információ: [a folyamatos integráció és a folyamatos üzembe helyezés a Azure IoT Edge](how-to-ci-cd.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ a [IoT Edge automatikus központi telepítéséről](module-deployment-monitoring.md).
 * Ismerje meg, hogyan támogatja [a IoT Edge a folyamatos integrációt és a folyamatos üzembe helyezést](how-to-ci-cd.md).

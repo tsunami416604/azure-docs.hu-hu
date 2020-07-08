@@ -9,10 +9,9 @@ ms.date: 06/26/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
 ms.openlocfilehash: 3e4e80048453b7d6e0804bbef670f0544efaca49
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85514838"
 ---
 # <a name="use-spot-vms-in-azure"></a>Helyszíni virtuális gépek használata az Azure-ban
@@ -20,7 +19,7 @@ ms.locfileid: "85514838"
 [!INCLUDE [common-spot-vms](../../../includes/virtual-machines-common-spot-vms.md)]  
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A helyszíni virtuális gépek üzembe helyezéséhez használja a [portált](spot-portal.md), a [CLI](../linux/spot-cli.md)-t, az [ARM-sablont](../linux/spot-template.md)vagy a [PowerShellt](spot-powershell.md) .
 
 Helyszíni virtuálisgép-példányokkal is üzembe helyezhetők a [méretezési csoport](../../virtual-machine-scale-sets/use-spot.md).

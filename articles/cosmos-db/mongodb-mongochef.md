@@ -8,12 +8,11 @@ ms.date: 03/20/2020
 author: timsander1
 ms.author: tisande
 ms.custom: seodec18
-ms.openlocfilehash: 0159f69dcef2a98a8597762902ff2f45f30b0bef
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
-ms.translationtype: MT
+ms.openlocfilehash: 18a9f97d2cee9dd17345a1c8c0ae0efe442d79a4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85263109"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85799394"
 ---
 # <a name="connect-to-an-azure-cosmos-account-using-studio-3t"></a>Kapcsolódás Azure Cosmos-fiókhoz a Studio 3T használatával
 
@@ -63,25 +62,29 @@ Adatbázis, gyűjtemény és dokumentumok létrehozásához a Studio 3T használ
     :::image type="content" source="./media/mongodb-mongochef/AddDocument1.png" alt-text="Képernyőfelvétel a Studio 3T hozzáadása dokumentum menüelem":::
 5. A dokumentum hozzáadása párbeszédpanelen illessze be a következőt, majd kattintson a **dokumentum hozzáadása**lehetőségre.
 
-        {
+    ```json
+    {
         "_id": "AndersenFamily",
         "lastName": "Andersen",
         "parents": [
-               { "firstName": "Thomas" },
-               { "firstName": "Mary Kay"}
+            { "firstName": "Thomas" },
+            { "firstName": "Mary Kay"}
         ],
         "children": [
-           {
-               "firstName": "Henriette Thaulow", "gender": "female", "grade": 5,
-               "pets": [{ "givenName": "Fluffy" }]
-           }
+            {
+                "firstName": "Henriette Thaulow", "gender": "female", "grade": 5,
+                "pets": [{ "givenName": "Fluffy" }]
+            }
         ],
         "address": { "state": "WA", "county": "King", "city": "seattle" },
         "isRegistered": true
-        }
+    }
+    ```
+    
 6. Adjon hozzá egy másik dokumentumot, ezúttal a következő tartalommal:
 
-        {
+    ```json
+    {
         "_id": "WakefieldFamily",
         "parents": [
             { "familyName": "Wakefield", "givenName": "Robin" },
@@ -90,7 +93,7 @@ Adatbázis, gyűjtemény és dokumentumok létrehozásához a Studio 3T használ
         "children": [
             {
                 "familyName": "Merriam",
-                 "givenName": "Jesse",
+                "givenName": "Jesse",
                 "gender": "female", "grade": 1,
                 "pets": [
                     { "givenName": "Goofy" },
@@ -99,13 +102,15 @@ Adatbázis, gyűjtemény és dokumentumok létrehozásához a Studio 3T használ
             },
             {
                 "familyName": "Miller",
-                 "givenName": "Lisa",
-                 "gender": "female",
-                 "grade": 8 }
+                "givenName": "Lisa",
+                "gender": "female",
+                "grade": 8 }
         ],
         "address": { "state": "NY", "county": "Manhattan", "city": "NY" },
         "isRegistered": false
-        }
+    }
+    ```
+
 7. Minta lekérdezés végrehajtása. Keressen például egy "Andersen" vezetéknevű családot, és adja vissza a szülők és az állam mezőket.
 
     :::image type="content" source="./media/mongodb-mongochef/QueryDocument1.png" alt-text="Képernyőkép a Mongo Chef lekérdezési eredményeiről":::

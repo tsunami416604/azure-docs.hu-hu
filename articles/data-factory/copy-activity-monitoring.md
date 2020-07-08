@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.date: 06/08/2020
 ms.author: jingwang
 ms.openlocfilehash: 4e7828810a069756d1a0cde55ab47915ad11acc5
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85249703"
 ---
 # <a name="monitor-copy-activity"></a>Másolási tevékenység figyelése
@@ -50,7 +49,7 @@ Az alsó **végrehajtási adatok és időtartamok** a másolási tevékenység l
 
 A másolási tevékenység végrehajtásának részletei és a teljesítmény jellemzői a **másolási tevékenység futtatási eredményének**  >  **kimenete** szakaszban is megjelennek, amely a felhasználói felület figyelési nézetének megjelenítésére szolgál. A következő lista az esetleg visszaadott tulajdonságok teljes listáját tartalmazza. Csak a másolási forgatókönyvre vonatkozó tulajdonságokat fogja látni. További információ a tevékenységek figyeléséről általában programozott módon: Azure-beli adat- [előállító programozott figyelése](monitor-programmatically.md).
 
-| Tulajdonság neve  | Leírás | Kimeneti egység |
+| Tulajdonság neve  | Description | Kimeneti egység |
 |:--- |:--- |:--- |
 | dataRead | A forrásból beolvasott adatok tényleges mennyisége. | Int64 érték bájtban |
 | dataWritten | A fogadóba írt/elkötelezett adatok tényleges csatlakoztatása. A méret különbözhet a `dataRead` mérettől, mivel az egyes adattár az adatok tárolására szolgál. | Int64 érték bájtban |
@@ -75,7 +74,7 @@ A másolási tevékenység végrehajtásának részletei és a teljesítmény je
 | executionDetails | További részletek a másolási tevékenység lépésein, valamint a megfelelő lépéseken, időtartamokon, konfigurációkon stb. Nem javasoljuk, hogy elemezze ezt a szakaszt, mert megváltozhat. Ha szeretné jobban megismerni, hogy miként segíti a másolási teljesítmény megismerését és hibakeresését, tekintse meg a [vizuális figyelés](#monitor-visually) című szakaszt. | Tömb |
 | perfRecommendation | Teljesítmény-finomhangolási tippek másolása. A részletekért lásd a [teljesítmény-hangolási tippeket](copy-activity-performance-troubleshooting.md#performance-tuning-tips) . | Tömb |
 
-**Például**
+**Példa:**
 
 ```json
 "output": {

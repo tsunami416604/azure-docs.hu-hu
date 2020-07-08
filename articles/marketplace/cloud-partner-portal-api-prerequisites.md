@@ -7,12 +7,11 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/08/2020
 ms.author: dsindona
-ms.openlocfilehash: 1a20abf72ca25ba7c4b5600953766be4d62c708d
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
-ms.translationtype: MT
+ms.openlocfilehash: c435e171c7e3cabea4007c7b78cf60727bf55efd
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85516267"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958229"
 ---
 <a name="api-prerequisites"></a>API-előfeltételek
 ================
@@ -26,7 +25,7 @@ A Cloud Partner Portal API-k (egy egyszerű szolgáltatásnév és egy Azure Act
 <a name="create-a-service-principal-in-your-azure-active-directory-tenant"></a>Egyszerű szolgáltatásnév létrehozása a Azure Active Directory-bérlőben
 ----------------------------------------------------------------
 
-Először létre kell hoznia egy egyszerű szolgáltatásnevet az Azure AD-bérlőben. Ez a bérlő a Cloud Partner Portalban a saját engedélyeit kapja meg. A kód a saját hitelesítő adatai helyett a bérlőt használó API-kat hívja meg.  Az egyszerű szolgáltatásnév létrehozásával kapcsolatos teljes körű magyarázatért lásd: a [portál használata egy Azure Active Directory alkalmazás és szolgáltatásnév létrehozásához, amely hozzáférhet az erőforrásokhoz](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal).
+Először létre kell hoznia egy egyszerű szolgáltatásnevet az Azure AD-bérlőben. Ez a bérlő a Cloud Partner Portalban a saját engedélyeit kapja meg. A kód a saját hitelesítő adatai helyett a bérlőt használó API-kat hívja meg.  Az egyszerű szolgáltatásnév létrehozásával kapcsolatos teljes körű magyarázatért lásd [: útmutató: a portál használata az erőforrásokhoz hozzáférő Azure ad-alkalmazás és egyszerű szolgáltatásnév létrehozásához](../active-directory/develop/howto-create-service-principal-portal.md).
 
 
 <a name="add-the-service-principal-to-your-account"></a>Adja hozzá a szolgáltatásnevet a fiókjához
@@ -63,7 +62,7 @@ A Cloud Partner Portal API-k a következő eszközöket és protokollokat haszn�
 
 - Egy JSON Web Token (JWT) tulajdonosi jogkivonat, amely hozzáférést kér az erőforrásokhoz
 - Az [OpenID Connect](https://openid.net/connect/) (OIDC) protokoll az identitás ellenőrzéséhez
-- [Azure Active Directory (Azure ad) identitás-](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) szolgáltatóként
+- [Azure Active Directory (Azure ad) identitás-](../active-directory/fundamentals/active-directory-whatis.md) szolgáltatóként
 
 A JWT-token programozott beszerzésének két elve van:
 

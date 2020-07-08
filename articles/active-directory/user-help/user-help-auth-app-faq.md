@@ -13,10 +13,9 @@ ms.date: 06/03/2020
 ms.author: curtand
 ms.reviewer: olhaun
 ms.openlocfilehash: 349ad3a1fbdf9340eb2b6c2ec92ba85b0357dd8c
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84432502"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>Gyakran ismételt kérdések (GYIK) a Microsoft Authenticator alkalmazásról
@@ -57,7 +56,7 @@ Az Microsoft Authenticator alkalmazás felváltotta a Azure Authenticator alkalm
 | Az egyszeri jelszavas (OTP) kódok nem működnek. Mit tegyek? | Győződjön meg arról, hogy az eszközön megadott dátum és idő megfelelő, és hogy a rendszer automatikusan szinkronizálja őket. Ha a dátum és az idő helytelen, vagy nincs szinkronban, a kód nem fog működni. |
 | A Windows 10 Mobile operációs rendszer elavulttá vált a 2019 decemberében. A Windows Mobile operációs rendszerek Microsoft Authenticator is elavulttá válik? | A hitelesítő minden Windows Mobile operációs rendszeren a 2020. február 28. után nem lesz támogatott. A felhasználók nem jogosultak arra, hogy a fenti dátum után új frissítéseket kapjanak az alkalmazásnak. Február 28. után a 2020-es Microsoft-szolgáltatások, amelyek jelenleg támogatják a Microsoft Authenticator összes Windows Mobile operációs rendszeren történő hitelesítését, megkezdik a támogatásuk kivonását. A Microsoft-szolgáltatásokban való hitelesítéshez határozottan javasoljuk, hogy minden felhasználó számára a jelen dátum előtt váltson át egy másik hitelesítési mechanizmusra. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ha nem sikerül beszereznie a személyes Microsoft-fiók ellenőrzési kódját, tekintse meg az **ellenőrző kód problémáinak elhárítása** című szakaszt a [Microsoft-fiók biztonsági adatok & ellenőrző kódok](https://support.microsoft.com/help/12428/microsoft-account-security-info-verification-codes) című cikkben.
 

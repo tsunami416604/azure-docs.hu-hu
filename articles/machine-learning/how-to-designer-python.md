@@ -1,5 +1,5 @@
 ---
-title: Python
+title: Python-szkript végrehajtása a Designerben
 titleSuffix: Azure Machine Learning
 description: Ismerje meg, hogyan alakíthatja át az adatátalakítást a Python használatával Azure Machine Learning Designerben.
 services: machine-learning
@@ -10,14 +10,13 @@ author: peterclu
 ms.author: peterlu
 ms.date: 02/28/2020
 ms.custom: designer, tracking-python
-ms.openlocfilehash: af26dce03c0dcf5226c52dcdd8af4408186aa343
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.openlocfilehash: 31028ba0417f312aa0caaf49cb4b2d432f89979f
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84557035"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86041013"
 ---
-# <a name="execute-python-code-in-azure-machine-learning-designer"></a>Python-kód végrehajtása a Azure Machine Learning Designerben
+# <a name="run-python-code-in-azure-machine-learning-designer"></a>Python-kód futtatása a Azure Machine Learning Designerben
 
 Ebből a cikkből megtudhatja, hogyan használhatja a [Python parancsfájl](algorithm-module-reference/execute-python-script.md) -modult az egyéni logika Azure Machine learning Designerhez való hozzáadásához. A következő útmutatóban a Panda Library használatával egyszerű funkció-mérnöki műveleteket hajthat végre.
 
@@ -83,6 +82,6 @@ Ebben a példában a pandák használatával két oszlopot egyesítünk a szemé
 
 Most már rendelkezik egy adatkészlettel, amely a **dollár/HP**új funkcióval rendelkezik, ami hasznos lehet az autó ajánlójának betanításához. Ez egy példa a szolgáltatások kinyerésére és a dimenzióját csökkentésére. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan [importálhatja a saját adatait](how-to-designer-import-data.md) Azure Machine learning Designerben.

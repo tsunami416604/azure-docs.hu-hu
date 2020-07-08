@@ -11,10 +11,9 @@ ms.author: tamram
 ms.subservice: blobs
 ms.custom: references_regions
 ms.openlocfilehash: 60f83fae6e7e685a1065d1c01327a004d9bb2864
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84675652"
 ---
 # <a name="point-in-time-restore-for-block-blobs-preview"></a>Időponthoz való visszaállítás a blokk Blobok számára (előzetes verzió)
@@ -162,7 +161,7 @@ Az időponthoz tartozó visszaállítás díjszabásáról további információ
 
 Ha kérdéseket szeretne feltenni az időponthoz tartozó visszaállítás előzetes verziójával kapcsolatban, vagy visszajelzést szeretne küldeni, forduljon a Microsofthoz pitrdiscussion@microsoft.com .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Időponthoz való visszaállítás engedélyezése és kezelése a blokk Blobok számára (előzetes verzió)](point-in-time-restore-manage.md)
 - [A hírcsatorna-támogatás módosítása az Azure Blob Storage (előzetes verzió)](storage-blob-change-feed.md)

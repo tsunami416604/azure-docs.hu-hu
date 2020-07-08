@@ -6,10 +6,9 @@ author: MSNev
 ms.author: newylie
 ms.date: 06/05/2020
 ms.openlocfilehash: 50a7e9520730159ad2df3ec3e0b75fcfa0c5ce0a
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84451066"
 ---
 # <a name="troubleshooting-sdk-load-failure-for-javascript-web-apps"></a>Az SDK betöltési hibáinak elhárítása JavaScript-webalkalmazásokhoz
@@ -101,7 +100,7 @@ Az alábbi szakaszban a különböző jelentési lehetőségek szerepelnek, és 
 
 Először is ellenőrizheti a JavaScript-kivételeket, ha olyan böngészőt használ, amely támogatja a fejlesztői eszközöket (F12), betölti a lapot, és áttekinti, hogy történt-e kivétel
 
-Ha a rendszer kivételeket jelez az SDK-szkriptben (például ai. 2. min. js), akkor ez arra utalhat, hogy az SDK-ba átadott konfiguráció váratlan vagy hiányzó szükséges konfigurációt tartalmaz, vagy egy hibás kiadás lett telepítve a CDN-ben.
+Ha a rendszer kivételeket jelez az SDK-szkriptben (például ai.2.min.js), akkor ez arra utalhat, hogy az SDK-ba átadott konfiguráció váratlan vagy hiányzó szükséges konfigurációt tartalmaz, vagy ha egy hibás kiadás lett telepítve a CDN-ben.
 
 A hibás konfiguráció ellenőrzéséhez módosítsa a kódrészletbe átadott konfigurációt (ha még nincs), hogy csak karakterlánc-értékként tartalmazza a kialakítási kulcsot.
 
@@ -128,7 +127,7 @@ Feltételezve, hogy a következő lépés nem jelent kivételt a konzol hibakere
 > [!NOTE]
 > Az inicializálás során az SDK néhány alapvető ellenőrzést hajt végre az ismert fő függőségek tekintetében. Ha ezeket az aktuális futtatókörnyezet nem biztosítja, akkor a rendszer figyelmeztető üzenetként fogja jelenteni a hibákat a konzolon, de csak akkor, ha a `loggingLevelConsole` nullánál nagyobb.
 
-Ha továbbra sem sikerül az inicializálás, próbálja meg engedélyezni a ```enableDebug``` konfigurációs beállítást. Ez azt eredményezi, hogy az összes belső hiba kivételként fog megjelenni (ami miatt a telemetria elvész). Mivel ez csak fejlesztőként van beállítva, valószínűleg zajosak lesznek az egyes belső ellenőrzések részeként kiváltott kivételek, ezért az egyes kivételeket át kell tekintenie annak megállapításához, hogy az SDK milyen hibát okoz. A parancsfájl nem minified verzióját használja (jegyezze fel az alábbi bővítményt: ". js", nem ". min. js"), ellenkező esetben a kivételek nem olvashatók.
+Ha továbbra sem sikerül az inicializálás, próbálja meg engedélyezni a ```enableDebug``` konfigurációs beállítást. Ez azt eredményezi, hogy az összes belső hiba kivételként fog megjelenni (ami miatt a telemetria elvész). Mivel ez csak fejlesztőként van beállítva, valószínűleg zajosak lesznek az egyes belső ellenőrzések részeként kiváltott kivételek, ezért az egyes kivételeket át kell tekintenie annak megállapításához, hogy az SDK milyen hibát okoz. A parancsfájl nem minified verzióját használja (jegyezze fel az alábbi bővítményt ". js" és nem ".min.js"), ellenkező esetben a kivételek nem olvashatók.
 
 > [!WARNING]
 > Ez csak fejlesztő beállítás, és nem szabad engedélyezni a teljes éles környezetben, mivel elveszti a telemetria.
@@ -194,7 +193,7 @@ Ha a végfelhasználók vállalati hálózaton vannak, akkor valószínűleg a t
 
 #### <a name="host-the-sdk-on-your-own-cdn"></a>Az SDK üzemeltetése saját CDN-ben
 
- Ahelyett, hogy a végfelhasználó letölti a Application Insights SDK-t a nyilvános CDN-ből, a saját CDN-végpontján futtathatja a Application Insights SDK-t. Javasoljuk, hogy egy adott verziót (AI. 2. #. #. min. js) használjon, hogy könnyebb legyen azonosítani, hogy melyik verziót használja. Rendszeresen frissítse az aktuális verzióra (AI. 2. min. js), így kihasználhatja az elérhetővé váló hibajavításokat és új funkciókat.
+ Ahelyett, hogy a végfelhasználó letölti a Application Insights SDK-t a nyilvános CDN-ből, a saját CDN-végpontján futtathatja a Application Insights SDK-t. Javasoljuk, hogy egy adott verziót (AI. 2. #. # .min.js) használjon, hogy könnyebb legyen azonosítani, hogy melyik verziót használja. Frissítse rendszeresen a jelenlegi verzióra (ai.2.min.js), így kihasználhatja az elérhetővé váló hibajavításokat és új funkciókat.
 
 #### <a name="use-npm-packages-to-embed-the-application-insight-sdk"></a>NPM-csomagok használata az Application Insight SDK beágyazásához
 
@@ -206,6 +205,6 @@ A kódrészlet és a nyilvános CDN-végpontok használata helyett használhatja
 A kódrészlethez hasonlóan az is előfordulhat, hogy a saját parancsfájlokat (az SDK-NPM csomagok használatával vagy anélkül) érintheti az itt felsorolt blokkoló problémák, így az alkalmazástól, a felhasználóktól és a keretrendszertől függően érdemes lehet megfontolni a kódrészlet logikájának megvalósítását, hogy észlelje és jelentse ezeket a problémákat.
 
 
-## <a name="next-steps"></a>Következő lépések 
+## <a name="next-steps"></a>További lépések 
 - [További segítség kérése a GitHubon történt probléma bejelentésével](https://github.com/Microsoft/ApplicationInsights-JS/issues)
 - [Weblap használatának figyelése](javascript.md)

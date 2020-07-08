@@ -4,12 +4,11 @@ description: Ismerje meg, hogyan frissíthet egy Azure Kubernetes-szolgáltatás
 services: container-service
 ms.topic: article
 ms.date: 05/28/2020
-ms.openlocfilehash: 5f0391c10a99173e7a2d87c1dd08a36852fc0450
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
-ms.translationtype: MT
+ms.openlocfilehash: ea9f0154c221fe99d683cc58d5f6dccfce8d948c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84887982"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85800494"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service- (AKS-) fürt frissítése
 
@@ -53,6 +52,8 @@ ERROR: Table output unavailable. Use the --query option to specify an appropriat
 
 > [!Important]
 > A csomópont-túllépések előfizetési kvótát igényelnek az egyes frissítési műveletekhez szükséges maximális túlfeszültségek számához. Például egy olyan fürt, amely 5 csomópontos készlettel rendelkezik, amelyek mindegyike 4 csomóponttal rendelkezik, összesen 20 csomóponttal rendelkezik. Ha az egyes csomópont-készletek maximális túllépésének értéke 50%, a frissítés befejezéséhez további számítási és IP-kvóta (2 csomópont * 5 készlet) szükséges.
+>
+> Ha az Azure CNI-t használja, ellenőrizze, hogy vannak-e elérhető IP-címek az alhálózatban, valamint az [Azure CNI IP-követelményeinek kielégítéséhez](configure-azure-cni.md).
 
 Alapértelmezés szerint az AK egy további csomóponttal konfigurálja a verziófrissítést. Az egyik alapértelmezett értéke a maximális túllépési beállítás lehetővé teszi az AK számára a munkaterhelés megszakadásának minimalizálását egy további csomópont létrehozásával, mielőtt a meglévő alkalmazások kihelyezik a régebbi verziójú csomópontokat. A maximális túlfeszültség-érték testreszabható, és a frissítési sebesség és a frissítés megszakadása közötti kompromisszum lehetővé tételéhez. A maximális túlfeszültség-érték növelésével a verziófrissítési folyamat gyorsabban elvégezhető, de a maximális túllépés nagy értékének beállítása a frissítési folyamat során fennakadást okozhat. 
 

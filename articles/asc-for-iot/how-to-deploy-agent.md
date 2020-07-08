@@ -16,10 +16,9 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
 ms.openlocfilehash: 4253e496aca4cbf71fab7ef0ee388b1356df5c16
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84456793"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>Biztonsági ügynök kiválasztása és üzembe helyezése a IoT-eszközön
@@ -46,7 +45,7 @@ A C-alapú biztonsági ügynök alacsonyabb memória-lábnyomot tartalmaz, és i
 | --- | ----------- | --------- |
 | Nyílt forráskódú | Az [mit licenc](https://en.wikipedia.org/wiki/MIT_License) alatt érhető el a [githubban](https://aka.ms/iot-security-github-c) | Az [mit licenc](https://en.wikipedia.org/wiki/MIT_License) alatt érhető el a [githubban](https://aka.ms/iot-security-github-cs) |
 | Fejlesztési nyelv    | C# | C# |
-| Támogatott Windows-platformok? | Nem | Igen |
+| Támogatott Windows-platformok? | Nem | Yes |
 | Windows előfeltételek | --- | [WMI](https://docs.microsoft.com/windows/desktop/wmisdk/) |
 | Támogatott linuxos platformok? | Igen, x64 és x86 | Igen, csak x64 |
 | A Linux előfeltételei | libunwind8, libcurl3, UUID-Runtime, auditált, audispd-plugins | libunwind8, libcurl3, UUID-Runtime, auditált, audispd-plugins, sudo, netstat, iptables |
@@ -60,7 +59,7 @@ A C-alapú biztonsági ügynök alacsonyabb memória-lábnyomot tartalmaz, és i
 
 ## <a name="security-agent-installation-guidelines"></a>Biztonsági ügynök telepítési útmutatója
 
-**Windows**esetén: a SecurityAgent. ps1 telepítési parancsfájlt rendszergazdai PowerShell-ablakból kell végrehajtani.
+**Windows**esetén: a install SecurityAgent.ps1 szkriptet rendszergazdai PowerShell-ablakból kell végrehajtani.
 
 **Linux**esetén: a InstallSecurityAgent.sh rendszergazdaként kell futnia. A telepítési parancs "sudo" előtaggal való előjavítását javasoljuk.
 
@@ -100,7 +99,7 @@ Az alábbi lista tartalmazza az összes jelenleg támogatott platformot.
 |C#|Windows 10 IoT Core, Build 17763    |x64|
 |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A konfigurációs beállításokkal kapcsolatos további tudnivalókért folytassa az ügynök konfigurációjának útmutatója című témakört.
 > [!div class="nextstepaction"]

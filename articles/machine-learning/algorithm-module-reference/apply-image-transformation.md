@@ -1,5 +1,5 @@
 ---
-title: Rendszerkép-átalakítás alkalmazása
+title: Képátalakítás alkalmazása
 titleSuffix: Azure Machine Learning
 description: Bemutatjuk, hogyan használható a rendszerkép-átalakítási modul a rendszerkép-átalakításra a képkönyvtárra való alkalmazásához.
 services: machine-learning
@@ -10,13 +10,12 @@ author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
 ms.openlocfilehash: 7ff135911742c49c2c52ce30d1dca00bc89b3a56
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84450723"
 ---
-# <a name="apply-image-transformation"></a>Rendszerkép-átalakítás alkalmazása 
+# <a name="apply-image-transformation"></a>Képátalakítás alkalmazása 
 
 Ez a cikk azt ismerteti, hogyan használható a rendszerkép-átalakítási modul alkalmazása a Azure Machine Learning Designerben (előzetes verzió), hogy a korábban megadott rendszerkép-átalakítás alapján módosítson egy bemeneti képkönyvtárat.  
 
@@ -64,6 +63,6 @@ Az átalakítás megadásához kapcsolódnia kell egy [init rendszerkép-transzf
 | ---------------------- | -------------- | ---------------------- |
 | Kimeneti rendszerkép könyvtára | ImageDirectory | Kimeneti rendszerkép könyvtára |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

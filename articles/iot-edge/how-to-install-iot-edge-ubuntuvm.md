@@ -7,14 +7,13 @@ ms.reviewer: kgremban
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 03/19/2020
+ms.date: 06/29/2020
 ms.author: pdecarlo
-ms.openlocfilehash: 64e2787aa282e75893fa34e6de1373e6afed09fe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 050631731a04e4c2ea89d8c7792ec093d6ab316e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80349604"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85800562"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>Azure IoT Edge futtatása Ubuntu-Virtual Machines
 
@@ -63,7 +62,7 @@ Az [üzembe helyezés az Azure-ban gomb](../azure-resource-manager/templates/dep
 
     Ha az összes mezőt kitöltötte, jelölje be az oldal alján található jelölőnégyzetet a feltételek elfogadásához, majd válassza a **vásárlás** lehetőséget a telepítés megkezdéséhez.
 
-1. Ellenőrizze, hogy a központi telepítés sikeresen befejeződött-e.  Telepíteni kell egy virtuálisgép-erőforrást a kiválasztott erőforráscsoporthoz.  Jegyezze fel a gép nevét, amelynek formátuma `vm-0000000000000`a következő:. Jegyezze fel a társított **DNS-nevet**is, amelynek a formátuma `<dnsLabelPrefix>`. `<location>`. cloudapp.Azure.com.
+1. Ellenőrizze, hogy a központi telepítés sikeresen befejeződött-e.  Telepíteni kell egy virtuálisgép-erőforrást a kiválasztott erőforráscsoporthoz.  Jegyezze fel a gép nevét, amelynek formátuma a következő: `vm-0000000000000` . Jegyezze fel a társított **DNS-nevet**is, amelynek a formátuma `<dnsLabelPrefix>` . `<location>` cloudapp.azure.com.
 
     A **DNS-név** az újonnan telepített virtuális gép **Áttekintés** részéből szerezhető be a Azure Portalon belül.
 
@@ -108,11 +107,10 @@ Az [üzembe helyezés az Azure-ban gomb](../azure-resource-manager/templates/dep
 
 1. Új virtuális gép létrehozása:
 
-    A **authenticationType** `password`használatához tekintse meg az alábbi példát:
+    A **authenticationType** használatához `password` tekintse meg az alábbi példát:
 
    ```azurecli-interactive
-   az group deployment create \
-   --name edgeVm \
+   az deployment group create \
    --resource-group IoTEdgeResources \
    --template-uri "https://aka.ms/iotedge-vm-deploy" \
    --parameters dnsLabelPrefix='my-edge-vm1' \
@@ -122,15 +120,14 @@ Az [üzembe helyezés az Azure-ban gomb](../azure-resource-manager/templates/dep
    --parameters adminPasswordOrKey="<REPLACE_WITH_SECRET_PASSWORD>"
    ```
 
-    Ha SSH-kulccsal szeretne hitelesítést végezni, ezt megteheti egy **authenticationType** megadásával `sshPublicKey`, majd megadhatja az SSH-kulcs értékét a **adminPasswordOrKey** paraméterben.  Erre mutat példát az alábbi ábra.
+    Ha SSH-kulccsal szeretne hitelesítést végezni, ezt megteheti egy **authenticationType** megadásával, majd megadhatja az `sshPublicKey` SSH-kulcs értékét a **adminPasswordOrKey** paraméterben.  Erre mutat példát az alábbi ábra.
 
     ```azurecli-interactive
     #Generate the SSH Key
     ssh-keygen -m PEM -t rsa -b 4096 -q -f ~/.ssh/iotedge-vm-key -N ""  
 
     #Create a VM using the iotedge-vm-deploy script
-    az group deployment create \
-    --name edgeVm \
+    az deployment group create \
     --resource-group IoTEdgeResources \
     --template-uri "https://aka.ms/iotedge-vm-deploy" \
     --parameters dnsLabelPrefix='my-edge-vm1' \
@@ -138,10 +135,9 @@ Az [üzembe helyezés az Azure-ban gomb](../azure-resource-manager/templates/dep
     --parameters deviceConnectionString=$(az iot hub device-identity show-connection-string --device-id <REPLACE_WITH_DEVICE-NAME> --hub-name <REPLACE-WITH-HUB-NAME> -o tsv) \
     --parameters authenticationType='sshPublicKey' \
     --parameters adminPasswordOrKey="$(< ~/.ssh/iotedge-vm-key.pub)"
-     
     ```
 
-1. Ellenőrizze, hogy a központi telepítés sikeresen befejeződött-e.  Telepíteni kell egy virtuálisgép-erőforrást a kiválasztott erőforráscsoporthoz.  Jegyezze fel a gép nevét, amelynek formátuma `vm-0000000000000`a következő:. Jegyezze fel a társított **DNS-nevet**is, amelynek a formátuma `<dnsLabelPrefix>`. `<location>`. cloudapp.Azure.com.
+1. Ellenőrizze, hogy a központi telepítés sikeresen befejeződött-e.  Telepíteni kell egy virtuálisgép-erőforrást a kiválasztott erőforráscsoporthoz.  Jegyezze fel a gép nevét, amelynek formátuma a következő: `vm-0000000000000` . Jegyezze fel a társított **DNS-nevet**is, amelynek a formátuma `<dnsLabelPrefix>` . `<location>` cloudapp.azure.com.
 
     A **DNS-név** az előző lépés JSON-formátumú kimenetéről szerezhető be a **kimenetek** szakaszban a **nyilvános SSH** -bejegyzés részeként.  Ennek a bejegyzésnek az értéke az újonnan üzembe helyezett gépre való SSH-ba is használható.
 

@@ -7,12 +7,11 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: troubleshooting
 ms.date: 06/16/2020
-ms.openlocfilehash: dcf687a369b32b2055f579f2599a0c3097f9f9f3
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
-ms.translationtype: MT
+ms.openlocfilehash: 7bd3f1a5b242ee5196e92456cb3fc8c97f8f5b27
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84977707"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958531"
 ---
 # <a name="virtual-machine-certification---issues-and-solutions"></a>A virtuális gép hitelesítése – problémák és megoldások
 
@@ -31,8 +30,8 @@ Ez a hiba akkor fordul elő, ha egy másik közzétevőhöz tartozó alaprendsze
 
 A probléma megoldásához kérje le legújabb rendszerképét az Azure Marketplace-ről, és végezze el a lemezkép módosítását. A következő témakörben megtekintheti a jóváhagyott alapképeket, ahol megkeresheti a lemezképet:
 
-- [Linux – rendszerképek](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros?toc=/azure/virtual-machines/linux/toc.json)
-- [Windows – rendszerképek](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-create-vhd#select-an-approved-base)
+- [Linux – rendszerképek](../../virtual-machines/linux/endorsed-distros.md?toc=/azure/virtual-machines/linux/toc.json)
+- [Windows – lemezképek](create-azure-vm-technical-asset.md#create-a-vm-image-using-an-approved-base))
 
 ## <a name="vm-extension-failure"></a>VM-bővítmény hibája
 
@@ -55,11 +54,11 @@ Győződjön meg arról, hogy a virtuálisgép-bővítmények megfelelően vanna
 
    ![Sikeres kiépítés](./media/vm-certification-issues-solutions-2.png)
 
-   Ha a virtuálisgép-bővítmény nem sikerül, lépjen a [Linux diagnosztikai bővítmény használata elemre a metrikák és naplók figyeléséhez](https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-linux) az engedélyezéshez. Ha nem szeretné, hogy a virtuálisgép-bővítmény engedélyezve legyen, forduljon a támogatási csapathoz, és kérje meg, hogy tiltsa le a bővítményt.
+   Ha a virtuálisgép-bővítmény nem sikerül, lépjen a [Linux diagnosztikai bővítmény használata elemre a metrikák és naplók figyeléséhez](../../virtual-machines/extensions/diagnostics-linux.md) az engedélyezéshez. Ha nem szeretné, hogy a virtuálisgép-bővítmény engedélyezve legyen, forduljon a támogatási csapathoz, és kérje meg, hogy tiltsa le a bővítményt.
 
 ## <a name="virtual-machine-provisioning-issue"></a>Virtuális gépek kiépítési hibája
 
-Az ajánlat elküldése előtt győződjön meg arról, hogy a kiépítési folyamat szigorúan követi a virtuális gépet. A virtuális gép kiépítési JSON-formátumának megtekintéséhez nyissa meg az [Azure virtuális gép (VM) rendszerképének minősítését](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-deploy-json-template).
+Az ajánlat elküldése előtt győződjön meg arról, hogy a kiépítési folyamat szigorúan követi a virtuális gépet. A virtuális gép kiépítési JSON-formátumának megtekintéséhez nyissa meg az [Azure virtuális gép (VM) rendszerképének minősítését](azure-vm-image-certification.md).
 
 A kiépítési problémák a következő meghibásodási helyzetekben lehetnek:
 
@@ -71,8 +70,8 @@ A kiépítési problémák a következő meghibásodási helyzetekben lehetnek:
 
 > [!NOTE]
 > A virtuális gépek általánosításával kapcsolatos dokumentációhoz kövesse az alábbi hivatkozásokat:
-> - [Linux](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-configure-vm#generalize-the-image)
-> - [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource#generalize-the-windows-vm-using-sysprep)
+> - [Linux](create-azure-vm-technical-asset.md#generalize-the-image))
+> - [Windows](../../virtual-machines/windows/capture-image-resource.md#generalize-the-windows-vm-using-sysprep))
 
 ## <a name="software-compliance-for-windows"></a>Windows rendszerhez készült szoftverek megfelelősége
 
@@ -82,13 +81,13 @@ Ne hozzon létre saját Windows-rendszerképet, amelyben az SQL Server telepítv
 
 Ha a Visual studiót vagy bármely Office licenccel rendelkező terméket próbál telepíteni, az előzetes jóváhagyáshoz forduljon a támogatási csoporthoz.
 
-További információ: Azure-beli [virtuális gépek technikai eszközeinek létrehozása](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-create-vhd#select-an-approved-base) egy jóváhagyott alap kiválasztásához.
+További információért látogasson el [Az Azure-beli virtuális gépek technikai eszközeinek létrehozásához](create-azure-vm-technical-asset.md#create-a-vm-image-using-an-approved-base), és válassza ki a jóváhagyott alapot.
 
 ## <a name="tool-kit-test-case-execution-failed"></a>Az eszközkészlet tesztelési esetének végrehajtása nem sikerült
 
 A Microsoft minősítési eszközkészlet segítséget nyújt a tesztelési esetek végrehajtásában annak ellenőrzéséhez, hogy a VHD/rendszerkép kompatibilis-e az Azure-környezettel.
 
-Töltse le a [Microsoft minősítési eszközkészletet](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-certify-vm).
+Töltse le a [Microsoft minősítési eszközkészletet](azure-vm-image-certification.md).
 
 ## <a name="linux-test-cases"></a>Linux-tesztelési esetek
 
@@ -249,7 +248,7 @@ Ha a lemezkép nem a következő kernel-verziók egyikével lett telepítve, fri
 
 Az Azure-ban az összes virtuális merevlemeznek legalább 1 MB-nak kell lennie. Ha a VHD-fájl nem felel meg az ajánlott virtuális méretnek, akkor előfordulhat, hogy a rendszer elutasítja a kérést.
 
-kövesse az irányelveket, ha nyers lemezről VHD-re konvertál, és biztosítania kell, hogy a nyers lemez mérete több, mint 1 MB. További információ: [nem támogatott disztribúciók információi](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic)
+kövesse az irányelveket, ha nyers lemezről VHD-re konvertál, és biztosítania kell, hogy a nyers lemez mérete több, mint 1 MB. További információ: [nem támogatott disztribúciók információi](../../virtual-machines/linux/create-upload-generic.md)
 
 ## <a name="vm-access-denied"></a>Virtuális gép hozzáférése megtagadva
 

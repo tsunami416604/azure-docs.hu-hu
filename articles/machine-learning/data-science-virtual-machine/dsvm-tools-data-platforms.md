@@ -10,12 +10,11 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: cd787881957d78f179107e46b2650de4618c7724
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: ccb95064f756ef035b7da92d029680f1c195982b
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80282324"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958735"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>A Data Science Virtual Machine támogatott adatplatformok
 
@@ -39,13 +38,15 @@ A DSVM a következő adatplatform-eszközöket támogatja.
 
 ### <a name="setup"></a>Telepítés
 
-Az adatbázis-kiszolgáló már előre konfigurálva van, és a SQL Serverhoz (például `SQL Server (MSSQLSERVER)`) kapcsolódó Windows-szolgáltatások automatikus futásra vannak beállítva. Az egyetlen manuális lépés magában foglalja az adatbázis-elemzések Microsoft Machine Learning Server használatával történő engedélyezését. Az elemzés engedélyezéséhez futtassa a következő parancsot egyszeri műveletként a SQL Server Management Studio (SSMS) alkalmazásban. Futtassa ezt a parancsot a számítógép-rendszergazdaként való bejelentkezés után, nyisson meg egy új lekérdezést a SSMS, és győződjön meg arról, `master`hogy a kiválasztott adatbázis a következő:
+Az adatbázis-kiszolgáló már előre konfigurálva van, és a SQL Serverhoz (például) kapcsolódó Windows-szolgáltatások `SQL Server (MSSQLSERVER)` automatikus futásra vannak beállítva. Az egyetlen manuális lépés magában foglalja az adatbázis-elemzések Microsoft Machine Learning Server használatával történő engedélyezését. Az elemzés engedélyezéséhez futtassa a következő parancsot egyszeri műveletként a SQL Server Management Studio (SSMS) alkalmazásban. Futtassa ezt a parancsot a számítógép-rendszergazdaként való bejelentkezés után, nyisson meg egy új lekérdezést a SSMS, és győződjön meg arról, hogy a kiválasztott adatbázis a következő `master` :
 
-        CREATE LOGIN [%COMPUTERNAME%\SQLRUserGroup] FROM WINDOWS 
+```sql
+CREATE LOGIN [%COMPUTERNAME%\SQLRUserGroup] FROM WINDOWS 
+```
 
-        (Replace %COMPUTERNAME% with your VM name.)
-       
-SQL Server Management Studio futtatásához megkeresheti a programok listájában a "SQL Server Management Studio" kifejezést, vagy a Windows Search használatával megkeresheti és futtathatja. Amikor a rendszer kéri a hitelesítő adatokat, válassza a **Windows-hitelesítés** lehetőséget ```localhost``` , és használja a gép nevét vagy a **SQL Server neve** mezőt.
+(Cserélje le a% számítógépnév%-ot a virtuális gép nevére.)
+
+SQL Server Management Studio futtatásához megkeresheti a programok listájában a "SQL Server Management Studio" kifejezést, vagy a Windows Search használatával megkeresheti és futtathatja. Amikor a rendszer kéri a hitelesítő adatokat, válassza a **Windows-hitelesítés** lehetőséget, és használja a gép nevét vagy ```localhost``` a **SQL Server neve** mezőt.
 
 ### <a name="how-to-use-and-run-it"></a>Használat és Futtatás
 
@@ -55,7 +56,7 @@ Emellett a DSVM ODBC-és JDBC-illesztőprogramokkal is rendelkezik, amelyekkel a
 
 ### <a name="how-is-it-configured-and-installed-on-the-dsvm"></a>Hogyan van konfigurálva és telepítve a DSVM? 
 
- A SQL Server a szabványos módon települ. A következő címen érhető el `C:\Program Files\Microsoft SQL Server`:. Az adatbázison belüli Machine Learning Server példány a következő címen `C:\Program Files\Microsoft SQL Server\MSSQL13.MSSQLSERVER\R_SERVICES`található:. A DSVM külön önálló Machine Learning Server-példánnyal is rendelkezik, amely a következő helyen `C:\Program Files\Microsoft\R Server\R_SERVER`található:. Ez a két Machine Learning Server példány nem osztja meg a kódtárakat.
+ A SQL Server a szabványos módon települ. A következő címen érhető el: `C:\Program Files\Microsoft SQL Server` . Az adatbázison belüli Machine Learning Server példány a következő címen található: `C:\Program Files\Microsoft SQL Server\MSSQL13.MSSQLSERVER\R_SERVICES` . A DSVM külön önálló Machine Learning Server-példánnyal is rendelkezik, amely a következő helyen található: `C:\Program Files\Microsoft\R Server\R_SERVER` . Ez a két Machine Learning Server példány nem osztja meg a kódtárakat.
 
 
 ## <a name="apache-spark-2x-standalone"></a>Apache Spark 2. x (önálló)
@@ -69,24 +70,26 @@ Emellett a DSVM ODBC-és JDBC-illesztőprogramokkal is rendelkezik, amelyekkel a
 | A DSVM kapcsolódó eszközök       | PySpark, Scala<br/>Jupyter (Spark/PySpark kernelek)<br/>Microsoft Machine Learning Server, Sparker, Sparklyr <br />Apache Drill      |
 
 ### <a name="how-to-use-it"></a>Használat
-A `spark-submit` (z) vagy parancs futtatásával elküldheti a Spark `pyspark` -feladatokat a parancssorba. Jupyter jegyzetfüzet létrehozásához hozzon létre egy új jegyzetfüzetet a Spark kernel segítségével.
+A (z `spark-submit` ) vagy parancs futtatásával elküldheti a Spark-feladatokat a parancssorba `pyspark` . Jupyter jegyzetfüzet létrehozásához hozzon létre egy új jegyzetfüzetet a Spark kernel segítségével.
 
 A Spark for R használatával olyan könyvtárakat használhat, mint a Sparker, a Sparklyr és a Microsoft Machine Learning Server, amelyek elérhetők a DSVM. Lásd az előző táblázatban szereplő mintákhoz tartozó mutatókat.
 
 ### <a name="setup"></a>Telepítés
 Mielőtt a (z) Ubuntu Linux DSVM kiadásban Microsoft Machine Learning Server Spark-kontextusban fut, végre kell hajtania egy egyszeri telepítési lépést, amely lehetővé teszi a helyi egycsomópontos Hadoop HDFS és a fonal példányának engedélyezését. Alapértelmezés szerint a Hadoop Services telepítve van, de le van tiltva a DSVM. Az engedélyezéshez futtassa a következő parancsokat root-ként az első alkalommal:
 
-    echo -e 'y\n' | ssh-keygen -t rsa -P '' -f ~hadoop/.ssh/id_rsa
-    cat ~hadoop/.ssh/id_rsa.pub >> ~hadoop/.ssh/authorized_keys
-    chmod 0600 ~hadoop/.ssh/authorized_keys
-    chown hadoop:hadoop ~hadoop/.ssh/id_rsa
-    chown hadoop:hadoop ~hadoop/.ssh/id_rsa.pub
-    chown hadoop:hadoop ~hadoop/.ssh/authorized_keys
-    systemctl start hadoop-namenode hadoop-datanode hadoop-yarn
+```bash
+echo -e 'y\n' | ssh-keygen -t rsa -P '' -f ~hadoop/.ssh/id_rsa
+cat ~hadoop/.ssh/id_rsa.pub >> ~hadoop/.ssh/authorized_keys
+chmod 0600 ~hadoop/.ssh/authorized_keys
+chown hadoop:hadoop ~hadoop/.ssh/id_rsa
+chown hadoop:hadoop ~hadoop/.ssh/id_rsa.pub
+chown hadoop:hadoop ~hadoop/.ssh/authorized_keys
+systemctl start hadoop-namenode hadoop-datanode hadoop-yarn
+```
 
-Ha már nincs szüksége rájuk, leállíthatja a Hadoop kapcsolódó szolgáltatásokat ```systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn```.
+Ha már nincs szüksége rájuk, leállíthatja a Hadoop kapcsolódó szolgáltatásokat ```systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn``` .
 
-Egy minta, amely bemutatja, hogyan fejlesztheti és tesztelheti a MRS-t egy távoli Spark-környezetben (amely a DSVM önálló Spark-példánya), és `/dsvm/samples/MRS` elérhető a címtárban.
+Egy minta, amely bemutatja, hogyan fejlesztheti és tesztelheti a MRS-t egy távoli Spark-környezetben (amely a DSVM önálló Spark-példánya), és elérhető a `/dsvm/samples/MRS` címtárban.
 
 
 ### <a name="how-is-it-configured-and-installed-on-the-dsvm"></a>Hogyan van konfigurálva és telepítve a DSVM? 
@@ -97,7 +100,7 @@ Egy minta, amely bemutatja, hogyan fejlesztheti és tesztelheti a MRS-t egy táv
 
 Az Azure Blob Storage-ból vagy a Azure Data Lake Storageból származó adatok eléréséhez szükséges kódtárak a Microsoft MMLSpark gépi tanulási kódtárak használatával $SPARK _HOME/jars. Ezek a tégelyek automatikusan betöltődnek a Spark indításakor. Alapértelmezés szerint a Spark a helyi lemezen lévő adatátvitelt használja. 
 
-Ahhoz, hogy a DSVM található Spark-példány hozzáférjen a blob Storage-ban vagy a Azure Data Lake Storageban tárolt információhoz, `core-site.xml` létre kell hoznia és konfigurálnia kell a fájlt a $Spark _HOME/conf/Core-site.xml.template. A blob Storage-hoz és a Azure Data Lake Storagehoz is hozzá kell férnie a megfelelő hitelesítő adatokkal. (Vegye figyelembe, hogy a sablonfájlok helyőrzőket használnak a blob Storage és a Azure Data Lake Storage konfigurációkhoz.)
+Ahhoz, hogy a DSVM található Spark-példány hozzáférjen a blob Storage-ban vagy a Azure Data Lake Storageban tárolt adatfájlokhoz, a `core-site.xml` fájlt a $SPARK _HOME/conf/core-site.xml. template fájlban található sablon alapján kell létrehoznia és konfigurálnia. A blob Storage-hoz és a Azure Data Lake Storagehoz is hozzá kell férnie a megfelelő hitelesítő adatokkal. (Vegye figyelembe, hogy a sablonfájlok helyőrzőket használnak a blob Storage és a Azure Data Lake Storage konfigurációkhoz.)
 
-Azure Data Lake Storage szolgáltatás hitelesítő adatainak létrehozásával kapcsolatos részletes információkért lásd: [hitelesítés a Azure Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-authenticate-using-active-directory)használatával. A blob Storage vagy a Azure Data Lake Storage hitelesítő adatainak a Core-site. xml fájlban való megadása után az ezekben a forrásokban tárolt adatokra a wasb://vagy a adl://URI-előtagján keresztül hivatkozhat.
+Azure Data Lake Storage szolgáltatás hitelesítő adatainak létrehozásával kapcsolatos részletes információkért lásd: [hitelesítés a Azure Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-authenticate-using-active-directory)használatával. Miután megadta a blob Storage vagy a Azure Data Lake Storage hitelesítő adatait a core-site.xml fájlban, az ezekben a forrásokban tárolt adatokra a wasb://vagy a adl://URI-előtagjának használatával hivatkozhat.
 

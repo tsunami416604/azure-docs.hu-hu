@@ -10,10 +10,9 @@ ms.author: lle
 author: lle
 ms.date: 04/14/2020
 ms.openlocfilehash: f911a8dad094949f0a515116a79fff698a326547
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84191067"
 ---
 # <a name="run-ssis-packages-by-using-azure-sql-managed-instance-agent"></a>SSIS-csomagok futtatása az Azure SQL felügyelt példány-ügynök használatával
@@ -105,12 +104,12 @@ Ebben az eljárásban az SQL felügyelt példány-ügynök használatával futta
 ## <a name="cancel-ssis-package-execution"></a>SSIS-csomag végrehajtásának megszakítása
 Ha vissza szeretné vonni a csomagok végrehajtását egy SQL felügyelt példány-ügynök feladataiból, hajtsa végre az alábbi lépéseket az ügynök feladat közvetlen leállítása helyett:
 
-1. Keresse meg az SQL Agent **jobId** az **msdb. dbo. sysjobs**címről.
+1. Az SQL Agent **jobId** megkeresése **msdb.dbo.sysfeladatokból**.
 1. Keresse meg a megfelelő SSIS- **executionId** a feladatsor alapján a következő lekérdezés használatával:
    ```sql
    select * from '{table for job execution}' where  parameter_value = 'SQL_Agent_Job_{jobId}' order by execution_id desc
    ```
-   Ha a SSIS-csomagok SSISDB vannak, akkor a **SSISDB. internal. execution_parameter_values** táblát használja a feladatok végrehajtásához. Ha a SSIS-csomagok a fájlrendszerben találhatók, akkor használja a **ssisdb. internal. execution_parameter_values_noncatalog**.
+   Ha a SSIS-csomagok SSISDB vannak, akkor a feladatok végrehajtásához használja a **ssisdb.internal.execution_parameter_values** . Ha a SSIS-csomagok a fájlrendszerben vannak, akkor használja a **ssisdb.internal.execution_parameter_values_noncatalog**.
 1. Kattintson a jobb gombbal a SSISDB-katalógusra, majd válassza az **aktív műveletek**elemet.
 
    !["Aktív műveletek" a SSISDB-katalógus helyi menüjében](./media/how-to-invoke-ssis-package-managed-instance-agent/catalog-active-operations.png)

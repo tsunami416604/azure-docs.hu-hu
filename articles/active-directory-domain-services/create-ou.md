@@ -9,18 +9,17 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/31/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 5f0bc803c8f05f34a46f9e496446a3ce07bad179
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.openlocfilehash: e0188a35289c22da784ca856c80212638052a609
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84734894"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040282"
 ---
 # <a name="create-an-organizational-unit-ou-in-an-azure-active-directory-domain-services-managed-domain"></a>Szervezeti egység (OU) létrehozása Azure Active Directory Domain Services felügyelt tartományban
 
-Active Directory tartományi szolgáltatások (AD DS) szervezeti egységek (OU-ket) lehetővé teszik az objektumok (például felhasználói fiókok, szolgáltatásfiókok vagy számítógépfiókok) logikai csoportosítását. Ezután hozzárendelheti a rendszergazdákat adott szervezeti egységekhez, és Csoportházirendet alkalmazhat a megcélzott konfigurációs beállítások betartatására.
+A szervezeti egységek (OU-EK) egy Active Directory tartományi szolgáltatások (AD DS) felügyelt tartományban lehetővé teszik, hogy logikailag csoportosítsa az objektumokat, például a felhasználói fiókokat, a szolgáltatásfiókokat vagy a számítógépfiókokat. Ezután hozzárendelheti a rendszergazdákat adott szervezeti egységekhez, és Csoportházirendet alkalmazhat a megcélzott konfigurációs beállítások betartatására.
 
 Az Azure AD DS felügyelt tartományok a következő két beépített szervezeti egységgel rendelkeznek:
 
@@ -29,7 +28,7 @@ Az Azure AD DS felügyelt tartományok a következő két beépített szervezeti
 
 Az Azure AD DSt használó munkaterhelések létrehozásakor és futtatásakor előfordulhat, hogy létre kell hoznia egy szolgáltatásfiókot az alkalmazásokhoz, hogy azok hitelesítése megtörténjen. A szolgáltatásfiókok rendszerezéséhez gyakran hozzon létre egy egyéni szervezeti egységet a felügyelt tartományon belül, majd hozzon létre szolgáltatásfiókot a szervezeti egységben.
 
-Hibrid környezetben a helyszíni AD DS környezetben létrehozott szervezeti egységek nem szinkronizálhatók az Azure AD DS. A felügyelt tartományok lapos OU-struktúrát használnak. Az összes felhasználói fiókot és csoportot a rendszer a *AADDC-felhasználók* tárolóban tárolja, annak ellenére, hogy a különböző helyszíni tartományokból vagy erdőkből szinkronizálva van, még akkor is, ha van konfigurálva egy hierarchikus szervezeti egység struktúrája.
+Hibrid környezetben a helyszíni AD DS környezetben létrehozott szervezeti egységek nem szinkronizálhatók a felügyelt tartományba. A felügyelt tartományok lapos OU-struktúrát használnak. Az összes felhasználói fiókot és csoportot a rendszer a *AADDC-felhasználók* tárolóban tárolja, annak ellenére, hogy a különböző helyszíni tartományokból vagy erdőkből szinkronizálva van, még akkor is, ha van konfigurálva egy hierarchikus szervezeti egység struktúrája.
 
 Ez a cikk bemutatja, hogyan hozhat létre szervezeti egységet a felügyelt tartományában.
 
@@ -49,7 +48,7 @@ A cikk elvégzéséhez a következő erőforrásokra és jogosultságokra van sz
 
 ## <a name="custom-ou-considerations-and-limitations"></a>Egyéni OU-megfontolások és korlátozások
 
-Amikor egyéni szervezeti egységeket hoz létre egy felügyelt tartományban, a felhasználók felügyeletéhez és a csoportházirend alkalmazásához további kezelési rugalmasságot szerezhet. A helyszíni AD DS környezethez képest bizonyos korlátozások és megfontolások az Azure-beli egyéni OU-struktúra létrehozásakor és kezelésekor AD DS:
+Amikor egyéni szervezeti egységeket hoz létre egy felügyelt tartományban, a felhasználók felügyeletéhez és a csoportházirend alkalmazásához további kezelési rugalmasságot szerezhet. A helyszíni AD DS környezethez képest bizonyos korlátozások és megfontolások a felügyelt tartományokban lévő egyéni SZERVEZETIEGYSÉG-struktúra létrehozásakor és kezelésekor:
 
 * Egyéni szervezeti egységek létrehozásához a felhasználóknak a *HRE DC-rendszergazdák* csoport tagjának kell lenniük.
 * Az egyéni szervezeti egységeket létrehozó felhasználók a szervezeti egység felett rendszergazdai jogosultságokkal (teljes hozzáférés) rendelkeznek, és az erőforrás tulajdonosa.

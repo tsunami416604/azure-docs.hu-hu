@@ -4,10 +4,9 @@ description: Az objektumok kezeléséhez Azure Resource Manager sablonban haszn�
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: fede4d6c71e45b119e500d4c9c6f91765d052036
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84676794"
 ---
 # <a name="object-functions-for-arm-templates"></a>ARM-sablonok Object functions
@@ -21,7 +20,7 @@ A Resource Manager számos funkciót biztosít a Azure Resource Manager (ARM) sa
 * [hossza](#length)
 * [Union](#union)
 
-## <a name="contains"></a>tartalmazza a következőt:
+## <a name="contains"></a>tartalmazza
 
 `contains(container, itemToFind)`
 
@@ -444,6 +443,6 @@ Az előző példában az alapértelmezett értékekkel rendelkező kimenet a kö
 | objectOutput | Objektum | {"One": "a", "kettő": "b", "három": "C2", "Four": "d", "öt": "e"} |
 | arrayOutput | Tömb | ["egy", "kettő", "három", "négy"] |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Egy Azure Resource Manager sablonban található részekről az [ARM-sablonok szerkezetének és szintaxisának megismerését](template-syntax.md)ismertető cikk nyújt tájékoztatást.

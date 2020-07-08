@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: memildin
-ms.openlocfilehash: 93dde2e873a00303dcb8563caed4d56dbf11cc12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 8faff37e127e80447e0f066ef17e2885d4bcb597
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80435629"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85799734"
 ---
 # <a name="protect-your-machines-and-applications"></a>A gépek és az alkalmazások elleni védelem
 Ha Azure Security Center észleli a potenciális biztonsági réseket, javaslatokat hoz létre, amelyek végigvezetik a szükséges vezérlők konfigurálásának lépésein az erőforrások megerősítéséhez és védelméhez.
@@ -163,15 +162,13 @@ Amikor megnyitja a **tárolók** fület a környezettől függően, a következ�
 
 ![Tároló gazdagépe](./media/security-center-virtual-machine-recommendations/icon-container-host-rec.png) Tároló gazdagépek – Docker-t futtató virtuális gépek 
 
-![Kubernetes szolgáltatás](./media/security-center-virtual-machine-recommendations/icon-kubernetes-service-rec.png) Azure Kubernetes szolgáltatás (ak) fürtök
+![Kubernetes Service ](./media/security-center-virtual-machine-recommendations/icon-kubernetes-service-rec.png) Azure Kubernetes szolgáltatás (ak) fürtök. [Tudnivalók a Security Center AK-csomagról](azure-kubernetes-service-integration.md)
 
-![Tárolóregisztrációs adatbázis](./media/security-center-virtual-machine-recommendations/icon-container-registry-rec.png) Azure Container Registry (ACR) jegyzékek – csak akkor jelenik meg, ha a standard árképzési szinttel rendelkezik, és ha engedélyezve van a Azure Container Registry csomag.
+![Container Registry ](./media/security-center-virtual-machine-recommendations/icon-container-registry-rec.png) Azure Container Registry (ACR) jegyzékek. [Tudnivalók a Security Center ACR-csomagról](azure-container-registry-integration.md)
 
 A tároló biztonsági funkcióinak használatáról a [tárolók biztonságának figyelését](monitor-container-security.md)ismertető cikkben olvashat bővebben.
 
-A Azure Container Registry Bundle előnyeit [itt](azure-container-registry-integration.md) találja
 
-A Kubernetes Services csomag előnyeit [itt](azure-kubernetes-service-integration.md) találja
 
 [![Tárolók lap](./media/security-center-virtual-machine-recommendations/container-recommendations-all-types.png)](./media/security-center-virtual-machine-recommendations/container-recommendations-all-types.png#lightbox)
 

@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 06/02/2020
 ms.author: spelluru
 ms.openlocfilehash: 23b87812492485fc2336b8d2d35bf0426ede4772
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84457235"
 ---
 # <a name="create-view-and-manage-event-grid-system-topics-in-the-azure-portal"></a>Event Grid rendszertémakörök létrehozása, megtekintése és kezelése a Azure Portal
@@ -23,7 +22,7 @@ Az Azure-erőforrásokhoz (Storage-fiókhoz, Event Hubs névtérhez stb.) rendsz
 - Egy erőforrás **események** lapja (például Storage-fiók vagy Event Hubs névtér) használatával. Ha a Azure Portal **események** lapját használja egy Azure-forrás által kiváltott eseményhez (például: Azure Storage-fiók), a portál létrehoz egy rendszertémakört az Azure-erőforráshoz, majd előfizetést hoz létre a rendszertémakörhöz. Ha első alkalommal hoz létre egy esemény-előfizetést az Azure-erőforráshoz, adja meg a rendszertémakör nevét. A második alkalommal a rendszertéma neve jelenik meg a csak olvasható módban. Tekintse meg a gyors útmutató [: blob Storage-események átirányítása webes végpontra a Azure Portal](blob-event-quickstart-portal.md#subscribe-to-the-blob-storage) a részletes lépések végrehajtásához.
 - A **Event Grid rendszertémakörök** lap használata. A következő lépésekkel hozhat létre rendszertémakört a **Event Grid rendszertémakörök** lapon. 
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be [Azure Portalba](https://portal.azure.com).
 2. A felső keresőmezőbe írja be **Event Grid rendszertémakörök**kifejezést, majd nyomja le az **ENTER**billentyűt. 
 
     ![Rendszertémakörök keresése](./media/create-view-manage-system-topics/search-system-topics.png)
@@ -53,7 +52,7 @@ Az Azure-erőforrásokhoz (Storage-fiókhoz, Event Hubs névtérhez stb.) rendsz
 ## <a name="view-all-system-topics"></a>Az összes rendszertémakör megtekintése
 Az alábbi lépéseket követve megtekintheti az összes meglévő Event Grid rendszertémakört. 
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be [Azure Portalba](https://portal.azure.com).
 2. A felső keresőmezőbe írja be **Event Grid rendszertémakörök**kifejezést, majd nyomja le az **ENTER**billentyűt. 
 
     ![Rendszertémakörök keresése](./media/create-view-manage-system-topics/search-system-topics.png)
@@ -91,5 +90,5 @@ Az alábbi lépéseket követve megtekintheti az összes meglévő Event Grid re
 
     ![Rendszertémakör – esemény-előfizetés létrehozása](./media/create-view-manage-system-topics/create-event-subscription.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A Azure Event Grid által támogatott rendszertémakörökkel és a témakörökkel kapcsolatos további tudnivalókért tekintse meg [Azure Event Grid szakasz rendszertémaköreit](system-topics.md) . 

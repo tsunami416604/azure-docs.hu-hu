@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
 ms.openlocfilehash: dbacb6a5bbdead52750935c476f453423647fc0f
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84457133"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>Az Azure Functions fejlesztése és konfigurálása az Azure SignalR szolgáltatással
@@ -215,7 +214,7 @@ A JavaScript/írógéppel ügyfél HTTP-kérelmeket tesz elérhetővé az egyezt
 
 #### <a name="localhost"></a>Localhost
 
-Ha a Function alkalmazást a helyi számítógépen futtatja, a `Host` CORS engedélyezéséhez hozzáadhat egy szakaszt a *Local. Settings. JSON* fájlhoz. A `Host` szakaszban adja hozzá a két tulajdonságot:
+Ha a Function alkalmazást a helyi számítógépen futtatja, akkor a `Host` CORS engedélyezéséhez hozzáadhat egy szakaszt a *local.settings.jshoz* . A `Host` szakaszban adja hozzá a két tulajdonságot:
 
 * `CORS`-adja meg az ügyfélalkalmazás forrásaként szolgáló alap URL-címet
 * `CORSCredentials`-Állítsa be, hogy `true` engedélyezze a "withCredentials" kéréseket
@@ -318,6 +317,6 @@ public static Task SendMessage(
 
 Más nyelvekkel kapcsolatos információkért tekintse meg az [Azure signaler szolgáltatás kötéseit](../azure-functions/functions-bindings-signalr-service.md) Azure functions-referenciához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta, hogyan fejlesztheti és konfigurálhatja a kiszolgáló nélküli Signal Service-alkalmazásokat Azure Functions használatával. Hozzon létre egy alkalmazást saját maga a [signaler szolgáltatás áttekintés lapján](index.yml)található gyors indítás vagy oktatóanyag használatával.

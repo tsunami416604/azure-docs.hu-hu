@@ -10,10 +10,9 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: 89d69547d793599fc669927b1a500716a858cc89
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84433587"
 ---
 # <a name="blob-versioning-preview"></a>BLOB verziószámozása (előzetes verzió)
@@ -176,7 +175,7 @@ A blob verziószámozása úgy lett kialakítva, hogy az adatok véletlen vagy r
 
 Az alábbi táblázatban látható, hogy mely RBAC műveletek támogatják a Blobok vagy a Blobok verzióinak törlését.
 
-| Leírás | Blob service művelet | RBAC-adatművelet szükséges | RBAC beépített szerepkör-támogatás |
+| Description | Blob service művelet | RBAC-adatművelet szükséges | RBAC beépített szerepkör-támogatás |
 |----------------------------------------------|------------------------|---------------------------------------------------------------------------------------|-------------------------------|
 | A blob aktuális verziójának törlése | Delete Blob | **Microsoft. Storage/storageAccounts/blobServices/containers/Blobok/delete** | Storage blob adatközreműködői |
 | Verzió törlése | Delete Blob | **Microsoft. Storage/storageAccounts/blobServices/containers/Blobok/deleteBlobVersion/Action** | Storage blob-adattulajdonos |
@@ -313,7 +312,7 @@ A 4. forgatókönyvben az alap blob teljesen frissítve lett, és az eredeti blo
 
 ![Azure Storage-erőforrások](./media/versioning-overview/versions-billing-scenario-4.png)
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 - [Blob verziószámozásának engedélyezése](versioning-enable.md)
 - [BLOB pillanatképének létrehozása](/rest/api/storageservices/creating-a-snapshot-of-a-blob)

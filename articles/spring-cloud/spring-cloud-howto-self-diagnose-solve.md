@@ -7,10 +7,9 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.openlocfilehash: 581d77a5568b9533d85ff476b63001c8a237bc4e
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84457201"
 ---
 # <a name="how-to-self-diagnose-and-solve-problems-in-azure-spring-cloud"></a>Az Azure Spring Cloud szolgáltatásban felmerülő problémák önálló diagnosztizálása és megoldása
@@ -51,6 +50,6 @@ Egyes eredmények kapcsolódó dokumentációt tartalmaznak.
 
  ![Kapcsolódó részletek](media/spring-cloud-diagnose/related-details.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Spring Cloud-erőforrások monitorozása riasztások és műveletcsoportok használatával](spring-cloud-tutorial-alerts-action-groups.md)
 * [Az Azure Spring Cloud Service biztonsági vezérlői](spring-cloud-concept-security-controls.md)

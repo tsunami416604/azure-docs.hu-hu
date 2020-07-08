@@ -2,13 +2,12 @@
 title: Azure Monitor engedélyezése a tárolók számára | Microsoft Docs
 description: Ez a cikk bemutatja, hogyan engedélyezheti és konfigurálhatja a tárolók Azure Monitorét, hogy megtudja, hogyan hajtja végre a tárolót, és hogy milyen teljesítménnyel kapcsolatos problémákat észlelt a rendszer.
 ms.topic: conceptual
-ms.date: 06/15/2020
-ms.openlocfilehash: 519238837831a67714894ee44f4694321fb999d4
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
-ms.translationtype: MT
+ms.date: 06/30/2020
+ms.openlocfilehash: d85dd4f1eb89ddba96ec012acb7fb7550800ce7f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85508112"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85800630"
 ---
 # <a name="enable-azure-monitor-for-containers"></a>Tárolók Azure Monitor engedélyezése
 
@@ -55,6 +54,8 @@ Mielőtt elkezdené, győződjön meg arról, hogy teljesítette a következő k
 
    [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
+- A figyelési adat megtekintéséhez [*log Analytics olvasó*](../platform/manage-access.md#manage-access-using-azure-permissions) szerepkörrel kell rendelkeznie a log Analytics munkaterületen, amely a tárolók Azure monitorhoz van konfigurálva.
+
 - A Prometheus-metrikák alapértelmezés szerint nincsenek összegyűjtve. Mielőtt [konfigurálja az ügynököt](container-insights-prometheus-integration.md) a metrikák gyűjtésére, fontos, hogy áttekintse a [Prometheus dokumentációját](https://prometheus.io/) , hogy megtudja, milyen adatok tölthetők le, és milyen módszerekkel támogatottak.
 
 ## <a name="supported-configurations"></a>Támogatott konfigurációk
@@ -78,7 +79,7 @@ A következő táblázat felsorolja azokat a proxy-és tűzfal-konfigurációs a
 
 A következő táblázat az Azure China 21Vianet proxy-és tűzfal-konfigurációs információit sorolja fel:
 
-|Ügynök erőforrása|Port |Leírás | 
+|Ügynök erőforrása|Port |Description | 
 |--------------|------|-------------|
 | `*.ods.opinsights.azure.cn` | 443 | Adatfeldolgozás |
 | `*.oms.opinsights.azure.cn` | 443 | OMS bevezetése |
@@ -86,7 +87,7 @@ A következő táblázat az Azure China 21Vianet proxy-és tűzfal-konfiguráci�
 
 Az alábbi táblázat az Azure US government proxy-és tűzfal-konfigurációs információit sorolja fel:
 
-|Ügynök erőforrása|Port |Leírás | 
+|Ügynök erőforrása|Port |Description | 
 |--------------|------|-------------|
 | `*.ods.opinsights.azure.us` | 443 | Adatfeldolgozás |
 | `*.oms.opinsights.azure.us` | 443 | OMS bevezetése |
@@ -110,7 +111,7 @@ Az ügynök új verziójának felszabadításakor a rendszer automatikusan friss
 
 A tárolók Azure Monitorának engedélyezéséhez használja az alábbi táblázatban leírt módszerek egyikét:
 
-| Központi telepítés állapota | Metódus | Leírás |
+| Központi telepítés állapota | Metódus | Description |
 |------------------|--------|-------------|
 | Új Kubernetes-fürt | [AK-fürt létrehozása az Azure CLI használatával](../../aks/kubernetes-walkthrough.md#create-aks-cluster)| Engedélyezheti az Azure CLI használatával létrehozott új AK-fürtök figyelését. |
 | | [AK-fürt létrehozása a Terraform használatával](container-insights-enable-new-cluster.md#enable-using-terraform)| A nyílt forráskódú eszköz Terraform használatával engedélyezheti a figyelést a létrehozott új AK-fürtökhöz. |

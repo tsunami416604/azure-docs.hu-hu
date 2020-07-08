@@ -6,18 +6,17 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: a431df1ff4ef0984d1197933e7ca78979fa23089
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 0f88b994104ed8a2d80fb3b16f125f8a087cbe3c
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81430980"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958378"
 ---
-# <a name="using-stored-procedures-in-sql-pool"></a>Tárolt eljárások használata az SQL-készletben
+# <a name="use-stored-procedures-in-sql-pool"></a>Tárolt eljárások használata az SQL-készletben
 
 Tippek a tárolt eljárások megvalósításához a szinapszis SQL-készletben (adattárházban) a megoldások fejlesztéséhez.
 
@@ -68,9 +67,9 @@ EXEC prc_nesting
 ```
 
 > [!NOTE]
-> Az SQL-készlet jelenleg nem támogatja a [@@NESTLEVEL](/sql/t-sql/functions/nestlevel-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)-t. Követnie kell a beágyazási szintet. Nem valószínű, hogy túllépi a nyolcnál nagyobb korlátot, de ha igen, újra kell dolgoznia a kódot, hogy az illeszkedjen a korláton belüli beágyazási szintre.
+> Az SQL-készlet jelenleg nem támogatja a [@ @NESTLEVEL ](/sql/t-sql/functions/nestlevel-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)-t. Követnie kell a beágyazási szintet. Nem valószínű, hogy túllépi a nyolcnál nagyobb korlátot, de ha igen, újra kell dolgoznia a kódot, hogy az illeszkedjen a korláton belüli beágyazási szintre.
 
-## <a name="insertexecute"></a>Beszúrás.. VÉGREHAJTÁSA
+## <a name="insertexecute"></a>INSERT..EXEARANYOS
 
 Az SQL-készlet nem teszi lehetővé egy tárolt eljárás eredmény-készletének felhasználását INSERT utasítással. Van azonban egy alternatív megközelítés, amelyet használhat. Példaként tekintse meg az [ideiglenes táblákról](develop-tables-temporary.md)szóló cikket.
 

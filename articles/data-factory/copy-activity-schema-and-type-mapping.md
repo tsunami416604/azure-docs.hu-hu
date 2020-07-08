@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: jingwang
 ms.openlocfilehash: b48fb28a56cdc1c836233cd2bd03a1f9e750a0a7
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85249652"
 ---
 # <a name="schema-and-data-type-mapping-in-copy-activity"></a>Séma-és adattípus-leképezés a másolási tevékenységben
@@ -319,7 +318,7 @@ Az adattípusok átalakításának másolási tevékenységében a következő t
 | timeSpanFormat                   | Formázhatja a karakterláncot az időszakok és karakterláncok közötti átalakításkor, például: `dd\.hh\:mm` . Részletes információkért tekintse meg az [Egyéni TimeSpan formázási karakterláncokat](https://docs.microsoft.com/dotnet/standard/base-types/custom-timespan-format-strings) . | No       |
 | kulturális környezet                          | A típusok konvertálásakor használandó kulturális információk (például `en-us` vagy `fr-fr` ). | No       |
 
-**Például**
+**Példa:**
 
 ```json
 {

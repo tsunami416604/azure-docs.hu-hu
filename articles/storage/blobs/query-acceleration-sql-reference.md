@@ -11,10 +11,9 @@ ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: ereilebr
 ms.openlocfilehash: 3408970bcf5e34ce9f0f0afe9e723b4877dcd694
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84193411"
 ---
 # <a name="query-acceleration-sql-language-reference-preview"></a>A lekérdezés gyorsításának SQL nyelvi referenciája (előzetes verzió)
@@ -58,7 +57,7 @@ SELECT sys.split(split_size)FROM BlobStorage
 
 ## <a name="data-types"></a>Adattípusok
 
-|Adattípus|Leírás|
+|Adattípus|Description|
 |---------|-------------------------------------------|
 |INT      |64 bites előjeles egész szám.                     |
 |FLOAT    |64 bites ("dupla pontosságú") lebegőpontos pont.|
@@ -131,7 +130,7 @@ Jelenleg a [szabványos IS08601 összes dátumformátum-formátumát](https://ww
 
 A lekérdezés gyorsításának SQL nyelve az év, hónap, nap, óra, perc, másodperc a függvényhez való használatát támogatja ``DATE_ADD`` .
 
-Angol nyelvű Példák:
+Példák:
 
 ```sql
 DATE_ADD(datepart, quantity, timestamp)
@@ -151,7 +150,7 @@ DATE_DIFF('hour','2018-11-09T00:00+05:30','2018-11-09T01:00:23-08:00')
 
 A függvény által támogatott, a Date résztől eltérő Kibontás esetén ``DATE_ADD`` a lekérdezési gyorsítás SQL nyelve a timezone_hour és az timezone_minutet is támogatja.
 
-Angol nyelvű Példák:
+Példák:
 
 ```sql
 EXTRACT(datepart FROM timestampstring)
@@ -160,7 +159,7 @@ EXTRACT(YEAR FROM '2010-01-01T')
 
 #### <a name="to_string-function"></a>TO_STRING függvény
 
-Angol nyelvű Példák:
+Példák:
 
 ```sql
 TO_STRING(TimeStamp , format)
@@ -203,7 +202,7 @@ Ez a táblázat azokat a karakterláncokat ismerteti, amelyeket a függvény kim
 
 Csak IS08601-formátumok támogatottak.
 
-Angol nyelvű Példák:
+Példák:
 
 ```sql
 TO_TIMESTAMP(string)
