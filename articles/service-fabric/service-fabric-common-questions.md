@@ -5,10 +5,9 @@ ms.topic: troubleshooting
 ms.date: 08/18/2017
 ms.author: pepogors
 ms.openlocfilehash: bf61858b446c1ac6d4a0210571fffaa721ad0166
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78254885"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Service Fabric – GYIK
@@ -64,7 +63,7 @@ A következő három ok miatt legalább 5 csomóponttal rendelkező üzemi fürt
 2. A csomópontok egy-egy replikáját mindig elhelyezjük, így a fürt mérete a szolgáltatás (valójában partíció) replikáinak felső határa lehet.
 3. Mivel a fürt frissítése legalább egy csomópontot tartalmaz, legalább egy csomópont pufferét szeretnénk használni, ezért azt szeretnénk, hogy egy üzemi fürt legalább *két csomóponttal rendelkezzen a* minimálisan megengedettnél. A minimális érték egy rendszerszolgáltatás Kvórumának mérete, ahogy az alább is látható.  
 
-Azt szeretnénk, hogy a fürt a két csomópont egyidejű meghibásodása előtt legyen elérhető. Ahhoz, hogy egy Service Fabric fürt elérhető legyen, elérhetőnek kell lennie a rendszerszolgáltatásoknak. Állapot-nyilvántartó rendszerszolgáltatások, például a névadási szolgáltatás és a Feladatátvevőfürt-kezelő szolgáltatás, amely nyomon követi, hogy a fürtön milyen szolgáltatások lettek telepítve, és hogy hol vannak jelenleg üzemeltetve, erős konzisztencia függ. Az erős konzisztencia azonban attól függ, hogy képes-e *kvórumot* beszerezni a szolgáltatások állapotára vonatkozóan, ahol a kvórum a replikák szigorú többségét jelöli (N/2 + 1) egy adott szolgáltatás esetében. Így ha a két csomópont egyidejű elvesztése miatt rugalmasan szeretnénk állni (azaz a rendszerszolgáltatás két replikájának egyidejű elvesztése), a ClusterSize-QuorumSize >= 2 értéknek kell lennie, amely a minimális méretet 5-re kényszeríti. Ennek megtekintéséhez vegye figyelembe, hogy a fürt N csomóponttal rendelkezik, és a rendszerszolgáltatások N replikái vannak – egyet az egyes csomópontokon. A rendszerszolgáltatások Kvórumának mérete (N/2 + 1). A fenti egyenlőtlenség úgy néz ki, mint N-(N/2 + 1) >= 2. Két esetet érdemes figyelembe venni: Ha N páros, és ha N páratlan. Ha N páros, mondjuk N = 2\*m, ahol m >= 1, a megegyezőség 2\*m-(2\*m/2 + 1) >= 2 vagy m >= 3. Az N érték minimuma 6, amely az m = 3 értéknél érhető el. Másrészről, ha N páratlan, tegyük fel, hogy N = 2\*m + 1, ahol m >= 1, a megegyezőség a következőhöz hasonló: 2\*m + 1\*– ((2 m + 1)/2 + 1) >\*= 2 vagy 2 m + 1 – (m + 1) >= 2 vagy m >= 2. Az N érték minimuma 5, amely az m = 2 értéknél érhető el. Ezért az N érték minden olyan értéke között, amely megfelel a ClusterSize – QuorumSize >= 2, a minimum 5.
+Azt szeretnénk, hogy a fürt a két csomópont egyidejű meghibásodása előtt legyen elérhető. Ahhoz, hogy egy Service Fabric fürt elérhető legyen, elérhetőnek kell lennie a rendszerszolgáltatásoknak. Állapot-nyilvántartó rendszerszolgáltatások, például a névadási szolgáltatás és a Feladatátvevőfürt-kezelő szolgáltatás, amely nyomon követi, hogy a fürtön milyen szolgáltatások lettek telepítve, és hogy hol vannak jelenleg üzemeltetve, erős konzisztencia függ. Az erős konzisztencia azonban attól függ, hogy képes-e *kvórumot* beszerezni a szolgáltatások állapotára vonatkozóan, ahol a kvórum a replikák szigorú többségét jelöli (N/2 + 1) egy adott szolgáltatás esetében. Így ha a két csomópont egyidejű elvesztése miatt rugalmasan szeretnénk állni (azaz a rendszerszolgáltatás két replikájának egyidejű elvesztése), a ClusterSize-QuorumSize >= 2 értéknek kell lennie, amely a minimális méretet 5-re kényszeríti. Ennek megtekintéséhez vegye figyelembe, hogy a fürt N csomóponttal rendelkezik, és a rendszerszolgáltatások N replikái vannak – egyet az egyes csomópontokon. A rendszerszolgáltatások Kvórumának mérete (N/2 + 1). A fenti egyenlőtlenség úgy néz ki, mint N-(N/2 + 1) >= 2. Két esetet érdemes figyelembe venni: Ha N páros, és ha N páratlan. Ha N páros, mondjuk N = 2 \* m, ahol m >= 1, a megegyezőség 2 \* m-(2 \* m/2 + 1) >= 2 vagy m >= 3. Az N érték minimuma 6, amely az m = 3 értéknél érhető el. Másrészről, ha N páratlan, tegyük fel, hogy N = 2 \* m + 1, ahol m >= 1, a megegyezőség a következőhöz hasonló: 2 \* m + 1 – ((2 \* m + 1)/2 + 1) >= 2 vagy 2 \* m + 1 – (m + 1) >= 2 vagy m >= 2. Az N érték minimuma 5, amely az m = 2 értéknél érhető el. Ezért az N érték minden olyan értéke között, amely megfelel a ClusterSize – QuorumSize >= 2, a minimum 5.
 
 Vegye figyelembe, hogy a fenti argumentumban feltételezzük, hogy minden csomóponthoz tartozik egy rendszerszolgáltatás replikája, így a rendszer a fürt csomópontjainak száma alapján számítja ki a kvórum méretét. A *TargetReplicaSetSize* módosításával azonban a kvórum mérete (N/2 + 1) kisebb lehet, ami azt a benyomást keltheti, hogy a fürt 5 csomópontnál kisebb lehet, és továbbra is 2 további csomópontja van a kvórum méretének meghaladása előtt. Például egy 4 csomópontos fürtben, ha a TargetReplicaSetSize 3 értékre állítjuk, a TargetReplicaSetSize alapuló kvórum mérete (3/2 + 1) vagy 2, ezért ClusterSize-QuorumSize = 4-2 >= 2. Azonban nem tudjuk garantálni, hogy a rendszerszolgáltatás a kvórumnál vagy fölött marad, ha a csomópontok egyidejű elvesztése egyszerre történik, előfordulhat, hogy az elveszett két csomópont két replikát futtatott, így a rendszerszolgáltatás a kvórum elvesztését eredményezi (csak egyetlen replika maradt), és elérhetetlenné válik.
 
@@ -109,18 +108,18 @@ Nem. Az alacsony prioritású virtuális gépek nem támogatottak.
 
 | **Víruskereső által kizárt folyamatok** |
 | --- |
-| Fabric. exe |
-| Hálóbeli. exe |
-| FabricInstallerService. exe |
-| FabricSetup. exe |
-| FabricDeployer. exe |
-| ImageBuilder. exe |
-| FabricGateway. exe |
-| FabricDCA. exe |
-| FabricFAS. exe |
-| FabricUOS. exe |
-| FabricRM. exe |
-| FileStoreService. exe |
+| Fabric.exe |
+| FabricHost.exe |
+| FabricInstallerService.exe |
+| FabricSetup.exe |
+| FabricDeployer.exe |
+| ImageBuilder.exe |
+| FabricGateway.exe |
+| FabricDCA.exe |
+| FabricFAS.exe |
+| FabricUOS.exe |
+| FabricRM.exe |
+| FileStoreService.exe |
  
 ### <a name="how-can-my-application-authenticate-to-keyvault-to-get-secrets"></a>Hogyan hitelesíthető az alkalmazás a kulcstartóban a titkok beszerzéséhez?
 Az alábbi módszer azt jelenti, hogy az alkalmazás a kulcstartóhoz való hitelesítéshez hitelesítő adatokat kér:

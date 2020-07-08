@@ -7,10 +7,9 @@ ms.date: 10/25/2019
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.openlocfilehash: d5f175d887cec1d5b5e567d3f716e6492f4516dd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78246974"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>Egyéni tároló üzembe helyezése a GitHub-műveletek használatával App Service
@@ -21,7 +20,7 @@ A [GitHub-műveletek](https://help.github.com/en/articles/about-github-actions) 
 > A GitHub-műveletek jelenleg béta verzióban vannak. Először [regisztrálnia kell, hogy csatlakozzon az előzetes](https://github.com/features/actions) verzióhoz a GitHub-fiók használatával.
 > 
 
-A munkafolyamatot egy YAML-(. YML) fájl határozza meg `/.github/workflows/` a tárház elérési útjában. Ez a definíció a munkafolyamatot alkotó különböző lépéseket és paramétereket tartalmazza.
+A munkafolyamatot egy YAML-(. YML) fájl határozza meg a `/.github/workflows/` tárház elérési útjában. Ez a definíció a munkafolyamatot alkotó különböző lépéseket és paramétereket tartalmazza.
 
 Azure App Service tároló munkafolyamathoz a fájl három szakaszt tartalmaz:
 
@@ -64,7 +63,7 @@ Az alábbi példa felhasználói szintű hitelesítő adatokat használ, példá
 
 1. A [githubon](https://github.com/)tallózzon a tárházban, válassza a **beállítások > titkok > új titok hozzáadása** elemet.
 
-2. Illessze be az alábbi `az cli` parancs tartalmát a titkos változó értékeként. Például: `AZURE_CREDENTIALS`.
+2. Illessze be az alábbi parancs tartalmát a `az cli` titkos változó értékeként. Például: `AZURE_CREDENTIALS`.
 
     
     ```azurecli
@@ -121,7 +120,7 @@ jobs:
 
 ## <a name="deploy-to-an-app-service-container"></a>Üzembe helyezés App Service tárolón
 
-Ha a lemezképet a App Serviceban lévő egyéni tárolóba szeretné telepíteni `azure/webapps-container-deploy@v1` , használja a műveletet. Ehhez a művelethez öt paraméter tartozik:
+Ha a lemezképet a App Serviceban lévő egyéni tárolóba szeretné telepíteni, használja a `azure/webapps-container-deploy@v1` műveletet. Ehhez a művelethez öt paraméter tartozik:
 
 | **Paraméter**  | **Magyarázat**  |
 |---------|---------|
@@ -129,9 +128,9 @@ Ha a lemezképet a App Serviceban lévő egyéni tárolóba szeretné telepíten
 | **tárolóhely neve** | Választható Adja meg az üzemi tárolóhelytől eltérő meglévő tárolóhelyet |
 | **képek** | Szükséges Adja meg a teljes tároló rendszerkép (ek) nevét. Például: "myregistry.azurecr.io/nginx:latest" vagy "Python: 3.7.2-Alpine/". Többtárolós alkalmazások esetén több tároló-rendszerkép is megadható (több sorba tagolt) |
 | **konfigurációs fájl** | Választható A Docker-levélírás fájljának elérési útja. Teljes elérési útnak kell lennie, vagy az alapértelmezett munkakönyvtárhoz viszonyítva kell lennie. Többtárolós alkalmazások esetén szükséges. |
-| **tároló – parancs** | Választható Adja meg az indítási parancsot. Pl.: DotNet-Futtatás vagy DotNet filename. dll |
+| **tároló – parancs** | Választható Adja meg az indítási parancsot. Pl.: DotNet-Futtatás vagy DotNet filename.dll |
 
-Az alábbi példa a Node. js-alkalmazások felépítésére és üzembe helyezésére szolgáló minta munkafolyamat a App Serviceban található egyéni tárolóba.
+Az alábbi példa egy Node.js-alkalmazás létrehozása és üzembe helyezése a App Service egyéni tárolójában.
 
 ```yaml
 on: [push]

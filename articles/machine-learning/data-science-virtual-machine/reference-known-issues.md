@@ -10,10 +10,9 @@ ms.author: gopalv
 ms.topic: reference
 ms.date: 10/10/2019
 ms.openlocfilehash: b83effa95b17d712d4019f8ab5bf13c4f02a7d2b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78206520"
 ---
 # <a name="known-issues-and-troubleshooting-the-azure-data-science-virtual-machine"></a>Ismert problémák és hibaelhárítás az Azure Data Science Virtual Machine
@@ -24,7 +23,7 @@ Ez a cikk segít megkeresni és kijavítani az Azure-Data Science Virtual Machin
 
 ### <a name="installing-packages-with-pip-breaks-dependencies-on-linux"></a>Csomagok telepítése pip Breaks-függőségekkel Linux rendszeren
 
-A `sudo pip install` `pip install` csomagok telepítése helyett használja.
+`sudo pip install`A `pip install` csomagok telepítése helyett használja.
 
 ## <a name="disk-encryption-issues"></a>A Disk Encryptionnel kapcsolatos problémák
 

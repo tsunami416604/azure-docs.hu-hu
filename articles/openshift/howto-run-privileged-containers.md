@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 12/05/2019
 keywords: ARO, openshift, aquasec, twistlock, Red Hat
 ms.openlocfilehash: e1c1dd9f27a207f78dd22e271f6b070c7f92f622
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78271377"
 ---
 # <a name="run-privileged-containers-in-an-azure-red-hat-openshift-cluster"></a>Kiemelt tárolók futtatása Azure Red Hat OpenShift-fürtön
@@ -29,9 +28,9 @@ Az alábbi, termékspecifikus lépések című szakasza a szállítók dokument�
 A legtöbb biztonsági termék dokumentációja feltételezi, hogy rendelkezik a fürt rendszergazdai jogosultságokkal.
 Az ügyfelek rendszergazdái nem rendelkeznek minden jogosultsággal az Azure Red Hat OpenShift. A fürtre kiterjedő erőforrások módosításához szükséges engedélyek korlátozottak.
 
-Először is győződjön meg arról, hogy a felhasználó az ügyfél-rendszergazdaként van bejelentkezve a `oc get scc`fürtbe. Ehhez futtassa a következőt:. Az ügyfél-felügyeleti csoport tagjainak minden felhasználója rendelkezik engedéllyel a fürtön található biztonsági környezeti korlátozások (SCCs) megtekintéséhez.
+Először is győződjön meg arról, hogy a felhasználó az ügyfél-rendszergazdaként van bejelentkezve a fürtbe. Ehhez futtassa a következőt: `oc get scc` . Az ügyfél-felügyeleti csoport tagjainak minden felhasználója rendelkezik engedéllyel a fürtön található biztonsági környezeti korlátozások (SCCs) megtekintéséhez.
 
-Ezután győződjön meg arról, `oc` hogy a bináris `3.11.154`verziója a következő:.
+Ezután győződjön meg arról, hogy a bináris verziója a következő: `oc` `3.11.154` .
 ```
 oc version
 oc v3.11.154
@@ -74,9 +73,9 @@ Folytassa az 1. lépésben megjelenő további utasítások követésével.  Eze
 ### <a name="step-2-deploy-the-aqua-server-database-and-gateway"></a>2. lépés: az Aqua-kiszolgáló, az adatbázis és az átjáró üzembe helyezése
 Az Aqua-Console. YAML telepítéséhez kövesse az Aqua dokumentációjában ismertetett lépéseket.
 
-Módosítsa a megadottat `aqua-console.yaml`.  Távolítsa el az első két, címkézett objektumot, `kind: ClusterRole` és `kind: ClusterRoleBinding`.  Ezek az erőforrások nem jönnek létre, mert az ügyfél rendszergazdája jelenleg nem rendelkezik engedéllyel a `ClusterRole` módosításhoz `ClusterRoleBinding` és az objektumokhoz.
+Módosítsa a megadottat `aqua-console.yaml` .  Távolítsa el az első két, címkézett objektumot, `kind: ClusterRole` és `kind: ClusterRoleBinding` .  Ezek az erőforrások nem jönnek létre, mert az ügyfél rendszergazdája jelenleg nem rendelkezik engedéllyel a módosításhoz `ClusterRole` és az `ClusterRoleBinding` objektumokhoz.
 
-A második módosítás a `kind: Route` része lesz. `aqua-console.yaml` Cserélje le a következő YAML a `kind: Route` `aqua-console.yaml` fájlban lévő objektumra.
+A második módosítás a `kind: Route` része lesz `aqua-console.yaml` . Cserélje le a következő YAML a `kind: Route` fájlban lévő objektumra `aqua-console.yaml` .
 ```
 apiVersion: route.openshift.io/v1
 kind: Route
@@ -135,10 +134,10 @@ Kezdje a "konzol telepítése" szakasszal.
 
 ### <a name="install-console"></a>Konzol telepítése
 
-`oc create -f twistlock_console.yaml` A 2. lépésben a névtér létrehozásakor hibaüzenet jelenik meg.
-Nyugodtan figyelmen kívül hagyhatja a névteret, mert korábban a `oc new-project` paranccsal lett létrehozva.
+`oc create -f twistlock_console.yaml`A 2. lépésben a névtér létrehozásakor hibaüzenet jelenik meg.
+Nyugodtan figyelmen kívül hagyhatja a névteret, mert korábban a paranccsal lett létrehozva `oc new-project` .
 
-A `azure-disk` tárolási típushoz használható.
+`azure-disk`A tárolási típushoz használható.
 
 ### <a name="create-an-external-route-to-console"></a>Külső útvonal létrehozása a konzolon
 
@@ -177,7 +176,7 @@ Kövesse a Twistlock dokumentációját.
 
 ### <a name="install-defender"></a>A Defender telepítése
 
-`oc create -f defender.yaml` A 2. lépésben a fürt szerepkör és a fürt szerepkör kötésének létrehozásakor hibaüzeneteket kap.
+`oc create -f defender.yaml`A 2. lépésben a fürt szerepkör és a fürt szerepkör kötésének létrehozásakor hibaüzeneteket kap.
 Figyelmen kívül hagyhatja őket.
 
 A védők csak számítási csomópontokon lesznek telepítve. A csomópont-választóval nem kell korlátoznia őket.

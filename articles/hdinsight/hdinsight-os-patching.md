@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/21/2020
 ms.openlocfilehash: f8e694f658d6e9de04c92001214ecd5c32ff7753
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78206860"
 ---
 # <a name="configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>A Linux-alapú HDInsight-fürtök operációsrendszer-javítási ütemtervének konfigurálása
@@ -47,7 +46,7 @@ A parancsfájl [-újraindítások](https://hdiconfigactions.blob.core.windows.ne
 
 Az `schedule-reboots script` elfogad egy numerikus paramétert:
 
-| Paraméter | Elfogadott értékek | Meghatározás |
+| Paraméter | Elfogadott értékek | Definíció |
 | --- | --- | --- |
 | Végrehajtandó újraindítás típusa | 1 vagy 2 | Az 1 érték lehetővé teszi az ütemezés újraindítását (12-24 órán belül ütemezve). A 2 érték azonnali újraindítást tesz lehetővé (5 perc). Ha nincs megadva paraméter, az alapértelmezett érték 1. |  
 
@@ -57,7 +56,7 @@ A szkript [Install-Updates-Schedule-reboots.sh](https://hdiconfigactions.blob.co
 
 A `install-updates-schedule-reboots` parancsfájl két numerikus paramétert fogad el az alábbi táblázatban leírtak szerint:
 
-| Paraméter | Elfogadott értékek | Meghatározás |
+| Paraméter | Elfogadott értékek | Definíció |
 | --- | --- | --- |
 | Telepítendő frissítések típusa | 0, 1 vagy 2 | A 0 érték csak a kernel frissítéseit telepíti. Az 1 érték minden frissítést telepít, és a 2 csak a kernel + biztonsági frissítéseket telepíti. Ha nincs megadva paraméter, az alapértelmezett érték a 0. |
 | Végrehajtandó újraindítás típusa | 0, 1 vagy 2 | A 0 érték letiltja az újraindítást. Az 1 érték lehetővé teszi az ütemezett újraindítást, a 2 pedig lehetővé teszi az azonnali újraindítást. Ha nincs megadva paraméter, az alapértelmezett érték a 0. A felhasználónak módosítania kell az 1. bemeneti paramétert a 2. paraméterre. |

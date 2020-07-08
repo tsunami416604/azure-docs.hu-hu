@@ -7,10 +7,9 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 2/27/2020
 ms.openlocfilehash: 72735e83af97fde8377e27daa45501704ef5a3c8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78164542"
 ---
 # <a name="migrate-your-mariadb-database-to-azure-database-for-mariadb-using-dump-and-restore"></a>A MariaDB-adatbázis migrálása Azure Database for MariaDB a dump és a Restore használatával
@@ -39,18 +38,18 @@ A MySQL segédprogramok (például a mysqldump és a mysqlpump) segítségével 
    ```sql
    INSERT INTO innodb_table SELECT * FROM myisam_table ORDER BY primary_key_columns
    ```
-- A kompatibilitási problémák elkerülése érdekében az adatbázisok biztonsági mentésekor győződjön meg arról, hogy a forrás- és a célrendszerek ugyanazt a MariaDB-verziót használják. Ha például a meglévő MariaDB-kiszolgáló a 10,2-es verzió, akkor át kell térnie az 10,2-es verzió futtatására konfigurált Azure Database for MariaDBra. A `mysql_upgrade` parancs nem működik Azure Database for MariaDB-kiszolgálón, és nem támogatott. Ha frissítenie kell a MariaDB-verziók között, először az alacsonyabb verziójú adatbázist kell kiadnia, vagy exportálnia kell a MariaDB magasabb verziójára a saját környezetében. Ezután futtassa `mysql_upgrade`a parancsot, mielőtt áttelepíti az áttelepítést egy Azure Database for MariaDBba.
+- A kompatibilitási problémák elkerülése érdekében az adatbázisok biztonsági mentésekor győződjön meg arról, hogy a forrás- és a célrendszerek ugyanazt a MariaDB-verziót használják. Ha például a meglévő MariaDB-kiszolgáló a 10,2-es verzió, akkor át kell térnie az 10,2-es verzió futtatására konfigurált Azure Database for MariaDBra. A `mysql_upgrade` parancs nem működik Azure Database for MariaDB-kiszolgálón, és nem támogatott. Ha frissítenie kell a MariaDB-verziók között, először az alacsonyabb verziójú adatbázist kell kiadnia, vagy exportálnia kell a MariaDB magasabb verziójára a saját környezetében. Ezután futtassa a parancsot `mysql_upgrade` , mielőtt áttelepíti az áttelepítést egy Azure Database for MariaDBba.
 
 ## <a name="performance-considerations"></a>A teljesítménnyel kapcsolatos megfontolások
 A teljesítmény optimalizálása érdekében vegye figyelembe a következő szempontokat a nagyméretű adatbázisok kiírásakor:
--   Az adatbázisok `exclude-triggers` kiírásakor használja a mysqldump kapcsolót. Kihagyhatja a memóriaképből származó eseményindítókat, hogy elkerülje az eseményindító parancsainak égetését az adatok visszaállítása során. 
--   A `single-transaction` beállítással beállíthatja a tranzakció-elkülönítési módot ismétlődő olvasásra, és elküldheti a Start Transaction SQL-utasítást a kiszolgálónak az adatok kiírása előtt. Egy tranzakción belül számos tábla kiírásakor a rendszer néhány további tárterületet használ a visszaállítás során. A `single-transaction` beállítás és a `lock-tables` beállítás kölcsönösen kizárható, mert a zárolási táblázatok implicit módon elvégeznek minden függőben lévő tranzakciót. A nagyméretű táblák kiírásához kombinálja a `single-transaction` kapcsolót a `quick` kapcsolóval. 
+-   Az `exclude-triggers` adatbázisok kiírásakor használja a mysqldump kapcsolót. Kihagyhatja a memóriaképből származó eseményindítókat, hogy elkerülje az eseményindító parancsainak égetését az adatok visszaállítása során. 
+-   A `single-transaction` beállítással beállíthatja a tranzakció-elkülönítési módot ismétlődő olvasásra, és elküldheti a Start Transaction SQL-utasítást a kiszolgálónak az adatok kiírása előtt. Egy tranzakción belül számos tábla kiírásakor a rendszer néhány további tárterületet használ a visszaállítás során. A `single-transaction` beállítás és a `lock-tables` beállítás kölcsönösen kizárható, mert a zárolási táblázatok implicit módon elvégeznek minden függőben lévő tranzakciót. A nagyméretű táblák kiírásához kombinálja a kapcsolót a `single-transaction` `quick` kapcsolóval. 
 -   Használja a `extended-insert` több sorból álló szintaxist, amely több értéklista használatát is magában foglalja. Ez kisebb memóriaképet eredményez, és felgyorsítja a beszúrást a fájl újratöltése után.
--  A mysqldump `order-by-primary` használatakor használja az adatbázisokat, hogy az elsődleges kulcs sorrendjében legyenek megírtak.
--   A mysqldump `disable-keys` használatakor használja az adatmemóriaképet, hogy letiltsa a külső kulcsokra vonatkozó korlátozásokat a betöltés előtt. A külső kulcsok ellenőrzésének letiltása teljesítménybeli nyereséget biztosít. Engedélyezze a korlátozásokat, és ellenőrizze az adatok betöltését a hivatkozási integritás biztosítása érdekében.
+-  A mysqldump használatakor használja az `order-by-primary` adatbázisokat, hogy az elsődleges kulcs sorrendjében legyenek megírtak.
+-   A mysqldump használatakor használja az `disable-keys` adatmemóriaképet, hogy letiltsa a külső kulcsokra vonatkozó korlátozásokat a betöltés előtt. A külső kulcsok ellenőrzésének letiltása teljesítménybeli nyereséget biztosít. Engedélyezze a korlátozásokat, és ellenőrizze az adatok betöltését a hivatkozási integritás biztosítása érdekében.
 -   Szükség esetén particionált táblákat használjon.
 -   Párhuzamosan tölthetők be az adathalmazok. Kerülje a túl sok párhuzamosságot, amelynek hatására elérheti az erőforrás-korlátot, és figyelheti az erőforrásokat a Azure Portal elérhető metrikák használatával. 
--   A mysqlpump `defer-table-indexes` használatakor használja az adatbázisokat, így az index létrehozása a táblázatok adatainak betöltése után történik.
+-   A mysqlpump használatakor használja az `defer-table-indexes` adatbázisokat, így az index létrehozása a táblázatok adatainak betöltése után történik.
 -   Másolja a biztonságimásolat-fájlokat egy Azure-blobba/-tárolóba, és végezze el a visszaállítást onnan, ami sokkal gyorsabb lehet, mint az interneten keresztüli visszaállítás végrehajtása.
 
 ## <a name="create-a-backup-file"></a>Biztonságimásolat-fájl létrehozása
@@ -66,7 +65,7 @@ A megadható paraméterek a következők:
 - [biztonságimentésfájlja. SQL] az adatbázis biztonsági másolatának fájlneve 
 - [--opt] A mysqldump beállítás 
 
-Ha például egy "testdb" nevű adatbázist szeretne biztonsági másolatot készíteni a MariaDB-kiszolgálón a (z) "tesztfelhasználó" felhasználónévvel, és nincs jelszó testdb_backup. SQL fájlhoz, használja a következő parancsot. A parancs biztonsági másolatot készít az `testdb` adatbázisról egy nevű `testdb_backup.sql`fájlba, amely tartalmazza az adatbázis újbóli létrehozásához szükséges összes SQL-utasítást. 
+Ha például egy "testdb" nevű adatbázist szeretne biztonsági másolatot készíteni a MariaDB-kiszolgálón a (z) "tesztfelhasználó" felhasználónévvel, és nincs jelszó testdb_backup. SQL fájlhoz, használja a következő parancsot. A parancs biztonsági másolatot készít az `testdb` adatbázisról egy nevű fájlba `testdb_backup.sql` , amely tartalmazza az adatbázis újbóli létrehozásához szükséges összes SQL-utasítást. 
 
 ```bash
 $ mysqldump -u root -p testdb > testdb_backup.sql

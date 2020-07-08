@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.subservice: alerts
 ms.openlocfilehash: 655a3acc44a1418778b37fbef85e5df75d042317
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78206236"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Összetett műveletek elindítása Azure Monitor riasztásokkal
@@ -110,7 +109,7 @@ A folyamat hasonló, ha azt szeretné, hogy a logikai alkalmazás más művelete
 
 12. Konfigurálja a Microsoft Teams műveletet. A **Logic apps Designer** megkéri, hogy hitelesítse az Office 365-fiókját. Válassza ki a **csoport azonosítóját** és a **csatorna azonosítóját** , hogy elküldje az üzenetet.
 
-13. Konfigurálja az üzenetet statikus szöveg kombinációjának használatával, és a dinamikus tartalom \<mezőire\> mutató hivatkozásokat. Másolja és illessze be a következő szöveget az **üzenet** mezőbe:
+13. Konfigurálja az üzenetet statikus szöveg kombinációjának használatával, és a \<fields\> dinamikus tartalomra mutató hivatkozásokat. Másolja és illessze be a következő szöveget az **üzenet** mezőbe:
 
     ```text
       Activity Log Alert: <eventSource>
@@ -119,7 +118,7 @@ A folyamat hasonló, ha azt szeretné, hogy a logikai alkalmazás más művelete
       resourceId: <resourceId>
     ```
 
-    Ezután keresse meg és cserélje le \<az\> azonos nevű dinamikus tartalom címkével rendelkező mezőket.
+    Ezután keresse meg és cserélje le az \<fields\> azonos nevű dinamikus tartalom címkéit.
 
     > [!NOTE]
     > Két, **állapot**nevű dinamikus mező van. Adja hozzá mindkét mezőt az üzenethez. Használja a **activityLog** tulajdonság táskájában található mezőt, és törölje a másik mezőt. Vigye az egérmutatót az **állapot** mező fölé a teljes mező hivatkozás megjelenítéséhez, ahogy az alábbi képernyőképen is látható:
@@ -195,7 +194,7 @@ Azure Service Health bejegyzések a műveletnapló részét képezik. A riasztá
 
    1. A **Ha igaz** állapotban a Microsoft Teams művelet hozzáadásához kövesse a [tevékenység naplójának létrehozása](#create-an-activity-log-alert-administrative) című cikk 11 – 13. lépésében található utasításokat.
 
-   1. Az üzenet definiálása HTML-és dinamikus tartalom kombinációjának használatával. Másolja és illessze be az alábbi tartalmat az **üzenet** mezőbe. Cserélje le `[incidentType]`a `[trackingID]`, `[title]`,, `[communication]` és mezőket az azonos nevű dinamikus tartalom címkére:
+   1. Az üzenet definiálása HTML-és dinamikus tartalom kombinációjának használatával. Másolja és illessze be az alábbi tartalmat az **üzenet** mezőbe. Cserélje le a `[incidentType]` ,, `[trackingID]` `[title]` , és `[communication]` mezőket az azonos nevű dinamikus tartalom címkére:
 
        ```html
        <p>
@@ -284,7 +283,7 @@ A metrikai riasztások létrehozásának folyamata hasonló a [műveletnapló-ri
 
       !["Metrikus riasztás igaz feltétel utáni művelet"](media/action-groups-logic-app/metric-alert-true-condition-post-action.png "Metrikus riasztás – igaz feltétel utáni művelet")
 
-  1. **Ha hamis** állapotban van, Definiáljon egy Microsoft Teams műveletet, amely közli, hogy a mérőszám riasztása nem felel meg a logikai alkalmazás elvárásainak. A JSON-adattartalom belefoglalása. Figyelje meg, hogyan hivatkozhat `triggerBody` a `json()` kifejezésben szereplő dinamikus tartalomra.
+  1. **Ha hamis** állapotban van, Definiáljon egy Microsoft Teams műveletet, amely közli, hogy a mérőszám riasztása nem felel meg a logikai alkalmazás elvárásainak. A JSON-adattartalom belefoglalása. Figyelje meg, hogyan hivatkozhat a `triggerBody` kifejezésben szereplő dinamikus tartalomra `json()` .
 
       !["Metrika riasztás hamis feltétele utáni művelet"](media/action-groups-logic-app/metric-alert-false-condition-post-action.png "Metrika riasztás hamis feltétele utáni művelet")
 

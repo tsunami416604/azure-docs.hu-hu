@@ -13,10 +13,9 @@ ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/24/2020
 ms.openlocfilehash: 956523e2b51795a4bc97c653dab8b408b06061f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78255564"
 ---
 # <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>Oktatóanyag: Oracle migrálása Azure Database for PostgreSQL online-ba a DMS használatával (előzetes verzió)
@@ -86,7 +85,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
       SHUTDOWN IMMEDIATE;
       ```
 
-      Várja meg a megerősítést `'ORACLE instance shut down'`.
+      Várja meg a megerősítést `'ORACLE instance shut down'` .
 
     * Indítsa el az új példányt, és csatlakoztassa (de ne nyissa meg) az adatbázist az alábbi parancsot futtató Bu-archiválás engedélyezéséhez vagy letiltásához:
 
@@ -116,12 +115,12 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
       SELECT log_mode FROM v$database;
       ```
 
-      Meg kell kapnia egy `'ARCHIVELOG'`választ. Ha a válasz `'NOARCHIVELOG'`, akkor a követelmény nem teljesül.
+      Meg kell kapnia egy választ `'ARCHIVELOG'` . Ha a válasz `'NOARCHIVELOG'` , akkor a követelmény nem teljesül.
 
   * A következő lehetőségek egyikének használatával engedélyezheti a kiegészítő naplózást a replikáláshoz.
 
     * **1. lehetőség**.
-      Módosítsa az adatbázis-szint kiegészítő naplózását úgy, hogy az az összes táblát lefedje a PK és az egyedi index használatával. A rendszer visszaküldi `'IMPLICIT'`az észlelési lekérdezést.
+      Módosítsa az adatbázis-szint kiegészítő naplózását úgy, hogy az az összes táblát lefedje a PK és az egyedi index használatával. A rendszer visszaküldi az észlelési lekérdezést `'IMPLICIT'` .
 
       ```
       ALTER DATABASE ADD SUPPLEMENTAL LOG DATA (PRIMARY KEY, UNIQUE) COLUMNS;
@@ -134,7 +133,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
       ```
 
     * **2. lehetőség**.
-      Módosítsa az adatbázis szintjének kiegészítő naplózását az összes táblára, az észlelési lekérdezés pedig `'YES'`visszaadja.
+      Módosítsa az adatbázis szintjének kiegészítő naplózását az összes táblára, az észlelési lekérdezés pedig visszaadja `'YES'` .
 
       ```
       ALTER DATABASE ADD SUPPLEMENTAL LOG DATA;
@@ -166,7 +165,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
       SELECT supplemental_log_data_min FROM v$database;
       ```
 
-    Meg kell kapnia egy `'YES'`választ.
+    Meg kell kapnia egy választ `'YES'` .
 
 ## <a name="assess-the-effort-for-an-oracle-to-azure-database-for-postgresql-migration"></a>Az Oracle Azure Database for PostgreSQL áttelepítésre vonatkozó erőfeszítésének felmérése
 
@@ -178,7 +177,7 @@ A ora2pg konfigurálásához és futtatásához értékelési jelentés létreho
 
 ## <a name="export-the-oracle-schema"></a>Az Oracle-séma exportálása
 
-Javasoljuk, hogy a ora2pg használatával alakítsa át az Oracle-sémát és más Oracle-objektumokat (típusokat, eljárásokat, függvényeket stb.) olyan sémára, amely kompatibilis a Azure Database for PostgreSQLokkal. a ora2pg számos irányelvet tartalmaz, amelyek segítségével előre definiálhatja bizonyos adattípusokat. Az direktívával például lecserélheti `DATA_TYPE` az összes számot (*, 0) a bigint és nem numerikus (38) értékre.
+Javasoljuk, hogy a ora2pg használatával alakítsa át az Oracle-sémát és más Oracle-objektumokat (típusokat, eljárásokat, függvényeket stb.) olyan sémára, amely kompatibilis a Azure Database for PostgreSQLokkal. a ora2pg számos irányelvet tartalmaz, amelyek segítségével előre definiálhatja bizonyos adattípusokat. Az `DATA_TYPE` direktívával például lecserélheti az összes számot (*, 0) a bigint és nem numerikus (38) értékre.
 
 A ora2pg futtatásával exportálhatja az egyes adatbázis-objektumokat. SQL-fájlokba. Ezután áttekintheti az. SQL-fájlokat, mielőtt az psql használatával Azure Database for PostgreSQL importálni őket, vagy végrehajthatja a következőt:. SQL-szkript a PgAdmin-ben.
 
@@ -221,7 +220,7 @@ Ha a PostgreSQL-sémát olyan eszközökkel hozza létre, mint például a ora2p
     ![Portál-előfizetések megtekintése](media/tutorial-oracle-azure-postgresql-online/dms-migration-settings.png)
 
 > [!NOTE]
-> Ha különböző névvel rendelkező táblákhoz szeretné leképezni a forrástábla nevét, e [dmsfeedback@microsoft.com](mailto:dmsfeedbac@microsoft.com) -mail-címet, és a folyamat automatizálására szolgáló parancsfájlt is megadhat.
+> Ha különböző névvel rendelkező táblákhoz szeretné leképezni a forrástábla nevét, e-mail-címet, [dmsfeedback@microsoft.com](mailto:dmsfeedbac@microsoft.com) és a folyamat automatizálására szolgáló parancsfájlt is megadhat.
 
 ### <a name="when-the-postgresql-table-schema-doesnt-exist"></a>Ha a PostgreSQL-tábla sémája nem létezik
 
@@ -249,7 +248,7 @@ Első lépések:
     | HR | targetHR.HR | "HR". " ORSZÁGOK "." COUNTRY_ID " |
     | HR | targetHR.Hr | * Nem sikerült leképezni a vegyes eseteket |
 
-    * Ha vegyes eseti sémát és táblanév nevet szeretne létrehozni a cél [dmsfeedback@microsoft.com](mailto:dmsfeedback@microsoft.com)PostgreSQL-ben, forduljon a következőhöz:. Megadhatunk egy parancsfájlt a vegyes Case Table séma beállításához a cél PostgreSQL-adatbázisban.
+    * Ha vegyes eseti sémát és táblanév nevet szeretne létrehozni a cél PostgreSQL-ben, forduljon a következőhöz: [dmsfeedback@microsoft.com](mailto:dmsfeedback@microsoft.com) . Megadhatunk egy parancsfájlt a vegyes Case Table séma beállításához a cél PostgreSQL-adatbázisban.
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>A Microsoft.DataMigration erőforrás-szolgáltató regisztrálása
 
@@ -322,7 +321,7 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
 
 ## <a name="upload-oracle-oci-driver"></a>Oracle OCI-illesztőprogram feltöltése
 
-1. Válassza a **Mentés**lehetőséget, majd a **OCI-illesztőprogram telepítése** képernyőn jelentkezzen be az Oracle-fiókjába, és töltse le az **instantclient-basiclite-Windows. x64-12.2.0.1.0. zip** (37 128 586 bájt) (SHA1 ellenőrzőösszeg: 865082268) illesztőprogramot [innen.](https://www.oracle.com/technetwork/topics/winx64soft-089540.html#ic_winx64_inst)
+1. Válassza a **Mentés**lehetőséget, majd a **OCI-illesztőprogram telepítése** képernyőn jelentkezzen be az Oracle-fiókjába, és töltse le az illesztőprogramot **instantclient-basiclite-windows.x64-12.2.0.1.0.zip** (37 128 586 BÁJT (s)) (SHA1 ellenőrzőösszeg: 865082268) [innen.](https://www.oracle.com/technetwork/topics/winx64soft-089540.html#ic_winx64_inst)
 2. Töltse le az illesztőprogramot egy megosztott mappába.
 
    Győződjön meg arról, hogy a mappa meg van osztva a minimális írásvédett hozzáféréssel megadott felhasználónévvel. Azure Database Migration Service hozzáfér a megosztáshoz, és beolvassa a OCI-illesztőprogramot az Azure-ba, ha megszemélyesíti a megadott felhasználónevet.

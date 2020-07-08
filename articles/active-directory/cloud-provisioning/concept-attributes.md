@@ -16,10 +16,9 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4ac09fb3faf55be6c07a1e0a88b6e2032c9ab8ce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78299329"
 ---
 # <a name="understand-the-azure-ad-schema"></a>Az Azure AD-séma ismertetése
@@ -42,13 +41,13 @@ Előfordulhat például, hogy egy felhasználó tagja egy marketing részlegnek.
 
 Az attribútumok szinkronizálása lehet közvetlen, ahol az Azure AD-ban lévő érték közvetlenül a helyszíni attribútum értékére van beállítva. Vagy egy programozott kifejezés is kezelheti a szinkronizálást. Szükség van egy programozott kifejezésre olyan esetekben, amikor valamilyen logikát vagy meghatározást kell végezni az érték feltöltéséhez.
 
-Ha például a "" e-mail-attribútummaljohn.smith@contoso.comrendelkezik, és a "@contoso.com" részének és a folyamatnak csak a "John. Smith" értéket kell kimutatnia, akkor a következőhöz hasonlót kell használnia:
+Ha például a "" e-mail-attribútummal rendelkezik, john.smith@contoso.com és a " @contoso.com " részének és a folyamatnak csak a "John. Smith" értéket kell kimutatnia, akkor a következőhöz hasonlót kell használnia:
 
 `Replace([mail], "@contoso.com", , ,"", ,)`  
 
 **Minta bemenet/kimenet:** <br>
 
-* **Bemenet** (e-mail): "john.smith@contoso.com"
+* **Bemenet** (e-mail): " john.smith@contoso.com "
 * **Kimenet**: "John. Smith"
 
 Az egyéni kifejezések és a szintaxis megírásával kapcsolatos további információkért lásd: [kifejezések írása az attribútumok megfeleltetéséhez Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data).
@@ -61,7 +60,7 @@ Az alábbi táblázat a gyakori attribútumokat és az Azure AD-vel való szinkr
 |CN|Direct|Köznapinév
 |Országhívószám|Direct|Országhívószám|
 |displayName|Direct|displayName|
-|givenName|Kifejezés|givenName|
+|givenName|Expression|givenName|
 |objectGUID|Direct|sourceAnchorBinary|  
 |userprincipalName|Direct|userPrincipalName|
 |ProxyAdress|Direct|ProxyAddress|
@@ -75,8 +74,8 @@ A séma megtekintéséhez és ellenőrzéséhez kövesse az alábbi lépéseket.
 1.  Lépjen a [Graph Explorerben](https://developer.microsoft.com/graph/graph-explorer).
 1.  Jelentkezzen be a globális rendszergazdai fiókjával.
 1.  A bal oldalon válassza az **engedélyek módosítása** lehetőséget, és győződjön meg arról, hogy a *Consented* **könyvtár. ReadWrite. All** .
-1.  Futtassa a lekérdezést `https://graph.microsoft.com/beta/serviceprincipals/?$filter=startswith(Displayname,'Active')`. Ez a lekérdezés az egyszerű szolgáltatások szűrt listáját adja vissza.
-1.  Keresse `"appDisplayName": "Active Directory to Azure Active Directory Provisioning"` meg és jegyezze fel `"id"`a értékét.
+1.  Futtassa a lekérdezést `https://graph.microsoft.com/beta/serviceprincipals/?$filter=startswith(Displayname,'Active')` . Ez a lekérdezés az egyszerű szolgáltatások szűrt listáját adja vissza.
+1.  Keresse meg `"appDisplayName": "Active Directory to Azure Active Directory Provisioning"` és jegyezze fel a értékét `"id"` .
     ```
     "value": [
             {
@@ -149,8 +148,8 @@ A séma megtekintéséhez és ellenőrzéséhez kövesse az alábbi lépéseket.
                 "passwordCredentials": []
             },
     ```
-1. Cserélje `{Service Principal id}` le az értéket a értékre, és `https://graph.microsoft.com/beta/serviceprincipals/{Service Principal id}/synchronization/jobs/`futtassa a lekérdezést.
-1. Keresse `"id": "AD2AADProvisioning.fd1c9b9e8077402c8bc03a7186c8f976"` meg és jegyezze fel `"id"`a értékét.
+1. Cserélje le az `{Service Principal id}` értéket a értékre, és futtassa a lekérdezést `https://graph.microsoft.com/beta/serviceprincipals/{Service Principal id}/synchronization/jobs/` .
+1. Keresse meg `"id": "AD2AADProvisioning.fd1c9b9e8077402c8bc03a7186c8f976"` és jegyezze fel a értékét `"id"` .
     ```
     {
                 "id": "AD2AADProvisioning.fd1c9b9e8077402c8bc03a7186c8f976",
@@ -241,11 +240,11 @@ A séma megtekintéséhez és ellenőrzéséhez kövesse az alábbi lépéseket.
                 ]
             }
     ```
-1. Most futtassa a lekérdezést `https://graph.microsoft.com/beta/serviceprincipals/{Service Principal Id}/synchronization/jobs/{AD2AAD Provisioning id}/schema`.
+1. Most futtassa a lekérdezést `https://graph.microsoft.com/beta/serviceprincipals/{Service Principal Id}/synchronization/jobs/{AD2AAD Provisioning id}/schema` .
  
     Például: https://graph.microsoft.com/beta/serviceprincipals/653c0018-51f4-4736-a3a3-94da5dcb6862/synchronization/jobs/AD2AADProvisioning.e9287a7367e444c88dc67a531c36d8ec/schema
 
-   `{AD2ADD Provisioning Id}` Cserélje le `{Service Principal Id}` az értékeket az értékekre.
+   Cserélje le az `{Service Principal Id}` `{AD2ADD Provisioning Id}` értékeket az értékekre.
 
 1. Ez a lekérdezés a sémát adja vissza.
 

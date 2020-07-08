@@ -14,10 +14,9 @@ ms.topic: conceptual
 ms.date: 04/19/2019
 ms.author: juliako
 ms.openlocfilehash: 1c2d6287a89c7816c30cf26978859c07dba0251d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78197504"
 ---
 # <a name="azure-media-services-overview"></a>Az Azure Media Services áttekintése 
@@ -67,7 +66,7 @@ A Media Services-megoldások létrehozásához a következőket használhatja:
     * [Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php),
     * [Node.js-hez készült Azure Media Services](https://github.com/michelle-becker/node-ams-sdk/blob/master/lib/request.js) (Ez a Node.js SDK nem Microsoft által készített verziója. Ennek a karbantartását egy közösség végzi, és jelenleg nem fedi le 100%-osan az AMS API-k tartalmát.)
 * Meglévő eszközök:
-    * [Azure Portal](https://portal.azure.com/)
+    * [Azure Portalra](https://portal.azure.com/)
     * [Azure-Media-Services-Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) (Az Azure Media Services Explorer (AMSE) egy Winforms/C#-alkalmazás Windows rendszerre)
 
 > [!NOTE]
@@ -78,7 +77,7 @@ A Media Services-megoldások létrehozásához a következőket használhatja:
 
 Az **Azure-kódminták** katalógusban számos kódmintát talál: [Azure Media Services-kódminták](https://azure.microsoft.com/resources/samples/?service=media-services&sort=0).
 
-## <a name="concepts"></a>Alapelvek
+## <a name="concepts"></a>Fogalmak
 
 Az Azure Media Services alapfogalmaiért lásd: [Fogalmak](media-services-concepts.md)
 

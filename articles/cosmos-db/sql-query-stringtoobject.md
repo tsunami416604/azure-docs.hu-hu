@@ -8,10 +8,9 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: c3e61d1efe20910d84ef4ff583d74982b3ea9f3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78296381"
 ---
 # <a name="stringtoobject-azure-cosmos-db"></a>StringToObject (Azure Cosmos DB)
@@ -34,7 +33,7 @@ StringToObject(<str_expr>)
   
 ## <a name="examples"></a>Példák
   
-  Az alábbi példa azt szemlélteti `StringToObject` , hogyan viselkedik a különböző típusok között. 
+  Az alábbi példa azt szemlélteti, hogyan viselkedik a `StringToObject` különböző típusok között. 
   
  Az alábbi példák érvényes bemenettel rendelkeznek.
 
@@ -56,7 +55,7 @@ Itt látható az eredményhalmaz.
 ```
 
  A következő példák érvénytelen bemenettel rendelkeznek.
-Annak ellenére, hogy egy lekérdezésen belül érvényesek, nem lesznek értelmezve érvényes objektumokra. \\Az objektumon belüli karakterláncokat "{" a\\":\\" Str\\"}" karakterrel kell megszökni, vagy a környező idézőjelnek egyetlen "{" a ":" Str "}" értékűnek kell lennie.
+Annak ellenére, hogy egy lekérdezésen belül érvényesek, nem lesznek értelmezve érvényes objektumokra. Az objektumon belüli karakterláncokat "{ \\ " a \\ ":" Str "}" karakterrel kell megszökni, \\ \\ vagy a környező idézőjelnek egyetlen "{" a ":" Str "}" értékűnek kell lennie.
 
 A környező tulajdonságok neveinek egyetlen idézőjele nem érvényes JSON.
 

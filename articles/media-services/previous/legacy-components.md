@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 02/27/2020
 ms.author: juliako
 ms.openlocfilehash: 94a70a1234d902787f248890f0cb538a4ba9c2f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77921079"
 ---
 # <a name="azure-media-services-legacy-components"></a>Örökölt összetevők Azure Media Services
@@ -41,7 +40,7 @@ A következő Media Analytics adathordozó-processzorok kivonulását is bejelen
 |[Videók összegzése](media-services-video-summarization.md)|2020. június 1.|Jelenleg nincsenek helyettesítési csomagok.|
 |[Videós optikai karakterfelismerés](media-services-video-optical-character-recognition.md)|2020. június 1.|Ezt a médialejátszó-processzort [Azure Media Services video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/)váltja fel. Emellett érdemes lehet [Azure Media Services V3 API](https://docs.microsoft.com/azure/media-services/latest/analyzing-video-audio-files-concept)-t használni. <br/>Lásd: [Azure Media Services v3-es előállítók összehasonlítása és video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/compare-video-indexer-with-media-services-presets)|
 |[Arcérzékelő](media-services-face-and-emotion-detection.md)|2020. június 1.|Ezt a médialejátszó-processzort [Azure Media Services video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/)váltja fel. Emellett érdemes lehet [Azure Media Services V3 API](https://docs.microsoft.com/azure/media-services/latest/analyzing-video-audio-files-concept)-t használni. <br/>Lásd: [Azure Media Services v3-es előállítók összehasonlítása és video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/compare-video-indexer-with-media-services-presets)|
-|[Tartalommoderátor](media-services-content-moderation.md)|2020. június 1.|Ezt a médialejátszó-processzort [Azure Media Services video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/)váltja fel. Emellett érdemes lehet [Azure Media Services V3 API](https://docs.microsoft.com/azure/media-services/latest/analyzing-video-audio-files-concept)-t használni. <br/>Lásd: [Azure Media Services v3-es előállítók összehasonlítása és video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/compare-video-indexer-with-media-services-presets)|
+|[Content Moderator](media-services-content-moderation.md)|2020. június 1.|Ezt a médialejátszó-processzort [Azure Media Services video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/)váltja fel. Emellett érdemes lehet [Azure Media Services V3 API](https://docs.microsoft.com/azure/media-services/latest/analyzing-video-audio-files-concept)-t használni. <br/>Lásd: [Azure Media Services v3-es előállítók összehasonlítása és video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/compare-video-indexer-with-media-services-presets)|
 
 ## <a name="next-steps"></a>További lépések
 

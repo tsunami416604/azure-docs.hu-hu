@@ -14,10 +14,9 @@ ms.workload: na
 ms.date: 12/29/2019
 ms.author: memildin
 ms.openlocfilehash: dcf7df501665ea3885d00b9f7668a95cbbf02428
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78208542"
 ---
 # <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Endpoint Protection-Értékelés és javaslatok a Azure Security Center
@@ -55,7 +54,7 @@ A Azure Security Center az Endpoint Protection-megoldások [támogatott](securit
 
 ## <a name="microsoft-system-center-endpoint-protection"></a>Microsoft System Center Endpoint Protection
 
-* Security Center javasolja az **Endpoint Protection-megoldások telepítését a virtuális gépen a** SCEPMpModule importálásakor **("$env:P rogramfiles\microsoft biztonsági Client\MpProvider\MpProvider.psd1")** , valamint a **Get-MProtComputerStatus** eredményeinek a **AMServiceEnabled = false értékkel** történő futtatását.
+* Security Center javasolja az **Endpoint Protection-megoldások telepítését a virtuális gépen a** SCEPMpModule importálásakor **("$env:P rogramfiles\microsoft Security Client\MpProvider\MpProvider.psd1")** , és a **Get-MProtComputerStatus** eredmények futtatása a **AMServiceEnabled = false értékkel**
 
 * Security Center a **Get-MprotComputerStatus** futtatásakor javasolja az **Endpoint Protection-állapottal kapcsolatos problémák megoldását a gépeken** , valamint a következő esetekben:
 

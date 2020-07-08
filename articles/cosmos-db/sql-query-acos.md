@@ -8,10 +8,9 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 733d6b009f03d61c37170cc506a3b2ec842d7c47
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78300961"
 ---
 # <a name="acos-azure-cosmos-db"></a>ACO-i (Azure Cosmos DB)
@@ -34,7 +33,7 @@ ACOS(<numeric_expr>)
   
 ## <a name="examples"></a>Példák
   
-  A következő példa a `ACOS` -1 értéket adja vissza.  
+  A következő példa a-1 értéket adja vissza `ACOS` .  
   
 ```sql
 SELECT ACOS(-1) AS acos 

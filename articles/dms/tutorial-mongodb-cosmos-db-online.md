@@ -13,10 +13,9 @@ ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 09/25/2019
 ms.openlocfilehash: 66375d83dca4edef17919e3b493d5e45be37cc40
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78255622"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-online-using-dms"></a>Oktatóanyag: a MongoDB migrálása Azure Cosmos DB API-ra a MongoDB online-hoz a DMS használatával
@@ -150,7 +149,7 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
 
      Emellett az Azure Storage-beli memóriakép-információk alapján is tartsa szem előtt a következő adatokat.
 
-     * A BSON-memóriaképek esetében a blob-tárolóban lévő adatfájloknak bsondump formátumúnak kell lenniük, így az adatfájlokat a tartalmazó adatbázisok mappába kell helyezni a gyűjtemény. BSON formátumban. A metaadat-fájlokat (ha vannak) a következő formátumban kell elnevezni: *Collection*. Metadata. JSON.
+     * A BSON-memóriaképek esetében a blob-tárolóban lévő adatfájloknak bsondump formátumúnak kell lenniük, így az adatfájlokat a tartalmazó adatbázisok mappába kell helyezni a gyűjtemény. BSON formátumban. A metaadat-fájlokat (ha vannak ilyenek) a Format *collection*.metadata.jshasználatával kell elnevezni.
 
      * A JSON-memóriaképek esetében a blob-tárolóban lévő fájlokat a tartalmazó adatbázisokat tartalmazó mappákba kell helyezni. Az egyes adatbázis-mappákban az adatfájlokat az "adat" nevű almappába kell helyezni, és a name *Collection*. JSON formátumot kell elnevezni. A metaadat-fájlokat (ha vannak ilyenek) a "metadata" nevű almappában kell elhelyezni, és ugyanazt a formátumot kell elnevezni, a *Collection*. JSON fájllal. A metaadat-fájloknak meg kell egyezniük a MongoDB bsondump eszközzel létrehozott formátummal.
 
@@ -247,7 +246,7 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
 
 Miután áttelepítette a MongoDB-adatbázisban tárolt adatAzure Cosmos DB API-ját a MongoDB-hez, csatlakozhat Azure Cosmos DBhoz, és kezelheti az adatkezelési lehetőséget. Más áttelepítés utáni optimalizálási lépéseket is végrehajthat, például optimalizálhatja az indexelési házirendet, frissítheti az alapértelmezett konzisztencia-szintet, vagy konfigurálhatja a Azure Cosmos DB-fiók globális eloszlását. További információ: [áttelepítés utáni optimalizálási](../cosmos-db/mongodb-post-migration.md) cikk.
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 * [Cosmos DB szolgáltatás adatai](https://azure.microsoft.com/services/cosmos-db/)
 

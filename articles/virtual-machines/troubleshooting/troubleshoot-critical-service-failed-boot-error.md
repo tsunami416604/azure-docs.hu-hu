@@ -13,10 +13,9 @@ ms.workload: infrastructure
 ms.date: 10/08/2018
 ms.author: genli
 ms.openlocfilehash: 54ba87b681a055bb46b81ca81d2bcdd103491f27
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77921453"
 ---
 # <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>A Windows egy Azure-beli virtuális gép indításakor a "kritikus szolgáltatás sikertelen" állapotot jeleníti meg a kék képernyőn
@@ -27,7 +26,7 @@ Ez a cikk a "kritikus szolgáltatás nem sikerült" hibát mutatja be, amely akk
 
 Egy Windows rendszerű virtuális gép nem indul el. Amikor bejelöli a rendszerindítási [diagnosztika](./boot-diagnostics.md)rendszerindítási funkcióit, a következő hibaüzenetek egyike jelenik meg egy kék képernyőn:
 
-- "A számítógép hibát észlelt, és újra kell indítania. Újra lehet indítani. További információt erről a problémáról és a lehetséges javításokról https://windows.com/stopcodea következő webhelyen talál:. Ha egy támogatási személyt hív meg, adja meg nekik ezt az információt: leállítási kód: a kritikus szolgáltatás nem sikerült. 
+- "A számítógép hibát észlelt, és újra kell indítania. Újra lehet indítani. További információt erről a problémáról és a lehetséges javításokról a következő webhelyen talál: https://windows.com/stopcode . Ha egy támogatási személyt hív meg, adja meg nekik ezt az információt: leállítási kód: a kritikus szolgáltatás nem sikerült. 
 - "A számítógép hibát észlelt, és újra kell indítania. Most gyűjtünk néhány hibaüzenetet, majd újraindulunk. Ha további információra van szüksége, később is megkeresheti a következő hibaüzenetet: CRITICAL_SERVICE_FAILED "
 
 ## <a name="cause"></a>Ok
@@ -107,15 +106,15 @@ A memóriakép-naplók elemzéséhez kövesse az alábbi lépéseket:
 
 1. Csatlakoztassa az operációsrendszer-lemezt egy helyreállítási virtuális géphez.
 2. A csatlakoztatott operációsrendszer-lemezen keresse meg a **\Windows\System32\Config**. Másolja az összes fájlt biztonsági másolatként arra az esetre, ha visszaállításra van szükség.
-3. Indítsa el a **Beállításszerkesztőt** (Regedit. exe).
-4. Válassza ki a **HKEY_LOCAL_MACHINE** kulcsot. A menüben válassza a **fájl** > **Load struktúra**elemet.
+3. Indítsa el a **Beállításszerkesztőt** (regedit.exe).
+4. Válassza ki a **HKEY_LOCAL_MACHINE** kulcsot. A menüben válassza a **fájl**  >  **Load struktúra**elemet.
 5. Keresse meg a **\windows\system32\config\SYSTEM** mappát a csatlakoztatott operációsrendszer-lemezen. A struktúra neveként írja be a következőt: **BROKENSYSTEM**. Az új beállításjegyzék-struktúra a **HKEY_LOCAL_MACHINE** kulcs alatt jelenik meg.
 6. Keresse meg **HKEY_LOCAL_MACHINE \brokensystem\controlset00x\control\crashcontrol** , és végezze el a következő módosításokat:
 
     Autoújraindítás = 0
 
     CrashDumpEnabled = 2
-7.  Válassza a **BROKENSYSTEM**lehetőséget. A menüből válassza ki a **fájl** > **kitöltése struktúrát**.
+7.  Válassza a **BROKENSYSTEM**lehetőséget. A menüből válassza ki a **fájl**  >  **kitöltése struktúrát**.
 8.  Módosítsa a BCD-telepítőt hibakeresési módba való indításra. Futtassa a következő parancsokat egy rendszergazda jogú parancssorból:
 
     ```cmd
@@ -135,7 +134,7 @@ A memóriakép-naplók elemzéséhez kövesse az alábbi lépéseket:
 9. [Válassza le az operációsrendszer-lemezt, majd csatlakoztassa újra az operációsrendszer-lemezt az érintett virtuális géphez](troubleshoot-recovery-disks-portal-windows.md).
 10. Indítsa el a virtuális gépet, és ellenőrizze, hogy látható-e a memóriakép elemzése. Keresse meg a nem betölteni kívánt fájlt. Ezt a fájlt a működő virtuális gép egy fájljával kell helyettesítenie. 
 
-    A következő példa a memóriakép elemzésére szolgál. Láthatja, hogy a **hiba** a filecrypt. sys fájlban: "FAILURE_BUCKET_ID: 0x5A_c0000428_IMAGE_filecrypt. sys".
+    A következő példa a memóriakép elemzésére szolgál. Láthatja, hogy a **hiba** filecrypt.sys: "FAILURE_BUCKET_ID: 0x5A_c0000428_IMAGE_filecrypt.sys".
 
     ```
     kd> !analyze -v 

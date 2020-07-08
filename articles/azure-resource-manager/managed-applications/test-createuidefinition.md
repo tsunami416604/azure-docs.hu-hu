@@ -6,19 +6,18 @@ ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: tomfitz
 ms.openlocfilehash: e2d075a58872f9337c7d1faa642a48047e2f9ddf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78250176"
 ---
 # <a name="test-your-portal-interface-for-azure-managed-applications"></a>A portál felületének tesztelése Azure Managed Applications
 
-Miután létrehozta a felügyelt alkalmazáshoz tartozó [createUiDefinition. JSON fájlt](create-uidefinition-overview.md) , tesztelni kell a felhasználói élményt. A tesztelés egyszerűsítése érdekében használjon egy sandbox-környezetet, amely betölti a fájlt a portálon. Nem kell ténylegesen telepítenie a felügyelt alkalmazást. A Sandbox a felhasználói felületet mutatja be a jelenlegi, teljes képernyős portálon. Vagy használhat parancsfájlt az illesztőfelület teszteléséhez. Ebben a cikkben mindkét megközelítés látható. A munkaterületet az ajánlott eljárással tekintheti meg a kezelőfelületen.
+Miután [létrehozta a createUiDefinition.jsfájlt](create-uidefinition-overview.md) a felügyelt alkalmazáshoz, tesztelni kell a felhasználói élményt. A tesztelés egyszerűsítése érdekében használjon egy sandbox-környezetet, amely betölti a fájlt a portálon. Nem kell ténylegesen telepítenie a felügyelt alkalmazást. A Sandbox a felhasználói felületet mutatja be a jelenlegi, teljes képernyős portálon. Vagy használhat parancsfájlt az illesztőfelület teszteléséhez. Ebben a cikkben mindkét megközelítés látható. A munkaterületet az ajánlott eljárással tekintheti meg a kezelőfelületen.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy **createUiDefinition. JSON** fájl. Ha nem rendelkezik [ezzel a fájllal, másolja a fájlt](https://github.com/Azure/azure-quickstart-templates/blob/master/100-marketplace-sample/createUiDefinition.json).
+* Egy **createUiDefinition.jsa** fájlon. Ha nem rendelkezik [ezzel a fájllal, másolja a fájlt](https://github.com/Azure/azure-quickstart-templates/blob/master/100-marketplace-sample/createUiDefinition.json).
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
 
@@ -28,7 +27,7 @@ Miután létrehozta a felügyelt alkalmazáshoz tartozó [createUiDefinition. JS
 
    ![Homokozó megjelenítése](./media/test-createuidefinition/show-sandbox.png)
 
-1. Cserélje le az üres definíciót a createUiDefinition. JSON fájl tartalmára. Válassza az **előnézet**lehetőséget.
+1. Cserélje le az üres definíciót a fájl createUiDefinition.jstartalmára. Válassza az **előnézet**lehetőséget.
 
    ![Előnézet kiválasztása](./media/test-createuidefinition/select-preview.png)
 
@@ -54,9 +53,9 @@ Az interfész a portálon való teszteléséhez másolja a következő parancsf�
 * [PowerShell-oldal – betöltési parancsfájl – Azure-modul](https://github.com/Azure/azure-quickstart-templates/blob/master/SideLoad-CreateUIDefinition.ps1)
 * [Azure CLI-oldal – betöltési parancsfájl](https://github.com/Azure/azure-quickstart-templates/blob/master/sideload-createuidef.sh)
 
-Ha szeretné megtekinteni a csatoló fájlját a portálon, futtassa a letöltött parancsfájlt. A szkript létrehoz egy Storage-fiókot az Azure-előfizetésében, és feltölti a createUiDefinition. JSON fájlt a Storage-fiókba. A rendszer létrehozza a Storage-fiókot, amikor a parancsfájlt először futtatja, vagy ha a Storage-fiókot törölték. Ha a Storage-fiók már létezik az Azure-előfizetésben, a szkript újra felhasználja azt. A szkript megnyitja a portált, és betölti a fájlt a Storage-fiókból.
+Ha szeretné megtekinteni a csatoló fájlját a portálon, futtassa a letöltött parancsfájlt. A szkript létrehoz egy Storage-fiókot az Azure-előfizetésében, és feltölti a createUiDefinition.jsfájlt a Storage-fiókba. A rendszer létrehozza a Storage-fiókot, amikor a parancsfájlt először futtatja, vagy ha a Storage-fiókot törölték. Ha a Storage-fiók már létezik az Azure-előfizetésben, a szkript újra felhasználja azt. A szkript megnyitja a portált, és betölti a fájlt a Storage-fiókból.
 
-Adja meg a Storage-fiók helyét, és adja meg a createUiDefinition. JSON fájlt tartalmazó mappát.
+Adja meg a Storage-fiók helyét, és adja meg azt a mappát, amelyben a createUiDefinition.jsfájl található.
 
 PowerShell esetén használja az alábbi parancsot:
 
@@ -74,7 +73,7 @@ Azure CLI esetén használja az alábbi parancsot:
   -a .\100-Marketplace-Sample
 ```
 
-Ha a createUiDefinition. JSON fájl ugyanabban a mappában található, mint a parancsfájl, és már létrehozta a Storage-fiókot, nem kell megadnia ezeket a paramétereket.
+Ha a createUiDefinition.jsfájl ugyanabban a mappában található, mint a parancsfájl, és már létrehozta a Storage-fiókot, nem kell megadnia ezeket a paramétereket.
 
 PowerShell esetén használja az alábbi parancsot:
 
@@ -100,7 +99,7 @@ Ha a portál az összefoglalás képernyőn leáll, lehet, hogy hiba van a kimen
 
 ## <a name="test-your-solution-files"></a>A megoldás fájljainak tesztelése
 
-Most, hogy ellenőrizte, hogy a portál felülete a várt módon működik-e, ideje ellenőrizni, hogy a createUiDefinition-fájl megfelelően van-e integrálva a mainTemplate. JSON fájllal. Az érvényesítési parancsfájl tesztelésével tesztelheti a megoldás fájljainak tartalmát, beleértve a createUiDefinition fájlt is. A parancsfájl érvényesíti a JSON-szintaxist, ellenőrzi a regex kifejezéseket a szövegmezőben, és gondoskodik arról, hogy a portál felületének kimeneti értékei megegyezzenek a sablon paramétereivel. A parancsfájl futtatásával kapcsolatos további információkért lásd: [statikus ellenőrzési ellenőrzések futtatása sablonokhoz](https://github.com/Azure/azure-quickstart-templates/tree/master/test).
+Most, hogy ellenőrizte, hogy a portál felülete a várt módon működik-e, ideje ellenőrizni, hogy a createUiDefinition-fájl megfelelően van-e integrálva a mainTemplate.jsfájlon. Az érvényesítési parancsfájl tesztelésével tesztelheti a megoldás fájljainak tartalmát, beleértve a createUiDefinition fájlt is. A parancsfájl érvényesíti a JSON-szintaxist, ellenőrzi a regex kifejezéseket a szövegmezőben, és gondoskodik arról, hogy a portál felületének kimeneti értékei megegyezzenek a sablon paramétereivel. A parancsfájl futtatásával kapcsolatos további információkért lásd: [statikus ellenőrzési ellenőrzések futtatása sablonokhoz](https://github.com/Azure/azure-quickstart-templates/tree/master/test).
 
 ## <a name="next-steps"></a>További lépések
 

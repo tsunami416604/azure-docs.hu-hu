@@ -4,10 +4,9 @@ description: Ez a cikk azt ismerteti, hogyan engedélyezhető a lemezek titkosí
 ms.topic: article
 ms.date: 03/22/2019
 ms.openlocfilehash: b08cdb63aa6f334c5a6f7c230b1624d232206c3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78251819"
 ---
 # <a name="enable-disk-encryption-for-azure-service-fabric-cluster-nodes-in-windows"></a>Lemez titkosításának engedélyezése az Azure Service Fabric-fürtcsomópontok számára a Windows rendszerben 

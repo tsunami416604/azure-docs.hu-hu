@@ -7,10 +7,9 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 2/27/2020
 ms.openlocfilehash: 83b0a69e063e9427c726216ef873f5a1c97f9582
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78163726"
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>A MySQL-adatbázis migrálása Importálás és exportálás használatával
@@ -42,13 +41,13 @@ Adja hozzá a kapcsolódási adatokat a MySQL Workbenchhez.
 ## <a name="determine-when-to-use-import-and-export-techniques-instead-of-a-dump-and-restore"></a>Annak meghatározása, hogy mikor használjon importálási és exportálási technikákat a memóriakép és a visszaállítás helyett
 A MySQL Tools használatával adatbázisok importálhatók és exportálhatók az Azure MySQL-adatbázisba az alábbi esetekben. Más helyzetekben a [memóriakép és a visszaállítás](concepts-migrate-dump-restore.md) megközelítés használata is hasznos lehet. 
 
-- Ha szelektíven kell választania néhány táblázatot egy meglévő MySQL-adatbázisból az Azure MySQL-adatbázisba való importáláshoz, ajánlott az importálási és exportálási módszer használata.  Ezzel kihagyhatja az áttelepítés felesleges tábláit, így időt és erőforrásokat takaríthat meg. `--include-tables` Használja például a vagy `--exclude-tables` a kapcsolót a [mysqlpump](https://dev.mysql.com/doc/refman/5.7/en/mysqlpump.html#option_mysqlpump_include-tables) és a `--tables` kapcsolót a [mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html#option_mysqldump_tables).
+- Ha szelektíven kell választania néhány táblázatot egy meglévő MySQL-adatbázisból az Azure MySQL-adatbázisba való importáláshoz, ajánlott az importálási és exportálási módszer használata.  Ezzel kihagyhatja az áttelepítés felesleges tábláit, így időt és erőforrásokat takaríthat meg. Használja például a vagy a `--include-tables` `--exclude-tables` kapcsolót a [mysqlpump](https://dev.mysql.com/doc/refman/5.7/en/mysqlpump.html#option_mysqlpump_include-tables) és a `--tables` kapcsolót a [mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html#option_mysqldump_tables).
 - Ha a táblázatokon kívül más adatbázis-objektumokat helyez át, explicit módon hozza létre ezeket az objektumokat. Belefoglalja a korlátozásokat (elsődleges kulcs, idegen kulcs, indexek), nézeteket, függvényeket, eljárásokat, eseményindítókat és bármely más, az áttelepíteni kívánt adatbázis-objektumot.
 - Ha egy MySQL-adatbázistól eltérő külső adatforrásokból végez áttelepítést, hozzon létre lapos fájlokat, és importálja őket a [mysqlimport](https://dev.mysql.com/doc/refman/5.7/en/mysqlimport.html)használatával.
 
 Győződjön meg arról, hogy az adatbázisban lévő összes tábla a InnoDB Storage motort használja, ha az adatAzure Database for MySQLba tölti be az adatgyűjtést. A Azure Database for MySQL csak a InnoDB tároló motort támogatja, így nem támogatja az alternatív tárolóeszközöket. Ha a táblák alternatív tárolókat igényelnek, ügyeljen arra, hogy a InnoDB motor formátumát használja a Azure Database for MySQLba való áttelepítés előtt. 
 
-Ha például van egy WordPress vagy egy webalkalmazás, amely a MyISAM motort használja, először alakítsa át a táblákat az InnoDB-táblákba való áttelepítéssel. Ezután állítsa vissza Azure Database for MySQL. A záradék `ENGINE=INNODB` használatával állítsa be a motort egy tábla létrehozásához, majd az adatok átvitelét a kompatibilis táblába az áttelepítés előtt. 
+Ha például van egy WordPress vagy egy webalkalmazás, amely a MyISAM motort használja, először alakítsa át a táblákat az InnoDB-táblákba való áttelepítéssel. Ezután állítsa vissza Azure Database for MySQL. A záradék használatával `ENGINE=INNODB` állítsa be a motort egy tábla létrehozásához, majd az adatok átvitelét a kompatibilis táblába az áttelepítés előtt. 
 
    ```sql
    INSERT INTO innodb_table SELECT * FROM myisam_table ORDER BY primary_key_columns

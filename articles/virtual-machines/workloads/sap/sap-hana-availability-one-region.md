@@ -16,10 +16,9 @@ ms.date: 07/27/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ef7161e653ec582708f242b67c643d960d75e27f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78255461"
 ---
 # <a name="sap-hana-availability-within-one-azure-region"></a>SAP HANA rendelkezésre állás egy Azure-régión belül
@@ -54,7 +53,7 @@ Az állapot-ellenőrzési funkció figyeli az Azure-kiszolgálón üzemeltetett 
 Az Azure által biztosított gazdagép-és virtuálisgép-figyeléssel az Azure-beli virtuális gépek automatikusan újraindulnak egy kifogástalan Azure-gazdagépen. 
 
 >[!IMPORTANT]
->Az Azure-szolgáltatások gyógyulása nem indítja újra a Linux rendszerű virtuális gépeket, ahol a vendég operációs rendszer kernel pánik állapotban van. A gyakran használt Linux-kiadások alapértelmezett beállításai nem indítják el automatikusan a virtuális gépeket vagy a kiszolgálót, ahol a Linux-kernel pánik állapotban van. Ehelyett az alapértelmezett beállítás szerint az operációs rendszernek a kernel pánik állapotban kell lennie ahhoz, hogy egy kernel-hibakeresőt csatoljon az elemzéshez. Az Azure tiszteletben tartja ezt a viselkedést azáltal, hogy nem indítja automatikusan újra a virtuális gépet egy ilyen állapotban lévő vendég operációs rendszerrel. Feltételezi, hogy az ilyen események rendkívül ritkák. Az alapértelmezett viselkedést felülírhatja a virtuális gép újraindításának engedélyezéséhez. Az alapértelmezett viselkedés módosításához engedélyezze a "kernel. Panic" paramétert a/etc/sysctl.conf. A paraméterhez megadott idő másodpercben. Gyakori ajánlott értékek: várjon 20-30 másodpercig, mielőtt aktiválja az újraindítást ezen a paraméteren. Lásd még <https://gitlab.com/procps-ng/procps/blob/master/sysctl.conf>:.
+>Az Azure-szolgáltatások gyógyulása nem indítja újra a Linux rendszerű virtuális gépeket, ahol a vendég operációs rendszer kernel pánik állapotban van. A gyakran használt Linux-kiadások alapértelmezett beállításai nem indítják el automatikusan a virtuális gépeket vagy a kiszolgálót, ahol a Linux-kernel pánik állapotban van. Ehelyett az alapértelmezett beállítás szerint az operációs rendszernek a kernel pánik állapotban kell lennie ahhoz, hogy egy kernel-hibakeresőt csatoljon az elemzéshez. Az Azure tiszteletben tartja ezt a viselkedést azáltal, hogy nem indítja automatikusan újra a virtuális gépet egy ilyen állapotban lévő vendég operációs rendszerrel. Feltételezi, hogy az ilyen események rendkívül ritkák. Az alapértelmezett viselkedést felülírhatja a virtuális gép újraindításának engedélyezéséhez. Az alapértelmezett viselkedés módosításához engedélyezze a "kernel. Panic" paramétert a/etc/sysctl.conf. A paraméterhez megadott idő másodpercben. Gyakori ajánlott értékek: várjon 20-30 másodpercig, mielőtt aktiválja az újraindítást ezen a paraméteren. Lásd még: <https://gitlab.com/procps-ng/procps/blob/master/sysctl.conf> .
 
 Az ebben a forgatókönyvben használt második funkció az a tény, hogy az újraindított virtuális gépen futó HANA szolgáltatás automatikusan elindul a virtuális gép újraindítása után. A [Hana szolgáltatás automatikus újraindítását](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/cf10efba8bea4e81b1dc1907ecc652d3.html) a különböző HANA-szolgáltatások watchdog szolgáltatásain keresztül állíthatja be.
 

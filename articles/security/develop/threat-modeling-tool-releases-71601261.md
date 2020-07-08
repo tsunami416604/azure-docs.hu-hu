@@ -9,10 +9,9 @@ ms.subservice: security-develop
 ms.topic: article
 ms.date: 01/25/2019
 ms.openlocfilehash: 7d0be8d7243331264c10a407e3d78370ea798928
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78269777"
 ---
 # <a name="threat-modeling-tool-update-release-71601261---1292019"></a>A fenyegetésmodellezési eszköz frissített kiadása: 7.1.60126.1 – 1/29/2019
@@ -36,7 +35,7 @@ A modell-ellenőrzés be-és kikapcsolásának lehetősége a file->Settings->Op
 
 ![Modell-ellenőrzési lehetőség](./media/threat-modeling-tool-releases-71601261/tmt_model_validation_option.png)
 
-## <a name="system-requirements"></a>Rendszerkövetelmények
+## <a name="system-requirements"></a>System requirements (Rendszerkövetelmények)
 
 - Támogatott operációs rendszerek
   - [Microsoft Windows 10 évfordulós frissítés](https://blogs.windows.com/windowsexperience/2016/08/02/how-to-get-the-windows-10-anniversary-update/#HTkoK5Zdv0g2F2Zq.97) vagy újabb
