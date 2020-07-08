@@ -4,10 +4,9 @@ description: Hibaelhárítási útmutató – élő Java-alkalmazások figyelés
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.openlocfilehash: ecc9a298d122919138683b48527574a1ff3e5edc
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84484798"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Hibaelhárítás, kérdések és válaszok: Application Insights Java-hoz
@@ -22,13 +21,13 @@ ms.locfileid: "84484798"
 **Felvettem Application Insights sikeresen, és futtattam az alkalmazást, de még soha nem láttam az adataim a portálon.**
 
 * Várjon egy percet, és kattintson a frissítés gombra. A diagramok rendszeresen frissülnek, de manuálisan is frissítheti őket. A frissítési időköz a diagram időtartományának függvénye.
-* Győződjön meg arról, hogy a ApplicationInsights. xml fájlban (a projekt erőforrások mappájában) vagy környezeti változóként konfigurált kialakítási kulccsal rendelkezik.
+* Győződjön meg arról, hogy rendelkezik a ApplicationInsights.xml fájlban (a projekt erőforrások mappájában) vagy környezeti változóként konfigurált kialakítási kulccsal.
 * Ellenőrizze, hogy nincs `<DisableTelemetry>true</DisableTelemetry>` -e csomópont az XML-fájlban.
 * Előfordulhat, hogy a tűzfalon meg kell nyitnia a 80-es és a 443-es TCP-portot a dc.services.visualstudio.com kimenő forgalmához. A [tűzfal-kivételek teljes listáját](../../azure-monitor/app/ip-addresses.md) lásd:
 * A Microsoft Azure kezdőképernyőn tekintse meg a szolgáltatás állapotát jelző lapot. Ha vannak riasztási jelzések, várjon, amíg vissza nem tért az OK gombra, majd zárjunk be és nyissa meg újra a Application Insights alkalmazás paneljét.
-* A [naplózás bekapcsolásához](#debug-data-from-the-sdk) `<SDKLogger />` vegyen fel egy elemet a ApplicationInsights. xml fájl legfelső szintű csomópontjában (a projekt erőforrások mappájába), és keresse meg az AI: info/warn/Error típusú gyanús naplókhoz tartozó bejegyzéseket. 
-* Győződjön meg arról, hogy a Java SDK sikeresen betöltötte a megfelelő ApplicationInsights. xml fájlt, és megtekinti a konzol kimeneti üzeneteit a "konfigurációs fájl sikeresen megtalálva" utasításban.
-* Ha a konfigurációs fájl nem található, tekintse meg a kimeneti üzeneteket, ahol megtekintheti a konfigurációs fájl keresésének helyét, és győződjön meg arról, hogy a ApplicationInsights. xml az egyik keresési helyen található. Az általános szabály, hogy a konfigurációs fájlt a Application Insights SDK-tégelyek közelében helyezheti el. Például: a Tomcat-ben ez a WEB-INF/classs mappát jelenti. A fejlesztés során elhelyezheti a ApplicationInsights. xml fájlt a webes projekt erőforrások mappájába.
+* A [naplózás bekapcsolásához](#debug-data-from-the-sdk) `<SDKLogger />` vegyen fel egy elemet a legfelső csomópont alatt a ApplicationInsights.xml fájlban (a projekt erőforrások mappájába), és keresse meg az AI: info/Warning/Error utasításban található bejegyzéseket a gyanús naplókhoz. 
+* Győződjön meg arról, hogy a Java SDK sikeresen betöltötte a helyes ApplicationInsights.xml fájlt, a "konfigurációs fájl sikeresen megtalálva" utasításban megtekintve a konzol kimeneti üzeneteit.
+* Ha a konfigurációs fájl nem található, tekintse meg a kimeneti üzeneteket, ahol megtekintheti a konfigurációs fájl keresésének helyét, és győződjön meg arról, hogy a ApplicationInsights.xml az egyik keresési helyen található. Az általános szabály, hogy a konfigurációs fájlt a Application Insights SDK-tégelyek közelében helyezheti el. Például: a Tomcat-ben ez a WEB-INF/classs mappát jelenti. A fejlesztés során elhelyezheti ApplicationInsights.xml a webes projekt erőforrások mappájába.
 * Tekintse meg a [GitHub-problémák oldalát](https://github.com/Microsoft/ApplicationInsights-Java/issues) is, amely az SDK ismert problémáit tartalmazza.
 * A verziók ütközésével kapcsolatos problémák elkerülése érdekében győződjön meg arról, hogy az Application Insights Core, web, Agent és naplózási hozzáfűzése azonos verzióját használja.
 
@@ -45,7 +44,7 @@ ms.locfileid: "84484798"
 
 ### <a name="java-agent-cannot-capture-dependency-data"></a>A Java-ügynök nem tudja rögzíteni a függőségi adatmennyiséget
 * Konfigurálta a Java-ügynököt a [Java-ügynök konfigurálása](java-agent.md) után?
-* Győződjön meg arról, hogy a Java Agent jar és a AI-Agent. xml fájl is ugyanabba a mappába kerül.
+* Győződjön meg arról, hogy a Java Agent jar és a AI-Agent.xml fájl is ugyanabba a mappába kerül.
 * Győződjön meg arról, hogy az automatikus gyűjtéshez szükséges függőséget az automatikus gyűjtemény támogatja. Jelenleg csak a MySQL, az MsSQL, a Oracle DB és az Azure cache támogatott a Redis függőségi gyűjteményhez.
 
 ## <a name="no-usage-data"></a>Nincsenek használati adatok
@@ -71,7 +70,7 @@ A kódban:
 
 **Vagy**
 
-Frissítse a ApplicationInsights. xml fájlt (a projekt erőforrások mappájából). Adja hozzá a következőt a gyökérszintű csomóponthoz:
+Frissítse ApplicationInsights.xml (a projekt erőforrások mappájából). Adja hozzá a következőt a gyökérszintű csomóponthoz:
 
 ```XML
 
@@ -86,15 +85,15 @@ Az XML-metódus használatával újra kell indítania az alkalmazást az érték
 * [Szerezze be az új erőforrás rendszerállapot-kulcsát.][java]
 * Ha a Azure Toolkit for Eclipse használatával adta hozzá Application Insights a projekthez, kattintson a jobb gombbal a webes projektre, válassza az **Azure**-t, **konfigurálja a Application Insights**, és módosítsa a kulcsot.
 * Ha a kialakítási kulcsot környezeti változóként konfigurálta, frissítse a környezeti változó értékét új Rendszerállapotkulcsot.
-* Ellenkező esetben frissítse a kulcsot a ApplicationInsights. xml fájlban a projekt erőforrások mappájából.
+* Ellenkező esetben frissítse a kulcsot ApplicationInsights.xml a projekt erőforrások mappájába.
 
 ## <a name="debug-data-from-the-sdk"></a>Adatok hibakeresése az SDK-ból
 
 **Honnan tudhatom meg, hogy mit csinál az SDK?**
 
-Ha többet szeretne megtudni arról, hogy mi történik az API-ban, adja hozzá a `<SDKLogger/>` ApplicationInsights. xml konfigurációs fájljának gyökérszintű csomópontját.
+Ha többet szeretne megtudni arról, hogy mi történik az API-ban, adja hozzá a `<SDKLogger/>` ApplicationInsights.xml konfigurációs fájljának gyökérszintű csomópontját.
 
-### <a name="applicationinsightsxml"></a>ApplicationInsights. XML
+### <a name="applicationinsightsxml"></a>ApplicationInsights.xml
 
 Azt is utasíthatja, hogy a naplózó fájlba írja a kimenetet:
 
@@ -125,7 +124,7 @@ azure.application-insights.logger.level=trace
 
 ### <a name="java-agent"></a>Java ügynök
 
-A JVM-ügynök naplózásának engedélyezéséhez frissítse a [AI-Agent. xml fájlt](java-agent.md):
+A JVM-ügynök naplózásának engedélyezéséhez frissítse a [AI-Agent.xml fájlt](java-agent.md):
 
 ```xml
 <AgentLogger type="FILE"><!-- or "CONSOLE" to print to stderr -->
@@ -178,7 +177,7 @@ Application Insights használja `org.apache.http` . Ez a névtér alatt Applicat
 >Ha engedélyezi a HIBAKERESÉSi szintű naplózást az alkalmazás összes névterében, a rendszer az összes végrehajtó modult tiszteletben tartja, beleértve a `org.apache.http` nevet is `com.microsoft.applicationinsights.core.dependencies.http` . A Application Insights nem fogja tudni alkalmazni ezeket a hívásokat, mert az Apache Library a napló hívását végzi. A HIBAKERESÉSi szint naplózása jelentős mennyiségű naplófájlt eredményez, és nem ajánlott éles üzemi példányok esetén.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 **Beállítottam Application Insights a Java Server-alkalmazáshoz. Mit tehetek?**
 
 * [Weblapok rendelkezésre állásának monitorozása][availability]

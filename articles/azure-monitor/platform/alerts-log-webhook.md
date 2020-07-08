@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 06/25/2019
 ms.subservice: alerts
 ms.openlocfilehash: 6c9bacfc4354351cbbf2eb735414ff3334cd7d0a
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84323671"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>A napló riasztási szabályaihoz kapcsolódó webhook-műveletek
@@ -37,7 +36,7 @@ A webhook-műveletekhez a következő táblázatban szereplő tulajdonságok sz�
 A webhookok egy URL-címet és egy JSON-ban formázott hasznos adatot tartalmaznak, amelyet a külső szolgáltatásnak küldenek. Alapértelmezés szerint a hasznos adatok tartalmazzák az alábbi táblázatban szereplő értékeket. Dönthet úgy, hogy lecseréli ezt a hasznos adatot egy saját egyéni felhasználóval. Ebben az esetben használja az egyes paraméterekhez tartozó táblázatban szereplő változókat, hogy az egyéni adattartalomban szereplő értékeket is tartalmazzák.
 
 
-| Paraméter | Változó | Leírás |
+| Paraméter | Változó | Description |
 |:--- |:--- |:--- |
 | *AlertRuleName* |#alertrulename |A riasztási szabály neve. |
 | *Súlyosság* |#severity |A kilőtt napló riasztásának súlyossági értéke. |
@@ -261,7 +260,7 @@ A következő minta hasznos adatokat tartalmaz egy egyéni webhook-művelethez a
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Tudnivalók a [riasztásokról az Azure-riasztásokban](alerts-unified-log.md).
 - Ismerje meg, hogyan [kezelheti a naplózási riasztásokat az Azure-ban](alerts-log.md).
 - Műveleti csoportok létrehozása és kezelése [Az Azure-ban](action-groups.md).

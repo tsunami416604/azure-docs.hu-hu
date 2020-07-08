@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 04/12/2018
 ms.author: allensu
 ms.openlocfilehash: 4154c6a1e739f935022271e7a101f39d3ee5c500
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84343020"
 ---
 # <a name="x-ec-debug-http-headers-for-azure-cdn-rules-engine"></a>X-EC-hibakeresés a HTTP-fejlécek Azure CDN Rules Engine-hez
@@ -41,7 +40,7 @@ X-EC-hibakeresés: x-EC-pipa-gyorsítótárazható | [Gyorsítótárazható](#ca
 X-EC-Debug: x-EC-cache-Key | [Gyorsítótár – kulcs](#cache-key-response-header)
 X-EC-Debug: x-EC-cache-State | [Gyorsítótár állapota](#cache-state-response-header)
 
-### <a name="syntax"></a>Szintaxis
+### <a name="syntax"></a>Syntax
 
 A hibakeresési gyorsítótár válaszának fejléceit a következő fejléc és a kérésben megadott irányelvek alapján kérheti le:
 
@@ -54,7 +53,7 @@ A hibakeresési gyorsítótár válaszának fejléceit a következő fejléc és
 ## <a name="cache-status-code-information"></a>Gyorsítótár-állapotkód adatai
 Az X-EC-debug válasz fejléce képes azonosítani a kiszolgálót, és hogyan kezeli a választ a következő irányelvek alapján:
 
-Fejléc | Leírás
+Fejléc | Description
 -------|------------
 X-EC-hibakeresés: x-EC-cache | Ezt a fejlécet akkor kell jelenteni, ha a tartalom a CDN-en keresztül van átirányítva. Azonosítja a kérelmet teljesítő POP-kiszolgálót.
 X-EC-Debug: x-EC-cache-Remote | Ezt a fejlécet csak akkor kell jelenteni, ha a kért tartalom a forrásként szolgáló védelmi kiszolgálón vagy az ADN-átjáró kiszolgálón lett gyorsítótárazva.
@@ -103,7 +102,7 @@ A `X-EC-Debug` Válasz fejléce azt jelenti, hogy egy kérelem gyorsítótárazv
 
 A fenti válasz fejlécében használt kifejezés a következőképpen van definiálva:
 
-Érték  | Leírás
+Érték  | Description
 -------| --------
 IGEN    | Azt jelzi, hogy a kért tartalom gyorsítótárazásra alkalmas volt.
 NO     | Azt jelzi, hogy a kért tartalom nem alkalmas a gyorsítótárazásra. Ez az állapot az alábbi okok egyike miatt lehet: <br /> – Ügyfél-specifikus konfiguráció: a fiókhoz tartozó konfiguráció megakadályozza, hogy a pop-kiszolgálók gyorsítótárazzák az eszközöket. Például a szabályok motorja megakadályozhatja, hogy egy eszköz gyorsítótárazva legyen, ha engedélyezi a gyorsítótár megkerülése funkciót a megfelelő kérésekhez.<br /> – Gyorsítótár-válasz fejlécei: a kért objektum gyorsítótár-vezérlési és elévülési fejlécei megakadályozhatják a POP-kiszolgálók gyorsítótárazását.

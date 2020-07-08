@@ -14,10 +14,9 @@ ms.date: 03/30/2020
 ms.author: prtyag
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 6d723e95212e457a81eedf7726bf3c5bd2499643
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84488885"
 ---
 # <a name="enable-kdump-service"></a>Kdump szolgáltatás engedélyezése
@@ -97,7 +96,7 @@ Ha a parancsfájl hibát jelez, vagy a Kdump nincs engedélyezve, a következő 
 
 * HLI előfizetés azonosítója
 
-* Kiszolgálónév
+* Kiszolgáló neve
 
 * Operációs rendszer szállítója
 

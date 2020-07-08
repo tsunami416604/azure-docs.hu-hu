@@ -12,17 +12,16 @@ ms.date: 06/06/2020
 ms.author: vigunase
 ms.subservice: B2C
 ms.openlocfilehash: b18717b78a271bd390bc221e9ed0723cb02079ce
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84484300"
 ---
 # <a name="recommendations-and-best-practices-for-azure-active-directory-b2c"></a>Javaslatok és ajánlott eljárások Azure Active Directory B2C
 
 Az alábbi ajánlott eljárások és javaslatok az Azure Active Directory (Azure AD) B2C meglévő vagy új alkalmazási környezetbe való integrálásának főbb szempontjait fedik le.
 
-## <a name="fundamentals"></a>Alapismeretek
+## <a name="fundamentals"></a>Alapok
 
 | Ajánlott eljárás | Description |
 |--|--|
@@ -90,6 +89,6 @@ Maradjon naprakész a szolgáltatás állapotával és támogatási lehetősége
 
 | Ajánlott eljárás | Description |
 |--|--|
-| [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=active-directory-b2c) |  Naprakészen tarthatja Azure AD B2C termék frissítéseit és hirdetményeit. |
+| [Szolgáltatási frissítések](https://azure.microsoft.com/updates/?product=active-directory-b2c) |  Naprakészen tarthatja Azure AD B2C termék frissítéseit és hirdetményeit. |
 | [Microsoft támogatási szolgálat](support-options.md) | Támogatási kérelem nyújtása Azure AD B2C technikai problémákhoz. A számlázási és előfizetés-kezelési támogatást díjmentesen biztosítjuk. |
-| [Az Azure állapota](https://status.azure.com/status) | Az összes Azure-szolgáltatás aktuális állapotának megtekintése. |
+| [Azure-állapot](https://status.azure.com/status) | Az összes Azure-szolgáltatás aktuális állapotának megtekintése. |

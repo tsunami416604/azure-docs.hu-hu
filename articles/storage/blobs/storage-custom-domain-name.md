@@ -10,10 +10,9 @@ ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
 ms.openlocfilehash: 95fd62584ef73f3f2f198c84913652f460fc5b1a
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84465541"
 ---
 # <a name="map-a-custom-domain-to-an-azure-blob-storage-endpoint"></a>Egyéni tartomány leképezése egy Azure Blob Storage-végpontra
@@ -177,7 +176,7 @@ Hozzon létre egy ideiglenes CNAME rekordot, amely az állomásnévre mutat. A C
        
    - A jelen cikk korábbi részében a [tárolási végpont gazdagépének beolvasása](#endpoint) szakaszban beszerzett állomásnév. 
 
-     Adja hozzá az altartományt `asverify` az állomásnévhez. Például: `asverify.mystorageaccount.blob.core.windows.net`.
+     Adja hozzá az altartományt `asverify` az állomásnévhez. Példa: `asverify.mystorageaccount.blob.core.windows.net`.
 
 4. Az egyéni tartomány regisztrálásához kattintson a **Save (Mentés** ) gombra.
 
@@ -326,6 +325,6 @@ Egyéni tartomány leképezéséhez és a HTTPS-hozzáférés engedélyezéséhe
 
    * [Díjszabás és számlázás a blob Storage és a Azure CDN használata esetén](https://docs.microsoft.com/azure/cdn/cdn-storage-custom-domain-https#http-to-https-redirection).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Ismerje meg az Azure Blob Storage-beli statikus webhely üzemeltetését](storage-blob-static-website.md)

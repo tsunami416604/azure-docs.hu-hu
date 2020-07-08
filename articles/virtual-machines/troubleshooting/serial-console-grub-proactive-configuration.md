@@ -15,10 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 07/10/2019
 ms.author: mimckitt
 ms.openlocfilehash: 6e6a8fddc61e05bc2e354d77c9e56c55e354a45b
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84309832"
 ---
 # <a name="proactively-ensuring-you-have-access-to-grub-and-sysrq-could-save-you-lots-of-down-time"></a>Proaktív módon biztosíthatja, hogy hozzáférjen a GRUB-hoz, és a SYSRQ rengeteg időt takaríthat meg
@@ -105,7 +104,7 @@ A virtuális gépet úgy kell konfigurálni, hogy fogadja az 1 értéket a kerne
 [SYSRQ-videó engedélyezése](https://youtu.be/0doqFRrHz_Mc)
 
 
-Ha úgy szeretné konfigurálni a virtuális gépet, hogy SysRq-parancsokkal fogadja el az újraindítást a Azure Portalon, akkor az 1 értéket kell megadnia a kernel-paraméterhez. SYSRQ
+Ha úgy szeretné konfigurálni a virtuális gépet, hogy SysRq-parancsokkal fogadja el az újraindítást a Azure Portalon, akkor az 1 értéket kell megadnia a (z) kernel.sysRQ kernel-paraméterhez.
 
 Ahhoz, hogy ez a konfiguráció újraindítást is megmaradjon, adjon hozzá egy bejegyzést a **sysctl. conf** fájlhoz.
 

@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: tisande
 ms.openlocfilehash: c4ae66884602989284a427bdc33de7612bd9a8df
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84484324"
 ---
 # <a name="order-by-clause-in-azure-cosmos-db"></a>ORDER BY záradék Azure Cosmos DB
@@ -221,8 +220,8 @@ Az eredmény a következő:
 
 Nem szabályozhatja, hogy a különböző típusok milyen sorrendben jelenjenek meg az eredmények között. A fenti példában megmutatjuk, hogyan rendezték a nem definiált értékeket a karakterlánc értékei előtt. Ha például inkább a nem definiált értékek rendezését szeretné vezérelni, akkor a nem definiált tulajdonságokat hozzárendelhet egy "aaaaaaaaa" vagy "zzzzzzzz" karakterlánc-értéket, hogy az első vagy az utolsó legyen.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Első lépések](sql-query-getting-started.md)
+- [Bevezetés](sql-query-getting-started.md)
 - [Az Azure Cosmos DB indexelési szabályzatai](index-policy.md)
 - [ELTOLÁSi korlát záradéka](sql-query-offset-limit.md)

@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
 ms.openlocfilehash: f54dd09ac82ddefeb2528462c7131aa921592d2a
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84487950"
 ---
 # <a name="init-image-transformation"></a>Képátalakítás indítása
@@ -67,7 +66,7 @@ Az átalakítás befejezése után a [rendszerkép-átalakítási](apply-image-t
 
 ###  <a name="module-parameters"></a>Modul paramétereinek  
 
-| Name                    | Tartomány   | Típus    | Alapértelmezett | Leírás                              |
+| Name                    | Tartomány   | Típus    | Alapértelmezett | Description                              |
 | ----------------------- | ------- | ------- | ------- | ---------------------------------------- |
 | Átméretezés                  | Bármelyik     | Logikai | True (Igaz)    | A bemeneti PIL-rendszerkép átméretezése a megadott méretre |
 | Méret                    | >= 1     | Egész szám | 256     | A kívánt kimeneti méret megadása          |
@@ -93,10 +92,10 @@ Az átalakítás befejezése után a [rendszerkép-átalakítási](apply-image-t
 
 ###  <a name="output"></a>Kimenet  
 
-| Name                        | Típus                    | Leírás                              |
+| Name                        | Típus                    | Description                              |
 | --------------------------- | ----------------------- | ---------------------------------------- |
 | Kimeneti rendszerkép átalakítása | TransformationDirectory | A rendszerkép- **átalakítási modul alkalmazásához** csatlakoztatható kimeneti képátalakítás. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

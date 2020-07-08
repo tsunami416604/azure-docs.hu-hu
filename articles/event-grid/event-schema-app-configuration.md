@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: femila
 ms.openlocfilehash: e233b5d27df3e25c2d7c1464aea9a1e80dfbffb0
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84553149"
 ---
 # <a name="azure-app-configuration-as-an-event-grid-source"></a>Azure-alkalmazás konfigurálása Event Grid forrásként
@@ -23,7 +22,7 @@ Ez a cikk az Azure-alkalmazások konfigurációs eseményeinek tulajdonságait �
 
 Az Azure-alkalmazások konfigurálása a következő típusú eseményeket bocsátja ki:
 
-| Eseménytípus | Leírás |
+| Eseménytípus | Description |
 | ---------- | ----------- |
 | Microsoft. AppConfiguration. KeyValueModified | Kulcs-érték létrehozásakor vagy cseréjekor következik be. |
 | Microsoft. AppConfiguration. KeyValueDeleted | Kulcs-érték törlésekor következik be. |
@@ -79,7 +78,7 @@ Egy esemény a következő legfelső szintű adattal rendelkezik:
 | eventType | sztring | Az eseményforráshoz felvett eseménytípusok egyike. |
 | eventTime | sztring | Az esemény a szolgáltató UTC-ideje alapján történő létrehozásakor. |
 | ID | sztring | Az esemény egyedi azonosítója. |
-| data | objektum | Az alkalmazás konfigurációs eseményeinek adatkészlete. |
+| adatok | objektum | Az alkalmazás konfigurációs eseményeinek adatkészlete. |
 | dataVersion | sztring | Az adatobjektum sémaverziója. A sémaverziót a közzétevő határozza meg. |
 | metadataVersion | sztring | Az esemény metaadatok sémaverziója. A legfelső szintű tulajdonságokra az Event Grid határozza meg a sémát. Az értéket az Event Grid adja meg. |
 
@@ -87,7 +86,7 @@ Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság | Típus | Description |
 | -------- | ---- | ----------- |
-| key | sztring | A módosított vagy törölt kulcs-érték kulcsa. |
+| kulcs | sztring | A módosított vagy törölt kulcs-érték kulcsa. |
 | címke | sztring | A módosított vagy törölt kulcs-érték címkéje (ha van). |
 | ETAG | sztring | Az `KeyValueModified` új kulcs-érték ETAG. A `KeyValueDeleted` törölt kulcs-érték ETAG. |
 
@@ -98,7 +97,7 @@ Az adatobjektum a következő tulajdonságokkal rendelkezik:
 | [Az Azure-alkalmazás konfigurációs eseményeire való reagálás Event Grid használatával](../azure-app-configuration/concept-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Az Azure-alkalmazások konfigurációjának Event Gridsal való integrálásának áttekintése. |
 | [Gyors útmutató: Azure-alkalmazás konfigurációs eseményeinek átirányítása egyéni webes végpontra az Azure CLI-vel](../azure-app-configuration/howto-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Bemutatja, hogyan küldhet Azure-alkalmazások konfigurációs eseményeit webhookba az Azure CLI használatával. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A Azure Event Grid bemutatása: [Mi az Event Grid?](overview.md)
 * Azure Event Grid-előfizetés létrehozásával kapcsolatos további információkért lásd: [Event Grid előfizetés sémája](subscription-creation-schema.md).

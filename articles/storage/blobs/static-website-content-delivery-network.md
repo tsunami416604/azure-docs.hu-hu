@@ -8,10 +8,9 @@ ms.topic: how-to
 ms.author: normesta
 ms.date: 04/07/2020
 ms.openlocfilehash: 02b7e02c33161db33420e2efe1ef4b70a138d127
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84465218"
 ---
 # <a name="integrate-a-static-website-with-azure-cdn"></a>Statikus webhely integrálása Azure CDN
@@ -53,7 +52,7 @@ A statikus webhely Azure CDNét közvetlenül a Storage-fiókjából engedélyez
 
     ![A CDN-végpont áttekintését bemutató képernyőkép](media/storage-blob-static-website-custom-domain/verify-cdn-endpoint.png)
 
-1. A CDN-végpont kiépített állapotában a CDN-végpontra való navigálás megjeleníti a statikus webhelyre korábban feltöltött index. html fájl tartalmát.
+1. A CDN-végpont kiépítés után a CDN-végpontra való navigálás megjeleníti a statikus webhelyre korábban feltöltött index.html-fájl tartalmát.
 
 1. A CDN-végpont forrás-beállításainak áttekintéséhez navigáljon a **forráshoz** a CDN-végpont **Beállítások** szakaszában. Látni fogja, hogy a **forrás típusa** mező *Egyéni forrásként* van beállítva, és a **forrás állomásnév** mező megjeleníti a statikus webhely végpontját.
 
@@ -69,6 +68,6 @@ Ha egy objektumot nem szeretne a továbbiakban gyorsítótárazni az Azure CDN-b
 
 Egy, az Azure CDN-ben már gyorsítótárazott objektum mindaddig gyorsítótárazva marad, amíg az adott objektum élettartama le nem jár, vagy amíg a végpontot [véglegesen nem törli](../../cdn/cdn-purge-endpoint.md). Amikor az élettartam lejár, az Azure CDN megállapítja, hogy a CDN-végpont továbbra is érvényes, az objektum pedig névtelenül továbbra is elérhető-e. Ha nem, az objektum a továbbiakban nem lesz gyorsítótárazva.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Választható Adjon hozzá egy egyéni tartományt a Azure CDN-végponthoz. Lásd [: oktatóanyag: egyéni tartomány hozzáadása az Azure CDN-végponthoz](../../cdn/cdn-map-content-to-custom-domain.md).

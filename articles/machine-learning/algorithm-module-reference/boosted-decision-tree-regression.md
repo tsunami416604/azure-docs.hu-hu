@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
 ms.openlocfilehash: 6b72d80f0be65af22bf334752052757346457a67
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84448631"
 ---
 # <a name="boosted-decision-tree-regression-module"></a>A döntési fa regressziós moduljának növelése
@@ -103,6 +102,6 @@ A betanítás befejezése után:
 
 + A betanított modell pillanatképének mentéséhez a **betanított modell** jobb oldali paneljén válassza a **kimenetek** fület, majd kattintson az **adatkészlet regisztrálása** ikonra. A betanított modell másolata modulként lesz mentve a modul fájában, és a folyamat egymást követő futtatása során nem lesz frissítve.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

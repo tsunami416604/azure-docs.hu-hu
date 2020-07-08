@@ -4,17 +4,16 @@ description: Ismerje meg, hogyan állítja vissza az Azure Virtual Machines szol
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.openlocfilehash: b9a2636a2144ea40457bdc3d88786785cb012e0d
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84325823"
 ---
-# <a name="about-azure-vm-restore"></a>Tudnivalók az Azure-beli virtuális gépek visszaállításáról
+# <a name="about-azure-vm-restore"></a>Azure-beli virtuális gépek visszaállítása
 
 Ez a cikk azt ismerteti, hogyan állítja vissza az Azure Virtual Machines (VM) [szolgáltatást a Azure Backup szolgáltatás](https://docs.microsoft.com/azure/backup/backup-overview) . Számos visszaállítási lehetőség van. Megbeszéljük az általuk támogatott különböző forgatókönyveket.
 
-## <a name="concepts"></a>Alapelvek
+## <a name="concepts"></a>Fogalmak
 
 - **Helyreállítási pont** (más néven **visszaállítási pont**): a helyreállítási pont az eredeti, biztonsági mentés alatt álló adatmennyiség másolata.
 
@@ -53,7 +52,7 @@ Ez a cikk azt ismerteti, hogyan állítja vissza az Azure Virtual Machines (VM) 
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Gyakori kérdések a virtuális gépek visszaállításáról](https://docs.microsoft.com/azure/backup/backup-azure-vm-backup-faq#restore)
 - [Támogatott visszaállítási módszerek](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas#supported-restore-methods)

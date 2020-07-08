@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 12/20/2018
 ms.openlocfilehash: 307e501743d01b94cfca3692cc09c05cc90ed3ce
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84343234"
 ---
 # <a name="monitor-sql-data-sync-with-azure-monitor-logs"></a>SQL-adatszinkronizálás figyelése Azure Monitor naplókkal 
@@ -85,7 +84,7 @@ A runbook létrehozásával kapcsolatos további információkért tekintse meg 
 
 4.  A **Runbook fájl**alatt használja a megadott `DataSyncLogPowerShellRunbook` fájlt. Állítsa a **Runbook típust a következőre** : `PowerShell` . Adja meg a runbook nevét.
 
-5.  Kattintson a **Létrehozás** gombra. Most már rendelkezik egy runbook.
+5.  Válassza a **Létrehozás** lehetőséget. Most már rendelkezik egy runbook.
 
 6.  A Azure Automation fiók alatt válassza a **változók** fület a megosztott erőforrások területen.
 
@@ -123,7 +122,7 @@ A runbook ütemezhet:
 
 5.  Állítsa be az **ismétlődést** ismétlődőre, és állítsa be a kívánt időközt. Használja ugyanazt az intervallumot itt, a parancsfájlban és a Azure Monitor naplókban.
 
-6.  Kattintson a **Létrehozás** gombra.
+6.  Válassza a **Létrehozás** lehetőséget.
 
 ### <a name="check-the-automation"></a>Az Automation ellenõrzése
 
@@ -197,7 +196,7 @@ Töltse le a cikkben ismertetett kódot a következő helyekről:
 
 -   [Adatszinkronizálási Azure Monitor nézet](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ az SQL Data Syncről:
 
 -   Áttekintés – az [adatszinkronizálás több Felhőbeli és helyszíni adatbázison SQL-adatszinkronizálás az Azure-ban](sql-data-sync-data-sql-server-sql-database.md)

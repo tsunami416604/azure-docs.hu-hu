@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/05/2020
 ms.openlocfilehash: fc460abe65709f90ff22e1ec6f8e47b315db7f67
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84555238"
 ---
 # <a name="add-custom-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Egyéni elemzők hozzáadása karakterlánc-mezőkhöz Azure Cognitive Search indexben
@@ -371,7 +370,7 @@ Az alábbi táblázatban az Apache Lucene használatával megvalósított jogkiv
  <sup>1</sup> a jogkivonat-szűrési típusok mindig előtaggal vannak ellátva a "#Microsoft. Azure. Search" kóddal, így a "ArabicNormalizationTokenFilter" kifejezés valójában "#Microsoft. Azure. Search. ArabicNormalizationTokenFilter" néven adható meg.  Eltávolította az előtagot a táblázat szélességének csökkentése érdekében, de ne feledje, hogy belefoglalja a kódot.  
 
 
-## <a name="see-also"></a>További információ  
+## <a name="see-also"></a>Lásd még  
  [Azure Cognitive Search REST API-k](https://docs.microsoft.com/rest/api/searchservice/)   
  [Elemzők az Azure-ban Cognitive Search > példák](search-analyzers.md#examples)    
  [Index létrehozása &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)  

@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/16/2018
 ms.openlocfilehash: 59a7fbbd6f948ec5207522814a1375b806536810
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84310087"
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>Horizontálisan több-bérlős alkalmazás üzembe helyezése és megismerése
@@ -99,7 +98,7 @@ Az alkalmazás központi telepítése közben töltse le az alkalmazás forrásk
 1. Keresse meg [a WingtipTicketsSaaS-MultiTenantDb GitHub-](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDb)tárházat.
 2. Kattintson a **klónozás vagy a letöltés**elemre.
 3. Kattintson a **zip letöltése** elemre, és mentse a fájlt.
-4. Kattintson a jobb gombbal a **WingtipTicketsSaaS-MultiTenantDb-Master. zip** fájlra, és válassza a **Tulajdonságok**lehetőséget.
+4. Kattintson a jobb gombbal a **WingtipTicketsSaaS-MultiTenantDb-master.zip** fájlra, majd válassza a **Tulajdonságok**lehetőséget.
 5. Az **általános** lapon válassza a **Tiltás feloldása**lehetőséget, majd kattintson az **alkalmaz**gombra.
 6. Kattintson az **OK** gombra.
 7. Bontsa ki a fájlokat.
@@ -116,7 +115,7 @@ A parancsfájlok futtatása előtt állítsa be az *erőforráscsoportot* és a 
 
 Az ebben a fájlban beállított értékeket az összes parancsfájl használja, ezért fontos, hogy pontosak legyenek. Ha újratelepíti az alkalmazást, különböző értékeket kell választania a felhasználói és az erőforráscsoport számára. Ezután frissítse a UserConfig. psm1 fájlt az új értékekkel.
 
-## <a name="run-the-application"></a>Az alkalmazás futtatása
+## <a name="run-the-application"></a>Alkalmazás futtatása
 
 A Wingtip alkalmazásban a bérlők a helyszínek. A helyszín lehet a koncertterem, a sportcsarnok vagy bármely más, az eseményeket futtató hely. A helyszínek regisztrálva vannak a Wingtip ügyfélként, és minden egyes helyszínhez létrejön egy bérlői azonosító. Minden egyes helyszín felsorolja a közelgő eseményeit a Wingtip-ben, így a nyilvános jegyeket vásárolhat az eseményekhez.
 
@@ -155,22 +154,22 @@ A bejövő kérések eloszlásának szabályozásához a Wingtip alkalmazás az 
 
 Most, hogy üzembe helyezte az alkalmazást, nézzük a munkát! A *demo-LoadGenerator PowerShell-* szkript elindítja az egyes bérlők számára futó számítási feladatokat. A sok SaaS-alkalmazás valós terhelése általában szórványos és kiszámíthatatlan. Az ilyen típusú terhelés szimulálása érdekében a generátor az összes bérlőre kiterjedő terhelést hoz létre. A terhelés véletlenszerű kitöréseket tartalmaz az egyes bérlők véletlenszerűen megjelenő időközönként. A terhelési minta megjelenése több percet vesz igénybe, így a generátor a terhelés monitorozása előtt legalább három-négy percig futtatható.
 
-1. A *POWERSHELL ISE*-ben nyissa meg a... \\ Learning modules \\ Utilities \\ *demo-LoadGenerator. ps1* parancsfájl.
+1. A *POWERSHELL ISE*-ben nyissa meg a... \\ Tanulási modulok \\ segédprogramjai \\ *Demo-LoadGenerator.ps1* szkript.
 2. Nyomja le az **F5** billentyűt a szkript futtatásához és a terhelésgenerátor indításához (egyelőre nem módosítsa az alapértelmezett paraméterértékeket).
 
-A *demo-LoadGenerator. ps1* parancsfájl egy másik PowerShell-munkamenetet nyit meg, amelyen a Load Generator fut. A betöltési folyamat ebben a munkamenetben olyan előtéri feladatként fut, amely a háttérbeli terhelés-generálási feladatokat hívja meg, egyet az egyes bérlők számára.
+A *Demo-LoadGenerator.ps1* parancsfájl egy másik PowerShell-munkamenetet nyit meg, amelyen a Load Generator fut. A betöltési folyamat ebben a munkamenetben olyan előtéri feladatként fut, amely a háttérbeli terhelés-generálási feladatokat hívja meg, egyet az egyes bérlők számára.
 
 Az előtérbeli feladat elindítása után a feladat-Meghívási állapotban marad. A feladat további háttérben futó feladatokat indít el minden olyan új bérlő esetében, amelyet később kiépítenek.
 
 A PowerShell-munkamenet bezárása leállítja az összes feladatot.
 
-Előfordulhat, hogy újra kell indítania a Load Generator-munkamenetet, hogy más paramétereket használjon. Ha igen, zárjuk be a PowerShell-létrehozási munkamenetet, majd futtassa újra a *demo-LoadGenerator. ps1*fájlját.
+Előfordulhat, hogy újra kell indítania a Load Generator-munkamenetet, hogy más paramétereket használjon. Ha igen, zárjuk be a PowerShell-létrehozási munkamenetet, majd futtassa újra a *Demo-LoadGenerator.ps1*.
 
 ## <a name="provision-a-new-tenant-into-the-sharded-database"></a>Új bérlő kiépítése a szilánkokra osztott adatbázisba
 
 A kezdeti üzembe helyezés három minta bérlőt tartalmaz a *Tenants1* -adatbázisban. Hozzunk létre egy másik bérlőt, és figyeljük meg az üzembe helyezett alkalmazás hatásait. Ebben a lépésben egy kulcsot egy új bérlő létrehozásához kell megnyomnia:
 
-1. Megnyitás.. \\ . \\ \\ A*demo-ProvisionTenants. ps1* kiépítése és katalogizálása a *PowerShell ISE*-ben című tanulási modulok.
+1. Megnyitás.. \\ . A tanulási modulok \\ \\ a *PowerShell ISE*-ben Kiépítik és katalogizálják*Demo-ProvisionTenants.ps1* .
 2. A szkript futtatásához nyomja le az **F5** billentyűt (nem **F8**) (most hagyja meg az alapértelmezett értékeket).
 
    > [!NOTE]
@@ -193,7 +192,7 @@ Dönthet úgy, hogy ingyenes próbaverziós ügyfeleket vagy gazdaságbeli ügyf
 
 Ezután kiépítünk egy másik bérlőt, ezúttal a saját adatbázisában:
 
-1. A. \\ .. A Learning-modulok \\ kiépítik és katalogizálják a \\ *demo-ProvisionTenants. ps1*-t, módosíthatja *$TenantName* a **Salix Salsa**, *$VenueType* a **Dance** és a *$Scenario* a **2**.
+1. A. \\ .. Tanulási modulok \\ kiépítése és katalogizálása \\ *Demo-ProvisionTenants.ps1*, *$TenantName* módosítása a **salsa Salix**, *$VenueType* a **Dance** és a *$Scenario* **2**.
 
 2. A szkript ismételt futtatásához nyomja le az **F5** billentyűt.
     - Ez az **F5** billentyű lenyomásával az új bérlőt külön adatbázisban kell kiépíteni. Az adatbázis és a bérlő regisztrálva van a katalógusban. Ezután megnyílik a böngésző a bérlő események lapjára.
@@ -253,7 +252,7 @@ A Load Generator parancsfájl által generált munkaterhelések csak illusztrác
   - [A rugalmas készletek segítségével több adatbázist kezelhet és méretezheti Azure SQL Database](elastic-pool-overview.md)
   - [Scaling out with Azure SQL Database (Horizontális felskálázás az Azure SQL Database segítségével)](elastic-scale-introduction.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta az alábbiakat:
 

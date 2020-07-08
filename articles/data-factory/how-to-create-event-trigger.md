@@ -12,10 +12,9 @@ ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.openlocfilehash: 10f0079f47e5d2fd99b358fcc5cfb4c80aa9bd91
-ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84508896"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>Olyan eseményindító létrehozása, amely egy adott eseményre válaszul futtat egy folyamatot
@@ -73,7 +72,7 @@ Ebből a szakaszból megtudhatja, hogyan hozhat létre egy eseményvezérelt ese
 
     ![Tulajdonságok megfeleltetése a folyamat paramétereinek](media/how-to-create-event-trigger/event-based-trigger-image4.png)
 
-Az előző példában az eseményindító úgy van beállítva, hogy a. csv fájlban végződő blob-elérési út a tárolóban, a Container Sample---ban a mappa esemény-tesztelés területén jön létre. A **folderPath** és a **filename** tulajdonság rögzíti az új blob helyét. Ha például a MoviesDB. csv hozzá van adva az elérési út mintája – az adatelemzési és az esemény-tesztelés, a `@trigger().outputs.body.folderPath` értéke `sample-data/event-testing` és a `@trigger().outputs.body.fileName` értéke `moviesDB.csv` . Ezek az értékek a példában a folyamat paramétereinek megfelelően vannak leképezve, `sourceFolder` és `sourceFile` a folyamat során a és a szolgáltatásban is használhatók `@pipeline().parameters.sourceFolder` `@pipeline().parameters.sourceFile` .
+Az előző példában az eseményindító úgy van beállítva, hogy a. csv fájlban végződő blob-elérési út a tárolóban, a Container Sample---ban a mappa esemény-tesztelés területén jön létre. A **folderPath** és a **filename** tulajdonság rögzíti az új blob helyét. Ha például a MoviesDB.csv bekerül az elérési út mintába – az adatelemzési/esemény-tesztelés, a `@trigger().outputs.body.folderPath` értéke `sample-data/event-testing` és a `@trigger().outputs.body.fileName` értéke `moviesDB.csv` . Ezek az értékek a példában a folyamat paramétereinek megfelelően vannak leképezve, `sourceFolder` és `sourceFile` a folyamat során a és a szolgáltatásban is használhatók `@pipeline().parameters.sourceFolder` `@pipeline().parameters.sourceFile` .
 
 ## <a name="json-schema"></a>JSON-séma
 
@@ -81,11 +80,11 @@ Az alábbi táblázat áttekintést nyújt az eseményvezérelt eseményindító
 
 | **JSON-elem** | **Leírás** | **Típus** | **Megengedett értékek** | **Szükséges** |
 | ---------------- | --------------- | -------- | ------------------ | ------------ |
-| **hatókör** | A Storage-fiók Azure Resource Manager erőforrás-azonosítója. | Sztring | Azure Resource Manager azonosítója | Igen |
+| **hatókör** | A Storage-fiók Azure Resource Manager erőforrás-azonosítója. | Sztring | Azure Resource Manager azonosítója | Yes |
 | **események** | A triggert tüzet kiváltó események típusa. | Tömb    | Microsoft. Storage. BlobCreated, Microsoft. Storage. BlobDeleted | Igen, az értékek bármely kombinációja. |
 | **blobPathBeginsWith** | A blob elérési útjának a triggerhez megadott mintázattal kell kezdődnie. Például csak a `/records/blobs/december/` tárolóban lévő mappában lévő Blobok eseményindítóját kell kiváltani `december` `records` . | Sztring   | | Meg kell adnia egy értéket a következő tulajdonságok közül legalább egy számára: `blobPathBeginsWith` vagy `blobPathEndsWith` . |
 | **blobPathEndsWith** | A blob elérési útjának a triggerhez megadott mintázattal kell végződnie. Például `december/boxes.csv` csak a mappában lévő Blobok eseményindítóját kell kiváltani `boxes` `december` . | Sztring   | | Meg kell adnia egy értéket a következő tulajdonságok közül legalább egy számára: `blobPathBeginsWith` vagy `blobPathEndsWith` . |
-| **ignoreEmptyBlobs** | Azt határozza meg, hogy a nulla bájtos Blobok elindítanak-e egy folyamat futtatását. Alapértelmezés szerint ez igaz értékre van állítva. | Logikai | true (igaz) vagy false (hamis) | Nem |
+| **ignoreEmptyBlobs** | Azt határozza meg, hogy a nulla bájtos Blobok elindítanak-e egy folyamat futtatását. Alapértelmezés szerint ez igaz értékre van állítva. | Logikai | true (igaz) vagy false (hamis) | No |
 
 ## <a name="examples-of-event-based-triggers"></a>Példák eseményvezérelt eseményindítóra
 
@@ -94,7 +93,7 @@ Ez a szakasz az eseményvezérelt eseményindítók beállításait mutatja be.
 > [!IMPORTANT]
 > Az `/blobs/` elérési út szegmensét az alábbi példákban látható módon kell megadnia, amikor tárolót, mappát, tárolót, fájlt vagy tárolót, mappát és fájlt ad meg. A **blobPathBeginsWith**esetében a Data Factory felhasználói felület automatikusan hozzáadja a `/blobs/` mappa és a tároló nevét az trigger JSON-ban.
 
-| Tulajdonság | Példa | Leírás |
+| Tulajdonság | Példa | Description |
 |---|---|---|
 | **A blob elérési útja** | `/containername/` | Eseményeket fogad a tárolóban lévő összes blobhoz. |
 | **A blob elérési útja** | `/containername/blobs/foldername/` | Eseményeket fogad a tárolóban és a mappában található összes blobhoz `containername` `foldername` . |
@@ -104,5 +103,5 @@ Ez a szakasz az eseményvezérelt eseményindítók beállításait mutatja be.
 | **A blob elérési útja véget ér** | `/containername/blobs/file.txt` | A tárolóban megnevezett blob eseményeinek fogadása `file.txt` `containername` . |
 | **A blob elérési útja véget ér** | `foldername/file.txt` | Eseményeket fogad a `file.txt` mappában lévő Blobok `foldername` bármelyik tárolóban. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az eseményindítókkal kapcsolatos részletes információkért lásd: [folyamat-végrehajtás és eseményindítók](concepts-pipeline-execution-triggers.md#trigger-execution).

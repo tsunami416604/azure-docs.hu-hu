@@ -4,10 +4,9 @@ description: Megtudhatja, hogyan hozhat létre és szabhat testre helyreállít�
 ms.topic: how-to
 ms.date: 01/23/2020
 ms.openlocfilehash: 0dcde98e8dcaef12896c18c25429f0ba7b1b27d4
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84485339"
 ---
 # <a name="create-and-customize-recovery-plans"></a>Helyreállítási tervek létrehozása és testreszabása
@@ -76,7 +75,7 @@ A helyreállítási tervet parancsfájl vagy manuális művelet hozzáadásával
     1. Írja be a művelet nevét, és írja be a művelet utasításait. A feladatátvételt futtató személy ezeket az utasításokat fogja látni.
     1. Adja meg, hogy szeretné-e hozzáadni a manuális műveletet a feladatátvétel összes típusához (teszt, feladatátvétel, tervezett feladatátvétel (ha szükséges)). Ezt követően kattintson az **OK** gombra.
 4. Ha parancsfájlt szeretne felvenni, tegye a következőket:
-    1. Ha VMM-parancsfájlt ad hozzá, válassza a **FELADATÁTVÉTEL VMM szkripthez**lehetőséget, és a **parancsfájl elérési útja** mezőbe írja be a megosztás relatív elérési útját. Ha például a megosztás a \MSSCVMMLibrary\RPScripts címen található \\ \<VMMServerName> , adja meg a következő elérési utat: \RPScripts\RPScript.ps1.
+    1. Ha VMM-parancsfájlt ad hozzá, válassza a **FELADATÁTVÉTEL VMM szkripthez**lehetőséget, és a **parancsfájl elérési útja** mezőbe írja be a megosztás relatív elérési útját. Ha például a megosztás a \MSSCVMMLibrary\RPScripts címen található \\ \<VMMServerName> , adja meg a következő elérési utat: \RPScripts\RPScript.PS1.
     1. Ha Azure Automation-futtatási könyvet ad hozzá, adja meg azt a **Azure Automation fiókot** , amelyben a runbook található, és válassza ki a megfelelő **Azure runbook-szkriptet**.
 5. Futtasson feladatátvételi tesztet a helyreállítási tervből annak ellenőrzéséhez, hogy a parancsfájl a várt módon működik-e.
 
@@ -87,7 +86,7 @@ Tekintsen meg egy videót, amely bemutatja, hogyan hozhat létre helyreállítá
 
 > [!VIDEO https://www.youtube.com/embed/1KUVdtvGqw8]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a [feladatátvételek futtatásáról](site-recovery-failover.md).  
 

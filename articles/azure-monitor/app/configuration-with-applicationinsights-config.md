@@ -1,27 +1,26 @@
 ---
-title: ApplicationInsights. config – útmutató – Azure | Microsoft Docs
+title: ApplicationInsights.config hivatkozás – Azure | Microsoft Docs
 description: Az adatgyűjtési modulok engedélyezése vagy letiltása, valamint teljesítményszámlálók és egyéb paraméterek hozzáadása.
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.reviewer: olegan
 ms.openlocfilehash: dde2cbf227f085b751f6ad22e1f2fa95f38c5915
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84485137"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>Az Application Insights SDK konfigurálása az ApplicationInsights.config vagy .xml használatával
 A Application Insights .NET SDK számos NuGet-csomagot tartalmaz. Az [alapcsomag](https://www.nuget.org/packages/Microsoft.ApplicationInsights) biztosítja az API-t, amely telemetria küld a Application Insightsnak. A [további csomagok](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights) telemetria *modulokat* és *inicializáló* csomagokat biztosítanak az alkalmazás és a környezet telemetria automatikus nyomon követéséhez. A konfigurációs fájl módosításával engedélyezheti vagy letilthatja a telemetria-modulokat és-inicializálók beállításait, és beállíthat paramétereket.
 
-A konfigurációs fájl neve `ApplicationInsights.config` vagy `ApplicationInsights.xml` , az alkalmazás típusától függően. A rendszer automatikusan hozzáadja a projekthez [az SDK legtöbb verziójának telepítésekor][start]. Alapértelmezés szerint, ha a Visual Studio-sablon olyan projektjeinek automatikus használatát támogatja, amelyek támogatják a **> Application Insights telemetria hozzáadását**, a ApplicationInsights. config fájl a projekt gyökérkönyvtárában jön létre, és amikor a rendszer bemásolja a fájlt a bin mappába. Emellett egy webalkalmazáshoz is hozzá lesz adva [Állapotmonitor egy IIS-kiszolgálón][redfield]. A konfigurációs fájlt a rendszer figyelmen kívül hagyja, ha az Azure-beli virtuális [gép és a virtuálisgép-méretezési csoport](azure-vm-vmss-apps.md) [bővítményét](azure-web-apps.md) használja.
+A konfigurációs fájl neve `ApplicationInsights.config` vagy `ApplicationInsights.xml` , az alkalmazás típusától függően. A rendszer automatikusan hozzáadja a projekthez [az SDK legtöbb verziójának telepítésekor][start]. Alapértelmezés szerint, ha a Visual Studio-sablon olyan projektjeiből származó automatizált élményt használ, amelyek támogatják a **> Application Insights telemetria hozzáadását**, akkor a rendszer a projekt gyökérkönyvtárában hozza létre a ApplicationInsights.config fájlt, és ha a megfelelést a bin mappába másolja. Emellett egy webalkalmazáshoz is hozzá lesz adva [Állapotmonitor egy IIS-kiszolgálón][redfield]. A konfigurációs fájlt a rendszer figyelmen kívül hagyja, ha az Azure-beli virtuális [gép és a virtuálisgép-méretezési csoport](azure-vm-vmss-apps.md) [bővítményét](azure-web-apps.md) használja.
 
 Nem található megfelelő fájl az [SDK-nak egy weblapon][client]való vezérléséhez.
 
 Ez a dokumentum a konfigurációs fájlban látható szakaszokat ismerteti, hogyan szabályozzák az SDK összetevőit, és hogy mely NuGet-csomagok töltődnek be ezek az összetevők.
 
 > [!NOTE]
-> A ApplicationInsights. config és az. XML utasítások nem vonatkoznak a .NET Core SDKra. A .NET Core-alkalmazások konfigurálásához kövesse [ezt az](../../azure-monitor/app/asp-net-core.md) útmutatót.
+> A ApplicationInsights.config és az. XML utasítások nem vonatkoznak a .NET Core SDKra. A .NET Core-alkalmazások konfigurálásához kövesse [ezt az](../../azure-monitor/app/asp-net-core.md) útmutatót.
 
 ## <a name="telemetry-modules-aspnet"></a>Telemetria modulok (ASP.NET)
 Az egyes telemetria-modulok adott típusú adatokat gyűjtenek, és az alapszintű API használatával küldik el az adatokat. A modulokat különböző NuGet-csomagok telepítik, és a szükséges sorokat is hozzáadja a. config fájlhoz.
@@ -88,7 +87,7 @@ A HTTP [-kérések válaszideje és eredmény-kódjának](../../azure-monitor/ap
 ### <a name="microsoftapplicationinsights"></a>Microsoft. ApplicationInsights
 A Microsoft. ApplicationInsights csomag biztosítja az SDK [alapvető API](https://msdn.microsoft.com/library/mt420197.aspx) -ját. A többi telemetria-modul ezt használja, és azt is [használhatja a saját telemetria definiálásához](../../azure-monitor/app/api-custom-events-metrics.md).
 
-* Nincs bejegyzés a ApplicationInsights. config fájlban.
+* Nincs bejegyzés a ApplicationInsights.configban.
 * [Microsoft. ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) NuGet-csomag. Ha most telepíti ezt a NuGet, a rendszer nem hoz létre. config fájlt.
 
 ## <a name="telemetry-channel"></a>Telemetria-csatorna
@@ -231,7 +230,7 @@ Ez az osztály nem kötelező tulajdonsággal rendelkezik `ProfileQueryEndpoint`
 Alapértelmezés szerint ez a következőre van beállítva: `https://dc.services.visualstudio.com/api/profiles/{0}/appId` .
 Ha proxyt kell konfigurálnia ehhez a konfigurációhoz, javasoljuk, hogy az alapcímet proxyként adja meg, beleértve a "/API/Profiles/ {0} /AppID". Vegye figyelembe, hogy {0} a (z) "
 
-#### <a name="example-configuration-via-applicationinsightsconfig"></a>Példa konfiguráció a ApplicationInsights. config használatával:
+#### <a name="example-configuration-via-applicationinsightsconfig"></a>Példa konfiguráció ApplicationInsights.config használatával:
 ```xml
 <ApplicationInsights>
     ...
@@ -255,7 +254,7 @@ Ez az osztály egy tulajdonsággal rendelkezik `Defined` , amely egy szótár<ka
 
 Ez az osztály nem kötelező tulajdonsággal rendelkezik `Next` , amely egy másik szolgáltató konfigurálására szolgál, ha olyan rendszerállapot-kulcsot kér, amely nem létezik a konfigurációban.
 
-#### <a name="example-configuration-via-applicationinsightsconfig"></a>Példa konfiguráció a ApplicationInsights. config használatával:
+#### <a name="example-configuration-via-applicationinsightsconfig"></a>Példa konfiguráció ApplicationInsights.config használatával:
 ```xml
 <ApplicationInsights>
     ...
@@ -284,7 +283,7 @@ TelemetryConfiguration.Active.ApplicationIdProvider = new DictionaryApplicationI
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [További információ az API-ról][api].
 
 <!--Link references-->

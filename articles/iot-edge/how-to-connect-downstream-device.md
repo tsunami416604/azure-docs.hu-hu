@@ -12,10 +12,9 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: c7de0fdf6a22b1414be297b6958841ba5c251c4b
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84309220"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Lefelé irányuló eszköz csatlakoztatása Azure IoT Edge-átjáróhoz
@@ -130,9 +129,9 @@ Az alkalmazás szintű minták használata előtt két dolog áll készen:
 
 Ez a szakasz egy Azure IoT NodeJS-eszköz ügyfelének egy IoT Edge átjáróhoz való csatlakoztatására szolgáló minta alkalmazást tartalmaz. A NodeJS alkalmazások esetében az itt látható módon telepítenie kell a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt az alkalmazás szintjén. A NodeJS-alkalmazások nem használják a rendszertanúsítvány-tárolót.
 
-1. A [Node. js-hez készült Azure IoT ESZKÖZOLDALI SDK](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples)-ból **edge_downstream_device. js** -hez tartozó minta beszerzése.
+1. Szerezze be a **edge_downstream_device.js** mintáját az [Node.js Samples](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples)adattárhoz készült Azure IoT eszközoldali SDK-val.
 2. Ellenőrizze, hogy a **readme.MD** fájl áttekintésével rendelkezik-e a minta futtatásához szükséges összes előfeltételt.
-3. A edge_downstream_device. js fájlban frissítse a **ConnectionString** és a **edge_ca_cert_path** változót.
+3. A edge_downstream_device.js fájlban frissítse a **ConnectionString** és a **edge_ca_cert_path** változót.
 4. A minta eszközön való futtatásával kapcsolatos útmutatásért tekintse meg az SDK dokumentációját.
 
 A futtatott minta megértéséhez a következő kódrészlet az, hogy az ügyfél SDK hogyan olvassa be a tanúsítványfájl, és hogyan használja a biztonságos TLS-kapcsolat létrehozásához:
@@ -151,12 +150,12 @@ Ez a szakasz egy Azure IoT .NET-eszköz ügyfelének egy IoT Edge átjáróhoz v
 
 1. Szerezze be a **EdgeDownstreamDevice** mintáját a [IoT Edge .net Samples mappából](https://github.com/Azure/iotedge/tree/master/samples/dotnet/EdgeDownstreamDevice).
 2. Ellenőrizze, hogy a **readme.MD** fájl áttekintésével rendelkezik-e a minta futtatásához szükséges összes előfeltételt.
-3. A **Properties/launchSettings. JSON** fájlban frissítse a **DEVICE_CONNECTION_STRING** és **CA_CERTIFICATE_PATH** változókat. Ha a megbízható tanúsítványtárolóban telepített tanúsítványt szeretné használni a gazda rendszeren, hagyja üresen ezt a változót.
+3. A fájl **Tulajdonságok/launchSettings.js** területén frissítse a **DEVICE_CONNECTION_STRING** és **CA_CERTIFICATE_PATH** változókat. Ha a megbízható tanúsítványtárolóban telepített tanúsítványt szeretné használni a gazda rendszeren, hagyja üresen ezt a változót.
 4. A minta eszközön való futtatásával kapcsolatos útmutatásért tekintse meg az SDK dokumentációját.
 
 Ha egy .NET-alkalmazás használatával szeretne programozott módon telepíteni egy megbízható tanúsítványt a tanúsítványtárolóban, tekintse meg a **InstallCACert ()** függvényt a **EdgeDownstreamDevice/program.cs** fájlban. Ez a művelet idempotens, így többször is futhat ugyanazzal az értékekkel, további hatás nélkül.
 
-### <a name="c"></a>C
+### <a name="c"></a>C#
 
 Ez a szakasz egy Azure IoT C-eszköz ügyfelének egy IoT Edge átjáróhoz való csatlakoztatására szolgáló minta alkalmazást mutat be. A C SDK számos TLS-függvénytárral működhet, beleértve az OpenSSL-t, a WolfSSL-t és a Schannel-t. További információkért lásd az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c)-t.
 

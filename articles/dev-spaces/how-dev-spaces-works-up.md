@@ -6,10 +6,9 @@ ms.topic: conceptual
 description: A kód Azure Kubernetes Service-ben való futtatásának folyamatait ismerteti az Azure dev Spaces szolgáltatással
 keywords: azds. YAML, Azure dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók
 ms.openlocfilehash: 02b928009b1f82e2b6a193a41376265f8bfb9ea7
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84307469"
 ---
 # <a name="how-running-your-code-with-azure-dev-spaces-works"></a>A kód futtatása az Azure dev Spaces működésével
@@ -157,7 +156,7 @@ configurations:
 
 A vezérlő Docker használ az alkalmazás létrehozásához és futtatásához.
 
-A *Build. Context* tulajdonság felsorolja azt a könyvtárat, ahol a Dockerfiles létezik. A *Build. Docker* tulajdonság határozza meg az alkalmazás éles verziójának létrehozásához használt Docker nevét. A *konfigurációk. Development. Build. Docker* tulajdonság az alkalmazás fejlesztői verziójának Docker nevét konfigurálja.
+A *Build. Context* tulajdonság felsorolja azt a könyvtárat, ahol a Dockerfiles létezik. A *build.dockerfile* tulajdonság határozza meg az alkalmazás éles verziójának létrehozásához használt Docker nevét. A *configurations.develop.build.dockerfile* tulajdonság az alkalmazás fejlesztői verziójának Docker nevét konfigurálja.
 
 A fejlesztés és a gyártás különböző Dockerfiles lehetővé teszi bizonyos dolgok használatát a fejlesztés során, és letiltja ezeket az elemeket az éles környezetekben való üzembe helyezéshez. Például engedélyezheti a hibakeresést vagy részletesebb naplózást a fejlesztés során, és letilthatja azt éles környezetben. Ezeket a tulajdonságokat akkor is frissítheti, ha a Dockerfiles neve másként van, vagy egy másik helyen található.
 
@@ -205,7 +204,7 @@ Az Azure dev Spaces a projekt futtatásához való használatának megkezdéséh
 
 * [Gyors iteráció és hibakeresés a Visual Studio Code és a Java révén][quickstart-java]
 * [Gyors iteráció és hibakeresés a Visual Studio Code és a .NET használatával][quickstart-netcore]
-* [Gyors iteráció és hibakeresés a Visual Studio Code és a Node. js-sel][quickstart-node]
+* [Gyors iteráció és hibakeresés a Visual Studio Code és Node.js][quickstart-node]
 * [Gyors iteráció és hibakeresés a Visual Studióval és a .NET Core-val][quickstart-vs]
 * [Alkalmazás fejlesztése a Kubernetes-on a CLI használatával][quickstart-cli]
 

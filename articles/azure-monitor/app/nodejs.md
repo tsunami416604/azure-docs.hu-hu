@@ -4,15 +4,14 @@ description: Teljesítmény figyelése és problémák diagnosztizálása a Node
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.openlocfilehash: bb6ef87c99cbeeed4e8f3e5f98b8c57ce8667a71
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84309764"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>A Node.js szolgáltatások és appok figyelése az Application Insights segítségével
 
-Az üzembe helyezést követően [Application Insights](../../azure-monitor/app/app-insights-overview.md) figyeli a háttérbeli szolgáltatásokat és összetevőket, hogy segítsen felderíteni és gyorsan diagnosztizálni a teljesítményt és egyéb problémákat. Az adatközpontban, az Azure-beli virtuális gépeken és a webalkalmazásokban, sőt más nyilvános felhőkben üzemeltetett Node. js-szolgáltatásokhoz Application Insights is használhatja.
+Az üzembe helyezést követően [Application Insights](../../azure-monitor/app/app-insights-overview.md) figyeli a háttérbeli szolgáltatásokat és összetevőket, hogy segítsen felderíteni és gyorsan diagnosztizálni a teljesítményt és egyéb problémákat. Az adatközpontban, az Azure-beli virtuális gépeken és a webalkalmazásokban, sőt más nyilvános felhőkben üzemeltetett Node.js-szolgáltatásokhoz Application Insights is használhatja.
 
 A megfigyelési adatok fogadásához, tárolásához és vizsgálatához építse be az SDK-t a programkódba, majd állítson be egy megfelelő Application Insights-erőforrást az Azure-ban. Az SDK ennek az erőforrásnak küldi az adatokat további elemzés és vizsgálat céljából.
 
@@ -68,7 +67,7 @@ Mielőtt hozzákezd, győződjön meg róla, hogy rendelkezik Azure-előfizetés
 
 ### <a name="monitor-your-app"></a><a name="monitor"></a>Az alkalmazás figyelése
 
-Az SDK automatikusan gyűjt telemetria a Node. js-futtatókörnyezetről és néhány gyakori külső modulról. Az alkalmazás használatával gyűjtsön össze néhányat ezekből az adatokból.
+Az SDK automatikusan gyűjt telemetria az Node.js futtatókörnyezetről és néhány gyakori külső modulról. Az alkalmazás használatával gyűjtsön össze néhányat ezekből az adatokból.
 
 Ezután az [Azure Portalon][portal] lépjen a korábban létrehozott Application Insights-erőforráshoz. Az **Áttekintő idővonalon** tekintse meg az első néhány adatpontot. Részletesebb adatokért válasszon a diagramok különböző összetevői közül.
 
@@ -190,7 +189,7 @@ Ha engedélyezni szeretné az élő metrikák küldését az alkalmazásból az 
 > [!NOTE]
 > Bővített natív metrikák küldésének lehetősége a következő verzióban lett hozzáadva: 1.4.0
 
-Ha engedélyezni szeretné a kiterjesztett natív metrikák küldését az alkalmazásból az Azure-ba, telepítse a különálló natív metrikai csomagot. Az SDK automatikusan betöltődik, ha telepítve van, és elindítja a Node. js natív metrikáinak gyűjtését.
+Ha engedélyezni szeretné a kiterjesztett natív metrikák küldését az alkalmazásból az Azure-ba, telepítse a különálló natív metrikai csomagot. Az SDK automatikusan betöltődik, ha telepítve van, és megkezdi Node.js natív metrikák gyűjtését.
 
 ```bash
 npm install applicationinsights-native-metrics

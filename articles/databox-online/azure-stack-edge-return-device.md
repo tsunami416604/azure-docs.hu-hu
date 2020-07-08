@@ -9,10 +9,9 @@ ms.topic: how-to
 ms.date: 02/26/2020
 ms.author: alkohli
 ms.openlocfilehash: 6e0581912a619bec11be6d322e2987a4498c5170
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84339365"
 ---
 # <a name="return-or-replace-your-azure-stack-edge-device"></a>Azure Stack Edge-eszköz visszaküldése vagy cseréje
@@ -123,6 +122,6 @@ Szükség van egy helyettesítő eszközre, ha a meglévő eszköz hardveres hib
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További tudnivalókat a [sávszélesség-kezeléssel foglalkozó részben](azure-stack-edge-manage-bandwidth-schedules.md) talál.

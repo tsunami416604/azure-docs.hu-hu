@@ -13,10 +13,9 @@ ms.reviewer: larryfr
 ms.date: 03/01/2020
 ms.custom: tracking-python
 ms.openlocfilehash: 3e8d93c1f04dda9afbcfa0cab4e8fc9036ae7580
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84555662"
 ---
 # <a name="data-ingestion-with-azure-data-factory"></a>Adatbetöltés az Azure Data Factoryvel
@@ -95,7 +94,7 @@ Ha az adat egy adattáron vagy adatkészleten keresztül érhető el, egy ML-mod
 
 Mivel az adatkészletek támogatják a verziószámozást, és a folyamat minden futtatása új verziót hoz létre, könnyen megtudhatja, hogy az adatok melyik verzióját használták a modell betanításához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Databricks-jegyzetfüzet futtatása Azure Data Factory](https://docs.microsoft.com/azure/data-factory/transform-data-using-databricks-notebook)
 * [Az Azure Storage-szolgáltatásokban tárolt adathozzáférés](https://docs.microsoft.com/azure/machine-learning/how-to-access-data#create-and-register-datastores)

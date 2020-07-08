@@ -12,10 +12,9 @@ ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 06/06/2020
 ms.openlocfilehash: 7c451deb04c9fd8b394512979668ad266cadf02d
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84485467"
 ---
 # <a name="event-file-target-code-for-extended-events-in-azure-sql-database"></a>Az eseménynaplóban a kiterjesztett események Azure SQL Database
@@ -46,8 +45,8 @@ Ez a témakör egy kétfázisú mintakód-mintát mutat be:
   
   - Igény szerint percek alatt [létrehozhat egy **AdventureWorksLT** bemutató adatbázist](single-database-create-quickstart.md) .
 
-- SQL Server Management Studio (SSMS. exe), ideális esetben a legújabb havi frissítési verzió.
-  A legújabb SSMS. exe fájlt a következő címről töltheti le:
+- SQL Server Management Studio (ssms.exe), ideális esetben a legújabb havi frissítési verzió.
+  A legújabb ssms.exe a következő címről töltheti le:
   
   - A című témakör a [letöltés SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
   - [Közvetlen hivatkozás a letöltésre.](https://go.microsoft.com/fwlink/?linkid=616025)
@@ -62,7 +61,7 @@ Ez a PowerShell a kétfázisú mintakód 1. fázisa.
 
 A parancsfájl egy lehetséges korábbi Futtatás után megtisztított parancsokkal kezdődik, és a rerunnable.
 
-1. Illessze be a PowerShell-szkriptet egy egyszerű szövegszerkesztőbe, például a Notepad. exe fájlba, és mentse a parancsfájlt fájlként a **. ps1**kiterjesztéssel.
+1. Illessze be a PowerShell-szkriptet egy egyszerű szövegszerkesztőbe, például Notepad.exeba, és mentse a parancsfájlt fájlként a **. ps1**kiterjesztéssel.
 2. Indítsa el a PowerShell ISE-t rendszergazdaként.
 3. A parancssorba írja be a következőt:<br/>`Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser`<br/>majd nyomja le az ENTER billentyűt.
 4. A PowerShell ISE-ben nyissa meg a **. ps1** fájlt. Futtassa a szkriptet.
@@ -250,7 +249,7 @@ A parancsfájl egy lehetséges korábbi Futtatás után megtisztított parancsok
 
 A PowerShell-parancsfájl néhány elnevezett értéket kinyomtatott, amikor véget ért. Az értékek használatához szerkesztenie kell a Transact-SQL parancsfájlt. Keresse meg a **teendőket** a Transact-SQL-szkriptben a szerkesztési pontok megkereséséhez.
 
-1. Nyissa meg SQL Server Management Studio (SSMS. exe).
+1. Nyissa meg SQL Server Management Studio (ssms.exe).
 2. Kapcsolódjon Azure SQL Database-adatbázishoz.
 3. Kattintson ide egy új lekérdezési panel megnyitásához.
 4. Illessze be a következő Transact-SQL-parancsfájlt a lekérdezési ablaktáblába.

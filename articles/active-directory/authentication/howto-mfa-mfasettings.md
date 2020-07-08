@@ -13,10 +13,9 @@ ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
 ms.openlocfilehash: 3c16724dc3eb99549b692df93ee6cd5f1fc0bf30
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84484028"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Az Azure Multi-Factor Authentication beállításainak konfigurálása
@@ -244,7 +243,7 @@ Ha a szervezete telepíti a hálózati házirend-kiszolgáló bővítményét, h
 
 | Azure AD-bérlő típusa | Megbízható IP-szolgáltatás beállításai |
 |:--- |:--- |
-| Kezelt |**IP-címek meghatározott tartománya**: a rendszergazdák olyan IP-címtartományt határoznak meg, amely megkerülheti a vállalati intranetről bejelentkező felhasználók kétlépéses ellenőrzését. Legfeljebb 50 megbízható IP-tartományt lehet konfigurálni.|
+| Felügyelt |**IP-címek meghatározott tartománya**: a rendszergazdák olyan IP-címtartományt határoznak meg, amely megkerülheti a vállalati intranetről bejelentkező felhasználók kétlépéses ellenőrzését. Legfeljebb 50 megbízható IP-tartományt lehet konfigurálni.|
 | Összevont |**Minden összevont felhasználó**: a szervezeten belülről bejelentkező összes összevont felhasználó elkerülheti a kétlépéses ellenőrzést. A felhasználók megkerülik az ellenőrzést Active Directory összevonási szolgáltatások (AD FS) (AD FS) által kiállított jogcímek használatával.<br/>**IP-címek meghatározott tartománya**: a rendszergazdák olyan IP-címtartományt határoznak meg, amely megkerülheti a vállalati intranetről bejelentkező felhasználók kétlépéses ellenőrzését. |
 
 A megbízható IP-megkerülés csak a vállalati intraneten belülről működik. Ha a **minden összevont felhasználó** lehetőséget választja, és a felhasználó a vállalati intraneten kívülről jelentkezik be, a felhasználónak kétlépéses ellenőrzéssel kell hitelesítenie magát. A folyamat akkor is ugyanaz, ha a felhasználó AD FS jogcímet jelent.
@@ -268,7 +267,7 @@ A következő lépések végrehajtásával feltételes hozzáférési szabályok
 1. Adja meg a hely nevét.
 1. Válassza **a megjelölés megbízható helyként**lehetőséget.
 1. Adja meg az IP-címtartományt CIDR-jelöléssel a környezethez, például *40.77.182.32/27*.
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 ### <a name="enable-the-trusted-ips-feature-by-using-conditional-access"></a>A megbízható IP-címek funkciójának engedélyezése feltételes hozzáférés használatával
 
@@ -374,6 +373,6 @@ A következő lépések végrehajtásával engedélyezheti és konfigurálhatja,
 
 Miután engedélyezte a Megjegyzés Multi-Factor Authentication funkciót, a felhasználók a bejelentkezéskor megbízhatóként jelölhetik meg az eszközöket, ha bejelöli a **ne Kérdezzen rá újra**lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha többet szeretne megtudni az Azure-Multi-Factor Authentication használható módszerekről, tekintse meg a [Azure Active Directory a hitelesítési és ellenőrzési módszerek](concept-authentication-methods.md) című témakört.

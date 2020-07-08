@@ -1,7 +1,7 @@
 ---
-title: A MSAL. js és a Azure AD B2C használata
+title: MSAL.js használata a Azure AD B2C
 titleSuffix: Microsoft identity platform
-description: A JavaScripthez készült Microsoft Authentication Library (MSAL. js) lehetővé teszi, hogy az alkalmazások működjenek a Azure AD B2C, és jogkivonatokat szerezzenek a biztonságos webes API-k meghívásához. Ezek a webes API-k lehetnek Microsoft Graph, más Microsoft API-k, a másoktól származó webes API-k vagy a saját webes API-k.
+description: A JavaScripthez készült Microsoft Authentication Library (MSAL.js) lehetővé teszi, hogy az alkalmazások működjenek a Azure AD B2C, és jogkivonatokat szerezzenek a biztonságos webes API-k meghívásához. Ezek a webes API-k lehetnek Microsoft Graph, más Microsoft API-k, a másoktól származó webes API-k vagy a saját webes API-k.
 services: active-directory
 author: negoe
 manager: CelesteDG
@@ -14,21 +14,20 @@ ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: f43711652bb205c75870fdb969c44298087a2b07
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84308571"
 ---
 # <a name="use-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>A JavaScript használata a Microsoft Authentication Library használatával Azure AD B2C
 
-[A Microsoft Authentication Library for JavaScript (MSAL. js)](https://github.com/AzureAD/microsoft-authentication-library-for-js) lehetővé teszi a JavaScript-fejlesztők számára, hogy [Azure Active Directory B2C](../../active-directory-b2c/overview.md) (Azure ad B2C) használatával hitelesítsék a felhasználókat a közösségi és helyi identitásokkal.
+[A Microsoft Authentication Library for JavaScript (MSAL.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js) lehetővé teszi a JavaScript-fejlesztők számára, hogy [Azure Active Directory B2C](../../active-directory-b2c/overview.md) (Azure ad B2C) használatával hitelesítsék a felhasználókat a közösségi és helyi identitásokkal.
 
 A Azure AD B2C identitás-kezelési szolgáltatásként való használatával testreszabhatja és szabályozhatja, hogy az ügyfelek hogyan regisztrálhatnak, jelentkezhetnek be és kezelhetik a profiljaikat az alkalmazások használatakor. A Azure AD B2C lehetővé teszi az alkalmazás által a hitelesítési folyamat során megjelenített felhasználói felület kiírását és testreszabását is.
 
 Az alábbi szakaszban a következőket mutatjuk be:
 
-- Node. js-alapú webes API-k biztosítása
+- Node.js webes API-k elleni védelem
 - Egy egyoldalas alkalmazásban (SPA) való bejelentkezés támogatása és *a védett webes* API meghívása
 - Jelszó-visszaállítási támogatás engedélyezése
 
@@ -40,7 +39,7 @@ Ha még nem tette meg, hozzon létre egy [Azure ad B2C bérlőt](../../active-di
 
 A következő lépések bemutatják, hogyan használhatják a **webes API** a Azure ad B2Ct saját maga elleni védelemre, és hogy a kijelölt hatókörök elérhetők legyenek egy ügyfélalkalmazás számára.
 
-A Node-hoz készült MSAL. js jelenleg fejlesztés alatt áll. További információkért tekintse meg a GitHubon található [ütemtervet](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap) . Jelenleg a [Passport-Azure-ad](https://github.com/AzureAD/passport-azure-ad)-t, a Microsoft által fejlesztett és támogatott Node. js-hez készült hitelesítési függvénytárat ajánljuk.
+A csomópont MSAL.js jelenleg fejlesztés alatt áll. További információkért tekintse meg a GitHubon található [ütemtervet](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap) . Jelenleg a [Passport-Azure-ad](https://github.com/AzureAD/passport-azure-ad)-t, a Microsoft által fejlesztett és támogatott Node.js hitelesítési kódtárat ajánljuk.
 
 ### <a name="step-1-register-your-application"></a>1. lépés: Alkalmazás regisztrálása
 
@@ -67,7 +66,7 @@ const tenantId = "<your-tenant-ID>.onmicrosoft.com"; // Alternatively, you can u
 const policyName = "<Name of your sign in / sign up policy, e.g. B2C_1_signupsignin1>";
 ```
 
-További információkért tekintse meg ezt a [Node. js B2C webes API-mintát](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi).
+További információkért tekintse meg ezt a [Node.js B2C webes API-mintát](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi).
 
 ## <a name="javascript-spa"></a>JavaScript SPA
 
@@ -92,7 +91,7 @@ Az alkalmazás konfigurálása két fontos szempontot mutat be:
 - API-végpont és elérhető hatókörök konfigurálása
 - Hitelesítési paraméterek és jogkivonat-hatókörök konfigurálása
 
-1. Nyissa meg a *apiConfig. js* fájlt a mintában.
+1. Nyissa meg a *apiConfig.js* fájlt a mintában.
 
 2. Konfigurálja a mintát a webes API regisztrálása során korábban beszerzett paraméterekkel. Módosítsa a kód következő sorait úgy, hogy lecseréli az értékeket a webes API-ra és a feltehetően elérhető hatókörökre.
 
@@ -104,7 +103,7 @@ Az alkalmazás konfigurálása két fontos szempontot mutat be:
     };
    ```
 
-1. Nyissa meg a *authConfig. js* fájlt a mintában.
+1. Nyissa meg a *authConfig.js* fájlt a mintában.
 
 1. Konfigurálja a mintát az egyoldalas alkalmazás regisztrálása során korábban beszerzett paraméterekkel. Módosítsa a kód következő sorait úgy, hogy lecseréli az értékeket a ClientId, a szolgáltatói metaadatok és a jogkivonat-kérelmek hatókörével.
 
@@ -132,7 +131,7 @@ További információkért tekintse meg ezt a [JavaScript B2C egyoldalas alkalma
 
 ## <a name="support-password-reset"></a>Támogatási jelszó alaphelyzetbe állítása
 
-Ebben a szakaszban kiterjesztjük egy egyoldalas alkalmazást az Azure AD B2C jelszó-visszaállítási felhasználói folyamat használatára. Bár a MSAL. js jelenleg nem támogatja több felhasználói folyamat vagy egyéni házirend natív módon történő használatát, használhatja a könyvtárat a gyakori használati esetek, például a jelszó-visszaállítás kezelésére.
+Ebben a szakaszban kiterjesztjük egy egyoldalas alkalmazást az Azure AD B2C jelszó-visszaállítási felhasználói folyamat használatára. Bár a MSAL.js jelenleg nem támogatja több felhasználói folyamat vagy egyéni házirend natív módon történő használatát, használhatja a könyvtárat a gyakori használati esetek, például a jelszó-visszaállítás kezelésére.
 
 A következő lépések feltételezik, hogy már követte az előző [JavaScript Spa](#javascript-spa) szakasz lépéseit.
 

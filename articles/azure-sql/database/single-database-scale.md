@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/30/2020
 ms.openlocfilehash: 84e9593884f40fce8affce628b7817c528b3c31d
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84343285"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Önálló adatbázis-erőforrások méretezése Azure SQL Database
@@ -150,9 +149,9 @@ A prémium szinten több mint 1 TB tárterület érhető el az összes régióba
 - Aktív földrajzi replikálási forgatókönyvek esetén:
   - Geo-replikációs kapcsolat beállítása: Ha az elsődleges adatbázis P11 vagy P15, a másodlagos (IES) P11 vagy P15 is kell lennie. Az alacsonyabb számítási méret elutasítása formátumú másodlagos zónák, mivel nem képesek 1 TB-nál nagyobb mértékben támogatni.
   - Az elsődleges adatbázis frissítése földrajzi replikálási kapcsolatban: az elsődleges adatbázison az 1 TB-nál nagyobb maximális méret megváltozása a másodlagos adatbázison ugyanezt a változást indítja el. Mindkét frissítésnek sikeresnek kell lennie ahhoz, hogy az elsődleges módosítás érvénybe lépjen. Az 1 TB-nál nagyobb területi korlátozások érvényesek. Ha a másodlagos olyan régióban található, amely nem támogatja az 1 TB-ot, az elsődleges nem frissül.
-- Az import/export szolgáltatás használata az 1 TB-nál nagyobb P11-vagy P15-adatbázisok betöltéséhez nem támogatott. Az SqlPackage. exe használatával [importálhat](database-import.md) és [exportálhat](database-export.md) adatfájlokat.
+- Az import/export szolgáltatás használata az 1 TB-nál nagyobb P11-vagy P15-adatbázisok betöltéséhez nem támogatott. A SqlPackage.exe használatával [importálhat](database-import.md) és [exportálhat](database-export.md) adatfájlokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A teljes erőforrás-korlátokkal kapcsolatban lásd: [Azure SQL Database virtuális mag-alapú erőforrás-korlátok – önálló adatbázisok](resource-limits-vcore-single-databases.md) és [Azure SQL Database DTU-alapú erőforrás-korlátok – önálló adatbázisok](resource-limits-dtu-single-databases.md).
  

@@ -6,10 +6,9 @@ ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: conceptual
 ms.openlocfilehash: 5f6f7fc52a186117afcb92f6a2f80bf068e50ab9
-ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84509202"
 ---
 # <a name="entities"></a>Entitások
@@ -137,7 +136,7 @@ metaDataQuery->Completed([](const ApiHandle<MetadataQueryAsync>& query)
 
 A lekérdezés akkor is sikeres lesz, ha az objektum nem rendelkezik metaadatokkal.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Összetevők](components.md)
 * [Objektumhatárok](object-bounds.md)

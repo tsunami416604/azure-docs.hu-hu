@@ -6,10 +6,9 @@ ms.topic: troubleshooting
 description: Az Azure dev Spaces engedélyezése és használata során felmerülő gyakori problémák elhárítása és megoldása
 keywords: 'Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s '
 ms.openlocfilehash: 51846c8630e4e8c60205f8d92fb7f74f92de3f41
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84309645"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Az Azure dev Spaces hibaelhárítása
@@ -112,7 +111,7 @@ A kubectl parancsok futtatásával győződjön meg arról, hogy az API-kiszolg�
 ## <a name="common-issues-when-preparing-your-project-for-azure-dev-spaces"></a>Gyakori problémák a projekt előkészítésekor az Azure dev Spaces szolgáltatásban
 
 ### <a name="warning-dockerfile-could-not-be-generated-due-to-unsupported-language"></a>Figyelmeztetés: "a Docker nem hozható létre a nem támogatott nyelv miatt"
-Az Azure dev Spaces natív támogatást biztosít a C# és a Node. js számára. Ha egy, az `azds prep` ezen nyelvek valamelyikében írt kóddal rendelkező könyvtárban fut, az Azure dev Spaces automatikusan létrehoz egy megfelelő Docker.
+Az Azure dev Spaces natív támogatást biztosít a C# és a Node.js számára. Ha egy, az `azds prep` ezen nyelvek valamelyikében írt kóddal rendelkező könyvtárban fut, az Azure dev Spaces automatikusan létrehoz egy megfelelő Docker.
 
 Továbbra is használhatja az Azure dev Spaces szolgáltatást más nyelveken írt kóddal, de először manuálisan kell létrehoznia a Docker, mielőtt `azds up` az első alkalommal futtatná.
 
@@ -392,7 +391,7 @@ spec:
 ### <a name="error-required-tools-and-configurations-are-missing"></a>Hiba: a szükséges eszközök és konfigurációk hiányoznak.
 
 Ez a hiba akkor fordulhat elő, ha a VS Code-ot elindítja: "[Azure dev Spaces] szükséges eszközök és konfigurációk a (z)" [projekt neve] "létrehozásához és hibakereséséhez."
-A hiba azt jelenti, hogy a azds. exe nem szerepel a PATH környezeti változóban, ahogy az a VS Code-ban is látható.
+A hiba azt jelenti, hogy a azds.exe nem szerepel a PATH környezeti változóban, ahogy az a VS Code-ban látható.
 
 Próbálkozzon a VS Code indításával egy parancssorban, ahol a PATH környezeti változó helyesen van beállítva.
 
@@ -430,9 +429,9 @@ Ez a hiba a Visual Studio Code Debugger futtatásakor fordulhat elő.
 
 A probléma megoldásához zárjuk be és nyissa meg újra a Visual Studio Code-ot. Indítsa újra a hibakeresőt.
 
-### <a name="error-internal-watch-failed-watch-enospc-when-attaching-debugging-to-a-nodejs-application"></a>Hiba "a belső figyelés sikertelen: ENOSPC megtekintése" egy Node. js-alkalmazás hibakeresésének csatolásakor
+### <a name="error-internal-watch-failed-watch-enospc-when-attaching-debugging-to-a-nodejs-application"></a>Hiba "a belső figyelés sikertelen: ENOSPC megtekintése" a hibakeresés Node.js alkalmazáshoz való csatolásakor
 
-Ez a hiba akkor fordul elő, ha a pod-t futtató csomópont a hibakeresőhöz csatlakoztatni kívánt Node. js-alkalmazással túllépte az *FS. inotify. max_user_watches* értéket. Bizonyos esetekben előfordulhat, [hogy az *FS. inotify. max_user_watches* alapértelmezett értéke túl kicsi ahhoz, hogy a hibakeresőt közvetlenül egy Pod-hez csatolja](https://github.com/Azure/AKS/issues/772).
+Ez a hiba akkor fordul elő, ha a pod-t futtató csomópont a hibakeresővel csatlakoztatni kívánt Node.js alkalmazással túllépte az *FS. inotify. max_user_watches* értéket. Bizonyos esetekben előfordulhat, [hogy az *FS. inotify. max_user_watches* alapértelmezett értéke túl kicsi ahhoz, hogy a hibakeresőt közvetlenül egy Pod-hez csatolja](https://github.com/Azure/AKS/issues/772).
 
 A probléma ideiglenes megkerülő megoldásként növelje az *FS. inotify. max_user_watches* értékét a fürt mindegyik csomópontján, majd indítsa újra a csomópontot a módosítások érvénybe léptetéséhez.
 
@@ -545,7 +544,7 @@ A probléma megoldása:
 1. Ha a tároló a beépített/üzembe helyezett folyamatban van, várjon 2-3 másodpercet, és próbálja meg újra elérni a szolgáltatást. 
 1. A port konfigurációjának ellenőrzését a következő eszközökön találja:
     * ** [Helm-diagram](https://docs.helm.sh):** A és a `service.port` `deployment.containerPort` értékekben megadva. a YAML a parancs szerint van beállítva `azds prep` .
-    * Az alkalmazás kódjában megnyitott portok, például a Node. js-ben:`var server = app.listen(80, function () {...}`
+    * Az alkalmazás kódjában megnyitott portok, például Node.js:`var server = app.listen(80, function () {...}`
 
 ### <a name="the-type-or-namespace-name-mylibrary-couldnt-be-found"></a>Nem található a következő típus vagy névtér neve: "MyLibrary".
 

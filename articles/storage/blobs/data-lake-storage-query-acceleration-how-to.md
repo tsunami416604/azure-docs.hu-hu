@@ -9,10 +9,9 @@ ms.date: 04/21/2020
 ms.author: normesta
 ms.reviewer: jamsbak
 ms.openlocfilehash: cc9235f07c0829abfb8be42e83d05d8428bc1806
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84465864"
 ---
 # <a name="filter-data-by-using-azure-data-lake-storage-query-acceleration-preview"></a>Az Adatszűrés Azure Data Lake Storage lekérdezési gyorsítással (előzetes verzió)
@@ -81,7 +80,7 @@ A lekérdezési gyorsítás (előzetes verzió) egy új képesség a Azure Data 
 
 ### <a name="java"></a>[Java](#tab/java)
 
-1. Hozzon létre egy könyvtárat a projekt gyökerében. A gyökérkönyvtár a **Pom. XML** fájlt tartalmazó könyvtár.
+1. Hozzon létre egy könyvtárat a projekt gyökerében. A gyökérkönyvtár a **pom.xml** fájlt tartalmazó könyvtár.
 
    > [!NOTE]
    > A cikkben szereplő példák azt feltételezik, hogy a könyvtár neve **lib**.
@@ -90,7 +89,7 @@ A lekérdezési gyorsítás (előzetes verzió) egy új képesség a Azure Data 
 
 3. Bontsa ki a. zip fájlban található fájlokat a létrehozott könyvtárba. A példánkban a könyvtár neve **lib**. 
 
-4. Nyissa meg a *Pom. XML* fájlt a szövegszerkesztőben. Adja hozzá az alábbi függőségi elemeket a függőségek csoportjához. 
+4. Nyissa meg a *pom.xml* fájlt a szövegszerkesztőben. Adja hozzá az alábbi függőségi elemeket a függőségek csoportjához. 
 
    ```xml
    <!-- Request static dependencies from Maven -->
@@ -365,7 +364,7 @@ static void QueryMysteryBooks(BlobClient blobClient)
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Lekérdezési gyorsítás beléptetésének űrlapja](https://aka.ms/adls/qa-preview-signup)    
 - [Azure Data Lake Storage lekérdezési gyorsítás (előzetes verzió)](data-lake-storage-query-acceleration.md)

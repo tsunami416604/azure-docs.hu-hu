@@ -12,10 +12,9 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.openlocfilehash: c81f2a23474ff98c202cdbe5b455dd3d15535c96
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84557465"
 ---
 # <a name="languages-supported-on-the-data-science-virtual-machine"></a>A Data Science Virtual Machine támogatott nyelvek 
@@ -197,12 +196,12 @@ A Data Science Virtual Machine (DSVM) számos előre elkészített nyelvet és f
 
   Az alapértelmezett Julia-hely az összes felhasználó által olvasható globális környezet. Csak rendszergazdák írhatnak és telepíthetnek globális csomagokat. Ha a csomagokat a globális környezetbe szeretné telepíteni, futtassa a Julia-t az előző módszerek egyikének használatával. Ezután a Julia Package Manager parancsait is futtathatja, például `Pkg.add()` a csomagok telepítéséhez vagy frissítéséhez.
 
-## <a name="other-languages"></a>Egyéb nyelvek
+## <a name="other-languages"></a>További nyelvek
 
 **C#**: elérhető Windows rendszeren, és elérhető a Visual Studio Community Edition vagy a `Developer Command Prompt for Visual Studio` alkalmazásban, ahol futtathatja a `csc` parancsot.
 
 **Java**: a OPENJDK a DSVM Linux-és Windows-kiadásaiban érhető el, és az elérési útra van beállítva. A Java használatához írja be a `javac` vagy a `java` parancsot a parancssorba a Windows vagy a Linux rendszerű bash-rendszerhéjba.
 
-**Node. js**: a Node. js a DSVM Linux-és Windows-kiadásaiban is elérhető, és az elérési útra van beállítva. A Node. js eléréséhez írja be a `node` vagy a `npm` parancsot a parancssorba a Windows rendszerben vagy a Linux bash-rendszerhéjon. Windows rendszeren a Node. js-eszközökhöz készült Visual Studio-bővítmény telepítve van a Node. js-alkalmazás fejlesztéséhez szükséges grafikus IDE létrehozásához.
+**Node.js**: a Node.js a DSVM Linux-és Windows-kiadásaiban is elérhető, és az elérési útra van beállítva. Node.js eléréséhez írja be a `node` vagy a `npm` parancsot a parancssorba a Windows vagy a Linux rendszerű bash-rendszerhéjba. Windows rendszeren a Node.js eszközökhöz készült Visual Studio-bővítmény telepítve van, amely grafikus IDE-t biztosít a Node.js alkalmazás fejlesztéséhez.
 
 **F #**: elérhető Windows rendszeren és elérhető a Visual Studio Community Edition vagy egy rendszeren keresztül `Developer Command Prompt for Visual Studio` , ahol futtathatja a `fsc` parancsot.
