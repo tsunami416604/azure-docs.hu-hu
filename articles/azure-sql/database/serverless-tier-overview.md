@@ -10,18 +10,18 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 6/26/2020
-ms.openlocfilehash: 2b5da354e8e8b49e40e7d960e368aad8067de659
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.date: 7/6/2020
+ms.openlocfilehash: 130b19f280c69bfbe4ca49abe1bcba5db7f23caa
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85506701"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045960"
 ---
 # <a name="azure-sql-database-serverless"></a>Kiszolgáló nélküli Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-A kiszolgáló nélküli az önálló Azure SQL-adatbázisok számítási szintje, amely automatikusan méretezi a számítási feladatok igényét és számláit a másodpercenként felhasznált számítási kapacitás mennyisége alapján. A kiszolgáló nélküli számítási rétegek automatikusan szüneteltetik az adatbázisokat az inaktív időszakok során, amikor csak a tárterületet számlázzák, és automatikusan folytatják az adatbázisokat, amikor a tevékenység visszatér.
+A kiszolgáló nélküli a Azure SQL Database önálló adatbázisaihoz tartozó számítási szint, amely automatikusan méretezi a számítási feladatok igényét és számláit a másodpercenként felhasznált számítási mennyiség alapján. A kiszolgáló nélküli számítási rétegek automatikusan szüneteltetik az adatbázisokat az inaktív időszakok során, amikor csak a tárterületet számlázzák, és automatikusan folytatják az adatbázisokat, amikor a tevékenység visszatér.
 
 ## <a name="serverless-compute-tier"></a>Kiszolgáló nélküli számítási szint
 
@@ -88,9 +88,9 @@ A kiszolgáló nélküli adatbázisok memóriáját gyakrabban, mint a kiépíte
 
 #### <a name="cache-reclamation"></a>Gyorsítótár-visszanyerés
 
-A kiépített számítási adatbázisoktól eltérően az SQL-gyorsítótárból származó memóriát a rendszer a kiszolgáló nélküli adatbázisból állítja vissza, amikor a CPU vagy a gyorsítótár kihasználtsága alacsony.
+A kiépített számítási adatbázisokkal ellentétben az SQL-gyorsítótárból származó memóriát egy kiszolgáló nélküli adatbázisból kell visszaigényelni, amikor a CPU vagy az aktív gyorsítótár kihasználtsága alacsony.  Vegye figyelembe, hogy ha a CPU-kihasználtság alacsony, akkor az aktív gyorsítótár kihasználtsága a használati mintatól és a memória-visszanyeréstől függően magas marad.
 
-- A gyorsítótár kihasználtsága akkor minősül alacsonynak, ha a legutóbb használt gyorsítótár-bejegyzések teljes mérete egy adott időtartam alatt egy küszöbérték alá esik.
+- Az aktív gyorsítótár kihasználtsága akkor minősül alacsonynak, ha a legutóbb használt gyorsítótár-bejegyzések teljes mérete egy adott időtartam alatt egy küszöbérték alá esik.
 - A gyorsítótár-újraindításkor a cél gyorsítótárának mérete fokozatosan csökken az előző méret töredékéért, és a visszaigénylés csak akkor folytatódik, ha a használat alacsony marad.
 - A gyorsítótár-visszanyeréskor a kizárni kívánt gyorsítótár-bejegyzések kiválasztására szolgáló házirend ugyanaz a kiválasztási házirend, mint a kiépített számítási adatbázisok esetében, ha a memória nyomása magas.
 - A gyorsítótár mérete soha nem csökken a minimális memória-korlát alatt, amelyet konfigurálhat a percben megadott minimális virtuális mag.
@@ -112,7 +112,7 @@ Az automatikus szüneteltetés akkor aktiválódik, ha az alábbi feltételek mi
 
 Ha szükséges, a rendszer lehetőséget biztosít az autoszüneteltetés letiltására.
 
-A következő szolgáltatások nem támogatják az autoszüneteltetést.  Azaz ha a következő funkciók bármelyikét használják, az adatbázis az adatbázis tétlenségének időtartamától függetlenül online marad:
+A következő szolgáltatások nem támogatják az automatikus szüneteltetést, de támogatják az automatikus skálázást.  Azaz ha a következő funkciók bármelyikét használják, az adatbázis az adatbázis tétlenségének időtartamától függetlenül online marad:
 
 - Geo-replikáció (aktív geo-replikáció és automatikus feladatátvételi csoportok).
 - A biztonsági másolatok hosszú távú megőrzése (LTR).

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 26456c09975fa49bae17a3cfeef8ecc1ef913815
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 3c890dc48c97580fd8de5c817c96b62d4eb9c009
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85315893"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045943"
 ---
 # <a name="azure-security-baseline-for-azure-sql-database--sql-managed-instance"></a>Az Azure biztonsági alapterve Azure SQL Database & SQL felügyelt példányhoz
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -639,7 +639,7 @@ https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4,9: a kritikus Azure-erőforrások változásainak naplózása és riasztása
 
-**Útmutató**: a Azure monitor és az Azure-tevékenység naplójának használatával riasztásokat hozhat létre, amelyekkel az Azure SQL Database-adatbázisok és egyéb kritikus vagy kapcsolódó erőforrások éles példányain végezheti el a módosításokat.
+**Útmutató**: a Azure monitor és az Azure-tevékenység naplójának használata riasztások létrehozásához, amikor a módosítások a Azure SQL Database és más kritikus vagy kapcsolódó erőforrások éles példányain lépnek életbe.
 
 Riasztások létrehozása az Azure Activity log-eseményekhez:
 
@@ -657,7 +657,7 @@ https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 **Útmutató**: a Azure SQL Database speciális adatbiztonságának engedélyezése, valamint a kiszolgálókon a sebezhetőségi felmérések elvégzéséhez Azure Security Center ajánlásainak követése.
 
-Sebezhetőségi felmérések futtatása Azure SQL-adatbázisokon:
+Sebezhetőségi felmérések futtatása Azure SQL Databaseon:
 
 https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment
 

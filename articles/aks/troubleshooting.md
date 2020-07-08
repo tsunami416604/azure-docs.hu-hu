@@ -4,12 +4,12 @@ description: Útmutató az Azure Kubernetes szolgáltatás (ak) használata sor�
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: 36b3f20b866e7bad1d27f9fa92c02601ec21602c
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: 08668289faa2341389a80b00cba11a33021da608
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85125429"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86054389"
 ---
 # <a name="aks-troubleshooting"></a>AKS-hibaelhárítás
 
@@ -31,11 +31,34 @@ Alapértelmezés szerint a hüvelyek maximális száma 110, ha az Azure CLI-ben 
 
 ## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>InsufficientSubnetSize hibaüzenetet kapok egy AK-fürt speciális hálózatkezeléssel való üzembe helyezése során. Mit tegyek?
 
-Ha az Azure CNI hálózati beépülő modult használja, a (z) "--Max-hüvely" érték alapján osztja ki az IP-címeket a Node paraméter alapján. Az alhálózat méretének nagyobbnak kell lennie, mint a csomópontok maximális száma csomópont-beállításnál. A következő egyenlet felvázolja:
+Ez a hiba azt jelzi, hogy a fürtben lévő alhálózatok már nem rendelkeznek a CIDR belüli elérhető IP-címekkel a sikeres erőforrás-hozzárendeléshez. A Kubenet-fürtök esetében a követelmény elegendő IP-terület a fürt minden csomópontja számára. Az Azure CNI-fürtök esetében a követelmény elegendő IP-terület a fürt minden egyes csomópontja és Pod számára.
+További információk az [Azure-CNI kialakításáról az IP-címek a hüvelyekhez való hozzárendeléséhez](configure-azure-cni.md#plan-ip-addressing-for-your-cluster).
 
-Az alhálózat mérete > a fürt csomópontjainak száma (figyelembe véve a jövőbeli skálázási követelményeket) * a csomópontok maximális száma.
+Ezeket a hibákat az [AK-diagnosztika](https://docs.microsoft.com/azure/aks/concepts-diagnostics) is felveszi, amely proaktív módon olyan problémákat okoz, mint például a nem megfelelő alhálózat mérete.
 
-További információt [a fürt IP-címzésének megtervezése](configure-azure-cni.md#plan-ip-addressing-for-your-cluster)című témakörben talál.
+A következő három (3) eset nem megfelelő alhálózati méretet okoz:
+
+1. AK Scale vagy AK Nodepool skálázás
+   1. Ha Kubenet használ, akkor ez akkor fordul elő, ha a `number of free IPs in the subnet` értéke **kisebb, mint** a `number of new nodes requested` .
+   1. Ha az Azure CNI-t használja, akkor ez akkor fordul elő, ha a `number of free IPs in the subnet` értéke **kisebb, mint** a `number of nodes requested times (*) the node pool's --max-pod value` .
+
+1. AK-frissítés vagy AK-Nodepool frissítése
+   1. Kubenet használata esetén ez akkor fordul elő, ha a `number of free IPs in the subnet` értéke **kisebb** , mint a `number of buffer nodes needed to upgrade` .
+   1. Ha az Azure CNI-t használja, akkor ez akkor fordul elő, ha a `number of free IPs in the subnet` értéke **kisebb, mint** a `number of buffer nodes needed to upgrade times (*) the node pool's --max-pod value` .
+   
+   Alapértelmezés szerint az AK-fürtök egy (1) maximális túllépési értéket állítanak be, de ez a frissítési viselkedés testreszabható úgy, hogy [egy csomópont-készlet maximális](upgrade-cluster.md#customize-node-surge-upgrade-preview) túllépését állítja be, ami növeli a frissítés befejezéséhez szükséges elérhető IP-címek számát.
+
+1. AK létrehozása vagy AK-Nodepool hozzáadása
+   1. Kubenet használata esetén ez akkor fordul elő, ha a `number of free IPs in the subnet` értéke **kisebb** , mint a `number of nodes requested for the node pool` .
+   1. Ha az Azure CNI-t használja, akkor ez akkor fordul elő, ha a `number of free IPs in the subnet` értéke **kisebb, mint** a `number of nodes requested times (*) the node pool's --max-pod value` .
+
+Az új alhálózatok létrehozásával a következő enyhítést lehet elvégezni. Az új alhálózat létrehozásához szükséges engedély a meglévő alhálózat CIDR-tartományának frissítése miatti nem lehetséges.
+
+1. Egy olyan új alhálózat újraépítése, amely a műveleti célokhoz elegendő CIDR-tartománnyal rendelkezik:
+   1. Hozzon létre egy új alhálózatot egy új kívánt, nem átfedésben lévő tartománnyal.
+   1. Hozzon létre egy új nodepool az új alhálózaton.
+   1. A lecserélni kívánt régi alhálózatban lévő régi nodepool kiüríti a hüvelyeket.
+   1. Törölje a régi alhálózatot és a régi nodepool.
 
 ## <a name="my-pod-is-stuck-in-crashloopbackoff-mode-what-should-i-do"></a>A My Pod CrashLoopBackOff módban ragadt. Mit tegyek?
 
@@ -126,6 +149,7 @@ Az elnevezési korlátozásokat az Azure platform és az AK is implementálja. H
 * Az AK-csomópont/*MC_* erőforráscsoport neve kombinálja az erőforráscsoport nevét és az erőforrás nevét. Az automatikusan generált szintaxisának `MC_resourceGroupName_resourceName_AzureRegion` nem lehet nagyobb, mint 80 karakter. Ha szükséges, csökkentse az erőforráscsoport-név vagy az AK-fürt nevének hosszát. [A csomópont-erőforráscsoport nevét is testreszabhatja](cluster-configuration.md#custom-resource-group-name)
 * A *dnsPrefix* alfanumerikus értékekkel kell kezdődnie és végződnie, és 1-54 karakter közöttinek kell lennie. Az érvényes karakterek alfanumerikus értékeket és kötőjeleket (-) tartalmazhatnak. A *dnsPrefix* nem tartalmazhat speciális karaktereket, például pontot (.).
 * Az AK-csomópontok készletének neve csak kisbetűket tartalmazhat, és 1-11 karakter hosszúnak kell lennie a Linux-csomópontok és a 1-6 karakter Windows-csomópontok számára A névnek betűvel kell kezdődnie, és csak betűket és számokat tartalmazhat.
+* A Linux-csomópontok rendszergazdai felhasználónevét beállító rendszergazda *-username*betűvel kell kezdődnie, és csak betűket, számokat, kötőjeleket és aláhúzásokat tartalmazhat, és legfeljebb 64 karakter hosszú lehet.
 
 ## <a name="im-receiving-errors-when-trying-to-create-update-scale-delete-or-upgrade-cluster-that-operation-is-not-allowed-as-another-operation-is-in-progress"></a>Hibák léptek fel a fürt létrehozása, frissítése, skálázása, törlése vagy frissítése során, ez a művelet nem engedélyezett, mert folyamatban van egy másik művelet.
 
@@ -193,7 +217,7 @@ Ezt a problémát a Kubernetes következő verzióiban rögzítették:
 |--|:--:|
 | 1.10 | 1.10.2 vagy újabb |
 | 1,11 | 1.11.0 vagy újabb |
-| 1,12 és újabb verziók | N/A |
+| 1,12 és újabb verziók | N.A. |
 
 
 ### <a name="failure-when-setting-uid-and-gid-in-mountoptions-for-azure-disk"></a>Hiba történt az UID és a GID beállításakor az Azure Disk mountOptions esetében
@@ -250,7 +274,7 @@ Ezt a problémát a Kubernetes következő verzióiban rögzítették:
 | 1.12 | 1.12.9 vagy újabb |
 | 1.13 | 1.13.6 vagy újabb |
 | 1,14 | 1.14.2 vagy újabb |
-| 1,15 és újabb verziók | N/A |
+| 1,15 és újabb verziók | N.A. |
 
 Ha olyan Kubernetes-verziót használ, amely nem rendelkezik a probléma javításával, és a csomópont elavult lemezzel rendelkezik, enyhítheti a virtuális gépről a nem létező lemezek tömeges műveletként való leválasztásával. **A nem létező lemezek különálló leválasztása sikertelen lehet.**
 
@@ -269,7 +293,7 @@ Ezt a problémát a Kubernetes következő verzióiban rögzítették:
 | 1.12 | 1.12.10 vagy újabb |
 | 1.13 | 1.13.8 vagy újabb |
 | 1,14 | 1.14.4 vagy újabb |
-| 1,15 és újabb verziók | N/A |
+| 1,15 és újabb verziók | N.A. |
 
 Ha olyan Kubernetes-verziót használ, amely nem rendelkezik a probléma javításával, és a csomópont meghibásodott állapotban van, a virtuális gép állapotának manuális frissítésével csökkentheti a következő lépések egyikét:
 
@@ -378,7 +402,7 @@ Ezt a problémát a Kubernetes következő verzióiban rögzítették:
 |--|:--:|
 | 1.12 | 1.12.6 vagy újabb |
 | 1.13 | 1.13.4 vagy újabb |
-| 1,14 és újabb verziók | N/A |
+| 1,14 és újabb verziók | N.A. |
 
 ### <a name="azure-files-mount-fails-because-of-storage-account-key-changed"></a>Azure Files csatlakoztatás sikertelen, mert a Storage-fiók kulcsa módosult
 

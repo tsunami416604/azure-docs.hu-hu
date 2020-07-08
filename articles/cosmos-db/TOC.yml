@@ -123,7 +123,7 @@
           href: partitioning-overview.md
         - name: Particionálás és horizontális skálázás
           href: partition-data.md
-        - name: Szintetikus partíciókulcs létrehozása
+        - name: Szintetikus partíciókulcs
           href: synthetic-partition-keys.md
     - name: Kiosztott átviteli sebesség
       items:

@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: virtual-machines-windows
 author: rothja
 manager: craigg
@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/30/2018
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: 2c7d312910c6d38c54b291da34bfb827246c7dad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 66a3ecd82ab61f25c99fd1268d9ce7567b057d66
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79504402"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86050268"
 ---
 ## <a name="prepare-for-akv-integration"></a>Felkészülés a AKV-integrációra
 Ha Azure Key Vault-integrációt szeretne használni a SQL Server VM konfigurálásához, több előfeltétel van: 
@@ -56,7 +56,9 @@ Következő lépésként regisztráljon egy alkalmazást a HRE. Ez egy egyszerű
 ### <a name="create-a-key-vault"></a><a id="createkeyvault"></a>Kulcstartó létrehozása
 Ahhoz, hogy a virtuális gépen a titkosításhoz használni kívánt kulcsokat a Azure Key Vault használatával lehessen tárolni, hozzá kell férnie egy kulcstartóhoz. Ha még nem állította be a kulcstartót, hozzon létre egyet a [Első lépések Azure Key Vault](../articles/key-vault/key-vault-overview.md) című cikkben ismertetett lépéseket követve. A lépések elvégzése előtt néhány információt be kell gyűjtenie a beállítás során, amelyre később szükség van, amikor engedélyezi Azure Key Vault integrációt az SQL-alapú virtuális gépen.
 
-    New-AzKeyVault -VaultName 'ContosoKeyVault' -ResourceGroupName 'ContosoResourceGroup' -Location 'East Asia'
+```azurepowershell
+New-AzKeyVault -VaultName 'ContosoKeyVault' -ResourceGroupName 'ContosoResourceGroup' -Location 'East Asia'
+```
 
 Amikor megjelenik a Key Vault létrehozása lépés, jegyezze fel a visszaadott **vaultUri** tulajdonságot, amely a Key Vault URL-címe. Az ebben a lépésben megadott példában a Key Vault neve ContosoKeyVault, ezért a Key Vault URL-címe lenne https://contosokeyvault.vault.azure.net/ .
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2018
 ms.author: terrylan
-ms.openlocfilehash: 87f1fcfa08ef2b7d2e4f72588eff8576c5ace146
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 9d44c1da27a1440e105ce76436bc284a537503c7
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85254293"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86054440"
 ---
 # <a name="azure-ddos-protection---designing-resilient-solutions"></a>Azure DDoS Protection – rugalmas megoldások tervezése
 
@@ -30,7 +30,6 @@ A platformon a DDoS elleni védelem mellett a [Azure DDoS Protection standard](h
 
 ![Azure DDoS Protection szerepe az ügyfelek és a virtuális hálózat támadók általi védelmében](./media/ddos-best-practices/image1.png)
 
-A technológiával kapcsolatos biztonsági javaslatokért tekintse meg a [DDoS Protection Azure biztonsági alaptervét](ddos-protection-security-baseline.md).
 
 ## <a name="fundamental-best-practices"></a>Alapvető ajánlott eljárások
 
@@ -269,7 +268,6 @@ További információ erről a hivatkozási architektúráról: az [Azure-HDInsi
 
 ## <a name="next-steps"></a>További lépések
 
-* [DDoS Protection Azure biztonsági alapterve](ddos-protection-security-baseline.md)
 * [Megosztott feladatkörök a felhőben](shared-responsibility.md)
 * [Azure DDoS Protection termék lapja](https://azure.microsoft.com/services/ddos-protection/)
 * [Azure DDoS Protection dokumentáció](/azure/virtual-network/ddos-protection-overview)

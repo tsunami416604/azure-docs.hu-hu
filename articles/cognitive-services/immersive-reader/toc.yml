@@ -11,6 +11,10 @@
       href: ./quickstarts/client-libraries.md
 - name: Oktatóanyagok
   items:
+    - name: A Modern olvasó indítása (Android)
+      href: tutorial-android.md
+    - name: A Modern olvasó indítása (iOS)
+      href: tutorial-ios.md
     - name: A Modern olvasó indítása (Python)
       href: tutorial-python.md
     - name: Több Modernolvasó-erőforrás használata

@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.author: ilahat
 author: ilahat
 ms.date: 11/01/2019
-ms.openlocfilehash: ff058d7b51bd2e5efd80db69e5928d58fc5a7725
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3632a34678c7a0f0e6fa93e5ce8000b07bb413a6
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76715669"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86054525"
 ---
 # <a name="azure-managed-applications-with-notifications"></a>Azure által felügyelt alkalmazások értesítésekkel
 
@@ -20,7 +20,7 @@ Az Azure Managed Application Notifications lehetővé teszi, hogy a közzétevő
 A felügyelt alkalmazások fogadásának megkezdéséhez hozzon létre egy nyilvános HTTPS-végpontot, és a Service Catalog alkalmazás-definíció vagy az Azure Marketplace-ajánlat közzétételekor tegye meg.
 
 A gyors kezdéshez a következő lépéseket javasoljuk:
-1. Hozzon létre egy nyilvános HTTPS-végpontot, amely naplózza a `200 OK`beérkező post kéréseket, és visszatér.
+1. Hozzon létre egy nyilvános HTTPS-végpontot, amely naplózza a beérkező POST kéréseket, és visszatér `200 OK` .
 2. Adja hozzá a végpontot a Service Catalog alkalmazás-definícióhoz vagy az Azure Marketplace-ajánlathoz a cikk későbbi részében leírtak szerint.
 3. Hozzon létre egy felügyelt alkalmazás-példányt, amely az alkalmazás-definícióra vagy az Azure Marketplace ajánlatra hivatkozik.
 4. Ellenőrizze, hogy az értesítések fogadása megtörtént-e.
@@ -36,7 +36,7 @@ Első lépésként tekintse meg [a Service Catalog-alkalmazás közzététele Az
 #### <a name="rest-api"></a>REST API
 
 > [!NOTE]
-> Jelenleg csak egy végpontot `notificationEndpoints` adhat meg az alkalmazás definíciójának tulajdonságaiban.
+> Jelenleg csak egy végpontot adhat meg az `notificationEndpoints` alkalmazás definíciójának tulajdonságaiban.
 
 ``` JSON
     {
@@ -61,7 +61,7 @@ Első lépésként tekintse meg [a Service Catalog-alkalmazás közzététele Az
 
 ```
 ## <a name="add-azure-marketplace-managed-application-notifications"></a>Azure Marketplace által felügyelt alkalmazások értesítéseinek hozzáadása
-További információ: Azure- [alkalmazási ajánlat létrehozása](../../marketplace/cloud-partner-portal/azure-applications/cpp-create-offer.md).
+További információ: Azure- [alkalmazási ajánlat létrehozása](../../marketplace/partner-center-portal/create-new-azure-apps-offer.md).
 
 ![Az Azure Marketplace által felügyelt alkalmazások értesítései a Azure Portal](./media/publish-notifications/marketplace-notifications.png)
 ## <a name="event-triggers"></a>Eseményindítók
@@ -73,7 +73,7 @@ PUT | Elfogadva | A felügyelt erőforráscsoport létre lett hozva, és az alka
 PUT | Sikeres | A felügyelt alkalmazás teljes kiépítés sikerült egy PUT után.
 PUT | Sikertelen | Az alkalmazás-példány üzembe helyezésének meghibásodása bármely ponton.
 JAVÍTÁS | Sikeres | A felügyelt alkalmazás példányának sikeres JAVÍTÁSát követően a címkék, a JIT hozzáférési házirend vagy a felügyelt identitás frissítése sikerült.
-DELETE | Törlése | Amint a felhasználó elindít egy felügyelt alkalmazás példányának TÖRLÉSét.
+DELETE | Törlés | Amint a felhasználó elindít egy felügyelt alkalmazás példányának TÖRLÉSét.
 DELETE | Törölve | A felügyelt alkalmazás teljes és sikeres törlése után.
 DELETE | Sikertelen | A törlést blokkoló megszüntetési folyamat során felmerülő bármilyen hiba.
 ## <a name="notification-schema"></a>Értesítési séma
@@ -189,7 +189,7 @@ billingDetails | *Csak az Azure Marketplace által felügyelt alkalmazásokhoz v
 
 ## <a name="endpoint-authentication"></a>Végponti hitelesítés
 A webhook-végpont biztonságossá tételéhez és az értesítés hitelességének biztosításához:
-1. Adjon meg egy lekérdezési paramétert a webhook URI-ja felett, például\:: https//Your-Endpoint.com? SIG = GUID. Minden értesítésnél győződjön meg arról, hogy a `sig` lekérdezési paraméter a `Guid`várt értékkel rendelkezik.
+1. Adjon meg egy lekérdezési paramétert a webhook URI-ja felett, például: https \: //Your-Endpoint.com? SIG = GUID. Minden értesítésnél győződjön meg arról, hogy a lekérdezési paraméter `sig` a várt értékkel rendelkezik `Guid` .
 2. Adja ki a beolvasást a felügyelt alkalmazás példányán a applicationId használatával. Ellenőrizze, hogy a provisioningState megegyezik-e az értesítés provisioningState, hogy a konzisztencia biztosítható legyen.
 
 ## <a name="notification-retries"></a>Értesítési újrapróbálkozások
