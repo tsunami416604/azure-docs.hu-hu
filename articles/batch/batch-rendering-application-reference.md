@@ -5,16 +5,16 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: how-to
-ms.openlocfilehash: 21ae6e0a190875e3e541eb858ec38658ce191ee6
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: ace3fe7aee6b9ffc7226448b455bcfea1f931458
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726502"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964872"
 ---
 # <a name="rendering-applications"></a>Alkalmazások renderelése
 
-A renderelési alkalmazások a Batch-feladatok és-feladatok létrehozásával használhatók. A feladat parancssori tulajdonsága megadja a megfelelő parancssort és paramétereket.  A feladatok feladatainak létrehozásához a legegyszerűbb módszer a Batch Explorer-sablonok használata az [ebben a cikkben](https://docs.microsoft.com/azure/batch/batch-rendering-using#using-batch-explorer)megadott módon.  A sablonok megtekinthetők és módosíthatók, ha szükségesek.
+A renderelési alkalmazások a Batch-feladatok és-feladatok létrehozásával használhatók. A feladat parancssori tulajdonsága megadja a megfelelő parancssort és paramétereket.  A feladatok feladatainak létrehozásához a legegyszerűbb módszer a Batch Explorer-sablonok használata az [ebben a cikkben](./batch-rendering-using.md#using-batch-explorer)megadott módon.  A sablonok megtekinthetők és módosíthatók, ha szükségesek.
 
 Ez a cikk az egyes renderelési alkalmazások futtatásának rövid leírását tartalmazza.
 
@@ -81,6 +81,6 @@ render -renderer arnold -proj "%AZ_BATCH_JOB_PREP_WORKING_DIR%" -verb -rd "%AZ_B
 
 A készlet **és a feladatok sablonjai a Batch Explorer** katalógusában érhetők el.  A sablon forrásfájljait a [GitHub batch Explorer adattárában](https://github.com/Azure/BatchExplorer-data/tree/master/ncj/maya)érheti el.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Használja a készletet és a feladatsort a [GitHub adattárházában](https://github.com/Azure/BatchExplorer-data/tree/master/ncj) batch Explorer használatával.  Ha szükséges, hozzon létre új sablonokat, vagy módosítsa a megadott sablonok egyikét.

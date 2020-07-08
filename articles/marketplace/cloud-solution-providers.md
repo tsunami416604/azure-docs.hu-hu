@@ -7,16 +7,16 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: 58bfe5cdc58c41c2ead82ac2d280629e4fec9bcd
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 633656af72790c7dfebeee567713875ce0d609b4
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83798151"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964209"
 ---
 # <a name="cloud-solution-provider-program"></a>Cloud Solution Provider program
 
-Ez a cikk azt ismerteti, hogyan konfigurálható az ajánlat, hogy elérhető legyen a Cloud Solution Provider (CSP) program számára. Az ajánlatok [kereskedelmi piactéren keresztüli webes kirakatokon](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace)keresztüli közzétételén kívül a CSP program segítségével több millió minősített Microsoft-ügyfelet is elérhet, amelyeket a program kiszolgál.
+Ez a cikk azt ismerteti, hogyan konfigurálható az ajánlat, hogy elérhető legyen a Cloud Solution Provider (CSP) program számára. Az ajánlatok [kereskedelmi piactéren keresztüli webes kirakatokon](comparing-appsource-azure-marketplace.md)keresztüli közzétételén kívül a CSP program segítségével több millió minősített Microsoft-ügyfelet is elérhet, amelyeket a program kiszolgál.
 
 Az új vagy meglévő ajánlatokat a CSP programban is konfigurálhatja, amely lehetővé teszi, hogy a CSP-partnerek eladják termékeiket, és kötegelt megoldásokat hozzanak létre az ügyfeleknek.
 
@@ -189,9 +189,9 @@ Ha a Cloud Partner Portal a CSP-csatornát választotta, a kiadónak olyan URL-c
 
 ![Cloud Partner Portal CSP-biztosíték információi](media/marketplace-publishers-guide/cpp-csp-information.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Látogasson el az [Azure Marketplace és a AppSource kiadói útmutatóba](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide).
+Látogasson el az [Azure Marketplace és a AppSource kiadói útmutatóba](marketplace-publishers-guide.md).
 
 A piactér GTM szolgáltatásaival kapcsolatos további információkért tekintse meg a piacra jutási [szolgáltatásokat](https://partner.microsoft.com/reach-customers/gtm)ismertető témakört.
 

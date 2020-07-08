@@ -7,20 +7,20 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.openlocfilehash: 6a5335a1048adaa50344e75662b4ad593955f34d
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 7bc5dc0e21bc9218c0e67b4e8e96299d73628e97
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84694943"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963172"
 ---
 # <a name="marketplace-metered-billing-apis"></a>Marketplace mért számlázási API-k
 
 A mért számlázási API-kat akkor kell használni, ha a közzétevő egyéni mérési dimenziókat hoz létre egy ajánlat közzétételéhez a partner Centerben. A mért számlázási API-kkal való integráció minden olyan megvásárolt ajánlat esetében szükséges, amely egy vagy több, egyéni dimenzióval rendelkező csomaggal rendelkezik a használati események kibocsátásához.
 
-Az egyéni mérési méretek SaaS-hoz történő létrehozásával kapcsolatos további információkért lásd: [SaaS-mért számlázás](https://docs.microsoft.com/azure/marketplace/partner-center-portal/saas-metered-billing).
+Az egyéni mérési méretek SaaS-hoz történő létrehozásával kapcsolatos további információkért lásd: [SaaS-mért számlázás](saas-metered-billing.md).
 
-A felügyelt alkalmazási csomaggal rendelkező Azure-alkalmazásokra vonatkozó egyéni mérési dimenziók létrehozásával kapcsolatos további információkért tekintse meg az [új Azure apps-ajánlat létrehozása című témakör technikai konfiguráció szakaszát](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-azure-apps-offer#technical-configuration-managed-application-plans-only).
+A felügyelt alkalmazási csomaggal rendelkező Azure-alkalmazásokra vonatkozó egyéni mérési dimenziók létrehozásával kapcsolatos további információkért tekintse meg az [új Azure apps-ajánlat létrehozása című témakör technikai konfiguráció szakaszát](create-new-azure-apps-offer.md#technical-configuration).
 
 ## <a name="enforcing-tls-12-note"></a>TLS 1,2-Megjegyzés kényszerítése
 
@@ -38,14 +38,14 @@ Erőforráson belül egy naptári nap minden órájában csak egy használati es
 
 *Lekérdezési paraméterek:*
 
-|            |          |
+| Paraméterének | Ajánlás          |
 | ---------- | ---------------------- |
 | `ApiVersion` | 2018-08-31 használata. |
 | | |
 
 *Kérelem fejlécei:*
 
-| Content-Type       | `application/json`    |
+| Content-Type       | A(z) `application/json` használata  |
 | ------------------ | ---------------------------- |
 | `x-ms-requestid`     | Egyedi karakterlánc-érték az ügyféltől érkező kérelem nyomon követéséhez, lehetőleg egy GUID-azonosító. Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit. |
 | `x-ms-correlationid` | Egyedi karakterlánc-érték a művelethez az ügyfélen. Ez a paraméter a kiszolgálói oldalon található eseményekkel összekapcsolja az ügyfél-művelet összes eseményét. Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit. |
@@ -151,13 +151,13 @@ A Batch-használati esemény API lehetővé teszi, hogy egyszerre több megvás�
 
 *Lekérdezési paraméterek:*
 
-|            |     |
+| Paraméter  | Ajánlás     |
 | ---------- | -------------------- |
 | `ApiVersion` | 2018-08-31 használata. |
 
 *Kérelem fejlécei:*
 
-| Content-Type       | `application/json`       |
+| Content-Type       | A(z) `application/json` használata       |
 | ------------------ | ------ |
 | `x-ms-requestid`     | Egyedi karakterlánc-érték az ügyféltől érkező kérelem nyomon követéséhez, lehetőleg egy GUID-azonosító. Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit. |
 | `x-ms-correlationid` | Egyedi karakterlánc-érték a művelethez az ügyfélen. Ez a paraméter a kiszolgálói oldalon található eseményekkel összekapcsolja az ügyfél-művelet összes eseményét. Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit. |

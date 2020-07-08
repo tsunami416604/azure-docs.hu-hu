@@ -5,47 +5,43 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 05/01/2020
-ms.openlocfilehash: b149757ccfc41587aa3ea6c5d18717fdecaba656
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.date: 07/05/2020
+ms.openlocfilehash: 85f4cc9f9e6e762a85571010840cc697bc6c9888
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84656644"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963665"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Hozzáférés az Azure Virtual Network-erőforrásokhoz a Azure Logic Apps integrációs szolgáltatási környezetek (ISEs) használatával
 
-Időnként a logikai alkalmazásoknak olyan biztonságos erőforrásokhoz, például virtuális gépekhez és más rendszerekhez vagy szolgáltatásokhoz kell hozzáférnie, amelyek egy Azure-beli [virtuális hálózaton](../virtual-network/virtual-networks-overview.md)belül vannak. A hozzáférés beállításához [létrehozhat egy *integrációs szolgáltatási környezetet* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment.md). Az ISE a Logic Apps szolgáltatás dedikált példánya, amely dedikált erőforrásokat használ, és külön fut a "globális" több-bérlős Logic Apps szolgáltatástól.
+Időnként a logikai alkalmazásoknak olyan biztonságos erőforrásokhoz, például virtuális gépekhez és más rendszerekhez vagy szolgáltatásokhoz kell hozzáférnie, amelyek egy Azure-beli [virtuális hálózathoz](../virtual-network/virtual-networks-overview.md)tartoznak vagy kapcsolódnak. A hozzáférés beállításához [létrehozhat egy *integrációs szolgáltatási környezetet* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment.md). Az ISE a Logic Apps szolgáltatás egy példánya, amely dedikált erőforrásokat használ, és külön fut a "globális" több-bérlős Logic Apps szolgáltatástól.
 
-A Logic apps önálló dedikált példányban való futtatása segít csökkenteni a más Azure-bérlők által az alkalmazások teljesítményére gyakorolt hatást, más néven a ["zajos szomszédok" hatást](https://en.wikipedia.org/wiki/Cloud_computing_issues#Performance_interference_and_noisy_neighbors). Az ISE a következő előnyöket is biztosítja:
-
-* A saját statikus IP-címei, amelyek a több-bérlős szolgáltatásban a Logic apps által megosztott statikus IP-címektől eltérnek. Beállíthat egy nyilvános, statikus és kiszámítható kimenő IP-címet is a célszámítógépeken való kommunikációhoz. Így nem kell további tűzfal-megnyitásokat beállítania a célszámítógépeken az egyes ISE-rendszerek esetében.
-
-* A futtatási időtartam, a tárterület megőrzése, az átviteli sebesség, a HTTP-kérés és a válasz időkorlátja, az üzenetek mérete és az egyéni összekötőre vonatkozó kérelmek száma nagyobb. További információ: [Azure Logic apps korlátai és konfigurálása](logic-apps-limits-and-config.md).
-
-> [!NOTE]
-> Néhány Azure-beli virtuális hálózat privát végpontokat ([Azure Private-hivatkozást](../private-link/private-link-overview.md)) használ az Azure-beli (Azure-beli) szolgáltatások, például az Azure Storage, a Azure Cosmos db vagy a Azure SQL Database, a partner Services vagy az Azure-ban üzemeltetett ügyfélszolgálatok számára. Ha a logikai alkalmazásoknak hozzá kell férniük a privát végpontokat használó virtuális hálózatokhoz, létre kell hoznia, telepítenie és futtatnia kell ezeket a logikai alkalmazásokat egy ISE-ben.
+Például egyes Azure-beli virtuális hálózatok olyan privát végpontokat használnak, amelyek az [Azure privát hivatkozásán](../private-link/private-link-overview.md)keresztül állíthatók be, hogy hozzáférést biztosítson az Azure-szolgáltatásokhoz, például az Azure Storage, a Azure Cosmos db, a Azure SQL Database, a partner Services vagy az Azure szolgáltatásban üzemeltetett ügyfélszolgálatokhoz. Ha a logikai alkalmazásoknak hozzá kell férniük a privát végpontokat használó virtuális hálózatokhoz, létre kell hoznia, telepítenie és futtatnia kell ezeket a logikai alkalmazásokat egy ISE-ben.
 
 Ha ISE-t hoz létre, az Azure *befecskendez* vagy üzembe helyezi az ISE-t az Azure-beli virtuális hálózatában. Ezt az ISE-t használhatja azon logikai alkalmazások és integrációs fiókok helyeként, amelyeknek hozzáférésre van szükségük.
 
 ![Integrációs szolgáltatási környezet kiválasztása](./media/connect-virtual-network-vnet-isolated-environment-overview/select-logic-app-integration-service-environment.png)
 
-A logikai alkalmazások a virtuális hálózathoz tartozó vagy ahhoz csatlakozó erőforrásokat a következő elemek használatával érhetik el, amelyek ugyanabban az ISE-ben futnak, mint a Logic apps:
+Ez az Áttekintés további információkat tartalmaz arról, hogy [Miért érdemes ISE-t használni](#benefits), a [dedikált és a több-bérlős Logic Apps szolgáltatás közötti különbségeket](#difference), valamint azt, hogy miként lehet közvetlenül hozzáférni az Azure-beli virtuális hálózaton belüli vagy azzal összekapcsolt erőforrásokhoz.
 
-* Egy alapcímkével **ellátott beépített**trigger vagy művelet, például a http-trigger vagy a művelet
-* Az adott rendszer vagy szolgáltatás **ISE**-címkével ellátott összekötője
-* Egyéni összekötő
+<a name="benefits"></a>
 
-Továbbra is használhat olyan összekötőket, amelyek nem rendelkeznek a **Core** vagy **ISE** címkével az ISE logikai alkalmazásaival. Ezek az összekötők Ehelyett a több-bérlős Logic Apps szolgáltatásban futnak. További információkat a következő részekben talál:
+## <a name="why-use-an-ise"></a>Miért érdemes ISE-t használni?
 
-* [Dedikált és több-bérlős](#difference)
-* [Csatlakozás integrációs szolgáltatási környezetből](../connectors/apis-list.md#integration-service-environment)
-* [ISE-összekötők](../connectors/apis-list.md#ise-connectors)
+A Logic apps önálló dedikált példányban való futtatása segít csökkenteni a más Azure-bérlők által az alkalmazások teljesítményére gyakorolt hatást, más néven a ["zajos szomszédok" hatást](https://en.wikipedia.org/wiki/Cloud_computing_issues#Performance_interference_and_noisy_neighbors). Az ISE a következő előnyöket is biztosítja:
 
-> [!IMPORTANT]
-> A Logic apps, a beépített eseményindítók, a beépített műveletek és az ISE-ben futó összekötők olyan díjszabási csomagot használnak, amely eltér a fogyasztási díjszabástól. További információ: [Logic apps díjszabási modell](../logic-apps/logic-apps-pricing.md#fixed-pricing). A díjszabással kapcsolatos részletekért tekintse meg a [Logic apps díjszabását](../logic-apps/logic-apps-pricing.md).
+* Közvetlen hozzáférés a virtuális hálózathoz tartozó vagy ahhoz csatlakozó erőforrásokhoz
 
-Ez az Áttekintés további információkat tartalmaz arról, hogy az ISE Hogyan biztosítja a logikai alkalmazások számára az Azure-beli virtuális hálózat közvetlen elérését, és összehasonlítja az ISE és a több-bérlős Logic Apps szolgáltatás közötti különbségeket.
+  Az ISE-ben létrehozott és futtatott logikai alkalmazások az [ISE-ben futó, kifejezetten tervezett összekötőket](../connectors/apis-list.md#ise-connectors)használhatnak. Ha egy helyi rendszer vagy adatforrás esetében egy ISE-összekötő van, közvetlenül is csatlakozhat a helyszíni [adatátjáró](../logic-apps/logic-apps-gateway-connection.md)használata nélkül. További információkért lásd a jelen témakör későbbi, a [több-bérlős](#difference) és [a helyszíni rendszerekhez való hozzáférését](#on-premises) ismertető szakaszt.
+
+* A virtuális hálózathoz nem csatlakoztatott vagy azokon kívüli erőforrásokhoz való folyamatos hozzáférés
+
+  Az ISE-ben létrehozott és futtatott logikai alkalmazások továbbra is használhatják a több-bérlős Logic Apps szolgáltatásban futó összekötőket, ha az ISE-specifikus összekötő nem érhető el. További információ: dedikált és [több-bérlős](#difference).
+
+* A saját statikus IP-címei, amelyek a több-bérlős szolgáltatásban a Logic apps által megosztott statikus IP-címektől eltérnek. Beállíthat egy nyilvános, statikus és kiszámítható kimenő IP-címet is a célszámítógépeken való kommunikációhoz. Így nem kell további tűzfal-megnyitásokat beállítania a célszámítógépeken az egyes ISE-rendszerek esetében.
+
+* A futtatási időtartam, a tárterület megőrzése, az átviteli sebesség, a HTTP-kérés és a válasz időkorlátja, az üzenetek mérete és az egyéni összekötőre vonatkozó kérelmek száma nagyobb. További információ: [Azure Logic apps korlátai és konfigurálása](logic-apps-limits-and-config.md).
 
 <a name="difference"></a>
 
@@ -55,38 +51,43 @@ Ha egy ISE-ben hoz létre és futtat logikai alkalmazásokat, ugyanazokat a felh
 
 ![Olyan összekötők, amelyeken címkék találhatók az ISE-ben](./media/connect-virtual-network-vnet-isolated-environment-overview/labeled-trigger-actions-integration-service-environment.png)
 
-* A beépített eseményindítók és **műveletek az** alapcímkét jelenítik meg. Mindig ugyanabban az ISE-ben futnak, mint a logikai alkalmazás. Az **ISE** -címkét megjelenítő felügyelt összekötők a logikai alkalmazással megegyező ISE-ben is futnak.
+* A beépített eseményindítók és műveletek, például a HTTP **, az alapcímkét** jelenítik meg, és a logikai alkalmazással megegyező ISE-ben futnak.
 
-  Íme például néhány összekötő, amely az ISE-verziókat kínálja:
+* Az **ISE** -címkét megjelenítő felügyelt összekötők kifejezetten ISEs-hez készültek, és *mindig ugyanabban az ISE-ben futnak, mint a logikai alkalmazás*. Íme például néhány [összekötő, amely az ISE-verziókat kínálja](../connectors/apis-list.md#ise-connectors):<p>
 
   * Azure Blob Storage, File Storage és Table Storage
-  * Azure Queues, Azure Service Bus, Azure Event Hubs és IBM MQ
-  * FTP és SFTP – SSH
+  * Azure Service Bus, Azure Queues, Azure Event Hubs
+  * Azure Automation, Azure Key Vault, Azure Event Grid és Azure Monitor naplók
+  * FTP, SFTP-SSH, fájlrendszer és SMTP
+  * SAP, IBM MQ, IBM DB2 és IBM 3270
   * SQL Server, Azure SQL Data Warehouse, Azure Cosmos DB
   * AS2, X12 és EDIFACT
 
-* Azok a felügyelt összekötők, amelyek nem jelenítenek meg további címkéket, mindig a több-bérlős Logic Apps szolgáltatásban futnak, de továbbra is használhatják ezeket az összekötőket egy ISE által üzemeltetett logikai alkalmazásban.
+  Ritka kivételek esetén, ha egy helyi rendszer vagy adatforrás számára elérhető ISE-összekötő áll rendelkezésre, közvetlenül a helyszíni [adatátjáró](../logic-apps/logic-apps-gateway-connection.md)használata nélkül is csatlakozhat. További információ: [hozzáférés a helyszíni rendszerekhez](#on-premises) a témakör későbbi részében.
+
+* Azok a felügyelt összekötők, amelyek nem jelenítik meg az **ISE** -címkét, továbbra is működnek az ISE-ben lévő Logic apps Ezek az összekötők *mindig a több-bérlős Logic apps szolgáltatásban futnak*, nem az ISE-ben.
+
+* Az ISE-en kívül létrehozott egyéni összekötők, függetlenül attól, hogy szükség van-e a helyszíni [adatátjáróra](../logic-apps/logic-apps-gateway-connection.md), továbbra is működnek-e a Logic apps-alkalmazásokkal egy ISE- *n*belül. Az *ISE* -ben létrehozott egyéni összekötők azonban nem fognak működni a helyszíni adatátjáróval. További információ: [hozzáférés a helyszíni rendszerekhez](#on-premises).
 
 <a name="on-premises"></a>
 
-### <a name="access-to-on-premises-systems"></a>Hozzáférés a helyszíni rendszerekhez
+## <a name="access-to-on-premises-systems"></a>Hozzáférés a helyszíni rendszerekhez
 
-Az Azure-beli virtuális hálózathoz csatlakoztatott helyszíni rendszerek vagy adatforrások eléréséhez az ISE-ben a Logic apps ezeket az elemeket használhatja:
+Az ISE-ben futó logikai alkalmazások közvetlenül hozzáférhetnek a helyszíni rendszerekhez és az Azure-beli virtuális hálózatokhoz kapcsolódó adatforrásokhoz az alábbi elemek használatával:<p>
 
-* HTTP-művelet
+* A HTTP-trigger vagy-művelet, amely az **alapvető** címkét jeleníti meg
 
-* ISE – címkézett összekötő az adott rendszerhez
+* Az **ISE** -összekötő, ha elérhető, helyszíni rendszer vagy adatforrás esetén
 
-  > [!NOTE]
-  > Ha Windows-hitelesítést kíván használni az SQL Server-összekötővel egy [integrációs szolgáltatási környezetben (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), használja az összekötő nem ISE verzióját a helyszíni [adatátjáróval](../logic-apps/logic-apps-gateway-install.md). Az ISE-címkével ellátott verzió nem támogatja a Windows-hitelesítést.
+  Ha van elérhető ISE-összekötő, a helyszíni [adatátjáró](../logic-apps/logic-apps-gateway-connection.md)nélkül is közvetlenül hozzáférhet a rendszerhez vagy az adatforráshoz. Ha azonban a SQL Server egy ISE-ből kell elérnie, és Windows-hitelesítést használ, akkor az összekötő nem ISE verzióját és a helyszíni adatátjárót kell használnia. Az összekötő ISE-verziója nem támogatja a Windows-hitelesítést. További információ: Ise- [Összekötők](../connectors/apis-list.md#ise-connectors) és [Csatlakozás egy integrációs szolgáltatási környezetből](../connectors/apis-list.md#integration-service-environment).
 
-* Egyéni összekötők
+* Egyéni összekötő
 
-  * Ha olyan egyéni összekötővel rendelkezik, amely a helyszíni adatátjárót igényli, és az összekötőket az ISE-n kívül hozta létre, akkor az ISE-ben lévő Logic apps is használhatja ezeket az összekötőket.
+  * Az ISE-en kívül létrehozott egyéni összekötők, függetlenül attól, hogy szükség van-e a helyszíni [adatátjáróra](../logic-apps/logic-apps-gateway-connection.md), továbbra is működnek-e a Logic apps-alkalmazásokkal egy ISE- *n*belül.
 
-  * Az ISE-ben létrehozott egyéni összekötők nem működnek a helyszíni adatátjáróval. Ezek az összekötők azonban közvetlenül képesek hozzáférni a helyszíni adatforrásokhoz, amelyek az ISE-t üzemeltető virtuális hálózathoz csatlakoznak. Ezért az ISE-ben a Logic apps valószínűleg nincs szüksége az adatátjáróra az ilyen erőforrásokkal való kommunikáció során.
+  * Az *ISE* -ben létrehozott egyéni összekötők nem működnek a helyszíni adatátjáróval. Ezek az összekötők azonban közvetlenül hozzáférhetnek a helyi rendszerekhez és olyan adatforrásokhoz, amelyek az ISE-t üzemeltető virtuális hálózathoz tartoznak vagy azokhoz kapcsolódnak. Így az ISE-ben lévő Logic apps-alkalmazásoknak általában nincs szükségük az adatátjáróra az adott erőforrásokhoz való hozzáféréskor.
 
-Azon helyszíni rendszerekhez, amelyek nem csatlakoznak virtuális hálózathoz, vagy nem rendelkeznek ISE-címkézett összekötővel, először [be kell állítania a helyszíni adatátjárót](../logic-apps/logic-apps-gateway-install.md) , mielőtt a logikai alkalmazások csatlakozni tudjanak a rendszerekhez.
+A helyszíni rendszerek és az ISE-összekötőket nem tartalmazó adatforrások eléréséhez a virtuális hálózaton kívül esik, vagy nem csatlakozik a virtuális hálózathoz, továbbra is a helyszíni adatátjárót kell használnia. Az ISE-n belüli logikai alkalmazások továbbra is használhatják a **Core** vagy **ISE** címkével nem rendelkező összekötőket. Ezek az összekötők csak a több-bérlős Logic Apps szolgáltatásban futnak, nem pedig az ISE-ben. 
 
 <a name="ise-level"></a>
 
@@ -124,13 +125,19 @@ Annak megállapításához, hogy az ISE belső vagy külső hozzáférési végp
 
 ![ISE hozzáférési végpontjának keresése](./media/connect-virtual-network-vnet-isolated-environment-overview/find-ise-access-endpoint.png)
 
+<a name="pricing-model"></a>
+
+## <a name="pricing-model"></a>Díjszabási modell
+
+A Logic apps, a beépített triggerek, a beépített műveletek és az ISE-ben futó összekötők egy rögzített díjszabási csomagot használnak, amely eltér a fogyasztáson alapuló díjszabástól. További információ: [Logic apps díjszabási modell](../logic-apps/logic-apps-pricing.md#fixed-pricing). A díjszabással kapcsolatban lásd: [Logic apps díjszabása](https://azure.microsoft.com/pricing/details/logic-apps/).
+
 <a name="create-integration-account-environment"></a>
 
 ## <a name="integration-accounts-with-ise"></a>Integrációs fiókok ISE-vel
 
 Az integrációs fiókokat az integrációs szolgáltatási környezetben (ISE) belüli Logic apps-alkalmazásokkal is használhatja. Ezeknek az integrációs fiókoknak azonban *ugyanazt az ISE* -t kell használniuk, mint a társított logikai alkalmazások. Az ISE-beli Logic apps csak azokra az integrációs fiókokra hivatkozhat, amelyek ugyanabban az ISE-ban találhatók. Integrációs fiók létrehozásakor kiválaszthatja az ISE-t az integrációs fiókjának helyeként. Ha szeretné megtudni, hogyan működik a díjszabás és a számlázás az ISE-integrációs fiókok esetében, tekintse meg a [Logic apps díjszabási modelljét](../logic-apps/logic-apps-pricing.md#fixed-pricing). A díjszabással kapcsolatban lásd: [Logic apps díjszabása](https://azure.microsoft.com/pricing/details/logic-apps/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Kapcsolódás Azure-beli virtuális hálózatokhoz Azure Logic Apps](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)
 * További információ az [Azure Virtual Network](../virtual-network/virtual-networks-overview.md)

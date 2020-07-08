@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: e147e896966f88f05f60732da9d85308b8e4bd0f
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: ce8e8b083b108d24c11d828ae1cbd4e47e090fc0
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85389632"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963206"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>Kiszolgálói paraméterek a Azure Database for MySQL
 
@@ -28,6 +28,32 @@ Azure Database for MySQL lehetővé teszi a MySQL-kiszolgáló különböző par
 A támogatott kiszolgálói paraméterek listája folyamatosan bővül. A Azure Portal kiszolgálói paraméterek lapján megtekintheti a teljes listát, és konfigurálhatja a kiszolgáló paramétereinek értékeit.
 
 Az alábbi részekben tájékozódhat a számos gyakran frissített kiszolgálói paraméter korlátairól. A korlátokat a kiszolgáló díjszabási szintje és virtuális mag határozzák meg.
+
+### <a name="thread-pools"></a>Szálak készletei
+
+A MySQL hagyományosan egy szálat rendel minden ügyfélkapcsolathoz. Mivel az egyidejű felhasználók száma növekszik, a teljesítmény megfelelő csökkenést eredményez. Számos aktív szál jelentős hatással lehet a teljesítményre, mert a környezet nagyobb mértékű váltással, a szálak tartalmával és a CPU-gyorsítótárak helytelen területi beállításával jár.
+
+A kiszolgálóoldali szolgáltatást és a kapcsolatok készletezését elkülönítő szál-készletek, a teljesítmény maximalizálása a munkaszál dinamikus készletének bevezetésével, amely a kiszolgálón futó aktív szálak számának korlátozására és a szálak forgalmának minimalizálására használható. Ezzel biztosítható, hogy a kapcsolatok kitörése ne okozza a kiszolgáló számára az erőforrások kifogyása vagy a memória-meghibásodás miatti összeomlás. A szál-készletek a rövid lekérdezésekhez és a nagy CPU-igényű számítási feladatokhoz, például OLTP számítási feladatokhoz használhatók.
+
+A Thread Pools szolgáltatással kapcsolatos további információkért tekintse meg a [Thread Pools in Azure Database for MySQL](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/introducing-thread-pools-in-azure-database-for-mysql-service/ba-p/1504173) című témakört.
+
+> [!NOTE]
+> A szál-készlet funkció nem támogatott a MySQL 5,6 verzióban. 
+
+### <a name="configuring-the-thread-pool"></a>A szál készletének konfigurálása
+A szál készletének engedélyezéséhez frissítse a `thread_handling` kiszolgálói paramétert a "készlet-of-Threads" értékre. Alapértelmezés szerint ez a paraméter a (z) értékre van állítva `one-thread-per-connection` , ami azt jelenti, hogy a MySQL új szálat hoz létre minden új kapcsolathoz. Vegye figyelembe, hogy ez egy statikus paraméter, és a kiszolgáló újraindítását igényli.
+
+A készletben lévő szálak maximális és minimális számát a következő kiszolgálói paraméterek beállításával állíthatja be: 
+- `thread_pool_max_threads`: Ez az érték biztosítja, hogy a készletben ne legyen több szál ennél a számnál.
+- `thread_pool_min_threads`: Ez az érték határozza meg, hogy hány szálat kell fenntartani a rendszer a kapcsolatok bezárása után is.
+
+A rövid lekérdezések teljesítményével kapcsolatos problémák javítása érdekében a Azure Database for MySQL lehetővé teszi a Batch-végrehajtást, ha a lekérdezés végrehajtása után azonnal vissza nem tért a szál-készletbe, a szálak egy rövid ideig aktívak maradnak, amíg a következő lekérdezés a kapcsolódáson keresztül meg nem történik. A szál ezután gyorsan és egyszer hajtja végre a lekérdezést, a következőre vár, amíg a folyamat teljes ideje meghaladja a küszöbértéket. A Batch-végrehajtás viselkedését a következő kiszolgálói paraméterek alapján határozzák meg:  
+
+-  `thread_pool_batch_wait_timeout`: Ez az érték határozza meg, hogy egy szál Mikor várakozik egy másik lekérdezés feldolgozására.
+- `thread_pool_batch_max_time`: Ez az érték határozza meg azt a maximális időt, ameddig egy szál megismétli a lekérdezés-végrehajtás ciklusát, és a következő lekérdezésre vár.
+
+> [!IMPORTANT]
+> Az éles üzemben való bekapcsolás előtt tesztelje a szál készletét. 
 
 ### <a name="innodb_buffer_pool_size"></a>innodb_buffer_pool_size
 
@@ -84,8 +110,8 @@ A paraméterrel kapcsolatos további információkért tekintse meg a [MySQL dok
 
 |**Díjszabási csomag**|**Virtuális mag (ok)**|**Alapértelmezett érték (bájt)**|**Minimális érték (bájt)**|**Maximális érték (bájt)**|
 |---|---|---|---|---|
-|Alapszintű|1|Alapszintű csomag nem konfigurálható|N/A|N/A|
-|Alapszintű|2|Alapszintű csomag nem konfigurálható|N/A|N/A|
+|Alapszintű|1|Alapszintű csomag nem konfigurálható|N.A.|N.A.|
+|Alapszintű|2|Alapszintű csomag nem konfigurálható|N.A.|N.A.|
 |Általános célú|2|262144|128|268435455|
 |Általános célú|4|262144|128|536870912|
 |Általános célú|8|262144|128|1073741824|
@@ -133,8 +159,8 @@ A paraméterrel kapcsolatos további információkért tekintse meg a [MySQL dok
 
 |**Díjszabási csomag**|**Virtuális mag (ok)**|**Alapértelmezett érték (bájt)**|**Minimális érték (bájt)**|**Maximális érték (bájt)**|
 |---|---|---|---|---|
-|Alapszintű|1|Alapszintű csomag nem konfigurálható|N/A|N/A|
-|Alapszintű|2|Alapszintű csomag nem konfigurálható|N/A|N/A|
+|Alapszintű|1|Alapszintű csomag nem konfigurálható|N.A.|N.A.|
+|Alapszintű|2|Alapszintű csomag nem konfigurálható|N.A.|N.A.|
 |Általános célú|2|16777216|16384|268435455|
 |Általános célú|4|16777216|16384|536870912|
 |Általános célú|8|16777216|16384|1073741824|
@@ -158,8 +184,8 @@ A paraméterrel kapcsolatos további információkért tekintse meg a [MySQL dok
 
 |**Díjszabási csomag**|**Virtuális mag (ok)**|**Alapértelmezett érték (bájt)**|**Minimális érték (bájt)**|* * Maximális érték * *|
 |---|---|---|---|---|
-|Alapszintű|1|Alapszintű csomag nem konfigurálható|N/A|N/A|
-|Alapszintű|2|Alapszintű csomag nem konfigurálható|N/A|N/A|
+|Alapszintű|1|Alapszintű csomag nem konfigurálható|N.A.|N.A.|
+|Alapszintű|2|Alapszintű csomag nem konfigurálható|N.A.|N.A.|
 |Általános célú|2|0|0|16777216|
 |Általános célú|4|0|0|33554432|
 |Általános célú|8|0|0|67108864|
@@ -178,8 +204,8 @@ A paraméterrel kapcsolatos további információkért tekintse meg a [MySQL dok
 
 |**Díjszabási csomag**|**Virtuális mag (ok)**|**Alapértelmezett érték (bájt)**|**Minimális érték (bájt)**|**Maximális érték (bájt)**|
 |---|---|---|---|---|
-|Alapszintű|1|Alapszintű csomag nem konfigurálható|N/A|N/A|
-|Alapszintű|2|Alapszintű csomag nem konfigurálható|N/A|N/A|
+|Alapszintű|1|Alapszintű csomag nem konfigurálható|N.A.|N.A.|
+|Alapszintű|2|Alapszintű csomag nem konfigurálható|N.A.|N.A.|
 |Általános célú|2|524288|32768|4194304|
 |Általános célú|4|524288|32768|8388608|
 |Általános célú|8|524288|32768|16777216|
@@ -198,8 +224,8 @@ A paraméterrel kapcsolatos további információkért tekintse meg a [MySQL dok
 
 |**Díjszabási csomag**|**Virtuális mag (ok)**|**Alapértelmezett érték (bájt)**|**Minimális érték (bájt)**|**Maximális érték (bájt)**|
 |---|---|---|---|---|
-|Alapszintű|1|Alapszintű csomag nem konfigurálható|N/A|N/A|
-|Alapszintű|2|Alapszintű csomag nem konfigurálható|N/A|N/A|
+|Alapszintű|1|Alapszintű csomag nem konfigurálható|N.A.|N.A.|
+|Alapszintű|2|Alapszintű csomag nem konfigurálható|N.A.|N.A.|
 |Általános célú|2|16777216|1024|67108864|
 |Általános célú|4|16777216|1024|134217728|
 |Általános célú|8|16777216|1024|268435456|
@@ -230,7 +256,7 @@ Az alábbi kiszolgálói paraméterek nem konfigurálhatók a szolgáltatásban:
 
 Az itt felsorolt egyéb változók az alapértelmezett MySQL beépített értékekre vannak beállítva. Az alapértelmezett értékekhez tekintse meg a MySQL docs [8,0](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html), [5,7](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html)és [5,6](https://dev.mysql.com/doc/refman/5.6/en/server-system-variables.html) verzióit. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Megtudhatja, hogyan [konfigurálhat sever-paramétereket a Azure Portal használatával](./howto-server-parameters.md)
 - Megtudhatja, hogyan [konfigurálhat sever-paramétereket az Azure CLI használatával](./howto-configure-server-parameters-using-cli.md)

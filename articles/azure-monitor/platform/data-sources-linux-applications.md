@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/04/2017
-ms.openlocfilehash: 2fd148dbb85a4fd60fe63d4fb73128bf92dea1d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 10851754bda73fc769e613153582e491265ebb71
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77670559"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963240"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>Teljesítményszámlálók gyűjtése a Azure Monitor linuxos alkalmazásaihoz 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
@@ -28,16 +28,16 @@ A MySQL-t szolgáltatónak előre konfigurált MySQL-felhasználót és telepít
 
 A Linux rendszerhez készült Log Analytics-ügynök telepítése során a MySQL adatszolgáltató megvizsgálja a MySQL saját. cnf konfigurációs fájljait (az alapértelmezett helyet) a kötési és a porthoz, és részben beállítja a MySQL-vel kapcsolatos hitelesítési fájlt.
 
-A MySQL-hitelesítési fájlt a következő `/var/opt/microsoft/mysql-cimprov/auth/omsagent/mysql-auth`helyen tárolja:.
+A MySQL-hitelesítési fájlt a következő helyen tárolja: `/var/opt/microsoft/mysql-cimprov/auth/omsagent/mysql-auth` .
 
 
 ### <a name="authentication-file-format"></a>Hitelesítési fájl formátuma
 A MySQL-vel kapcsolatos hitelesítési fájl formátuma a következő:
 
-    [Port]=[Bind-Address], [username], [Base64 encoded Password]
-    (Port)=(Bind-Address), (username), (Base64 encoded Password)
-    (Port)=(Bind-Address), (username), (Base64 encoded Password)
-    AutoUpdate=[true|false]
+> [Port] = [kötési-címe], [Felhasználónév], [Base64 kódolású jelszó]  
+> (Port) = (kötési-címe), (Felhasználónév), (Base64 kódolású jelszó)  
+> (Port) = (kötési-címe), (Felhasználónév), (Base64 kódolású jelszó)  
+> AutoUpdate = [TRUE | FALSE]  
 
 A hitelesítési fájlban szereplő bejegyzéseket a következő táblázat ismerteti.
 
@@ -54,7 +54,7 @@ A MySQL-vel kapcsolatos hitelesítési fájl definiálhat egy alapértelmezett p
 
 A következő táblázat példaként tartalmazza a példányok beállításait 
 
-| Leírás | Fájl |
+| Description | Fájl |
 |:--|:--|
 | Az alapértelmezett példány és példány az 3308-as porttal. | `0=127.0.0.1, myuser, cnBwdA==`<br>`3308=, ,`<br>`AutoUpdate=true` |
 | Az alapértelmezett példány és példány a 3308-es porttal és a másik felhasználónévvel és jelszóval. | `0=127.0.0.1, myuser, cnBwdA==`<br>`3308=127.0.1.1, myuser2,cGluaGVhZA==`<br>`AutoUpdate=true` |
@@ -63,14 +63,14 @@ A következő táblázat példaként tartalmazza a példányok beállításait
 ### <a name="mysql-omi-authentication-file-program"></a>MySQL-vel való hitelesítés fájljának programja
 A MySQL-vel rendelkező szolgáltató a MySQL-t használó MySQL-es hitelesítési fájl, amely a MySQL-vel kapcsolatos hitelesítési fájl szerkesztésére használható. A hitelesítési fájl program a következő helyen található.
 
-    /opt/microsoft/mysql-cimprov/bin/mycimprovauth
+`/opt/microsoft/mysql-cimprov/bin/mycimprovauth`
 
 > [!NOTE]
 > A hitelesítő adatok fájljának olvashatónak kell lennie a omsagent-fiókban. A mycimprovauth parancs futtatása a omsgent használata javasolt.
 
 A következő táblázat részletesen ismerteti a mycimprovauth használatának szintaxisát.
 
-| Művelet | Példa | Leírás
+| Művelet | Példa | Description
 |:--|:--|:--|
 | *hamis vagy igaz* értékű AutoUpdate | mycimprovauth AutoUpdate false | Megadja, hogy a hitelesítési fájl frissítése automatikusan megtörténjen-e az újraindítás vagy a frissítés során. |
 | alapértelmezett *kötési Felhasználónév jelszava* | mycimprovauth alapértelmezett 127.0.0.1 root pwd | Beállítja az alapértelmezett példányt a MySQL-t használó hitelesítési fájlban.<br>A jelszó mezőt egyszerű szövegként kell megadni – a MySQL-t tartalmazó hitelesítési fájl jelszava a 64-es alapszintű. |
@@ -81,15 +81,18 @@ A következő táblázat részletesen ismerteti a mycimprovauth használatának 
 
 A következő példában szereplő parancsok egy alapértelmezett felhasználói fiókot határoznak meg a MySQL-kiszolgálóhoz a localhost-on.  A jelszó mezőt egyszerű szövegként kell megadni – a MySQL-t tartalmazó hitelesítési fájl jelszava a 64-es alapszintű.
 
-    sudo su omsagent -c '/opt/microsoft/mysql-cimprov/bin/mycimprovauth default 127.0.0.1 <username> <password>'
-    sudo /opt/omi/bin/service_control restart
+```console
+sudo su omsagent -c '/opt/microsoft/mysql-cimprov/bin/mycimprovauth default 127.0.0.1 <username> <password>'
+sudo /opt/omi/bin/service_control restart
+```
 
 ### <a name="database-permissions-required-for-mysql-performance-counters"></a>A MySQL-teljesítményszámlálók számára szükséges adatbázis-engedélyek
 A MySQL-felhasználónak hozzá kell férnie a következő lekérdezésekhez a MySQL-kiszolgáló teljesítményadatok gyűjtéséhez. 
 
-    SHOW GLOBAL STATUS;
-    SHOW GLOBAL VARIABLES:
-
+```sql
+SHOW GLOBAL STATUS;
+SHOW GLOBAL VARIABLES:
+```
 
 A MySQL-felhasználónak emellett a következő alapértelmezett táblákhoz is meg kell adnia a hozzáférést.
 
@@ -98,9 +101,10 @@ A MySQL-felhasználónak emellett a következő alapértelmezett táblákhoz is 
 
 Ezek a jogosultságok a következő engedélyezési parancsok futtatásával adhatók meg.
 
-    GRANT SELECT ON information_schema.* TO ‘monuser’@’localhost’;
-    GRANT SELECT ON mysql.* TO ‘monuser’@’localhost’;
-
+```sql
+GRANT SELECT ON information_schema.* TO ‘monuser’@’localhost’;
+GRANT SELECT ON mysql.* TO ‘monuser’@’localhost’;
+```
 
 > [!NOTE]
 > Ha engedélyeket szeretne adni egy MySQL-figyelési felhasználónak, az adott felhasználónak rendelkeznie kell a "GRANT Option" jogosultsággal, valamint a megadott jogosultsággal.
@@ -132,12 +136,14 @@ Miután konfigurálta a Linux Log Analytics-ügynökét, hogy adatokat küldjön
 
 ## <a name="apache-http-server"></a>Apache HTTP-kiszolgáló 
 Ha az Apache HTTP-kiszolgáló észlelhető a számítógépen a omsagent csomag telepítésekor, a rendszer automatikusan telepíti az Apache HTTP-kiszolgáló Teljesítményfigyelő szolgáltatóját. Ez a szolgáltató egy Apache-modulra támaszkodik, amelyet be kell tölteni az Apache HTTP-kiszolgálóra a teljesítményadatok elérése érdekében. A modul a következő paranccsal tölthető be:
-```
+
+```console
 sudo /opt/microsoft/apache-cimprov/bin/apache_config.sh -c
 ```
 
 Az Apache monitoring modul eltávolításához futtassa a következő parancsot:
-```
+
+```console
 sudo /opt/microsoft/apache-cimprov/bin/apache_config.sh -u
 ```
 

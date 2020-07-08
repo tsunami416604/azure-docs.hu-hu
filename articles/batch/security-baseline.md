@@ -7,24 +7,24 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: e850f719f64d1d845ca11ccefeefea2c8dc7fa26
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 76312a55262d316c679bde2a69e8b98844addcb0
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195655"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963869"
 ---
 # <a name="azure-security-baseline-for-batch"></a>Azure biztonsági alapkonfiguráció a Batch szolgáltatáshoz
 
 A Batch Azure biztonsági alapkonfigurációja olyan javaslatokat tartalmaz, amelyek segítségével javíthatja az üzemelő példány biztonsági állapotát.
 
-A szolgáltatás alapterve az [Azure Security Benchmark 1,0-es verziójából](https://docs.microsoft.com/azure/security/benchmarks/overview)származik, amely javaslatokat tesz arra vonatkozóan, hogy miként védheti meg felhőalapú megoldásait az Azure-ban az ajánlott eljárásokat ismertető útmutató segítségével.
+A szolgáltatás alapterve az [Azure Security Benchmark 1,0-es verziójából](../security/benchmarks/overview.md)származik, amely javaslatokat tesz arra vonatkozóan, hogy miként védheti meg felhőalapú megoldásait az Azure-ban az ajánlott eljárásokat ismertető útmutató segítségével.
 
-További információ: [Azure Security](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)alapkonfigurációk áttekintése.
+További információ: [Azure Security](../security/benchmarks/security-baselines-overview.md)alapkonfigurációk áttekintése.
 
 ## <a name="network-security"></a>Hálózati biztonság
 
-*További információkért lásd [: biztonsági ellenőrzés: hálózati biztonság](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security).*
+*További információkért lásd [: biztonsági ellenőrzés: hálózati biztonság](../security/benchmarks/security-control-network-security.md).*
 
 ### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1,1: az erőforrások védelme hálózati biztonsági csoportokkal vagy Azure Firewall a Virtual Network
 
@@ -140,7 +140,7 @@ https://docs.microsoft.com/azure/virtual-network/service-tags-overview
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: a hálózati eszközök szabványos biztonsági konfigurációinak fenntartása
 
-**Útmutató**: a Azure batch készlet (ek) hoz tartozó hálózati erőforrások szabványos biztonsági konfigurációinak definiálása és implementálása Azure Policy használatával. Használjon Azure Policy aliasokat a "Microsoft. batch" és a "Microsoft. Network" névterekben, hogy egyéni szabályzatokat hozzon létre a Azure Batch-készletek hálózati konfigurációjának naplózásához vagy érvénybe léptetéséhez.
+**Útmutató**: a Azure batch készlet (ek) hoz tartozó hálózati erőforrások szabványos biztonsági konfigurációinak definiálása és implementálása Azure Policy használatával. Használjon Azure Policy aliasokat a "Microsoft.BatCH" és a "Microsoft. Network" névterekben, hogy egyéni házirendeket hozzon létre a Azure Batch-készletek hálózati konfigurációjának naplózásához vagy érvénybe léptetéséhez.
 
 Azure Policy konfigurálása és kezelése:
 
@@ -188,7 +188,7 @@ Riasztások létrehozása a Azure Monitorban:https://docs.microsoft.com/azure/az
 
 ## <a name="logging-and-monitoring"></a>Naplózás és monitorozás
 
-*További információ [: Security Control: naplózás és figyelés](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring).*
+*További információ [: Security Control: naplózás és figyelés](../security/benchmarks/security-control-logging-monitoring.md).*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2,1: a jóváhagyott idő-szinkronizálási források használata
 
@@ -312,7 +312,7 @@ https://docs.microsoft.com/azure/batch/batch-diagnostics
 
 ## <a name="identity-and-access-control"></a>Identitás- és hozzáférés-vezérlés
 
-*További információ [: Security Control (identitás és Access Control](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)).*
+*További információ [: Security Control (identitás és Access Control](../security/benchmarks/security-control-identity-access-control.md)).*
 
 ### <a name="31-maintain-inventory-of-administrative-accounts"></a>3,1: a rendszergazdai fiókok leltárának fenntartása
 
@@ -510,7 +510,7 @@ https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 ## <a name="data-protection"></a>Adatvédelem
 
-*További információkért lásd [: biztonsági ellenőrzés:](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)adatvédelem.*
+*További információkért lásd [: biztonsági ellenőrzés:](../security/benchmarks/security-control-data-protection.md)adatvédelem.*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: bizalmas információk leltárának fenntartása
 
@@ -656,7 +656,7 @@ https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account
 
 ## <a name="vulnerability-management"></a>Biztonságirés-kezelés
 
-*További információ [: Security Control: sebezhetőségi kezelés](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management).*
+*További információ [: Security Control: sebezhetőségi kezelés](../security/benchmarks/security-control-vulnerability-management.md).*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: automatikus biztonsági rések vizsgálatára szolgáló eszközök futtatása
 
@@ -704,7 +704,7 @@ Ha Rapid7, Qualys vagy bármely más sebezhetőség-kezelési platformra vonatko
 
 ## <a name="inventory-and-asset-management"></a>Leltár-és eszközfelügyelet
 
-*További információkért lásd [: biztonsági vezérlés: leltár és eszközkezelés](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management).*
+*További információkért lásd [: biztonsági vezérlés: leltár és eszközkezelés](../security/benchmarks/security-control-inventory-asset-management.md).*
 
 ### <a name="61-use-azure-asset-discovery"></a>6,1: az Azure Asset Discovery használata
 
@@ -871,11 +871,11 @@ Ez nem alkalmazható Azure Batchre, mert a Azure Batch-készletek felhasználói
 
 ## <a name="secure-configuration"></a>Biztonságos konfiguráció
 
-*További információkért lásd [: biztonság-vezérlés: biztonságos konfiguráció](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration).*
+*További információkért lásd [: biztonság-vezérlés: biztonságos konfiguráció](../security/benchmarks/security-control-secure-configuration.md).*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: biztonságos konfigurációk létrehozása az összes Azure-erőforráshoz
 
-**Útmutató**: Azure Policy aliasok használata a "Microsoft. batch" névtérben egyéni szabályzatok létrehozásához a Azure batch-fiókok és-készletek konfigurációjának naplózásához vagy érvényesítéséhez.
+**Útmutató**: Azure Policy aliasok használata a "Microsoft.BatCH" névtérben egyéni szabályzatok létrehozásához a Azure batch-fiókok és-készletek konfigurációjának naplózásához vagy érvényesítéséhez.
 
 Az elérhető Azure Policy aliasok megtekintése:
 
@@ -958,7 +958,7 @@ https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-rol
 
 ### <a name="77-deploy-system-configuration-management-tools"></a>7,7: rendszerkonfiguráció-felügyeleti eszközök telepítése
 
-**Útmutató**: beépített Azure Policy-definíciók használata a Azure batch kapcsolódó erőforrás-konfigurációk riasztásához, naplózásához és érvényesítéséhez.  Használjon Azure Policy aliasokat a "Microsoft. batch" névtérben, hogy egyéni szabályzatokat hozzon létre a Azure Batch-fiókokhoz és-készletekhez. Emellett dolgozzon ki egy folyamatot és egy folyamatot a házirend-kivételek kezeléséhez.
+**Útmutató**: beépített Azure Policy-definíciók használata a Azure batch kapcsolódó erőforrás-konfigurációk riasztásához, naplózásához és érvényesítéséhez.  Használjon Azure Policy aliasokat a "Microsoft.BatCH" névtérben egyéni szabályzatok létrehozásához a Azure Batch-fiókokhoz és-készletekhez. Emellett dolgozzon ki egy folyamatot és egy folyamatot a házirend-kivételek kezeléséhez.
 
 Azure Policy konfigurálása és kezelése:
 
@@ -979,7 +979,7 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7,9: az Azure-szolgáltatások automatizált konfigurációs figyelésének megvalósítása
 
-**Útmutató**: Azure Policy aliasok használata a "Microsoft. batch" névtérben egyéni szabályzatok létrehozásához a Azure batch példányának naplózásához vagy érvényesítéséhez. A kifejezetten a Azure Batchhoz létrehozott beépített szabályzatokat vagy a Azure Batch által használt erőforrásokat is használhatja, például:
+**Útmutató**: Azure Policy aliasok használata a "Microsoft.BatCH" névtérben egyéni szabályzatok létrehozásához az Azure batch-példány konfigurációjának naplózásához vagy érvényesítéséhez. A kifejezetten a Azure Batchhoz létrehozott beépített szabályzatokat vagy a Azure Batch által használt erőforrásokat is használhatja, például:
 
 - Az alhálózatokat hálózati biztonsági csoporttal kell társítani
 
@@ -1047,7 +1047,7 @@ A hitelesítőadat-olvasó beállítása:https://secdevtools.azurewebsites.net/h
 
 ## <a name="malware-defense"></a>Kártevők elleni védelem
 
-*További információkért lásd [: biztonsági ellenőrzés: kártevők elleni védelem](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense).*
+*További információkért lásd [: biztonsági ellenőrzés: kártevők elleni védelem](../security/benchmarks/security-control-malware-defense.md).*
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8,1: központilag felügyelt kártevő szoftverek használata
 
@@ -1083,7 +1083,7 @@ https://docs.microsoft.com/azure/security/fundamentals/antimalware
 
 ## <a name="data-recovery"></a>Adat-helyreállítás
 
-*További információkért lásd [: biztonsági ellenőrzés: adat-helyreállítás](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery).*
+*További információkért lásd [: biztonsági ellenőrzés: adat-helyreállítás](../security/benchmarks/security-control-data-recovery.md).*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9,1: rendszeres automatizált biztonsági másolatok biztosítása
 
@@ -1143,7 +1143,7 @@ https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell
 
 ## <a name="incident-response"></a>Incidensmegoldás
 
-*További információ [: Security Control: incidens válasza](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response).*
+*További információ [: Security Control: incidens válasza](../security/benchmarks/security-control-incident-response.md).*
 
 ### <a name="101-create-incident-response-guide"></a>10,1: incidens-válasz létrehozási útmutatója
 
@@ -1175,7 +1175,7 @@ Tekintse meg a NIST kiadványát: útmutató az IT-csomagok és-képességek tes
 
 **Felelősség**: ügyfél
 
-### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-nbspfor-security-incidents"></a>10,4: biztonsági incidensek elérhetőségének biztosítása és riasztási &nbsp;értesítések konfigurálása biztonsági incidensekhez
+### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-nbspfor-security-incidents"></a>10,4: biztonsági incidensek elérhetőségének biztosítása és riasztási értesítések konfigurálása &nbsp; biztonsági incidensekhez
 
 **Útmutató**: a Microsoft a biztonsági incidensekkel kapcsolatos kapcsolattartási adatokat arra használja fel, hogy felvegye Önnel a kapcsolatot, ha a Microsoft Security Response Center (MSRC) felfedi, hogy az Ön adatait egy törvénytelen vagy jogosulatlan fél is hozzáférte.
 
@@ -1217,7 +1217,7 @@ https://docs.microsoft.com/azure/security-center/workflow-automation
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Behatolási tesztek és Red Team-gyakorlatok
 
-*További információkért lásd [: biztonsági ellenőrzés: behatolási tesztek és Red Team-gyakorlatok](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
+*További információkért lásd [: biztonsági ellenőrzés: behatolási tesztek és Red Team-gyakorlatok](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md).*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-to-remediate-all-critical-security-findings-within-60-days"></a>11,1: az Azure-erőforrások rendszeres behatolásának tesztelése, valamint az összes kritikus biztonsági vizsgálat 60 napon belüli szervizelésének biztosítása.
 
@@ -1235,5 +1235,5 @@ https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
 ## <a name="next-steps"></a>További lépések
 
-- Lásd az [Azure biztonsági teljesítménytesztét](https://docs.microsoft.com/azure/security/benchmarks/overview)
-- További információ az [Azure biztonsági Alaptervekről](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)
+- Lásd az [Azure biztonsági teljesítménytesztét](../security/benchmarks/overview.md)
+- További információ az [Azure biztonsági Alaptervekről](../security/benchmarks/security-baselines-overview.md)

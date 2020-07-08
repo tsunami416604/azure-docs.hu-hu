@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: 180015a6bab576c02dcfaaea589628e40c6adde4
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 5a867243e57790bf72cef6991d6d8ac06639be49
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82736174"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963920"
 ---
 # <a name="managed-application-metered-billing"></a>Felügyelt alkalmazás mért számlázása 
 
@@ -125,7 +125,7 @@ A támogatási jegy beküldéséhez kövesse az alábbi lépéseket:
 4. A "probléma leírása, amely a legjobban leírja a problémát" területen válassza a **mért számlázás**lehetőséget.
 5. A Next ( **tovább** ) gombra kattintva átirányítjuk a **probléma részletei** lapra, ahol további részleteket adhat meg a hibáról.
 
-További közzétevői támogatási lehetőségekért lásd: [támogatás a kereskedelmi piactér programhoz a partner Centerben](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support).
+További közzétevői támogatási lehetőségekért lásd: [támogatás a kereskedelmi piactér programhoz a partner Centerben](support.md).
 
 ## <a name="next-steps"></a>További lépések
 

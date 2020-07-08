@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 06/10/2020
-ms.openlocfilehash: 6683dd445b4d209a6420c7490216b8e325b34c91
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: 5078e625f86affb8d16ffab538d11b839d2d7bda
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84669970"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965008"
 ---
 # <a name="edit-metadata-module"></a>Metaadat-modul szerkesztése
 
@@ -55,8 +55,8 @@ A metaadatok tipikus változásai a következők lehetnek:
     + Az oszlop típusa és értékei a metaadatok szerkesztése művelet végrehajtása után változnak. Az oszlop adattípusának alaphelyzetbe állításához a metaadatok szerkesztése lehetőséggel bármikor helyreállíthatja az eredeti adattípust.  
 
     > [!NOTE]
-        > A **datetime formátum** a [Python beépített datetime formátumát](https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior)követi.  
-        > Ha bármilyen típusú számot módosít a **datetime** típusra, hagyja üresen a **datetime formátum** mezőt. Jelenleg nem lehet megadnia a célként megadott adatformátumot.
+    > A **datetime formátum** a [Python beépített datetime formátumát](https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior)követi.  
+    > Ha bármilyen típusú számot módosít a **datetime** típusra, hagyja üresen a **datetime formátum** mezőt. Jelenleg nem lehet megadnia a célként megadott adatformátumot.
 
 1. Válassza a **kategorikus** lehetőséget annak megadásához, hogy a kijelölt oszlopokban szereplő értékeket kategóriákként kell kezelni.
 
@@ -97,6 +97,6 @@ A metaadatok tipikus változásai a következők lehetnek:
   
 1. A folyamat elküldése.  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) .

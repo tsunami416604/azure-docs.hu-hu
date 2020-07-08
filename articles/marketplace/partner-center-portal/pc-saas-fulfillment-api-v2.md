@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: dsindona
-ms.openlocfilehash: 7224badd5668ca37ca062867109ca25710eac8e7
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: 1a833f86a0d8de3f5b8c83e899a58fa83f3153c4
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85125158"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963767"
 ---
 # <a name="saas-fulfillment-apis-version-2-in-microsoft-commercial-marketplace"></a>SaaS-teljesítési API-k 2-es verziója a Microsoft kereskedelmi piactéren
 
@@ -39,18 +39,18 @@ Fiók létrehozásához:
 
 Ilyen hívás például az, hogy `https://contoso.com/signup?token=<blob>` az SaaS-ajánlat kezdőlapjának URL-címe a partner Centerben van konfigurálva `https://contoso.com/signup` . Ez a jogkivonat olyan azonosítót biztosít a közzétevőnek, amely egyedileg azonosítja az SaaS-vásárlást és az ügyfelet.
 
->[!Note]
+>[!NOTE]
 >A közzétevő nem kap értesítést az SaaS-vásárlásról, amíg az ügyfél nem indítja el a Microsoft-oldalról a konfigurációs folyamatot.
 
 A Kezdőlap URL-címének nonstop kell lennie, és futnia kell, és készen kell állnia arra, hogy minden alkalommal új hívásokat kapjon a Microsofttól. Ha a Kezdőlap elérhetetlenné válik, az ügyfelek nem regisztrálhatnak az SaaS szolgáltatásra, és nem tudják használni azt.
 
-Ezt követően a *jogkivonatot* vissza kell adni a Microsoftnak a közzétevőtől a [SaaS-feloldási API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#resolve-a-subscription)meghívásával a `x-ms-marketplace-token header` header paraméter értékeként.  Az API-hívás feloldásának eredményeképpen a jogkivonat a SaaS-vásárlás részleteit cseréli, például a vásárlás egyedi AZONOSÍTÓját, a megvásárolt ajánlat AZONOSÍTÓját, a megvásárolt csomag AZONOSÍTÓját stb.
+Ezt követően a *jogkivonatot* vissza kell adni a Microsoftnak a közzétevőtől a [SaaS-feloldási API](#resolve-a-purchased-subscription)meghívásával a `x-ms-marketplace-token header` header paraméter értékeként.  Az API-hívás feloldásának eredményeképpen a jogkivonat a SaaS-vásárlás részleteit cseréli, például a vásárlás egyedi AZONOSÍTÓját, a megvásárolt ajánlat AZONOSÍTÓját, a megvásárolt csomag AZONOSÍTÓját stb.
 
-A kezdőlapon az ügyfélnek be kell jelentkeznie az új vagy meglévő SaaS-fiókba Azure Active Directory (HRE) egyszeri bejelentkezés (SSO) használatával. 
+A kezdőlapon az ügyfélnek be kell jelentkeznie az új vagy meglévő SaaS-fiókba Azure Active Directory (HRE) egyszeri bejelentkezés (SSO) használatával.
 
 A közzétevőnek be kell vezetnie az SSO-bejelentkezést, hogy a Microsoft ehhez a folyamathoz szükséges felhasználói élményt nyújtson.  Győződjön meg arról, hogy a több-bérlős Azure AD-alkalmazást használja, engedélyezze a munkahelyi és iskolai fiókokat, illetve a személyes Microsoft-fiókokat az egyszeri bejelentkezés konfigurálásakor.  Ez a követelmény csak a kezdőlapra vonatkozik, valamint azokra a felhasználókra, akik a Microsoft hitelesítő adataival való bejelentkezéskor átirányítják a SaaS szolgáltatáshoz. A SaaS szolgáltatás összes bejelentkezésére nem vonatkozik.
 
->[!Note]
+> [!NOTE]
 >Ha az SSO-bejelentkezés megköveteli, hogy a rendszergazda engedélyt adjon az alkalmazásnak, a partner Centerben lévő ajánlat leírásának közzé kell tennie, hogy rendszergazdai szintű hozzáférésre van szükség. Ez a [Piactéri minősítési szabályzatoknak](https://docs.microsoft.com/legal/marketplace/certification-policies#10003-authentication-options)való megfelelés.
 
 Miután bejelentkezett, az ügyfélnek el kell végeznie az SaaS-konfigurációt a közzétevő oldalán. Ezután a közzétevőnek meg kell hívnia az [aktiválási előfizetési API](#activate-a-subscription) -t, hogy egy olyan jelet küldjön a piactérnek, amelyen az SaaS-fiók üzembe helyezése befejeződött.
@@ -61,7 +61,7 @@ Ekkor elindul az ügyfél számlázási ciklusa. Ha az előfizetés aktiválása
 
 #### <a name="active-subscribed"></a>Aktív (előfizetett)
 
-Ez az állapot a kiépített SaaS-előfizetés állandó állapota. Miután az [aktiválási API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#activate-a-subscription) -hívást feldolgozzák a Microsoft oldalon, az SaaS-előfizetés feliratkozottként van megjelölve. Az SaaS szolgáltatás most már készen áll arra, hogy az ügyfél felhasználja a kiadó oldalát, és az ügyfél számlázása megtörténik.
+Ez az állapot a kiépített SaaS-előfizetés állandó állapota. Miután az [aktiválási API](#activate-a-subscription) -hívást feldolgozzák a Microsoft oldalon, az SaaS-előfizetés feliratkozottként van megjelölve. Az SaaS szolgáltatás most már készen áll arra, hogy az ügyfél felhasználja a kiadó oldalát, és az ügyfél számlázása megtörténik.
 
 Ha az SaaS-előfizetés már aktív, és az ügyfél úgy dönt, hogy **elindítja az** SaaS-élményt a Azure Portal vagy a M365 felügyeleti központban, a Microsoft a *jogkivonat* -paraméterrel megegyezően hívja meg a **Kezdőlap URL-címét** , ugyanúgy, mint az aktiválási folyamatban.  A közzétevőnek különbséget kell tennie a meglévő SaaS-fiókok új vásárlása és kezelése között, és ennek megfelelően kell kezelnie a Kezdőlap URL-címét.
 
@@ -85,7 +85,7 @@ Csak aktív előfizetés lehet frissítve. Az előfizetés frissítése közben 
 Ebben a folyamatban az ügyfél a M365 felügyeleti központban módosítja az előfizetési tervet vagy a helyek mennyiségét.  
 
 1. A frissítés beírása után a Microsoft meghívja a közzétevő webhook URL-címét, amely a partner Center **kapcsolat webhook** mezőjében van konfigurálva, és megfelelő értéket biztosít a *művelethez* és egyéb releváns paraméterekhez.  
-1. A közzétevő oldalának végre kell hajtania a szükséges módosításokat az SaaS szolgáltatásban, és értesítenie kell a Microsoftot a változás befejezésekor, ha meghívja az [Operation API frissítési állapotát](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#update-the-status-of-an-operation).
+1. A közzétevő oldalának végre kell hajtania a szükséges módosításokat az SaaS szolgáltatásban, és értesítenie kell a Microsoftot a változás befejezésekor, ha meghívja az [Operation API frissítési állapotát](#update-the-status-of-an-operation).
 1. Ha a javítást sikertelen állapottal küldi el a rendszer, akkor a frissítési folyamat nem fejeződik be a Microsoft oldalán.  Az SaaS-előfizetés a meglévő csomaggal és az ülőhelyek mennyiségétől függ.
 
 A piactéren kezdeményezett frissítési forgatókönyv API-hívásainak sorát alább láthatja.
@@ -96,11 +96,11 @@ A piactéren kezdeményezett frissítési forgatókönyv API-hívásainak sorát
 
 Ebben a folyamatban az ügyfél az SaaS-szolgáltatástól vásárolt előfizetési tervet vagy munkaállomások mennyiségét módosítja. 
 
-1. A közzétevő kódjának meg kell hívnia a [módosítási terv API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#change-the-plan-on-the-subscription) -t, és/vagy [módosítania kell a mennyiségi API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#change-the-quantity-on-the-subscription) -t, mielőtt a közzétevő oldalon megtenné a kért változást 
+1. A közzétevő kódjának meg kell hívnia a [módosítási terv API](#change-the-plan-on-the-subscription) -t, és/vagy [módosítania kell a mennyiségi API](#change-the-quantity-of-seats-on-the-saas-subscription) -t, mielőtt a közzétevő oldalon megtenné a kért változást 
 
 1. A Microsoft alkalmazza a módosítást az előfizetésre, majd a **kapcsolaton** keresztül értesíti a közzétevőt, hogy alkalmazza ugyanezt a módosítást.  
 
-1. Ezt követően a közzétevőnek csak akkor kell végrehajtania a szükséges módosításokat az SaaS-előfizetésben, és értesítenie kell a Microsoftot, ha a módosítás a [művelet API frissítési állapotának](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#update-the-status-of-an-operation)meghívásával történik.
+1. Ezt követően a közzétevőnek csak akkor kell végrehajtania a szükséges módosításokat az SaaS-előfizetésben, és értesítenie kell a Microsoftot, ha a módosítás a [művelet API frissítési állapotának](#update-the-status-of-an-operation)meghívásával történik.
 
 Az API-hívások sorozata a közzétevő-oldal kezdeményezett frissítési forgatókönyvhöz.
 
@@ -127,7 +127,7 @@ Ez a művelet azt jelzi, hogy az ügyfél fizetési eszköze újra érvénybe l�
 
 1. A Microsoft meghívja a webhookot egy *műveleti* paraméterrel, amely a *visszaállítás értékre* van beállítva.  
 1. A közzétevő ellenőrzi, hogy az előfizetés teljesen működőképes-e a közzétevő oldalán.
-1. A közzétevő meghívja a [javítási művelet API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#update-the-status-of-an-operation) -ját a sikeres állapottal.  
+1. A közzétevő meghívja a [javítási művelet API](#update-the-status-of-an-operation) -ját a sikeres állapottal.  
 1. Ezután a visszaállított művelet sikeres lesz, és az ügyfél a SaaS-előfizetés után újra lesz számlázva. 
 1. Ha a javítást sikertelen állapottal küldi el, a rendszer nem hajtja végre a visszaállítási folyamatot a Microsoft oldalon. Az előfizetés továbbra is felfüggesztve marad.
 
@@ -170,7 +170,7 @@ A TLS-verzió 1,2-es verziója hamarosan érvénybe lép a HTTPS-kommunikáció 
 
 #### <a name="resolve-a-purchased-subscription"></a>Megvásárolt előfizetés feloldása
 
-A feloldási végpont lehetővé teszi a közzétevő számára, hogy az állandó megvásárolt SaaS-előfizetés-AZONOSÍTÓra és annak részleteire cserélje a Piactéri vásárlási azonosító tokent ( [Ez a](https://review.docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2?branch=pr-en-us-107193#purchased-but-not-yet-activated-pendingfulfillmentstart) *jogkivonat*).
+A feloldási végpont lehetővé teszi, hogy a közzétevő kicserélje a Piactéri vásárlási *token* azonosító tokent (a [megvásárolt, de még nem aktivált](#purchased-but-not-yet-activated-pendingfulfillmentstart)) egy állandó megvásárolt SaaS-előfizetési azonosítóra és annak részleteire.
 
 Ha a rendszer átirányítja az ügyfelet a partner kezdőlapjának URL-címére, a rendszer az ügyfél-azonosító jogkivonatot az URL-hívásban *jogkivonat* -paraméterként adja át. A partnernek a tokent kell használnia, és el kell végeznie a feloldását. Az API feloldása válasz tartalmazza a SaaS-előfizetés AZONOSÍTÓját, valamint a vásárlás egyedi azonosításának egyéb részleteit. A Kezdőlap URL-hívásához megadott *jogkivonat* általában 24 órára érvényes. Ha a kapott *jogkivonat* már lejárt, javasoljuk, hogy a következő útmutatást adja meg a végfelhasználóknak:
 
@@ -178,29 +178,28 @@ Ha a rendszer átirányítja az ügyfelet a partner kezdőlapjának URL-címére
 
 A feloldási API meghívásakor a rendszer az összes támogatott állapotú SaaS-előfizetésre vonatkozó előfizetési adatokat és állapotot ad vissza.
 
-##### <a name="postbrhttpsmarketplaceapimicrosoftcomapisaassubscriptionsresolveapi-versionapiversion"></a>Közzététel<br>`https://marketplaceapi.microsoft.com/api/saas/subscriptions/resolve?api-version=<ApiVersion>`
+##### <a name="posthttpsmarketplaceapimicrosoftcomapisaassubscriptionsresolveapi-versionapiversion"></a>Közzététel`https://marketplaceapi.microsoft.com/api/saas/subscriptions/resolve?api-version=<ApiVersion>`
 
 *Lekérdezési paraméterek:*
 
-|                    |                   |
+|  Paraméter         | Érték            |
 |  ---------------   |  ---------------  |
 |  `ApiVersion`        |  2018-08-31 használata.   |
 
 *Kérelem fejlécei:*
- 
-|                    |                   |
+
+|  Paraméter         | Érték             |
 |  ---------------   |  ---------------  |
 |  `content-type`      | `application/json` |
 |  `x-ms-requestid`    |  Egyedi karakterlánc-érték, amely a kérésnek az ügyféltől való nyomon követésére szolgál, lehetőleg egy GUID-azonosítóval. Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit. |
 |  `x-ms-correlationid` |  Egyedi karakterlánc-érték a művelethez az ügyfélen. Ez a paraméter a kiszolgálói oldalon található eseményekkel összekapcsolja az ügyfél-művelet összes eseményét. Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit.  |
 |  `authorization`     |  Egyedi hozzáférési jogkivonat, amely azonosítja az API-hívást készítő közzétevőt. A formátum az, `"Bearer <accessaccess_token>"` Amikor a közzétevő lekéri a jogkivonat értékét az [Azure ad-alkalmazáson alapuló jogkivonat beszerzése](./pc-saas-registration.md#get-the-token-with-an-http-post)című részben leírtak szerint. |
-|  `x-ms-marketplace-token`  | A piactér-vásárlási azonosító *jogkivonat* paraméter a feloldáshoz.  A rendszer átadja a tokent a Kezdőlap URL-címének hívásakor, ha az ügyfél át lesz irányítva a SaaS-partner webhelyére (például: https://contoso.com/signup?token= <token><authorization_token>). <br> <br>  *Megjegyzés:* A kódolt *jogkivonat* -érték a Kezdőlap URL-címének része, ezért dekódolni kell, mielőtt az API-hívásban paraméterként használni kellene.  <br> <br> Az URL-címben szereplő kódolt karakterlánc például a következő: `contoso.com/signup?token=ab%2Bcd%2Fef` , ahol a jogkivonat `ab%2Bcd%2Fef` .  Ugyanaz a jogkivonat dekódolása a következőket eredményezi:`Ab+cd/ef` |
+|  `x-ms-marketplace-token`  | A piactér-vásárlási azonosító *jogkivonat* paraméter a feloldáshoz.  A rendszer átadja a tokent a Kezdőlap URL-címének hívásakor, ha az ügyfél át lesz irányítva az SaaS-partner webhelyére (például: `https://contoso.com/signup?token=<token><authorization_token>` ). <br> <br>  *Megjegyzés:* A kódolt *jogkivonat* -érték a Kezdőlap URL-címének része, ezért dekódolni kell, mielőtt az API-hívásban paraméterként használni kellene.  <br> <br> Az URL-címben szereplő kódolt karakterlánc például a következő: `contoso.com/signup?token=ab%2Bcd%2Fef` , ahol a jogkivonat `ab%2Bcd%2Fef` .  Ugyanaz a jogkivonat dekódolása a következőket eredményezi:`Ab+cd/ef` |
 | | |
 
 *Reagálási kódok:*
 
-Kód: 200<br>
-Egyedi SaaS-előfizetési azonosítókat ad vissza a megadott érték alapján `x-ms-marketplace-token` .
+Kód: a 200 egyedi SaaS-előfizetési azonosítót ad vissza a megadott érték alapján `x-ms-marketplace-token` .
 
 Példa a válasz törzsére:
 
@@ -249,34 +248,31 @@ Példa a válasz törzsére:
 
 ```
 
-Kód: 400<br>
-Hibás kérelem. `x-ms-marketplace-token`hiányzik, helytelen formátumú, érvénytelen vagy lejárt.
+Kód: 400 hibás kérelem. `x-ms-marketplace-token`hiányzik, helytelen formátumú, érvénytelen vagy lejárt.
 
-Kód: 403<br>
-Tilos. Az engedélyezési jogkivonat érvénytelen, lejárt vagy nincs megadva.  A kérelem egy SaaS-előfizetéshez próbál hozzáférni egy olyan ajánlathoz, amelyet az engedélyezési jogkivonat létrehozásához használt egy másik Azure AD alkalmazás AZONOSÍTÓval közzétettek.
+Kód: 403 Tiltott. Az engedélyezési jogkivonat érvénytelen, lejárt vagy nincs megadva.  A kérelem egy SaaS-előfizetéshez próbál hozzáférni egy olyan ajánlathoz, amelyet az engedélyezési jogkivonat létrehozásához használt egy másik Azure AD alkalmazás AZONOSÍTÓval közzétettek.
 
-Ez a hiba gyakran a [SaaS-regisztráció](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration) helyes végrehajtásának tünete.
+Ez a hiba gyakran a [SaaS-regisztráció](pc-saas-registration.md) helyes végrehajtásának tünete.
 
-Kód: 500<br>
-Belső kiszolgálóhiba.  Próbálja megismételni az API-hívást.  Ha a hiba továbbra is fennáll, forduljon a [Microsoft ügyfélszolgálatához](https://partner.microsoft.com/support/v2/?stage=1).
+Kód: 500 belső kiszolgálóhiba.  Próbálja megismételni az API-hívást.  Ha a hiba továbbra is fennáll, forduljon a [Microsoft ügyfélszolgálatához](https://partner.microsoft.com/support/v2/?stage=1).
 
 #### <a name="activate-a-subscription"></a>Előfizetés aktiválása
 
 Miután a SaaS-fiók konfigurálva van egy végfelhasználó számára, a közzétevőnek meg kell hívnia az előfizetés API aktiválása a Microsoft oldalon.  Az ügyfél számlázása csak akkor történik meg, ha ez az API-hívás sikeres.
 
-##### <a name="postbrhttpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidactivateapi-versionapiversion"></a>Közzététel<br>`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/activate?api-version=<ApiVersion>`
+##### <a name="posthttpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidactivateapi-versionapiversion"></a>Közzététel`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/activate?api-version=<ApiVersion>`
 
 *Lekérdezési paraméterek:*
 
-|             |                   |
+|  Paraméter         | Érték             |
 |  --------   |  ---------------  |
 | `ApiVersion`  |  2018-08-31 használata.   |
-| `subscriptionId` | A megvásárolt SaaS-előfizetés egyedi azonosítója.  Ez az azonosító a piactér engedélyezési jogkivonatának feloldása után érhető el az [API feloldása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#resolve-a-subscription)paranccsal.
+| `subscriptionId` | A megvásárolt SaaS-előfizetés egyedi azonosítója.  Ez az azonosító a piactér engedélyezési jogkivonatának feloldása után érhető el az [API feloldása](#resolve-a-purchased-subscription)paranccsal.
  |
 
 *Kérelem fejlécei:*
 
-|                    |                   |
+|  Paraméter         | Érték             |
 |  ---------------   |  ---------------  |
 | `content-type`       |  `application/json`  |
 | `x-ms-requestid`     |  Egyedi karakterlánc-érték, amely a kérésnek az ügyféltől való nyomon követésére szolgál, lehetőleg egy GUID-azonosítóval.  Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit. |
@@ -294,29 +290,24 @@ Miután a SaaS-fiók konfigurálva van egy végfelhasználó számára, a közz�
 
 *Reagálási kódok:*
 
-Kód: 200 <br/>
-Az előfizetés a Microsoft oldalán előfizetettként lett megjelölve.
+Kód: 200 az előfizetés a Microsoft oldalán előfizetettként van megjelölve.
 
 Ehhez a híváshoz nincs válasz törzs.
 
-Kód: 400 <br>
-Hibás kérelem: az érvényesítés sikertelen volt.
+Kód: 400 hibás kérelem: az érvényesítés nem sikerült.
 
 * `planId`nem létezik a kérelem adattartalmát.
 * `planId`a kérelem adattartalma nem egyezik meg a megvásárolttal.
 * `quantity`a kérelem adattartalma nem egyezik meg a megvásárolttal
 * Az SaaS-előfizetés előfizetett vagy felfüggesztett állapotban van.
 
-Kód: 403 <br>
-Tilos. Az engedélyezési jogkivonat érvénytelen, lejárt vagy nincs megadva. A kérelem egy SaaS-előfizetéshez próbál hozzáférni egy olyan ajánlathoz, amelyet az engedélyezési jogkivonat létrehozásához használt egy másik Azure AD alkalmazás AZONOSÍTÓval közzétettek.
+Kód: 403 Tiltott. Az engedélyezési jogkivonat érvénytelen, lejárt vagy nincs megadva. A kérelem egy SaaS-előfizetéshez próbál hozzáférni egy olyan ajánlathoz, amelyet az engedélyezési jogkivonat létrehozásához használt egy másik Azure AD alkalmazás AZONOSÍTÓval közzétettek.
 
-Ez a hiba gyakran a [SaaS-regisztráció](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration) helyes végrehajtásának tünete.
+Ez a hiba gyakran a [SaaS-regisztráció](pc-saas-registration.md) helyes végrehajtásának tünete.
 
-Kód: 404 <br>
-Nem található. Az SaaS-előfizetés leiratkozott állapotban van.
+A következő kód nem található: 404. Az SaaS-előfizetés leiratkozott állapotban van.
 
-Kód: 500 <br>
-Belső kiszolgálóhiba.  Próbálja megismételni az API-hívást.  Ha a hiba továbbra is fennáll, forduljon a [Microsoft ügyfélszolgálatához](https://partner.microsoft.com/support/v2/?stage=1).
+Kód: 500 belső kiszolgálóhiba.  Próbálja megismételni az API-hívást.  Ha a hiba továbbra is fennáll, forduljon a [Microsoft ügyfélszolgálatához](https://partner.microsoft.com/support/v2/?stage=1).
 
 #### <a name="get-list-of-all-subscriptions"></a>Az összes előfizetés listájának beolvasása
 
@@ -324,18 +315,18 @@ Lekéri az összes megvásárolt SaaS-előfizetés listáját a piactéren a kö
 
 Ez az API többoldalas eredményeket ad vissza. Az oldalméret 100.
 
-##### <a name="getbrhttpsmarketplaceapimicrosoftcomapisaassubscriptionsapi-versionapiversion"></a>Lekérés<br>`https://marketplaceapi.microsoft.com/api/saas/subscriptions?api-version=<ApiVersion>`
+##### <a name="gethttpsmarketplaceapimicrosoftcomapisaassubscriptionsapi-versionapiversion"></a>Get`https://marketplaceapi.microsoft.com/api/saas/subscriptions?api-version=<ApiVersion>`
 
 *Lekérdezési paraméterek:*
 
-|             |                   |
+|  Paraméter         | Érték             |
 |  --------   |  ---------------  |
 | `ApiVersion`  |  2018-08-31 használata.  |
 | `continuationToken`  | Nem kötelező megadni. Az eredmények első oldalának lekéréséhez hagyja üresen a következőt:.  `@nextLink`A következő lap beolvasásához használja a paraméterben visszaadott értéket. |
 
 *Kérelem fejlécei:*
 
-|                    |                   |
+|  Paraméter         | Érték             |
 |  ---------------   |  ---------------  |
 | `content-type`       |  `application/json`  |
 | `x-ms-requestid`     |  Egyedi karakterlánc-érték, amely a kérésnek az ügyféltől való nyomon követésére szolgál, lehetőleg egy GUID-azonosítóval. Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit. |
@@ -344,8 +335,7 @@ Ez az API többoldalas eredményeket ad vissza. Az oldalméret 100.
 
 *Reagálási kódok:*
 
-Kód: 200 <br/>
-A közzétevő engedélyezési jogkivonatának alapján a közzétevő összes ajánlatához tartozó összes meglévő előfizetés listáját adja vissza.
+Kód: 200 a közzétevő engedélyezési jogkivonatának alapján a közzétevő összes ajánlatához tartozó összes meglévő előfizetés listáját adja vissza.
 
 *Példa a válasz törzsére:*
 
@@ -426,30 +416,28 @@ A közzétevő engedélyezési jogkivonatának alapján a közzétevő összes a
 
 Ha nem található megvásárolt SaaS-előfizetés ehhez a közzétevőhöz, a rendszer üres választ ad vissza.
 
-Kód: 403 <br>
-Tilos. Az engedélyezési jogkivonat nem érhető el, érvénytelen vagy lejárt.
+Kód: 403 Tiltott. Az engedélyezési jogkivonat nem érhető el, érvénytelen vagy lejárt.
 
-Ez a hiba gyakran a [SaaS-regisztráció](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration) helyes végrehajtásának tünete. 
+Ez a hiba gyakran a [SaaS-regisztráció](pc-saas-registration.md) helyes végrehajtásának tünete. 
 
-Kód: 500<br>
-Belső kiszolgálóhiba. Próbálja megismételni az API-hívást.  Ha a hiba továbbra is fennáll, forduljon a [Microsoft ügyfélszolgálatához](https://partner.microsoft.com/support/v2/?stage=1).
+Kód: 500 belső kiszolgálóhiba. Próbálja megismételni az API-hívást.  Ha a hiba továbbra is fennáll, forduljon a [Microsoft ügyfélszolgálatához](https://partner.microsoft.com/support/v2/?stage=1).
 
 #### <a name="get-subscription"></a>Előfizetés lekérése
 
 Lekéri a megadott megvásárolt SaaS-előfizetést a piactéren közzétett SaaS-ajánlathoz. Ezzel a hívással lekérheti az adott SaaS-előfizetéshez tartozó összes elérhető információt az azonosítójával, és nem hívja meg az API-t az összes előfizetés listájának beolvasásához.
 
-##### <a name="getbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>Lekérés<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
+##### <a name="get-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>Get`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
 
 *Lekérdezési paraméterek:*
 
-|                    |                   |
+|  Paraméter         | Érték             |
 |  ---------------   |  ---------------  |
 | `ApiVersion`        |   2018-08-31 használata. |
 | `subscriptionId`     |  A megvásárolt SaaS-előfizetés egyedi azonosítója.  Ez az azonosító a piactér engedélyezési jogkivonatának feloldása után érhető el az API feloldása paranccsal. |
 
 *Kérelem fejlécei:*
 
-|                    |                   |
+|  Paraméter         | Érték             |
 |  ---------------   |  ---------------  |
 |  `content-type`      |  `application/json`  |
 |  `x-ms-requestid`    |  Egyedi karakterlánc-érték, amely a kérésnek az ügyféltől való nyomon követésére szolgál, lehetőleg egy GUID-azonosítóval. Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit. |
@@ -458,8 +446,7 @@ Lekéri a megadott megvásárolt SaaS-előfizetést a piactéren közzétett Saa
 
 *Reagálási kódok:*
 
-Kód: 200<br>
-Egy SaaS-előfizetés adatait adja vissza a megadott érték alapján `subscriptionId` .
+Code: 200 egy SaaS-előfizetés részleteit adja vissza a `subscriptionId` megadott érték alapján.
 
 *Példa a válasz törzsére:*
 
@@ -497,16 +484,13 @@ Egy SaaS-előfizetés adatait adja vissza a megadott érték alapján `subscript
 }
 ```
 
-Kód: 403<br>
-Tilos. Az engedélyezési jogkivonat érvénytelen, lejárt, és nincs megadva. A kérelem egy SaaS-előfizetéshez próbál hozzáférni egy olyan ajánlathoz, amelyet a rendszer az engedélyezési jogkivonat létrehozásához használt eltérő Azure AD alkalmazás AZONOSÍTÓval tesz közzé.
+Kód: 403 Tiltott. Az engedélyezési jogkivonat érvénytelen, lejárt, és nincs megadva. A kérelem egy SaaS-előfizetéshez próbál hozzáférni egy olyan ajánlathoz, amelyet a rendszer az engedélyezési jogkivonat létrehozásához használt eltérő Azure AD alkalmazás AZONOSÍTÓval tesz közzé.
 
-Ez a hiba gyakran a [SaaS-regisztráció](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration) helyes végrehajtásának tünete. 
+Ez a hiba gyakran a [SaaS-regisztráció](pc-saas-registration.md) helyes végrehajtásának tünete. 
 
-Kód: 404<br>
-Nem található.  A megadott SaaS-előfizetés `subscriptionId` nem található.
+A következő kód nem található: 404.  A megadott SaaS-előfizetés `subscriptionId` nem található.
 
-Kód: 500<br>
-Belső kiszolgálóhiba.  Próbálja megismételni az API-hívást.  Ha a hiba továbbra is fennáll, forduljon a [Microsoft ügyfélszolgálatához](https://partner.microsoft.com/support/v2/?stage=1).
+Kód: 500 belső kiszolgálóhiba.  Próbálja megismételni az API-hívást.  Ha a hiba továbbra is fennáll, forduljon a [Microsoft ügyfélszolgálatához](https://partner.microsoft.com/support/v2/?stage=1).
 
 #### <a name="list-available-plans"></a>Elérhető csomagok listázása
 
@@ -514,18 +498,18 @@ Az ajánlat adott vásárlása által azonosított SaaS-ajánlat összes csomagj
 
 Ez a hívás az adott ügyfél számára elérhető csomagok listáját adja vissza, a már megvásároltak mellett.  A lista a közzétevő webhelyén a végfelhasználók számára is megjeleníthető.  A végfelhasználó módosíthatja az előfizetési tervet a visszaadott listán szereplő csomagok bármelyikére.  A tervnek a listában nem szereplőre való módosítása sikertelen lesz.
 
-##### <a name="getbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidlistavailableplansapi-versionapiversion"></a>Lekérés<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/listAvailablePlans?api-version=<ApiVersion>`
+##### <a name="get-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidlistavailableplansapi-versionapiversion"></a>Get`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/listAvailablePlans?api-version=<ApiVersion>`
 
 *Lekérdezési paraméterek:*
 
-|                    |                   |
+|  Paraméter         | Érték             |
 |  ---------------   |  ---------------  |
 |  `ApiVersion`        |  2018-08-31 használata.  |
 |  `subscriptionId`    |  A megvásárolt SaaS-előfizetés egyedi azonosítója.  Ez az azonosító a piactér engedélyezési jogkivonatának feloldása után érhető el az API feloldása paranccsal. |
 
 *Kérelem fejlécei:*
 
-|                    |                   |
+|  Paraméter         | Érték             |
 |  ---------------   |  ---------------  |
 |   `content-type`     |  `application/json` |
 |   `x-ms-requestid`   |  Egyedi karakterlánc-érték, amely a kérésnek az ügyféltől való nyomon követésére szolgál, lehetőleg egy GUID-azonosítóval.  Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit. |
@@ -534,8 +518,7 @@ Ez a hívás az adott ügyfél számára elérhető csomagok listáját adja vis
 
 *Reagálási kódok:*
 
-Kód: 200<br>
-Egy meglévő SaaS-előfizetés összes elérhető csomagjának listáját adja vissza, beleértve a már megvásároltat is.
+Kód: a 200 egy meglévő SaaS-előfizetés összes elérhető csomagjának listáját adja vissza, beleértve a már megvásároltat is.
 
 Példa a válasz törzsére:
 
@@ -557,13 +540,11 @@ Példa a válasz törzsére:
 
 Ha `subscriptionId` nem található, az üres válasz törzsét adja vissza.
 
-Kód: 403<br>
-Tilos. Az engedélyezési jogkivonat érvénytelen, lejárt vagy nincs megadva.  Előfordulhat, hogy a kérelem megpróbál hozzáférni egy SaaS-előfizetéshez egy olyan ajánlathoz, amelyet az engedélyezési jogkivonat létrehozásához használt másik Azure AD alkalmazás AZONOSÍTÓval tesznek közzé.
+Kód: 403 Tiltott. Az engedélyezési jogkivonat érvénytelen, lejárt vagy nincs megadva.  Előfordulhat, hogy a kérelem megpróbál hozzáférni egy SaaS-előfizetéshez egy olyan ajánlathoz, amelyet az engedélyezési jogkivonat létrehozásához használt másik Azure AD alkalmazás AZONOSÍTÓval tesznek közzé.
 
-Ez a hiba gyakran a [SaaS-regisztráció](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration) helyes végrehajtásának tünete. 
+Ez a hiba gyakran a [SaaS-regisztráció](pc-saas-registration.md) helyes végrehajtásának tünete. 
 
-Kód: 500<br>
-Belső kiszolgálóhiba.  Próbálja megismételni az API-hívást.  Ha a hiba továbbra is fennáll, forduljon a [Microsoft ügyfélszolgálatához](https://partner.microsoft.com/support/v2/?stage=1).
+Kód: 500 belső kiszolgálóhiba.  Próbálja megismételni az API-hívást.  Ha a hiba továbbra is fennáll, forduljon a [Microsoft ügyfélszolgálatához](https://partner.microsoft.com/support/v2/?stage=1).
 
 #### <a name="change-the-plan-on-the-subscription"></a>Az előfizetés tervének módosítása
 
@@ -571,18 +552,18 @@ Az SaaS-előfizetéshez megvásárolt meglévő csomag frissítése egy új csom
 
 Ezt az API-t csak aktív előfizetések esetében lehet meghívni.  Bármely terv módosítható bármely más meglévő csomagra (nyilvános vagy magánjellegű), de nem saját magára.  A privát csomagok esetében az ügyfél bérlőjét a csomag célközönségének részeként kell meghatározni a partner Centerben.
 
-##### <a name="patchbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>Patch<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
+##### <a name="patch-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>Javítás`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
 
 *Lekérdezési paraméterek:*
 
-|                    |                   |
+|  Paraméter         | Érték             |
 |  ---------------   |  ---------------  |
 |  `ApiVersion`        |  2018-08-31 használata.  |
 | `subscriptionId`     | A megvásárolt SaaS-előfizetés egyedi azonosítója.  Ez az azonosító a piactér engedélyezési jogkivonatának feloldása után érhető el az API feloldása paranccsal. |
 
 *Kérelem fejlécei:*
  
-|                    |                   |
+|  Paraméter         | Érték             |
 |  ---------------   |  ---------------  |
 |  `content-type`      | `application/json`  |
 |  `x-ms-requestid`    | Egyedi karakterlánc-érték, amely a kérésnek az ügyféltől való nyomon követésére szolgál, lehetőleg egy GUID-azonosítóval. Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit.  |
@@ -599,35 +580,30 @@ Ezt az API-t csak aktív előfizetések esetében lehet meghívni.  Bármely ter
 
 *Reagálási kódok:*
 
-Kód: 202<br>
-A terv módosítására irányuló kérést aszinkron módon fogadták el és kezelték.  A partnernek a változási tervre vonatkozó kérelem sikerességének vagy meghibásodásának megállapításához a **művelet-hely URL-címét** kell lekérdezni.  A lekérdezésnek néhány másodpercen belül meg kell történnie, amíg a művelet sikertelen, sikeres vagy ütközési állapotba nem kerül.  A végső műveleti állapotot gyorsan kell visszaadni, de bizonyos esetekben több percet is igénybe vehet.
+Kód: 202 a terv módosítására irányuló kérelem aszinkron módon lett elfogadva és kezelve.  A partnernek a változási tervre vonatkozó kérelem sikerességének vagy meghibásodásának megállapításához a **művelet-hely URL-címét** kell lekérdezni.  A lekérdezésnek néhány másodpercen belül meg kell történnie, amíg a művelet sikertelen, sikeres vagy ütközési állapotba nem kerül.  A végső műveleti állapotot gyorsan kell visszaadni, de bizonyos esetekben több percet is igénybe vehet.
 
 A partner emellett webhook-értesítést is kap, ha a művelet készen áll a Piactéri oldal sikeres befejezésére.  És csak ezután a közzétevőnek kell megváltoztatnia a tervet a közzétevő oldalán.
 
 *Válasz fejlécei:*
 
-|                    |                   |
+|  Paraméter         | Érték             |
 |  ---------------   |  ---------------  |
 |  `Operation-Location`        |  A művelet állapotának beolvasására szolgáló URL-cím.  Például: `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=2018-08-31`. |
 
-Kód: 400<br>
-Hibás kérelem: érvényesítési hibák.
+Kód: 400 hibás kérelem: érvényesítési hibák.
 
 * Az új csomag nem létezik, vagy nem érhető el ehhez az adott SaaS-előfizetéshez.
 * Kísérlet ugyanarra a csomagra való váltásra.
 * Az SaaS-előfizetés állapota nincs előfizetve.
 * A SaaS-előfizetés frissítési művelete nem része a következőnek: `allowedCustomerOperations` .
 
-Kód: 403<br>
-Tilos. Az engedélyezési jogkivonat érvénytelen, lejárt vagy nincs megadva.  A kérelem egy SaaS-előfizetéshez próbál hozzáférni egy olyan ajánlathoz, amelyet a rendszer az engedélyezési jogkivonat létrehozásához használt eltérő Azure AD alkalmazás AZONOSÍTÓval tesz közzé.
+Kód: 403 Tiltott. Az engedélyezési jogkivonat érvénytelen, lejárt vagy nincs megadva.  A kérelem egy SaaS-előfizetéshez próbál hozzáférni egy olyan ajánlathoz, amelyet a rendszer az engedélyezési jogkivonat létrehozásához használt eltérő Azure AD alkalmazás AZONOSÍTÓval tesz közzé.
 
-Ez a hiba gyakran a [SaaS-regisztráció](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration) helyes végrehajtásának tünete.
+Ez a hiba gyakran a [SaaS-regisztráció](pc-saas-registration.md) helyes végrehajtásának tünete.
 
-Kód: 404<br>
-Nem található.  A SaaS-előfizetés `subscriptionId` nem található.
+A következő kód nem található: 404.  A SaaS-előfizetés `subscriptionId` nem található.
 
-Kód: 500<br>
-Belső kiszolgálóhiba.  Próbálja megismételni az API-hívást.  Ha a hiba továbbra is fennáll, forduljon a [Microsoft ügyfélszolgálatához](https://partner.microsoft.com/support/v2/?stage=1).
+Kód: 500 belső kiszolgálóhiba.  Próbálja megismételni az API-hívást.  Ha a hiba továbbra is fennáll, forduljon a [Microsoft ügyfélszolgálatához](https://partner.microsoft.com/support/v2/?stage=1).
 
 >[!NOTE]
 >A csomag vagy az ülések mennyisége egyszerre is módosítható, nem mindkettő.
@@ -641,18 +617,18 @@ A SaaS-előfizetéshez megvásárolt helyek mennyiségének frissítése (növel
 
 Az ülőhelyek mennyisége nem lehet nagyobb, mint a jelenlegi tervben engedélyezett mennyiség.  Ebben az esetben a tervet a mennyiség módosítása előtt módosítani kell.
 
-##### <a name="patchbrhttpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>Patch<br>`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
+##### <a name="patchhttpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>Patch`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
 
 *Lekérdezési paraméterek:*
 
-|                    |                   |
+|  Paraméter         | Érték             |
 |  ---------------   |  ---------------  |
 |  `ApiVersion`        |  2018-08-31 használata.  |
 |  `subscriptionId`     | A megvásárolt SaaS-előfizetés egyedi azonosítója.  Ez az azonosító a piactér engedélyezési jogkivonatának feloldása után érhető el az API feloldása paranccsal.  |
 
 *Kérelem fejlécei:*
  
-|                    |                   |
+|  Paraméter         | Érték             |
 |  ---------------   |  ---------------  |
 |  `content-type`      | `application/json`  |
 |  `x-ms-requestid`    | Egyedi karakterlánc-érték, amely a kérésnek az ügyféltől való nyomon követésére szolgál, lehetőleg egy GUID-azonosítóval.  Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit.  |
@@ -669,19 +645,17 @@ Az ülőhelyek mennyisége nem lehet nagyobb, mint a jelenlegi tervben engedély
 
 *Reagálási kódok:*
 
-Kód: 202<br>
-A mennyiség módosítására irányuló kérelem aszinkron módon lett elfogadva és kezelve. A partnernek a **művelet – hely URL-címével** kell lekérdezni a módosítási mennyiség kérésének sikerességét vagy sikertelenségét.  A lekérdezésnek néhány másodpercen belül meg kell történnie, amíg a művelet sikertelen, sikeres vagy ütközési állapotba nem kerül.  A végső műveleti állapotot gyorsan kell visszaadni, de bizonyos esetekben több percet is igénybe vehet.
+Kód: 202 a mennyiség módosítására irányuló kérelem aszinkron módon lett elfogadva és kezelve. A partnernek a **művelet – hely URL-címével** kell lekérdezni a módosítási mennyiség kérésének sikerességét vagy sikertelenségét.  A lekérdezésnek néhány másodpercen belül meg kell történnie, amíg a művelet sikertelen, sikeres vagy ütközési állapotba nem kerül.  A végső műveleti állapotot gyorsan kell visszaadni, de bizonyos esetekben több percet is igénybe vehet.
 
 A partner emellett webhook-értesítést is kap, ha a művelet készen áll a Piactéri oldal sikeres befejezésére.  És csak ezután a közzétevőnek kell elvégeznie a mennyiség módosítását a közzétevő oldalán.
 
 *Válasz fejlécei:*
 
-|                    |                   |
+|  Paraméter         | Érték             |
 |  ---------------   |  ---------------  |
 |  `Operation-Location`        |  Egy erőforrásra mutató hivatkozás a művelet állapotának lekéréséhez.  Például: `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=2018-08-31`.  |
 
-Kód: 400<br>
-Hibás kérelem: érvényesítési hibák.
+Kód: 400 hibás kérelem: érvényesítési hibák.
 
 * Az új mennyiség nagyobb vagy kisebb, mint a jelenlegi csomag korlátja.
 * Az új mennyiség hiányzik.
@@ -689,16 +663,13 @@ Hibás kérelem: érvényesítési hibák.
 * Az SaaS-előfizetés állapota nincs előfizetve.
 * A SaaS-előfizetés frissítési művelete nem része a következőnek: `allowedCustomerOperations` .
 
-Kód: 403<br>
-Tilos.  Az engedélyezési jogkivonat érvénytelen, lejárt vagy nincs megadva.  A kérelem olyan előfizetéshez próbál hozzáférni, amely nem tartozik az aktuális közzétevőhöz.
+Kód: 403 Tiltott.  Az engedélyezési jogkivonat érvénytelen, lejárt vagy nincs megadva.  A kérelem olyan előfizetéshez próbál hozzáférni, amely nem tartozik az aktuális közzétevőhöz.
 
-Ez a hiba gyakran a [SaaS-regisztráció](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration) helyes végrehajtásának tünete. 
+Ez a hiba gyakran a [SaaS-regisztráció](pc-saas-registration.md) helyes végrehajtásának tünete. 
 
-Kód: 404<br>
-Nem található.  A SaaS-előfizetés `subscriptionId` nem található.
+A következő kód nem található: 404.  A SaaS-előfizetés `subscriptionId` nem található.
 
-Kód: 500<br>
-Belső kiszolgálóhiba.  Próbálja megismételni az API-hívást.  Ha a hiba továbbra is fennáll, forduljon a [Microsoft ügyfélszolgálatához](https://partner.microsoft.com/support/v2/?stage=1).
+Kód: 500 belső kiszolgálóhiba.  Próbálja megismételni az API-hívást.  Ha a hiba továbbra is fennáll, forduljon a [Microsoft ügyfélszolgálatához](https://partner.microsoft.com/support/v2/?stage=1).
 
 >[!Note]
 >Egyszerre csak egy csomag vagy mennyiség módosítható, mindkettő nem lehet egyszerre.
@@ -719,18 +690,18 @@ Ha a következő türelmi időszakon belül megszakít egy előfizetést, a rend
 
 Az ügyfél számlázása akkor történik meg, ha a fenti türelmi időszak után megszakítják az előfizetést.  Ha a lemondás sikeres, az ügyfél azonnal elveszíti a Microsoft oldalán lévő SaaS-előfizetéshez való hozzáférést.
 
-##### <a name="deletebrhttpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>Törlés<br>`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
+##### <a name="deletehttpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>Törlés`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
 
 *Lekérdezési paraméterek:*
 
-|                    |                   |
+|  Paraméter         | Érték             |
 |  ---------------   |  ---------------  |
 |  `ApiVersion`        |  2018-08-31 használata.  |
 |  `subscriptionId`     | A megvásárolt SaaS-előfizetés egyedi azonosítója.  Ez az azonosító a piactér engedélyezési jogkivonatának feloldása után érhető el az API feloldása paranccsal.  |
 
 *Kérelem fejlécei:*
  
-|                    |                   |
+|  Paraméter         | Érték             |
 |  ---------------   |  ---------------  |
 |  `content-type`      | `application/json`  |
 |  `x-ms-requestid`    | Egyedi karakterlánc-érték, amely a kérésnek az ügyféltől való nyomon követésére szolgál, lehetőleg egy GUID-azonosítóval.  Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit.  |
@@ -739,51 +710,46 @@ Az ügyfél számlázása akkor történik meg, ha a fenti türelmi időszak ut�
 
 *Reagálási kódok:*
 
-Kód: 202<br>
-A leiratkozási kérelem elfogadása és kezelése aszinkron módon megtörtént.  A partnernek meg kell kérdezni a **művelet – hely URL-címét** a kérelem sikerességének vagy meghibásodásának megállapításához.  A lekérdezésnek néhány másodpercen belül meg kell történnie, amíg a művelet sikertelen, sikeres vagy ütközési állapotba nem kerül.  A végső műveleti állapotot gyorsan kell visszaadni, de bizonyos esetekben több percet is igénybe vehet.
+Kód: 202 a leiratkozási kérelem elfogadása és kezelése aszinkron módon megtörtént.  A partnernek meg kell kérdezni a **művelet – hely URL-címét** a kérelem sikerességének vagy meghibásodásának megállapításához.  A lekérdezésnek néhány másodpercen belül meg kell történnie, amíg a művelet sikertelen, sikeres vagy ütközési állapotba nem kerül.  A végső műveleti állapotot gyorsan kell visszaadni, de bizonyos esetekben több percet is igénybe vehet.
 
 A partner akkor is bekerül a webhook-értesítésbe, ha a művelet sikeresen befejeződött a piactér oldalán.  És csak ezután a közzétevőnek kell megszüntetnie az előfizetést a közzétevő oldalán.
 
 *Válasz fejlécei:*
 
-|                    |                   |
+|  Paraméter         | Érték             |
 |  ---------------   |  ---------------  |
 |  `Operation-Location`        |  Egy erőforrásra mutató hivatkozás a művelet állapotának lekéréséhez.  Például: `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=2018-08-31`. |
 
-Kód: 400<br>
-Hibás kérelem.  A DELETE nem szerepel a listában ehhez az `allowedCustomerOperations` SaaS-előfizetéshez.
+Kód: 400 hibás kérelem.  A DELETE nem szerepel a listában ehhez az `allowedCustomerOperations` SaaS-előfizetéshez.
 
-Kód: 403<br>
-Tilos.  Az engedélyezési jogkivonat érvénytelen, lejárt vagy nem érhető el. A kérelem egy SaaS-előfizetéshez próbál hozzáférni egy olyan ajánlathoz, amelyet a rendszer az engedélyezési jogkivonat létrehozásához használt eltérő Azure AD alkalmazás AZONOSÍTÓval tesz közzé.
+Kód: 403 Tiltott.  Az engedélyezési jogkivonat érvénytelen, lejárt vagy nem érhető el. A kérelem egy SaaS-előfizetéshez próbál hozzáférni egy olyan ajánlathoz, amelyet a rendszer az engedélyezési jogkivonat létrehozásához használt eltérő Azure AD alkalmazás AZONOSÍTÓval tesz közzé.
 
-Ez a hiba gyakran a [SaaS-regisztráció](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration) helyes végrehajtásának tünete.
+Ez a hiba gyakran a [SaaS-regisztráció](pc-saas-registration.md) helyes végrehajtásának tünete.
 
-Kód: 404<br>
-Nem található.  A SaaS-előfizetés `subscriptionId` nem található.
+A következő kód nem található: 404.  A SaaS-előfizetés `subscriptionId` nem található.
 
-Kód: 500<br>
-Belső kiszolgálóhiba. Próbálja megismételni az API-hívást.  Ha a hiba továbbra is fennáll, forduljon a [Microsoft ügyfélszolgálatához](https://partner.microsoft.com/support/v2/?stage=1).
+Kód: 500 belső kiszolgálóhiba. Próbálja megismételni az API-hívást.  Ha a hiba továbbra is fennáll, forduljon a [Microsoft ügyfélszolgálatához](https://partner.microsoft.com/support/v2/?stage=1).
 
 ### <a name="operations-apis"></a>Operatív API-k
 
 #### <a name="list-outstanding-operations"></a>Függőben lévő műveletek listázása 
 
-A megadott SaaS-előfizetésre vonatkozó függőben lévő műveletek listájának beolvasása.  A visszaadott műveleteket a közzétevőnek kell elfogadnia a [művelet patch API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#update-the-status-of-an-operation)meghívásával.
+A megadott SaaS-előfizetésre vonatkozó függőben lévő műveletek listájának beolvasása.  A visszaadott műveleteket a közzétevőnek kell elfogadnia a [művelet patch API](#update-the-status-of-an-operation)meghívásával.
 
 A rendszer jelenleg csak az **újravisszaállítási műveleteket** adja vissza válaszként ehhez az API-híváshoz.
 
-##### <a name="getbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsapi-versionapiversion"></a>Lekérés<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations?api-version=<ApiVersion>`
+##### <a name="get-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsapi-versionapiversion"></a>Get`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations?api-version=<ApiVersion>`
 
 *Lekérdezési paraméterek:*
 
-|             |        |
+|  Paraméter         | Érték             |
 |  ---------------   |  ---------------  |
 |    `ApiVersion`    |  2018-08-31 használata.         |
 |    `subscriptionId` | A megvásárolt SaaS-előfizetés egyedi azonosítója.  Ez az azonosító a piactér engedélyezési jogkivonatának feloldása után érhető el az API feloldása paranccsal.  |
 
 *Kérelem fejlécei:*
  
-|                    |                   |
+|  Paraméter         | Érték             |
 |  ---------------   |  ---------------  |
 |  `content-type`     |  `application/json` |
 |  `x-ms-requestid`    |  Egyedi karakterlánc-érték, amely a kérésnek az ügyféltől való nyomon követésére szolgál, lehetőleg egy GUID-azonosítóval.  Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit.  |
@@ -792,7 +758,7 @@ A rendszer jelenleg csak az **újravisszaállítási műveleteket** adja vissza 
 
 *Reagálási kódok:*
 
-Kód: 200<br> Visszaállítja a megadott SaaS-előfizetésre vonatkozó függőben lévő visszakapcsolási műveletet.
+Kód: a 200 visszaadja a megadott SaaS-előfizetés függőben lévő visszahívási műveletét.
 
 *Válasz hasznos adat például:*
 
@@ -814,19 +780,15 @@ Kód: 200<br> Visszaállítja a megadott SaaS-előfizetésre vonatkozó függőb
 
 Üres JSON-értéket ad vissza, ha nincs függőben lévő visszaállítási művelet.
 
-Kód: 400<br>
-Hibás kérelem: érvényesítési hibák.
+Kód: 400 hibás kérelem: érvényesítési hibák.
 
-Kód: 403<br>
-Tilos. Az engedélyezési jogkivonat érvénytelen, lejárt vagy nincs megadva.  A kérelem egy SaaS-előfizetéshez próbál hozzáférni egy olyan ajánlathoz, amelyet a rendszer az engedélyezési jogkivonat létrehozásához használt eltérő Azure AD alkalmazás AZONOSÍTÓval tesz közzé.
+Kód: 403 Tiltott. Az engedélyezési jogkivonat érvénytelen, lejárt vagy nincs megadva.  A kérelem egy SaaS-előfizetéshez próbál hozzáférni egy olyan ajánlathoz, amelyet a rendszer az engedélyezési jogkivonat létrehozásához használt eltérő Azure AD alkalmazás AZONOSÍTÓval tesz közzé.
 
-Ez a hiba gyakran a [SaaS-regisztráció](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration) helyes végrehajtásának tünete. 
+Ez a hiba gyakran a [SaaS-regisztráció](pc-saas-registration.md) helyes végrehajtásának tünete. 
 
-Kód: 404<br>
-Nem található.  A SaaS-előfizetés `subscriptionId` nem található.
+A következő kód nem található: 404.  A SaaS-előfizetés `subscriptionId` nem található.
 
-Kód: 500<br>
-Belső kiszolgálóhiba. Próbálja megismételni az API-hívást.  Ha a hiba továbbra is fennáll, forduljon a [Microsoft ügyfélszolgálatához](https://partner.microsoft.com/support/v2/?stage=1).
+Kód: 500 belső kiszolgálóhiba. Próbálja megismételni az API-hívást.  Ha a hiba továbbra is fennáll, forduljon a [Microsoft ügyfélszolgálatához](https://partner.microsoft.com/support/v2/?stage=1).
 
 #### <a name="get-operation-status"></a>Művelet állapotának beolvasása
 
@@ -834,11 +796,11 @@ Lehetővé teszi a közzétevő számára a megadott aszinkron művelet állapot
 
 Az ehhez az `operationId` API-híváshoz a **művelet – hely**, a függőben lévő Operations API-hívás beolvasása, vagy `<id>` egy webhook-hívásban kapott paraméterérték értéke olvasható be.
 
-##### <a name="getbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsoperationidapi-versionapiversion"></a>Lekérés<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`
+##### <a name="get-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsoperationidapi-versionapiversion"></a>Get`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`
 
 *Lekérdezési paraméterek:*
 
-|                    |                   |
+|  Paraméter         | Érték             |
 |  ---------------   |  ---------------  |
 |  `ApiVersion`        |  2018-08-31 használata.  |
 |  `subscriptionId`    |  A megvásárolt SaaS-előfizetés egyedi azonosítója.  Ez az azonosító a piactér engedélyezési jogkivonatának feloldása után érhető el az API feloldása paranccsal. |
@@ -846,16 +808,16 @@ Az ehhez az `operationId` API-híváshoz a **művelet – hely**, a függőben l
 
 *Kérelem fejlécei:*
 
-|                    |                   |
+|  Paraméter         | Érték             |
 |  ---------------   |  ---------------  |
 |  `content-type`      |  `application/json`   |
 |  `x-ms-requestid`    |  Egyedi karakterlánc-érték, amely a kérésnek az ügyféltől való nyomon követésére szolgál, lehetőleg egy GUID-azonosítóval.  Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit. |
 |  `x-ms-correlationid` |  Egyedi karakterlánc-érték a művelethez az ügyfélen.  Ez a paraméter a kiszolgálói oldalon található eseményekkel összekapcsolja az ügyfél-művelet összes eseményét.  Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit.  |
 |  `authorization`     |  Egyedi hozzáférési jogkivonat, amely azonosítja az API-hívást készítő közzétevőt.  A formátum az, `"Bearer <access_token>"` Amikor a közzétevő lekéri a jogkivonat értékét az [Azure ad-alkalmazáson alapuló jogkivonat beszerzése](./pc-saas-registration.md#get-the-token-with-an-http-post)című részben leírtak szerint.  |
 
-*Reagálási kódok:*<br>
+*Reagálási kódok:*
 
-Kód: 200<br> Lekéri a megadott SaaS-művelet részleteit. 
+Code: 200 – a megadott SaaS-művelet részleteinek beolvasása. 
 
 *Válasz hasznos adat például:*
 
@@ -878,19 +840,16 @@ Response body:
 }
 ```
 
-Kód: 403<br>
-Tilos. Az engedélyezési jogkivonat érvénytelen, lejárt vagy nincs megadva.  A kérelem egy SaaS-előfizetéshez próbál hozzáférni egy olyan ajánlathoz, amelyet a rendszer az engedélyezési jogkivonat létrehozásához használt eltérő Azure AD alkalmazás AZONOSÍTÓval tesz közzé.
+Kód: 403 Tiltott. Az engedélyezési jogkivonat érvénytelen, lejárt vagy nincs megadva.  A kérelem egy SaaS-előfizetéshez próbál hozzáférni egy olyan ajánlathoz, amelyet a rendszer az engedélyezési jogkivonat létrehozásához használt eltérő Azure AD alkalmazás AZONOSÍTÓval tesz közzé.
 
-Ez a hiba gyakran a [SaaS-regisztráció](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration) helyes végrehajtásának tünete. 
+Ez a hiba gyakran a [SaaS-regisztráció](pc-saas-registration.md) helyes végrehajtásának tünete. 
 
-Kód: 404<br>
-Nem található.  
+A következő kód nem található: 404.  
 
 * A `subscriptionId` nem található előfizetés.
 * A művelet `operationId` nem található.
 
-Kód: 500<br>
-Belső kiszolgálóhiba.  Próbálja megismételni az API-hívást.  Ha a hiba továbbra is fennáll, forduljon a [Microsoft ügyfélszolgálatához](https://partner.microsoft.com/support/v2/?stage=1).
+Kód: 500 belső kiszolgálóhiba.  Próbálja megismételni az API-hívást.  Ha a hiba továbbra is fennáll, forduljon a [Microsoft ügyfélszolgálatához](https://partner.microsoft.com/support/v2/?stage=1).
 
 #### <a name="update-the-status-of-an-operation"></a>Művelet állapotának frissítése
 
@@ -898,11 +857,11 @@ Egy függőben lévő művelet állapotának frissítése, hogy jelezze a művel
 
 Az ehhez az `operationId` API-híváshoz a **művelet – hely**, a függőben lévő Operations API-hívás vagy a `<id>` webhook-hívásban kapott paraméterérték értéke olvasható be.
 
-##### <a name="patchbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsoperationidapi-versionapiversion"></a>Patch<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`
+##### <a name="patch-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsoperationidapi-versionapiversion"></a>Javítás`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`
 
 *Lekérdezési paraméterek:*
 
-|                    |                   |
+|  Paraméter         | Érték             |
 |  ---------------   |  ---------------  |
 |   `ApiVersion`       |  2018-08-31 használata.  |
 |   `subscriptionId`   |  A megvásárolt SaaS-előfizetés egyedi azonosítója.  Ez az azonosító a piactér engedélyezési jogkivonatának feloldása után érhető el az API feloldása paranccsal.  |
@@ -910,7 +869,7 @@ Az ehhez az `operationId` API-híváshoz a **művelet – hely**, a függőben l
 
 *Kérelem fejlécei:*
 
-|                    |                   |
+|  Paraméter         | Érték             |
 |  ---------------   |  ---------------  |
 |   `content-type`   | `application/json`   |
 |   `x-ms-requestid`   |  Egyedi karakterlánc-érték, amely a kérésnek az ügyféltől való nyomon követésére szolgál, lehetőleg egy GUID-azonosítóval.  Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit. |
@@ -927,25 +886,21 @@ Az ehhez az `operationId` API-híváshoz a **művelet – hely**, a függőben l
 
 *Reagálási kódok:*
 
-Kód: 200<br> Egy műveletnek a partner oldalon való befejezését jelző hívás.  Ez a válasz például megadhatja az ülések vagy a csomagok megváltoztatásának befejezését a közzétevő oldalán.
+Kód: 200 egy műveletnek a partner oldalán való betöltésére irányuló hívás.  Ez a válasz például megadhatja az ülések vagy a csomagok megváltoztatásának befejezését a közzétevő oldalán.
 
-Kód: 403<br>
-Tilos.  Az engedélyezési jogkivonat nem érhető el, érvénytelen vagy lejárt. Előfordulhat, hogy a kérelem olyan előfizetéshez próbál hozzáférni, amely nem tartozik az aktuális közzétevőhöz.
+Kód: 403 Tiltott.  Az engedélyezési jogkivonat nem érhető el, érvénytelen vagy lejárt. Előfordulhat, hogy a kérelem olyan előfizetéshez próbál hozzáférni, amely nem tartozik az aktuális közzétevőhöz.
 Tilos.  Az engedélyezési jogkivonat érvénytelen, lejárt vagy nincs megadva.  A kérelem egy SaaS-előfizetéshez próbál hozzáférni egy olyan ajánlathoz, amelyet a rendszer az engedélyezési jogkivonat létrehozásához használt eltérő Azure AD alkalmazás AZONOSÍTÓval tesz közzé.
 
-Ez a hiba gyakran a [SaaS-regisztráció](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration) helyes végrehajtásának tünete.
+Ez a hiba gyakran a [SaaS-regisztráció](pc-saas-registration.md) helyes végrehajtásának tünete.
 
-Kód: 404<br>
-Nem található.
+A következő kód nem található: 404.
 
 * A `subscriptionId` nem található előfizetés.
 * A művelet `operationId` nem található.
 
-Kód: 409<br>
-Ütközés.  Egy újabb frissítés például már teljesül.
+Kód: 409 ütközés.  Egy újabb frissítés például már teljesül.
 
-Kód: 500<br>
-Belső kiszolgálóhiba.  Próbálja megismételni az API-hívást.  Ha a hiba továbbra is fennáll, forduljon a [Microsoft ügyfélszolgálatához](https://partner.microsoft.com/support/v2/?stage=1).
+Kód: 500 belső kiszolgálóhiba.  Próbálja megismételni az API-hívást.  Ha a hiba továbbra is fennáll, forduljon a [Microsoft ügyfélszolgálatához](https://partner.microsoft.com/support/v2/?stage=1).
 
 ## <a name="implementing-a-webhook-on-the-saas-service"></a>Webhook megvalósítása az SaaS szolgáltatásban
 
@@ -1016,11 +971,11 @@ A *terv módosítása*, a *mennyiség módosítása*és a *leiratkozási* művel
 
 ## <a name="get-support"></a>Támogatás kérése
 
-A kiadói támogatási lehetőségekért lásd: [a kereskedelmi piactér program támogatása a partner Centerben](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support) .
+A kiadói támogatási lehetőségekért lásd: [a kereskedelmi piactér program támogatása a partner Centerben](support.md) .
 
 
 ## <a name="next-steps"></a>További lépések
 
-A piactéren elérhető SaaS-ajánlatok további lehetőségeiért lásd: Marketplace- [mérési szolgáltatás API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/marketplace-metering-service-apis) -k.
+A piactéren elérhető SaaS-ajánlatok további lehetőségeiért lásd: Marketplace- [mérési szolgáltatás API](marketplace-metering-service-apis.md) -k.
 
 Tekintse át és használja a jelen dokumentumban ismertetett API-kra épülő [SaaS SDK](https://github.com/Azure/Microsoft-commercial-marketplace-transactable-SaaS-offer-SDK) -t.

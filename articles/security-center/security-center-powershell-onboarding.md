@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2018
 ms.author: memildin
-ms.openlocfilehash: b471fbb62862cd48ebbb239d65b563aa109ef629
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0ca5cdcb0410d52f40e28c66a839bddcb34cc8a8
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80435480"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963359"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>Azure Security Center bevezetésének automatizálása a PowerShell használatával
 
@@ -45,54 +45,55 @@ Ebben a példában a következő AZONOSÍTÓval rendelkező előfizetések eset�
 
 Ezeket a lépéseket az Security Center-parancsmagok futtatása előtt kell végrehajtani:
 
-1.  Futtassa a PowerShellt rendszergazdaként.
-2.  Futtassa a következő parancsokat a PowerShellben:
+1. Futtassa a PowerShellt rendszergazdaként.
+
+1. Futtassa a következő parancsokat a PowerShellben:
       
-        Set-ExecutionPolicy -ExecutionPolicy AllSigned
-        Install-Module -Name Az.Security -Force
+    ```Set-ExecutionPolicy -ExecutionPolicy AllSigned```
+
+    ```Install-Module -Name Az.Security -Force```
 
 ## <a name="onboard-security-center-using-powershell"></a>Security Center a PowerShell használatával
 
-1.  Regisztrálja előfizetéseit a Security Center erőforrás-szolgáltatónál:
+1. Regisztrálja előfizetéseit a Security Center erőforrás-szolgáltatónál:
 
-        Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
-        Register-AzResourceProvider -ProviderNamespace 'Microsoft.Security' 
+    ```Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"```
 
-2.  Nem kötelező: az előfizetések lefedettségi szintjének (árképzési szint) beállítása (ha nincs meghatározva, az árképzési szint szabad értékre van állítva):
+    ```Register-AzResourceProvider -ProviderNamespace 'Microsoft.Security'```
 
-        Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
-        Set-AzSecurityPricing -Name "default" -PricingTier "Standard"
+1. Nem kötelező: az előfizetések lefedettségi szintjének (árképzési szint) beállítása (ha nincs meghatározva, az árképzési szint szabad értékre van állítva):
 
-3.  Konfiguráljon egy Log Analytics munkaterületet, amelyre az ügynökök jelentést küldenek. Rendelkeznie kell egy már létrehozott Log Analytics-munkaterülettel, amelyet az előfizetés virtuális gépei fognak jelenteni. Több előfizetést is megadhat ugyanahhoz a munkaterülethez. Ha nincs meghatározva, a rendszer az alapértelmezett munkaterületet fogja használni.
+    ```Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"```
 
-        Set-AzSecurityWorkspaceSetting -Name "default" -Scope
-        "/subscriptions/d07c0080-170c-4c24-861d-9c817742786c" -WorkspaceId"/subscriptions/d07c0080-170c-4c24-861d-9c817742786c/resourceGroups/myRg/providers/Microsoft.OperationalInsights/workspaces/myWorkspace"
+    ```Set-AzSecurityPricing -Name "default" -PricingTier "Standard"```
 
-4.  A Log Analytics-ügynök automatikus üzembe helyezése az Azure-beli virtuális gépeken:
+1. Konfiguráljon egy Log Analytics munkaterületet, amelyre az ügynökök jelentést küldenek. Rendelkeznie kell egy már létrehozott Log Analytics-munkaterülettel, amelyet az előfizetés virtuális gépei fognak jelenteni. Több előfizetést is megadhat ugyanahhoz a munkaterülethez. Ha nincs meghatározva, a rendszer az alapértelmezett munkaterületet fogja használni.
+
+    ```Set-AzSecurityWorkspaceSetting -Name "default" -Scope "/subscriptions/d07c0080-170c-4c24-861d-9c817742786c" -WorkspaceId"/subscriptions/d07c0080-170c-4c24-861d-9c817742786c/resourceGroups/myRg/providers/Microsoft.OperationalInsights/workspaces/myWorkspace"```
+
+1. A Log Analytics-ügynök automatikus üzembe helyezése az Azure-beli virtuális gépeken:
     
-        Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
+    ```Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"```
     
-        Set-AzSecurityAutoProvisioningSetting -Name "default" -EnableAutoProvision
+    ```Set-AzSecurityAutoProvisioningSetting -Name "default" -EnableAutoProvision```
 
     > [!NOTE]
     > Javasoljuk, hogy az automatikus kiépítés engedélyezésével győződjön meg arról, hogy az Azure-beli virtuális gépeket a Azure Security Center automatikusan védi.
     >
 
-5.  Nem kötelező: erősen ajánlott megadnia a beépített előfizetések biztonsági kapcsolattartási adatait, amelyeket a rendszer a Security Center által generált riasztások és értesítések címzettjeiként használ:
+1. Nem kötelező: erősen ajánlott megadnia a beépített előfizetések biztonsági kapcsolattartási adatait, amelyeket a rendszer a Security Center által generált riasztások és értesítések címzettjeiként használ:
 
-        Set-AzSecurityContact -Name "default1" -Email "CISO@my-org.com" -Phone "2142754038" -AlertAdmin -NotifyOnAlert 
+    ```Set-AzSecurityContact -Name "default1" -Email "CISO@my-org.com" -Phone "2142754038" -AlertAdmin -NotifyOnAlert```
 
-6.  Az alapértelmezett Security Center házirend-kezdeményezés kiosztása:
+1. Az alapértelmezett Security Center házirend-kezdeményezés kiosztása:
 
-        Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
-        $Policy = Get-AzPolicySetDefinition | where {$_.Properties.displayName -EQ '[Preview]: Enable Monitoring in Azure Security Center'}
-        New-AzPolicyAssignment -Name 'ASC Default <d07c0080-170c-4c24-861d-9c817742786c>' -DisplayName 'Security Center Default <subscription ID>' -PolicySetDefinition $Policy -Scope '/subscriptions/d07c0080-170c-4c24-861d-9c817742786c'
+    ```Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'```
 
-Sikeresen bevezetést Azure Security Center a PowerShell-lel!
+    ```$Policy = Get-AzPolicySetDefinition | where {$_.Properties.displayName -EQ 'Enable Monitoring in Azure Security Center'} New-AzPolicyAssignment -Name 'ASC Default <d07c0080-170c-4c24-861d-9c817742786c>' -DisplayName 'Security Center Default <subscription ID>' -PolicySetDefinition $Policy -Scope '/subscriptions/d07c0080-170c-4c24-861d-9c817742786c'```
+
+Sikeresen előkészítette Azure Security Center a PowerShell-lel.
 
 Ezeket a PowerShell-parancsmagokat az Automation-parancsfájlok segítségével programozott módon is megismételheti az előfizetések és az erőforrások között. Ezzel időt takaríthat meg, és csökkentheti az emberi hiba valószínűségét. A [minta parancsfájl](https://github.com/Microsoft/Azure-Security-Center/blob/master/quickstarts/ASC-Samples.ps1) hivatkozásként használható.
-
-
 
 
 
@@ -100,7 +101,7 @@ Ezeket a PowerShell-parancsmagokat az Automation-parancsfájlok segítségével 
 ## <a name="see-also"></a>Lásd még
 Ha többet szeretne megtudni arról, hogy a PowerShell Hogyan automatizálható a Security Center bevezetésének automatizálásához, tekintse meg a következő cikket:
 
-* [Az. Security](https://docs.microsoft.com/powershell/module/az.security).
+* [Az. Security](https://docs.microsoft.com/powershell/module/az.security)
 
 Ha többet szeretne megtudni a Security Centerről, tekintse meg a következő cikket:
 

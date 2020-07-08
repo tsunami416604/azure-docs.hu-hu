@@ -8,12 +8,12 @@ ms.author: jonfan
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 06/25/2020
-ms.openlocfilehash: df9d1989253bd1e6b168aa00dad941917ca2dfd3
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.openlocfilehash: 9ce807238e1e373701305f8b6bb03451e0202633
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85412481"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964634"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>A Azure Logic Apps díjszabási modellje
 
@@ -49,7 +49,7 @@ Az [ *integrációs szolgáltatási környezet* (ISE)](../logic-apps/connect-vir
 
 * **Fejlesztői** ISE: ez az SKU nem képes felskálázásra, nincs szolgáltatói szerződés (SLA), és nincs közzétett korlát. Ezt az SKU-t csak kísérletezéshez, fejlesztéshez és teszteléshez használja, nem éles környezetben, sem pedig a teljesítmény teszteléséhez.
 
-Az ISE-ben létrehozott és futtatott Logic apps esetén a következő képességekhez [rögzített havi árat](https://azure.microsoft.com/pricing/details/logic-apps) kell fizetnie:
+Az ISE-ben létrehozott és futtatott Logic apps esetén a következő képességekhez [rögzített árat](https://azure.microsoft.com/pricing/details/logic-apps) kell fizetnie (a használat fizetése ellenében):
 
 * [Beépített](../connectors/apis-list.md#built-in) eseményindítók és műveletek
 
@@ -57,7 +57,7 @@ Az ISE-ben létrehozott és futtatott Logic apps esetén a következő képessé
 
 * [Standard szintű](../connectors/apis-list.md#managed-connectors) összekötők és [nagyvállalati](../connectors/apis-list.md#enterprise-connectors) összekötők, amelyekkel tetszőleges számú vállalati kapcsolattal rendelkezhet
 
-   A standard és a vállalati összekötők, amelyek megjelenítik az **ISE** -címkét, UGYANABBAN az ISE-ben futnak, mint a Logic apps. Azok az összekötők, amelyek nem jelenítik meg az ISE-címkét a nyilvános, a "globális", a több-bérlős Logic Apps szolgáltatásban. A rögzített havi díjszabás a több-bérlős szolgáltatásban futó összekötők esetében is érvényes, ha az ISE-ben futó Logic Apps használatával használja őket.
+   A standard és a vállalati összekötők, amelyek megjelenítik az **ISE** -címkét, UGYANABBAN az ISE-ben futnak, mint a Logic apps. Azok az összekötők, amelyek nem jelenítik meg az ISE-címkét a nyilvános, a "globális", a több-bérlős Logic Apps szolgáltatásban. A rögzített díjszabás a több-bérlős szolgáltatásban futó összekötők esetében is érvényes, ha az ISE-ben futó Logic Apps használatával használja őket.
 
 * [Integrációs fiók](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) használata további díjak nélkül, az [ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)alapján:
 

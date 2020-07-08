@@ -13,17 +13,17 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: b7372d1e542c4261e982721386c96a34e4be633e
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: 60d184b3739d05063a0cddd108a2b2d7d49b57d7
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84667430"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85962747"
 ---
-# <a name="register-a-sql-server-vm-in-azure-with-the-sql-vm-resource-provider"></a>SQL Server VM regisztrálása az Azure-ban az SQL VM erőforrás-szolgáltatóval
+# <a name="register-a-sql-server-vm-in-azure-with-the-sql-vm-resource-provider-rp"></a>SQL Server VM regisztrálása az Azure-ban az SQL VM erőforrás-szolgáltatóval (RP)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-Ez a cikk azt ismerteti, hogyan regisztrálhatók a SQL Server virtuális gépek (VM) az Azure-ban az SQL VM erőforrás-szolgáltatóval. Az erőforrás-szolgáltatóval való regisztráció az előfizetésen belül hozza létre az SQL-alapú **virtuális gép** _erőforrását_ , amely a virtuális gép erőforrásának külön erőforrása. A SQL Server VM erőforrás-szolgáltatóból való regisztrációjának törlése eltávolítja az **SQL-alapú virtuális gép** _erőforrását_ , de nem fogja eldobni a tényleges virtuális gépet. 
+Ez a cikk azt ismerteti, hogyan regisztrálhatók a SQL Server virtuális gépek (VM-EK) az Azure-ban az SQL VM erőforrás-szolgáltatóval (RP). Az erőforrás-szolgáltatóval való regisztráció az előfizetésen belül hozza létre az SQL-alapú **virtuális gép** _erőforrását_ , amely a virtuális gép erőforrásának külön erőforrása. A SQL Server VM erőforrás-szolgáltatóból való regisztrációjának törlése eltávolítja az **SQL-alapú virtuális gép** _erőforrását_ , de nem fogja eldobni a tényleges virtuális gépet. 
 
 SQL Server VM Azure Marketplace-rendszerkép üzembe helyezése a Azure Portal használatával automatikusan regisztrálja az SQL Server VM az erőforrás-szolgáltatóval. Ha azonban úgy dönt, hogy egy Azure-beli virtuális gépen telepíti a SQL Servert, vagy egyéni virtuális MEREVLEMEZről szeretne üzembe helyezni egy Azure-beli virtuális gépet, akkor a következő erőforrás-szolgáltatóval kell regisztrálnia a SQL Server VM:
 
@@ -50,7 +50,7 @@ SQL Server VM Azure Marketplace-rendszerkép üzembe helyezése a Azure Portal h
 
    ---
 
-Az SQL VM erőforrás-szolgáltató használatához először [regisztrálnia kell az előfizetést az erőforrás-szolgáltatóval](#register-a-subscription-with-the-resource-provider), amely lehetővé teszi az erőforrás-szolgáltató számára, hogy erőforrásokat hozzon létre az adott előfizetésen belül.
+Az SQL VM erőforrás-szolgáltató használatához először [regisztrálnia kell az előfizetést az erőforrás-szolgáltatóval](#register-subscription-with-rp), amely lehetővé teszi az erőforrás-szolgáltató számára, hogy erőforrásokat hozzon létre az adott előfizetésen belül.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -82,7 +82,7 @@ A SQL Server IaaS-ügynök aktuális módja a PowerShell használatával tekinth
   $sqlvm.SqlManagementType
   ```
 
-## <a name="register-a-subscription-with-the-resource-provider"></a>Előfizetés regisztrálása az erőforrás-szolgáltatónál
+## <a name="register-subscription-with-rp"></a>Előfizetés regisztrálása az RP-vel
 
 A SQL Server VM az SQL VM erőforrás-szolgáltatóval való regisztrálásához először regisztrálnia kell az előfizetést az erőforrás-szolgáltatóval. Ezzel az SQL VM erőforrás-szolgáltató lehetővé teszi, hogy erőforrásokat hozzon létre az előfizetésében.  Ezt a Azure Portal, az Azure CLI vagy a PowerShell használatával teheti meg.
 
@@ -117,7 +117,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 
 ---
 
-## <a name="register-with-the-resource-provider"></a>Regisztráció az erőforrás-szolgáltatónál 
+## <a name="register-with-rp"></a>Regisztrálás az RP-mel
 
 ### <a name="lightweight-management-mode"></a>Könnyűsúlyú felügyeleti mód
 
@@ -223,9 +223,9 @@ Regisztrálja SQL Server 2008 virtuális gépet a PowerShell használatával:
 
 ---
 
-## <a name="upgrade-to-full-management-mode"></a>Frissítés teljes felügyeleti módra 
+## <a name="upgrade-to-full"></a>Frissítés teljesre  
 
-SQL Server a *Lightweight* IaaS bővítménnyel telepített virtuális gépek a Azure Portal, az Azure CLI vagy a PowerShell használatával _teljes mértékben_ frissíthetik a módot. SQL Server a nem _ügynök_ módban lévő virtuális gépek az operációs rendszer Windows 2008 R2 vagy újabb verzióra való frissítése után _teljes egészében_ frissíthetnek. Nem lehetséges a visszalépés – ehhez meg kell [szüntetnie a SQL Server VM regisztrációját](#unregister-from-the-resource-provider) az SQL VM erőforrás-szolgáltatójából. Ezzel a művelettel eltávolítja az SQL-alapú **virtuális gép** _erőforrását_, de nem törli a tényleges virtuális gépet. 
+SQL Server a *Lightweight* IaaS bővítménnyel telepített virtuális gépek a Azure Portal, az Azure CLI vagy a PowerShell használatával _teljes mértékben_ frissíthetik a módot. SQL Server a nem _ügynök_ módban lévő virtuális gépek az operációs rendszer Windows 2008 R2 vagy újabb verzióra való frissítése után _teljes egészében_ frissíthetnek. Nem lehetséges a visszalépés – ehhez meg kell [szüntetnie a SQL Server VM regisztrációját](#unregister-from-rp) az SQL VM erőforrás-szolgáltatójából. Ezzel a művelettel eltávolítja az SQL-alapú **virtuális gép** _erőforrását_, de nem törli a tényleges virtuális gépet. 
 
 A SQL Server IaaS-ügynök aktuális módja a PowerShell használatával tekinthető meg: 
 
@@ -310,7 +310,7 @@ Ellenőrizze az aktuális SQL Server VM regisztrációs állapotot az Azure CLI 
 A hiba azt jelzi, hogy a SQL Server VM nincs regisztrálva az erőforrás-szolgáltatónál. 
 
 
-## <a name="unregister-from-the-resource-provider"></a>Az erőforrás-szolgáltató regisztrációjának törlése
+## <a name="unregister-from-rp"></a>Regisztráció törlése az RP-ből
 
 Ha meg szeretné szüntetni a SQL Server VM regisztrációját az SQL VM erőforrás-szolgáltatóval, törölje az SQL virtuális gép *erőforrását* az Azure Portal vagy az Azure CLI használatával. Az SQL-alapú virtuális gép *erőforrásának* törlése nem törli a SQL Server VM. Azonban körültekintően járjon el, és gondosan kövesse a lépéseket, mert lehetséges, hogy véletlenül törli a virtuális gépet az *erőforrás*eltávolítására tett kísérlet során. 
 
@@ -427,7 +427,7 @@ Igen. A kezelhetőségi mód lightweightről teljesre történő frissítése a 
 
 Nem. A SQL Server IaaS-bővítmény kezelhetőségi módjának lefokozása nem támogatott. A kezelhetőségi mód nem állítható vissza a teljes módból a könnyű vagy nem ügynök módba, és nem lehet leértékelni az egyszerűsített módból az ügynök módba. 
 
-Ha módosítani szeretné a kezelhetőségi módot a teljes kezelhetőséggel, szüntesse meg a SQL Server VM [regisztrációját](#unregister-from-the-resource-provider) az SQL VM erőforrás-szolgáltatóból a SQL Server *erőforrás* eldobásával, majd újból regisztrálja az SQL Server VMt az SQL VM erőforrás-szolgáltatóval egy másik felügyeleti módban.
+Ha módosítani szeretné a kezelhetőségi módot a teljes kezelhetőséggel, szüntesse meg a SQL Server VM [regisztrációját](#unregister-from-rp) az SQL VM erőforrás-szolgáltatóból a SQL Server *erőforrás* eldobásával, majd újból regisztrálja az SQL Server VMt az SQL VM erőforrás-szolgáltatóval egy másik felügyeleti módban.
 
 **Regisztrálhatok az SQL VM erőforrás-szolgáltatóval a Azure Portal?**
 

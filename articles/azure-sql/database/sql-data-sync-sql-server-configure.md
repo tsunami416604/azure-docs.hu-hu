@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 01/14/2019
-ms.openlocfilehash: 609b5903d02e9265e211cf25606ae3852e03e913
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 6138dc06e8ed70ba85f4ccfc3370c044f34bd1f1
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85254021"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963954"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-databases-in-azure-sql-database-and-sql-server"></a>Oktatóanyag: SQL-adatszinkronizálás beállítása Azure SQL Database és SQL Server adatbázisai között
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -55,7 +55,7 @@ PowerShell-példák a SQL-adatszinkronizálás konfigurálásának módjáról: 
 
    Az **adatszinkronizálási csoport létrehozása** lapon módosítsa a következő beállításokat:
 
-   | Beállítás                        | Leírás |
+   | Beállítás                        | Description |
    | ------------------------------ | ------------------------------------------------- |
    | **Szinkronizálási csoport neve** | Adja meg az új szinkronizálási csoport nevét. Ez a név nem azonos az adatbázis nevével. |
    | **Metaadat-adatbázis szinkronizálása** | Válassza az adatbázis létrehozása (javasolt) lehetőséget, vagy egy meglévő adatbázis használatát.<br/><br/>Ha az **új adatbázis**lehetőséget választja, válassza az **új adatbázis létrehozása lehetőséget.** Ezután a **SQL Database** lapon nevezze el és konfigurálja az új adatbázist, és kattintson **az OK gombra**.<br/><br/>Ha a **meglévő adatbázis használata**lehetőséget választja, válassza ki az adatbázist a listából. |
@@ -63,7 +63,7 @@ PowerShell-példák a SQL-adatszinkronizálás konfigurálásának módjáról: 
    | **Ütközés feloldása** | Válassza a **hub Win** vagy a **tag Win**lehetőséget.<br/><br/>A **hub-Win** azt jelenti, hogy ütközések esetén a központi adatbázisban lévő adatai felülírják a tag adatbázisában található ütköző adatforrásokat.<br/><br/>A **tag Win** azt jelenti, hogy ütközések esetén a tag adatbázisában lévő adatai felülírják az ütköző adatforrásokat a központi adatbázisban. |
 
    > [!NOTE]
-   > A Microsoft azt javasolja, hogy hozzon létre egy új, üres adatbázist a **szinkronizálási metaadat-adatbázisként**való használatra. Az adatok szinkronizálása táblákat hoz létre ebben az adatbázisban, és gyakori számítási feladatokat futtat. Ez az adatbázis a kiválasztott régió összes szinkronizálási csoportjának **szinkronizálási metaadat-adatbázisa** , és nem módosítható az adatbázis vagy a neve anélkül, hogy az összes szinkronizálási csoportot és szinkronizálási ügynököt el kellene távolítani a régióból.
+   > A Microsoft azt javasolja, hogy hozzon létre egy új, üres adatbázist a **szinkronizálási metaadat-adatbázisként**való használatra. Az adatok szinkronizálása táblákat hoz létre ebben az adatbázisban, és gyakori számítási feladatokat futtat. Ez az adatbázis a kiválasztott régióban és előfizetésben lévő összes szinkronizálási csoport **szinkronizálási metaadat-adatbázisa** . Az adatbázis vagy a neve nem módosítható a régió összes szinkronizálási csoportjának és szinkronizálási ügynökének eltávolítása nélkül.
 
    Kattintson az **OK gombra** , és várja meg a szinkronizálási csoport létrehozását és üzembe helyezését.
 
@@ -83,7 +83,7 @@ A **tag adatbázisa** szakaszban opcionálisan hozzáadhat egy adatbázist a Azu
 
   A **Azure SQL Database konfigurálása** lapon módosítsa a következő beállításokat:
 
-  | Beállítás                       | Leírás |
+  | Beállítás                       | Description |
   | ----------------------------- | ------------------------------------------------- |
   | **Szinkronizálási tag neve** | Adja meg az új szinkronizálási tag nevét. Ez a név nem azonos az adatbázis nevével. |
   | **Előfizetés** | Válassza ki a társított Azure-előfizetést számlázási célokra. |

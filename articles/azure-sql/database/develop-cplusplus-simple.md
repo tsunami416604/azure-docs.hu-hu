@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/12/2018
-ms.openlocfilehash: 62e3eb73b165a190e9234470471bd699141e8a5f
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 610e21064c26734461ba8fd6639868dc930f926c
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84050491"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963937"
 ---
 # <a name="connect-to-sql-database-using-c-and-c"></a>Kapcsolódás SQL Database C és C++ használatával
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -55,7 +55,7 @@ A [Azure Portal](https://portal.azure.com/)az adatbázis áttekintés szakaszán
 
 ![ODBCConnectionStringProps](./media/develop-cplusplus-simple/dbconnection.png)
 
-Másolja az **ODBC (tartalmazza a Node. js fájlt) [SQL Authentication]** karakterláncot. Ezt a karakterláncot később használjuk a C++ ODBC parancssori tolmácsból való kapcsolódáshoz. Ez a karakterlánc részletes adatokat tartalmaz, például az illesztőprogramot, a kiszolgálót és az egyéb adatbázis-kapcsolati paramétereket.
+Másolja az **ODBC (Node.js) [SQL Authentication]** sztringet tartalmazó tartalmat. Ezt a karakterláncot később használjuk a C++ ODBC parancssori tolmácsból való kapcsolódáshoz. Ez a karakterlánc részletes adatokat tartalmaz, például az illesztőprogramot, a kiszolgálót és az egyéb adatbázis-kapcsolati paramétereket.
 
 ## <a name="step-3--add-your-ip-to-the-firewall"></a><a id="Firewall"></a>3. lépés: az IP-cím hozzáadása a tűzfalhoz
 
@@ -91,12 +91,14 @@ Ebben az oktatóanyagban tegyük fel, hogy Ubuntu 16,04 Linux-disztribúció van
 
 A következő lépésekkel telepítheti az SQL és az ODBC számára szükséges kódtárakat a disztribúcióban:
 
+```console
     sudo su
     sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/mssql-ubuntu-test/ xenial main" > /etc/apt/sources.list.d/mssqlpreview.list'
     sudo apt-key adv --keyserver apt-mo.trafficmanager.net --recv-keys 417A0893
     apt-get update
     apt-get install msodbcsql
     apt-get install unixodbc-dev-utf16 #this step is optional but recommended*
+```
 
 Indítsa el a Visual Studiót. Az eszközök – > lehetőségek – > platformfüggetlen – > Csatlakozáskezelő, vegyen fel egy kapcsolódást a linuxos Box-hoz:
 
@@ -109,11 +111,13 @@ Miután létrejött a kapcsolat az SSH-val, hozzon létre egy üres Project-(Lin
 Ezután hozzáadhat egy [új C-forrásfájlt, és lecserélheti ezt a tartalmat](https://github.com/Microsoft/VCSamples/blob/master/VC2015Samples/ODBC%20database%20sample%20%28linux%29/odbcconnector/odbcconnector.c). Az ODBC API-k SQLAllocHandle, a SQLSetConnectAttr és a SQLDriverConnect használatával inicializálhatja és létrehozhatja a kapcsolatot az adatbázissal.
 A Windows ODBC-mintához hasonlóan a SQLDriverConnect hívást is le kell cserélnie az adatbázis-kapcsolati karakterlánc paraméterei közül a Azure Portal korábban átmásolt adatokból.
 
+```c
      retcode = SQLDriverConnect(
         hdbc, NULL, "Driver=ODBC Driver 13 for SQL"
                     "Server;Server=<yourserver>;Uid=<yourusername>;Pwd=<"
                     "yourpassword>;database=<yourdatabase>",
         SQL_NTS, outstr, sizeof(outstr), &outstrlen, SQL_DRIVER_NOPROMPT);
+```
 
 A fordítás előtt a legutolsó teendő, ha az **ODBC** -t függvénytár-függőségként adja hozzá:
 
@@ -136,7 +140,7 @@ Az ebben a cikkben szereplő összes mintát tartalmazó GetStarted-megoldás me
 * [ODBC C++ Windows-minta](https://github.com/Microsoft/VCSamples/tree/master/VC2015Samples/ODBC%20database%20sample%20%28windows%29), töltse le a Windows C++ ODBC-mintát az Azure SQL-hez való kapcsolódáshoz
 * [ODBC C++ Linux-minta](https://github.com/Microsoft/VCSamples/tree/master/VC2015Samples/ODBC%20database%20sample%20%28linux%29), töltse le a Linux C++ ODBC-mintát az Azure SQL-hez való kapcsolódáshoz
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Tekintse át a [SQL Database fejlesztés áttekintését](develop-overview.md)
 * További információ az [ODBC API-referenciáról](https://docs.microsoft.com/sql/odbc/reference/syntax/odbc-api-reference/)

@@ -7,19 +7,19 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: dd1c4e724e70507816aa4b6ba652adfb998a8cc0
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.openlocfilehash: 0f8078c52945b52a27144c1f73ea4a136bf536d8
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84783401"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963155"
 ---
 # <a name="marketplace-metering-service-authentication-strategies"></a>Marketplace-mérési szolgáltatás hitelesítési stratégiái
 
 A Marketplace-mérési szolgáltatás két hitelesítési stratégiát támogat:
 
-* [Azure AD biztonsági jogkivonat](https://docs.microsoft.com/azure/active-directory/develop/access-tokens)
-* [Felügyelt identitások](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) 
+* [Azure AD biztonsági jogkivonat](../../active-directory/develop/access-tokens.md)
+* [Felügyelt identitások](../../active-directory/managed-identities-azure-resources/overview.md) 
 
 Megmagyarázjuk, hogy mikor és hogyan használhatók a különböző hitelesítési stratégiák az egyéni mérőszámok biztonságos beküldéséhez a piactér-mérési szolgáltatás használatával.
 
@@ -38,7 +38,7 @@ A felügyelt alkalmazási csomaggal rendelkező Azure-alkalmazásokhoz a követk
 
 Az alkalmazás regisztrálását követően programozott módon kérhet Azure AD biztonsági jogkivonatot. A közzétevőnek a tokent kell használnia, és el kell végeznie a feloldását.
 
-További információ ezekről a jogkivonatokról: [Azure Active Directory hozzáférési tokenek](https://docs.microsoft.com/azure/active-directory/develop/access-tokens).
+További információ ezekről a jogkivonatokról: [Azure Active Directory hozzáférési tokenek](../../active-directory/develop/access-tokens.md).
 
 ### <a name="get-a-token-based-on-the-azure-ad-app"></a>Token beszerzése az Azure AD-alkalmazás alapján
 
@@ -106,17 +106,17 @@ Ezzel a módszerrel engedélyezheti, hogy az üzembe helyezett erőforrások ide
 >[!Note]
 >A közzétevőnek biztosítania kell, hogy a használatot kibocsátó erőforrások zárolva legyenek, így nem kerül illetéktelen módosításra.
 
-A felügyelt alkalmazás a Virtual Machinestól a Azure Functionsig különböző típusú erőforrásokat is tartalmazhat.  A különböző szolgáltatások felügyelt identitások használatával történő hitelesítésével kapcsolatos további információkért lásd: [felügyelt identitások használata az Azure-erőforrásokhoz](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview#how-can-i-use-managed-identities-for-azure-resources).
+A felügyelt alkalmazás a Virtual Machinestól a Azure Functionsig különböző típusú erőforrásokat is tartalmazhat.  A különböző szolgáltatások felügyelt identitások használatával történő hitelesítésével kapcsolatos további információkért lásd: [felügyelt identitások használata az Azure-erőforrásokhoz](../../active-directory/managed-identities-azure-resources/overview.md#how-can-i-use-managed-identities-for-azure-resources).
 
 Az alábbi lépéseket követve például Windows rendszerű virtuális gép használatával végezheti el a hitelesítést,
 
 1. Győződjön meg arról, hogy a felügyelt identitás konfigurálva van a metódusok egyikének használatával:
-    * [Azure Portal felhasználói felület](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)
-    * [Parancssori felület](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm)
-    * [PowerShell](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm)
-    * [Azure Resource Manager sablon](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm)
-    * [REST](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-rest-vm#system-assigned-managed-identity)
-    * [Azure SDK-k](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm)
+    * [Azure Portal felhasználói felület](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
+    * [Parancssori felület](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
+    * [PowerShell](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
+    * [Azure Resource Manager sablon](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
+    * [Rest](../../active-directory/managed-identities-azure-resources/qs-configure-rest-vm.md#system-assigned-managed-identity))
+    * [Azure SDK-k](../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
 1. Szerezzen be egy hozzáférési jogkivonatot a piactér-mérési szolgáltatásalkalmazás AZONOSÍTÓjának ( `20e940b3-4c77-4b0b-9a53-9e16a1b010a7` ) a rendszeridentitás, az RDP és a virtuális gép között, nyissa meg a PowerShell-konzolt, és futtassa az alábbi parancsot
 

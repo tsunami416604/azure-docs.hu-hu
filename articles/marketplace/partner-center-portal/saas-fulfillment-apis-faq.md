@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: 1a1ba6f393eba257fcbe2757b8b4bced00bef8fe
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: ba746710227cba95dc4c73a910c22bb6cdaae0ed
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792904"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963750"
 ---
 # <a name="common-questions-about-saas-fulfillment-apis"></a>SaaS-megvalósítási API-kkal kapcsolatos gyakori kérdések
 
@@ -46,11 +46,11 @@ Ha az Azure-felhasználót átirányítják a kezdőlapra, a rendszer tokent ad 
 
 ![Ügyfél-előfizetési folyamat](media/saas-metering-service-integration-flow-a.png)
 
-Az SaaS-ajánlat életciklusában a Transact-forgatókönyvek kezelésére szolgáló API-szerződéssel kapcsolatos további információkért lásd: [SaaS-teljesítési API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2).
+Az SaaS-ajánlat életciklusában a Transact-forgatókönyvek kezelésére szolgáló API-szerződéssel kapcsolatos további információkért lásd: [SaaS-teljesítési API](pc-saas-fulfillment-api-v2.md).
 
 ### <a name="how-do-you-know-the-saas-offer-to-which-the-user-subscribes-in-azure"></a>Honnan tudhatja meg, hogy a felhasználó milyen SaaS-előfizetést kínál az Azure-ban?
 
-Az `Resolve` API-ra adott válasz az SaaS-előfizetéshez kapcsolódó ajánlatot és megtervezési információkat tartalmazza.
+Az API-ra adott válasz az `Resolve` SaaS-előfizetéshez kapcsolódó ajánlatot és megtervezési információkat tartalmazza.
 
 ### <a name="how-can-the-azure-user-change-the-plan-associated-with-this-azure-subscription"></a>Hogyan változtatható meg az Azure-felhasználó az ehhez az Azure-előfizetéshez társított terv?
 

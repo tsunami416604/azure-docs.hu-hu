@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/10/2020
 ms.author: dsindona
-ms.openlocfilehash: 0201ea7b207b7d4c0eaa56de1ee062ea405f0bbb
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 630dceedcac36cf6d37d54612d73fabe676d74f6
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85119239"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963716"
 ---
 # <a name="register-a-saas-application"></a>SaaS-alkalmazás regisztrálása
 
@@ -20,7 +20,7 @@ Ez a cikk azt ismerteti, hogyan regisztrálhat egy SaaS-alkalmazást a Microsoft
 
 Az Azure Marketplace nem kényszeríti az SaaS-szolgáltatás által a végfelhasználók számára használt hitelesítési módszer korlátozásait. Az alábbi folyamat csak az SaaS szolgáltatás Azure piactéren történő hitelesítéséhez szükséges.
 
-További információ az Azure AD-ről (Active Directory): [Mi az a hitelesítés](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios)?
+További információ az Azure AD-ről (Active Directory): [Mi az a hitelesítés](../../active-directory/develop/authentication-scenarios.md)?
 
 ## <a name="register-an-azure-ad-secured-app"></a>Azure AD-védelemmel ellátott alkalmazás regisztrálása
 
@@ -36,10 +36,10 @@ Az Azure AD képességeit felhasználó alkalmazásokat először regisztrálni 
     -   **Név**: adjon meg egy értelmes alkalmazásnév-nevet
     -   **Alkalmazás típusa**:  
         
-        Válassza a **webalkalmazás/API** lehetőséget a biztonságos kiszolgálóra telepített [ügyfélalkalmazások](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application) és [erőforrás-/API-alkalmazások](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#resource-server) számára. Ezzel a beállítással OAuth a bizalmas [webes ügyfelek](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#web-client) és a nyilvános [felhasználói ügynökön alapuló ügyfelek](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#user-agent-based-client).
+        Válassza ki a **webalkalmazást/API** -t az [ügyfélalkalmazások](../../active-directory/develop/active-directory-dev-glossary.md#client-application)számára), valamint az [erőforrás-/API-alkalmazásokat](../../active-directory/develop/active-directory-dev-glossary.md#resource-server), amelyek a biztonságos kiszolgálóra vannak telepítve. Ez a beállítás a bizalmas [webes ügyfelek](../../active-directory/develop/active-directory-dev-glossary.md#web-client)OAuth, valamint a nyilvános, [felhasználói ügynökön alapuló ügyfelek](../../active-directory/develop/active-directory-dev-glossary.md#user-agent-based-client)esetében használatos.
         Egyazon alkalmazás az ügyfelet és az erőforrást/API-t is elérhetővé teheti.
 
-        A webalkalmazások konkrét példái között tekintse meg az [Azure ad fejlesztői útmutató](https://docs.microsoft.com/azure/active-directory/develop/)első [lépések](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) szakaszában elérhető gyors útmutatókat.
+        A webalkalmazások konkrét példái között tekintse meg az [Azure ad fejlesztői útmutató](../../active-directory/develop/index.yml)első [lépések](../../active-directory/develop/quickstart-create-new-tenant.md) szakaszában elérhető gyors útmutatókat.
 
 5. Ha elkészült, kattintson a **regisztráció**gombra.  Az Azure AD egy egyedi *alkalmazás-azonosítót* rendel az új alkalmazáshoz. Javasoljuk, hogy regisztráljon egy olyan alkalmazást, amely csak az API-t és egyetlen bérlőt is elér.
 
@@ -54,7 +54,7 @@ Az **Azure ad-alkalmazás azonosítója** a KÖZZÉTEVŐ-azonosítóhoz van tár
 
 Az alkalmazás regisztrálását követően programozott módon kérheti le a közzétevő engedélyezési jogkivonatát (Azure AD-hozzáférési jogkivonat az Azure AD v1-végpont használatával). A közzétevőnek ezt a jogkivonatot kell használnia a különböző SaaS-teljesítési API-k meghívásakor. Ez a jogkivonat csak egy órára érvényes. 
 
-További információ ezekről a jogkivonatokról: [Azure Active Directory hozzáférési tokenek](https://docs.microsoft.com/azure/active-directory/develop/access-tokens).  Vegye figyelembe, hogy a folyamat a v1 végponti tokent használja.
+További információ ezekről a jogkivonatokról: [Azure Active Directory hozzáférési tokenek](../../active-directory/develop/access-tokens.md).  Vegye figyelembe, hogy a folyamat a v1 végponti tokent használja.
 
 ### <a name="get-the-token-with-an-http-post"></a>A token lekérése HTTP-BEJEGYZÉSsel
 

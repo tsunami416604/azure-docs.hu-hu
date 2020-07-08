@@ -4,12 +4,12 @@ description: Ismerje meg a Batch-feladatok és-feladatok kimeneti adatainak meg�
 ms.topic: how-to
 ms.date: 11/14/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 492de237acdf2d6d42f27638bac3adc0f6549828
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 4ebe0b6d57225eff9f3f1251d5e491c95e9b7ffc
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726298"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965110"
 ---
 # <a name="persist-job-and-task-output"></a>Feladatok és tevékenységek kimenetének megőrzése
 
@@ -35,7 +35,7 @@ Az alábbi szakaszok röviden leírják az egyes megközelítéseket, valamint a
 
 ### <a name="use-the-batch-service-api"></a>A Batch szolgáltatás API használata
 
-A Batch szolgáltatás támogatja a kimeneti fájlok megadását az Azure Storage-ban a feladatok adataihoz, amikor [felvesz egy feladatot](https://docs.microsoft.com/rest/api/batchservice/add-a-task-to-a-job) egy feladathoz, vagy feladathoz adott [gyűjteményt ad hozzá](https://docs.microsoft.com/rest/api/batchservice/add-a-collection-of-tasks-to-a-job).
+A Batch szolgáltatás támogatja a kimeneti fájlok megadását az Azure Storage-ban a feladatok adataihoz, amikor [felvesz egy feladatot](/rest/api/batchservice/add-a-task-to-a-job) egy feladathoz, vagy feladathoz adott [gyűjteményt ad hozzá](/rest/api/batchservice/add-a-collection-of-tasks-to-a-job).
 
 A feladatok kimenetének a Batch szolgáltatás API-val való megőrzésével kapcsolatos további információkért lásd: tevékenységadatok megőrzése az [Azure Storage-ban a Batch szolgáltatás API-val](batch-task-output-files.md).
 
@@ -75,7 +75,7 @@ A Batch-megoldás tervezésekor vegye figyelembe a feladatok és a tevékenység
 
 - **Kimenet megtekintése**: ha a Azure Portal egy batch-feladatra navigál, és kiválasztja a **fájlok a csomóponton**lehetőséget, akkor a feladathoz tartozó összes fájl, nem csak a kívánt kimeneti fájlok jelennek meg. A számítási csomópontokon lévő fájlok csak akkor érhetők el, ha a csomópont létezik, és csak a feladathoz beállított megőrzési időn belül van. Az Azure Storage-ban megőrzött tevékenység-kimenet megtekintéséhez használhatja a Azure Portal vagy egy Azure Storage-ügyfélalkalmazás, például a [Azure Storage Explorer][storage_explorer]. Ha meg szeretné tekinteni a kimeneti adatokat az Azure Storage-ban a portálon vagy egy másik eszközön, ismernie kell a fájl helyét, és közvetlenül hozzá kell navigálnia.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerkedjen meg a Batch szolgáltatás API új funkcióival, hogy a Batch szolgáltatás API-val megőrzött tevékenységadatok maradjanak a [feladat adataiban az Azure Storage](batch-task-output-files.md)-ban.
 - Ismerje meg, hogyan használható a Batch file Conventions Library for .NET a [feladat-és tevékenységadatok megőrzése az Azure Storage-ban a .net-hez készült batch file Conventions Library](batch-task-output-file-conventions.md)használatával.

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: b-juche
-ms.openlocfilehash: 825a5486672313f185af4e8656b4bb92260d811b
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: 35800ef95e78a64d7aced13f496ec35d9fe60320
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85483567"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964600"
 ---
 # <a name="develop-for-azure-netapp-files-with-rest-api"></a>Fejlesztés az Azure NetApp Filesra a REST API-val 
 
@@ -38,19 +38,23 @@ A Azure NetApp Files REST API specifikációját a [githubon](https://github.com
 2. Egyszerű szolgáltatásnév létrehozása a Azure Active Directoryban (Azure AD):
    1. Ellenőrizze, hogy rendelkezik-e [megfelelő engedélyekkel](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions).
 
-   2. Adja meg az alábbi parancsot az Azure CLI-ben:  
-
-           az ad sp create-for-rbac --name $YOURSPNAMEGOESHERE
+   2. Adja meg az alábbi parancsot az Azure CLI-ben: 
+    
+        ```azurecli
+        az ad sp create-for-rbac --name $YOURSPNAMEGOESHERE
+        ```
 
       A parancs kimenete az alábbi példához hasonló:  
 
-           { 
-               "appId": "appIDgoeshere", 
-               "displayName": "APPNAME", 
-               "name": "http://APPNAME", 
-               "password": "supersecretpassword", 
-               "tenant": "tenantIDgoeshere" 
-           } 
+        ```output
+        { 
+            "appId": "appIDgoeshere", 
+            "displayName": "APPNAME", 
+            "name": "http://APPNAME", 
+            "password": "supersecretpassword", 
+            "tenant": "tenantIDgoeshere" 
+        } 
+        ```
 
       Tartsa meg a parancs kimenetét.  Szüksége lesz a `appId` , a `password` és az `tenant` értékekre. 
 
@@ -59,19 +63,23 @@ A Azure NetApp Files REST API specifikációját a [githubon](https://github.com
     A cikkben szereplő példák a cURL használatát mutatják be. Számos olyan API-eszközt is használhat, mint például a [Poster](https://www.getpostman.com/), az [álmatlanság](https://insomnia.rest/)és a [Paw](https://paw.cloud/).  
 
     Cserélje le az alábbi példában szereplő változókat a fenti 2. lépésből származó parancs kimenetére. 
-
-        curl -X POST -d 'grant_type=client_credentials&client_id=[APP_ID]&client_secret=[PASSWORD]&resource=https%3A%2F%2Fmanagement.azure.com%2F' https://login.microsoftonline.com/[TENANT_ID]/oauth2/token
+    
+    ```azurecli
+    curl -X POST -d 'grant_type=client_credentials&client_id=[APP_ID]&client_secret=[PASSWORD]&resource=https%3A%2F%2Fmanagement.azure.com%2F' https://login.microsoftonline.com/[TENANT_ID]/oauth2/token
+    ```
 
     A kimenet a következő példához hasonló hozzáférési jogkivonatot biztosít:
 
-        eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Im5iQ3dXMTF3M1hrQi14VWFYd0tSU0xqTUhHUSIsImtpZCI6Im5iQ3dXMTF3M1hrQi14VWFYd0tSU0xqTUhHUSJ9
+    `eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Im5iQ3dXMTF3M1hrQi14VWFYd0tSU0xqTUhHUSIsImtpZCI6Im5iQ3dXMTF3M1hrQi14VWFYd0tSU0xqTUhHUSJ9`
 
     A megjelenített jogkivonat 3600 másodpercig érvényes. Ezt követően új jogkivonatot kell kérnie. 
     Mentse a jogkivonatot egy szövegszerkesztőbe.  A következő lépéshez szüksége lesz rá.
 
 4. A REST APIhoz való hozzáférésének ellenőrzéséhez küldje el a tesztet, és adja meg a jogkivonatot:
 
-        curl -X GET -H "Authorization: Bearer [TOKEN]" -H "Content-Type: application/json" https://management.azure.com/subscriptions/[SUBSCRIPTION_ID]/providers/Microsoft.Web/sites?api-version=2019-11-01
+    ```azurecli
+    curl -X GET -H "Authorization: Bearer [TOKEN]" -H "Content-Type: application/json" https://management.azure.com/subscriptions/[SUBSCRIPTION_ID]/providers/Microsoft.Web/sites?api-version=2019-11-01
+    ```
 
 ## <a name="examples-using-the-api"></a>Az API-t használó példák  
 
@@ -85,86 +93,110 @@ A `SUBIDGOESHERE` `RESOURCEGROUPGOESHERE` következő példákban szereplő ért
 
 A GET kérelem használatával lekérdezheti Azure NetApp Files objektumait egy előfizetésben, az alábbi példákban láthatók: 
 
-        #get NetApp accounts 
-        curl -X GET -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts?api-version=2019-11-01
+```azurecli
+#get NetApp accounts 
+curl -X GET -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts?api-version=2019-11-01
+```
 
-        #get capacity pools for NetApp account 
-        curl -X GET -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts/NETAPPACCOUNTGOESHERE/capacityPools?api-version=2019-11-01
+```azurecli
+#get capacity pools for NetApp account 
+curl -X GET -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts/NETAPPACCOUNTGOESHERE/capacityPools?api-version=2019-11-01
+```
 
-        #get volumes in NetApp account & capacity pool 
-        curl -X GET -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts/NETAPPACCOUNTGOESHERE/capacityPools/CAPACITYPOOLGOESHERE/volumes?api-version=2019-11-01
+```azurecli
+#get volumes in NetApp account & capacity pool 
+curl -X GET -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts/NETAPPACCOUNTGOESHERE/capacityPools/CAPACITYPOOLGOESHERE/volumes?api-version=2019-11-01
+```
 
-        #get snapshots for a volume 
-        curl -X GET -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts/NETAPPACCOUNTGOESHERE/capacityPools/CAPACITYPOOLGOESHERE/volumes/VOLUMEGOESHERE/snapshots?api-version=2019-11-01
+```azurecli
+#get snapshots for a volume 
+curl -X GET -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts/NETAPPACCOUNTGOESHERE/capacityPools/CAPACITYPOOLGOESHERE/volumes/VOLUMEGOESHERE/snapshots?api-version=2019-11-01
+```
 
 ### <a name="put-request-examples"></a>Példák PUT-kérelemre
 
 A PUT-kérelem használatával új objektumokat hozhat létre a Azure NetApp Filesban, az alábbi példáknak megfelelően. A PUT kérelem törzse tartalmazhatja a módosítások JSON formátumú adatát is. A curl-parancsnak szövegfájlként vagy hivatkozásként kell szerepelnie. Ha fájlba szeretné hivatkozni a törzsre, mentse a JSON-példát egy fájlba, és adja hozzá `-d @<filename>` a curl parancshoz.
 
-        #create a NetApp account  
-        curl -d @<filename> -X PUT -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts/NETAPPACCOUNTGOESHERE?api-version=2019-11-01
+```azurecli
+#create a NetApp account  
+curl -d @<filename> -X PUT -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts/NETAPPACCOUNTGOESHERE?api-version=2019-11-01
+```
 
-        #create a capacity pool  
-        curl -d @<filename> -X PUT -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts/NETAPPACCOUNTGOESHERE/capacityPools/CAPACITYPOOLGOESHERE?api-version=2019-11-01
+```azurecli
+#create a capacity pool  
+curl -d @<filename> -X PUT -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts/NETAPPACCOUNTGOESHERE/capacityPools/CAPACITYPOOLGOESHERE?api-version=2019-11-01
+```
 
-        #create a volume  
-        curl -d @<filename> -X PUT -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts/NETAPPACCOUNTGOESHERE/capacityPools/CAPACITYPOOLGOESHERE/volumes/MYNEWVOLUME?api-version=2019-11-01
+```azurecli
+#create a volume  
+curl -d @<filename> -X PUT -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts/NETAPPACCOUNTGOESHERE/capacityPools/CAPACITYPOOLGOESHERE/volumes/MYNEWVOLUME?api-version=2019-11-01
+```
 
-        #create a volume snapshot  
-        curl -d @<filename> -X PUT -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts/NETAPPACCOUNTGOESHERE/capacityPools/CAPACITYPOOLGOESHERE/volumes/MYNEWVOLUME/Snapshots/SNAPNAME?api-version=2019-11-01
+```azurecli
+ #create a volume snapshot  
+curl -d @<filename> -X PUT -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts/NETAPPACCOUNTGOESHERE/capacityPools/CAPACITYPOOLGOESHERE/volumes/MYNEWVOLUME/Snapshots/SNAPNAME?api-version=2019-11-01
+```
 
 ### <a name="json-examples"></a>JSON-példák
 
 Az alábbi példa bemutatja, hogyan hozhat létre egy NetApp-fiókot:
 
-    { 
-        "name": "MYNETAPPACCOUNT", 
-        "type": "Microsoft.NetApp/netAppAccounts", 
-        "location": "westus2", 
-        "properties": { 
-            "name": "MYNETAPPACCOUNT" 
-        }
-    } 
+```json
+{ 
+    "name": "MYNETAPPACCOUNT", 
+    "type": "Microsoft.NetApp/netAppAccounts", 
+    "location": "westus2", 
+    "properties": { 
+        "name": "MYNETAPPACCOUNT" 
+    }
+} 
+```
 
 Az alábbi példa bemutatja, hogyan hozhat létre egy kapacitás-készletet: 
 
-    {
-        "name": "MYNETAPPACCOUNT/POOLNAME",
-        "type": "Microsoft.NetApp/netAppAccounts/capacityPools",
-        "location": "westus2",
-        "properties": {
-            "name": "POOLNAME",
-            "size": "4398046511104",
-            "serviceLevel": "Premium"
-        }
+```json
+{
+    "name": "MYNETAPPACCOUNT/POOLNAME",
+    "type": "Microsoft.NetApp/netAppAccounts/capacityPools",
+    "location": "westus2",
+    "properties": {
+        "name": "POOLNAME",
+        "size": "4398046511104",
+        "serviceLevel": "Premium"
     }
+}
+```
 
 Az alábbi példa bemutatja, hogyan hozhat létre új kötetet. (A kötethez tartozó alapértelmezett protokoll a NFSV3.) 
 
-    {
-        "name": "MYNEWVOLUME",
-        "type": "Microsoft.NetApp/netAppAccounts/capacityPools/volumes",
-        "location": "westus2",
-        "properties": {
-            "serviceLevel": "Premium",
-            "usageThreshold": "322122547200",
-            "creationToken": "MY-FILEPATH",
-            "snapshotId": "",
-            "subnetId": "/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.Network/virtualNetworks/VNETGOESHERE/subnets/MYDELEGATEDSUBNET.sn"
-            }
-    }
+```json
+{
+    "name": "MYNEWVOLUME",
+    "type": "Microsoft.NetApp/netAppAccounts/capacityPools/volumes",
+    "location": "westus2",
+    "properties": {
+        "serviceLevel": "Premium",
+        "usageThreshold": "322122547200",
+        "creationToken": "MY-FILEPATH",
+        "snapshotId": "",
+        "subnetId": "/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.Network/virtualNetworks/VNETGOESHERE/subnets/MYDELEGATEDSUBNET.sn"
+         }
+}
+```
 
 Az alábbi példa bemutatja, hogyan hozhat létre egy kötet pillanatképét: 
 
-    {
-        "name": "apitest2/apiPool01/apiVol01/snap02",
-        "type": "Microsoft.NetApp/netAppAccounts/capacityPools/Volumes/Snapshots",
-        "location": "westus2",
-        "properties": {
-            "name": "snap02",
-            "fileSystemId": "0168704a-bbec-da81-2c29-503825fe7420"
-        }
+```json
+{
+    "name": "apitest2/apiPool01/apiVol01/snap02",
+    "type": "Microsoft.NetApp/netAppAccounts/capacityPools/Volumes/Snapshots",
+    "location": "westus2",
+    "properties": {
+         "name": "snap02",
+        "fileSystemId": "0168704a-bbec-da81-2c29-503825fe7420"
     }
+}
+```
 
 > [!NOTE] 
 > Meg kell adnia `fileSystemId` egy pillanatkép létrehozásához.  Az értéket lekérheti a `fileSystemId` Get kéréssel egy kötetre. 

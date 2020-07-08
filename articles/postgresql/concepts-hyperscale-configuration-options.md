@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 4/6/2020
-ms.openlocfilehash: a2c376ec2bd1f03b626c11b0d6a6c3850c9ef8c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 7/1/2020
+ms.openlocfilehash: 8dc70eaeb9e2c2f5d4cdfef37619e4b04217782e
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80804588"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964515"
 ---
 # <a name="azure-database-for-postgresql--hyperscale-citus-configuration-options"></a>Azure Database for PostgreSQL – nagy kapacitású (Citus) konfigurációs beállítások
 
@@ -20,7 +20,7 @@ ms.locfileid: "80804588"
  
 A számítási és tárolási beállításokat a munkavégző csomópontok és a nagy kapacitású-(Citus-) kiszolgálócsoport koordinátor csomópontja egymástól függetlenül is kiválaszthatja.  A számítási erőforrások virtuális mag-ként vannak megadva, amely az alapul szolgáló hardver logikai PROCESSZORát jelöli. A kiépítés tárolási mérete a nagy kapacitású-(Citus-) kiszolgálócsoport koordinátora és munkavégző csomópontjai számára elérhető kapacitásra utal. A tároló tartalmazza az adatbázisfájlok, az ideiglenes fájlok, a tranzakciós naplók és a postgres-kiszolgáló naplóit.
  
-|                       | Munkavégző csomópont           | Koordinátor csomópont      |
+| Erőforrás              | Munkavégző csomópont           | Koordinátor csomópont      |
 |-----------------------|-----------------------|-----------------------|
 | Számítás, virtuális mag       | 4, 8, 16, 32, 64      | 4, 8, 16, 32, 64      |
 | Memória/virtuális mag, GiB | 8                     | 4                     |
@@ -73,7 +73,7 @@ A teljes nagy kapacitású (Citus) fürt esetében az összesített IOPS a köve
 ## <a name="regions"></a>Régiók
 A nagy kapacitású-(Citus-) kiszolgálócsoportok a következő Azure-régiókban érhetők el:
 
-* Amerika: 
+* Amerika
     * Közép-Kanada
     * USA középső régiója
     * USA keleti régiója
@@ -91,6 +91,33 @@ A nagy kapacitású-(Citus-) kiszolgálócsoportok a következő Azure-régiókb
     * Nyugat-Európa
 
 Előfordulhat, hogy a régiók némelyike nem aktiválódik minden Azure-előfizetésen. Ha a fenti listából szeretne egy régiót használni, és nem látja az előfizetésben, vagy ha a listán nem szereplő régiót szeretne használni, nyisson meg egy [támogatási kérést](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+
+## <a name="limits-and-limitations"></a>Korlátok és korlátozások
+
+A következő szakasz a nagy kapacitású (Citus) szolgáltatás kapacitását és működési korlátait ismerteti.
+
+### <a name="maximum-connections"></a>Kapcsolatok maximális száma
+
+Minden PostgreSQL-kapcsolat (akár tétlen is) legalább 10 MB memóriát használ, ezért fontos az egyidejű kapcsolatok korlátozása. A csomópontok állapotának megőrzésére a következő korlátozások vonatkoznak:
+
+* Koordinátor csomópont
+   * Kapcsolatok maximális száma: 300
+   * Maximális felhasználói kapcsolatok: 297
+* Munkavégző csomópont
+   * Kapcsolatok maximális száma: 600
+   * Maximális felhasználói kapcsolatok: 597
+
+A fenti korlátokon túli kapcsolódási kísérletek hibával meghiúsulnak. A rendszer három kapcsolatot tart fenn a figyelési csomópontok számára, ezért három kevesebb kapcsolat áll rendelkezésre a felhasználói lekérdezéseknél, mint a kapcsolatok összege.
+
+Az új kapcsolatok létrehozása időt vesz igénybe. Ez a legtöbb alkalmazással működik, amelyek sok rövid életű kapcsolatot igényelnek. Javasoljuk, hogy használjon egy kapcsolati Pooler, amely csökkenti az üresjárati tranzakciókat és a meglévő kapcsolatok újrafelhasználását. További információért látogasson el a [blogbejegyzésbe](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/not-all-postgres-connection-pooling-is-equal/ba-p/825717).
+
+### <a name="storage-scaling"></a>Tárolási skálázás
+
+A koordinátor és a munkavégző csomópontok tárterülete felméretezhető (nagyobb), de nem méretezhető (csökkent).
+
+### <a name="storage-size"></a>Tárterület mérete
+
+A koordinátori és munkavégző csomópontok legfeljebb 2 TiB tárterületet támogatnak. A csomópont-és fürtök méretéhez tekintse meg a [fenti](#compute-and-storage) rendelkezésre álló tárolási beállításokat és a IOPS számítását.
 
 ## <a name="pricing"></a>Díjszabás
 A legfrissebb díjszabási információkért tekintse meg a szolgáltatás [díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/postgresql/).

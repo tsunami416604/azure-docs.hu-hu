@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 6bc29c098bcf7ef1d1a2e2532a00c95f0ec7e927
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 3c5e22c14d0df46ddac9a503f43df8d54c3c93d5
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "61244229"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964753"
 ---
 # <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>Miniatűrök létrehozása a .NET-es Media Encoder Standard használatával 
 
@@ -408,9 +408,12 @@ A következő kódrészlet a Media Services .NET SDK-t használja a következő 
 * Hozzon létre egy kódolási feladatot.
 * A Media Encoder Standard kódolóra mutató hivatkozás beszerzése.
 * Töltse be a kódolási beállításkészletet tartalmazó előre definiált XML-vagy [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json) [-](media-services-dotnet-generate-thumbnail-with-mes.md#xml) t, valamint a miniatűrök létrehozásához szükséges információkat. Ezt az [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) -t vagy [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json) -fájlt mentheti egy fájlba, és a következő kód használatával töltheti be a fájlt.
-  
-        // Load the XML (or JSON) from the local file.
-        string configuration = File.ReadAllText(fileName);  
+
+    ```csharp
+    // Load the XML (or JSON) from the local file.
+    string configuration = File.ReadAllText(fileName);  
+    ```
+
 * Egyetlen kódolási feladat hozzáadása a feladathoz. 
 * Adja meg a kódolni kívánt bemeneti objektumot.
 * Hozzon létre egy kimeneti eszközt, amely tartalmazza a kódolt objektumot.

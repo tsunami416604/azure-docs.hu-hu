@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 99aecee930e5d77302ad54babd927588519e33fd
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: fae11343332fe741301016d4871d098b0214c7f5
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160460"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964447"
 ---
 # <a name="publishing-guide-for-container-offers"></a>A Container-ajánlatok közzétételi útmutatója
 
@@ -34,8 +34,8 @@ A Microsoft jelenleg támogatja az ingyenes és a saját licencű (BYOL) licence
 |:--- |:--- |  
 | Számlázás és mérés | Az ingyenes vagy a BYOL számlázási modellt is támogatja.<br><br> |  
 | Docker létrehozott rendszerkép | A tároló lemezképeit a Docker-rendszerkép specifikációja alapján kell létrehozni, és egy Docker kell létrehozni.<br> <br>A Docker-rendszerképek létrehozásával kapcsolatos további információkért tekintse meg a [Docker dokumentációjának](https://docs.docker.com/engine/reference/builder/#usage)"használat" szakaszát.<br><br> |  
-| Üzemeltetés Azure Container Registry adattárban | A tároló lemezképeit egy Azure Container Registry adattárban kell tárolni.<br> <br>A Azure Container Registry használatáról további információt a rövid útmutató [: Private Container Registry létrehozása a Azure Portal használatával](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-portal)című témakörben talál.<br><br> |  
-| Képcímkézés | A tároló lemezképének legalább egy címkét tartalmaznia kell (címkék maximális száma: 16).<br><br>A képek címkézésével kapcsolatos további információkért tekintse meg `docker tag` a lapot a [Docker dokumentációs](https://docs.docker.com/engine/reference/commandline/tag) webhelyén.<br><br> |  
+| Üzemeltetés Azure Container Registry adattárban | A tároló lemezképeit egy Azure Container Registry adattárban kell tárolni.<br> <br>A Azure Container Registry használatáról további információt a rövid útmutató [: Private Container Registry létrehozása a Azure Portal használatával](../container-registry/container-registry-get-started-portal.md)című témakörben talál.<br><br> |  
+| Képcímkézés | A tároló lemezképének legalább egy címkét tartalmaznia kell (címkék maximális száma: 16).<br><br>A képek címkézésével kapcsolatos további információkért tekintse `docker tag` meg a lapot a [Docker dokumentációs](https://docs.docker.com/engine/reference/commandline/tag) webhelyén.<br><br> |  
 
 ## <a name="next-steps"></a>További lépések
 

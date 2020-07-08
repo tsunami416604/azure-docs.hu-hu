@@ -7,16 +7,16 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: 856555008f5edb04c167e00f3db49abc9e5e6402
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: b83b6fc0da6a8b2016676d7fb748fc87880868f3
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84740007"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964566"
 ---
 # <a name="anomaly-detection-service-for-metered-billing"></a>Anomáliák észlelése szolgáltatás mért számlázáshoz
 
-A [piactér-mérési szolgáltatás](https://docs.microsoft.com/azure/marketplace/partner-center-portal/marketplace-metering-service-apis-faq) lehetővé teszi, hogy olyan ajánlatokat hozzon létre a kereskedelmi piactér programban, amelyek díja a nem standard egységek alapján történik. A mért számlázással elküldheti az ügyfél használati eseményeit a Microsoftnak, és a használat alapján előkészítjük a számlázást.
+A [piactér-mérési szolgáltatás](marketplace-metering-service-apis-faq.md) lehetővé teszi, hogy olyan ajánlatokat hozzon létre a kereskedelmi piactér programban, amelyek díja a nem standard egységek alapján történik. A mért számlázással elküldheti az ügyfél használati eseményeit a Microsoftnak, és a használat alapján előkészítjük a számlázást.
 
 A helytelen használati adatok különböző okokból származhatnak, például a hibákkal, a felhasználás nyomon követésével vagy csalással kapcsolatos hibás konfigurációkkal. A helytelen használati adatok helytelen vásárlói díjakat és számlázási vitákat eredményeznek.
 
@@ -74,8 +74,8 @@ Jegy elküldése:
     - **Kereskedelmi piactér**  >  **Mért számlázás**  >  **Helytelen használat lett elküldve SaaS-ajánlathoz**
 3. A **következő lépés**alatt jelölje be a **megoldások véleményezése** gombot a partner központba való bejelentkezéshez a támogatási jegy elküldéséhez.
 
-További közzétevői támogatási lehetőségekért lásd: [támogatás a kereskedelmi piactér programhoz a partner Centerben](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support).
+További közzétevői támogatási lehetőségekért lásd: [támogatás a kereskedelmi piactér programhoz a partner Centerben](support.md).
 
 ## <a name="next-step"></a>Következő lépés
 
-- Ismerje meg a [Marketplace-mérési szolgáltatás API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/marketplace-metering-service-apis)-ját.
+- Ismerje meg a [Marketplace-mérési szolgáltatás API](marketplace-metering-service-apis.md)-ját.

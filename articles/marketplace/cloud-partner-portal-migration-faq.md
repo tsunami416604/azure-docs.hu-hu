@@ -1,156 +1,173 @@
 ---
-title: A partneri központba való áttelepítéssel kapcsolatos gyakori kérdések – Microsoft kereskedelmi piactér
-description: Válaszok az ajánlatok Cloud Partner Portalról a partneri központba való áttelepítésével kapcsolatos gyakori kérdésekre.
+title: A Cloud Partner Portalról a partneri központba való áttéréssel kapcsolatos gyakori kérdések – Microsoft kereskedelmi piactér
+description: Válaszok az ajánlatok Cloud Partner Portalról a partneri központba való átváltásával kapcsolatos gyakori kérdésekre.
 author: anbene
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 05/19/2020
+ms.topic: article
+ms.date: 06/29/2020
 ms.author: mingshen
-ms.openlocfilehash: c4fdde94ea703d194e2de27a8df429f62ea374f4
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 349306a8bcdffda8511436540acde92129ff8662
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83727668"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964940"
 ---
-# <a name="common-questions-about-migrating-from-the-cloud-partner-portal-to-partner-center"></a>Az Cloud Partner Portalról a partneri központba való Migrálás gyakori kérdései
+# <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>Gyakori kérdések az Cloud Partner Portalról a partneri központba való áttérésről
 
-Ez a cikk az ajánlatok Cloud Partner Portalról a partneri központba való áttelepítésével kapcsolatos gyakori kérdéseket tárgyalja.
+A Cloud Partner Portal a partner Centerre váltott. A partner Center egy egyszerűsített, integrált élményt nyújt az új ajánlatok közzétételéhez [Microsoft AppSource](https://appsource.microsoft.com/) vagy az [Azure Marketplace](https://azuremarketplace.microsoft.com/) -en, valamint a Cloud Partner Portalból áttelepített meglévő ajánlatok kezeléséhez. A Cloud Partner Portal összes funkciója elérhető a partner Centerben. Ez a cikk az ezzel kapcsolatos gyakori kérdéseket tárgyalja.
 
-## <a name="what-does-offer-migration-mean"></a>Mit jelent az ajánlatok áttelepítése?
+## <a name="what-does-the-transition-to-partner-center-mean-for-me"></a>Mit jelent a partner Centerre való áttérés?
 
-Áthelyezjük az ajánlat adatait a Cloud Partner Portalról a partneri központba az ajánlat-közzétételi és-kezelési élmény változásaival.
+A partner Centerben a szokásos módon folytathatja a teendőket:
 
-| Terület  | Változások  |
-|-------|----------|
-| **Közzétételi és ajánlat-kezelési élmény** | A partner Centerben intuitív kezelőfelülettel javíthatja a felhasználói élményt. További részletekért lásd: a [partner központ és a Cloud Partner Portal közötti különbségek?](#what-are-the-differences-between-partner-center-and-the-cloud-partner-portal) |
-| **Az ajánlatok elérhetősége a piactéren** | Nincs változás. Ha az ajánlata a piactéren is elérhető, akkor az áttelepítés befejezése után és után is folytatódik. |
-| **Új vásárlások és központi telepítések** | Nincs változás. Ügyfelei továbbra is megvásárolhatják és üzembe helyezhetik az ajánlatait megszakítás nélkül. |
-| **Kifizetések** | Az áttelepítés során vagy azt követően megjelenő vásárlások és telepítések továbbra is a szokásos módon lesznek kifizetve. |
-|**API-integrációk meglévő [Cloud Partner Portal API](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) -kkal** | A meglévő Cloud Partner Portal API-k továbbra is támogatottak lesznek az áttelepítés után, és a meglévő integrációk továbbra is működni fognak. További részletek: [a Cloud Partner Portal REST API-k támogatása az áttelepítés után?](#will-the-cloud-partner-portal-rest-apis-be-supported-post-migration) |
-| | |
+| Terület<img src="" width=200px> | Változások |
+| --- | --- |
+| Fiók | Nem kell új partner Center-fiókot létrehoznia; a meglévő Cloud Partner Portal hitelesítő adataival bejelentkezhet a fiókpartner-központba, ahol a fiókját, a felhasználóit, az engedélyeit és a számlázást is kezelheti. A közzétételi szerződés és a vállalati profil adatai áttelepülnek az új partner Center-fiókjába, valamint a kifizetési profilokkal, a felhasználói fiókokkal és engedélyekkel, valamint az aktív ajánlatokkal. További információ: [a kereskedelmi piactér fiókjának kezelése a partner Centerben](partner-center-portal/manage-account.md). |
+| Ajánlat-közzétételi és ajánlat-kezelési élmény | Áthelyezte az ajánlat adatait a Cloud Partner Portalról a partneri központba. Mostantól elérhetővé teszi az ajánlatokat a partner Centerben, amely továbbfejlesztett felhasználói élményt és intuitív felületet biztosít. Megtudhatja, hogyan [frissíthet egy meglévő ajánlatot a kereskedelmi piactéren](partner-center-portal/update-existing-offer.md). |
+| Az ajánlatok elérhetősége a kereskedelmi piactéren | Nincs változás. Ha az ajánlata a kereskedelmi piacon él, továbbra is élőben fog működni. |
+| Új vásárlások és központi telepítések | Nincs változás. Az ügyfelek megszakítás nélkül folytathatják az ajánlatok megvásárlását és üzembe helyezését. |
+| Kifizetések | A vásárlások és az üzembe helyezések továbbra is a megszokott módon lesznek kifizetve. További információ [a kereskedelmi piactéren való fizetésről](partner-center-portal/get-paid.md). |
+| API-integrációk meglévő [Cloud Partner Portal API](cloud-partner-portal-api-overview.md) -kkal | A meglévő Cloud Partner Portal API-k továbbra is támogatottak, és a meglévő integrációk továbbra is működnek. További információ: [a Cloud Partner Portal REST API-k támogatottak?](#are-the-cloud-partner-portal-rest-apis-still-supported) |
+| Elemzés | Továbbra is figyelheti az értékesítéseket, kiértékelheti a teljesítményt, és optimalizálhatja ajánlatait a kereskedelmi piactéren az elemzések megtekinthető a partner Centerben. További információ: [hozzáférés analitikus jelentései a kereskedelmi piactéren a partner Centerben](partner-center-portal/analytics.md). |
+|||
 
-## <a name="can-i-still-access-the-cloud-partner-portal-and-manage-my-offers-during-migration"></a>Továbbra is hozzáférhetek a Cloud Partner Portal és kezelhetem az ajánlatokat az áttelepítés során?
+## <a name="do-i-need-to-create-a-new-account-to-manage-my-offers-in-partner-center"></a>Létre kell hozni egy új fiókot az ajánlatom kezeléséhez a partner Centerben?
 
-Az összes ajánlat át lett telepítve a fiókpartner-központba. Az egyes ajánlatok áttelepítési időszakának 24 óránál rövidebbnek kell lennie. Az ajánlat migrálása után e-mailben értesítést kell kapnia.
-
-Az ajánlatok migrálása után a Cloud Partner Portal **korlátozott** ideig csak olvasható módban lesznek elérhetők. Az állapotuk "áthelyezve a partner központba" jelenik meg, és az ajánlatra mutató hivatkozást is tartalmaz a partner Centerben, ahogy az alábbi képernyőképeken is látható. Ebből a pontból az összes ajánlat frissítését kezelheti, vagy kizárólag a partner centeren keresztül hozhat létre új ajánlatokat.
-
-:::image type="content" source="media/migration-faq/all-offers-2.png" alt-text="A partner központba áttelepített ajánlatok számára megadott üzenet bemutatása":::
-
-:::image type="content" source="media/migration-faq/offer-has-moved.png" alt-text="Az áttelepített ajánlat Cloud Partner Portal lapját mutatja be.":::
-
-## <a name="how-will-i-create-new-offers"></a>Hogyan hozhatok létre új ajánlatokat?
-
-A Cloud Partner Portal új ajánlatokat hoz létre a partner Centerben
-
-:::image type="content" source="media/migration-faq/create-new-offer-1.png" alt-text="Az új ajánlat létrehozásához szükséges menüt mutatja be Cloud Partner Portal":::
-
-Az új ajánlat kiválasztása után egy üzenet jelenik meg, például a következő.
-
-:::image type="content" source="media/migration-faq/create-new-offer-2.png" alt-text="Az új ajánlat létrehozásakor kapott üzenetet mutatja be a CPP-ben":::
-
-## <a name="do-i-need-to-create-a-new-account-to-manage-offers-in-partner-center"></a>Létre kell hozni egy új fiókot az ajánlatok kezeléséhez a partner Centerben?
-
-Nem. A rendszer megőrzi a mögöttes fiókját, és azt a partner Centerben kell kezelni. Ez azt jelenti, hogy ha Ön már meglévő partner, használhatja a meglévő Cloud Partner Portal fiókjának hitelesítő adatait, hogy bejelentkezzen a partner Centerbe a Migrálás után. A rendszer csak az ajánlatokat és a kapcsolódó felügyeleti élményt helyezi át a Cloud Partner Portal a partner központba. Azt kérjük, hogy ne hozzon létre új fiókot, mert az ajánlatok nem lesznek társítva az új fiókhoz.
-
-## <a name="i-see-a-message-in-the-cloud-partner-portal-to-activate-my-account-what-does-this-mean"></a>Meglátok egy üzenetet a Cloud Partner Portal a fiókom aktiválásához? mit jelent ez?
-
-További részletekre van szükségünk ahhoz, hogy megfelelően áttelepítse a fiókját a partner központba, és lehetővé tegye, hogy az ajánlat migrálása után kezelhesse az ajánlatokat a partner Centerben. A fiók aktiválásával kapcsolatos további információkért lásd: [fiók áttelepítése Cloud Partner Portalról a partner központjába](https://docs.microsoft.com/azure/marketplace/partner-center-portal/account-migration-from-cpp-to-pc).
-
-A fiók aktiválásának befejezéséhez szükséges lépések a fiók szerepköre alapján változnak.
-
-| Fiók szerepköre | Aktiválási lépések |
-|--------------|----------------|
-|Tulajdonos | Lépjen a Cloud Partner Portal [közzétevői profil](https://cloudpartner.azure.com/#profile) lapjára, majd kattintson a szalagcímben található hivatkozásra az aktiváláshoz. A fiók aktiválásának befejezéséhez a rendszer átirányítja a partner központba. |
-| Közreműködő | A fiók csak a tulajdonosi szerepkörrel rendelkező felhasználók számára aktiválható. Forduljon a fiók tulajdonosainak a fiók aktiválásának befejezéséhez. A fiók tulajdonosainak szerepelniük kell a szalagcím üzenetben. |
-| | |
-
-## <a name="im-having-trouble-logging-in-to-my-account-and-opening-a-support-ticket"></a>Gondjaim vannak a fiókomba való bejelentkezéssel és támogatási jegy megnyitásával
-
-Ha nem tud bejelentkezni a fiókjába, nyisson meg egy [támogatási jegyet](https://partner.microsoft.com/support/v2/?stage=1).
-
-## <a name="where-can-i-find-documentation-on-the-new-partner-center-publishing-experience"></a>Hol találhatok dokumentációt az új partner Center Publishing Experience szolgáltatással kapcsolatban?
-
-Nyissa meg a [kereskedelmi piactér dokumentációját](https://docs.microsoft.com/azure/marketplace/). Ezután bontsa ki a **kereskedelmi piactér portált a partner Centerben**,   >  és**hozzon létre egy új ajánlatot** , ahol megtekintheti az egyes típusú ajánlatok létrehozásához szükséges súgótémaköröket.
-
-:::image type="content" source="media/migration-faq/marketplace-help-topics.png" alt-text="A partner centerrel kapcsolatos súgótémakörök bemutatása":::
-
-### <a name="what-are-the-differences-between-partner-center-and-the-cloud-partner-portal"></a>Mi a különbség a partner központ és a Cloud Partner Portal között?
-
-Észreveheti, hogy a Cloud Partner Portal és a partner központ között a következő különbségek vannak.
-
-### <a name="modular-publishing-capabilities"></a>Moduláris közzétételi képességek
-
-A partner Center egy moduláris közzétételi lehetőséget biztosít, amellyel kiválaszthatja a közzétenni kívánt módosításokat, ahelyett, hogy mindig az összes frissítést közzéteszi. A következő képernyőkép például azt mutatja, hogy az egyetlen közzétételre kijelölt módosítások a **Tulajdonságok** és az **ajánlati lista**módosításai.
-
-:::image type="content" source="media/migration-faq/review-and-publish-migration.png" alt-text="Az előnézet és a közzétételi oldal bemutatása":::
-
-A nem közzéteendő frissítések piszkozatként lesznek mentve. Továbbra is használhatja az ajánlat előzetesét, hogy ellenőrizze az ajánlatát, mielőtt a nyilvánosságra tenné.
-
-### <a name="rich-text-format"></a>Rich Text formátum
-
-Bővítse ajánlatát, és tervezze meg a leírást a részletes szövegszerkesztő használatával az ajánlati lista és a csomag listázása oldalon.
-
-:::image type="content" source="media/migration-faq/rich-text-editor-migration.png" alt-text="A Rich Text Editor bemutatása":::
-
-### <a name="enhanced-preview-options"></a>Bővített előnézet beállításai
-
-A partner Center egy [összehasonlítási funkcióval](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#compare-changes-to-marketplace-offers) bővült, amely továbbfejlesztett szűrési lehetőségekkel rendelkezik. Ez lehetővé teszi, hogy összehasonlítsa az ajánlat előzetes és élő verzióit.
-
-:::image type="content" source="media/migration-faq/enhanced-preview.png" alt-text="Az összehasonlítás funkció bemutatása":::
-
-### <a name="branding-and-navigation-changes"></a>Védjegyezési és navigációs változások
-
-Megfigyelheti néhány védjegyezési változást. A "SKU" például "csomagok" a partner Centerben.
-
-:::image type="content" source="media/migration-faq/plan-overview-migration.png" alt-text="A terv áttekintését mutatja be.":::
-
-Továbbá a **piactéren** vagy Cloud Partner Portal a**torefront** található információk (tanácsadási szolgáltatás, Power bi alkalmazás) oldalain megadható információkat a rendszer a partner Center **ajánlati lista** lapján gyűjti.
-
-:::image type="content" source="media/migration-faq/offer-listing-migration.png" alt-text="Az ajánlati lista oldalát szemlélteti.":::
-
-Az SKU-nak a Cloud Partner Portal egyetlen lapján való megadásához használt információk mostantól a partner központ több oldalán is összegyűjthetők:
-
-* Terv beállítása lap
-* A lista megtervezése lap
-* Csomag rendelkezésre állása lap
-* Tervezze meg a technikai konfiguráció oldalát, ahogy az a képernyőképen is látható.
-
-:::image type="content" source="media/migration-faq/tech-config-migration.png" alt-text="A terv technikai konfigurációs oldalának bemutatása.":::
-
-Az ajánlat azonosítója mostantól az ajánlat bal oldali navigációs sávján jelenik meg.
-
-:::image type="content" source="media/migration-faq/offer-id-offer-overview.png" alt-text="A bal oldali navigációs menüt mutatja az ajánlat azonosítójával.":::
-
-### <a name="stop-selling-an-offer"></a>Ajánlat értékesítésének leállítása
-
-Kérheti, hogy közvetlenül a partner Center portálról [állítsa le az ajánlat értékesítését](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan) a piactéren. A lehetőség az ajánlat **Áttekintés** lapján érhető el.
-
-:::image type="content" source="media/migration-faq/stop-selling-migration.png" alt-text="Az ajánlat – áttekintés oldalt mutatja az értékesítés leállítása lehetőséggel.":::
+Nem, a fiókját megőrzi a rendszer. Ez azt jelenti, hogy ha Ön már meglévő partner, használhatja a meglévő Cloud Partner Portal fiókjának hitelesítő adatait a partner Centerbe való bejelentkezéshez. Ne hozzon létre új fiókot vagy az Cloud Partner Portal-ben létrehozott és a partner Centerbe áthelyezett ajánlatokat nem társítja.
 
 ## <a name="what-pages-in-partner-center-correspond-to-pages-i-used-in-the-cloud-partner-portal"></a>A partner Centerben milyen lapok tartoznak a Cloud Partner Portal használt lapokhoz?
 
-A következő táblázat a két portál közötti megfelelő hivatkozásokat tartalmazza.
+Az alábbiakban a Cloud Partner Portal leggyakrabban használt lapokhoz tartozó fiókpartner-hivatkozások találhatók. Ha a Cloud Partner Portal hivatkozásokat könyvjelzőként mentette, érdemes frissítenie.
 
-| Oldal | Cloud Partner Portal hivatkozás | Partneri központ hivatkozása |
-|------|---------------------------|---------------------|
-| **Minden ajánlat oldal** | https://cloudpartner.azure.com/#alloffers | https://partner.microsoft.com/dashboard/commercial-marketplace/overview |
-| **Minden közzétevő oldal** | https://cloudpartner.azure.com/#publishers | https://partner.microsoft.com/dashboard/account/v3/publishers/list |
-| **Közzétevői profil** | https://cloudpartner.azure.com/#profile | https://partner.microsoft.com/dashboard/account/management |
-| **Felhasználók oldal** | https://cloudpartner.azure.com/#users | https://partner.microsoft.com/dashboard/account/usermanagement |
-| **Előzmények lap** | https://cloudpartner.azure.com/#history | Az előzmények funkció még nem támogatott a partner Centerben. |
-| **Az áttekintések irányítópultja** | https://cloudpartner.azure.com/#insights | https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary |
-| **Kifizetési jelentés** | https://cloudpartner.azure.com/#insights/payout | https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments |
-| | |
+| Cloud Partner Portal lap <img src="" width=100px>| Cloud Partner Portal oldal hivatkozása | Partner Center-oldal hivatkozása |
+| --- | --- | --- |
+| Minden ajánlat oldal | [https://cloudpartner.azure.com/#alloffers](https://cloudpartner.azure.com/#alloffers) | [https://partner.microsoft.com/dashboard/commercial-marketplace/overview](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) |
+| Minden közzétevő oldal | [https://cloudpartner.azure.com/#publishers](https://cloudpartner.azure.com/#publishers) | [https://partner.microsoft.com/dashboard/account/v3/publishers/list](https://partner.microsoft.com/dashboard/account/v3/publishers/list) |
+| Közzétevői profil | [https://cloudpartner.azure.com/#profile](https://cloudpartner.azure.com/#profile) | [https://partner.microsoft.com/dashboard/account/management](https://partner.microsoft.com/dashboard/account/management) |
+| Felhasználók oldal | [https://cloudpartner.azure.com/#users](https://cloudpartner.azure.com/#users) | [https://partner.microsoft.com/dashboard/account/usermanagement](https://partner.microsoft.com/dashboard/account/usermanagement) |
+| Előzmények lap | [https://cloudpartner.azure.com/#history](https://cloudpartner.azure.com/#history) | Az előzmények funkció még nem támogatott a partner Centerben. |
+| Az áttekintések irányítópultja | [https://cloudpartner.azure.com/#insights](https://cloudpartner.azure.com/#insights) | [https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary) |
+| Kifizetési jelentés | [https://cloudpartner.azure.com/#insights/payout](https://cloudpartner.azure.com/#insights/payout) | [https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments](https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments) |
+|||
 
-## <a name="will-the-cloud-partner-portal-rest-apis-be-supported-post-migration"></a>Támogatott-e a Cloud Partner Portal REST API-k támogatása az áttelepítés után?
+## <a name="what-about-offers-i-published-in-the-cloud-partner-portal"></a>Mi a helyzet a Cloud Partner Portal közzétett ajánlatokkal?
 
-A Cloud Partner Portal API-k integrálva vannak a partneri központtal, és továbbra is működni fognak, miután az ajánlatokat áttelepítik a partner központba. Az integráció kis változásokat vezet be. Tekintse át az alábbi táblázatban szereplő módosításokat, hogy a kód továbbra is működni fog a partneri központba való Migrálás után.
+A rendszer áthelyezte az ajánlatokat a partneri központba, és elérhetővé válik a partner központba való bejelentkezés után, a Dynamics NAV által felügyelt szolgáltatás és a Cortana Intelligence ajánlatok kivételével. Ha az ajánlata a kereskedelmi piactéren volt elérhető, továbbra is élőben fog működni, és az ügyfelek továbbra is megvásárolhatják és üzembe helyezhetik azokat megszakítások nélkül. További részletekért tekintse meg a következő kérdést, **hogy milyen ajánlatokat helyeztek át a partner Centerbe?**.
 
-| **API** | **Módosítások ismertetése** | **Hatás** |
-| ------- | ---------------------- | ---------- |
-| Közzététel utáni, GoLive, Mégse | Az áttelepített ajánlatok esetében a válasz fejlécének formátuma eltérő lesz, de továbbra is ugyanúgy működik, mint a művelet állapotának lekéréséhez szükséges relatív elérési út. | Az ajánlathoz tartozó BEJEGYZÉSi kérelmek bármelyikének elküldésekor a hely fejléce az ajánlat áttelepítési állapotának függvényében két formátummal fog rendelkezni:<ul><li>Nem áttelepített ajánlatok<br>`/api/operations/{PublisherId}${offerId}$2$preview?api-version=2017-10-31`</li><li>Áttelepített ajánlatok<br>`/api/publishers/{PublisherId}/offers/{offereId}/operations/408a4835-0000-1000-0000-000000000000?api-version=2017-10-31`</li> |
-| Művelet beolvasása | A válaszban korábban a "Notification-mail" mező által támogatott ajánlatok esetében ez a mező elavult, és az áttelepített ajánlatok esetében már nem lesz visszaküldve. | Az áttelepített ajánlatok esetében a továbbiakban nem küldünk értesítéseket a kérelmekben megadott e-mailek listájára. Ehelyett az API szolgáltatás egyezteti az e-mailek küldését a partner Centerben az értesítő e-mail folyamattal. Az értesítéseket a rendszer a partner Center fiók beállításainak eladó kapcsolattartási adatok szakaszában megadott e-mail-címre küldi el, hogy értesítse a művelet előrehaladásáról.<br><br>Tekintse át az e-mail-címet a fiókpartner [fiók beállításai](https://partner.microsoft.com/dashboard/account/management) között, az eladó kapcsolattartási adatai szakaszban, és győződjön meg arról, hogy a megfelelő e-mail-cím van megadva az értesítésekhez.  |
-| | | |
+## <a name="what-offers-were-moved-to-partner-center"></a>Milyen ajánlatokat helyeztek át a partner központba?
+
+A Cloud Partner Portal által korábban támogatott összes típusú ajánlat támogatott a partner Centerben, a Dynamics NAV által felügyelt szolgáltatás és a Cortana Intelligence ajánlatok kivételével.
+
+A partner Centerben támogatott ajánlati típusok esetében az összes ajánlat az állapotuktól függetlenül mozgott. a draft, de a List és a Preview-only ajánlat is át lett helyezve.
+
+| Csomag típusa <img src="" width=150px>| Áthelyezte a partneri központba? <img src="" width=100px>| További lépések |
+| --- | --- | --- |
+| SaaS | Yes | Jelentkezzen be a partner Centerbe, és hozzon létre új ajánlatokat, és kezelje a Cloud Partner Portal-ben létrehozott ajánlatokat. További információ: [új SaaS-ajánlat létrehozása a kereskedelmi piactéren](partner-center-portal/create-new-saas-offer.md). |
+| Virtuális gép | Yes | Jelentkezzen be a partner Centerbe, és hozzon létre új ajánlatokat, és kezelje a Cloud Partner Portal-ben létrehozott ajánlatokat. További információ: [Azure-beli virtuális gépek ajánlatának létrehozása az Azure Marketplace](partner-center-portal/azure-vm-create-offer.md)-en. |
+| Azure-alkalmazás | Yes | Jelentkezzen be a partner Centerbe, és hozzon létre új ajánlatokat, és kezelje a Cloud Partner Portal-ben létrehozott ajánlatokat. További információt az [Azure-alkalmazás ajánlatának létrehozása](partner-center-portal/create-new-azure-apps-offer.md)című témakörben olvashat. |
+| Dynamics 365 Business Central | Igen | Jelentkezzen be a partner Centerbe, és hozzon létre új ajánlatokat, és kezelje a Cloud Partner Portal-ben létrehozott ajánlatokat. További információ: [create a Dynamics 365 Business Central ajánlat](partner-center-portal/create-new-business-central-offer.md). |
+| Dynamics 365 a Customer engagement & PowerApps | Yes | Jelentkezzen be a partner Centerbe, és hozzon létre új ajánlatokat, és kezelje a Cloud Partner Portal-ben létrehozott ajánlatokat. További információ: [create a Dynamics 365 for Customer Engagement & PowerApps ajánlat](partner-center-portal/create-new-customer-engagement-offer.md). |
+| Dynamics 365 for Operations | Yes | Jelentkezzen be a partner Centerbe, és hozzon létre új ajánlatokat, és kezelje a Cloud Partner Portal-ben létrehozott ajánlatokat. További információt a [Dynamics 365 for Operations ajánlat létrehozása](partner-center-portal/create-new-operations-offer.md)című témakörben olvashat. |
+| Power BI alkalmazás | Yes | Jelentkezzen be a partner Centerbe, és hozzon létre új ajánlatokat, és kezelje a Cloud Partner Portal-ben létrehozott ajánlatokat. További információ: [Power bi alkalmazás létrehozása a AppSource](partner-center-portal/create-power-bi-app-offer.md). |
+| IoT Edge modul | Yes | Jelentkezzen be a partner Centerbe, és hozzon létre új ajánlatokat, és kezelje a Cloud Partner Portal-ben létrehozott ajánlatokat. További információ: [IoT Edge modul létrehozása, konfigurálása és közzététele az Azure Marketplace-](partner-center-portal/azure-iot-edge-module-creation.md)en. |
+| Tároló | Yes | Jelentkezzen be a partner Centerbe, és hozzon létre új ajánlatokat, és kezelje a Cloud Partner Portal-ben létrehozott ajánlatokat. További információ: [Azure Container-ajánlat létrehozása](partner-center-portal/create-azure-container-offer.md). |
+| Tanácsadói szolgáltatás | Yes | Jelentkezzen be a partner Centerbe, és hozzon létre új ajánlatokat, és kezelje a Cloud Partner Portal-ben létrehozott ajánlatokat. További információ: [create a Consulting Service ajánlat](partner-center-portal/create-consulting-service-offer.md). |
+| Felügyelt szolgáltatás | Yes | Jelentkezzen be a partner Centerbe, és hozzon létre új ajánlatokat, és kezelje a Cloud Partner Portal-ben létrehozott ajánlatokat. További információt a [felügyelt szolgáltatás ajánlatának létrehozása](partner-center-portal/create-new-managed-service-offer.md)című témakörben olvashat. |
+| Dynamics NAV – felügyelt szolgáltatás | No | A Microsoft a Dynamics [365 Business Central](https://docs.microsoft.com/dynamics365/business-central/)platformon fejlesztette ki a Dynamics NAV által felügyelt szolgáltatást, ezért a Dynamics NAV felügyelt szolgáltatásának élő ajánlatai a AppSource-től vannak felsorolva. Ezeket az ajánlatokat az ügyfelek már nem tudják feltárni, és nem helyezték át a partner központba. Ha elérhetővé kívánja tenni ajánlatait a AppSource-ben, a Dynamics 365 Business Central-ajánlatokhoz igazíthatja őket, és beküldheti őket a [partner Centerben](https://partner.microsoft.com/). További információ: [create a Dynamics 365 Business Central ajánlat](partner-center-portal/create-new-business-central-offer.md). |
+| Cortana Intelligence | No | A Microsoft megalakította a Cortana Intelligence termékhez tartozó országúti térképet, ezért a AppSource-től származó, Cortana Intelligence élő ajánlatokat már nem tartalmazza. Ezeket az ajánlatokat az ügyfelek már nem tudják feltárni, és nem helyezték át a partner központba. Ha elérhetővé kívánja tenni ajánlatait a kereskedelmi piactéren, az ajánlatait szolgáltatásként (SaaS) biztosíthatja, és beküldheti őket a [partner Centerben](hhttps://partner.microsoft.com/). További információ: [SaaS-ajánlat létrehozása ellenőrzőlista a partner Centerben](partner-center-portal/offer-creation-checklist.md). |
+
+## <a name="i-cant-find-my-cloud-partner-portal-offers-in-partner-center"></a>Nem találom a Cloud Partner Portal ajánlatokat a partner Centerben
+
+A partner Centerben látható funkciók a-ban regisztrált programoktól, a hozzá tartozó fiókokból, valamint a hozzárendelt felhasználói szerepköröktől és engedélyektől függenek. Számos partner Center-program érhető el, és előfordulhat, hogy több programban is regisztrálva van. Előfordulhat, hogy több fiókhoz is hozzáférhet ugyanazzal a felhasználói hitelesítő adatokkal.
+
+A Cloud Partner Portalban létrehozott ajánlatok a **kereskedelmi piactér** program keretében, az ajánlatok létrehozásához használt fiók alatt érhetők el a partner Centerben. Győződjön meg arról, hogy a megfelelő programot és a megfelelő fiókot tekinti meg, kövesse az alábbi lépéseket. További hibaelhárítási tippekért lásd: [a partner Center-fiók kezelése](https://docs.microsoft.com/partner-center/partner-center-account-setup).
+
+### <a name="access-the-right-program-in-partner-center"></a>A jobb program elérése a partner Centerben
+
+1. A Cloud Partner Portalba való bejelentkezéshez használt hitelesítő adatokkal jelentkezzen be a [partner központjába](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) . A bal oldali navigációs ablaktábla megjeleníti azokat a beállításokat, amelyek az Ön által regisztrált programokhoz vannak társítva.
+
+    Példa: tegyük fel, hogy van hozzáférése három programhoz: az MPN programhoz, az átirányítási programhoz és a kereskedelmi piactér programhoz. Amikor bejelentkezik a partneri központba, a navigációs ablaktáblán megjelenik a három program.
+
+2. Az ajánlatok eléréséhez válassza a **kereskedelmi piactér**  >  **áttekintését** .
+
+    Ha nem jelenik meg a kereskedelmi piactér program a bal oldali navigációs ablaktáblán, akkor lehet, hogy a fiók nem megfelelő. A megfelelő fiók eléréséhez kövesse a következő szakaszban ismertetett lépéseket.
+
+    [![](media/cpp-pc-faq/overview-menu.png "Shows the Partner Center Overview menu")](media/cpp-pc-faq/overview-menu.png#lightbox)
+
+### <a name="access-the-right-account-in-partner-center"></a>A megfelelő fiók elérése a partner Centerben
+
+Ha több fiók is része, a partner Centerben a bal oldali navigációs menüben két nyíllal jelölt fiók-választó gomb jelenik meg. A fiókhoz tartozó összes fiók listájának megtekintéséhez kattintson a Fiókbeállítások gombra. Válassza ki bármelyik fiókot a listán, és váltson rá, és tekintse meg az adott fiókra vonatkozó összes programot és információt. Ha a navigációs menüben nem jelenik meg a fiók kiválasztása gomb, akkor egyetlen fiók tagja.
+
+[![](media/cpp-pc-faq/picker-button.png "Shows the Partner Center account picker button")](media/cpp-pc-faq/picker-button.png#lightbox)
+
+## <a name="how-do-i-create-new-offers"></a>Hogyan új ajánlatokat létrehozni?
+
+Új ajánlatok létrehozásához nyissa meg a kereskedelmi piactér programját a [partner Centerben](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) . Az Áttekintés lapon válassza az **+ új ajánlat**lehetőséget.
+
+[![](media/cpp-pc-faq/new-offer.png "Shows the Partner Center Overview menu")](media/cpp-pc-faq/new-offer.png#lightbox)
+
+## <a name="i-cant-sign-in-and-need-to-open-a-support-ticket"></a>Nem tudok bejelentkezni, és meg kell nyitni egy támogatási jegyet
+
+Ha nem tud bejelentkezni a fiókjába, itt is megnyithatja a [támogatási jegyet](https://partner.microsoft.com/support/v2/?stage=1) .
+
+## <a name="where-are-instructions-for-using-partner-center"></a>Hol találhatók a partner Center használatára vonatkozó utasítások?
+
+Nyissa meg a [kereskedelmi piactér dokumentációját](index.yml), majd bontsa ki a **kereskedelmi piactér portált a partner Centerben**. Az ajánlatok a partner Centerben való létrehozásával kapcsolatos súgótémakörök megtekintéséhez bontsa ki az **új ajánlat létrehozása**elemet.
+
+## <a name="what-are-the-publishing-and-offer-management-differences"></a>Mik a közzétételi és az ajánlat-kezelési különbségek?
+
+Íme néhány különbség a Cloud Partner Portal és a partner központ között.
+
+### <a name="modular-publishing-capabilities"></a>Moduláris közzétételi képességek
+
+A partner Center egy moduláris közzétételi lehetőséget biztosít, amellyel kiválaszthatja a közzétenni kívánt módosításokat, ahelyett, hogy mindig az összes frissítést közzéteszi. Az alábbi képernyőn például látható, hogy az egyetlen közzétételre kijelölt módosítások a **Tulajdonságok** és az **ajánlati lista**módosításai. Az előnézeti lapon végrehajtott módosítások nem lesznek közzétéve.
+
+[![](media/cpp-pc-faq/review-page.png "Shows the Partner Center Review and publish page")](media/cpp-pc-faq/review-page.png#lightbox)
+
+A nem közzéteendő frissítések piszkozatként lesznek mentve. Továbbra is használhatja az ajánlat előzetesét, hogy ellenőrizze az ajánlatát, mielőtt a nyilvánosságra tenné.
+
+### <a name="enhanced-preview-options"></a>Bővített előnézet beállításai
+
+A partner Center egy [összehasonlítási funkcióval](partner-center-portal/update-existing-offer.md#compare-changes-to-marketplace-offers) bővült, amely továbbfejlesztett szűrési lehetőségekkel rendelkezik. Ez lehetővé teszi, hogy összehasonlítsa az ajánlat előzetes és élő verzióit.
+
+[![](media/cpp-pc-faq/compare.png "Shows the Partner Center compare feature")](media/cpp-pc-faq/compare.png#lightbox)
+
+### <a name="branding-and-navigation-changes"></a>Védjegyezési és navigációs változások
+
+Megfigyelheti néhány védjegyezési változást. Az *SKU* -ket például a partner Centerben lévő *csomagként* kell kiszolgálni:
+
+[![](media/cpp-pc-faq/plans.png "Shows the Partner Center Plans page")](media/cpp-pc-faq/plans.png#lightbox)
+
+Továbbá a **piactéren** vagy a **kirakati részletekben** (a tanácsadási szolgáltatás, Power bi alkalmazás) Cloud Partner Portal oldalain korábban megadott információkat a rendszer mostantól a partner Center **ajánlati lista** lapján gyűjti:
+
+[![](media/cpp-pc-faq/offer-listing.png "Shows the Partner Center Offer listing page")](media/cpp-pc-faq/offer-listing.png#lightbox)
+
+Előfordulhat, hogy a Cloud Partner Portal egyetlen lapján a SKU-ban korábban megadott adatok gyűjtése a partner Center több oldalán történik:
+
+- Terv beállítása lap
+- A lista megtervezése lap
+- Csomag rendelkezésre állása lap
+- Tervezze meg a technikai konfiguráció oldalát, ahogy az itt látható: ![ ! [] (Media/CPP-PC-FAQ/technical-configuration.png "a partner Center technikai konfiguráció oldalát jeleníti meg")](media/cpp-pc-faq/technical-configuration.png#lightbox)
+
+Az ajánlat azonosítója mostantól az ajánlat bal oldali navigációs sávján látható:
+
+![A partneri központ ajánlatának AZONOSÍTÓjának helyét jeleníti meg](media/cpp-pc-faq/offer-id.png)
+
+### <a name="stop-selling-an-offer"></a>Ajánlat értékesítésének leállítása
+
+Kérheti, hogy közvetlenül a partner Center portálról [állítsa le az ajánlat értékesítését](partner-center-portal/update-existing-offer.md#stop-selling-an-offer-or-plan) a piactéren. A lehetőség az ajánlat **Áttekintés** lapján érhető el.
+
+[![](media/cpp-pc-faq/stop-sell.png "Shows the Partner Center page to stop selling an offer")](media/cpp-pc-faq/stop-sell.png#lightbox)
+<br><br>
+
+## <a name="are-the-cloud-partner-portal-rest-apis-still-supported"></a>A Cloud Partner Portal REST API-k továbbra is támogatottak?
+
+A Cloud Partner Portal API-k integrálva vannak a partner Centerben, és továbbra is működni fognak. A partneri központba való áttérés kis változásokat mutat be. Az alábbi táblázatban ellenőrizheti, hogy a kód továbbra is működik-e a partner Centerben.
+
+| API <img src="" width=100px>| Módosítások ismertetése | Hatás |
+| --- | --- | --- |
+| Közzététel utáni, GoLive, Mégse | Az áttelepített ajánlatok esetében a válasz fejlécének formátuma eltérő lesz, de továbbra is ugyanúgy működik, mint a művelet állapotának lekéréséhez szükséges relatív elérési út. | Az ajánlathoz tartozó BEJEGYZÉSi kérelmek bármelyikének küldésekor a Location (hely) fejléc az ajánlat áttelepítési állapotának függvényében két formátum valamelyikét fogja tartalmazni: <ul><li>Nem áttelepített ajánlatok:`/api/operations/{PublisherId}${offerId}$2$preview?api-version=2017-10-31`</li><li>Áttelepített ajánlatok:`/api/publishers/{PublisherId}/offers/{offereId}/operations/408a4835-0000-1000-0000-000000000000?api-version=2017-10-31`</li></ul>|
+| Művelet beolvasása | A válaszban korábban a "Notification-mail" mezőt támogató ajánlatok esetében ez a mező elavult, és az áttelepített ajánlatok esetében már nem lesz visszaküldve. | Az áttelepített ajánlatok esetében a továbbiakban nem küldünk értesítéseket a kérelmekben megadott e-mailek listájára. Ehelyett az API szolgáltatás egyezteti az e-mailek küldését a partner Centerben az értesítő e-mail folyamattal. A műveleti folyamatokról szóló értesítéseket a rendszer a fiókpartner fiók beállításai között, az eladó kapcsolattartási adatok szakaszában megadott e-mail-címre küldi el.<br><br>Győződjön meg arról, hogy az e-mail-cím meg van határozva az eladó kapcsolattartási adatai szakaszban a fiókpartner [fiók beállításai](https://partner.microsoft.com/dashboard/account/management) között. |
+|||

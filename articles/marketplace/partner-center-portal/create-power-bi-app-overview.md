@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/02/2020
-ms.openlocfilehash: c40ea07fc4224052aa2474ebd61ef7838ba2cedf
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 82e131b0e6209089b658c622b415e997b40e9e4b
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82837838"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964651"
 ---
 # <a name="power-bi-app-creation-overview"></a>Power BI alkalmazás-létrehozás áttekintése
 
@@ -66,16 +66,16 @@ A legfontosabb technikai eszköznek egy [Power bi alkalmazásnak](https://go.mic
 2. Az alkalmazás létrehozása és tesztelése Power BIban.
 3. Amikor megkapja az alkalmazás-telepítési webcímet, adja hozzá a partner Center **technikai konfigurációs** lapjához.
 
-Miután létrehozta és tesztelte az alkalmazást Power BIban, mentse az alkalmazás-telepítési webcímet, mivel szüksége lesz rá [egy Power bi app-ajánlat létrehozásához](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer).
+Miután létrehozta és tesztelte az alkalmazást Power BIban, mentse az alkalmazás-telepítési webcímet, mivel szüksége lesz rá [egy Power bi app-ajánlat létrehozásához](create-power-bi-app-offer.md).
 
 ### <a name="business-requirements"></a>Üzleti követelmények
 
 Az üzleti követelmények közé tartoznak az eljárási, szerződéses és jogi kötelezettségek. A következőket kell tennie:
 
-- Regisztrált kereskedelmi Piactéri közzétevő. Ha nincs regisztrálva, kövesse a [kereskedelmi Piactéri közzétevővé válás](https://docs.microsoft.com/azure/marketplace/become-publisher)lépéseit.
+- Regisztrált kereskedelmi Piactéri közzétevő. Ha nincs regisztrálva, kövesse a [kereskedelmi Piactéri fiók létrehozása a partner Centerben](create-account.md)című témakör lépéseit.
 - Olyan tartalmat adjon meg, amely megfelel az ajánlat AppSource-on való listázásának feltételeinek. További információkért lásd: [alkalmazás listázása a AppSource-on? A következőképpen](https://appsource.microsoft.com/blogs/have-an-app-to-list-on-appsource-here-s-how).
 - Fogadja el a következőt: és kövesse a [Microsoft adatvédelmi nyilatkozatát](https://privacy.microsoft.com/privacystatement).
 
 ## <a name="next-step"></a>Következő lépés
 
-- [Power BI app-ajánlat létrehozása a partner Centerben](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer)
+- [Power BI app-ajánlat létrehozása a partner Centerben](create-power-bi-app-offer.md)

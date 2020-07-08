@@ -6,16 +6,16 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/24/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 8622ede9e6f7fba2fde2e0b2e90eb31520a23d04
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6583a2fe5abd0193f37502e07c7b3fa0ee58ba9d
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80892444"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963431"
 ---
 # <a name="analyze-user-navigation-patterns-with-user-flows-in-application-insights"></a>Felhasználói navigációs mintázatok elemzése Felhasználókövetésekkel Application Insights
 
-![Application Insights Felhasználókövetés eszköz](./media/usage-flows/00001-flows.png)
+![Application Insights Felhasználókövetés eszköz](./media/usage-flows/flows.png)
 
 A Felhasználókövetés eszköz megjeleníti, hogyan navigálnak a felhasználók a webhely oldalai és funkciói között. A következő kérdésekre nagyszerű választ kaphat:
 
@@ -33,7 +33,7 @@ A Felhasználókövetés eszköz a megadott kezdeti oldal nézetből, egyéni es
 
 ## <a name="start-by-choosing-an-initial-event"></a>Kezdés: válasszon ki egy kezdeti eseményt
 
-![Válasszon ki egy kezdeti eseményt Felhasználókövetés](./media/usage-flows/00002-flows-initial-event.png)
+![Válasszon ki egy kezdeti eseményt Felhasználókövetés](./media/usage-flows/initial-event.png)
 
 Ha meg szeretné kezdeni a Felhasználókövetés eszközzel kapcsolatos kérdések megválaszolását, válassza ki a kezdeti nézet, az egyéni esemény vagy a kivétel kiindulási pontként való kiszolgálását:
 
@@ -58,7 +58,7 @@ Ha további lépéseket szeretne látni a vizualizációban, használja az **el�
 
 ## <a name="after-visiting-a-page-or-feature-where-do-users-go-and-what-do-they-click"></a>Egy oldal vagy szolgáltatás meglátogatása után hová mennek a felhasználók, és mire kattintanak?
 
-![A Felhasználókövetés használatával megtudhatja, hogy a felhasználók hol kattintanak](./media/usage-flows/00003-flows-one-step.png)
+![A Felhasználókövetés használatával megtudhatja, hogy a felhasználók hol kattintanak](./media/usage-flows/one-step.png)
 
 Ha a kezdeti esemény egy oldal nézet, a vizualizáció első oszlopa ("1. lépés") egy gyors módszer annak megismerésére, hogy a felhasználók Mikor voltak azonnal meglátogatva az oldalt. Próbálja meg megnyitni a webhelyet az Felhasználókövetés vizualizáció melletti ablakban. Hasonlítsa össze elvárásaival, hogy a felhasználók hogyan használják a lapot az "1. lépés" oszlopban szereplő események listájára. Gyakran előfordul, hogy a lap egyik felhasználói felületi eleme az oldal leggyakrabban használt része. Nagyszerű kiindulási pontként használható a webhelyének fejlesztése terén.
 
