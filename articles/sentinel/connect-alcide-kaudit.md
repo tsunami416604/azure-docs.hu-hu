@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/21/2020
 ms.author: yelevin
 ms.openlocfilehash: 121c9258353505b6147aa059d327bc711e9fede4
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85368445"
 ---
 # <a name="connect-your-alcide-kaudit-to-azure-sentinel"></a>A Alcide-kAudit összekötése az Azure Sentinel használatával
@@ -61,7 +61,7 @@ Ha a Alcide kAudit tartozó naplókban szeretné használni a megfelelő sémát
 
 Akár 20 percet is igénybe vehet, amíg a naplók meg nem kezdődnek a Log Analytics.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből a dokumentumból megtudhatta, hogyan csatlakoztatható a Alcide kAudit az Azure Sentinelhez. Az adatösszekötőhöz beépített képességek teljes kihasználásához kattintson a **következő lépések** lapra az adatösszekötő lapon. Itt talál néhány kész minta lekérdezést, hogy megismerkedjen a hasznos információk megtalálásával.
 

@@ -10,10 +10,10 @@ author: dphansen
 ms.author: davidph
 ms.date: 05/19/2020
 ms.openlocfilehash: 2db6c728ac35c6fc2f1fee1a602725371e448104
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85368056"
 ---
 # <a name="machine-learning-and-ai-with-onnx-in-sql-edge-preview"></a>Gépi tanulás és AI a ONNX az SQL Edge-ben (előzetes verzió)
@@ -36,7 +36,7 @@ Modell beszerzése ONNX formátumban:
    * [PyTorch](http://pytorch.org/docs/master/onnx.html)
    * [Tensorflow](https://github.com/onnx/tensorflow-onnx)
    * [Keras](https://github.com/onnx/keras-onnx)
-   * [Scikit-learn](https://github.com/onnx/sklearn-onnx)
+   * [Scikit – Learn](https://github.com/onnx/sklearn-onnx)
    * [CoreML](https://github.com/onnx/onnxmltools)
     
     A támogatott keretrendszerek és példák teljes listájáért lásd: [Konvertálás ONNX formátumra](https://github.com/onnx/tutorials#converting-to-onnx-format).
@@ -52,7 +52,7 @@ A más numerikus típusok a [Cast és a convert](https://docs.microsoft.com/sql/
 
 A modell bemeneteit strukturálni kell, hogy a modell minden bemenete egy tábla egyetlen oszlopának felel meg. Ha például pandák dataframe használ a modell betanításához, akkor minden bemenetnek külön oszlopnak kell lennie a modellhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az SQL Edge üzembe helyezése Azure Portal](deploy-portal.md)
 - [ONNX-modell üzembe helyezése az Azure SQL Edge-ben (előzetes verzió)](deploy-onnx.md)

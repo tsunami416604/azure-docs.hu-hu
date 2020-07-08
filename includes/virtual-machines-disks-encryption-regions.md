@@ -9,10 +9,10 @@ ms.date: 05/15/2020
 ms.author: rogarana
 ms.custom: include file, references_regions
 ms.openlocfilehash: 59df8bef902d5068ceafaf90c530e8b636b40af9
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84346195"
 ---
 A prémium SSD-k, a standard SSD-k és a standard HDD-k esetében csak a következő régiók támogatják az ügyfél által felügyelt kulcsokat:

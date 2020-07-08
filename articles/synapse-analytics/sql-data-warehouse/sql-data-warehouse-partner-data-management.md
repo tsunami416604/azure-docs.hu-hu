@@ -12,10 +12,10 @@ ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 18c72fd5f0ad4505d754efc6015ee626156beec3
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85368124"
 ---
 # <a name="azure-synapse-analytics-data-management-partners"></a>Az Azure szinapszis Analytics adatkezelési partnerei
@@ -33,7 +33,7 @@ Az adattárház-megoldás létrehozásához az Azure szinapszis szinapszis SQL-k
 | ![Sentry One](./media/sql-data-warehouse-partner-data-management/sql-sentry-logo.png) |**Szoftverével (DW Sentry)**<br>Az intelligens adatáthelyezési irányítópult és az Eseménynaptár révén mindig pontosan megtudhatja, hogy mi befolyásolja a számítási feladatokat. Az adatok betöltésére, biztonsági mentésére vagy visszaállítására szolgáló lekérdezések és feladatok láthatóságának biztosítása érdekében soha nem kell aggódnia az Azure-erőforrások legjelentősebb kihasználása érdekében. |[Termék lap](https://sentryone.com/platform/azure-sql-dw-performance-monitoring/)<br>[Azure Marketplace](https://sentryone.com/platform/azure-sql-dw-performance-monitoring/)<br> |
 | ![SqlDBM](./media/sql-data-warehouse-partner-data-management/sqldbm-logo.png) |**SqlDBM**<br>A SqlDBM egy felhőalapú adatmodellezési eszköz, amely egyszerű és kényelmes megoldást kínál az adatbázis bármely böngészőn belüli fejlesztésére. A szükséges adatbázis-szabályok és objektumok, például az adatbázis-kulcsok, a sémák, az indexek, az oszlopok megkötései és a kapcsolatok beépítése. |[Termék lap](http://sqldbm.com/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/sqldbm1583438206845.sqldbm-data-modeling-tool?tab=Overview)<br>|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A többi partnerrel kapcsolatos további információkért tekintse meg az [üzleti intelligencia-partnerek](sql-data-warehouse-partner-business-intelligence.md), [az adatintegrációs partnerek](sql-data-warehouse-partner-data-integration.md) és a [Machine learning és AI-partnerek](sql-data-warehouse-partner-machine-learning-ai.md)című témakört.
 
 

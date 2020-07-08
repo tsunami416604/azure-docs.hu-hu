@@ -9,10 +9,10 @@ ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 2656c7ee433198d2ccd883b1c3a175c141c43813
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85362985"
 ---
 # <a name="create-a-profile-container-with-azure-netapp-files-and-ad-ds"></a>Profil tároló létrehozása Azure NetApp Files és AD DS
@@ -168,7 +168,7 @@ Ez a szakasz a [címkészlet egy fájlmegosztási használatával történő lé
 
 5. Jelölje be az Elfogadom **a licencfeltételeket lehetőség**melletti jelölőnégyzetet.
 
-6. Válassza az **Install** (Telepítés) lehetőséget.
+6. Válassza a **Telepítés** gombot.
 
 7. Navigáljon a **C: \\ Program Files \\ FSLogix \\ apps** elemre, és erősítse meg az ügynök telepítését.
 

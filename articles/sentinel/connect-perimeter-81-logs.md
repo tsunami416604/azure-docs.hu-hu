@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/21/2020
 ms.author: yelevin
 ms.openlocfilehash: a0eb234d9677c479d2cb404b065da408854168e3
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85368439"
 ---
 # <a name="connect-your-perimeter-81-activity-logs-to-azure-sentinel"></a>A peremhálózati 81-tevékenység naplófájljainak összekapcsolása az Azure Sentinel használatával
@@ -52,7 +52,7 @@ A sikeres kapcsolatok létrejötte után az adat megjelenik a **naplók** terül
 
 Akár 20 percet is igénybe vehet, amíg a naplók meg nem kezdődnek.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből a dokumentumból megtudhatta, hogyan csatlakoztatható a peremhálózati 81-tevékenység naplófájljai az Azure Sentinel szolgáltatáshoz. Az adatösszekötőhöz beépített képességek teljes kihasználásához kattintson a **következő lépések** lapra az adatösszekötő lapon. Itt talál egy előre elkészített munkafüzetet és néhány mintául szolgáló lekérdezést, hogy megismerkedjen a hasznos információk megkeresésével.
 

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 05/08/2020
 ms.author: buhollan
 ms.openlocfilehash: 66ad9c27ca69df230d9ce1d2282e734420fa14f3
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85373665"
 ---
 # <a name="configure-application-settings-for-azure-static-web-apps-preview"></a>Alkalmazásbeállítások konfigurálása az Azure statikus Web Apps előzetes verziójának beállításához
@@ -48,7 +48,7 @@ A környezeti változók JavaScript-keretrendszerrel vagy-könyvtárral történ
 ### <a name="javascript-frameworks-and-libraries"></a>JavaScript-keretrendszerek és-kódtárak
 
 - [Angular](https://angular.io/guide/build#configuring-application-environments)
-- [Reagálni](https://create-react-app.dev/docs/adding-custom-environment-variables/)
+- [React](https://create-react-app.dev/docs/adding-custom-environment-variables/)
 - [Karcsú](https://linguinecode.com/post/how-to-add-environment-variables-to-your-svelte-js-app)
 - [Vue](https://cli.vuejs.org/guide/mode-and-env.html)
 
@@ -164,7 +164,7 @@ Az Alkalmazásbeállítások az Azure CLI-n keresztül tekinthetők meg.
    az rest --method post --uri "/subscriptions/<YOUR_SUBSCRIPTION_ID>/resourceGroups/<YOUR_RESOURCE_GROUP_NAME>/providers/Microsoft.Web/staticSites/<YOUR_STATIC_SITE_NAME>/listFunctionAppSettings?api-version=2019-12-01-preview"
    ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Helyi fejlesztés beállítása](local-development.md)

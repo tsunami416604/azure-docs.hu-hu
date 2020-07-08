@@ -4,10 +4,10 @@ description: Útmutató a Recovery Services-tároló Azure-előfizetések és-er
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.openlocfilehash: 9373ea41c3cd5d35c86b8b306a20b5c106105217
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85368226"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Recovery Services-tároló áthelyezése az Azure-előfizetések és-erőforráscsoportok között
@@ -142,7 +142,7 @@ az resource move --destination-group <destinationResourceGroupName> --ids <Vault
 1. Az erőforráscsoportok hozzáférés-vezérlésének beállítása/ellenőrzése.  
 2. A biztonsági mentés jelentéskészítési és figyelési funkcióját újra be kell állítani ahhoz, hogy a tár végrehajtsa az áthelyezést. Az áthelyezési művelet során az előző konfiguráció el fog veszni.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Több különböző típusú erőforrást is áthelyezhet az erőforráscsoportok és az előfizetések között.
 

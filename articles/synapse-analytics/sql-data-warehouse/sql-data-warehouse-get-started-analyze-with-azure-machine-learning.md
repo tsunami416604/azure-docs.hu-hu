@@ -13,10 +13,10 @@ ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tag: azure-Synapse
 ms.openlocfilehash: 76a0e4660967dafec8e314fd681d05e694e562b1
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85368192"
 ---
 # <a name="analyze-data-with-azure-machine-learning"></a>Adatok elemzése Azure Machine Learning segítségével
@@ -131,5 +131,5 @@ Látni fogja, hogy a tesztelési adatkészletnél megjelent két új oszlop.
 
 A Kerékpárvásárló (tényleges) és a Pontozott címkék (előrejelzés) oszlopok összehasonlításával láthatja, milyen jól teljesített a modell. Ezt a modellt használhatja az új ügyfelek előrejelzéséhez, és közzéteheti a modellt webszolgáltatásként, vagy visszaállíthatja az eredményeket az Azure szinapszis szolgáltatásba.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A prediktív gépi tanulási modellek létrehozásával kapcsolatos további tudnivalókért olvassa el [Az Azure Machine Learning bemutatása](https://docs.microsoft.com/azure/machine-learning/overview-what-is-azure-ml) című részt.

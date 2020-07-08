@@ -14,10 +14,10 @@ ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
 ms.openlocfilehash: 75e3f7fc98072957f571937a1627247cdc4a9e7e
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85374441"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>Egyszeri bejelentkezés üzembe helyezésének tervezése
@@ -32,7 +32,7 @@ Számos szervezet a szoftveres (SaaS) alkalmazásokra támaszkodik, például az
 
 Az Azure Marketplace-en több mint 3000 alkalmazás található előre integrált SSO-kapcsolattal, így könnyen integrálható a bérlőbe.
 
-## <a name="licensing"></a>Licencelés
+## <a name="licensing"></a>Licencek
 
 - **Azure ad-licencelés** – SSO az előre integrált SaaS-alkalmazásokhoz ingyenes. A címtárban lévő objektumok száma és a telepíteni kívánt funkciók azonban további licenceket is igényelhetnek. A licencekre vonatkozó követelmények teljes listáját itt tekintheti meg: [Azure Active Directory díjszabása](https://azure.microsoft.com/pricing/details/active-directory/).
 - **Alkalmazás licencelése** – szüksége lesz a megfelelő licencekre az SaaS-alkalmazásokhoz az üzleti igények kielégítése érdekében. Az alkalmazás tulajdonosával határozza meg, hogy az alkalmazáshoz hozzárendelt felhasználók rendelkeznek-e a megfelelő licenccel az alkalmazás szerepköreihez. Ha az Azure AD a szerepkörök alapján felügyeli az automatikus kiosztást, az Azure AD-ben hozzárendelt szerepköröknek meg kell egyezniük az alkalmazásban birtokolt licencek számával. Az alkalmazás tulajdonában lévő licencek helytelen száma hibát eredményezhet a felhasználó kiépítés/frissítése során.
@@ -303,7 +303,7 @@ A következő hivatkozások hibaelhárítási forgatókönyveket mutatnak be. El
 
 - [Probléma az összevont egyszeri bejelentkezéssel az Azure Application Galleryben nem szereplő alkalmazásokhoz](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-federated-sso-non-gallery)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [SAML-alapú SSO hibakeresése](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging)
 

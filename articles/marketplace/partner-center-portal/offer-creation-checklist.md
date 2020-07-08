@@ -8,10 +8,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.openlocfilehash: b30afd4ef69b9b4ecb49b99f4455bf136a6e6eb2
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85374406"
 ---
 # <a name="saas-offer-creation-checklist-in-partner-center"></a>SaaS-ajánlat létrehozási ellenőrzőlistája a partner Centerben
@@ -23,7 +23,7 @@ Az alább megadott vagy megadható elemek szerepelnek.  Bizonyos területek nem 
 >[!Note]
 >Ha elérhető SaaS-ajánlatot hoz létre, győződjön meg arról, hogy implementálja a [SaaS-megvalósítási API](./pc-saas-fulfillment-apis.md)-kkal való integrációt.  Az API-kkal való integráció az egyetlen módszer a piactér megfelelő működéséhez.
 
-| **Item**    | **Cél**  |
+| **Item**    | **Szerep**  |
 | :---------- | :-------------------|
 | [**Új ajánlat – modális**](#new-offer-modal) | Az ajánlatok azonosító adatait gyűjti.  |
 | [Ajánlat beállítása lap](#offer-setup-page) | Lehetővé teszi, hogy belépjen a főbb funkciók használatára, és válassza ki, hogyan értékesítheti ajánlatát a Microsofton keresztül.  |
@@ -163,6 +163,6 @@ Csak akkor érhető el, ha kijelöli az ajánlata tesztelésére szolgáló megh
 | :---------------- | :-----------| 
 | A minősítéssel kapcsolatos megjegyzések  | Választható. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Új SaaS-ajánlat létrehozása](./create-new-saas-offer.md)

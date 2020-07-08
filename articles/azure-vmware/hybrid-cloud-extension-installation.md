@@ -4,10 +4,10 @@ description: A VMware Hybrid Cloud Extension (HCX) megoldás beállítása az Az
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.openlocfilehash: 3037d12ebbb036098cfc00a42521513bc2df6170
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85367546"
 ---
 # <a name="install-hcx-for-azure-vmware-solution"></a>Az Azure VMware-megoldás HCX telepítése
@@ -273,6 +273,6 @@ A készülék állapotának vizsgálatához válassza az **összekötő**  >  **
       
 ![Berendezés állapota](./media/hybrid-cloud-extension-installation/appliance-status.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha a készülék összekötő **alagútjának állapota** felfelé és zöldre van **állítva** , készen áll az AVS virtuális gépek áttelepítésére és védelemre a HCX használatával. Tekintse meg a VMware [HCX dokumentációját](https://docs.vmware.com/en/VMware-HCX/index.html) és a VMware [HCX átVirtual Machines telepítését](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-D0CD0CC6-3802-42C9-9718-6DA5FEC246C6.html?hWord=N4IghgNiBcIBIGEAaACAtgSwOYCcwBcMB7AOxAF8g) a VMware technikai dokumentációjában.

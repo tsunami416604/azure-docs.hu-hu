@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/21/2020
 ms.author: yelevin
 ms.openlocfilehash: 964bab2b81f6ce69e77fd69cab55f6d1894e4edb
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85368449"
 ---
 # <a name="connect-ai-vectra-detect-to-azure-sentinel"></a>AI Vectra-észlelés összekötése az Azure Sentinel használatával
@@ -47,7 +47,7 @@ Ez a cikk azt ismerteti, hogyan csatlakoztatható a [AI Vectra-észlelési](http
 
 4. Folytassa a [3. lépéssel: a kapcsolat ellenőrzése](connect-cef-verify.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből a dokumentumból megtudhatta, hogyan csatlakoztathatók az AI Vectra-eszközök az Azure Sentinelhez. Az adatösszekötőhöz beépített képességek teljes kihasználásához kattintson a **következő lépések** lapra az adatösszekötő lapon. Itt talál néhány kész minta lekérdezést, hogy megismerkedjen a hasznos információk megtalálásával.
 

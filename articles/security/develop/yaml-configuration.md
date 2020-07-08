@@ -13,10 +13,10 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: 6985107dd8f13e26875cf5ea7428b3280d00cea1
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85367257"
 ---
 # <a name="yaml-configuration-options-to-customize-the-build-tasks"></a>YAML konfigurációs beállítások a felépítési feladatok testreszabásához
@@ -162,6 +162,6 @@ Ez a cikk felsorolja az egyes összeállítási feladatokban elérhető összes 
 | VstsConsole | logikai | mindig | False (Hamis) | igaz |  | Eredmények írása a folyamat-konzolra.
 | ToolLogsNotFoundAction | választásilista | mindig | True (Igaz) | Standard | Hiba, nincs, standard, figyelmeztetés | A kiválasztott eszköz (vagy bármely eszköz, ha az összes eszköz) naplóihoz tartozó naplók nem találhatók, ami azt jelenti, hogy az eszközt nem futtatták.<br/><br/>**Beállítások**<br/>**Nincs:** Az üzenet csak az VSTS változó **System. debug** értéke **true**értékre való beállításával érhető el a részletes kimeneti adatfolyamhoz.<br/>**Standard:** (alapértelmezett) a standard kimeneti üzenetet ír, amely szerint nem találhatók naplók az eszközhöz.<br/>**Figyelmeztetés:** Egy sárga figyelmeztető üzenetet ír arról, hogy az eszközhöz nem található napló, amely figyelmeztetésként megjelenik a Build Summary (összefoglalás) lapon.<br/>**Hiba:** Egy piros hibaüzenetet ír, és kivételt jelez, és megszakítja a buildet. Ezzel a beállítással biztosíthatja, hogy az eszközök milyen módon legyenek futtatva.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha további kérdése van a biztonsági kód elemzési bővítménnyel és a rendelkezésre álló eszközökkel kapcsolatban, tekintse meg a [Gyakori kérdések oldalát](security-code-analysis-faq.md).

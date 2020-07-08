@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/24/2019
 ms.author: allensu
 ms.openlocfilehash: 2dff916bf005b307f27264ad7a17864fbba50872
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85367393"
 ---
 # <a name="configure-load-balancing-and-outbound-rules-in-standard-load-balancer-by-using-the-azure-portal"></a>Terheléselosztás és kimenő szabályok konfigurálása standard Load Balancerban a Azure Portal használatával
@@ -166,11 +166,11 @@ A terheléselosztó kimenő szabályai a háttér-készletben lévő virtuális 
 
 4. Válassza a **Hozzáadás** elemet.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs rá szükség, törölje az erőforráscsoportot, a terheléselosztót és az összes kapcsolódó erőforrást. Válassza ki azt az erőforráscsoportot, amely tartalmazza a terheléselosztó **myresourcegroupslb erőforráscsoportban** , majd válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A cikk tartalma:
  - Létrehozta a standard Load balancert.
