@@ -11,10 +11,10 @@ ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: de5dd051804f3a0a7d1b0d32b998262af13e8926
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85389190"
 ---
 # <a name="enable-keep-me-signed-in-kmsi-in-azure-active-directory-b2c"></a>A bejelentkezett (KMSI) Azure Active Directory B2C használatának engedélyezése
@@ -134,6 +134,6 @@ Azt javasoljuk, hogy a SessionExpiryInSeconds értékét rövid időtartamra (12
 1. A böngésző címsorába távolítsa el a `&prompt=login` lekérdezési karakterlánc paramétert, amely arra kényszeríti a felhasználót, hogy adja meg a kéréshez tartozó hitelesítő adatait.
 1. A böngészőben kattintson az **Indítás**gombra. Most Azure AD B2C egy hozzáférési jogkivonatot fog kiadni, és nem kéri újra a bejelentkezést. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Keresse meg a minta szabályzatot [itt](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/keep%20me%20signed%20in).

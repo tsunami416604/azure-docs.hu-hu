@@ -12,10 +12,10 @@ ms.date: 02/28/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 892e94ba1943b667ffeba63a80f4409b35ea5ec3
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85389292"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Ismerkedés az egyéni szabályzatokkal Azure Active Directory B2C
@@ -44,7 +44,7 @@ Az [Egyéni házirendek](custom-policy-overview.md) olyan konfigurációs fájlo
 1. A **név**mezőben adja meg a nevet `TokenSigningKeyContainer` . Lehet, hogy az előtag `B2C_1A_` automatikusan hozzá lesz adva.
 1. A **kulcs típusa**beállításnál válassza az **RSA**elemet.
 1. A **kulcshasználat**beállításnál válassza az **aláírás**lehetőséget.
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 ### <a name="create-the-encryption-key"></a>A titkosítási kulcs létrehozása
 
@@ -53,7 +53,7 @@ Az [Egyéni házirendek](custom-policy-overview.md) olyan konfigurációs fájlo
 1. A **név**mezőben adja meg a nevet `TokenEncryptionKeyContainer` . Lehetséges, hogy az `B2C_1A` _ előtag automatikusan hozzá van adva.
 1. A **kulcs típusa**beállításnál válassza az **RSA**elemet.
 1. A **kulcshasználat**beállításnál válassza a **titkosítás**lehetőséget.
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 ### <a name="create-the-facebook-key"></a>A Facebook-kulcs létrehozása
 
@@ -64,7 +64,7 @@ Adja hozzá a Facebook-alkalmazás [titkos](identity-provider-facebook.md) kulcs
 1. A **név**mezőbe írja be a következőt: `FacebookSecret` . Lehet, hogy az előtag `B2C_1A_` automatikusan hozzá lesz adva.
 1. A **Secret (titkos**kód) mezőben adja meg a Facebook-alkalmazás *titkos* kódját a Developers.Facebook.com. Ez az érték a titok, nem az alkalmazás azonosítója.
 1. A **kulcshasználat**beállításnál válassza az **aláírás**lehetőséget.
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 ## <a name="register-identity-experience-framework-applications"></a>Identity Experience Framework-alkalmazások regisztrálása
 
@@ -210,7 +210,7 @@ Az [Előfeltételek](#prerequisites)értelmében a Facebook *nem* szükséges eg
 1. Az **Egyéni házirendek**területen válassza a **B2C_1A_signup_signin**lehetőséget.
 1. Kattintson a **Futtatás most** lehetőségre, és válassza a Facebook lehetőséget a Facebook használatával való bejelentkezéshez és az egyéni szabályzat teszteléséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ezután próbálkozzon Azure Active Directory (Azure AD) identitás-szolgáltatóként való hozzáadásával. Az első lépéseket ismertető útmutatóban használt alapfájl már tartalmazza a más személyazonossági szolgáltatók (például az Azure AD) hozzáadásához szükséges tartalmakat.
 

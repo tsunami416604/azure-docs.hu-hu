@@ -11,10 +11,10 @@ ms.date: 09/06/2017
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: accd32f376c6030900a9f9a3c29547118d0a1a7b
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85388510"
 ---
 # <a name="azure-ad-b2c-extensions-app"></a>Azure AD B2C: bővítmények alkalmazás
@@ -36,7 +36,7 @@ Annak ellenőrzése, hogy a B2C-Extensions-app megtalálható-e:
 
 Ha véletlenül törölte a B2C-Extensions-app-t, 30 napja van a helyreállításhoz. Az alkalmazást a Graph API használatával állíthatja vissza:
 
-1. Keresse meg a következőt: [https://graphexplorer.azurewebsites.net/](https://graphexplorer.azurewebsites.net/) .
+1. Lépjen a [https://graphexplorer.azurewebsites.net/](https://graphexplorer.azurewebsites.net/) lapra.
 1. Jelentkezzen be a webhelyre azon Azure AD B2C könyvtár globális rendszergazdájaként, amely számára vissza kívánja állítani a törölt alkalmazást. A globális rendszergazdának az alábbihoz hasonló e-mail-címmel kell rendelkeznie: `username@{yourTenant}.onmicrosoft.com` .
 1. Adjon meg egy HTTP GET-t az URL `https://graph.windows.net/myorganization/deletedApplications` -cím és az API-Version = 1.6 között. Ez a művelet felsorolja az elmúlt 30 napban törölt összes alkalmazást.
 1. Keresse meg az alkalmazást a listában, ahol a név a "B2C-Extension-app" előtaggal kezdődik, és másolja a `objectid` tulajdonság értékét.

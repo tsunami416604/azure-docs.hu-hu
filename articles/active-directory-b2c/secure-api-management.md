@@ -11,10 +11,10 @@ ms.date: 04/10/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 1ea11008155899e09bf461e56a8bb4981d37238d
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85385416"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>Azure API Management API biztonságossá tétele Azure AD B2C
@@ -73,7 +73,7 @@ Ezután szerezze be a jól ismert konfigurációs URL-címet az egyik Azure AD B
 
     Ezt az értéket a következő szakaszban kell használni az API Azure API Management-ban való konfigurálásakor.
 
-Most két, a következő szakaszban való használatra rögzített URL-címet kell megadnia: az OpenID Connect jól ismert konfigurációs végpont URL-címét és a kibocsátó URI-JÁT. Példa:
+Most két, a következő szakaszban való használatra rögzített URL-címet kell megadnia: az OpenID Connect jól ismert konfigurációs végpont URL-címét és a kibocsátó URI-JÁT. Például:
 
 ```
 https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1_signupsignin1/v2.0/.well-known/openid-configuration
@@ -154,7 +154,7 @@ A közzétett API-t meghívó ügyfélalkalmazás (ebben az esetben a posta) ér
 
 Ha a hozzáférési jogkivonat és a APIM-előfizetés kulcsa rögzített, most már készen áll annak tesztelésére, hogy helyesen konfigurálta-e a biztonságos hozzáférést az API-hoz.
 
-1. Hozzon létre egy új `GET` kérelmet a [Poster](https://www.getpostman.com/)-ben. A kérelem URL-címéhez adja meg az előfeltételként közzétett API hangszórók listája végpontját. Példa:
+1. Hozzon létre egy új `GET` kérelmet a [Poster](https://www.getpostman.com/)-ben. A kérelem URL-címéhez adja meg az előfeltételként közzétett API hangszórók listája végpontját. Például:
 
     `https://contosoapim.azure-api.net/conference/speakers`
 
@@ -271,7 +271,7 @@ A következő példában a APIM bejövő házirendje azt szemlélteti, hogyan fo
 </policies>
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure API Management-szabályzatokkal kapcsolatos további részletekért tekintse meg a [APIM házirend-referenciájának indexét](../api-management/api-management-policies.md).
 

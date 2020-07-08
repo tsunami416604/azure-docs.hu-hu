@@ -12,10 +12,10 @@ ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 78de242cb6fd1d670dc9564a2725070b7424b5b5
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85385552"
 ---
 # <a name="integrating-trusona-with-azure-active-directory-b2c"></a>A Trusona integrálása Azure Active Directory B2C
@@ -140,7 +140,7 @@ Ebben az esetben a Trusona identitás-szolgáltatóként viselkedik a Azure AD B
 
 3. Mivel a Trusona természeténél fogva többtényezős, érdemes letiltani a többtényezős hitelesítést.
 
-4. Kattintson a **Létrehozás** gombra.
+4. Válassza a **Létrehozás** lehetőséget.
 
 5. A **felhasználói attribútumok és jogcímek**területen válassza a **továbbiak megjelenítése**lehetőséget. Az űrlapon válasszon ki legalább egy olyan attribútumot, amelyet a korábbi szakaszban a személyazonosság-szolgáltató beállítása során adott meg.
 
@@ -158,7 +158,7 @@ Ebben az esetben a Trusona identitás-szolgáltatóként viselkedik a Azure AD B
 
 5. A biztonságos QR-kód vizsgálatát követően a 3. lépésben megadott válasz URL-címre kell átirányítani.
 
-## <a name="next-steps"></a>Következő lépések  
+## <a name="next-steps"></a>További lépések  
 
 További információkért tekintse át a következő cikkeket:
 

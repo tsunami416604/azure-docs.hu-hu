@@ -8,10 +8,10 @@ ms.date: 09/10/2019
 author: luisbosquez
 ms.author: lbosq
 ms.openlocfilehash: a0feac9bbd98dc4c67464e84e9a3204bd9730355
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85390346"
 ---
 # <a name="system-document-properties"></a>Rendszerdokumentum tulajdonságai
@@ -40,6 +40,6 @@ Az alábbi bejárással létrehozott csúcs **123 másodperc** múlva automatiku
 g.addV('vertex-one').property('ttl', 123)
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [A Cosmos DB optimista egyidejűség-kezelése](faq.md#how-does-the-sql-api-provide-concurrency)
 * Élettartam [(TTL)](time-to-live.md) Azure Cosmos db

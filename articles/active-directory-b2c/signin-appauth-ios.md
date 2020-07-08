@@ -12,10 +12,10 @@ ms.date: 11/30/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 558e6cea4d5e0c9bd0f6222f9070d2b867a5bf44
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85384940"
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C: bejelentkezés iOS-alkalmazás használatával
@@ -62,7 +62,7 @@ Ezt a mintát a [githubon lévő iOS AppAuth projekt](https://github.com/openid/
 > A AppAuth az iOS 7-es vagy újabb verzióját támogatja.  Ahhoz azonban, hogy támogassa a közösségi bejelentkezéseket a Google-on, SFSafariViewController van szükség, amelyhez iOS 9-es vagy újabb verzió szükséges.
 >
 
-### <a name="configuration"></a>Configuration
+### <a name="configuration"></a>Konfiguráció
 
 Az Azure AD B2Cval való kommunikációt az engedélyezési végpont és a jogkivonat-végpont URI-k megadásával állíthatja be.  Az URI-k létrehozásához a következő információk szükségesek:
 * Bérlő azonosítója (például contoso.onmicrosoft.com)

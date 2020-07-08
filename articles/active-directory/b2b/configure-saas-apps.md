@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9b8f38d42003645e6d6544d5c2064a0c8e692c0f
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85387350"
 ---
 # <a name="configure-saas-apps-for-b2b-collaboration"></a>SaaS-alkalmazások B2B-együttműködéshez
@@ -32,7 +32,7 @@ Az alkalmazásra vonatkozó utasítások megtekintése előtt itt talál néhán
 * A felhasználói attribútumok között, hogy enyhítse az összekeveredett felhasználói profil lemezével (UPD) kapcsolatos problémákat a vendég felhasználóinál, mindig állítsa be a **felhasználói azonosítót** a **User. mail**értékre.
 
 
-## <a name="dropbox-business"></a>Dropbox üzleti
+## <a name="dropbox-business"></a>Dropbox Business
 
 Annak engedélyezéséhez, hogy a felhasználók a szervezeti fiókjával jelentkezzenek be, manuálisan kell konfigurálnia a Dropbox vállalatot, hogy az Azure AD-t használja Security Assertion Markup Language (SAML) identitás-szolgáltatóként. Ha a Dropbox Business nem erre van konfigurálva, nem tud rákérdezni vagy más módon engedélyezni a felhasználókat az Azure AD használatával történő bejelentkezéshez.
 
@@ -98,7 +98,7 @@ Az SAML protokollon alapuló összevonás használatával engedélyezheti a felh
 
 A Dropbox meghívásokhoz hasonlóan a Box-meghívásoknak is be kell váltaniuk a meghívót a Box alkalmazásban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse meg a következő cikkeket az Azure AD B2B együttműködésről:
 

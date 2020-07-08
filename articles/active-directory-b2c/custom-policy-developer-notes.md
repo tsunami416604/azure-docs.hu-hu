@@ -12,10 +12,10 @@ ms.date: 05/19/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 7defc33f8e3e2daca60fa5c15c41c62333ffc2d7
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85389258"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Fejlesztői megjegyzések a Azure Active Directory B2C egyéni házirendjeihez
@@ -155,7 +155,7 @@ Az egyéni házirend-/identitás-keretrendszer képességei állandó és gyors 
 | [Eseménynaplók Application Insights](application-insights-technical-profile.md) |  | X |  | Az élesben használt felhasználói folyamatok figyelésére szolgál. |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Győződjön [meg arról, hogy elérhetők-e a Microsoft Graph műveletek Azure ad B2C](microsoft-graph-operations.md)
 - További információ [az egyéni házirendekről és a felhasználói folyamatokkal kapcsolatos különbségekről](custom-policy-overview.md).

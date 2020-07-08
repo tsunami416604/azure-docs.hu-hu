@@ -11,10 +11,10 @@ ms.date: 11/09/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 5d6d6169f8662c9b973fb7f624a590322f62b0b5
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85387524"
 ---
 # <a name="use-the-azure-portal-to-create-and-delete-consumer-users-in-azure-ad-b2c"></a>A Azure Portal használatával hozhat létre és törölhet felhasználói felhasználókat a Azure AD B2C
@@ -31,7 +31,7 @@ A [Azure ad B2C felhasználói fiókjainak áttekintése](user-overview.md)cím�
 
 * Feladatok
 * Vendég
-* Fogyasztói
+* Ügyfélszolgáltatások
 
 Ez a cikk a Azure Portal **felhasználói fiókjainak** használatáról szól. A munkahelyi és a vendég fiókok létrehozásával és törlésével kapcsolatos információkért lásd: [felhasználók hozzáadása vagy törlése Azure Active Directory használatával](../active-directory/fundamentals/add-users-azure-active-directory.md).
 
@@ -48,7 +48,7 @@ Ez a cikk a Azure Portal **felhasználói fiókjainak** használatáról szól. 
 1. Választható Ha szeretné, hogy a felhasználó ne jelentkezzen be, tiltsa le a **bejelentkezést** . A bejelentkezést később is engedélyezheti, ha szerkeszti a felhasználó **profilját** a Azure Portal.
 1. Válassza az **Automatikus létrehozás jelszava** vagy a **jelszó létrehozása**lehetőséget.
 1. Adja **meg a** felhasználó vezetéknevét és **vezetéknevét**.
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 Ha nem jelölte be a **Bejelentkezés blokkolását**, a felhasználó bejelentkezhet a megadott bejelentkezési módszerrel (e-mail vagy Felhasználónév).
 
@@ -59,6 +59,6 @@ Ha nem jelölte be a **Bejelentkezés blokkolását**, a felhasználó bejelentk
 
 A felhasználók a törlést követő 30 napon belüli visszaállításával, illetve a felhasználók végleges törlésével kapcsolatos részletekért lásd: [a közelmúltban törölt felhasználó visszaállítása vagy eltávolítása a Azure Active Directory használatával](../active-directory/fundamentals/active-directory-users-restore.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az automatikus felhasználói felügyeleti forgatókönyvek esetében például a felhasználók áttelepítése egy másik identitás-szolgáltatótól a Azure AD B2C könyvtárba [: Azure ad B2C: felhasználói áttelepítés](user-migration.md).

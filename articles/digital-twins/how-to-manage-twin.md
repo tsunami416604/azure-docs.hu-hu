@@ -1,5 +1,5 @@
 ---
-title: Digitális ikrek kezelése
+title: Digitális ikereszközök kezelése
 titleSuffix: Azure Digital Twins
 description: 'Lásd: egyéni ikrek és kapcsolatok lekérése, frissítése és törlése.'
 author: baanders
@@ -8,13 +8,13 @@ ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: 707cfb2e9bea3286daa92ea54f7bb9659a455caf
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85390516"
 ---
-# <a name="manage-digital-twins"></a>Digitális ikrek kezelése
+# <a name="manage-digital-twins"></a>Digitális ikereszközök kezelése
 
 A környezetben található entitásokat a [digitális ikrek](concepts-twins-graph.md)jelölik. A digitális ikrek kezelése magában foglalhatja a létrehozását, módosítását és eltávolítását. Ezeknek a műveleteknek a végrehajtásához használhatja a [**DigitalTwins API-kat**](how-to-use-apis-sdks.md), a [.net (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)-t vagy az [Azure digitális Twins parancssori](how-to-use-cli.md)felületét.
 
@@ -146,7 +146,7 @@ A `object result = await client.DigitalTwins.GetByIdAsync("my-moon");` *Hold*tí
 
 A digitális iker definiált tulajdonságai a digitális iker felső szintű tulajdonságaiként lesznek visszaadva. A DTDL-definíciónak nem részét képező metaadatokat vagy rendszeradatokat előtaggal adja vissza a rendszer `$` . A metaadatok tulajdonságai a következők:
 * Az Azure Digital Twins-példányban lévő digitális iker azonosítója, mint `$dtId` .
-* További tulajdonságok egy `$metadata` szakaszban. Az érintett műveletek közé tartoznak az alábbiak:
+* További tulajdonságok egy `$metadata` szakaszban. Ide tartoznak az alábbiak:
     - A digitális iker modell DTMI.
     - Az egyes írható tulajdonságok szinkronizálási állapota. Ez a leghasznosabb az eszközök esetében, ahol lehetséges, hogy a szolgáltatás és az eszköz eltérő állapotú (például ha egy eszköz offline állapotban van). Ez a tulajdonság jelenleg csak IoT Hubhoz csatlakoztatott fizikai eszközökre vonatkozik. A metaadatok szakaszban található adatokkal megismerheti a tulajdonságok teljes állapotát, valamint az utolsó módosítás időbélyegét is. A szinkronizálási állapottal kapcsolatos további információkért tekintse meg [ezt az IoT hub oktatóanyagot](../iot-hub/tutorial-device-twins.md) az eszköz állapotának szinkronizálásához.
     - Szolgáltatás-specifikus metaadatok, például IoT Hub vagy Azure digitális Twins. 
@@ -341,7 +341,7 @@ Az összes ikrek egyszerre történő törléséről például töltse le az okt
 
 Az ikrek az Azure Digital Twins CLI használatával is kezelhetők. A parancsok a következő [útmutatóban találhatók: az Azure digitális Twins parancssori](how-to-use-cli.md)felületének használata.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan hozhat létre és kezelhet kapcsolatokat a digitális ikrek között:
 * [Útmutató: a Twin gráf kezelése kapcsolatok használatával](how-to-manage-graph.md)

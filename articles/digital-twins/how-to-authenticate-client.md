@@ -8,10 +8,10 @@ ms.date: 4/22/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: e52307c92d9371af6479f64841c6f269ed10e4b4
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85390822"
 ---
 # <a name="authenticate-a-client-application-with-azure-digital-twins"></a>Ügyfélalkalmazás hitelesítése az Azure Digital Twins használatával
@@ -250,7 +250,7 @@ Ne feledje, hogy ha a fenti kód megkeresi az ügyfél-azonosítót, a bérlői 
 
 A MSAL számos további lehetőség közül választhat, amelyek olyan dolgok megvalósítására használhatók, mint a gyorsítótárazás és más hitelesítési folyamatok. Erről további információt a [Microsoft Authentication Library (MSAL) áttekintése](../active-directory/develop/msal-overview.md)című témakörben talál.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ arról, hogyan működik a biztonság az Azure digitális Twinsban:
 * [Fogalmak: az Azure Digital Twins-megoldások biztonsága](concepts-security.md)
