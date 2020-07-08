@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 46a00d55c58992be1009da1de5441ebe4e589a70
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83994969"
 ---
 # <a name="configure-a-conditional-access-policy-in-report-only-mode"></a>Feltételes hozzáférési szabályzat konfigurálása csak jelentési módban
@@ -30,7 +29,7 @@ Feltételes hozzáférési szabályzat konfigurálása csak jelentési módban:
 1. Válassza az **új szabályzat**lehetőséget.
 1. Szükség szerint konfigurálja a házirend feltételeit és a szükséges engedélyezési vezérlőket.
 1. A **házirend engedélyezése** beállításnál állítsa be a váltás **csak jelentés** módba beállítást.
-1. **Mentés** kiválasztása
+1. Válassza a **Mentés** lehetőséget.
 
 > [!TIP]
 > Szerkesztheti a meglévő szabályzatok engedélyezési **házirendjét** **a** (z) rendszerről **csak jelentésre** , de ezzel letiltja a házirendek betartatását. 

@@ -5,17 +5,16 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: reference
 ms.date: 12/17/2019
 ms.openlocfilehash: 51d8c951958dc5fb4b26e92337f96e7a5c758999
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83996601"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript fejlesztői útmutató
 
 Ez az útmutató a JavaScript-Azure Functions írásának bonyolult adatait tartalmazza.
 
-A JavaScript-függvények olyan exportáltak, `function` amelyek indításkor futnak ([a triggerek a function. JSON fájlban vannak konfigurálva](functions-triggers-bindings.md)). Az összes függvénynek átadott első argumentum egy `context` objektum, amely a kötési adatok fogadására és küldésére, a naplózásra és a futtatókörnyezettel folytatott kommunikációra szolgál.
+A JavaScript-függvények olyan exportáltak, amelyek aktiváláskor `function` futnak ([a triggerek konfigurálása function.json](functions-triggers-bindings.md)). Az összes függvénynek átadott első argumentum egy `context` objektum, amely a kötési adatok fogadására és küldésére, a naplózásra és a futtatókörnyezettel folytatott kommunikációra szolgál.
 
 Ez a cikk azt feltételezi, hogy már elolvasta a [Azure functions fejlesztői referenciát](functions-reference.md). Az első függvény létrehozásához a [Visual Studio Code](functions-create-first-function-vs-code.md) használatával vagy [a portálon](functions-create-first-azure-function.md)hajtsa végre a functions rövid útmutatót.
 
@@ -42,7 +41,7 @@ FunctionsProject
  | - extensions.csproj
 ```
 
-A projekt gyökerében található egy megosztott [Host. JSON](functions-host-json.md) fájl, amely a Function alkalmazás konfigurálására használható. Minden függvényhez tartozik egy, a saját programkódját (. js) és a kötési konfigurációs fájlt (function. JSON) tartalmazó mappa. A `function.json` szülő könyvtár neve mindig a függvény neve.
+A projekt gyökerében van egy megosztott [host.jsa](functions-host-json.md) fájlban, amely a Function alkalmazás konfigurálására használható. Minden függvényhez tartozik egy, a saját programkódját (. js) és a kötési konfigurációs fájlt (function.json) tartalmazó mappa. A `function.json` szülő könyvtár neve mindig a függvény neve.
 
 A függvények futtatókörnyezet [2. x verziójában](functions-versions.md) szükséges kötési kiterjesztések a fájlban vannak meghatározva `extensions.csproj` , és a mappában lévő tényleges függvénytárak fájljai vannak megadva `bin` . Helyi fejlesztés esetén [regisztrálnia kell a kötési bővítményeket](./functions-bindings-register.md#extension-bundles). A Azure Portal funkcióinak fejlesztésekor ez a regisztráció történik.
 
@@ -98,17 +97,17 @@ module.exports = async function (context, req) {
 ```
 
 ## <a name="bindings"></a>Kötések 
-A JavaScriptben a [kötések](functions-triggers-bindings.md) konfigurálva és definiálva vannak egy függvény function. JSON fájljában. A függvények számos módon működnek együtt a kötésekkel.
+A JavaScriptben a [kötések](functions-triggers-bindings.md) konfigurálva és definiálva vannak a függvény function.jsján. A függvények számos módon működnek együtt a kötésekkel.
 
-### <a name="inputs"></a>Bemenetek
+### <a name="inputs"></a>Bevitelek
 A bemenet két kategóriára oszlik Azure Functionsban: az egyik az trigger bemenete, a másik pedig a további bemenet. Az trigger és más bemeneti kötések (-kötések `direction === "in"` ) háromféle módon olvashatók be a függvényekben:
- - **_[Ajánlott]_ A függvénynek átadott paraméterek.** A függvénynek a *function. JSON*fájlban megadott sorrendben adják át őket. A `name` *function. JSON* fájlban definiált tulajdonságnak nem kell megegyeznie a paraméter nevével, bár az értéknek kell lennie.
+ - **_[Ajánlott]_ A függvénynek átadott paraméterek.** A függvénynek ugyanolyan sorrendben kell átadni őket, mint *function.js*. A `name` *function.json* elemben definiált tulajdonságnak nem kell megegyeznie a paraméter nevével, bár ennek a következőnek kell lennie:.
  
    ```javascript
    module.exports = async function(context, myTrigger, myInput, myOtherInput) { ... };
    ```
    
- - **Az objektum tagjaként [`context.bindings`](#contextbindings-property) .** Az egyes tagok neve a `name` *function. JSON*fájlban definiált tulajdonság.
+ - **Az objektum tagjaként [`context.bindings`](#contextbindings-property) .** Minden egyes tagot afunction.jsáltal `name` meghatározott tulajdonság nevez *function.json*el.
  
    ```javascript
    module.exports = async function(context) { 
@@ -129,11 +128,11 @@ A bemenet két kategóriára oszlik Azure Functionsban: az egyik az trigger beme
    ```
 
 ### <a name="outputs"></a>Kimenetek
-A () kimeneteit a `direction === "out"` függvény számos módon képes írni. A `name` kötésnek a *function. JSON* fájlban megadott tulajdonsága minden esetben megfelel a függvényben írt Object tag nevének. 
+A () kimeneteit a `direction === "out"` függvény számos módon képes írni. Minden esetben a `name` kötés *function.jsban* definiált tulajdonsága megegyezik a függvényben írt Object tag nevével. 
 
 Az alábbi módszerek egyikével rendelhet adatokat a kimeneti kötésekhez (ne kombinálja ezeket a metódusokat):
 
-- **_[Több kimenet esetén ajánlott)_ Objektum visszaadása.** Ha aszinkron/Promise returning függvényt használ, a hozzárendelt kimeneti adatokat tartalmazó objektumot adhat vissza. Az alábbi példában a kimeneti kötések neve "httpResponse" és "queueOutput" a *function. JSON*fájlban.
+- **_[Több kimenet esetén ajánlott)_ Objektum visszaadása.** Ha aszinkron/Promise returning függvényt használ, a hozzárendelt kimeneti adatokat tartalmazó objektumot adhat vissza. Az alábbi példában a kimeneti kötések neve "httpResponse" és "queueOutput", *function.jsa*következőben:.
 
   ```javascript
   module.exports = async function(context) {
@@ -198,7 +197,7 @@ context.bindings
 
 Egy elnevezett objektumot ad vissza, amely a kötési adatok olvasására vagy hozzárendelésére szolgál. A bemeneti és trigger kötési adatok a tulajdonságok beolvasásával érhetők el `context.bindings` . A kimeneti kötési adatokat hozzá lehet rendelni az adatokat a következőhöz:`context.bindings`
 
-Például a function. JSON következő kötési definíciói lehetővé teszik a várólista tartalmának elérését, `context.bindings.myInput` és kimenetek hozzárendelését egy várólistához a használatával `context.bindings.myOutput` .
+Például a function.jskövetkező kötési definíciói lehetővé teszik a várólista tartalmának elérését, `context.bindings.myInput` és a kimenetek hozzárendelését egy várólistához a használatával `context.bindings.myOutput` .
 
 ```json
 {
@@ -265,7 +264,7 @@ context.log(message)
 Lehetővé teszi, hogy az alapértelmezett nyomkövetési szinten írjon a streaming Function naplóiba. A `context.log` (z) rendszeren további naplózási módszerek érhetők el, amelyek lehetővé teszik a függvények naplóinak más nyomkövetési szinten történő írására:
 
 
-| Metódus                 | Leírás                                |
+| Metódus                 | Description                                |
 | ---------------------- | ------------------------------------------ |
 | **hiba (_üzenet_)**   | A hiba szintű naplózás vagy az alacsonyabb értékre ír.   |
 | **Figyelmeztetés (_üzenet_)**    | Figyelmeztetési szintű naplózás vagy alacsonyabb értékre írás. |
@@ -278,7 +277,7 @@ A következő példa egy naplót ír a figyelmeztetési nyomkövetési szintre:
 context.log.warn("Something has happened."); 
 ```
 
-A [naplózási szint küszöbértékét beállíthatja](#configure-the-trace-level-for-console-logging) a Host. JSON fájlban való bejelentkezéshez. A naplók írásával kapcsolatos további információkért lásd: [nyomkövetési kimenetek írása](#writing-trace-output-to-the-console) alább.
+A [nyomkövetési szint küszöbértékét beállíthatja a naplózáshoz](#configure-the-trace-level-for-console-logging) a fájl host.js. A naplók írásával kapcsolatos további információkért lásd: [nyomkövetési kimenetek írása](#writing-trace-output-to-the-console) alább.
 
 Olvassa el a [figyelési Azure functions](functions-monitoring.md) , ha többet szeretne megtudni a függvények naplóinak megtekintéséről és lekérdezéséről.
 
@@ -306,7 +305,7 @@ context.log.error("An error has occurred.");
 
 Mivel a _hiba_ a legmagasabb nyomkövetési szint, ez a nyomkövetés minden nyomkövetési szinten a kimenetbe kerül, amíg a naplózás engedélyezve van.
 
-Minden `context.log` metódus támogatja ugyanazt a paraméter-formátumot, amelyet a Node. js [util. Format metódusa](https://nodejs.org/api/util.html#util_util_format_format)támogat. Vegye figyelembe a következő kódot, amely az alapértelmezett nyomkövetési szinttel írja be a függvény naplóit:
+Minden `context.log` metódus támogatja ugyanazt a paraméter-formátumot, amelyet a Node.js [util. Format metódus](https://nodejs.org/api/util.html#util_util_format_format)támogat. Vegye figyelembe a következő kódot, amely az alapértelmezett nyomkövetési szinttel írja be a függvény naplóit:
 
 ```javascript
 context.log('Node.js HTTP trigger function processed a request. RequestUri=' + req.originalUrl);
@@ -322,7 +321,7 @@ context.log('Request Headers = ', JSON.stringify(req.headers));
 
 ### <a name="configure-the-trace-level-for-console-logging"></a>A konzol naplózási szintjének konfigurálása
 
-Az 1. x függvények lehetővé teszik a küszöbérték nyomkövetési szintjének meghatározását a konzolra való íráshoz, így könnyen szabályozható, hogy a rendszer hogyan írja a nyomkövetéseket a konzolra a függvényből. A konzolra írt összes nyomkövetés küszöbértékének megadásához használja a `tracing.consoleLevel` Host. JSON fájlban található tulajdonságot. Ez a beállítás a Function alkalmazás összes függvényére érvényes. A következő példa a nyomkövetési küszöbértéket állítja be a részletes naplózás engedélyezéséhez:
+Az 1. x függvények lehetővé teszik a küszöbérték nyomkövetési szintjének meghatározását a konzolra való íráshoz, így könnyen szabályozható, hogy a rendszer hogyan írja a nyomkövetéseket a konzolra a függvényből. A konzolra írt összes nyomkövetés küszöbértékének megadásához használja a `tracing.consoleLevel` host.jsfájljában található tulajdonságot. Ez a beállítás a Function alkalmazás összes függvényére érvényes. A következő példa a nyomkövetési küszöbértéket állítja be a részletes naplózás engedélyezéséhez:
 
 ```json
 {
@@ -332,7 +331,7 @@ Az 1. x függvények lehetővé teszik a küszöbérték nyomkövetési szintjé
 }  
 ```
 
-A **consoleLevel** értékei a metódusok neveinek felelnek meg `context.log` . Ha le szeretné tiltani az összes nyomkövetési naplózást a konzolon, állítsa a **consoleLevel** beállítást _ki_értékre. További információ: [Host. JSON-dokumentáció](functions-host-json-v1.md).
+A **consoleLevel** értékei a metódusok neveinek felelnek meg `context.log` . Ha le szeretné tiltani az összes nyomkövetési naplózást a konzolon, állítsa a **consoleLevel** beállítást _ki_értékre. További információ: [host.json Reference](functions-host-json-v1.md).
 
 ## <a name="http-triggers-and-bindings"></a>HTTP-eseményindítók és-kötések
 
@@ -409,9 +408,9 @@ HTTP-eseményindítók használata esetén a HTTP-kérelem és a válasz-objektu
 
 ## <a name="scaling-and-concurrency"></a>Skálázás és Egyidejűség
 
-Alapértelmezés szerint a Azure Functions automatikusan figyeli az alkalmazás terhelését, és szükség szerint további gazdagép-példányokat hoz létre a Node. js-hez. A functions beépített (nem a felhasználó által konfigurálható) küszöbértékeket használ a különböző típusú triggerekhez, hogy eldöntse, mikor kell hozzáadnia a példányokat, például az üzenetek korát és a várólista méretét a QueueTrigger. További információ: [How the fogyasztás and Premium Plans Work](functions-scale.md#how-the-consumption-and-premium-plans-work).
+Alapértelmezés szerint a Azure Functions automatikusan figyeli az alkalmazás terhelését, és szükség esetén további gazdagép-példányokat hoz létre a Node.jshoz. A functions beépített (nem a felhasználó által konfigurálható) küszöbértékeket használ a különböző típusú triggerekhez, hogy eldöntse, mikor kell hozzáadnia a példányokat, például az üzenetek korát és a várólista méretét a QueueTrigger. További információ: [How the fogyasztás and Premium Plans Work](functions-scale.md#how-the-consumption-and-premium-plans-work).
 
-Ez a skálázási viselkedés elegendő sok Node. js-alkalmazáshoz. A CPU-kötésű alkalmazásokhoz több nyelvi feldolgozói folyamat használatával növelheti a teljesítményt.
+Ez a skálázási viselkedés elegendő sok Node.js alkalmazáshoz. A CPU-kötésű alkalmazásokhoz több nyelvi feldolgozói folyamat használatával növelheti a teljesítményt.
 
 Alapértelmezés szerint minden functions Host-példány egyetlen nyelvi munkavégző folyamattal rendelkezik. A [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) alkalmazás beállításával növelheti a munkavégző folyamatok számát a gazdagépen (legfeljebb 10). Azure Functions ezt követően megpróbál egyenletesen terjeszteni egyidejű függvényeket a feldolgozók között. 
 
@@ -419,7 +418,7 @@ A FUNCTIONS_WORKER_PROCESS_COUNT minden olyan gazdagépre vonatkozik, amelyet a 
 
 ## <a name="node-version"></a>Csomópont verziója
 
-A következő táblázat az operációs rendszer által támogatott Node. js-verziókat jeleníti meg a functions futtatókörnyezet egyes főbb verzióihoz:
+A következő táblázat az operációs rendszer által támogatott Node.js-verziókat mutatja be a functions futtatókörnyezet egyes főbb verzióihoz:
 
 | Függvények verziója | Csomópont verziója (Windows) | Csomópont verziója (Linux) |
 |---|---| --- |
@@ -463,11 +462,11 @@ A függvényalkalmazás kétféleképpen telepíthet csomagokat:
 
 2. Kattintson a **hibakeresési konzol**  >  **cmd**elemre.
 
-3. Nyissa meg a parancsot `D:\home\site\wwwroot` , majd húzza a Package. JSON fájlt a **wwwroot** mappába a lap felső részén.  
+3. Nyissa meg a ( `D:\home\site\wwwroot` z) parancsot, majd húzza a package.jsfájlt a **wwwroot** mappába a lap felső részén.  
     Más módokon is feltölthet fájlokat a Function alkalmazásba. További információ: [Function app Files frissítése](functions-reference.md#fileupdate). 
 
-4. A Package. JSON fájl feltöltése után futtassa a parancsot a `npm install` **kudu távoli végrehajtási konzolon**.  
-    Ez a művelet letölti a Package. JSON fájlban jelzett csomagokat, és újraindítja a Function alkalmazást.
+4. A package.jsfájl feltöltése után futtassa a `npm install` parancsot a **kudu távoli végrehajtási konzolon**.  
+    Ez a művelet letölti a package.jsfájlban jelzett csomagokat, és újraindítja a Function alkalmazást.
 
 ## <a name="environment-variables"></a>Környezeti változók
 
@@ -485,7 +484,7 @@ module.exports = async function (context, myTimer) {
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 
-Helyileg futtatva az Alkalmazásbeállítások a [Local. Settings. JSON](functions-run-local.md#local-settings-file) Project fájlból lesznek beolvasva.
+Helyileg futtatva az Alkalmazásbeállítások beolvasása a Project fájl [local.settings.js](functions-run-local.md#local-settings-file) .
 
 ## <a name="configure-function-entry-point"></a>Függvény belépési pontjának konfigurálása
 
@@ -557,11 +556,11 @@ Ebben a példában fontos megjegyezni, hogy bár egy objektum exportálása foly
 
 ## <a name="local-debugging"></a>Helyi hibakeresés
 
-A paraméterrel megkezdett a `--inspect` Node. js folyamat egy hibakeresési ügyfelet figyel a megadott porton. Azure Functions 2. x verzióban megadhat argumentumokat, amelyeket a kód futtatásához a Node. js-folyamatba továbbíthat, ha hozzáadja a környezeti változót vagy az alkalmazás beállítását `languageWorkers:node:arguments = <args>` . 
+A `--inspect` paraméterrel megkezdett Node.js folyamat egy hibakeresési ügyfelet figyel a megadott porton. Azure Functions 2. x verzióban megadhat argumentumokat a kódot futtató Node.js folyamathoz a környezeti változó vagy az alkalmazás beállításainak hozzáadásával `languageWorkers:node:arguments = <args>` . 
 
-A helyi hibakereséshez adja hozzá a t a `"languageWorkers:node:arguments": "--inspect=5858"` `Values` [Local. Settings. JSON](https://docs.microsoft.com/azure/azure-functions/functions-run-local#local-settings-file) fájlhoz, és csatoljon egy hibakeresőt az 5858-as porthoz.
+A helyi hibakereséshez adja hozzá a `"languageWorkers:node:arguments": "--inspect=5858"` `Values` fájlt a [local.settings.js](https://docs.microsoft.com/azure/azure-functions/functions-run-local#local-settings-file) fájlhoz, és csatoljon egy hibakeresőt a 5858-es porthoz.
 
-A VS Code használatakor a `--inspect` rendszer automatikusan hozzáadja a paramétert a `port` projekt Launch. JSON fájljában található érték használatával.
+A VS Code használatakor a `--inspect` rendszer automatikusan hozzáadja a paramétert a `port` projekt launch.jsfájljában lévő érték használatával.
 
 Az 1. x verzióban a beállítás `languageWorkers:node:arguments` nem fog működni. A hibakeresési portot a [`--nodeDebugPort`](https://docs.microsoft.com/azure/azure-functions/functions-run-local#start) Azure functions Core Tools paraméterrel lehet kiválasztani.
 
@@ -581,7 +580,7 @@ A [Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-az
 
 Ha a Visual Studio Code-ban szeretné létrehozni az írógéppel Function alkalmazást, válassza `TypeScript` a nyelvét a Function-alkalmazás létrehozásakor.
 
-Amikor lenyomja az **F5** billentyűt az alkalmazás helyi futtatásához, a transpilation a gazdagép (a (z). exe) inicializálása előtt történik. 
+Amikor lenyomja az **F5** billentyűt az alkalmazás helyi futtatásához, a transpilation a gazdagép (func.exe) inicializálása előtt történik. 
 
 Ha a Function alkalmazást az Azure-ban az **üzembe helyezés az alkalmazásban...** gomb használatával helyezi üzembe, a Azure functions-bővítmény először a JavaScript-fájlok éles környezetben való létrehozására kész buildjét hozza létre a géppel készített forrásfájlok közül.
 
@@ -645,7 +644,7 @@ Ha egy Azure Functions-alkalmazásban szolgáltatás-specifikus ügyfelet haszn�
 ### <a name="use-async-and-await"></a>Használat `async` és`await`
 
 A JavaScript-Azure Functions írásakor a és a kulcsszavak használatával kell írnia a kódot `async` `await` . A kód és a visszahívások helyett a (z) és az `async` `await` `.then` `.catch` ígéretekkel való írás során két gyakori probléma elkerülhető:
- - [A Node. js folyamat összeomlása](https://nodejs.org/api/process.html#process_warning_using_uncaughtexception_correctly)miatt fellépő nem kezelt kivételek eldobása, ami hatással van más függvények végrehajtására.
+ - Olyan nem kezelt kivételeket dobott le, amelyek [összeomlanak a Node.js folyamaton](https://nodejs.org/api/process.html#process_warning_using_uncaughtexception_correctly), ami hatással van más függvények végrehajtására.
  - Váratlan viselkedés, például hiányzó naplók a Context. log naplófájlból, a nem megfelelően várt aszinkron hívások miatt.
 
 Az alábbi példában az aszinkron metódust `fs.readFile` egy hiba-első visszahívási függvény hívja meg második paramétereként. Ez a kód a fent említett problémákat is okozhatja. A megfelelő hatókörben nem kifejezetten bekövetkező kivétel összeomlott a teljes folyamaton (a probléma #1). A `context.done()` visszahívás funkció hatókörén kívüli hívás azt jelenti, hogy a függvény meghívása a fájl olvasása előtt megszűnik (probléma #2). Ebben a példában a- `context.done()` től kezdődően a hiányzó naplóbejegyzések közül a túl korán való hívása `Data from file:` .
@@ -669,7 +668,7 @@ module.exports = function (context) {
 }
 ```
 
-A `async` és a `await` kulcsszavak használata segít elkerülni mindkét hibát. A Node. js segédprogram függvényt kell használnia a [`util.promisify`](https://nodejs.org/api/util.html#util_util_promisify_original) hiba – első visszahívási stílusú függvények bekapcsolásához a várt függvényekbe.
+A `async` és a `await` kulcsszavak használata segít elkerülni mindkét hibát. A [`util.promisify`](https://nodejs.org/api/util.html#util_util_promisify_original) hiba-első visszahívás-stílusú függvények várakozási függvényekben való bekapcsolásához használja a Node.js Utility függvényt.
 
 Az alábbi példában a függvény végrehajtása során felmerülő kezeletlen kivételek csak a kivételt okozó egyéni hívás meghiúsulnak. A `await` kulcsszó azt jelenti, hogy a `readFileAsync` csak a befejezést követő végrehajtás után következik `readFile` be. `async`A és a `await` esetében nem kell meghívnia a `context.done()` visszahívást is.
 

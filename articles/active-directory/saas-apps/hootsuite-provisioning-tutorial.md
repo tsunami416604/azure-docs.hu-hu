@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 04/15/2020
 ms.author: Zhchia
 ms.openlocfilehash: 1adbb0961ab610db936107f2fff210f4acecf2ed
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83883099"
 ---
 # <a name="tutorial-configure-hootsuite-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés HootSuite konfigurálása
@@ -108,7 +107,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
    |---|---|
    |userName (Felhasználónév)|Sztring|
    |e-mailek [type EQ "work"]. Value|Sztring|
-   |Active|Logikai érték|
+   |Active|Logikai|
    |displayName|Sztring|
    |preferredLanguage|Sztring|
    |timezone|Sztring|

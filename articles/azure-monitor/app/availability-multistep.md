@@ -4,10 +4,9 @@ description: Többlépéses webes tesztek beállítása a webalkalmazások Azure
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.openlocfilehash: 04361f7b3306c5f7c164a849d8b05d7cf4756999
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83873348"
 ---
 # <a name="multi-step-web-tests"></a>Többlépéses webes tesztek
@@ -106,7 +105,7 @@ Minden esetben ajánlott létrehozni egy fiókot az alkalmazásában tesztelési
 
 **SAML-hitelesítés**
 
-|Tulajdonság neve| Leírás|
+|Tulajdonság neve| Description|
 |----|-----|
 | Célközönség URI-ja | Az SAML-jogkivonat célközönségének URI-ja.  Ez a Access Control Service (ACS) URI-ja – beleértve az ACS-névteret és a gazdagép nevét. |
 | Tanúsítvány jelszava | Az ügyféltanúsítvány jelszava, amely hozzáférést biztosít a beágyazott titkos kulcshoz. |

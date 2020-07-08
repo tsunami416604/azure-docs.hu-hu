@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: allensu
 ms.openlocfilehash: 75633521474ec3bcbc35cea49ea7a2da6a271e01
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83872500"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-reference"></a>Azure CDN a Verizon Premium Rules motor referenciája
@@ -67,7 +66,7 @@ Az alábbi ábrán látható, hogy milyen munkafolyamatot alkalmazhat a rendszer
 
 ![Házirend-telepítési munkafolyamat](./media/cdn-verizon-premium-rules-engine-reference/policy-deployment-workflow.png)
 
-|Lépés |Leírás |
+|Lépés |Description |
 |---------|---------|
 |[Piszkozat létrehozása](https://docs.vdms.com/cdn/index.html#HRE/AdministeringDraftsandRules.htm#Create)    |    A Piszkozatok olyan szabályokból állnak, amelyek meghatározzák, hogy a CDN hogyan kezelje a tartalomra vonatkozó kéréseket.     |
 |Piszkozat zárolása   |     A Piszkozat véglegesítése után zárolni kell és át kell alakítani egy írásvédett szabályzatot.    |
@@ -75,7 +74,7 @@ Az alábbi ábrán látható, hogy milyen munkafolyamatot alkalmazhat a rendszer
 |Kérelmek felülvizsgálatának üzembe helyezése   |    <br>Egy üzembe helyezési kérelem automatikusan ellenőrzi és észleli a hibát.</br><br>Bár az üzembe helyezési kérelmek többsége automatikusan jóvá van hagyva, az összetettebb házirendek esetében manuális felülvizsgálatra van szükség.</br>   |
 |Házirend üzembe helyezése ([előkészítés](https://docs.vdms.com/cdn/index.html#HRE/Environment.htm#Staging))   |  <br> Az átmeneti környezetbe való központi telepítési kérelem jóváhagyása után a rendszer egy házirendet alkalmaz az átmeneti környezetre. Ez a környezet lehetővé teszi a szabályzatok tesztelését az ál-hely forgalmán.</br><br>Ha a házirend készen áll az élő hely forgalmára, egy új üzembe helyezési kérelmet kell elküldenie az éles környezetben.</br>      |
 |Házirend-telepítés ([éles környezet](https://docs.vdms.com/cdn/index.html#HRE/Environment.htm#Producti))   |  Az éles környezetbe történő központi telepítésre vonatkozó kérés jóváhagyása után a rendszer egy szabályzatot alkalmaz az éles környezetre. Ez a környezet lehetővé teszi, hogy a szabályzat végső hatóságként működjön, hogy meghatározza, hogyan kezelje a CDN az élő forgalmat.     |
-## <a name="syntax"></a>Szintaxis
+## <a name="syntax"></a>Syntax
 
 A speciális karakterek kezelésének módja attól függően változik, hogy a egyezési feltétel vagy szolgáltatás milyen módon kezeli a szöveges értékeket. Az egyeztetési feltétel vagy szolgáltatás a következő módokon értelmezheti a szöveget:
 
@@ -93,19 +92,19 @@ A százalékos szimbólum az URL-kódolás (például:) jelölésére szolgál `
 
 A helyettesítő karakterként értelmezett szöveg a speciális karakterek további jelentését rendeli hozzá. A következő táblázat a következő karakterkészletek értelmezését ismerteti:
 
-Karakter | Leírás
+Karakter | Description
 ----------|------------
 \ | A program fordított perjelet használ a táblázatban megadott karakterek bármelyikének megmeneküléséhez. Meg kell adni egy fordított perjelet közvetlenül a kikerülő különleges karakter előtt.<br/>Az alábbi szintaxis például megmenekül egy csillaggal:`\*`
 % | A százalékos szimbólum az URL-kódolás (például:) jelölésére szolgál `%20` .
 \* | A csillag egy helyettesítő karakter, amely egy vagy több karaktert jelöl.
 Space (Szóköz) | A szóköz karakter azt jelzi, hogy egy egyezési feltétel teljesül a megadott értékek vagy minták valamelyikével.
-érték | Egyetlen árajánlat nem rendelkezik speciális jelentéssel. Az aposztrófok készlete azonban azt jelzi, hogy egy értéket literál értékként kell kezelni. A szolgáltatás a következő módokon használható:<br><br/>– Lehetővé teszi az egyeztetési feltétel teljesülését, ha a megadott érték megegyezik az összehasonlítási érték bármely részével.  Például a `'ma'` következő sztringek bármelyike megfelel: <br/><br/>/Business/**ma**rathon/Asset.htm<br/>**ma**p. gif<br/>/business/template. **ma**p<br /><br />– Lehetővé teszi, hogy egy speciális karakter literál karakterként legyen megadva. Megadhat például egy literál szóköz karaktert úgy, hogy az idézőjelek közé helyezi a szóköz karaktert (azaz `' '` vagy `'sample value'` ).<br/>– Lehetővé teszi, hogy a rendszer üres értéket ad meg. Adja meg az üres értéket egy idézőjelek készletének megadásával (azaz: "").<br /><br/>**Fontos**<br/>– Ha a megadott érték nem tartalmaz helyettesítő karaktert, a rendszer automatikusan literál értékként veszi figyelembe, ami azt jelenti, hogy nem szükséges egyetlen idézőjelet megadni.<br/>– Ha egy fordított perjel nem kerül egy másik karakterbe a táblázatban, figyelmen kívül hagyja a rendszer, ha egy idézőjelek készletében van megadva.<br/>– Egy speciális karakter literál karakterként való megadásának másik módja, ha egy fordított perjelet (azaz) használ `\` .
+érték | Egyetlen árajánlat nem rendelkezik speciális jelentéssel. Az aposztrófok készlete azonban azt jelzi, hogy egy értéket literál értékként kell kezelni. A szolgáltatás a következő módokon használható:<br><br/>– Lehetővé teszi az egyeztetési feltétel teljesülését, ha a megadott érték megegyezik az összehasonlítási érték bármely részével.  Például a `'ma'` következő sztringek bármelyike megfelel: <br/><br/>/Business/**ma**rathon/asset.htm<br/>**ma**p.gif<br/>/business/template. **ma**p<br /><br />– Lehetővé teszi, hogy egy speciális karakter literál karakterként legyen megadva. Megadhat például egy literál szóköz karaktert úgy, hogy az idézőjelek közé helyezi a szóköz karaktert (azaz `' '` vagy `'sample value'` ).<br/>– Lehetővé teszi, hogy a rendszer üres értéket ad meg. Adja meg az üres értéket egy idézőjelek készletének megadásával (azaz: "").<br /><br/>**Fontos:**<br/>– Ha a megadott érték nem tartalmaz helyettesítő karaktert, a rendszer automatikusan literál értékként veszi figyelembe, ami azt jelenti, hogy nem szükséges egyetlen idézőjelet megadni.<br/>– Ha egy fordított perjel nem kerül egy másik karakterbe a táblázatban, figyelmen kívül hagyja a rendszer, ha egy idézőjelek készletében van megadva.<br/>– Egy speciális karakter literál karakterként való megadásának másik módja, ha egy fordított perjelet (azaz) használ `\` .
 
 ### <a name="regular-expressions"></a>Reguláris kifejezések
 
 A reguláris kifejezések határozzák meg a szöveges értéken belül keresendő mintát. A reguláris kifejezések jelölése meghatározott kifejezéseket definiál a különböző szimbólumokhoz. A következő táblázat azt mutatja be, hogyan kezeli a speciális karaktereket a reguláris kifejezéseket támogató feltételek és funkciók egyeztetésével.
 
-Speciális karakter | Leírás
+Speciális karakter | Description
 ------------------|------------
 \ | Egy fordított perjel elmenekül a következő karakterrel, ami azt eredményezi, hogy a karaktert literál értékként kell kezelni, ahelyett, hogy a reguláris kifejezés jelentését kellene használnia. Az alábbi szintaxis például megmenekül egy csillaggal:`\*`
 % | A százalékos szimbólum jelentése a használattól függ.<br/><br/> `%{HTTPVariable}`: Ez a szintaxis egy HTTP-változót azonosít.<br/>`%{HTTPVariable%Pattern}`: Ez a szintaxis egy százalékos szimbólummal azonosítja a HTTP-változót és elválasztóként.<br />`\%`: A százalékos szimbólum megmenekülése lehetővé teszi, hogy literál értékként, vagy URL-kódolást jelezzen (például: `\%20` ).

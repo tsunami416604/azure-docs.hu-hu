@@ -6,10 +6,9 @@ ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
 ms.openlocfilehash: fa1be31f90bd14c1f22d9e389132487094ecb4ff
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83849756"
 ---
 # <a name="author-graphical-runbooks-in-azure-automation"></a>Grafikus runbookok készítése Azure Automation
@@ -34,11 +33,11 @@ A vászon vezérlőelem lehetővé teszi a runbook megtervezését. Hozzáadhat 
 
 A könyvtár vezérlőelem lehetővé teszi, hogy kiválassza a runbook hozzáadni kívánt [tevékenységeket](#use-activities) . Hozzáadja őket a vászonhoz, ahol más tevékenységekhez is csatlakozhat. A könyvtár vezérlőelem a következő táblázatban definiált szakaszt tartalmazza.
 
-| Section | Leírás |
+| Section | Description |
 |:--- |:--- |
 | Parancsmagok |Az összes olyan parancsmag, amely használható a runbook. A parancsmagok modul szerint vannak rendszerezve. Az Automation-fiókba telepített összes modul elérhető. |
 | Runbookok |Az Automation-fiók runbookok. Ezeket a runbookok felveheti a vászonra, hogy gyermek runbookok lehessen használni. Csak a szerkesztett runbook azonos alaptípusú runbookok jelennek meg. Grafikus runbookok csak a PowerShell-alapú runbookok jelennek meg. A grafikus PowerShell-munkafolyamat runbookok csak a PowerShell munkafolyamat-alapú runbookok jelennek meg. |
-| Eszközök |Az Automation-fiókban található [Automation-eszközök](/previous-versions/azure/dn939988(v=azure.100)) , amelyeket a runbook használhat. Egy eszköz runbook való hozzáadása egy munkafolyamat-tevékenységet ad hozzá, amely beolvassa a kijelölt objektumot. Változó eszközök esetén kiválaszthatja, hogy szeretne-e tevékenységet hozzáadni a változóhoz, vagy beállítja a változót. |
+| Objektumok |Az Automation-fiókban található [Automation-eszközök](/previous-versions/azure/dn939988(v=azure.100)) , amelyeket a runbook használhat. Egy eszköz runbook való hozzáadása egy munkafolyamat-tevékenységet ad hozzá, amely beolvassa a kijelölt objektumot. Változó eszközök esetén kiválaszthatja, hogy szeretne-e tevékenységet hozzáadni a változóhoz, vagy beállítja a változót. |
 | Runbook-vezérlés |Az aktuális runbook használható vezérlési tevékenységek. A csatlakozási tevékenységek több bemenetet is igénybe vesznek, és addig vár, amíg az összes befejezve nem fejeződött be a munkafolyamat folytatása előtt. A kód tevékenység a grafikus runbook függően a PowerShell-vagy a PowerShell-munkafolyamat kódjának egy vagy több sorát futtatja. Ezt a tevékenységet egyéni kódokhoz vagy olyan funkciókhoz használhatja, amelyeket nehéz elérni más tevékenységekkel. |
 
 ### <a name="configuration-control"></a>Konfiguráció vezérlő
@@ -69,7 +68,7 @@ A következő példában a [Get-AzVM](https://docs.microsoft.com/powershell/modu
 
 Egy paraméter értékének megadásakor ki kell választania egy adatforrást, amely meghatározza, hogy az érték hogyan legyen megadva. Egy adott paraméter számára elérhető adatforrások az adott paraméter érvényes értékeitől függenek. A Null érték például nem érhető el egy olyan paraméter számára, amely nem engedélyezi null értékek használatát.
 
-| Adatforrás | Leírás |
+| Adatforrás | Description |
 |:--- |:--- |
 | Konstans érték |Adja meg a paraméter értékét. Ez az adatforrás csak a következő adattípusokhoz érhető el: Int32, Int64, string, Boolean, DateTime, Switch. |
 | Tevékenység kimenete |Olyan tevékenység kimenetét használja, amely megelőzi az aktuális tevékenységet a munkafolyamatban. Minden érvényes tevékenység megjelenik. A paraméter értékeként csak a kimenetet előállító tevékenységet használja. Ha a tevékenység több tulajdonsággal rendelkező objektumot ad eredményül, a tevékenység kiválasztása után megadhatja egy adott tulajdonság nevét. |
@@ -151,7 +150,7 @@ A két tevékenység között úgy hozhat létre kapcsolatot, hogy kiválasztja 
 
 Válassza ki a hivatkozást a tulajdonságainak konfigurálásához a konfiguráció panelen. A tulajdonságok közé tartozik a hivatkozás típusa, amelyet az alábbi táblázat ismertet.
 
-| Hivatkozás típusa | Leírás |
+| Hivatkozás típusa | Description |
 |:--- |:--- |
 | Folyamat |A célként megadott tevékenység a forrás tevékenység minden objektumának kimenetén egyszer fut. A célként megadott tevékenység nem fut, ha a forrásoldali tevékenység nem eredményez kimenetet. A forrás tevékenység kimenete objektumként érhető el. |
 | Sequence |A célként megadott tevékenység csak egyszer fut le, amikor megkapja a kimenetet a forrás tevékenységtől. A forrás tevékenység kimenete objektumok tömbje érhető el. |
@@ -257,7 +256,7 @@ Az egyes bemeneti paramétereket az alábbi táblázat tulajdonságai határozz�
 | Tulajdonság | Leírás |
 |:--- |:--- |
 | Name | Kötelező. A paraméter neve. A névnek egyedinek kell lennie a runbook belül. Betűvel kell kezdődnie, és csak betűket, számokat és aláhúzást tartalmazhat. A név nem tartalmazhat szóközt. |
-| Leírás |Választható. A bemeneti paraméter céljának leírása. |
+| Description |Választható. A bemeneti paraméter céljának leírása. |
 | Típus | Választható. A paraméter értékének várt adattípus. A Azure Portal minden paraméter esetében megfelelő vezérlést biztosít az adattípushoz, amikor rákérdez a bemenetre. A támogatott paraméterek a következők: string, Int32, Int64, decimális, Boolean, DateTime és Object. Ha nincs kiválasztva adattípus, a rendszer az alapértelmezett karakterláncot adja meg.|
 | Kötelező | Választható. Ez a beállítás határozza meg, hogy meg kell-e adni egy értéket a paraméterhez. Ha úgy dönt `yes` , a runbook indításakor meg kell adni egy értéket. Ha úgy dönt `no` , nincs szükség értékre a runbook indításakor, és az alapértelmezett érték is használható. A runbook nem indítható el, ha nem ad meg értéket minden olyan kötelező paraméterhez, amelyhez nincs megadva alapértelmezett érték. |
 | Alapértelmezett érték | Választható. Egy paraméterhez használt érték, ha az egyiket nem adja át a rendszer a runbook indításakor. Alapértelmezett érték beállításához válassza a elemet `Custom` . Válassza ki, `None` hogy nem szeretne-e alapértelmezett értéket megadni. |

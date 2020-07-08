@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: d5e44d6b34a16f03d4ca1f82453f1f6e9f074917
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83860613"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Struktúra-táblák létrehozása és adatok betöltése az Azure Blob Storage
@@ -30,7 +29,7 @@ Ez a cikk feltételezi, hogy rendelkezik a következővel:
 * Engedélyezve van a távoli hozzáférés a fürthöz, bejelentkezve, és megnyitotta a Hadoop parancssori konzolt. Ha útmutatásra van szüksége, tekintse meg a [Apache Hadoop-fürtök kezelése](../../hdinsight/hdinsight-administer-use-portal-linux.md)című témakört.
 
 ## <a name="upload-data-to-azure-blob-storage"></a>Adatok feltöltése az Azure Blob Storage-ba
-Ha létrehozott egy Azure-beli virtuális gépet az Azure-beli [virtuális gépek speciális elemzéshez való beállítása](../../machine-learning/data-science-virtual-machine/overview.md)című témakörben leírtak szerint, a parancsfájlt le kell tölteni a *C: \\ Users \\ \< User Name \> \\ Documents \\ adatelemzési szkriptek* könyvtárára a virtuális gépen. Ezek a kaptár-lekérdezések csak az Adatséma és az Azure Blob Storage konfigurációjának megadását igénylik a megfelelő mezőkben, hogy készen álljanak a beküldésre.
+Ha létrehozott egy Azure-beli virtuális gépet az Azure-beli [virtuális gépek speciális elemzéshez való beállítása](../../machine-learning/data-science-virtual-machine/overview.md)című témakörben leírtak szerint, a parancsfájlt le kell tölteni a *C: \\ Users \\ \<user name\> \\ Documents \\ adatelemzési parancsfájlok* könyvtárára a virtuális gépen. Ezek a kaptár-lekérdezések csak az Adatséma és az Azure Blob Storage konfigurációjának megadását igénylik a megfelelő mezőkben, hogy készen álljanak a beküldésre.
 
 Feltételezzük, hogy a kaptárak táblái nem **tömörített** táblázatos formátumban jelennek meg, és az adatokat feltöltötte a Hadoop-fürt által használt alapértelmezett (vagy a további) tárolóba.
 
@@ -112,7 +111,7 @@ Ha a Hadoop-fürt alapértelmezett tárolóját Azure Storage Explorer használa
 ![Azure Storage Explorer a kaptár-lekérdezés kimenetét mutatja](./media/move-hive-tables/output-hive-results-3.png)
 
 ### <a name="submit-hive-queries-with-the-hive-editor"></a><a name="hive-editor"></a>Kaptár-lekérdezések elküldése a kaptár-szerkesztővel
-A lekérdezési konzolt (kaptár-szerkesztő) is használhatja a *https: \/ / \< Hadoop-fürt neve>. azurehdinsight.net/Home/HiveEditor nevű* URL-cím megadásával egy böngészőben. Be kell jelentkeznie a jelen konzolon, ezért szüksége lesz a Hadoop-fürt hitelesítő adataira.
+A lekérdezési konzolt (kaptár-szerkesztő) is használhatja a *https: \/ / \<Hadoop cluster name> . azurehdinsight.net/Home/HiveEditor* URL-címének egy webböngészőbe való beírásával. Be kell jelentkeznie a jelen konzolon, ezért szüksége lesz a Hadoop-fürt hitelesítő adataira.
 
 ### <a name="submit-hive-queries-with-azure-powershell-commands"></a><a name="ps"></a>Kaptár-lekérdezések elküldése Azure PowerShell parancsokkal
 A PowerShell használatával is elküldheti a kaptár-lekérdezéseket. Útmutatásért lásd a [kaptár-feladatok elküldése a PowerShell használatával](../../hdinsight/hadoop/apache-hadoop-use-hive-powershell.md)című témakört.
@@ -137,11 +136,11 @@ Itt látható az a kaptár-lekérdezés, amely létrehoz egy struktúra-tábláz
 
 Itt láthatók a bekapcsolni és egyéb konfigurációkhoz szükséges mezők leírása:
 
-* ** \< adatbázis neve \> **: a létrehozni kívánt adatbázis neve. Ha csak az alapértelmezett adatbázist szeretné használni, akkor az "*adatbázis létrehozása..*." lekérdezés elhagyható.
-* ** \< táblázat neve \> **: a megadott adatbázison belül létrehozni kívánt tábla neve. Ha az alapértelmezett adatbázist szeretné használni, a tábla * \< neve \> * nem lehet az \< adatbázis neve nélkül \> .
-* ** \< mező elválasztó \> **: az adatfájlban a kaptár táblába feltöltendő mezőket határoló elválasztót.
-* ** \< line elválasztó \> **: az adatfájl sorait határoló elválasztó.
-* ** \< tárolási hely \> **: az Azure Storage-hely, amely a kaptár-táblák adatmentését menti. Ha nem ad meg * \< tárolási helyet \> *, a rendszer alapértelmezés szerint az adatbázist és a táblákat a kaptár-fürt alapértelmezett tárolójában, a kaptár */Warehouse/* könyvtárban tárolja. Ha meg szeretné adni a tárolási helyet, a tárolási helynek az adatbázis és a táblák alapértelmezett tárolójában kell lennie. Ezt a helyet a fürt alapértelmezett tárolójához viszonyítva kell megadni a *"wasb:/// \< directory 1>/"* vagy a *"wasb:/// \< Directory 1>/ \< Directory 2>/"* formátumban, stb. A lekérdezés végrehajtása után a relatív könyvtárak az alapértelmezett tárolón belül jönnek létre.
+* **\<database name\>**: a létrehozni kívánt adatbázis neve. Ha csak az alapértelmezett adatbázist szeretné használni, akkor az "*adatbázis létrehozása..*." lekérdezés elhagyható.
+* **\<table name\>**: a megadott adatbázison belül létrehozni kívánt tábla neve. Ha az alapértelmezett adatbázist szeretné használni, a tábla közvetlenül is megadható *\<table name\>* \<database name\> .
+* **\<field separator\>**: az adatfájlban a kaptár táblába feltöltendő mezőket határoló elválasztó.
+* **\<line separator\>**: az adatfájl sorait határoló elválasztó.
+* **\<storage location\>**: az Azure Storage-hely, amely a kaptár-táblák adatmentését menti. Ha nem ad meg *helyet \<storage location\> *, a rendszer alapértelmezés szerint az adatbázist és a táblákat a kaptár-fürt alapértelmezett tárolójában, a *kaptárban/raktárban/* könyvtárban tárolja. Ha meg szeretné adni a tárolási helyet, a tárolási helynek az adatbázis és a táblák alapértelmezett tárolójában kell lennie. Ezt a helyet a fürt alapértelmezett tárolójához viszonyítva kell megadni a *"wasb:/// \<directory 1> /"* vagy a *"wasb:/// \<directory 1> / \<directory 2> /*" formátumban, stb. A lekérdezés végrehajtása után a relatív könyvtárak az alapértelmezett tárolón belül jönnek létre.
 * **TBLPROPERTIES ("skip. header. line. Count" = "1")**: Ha az adatfájlnak van fejléce, akkor a *tábla létrehozása* lekérdezés **végén** hozzá kell adnia ezt a tulajdonságot. Ellenkező esetben a fejlécsor rekordként van betöltve a táblába. Ha az adatfájlnak nincs fejléce, akkor ez a konfiguráció kihagyható a lekérdezésben.
 
 ## <a name="load-data-to-hive-tables"></a><a name="load-data"></a>Adatgyűjtés a kaptár tábláiba
@@ -149,7 +148,7 @@ Itt látható a kaptár-lekérdezés, amely betölti az adathalmazt egy struktú
 
     LOAD DATA INPATH '<path to blob data>' INTO TABLE <database name>.<table name>;
 
-* ** \< blob \> -adatelérési út**: Ha a kaptár táblába feltöltendő blob-fájl a HDInsight Hadoop-fürt alapértelmezett tárolójában van, a * \< blob \> -adatelérési út* a * \<> tárolóban található "wasb://könyvtárában kell lennie \<>"*. A blob fájl a HDInsight Hadoop-fürt további tárolójában is szerepelhet. Ebben az esetben a * \< blob \> -adatelérési útnak* a *"wasb://- \< tároló neve> @ \< Storage-fiók neve>. blob.Core.Windows.net/ \< blob-fájl neve>"* formátumúnak kell lennie.
+* **\<path to blob data\>**: Ha a kaptár táblába való feltöltésre kerülő blob-fájl a HDInsight Hadoop-fürt alapértelmezett tárolójában van, akkor az értéknek *\<path to blob data\>* *"wasb:// \<directory in this container> / \<blob file name> "* formátumúnak kell lennie. A blob fájl a HDInsight Hadoop-fürt további tárolójában is szerepelhet. Ebben az esetben *\<path to blob data\>* a következő formátumúnak kell lennie: *"wasb:// \<container name> @ \<storage account name> . blob.Core.Windows.net/ \<blob file name> "*.
 
   > [!NOTE]
   > A kaptár táblába feltöltendő blob-adatmennyiségnek a Hadoop-fürthöz tartozó Storage-fiók alapértelmezett vagy további tárolójában kell lennie. Ellenkező esetben a *betöltési adat* lekérdezése sikertelenül panaszkodik, hogy nem fér hozzá az adathoz.
@@ -216,7 +215,7 @@ Válassza ki az 1. lépésben szereplő külső tábla adatait, és illessze be 
             SELECT * FROM <database name>.<external textfile table name>;
 
 > [!NOTE]
-> Ha a TEXTFILE tábla * \< adatbázisának neve \> . \< a külső \> textfile* található partíciók a 3. lépésben a `SELECT * FROM <database name>.<external textfile table name>` parancs kiválasztja a partíció változót a visszaadott adatkészletben lévő mezőként. Szúrja be az * \< adatbázis nevére \> . \< Az ork- \> tábla neve* sikertelen az * \< adatbázis neve óta \> . \< Az ork- \> táblázat neve* nem tartalmazza a partíció változót a tábla séma mezőjében. Ebben az esetben kifejezetten ki kell választania az * \< adatbázis neveként beszúrandó mezőket \> . \< Az ork- \> táblázat neve* a következőképpen történik:
+> Ha a TEXTFILE tábla * \<database name\> . \<external textfile table name\> * partíciók vannak, a 3. lépésben a `SELECT * FROM <database name>.<external textfile table name>` parancs kiválasztja a partíció változót a visszaadott adatkészletben lévő mezőként. Beillesztés a alkalmazásba * \<database name\> . \<ORC table name\> * a művelet óta * \<database name\> . \<ORC table name\> * a nem rendelkezik a partíció változóval a tábla séma mezőjében. Ebben az esetben kifejezetten ki kell választania a beszúrandó mezőket * \<database name\> . \<ORC table name\> * az alábbiak szerint:
 >
 >
 
@@ -225,7 +224,7 @@ Válassza ki az 1. lépésben szereplő külső tábla adatait, és illessze be 
            FROM <database name>.<external textfile table name>
            WHERE <partition variable>=<partition value>;
 
-A következő lekérdezés használata esetén a * \< külső szövegfájl neve \> * biztonságosan eldobásra kerül, miután az összes adattal beszúrta az * \< adatbázis nevére \> . \< ORK-táblázat \> neve*:
+*\<external text file table name\>* Ha az összes adattal beszúrta * \<database name\> \<ORC table name\> *, a következő lekérdezés használata esetén a rendszer biztonságosan elvégezheti a használatát:
 
         DROP TABLE IF EXISTS <database name>.<external textfile table name>;
 
