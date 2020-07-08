@@ -4,10 +4,10 @@ description: Ez a cikk a Azure Service Bus számára elérhető összes operatí
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: eeaa7e92488fd59994fc07ea0081b0f00c8768df
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85337531"
 ---
 # <a name="enable-diagnostics-logs-for-service-bus"></a>Diagnosztikai naplók engedélyezése a Service Bushoz
@@ -25,7 +25,7 @@ Az összes napló JavaScript Object Notation (JSON) formátumban van tárolva a 
 
 Az operatív napló JSON-karakterláncai közé tartoznak az alábbi táblázatban felsorolt elemek:
 
-| Name (Név) | Leírás |
+| Name | Description |
 | ------- | ------- |
 | Tevékenységazonosító | A megadott tevékenység azonosítására szolgáló belső azonosító |
 | EventName | Művelet neve |
@@ -33,7 +33,7 @@ Az operatív napló JSON-karakterláncai közé tartoznak az alábbi táblázatb
 | SubscriptionId | Előfizetés azonosítója |
 | EventTimeString | Működési idő |
 | EventProperties | Művelet tulajdonságai |
-| status | Művelet állapota |
+| Állapot | Művelet állapota |
 | Hívó | A művelet hívója (a Azure Portal vagy a felügyeleti ügyfél) |
 | Kategória | OperationalLogs |
 

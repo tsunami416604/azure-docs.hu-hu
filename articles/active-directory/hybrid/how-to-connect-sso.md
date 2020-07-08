@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: caf7db5f27ed6f612d0896bff0899feda3311883
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85357749"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Zökkenőmentes egyszeri bejelentkezés Azure Active Directory
@@ -63,12 +63,12 @@ A zökkenőmentes egyszeri bejelentkezést a jelszó- [kivonatoló szinkronizál
 
 | OS\Browser |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
-|Windows 10|Igen\*|Igen|Igen|Igen\*\*\*|N/A
-|Windows 8.1|igen\*|N/A|Yes|Igen\*\*\*|N/A
-|Windows 8|igen\*|N/A|Yes|Igen\*\*\*|N/A
-|Windows 7|igen\*|N/A|Yes|Igen\*\*\*|N/A
-|Windows Server 2012 R2 vagy újabb|igen\*\*|N/A|Yes|Igen\*\*\*|N/A
-|Mac OS X|N/A|N/A|Igen\*\*\*|Igen\*\*\*|Igen\*\*\*
+|Windows 10|Igen\*|Igen|Igen|Igen\*\*\*|N.A.
+|Windows 8.1|Yes\*|N.A.|Yes|Igen\*\*\*|N.A.
+|Windows 8|Yes\*|N.A.|Yes|Igen\*\*\*|N.A.
+|Windows 7|Yes\*|N.A.|Yes|Igen\*\*\*|N.A.
+|Windows Server 2012 R2 vagy újabb|igen\*\*|N.A.|Yes|Igen\*\*\*|N.A.
+|Mac OS X|N.A.|N.A.|Igen\*\*\*|Igen\*\*\*|Igen\*\*\*
 
 
 \*Az Internet Explorer 10-es vagy újabb verzióját igényli

@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 77895fd81bd37e304d422aea64da0298fc1673ff
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85356474"
 ---
 # <a name="troubleshoot-an-object-that-is-not-synchronizing-with-azure-active-directory"></a>Az Azure Active Directory-val nem szinkronizált objektumok hibáinak megoldása
@@ -73,7 +73,7 @@ Az **Operations (műveletek** ) lap felső fele az összes Futtatás időrendi s
 
 Az **állapot** oszlop a legfontosabb információkat tartalmazza, és megjeleníti a Futtatás legsúlyosabb problémáját. Íme egy rövid összefoglalás a leggyakoribb állapotokról a vizsgálat prioritási sorrendjében (ahol a * több lehetséges hibát jelez).
 
-| status | Megjegyzés |
+| Állapot | Megjegyzés |
 | --- | --- |
 | leállítva – * |A Futtatás nem fejezhető be. Ez akkor fordulhat elő, ha például a távoli rendszer nem érhető el, és nem lehet kapcsolatba lépni vele. |
 | leállítva – hiba – korlát |Több mint 5 000 hiba van. A Futtatás a hibák nagy száma miatt automatikusan leállt. |

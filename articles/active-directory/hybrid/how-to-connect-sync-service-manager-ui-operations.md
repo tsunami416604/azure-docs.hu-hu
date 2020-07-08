@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 64ab5901ad54e37fc05d7da757ce7f31d42fe3b6
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85357103"
 ---
 # <a name="using-the-sync-service-manager-operations-tab"></a>A Sync Service Manager Operations (szinkronizálási műveletek) lap használata
@@ -35,7 +35,7 @@ A felső fél az összes futtatást időrendi sorrendben jeleníti meg. Alapért
 
 Az **állapot** oszlop a legfontosabb információ, és megjeleníti a Futtatás legsúlyosabb problémáját. Itt látható a leggyakoribb állapotok rövid összefoglalása, hogy a vizsgálat elsőbbséget kapjon (ahol * több lehetséges hibát jeleznek).
 
-| status | Megjegyzés |
+| Állapot | Megjegyzés |
 | --- | --- |
 | megállt\* |A Futtatás nem fejeződött be. Ha például a távoli rendszer nem érhető el, és nem lehet kapcsolatba lépni vele. |
 | leállítva – hiba – korlát |Több mint 5 000 hiba van. A Futtatás a hibák nagy száma miatt automatikusan leállt. |

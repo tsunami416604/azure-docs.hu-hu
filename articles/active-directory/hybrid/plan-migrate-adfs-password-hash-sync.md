@@ -13,10 +13,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6fe9fe10b66aa6eb5fcdaafbf8e0132918e9645c
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85356679"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>Áttelepítés az összevonásból a jelszó-kivonatolási szinkronizálásba Azure Active Directory
@@ -59,7 +59,7 @@ Most már jó ideje ellenőrizni, hogy ezek az engedélyek teljesülnek-e az erd
 
 Két módszer közül választhat az összevont identitáskezelésból a jelszó-kivonat szinkronizálására és a zökkenőmentes egyszeri bejelentkezésre (SSO) való Migrálás esetén. Az Ön által használt módszer attól függ, hogy a AD FS-példányt eredetileg konfigurálták-e.
 
-* **Azure AD Connect**. Ha eredetileg a Azure AD Connect használatával konfigurálta a AD FSt, akkor a Azure AD Connect varázsló segítségével módosítania *kell* a jelszó-kivonatolási szinkronizálást.
+* **Azure ad Connect**. Ha eredetileg a Azure AD Connect használatával konfigurálta a AD FSt, akkor a Azure AD Connect varázsló segítségével módosítania *kell* a jelszó-kivonatolási szinkronizálást.
 
    A Azure AD Connect automatikusan futtatja a **set-MsolDomainAuthentication** parancsmagot a felhasználói bejelentkezési módszer módosításakor. Azure AD Connect automatikusan unfederates az összes ellenőrzött összevont tartományt az Azure AD-bérlőben.
 
@@ -112,7 +112,7 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 
 Ellenőrizze, hogy vannak-e testreszabott beállítások az összevonási tervezési és telepítési dokumentációhoz. Pontosabban keresse meg a testreszabásokat a **PreferredAuthenticationProtocol**, a **SupportsMfa**és a **PromptLoginBehavior**.
 
-További információval a következő cikkek szolgálnak:
+További információért lásd a következő cikkeket:
 
 * [AD FS prompt = bejelentkezési paraméter támogatása](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-prompt-login)
 * [Set-MsolDomainAuthentication](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainauthentication?view=azureadps-1.0)
