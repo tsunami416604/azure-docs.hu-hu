@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tagore
 ms.openlocfilehash: d7019d673bd8dfda31c5073fb7f37e26768dcc1d
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83778151"
 ---
 ## <a name="migrate-iaas-resources-from-the-classic-deployment-model-to-azure-resource-manager"></a>IaaS-erőforrások áttelepítése a klasszikus üzemi modellből a Azure Resource Manager
@@ -136,7 +136,7 @@ Az alábbi folyamatábra bemutatja, hogyan folytathatja az áttelepítést:
 ## <a name="translation-of-the-classic-deployment-model-to-resource-manager-resources"></a>A klasszikus üzembe helyezési modell fordítása Resource Manager-erőforrásokra
 A következő táblázatban található erőforrások klasszikus üzemi modelljét és erőforrás-kezelői képviseleteit találhatja meg. Az egyéb szolgáltatások és erőforrások jelenleg nem támogatottak.
 
-| Klasszikus ábrázolás | Resource Manager-ábrázolás | Megjegyzések |
+| Klasszikus ábrázolás | Resource Manager-ábrázolás | Jegyzetek |
 | --- | --- | --- |
 | Felhőszolgáltatás neve |DNS-név |A migrálás során minden felhőszolgáltatáshoz egy új erőforráscsoport jön létre a következő elnevezési mintának megfelelően: `<cloudservicename>-migrated`. Ez az erőforráscsoport tartalmazza az összes erőforrást. A felhőszolgáltatás egy DNS-névvé alakul, amely a nyilvános IP-címhez van társítva. |
 | Virtuális gép |Virtuális gép |A virtuális gépre jellemző tulajdonságok a migrálás során nem változnak. Bizonyos osProfile-információk, például a számítógépnév nem a klasszikus üzemi modellben tárolódnak, és az áttelepítés után üresek maradnak. |

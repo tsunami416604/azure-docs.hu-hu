@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/08/2018
 ms.openlocfilehash: 4f24efc4ea306046ab09119b859fa1d0853b25b6
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83834526"
 ---
 # <a name="create-switch-statements-that-run-workflow-actions-based-on-specific-values-in-azure-logic-apps"></a>Munkafolyamat-műveleteket futtató kapcsolói utasítások létrehozása a Azure Logic Apps adott értékei alapján
@@ -67,7 +67,7 @@ Tegyük fel például, hogy egy olyan logikai alkalmazást szeretne, amely kül�
    |--------|--------------------|--------|
    | 1. eset | **Jóváhagyás** | Adja hozzá az Outlook **E-mail küldése** műveletet, amely csak akkor küldi el az RSS-elem részleteit, ha a jóváhagyó a **jóváhagyást**választotta. |
    | 2. eset | **Elutasítás** | Adja hozzá az Outlook **E-mail küldése** műveletet az RSS-elem elutasításához szükséges más jóváhagyók értesítéséhez. |
-   | Alapértelmezett | Nincs | Nincs szükség beavatkozásra. Ebben a példában az **alapértelmezett** eset üres, mert a **SelectedOption** csak két lehetőséggel rendelkezik. |
+   | Alapértelmezett | None | Nincs szükség beavatkozásra. Ebben a példában az **alapértelmezett** eset üres, mert a **SelectedOption** csak két lehetőséggel rendelkezik. |
    |||
 
    ![Befejezett switch utasítás](./media/logic-apps-control-flow-switch-statement/finished-switch.png)
@@ -124,7 +124,7 @@ Most, hogy egy switch utasítás használatával létrehozott egy logikai alkalm
 * Ha kérdése van, látogasson el a [Microsoft Q&a Azure Logic apps vonatkozó kérdés oldalára](https://docs.microsoft.com/answers/topics/azure-logic-apps.html).
 * A funkciókra vagy javaslatokra való beküldéshez vagy szavazáshoz látogasson el a [Azure Logic apps felhasználói visszajelzési webhelyre](https://aka.ms/logicapps-wish).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Lépések futtatása feltételek alapján (feltételes utasítások)](../logic-apps/logic-apps-control-flow-conditional-statement.md)
 * [Futtatási és ismétlési lépések (hurkok)](../logic-apps/logic-apps-control-flow-loops.md)

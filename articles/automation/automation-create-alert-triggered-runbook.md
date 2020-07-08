@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 04/29/2019
 ms.topic: conceptual
 ms.openlocfilehash: 1feadeaf2a905abee396c09829dab5e06c46d99c
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83837110"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Azure Automation runbook elindítására szolgáló riasztás használata
@@ -29,7 +29,7 @@ Az Automation runbookok háromféle riasztási típust használhat:
 
 Amikor egy riasztás meghívja a runbook, a tényleges hívás egy HTTP POST-kérelem a webhooknak. A POST kérelem törzse egy JSON-formátumú objektumot tartalmaz, amely a riasztáshoz kapcsolódó hasznos tulajdonságokkal rendelkezik. Az alábbi táblázat felsorolja az egyes riasztási típusok adatforgalmi sémájára mutató hivatkozásokat:
 
-|Riasztás  |Description|Hasznos adatok sémája  |
+|Riasztás  |Leírás|Hasznos adatok sémája  |
 |---------|---------|---------|
 |[Gyakori riasztás](../azure-monitor/platform/alerts-common-schema.md?toc=%2fazure%2fautomation%2ftoc.json)|A gyakori riasztási séma, amely szabványosítja a riasztási értesítések fogyasztási élményét az Azure-ban még ma.|Gyakori riasztási adattartalom sémája|
 |[Tevékenység naplójának riasztása](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)    |Értesítés küldése, ha az Azure-tevékenység naplójában minden új esemény megfelel bizonyos feltételeknek. Ha például egy művelet a `Delete VM` **myProductionResourceGroup** -ban vagy egy új, aktív állapotú Azure Service Health eseményt jelenít meg.| [Műveletnapló riasztási hasznos sémája](../azure-monitor/platform/activity-log-alerts-webhook.md)        |
@@ -52,7 +52,7 @@ Ez a példa egy **stop-AzureVmInResponsetoVMAlert**nevű runbook létrehozásár
 1. Nyissa meg Azure Automation-fiókját.
 2. A **folyamat automatizálása**területen válassza a **runbookok**lehetőséget.
 3. A runbookok listájának tetején válassza a **+ Runbook létrehozása**lehetőséget.
-4. A **Runbook hozzáadása** lapon adja meg a **stop-AzureVmInResponsetoVMAlert** értéket a Runbook nevéhez. A runbook típusnál válassza a **PowerShell**lehetőséget. Ezután kattintson a **Létrehozás** elemre.  
+4. A **Runbook hozzáadása** lapon adja meg a **stop-AzureVmInResponsetoVMAlert** értéket a Runbook nevéhez. A runbook típusnál válassza a **PowerShell**lehetőséget. Ezután válassza a **Létrehozás**lehetőséget.  
 5. Másolja a következő PowerShell-példát a **Szerkesztés** lapra.
 
     ```powershell-interactive

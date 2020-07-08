@@ -17,7 +17,7 @@ ms.locfileid: "82072637"
 ---
 ### <a name="general-query-limits"></a>Általános lekérdezési korlátok
 
-| Korlát | Description |
+| Korlát | Leírás |
 |:---|:---|
 | Lekérdezés nyelve | Azure Monitor ugyanazt a [Kusto-lekérdezési nyelvet](/azure/kusto/query/) használja, mint az Azure adatkezelő. Lásd: [Azure monitor a naplózási lekérdezés nyelvi eltérései](../articles/azure-monitor/log-query/data-explorer-difference.md) a KQL nyelvi elemeihez Azure monitor nem támogatottak. |
 | Azure-régiók | A naplók lekérdezése túlzott terhelést jelenthet, ha az adatLog Analytics több Azure-régióban lévő munkaterületek is átnyúlnak. Részletekért lásd a [lekérdezési korlátokat](../articles/azure-monitor/log-query/scope.md#query-limits) . |
@@ -27,7 +27,7 @@ ms.locfileid: "82072637"
 Azure Monitor több szabályozási korláttal rendelkezik a túlzott számú lekérdezést küldő felhasználók elleni védelemhez. Az ilyen viselkedés potenciálisan túlterhelheti a rendszerháttér-erőforrásokat, és veszélyeztetheti a szolgáltatás érzékenységét. A következő korlátok úgy vannak kialakítva, hogy az ügyfelek számára biztosítható legyen a megszakítások és a konzisztens szolgáltatási szint. A felhasználói szabályozás és a korlátok kizárólag a szélsőséges használati forgatókönyvek hatására vannak kialakítva, és nem feltétlenül relevánsak a szokásos használathoz.
 
 
-| Measure | Felhasználónként korlátozva | Description |
+| Measure | Felhasználónként korlátozva | Leírás |
 |:---|:---|:---|
 | Egyidejű lekérdezések | 5 | Ha a felhasználó számára már 5 lekérdezés fut, minden új lekérdezés egy felhasználónkénti egyidejűségi sorba kerül. Ha az egyik futó lekérdezés véget ér, a rendszer a következő lekérdezést fogja lekérni a várólistából, és elindítja azt. Ez nem tartalmazza a riasztási szabályok lekérdezéseit.
 | A párhuzamossági várólistán lévő idő | 2,5 perc | Ha egy lekérdezés több mint 2,5 percet vesz igénybe a várólistán anélkül, hogy el kellene indítani, a rendszer a 429-es kóddal megszakítja a HTTP-hibaüzenetet. |

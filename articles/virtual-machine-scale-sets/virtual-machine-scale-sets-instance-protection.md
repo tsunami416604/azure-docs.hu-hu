@@ -10,10 +10,10 @@ ms.date: 02/26/2020
 ms.reviewer: jushiman
 ms.custom: avverma
 ms.openlocfilehash: 8c4944da8ffcaa75e6448483918a29809c32830b
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83124057"
 ---
 # <a name="instance-protection-for-azure-virtual-machine-scale-set-instances"></a>Példányok védelme az Azure virtuálisgép-méretezési csoport példányai esetében
@@ -190,5 +190,5 @@ A példányok védelmét a példányok létrehozása után is alkalmazhatja a m�
 ### <a name="not-able-to-apply-instance-protection"></a>Nem sikerült alkalmazni a példányok védelmét
 A példányok védelme csak a 2019-03-01-es és újabb verziójú API-k esetében támogatott. Tekintse meg a használt API-verziót, és szükség szerint frissítse azt. Előfordulhat, hogy a legújabb verzióra is frissítenie kell a PowerShellt vagy a CLI-t.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Megtudhatja, hogyan [helyezheti üzembe az alkalmazást](virtual-machine-scale-sets-deploy-app.md) a virtuálisgép-méretezési csoportokban.

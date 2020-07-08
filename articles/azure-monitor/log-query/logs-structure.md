@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 05/09/2020
 ms.openlocfilehash: 58724656dd407f09687b57d0ab034f3a1f808b76
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83196286"
 ---
 # <a name="structure-of-azure-monitor-logs"></a>Azure Monitor naplók szerkezete
@@ -87,6 +87,6 @@ Míg Azure Monitor naplók minden táblája saját sémával rendelkezik, az ös
 | _IsBillable   |            | Meghatározza, hogy a betöltött adatmennyiség számlázható-e. |
 | _BilledSize   |            | Meghatározza a számlázandó adatmennyiség bájtban kifejezett méretét. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Tudnivalók a [naplók keresésének létrehozásához és szerkesztéséhez log Analytics](../log-query/portals.md)használatáról.
 - Az új lekérdezési nyelv használatával tekintse [meg a lekérdezések írásához szóló oktatóanyagot](../log-query/get-started-queries.md) .

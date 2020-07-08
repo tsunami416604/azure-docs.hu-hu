@@ -17,10 +17,10 @@ ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: has-adal-ref
 ms.openlocfilehash: 7ddc8c3016487ce56bc1a54d74aa94064cef24e4
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83198867"
 ---
 # <a name="security-frame-session-management"></a>Biztonsági keret: munkamenet-kezelés
@@ -41,8 +41,8 @@ ms.locfileid: "83198867"
 | **Összetevő**               | Azure AD | 
 | **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N/A  |
-| **Referencia**              | N/A  |
+| **Attribútumok**              | N.A.  |
+| **Referencia**              | N.A.  |
 | **Lépéseket** | Ha az alkalmazás az Azure AD által kiállított hozzáférési jogkivonatra támaszkodik, a kijelentkezési eseménykezelőnek meg kell hívnia a következőt: |
 
 ### <a name="example"></a>Példa
@@ -76,8 +76,8 @@ A munkamenet. megszakítás () metódus meghívásával is el kell pusztítani a
 | **Összetevő**               | IoT-eszköz | 
 | **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N/A  |
-| **Referencia**              | N/A  |
+| **Attribútumok**              | N.A.  |
+| **Referencia**              | N.A.  |
 | **Lépéseket** | Az Azure IoT Hub való hitelesítéshez létrehozott SaS-tokeneknek véges lejárati időtartammal kell rendelkezniük. Az SaS-jogkivonat élettartamát minimumra kell korlátozni, hogy korlátozza a visszajátszható időkereteket abban az esetben, ha a jogkivonatok biztonsága sérül.|
 
 ## <a name="use-minimum-token-lifetimes-for-generated-resource-tokens"></a><a id="resource-tokens"></a>A jogkivonat minimális élettartamának használata a generált erőforrás-tokenekhez
@@ -87,8 +87,8 @@ A munkamenet. megszakítás () metódus meghívásával is el kell pusztítani a
 | **Összetevő**               | Azure Document DB | 
 | **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N/A  |
-| **Referencia**              | N/A  |
+| **Attribútumok**              | N.A.  |
+| **Referencia**              | N.A.  |
 | **Lépéseket** | Csökkentse az erőforrás-token TimeSpan a szükséges minimális értékre. Az erőforrás-jogkivonatok alapértelmezett érvényes TimeSpan 1 óra.|
 
 ## <a name="implement-proper-logout-using-wsfederation-methods-when-using-adfs"></a><a id="wsfederation-logout"></a>Megfelelő kijelentkezés implementálása a WsFederation metódusok használatával az ADFS használatakor
@@ -98,8 +98,8 @@ A munkamenet. megszakítás () metódus meghívásával is el kell pusztítani a
 | **Összetevő**               | ADFS | 
 | **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N/A  |
-| **Referencia**              | N/A  |
+| **Attribútumok**              | N.A.  |
+| **Referencia**              | N.A.  |
 | **Lépéseket** | Ha az alkalmazás az ADFS által kiállított STS-tokenre támaszkodik, a kijelentkezési eseménykezelőnek meg kell hívnia a WSFederationAuthenticationModule. FederatedSignOut () metódust a felhasználó kijelentkezéséhez. Az aktuális munkamenetet is meg kell semmisíteni, és a munkamenet-jogkivonat értékét alaphelyzetbe kell állítani és el kell pusztítani.|
 
 ### <a name="example"></a>Példa
@@ -147,7 +147,7 @@ A munkamenet. megszakítás () metódus meghívásával is el kell pusztítani a
 | **Összetevő**               | Identity Server | 
 | **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N/A  |
+| **Attribútumok**              | N.A.  |
 | **Referencia**              | [IdentityServer3 – összevont kijelentkezés](https://identityserver.github.io/Documentation/docsv2/advanced/federated-signout.html) |
 | **Lépéseket** | A IdentityServer támogatja a külső összevonása való kapcsolódás lehetőségét. Ha a felhasználó kijelentkezik egy felsőbb rétegbeli identitás-szolgáltatótól, a használt protokolltól függően előfordulhat, hogy értesítést kap, amikor a felhasználó kijelentkezik. Lehetővé teszi, hogy a IdentityServer értesítse ügyfeleit, hogy a felhasználók is alá tudják írni a felhasználókat. A megvalósítás részleteiért olvassa el a hivatkozások szakaszban található dokumentációt.|
 
@@ -160,7 +160,7 @@ A munkamenet. megszakítás () metódus meghívásával is el kell pusztítani a
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | EnvironmentType – helyszíni |
 | **Referencia**              | [HttpCookies elem (ASP.net-beállítási séma)](https://msdn.microsoft.com/library/ms228262(v=vs.100).aspx), [HttpCookie. Secure tulajdonság](https://msdn.microsoft.com/library/system.web.httpcookie.secure.aspx) |
-| **Lépéseket** | A cookie-k általában csak azon tartomány számára érhetők el, amelyhez hatókörük van. Sajnos a "tartomány" definíciója nem tartalmazza a protokollt, így a HTTPS-kapcsolaton keresztül létrehozott cookie-k HTTP-n keresztül érhetők el. A "Secure" attribútum azt jelzi a böngészőnek, hogy a cookie-t csak HTTPS-kapcsolaton keresztül kell elérhetővé tenni. Győződjön meg arról, hogy a HTTPS protokollon beállított összes cookie a **biztonságos** attribútumot használja. A követelmény a web. config fájlban a requireSSL attribútum true értékre állításával kényszeríthető ki. Ez az előnyben részesített megközelítés, mivel az összes jelenlegi és jövőbeli cookie **biztonságos** attribútumát a kód további módosításának szükségessége nélkül fogja kikényszeríteni.|
+| **Lépéseket** | A cookie-k általában csak azon tartomány számára érhetők el, amelyhez hatókörük van. Sajnos a "tartomány" definíciója nem tartalmazza a protokollt, így a HTTPS-kapcsolaton keresztül létrehozott cookie-k HTTP-n keresztül érhetők el. A "Secure" attribútum azt jelzi a böngészőnek, hogy a cookie-t csak HTTPS-kapcsolaton keresztül kell elérhetővé tenni. Győződjön meg arról, hogy a HTTPS protokollon beállított összes cookie a **biztonságos** attribútumot használja. A követelmény kikényszeríthető a web.config fájlban úgy, hogy a requireSSL attribútum igaz értékre van állítva. Ez az előnyben részesített megközelítés, mivel az összes jelenlegi és jövőbeli cookie **biztonságos** attribútumát a kód további módosításának szükségessége nélkül fogja kikényszeríteni.|
 
 ### <a name="example"></a>Példa
 ```csharp
@@ -178,8 +178,8 @@ A beállítás akkor is érvényben van, ha a HTTP-t használja az alkalmazás e
 | **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Web Forms, MVC5 |
 | **Attribútumok**              | EnvironmentType – helyszíni |
-| **Referencia**              | N/A  |
-| **Lépéseket** | Ha a webalkalmazás a függő entitás, a identitásszolgáltató pedig az ADFS-kiszolgáló, akkor a FedAuth-token biztonságos attribútuma a requireSSL True értékre állításával konfigurálható a `system.identityModel.services` web. config fájlban:|
+| **Referencia**              | N.A.  |
+| **Lépéseket** | Ha a webalkalmazás a függő entitás, és a identitásszolgáltató az ADFS-kiszolgáló, akkor az FedAuth-token biztonságos attribútuma konfigurálható úgy, hogy a requireSSL értéke True értékre van állítva a következő `system.identityModel.services` szakaszban: web.config:|
 
 ### <a name="example"></a>Példa
 ```csharp
@@ -199,12 +199,12 @@ A beállítás akkor is érvényben van, ha a HTTP-t használja az alkalmazás e
 | **Összetevő**               | Webalkalmazás | 
 | **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N/A  |
+| **Attribútumok**              | N.A.  |
 | **Referencia**              | [Biztonságos cookie-attribútum](https://en.wikipedia.org/wiki/HTTP_cookie#Secure_cookie) |
 | **Lépéseket** | A többhelyes parancsfájlok (XSS) elleni támadások kockázatának enyhítése érdekében egy új attribútum – httpOnly – a cookie-khoz lett bevezetve, és az összes jelentős böngésző támogatja. Az attribútum azt adja meg, hogy a cookie nem érhető el parancsfájlon keresztül. A HttpOnly-cookie-k használatával a webalkalmazások csökkentik a cookie-ban található bizalmas információk meglopásának lehetőségét, és elküldhetik őket a támadók webhelyére. |
 
 ### <a name="example"></a>Példa
-A cookie-kat használó összes HTTP-alapú alkalmazásnak meg kell adnia a HttpOnly a cookie-definícióban a következő konfigurációnak a web. config fájlban való megvalósításával:
+A cookie-kat használó összes HTTP-alapú alkalmazásnak meg kell adnia a HttpOnly a cookie-definícióban a következő konfiguráció megvalósításával web.configban:
 ```XML
 <system.web>
 .
@@ -220,12 +220,12 @@ A cookie-kat használó összes HTTP-alapú alkalmazásnak meg kell adnia a Http
 | **Összetevő**               | Webalkalmazás | 
 | **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Web Forms |
-| **Attribútumok**              | N/A  |
+| **Attribútumok**              | N.A.  |
 | **Referencia**              | [FormsAuthentication. RequireSSL tulajdonság](https://msdn.microsoft.com/library/system.web.security.formsauthentication.requiressl.aspx) |
-| **Lépéseket** | A RequireSSL tulajdonság értéke egy ASP.NET-alkalmazás konfigurációs fájljában van beállítva a konfigurációs elem requireSSL attribútumának használatával. Megadhatja a ASP.NET alkalmazás Web. config fájljában, hogy Transport Layer Security (TLS), korábbi nevén SSL (SSL) van-e szükség az űrlapalapú hitelesítő cookie-nak a kiszolgálóra történő visszaküldéséhez a requireSSL attribútum beállításával.|
+| **Lépéseket** | A RequireSSL tulajdonság értéke egy ASP.NET-alkalmazás konfigurációs fájljában van beállítva a konfigurációs elem requireSSL attribútumának használatával. Megadhatja a ASP.NET alkalmazás Web.config fájljában, hogy a korábbi nevén SSL (SSL) Transport Layer Security (TLS), az űrlapalapú hitelesítési cookie-t az requireSSL attribútum beállításával kell-e visszaadnia a kiszolgálónak.|
 
 ### <a name="example"></a>Példa 
-A következő mintakód a web. config fájlban állítja be a requireSSL attribútumot.
+A következő mintakód a requireSSL attribútumot állítja be a Web.config fájlban.
 ```XML
 <authentication mode="Forms">
   <forms loginUrl="member_login.aspx" cookieless="UseCookies" requireSSL="true"/>
@@ -262,8 +262,8 @@ A következő konfiguráció a megfelelő konfigurációt jeleníti meg:
 | **Összetevő**               | Webalkalmazás | 
 | **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N/A  |
-| **Referencia**              | N/A  |
+| **Attribútumok**              | N.A.  |
+| **Referencia**              | N.A.  |
 | **Lépéseket** | A helyek közötti kérelmek hamisítása (CSRF vagy XSRF) olyan támadási típus, amelyben a támadók műveleteket végezhetnek egy másik felhasználó munkamenetének biztonsági környezetében egy webhelyen. A cél a tartalom módosítása vagy törlése, ha a célként megadott webhely kizárólag munkamenet-cookie-kra támaszkodik a fogadott kérések hitelesítéséhez. Egy támadó kihasználhatja ezt a biztonsági rést azáltal, hogy egy másik felhasználó böngészőjében betölt egy URL-címet egy olyan sebezhető helyről, amelyen a felhasználó már be van jelentkezve. A támadók többféleképpen is elvégezhetik ezt a megoldást, például egy másik webhely üzemeltetésével, amely egy erőforrást tölt be a sebezhető kiszolgálóról, vagy egy hivatkozásra kattintva beolvassa a felhasználót. A támadás megakadályozható, ha a kiszolgáló egy további tokent küld az ügyfélnek, az ügyfélnek tartalmaznia kell a tokent az összes jövőbeli kérelemben, és ellenőriznie kell, hogy az összes jövőbeli kérelem tartalmaz-e jogkivonatot, amely az aktuális munkamenetre vonatkozik, például a ASP.NET AntiForgeryToken vagy a ViewState használatával. |
 
 | Cím                   | Részletek      |
@@ -271,7 +271,7 @@ A következő konfiguráció a megfelelő konfigurációt jeleníti meg:
 | **Összetevő**               | Webalkalmazás | 
 | **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | MVC5, MVC6 |
-| **Attribútumok**              | N/A  |
+| **Attribútumok**              | N.A.  |
 | **Referencia**              | [XSRF/CSRF-megelőzés a ASP.NET MVC és weblapok esetében](https://www.asp.net/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages) |
 | **Lépéseket** | CSRF és ASP.NET MVC-űrlapok – a `AntiForgeryToken` segítő metódus használata a nézetekben `Html.AntiForgeryToken()` , például a következő formában:|
 
@@ -357,7 +357,7 @@ void ValidateRequestHeader(HttpRequestMessage request)
 | **Összetevő**               | Webalkalmazás | 
 | **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Web Forms |
-| **Attribútumok**              | N/A  |
+| **Attribútumok**              | N.A.  |
 | **Referencia**              | [Használja ki a ASP.NET beépített funkcióinak előnyeit a webes támadások kivédéséhez](https://msdn.microsoft.com/library/ms972969.aspx#securitybarriers_topic2) |
 | **Lépéseket** | A webűrlapon alapuló alkalmazások CSRF elleni támadásait úgy lehet enyhíteni, ha a ViewStateUserKey egy véletlenszerű karakterláncra állítja be, amely minden felhasználói AZONOSÍTÓra, vagy még jobb, de a munkamenet-AZONOSÍTÓra változik. Számos technikai és társadalmi okból kifolyólag a munkamenet-azonosító sokkal jobban illeszkedik, mert a munkamenet-azonosító előre nem látható, időtúllépést okoz, és felhasználónként változhat.|
 
@@ -377,9 +377,9 @@ void Page_Init (object sender, EventArgs e) {
 | **Összetevő**               | Webalkalmazás | 
 | **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N/A  |
+| **Attribútumok**              | N.A.  |
 | **Referencia**              | [HttpSessionState. timeout tulajdonság](https://msdn.microsoft.com/library/system.web.sessionstate.httpsessionstate.timeout(v=vs.110).aspx) |
-| **Lépéseket** | A munkamenet időkorlátja arra az esetre vonatkozik, amikor egy felhasználó nem hajt végre semmilyen műveletet a webhelyen egy adott időszakban (a webkiszolgáló által definiált) intervallumban. Az esemény a kiszolgáló oldalán módosítsa a felhasználói munkamenet állapotát az "Érvénytelen" értékre (például "nincs használatban"), és utasítsa a webkiszolgálót, hogy elpusztítsa azt (az összes benne található adat törlése). A következő kódrészlet a web. config fájlban 15 percre állítja be az időtúllépési munkamenet attribútumát.|
+| **Lépéseket** | A munkamenet időkorlátja arra az esetre vonatkozik, amikor egy felhasználó nem hajt végre semmilyen műveletet a webhelyen egy adott időszakban (a webkiszolgáló által definiált) intervallumban. Az esemény a kiszolgáló oldalán módosítsa a felhasználói munkamenet állapotát az "Érvénytelen" értékre (például "nincs használatban"), és utasítsa a webkiszolgálót, hogy elpusztítsa azt (az összes benne található adat törlése). A következő mintakód az időtúllépési munkamenet attribútumát 15 percre állítja be a Web.config fájlban.|
 
 ### <a name="example"></a>Példa
 ```XML 
@@ -397,7 +397,7 @@ void Page_Init (object sender, EventArgs e) {
 | **Összetevő**               | Webalkalmazás | 
 | **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Web Forms |
-| **Attribútumok**              | N/A  |
+| **Attribútumok**              | N.A.  |
 | **Referencia**              | [Űrlapalapú elem a hitelesítéshez (ASP.NET-beállítási séma)](https://msdn.microsoft.com/library/1d3t3c61(v=vs.100).aspx) |
 | **Lépéseket** | Az űrlapos hitelesítési jegy cookie időkorlátjának beállítása 15 percre|
 
@@ -414,7 +414,7 @@ void Page_Init (object sender, EventArgs e) {
 | **Alkalmazható technológiák** | Web Forms, MVC5 |
 | **Attribútumok**              | EnvironmentType – helyszíni |
 | **Referencia**              | [asdeqa](https://skf.azurewebsites.net/Mitigations/Details/wefr) |
-| **Lépéseket** | Ha a webalkalmazás függő entitást használ, és az ADFS az STS, a hitelesítési cookie-k FedAuth-tokenek élettartama a web. config fájlban a következő konfigurációval állítható be:|
+| **Lépéseket** | Ha a webalkalmazás függő entitást használ, és az ADFS az STS, a hitelesítési cookie-FedAuth tokenek élettartama a következő konfigurációval állítható be web.configban:|
 
 ### <a name="example"></a>Példa
 ```XML
@@ -447,8 +447,8 @@ Set-ADFSRelyingPartyTrust -TargetName "<RelyingPartyWebApp>" -ClaimsProviderName
 | **Összetevő**               | Webalkalmazás | 
 | **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N/A  |
-| **Referencia**              | N/A  |
+| **Attribútumok**              | N.A.  |
+| **Referencia**              | N.A.  |
 | **Lépéseket** | Megfelelő kijelentkezés végrehajtása az alkalmazásból, amikor a felhasználó megnyomja a kijelentkezés gombot. A kijelentkezéskor az alkalmazásnak el kell pusztítani a felhasználó munkamenetét, és vissza kell állítania és meg kell semmisítenie a munkamenet cookie-értékét, valamint az alaphelyzetbe állítását és a nullifying Továbbá, ha több munkamenet egyetlen felhasználói identitáshoz van kötve, akkor a kiszolgáló oldalán, időtúllépéssel vagy kijelentkezéssel együttesen kell leállítani őket. Végül ellenőrizze, hogy a kijelentkezés funkció minden oldalon elérhető-e. |
 
 ## <a name="mitigate-against-cross-site-request-forgery-csrf-attacks-on-aspnet-web-apis"></a><a id="csrf-api"></a>A ASP.NET webes API-k közötti CSRF-támadások elleni védekezés
@@ -458,8 +458,8 @@ Set-ADFSRelyingPartyTrust -TargetName "<RelyingPartyWebApp>" -ClaimsProviderName
 | **Összetevő**               | Webes API | 
 | **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N/A  |
-| **Referencia**              | N/A  |
+| **Attribútumok**              | N.A.  |
+| **Referencia**              | N.A.  |
 | **Lépéseket** | A helyek közötti kérelmek hamisítása (CSRF vagy XSRF) olyan támadási típus, amelyben a támadók műveleteket végezhetnek egy másik felhasználó munkamenetének biztonsági környezetében egy webhelyen. A cél a tartalom módosítása vagy törlése, ha a célként megadott webhely kizárólag munkamenet-cookie-kra támaszkodik a fogadott kérések hitelesítéséhez. Egy támadó kihasználhatja ezt a biztonsági rést azáltal, hogy egy másik felhasználó böngészőjében betölt egy URL-címet egy olyan sebezhető helyről, amelyen a felhasználó már be van jelentkezve. A támadók többféleképpen is elvégezhetik ezt a megoldást, például egy másik webhely üzemeltetésével, amely egy erőforrást tölt be a sebezhető kiszolgálóról, vagy egy hivatkozásra kattintva beolvassa a felhasználót. A támadás megakadályozható, ha a kiszolgáló egy további tokent küld az ügyfélnek, az ügyfélnek tartalmaznia kell a tokent az összes jövőbeli kérelemben, és ellenőriznie kell, hogy az összes jövőbeli kérelem tartalmaz-e jogkivonatot, amely az aktuális munkamenetre vonatkozik, például a ASP.NET AntiForgeryToken vagy a ViewState használatával. |
 
 | Cím                   | Részletek      |
@@ -467,7 +467,7 @@ Set-ADFSRelyingPartyTrust -TargetName "<RelyingPartyWebApp>" -ClaimsProviderName
 | **Összetevő**               | Webes API | 
 | **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | MVC5, MVC6 |
-| **Attribútumok**              | N/A  |
+| **Attribútumok**              | N.A.  |
 | **Referencia**              | [A helyek közötti kérelmek hamisításának (CSRF) megelőzése a ASP.NET webes API-ban](https://www.asp.net/web-api/overview/security/preventing-cross-site-request-forgery-csrf-attacks) |
 | **Lépéseket** | Anti-CSRF és AJAX: az űrlap tokenje az AJAX-kérelmek esetében lehet probléma, mivel egy AJAX-kérelem JSON-adatküldést küldhet, nem pedig HTML-űrlapokat. Az egyik megoldás, ha egy egyéni HTTP-fejlécben küldi el a jogkivonatokat. A következő kód a borotva szintaxisát használja a tokenek létrehozásához, majd hozzáadja a jogkivonatokat egy AJAX-kérelemhez. |
 

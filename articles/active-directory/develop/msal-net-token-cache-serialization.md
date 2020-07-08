@@ -14,10 +14,10 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: abc4836b5e8729eec45a0eb2cd8b5fa7be6b1ce4
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82890561"
 ---
 # <a name="token-cache-serialization-in-msalnet"></a>Jogkivonat-gyorsítótár szerializálása a MSAL.NET-ben
@@ -30,7 +30,7 @@ Ez a cikk a 3. x MSAL.NET. Ha érdekli a 2. x MSAL.NET, tekintse meg [a jogkivon
 A MSAL.NET-ben alapértelmezés szerint a memóriában tárolt jogkivonat-gyorsítótár van megadva. Alapértelmezés szerint a szerializálást olyan platformokhoz biztosítjuk, ahol a platform részeként a biztonságos tárterület elérhető a felhasználók számára. Ez a Univerzális Windows-platform (UWP), a Xamarin. iOS és a Xamarin. Android esetében.
 
 > [!Note]
-> Ha egy Xamarin. Android projektet telepít át a MSAL.NET 1. x verzióról a MSAL.NET 3. x-re, érdemes `android:allowBackup="false"` lehet hozzáadni a projekthez, hogy elkerülje a régi gyorsítótárazott tokenek visszaszerzését, amikor a Visual Studio-telepítések elindítják a helyi tároló visszaállítását. Lásd: [probléma #659](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/659#issuecomment-436181938).
+> Ha egy Xamarin. Android projektet telepít át a MSAL.NET 1. x verzióról a MSAL.NET 3. x-re, érdemes lehet hozzáadni a `android:allowBackup="false"` projekthez, hogy elkerülje a régi gyorsítótárazott tokenek visszaszerzését, amikor a Visual Studio-telepítések elindítják a helyi tároló visszaállítását. Lásd: [probléma #659](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/659#issuecomment-436181938).
 
 ## <a name="custom-serialization-for-windows-desktop-apps-and-web-appsweb-apis"></a>Egyéni szerializálás Windowsos asztali alkalmazásokhoz és webalkalmazásokhoz/webes API-khoz
 
@@ -39,13 +39,13 @@ Ne feledje, hogy az egyéni szerializálás nem érhető el a mobil platformokon
 A következő osztályok és felületek használatosak a jogkivonat-gyorsítótár szerializálásakor:
 
 - `ITokenCache`, amely a jogkivonat-gyorsítótár szerializálási kéréseire előfizetett eseményeket, valamint a gyorsítótár szerializálásának vagy deszerializálásának módszereit határozza meg különböző formátumokban (ADAL v 3.0, MSAL 2. x és MSAL 3. x = ADAL v 5.0).
-- `TokenCacheCallback`az eseményeknek átadott visszahívás, hogy kezelni tudja a szerializálást. A rendszer a típusú `TokenCacheNotificationArgs`argumentumokkal hívja meg őket.
+- `TokenCacheCallback`az eseményeknek átadott visszahívás, hogy kezelni tudja a szerializálást. A rendszer a típusú argumentumokkal hívja meg őket `TokenCacheNotificationArgs` .
 - `TokenCacheNotificationArgs`a csak az `ClientId` alkalmazás és annak a felhasználónak a hivatkozását adja meg, amelyhez a jogkivonat elérhető.
 
   ![Osztály diagramja](media/msal-net-token-cache-serialization/class-diagram.png)
 
 > [!IMPORTANT]
-> A MSAL.NET jogkivonat-gyorsítótárat hoz létre az Ön számára, `IToken` és megadja a gyorsítótárat az alkalmazás `UserTokenCache` és `AppTokenCache` a tulajdonságok meghívásakor. Saját magának nem kell megvalósítani a felületet. Az egyéni jogkivonat-gyorsítótár szerializálásának megvalósításakor a következőt kell tennie:
+> A MSAL.NET jogkivonat-gyorsítótárat hoz létre az Ön számára, és megadja a `IToken` gyorsítótárat az alkalmazás és a tulajdonságok meghívásakor `UserTokenCache` `AppTokenCache` . Saját magának nem kell megvalósítani a felületet. Az egyéni jogkivonat-gyorsítótár szerializálásának megvalósításakor a következőt kell tennie:
 > - Reagálás az `BeforeAccess` `AfterAccess` "események" (vagy az aszinkron ízek) értékre. A `BeforeAccess` delegált feladata a gyorsítótár deszerializálása, míg az `AfterAccess` egyik felelős a gyorsítótár szerializálásához.
 > - Az események egy része tárolja vagy betölti a blobokat, amelyeket az Event argumentumon át kell adni a kívánt tárterülethez.
 
@@ -64,7 +64,7 @@ A jogkivonat-gyorsítótár szerializálásának testreszabásával megoszthatja
 
 Az alábbi példa egy jogkivonat-gyorsítótár egyéni szerializálásának naiv implementációját mutatja be asztali alkalmazásokhoz. Itt a felhasználói jogkivonat gyorsítótára egy olyan fájl, amely ugyanabban a mappában található, mint az alkalmazás.
 
-Az alkalmazás létrehozása után a `TokenCacheHelper.EnableSerialization()` metódus meghívásával és az alkalmazás `UserTokenCache`átadásával engedélyezheti a szerializálást.
+Az alkalmazás létrehozása után a metódus meghívásával `TokenCacheHelper.EnableSerialization()` és az alkalmazás átadásával engedélyezheti a szerializálást `UserTokenCache` .
 
 ```csharp
 app = PublicClientApplicationBuilder.Create(ClientId)
@@ -282,7 +282,7 @@ A [Microsoft. Identity. Web](https://github.com/AzureAD/microsoft-identity-web) 
 | ---------------- | --------- | ------------ |
 | `AddInMemoryTokenCaches` | `TokenCacheProviders.InMemory` | A memória-jogkivonat gyorsítótárának szerializálásakor. Ez a megvalósítás nagyszerű a mintákban. Az éles környezetben is jó, ha nem bánod, ha a jogkivonat gyorsítótára elvész a webalkalmazás újraindításakor. `AddInMemoryTokenCaches`egy opcionális paramétert használ, `MsalMemoryTokenCacheOptions` amely lehetővé teszi, hogy megadja azt az időtartamot, ameddig a gyorsítótár-bejegyzés lejár, kivéve, ha használatban van.
 | `AddSessionTokenCaches` | `TokenCacheProviders.Session` | A jogkivonat-gyorsítótár a felhasználói munkamenethez van kötve. Ez a lehetőség nem ideális, ha az azonosító jogkivonat sok jogcímet tartalmaz, mivel a cookie túl nagy lesz.
-| `AddDistributedTokenCaches` | `TokenCacheProviders.Distributed` | A jogkivonat-gyorsítótár a ASP.NET Core `IDistributedCache` implementációja, ezért lehetővé teszi az elosztott memória-gyorsítótár, a Redis cache, az elosztott NCache vagy a SQL Server cache közötti választást. A `IDistributedCache` megvalósításokkal kapcsolatos további információkért lásd: https://docs.microsoft.com/aspnet/core/performance/caching/distributed#distributed-memory-cache.
+| `AddDistributedTokenCaches` | `TokenCacheProviders.Distributed` | A jogkivonat-gyorsítótár a ASP.NET Core `IDistributedCache` implementációja, ezért lehetővé teszi az elosztott memória-gyorsítótár, a Redis cache, az elosztott NCache vagy a SQL Server cache közötti választást. A megvalósításokkal kapcsolatos további információkért `IDistributedCache` lásd: https://docs.microsoft.com/aspnet/core/performance/caching/distributed#distributed-memory-cache .
 
 Egyszerű eset a memórián belüli gyorsítótár használatával:
 
@@ -325,7 +325,7 @@ services.AddDistributedSqlServerCache(options =>
 
 Használatuk a [ASP.net Core webalkalmazás-oktatóanyagban](https://docs.microsoft.com/aspnet/core/tutorials/first-mvc-app/) az 2-2-os [token gyorsítótárban](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-2-TokenCache)című szakaszban szerepel.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő minták a jogkivonat-gyorsítótár szerializálását szemléltetik.
 

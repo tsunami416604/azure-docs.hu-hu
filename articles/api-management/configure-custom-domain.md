@@ -13,15 +13,15 @@ ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
 ms.openlocfilehash: 380b61df8a774e69454577d201cebf1c495b4f74
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83004747"
 ---
 # <a name="configure-a-custom-domain-name"></a>Egyéni tartománynév konfigurálása
 
-Amikor létrehoz egy Azure API Management Service-példányt, az Azure a `azure-api.net` (például `apim-service-name.azure-api.net`) altartományát rendeli hozzá. Az API Management-végpontokat azonban a saját egyéni tartománynevével, például a **contoso.com**teheti elérhetővé. Ez az oktatóanyag bemutatja, hogyan képezhető le egy meglévő egyéni DNS-név egy API Management-példány által közzétett végpontokra.
+Amikor létrehoz egy Azure API Management Service-példányt, az Azure a (például) altartományát rendeli hozzá `azure-api.net` `apim-service-name.azure-api.net` . Az API Management-végpontokat azonban a saját egyéni tartománynevével, például a **contoso.com**teheti elérhetővé. Ez az oktatóanyag bemutatja, hogyan képezhető le egy meglévő egyéni DNS-név egy API Management-példány által közzétett végpontokra.
 
 > [!IMPORTANT]
 > A API Management csak olyan kérelmeket fogad el, amelyek [állomásfejléc](https://tools.ietf.org/html/rfc2616#section-14.23) -értékei megfelelnek az alapértelmezett tartománynévnek vagy a konfigurált egyéni tartományneveknek.
@@ -49,11 +49,11 @@ A cikkben ismertetett lépések végrehajtásához a következőket kell tennie:
 
     Több végpont is van, amelyekhez egyéni tartománynevet rendelhet hozzá. Jelenleg a következő végpontok érhetők el:
 
-    - **Átjáró** (alapértelmezett: `<apim-service-name>.azure-api.net`),
-    - **Portál** (alapértelmezett: `<apim-service-name>.portal.azure-api.net`),
-    - **Felügyelet** (alapértelmezett: `<apim-service-name>.management.azure-api.net`),
-    - **SCM** (alapértelmezett: `<apim-service-name>.scm.azure-api.net`),
-    - **Newportal** (alapértelmezett: `<apim-service-name>.developer.azure-api.net`).
+    - **Átjáró** (alapértelmezett: `<apim-service-name>.azure-api.net` ),
+    - **Portál** (alapértelmezett: `<apim-service-name>.portal.azure-api.net` ),
+    - **Felügyelet** (alapértelmezett: `<apim-service-name>.management.azure-api.net` ),
+    - **SCM** (alapértelmezett: `<apim-service-name>.scm.azure-api.net` ),
+    - **Newportal** (alapértelmezett: `<apim-service-name>.developer.azure-api.net` ).
 
     > [!NOTE]
     > Csak az **átjáró** végpontja érhető el a felhasználási szinten való konfiguráláshoz.
@@ -78,7 +78,7 @@ A cikkben ismertetett lépések végrehajtásához a következőket kell tennie:
     >
     > Ha a tanúsítvány automatikus megújításra van beállítva, API Management automatikusan a szolgáltatás leállása nélkül fogja tudni felvenni a legújabb verziót (ha a API Managementi szint SLA-i. e. az összes szinten, kivéve a fejlesztői szintet).
 
-1. Kattintson az Apply (Alkalmaz) gombra.
+1. Kattintson az Alkalmaz gombra.
 
     > [!NOTE]
     > A tanúsítvány hozzárendelésének folyamata az üzembe helyezés méretétől függően 15 vagy több percet is igénybe vehet. A fejlesztői SKU állásidővel rendelkezik, az alapszintű és a magasabb SKU-ban nincs leállás.
@@ -95,6 +95,6 @@ Ha az egyéni tartománynévhez konfigurálja a DNS-t, két lehetőség közül 
 > [!NOTE]
 > Bár az API Management-példány IP-címe statikus, néhány esetben változhat. Ezért javasoljuk, hogy használjon CNAME-t az egyéni tartomány konfigurálásakor. A DNS-konfigurációs módszer kiválasztásakor vegye figyelembe a figyelmet. További tudnivalókat az [IP-dokumentációs cikkben](api-management-howto-ip-addresses.md#changes-to-the-ip-addresses) és a [API Management GYIK](api-management-faq.md#how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services)tartalmaz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A szolgáltatás frissítése és méretezése](upgrade-and-scale.md)
