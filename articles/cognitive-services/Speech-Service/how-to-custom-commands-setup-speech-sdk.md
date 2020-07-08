@@ -1,7 +1,7 @@
 ---
 title: Integrálás ügyfélalkalmazással a Speech SDK használatával
 titleSuffix: Azure Cognitive Services
-description: Ebből a cikkből megtudhatja, hogyan teheti közzé a UWP alkalmazásban futó Speech SDK által közzétett egyéni parancsok alkalmazásait.
+description: a UWP alkalmazásban futó Speech SDK által közzétett egyéni parancsok alkalmazásra vonatkozó kérések elvégzése.
 services: cognitive-services
 author: xiaojul
 manager: yetian
@@ -10,16 +10,15 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 6aa63c49328848ca707e938dada6ce3af9f75694
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
-ms.translationtype: MT
+ms.openlocfilehash: 1d84646fcb6769b7489cc0e03085e95fc47ef56c
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85414359"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027630"
 ---
 # <a name="integrate-with-a-client-application-using-speech-sdk"></a>Integráció egy ügyfélalkalmazás használatával a Speech SDK-val
 
-Ebből a cikkből megtudhatja, hogyan teheti közzé a UWP alkalmazásban futó Speech SDK által közzétett egyéni parancsok alkalmazásait. Az egyéni parancsok alkalmazással létesített kapcsolat létrehozásához a következő feladatokat kell elvégezni:
+Ebből a cikkből megtudhatja, hogyan teheti közzé a közzétett egyéni parancsok alkalmazásait egy UWP-alkalmazásban futó Speech SDK-ból. Ahhoz, hogy kapcsolatot hozzon létre az egyéni parancsok alkalmazással, a következőkre lesz szüksége:
 
 - Egyéni parancsok alkalmazás közzététele és alkalmazás-azonosító beszerzése (alkalmazás-azonosító)
 - Hozzon létre egy Univerzális Windows-platform (UWP) ügyfélalkalmazás a Speech SDK használatával, hogy lehetővé tegye az egyéni parancsok alkalmazással való kommunikációt
@@ -32,13 +31,19 @@ A cikk végrehajtásához egyéni parancsokat tartalmazó alkalmazás szüksége
 
 A következőkre is szüksége lesz:
 > [!div class = "checklist"]
-> * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
+> * A [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) -es vagy újabb verziója. Ez az útmutató a Visual Studio 2019-alapú.
 > * Egy Azure-előfizetési kulcs a Speech Serviceshez. [Szerezze be ingyen](get-started.md) , vagy hozza létre a [Azure Portal](https://portal.azure.com)
 > * [Az eszköz fejlesztésének engedélyezése](https://docs.microsoft.com/windows/uwp/get-started/enable-your-device-for-development)
 
 ## <a name="step-1-publish-custom-commands-application"></a>1. lépés: egyéni parancsok alkalmazásának közzététele
 
-1. Nyissa meg a korábban létrehozott egyéni parancsok alkalmazást, és válassza a **Közzététel** lehetőséget.
+1. A korábban létrehozott egyéni parancsok alkalmazás megnyitása
+1. Lépjen a **Beállítások**elemre, és válassza a **Luis erőforrás** elemet.
+1. Ha az **előrejelzési erőforrás** nincs hozzárendelve, válasszon egy lekérdezés-előrejelző kulcsot, vagy hozzon létre újat
+
+    Az alkalmazás közzététele előtt mindig szükség van a lekérdezés-előrejelzési kulcsra. További információ a LUIS-erőforrásokról: a [Luis-erőforrás](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-azure-subscription) referenciája
+
+1. Lépjen vissza a parancsok szerkesztéséhez, és válassza a **Közzététel** lehetőséget.
 
    > [!div class="mx-imgBorder"]
    > ![Az alkalmazás közzététele](media/custom-commands/setup-speech-sdk-publish-application.png)
@@ -131,11 +136,8 @@ Adja hozzá a forráskód mögötti forrást az alábbiak szerint:
    using Microsoft.CognitiveServices.Speech.Audio;
    using Microsoft.CognitiveServices.Speech.Dialog;
    using System;
-   using System.Diagnostics;
    using System.IO;
    using System.Text;
-   using Windows.Foundation;
-   using Windows.Storage.Streams;
    using Windows.UI.Xaml;
    using Windows.UI.Xaml.Controls;
    using Windows.UI.Xaml.Media;
@@ -324,7 +326,7 @@ Adja hozzá a forráskód mögötti forrást az alábbiak szerint:
    // speech recognition results, and other information.
    //
    // ActivityReceived is the main way your client will receive messages, audio, and events
-   connector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
+   connector.ActivityReceived += (sender, activityReceivedEventArgs) =>
    {
        NotifyUser(
            $"Activity received, hasAudio={activityReceivedEventArgs.HasAudio} activity={activityReceivedEventArgs.Activity}");

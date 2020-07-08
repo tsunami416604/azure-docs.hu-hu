@@ -14,10 +14,9 @@ ms.date: 12/12/2017
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: aa0fdddbf31cadad55582f4d45c8e536ce74acd9
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84667424"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>Kapcsolódás SQL Server Azure-beli virtuális géphez
@@ -146,7 +145,7 @@ A következő táblázat az Azure-beli virtuális gépen SQL Serverhoz való kap
 > [!TIP]
 > Az előző táblázatban szereplő lépések a Kapcsolódás a portálon való konfigurálásakor lesznek végrehajtva. Ezekkel a lépésekkel megerősítheti a konfigurációt, vagy manuálisan állíthatja be a kapcsolatot SQL Server számára.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha meg szeretné tekinteni a telepítési utasításokat ezen csatlakozási lépések mellett, tekintse [meg a SQL Server virtuális gép üzembe helyezése az Azure](create-sql-vm-portal.md)-ban című témakört.
 

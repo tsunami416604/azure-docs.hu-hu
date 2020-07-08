@@ -4,10 +4,9 @@ description: Ez a cikk azt ismerteti, hogyan észlelhetők az ismétlődő eleme
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: c8935fa67dda28bb2fec663c5e714982933f0f22
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85337913"
 ---
 # <a name="duplicate-detection"></a>Duplikálás észlelése

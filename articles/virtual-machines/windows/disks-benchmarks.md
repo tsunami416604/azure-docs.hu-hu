@@ -8,10 +8,9 @@ ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: disks
 ms.openlocfilehash: 6a9089bb13a9b2d7f091d209240bcd7a9e02e148
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84660744"
 ---
 # <a name="benchmarking-a-disk"></a>Lemez teljesítményértékelése
@@ -24,7 +23,7 @@ Az alábbi példák követéséhez hozzon létre egy standard DS14 virtuális g�
 
 [!INCLUDE [virtual-machines-disks-benchmarking](../../../includes/virtual-machines-managed-disks-benchmarking.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Folytassa a cikket a [nagy teljesítmény kialakításához](premium-storage-performance.md).
 

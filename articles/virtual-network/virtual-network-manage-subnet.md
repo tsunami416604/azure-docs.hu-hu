@@ -14,10 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 03/20/2020
 ms.author: kumud
 ms.openlocfilehash: b43fb027116d746a60c9cd4e690e63181fff4ade
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84711017"
 ---
 # <a name="add-change-or-delete-a-virtual-network-subnet"></a>Virtuális hálózat alhálózatának hozzáadása, módosítása vagy törlése
@@ -78,7 +77,7 @@ A fiókkal, amelybe bejelentkezik, vagy csatlakozik az Azure-hoz, hozzá kell re
 
 5. Az alhálózat lapon módosítsa a következő beállítások bármelyikét:
 
-    | Beállítás | Leírás |
+    | Beállítás | Description |
     | --- | --- |
     | **Címtartomány** | Ha az alhálózaton belül nincs erőforrás telepítve, módosíthatja a címtartományt. Ha bármilyen erőforrás létezik az alhálózatban, akkor az erőforrásokat át kell helyeznie egy másik alhálózatba, vagy először törölnie kell őket az alhálózatból. Az erőforrások áthelyezéséhez vagy törléséhez szükséges lépések az erőforrástól függően változnak. Az alhálózatokban található erőforrások áthelyezésének és törlésének megismeréséhez olvassa el az egyes erőforrástípusok dokumentációját. Tekintse meg az [alhálózat hozzáadása](#add-a-subnet)szakasz 4. lépésében a **címtartomány** korlátozásait. |
     | **Felhasználók** | Az alhálózathoz való hozzáférést beépített szerepkörök vagy saját egyéni szerepkörök használatával szabályozhatja. Ha többet szeretne megtudni a szerepkörök és a felhasználók az alhálózat eléréséhez való hozzárendeléséről, tekintse meg [a szerepkör-hozzárendelés hozzáadása](../role-based-access-control/role-assignments-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-a-role-assignment)című témakört. |

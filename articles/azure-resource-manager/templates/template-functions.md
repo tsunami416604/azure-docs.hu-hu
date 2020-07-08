@@ -4,10 +4,9 @@ description: A Azure Resource Manager-sablonban az értékek beolvasására, a k
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: d237f5c42c1d1eaab7b2236b15a3122bcb55865b
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84331406"
 ---
 # <a name="arm-template-functions"></a>ARM-sablon függvények
@@ -243,7 +242,7 @@ A Resource Manager a következő függvényeket biztosítja a karakterláncok ha
 * [uriComponent](template-functions-string.md#uricomponent)
 * [uriComponentToString](template-functions-string.md#uricomponenttostring)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Az ARM-sablon fejezeteinek leírását lásd: ARM- [sablonok készítése](template-syntax.md)
 * Több sablon egyesítéséhez tekintse meg [a csatolt sablonok használata Azure Resource Manager használatával](linked-templates.md) című témakört.

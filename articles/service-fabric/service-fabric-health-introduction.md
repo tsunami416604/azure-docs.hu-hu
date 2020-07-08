@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: gwallace
 ms.openlocfilehash: 82e61b2bf127ba86d06aba3110a000ed28a79833
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85392760"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>A Service Fabric állapotmonitorozásának bemutatása
@@ -294,7 +293,7 @@ Más rendszerek egyetlen, központosított szolgáltatással rendelkeznek a für
 
 Az állapotfigyelő modell nagy mértékben használatos figyelésre és diagnosztizálásra, a fürt és az alkalmazás állapotának kiértékeléséhez, valamint a figyelt frissítésekhez. Más szolgáltatások az állapotadatok használatával végzik el az automatikus javításokat, felépítik a fürt állapotának előzményeit, és bizonyos körülmények között riasztásokat adnak ki.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Service Fabric állapottal kapcsolatos jelentések megtekintése](service-fabric-view-entities-aggregated-health.md)
 
 [Rendszerállapot-jelentések használata a hibaelhárításhoz](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)

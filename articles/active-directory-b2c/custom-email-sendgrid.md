@@ -12,10 +12,9 @@ ms.date: 06/25/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: d2716c49c72674b53e52b021972a90cf89bd843a
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85392910"
 ---
 # <a name="custom-email-verification-with-sendgrid"></a>Egyéni e-mail-ellenőrzés a SendGrid
@@ -45,7 +44,7 @@ Ezután tárolja a SendGrid API-kulcsot egy Azure AD B2C házirend-kulcsban a sz
 1. Adja meg a szabályzat kulcsának **nevét** . Például: `SendGridSecret`. A rendszer automatikusan hozzáadja az előtagot a `B2C_1A_` kulcs nevéhez.
 1. A **Secret (titkos kulcs**) mezőben adja meg a korábban rögzített ügyfél-titkot.
 1. A **kulcshasználat**beállításnál válassza az **aláírás**lehetőséget.
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 ## <a name="create-sendgrid-template"></a>SendGrid-sablon létrehozása
 
@@ -480,7 +479,7 @@ Az e-mail honosítása érdekében honosított karakterláncokat kell küldenie 
     </InputClaimsTransformations>
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A GitHubon megtalálhatja például az egyéni e-mail-ellenőrzési szabályzatot:
 

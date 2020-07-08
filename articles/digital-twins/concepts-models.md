@@ -8,10 +8,9 @@ ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
 ms.openlocfilehash: a1bb07ee900622b138a556a33469641e4e8310af
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85392301"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>A Twin modellek ismertetése az Azure Digital Twinsban
@@ -201,7 +200,7 @@ Rendelkezésre áll egy minta a modell dokumentumainak ellenőrzéséhez, hogy a
 
 Ha további információt szeretne az elemző könyvtárról, beleértve a közvetlen használattal kapcsolatos példát is, tekintse meg a [How-to: modellek elemzése és ellenőrzése](how-to-use-parser.md)című témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse meg, hogyan kezelhetők a modellek a DigitalTwinsModels API-kkal:
 * [Útmutató: egyéni modellek kezelése](how-to-manage-model.md)

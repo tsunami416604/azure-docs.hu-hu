@@ -11,10 +11,9 @@ services: azure-maps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: fe79b630291959ce4dc8b4743127986088a876ae
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84987536"
 ---
 # <a name="authentication-with-azure-maps"></a>Hitelesítés az Azure Maps használatával
@@ -90,7 +89,7 @@ Az Azure RBAC konfigurálásakor ki kell választania egy rendszerbiztonsági ta
 
 A következő szerepkör-definíciós típusok léteznek az alkalmazási forgatókönyvek támogatásához.
 
-| Azure-szerepkör definíciója       | Leírás                                                                                              |
+| Azure-szerepkör definíciója       | Description                                                                                              |
 | :-------------------------- | :------------------------------------------------------------------------------------------------------- |
 | Adatolvasó Azure Maps      | Hozzáférést biztosít a nem változtatható Azure Maps REST API-khoz.                                                       |
 | Azure Maps adatközreműködő | Hozzáférést biztosít a megváltoztathatatlan Azure Maps REST API-khoz. A változékonyság a műveletek: írás és törlés művelet határozza meg. |

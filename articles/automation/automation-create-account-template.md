@@ -8,10 +8,9 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 06/09/2020
 ms.openlocfilehash: 6b26db522db246add48941da9af4784ed2942a0a
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84661029"
 ---
 # <a name="create-an-automation-account-using-an-azure-resource-manager-template"></a>Automation-fiók létrehozása Azure Resource Manager sablon használatával
@@ -307,6 +306,6 @@ Ha még nem Azure Automation és Azure Monitor, fontos, hogy megértse a követk
 
     ![Példa az üzembe helyezés befejezésekor bekövetkezett eredményre](media/automation-create-account-template/template-output.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A runbook-feladatok állapotának és a feladatok adatfolyamoknak a csatolt Log Analytics munkaterületre való továbbításához tekintse át a [Azure Automation-feladatok továbbítása Azure monitor naplókba](automation-manage-send-joblogs-log-analytics.md). Ezzel konfigurálja az Automation-fiók diagnosztikai beállításait Azure PowerShell parancsok használatával, hogy elvégezze a naplók a munkaterületre való küldésének integrálását elemzés céljából. 

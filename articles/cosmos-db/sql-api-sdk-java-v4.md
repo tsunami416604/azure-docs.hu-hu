@@ -9,10 +9,9 @@ ms.topic: reference
 ms.date: 05/20/2020
 ms.author: anfeldma
 ms.openlocfilehash: aa5e741d8578253b8b3e8e5c692873c39cec8f79
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85412634"
 ---
 # <a name="azure-cosmos-db-java-sdk-v4-for-core-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK v4 for Core (SQL) API: kibocsátási megjegyzések és erőforrások
@@ -50,7 +49,7 @@ Az Azure Cosmos DB Java SDK v4 for Core (SQL) egy aszinkron API-t és egy "Sync"
 | **SDK letöltése** | [Maven](https://mvnrepository.com/artifact/com.azure/azure-cosmos) |
 |**API-dokumentáció** | [Java API-referenciák dokumentációja](https://docs.microsoft.com/java/api/overview/azure/cosmosdb/client?view=azure-java-stable) |
 |**Közreműködés az SDK-val** | [Azure SDK a Java központi tárházhoz a GitHubon](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos) | 
-|**Bevezetés** | Gyors útmutató [: Java-alkalmazás létrehozása Azure Cosmos db SQL API-beli adatkezelési szolgáltatásokhoz](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-java) · [GitHub](https://github.com/Azure-Samples/azure-cosmos-java-getting-started) -tárház a gyors üzembe helyezési kóddal | 
+|**Első lépések** | Gyors útmutató [: Java-alkalmazás létrehozása Azure Cosmos db SQL API-beli adatkezelési szolgáltatásokhoz](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-java) · [GitHub](https://github.com/Azure-Samples/azure-cosmos-java-getting-started) -tárház a gyors üzembe helyezési kóddal | 
 |**Alapszintű kódok** | [Azure Cosmos db: Java-példák az SQL API](sql-api-java-sdk-samples.md) -ra · [GitHub-tárház a mintakód](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples)|
 |**Konzolos alkalmazás változási hírcsatornával**| [Change feed-Java SDK v4 minta](create-sql-api-java-changefeed.md) · [GitHub-tárház a mintakód](https://github.com/Azure-Samples/azure-cosmos-java-sql-app-example)| 
 |**Webalkalmazás mintája**| [Webalkalmazás létrehozása Java SDK v4](sql-api-java-application.md) használatával [GitHub-tárház a mintakód](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-todo-app)|

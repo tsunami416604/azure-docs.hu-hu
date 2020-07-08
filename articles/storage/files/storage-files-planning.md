@@ -8,10 +8,9 @@ ms.date: 1/3/2020
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: d1d36c6f6413a9438063c6fe30403af095ed9a6b
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84659634"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Az Azure Files üzembe helyezésének megtervezése
@@ -159,12 +158,12 @@ Az új fájlmegosztás a teljes számú Kredittel kezdődik a burst gyűjtőben.
 ## <a name="redundancy"></a>Redundancia
 [!INCLUDE [storage-files-redundancy-overview](../../../includes/storage-files-redundancy-overview.md)]
 
-## <a name="migration"></a>Migrálás
+## <a name="migration"></a>Áttelepítés
 Sok esetben nem fog létrehozni nettó új fájlmegosztást a szervezet számára, hanem inkább egy meglévő fájlmegosztást telepít át egy helyszíni fájlkiszolgálón vagy NAS-eszközről a Azure Filesra. A Migrálás sikerességéhez fontos a megfelelő áttelepítési stratégia és eszköz kiválogatása a forgatókönyvhöz. 
 
 Az [áttelepítést áttekintő cikk](storage-files-migration-overview.md) röviden ismerteti az alapokat, és tartalmaz egy táblázatot, amely a forgatókönyvét valószínűleg magában foglaló áttelepítési útmutatókba vezet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Azure File Sync központi telepítésének tervezése](storage-sync-files-planning.md)
 * [Azure Files üzembe helyezése](storage-files-deployment-guide.md)
 * [Azure File Sync üzembe helyezése](storage-sync-files-deployment-guide.md)

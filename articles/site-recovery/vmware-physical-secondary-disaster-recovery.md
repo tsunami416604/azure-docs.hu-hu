@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: raynew
 ms.openlocfilehash: 71d230c9fea25edfbf0ca4ea40f15b69779ad060
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84711901"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>Helyszíni VMware-alapú virtuális gépek vagy fizikai kiszolgálók vészhelyreállításának beállítása másodlagos helyre
@@ -135,7 +134,7 @@ Töltse le az [Update](https://aka.ms/asr-scout-update7) . zip fájlt, valamint 
 
    * [Kibocsátási megjegyzések](https://aka.ms/asr-scout-release-notes)
    * [Kompatibilitási mátrix](https://aka.ms/asr-scout-cm)
-   * [Felhasználói útmutató](https://aka.ms/asr-scout-user-guide)
+   * [Használati útmutató](https://aka.ms/asr-scout-user-guide)
    * [RX felhasználói útmutató](https://aka.ms/asr-scout-rx-user-guide)
    * [Gyors telepítési útmutató](https://aka.ms/asr-scout-quick-install-guide)
    * [MYSQL-és PHP-kódtárak frissítése](https://aka.ms/asr-scout-u7-mysql-php-manualupgrade)

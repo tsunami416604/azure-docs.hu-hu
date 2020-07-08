@@ -7,10 +7,9 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 06/25/2020
 ms.openlocfilehash: 33e521046889733b2f0a66b839ab5dde46398318
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85412695"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Információ az Azure Logic Apps korlátozásaival és konfigurálásával kapcsolatban
@@ -40,7 +39,7 @@ Egyetlen logikai alkalmazás definíciójának korlátai:
 
 <a name="run-duration-retention-limits"></a>
 
-## <a name="run-duration-and-retention-limits"></a>Futtatási időtartam és adatmegőrzési korlátok
+## <a name="run-duration-and-retention-limits"></a>Futtatás időtartamára és adatmegőrzésre vonatkozó korlátok
 
 Egyetlen logikai alkalmazás futtatásának korlátai:
 
@@ -127,7 +126,7 @@ Ha a határértékeket a normál feldolgozás során szeretné megtenni, vagy ol
 
 <a name="gateway-limits"></a>
 
-## <a name="gateway-limits"></a>Átjáró korlátai
+## <a name="gateway-limits"></a>Átjáróra vonatkozó korlátok
 
 Azure Logic Apps támogatja az írási műveleteket, beleértve a lapkákat és a frissítéseket az átjárón keresztül. Ezek a műveletek azonban [korlátokkal rendelkeznek a hasznos adatok méretétől függően](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations).
 
@@ -190,7 +189,7 @@ Egyes összekötők aszinkron hívásokat végeznek, vagy figyelik a webhook-ké
 
 <a name="custom-connector-limits"></a>
 
-## <a name="custom-connector-limits"></a>Egyéni összekötők korlátai
+## <a name="custom-connector-limits"></a>Egyéni összekötőre vonatkozó korlátok
 
 A webes API-k által létrehozott egyéni összekötők korlátai.
 

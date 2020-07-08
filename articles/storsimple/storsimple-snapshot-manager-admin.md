@@ -15,10 +15,9 @@ ms.workload: TBD
 ms.date: 06/05/2016
 ms.author: twooley
 ms.openlocfilehash: f9a42a8f94f3e5cb63cd340b696a803d97491c76
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85512825"
 ---
 # <a name="use-storsimple-snapshot-manager-to-administer-your-storsimple-solution"></a>A StorSimple-megoldás felügyeletéhez használja a StorSimple Snapshot Manager
@@ -51,7 +50,7 @@ A StorSimple Snapshot Manager segítségével figyelheti és kezelheti a jelenle
 | További információ a StorSimple Snapshot Manager |[Mi az a StorSimple Snapshot Manager?](storsimple-what-is-snapshot-manager.md) |
 | A StorSimple telepítése Snapshot Manager<br>StorSimple újratelepítése Snapshot Manager<br>StorSimple eltávolítása Snapshot Manager |[StorSimple Snapshot Manager üzembe helyezése](storsimple-snapshot-manager-deployment.md) |
 | StorSimple Snapshot Manager menük és szolgáltatások használata:<ul><li>Menüsor</li><li>Eszköztár</li><li>Hatókör panel</li><li>Eredmények ablaktábla</li><li>Műveletek ablaktábla</li><li>Billentyűparancsok és billentyűparancsok</li></ul> |[StorSimple Snapshot Manager felhasználói felület](storsimple-use-snapshot-manager.md) |
-| Használja az StorSimple Snapshot Managerban található általános MMC-funkciókat:<ul><li>Nézet</li><li>Új ablak innen</li><li>Frissítés</li><li>Exportálási lista</li><li>Help</li></ul> |[Használja az MMC menü műveleteit a StorSimple Snapshot Manager](storsimple-snapshot-manager-mmc-menu.md) |
+| Használja az StorSimple Snapshot Managerban található általános MMC-funkciókat:<ul><li>Nézet</li><li>Új ablak innen</li><li>Frissítés</li><li>Exportálási lista</li><li>Súgó</li></ul> |[Használja az MMC menü műveleteit a StorSimple Snapshot Manager](storsimple-snapshot-manager-mmc-menu.md) |
 | Eszköz hozzáadása vagy cseréje<br>Eszköz csatlakoztatása<br>Importált mennyiségi csoportok ellenőrzése<br>Csatlakoztatott eszközök frissítése<br>Eszköz hitelesítése<br>Eszközadatok megtekintése<br>Eszköz konfigurációjának törlése<br>Eszköz jelszavának módosítása<br>Sikertelen eszköz cseréje<br> |[A StorSimple Snapshot Manager használata a StorSimple-eszközök csatlakoztatásához és kezeléséhez](storsimple-snapshot-manager-manage-devices.md) |
 | Kötetek csatlakoztatása<br>Kötetek adatainak megtekintése<br>Kötet törlése<br>Kötetek újraellenőrzése<br>Alapszintű kötet konfigurálása és biztonsági mentése<br>Dinamikus tükrözött kötet konfigurálása és biztonsági mentése |[Kötetek megtekintése és kezelése StorSimple Snapshot Manager használatával](storsimple-snapshot-manager-manage-volumes.md) |
 | Mennyiségi csoportok megtekintése<br>Kötet csoport létrehozása<br>Mennyiségi csoport biztonsági mentése<br>Mennyiségi csoport szerkesztése<br>Mennyiségi csoport törlése |[StorSimple-Snapshot Manager használata a kötetek létrehozásához és kezeléséhez](storsimple-snapshot-manager-manage-volume-groups.md) |
@@ -59,6 +58,6 @@ A StorSimple Snapshot Manager segítségével figyelheti és kezelheti a jelenle
 | Ütemezett biztonsági mentési feladatok megtekintése és kezelése<br>Legutóbbi biztonsági mentési feladatok megtekintése és kezelése<br>Jelenleg futó biztonsági mentési feladatok megtekintése és kezelése |[A StorSimple Snapshot Manager használata a biztonsági mentési feladatok megtekintéséhez és kezeléséhez](storsimple-snapshot-manager-manage-backup-jobs.md) |
 | Kötet visszaállítása<br>Kötet vagy számítógépcsoport klónozása<br>Biztonsági másolat törlése<br>Fájl helyreállítása<br>A StorSimple Snapshot Manager adatbázisának visszaállítása |[A StorSimple Snapshot Manager használata a biztonsági mentési katalógus kezeléséhez](storsimple-snapshot-manager-manage-backup-catalog.md) |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Töltse le a StorSimple Snapshot Manager](https://www.microsoft.com/download/details.aspx?id=44220).
 

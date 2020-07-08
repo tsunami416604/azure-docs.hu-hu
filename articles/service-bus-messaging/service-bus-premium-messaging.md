@@ -4,10 +4,9 @@ description: Ez a cikk a Azure Service Bus standard és prémium szintű csomagj
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: eb2d3dda18eb08809a5c8f1020490acdb1e9a21c
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85337412"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>A Service Bus prémium és standard szintű üzenetkezelés szintjei
@@ -23,7 +22,7 @@ A következő táblázat néhány fontos eltérést emel ki.
 | Magas teljesítmény |Változó teljesítmény |
 | Kiszámítható teljesítmény |Változó késés |
 | Rögzített díjszabás |Használatalapú változó díjszabás |
-| Lehetőség a munkaterhelés vertikális fel- és leskálázására |N/A |
+| Lehetőség a munkaterhelés vertikális fel- és leskálázására |N.A. |
 | Legfeljebb 1 MB méretű üzenet |Legfeljebb 256 KB méretű üzenet |
 
 A **Service Bus prémium szintű üzenetkezelés** erőforrás-elkülönítést biztosít a CPU és a memória szintjén, így az ügyfél minden számítási feladata elkülönítve fut. Ennek az erőforrás-tárolónak a neve *üzenetkezelési egység*. Legalább egy üzenetkezelési egység van lefoglalva minden prémium névtérhez. Az egyes Service Bus prémium szintű névterekhez 1, 2, 4 vagy 8 üzenetküldési egység is megvásárolható. Egyetlen munkaterhelés vagy entitás több üzenetkezelési egységre is kiterjedhet, és az üzenetkezelési egységek száma a következő időpontban módosítható:. Az eredmény a Service Bus-alapú megoldás kiszámítható és ismételhető teljesítménye.

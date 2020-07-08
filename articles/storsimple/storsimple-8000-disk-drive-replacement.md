@@ -15,10 +15,9 @@ ms.workload: TBD
 ms.date: 8/25/2017
 ms.author: alkohli
 ms.openlocfilehash: a5a7a31c174271f963bb005f10b8376a59133d36
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85513131"
 ---
 # <a name="replace-a-disk-drive-on-your-storsimple-8000-series-device"></a>Lemezmeghajtó cseréje StorSimple 8000 sorozatú eszközökön
@@ -109,6 +108,6 @@ Ha egy meghajtó meghiúsult a StorSimple-eszközön, és eltávolította azt, k
    > [!NOTE]
    > Több órát is igénybe vehet, amíg a lemez állapota a csere után zöldre vált.
   
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ a [StorSimple hardveres összetevők cseréjéről](storsimple-8000-hardware-component-replacement.md).
 

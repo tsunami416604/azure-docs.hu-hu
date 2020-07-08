@@ -13,10 +13,9 @@ ms.workload: iaas-sql-server
 ms.date: 12/26/2019
 ms.author: mathoma
 ms.openlocfilehash: 21609e38625d0911476c85a9d6e518f5ff7e9e61
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84667369"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>Tárolási konfiguráció SQL Server rendszerű virtuális gépekhez
@@ -142,13 +141,13 @@ Az alábbi táblázat az elérhető három munkaterhelés-típust és a hozzáju
 
 | Munkaterhelés típusa | Description | Optimalizálás |
 | --- | --- | --- |
-| **Általános** |Alapértelmezett beállítás, amely támogatja a legtöbb munkaterhelést |Nincs |
+| **Általános** |Alapértelmezett beállítás, amely támogatja a legtöbb munkaterhelést |None |
 | **Tranzakciós feldolgozás** |Optimalizálja a tárolót a hagyományos adatbázis-OLTP számítási feladatokhoz |Nyomkövetési jelző 1117<br/>Nyomkövetési jelző 1118 |
 | **Adattárház** |Optimalizálja a tárolót analitikai és jelentéskészítési számítási feladatokhoz |Nyomkövetési jelző 610<br/>Nyomkövetési jelző 1117 |
 
 > [!NOTE]
 > A számítási feladatok típusát csak akkor adhatja meg, ha kijelöli a SQL Server virtuális gépet a tárolási konfiguráció lépésben.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A SQL Server Azure-beli virtuális gépeken való futtatásával kapcsolatos további témakörökért lásd: [SQL Server az azure Virtual Machines](sql-server-on-azure-vm-iaas-what-is-overview.md).

@@ -4,10 +4,9 @@ description: A Azure Service Bus használatakor esetlegesen megjelenő AMQP-hib�
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 9680e930dd8c1cb8cbd062f029af9d674d62c0e2
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85337829"
 ---
 # <a name="amqp-errors-in-azure-service-bus"></a>AMQP hibák a Azure Service Busban

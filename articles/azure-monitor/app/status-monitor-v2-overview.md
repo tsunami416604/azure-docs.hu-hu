@@ -6,10 +6,9 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 09/16/2019
 ms.openlocfilehash: 626a8c96fdc247db174e2cbcd2e5c99cec43d2ea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81770962"
 ---
 # <a name="deploy-azure-monitor-application-insights-agent-for-on-premises-servers"></a>A helyszíni kiszolgálók Azure Monitor Application Insights ügynökének üzembe helyezése
@@ -22,11 +21,11 @@ Lecseréli [Állapotmonitor](https://docs.microsoft.com/azure/azure-monitor/app/
 A rendszer elküldje a telemetria a Azure Portalba, ahol [nyomon](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) követheti az alkalmazást.
 
 > [!NOTE]
-> A modul jelenleg csak az IIS-ben üzemeltetett .NET-webalkalmazások Code uninstrumentation-alapú rendszerállapotát támogatja. SDK használata ASP.NET Core, Java és Node. js-alkalmazásokhoz.
+> A modul jelenleg csak az IIS-ben üzemeltetett .NET-webalkalmazások Code uninstrumentation-alapú rendszerállapotát támogatja. SDK használata ASP.NET Core, Java és Node.js alkalmazásokhoz.
 
 ## <a name="powershell-gallery"></a>PowerShell-galéria
 
-Application Insights ügynök itt található: https://www.powershellgallery.com/packages/Az.ApplicationMonitor.
+Application Insights ügynök itt található: https://www.powershellgallery.com/packages/Az.ApplicationMonitor .
 
 ![PowerShell-galéria](https://img.shields.io/powershellgallery/v/Az.ApplicationMonitor.svg?color=Blue&label=Current%20Version&logo=PowerShell&style=for-the-badge)
 
@@ -54,7 +53,7 @@ Application Insights ügynök itt található: https://www.powershellgallery.com
 
 - Támogatja a Application Insights ügynök a proxy telepítéseit?
 
-  *Igen*. Application Insights-ügynök letöltése több módon is lehetséges. Ha a számítógépnek van internet-hozzáférése, akkor paraméterek használatával `-Proxy` bejelentkezhet a PowerShell-galériaba.
+  *Igen*. Application Insights-ügynök letöltése több módon is lehetséges. Ha a számítógépnek van internet-hozzáférése, akkor paraméterek használatával bejelentkezhet a PowerShell-galériaba `-Proxy` .
 Manuálisan is letöltheti a modult, és telepítheti a számítógépre, vagy közvetlenül is használhatja azt.
 Ezeket a beállításokat a [részletes utasítások](status-monitor-v2-detailed-instructions.md)ismertetik.
 

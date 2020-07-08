@@ -13,10 +13,9 @@ ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 06/03/2020
 ms.openlocfilehash: 576861265771977f7e13140dd595f47bf556e585
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84331899"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>Azure-SSIS Integration Runtime beállításainak testreszabása
@@ -40,9 +39,9 @@ Telepítheti az ingyenes, a licenc nélküli összetevőket és a fizetős licen
 
 A következő korlátozások érvényesek kizárólag a szabványos egyéni telepítésekre:
 
-- Ha a *Gacutil. exe* fájllal szeretné telepíteni a szerelvényeket a globális szerelvény-gyorsítótárban (GAC), akkor az egyéni telepítés részeként meg kell adnia a *Gacutil. exe fájlt* . Vagy használhatja a *nyilvános előzetes* tárolóban megadott másolatot, amelyet később az "utasítások" szakaszban ismertetünk.
+- Ha a szkriptben lévő *gacutil.exet* kívánja használni a globális szerelvény-gyorsítótárban (GAC) lévő szerelvények telepítéséhez, meg kell adnia *gacutil.exe* az egyéni telepítés részeként. Vagy használhatja a *nyilvános előzetes* tárolóban megadott másolatot, amelyet később az "utasítások" szakaszban ismertetünk.
 
-- Ha a parancsfájl egyik almappájára szeretne hivatkozni, az *msiexec. exe* nem támogatja a `.\` legfelső szintű mappára mutató jelölést. Használjon olyan parancsot, mint a `msiexec /i "MySubfolder\MyInstallerx64.msi" ...` helyett `msiexec /i ".\MySubfolder\MyInstallerx64.msi" ...` .
+- Ha a parancsfájl egyik almappájára szeretne hivatkozni, a *msiexec.exe* nem támogatja a `.\` gyökérkönyvtárra hivatkozó jelölést. Használjon olyan parancsot, mint a `msiexec /i "MySubfolder\MyInstallerx64.msi" ...` helyett `msiexec /i ".\MySubfolder\MyInstallerx64.msi" ...` .
 
 - A Windows által automatikusan létrehozott rendszergazdai megosztások vagy rejtett hálózati megosztások jelenleg nem támogatottak a Azure-SSIS IR.
 
@@ -72,7 +71,7 @@ A Azure-SSIS IR szabványos egyéni telepítésekkel való kiépítéséhez vagy
 
    * Rendelkeznie kell egy *Main. cmd*nevű parancsfájl-fájllal, amely az egyéni telepítés belépési pontja.  
    * Annak érdekében, hogy a parancsfájlt csendesen lehessen végrehajtani, javasoljuk, hogy először tesztelje a helyi gépen.  
-   * Ha más eszközök (például *msiexec. exe*) által generált további naplókat szeretne feltölteni a tárolóba, adja meg az előre definiált környezeti változót, `CUSTOM_SETUP_SCRIPT_LOG_DIR` mint a parancsfájlok log mappáját (például *msiexec/i xxx. msi/quiet/lv% CUSTOM_SETUP_SCRIPT_LOG_DIR% \ install. log*).
+   * Ha más eszközök (például *msiexec.exe*) által generált további naplókat szeretne feltölteni a tárolóba, adja meg az előre definiált környezeti változót, `CUSTOM_SETUP_SCRIPT_LOG_DIR` mint a parancsfájlok log mappáját (például *msiexec/i xxx.msi/quiet/lv% CUSTOM_SETUP_SCRIPT_LOG_DIR% \ install. log*).
 
 1. [Azure Storage Explorer](https://storageexplorer.com/)letöltése, telepítése és megnyitása.
 
@@ -251,7 +250,7 @@ A standard egyéni telepítések egyes mintáinak megtekintéséhez és újrafel
 
    d. A bal oldali ablaktáblán válassza ki a csatlakoztatott **publicpreview** -tárolót, majd kattintson duplán a *CustomSetupScript* mappára. Ebben a mappában a következő elemek találhatók:
 
-      * Egy *minta* mappa, amely egy egyéni telepítőt tartalmaz egy alapszintű feladat telepítéséhez a Azure-SSIS IR egyes csomópontjain. A feladat nem csinál semmit, de aludni néhány másodpercig. A mappa egy *Gacutil* mappát is tartalmaz, amelynek teljes tartalma (*Gacutil. exe*, *Gacutil. exe. config*és *1033 \ gacutlrc. dll*) a tárolóba másolható.
+      * Egy *minta* mappa, amely egy egyéni telepítőt tartalmaz egy alapszintű feladat telepítéséhez a Azure-SSIS IR egyes csomópontjain. A feladat nem csinál semmit, de aludni néhány másodpercig. A mappa egy *Gacutil* mappát is tartalmaz, amelynek teljes tartalma (*gacutil.exe*, *gacutil.exe.config*és *1033\gacutlrc.dll*) a tárolóba másolható.
 
       * Egy *UserScenarios* mappa, amely a valós felhasználói forgatókönyvekben számos egyéni telepítési mintát tartalmaz.
 
@@ -261,55 +260,55 @@ A standard egyéni telepítések egyes mintáinak megtekintéséhez és újrafel
 
       * A *.NET-keretrendszer 3,5* mappája, amely egy egyéni telepítési parancsfájlt (*Main. cmd*) tartalmaz a .NET-keretrendszer egy korábbi verziójának telepítéséhez, amelyre szükség lehet az egyéni összetevőkhöz a Azure-SSIS IR egyes csomópontjain.
 
-      * Egy *BCP* -mappa, amely egy egyéni telepítési parancsfájlt (*Main. cmd*) tartalmaz a SQL Server parancssori segédeszközök (*MsSqlCmdLnUtils. msi*) telepítéséhez, beleértve a tömeges másolási programot (*BCP*) a Azure-SSIS IR egyes csomópontjain.
+      * Egy *BCP* -mappa, amely egy egyéni telepítési parancsfájlt (*Main. cmd*) tartalmaz a SQL Server parancssori segédeszközök (*MsSqlCmdLnUtils.msi*) telepítéséhez, beleértve a tömeges másolási programot (*BCP*) a Azure-SSIS IR egyes csomópontjain.
 
       * Egy *Excel* -mappa, amely egy egyéni telepítési parancsfájlt (*Main. cmd*) tartalmaz a C#-szerelvények és-kódtárak telepítéséhez, amelyeket parancsfájl-feladatokban használhat a Azure-SSIS IR összes csomópontján lévő Excel-fájlok dinamikus olvasásához és írásához. 
       
-        Először töltse le a [*ExcelDataReader. dll*](https://www.nuget.org/packages/ExcelDataReader/) és a [*DocumentFormat. OpenXml. dll fájlt*](https://www.nuget.org/packages/DocumentFormat.OpenXml/), majd töltse fel őket a *Main. cmd fájllal* együtt a tárolóba. Ha csak a szabványos Excel-kapcsolatkezelő, az Excel-forrás és az Excel-célhelyet szeretné használni, a szükséges hozzáférés-Újraterjeszthető csomag már telepítve van a Azure-SSIS IR, így nincs szükség egyéni telepítésre.
+        Először töltse le [*ExcelDataReader.dll*](https://www.nuget.org/packages/ExcelDataReader/) és [*DocumentFormat.OpenXml.dll*](https://www.nuget.org/packages/DocumentFormat.OpenXml/), majd töltse fel őket a *Main. cmd fájllal* együtt a tárolóba. Ha csak a szabványos Excel-kapcsolatkezelő, az Excel-forrás és az Excel-célhelyet szeretné használni, a szükséges hozzáférés-Újraterjeszthető csomag már telepítve van a Azure-SSIS IR, így nincs szükség egyéni telepítésre.
       
       * Egy *MySQL ODBC* -mappa, amely egy egyéni telepítési parancsfájlt (*Main. cmd*) tartalmaz a MySQL ODBC-illesztőprogramok telepítéséhez a Azure-SSIS IR minden egyes csomópontján. Ezzel a beállítással a MySQL-kiszolgálóhoz való kapcsolódáshoz használhatja az ODBC-kapcsolatkezelő, a forrás és a cél lehetőséget. 
      
-        Először [töltse le a MySQL ODBC illesztőprogram-telepítők legújabb 64 bites és 32 bites verzióit](https://dev.mysql.com/downloads/connector/odbc/) (például *MySQL-Connector-ODBC-8.0.13-Winx64. msi* és *MySQL-Connector-ODBC-8.0.13-Win32. msi*), majd töltse fel őket a *Main. cmd fájllal* együtt a tárolóba.
+        Először [töltse le a MySQL ODBC illesztőprogram-telepítők legújabb 64 bites és 32 bites verzióit](https://dev.mysql.com/downloads/connector/odbc/) (például *mysql-connector-odbc-8.0.13-winx64.msi* és *mysql-connector-odbc-8.0.13-win32.msi*), majd töltse fel őket a *Main. cmd fájllal* együtt a tárolóba.
 
       * Egy *Oracle Enterprise* mappa, amely egy egyéni telepítési parancsfájlt (*Main. cmd*) és csendes telepítési konfigurációs fájlt (*Client. RSP*) tartalmaz az Oracle-összekötők és a OCI-illesztőprogram telepítéséhez a Azure-SSIS IR Enterprise Edition minden egyes csomópontján. Ez a beállítás lehetővé teszi, hogy az Oracle-Csatlakozáskezelő, a forrás és a cél használatával kapcsolódjon az Oracle-kiszolgálóhoz. 
       
-        Először töltse le az Oracle-hez készült Microsoft Connectors v 5.0-s verzióját (*AttunitySSISOraAdaptersSetup. msi* és *AttunitySSISOraAdaptersSetup64. msi*) a [Microsoft letöltőközpontból](https://www.microsoft.com/en-us/download/details.aspx?id=55179) és a legújabb oracle-ügyfélprogramból (például *winx64_12102_client. zip*) az [Oracle](https://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-win64-download-2297732.html)-ből, majd töltse fel őket mind a *Main. cmd* , mind a *Client. RSP* fájllal a tárolóba. Ha a TNS használatával csatlakozik az Oracle-hez, le kell töltenie a *tnsnames. ora*fájlt, szerkesztenie kell, és fel kell töltenie a tárolóba, hogy a telepítés során átmásolható legyen az Oracle telepítési mappájába.
+        Először töltse le az Oracle-hez készült Microsoft Connectors v 5.0-s verzióját (*AttunitySSISOraAdaptersSetup.msi* és *AttunitySSISOraAdaptersSetup64.msi*) a [Microsoft letöltőközpontból](https://www.microsoft.com/en-us/download/details.aspx?id=55179) és a legújabb oracle-ügyfélprogramból (például *winx64_12102_client.zip*) az [Oracle](https://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-win64-download-2297732.html)-ből, majd töltse fel őket a *Main. cmd* és az *Client. RSP* fájllal együtt a tárolóba. Ha a TNS használatával csatlakozik az Oracle-hez, le kell töltenie a *tnsnames. ora*fájlt, szerkesztenie kell, és fel kell töltenie a tárolóba, hogy a telepítés során átmásolható legyen az Oracle telepítési mappájába.
 
       * Egy *Oracle STANDARD ADO.net* mappa, amely egy egyéni telepítési parancsfájlt (*Main. cmd*) tartalmaz az Oracle ODP.net-illesztőprogram telepítéséhez a Azure-SSIS IR minden egyes csomópontján. Ez a beállítás lehetővé teszi, hogy a ADO.NET Csatlakozáskezelő, forrás és cél használatával kapcsolódjon az Oracle-kiszolgálóhoz. 
       
-        Először [töltse le a legújabb Oracle ODP.net-illesztőprogramot](https://www.oracle.com/technetwork/database/windows/downloads/index-090165.html) (például *ODP. NET_Managed_ODAC122cR1. zip*), majd töltse fel a *Main. cmd fájllal* együtt a tárolóba.
+        Először [töltse le a legújabb Oracle ODP.net-illesztőprogramot](https://www.oracle.com/technetwork/database/windows/downloads/index-090165.html) (például *ODP.NET_Managed_ODAC122cR1.zip*), majd töltse fel a *Main. cmd fájllal* együtt a tárolóba.
        
       * *Oracle standard ODBC* -mappa, amely egy egyéni telepítési parancsfájlt (*Main. cmd*) tartalmaz az Oracle ODBC-illesztőprogram telepítéséhez és az adatforrás nevének (DSN) konfigurálásához a Azure-SSIS IR mindegyik csomópontján. Ezzel a beállítással az ODBC-kapcsolatkezelő, a forrás és a cél, illetve a Power Query Csatlakozáskezelő és a forrás használható az Oracle-kiszolgálóhoz való kapcsolódáshoz az ODBC-adatforrás típusával. 
       
         Először töltse le a legújabb Oracle Instant-ügyfelet (alapszintű csomag vagy alapszintű Lite-csomag) és az ODBC-csomagot, majd töltse fel őket a *Main. cmd fájllal* együtt a tárolóba:
-        * [64 bites csomagok letöltése](https://www.oracle.com/technetwork/topics/winx64soft-089540.html) (alapszintű csomag: *instantclient-Basic-Windows. x64-18.3.0.0.0 dbru. zip*; Alapszintű Lite-csomag: *instantclient-basiclite-Windows. x64-18.3.0.0.0 dbru. zip*; ODBC-csomag: *instantclient-ODBC-Windows. x64-18.3.0.0.0 dbru. zip*) 
-        * [32 bites csomagok letöltése](https://www.oracle.com/technetwork/topics/winsoft-085727.html) (alapszintű csomag: *instantclient-Basic-NT-18.3.0.0.0 dbru. zip*; Alapszintű Lite-csomag: *instantclient-basiclite-NT-18.3.0.0.0 dbru. zip*; ODBC-csomag: *instantclient-ODBC-NT-18.3.0.0.0 dbru. zip*)
+        * [64 bites csomagok letöltése](https://www.oracle.com/technetwork/topics/winx64soft-089540.html) (alapszintű csomag: *instantclient-basic-windows.x64-18.3.0.0.0dbru.zip*; Alapszintű Lite-csomag: *instantclient-basiclite-windows.x64-18.3.0.0.0dbru.zip*; ODBC-csomag: *instantclient-odbc-windows.x64-18.3.0.0.0dbru.zip*) 
+        * [32 bites csomagok letöltése](https://www.oracle.com/technetwork/topics/winsoft-085727.html) (alapszintű csomag: *instantclient-basic-nt-18.3.0.0.0dbru.zip*; Alapszintű Lite-csomag: *instantclient-basiclite-nt-18.3.0.0.0dbru.zip*; ODBC-csomag: *instantclient-odbc-nt-18.3.0.0.0dbru.zip*)
 
       * Egy *Oracle standard OLEDB* mappa, amely egy egyéni telepítési parancsfájlt (*Main. cmd*) tartalmaz az Oracle OLEDB-illesztőprogram telepítéséhez a Azure-SSIS IR minden egyes csomópontján. Ez a beállítás lehetővé teszi, hogy az OLEDB Csatlakozáskezelő, a forrás és a cél használatával kapcsolódjon az Oracle-kiszolgálóhoz. 
      
-        Először [töltse le a legújabb Oracle OLEDB-illesztőprogramot](https://www.oracle.com/partners/campaign/index-090165.html) (például *ODAC122010Xcopy_x64. zip*), majd töltse fel a *Main. cmd fájllal* együtt a tárolóba.
+        Először [töltse le a legújabb Oracle OLEDB-illesztőprogramot](https://www.oracle.com/partners/campaign/index-090165.html) (például *ODAC122010Xcopy_x64.zip*), majd töltse fel a *Main. cmd fájllal* együtt a tárolóba.
 
       * Egy *POSTGRESQL ODBC* -mappa, amely egy egyéni telepítési parancsfájlt (*Main. cmd*) tartalmaz a PostgreSQL ODBC-illesztőprogramok telepítéséhez a Azure-SSIS IR minden egyes csomópontján. Ez a beállítás lehetővé teszi, hogy a PostgreSQL-kiszolgálóhoz való kapcsolódáshoz az ODBC-Csatlakozáskezelő, a forrás és a cél használatával kapcsolódjon. 
      
-        Először [töltse le a POSTGRESQL ODBC illesztőprogram-telepítők legújabb 64 bites és 32 bites verzióit](https://www.postgresql.org/ftp/odbc/versions/msi/) (például *psqlodbc_x64. msi* és *psqlodbc_x86. msi*), majd töltse fel őket a *Main. cmd fájllal* együtt a tárolóba.
+        Először [töltse le a POSTGRESQL ODBC illesztőprogram-telepítők legújabb 64 bites és 32 bites verzióit](https://www.postgresql.org/ftp/odbc/versions/msi/) (például *psqlodbc_x64.msi* és *psqlodbc_x86.msi*), majd töltse fel őket a *Main. cmd fájllal* együtt a tárolóba.
 
-      * Egy *SAP BW* mappát, amely egy egyéni telepítési parancsfájlt (*Main. cmd*) tartalmaz az SAP .net-összekötő szerelvény (*librfc32. dll*) telepítéséhez a Azure-SSIS IR Enterprise Edition minden egyes csomópontján. Ezzel a beállítással az SAP Business Warehouse (BW) Csatlakozáskezelő, a forrás és a cél használatával csatlakozhat a SAP BW-kiszolgálóhoz. 
+      * Egy *SAP BW* mappát, amely egy egyéni telepítési parancsfájlt (*Main. cmd*) tartalmaz az SAP .net-összekötő szerelvény (*librfc32.dll*) telepítéséhez az Azure-SSIS IR Enterprise Edition minden egyes csomópontján. Ezzel a beállítással az SAP Business Warehouse (BW) Csatlakozáskezelő, a forrás és a cél használatával csatlakozhat a SAP BW-kiszolgálóhoz. 
       
-        Először töltse fel a *librfc32. dll* 64-bites vagy 32-bites verzióját az SAP telepítési mappájából a *Main. cmd fájllal* együtt a tárolóba. A szkript ezután átmásolja az SAP-szerelvényt a *%windir%\syswow64 mappában* vagy a *%windir%\System32* mappába a telepítés során.
+        Először töltse fel az 64-bites vagy a 32-bites *librfc32.dll* verzióját az SAP telepítési mappájából, a *Main. cmd fájllal* együtt a tárolóba. A szkript ezután átmásolja az SAP-szerelvényt a *%windir%\syswow64 mappában* vagy a *%windir%\System32* mappába a telepítés során.
 
       * Egy *Storage* -mappa, amely egy egyéni telepítési parancsfájlt (*Main. cmd*) tartalmaz a Azure PowerShell telepítéséhez a Azure-SSIS IR egyes csomópontjain. Ez a beállítás lehetővé teszi, hogy [Az Azure Storage-fiók kezeléséhez PowerShell-parancsfájlokat](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-use-blobs-powershell)futtató SSIS-csomagokat telepítsen és futtasson. 
       
-        Másolja a *Main. cmd*fájlt, egy mintát a *AzurePowerShell. msi fájlra* (vagy használja a legújabb verziót) és a *Storage. ps1* fájlt a tárolóba. A *PowerShell. dtsx* sablonként használhatja a csomagokat. A Package sablon kombinálja az [Azure Blob letöltési feladatát](https://docs.microsoft.com/sql/integration-services/control-flow/azure-blob-download-task), amely a *Storage. ps1* fájl letöltését módosítható PowerShell-parancsfájlként tölti le, valamint egy [végrehajtási folyamat feladatot](https://blogs.msdn.microsoft.com/ssis/2017/01/26/run-powershell-scripts-in-ssis/), amely végrehajtja a parancsfájlt az egyes csomópontokon.
+        Másolja a *Main. cmd*fájlt, egy mintát *AzurePowerShell.msi* (vagy használja a legújabb verziót), és *storage.ps1* a tárolóba. A *PowerShell. dtsx* sablonként használhatja a csomagokat. A Package sablon kombinálja az [Azure Blob letöltési feladatát](https://docs.microsoft.com/sql/integration-services/control-flow/azure-blob-download-task), amely letölti *storage.ps1* módosítható PowerShell-parancsfájlként, valamint egy [végrehajtási folyamat feladatot](https://blogs.msdn.microsoft.com/ssis/2017/01/26/run-powershell-scripts-in-ssis/), amely végrehajtja a parancsfájlt az egyes csomópontokon.
 
       * Egy *TERADATA* mappa, amely egy egyéni telepítési parancsfájlt (*Main. cmd*), a hozzá tartozó fájlt (*install. cmd*) és a telepítő csomagokat (*. msi*) tartalmaz. Ezek a fájlok telepítik a Teradata-összekötőket, a Teradata párhuzamos Transporter (TPT) API-t és az ODBC-illesztőt a Azure-SSIS IR Enterprise Edition minden egyes csomópontján. Ez a beállítás lehetővé teszi, hogy a Teradata Csatlakozáskezelő, forrás és cél használatával kapcsolódjon a Teradata-kiszolgálóhoz. 
       
-        Először [töltse le a Teradata-eszközök és-segédprogramok 15. x zip-fájlját](http://partnerintelligence.teradata.com) (például *TeradataToolsAndUtilitiesBase__windows_indep. 15.10.22.00. zip*), majd töltse fel a tárolóba a korábban említett *. cmd* és *. msi* fájlokkal együtt.
+        Először [töltse le a Teradata-eszközök és-segédprogramok 15. x zip-fájlját](http://partnerintelligence.teradata.com) (például *TeradataToolsAndUtilitiesBase__windows_indep.15.10.22.00.zip*), majd töltse fel a korábban említett *. cmd* és *. msi* fájlokkal együtt a tárolóba.
 
       * Egy *tls 1,2* mappa, amely egy egyéni telepítési parancsfájlt (*Main. cmd*) tartalmaz, hogy erős titkosítást/biztonságosabb hálózati protokollt (TLS 1,2) használjon, és letiltja a régebbi SSL/TLS-verziókat a Azure-SSIS IR minden egyes csomópontján.
 
-      * Egy *ZULU OPENJDK* mappa, amely egy egyéni telepítési parancsfájlt (*Main. cmd*) és egy PowerShell-fájlt (*install_openjdk. ps1*) tartalmaz a Zulu-OPENJDK telepítéséhez a Azure-SSIS IR egyes csomópontjain. Ez a beállítás lehetővé teszi, hogy Azure Data Lake Store és rugalmas fájl-összekötőket használjon az ork és a Parquet fájlok feldolgozásához. További információ: [Az Azure Feature Pack az integrációs szolgáltatásokhoz](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis?view=sql-server-ver15#dependency-on-java). 
+      * Egy *ZULU OPENJDK* mappa, amely egy egyéni telepítési parancsfájlt (*Main. cmd*) és egy PowerShell-fájlt (*install_openjdk.ps1*) tartalmaz a Zulu-OPENJDK telepítéséhez a Azure-SSIS IR egyes csomópontjain. Ez a beállítás lehetővé teszi, hogy Azure Data Lake Store és rugalmas fájl-összekötőket használjon az ork és a Parquet fájlok feldolgozásához. További információ: [Az Azure Feature Pack az integrációs szolgáltatásokhoz](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis?view=sql-server-ver15#dependency-on-java). 
       
-        Először [töltse le a legújabb Zulu-OpenJDK](https://www.azul.com/downloads/zulu/zulu-windows/) (például: *Zulu 8.33.0.1-jdk 8.0.192-win_x64. zip*), majd töltse fel a *main. cmd* és a *install_openjdk. ps1* fájllal együtt a tárolóba.
+        Először [töltse le a legújabb Zulu-OpenJDK](https://www.azul.com/downloads/zulu/zulu-windows/) (például *zulu8.33.0.1-jdk8.0.192-win_x64.zip*), majd töltse fel a *Main. cmd fájllal* együtt, és *install_openjdk.ps1* a tárolóba.
 
         ![A felhasználói forgatókönyvek mappában található mappák](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image12.png)
 
@@ -321,7 +320,7 @@ A standard egyéni telepítések egyes mintáinak megtekintéséhez és újrafel
 
 1. A normál egyéni telepítés befejezése és a Azure-SSIS IR elindítása után megtalálhatja a *Main.* cmd és más végrehajtási naplók standard kimenetét a tároló *fő. cmd. log* mappájába.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure-SSIS IR Enterprise kiadásának beállítása](how-to-configure-azure-ssis-ir-enterprise-edition.md)
 - [Fizetett vagy licencelt összetevők fejlesztése a Azure-SSIS IR](how-to-develop-azure-ssis-ir-licensed-components.md)

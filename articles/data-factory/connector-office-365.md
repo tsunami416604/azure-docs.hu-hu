@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.date: 10/20/2019
 ms.author: jingwang
 ms.openlocfilehash: dda761e12abe7ec866ad9426982563b6f629f6b2
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85513303"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory"></a>Adatok másolása az Office 365-ből az Azure-ba Azure Data Factory használatával
@@ -64,7 +63,7 @@ Ha az ADF-t egy felügyelt alkalmazás részeként hozza létre, és az Azure h�
 
 A másolási tevékenységgel rendelkező folyamatokat a következő eszközök vagy SDK-k egyikével hozhatja létre. Válasszon egy hivatkozást, amely részletes utasításokat tartalmaz egy másolási tevékenységgel rendelkező folyamat létrehozásához. 
 
-- [Azure Portal](quickstart-create-data-factory-portal.md)
+- [Azure Portalra](quickstart-create-data-factory-portal.md)
 - [.NET SDK](quickstart-create-data-factory-dot-net.md)
 - [Python SDK](quickstart-create-data-factory-python.md)
 - [Azure PowerShell](quickstart-create-data-factory-powershell.md)
@@ -91,7 +90,7 @@ Az Office 365 társított szolgáltatás a következő tulajdonságokat támogat
 >- Ha Ön nagyvállalati fejlesztő, aki az Office 365-adatok alapján fejleszti az alkalmazást a saját szervezete használatára, akkor mindkét tulajdonsághoz ugyanazt a bérlői azonosítót kell megadnia, amely a szervezet HRE-bérlői azonosítója.
 >- Ha Ön egy ISV-fejlesztő, aki egy alkalmazást fejleszt ügyfelei számára, akkor a office365TenantId lesz az ügyfél (Application Installer) HRE-bérlő azonosítója, és a servicePrincipalTenantId a vállalat HRE-bérlője lesz.
 
-**Például**
+**Példa:**
 
 ```json
 {
@@ -161,7 +160,7 @@ Az Office 365-ből származó adatok másolásához a másolási tevékenység *
 | endTime | A szűréshez záró DateTime érték. | Igen, ha meg `dateFilterColumn` van adva |
 | outputColumns | A fogadóba másolandó oszlopok tömbje. | No |
 
-**Például**
+**Példa:**
 
 ```json
 "activities": [

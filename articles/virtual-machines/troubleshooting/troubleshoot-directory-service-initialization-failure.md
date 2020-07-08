@@ -15,10 +15,9 @@ ms.topic: troubleshooting
 ms.date: 05/05/2020
 ms.author: v-miegge
 ms.openlocfilehash: 118c81dd52951729bfbbb97a510e693861666ee6
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83665137"
 ---
 # <a name="troubleshoot-windows-stop-error--directory-service-initialization-failure"></a>A Windows leállási hibáinak hibaelhárítása – címtárszolgáltatás-Inicializálási hiba
@@ -35,7 +34,7 @@ Ha [rendszerindítási diagnosztika](https://docs.microsoft.com/azure/virtual-ma
 
 Az **0xC00002E2** hibakód a **STATUS_DS_INIT_FAILURE**, a hibakód pedig az **STATUS_DS_CANT_STARTt** **jelképezi** . Mindkét hiba akkor fordul elő, ha probléma van a címtárszolgáltatás szolgáltatással.
 
-Ahogy az operációs rendszer elindul, a helyi biztonsági hitelesítő kiszolgáló (**Lsass. exe**) automatikusan újraindul, amely hitelesíti a felhasználói bejelentkezéseket. A hitelesítés nem lehetséges, ha a virtuális gépen futó operációs rendszer olyan tartományvezérlő, amely nem rendelkezik írási/olvasási hozzáféréssel a helyi Active Directory adatbázisához. **Active Directory (ad)** elérésének hiánya miatt az Lsass. exe nem tud hitelesíteni, és az operációs rendszer újraindítására kényszerül.
+Ahogy az operációs rendszer elindul, automatikusan újraindul a helyi biztonsági hitelesítési kiszolgáló (**LSASS.exe**), amely hitelesíti a felhasználói bejelentkezéseket. A hitelesítés nem lehetséges, ha a virtuális gépen futó operációs rendszer olyan tartományvezérlő, amely nem rendelkezik írási/olvasási hozzáféréssel a helyi Active Directory adatbázisához. **Active Directory (ad)** elérésének hiánya miatt LSASS.exe nem tud hitelesíteni, és az operációs rendszer újraindítására kényszerül.
 
 Ezt a hibát a következő feltételek bármelyike okozhatja:
 

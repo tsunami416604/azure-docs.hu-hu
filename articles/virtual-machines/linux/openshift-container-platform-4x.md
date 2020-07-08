@@ -10,10 +10,9 @@ ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
 ms.openlocfilehash: 14af110b5cf50f167d0c4961e26454bc33c6ed7d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81759493"
 ---
 # <a name="deploy-openshift-container-platform-4x-in-azure"></a>A OpenShift Container platform 4. x telepítése az Azure-ban
@@ -21,7 +20,7 @@ ms.locfileid: "81759493"
 A OpenShift Container platform (OCP) 4,2 üzembe helyezése mostantól támogatott az Azure-ban a telepítő által kiépített infrastruktúra (IPI) modell használatával.  A OpenShift 4 kipróbálására szolgáló Kezdőlap a [Try.openshift.com](https://try.openshift.com/). A OCP 4,2 Az Azure-ban való telepítéséhez látogasson el a [Red Hat OpenShift cluster Manager](https://cloud.redhat.com/openshift/install/azure/installer-provisioned) oldalára.  A hely eléréséhez Red Hat hitelesítő adatok szükségesek.
 
 
-## <a name="notes"></a>Megjegyzések 
+## <a name="notes"></a>Jegyzetek 
 
  - A OCP 4. x telepítéséhez és futtatásához az Azure-ban egy Azure Active Directory (HRE) egyszerű szolgáltatásnév (SP) szükséges.
      - Az SP-nek meg kell adni az **Application. ReadWrite. OWNEDBY** API-engedélyét Azure Active Directory gráfhoz

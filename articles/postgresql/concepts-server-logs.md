@@ -7,10 +7,9 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/25/2020
 ms.openlocfilehash: 506bd79a512a5d8d143f582ee84d292dff86d9df
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85392811"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>Naplók Azure Database for PostgreSQL – egyetlen kiszolgáló
@@ -124,7 +123,7 @@ A következő táblázat a **PostgreSQLLogs** típusának mezőit ismerteti. A k
 | Előtag | A naplózási sor előtagja |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - További információ a naplók [Azure Portal](howto-configure-server-logs-in-portal.md) vagy az [Azure CLI](howto-configure-server-logs-using-cli.md)-ből való eléréséről.
 - További információ a [Azure monitor díjszabásáról](https://azure.microsoft.com/pricing/details/monitor/).
 - További információ a [naplókról](concepts-audit.md)

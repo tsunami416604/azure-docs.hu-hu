@@ -7,10 +7,9 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.openlocfilehash: b8bf409d759b74e6a5ef0d840aebbe807a04448a
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84324860"
 ---
 # <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>Folyamatok exportálása a Power Automate-ből és üzembe helyezés az Azure Logic Appsben
@@ -120,13 +119,13 @@ Ha a Visual studiót a Logic apps létrehozásához szükséges [előfeltételek
 
    ![Azure erőforráscsoport-projekt létrehozása](./media/export-from-microsoft-flow-logic-app-template/create-azure-resource-group-project.png)
 
-1. A megoldás létrehozása után a Megoldáskezelőban nyissa meg a **LogicApp. JSON** fájlt, ha a fájl még nincs megnyitva.
+1. A megoldás létrehozása után Megoldáskezelőban nyissa meg a **LogicApp.js** fájlt, ha a fájl még nincs megnyitva.
 
-1. Másolja a tartalmat az exportált sablonból, és írja felül a **LogicApp. JSON** fájl tartalmát.
+1. Másolja a tartalmat az exportált sablonból, és írja felül a **LogicApp.js** fájl tartalmát.
 
 1. A logikai alkalmazás üzembe helyezése előtt engedélyezze a következő lépéseket az új kapcsolatok engedélyezéséhez:
 
-   1. Nyissa meg a **LogicApp. JSON** helyi menüt, majd válassza a **Megnyitás a Logic app Designerben**lehetőséget.
+   1. Nyissa meg a **LogicApp.jsa** helyi menüben, majd válassza a **Megnyitás a Logic app Designerben**lehetőséget.
 
       ![Sablon megnyitása a Logic app Designerrel](./media/export-from-microsoft-flow-logic-app-template/open-logic-app-designer.png)
 
@@ -172,7 +171,7 @@ Ha a Visual studiót a Logic apps létrehozásához szükséges [előfeltételek
 
 További információ ezekről az üzembe helyezési lépésekről: rövid útmutató [: automatizált feladatok, folyamatok és munkafolyamatok létrehozása Azure Logic apps-Visual Studióval](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#deploy-to-Azure)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ az [Azure Logic apps-összekötők számára](../connectors/apis-list.md)
 * További információ a [Azure Logic apps](../logic-apps/logic-apps-overview.md)

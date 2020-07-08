@@ -15,10 +15,9 @@ ms.date: 08/18/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 7da9b83001d50c8e9a03188ed8dbf1245189bc30
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84668849"
 ---
 # <a name="migrate-a-sql-server-database-to-sql-server-on-an-azure-virtual-machine"></a>SQL Server adatbázis migrálása egy Azure-beli virtuális gépen SQL Server
@@ -61,7 +60,7 @@ Ha a fenti metódusok használata nem lehetséges, akkor manuálisan telepítse 
 
 A következő táblázat felsorolja az egyes elsődleges áttelepítési módszereket, és bemutatja, hogy az egyes módszerek használata a legmegfelelőbb-e.
 
-| Metódus | Forrás adatbázis verziója | Céladatbázis verziója | Forrás-adatbázis biztonsági másolatának mérete korlátozás | Megjegyzések |
+| Metódus | Forrás adatbázis verziója | Céladatbázis verziója | Forrás-adatbázis biztonsági másolatának mérete korlátozás | Jegyzetek |
 | --- | --- | --- | --- | --- |
 | [Helyszíni biztonsági mentés tömörítéssel és a biztonságimásolat-fájl manuális másolása az Azure-beli virtuális gépre](#back-up-and-restore) |SQL Server 2005 vagy újabb |SQL Server 2005 vagy újabb |[Azure VM-tároló korlátja](https://azure.microsoft.com/documentation/articles/azure-resource-manager/management/azure-subscription-service-limits/) | Ez a technika egyszerű és jól tesztelt az adatbázisok számítógépek közötti áthelyezéséhez. |
 | [Készítsen biztonsági másolatot az URL-címre, és állítsa vissza az Azure-beli virtuális gépre az URL-címről](#backup-to-url-and-restore-from-url) |SQL Server 2012 SP1 CU2 vagy újabb | SQL Server 2012 SP1 CU2 vagy újabb | < 12,8 TB SQL Server 2016, ellenkező esetben < 1 TB | Ez a módszer csak egy másik módszer a biztonságimásolat-fájl áthelyezésére a virtuális gépre az Azure Storage használatával. |
@@ -107,7 +106,7 @@ Ezzel a módszerrel az összes rendszer-és felhasználói adatbázist áttelep�
 
 A [Windows import/export szolgáltatás módszerével](../../../storage/common/storage-import-export-service.md) nagy mennyiségű fájlt vihet át az Azure Blob Storage-ba olyan helyzetekben, amikor a hálózaton keresztüli feltöltés megfizethetetlenül drága vagy nem valósítható meg. Ezzel a szolgáltatással egy vagy több olyan merevlemezt küld egy Azure-adatközpontba, ahol az adatai fel lesznek töltve a Storage-fiókba.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ: [SQL Server az Azure Virtual Machines áttekintése](sql-server-on-azure-vm-iaas-what-is-overview.md).
 
