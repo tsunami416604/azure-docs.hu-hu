@@ -2,7 +2,7 @@
 title: Metrikák és erőforrás-naplók adatfolyam-exportálásának konfigurálása
 description: Megtudhatja, hogyan állíthatja be a metrikák és erőforrás-naplók adatfolyam-exportálását, beleértve az Azure SQL Database és az Azure SQL felügyelt példányának intelligens diagnosztikai elemzését, hogy az Ön által választott célra az erőforrás-kihasználtsággal és a lekérdezés-végrehajtási statisztikákkal kapcsolatos információkat tárolja.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: performance
 ms.custom: seoapril2019
 ms.devlang: sqldbrb=2
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 04/06/2020
-ms.openlocfilehash: 49550453885ebaba40380a4675ace8fb012fcaa1
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: efb99e23466e4615dfa1f4a429addcd8c4ac68f5
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85322722"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085599"
 ---
 # <a name="configure-streaming-export-of-azure-sql-database-and-sql-managed-instance-diagnostic-telemetry"></a>Azure SQL Database és SQL felügyelt példányok diagnosztikai telemetria adatfolyam-exportálásának konfigurálása
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -96,7 +96,7 @@ A Azure Portal **diagnosztikai beállítások** menüjében engedélyezheti és 
 
 A következő lapok egyikének kiválasztásával részletes útmutatást találhat a diagnosztikai telemetria adatfolyam-exportálásának konfigurálásához a Azure Portalban, valamint parancsfájlokat a PowerShell és az Azure CLI használatával történő végrehajtásához.
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="azure-portal"></a>[Azure Portalra](#tab/azure-portal)
 
 ### <a name="elastic-pools-in-azure-sql-database"></a>Rugalmas készletek Azure SQL Database
 
@@ -133,9 +133,9 @@ Az alábbi lépéseket követve engedélyezheti a diagnosztikai telemetria folya
 > [!IMPORTANT]
 > A rugalmas készlet diagnosztikai telemetria konfigurálása mellett a rugalmas készletben lévő minden adatbázishoz is be kell állítania a diagnosztikai telemetria.
 
-### <a name="single-and-pooled-databases-in-azure-sql-database"></a>Egy-és készletezett adatbázisok Azure SQL Database
+### <a name="databases-in-azure-sql-database"></a>Adatbázisok Azure SQL Database
 
-Beállíthat egy vagy készletezett adatbázis-erőforrást a következő diagnosztikai telemetria gyűjtéséhez:
+Beállíthat egy adatbázis-erőforrást a következő diagnosztikai telemetria gyűjtéséhez:
 
 | Erőforrás | Telemetria figyelése |
 | :------------------- | ------------------- |

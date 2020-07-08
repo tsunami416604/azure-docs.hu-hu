@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/03/2018
-ms.openlocfilehash: 0827311218202de447e5cf27356e00c4da020e94
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e4115518c71c3695797ac051910890d24723bae
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "61472991"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085395"
 ---
 # <a name="debug-azure-data-lake-analytics-code-locally"></a>Azure Data Lake Analytics kód hibakeresése helyileg
 
@@ -42,7 +42,9 @@ A C#-szerelvények hibakeresése a Azure Data Lake Analytics szolgáltatásba va
 1. Hozzon létre egy C# szerelvény-projektet, és hozza létre a kimeneti **dll** -fájl létrehozásához.
 2. Regisztrálja a **dll** -fájlt egy U-SQL-utasítás használatával:
 
-        CREATE ASSEMBLY assemblyname FROM @"..\..\path\to\output\.dll";
+   ```sql
+   CREATE ASSEMBLY assemblyname FROM @"..\..\path\to\output\.dll";
+   ```
         
 3. Állítson be töréspontokat a C#-kódban.
 4. Az **F5 billentyűt** lenyomásával hibakeresést végezhet a C# **dll** -fájl helyi hivatkozásával.

@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: SQL Server online migrálása SQL felügyelt példányra'
+title: 'Oktatóanyag: SQL Server online migrálása a felügyelt SQL-példányra'
 titleSuffix: Azure Database Migration Service
 description: Megtudhatja, hogyan végezheti el a SQL Server online áttelepítését egy felügyelt Azure SQL-példányra Azure Database Migration Service használatával.
 services: dms
@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/10/2020
-ms.openlocfilehash: 817e1d740ce34704acb4b20a7c3f71807bfa66bc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d462fa0fa2afe5937c60985938c8268991dfa41
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84187949"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084222"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-managed-instance-online-using-dms"></a>Oktatóanyag: SQL Server migrálása Azure SQL felügyelt példányra online a DMS használatával
 
@@ -77,7 +78,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 * Ha több elnevezett SQL Server példányt futtat dinamikus portok használatával, akkor előfordulhat, hogy engedélyezni szeretné a SQL Browser szolgáltatást, és engedélyezni szeretné a 1434-as UDP-port elérését a tűzfalakon keresztül, így Azure Database Migration Service csatlakozhat a forráskiszolgálón megnevezett példányhoz.
 * Ha tűzfalat használ a forrásadatbázis előtt, akkor előfordulhat, hogy a tűzfalszabályok hozzáadásával engedélyezni Azure Database Migration Service a forrás-adatbázis (ok) hoz való hozzáférést az áttelepítéshez, valamint a fájlokat a 445-es SMB-porton keresztül.
 * Hozzon létre egy SQL felügyelt példányt a [Azure Portalban található SQL felügyelt példány létrehozása](https://aka.ms/sqldbmi)című cikkben ismertetett részletességgel.
-* Győződjön meg arról, hogy a forrásként szolgáló SQL Server-példány és a célként szolgáló felügyelt példány összekapcsolásához használt bejelentkezési adatok mind a sysadmin (rendszergazda) kiszolgálói szerepkör tagjai.
+* Győződjön meg arról, hogy a forrás-SQL Server és a célként megadott SQL felügyelt példány összekapcsolásához használt bejelentkezések a sysadmin (rendszergazda) kiszolgálói szerepkör tagjai.
 * Adjon meg egy olyan SMB-hálózati megosztást, amely tartalmazza az adatbázis teljes adatbázis-biztonságimásolat-fájljait és az azt követő tranzakciónapló biztonsági mentési fájljait, amelyeket a Azure Database Migration Service az adatbázis áttelepítésére használhat.
 * Győződjön meg arról, hogy a forrásként szolgáló SQL Server-példányt futtató szolgáltatásfiók írási, a forrásként szolgáló kiszolgáló számítógépes fiókja pedig olvasási és írási jogosultságokkal rendelkezik az Ön által létrehozott hálózati megosztáson.
 * Jegyezzen fel egy olyan Windows-felhasználót (és jelszót), amely teljes körű jogosultságokkal rendelkezik az Ön által korábban létrehozott hálózati megosztáson. Azure Database Migration Service megszemélyesíti a felhasználói hitelesítő adatokat, hogy a biztonsági mentési fájlokat feltöltse az Azure Storage-tárolóba a visszaállítási művelethez.
@@ -265,6 +266,6 @@ Miután a teljes adatbázis biztonsági mentését visszaállította az SQL fel�
 
 ## <a name="next-steps"></a>További lépések
 
-* Ha egy oktatóanyag azt mutatja be, hogyan telepíthet át egy adatbázist felügyelt példányra a T-SQL Restore paranccsal, tekintse meg a [biztonsági másolat visszaállítása felügyelt példányra a Restore parancs használatával](../sql-database/sql-database-managed-instance-restore-from-backup-tutorial.md)című témakört.
-* A felügyelt példányokkal kapcsolatos információkért lásd: [Mi az a felügyelt példány](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md).
-* Az alkalmazások felügyelt példányhoz való csatlakoztatásával kapcsolatos információkért lásd: [alkalmazások csatlakoztatása](../azure-sql/managed-instance/connect-application-instance.md).
+* Ha egy oktatóanyag azt mutatja be, hogyan lehet áttelepíteni egy adatbázist az SQL felügyelt példányára a T-SQL Restore paranccsal, tekintse meg a [biztonsági mentés visszaállítása SQL felügyelt példányra a Restore paranccsal](../sql-database/sql-database-managed-instance-restore-from-backup-tutorial.md)című témakört.
+* További információ az SQL felügyelt példányáról: [Mi az SQL felügyelt példánya](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md).
+* Az alkalmazások SQL felügyelt példányhoz való csatlakoztatásával kapcsolatos információkért lásd: [alkalmazások csatlakoztatása](../azure-sql/managed-instance/connect-application-instance.md).

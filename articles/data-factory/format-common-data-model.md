@@ -5,21 +5,21 @@ author: djpmsft
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 06/16/2020
+ms.date: 07/07/2020
 ms.author: daperlov
-ms.openlocfilehash: 5e75f2203552a69e50ed16176525429c6c9d8810
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3c4f2df074bc7feaa42704942a3fd238ab4b333a
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84807818"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083780"
 ---
 # <a name="common-data-model-format-in-azure-data-factory"></a>Közös adatmodell-formátum a Azure Data Factoryban
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 A Common adatmodell (CDM) metaadatrendszer lehetővé teszi, hogy az adatok és az azt jelenti, hogy könnyen meg lehessen osztani az alkalmazások és az üzleti folyamatok között. További információ: [Common adatmodell](https://docs.microsoft.com/common-data-model/) – áttekintés.
 
-Azure Data Factory a felhasználók a [Azure Data Lake Store Gen2](connector-azure-data-lake-storage.md) (ADLS Gen2) tárolt CDM-entitásokból és azokból is átalakíthatók a leképezési adatfolyamatok használatával.
+Azure Data Factory a felhasználók a [Azure Data Lake Store Gen2](connector-azure-data-lake-storage.md) (ADLS Gen2) tárolt CDM-entitásokból és azokból is átalakíthatók a leképezési adatfolyamatok használatával. Válasszon a model.jsés a manifest Style CDM-források közül, és írjon a CDM-jegyzékfájlba.
 
 > [!NOTE]
 > A Common adatmodell (CDM) formátum-összekötő az ADF-adatforgalomhoz jelenleg nyilvános előzetes verzióként érhető el.
@@ -27,6 +27,9 @@ Azure Data Factory a felhasználók a [Azure Data Lake Store Gen2](connector-azu
 ## <a name="mapping-data-flow-properties"></a>Adatfolyam-tulajdonságok leképezése
 
 A Common adatmodell a forrásként és a fogadóként is elérhető [beágyazott adatkészletként](data-flow-source.md#inline-datasets) érhető el a leképezési adatforgalomban.
+
+> [!NOTE]
+> A CDM-entitások írásakor már meg kell adni egy meglévő CDM-entitás definícióját (metaadat-sémáját). Az ADF-adatfolyam fogadója beolvassa a CDM-entitás fájlját, és importálja a sémát a fogadóba a mezők leképezéséhez.
 
 ### <a name="source-properties"></a>Forrás tulajdonságai
 
@@ -51,8 +54,16 @@ Az alábbi táblázatban a CDM-forrás által támogatott tulajdonságok szerepe
 
 #### <a name="import-schema"></a>Séma importálása
 
-A CDM csak beágyazott adatkészletként érhető el, és alapértelmezés szerint nem rendelkezik társított sémával. Az oszlop metaadatainak beszerzéséhez kattintson a **vetítés** lapon található **séma importálása** gombra. Ez lehetővé teszi a corpus által megadott oszlopnevek és adattípusok hivatkozását. A séma importálásához egy [adatfolyam-hibakeresési munkamenetnek](concepts-data-flow-debug-mode.md) aktívnak kell lennie.
+A CDM csak beágyazott adatkészletként érhető el, és alapértelmezés szerint nem rendelkezik társított sémával. Az oszlop metaadatainak beszerzéséhez kattintson a **vetítés** lapon található **séma importálása** gombra. Ez lehetővé teszi a corpus által megadott oszlopnevek és adattípusok hivatkozását. A séma importálásához egy [adatfolyam-hibakeresési munkamenetnek](concepts-data-flow-debug-mode.md) aktívnak kell lennie, és rendelkeznie kell egy meglévő CDM-entitás-definíciós fájllal, amely a következőre mutat:.
 
+> [!NOTE]
+>  Ha olyan model.jshasznál, amely Power BI vagy a Power platform adatfolyamok származik, akkor a forrás-átalakítás során a "corpus Path null vagy üres" hibaüzenet jelenhet meg. Ez valószínűleg a partíció helyének elérési útjának formázásával kapcsolatos, a fájl model.js. A probléma megoldásához kövesse az alábbi lépéseket: 
+
+1. A model.jsfájl megnyitása egy szövegszerkesztőben
+2. Keresse meg a partíciókat. Location tulajdonság 
+3. A "blob.core.windows.net" módosítása a "dfs.core.windows.net" értékre
+4. Javítsa ki a (z) "% 2F" kódolást az URL-ben a "/" értékre.
+ 
 
 ### <a name="cdm-source-data-flow-script-example"></a>A CDM-forrás adatáramlási parancsfájljának példája
 

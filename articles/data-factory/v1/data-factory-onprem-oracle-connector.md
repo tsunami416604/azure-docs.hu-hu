@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 066e32d5ab21f88b170498173606043c54fec586
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1aa8708701af37834ae3b6cdc42de9c691ccacec
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265856"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084290"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Adatok másolása a helyszíni Oracle-be vagy onnan a Azure Data Factory használatával
 
@@ -70,7 +70,7 @@ Ez az Oracle-összekötő az illesztőprogramok két verzióját támogatja:
 
 - **Oracle-adatszolgáltató a .net-hez**: az Oracle-adatszolgáltató használatával adatok másolhatók a vagy az Oracle-ből. Ez az összetevő a [Windowshoz készült Oracle-adatelérési összetevők](https://www.oracle.com/technetwork/topics/dotnet/downloads/)részét képezi. Telepítse a megfelelő verziót (32 bites vagy 64 bites) azon a gépen, amelyen az átjáró telepítve van. [Az Oracle-adatszolgáltató .net 12,1](https://docs.oracle.com/database/121/ODPNT/InstallSystemRequirements.htm#ODPNT149) -es verziója Oracle Database 10g 2. és újabb verzióit is elérheti.
 
-    Ha az **xcopy telepítése**lehetőséget választja, hajtsa végre a readme. htm fájlban ismertetett lépéseket. Javasoljuk, hogy válassza ki azt a telepítőt, amely a felhasználói felületen (nem az XCopy-telepítőn) van.
+    Ha az **xcopy telepítése**lehetőséget választja, hajtsa végre a readme.htm fájlban ismertetett lépéseket. Javasoljuk, hogy válassza ki azt a telepítőt, amely a felhasználói felületen (nem az XCopy-telepítőn) van.
 
     A szolgáltató telepítése után indítsa újra a adatkezelés Gateway Host szolgáltatást a gépen a szolgáltatások kisalkalmazás vagy a adatkezelés Gateway Configuration Manager használatával.
 
@@ -101,10 +101,10 @@ A következő táblázat az Oracle-hez társított szolgáltatáshoz tartozó JS
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| type |A **Type** tulajdonságot **OnPremisesOracle**értékre kell beállítani. |Igen |
-| driverType | Itt adhatja meg, hogy melyik illesztőprogramot használja az adatok egy Oracle-adatbázisba való másolásához. Az engedélyezett értékek a következők: **Microsoft** és **ODP** (alapértelmezett). Lásd: [támogatott verzió és telepítés](#supported-versions-and-installation) az illesztőprogram részleteihez. | Nem |
-| connectionString | A **ConnectionString** tulajdonsághoz tartozó Oracle Database-példányhoz való kapcsolódáshoz szükséges információk megadása. | Igen |
-| Átjáró neve | A helyszíni Oracle-kiszolgálóhoz való kapcsolódáshoz használt átjáró neve. |Igen |
+| típus |A **Type** tulajdonságot **OnPremisesOracle**értékre kell beállítani. |Yes |
+| driverType | Itt adhatja meg, hogy melyik illesztőprogramot használja az adatok egy Oracle-adatbázisba való másolásához. Az engedélyezett értékek a következők: **Microsoft** és **ODP** (alapértelmezett). Lásd: [támogatott verzió és telepítés](#supported-versions-and-installation) az illesztőprogram részleteihez. | No |
+| connectionString | A **ConnectionString** tulajdonsághoz tartozó Oracle Database-példányhoz való kapcsolódáshoz szükséges információk megadása. | Yes |
+| Átjáró neve | A helyszíni Oracle-kiszolgálóhoz való kapcsolódáshoz használt átjáró neve. |Yes |
 
 **Példa: a Microsoft-illesztőprogram használata**
 
@@ -171,7 +171,7 @@ A másolási tevékenységben, ha a forrás a **OracleSource** típusú, a köve
 
 | Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
-| oracleReaderQuery |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |Egy SQL-lekérdezési karakterlánc. Például: "Select \* from **sajáttábla**". <br/><br/>Ha nincs megadva, a rendszer a következő SQL-utasítást hajtja végre: "Select \* from **sajáttábla**" |Nem<br />(ha **tableName** a táblanév **meg van adva** ) |
+| oracleReaderQuery |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |Egy SQL-lekérdezési karakterlánc. Például: "Select \* from **sajáttábla**". <br/><br/>Ha nincs megadva, a rendszer a következő SQL-utasítást hajtja végre: "Select \* from **sajáttábla**" |No<br />(ha **tableName** a táblanév **meg van adva** ) |
 
 ### <a name="oraclesink"></a>OracleSink
 
@@ -179,10 +179,10 @@ A **OracleSink** a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
-| writeBatchTimeout |Az a várakozási idő, ameddig a Batch INSERT művelet befejeződik, mielőtt időtúllépés történt. |**időtartomány**<br/><br/> Példa: 00:30:00 (30 perc) |Nem |
+| writeBatchTimeout |Az a várakozási idő, ameddig a Batch INSERT művelet befejeződik, mielőtt időtúllépés történt. |**időtartomány**<br/><br/> Példa: 00:30:00 (30 perc) |No |
 | writeBatchSize |Beilleszti az adatmennyiséget az SQL-táblába, ha a puffer mérete eléri a **writeBatchSize**értékét. |Egész szám (sorok száma) |Nem (alapértelmezett: 100) |
-| sqlWriterCleanupScript |Meghatározza a másolási tevékenység végrehajtásának lekérdezését, hogy egy adott szelet adattisztítása megtörténjen. |Egy lekérdezési utasítás. |Nem |
-| sliceIdentifierColumnName |Megadja a másolási tevékenység oszlopának nevét egy automatikusan létrehozott szelet azonosítójának kitöltéséhez. A **sliceIdentifierColumnName** értékének használatával törölheti egy adott szelet adatmennyiségét az újrafuttatáskor. |A bináris adattípusú oszlop neve **(32)**. |Nem |
+| sqlWriterCleanupScript |Meghatározza a másolási tevékenység végrehajtásának lekérdezését, hogy egy adott szelet adattisztítása megtörténjen. |Egy lekérdezési utasítás. |No |
+| sliceIdentifierColumnName |Megadja a másolási tevékenység oszlopának nevét egy automatikusan létrehozott szelet azonosítójának kitöltéséhez. A **sliceIdentifierColumnName** értékének használatával törölheti egy adott szelet adatmennyiségét az újrafuttatáskor. |A bináris adattípusú oszlop neve **(32)**. |No |
 
 ## <a name="json-examples-for-copying-data-to-and-from-the-oracle-database"></a>JSON-példák az adatok az Oracle-adatbázisba és onnan történő másolásához
 
@@ -556,7 +556,9 @@ A folyamat egy másolási tevékenységet tartalmaz, amely úgy van konfigurálv
 
 **Hibaüzenet**
 
-    Copy activity met invalid parameters: 'UnknownParameterName', Detailed message: Unable to find the requested .NET Framework Data Provider. It may not be installed.
+```text
+Copy activity met invalid parameters: 'UnknownParameterName', Detailed message: Unable to find the requested .NET Framework Data Provider. It may not be installed.
+```
 
 **Lehetséges okok**
 
@@ -567,22 +569,26 @@ A folyamat egy másolási tevékenységet tartalmaz, amely úgy van konfigurálv
 
 * Ha még nem telepítette az Oracle-hez készült .NET-szolgáltatót, [telepítse azt](https://www.oracle.com/technetwork/topics/dotnet/downloads/), majd próbálja megismételni a forgatókönyvet.
 * Ha a szolgáltató telepítése után is megjelenik a hibaüzenet, hajtsa végre a következő lépéseket:
-    1. Nyissa meg a .NET 2,0 számítógép-konfigurációs fájlját a következő mappából <rendszerlemez\>: \Windows\Microsoft.NET\Framework64\v2.0.50727\CONFIG\machine.config.
-    2. Keresse meg a **.net-hez készült Oracle-adatszolgáltatót**. Meg kell tudnia találni a bejegyzést, ahogy az a **System. adat** > **DbProviderFactories**alatt a következő mintában látható:`<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />`
-* Másolja ezt a bejegyzést a Machine. config fájlba a következő .NET 4,0 mappában: <rendszerlemez\>: \Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config. Ezután módosítsa a verziót 4. xxx. x.x.
-* Telepítse <ODP.NET telepített elérési útját\>\ 11.2.0 \ client_1 \odp.net\bin\4\oracle.dataaccess.dll a globális szerelvény-gyorsítótárban (GAC) a **Gacutil/i [szolgáltatói útvonal]** futtatásával.
+    1. Nyissa meg a .NET 2,0 számítógép-konfigurációs fájlját a <rendszerlemez:\Windows\Microsoft.NET\Framework64\v2.0.50727\CONFIG\machine.config mappából \> .
+    2. Keresse meg a **.net-hez készült Oracle-adatszolgáltatót**. Meg kell tudnia találni a bejegyzést, ahogy az a **System. adat**DbProviderFactories alatt a következő mintában látható  >  **DbProviderFactories**:`<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />`
+* Másolja a bejegyzést a machine.config fájlba a következő .NET 4,0 mappában: <rendszerlemez \>:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config. Ezután módosítsa a verziót 4. xxx. x.x.
+* Telepítse <ODP.NET telepített elérési útját \>\11.2.0\client_1\odp.net\bin\4\Oracle.DataAccess.dll a globális szerelvény-gyorsítótárban (GAC) a **Gacutil/i [szolgáltatói útvonal]** futtatásával.
 
 ### <a name="problem-2-datetime-formatting"></a>2. probléma: dátum/idő formázása
 
 **Hibaüzenet**
 
-    Message=Operation failed in Oracle Database with the following error: 'ORA-01861: literal does not match format string'.,Source=,''Type=Oracle.DataAccess.Client.OracleException,Message=ORA-01861: literal does not match format string,Source=Oracle Data Provider for .NET,'.
+```text
+Message=Operation failed in Oracle Database with the following error: 'ORA-01861: literal does not match format string'.,Source=,''Type=Oracle.DataAccess.Client.OracleException,Message=ORA-01861: literal does not match format string,Source=Oracle Data Provider for .NET,'.
+```
 
 **Resolution** (Osztás)
 
 Előfordulhat, hogy módosítania kell a lekérdezési karakterláncot a másolási tevékenység alapján, hogy a dátumok hogyan vannak konfigurálva az Oracle-adatbázisban. Íme egy példa (a **to_date** függvény használatával):
 
-    "oracleReaderQuery": "$$Text.Format('select * from MyTable where timestampcolumn >= to_date(\\'{0:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\') AND timestampcolumn < to_date(\\'{1:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\') ', WindowStart, WindowEnd)"
+```console   
+"oracleReaderQuery": "$$Text.Format('select * from MyTable where timestampcolumn >= to_date(\\'{0:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\') AND timestampcolumn < to_date(\\'{1:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\') ', WindowStart, WindowEnd)"
+```
 
 
 ## <a name="type-mapping-for-oracle"></a>Az Oracle típusának leképezése

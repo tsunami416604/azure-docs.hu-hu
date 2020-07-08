@@ -1,7 +1,7 @@
 ---
 title: Hálózati hozzáférés-vezérlés
 titleSuffix: Azure SQL Database & Azure Synapse Analytics
-description: A Azure SQL Database és Azure SQL Data Warehouse hálózati hozzáférésének kezelése és szabályozása (korábban Azure SQL Data Warehouse).
+description: A Azure SQL Database és az Azure szinapszis Analytics (korábban Azure SQL Data Warehouse) hálózati hozzáférésének kezelése és szabályozása.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 3a88ce96ca95bd02481558597bcc8082adf7c975
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 435a5fe6f5900ffe742d4459e8e402d2e698ca9f
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343982"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085463"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-network-access-controls"></a>A Azure SQL Database és az Azure szinapszis Analytics hálózati hozzáférés-vezérlés
 
@@ -56,7 +56,7 @@ Ez azonban hatással van az Azure-beli virtuális gépeken futó alábbi szolgá
 
 ### <a name="import-export-service"></a>Exportálási szolgáltatás importálása
 
-Az importálási exportálási szolgáltatás nem működik, ha az **Azure-szolgáltatásokhoz való hozzáférés engedélyezése** beállítás **ki van kapcsolva**. A probléma megoldásához azonban a [sqlpackage. exe fájlt manuálisan is futtathatja egy Azure-beli virtuális](https://docs.microsoft.com/azure/sql-database/import-export-from-vm) gépről, vagy közvetlenül a kódban végezheti el az exportálást a DACFx API használatával.
+Az importálási exportálási szolgáltatás nem működik, ha az **Azure-szolgáltatásokhoz való hozzáférés engedélyezése** beállítás **ki van kapcsolva**. Azonban a probléma megoldásához manuálisan is [futtathatja sqlpackage.exe egy Azure](https://docs.microsoft.com/azure/sql-database/import-export-from-vm) -beli virtuális gépről, vagy közvetlenül a kódban végezheti el az exportálást a DACFx API használatával.
 
 ### <a name="data-sync"></a>Adatszinkronizálás
 
@@ -82,7 +82,7 @@ PS C:\> $sql.Properties.AddressPrefixes
 > [!TIP]
 > A Get-AzNetworkServiceTag az SQL Service-címke globális tartományát adja vissza a Location paraméter megadása ellenére. Ügyeljen arra, hogy a szinkronizálási csoport által használt hub-adatbázist üzemeltető régióra szűrje
 
-Vegye figyelembe, hogy a PowerShell-parancsfájl kimenete osztály nélküli tartományok közötti útválasztás (CIDR) jelöléssel rendelkezik. Ezt a kezdő és a záró IP-cím formátumára kell konvertálni a [Get-IPrangeStartEnd. ps1](https://gallery.technet.microsoft.com/scriptcenter/Start-and-End-IP-addresses-bcccc3a9) használatával, például:
+Vegye figyelembe, hogy a PowerShell-parancsfájl kimenete osztály nélküli tartományok közötti útválasztás (CIDR) jelöléssel rendelkezik. Ezt a kezdő és a záró IP-cím formátumára kell konvertálni a [Get-IPrangeStartEnd.ps1](https://gallery.technet.microsoft.com/scriptcenter/Start-and-End-IP-addresses-bcccc3a9) hasonló módon:
 
 ```powershell
 PS C:\> Get-IPrangeStartEnd -ip 52.229.17.93 -cidr 26
@@ -106,7 +106,7 @@ Mostantól megadhatja ezeket különálló tűzfalszabályokként, majd beállí
 
 ## <a name="ip-firewall-rules"></a>IP-tűzfalszabályok
 
-Az IP-alapú tűzfal az Azure-beli logikai SQL Server egyik funkciója, amely megakadályozza az adatbázis-kiszolgáló elérését, amíg explicit módon nem [adja hozzá az ügyfélszámítógépek IP-címeit](firewall-create-server-level-portal-quickstart.md) .
+Az IP-alapú tűzfal az Azure-beli logikai SQL Server egyik funkciója, amely megakadályozza a kiszolgáló összes hozzáférését, amíg explicit módon nem [adja hozzá az ügyfélszámítógépek IP-címeit](firewall-create-server-level-portal-quickstart.md) .
 
 ## <a name="virtual-network-firewall-rules"></a>Virtuális hálózat tűzfalszabályai
 
@@ -131,18 +131,18 @@ A virtuális hálózati tűzfalszabályok megismerése során vegye figyelembe a
 
 A Azure SQL Database tűzfal lehetővé teszi olyan IP-címtartományok megadását, amelyekről a rendszer a kommunikációt SQL Databaseba fogadja. Ez a megközelítés az Azure-magánhálózaton kívüli stabil IP-címekre is kiváló. Az Azure-beli magánhálózaton lévő virtuális gépek (VM-EK) azonban *dinamikus* IP-címekkel vannak konfigurálva. A dinamikus IP-címek a virtuális gép újraindításakor változhatnak, és az IP-alapú tűzfalszabály érvénytelenné válik. Az éles környezetben nem lehet dinamikus IP-címet megadni egy tűzfalszabály számára.
 
-Ezt a korlátozást a virtuális gép *statikus* IP-címének beszerzésével lehet megkerülni. Részletekért lásd: [a virtuális gép magánhálózati IP-címeinek konfigurálása a Azure Portal használatával](../../virtual-network/virtual-networks-static-private-ip-arm-pportal.md). A statikus IP-cím azonban nehezen kezelhető, és a méretezés során költséges lehet.
+Ezt a korlátozást a virtuális gép *statikus* IP-címének beszerzésével lehet megkerülni. Részletekért lásd: [virtuális gép létrehozása statikus nyilvános IP-címmel a Azure Portal használatával](../../virtual-network/virtual-network-deploy-static-pip-arm-portal.md). A statikus IP-cím azonban nehezen kezelhető, és a méretezés során költséges lehet.
 
 A virtuális hálózati szabályok egyszerűbben használhatók a virtuális gépeket tartalmazó adott alhálózat elérésének létrehozásához és kezeléséhez.
 
 > [!NOTE]
 > Még nem rendelkezhet SQL Database alhálózaton. Ha a kiszolgáló a virtuális hálózat egyik alhálózatának csomópontja volt, a virtuális hálózaton belüli összes csomópont kommunikálhat a SQL Databaseával. Ebben az esetben a virtuális gépek kommunikálhatnak a SQL Database anélkül, hogy virtuális hálózati szabályokat vagy IP-szabályokat kellene megadnia.
 
-## <a name="private-link"></a>Private Link
+## <a name="private-link"></a>Privát kapcsolat
 
 A privát hivatkozás lehetővé teszi, hogy egy **privát végponton**keresztül kapcsolódjon egy kiszolgálóhoz. A privát végpont egy magánhálózati IP-cím egy adott [virtuális hálózaton](../../virtual-network/virtual-networks-overview.md) és alhálózaton belül.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A kiszolgálói szintű IP-tűzfalszabály létrehozásával kapcsolatos rövid útmutató: [adatbázis létrehozása SQL Databaseban](single-database-create-quickstart.md).
 

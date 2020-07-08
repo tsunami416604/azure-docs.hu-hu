@@ -9,12 +9,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.custom: amqp
-ms.openlocfilehash: a9bc0564a69124618d0a7e3ff6bafb65b2be0ee4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a7ab796ddd35ebe9b9c43509d8e3c2f4c41625c8
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84907482"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083991"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>Az eszközről a felhőbe irányuló üzenetek beolvasása a beépített végpontról
 
@@ -57,7 +57,7 @@ A portálon az Event hub-kompatibilis végpont mező egy teljes Event Hubs kapcs
 | Gazdanév | abcd1234namespace.servicebus.windows.net |
 | Névtér | abcd1234namespace |
 
-Ezután bármilyen megosztott elérési házirendet használhat, amely rendelkezik a **ServiceConnect** engedéllyel a megadott Event hubhoz való kapcsolódáshoz.
+Ezután a fenti képernyőképen látható módon választhatja ki a megosztott elérési házirendet a legördülő menüből. Csak azokat a házirendeket jeleníti meg, amelyek rendelkeznek a **ServiceConnect** engedéllyel a megadott Event hubhoz való kapcsolódáshoz.
 
 A beépített, az Event hub-kompatibilis végponthoz való kapcsolódáshoz használható SDK-k, amelyek IoT Hub teszik a következőket:
 

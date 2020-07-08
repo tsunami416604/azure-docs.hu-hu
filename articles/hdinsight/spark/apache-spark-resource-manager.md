@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: 3aab89f86dcd48328771cd0fda03d1c9de4bc2c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5427077a4b07917c8852d0a63c815195e776b9de
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75932110"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085191"
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>Apache Spark-fürt erőforrásainak kezelése az Azure HDInsight
 
@@ -34,17 +34,17 @@ A fonal felhasználói felületét használhatja a Spark-fürtön jelenleg futó
     ![A fonal felhasználói felületének indítása](./media/apache-spark-resource-manager/azure-portal-dashboard-yarn.png)
 
    > [!TIP]  
-   > Azt is megteheti, hogy a Ambari felhasználói felületéről is elindítja a fonal felhasználói felületét. A Ambari felhasználói felületén navigáljon az**Active** > **Resource Manager felhasználói felületén**található **fonalak** > **gyors hivatkozásaihoz** > .
+   > Azt is megteheti, hogy a Ambari felhasználói felületéről is elindítja a fonal felhasználói felületét. A Ambari felhasználói felületén navigáljon **YARN**az  >  Active**Quick Links**  >  **Active**  >  **Resource Manager felhasználói felületén**található fonalak gyors hivatkozásaihoz.
 
 ## <a name="optimize-clusters-for-spark-applications"></a>Fürtök optimalizálása Spark-alkalmazásokhoz
 
-A Spark konfigurálásához használható három kulcsfontosságú paraméter az alkalmazás követelményeitől `spark.executor.instances` `spark.executor.cores`függően a, a és `spark.executor.memory`a. A végrehajtó egy Spark-alkalmazáshoz indított folyamat. A feldolgozó csomóponton fut, és feladata az alkalmazás feladatainak elvégzése. A végrehajtók és a végrehajtói méretek alapértelmezett számának kiszámítása a munkavégző csomópontok száma és a munkavégző csomópont mérete alapján történik. Ezeket az információkat a rendszer `spark-defaults.conf` a fürt fő csomópontjain tárolja.
+A Spark konfigurálásához használható három kulcsfontosságú paraméter az alkalmazás követelményeitől függően a, a `spark.executor.instances` és a `spark.executor.cores` `spark.executor.memory` . A végrehajtó egy Spark-alkalmazáshoz indított folyamat. A feldolgozó csomóponton fut, és feladata az alkalmazás feladatainak elvégzése. A végrehajtók és a végrehajtói méretek alapértelmezett számának kiszámítása a munkavégző csomópontok száma és a munkavégző csomópont mérete alapján történik. Ezeket az információkat a rendszer a `spark-defaults.conf` fürt fő csomópontjain tárolja.
 
 A három konfigurációs paramétert a fürt szintjén lehet konfigurálni (a fürtön futó összes alkalmazás esetében), illetve az egyes alkalmazásokhoz is megadható.
 
 ### <a name="change-the-parameters-using-ambari-ui"></a>Paraméterek módosítása Ambari felhasználói felület használatával
 
-1. A Ambari felhasználói felületén navigáljon a **Spark2** > **configs** > **Egyéni Spark2 – Alapértelmezések**elemre.
+1. A Ambari felhasználói felületén navigáljon a **Spark2**  >  **configs**  >  **Egyéni Spark2 – Alapértelmezések**elemre.
 
     ![Paraméterek beállítása a Ambari Custom használatával](./media/apache-spark-resource-manager/ambari-ui-spark2-configs.png "Paraméterek beállítása a Ambari Custom használatával")
 
@@ -58,38 +58,44 @@ A három konfigurációs paramétert a fürt szintjén lehet konfigurálni (a f�
 
 ### <a name="change-the-parameters-for-an-application-running-in-jupyter-notebook"></a>Jupyter notebookon futó alkalmazás paramétereinek módosítása
 
-A Jupyter notebookon futó alkalmazások esetén a `%%configure` Magic használatával módosíthatja a konfigurációt. Ideális esetben az első kódrészlet futtatása előtt el kell végeznie az ilyen módosításokat az alkalmazás elején. Ezzel biztosíthatja, hogy a rendszer a konfigurációt a Livy-munkamenetre alkalmazza, amikor a rendszer létrehozza. Ha az alkalmazás egy későbbi szakaszában szeretné módosítani a konfigurációt, a `-f` paramétert kell használnia. Ezzel azonban az alkalmazás minden folyamata elvész.
+A Jupyter notebookon futó alkalmazások esetén a Magic használatával módosíthatja `%%configure` a konfigurációt. Ideális esetben az első kódrészlet futtatása előtt el kell végeznie az ilyen módosításokat az alkalmazás elején. Ezzel biztosíthatja, hogy a rendszer a konfigurációt a Livy-munkamenetre alkalmazza, amikor a rendszer létrehozza. Ha az alkalmazás egy későbbi szakaszában szeretné módosítani a konfigurációt, a paramétert kell használnia `-f` . Ezzel azonban az alkalmazás minden folyamata elvész.
 
 A következő kódrészlet azt mutatja be, hogyan lehet módosítani egy Jupyter-ben futó alkalmazás konfigurációját.
 
-    %%configure
-    {"executorMemory": "3072M", "executorCores": 4, "numExecutors":10}
+```scala
+%%configure
+{"executorMemory": "3072M", "executorCores": 4, "numExecutors":10}
+```
 
 A konfigurációs paramétereket JSON-karakterláncként kell átadni, és a Magic után a következő sorban kell szerepelniük, ahogy az a példában látható oszlopban látható.
 
 ### <a name="change-the-parameters-for-an-application-submitted-using-spark-submit"></a>A Spark-Submit használatával elküldött alkalmazások paramétereinek módosítása
 
-A következő parancs egy példa arra, hogyan lehet módosítani a használatával `spark-submit`elküldött batch-alkalmazás konfigurációs paramétereit.
+A következő parancs egy példa arra, hogyan lehet módosítani a használatával elküldött batch-alkalmazás konfigurációs paramétereit `spark-submit` .
 
-    spark-submit --class <the application class to execute> --executor-memory 3072M --executor-cores 4 –-num-executors 10 <location of application jar file> <application parameters>
+```scala
+spark-submit --class <the application class to execute> --executor-memory 3072M --executor-cores 4 –-num-executors 10 <location of application jar file> <application parameters>
+```
 
 ### <a name="change-the-parameters-for-an-application-submitted-using-curl"></a>A cURL használatával elküldött alkalmazások paramétereinek módosítása
 
 A következő parancs egy példa arra, hogyan módosíthatja a cURL használatával elküldött batch-alkalmazás konfigurációs paramétereit.
 
-    curl -k -v -H 'Content-Type: application/json' -X POST -d '{"file":"<location of application jar file>", "className":"<the application class to execute>", "args":[<application parameters>], "numExecutors":10, "executorMemory":"2G", "executorCores":5' localhost:8998/batches
+```bash
+curl -k -v -H 'Content-Type: application/json' -X POST -d '{"file":"<location of application jar file>", "className":"<the application class to execute>", "args":[<application parameters>], "numExecutors":10, "executorMemory":"2G", "executorCores":5' localhost:8998/batches
+```
 
 ### <a name="change-these-parameters-on-a-spark-thrift-server"></a>A paraméterek módosítása a Spark takarékossági kiszolgálón
 
 A Spark takarékossági kiszolgáló JDBC/ODBC-hozzáférést biztosít egy Spark-fürthöz, és a Spark SQL-lekérdezések kiszolgálására szolgál. Az olyan eszközök, mint például a Power BI, a tabló és így tovább, az ODBC protokoll használatával kommunikálhat a Spark takarékosság-kiszolgálóval a Spark SQL-lekérdezések Spark-alkalmazásként való végrehajtásához. Spark-fürt létrehozásakor a Spark takarékossági kiszolgáló két példánya indul el, egyet az egyes fő csomópontokon. Az egyes Spark-takarékossági kiszolgálók Spark-alkalmazásként láthatók a fonal felhasználói felületén.
 
-A Spark takarékossági kiszolgáló a Spark dinamikus végrehajtó lefoglalását `spark.executor.instances` használja, ezért a nincs használatban. Ehelyett a Spark `spark.dynamicAllocation.maxExecutors` -takarékos kiszolgáló és `spark.dynamicAllocation.minExecutors` a végrehajtók számának megadására szolgál. A konfigurációs paraméterek `spark.executor.cores` `spark.executor.memory` a végrehajtó méretének módosítására szolgálnak. Ezeket a paramétereket a következő lépésekben látható módon módosíthatja:
+A Spark takarékossági kiszolgáló a Spark dinamikus végrehajtó lefoglalását használja, ezért a `spark.executor.instances` nincs használatban. Ehelyett a Spark-takarékos kiszolgáló `spark.dynamicAllocation.maxExecutors` és `spark.dynamicAllocation.minExecutors` a végrehajtók számának megadására szolgál. A konfigurációs paraméterek a `spark.executor.cores` `spark.executor.memory` végrehajtó méretének módosítására szolgálnak. Ezeket a paramétereket a következő lépésekben látható módon módosíthatja:
 
-* A paraméterek `spark.dynamicAllocation.maxExecutors`frissítéséhez bontsa ki a **speciális spark2-takarékosság-sparkconf** kategóriát `spark.dynamicAllocation.minExecutors`.
+* A paraméterek frissítéséhez bontsa ki a **speciális spark2-takarékosság-sparkconf** kategóriát `spark.dynamicAllocation.maxExecutors` `spark.dynamicAllocation.minExecutors` .
 
     ![A Spark takarékosság-kiszolgáló konfigurálása](./media/apache-spark-resource-manager/ambari-ui-advanced-thrift-sparkconf.png "A Spark takarékosság-kiszolgáló konfigurálása")
 
-* Bontsa ki az **Egyéni spark2-takarékosság-sparkconf** kategóriát a `spark.executor.cores`paraméterek frissítéséhez és `spark.executor.memory`.
+* Bontsa ki az **Egyéni spark2-takarékosság-sparkconf** kategóriát a paraméterek frissítéséhez `spark.executor.cores` és `spark.executor.memory` .
 
     ![A Spark takarékosság Server paraméter konfigurálása](./media/apache-spark-resource-manager/ambari-ui-custom-thrift-sparkconf.png "A Spark takarékosság Server paraméter konfigurálása")
 
@@ -97,7 +103,7 @@ A Spark takarékossági kiszolgáló a Spark dinamikus végrehajtó lefoglalás�
 
 A Spark-kiszolgáló illesztőprogram-memóriája a fő csomópont RAM-méretének 25%-ában van konfigurálva, ha a fő csomópont teljes RAM-mérete meghaladja a 14 GB-ot. A Ambari felhasználói felületén módosíthatja az illesztőprogram-memória konfigurációját, ahogy az alábbi képernyőképen is látható:
 
-A Ambari felhasználói felületén navigáljon a **Spark2** > **konfigurációk** > **speciális Spark2 – env**elemre. Ezután adja meg a **spark_thrift_cmd_opts**értékét.
+A Ambari felhasználói felületén navigáljon a **Spark2**  >  **konfigurációk**  >  **speciális Spark2 – env**elemre. Ezután adja meg a **spark_thrift_cmd_opts**értékét.
 
 ## <a name="reclaim-spark-cluster-resources"></a>Spark-fürt erőforrásainak visszaigénylése
 

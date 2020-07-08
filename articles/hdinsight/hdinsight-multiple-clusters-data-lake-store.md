@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
-ms.openlocfilehash: 7bc6659904530bfa40ee54cd55eab5eaca689069
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 19c40f2a7609d556448641e78fdeffe83e8660b1
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85509217"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083950"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-storage-account"></a>Több HDInsight-fürt használata Azure Data Lake Storage fiókkal
 
@@ -79,7 +79,9 @@ Ez a szakasz felsorolja a HDInsight és a Data Lake Storage használatának isme
 
 Ezek a beállítások a 247-as [fonalban](https://hwxmonarch.atlassian.net/browse/YARN-247)rögzített HDInsight-használati esetekre is érvényesek. A feladat-beadványok a következőhöz hasonló hibaüzenettel meghiúsulnak:
 
-    Resource XXXX is not publicly accessible and as such cannot be part of the public cache.
+```output
+Resource XXXX is not publicly accessible and as such cannot be part of the public cache.
+```
 
 Ahogy azt a korábban a JIRA csatolta, a nyilvános erőforrások honosítása közben, a Localizer ellenőrzi, hogy az összes kért erőforrás valóban nyilvános-e, ha ellenőrzi a távoli fájlrendszerre vonatkozó engedélyeiket. Minden olyan LocalResource, amely nem fér el ehhez a feltételhez, elutasítja a honosítást. Az engedélyek keresése, a "mások" számára olvasási hozzáférés a fájlhoz. Ez a forgatókönyv a HDInsight-fürtök Azure Data Lake-on való üzemeltetése során nem működik, mert a Azure Data Lake megtagadja a "mások" hozzáférését a gyökérmappa szintjén.
 

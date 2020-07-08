@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdiseo17may2017,seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: e73a8a420c7591a45a62ba38123c6b3368e0f738
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d642397ef42227e530bd9eff14c3da6078241281
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82190639"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085871"
 ---
 # <a name="upload-data-for-apache-hadoop-jobs-in-hdinsight"></a>Adatok feltöltése Apache Hadoop feladatok számára a HDInsight-ben
 
@@ -37,7 +37,7 @@ A Microsoft az alábbi segédprogramokat biztosítja az Azure Storage-hoz való 
 
 | Eszköz | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
-| [Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md) |✔ |✔ |✔ |
+| [Azure Portalra](../storage/blobs/storage-quickstart-blobs-portal.md) |✔ |✔ |✔ |
 | [Azure CLI](../storage/blobs/storage-quickstart-blobs-cli.md) |✔ |✔ |✔ |
 | [Azure PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md) | | |✔ |
 | [AzCopy](../storage/common/storage-use-azcopy-v10.md) |✔ | |✔ |
@@ -60,18 +60,18 @@ hadoop fs -copyFromLocal <localFilePath> <storageFilePath>
 
 Például: `hadoop fs -copyFromLocal data.txt /example/data/data.txt`
 
-Mivel a HDInsight alapértelmezett fájlrendszere Az Azure Storage-ban található, a/example/Data/Data.txt valójában az Azure Storage-ban érhető el. A fájlt a következő néven is megtekintheti:
+Mivel a HDInsight alapértelmezett fájlrendszere Az Azure Storage-ban található, az/example/Data/data.txt valójában az Azure Storage-ban érhető el. A fájlt a következő néven is megtekintheti:
 
-    wasbs:///example/data/data.txt
+`wasbs:///example/data/data.txt`
 
 vagy
 
-    wasbs://<ContainerName>@<StorageAccountName>.blob.core.windows.net/example/data/davinci.txt
+`wasbs://<ContainerName>@<StorageAccountName>.blob.core.windows.net/example/data/davinci.txt`
 
 A fájlokkal dolgozó egyéb Hadoop-parancsok listáját itt tekintheti meg:[https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html)
 
 > [!WARNING]  
-> Az Apache HBase-fürtökön az adatíráskor használt alapértelmezett blokk mérete 256 KB. Habár ez jól működik a HBase API-k vagy a REST API- `hadoop` k `hdfs dfs` használata esetén, a vagy a parancs használatával a ~ 12 GB-nál nagyobb adatbevitel hibát eredményez. További információ: Storage- [kivétel a blobon való íráshoz](hdinsight-troubleshoot-hdfs.md#storage-exception-for-write-on-blob).
+> Az Apache HBase-fürtökön az adatíráskor használt alapértelmezett blokk mérete 256 KB. Habár ez jól működik a HBase API-k vagy a REST API-k használata esetén, a vagy a parancs használatával a `hadoop` `hdfs dfs` ~ 12 GB-nál nagyobb adatbevitel hibát eredményez. További információ: Storage- [kivétel a blobon való íráshoz](hdinsight-troubleshoot-hdfs.md#storage-exception-for-write-on-blob).
 
 ### <a name="graphical-clients"></a>Grafikus ügyfelek
 
@@ -98,7 +98,7 @@ A Azure Data Factory szolgáltatás egy teljes körűen felügyelt szolgáltatá
 
 |Tárolási típus|Dokumentáció|
 |----|----|
-|Azure Blob Storage|[Adatok másolása az Azure Blob Storage-ba vagy onnan az Azure Data Factory használatával](../data-factory/connector-azure-blob-storage.md)|
+|Azure Blob Storage|[Adatok másolása az Azure Blob Storage-be vagy onnan máshová az Azure Data Factoryvel](../data-factory/connector-azure-blob-storage.md)|
 |1. generációs Azure Data Lake Storage|[Adatok másolása Azure Data Lake Storage Gen1ba vagy onnan a Azure Data Factory használatával](../data-factory/connector-azure-data-lake-store.md)|
 |2. generációs Azure Data Lake Storage |[Betöltés az Azure Data Lake Storage Gen2ba Azure Data Factory](../data-factory/load-azure-data-lake-storage-gen2.md)|
 
