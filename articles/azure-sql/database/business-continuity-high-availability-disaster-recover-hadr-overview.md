@@ -4,7 +4,7 @@ titleSuffix: Azure SQL Database & SQL Managed Instance
 description: Ismerje meg, hogyan támogatja a Azure SQL Database és az SQL felügyelt példány a Felhőbeli üzletmenet folytonosságát és az adatbázis-helyreállítást, és segít megőrizni a kritikus fontosságú felhőalapú alkalmazásokat.
 keywords: üzletmenet-folytonosság,felhőalapú üzletmenet-folytonosság,adatbázis-vészhelyreállítás,adatbázis-helyreállítás
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: high-availability
 ms.custom: sqldbrb=2
 ms.devlang: ''
@@ -13,12 +13,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: 8312fe1370ded990bd3523d531d168fd2cac5564
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 8ceef173e33c3603d9bc5d6ef217d54eef88609c
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84189764"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85982472"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Az Azure SQL Database üzletmenet-folytonossági funkcióinak áttekintése
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -65,14 +65,14 @@ Az [automatikus feladatátvételi csoportok](auto-failover-group-overview.md#ter
 
 |                                              | Georeplikáció | Feladatátvételi csoportok  |
 |:---------------------------------------------| :-------------- | :----------------|
-| Automatikus feladatátvétel                           |     Nem          |      Igen         |
-| Több adatbázis feladatátvétele egyszerre  |     Nem          |      Igen         |
-| A felhasználónak frissítenie kell a kapcsolatok karakterláncát a feladatátvétel után      |     Igen         |      Nem          |
-| SQL felügyelt példányok támogatása                   |     Nem          |      Igen         |
-| Ugyanabban a régióban lehet, mint az elsődleges             |     Igen         |      Nem          |
-| Több replika                            |     Igen         |      Nem          |
-| Olvasási méretezés támogatása                          |     Igen         |      Igen         |
-| &nbsp; | &nbsp; | &nbsp; |
+| **Automatikus feladatátvétel**                          |     Nem          |      Yes         |
+| **Több adatbázis feladatátvétele egyszerre**  |     Nem          |      Yes         |
+| **A felhasználónak frissítenie kell a kapcsolatok karakterláncát a feladatátvétel után**      |     Yes         |      Nem          |
+| **SQL felügyelt példányok támogatása**                   |     Nem          |      Yes         |
+| **Ugyanabban a régióban lehet, mint az elsődleges**             |     Yes         |      Nem          |
+| **Több replika**                            |     Yes         |      Nem          |
+| **Olvasási méretezés támogatása**                          |     Igen         |      Igen         |
+
 
 ## <a name="recover-a-database-to-the-existing-server"></a>Adatbázis helyreállítása a meglévő kiszolgálóra
 

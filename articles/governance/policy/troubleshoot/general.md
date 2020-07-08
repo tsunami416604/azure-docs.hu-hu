@@ -3,12 +3,12 @@ title: Gyakori hibák elhárítása
 description: Ismerje meg, hogy miként lehet elhárítani a szabályzat-definíciókat, a különböző SDK-t és a Kubernetes bővítményét.
 ms.date: 05/22/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: b1cb8ab51ecc00610f1e04532ba3063be5415607
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 868b8c53a120ebdb6a35806538e02af39e25c338
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234173"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970841"
 ---
 # <a name="troubleshoot-errors-using-azure-policy"></a>Hibák elhárítása a Azure Policy használatával
 
@@ -28,7 +28,7 @@ A hiba részleteinek helye a hibát okozó művelettől függ.
 
 #### <a name="issue"></a>Probléma
 
-A Azure Policy az [aliasokat](../concepts/definition-structure.md#aliases) használja az erőforrás-kezelő tulajdonságaihoz való leképezéshez.
+A Azure Policy [aliasokat](../concepts/definition-structure.md#aliases) használ a Azure Resource Manager tulajdonságok leképezéséhez.
 
 #### <a name="cause"></a>Ok
 
@@ -103,7 +103,7 @@ Egy megtagadási szabályzat-hozzárendelés hibaüzenete tartalmazza a szabály
 
 #### <a name="issue"></a>Probléma
 
-Azure Policy számos Resource Manager-sablon függvényt és függvényt támogat, amelyek csak egy házirend-definícióban érhetők el. A Resource Manager ezeket a függvényeket egy központi telepítés részeként dolgozza fel a házirend-definíció részeként.
+Azure Policy számos Azure Resource Manager sablon (ARM-sablon) függvényt és függvényt támogat, amelyek csak egy házirend-definícióban érhetők el. A Resource Manager ezeket a függvényeket egy központi telepítés részeként dolgozza fel a házirend-definíció részeként.
 
 #### <a name="cause"></a>Ok
 
@@ -152,6 +152,6 @@ Kövesse az utasításokat a [Kubernetes-bővítmény Azure Policy eltávolítá
 
 Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
 
-- Választ kaphat a szakértőktől a [Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-policy.html)használatával.
+- Választ kaphat a szakértőktől a [Microsoft Q&A](/answers/topics/azure-policy.html)használatával.
 - Az [@AzureSupport](https://twitter.com/azuresupport) Azure-Közösség a megfelelő erőforrásokhoz való csatlakoztatásával, a hivatalos Microsoft Azure fiókkal csatlakozhat a felhasználói élmény fokozásához: válaszok, támogatás és szakértők.
 - Ha további segítségre van szüksége, egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése**lehetőséget.

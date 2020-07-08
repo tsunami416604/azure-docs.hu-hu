@@ -3,7 +3,7 @@ title: Automatikus feladatátvételi csoportok
 titleSuffix: Azure SQL Database & SQL Managed Instance
 description: Az automatikus feladatátvételi csoportok lehetővé teszik a kiszolgálók vagy a felügyelt példányok összes adatbázisának replikálását, valamint az automatikus/koordinált feladatátvétel kezelését.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: high-availability
 ms.custom: sqldbrb=2
 ms.devlang: ''
@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 2/10/2020
-ms.openlocfilehash: 7552cb3889b73604563758a97ae8a59960f6a906
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 39329eb9ea2c396f8b5f04287f3e933bb6242f85
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84658024"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85982979"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Automatikus feladatátvételi csoportok használata több adatbázis átlátható és koordinált feladatátvételének engedélyezéséhez
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -33,7 +33,7 @@ Az automatikus feladatátvételi csoportok emellett olyan írási és olvasási 
 
 Ha automatikus feladatátvételi házirenddel rendelkező automatikus feladatátvételi csoportokat használ, a kiszolgálók vagy a felügyelt példányok adatbázisait érintő kimaradások automatikus feladatátvételt eredményeznek. Az automatikus feladatátvételi csoportot az alábbiak szerint kezelheti:
 
-- [Azure Portal](geo-distributed-application-configure-tutorial.md)
+- [Azure Portalra](geo-distributed-application-configure-tutorial.md)
 - [Azure CLI: feladatátvételi csoport](scripts/add-database-to-failover-group-cli.md)
 - [PowerShell: feladatátvételi csoport](scripts/add-database-to-failover-group-powershell.md)
 - [REST API: feladatátvételi csoport](/rest/api/sql/failovergroups).
@@ -404,7 +404,7 @@ Ahogy azt korábban említettük, az automatikus feladatátvételi csoportok és
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-| Parancsmag | Leírás |
+| Parancsmag | Description |
 | --- | --- |
 | [Új – AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) |Ez a parancs létrehoz egy feladatátvételi csoportot, és regisztrálja azt mind az elsődleges, mind a másodlagos kiszolgálókon.|
 | [Remove-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/remove-azsqldatabasefailovergroup) | Feladatátvételi csoport eltávolítása a kiszolgálóról |
@@ -415,7 +415,7 @@ Ahogy azt korábban említettük, az automatikus feladatátvételi csoportok és
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-| Parancs | Leírás |
+| Parancs | Description |
 | --- | --- |
 | [az SQL feladatátvétel-csoport létrehozása](/cli/azure/sql/failover-group#az-sql-failover-group-create) |Ez a parancs létrehoz egy feladatátvételi csoportot, és regisztrálja azt mind az elsődleges, mind a másodlagos kiszolgálókon.|
 | [az SQL feladatátvétel-csoport törlése](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | Feladatátvételi csoport eltávolítása a kiszolgálóról |
@@ -425,7 +425,7 @@ Ahogy azt korábban említettük, az automatikus feladatátvételi csoportok és
 
 # <a name="rest-api"></a>[REST API](#tab/rest-api)
 
-| API | Leírás |
+| API | Description |
 | --- | --- |
 | [Feladatátvételi csoport létrehozása vagy frissítése](https://docs.microsoft.com/rest/api/sql/failovergroups/createorupdate) | Feladatátvételi csoport létrehozása vagy frissítése |
 | [Feladatátvételi csoport törlése](https://docs.microsoft.com/rest/api/sql/failovergroups/delete) | Feladatátvételi csoport eltávolítása a kiszolgálóról |
@@ -442,7 +442,7 @@ Ahogy azt korábban említettük, az automatikus feladatátvételi csoportok és
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-| Parancsmag | Leírás |
+| Parancsmag | Description |
 | --- | --- |
 | [Új – AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup) |Ez a parancs létrehoz egy feladatátvételi csoportot, és regisztrálja azt az elsődleges és a másodlagos példányokon is.|
 | [Set-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/set-azsqldatabaseinstancefailovergroup) |Feladatátvételi csoport konfigurációjának módosítása|
@@ -453,7 +453,7 @@ Ahogy azt korábban említettük, az automatikus feladatátvételi csoportok és
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-| Parancs | Leírás |
+| Parancs | Description |
 | --- | --- |
 | [az SQL feladatátvétel-csoport létrehozása](/cli/azure/sql/failover-group#az-sql-failover-group-create) |Ez a parancs létrehoz egy feladatátvételi csoportot, és regisztrálja azt mind az elsődleges, mind a másodlagos kiszolgálókon.|
 | [az SQL feladatátvétel-csoport törlése](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | Feladatátvételi csoport eltávolítása a kiszolgálóról |
@@ -463,7 +463,7 @@ Ahogy azt korábban említettük, az automatikus feladatátvételi csoportok és
 
 # <a name="rest-api"></a>[REST API](#tab/rest-api)
 
-| API | Leírás |
+| API | Description |
 | --- | --- |
 | [Feladatátvételi csoport létrehozása vagy frissítése](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/createorupdate) | Feladatátvételi csoport konfigurációjának létrehozása vagy frissítése |
 | [Feladatátvételi csoport törlése](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/delete) | Feladatátvételi csoport eltávolítása a példányból |
@@ -474,7 +474,7 @@ Ahogy azt korábban említettük, az automatikus feladatátvételi csoportok és
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Részletes oktatóanyagok:
   - [SQL Database hozzáadása feladatátvételi csoporthoz](failover-group-add-single-database-tutorial.md)

@@ -2,8 +2,8 @@
 title: BACPAC-fájl importálása egy adatbázis létrehozásához Azure SQL Database
 description: Hozzon létre egy új adatbázist Azure SQL Database vagy Azure SQL felügyelt példányban egy BACPAC-fájlból.
 services: sql-database
-ms.service: sql-database
-ms.subservice: migration
+ms.service: sql-db-mi
+ms.subservice: migrate
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/20/2019
-ms.openlocfilehash: 81a77e3a5fac19b4d6116a74221d3506d603bff9
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 7bca179f3140a64923af71199fe4a1db48d2065c
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84218813"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85982337"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Gyors útmutató: BACPAC-fájl importálása Azure SQL Database vagy Azure SQL felügyelt példányban található adatbázisba
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -40,7 +40,7 @@ A [Azure Portal](https://portal.azure.com) *csak* az Azure Blob Storage-ban tár
 Ha az adatbázist egy BACPAC-fájlból egy [Azure SQL felügyelt példányba](../managed-instance/sql-managed-instance-paas-overview.md) kívánja áttelepíteni, használja a SQL Server Management Studio vagy a SQLPackage, a Azure Portal vagy a Azure PowerShell használata jelenleg nem támogatott.
 
 > [!NOTE]
-> A Azure Portalon vagy PowerShellen keresztül küldött importálási/exportálási kérelmeket feldolgozó gépeknek a BACPAC-fájlt, valamint az adatrétegbeli alkalmazás-keretrendszer (DacFX) által generált ideiglenes fájlokat kell tárolniuk. A szükséges lemezterület jelentősen eltér az azonos méretű adatbázisok között, és az adatbázis méretének háromszorosára lehet szükség. Az importálási/exportálási kérelmet futtató gépek csak 450GB helyi lemezterülettel rendelkeznek. Ennek eredményeképpen előfordulhat, hogy néhány kérelem meghiúsul a hibával `There is not enough space on the disk` . Ebben az esetben a megkerülő megoldás a sqlpackage. exe futtatása egy olyan gépen, amelyen elegendő helyi lemezterület található. A probléma elkerülése érdekében javasoljuk, hogy a 150GB-nál nagyobb adatbázisok importálására/exportálására SqlPackage használjon.
+> A Azure Portalon vagy PowerShellen keresztül küldött importálási/exportálási kérelmeket feldolgozó gépeknek a BACPAC-fájlt, valamint az adatrétegbeli alkalmazás-keretrendszer (DacFX) által generált ideiglenes fájlokat kell tárolniuk. A szükséges lemezterület jelentősen eltér az azonos méretű adatbázisok között, és az adatbázis méretének háromszorosára lehet szükség. Az importálási/exportálási kérelmet futtató gépek csak 450GB helyi lemezterülettel rendelkeznek. Ennek eredményeképpen előfordulhat, hogy néhány kérelem meghiúsul a hibával `There is not enough space on the disk` . Ebben az esetben a megkerülő megoldás az sqlpackage.exe futtatása egy olyan gépen, amely elegendő helyi lemezterülettel rendelkezik. A probléma elkerülése érdekében javasoljuk, hogy a 150GB-nál nagyobb adatbázisok importálására/exportálására SqlPackage használjon.
 
 1. Ha a Azure Portal használatával szeretne importálni egy BACPAC-fájlból egy új önálló adatbázisba, nyissa meg a megfelelő kiszolgáló lapot, majd az eszköztáron válassza az **adatbázis importálása**lehetőséget.  
 
@@ -87,7 +87,7 @@ sqlpackage.exe /a:Import /sf:testExport.bacpac /tdn:NewDacFX /tsn:apptestserver.
 > [A felügyelt SQL-példányok](../managed-instance/sql-managed-instance-paas-overview.md) jelenleg nem támogatják az adatbázisok példány-adatbázisba való áttelepítését egy BACPAC-fájlból Azure PowerShell használatával. SQL felügyelt példányba való importáláshoz használja a SQL Server Management Studio vagy a SQLPackage.
 
 > [!NOTE]
-> A portálon vagy a Powershellen keresztül küldött importálási/exportálási kérelmek feldolgozását végző gépeknek a bacpac-fájlt, valamint az adatrétegbeli alkalmazás-keretrendszer (DacFX) által generált ideiglenes fájlokat kell tárolniuk. A szükséges lemezterület jelentős mértékben változhat az azonos méretű adatbázisok között, és akár 3 alkalommal is eltarthat az adatbázis mérete. Az importálási/exportálási kérelmet futtató gépek csak 450GB helyi lemezterülettel rendelkeznek. Ennek eredményeképpen előfordulhat, hogy egyes kérések meghiúsulnak a "nincs elég hely a lemezen" hibaüzenet. Ebben az esetben a megkerülő megoldás a sqlpackage. exe futtatása egy olyan gépen, amelyen elegendő helyi lemezterület található. A 150GB-nál nagyobb adatbázisok importálásakor/exportálásakor a SqlPackage használatával elkerülhető a probléma.
+> A portálon vagy a Powershellen keresztül küldött importálási/exportálási kérelmek feldolgozását végző gépeknek a bacpac-fájlt, valamint az adatrétegbeli alkalmazás-keretrendszer (DacFX) által generált ideiglenes fájlokat kell tárolniuk. A szükséges lemezterület jelentős mértékben változhat az azonos méretű adatbázisok között, és akár 3 alkalommal is eltarthat az adatbázis mérete. Az importálási/exportálási kérelmet futtató gépek csak 450GB helyi lemezterülettel rendelkeznek. Ennek eredményeképpen előfordulhat, hogy egyes kérések meghiúsulnak a "nincs elég hely a lemezen" hibaüzenet. Ebben az esetben a megkerülő megoldás az sqlpackage.exe futtatása egy olyan gépen, amely elegendő helyi lemezterülettel rendelkezik. A 150GB-nál nagyobb adatbázisok importálásakor/exportálásakor a SqlPackage használatával elkerülhető a probléma.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -146,7 +146,7 @@ az sql db import --resource-group "<resourceGroup>" --server "<server>" --name "
 ## <a name="limitations"></a>Korlátozások
 
 - A rugalmas készletben lévő adatbázisokba importálás nem támogatott. Az adatokat importálhatja egy önálló adatbázisba, majd az adatbázist áthelyezheti egy rugalmas készletbe.
-- Az importálási exportálási szolgáltatás nem működik, ha az Azure-szolgáltatásokhoz való hozzáférés engedélyezése beállítás ki van kapcsolva. A probléma megoldásához azonban a sqlpackage. exe fájlt manuálisan is futtathatja egy Azure-beli virtuális gépről, vagy közvetlenül a kódban végezheti el az exportálást a DACFx API használatával.
+- Az importálási exportálási szolgáltatás nem működik, ha az Azure-szolgáltatásokhoz való hozzáférés engedélyezése beállítás ki van kapcsolva. Azonban a probléma megoldásához manuálisan is futtathatja sqlpackage.exe egy Azure-beli virtuális gépről, vagy közvetlenül a kódban végezheti el az exportálást a DACFx API használatával.
 
 ## <a name="import-using-wizards"></a>Importálás varázslók használatával
 

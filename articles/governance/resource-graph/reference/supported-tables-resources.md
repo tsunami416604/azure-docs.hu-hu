@@ -1,14 +1,15 @@
 ---
-title: Támogatott Resource Manager-erőforrástípusok
-description: Adja meg az Azure Resource Graph és a Change History által támogatott Resource Manager-erőforrástípusok listáját.
+title: Támogatott Azure Resource Manager erőforrástípusok
+description: Adja meg az Azure Resource Graph és a Change History által támogatott Azure Resource Manager-erőforrástípusok listáját.
 ms.date: 06/04/2020
 ms.topic: reference
-ms.openlocfilehash: a4679c9e1ecaef34445a7283e0d58ab78cb61ab0
-ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
+ms.custom: generated
+ms.openlocfilehash: 7a1890c8decb6f918ecacee99764e45817e3d38a
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84424295"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970569"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Az Azure Resource Graph táblázat-és erőforrástípus-referenciája
 
@@ -87,11 +88,11 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. baremetal/consoleconnections
 - Microsoft. baremetal/crayservers
 - Microsoft. baremetal/monitoringservers
-- Microsoft. batch/batchaccounts
-- Microsoft. batchai/fürtök
-- Microsoft. batchai/fileservers
-- Microsoft. batchai/feladatok
-- Microsoft. batchai/munkaterületek
+- microsoft.batCH/batchaccounts
+- microsoft.batChai/fürtök
+- microsoft.batChai/fileservers
+- microsoft.batChai/feladatok
+- microsoft.batChai/munkaterületek
 - Microsoft. bingmaps/mapapis
 - Microsoft. biztalkservices/BizTalk
 - Microsoft. blockchain/blockchainmembers
@@ -196,7 +197,7 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. segédösszetevője/Labs/virtualmachines
 - Microsoft. segédösszetevője/ütemtervek
 - Microsoft. digitaltwins/digitaltwinsinstances
-- Microsoft. documentdb/databaseaccounts
+- microsoft.documentdb/databaseaccounts
 - Microsoft. domainregistration/tartományok
 - Microsoft. enterpriseknowledgegraph/szolgáltatások
 - Microsoft. eventgrid/tartományok
@@ -485,7 +486,7 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. Security/regulatorycompliancestandards/regulatorycompliancecontrols
 - Microsoft. Security/regulatorycompliancestandards/regulatorycompliancecontrols/regulatorycomplianceassessments
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [lekérdezési nyelvről](../concepts/query-language.md).
 - További információ az [erőforrások feltárásáról](../concepts/explore-resources.md).

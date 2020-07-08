@@ -4,19 +4,19 @@ titleSuffix: Azure SQL Database & SQL Managed Instance
 description: Ismerkedjen meg a Azure SQL Database & SQL felügyelt példányának új szolgáltatásaival és dokumentációs funkcióival.
 services: sql-database
 author: stevestein
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: service
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: sstein
-ms.openlocfilehash: 04442d7c82b463c0cfa5813bd4b20554b57ec950
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: ed6f164adb9e0a6daf24342021087b2cede3289d
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85323233"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85981373"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>A Azure SQL Database & SQL felügyelt példányának újdonságai
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -42,7 +42,7 @@ Ez a táblázat a terminológia változásának gyors összehasonlítását bizt
 |**Azure SQL Database**|*Önálló adatbázis* Azure SQL Database| Ha nincs kifejezetten megadva, a terméknév Azure SQL Database a rugalmas készletbe telepített önálló adatbázisokat és adatbázisokat is tartalmazza. |
 |**Azure SQL Database**|*Rugalmas készlet* Azure SQL Database| Ha nincs kifejezetten megadva, a terméknév Azure SQL Database a rugalmas készletbe telepített önálló adatbázisokat és adatbázisokat is tartalmazza.  |
 |**Azure SQL Database** |Azure SQL Database | Bár a kifejezés változatlan marad, az már csak az önálló adatbázisra és a rugalmas készletekre vonatkozik, és nem tartalmazza a felügyelt példányt. |
-| **Azure SQL**| N/A | Ez az Azure-ban elérhető SQL Server adatbázismotor-termékek családját jelenti: Azure SQL Database, Azure SQL felügyelt példány és Azure-beli virtuális gépeken SQL Server. | 
+| **Azure SQL**| N.A. | Ez az Azure-ban elérhető SQL Server adatbázismotor-termékek családját jelenti: Azure SQL Database, Azure SQL felügyelt példány és Azure-beli virtuális gépeken SQL Server. | 
 
 ## <a name="features-in-public-preview"></a>A nyilvános előzetes verzióban elérhető funkciók
 
@@ -96,7 +96,7 @@ A következő funkciók engedélyezve vannak az SQL felügyelt példány üzembe
 
 ### <a name="known-issues"></a>Ismert problémák
 
-|Probléma  |Felderített dátum  |status  |Feloldás dátuma  |
+|Probléma  |Felderített dátum  |Állapot  |Feloldás dátuma  |
 |---------|---------|---------|---------|
 |[A manuális biztonsági mentés ELLENŐRZŐÖSSZEG nélküli visszaállítása sikertelen lehet](#restoring-manual-backup-without-checksum-might-fail)|2020. május|Megkerülő megoldás| |
 |[Az ügynök nem válaszol a meglévő feladatok módosítása, letiltása vagy engedélyezése esetén](#agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs)|2020. május|Automatikusan lecsökkentve| |

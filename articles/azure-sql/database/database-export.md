@@ -3,7 +3,7 @@ title: Azure SQL Database exportálása BACPAC-fájlba (a Azure Portal)
 titleSuffix: Azure SQL Database & Azure SQL Managed Instance
 description: Adatbázis exportálása BACPAC-fájlba a Azure Portal használatával.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: data-movement
 author: stevestein
 ms.custom: sqldbrb=2
@@ -11,12 +11,12 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 07/16/2019
 ms.topic: conceptual
-ms.openlocfilehash: a8fb5675f086402bd5e5970fd856fce51220e8f4
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 10d10ccfbd04a52f6d522700d66d2c959fed24ee
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85253511"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85982416"
 ---
 # <a name="export-to-a-bacpac-file---azure-sql-database-and-azure-sql-managed-instance"></a>Exportálás BACPAC-fájlba – Azure SQL Database és az Azure SQL felügyelt példánya
 

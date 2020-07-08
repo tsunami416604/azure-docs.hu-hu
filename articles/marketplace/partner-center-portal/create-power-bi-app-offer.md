@@ -6,19 +6,19 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/19/2020
-ms.openlocfilehash: 0a247626566a4b0156d879954bf6734d248f01d8
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.date: 06/17/2020
+ms.openlocfilehash: 8a4ff5c5bce7774f805130f68d7418a73cb751f8
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85513521"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85980347"
 ---
 # <a name="create-a-power-bi-app-for-microsoft-appsource"></a>Power BI-alkalmazás létrehozása Microsoft AppSourcehoz
 
 Ez a cikk bemutatja, hogyan hozhat létre és tehet közzé Power BI alkalmazás-ajánlatokat a Microsoft [AppSource](https://appsource.microsoft.com/).
 
-A Kezdés előtt [hozzon létre egy kereskedelmi Piactéri fiókot a partner Centerben](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) , ha még nem tette meg. Győződjön meg róla, hogy a fiókja regisztrálva van a kereskedelmi piactér programban.
+A Kezdés előtt [hozzon létre egy kereskedelmi Piactéri fiókot a partner Centerben](create-account.md) , ha még nem tette meg. Győződjön meg róla, hogy a fiókja regisztrálva van a kereskedelmi piactér programban.
 
 ## <a name="create-a-new-offer"></a>Új ajánlat létrehozása
 
@@ -53,12 +53,12 @@ Válassza a **Létrehozás** lehetőséget az ajánlat létrehozásához és a f
 
 Ezen az oldalon látható az ajánlat közzétételéhez szükséges lépések vizuális ábrázolása (a befejezett és a közelgő is), valamint az egyes lépések befejezésének ideje.
 
-Hivatkozásokat tartalmaz az ajánlaton végzett műveletekre, az Ön által választott beállítás alapján. Példa:
+Hivatkozásokat tartalmaz az ajánlaton végzett műveletekre, az Ön által választott beállítás alapján. Például:
 
-- Ha az ajánlat Piszkozat- [törlési ajánlat](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#delete-a-draft-offer)
-- Ha az ajánlat élő – [az ajánlat értékesítésének leállítása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan)
-- Ha az ajánlat előzetes verzióban érhető [el](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status#publisher-approval)
-- Ha még nem fejezte be a közzétevő kijelentkezését – [Közzététel megszakítása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#cancel-publishing)
+- Ha az ajánlat Piszkozat- [törlési ajánlat](update-existing-offer.md#delete-a-draft-offer).
+- Ha az ajánlat élő – [az ajánlat értékesítésének leállítása](update-existing-offer.md#stop-selling-an-offer-or-plan))
+- Ha az ajánlat előzetes verzióban érhető el – [Go-Live](publishing-status.md#publisher-approval))
+- Ha még nem fejezte be a közzétevő kijelentkezését – [Közzététel megszakítása](update-existing-offer.md#cancel-publishing)
 
 ## <a name="offer-setup"></a>Ajánlat beállítása
 
@@ -68,12 +68,12 @@ Ha az ajánlatot a piactéren a partner centerrel teszi közzé, akkor azt az Ü
 
 1. Válasszon egy érdeklődési célt, ahová küldhetjük az érdeklődőket. A partner Center a következő CRM-rendszereket támogatja:
 
-    - [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics) ügyfél-engagement
-    - [Marketo](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-marketo)
-    - [Salesforce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
+    - [Dynamics 365](commercial-marketplace-lead-management-instructions-dynamics.md) ügyfél-engagement
+    - [Marketo](commercial-marketplace-lead-management-instructions-marketo.md)
+    - [Salesforce](commercial-marketplace-lead-management-instructions-salesforce.md)
 
     > [!NOTE]
-    > Ha a CRM-rendszer nem szerepel a fentiekben, az [Azure Table](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table) vagy a [https-végpont](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https) használatával tárolhatja az ügyfél-érdeklődő adatait. Ezután exportálja az adatait a CRM-rendszerbe.
+    > Ha a CRM-rendszer nem szerepel a fentiekben, az [Azure Table](commercial-marketplace-lead-management-instructions-azure-table.md) vagy a [https-végpont](commercial-marketplace-lead-management-instructions-https.md) használatával tárolhatja az ügyfél-érdeklődő adatait. Ezután exportálja az adatait a CRM-rendszerbe.
 
 2. Az ajánlat összekötése a vezető célhoz a partner Centerben való közzététel során.
 3. Győződjön meg arról, hogy a vezető célhoz való kapcsolódás megfelelően van konfigurálva. Miután közzétette a partner Centerben, érvényesítjük a kapcsolatot, és elküldünk egy tesztelési érdeklődőt. Miközben az ajánlat előzetes verziójának megtekintése előtt megtekinti az ajánlatot, tesztelheti az érdeklődői kapcsolatokat is, ha az előnézeti környezetben próbálja megvásárolni az ajánlatot.
@@ -81,9 +81,9 @@ Ha az ajánlatot a piactéren a partner centerrel teszi közzé, akkor azt az Ü
 
 Íme néhány további érdeklődő felügyeleti erőforrás:
 
-- [Az érdeklődők kezelése – áttekintés](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads)
-- [Gyakori kérdések az érdeklődők kezeléséről](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [Az érdeklődők konfigurálásának gyakori hibái](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
+- [Az érdeklődők kezelése – áttekintés](commercial-marketplace-get-customer-leads.md)
+- [Érdeklődői felügyelet – gyakori kérdések](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)
+- [Gyakori vezető konfigurációs hibák](../lead-management-for-cloud-marketplace.md#publishing-config-errors))
 - Az [érdeklődők kezelése – áttekintés](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (ellenőrizze, hogy ki van-e kapcsolva az előugró ablakok blokkolása)
 
 A folytatás előtt válassza a **Piszkozat mentése** lehetőséget.
@@ -94,33 +94,16 @@ Ezen a lapon megadhatja az ajánlatnak a piactéren való csoportosításához h
 
 ### <a name="category"></a>Kategória
 
-Válasszon legalább egyet és legfeljebb három kategóriát. Ezek a kategóriák arra szolgálnak, hogy az ajánlatot a megfelelő Piactéri keresési területeken helyezze el, és az ajánlat részletei oldalon jelennek meg. Az ajánlat leírásában ismertesse, hogy az ajánlat hogyan támogatja ezeket a kategóriákat.
+Válassza ki a kategóriákat és alkategóriákat, hogy az ajánlatot a piactér megfelelő keresési területein helyezze el. Ügyeljen arra, hogy az ajánlata milyen módon támogassa ezeket a kategóriákat az ajánlat leírásában. A következők szerint válasszon:
+
+- Legalább egy és legfeljebb két kategória, beleértve az elsődleges és a másodlagos kategóriát is (opcionális).
+- Legfeljebb két alkategória lehet minden elsődleges és/vagy másodlagos kategóriához. Ha nem alkalmazható alkategória az ajánlatra, válassza a **nem alkalmazható**lehetőséget.
+
+Tekintse meg a kategóriák és alkategóriák teljes listáját az [ajánlatban az ajánlott eljárásokat felsorolva](../gtm-offer-listing-best-practices.md).
 
 ### <a name="industry"></a>Iparág
 
-Igény szerint két iparágban és két vertikálisan is kiválaszthatja az egyes iparágakat. Míg a kategóriák az ajánlat megjelenítésére szolgálnak, az iparág és a vertikálisok a keresési szűrőkben használatosak, és a kirakatban lesznek alkalmazva. Ha az ajánlat egy adott iparágra és/vagy vertikálisra vonatkozik, az ajánlat leírása alapján megtudhatja, hogyan támogatja az ajánlat a kiválasztott iparágakat vagy vertikális célokat. Ha az ajánlata nem iparági specifikus, hagyja üresen ezt a szakaszt.
-
-> [!NOTE]
-> Amikor új iparágakat és vertikális funkciókat teszünk elérhetővé az ajánlat-felderítési élmény javítása érdekében, előfordulhat, hogy egyes iparágak vagy vertikálisok még nem láthatók a kirakatban. A (*) jelöléssel rendelkező iparágak és vertikálisak jövőbeli időpontban lesznek elérhetők. Az összes közzétett ajánlat a kulcsszavas keresés használatával kereshető.
-<p>&nbsp;
-
-| **Iparág** | **Alágazat** |
-| --- | --- |
-| * Autóipar | * Autóipar |
-| Mezőgazdaság | * Egyéb – nem szegmentált |
-| Disztribúció | * Nagykereskedelmi<br>Csomagok és csomagok szállítása |
-| Education | *Felsőoktatás <br> * Elsődleges és másodlagos oktatás/K-12<br>* Könyvtárak és múzeumok |
-| Pénzügyi szolgáltatások | *Banki és tőkepiacok <br> * Biztosítási |
-| Government | *A védelem és az intelligencia (amelyet a nemzeti és a Közbiztonságnak neveztek) <br> * Közbiztonság és jogérvényesülés<br>* Polgári kormányzat |
-| Egészségügyi ellátás (ún. állapot) | *Állapot költségviselő <br> * Állapot szolgáltatója<br>* Gyógyszeripar |
-| Gyártási és erőforrás-használat (a gyártás meghívásához használt) | *Vegyi és Agrokémiai <br> * Diszkrét gyártás<br>* Energia |
-| Kiskereskedelmi és fogyasztási cikkek (kiskereskedelmi használatra) | *Fogyasztási <br> cikkek* Kiskereskedők |
-| * Média és kommunikáció (média és szórakozás néven használatos) | *Média és szórakoztatás <br> * Távközlési |
-| Professzionális szolgáltatások | *Jogi <br> * tudnivalók Partneri szakmai szolgáltatások |
-| * Architektúra és építőipar (architektúra-mérnöki felépítéshez használatos) | * Egyéb – nem szegmentált |
-| * Vendéglátás és utazás | *Hotelek és szabadidő <br> * Utazás és szállítás<br>* Éttermek és élelmiszeripari szolgáltatások |
-| * Egyéb állami szektorbeli iparágak | *Erdőgazdálkodás és halászat <br> * Nonprofit szervezeteknek |
-| * Ingatlan | * Egyéb – nem szegmentált |
+[!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
 
 ### <a name="legal"></a>Jogi tudnivalók
 
@@ -160,10 +143,10 @@ Adja meg a piactér adatait (például az ajánlat nevét, leírását és lemez
 7. Adatvédelmi irányelvek
 8. Ajánlat neve
 9. Összefoglalás
-10. Leírás
+10. Description
 11. Képernyőképek/videók
 
-### <a name="name"></a>Name (Név)
+### <a name="name"></a>Name
 
 Az itt megadott név az ajánlat címeként jelenik meg. Ez a mező előre ki van töltve az ajánlat- **alias** mezőben megadott szöveggel az ajánlat létrehozásakor. A nevet később módosíthatja.
 
@@ -177,7 +160,7 @@ A név:
 
 Adja meg az ajánlat rövid leírását. Ez akár 100 karakter hosszú lehet, és a piactér keresési eredményeiben használható.
 
-### <a name="description"></a>Leírás
+### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -240,7 +223,7 @@ Akár öt videót is hozzáadhat, amelyek bemutatják az ajánlatát. Adja meg a
 
 #### <a name="additional-marketplace-listing-resources"></a>További erőforrások listázása a piactéren
 
-Az ajánlatok listájának létrehozásával kapcsolatos további tudnivalókért tekintse meg az ajánlott [eljárások listáját](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices).
+Az ajánlatok listájának létrehozásával kapcsolatos további tudnivalókért tekintse meg az ajánlott [eljárások listáját](../gtm-offer-listing-best-practices.md).
 
 ## <a name="technical-configuration"></a>Technikai konfiguráció
 

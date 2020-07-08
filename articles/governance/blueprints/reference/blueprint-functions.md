@@ -3,16 +3,16 @@ title: Az Azure BluePrints funkciói
 description: Ismerteti azokat a funkciókat, amelyek az Azure-tervrajzok és-hozzárendelések tervrajzi összetevőihez használhatók.
 ms.date: 05/22/2020
 ms.topic: reference
-ms.openlocfilehash: e804cc98f7bd6d3e94e6b518f0ed0575f9f8f440
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: c402075aa9f6beb52e72454179c2e96d148c271f
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834781"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970875"
 ---
 # <a name="functions-for-use-with-azure-blueprints"></a>Az Azure-tervezetekhez használható függvények
 
-Az Azure-tervrajzok olyan funkciókat biztosítanak, amelyek a tervrajzok meghatározását dinamikusabban teszik lehetővé. Ezek a függvények tervezet-definíciókkal és tervrajz-összetevőkkel használhatók. A Resource Manager-sablonok összetevője támogatja a Resource Manager függvények teljes használatát, továbbá a terv paraméterén keresztül dinamikus érték beszerzését is lehetővé teszi.
+Az Azure-tervrajzok olyan funkciókat biztosítanak, amelyek a tervrajzok meghatározását dinamikusabban teszik lehetővé. Ezek a függvények tervezet-definíciókkal és tervrajz-összetevőkkel használhatók. Egy Azure Resource Manager sablon (ARM-sablon) összetevő támogatja a Resource Manager függvények teljes használatát, továbbá a terv paraméterén keresztül dinamikus érték beszerzését is lehetővé teszi.
 
 A következő függvények támogatottak:
 
@@ -30,13 +30,13 @@ A következő függvények támogatottak:
 Egy olyan objektumot ad vissza, amely az adott tervrajz-összetevők kimenetével van feltöltve.
 
 > [!NOTE]
-> A `artifacts()` függvény nem használható Resource Manager-sablonon belülről. A függvény csak a Blueprint definition JSON-ban vagy az összetevő JSON-ban használható, amikor a tervezetet Azure PowerShell vagy REST API a [tervrajzok](https://github.com/Azure/azure-blueprints/blob/master/README.md)részeként.
+> A `artifacts()` függvény nem használható ARM-sablonon belülről. A függvény csak a Blueprint definition JSON-ban vagy az összetevő JSON-ban használható, amikor a tervezetet Azure PowerShell vagy REST API a [tervrajzok](https://github.com/Azure/azure-blueprints/blob/master/README.md)részeként.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| artifactName |Igen |sztring |Egy tervrajz-összetevő neve. |
+| artifactName |Yes |sztring |Egy tervrajz-összetevő neve. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -60,9 +60,9 @@ A kimeneti tulajdonságok egy objektuma. A **kimenetek** tulajdonságai függnek
 }
 ```
 
-#### <a name="resource-manager-template-artifact"></a>Resource Manager-sablon összetevője
+#### <a name="arm-template-artifact"></a>ARM-sablon összetevője
 
-A visszaadott objektum **kimenet** tulajdonságai a Resource Manager-sablonban vannak definiálva, és a központi telepítés visszaadja őket.
+A visszaadott objektum **kimenet** tulajdonságai az ARM-sablonban vannak definiálva, és az üzemelő példány adja vissza.
 
 #### <a name="role-assignment-artifact"></a>Szerepkör-hozzárendelési összetevő
 
@@ -78,7 +78,7 @@ A visszaadott objektum **kimenet** tulajdonságai a Resource Manager-sablonban v
 
 ### <a name="example"></a>Példa
 
-Egy Resource Manager-sablon, amely a következő minta kimeneti tulajdonságot tartalmazó _MYTEMPLATEARTIFACT_ azonosítóval rendelkezik:
+ARM-sablon a következő minta kimeneti tulajdonságot tartalmazó _myTemplateArtifact_ :
 
 ```json
 {
@@ -106,7 +106,7 @@ Egy Resource Manager-sablon, amely a következő minta kimeneti tulajdonságot t
 
 Néhány példa az adatok a _myTemplateArtifact_ mintából való beolvasására:
 
-| Kifejezés | Típus | Érték |
+| Expression | Típus | Érték |
 |:---|:---|:---|
 |`[artifacts("myTemplateArtifact").outputs.myArray]` | Tömb | \["első", "Second"\] |
 |`[artifacts("myTemplateArtifact").outputs.myArray[0]]` | Sztring | első |
@@ -123,10 +123,10 @@ Több karakterlánc-értéket egyesít, és visszaadja az összefűzött karakte
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| karakterlánc1 |Igen |sztring |Az Összefűzés első értéke. |
-| További argumentumok |Nem |sztring |További értékek szekvenciális sorrendben az összefűzéshez |
+| karakterlánc1 |Yes |sztring |Az Összefűzés első értéke. |
+| További argumentumok |No |sztring |További értékek szekvenciális sorrendben az összefűzéshez |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -134,7 +134,7 @@ Több karakterlánc-értéket egyesít, és visszaadja az összefűzött karakte
 
 ### <a name="remarks"></a>Megjegyzések
 
-A Azure Blueprint függvény eltér a Azure Resource Manager sablon függvénytől, hogy csak karakterláncokkal működjön.
+A Azure Blueprint függvény eltér az ARM-sablon függvénytől, hogy csak karakterláncokkal működjön.
 
 ### <a name="example"></a>Példa
 
@@ -148,9 +148,9 @@ Egy terv paramétereinek értékét adja vissza. A megadott paraméter nevét me
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| parameterName |Igen |sztring |A visszaadni kívánt paraméter neve. |
+| parameterName |Yes |sztring |A visszaadni kívánt paraméter neve. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -158,7 +158,7 @@ A megadott terv vagy tervrajz-összetevő paraméterének értéke.
 
 ### <a name="remarks"></a>Megjegyzések
 
-A Azure Blueprint függvény eltér a Azure Resource Manager sablon függvénytől, hogy csak a terv paramétereivel működik.
+A Azure Blueprint függvény eltér az ARM-sablon függvénytől, hogy csak a terv paramétereivel működik.
 
 ### <a name="example"></a>Példa
 
@@ -218,7 +218,7 @@ A visszaadott objektum formátuma a következő:
 
 ### <a name="remarks"></a>Megjegyzések
 
-A Azure Blueprint függvény eltér a Azure Resource Manager sablon függvénytől. A `resourceGroup()` függvény nem használható előfizetési szintű összetevőben vagy a terv definíciójában. Csak olyan tervrajz-összetevőkben használható, amelyek egy erőforráscsoport-összetevő részét képezik.
+A Azure Blueprint függvény eltér az ARM-sablon függvénytől. A `resourceGroup()` függvény nem használható előfizetési szintű összetevőben vagy a terv definíciójában. Csak olyan tervrajz-összetevőkben használható, amelyek egy erőforráscsoport-összetevő részét képezik.
 
 A függvény gyakori funkciója, `resourceGroup()` hogy az erőforrásokat az erőforráscsoport-összetevővel megegyező helyen hozza létre.
 
@@ -269,9 +269,9 @@ Egy olyan objektumot ad vissza, amely a megadott erőforráscsoport-összetevőt
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| placeholderName |Igen |sztring |A visszaadni kívánt erőforráscsoport-összetevő helyőrző neve. |
+| placeholderName |Yes |sztring |A visszaadni kívánt erőforráscsoport-összetevő helyőrző neve. |
 
 ### <a name="return-value"></a>Visszatérési érték
 

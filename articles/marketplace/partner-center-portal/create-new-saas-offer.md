@@ -6,13 +6,13 @@ ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 06/10/2020
-ms.openlocfilehash: f214dbbc1991e64f86890687523be256c69e46d3
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.date: 06/17/2020
+ms.openlocfilehash: 3393fb6e33cbf80db68c49ac31edb54de35bae64
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85374270"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85980596"
 ---
 # <a name="create-a-new-saas-offer-in-the-commercial-marketplace"></a>Új SaaS-ajánlat létrehozása a kereskedelmi piactéren
 
@@ -76,7 +76,7 @@ A Microsofton keresztüli értékesítés jobb ügyfélszolgálatot és beszerz�
 Ha a Service (SaaS) szolgáltatást a partner Center kereskedelmi piactérről szeretné listázni, a következő feltételeknek kell teljesülniük:
 
 - Az ajánlatnak [Azure Active Directory (Azure ad)](https://azure.microsoft.com/services/active-directory/) használatát kell használnia az Identitáskezelés és a hitelesítéshez.
-- Az ajánlatnak [SaaS-megvalósítási API-kat](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2) kell használnia az Azure Marketplace-szel való integrációhoz.
+- Az ajánlatnak [SaaS-megvalósítási API-kat](pc-saas-fulfillment-api-v2.md) kell használnia az Azure Marketplace-szel való integrációhoz.
 
 #### <a name="saas-pricing-and-billing-options"></a>SaaS-díjszabás és számlázási lehetőségek
 
@@ -96,10 +96,9 @@ Ez egy példa a költségek és a kifizetések lebontására az Ügynökség mod
 |A Microsoft a licencelési díj 80%-ában fizet <br>**A minősített SaaS-alkalmazások esetében a Microsoft a licencelési díj 90%-ában fizet*|$80,00/hó <br>*$* 90,00/hó *|
 
 - Ebben a példában a Microsoft $100,00-es számlát küld az ügyfélnek a szoftverlicenc számára, és kifizeti a $80,00-et a közzétevőnek.
-- Azok a partnerek, akik a **kedvezményes Piactéri szolgáltatási díjjal** rendelkeznek, csökkentett tranzakciós díjat kapnak az SaaS-ajánlatokról, a május 2019-ig, 2020-ig. Ebben az esetben a Microsoft $100,00-es számlát küld a szoftverlicenc számára, és kifizeti a $90,00-et a közzétevőnek.
 
 > [!NOTE]
-> **Csökkentett Piactéri szolgáltatási díj** – a kereskedelmi piactéren közzétett egyes SaaS-ajánlatok esetében a Microsoft a piactér szolgáltatási díját 20%-kal csökkenti (a Microsoft kiadói szerződésben leírtak szerint) 10%-ra. Ahhoz, hogy az ajánlat megfelelő legyen, legalább az egyik ajánlatát a Microsoftnak kell kijelölnie, mint az IP-címek közös értékesítésének vagy az IP-címek közös értékesítésének prioritása. A jogosultságot az egyes naptári hónapok végét megelőzően legalább öt (5) munkanapon belül teljesíteni kell, hogy megkaphassa a Marketplace szolgáltatási díját a hónapra.  A Piactéri szolgáltatási díj nem vonatkozik a kereskedelmi Piactéren keresztül elérhető virtuális gépekre, felügyelt alkalmazásokra vagy más termékekre. A csökkentett Piactéri szolgáltatási díj csak a Microsoft által a 2019 és a 2020. június 30. között gyűjtött licencek díjaihoz érhető el. Ezt követően a Piactéri szolgáltatási díj visszaáll a normál mennyiségre.
+> **Csökkentett Piactéri szolgáltatási díj** – a kereskedelmi piactéren közzétett egyes SaaS-ajánlatok esetében a Microsoft a piactér szolgáltatási díját 20%-kal csökkenti (a Microsoft kiadói szerződésben leírtak szerint) 10%-ra. Az ajánlat (ok) minősítéséhez az ajánlat (oka) t meg kell jelölnie a Microsoft számára, hogy az IP-címek közös értékesítése vagy az IP-címek közös értékesítése legyen rangsorolva. A jogosultságot minden naptári hónap végét megelőzően legalább öt (5) munkanapon belül teljesíteni kell, hogy megkapják a Marketplace szolgáltatási díját a hónapban. A Piactéri szolgáltatás csökkentett díja nem vonatkozik a kereskedelmi Piactéren keresztül elérhető virtuális gépekre, felügyelt alkalmazásokra vagy más termékekre.
 
 ### <a name="list-through-microsoft"></a>Listázás a Microsofton keresztül
 
@@ -109,11 +108,11 @@ A piactér-lista létrehozásával népszerűsítheti vállalkozását a Microso
 
 #### <a name="get-it-now-free"></a>Letöltés (ingyenes)
 
-Ajánlatát ingyenesen listázhatja az ügyfelek számára, ha érvényes ( *http* -vagy *https*-alapú) címeket ad meg, ahol az [Azure Active Directory (Azure ad) használatával](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide#using-azure-active-directory-to-enable-trials)kérheti le a próbaverziót egy kattintással. Például: `https://contoso.com/saas-app`.
+Ajánlatát ingyenesen listázhatja az ügyfelek számára, ha érvényes ( *http* -vagy *https*-alapú) címeket ad meg, ahol az [Azure Active Directory (Azure ad) használatával egy kattintással](../marketplace-saas-applications-technical-publishing-guide.md#using-azure-active-directory-to-enable-trials)elvégezheti a próbaverziót. Például: `https://contoso.com/saas-app`.
 
 #### <a name="free-trial-listing"></a>Ingyenes próbaverzió (Listázás)
 
-Az ajánlat az ingyenes próbaverzióra mutató hivatkozással sorolja fel az ügyfeleket egy érvényes címen (a *http* vagy a *https*verziótól kezdődően), ahol az [Azure Active Directory (Azure ad) használatával egyetlen kattintással](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide#using-azure-active-directory-to-enable-trials)elvégezheti a próbaidőszakos hitelesítést. Például: `https://contoso.com/trial/saas-app`. Az ingyenes próbaverziók listáját a szolgáltatás hozza létre, felügyeli és konfigurálja, és nem rendelkezik a Microsoft által kezelt előfizetésekkel.
+Az ingyenes próbaverzióra mutató hivatkozást tartalmazó ajánlat listázása egy érvényes címen (a *http* vagy a *https*verziótól kezdődően), ahol az [Azure Active Directory (Azure ad) használatával egyetlen kattintással](../marketplace-saas-applications-technical-publishing-guide.md#using-azure-active-directory-to-enable-trials)elvégezheti a próbaverziót. Például: `https://contoso.com/trial/saas-app`. Az ingyenes próbaverziók listáját a szolgáltatás hozza létre, felügyeli és konfigurálja, és nem rendelkezik a Microsoft által kezelt előfizetésekkel.
 
 > [!NOTE]
 > Az alkalmazás által a próbaverziós hivatkozáson keresztül fogadott jogkivonatok csak a felhasználói adatok Azure AD-n keresztüli beszerzéséhez használhatók, hogy automatizálják a fiókok létrehozását az alkalmazásban. A Microsoft-fiókok (MSA-EK) nem támogatottak a jogkivonat használatával történő hitelesítéshez.
@@ -157,15 +156,15 @@ Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk a Mi
 
 ## <a name="enable-a-test-drive"></a>Tesztelési meghajtó engedélyezése
 
-A test Drive nagyszerű lehetőséget nyújt arra, hogy ajánlatot nyújtson a potenciális ügyfelek számára azáltal, hogy a vásárlás előtt kipróbálhatja a "kipróbálás előtt" lehetőséget, ami növeli a konverziót és a magas minősítésű érdeklődők generációját. [További információ a tesztelési meghajtókról](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive).
+A test Drive nagyszerű lehetőséget nyújt arra, hogy ajánlatot nyújtson a potenciális ügyfelek számára azáltal, hogy a vásárlás előtt kipróbálhatja a "kipróbálás előtt" lehetőséget, ami növeli a konverziót és a magas minősítésű érdeklődők generációját. [További információ a tesztelési meghajtókról](../what-is-test-drive.md).
 
 Ha egy tesztelési meghajtót egy meghatározott ideig szeretne engedélyezni, jelölje be a **Test Drive engedélyezése** jelölőnégyzetet. Ha el szeretné távolítani a tesztelési meghajtót az ajánlatból, törölje a jelet a jelölőnégyzetből.
 
-További információ: az [ajánlat tesztelése a kereskedelmi piactéren](https://docs.microsoft.com/azure/marketplace/partner-center-portal/test-drive).
+További információ: az [ajánlat tesztelése a kereskedelmi piactéren](test-drive.md).
 
 ### <a name="test-drive-resources"></a>A meghajtó erőforrásainak tesztelése
 
-- [Marketingre vonatkozó ajánlott eljárások](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
+- [Mit jelent a tesztverzió?](../what-is-test-drive.md)
 - [Gyakorlati tanácsok](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
 - [Áttekintés](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) (PDF; ellenőrizze, hogy ki van-e kapcsolva az előugró ablakok blokkolása)
 
@@ -174,8 +173,8 @@ További információ: az [ajánlat tesztelése a kereskedelmi piactéren](https
 [!INCLUDE [Connect lead management](./includes/connect-lead-management-a.md)]
 
 #### <a name="additional-lead-management-resources"></a>További érdeklődői felügyeleti erőforrások
-- [Gyakori kérdések az érdeklődők kezeléséről](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [Az érdeklődők konfigurálásának gyakori hibái](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
+- [Érdeklődői felügyelet – gyakori kérdések](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)
+- [Gyakori vezető konfigurációs hibák](../lead-management-for-cloud-marketplace.md#publishing-config-errors))
 - [Az érdeklődők felügyelete – Áttekintés egy pager](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf)
 
 A folytatás előtt válassza a **Piszkozat mentése** lehetőséget.
@@ -186,11 +185,18 @@ Ezen az oldalon megtekintheti az ajánlatnak a piactéren való csoportosítás�
 
 ### <a name="category"></a>Kategória
 
-Válasszon ki legalább egy három kategóriát az ajánlatnak a piactér megfelelő keresési területeire való csoportosításához. Írja le, hogy az ajánlat hogyan támogatja ezeket a kategóriákat az ajánlat leírásában.
+Ajánlata a AppSource vagy az Azure Marketplace-en lesz közzétéve, az ajánlathoz kapcsolódó tranzakciós képességek és a kategória kiválasztása alapján. További részletekért lásd: [Microsoft AppSource és az Azure Marketplace összehasonlítása](../comparing-appsource-azure-marketplace.md) . Válassza ki az ajánlathoz legjobban illeszkedő kategóriákat és alkategóriákat, valamint a célközönséget. A következők szerint válasszon:
+
+- Legalább egy és legfeljebb két kategória, beleértve az elsődleges és a másodlagos kategóriát is (opcionális).
+- Legfeljebb két alkategória lehet minden elsődleges és/vagy másodlagos kategóriához. Ha nem alkalmazható alkategória az ajánlatra, válassza a **nem alkalmazható**lehetőséget.
+
+Tekintse meg a kategóriák és alkategóriák teljes listáját, amely minden egyes kirakatra érvényes az ajánlott [eljárások](../gtm-offer-listing-best-practices.md)listájában.
 
 ### <a name="industries"></a>Ágazatok
 
 [!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
+
+Az iparág kiválasztása csak a AppSource közzétett ajánlatokra vonatkozik.
 
 ### <a name="app-version"></a>Az alkalmazás verziója
 
@@ -252,7 +258,7 @@ Adja meg a piactéren megjelenítendő adatokat, beleértve az ajánlat és a ma
 
 - **Név** (kötelező) – az itt definiált név jelenik meg az ajánlatnak az Ön által választott piactéren (ko) szereplő címében. A név előre fel van töltve az előző **új ajánlat** bejegyzése alapján. A név lehet védjeggyel ellátott. Nem tartalmazhat hangulatjelek (kivéve, ha a védjegyek és a szerzői jogi szimbólumok), és legfeljebb 50 karakter hosszúnak kell lennie.
 - **Összefoglalás** (kötelező) – adja meg az ajánlat rövid leírását, amelyet a Piactéri lista (ek) keresési eredményeiben kíván használni. Ebben a mezőben legfeljebb 100 karaktert lehet megadni.
-- **Leírás** (kötelező) – adja meg a piactér-lista (ek) áttekintésében megjelenítendő ajánlat leírását. Érdemes figyelembe venni az érték kiosztását, a főbb előnyöket, a kategória-vagy iparági társításokat, az alkalmazáson belüli vásárlási lehetőségeket, a szükséges közzétételeket, valamint egy hivatkozást, amely további információkat tartalmaz. Ebben a mezőben legfeljebb 3 000 karaktert lehet megadni, beleértve a jelölést is. További tippeket a [nagyszerű alkalmazás leírásának írása](https://docs.microsoft.com/windows/uwp/publish/write-a-great-app-description)című témakörben talál.
+- **Leírás** (kötelező) – adja meg a piactér-lista (ek) áttekintésében megjelenítendő ajánlat leírását. Érdemes figyelembe venni az érték kiosztását, a főbb előnyöket, a kategória-vagy iparági társításokat, az alkalmazáson belüli vásárlási lehetőségeket, a szükséges közzétételeket, valamint egy hivatkozást, amely további információkat tartalmaz. Ebben a mezőben legfeljebb 3 000 karaktert lehet megadni, beleértve a jelölést is. További tippeket a [nagyszerű alkalmazás leírásának írása](/windows/uwp/publish/write-a-great-app-description)című témakörben talál.
 - **Kulcsszavak keresése** – adjon meg legfeljebb három olyan keresési kulcsszót, amelyet az ügyfelek az ajánlat megtalálására használhatnak a piactéren.
 - **Első lépéseket ismertető utasítások** (kötelező) – magyarázza el, hogyan konfigurálhatja és indíthatja el az alkalmazás használatát a potenciális ügyfelek számára.  Ez a rövid útmutató a részletesebb online dokumentációra mutató hivatkozásokat is tartalmaz. Ebben a mezőben legfeljebb 3 000 karaktert lehet megadni.
 
@@ -267,7 +273,7 @@ A mező kitöltése kötelező.
 #### <a name="links"></a>Hivatkozások
 
 - **Adatvédelmi szabályzat** (kötelező) – a szervezet adatvédelmi szabályzatára mutató hivatkozás. Ön felelős azért, hogy az alkalmazás megfeleljen az adatvédelmi törvényeknek és előírásoknak, valamint érvényes adatvédelmi szabályzatot biztosítson
-- **CSP program marketing anyagok** (nem kötelező) – adjon meg egy hivatkozást a marketing-anyagokra, ha úgy dönt, hogy kiterjeszti az ajánlatot a [Cloud Solution Provider (CSP)](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers) programra. A CSP kiterjesztheti ajánlatát a minősített ügyfelek szélesebb körére azáltal, hogy lehetővé teszi a CSP-partnerek számára, hogy csomagot, piacot és viszonteladást nyújtsanak. Ezeknek a viszonteladóknak hozzá kell férniük az anyagokhoz az ajánlat marketingje érdekében. További információ: piacra jutási [szolgáltatások](https://partner.microsoft.com/reach-customers/gtm).
+- **CSP program marketing anyagok** (nem kötelező) – adjon meg egy hivatkozást a marketing-anyagokra, ha úgy dönt, hogy kiterjeszti az ajánlatot a [Cloud Solution Provider (CSP)](../cloud-solution-providers.md) programra. A CSP kiterjesztheti ajánlatát a minősített ügyfelek szélesebb körére azáltal, hogy lehetővé teszi a CSP-partnerek számára, hogy csomagot, piacot és viszonteladást nyújtsanak. Ezeknek a viszonteladóknak hozzá kell férniük az anyagokhoz az ajánlat marketingje érdekében. További információ: piacra jutási [szolgáltatások](https://partner.microsoft.com/reach-customers/gtm).
 - **Hasznos hivatkozások** (nem kötelező) – opcionális kiegészítő online dokumentumok az alkalmazással vagy a felsorolt kapcsolódó szolgáltatásokkal kapcsolatban a cím és az **URL-** **cím** megadásával. További hasznos hivatkozások hozzáadásához kattintson az **+ URL-cím hozzáadása**lehetőségre.
 
 #### <a name="contact-information"></a>Kapcsolattartási adatok
@@ -296,7 +302,7 @@ A mező kitöltése kötelező.
 
 #### <a name="additional-marketplace-listing-resources"></a>További erőforrások listázása a piactéren
 
-- [Ajánlott eljárások a piactér ajánlati listáihoz](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
+- [Ajánlott eljárások a piactér ajánlati listáihoz](../gtm-offer-listing-best-practices.md)
 
 A folytatás előtt válassza a **Piszkozat mentése** lehetőséget.
 
@@ -327,11 +333,11 @@ Az összegyűjtött mezők használatát leíró diagramok és részletes magyar
 
 - Kezdőlap **URL-címe** (kötelező) – határozza meg a SaaS-webhely URL-címét (például: `https://contoso.com/signup` ), hogy a végfelhasználók az ajánlatot a piactéren szerezték be, és a konfigurációs folyamatot az újonnan létrehozott SaaS-előfizetésből aktiválják.  Ezt az URL-címet a piactér-vásárlási azonosító jogkivonat paraméterrel hívja meg a rendszer, amely egyedileg azonosítja az adott végfelhasználó SaaS-vásárlását.  Ezt a tokent a megfelelő SaaS-előfizetés részleteire kell cserélnie az API [feloldása](./pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription) paranccsal.  Ezeket a részleteket és minden más összegyűjteni kívánt ügyfelet az ügyfél-interaktív weblap részeként kell használni, amely a végfelhasználói regisztráció befejezéséhez és a vásárlás aktiválásához szükséges.  Ezen az oldalon a felhasználónak az Azure Active Directory (Azure AD) használatával egy kattintással történő hitelesítéssel kell regisztrálnia. <br> <br> Ez az URL-cím a piactér-beli vásárlási azonosító jogkivonat paraméterrel is meghívható, ha a végfelhasználó a felügyelt SaaS-élményt Azure Portal vagy M365 felügyeleti központból indítja el. Mindkét folyamatot kezelni kell, ha a jogkivonatot az új ügyfelek megvásárlása után első alkalommal adták meg, és ha az SaaS-t kezelő meglévő ügyfél számára van megadva. <br> <br> Az itt konfigurált kezdőlapon a 24/7-es verzióját kell futtatnia. Ez az egyetlen módszer, amikor értesítést kap a SaaS-ajánlatok piactéren végzett új vásárlásáról, vagy egy ajánlat aktív előfizetésének konfigurációs kéréseiről.
 
-- **Kapcsolat webhook** (kötelező) – minden olyan aszinkron esemény esetében, amelyet a Microsoftnak el kell küldenie Önnek (például az SaaS-előfizetés meg lett szakítva), meg kell adnia egy kapcsolat webhook URL-címét. Meghívjuk ezt az URL-címet, hogy értesítse Önt az eseményről. <br> <br> Az Ön által megadott webhooknak a 24/7-as verzióját kell futtatnia, mivel ez az egyetlen módja, ha értesítést szeretne kapni az ügyfelek által a piactéren vásárolt SaaS-előfizetésekről.  Ha még nem rendelkezik webhook-rendszerrel, a legegyszerűbb konfiguráció egy olyan HTTP-végpont logikai alkalmazás, amely figyeli a neki küldött összes eseményt, majd megfelelően kezeli őket (például: `https://prod-1westus.logic.azure.com:443/work` ). További információk: [munkafolyamatok hívása, elindítása vagy beágyazása http-végpontokkal a Logic Appsben](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint).
+- **Kapcsolat webhook** (kötelező) – minden olyan aszinkron esemény esetében, amelyet a Microsoftnak el kell küldenie Önnek (például az SaaS-előfizetés meg lett szakítva), meg kell adnia egy kapcsolat webhook URL-címét. Meghívjuk ezt az URL-címet, hogy értesítse Önt az eseményről. <br> <br> Az Ön által megadott webhooknak a 24/7-as verzióját kell futtatnia, mivel ez az egyetlen módja, ha értesítést szeretne kapni az ügyfelek által a piactéren vásárolt SaaS-előfizetésekről.  Ha még nem rendelkezik webhook-rendszerrel, a legegyszerűbb konfiguráció egy olyan HTTP-végpont logikai alkalmazás, amely figyeli a neki küldött összes eseményt, majd megfelelően kezeli őket (például: `https://prod-1westus.logic.azure.com:443/work` ). További információk: [munkafolyamatok hívása, elindítása vagy beágyazása http-végpontokkal a Logic Appsben](../../logic-apps/logic-apps-http-endpoint.md).
 
-- **Azure ad-bérlő azonosítója** (kötelező) – a Azure Portalon belül [létre kell hoznia egy Azure Active Directory (ad-) alkalmazást](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) , hogy a két szolgáltatás közötti kapcsolat ellenőrizhető legyen egy hitelesített kommunikáció mögött. A [bérlő azonosítójának](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)megkereséséhez lépjen a Azure Active Directoryra, és válassza a **Tulajdonságok**lehetőséget, majd keresse meg a felsorolt **címtár-azonosító** számát (például 50c464d3-4930-494c-963c-1e951d15360e).
+- **Azure ad-bérlő azonosítója** (kötelező) – a Azure Portalon belül [létre kell hoznia egy Azure Active Directory (ad-) alkalmazást](../../active-directory/develop/howto-create-service-principal-portal.md) , hogy a két szolgáltatás közötti kapcsolat ellenőrizhető legyen egy hitelesített kommunikáció mögött. A [bérlő azonosítójának](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)megkereséséhez nyissa meg a Azure Active Directory, és válassza a **Tulajdonságok**lehetőséget, és keresse meg a felsorolt **címtár-azonosító** számát (például 50c464d3-4930-494c-963c-1e951d15360e).
 
-- **Azure ad-alkalmazás azonosítója** (kötelező) – az alkalmazás- [azonosítóra](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)is szüksége lesz. Az érték beszerzéséhez lépjen a Azure Active Directory, és válassza a **Alkalmazásregisztrációk**lehetőséget, majd keresse meg a felsorolt **alkalmazás-azonosító** számát (például: `50c464d3-4930-494c-963c-1e951d15360e` ).
+- **Azure ad-alkalmazás azonosítója** (kötelező) – az alkalmazás- [azonosítóra](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)is szüksége lesz. Az érték beszerzéséhez lépjen a Azure Active Directory, és válassza a **Alkalmazásregisztrációk**lehetőséget, majd keresse meg a felsorolt **alkalmazás-azonosító** számát (például: `50c464d3-4930-494c-963c-1e951d15360e` ).
 
 >[!Note]
 >Az Azure AD-alkalmazás azonosítója a partner Center-fiókban található közzétevői AZONOSÍTÓhoz van társítva.  Győződjön meg arról, hogy az összes ajánlatban ugyanaz az alkalmazás-azonosító van használatban.
@@ -423,7 +429,7 @@ Az ajánlat minden egyes csomagjának ingyenes próbaverzióját itt állíthatj
 >[!NOTE]
 >Ha a visszagörgethető ajánlat ingyenes próbaverzióval lett közzétéve, az adott csomag esetében nem tiltható le. Győződjön meg arról, hogy ez a beállítás megfelelő az első közzétételhez, hogy ne kelljen újból létrehoznia a csomagot.
 
-Az ingyenes próbaverzióban jelenleg részt vevő ügyfél-előfizetésekkel kapcsolatos információk beszerzéséhez használja az új API-tulajdonságot `isFreeTrial` , amely igaz vagy hamis értékként lesz megjelölve. További információ: [SaaS Get előfizetés API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#get-subscription).
+Az ingyenes próbaverzióban jelenleg részt vevő ügyfél-előfizetésekkel kapcsolatos információk beszerzéséhez használja az új API-tulajdonságot `isFreeTrial` , amely igaz vagy hamis értékként lesz megjelölve. További információ: [SaaS Get előfizetés API](pc-saas-fulfillment-api-v2.md#get-subscription).
 
 >[!NOTE]
 >Az ingyenes próbaverziók nem támogatottak a piactér-mérési szolgáltatást használó csomagok esetében.

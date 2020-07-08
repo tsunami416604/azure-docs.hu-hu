@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2020
 ms.author: memildin
-ms.openlocfilehash: 99c9a9ac742981734daf107d73c9cec8777dc642
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: d394f0bb72f353e65c48a564fa7187364eae8121
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85257533"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970807"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>A Microsoft Defender komplex veszélyforrások elleni védelem Azure Security Center
 
@@ -46,8 +46,14 @@ A Defender ATP és a Azure Security Center integrálásával a következő tová
 
 A Microsoft Defender ATP Security Center támogatja a Windows Server 2016, 2012 R2 és 2008 R2 SP1 észlelését. Az Azure-beli virtuális gépekhez standard szintű előfizetésre és nem Azure-beli virtuális gépekre van szükség, csak a munkaterület szintjén lévő standard csomagra van szükség.
 
-> [!NOTE]
-> Ha Azure Security Centert használ a kiszolgálók figyelésére, a rendszer automatikusan létrehoz egy Microsoft Defender ATP-bérlőt, és a Microsoft Defender ATP-adatvédelmet alapértelmezés szerint Európában tárolja. Ha át kell helyeznie az adatait egy másik helyre, kapcsolatba kell lépnie Microsoft ügyfélszolgálata a bérlő alaphelyzetbe állításához. Az integrációt használó kiszolgálói végpont figyelése le van tiltva az Office 365 GCC-ügyfelek számára.
+A kiszolgálói végpont monitorozása ezzel az integrációval le lett tiltva az Office 365 GCC-ügyfelek számára.
+
+## <a name="data-storage-location"></a>Adattárolás helye
+
+Ha Azure Security Centert használ a kiszolgálók figyelésére, a rendszer automatikusan létrehoz egy Microsoft Defender ATP-bérlőt. A Microsoft Defender ATP által gyűjtött adatokat a bérlő földrajzi helye tárolja a kiépítés során. Az álneves formában tárolt ügyféladatok a Egyesült Államok központi tároló-és feldolgozási rendszereiben is tárolhatók. 
+
+A konfigurálást követően nem módosíthatja azt a helyet, ahol az adatait tárolja. Ha át kell helyeznie az adatait egy másik helyre, lépjen kapcsolatba Microsoft ügyfélszolgálata a bérlő alaphelyzetbe állításához.
+
 
 ## <a name="onboarding-servers-to-security-center"></a>Kiszolgálók előkészítése a Security Centerre 
 

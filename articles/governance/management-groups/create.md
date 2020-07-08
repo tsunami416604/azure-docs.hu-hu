@@ -3,12 +3,12 @@ title: Felügyeleti csoportok létrehozása az erőforrások rendszerezéséhez 
 description: Ismerje meg, hogyan hozhat létre Azure felügyeleti csoportokat több erőforrás kezeléséhez a portál, a Azure PowerShell és az Azure CLI használatával.
 ms.date: 04/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0abecf02062dd4461274a9bc3722d46e6e7cc3d1
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 6fe7f2ea74c697701084321e068042b36acbdb11
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220757"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85971135"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Felügyeleti csoportok létrehozása az erőforrások rendszerezéséhez és kezeléséhez
 
@@ -21,7 +21,7 @@ A címtárban létrehozott első felügyeleti csoport akár 15 percet is igényb
 A bérlő bármely Azure AD-felhasználója létrehozhat egy felügyeleti csoportot anélkül, hogy a felügyeleti csoport írási engedélye hozzá lenne rendelve az adott felhasználóhoz. Ez az új felügyeleti csoport a legfelső szintű felügyeleti csoport gyermeke lesz, és a létrehozó a "tulajdonos" szerepkör-hozzárendelést kapja. A felügyeleti csoport szolgáltatás lehetővé teszi, hogy a szerepkör-hozzárendelések nem szükségesek a gyökérszintű szinten. A létrehozáskor egyetlen felhasználó sem férhet hozzá a gyökérszintű felügyeleti csoportjához. Ha el szeretné kerülni, hogy az Azure AD globális rendszergazdái megkeressék a felügyeleti csoportokat, lehetővé tesszük a kezdeti felügyeleti csoportok létrehozását a gyökérkönyvtárban.  
 szintű.
 
-A felügyeleti csoportot a portál, a [Resource Manager-sablon](../../azure-resource-manager/templates/deploy-to-tenant.md#create-management-group), a PowerShell vagy az Azure CLI használatával hozhatja létre.
+A felügyeleti csoportot a portál, a [Azure Resource Manager sablon](../../azure-resource-manager/templates/deploy-to-tenant.md#create-management-group), a PowerShell vagy az Azure CLI használatával hozhatja létre.
 
 ### <a name="create-in-portal"></a>Létrehozás a portálon
 

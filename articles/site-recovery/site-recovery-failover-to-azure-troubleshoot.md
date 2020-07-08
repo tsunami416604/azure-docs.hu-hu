@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 01/08/2020
 ms.author: mayg
-ms.openlocfilehash: 9ef38829a18f9e43f38cbdb291a799110d710cd7
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 7b43105d23de516b994521ad46bb45737798717c
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834730"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85971079"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>Hibák elhárítása VMware virtuális gépen vagy fizikai gépen az Azure-ba történő feladatátvétel során
 
@@ -74,6 +74,10 @@ A **Windows vendég operációs rendszerhez**tartozó illesztőprogramok indít�
 
 ## <a name="unable-to-connectrdpssh-to-the-failed-over-virtual-machine-due-to-grayed-out-connect-button-on-the-virtual-machine"></a>Nem lehet csatlakozni/RDP/SSH-kapcsolatot létesíteni a feladatátvételi virtuális géppel a virtuális gép szürke kikapcsolási gombja miatt
 
+Az RDP-problémákról részletes hibaelhárítási utasításokért tekintse meg a dokumentációt [itt](../virtual-machines/troubleshooting/troubleshoot-rdp-connection.md).
+
+Az SSH-problémákról részletes hibaelhárítási utasításokért tekintse meg a dokumentációt [itt](../virtual-machines/troubleshooting/troubleshoot-ssh-connection.md).
+
 Ha az Azure-ban a feladatátvételen átesett virtuális gépen a **Connect (csatlakozás** ) gomb szürkén jelenik meg, és nem csatlakozik az Azure-hoz az expressz útvonalon vagy a helyek közötti VPN-kapcsolaton keresztül, akkor
 
 1. Nyissa meg a **virtuális gép**  >  **hálózatkezelését**, és kattintson a szükséges hálózati adapter nevére.  ![hálózati adapter](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
@@ -130,7 +134,7 @@ Ez a probléma akkor jelenik meg, ha nem tudja megtekinteni az adattárolót az 
 
 A virtuális gépek ismételt védelemmel kapcsolatos további információkért lásd: [a gépek ismételt védetté és visszavétele a helyszíni helyre az Azure-ba történő feladatátvétel után](vmware-azure-reprotect.md).
 
-A probléma megoldásához:
+A hiba megoldása érdekében:
 
 Hozza létre manuálisan a fő célt a forrást kezelő vCenter. Az adattár a következő vCenter-felderítési és-frissítési háló műveletei után lesz elérhető.
 
@@ -148,7 +152,7 @@ Ezt a hibát a következő karakterláncok jelzik a telepítési naplóban:
 RegisterHostStaticInfo encountered exception config/talwrapper.cpp(107)[post] CurlWrapper Post failed : server : 10.38.229.221, port : 443, phpUrl : request_handler.php, secure : true, ignoreCurlPartialError : false with error: [at curlwrapperlib/curlwrapper.cpp:processCurlResponse:231]   failed to post request: (35) - SSL connect error. 
 ```
 
-A probléma megoldásához:
+A hiba megoldása érdekében:
  
 1. A konfigurációs kiszolgáló virtuális gépen nyisson meg egy parancssort, és ellenőrizze a proxy beállításait a következő parancsokkal:
 

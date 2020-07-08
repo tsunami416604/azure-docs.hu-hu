@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: sachins
-ms.openlocfilehash: a8ca67d1ff3100aee02ed473c9cc2180de3973b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2daa88d258e0bf761d9afce48b94e6cd6ff2fb95
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75638935"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85981435"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>Ajánlott eljárások Azure Data Lake Storage Gen1 használatához
 
@@ -45,7 +45,7 @@ Azure Active Directory egyszerű szolgáltatásokat általában olyan szolgálta
 
 ### <a name="enable-the-data-lake-storage-gen1-firewall-with-azure-service-access"></a>A Data Lake Storage Gen1 tűzfal engedélyezése az Azure-szolgáltatás elérésével
 
-Data Lake Storage Gen1 támogatja a tűzfal bekapcsolásának lehetőségét, és csak az Azure-szolgáltatásokhoz való hozzáférést korlátozza, ami a kisebb támadási vektorok számára ajánlott. A tűzfal engedélyezhető > a Azure Portal Data Lake Storage Gen1 fiókjában **a tűzfalon**a tűzfal**engedélyezése (on)** > az**Azure-szolgáltatások elérésének engedélyezése** lehetőséggel.
+Data Lake Storage Gen1 támogatja a tűzfal bekapcsolásának lehetőségét, és csak az Azure-szolgáltatásokhoz való hozzáférést korlátozza, ami a kisebb támadási vektorok számára ajánlott. A tűzfal engedélyezhető a Azure Portal Data Lake Storage Gen1 fiókjában **a tűzfalon**a tűzfal  >  **engedélyezése (on)** az  >  **Azure-szolgáltatások elérésének engedélyezése** lehetőséggel.
 
 ![Tűzfalbeállítások a Data Lake Storage Gen1](./media/data-lake-store-best-practices/data-lake-store-firewall-setting.png "Tűzfalbeállítások a Data Lake Storage Gen1")
 
@@ -102,9 +102,9 @@ Alább láthatók az első három ajánlott lehetőség a Data Lake Storage Gen1
 |---------|---------|---------|---------|
 |**Skálázási korlátok**     | Munkavégző csomópontok kötik        | A Felhőbeli adatáthelyezési egységek maximális száma        | Elemzési egységek kötik        |
 |**Támogatja a különbözetek másolását**     |   Igen      | Nem         | Nem         |
-|**Beépített előkészítés**     |  Nem (Oozie légáram vagy cron-feladatok használata)       | Igen        | Nem (Azure Automation vagy Windows Feladatütemező használata)         |
+|**Beépített előkészítés**     |  Nem (Oozie légáram vagy cron-feladatok használata)       | Yes        | Nem (Azure Automation vagy Windows Feladatütemező használata)         |
 |**Támogatott fájlrendszerek**     | ADL, HDFS, WASB, S3, GS, CFS        |Számos, lásd: [Összekötők](../data-factory/connector-azure-blob-storage.md).         | ADL – ADL, WASB – ADL (csak azonos régió)        |
-|**Operációs rendszer támogatása**     |Minden Hadoop-t futtató operációs rendszer         | N/A          | Windows 10         |
+|**Operációs rendszer támogatása**     |Minden Hadoop-t futtató operációs rendszer         | N.A.          | Windows 10         |
 
 ### <a name="use-distcp-for-data-movement-between-two-locations"></a>Distcp használata két helyszín közötti adatáthelyezéshez
 
@@ -126,7 +126,9 @@ Hasonlóan a Distcp-hoz, a AdlCopy-nek hasonlónak kell lennie, mint Azure Autom
 
 Data Lake Storage Gen1 részletes diagnosztikai naplókat és naplózást biztosít. A Data Lake Storage Gen1 a Data Lake Storage Gen1 fiók és a Azure Monitor alatt Azure Portal alapvető metrikákat tartalmaz. A Data Lake Storage Gen1 rendelkezésre állása megjelenik a Azure Portal. Ez a metrika azonban hét percenként frissül, és nyilvánosan elérhető API-n keresztül nem kérdezhető le. Egy Data Lake Storage Gen1 fiók legfrissebb elérhetőségének lekéréséhez saját szintetikus teszteket kell futtatnia a rendelkezésre állás ellenőrzéséhez. Egyéb mérőszámok, mint például a teljes tárterület-kihasználtság, az olvasási/írási kérelmek és a bejövő/kimenő forgalom akár 24 órát is igénybe vehet. Így a további naprakész metrikákat manuálisan kell kiszámítani a Hadoop parancssori eszközökkel vagy a napló adatainak összesítésével. A legutóbbi tárterület-kihasználtság leggyorsabban a HDFS parancs futtatásával végezhető el egy Hadoop fürtcsomópont (például a fő csomópont):
 
-    hdfs dfs -du -s -h adl://<adlsg1_account_name>.azuredatalakestore.net:443/
+```console
+hdfs dfs -du -s -h adl://<adlsg1_account_name>.azuredatalakestore.net:443/
+```
 
 ### <a name="export-data-lake-storage-gen1-diagnostics"></a>Data Lake Storage Gen1 diagnosztika exportálása
 
@@ -136,11 +138,11 @@ Ha több valós idejű riasztásra van szükség, és többet szeretne vezéreln
 
 ### <a name="turn-on-debug-level-logging-in-hdinsight"></a>Hibakeresési szintű naplózás bekapcsolása a HDInsight-ben
 
-Ha Data Lake Storage Gen1 napló szállítása nincs bekapcsolva, az Azure HDInsight lehetővé teszi az [ügyféloldali naplózás](data-lake-store-performance-tuning-mapreduce.md) bekapcsolását a log4j-on keresztüli Data Lake Storage Gen1. A következő tulajdonságot kell megadnia a **Ambari** > **fonál** > -**konfiguráció** > **Advanced fonal-log4j konfigurációjában**:
+Ha Data Lake Storage Gen1 napló szállítása nincs bekapcsolva, az Azure HDInsight lehetővé teszi az [ügyféloldali naplózás](data-lake-store-performance-tuning-mapreduce.md) bekapcsolását a log4j-on keresztüli Data Lake Storage Gen1. A következő tulajdonságot kell megadnia a **Ambari**  >  **fonál**  >  **Config**  >  **-konfiguráció Advanced fonal-log4j konfigurációjában**:
 
-    log4j.logger.com.microsoft.azure.datalake.store=DEBUG
+`log4j.logger.com.microsoft.azure.datalake.store=DEBUG`
 
-Ha a tulajdonság be van állítva, és a csomópontok újraindulnak, Data Lake Storage Gen1 diagnosztikát a rendszer a csomópontok (/tmp/\<felhasználói\>/YARN.log) által készített fonal-naplókba írja, és fontos részleteket, például a hibákat vagy a szabályozást (http 429 hibakód) figyelheti. Ugyanezek az információk Azure Monitor naplókban is megfigyelhetők, vagy ha a naplók a Data Lake Storage Gen1 fiók [diagnosztika](data-lake-store-diagnostic-logs.md) paneljén vannak elküldve. Azt javasoljuk, hogy legalább ügyféloldali naplózás be legyen kapcsolva, vagy használja a naplózási lehetőséget a Data Lake Storage Gen1 az operatív láthatóság és a könnyebb hibakeresés érdekében.
+Ha a tulajdonság be van állítva, és a csomópontok újraindulnak, Data Lake Storage Gen1 diagnosztikát a rendszer a csomópontokon található/tmp/-naplókba ( \<user\> /yarn.log) írja, és fontos részleteket, például a hibákat vagy a szabályozást (HTTP 429 hibakód) figyelheti. Ugyanezek az információk Azure Monitor naplókban is megfigyelhetők, vagy ha a naplók a Data Lake Storage Gen1 fiók [diagnosztika](data-lake-store-diagnostic-logs.md) paneljén vannak elküldve. Azt javasoljuk, hogy legalább ügyféloldali naplózás be legyen kapcsolva, vagy használja a naplózási lehetőséget a Data Lake Storage Gen1 az operatív láthatóság és a könnyebb hibakeresés érdekében.
 
 ### <a name="run-synthetic-transactions"></a>Szintetikus tranzakciók futtatása
 
@@ -154,11 +156,15 @@ Az adatközpontba való kirakodáskor fontos, hogy előre tervezze az adat szerk
 
 A IoT számítási feladatokban nagy mennyiségű adat található az adattárban, amely számos termékre, eszközre, szervezetre és ügyfélre kiterjed. Fontos, hogy előzetesen tervezze meg a címtár-elrendezést a szervezet, a biztonság és a hatékony feldolgozás érdekében az adatátviteli sebességű felhasználók számára. A megfontolandó általános sablon a következő elrendezés lehet:
 
-    {Region}/{SubjectMatter(s)}/{yyyy}/{mm}/{dd}/{hh}/
+```console
+{Region}/{SubjectMatter(s)}/{yyyy}/{mm}/{dd}/{hh}/
+```
 
 Például az Egyesült királyságbeli repülőgép-hajtóművek leszállási telemetria az alábbi struktúrához hasonló lehet:
 
-    UK/Planes/BA1293/Engine1/2017/08/11/12/
+```console
+UK/Planes/BA1293/Engine1/2017/08/11/12/
+```
 
 Fontos oka, hogy a mappa szerkezete végén a dátumot kell létrehozni. Ha bizonyos régiókat vagy felhasználókat vagy csoportokat szeretne zárolni, a POSIX-engedélyekkel egyszerűen elvégezheti a zárolást. Ellenkező esetben, ha korlátozni kell egy bizonyos biztonsági csoportot, hogy csak az Egyesült királyságbeli adatok vagy bizonyos síkok megtekintésére legyen szükség, a dátum struktúra előtt külön engedélyre van szükség az óránkénti mappa számos mappájának megkereséséhez. Emellett a kezdeti dátum szerkezete exponenciálisan növelheti a mappák számát az idő múlásával.
 
@@ -168,14 +174,18 @@ A Batch-feldolgozás általánosan használt megközelítése az adatok egy "in"
 
 Az adatsérülés vagy váratlan formátumok miatt előfordulhat, hogy a fájlok feldolgozása nem sikerült. Ilyen esetekben a címtár szerkezete előnyt jelenthet a **/Bad** mappában, hogy további ellenőrzés céljából áthelyezze a fájlokat. Előfordulhat, hogy a Batch-feladatok manuális beavatkozás céljából is kezelhetik a *hibás* fájlok jelentéseit vagy értesítéseit. Vegye figyelembe a következő sablon struktúráját:
 
-    {Region}/{SubjectMatter(s)}/In/{yyyy}/{mm}/{dd}/{hh}/
-    {Region}/{SubjectMatter(s)}/Out/{yyyy}/{mm}/{dd}/{hh}/
-    {Region}/{SubjectMatter(s)}/Bad/{yyyy}/{mm}/{dd}/{hh}/
+```console
+{Region}/{SubjectMatter(s)}/In/{yyyy}/{mm}/{dd}/{hh}/
+{Region}/{SubjectMatter(s)}/Out/{yyyy}/{mm}/{dd}/{hh}/
+{Region}/{SubjectMatter(s)}/Bad/{yyyy}/{mm}/{dd}/{hh}/
+```
 
 A marketing vállalat például az ügyfelek frissítéseinek napi adatkivonatát fogadja Észak-Amerika. A feldolgozás előtt és után a következő kódrészlethez hasonlónak tűnhet:
 
-    NA/Extracts/ACMEPaperCo/In/2017/08/14/updates_08142017.csv
-    NA/Extracts/ACMEPaperCo/Out/2017/08/14/processed_updates_08142017.csv
+```console
+NA/Extracts/ACMEPaperCo/In/2017/08/14/updates_08142017.csv
+NA/Extracts/ACMEPaperCo/Out/2017/08/14/processed_updates_08142017.csv
+```
 
 A közvetlenül az adatbázisokba (például a kaptárba vagy a hagyományos SQL-adatbázisba) feldolgozott batch-adatokat nem kell **/in** vagy **/out** mappához adni, mivel a kimenet már egy különálló mappába kerül a kaptár-tábla vagy a külső adatbázis számára. Például az ügyfelek napi kinyerése a saját mappáiba kerül, és a Azure Data Factory, az Apache Oozie vagy az Apache légáram egy olyan napi struktúrát vagy Spark-feladatot indít el, amely feldolgozza és beírja az adatait egy kaptár-táblába.
 

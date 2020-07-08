@@ -3,12 +3,12 @@ title: A házirend-definíciós struktúra részletei
 description: Leírja, hogyan használhatók a szabályzat-definíciók a szervezeten belüli Azure-erőforrásokra vonatkozó konvenciók létrehozásához.
 ms.date: 06/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: a70534f91584f72ad81b71913c48062e51a324d3
-ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
+ms.openlocfilehash: 28f4e3a99b7241711e46ce92fdfd2d7689b4527b
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85052729"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85971113"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
@@ -603,9 +603,9 @@ Az összes [Resource Manager-sablon funkció](../../../azure-resource-manager/te
 > [!NOTE]
 > Ezek a függvények továbbra is elérhetők a `details.deployment.properties.template` sablon központi telepítésének részeként egy **deployIfNotExists** házirend-definícióban.
 
-A következő függvény használható egy házirend-szabályban, de eltér a használattól egy Azure Resource Manager sablonban:
+A következő függvény használható egy házirend-szabályban, de eltér a használattól egy Azure Resource Manager sablonban (ARM-sablon):
 
-- `utcNow()`– A Resource Manager-sablonoktól eltérően ez a tulajdonság a _defaultValue_-n kívül is használható.
+- `utcNow()`– Az ARM-sablonoktól eltérően ez a tulajdonság a _defaultValue_-n kívül is használható.
   - Egy olyan karakterláncot ad vissza, amely az univerzális ISO 8601 DateTime formátumban van beállítva az aktuális dátumra és időpontra vonatkozóan (éééé-hh-NNTóó: PP: SS. fffffffZ).
 
 A következő függvények csak a házirend-szabályokban érhetők el:

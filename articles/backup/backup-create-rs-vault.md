@@ -1,80 +1,42 @@
 ---
-title: Recovery Services-tárolók létrehozása
-description: Ebből a cikkből megtudhatja, hogyan hozhat létre Recovery Services-tárolókat, amelyek a biztonsági mentéseket és a helyreállítási pontokat tárolják.
-ms.reviewer: sogup
+title: Recovery Services-tárolók létrehozása és konfigurálása
+description: Ebből a cikkből megtudhatja, hogyan hozhat létre és konfigurálhat Recovery Services tárolókat, amelyek a biztonsági mentéseket és a helyreállítási pontokat tárolják.
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: ac30a57dcbceb4616961c9d100e6ac8639ef2172
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 65f7265dccc5fe28d3503e72bdd6e49123871594
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391060"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970526"
 ---
-# <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
+# <a name="create-and-configure-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása és konfigurálása
 
-A Recovery Services-tároló egy olyan entitás, amely az idő múlásával létrehozott biztonsági mentéseket és helyreállítási pontokat tárolja. A Recovery Services-tároló a védett virtuális gépekhez társított biztonsági mentési házirendeket is tartalmazza.
-
-Egy Recovery Services-tároló létrehozásához:
-
-1. Jelentkezzen be az előfizetésbe a [Azure Portalban](https://portal.azure.com/).
-
-2. A bal oldali menüben válassza a **minden szolgáltatás**lehetőséget.
-
-    ![Minden szolgáltatás kiválasztása](./media/backup-create-rs-vault/click-all-services.png)
-
-3. A **minden szolgáltatás** párbeszédpanelen írja be a **Recovery Services**értéket. Az erőforrás-szűrők listája a bemenet alapján. Az erőforrások listájában válassza a **Recovery Services**-tárolók lehetőséget.
-
-    ![Adja meg és válassza ki Recovery Services tárolókat](./media/backup-create-rs-vault/all-services.png)
-
-    Megjelenik az előfizetésben található Recovery Services-tárolók listája.
-
-4. A **Recovery Services** -tárolók irányítópultján válassza a **Hozzáadás**lehetőséget.
-
-    ![Recovery Services-tároló hozzáadása](./media/backup-create-rs-vault/add-button-create-vault.png)
-
-    Megnyílik az **Recovery Services** -tároló párbeszédpanel. Adja meg a **név**, az **előfizetés**, az **erőforráscsoport**és a **hely**értékét.
-
-    ![A Recovery Services-tároló konfigurálása](./media/backup-create-rs-vault/create-new-vault-dialog.png)
-
-   - **Név**: adjon meg egy rövid nevet a tároló azonosításához. A névnek egyedinek kell lennie az Azure-előfizetésben. Adjon meg legalább két, de legfeljebb 50 karakterből álló nevet. A névnek betűvel kell kezdődnie, és csak betűt, számot és kötőjelet tartalmazhat.
-   - **Előfizetés**: válassza ki a használni kívánt előfizetést. Ha csak egy előfizetés tagja, akkor ezt a nevet fogja látni. Ha nem biztos abban, hogy melyik előfizetést szeretné használni, használja az alapértelmezett (javasolt) előfizetést. Több választási lehetőség is van, ha a munkahelyi vagy iskolai fiók egynél több Azure-előfizetéshez van társítva.
-   - **Erőforráscsoport**: használjon meglévő erőforráscsoportot, vagy hozzon létre egy újat. Az előfizetésben elérhető erőforráscsoportok listájának megtekintéséhez válassza a **meglévő használata**lehetőséget, majd válasszon ki egy erőforrást a legördülő listából. Új erőforráscsoport létrehozásához válassza az **új létrehozása** lehetőséget, és adja meg a nevet. Az erőforráscsoportok részletes ismertetését itt tekintheti meg: [Azure Resource Manager Overview (áttekintés](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)).
-   - **Hely**: válassza ki a tároló földrajzi régióját. A virtuális gépeket védő tároló létrehozásához a tárolónak ugyanabban a régióban **kell lennie** , mint a virtuális gépeknek.
-
-      > [!IMPORTANT]
-      > Ha nem biztos benne, hogy a virtuális gép hol található, akkor zárjuk be a párbeszédpanelt. A portálon nyissa meg a virtuális gépek listáját. Ha több régióban rendelkezik virtuális gépekkel, minden régióban hozzon létre egy Recovery Services-tárolót. Hozza létre a tárolót az első helyen, mielőtt létrehozza a tárolót egy másik helyhez. Nem kell megadnia a tárolási fiókokat a biztonsági másolatok tárolásához. A Recovery Services-tároló és a Azure Backup szolgáltatás automatikus kezelése.
-      >
-      >
-
-5. Ha készen áll az Recovery Services-tároló létrehozására, válassza a **Létrehozás**lehetőséget.
-
-    ![A Recovery Services-tároló létrehozása](./media/backup-create-rs-vault/click-create-button.png)
-
-    A Recovery Services-tároló létrehozása eltarthat egy ideig. Figyelje az **értesítéseket** a portál jobb felső sarkában található értesítések területről. A tároló létrehozása után a Recovery Services-tárolók listájában látható. Ha nem látja a tárolót, válassza a **frissítés**lehetőséget.
-
-     ![A Backup-tárolók listájának frissítése](./media/backup-create-rs-vault/refresh-button.png)
+[!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
 ## <a name="set-storage-redundancy"></a>Tárolási redundancia beállítása
 
 A Azure Backup automatikusan kezeli a tároló tárterületét. Meg kell adnia a tárterület replikálásának módját.
 
->[!NOTE]
->A tár tárolási replikációs beállításai nem vonatkoznak az Azure-fájlmegosztás biztonsági mentésére, mert az aktuális megoldás a pillanatkép-alapú, és a tárolóba nem kerül át adatok. A pillanatképek tárolása ugyanabban a Storage-fiókban történik, mint a mentett fájlmegosztás.
+> [!NOTE]
+> A **tároló replikálási típusának** (helyileg redundáns/földrajzi redundáns) módosítása a helyreállítási tár esetében a biztonsági mentések a tárban való konfigurálása előtt kell elvégezni. A biztonsági mentés konfigurálása után a módosítás lehetőség le lesz tiltva.
+>
+>- Ha még nem konfigurálta a biztonsági mentést, [kövesse az alábbi lépéseket](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy) a beállítások áttekintéséhez és módosításához.
+>- Ha már konfigurálta a biztonsági mentést, és át kell térnie a GRS-ről a LRS-re, [tekintse át ezeket a megkerülő megoldásokat](#how-to-change-from-grs-to-lrs-after-configuring-backup).
 
 1. A **Recovery Services-tárolók** panelen kattintson az új tárolóra. A **Beállítások** szakaszban kattintson a **Tulajdonságok**elemre.
-2. A **Tulajdonságok**alatt a **biztonsági mentés konfigurálása**területen kattintson a **frissítés**elemre.
+1. A **Tulajdonságok**alatt a **biztonsági mentés konfigurálása**területen kattintson a **frissítés**elemre.
 
-3. Válassza ki a tárolási replikálás típusát, majd kattintson a **Mentés**gombra.
+1. Válassza ki a tárolási replikálás típusát, majd kattintson a **Mentés**gombra.
 
      ![Az új tároló tárolási konfigurációjának beállítása](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
 
    - Javasoljuk, hogy ha az Azure-t elsődleges biztonsági mentési tárolási végpontként használja, folytassa az alapértelmezett **geo-redundáns** beállítás használatát.
-   - Ha nem az Azure-t használja az elsődleges biztonsági mentési tároló végpontjaként, válassza a **Helyileg redundáns** lehetőséget, amely csökkenti az Azure Storage költségeit.
+   - Ha nem az Azure-t használja az elsődleges biztonsági mentési tároló végpontjaként, válassza a **Helyileg redundáns** lehetőséget, amellyel csökkentheti az Azure Storage-költségeit.
    - További információ a [földrajzi](../storage/common/storage-redundancy-grs.md) és [helyi](../storage/common/storage-redundancy-lrs.md) redundanciáról.
 
-> [!NOTE]
-> A **Storage replikálási típusának** (helyileg redundáns/geo-redundáns) módosítását a helyreállítási tár számára a biztonsági mentések a tárolóban való konfigurálása előtt kell elvégezni. A biztonsági mentés konfigurálása után a módosítás lehetőség le van tiltva, és nem módosíthatja a **tárolási replikálás típusát**.
+>[!NOTE]
+>A tár tárolási replikációs beállításai nem vonatkoznak az Azure-fájlmegosztás biztonsági mentésére, mert az aktuális megoldás a pillanatkép-alapú, és a tárolóba nem kerül át adatok. A pillanatképek tárolása ugyanabban a Storage-fiókban történik, mint a mentett fájlmegosztás.
 
 ## <a name="set-cross-region-restore"></a>Régiók közötti visszaállítás beállítása
 
@@ -95,7 +57,7 @@ Ehhez a folyamathoz díjszabási szempontok vonatkoznak, mivel azok tárolási s
 >- A CRR bármely GRS-tárolóhoz engedélyezhető a tár szintjén (alapértelmezés szerint kikapcsolva).
 >- A választás után akár 48 órát is igénybe vehet, hogy a biztonsági mentési elemek elérhetők legyenek a másodlagos régiókban.
 >- Jelenleg a CRR csak a Backup Management Type-ARM Azure-beli virtuális gépen támogatott (a klasszikus Azure-beli virtuális gép nem lesz támogatott).  Ha a további felügyeleti típusok támogatják a CRR-t, a **rendszer automatikusan** regisztrálja őket.
->- A régiók közötti visszaállítás jelenleg nem állítható vissza GRS vagy LRS, ha az első alkalommal kezdeményezték a védelmet. 
+>- A régiók közötti visszaállítás jelenleg nem állítható vissza GRS vagy LRS, ha az első alkalommal kezdeményezték a védelmet.
 
 ### <a name="configure-cross-region-restore"></a>Régiók közötti visszaállítás konfigurálása
 
@@ -120,11 +82,58 @@ Megtudhatja, hogyan [figyelheti a másodlagos régió visszaállítási feladata
 
 Javasoljuk, hogy a biztonsági mentések konfigurálása előtt tekintse át a **tárolási replikálási típus** és a **biztonsági beállítások** alapértelmezett beállításait.
 
-- Alapértelmezés szerint a **tárolási replikálás típusa** **geo-redundáns**értékre van állítva. A biztonsági mentés konfigurálása után a módosítás lehetőség le lesz tiltva. A beállítások áttekintéséhez és módosításához kövesse az alábbi [lépéseket](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy) .
+- Alapértelmezés szerint a **tárolási replikálás típusa** **geo-redundáns** (GRS) értékre van állítva. A biztonsági mentés konfigurálása után a módosítás lehetőség le lesz tiltva.
+  - Ha még nem konfigurálta a biztonsági mentést, [kövesse az alábbi lépéseket](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy) a beállítások áttekintéséhez és módosításához.
+  - Ha már konfigurálta a biztonsági mentést, és át kell térnie a GRS-ről a LRS-re, [tekintse át ezeket a megkerülő megoldásokat](#how-to-change-from-grs-to-lrs-after-configuring-backup).
 
-- Az újonnan létrehozott tárolók alapértelmezés szerint a **Soft delete** lehetőséggel védik a biztonsági mentési adatok véletlen vagy kártékony törlési **funkcióit** . A beállítások áttekintéséhez és módosításához kövesse az alábbi [lépéseket](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#enabling-and-disabling-soft-delete) .
+- Az újonnan létrehozott tárolók alapértelmezés szerint a **Soft delete** lehetőséggel védik a biztonsági mentési adatok véletlen vagy kártékony törlési **funkcióit** . A beállítások áttekintéséhez és módosításához [kövesse az alábbi lépéseket](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#enabling-and-disabling-soft-delete) .
 
-## <a name="next-steps"></a>Következő lépések
+### <a name="how-to-change-from-grs-to-lrs-after-configuring-backup"></a>A GRS és a LRS közötti váltás a biztonsági mentés konfigurálása után
+
+Mielőtt úgy döntene, hogy a GRS a helyileg redundáns tárterületre (LRS) helyezi át, tekintse át a forgatókönyvnek megfelelő alacsonyabb és nagyobb adattartósság közötti kompromisszumot. Ha a GRS-ből a LRS-be kell lépnie, akkor két lehetőség közül választhat. A biztonsági mentési adatok megőrzése érdekében az üzleti követelményektől függnek:
+
+- [Nem kell megőriznie az előző biztonsági mentést.](#dont-need-to-preserve-previous-backed-up-data)
+- [Meg kell őriznie az előző biztonsági mentéssel](#must-preserve-previous-backed-up-data)
+
+#### <a name="dont-need-to-preserve-previous-backed-up-data"></a>Nem kell megőriznie az előző biztonsági mentést.
+
+Egy új LRS-tárolóban a munkaterhelések védelme érdekében a jelenlegi védelmet és adatokat törölni kell a GRS-tárban, és újra kell konfigurálni a biztonsági másolatokat.
+
+>[!WARNING]
+>A következő művelet romboló, ezért nem vonható vissza. A rendszer véglegesen törli a védett kiszolgálóhoz társított biztonsági mentési adatokat és biztonsági másolati elemeket. Legyen óvatos.
+
+Állítsa le és törölje az aktuális védelmet a GRS-tárolón:
+
+1. A GRS-tároló tulajdonságaiban tiltsa le a nem kötelező törlést. A Soft delete letiltásához kövesse az [alábbi lépéseket](backup-azure-security-feature-cloud.md#disabling-soft-delete-using-azure-portal) .
+
+1. Állítsa le a védelmet, és törölje a biztonsági mentéseket a meglévő GRS-tárból. A tároló irányítópultjának menüjében válassza a **biztonsági másolati elemek elemet**. Az itt felsorolt elemeket, amelyeket át kell helyezni a LRS-tárba, el kell távolítani a biztonsági másolati adatokkal együtt. Lásd: [védett elemek törlése a felhőben](backup-azure-delete-vault.md#delete-protected-items-in-the-cloud) és a [védett elemek törlése a helyszínen](backup-azure-delete-vault.md#delete-protected-items-on-premises).
+
+1. Ha az AFS (Azure-fájlmegosztás), az SQL-kiszolgálók vagy a SAP HANA-kiszolgálók áthelyezését tervezi, akkor regisztrálnia kell a regisztrációt is. A tároló irányítópultjának menüjében válassza a **biztonsági mentési infrastruktúra**elemet. Tekintse meg [az SQL Server regisztrációjának](manage-monitor-sql-database-backup.md#unregister-a-sql-server-instance)megszüntetését, az [Azure-fájlmegosztáshoz társított Storage-fiók regisztrációjának](manage-afs-backup.md#unregister-a-storage-account)megszüntetését és a [SAP HANA példány regisztrációjának](sap-hana-db-manage.md#unregister-an-sap-hana-instance)megszüntetését ismertető témakört.
+
+1. Miután eltávolította őket a GRS-tárolóból, folytassa a számítási feladatok biztonsági mentésének konfigurálását az új LRS-tárolóban.
+
+#### <a name="must-preserve-previous-backed-up-data"></a>Meg kell őriznie az előző biztonsági mentéssel
+
+Ha meg kell őriznie a védett adatok védelmét a GRS-tárolóban, és egy új LRS-tárolóban kell folytatnia a védelmet, bizonyos számítási feladatokhoz korlátozott lehetőségek állnak rendelkezésre:
+
+- A MARS esetében [leállíthatja a védelmet az adat megőrzése](backup-azure-manage-mars.md#stop-protecting-files-and-folder-backup) és az ügynök regisztrálása az új LRS-tárolóban.
+
+  - Azure Backup szolgáltatás továbbra is megőrzi a GRS-tároló összes meglévő helyreállítási pontját.
+  - A helyreállítási pontok megőrzéséhez a GRS-tárolóban kell fizetnie.
+  - Az GRS-tárolóban csak a lejárt helyreállítási pontokra vonatkozó biztonsági másolatokat állíthatja vissza.
+  - Az LRS-tárolón létre kell hoznia egy új kezdeti replikát.
+
+- Egy Azure-beli virtuális gép esetében [leállíthatja a védelmet](backup-azure-manage-vms.md#stop-protecting-a-vm) a virtuális gép számára a GRS-tárolóban, áthelyezheti a virtuális gépet egy másik erőforráscsoporthoz, majd védetté teheti a virtuális GÉPET a LRS-tárolóban. Tekintse meg a virtuális gép másik erőforráscsoporthoz való áthelyezésével kapcsolatos [útmutatást és korlátozásokat](https://docs.microsoft.com/azure/azure-resource-manager/management/move-limitations/virtual-machines-move-limitations) .
+
+  Egy virtuális gépet egyszerre csak egy tárolóban lehet védeni. Az új erőforráscsoport virtuális gépe azonban a LRS-tárolóban is védhető, mivel ez egy másik virtuális gép.
+
+  - Azure Backup szolgáltatás megőrzi azokat a helyreállítási pontokat, amelyekről biztonsági mentés készül a GRS-tárolóban.
+  - A helyreállítási pontok megőrzéséhez a GRS-tárolóban kell fizetnie (további részletekért lásd: [Azure Backup díjszabása](azure-backup-pricing.md) ).
+  - Szükség esetén visszaállíthatja a virtuális gépet a GRS-tárból.
+  - Az új erőforrásban található virtuális gép LRS-tárolójának első biztonsági mentése kezdeti replika lesz.
+
+
+## <a name="next-steps"></a>További lépések
 
 [További](backup-azure-recovery-services-vault-overview.md) információ Recovery Services-tárolók.
 [További](backup-azure-delete-vault.md) információ Recovery Services tárolók törlése.

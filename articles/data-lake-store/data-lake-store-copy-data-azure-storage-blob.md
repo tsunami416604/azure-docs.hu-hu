@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: b1a2ae153d1409fddbaf4939ab4295d7434abd80
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 84ee65b05af4393f49696875bda41df39e283d5d
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85515699"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85980089"
 ---
 # <a name="copy-data-from-azure-storage-blobs-to-azure-data-lake-storage-gen1"></a>Adatok másolása az Azure Storage-Blobokból a Azure Data Lake Storage Gen1ba
 
@@ -45,11 +45,13 @@ A cikk elkezdéséhez az alábbiakkal kell rendelkeznie:
 
 Használja a következő szintaxist a AdlCopy eszközzel való együttműködéshez
 
-    AdlCopy /Source <Blob or Data Lake Storage Gen1 source> /Dest <Data Lake Storage Gen1 destination> /SourceKey <Key for Blob account> /Account <Data Lake Analytics account> /Units <Number of Analytics units> /Pattern
+```console
+AdlCopy /Source <Blob or Data Lake Storage Gen1 source> /Dest <Data Lake Storage Gen1 destination> /SourceKey <Key for Blob account> /Account <Data Lake Analytics account> /Units <Number of Analytics units> /Pattern
+```
 
 A szintaxisban található paramétereket alább találja:
 
-| Beállítás | Leírás |
+| Beállítás | Description |
 | --- | --- |
 | Forrás |Megadja a forrásadatok helyét az Azure Storage-blobban. A forrás lehet blob tároló, blob vagy más Data Lake Storage Gen1 fiók. |
 | Dest |Megadja a másolandó Data Lake Storage Gen1 célhelyet. |
@@ -63,30 +65,40 @@ A szintaxisban található paramétereket alább találja:
 1. Nyisson meg egy parancssort, és navigáljon ahhoz a könyvtárhoz, ahol a AdlCopy telepítve van, jellemzően `%HOMEPATH%\Documents\adlcopy` .
 1. Futtassa a következő parancsot egy adott blobnak a forrás tárolójából egy Data Lake Storage Gen1 mappába való másolásához:
 
-        AdlCopy /source https://<source_account>.blob.core.windows.net/<source_container>/<blob name> /dest swebhdfs://<dest_adlsg1_account>.azuredatalakestore.net/<dest_folder>/ /sourcekey <storage_account_key_for_storage_container>
+    ```console
+    AdlCopy /source https://<source_account>.blob.core.windows.net/<source_container>/<blob name> /dest swebhdfs://<dest_adlsg1_account>.azuredatalakestore.net/<dest_folder>/ /sourcekey <storage_account_key_for_storage_container>
+    ```
 
-    Példa:
+    Például:
 
-        AdlCopy /source https://mystorage.blob.core.windows.net/mycluster/HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/909f2b.log /dest swebhdfs://mydatalakestorage.azuredatalakestore.net/mynewfolder/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ==
+    ```console
+    AdlCopy /source https://mystorage.blob.core.windows.net/mycluster/HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/909f2b.log /dest swebhdfs://mydatalakestorage.azuredatalakestore.net/mynewfolder/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ==
+    ```
 
     >[!NOTE]
     >A fenti szintaxis a Data Lake Storage Gen1-fiók egyik mappájába másolandó fájlt adja meg. A AdlCopy eszköz létrehoz egy mappát, ha a megadott mappanév nem létezik.
 
     A rendszer kérni fogja, hogy adja meg az Azure-előfizetéshez tartozó hitelesítő adatokat, amelyben a Data Lake Storage Gen1 fiókja van. A következőhöz hasonló kimenet jelenik meg:
 
-        Initializing Copy.
-        Copy Started.
-        100% data copied.
-        Finishing Copy.
-        Copy Completed. 1 file copied.
+    ```output
+    Initializing Copy.
+    Copy Started.
+    100% data copied.
+    Finishing Copy.
+    Copy Completed. 1 file copied.
+    ```
 
 1. Az összes blobot átmásolhatja az egyik tárolóból a Data Lake Storage Gen1-fiókba a következő parancs használatával:
 
-        AdlCopy /source https://<source_account>.blob.core.windows.net/<source_container>/ /dest swebhdfs://<dest_adlsg1_account>.azuredatalakestore.net/<dest_folder>/ /sourcekey <storage_account_key_for_storage_container>        
+    ```console
+    AdlCopy /source https://<source_account>.blob.core.windows.net/<source_container>/ /dest swebhdfs://<dest_adlsg1_account>.azuredatalakestore.net/<dest_folder>/ /sourcekey <storage_account_key_for_storage_container>  
+    ```      
 
-    Példa:
+    Például:
 
-        AdlCopy /Source https://mystorage.blob.core.windows.net/mycluster/example/data/gutenberg/ /dest adl://mydatalakestorage.azuredatalakestore.net/mynewfolder/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ==
+    ```console
+    AdlCopy /Source https://mystorage.blob.core.windows.net/mycluster/example/data/gutenberg/ /dest adl://mydatalakestorage.azuredatalakestore.net/mynewfolder/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ==
+    ```
 
 ### <a name="performance-considerations"></a>A teljesítménnyel kapcsolatos megfontolások
 
@@ -99,11 +111,15 @@ A AdlCopy segítségével két Data Lake Storage Gen1 fiók közötti Adatmásol
 1. Nyisson meg egy parancssort, és navigáljon ahhoz a könyvtárhoz, ahol a AdlCopy telepítve van, jellemzően `%HOMEPATH%\Documents\adlcopy` .
 1. Futtassa a következő parancsot egy adott fájl egy Data Lake Storage Gen1-fiókból egy másikba való másolásához.
 
-        AdlCopy /Source adl://<source_adlsg1_account>.azuredatalakestore.net/<path_to_file> /dest adl://<dest_adlsg1_account>.azuredatalakestore.net/<path>/
+    ```console
+    AdlCopy /Source adl://<source_adlsg1_account>.azuredatalakestore.net/<path_to_file> /dest adl://<dest_adlsg1_account>.azuredatalakestore.net/<path>/
+    ```
 
-    Példa:
+    Például:
 
-        AdlCopy /Source adl://mydatastorage.azuredatalakestore.net/mynewfolder/909f2b.log /dest adl://mynewdatalakestorage.azuredatalakestore.net/mynewfolder/
+    ```console
+    AdlCopy /Source adl://mydatastorage.azuredatalakestore.net/mynewfolder/909f2b.log /dest adl://mynewdatalakestorage.azuredatalakestore.net/mynewfolder/
+    ```
 
    > [!NOTE]
    > A fenti szintaxis megadja a másolandó fájlt a cél Data Lake Storage Gen1 fiók egyik mappájába. A AdlCopy eszköz létrehoz egy mappát, ha a megadott mappanév nem létezik.
@@ -112,14 +128,18 @@ A AdlCopy segítségével két Data Lake Storage Gen1 fiók közötti Adatmásol
 
     A rendszer kérni fogja, hogy adja meg az Azure-előfizetéshez tartozó hitelesítő adatokat, amelyben a Data Lake Storage Gen1 fiókja van. A következőhöz hasonló kimenet jelenik meg:
 
-        Initializing Copy.
-        Copy Started.|
-        100% data copied.
-        Finishing Copy.
-        Copy Completed. 1 file copied.
+    ```output
+    Initializing Copy.
+    Copy Started.|
+    100% data copied.
+    Finishing Copy.
+    Copy Completed. 1 file copied.
+    ```
 1. A következő parancs a forrás Data Lake Storage Gen1 fiókjában lévő összes fájlt átmásolja a cél Data Lake Storage Gen1 fiók egyik mappájába.
 
-        AdlCopy /Source adl://mydatastorage.azuredatalakestore.net/mynewfolder/ /dest adl://mynewdatalakestorage.azuredatalakestore.net/mynewfolder/
+    ```console
+    AdlCopy /Source adl://mydatastorage.azuredatalakestore.net/mynewfolder/ /dest adl://mynewdatalakestorage.azuredatalakestore.net/mynewfolder/
+    ```
 
 ### <a name="performance-considerations"></a>A teljesítménnyel kapcsolatos megfontolások
 
@@ -138,15 +158,21 @@ Ha Data Lake Analytics-fiókját szeretné használni a AdlCopy egy Azure Storag
 
 Futtassa az alábbi parancsot egy Azure Storage-blobból egy Data Lake Storage Gen1-fiókba való másoláshoz Data Lake Analytics fiók használatával:
 
-    AdlCopy /source https://<source_account>.blob.core.windows.net/<source_container>/<blob name> /dest swebhdfs://<dest_adlsg1_account>.azuredatalakestore.net/<dest_folder>/ /sourcekey <storage_account_key_for_storage_container> /Account <data_lake_analytics_account> /Units <number_of_data_lake_analytics_units_to_be_used>
+```console
+AdlCopy /source https://<source_account>.blob.core.windows.net/<source_container>/<blob name> /dest swebhdfs://<dest_adlsg1_account>.azuredatalakestore.net/<dest_folder>/ /sourcekey <storage_account_key_for_storage_container> /Account <data_lake_analytics_account> /Units <number_of_data_lake_analytics_units_to_be_used>
+```
 
-Példa:
+Például:
 
-    AdlCopy /Source https://mystorage.blob.core.windows.net/mycluster/example/data/gutenberg/ /dest swebhdfs://mydatalakestorage.azuredatalakestore.net/mynewfolder/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ== /Account mydatalakeanalyticaccount /Units 2
+```console
+AdlCopy /Source https://mystorage.blob.core.windows.net/mycluster/example/data/gutenberg/ /dest swebhdfs://mydatalakestorage.azuredatalakestore.net/mynewfolder/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ== /Account mydatalakeanalyticaccount /Units 2
+```
 
 Hasonlóképpen, futtassa a következő parancsot a forrás Data Lake Storage Gen1 fiókjában lévő összes fájl másolásához a cél Data Lake Storage Gen1 fiókban Data Lake Analytics fiók használatával:
 
-    AdlCopy /Source adl://mysourcedatalakestorage.azuredatalakestore.net/mynewfolder/ /dest adl://mydestdatastorage.azuredatalakestore.net/mynewfolder/ /Account mydatalakeanalyticaccount /Units 2
+```console
+AdlCopy /Source adl://mysourcedatalakestorage.azuredatalakestore.net/mynewfolder/ /dest adl://mydestdatastorage.azuredatalakestore.net/mynewfolder/ /Account mydatalakeanalyticaccount /Units 2
+```
 
 ### <a name="performance-considerations"></a>A teljesítménnyel kapcsolatos megfontolások
 
@@ -159,11 +185,15 @@ Ebből a szakaszból megtudhatja, hogyan használhatja a AdlCopy-t a forrásokb�
 1. Nyisson meg egy parancssort, és navigáljon ahhoz a könyvtárhoz, ahol a AdlCopy telepítve van, jellemzően `%HOMEPATH%\Documents\adlcopy` .
 1. A következő parancs futtatásával másolja át a *. csv kiterjesztésű fájlokat egy adott blobból a forrás tárolójából egy Data Lake Storage Gen1 mappába:
 
-        AdlCopy /source https://<source_account>.blob.core.windows.net/<source_container>/<blob name> /dest swebhdfs://<dest_adlsg1_account>.azuredatalakestore.net/<dest_folder>/ /sourcekey <storage_account_key_for_storage_container> /Pattern *.csv
+    ```console
+    AdlCopy /source https://<source_account>.blob.core.windows.net/<source_container>/<blob name> /dest swebhdfs://<dest_adlsg1_account>.azuredatalakestore.net/<dest_folder>/ /sourcekey <storage_account_key_for_storage_container> /Pattern *.csv
+    ```
 
-    Példa:
+    Például:
 
-        AdlCopy /source https://mystorage.blob.core.windows.net/mycluster/HdiSamples/HdiSamples/FoodInspectionData/ /dest adl://mydatalakestorage.azuredatalakestore.net/mynewfolder/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ== /Pattern *.csv
+    ```console
+    AdlCopy /source https://mystorage.blob.core.windows.net/mycluster/HdiSamples/HdiSamples/FoodInspectionData/ /dest adl://mydatalakestorage.azuredatalakestore.net/mynewfolder/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ== /Pattern *.csv
+    ```
 
 ## <a name="billing"></a>Számlázás
 

@@ -3,16 +3,16 @@ title: Tudnivalók a virtuális gépek tartalmának naplózásáról
 description: Megtudhatja, hogyan használja a Azure Policy a vendég konfigurációs ügynököt a beállítások naplózására a virtuális gépeken belül.
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 81c8c642eb8b5da1e45e4d9a703685acf219ca5a
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: ec2a9f53fbe2ad0201af0250b0dcfa8dc4d519f0
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362628"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85971096"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Az Azure Policy vendégkonfigurációjának ismertetése
 
-A Azure Policy a számítógépeken belül is naplózhatja a beállításokat, mind az Azure-ban, mind az [arc-csatlakoztatott gépeken](https://docs.microsoft.com/azure/azure-arc/servers/overview)futó gépek esetében.
+A Azure Policy a számítógépeken belül is naplózhatja a beállításokat, mind az Azure-ban, mind az [arc-csatlakoztatott gépeken](../../../azure-arc/servers/overview.md)futó gépek esetében.
 Az érvényesítést a Vendégkonfiguráció bővítmény és ügyfél végzi. A bővítmény az ügyfélen keresztül ellenőrzi a beállításokat, például a következőket:
 
 - Az operációs rendszer konfigurációja
@@ -35,8 +35,9 @@ A vendég konfiguráció használatához regisztrálnia kell az erőforrás-szol
 A beállítások számítógépeken belüli naplózásához a virtuálisgép- [bővítmény](../../../virtual-machines/extensions/overview.md) engedélyezve van, és a gépnek rendszer által felügyelt identitással kell rendelkeznie. A bővítmény letölti a vonatkozó szabályzat-hozzárendelést és a hozzá tartozó konfigurációs definíciót. Az identitás a gép hitelesítésére szolgál, ahogy az beolvassa és beírja a vendég konfigurációs szolgáltatásba. A bővítmény nem szükséges az arc-csatlakoztatott gépekhez, mert az az arc csatlakoztatott számítógép ügynökének része.
 
 > [!IMPORTANT]
-> Az Azure-beli virtuális gépek naplózásához a vendég konfiguráció kiterjesztése és a felügyelt identitás szükséges. A bővítmény nagy léptékű üzembe helyezéséhez rendelje hozzá a következő házirend-kezdeményezést: 
->  - [A vendég-konfigurációs szabályzatok virtuális gépeken való engedélyezéséhez szükséges előfeltételek üzembe helyezése](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12794019-7a00-42cf-95c2-882eed337cc8)
+> Az Azure Virtual Machines szolgáltatásban végzett naplózáshoz a vendég konfigurációs bővítmény szükséges. A bővítmény nagy léptékű üzembe helyezéséhez rendelje hozzá a következő szabályzat-definíciókat: 
+>  - [Telepítse az előfeltételeket, hogy engedélyezze a vendég-konfigurációs házirendet a Windows rendszerű virtuális gépeken.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0ecd903d-91e7-4726-83d3-a229d7f2e293)
+>  - [Telepítse az előfeltételeket a vendég-konfigurációs szabályzat Linux rendszerű virtuális gépeken való engedélyezéséhez.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb27e9e0-526e-4ae1-89f2-a2a0bf0f8a50)
 
 ### <a name="limits-set-on-the-extension"></a>A bővítményre beállított korlátok
 
@@ -62,14 +63,14 @@ A vendég konfigurációs ügyfél 5 percenként keres új tartalmat. A vendég-
 A vendég-konfigurációs házirendek tartalmazzák az új verziókat. Az Azure piactéren elérhető operációs rendszerek régebbi verziói kizárva lesznek, ha a vendég konfigurációs ügynök nem kompatibilis.
 Az alábbi táblázat az Azure-lemezképekben támogatott operációs rendszerek listáját tartalmazza:
 
-|Publisher|Name (Név)|Verziók|
+|Publisher|Name|Verziók|
 |-|-|-|
 |Canonical|Ubuntu Server|14,04 és újabb verziók|
 |Credativ|Debian|8 és újabb verziók|
 |Microsoft|Windows Server|2012 és újabb verziók|
 |Microsoft|Windows-ügyfél|Windows 10|
 |OpenLogic|CentOS|7,3 és újabb verziók|
-|Red Hat|Red Hat Enterprise Linux|7,4 és újabb verziók|
+|Red Hat|Red Hat Enterprise Linux|7,4 – 7,8, 9,0 és újabb verziók|
 |SUSE|SLES|12 SP3 és újabb verziók|
 
 Az egyéni virtuálisgép-lemezképeket a vendég-konfigurációs házirendek támogatják, feltéve, hogy a fenti táblázatban szereplő operációs rendszerek egyike.
@@ -80,11 +81,10 @@ Az Azure-beli vendég-konfigurációs erőforrás-szolgáltatóval való kommuni
 
 ## <a name="managed-identity-requirements"></a>Felügyelt identitásokra vonatkozó követelmények
 
-A kezdeményezésben szereplő szabályzatok a [vendég-konfigurációs szabályzatok virtuális gépeken való engedélyezésének előfeltételei](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12794019-7a00-42cf-95c2-882eed337cc8) a rendszer által hozzárendelt felügyelt identitás engedélyezése, ha az egyik nem létezik. Az identitás létrehozását kezelő kezdeményezésben két házirend-definíció található. Ha a házirend-definícióban szereplő feltételek biztosítják a megfelelő viselkedést az Azure-beli gépi erőforrás aktuális állapota alapján.
+A bővítményt a virtuális gépekhez hozzáadó **DeployIfNotExists** szabályzatok lehetővé teszik a rendszerhez rendelt felügyelt identitások hozzáadását is, ha az egyik nem létezik.
 
-Ha a gép jelenleg nem rendelkezik felügyelt identitásokkal, a hatályos szabályzat a következő lesz: [ \[ előnézet \] : rendszerhez rendelt felügyelt identitás hozzáadása a vendég konfigurációs hozzárendeléseinek engedélyezéséhez az identitás nélküli virtuális gépeken](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3cf2ab00-13f1-4d0c-8971-2ac904541a7e)
-
-Ha a gépnek jelenleg van felhasználó által hozzárendelt rendszeridentitása, a hatályos szabályzat a következő: [ \[ előnézet \] : rendszerhez rendelt felügyelt identitás hozzáadása a vendég konfigurációs hozzárendeléseinek a felhasználó által hozzárendelt identitású virtuális gépeken való engedélyezéséhez](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F497dff13-db2a-4c0f-8603-28fa3b331ab6)
+> [!WARNING]
+> Ne engedélyezze a felhasználóhoz rendelt felügyelt identitást olyan házirendek hatókörében lévő virtuális gépekhez, amelyek lehetővé teszik a rendszerhez rendelt felügyelt identitást. A rendszer lecseréli a felhasználó által hozzárendelt identitást, és a gép nem válaszol.
 
 ## <a name="guest-configuration-definition-requirements"></a>A vendég konfigurációjának meghatározására vonatkozó követelmények
 
@@ -117,7 +117,7 @@ A szabályzatot a követelményekkel igazíthatja, vagy a szabályzatot harmadik
 
 Egyes paraméterek egy egész érték tartományát támogatják. A jelszó maximális kora beállítás például naplózhatja a hatályos Csoportházirend beállítást. Az "1, 70" tartomány megerősíti, hogy a felhasználóknak legalább 70 naponta meg kell változtatniuk a jelszavukat, de nem kevesebb mint egy napot.
 
-Ha Azure Resource Manager központi telepítési sablonnal rendeli hozzá a szabályzatot, a kivételek kezeléséhez használjon paramétereket tartalmazó fájlt. A fájlokat egy verziókövetés rendszerbe (például a git-ba) tekintheti meg. A fájl módosításaival kapcsolatos megjegyzések igazolják, hogy egy hozzárendelés miért kivétel a várt értéktől.
+Ha a szabályzatot egy Azure Resource Manager sablon (ARM-sablon) használatával rendeli hozzá, a kivételek kezeléséhez használja a parameters (paraméterek) fájlt. A fájlokat egy verziókövetés rendszerbe (például a git-ba) tekintheti meg. A fájl módosításaival kapcsolatos megjegyzések igazolják, hogy egy hozzárendelés miért kivétel a várt értéktől.
 
 #### <a name="applying-configurations-using-guest-configuration"></a>Konfigurációk alkalmazása a vendég konfiguráció használatával
 

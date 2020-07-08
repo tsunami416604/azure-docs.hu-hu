@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/20/2020
 ms.author: justipat
 ms.reviewer: sngun
-ms.openlocfilehash: d5aef82fe29ec544e29d7c65950e719110ad276a
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 2555719e13b0cba38150d3bce7a18f043158d5b5
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391859"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970960"
 ---
 # <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>A rendszer által hozzárendelt felügyelt identitások használata Azure Cosmos DB-adat eléréséhez
 
@@ -43,7 +43,7 @@ Ebben a lépésben hozzárendel egy szerepkört a Function alkalmazás rendszerh
 |Beépített szerepkör  |Description  |
 |---------|---------|
 |[DocumentDB-fiók közreműködői](../role-based-access-control/built-in-roles.md#documentdb-account-contributor)|Felügyelheti Azure Cosmos DB fiókokat. Olvasási/írási kulcsok lekérését teszi lehetővé. |
-|[Cosmos DB-fiók olvasója](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|Azure Cosmos DB fiókadatok olvasása. Lehetővé teszi az olvasási kulcsok lekérését. |
+|[Cosmos DB fiók-olvasó szerepkör](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|Azure Cosmos DB fiókadatok olvasása. Lehetővé teszi az olvasási kulcsok lekérését. |
 
 > [!IMPORTANT]
 > A Azure Cosmos DB szerepköralapú hozzáférés-vezérlésének támogatása csak a vezérlési sík műveleteire vonatkozik. Az adatsíkok műveletei a főkulcsok vagy az erőforrás-tokenek segítségével biztonságosak. További információ: [biztonságos hozzáférés az adatkezeléshez](secure-access-to-data.md) cikk.
@@ -198,7 +198,7 @@ namespace Monitor
 
 Most már készen áll a [Function alkalmazás üzembe helyezésére](../azure-functions/functions-create-first-function-vs-code.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Tanúsítványalapú hitelesítés Azure Cosmos DB és Azure Active Directory](certificate-based-authentication.md)
 * [Azure Cosmos DB kulcsok védelme Azure Key Vault használatával](access-secrets-from-keyvault.md)

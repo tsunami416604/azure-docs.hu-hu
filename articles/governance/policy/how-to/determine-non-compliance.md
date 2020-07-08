@@ -1,22 +1,21 @@
 ---
 title: A nemmegfelelőség okainak meghatározása
 description: Ha egy erőforrás nem megfelelő, számos lehetséges oka lehet. Ismerje meg, hogy mi okozta a meg nem felelés okait.
-ms.date: 05/20/2020
+ms.date: 07/06/2020
 ms.topic: how-to
-ms.openlocfilehash: 05405671900e8734ee1536cfc00fd5203a145124
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: d548f5b9db141eb6aed5984c43f00543d0228f31
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84168556"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970773"
 ---
 # <a name="determine-causes-of-non-compliance"></a>A nemmegfelelőség okainak meghatározása
 
 Ha egy Azure-erőforrás úgy van meghatározva, hogy nem felel meg egy házirend-szabálynak, érdemes megismerni, hogy az erőforrás melyik része nem felel meg a szabálynak. Azt is érdemes megismerni, hogy milyen változás lett módosítva egy korábban megfelelő erőforrásnak, hogy az nem megfelelő legyen. Ezt az információt kétféleképpen lehet megkeresni:
 
-> [!div class="checklist"]
-> - [Megfelelőség részletei](#compliance-details)
-> - [Változási előzmények (előzetes verzió)](#change-history)
+- [Megfelelőség részletei](#compliance-details)
+- [Változási előzmények (előzetes verzió)](#change-history)
 
 ## <a name="compliance-details"></a>Megfelelőség részletei
 
@@ -105,7 +104,7 @@ A következő mátrix minden lehetséges _okot_ leképez a szabályzat-definíci
 |A jelenlegi érték nem lehet kis-és nagybetűk megkülönböztetése a célként megadott értékkel. |notMatchInsensitively vagy **nem** matchInsensitively |
 |Egyetlen kapcsolódó erőforrás sem felel meg a szabályzat-definícióban szereplő hatás részleteinek. |A **. details. Type** és a Policy szabály **IF** részében definiált erőforráshoz kapcsolódó erőforrás nem létezik. |
 
-## <a name="compliance-details-for-guest-configuration"></a>A vendég konfigurációjának megfelelőségi adatai
+## <a name="compliance-details-for-guest-configuration"></a>Vendégkonfiguráció megfelelőségi adatai
 
 A _vendég konfiguráció_ kategóriájában a _auditIfNotExists_ házirendek esetében több beállítás is KIÉRTÉKELhető a virtuális gépen, és meg kell tekintenie egy beállítás részleteit. Ha például a rendszer naplózza a jelszóházirend listáját, és csak az egyikük állapota _nem megfelelő_, akkor tudnia kell, hogy mely konkrét jelszóházirend-szabályzatok nem felelnek meg az előírásoknak, és miért.
 
@@ -190,7 +189,7 @@ Audit that an application is installed inside Windows VMs                 NonCom
 
 ## <a name="change-history-preview"></a><a name="change-history"></a>Változási előzmények (előzetes verzió)
 
-Egy új **nyilvános előzetes**verzió részeként az utolsó 14 nap változási előzményei minden olyan Azure-erőforráshoz elérhetők, amely támogatja a [teljes módú törlést](../../../azure-resource-manager/templates/complete-mode-deletion.md). A változási előzmények részletesen ismertetik a változás észlelését és az egyes változtatások _vizuális_ eltéréseit. A változás észlelése akkor aktiválódik, ha a Resource Manager-tulajdonságok hozzáadása, eltávolítása vagy módosítása történik.
+Egy új **nyilvános előzetes**verzió részeként az utolsó 14 nap változási előzményei minden olyan Azure-erőforráshoz elérhetők, amely támogatja a [teljes módú törlést](../../../azure-resource-manager/templates/complete-mode-deletion.md). A változási előzmények részletesen ismertetik a változás észlelését és az egyes változtatások _vizuális_ eltéréseit. A változás észlelése akkor aktiválódik, ha a Azure Resource Manager tulajdonságok hozzáadása, eltávolítása vagy módosítása történik.
 
 1. Indítsa el az Azure Policy szolgáltatást az Azure Portalon. Ehhez kattintson a **Minden szolgáltatás** elemre, majd keresse meg, és válassza ki a **Szabályzat** elemet.
 
@@ -210,7 +209,7 @@ A _vizualizációs diff_ segédek egy erőforrás változásainak azonosításá
 
 Az előzmények módosításait az [Azure Resource Graph](../../resource-graph/overview.md)biztosíthatja. A Azure Portalon kívüli adatok lekérdezéséhez lásd: [erőforrás-módosítások beolvasása](../../resource-graph/how-to/get-resource-changes.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse át a példákat [Azure Policy mintákon](../samples/index.md).
 - Tekintse meg az [Azure szabályzatdefiníciók struktúrája](../concepts/definition-structure.md) szakaszt.

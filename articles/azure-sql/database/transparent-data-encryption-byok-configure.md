@@ -1,9 +1,9 @@
 ---
 title: SQL-TDE engedélyezése Azure Key Vault
-titleSuffix: Azure SQL Database & Azure Synapse Analytics
+titleSuffix: Azure SQL Database & SQL Managed Instance & Azure Synapse Analytics
 description: Megtudhatja, hogyan konfigurálhat egy Azure SQL Database és az Azure szinapszis Analytics szolgáltatást, hogy a PowerShell vagy az Azure CLI használatával megkezdheti a titkosítást a transzparens adattitkosítás (TDE) használatával.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: security
 ms.custom: seo-lt-2019 sqldbrb=1
 ms.devlang: ''
@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: 136bea5ffa33210362e4785f8f3003f5cd5cc8fa
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: ac72e3e232ec17c4c4d810f6d2c7fed6fa84fd02
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84321410"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85981328"
 ---
 # <a name="powershell-and-the-azure-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell és az Azure CLI: transzparens adattitkosítás engedélyezése az ügyfél által felügyelt kulccsal Azure Key Vault
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -241,7 +241,7 @@ Ha probléma merül fel, ellenőrizze a következőket:
    - A kulcs nem rendelkezhet lejárati dátummal
    - A kulcsnak engedélyezve kell lennie a *Get*, a *wrap Key*és a *dewrap Key* műveletnek.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Megtudhatja, hogyan forgathatja el egy kiszolgáló TDE-védelmezőjét a biztonsági követelményeknek való megfelelés érdekében: [a transzparens adattitkosítás Protector elforgatása a PowerShell használatával](transparent-data-encryption-byok-key-rotation.md).
 - Biztonsági kockázat esetén Ismerje meg, hogyan távolíthat el egy potenciálisan sérült TDE-védőt: [távolítson el egy potenciálisan feltört kulcsot](transparent-data-encryption-byok-remove-tde-protector.md).

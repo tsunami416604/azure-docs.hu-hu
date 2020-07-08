@@ -3,16 +3,16 @@ title: Paraméterek használata dinamikus tervrajzok létrehozásához
 description: Ismerje meg a statikus és dinamikus paramétereket, valamint azt, hogyan használhatja őket biztonságos és dinamikus tervrajzok létrehozásához.
 ms.date: 04/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: e5953617d5fa27098380f3f0e95843c69800f823
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 831dd69f58130247518ee7465bc1059aed61b319
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81458488"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970637"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Dinamikus tervrajzok létrehozása paraméterek használatával
 
-Egy teljes körűen definiált terv különböző összetevőkkel (például erőforráscsoportok, Resource Manager-sablonok, házirendek vagy szerepkör-hozzárendelésekkel) biztosítja az objektumok gyors létrehozását és konzisztens létrehozását az Azure-on belül. Az újrafelhasználható tervezési minták és tárolók rugalmas használatának lehetővé tételéhez az Azure tervrajzai támogatják a paramétereket. A paraméter a definíció és a hozzárendelés során is rugalmasságot hoz létre a terv által központilag telepített összetevők tulajdonságainak módosításához.
+A teljes körűen definiált terv különböző összetevőkkel, például erőforráscsoportok, Azure Resource Manager sablonokkal (ARM-sablonok), szabályzatokkal vagy szerepkör-hozzárendelésekkel rendelkezik, és az objektumok gyors létrehozását és konzisztens létrehozását kínálja az Azure-on belül. Az újrafelhasználható tervezési minták és tárolók rugalmas használatának lehetővé tételéhez az Azure tervrajzai támogatják a paramétereket. A paraméter a definíció és a hozzárendelés során is rugalmasságot hoz létre a terv által központilag telepített összetevők tulajdonságainak módosításához.
 
 Egyszerű példa az erőforráscsoport-összetevő. Egy erőforráscsoport létrehozásakor két kötelező értéket kell megadni: a nevet és a helyet. Ha a tervhez hozzáad egy erőforráscsoportot, ha a paraméterek nem léteznek, a terv minden használatához meg kell adnia a nevet és a helyet. Ez az ismétlődés azt eredményezi, hogy a terv minden használata során összetevők hozhatók létre ugyanabban az erőforráscsoporthoz. Az erőforráscsoport erőforrásai duplikálva lesznek, és ütközést okozhatnak.
 
@@ -28,7 +28,7 @@ A REST APIon a paraméterek létrehozhatók a tervrajzon. Ezek a paraméterek el
 
 ### <a name="using-securestring-and-secureobject-parameters"></a>SecureString és secureObject paraméterek használata
 
-Míg a Resource Manager- _sablonok összetevői_ támogatják a **SecureString** és a **secureObject** -típusok paramétereit, az Azure-tervrajzok mindegyikének Azure Key Vaulthoz kell csatlakoznia. Ez a biztonsági mérték megakadályozza, hogy a titkokat a tervvel együtt tárolják, és a biztonságos minták foglalkoztatására is ösztönözze a biztonságot. Az Azure-tervrajzok támogatják ezt a biztonsági mértéket, és észlelik, ha egy Resource Manager _-sablonban_található egy biztonságos paraméter. A szolgáltatás ezután a következő Key Vault tulajdonságok kiosztásakor kéri az észlelt biztonságos paramétert:
+Míg az ARM- _sablon összetevői_ támogatják a **SecureString** és a **secureObject** -típusok paramétereit, az Azure-tervezetekhez az egyes Azure Key Vault csatlakoztatására van szükség. Ez a biztonsági mérték megakadályozza, hogy a titkokat a tervvel együtt tárolják, és a biztonságos minták foglalkoztatására is ösztönözze a biztonságot. Az Azure-tervrajzok támogatják ezt a biztonsági mértéket, és észlelik a biztonságos paraméterek bevonását egy ARM _-sablonba_. A szolgáltatás ezután a következő Key Vault tulajdonságok kiosztásakor kéri az észlelt biztonságos paramétert:
 
 - Erőforrás-azonosító Key Vault
 - Key Vault titkos kód neve
@@ -84,7 +84,7 @@ Ha REST APIon keresztül hoz létre tervrajzot, a [terv paramétereinek](#bluepr
   PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/MyBlueprint?api-version=2018-11-01-preview
   ```
 
-- A kérelem törzse
+- Kérelem törzse
 
   ```json
   {
@@ -117,7 +117,7 @@ A következő REST API példa létrehoz egy szerepkör-hozzárendelési összete
   PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/MyBlueprint/artifacts/roleOwner?api-version=2018-11-01-preview
   ```
 
-- A kérelem törzse
+- Kérelem törzse
 
   ```json
   {
@@ -130,11 +130,11 @@ A következő REST API példa létrehoz egy szerepkör-hozzárendelési összete
   }
   ```
 
-Ebben a példában a **principalIds** tulajdonság a **tulajdonosi** terv szintje paramétert használja a értékének használatával `[parameters('owners')]`. Ha a paramétert egy olyan összetevőn állítja be, amely egy terv szintű paramétert használ, továbbra is egy **statikus paraméterre**mutat. A tervrajzi szint paraméter nem állítható be a terv hozzárendelése során, és az egyes hozzárendelések esetében ugyanaz az érték lesz.
+Ebben a példában a **principalIds** tulajdonság a **tulajdonosi** terv szintje paramétert használja a értékének használatával `[parameters('owners')]` . Ha a paramétert egy olyan összetevőn állítja be, amely egy terv szintű paramétert használ, továbbra is egy **statikus paraméterre**mutat. A tervrajzi szint paraméter nem állítható be a terv hozzárendelése során, és az egyes hozzárendelések esetében ugyanaz az érték lesz.
 
 ##### <a name="artifact-level-parameter"></a>Összetevő szintje paraméter
 
-A **statikus paraméterek** egy összetevőn való létrehozása hasonló, de a `parameters()` függvény használata helyett egyenes értéket vesz igénybe. A következő példa két statikus paramétert hoz létre: **TagName** és **tagValue**. Az egyes értékek értéke közvetlenül van megadva, és nem használja a függvény hívását.
+A **statikus paraméterek** egy összetevőn való létrehozása hasonló, de a függvény használata helyett egyenes értéket vesz igénybe `parameters()` . A következő példa két statikus paramétert hoz létre: **TagName** és **tagValue**. Az egyes értékek értéke közvetlenül van megadva, és nem használja a függvény hívását.
 
 - REST API URI
 
@@ -142,7 +142,7 @@ A **statikus paraméterek** egy összetevőn való létrehozása hasonló, de a 
   PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/MyBlueprint/artifacts/policyStorageTags?api-version=2018-11-01-preview
   ```
 
-- A kérelem törzse
+- Kérelem törzse
 
   ```json
   {
@@ -180,7 +180,7 @@ A statikus paraméter ellentéte egy **dinamikus paraméter**. Ez a paraméter n
 
 #### <a name="setting-dynamic-parameters-from-rest-api"></a>Dinamikus paraméterek beállítása REST API
 
-A **dinamikus paraméterek** a hozzárendelés során történő beállítása közvetlenül az érték megadásával történik. A függvények, például a [Parameters ()](../reference/blueprint-functions.md#parameters)függvény helyett a megadott érték egy megfelelő karakterlánc. Az erőforráscsoport összetevői a "sablon neve", a **név**és a **hely** tulajdonságaiban vannak meghatározva. A befoglalt összetevő összes többi paramétere a ** \<name\> ** és az **Value** kulcspár **paraméterei** alapján van definiálva. Ha a terv olyan dinamikus paraméterre van konfigurálva, amely nincs megadva a hozzárendelés során, a hozzárendelés sikertelen lesz.
+A **dinamikus paraméterek** a hozzárendelés során történő beállítása közvetlenül az érték megadásával történik. A függvények, például a [Parameters ()](../reference/blueprint-functions.md#parameters)függvény helyett a megadott érték egy megfelelő karakterlánc. Az erőforráscsoport összetevői a "sablon neve", a **név**és a **hely** tulajdonságaiban vannak meghatározva. A befoglalt összetevő összes többi paramétere a **Paraméterek** és az **\<name\>** **érték** kulcspár alapján van definiálva. Ha a terv olyan dinamikus paraméterre van konfigurálva, amely nincs megadva a hozzárendelés során, a hozzárendelés sikertelen lesz.
 
 - REST API URI
 
@@ -188,7 +188,7 @@ A **dinamikus paraméterek** a hozzárendelés során történő beállítása k
   PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Blueprint/blueprintAssignments/assignMyBlueprint?api-version=2018-11-01-preview
   ```
 
-- A kérelem törzse
+- Kérelem törzse
 
   ```json
   {

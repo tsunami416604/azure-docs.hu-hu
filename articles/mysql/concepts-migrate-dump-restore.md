@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 2/27/2020
-ms.openlocfilehash: bc3411a926e71c88f0b4e4f84fcdf083b519f46a
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: c30faa31f6f733f80d4bfd5184c09d9fdbd6f389
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84323552"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85971181"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>MySQL-adatbázis migrálása a MySQL-hez készült Azure Database-be memóriakép és visszaállítás használatával
 Ez a cikk két gyakori módszert ismertet a Azure Database for MySQL adatbázisainak biztonsági mentésére és visszaállítására
@@ -67,7 +67,11 @@ A megadható paraméterek a következők:
 - [biztonságimentésfájlja. SQL] az adatbázis biztonsági másolatának fájlneve 
 - [--opt] A mysqldump beállítás 
 
-Ha például egy "testdb" nevű adatbázist szeretne biztonsági másolatot készíteni a MySQL-kiszolgálón a (z) "tesztfelhasználó" felhasználónévvel, és nincs jelszó testdb_backup. SQL fájlhoz, használja a következő parancsot. A parancs biztonsági másolatot készít az `testdb` adatbázisról egy nevű fájlba `testdb_backup.sql` , amely tartalmazza az adatbázis újbóli létrehozásához szükséges összes SQL-utasítást. 
+Ha például egy "testdb" nevű adatbázist szeretne biztonsági másolatot készíteni a MySQL-kiszolgálón a (z) "tesztfelhasználó" felhasználónévvel, és nincs jelszó testdb_backup. SQL fájlhoz, használja a következő parancsot. A parancs biztonsági másolatot készít az `testdb` adatbázisról egy nevű fájlba `testdb_backup.sql` , amely tartalmazza az adatbázis újbóli létrehozásához szükséges összes SQL-utasítást. Győződjön meg arról, hogy a (z) "tesztfelhasználó" felhasználónévnek van legalább a SELECT jogosultsága a dömpingelt táblákhoz, a megjelenített nézetek megjelenítése, a dömpingelt eseményindítók aktiválása és a táblák ZÁROLÁSa, ha az--Single-Transaction beállítás nincs használatban.
+
+```bash
+GRANT SELECT, LOCK TABLES, SHOW VIEW ON *.* TO 'testuser'@'hostname' IDENTIFIED BY 'password';
+```
 
 ```bash
 $ mysqldump -u root -p testdb > testdb_backup.sql
@@ -96,7 +100,7 @@ Adja hozzá a kapcsolatok adatait a MySQL Workbench-hez.
 A cél Azure Database for MySQL kiszolgáló gyorsabb adatterhelésre való előkészítéséhez a következő kiszolgálói paramétereket és konfigurációkat módosítani kell.
 - max_allowed_packet – állítsa 1073741824-ra (azaz 1GB-ra), hogy megakadályozza a hosszú sorok miatti túlcsordulási problémákat.
 - slow_query_log – az OFF érték kikapcsolásával kikapcsolhatja a lassú lekérdezési naplót. Ezzel a művelettel elkerülhető, hogy az adatterhelések során a lassú lekérdezési naplózás okozza a terhelést.
-- query_store_capture_mode – állítsa mindkettőt a NONE értékre a lekérdezési tároló kikapcsolásához. Ezzel a művelettel elkerülhető a lekérdezési tár mintavételi tevékenységei által okozott terhelés.
+- query_store_capture_mode – állítsa a Nincs értékre a lekérdezési tároló kikapcsolásához. Ezzel a művelettel elkerülhető a lekérdezési tár mintavételi tevékenységei által okozott terhelés.
 - innodb_buffer_pool_size – a-kiszolgáló vertikális felskálázása 32 virtuális mag memória optimalizált SKU-ra a portál díjszabási szintjéről az áttelepítés során a innodb_buffer_pool_size növeléséhez. Innodb_buffer_pool_size csak Azure Database for MySQL kiszolgáló számítási felskálázásával növelhető.
 - innodb_io_capacity & innodb_io_capacity_max – váltson a Azure Portal kiszolgálói paramétereinek 9000 értékre, hogy javítsa az i/o-kihasználtságot az áttelepítési sebesség optimalizálása érdekében.
 - innodb_write_io_threads & innodb_write_io_threads – az áttelepítés gyorsaságának javításához a Azure Portal kiszolgáló paraméterei közül a 4 értékre kell váltania.
@@ -134,6 +138,6 @@ Az adatbázis importálása hasonló az exportáláshoz. Hajtsa végre a követk
 ## <a name="known-issues"></a>Ismert problémák
 Az ismert problémákkal, tippekkel és trükkökkel kapcsolatban javasoljuk, hogy tekintse meg a [techcommunity blogot](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/tips-and-tricks-in-using-mysqldump-and-mysql-restore-to-azure/ba-p/916912).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Alkalmazások Összekötése Azure Database for MySQLhoz](./howto-connection-string.md).
 - Az adatbázisok Azure Database for MySQLre való áttelepítésével kapcsolatos további információkért tekintse meg az [adatbázis-áttelepítési útmutatót](https://aka.ms/datamigration).

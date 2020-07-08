@@ -3,12 +3,12 @@ title: Gyakori kérdésekre adott válaszok
 description: 'Gyakori kérdésekre adott válaszok a következő témakörökben: az Azure Backup szolgáltatásai, mint például a Recovery Services-tárolók, a biztonsági mentés lehetséges elemei, működése, titkosítás és korlátozások. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: 4f7c83df738b72d57719de9b9ef650d119ac5dc4
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 96733ffaae101bb2cf716fda7500a8269ce8e357
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85255160"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970484"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – Gyakori kérdések
 
@@ -22,12 +22,12 @@ Igen. Előfizetésenként az Azure Backup minden támogatott régiójához legfe
 
 ### <a name="are-there-limits-on-the-number-of-serversmachines-that-can-be-registered-against-each-vault"></a>Az egyes tárolókhoz regisztrálható kiszolgálók/gépek száma korlátozott?
 
-Tárolónként maximum 1000 Azure-beli virtuális gépet regisztrálhat. Ha a Microsoft Azure Backup-ügynököt használja, legfeljebb 50 MARS-ügynököt regisztrálhat. Továbbá regisztrálhat 50 MABS-kiszolgálókat/DPM-kiszolgálókat egy tárba.
+Tárolónként maximum 1000 Azure-beli virtuális gépet regisztrálhat. Ha a Microsoft Azure Backup-ügynököt használja, akár 50 MARS-ügynököt is regisztrálhat. Továbbá regisztrálhat 50 MABS-kiszolgálókat/DPM-kiszolgálókat egy tárba.
 
 ### <a name="how-many-datasourcesitems-can-be-protected-in-a-vault"></a>Egy tároló hány adatforrás/elem védelmére képes?
 
 Összesen maximum 2000 adatforrást/elemet helyezhet védelem alá egy tárolóban. Ez a szám az összes számítási feladatra (IaaS VM, SQL, AFS stb.) egyszerre vonatkozik.
-Ha például egy tárolóban már védelem alá helyezett 500 virtuális gépet és 400 Azure Files-megosztást, legfeljebb további 1100 SQL-adatbázist helyezhet ugyanott védelem alá.
+Ha például már védett a 500-es virtuális gépek és a 400 Azure Files a tárolóban lévő megosztások, akkor csak a 1100-os SQL-adatbázisok védelmét tudja biztosítani.
 
 ### <a name="how-many-policies-can-i-create-per-vault"></a>Hány szabályzatot lehet létrehozni tárolónként?
 
@@ -47,12 +47,16 @@ Nem. A tárolókban tárolt biztonságimásolat-adatok nem helyezhetők át más
 
 ### <a name="can-i-change-from-grs-to-lrs-after-a-backup"></a>Biztonsági mentés után lehetséges GRS-ről LRS-re váltani?
 
-Nem. A Recovery Services-tárolók tárolási beállításait csak a biztonsági másolatok tárolása előtt lehet módosítani.
+Alapértelmezés szerint a tárolási replikálás típusa a Geo-redundáns tárolás (GRS). A biztonsági mentés konfigurálása után a módosítás lehetőség le van tiltva, és nem módosítható.
+
+![Tárolási replikálás típusa](./media/backup-azure-backup-faq/storage-replication-type.png)
+
+Ha már konfigurálta a biztonsági mentést, és a GRS-ről LRS-re kell váltania, akkor tekintse meg a [biztonsági mentés konfigurálása után a GRS-ről a LRS-re való váltást](backup-create-rs-vault.md#how-to-change-from-grs-to-lrs-after-configuring-backup)
 
 ### <a name="can-i-do-an-item-level-restore-ilr-for-vms-backed-up-to-a-recovery-services-vault"></a>Végrehajtható elemszintű visszaállítás (Item Level Restore, ILR) olyan virtuális gépeken, amelyeknek Recovery Services-tárolóban található a biztonsági másolata?
 
 - Az ILR az olyan Azure-beli virtuális gépeknél támogatott, amelyeknek a biztonsági másolata az Azure VM Backup használatával készült. További információkért tekintse meg ezt a [cikket](backup-azure-restore-files-from-vm.md).
-- Az ILR nem támogatott az olyan helyszíni virtuális gépek online helyreállítási pontjainál, amelyeknek a biztonsági másolata az Azure Backup Server vagy a System Center DPM használatával készült.
+- A ILR nem támogatott az Azure Backup Server vagy a System Center DPM által készített helyszíni virtuális gépek online helyreállítási pontjain.
 
 ## <a name="azure-backup-agent"></a>Az Azure Backup ügynöke
 

@@ -10,14 +10,14 @@ ms.workload: identity
 ms.service: active-directory
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 02/20/2020
+ms.date: 07/06/2020
 ms.author: curtand
-ms.openlocfilehash: c9304f4a958360d01d404d9b510feb5659e5436d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 259468d0d3b04b354e782529cefa2149974c9ca0
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83746751"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85983305"
 ---
 # <a name="change-your-two-factor-verification-method-and-settings"></a>A kétfaktoros ellenőrzési módszer és beállítások módosítása
 
@@ -88,7 +88,7 @@ A **további biztonsági ellenőrzés** lapról új telefonszámokat adhat hozz�
 
 1. A **hogyan szeretne válaszolni?** szakaszban a **további biztonsági ellenőrzés** lapon frissítse a **hitelesítő telefon** (az elsődleges mobileszköz) telefonszámának adatait és az **irodai telefonját**.
 
-1. Jelölje be a **másodlagos hitelesítő telefon** lehetőség melletti jelölőnégyzetet, majd írja be azt a másodlagos telefonszámot, ahol szöveges üzeneteket vagy telefonhívásokat fogadhat, ha nem fér hozzá az elsődleges eszközhöz.
+1. Jelölje be a **helyettesítő hitelesítő telefon** lehetőség melletti jelölőnégyzetet, majd írja be azt a másodlagos telefonszámot, ahol telefonhívásokat fogadhat, ha nem fér hozzá az elsődleges eszközhöz.
 
 1. Kattintson a **Mentés** gombra.
 

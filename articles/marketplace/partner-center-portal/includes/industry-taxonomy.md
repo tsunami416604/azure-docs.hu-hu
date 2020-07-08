@@ -7,13 +7,15 @@ ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: include
-ms.date: 09/20/2019
+ms.date: 06/17/2020
 ms.custom: include file
-ms.openlocfilehash: e45f3970176b6a2f12b7ad85727567e0cbc1e7c5
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: c09b8caa61b233d6af024f4517a32fb1d4019ecd
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85212588"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85980348"
 ---
-Lehetőség van akár két iparágra is kiválaszthat, és két vertikálisat az egyes ágazatokban. Ezek a kategóriák az ajánlat megjelenítésére szolgálnak, ha az iparág és a vertikális szolgáltatás a keresési szűrőkben használatos, és a kirakatban van alkalmazva. Ha az ajánlat egy adott iparágra és/vagy vertikálisra irányul, írja le, hogyan támogatja az ajánlat a kiválasztott iparágakat vagy vertikális szolgáltatásokat az ajánlat leírásában. Ellenkező esetben, ha az ajánlat nem iparági specifikus, ne válasszon ki egy kijelölést, és hagyja üresen ezt a szakaszt.
+Igény szerint két iparágban és két vertikálisan is kiválaszthatja az egyes iparágakat. Ezek a kategóriák az ajánlat megjelenítésére szolgálnak, ha az iparág és a vertikális szolgáltatás a keresési szűrőkben használatos, és a kirakatban van alkalmazva. Ha az ajánlat egy adott iparágra és/vagy vertikálisra vonatkozik, magyarázza el, hogyan támogatja az ajánlat a kiválasztott iparágakat vagy vertikális szolgáltatásokat az ajánlat leírásában. Ellenkező esetben, ha az ajánlat nem iparági specifikus, ne válasszon ki egy kijelölést, és hagyja üresen ezt a szakaszt.
+
+Tekintse meg az iparági és vertikális tudnivalókat az [ajánlott eljárások](../../gtm-offer-listing-best-practices.md)listájában.
