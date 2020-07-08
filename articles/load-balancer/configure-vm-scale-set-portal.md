@@ -7,10 +7,10 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 03/25/2020
 ms.openlocfilehash: 8e55b2a87813da802ec1b00c610b33da4461c008
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84809437"
 ---
 # <a name="configure-a-virtual-machine-scale-set-with-an-existing-azure-load-balancer-using-the-azure-portal"></a>Virtuálisgép-méretezési csoport konfigurálása meglévő Azure Load Balancer a Azure Portal használatával
@@ -38,7 +38,7 @@ Ebben a szakaszban egy virtuálisgép-méretezési készletet hoz létre a Azure
 
 1. A képernyő bal felső részén kattintson az **erőforrás létrehozása**  >  **számítási**  >  **virtuálisgép-méretezési csoport** vagy a **virtuálisgép-méretezési csoport** keresése lehetőségre a piactéren.
 
-2. Kattintson a **Létrehozás** gombra.
+2. Válassza a **Létrehozás** lehetőséget.
 
 3. A **virtuálisgép-méretezési csoport létrehozása**területen adja meg vagy válassza ki ezt az információt az **alapok** lapon:
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/11/2020
 ms.author: yelevin
 ms.openlocfilehash: d76f8e2d750b8ab2d82e9424f929d8b8353ac25a
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84816450"
 ---
 # <a name="extend-azure-sentinel-across-workspaces-and-tenants"></a>Az Azure Sentinel kiterjesztése munkaterületek és bérlők között
@@ -29,7 +29,7 @@ Az Azure Sentinel egy Log Analytics munkaterületre épül. Figyelje meg, hogy a
 
 Egyetlen munkaterület használata esetén az Azure Sentinel használatának teljes előnyeit élvezheti. Ennek ellenére bizonyos esetekben előfordulhat, hogy több munkaterületre van szükség. Az alábbi táblázat felsorolja ezeket a helyzeteket, és ha lehetséges, azt javasolja, hogy a követelmény hogyan lehet megfelelni egyetlen munkaterülettel:
 
-| Követelmény | Leírás | A munkaterületek számának csökkentési módjai |
+| Követelmény | Description | A munkaterületek számának csökkentési módjai |
 |-------------|-------------|--------------------------------|
 | Szuverenitás és szabályozási megfelelőség | Egy munkaterület egy adott régióhoz van kötve. Ha a szabályozás követelményeinek kielégítéséhez különböző [Azure](https://azure.microsoft.com/global-infrastructure/geographies/) -régiókban kell megőrizni az adatmennyiséget, külön munkaterületekre kell bontani. |  |
 | Az adatok tulajdonjoga | Az adattulajdonos határai, például a leányvállalatok vagy a kapcsolt vállalatok, jobban körülhatárolva vannak külön munkaterületek használatával. |  |
@@ -103,7 +103,7 @@ A [munkafüzetek](./overview.md#workbooks) irányítópultokat és alkalmazások
 
 A munkafüzetek a három módszer egyikében biztosíthatnak több munkaterületet érintő lekérdezéseket, amelyek mindegyike különböző szintű végfelhasználói szakértelmet tartalmaz:
 
-| Metódus  | Leírás | Mikor érdemes használni? |
+| Metódus  | Description | Mikor érdemes használni? |
 |---------|-------------|--------------------|
 | Több munkaterületet tartalmazó lekérdezések írása | A munkafüzet létrehozója a munkafüzetben több munkaterület-lekérdezést is írhat (lásd fent). | Ez a beállítás lehetővé teszi, hogy a munkafüzet-készítők teljes mértékben védjék a felhasználót a munkaterület struktúrájától. |
 | Munkaterület-választó hozzáadása a munkafüzethez | A munkafüzet létrehozója a munkafüzet részeként implementálhatja a munkaterület-választót az [itt](https://techcommunity.microsoft.com/t5/azure-sentinel/making-your-azure-sentinel-workbooks-multi-tenant-or-multi/ba-p/1402357)leírtak szerint. | Ez a beállítás lehetővé teszi a felhasználó számára a munkafüzet által megjelenített munkaterületek vezérlését egy könnyen használható legördülő lista segítségével. |
