@@ -4,10 +4,10 @@ description: Ismerteti Azure Resource Manager sablonok felépítését és tulaj
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.openlocfilehash: 4fdf386aa3b17f46589183706b2a91637acacdb7
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85208824"
 ---
 # <a name="understand-the-structure-and-syntax-of-arm-templates"></a>Az ARM-sablonok struktúrájának és szintaxisának megismerése
@@ -130,7 +130,7 @@ További információ a `copy` változó értékének a használatával történ
 
 Példák a változók használatára: [változók Azure Resource Manager sablonban](template-variables.md).
 
-## <a name="functions"></a>Függvények
+## <a name="functions"></a>Functions
 
 A sablonon belül létrehozhat saját függvényeket is. Ezek a függvények a sablonban használhatók. Jellemzően olyan bonyolult kifejezéseket határozhat meg, amelyeket nem szeretne megismételni a sablon során. A felhasználó által definiált függvényeket a sablonok által támogatott kifejezésekből és [függvényekből](template-functions.md) hozza létre.
 
@@ -175,7 +175,7 @@ A felhasználói függvények meghatározásakor bizonyos korlátozások vonatko
 
 Az egyéni függvények használatáról további példákat a [felhasználó által definiált függvények a Azure Resource Manager sablonban](template-user-defined-functions.md)című témakörben talál.
 
-## <a name="resources"></a>További források
+## <a name="resources"></a>Erőforrások
 
 Az erőforrások szakaszban megadhatja a telepített vagy frissített erőforrásokat.
 

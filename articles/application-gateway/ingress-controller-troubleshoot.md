@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 06/18/2020
 ms.author: caya
 ms.openlocfilehash: 29f8a7823207f5571acc345bc6234a318342b173
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85207855"
 ---
 # <a name="troubleshoot-common-questions-or-issues-with-ingress-controller"></a>A bejövő adatkezelővel kapcsolatos gyakori kérdések és problémák elhárítása
@@ -236,7 +236,7 @@ Az 5. szint viszont az összes naplót megjeleníti, beleértve az ARM-re alkalm
 A Kubernetes-Közösség 9 naplózási szintet létesített a [kubectl](https://kubernetes.io/docs/reference/kubectl/cheatsheet/#kubectl-output-verbosity-and-debugging) eszközhöz. Ebben a tárházban ezek közül hármat használunk, hasonló szemantikai megoldásokkal:
 
 
-| Részletesség | Leírás |
+| Részletesség | Description |
 |-----------|-------------|
 |  1        | Alapértelmezett naplózási szint; indítási részletek, figyelmeztetések és hibák megjelenítése |
 |  3        | Részletes információk az eseményekről és a változásokról; létrehozott objektumok listája |

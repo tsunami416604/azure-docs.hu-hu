@@ -9,10 +9,10 @@ ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 7a138308b48a24a78c55bdc0105379e31482456d
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85209385"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>Log Analytics használata a diagnosztikai szolgáltatáshoz
@@ -131,7 +131,7 @@ Log Analytics csak a közbenső állapotú jelentések a kapcsolódási tevéken
 - Csatlakoztatva: Ha a felhasználó sikeresen csatlakozik ahhoz a virtuális géphez, amelyen az alkalmazást vagy az asztalt üzemelteti.
 - Befejezett: Ha a felhasználó vagy a kiszolgáló leválasztja azt a munkamenetet, amelyen a tevékenység lezajlott.
 
-## <a name="example-queries"></a>Példák lekérdezésekre
+## <a name="example-queries"></a>Példa a lekérdezésekre
 
 A következő példák azt mutatják be, hogy a diagnosztikai szolgáltatás hogyan állít elő jelentést a rendszer leggyakoribb tevékenységeihez.
 
