@@ -9,10 +9,9 @@ ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 03/30/2017
 ms.openlocfilehash: 0f20bb5fb249ad6bac862afe2b0e8eee4b32e2a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75666550"
 ---
 # <a name="azure-serverless-overview-for-building-cloud-based-apps-and-solutions-with-azure-logic-apps-and-azure-functions"></a>Azure kiszolgáló nélküli: Áttekintés felhőalapú alkalmazások és megoldások létrehozásához Azure Logic Apps és Azure Functions
@@ -33,7 +32,7 @@ Az Logic Apps első lépéseinek megkezdéséhez [először hozzon létre egy lo
 
 ## <a name="what-is-azure-functions"></a>Mi az az Azure Functions?
 
-Azure Functions egy szolgáltatás a felhőben található kódok vagy függvények egyszerű futtatásához. Csak az aktuális problémához szükséges kódot írhat, és nem kell aggódnia a teljes alkalmazásról vagy a szükséges infrastruktúráról. A functions még hatékonyabbá teheti a fejlesztést, és használhatja a választott fejlesztési nyelvet, például a C#, az F #, a Node. js, a Python vagy a PHP nyelveket. Csak a kód futásának idejére kell fizetnie, és szükség szerint az Azure-ra is szüksége van.
+Azure Functions egy szolgáltatás a felhőben található kódok vagy függvények egyszerű futtatásához. Csak az aktuális problémához szükséges kódot írhat, és nem kell aggódnia a teljes alkalmazásról vagy a szükséges infrastruktúráról. A függvények még hatékonyabbá tehetik a fejlesztést, és használhatják a választott fejlesztési nyelvet, például a C#, az F #, a Node.js, a Python vagy a PHP nyelveket is. Csak a kód futásának idejére kell fizetnie, és szükség szerint az Azure-ra is szüksége van.
 
 A Azure Functions első lépéseinek megkezdéséhez [először hozzon létre egy Azure-függvényt](../azure-functions/functions-create-first-azure-function.md). A functions szolgáltatással kapcsolatos további technikai információkért tekintse meg a [fejlesztői referenciát](../azure-functions/functions-reference.md).
 

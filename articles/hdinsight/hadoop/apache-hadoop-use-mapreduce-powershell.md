@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/08/2020
 ms.openlocfilehash: b3c1abb7bff54e3e2d294b073b867c6c0e06f482
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75830071"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-powershell"></a>MapReduce-feladatok futtatása a HDInsight Apache Hadoop a PowerShell használatával
@@ -33,7 +32,7 @@ A Azure PowerShell olyan *parancsmagokat* biztosít, amelyek lehetővé teszik a
 
 A következő parancsmagok használhatók a MapReduce-feladatok távoli HDInsight-fürtben való futtatásakor.
 
-|Parancsmag | Leírás |
+|Parancsmag | Description |
 |---|---|
 |Kapcsolat – AzAccount|Azure PowerShell hitelesíti az Azure-előfizetését.|
 |Új – AzHDInsightMapReduceJobDefinition|Új *feladatdefiníció* létrehozása a megadott MapReduce-adatok használatával.|
@@ -43,11 +42,11 @@ A következő parancsmagok használhatók a MapReduce-feladatok távoli HDInsigh
 
 A következő lépések bemutatják, hogyan használhatja ezeket a parancsmagokat feladatok futtatására a HDInsight-fürtben.
 
-1. Szerkesztő használatával mentse a következő kódot **mapreducejob. ps1**néven.
+1. Szerkesztő használatával mentse a következő kódot **mapreducejob.ps1ként **.
 
     [!code-powershell[main](../../../powershell_scripts/hdinsight/use-mapreduce/use-mapreduce.ps1?range=5-69)]
 
-2. Nyisson meg egy új **Azure PowerShell** parancssort. Módosítsa a címtárakat a **mapreducejob. ps1** fájl helyére, majd futtassa a következő parancsot a szkript futtatásához:
+2. Nyisson meg egy új **Azure PowerShell** parancssort. Módosítsa a könyvtárakat a **mapreducejob.ps1** fájl helyére, majd futtassa a következő parancsot a szkript futtatásához:
 
         .\mapreducejob.ps1
 
@@ -70,18 +69,18 @@ A következő lépések bemutatják, hogyan használhatja ezeket a parancsmagoka
     > [!NOTE]  
     > Ha a **ExitCode** értéke nem 0, lásd: [Hibaelhárítás](#troubleshooting).
 
-    Ebben a példában a letöltött fájlokat egy **kimeneti. txt** fájlba is menti a könyvtárban, amelyből a parancsfájlt futtatja.
+    Ez a példa a letöltött fájlokat egy **output.txt** fájlba tárolja abban a könyvtárban, amelyből a parancsfájlt futtatja.
 
 ### <a name="view-output"></a>Kimenet megtekintése
 
-A feladatok által előállított szavak és számok megtekintéséhez nyissa meg a **kimeneti. txt** fájlt egy szövegszerkesztőben.
+Ha meg szeretné tekinteni a feladatok által előállított szavakat és számadatokat, nyissa meg a **output.txt** fájlt egy szövegszerkesztőben.
 
 > [!NOTE]  
 > A MapReduce-feladatok kimeneti fájljai nem változtathatók meg. Így ha újra futtatja ezt a mintát, módosítania kell a kimeneti fájl nevét.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-Ha a rendszer nem ad vissza információt a feladatok befejeződésekor, tekintse meg a feladattal kapcsolatos hibákat. Ha meg szeretné tekinteni a feladattal kapcsolatos hibákat, adja hozzá a következő parancsot a **mapreducejob. ps1** fájl végéhez. Ezután mentse a fájlt, és futtassa újra a parancsfájlt.
+Ha a rendszer nem ad vissza információt a feladatok befejeződésekor, tekintse meg a feladattal kapcsolatos hibákat. Ha meg szeretné tekinteni a feladattal kapcsolatos hibákat, adja hozzá a következő parancsot a **mapreducejob.ps1** fájl végéhez. Ezután mentse a fájlt, és futtassa újra a parancsfájlt.
 
 ```powershell
 # Print the output of the WordCount job.

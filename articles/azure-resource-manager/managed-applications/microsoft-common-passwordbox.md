@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: 5f7d3a47482ccec9778b102d3509b5f8ef343185
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75652306"
 ---
 # <a name="microsoftcommonpasswordbox-ui-element"></a>Microsoft. Common. PasswordBox felhasználói felületi elem
@@ -51,9 +50,9 @@ A jelszó megadására és megerősítésére szolgáló vezérlőelem.
 
 ## <a name="remarks"></a>Megjegyzések
 
-- Ez az elem nem támogatja `defaultValue` a tulajdonságot.
-- A megvalósítási részleteiért `constraints`lásd: [Microsoft. Common. szövegmező](microsoft-common-textbox.md).
-- Ha `options.hideConfirmation` a értéke **true (igaz**), a rendszer elrejti a felhasználó jelszavának megerősítésére szolgáló második szövegmezőt. Az alapértelmezett érték: **hamis**.
+- Ez az elem nem támogatja a `defaultValue` tulajdonságot.
+- A megvalósítási részleteiért `constraints` lásd: [Microsoft. Common. szövegmező](microsoft-common-textbox.md).
+- Ha a `options.hideConfirmation` értéke **true (igaz**), a rendszer elrejti a felhasználó jelszavának megerősítésére szolgáló második szövegmezőt. Az alapértelmezett érték: **hamis**.
 
 ## <a name="next-steps"></a>További lépések
 

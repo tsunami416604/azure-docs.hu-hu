@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 05/21/2018
 tags: connectors
 ms.openlocfilehash: e547ae59f7b3260f46756825bca2bef1c10bcc97
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75665887"
 ---
 # <a name="find-results-in-bing-search-by-using-azure-logic-apps"></a>Találatok keresése a Bing Searchban Azure Logic Apps használatával
@@ -50,13 +49,13 @@ Ha már létezik a kapcsolatai, adja meg a szükséges információkat az trigge
 
    Ebben a példában megadhatja, hogy a rendszer hogyan adja vissza a megfelelő híreket a Bing Search.
 
-   | Tulajdonság | Kötelező | Érték | Leírás |
+   | Tulajdonság | Kötelező | Érték | Description |
    |----------|----------|-------|-------------|
-   | Keresési lekérdezés | Igen | <*Keresés – szavak*> | Adja meg a használni kívánt keresési kulcsszavakat. |
-   | Piaci | Igen | <*területi beállítás*> | A keresés területi beállítása. Az alapértelmezett érték az "en-US", de választhat egy másik értéket is. |
-   | Biztonságos Keresés | Igen | <*keresési szint*> | A felnőtt tartalom kizárásának szűrési szintje. Az alapértelmezett érték a "mérsékelt", de egy másik szint van kiválasztva. |
-   | Darabszám | Nem | <*eredmények – darabszám*> | A megadott számú eredmény visszaadása. Az alapértelmezett érték 20, de egy másik értéket is megadhat. A visszaadott eredmények tényleges száma a megadott számnál kisebb lehet. |
-   | Eltolás | Nem | <*Kihagyás – érték*> | A kihagyni kívánt eredmények száma az eredmények visszaadása előtt |
+   | Keresési lekérdezés | Yes | <*Keresés – szavak*> | Adja meg a használni kívánt keresési kulcsszavakat. |
+   | Piaci | Yes | <*területi beállítás*> | A keresés területi beállítása. Az alapértelmezett érték az "en-US", de választhat egy másik értéket is. |
+   | Biztonságos Keresés | Yes | <*keresési szint*> | A felnőtt tartalom kizárásának szűrési szintje. Az alapértelmezett érték a "mérsékelt", de egy másik szint van kiválasztva. |
+   | Darabszám | No | <*eredmények – darabszám*> | A megadott számú eredmény visszaadása. Az alapértelmezett érték 20, de egy másik értéket is megadhat. A visszaadott eredmények tényleges száma a megadott számnál kisebb lehet. |
+   | Eltolás | No | <*Kihagyás – érték*> | A kihagyni kívánt eredmények száma az eredmények visszaadása előtt |
    |||||
 
    Például:
@@ -77,7 +76,7 @@ Azure Logic Apps a [művelet](../logic-apps/logic-apps-overview.md#logic-app-con
 
 1. A Azure Portal vagy a Visual Studióban nyissa meg a logikai alkalmazást a Logic app Designerben. Ez a példa a Azure Portal használja.
 
-2. Az Indítás vagy művelet alatt válassza az **új lépés** > **művelet hozzáadása**lehetőséget.
+2. Az Indítás vagy művelet alatt válassza az **új lépés**  >  **művelet hozzáadása**lehetőséget.
 
    Ez a példa a következő triggert használja:
 
@@ -86,7 +85,7 @@ Azure Logic Apps a [művelet](../logic-apps/logic-apps-overview.md#logic-app-con
    ![Művelet hozzáadása](./media/connectors-create-api-bing-search/add-action.png)
 
    A meglévő lépések közötti művelet hozzáadásához vigye az egeret a csatlakozás nyíl fölé. 
-   Válassza ki a megjelenő pluszjelet (**+**), majd válassza a **művelet hozzáadása**lehetőséget.
+   Válassza ki a **+** megjelenő pluszjelet (), majd válassza a **művelet hozzáadása**lehetőséget.
 
 3. A keresőmezőbe írja be szűrőként a "Bing Search" kifejezést.
 A műveletek listából válassza ki a kívánt műveletet.
@@ -101,13 +100,13 @@ A műveletek listából válassza ki a kívánt műveletet.
 
    Ebben a példában adja meg az trigger eredményeinek egy részhalmazának visszaküldési feltételeit.
 
-   | Tulajdonság | Kötelező | Érték | Leírás |
+   | Tulajdonság | Kötelező | Érték | Description |
    |----------|----------|-------|-------------|
-   | Keresési lekérdezés | Igen | <*Keresés – kifejezés*> | Adjon meg egy kifejezést az trigger eredményeinek lekérdezéséhez. A dinamikus tartalom lista mezői közül választhat, vagy létrehozhat egy kifejezést a Kifejezésszerkesztő használatával. |
-   | Piaci | Igen | <*területi beállítás*> | A keresés területi beállítása. Az alapértelmezett érték az "en-US", de választhat egy másik értéket is. |
-   | Biztonságos Keresés | Igen | <*keresési szint*> | A felnőtt tartalom kizárásának szűrési szintje. Az alapértelmezett érték a "mérsékelt", de egy másik szint van kiválasztva. |
-   | Darabszám | Nem | <*eredmények – darabszám*> | A megadott számú eredmény visszaadása. Az alapértelmezett érték 20, de egy másik értéket is megadhat. A visszaadott eredmények tényleges száma a megadott számnál kisebb lehet. |
-   | Eltolás | Nem | <*Kihagyás – érték*> | A kihagyni kívánt eredmények száma az eredmények visszaadása előtt |
+   | Keresési lekérdezés | Yes | <*Keresés – kifejezés*> | Adjon meg egy kifejezést az trigger eredményeinek lekérdezéséhez. A dinamikus tartalom lista mezői közül választhat, vagy létrehozhat egy kifejezést a Kifejezésszerkesztő használatával. |
+   | Piaci | Yes | <*területi beállítás*> | A keresés területi beállítása. Az alapértelmezett érték az "en-US", de választhat egy másik értéket is. |
+   | Biztonságos Keresés | Yes | <*keresési szint*> | A felnőtt tartalom kizárásának szűrési szintje. Az alapértelmezett érték a "mérsékelt", de egy másik szint van kiválasztva. |
+   | Darabszám | No | <*eredmények – darabszám*> | A megadott számú eredmény visszaadása. Az alapértelmezett érték 20, de egy másik értéket is megadhat. A visszaadott eredmények tényleges száma a megadott számnál kisebb lehet. |
+   | Eltolás | No | <*Kihagyás – érték*> | A kihagyni kívánt eredmények száma az eredmények visszaadása előtt |
    |||||
 
    Tegyük fel például, hogy azokat az eredményeket szeretné használni, amelyek kategóriájának neve tartalmazza a "Tech" szót.
@@ -148,18 +147,18 @@ A műveletek listából válassza ki a kívánt műveletet.
 
 1. Ha a rendszer a kapcsolódási adatok megadását kéri, adja meg a következő adatokat:
 
-   | Tulajdonság | Kötelező | Érték | Leírás |
+   | Tulajdonság | Kötelező | Érték | Description |
    |----------|----------|-------|-------------|
-   | Kapcsolat neve | Igen | <*kapcsolattípus*> | A kapcsolódáshoz létrehozandó név |
-   | API-verzió | Igen | <*API-Version*> | Alapértelmezés szerint a Bing Search API verziója az aktuális verzióra van beállítva. Szükség szerint a korábbi verziót is kiválaszthatja. |
-   | API-kulcs | Igen | <*API-kulcs*> | A korábban kapott Bing Search API-kulcs. Ha nem rendelkezik kulccsal, szerezze be az [API-kulcsot](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api). |  
+   | Kapcsolat neve | Yes | <*kapcsolattípus*> | A kapcsolódáshoz létrehozandó név |
+   | API-verzió | Yes | <*API-Version*> | Alapértelmezés szerint a Bing Search API verziója az aktuális verzióra van beállítva. Szükség szerint a korábbi verziót is kiválaszthatja. |
+   | API-kulcs | Yes | <*API-kulcs*> | A korábban kapott Bing Search API-kulcs. Ha nem rendelkezik kulccsal, szerezze be az [API-kulcsot](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api). |  
    |||||  
 
    Például:
 
    ![Kapcsolat létrehozása](./media/connectors-create-api-bing-search/bing-search-create-connection.png)
 
-2. Amikor elkészült, válassza a **Létrehozás** lehetőséget.
+2. Ha elkészült, válassza a **Létrehozás** lehetőséget.
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 

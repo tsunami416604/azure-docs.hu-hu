@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: tomfitz
 ms.openlocfilehash: 61e1c9fe07fdd29ebc00e7e3491472d073bc4e5d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75652488"
 ---
 # <a name="microsoftcommonfileupload-ui-element"></a>Microsoft. Common. FileUpload felhasználói felületi elem
@@ -81,12 +80,12 @@ Egy CreateUiDefinition tesztelésekor egyes böngészők (például a Google Chr
 ## <a name="remarks"></a>Megjegyzések
 
 - `constraints.accept`meghatározza a böngésző fájljának párbeszédpanelén megjelenő fájlok típusait. Tekintse meg a [HTML5-specifikációt](https://html.spec.whatwg.org/multipage/input.html#attr-input-accept) az engedélyezett értékekhez. Az alapértelmezett érték **Null**.
-- Ha `options.multiple` a értéke **true (igaz**), a felhasználó több fájlt is kijelölhet a böngésző fájljának párbeszédpanelén. Az alapértelmezett érték: **hamis**.
-- Ez az elem támogatja a fájlok a (z `options.uploadMode`) érték alapján történő feltöltését két módban. Ha a **fájl** meg van adva, a kimenet blobként jeleníti meg a fájl tartalmát. Ha meg van adva az **URL-cím** , a rendszer feltölti a fájlt egy ideiglenes helyre, a kimenet pedig a blob URL-címével. Az ideiglenes Blobok 24 óra elteltével törlődnek. Az alapértelmezett érték a **fájl**.
+- Ha a `options.multiple` értéke **true (igaz**), a felhasználó több fájlt is kijelölhet a böngésző fájljának párbeszédpanelén. Az alapértelmezett érték: **hamis**.
+- Ez az elem támogatja a fájlok a (z) érték alapján történő feltöltését két módban `options.uploadMode` . Ha a **fájl** meg van adva, a kimenet blobként jeleníti meg a fájl tartalmát. Ha meg van adva az **URL-cím** , a rendszer feltölti a fájlt egy ideiglenes helyre, a kimenet pedig a blob URL-címével. Az ideiglenes Blobok 24 óra elteltével törlődnek. Az alapértelmezett érték a **fájl**.
 - A feltöltött fájlok védettek. A kimeneti URL-cím tartalmaz egy [sas-tokent](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) , amely a fájlnak az üzembe helyezés során való eléréséhez szükséges
 - Az érték `options.openMode` határozza meg a fájl olvasásának módját. Ha a fájlnak egyszerű szövegnek kell lennie, **szöveget**kell megadnia; Máskülönben a **bináris**fájlt kell megadnia. Az alapértelmezett érték a **text (szöveg**).
-- Ha `options.uploadMode` a értéke **fájl** , és `options.openMode` **bináris**értékre van beállítva, a kimenet Base64 kódolású.
-- `options.encoding`Megadja a fájl olvasásakor használandó kódolást. Az alapértelmezett érték az **UTF-8**, és csak akkor használható, `options.openMode` ha a értéke **text (szöveg**).
+- Ha a `options.uploadMode` értéke **fájl** , és `options.openMode` **bináris**értékre van beállítva, a kimenet Base64 kódolású.
+- `options.encoding`Megadja a fájl olvasásakor használandó kódolást. Az alapértelmezett érték az **UTF-8**, és csak akkor használható, ha a értéke `options.openMode` **text (szöveg**).
 
 ## <a name="next-steps"></a>További lépések
 

@@ -9,13 +9,12 @@ ms.topic: troubleshooting
 ms.date: 10/30/2018
 ms.author: genli
 ms.openlocfilehash: 82054099a5a496e99c49135ab98ee1163af19784
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75862560"
 ---
-# <a name="troubleshooting-azure-site-to-site-vpn-disconnects-intermittently"></a>Hibaelhárítás: az Azure helyek közötti VPN-kapcsolata időnként megszakad
+# <a name="troubleshooting-azure-site-to-site-vpn-disconnects-intermittently"></a>Hibaelhárítás: Az Azure-beli helyek közötti VPN-kapcsolat időnként megszakad
 
 Előfordulhat, hogy a probléma az, hogy egy új vagy meglévő Microsoft Azure helyek közötti VPN-kapcsolat nem stabil, vagy rendszeresen bontja a kapcsolatot. Ez a cikk hibaelhárítási lépéseket tartalmaz a probléma okának azonosításához és megoldásához. 
 

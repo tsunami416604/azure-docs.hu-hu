@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 09/03/2019
 ms.author: damaerte
 ms.openlocfilehash: 513c3da8031774f5f111ee357b5a3c43e1d09d95
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75832479"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Az Azure Cloud Shell áttekintése
@@ -55,7 +54,7 @@ A Cloud Shell a Microsoft felügyeli, ezért népszerű parancssori eszközöket
 Tekintse meg a [Cloud Shell telepített eszközök teljes listáját.](features.md#tools)
 
 ### <a name="integrated-cloud-shell-editor"></a>Integrált Cloud Shell szerkesztő
-Cloud Shell egy integrált grafikus szövegszerkesztőt kínál a nyílt forráskódú Monaco-szerkesztő alapján. Egyszerűen hozhat létre és szerkeszthet konfigurációs fájlokat `code .` az Azure CLI vagy a Azure PowerShell használatával történő zökkenőmentes üzembe helyezéshez.
+Cloud Shell egy integrált grafikus szövegszerkesztőt kínál a nyílt forráskódú Monaco-szerkesztő alapján. Egyszerűen hozhat létre és szerkeszthet konfigurációs fájlokat `code .` Az Azure CLI vagy a Azure PowerShell használatával történő zökkenőmentes üzembe helyezéshez.
 
 [További információ a Cloud Shell Szerkesztőről](using-cloud-shell-editor.md).
 
@@ -73,14 +72,14 @@ A Cloud Shell egy rugalmas eszköz, amely a következő helyekről használható
 * [Visual Studio Code Azure-fiók bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 
 ### <a name="connect-your-microsoft-azure-files-storage"></a>Microsoft Azure fájlok tárolójának összekötése
-Cloud Shell gépek ideiglenesek, de a fájlok két módon maradnak meg: lemezképen keresztül, valamint egy nevű `clouddrive`csatlakoztatott fájlmegosztás használatával.  Az első indítás alkalmával a Cloud Shell felkéri egy erőforráscsoport, tárfiók és Azure Files-megosztás létrehozására. Ez egy egyszeri lépés, és a rendszer automatikusan csatolja az összes munkamenethez. Egyetlen fájlmegosztás képezhető le, amelyet a bash és a PowerShell is használ Cloud Shellban.
+Cloud Shell gépek ideiglenesek, de a fájlok két módon maradnak meg: lemezképen keresztül, valamint egy nevű csatlakoztatott fájlmegosztás használatával `clouddrive` .  Az első indítás alkalmával a Cloud Shell felkéri egy erőforráscsoport, tárfiók és Azure Files-megosztás létrehozására. Ez egy egyszeri lépés, és a rendszer automatikusan csatolja az összes munkamenethez. Egyetlen fájlmegosztás képezhető le, amelyet a bash és a PowerShell is használ Cloud Shellban.
 
 További információ: [új vagy meglévő Storage-fiók](persisting-shell-storage.md) csatlakoztatása, illetve a [Cloud Shell használt adatmegőrzési mechanizmusok](persisting-shell-storage.md#how-cloud-shell-storage-works)megismerése.
 
 > [!NOTE]
 > A Cloud Shell Storage-fiókok nem támogatják az Azure Storage-tűzfalat.
 
-## <a name="concepts"></a>Alapelvek
+## <a name="concepts"></a>Fogalmak
 * A Cloud Shell munkamenetenkénti, felhasználónkénti alapon megadott ideiglenes gazdagépen fut.
 * Cloud Shell idő után 20 perccel interaktív tevékenység nélkül
 * Cloud Shell egy Azure-fájlmegosztás csatlakoztatását igényli

@@ -16,10 +16,9 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
 ms.openlocfilehash: 34c0c52945abc6e0ab74b1cb180581c76464bee8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75749956"
 ---
 # <a name="azure-operational-security"></a>Azure-beli működési biztonság
@@ -31,7 +30,7 @@ Tudjuk, hogy a biztonság az egyik a felhőben, és mennyire fontos, hogy pontos
 Annak érdekében, hogy az ügyfelek jobban megértsék a Microsoft Azureon belül megvalósított biztonsági vezérlők tömbjét az ügyfél és a Microsoft működési perspektívái alapján, ez a tanulmány az "Azure Operational Security" című tanulmányt ismerteti, amely átfogó képet nyújt a Windows Azure-ban elérhető működési biztonságról.
 
 ### <a name="azure-platform"></a>Azure-platform
-Az Azure egy nyilvános felhőalapú szolgáltatási platform, amely az operációs rendszerek, a programozási nyelvek, a keretrendszerek, az eszközök, az adatbázisok és az eszközök széles választékát támogatja. Linux-tárolókat is futtathat a Docker-integrációval; alkalmazások készítése JavaScript, Python, .NET, PHP, Java és Node. js használatával az iOS-, Android-és Windows-eszközökön is létrehozhatók háttérrendszer. Az Azure Cloud Service több millió fejlesztőt és informatikai szakembereket is támogat.
+Az Azure egy nyilvános felhőalapú szolgáltatási platform, amely az operációs rendszerek, a programozási nyelvek, a keretrendszerek, az eszközök, az adatbázisok és az eszközök széles választékát támogatja. Linux-tárolókat is futtathat a Docker-integrációval; JavaScript-, Python-, .NET-, PHP-, Java-és Node.js-alkalmazásokat hozhat létre. az iOS-, Android-és Windows-eszközökön is létrehozhatók háttérrendszer. Az Azure Cloud Service több millió fejlesztőt és informatikai szakembereket is támogat.
 
 Ha a-ra épít, vagy áttelepíti az IT-eszközöket, egy nyilvános felhőalapú szolgáltatóra támaszkodik, amely a szervezet képességei alapján gondoskodik az alkalmazások és adatok védelméről a szolgáltatásokkal és az általuk biztosított vezérlőkkel a felhőalapú eszközök biztonságának kezeléséhez.
 
@@ -66,7 +65,7 @@ A Azure Monitor-naplók segítségével bármilyen Felhőbeli példányt kezelhe
 
 Azure Monitor naplók alapvető funkcióit az Azure-ban futó szolgáltatások biztosítják. Mindegyik szolgáltatás egy adott felügyeleti funkciót biztosít, és a szolgáltatások kombinálásával különféle felügyeleti forgatókönyvek valósíthatók meg.
 
-| Szolgáltatás  | Leírás|
+| Szolgáltatás  | Description|
 | :------------- | :-------------|
 | Azure Monitor-naplók | Figyeli és elemzi a különféle erőforrások, köztük a fizikai és virtuális gépek rendelkezésre állását és teljesítményét. |
 |Automation | Automatizálja a manuális folyamatokat, és érvényesíti a fizikai és virtuális gépekre vonatkozóan megadott konfigurációkat. |

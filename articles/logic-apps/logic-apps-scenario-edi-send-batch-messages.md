@@ -8,10 +8,9 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/19/2018
 ms.openlocfilehash: 6fc0833f70e3e9cd98100f193b52e5a1bfa4d651
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75666669"
 ---
 # <a name="exchange-edi-messages-as-batches-or-groups-between-trading-partners-in-azure-logic-apps"></a>Exchange EDI-üzenetek kötegként vagy a kereskedelmi partnerek közötti csoportok között Azure Logic Apps
@@ -64,7 +63,7 @@ Ehhez a Batch-fogadóhoz meg kell adnia a Batch-módot, a nevet, a kiadási felt
 
 4. A Batch-fogadó tulajdonságainak beállítása: 
 
-   | Tulajdonság | Érték | Megjegyzések | 
+   | Tulajdonság | Érték | Jegyzetek | 
    |----------|-------|-------|
    | **Batch mód** | Beágyazott |  |  
    | **Köteg neve** | TestBatch | Csak **beágyazott** batch-módban érhető el | 
@@ -125,7 +124,7 @@ Annak ellenőrzéséhez, hogy a Batch-fogadó a várt módon működik-e, hozzá
 
    | Tulajdonság | Leírás | 
    |----------|-------------|
-   | **Módszer** | A listából válassza a **post**lehetőséget. | 
+   | **Metódus** | A listából válassza a **post**lehetőséget. | 
    | **URI** | Adjon meg egy URI-t a kérelem-raktárhelyhez, majd adja meg az URI-t ebben a mezőben. | 
    | **Törzs** | Kattintson a mezőre, majd a dinamikus tartalom lista megnyitása után válassza ki a **törzs** tokent, amely a szakasz, a **Batch kódolása a szerződés neve szerint**elemnél jelenik meg. <p>Ha nem látja a **törzs** jogkivonatát, a **Batch általi kódolás**mellett válassza a **továbbiak**lehetőséget. | 
    ||| 

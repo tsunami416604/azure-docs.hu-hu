@@ -11,10 +11,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: d099d7c233c3f4b5e65bfdb7d4b875a0e4098499
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75864281"
 ---
 # <a name="tasks-for-the-team-lead-on-a-team-data-science-process-team"></a>A Team adatelemzési folyamatának csapatával kapcsolatos feladatok
@@ -77,7 +76,7 @@ Az ebben az oktatóanyagban szereplő adattárakhoz és könyvtárakhoz megadott
 - Egy kis adattudományi csoport, amely nem rendelkezik több adatelemzési csapattal. 
 - Egy nagyobb adatelemzési csoport több adatelemző csapattal, amelyek ennek ellenére szeretnének optimalizálni a csapaton belüli együttműködést olyan tevékenységekkel, mint a csoport szintű Sprint-tervezés. 
 
-Ha a csapatok úgy döntenek, hogy a csoportra jellemző adattárak egyetlen csoportos projektben vannak, akkor a csapat által létrehozott adattárakat olyan nevekkel kell létrehozni, mint * \<a csapatnév>a Template* és * \<a csapatnév>Utilities*. Például: *TeamATemplate* és *TeamAUtilities*. 
+Ha a csapatok úgy döntenek, hogy a csoportra jellemző adattárak egyetlen csoportos projektben vannak, akkor a csapat által létrehozott tárolók a * \<TeamName> sablonhoz* és a * \<TeamName> segédprogramokhoz*hasonló névvel hozhatnak létre adattárakat. Például: *TeamATemplate* és *TeamAUtilities*. 
 
 A csapatnak minden esetben meg kell adnia, hogy a csapat tagjai tudják, hogy mely sablon és segédprogramok tárházat állítanak be a beállításhoz és a klónozáshoz. A projekt-érdeklődőknek követniük kell az [adatelemzési csapat projekt-vezető feladatait](project-lead-tasks.md) a projekt-Tárházak létrehozásához, akár külön projektek, akár egyetlen projekt keretében. 
 
@@ -85,17 +84,17 @@ A csapatnak minden esetben meg kell adnia, hogy a csapat tagjai tudják, hogy me
 
 Különálló projekt létrehozása a csapat számára:
 
-1. A böngészőben nyissa meg a csoport Azure DevOps-szervezetének kezdőlapját a *https\//\<: kiszolgáló neve>/\<szervezet neve>*, és válassza az **új projekt**lehetőséget. 
+1. A böngészőben nyissa meg a csoport Azure DevOps-szervezetének kezdőlapját a *https: \/ / \<server name> / \<organization name> *címen, és válassza az **új projekt**lehetőséget. 
    
    ![Új projekt kiválasztása](./media/team-lead-tasks/team-leads-2-create-new-team.png)
    
 1. A **projekt létrehozása** párbeszédpanelen adja meg a csoport nevét (például *MyTeam*) a **projekt neve**alatt, majd válassza a **speciális**lehetőséget. 
    
-1. A **verziókövetés**területen válassza a **git**lehetőséget, majd a **munkaelemek feldolgozása**területen válassza az **agilis**lehetőséget. Ezután válassza a **Létrehozás**lehetőséget. 
+1. A **verziókövetés**területen válassza a **git**lehetőséget, majd a **munkaelemek feldolgozása**területen válassza az **agilis**lehetőséget. Ezután kattintson a **Létrehozás** elemre. 
    
    ![Projekt létrehozása](./media/team-lead-tasks/team-leads-3-create-new-team-2.png)
    
-Megnyílik a Team **Project összefoglaló** lapja, amelyen az oldal URL-címe *\//\<https: kiszolgálónév\<>/szervezet neve\<>/csapat neve>*.
+Megnyílik a Team Project **Összefoglaló** lapja, a Page URL *https: \/ / \<server name> / \<organization name> / \<team name> *.
 
 ### <a name="rename-the-myteam-default-repository-to-teamutilities"></a>A MyTeam alapértelmezett tárházának átnevezése a TeamUtilities
 
@@ -140,7 +139,7 @@ A csapat adattárainak feltöltése a Group Manager által beállított közös 
    
    ![Importálás kiválasztása](./media/team-lead-tasks/import-repo.png)
    
-1. A **git-tárház importálása** párbeszédpanelen válassza a **git** lehetőséget a **forrás típusaként**, majd adja meg a csoport általános sablonjának URL-címét a **klónozott URL-cím**alatt. Az URL-cím *https\//\<: kiszolgáló neve>\</szervezet neve>/_git\</adattár neve>*. Például: *https:\//dev.Azure.com/DataScienceUnit/GroupCommon/_git/GroupProjectTemplate*. 
+1. A **git-tárház importálása** párbeszédpanelen válassza a **git** lehetőséget a **forrás típusaként**, majd adja meg a csoport általános sablonjának URL-címét a **klónozott URL-cím**alatt. Az URL-cím *https: \/ / \<server name> / \<organization name> /_git \<repository name> /*. Például: *https: \/ /dev.Azure.com/DataScienceUnit/GroupCommon/_git/GroupProjectTemplate*. 
    
 1. Kattintson az **Importálás** gombra. A Group template-tárház tartalmát a rendszer importálja a Team template adattárba. 
    
@@ -199,7 +198,7 @@ Tárak klónozása:
    
 1. Váltson a létrehozott könyvtárba.
    
-1. A git Bashben futtassa a parancsot `git clone <clone URL>`, ahol \<a klónozási URL-cím> a **klón** párbeszédpanelről másolt URL-cím.
+1. A git Bashben futtassa a parancsot `git clone <clone URL>` , ahol a a \<clone URL> **klón** PÁRBESZÉDPANELRŐL másolt URL-cím.
    
    Ha például a következő parancsok egyikét használja a **TeamUtilities** -tárház klónozásához a helyi számítógép *MyTeam* könyvtárába. 
    
@@ -226,7 +225,7 @@ git push
 ```
 
 > [!NOTE]
-> Ha első alkalommal véglegesít egy git-tárházat, előfordulhat, hogy a parancs futtatása előtt konfigurálnia kell a globális paramétereket a *User.name* és a `git commit` *User. e-mailben.* Futtassa a következő két parancsot:
+> Ha első alkalommal véglegesít egy git-tárházat, előfordulhat, hogy a parancs futtatása előtt konfigurálnia kell a globális paramétereket a *User.name* és a *User. e-mailben.* `git commit` Futtassa a következő két parancsot:
 > 
 > `git config --global user.name <your name>`
 > 

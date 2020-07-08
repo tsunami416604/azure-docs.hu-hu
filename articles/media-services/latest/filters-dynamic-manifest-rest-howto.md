@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 06/13/2019
 ms.author: juliako
 ms.openlocfilehash: f9134dd3bc926e6e2f454e5187e03365e91ed22a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75780334"
 ---
 # <a name="creating-filters-with-media-services-rest-api"></a>Szűrők létrehozása Media Services REST API
@@ -83,7 +82,7 @@ A következő példa a **kérelem szövegtörzsét** határozza meg, amely megha
 
 ## <a name="create-account-filters"></a>Fiókok szűrőinek létrehozása
 
-A letöltött Poster gyűjteményében válassza a **fiókok**->**szűrői létrehozása vagy frissítése fiók szűrőt**.
+A letöltött Poster gyűjteményében válassza a **fiókok** -> **szűrői létrehozása vagy frissítése fiók szűrőt**.
 
 A **put** HTTP-kérelem módszere a következőhöz hasonló:
 
@@ -101,7 +100,7 @@ További információ: [Létrehozás vagy frissítés](https://docs.microsoft.co
 
 ## <a name="create-asset-filters"></a>Eszközcsoport-szűrők létrehozása  
 
-A letöltött "Media Services v3" Poster-gyűjteményben válassza az **eszközök**->**Létrehozás vagy frissítés eszköz szűrő**lehetőséget.
+A letöltött "Media Services v3" Poster-gyűjteményben válassza az **eszközök** -> **Létrehozás vagy frissítés eszköz szűrő**lehetőséget.
 
 A **put** HTTP-kérelem módszere a következőhöz hasonló:
 
@@ -129,7 +128,7 @@ A szűrők meghatározása után az ügyfelek a streaming URL-ben használhatjá
 
 Az alábbi táblázat néhány példát mutat be a szűrőket tartalmazó URL-címekre:
 
-|Protocol (Protokoll)|Példa|
+|Protokoll|Példa|
 |---|---|
 |HLS|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=m3u8-aapl,filter=myAccountFilter)`|
 |MPEG DASH|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=mpd-time-csf,filter=myAssetFilter)`|

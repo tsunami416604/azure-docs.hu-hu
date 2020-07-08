@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: srrengar
 ms.openlocfilehash: 5bd3bda71943b2ba8a34cd4fbd0b20917b875670
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75645752"
 ---
 # <a name="service-fabric-linux-cluster-events-in-syslog"></a>Linux-fürt eseményeinek Service Fabric a syslog-ben
@@ -28,7 +27,7 @@ Minden syslog-esemény 4 összetevővel rendelkezik
 * Üzenet
 * Severity
 
-A SyslogConsumer minden platform-eseményt ír a `Local0`létesítmény használatával. A konfiguráció konfigurációjának módosításával bármely érvényes létesítményre frissítheti. A használt identitás: `ServiceFabric`. Az üzenet mező a JSON-ban szerializált teljes eseményt tartalmazza, így számos eszközről lekérdezhető és felhasználható. 
+A SyslogConsumer minden platform-eseményt ír a létesítmény használatával `Local0` . A konfiguráció konfigurációjának módosításával bármely érvényes létesítményre frissítheti. A használt identitás: `ServiceFabric` . Az üzenet mező a JSON-ban szerializált teljes eseményt tartalmazza, így számos eszközről lekérdezhető és felhasználható. 
 
 ## <a name="enable-syslogconsumer"></a>SyslogConsumer engedélyezése
 
@@ -75,9 +74,9 @@ A SyslogConsumer engedélyezéséhez végre kell hajtania a fürt frissítését
 ```
 
 Itt láthatók a meghívott változások
-1. A Common (közös) szakaszban a nevű `LinuxStructuredTracesEnabled`új paraméter szerepel. **Erre azért van szükség, hogy a rendszer a syslog szolgáltatásba való elküldésekor strukturálja és szerializálja a Linux-eseményeket.**
+1. A Common (közös) szakaszban a nevű új paraméter szerepel `LinuxStructuredTracesEnabled` . **Erre azért van szükség, hogy a rendszer a syslog szolgáltatásba való elküldésekor strukturálja és szerializálja a Linux-eseményeket.**
 2. A diagnosztika szakaszban új ConsumerInstance: SyslogConsumer lett hozzáadva. Ez azt jelzi, hogy a platformon van egy másik fogyasztó az eseményekről. 
-3. Az új szakasznak SyslogConsumer kell `IsEnabled` lennie `true`. Úgy van konfigurálva, hogy automatikusan használja a Local0-létesítményt. Ezt felülbírálhatja egy másik paraméter hozzáadásával.
+3. Az új szakasznak SyslogConsumer kell lennie `IsEnabled` `true` . Úgy van konfigurálva, hogy automatikusan használja a Local0-létesítményt. Ezt felülbírálhatja egy másik paraméter hozzáadásával.
 
 ```json
     {
@@ -98,10 +97,10 @@ Ezeket a syslog-eseményeket megtekintheti egy figyelési eszközben, például 
 4. Konfigurálja a Local0 a nyomon követési lehetőségként. Ha módosította a fabricSettings-ben, további létesítményt is hozzáadhat.
 
     ![A syslog konfigurálása](media/service-fabric-diagnostics-oms-syslog/syslog-configure.png)
-5. A lekérdezés indításához a munkaterület-erőforrás menüjére kattintva `Logs` lépjen a lekérdezési tallózóba.
+5. A `Logs` lekérdezés indításához a munkaterület-erőforrás menüjére kattintva lépjen a lekérdezési tallózóba.
 
     ![Munkaterület naplófájljai](media/service-fabric-diagnostics-oms-syslog/workspace-logs.png)
-6. Lekérdezheti a `Syslog` processname keresett `ServiceFabric` táblát. Az alábbi lekérdezés szemlélteti, hogyan elemezheti a JSON-t az eseményen, és megjelenítheti annak tartalmát
+6. Lekérdezheti a `Syslog` processname keresett táblát `ServiceFabric` . Az alábbi lekérdezés szemlélteti, hogyan elemezheti a JSON-t az eseményen, és megjelenítheti annak tartalmát
 
 ```kusto
     Syslog | where ProcessName == "ServiceFabric" | extend $payload = parse_json(SyslogMessage) | project $payload

@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: tomfitz
 ms.openlocfilehash: 23a7c54a84ec083b8fa470f26582913fcc3d2ee6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75652202"
 ---
 # <a name="microsoftcommontagsbyresource-ui-element"></a>Microsoft. Common. TagsByResource felhasználói felületi elem
@@ -49,8 +48,8 @@ A [címkék](../management/tag-resources.md) egy központi telepítésben lévő
 
 ## <a name="remarks"></a>Megjegyzések
 
-- A `resources` tömb legalább egy elemét meg kell adni.
-- A `resources` minden elemének teljesen minősített erőforrástípus kell lennie. Ezek az elemek az **erőforrás** legördülő menüben jelennek meg, és a felhasználó taggable.
+- A tömb legalább egy elemét `resources` meg kell adni.
+- A minden elemének `resources` teljesen minősített erőforrástípus kell lennie. Ezek az elemek az **erőforrás** legördülő menüben jelennek meg, és a felhasználó taggable.
 - A vezérlő kimenete úgy van formázva, hogy könnyen lehessen hozzárendelni a címke értékeit egy Azure Resource Manager sablonban. Ha a vezérlő kimenetét szeretné fogadni egy sablonban, adjon meg egy paramétert a sablonban az alábbi példában látható módon:
 
   ```json

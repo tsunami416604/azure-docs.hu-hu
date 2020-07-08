@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: vturecek
 ms.openlocfilehash: 788c337a37ec66c5aa1521c5cd9f2816ed7a8bf9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75645633"
 ---
 # <a name="access-save-and-remove-reliable-actors-state"></a>Reliable Actors állapotának elérése, mentése és eltávolítása
@@ -26,9 +25,9 @@ Az állapot a Key Manageren keresztül érhető el. Az állami kezelői módszer
 
 * A Actors metódus kezeletlen kivételt jelez, miután lekért egy objektumot az állapot-kezelőből.
 * A rendszer újraaktiválja a szereplőt, vagy az inaktiválás vagy a meghibásodás után.
-* Az állapot-szolgáltató lapok állapota lemezre. Ez a viselkedés az állami szolgáltató implementációtól függ. A `Persisted` beállítás alapértelmezett állapot-szolgáltatója ezt a viselkedést adja meg.
+* Az állapot-szolgáltató lapok állapota lemezre. Ez a viselkedés az állami szolgáltató implementációtól függ. A beállítás alapértelmezett állapot-szolgáltatója `Persisted` ezt a viselkedést adja meg.
 
-Lekérheti az állapotot standard *Get* művelettel `KeyNotFoundException`(C#) vagy `NoSuchElementException`(Java), ha nem létezik bejegyzés a kulcshoz:
+Lekérheti az állapotot standard *Get* művelettel `KeyNotFoundException` (C#) vagy `NoSuchElementException` (Java), ha nem létezik bejegyzés a kulcshoz:
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -139,7 +138,7 @@ class MyActorImpl extends FabricActor implements  MyActor
 }
 ```
 
-Az állapotot hozzáadhatja egy *Add* metódus használatával. Ez a metódus `InvalidOperationException`(C#) vagy `IllegalStateException`(Java), ha olyan kulcsot próbál felvenni, amely már létezik.
+Az állapotot hozzáadhatja egy *Add* metódus használatával. Ez a metódus `InvalidOperationException` (C#) vagy `IllegalStateException` (Java), ha olyan kulcsot próbál felvenni, amely már létezik.
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -217,7 +216,7 @@ class MyActorImpl extends FabricActor implements  MyActor
 
 A Actors metódus végén a State Manager automatikusan menti az INSERT vagy a Update művelet által hozzáadott vagy módosított értékeket. A "Mentés" a használt beállításoktól függően a lemezre és a replikálásra is kiterjedhet. A nem módosított értékek nem maradnak meg és nem replikálódnak. Ha nincs módosítva érték, a mentési művelet nem tesz semmit. Ha a Mentés meghiúsul, a rendszer elveti a módosított állapotot, és újratölti az eredeti állapotot.
 
-Azt is megteheti, hogy manuálisan menti `SaveStateAsync` az állapotot, ha meghívja a metódust a Actor Base-ben:
+Azt is megteheti, hogy manuálisan menti az állapotot, ha meghívja a `SaveStateAsync` metódust a Actor Base-ben:
 
 ```csharp
 async Task IMyActor.SetCountAsync(int count)
@@ -239,7 +238,7 @@ interface MyActor {
 ```
 
 ## <a name="remove-state"></a>Állapot eltávolítása
-A *Remove* metódus meghívásával véglegesen eltávolíthatja az állapotot egy Actors State managerből. Ez a metódus `KeyNotFoundException`(C#) vagy `NoSuchElementException`(Java), amikor olyan kulcsot próbál meg eltávolítani, amely nem létezik.
+A *Remove* metódus meghívásával véglegesen eltávolíthatja az állapotot egy Actors State managerből. Ez a metódus `KeyNotFoundException` (C#) vagy `NoSuchElementException` (Java), amikor olyan kulcsot próbál meg eltávolítani, amely nem létezik.
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
