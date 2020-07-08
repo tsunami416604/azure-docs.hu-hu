@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 3eb429c4981cbc548c7d68c788008b841ff5d33e
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: 1300ef64b6081135c400baa10aa73b8139aec170
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85484077"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86025590"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>Egyetlen kiszolgálóból álló adattitkosítás Azure Database for PostgreSQL ügyfél által felügyelt kulccsal
 
@@ -20,10 +20,6 @@ Az adatok titkosítása az ügyfél által felügyelt kulcsokkal Azure Database 
 Az ügyfél által felügyelt kulcsokkal rendelkező adattitkosítást Azure Database for PostgreSQL egyetlen kiszolgáló esetén a kiszolgáló szintjén kell beállítani. Egy adott kiszolgáló esetében a szolgáltatás által használt adattitkosítási kulcs (ADATTITKOSÍTÁSI kulcsot) titkosítására a Key encryption Key (KEK) nevű ügyfél által felügyelt kulcs szolgál. A KEK egy, az ügyfél és az ügyfél által felügyelt [Azure Key Vault](../key-vault/key-Vault-secure-your-key-Vault.md) -példányban tárolt aszimmetrikus kulcs. A kulcs titkosítási kulcsát (KEK) és az adattitkosítási kulcsot (ADATTITKOSÍTÁSI kulcsot) a cikk későbbi részében részletesebben ismertetjük.
 
 A Key Vault egy felhőalapú, külső kulcsokat kezelő rendszer. Magas rendelkezésre állású, és méretezhető, biztonságos tárolást biztosít az RSA titkosítási kulcsokhoz, opcionálisan a FIPS 140-2 2-es szintű, ellenőrzött hardveres biztonsági modulok (HSM-k) által támogatottak. Nem engedélyezi a közvetlen hozzáférést egy tárolt kulcshoz, de biztosítja a titkosítási és visszafejtési szolgáltatásokat a jogosult entitások számára. Key Vault a kulcsot létrehozhatja, importálhatja, vagy [áthelyezheti egy helyszíni HSM-eszközről](../key-vault/key-Vault-hsm-protected-keys.md).
-
-
-> [!NOTE]
-> Ez a képesség jelenleg globálisan zajlik, és hamarosan elérhető lesz minden régióban. Ha nem látja a régiójában, forduljon a következőhöz: AskAzureDBforPostgreSQL@service.microsoft.com .
 
 > [!NOTE]
 > Ez a funkció minden olyan Azure-régióban elérhető, ahol Azure Database for PostgreSQL egyetlen kiszolgáló támogatja a "általános célú" és a "memória-optimalizálva" árképzési csomagokat.
@@ -136,22 +132,13 @@ Ha el szeretné kerülni az ügyfél által felügyelt adattitkosítás beállí
 Azure Database for PostgreSQL esetén az ügyfelek által felügyelt kulcs (CMK) használatával a REST-adatok titkosításának támogatása néhány korlátozással rendelkezik –
 
 * A funkció támogatása a **általános célú** és a **memória optimalizált** díjszabási szintjeire korlátozódik.
-* Ez a funkció csak olyan régiókban és kiszolgálókon támogatott, amelyek támogatják a 16TB-t. A 16TB-et támogató Azure-régiók listáját [itt](concepts-pricing-tiers.md#storage) találja a dokumentáció tárolás szakaszában.
+* Ez a funkció csak olyan régiókban és kiszolgálókon érhető el, amelyek legfeljebb 16 TB-nyi tárterületet támogatnak. A 16TB-et támogató Azure-régiók listáját [itt](concepts-pricing-tiers.md#storage) találja a dokumentáció tárolás szakaszában.
 
     > [!NOTE]
     > - A fent felsorolt régiókban létrehozott összes új PostgreSQL-kiszolgáló **elérhető**. a titkosítás támogatása az ügyfél-kezelő kulcsaival. Az időponthoz visszaállított (PITR) kiszolgáló vagy az olvasási replika nem lesz érvényes, de elméletileg az "új".
     > - Annak ellenőrzéséhez, hogy a kiépített kiszolgáló támogatja-e a 16TB, nyissa meg a portál díjszabási szintje paneljét, és tekintse meg a kiépített kiszolgáló által támogatott maximális tárterületet. Ha a csúszkát akár 4TB is áthelyezheti, előfordulhat, hogy a kiszolgáló nem támogatja a titkosítást az ügyfél által felügyelt kulcsokkal. Az adatforgalom azonban mindig a szolgáltatás által felügyelt kulcsokkal van titkosítva. AskAzureDBforPostgreSQL@service.microsoft.comHa bármilyen kérdése van, lépjen kapcsolatba.
 
 * A titkosítás csak az RSA 2048 titkosítási kulccsal támogatott.
-
-## <a name="infrastructure-double-encryption"></a>Infrastruktúra – kettős titkosítás
-A Azure Database for PostgreSQL a Microsoft által felügyelt kulcsok használatával adattárolási [titkosítást használ a REST-](concepts-security.md#at-rest) adatokon. Az adatokat, beleértve a biztonsági másolatokat, a lemezeken titkosítva vannak, és ez a titkosítás mindig be van kapcsolva, és nem tiltható le. A titkosítás FIPS 140-2 ellenőrzött titkosítási modult és egy AES 256-bites titkosítást használ az Azure Storage-titkosításhoz. 
-
-Az infrastruktúra-kettős titkosítás egy második titkosítási réteget ad egy FIPS 140-2 ellenőrzött titkosítási modul és egy másik titkosítási algoritmus használatával, amely további védelmi réteget biztosít az adatok nyugalmi szintjén. Az infrastruktúra kettős titkosításához használt kulcsot a szolgáltatás is kezeli. Ez alapértelmezés szerint *nem érhető el,* mert a további titkosítási réteg miatt hatással lesz a teljesítményre. 
-
-   > [!NOTE]
-   > - Ez a funkció továbbra is globálisan nem érhető el. 
-   > - A funkció támogatása a **általános célú** és a **memória optimalizált** díjszabási szintjeire korlátozódik.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -5,14 +5,15 @@ description: Megtudhatja, hogyan exportálhat adatfeliratokat a Azure Machine Le
 author: nibaccam
 ms.author: nibaccam
 ms.service: machine-learning
+ms.subservice: core
 ms.topic: how-to
 ms.date: 05/14/2020
-ms.openlocfilehash: 6401d620aea720584df0838cacc6df2f837ca699
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.openlocfilehash: 80932ebbedeca3f5e0a1b4cc2e68d73ef5b0d63a
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85374474"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86025726"
 ---
 # <a name="create-and-explore-azure-machine-learning-dataset-with-labels-preview"></a>Azure Machine Learning-adatkészlet létrehozása és feltárása címkékkel (előzetes verzió)
 
@@ -95,6 +96,6 @@ gray_image = F.to_grayscale(pil_image, num_output_channels=3)
 imgplot = plt.imshow(gray_image)
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Tekintse meg az [adathalmazt a címkék jegyzetfüzettel](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/labeled-datasets/labeled-datasets.ipynb) a teljes betanítási minta megtekintéséhez.
