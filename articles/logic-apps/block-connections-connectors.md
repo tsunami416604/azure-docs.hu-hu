@@ -7,10 +7,10 @@ ms.reviewer: deli, logicappspm
 ms.topic: conceptual
 ms.date: 06/19/2020
 ms.openlocfilehash: 938f10b621d6081af84cf15d7e04c5f5ab517417
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84977699"
 ---
 # <a name="block-connections-created-by-connectors-in-azure-logic-apps"></a>Összekötők által létrehozott kapcsolatok blokkolása Azure Logic Apps
@@ -123,7 +123,7 @@ Az alábbi lépéseket követve blokkolhatja, hogy a rendszer teljesen létrehoz
 
    ![Házirend-definíció tulajdonságai](./media/block-connections-connectors/policy-definition-create-connections-1.png)
 
-   | Tulajdonság | Kötelező | Érték | Leírás |
+   | Tulajdonság | Kötelező | Érték | Description |
    |----------|----------|-------|-------------|
    | **Definíció helye** | Yes | <*Azure-előfizetés – név*> | A házirend-definícióhoz használandó Azure-előfizetés <p><p>1. az előfizetés megkereséséhez kattintson a három pont (**..**.) gombra. <br>2. az **előfizetés** listában keresse meg és válassza ki az előfizetését. <br>3. Ha elkészült, válassza a **kiválasztás**lehetőséget. |
    | **Name (Név)** | Yes | <*házirend-definíció – név*> | A házirend-definícióhoz használandó név |
@@ -150,7 +150,7 @@ Az alábbi lépéseket követve blokkolhatja, hogy a rendszer teljesen létrehoz
     }
     ```
 
-   | Tulajdonság | Érték | Leírás |
+   | Tulajdonság | Érték | Description |
    |----------|-------|-------------|
    | `mode` | `All` | Az a mód, amely meghatározza a házirend által kiértékelt erőforrás-típusokat. <p><p>Ez a forgatókönyv `mode` a `All` -re vonatkozik, amely a szabályzatot Azure-erőforráscsoportok, előfizetések és minden erőforrástípus esetében alkalmazza. <p><p>További információ: [Policy definition Structure-Mode](../governance/policy/concepts/definition-structure.md#mode). |
    | `if` | `{condition-to-evaluate}` | Az a feltétel, amely meghatározza, hogy mikor kell kikényszeríteni a szabályzat szabályát <p><p>Ebben az esetben a `{condition-to-evaluate}` meghatározza, hogy a `api.id` `Microsoft.Web/connections/api.id` egyezések értéke `*managedApis/{connector-name}` , amely a helyettesítő karakter (*) értéket adja meg. <p><p>További információ: [házirend-definíciós struktúra – házirend-szabály](../governance/policy/concepts/definition-structure.md#policy-rule). |
@@ -244,7 +244,7 @@ Ha logikai alkalmazáson belül hoz létre egy kapcsolódást, akkor ez a kapcso
 
    ![Házirend-definíció tulajdonságai](./media/block-connections-connectors/policy-definition-using-connections-1.png)
 
-   | Tulajdonság | Kötelező | Érték | Leírás |
+   | Tulajdonság | Kötelező | Érték | Description |
    |----------|----------|-------|-------------|
    | **Definíció helye** | Yes | <*Azure-előfizetés – név*> | A házirend-definícióhoz használandó Azure-előfizetés <p><p>1. az előfizetés megkereséséhez kattintson a három pont (**..**.) gombra. <br>2. az **előfizetés** listában keresse meg és válassza ki az előfizetését. <br>3. Ha elkészült, válassza a **kiválasztás**lehetőséget. |
    | **Name (Név)** | Yes | <*házirend-definíció – név*> | A házirend-definícióhoz használandó név |
@@ -271,7 +271,7 @@ Ha logikai alkalmazáson belül hoz létre egy kapcsolódást, akkor ez a kapcso
     }
     ```
 
-   | Tulajdonság | Érték | Leírás |
+   | Tulajdonság | Érték | Description |
    |----------|-------|-------------|
    | `mode` | `All` | Az a mód, amely meghatározza a házirend által kiértékelt erőforrás-típusokat. <p><p>Ez a forgatókönyv `mode` a `All` -re vonatkozik, amely a szabályzatot Azure-erőforráscsoportok, előfizetések és minden erőforrástípus esetében alkalmazza. <p><p>További információ: [Policy definition Structure-Mode](../governance/policy/concepts/definition-structure.md#mode). |
    | `if` | `{condition-to-evaluate}` | Az a feltétel, amely meghatározza, hogy mikor kell kikényszeríteni a szabályzat szabályát <p><p>Ebben az esetben az `{condition-to-evaluate}` határozza meg, hogy a karakterlánc kimenete tartalmazza-e `[string(field('Microsoft.Logic/workflows/parameters'))]` a karakterláncot `{connector-name}` . <p><p>További információ: [házirend-definíciós struktúra – házirend-szabály](../governance/policy/concepts/definition-structure.md#policy-rule). |

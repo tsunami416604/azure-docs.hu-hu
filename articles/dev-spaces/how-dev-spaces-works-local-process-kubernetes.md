@@ -6,10 +6,10 @@ ms.topic: conceptual
 description: Ismerteti azokat a folyamatokat, amelyekkel a helyi folyamatok Kubernetes használatával csatlakoztathatók a fejlesztői számítógép a Kubernetes-fürthöz
 keywords: Helyi folyamat a Kubernetes, az Azure dev Spaces, a dev Spaces, a Docker, a Kubernetes, az Azure, az AK, az Azure Kubernetes Service, a containers
 ms.openlocfilehash: dd126fc55a86b1de115239a31e5adb7b1d264846
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84974398"
 ---
 # <a name="how-local-process-with-kubernetes-works"></a>Helyi folyamatok működése Kubernetes használata esetén

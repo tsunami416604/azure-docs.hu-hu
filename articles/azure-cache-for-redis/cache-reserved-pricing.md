@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.openlocfilehash: 8af8db6b6853d6b8cbd4ba1105f05ebb9bcf771b
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84974840"
 ---
 # <a name="prepay-for-azure-cache-for-redis-compute-resources-with-reserved-capacity"></a>Előre fizetés az Azure cache számára a fenntartott kapacitású számítási erőforrások Redis
@@ -48,7 +48,7 @@ Tegyük fel például, hogy két gyorsítótárat futtat – az egyiket 13 GB-ra
 
 A következő táblázat a kötelező mezőket ismerteti.
 
-| Mező | Leírás |
+| Mező | Description |
 | :------------ | :------- |
 | Előfizetés   | A Redis számára fenntartott kapacitás foglalásához az Azure cache-re való fizetéshez használt előfizetés. Az előfizetéshez tartozó fizetési módot az Azure cache Redis fenntartott kapacitás foglalásának előzetes költségei alapján számítjuk fel. Az előfizetés típusának nagyvállalati szerződésnek kell lennie (ajánlati számok: MS-AZR-0017P vagy MS-AZR-0148P), vagy az utólagos elszámolású díjszabással rendelkező egyéni szerződés (ajánlati számok: MS-AZR-0003P vagy MS-AZR-0023P). Nagyvállalati előfizetésnél a díjak a regisztrációhoz tartozó keretek egyenlegeiből lesznek levonva, illetve túlhasználatként lesznek számlázva. Az utólagos elszámolású előfizetések esetében az előfizetés díjait a bankkártya vagy a számla fizetési módja alapján számítjuk fel.
 | Hatókör | A foglalás hatóköre egyetlen előfizetésre vagy több előfizetésre (megosztott hatókörre) is vonatkozhat. Ha a következőket választja: </br></br> **Megosztva**a foglalási kedvezményt a rendszer az Azure cache-re alkalmazza a számlázási környezetben lévő előfizetésekben futó Redis-példányok esetében. A vállalati ügyfelek esetében a közös hatókör a regisztráció, és a regisztráción belüli összes előfizetés szerepel. A használatalapú fizetéses ügyfelek esetében a megosztott hatókör a fiókadminisztrátor által létrehozott, használatalapú fizetéses előfizetéseket foglalja magában.</br></br> **Egy előfizetés**esetén a foglalási kedvezmény az Azure cache-re érvényes az előfizetéshez tartozó Redis-példányok esetében. </br></br> **Egy erőforráscsoport**, a foglalási kedvezményt a rendszer az Azure cache-re alkalmazza a kijelölt előfizetésben található Redis-példányok esetében, valamint az adott előfizetéshez tartozó kiválasztott erőforráscsoportot.

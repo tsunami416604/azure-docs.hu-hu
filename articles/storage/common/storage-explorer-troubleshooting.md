@@ -9,15 +9,15 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
 ms.openlocfilehash: a49e5fbe9eac689b630a0f3b443729faf29cdb0d
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84974517"
 ---
-# <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage Explorer hibaelhárítási útmutató
+# <a name="azure-storage-explorer-troubleshooting-guide"></a>Az Azure Storage Explorer hibaelhárítási útmutatója
 
-A Microsoft Azure Storage Explorer egy önálló alkalmazás, amely megkönnyíti az Azure Storage-szolgáltatásokkal való munkát Windows, macOS és Linux rendszereken. Az alkalmazás képes csatlakozni az Azure-ban, az országos felhőkben és a Azure Stack üzemeltetett Storage-fiókokhoz.
+A Microsoft Azure Storage Explorer egy különálló alkalmazás, amelynek segítségével egyszerűen dolgozhat Azure Storage-adatokkal Windows, macOS és Linux rendszeren. Az alkalmazás az Azure-ban, országos felhőkörnyezetekben és az Azure Stackben üzemeltetett tárfiókokhoz tud csatlakozni.
 
 Ez az útmutató a Storage Explorer gyakran előforduló problémák megoldásait összegzi.
 

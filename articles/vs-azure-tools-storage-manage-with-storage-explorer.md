@@ -9,17 +9,17 @@ ms.topic: article
 ms.date: 11/08/2019
 ms.author: cawa
 ms.openlocfilehash: f588ed6d35f3f8882d546b78ff833d62f33ac0a4
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84975265"
 ---
 # <a name="get-started-with-storage-explorer"></a>A Storage Explorer használatának első lépései
 
 ## <a name="overview"></a>Áttekintés
 
-A Microsoft Azure Storage Explorer egy önálló alkalmazás, amely megkönnyíti az Azure Storage-szolgáltatásokkal való munkát Windows, macOS és Linux rendszereken. Ebből a cikkből megismerheti az Azure Storage-fiókok csatlakoztatásának és kezelésének számos módját.
+A Microsoft Azure Storage Explorer egy különálló alkalmazás, amelynek segítségével egyszerűen dolgozhat Azure Storage-adatokkal Windows, macOS és Linux rendszeren. Ebből a cikkből megismerheti az Azure Storage-fiókok csatlakoztatásának és kezelésének számos módját.
 
 ![Microsoft Azure Storage Explorer][0]
 
