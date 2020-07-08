@@ -10,10 +10,9 @@ ms.date: 04/15/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: b39fbdf19703d8b4b2f8683577701dcb23900616
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83836957"
 ---
 # <a name="get-started-with-azure-automation-state-configuration"></a>Ismerkedés a Azure Automation állapot-konfigurációval
@@ -59,7 +58,7 @@ Létre kell hoznia egy egyszerű [DSC-konfigurációt](/powershell/scripting/dsc
         }
     }
     ```
-1. Mentse a fájlt **TestConfig. ps1**néven.
+1. Mentse a fájlt **TestConfig.ps1ként **.
 
 Ez a konfiguráció egy erőforrást hív meg minden csomópont-blokkban, a [WindowsFeature-erőforrásban](/powershell/scripting/dsc/reference/resources/windows/windowsfeatureresource). Ez az erőforrás biztosítja a **webkiszolgáló** szolgáltatás jelenlétét vagy hiányát.
 

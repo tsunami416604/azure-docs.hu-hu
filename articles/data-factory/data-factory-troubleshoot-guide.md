@@ -9,13 +9,12 @@ ms.date: 8/26/2019
 ms.author: abnarain
 ms.reviewer: craigg
 ms.openlocfilehash: ac6081f02ad532b512ecca335b949eec71c060ff
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83836158"
 ---
-# <a name="troubleshoot-azure-data-factory"></a>Hibakeresés Azure Data Factory
+# <a name="troubleshoot-azure-data-factory"></a>Az Azure Data Factory hibaelhárítása
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Ez a cikk a Azure Data Factory külső ellenőrzési tevékenységeinek gyakori hibaelhárítási módszereit vizsgálja.
@@ -442,7 +441,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 - **OK**:`Can't launch command, or the program returned an error code.`
 
-- **Javaslat**: Ellenőrizze, hogy létezik-e a végrehajtható fájl. Ha a program elindult, ellenőrizze, hogy az *StdOut. txt* és a *stderr. txt fájl* fel lett-e töltve a Storage-fiókba. Érdemes bemutatni a naplókat a kódban a hibakereséshez.
+- **Javaslat**: Ellenőrizze, hogy létezik-e a végrehajtható fájl. Ha a program elindult, ellenőrizze, hogy a rendszer feltöltötte-e *stdout.txt* és *stderr.txt* a Storage-fiókba. Érdemes bemutatni a naplókat a kódban a hibakereséshez.
 
 ### <a name="error-code-2501"></a>Hibakód: 2501
 

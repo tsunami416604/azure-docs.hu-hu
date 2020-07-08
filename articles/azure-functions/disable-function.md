@@ -4,10 +4,9 @@ description: Megtudhatja, hogyan tilthatja le és engedélyezheti a függvények
 ms.topic: conceptual
 ms.date: 04/08/2020
 ms.openlocfilehash: ee701e8df8faddef9bbdb16e7a1048c4dc2e40a5
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83848739"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>Függvények letiltása a Azure Functionsban
@@ -87,15 +86,15 @@ public static class QueueFunctions
 Ezzel a módszerrel engedélyezheti és letilthatja a függvényt úgy, hogy az újrafordítás vagy az újbóli telepítés nélkül megváltoztatja az alkalmazás beállítását. Az Alkalmazásbeállítások módosítása a Function alkalmazás újraindítását eredményezi, így a letiltott állapot változása azonnal felismerhető.
 
 > [!IMPORTANT]
-> Az `Disabled` attribútum az egyetlen módszer egy Class Library-függvény letiltására. A Class Library függvényhez tartozó generált *function. JSON* fájlt nem közvetlenül kell szerkeszteni. Ha szerkeszti ezt a fájlt, a tulajdonságra bármit is megadhat `disabled` .
+> Az `Disabled` attribútum az egyetlen módszer egy Class Library-függvény letiltására. A (z) "class Library" függvényhez létrehozott *function.js* nem lehet közvetlenül szerkeszteni. Ha szerkeszti ezt a fájlt, a tulajdonságra bármit is megadhat `disabled` .
 >
-> Ugyanez vonatkozik a **Function állapot** kapcsolóra a **kezelés** lapon, mivel a *function. JSON* fájl módosításával működik.
+> Ugyanez vonatkozik a **Function állapot** kapcsolóra a **kezelés** lapon, mivel az a fájl *function.js* módosításával működik.
 >
 > Azt is vegye figyelembe, hogy a portálon előfordulhat, hogy a funkció le van tiltva, ha nem.
 
 ### <a name="functions-1x---scripting-languages"></a>Függvények 1. x – parancsfájlkezelési nyelvek
 
-Az 1. x verzióban a `disabled` *function. JSON* fájl tulajdonságát is használhatja, hogy a futtatókörnyezet ne indítson el egy függvényt. Ez a metódus csak olyan programozási nyelveken működik, mint a C# parancsfájl és a JavaScript. A tulajdonság beállítható a következőre `disabled` `true` : vagy egy alkalmazás-beállítás neve:
+Az 1. x verzióban a `disabled` fájl *function.js* tulajdonságával is megadhatja, hogy a futtatókörnyezet ne indítson el egy függvényt. Ez a metódus csak olyan programozási nyelveken működik, mint a C# parancsfájl és a JavaScript. A tulajdonság beállítható a következőre `disabled` `true` : vagy egy alkalmazás-beállítás neve:
 
 ```json
 {
@@ -123,7 +122,7 @@ vagy
 A második példában a függvény le van tiltva, ha van egy IS_DISABLED nevű alkalmazás-beállítás, és a értéke `true` vagy 1.
 
 >[!IMPORTANT]  
->A portál mostantól az Alkalmazásbeállítások használatával letiltja a v1. x függvényeket. Ha egy alkalmazás beállítása ütközik a function. JSON fájllal, hiba léphet fel. A hibák elkerülése érdekében távolítsa el a `disabled` tulajdonságot a function. JSON fájlból. 
+>A portál mostantól az Alkalmazásbeállítások használatával letiltja a v1. x függvényeket. Ha egy alkalmazás beállítása ütközik a fájl function.jsával, hiba léphet fel. A hibák elkerülése érdekében távolítsa el a `disabled` tulajdonságot a fájl function.jsból. 
 
 
 ## <a name="next-steps"></a>További lépések

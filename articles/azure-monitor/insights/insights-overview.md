@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 05/22/2019
 ms.openlocfilehash: ecd66500fdf968a773d3bc4f3d93363bfe86c763
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83836039"
 ---
 # <a name="overview-of-insights-in-azure-monitor"></a>Az információk áttekintése Azure Monitor
@@ -20,7 +19,7 @@ Az egyes alkalmazásokhoz és szolgáltatásokhoz testreszabott figyelési funkc
 A következő szakaszokban a Azure Monitor aktuálisan elérhető információinak rövid leírását találhatja meg. További részletekért tekintse meg a részletes dokumentációt.
 
 ## <a name="application-insights"></a>Application Insights
-Az Application Insights egy bővíthető és több platformon működő alkalmazásteljesítmény-felügyeleti (APM) szolgáltatás webfejlesztőknek. Az élő webalkalmazásának figyelésére használhatja. Számos platformon használható, többek között a .NET, a Node. js és a Java EE, helyszíni, hibrid vagy nyilvános felhőben üzemelő alkalmazásokhoz. Emellett a DevOps folyamattal is integrálható, és a különböző fejlesztői eszközökhöz kapcsolódó kapcsolódási pontokkal rendelkezik.
+Az Application Insights egy bővíthető és több platformon működő alkalmazásteljesítmény-felügyeleti (APM) szolgáltatás webfejlesztőknek. Az élő webalkalmazásának figyelésére használhatja. Számos platformon használható, többek között a .NET, a Node.js és a Java EE, helyszíni, hibrid vagy nyilvános felhőben üzemeltetett alkalmazások esetében. Emellett a DevOps folyamattal is integrálható, és a különböző fejlesztői eszközökhöz kapcsolódó kapcsolódási pontokkal rendelkezik.
 
 Lásd: [Mi az Application Insights?](../app/app-insights-overview.md)
 
@@ -41,7 +40,7 @@ Lásd: [erőforráscsoportok figyelése Azure monitor (előzetes verzió)](../in
 ![Erőforráscsoportok Azure Monitor](media/insights-overview/resource-group-insights.png)
 
 ## <a name="azure-monitor-for-vms-preview"></a>Azure Monitor for VMs (előzetes verzió)
-Azure Monitor for VMs az Azure-beli virtuális gépeket (VM) és a virtuálisgép-méretezési csoportokat nagy méretben figyeli. A szolgáltatás elemzi a Windows és Linux rendszerű virtuális gépek teljesítményét és állapotát, valamint figyeli folyamataikat és a más erőforrásokkal és külső folyamatokkal kapcsolatos függőségeiket.
+A virtuális gépekhez készült Azure Monitor képes az Azure-beli virtuális gépek és virtuálisgép-méretezési csoportok nagy léptékű monitorozására. A szolgáltatás elemzi a Windows és Linux rendszerű virtuális gépek teljesítményét és állapotát, valamint figyeli folyamataikat és a más erőforrásokkal és külső folyamatokkal kapcsolatos függőségeiket.
 
 Lásd: [Mi az Azure monitor for VMS?](vminsights-overview.md)
 

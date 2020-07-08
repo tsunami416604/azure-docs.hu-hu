@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 4d2ee2bccf94dca933981c3070323b659eab6cfa
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83836090"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>Sokoldalú navigáció megvalósítása az Azure-ban Cognitive Search
@@ -321,7 +320,7 @@ Bizonyos körülmények között előfordulhat, hogy a dimenziók száma nem egy
 
 A metszeti architektúra miatt pontatlan lehet a dimenziók száma. Minden keresési indexnek több szegmense van, és az egyes szegmensek az első N aspektust jelentik a dokumentumok száma alapján, amelyet aztán egyetlen eredménybe egyesít. Ha egyes szegmensek több egyező értékkel rendelkeznek, míg mások kevesebbet tartalmaznak, előfordulhat, hogy bizonyos aspektusok hiányoznak, vagy az eredmények között szerepelnek.
 
-Bár ez a viselkedés bármikor megváltozhat, ha ez a viselkedés még ma tapasztalható, akkor a darabszámot mesterségesen megnöveli: a \< szám> nagy számra, hogy kikényszerítse az egyes szegmensek teljes jelentéskészítését. Ha a Count érték értéke: nagyobb vagy egyenlő, mint a mezőben szereplő egyedi értékek száma, akkor a pontos eredmények garantáltak. Ha azonban a dokumentumok száma magas, akkor teljesítménybeli szankció van, ezért ezt a beállítást megfontoltan kell használni.
+Bár ez a viselkedés bármikor megváltozhat, ha ez a viselkedés még ma tapasztalható, a darabszám mesterséges feltöltésével: \<number> nagy mennyiségre kikényszerítheti az egyes szegmensek teljes jelentéskészítését. Ha a Count érték értéke: nagyobb vagy egyenlő, mint a mezőben szereplő egyedi értékek száma, akkor a pontos eredmények garantáltak. Ha azonban a dokumentumok száma magas, akkor teljesítménybeli szankció van, ezért ezt a beállítást megfontoltan kell használni.
 
 ### <a name="user-interface-tips"></a>Felhasználói felülettel kapcsolatos tippek
 **Címkék hozzáadása az egyes mezőkhöz a dimenziós navigációban**
@@ -395,7 +394,7 @@ Amikor a keresési eredményekkel dolgozik, tekintse meg az URL-címet a lekérd
    
 <a name="nextstep"></a>
 
-## <a name="learn-more"></a>Részletek
+## <a name="learn-more"></a>Tudjon meg többet
 Tekintse meg az [Azure Cognitive Search a Deep Dive](https://channel9.msdn.com/Events/TechEd/Europe/2014/DBI-B410)szolgáltatást. A 45:25-es verzióban egy bemutató mutatja be, hogyan valósíthatók meg a dimenziók.
 
 A részletes Navigálás tervezési alapelveivel kapcsolatos további információk a következő hivatkozásokat ajánljuk:
