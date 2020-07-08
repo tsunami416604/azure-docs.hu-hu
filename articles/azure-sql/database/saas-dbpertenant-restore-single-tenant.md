@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
 ms.openlocfilehash: 65331136b5b137c44577fd09f3914e8869cc2dcb
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84042798"
 ---
 # <a name="restore-a-single-tenant-with-a-database-per-tenant-saas-application"></a>Egyetlen bérlő visszaállítása adatbázis-bérlői SaaS-alkalmazással
@@ -74,7 +73,7 @@ A helyreállítási forgatókönyvek bemutatásához először "véletlenül" t�
 
 ### <a name="accidentally-delete-the-last-event"></a>"Véletlenül" törli a legutóbbi eseményt
 
-1. A PowerShell ISE-ben nyissa meg a... \\ Tanulási modulok \\ üzletmenet-folytonossági és vész-helyreállítási \\ RestoreTenant \\ *demo-RestoreTenant. ps1*, és állítsa be a következő értéket:
+1. A PowerShell ISE-ben nyissa meg a... \\ Tanulási modulok \\ üzletmenet-folytonossági és vész-helyreállítási \\ RestoreTenant \\ *Demo-RestoreTenant.ps1*, és állítsa be a következő értéket:
 
    * **$DemoScenario**  =  **1**. *törölje az utolsó eseményt (Ticket Sales nélkül)*.
 2. Nyomja le az F5 billentyűt a szkript futtatásához és az utolsó esemény törléséhez. A következő megerősítő üzenet jelenik meg:
@@ -91,10 +90,10 @@ A helyreállítási forgatókönyvek bemutatásához először "véletlenül" t�
 
 Ez a gyakorlat visszaállítja a contoso Concert Hall-adatbázist az esemény törlését megelőző időpontra. Ez a forgatókönyv feltételezi, hogy egy párhuzamos adatbázisban szeretné áttekinteni a törölt fájlokat.
 
- A *Restore-TenantInParallel. ps1* szkript létrehoz egy *ContosoConcertHall \_ Old*nevű párhuzamos bérlői adatbázist egy párhuzamos katalógus-bejegyzéssel. Ez a visszaállítási minta a kisebb adatvesztéssel való helyreállításhoz ideális megoldás. Akkor is használhatja ezt a mintát, ha megfelelőségi vagy naplózási célból át kell tekintenie az adatelemzési célokat. Az [aktív földrajzi replikálás](active-geo-replication-overview.md)használata ajánlott módszer.
+ A *Restore-TenantInParallel.ps1* szkript létrehoz egy *ContosoConcertHall \_ Old*nevű párhuzamos bérlői adatbázist egy párhuzamos katalógus-bejegyzéssel. Ez a visszaállítási minta a kisebb adatvesztéssel való helyreállításhoz ideális megoldás. Akkor is használhatja ezt a mintát, ha megfelelőségi vagy naplózási célból át kell tekintenie az adatelemzési célokat. Az [aktív földrajzi replikálás](active-geo-replication-overview.md)használata ajánlott módszer.
 
 1. Fejezze be a [bérlő szimulálása véletlen adattörlési](#simulate-a-tenant-accidentally-deleting-data) szakaszt.
-2. A PowerShell ISE-ben nyissa meg a... \\ Tanulási modulok \\ üzletmenet-folytonossági és vész-helyreállítási \\ RestoreTenant \\ _demo-RestoreTenant. ps1_.
+2. A PowerShell ISE-ben nyissa meg a... \\ Tanulási modulok \\ üzletmenet-folytonossági és vész-helyreállítási \\ RestoreTenant \\ _Demo-RestoreTenant.ps1_.
 3. **$DemoScenario**  =  **2**beállítása, *a bérlő visszaállítása párhuzamosan*.
 4. A szkript futtatásához nyomja le az F5 billentyűt.
 
@@ -114,7 +113,7 @@ A visszaállított bérlő további bérlőként való kimutatása, a saját ese
 
 Ez a gyakorlat visszaállítja a contoso Concert Hall bérlőjét az esemény törlését megelőző pontra. A *Restore-TenantInPlace* parancsfájl visszaállítja a bérlői adatbázist egy új adatbázisba, és törli az eredetit. Ez a visszaállítási minta leginkább a súlyos adatsérülések helyreállítására alkalmas, és előfordulhat, hogy a bérlőnek jelentős adatvesztéssel kell rendelkeznie.
 
-1. A PowerShell ISE-ben nyissa meg a **demo-RestoreTenant. ps1** fájlt.
+1. A PowerShell ISE-ben nyissa meg a **Demo-RestoreTenant.ps1** fájlt.
 2. Állítsa be **$DemoScenario**  =  **5**, *a bérlő visszaállítása a helyén*.
 3. A szkript futtatásához nyomja le az F5 billentyűt.
 

@@ -6,16 +6,15 @@ ms.author: srchi
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: d16da1588c2fa90c4a40a829ed660fd089ff29ac
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
-ms.translationtype: MT
+ms.openlocfilehash: bead905a3bd4b1cdd46c4cd27775f9d7e03040d5
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85392369"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921198"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Gyakori kérdések az Azure Cosmos DB-hez készült Azure Synapse Linkkel kapcsolatban
 
-A Azure Cosmos DB Azure szinapszis-hivatkozása szoros integrációt hoz létre a Azure Cosmos DB és az Azure szinapszis Analytics között. Lehetővé teszi az ügyfelek számára a közel valós idejű elemzések futtatását a működési adataik teljes teljesítményének elkülönítésével a tranzakciós munkaterhelések és az ETL-folyamat nélkül. Ez a cikk a Azure Cosmos DB-ra vonatkozó szinapszis-hivatkozással kapcsolatos gyakori kérdésekre ad választ.
+A Azure Cosmos DB Azure szinapszis-hivatkozása szoros integrációt hoz létre a Azure Cosmos DB és az Azure szinapszis Analytics között. Lehetővé teszi az ügyfelek számára a közel valós idejű elemzések futtatását a működési adataik teljes teljesítményének elkülönítésével a tranzakciós munkaterhelések és az ETL-folyamat nélkül. Ez a cikk az Azure Cosmos DB-hez készült Azure Synapse Linkkel kapcsolatos gyakori kérdésekre ad választ.
 
 ## <a name="general-faq"></a>Gyakori kérdések – általános
 
@@ -29,6 +28,9 @@ Ha többrégiós Azure Cosmos-fiókot szeretne konfigurálni az analitikai tár 
 
 ### <a name="can-i-choose-to-enable-synapse-link-for-only-certain-region-and-not-all-regions-in-a-multi-region-account-set-up"></a>Engedélyezhető a szinapszis hivatkozás engedélyezése csak bizonyos régiókban, és nem minden régióban a többrégiós fiók beállítása?
 Az előzetes kiadásban, ha a szinapszis-kapcsolat engedélyezve van egy többrégiós fiók esetében, az analitikai tároló minden régióban létrejön. Az alapul szolgáló adatok a tranzakciós tárolóban a teljesítményre és a tranzakciós konzisztenciare vannak optimalizálva.
+
+### <a name="is-backup-and-restore-supported-for-synapse-link-enabled-accounts"></a>Támogatott-e a biztonsági mentés és a visszaállítás a szinapszis-hivatkozások számára engedélyezett fiókok esetében?
+Az előzetes verzióban a szinapszis-kapcsolattal rendelkező adatbázis-fiókok, a tárolók biztonsági mentése és helyreállítása nem támogatott. Ha olyan éles számítási feladatokkal rendelkezik, amelyek biztonsági mentési és visszaállítási funkciókat igényelnek, javasoljuk, hogy ne engedélyezze a szinapszis-hivatkozást ezen adatbázis-fiókokon. 
 
 ### <a name="can-i-disable-the-synapse-link-feature-for-my-azure-cosmos-account"></a>Le tudom tiltani az Azure Cosmos-fiókhoz tartozó szinapszis-hivatkozás funkciót?
 Jelenleg nem tilthatja le a Synapse Link képességet, miután fiókszinten engedélyezte azt.  Ha ki szeretné kapcsolni a képességet, törölnie kell, majd újra létre kell hoznia egy új Azure Cosmos-fiókot.
@@ -127,7 +129,7 @@ A rendszer a következő ikonnal fogja megjeleníteni a tranzakciós tároló t�
 ### <a name="how-do-you-pass-azure-cosmos-db-credentials-from-synapse-studio"></a>Hogyan továbbíthatja Azure Cosmos DB hitelesítő adatait a szinapszis studióból?
 Jelenleg Azure Cosmos DB hitelesítő adatokat a rendszer a társított szolgáltatásnak a Azure Cosmos DB adatbázisokhoz hozzáféréssel rendelkező felhasználó általi létrehozásakor adja át. A tárolóhoz való hozzáférés a munkaterülethez hozzáférő más felhasználók számára is elérhető.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Tudnivalók a [szinapszis-hivatkozás előnyeiről](synapse-link.md#synapse-link-benefits)
 

@@ -4,13 +4,12 @@ description: Ez a cikk bemutatja, hogy a különböző protokollokat (AMQP, Apac
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 8f6c4cbdcbbc1d589b0803f36305f9a9fe6eebfa
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85322747"
 ---
-# <a name="migrate-to-azure-event-hubs-for-apache-kafka-ecosystems"></a>Migrálás az Azure Event Hubs Apache Kafka ökoszisztémák számára
+# <a name="migrate-to-azure-event-hubs-for-apache-kafka-ecosystems"></a>Migrálás az Apache Kafka-ökoszisztémákhoz készült Azure Event Hubsba
 Az Azure Event Hubs egy Apache Kafka-végpontot tesz elérhetővé, amely lehetővé teszi, hogy a Kafka protokoll használatával kapcsolódjon a Event Hubshoz. Ha minimális módosításokat végez a meglévő Kafka-alkalmazásban, csatlakozhat az Azure Event Hubshoz, és kihasználhatja az Azure-ökoszisztéma előnyeit. A Kafka-támogatás Event Hubs [Apache Kafka 1,0](https://kafka.apache.org/10/documentation.html) -es és újabb verzióiban.
 
 ## <a name="pre-migration"></a>A migrálást megelőző folyamatok 
@@ -31,7 +30,7 @@ Szükség lehet a teljes tartománynevet is, amely az Event hub-névtérre mutat
 
 Ha a Event Hubs névtér nem nyilvános felhőre van telepítve, a tartománynév eltérhet (például \* . servicebus.chinacloudapi.cn, \* . servicebus.usgovcloudapi.net vagy \* . servicebus.cloudapi.de).
 
-## <a name="migration"></a>Migrálás 
+## <a name="migration"></a>Áttelepítés 
 
 ### <a name="update-your-kafka-client-configuration"></a>A Kafka-ügyfél konfigurációjának frissítése
 

@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/08/2020
 ms.openlocfilehash: ea6aec9ffcaf01c0db5b297d40783ce4690a8f0a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84045304"
 ---
 # <a name="import-or-export-an-azure-sql-database-without-allowing-azure-services-to-access-the-server"></a>Azure SQL Database importálása vagy exportálása az Azure-szolgáltatások a kiszolgálóhoz való hozzáférésének engedélyezése nélkül
@@ -71,7 +70,7 @@ A következő lépések bemutatják, hogyan csatlakozhat a virtuális géphez t�
 
 [Töltse le és telepítse a SqlPackage legújabb verzióját](https://docs.microsoft.com/sql/tools/sqlpackage-download).
 
-További információ: [SqlPackage. exe](https://docs.microsoft.com/sql/tools/sqlpackage).
+További információ: [SqlPackage.exe](https://docs.microsoft.com/sql/tools/sqlpackage).
 
 ## <a name="create-a-firewall-rule-to-allow-the-vm-access-to-the-database"></a>Tűzfalszabály létrehozása a virtuális gép az adatbázishoz való hozzáférésének engedélyezéséhez
 
@@ -101,7 +100,7 @@ Azure SQL Database a [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackag
 
 A legtöbb éles környezetben a SqlPackage segédprogram használatát javasoljuk a méretezéshez és a teljesítményhez. További információ a BACPAC-fájlokkal végzett migrálásról az SQL Server ügyféltanácsadói csapat blogján: [Migrálás SQL Serverről az Azure SQL Database-re BACPAC-fájlokkal](https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/).
 
-Ez a példa azt szemlélteti, hogyan lehet exportálni egy adatbázist az SqlPackage. exe használatával Active Directory univerzális hitelesítéssel. Cserélje le a értéket a környezetre jellemző értékekre.
+Ez a példa azt mutatja be, hogyan lehet exportálni egy adatbázist SqlPackage.exe használatával Active Directory univerzális hitelesítéssel. Cserélje le a értéket a környezetre jellemző értékekre.
 
 ```cmd
 SqlPackage.exe /a:Export /tf:testExport.bacpac /scs:"Data Source=<servername>.database.windows.net;Initial Catalog=MyDB;" /ua:True /tid:"apptest.onmicrosoft.com"

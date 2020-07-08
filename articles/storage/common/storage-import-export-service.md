@@ -9,10 +9,9 @@ ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: a43637071ec1a9962c8aa1b2262e07354293f12b
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85512426"
 ---
 # <a name="what-is-azure-importexport-service"></a>Mi az az Azure import/export szolgáltatás?
@@ -157,7 +156,7 @@ Ha meghajtókat szállít az Azure-ba, a szállítási költséget a szállítá
 
 A [standard szintű tárolási tranzakciós díj](https://azure.microsoft.com/pricing/details/storage/) az importálás során és az adatexportálás során is érvényes. Az Azure Storage-ból származó adatok exportálásakor a standard szintű kimenő költségek is érvényesek a tárolási tranzakciós költségekkel együtt. A kimenő költségekkel kapcsolatos további információkért lásd az [adatátviteli díjszabást.](https://azure.microsoft.com/pricing/details/data-transfers/)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan használhatja az import/export szolgáltatást a következőhöz:
 

@@ -8,10 +8,9 @@ ms.topic: how-to
 ms.date: 03/05/2020
 ms.author: cherylmc
 ms.openlocfilehash: 5abf79d23ca2de661383cc002dac9d7f9e4dc5bf
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84985574"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>VNet-VNet VPN Gateway-kapcsolat konfigurálása a Azure Portal használatával
@@ -23,7 +22,7 @@ Ebből a cikkből megtudhatja, hogyan csatlakoztathatók a virtuális hálózato
 A cikkben ismertetett lépések a Azure Resource Manager üzemi modellre vonatkoznak, és a Azure Portal használják. Ezt a konfigurációt egy másik központi telepítési eszközzel vagy modellel is létrehozhatja az alábbi cikkekben ismertetett beállítások használatával:
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
+> * [Azure Portalra](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 > * [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
 > * [Azure CLI](vpn-gateway-howto-vnet-vnet-cli.md)
 > * [(Klasszikus) Azure Portal](vpn-gateway-howto-vnet-vnet-portal-classic.md)
@@ -178,7 +177,7 @@ Ezután hozzon létre egy, a Vnet4 felé és a VNet1 közötti kapcsolatokat. Ke
    ![Kapcsolatok ellenőrzése](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/view-connections.png "Kapcsolatok ellenőrzése")
 3. A **név** oszlopban válassza ki a kapcsolatok egyikét a további információk megtekintéséhez. Amikor az adatok áramlanak, az adatok és **az** **adatok ki**lesznek láthatók.
 
-   ![Állapot](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/status.png "status")
+   ![Állapot](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/status.png "Állapot")
 
 ## <a name="add-additional-connections"></a>További kapcsolatok hozzáadása
 

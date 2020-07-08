@@ -8,10 +8,9 @@ ms.topic: how-to
 ms.date: 08/10/2019
 ms.author: rohink
 ms.openlocfilehash: e7c4db7a2fc3ba931415e3b167f7fe72ee2b3980
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84710541"
 ---
 # <a name="host-load-balanced-azure-web-apps-at-the-zone-apex"></a>Elosztott terhelésű Azure Web Apps a zóna csúcsán
@@ -55,7 +54,7 @@ Hozzon létre két webalkalmazást, egyet az egyes App Service-csomagokban.
 1. Az Azure Portal lap bal felső sarkában válassza az **erőforrás létrehozása**lehetőséget.
 2. Írja be a **webalkalmazás** kifejezést a keresősávba, majd nyomja le az ENTER billentyűt.
 3. Válassza a **webalkalmazás**lehetőséget.
-4. Kattintson a **Létrehozás** gombra.
+4. Válassza a **Létrehozás** lehetőséget.
 5. Fogadja el az alapértelmezett értékeket, és a következő táblázat segítségével konfigurálja a két webalkalmazást:
 
    |Name<br>(a. azurewebsites.net belül egyedinek kell lennie)|Erőforráscsoport |Futtatókörnyezet verme|Régió|App Service csomag/hely

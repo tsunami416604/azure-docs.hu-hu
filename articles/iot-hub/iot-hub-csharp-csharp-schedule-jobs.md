@@ -10,10 +10,9 @@ ms.date: 08/20/2019
 ms.author: robinsh
 ms.custom: mqtt
 ms.openlocfilehash: 4c71a108d1967027465d127db50737119af3e2c1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81733368"
 ---
 # <a name="schedule-and-broadcast-jobs-net"></a>Feladatok ütemezett és szórása (.NET)
@@ -78,7 +77,7 @@ Ebben a szakaszban egy olyan .NET-konzol alkalmazást hoz létre, amely a megold
 
 1. Megoldáskezelő kattintson a jobb gombbal a **SimulateDeviceMethods** projektre, majd válassza a **NuGet-csomagok kezelése**lehetőséget.
 
-1. A **NuGet csomagkezelő**területén válassza a **Tallózás** lehetőséget, és keresse meg a **Microsoft. Azure. Devices. Client**elemet. Válassza az **Install** (Telepítés) lehetőséget.
+1. A **NuGet csomagkezelő**területén válassza a **Tallózás** lehetőséget, és keresse meg a **Microsoft. Azure. Devices. Client**elemet. Válassza a **Telepítés** gombot.
 
     ![NuGet csomagkezelő ablak ügyfélalkalmazás](./media/iot-hub-csharp-csharp-schedule-jobs/device-app-nuget.png)
 
@@ -167,7 +166,7 @@ Ebben a szakaszban egy olyan .NET-konzol alkalmazást hoz létre, amely a megold
 
 Ebben a szakaszban létrehoz egy .NET-konzol alkalmazást (a C# használatával), amely feladatokkal hívja meg a **LockDoor** Direct metódust, és több eszközre küldi a kívánt tulajdonságokat.
 
-1. A Visual Studióban válassza a **fájl** > **új** > **projekt**lehetőséget. Az **új projekt létrehozása**területen válassza a **konzol alkalmazás (.NET-keretrendszer)** lehetőséget, majd kattintson a **tovább**gombra.
+1. A Visual Studióban válassza a **fájl**  >  **új**  >  **projekt**lehetőséget. Az **új projekt létrehozása**területen válassza a **konzol alkalmazás (.NET-keretrendszer)** lehetőséget, majd kattintson a **tovább**gombra.
 
 1. Az **új projekt konfigurálása**területen nevezze el a projekt *ScheduleJob*. A **megoldáshoz**válassza a **Hozzáadás a megoldáshoz**lehetőséget, majd válassza a **Létrehozás**lehetőséget.
 
@@ -186,7 +185,7 @@ Ebben a szakaszban létrehoz egy .NET-konzol alkalmazást (a C# használatával)
     using Microsoft.Azure.Devices.Shared;
     ```
 
-1. Ha még nem `using` szerepel az alapértelmezett utasításokban, adja hozzá a következő utasítást.
+1. `using`Ha még nem szerepel az alapértelmezett utasításokban, adja hozzá a következő utasítást.
 
     ```csharp
     using System.Threading;
@@ -295,9 +294,9 @@ Most már készen áll az alkalmazások futtatására.
 
 1. A Visual Studio Megoldáskezelő kattintson a jobb gombbal a megoldásra, majd válassza az **indítási projektek beállítása**lehetőséget.
 
-1. Válassza az **Általános tulajdonságok** > **indítási projekt**elemet, majd válassza a **több indítási projekt**lehetőséget.
+1. Válassza az **Általános tulajdonságok**  >  **indítási projekt**elemet, majd válassza a **több indítási projekt**lehetőséget.
 
-1. Győződjön meg `SimulateDeviceMethods` arról, hogy a lista tetején található, majd `ScheduleJob`a. Állítsa be mindkét műveletét a **kezdéshez** , majd kattintson **az OK gombra**.
+1. Győződjön meg arról, hogy a `SimulateDeviceMethods` lista tetején található, majd a `ScheduleJob` . Állítsa be mindkét műveletét a **kezdéshez** , majd kattintson **az OK gombra**.
 
 1. A projektek futtatásához kattintson a **Start** gombra, vagy lépjen a **hibakeresés** menüre, és kattintson a **hibakeresés indítása**parancsra.
 

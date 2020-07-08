@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewers: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: fe4b25dfd8bf96d1ed6dab189543e0e1b810ecd8
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84042119"
 ---
 # <a name="cross-tenant-reporting-using-distributed-queries"></a>Több-bérlős jelentéskészítés elosztott lekérdezések használatával
@@ -59,7 +58,7 @@ A Wingtip jegyek SaaS több-bérlős adatbázis-parancsfájljai és az alkalmaz�
 
 Ha több érdekes adathalmazon szeretne lekérdezéseket futtatni, a Ticket-Generator futtatásával hozzon létre jegyeladási adatforgalmat.
 
-1. A *POWERSHELL ISE*-ben nyissa meg a... \\ A képzési modulok \\ operatív elemzési ad \\ hoc jelentése \\ *demo-AdhocReporting. ps1* parancsfájl, és a következő értéket állítsa be:
+1. A *POWERSHELL ISE*-ben nyissa meg a... \\ A képzési modulok \\ operatív elemzési ad \\ hoc jelentéskészítési \\ *Demo-AdhocReporting.ps1* parancsfájlt, és a következő értéket adja meg:
    * **$DemoScenario** = 1, **jegyek vásárlása minden helyszínen**.
 2. Nyomja le az **F5** billentyűt a szkript futtatásához és a jegyek értékesítésének létrehozásához. A parancsfájl futása közben folytassa az oktatóanyag lépéseit. A jegyeket az *ad hoc elosztott lekérdezések futtatása* szakaszban kérdezi le, ezért várjon, amíg a Ticket Generator befejeződik.
 
@@ -104,7 +103,7 @@ Parancsfájl a többi *helyszín* nézeteiből megtudhatja, hogyan adja hozzá a
 
 Ez a gyakorlat telepíti a _adhocreporting_ -adatbázist. Ez az a fő adatbázis, amely az összes bérlői adatbázis lekérdezéséhez használt sémát tartalmazza. A rendszer telepíti az adatbázist a meglévő Catalog kiszolgálóra, amely a minta alkalmazásban található összes felügyelettel kapcsolatos adatbázishoz használt kiszolgáló.
 
-1. a *POWERSHELL ISE*-ben nyissa meg a... \\ Oktatási modulok \\ operatív elemzési ad \\ hoc jelentéskészítés \\ *demo-AdhocReporting. ps1*. 
+1. a *POWERSHELL ISE*-ben nyissa meg a... \\ Oktatási modulok \\ operatív elemzési ad \\ hoc jelentéskészítés \\ *Demo-AdhocReporting.ps1*. 
 
 1. Állítsa be **$DemoScenario = 2**, _ad hoc jelentési adatbázis üzembe helyezése_.
 
@@ -191,4 +190,4 @@ Most próbálja ki a [bérlői elemzési oktatóanyagot](saas-tenancy-tenant-ana
 ## <a name="additional-resources"></a>További források
 
 * További [oktatóanyagok, amelyek a Wingtip tickets SaaS-adatbázisra épülnek a bérlői alkalmazások esetében](../../sql-database/saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
-* [Elastic Query](elastic-query-overview.md)
+* [Rugalmas lekérdezés](elastic-query-overview.md)

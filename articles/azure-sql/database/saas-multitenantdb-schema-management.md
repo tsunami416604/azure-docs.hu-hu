@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
 ms.openlocfilehash: b115b410547b37e6cfa369b825c94b6b22436941
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84042175"
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-databases"></a>Séma kezelése egy több-bérlős adatbázisokat használó SaaS-alkalmazásban
@@ -75,10 +74,10 @@ A Wingtip jegyek SaaS több-bérlős adatbázis-szkriptek és az alkalmazás for
 
 Ez az oktatóanyag megköveteli, hogy a PowerShell-lel hozza létre a Job Agent-adatbázist és a feladatot ügynökét. Az SQL Agent által használt MSDB-adatbázishoz hasonlóan a feladatok ügynöke a Azure SQL Database adatbázisát használja a feladatdefiníciók, a feladatok állapotának és az előzményeknek a tárolására. A feladat-ügynök létrehozása után azonnal létrehozhatja és figyelheti a feladatokat.
 
-1. A **POWERSHELL ISE**-ben nyissa meg a *... \\ Learning-modulok \\ séma-felügyeleti \\ demo-SchemaManagement. ps1*.
+1. A **POWERSHELL ISE**-ben nyissa meg a *... \\ Tanulási modulok – \\ séma-felügyeleti \\Demo-SchemaManagement.ps1*.
 2. A szkript futtatásához nyomja le az **F5** billentyűt.
 
-A *demo-SchemaManagement. ps1* parancsfájl meghívja a *Deploy-SchemaManagement. ps1* parancsfájlt, hogy létrehozzon egy _jobagent_ nevű adatbázist a katalógus-kiszolgálón. A szkript ezután létrehozza a feladatot, és paraméterként átadja a _jobagent_ -adatbázist.
+A *Demo-SchemaManagement.ps1* parancsfájl meghívja a *Deploy-SchemaManagement.ps1* parancsfájlt, hogy létrehozzon egy _jobagent_ nevű adatbázist a katalógus-kiszolgálón. A szkript ezután létrehozza a feladatot, és paraméterként átadja a _jobagent_ -adatbázist.
 
 ## <a name="create-a-job-to-deploy-new-reference-data-to-all-tenants"></a>Feladat létrehozása új referenciaadatok bevezetéséhez az összes bérlőn
 

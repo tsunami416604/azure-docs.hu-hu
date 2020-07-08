@@ -9,12 +9,11 @@ ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
 ms.date: 05/08/2020
-ms.openlocfilehash: 17cbf4f7b0ae31b0523a0fbea0c1cae8f83b234b
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
-ms.translationtype: MT
+ms.openlocfilehash: 09bb7710df19482e9625c1834d2646f70368fc1d
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84982594"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920367"
 ---
 # <a name="responsible-machine-learning-ml"></a>Felelős Machine Learning (ML)
 
@@ -36,7 +35,7 @@ Mivel a mesterséges intelligencia és az autonóm rendszerek egyre inkább inte
 
 ## <a name="interpret-and-explain-model-behavior"></a>A modell viselkedésének értelmezése és magyarázata
 
-A nehezen érthető vagy a fekete dobozos rendszerek problematikusak lehetnek, mivel az érintett felek, például a rendszerfejlesztők, a szabályozók, a felhasználók és az üzleti döntéshozók megértik, hogy a rendszer miért tesz bizonyos döntéseket. Néhány AI-rendszer jobban megmagyarázható, mint a többinél, és néha egy kompromisszumos rendszer, amely nagyobb pontossággal rendelkezik, és az egyik még magyarázható.
+A nehezen érthető vagy átlátszatlan rendszerek problémái lehetnek, mert az érintett felek, például a rendszerfejlesztők, a szabályozók, a felhasználók és az üzleti döntéshozók megtudhatják, hogy a rendszer miért tesz bizonyos döntéseket. Néhány AI-rendszer jobban megmagyarázható, mint a többinél, és néha egy kompromisszumos rendszer, amely nagyobb pontossággal rendelkezik, és az egyik még magyarázható.
 
 A értelmezhető AI-rendszerek létrehozásához használja a [InterpretML](https://github.com/interpretml/interpret)-t, amely a Microsoft által készített nyílt forráskódú csomag. A InterpretML a gépi tanulási modellek, például az [automatizált gépi tanulási modellek](how-to-machine-learning-interpretability-automl.md) [értelmezése és magyarázata](how-to-machine-learning-interpretability-aml.md) [Azure Machine learning belül is használható](how-to-machine-learning-interpretability.md) .
 
@@ -68,7 +67,7 @@ A differentially privát rendszereinek megvalósítása nehéz feladat. A [White
 
 A megfelelő információk dokumentálása a gépi tanulási folyamat során kulcsfontosságú a felelős döntések meghozatalához az egyes fázisokban. Az adatlapokon dokumentálhatja a gépi tanulási életciklus részeként használt és létrehozott gépi tanulási eszközöket.
 
-A modellek általában úgy gondolják, mint a "fekete dobozok", és gyakran kevés információ áll rendelkezésre róluk. Mivel a gépi tanulási rendszerek egyre átfogóbbak, és a döntéshozatalhoz használják őket, az adatlapok használata egy lépés a felelősségteljesebb gépi tanulási rendszerek fejlesztése felé.
+A modellek általában úgy gondolják, hogy "átlátszatlan dobozok", és gyakran kevés információ áll rendelkezésre róluk. Mivel a gépi tanulási rendszerek egyre átfogóbbak, és a döntéshozatalhoz használják őket, az adatlapok használata egy lépés a felelősségteljesebb gépi tanulási rendszerek fejlesztése felé.
 
 Néhány modell-információ, amelyet egy adatlap részeként szeretne dokumentálni:
 

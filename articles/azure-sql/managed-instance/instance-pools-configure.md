@@ -13,10 +13,9 @@ ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
 ms.openlocfilehash: 1461ba4ae0bea61b3a220c22144a31eade6cdf04
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84708807"
 ---
 # <a name="deploy-azure-sql-managed-instance-to-an-instance-pool"></a>Az Azure SQL felügyelt példányának üzembe helyezése egy példány-készleten
@@ -43,7 +42,7 @@ A következő táblázat a példány-készletekhez kapcsolódó elérhető műve
 
 Elérhető [PowerShell-parancsok](https://docs.microsoft.com/powershell/module/az.sql/):
 
-|Parancsmag |Leírás |
+|Parancsmag |Description |
 |:---|:---|
 |[Új – AzSqlInstancePool](/powershell/module/az.sql/new-azsqlinstancepool/) | Létrehoz egy SQL-alapú felügyelt példány-készletet. |
 |[Get-AzSqlInstancePool](/powershell/module/az.sql/get-azsqlinstancepool/) | Egy példány-készlet adatait adja vissza. |

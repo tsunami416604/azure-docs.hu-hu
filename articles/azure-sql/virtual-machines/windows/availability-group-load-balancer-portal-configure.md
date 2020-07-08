@@ -13,12 +13,11 @@ ms.workload: iaas-sql-server
 ms.date: 02/16/2017
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: c527ef9767d7b88e956bb1b3354b3067847857d9
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
-ms.translationtype: MT
+ms.openlocfilehash: a2eb6278a9e796c33178f895eede6fd8f2144e9a
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84669324"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921684"
 ---
 # <a name="configure-a-load-balancer-for-a-sql-server-always-on-availability-group-in-azure-virtual-machines"></a>Terheléselosztó konfigurálása SQL Server always on rendelkezésre állási csoporthoz az Azure-ban Virtual Machines
 
@@ -79,7 +78,7 @@ Először hozza létre a Load balancert.
    | **Erőforráscsoport** |Válassza ki azt az erőforráscsoportot, amelybe a SQL Server példányok tartoznak. |
    | **Hely** |Válassza ki azt az Azure-helyet, amelyen a SQL Server példányok szerepelnek. |
 
-6. Kattintson a **Létrehozás** gombra. 
+6. Válassza a **Létrehozás** lehetőséget. 
 
 Az Azure létrehozza a Load balancert. A terheléselosztó egy adott hálózathoz, alhálózathoz, erőforráscsoporthoz és helyhez tartozik. Miután az Azure befejezte a feladatot, ellenőrizze a terheléselosztó beállításait az Azure-ban. 
 
@@ -203,8 +202,10 @@ Tesztelje a kapcsolatokat a következő lépések végrehajtásával:
 1. A Remote Desktop Protocol (RDP) használatával olyan SQL Server-példányhoz csatlakozhat, amely ugyanabban a virtuális hálózatban található, de nem tulajdonosa a replikának. Ez a kiszolgáló lehet a fürt másik SQL Server példánya is.
 
 2. A **Sqlcmd** segédprogram használatával tesztelheti a kapcsolódást. Az alábbi szkript például egy **Sqlcmd** kapcsolatot létesít az elsődleges replikával a figyelőn keresztül a Windows-hitelesítéssel:
-   
-        sqlcmd -S <listenerName> -E
+
+    ```console
+    sqlcmd -S <listenerName> -E
+    ```
 
 Az SQLCMD-kapcsolat automatikusan csatlakozik az elsődleges replikát futtató SQL Server-példányhoz. 
 
@@ -254,7 +255,7 @@ Ha IP-címet szeretne hozzáadni egy terheléselosztó számára a Azure Portal,
     |**Háttér-port** |Használja ugyanazt az értéket, mint a **port**.
     |**Háttér-készlet** |Az SQL Server példányokkal rendelkező virtuális gépeket tartalmazó készlet. 
     |**Állapotadat-mintavétel** |Válassza ki a létrehozott mintavételt.
-    |**Munkamenet-állandóság** |Nincs
+    |**Munkamenet-állandóság** |None
     |**Üresjárati időkorlát (perc)** |Alapértelmezett (4)
     |**Lebegőpontos IP-cím (közvetlen kiszolgáló visszaadása)** | Engedélyezve
 
@@ -303,7 +304,7 @@ Ha egy rendelkezésre állási csoport részt vesz egy elosztott rendelkezésre 
    |**Háttér-port** | 5022 – ugyanazt az értéket használja, mint a **port**.
    |**Háttér-készlet** |Az SQL Server példányokkal rendelkező virtuális gépeket tartalmazó készlet. 
    |**Állapotadat-mintavétel** |Válassza ki a létrehozott mintavételt.
-   |**Munkamenet-állandóság** |Nincs
+   |**Munkamenet-állandóság** |None
    |**Üresjárati időkorlát (perc)** |Alapértelmezett (4)
    |**Lebegőpontos IP-cím (közvetlen kiszolgáló visszaadása)** | Engedélyezve
 
@@ -314,6 +315,6 @@ Ha egy Azure hálózati biztonsági csoporttal korlátozza a hozzáférést, gy�
 - A Load Balancer az AG-figyelőhöz tartozó lebegőpontos IP-címei
 - A fürt alapvető IP-címe, ha van ilyen.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [SQL Server always on rendelkezésre állási csoport konfigurálása különböző régiókban található Azure-beli virtuális gépeken](availability-group-manually-configure-multiple-regions.md)

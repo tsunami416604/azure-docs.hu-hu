@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: 53d12510c4960b16d56ee32f07ca96bc398f999a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84043155"
 ---
 # <a name="disaster-recovery-for-a-multi-tenant-saas-application-using-database-geo-replication"></a>Vész-helyreállítás egy több-bérlős SaaS-alkalmazáshoz az adatbázis-geo-replikáció használatával
@@ -110,7 +109,7 @@ Ebben a feladatban egy olyan folyamatot indít el, amely a kiszolgálók, a ruga
 
 1. A _POWERSHELL ISE_-ben nyissa meg a. ..\Learning Modules\UserConfig.psm1 fájlt. Cserélje le a `<resourcegroup>` és `<user>` a értéket a 10-es és a 11-es vonalakra az alkalmazás üzembe helyezésekor használt értékkel.  Mentse a fájlt!
 
-2. A *POWERSHELL ISE*-ben nyissa meg a. ..\Learning Modules\Business folytonosságát és a katasztrófa-Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 parancsfájlt, és állítsa be a következőket:
+2. A *POWERSHELL ISE*-ben nyissa meg a. ..\Learning Modules\Business folytonosságát és a katasztrófa Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 parancsfájlt, és állítsa be a következőket:
     * **$DemoScenario = 1**, a bérlői kiszolgáló szinkronizálása és a készlet konfigurációs adatainak elindítása a katalógusba
 
 3. Nyomja le az **F5** billentyűt a szinkronizálási parancsfájl futtatásához. A rendszer új PowerShell-munkamenetet nyit meg a bérlői erőforrások konfigurációjának szinkronizálásához.
@@ -128,7 +127,7 @@ Ebben a feladatban egy olyan folyamatot indít el, amely egy duplikált alkalmaz
 > [!Note]
 > Ez az oktatóanyag geo-replikációs védelmet biztosít a Wingtip tickets minta alkalmazáshoz. A földrajzi replikálást használó alkalmazások éles környezetben való üzembe helyezése esetén az egyes bérlők kezdettől kezdve egy földrajzilag replikált adatbázissal lesznek kiépítve. Lásd: [a magasan elérhető szolgáltatások tervezése Azure SQL Database használatával](designing-cloud-solutions-for-disaster-recovery.md#scenario-1-using-two-azure-regions-for-business-continuity-with-minimal-downtime)
 
-1. A *POWERSHELL ISE*-ben nyissa meg a. ..\Learning Modules\Business folytonosságát és a katasztrófa-Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 parancsfájlt, és állítsa be a következő értékeket:
+1. A *POWERSHELL ISE*-ben nyissa meg a. ..\Learning Modules\Business folytonosságát és a katasztrófa Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 parancsfájlt, és állítsa be a következő értékeket:
     * **$DemoScenario = 2**, tükrözött rendszerkép-helyreállítási környezet létrehozása és katalógus-és bérlői adatbázisok replikálása
 
 2. A szkript futtatásához nyomja le az **F5** billentyűt. A rendszer új PowerShell-munkamenetet nyit meg a replikák létrehozásához.
@@ -181,7 +180,7 @@ A helyreállítási parancsfájl a következő feladatokat hajtja végre:
 
 Most képzelje el, hogy az alkalmazás üzembe helyezése és a helyreállítási parancsfájl futtatása a régióban leáll:
 
-1. A *POWERSHELL ISE*-ben nyissa meg a. ..\Learning Modules\Business folytonosságát és a katasztrófa-Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 parancsfájlt, és állítsa be a következő értékeket:
+1. A *POWERSHELL ISE*-ben nyissa meg a. ..\Learning Modules\Business folytonosságát és a katasztrófa Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 parancsfájlt, és állítsa be a következő értékeket:
     * **$DemoScenario = 3**, az alkalmazás helyreállítása helyreállítási régióban a replikák feladatátvételével
 
 2. A szkript futtatásához nyomja le az **F5** billentyűt.  
@@ -212,7 +211,7 @@ Amíg az alkalmazás végpontja le van tiltva a Traffic Managerban, az alkalmaz�
 ### <a name="provision-a-new-tenant-in-the-recovery-region"></a>Új bérlő kiépítése a helyreállítási régióban
 Még az összes meglévő bérlői adatbázis feladatátvétele előtt is kiépítheti az új bérlőket a helyreállítási régióban.  
 
-1. A *POWERSHELL ISE*-ben nyissa meg a. ..\Learning Modules\Business folytonosságát és a katasztrófa-Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 parancsfájlt, és állítsa be a következő tulajdonságot:
+1. A *POWERSHELL ISE*-ben nyissa meg a. ..\Learning Modules\Business folytonosságát és a katasztrófa Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 parancsfájlt, és állítsa be a következő tulajdonságot:
     * **$DemoScenario = 4**, új bérlő kiépítése a helyreállítási régióban
 
 2. Nyomja le az **F5** billentyűt a szkript futtatásához és az új bérlő kiépítéséhez. 
@@ -253,7 +252,7 @@ A helyreállítási folyamat befejezése után az alkalmazás és az összes bé
 Ebben a feladatban frissíti a bérlői adatbázisok egyikét. 
 
 1. A böngészőben keresse meg a contoso Concert Hall eseményeinek listáját, és jegyezze fel az utolsó esemény nevét.
-2. A *POWERSHELL ISE*-ben a. ..\Learning Modules\Business folytonossága és a katasztrófa-Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 parancsfájlban állítsa be a következő értéket:
+2. A *POWERSHELL ISE*-ben a. ..\Learning Modules\Business folytonossága és a katasztrófa Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 parancsfájlban állítsa be a következő értéket:
     * **$DemoScenario = 5** Esemény törlése a helyreállítási régióban lévő bérlőből
 3. Nyomja le az **F5** billentyűt a szkript végrehajtásához
 4. Frissítse a contoso koncert csarnok eseményeinek oldalát ( http://events.wingtip-dpt.&lt ; User &gt; . trafficmanager.net/contosoconcerthall – az &lt; &gt; üzembe helyezés felhasználói értékével helyettesíti a felhasználót), és figyelje meg, hogy az utolsó eseményt törölték.
@@ -278,7 +277,7 @@ A feladatátvétel hatékonyan áthelyezi az adatbázist az eredeti régióba. H
 ### <a name="run-the-repatriation-script"></a>A kivezetés parancsfájl futtatása
 Most képzelje el, hogy a leállás megoldódott, és futtatja a rehazatérési parancsfájlt.
 
-1. A *POWERSHELL ISE*-ben, a. ..\Learning Modules\Business folytonossági és katasztrófa-Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 parancsfájlban.
+1. A *POWERSHELL ISE*-ben a. ..\Learning Modules\Business folytonossága és a katasztrófa Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 szkript.
 
 2. Ellenőrizze, hogy a katalógus szinkronizálási folyamata továbbra is fut-e a PowerShell-példányában.  Szükség esetén indítsa újra a beállítást:
     * **$DemoScenario = 1**, a bérlői kiszolgáló, a készlet és az adatbázis-konfigurációs adatok szinkronizálásának megkezdése a katalógusba

@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
 ms.openlocfilehash: 4dd959d75fd582d787e68db4a415a4a694b9cda8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81770686"
 ---
 # <a name="deployment-best-practices"></a>Ajánlott eljárások az üzembe helyezéshez
@@ -119,7 +118,7 @@ az ad sp create-for-rbac --name "myServicePrincipal" --role contributor \
    --sdk-auth
 ```
 
-A szkriptben jelentkezzen be a `az login --service-principal`használatával, és adja meg a rendszerbiztonsági tag információit. Ezután a használatával `az webapp config container set` beállíthatja a tároló nevét, a címkét, a beállításjegyzék URL-címét és a beállításjegyzék jelszavát. Az alábbiakban néhány hasznos hivatkozást talál a Container CI-folyamat létrehozásához.
+A szkriptben jelentkezzen be a használatával `az login --service-principal` , és adja meg a rendszerbiztonsági tag információit. Ezután `az webapp config container set` a használatával beállíthatja a tároló nevét, a címkét, a beállításjegyzék URL-címét és a beállításjegyzék jelszavát. Az alábbiakban néhány hasznos hivatkozást talál a Container CI-folyamat létrehozásához.
 
 - [Bejelentkezés az Azure CLI-be a Circle CI-ben](https://circleci.com/orbs/registry/orb/circleci/azure-cli) 
 
@@ -131,11 +130,11 @@ Használja a kudu [zipdeploy/](deploy-zip.md) API-t a jar-alkalmazások üzembe 
 
 ### <a name="node"></a>Csomópont
 
-Alapértelmezés szerint a kudu végrehajtja a Node-alkalmazás (`npm install`) létrehozási lépéseit. Ha olyan Build szolgáltatást használ, mint például az Azure DevOps, akkor a kudu-Build szükségtelen. A kudu-Build letiltásához hozzon létre egy `SCM_DO_BUILD_DURING_DEPLOYMENT`alkalmazás-beállítást, amelynek `false`értéke a következő:.
+Alapértelmezés szerint a kudu végrehajtja a Node-alkalmazás () létrehozási lépéseit `npm install` . Ha olyan Build szolgáltatást használ, mint például az Azure DevOps, akkor a kudu-Build szükségtelen. A kudu-Build letiltásához hozzon létre egy alkalmazás-beállítást, amelynek értéke a következő: `SCM_DO_BUILD_DURING_DEPLOYMENT` `false` .
 
 ### <a name="net"></a>.NET 
 
-Alapértelmezés szerint a kudu végrehajtja a .NET-alkalmazás (`dotnet build`) létrehozási lépéseit. Ha olyan Build szolgáltatást használ, mint például az Azure DevOps, akkor a kudu-Build szükségtelen. A kudu-Build letiltásához hozzon létre egy `SCM_DO_BUILD_DURING_DEPLOYMENT`alkalmazás-beállítást, amelynek `false`értéke a következő:.
+Alapértelmezés szerint a kudu végrehajtja a .NET-alkalmazás () létrehozási lépéseit `dotnet build` . Ha olyan Build szolgáltatást használ, mint például az Azure DevOps, akkor a kudu-Build szükségtelen. A kudu-Build letiltásához hozzon létre egy alkalmazás-beállítást, amelynek értéke a következő: `SCM_DO_BUILD_DURING_DEPLOYMENT` `false` .
 
 ## <a name="other-deployment-considerations"></a>Egyéb üzembe helyezési megfontolások
 
@@ -156,4 +155,4 @@ Az ajánlott eljárásokkal kapcsolatos további információkért látogasson e
 - Válassza az **ajánlott eljárások** Kezdőlap csempét.
 - Kattintson az **ajánlott eljárások a rendelkezésre állás & teljesítmény** vagy **ajánlott eljárások az optimális konfigurációhoz** lehetőségre az alkalmazás aktuális állapotának megtekintéséhez az ajánlott eljárásokkal kapcsolatban.
 
-Ezzel a hivatkozással közvetlenül is megnyithatja App Service diagnosztikát az erőforráshoz: `https://ms.portal.azure.com/?websitesextension_ext=asd.featurePath%3Ddetectors%2FParentAvailabilityAndPerformance#@microsoft.onmicrosoft.com/resource/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/troubleshoot`.
+Ezzel a hivatkozással közvetlenül is megnyithatja App Service diagnosztikát az erőforráshoz: `https://ms.portal.azure.com/?websitesextension_ext=asd.featurePath%3Ddetectors%2FParentAvailabilityAndPerformance#@microsoft.onmicrosoft.com/resource/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/troubleshoot` .

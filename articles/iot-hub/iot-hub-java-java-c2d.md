@@ -13,10 +13,9 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: e16d0ed264f32746c11d89e88ea1e67f9383b773
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81732518"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-java"></a>Üzenetküldés a felhőből az eszközre IoT Hub (Java)
@@ -114,7 +113,7 @@ Ebben a szakaszban egy Java-konzol alkalmazást hoz létre, amely a felhőből a
 
 2. A parancssorban navigáljon az új Send-C2D-messages mappára.
 
-3. Egy szövegszerkesztővel nyissa meg a Pom. xml fájlt a Send-C2D-messages mappában, és adja hozzá a következő függőséget a **függőségek** csomóponthoz. A függőség hozzáadása lehetővé teszi, hogy a **iothub-Java-Service-Client** csomagot használja az alkalmazásban az IoT hub szolgáltatással való kommunikációhoz:
+3. Egy szövegszerkesztővel nyissa meg az pom.xml fájlt a Send-C2D-messages mappában, és adja hozzá a következő függőséget a **függőségek** csomóponthoz. A függőség hozzáadása lehetővé teszi, hogy a **iothub-Java-Service-Client** csomagot használja az alkalmazásban az IoT hub szolgáltatással való kommunikációhoz:
 
     ```xml
     <dependency>

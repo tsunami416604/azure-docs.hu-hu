@@ -11,10 +11,9 @@ ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
 ms.openlocfilehash: 90fd3680cfdc4ecd1dcb0ce33b63f8d76dd8bfae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81759467"
 ---
 # <a name="troubleshoot-openshift-container-platform-311-deployment-in-azure"></a>A OpenShift Container platform 3,11 üzembe helyezése az Azure-ban – problémamegoldás
@@ -37,9 +36,9 @@ SSH-t a Ansible forgatókönyv-gazdagéphez. A OKD-sablonhoz (3,9-es és korább
 
 ## <a name="log-files"></a>Naplófájlok
 
-A gazdagép- `/var/lib/waagent/custom-script/download/0` előkészítési parancsfájlok naplófájljai (stderr és StdOut) az összes gazdagépen találhatók. Ha hiba történt a gazdagép előkészítése során, tekintse meg ezeket a naplófájlokat a hiba megállapításához.
+A gazdagép-előkészítési parancsfájlok naplófájljai (stderr és StdOut) az `/var/lib/waagent/custom-script/download/0` összes gazdagépen találhatók. Ha hiba történt a gazdagép előkészítése során, tekintse meg ezeket a naplófájlokat a hiba megállapításához.
 
-Ha az előkészítési parancsfájlok sikeresen futottak, akkor meg kell vizsgálni `/var/lib/waagent/custom-script/download/1` a naplófájlokat a Ansible ötletekbõl-gazdagép könyvtárában. Ha a hiba a OpenShift tényleges telepítése közben történt, akkor az stdout-fájl megjeleníti a hibát. Ezekkel az információkkal további segítségért forduljon az ügyfélszolgálathoz.
+Ha az előkészítési parancsfájlok sikeresen futottak, akkor meg kell vizsgálni a naplófájlokat a `/var/lib/waagent/custom-script/download/1` Ansible ötletekbõl-gazdagép könyvtárában. Ha a hiba a OpenShift tényleges telepítése közben történt, akkor az stdout-fájl megjeleníti a hibát. Ezekkel az információkkal további segítségért forduljon az ügyfélszolgálathoz.
 
 Példa kimenetre
 
@@ -114,5 +113,5 @@ az group update -g <openshift resource group> --set tags.sptest=test
 
 Bizonyos hibák esetén az alábbi parancsokkal további információkat kaphat:
 
-1. systemctl állapot \<szolgáltatás>
+1. systemctl állapota\<service>
 2. journalctl – XE

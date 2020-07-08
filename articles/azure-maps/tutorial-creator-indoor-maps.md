@@ -8,12 +8,11 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 93827e4d5f6bcf66191ae78c18adac71b5dd0a22
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
-ms.translationtype: MT
+ms.openlocfilehash: c3c34ea9e32e100d5756a3930ce9d0147363e379
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85255177"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027868"
 ---
 # <a name="use-creator-to-create-indoor-maps"></a>A Creator használata beltéri térképek létrehozásához
 
@@ -109,6 +108,8 @@ Az adatfeltöltő API egy hosszú ideig futó tranzakció, amely megvalósítja 
     ```http
     https://atlas.microsoft.com/conversion/convert?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0&udid={udid}&inputType=DWG
     ```
+    >[!IMPORTANT]
+    > Előfordulhat, hogy a dokumentumban szereplő API URL-címeket a létrehozó erőforrás helye alapján kell módosítani. További részletekért lásd: [hozzáférés a Creator Serviceshez](how-to-manage-creator.md#access-to-creator-services).
 
 3. Kattintson a **Küldés** gombra, és várjon, amíg a rendszer feldolgozza a kérést. A kérés befejeződése után lépjen a válasz **fejlécek** lapjára, és keresse meg a **hely** kulcsát. Másolja ki a **hely** kulcsának értékét, amely a `status URL` konverziós kérelemhez tartozó érték.
 
@@ -151,7 +152,7 @@ A minta rajzolási csomagot hibák vagy figyelmeztetések nélkül kell konvert�
 }
 ```
 
-## <a name="create-a-dataset"></a>Adatkészlet létrehozása
+## <a name="create-a-dataset"></a>Adathalmaz létrehozása
 
 Az adatkészlet térképi funkciók, például épületek, szintek és szobák gyűjteménye. Adatkészlet létrehozásához használja az [adatkészlet létrehozása API](https://docs.microsoft.com/rest/api/maps/dataset/createpreview)-t. Az adatkészlet létrehozása API veszi át a `conversionId` konvertált rajzfájl értékét, és visszaadja a `datasetId` létrehozott adatkészlet egy részét. Az alábbi lépések bemutatják, hogyan hozhat létre adatkészletet.
 

@@ -12,10 +12,9 @@ ms.author: anjangsh
 ms.reviewer: sstein
 ms.date: 01/25/2019
 ms.openlocfilehash: 8a7efdee772c3a871fb8f26655dfc1160c275959
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84044184"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Ismerkedés a Elastic Database eszközökkel
@@ -87,7 +86,7 @@ A minta letöltéséhez és futtatásához kövesse az alábbi lépéseket:
 
 2. Projekt létrehozásához nyissa meg a *ElasticScaleStarterKit. SLN* megoldást a *C#* könyvtárból.
 
-3. A minta projekthez tartozó megoldásban nyissa meg az *app. config* fájlt. Ezután a fájl utasításait követve adja hozzá a kiszolgáló nevét és a bejelentkezési adatait (Felhasználónév és jelszó).
+3. A minta projekthez tartozó megoldásban nyissa meg a *app.config* fájlt. Ezután a fájl utasításait követve adja hozzá a kiszolgáló nevét és a bejelentkezési adatait (Felhasználónév és jelszó).
 
 4. Hozza létre és futtassa az alkalmazást. Ha a rendszer kéri, engedélyezze a Visual Studio számára a megoldás NuGet-csomagjainak visszaállítását. Ez a művelet letölti a rugalmas adatbázis ügyféloldali függvénytárának legújabb verzióját a NuGet webhelyről.
 
