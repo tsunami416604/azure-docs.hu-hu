@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 11/26/2019
 ms.openlocfilehash: 1922e92f9314e48ae4e3106a53cf750da5daf5e1
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84049833"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>A DTU-alapú vásárlási modell szolgáltatásszintjei
@@ -34,7 +33,7 @@ A DTU-alapú vásárlási modellben a szolgáltatási szintek különböző szá
 
 A szolgáltatási szint kiválasztása elsősorban az üzletmenet folytonossága, a tárterület és a teljesítménnyel kapcsolatos követelményektől függ.
 
-||Basic|Standard|Prémium|
+||Alapszintű|Standard|Prémium|
 | :-- | --: |--:| --:|
 |Cél munkaterhelés|Fejlesztés és gyártás|Fejlesztés és gyártás|Fejlesztés és gyártás|
 |Rendelkezésre állási SLA|99.99%|99.99%|99.99%|
@@ -43,7 +42,7 @@ A szolgáltatási szint kiválasztása elsősorban az üzletmenet folytonossága
 |IO-átviteli sebesség (hozzávetőleges) |1-5 IOPS/DTU| 1-5 IOPS/DTU | 25 IOPS/DTU|
 |IO-késés (hozzávetőleges)|5 MS (olvasás), 10 MS (írás)|5 MS (olvasás), 10 MS (írás)|2 MS (olvasás/írás)|
 |Oszlopcentrikus indexelése |N.A.|S3 és újabb verziók|Támogatott|
-|Memóriában tárolt OLTP|N.A.|N.A.|Támogatott|
+|Memóriabeli OLTP|N.A.|N.A.|Támogatott|
 |||||
 
 > [!IMPORTANT]
@@ -59,7 +58,7 @@ A szolgáltatási szint kiválasztása elsősorban az üzletmenet folytonossága
 
 A számítási méretek az önálló adatbázisok és a rugalmas adatbázis-tranzakciós egységek (Edtu-EK) adatbázis-tranzakciós egységei (DTU) alapján vannak kifejezve. A DTU és Edtu kapcsolatos további információkért lásd: [DTU-alapú vásárlási modell](purchasing-models.md#dtu-based-purchasing-model).
 
-||Basic|Standard|Prémium|
+||Alapszintű|Standard|Prémium|
 | :-- | --: | --: | --: |
 | Maximális tárterület | 2 GB | 1 TB | 4 TB  |
 | Maximális DTU | 5 | 3000 | 4000 | 
@@ -70,7 +69,7 @@ A számítási méretek az önálló adatbázisok és a rugalmas adatbázis-tran
 
 ## <a name="elastic-pool-edtu-storage-and-pooled-database-limits"></a>Rugalmas készlet eDTU, tárolás és készletezett adatbázisok korlátai
 
-| | **Basic** | **Standard** | **Prémium** |
+| | **Alapszintű** | **Standard** | **Prémium** |
 | :-- | --: | --: | --: |
 | Tárterület maximális mérete adatbázison  | 2 GB | 1 TB | 1 TB |
 | Tárterület maximális mérete készlet szerint | 156 GB | 4 TB | 4 TB |
@@ -112,7 +111,7 @@ Az adatbázis méretezési tényezőn alapul. A méretezési tényező (SF-ként
 
 A munkaterhelés kilenc tranzakciós típusból áll, ahogy az alábbi táblázatban is látható. Minden tranzakció úgy van kialakítva, hogy kiemelje a rendszerjellemzők egy adott készletét az adatbázismotor és a rendszer hardverén, nagy kontraszttal a többi tranzakciótól. Ezzel a megközelítéssel könnyebben mérhetővé válik a különböző összetevők hatása a teljes teljesítményre. Például a "READ Heavy" tranzakció jelentős számú olvasási műveletet eredményez a lemezről.
 
-| Transaction Type (Tranzakció típusa) | Leírás |
+| Transaction Type (Tranzakció típusa) | Description |
 | --- | --- |
 | A Lite olvasása |Válassza memóriában tárolt; csak olvasható |
 | Adathordozó olvasása |Válassza többnyire a memóriában; csak olvasható |
@@ -164,7 +163,7 @@ Például az 500-es (SF = 500) adatbázis skálázási tényezője 100 felhaszn�
 
 Egy érvényes teljesítményteszt-futtatáshoz legalább egy óra egyenletes állapotú mérési időtartamra van szükség.
 
-### <a name="metrics"></a>Metrikák
+### <a name="metrics"></a>Mérőszámok
 
 A teljesítményteszt fő mérőszámai az átviteli sebesség és a válaszidő.
 
@@ -175,7 +174,7 @@ A teljesítményteszt fő mérőszámai az átviteli sebesség és a válaszidő
 | --- | --- | --- |
 | Prémium |Tranzakció/másodperc |95. percentilis 0,5 másodpercnél |
 | Standard |Percenkénti tranzakciók |90 százalék 1,0 másodpercnél |
-| Basic |Tranzakció/óra |80th percentilis 2,0 másodpercnél |
+| Alapszintű |Tranzakció/óra |80th percentilis 2,0 másodpercnél |
 
 ## <a name="next-steps"></a>További lépések
 

@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: asrastog
 ms.openlocfilehash: 8d84db9f9c36dc2818c78c5091b1ebe29c35f865
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83726196"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Eszközkapcsolati események megrendelése az Azure IoT Hubról az Azure Cosmos DB használatával
@@ -362,7 +361,7 @@ Ha nem szeretné elveszteni a logikai alkalmazásba fektetett munkáját, a tör
 
 Azure Cosmos DB fióknak a Azure Portalból való eltávolításához kattintson a jobb gombbal a fiók nevére, és kattintson a **fiók törlése**parancsra. [Azure Cosmos db fiók törlésének](https://docs.microsoft.com/azure/cosmos-db/manage-account)részletes utasításait itt tekintheti meg.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ [IoT hub eseményekre való reagálásról Event Grid használatával a műveletek elindításához](../iot-hub/iot-hub-event-grid.md)
 

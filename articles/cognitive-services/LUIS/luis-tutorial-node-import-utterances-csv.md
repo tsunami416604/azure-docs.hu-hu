@@ -1,5 +1,5 @@
 ---
-title: Hosszúságú kimondott szöveg importálása Node. js-LUIS használatával
+title: Hosszúságú kimondott szöveg importálása Node.js-LUIS használatával
 titleSuffix: Azure Cognitive Services
 description: A LUIS authoring API használatával megtudhatja, hogyan hozhat létre programozott módon egy LUIS-alkalmazást a meglévő adatokból CSV formátumban.
 services: cognitive-services
@@ -11,14 +11,13 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: 7b9646f2bab4c17449c6683ae7924af87b184167
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.openlocfilehash: 69eb6c5e5d0139049e252b0a22fefad747429068
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84340181"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057738"
 ---
-# <a name="build-a-luis-app-programmatically-using-nodejs"></a>LUIS-alkalmazás létrehozása programozott módon a Node. js használatával
+# <a name="build-a-luis-app-programmatically-using-nodejs"></a>A LUIS-alkalmazások programozott módon történő létrehozása Node.js
 
 A LUIS egy programozott API-t biztosít, amely mindent tesz a [Luis](luis-reference-regions.md) -webhelynek. Ez időt takaríthat meg, ha korábban már meglévő adatokkal rendelkezik, és gyorsabb megoldás, ha a LUIS-alkalmazást programozott módon hozza létre, mint az adatok kézzel történő megadásával.
 
@@ -26,10 +25,10 @@ A LUIS egy programozott API-t biztosít, amely mindent tesz a [Luis](luis-refere
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Jelentkezzen be a [Luis](luis-reference-regions.md) webhelyre, és keresse meg a [szerzői kulcsot](luis-concept-keys.md#authoring-key) a Fiókbeállítások menüpontban. Ezt a kulcsot használja a szerzői API-k meghívásához.
-* Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+* Jelentkezzen be a [Luis](luis-reference-regions.md) webhelyre, és keresse meg a [szerzői kulcsot](luis-how-to-azure-subscription.md#authoring-key) a Fiókbeállítások menüpontban. Ezt a kulcsot használja a szerzői API-k meghívásához.
+* Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Ez a cikk CSV-vel kezdődik a feltételezett vállalati naplófájlok felhasználói kérésekhez. Töltse le [itt](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/IoT.csv).
-* Telepítse a legújabb Node. js-t a NPM. Töltse le innen [.](https://nodejs.org/en/download/)
+* Telepítse a legújabb Node.jst a NPM. Töltse le innen [.](https://nodejs.org/en/download/)
 * **[Ajánlott]** A Visual Studio Code az IntelliSense és a hibakeresés szolgáltatáshoz ingyenesen [letölthető innen.](https://code.visualstudio.com/)
 
 A cikkben szereplő összes kód az [Azure-samples Language Understanding GitHub-tárházban](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/examples/build-app-programmatically-csv)érhető el.
@@ -118,17 +117,17 @@ Miután az entitások és a leképezések meg lettek adva a LUIS alkalmazásban,
 ## <a name="run-the-code"></a>A kód futtatása
 
 
-### <a name="install-nodejs-dependencies"></a>Node. js-függőségek telepítése
-Telepítse a Node. js-függőségeket a NPM-ből a terminál/parancssorban.
+### <a name="install-nodejs-dependencies"></a>Node.js függőségek telepítése
+Telepítse a Node.js függőségeket a NPM-ből a terminál/parancssorban.
 
 ```console
 > npm install
 ```
 
 ### <a name="change-configuration-settings"></a>Konfigurációs beállítások módosítása
-Az alkalmazás használatához módosítania kell az index. js fájl értékeit a saját végponti kulcsra, és meg kell adnia az alkalmazás nevét. Megadhatja az alkalmazás kulturális környezetét is, vagy megváltoztathatja a verziószámot.
+Az alkalmazás használatához módosítania kell a index.js fájl értékeit a saját végponti kulcsra, és meg kell adnia az alkalmazás nevét. Megadhatja az alkalmazás kulturális környezetét is, vagy megváltoztathatja a verziószámot.
 
-Nyissa meg az index. js fájlt, és módosítsa ezeket az értékeket a fájl elejére.
+Nyissa meg a index.js fájlt, és módosítsa ezeket az értékeket a fájl elejére.
 
 
 ```javascript
@@ -140,7 +139,7 @@ const LUIS_versionId = "0.1";
 ```
 
 ### <a name="run-the-script"></a>A szkript futtatása
-Futtassa a szkriptet egy terminálról/parancssorból a Node. js-vel.
+Futtassa a szkriptet egy terminálról/parancssorból Node.js.
 
 ```console
 > node index.js
@@ -186,7 +185,7 @@ Miután a szkript befejeződik, bejelentkezhet a [luisba](luis-reference-regions
 ![TurnOn szándék](./media/luis-tutorial-node-import-utterances-csv/imported-utterances-661.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Az alkalmazás tesztelése és betanítása a LUIS webhelyén](luis-interactive-test.md)

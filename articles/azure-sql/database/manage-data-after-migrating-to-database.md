@@ -13,10 +13,9 @@ ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
 ms.openlocfilehash: 4c6904cfa2a7a3c3281da9a930fd59e8d511ac89
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85249278"
 ---
 # <a name="new-dba-in-the-cloud--managing-azure-sql-database-after-migration"></a>Új DBA a felhőben – Azure SQL Database kezelése az áttelepítés után
@@ -214,7 +213,7 @@ A következő ábrán az oszlopok főkulcsaihoz tartozó kulcstároló-beállít
 A szervezet és a SQL Database közötti hálózati forgalom általában a nyilvános hálózaton keresztül lesz átirányítva. Ha azonban úgy dönt, hogy optimalizálja ezt az elérési utat, és biztonságosabbá teszi, megtekintheti az Azure-ExpressRoute. A ExpressRoute lényegében lehetővé teszi a vállalati hálózat kibővítését az Azure platformra privát kapcsolaton keresztül. Ezzel nem a nyilvános interneten halad át. Magasabb szintű biztonságot, megbízhatóságot és útválasztási optimalizációt is kap, amely alacsonyabb hálózati késéseket és gyorsabb sebességet tesz lehetővé, mint általában a nyilvános interneten. Ha azt tervezi, hogy a szervezet és az Azure közötti jelentős adatmennyiséget szeretne átvinni, a ExpressRoute használatával költségmegtakarítást eredményezhet. Három különböző csatlakozási modell közül választhat a szervezet és az Azure közötti kapcsolathoz:
 
 - [Felhőalapú Exchange közös elhelyezés](../../expressroute/expressroute-connectivity-models.md#CloudExchange)
-- [Bármilyen](../../expressroute/expressroute-connectivity-models.md#IPVPN)
+- [Bármely elemek között](../../expressroute/expressroute-connectivity-models.md#IPVPN)
 - [Pont – pont](../../expressroute/expressroute-connectivity-models.md#Ethernet)
 
 A ExpressRoute azt is lehetővé teszi, hogy a megvásárolt sávszélesség legfeljebb 2x-re legyen feldolgozva, felár nélkül. Lehetőség van a régiók közötti kapcsolat konfigurálására is a ExpressRoute használatával. A ExpressRoute-kapcsolatok szolgáltatóinak listáját a következő témakörben tekintheti meg: [ExpressRoute Partners és peering Locations](../../expressroute/expressroute-locations.md). A következő cikkek részletesebben ismertetik az expressz útvonalat:

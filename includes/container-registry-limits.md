@@ -9,10 +9,9 @@ ms.date: 06/18/2020
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: 643cf8fd400adf06bf61f070947bd78ba7be50eb
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85242071"
 ---
 | Erőforrás | Alapszintű | Standard | Prémium |
@@ -25,15 +24,15 @@ ms.locfileid: "85242071"
 | Sávszélesség letöltése MBps<sup>2</sup> | 30 | 60 | 100 |
 | Feltöltési sávszélesség (MBps)<sup>2</sup> | 10 | 20 | 50 |
 | Webhookok | 2 | 10 | 500 |
-| Georeplikáció | N/A | N/A | [Támogatott][geo-replication] |
-| Tartalommegbízhatóság | N/A | N/A | [Támogatott][content-trust] |
-| Privát kapcsolat privát végpontokkal | N/A | N/A | [Támogatott][plink] |
-| Szolgáltatási végpont VNet elérése | N/A | N/A | [Előnézet][vnet] |
-| Felhasználó által kezelt kulcsok | N/A | N/A | [Támogatott][cmk] |
-| Tárház – hatókörön belüli engedélyek | N/A | N/A | [Előnézet][token]|
-| &bull;Tokenek | N/A | N/A | 20000 |
-| &bull;Hatóköri térképek | N/A | N/A | 20000 |
-| &bull;Adattárak/hatókör-leképezés | N/A | N/A | 500 |
+| Georeplikáció | N.A. | N.A. | [Támogatott][geo-replication] |
+| Tartalommegbízhatóság | N.A. | N.A. | [Támogatott][content-trust] |
+| Privát kapcsolat privát végpontokkal | N.A. | N.A. | [Támogatott][plink] |
+| Szolgáltatási végpont VNet elérése | N.A. | N.A. | [Előnézet][vnet] |
+| Felhasználó által kezelt kulcsok | N.A. | N.A. | [Támogatott][cmk] |
+| Tárház – hatókörön belüli engedélyek | N.A. | N.A. | [Előnézet][token]|
+| &bull;Tokenek | N.A. | N.A. | 20000 |
+| &bull;Hatóköri térképek | N.A. | N.A. | 20000 |
+| &bull;Adattárak/hatókör-leképezés | N.A. | N.A. | 500 |
 
 
 <sup>1</sup> tárterület az egyes szintek napi díja. A további tárterületért a napi rendszerességgel, a maximális tárolási korlátig érvényes díjat számítunk fel. A díjszabással kapcsolatos információkért lásd: [Azure Container Registry díjszabása][pricing].

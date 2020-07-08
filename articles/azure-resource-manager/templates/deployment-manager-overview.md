@@ -4,12 +4,11 @@ description: Ismerteti, hogyan helyezhet üzembe egy szolgáltatást több régi
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: a91623d22a921b6285723af2b4ca1411b9cf0bab
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
-ms.translationtype: MT
+ms.openlocfilehash: 006c123dfbb682ff5c498872d7f717a4a09e0bb5
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84677882"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057925"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>Biztonságos üzembe helyezési eljárások engedélyezése az Azure telepítéskezelő (nyilvános előzetes verzió)
 
@@ -30,7 +29,7 @@ A topológia sablonját a bevezetési sablon telepítése előtt kell telepíten
 
 További források:
 
-- Az [Azure telepítéskezelő REST API referenciája](https://docs.microsoft.com/rest/api/deploymentmanager/).
+- Az [Azure telepítéskezelő REST API referenciája](/rest/api/deploymentmanager/).
 - [Oktatóanyag: az Azure Telepítéskezelő használata Resource Manager-sablonokkal](./deployment-manager-tutorial.md).
 - [Oktatóanyag: az állapot-ellenőrzési szolgáltatás használata az Azure telepítéskezelőban](./deployment-manager-tutorial-health-check.md).
 - [Egy Azure Telepítéskezelő minta](https://github.com/Azure-Samples/adm-quickstart).
@@ -332,7 +331,7 @@ Ezután használja a (z) paramétert a sablonban:
 
 A verzióval ellátott központi telepítéseket új mappák létrehozásával és a gyökérbe való átadással kezelheti a bevezetés során. Az elérési út az erőforrásokat központilag telepítő sablonra áramlik.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta a telepítéskezelő. A következő cikkből megtudhatja, hogyan helyezheti üzembe a telepítéskezelő használatával.
 

@@ -4,12 +4,11 @@ description: Megtudhatja, hogyan kezelheti és figyelheti Microsoft Azure Recove
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 0afe83edc638cba4cd14cc27b84a98937175fc86
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
-ms.translationtype: MT
+ms.openlocfilehash: 2cd536e191702e2619030c2e0fa06262d2e004ee
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248600"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057823"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Microsoft Azure Recovery Services-(MARS-) ügynök biztonsági másolatainak kezelése a Azure Backup szolgáltatás használatával
 
@@ -167,6 +166,27 @@ A hitelesítő adatok titkosítására és visszafejtésére szolgálnak a helys
 
     ![Jelszó előállítása.](./media/backup-azure-manage-mars/passphrase2.png)
 - Győződjön meg arról, hogy a jelszó biztonságos módon mentve van egy másik helyen (a forrásoldali gépen kívül), lehetőleg a Azure Key Vault. Tartsa nyomon az összes hozzáférési kódot, ha több géppel is rendelkezik a MARS-ügynökökkel való biztonsági mentéssel.
+
+## <a name="managing-backup-data-for-unavailable-machines"></a>Nem elérhető gépek biztonsági mentési információinak kezelése
+
+Ez a szakasz egy olyan forgatókönyvet tárgyal, amelyben a MARStal védett forrásoldali gép már nem érhető el, mert törölték, megsérült, kártevő szoftverrel/ransomware vagy leszerelt.
+
+Ezekhez a gépekhez a Azure Backup szolgáltatás biztosítja, hogy az utolsó helyreállítási pont nem jár le (azaz ne legyen metszve) a biztonsági mentési szabályzatban megadott megőrzési szabályoknak megfelelően. Ezért biztonságosan visszaállíthatja a gépet.  Vegye figyelembe a következő forgatókönyveket a biztonsági másolatban szereplő adatokon:
+
+### <a name="scenario-1-the-source-machine-is-unavailable-and-you-no-longer-need-to-retain-backup-data"></a>1. forgatókönyv: a forrásszámítógép nem érhető el, és már nem kell megőriznie a biztonsági mentési adatait
+
+- A biztonsági másolatban szereplő adatok törlését a Azure Portal a [cikkben](backup-azure-delete-vault.md#delete-protected-items-on-premises)felsorolt lépések alapján törölheti.
+
+### <a name="scenario-2-the-source-machine-is-unavailable-and-you-need-to-retain-backup-data"></a>2. forgatókönyv: a forrásszámítógép nem érhető el, és meg kell őriznie a biztonsági másolatok adatait
+
+A MARS biztonsági mentési szabályzatának kezelése a MARS-konzolon, és nem a portálon keresztül történik. Ha meg kell hosszabbítani a meglévő helyreállítási pontok megőrzési beállításait a lejárat előtt, akkor vissza kell állítania a gépet, telepítenie kell a MARS-konzolt, és ki kell terjesztenie a szabályzatot.
+
+- A gép visszaállításához hajtsa végre a következő lépéseket:
+  - [A virtuális gép visszaállítása egy másik célszámítógépre](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)
+  - Hozza létre újra a célszámítógép nevét ugyanazzal az állomásnévvel, mint a forrásoldali géppel
+  - Telepítse az ügynököt, és regisztrálja újra ugyanazon a tárolón és ugyanazzal a jelszóval
+  - Indítsa el a MARS-ügyfelet, hogy az igényeinek megfelelően kiterjessze a megőrzési időtartamot
+- Az újonnan visszaállított, a MARStal védett gép továbbra is készít biztonsági mentést.  
 
 ## <a name="next-steps"></a>További lépések
 

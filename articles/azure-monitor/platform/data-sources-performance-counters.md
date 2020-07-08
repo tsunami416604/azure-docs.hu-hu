@@ -6,12 +6,11 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: 446beca9b8491fb252a1e3284a9ec9a0e6dabef5
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
-ms.translationtype: MT
+ms.openlocfilehash: 49f944aa98bf0bf8090b10d2feeb50af4a2d42b2
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82739364"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955488"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Windows-és Linux-teljesítményű adatforrások a Azure Monitor
 A Windows és Linux rendszerű teljesítményszámlálók betekintést nyújtanak a hardver-összetevők, operációs rendszerek és alkalmazások teljesítményére.  A Azure Monitor a teljesítményadatok a hosszú távú elemzéshez és jelentéskészítéshez való közel valós idejű (vizsgálja) elemzéshez is összegyűjthetők.
@@ -25,7 +24,7 @@ Amikor először konfigurálja a Windows-vagy Linux-teljesítményszámlálókat
 
 A Windows-teljesítményszámlálók esetében kiválaszthatja az egyes teljesítményszámlálók egy adott példányát. A Linux-teljesítményszámlálók esetében az egyes kiválasztott számlálók a szülő számláló összes alárendelt számlálóján érvényesek. A következő táblázat a Linux és a Windows teljesítményszámlálói számára elérhető általános példányokat mutatja be.
 
-| Példány neve | Leírás |
+| Példány neve | Description |
 | --- | --- |
 | \_Összesen |Összes példány összesen |
 | \* |Minden példány |
@@ -39,7 +38,7 @@ Kövesse ezt az eljárást egy új Windows-teljesítményszámláló hozzáadás
 
 1. Írja be a számláló nevét a Format *objektum (példány) \ számláló*szövegmezőbe.  A gépelés megkezdése után a rendszer a gyakori számlálók megfelelő listáját mutatja be.  Kiválaszthat egy számlálót a listából, vagy megadhatja a kívánt értéket.  A *object\counter*megadásával egy adott számlálóhoz tartozó összes példányt is visszaadhat.  
 
-    SQL Server teljesítményszámlálók elnevezett példányokból való gyűjtésekor az összes elnevezett példány számlálója az *MSSQL $* értékkel kezdődik, amelyet a példány neve követ.  Ha például a log cache találati arány számlálóját szeretné összegyűjteni az SQL-példány INST2 tartozó adatbázis-teljesítmény objektum összes adatbázisához `MSSQL$INST2:Databases(*)\Log Cache Hit Ratio`, akkor a következőt kell megadnia:.
+    SQL Server teljesítményszámlálók elnevezett példányokból való gyűjtésekor az összes elnevezett példány számlálója az *MSSQL $* értékkel kezdődik, amelyet a példány neve követ.  Ha például a log cache találati arány számlálóját szeretné összegyűjteni az SQL-példány INST2 tartozó adatbázis-teljesítmény objektum összes adatbázisához, akkor a következőt kell megadnia: `MSSQL$INST2:Databases(*)\Log Cache Hit Ratio` .
 
 2. Kattintson **+** vagy nyomja le az **ENTER** billentyűt a számláló a listához való hozzáadásához.
 3. Számláló hozzáadásakor a rendszer az alapértelmezett 10 másodpercet használja a **mintavételi intervallumhoz**.  Ez a érték legfeljebb 1800 másodperc (30 perc) lehet, ha csökkenteni szeretné az összegyűjtött teljesítményadatok tárolási követelményeit.
@@ -58,26 +57,28 @@ Kövesse ezt az eljárást egy új Linux-teljesítményszámláló hozzáadásá
 5. Ha elkészült a számlálók hozzáadásával, kattintson a képernyő felső részén található **Mentés** gombra a konfiguráció mentéséhez.
 
 #### <a name="configure-linux-performance-counters-in-configuration-file"></a>Linux-teljesítményszámlálók konfigurálása a konfigurációs fájlban
-A Linux-teljesítményszámlálók a Azure Portal használatával történő konfigurálása helyett lehetősége van a konfigurációs fájlok szerkesztésére a Linux-ügynökön.  A gyűjteni kívánt teljesítmény-mérőszámokat a **/etc/opt/Microsoft/omsagent/\<munkaterület-azonosító\>/conf/omsagent.conf**konfigurációja vezérli.
+A Linux-teljesítményszámlálók a Azure Portal használatával történő konfigurálása helyett lehetősége van a konfigurációs fájlok szerkesztésére a Linux-ügynökön.  A gyűjteni kívánt teljesítmény-mérőszámokat a **/etc/opt/Microsoft/omsagent/ \<workspace id\> /conf/omsagent.conf**konfigurációja vezérli.
 
-A gyűjteni kívánt teljesítmény-mérőszámok minden objektumát vagy kategóriáját egyetlen `<source>` elemként kell definiálni a konfigurációs fájlban. A szintaxis az alábbi mintát követi.
+A gyűjteni kívánt teljesítmény-mérőszámok minden objektumát vagy kategóriáját egyetlen elemként kell definiálni a konfigurációs fájlban `<source>` . A szintaxis az alábbi mintát követi.
 
-    <source>
-      type oms_omi  
-      object_name "Processor"
-      instance_regex ".*"
-      counter_name_regex ".*"
-      interval 30s
-    </source>
+```xml
+<source>
+    type oms_omi  
+    object_name "Processor"
+    instance_regex ".*"
+    counter_name_regex ".*"
+    interval 30s
+</source>
+```
 
 
 Az ebben az elemben található paramétereket a következő táblázat ismerteti.
 
-| Paraméterek | Leírás |
+| Paraméterek | Description |
 |:--|:--|
-| objektum\_neve | A gyűjtemény objektumának neve. |
-| példányok\_regexje |  Egy *reguláris kifejezés* , amely meghatározza, hogy mely példányokat kell gyűjteni. Az érték: `.*` az összes példányt megadja. Ha csak az \_összes példány processzor-metrikáit szeretné összegyűjteni, megadhatja `_Total`a következőt:. Ha csak a crond vagy sshd példányok feldolgozási metrikáit szeretné összegyűjteni, megadhatja a következőt: `(crond\|sshd)`. |
-| számláló\_neve\_regex | Egy *reguláris kifejezés* , amely meghatározza, hogy mely számlálókat (az objektumhoz) kell összegyűjteni. Az objektum összes számlálójának összegyűjtéséhez a következőt kell megadnia: `.*`. Ha csak a memória-objektum lapozófájl-számlálóit szeretné összegyűjteni, például megadhatja a következőket:`.+Swap.+` |
+| objektum \_ neve | A gyűjtemény objektumának neve. |
+| példányok \_ regexje |  Egy *reguláris kifejezés* , amely meghatározza, hogy mely példányokat kell gyűjteni. Az érték: az `.*` összes példányt megadja. Ha csak az összes példány processzor-metrikáit szeretné összegyűjteni \_ , megadhatja a következőt: `_Total` . Ha csak a crond vagy sshd példányok feldolgozási metrikáit szeretné összegyűjteni, megadhatja a következőt: `(crond\|sshd)` . |
+| számláló \_ neve \_ regex | Egy *reguláris kifejezés* , amely meghatározza, hogy mely számlálókat (az objektumhoz) kell összegyűjteni. Az objektum összes számlálójának összegyűjtéséhez a következőt kell megadnia: `.*` . Ha csak a memória-objektum lapozófájl-számlálóit szeretné összegyűjteni, például megadhatja a következőket:`.+Swap.+` |
 | interval | Az objektum számlálóinak gyűjtésének gyakorisága. |
 
 
@@ -142,37 +143,39 @@ A következő táblázat felsorolja a konfigurációs fájlban megadható objekt
 
 A teljesítmény-metrikák alapértelmezett konfigurációja a következő:
 
-    <source>
-      type oms_omi
-      object_name "Physical Disk"
-      instance_regex ".*"
-      counter_name_regex ".*"
-      interval 5m
-    </source>
+```xml
+<source>
+    type oms_omi
+    object_name "Physical Disk"
+    instance_regex ".*"
+    counter_name_regex ".*"
+    interval 5m
+</source>
 
-    <source>
-      type oms_omi
-      object_name "Logical Disk"
-      instance_regex ".*
-      counter_name_regex ".*"
-      interval 5m
-    </source>
+<source>
+    type oms_omi
+    object_name "Logical Disk"
+    instance_regex ".*
+    counter_name_regex ".*"
+    interval 5m
+</source>
 
-    <source>
-      type oms_omi
-      object_name "Processor"
-      instance_regex ".*
-      counter_name_regex ".*"
-      interval 30s
-    </source>
+<source>
+    type oms_omi
+    object_name "Processor"
+    instance_regex ".*
+    counter_name_regex ".*"
+    interval 30s
+</source>
 
-    <source>
-      type oms_omi
-      object_name "Memory"
-      instance_regex ".*"
-      counter_name_regex ".*"
-      interval 30s
-    </source>
+<source>
+    type oms_omi
+    object_name "Memory"
+    instance_regex ".*"
+    counter_name_regex ".*"
+    interval 30s
+</source>
+```
 
 ## <a name="data-collection"></a>Adatgyűjtés
 Azure Monitor a megadott mintavételi intervallumban gyűjti az összes megadott teljesítményszámlálókat az összes olyan ügynökön, amelyen telepítve van a számláló.  Az adatokat nem összesíti a rendszer, és a nyers adatokat a log Analytics-munkaterület által megadott időtartamra vonatkozó összes naplózási lekérdezési nézetben elérhetővé kell tennie.
@@ -184,7 +187,7 @@ A teljesítményadatokat a teljesítmény **típusa és a** következő tábláz
 |:--- |:--- |
 | Computer |Az a számítógép, amelyre az eseményt gyűjtötték. |
 | CounterName |A teljesítményszámláló neve |
-| CounterPath |A számláló teljes elérési útja az űrlap \\ \\ \<számítógép>\\objektum (példány)\\számlálójában. |
+| CounterPath |A számláló teljes elérési útja az űrlap- \\ \\ \<Computer> \\ objektum (példány) \\ számlálójában. |
 | Kártyabirtokos számlájának megterhelését |A számláló numerikus értéke. |
 | InstanceName |Az esemény példányának neve.  Üres, ha nincs példány. |
 | ObjectName |A teljesítményobjektum neve |
@@ -194,12 +197,12 @@ A teljesítményadatokat a teljesítmény **típusa és a** következő tábláz
 ## <a name="sizing-estimates"></a>Méretezési becslések
  Egy adott számláló 10 másodperces időközönként történő gyűjtésének durva becslése napi 1 MB-onként történik.  Megbecsülheti egy adott számláló tárolási követelményeit a következő képlettel.
 
-    1 MB x (number of counters) x (number of agents) x (number of instances)
+> 1 MB x (számlálók száma) x (ügynökök száma) x (példányok száma)
 
 ## <a name="log-queries-with-performance-records"></a>Lekérdezések naplózása a teljesítménnyel kapcsolatos rekordokkal
 Az alábbi táblázat különböző példákat tartalmaz a teljesítményadatokat lekérő lekérdezések naplózására.
 
-| Lekérdezés | Leírás |
+| Lekérdezés | Description |
 |:--- |:--- |
 | Teljesítmény |Minden teljesítményadatok |
 | Teljesítményfigyelő &#124;, ahol a számítógép = = "Sajátgép" |Egy adott számítógépről származó összes teljesítményadatok |

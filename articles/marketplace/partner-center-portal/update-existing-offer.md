@@ -7,12 +7,11 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/16/2020
-ms.openlocfilehash: 8b8362a4d5ad742f29637ed03133bc6983bd5dd9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: eca054d2db5eca1948d1085e105e91af19fc132e
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80285146"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057959"
 ---
 # <a name="update-an-existing-offer-in-the-commercial-marketplace"></a>Meglévő ajánlat frissítése a kereskedelmi piactéren
 
@@ -37,20 +36,29 @@ Ha készen áll a frissített ajánlat közzétételére, válassza a **Közzét
 > [!IMPORTANT]
 > Ha elérhető, tekintse át az ajánlat előzetes verzióját, és válassza a **Go-Live** lehetőséget a frissített ajánlat közzétételéhez a célközönség (nyilvános vagy magánjellegű) számára.
 
+## <a name="add-a-plan-to-an-existing-offer"></a>Csomag hozzáadása meglévő ajánlathoz
+
+Új csomag hozzáadása a már közzétett meglévő ajánlaton belül:
+
+1. Ha megnyitotta az ajánlat **Áttekintés** lapját, nyissa meg a **terv áttekintés** lapot, és válassza az **új csomag létrehozása**lehetőséget.
+1. Hozzon létre egy új tervet az [irányelvek](./create-new-saas-offer.md#plan-overview) alapján a **meglévő csomagok díjszabási modelljének**használatával.
+1. A terv nevének módosítása után válassza a **Piszkozat mentése** lehetőséget. 
+1. Válassza a **Közzététel** lehetőséget, amikor készen áll a frissítések közzétételére. Megnyílik a **[felülvizsgálat és közzététel](#review-and-publish-an-updated-offer)** lap, amely a frissítések befejezési állapotát biztosítja.
+
 ## <a name="update-a-plan-within-an-existing-offer"></a>Csomag frissítése egy meglévő ajánlaton belül
 
 Ha módosítani kíván egy csomagot egy meglévő, már közzétett ajánlaton belül:
 
-- Ha az **ajánlat áttekintése** oldalon meg van nyitva a meglévő ajánlat, válassza ki a módosítani kívánt csomagot. Ha a csomag nem érhető el a **csomag áttekintése** listából, válassza a **minden csomag**megjelenítése lehetőséget.
-- Kiválaszthatja a csomag **nevét**, a **díjszabási modellt**vagy a **rendelkezésre állást**. *Jelenleg a csomagok csak angol nyelven (Egyesült Államok) érhetők el*.
-- Válassza a **Mentés** lehetőséget a csomag nevének, leírásának, díjszabásának vagy célközönségének elérhetővé tételéhez szükséges módosítások elvégzése után. 
-- Ha készen áll a frissítések közzétételére, válassza a **Közzététel** lehetőséget. Ekkor megnyílik a **[felülvizsgálati és közzétételi](#review-and-publish-an-updated-offer)** oldal, és megadhatja a frissítések befejezési állapotát.
+1. Ha megnyitotta az ajánlat **Áttekintés** lapját, válassza ki a módosítani kívánt csomagot. Ha a csomag nem érhető el a **terv áttekintő** listájában, válassza a **minden csomag megtekintése**lehetőséget.
+1. Kiválaszthatja a csomag **nevét**, a **díjszabási modellt**vagy a **rendelkezésre állást**. *Jelenleg a csomagok csak angol nyelven érhetők el (Egyesült Államok)*.
+1. Válassza a **Mentés** lehetőséget a csomag nevének, leírásának vagy célközönségének elérhetővé tételéhez szükséges módosítások elvégzése után. 
+1. Válassza a **Közzététel** lehetőséget, amikor készen áll a frissítések közzétételére. Megnyílik a **[felülvizsgálat és közzététel](#review-and-publish-an-updated-offer)** lap, amely a frissítések befejezési állapotát biztosítja.
 
 ## <a name="compare-changes-to-marketplace-offers"></a>A Piactéri ajánlatok változásainak összehasonlítása
 
-A [közzétett](#compare-changes-to-published-offer) vagy [előnézeti](#compare-changes-to-a-preview-offer) ajánlaton végzett módosítások naplózása előtt az **összehasonlítás**segítségével is naplózhatja őket.
+A [közzétett](#compare-changes-to-published-offer) vagy [előnézeti](#compare-changes-to-a-preview-offer) ajánlaton végzett módosítások naplózása előtt végezze el az **összehasonlítást**.
 
->[!NOTE]
+> [!NOTE]
 > A közzétett ajánlat olyan ajánlat, amely sikeresen közzé lett téve az előzetes verzióban vagy az élő állapotban.
 
 Az általános naplózási információk alább találhatók:
@@ -122,9 +130,9 @@ Miután megerősítette, hogy törölni kívánja a terv tervezetét, a terv tö
 
 Ajánlat megszakítása a **Közzététel folyamatban** állapotában:
 
-- Válassza ki az ajánlat nevét az **ajánlat áttekintő** oldalának megnyitásához.
-- Válassza a **Közzététel megszakítása** elemet a lap jobb felső sarkában.
-- Erősítse meg, hogy le kívánja állítani az ajánlat közzétételét.
+1. Válassza ki az ajánlat nevét az **ajánlat áttekintő** oldalának megnyitásához.
+1. Kattintson a **Közzététel megszakítása gombra** a lap jobb felső sarkában.
+1. Erősítse meg, hogy le kívánja állítani az ajánlat közzétételét.
 
 Ha egy későbbi időpontban szeretné közzétenni az ajánlatot, el kell indítania a közzétételi folyamatot.
 

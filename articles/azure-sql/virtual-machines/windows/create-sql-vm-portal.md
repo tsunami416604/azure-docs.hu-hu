@@ -15,10 +15,9 @@ ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 8b16551abf5b52a9b848988a50fe556d364907b2
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84669290"
 ---
 # <a name="how-to-use-the-azure-portal-to-provision-a-windows-virtual-machine-with-sql-server"></a>Windows rendszerű virtuális gép kiépítése a Azure Portal használatával SQL Server
@@ -56,7 +55,7 @@ SQL Server virtuális gép létrehozásakor kiválaszthatja a virtuális gépek 
    > A lehetőségekkel kapcsolatos további információkért tekintse meg [az SQL Server Azure virtuális gépek díjszabási útmutatóját](pricing-guidance.md).
 
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 
 ## <a name="1-configure-basic-settings"></a>1. az alapszintű beállítások konfigurálása
@@ -109,7 +108,7 @@ A **lemezek** lapon adja meg a lemez beállításait.
 ![Az SQL virtuális gép lemezének beállításai](./media/create-sql-vm-portal/azure-sqlvm-disks.png)
   
   
-### <a name="networking"></a>Hálózatkezelés
+### <a name="networking"></a>Hálózat
 
 A **hálózatkezelés** lapon konfigurálja a hálózati beállításokat. 
 
@@ -137,7 +136,7 @@ A **SQL Server beállítások** lapon adja meg a SQL Server adott beállításai
 
 - [Kapcsolódás](#connectivity)
 - [Hitelesítés](#authentication)
-- [Azure Key Vault-integráció](#azure-key-vault-integration)
+- [Azure Key Vault integráció](#azure-key-vault-integration)
 - [Tárolási konfiguráció](#storage-configuration)
 - [Automatikus javítás](#automated-patching)
 - [Automatikus biztonsági mentés](#automated-backup)
@@ -282,6 +281,6 @@ Az alábbi fejezetek bemutatják, hogyan csatlakozhat az interneten keresztül a
   > Ez a példa a Common 1433-as portot használja. Ezt az értéket azonban módosítani kell, ha egy másik portot (például 1401) adott meg a SQL Server VM telepítése során. 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az SQL Server használatáról az Azure-ban: [SQL Server on Azure Virtual Machines](sql-server-on-azure-vm-iaas-what-is-overview.md) (SQL Server az Azure virtuális gépeken) és [Frequently Asked Questions](frequently-asked-questions-faq.md) (Gyakran ismételt kérdések).

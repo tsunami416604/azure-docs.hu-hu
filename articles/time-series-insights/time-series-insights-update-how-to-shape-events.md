@@ -10,12 +10,11 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 02/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: 99a2f32c3f76d7fec475c9b299f7208b4db29cfe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: fd2c58b07f3be5d5fa6d99d0c8c64906b81e7de4
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77650923"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86036984"
 ---
 # <a name="shape-events-with-azure-time-series-insights-preview"></a>Események Azure Time Series Insights előzetes verzióval
 
@@ -33,7 +32,7 @@ Az általános ajánlott eljárások a következők:
 A legjobb lekérdezési teljesítmény érdekében tartsa be a következő szabályokat a hüvelykujjhoz:
 
 * Ne küldjön felesleges tulajdonságokat. Time Series Insights előnézeti számlákat használat szerint. A legjobb, ha csak a lekérdezni kívánt adatfeldolgozást szeretné tárolni és feldolgozni.
-* A statikus adathoz használjon példány mezőket. Ez a módszer segít elkerülni a statikus adatok hálózaton keresztüli küldését. A példány mezői, az idősorozat-modell egyik összetevője, például a Time Series Insights szolgáltatásban általánosan elérhető hivatkozási adat. Ha többet szeretne megtudni a példány mezőiről, olvassa el a [Time Series-modell](./time-series-insights-update-tsm.md)című témakört.
+* A statikus adathoz használjon példány mezőket. Ez a módszer segít elkerülni a statikus adatok hálózaton keresztüli küldését. A példány mezői, az idősorozat-modell egyik összetevője, például a Time Series Insights szolgáltatásban általánosan elérhető hivatkozási adat. Ha többet szeretne megtudni a példány mezőiről, olvassa el a [Time Series-modell](./concepts-model-overview.md)című témakört.
 * Dimenzió tulajdonságainak megosztása két vagy több esemény között. Ezzel a gyakorlattal hatékonyabban küldhet adatküldést a hálózaton keresztül.
 * Ne használjon mély tömbös beágyazást. Time Series Insights az előzetes verzió legfeljebb két olyan beágyazott tömböt támogat, amelyek objektumokat tartalmaznak. Time Series Insights az előnézet az üzenetekben található tömböket több, tulajdonság érték párokkal rendelkező eseménybe.
 * Ha csak néhány mérték létezik az összes vagy a legtöbb eseménynél, érdemes elküldenie ezeket a mértékeket különálló tulajdonságokként ugyanazon az objektumon belül. A küldésük külön csökkenti az események számát, és növelheti a lekérdezési teljesítményt, mert kevesebb eseményt kell feldolgozni.
@@ -50,11 +49,11 @@ A betöltés során a beágyazott objektumokat tartalmazó adattárolók összeo
    },
    ```
 
-   A ( `data_flow` z) lesz: összeolvasztáskor.
+   A (z) lesz: `data_flow` összeolvasztáskor.
 
 > [!IMPORTANT]
-> * Azure Time Series Insights az előnézet aláhúzásokat (`_`) használ az oszlopok megjelenítéséhez.
-> * Figyelje meg, hogy az általános elérhetőségtől eltérnek`.`a használati időszakok ().
+> * Azure Time Series Insights az előnézet aláhúzásokat ( `_` ) használ az oszlopok megjelenítéséhez.
+> * Figyelje meg, hogy az általános elérhetőségtől eltérnek a használati időszakok ( `.` ).
 
 Az összetettebb forgatókönyvek az alábbi ábrán láthatók.
 
@@ -95,7 +94,7 @@ Egyetlen Azure IoT Hub üzenet van elküldve, ahol a külső tömb a közös dim
 
 **Elvihető ételek**
 
-* A JSON-példa olyan külső tömböt tartalmaz, amely [idősorozat-példányok](./time-series-insights-update-tsm.md#time-series-model-instances) mennyiségét használja az üzenet hatékonyságának növelése érdekében. Bár a Time Series-példányok eszközének metaadatai valószínűleg nem változnak, gyakran hasznos tulajdonságokat biztosítanak az adatok elemzéséhez.
+* A JSON-példa olyan külső tömböt tartalmaz, amely [idősorozat-példányok](./concepts-model-overview.md#time-series-model-instances) mennyiségét használja az üzenet hatékonyságának növelése érdekében. Bár a Time Series-példányok eszközének metaadatai valószínűleg nem változnak, gyakran hasznos tulajdonságokat biztosítanak az adatok elemzéséhez.
 
 * A JSON két vagy több üzenetet egyesít (egy-egy-egy eszközről) egyetlen hasznos adatba, amely a sávszélességet az idő múlásával menti.
 
@@ -106,7 +105,7 @@ Egyetlen Azure IoT Hub üzenet van elküldve, ahol a külső tömb a közös dim
 
 #### <a name="time-series-instance"></a>Idősorozat-példány 
 
-Ismerkedjen meg közelebbről, hogy miként alakíthatja át a JSON-t optimálisan a [Time Series-példány](./time-series-insights-update-tsm.md#time-series-model-instances) használatával. 
+Ismerkedjen meg közelebbről, hogy miként alakíthatja át a JSON-t optimálisan a [Time Series-példány](./concepts-model-overview.md#time-series-model-instances) használatával. 
 
 > [!NOTE]
 > Az [Idősorozat-azonosítók](./time-series-insights-update-how-to-id.md) alább találhatók: *DeviceID*.
@@ -180,7 +179,7 @@ Vegye figyelembe a következő JSON-t:
 }
 ```
 
-A fenti példában az összeolvasztott `data["flow"]` tulajdonság a `data_flow` tulajdonsággal való elnevezési ütközést jelent.
+A fenti példában az összeolvasztott tulajdonság a `data["flow"]` tulajdonsággal való elnevezési ütközést jelent `data_flow` .
 
 Ebben az esetben a *legújabb* tulajdonság értéke felülírja a korábbiat. 
 

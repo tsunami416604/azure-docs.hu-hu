@@ -12,10 +12,9 @@ ms.date: 12/13/2017
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: afd36eb079b6e5f29fa664050cded3c5ddd17d8e
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84669460"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-linux-virtual-machines"></a>SQL Server on Linux virtuális gépekkel kapcsolatos gyakori kérdések
@@ -57,7 +56,7 @@ Ez a cikk a [SQL Server on Linux virtuális gépek](sql-server-on-linux-vm-what-
 
    A RHEL és a SLES virtuális gépekhez a költségkeret nélküli előfizetés, valamint az előfizetéshez társított ellenőrzött fizetési mód (általában bankkártyás) szükséges. Ha kiépít egy RHEL vagy SLES virtuális gépet a költségkeret eltávolítása nélkül, az előfizetés le lesz tiltva, és az összes virtuális gép/szolgáltatás leállt. Ha ezt az állapotot futtatja, az előfizetés újbóli engedélyezésével [távolítsa el a](https://account.windowsazure.com/subscriptions)költségkeretet. A fennmaradó kreditek vissza lesznek állítva az aktuális számlázási időszakra, de a RHEL vagy SLES virtuálisgép-lemezkép felára a hitelkártyára kerül, ha úgy dönt, hogy újraindul, és folytatja a futtatását.
 
-## <a name="licensing"></a>Licencelés
+## <a name="licensing"></a>Licencek
 
 1. **Hogyan telepíthetem az SQL Server egy licencelt példányát egy Azure-beli virtuális gépen?**
 
@@ -87,13 +86,13 @@ Ez a cikk a [SQL Server on Linux virtuális gépek](sql-server-on-linux-vm-what-
 
    Jelenleg nincs helyszíni frissítés az Azure-beli virtuális gépeken futtatott SQL Serverhez. Hozzon létre egy új Azure-beli virtuális gépet a kívánt SQL Server-verzióval vagy -kiadással, majd migrálja az adatbázisait az új kiszolgálóra [a szokásos adatmigrálási eljárásokkal](https://docs.microsoft.com/sql/linux/sql-server-linux-migrate-overview).
 
-## <a name="general"></a>Általános
+## <a name="general"></a>Általános kérdések
 
 1. **Az Azure-beli virtuális gépeken támogatott magas rendelkezésre állású megoldások SQL Server?**
 
    Jelenleg nem. Az Always On rendelkezésre állási csoportok és a feladatátvételi fürtszolgáltatás is szükség van egy Linux-alapú fürtözési megoldásra, például a pacemakerre. A SQL Server támogatott Linux-disztribúciói nem támogatják a magas rendelkezésre állású bővítményeket a felhőben.
 
-## <a name="resources"></a>Források
+## <a name="resources"></a>Erőforrások
 
 **Linux rendszerű virtuális gépek**:
 

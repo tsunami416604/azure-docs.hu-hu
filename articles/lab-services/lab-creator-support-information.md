@@ -4,10 +4,9 @@ description: Ez a cikk azt ismerteti, hogyan tekinthetik meg a labor-készítők
 ms.date: 06/26/2020
 ms.topic: how-to
 ms.openlocfilehash: 3e04245c3f2d9b0a4f4e98ae21287983cf679ec6
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85445049"
 ---
 # <a name="view-support-information-lab-creator-in-azure-lab-services"></a>Támogatási információk megtekintése (tesztkörnyezet-létrehozó Azure Lab Services)
