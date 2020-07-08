@@ -9,12 +9,12 @@ tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/24/2020
-ms.openlocfilehash: 47c3606b0b1ada93aeb8a107f48222fb26483a9c
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.openlocfilehash: 45f9c56fce0c843d9f1ed069abf7d1ed6e2fa604
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85368277"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565902"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Szolgáltatás-felügyelet az Azure Cognitive Search a Azure Portal
 
@@ -28,7 +28,6 @@ ms.locfileid: "85368277"
 
 Az Azure Cognitive Search egy teljes körűen felügyelt, felhőalapú keresési szolgáltatás, amellyel gazdag keresési élményt hozhat létre egyéni alkalmazásokba. Ez a cikk ismerteti azokat a szolgáltatás-felügyeleti feladatokat, amelyeket elvégezhet a [Azure Portalban](https://portal.azure.com) egy már üzembe helyezett keresési szolgáltatáshoz. A szolgáltatás felügyeletét könnyű megtervezni, a következő feladatokra korlátozódik:
 
-* Szerezze be a szolgáltatással és a tartalommal kapcsolatos információkat az **Áttekintés** kezdőlapján.
 * Győződjön meg arról, hogy a tároló a középső oldal **használati** hivatkozását használja.
 * Vizsgálja meg a lekérdezési köteteket és a késést a középső oldal **figyelési** hivatkozásának használatával, valamint hogy a kérelmek szabályozása megtörtént-e.
 * A hozzáférés kezelése a **kulcsok** oldal bal oldalán.
@@ -138,7 +137,7 @@ Nincs olyan észlelési módszer, amely közli, hogy mely indexek vannak tárolv
 
 Ha segítségre van szüksége a jövőbeli tervezéssel kapcsolatban, érdemes lehet megtekinteni a tárterületet (az [indexek statisztikájának lekérése](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)használatával), hogy megtekintse, mennyit használt 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Automatizálás a [PowerShell](search-manage-powershell.md) -lel
 

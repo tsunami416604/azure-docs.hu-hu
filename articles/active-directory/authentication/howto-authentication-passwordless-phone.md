@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 100e4b88589f3731d127ccb1060e556c1f3a2f39
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.openlocfilehash: 8b5dbf26bc636107576af15a0217eb16302f63f4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85413246"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85601632"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Jelszó nélküli bejelentkezés engedélyezése a Microsoft Authenticator alkalmazással (előzetes verzió)
 
@@ -103,7 +103,7 @@ A Mobile Application Management (MAM)-t igénylő szabályzat hatálya alá eső
 
 ## <a name="next-steps"></a>További lépések
 
-[Mi a jelszó nélküli hitelesítés?](concept-authentication-passwordless.md)
+[Ismerje meg, hogyan működik a jelszavas hitelesítés](concept-authentication-passwordless.md)
 
 [Tudnivalók az eszközök regisztrálásáról](../devices/overview.md#getting-devices-in-azure-ad)
 

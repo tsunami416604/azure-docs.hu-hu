@@ -2,13 +2,13 @@
 title: Adatmegőrzés és tárolás az Azure Application Insightsban | Microsoft Docs
 description: Adatmegőrzési és adatvédelmi szabályzati nyilatkozat
 ms.topic: conceptual
-ms.date: 06/11/2020
-ms.openlocfilehash: d77eaa32c8487d1aa87626683b4c29bf1cee0e75
-ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
+ms.date: 06/30/2020
+ms.openlocfilehash: 848285accd7e05607bac418b6b4ae39055a5772f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84718682"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85601360"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Adatgyűjtés,-megőrzés és-tárolás Application Insights
 
@@ -18,8 +18,8 @@ Először is a rövid választ:
 
 * A "kívülről" futó szabványos telemetria-modulok nem valószínű, hogy bizalmas adatokat küldjenek a szolgáltatásnak. A telemetria a terheléssel, a teljesítménnyel és a használattal kapcsolatos metrikákkal, a kivételekkel és egyéb diagnosztikai adatokkal foglalkozik. A diagnosztikai jelentésekben látható fő felhasználói adatértékek URL-címek; az alkalmazás azonban nem tartalmazhat bizalmas adatokat egyszerű szövegként egy URL-címben.
 * Írhat olyan kódot, amely további egyéni telemetria küld a diagnosztika és a figyelés használatának elősegítése érdekében. (Ez a bővíthetőség a Application Insights nagyszerű funkciója.) A kód megírása lehetséges, ha a személyes és más bizalmas adatokat is tartalmaz. Ha az alkalmazása ilyen jellegű adatkezelési művelettel működik, alapos felülvizsgálati folyamatot kell alkalmaznia az összes írt kódra.
-* Az alkalmazás fejlesztése és tesztelése során könnyen megvizsgálhatja, hogy mi történik az SDK-ban. Az adatokat az IDE és böngésző kimeneti ablakában jeleníti meg. 
-* Az adattárolást az Egyesült Államokban vagy Európában [Microsoft Azure](https://azure.com) -kiszolgálók tárolják. (De az alkalmazás bárhol futhat.) Az Azure [erős biztonsági folyamatokkal rendelkezik, és megfelel a megfelelőségi szabványok széles skálájának](https://azure.microsoft.com/support/trust-center/). Csak Ön és a kijelölt csapat férhet hozzá az adataihoz. A Microsoft munkatársai csak bizonyos korlátozott körülmények között érhetik el a hozzáférést az Ön számára. Az átvitel és a nyugalmi állapotban is titkosítva van.
+* Az alkalmazás fejlesztése és tesztelése során könnyen megvizsgálhatja, hogy mi történik az SDK-ban. Az adatokat az IDE és böngésző kimeneti ablakában jeleníti meg.
+* Ha új Application Insights erőforrást hoz létre, akkor kiválaszthatja a helyet. További információ a Application Insights rendelkezésre állásról [régiónként.](https://azure.microsoft.com/global-infrastructure/services/?products=all)
 *   Tekintse át az összegyűjtött adatokat, mivel ez tartalmazhat olyan adatokat, amelyek bizonyos esetekben megengedettek, de mások nem.  Jó példa erre az eszköz nevére. A kiszolgáló eszközének neve nem befolyásolja az adatvédelmet, és hasznos lehet, de egy telefonról vagy laptopról származó eszköz neve adatvédelmi következményekkel járhat, és kevésbé hasznos lehet. Az SDK elsődlegesen a célkiszolgáló számára lett kifejlesztve, így az eszköz neve alapértelmezés szerint összegyűjthető, és előfordulhat, hogy a normál eseményeken és kivételeken felül kell írni.
 
 A cikk további részében részletesen ismertetjük a válaszokat. Úgy tervezték, hogy önálló legyen, így megjelenítheti azokat a munkatársakat, akik nem részei a közvetlen csapatának.
@@ -213,7 +213,7 @@ Nem ajánlott explicit módon beállítani az alkalmazást úgy, hogy csak a TLS
 | Windows Server 2012 – 2016 | Támogatott, és alapértelmezés szerint engedélyezve van. | Annak ellenőrzése, hogy továbbra is az [alapértelmezett beállításokat](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) használja-e |
 | Windows 7 SP1 és Windows Server 2008 R2 SP1 | Támogatott, de alapértelmezés szerint nincs engedélyezve. | Az engedélyezésével kapcsolatos részletekért tekintse meg a [Transport Layer Security (TLS) beállításjegyzék-beállítások](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) lapját.  |
 | Windows Server 2008 SP2 | A TLS 1,2 támogatásához frissítés szükséges. | Lásd: [frissítés a TLS 1,2 támogatásának hozzáadásához](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s) a Windows Server 2008 SP2-ben. |
-|Windows Vista | Nem támogatott. | N/A
+|Windows Vista | Nem támogatott. | N.A.
 
 ### <a name="check-what-version-of-openssl-your-linux-distribution-is-running"></a>Győződjön meg arról, hogy az OpenSSL milyen verziója fut a Linux-disztribúcióban
 

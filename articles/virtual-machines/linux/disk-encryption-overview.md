@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5c227c6ab24d6b71445354d1b17d238e80bf6313
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 75e469b30632bb7e7e8f6445db78acda784ac5da
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655845"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85601275"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Azure Disk Encryption Linux rendszerű virtuális gépekhez 
 
@@ -56,7 +56,7 @@ A Azure Disk Encryption az [Azure által támogatott Linux-disztribúciók](endo
 
 Az Azure által nem támogatott Linux Server-disztribúciók nem támogatják a Azure Disk Encryption; a támogatottak közül csak a következő disztribúciók és verziók támogatják a Azure Disk Encryption:
 
-| Publisher | Ajánlat | SKU | URN | Titkosításhoz támogatott kötet típusa |
+| Publisher | Ajánlat | Termékváltozat | URN | Titkosításhoz támogatott kötet típusa |
 | --- | --- |--- | --- |
 | Canonical | Ubuntu | 18,04 – LTS | Canonical: UbuntuServer: 18.04-LTS: legújabb | Operációs rendszer és az adatlemez |
 | Canonical | Ubuntu 18.04 | 18,04 – NAPONTA – LTS | Canonical: UbuntuServer: 18.04-DAILY-LTS: legújabb | Operációs rendszer és az adatlemez |
@@ -64,7 +64,6 @@ Az Azure által nem támogatott Linux Server-disztribúciók nem támogatják a 
 | Canonical | Ubuntu-14.04.5</br>[Az Azure-ban beállított kernel 4,15-es vagy újabb verzióra frissült](disk-encryption-troubleshooting.md) | 14.04.5-LTS | Canonical: UbuntuServer: 14.04.5-LTS: legújabb | Operációs rendszer és az adatlemez |
 | Canonical | Ubuntu-14.04.5</br>[Az Azure-ban beállított kernel 4,15-es vagy újabb verzióra frissült](disk-encryption-troubleshooting.md) | 14.04.5 – NAPI – LTS | Canonical: UbuntuServer: 14.04.5-DAILY-LTS: legújabb | Operációs rendszer és az adatlemez |
 | RedHat | RHEL 7,7 | 7.7 | RedHat: RHEL: 7.7: legújabb | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
-| RedHat | RHEL 7,7 | 7 – NYERS | RedHat: RHEL: 7 – nyers: legújabb | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
 | RedHat | RHEL 7,7 | 7 – LVM | RedHat: RHEL: 7 – LVM: legújabb | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
 | RedHat | RHEL 7,6 | 7.6 | RedHat: RHEL: 7.6: legutóbbi | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
 | RedHat | RHEL 7.5 | 7,5 | RedHat: RHEL: 7.5: legújabb | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
@@ -94,7 +93,7 @@ Az Azure által nem támogatott Linux Server-disztribúciók nem támogatják a 
 
 ## <a name="additional-vm-requirements"></a>További virtuális gépekre vonatkozó követelmények
 
-Azure Disk Encryption megköveteli, hogy a dm-crypt és a VFAT modulok jelen legyenek a rendszeren. A VFAT eltávolítása vagy letiltása az alapértelmezett rendszerképből megakadályozza, hogy a rendszer beolvassa a kulcs kötetét, és beszerezze a lemezek zárolásának feloldásához szükséges kulcsot a későbbi újraindítások során. A VFAT modul rendszerből való eltávolítására szolgáló rendszer-megerősítési lépések nem kompatibilisek a Azure Disk Encryptionokkal. 
+Azure Disk Encryption megköveteli, hogy a dm-crypt és a VFAT modulok jelen legyenek a rendszeren. A VFAT eltávolítása vagy letiltása az alapértelmezett rendszerképből megakadályozza, hogy a rendszer beolvassa a kulcs kötetét, és beszerezze a lemezek zárolásának feloldásához szükséges kulcsot a későbbi újraindítások során. A VFAT modul a rendszerből való eltávolítására, illetve az operációsrendszer-csatolási/-mappák az adatmeghajtókon való kibővítésének betartatására szolgáló rendszer-megerősítési lépések nem kompatibilisek a Azure Disk Encryptionokkal. 
 
 A titkosítás engedélyezése előtt a titkosítani kívánt adatlemezeknek megfelelően szerepelniük kell a/etc/fstab. Bejegyzések létrehozásakor használja a "sikertelen" lehetőséget, és válassza ki az állandó blokk eszköz nevét (ahogy az "/dev/sdX" formátumban nem lehet ugyanahhoz a lemezhez hozzárendelni az újraindítások között, különösen a titkosítás után, a viselkedésről részletesebben lásd: Linux rendszerű [virtuális gép eszköz nevének módosítása](troubleshoot-device-names-problems.md)).
 

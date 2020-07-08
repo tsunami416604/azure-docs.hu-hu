@@ -9,15 +9,15 @@ ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
-ms.date: 04/21/2020
-ms.openlocfilehash: b8869eee4e44001f5d4aeafbbdb32f93f0a7e0c8
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.date: 06/27/2020
+ms.openlocfilehash: 476f3925886a6de68b49e1861d22e6cfaf594202
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433335"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85601453"
 ---
-# <a name="how-to-run-jupyter-notebooks-in-your-workspace-preview"></a>Jupyter-jegyzetfüzetek futtatása a munkaterületen (előzetes verzió)
+# <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Jupyter-jegyzetfüzetek futtatása a munkaterületen
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Megtudhatja, hogyan futtathat Jupyter-jegyzetfüzeteket közvetlenül a munkaterületen a Azure Machine Learning Studióban. A [Jupyter](https://jupyter.org/) vagy a [JupyterLab](https://jupyterlab.readthedocs.io)elindításához lehetősége van a jegyzetfüzetek szerkesztésére és futtatására is a munkaterület elhagyása nélkül.
@@ -31,7 +31,7 @@ Ismerje meg, hogyan teheti meg:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://aka.ms/AMLFree) a virtuális gép létrehozásának megkezdése előtt.
+* Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://aka.ms/AMLFree).
 * Machine Learning munkaterület. Lásd: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md).
 
 ## <a name="create-notebooks"></a><a name="create"></a>Jegyzetfüzetek létrehozása
@@ -49,12 +49,14 @@ A Azure Machine Learning munkaterületen hozzon létre egy új Jupyter-jegyzetf�
 1. Nevezze el a fájlt. 
 1. Jupyter Notebook fájlok esetében válassza a **Python notebook** lehetőséget a fájl típusaként.
 1. Válassza ki a kívánt könyvtárat.
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
-> [!TIP]
-> Szövegfájlokat is létrehozhat.  Válassza ki a kívánt **szöveget** , és adja hozzá a kiterjesztést a névhez (például myfile.py vagy sajat. txt).  
+Szövegfájlokat is létrehozhat.  Válassza ki a kívánt **szöveget** , és adja hozzá a kiterjesztést a névhez (például myfile.py vagy myfile.txt)  
 
 A notebookok oldal tetején található eszközökkel mappákat és fájlokat is feltölthet, beleértve a jegyzetfüzeteket is.  A jegyzetfüzetek és a legtöbb szöveges fájltípus az előnézet szakaszban látható.  A legtöbb fájltípushoz nem érhető el előzetes verzió.
+
+> [!IMPORTANT]
+> A jegyzetfüzetekben és parancsfájlokban lévő tartalmak beolvashatják a munkamenetek adatait, és az Azure-beli szervezet nélkül férhetnek hozzá az adatokhoz.  Csak megbízható forrásból származó fájlok betöltése. További információ: [biztonságos kód – ajánlott eljárások](concept-secure-code-best-practice.md#azure-ml-studio-notebooks).
 
 ### <a name="clone-samples"></a>Minták klónozása
 
@@ -95,15 +97,37 @@ Másolja és illessze be az URL-címet egy jegyzetfüzet vagy fájl megosztásá
 
 A jegyzetfüzetek szerkesztéséhez nyissa meg a munkaterület **felhasználói fájlok** szakaszában található bármelyik jegyzetfüzetet. Kattintson a szerkeszteni kívánt cellára. 
 
-Ha egy rendszert futtató számítási példány fut, akkor a kód befejezését is használhatja az [IntelliSense](https://code.visualstudio.com/docs/editor/intellisense)használatával, bármely Python-jegyzetfüzetben.
+A jegyzetfüzetet a számítási példányhoz való csatlakozás nélkül is szerkesztheti.  Ha a jegyzetfüzetben szeretné futtatni a cellákat, válasszon ki vagy hozzon létre egy számítási példányt.  Ha leállított számítási példányt választ, a rendszer automatikusan elindítja az első cella futtatásakor.
+
+Ha egy számítási példány fut, akkor a kód befejezését is használhatja az [IntelliSense](https://code.visualstudio.com/docs/editor/intellisense)használatával, bármely Python-jegyzetfüzetben.
 
 A Jupyter vagy a JupyterLab a jegyzetfüzet eszköztáráról is elindíthatja.  A Azure Machine Learning nem biztosít frissítéseket, és nem javítja ki a Jupyter vagy a JupyterLab hibáit, mivel a Microsoft ügyfélszolgálata határán kívül nyílt forráskódú termékek.
+
+### <a name="use-intellisense"></a>IntelliSense használata
+
+Az [IntelliSense](https://code.visualstudio.com/docs/editor/intellisense) egy kód-kiegészítési támogatás, amely számos funkciót tartalmaz: tagok listázása, a paraméterek adatai, a gyors információ és a teljes szó. Ezek a funkciók segítenek többet megtudni a használt kódokról, nyomon követhetik a beírt paramétereket, és hívásokat adhatnak hozzá a tulajdonságokhoz és metódusokhoz, csak néhány billentyűleütéssel.  
+
+A kód beírásakor használja a CTRL + SZÓKÖZ billentyűkombinációt az IntelliSense aktiválásához.
+
+### <a name="save-and-checkpoint-a-notebook"></a>Jegyzetfüzet mentése és ellenőrzőpont
+
+A Azure Machine Learning egy *ipynb*-fájl létrehozásakor létrehoz egy ellenőrzőpont-fájlt   .
+
+A jegyzetfüzet eszköztárán válassza ki a menüt, majd a **fájl &gt; mentése és ellenőrzőpont** elemet a jegyzetfüzet manuális mentéséhez, és a rendszer hozzáadja a jegyzetfüzethez tartozó ellenőrzőpont-fájlt.
+
+:::image type="content" source="media/how-to-run-jupyter-notebooks/file-save.png" alt-text="Képernyőkép a Mentés eszközről a jegyzetfüzet eszköztárán":::
+
+Minden jegyzetfüzetet 30 másodpercenként kell megtakarítani.Az automatikus mentés szolgáltatás csak a kezdeti *ipynb*   -fájlt frissíti, nem az ellenőrzőpont-fájlt.
+ 
+Válassza az **ellenőrzőpontok** lehetőséget a notebook menüben egy elnevezett ellenőrzőpont létrehozásához és a jegyzetfüzet egy mentett ellenőrzőpontra való visszavonásához.
+
 
 ### <a name="useful-keyboard-shortcuts"></a>Hasznos billentyűparancsok
 
 |Billentyűzet  |Műveletek  |
 |---------|---------|
 |SHIFT + ENTER     |  Cella futtatása       |
+|CTRL + SZÓKÖZ | IntelliSense aktiválása |
 |CTRL + M (Windows)     |  A lapfülek alátöltésének engedélyezése/letiltása a jegyzetfüzetben.       |
 |CTRL + SHIFT + M (Mac & Linux)     |    A lapfülek alátöltésének engedélyezése/letiltása a jegyzetfüzetben.     |
 |Tab (ha engedélyezve van a TAB trap) | "\T" karakter hozzáadása (behúzás)
@@ -125,7 +149,7 @@ Egy kísérlet jegyzetfüzetből való futtatásához először egy futó [szám
 
 1. Válassza ki **+** a jegyzetfüzet eszköztárát. 
 2. Nevezze el a számítást, és válassza ki a **virtuális gép méretét**. 
-3. Kattintson a **Létrehozás** gombra.
+3. Válassza a **Létrehozás** lehetőséget.
 4. A számítási példány automatikusan csatlakozik a jegyzetfüzethez, és most már futtathatja a cellákat.
 
 Csak az Ön által létrehozott számítási példányok láthatók és használhatók.  A **felhasználói fájlokat** a rendszer külön tárolja a virtuális gépen, és a munkaterület összes számítási példánya között meg van osztva.
@@ -193,7 +217,7 @@ A **kernel** legördülő lista melletti kijelző megjeleníti az állapotát.
 
 A számítási példányok részleteit a [Studióban](https://ml.azure.com), a **számítási** oldalon találhatja meg.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az első kísérlet futtatása](tutorial-1st-experiment-sdk-train.md)
 * [A file Storage biztonsági mentése pillanatképekkel](../storage/files/storage-snapshots-files.md)

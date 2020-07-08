@@ -6,15 +6,15 @@ ms.author: avverma
 ms.topic: conceptual
 ms.service: virtual-machine-scale-sets
 ms.subservice: management
-ms.date: 04/14/2020
+ms.date: 06/26/2020
 ms.reviewer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: c06ad5ab2688bd62fdf898950a8f64cd655a9fcc
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: af0dea5297cca02b12aecdc8252e62030032b93e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124975"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85601343"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Azure virtuálisgép-méretezési csoport automatikus operációsrendszer-rendszerképének frissítése
 
@@ -46,11 +46,11 @@ A frissítési folyamat a következőképpen működik:
 A méretezési csoport operációs rendszerének frissítése Orchestrator az összes köteg frissítése előtt ellenőrzi a teljes méretezési csoport állapotát. Egy köteg frissítése közben más párhuzamos tervezett vagy nem tervezett karbantartási tevékenységek lehetnek, amelyek hatással lehetnek a méretezési csoport példányainak állapotára. Ilyen esetekben, ha a méretezési csoport példányainak több mint 20%-a állapota sérült, akkor a méretezési csoport frissítése az aktuális köteg végén leáll.
 
 ## <a name="supported-os-images"></a>Támogatott operációsrendszer-lemezképek
-Jelenleg csak bizonyos operációsrendszer-platform-lemezképek támogatottak. Az egyéni lemezképek támogatása [előzetes](virtual-machine-scale-sets-automatic-upgrade.md#automatic-os-image-upgrade-for-custom-images-preview) verzióban érhető el az egyéni lemezképek számára a [megosztott rendszerkép](shared-image-galleries.md)-katalóguson keresztül.
+Jelenleg csak bizonyos operációsrendszer-platform-lemezképek támogatottak. Az egyéni lemezképek akkor [támogatottak,](virtual-machine-scale-sets-automatic-upgrade.md#automatic-os-image-upgrade-for-custom-images) ha a méretezési csoport egyéni lemezképeket használ a [megosztott](shared-image-galleries.md)képkatalóguson keresztül.
 
 A következő platformos SKU-EK jelenleg támogatottak (és a továbbiak rendszeres időközönként bővülnek):
 
-| Közzétevő               | Operációs rendszer ajánlata      |  SKU               |
+| Publisher               | Operációs rendszer ajánlata      |  SKU               |
 |-------------------------|---------------|--------------------|
 | Canonical               | UbuntuServer  | 16.04-LTS          |
 | Canonical               | UbuntuServer  | 18,04 – LTS          |
@@ -77,90 +77,25 @@ A következő platformos SKU-EK jelenleg támogatottak (és a továbbiak rendsze
 ### <a name="service-fabric-requirements"></a>Service Fabric követelmények
 
 Ha Service Fabric használ, győződjön meg arról, hogy teljesülnek a következő feltételek:
--   Service Fabric [tartóssági szint](../service-fabric/service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) Silver vagy Gold, és nem bronz.
+-   Service Fabric [tartóssági szint](../service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster) Silver vagy Gold, és nem bronz.
 -   A méretezési csoport modelljének definíciójában a Service Fabric-bővítménynek TypeHandlerVersion 1,1 vagy újabb értékűnek kell lennie.
 -   A tartóssági szintnek azonosnak kell lennie a Service Fabric-fürtön, és Service Fabric bővítményt a méretezési csoport modelljének definíciójában.
+- Nincs szükség további állapot-mintavételre vagy alkalmazás-állapot kiterjesztésére.
 
 Győződjön meg arról, hogy a tartóssági beállítások nem egyeznek meg a Service Fabric-fürtön, és Service Fabric a bővítményt, mivel az eltérés a frissítési hibákat eredményezi. A tartóssági szintek az [ezen az oldalon](../service-fabric/service-fabric-cluster-capacity.md#changing-durability-levels)vázolt irányelvek szerint módosíthatók.
 
 
-## <a name="automatic-os-image-upgrade-for-custom-images-preview"></a>Operációs rendszer lemezképének automatikus frissítése egyéni lemezképekhez (előzetes verzió)
+## <a name="automatic-os-image-upgrade-for-custom-images"></a>Operációs rendszer lemezképének automatikus frissítése egyéni lemezképekhez
 
-> [!IMPORTANT]
-> Az egyéni lemezképek automatikus operációsrendszer-lemezkép-frissítése jelenleg nyilvános előzetes verzióban érhető el. Az alábbiakban ismertetett nyilvános előzetes funkciók használatához egy opt-in eljárás szükséges.
-> Ezt az előzetes verziót szolgáltatói szerződés nélkül biztosítjuk, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
-> További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Az operációsrendszer-lemezképek automatikus frissítése előzetes verzióban érhető el a [megosztott](shared-image-galleries.md)képkatalóguson keresztül üzembe helyezett egyéni lemezképekhez. Más egyéni lemezképek nem támogatottak az operációsrendszer-lemezképek automatikus frissítéséhez.
-
-Az előzetes verzió működésének engedélyezéséhez egyszeri bejelentkezésre van szükség az *AutomaticOSUpgradeWithGalleryImage* szolgáltatáshoz, az alábbiakban részletezett módon.
-
-### <a name="rest-api"></a>REST API
-Az alábbi példa azt ismerteti, hogyan engedélyezhető az előfizetés előnézete:
-
-```
-POST on `/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Compute/features/AutomaticOSUpgradeWithGalleryImage/register?api-version=2015-12-01`
-```
-
-A szolgáltatás regisztrálása akár 15 percet is igénybe vehet. A regisztráció állapotának ellenõrzése:
-
-```
-GET on `/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Compute/features/AutomaticOSUpgradeWithGalleryImage?api-version=2015-12-01`
-```
-
-Miután regisztrálta a szolgáltatást az előfizetéséhez, fejezze be a beléptetési folyamatot a számítási erőforrás-szolgáltatóra történő váltás propagálásával.
-
-```
-POST on `/subscriptions/{subscriptionId}/providers/Microsoft.Compute/register?api-version=2019-12-01`
-```
-
-### <a name="azure-powershell"></a>Azure PowerShell
-Az előfizetés előnézetének engedélyezéséhez használja a [Register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) parancsmagot.
-
-```azurepowershell-interactive
-Register-AzProviderFeature -FeatureName AutomaticOSUpgradeWithGalleryImage -ProviderNamespace Microsoft.Compute
-```
-
-A szolgáltatás regisztrálása akár 15 percet is igénybe vehet. A regisztráció állapotának ellenõrzése:
-
-```azurepowershell-interactive
-Get-AzProviderFeature -FeatureName AutomaticOSUpgradeWithGalleryImage -ProviderNamespace Microsoft.Compute
-```
-
-Miután regisztrálta a szolgáltatást az előfizetéséhez, fejezze be a beléptetési folyamatot a számítási erőforrás-szolgáltatóra történő váltás propagálásával.
-
-```azurepowershell-interactive
-Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
-```
-
-### <a name="azure-cli-20"></a>Azure CLI 2.0
-Az az [Feature Register](/cli/azure/feature#az-feature-register) paranccsal engedélyezheti az előfizetésének előnézetét.
-
-```azurecli-interactive
-az feature register --namespace Microsoft.Compute --name AutomaticOSUpgradeWithGalleryImage
-```
-
-A szolgáltatás regisztrálása akár 15 percet is igénybe vehet. A regisztráció állapotának ellenõrzése:
-
-```azurecli-interactive
-az feature show --namespace Microsoft.Compute --name AutomaticOSUpgradeWithGalleryImage
-```
-
-Miután regisztrálta a szolgáltatást az előfizetéséhez, fejezze be a beléptetési folyamatot a számítási erőforrás-szolgáltatóra történő váltás propagálásával.
-
-```azurecli-interactive
-az provider register --namespace Microsoft.Compute
-```
+Az operációsrendszer-lemezképek automatikus frissítése a [megosztott](shared-image-galleries.md)képkatalóguson keresztül üzembe helyezett egyéni lemezképek esetében támogatott. Más egyéni lemezképek nem támogatottak az operációsrendszer-lemezképek automatikus frissítéséhez.
 
 ### <a name="additional-requirements-for-custom-images"></a>Az egyéni lemezképekre vonatkozó további követelmények
-- A fentiekben ismertetett beléptetési folyamatot csak egyszer kell végrehajtani egy előfizetésen belül. A regisztrációt követően az automatikus operációs rendszer frissítései az adott előfizetéshez tartozó méretezési csoportokhoz is engedélyezhetők.
-- A megosztott képkatalógus bármely előfizetéshez tartozhat, és nem szükséges külön külön kikapcsolni. Csak a méretezési csoport előfizetése igényli a funkció használatát.
-- Az operációs rendszer rendszerképének automatikus verziófrissítésének konfigurációs folyamata megegyezik az ezen a lapon található [konfiguráció szakaszban](virtual-machine-scale-sets-automatic-upgrade.md#configure-automatic-os-image-upgrade) részletezett összes méretezési csoport esetében.
+- Az operációs rendszer rendszerképének automatikus frissítésének beállítása és konfigurálása az ezen a lapon található [konfiguráció szakaszban](virtual-machine-scale-sets-automatic-upgrade.md#configure-automatic-os-image-upgrade) részletezett összes méretezési csoport esetében azonos.
 - Az automatikus operációsrendszer-lemezképek frissítésére konfigurált méretezési csoportok példányai a megosztott képkatalógus rendszerképének legújabb verziójára frissülnek, ha a rendszerkép új verziója közzé van téve, és a rendszer [replikálja](shared-image-galleries.md#replication) a méretezési csoport régiójában. Ha az új rendszerkép nem replikálódik arra a régióra, ahol a méretezést telepíti, a méretezési csoport példányai nem lesznek frissítve a legújabb verzióra. A regionális lemezképek replikálásával szabályozhatja a méretezési csoportok új rendszerképének bevezetését.
 - Az új rendszerkép-verziót nem szabad kizárni az adott katalógus lemezképének legújabb verziójából. A katalógus rendszerképének legújabb verziójában kizárt lemezkép-verziók nem kerülnek a méretezési csoportba az automatikus operációsrendszer-lemezkép frissítése révén.
 
 > [!NOTE]
->Akár 3 óráig is eltarthat, amíg a méretezési csoport elindíthatja az első rendszerkép-frissítés bevezetését, miután a méretezési csoport be lett állítva az automatikus operációs rendszer frissítéseire. A méretezési csoportokban ez egy egyszeri késleltetés. A következő képek bevezetése a méretezési csoporton 30 percen belül aktiválódik.
+>Akár 3 óráig is eltarthat, amíg a méretezési csoport elindítja az első rendszerkép-frissítés bevezetését, miután a méretezési csoport első beállítása az operációs rendszer automatikus frissítéseire van konfigurálva. A méretezési csoportokban ez egy egyszeri késleltetés. A következő képek bevezetése a méretezési csoporton 30-60 percen belül aktiválódik.
 
 
 ## <a name="configure-automatic-os-image-upgrade"></a>Az operációsrendszer-rendszerkép automatikus frissítésének konfigurálása
@@ -193,11 +128,14 @@ Update-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" 
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-Az [az vmss Update](/cli/azure/vmss#az-vmss-update) paranccsal konfigurálhatja a méretezési csoport automatikus operációsrendszer-rendszerképének frissítéseit. Használja az Azure CLI-2.0.47 vagy újabb verzióját. A következő példa a *myResourceGroup*nevű erőforráscsoport *myScaleSet* nevű méretezési csoportjának automatikus frissítését konfigurálja:
+A használatával `[az vmss update](/cli/azure/vmss#az-vmss-update)` konfigurálhatja a méretezési csoport automatikus operációsrendszer-rendszerképének frissítéseit. Használja az Azure CLI-2.0.47 vagy újabb verzióját. A következő példa a *myResourceGroup*nevű erőforráscsoport *myScaleSet* nevű méretezési csoportjának automatikus frissítését konfigurálja:
 
 ```azurecli-interactive
 az vmss update --name myScaleSet --resource-group myResourceGroup --set UpgradePolicy.AutomaticOSUpgradePolicy.EnableAutomaticOSUpgrade=true
 ```
+
+> [!NOTE]
+>Miután konfigurálta az operációs rendszer lemezképének frissítéseit a méretezési csoport számára, a méretezési csoport virtuális gépei a legújabb méretezési csoport modelljére is be kell állítani, ha a méretezési csoport a manuális [frissítési szabályzatot](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)használja.
 
 ## <a name="using-application-health-probes"></a>Application Health-mintavételek használata
 

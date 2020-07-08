@@ -4,20 +4,17 @@ description: Az IP-csoportok lehetővé teszik Azure Firewall szabályok IP-cím
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.topic: conceptual
-ms.date: 02/18/2020
+ms.topic: how-to
+ms.date: 06/23/2020
 ms.author: victorh
-ms.openlocfilehash: 7e8b2350b9e85d07ce1c399ce4536703ec998cbc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c3ae62bf5b4f0b4796cac2e7079c8a09116d4895
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77444536"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85602533"
 ---
-# <a name="create-ip-groups-preview"></a>IP-csoportok létrehozása (előzetes verzió)
-
-> [!IMPORTANT]
-> A nyilvános előzetes verzióra nem vonatkozik szolgáltatói szerződés, és nem használható éles számítási feladatokra. Előfordulhat, hogy néhány funkció nem támogatott, korlátozott képességekkel rendelkezik, vagy nem érhető el minden Azure-helyen. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="create-ip-groups"></a>IP-csoportok létrehozása
 
 Az IP-csoportok lehetővé teszik Azure Firewall szabályok IP-címeinek csoportosítását és kezelését. Rendelkezhetnek egyetlen IP-címmel, több IP-címmel vagy egy vagy több IP-címtartományok.
 
@@ -25,8 +22,8 @@ Az IP-csoportok lehetővé teszik Azure Firewall szabályok IP-címeinek csoport
 
 1. Az Azure Portal kezdőlapján válassza az **erőforrás létrehozása**lehetőséget.
 2. A keresés szövegmezőbe írja be az **IP-csoportok** kifejezést, majd válassza az **IP-csoportok**lehetőséget.
-3. Kattintson a **Létrehozás** gombra.
-4. Válassza ki előfizetését.
+3. Válassza a **Létrehozás** lehetőséget.
+4. Válassza ki az előfizetését.
 5. Válasszon egy erőforráscsoportot, vagy hozzon létre egy újat.
 6. Adjon egyedi nevet az IP-csoportnak, majd válasszon ki egy régiót.
 
@@ -42,7 +39,7 @@ Az IP-csoportok lehetővé teszik Azure Firewall szabályok IP-címeinek csoport
    Ha IP-címet ad meg, a portál ellenőrzi, hogy az átfedések, ismétlődések és formázási problémák ellenőrzéséhez szükségesek-e.
 
 5. Ha elkészült, válassza a **felülvizsgálat + létrehozás**elemet.
-6. Kattintson a **Létrehozás** gombra.
+6. Válassza a **Létrehozás** lehetőséget.
 
 
 ## <a name="next-steps"></a>További lépések
