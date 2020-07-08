@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2020
 ms.author: memildin
-ms.openlocfilehash: 673524f08ecae28fb6f2e18f3c0c7230cf102b06
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: f159d2cdc48b144d0c75c62cd8a7ba6667424243
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85513463"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043869"
 ---
 # <a name="advanced-data-security-for-sql-machines-preview"></a>Fejlett adatbiztonság SQL-gépekhez (előzetes verzió)
 
@@ -31,7 +31,7 @@ Ez az előzetes verziójú szolgáltatás a lehetséges adatbázis-sebezhetősé
 * Komplex [veszélyforrások elleni védelem](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview) – az észlelési szolgáltatás, amely folyamatosan FIGYELI az SQL-kiszolgálókat olyan fenyegetésekkel szemben, mint például az SQL-injektálás, a találgatásos támadás és a jogosultságokkal való visszaélés. Ez a szolgáltatás lehetővé teszi, hogy a rendszer részletes biztonsági riasztásokat biztosítson Azure Security Center a gyanús tevékenység részleteit, útmutatást nyújt a fenyegetések enyhítéséhez, valamint az Azure Sentinel használatával folytatott vizsgálatok folytatásának lehetőségeiről.
 
 >[!TIP]
-> Az SQL Machines speciális adatbiztonsága Azure Security Center [fejlett adatbiztonsági csomagja](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security), amely már elérhető az Azure SQL Database, a szinapszis és az SQL által felügyelt példányok számára.
+> Az SQL Machines speciális adatbiztonsága Azure Security Center [speciális adatbiztonsági csomagjának](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)kiterjesztése, amely a Azure SQL Database, az Azure szinapszis és az SQL felügyelt példányaihoz érhető el.
 
 
 ## <a name="set-up-advanced-data-security-for-sql-machines"></a>Fejlett adatbiztonság beállítása SQL-gépekhez 
@@ -91,14 +91,14 @@ A sebezhetőségi felmérés irányítópultja áttekintést nyújt az összes a
 
 A sebezhetőségi felmérés eredményei közvetlenül a Security Center tekinthetők meg.
 
-1. A Security Center oldalsávján nyissa meg a **javaslatok** lapot, és válassza ki az **SQL Database-kiszolgálókon a gépeken lévő ajánlott biztonsági réseket (előzetes verzió)**. További információ: [Security Center javaslatok](security-center-recommendations.md). 
+1. A Security Center oldalsávján nyissa meg a **javaslatok** lapot, és válassza ki a **számítógépeken található SQL-kiszolgálók ajánlott biztonsági réseit (előzetes verzió)**. További információ: [Security Center javaslatok](security-center-recommendations.md). 
 
 
-    [![* * A gépeken futó SQL-adatbázisok biztonsági réseit szervizelni kell (előzetes verzió) * * javaslat](media/security-center-advanced-iaas-data/data-and-storage-sqldb-vulns-on-vm.png)](media/security-center-advanced-iaas-data/data-and-storage-sqldb-vulns-on-vm.png#lightbox)
+    [![* * A gépeken futó SQL-kiszolgálók biztonsági réseit szervizelni kell (előzetes verzió) * * javaslat](media/security-center-advanced-iaas-data/data-and-storage-sqldb-vulns-on-vm.png)](media/security-center-advanced-iaas-data/data-and-storage-sqldb-vulns-on-vm.png#lightbox)
 
     Megjelenik a javaslat részletes nézete.
 
-    [![A * * biztonsági rések a gépeken lévő SQL-adatbázisokra vonatkozó részletes nézetét szervizelni kell (előzetes verzió) * * javaslat](media/security-center-advanced-iaas-data/all-servers-view.png)](media/security-center-advanced-iaas-data/all-servers-view.png#lightbox)
+    [![A * * biztonsági rések a gépeken futó SQL-kiszolgálókon történő részletes nézetét szervizelni kell (előzetes verzió) * * javaslat](media/security-center-advanced-iaas-data/all-servers-view.png)](media/security-center-advanced-iaas-data/all-servers-view.png#lightbox)
 
 1. További részleteket a következő részletezésben talál:
 
@@ -127,7 +127,7 @@ A biztonsági riasztások a Security Center riasztások lapján, az erőforrás 
     [További információ a riasztások kezeléséről és megválaszolásáról](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Kapcsolódó anyagok esetében tekintse meg a következő cikket:
 

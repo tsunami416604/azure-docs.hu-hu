@@ -49,16 +49,26 @@
               href: time-series-insights-parameterized-urls.md
     - name: Az Azure Time Series Insights előzetes verziója
       items:
-        - name: A környezet megtervezése
-          href: time-series-insights-update-plan.md
-        - name: Adattárolás és bejövő adatforgalom
-          href: time-series-insights-update-storage-ingress.md
         - name: Használati esetek
           href: time-series-insights-update-use-cases.md
+        - name: A környezet megtervezése
+          href: time-series-insights-update-plan.md
+        - name: A betöltés áttekintése
+          href: concepts-ingestion-overview.md
+        - name: Támogatott adattípusok
+          href: concepts-supported-data-types.md
+        - name: Streaming Ingestion-eseményforrások
+          href: concepts-streaming-ingestion-event-sources.md
+        - name: JSON-egybesimítás és escape-karaktersorozat szabályai
+          href: concepts-json-flattening-escaping-rules.md
+        - name: Streamelési bejövő forgalom átviteli sebességének korlátai
+          href: concepts-streaming-throughput-limitations.md
+        - name: Storage
+          href: concepts-storage.md
         - name: Time Series-modell
-          href: time-series-insights-update-tsm.md
+          href: concepts-model-overview.md
         - name: Time Series-lekérdezés
-          href: time-series-insights-update-tsq.md
+          href: concepts-query-overview.md
         - name: Adatok vizualizációja az Explorer előzetes verziójában
           href: time-series-insights-update-explorer.md
         - name: Fejlesztés

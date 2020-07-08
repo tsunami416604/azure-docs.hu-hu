@@ -6,14 +6,14 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 06/21/2020
 ms.author: rajosh
-ms.openlocfilehash: 81132f0a6f8b57d8798a9a5c4f0a2b9c1ac736d4
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: a7d22a6a2f7100826c865beec0d1cff09fc39660
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85317394"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043240"
 ---
-# <a name="build-migration-plan-with-azure-migrate"></a>Áttelepítési terv készítése Azure Migrate
+# <a name="build-migration-plan-with-azure-migrate"></a>Migrálási terv létrehozása az Azure Migrate-tel
 
 Ez a cikk egy rövid útmutatót tartalmaz, amellyel átalakíthatja az Azure-ba történő áttelepítési tervet [Azure Migrate](migrate-services-overview.md)segítségével.Ha további kérdései vannak, tekintse meg a következő erőforrásokat:
 
@@ -83,7 +83,7 @@ Exportálja az Azure VM Assessment-jelentést, és a következő készültségi 
 
 - A **készültség ismeretlen**: Azure Migrate nem tudja meghatározni a gép készültségét, mert nincs elegendő metaadat
 
-Az adatbázis-értékelések használatával felmérhetővé teheti a SQL Server adatközpont Azure SQL Database-adatbázisokra vagy Azure SQL Database felügyelt példányokra való áttelepítésének készültségét. Az egyes SQL Server-példányok esetében az áttelepítési készültségi állapot százalékos aránya látható. Emellett az egyes példányok esetében a javasolt cél az Azure-ban, a potenciális áttelepítési blokkolók, a megszakított változások száma, az Azure SQL DB/Azure SQL-alapú virtuális gép készültségi szintje és a kompatibilitási szint is látható. Mélyebben is megtudhatja, hogy milyen hatással van az áttelepítési blokkolók és javaslatok a kijavítására.
+Az adatbázis-értékelések használatával felmérhetővé teheti a SQL Server-adatközpont áttelepítésének készültségét Azure SQL Database vagy Azure SQL felügyelt példányokra. Az egyes SQL Server-példányok esetében az áttelepítési készültségi állapot százalékos aránya látható. Emellett az egyes példányok esetében a javasolt cél az Azure-ban, a potenciális áttelepítési blokkolók, a megszakított változások száma, az Azure SQL DB/Azure SQL-alapú virtuális gép készültségi szintje és a kompatibilitási szint is látható. Mélyebben is megtudhatja, hogy milyen hatással van az áttelepítési blokkolók és javaslatok a kijavítására.
 
  ![Adatbázis-értékelések](./media/concepts-migration-planning/database-assessment-portal.png)
 

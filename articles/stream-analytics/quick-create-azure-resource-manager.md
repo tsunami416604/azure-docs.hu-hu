@@ -10,18 +10,22 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc, subject-armqs
 ms.date: 05/28/2020
-ms.openlocfilehash: 127a8550b7f4ca89b8b3a8e61880b295a806e5d0
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: b7217df7fe7ccedf2419480b1114fa1ef6c8e24a
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84449362"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043546"
 ---
-# <a name="quickstart-create-an-azure-stream-analytics-job-by-using-the-azure-resource-manager-template"></a>Gyors útmutató: Azure Stream Analytics-feladatok létrehozása a Azure Resource Manager sablon használatával
+# <a name="quickstart-create-an-azure-stream-analytics-job-by-using-an-arm-template"></a>Gyors útmutató: Azure Stream Analytics-feladatok létrehozása ARM-sablon használatával
 
-Ebben a rövid útmutatóban egy Azure Resource Manager sablonnal hoz létre egy Azure Stream Analytics feladatot. A művelet létrehozása után érvényesítse a központi telepítést.
+Ebben a rövid útmutatóban egy Azure Resource Manager sablon (ARM-sablon) használatával hozhat létre Azure Stream Analytics feladatot. A művelet létrehozása után érvényesítse a központi telepítést.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonok használatát, válassza az **üzembe helyezés az Azure** -ban gombot. A sablon megnyílik a Azure Portalban.
+
+[![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-streamanalytics-create%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -29,9 +33,7 @@ A cikk elvégzéséhez a következőket kell tennie:
 
 * Rendelkezzen Azure-előfizetéssel – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/).
 
-## <a name="create-an-azure-stream-analytics-job"></a>Azure Stream Analytics-feladat létrehozása
-
-### <a name="review-the-template"></a>A sablon áttekintése
+## <a name="review-the-template"></a>A sablon áttekintése
 
 Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/101-streamanalytics-create/)származik.
 
@@ -39,9 +41,9 @@ Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablon
 
 A sablonban definiált Azure-erőforrás a [Microsoft. StreamAnalytics/StreamingJobs](/azure/templates/microsoft.streamanalytics/streamingjobs): create a Azure stream Analytics job.
 
-### <a name="deploy-the-template"></a>A sablon üzembe helyezése
+## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
-Ebben a szakaszban egy Azure Stream Analytics feladatot hoz létre a Azure Resource Manager sablon használatával.
+Ebben a szakaszban egy Azure Stream Analytics feladatot hoz létre az ARM-sablon használatával.
 
 1. Kattintson az alábbi gombra az Azure-ba való bejelentkezéshez és egy sablon megnyitásához. A sablon létrehoz egy Azure Stream Analytics feladatot.
 
@@ -85,7 +87,7 @@ $resourceGroupName = Read-Host -Prompt "Enter the resource group name where your
  Write-Host "Press [ENTER] to continue..."
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha azt tervezi, hogy folytatja a következő oktatóanyagokat, érdemes lehet ezeket az erőforrásokat helyben hagyni. Ha már nincs rá szükség, törölje az erőforráscsoportot, amely törli a Azure Stream Analytics feladatot. Az erőforráscsoport törlése az Azure CLI vagy a Azure PowerShell használatával:
 
@@ -106,9 +108,9 @@ Remove-AzResourceGroup -Name $resourceGroupName
 Write-Host "Press [ENTER] to continue..."
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban egy Azure Stream Analytics feladatot hozott létre egy Azure Resource Manager sablonnal, és ellenőrizte az üzemelő példányt. A következő cikkből megtudhatja, hogyan exportálhat egy Azure Resource Manager sablont egy meglévő feladatokhoz a VS Code használatával.
+Ebben a rövid útmutatóban létrehozott egy Azure Stream Analytics feladatot egy ARM-sablonnal, és ellenőrizte az üzemelő példányt. A következő cikkből megtudhatja, hogyan exportálhat egy ARM-sablont egy meglévő feladatokhoz a VS Code használatával.
 
 > [!div class="nextstepaction"]
-> [Azure Stream Analytics-feladatok exportálása Azure Resource Manager sablon](resource-manager-export.md)
+> [Azure Stream Analytics Job ARM-sablon exportálása](resource-manager-export.md)

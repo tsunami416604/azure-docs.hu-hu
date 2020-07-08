@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 854d95f95d6ecf2fe35bcc93ddeaafdc9bafbf8f
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: 771f692ade9c7616eb7d217b4728a8c80d2aeac5
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84485636"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044175"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>Azure Data Factory Azure biztonsági alapterve
 
@@ -512,7 +512,7 @@ Ha a Integration Runtimet egy Azure-beli virtuális gépen (VM) futtatja, akkor 
 
 ### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3,13: a Microsoft számára elérhetővé teszi a megfelelő ügyféladatokat a támogatási forgatókönyvek során
 
-**Útmutató**: azon forgatókönyvek esetében, amelyekben a Microsoftnak hozzá kell férnie az ügyféladatok eléréséhez, az Azure Ügyfélszéf egy felületet biztosít az ügyfelek számára az ügyféladatok hozzáférési kérelmeinek áttekintéséhez és jóváhagyásához vagy elutasításához. Vegye figyelembe, hogy habár az Azure kulcstároló nem érhető el a Azure Data Factoryhoz, az Azure kulcstároló támogatja az Azure SQL Database és az Azure Virtual Machines használatát.
+**Útmutató**: azon forgatókönyvek esetében, amelyekben a Microsoftnak hozzá kell férnie az ügyféladatok eléréséhez, az Azure Ügyfélszéf egy felületet biztosít az ügyfelek számára az ügyféladatok hozzáférési kérelmeinek áttekintéséhez és jóváhagyásához vagy elutasításához. Vegye figyelembe, hogy habár az Azure kulcstároló nem érhető el a Azure Data Factoryhoz, az Azure kulcstároló támogatja a Azure SQL Database és az Azure Virtual Machinest.
 
 * [A Ügyfélszéf megismerése](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview)
 
@@ -672,7 +672,7 @@ A hitelesítő adatokat vagy a titkos értékeket egy Azure Key Vault tárolhatj
 
 Ha a Integration Runtimet egy Azure-beli virtuális gépen (VM) futtatja, kövesse Azure Security Center a sebezhetőségi felmérések a virtuális gépeken való végrehajtásával kapcsolatos ajánlásokat. A virtuális gépek sebezhetőségi felmérésének elvégzéséhez használja az Azure Security által ajánlott vagy harmadik féltől származó megoldást.
 
-* [Sebezhetőségi felmérések futtatása Azure SQL-adatbázisokon](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment)
+* [Sebezhetőségi felmérések futtatása a Azure SQL Databaseon](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment)
 
 * [A speciális adatbiztonság engedélyezése](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)
 
@@ -896,7 +896,7 @@ Vegye figyelembe, hogy ez csak akkor érvényes, ha a Integration Runtime Azure-
 
 * [Mi az Azure Firewall?](https://docs.microsoft.com/azure/firewall/overview)
 
-* [Mi az Azure webalkalmazási tűzfal?](https://docs.microsoft.com/azure/web-application-firewall/overview)
+* [Mi az az Azure Web Application Firewall?](https://docs.microsoft.com/azure/web-application-firewall/overview)
 
 * [Network security groups (Hálózati biztonsági csoportok)](https://docs.microsoft.com/azure/virtual-network/security-overview)
 
@@ -1268,7 +1268,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 **Felelősség**: megosztott
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](https://docs.microsoft.com/azure/security/benchmarks/overview)
 - További információ az [Azure biztonsági alaptervekről](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)

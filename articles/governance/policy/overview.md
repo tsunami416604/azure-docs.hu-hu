@@ -3,12 +3,12 @@ title: Az Azure szabályzatának áttekintése
 description: Az Azure Policy az Azure egy szolgáltatása, amelynek használatával szabályzatdefiníciókat hozhat létre, rendelhet hozzá és kezelhet az Azure-környezetben.
 ms.date: 06/17/2020
 ms.topic: overview
-ms.openlocfilehash: e204a4eeff547877a48789eba6f1b8cac017d08e
-ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
+ms.openlocfilehash: 2ac8c175f586d9649e35328a483be918276c115d
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84944661"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044192"
 ---
 # <a name="what-is-azure-policy"></a>Mi az Azure Policy?
 
@@ -82,7 +82,7 @@ Ha egyik beépített szerepkör sem tartalmazza a szükséges engedélyeket, hoz
 
 ### <a name="resources-covered-by-azure-policy"></a>Azure Policy által érintett erőforrások
 
-Azure Policy kiértékeli az összes erőforrást az Azure-ban. Bizonyos erőforrás-szolgáltatók, például a [vendég konfigurációja](./concepts/guest-configuration.md), az [Azure Kubernetes Service](../../aks/intro-kubernetes.md)és a [Azure Key Vault](../../key-vault/key-vault-overview.md)esetében mélyebb integráció áll rendelkezésre a beállítások és objektumok kezeléséhez. További információ: [erőforrás-szolgáltatói módok](./concepts/definition-structure.md).
+Azure Policy kiértékeli az összes erőforrást az Azure-ban. Bizonyos erőforrás-szolgáltatók, például a [vendég konfigurációja](./concepts/guest-configuration.md), az [Azure Kubernetes Service](../../aks/intro-kubernetes.md)és a [Azure Key Vault](../../key-vault/general/overview.md)esetében mélyebb integráció áll rendelkezésre a beállítások és objektumok kezeléséhez. További információ: [erőforrás-szolgáltatói módok](./concepts/definition-structure.md).
 
 ### <a name="recommendations-for-managing-policies"></a>Javaslatok a szabályzatok kezeléséhez
 

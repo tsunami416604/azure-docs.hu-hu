@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: bedc0f6a457fe27d7358aea1219126427c924e1d
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: e59a985f59da1b6a40a6b583d5e2a490611a702c
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84627925"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043852"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>A hálózati biztonsági csoportok flow-naplózásának bemutatása
 
@@ -51,7 +51,10 @@ A flow-naplók a Felhőbeli környezet összes hálózati tevékenységének az 
 - A naplók gyűjtése az Azure platformon keresztül történik, és semmilyen módon nincs hatással az ügyfelek erőforrásaira vagy a hálózati teljesítményre.
 - A naplók JSON formátumban vannak megírva, és a kimenő és a bejövő folyamatok megjelenítése NSG-szabály alapján történik.
 - Minden naplóbejegyzés tartalmazza a hálózati adaptert (NIC), amely 5 rekordos információra vonatkozik, a forgalmi döntés & (csak 2. verzió) átviteli sebességre vonatkozó információk. A részletekért tekintse meg az alábbi _naplózási formátumot_ .
-- A flow-naplók egy megőrzési funkcióval rendelkeznek, amely lehetővé teszi a naplók automatikus törlését a létrehozásuk után egy évig. **Megjegyzés**: a megőrzés csak akkor érhető el, ha [általános célú v2 Storage-fiókokat (GPv2-ket)](https://docs.microsoft.com/azure/storage/common/storage-account-overview#types-of-storage-accounts)használ. 
+- A flow-naplók egy megőrzési funkcióval rendelkeznek, amely lehetővé teszi a naplók automatikus törlését a létrehozásuk után egy évig. 
+
+> [!NOTE]
+> Az adatmegőrzés csak az [általános célú v2 Storage-fiókok (GPv2-EK)](https://docs.microsoft.com/azure/storage/common/storage-account-overview#types-of-storage-accounts)használata esetén érhető el. 
 
 **Alapfogalmak**
 
@@ -107,7 +110,7 @@ A " _B_ " folyamat a folyamat indításakor kerül rögzítésre. A _C_ és a _f
 Az alábbi szöveg egy folyamat naplóját szemlélteti. Ahogy láthatja, több rekord is van, amelyek követik az előző szakaszban ismertetett tulajdonságokat.
 
 > [!NOTE]
-> A **flowTuples* tulajdonságban szereplő értékek vesszővel tagolt lista.
+> A *flowTuples* tulajdonság értékei vesszővel tagolt lista.
  
 **1. verzió NSG folyamat naplójának formátuma minta**
 ```json
@@ -306,7 +309,7 @@ A " _C_ " és a "End _E_ flow" állapot esetén a bájt és a csomagok száma az
 
 Használja az alábbi hivatkozásokat a flow-naplók engedélyezésére vonatkozó útmutatókhoz.
 
-- [Azure Portal](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+- [Azure Portalra](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
 - [PowerShell](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-powershell)
 - [Parancssori felület](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-cli)
 - [REST](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-rest)
@@ -314,7 +317,7 @@ Használja az alábbi hivatkozásokat a flow-naplók engedélyezésére vonatkoz
 
 ## <a name="updating-parameters"></a>Paraméterek frissítése
 
-**Azure Portal**
+**Azure Portalra**
 
 A Azure Portal navigáljon a Network Watcher NSG flow-naplók szakaszához. Ezután kattintson a NSG nevére. Ekkor megjelenik a folyamat naplójának beállítások panelje. Módosítsa a kívánt paramétereket, és nyomja meg a **Mentés gombot** a módosítások telepítéséhez.
 
@@ -354,9 +357,9 @@ A **Storage-fiókkal kapcsolatos megfontolások**:
 
 A **flow naplózási költségei**: a NSG folyamatának naplózása a létrehozott naplók mennyiségétől függ. A nagy forgalmú kötetek nagy flow-naplózási kötetet és a hozzájuk kapcsolódó költségeket okozhatják. A NSG-forgalmi napló díjszabása nem tartalmazza a tárterület alapjául szolgáló költségeket. Az adatmegőrzési házirend szolgáltatás NSG flow-naplózással való használata esetén a tárolási költségek hosszabb ideig tartanak. Ha nincs szüksége az adatmegőrzési házirend funkcióra, azt javasoljuk, hogy állítsa 0 értékre. További információkért tekintse meg a [Network Watcher díjszabását](https://azure.microsoft.com/pricing/details/network-watcher/) és az [Azure Storage díjszabását](https://azure.microsoft.com/pricing/details/storage/) ismertető témakört.
 
-**Helytelen bájtok és csomagok száma a bejövő folyamatokhoz**: a [hálózati biztonsági csoportok (NSG-EK)](https://docs.microsoft.com/azure/virtual-network/security-overview) [állapot-nyilvántartó tűzfalként](https://en.wikipedia.org/wiki/Stateful_firewall?oldformat=true)vannak implementálva. A platform korlátai miatt azonban a bejövő folyamatokat szabályozó szabályok állapot nélküli módon valósulnak meg. Ezen folyamatok esetében a bájtok és a csomagok száma nem kerül rögzítésre. Következésképpen a NSG-naplók (és Traffic Analytics) által jelentett bájtok és csomagok száma nem lehet azonos a tényleges számokkal. Emellett a bejövő folyamatok mostantól nem állnak le. Ezt a korlátozást az ütemezi, hogy a 2020 decemberében rögzítettek legyenek.
+**Helytelen bájtok és csomagok száma a bejövő folyamatokhoz**: a [hálózati biztonsági csoportok (NSG-EK)](https://docs.microsoft.com/azure/virtual-network/security-overview) [állapot-nyilvántartó tűzfalként](https://en.wikipedia.org/wiki/Stateful_firewall?oldformat=true)vannak implementálva. A platform korlátai miatt azonban a bejövő folyamatokat szabályozó szabályok állapot nélküli módon valósulnak meg. Ezen folyamatok esetében a bájtok és a csomagok száma nem kerül rögzítésre. Következésképpen a NSG-naplók (és Traffic Analytics) által jelentett bájtok és csomagok száma nem lehet azonos a tényleges számokkal. Emellett a bejövő folyamatok mostantól nem állnak le. Ezt a korlátozást az ütemezi, hogy a 2020 decemberében rögzítettek legyenek. 
 
-Az internetes IP-címekről a nyilvános IP-címek **nélküli virtuális gépekre naplózott bejövő folyamatok**: olyan virtuális gépek, amelyek nem rendelkeznek nyilvános IP-címmel a hálózati adapterhez társított nyilvános IP-címen keresztül, vagy amelyek egy alapszintű terheléselosztó-készlet részét képezik, az [alapértelmezett SNAT](../load-balancer/load-balancer-outbound-connections.md#defaultsnat) használják, és az Azure által hozzárendelt IP-címmel rendelkeznek a kimenő kapcsolatok megkönnyítéséhez. Ennek eredményeképpen előfordulhat, hogy az internetes IP-címekről érkező adatfolyamok esetében a flow-naplóbejegyzések megjelennek, ha a folyamat a SNAT hozzárendelt portok tartományában lévő portra van szánva. Amíg az Azure nem engedélyezi ezeket a folyamatokat a virtuális gép számára, a rendszer naplózza a kísérletet, és a Network Watcher NSG flow-naplójában jelenik meg. Javasoljuk, hogy a nem kívánt bejövő internetes forgalmat explicit módon tiltsa le a NSG.
+Az internetes IP-címekről a nyilvános IP-címek **nélküli virtuális gépekre naplózott bejövő folyamatok**: olyan virtuális gépek, amelyek nem rendelkeznek nyilvános IP-címmel a hálózati adapterhez társított nyilvános IP-címen keresztül, vagy amelyek egy alapszintű terheléselosztó-készlet részét képezik, az [alapértelmezett SNAT](../load-balancer/load-balancer-outbound-connections.md) használják, és az Azure által hozzárendelt IP-címmel rendelkeznek a kimenő kapcsolatok megkönnyítéséhez. Ennek eredményeképpen előfordulhat, hogy az internetes IP-címekről érkező adatfolyamok esetében a flow-naplóbejegyzések megjelennek, ha a folyamat a SNAT hozzárendelt portok tartományában lévő portra van szánva. Amíg az Azure nem engedélyezi ezeket a folyamatokat a virtuális gép számára, a rendszer naplózza a kísérletet, és a Network Watcher NSG flow-naplójában jelenik meg. Javasoljuk, hogy a nem kívánt bejövő internetes forgalmat explicit módon tiltsa le a NSG.
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 
