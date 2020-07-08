@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 06/22/2020
 ms.author: sedusch
 ms.openlocfilehash: 758e79109d6cf0d41e5e5981168b0eed9f9928d6
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85361387"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Azure Virtual Machines üzembe helyezés az SAP NetWeaver-ben
@@ -369,7 +369,7 @@ A következő információk ismerete az SAP-méretezéshez:
 
 Az Azure Resource Manager az Azure-előfizetésében lévő összes alkalmazás-erőforrást az erőforráscsoportok használatával kezelheti. További információk: [Azure Resource Manager overview][resource-group-overview] (Az Azure Resource Manager áttekintése).
 
-## <a name="resources"></a>További források
+## <a name="resources"></a>Erőforrások
 
 ### <a name="sap-resources"></a><a name="42ee2bdb-1efc-4ec7-ab31-fe4c22769b94"></a>SAP-erőforrások
 
@@ -424,7 +424,7 @@ Az Azure Marketplace-ről rendszerképpel rendelkező új virtuális gép létre
 1.  Válassza a **számítás**lehetőséget, majd válassza ki a telepíteni kívánt operációs rendszer típusát. Például: Windows Server 2012 R2, SUSE Linux Enterprise Server 12 (SLES 12), Red Hat Enterprise Linux 7,2 (RHEL 7,2) vagy Oracle Linux 7,2. Az alapértelmezett listanézet nem jeleníti meg az összes támogatott operációs rendszert. Válassza az összes megjelenítése lehetőséget a teljes lista **megtekintéséhez** . További információ az SAP-szoftverek központi telepítéséhez támogatott operációs rendszerekről: SAP-Megjegyzés [1928533].
 1.  A következő oldalon tekintse át a használati feltételeket.
 1.  A **telepítési modell kiválasztása** mezőben válassza a **Resource Manager**lehetőséget.
-1.  Kattintson a **Létrehozás** gombra.
+1.  Válassza a **Létrehozás** lehetőséget.
 
 A varázsló végigvezeti a virtuális gép létrehozásához szükséges paraméterek beállításán, az összes szükséges erőforráson, például a hálózati adaptereken és a Storage-fiókokon kívül. A paraméterek némelyike a következő:
 
@@ -1499,7 +1499,7 @@ Az ebben az útmutatóban található, [az SAP-hez készült Azure-bővítmény 
 
 Ha a hibák nem szűnnek meg, [forduljon az ügyfélszolgálathoz][deployment-guide-contact-support].
 
-#### <a name="contact-support"></a><a name="3ba34cfc-c9bb-4648-9c3c-88e8b9130ca2"></a>Kapcsolatfelvétel a támogatási szolgáltatással
+#### <a name="contact-support"></a><a name="3ba34cfc-c9bb-4648-9c3c-88e8b9130ca2"></a>Kapcsolatfelvétel az ügyfélszolgálattal
 
 Váratlan hiba történt, vagy nincs ismert megoldás. Gyűjtsön a C:\Packages\Plugins\Microsoft.AzureCAT.AzureEnhancedMonitoring.AzureCATExtensionHandler \\ \<version\> \Drop (Windows) vagy a/var/log/Azure/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux (Linux) mappában található AzureEnhancedMonitoring_service. log fájlt, és további segítségért forduljon az SAP támogatási szolgálatához.
 

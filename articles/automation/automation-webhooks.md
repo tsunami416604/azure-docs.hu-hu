@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 06/24/2020
 ms.topic: conceptual
 ms.openlocfilehash: e64f437b65964b585311aeae25e5f3a92275754a
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85361676"
 ---
 # <a name="start-a-runbook-from-a-webhook"></a>Runbook indítása webhookból
@@ -29,7 +29,7 @@ A következő táblázat ismerteti azokat a tulajdonságokat, amelyeket egy webh
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| Name (Név) |A webhook neve. Megadhatja a kívánt nevet, mert az nem érhető el az ügyfél számára. A rendszer csak a runbook azonosítására szolgál Azure Automationban. Ajánlott eljárásként a webhooknak az azt használó ügyféllel kapcsolatos nevet kell adnia. |
+| Name |A webhook neve. Megadhatja a kívánt nevet, mert az nem érhető el az ügyfél számára. A rendszer csak a runbook azonosítására szolgál Azure Automationban. Ajánlott eljárásként a webhooknak az azt használó ügyféllel kapcsolatos nevet kell adnia. |
 | URL-cím |A webhook URL-címe. Ez az az egyedi címnek, amelyet az ügyfél HTTP-BEJEGYZÉSsel hív meg, hogy elindítsa a webhookhoz csatolt runbook. A webhook létrehozásakor automatikusan létrejön. Nem adhat meg egyéni URL-címet. <br> <br> Az URL-cím olyan biztonsági jogkivonatot tartalmaz, amely lehetővé teszi, hogy egy harmadik féltől származó rendszer további hitelesítés nélkül hívja meg a runbook. Ezért az URL-címet jelszóként kell kezelni. Biztonsági okokból a webhook létrehozásakor csak a Azure Portal URL-címét tekintheti meg. A jövőbeli használatra biztonságos helyen jegyezze fel az URL-címet. |
 | Lejárat dátuma | A webhook lejárati dátuma, amely után már nem használható. A webhook létrehozása után módosíthatja a lejárati dátumot, feltéve, hogy a webhook nem járt le. |
 | Engedélyezve | Ez a beállítás azt jelzi, hogy a webhook alapértelmezés szerint engedélyezve van-e a létrehozásakor. Ha a tulajdonságot letiltva értékre állítja, akkor egyetlen ügyfél sem használhatja a webhookot. Ezt a tulajdonságot akkor állíthatja be, amikor létrehozza a webhookot vagy bármely más időt a létrehozása után. |
@@ -120,7 +120,7 @@ http://<Webhook Server>/token?=<Token Value>
 
 Az ügyfél a kérelemből a következő visszatérési kódok egyikét kapja meg `POST` .
 
-| Code | Szöveg | Leírás |
+| Code | Szöveg | Description |
 |:--- |:--- |:--- |
 | 202 |Elfogadva |A kérést elfogadták, és a runbook sikeresen várólistára került. |
 | 400 |Hibás kérés |A kérelmet a következő okok egyike miatt nem fogadták el: <ul> <li>A webhook lejárt.</li> <li>A webhook le van tiltva.</li> <li>Az URL-címben szereplő jogkivonat érvénytelen.</li>  </ul> |

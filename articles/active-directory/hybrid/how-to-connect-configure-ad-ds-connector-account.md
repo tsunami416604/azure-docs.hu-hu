@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 252c033c1a9d4d45c3d48256e65ae9ad10a93c51
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85360061"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: AD DS-összekötő fiók engedélyeinek konfigurálása 
@@ -136,7 +136,7 @@ Set-ADSyncBasicReadPermissions -ADConnectorAccountDN <String> [-ADobjectDN <Stri
 Ez a parancsmag a következő engedélyeket fogja beállítani: 
  
 
-|Típus |Name (Név) |Access |Érvényesség| 
+|Típus |Name |Access |Érvényesség| 
 |-----|-----|-----|-----|
 |Engedélyezés |AD DS-összekötő fiókja |Az összes tulajdonság olvasása |Leszármazott eszköz objektumai| 
 |Engedélyezés |AD DS-összekötő fiókja|Az összes tulajdonság olvasása |Leszármazott InetOrgPerson objektumok| 
@@ -162,7 +162,7 @@ Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountDN <String> [-ADobje
 
 Ez a parancsmag a következő engedélyeket fogja beállítani: 
 
-|Típus |Name (Név) |Access |Érvényesség|
+|Típus |Name |Access |Érvényesség|
 |-----|-----|-----|-----| 
 |Engedélyezés|AD DS-összekötő fiókja|Olvasási/írási tulajdonság|Leszármazott felhasználói objektumok|
 
@@ -182,7 +182,7 @@ Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN <String> [<CommonPar
 
 Ez a parancsmag a következő engedélyeket fogja beállítani: 
 
-|Típus |Name (Név) |Access |Érvényesség|
+|Típus |Name |Access |Érvényesség|
 |-----|-----|-----|-----| 
 |Engedélyezés |AD DS-összekötő fiókja |Címtárbeli módosítások replikálása |Csak ez az objektum (tartományi gyökér)| 
 |Engedélyezés |AD DS-összekötő fiókja |A címtár összes módosításának replikálása |Csak ez az objektum (tartományi gyökér)| 
@@ -202,7 +202,7 @@ Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountDN <String> [-ADobject
 ```
 Ez a parancsmag a következő engedélyeket fogja beállítani: 
 
-|Típus |Name (Név) |Access |Érvényesség|
+|Típus |Name |Access |Érvényesség|
 |-----|-----|-----|-----| 
 |Engedélyezés |AD DS-összekötő fiókja |Jelszó alaphelyzetbe állítása |Leszármazott felhasználói objektumok| 
 |Engedélyezés |AD DS-összekötő fiókja |Írási tulajdonság lockoutTime |Leszármazott felhasználói objektumok| 
@@ -222,7 +222,7 @@ Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN <String> [-ADob
  
 Ez a parancsmag a következő engedélyeket fogja beállítani: 
 
-|Típus |Name (Név) |Access |Érvényesség|
+|Típus |Name |Access |Érvényesség|
 |-----|-----|-----|-----| 
 |Engedélyezés |AD DS-összekötő fiókja |Általános olvasási/írási |Az objektumtípus-csoport és alobjektumok összes attribútuma| 
 |Engedélyezés |AD DS-összekötő fiókja |Gyermekobjektum létrehozása/törlése |Az objektumtípus-csoport és alobjektumok összes attribútuma| 
@@ -245,7 +245,7 @@ Set-ADSyncExchangeHybridPermissions -ADConnectorAccountDN <String> [-ADobjectDN 
 Ez a parancsmag a következő engedélyeket fogja beállítani:  
  
 
-|Típus |Name (Név) |Access |Érvényesség|
+|Típus |Name |Access |Érvényesség|
 |-----|-----|-----|-----| 
 |Engedélyezés |AD DS-összekötő fiókja |Az összes tulajdonság olvasása/írása |Leszármazott felhasználói objektumok| 
 |Engedélyezés |AD DS-összekötő fiókja |Az összes tulajdonság olvasása/írása |Leszármazott InetOrgPerson objektumok| 
@@ -267,7 +267,7 @@ Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountDN <String> [-A
 ```
 Ez a parancsmag a következő engedélyeket fogja beállítani: 
 
-|Típus |Name (Név) |Access |Érvényesség|
+|Típus |Name |Access |Érvényesség|
 |-----|-----|-----|-----| 
 |Engedélyezés |AD DS-összekötő fiókja |Az összes tulajdonság olvasása |Leszármazott PublicFolder objektumok| 
 
@@ -292,7 +292,7 @@ Set-ADSyncRestrictedPermissions -ADConnectorAccountDN'CN=ADConnectorAccount,CN=U
 
 Ez a parancsmag a következő engedélyeket fogja beállítani: 
 
-|Típus |Name (Név) |Access |Érvényesség|
+|Típus |Name |Access |Érvényesség|
 |-----|-----|-----|-----| 
 |Engedélyezés |RENDSZER |Teljes hozzáférés |Ez az objektum 
 |Engedélyezés |Vállalati rendszergazdák |Teljes hozzáférés |Ez az objektum 

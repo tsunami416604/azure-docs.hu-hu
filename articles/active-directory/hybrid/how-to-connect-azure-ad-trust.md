@@ -19,10 +19,10 @@ author: billmath
 ms.custom: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 13d56ec321cd257412c2b0abbe0be655c6cb4dbf
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85360095"
 ---
 # <a name="manage-ad-fs-trust-with-azure-ad-using-azure-ad-connect"></a>AD FS-megbízhatóság Azure AD általi kezelése az Azure AD Connect használatával
@@ -39,7 +39,7 @@ A Azure AD Connect felügyelheti a helyszíni Active Directory összevonási szo
 
 A Azure AD Connect **csak** az Azure ad-megbízhatósághoz kapcsolódó beállításokat kezeli. A Azure AD Connect nem módosítja a többi függő entitás megbízhatóságának beállításait AD FSban. A következő táblázat a Azure AD Connect által vezérelt beállításokat tartalmazza.
 
-| Beállítás | Leírás |
+| Beállítás | Description |
 | :--- | :--- |
 | Jogkivonat-aláíró tanúsítvány | Azure AD Connect segítségével alaphelyzetbe állíthatja és újból létrehozhatja a megbízhatóságot az Azure AD-vel. Azure AD Connect a jogkivonat-aláíró tanúsítványok egyszeri azonnali átváltását AD FS és frissíti az Azure AD-tartomány összevonási beállításait.|
 | Jogkivonat-aláírási algoritmus | A Microsoft az SHA-256 használatát javasolja jogkivonat-aláírási algoritmusként. A Azure AD Connect képes megállapítani, hogy a jogkivonat-aláíró algoritmus az SHA-256-nél kevésbé biztonságos értékre van-e beállítva. A következő lehetséges konfigurációs művelet során frissíti a beállítást az SHA-256 értékre. Az új jogkivonat-aláíró tanúsítvány használatához frissíteni kell a függő entitás megbízhatóságát. |
@@ -77,7 +77,7 @@ Minden olyan művelet során, amelyben minden beállítás módosul, Azure AD Co
 
 Azure AD Connect biztosítja, hogy az Azure AD-megbízhatóság mindig a javasolt jogcím-szabályok megfelelő készletével legyen konfigurálva. A Microsoft az Azure AD-kapcsolat használatát javasolja az Azure AD-megbízhatóság kezeléséhez. Ez a szakasz felsorolja a kiállítási átalakítási szabályokat és azok leírását.
 
-| Szabály neve | Leírás |
+| Szabály neve | Description |
 | --- | --- |
 | UPN-probléma | Ez a szabály a userPrincipalName értékét kérdezi le a userPrincipalName szinkronizálási beállításaiban konfigurált attribútum alapján.|
 | Egyéni ImmutableId-jogcím ObjectGUID és msdsconsistencyguid lekérdezése | Ez a szabály egy ideiglenes értéket helyez el a folyamatban a ObjectGUID és a msdsconsistencyguid értékhez, ha létezik |

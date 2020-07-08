@@ -9,10 +9,10 @@ ms.date: 04/03/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 70592d940e3766597475f4a7b90a3902a53406d5
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85361302"
 ---
 # <a name="install-language-packs"></a>Nyelvi csomagok telepítése
@@ -41,7 +41,7 @@ Nyelvi csomagok telepítése:
 
 5. Ezután válassza a **Language (nyelv**), majd **a nyelv hozzáadása**lehetőséget. Válassza ki a listából a telepíteni kívánt nyelvet, majd kattintson a **tovább**gombra.
 6. Amikor megnyílik a **nyelvi szolgáltatások telepítése** ablak, jelölje be a **nyelvi csomag telepítése és beállítása a Windows megjelenítési nyelvként**jelölőnégyzetet.
-7. Válassza az **Install** (Telepítés) lehetőséget.
+7. Válassza a **Telepítés** gombot.
 8. Ha egyszerre több nyelvet szeretne felvenni, válassza a **nyelv hozzáadása**lehetőséget, majd ismételje meg a folyamatot, és adjon hozzá egy nyelvet az 5. és 6. lépésben. Ismételje meg ezt a folyamatot minden telepíteni kívánt nyelvnél. Egyszerre azonban csak egy nyelvet állíthat be megjelenítési nyelvként.
 
     Futtassunk egy gyors vizuális bemutatót. Az alábbi képek bemutatják, hogyan telepítheti a francia és holland nyelvi csomagokat, majd beállíthatja a franciát megjelenítési nyelvként.
@@ -146,7 +146,7 @@ Rendszerkép rögzítése:
    > [!div class="mx-imgBorder"]
    > ![A rendszerkép létrehozása ablak képernyőképe Az a név, amelyet a felhasználó adott a tesztelési képnek, a "vmwvd-képfájl-fr", és a "testwvdimagerg" erőforráscsoporthoz lett hozzárendelve.](media/create-image.png)
 
-4. Kattintson a **Létrehozás** gombra.
+4. Válassza a **Létrehozás** lehetőséget.
 
 5. Várjon néhány percet, amíg a rögzítési folyamat befejeződik. Ha a rendszerkép elkészült, egy üzenet jelenik meg az értesítési központban, amely értesíti, hogy a rendszerkép rögzítése megtörténik.
 

@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/24/2020
 ms.openlocfilehash: 8b12e1bd7bd67c3d22bdb62255b481d81976b969
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85362125"
 ---
 # <a name="audit-logs-in-azure-database-for-mysql"></a>Naplók naplózása Azure Database for MySQL
@@ -47,7 +47,7 @@ Az egyéb paraméterek a következők:
 
 ## <a name="access-audit-logs"></a>Hozzáférés az auditnaplókhoz
 
-A naplófájlok integrálva vannak Azure Monitor diagnosztikai naplókba. Miután engedélyezte a naplók használatát a MySQL-kiszolgálón, kibocsáthatja őket Azure Monitor naplókba, Event Hubsba vagy az Azure Storage szolgáltatásba. Ha szeretne többet megtudni arról, hogyan engedélyezheti a diagnosztikai naplókat a Azure Portalban, tekintse meg a [napló-portált ismertető cikket](howto-configure-audit-logs-portal.md#set-up-diagnostic-logs).
+A naplók az Azure Monitor Diagnostic Logs szolgáltatással vannak integrálva. Miután engedélyezte a naplókat a MySQL-kiszolgálón, kibocsáthatja azokat az Azure Monitor-naplókba, az Event Hubsba vagy az Azure Storage-ba. Ha szeretne többet megtudni arról, hogyan engedélyezheti a diagnosztikai naplókat a Azure Portalban, tekintse meg a [napló-portált ismertető cikket](howto-configure-audit-logs-portal.md#set-up-diagnostic-logs).
 
 ## <a name="diagnostic-logs-schemas"></a>Diagnosztikai naplók sémái
 

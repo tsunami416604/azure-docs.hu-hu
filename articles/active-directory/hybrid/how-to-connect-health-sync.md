@@ -17,10 +17,10 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 356697c4843742c12aa39d82602815e38dcca74a
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85359143"
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>Az Azure AD Connect-szinkronizálás megfigyelése az Azure AD Connect Health szolgáltatással
@@ -81,7 +81,7 @@ Ez a funkció olyan szinkronizálási hibákról készít jelentést, amelyek a 
 ### <a name="categorization-of-errors"></a>Hibák kategorizálása
 A jelentés az alábbi kategóriák szerint csoportosítja a jelentkező szinkronizálási hibákat:
 
-| Kategória | Leírás |
+| Kategória | Description |
 | --- | --- |
 | Duplikált attribútum |Olyan hibák, amelyek akkor jelentkeznek, amikor az Azure AD Connect megpróbál olyan objektumokat létrehozni vagy frissíteni az Azure AD-ben, amelyek egy vagy több duplikált attribútummal rendelkeznek, noha az attribútumnak (például proxyAddresses vagy UserPrincipalName) egyedinek kell lennie a bérlőben. |
 | Eltérés az adatokban |Olyan hibák, amelyek akkor jelentkeznek, ha közeli egyezéssel nem azonosíthatók be a szinkronizálási hibát kiváltó objektumok. |

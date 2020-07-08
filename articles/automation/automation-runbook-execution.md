@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 04/14/2020
 ms.topic: conceptual
 ms.openlocfilehash: 4f62a94c8ed8baa9979aa1469e785d26781af7f0
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85361625"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Runbook végrehajtása az Azure Automationben
@@ -59,7 +59,7 @@ Az alábbi táblázat néhány runbook végrehajtási feladatot sorol fel, amely
 |Jogosultságszint-emelést igénylő parancsfájlok futtatása|hibrid runbook-feldolgozó|A sandboxok nem engedélyezik a jogosultságszint-emelést. A hibrid Runbook-feldolgozók kikapcsolhatják az UAC-t, és a jogosultságszint-emelést igénylő parancs futtatásakor a [Meghívási parancsot](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-7) is használhatják.|
 |Windows Management Instrumentation (WMI) elérését igénylő parancsfájlok futtatása|hibrid runbook-feldolgozó|A Felhőbeli munkaterületeken futó feladatok nem férnek hozzá a WMI-szolgáltatóhoz. |
 
-## <a name="resources"></a>További források
+## <a name="resources"></a>Erőforrások
 
 A runbookok tartalmaznia kell a logikai [erőforrásokat](https://docs.microsoft.com/rest/api/resources/resources), például a virtuális gépeket, a hálózatot és az erőforrásokat a hálózaton. Az erőforrások egy Azure-előfizetéshez vannak kötve, és a megfelelő hitelesítő adatok megkövetelése az erőforrásokhoz való runbookok. A runbook erőforrásainak kezelésével kapcsolatos példát az [erőforrások kezelése](manage-runbooks.md#handle-resources)című témakörben talál. 
 
@@ -131,7 +131,7 @@ A következő táblázat a feladatokhoz lehetséges állapotokat ismerteti. Megt
 
 | Állapot | Leírás |
 |:--- |:--- |
-| Befejezve |A feladat sikeresen befejeződött. |
+| Befejeződött |A feladat sikeresen befejeződött. |
 | Sikertelen |A grafikus vagy a PowerShell-munkafolyamat runbook nem sikerült lefordítani. Nem sikerült elindítani egy PowerShell-runbook, vagy kivétel történt a feladatokban. Lásd: [Azure Automation runbook-típusok](automation-runbook-types.md).|
 | Sikertelen, várakozás erőforrásokra |A feladatot nem sikerült végrehajtani, mert elérte a [valós megosztási](#fair-share) korlátot háromszor, és ugyanabból az ellenőrzőpontból vagy a runbook elejétől indul el. |
 | Várólistán |A művelet arra vár, hogy az automatizálási feldolgozón lévő erőforrások elérhetővé váljanak, hogy el lehessen indítani. |

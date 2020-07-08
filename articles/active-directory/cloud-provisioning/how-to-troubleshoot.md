@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
 ms.openlocfilehash: 009e762b69d4f3512158d69ef3c67089096c9da7
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85360792"
 ---
 # <a name="cloud-provisioning-troubleshooting"></a>Felhőalapú kiépítés – hibaelhárítás
@@ -22,7 +22,7 @@ A Felhőbeli kiépítés számos különböző dolgot érint, és számos külö
 
 ## <a name="common-troubleshooting-areas"></a>Gyakori hibaelhárítási területek
 
-|Name (Név)|Leírás|
+|Name|Description|
 |-----|-----|
 |[Ügynökkel kapcsolatos problémák](#agent-problems)|Ellenőrizze, hogy az ügynök megfelelően lett-e telepítve, és hogy a Azure Active Directory (Azure AD) szolgáltatással kommunikál-e.|
 |[Objektum-szinkronizálási problémák](#object-synchronization-problems)|Az objektumok szinkronizálásával kapcsolatos problémák elhárításához használjon kiépítési naplókat.|

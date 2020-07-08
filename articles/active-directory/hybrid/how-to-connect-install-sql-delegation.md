@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4f082ec896bf0542b63c8c1d0257679681334050
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85358667"
 ---
 # <a name="install-azure-ad-connect-using-sql-delegated-administrator-permissions"></a>Az Azure AD Connect telepítése SQL-lel delegált rendszergazdai engedélyekkel
@@ -31,7 +31,7 @@ A Azure AD Connect legújabb kiadásával az adatbázis üzembe helyezése mosta
 ## <a name="before-you-begin"></a>Előkészületek
 A szolgáltatás használatához fel kell ismernie, hogy több mozgó rész is van, és mindegyikhez tartozhat egy másik rendszergazda a szervezetben.  A következő táblázat összefoglalja az egyes szerepköröket és azok feladatait a Azure AD Connect ezen szolgáltatással való üzembe helyezésével kapcsolatban.
 
-|Szerepkör|Leírás|
+|Szerepkör|Description|
 |-----|-----|
 |Tartományi vagy erdőszintű AD-rendszergazda|Létrehozza a Azure AD Connect által a szinkronizálási szolgáltatás futtatásához használt tartományi szintű szolgáltatásfiókot.  További információ a szolgáltatásfiókok használatáról: [fiókok és engedélyek](reference-connect-accounts-permissions.md).
 |SQL-rendszergazda|Létrehozza a ADSync-adatbázist, és hozzáférést biztosít a Azure AD Connect rendszergazdához és a tartomány/erdő rendszergazdája által létrehozott szolgáltatásfiók-hozzáféréshez.|

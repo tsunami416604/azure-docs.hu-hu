@@ -16,10 +16,10 @@ ms.date: 05/11/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b15250804dd316000aa20d6b97e9cccbfc36e9ad
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85359092"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>Duplikált attribútumok szinkronizálási hibáinak diagnosztizálása és javítása
@@ -68,7 +68,7 @@ Kövesse a Azure Portal lépéseit, és Szűkítse le a szinkronizálási hiba r
 A Azure Portal hajtson végre néhány lépést az egyes javítható helyzetek azonosításához:  
 1.  Keresse meg a **Diagnosztizálás állapota** oszlopot. Az állapot azt mutatja, hogy lehetséges-e a szinkronizálási hiba kijavítása közvetlenül a Azure Active Directoryról. Ez azt jelenti, hogy létezik egy hibaelhárítási folyamat, amely leszűkítheti a hiba esetét, és esetleg javíthatja azt.
 
-| status | Mit jelent? |
+| Állapot | Mit jelent? |
 | ------------------ | -----------------|
 | Nincs elindítva | Nem látogatta meg ezt a diagnosztikai folyamatot. A diagnosztikai eredményektől függően lehetőség van arra, hogy a szinkronizálási hibát közvetlenül a portálról javítsa ki. |
 | Manuális javítás szükséges | A hiba nem felel meg a portálon elérhető javítások feltételeinek. Az ütköző objektumtípusok nem a felhasználók, vagy már elvégezte a diagnosztikai lépéseket, és a portálon nem érhető el javítás. Az utóbbi esetben a helyszíni oldalról származó javítás még mindig az egyik megoldás. [További információ a helyszíni javításokról](https://support.microsoft.com/help/2647098). | 

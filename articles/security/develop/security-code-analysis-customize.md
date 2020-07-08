@@ -14,10 +14,10 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: 744b186b32927f81be21ff067c9195bddb33c416
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85362091"
 ---
 # <a name="configure-and-customize-the-build-tasks"></a>A Build-feladatok konfigurálása és testreszabása
@@ -62,7 +62,7 @@ A feladat konfigurációjának részletei a következő képernyőképen és lis
     - Több megadott célpontot pontosvesszővel kell elválasztani (;).
     - A megadott elem lehet egyetlen fájl, vagy helyettesítő karakter is szerepelhet.
     - A könyvtár specifikációinak mindig a * értékkel kell végződnie \\ .
-    - Angol nyelvű Példák:
+    - Példák:
 
            *.dll;*.exe
            $(BUILD_STAGINGDIRECTORY)\*

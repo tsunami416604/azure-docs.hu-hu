@@ -13,10 +13,10 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: a7fab9515051180fdb1b894602478768a60177ef
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85362057"
 ---
 # <a name="onboarding-and-installing"></a>Előkészítés és telepítés
@@ -63,7 +63,7 @@ A Microsoft biztonsági kód elemzése csapat a partnereknek szóló szerződés
 1. Válassza a **megosztott**lehetőséget.
 1. Válassza ki a Microsoft biztonsági kód elemzése bővítményt, majd válassza a **telepítés**lehetőséget.
 1. A legördülő listában válassza ki az Azure DevOps-szervezetet a bővítmény telepítéséhez.
-1. Válassza az **Install** (Telepítés) lehetőséget. A telepítés befejezése után elkezdheti használni a bővítményt.
+1. Válassza a **Telepítés** gombot. A telepítés befejezése után elkezdheti használni a bővítményt.
 
 >[!NOTE]
 > Még ha nincs hozzáférése a bővítmény telepítéséhez, folytassa a telepítési lépésekkel. A telepítési folyamat során az Azure DevOps-szervezet rendszergazdájától kérhet hozzáférést.
