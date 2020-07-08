@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: alkohli
 ms.openlocfilehash: c787df901fc33c2dcd2c8a901202c72ea6de45d4
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85513611"
 ---
 # <a name="deactivate-and-delete-a-storsimple-virtual-array"></a>Virtuális StorSimple-tömb inaktiválása és törlése
@@ -86,7 +86,7 @@ Az eszköz törléséhez hajtsa végre a következő lépéseket.
    
     Az eszköz törlése után megtekintheti az eszközök frissített listáját.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ a feladatátvételi feladatokról: [a StorSimple virtuális tömb feladatátvétele és vész-helyreállítása](storsimple-virtual-array-failover-dr.md).
 

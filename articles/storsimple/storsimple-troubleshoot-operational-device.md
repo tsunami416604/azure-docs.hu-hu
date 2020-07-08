@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: twooley
 ms.openlocfilehash: e2e68c7016a37824f1bf307a676c39281d4d41d2
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85507820"
 ---
 # <a name="troubleshoot-an-operational-storsimple-device"></a>Operatív StorSimple-eszköz hibáinak megoldása
@@ -63,7 +63,7 @@ A hibák numerikus sorrendben vannak felsorolva.
 | 390061 |A rendszer foglalt vagy nem érhető el. |Várjon néhány percet, majd próbálkozzon újra. Ha a hiba továbbra is fennáll, vegye fel a kapcsolatot Microsoft ügyfélszolgálata a következő lépésekhez. |
 | 390143 |Hiba történt a 390143-es hibakód miatt. (Ismeretlen hiba.) |Ha a hiba továbbra is fennáll, vegye fel a kapcsolatot Microsoft ügyfélszolgálata a következő lépésekhez. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ha nem tudja feloldani a problémát, [forduljon a Microsoft ügyfélszolgálatahoz](storsimple-contact-microsoft-support.md) segítségért. 
 
 [1]: https://technet.microsoft.com/%5Clibrary/Dn688135(v=WPS.630).aspx

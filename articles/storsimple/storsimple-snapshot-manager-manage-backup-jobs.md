@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: twooley
 ms.openlocfilehash: fb0d330b833c8841e65d650599d74211003843bc
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85511493"
 ---
 # <a name="use-storsimple-snapshot-manager-to-view-and-manage-backup-jobs"></a>A StorSimple Snapshot Manager használata a biztonsági mentési feladatok megtekintéséhez és kezeléséhez
@@ -84,7 +84,7 @@ A jelenleg futó feladatok megtekintéséhez kövesse az alábbi eljárást.
      ![Jelenleg futó feladatok](./media/storsimple-snapshot-manager-manage-backup-jobs/HCS_SSM_Jobs_running.png)
 3. Egy adott feladathoz tartozó további műveletek elvégzéséhez kattintson a jobb gombbal a feladatra a **találatok** ablaktáblán, és válassza a menüpontot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Ismerje meg, hogyan kezelheti [a StorSimple-megoldást a StorSimple Snapshot Manager használatával](storsimple-snapshot-manager-admin.md).
 * Ismerje meg, hogyan [kezelheti a biztonsági mentési katalógust a StorSimple Snapshot Manager használatával](storsimple-snapshot-manager-manage-backup-catalog.md).
 

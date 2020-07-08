@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 06/12/2019
 ms.author: alkohli
 ms.openlocfilehash: c9978be9182bbb2923fa5db0b4e5ada422ef0da9
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85511596"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>Az MPIO konfigurálása a CentOS-t futtató StorSimple-gazdagépen
@@ -413,7 +413,7 @@ A. Annak ellenőrzéséhez, hogy az eszköz engedélyezve van-e, használja a k�
 További információ: [Hibaelhárítás a többutas eléréshez](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/dm_multipath/mpio_admin-troubleshoot).
 
 ## <a name="list-of-useful-commands"></a>Hasznos parancsok listája
-| Típus | Parancs | Leírás |
+| Típus | Parancs | Description |
 | --- | --- | --- |
 | **iSCSI** |`service iscsid start` |ISCSI szolgáltatás indítása |
 | &nbsp; |`service iscsid stop` |Az iSCSI szolgáltatás leállítása |
@@ -428,7 +428,7 @@ További információ: [Hibaelhárítás a többutas eléréshez](https://access
 | **Többutas** |`service multipathd start` |Többutas démon indítása |
 | &nbsp; |`service multipathd stop` |Többutas démon leállítása |
 | &nbsp; |`service multipathd restart` |Többutas démon újraindítása |
-| &nbsp; |`chkconfig multipathd on` </br> OR </br> `mpathconf -with_chkconfig y` |A többutas démon indításának engedélyezése rendszerindítás közben |
+| &nbsp; |`chkconfig multipathd on` </br> VAGY </br> `mpathconf -with_chkconfig y` |A többutas démon indításának engedélyezése rendszerindítás közben |
 | &nbsp; |`multipathd -k` |Az interaktív konzol elindítása hibaelhárításhoz |
 | &nbsp; |`multipath -l` |Többutas kapcsolatok és eszközök listázása |
 | &nbsp; |`mpathconf --enable` |Hozzon létre egy minta mulitpath. conf fájlt a`/etc/mulitpath.conf` |

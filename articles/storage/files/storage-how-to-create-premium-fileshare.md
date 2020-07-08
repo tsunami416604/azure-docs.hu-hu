@@ -8,10 +8,10 @@ ms.date: 05/05/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: ae40f94ca6c8c0b92c85a49e634aa02c81a98eff
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85509982"
 ---
 # <a name="how-to-create-an-premium-azure-file-share"></a>Prémium szintű Azure-fájlmegosztás létrehozása
@@ -55,7 +55,7 @@ Minden tárfióknak egy Azure-erőforráscsoporthoz kell tartoznia. Az erőforr�
     ![Storage-fiók létrehozása prémium fájlmegosztás esetén](media/storage-how-to-create-premium-fileshare/create-filestorage-account.png)
 
 1. A tárfiók beállításainak áttekintéséhez és a fiók létrehozásához válassza a **Felülvizsgálat + létrehozás** elemet.
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 A Storage-fiók erőforrásának létrehozása után navigáljon hozzá.
 
@@ -70,7 +70,7 @@ A Storage-fiók erőforrásának létrehozása után navigáljon hozzá.
 
    ![Prémium szintű fájlmegosztás létrehozása](media/storage-how-to-create-premium-fileshare/create-premium-file-share.png)
 
-### <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+### <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha meg szeretné tisztítani a cikkben létrehozott erőforrásokat, egyszerűen törölheti az erőforráscsoportot. Az erőforráscsoport törlésével a társított Storage-fiók, valamint az erőforráscsoporthoz társított egyéb erőforrások is törlődnek.
 
@@ -135,7 +135,7 @@ New-AzStorageShare `
    -Context $storageAcct.Context
 ```
 
-### <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+### <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Az erőforráscsoport és a hozzá tartozó erőforrások eltávolításához, beleértve az új Storage-fiókot is, használja a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) parancsot: 
 
@@ -201,7 +201,7 @@ az storage share create \
     --name "myshare" 
 ```
 
-### <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+### <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Az [az group delete](/cli/azure/group) paranccsal eltávolítható az erőforráscsoport és az összes kapcsolódó erőforrás, beleértve az új tárfiókot is.
 
@@ -209,7 +209,7 @@ Az [az group delete](/cli/azure/group) paranccsal eltávolítható az erőforrá
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben egy prémium szintű fájlmegosztást hozott létre. Ha többet szeretne megtudni a fiók által kínált teljesítményről, folytassa a tervezési útmutató teljesítményszint szakaszával.
 

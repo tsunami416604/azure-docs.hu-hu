@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/03/2017
 ms.author: alkohli
 ms.openlocfilehash: dffa059b18e159d04b5e3bb8555dabf801ede692
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85511806"
 ---
 # <a name="failover-and-disaster-recovery-for-your-storsimple-8000-series-device"></a>Feladatátvétel és vészhelyreállítás StorSimple 8000 sorozatú eszközök esetében
@@ -128,7 +128,7 @@ Az üzletmenet folytonossága vész-helyreállítási (BCDR) forgatókönyv akko
 
 Ha egy StorSimple-eszköz közvetlenül a katasztrófa előtt lett regisztrálva, akkor előfordulhat, hogy az eszköznek a gyári beállítások visszaállítását kell végeznie. A katasztrófa után a StorSimple-eszköz offline állapotban jelenik meg a Azure Portal. Ezt az eszközt törölni kell a portálról. Állítsa vissza az eszközt a gyári beállításokra, és regisztrálja újra a szolgáltatással.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha készen áll az eszköz feladatátvételének végrehajtására, válasszon a következő forgatókönyvek közül a részletes utasítások közül:
 

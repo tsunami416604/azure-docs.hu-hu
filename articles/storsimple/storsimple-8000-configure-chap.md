@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 05/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 5f0c022de69823aedbbb34eb369de350b4999c69
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85514347"
 ---
 # <a name="configure-chap-for-your-storsimple-device"></a>A CHAP konfigurálása a StorSimple-eszközhöz
@@ -167,7 +167,7 @@ A következő lépések végrehajtásával ellenőrizheti, hogy a CHAP használa
    
     ![Kedvenc cél részletei](./media/storsimple-configure-chap/IC740952.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ a [StorSimple biztonságáról](storsimple-8000-security.md).
 * További információ [a StorSimple Eszközkezelő szolgáltatás a StorSimple-eszköz felügyeletéhez való használatáról](storsimple-8000-manager-service-administration.md).

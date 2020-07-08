@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 06/28/2020
 ms.author: jingwang
 ms.openlocfilehash: 93f484bd30de1ba0ca0f7aa5db263243bebc5b09
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85508809"
 ---
 # <a name="copy-data-from-and-to-ibm-informix-using-azure-data-factory"></a>Adatok másolása az IBM Informix-ből és-ből a Azure Data Factory használatával
@@ -59,7 +59,7 @@ Az Informix társított szolgáltatás a következő tulajdonságokat támogatja
 | hitelesítő adat | Az illesztőprogram-specifikus tulajdonság-érték formátumban megadott kapcsolati karakterlánc hozzáférési hitelesítő része. A mező megjelölése SecureString. | No |
 | Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . A saját üzemeltetésű Integration Runtime az [Előfeltételek](#prerequisites)szakaszban említettek szerint kell megadni. |Yes |
 
-**Például**
+**Példa:**
 
 ```json
 {
@@ -125,7 +125,7 @@ Az Informix-ből származó adatok másolásához a másolási tevékenység **f
 | típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **InformixSource** | Yes |
 | lekérdezés | Az egyéni lekérdezés használatával olvashatja el az adatolvasást. Példa: `"SELECT * FROM MyTable"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
 
-**Például**
+**Példa:**
 
 ```json
 "activities":[
@@ -168,7 +168,7 @@ Az adattárba másolt adatmásoláshoz a másolási tevékenység fogadója szak
 | writeBatchSize |Beilleszti az adatmennyiséget az SQL-táblába, ha a puffer mérete eléri a writeBatchSize.<br/>Az engedélyezett értékek: Integer (sorok száma). |Nem (alapértelmezett érték: 0 – automatikusan észlelve) |
 | preCopyScript |Adja meg az SQL-lekérdezést a másolási tevékenység végrehajtásához, mielőtt az egyes futtatásokban az adattárba írja az adattárban. Ezt a tulajdonságot használhatja az előre betöltött adatértékek törléséhez. |No |
 
-**Például**
+**Példa:**
 
 ```json
 "activities":[
@@ -204,5 +204,5 @@ Az adattárba másolt adatmásoláshoz a másolási tevékenység fogadója szak
 A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A Azure Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

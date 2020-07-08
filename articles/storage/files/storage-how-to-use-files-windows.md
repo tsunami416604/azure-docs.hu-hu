@@ -8,10 +8,10 @@ ms.date: 06/22/2020
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: bb9e7582317851d1968e104cd351a2b5e02b1e19
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85509778"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Azure-fájlmegosztás használata Windowson
@@ -198,7 +198,7 @@ Miután létrehozta a beállításkulcsot, indítsa újra a kiszolgálót az SMB
 - [Az SMB 1 felfedezése a környezetben DSCEA használatával](https://blogs.technet.microsoft.com/ralphkyttle/2017/04/07/discover-smb1-in-your-environment-with-dscea/)
 - [Az SMB 1 letiltása csoportházirend használatával](https://blogs.technet.microsoft.com/secguide/2017/06/15/disabling-smbv1-through-group-policy/)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az alábbi hivatkozások további információkat tartalmaznak az Azure Filesról:
 - [Az Azure Files üzembe helyezésének megtervezése](storage-files-planning.md)
 - [Gyakori kérdések](../storage-files-faq.md)

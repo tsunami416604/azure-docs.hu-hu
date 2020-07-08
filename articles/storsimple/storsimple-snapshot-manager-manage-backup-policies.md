@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: twooley
 ms.openlocfilehash: 871f2313b8cd0e8b94a7daff00e5743ee5cdfd71
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85511536"
 ---
 # <a name="use-storsimple-snapshot-manager-to-create-and-manage-backup-policies"></a>Biztonsági mentési szabályzatok létrehozása és kezelése StorSimple Snapshot Manager használatával
@@ -91,6 +91,6 @@ A biztonsági mentési szabályzat törléséhez kövesse az alábbi eljárást.
 
     ![Biztonsági mentési szabályzat törlésének megerősítése](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Delete_BU_policy.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Ismerje meg, hogyan kezelheti [a StorSimple-megoldást a StorSimple Snapshot Manager használatával](storsimple-snapshot-manager-admin.md).
 * Ismerje meg, hogyan [tekintheti meg és kezelheti a biztonsági mentési feladatokat a StorSimple Snapshot Manager használatával](storsimple-snapshot-manager-manage-backup-jobs.md).

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
 ms.openlocfilehash: 31220a8f8b012e08d46195b60a26be9cfc261be5
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85514528"
 ---
 # <a name="use-the-service-summary-blade-for-storsimple-device-manager-connected-to-storsimple-virtual-array"></a>A StorSimple virtuális tömbhöz csatlakoztatott StorSimple Eszközkezelő szolgáltatás összefoglalási paneljének használata
@@ -45,6 +45,6 @@ Ha meg szeretné tekinteni a StorSimple belül végrehajtott különféle művel
 
 ![Tevékenységnaplók](./media/storsimple-virtual-array-service-summary/activity-log.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Megtudhatja, hogyan [használhatja a helyi webes felhasználói felületet a StorSimple virtuális tömb felügyeletére](storsimple-ova-web-ui-admin.md).
 

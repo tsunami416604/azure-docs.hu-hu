@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 1/08/2020
 ms.author: v-erkel
 ms.openlocfilehash: 0fa8be58db9754c652d6e1ee5349c950a1c19109
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85513839"
 ---
 # <a name="edit-storage-targets"></a>Céltárolók szerkesztése
@@ -68,7 +68,7 @@ A blob Storage-tároló részletek lapja lehetővé teszi a virtuális névtér 
 
 Ha elkészült, kattintson **az OK** gombra a tárolási cél frissítéséhez, vagy kattintson a **Mégse** gombra a módosítások elvetéséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A beállításokkal kapcsolatos további információkért olvassa el a [tárolási célok hozzáadása](hpc-cache-add-storage.md) című témakört.
 * A virtuális elérési utak használatával kapcsolatos további tippekért olvassa el [az összesített névtér megtervezése](hpc-cache-namespace.md) című cikkét.

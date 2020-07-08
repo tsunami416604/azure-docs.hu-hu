@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
 ms.openlocfilehash: 38168db9706bd168b3edc2e740eaea40b23d4b0b
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85510583"
 ---
 # <a name="part-three-configure-directory-and-file-level-permissions-over-smb"></a>Harmadik rész: a könyvtár-és a fájl szintű engedélyek konfigurálása SMB protokollon keresztül 
@@ -85,7 +85,7 @@ icacls <mounted-drive-letter>: /grant <user-email>:(f)
 
 A Windows ACL-ek és a különböző típusú támogatott engedélyek beállításával kapcsolatos további információkért tekintse meg [az icacls parancssori útmutatója](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls)című témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy a funkció engedélyezve és konfigurálva van, folytassa a következő cikkel, amelyben csatlakoztathatja az Azure-fájlmegosztást egy tartományhoz csatlakoztatott virtuális gépről.
 

@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 11/13/2017
 ms.author: alkohli
 ms.openlocfilehash: bbac6eade634ffcfdc47ae3d22b32e0bd429b7c6
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85513174"
 ---
 # <a name="install-update-5-on-your-storsimple-device"></a>Telepítse az 5. frissítést a StorSimple-eszközön
@@ -113,6 +113,6 @@ A gyorsjavítások letöltéséhez és telepítéséhez hajtsa végre a követke
 
 [!INCLUDE [storsimple-8000-install-troubleshooting](../../includes/storsimple-8000-install-troubleshooting.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ az [5. frissítés kiadásáról](storsimple-update5-release-notes.md).
 

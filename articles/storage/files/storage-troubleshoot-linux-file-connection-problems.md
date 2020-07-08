@@ -8,10 +8,10 @@ ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
 ms.openlocfilehash: 3a24f6c7c8339ee5e63fea4c0cd4d7edc9da2a17
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85512014"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>A Linux Azure Files problémáinak elhárítása
@@ -210,7 +210,7 @@ A COPYFILE Force **jelzője a következőt** eredményezi: **CP-p-f** futtatása
 
 ### <a name="workaround"></a>Áthidaló megoldás
 
-A fájlok másolásához használja a Storage-fiók felhasználóját:
+A fájlok másolásához használja a tárfiók-felhasználót:
 
 - `Useadd : [storage account name]`
 - `Passwd [storage account name]`
@@ -227,9 +227,9 @@ Ha egy Azure-fájlmegosztás fájljait az ls parancs használatával próbálja 
 ### <a name="solution"></a>Megoldás
 Frissítse a Linux-kernelt a következő verziókra, amelyek a probléma javításával rendelkeznek:
 
-- 4.4.87 +
-- 4.9.48 +
-- 4.12.11 +
+- 4.4.87+
+- 4.9.48+
+- 4.12.11+
 - Az összes olyan verzió, amely nagyobb vagy egyenlő, mint 4,13
 
 ## <a name="cannot-create-symbolic-links---ln-failed-to-create-symbolic-link-t-operation-not-supported"></a>A szimbolikus hivatkozások nem hozhatók létre – ln: nem sikerült létrehozni a szimbolikus hivatkozást: a művelet nem támogatott
@@ -277,7 +277,7 @@ Ez a Linux kernelben található újracsatlakozási hiba a következő változta
 
 - [Javítás: a rendszer az újracsatlakozáskor nem késlelteti az smb3-munkamenet újracsatlakozását jóval a szoftvercsatornához való újracsatlakozás utáni időpontra](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/fs/cifs?id=4fcd1813e6404dd4420c7d12fb483f9320f0bf93)
 - [Echo szolgáltatás azonnali hívása a szoftvercsatornához való újracsatlakozás után](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b8c600120fc87d53642476f48c8055b38d6e14c7)
-- [CIFS: a lehetséges memória sérülésének javítása az Újracsatlakozás során](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=53e0e11efe9289535b060a51d4cf37c25e0d0f2b)
+- [CIFS: Lehetséges memóriasérülés javítása az újracsatlakozás során](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=53e0e11efe9289535b060a51d4cf37c25e0d0f2b)
 - [CIFS: javítsa a mutex lehetséges kettős zárolását az Újracsatlakozás során (kernel v 4.9 és újabb verziók esetén)](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=96a988ffeb90dba33a71c3826086fe67c897a183)
 
 Azonban előfordulhat, hogy ezen módosítások még nem mindegyike lett portolva az összes Linux-disztribúcióba. Ha népszerű Linux-disztribúciót használ, akkor a [Azure Files használata Linuxon](storage-how-to-use-files-linux.md) lehetőségre kattintva megtekintheti, hogy a disztribúció melyik verziója tartalmazza a szükséges kernel-módosításokat.

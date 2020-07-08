@@ -9,10 +9,10 @@ ms.date: 01/15/2017
 ms.author: twooley
 ms.subservice: common
 ms.openlocfilehash: bc9d338579385001d33669ed06ff71e590571502
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85514144"
 ---
 # <a name="troubleshooting-the-azure-importexport-tool"></a>Az Azure Import/Export eszköz hibaelhárítása
@@ -31,7 +31,7 @@ A Microsoft Azure Import/Export eszköz hibaüzeneteket ad vissza, ha problémá
 ## <a name="i-lost-the-journal-file-can-i-still-create-the-job"></a>Elveszítettem a naplófájlt, továbbra is létrehozhatom a feladatot?  
  A meghajtóhoz tartozó naplófájl tartalmazza az adatoknak a meghajtóra másolásának teljes adatait, és szükség van további fájlok hozzáadására a meghajtóhoz, és az importálási feladatok létrehozásához lesz használva. Ha a naplófájl elvész, a meghajtó összes másolási munkamenetét újra meg kell ismételni.  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az Azure import/export eszköz beállítása](../storage-import-export-tool-setup-v1.md)   
 * [Merevlemezek előkészítése importálási feladatokhoz](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   

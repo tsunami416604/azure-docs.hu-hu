@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
 ms.openlocfilehash: 734dc55cbcd9c7b5eaf6455d63bcb773b7d85367
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85513988"
 ---
 # <a name="use-storsimple-device-manager-service-to-manage-volumes-on-the-storsimple-virtual-array"></a>Kötetek kezelése a StorSimple-eszközkezelő szolgáltatással a StorSimple Virtual Arrayben
@@ -137,7 +137,7 @@ A kötetek törléséhez hajtsa végre az alábbi lépéseket.
 3. Tekintse meg a törölni kívánt kötet állapotát. Ha a törölni kívánt kötet nem offline állapotban van, először kapcsolja offline állapotba, majd kövesse a [kötet offline](#take-a-volume-offline)állapotba helyezése című témakör lépéseit.
 4. Amikor a rendszer megerősítést kér a **Törlés** panelen, fogadja el a megerősítést, és kattintson a **Törlés**gombra. A kötet most már törölve lesz, és a **kötetek** panel megjeleníti a kötetek frissített listáját a virtuális tömbön belül.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tudnivalók a [StorSimple-kötetek klónozásáról](storsimple-virtual-array-clone.md).
 

@@ -9,10 +9,10 @@ ms.subservice: common
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.openlocfilehash: 86fc63d8b0615423f4138ed1b09dc3a24d1e527e
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85514450"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>Azure Storage-erőforrások listázása C++ nyelven
@@ -34,7 +34,7 @@ Ezek a módszerek különböző túlterhelések használatával jelennek meg a k
 
 ## <a name="asynchronous-versus-synchronous"></a>Aszinkron és szinkron
 
-Mivel a C++-os Storage ügyféloldali kódtára a [C++ Rest-könyvtárra](https://github.com/Microsoft/cpprestsdk)épül, a [pplx:: Task](https://microsoft.github.io/cpprestsdk/classpplx_1_1task.html)használatával a következő módon támogatjuk az aszinkron műveleteket. Példa:
+Mivel a C++-os Storage ügyféloldali kódtára a [C++ Rest-könyvtárra](https://github.com/Microsoft/cpprestsdk)épül, a [pplx:: Task](https://microsoft.github.io/cpprestsdk/classpplx_1_1task.html)használatával a következő módon támogatjuk az aszinkron műveleteket. Például:
 
 ```cpp
 pplx::task<list_blob_item_segment> list_blobs_segmented_async(continuation_token& token) const;
@@ -192,7 +192,7 @@ Ebben a cikkben különböző túlterheléseket beszéltünk a Storage ügyfélo
 * A lusta lista a könyvtárban kényelmes burkolóként van megadva a szinkron helyzetekben.
 * A kapzsi felsorolás nem ajánlott, és el lett távolítva a könyvtárból.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az Azure Storage-ról és az ügyféloldali kódtár a C++ nyelvhez: az alábbi források.
 

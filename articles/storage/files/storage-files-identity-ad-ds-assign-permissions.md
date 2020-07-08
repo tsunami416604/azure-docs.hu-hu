@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
 ms.openlocfilehash: 3335bfbed592c9e13d5be437e8013a89ae86e970
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85510633"
 ---
 # <a name="part-two-assign-share-level-permissions-to-an-identity"></a>Második rész: megosztási szintű engedélyek kiosztása identitáshoz
@@ -76,7 +76,7 @@ A következő minta parancsfájl futtatása előtt ne felejtse el helyettesíten
 az role assignment create --role "<role-name>" --assignee <user-principal-name> --scope "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/fileServices/default/fileshares/<share-name>"
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megosztott szintű engedélyeket rendelt hozzá, konfigurálnia kell a címtár-és a fájl szintű engedélyeket. Folytassa a következő cikkel.
 

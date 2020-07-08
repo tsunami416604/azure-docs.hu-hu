@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/05/2017
 ms.author: twooley
 ms.openlocfilehash: ab9f34995cea0dee39fa002f0472298a31b9a48e
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85513973"
 ---
 # <a name="use-storsimple-snapshot-manager-to-connect-and-manage-storsimple-devices"></a>A StorSimple Snapshot Manager használata a StorSimple-eszközök csatlakoztatásához és kezeléséhez
@@ -31,12 +31,12 @@ A StorSimple Snapshot Manager **hatóköre** ablaktáblán a csomópontok segít
 
 A **nézet** kiválasztásának függvényében az **eredmények** ablaktábla a következő információkat jeleníti meg az egyes eszközökről. (A nézetek konfigurálásával kapcsolatos további információkért nyissa meg a [Nézet menüt](storsimple-use-snapshot-manager.md#view-menu).
 
-| Eredmények oszlop | Leírás |
+| Eredmények oszlop | Description |
 |:--- |:--- |
-| Name (Név) |A klasszikus Azure portálon konfigurált eszköz neve |
+| Name |A klasszikus Azure portálon konfigurált eszköz neve |
 | Modell |Az eszköz modellje |
 | Verzió |Az eszközre telepített szoftver verziója |
-| status |Az eszköz elérhető-e |
+| Állapot |Az eszköz elérhető-e |
 | Legutóbb szinkronizálva |Az eszköz legutóbbi szinkronizálásának dátuma és időpontja |
 | Sorozatszám. |Az eszköz sorozatszáma |
 

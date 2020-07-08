@@ -8,10 +8,10 @@ ms.date: 05/31/2019
 ms.author: jeffpatt
 ms.subservice: files
 ms.openlocfilehash: 89a5fa0be104c3a7b7e035f82d2fed80d4781701
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85511996"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Azure Files-problémák hibaelhárítása Windowson
@@ -99,16 +99,16 @@ Sikeres csatlakozás esetén a következő kimenetet kell látnia:
 ### <a name="solution-for-cause-1"></a>Megoldás az 1. ok esetén
 
 #### <a name="solution-1---use-azure-file-sync"></a>1. megoldás – az Azure File Sync használata
-Azure File Sync átalakíthatja a helyszíni Windows Servert az Azure-fájlmegosztás gyors gyorsítótárba. A Windows Serveren elérhető bármely protokoll használatával helyileg férhet hozzá az adataihoz, beleértve az SMB-t, az NFS-t és a FTPS is. Azure File Sync a 443-es porton keresztül működik, ezért a 445-es porttal rendelkező ügyfelektől megkerülő megoldásként használható a Azure Files eléréséhez. [Útmutató a Azure file Sync telepítéséhez](https://docs.microsoft.com/azure/storage/files/storage-sync-files-extend-servers).
+Azure File Sync átalakíthatja a helyszíni Windows Servert az Azure-fájlmegosztás gyors gyorsítótárba. A Windows Serveren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl.: SMB, NFS vagy FTPS). Az Azure File Sync a 443-as porton keresztül működik, ezért megkerülő megoldásként használható az Azure Files eléréséhez a letiltott 445-ös porttal rendelkező ügyfelekről. [Útmutató a Azure file Sync telepítéséhez](https://docs.microsoft.com/azure/storage/files/storage-sync-files-extend-servers).
 
 #### <a name="solution-2---use-vpn"></a>2. megoldás – VPN használata
-A VPN az adott Storage-fiókhoz való beállításával a forgalom egy biztonságos alagúton halad át, szemben az interneten keresztül. Az utasításokat követve [beállíthatja a VPN-](storage-files-configure-p2s-vpn-windows.md) t a Windows rendszerű Azure Files eléréséhez.
+A VPN az adott Storage-fiókhoz való beállításával a forgalom egy biztonságos alagúton halad át, szemben az interneten keresztül. Ha Windowsból szeretné elérni az Azure Filest, kövesse [a VPN beállításához kapcsolódó utasításokat](storage-files-configure-p2s-vpn-windows.md).
 
 #### <a name="solution-3---unblock-port-445-with-help-of-your-ispit-admin"></a>3. megoldás – A 445-ös port blokkolásának feloldása az internetszolgáltató vagy a rendszergazda segítségével
 Az IT-részleggel vagy az INTERNETSZOLGÁLTATÓval együttműködve nyissa meg az 445-es portot az [Azure IP-tartományokhoz](https://www.microsoft.com/download/details.aspx?id=41653).
 
 #### <a name="solution-4---use-rest-api-based-tools-like-storage-explorerpowershell"></a>4. megoldás – REST API-alapú eszközök, például a Storage Explorer és a Powershell használata
-A Azure Files az SMB mellett a REST-t is támogatja. A REST-hozzáférés a 443-as porton (standard TCP) keresztül működik. Számos olyan eszköz van, amely REST API, amely lehetővé teszi a kezelőfelület gazdag felhasználói élményét. [Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows) az egyikük. [Töltse le és telepítse a Storage Explorert](https://azure.microsoft.com/features/storage-explorer/) , és kapcsolódjon a fájlmegosztás Azure Files által támogatott megosztáshoz. Használhatja a [PowerShellt](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-powershell) is, amely a felhasználó REST API is.
+A Azure Files az SMB mellett a REST-t is támogatja. A REST-hozzáférés a 443-as (szabványos TCP-) porton keresztül működik. Számos olyan REST API-val írt eszköz létezik, amely gazdag felhasználói felületi élmény megvalósítását teszi lehetővé. [Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows) az egyikük. [Töltse le és telepítse a Storage Explorert](https://azure.microsoft.com/features/storage-explorer/), és csatlakozzon az Azure Files-támogatással rendelkező fájlmegosztáshoz. Használhatja a [PowerShellt](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-powershell) is, amely a felhasználó REST API is.
 
 ### <a name="cause-2-ntlmv1-is-enabled"></a>2. ok: a NTLMv1 engedélyezve van
 
@@ -276,11 +276,11 @@ Ez a probléma akkor fordulhat elő, ha titkosított fájlrendszert (EFS) haszn�
 Ha egy fájlt hálózaton keresztül szeretne másolni, először vissza kell fejtenie azt. Használja az alábbi módszerek egyikét:
 
 - Használja a **copy/d** parancsot. Lehetővé teszi a titkosított fájlok mentését visszafejtett fájlként a célhelyen.
-- Állítsa be a következő beállításkulcsot:
+- Adja meg a következő beállításkulcsot:
   - Elérési út = HKLM\Software\Policies\Microsoft\Windows\System
   - Értéktípus = DWORD
-  - Név = CopyFileAllowDecryptedRemoteDestination
-  - Érték = 1
+  - Név: CopyFileAllowDecryptedRemoteDestination
+  - Érték: 1
 
 Vegye figyelembe, hogy a beállításkulcs beállítása hatással van a hálózati megosztásokon végrehajtott összes másolási műveletre.
 

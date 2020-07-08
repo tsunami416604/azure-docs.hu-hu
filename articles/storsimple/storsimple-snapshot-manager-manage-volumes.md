@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 04/18/2016
 ms.author: twooley
 ms.openlocfilehash: b27cf605c978e15d81a43db3371a71b0ccc48c8d
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85508920"
 ---
 # <a name="use-storsimple-snapshot-manager-to-view-and-manage-volumes"></a>Kötetek megtekintése és kezelése StorSimple Snapshot Manager használatával
@@ -205,7 +205,7 @@ A következő eljárással konfigurálhatja a dinamikus tükrözött köteteket,
    * Ha automatikus biztonsági mentést szeretne ütemezni, kattintson a **biztonsági mentési szabályzat létrehozása**elemre. Az **általános** lapon válassza ki a kötet csoportot a listából. Az **ütemterv** lapon adja meg az ütemterv részleteit. Amikor végzett, kattintson az **OK**gombra. 
 7. A biztonsági mentési feladatot a Futtatás közben is figyelheti. A **hatókör** ablaktáblán bontsa ki a **feladatok** csomópontot, majd kattintson a **Futtatás**elemre, a feladat részletei megjelennek az **eredmények** ablaktábláján. A biztonsági mentési feladatok befejezése után a rendszer átviszi a részleteket az **elmúlt 24** órás feladatok listájára. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Ismerje meg, hogyan kezelheti [a StorSimple-megoldást a StorSimple Snapshot Manager használatával](storsimple-snapshot-manager-admin.md).
 * Ismerje meg, hogyan [hozhat létre és kezelhet StorSimple-Snapshot Manager a kötetek létrehozásához és kezeléséhez](storsimple-snapshot-manager-manage-volume-groups.md).
 

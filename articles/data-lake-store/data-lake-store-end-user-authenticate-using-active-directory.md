@@ -8,10 +8,10 @@ ms.date: 05/29/2018
 ms.author: twooley
 ms.custom: has-adal-ref
 ms.openlocfilehash: ac585f1c215e5eb7ad5a6628ac85b70e7c76b14e
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85511311"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Végfelhasználói hitelesítés Azure Data Lake Storage Gen1 használatával Azure Active Directory
@@ -111,7 +111,7 @@ Az átirányítási URI beolvasásához hajtsa végre a következő lépéseket.
 
 5. Ismételje meg az utolsó két lépést a **Windows Azure Service Management API** engedélyeinek megadásához is.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a cikkben egy natív Azure AD-alkalmazást hozott létre, és összegyűjtötte a szükséges információkat a .NET SDK, Java SDK, REST API stb. használatával létrehozott ügyfélalkalmazások számára. A következő cikkekkel megtudhatja, hogyan használhatja az Azure AD-webalkalmazást, hogy először hitelesítse Data Lake Storage Gen1, majd más műveleteket hajtson végre az áruházban.
 
 * [Végfelhasználói hitelesítés Data Lake Storage Gen1 a Java SDK-val](data-lake-store-end-user-authenticate-java-sdk.md)

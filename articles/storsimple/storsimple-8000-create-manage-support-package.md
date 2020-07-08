@@ -7,10 +7,10 @@ ms.topic: troubleshooting
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: f8f84542cd52d8ad4affd64627637d4e95b1fb10
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85514047"
 ---
 # <a name="create-and-manage-a-support-package-for-storsimple-8000-series"></a>Támogatási csomag létrehozása és kezelése a StorSimple 8000 sorozathoz
@@ -23,7 +23,7 @@ Ez az oktatóanyag részletes útmutatást tartalmaz a StorSimple 8000 Series-es
 
 ## <a name="create-a-support-package"></a>Támogatási csomag létrehozása
 
-Bizonyos esetekben manuálisan kell létrehoznia a támogatási csomagot Windows PowerShell StorSimple-bővítményeon keresztül. Példa:
+Bizonyos esetekben manuálisan kell létrehoznia a támogatási csomagot Windows PowerShell StorSimple-bővítményeon keresztül. Például:
 
 * Ha el kell távolítania a bizalmas adatokat a naplófájlokból a Microsoft ügyfélszolgálata megosztása előtt.
 * Ha a csatlakozási problémák miatt nem sikerül feltölteni a csomagot.
@@ -137,7 +137,7 @@ Az alábbi példa egy támogatási csomag visszafejtését, szerkesztését és 
 
         PS C:\WINDOWS\system32>
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Tudnivalók a [támogatási csomagban gyűjtött információkról](https://support.microsoft.com/help/3193606/storsimple-support-packages-and-device-logs)
 * Ismerje meg, hogyan [használhatók a támogatási csomagok és az eszközök naplófájljai az eszköz üzembe helyezésének hibakereséséhez](storsimple-8000-troubleshoot-deployment.md#support-packages-and-device-logs-available-for-troubleshooting).

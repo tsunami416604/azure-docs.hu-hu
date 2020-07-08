@@ -9,10 +9,10 @@ ms.date: 01/15/2017
 ms.author: twooley
 ms.subservice: common
 ms.openlocfilehash: ae80c00fd81d0966167d2adf00764a0b1089c163
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85514117"
 ---
 # <a name="using-the-azure-importexport-service-rest-api"></a>Az Azure Import/Export szolgáltatás REST API-jának használata
@@ -49,6 +49,6 @@ Az importálási/exportálási szolgáltatásnak küldött kéréseknek meg kell
 
 [Import/Export-feladatok diagnosztizálása és hiba utáni helyreállítása](../storage-import-export-diagnostics-and-error-recovery.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Tároló importálási/exportálási REST](/rest/api/storageimportexport)

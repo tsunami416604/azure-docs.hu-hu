@@ -9,10 +9,10 @@ ms.date: 05/17/2018
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: 7a000ab4a465e3b19efe6f2853bcd19dca47e440
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85514134"
 ---
 # <a name="view-the-status-of-azure-importexport-jobs"></a>Az Azure Import/Export-feladatok állapotának megtekintése
@@ -63,7 +63,7 @@ Az alábbi táblázat a meghajtó meghibásodási állapotait és az egyes álla
 | Meghajtó állapota | Esemény | Megoldás/következő lépés |
 |:--- |:--- |:--- |
 | NeverReceived | Egy **NeverReceived** jelölésű meghajtó (mert nem érkezett a feladatokhoz a feladatainak részeként) egy másik szállítmányban érkezik. | Az operatív csapat áthelyezi a meghajtót a **fogadásba**. |
-| N/A | Egy olyan meghajtó, amely nem része a feladatoknak, egy másik feladattípus részeként az adatközpontba kerül. | A meghajtó külön meghajtóként van megjelölve, és az eredeti csomaghoz társított feladatok befejezése után visszaadja. |
+| N.A. | Egy olyan meghajtó, amely nem része a feladatoknak, egy másik feladattípus részeként az adatközpontba kerül. | A meghajtó külön meghajtóként van megjelölve, és az eredeti csomaghoz társított feladatok befejezése után visszaadja. |
 
 ## <a name="time-to-process-job"></a>A feladatok feldolgozásának ideje
 Az importálási/exportálási feladatok feldolgozásához szükséges idő számos tényezőtől függ, például:
@@ -76,7 +76,7 @@ Az importálási/exportálási feladatok feldolgozásához szükséges idő szá
 Az importálási/exportálási szolgáltatás nem rendelkezik SLA-val, de a szolgáltatás arra törekszik, hogy a másolást 7 – 10 nappal a lemezek fogadása után végezze el. Az Azure Portalon közzétett állapot mellett a REST API-k a feladatok előrehaladásának nyomon követésére is használhatók. A [feladatok listázása](/previous-versions/azure/dn529083(v=azure.100)) művelet API-hívásának százalékos készültségi paramétere a másolási folyamat százalékos arányát adja meg.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A WAImportExport eszköz beállítása](storage-import-export-tool-how-to.md)
 * [Adatok átvitele a AzCopy parancssori segédprogrammal](storage-use-azcopy.md)

@@ -11,10 +11,10 @@ ms.author: santoshc
 ms.reviewer: tamram
 ms.subservice: common
 ms.openlocfilehash: 5b4a1b1f27dff059090d78e24a6a0eca0bbbf01f
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85514194"
 ---
 # <a name="configure-network-routing-preference-for-azure-storage-preview"></a>Hálózati útválasztási beállítások konfigurálása az Azure Storage-hoz (előzetes verzió)
@@ -77,7 +77,7 @@ A következő ismert problémák hatással vannak az Azure Storage-hoz készült
 
 A díjszabással és a számlázással kapcsolatos részletekért tekintse meg a [Mi az útválasztási preferencia (előzetes verzió)](../../virtual-network/routing-preference-overview.md#pricing)című témakör **díjszabását** .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Mi az útválasztási preferencia (előzetes verzió)?](../../virtual-network/routing-preference-overview.md)
 - [Azure Storage-tűzfalak és virtuális hálózatok konfigurálása](storage-network-security.md)

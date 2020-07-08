@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/27/2017
 ms.author: alkohli
 ms.openlocfilehash: 1d5d57cab9906c04c5c207fa7df2d2fae6f749e7
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85514606"
 ---
 # <a name="modify-the-data-0-network-interface-settings-on-your-storsimple-8000-series-device"></a>Módosítsa az adat0 hálózati adapter beállításait a StorSimple 8000 Series eszközön
@@ -66,7 +66,7 @@ Az adat0 hálózati adapter újrakonfigurálásának másik módja a `Set-HcsNet
      
      A parancsmag használatával kapcsolatos további információkért látogasson el [Windows PowerShell StorSimple-bővítménye parancsmag-referenciára](https://technet.microsoft.com/library/dn688161.aspx).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * A nem az adat0 hálózati adapterek konfigurálásához használhatja a [Azure Portal hálózati beállításait](storsimple-8000-modify-device-config.md). 
 * Ha a hálózati adapterek konfigurálása során problémákba ütközik, tekintse meg az [üzembe helyezési problémák elhárítása](storsimple-troubleshoot-deployment.md)című témakört.
 

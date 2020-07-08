@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 77d2e61533016de7417446ba4111116e9749ac74
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85507874"
 ---
 # <a name="install-updates-on-your-storsimple-virtual-array---azure-portal"></a>Telepítse a frissítéseket a StorSimple Virtual Array-Azure Portal
@@ -107,7 +107,7 @@ A 0,2-es frissítés futtatásakor javasoljuk, hogy telepítse a frissítéseket
 A telepítés befejezését követően (a feladatok állapota a 100%-ban jelezve) lépjen a StorSimple Eszközkezelő szolgáltatásra. Válassza az **eszközök** lehetőséget, majd válassza ki a frissíteni kívánt eszközt a szolgáltatáshoz csatlakozó eszközök listájából. A **Beállítások** panelen lépjen a **kezelés** szakaszra, és válassza az **eszközök frissítései**lehetőséget. A megjelenített szoftververzió **10.0.10288.0**kell lennie.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ [a StorSimple virtuális tömb felügyeletéről](storsimple-ova-web-ui-admin.md).
 

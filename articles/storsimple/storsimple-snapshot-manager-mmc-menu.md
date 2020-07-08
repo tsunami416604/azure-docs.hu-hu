@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: twooley
 ms.openlocfilehash: c177adaa6fe0808d6719a8e87669d7f2fa4fb9cf
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85508826"
 ---
 # <a name="use-the-mmc-menu-actions-in-storsimple-snapshot-manager"></a>Használja az MMC menü műveleteit a StorSimple Snapshot Manager
@@ -30,7 +30,7 @@ A StorSimple Snapshot Manager a következő műveleteket fogja látni az összes
 * Új ablak innen 
 * Frissítés 
 * Exportálási lista 
-* Help 
+* Súgó 
 
 Ezek a műveletek a Microsoft Management Console (MMC) részét képezik, és nem kifejezetten a StorSimple Snapshot Manager. Ez az oktatóanyag ismerteti ezeket a műveleteket, és elmagyarázza, hogyan használhatja őket a StorSimple Snapshot Manager.
 
@@ -91,14 +91,14 @@ A lista **exportálása** művelettel egy vesszővel tagolt (CSV-) fájlba menth
       
       ![Lista exportálása vesszővel elválasztott érték fájlként](./media/storsimple-snapshot-manager-mmc-menu/HCS_SSM_Export_List.png) 
 
-## <a name="help"></a>Help
+## <a name="help"></a>Súgó
 A **Súgó** menü használatával megtekintheti a StorSimple Snapshot Manager és az MMC-hez elérhető online súgót.
 
 #### <a name="to-view-available-online-help"></a>Az elérhető online Súgó megtekintése
 1. A StorSimple Snapshot Manager indításához kattintson az asztal ikonjára.
 2. A **hatókör** ablaktáblán kattintson a jobb gombbal bármelyik csomópontra, vagy bontsa ki a csomópontot, és kattintson a jobb gombbal egy elemre az **eredmények** ablaktábláján, majd kattintson a **Súgó**elemre. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További információ a [StorSimple Snapshot Manager felhasználói felületéről](storsimple-use-snapshot-manager.md).
 * További információ a [StorSimple Snapshot Manager használatáról a StorSimple-megoldás felügyeletéhez](storsimple-snapshot-manager-admin.md).
 

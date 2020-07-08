@@ -9,10 +9,10 @@ ms.date: 06/27/2018
 ms.author: fryu
 ms.subservice: common
 ms.openlocfilehash: c24db9fb1b411de31ba8d086b6baa418f656c920
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85514398"
 ---
 # <a name="azure-storage-compliance-offerings"></a>Azure Storage-megfelelőségi ajánlatok
@@ -92,6 +92,6 @@ A megfelelőségi ajánlatokat alább találja az Azure Storage-ban, hogy a szol
 * [TRUCS (Kína)](https://www.trustcenter.cn/compliance/default.html#TCS)
 * [Egyesült Királyság – G-Cloud](https://www.microsoft.com/trustcenter/compliance/uk-g-cloud)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Microsoft Azure & az Azure Storage megtartja a megfelelőségi ajánlatokat, a legújabb lefedettséget és részleteket a [Microsoft TrustCenter](https://www.microsoft.com/TrustCenter/Compliance/default.aspx)találja.

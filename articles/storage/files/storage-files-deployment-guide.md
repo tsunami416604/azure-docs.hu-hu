@@ -8,10 +8,10 @@ ms.date: 05/22/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: b9df9375dee59df987cea01a4142a22a78eb533e
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85510794"
 ---
 # <a name="how-to-deploy-azure-files"></a>Az Azure Files üzembe helyezése
@@ -147,7 +147,7 @@ do
 done
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Azure File Sync központi telepítésének megtervezése](storage-sync-files-planning.md)
 - [Azure-fájlok hibaelhárítása Windows rendszeren](storage-troubleshoot-windows-file-connection-problems.md)
 - [Azure-fájlok hibaelhárítása Linux rendszeren](storage-troubleshoot-linux-file-connection-problems.md)

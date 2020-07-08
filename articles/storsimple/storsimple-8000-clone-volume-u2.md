@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 12/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 1ddc7d9e359fbb43680ae093c4e6cd2b9fb1ab2d
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85514987"
 ---
 # <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-clone-a-volume"></a>Kötet klónozása az Azure Portal StorSimple-eszközkezelő szolgáltatásával
@@ -117,7 +117,7 @@ Egy egyéves Microsoft PowerPoint-bemutató fájlt kell helyreállítani. A rend
 ### <a name="testing-in-the-production-environment-with-a-permanent-clone"></a>Éles környezetben végzett tesztelés állandó klónozással
 Ellenőrizze, hogy van-e tesztelési hiba az éles környezetben. Létre kell hoznia egy klónt a kötetről az éles környezetben, majd el kell készítenie egy Felhőbeli pillanatképet a klónról egy független klónozott kötet létrehozásához. Ebben az esetben állandó klónozást használunk.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Megtudhatja, hogyan [állíthatja vissza a StorSimple kötetét egy biztonságimásolat-készletből](storsimple-8000-restore-from-backup-set-u2.md).
 * Ismerje meg, hogyan kezelheti a [StorSimple-eszközt a StorSimple Eszközkezelő szolgáltatással](storsimple-8000-manager-service-administration.md).
 

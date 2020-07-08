@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 03a32b37f5ca29c6a0dd6b810b4e097379c6c32e
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85515148"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Szolgáltatások közötti hitelesítés Azure Data Lake Storage Gen1 használatával Azure Active Directory
@@ -94,7 +94,7 @@ Ha programozott módon jelentkezik be, szüksége lesz az alkalmazás AZONOSÍT�
 
     ![OAuth jogkivonat-végpont](./media/data-lake-store-authenticate-using-active-directory/oauth-token-endpoint-1.png "OAuth jogkivonat-végpont")   
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a cikkben egy Azure AD-webalkalmazást hozott létre, és összegyűjtötte a szükséges információkat a .NET SDK, a Java, a Python, a REST API stb. használatával létrehozott ügyfélalkalmazások számára. A következő cikkekkel megtudhatja, hogyan használhatja az Azure AD natív alkalmazást az első hitelesítéshez Data Lake Storage Gen1, majd más műveleteket hajthat végre az áruházban.
 
 * [Szolgáltatások közötti hitelesítés a Data Lake Storage Gen1 Java használatával](data-lake-store-service-to-service-authenticate-java.md)

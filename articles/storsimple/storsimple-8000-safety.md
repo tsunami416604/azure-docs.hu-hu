@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/04/2017
 ms.author: alkohli
 ms.openlocfilehash: 556a84acb3461fb39b3eb0390b54878254bafabf
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85514532"
 ---
 # <a name="safely-install-and-operate-your-storsimple-device"></a>StorSimple-eszköz biztonságos telepítése és üzemeltetése
@@ -30,7 +30,7 @@ Olvassa el a cikkben szereplő összes biztonsági és egészségvédelmi inform
 ## <a name="safety-icon-conventions"></a>Biztonsági ikon konvenciói
 Itt láthatja az ikonokat, amelyekkel megtekintheti a Microsoft Azure StorSimple eszköz beállításakor és futtatásakor betartandó biztonsági óvintézkedéseket.
 
-| Ikon | Leírás |
+| Ikon | Description |
 |:--- |:--- |
 | ![Veszélyforrás ikon ](./media/storsimple-safety/IC740879.png) **veszélye!** |Olyan veszélyes helyzetet jelez, amely – ha nem kerül elkerülésre – halált vagy súlyos sérülést eredményezhet. Ezt a jelet a legszélsőségesebb helyzetekre kell korlátozni. |
 | ![Figyelmeztetés ikon ](./media/storsimple-safety/IC740879.png) **Figyelmeztetés!** |Olyan veszélyes helyzetet jelez, amely – ha nem kerül elkerülésre – halált vagy súlyos sérülést eredményezhet. |
