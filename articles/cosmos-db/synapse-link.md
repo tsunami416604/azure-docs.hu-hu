@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 1acb01ceb9747fa833e998bd5501ce8a8a51babb
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: ff64f3f4891aac27a32b642b50ebd51dea9bd34a
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85119460"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86025777"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db-preview"></a>Mi az az Azure szinapszis-hivatkozás a Azure Cosmos DB (előzetes verzió)?
 
@@ -122,6 +122,8 @@ A szinapszis-hivatkozás nem ajánlott, ha olyan hagyományos adattárház-köve
 
 * Jelenleg az analitikai tároló csak új tárolók esetében engedélyezhető (az új és a meglévő Azure Cosmos DB fiókokban is).
 
+* Az előzetes verzióban a szinapszis-kapcsolattal rendelkező adatbázis-fiókok, a tárolók biztonsági mentése és helyreállítása nem támogatott. Ha olyan éles számítási feladatokkal rendelkezik, amelyek biztonsági mentési és visszaállítási funkciókat igényelnek, javasoljuk, hogy ne engedélyezze a szinapszis-hivatkozást ezen adatbázis-fiókokon. 
+
 * A Azure Cosmos DB analitikus tároló és a szinapszis SQL Server nélküli elérése jelenleg az előzetes verzióban érhető el. A hozzáférés kéréséhez küldje el a [Azure Cosmos db csapatának](mailto:cosmosdbsynapselink@microsoft.com)e-mail-címét.
 
 * Jelenleg nem érhető el a Azure Cosmos DB Analytics-tároló elérése a szinapszis SQL kiépített állapotával.
@@ -134,7 +136,7 @@ Az Azure szinapszis hivatkozás számlázási modellje tartalmazza a Azure Cosmo
 
 További információért lásd a következő dokumentumokat:
 
-* [Az Azure Cosmos DB elemzési tár áttekintése](analytical-store-introduction.md)
+* [Azure Cosmos DB analitikus áruház – áttekintés](analytical-store-introduction.md)
 
 * [Az Azure Cosmos DB-hez készült Azure Synapse Link használatának első lépései](configure-synapse-link.md)
  

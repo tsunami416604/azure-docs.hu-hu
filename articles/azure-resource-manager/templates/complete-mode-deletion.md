@@ -2,13 +2,13 @@
 title: Törlés Teljes mód esetén
 description: Azt mutatja, hogy az erőforrástípusok hogyan kezelik a teljes módú törlést Azure Resource Manager-sablonokban.
 ms.topic: conceptual
-ms.date: 06/15/2020
-ms.openlocfilehash: 4c16b8a0ffa1a4756a3063ca63f8c0eae2166f3e
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.date: 07/06/2020
+ms.openlocfilehash: 5e247fc20a128b3dd8b3fe646ef956388e0d2c2d
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84791163"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027839"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>Azure-erőforrások törlése a teljes módú üzembe helyezésekhez
 
@@ -40,7 +40,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > - [Microsoft. AzureData](#microsoftazuredata)
 > - [Microsoft. AzureStack](#microsoftazurestack)
 > - [Microsoft. AzureStackHCI](#microsoftazurestackhci)
-> - [Microsoft. AzureStackResourceMonitor](#microsoftazurestackresourcemonitor)
 > - [Microsoft.Batch](#microsoftbatch)
 > - [Microsoft. számlázás](#microsoftbilling)
 > - [Microsoft. BingMaps](#microsoftbingmaps)
@@ -60,6 +59,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > - [Microsoft. CognitiveServices](#microsoftcognitiveservices)
 > - [Microsoft. Commerce](#microsoftcommerce)
 > - [Microsoft.Compute](#microsoftcompute)
+> - [Microsoft. ConnectedCache](#microsoftconnectedcache)
 > - [Microsoft. felhasználás](#microsoftconsumption)
 > - [Microsoft. ContainerInstance](#microsoftcontainerinstance)
 > - [Microsoft. ContainerRegistry](#microsoftcontainerregistry)
@@ -288,6 +288,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
 > | attestationProviders | Yes |
+> | defaultProviders | No |
 
 ## <a name="microsoftauthorization"></a>Microsoft.Authorization
 
@@ -374,6 +375,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
 > | cloudManifestFiles | No |
+> | edgeSubscriptions | Yes |
 > | regisztrációk | Yes |
 > | regisztrációk/customerSubscriptions | No |
 > | regisztrációk/termékek | No |
@@ -384,13 +386,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
 > | fürtök | Yes |
-
-## <a name="microsoftazurestackresourcemonitor"></a>Microsoft. AzureStackResourceMonitor
-
-> [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Törlés Teljes mód esetén |
-> | ------------- | ----------- |
-> | storageAccountMonitor | Yes |
 
 ## <a name="microsoftbatch"></a>Microsoft.Batch
 
@@ -452,8 +447,15 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | billingAccounts/ügyfelek/tranzakciók | No |
 > | billingAccounts/ügyfelek/átvitelek | No |
 > | billingAccounts/részlegek | No |
+> | billingAccounts/részlegek/billingPermissions | No |
+> | billingAccounts/részlegek/billingRoleAssignments | No |
+> | billingAccounts/részlegek/billingRoleDefinitions | No |
 > | billingAccounts / enrollmentAccounts | No |
+> | billingAccounts / enrollmentAccounts / billingPermissions | No |
+> | billingAccounts / enrollmentAccounts / billingRoleAssignments | No |
+> | billingAccounts / enrollmentAccounts / billingRoleDefinitions | No |
 > | billingAccounts/számlák | No |
+> | billingAccounts/számlák/tranzakciók | No |
 > | billingAccounts / invoiceSections | No |
 > | billingAccounts / invoiceSections / billingSubscriptionMoveOperations | No |
 > | billingAccounts / invoiceSections / billingSubscriptions | No |
@@ -727,7 +729,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | sharedVMImages/verziók | No |
 > | pillanatképek | Yes |
 > | sshPublicKeys | Yes |
-> | swiftlets | Yes |
 > | virtualMachines | Yes |
 > | virtualMachines/bővítmények | Yes |
 > | virtualMachines / metricDefinitions | No |
@@ -738,6 +739,13 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | virtualMachineScaleSets/nyilvános IP | No |
 > | virtualMachineScaleSets/virtualMachines | No |
 > | virtualMachineScaleSets/virtualMachines/networkInterfaces | No |
+
+## <a name="microsoftconnectedcache"></a>Microsoft. ConnectedCache
+
+> [!div class="mx-tableFixed"]
+> | Erőforrás típusa | Törlés Teljes mód esetén |
+> | ------------- | ----------- |
+> | CacheNodes | Yes |
 
 ## <a name="microsoftconsumption"></a>Microsoft. felhasználás
 
@@ -754,7 +762,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Előrejelzések | No |
 > | számos | No |
 > | Piacterek | No |
-> | Pricesheets | No |
+> | Árlisták | No |
 > | termékek | No |
 > | ReservationDetails | No |
 > | ReservationRecommendationDetails | No |
@@ -906,9 +914,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | datacatalogs/adatforrások | No |
 > | datacatalogs/adatforrások/vizsgálatok | No |
 > | datacatalogs/adatforrások/vizsgálatok/adatkészletek | No |
-> | datacatalogs/adatforrások/vizsgálatok/szűrők | No |
 > | datacatalogs/adatforrások/vizsgálatok/triggerek | No |
-> | datacatalogs / scanrulesets | No |
 
 ## <a name="microsoftdatafactory"></a>Microsoft. DataFactory
 
@@ -956,6 +962,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
 > | BackupVaults | Yes |
+> | ResourceOperationGateKeepers | Yes |
 
 ## <a name="microsoftdatashare"></a>Microsoft. DataShare
 
@@ -1758,6 +1765,9 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
+> | privateLinkServicesForPowerBI | Yes |
+> | bérlők | Yes |
+> | bérlők/munkaterületek | No |
 > | workspaceCollections | Yes |
 
 ## <a name="microsoftpowerbidedicated"></a>Microsoft. PowerBIDedicated
@@ -1780,6 +1790,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
 > | providerRegistrations | No |
+> | providerRegistrations / defaultRollouts | No |
 > | providerRegistrations / resourceTypeRegistrations | No |
 > | kibocsátások | Yes |
 
@@ -1905,6 +1916,8 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | iotSecuritySolutions / analyticsModels | No |
 > | iotSecuritySolutions / analyticsModels / aggregatedAlerts | No |
 > | iotSecuritySolutions / analyticsModels / aggregatedRecommendations | No |
+> | iotSecuritySolutions / iotAlerts | No |
+> | iotSecuritySolutions / iotAlertTypes | No |
 > | jitNetworkAccessPolicies | No |
 > | policies | No |
 > | pricings | No |

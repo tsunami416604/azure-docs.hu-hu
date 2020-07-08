@@ -3,12 +3,12 @@ title: Élő videó-elemzés üzembe helyezése egy IoT Edge eszközön – Azur
 description: Ez a cikk azokat a lépéseket sorolja fel, amelyek segítséget nyújtanak az élő videó-elemzések IoT Edge eszközön való üzembe helyezésében. Ezt például akkor teheti meg, ha rendelkezik hozzáféréssel egy helyi linuxos számítógéphez, és/vagy korábban létrehozott egy Azure Media Services fiókot.
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: db0addfbc2fc5b322c2f6dd9b51f3ace10935589
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: eaaa793bb5b84ac4ae352f242215b8d3e7d56cf1
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84261414"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86026967"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>Élő videó-elemzés üzembe helyezése IoT Edge eszközön
 
@@ -23,12 +23,12 @@ Ez a cikk azokat a lépéseket sorolja fel, amelyek segítséget nyújtanak az �
 * [IoT Edge eszköz regisztrálása](https://docs.microsoft.com/azure/iot-edge/how-to-register-device)
 * [Az Azure IoT Edge-futtatókörnyezet telepítése Debian-alapú Linux rendszereken](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux)
 * [Azure Media Services-fiók létrehozása](../latest/create-account-howto.md)
-    * Használja az alábbi régiók egyikét: USA 2. keleti régiója, USA középső régiója, USA északi középső régiója, Nyugat-Japán, USA 2. nyugati középső régiója, Nyugat-Európa, Kelet-Kanada, Egyesült Királyság déli régiója, Közép-Franciaország, Dél-Németország, Észak-Svájc, Nyugat-Svájc és Nyugat-Japán.
+    * Használja az alábbi régiók egyikét: USA 2. keleti régiója, USA középső régiója, USA északi középső régiója, Kelet-Japán, USA 2. nyugati régiója, Nyugat-Európa, Kelet-Kanada, Egyesült Királyság déli régiója, Franciaország középső régiója, Dél-Franciaország, Észak-Svájc, Nyugat-Svájc és Nyugat-Japán.
     * Javasoljuk, hogy az általános célú v2-(GPv2-) tárolási fiókokat használja.
 
 ## <a name="configuring-azure-resources-for-using-live-video-analytics"></a>Azure-erőforrások konfigurálása a Live Video Analytics használatához
 
-### <a name="create-custom-azure-resource-manager-role"></a>Egyéni Azure Resource Manager szerepkör létrehozása
+### <a name="create-custom-azure-resource-manager-role"></a>Egyéni Azure Resource Manager-szerepkör létrehozása
 
 Lásd: [egyéni Azure Resource Manager szerepkör létrehozása](create-custom-azure-resource-manager-role-how-to.md) és hozzárendelés egy egyszerű szolgáltatáshoz az élő videó Analytics használatához.
 
@@ -102,7 +102,7 @@ Az üzembe helyezési jegyzék egy JSON-dokumentum, amely leírja, hogy mely mod
 
 1. A lap **IoT Edge modulok** szakaszában kattintson a legördülő **listára** , és válassza a **IoT Edge modul** lehetőséget az **IoT Edge modul hozzáadása** lap megjelenítéséhez.
 1. A **modul beállításai** lapon adja meg a modul nevét, majd adja meg a tároló rendszerképének URI-ját:   
-    Angol nyelvű Példák:
+    Példák:
     
     * **IoT Edge modul neve**: lvaEdge
     * **Rendszerkép URI-ja**: MCR.microsoft.com/Media/Live-Video-Analytics:1.0    

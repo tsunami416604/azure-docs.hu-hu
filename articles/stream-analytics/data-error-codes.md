@@ -3,17 +3,17 @@ title: Adathibák kódjai – Azure Stream Analytics
 description: Az adathibák kódjaival Azure Stream Analytics hibák elhárítása.
 ms.author: mamccrea
 author: mamccrea
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/07/2020
 ms.service: stream-analytics
-ms.openlocfilehash: f7383a56a11ac9b567c80e73cc84944174c30ac8
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 56d7527eebb91bd09895f6cd0238721574df1015
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597015"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037324"
 ---
-# <a name="azure-stream-analytics-configuration-error-codes"></a>Azure Stream Analytics konfigurációs hibakódok
+# <a name="azure-stream-analytics-data-error-codes"></a>Adathiba-kódok Azure Stream Analytics
 
 A tevékenységek naplóit és erőforrás-naplóit használhatja a nem várt viselkedések hibakereséséhez a Azure Stream Analytics feladatból. Ez a cikk felsorolja az összes Adathiba hibakódjának leírását. Adathibák fordulnak elő, ha az adatfolyamban rossz adatok vannak, például egy váratlan rekord sémája.
 

@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: A Virtual Machine Scale Sets dokumentációja
-summary: Az Azure-beli virtuálisgép-méretezési csoportok segítségével azonos, elosztott terhelésű, automatikus skálázású virtuális gépek csoportját hozhatja létre és kezelheti.
+summary: Az Azure Virtual Machine Scale Sets segítségével elosztott terhelésű, automatikus skálázású virtuális gépek csoportját hozhatja létre és kezelheti.
 metadata:
   title: A Virtual Machine Scale Sets dokumentációja
   description: Rövid útmutatóink, oktatóanyagaink és példáink segítségével megtudhatja, hogyan hozhat létre, konfigurálhat, felügyelhet és skálázhat automatikusan virtuálisgép-méretezési csoportokat.
@@ -10,12 +10,12 @@ metadata:
   ms.author: jushiman
   ms.reviewer: mimckitt
   ms.date: 03/16/2020
-  ms.openlocfilehash: 8eff3979088aecf5ea8ed0383a1af8ad0d71c21d
-  ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+  ms.openlocfilehash: 96719159e3dd360554c795c5cd1f6436d05fbeeb
+  ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 05/20/2020
-  ms.locfileid: "83701339"
+  ms.lasthandoff: 07/07/2020
+  ms.locfileid: "86027256"
 landingContent:
 - title: Tudnivalók a Virtual Machine Scale Setsről
   linkLists:

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: eb2a7d4f83b3d8bda0d06e14b4dab9bb4872885e
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.openlocfilehash: 0197bb81fdba8bab20742d95aebaa2028bb90c18
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85414283"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027681"
 ---
 # <a name="set-up-web-endpoints"></a>Webes végpontok beállítása
 
@@ -43,14 +43,15 @@ Ebből a cikkből megtudhatja, hogyan telepíthet webes végpontokat egy egyéni
 
    | Beállítás | Ajánlott érték | Leírás |
    | ------- | --------------- | ----------- |
-   | Name (Név) | UpdateDeviceState | A webes végpont neve. |
+   | Name | UpdateDeviceState | A webes végpont neve. |
    | URL-cím | https://webendpointexample.azurewebsites.net/api/DeviceState | Annak a végpontnak az URL-címe, amelyet az egyéni alkalmazásnak szeretne beszélni. |
    | Metódus | POST | Az engedélyezett interakciók (például GET, POST) és a végpont.|
-   | Fejlécek | Kulcs: alkalmazás, érték: az alkalmazás egyedi neve | A kérelem fejlécében szerepeltetni kívánt fejléc-paraméterek.|
+   | Fejlécek | Kulcs: alkalmazás, érték: a applicationId első 8 számjegyének elkészítése | A kérelem fejlécében szerepeltetni kívánt fejléc-paraméterek.|
 
     > [!NOTE]
     > - Az [Azure Function](https://docs.microsoft.com/azure/azure-functions/)használatával létrehozott webes végpont, amely összekapcsolja az adatbázist, amely a televízió és a ventilátor eszköz állapotát menti
     > - A javasolt fejléc csak a példában szereplő végponthoz szükséges.
+    > - Annak érdekében, hogy a fejléc értéke egyedi legyen a példában szereplő végponton, a applicationId első 8 számjegyét használja
     > - A valós világban a webes végpont az eszközöket kezelő [IOT hub](https://docs.microsoft.com/azure/iot-hub/about-iot-hub) végpontja lehet.
 
 1. Kattintson a **Save** (Mentés) gombra.
@@ -68,12 +69,14 @@ Ebből a cikkből megtudhatja, hogyan telepíthet webes végpontokat egy egyéni
    | ------- | --------------- | ----------- |
    | Végpontok | UpdateDeviceState | A műveletben hívni kívánt webes végpont. |
    | Lekérdezési paraméterek | Item = {SubjectDevice} &&érték = {javítás OnOff} | A webes végpont URL-címéhez hozzáfűzni kívánt lekérdezési paraméterek.  |
-   | Szövegtörzs tartalma | N/A | A kérelem törzsének tartalma. |
+   | Szövegtörzs tartalma | N.A. | A kérelem törzsének tartalma. |
 
     > [!NOTE]
     > - A javasolt lekérdezési paraméterek csak a példában szereplő végponthoz szükségesek
 
 1. A **sikeres művelet végrehajtásához**válassza a **beszédfelismerési válasz küldése**lehetőséget.
+    
+    Az **egyszerű szerkesztőben**írja be a értéket `{SubjectDevice} is {OnOff}` .
    
    > [!div class="mx-imgBorder"]
    > ![A webes végpontok műveletének hívása sikeres](media/custom-commands/setup-web-endpoint-edit-action-on-success-send-response.png)
@@ -86,6 +89,9 @@ Ebből a cikkből megtudhatja, hogyan telepíthet webes végpontokat egy egyéni
    > - A használatával közvetlenül is elérheti a mezőket a http-válaszban `{YourWebEndpointName.FieldName}` . Például:`{UpdateDeviceState.TV}`
 
 1. A **sikertelen művelet végrehajtásához**válassza a **beszédfelismerési válasz küldése** lehetőséget.
+
+    Az **egyszerű szerkesztőben**írja be a értéket `Sorry, {WebEndpointErrorMessage}` .
+
    > [!div class="mx-imgBorder"]
    > ![Hiba esetén a webes végpontok hívása művelet](media/custom-commands/setup-web-endpoint-edit-action-on-fail.png)
 

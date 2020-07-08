@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 71a2ec9dc4d644fb8739db3817e2cd1d09913da7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e43c343b27dfe2dc0c364e58ed7305bdcec37215
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76717640"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86026066"
 ---
 # <a name="sample-data-in-sql-server-on-azure"></a><a name="heading"></a>Adatmintavétel Azure-on futó SQL Serverben
 
@@ -37,22 +37,29 @@ Ez a mintavételi feladat a [csoportos adatelemzési folyamat (TDSP)](https://do
 ## <a name="using-sql"></a><a name="SQL"></a>SQL használata
 Ez a szakasz számos olyan módszert ismertet, amely az SQL használatával egyszerű véletlenszerű mintavételt végez az adatbázisban lévő adatokkal. Válasszon egy módszert az adatméret és a terjesztés alapján.
 
-A következő két elem azt mutatja be, `newid` hogyan használható a SQL Server a mintavételezés végrehajtásához. A választott módszer attól függ, hogy a mintát milyen véletlenszerű módon szeretné használni (pk_id a következő mintakód egy automatikusan létrehozott elsődleges kulcsnak számít).
+A következő két elem azt mutatja be, hogyan használható a `newid` SQL Server a mintavételezés végrehajtásához. A választott módszer attól függ, hogy a mintát milyen véletlenszerű módon szeretné használni (pk_id a következő mintakód egy automatikusan létrehozott elsődleges kulcsnak számít).
 
 1. Kevésbé szigorú véletlenszerű minta
-   
-        select  * from <table_name> where <primary_key> in 
-        (select top 10 percent <primary_key> from <table_name> order by newid())
+
+    ```sql
+    select  * from <table_name> where <primary_key> in 
+    (select top 10 percent <primary_key> from <table_name> order by newid())
+    ```
+
 2. Több véletlenszerű minta 
-   
-        SELECT * FROM <table_name>
-        WHERE 0.1 >= CAST(CHECKSUM(NEWID(), <primary_key>) & 0x7fffffff AS float)/ CAST (0x7fffffff AS int)
+
+    ```sql
+    SELECT * FROM <table_name>
+    WHERE 0.1 >= CAST(CHECKSUM(NEWID(), <primary_key>) & 0x7fffffff AS float)/ CAST (0x7fffffff AS int)
+    ```
 
 A Tablesample az adatmintavételezéshez is használható. Ez a lehetőség jobb megközelítés lehet, ha az adatméret nagy (feltéve, hogy a különböző lapokon lévő adatmennyiség nem összefügg egymással), és a lekérdezésnek ésszerű időn belül el kell végeznie.
 
-    SELECT *
-    FROM <table_name> 
-    TABLESAMPLE (10 PERCENT)
+```sql
+SELECT *
+FROM <table_name> 
+TABLESAMPLE (10 PERCENT)
+```
 
 > [!NOTE]
 > A mintául szolgáló adatok megismeréséhez és létrehozásához egy új táblában tárolja a szolgáltatást.
@@ -67,16 +74,20 @@ Közvetlenül használhatja a fenti lekérdezéseket a Azure Machine Learning [a
 ## <a name="using-the-python-programming-language"></a><a name="python"></a>A Python programozási nyelv használata
 Ez a szakasz bemutatja, hogyan hozhat létre ODBC-kapcsolatot egy Pythonban található SQL Server-adatbázishoz a [pyodbc-függvénytár](https://code.google.com/p/pyodbc/) használatával. Az adatbázis-kapcsolatok karakterlánca a következő: (a kiszolgálónév, a dbname, a Felhasználónév és a jelszó cseréje a konfigurációval):
 
-    #Set up the SQL Azure connection
-    import pyodbc    
-    conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
+```python
+#Set up the SQL Azure connection
+import pyodbc    
+conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
+```
 
 A Pythonban található [Panda](https://pandas.pydata.org/) Library számos adatstruktúrát és adatelemzési eszközt biztosít a Python programozási funkciók adatkezeléséhez. A következő kód a Azure SQL Database egy táblázatból származó adatok 0,1%-os mintáját egy Panda-adatokba olvassa:
 
-    import pandas as pd
+```python
+import pandas as pd
 
-    # Query database and load the returned results in pandas data frame
-    data_frame = pd.read_sql('''select column1, column2... from <table_name> tablesample (0.1 percent)''', conn)
+# Query database and load the returned results in pandas data frame
+data_frame = pd.read_sql('''select column1, column2... from <table_name> tablesample (0.1 percent)''', conn)
+```
 
 Mostantól használhatja a mintául szolgáló, a pandák adatkeretben tárolt adatmennyiséget. 
 
@@ -84,29 +95,35 @@ Mostantól használhatja a mintául szolgáló, a pandák adatkeretben tárolt a
 Az alábbi mintakód használatával mentheti a lefelé mintavételezés alatt álló adatok egy fájlba, és feltöltheti azt egy Azure-blobba. A blobban található adatai közvetlenül beolvashatók egy Azure Machine Learning kísérletbe az [adatimportálási][import-data] modul használatával. Ennek lépései a következők: 
 
 1. A Panda adatkeretének írása helyi fájlba
-   
-        dataframe.to_csv(os.path.join(os.getcwd(),LOCALFILENAME), sep='\t', encoding='utf-8', index=False)
+
+    ```python
+    dataframe.to_csv(os.path.join(os.getcwd(),LOCALFILENAME), sep='\t', encoding='utf-8', index=False)
+    ```
+
 2. Helyi fájl feltöltése az Azure-blobba
-   
-        from azure.storage import BlobService
-        import tables
-   
-        STORAGEACCOUNTNAME= <storage_account_name>
-        LOCALFILENAME= <local_file_name>
-        STORAGEACCOUNTKEY= <storage_account_key>
-        CONTAINERNAME= <container_name>
-        BLOBNAME= <blob_name>
-   
-        output_blob_service=BlobService(account_name=STORAGEACCOUNTNAME,account_key=STORAGEACCOUNTKEY)    
-        localfileprocessed = os.path.join(os.getcwd(),LOCALFILENAME) #assuming file is in current working directory
-   
-        try:
-   
-        #perform upload
-        output_blob_service.put_block_blob_from_path(CONTAINERNAME,BLOBNAME,localfileprocessed)
-   
-        except:            
-            print ("Something went wrong with uploading blob:"+BLOBNAME)
+
+    ```python
+    from azure.storage import BlobService
+    import tables
+
+    STORAGEACCOUNTNAME= <storage_account_name>
+    LOCALFILENAME= <local_file_name>
+    STORAGEACCOUNTKEY= <storage_account_key>
+    CONTAINERNAME= <container_name>
+    BLOBNAME= <blob_name>
+
+    output_blob_service=BlobService(account_name=STORAGEACCOUNTNAME,account_key=STORAGEACCOUNTKEY)    
+    localfileprocessed = os.path.join(os.getcwd(),LOCALFILENAME) #assuming file is in current working directory
+
+    try:
+
+    #perform upload
+    output_blob_service.put_block_blob_from_path(CONTAINERNAME,BLOBNAME,localfileprocessed)
+
+    except:            
+        print ("Something went wrong with uploading blob:"+BLOBNAME)
+    ```
+
 3. Adatok beolvasása az Azure blobból Azure Machine Learning [importálási][import-data] modul használatával, ahogy az a következő képernyőfelvételen látható:
 
 ![olvasó blob][2]

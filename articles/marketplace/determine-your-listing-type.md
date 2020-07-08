@@ -5,14 +5,14 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 06/22/2020
 ms.author: dsindona
-ms.openlocfilehash: 92a24a59038eb74a6a2f6a738005ff8aadf35ff0
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 457ff90c21fee2b569fa24d90fffc6ce80cdf969
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658059"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027103"
 ---
 # <a name="determine-your-publishing-option"></a>A közzétételi beállítások meghatározása
 
@@ -56,7 +56,7 @@ A közzétételi lehetőség kiválasztása előtt fontos megérteni a kereskede
 Az **Azure Marketplace** -alkalmazások olyan technikai jellegű "építőelemek", amelyek beépítettek vagy beépítettek az Azure-hoz, és az informatikai vagy fejlesztői közönség számára készültek. Az Azure Marketplace Consulting Services olyan professzionális szolgáltatásokat kínál, amelyek segítenek az ügyfeleknek az Azure használatának megkezdésében vagy felgyorsításában.
 
 >[!Note]
->Kereszthivatkozások (csak SaaS-alkalmazásokhoz): Ha egy lista vagy próbaverziós ajánlat megfelel a technikai és az üzleti felhasználókra vonatkozó feltételnek, az ajánlat mindkét kirakatban szerepel. További információ az alábbi közzétételi lehetőségekről.
+>"Kereszthivatkozások" (csak SaaS-alkalmazásokhoz): Ha az SaaS-ajánlat egy technikai közönség (Azure Marketplace) és egy üzleti közönség (AppSource) számára készült, kiválaszthat egy kategóriát és/vagy alkategóriát is a kirakatok számára. Legyen szem előtt tartva, hogy az ajánlat "kereszthivatkozások" célját olyan értékre kell alapozni, amely mindkét célközönségre kiterjed. Ide [kattintva](./gtm-offer-listing-best-practices.md#categories) megtekintheti az egyes kirakatokra vonatkozó kategóriákat.
 
 ## <a name="choose-a-publishing-option"></a>Közzétételi lehetőség kiválasztása
 
@@ -64,7 +64,7 @@ A rendelkezésre álló közzétételi lehetőségek különböző ügyfél-öss
 
 | **Közzétételi lehetőség**    | **Leírás**  |
 | :------------------- | :-------------------|
-| **Listáját** | Az alkalmazás vagy szolgáltatás egyszerű listája, amely lehetővé teszi, hogy a kereskedelmi piactér felhasználói **kapcsolatba lépjenek** az ügyféllel a Kapcsolatfelvétel a hívással művelettel. |
+| **Lista** | Az alkalmazás vagy szolgáltatás egyszerű listája, amely lehetővé teszi, hogy a kereskedelmi piactér felhasználói **kapcsolatba lépjenek** az ügyféllel a Kapcsolatfelvétel a hívással művelettel. |
 | **Próba** | A kereskedelmi piactéren javíthatja a felderíthetővé tételét, és automatizálhatja a megoldás próbaverziójának használatát, így a potenciális felhasználók a vásárlásuk előtt korlátozott ideig ingyenesen használhatják SaaS-, IaaS-vagy Microsoft-alkalmazásbeli élményét. A próba-közzétételi lehetőséghez használt hívások közötti művelet az **ingyenes próbaverzió** vagy a **tesztelési meghajtó**. |
 | **BYOL** | A kereskedelmi piactéren javíthatja a felderíthetővé tételét, automatizálhatja a megoldás üzembe helyezését, és elvégezheti a pénzügyi tranzakciók külön történő elvégzését. A BYOL-ajánlatok típusai ideálisak a helyszíni és a felhőalapú Migrálás számára. A hívási művelet **most már elérhető**.
 | **Transact** | A Transact-ajánlatokat a kereskedelmi Piactéren keresztül értékesítjük. A Microsoft felelős a számlázásért és a gyűjteményért. A hívási művelet **most már elérhető**.|

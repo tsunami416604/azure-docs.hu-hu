@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 124d81651cd937dc9671f725f54826b1ff9a42a5
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: aad3bffeba4395ba415fb99a3667d04d18769a47
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362322"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86026695"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Bérlői és gazdagépcsoport létrehozása
 
@@ -405,6 +405,12 @@ Ha a GitHub Azure Resource Manager sablont futtatja, adja meg a következő para
 - Bérlői rendszergazdai jelszó: az egyszerű szolgáltatáshoz létrehozott jelszó titkos kulcsa
 - IsServicePrincipal: **true**
 - AadTenantId: a létrehozott egyszerű szolgáltatás Azure AD-bérlői azonosítója
+
+### <a name="error-vmsubnet-not-available-when-configuring-virtual-networks"></a>Hiba: a alhálózat virtuális hálózatok konfigurálásakor nem érhető el
+
+**OK:** A WVD Marketplace sablonjában a felhasználói felület csak olyan alhálózatokat jelenít meg, amelyek legalább annyi IP-címmel rendelkeznek, mint a sablonban megadott virtuális gépek teljes száma. Az alhálózatban lévő elérhető IP-címek tényleges számának meg kell egyeznie a telepítendő új virtuális gépek számával, de az aktuális felhasználói felület nem számítható ki.
+
+**Javítás:** Megadhat egy alhálózatot legalább annyi IP-címmel, amely a piactér felhasználói felületének használatával nem használja a hozzáadott virtuális gépek számát. Ez az alhálózat nevének megadásával végezhető el a "**existingSubnetName**" paraméterben, ha újból [üzembe helyez egy meglévő központi telepítést](expand-existing-host-pool-2019.md#redeploy-from-azure) , vagy [üzembe helyezi a GITHUBról a mögöttes ARM-sablonnal](create-host-pools-arm-template.md#run-the-azure-resource-manager-template-for-provisioning-a-new-host-pool).
 
 ## <a name="next-steps"></a>További lépések
 

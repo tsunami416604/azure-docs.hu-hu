@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5504416d09cf6b3f75d02e29cc93b0278cc42386
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 26924498f32b8aac2e3e7fb5cfd7c1965ee5884f
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85117131"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86025828"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Az Azure Functions méretezése és üzemeltetése
 
@@ -122,7 +122,7 @@ Több Function-alkalmazás is lehetséges, hogy problémák nélkül megoszthatj
 
 További információ a Storage-fiókok típusairól: [Az Azure Storage szolgáltatásainak bemutatása](../storage/common/storage-introduction.md#core-storage-services).
 
-## <a name="how-the-consumption-and-premium-plans-work"></a>A felhasználás és a Prémium csomag működése
+## <a name="how-the-consumption-and-premium-plans-work"></a>A használatalapú és a prémium szintű csomag működése
 
 A használat és a prémium csomagok esetében a Azure Functions infrastruktúra a funkciók gazdagépének további példányainak hozzáadásával méretezi a processzor-és memória-erőforrásokat a függvények által aktivált események száma alapján. A functions gazdagép összes példánya a használati tervben legfeljebb 1,5 GB memóriával és egy PROCESSZORral rendelkezik.  A gazdagép egy példánya a teljes Function alkalmazás, ami azt jelenti, hogy a Function app-ban található összes függvény egy adott példányon belül található, és egy időben méretezhető. Az azonos felhasználási csomaggal rendelkező alkalmazások egymástól függetlenül méretezhetők.  A Prémium csomag esetében a csomag mérete határozza meg az adott példányon lévő összes alkalmazás rendelkezésre álló memóriáját és PROCESSZORát.  
 
@@ -175,7 +175,7 @@ Az alábbi összehasonlító táblázat a Azure Functions app üzemeltetési cso
 | | |
 | --- | --- |  
 |**[Felhasználási terv](#consumption-plan)**| Automatikusan méretezhető, és csak a számítási erőforrásokért kell fizetnie, ha a függvények futnak. A használati terv a függvények gazdagépének példányait dinamikusan hozzáadja és eltávolítja a bejövő események száma alapján.<br/> ✔ Alapértelmezett üzemeltetési csomag.<br/>A ✔ csak akkor kell fizetnie, ha a függvények futnak.<br/>a ✔ automatikusan kibővíthető, akár nagy terhelésű időszakok esetén is.|  
-|**[Prémium szintű csomag](#premium-plan)**|Míg az automatikus skálázás igény szerint történik, az előre betöltött feldolgozók az üresjárat után késedelem nélkül futtathatják az alkalmazásokat, és a virtuális hálózatok-hez csatlakoznak. Vegye figyelembe a Azure Functions prémium csomagot az alábbi helyzetekben, a App Service-csomag összes funkciója mellett: <br/>✔ A Function apps folyamatosan, vagy majdnem folyamatosan fut.<br/>✔ Nagy mennyiségű kis végrehajtással rendelkezik, és magas végrehajtási számlával rendelkezik, de a használati terv alacsony GB-os, második számlával rendelkezik.<br/>✔ Több CPU-vagy memória-beállításra van szüksége, mint amit a használati terv biztosít.<br/>✔ A kódnak hosszabb ideig kell futnia, mint a felhasználási tervben engedélyezett maximális végrehajtási idő.<br/>✔ Olyan funkciókat kell megkövetelni, amelyek csak a [prémium csomaggal, például a virtuális hálózati kapcsolattal használhatók.|  
+|**[Prémium szintű csomag](#premium-plan)**|Míg az automatikus skálázás igény szerint történik, az előre betöltött feldolgozók az üresjárat után késedelem nélkül futtathatják az alkalmazásokat, és a virtuális hálózatok-hez csatlakoznak. Vegye figyelembe a Azure Functions prémium csomagot az alábbi helyzetekben, a App Service-csomag összes funkciója mellett: <br/>✔ A Function apps folyamatosan, vagy majdnem folyamatosan fut.<br/>✔ Nagy mennyiségű kis végrehajtással rendelkezik, és magas végrehajtási számlával rendelkezik, de a használati terv alacsony GB-os, második számlával rendelkezik.<br/>✔ Több CPU-vagy memória-beállításra van szüksége, mint amit a használati terv biztosít.<br/>✔ A kódnak hosszabb ideig kell futnia, mint a felhasználási tervben engedélyezett maximális végrehajtási idő.<br/>✔ Olyan funkciókat kell megkövetelni, amelyek csak prémium csomagon, például virtuális hálózati kapcsolaton keresztül érhetők el.|  
 |**[Dedikált](#app-service-plan)**<sup>1</sup> . csomag|A függvényeket egy App Service csomagon belül futtathatja normál App Service csomag díjszabásával. Jó illeszkedés a hosszú ideig futó műveletekhez, valamint a prediktív skálázás és a költségek kiszámításához. A következő helyzetekben vegye fontolóra App Service tervet:<br/>✔ Rendelkezik olyan meglévő, nem használt virtuális gépekkel, amelyek már futtatnak más App Service példányokat.<br/>✔ Szeretné megadni a függvények futtatására szolgáló egyéni rendszerképet.|  
 |**[ASE](#app-service-plan)**<sup>1</sup> . kiegészítő|A App Service Environment (benyújtó) egy App Service funkció, amely teljesen elkülönített és dedikált környezetet biztosít a App Service alkalmazások biztonságos, nagy léptékű futtatásához. A ASE megfelelőek a következőket igénylő alkalmazás-munkaterhelésekhez: <br/>✔ Nagyon nagy léptékű.<br/>✔ Elkülönítés és biztonságos hálózati hozzáférés.<br/>✔ A nagy memória kihasználtsága.|  
 | **[Kubernetes](functions-kubernetes-keda.md)** | A Kubernetes egy teljesen elkülönített és dedikált környezetet biztosít, amely a Kubernetes platformon fut.  A Kubernetes a következőket igénylő alkalmazás-munkaterhelések esetén megfelelő: <br/>✔ Egyéni hardverkövetelmények.<br/>✔ Elkülönítés és biztonságos hálózati hozzáférés.<br/>✔ Lehetőség hibrid vagy többfelhős környezetben való futtatásra.<br/>✔ Fut a meglévő Kubernetes-alkalmazások és-szolgáltatások mellett.|  
