@@ -1,23 +1,14 @@
 ---
 title: 'Oktatóanyag: Azure Event Grid használata a feltöltött képek átméretezésének automatizálásához'
 description: 'Oktatóanyag: a Azure Event Grid az Azure Storage-ban blob-feltöltéseket indíthat. A segítségével Azure Storage-ba feltöltött képfájlokat küldhet más szolgáltatásoknak, például az Azure Functions szolgáltatásnak átméretezés vagy egyéb javítás céljából.'
-services: event-grid, functions
-author: spelluru
-manager: jpconnoc
-editor: ''
-ms.service: event-grid
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/01/2020
-ms.author: spelluru
-ms.custom: mvc
-ms.openlocfilehash: e46aa28d770cf561df40a0f4b40ef39a70e35687
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.date: 07/07/2020
+ms.openlocfilehash: 19dfffdcee0fb95ae867b1b26fa51e702658445d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85367937"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105795"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>Oktatóanyag: feltöltött képek átméretezésének automatizálása Event Grid használatával
 
@@ -37,7 +28,7 @@ Az Azure CLI és az Azure Portal segítségével hozzáadja az átméretezési f
 
 ---
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Azure Storage-fiók létrehozása

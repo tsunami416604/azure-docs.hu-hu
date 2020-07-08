@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan készítheti elő a VMware virtuális gépek é
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.custom: mvc
-ms.openlocfilehash: f3bfaf7c2396e0f1091299375aae4bfaa1d7e8ff
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
+ms.openlocfilehash: 8b812924c0922d460c631baec8b0e13a9f45cd76
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84771189"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109575"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>A VMware virtuális gépek előkészítése a felméréshez és az Azure-ba való migráláshoz
 
@@ -64,7 +64,7 @@ A készülék regisztrálásához az Azure-fióknak rendelkeznie kell az Azure A
 A következőképpen adja meg az engedélyeket a fióknak:
 
 1. Győződjön meg arról, hogy Ön bérlő vagy globális rendszergazda. Ezután az Azure ad-ben navigáljon **Azure Active Directory**  >  **felhasználók**  >  **felhasználói beállításait**.
-2. Állítsa **App registrations** a Alkalmazásregisztrációk **értéket igen**értékre. Ez egy alapértelmezett beállítás, amely nem érzékeny. [További információ](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance).
+2. Állítsa **App registrations** a Alkalmazásregisztrációk **értéket igen**értékre. Ez egy alapértelmezett beállítás, amely nem érzékeny. [További információk](../active-directory/develop/active-directory-how-applications-are-added.md#who-has-permission-to-add-applications-to-my-azure-ad-instance).
 
     ![Azure AD-engedélyek](./media/tutorial-prepare-vmware/aad.png)
 
@@ -72,7 +72,7 @@ A következőképpen adja meg az engedélyeket a fióknak:
 
 #### <a name="method-2-assign-application-developer-role"></a>2. módszer: az alkalmazás fejlesztői szerepkörének kiosztása
 
-Azt is megteheti, hogy a bérlő/globális rendszergazda hozzárendelheti az alkalmazás fejlesztői szerepkört egy fiókhoz. [További](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal) információ a szerepkörök hozzárendeléséről.
+Azt is megteheti, hogy a bérlő/globális rendszergazda hozzárendelheti az alkalmazás fejlesztői szerepkört egy fiókhoz. [További](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md) információ a szerepkörök hozzárendeléséről.
 
 ### <a name="assign-permissions-to-create-a-key-vault"></a>Engedélyek kiosztása Key Vault létrehozásához
 
@@ -188,7 +188,7 @@ A VMware virtuális gépeket [ügynök nélküli vagy ügynök alapú áttelepí
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
