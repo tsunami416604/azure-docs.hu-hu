@@ -3,12 +3,12 @@ title: Sablon functions – sztring
 description: A Azure Resource Manager-sablonban a sztringekkel való együttműködéshez használt függvényeket ismerteti.
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: a590e8102bce45e577f1a827c09e752eb0a13139
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 42df0317658971b9e9bf3fb805c9a5ff44efaf45
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84676607"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85962067"
 ---
 # <a name="string-functions-for-arm-templates"></a>Karakterlánc-függvények ARM-sablonokhoz
 
@@ -332,7 +332,7 @@ Az előző példában az alapértelmezett értékekkel rendelkező kimenet a kö
 | ---- | ---- | ----- |
 | visszatérési | Tömb | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
-## <a name="contains"></a>tartalmazza a következőt:
+## <a name="contains"></a>tartalmazza
 
 `contains (container, itemToFind)`
 
@@ -1846,7 +1846,7 @@ Ez a függvény akkor hasznos, ha egyedi nevet kell létrehoznia egy erőforrás
 
 A visszaadott érték nem egy véletlenszerű karakterlánc, hanem egy kivonatoló függvény eredménye. A visszaadott érték 13 karakter hosszúságú. Globálisan nem egyedi. Érdemes lehet az értéket az elnevezési konvenció egy előtaggal egyesíteni, hogy olyan nevet hozzon létre, amely értelmes. Az alábbi példában a visszaadott érték formátuma látható. A tényleges érték a megadott paraméterektől függ.
 
-    tcvhiyu5h2o5o
+`tcvhiyu5h2o5o`
 
 Az alábbi példák bemutatják, hogyan használhatja a uniqueString-t egyedi érték létrehozására a gyakran használt szintekhez.
 
@@ -2095,7 +2095,7 @@ Az előző példában az alapértelmezett értékekkel rendelkező kimenet a kö
 | componentOutput | Sztring | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |
 | toStringOutput | Sztring | `http://contoso.com/resources/nested/azuredeploy.json` |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Egy Azure Resource Manager sablonban található részekkel kapcsolatos leírást a következő témakörben talál: [Azure Resource Manager sablonok készítése](template-syntax.md).
 * Több sablon egyesítéséhez tekintse meg [a csatolt sablonok használata Azure Resource Manager használatával](linked-templates.md)című témakört.
 * Ha egy adott típusú erőforrás létrehozásakor meghatározott számú alkalommal szeretné megismételni a problémát, tekintse meg a [Azure Resource Manager erőforrások több példányának létrehozása](copy-resources.md)című témakört.

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 5/13/2020
 ms.author: victorh
-ms.openlocfilehash: f9d55c3294cc28b6193371cdc6ede7ba1bc8167b
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 1986955c7135cb9296937392b23635ae62d8d9f7
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85254803"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85962101"
 ---
 # <a name="overview-of-tls-termination-and-end-to-end-tls-with-application-gateway"></a>A TLS-lezárás és a végpontok közötti TLS áttekintése Application Gateway
 
@@ -111,7 +111,7 @@ A hitelesítési tanúsítványok elavultak, és a megbízható főtanúsítván
 
 - A főtanúsítvány egyeztetése mellett a Application Gateway v2 is ellenőrzi, hogy a háttérbeli http-beállításban megadott gazdagép-beállítás megegyezik-e a háttér-kiszolgáló TLS/SSL-tanúsítványa által megjelenített köznapi névvel (CN). Amikor TLS-kapcsolatot próbál létesíteni a háttérrel, Application Gateway v2 beállítja a Kiszolgálónév jelzése (SNI) bővítményt a háttérbeli http-beállításban megadott gazdagépre.
 
-- Ha a háttérbeli http-beállításban a gazdagép mező helyett a **kiválasztó állomásnév elemet** választja, akkor a SNI fejléc mindig a háttérrendszer-készlet teljes tartománynevére van beállítva, és a háttér-kiszolgáló TLS/SSL-tanúsítványához tartozó CN-nek meg kell egyeznie a teljes tartománynevével. Ebben a forgatókönyvben nem támogatottak a háttérbeli készlet tagjai az IP-címekkel.
+- Ha a **kiválasztó állomásnév a háttérbeli célhelyről** elemre van kiválasztva a háttérbeli http-beállításban a gazdagép mező helyett, akkor a SNI fejléc mindig a háttérrendszer-készlet teljes tartománynevére van beállítva, a háttér-kiszolgáló TLS/SSL-tanúsítványa pedig csak a teljes tartománynevet adja meg Ebben a forgatókönyvben nem támogatottak a háttérbeli készlet tagjai az IP-címekkel.
 
 - A főtanúsítvány a háttér-kiszolgálói tanúsítványok Base64 kódolású főtanúsítványa.
 
