@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 08/12/2019
 ms.reviewer: sisirap
 ms.custom: seodec18
-ms.openlocfilehash: 716f6813e37aec086a7d496e001fe2ca0f4aab57
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 32fc57e720f9c23f6ef26f02b2cd4a82c4266984
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75945177"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957035"
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>Az alkalmazás üzembe helyezése egy ZIP-vagy WAR-fájllal való Azure App Service
 
@@ -28,6 +28,9 @@ További információ: kudu- [dokumentáció](https://github.com/projectkudu/kud
 
 A WAR-fájl központi telepítése a App Service futtatja a [War](https://wikipedia.org/wiki/WAR_(file_format)) -fájlt a Java-webalkalmazás futtatásához. Lásd: a [War-fájl üzembe helyezése](#deploy-war-file).
 
+> [!NOTE]
+> A használatakor a `ZipDeploy` rendszer csak akkor másolja a fájlokat, ha az időbélyegük nem egyezik a már telepítettvel. Gyorsabb üzembe helyezést eredményezhet, ha olyan Build folyamattal hoz létre zip-t, amely gyorsítótárazza a kimeneteket. További információért lásd: [telepítés zip-fájlból vagy URL-címről](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url).
+
 ## <a name="prerequisites"></a>Előfeltételek
 
 A cikk lépéseinek elvégzéséhez [hozzon létre egy app Service alkalmazást](/azure/app-service/), vagy használjon egy másik oktatóanyaghoz létrehozott alkalmazást.
@@ -43,7 +46,7 @@ A fenti végpont jelenleg nem működik Linux App Services esetén. Ehelyett has
 
 Telepítse a feltöltött ZIP-fájlt a webalkalmazásba az az [WebApp Deployment Source config-zip](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-zip) parancs használatával.  
 
-A következő példa telepíti a feltöltött ZIP-fájlt. Ha az Azure CLI helyi telepítését használja, adja meg a helyi ZIP-fájl elérési útját a következőhöz: `--src`.
+A következő példa telepíti a feltöltött ZIP-fájlt. Ha az Azure CLI helyi telepítését használja, adja meg a helyi ZIP-fájl elérési útját a következőhöz: `--src` .
 
 ```azurecli-interactive
 az webapp deployment source config-zip --resource-group <group-name> --name <app-name> --src clouddrive/<filename>.zip
@@ -51,7 +54,7 @@ az webapp deployment source config-zip --resource-group <group-name> --name <app
 
 Ez a parancs üzembe helyezi a ZIP-fájlban szereplő fájlokat és könyvtárakat az alapértelmezett App Service-alkalmazásmappában (`\home\site\wwwroot`), majd újraindítja az alkalmazást.
 
-Alapértelmezés szerint az üzembe helyezési motor feltételezi, hogy egy ZIP-fájl készen áll a futtatásra, és nem futtat Build automationt. Ha ugyanazt a Build-automatizálást szeretné engedélyezni, mint a git- `SCM_DO_BUILD_DURING_DEPLOYMENT` [telepítésben](deploy-local-git.md), akkor az alábbi parancs futtatásával állítsa be az alkalmazás beállításait a [Cloud Shellban](https://shell.azure.com):
+Alapértelmezés szerint az üzembe helyezési motor feltételezi, hogy egy ZIP-fájl készen áll a futtatásra, és nem futtat Build automationt. Ha ugyanazt a Build-automatizálást szeretné engedélyezni, mint a [git-telepítésben](deploy-local-git.md), akkor az `SCM_DO_BUILD_DURING_DEPLOYMENT` alábbi parancs futtatásával állítsa be az alkalmazás beállításait a [Cloud Shellban](https://shell.azure.com):
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings SCM_DO_BUILD_DURING_DEPLOYMENT=true
@@ -63,15 +66,15 @@ További információ: kudu- [dokumentáció](https://github.com/projectkudu/kud
 
 ## <a name="deploy-war-file"></a>WAR-fájl üzembe helyezése
 
-Ha a WAR-fájlt App Servicere kívánja telepíteni, küldjön POST `https://<app-name>.scm.azurewebsites.net/api/wardeploy`-kérelmet a következőnek:. A POST kérelem üzenettörzsének tartalmaznia kell a .war fájlt. Az alkalmazás üzembehelyezési hitelesítő adatai a kérelemben alapszintű HTTP-hitelesítéssel vannak megadva.
+Ha a WAR-fájlt App Servicere kívánja telepíteni, küldjön POST-kérelmet a következőnek: `https://<app-name>.scm.azurewebsites.net/api/wardeploy` . A POST kérelem üzenettörzsének tartalmaznia kell a .war fájlt. Az alkalmazás üzembehelyezési hitelesítő adatai a kérelemben alapszintű HTTP-hitelesítéssel vannak megadva.
 
-A WAR `/api/wardeploy` -fájlok telepítésekor mindig használja a rendszer. Ez az API kibővíti a WAR-fájlt, és elhelyezi a megosztott fájl meghajtóján. más telepítési API-k használata inkonzisztens viselkedést eredményezhet. 
+A WAR-fájlok telepítésekor mindig használja a rendszer `/api/wardeploy` . Ez az API kibővíti a WAR-fájlt, és elhelyezi a megosztott fájl meghajtóján. más telepítési API-k használata inkonzisztens viselkedést eredményezhet. 
 
 Az egyszerű HTTP-hitelesítéshez szükség van a App Service központi telepítési hitelesítő adataira. A központi telepítési hitelesítő adatok beállításával kapcsolatban lásd: [felhasználói szintű hitelesítő adatok beállítása és alaphelyzetbe állítása](deploy-configure-credentials.md#userscope).
 
 ### <a name="with-curl"></a>A cURLtal
 
-A következő példa a cURL eszközt használja egy. War fájl üzembe helyezéséhez. Cserélje le a `<username>`helyőrzőket `<war-file-path>`, és `<app-name>`. Ha a cURL rákérdez, írja be a jelszót.
+A következő példa a cURL eszközt használja egy. War fájl üzembe helyezéséhez. Cserélje le a helyőrzőket, `<username>` `<war-file-path>` és `<app-name>` . Ha a cURL rákérdez, írja be a jelszót.
 
 ```bash
 curl -X POST -u <username> --data-binary @"<war-file-path>" https://<app-name>.scm.azurewebsites.net/api/wardeploy
@@ -79,7 +82,7 @@ curl -X POST -u <username> --data-binary @"<war-file-path>" https://<app-name>.s
 
 ### <a name="with-powershell"></a>A PowerShell-lel
 
-A következő példa a [publish-AzWebapp](/powershell/module/az.websites/publish-azwebapp) feltölti a. War fájlt. Cserélje le a `<group-name>`helyőrzőket `<app-name>`, és `<war-file-path>`.
+A következő példa a [publish-AzWebapp](/powershell/module/az.websites/publish-azwebapp) feltölti a. War fájlt. Cserélje le a helyőrzőket, `<group-name>` `<app-name>` és `<war-file-path>` .
 
 ```powershell
 Publish-AzWebapp -ResourceGroupName <group-name> -Name <app-name> -ArchivePath <war-file-path>
