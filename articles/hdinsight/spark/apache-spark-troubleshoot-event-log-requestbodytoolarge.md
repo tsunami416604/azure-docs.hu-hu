@@ -8,10 +8,9 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/29/2019
 ms.openlocfilehash: 777d06670238a7625d190c92f78a55cd4794d226
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75894402"
 ---
 # <a name="nativeazurefilesystemrequestbodytoolarge-appear-in-apache-spark-streaming-app-log-in-hdinsight"></a>"NativeAzureFileSystem... RequestBodyTooLarge "megjelenő Apache Spark streaming app log in HDInsight
@@ -32,13 +31,13 @@ A Spark 2,3-ben minden Spark-alkalmazás létrehoz egy Spark-Eseménynapló-fáj
 
 Ehhez a hibához három megoldás érhető el:
 
-* Növelje a blokk méretét akár 100 MB-ra. A Ambari felhasználói felületén módosítsa a HDFS `fs.azure.write.request.size` konfigurációs tulajdonságot (vagy `Custom core-site` hozza létre a szakaszban). Állítsa a tulajdonságot nagyobb értékre, például: 33554432. Mentse a frissített konfigurációt, és indítsa újra az érintett összetevőket.
+* Növelje a blokk méretét akár 100 MB-ra. A Ambari felhasználói felületén módosítsa a HDFS konfigurációs tulajdonságot `fs.azure.write.request.size` (vagy hozza létre a `Custom core-site` szakaszban). Állítsa a tulajdonságot nagyobb értékre, például: 33554432. Mentse a frissített konfigurációt, és indítsa újra az érintett összetevőket.
 
 * A Spark-streaming feladatok rendszeres leállítása és újraküldése.
 
 * A Spark-eseménynaplók tárolására használja a HDFS. A HDFS for Storage használata a fürtök skálázása vagy az Azure-frissítések során felmerülő Spark-események elvesztését eredményezheti.
 
-    1. Módosítsa a Ambari `spark.eventlog.dir` felhasználói `spark.history.fs.logDirectory` felületén, és a használatával:
+    1. Módosítsa a `spark.eventlog.dir` `spark.history.fs.logDirectory` Ambari felhasználói felületén, és a használatával:
 
         ```
         spark.eventlog.dir = hdfs://mycluster/hdp/spark2-events

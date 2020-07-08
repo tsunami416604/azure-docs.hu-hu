@@ -7,10 +7,9 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: 0c5fdac7df41fec3a6206dbd78af74b7f1b58c7f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68736322"
 ---
 # <a name="register-data-sources-in-azure-data-catalog"></a>Adatforrások regisztrálása a Azure Data Catalogban
@@ -38,7 +37,7 @@ Amikor regisztrál egy adatforrást, a regisztrációs eszköz kigyűjti a kivá
 Az összes objektum esetében ez a szerkezeti metaadatok tartalmazzák az objektum helyét, így az adatokat felderítő felhasználók az adott információ segítségével csatlakozhatnak az objektumhoz az általuk választott eszközökön. Más szerkezeti metaadatok az objektum neve és típusa, valamint az attribútum/oszlop neve és adattípusa is.
 
 ## <a name="descriptive-metadata"></a>Leíró metaadatok
-Az adatforrásból kinyert alapvető szerkezeti metaadatok mellett az adatforrás-regisztrációs eszköz kigyűjti a leíró metaadatokat. SQL Server Analysis Services és SQL Server Reporting Services esetében ez a metaadatok a szolgáltatások által elérhető Leírás tulajdonságaiból származnak. SQL Server esetén a rendszer kinyeri az\_MS Description Extended tulajdonsággal megadott értékeket. Oracle Database esetében az adatforrás-regisztrációs eszköz kibontja a megjegyzések oszlopot az összes\_lap\_Megjegyzés nézetből.
+Az adatforrásból kinyert alapvető szerkezeti metaadatok mellett az adatforrás-regisztrációs eszköz kigyűjti a leíró metaadatokat. SQL Server Analysis Services és SQL Server Reporting Services esetében ez a metaadatok a szolgáltatások által elérhető Leírás tulajdonságaiból származnak. SQL Server esetén a \_ rendszer kinyeri az MS Description Extended tulajdonsággal megadott értékeket. Oracle Database esetében az adatforrás-regisztrációs eszköz kibontja a megjegyzések oszlopot az összes \_ lap \_ Megjegyzés nézetből.
 
 Az adatforrásból kinyert leíró metaadatok mellett a felhasználók az adatforrás-regisztrációs eszköz használatával is megadhatják a leíró metaadatokat. A felhasználók hozzáadhatnak címkéket, és meghatározhatják a regisztrált objektumok szakértőit. Az összes leíró metaadatot a rendszer átmásolja a Data Catalog szolgáltatásba a strukturális metaadatokkal együtt.
 

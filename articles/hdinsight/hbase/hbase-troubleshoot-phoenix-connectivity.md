@@ -8,10 +8,9 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/14/2019
 ms.openlocfilehash: b886f51bcb2bb7308c49c76563dcb70148bbc583
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75887291"
 ---
 # <a name="scenario-apache-phoenix-connectivity-issues-in-azure-hdinsight"></a>Forgatókönyv: Apache Phoenix kapcsolódási problémák az Azure HDInsight
@@ -28,19 +27,19 @@ Az aktív Zookeeper csomópontjának helytelen IP-címe.
 
 ### <a name="resolution"></a>Megoldás:
 
-Az aktív Zookeeper csomópontjának IP-címe a Ambari felhasználói felületén azonosítható a **HBase** > **Quick Links** > **ZK (aktív)** > **Zookeeper-információ**hivatkozásait követve. Szükség szerint javítsa ki az IP-címet.
+Az aktív Zookeeper csomópontjának IP-címe a Ambari felhasználói felületén azonosítható a **HBase**  >  **Quick Links**  >  **ZK (aktív)**  >  **Zookeeper-információ**hivatkozásait követve. Szükség szerint javítsa ki az IP-címet.
 
 ---
 
 ## <a name="cause-systemcatalog-table-offline"></a>Ok: a SYSTEM. Katalógus tábla kapcsolat nélkül
 
-A parancs `!tables`futtatásakor a következőhöz hasonló hibaüzenet jelenik meg:
+A parancs futtatásakor a `!tables` következőhöz hasonló hibaüzenet jelenik meg:
 
 ```output
 Error while connecting to sqlline.py (Hbase - phoenix) Setting property: [isolation, TRANSACTION_READ_COMMITTED] issuing: !connect jdbc:phoenix:10.2.0.7 none none org.apache.phoenix.jdbc.PhoenixDriver Connecting to jdbc:phoenix:10.2.0.7 SLF4J: Class path contains multiple SLF4J bindings.
 ```
 
-A parancs `count 'SYSTEM.CATALOG'`futtatásakor a következőhöz hasonló hibaüzenet jelenik meg:
+A parancs futtatásakor a `count 'SYSTEM.CATALOG'` következőhöz hasonló hibaüzenet jelenik meg:
 
 ```output
 ERROR: org.apache.hadoop.hbase.NotServingRegionException: Region SYSTEM.CATALOG,,1485464083256.c0568c94033870c517ed36c45da98129. is not online on 10.2.0.5,16020,1489466172189)
@@ -50,7 +49,7 @@ ERROR: org.apache.hadoop.hbase.NotServingRegionException: Region SYSTEM.CATALOG,
 
 Az Apache Ambari felhasználói felületén hajtsa végre a következő lépéseket a HMaster szolgáltatás újraindításához az összes ZooKeeper-csomóponton:
 
-1. A HBase **Összefoglalás** szakaszából válassza a **HBase** > **aktív HBase Master**elemet.
+1. A HBase **Összefoglalás** szakaszából válassza a **HBase**  >  **aktív HBase Master**elemet.
 
 1. Az **összetevők** szakaszban indítsa újra a HBase Master szolgáltatást.
 

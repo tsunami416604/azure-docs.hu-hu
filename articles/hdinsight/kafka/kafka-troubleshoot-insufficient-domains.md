@@ -8,19 +8,18 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/09/2019
 ms.openlocfilehash: 8be7e05ac85ce0b1b10edf18d3885a07e016b9ae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75895028"
 ---
-# <a name="scenario-cluster-creation-failed-due-to-not-sufficient-fault-domains-in-region-in-azure-hdinsight"></a>Forgatókönyv: `not sufficient fault domains in region` a fürt létrehozása az Azure HDInsight miatt nem sikerült
+# <a name="scenario-cluster-creation-failed-due-to-not-sufficient-fault-domains-in-region-in-azure-hdinsight"></a>Forgatókönyv: a fürt létrehozása `not sufficient fault domains in region` Az Azure HDInsight miatt nem sikerült
 
 Ez a cikk az Azure HDInsight-fürtökkel való interakció során felmerülő problémák hibaelhárítási lépéseit és lehetséges megoldásait ismerteti.
 
 ## <a name="issue"></a>Probléma
 
-A rendszer a következőhöz `not sufficient fault domains in region` hasonló hibaüzenetet kap, amikor Apache Kafka fürtöt próbál létrehozni.
+A rendszer a következőhöz hasonló hibaüzenetet kap, `not sufficient fault domains in region` amikor Apache Kafka fürtöt próbál létrehozni.
 
 ## <a name="cause"></a>Ok
 

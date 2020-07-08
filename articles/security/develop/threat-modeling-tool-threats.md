@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
 ms.openlocfilehash: eb006482b851e9094b82ec3d0753b74c05296994
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68727831"
 ---
 # <a name="microsoft-threat-modeling-tool-threats"></a>Fenyegetések Microsoft Threat Modeling Tool
@@ -38,7 +37,7 @@ A Threat Modeling Tool segít bizonyos kérdések megválaszolásában, példáu
 
 A Microsoft a LÉPÉSHOSSZ modellt használja, amely különböző típusú fenyegetéseket kategorizál, és leegyszerűsíti az általános biztonsági beszélgetéseket.
 
-| Kategória | Leírás |
+| Kategória | Description |
 | -------- | ----------- |
 | **Hamisítás** | A szolgáltatás illegálisan férhet hozzá, majd egy másik felhasználó hitelesítési információit, például a felhasználónevet és a jelszót használja. |
 | **Illetéktelen módosításának** | Az adatkezelés rosszindulatú módosítását foglalja magában. Ilyenek például az állandó adatmódosítások, mint az adatbázisokban tárolt jogosulatlan módosítások, valamint az adatváltozások, amelyek a két számítógép között egy nyitott hálózaton keresztül áramlanak, például az interneten |

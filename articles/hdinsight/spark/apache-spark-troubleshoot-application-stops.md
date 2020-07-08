@@ -8,10 +8,9 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/29/2019
 ms.openlocfilehash: ff410ea1b6c54d2f58babeb20c68fe95033e9728
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75894437"
 ---
 # <a name="scenario-apache-spark-streaming-application-stops-after-executing-for-24-days-in-azure-hdinsight"></a>Forgatókönyv: Apache Spark folyamatos átviteli alkalmazás az Azure HDInsight 24 napjainak végrehajtása után leáll
@@ -28,9 +27,9 @@ Az `livy.server.session.timeout` érték azt határozza meg, hogy az Apache Livy
 
 ## <a name="resolution"></a>Megoldás:
 
-A hosszú ideig futó feladatok esetében növelje a Ambari `livy.server.session.timeout` felhasználói felületének értékét. A Livy konfigurációját a Ambari felhasználói felületén keresztül érheti el az `https://<yourclustername>.azurehdinsight.net/#/main/services/LIVY/configs`URL-cím használatával.
+A hosszú ideig futó feladatok esetében növelje a `livy.server.session.timeout` Ambari felhasználói felületének értékét. A Livy konfigurációját a Ambari felhasználói felületén keresztül érheti el az URL-cím használatával `https://<yourclustername>.azurehdinsight.net/#/main/services/LIVY/configs` .
 
-Cserélje `<yourclustername>` le a nevet a HDInsight-fürt nevére a portálon látható módon.
+Cserélje le a `<yourclustername>` nevet a HDInsight-fürt nevére a portálon látható módon.
 
 ## <a name="next-steps"></a>További lépések
 

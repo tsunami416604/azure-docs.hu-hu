@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: c9d20b3259cf4ea7af263d5e31145ad372db0c77
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68728414"
 ---
 # <a name="security-frame-auditing-and-logging--mitigations"></a>Biztonsági keret: naplózás és naplózás | Enyhítését 
@@ -42,8 +41,8 @@ ms.locfileid: "68728414"
 | **Összetevő**               | Dynamics CRM | 
 | **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N/A  |
-| **Referencia**              | N/A  |
+| **Attribútumok**              | N.A.  |
+| **Hivatkozások**              | N.A.  |
 | **Lépéseket**                   | Azonosítsa a bizalmas adatokat tartalmazó megoldás entitásait, és hajtsa végre a változások naplózását ezeken az entitásokon és mezőkön |
 
 ## <a name="ensure-that-auditing-and-logging-is-enforced-on-the-application"></a><a id="auditing"></a>Győződjön meg arról, hogy a naplózás és a naplózás érvényesítve van az alkalmazásban
@@ -53,8 +52,8 @@ ms.locfileid: "68728414"
 | **Összetevő**               | Webalkalmazás | 
 | **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N/A  |
-| **Referencia**              | N/A  |
+| **Attribútumok**              | N.A.  |
+| **Hivatkozások**              | N.A.  |
 | **Lépéseket**                   | Az összes összetevő naplózásának és naplózásának engedélyezése. A naplóknak rögzíteniük kell a felhasználói környezetet. Azonosítsa az összes fontos eseményt, és naplózza ezeket az eseményeket. Központosított naplózás implementálása |
 
 ## <a name="ensure-that-log-rotation-and-separation-are-in-place"></a><a id="log-rotation"></a>Győződjön meg arról, hogy a naplók elforgatása és elkülönítése folyamatban van
@@ -64,8 +63,8 @@ ms.locfileid: "68728414"
 | **Összetevő**               | Webalkalmazás | 
 | **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N/A  |
-| **Referencia**              | N/A  |
+| **Attribútumok**              | N.A.  |
+| **Hivatkozások**              | N.A.  |
 | **Lépéseket**                   | <p>A napló elforgatása a rendszerfelügyeletben használt automatizált folyamat, amelyben a rendszer archiválja a elavult naplófájlokat. A nagyméretű alkalmazásokat futtató kiszolgálók gyakran naplózzák az összes kérelmet: a tömeges naplók szem előtt tartásával korlátozható a naplók teljes mérete, miközben továbbra is engedélyezi a legutóbbi események elemzését. </p><p>A napló elkülönítése alapvetően azt jelenti, hogy a naplófájlokat egy másik partíción kell tárolnia, ahol az operációs rendszer/alkalmazás fut, hogy elhárítsa a szolgáltatásmegtagadási támadásokat vagy az alkalmazás teljesítményét</p>|
 
 ## <a name="ensure-that-the-application-does-not-log-sensitive-user-data"></a><a id="log-sensitive-data"></a>Győződjön meg arról, hogy az alkalmazás nem naplózza a bizalmas felhasználói adatokat
@@ -75,8 +74,8 @@ ms.locfileid: "68728414"
 | **Összetevő**               | Webalkalmazás | 
 | **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N/A  |
-| **Referencia**              | N/A  |
+| **Attribútumok**              | N.A.  |
+| **Hivatkozások**              | N.A.  |
 | **Lépéseket**                   | <p>Győződjön meg arról, hogy nem naplózza a felhasználó által a webhelynek küldött bizalmas adatokat. Keressen szándékos naplózást, valamint a tervezési problémák által okozott mellékhatásokat. A bizalmas adatokra például a következők tartoznak:</p><ul><li>Felhasználói hitelesítő adatok</li><li>Társadalombiztosítási szám vagy egyéb azonosítási információ</li><li>Hitelkártya-számok vagy egyéb pénzügyi információk</li><li>Állapotadatok</li><li>Titkos kulcsok vagy egyéb adatok, amelyek a titkosított adatok visszafejtésére használhatók</li><li>Rendszer-vagy alkalmazás-információk, amelyek az alkalmazás hatékonyabb támadásához használhatók</li></ul>|
 
 ## <a name="ensure-that-audit-and-log-files-have-restricted-access"></a><a id="log-restricted-access"></a>Győződjön meg arról, hogy a naplózási és a naplófájlok korlátozott hozzáféréssel rendelkeznek
@@ -86,8 +85,8 @@ ms.locfileid: "68728414"
 | **Összetevő**               | Webalkalmazás | 
 | **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N/A  |
-| **Referencia**              | N/A  |
+| **Attribútumok**              | N.A.  |
+| **Hivatkozások**              | N.A.  |
 | **Lépéseket**                   | <p>Győződjön meg arról, hogy a naplófájlokhoz való hozzáférési jogosultságok megfelelőek-e. Az alkalmazásadatok csak írási hozzáféréssel rendelkeznek, és a támogatási személyzetnek szükség esetén csak olvasási hozzáféréssel kell rendelkeznie.</p><p>A rendszergazdák fiókjai csak a teljes hozzáféréssel rendelkező fiókok. Ellenőrizze, hogy a Windows ACL a naplófájlokban legyen-e megfelelően korlátozva:</p><ul><li>Az alkalmazás fiókjai csak írási hozzáféréssel rendelkezhetnek</li><li>A kezelőknek és a támogatási személyzetnek szükség esetén csak olvasási hozzáféréssel kell rendelkeznie</li><li>A rendszergazdák csak a teljes hozzáféréssel rendelkező fiókok.</li></ul>|
 
 ## <a name="ensure-that-user-management-events-are-logged"></a><a id="user-management"></a>Ellenőrizze, hogy a rendszer naplózza-e a felhasználói felügyeleti eseményeket
@@ -97,8 +96,8 @@ ms.locfileid: "68728414"
 | **Összetevő**               | Webalkalmazás | 
 | **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N/A  |
-| **Referencia**              | N/A  |
+| **Attribútumok**              | N.A.  |
+| **Hivatkozások**              | N.A.  |
 | **Lépéseket**                   | <p>Győződjön meg arról, hogy az alkalmazás figyeli a felhasználói felügyeleti eseményeket, például a sikeres és sikertelen felhasználói bejelentkezéseket, a jelszó alaphelyzetbe állítását, a jelszó módosításait, a fiók zárolását, a felhasználói regisztrációt Ez segít a vélhetően gyanús viselkedés észlelésében és reagálásában. Lehetővé teszi az operatív adatok összegyűjtését is; például nyomon követheti, hogy ki fér hozzá az alkalmazáshoz</p>|
 
 ## <a name="ensure-that-the-system-has-inbuilt-defenses-against-misuse"></a><a id="inbuilt-defenses"></a>Győződjön meg arról, hogy a rendszer beépített védelmet használ a visszaélések ellen
@@ -108,8 +107,8 @@ ms.locfileid: "68728414"
 | **Összetevő**               | Webalkalmazás | 
 | **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N/A  |
-| **Referencia**              | N/A  |
+| **Attribútumok**              | N.A.  |
+| **Hivatkozások**              | N.A.  |
 | **Lépéseket**                   | <p>A vezérlőket olyan helyen kell elhelyezni, amely biztonsági kivételt okoz az alkalmazások helytelen használata esetén. Ha például a bemeneti ellenőrzés van érvényben, és egy támadó olyan kártékony kódot próbál beszúrni, amely nem felel meg a regexnek, akkor biztonsági kivételt okozhat, ami a rendszer-visszaélésre utalhat.</p><p>Azt javasoljuk például, hogy a biztonsági kivételeket naplózza, és a következő problémákra tett lépéseket:</p><ul><li>Bemenet-ellenőrzés</li><li>CSRF megsértések</li><li>Találgatásos kényszerítés (a kérelmek felhasználónkénti száma felhasználónként)</li><li>Fájlfeltöltés megsértése</li><ul>|
 
 ## <a name="enable-diagnostics-logging-for-web-apps-in-azure-app-service"></a><a id="diagnostics-logging"></a>Diagnosztikai naplózás engedélyezése webalkalmazásokhoz Azure App Service
@@ -120,7 +119,7 @@ ms.locfileid: "68728414"
 | **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | EnvironmentType – Azure |
-| **Referencia**              | N/A  |
+| **Hivatkozások**              | N.A.  |
 | **Lépéseket** | <p>Az Azure beépített diagnosztika segítségével segíti a App Service webalkalmazás hibakeresését. Az API-alkalmazásokra és a mobil alkalmazásokra is vonatkozik. App Service Web Apps diagnosztikai funkciókat biztosít a webkiszolgálóról és a webalkalmazásból származó adatok naplózásához.</p><p>Ezek logikailag elkülönítve vannak a webkiszolgáló-diagnosztika és az Application Diagnostics szolgáltatásban</p>|
 
 ## <a name="ensure-that-login-auditing-is-enabled-on-sql-server"></a><a id="identify-sensitive-entities"></a>Győződjön meg arról, hogy a Bejelentkezés naplózása engedélyezve van SQL Server
@@ -130,8 +129,8 @@ ms.locfileid: "68728414"
 | **Összetevő**               | Adatbázis | 
 | **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N/A  |
-| **Referencia**              | [Bejelentkezési naplózás konfigurálása](https://msdn.microsoft.com/library/ms175850.aspx) |
+| **Attribútumok**              | N.A.  |
+| **Hivatkozások**              | [Bejelentkezési naplózás konfigurálása](https://msdn.microsoft.com/library/ms175850.aspx) |
 | **Lépéseket** | <p>Az adatbázis-kiszolgáló bejelentkezési naplózását engedélyezni kell a jelszó-találgatásos támadások észleléséhez/megerősítéséhez. Fontos a sikertelen bejelentkezési kísérletek rögzítése. A sikeres és sikertelen bejelentkezési kísérletek rögzítése további előnyt nyújt a kriminalisztikai vizsgálatok során</p>|
 
 ## <a name="enable-threat-detection-on-azure-sql"></a><a id="threat-detection"></a>Veszélyforrások észlelésének engedélyezése az Azure SQL-ben
@@ -142,7 +141,7 @@ ms.locfileid: "68728414"
 | **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | SQL Azure |
 | **Attribútumok**              | SQL-verzió – V12 |
-| **Referencia**              | [Ismerkedés a SQL Database fenyegetések észlelésével](https://azure.microsoft.com/documentation/articles/sql-database-threat-detection-get-started/)|
+| **Hivatkozások**              | [Ismerkedés a SQL Database fenyegetések észlelésével](https://azure.microsoft.com/documentation/articles/sql-database-threat-detection-get-started/)|
 | **Lépéseket** |<p>A veszélyforrások észlelése rendellenes adatbázis-tevékenységeket észlel, ami az adatbázis potenciális biztonsági fenyegetéseket jelez. Egy új biztonsági réteget biztosít, amely lehetővé teszi az ügyfeleknek, hogy észlelje és reagáljon az esetleges fenyegetésekre a rendellenes tevékenységekre vonatkozó biztonsági riasztások révén.</p><p>A felhasználók megtekinthetik a gyanús eseményeket a Azure SQL Database naplózás használatával annak megállapításához, hogy a rendszer megpróbál-e hozzáférni az adatbázisban lévő adatokhoz, vagy illetéktelenül kihasználja őket.</p><p>A fenyegetések észlelése megkönnyíti a potenciális fenyegetések kezelését az adatbázisba anélkül, hogy biztonsági szakértőnek kellene lennie, vagy speciális biztonsági monitorozási rendszereket kellene kezelnie</p>|
 
 ## <a name="use-azure-storage-analytics-to-audit-access-of-azure-storage"></a><a id="analytics"></a>Az Azure Storage hozzáférésének naplózása Azure Storage Analytics használatával
@@ -152,8 +151,8 @@ ms.locfileid: "68728414"
 | **Összetevő**               | Azure Storage | 
 | **SDL-fázis**               | Üzembe helyezés |  
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N/A |
-| **Referencia**              | [Storage Analytics használata az engedélyezési típus figyeléséhez](https://azure.microsoft.com/documentation/articles/storage-security-guide/#storage-analytics) |
+| **Attribútumok**              | N.A. |
+| **Hivatkozások**              | [Storage Analytics használata az engedélyezési típus figyeléséhez](https://azure.microsoft.com/documentation/articles/storage-security-guide/#storage-analytics) |
 | **Lépéseket** | <p>Minden egyes Storage-fiók esetében engedélyezhető Azure Storage Analytics a metrikák naplózásának és tárolásának elvégzéséhez. A Storage Analytics-naplók olyan fontos információkat biztosítanak, mint például a felhasználók által a tárolóhoz való hozzáféréshez használt hitelesítési módszer.</p><p>Ez akkor lehet hasznos, ha szorosan védelmet biztosít a tárolóhoz való hozzáféréshez. Blob Storage például beállíthatja az összes tárolót a magánjellegűre, és egy SAS-szolgáltatást alkalmazhat az alkalmazásokban. Ezután rendszeresen megtekintheti a naplókat, és megtekintheti, hogy a Blobok elérhetők-e a Storage-fiók kulcsainak használatával, ami a biztonság megsértését jelezheti, vagy ha a Blobok nyilvánosak, de nem.</p>|
 
 ## <a name="implement-sufficient-logging"></a><a id="sufficient-logging"></a>Megfelelő naplózás implementálása
@@ -163,8 +162,8 @@ ms.locfileid: "68728414"
 | **Összetevő**               | WCF | 
 | **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | .NET-keretrendszer |
-| **Attribútumok**              | N/A  |
-| **Referencia**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [megerősítő Királyság](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_insufficient_logging) |
+| **Attribútumok**              | N.A.  |
+| **Hivatkozások**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [megerősítő Királyság](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_insufficient_logging) |
 | **Lépéseket** | <p>A biztonsági incidensek utáni megfelelő naplózási nyomvonal hiánya akadályozhatja a kriminalisztikai erőfeszítéseket. A Windows Communication Foundation (WCF) lehetőséget biztosít a sikeres és/vagy sikertelen hitelesítési kísérletek naplózására.</p><p>A sikertelen hitelesítési kísérletek naplózása figyelmeztetheti a rendszergazdákat a lehetséges találgatásos támadásokra. Hasonlóképpen, a sikeres hitelesítési események naplózása hasznos naplózási nyomvonalat biztosít a megbízható fiókok biztonsága esetén. A WCF szolgáltatás biztonsági naplózási funkciójának engedélyezése |
 
 ### <a name="example"></a>Példa
@@ -192,12 +191,12 @@ Az alábbi példa egy olyan konfigurációt mutat be, amelyen engedélyezve van 
 | **Összetevő**               | WCF | 
 | **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | .NET-keretrendszer |
-| **Attribútumok**              | N/A  |
-| **Referencia**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [megerősítő Királyság](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_insufficient_audit_failure_handling) |
+| **Attribútumok**              | N.A.  |
+| **Hivatkozások**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [megerősítő Királyság](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_insufficient_audit_failure_handling) |
 | **Lépéseket** | <p>A fejlesztett megoldás úgy van konfigurálva, hogy ne állítson elő kivételt, ha nem sikerül írni a naplóba. Ha a WCF úgy van konfigurálva, hogy ne dobjon kivételt, amikor nem tud írni egy naplóba, a program nem értesíti a hibát, és a kritikus biztonsági események naplózása nem történik meg.</p>|
 
 ### <a name="example"></a>Példa
-Az `<behavior/>` alábbi WCF konfigurációs fájl eleme arra UTASÍTJA a WCF-t, hogy ne értesítse az alkalmazást, amikor a WCF nem tud írni egy naplóba.
+Az `<behavior/>` alábbi WCF konfigurációs fájl eleme arra utasítja a WCF-t, hogy ne értesítse az alkalmazást, amikor a WCF nem tud írni egy naplóba.
 ```
 <behaviors>
     <serviceBehaviors>
@@ -219,8 +218,8 @@ Konfigurálja a WCF-t úgy, hogy értesítse a programot, amikor nem tud írni e
 | **Összetevő**               | Webes API | 
 | **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N/A  |
-| **Referencia**              | N/A  |
+| **Attribútumok**              | N.A.  |
+| **Hivatkozások**              | N.A.  |
 | **Lépéseket** | A webes API-k naplózásának és naplózásának engedélyezése. A naplóknak rögzíteniük kell a felhasználói környezetet. Azonosítsa az összes fontos eseményt, és naplózza ezeket az eseményeket. Központosított naplózás implementálása |
 
 ## <a name="ensure-that-appropriate-auditing-and-logging-is-enforced-on-field-gateway"></a><a id="logging-field-gateway"></a>Győződjön meg arról, hogy a megfelelő naplózás és naplózás érvényesítve van a Field Gateway-ben
@@ -230,8 +229,8 @@ Konfigurálja a WCF-t úgy, hogy értesítse a programot, amikor nem tud írni e
 | **Összetevő**               | IoT-mező átjárója | 
 | **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N/A  |
-| **Referencia**              | N/A  |
+| **Attribútumok**              | N.A.  |
+| **Hivatkozások**              | N.A.  |
 | **Lépéseket** | <p>Ha több eszköz csatlakozik egy mező-átjáróhoz, győződjön meg arról, hogy az egyes eszközökhöz tartozó csatlakozási kísérletek és hitelesítési állapot (sikeres vagy sikertelen) naplózása és karbantartása megtörtént a helyszíni átjárón.</p><p>Olyan esetekben is, ahol a Field Gateway az egyes eszközök IoT Hub hitelesítő adatait tartja karban, győződjön meg arról, hogy a rendszer a naplózást a hitelesítő adatok lekérése után hajtja végre. Dolgozzon ki egy folyamatot, amely rendszeres időközönként feltölti a naplókat az Azure IoT Hub/Storage-ba a hosszú távú megőrzés érdekében.</p> |
 
 ## <a name="ensure-that-appropriate-auditing-and-logging-is-enforced-on-cloud-gateway"></a><a id="logging-cloud-gateway"></a>Győződjön meg arról, hogy a felhőalapú átjárón a megfelelő naplózás és naplózás kényszerítve van
@@ -241,6 +240,6 @@ Konfigurálja a WCF-t úgy, hogy értesítse a programot, amikor nem tud írni e
 | **Összetevő**               | IoT Cloud Gateway | 
 | **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N/A  |
-| **Referencia**              | [A IoT Hub Operations monitoring bemutatása](https://azure.microsoft.com/documentation/articles/iot-hub-operations-monitoring/) |
+| **Attribútumok**              | N.A.  |
+| **Hivatkozások**              | [A IoT Hub Operations monitoring bemutatása](https://azure.microsoft.com/documentation/articles/iot-hub-operations-monitoring/) |
 | **Lépéseket** | <p>A IoT Hub műveletek monitorozásán keresztül összegyűjtött naplózási adatok gyűjtésének és tárolásának tervezése. Engedélyezze a következő figyelési kategóriákat:</p><ul><li>Eszköz-identitási műveletek</li><li>Eszközről a felhőbe irányuló kommunikáció</li><li>A felhőből az eszközre irányuló kommunikáció</li><li>Kapcsolatok</li><li>Fájlfeltöltés</li></ul>|

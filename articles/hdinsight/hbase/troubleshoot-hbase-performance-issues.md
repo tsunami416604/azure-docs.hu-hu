@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 09/24/2019
 ms.openlocfilehash: 93698fadcecf190dd8bbc24a9d03978899d3c5e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75887155"
 ---
 # <a name="troubleshoot-apache-hbase-performance-issues-on-azure-hdinsight"></a>Az Apache HBase teljesítményproblémáinak elhárítása az Azure HDInsightban
@@ -65,13 +64,13 @@ Ha az Azure HDInsight-ba végez áttelepítést, győződjön meg arról, hogy a
 
 ## <a name="server-side-configuration-tunings"></a>Kiszolgálóoldali konfiguráció-hangolások
 
-A HDInsight HBase a HFiles a távoli tárolóban tárolódnak. Gyorsítótár-hiány esetén a beolvasások díja magasabb, mint a helyszíni rendszerek esetében, mert a helyszíni rendszerekre vonatkozó adatokat a helyi HDFS támogatja. A legtöbb esetben a HBase cache-gyorsítótárak intelligens használata (a gyorsítótár és a gyűjtő gyorsítótárának blokkolása) úgy lett kialakítva, hogy kikerülje ezt a problémát. Abban az esetben, ha a probléma nem kerül kijátszásra, a prémium szintű blokk blob-fiók használatával segíthet a probléma megoldásában. A Windows Azure Storage Blob illesztőprogram bizonyos tulajdonságokra támaszkodik, például `fs.azure.read.request.size` az adatblokkokban tárolt adatokat az olvasási mód (szekvenciális és véletlenszerű) alapján, így előfordulhat, hogy továbbra is magasabb késésű példányok találhatók az olvasásokkal. A empirikus kísérletek segítségével úgy találtuk, hogy az olvasási kérelmek blokkjának mérete (`fs.azure.read.request.size`) 512 kb-ra van állítva, és a HBase táblák blokk-méretének megfelelő mérettel egyező méretben állítja elő a legjobb eredményt a gyakorlatban.
+A HDInsight HBase a HFiles a távoli tárolóban tárolódnak. Gyorsítótár-hiány esetén a beolvasások díja magasabb, mint a helyszíni rendszerek esetében, mert a helyszíni rendszerekre vonatkozó adatokat a helyi HDFS támogatja. A legtöbb esetben a HBase cache-gyorsítótárak intelligens használata (a gyorsítótár és a gyűjtő gyorsítótárának blokkolása) úgy lett kialakítva, hogy kikerülje ezt a problémát. Abban az esetben, ha a probléma nem kerül kijátszásra, a prémium szintű blokk blob-fiók használatával segíthet a probléma megoldásában. A Windows Azure Storage Blob illesztőprogram bizonyos tulajdonságokra támaszkodik, például az `fs.azure.read.request.size` adatblokkokban tárolt adatokat az olvasási mód (szekvenciális és véletlenszerű) alapján, így előfordulhat, hogy továbbra is magasabb késésű példányok találhatók az olvasásokkal. A empirikus kísérletek segítségével úgy találtuk, hogy az olvasási kérelmek blokkjának mérete ( `fs.azure.read.request.size` ) 512 kb-ra van állítva, és a HBase táblák blokk-méretének megfelelő mérettel egyező méretben állítja elő a legjobb eredményt a gyakorlatban.
 
-A legtöbb nagy méretű csomópontos fürtök esetében a HDInsight HBase `bucketcache` a virtuális géphez csatolt helyi prémium SSD fájlját tartalmazza `regionservers`. Előfordulhat, hogy a kikapcsolt halom gyorsítótár használata némi javulást eredményezhet. Ez a megkerülő megoldás a rendelkezésre álló memória korlátozásával, illetve a fájl-alapú gyorsítótárnál kisebb mérettel rendelkezik, így előfordulhat, hogy nem mindig a legjobb választás.
+A legtöbb nagy méretű csomópontos fürtök esetében a HDInsight HBase a `bucketcache` virtuális géphez csatolt helyi prémium SSD fájlját tartalmazza `regionservers` . Előfordulhat, hogy a kikapcsolt halom gyorsítótár használata némi javulást eredményezhet. Ez a megkerülő megoldás a rendelkezésre álló memória korlátozásával, illetve a fájl-alapú gyorsítótárnál kisebb mérettel rendelkezik, így előfordulhat, hogy nem mindig a legjobb választás.
 
 Az alábbiakban néhány, az általunk hangolt paraméterek közül néhányat ismertetünk, amelyek többek között a következőkhöz nyújtanak segítséget:
 
-- Növelje `memstore` a méretet az alapértelmezett 128 mb és 256 MB között. Ez a beállítás általában nagy írási helyzetekben ajánlott.
+- Növelje `memstore` a méretet az alapértelmezett 128 MB és 256 MB között. Ez a beállítás általában nagy írási helyzetekben ajánlott.
 
 - Növelje a tömörítéshez dedikált szálak számát az alapértelmezett **1** és **4**közötti értékkel. Ez a beállítás akkor fontos, ha betartjuk a gyakori kisebb tömörítést.
 
@@ -104,9 +103,9 @@ Az alábbiakban néhány, az általunk hangolt paraméterek közül néhányat i
 - RPC-időtúllépések: **3 perc**
 
    - Az RPC-időtúllépések közé tartozik a HBase RPC-időtúllépés, a HBase-ügyfél képolvasó-időtúllépése és a Phoenix-lekérdezés időtúllépése. 
-   - Győződjön meg arról, `hbase.client.scanner.caching` hogy a paraméter ugyanarra az értékre van beállítva a kiszolgáló végén és az ügyfél végén is. Ha ezek nem azonosak, ez a beállítás a szolgáltatáshoz kapcsolódó ügyféloldali hibákhoz vezet `OutOfOrderScannerException`. Ezt a beállítást kis értékre kell állítani a nagyméretű keresések esetében. Ezt az értéket **100**-re állítjuk be.
+   - Győződjön meg arról, hogy a `hbase.client.scanner.caching` paraméter ugyanarra az értékre van beállítva a kiszolgáló végén és az ügyfél végén is. Ha ezek nem azonosak, ez a beállítás a szolgáltatáshoz kapcsolódó ügyféloldali hibákhoz vezet `OutOfOrderScannerException` . Ezt a beállítást kis értékre kell állítani a nagyméretű keresések esetében. Ezt az értéket **100**-re állítjuk be.
 
-## <a name="other-considerations"></a>Egyéb szempontok
+## <a name="other-considerations"></a>További szempontok
 
 A következő további paramétereket érdemes megfontolni a hangoláshoz:
 
@@ -122,6 +121,6 @@ Ha a probléma továbbra is megoldatlan marad, további támogatásért látogas
 
 - Azure-szakértőktől kaphat válaszokat az [Azure közösségi támogatásával](https://azure.microsoft.com/support/community/).
 
-- Kapcsolódjon [@AzureSupport](https://twitter.com/azuresupport). Ez a hivatalos Microsoft Azure fiók a felhasználói élmény javításához. Összekapcsolja az Azure-Közösséget a megfelelő erőforrásokkal: válaszokkal, támogatással és szakértőkkel.
+- Kapcsolódjon [@AzureSupport](https://twitter.com/azuresupport) . Ez a hivatalos Microsoft Azure fiók a felhasználói élmény javításához. Összekapcsolja az Azure-Közösséget a megfelelő erőforrásokkal: válaszokkal, támogatással és szakértőkkel.
 
 - Ha további segítségre van szüksége, támogatási kérést küldhet a [Azure Portaltól](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)ismertető témakört. A Microsoft Azure-előfizetés az előfizetés-kezeléshez és a számlázási támogatáshoz biztosít hozzáférést, a technikai támogatás pedig az egyik [Azure-támogatási csomagon](https://azure.microsoft.com/support/plans/)keresztül érhető el.

@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: rohogue
 ms.openlocfilehash: 28278f76497d6e9d0fee221bb4ef32fe6d369db0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75966647"
 ---
 # <a name="disaster-recovery-guidance-for-avere-vfxt-for-azure"></a>Vész-helyreállítási útmutató az Azure-hoz készült avere-vFXT
@@ -83,7 +82,7 @@ Az alábbi lépéseket követve hozzon létre egy adatbiztonsági mentést egy m
 
    Jegyezze fel az alapszintű Filer nevét és a csatlakozási információkat (a Vezérlőpult **névtér** lapján), hogy replikálja a tárolót a biztonsági mentést követően.
 
-   Távolítsa el a Core filert a fürt Vezérlőpultjának használatával. [Nyissa meg a fürt Vezérlőpultját](avere-vfxt-cluster-gui.md) , és válassza a **Core** > Filer**Manage Core filers**elemet. Keresse meg azt a tárolási rendszert, amelyről biztonsági másolatot szeretne készíteni, majd az **Eltávolítás** gombbal törölje azt a fürtből.
+   Távolítsa el a Core filert a fürt Vezérlőpultjának használatával. [Nyissa meg a fürt Vezérlőpultját](avere-vfxt-cluster-gui.md) , és válassza a **Core**Filer  >  **Manage Core filers**elemet. Keresse meg azt a tárolási rendszert, amelyről biztonsági másolatot szeretne készíteni, majd az **Eltávolítás** gombbal törölje azt a fürtből.
 
 1. Hozzon létre egy új, üres blob Storage-tárolót egy másik tárolási fiókban egy másik régióban.
 

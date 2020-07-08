@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: jegeib
 ms.openlocfilehash: 1454826095bcced9b20935405c0befd5a1ed1ddd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68728308"
 ---
 # <a name="getting-started-with-the-threat-modeling-tool"></a>A Threat Modeling Tool első lépései
@@ -144,4 +143,4 @@ Az itt bemutatott veszélyforrások modellezésének megközelítése lényegese
 
 ## <a name="next-steps"></a>Következő lépések
 
-Küldje el kérdéseit, megjegyzéseit és tmtextsupport@microsoft.comproblémáit. A kezdéshez **[töltse le](https://aka.ms/threatmodelingtool)** a Threat Modeling Tool.
+Küldje el kérdéseit, megjegyzéseit és problémáit tmtextsupport@microsoft.com . A kezdéshez **[töltse le](https://aka.ms/threatmodelingtool)** a Threat Modeling Tool.

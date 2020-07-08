@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
 ms.openlocfilehash: 2d0d5bb871612bc5e16a26eb49808c39661ffb50
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75934692"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>Helyszíni Apache Hadoop-fürtök migrálása az Azure HDInsight-architektúrára – ajánlott eljárások
@@ -38,7 +37,7 @@ A következő táblázat a HDInsight-fürtök létrehozásához használható k�
 
 |Eszköz|Böngésző-alapú|Parancssor|REST API|SDK|
 |---|---|---|---|---|
-|[Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md)|X||||
+|[Azure Portalra](../hdinsight-hadoop-create-linux-clusters-portal.md)|X||||
 |[Azure Data Factory](../hdinsight-hadoop-create-linux-clusters-adf.md)|X|X|X|X|
 |[Azure CLI (ver 1,0)](../hdinsight-hadoop-create-linux-clusters-azure-cli.md)||X|||
 |[Azure PowerShell](../hdinsight-hadoop-create-linux-clusters-azure-powershell.md)||X|||
@@ -103,11 +102,11 @@ Néhány HDInsight Hive-metaadattár ajánlott eljárás a következő:
 - Rendszeresen biztonsági másolatot készíthet az egyéni metaadattár.
 - Tartsa a metaadattár és a HDInsight-fürtöt ugyanabban a régióban.
 - A teljesítmény és a rendelkezésre állás metaadattár figyelése Azure SQL Database monitorozási eszközök, például Azure Portal vagy Azure Monitor naplók használatával.
-- A táblák `ANALYZE TABLE` és oszlopok statisztikáinak létrehozásához szükség szerint hajtsa végre a parancsot. Például: `ANALYZE TABLE [table_name] COMPUTE STATISTICS`.
+- A `ANALYZE TABLE` táblák és oszlopok statisztikáinak létrehozásához szükség szerint hajtsa végre a parancsot. Például: `ANALYZE TABLE [table_name] COMPUTE STATISTICS`.
 
 ## <a name="best-practices-for-different-workloads"></a>Ajánlott eljárások a különböző számítási feladatokhoz
 
-- Érdemes lehet LLAP-fürtöt használni az interaktív struktúra-lekérdezésekhez a továbbfejlesztett válaszidő- [LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP) a kaptár 2,0 új funkciója, amely lehetővé teszi a lekérdezések memórián belüli gyorsítótárazását. A LLAP sokkal gyorsabban teszi a kaptár-lekérdezéseket, és akár [26x gyorsabban, mint a kaptár 1. x bizonyos esetekben](https://hortonworks.com/blog/announcing-apache-hive-2-1-25x-faster-queries-much/).
+- Érdemes lehet LLAP-fürtöt használni az interaktív struktúra-lekérdezésekhez a továbbfejlesztett válaszidő- [LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP)a   kaptár 2,0 új funkciója, amely lehetővé teszi a lekérdezések memórián belüli gyorsítótárazását. A LLAP sokkal gyorsabban teszi a kaptár-lekérdezéseket, és akár [26x gyorsabban, mint a kaptár 1. x bizonyos esetekben](https://hortonworks.com/blog/announcing-apache-hive-2-1-25x-faster-queries-much/).
 - Vegye fontolóra a Spark-feladatok használatát a kaptár-feladatok helyett.
 - Érdemes lehet LLAP-lekérdezésekkel rendelkező Impala-alapú lekérdezéseket cserélni.
 - Érdemes lehet MapReduce-feladatokat felváltani a Spark-feladatokkal.

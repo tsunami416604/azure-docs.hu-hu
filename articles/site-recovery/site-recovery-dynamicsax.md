@@ -6,10 +6,9 @@ manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
 ms.openlocfilehash: 0b32f00374aa8ce6c41415e28f319e3e7d5abddb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75941587"
 ---
 # <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>Vész-helyreállítás beállítása többplatformos Dynamics AX-alkalmazáshoz   
@@ -55,11 +54,11 @@ Az alkalmazás teljes replikálásának és helyreállításának engedélyezés
 
 Active Directory szükséges a Dynamics AX-alkalmazás működéséhez a vész-helyreállítási helyen. Az ügyfél helyszíni környezetének összetettsége alapján javasolt a következő két lehetőség választása.
 
-**1. lehetőség**
+**1\. lehetőség**
 
 Az ügyfél kis számú alkalmazást és egyetlen tartományvezérlőt tartalmaz a teljes helyszíni helyhez, és a teljes webhely feladatátvételét tervezi. Azt javasoljuk, hogy Site Recovery replikáció használatával replikálja a tartományvezérlői gépet egy másodlagos helyre (a helyek közötti és a helyek közötti Azure-forgatókönyvek esetében egyaránt alkalmazható).
 
-**2. lehetőség**
+**2\. lehetőség**
 
 Az ügyfél nagy számú alkalmazással rendelkezik, és egy Active Directory erdőt futtat, és egy időben több alkalmazás feladatátvételét tervezi. Javasoljuk, hogy állítson be egy további tartományvezérlőt a vész-helyreállítási webhelyre (másodlagos helyre vagy az Azure-ba).
 

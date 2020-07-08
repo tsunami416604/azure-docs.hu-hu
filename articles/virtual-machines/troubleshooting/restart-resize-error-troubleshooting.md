@@ -14,10 +14,9 @@ ms.date: 06/15/2018
 ms.author: delhan
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a6532558107463311c4225b9855bc4cd3f19eed9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75965614"
 ---
 # <a name="troubleshoot-deployment-issues-with-restarting-or-resizing-an-existing-windows-vm-in-azure"></a>Üzembehelyezési hibák elhárítása meglévő Windows rendszerű virtuális gép újraindításakor vagy átméretezésekor az Azure-ban
@@ -41,7 +40,7 @@ A leállított virtuális gép elindítására irányuló kérelmet a Cloud Serv
 ### <a name="resolution"></a>Megoldás:
 * Állítsa le az összes virtuális gépet a rendelkezésre állási csoportból, majd indítsa újra az egyes virtuális gépeket.
   
-  1. Kattintson **Az erőforráscsoportok** > *az erőforráscsoport* > **erőforrásai** > *a rendelkezésre állási* > csoport**Virtual Machines** > *a virtuális gép* > **leállítása**elemre.
+  1. Kattintson az **erőforráscsoportok**  >  *az erőforráscsoport*  >  **erőforrásai**  >  *a rendelkezésre állási*csoport  >  **Virtual Machines**  >  *a virtuális gép*  >  **leállítása**elemre.
   2. Az összes virtuális gép leállítása után válassza ki a leállított virtuális gépeket, és kattintson az Indítás gombra.
 * Próbálja megismételni az újraindítási kérelmet később.
 
@@ -57,7 +56,7 @@ A virtuális gép átméretezésére irányuló kérelmet a Cloud Service-t futt
   
   1. Állítsa le az összes virtuális gépet a rendelkezésre állási csoportból.
      
-     * Kattintson **Az erőforráscsoportok** > *az erőforráscsoport* > **erőforrásai** > *a rendelkezésre állási* > csoport**Virtual Machines** > *a virtuális gép* > **leállítása**elemre.
+     * Kattintson az **erőforráscsoportok**  >  *az erőforráscsoport*  >  **erőforrásai**  >  *a rendelkezésre állási*csoport  >  **Virtual Machines**  >  *a virtuális gép*  >  **leállítása**elemre.
   2. Az összes virtuális gép leállítása után méretezze át a kívánt virtuális gépet nagyobb méretre.
   3. Jelölje ki az átméretezett virtuális gépet, és kattintson a **Start**gombra, majd indítsa el az egyes leállított virtuális gépeket.
 

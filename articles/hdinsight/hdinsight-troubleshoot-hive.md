@@ -9,10 +9,9 @@ ms.reviewer: jasonh
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.openlocfilehash: 02247adb9852a72b386feb2ef0924b0f1b3d6277
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75895234"
 ---
 # <a name="troubleshoot-apache-hive-by-using-azure-hdinsight"></a>Az Apache Hive hibaelhárítása az Azure HDInsighttal
@@ -39,7 +38,7 @@ Ismerkedjen meg a legfontosabb kérdésekkel és azok megoldásával, amikor az 
     hive -f alltables.sql
     ```
 
-A megoldás lépéseiben szereplő kód azt feltételezi, hogy az új fürtön lévő adatelérési utak megegyeznek a régi fürtön lévő adatelérési utakkal. Ha az adatelérési utak eltérnek, manuálisan szerkesztheti a `alltables.sql` létrehozott fájlt, hogy az tükrözze a módosításokat.
+A megoldás lépéseiben szereplő kód azt feltételezi, hogy az új fürtön lévő adatelérési utak megegyeznek a régi fürtön lévő adatelérési utakkal. Ha az adatelérési utak eltérnek, manuálisan szerkesztheti a létrehozott `alltables.sql` fájlt, hogy az tükrözze a módosításokat.
 
 ### <a name="additional-reading"></a>További olvasnivaló
 

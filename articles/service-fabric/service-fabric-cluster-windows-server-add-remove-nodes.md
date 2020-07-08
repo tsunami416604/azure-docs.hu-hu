@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: dekapur
 ms.openlocfilehash: f9bee35ee8e82070b4cf601139b471562ba5e10b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75934211"
 ---
 # <a name="add-or-remove-nodes-to-a-standalone-service-fabric-cluster-running-on-windows-server"></a>Csomópontok hozzáadása vagy eltávolítása a Windows Serveren futó önálló Service Fabric-fürt esetében
@@ -29,7 +28,7 @@ Miután [létrehozta az önálló Service Fabric fürtöt a Windows Server rends
 
 5. Futtassa a PowerShellt emelt szintű jogosultságokkal, és nyissa meg a kibontott csomag helyét.
 
-6. Futtassa a *hozzáadási. ps1* parancsfájlt a hozzáadandó új csomópontot leíró paraméterekkel. A következő példa egy VM5 nevű új csomópontot helyez üzembe a NodeType0 és az IP-182.17.34.52, a UD1 és az FD:/DC1/R0 típussal. `ExistingClusterConnectionEndPoint`a már meglévő fürtben lévő csomóponthoz tartozó kapcsolatok végpontja, amely a fürt *bármely* CSOMÓPONTJÁNAK IP-címe lehet. 
+6. Futtassa a *AddNode.ps1* szkriptet a hozzáadandó új csomópontot leíró paraméterekkel. A következő példa egy VM5 nevű új csomópontot helyez üzembe a NodeType0 és az IP-182.17.34.52, a UD1 és az FD:/DC1/R0 típussal. `ExistingClusterConnectionEndPoint`a már meglévő fürtben lévő csomóponthoz tartozó kapcsolatok végpontja, amely a fürt *bármely* CSOMÓPONTJÁNAK IP-címe lehet. 
 
    Nem biztonságos (prototípus):
 
@@ -69,7 +68,7 @@ Miután [létrehozta az önálló Service Fabric fürtöt a Windows Server rends
    Service Fabric Exploreron figyelheti a frissítés előrehaladását. Azt is megteheti, [hogy a Get-ServiceFabricClusterUpgrade-](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps)t futtatja.
 
 ### <a name="add-nodes-to-clusters-configured-with-windows-security-using-gmsa"></a>Csomópontok hozzáadása a Windows biztonsággal konfigurált fürtökhöz a gMSA használatával
-A csoportosan felügyelt szolgáltatásfiók (gMSA)https://technet.microsoft.com/library/hh831782.aspx)használatával konfigurált fürtök esetében egy új csomópontot adhat hozzá a konfiguráció frissítésével:
+A csoportosan felügyelt szolgáltatásfiók (gMSA) használatával konfigurált fürtök esetében egy https://technet.microsoft.com/library/hh831782.aspx) új csomópontot adhat hozzá a konfiguráció frissítésével:
 1. Futtassa a [Get-ServiceFabricClusterConfiguration](/powershell/module/servicefabric/get-servicefabricclusterconfiguration?view=azureservicefabricps) parancsot bármelyik meglévő csomóponton a legújabb konfigurációs fájl beszerzéséhez, és adja meg a "csomópontok" szakaszban hozzáadni kívánt új csomópont részleteit. Győződjön meg arról, hogy az új csomópont ugyanahhoz a csoportosan felügyelt fiókhoz tartozik. Ennek a fióknak az összes gépen rendszergazdának kell lennie.
 
     ```
@@ -127,7 +126,7 @@ Adja hozzá a "NodesToBeRemoved" paramétert a "Setup" szakaszhoz a "FabricSetti
     Service Fabric Exploreron figyelheti a frissítés előrehaladását. Azt is megteheti, [hogy a Get-ServiceFabricClusterUpgrade-](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps)t futtatja.
 
 > [!NOTE]
-> A csomópontok eltávolítása több frissítést is kezdeményezhet. Egyes csomópontok `IsSeedNode=”true”` címkével vannak megjelölve, és a fürt jegyzékfájljának a használatával `Get-ServiceFabricClusterManifest`történő lekérdezésével azonosíthatók. Az ilyen csomópontok eltávolítása több időt is igénybe vehet, mivel a vetőmag-csomópontokat ilyen helyzetekben kell áthelyezni. A fürtnek legalább 3 elsődleges csomópont típusú csomópontot kell fenntartania.
+> A csomópontok eltávolítása több frissítést is kezdeményezhet. Egyes csomópontok címkével vannak megjelölve `IsSeedNode=”true”` , és a fürt jegyzékfájljának a használatával történő lekérdezésével azonosíthatók `Get-ServiceFabricClusterManifest` . Az ilyen csomópontok eltávolítása több időt is igénybe vehet, mivel a vetőmag-csomópontokat ilyen helyzetekben kell áthelyezni. A fürtnek legalább 3 elsődleges csomópont típusú csomópontot kell fenntartania.
 > 
 > 
 
