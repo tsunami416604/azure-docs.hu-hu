@@ -12,12 +12,12 @@ ms.date: 07/25/2019
 ms.author: negoe
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 068870378fc1ef41d791f437449fd427689a9e44
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: f4d442831658b276f74146ef91e69b92dec83619
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85477413"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85553905"
 ---
 # <a name="microsoft-identity-platform-authentication-libraries"></a>Microsoft Identity platform hitelesítési kódtárak
 
@@ -48,7 +48,7 @@ A Microsoft Identity platform-végponttal működő könyvtárak listáját a k�
 
 A védett webes API-k meghívásához használjon ügyfél-hitelesítési kódtárakat.
 
-| Platform | Kódtár | Letöltés | Forráskód | Sample | Referencia | Fogalmi doc | Ütemterv |
+| Platform | Kódtár | Letöltés | Forráskód | Sample | Hivatkozás | Fogalmi doc | Ütemterv |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | ![JavaScript](media/sample-v2-code/logo_js.png) | MSAL.js  | [NPM](https://www.npmjs.com/package/msal) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/README.md) |  [Egyoldalas alkalmazás](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2) | [Hivatkozás](https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-core/) | [Fogalmi dokumentumok](msal-overview.md)| [Ütemterv](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap)
 ![Angular](media/sample-v2-code/logo_angular.png) | MSAL szögletes | [NPM](https://www.npmjs.com/package/@azure/msal-angular) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | [Szögletes fürdő](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular) | [Hivatkozás](https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-angular/) | [Fogalmi dokumentumok](msal-overview.md) | [Ütemterv](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap)
@@ -72,7 +72,7 @@ A webalkalmazások és a webes API-k védelméhez használjon middleware-kódtá
 
 A támogatott operációs rendszerek és nyelvek kifejezésében a megfeleltetés a következő:
 
-|             | Windows    | Linux      | macOS      | iOS | Android    |
+| Platform    | Windows    | Linux      | macOS      | iOS | Android    |
 |-------------|------------|------------|------------|------------|------------|
 | ![JavaScript](media/sample-v2-code/logo_js.png)  |  MSAL.js | MSAL.js | MSAL.js | MSAL.js |  MSAL.js |
 | <img alt="C#" src="../../cognitive-services/speech-service/media/index/logo_csharp.svg" width="64px" height="64px" /> | ASP.NET, ASP.NET Core, MSAL.Net (.NET FW, Core, UWP)| ASP.NET Core, MSAL.Net (.NET Core) | ASP.NET Core, MSAL.Net (macOS)       | MSAL.Net (Xamarin. iOS) | MSAL.Net (Xamarin. Android)|

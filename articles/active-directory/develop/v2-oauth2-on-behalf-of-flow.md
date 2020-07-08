@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: bcf971b56aa0dc343fdfaf34b329e49a82bba9a8
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 9e653469eb5bffbf81a0e09982edcbd1e937ba61
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83771520"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85553537"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft Identity platform és OAuth 2,0-alapú folyamat
 
@@ -61,7 +61,7 @@ Két eset attól függően, hogy az ügyfélalkalmazás egy megosztott titok vag
 
 Közös titkos kulcs használata esetén a szolgáltatás-szolgáltatás hozzáférési jogkivonat-kérelem a következő paramétereket tartalmazza:
 
-| Paraméter |  | Leírás |
+| Paraméter | Típus | Description |
 | --- | --- | --- |
 | `grant_type` | Kötelező | A jogkivonat-kérelem típusa. JWT használó kérelmek esetén az értéknek a következőnek kell lennie: `urn:ietf:params:oauth:grant-type:jwt-bearer` . |
 | `client_id` | Kötelező | Az alkalmazás (ügyfél) azonosítója, amelyhez [az Azure Portal-Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) lap hozzá van rendelve az alkalmazáshoz. |
@@ -93,7 +93,7 @@ grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer
 
 Egy tanúsítványhoz tartozó szolgáltatás-szolgáltatás hozzáférési jogkivonat-kérelem a következő paramétereket tartalmazza:
 
-| Paraméter |  | Leírás |
+| Paraméter | Típus | Description |
 | --- | --- | --- |
 | `grant_type` | Kötelező | A jogkivonat-kérelem típusa. JWT használó kérelmek esetén az értéknek a következőnek kell lennie: `urn:ietf:params:oauth:grant-type:jwt-bearer` . |
 | `client_id` | Kötelező |  Az alkalmazás (ügyfél) azonosítója, amelyhez [az Azure Portal-Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) lap hozzá van rendelve az alkalmazáshoz. |

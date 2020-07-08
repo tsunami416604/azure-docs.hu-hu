@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/18/2020
-ms.openlocfilehash: 26899d629661fbf3a4f48ac09fa9fd3ee806bdb4
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.date: 06/30/2020
+ms.openlocfilehash: 9a4b6bc8ae20789c1420e68f91cee34ac5b3a3ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85321142"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85554254"
 ---
 # <a name="data-import-overview---azure-cognitive-search"></a>Az adatimportálás áttekintése – Azure Cognitive Search
 
@@ -52,7 +52,7 @@ A REST API a JSON-kéréseket tartalmazó HTTP POST kérelmeket az Azure Cogniti
 A .NET SDK-ban csomagolja ki az adatait egy `IndexBatch` objektumba. Az egy `IndexBatch` objektumokból álló gyűjteményt ágyaz be `IndexAction` , amely tartalmaz egy dokumentumot és egy olyan tulajdonságot, amely közli az Azure-Cognitive Search, hogy milyen műveletet hajtson végre az adott dokumentumban. A kód például a [C#](search-get-started-dotnet.md)gyors üzembe helyezési útmutatójában található.
 
 
-| @search.action | Leírás | Az egyes dokumentumok kötelező mezői | Jegyzetek |
+| @search.action | Description | Az egyes dokumentumok kötelező mezői | Jegyzetek |
 | -------------- | ----------- | ---------------------------------- | ----- |
 | `upload` |Az `upload` művelet működése hasonló az „upsert” (frissítés/beszúrás) műveletéhez, ahol a rendszer az új dokumentumot beilleszti, ha pedig már létező dokumentumról van szó, akkor frissíti/kicseréli azt. |billentyű, továbbá a meghatározni kívánt egyéb mezők |Létező dokumentum frissítése/cseréje esetén a kérésben nem megadott mezők beállítása a következő lesz: `null`. Ez történik abban az esetben is, ha a mező korábban nem null értékre lett beállítva. |
 | `merge` |Egy meglévő dokumentumot frissít a megadott mezőkkel. Ha a dokumentum nem található az indexben, az egyesítés meg fog hiúsulni. |billentyű, továbbá a meghatározni kívánt egyéb mezők |A rendszer az egyesítési művelet során megadott mezőkre cseréli a dokumentum meglévő mezőit. A .NET SDK-ban a következő típusú mezők szerepelnek: `DataType.Collection(DataType.String)` . A REST API a következő típusú mezőket tartalmazza: `Collection(Edm.String)` . Ha például a dokumentum egy `["budget"]` értékű `tags` mezőt tartalmaz, és egyesítést hajt végre a `tags` mező `["economy", "pool"]` értékével, a `tags` mező végső értéke `["economy", "pool"]` lesz. Nem pedig a következő lesz: `["budget", "economy", "pool"]`. |
@@ -63,11 +63,13 @@ A .NET SDK-ban csomagolja ki az adatait egy `IndexBatch` objektumba. Az egy `Ind
 
 Kétféleképpen [keresheti meg az indexet a REST API használatával](https://docs.microsoft.com/rest/api/searchservice/Search-Documents). Az egyik lehetőség egy HTTP POST kérés kiadása azon a helyen, ahol a lekérdezési paraméterek vannak meghatározva a kéréstörzs JSON-objektumában. A másik lehetőség egy HTTP GET kérés kiadása azon a helyen, ahol a lekérdezési paraméterek vannak meghatározva a kérés URL-címén belül. A lekérdezési paraméterek méretének tekintetében a POST több [enyhe korlátozással](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) rendelkezik, mint a GET. Éppen ezért a POST használatát javasoljuk, hacsak nem állnak fenn olyan speciális körülmények, amelyek a GET használatát kényelmesebbé tennék.
 
-A POST és a GET esetében egyaránt meg kell majd adnia a *szolgáltatás nevét*, az *index nevét*, valamint a megfelelő *API-verziót* (a jelen dokumentum kiadásakor érvényes API-verzió: `2019-05-06`) a kérés URL-címében. A GET esetében a lekérdezési paramétereket az URL-cím végén található *lekérdezési sztringben* kell megadni. Az URL-cím formátuma alább látható:
+A POST és a GET esetében egyaránt meg kell adnia a *szolgáltatás nevét*, az *index nevét*és az *API-verziót* a kérelem URL-címében. 
 
-    https://[service name].search.windows.net/indexes/[index name]/docs?[query string]&api-version=2019-05-06
+A GET esetében a lekérdezési paramétereket az URL-cím végén található *lekérdezési sztringben* kell megadni. Az URL-cím formátuma alább látható:
 
-A POST esetében a formátum ugyanez, azzal a kiegészítéssel, hogy a lekérdezési sztring paraméterei között csak az API-verzió szerepel.
+    https://[service name].search.windows.net/indexes/[index name]/docs?[query string]&api-version=2020-06-30
+
+A POST formátuma ugyanaz, de a `api-version` lekérdezési karakterlánc paraméterei között.
 
 ## <a name="pulling-data-into-an-index"></a>Adatok lekérése indexbe
 

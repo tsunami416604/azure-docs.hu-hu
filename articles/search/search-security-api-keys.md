@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 68a17b8b3587077222a9ed2057927c8f16253c1e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8a4c862cd6b6f9b01c0b56c2a21e228fdfd0f6e8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72794368"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85553338"
 ---
 # <a name="create-and-manage-api-keys-for-an-azure-cognitive-search-service"></a>Azure Cognitive Search-szolgáltatás API-kulcsainak létrehozása és kezelése
 
@@ -29,15 +29,15 @@ Az API-Key egy véletlenszerűen generált számokból és betűkből álló kar
 
 A keresési szolgáltatás eléréséhez két típusú kulcs használható: admin (olvasás és írás) és lekérdezés (csak olvasható).
 
-|Kulcs|Leírás|Korlátok|  
+|Kulcs|Description|Korlátok|  
 |---------|-----------------|------------|  
 |Rendszergazda|Minden művelethez teljes körű jogosultságot biztosít, beleértve a szolgáltatás felügyeletének képességét, indexek létrehozását és törlését, indexelő és adatforrásokat.<br /><br /> A szolgáltatás létrehozásakor két, a portál *elsődleges* és *másodlagos* kulcsának nevezett rendszergazdai kulcs jön létre, és igény szerint egyénileg újragenerálható. A két kulcs lehetővé teszi egy kulcs átadását, miközben a második kulcsot használja a szolgáltatás folyamatos eléréséhez.<br /><br /> A rendszergazdai kulcsok csak a HTTP-kérések fejlécében vannak megadva. A felügyeleti API-kulcs nem helyezhető el egy URL-címben.|Maximum 2/szolgáltatás|  
-|Lekérdezés|Csak olvasási hozzáférést biztosít az indexekhez és a dokumentumokhoz, és általában a keresési kérelmeket kibocsátó ügyfélalkalmazások számára történik.<br /><br /> A lekérdezési kulcsok igény szerint jönnek létre. Ezeket manuálisan is létrehozhatja a portálon vagy programozott módon a [felügyeleti REST API](https://docs.microsoft.com/rest/api/searchmanagement/)használatával.<br /><br /> A lekérdezési kulcsok a keresés, javaslat vagy keresési művelet HTTP-kérelem fejlécében adhatók meg. Azt is megteheti, hogy a lekérdezési kulcsot paraméterként adja át egy URL-címben. Attól függően, hogy az ügyfélalkalmazás hogyan fogalmazza meg a kérést, könnyebb lehet átadni a kulcsot lekérdezési paraméterként:<br /><br /> `GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2019-05-06&api-key=[query key]`|50/szolgáltatás|  
+|Lekérdezés|Csak olvasási hozzáférést biztosít az indexekhez és a dokumentumokhoz, és általában a keresési kérelmeket kibocsátó ügyfélalkalmazások számára történik.<br /><br /> A lekérdezési kulcsok igény szerint jönnek létre. Ezeket manuálisan is létrehozhatja a portálon vagy programozott módon a [felügyeleti REST API](https://docs.microsoft.com/rest/api/searchmanagement/)használatával.<br /><br /> A lekérdezési kulcsok a keresés, javaslat vagy keresési művelet HTTP-kérelem fejlécében adhatók meg. Azt is megteheti, hogy a lekérdezési kulcsot paraméterként adja át egy URL-címben. Attól függően, hogy az ügyfélalkalmazás hogyan fogalmazza meg a kérést, könnyebb lehet átadni a kulcsot lekérdezési paraméterként:<br /><br /> `GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2020-06-30&api-key=[query key]`|50/szolgáltatás|  
 
  Vizuálisan, nincs különbség a rendszergazdai kulcs vagy a lekérdezési kulcs között. Mindkét kulcs 32 véletlenszerűen generált alfanumerikus karakterből álló karakterlánc. Ha nem tudja nyomon követni, hogy milyen típusú kulcs van megadva az alkalmazásban, [ellenőrizze a kulcs értékeit a portálon](https://portal.azure.com) , vagy használja a [REST API](https://docs.microsoft.com/rest/api/searchmanagement/) az érték és a kulcs típusának visszaadásához.  
 
 > [!NOTE]  
->  A bizalmas adatok (például a kérelem URI `api-key` -ja) számára nem megfelelő biztonsági gyakorlatnak minősülnek. Emiatt az Azure Cognitive Search csak a lekérdezési karakterláncot fogadja `api-key` el a lekérdezési sztringben, és ennek elkerülését kell elkerülnie, kivéve, ha az index tartalmának nyilvánosan elérhetőnek kell lennie. Általános szabályként azt javasoljuk, hogy a kérelem `api-key` fejlécét küldje el.  
+>  A bizalmas adatok (például `api-key` a kérelem URI-ja) számára nem megfelelő biztonsági gyakorlatnak minősülnek. Emiatt az Azure Cognitive Search csak a lekérdezési `api-key` karakterláncot fogadja el a lekérdezési sztringben, és ennek elkerülését kell elkerülnie, kivéve, ha az index tartalmának nyilvánosan elérhetőnek kell lennie. Általános szabályként azt javasoljuk, hogy a `api-key` kérelem fejlécét küldje el.  
 
 ## <a name="find-existing-keys"></a>Meglévő kulcsok keresése
 
@@ -45,7 +45,7 @@ A hozzáférési kulcsokat a portálon vagy a [felügyeleti REST API](https://do
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Az előfizetéshez tartozó [keresési szolgáltatások](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) listázása.
-3. Válassza ki a szolgáltatást, és az Áttekintés lapon kattintson a **Beállítások** >**kulcsok** elemre a felügyeleti és a lekérdezési kulcsok megtekintéséhez.
+3. Válassza ki a szolgáltatást, és az Áttekintés lapon kattintson a **Beállítások**  > **kulcsok** elemre a felügyeleti és a lekérdezési kulcsok megtekintéséhez.
 
    ![Portál lap, beállítások, kulcsok szakasz](media/search-security-overview/settings-keys.png)
 
@@ -57,7 +57,7 @@ Az ügyfélalkalmazások hozzáférésének és műveleteinek korlátozása elen
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Az előfizetéshez tartozó [keresési szolgáltatások](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) listázása.
-3. Válassza ki a szolgáltatást, és az Áttekintés lapon kattintson a **Beállítások** >**kulcsok**elemre.
+3. Válassza ki a szolgáltatást, és az Áttekintés lapon kattintson a **Beállítások**  > **kulcsok**elemre.
 4. Kattintson a **lekérdezési kulcsok kezelése**lehetőségre.
 5. Használja a szolgáltatáshoz már létrehozott lekérdezési kulcsot, vagy hozzon létre akár 50 új lekérdezési kulcsot. Az alapértelmezett lekérdezési kulcs neve nem, de a kezelhetőséghez további lekérdezési kulcsok is megtekinthetők.
 
@@ -72,7 +72,7 @@ Az ügyfélalkalmazások hozzáférésének és műveleteinek korlátozása elen
 
 A rendszer két rendszergazdai kulcsot hoz létre az egyes szolgáltatásokhoz, így az elsődleges kulcsot az üzletmenet folytonossága érdekében a másodlagos kulccsal lehet elforgatni.
 
-1. A **Beállítások** >**kulcsok** lapon másolja a másodlagos kulcsot.
+1. A **Beállítások**  > **kulcsok** lapon másolja a másodlagos kulcsot.
 2. Az összes alkalmazás esetében frissítse az API-kulcs beállításait a másodlagos kulcs használatára.
 3. Az elsődleges kulcs újbóli előállítása.
 4. Frissítse az összes alkalmazást az új elsődleges kulcs használatára.

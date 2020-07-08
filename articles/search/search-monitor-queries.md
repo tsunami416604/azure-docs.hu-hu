@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/18/2020
-ms.openlocfilehash: da7a47bf61453c30f5c735b1282ae93d2442598c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f6594bbeb9899a255d0c38b6a5b2a378388501b8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82127683"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85552526"
 ---
 # <a name="monitor-query-requests-in-azure-cognitive-search"></a>Lekérdezési kérelmek figyelése az Azure Cognitive Search
 
@@ -36,7 +36,7 @@ A kötet a **másodpercenkénti keresési lekérdezések** (QPS) alapján mérhe
 
 A lekérdezések végrehajtása általában ezredmásodpercben történik, ezért a mérőszámokban csak a másodpercben lekérdezett lekérdezések jelennek meg.
 
-| Aggregáció típusa | Leírás |
+| Aggregáció típusa | Description |
 |------------------|-------------|
 | Átlag | A lekérdezés végrehajtásának időpontjában egy percen belül eltelt másodpercek átlagos száma.|
 | Darabszám | Az egyperces intervallumon belül a naplóba kibocsátott metrikák száma. |
@@ -128,11 +128,11 @@ Az erőforrás-naplózás engedélyezésekor a rendszeren a **AzureDiagnostics**
    AzureDiagnostics
    | project OperationName, Query_s, IndexName_s, Documents_d
    | where OperationName == "Query.Search"
-   | where Query_s != "?api-version=2019-05-06&search=*"
+   | where Query_s != "?api-version=2020-06-30&search=*"
    | where IndexName_s != "realestate-us-sample-index"
    ```
 
-1. Szükség esetén beállíthat egy oszlop szűrőt *Query_s* egy adott szintaxis vagy karakterlánc kereséséhez. Például megadhatja, hogy a feletti szűrés *egyenlő legyen* `?api-version=2019-05-06&search=*&%24filter=HotelName`.)
+1. Szükség esetén beállíthat egy oszlop szűrőt *Query_s* egy adott szintaxis vagy karakterlánc kereséséhez. Például megadhatja, hogy a feletti szűrés *egyenlő legyen* `?api-version=2020-06-30&search=*&%24filter=HotelName` .)
 
    ![Naplózott lekérdezési karakterláncok](./media/search-monitor-usage/log-query-strings.png "Naplózott lekérdezési karakterláncok")
 
@@ -181,7 +181,7 @@ Egy adott replika-partíciós konfiguráció korlátainak leküldésekor a rends
 
    ![Riasztás részletei](./media/search-monitor-usage/alert-details.png "Riasztás részletei")
 
-Ha e-mailes értesítést adott meg, a "Microsoft Azure" üzenet jelenik meg az "Azure: aktivált súlyosság: 3 `<your rule name>`" tárgy sorával.
+Ha e-mailes értesítést adott meg, a "Microsoft Azure" üzenet jelenik meg az "Azure: aktivált súlyosság: 3" tárgy sorával `<your rule name>` .
 
 <!-- ## Report query data
 
