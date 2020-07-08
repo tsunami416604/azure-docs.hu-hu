@@ -3,21 +3,23 @@ title: Szolgáltatások közötti hitelesítés Azure Key Vault .NET használat�
 description: A Microsoft. Azure. Services. AppAuthentication függvénytár használatával hitelesítheti Azure Key Vault a .NET használatával.
 keywords: Azure Key-Vault hitelesítés – helyi hitelesítő adatok
 author: msmbaldwin
-manager: rkarlin
 services: key-vault
 ms.author: mbaldwin
-ms.date: 08/28/2019
+ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: key-vault
 ms.subservice: general
-ms.openlocfilehash: 22f727688de46ae95f128a1589c8ae5d6792f232
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 7ad3af46be26816231a15156d13fbec3275a5559
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84707021"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855076"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Szolgáltatások közötti hitelesítés Azure Key Vault .NET használatával
+
+> [!NOTE]
+> A cikkben dokumentált hitelesítési módszerek már nem tekinthetők az ajánlott eljárásoknak. Javasoljuk, hogy fogadja el a frissített hitelesítési módszereket a [Azure Key Vault való hitelesítéshez](authentication.md).
 
 A Azure Key Vault való hitelesítéshez szüksége van egy Azure Active Directory (Azure AD) hitelesítő adatra, vagy egy közös titkos kulcsra vagy egy tanúsítványra.
 
