@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/14/2020
 ms.openlocfilehash: ab4c2984bbaef84684432c660baadc78f3ef8e16
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83656330"
 ---
 # <a name="generate-recommendations-using-apache-mahout-in-azure-hdinsight"></a>Javaslatok készítése az Apache Mahout használatával az Azure HDInsight
@@ -89,14 +88,14 @@ A ben található adat a,, `user-ratings.txt` és és rendszer struktúrája, `u
 
     Az első oszlop a `userID` . A (z) "[" és "]" fájlban szereplő értékek a következők `movieId` : `recommendationScore` .
 
-2. A MovieDB. txt fájllal együtt a kimenetet is használhatja, hogy további információkat szolgáltasson a javaslatokról. Először másolja a fájlokat helyileg a következő parancsok használatával:
+2. Az ajánlásokkal együtt a kimenetet is használhatja a moviedb.txthoz. Először másolja a fájlokat helyileg a következő parancsok használatával:
 
     ```bash
     hdfs dfs -get /example/data/mahoutout/part-r-00000 recommendations.txt
     hdfs dfs -get /HdiSamples/HdiSamples/MahoutMovieData/* .
     ```
 
-    Ez a parancs a kimeneti adatokat egy **javaslatok. txt** nevű fájlba másolja az aktuális könyvtárban, valamint a film adatfájljaival együtt.
+    Ez a parancs a kimeneti adatokat egy **recommendations.txt** nevű fájlba másolja át az aktuális könyvtárban, valamint a film adatfájljaival együtt.
 
 3. A következő parancs használatával hozzon létre egy Python-parancsfájlt, amely a javaslatok kimenetében szereplő adatokat keresi meg.
 
@@ -168,11 +167,11 @@ A ben található adat a,, `user-ratings.txt` és és rendszer struktúrája, `u
 
     Ez a parancs a 4. felhasználói AZONOSÍTÓhoz generált ajánlásokat vizsgálja.
 
-   * A **User-Ratings. txt** fájl a minősítés alatt álló filmek beolvasására szolgál.
+   * A **user-ratings.txt** fájl a minősítés alatt álló filmek beolvasására szolgál.
 
-   * A **MovieDB. txt** fájl a filmek nevének beolvasására szolgál.
+   * A **moviedb.txt** fájl a filmek nevének beolvasására szolgál.
 
-   * A **javaslatok. txt** a felhasználóhoz tartozó filmkészítési javaslatok beolvasására szolgál.
+   * A **recommendations.txt** az ehhez a felhasználóhoz tartozó filmkészítési javaslatok beolvasására szolgál.
 
      A parancs kimenete az alábbi szöveghez hasonló:
 

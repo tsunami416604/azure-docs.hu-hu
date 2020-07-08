@@ -8,10 +8,9 @@ ms.author: sandeepu
 author: sandeeppujar
 ms.date: 04/30/2020
 ms.openlocfilehash: a42b483a5ca4b4948f14c1ccbf0b7af6e49224bb
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83715060"
 ---
 # <a name="connect-an-azure-sphere-device-to-your-azure-iot-central-application"></a>Azure Sphere eszköz csatlakoztatása az Azure IoT Central-alkalmazáshoz
@@ -78,9 +77,9 @@ Szimulált eszköz létrehozása:
 - Válassza az **+ új**lehetőséget.
 - Adjon meg egy egyedi **eszköz-azonosítót** és egy felhasználóbarát **eszköznév**.
 - Engedélyezze a **szimulált** beállítást.
-- Kattintson a **Létrehozás** gombra.
+- Válassza a **Létrehozás** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha Ön egy eszköz fejlesztője, néhány javasolt lépés a következő:
 

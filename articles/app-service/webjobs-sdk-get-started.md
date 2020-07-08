@@ -7,10 +7,9 @@ ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
 ms.openlocfilehash: 287b58f85cad0082ac782a20cdfb0b9b9ea810e7
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83743618"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Az Azure WebJobs SDK első lépései az eseményalapú háttérfeldolgozáshoz
@@ -201,7 +200,7 @@ A helyileg futó Azure Storage-emulátor nem rendelkezik a webjobs SDK által ig
 
 1. Válassza ki ugyanazt a **régiót** , amelyet Ön hozott létre a app Service alkalmazásban, vagy egy régiót a közelben.
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
    ![Storage-fiók létrehozása](./media/webjobs-sdk-get-started/create-storage-account.png)
 
@@ -217,7 +216,7 @@ A helyileg futó Azure Storage-emulátor nem rendelkezik a webjobs SDK által ig
 
 A webjobs SDK a Storage-kapcsolatok karakterláncát keresi az Azure-beli Alkalmazásbeállítások között. Ha helyileg futtatja, a rendszer ezt az értéket a helyi konfigurációs fájlban vagy a környezeti változókban keresi.
 
-1. Kattintson a jobb gombbal a projektre **Add**, válassza az  >  **új elem hozzáadása...** lehetőséget, válassza a **JavaScript JSON konfigurációs fájl**nevet, nevezze el az új fájl *appSettings. JSON* fájlt, és kattintson a **Hozzáadás**gombra. 
+1. Kattintson a jobb gombbal a projektre **Add**, válassza az  >  **új elem hozzáadása...** lehetőséget, válassza a **JavaScript JSON konfigurációs fájl**elemet, nevezze el az új fájlt *appsettings.js* fájlt, majd kattintson a **Hozzáadás**gombra. 
 
 1. Az új fájlban adjon hozzá egy `AzureWebJobsStorage` mezőt a következő példában látható módon:
 
@@ -229,7 +228,7 @@ A webjobs SDK a Storage-kapcsolatok karakterláncát keresi az Azure-beli Alkalm
 
 1. Cserélje le a *{Storage-beli kapcsolatok karakterláncát* a korábban átmásolt kapcsolatok karakterlánccá.
 
-1. Válassza ki a *appSettings. JSON* fájlt megoldáskezelő és a **Tulajdonságok** ablakban állítsa be a **Másolás a kimeneti könyvtárba** a **Másolás, ha újabb**.
+1. Válassza ki a fájl *appsettings.js* megoldáskezelő és a **Tulajdonságok** ablakban állítsa be a **Másolás a kimeneti könyvtárba** a másolás, **Ha újabb**lehetőséget.
 
 Később felveszi az alkalmazásában a Azure App Service.
 
@@ -340,7 +339,7 @@ Ebben a szakaszban a következő feladatokat végezheti el a Application Insight
 
 1. Kattintson a **Mentés** gombra.
 
-1. Adja hozzá a Application Insights-kapcsolódást a projekthez, hogy helyileg is futtatható legyen. A *appSettings. JSON* fájlban adjon hozzá egy `APPINSIGHTS_INSTRUMENTATIONKEY` mezőt a következő példában látható módon:
+1. Adja hozzá a Application Insights-kapcsolódást a projekthez, hogy helyileg is futtatható legyen. A fájl *appsettings.jsban* vegyen fel egy `APPINSIGHTS_INSTRUMENTATIONKEY` mezőt a következő példában látható módon:
 
     ```json
     {

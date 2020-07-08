@@ -8,10 +8,9 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2020
 ms.openlocfilehash: 33c4286c5a3fa8be68c1e6ec3bd331aa1e804cb4
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83745014"
 ---
 # <a name="payment-thresholds-methods-and-time-frames"></a>Fizetési küszöbértékek, módszerek és időkeretek
@@ -44,64 +43,64 @@ Ezek azok az országok és régiók, amelyekben a fenti fizetési módszereket h
 | Albánia | Igen | Igen | Igen | Igen |
 | Algéria | Igen | Igen | Igen | Igen |
 | Andorra | Nem | Nem | Igen | Igen |
-| Angola | Igen | Igen | Igen | Nem |
-| Antigua és Barbuda | Igen | Igen | Nem | Igen |
+| Angola | Igen | Igen | Igen | No |
+| Antigua és Barbuda | Igen | Igen | No | Yes |
 | Argentína | Igen | Igen | Igen | Igen |
 | Örményország | Igen | Igen | Nem | Nem |
 | Ausztrália | Igen | Igen | Igen | Igen |
 | Ausztria | Igen | Igen | Igen | Igen |
-| Azerbajdzsán | Igen | Igen | Igen | Nem |
+| Azerbajdzsán | Igen | Igen | Igen | No |
 | Bahrein | Igen | Igen | Igen | Igen |
-| Banglades | Igen | Igen | Igen | Nem |
-| Belarusz | Igen | Igen | Igen | Nem |
+| Banglades | Igen | Igen | Igen | No |
+| Belarusz | Igen | Igen | Igen | No |
 | Belgium | Igen | Igen | Igen | Igen |
-| Benin | Igen | Igen | Igen | Nem |
-| Bolívia | Igen | Igen | Igen | Nem |
+| Benin | Igen | Igen | Igen | No |
+| Bolívia | Igen | Igen | Igen | No |
 | Bosznia-Hercegovina | Igen | Igen | Igen | Igen |
-| Botswana | Igen | Igen | Nem | Igen |
+| Botswana | Igen | Igen | No | Yes |
 | Brazília | Igen | Igen | Igen | Igen |
 | Bulgária | Igen | Igen | Igen | Igen |
-| Burkina Faso | Igen | Igen | Igen | Nem |
-| Burundi | Igen | Igen | Igen | Nem |
-| Kambodzsa | Igen | Igen | Igen | Nem |
-| Kamerun | Igen | Igen | Igen | Nem |
+| Burkina Faso | Igen | Igen | Igen | No |
+| Burundi | Igen | Igen | Igen | No |
+| Kambodzsa | Igen | Igen | Igen | No |
+| Kamerun | Igen | Igen | Igen | No |
 | Kanada | Igen | Igen | Igen | Igen |
-| Közép-afrikai Köztársaság | Igen | Igen | Igen | Nem |
-| Csád | Igen | Igen | Igen | Nem |
+| Közép-afrikai Köztársaság | Igen | Igen | Igen | No |
+| Csád | Igen | Igen | Igen | No |
 | Chile | Igen | Igen | Igen | Igen |
-| Kína | Nem | Igen | Igen | Igen |
+| Kína | No | Igen | Igen | Igen |
 | Kolumbia | Igen | Igen | Igen | Igen |
 | Comore-szigetek | Igen | Igen | Nem | Nem |
-| Kongó (KDK) | Igen | Igen | Igen | Nem |
-| Kongói Köztársaság | Igen | Igen | Igen | Nem |
+| Kongó (KDK) | Igen | Igen | Igen | No |
+| Kongói Köztársaság | Igen | Igen | Igen | No |
 | Costa Rica | Igen | Igen | Igen | Igen |
-| Elefántcsontpart | Igen | Igen | Igen | Nem |
-| Horvátország | Igen | Igen | Igen | Nem |
+| Elefántcsontpart | Igen | Igen | Igen | No |
+| Horvátország | Igen | Igen | Igen | No |
 | Ciprus | Igen | Igen | Igen | Igen |
 | Cseh Köztársaság | Igen | Igen | Igen | Igen |
 | Dánia | Igen | Igen | Igen | Igen |
-| Dominika | Igen | Igen | Nem | Igen |
+| Dominika | Igen | Igen | No | Yes |
 | Dominikai Köztársaság | Igen | Igen | Igen | Igen |
 | Ecuador | Igen | Igen | Igen | Igen |
 | Egyiptom | Igen | Igen | Igen | Igen |
 | Salvador | Igen | Igen | Igen | Igen |
-| Eritrea | Igen | Igen | Igen | Nem |
+| Eritrea | Igen | Igen | Igen | No |
 | Észtország | Igen | Igen | Igen | Igen |
-| Etiópia | Igen | Igen | Igen | Nem |
+| Etiópia | Igen | Igen | Igen | No |
 | Fidzsi-szigetek | Igen | Igen | Nem | Nem |
 | Finnország | Igen | Igen | Igen | Igen |
 | Franciaország | Igen | Igen | Igen | Igen |
 | Grúzia | Igen | Igen | Igen | Igen |
 | Németország | Igen | Igen | Igen | Igen |
-| Ghána | Igen | Igen | Igen | Nem |
+| Ghána | Igen | Igen | Igen | No |
 | Görögország | Igen | Igen | Igen | Igen |
 | Guatemala | Igen | Igen | Igen | Igen |
-| Guinea | Igen | Igen | Igen | Nem |
-| Haiti | Igen | Igen | Igen | Nem |
+| Guinea | Igen | Igen | Igen | No |
+| Haiti | Igen | Igen | Igen | No |
 | Honduras | Igen | Igen | Igen | Igen |
 | Hongkong | Igen | Igen | Igen | Igen |
 | Magyarország | Igen | Igen | Igen | Igen |
-| Izland | Igen | Igen | Igen | Nem |
+| Izland | Igen | Igen | Igen | No |
 | India | Igen | Igen | Igen | Igen |
 | Indonézia | Igen | Igen | Igen | Igen |
 | Irak | Igen | Igen | Nem | Nem |
@@ -113,75 +112,75 @@ Ezek azok az országok és régiók, amelyekben a fenti fizetési módszereket h
 | Jordánia | Igen | Igen | Igen | Igen |
 | Kazahsztán | Igen | Igen | Igen | Igen |
 | Kenya | Igen | Igen | Igen | Igen |
-| Dél-Korea | Igen | Igen | Igen | Nem |
+| Dél-Korea | Igen | Igen | Igen | No |
 | Kuvait | Igen | Igen | Igen | Igen |
-| Kirgizisztán | Nem | Nem | Igen | Nem |
-| Laosz | Igen | Igen | Igen | Nem |
-| Lettország | Igen | Igen | Igen | Nem |
+| Kirgizisztán | Nem | Nem | Yes | No |
+| Laosz | Igen | Igen | Igen | No |
+| Lettország | Igen | Igen | Igen | No |
 | Libanon | Igen | Igen | Nem | Nem |
-| Libéria | Igen | Igen | Igen | Nem |
+| Libéria | Igen | Igen | Igen | No |
 | Liechtenstein | Igen | Igen | Igen | Igen |
-| Litvánia | Igen | Igen | Igen | Nem |
+| Litvánia | Igen | Igen | Igen | No |
 | Luxemburg | Igen | Igen | Igen | Igen |
-| Macedónia | Nem | Igen | Igen | Nem |
-| Madagaszkár | Igen | Igen | Igen | Nem |
+| Macedónia | No | Igen | Igen | No |
+| Madagaszkár | Igen | Igen | Igen | No |
 | Malawi | Igen | Igen | Igen | Igen |
 | Malajzia | Igen | Igen | Igen | Igen |
-| Mali | Igen | Igen | Igen | Nem |
+| Mali | Igen | Igen | Igen | No |
 | Málta | Igen | Igen | Igen | Igen |
-| Mauritius | Igen | Igen | Nem | Igen |
+| Mauritius | Igen | Igen | No | Yes |
 | Mexikó | Igen | Igen | Igen | Igen |
 | Monaco | Igen | Igen | Nem | Nem |
-| Mongólia | Igen | Igen | Igen | Nem |
-| Montenegró | Igen | Igen | Igen | Nem |
-| Marokkó | Igen | Igen | Igen | Nem |
+| Mongólia | Igen | Igen | Igen | No |
+| Montenegró | Igen | Igen | Igen | No |
+| Marokkó | Igen | Igen | Igen | No |
 | Mozambik | Igen | Igen | Igen | Igen |
-| Nepál | Igen | Igen | Igen | Nem |
+| Nepál | Igen | Igen | Igen | No |
 | Hollandia, a | Igen | Igen | Igen | Igen |
 | Új-Zéland | Igen | Igen | Igen | Igen |
 | Nicaragua | Igen | Igen | Igen | Igen |
-| Niger | Igen | Igen | Igen | Nem |
-| Nigéria | Igen | Igen | Igen | Nem |
+| Niger | Igen | Igen | Igen | No |
+| Nigéria | Igen | Igen | Igen | No |
 | Norvégia | Igen | Igen | Igen | Igen |
 | Omán | Igen | Igen | Igen | Igen |
-| Pakisztán | Igen | Igen | Igen | Nem |
+| Pakisztán | Igen | Igen | Igen | No |
 | Panama | Igen | Igen | Igen | Igen |
-| Paraguay | Igen | Igen | Igen | Nem |
+| Paraguay | Igen | Igen | Igen | No |
 | Peru | Igen | Igen | Igen | Igen |
 | Fülöp-szigetek | Igen | Igen | Igen | Igen |
 | Lengyelország | Igen | Igen | Igen | Igen |
 | Portugália | Igen | Igen | Igen | Igen |
-| Puerto Rico | Nem | Nem | Igen | Nem |
+| Puerto Rico | Nem | Nem | Yes | No |
 | Katar | Igen | Igen | Igen | Igen |
-| Románia | Igen | Igen | Igen | Nem |
-| Oroszország | Igen | Igen | Nem | Igen |
-| Ruanda | Igen | Igen | Igen | Nem |
-| Saint Vincent és Grenadine-szigetek | Nem | Igen | Nem | Nem |
+| Románia | Igen | Igen | Igen | No |
+| Oroszország | Igen | Igen | No | Yes |
+| Ruanda | Igen | Igen | Igen | No |
+| Saint Vincent és Grenadine-szigetek | No | Yes | Nem | Nem |
 | Szaúd-Arábia | Igen | Igen | Igen | Igen |
-| Szenegál | Igen | Igen | Igen | Nem |
-| Szerbia | Igen | Igen | Igen | Nem |
-| Sierra Leone | Igen | Igen | Igen | Nem |
+| Szenegál | Igen | Igen | Igen | No |
+| Szerbia | Igen | Igen | Igen | No |
+| Sierra Leone | Igen | Igen | Igen | No |
 | Szingapúr | Igen | Igen | Igen | Igen |
 | Szlovákia | Igen | Igen | Igen | Igen |
 | Szlovénia | Igen | Igen | Igen | Igen |
-| Szomália | Igen | Igen | Igen | Nem |
+| Szomália | Igen | Igen | Igen | No |
 | Dél-afrikai Köztársaság | Igen | Igen | Igen | Igen |
 | Spanyolország | Igen | Igen | Igen | Igen |
-| Srí Lanka | Igen | Igen | Igen | Nem |
+| Srí Lanka | Igen | Igen | Igen | No |
 | Svédország | Igen | Igen | Igen | Igen |
-| Svájc | Igen | Igen | Igen | Nem |
-| Tajvan | Nem | Igen | Igen | Igen |
+| Svájc | Igen | Igen | Igen | No |
+| Tajvan | No | Igen | Igen | Igen |
 | Tádzsikisztán | Igen | Igen | Nem | Nem |
-| Tanzánia | Igen | Igen | Igen | Nem |
+| Tanzánia | Igen | Igen | Igen | No |
 | Thaiföld | Igen | Igen | Igen | Igen |
-| Timor-Leste | Igen | Igen | Igen | Nem |
-| Togo | Igen | Igen | Igen | Nem |
+| Timor-Leste | Igen | Igen | Igen | No |
+| Togo | Igen | Igen | Igen | No |
 | Tonga | Igen | Igen | Nem | Nem |
 | Trinidad és Tobago | Igen | Igen | Igen | Igen |
-| Tunézia | Igen | Igen | Igen | Nem |
-| Törökország | Igen | Igen | Igen | Nem |
+| Tunézia | Igen | Igen | Igen | No |
+| Törökország | Igen | Igen | Igen | No |
 | Türkmenisztán | Igen | Igen | Nem | Nem |
-| Uganda | Igen | Igen | Igen | Nem |
+| Uganda | Igen | Igen | Igen | No |
 | Ukrajna | Igen | Igen | Nem | Nem |
 | Egyesült Arab Emírségek | Igen | Igen | Igen | Igen |
 | Egyesült Királyság | Igen | Igen | Igen | Igen |
@@ -190,8 +189,8 @@ Ezek azok az országok és régiók, amelyekben a fenti fizetési módszereket h
 | Üzbegisztán | Igen | Igen | Nem | Nem |
 | Venezuela | Igen | Igen | Igen | Igen |
 | Vietnam | Igen | Igen | Igen | Igen |
-| Zambia | Igen | Igen | Igen | Nem |
-| Zimbabwe | Igen | Igen | Igen | Nem |
+| Zambia | Igen | Igen | Igen | No |
+| Zimbabwe | Igen | Igen | Igen | No |
 | | |
 
 ## <a name="next-step"></a>Következő lépés

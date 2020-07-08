@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: b82d415d5e0cf18250123f3483e196aa040285dd
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83656819"
 ---
 # <a name="troubleshoot"></a>Hibaelhárítás
@@ -110,7 +109,7 @@ A naplók letöltésének megismeréséhez lépjen a ["naplók manuális gyűjt�
 > [!NOTE]
 > Annak az érzékelő-partnernek a partner-azonosítója, amelyre kíváncsi.
 
-3. Térjen vissza a partner API-hoz, és válassza a **beolvasás/ \< azonosító>** elemet.
+3. Lépjen vissza a partner API-ra, és válassza a **beolvasás/ \<ID> **lehetőséget.
 4. Adja meg a partner AZONOSÍTÓját a 3. lépésben, majd válassza a **végrehajtás**lehetőséget.
 
    Az API-válasznak tartalmaznia kell a Event Hubs-kapcsolatok karakterláncát.
@@ -203,15 +202,15 @@ Ha már engedélyezte a hozzáférést, és ezzel a hibával szembesül, próbá
 
   **Sentinel-Felhasználónév frissítése**
 
-    1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+    1. Jelentkezzen be [Azure Portalba](https://portal.azure.com).
     2. A **keresőmezőbe** keresse meg a FarmBeats Datahub erőforráscsoportot.
-    3. Válassza a Storage-fiók Storage * * * * *** > tárolók**  >  **Batch-PREP-Files**  >  **to_vm**  >  **config. ini**
+    3. Válassza a Storage-fiók Storage * * * * *** > tárolók**  >  **Batch-PREP-Files**  >  **to_vm**  >  **config.ini**
     4. **Szerkesztés** kiválasztása
     5. A Felhasználónév frissítése a sentinel_account szakaszban
 
   **A Sentinel jelszavának frissítése**
 
-    1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+    1. Jelentkezzen be [Azure Portalba](https://portal.azure.com).
     2. A **keresőmezőbe** keresse meg a FarmBeats Datahub erőforráscsoportot.
     3. Kulcstartó kiválasztása – * * * * *
     4. Hozzáférési szabályzatok kiválasztása a beállítások területen
@@ -250,7 +249,7 @@ Ez a probléma akkor fordulhat elő, ha a Sentinel-kiszolgálón bármilyen karb
 
 ### <a name="sentinel-maximum-number-of-connections-reached"></a>Sentinel: elérte a kapcsolatok maximális számát
 
-**Sikertelen feladatok üzenete**: "a (z)" username> "felhasználó által elért két egyidejű folyamat maximális száma \< ."
+**Sikertelen feladatok üzenete**: "a felhasználó által elért két egyidejű folyamat maximális száma" \<username> .
 
 **Jelentés**: Ha egy feladat meghiúsul, mert a kapcsolatok maximális száma elérte a kapcsolatot, a rendszer ugyanazt a Sentinel-fiókot használja több feladatban.
 

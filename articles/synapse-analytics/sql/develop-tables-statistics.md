@@ -12,10 +12,9 @@ ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
 ms.openlocfilehash: 1bc5f5f5ffe44cbefe5a131aa041e5afc2e8257f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83659226"
 ---
 # <a name="statistics-in-synapse-sql"></a>Statisztika a szinapszis SQL-ben
@@ -652,7 +651,7 @@ Egy oszlop statisztikáinak létrehozásához adjon meg egy lekérdezést, amely
 
 Ha nem ad meg mást, alapértelmezés szerint az SQL igény szerint az adatkészletben megadott adatok 100%-át használja, amikor statisztikát hoz létre.
 
-Ha például az alapértelmezett beállításokkal (FULLSCAN) szeretne statisztikákat létrehozni az adatkészlet év oszlopához a populáció. csv fájl alapján:
+Ha például az alapértelmezett beállításokkal (FULLSCAN) szeretne statisztikákat létrehozni az adatkészlet év oszlopához a population.csv fájl alapján:
 
 ```sql
 /* make sure you have credentials for storage account access created
@@ -720,7 +719,7 @@ sys.sp_drop_file_statistics [ @stmt = ] N'statement_text'
 
 Argumentumok: [ @stmt =] N "statement_text" – a statisztikák létrehozásakor használt Transact-SQL-utasítást adja meg.
 
-Az adatkészletben található év oszlop statisztikáinak frissítéséhez, amely a populáció. csv fájlon alapul, el kell dobnia és létre kell hoznia a statisztikát:
+Az adatkészletben található év oszlop statisztikáinak frissítéséhez, amely a population.csv fájlon alapul, el kell dobnia és létre kell hoznia a statisztikát:
 
 ```sql
 EXEC sys.sp_drop_file_statistics N'SELECT payment_type

@@ -14,13 +14,12 @@ ms.topic: conceptual
 ms.workload: identity
 ROBOTS: NOINDEX
 ms.openlocfilehash: 5c1c03a407315fc4f1b3eb967531e2800fc7497f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83738047"
 ---
-# <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Fejlesztői útmutató Azure Active Directory feltételes hozzáféréshez
+# <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Fejlesztői útmutató az Azure Active Directory feltételes hozzáféréséhez
 
 [!INCLUDE [active-directory-azuread-dev](../../../includes/active-directory-azuread-dev.md)]
 
@@ -46,7 +45,7 @@ Az alábbi forgatókönyvek a feltételes hozzáférés "kihívásai" kezelésé
 
 * A folyamaton kívüli folyamatot végrehajtó alkalmazások
 * Több szolgáltatáshoz/erőforráshoz hozzáférő alkalmazások
-* ADAL. js-t használó egyoldalas alkalmazások
+* Egylapos alkalmazások ADAL.js használatával
 * Erőforrás meghívása Web Apps
 
 A feltételes hozzáférési szabályzatok alkalmazhatók az alkalmazásra, de az alkalmazáshoz hozzáférő webes API-ra is alkalmazhatók. A feltételes hozzáférési szabályzatok konfigurálásával kapcsolatos további tudnivalókért tekintse meg a [gyakori feltételes hozzáférési házirendek](../conditional-access/concept-conditional-access-policy-common.md)című témakört.
@@ -98,7 +97,7 @@ A következő információk csak a feltételes hozzáférési forgatókönyvekbe
 
 * A folyamaton kívüli folyamatot végrehajtó alkalmazások
 * Több szolgáltatáshoz/erőforráshoz hozzáférő alkalmazások
-* ADAL. js-t használó egyoldalas alkalmazások
+* Egylapos alkalmazások ADAL.js használatával
 
 Az alábbi fejezetek az összetettebb általános forgatókönyveket tárgyalják. Az alapszintű működési elv a feltételes hozzáférési házirendek kiértékelése, amikor a rendszer a jogkivonatot arra a szolgáltatásra kéri, amelyhez feltételes hozzáférési szabályzat van alkalmazva.
 
@@ -147,11 +146,11 @@ claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
 
 Ha az alkalmazás a ADAL könyvtárat használja, a jogkivonat beszerzésének sikertelensége mindig interaktív módon próbálkozik újra. Ha ez az interaktív kérelem bekövetkezik, a végfelhasználónak lehetősége van a feltételes hozzáférés betartására. Ez csak akkor igaz, ha a kérelem olyan, `AcquireTokenSilentAsync` vagy `PromptBehavior.Never` ebben az esetben, amikor az alkalmazásnak interaktív kérelmet kell elvégeznie ```AcquireToken``` ahhoz, hogy a végfelhasználó a szabályzatnak való megfelelést lehetővé tegye.
 
-## <a name="scenario-single-page-app-spa-using-adaljs"></a>Forgatókönyv: egyoldalas alkalmazás (SPA) a ADAL. js használatával
+## <a name="scenario-single-page-app-spa-using-adaljs"></a>Forgatókönyv: egyoldalas alkalmazás (SPA) ADAL.js használatával
 
-Ebben a forgatókönyvben bemutatjuk, mi történik, ha egy egyoldalas alkalmazást (SPA) használunk a ADAL. js használatával egy feltételes hozzáférésű védett webes API meghívásához. Ez egy egyszerű architektúra, de van néhány olyan árnyalata, amelyet figyelembe kell venni a feltételes hozzáféréshez való fejlesztés során.
+Ebben a forgatókönyvben bemutatjuk az esetet, amikor egy egyoldalas alkalmazást (SPA) használunk ADAL.js használatával a feltételes hozzáférésű védett webes API meghívásához. Ez egy egyszerű architektúra, de van néhány olyan árnyalata, amelyet figyelembe kell venni a feltételes hozzáféréshez való fejlesztés során.
 
-A ADAL. js fájlban van néhány olyan függvény, amely tokeneket szerez be: `login()` ,, `acquireToken(...)` `acquireTokenPopup(…)` és `acquireTokenRedirect(…)` .
+ADAL.jsban van néhány olyan függvény, amely tokeneket szerez be: `login()` , `acquireToken(...)` , `acquireTokenPopup(…)` és `acquireTokenRedirect(…)` .
 
 * `login()`egy interaktív bejelentkezési kéréssel szerzi be az azonosító jogkivonatot, de nem kap hozzáférési jogkivonatokat bármely szolgáltatáshoz (beleértve a feltételes hozzáférésű védett webes API-t).
 * `acquireToken(…)`Ezután egy hozzáférési jogkivonat csendes beszerzésére használható, ami azt jelenti, hogy nem jeleníti meg a felhasználói felületet semmilyen körülmények között.
@@ -173,9 +172,9 @@ error_description=AADSTS50076: Due to a configuration change made by your admini
 
 Az alkalmazásnak meg kell fognia a következőt: `error=interaction_required` . Az alkalmazás ezt követően `acquireTokenPopup()` vagy `acquireTokenRedirect()` ugyanazon az erőforráson is használható. A felhasználónak egy többtényezős hitelesítést kell végeznie. Miután a felhasználó befejezte a többtényezős hitelesítést, az alkalmazás egy friss hozzáférési jogkivonatot bocsát ki a kért erőforráshoz.
 
-Ha szeretné kipróbálni ezt a forgatókönyvet, tekintse [meg a JS Spa-t a kód nevében](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof-ca). Ez a mintakód azt a feltételes hozzáférési házirendet és webes API-t használja, amelyet korábban regisztrált a JS SPA használatával a forgatókönyv bemutatásához. Bemutatja, hogyan kezelheti megfelelően a jogcímek kihívását, és hogyan szerezhet be egy olyan hozzáférési jogkivonatot, amelyet a webes API-hoz használhat. Alternatív megoldásként kiválaszthatja az általános [szögletes. js-kód mintáját](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp) , amely útmutatást nyújt egy szögletes fürdőhöz
+Ha szeretné kipróbálni ezt a forgatókönyvet, tekintse [meg a JS Spa-t a kód nevében](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof-ca). Ez a mintakód azt a feltételes hozzáférési házirendet és webes API-t használja, amelyet korábban regisztrált a JS SPA használatával a forgatókönyv bemutatásához. Bemutatja, hogyan kezelheti megfelelően a jogcímek kihívását, és hogyan szerezhet be egy olyan hozzáférési jogkivonatot, amelyet a webes API-hoz használhat. Alternatív megoldásként az általános [Angular.js kódot](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp) is kiválaszthatja egy szögletes fürdőre vonatkozó útmutatásért
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 * A képességekkel kapcsolatos további tudnivalókért tekintse meg a [feltételes hozzáférés Azure Active Directoryban](../active-directory-conditional-access-azure-portal.md)című témakört.
 * További Azure AD-kódrészletek: a [Code Samples GitHub](https://github.com/azure-samples?utf8=%E2%9C%93&q=active-directory)-tárháza.

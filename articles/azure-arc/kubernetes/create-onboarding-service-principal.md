@@ -9,10 +9,9 @@ ms.author: mlearned
 description: 'Azure arc-kompatibilis bevezetési egyszerű szolgáltatás létrehozása '
 keywords: Kubernetes, arc, Azure, tárolók
 ms.openlocfilehash: 3c95c6bb85c7c1bc097b7751a560a658863c0afd
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83725601"
 ---
 # <a name="create-an-azure-arc-enabled-onboarding-service-principal-preview"></a>Azure arc-kompatibilis bevezetési egyszerű szolgáltatás létrehozása (előzetes verzió)
@@ -54,7 +53,7 @@ Az engedélyek tovább korlátozhatók, `--scope` Ha a szerepkör hozzárendelé
 | Erőforrás  | `scope` argumentum| Hatás |
 | ------------- | ------------- | ------------- |
 | Előfizetés | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333` | Az egyszerű szolgáltatás minden olyan fürtöt regisztrálhat egy meglévő erőforráscsoporthoz a megadott előfizetésben |
-| Resource Group | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`  | Az egyszerű szolgáltatásnév __csak__ a fürtök regisztrálását tudja regisztrálni az erőforráscsoporthoz`myGroup` |
+| Erőforráscsoport | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`  | Az egyszerű szolgáltatásnév __csak__ a fürtök regisztrálását tudja regisztrálni az erőforráscsoporthoz`myGroup` |
 
 ```console
 az role assignment create \
@@ -87,6 +86,6 @@ az login --service-principal -u mySpnClientId -p mySpnClientSecret --tenant myTe
 az connectedk8s connect -n myConnectedClusterName -g myResoureGroupName
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A fürt konfigurációjának szabályozása Azure Policy használatával](./use-azure-policy.md)

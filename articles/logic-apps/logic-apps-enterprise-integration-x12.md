@@ -9,10 +9,9 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/29/2020
 ms.openlocfilehash: 9398b40763e8226cedf788f9cefbf5ed28cd649d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83739532"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Exchange X12-üzenetek a B2B vállalati integrációhoz Azure Logic Appsban Enterprise Integration Pack
@@ -174,7 +173,7 @@ A szerződés tulajdonságainak beállítása után beállíthatja, hogy a jelen
    * [Vezérlő verziószáma](#outbound-control-version-number)
    * [Vezérlőelemek száma](#outbound-control-numbers)
    * [Karakterkészletek és elválasztók](#outbound-character-sets-separators)
-   * [Ellenőrzés](#outbound-validation)
+   * [Érvényesítés](#outbound-validation)
 
 1. Ha elkészült, győződjön meg arról, hogy az **OK gombra**kattintva menti a beállításokat.
 
@@ -316,7 +315,7 @@ Ha HIPAA-sémákkal és a 277-es vagy 837-es típusú üzenettel dolgozik, néh�
 
 Ez a táblázat felsorolja az érintett üzenetek típusait, a különböző változatokat, valamint a dokumentum verziószámait, amelyek az adott típusú üzenetekhez vannak leképezve:
 
-| Üzenet típusa vagy Variant |  Leírás | Dokumentum verziószáma (GS8) |
+| Üzenet típusa vagy Variant |  Description | Dokumentum verziószáma (GS8) |
 |-------------------------|--------------|-------------------------------|
 | 277 | Egészségügyi információk állapotáról szóló értesítés | 005010X212 |
 | 837_I | Health Care-jogcím – intézményi | 004010X096A1 <br>005010X223A1 <br>005010X223A2 |

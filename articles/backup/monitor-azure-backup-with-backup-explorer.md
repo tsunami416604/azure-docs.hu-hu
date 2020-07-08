@@ -5,10 +5,9 @@ ms.reviewer: dcurwin
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.openlocfilehash: e891ee1ccfbe929aaa8ac35518b40f5514da714f
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83715205"
 ---
 # <a name="monitor-your-backups-with-backup-explorer"></a>Biztonsági másolatok figyelése a Backup Explorerrel
@@ -32,7 +31,7 @@ Ezeket a képességeket az Azure Resource Graph és a Azure Monitor munkafüzete
 > * Az Azure Resource Graph-adatszolgáltatásokban nem ajánlott egyéni automatizálást írni.
 > * Jelenleg a Backup Explorer lehetővé teszi, hogy a biztonsági mentéseket legfeljebb 1000 előfizetéssel figyelje (a bérlők között).
 
-## <a name="get-started"></a>Első lépések
+## <a name="get-started"></a>Bevezetés
 
 A Backup Explorer eléréséhez nyissa meg a Recovery Services-tárolót, és válassza a **Backup Explorer** hivatkozást az **Áttekintés** ablaktáblán.
 
@@ -96,6 +95,6 @@ Az egyes táblázatok vagy diagramok tetején található "PIN" ikon kiválaszt�
 
 Ha egy Azure Lighthouse-felhasználó delegált hozzáféréssel rendelkezik több bérlői környezetben lévő előfizetésekhez, használhatja az alapértelmezett előfizetési szűrőt. Megjeleníti azokat az előfizetéseket, amelyek adatait meg szeretné jeleníteni, ha a Azure Portal jobb felső sarkában található "szűrő" ikonra kattint. Ha ezt a funkciót használja, a Backup Explorer összesíti a kiválasztott előfizetések összes tárolójának adatait. További információ: [Mi az az Azure Lighthouse?](https://docs.microsoft.com/azure/lighthouse/overview).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Megtudhatja, hogyan használhatja a Azure Monitort a biztonsági mentési adataival kapcsolatos elemzések lekéréséhez](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor)

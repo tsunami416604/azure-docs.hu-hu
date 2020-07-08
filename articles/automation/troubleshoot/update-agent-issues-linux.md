@@ -10,13 +10,12 @@ ms.service: automation
 ms.subservice: update-management
 manager: carmonm
 ms.openlocfilehash: f1351b29a0102a374b75d832687d66c3b5572c75
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83680871"
 ---
-# <a name="troubleshoot-linux-update-agent-issues"></a>A Linux frissítési ügynökkel kapcsolatos problémák elhárítása
+# <a name="troubleshoot-linux-update-agent-issues"></a>A Linux Update Agent hibáinak elhárítása
 
 Számos oka lehet annak, hogy a gép miért nem jelenik meg készenléti (kifogástalan) állapotban a Update Managementban. A Linux Hybrid Runbook Worker Agent állapotát a probléma okának megállapításához tekintheti meg. A következő három készültségi állapotú gép:
 
@@ -55,7 +54,7 @@ Az ellenőrzések befejezésekor a rendszer az eredményeket az ablakban adja vi
 
 Az operációs rendszer ellenőrzése ellenőrzi, hogy a hibrid Runbook-feldolgozó az alábbi operációs rendszerek egyikét futtatja-e.
 
-|Operációs rendszer  |Megjegyzések  |
+|Operációs rendszer  |Jegyzetek  |
 |---------|---------|
 |CentOS 6 (x86/x64) és 7 (x64)      | A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz. A besoroláson alapuló javításhoz a "yum" utasítás szükséges a biztonsági adatmennyiség visszaadásához, amely a CentOS nem rendelkezik a dobozból.         |
 |Red Hat Enterprise 6 (x86/x64) és 7 (x64)     | A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz.        |

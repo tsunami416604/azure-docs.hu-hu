@@ -8,10 +8,9 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/17/2020
 ms.openlocfilehash: 52f333a8e39dfd8f68666e6438a7d40414b6f958
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83701418"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Adatok továbbítása bemenetként Stream Analytics
@@ -47,7 +46,7 @@ Az egyes Stream Analytics Event hub-bemeneteket úgy kell konfigurálni, hogy sa
 
 Az alábbi táblázat a Azure Portal **új bemeneti** lapján lévő összes tulajdonságot ismerteti egy Event hub adatbemenetének adatfolyamként történő továbbításához:
 
-| Tulajdonság | Description |
+| Tulajdonság | Leírás |
 | --- | --- |
 | **Bemeneti alias** |A feladathoz tartozó lekérdezésben használt rövid név, amely erre a bemenetre hivatkozik. |
 | **Előfizetés** | Válassza ki azt az előfizetést, amelyben az Event hub-erőforrás létezik. | 
@@ -62,7 +61,7 @@ Az alábbi táblázat a Azure Portal **új bemeneti** lapján lévő összes tul
 
 Ha az adatok egy Event hub stream-bemenetből származnak, akkor a Stream Analytics lekérdezésben a következő metaadat-mezőkhöz férhet hozzá:
 
-| Tulajdonság | Description |
+| Tulajdonság | Leírás |
 | --- | --- |
 | **EventProcessedUtcTime** |Az esemény Stream Analytics általi feldolgozásának dátuma és időpontja. |
 | **EventEnqueuedUtcTime** |Az esemény Event Hubs általi fogadásának dátuma és időpontja. |
@@ -96,7 +95,7 @@ Az egyes Stream Analytics IoT Hub bemeneteket úgy kell konfigurálni, hogy saj�
 
 Az alábbi táblázat a Azure Portal **új bemeneti** oldalának minden tulajdonságát ismerteti, amikor adatfolyam-bemenetként konfigurálja a IoT hub.
 
-| Tulajdonság | Description |
+| Tulajdonság | Leírás |
 | --- | --- |
 | **Bemeneti alias** | A feladathoz tartozó lekérdezésben használt rövid név, amely erre a bemenetre hivatkozik.|
 | **Előfizetés** | Válassza ki azt az előfizetést, amelyben a IoT Hub erőforrás létezik. | 
@@ -113,7 +112,7 @@ Az alábbi táblázat a Azure Portal **új bemeneti** oldalának minden tulajdon
 
 Ha IoT Hub stream-adatokat használ, a Stream Analytics lekérdezésben a következő metaadat-mezőkhöz férhet hozzá:
 
-| Tulajdonság | Description |
+| Tulajdonság | Leírás |
 | --- | --- |
 | **EventProcessedUtcTime** | Az esemény feldolgozásának dátuma és időpontja. |
 | **EventEnqueuedUtcTime** | Az a dátum és időpont, amikor a IoT Hub megkapta az eseményt. |
@@ -134,7 +133,7 @@ Stream Analytics a blob Storage-események alapértelmezett időbélyegzője a b
 
 Ha egy blobot a 13:00-es tárolóeszköz-tárolóba töltenek fel, és a Azure Stream Analytics-feladatot a 13:00-es vagy korábbi verzióban az *Egyéni idő* használatával indítja el, a rendszer a blobot fogja kiválasztani, mivel a módosítási idő a feladatok futási idején belül esik.
 
-Ha a Azure Stream Analytics-feladatot *most már* a 13:00-es időpontban indítja el, és a rendszer feltölt egy blobot a 13:01-es számú Storage-fiók tárolójába, Azure stream Analytics fogja felvenni a blobot. Az egyes blobokhoz rendelt időbélyeg csak a rendszeren alapul `BlobLastModifiedTime` . Az a mappa, amelyben a blob található, nem kapcsolódik a hozzárendelt időbélyeghez. Ha például van egy blob *2019/10-01/00/B1. txt fájl* 2019-11-11-as `BlobLastModifiedTime` , akkor a blobhoz rendelt időbélyeg a 2019-11-11.
+Ha a Azure Stream Analytics-feladatot *most már* a 13:00-es időpontban indítja el, és a rendszer feltölt egy blobot a 13:01-es számú Storage-fiók tárolójába, Azure stream Analytics fogja felvenni a blobot. Az egyes blobokhoz rendelt időbélyeg csak a rendszeren alapul `BlobLastModifiedTime` . Az a mappa, amelyben a blob található, nem kapcsolódik a hozzárendelt időbélyeghez. Ha például egy 2019-11-11-es blob *2019/10-01/00/b1.txt* van `BlobLastModifiedTime` , akkor az ehhez a blobhoz rendelt időbélyeg az 2019-11-11.
 
 Ha az adatokat adatfolyamként szeretné feldolgozni az esemény hasznos adatait tartalmazó időbélyeget használva, az [időbélyeget kulcsszó szerint](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) kell használnia. Egy Stream Analytics feladat minden másodpercben lekéri az adatokat az Azure Blob Storage-ból, ha a blob-fájl elérhető. Ha a blob-fájl nem érhető el, a 90 másodperces maximális késleltetésű exponenciális leállítási van.
 
@@ -149,7 +148,7 @@ Azokban az esetekben, amelyekben számos blobot folyamatosan felvesznek, és Str
 
 A következő táblázat a Azure Portal **új bemeneti** oldalának egyes tulajdonságait ismerteti, amikor a blob Storage-t adatfolyam-bevitelként konfigurálja.
 
-| Tulajdonság | Description |
+| Tulajdonság | Leírás |
 | --- | --- |
 | **Bemeneti alias** | A feladathoz tartozó lekérdezésben használt rövid név, amely erre a bemenetre hivatkozik. |
 | **Előfizetés** | Válassza ki azt az előfizetést, amelyben a IoT Hub erőforrás létezik. | 
@@ -166,7 +165,7 @@ A következő táblázat a Azure Portal **új bemeneti** oldalának egyes tulajd
 
 Ha az adatok blob Storage-forrásból származnak, a Stream Analytics lekérdezésben a következő metaadatokat tartalmazó mezőkhöz férhet hozzá:
 
-| Tulajdonság | Description |
+| Tulajdonság | Leírás |
 | --- | --- |
 | **BlobName** |Annak a bemeneti blobnak a neve, amelyből az esemény származik. |
 | **EventProcessedUtcTime** |Az esemény Stream Analytics általi feldolgozásának dátuma és időpontja. |

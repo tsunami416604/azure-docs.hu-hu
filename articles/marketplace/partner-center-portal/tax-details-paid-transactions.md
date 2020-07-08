@@ -7,10 +7,9 @@ ms.author: dsindona
 ms.service: marketplace
 ms.date: 05/04/2020
 ms.openlocfilehash: c58f66ac06cca7146a28813406e74932046f6ee4
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83746684"
 ---
 # <a name="tax-details-for-commercial-marketplace-publishers"></a>Kereskedelmi piactér-közzétevők adózási adatai
@@ -250,7 +249,7 @@ Az árak kiválasztására vonatkozó adózási megfontolások, valamint a [Micr
 | Uruguay                          | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat.                                                                   | Ár mínusz tárolási díj                 | Publisher          |
 | Üzbegisztán                       | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat.                                                                   | Ár mínusz tárolási díj                 | Publisher          |
 | Vanuatu                          | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat.                                                                   | Ár mínusz tárolási díj                 | Publisher          |
-| Vatikáni Városállam                     | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat.                                                                   | Ár mínusz tárolási díj                 | Publisher          |
+| Vatikán                     | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat.                                                                   | Ár mínusz tárolási díj                 | Publisher          |
 | Venezuela                        | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat.                                                                   | Ár mínusz tárolási díj                 | Publisher          |
 | Vietnam                          | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat. [További információ az ország/régió adózási szempontjairól.](#mixed-remittance-countriesregions-for-publishers) | Ár mínusz tárolási díj                 | Publisher          |
 | Wallis és Futuna                | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat.                                                                   | Ár mínusz tárolási díj                 | Publisher          |

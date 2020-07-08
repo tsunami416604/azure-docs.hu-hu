@@ -8,10 +8,9 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2020
 ms.openlocfilehash: a872331238946de0d57e6d42164f1ce7fb1c7357
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83746204"
 ---
 # <a name="payout-summary-overview"></a>Fizetési összegzés áttekintése
@@ -64,7 +63,7 @@ A fizetési ütemtervek megvitatására, beleértve a tartási időszakokat, a p
 
 Ez a beállítás a tranzakció előzményei lapon megjelenő egyes letételi sorok letöltését teszi lehetővé. Ez magában foglalja a beszerzési típust, a dátumot, a kapcsolódó tranzakciók mennyiségét, az ügyfél, a termék és az ösztönző programhoz kapcsolódó egyéb tranzakciós adatokat.
 
-| Oszlop neve | Leírás |
+| Oszlop neve | Description |
 | --- | --- |
 | earningId | Az egyes keresések egyedi azonosítója |
 | participantId | A program keretében keresett partner elsődleges identitása |

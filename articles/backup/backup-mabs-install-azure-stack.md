@@ -4,10 +4,9 @@ description: Ebből a cikkből megtudhatja, hogyan használhatja a Azure Backup 
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.openlocfilehash: 7a1f48c0987ed0eaea70d887709e52b9a1f1fe1d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83747437"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Azure Backup Server telepítése az Azure Stacken
@@ -171,7 +170,7 @@ Miután letöltötte az összes fájlt a Azure Stack virtuális gépre, lépjen 
 
 ![1. letöltőközpont](./media/backup-mabs-install-azure-stack/download-mabs-installer.png)
 
-1. A telepítés elindításához a letöltött fájlok listájából kattintson a **MicrosoftAzureBackupserverInstaller. exe**fájlra.
+1. A telepítés elindításához a letöltött fájlok listájából válassza a **MicrosoftAzureBackupserverInstaller.exe**lehetőséget.
 
     > [!WARNING]
     > A telepítőfájlok kibontásához legalább 4 GB szabad terület szükséges.
@@ -193,7 +192,7 @@ Miután letöltötte az összes fájlt a Azure Stack virtuális gépre, lépjen 
 
    ![Microsoft Azure Backup telepítővarázslója](./media/backup-mabs-install-azure-stack/mabs-install-wizard-install-3.png)
 
-6. A kinyerési folyamat befejezése után kattintson a **Befejezés**gombra. Alapértelmezés szerint a **Setup. exe futtatása** van kiválasztva. Ha a **Befejezés**gombra kattint, a Setup. exe telepíti Microsoft Azure Backup-kiszolgálót a megadott helyre.
+6. A kinyerési folyamat befejezése után kattintson a **Befejezés**gombra. Alapértelmezés szerint a **végrehajtás setup.exe** van kiválasztva. Ha a **Befejezés**gombra kattint, Setup.exe a Microsoft Azure Backup kiszolgálót telepíti a megadott helyre.
 
    ![Microsoft Azure Backup telepítővarázslója](./media/backup-mabs-install-azure-stack/mabs-install-wizard-finish-4.png)
 

@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.service: automation
 manager: carmonm
 ms.openlocfilehash: 5b87a98ed38e3af315789adffc11824f2522b802
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83680885"
 ---
 # <a name="troubleshoot-shared-resource-issues"></a>Megosztott erőforrásokkal kapcsolatos problémák elhárítása
@@ -76,15 +75,15 @@ Néhány gyakori ok, amiért előfordulhat, hogy egy modul nem importálható si
 
 A probléma megoldásához használja a következő megoldásokat:
 
-* Győződjön meg arról, hogy a modul a következő formátumot követi: ModuleName. zip-> ModuleName vagy Version Number-> (ModuleName. psm1, ModuleName. psd1).
+* Győződjön meg arról, hogy a modul a következő formátumot követi: ModuleName.zip-> ModuleName vagy verziószám-> (ModuleName. psm1, ModuleName.psd1).
 * Nyissa meg a **. psd1** fájlt, és ellenőrizze, hogy a modul rendelkezik-e függőségekkel. Ha igen, töltse fel ezeket a modulokat az Automation-fiókba.
 * Győződjön meg arról, hogy minden hivatkozott **. dll** fájl megtalálható a modul mappában.
 
-### <a name="scenario-update-azuremoduleps1-suspends-when-updating-modules"></a><a name="all-modules-suspended"></a>Forgatókönyv: a Update-AzureModule. ps1 felfüggeszti a modulok frissítésekor
+### <a name="scenario-update-azuremoduleps1-suspends-when-updating-modules"></a><a name="all-modules-suspended"></a>Forgatókönyv: Update-AzureModule.ps1 felfüggeszti a modulok frissítésekor
 
 #### <a name="issue"></a>Probléma
 
-Ha az [Update-AzureModule. ps1](https://github.com/azureautomation/runbooks/blob/master/Utility/ARM/Update-AzureModule.ps1) runbook használja az Azure-modulok frissítésére, a rendszer felfüggeszti a modul frissítési folyamatát.
+Ha az [Update-AzureModule.ps1](https://github.com/azureautomation/runbooks/blob/master/Utility/ARM/Update-AzureModule.ps1) runbook használja az Azure-modulok frissítésére, a modul frissítési folyamata fel lesz függesztve.
 
 #### <a name="cause"></a>Ok
 
@@ -97,7 +96,7 @@ Nem gyakori, hogy az összes AzureRM vagy az az modulra ugyanarra az Automation-
 > [!NOTE]
 > Ne importálja a teljes `Az.Automation` vagy a `AzureRM.Automation` modult, amely az összes befoglalt modult importálja.
 
-Ha a frissítési folyamat felfüggeszti a műveletet, adja hozzá a `SimultaneousModuleImportJobCount` paramétert a **Update-AzureModules. ps1** parancsfájlhoz, és adjon meg egy alacsonyabb értéket, mint az alapértelmezett 10. Ha ezt a logikát alkalmazza, próbálja meg 3 vagy 5 értékkel kezdeni. `SimultaneousModuleImportJobCount`az az **Update-AutomationAzureModulesForAccount** System runbook paraméter, amely az Azure-modulok frissítésére szolgál. Ha ezt a beállítást választja, a frissítési folyamat tovább fut, de nagyobb eséllyel fejeződik be. A következő példa a paramétert mutatja be, és hová helyezi a runbook:
+Ha a frissítési folyamat felfüggeszti, adja hozzá a `SimultaneousModuleImportJobCount` paramétert a **Update-AzureModules.ps1** parancsfájlhoz, és adjon meg egy alacsonyabb értéket, mint az alapértelmezett 10. Ha ezt a logikát alkalmazza, próbálja meg 3 vagy 5 értékkel kezdeni. `SimultaneousModuleImportJobCount`az az **Update-AutomationAzureModulesForAccount** System runbook paraméter, amely az Azure-modulok frissítésére szolgál. Ha ezt a beállítást választja, a frissítési folyamat tovább fut, de nagyobb eséllyel fejeződik be. A következő példa a paramétert mutatja be, és hová helyezi a runbook:
 
  ```powershell
          $Body = @"
@@ -138,7 +137,7 @@ Futtató fiók létrehozásához vagy frissítéséhez megfelelő [engedélyekke
 
 Ha a probléma egy zárolás miatt van, ellenőrizze, hogy a zárolást el lehet-e távolítani. Ezután lépjen a Azure Portal zárolt erőforrásra, kattintson a jobb gombbal a zárolásra, majd válassza a **Törlés**lehetőséget.
 
-### <a name="scenario-you-receive-the-error-unable-to-find-an-entry-point-named-getperadapterinfo-in-dll-iplpapidll-when-executing-a-runbook"></a><a name="iphelper"></a>Forgatókönyv: "nem található" GetPerAdapterInfo "nevű belépési pont a (z) iplpapi. dll FÁJLBAN a runbook végrehajtásakor
+### <a name="scenario-you-receive-the-error-unable-to-find-an-entry-point-named-getperadapterinfo-in-dll-iplpapidll-when-executing-a-runbook"></a><a name="iphelper"></a>Forgatókönyv: a runbook végrehajtásakor a "nem található" GetPerAdapterInfo "nevű belépési pont nem található a (z) iplpapi.dll DLL-fájlban
 
 #### <a name="issue"></a>Probléma
 

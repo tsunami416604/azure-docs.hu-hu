@@ -7,10 +7,9 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 05/13/2020
 ms.openlocfilehash: 7b4d00e8c0366d10fddafa66db699c1a59fd9ad7
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83659773"
 ---
 # <a name="deploy-and-call-custom-apis-from-workflows-in-azure-logic-apps"></a>Egyéni API-k üzembe helyezése és hívása munkafolyamatokból Azure Logic Apps
@@ -25,7 +24,7 @@ Ahhoz, hogy az egyéni API-t egy logikai alkalmazásból lehessen hívni, az API
 
 1. A [Azure Portal](https://portal.azure.com)válassza ki a webalkalmazást vagy az API-alkalmazást.
 
-2. A megnyíló alkalmazás menüben az **API**alatt válassza az **API-definíció**elemet. Állítsa be az **API-definíció helyét** a hencegő. JSON fájl URL-címére.
+2. A megnyíló alkalmazás menüben az **API**alatt válassza az **API-definíció**elemet. Állítsa be az **API-definíció helyét** a swagger.jsfájl URL-címére.
 
    Az URL-cím általában a következő formátumban jelenik meg:`https://{name}.azurewebsites.net/swagger/docs/v1)`
 

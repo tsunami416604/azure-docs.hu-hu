@@ -4,10 +4,9 @@ description: Ismerje meg, hogyan hozhat Azure Batch .NET-alkalmazást az Azure A
 ms.topic: how-to
 ms.date: 04/05/2018
 ms.openlocfilehash: b6817ad1303e6039ebfe5fe5ae6101b9bc192eb4
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83723612"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>Azure Batch .NET-alkalmazás figyelése és hibakeresése Application Insights
@@ -48,7 +47,7 @@ A .NET-alkalmazásból a **Microsoft. ApplicationInsights** névtér használat�
 
 ## <a name="instrument-your-code"></a>A kód műszere
 
-A kód megadásához a megoldásnak létre kell hoznia egy Application Insights [TelemetryClient](/dotnet/api/microsoft.applicationinsights.telemetryclient). A példában a TelemetryClient betölti a konfigurációját az [ApplicationInsights. config](../azure-monitor/app/configuration-with-applicationinsights-config.md) fájlból. Ügyeljen arra, hogy a következő projektekben frissítse a ApplicationInsights. config fájlt a Application Insights-kialakítási kulcsával: Microsoft. Azure. Batch. Samples. TelemetryStartTask és TopNWordsSample.
+A kód megadásához a megoldásnak létre kell hoznia egy Application Insights [TelemetryClient](/dotnet/api/microsoft.applicationinsights.telemetryclient). A példában a TelemetryClient betölti a konfigurációját a [ApplicationInsights.config](../azure-monitor/app/configuration-with-applicationinsights-config.md) fájlból. Ügyeljen arra, hogy a következő projektekben ApplicationInsights.config frissítse a Application Insights-kialakítási kulccsal: Microsoft.Azure.BatCH. Samples. TelemetryStartTask és TopNWordsSample.
 
 ```xml
 <InstrumentationKey>YOUR-IKEY-GOES-HERE</InstrumentationKey>
@@ -166,7 +165,7 @@ namespace Microsoft.Azure.Batch.Samples.TelemetryInitializer
 }
 ```
 
-A telemetria inicializálásának engedélyezéséhez a TopNWordsSample projekt ApplicationInsights. config fájlja a következőket tartalmazza:
+A telemetria inicializálásának engedélyezéséhez a TopNWordsSample projektben található ApplicationInsights.config fájl a következőket tartalmazza:
 
 ```xml
 <TelemetryInitializers>
@@ -333,7 +332,7 @@ pool.StartTask = new StartTask()
 Az éles környezetben futó Azure Batch alkalmazások nagy léptékű jellege miatt érdemes korlátozni a Application Insights által összegyűjtött adatok mennyiségét a költségek kezelésére. Ennek eléréséhez tekintse meg a [mintavétel Application Insightsban](../azure-monitor/app/sampling.md) című témakört.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További információ a [Application Insightsról](../azure-monitor/app/app-insights-overview.md).
 
 * Más nyelveken való Application Insights támogatáshoz tekintse meg a [nyelveket, platformokat és integrációs dokumentációt](../azure-monitor/app/platforms.md).

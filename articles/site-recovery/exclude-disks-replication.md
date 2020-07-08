@@ -4,10 +4,9 @@ description: Lemezek kizárása a replikációból az Azure-ba Azure Site Recove
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.openlocfilehash: aa2e3ef3906a03be649a1978c1d662056c4d0f25
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83740518"
 ---
 # <a name="exclude-disks-from-disaster-recovery"></a>Lemezek kizárása a vész-helyreállításból
@@ -44,7 +43,7 @@ Igen | Igen | Igen | Igen
 
 ## <a name="typical-scenarios"></a>Tipikus forgatókönyvek
 
-Példák a kizárásra alkalmas adatforgalomra: egy lapozófájlba (Pagefile. sys) való írás, és a Microsoft SQL Server tempdb-fájljába való írás. A munkaterheléstől és a tárolási alrendszertől függően a lapozás és a tempdb-fájlok jelentős mennyiségű adatváltozást regisztrálhatnak. Az ilyen típusú adatmennyiség az Azure-ba való replikálása erőforrás-igényes.
+Példák a kizárásra alkalmas adatváltozásokra, például a lapozófájlba való írásra (pagefile.sys), és a Microsoft SQL Server tempdb-fájljába való írásra. A munkaterheléstől és a tárolási alrendszertől függően a lapozás és a tempdb-fájlok jelentős mennyiségű adatváltozást regisztrálhatnak. Az ilyen típusú adatmennyiség az Azure-ba való replikálása erőforrás-igényes.
 
 - Az operációs rendszert és a lapozófájlt is tartalmazó virtuális gépek replikálásának optimalizálásához a következőket teheti:
     1. Ossza fel a virtuális lemezt két virtuális lemezre. Az egyik virtuális lemezen az operációs rendszer, a másikon a lapozófájl található.
@@ -185,7 +184,7 @@ DB-Disk4 | Disk4 | G:\ | 2. felhasználói adatbázis
 
 ## <a name="example-2-exclude-the-paging-file-disk"></a>2. példa: a lapozófájl lemezének kizárása
 
-Nézzük meg, hogyan kezelheti a lemezek kizárását, a feladatátvételt és a feladatátvételt a forrásként szolgáló Windows-alapú virtuális gépek esetében, amelyekhez ki szeretné zárni a lapozófájl. sys fájl lemezét mind a D meghajtón, mind egy másik meghajtón.
+Nézzük meg, hogyan kezelheti a lemezek kizárását, a feladatátvételt és a feladatátvételt a forrásként szolgáló Windowsos virtuális gép esetében, amelyhez ki szeretné zárni a pagefile.sys-lemezt a D meghajtón, valamint egy másik meghajtót is.
 
 
 ### <a name="paging-file-on-the-d-drive"></a>Lapozófájl a D meghajtón
@@ -213,7 +212,7 @@ A feladatátvételt követően az Azure-beli virtuális gép rendelkezik a tábl
 **Lemez neve** | **Vendég operációsrendszer-lemez száma** | **Meghajtó betűjele** | **A lemez adattípusa**
 --- | --- | --- | ---
 DB-Disk0-OS | Disk0 | C:\ | Operációsrendszer-lemez
-DB-Disk1 | Disk1 | D:\ | Ideiglenes tárolás/lapozófájl. sys <br/><br/> Mivel DB-Disk1 (D:) ki lett zárva, a D: az első meghajtóbetűjel az elérhető listából.<br/><br/> Az Azure a D: betűjelet rendeli hozzá az ideiglenes tárolókötethez.<br/><br/> Mivel a D: elérhető, a virtuális gép lapozófájljának beállítása változatlan marad.
+DB-Disk1 | Disk1 | D:\ | Ideiglenes tárolás/pagefile.sys <br/><br/> Mivel DB-Disk1 (D:) ki lett zárva, a D: az első meghajtóbetűjel az elérhető listából.<br/><br/> Az Azure a D: betűjelet rendeli hozzá az ideiglenes tárolókötethez.<br/><br/> Mivel a D: elérhető, a virtuális gép lapozófájljának beállítása változatlan marad.
 DB-Disk2 | Disk2 | E:\ | Felhasználói adatok, 1
 DB-Disk3 | Disk3 | F:\ | Felhasználói adatok, 2
 

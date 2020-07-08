@@ -9,10 +9,9 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 2bab7b101b5461d854bb2db509b5cb243012a592
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83746019"
 ---
 # <a name="localization-support-in-azure-maps"></a>Honosítási támogatás Azure Maps
@@ -95,7 +94,7 @@ Azure Maps a különböző nyelveken honosítva vannak a szolgáltatásai közö
 | uk-UA      | Ukrán               |       |    ✓   |         |     ✓    |                   |                |
 | az Ön-PK      | urdu                 |       |       |         |     ✓    |                   |                |
 | Uz-Latn-UZ | Üzbég                 |       |       |         |     ✓    |                   |                |
-| vi-VN      | Vietnami             |       |    ✓   |         |      ✓    |                  |                |
+| vi-VN      | Vietnámi             |       |    ✓   |         |      ✓    |                  |                |
 
 
 ## <a name="azure-maps-supported-views"></a>Azure Maps támogatott nézetek
@@ -147,7 +146,7 @@ Alapértelmezés szerint a View paraméter **egyesített**értékre van állítv
 
 A következő táblázat a támogatott nézeteket tartalmazza.
 
-| Nézet         | Leírás                            |  Maps | Keresés | JS térképkezelés |
+| Nézet         | Description                            |  Maps | Keresés | JS térképkezelés |
 |--------------|----------------------------------------|:-----:|:------:|:--------------:|
 | AE           | Egyesült Arab Emírségek (arab nézet)    |   ✓   |        |     ✓          |
 | AR           | Argentína (argentin nézet)           |   ✓   |    ✓   |     ✓          |

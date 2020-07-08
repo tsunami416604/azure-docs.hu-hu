@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.openlocfilehash: a81eff1dcf48996c319933aa4dd46170043b943b
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83664934"
 ---
 # <a name="interactive-query-cluster-sizing-guide-in-azure-hdinsight"></a>Interaktív lekérdezési fürt méretezési útmutatója az Azure HDInsight
@@ -39,7 +38,7 @@ Az ajánlott konfigurációk értéke a D14 v2 típusú feldolgozó csomóponton
 | kaptár. Kiszolgáló2. TEZ. Sessions. per. default. üzenetsor | number_of_worker_nodes |A kaptár. Kiszolgáló2. TEZ. default. Queues nevű üzenetsor-munkamenetek száma. Ez a szám a lekérdezési koordinátorok (TEZ AMs) számának felel meg. |
 | Tez. am. Resource. Memory. MB | 4096 (MB) | A TEZ-AppMaster által használandó memória mennyisége (MB). |
 | kaptár. TEZ. Container. size | 4096 (MB) | A TEZ-tároló mérete MEGABÁJTban megadva. |
-| kaptár. llap. Daemon. NUM. végrehajtók | 12 | A végrehajtók száma LLAP démonban. |
+| hive.llap.daemon.num.executors | 12 | A végrehajtók száma LLAP démonban. |
 | kaptár. llap. IO. szálkészlet munkaszála belépett. size | 12 | A szálak készletének mérete a végrehajtók számára. |
 | kaptár. llap. Daemon. fonal. Container. MB | 86016 (MB) | Az egyes LLAP-démonok által használt teljes memória (MB) (memória/démon).|
 | kaptár. llap. IO. Memory. size | 409600 (MB) | A gyorsítótár mérete (MB/LLAP Daemon) engedélyezve van az SSD-gyorsítótár. |
@@ -129,7 +128,7 @@ LLAP démon teljes memóriája = [LLAP gyorsítótár mérete] + [Heap size] + [
 
 Ajánlott a gyorsítótár méretének és a munkaterhelés méretének legmegfelelőbbnek lennie.  
 
-### <a name="hivellapdaemonnumexecutors"></a>kaptár. llap. Daemon. NUM. végrehajtók
+### <a name="hivellapdaemonnumexecutors"></a>hive.llap.daemon.num.executors
 
 Ez a konfiguráció szabályozza azon végrehajtók számát, akik a feladatokat párhuzamosan futtathatják LLAP Daemon-ban. Ez az érték a rendelkezésre álló virtuális mag számának, a végrehajtó által megadott memória mennyiségének, valamint a LLAP démonok által elérhető teljes memóriának a száma. Általában azt szeretnénk, hogy ez az érték minél közelebb legyen a magok számához.
 

@@ -7,10 +7,9 @@ ms.topic: article
 ms.date: 01/09/2020
 ms.author: cynthn
 ms.openlocfilehash: dc772368de1a0f7d8a7d4f44b47ecafda70f0a70
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83714848"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-azure-cli"></a>Virtuális gépek üzembe helyezése dedikált gazdagépeken az Azure CLI használatával
@@ -237,7 +236,7 @@ Ha most szeretne létrehozni egy további fejlesztési környezetet ugyanazzal a
 az group export --name myDHResourceGroup > myDHResourceGroup.json 
 ```
 
-Ez a parancs az `myDHResourceGroup.json` aktuális munkakönyvtárban hozza létre a fájlt. Amikor létrehoz egy környezetet a sablonból, a rendszer az összes erőforrás nevét kéri. Ezeket a neveket feltöltheti a sablon fájljába úgy, hogy hozzáadja a `--include-parameter-default-value` paramétert a `az group export` parancshoz. Szerkessze a JSON-sablont az erőforrásnevek megadásához, vagy hozzon létre egy Parameters. JSON fájlt, amely megadja az erőforrások nevét.
+Ez a parancs az `myDHResourceGroup.json` aktuális munkakönyvtárban hozza létre a fájlt. Amikor létrehoz egy környezetet a sablonból, a rendszer az összes erőforrás nevét kéri. Ezeket a neveket feltöltheti a sablon fájljába úgy, hogy hozzáadja a `--include-parameter-default-value` paramétert a `az group export` parancshoz. Szerkessze a JSON-sablont az erőforrásnevek megadásához, vagy hozzon létre egy parameters.jsaz erőforrás nevét megadó fájlon.
  
 Ha létre szeretne hozni egy környezetet a sablonból, használja az [az Group Deployment Create](/cli/azure/group/deployment#az-group-deployment-create)elemet.
 
@@ -276,7 +275,7 @@ A teljes erőforráscsoportot egyetlen parancsban is törölheti. Ezzel törli a
 az group delete -n myDHResourceGroup 
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információt a [dedikált gazdagépek](dedicated-hosts.md) áttekintése című témakörben talál.
 

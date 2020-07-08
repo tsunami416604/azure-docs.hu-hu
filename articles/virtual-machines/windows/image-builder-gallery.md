@@ -8,17 +8,16 @@ ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
 ms.openlocfilehash: 65e8818e19ac5ad20bb87fd8eb27a4c36c2839cf
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83656671"
 ---
 # <a name="preview-create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>Előzetes verzió: Windows-rendszerkép létrehozása és terjesztése megosztott képgyűjteménybe 
 
 Ebből a cikkből megtudhatja, hogyan használhatja az Azure-rendszerkép-szerkesztőt, Azure PowerShell és hogyan hozhat létre egy rendszerkép-verziót egy [megosztott rendszerkép](shared-image-galleries.md)-katalógusban, majd globálisan terjesztheti a rendszerképet. Ezt az [Azure CLI](../linux/image-builder-gallery.md)használatával is elvégezheti.
 
-A rendszerkép konfigurálásához egy. JSON sablont fogunk használni. Az általunk használt. JSON fájl a következő: [armTemplateWinSIG. JSON](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/armTemplateWinSIG.json). A sablon helyi verziójának letöltése és szerkesztése folyamatban van, ezért ez a cikk a helyi PowerShell-munkamenet használatával íródik.
+A rendszerkép konfigurálásához egy. JSON sablont fogunk használni. Az általunk használt. JSON fájl a következő: [armTemplateWinSIG.js](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/armTemplateWinSIG.json). A sablon helyi verziójának letöltése és szerkesztése folyamatban van, ezért ez a cikk a helyi PowerShell-munkamenet használatával íródik.
 
 A rendszerkép megosztott képtárba való terjesztéséhez a sablon a [sharedImage](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#distribute-sharedimage) használja a `distribute` sablon szakaszának értékeként.
 
