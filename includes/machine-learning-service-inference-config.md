@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 01/28/2020
 ms.author: larryfr
 ms.openlocfilehash: 5102e8f75da14c58e948e81aaa418539dd18869a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80159411"
 ---
-A `inferenceconfig.json` dokumentumban szereplő bejegyzések a [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) osztály paramétereinek felelnek meg. A következő táblázat ismerteti a JSON-dokumentum entitásai közötti leképezést, valamint a metódus paramétereit:
+A dokumentumban szereplő bejegyzések a `inferenceconfig.json` [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) osztály paramétereinek felelnek meg. A következő táblázat ismerteti a JSON-dokumentum entitásai közötti leképezést, valamint a metódus paramétereit:
 
-| JSON-entitás | Metódus paramétere | Leírás |
+| JSON-entitás | Metódus paramétere | Description |
 | ----- | ----- | ----- |
 | `entryScript` | `entry_script` | A rendszerképhez futtatandó kódot tartalmazó helyi fájl elérési útja. |
 | `sourceDirectory` | `source_directory` | Választható. Az összes fájlt tartalmazó mappák elérési útja a rendszerkép létrehozásához, amely megkönnyíti a mappában vagy almappában található fájlok elérését. A webszolgáltatások függőségeiként feltölthet egy teljes mappát a helyi gépről. Megjegyzés: a entry_script, a conda_file és a extra_docker_file_steps útvonalak relatív elérési utak az source_directory elérési úthoz. |
@@ -74,7 +74,7 @@ Meglévő Azure Machine Learning- [környezetet](https://docs.microsoft.com/pyth
 }
 ```
 
-A következő parancs bemutatja, hogyan helyezhet üzembe egy modellt az előző következtetési konfigurációs fájl (myInferenceConfig. JSON) használatával. 
+A következő parancs bemutatja, hogyan helyezhet üzembe egy modellt a korábbi következtetési konfigurációs fájl (myInferenceConfig.json) használatával. 
 
 Egy meglévő Azure Machine Learning- [környezet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py) legújabb verzióját is használja (AzureML-minimal néven).
 

@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: iot-central
 author: dominicbetts
 ms.service: iot-central
@@ -9,15 +9,15 @@ ms.date: 02/11/2020
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: 2eda1fc8595962849b6a24cc272f6604d0be9175
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82744547"
 ---
 **Alkalmazássablonok**
 
-| Sablon                 | Name        | Leírás |
+| Sablon                 | Name        | Description |
 | ------------------------ | ----------- | ----------- |
 | IOTC-PnP-előzetes verzió         | Egyéni alkalmazás | Létrehoz egy üres alkalmazást, amelybe a saját eszközsablonjait és eszközeit helyezheti el. |
 | IOTC – alapértelmezett             | Egyéni alkalmazás (örökölt) | Egy üres örökölt alkalmazást hoz létre, amellyel feltöltheti saját eszköz-sablonjait és eszközeit.

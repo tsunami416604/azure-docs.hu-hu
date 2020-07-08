@@ -1,5 +1,5 @@
 ---
-title: fájl belefoglalása
+title: fájlbefoglalás
 description: fájl belefoglalása a bizalmas ügyfél-forgatókönyvekhez (démon, webalkalmazás, webes API)
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,10 +15,10 @@ ms.date: 04/18/2018
 ms.author: jmprieur
 ms.custom: include file
 ms.openlocfilehash: a5d34ac7eea50b67bd679d8cb8ddecf7ca277abd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76773382"
 ---
 ## <a name="register-secrets-or-certificates"></a>Titkok vagy tanúsítványok regisztrálása
@@ -42,5 +42,5 @@ Részletekért lásd: rövid útmutató [: ügyfélalkalmazás konfigurálása a
 
 Azt is megteheti, hogy az alkalmazást a parancssori eszközök használatával regisztrálja az Azure AD-ben. Az [Active-Directory-dotnetcore-Daemon-v2](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) minta bemutatja, hogyan regisztrálhat egy alkalmazás titkát vagy tanúsítványát egy Azure ad-alkalmazással:
 
-- Az alkalmazás titkos kódjának regisztrálásával kapcsolatos további információkért lásd: [AppCreationScripts/configure. ps1](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/5199032b352a912e7cc0fce143f81664ba1a8c26/AppCreationScripts/Configure.ps1#L190).
-- A tanúsítványok alkalmazással való regisztrálásával kapcsolatos részletekért lásd: [AppCreationScripts-withCert/configure. ps1](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/5199032b352a912e7cc0fce143f81664ba1a8c26/AppCreationScripts-withCert/Configure.ps1#L162-L178).
+- Az alkalmazás titkos kódjának regisztrálásával kapcsolatos további információkért lásd: [AppCreationScripts/Configure.ps1](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/5199032b352a912e7cc0fce143f81664ba1a8c26/AppCreationScripts/Configure.ps1#L190).
+- A tanúsítványok alkalmazással való regisztrálásával kapcsolatos részletekért lásd: [AppCreationScripts-withCert/Configure.ps1](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/5199032b352a912e7cc0fce143f81664ba1a8c26/AppCreationScripts-withCert/Configure.ps1#L162-L178).

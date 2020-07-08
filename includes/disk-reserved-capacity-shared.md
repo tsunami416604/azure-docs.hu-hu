@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -9,10 +9,10 @@ ms.date: 01/15/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: cb959b94807678187363d3132ece273584f13a0a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77590747"
 ---
 Mentse a Azure Disk Storage használatot fenntartott kapacitással. Azure Disk Storage a Azure Reserved Virtual Machine Instances összevont foglalások lehetővé teszik a virtuális gép (VM) teljes költségeinek csökkentését. A foglalási kedvezményt a rendszer automatikusan alkalmazza a kijelölt foglalási hatókörben lévő megfelelő lemezekre. Ennek az automatikus alkalmazásnak az alkalmazása miatt nem szükséges foglalást hozzárendelni egy felügyelt lemezhez a kedvezmények beszerzéséhez.
@@ -66,7 +66,7 @@ A fenntartott kapacitás megvásárlásához kövesse az alábbi lépéseket:
 
 1. Határozza meg a következő táblázatban ismertetett szükséges értékeket:
 
-   |Elem  |Leírás  |
+   |Elem  |Description  |
    |---------|---------|
    |**Hatókör**   |  Hány előfizetés használhatja a foglaláshoz kapcsolódó számlázási kedvezményt. Ez az érték határozza meg azt is, hogy a foglalás hogyan legyen alkalmazva az adott előfizetésekre. <br/><br/> Ha a **megosztott**lehetőséget választja, a foglalási kedvezmény az Azure Storage-kapacitásra lesz alkalmazva a számlázási környezetben lévő összes előfizetésben. A számlázási környezet az Azure-ra való feliratkozáson alapul. A vállalati ügyfelek esetében a közös hatókör a regisztráció, és a regisztráción belüli összes előfizetés szerepel. Az utólagos elszámolású ügyfelek esetében a megosztott hatókör magában foglalja az összes olyan előfizetést, amely a fiók rendszergazdája által létrehozott utólagos elszámolású díjszabású.  <br/><br/>  Ha az **egyszeri előfizetést**választja, a foglalási kedvezményt a rendszer a kijelölt előfizetés Azure Storage-kapacitására alkalmazza. <br/><br/> Ha **egyetlen erőforráscsoportot**választ, a foglalási kedvezményt a kiválasztott előfizetésben és az előfizetés kiválasztott erőforráscsoporthoz tartozó Azure Storage-kapacitásra alkalmazza a rendszer. <br/><br/> A foglalási hatókört a foglalás megvásárlása után módosíthatja.  |
    |**Előfizetés**  | Az Azure Storage-foglalás kifizetéséhez használt előfizetés. A kiválasztott előfizetéshez tartozó fizetési mód a költségek kitöltésére szolgál. Az előfizetésnek a következő típusok egyikének kell lennie:<br/><ul><li> Nagyvállalati Szerződés (ajánlati számok: MS-AZR-0017P és MS-AZR-0148P). A nagyvállalati előfizetések esetében a díjakat a beléptetés pénzügyi kötelezettségvállalásának egyenlege vagy a felszámított díj alapján kell levonni.</li><br/><li>Egyéni előfizetés utólagos elszámolású díjszabással (ajánlati számok: MS-AZR-0003P és MS-AZR-0023P). Az utólagos elszámolású előfizetések esetében az előfizetés díjait a hitelkártyára vagy a számla fizetési módjára kell fizetni.</li></ul>    |
@@ -74,7 +74,7 @@ A fenntartott kapacitás megvásárlásához kövesse az alábbi lépéseket:
    | **Régió** | Az a régió, ahol a foglalás érvényben van. |
    | **Számlázási gyakoriság** | Milyen gyakran történik a fiók számlázása a foglaláshoz. A lehetőségek közé tartoznak a **havi** és a **kezdeti**beállítások. |
 
-    ![A megvásárolni kívánt termék kiválasztására szolgáló ablaktábla. png](media/disks-reserved-capacity/premium-ssd-reserved-purchase-selection.png)
+    ![A purchase.png kívánt termék kiválasztására szolgáló ablaktábla](media/disks-reserved-capacity/premium-ssd-reserved-purchase-selection.png)
 
 1. Miután megadta a foglalás értékeit, a Azure Portal megjeleníti a költségeket. A portálon az utólagos elszámolású számlázásnál is látható az engedmény százaléka. A tovább **gombra kattintva folytassa** a **vásárlási foglalások** ablaktáblát.
 
@@ -88,7 +88,7 @@ A foglalás megvásárlása után a rendszer automatikusan alkalmazza azokat a m
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Foglalások lemondása, cseréje vagy visszatérítése
 
-Bizonyos korlátozásokon belül megszakíthatja, cserélheti vagy visszafizetheti a foglalásokat. További információ: [önkiszolgáló cserék és visszatérítések Azure Reservations számára](https://docs.microsoft.com/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations).
+Bizonyos korlátozásokon belül megszakíthatja, cserélheti vagy visszafizetheti a foglalásokat. További információkért lásd: [Az Azure Reservations önkiszolgáló csere- és visszatérítési szolgáltatásai](https://docs.microsoft.com/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations).
 
 ## <a name="expiration-of-a-reservation"></a>Foglalás lejárata
 
@@ -102,5 +102,5 @@ Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatá
 
 ## <a name="next-steps"></a>További lépések
 
-- [Mi a Azure Reservations?](../articles/cost-management-billing/reservations/save-compute-costs-reservations.md)
+- [Mi az az Azure Reservations?](../articles/cost-management-billing/reservations/save-compute-costs-reservations.md)
 - [A foglalási kedvezmény Azure Disk Storage-ra való alkalmazásának megismerése](../articles/cost-management-billing/reservations/understand-disk-reservations.md)

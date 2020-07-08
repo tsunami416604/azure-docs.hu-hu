@@ -9,10 +9,10 @@ ms.date: 08/01/2019
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: fc32dd5c477a76a20bc3a641ec8761e95c129554
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84805893"
 ---
 # <a name="route-web-traffic-based-on-the-url-using-the-azure-cli"></a>Webes forgalom irányítása az URL-cím alapján az Azure CLI használatával
@@ -98,7 +98,7 @@ az network application-gateway create \
  Az alkalmazásátjáró létrehozása több percig is eltarthat. Az alkalmazásátjáró létrehozását követően a következő új funkciók láthatóak:
 
 
-|Szolgáltatás  |Leírás  |
+|Szolgáltatás  |Description  |
 |---------|---------|
 |appGatewayBackendPool     |Az alkalmazásátjáróknak rendelkezniük kell legalább egy háttércímkészlettel.|
 |appGatewayBackendHttpSettings     |Megszabja, hogy a kommunikációhoz a rendszer egy HTTP-protokollt és a 80-as portot használja.|

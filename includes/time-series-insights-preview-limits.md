@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: digital-twins
 ms.service: digital-twins
 ms.topic: include
@@ -10,26 +10,26 @@ ms.author: dpalled
 manager: cshankar
 ms.custom: include file
 ms.openlocfilehash: 7bc6938523a6d66a2bc20b37c659568fc5ca494d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77123153"
 ---
 ### <a name="general-availability-and-preview-comparison"></a>Általános elérhetőség és előzetes verzió összehasonlítása
 
 Az alábbi táblázat a Azure Time Series Insights általánosan elérhető (GA) és az előzetes verziójú példányok közötti főbb különbségeket foglalja össze.
 
-| | FE | Előzetes verzió |
+| | FE | Előnézet |
 | --- | --- | ---|
 | Első osztályú polgár | Esemény-központú | Idősorozat-központú |
 | Szemantikai indoklás | Alacsony szintű (hivatkozási adatértékek) | Magas szintű (modellek) |
 | Az adatcontextualization | Nem eszköz szint | Eszköz és nem eszköz szintje |
-| Számítási logikai tároló | Nem | Típus változói a modell részeként tárolva |
-| Tárolás és hozzáférés-vezérlés | Nem | Modellen keresztül engedélyezve |
-| Összesítések/mintavételezés | Nem | Az esemény súlyozása és az idő súlyozása |
-| Jel újraépítése | Nem | Interpolációs |
-| Származtatott idősorozatok előállítása | Nem | Igen, egyesítések és illesztések |
+| Számítási logikai tároló | No | Típus változói a modell részeként tárolva |
+| Tárolás és hozzáférés-vezérlés | No | Modellen keresztül engedélyezve |
+| Összesítések/mintavételezés | No | Az esemény súlyozása és az idő súlyozása |
+| Jel újraépítése | No | Interpolációs |
+| Származtatott idősorozatok előállítása | No | Igen, egyesítések és illesztések |
 | Nyelvi rugalmasság | Nem komponálható | Algyűjteményeinek összefüggő |
 | Kifejezés nyelve | Predikátum karakterlánca | Idősorozat-kifejezések (predikátum-karakterláncok, értékek, kifejezések és függvények) |
 
@@ -37,7 +37,7 @@ Az alábbi táblázat a Azure Time Series Insights általánosan elérhető (GA)
 
 Time Series Insights a tulajdonságok korlátai 1 000-re növekedtek a GA-ban lévő maximális 800. A megadott esemény tulajdonságai a megfelelő JSON-, CSV-és diagram-oszlopokkal rendelkeznek, amelyeket megtekinthet a [Time Series Insights Preview Explorerben](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-quickstart).
 
-| SKU | Maximális tulajdonságok |
+| Termékváltozat | Maximális tulajdonságok |
 | --- | --- |
 | Előzetes verzió TB | 1 000 tulajdonságok (oszlopok) |
 | GA S1 | 600 tulajdonságok (oszlopok) |
