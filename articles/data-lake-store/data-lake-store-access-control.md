@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: 276e691351d852d6dcb0075d47bf33af6767fc10
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79260331"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847823"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Hozzáférés-vezérlés az Azure Data Lake Storage Gen1-ben
 
@@ -71,12 +71,12 @@ Az Data Lake Storage Gen1 által használt POSIX stílusú modellben az elemhez 
 
 Az alábbiakban néhány gyakori forgatókönyv segít megérteni, hogy mely engedélyek szükségesek bizonyos műveletek végrehajtásához egy Data Lake Storage Gen1 fiókon.
 
-| Művelet | Objektum              |    /      | Seattle   | Portland   | A. txt fájl       |
+| Művelet | Objektum              |    /      | Seattle   | Portland   | Data.txt       |
 |-----------|---------------------|-----------|------------|-------------|----------------|
-| Olvasás      | A. txt fájl            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
-| Hozzáfűzés a következőhöz | A. txt fájl            |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
-| Törlés    | A. txt fájl            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
-| Létrehozás    | A. txt fájl            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
+| Olvasás      | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
+| Hozzáfűzés a következőhöz | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
+| Törlés    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
+| Létrehozás    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
 | Lista      | /                   |   `R-X`   |   `---`    |  `---`      | `---`          |
 | Lista      | Seattle           |   `--X`   |   `R-X`    |  `---`      | `---`          |
 | Lista      | /Seattle/Portland/  |   `--X`   |   `--X`    |  `R-X`      | `---`          |
@@ -220,7 +220,7 @@ Fájl vagy mappa létrehozásakor a rendszer a umask használatával módosítja
 
 A Azure Data Lake Storage Gen1 umask egy állandó érték, amely a 007-re van állítva. Ez az érték a következőre van lefordítva
 
-| umask-összetevő     | Numerikus alak | Rövid alak | Jelentés |
+| umask-összetevő     | Numerikus alak | Rövid alak | Értelmezés |
 |---------------------|--------------|------------|---------|
 | umask. owning_user   |    0         |   `---`      | A tulajdonos felhasználó számára másolja a szülő alapértelmezett ACL-t a gyermek hozzáférési ACL-jéhez. | 
 | umask. owning_group  |    0         |   `---`      | A tulajdonos csoport esetében másolja a szülő alapértelmezett ACL-t a gyermek hozzáférési ACL-jéhez. | 

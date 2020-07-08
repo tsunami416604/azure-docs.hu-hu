@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28467dbaabb0b84bf7da9f2ae28d6405699b2c6b
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: bc2030f589185fd39c0f10b00c012db038a4e008
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83845746"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848712"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>A VPN-infrastruktúra integrálása az Azure MFA-val az Azure-hoz készült hálózati házirend-kiszolgáló bővítménnyel
 
@@ -178,7 +178,7 @@ A RADIUS-kiszolgáló konfigurálásához használhatja a standard (varázsló a
 
     ![Felhasználói csoportok ablak megadásával engedélyezheti vagy megtagadhatja a hozzáférést](./media/howto-mfa-nps-extension-vpn/image7.png)
 
-9. Kattintson a **Tovább** gombra.
+9. Válassza a **Tovább** lehetőséget.
 
 10. Az **IP-szűrők megadása** ablakban válassza a **tovább**lehetőséget.
 
@@ -228,9 +228,9 @@ Ebben a szakaszban a VPN-kiszolgálót a RADIUS-hitelesítés használatára kon
 
 2. A Kiszolgálókezelőben válassza az **eszközök**, majd az **Útválasztás és távelérés**lehetőséget.
 
-3. Az **Útválasztás és távelérés** ablakban kattintson a jobb gombbal a ** \< kiszolgáló neve> (helyi)** elemre, majd válassza a **Tulajdonságok parancsot**.
+3. Az **Útválasztás és távelérés** ablakban kattintson a jobb gombbal ** \<server name> (helyi)**, majd válassza a **Tulajdonságok**lehetőséget.
 
-4. A ** \< kiszolgáló neve> (helyi) tulajdonságok** ablakban válassza a **Biztonság** fület.
+4. A ** \<server name> (helyi) tulajdonságok** ablakban válassza a **Biztonság** fület.
 
 5. A **Biztonság** lap **hitelesítés szolgáltató**területén válassza a **RADIUS-hitelesítés**lehetőséget, majd válassza a **Konfigurálás**lehetőséget.
 
@@ -320,19 +320,15 @@ Hozzon létre egy REQUIRE_USER_MATCH nevű új karakterláncot _a HKLM\SOFTWARE\
 
 Ha az érték *true (igaz* ) vagy üres, az összes hitelesítési kérelem MFA-Challenge-re vonatkozik. Ha az érték *false (hamis*), a rendszer csak az Azure multi-Factor Authenticationban regisztrált felhasználók számára bocsát ki MFA-kihívásokat. A *hamis* beállítást csak tesztelési vagy éles környezetben használhatja a bevezetési időszakban.
 
-### <a name="obtain-the-azure-active-directory-guid-id"></a>A Azure Active Directory GUID azonosító beszerzése
+### <a name="obtain-the-azure-active-directory-tenant-id"></a>A Azure Active Directory bérlő AZONOSÍTÓjának beszerzése
 
-A hálózati házirend-kiszolgáló bővítmény konfigurációjának részeként meg kell adnia a rendszergazdai hitelesítő adatokat és az Azure AD-bérlő AZONOSÍTÓját. Szerezze be az azonosítót a következő módon:
+A hálózati házirend-kiszolgáló bővítmény konfigurációjának részeként meg kell adnia a rendszergazdai hitelesítő adatokat és az Azure AD-bérlő AZONOSÍTÓját. A bérlő AZONOSÍTÓjának beszerzéséhez hajtsa végre a következő lépéseket:
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) az Azure-bérlő globális rendszergazdájaként.
+1. A Azure Portal menüben válassza a **Azure Active Directory**lehetőséget, vagy keresse meg és válassza ki az **Azure Active Directory** elemet bármelyik oldalon.
+1. Az **Áttekintés** lapon megjelenik a *bérlő adatai* . A *bérlő azonosítója*mellett válassza a **Másolás** ikont az alábbi képernyőképen látható módon:
 
-2. A Azure Portal menüben válassza a **Azure Active Directory**lehetőséget, vagy keresse meg és válassza ki az **Azure Active Directory** elemet bármelyik oldalon.
-
-3. Válassza ki a **Tulajdonságok** elemet.
-
-4. Az Azure AD-azonosító másolásához kattintson a **Másolás** gombra.
-
-    ![Azure AD-címtár azonosítója a Azure Portal](./media/howto-mfa-nps-extension-vpn/azure-active-directory-id-in-azure-portal.png)
+   ![A bérlő AZONOSÍTÓjának beolvasása a Azure Portalból](./media/howto-mfa-nps-extension-vpn/azure-active-directory-tenant-id-portal.png)
 
 ### <a name="install-the-nps-extension"></a>A hálózati házirend-kiszolgáló bővítményének telepítése
 
@@ -340,9 +336,9 @@ A hálózati házirend-kiszolgáló bővítményét olyan kiszolgálóra kell te
 
 1. Töltse le a hálózati házirend-kiszolgáló bővítményt a [Microsoft letöltőközpontból](https://aka.ms/npsmfa).
 
-2. Másolja a telepítő végrehajtható fájlját (*NpsExtnForAzureMfaInstaller. exe*) az NPS-kiszolgálóra.
+2. Másolja a telepítő végrehajtható fájlját (*NpsExtnForAzureMfaInstaller.exe*) a hálózati házirend-kiszolgálóra.
 
-3. Az NPS-kiszolgálón kattintson duplán a **NpsExtnForAzureMfaInstaller. exe fájlra** , és ha a rendszer kéri, válassza a **Futtatás**lehetőséget.
+3. Az NPS-kiszolgálón kattintson duplán a **NpsExtnForAzureMfaInstaller.exe** elemre, és ha a rendszer kéri, válassza a **Futtatás**lehetőséget.
 
 4. A **hálózati házirend-kiszolgáló bővítmény az Azure MFA** -hoz beállítás ablakban tekintse át a szoftverlicenc-feltételeket, jelölje be az Elfogadom **a licencfeltételeket és a kikötések** jelölőnégyzetet, majd válassza a **telepítés**lehetőséget.
 
@@ -372,9 +368,9 @@ A parancsfájl használatához adja meg a bővítményt a Azure Active Directory
 
 2. A PowerShell-parancssorba írja be a **következőt: CD "C:\Program Files\Microsoft\AzureMfa\Config"**, majd válassza az ENTER billentyűt.
 
-3. A következő parancssorba írja be a **.\AzureMfaNpsExtnConfigSetup.ps1**parancsot, majd válassza az ENTER billentyűt. A szkript ellenőrzi, hogy telepítve van-e az Azure AD PowerShell-modul. Ha nincs telepítve, a parancsfájl telepíti a modult.
+3. A következő parancssorba írja be **.\AzureMfaNpsExtnConfigSetup.ps1**, majd válassza az ENTER billentyűt. A szkript ellenőrzi, hogy telepítve van-e az Azure AD PowerShell-modul. Ha nincs telepítve, a parancsfájl telepíti a modult.
 
-    ![A AzureMfsNpsExtnConfigSetup. ps1 konfigurációs parancsfájl futtatása](./media/howto-mfa-nps-extension-vpn/image38.png)
+    ![A AzureMfsNpsExtnConfigSetup.ps1 konfigurációs parancsfájl futtatása](./media/howto-mfa-nps-extension-vpn/image38.png)
 
     Ha a TLS miatt biztonsági hibaüzenetet kap, engedélyezze a TLS 1,2-et a parancs használatával a `[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12` PowerShell-parancssorból.
     
@@ -386,7 +382,7 @@ A parancsfájl használatához adja meg a bővítményt a Azure Active Directory
 
 5. A parancssorba illessze be a korábban másolt bérlői azonosítót, majd válassza az ENTER billentyűt.
 
-    ![Adja meg a korábban másolt Azure AD-címtár AZONOSÍTÓját](./media/howto-mfa-nps-extension-vpn/image40.png)
+    ![Adja meg a korábban másolt Azure AD-bérlő AZONOSÍTÓját](./media/howto-mfa-nps-extension-vpn/image40.png)
 
     A szkript létrehoz egy önaláírt tanúsítványt, és végrehajtja a többi konfigurációs módosítást. A kimenet az alábbi képen láthatóhoz hasonló:
 
@@ -412,7 +408,9 @@ Miután sikeresen hitelesítette a hitelesítést a másodlagos módszerrel, hoz
 
 Ha meg szeretné tekinteni a sikeres bejelentkezési eseményeket a Windows Eseménynapló naplófájljaiban, a következő PowerShell-parancs megadásával kérdezze le a Windows biztonsági naplót a hálózati házirend-kiszolgálón:
 
-    `Get-WinEvent -Logname Security | where {$_.ID -eq '6272'} | FL`
+```powershell
+Get-WinEvent -Logname Security | where {$_.ID -eq '6272'} | FL
+```
 
 ![PowerShell biztonsági Eseménynapló](./media/howto-mfa-nps-extension-vpn/image44.png)
 
@@ -422,7 +420,9 @@ A biztonsági naplót vagy a hálózati házirend-és elérési szolgáltatások
 
 Azon a kiszolgálón, amelyen az Azure Multi-Factor Authentication hálózati házirend-bővítményét telepítette, megtalálhatja az *alkalmazás-és szolgáltatás-Logs\Microsoft\AzureMfa*bővítményre vonatkozó Eseménynapló alkalmazás-naplókat.
 
-    `Get-WinEvent -Logname Security | where {$_.ID -eq '6272'} | FL`
+```powershell
+Get-WinEvent -Logname Security | where {$_.ID -eq '6272'} | FL
+```
 
 ![Példa Eseménynapló AuthZ-naplók panel](./media/howto-mfa-nps-extension-vpn/image46.png)
 

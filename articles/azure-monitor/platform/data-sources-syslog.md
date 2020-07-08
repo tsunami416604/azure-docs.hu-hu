@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 03/22/2019
 ms.openlocfilehash: 8d68a8d6d28d79c50a92cd2d18df2abab26c30ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79274722"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847419"
 ---
 # <a name="syslog-data-sources-in-azure-monitor"></a>Rendszernapló-adatforrások az Azure Monitorban
 A syslog egy olyan eseménynaplózási protokoll, amely közös a Linux rendszerben. Az alkalmazások elküldik a helyi gépen tárolt vagy a syslog-gyűjtőnek küldött üzeneteket. A Linux rendszerhez készült Log Analytics-ügynök telepítésekor a helyi syslog démont úgy konfigurálja, hogy továbbítsa az üzeneteket az ügynöknek. Az ügynök ezután elküldi az üzenetet, hogy Azure Monitor, ahol létrejön egy megfelelő rekord.  
@@ -47,7 +47,7 @@ A Linux rendszerhez készült Log Analytics-ügynök csak a konfigurációjában
 ### <a name="configure-syslog-in-the-azure-portal"></a>A syslog konfigurálása a Azure Portalban
 Konfigurálja a syslog-t a [Speciális beállítások adatok menüjéből](agent-data-sources.md#configuring-data-sources). Ezt a konfigurációt minden Linux-ügynök konfigurációs fájljába továbbítja a rendszer.
 
-Új létesítmény hozzáadásához először válassza az **alábbi konfiguráció alkalmazása a saját gépekre** lehetőséget, majd írja be a nevét, és kattintson a **+** elemre. Minden egyes létesítmény esetében csak a kiválasztott részekkel rendelkező üzenetek lesznek összegyűjtve.  Tekintse át a gyűjteni kívánt adott létesítmény súlyosságát. Nem adhat meg további feltételeket az üzenetek szűréséhez.
+Új létesítmény hozzáadásához először válassza az **alábbi konfiguráció alkalmazása a saját gépekre** lehetőséget, majd írja be a nevét, és kattintson a elemre **+** . Minden egyes létesítmény esetében csak a kiválasztott részekkel rendelkező üzenetek lesznek összegyűjtve.  Tekintse át a gyűjteni kívánt adott létesítmény súlyosságát. Nem adhat meg további feltételeket az üzenetek szűréséhez.
 
 ![A syslog konfigurálása](media/data-sources-syslog/configure.png)
 
@@ -167,10 +167,10 @@ A portszámot úgy változtathatja meg, hogy két konfigurációs fájlt hoz lé
           type filter_syslog
         </filter>
 
-* A rsyslog hozzon létre egy új konfigurációs fájlt a következő helyen: `/etc/rsyslog.d/` , és cserélje le a% SYSLOG_PORT% értéket az egyéni portszámra.  
+* A rsyslog hozzon létre egy új konfigurációs fájlt a következő helyen:, `/etc/rsyslog.d/` és cserélje le a% SYSLOG_PORT% értéket az egyéni portszámra.  
 
     > [!NOTE]
-    > Ha módosítja ezt az értéket a konfigurációs fájlban `95-omsagent.conf`, akkor a rendszer felülírja, ha az ügynök alapértelmezett konfigurációt alkalmaz.
+    > Ha módosítja ezt az értéket a konfigurációs fájlban `95-omsagent.conf` , akkor a rendszer felülírja, ha az ügynök alapértelmezett konfigurációt alkalmaz.
     >
 
         # OMS Syslog collection for workspace %WORKSPACE_ID%
@@ -179,7 +179,7 @@ A portszámot úgy változtathatja meg, hogy két konfigurációs fájlt hoz lé
         daemon.warning            @127.0.0.1:%SYSLOG_PORT%
         auth.warning              @127.0.0.1:%SYSLOG_PORT%
 
-* A syslog-ng konfigurációt úgy kell módosítani, hogy átmásolja az alább látható példa konfigurációt, és hozzáadja az egyéni módosított beállításokat a syslog-ng. conf konfigurációs fájl `/etc/syslog-ng/`végéhez a következő helyen:. Ne **használja a** **(z)% WORKSPACE_ID% _oms** vagy a **(z)% WORKSPACE_ID_OMS**alapértelmezett címkét, adjon meg egy egyéni címkét a módosítások megkülönböztetése érdekében.  
+* A syslog-ng konfigurációt úgy kell módosítani, hogy átmásolja az alább látható példa konfigurációt, és hozzáadja az egyéni módosított beállításokat a syslog-ng. conf konfigurációs fájl végéhez a következő helyen: `/etc/syslog-ng/` . Ne **használja a** **(z)% WORKSPACE_ID% _oms** vagy a **(z)% WORKSPACE_ID_OMS**alapértelmezett címkét, adjon meg egy egyéni címkét a módosítások megkülönböztetése érdekében.  
 
     > [!NOTE]
     > Ha módosítja a konfigurációs fájl alapértelmezett értékeit, akkor azok felül lesznek írva, amikor az ügynök alapértelmezett konfigurációt alkalmaz.
@@ -208,7 +208,7 @@ A syslog-rekordok rendelkeznek **syslog** típussal, és rendelkeznek a követke
 ## <a name="log-queries-with-syslog-records"></a>Lekérdezések naplózása syslog-rekordokkal
 Az alábbi táblázat a syslog-rekordokat lekérő lekérdezések különböző példáit mutatja be.
 
-| Lekérdezés | Leírás |
+| Lekérdezés | Description |
 |:--- |:--- |
 | Rendszernapló |Minden syslog. |
 | Syslog &#124;, ahol a SeverityLevel = = "hiba" |Minden syslog-rekord, amelynek súlyossága a hiba. |

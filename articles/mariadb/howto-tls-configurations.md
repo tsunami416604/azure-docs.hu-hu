@@ -7,11 +7,11 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 06/02/2020
 ms.openlocfilehash: 9ebaca8720eb923c2373c45ac605146bbcdbc4a8
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84418686"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847989"
 ---
 # <a name="configuring-tls-settings-in-azure-database-for-mariadb-using-azure-portal"></a>A TLS-beállítások konfigurálása a Azure Database for MariaDB a Azure Portal használatával
 
@@ -43,6 +43,6 @@ Az alábbi lépéseket követve állíthatja be a MariaDB-kiszolgáló minimáli
 
     ![Azure Database for MariaDB TLS-konfiguráció sikeres](./media/howto-tls-configurations/tls-configurations-success.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Útmutató [riasztások létrehozásához mérőszámokon](howto-alert-metric.md)

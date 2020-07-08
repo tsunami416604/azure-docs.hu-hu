@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 681b81fa7f6ce74f7e48eb518a2c951e94c4b00d
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: ca244136178c9c05f2b88a917219035451d5e391
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84789532"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848469"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Meglévő hálózati házirend-kiszolgáló infrastruktúra integrálása az Azure Multi-Factor Authenticationnel
 
@@ -73,9 +73,13 @@ Manuálisan kell telepítenie a következő tárat:
 
 A hálózati házirend-kiszolgáló bővítményt használó mindenki számára Azure AD Connect használatával kell szinkronizálni Azure Active Directory, és az MFA-hoz kell regisztrálni.
 
-A bővítmény telepítésekor szüksége lesz az Azure AD-bérlő címtár-AZONOSÍTÓra és rendszergazdai hitelesítő adataira. A címtár AZONOSÍTÓját a [Azure Portalban](https://portal.azure.com)találja. Jelentkezzen be rendszergazdaként. Keresse meg és válassza ki a **Azure Active Directory**, majd válassza a **Tulajdonságok**lehetőséget. Másolja a GUID azonosítót a **címtár-azonosító** mezőbe, és mentse. Ezt a GUID azonosítót használja bérlői azonosítóként a hálózati házirend-kiszolgáló bővítményének telepítésekor.
+A bővítmény telepítésekor szüksége lesz az Azure AD-bérlőhöz tartozó *bérlői azonosítóra* és rendszergazdai hitelesítő adatokra. A bérlő AZONOSÍTÓjának beszerzéséhez hajtsa végre a következő lépéseket:
 
-![A címtár AZONOSÍTÓjának megkeresése Azure Active Directory tulajdonságok területen](./media/howto-mfa-nps-extension/properties-directory-id.png)
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) az Azure-bérlő globális rendszergazdájaként.
+1. Keresse meg és válassza ki a **Azure Active Directory**.
+1. Az **Áttekintés** lapon megjelenik a *bérlő adatai* . A *bérlő azonosítója*mellett válassza a **Másolás** ikont az alábbi képernyőképen látható módon:
+
+   ![A bérlő AZONOSÍTÓjának beolvasása a Azure Portalból](./media/howto-mfa-nps-extension/azure-active-directory-tenant-id-portal.png)
 
 ### <a name="network-requirements"></a>A hálózatra vonatkozó követelmények
 
@@ -102,7 +106,7 @@ Az NPS-kiszolgáló csatlakozik Azure Active Directoryhoz, és hitelesíti az MF
 1. A kiszolgálón nyissa meg a **szerepkörök és szolgáltatások hozzáadása varázslót** a Kiszolgálókezelő Gyorsindítás menüjéből.
 2. Válassza a **szerepkör-alapú vagy a szolgáltatáson alapuló telepítést** a telepítési típushoz.
 3. Válassza ki a **hálózati házirend-és elérési szolgáltatások** kiszolgálói szerepkört. Előfordulhat, hogy egy ablak felugró ablakban értesíti a szükséges szolgáltatásokat a szerepkör futtatásához.
-4. Folytassa a varázslót a megerősítési oldalig. Válassza az **Install** (Telepítés) lehetőséget.
+4. Folytassa a varázslót a megerősítési oldalig. Válassza a **Telepítés** gombot.
 
 Most, hogy már rendelkezik egy kiszolgálóval a hálózati házirend-kiszolgáló számára, konfigurálnia kell a kiszolgálót a bejövő RADIUS-kérések kezelésére is a VPN-megoldásból.
 
@@ -206,7 +210,7 @@ Ha nem szeretne saját tanúsítványokat használni (a PowerShell-parancsfájl 
    ```
 
 4. Jelentkezzen be az Azure AD-be rendszergazdaként.
-5. PowerShell-kérések a bérlői AZONOSÍTÓhoz. Használja az előfeltételek szakaszban található Azure Portalból másolt címtár-azonosító GUID azonosítót.
+5. PowerShell-kérések a bérlői AZONOSÍTÓhoz. Használja az előfeltételek szakaszban található Azure Portalból másolt *bérlői azonosító GUID azonosítót* .
 6. A PowerShell a parancsfájl befejeződése után sikert jelző üzenetet jelenít meg.  
 
 Ismételje meg ezeket a lépéseket minden olyan további hálózati házirend-kiszolgálón, amelyet be szeretne állítani a terheléselosztáshoz.

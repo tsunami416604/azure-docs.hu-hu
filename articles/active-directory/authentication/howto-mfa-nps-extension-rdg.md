@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5ef454871f242adb9de5e5c567c1a76e00478cc
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: 21b8748cf74a5061e9dfa154047f867df4cb5428
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84789939"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848757"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>A Távoli asztali átjáró-infrastruktúra integrálása a hálózati házirend-kiszolgáló (NPS) bővítmény és az Azure AD használatával
 
@@ -115,16 +115,15 @@ Kövesse a [Mit jelent az Azure multi-Factor Authentication?](../user-help/multi
 
 Ez a szakasz útmutatást nyújt az RDS infrastruktúra Azure MFA használatára való konfigurálásához a Távoli asztali átjáró használatával.
 
-### <a name="acquire-azure-active-directory-guid-id"></a>Azure Active Directory GUID azonosító beszerzése
+### <a name="acquire-azure-active-directory-tenant-id"></a>Azure Active Directory bérlő AZONOSÍTÓjának beszerzése
 
-A hálózati házirend-kiszolgáló bővítmény konfigurációjának részeként rendszergazdai hitelesítő adatokat és az Azure ad-bérlőhöz tartozó Azure AD-azonosítót kell megadnia. A következő lépések bemutatják, hogyan kérheti le a bérlő AZONOSÍTÓját.
+A hálózati házirend-kiszolgáló bővítmény konfigurációjának részeként rendszergazdai hitelesítő adatokat és az Azure ad-bérlőhöz tartozó Azure AD-azonosítót kell megadnia. A bérlő AZONOSÍTÓjának beszerzéséhez hajtsa végre a következő lépéseket:
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) az Azure-bérlő globális rendszergazdájaként.
 1. A Azure Portal menüben válassza a **Azure Active Directory**lehetőséget, vagy keresse meg és válassza ki az **Azure Active Directory** elemet bármelyik oldalon.
-1. Válassza ki a **Tulajdonságok** elemet.
-1. A Tulajdonságok panelen, a könyvtár azonosítója mellett kattintson a **Másolás** ikonra az alább látható módon az azonosító vágólapra másolásához.
+1. Az **Áttekintés** lapon megjelenik a *bérlő adatai* . A *bérlő azonosítója*mellett válassza a **Másolás** ikont az alábbi képernyőképen látható módon:
 
-   ![A könyvtár AZONOSÍTÓjának beolvasása a Azure Portalból](./media/howto-mfa-nps-extension-rdg/azure-active-directory-id-in-azure-portal.png)
+   ![A bérlő AZONOSÍTÓjának beolvasása a Azure Portalból](./media/howto-mfa-nps-extension-rdg/azure-active-directory-tenant-id-portal.png)
 
 ### <a name="install-the-nps-extension"></a>A hálózati házirend-kiszolgáló bővítményének telepítése
 
@@ -167,9 +166,9 @@ A szkript használatához adja meg a bővítményt az Azure AD-beli rendszergazd
 
    ![Hitelesítés az Azure AD-ben a PowerShellben](./media/howto-mfa-nps-extension-rdg/image5.png)
 
-1. Ha a rendszer kéri, illessze be a vágólapra korábban másolt könyvtárat, majd nyomja le az **ENTER**billentyűt.
+1. Amikor a rendszer kéri, illessze be a vágólapra korábban másolt *bérlői azonosítót* , majd nyomja le az **ENTER**billentyűt.
 
-   ![A címtár-azonosító üzembe helyezése a PowerShellben](./media/howto-mfa-nps-extension-rdg/image6.png)
+   ![A bérlői azonosító bevitele a PowerShellben](./media/howto-mfa-nps-extension-rdg/image6.png)
 
 1. A szkript létrehoz egy önaláírt tanúsítványt, és végrehajtja a többi konfigurációs módosítást. A kimenetnek az alább látható képhez hasonlóan kell lennie.
 

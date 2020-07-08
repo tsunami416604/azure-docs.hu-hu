@@ -6,11 +6,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: 09144c4c35ab911b60931849807123608f2c3cdd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79271719"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847484"
 ---
 # <a name="manage-farms"></a>Farmok kezelése
 
@@ -33,7 +33,7 @@ Ehhez a következő lépések szükségesek:
 
 A farm határának definiálásának két módja van:
 
-1. **Megjelölés térképen**: a Térkép vezérlőelem használatával rajzolhatja meg és jelölheti meg a farm határát. A határok megjelöléséhez ![a Project Farm](./media/create-farms-in-azure-farmbeats/pencil-icon-1.png) veri és megjelöli a pontos határokat.
+1. **Megjelölés térképen**: a Térkép vezérlőelem használatával rajzolhatja meg és jelölheti meg a farm határát. A határok megjelöléséhez a ![ Project Farm veri ](./media/create-farms-in-azure-farmbeats/pencil-icon-1.png) és megjelöli a pontos határokat.
 
     ![A Project Farm veri](./media/create-farms-in-azure-farmbeats/create-farm-mark-on-map-1.png)
 

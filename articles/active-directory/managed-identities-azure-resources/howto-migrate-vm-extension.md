@@ -9,17 +9,17 @@ editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/25/2018
 ms.author: markvi
-ms.openlocfilehash: 01b8e1dbc290bed86ccfc3c7016e8bd9168e427a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: afcbf5187a3b5ef3f44aebda22d376e9b796bf59
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80049064"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848379"
 ---
 # <a name="how-to-stop-using-the-virtual-machine-managed-identities-extension-and-start-using-the-azure-instance-metadata-service"></a>A virtuális gépi felügyelt identitások bővítmény használatának leállítása és az Azure-Instance Metadata Service használatának megkezdése
 
@@ -27,7 +27,7 @@ ms.locfileid: "80049064"
 
 A felügyelt identitások virtuálisgép-bővítménye a felügyelt identitáshoz tartozó jogkivonatok igénylésére szolgál a virtuális gépen. A munkafolyamat a következő lépésekből áll:
 
-1. Először is az erőforráson belüli munkaterhelés meghívja a helyi `http://localhost/oauth2/token` végpontot, hogy kérjen hozzáférési tokent.
+1. Először is az erőforráson belüli munkaterhelés meghívja a helyi végpontot, `http://localhost/oauth2/token` hogy kérjen hozzáférési tokent.
 2. A virtuálisgép-bővítmény ezután a felügyelt identitás hitelesítő adatait használja, hogy hozzáférési jogkivonatot kérjen az Azure AD-től. 
 3. A rendszer visszaadja a hozzáférési jogkivonatot a hívónak, és az Azure AD-hitelesítést támogató szolgáltatásokkal (például Azure Key Vault vagy Azure Storage) való hitelesítésre használható.
 
@@ -35,68 +35,68 @@ A következő szakaszban ismertetett számos korlátozás miatt a felügyelt ide
 
 ### <a name="provision-the-extension"></a>A bővítmény kiépítése 
 
-Ha a virtuális gépet vagy virtuálisgép-méretezési csoportját felügyelt identitásra konfigurálja, dönthet úgy, hogy kiépíti az Azure-erőforrások virtuálisgép-bővítményének felügyelt identitásait a `-Type` [set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) parancsmag paraméterének használatával. A (z) `ManagedIdentityExtensionForWindows` vagy `ManagedIdentityExtensionForLinux`a (z) vagy a (z) paramétert a virtuális gép típusától `-Name` függően adhatja át, és a paraméter használatával nevezheti el. A `-Settings` paraméter határozza meg az OAuth jogkivonat-végpont által a jogkivonat-beszerzéshez használt portot:
+Ha a virtuális gépet vagy virtuálisgép-méretezési csoportját felügyelt identitásra konfigurálja, dönthet úgy, hogy kiépíti az Azure-erőforrások virtuálisgép-bővítményének felügyelt identitásait a `-Type` [set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) parancsmag paraméterének használatával. A (z) vagy a (z) vagy a (z `ManagedIdentityExtensionForWindows` `ManagedIdentityExtensionForLinux` ) paramétert a virtuális gép típusától függően adhatja át, és a paraméter használatával nevezheti el `-Name` . A `-Settings` paraméter határozza meg az OAuth jogkivonat-végpont által a jogkivonat-beszerzéshez használt portot:
 
 ```powershell
    $settings = @{ "port" = 50342 }
    Set-AzVMExtension -ResourceGroupName myResourceGroup -Location WestUS -VMName myVM -Name "ManagedIdentityExtensionForWindows" -Type "ManagedIdentityExtensionForWindows" -Publisher "Microsoft.ManagedIdentity" -TypeHandlerVersion "1.0" -Settings $settings 
 ```
 
-A virtuálisgép-bővítmény kiépítéséhez használhatja a Azure Resource Manager telepítési sablont is. Ehhez adja hozzá a következő JSON- `resources` t a (z) szakaszhoz a sablonhoz (ez a név és a típus elemeit használja `ManagedIdentityExtensionForLinux` a Linux-verzióhoz).
+A virtuálisgép-bővítmény kiépítéséhez használhatja a Azure Resource Manager telepítési sablont is. Ehhez adja hozzá a következő JSON-t a `resources` (z) szakaszhoz a sablonhoz (ez a `ManagedIdentityExtensionForLinux` név és a típus elemeit használja a Linux-verzióhoz).
 
-    ```json
-    {
-        "type": "Microsoft.Compute/virtualMachines/extensions",
-        "name": "[concat(variables('vmName'),'/ManagedIdentityExtensionForWindows')]",
-        "apiVersion": "2018-06-01",
-        "location": "[resourceGroup().location]",
-        "dependsOn": [
-            "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]"
-        ],
-        "properties": {
-            "publisher": "Microsoft.ManagedIdentity",
-            "type": "ManagedIdentityExtensionForWindows",
-            "typeHandlerVersion": "1.0",
-            "autoUpgradeMinorVersion": true,
-            "settings": {
-                "port": 50342
-            }
+```json
+{
+    "type": "Microsoft.Compute/virtualMachines/extensions",
+    "name": "[concat(variables('vmName'),'/ManagedIdentityExtensionForWindows')]",
+    "apiVersion": "2018-06-01",
+    "location": "[resourceGroup().location]",
+    "dependsOn": [
+        "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]"
+    ],
+    "properties": {
+        "publisher": "Microsoft.ManagedIdentity",
+        "type": "ManagedIdentityExtensionForWindows",
+        "typeHandlerVersion": "1.0",
+        "autoUpgradeMinorVersion": true,
+        "settings": {
+            "port": 50342
         }
     }
-    ```
+}
+```
     
     
-Ha virtuálisgép-méretezési csoportokkal dolgozik, az [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension) parancsmaggal kiépítheti a felügyelt identitásokat az Azure-erőforrások virtuálisgép-méretezési csoport bővítményének használatával is. A virtuálisgép-méretezési csoport típusától függően `ManagedIdentityExtensionForWindows` vagy `ManagedIdentityExtensionForLinux`a (z) `-Name` paramétert átadhatja. A `-Settings` paraméter határozza meg az OAuth jogkivonat-végpont által a jogkivonat-beszerzéshez használt portot:
+Ha virtuálisgép-méretezési csoportokkal dolgozik, az [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension) parancsmaggal kiépítheti a felügyelt identitásokat az Azure-erőforrások virtuálisgép-méretezési csoport bővítményének használatával is. A `ManagedIdentityExtensionForWindows` `ManagedIdentityExtensionForLinux` virtuálisgép-méretezési csoport típusától függően vagy a (z `-Name` ) paramétert átadhatja. A `-Settings` paraméter határozza meg az OAuth jogkivonat-végpont által a jogkivonat-beszerzéshez használt portot:
 
    ```powershell
    $setting = @{ "port" = 50342 }
    $vmss = Get-AzVmss
    Add-AzVmssExtension -VirtualMachineScaleSet $vmss -Name "ManagedIdentityExtensionForWindows" -Type "ManagedIdentityExtensionForWindows" -Publisher "Microsoft.ManagedIdentity" -TypeHandlerVersion "1.0" -Setting $settings 
    ```
-A virtuálisgép-méretezési csoport kiterjesztésének Azure Resource Manager telepítési sablonnal való kiépítéséhez adja hozzá a következő JSON `extensionpProfile` -t a (z) `ManagedIdentityExtensionForLinux` szakaszhoz a sablonhoz (ez a név és a típus elemeit használja a Linux-verzióhoz).
+A virtuálisgép-méretezési csoport kiterjesztésének Azure Resource Manager telepítési sablonnal való kiépítéséhez adja hozzá a következő JSON-t a `extensionpProfile` (z) szakaszhoz a sablonhoz (ez a `ManagedIdentityExtensionForLinux` név és a típus elemeit használja a Linux-verzióhoz).
 
-    ```json
-    "extensionProfile": {
-        "extensions": [
-            {
-                "name": "ManagedIdentityWindowsExtension",
-                "properties": {
-                    "publisher": "Microsoft.ManagedIdentity",
-                    "type": "ManagedIdentityExtensionForWindows",
-                    "typeHandlerVersion": "1.0",
-                    "autoUpgradeMinorVersion": true,
-                    "settings": {
-                        "port": 50342
-                    },
-                    "protectedSettings": {}
-                }
+```json
+"extensionProfile": {
+    "extensions": [
+        {
+            "name": "ManagedIdentityWindowsExtension",
+            "properties": {
+                "publisher": "Microsoft.ManagedIdentity",
+                "type": "ManagedIdentityExtensionForWindows",
+                "typeHandlerVersion": "1.0",
+                "autoUpgradeMinorVersion": true,
+                "settings": {
+                    "port": 50342
+                },
+                "protectedSettings": {}
             }
-    ```
+        }
+```
 
 A virtuálisgép-bővítmény kiépítés sikertelen lehet a DNS-keresési hibák miatt. Ha ez történik, indítsa újra a virtuális gépet, és próbálkozzon újra. 
 
 ### <a name="remove-the-extension"></a>A bővítmény eltávolítása 
-A bővítmény eltávolításához `-n ManagedIdentityExtensionForWindows` használja a ( `-n ManagedIdentityExtensionForLinux` z) vagy a kapcsolót (a virtuális gép típusától függően) az [az VM Extension delete](https://docs.microsoft.com/cli/azure/vm/)vagy az [vmss Extension delete](https://docs.microsoft.com/cli/azure/vmss) paranccsal a VIRTUÁLISGÉP-méretezési csoportokhoz az `Remove-AzVMExtension` Azure CLI vagy a PowerShell használatával:
+A bővítmény eltávolításához használja a `-n ManagedIdentityExtensionForWindows` (z) vagy a `-n ManagedIdentityExtensionForLinux` kapcsolót (a virtuális gép típusától függően) az [az VM Extension delete](https://docs.microsoft.com/cli/azure/vm/)vagy az [vmss Extension delete](https://docs.microsoft.com/cli/azure/vmss) paranccsal a virtuálisgép-méretezési csoportokhoz az Azure CLI vagy `Remove-AzVMExtension` a PowerShell használatával:
 
 ```azurecli-interactive
 az vm identity --resource-group myResourceGroup --vm-name myVm -n ManagedIdentityExtensionForWindows
@@ -119,11 +119,11 @@ GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.
 Metadata: true
 ```
 
-| Elem | Leírás |
+| Elem | Description |
 | ------- | ----------- |
 | `GET` | A HTTP-művelet, amely azt jelzi, hogy a végpontról kívánja beolvasni az adatait. Ebben az esetben egy OAuth hozzáférési jogkivonat. | 
 | `http://localhost:50342/oauth2/token` | Az Azure-erőforrások végpontjának felügyelt identitásai, ahol a 50342 az alapértelmezett port, és konfigurálható. |
-| `resource` | Egy lekérdezési karakterlánc paraméter, amely a cél erőforrás alkalmazás-azonosító URI azonosítóját jelzi. Ez a kiállított jogkivonat `aud` (célközönség) jogcímen is megjelenik. Ez a példa jogkivonatot kér a Azure Resource Manager eléréséhez, amelyhez az alkalmazás AZONOSÍTÓjának URI-ja tartozik `https://management.azure.com/`. |
+| `resource` | Egy lekérdezési karakterlánc paraméter, amely a cél erőforrás alkalmazás-azonosító URI azonosítóját jelzi. Ez a `aud` kiállított jogkivonat (célközönség) jogcímen is megjelenik. Ez a példa jogkivonatot kér a Azure Resource Manager eléréséhez, amelyhez az alkalmazás AZONOSÍTÓjának URI-ja tartozik `https://management.azure.com/` . |
 | `Metadata` | Egy HTTP-kérelem fejlécének mezője, amelyet az Azure-erőforrások felügyelt identitásai igényelnek a kiszolgálóoldali kérelmek hamisításának (SSRF) támadása ellen. Ezt az értéket a "true" értékre kell beállítani, az összes kisbetű esetében.|
 | `object_id` | Választható Egy lekérdezési karakterlánc paraméter, amely annak a felügyelt identitásnak a object_idét jelzi, amelyhez a tokent szeretné. Kötelező, ha a virtuális gépnek több felhasználó által hozzárendelt felügyelt identitása van.|
 | `client_id` | Választható Egy lekérdezési karakterlánc paraméter, amely annak a felügyelt identitásnak a client_idét jelzi, amelyhez a tokent szeretné. Kötelező, ha a virtuális gépnek több felhasználó által hozzárendelt felügyelt identitása van.|
@@ -145,13 +145,13 @@ Content-Type: application/json
 }
 ```
 
-| Elem | Leírás |
+| Elem | Description |
 | ------- | ----------- |
 | `access_token` | A kért hozzáférési jogkivonat. Biztonságos REST API hívásakor a jogkivonat a `Authorization` kérelem fejléc mezőjébe ágyazva "tulajdonos" tokenként van beágyazva, ami lehetővé teszi, hogy az API hitelesítse a hívót. | 
 | `refresh_token` | Az Azure-erőforrások felügyelt identitásai nem használják. |
 | `expires_in` | Azon másodpercek száma, ameddig a hozzáférési jogkivonat továbbra is érvényben marad, a lejárat időpontja előtt. A kiadás időpontja megtalálható a jogkivonat `iat` jogcímen. |
-| `expires_on` | A TimeSpan, amikor lejár a hozzáférési jogkivonat. A dátum az "1970-01-01T0:0: 0Z UTC" (a jogkivonat jogcímenek felel meg `exp` ) másodpercben megadott számú másodperc. |
-| `not_before` | A TimeSpan, ha a hozzáférési jogkivonat érvénybe lép, és el lehet fogadni. A dátum az "1970-01-01T0:0: 0Z UTC" (a jogkivonat jogcímenek felel meg `nbf` ) másodpercben megadott számú másodperc. |
+| `expires_on` | A TimeSpan, amikor lejár a hozzáférési jogkivonat. A dátum az "1970-01-01T0:0: 0Z UTC" (a jogkivonat jogcímenek felel meg) másodpercben megadott számú másodperc `exp` . |
+| `not_before` | A TimeSpan, ha a hozzáférési jogkivonat érvénybe lép, és el lehet fogadni. A dátum az "1970-01-01T0:0: 0Z UTC" (a jogkivonat jogcímenek felel meg) másodpercben megadott számú másodperc `nbf` . |
 | `resource` | Az erőforráshoz a hozzáférési tokent kérték, amely megfelel a `resource` kérelem lekérdezési karakterlánc paraméterének. |
 | `token_type` | A token típusa, amely egy "tulajdonos" hozzáférési jogkivonat, ami azt jelenti, hogy az erőforrás hozzáférést biztosíthat a jogkivonat tulajdonosához. |
 
@@ -166,7 +166,7 @@ Windows rendszeren és a Linux egyes verzióiban, ha a bővítmény leáll, a k�
 Set-AzVMExtension -Name <extension name>  -Type <extension Type>  -Location <location> -Publisher Microsoft.ManagedIdentity -VMName <vm name> -ResourceGroupName <resource group name> -ForceRerun <Any string different from any last value used>
 ```
 
-Az elemek magyarázata: 
+Ebben a kódban: 
 - A Windows-bővítmény neve és típusa:`ManagedIdentityExtensionForWindows`
 - A Linux-bővítmény neve és típusa:`ManagedIdentityExtensionForLinux`
 
@@ -194,9 +194,9 @@ A virtuálisgép-bővítmény használatának számos jelentős korlátozása va
  * A virtuális gépek felügyelt identitásokkal való üzembe helyezése teljesítménybeli hatással van, mivel a virtuálisgép-bővítményt is ki kell építeni. 
  * Végül a virtuálisgép-bővítmény csak a 32 felhasználó által hozzárendelt felügyelt identitások használatát támogatja virtuális gépenként. 
 
-## <a name="azure-instance-metadata-service"></a>Azure-Instance Metadata Service
+## <a name="azure-instance-metadata-service"></a>Azure Instance Metadata szolgáltatás
 
-Az [Azure instance metadata Service (IMDS)](/azure/virtual-machines/windows/instance-metadata-service) egy Rest-végpont, amely információt nyújt a virtuális gépek kezeléséhez és konfigurálásához használható virtuálisgép-példányok futtatásáról. A végpont egy jól ismert, nem irányítható IP-címen (`169.254.169.254`) érhető el, amelyet csak a virtuális gépről lehet elérni.
+Az [Azure instance metadata Service (IMDS)](/azure/virtual-machines/windows/instance-metadata-service) egy Rest-végpont, amely információt nyújt a virtuális gépek kezeléséhez és konfigurálásához használható virtuálisgép-példányok futtatásáról. A végpont egy jól ismert, nem irányítható IP-címen () érhető el `169.254.169.254` , amelyet csak a virtuális gépről lehet elérni.
 
 Az Azure IMDS használatának számos előnye van a jogkivonatok igényléséhez. 
 
@@ -212,4 +212,4 @@ Ezen okok miatt az Azure IMDS szolgáltatás a tokenek igénylésének defacto, 
 ## <a name="next-steps"></a>Következő lépések
 
 * [Egy Azure-beli virtuális gépen található Azure-erőforrások felügyelt identitásának használata hozzáférési jogkivonat beszerzéséhez](how-to-use-vm-token.md)
-* [Azure-Instance Metadata Service](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)
+* [Azure Instance Metadata szolgáltatás](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)

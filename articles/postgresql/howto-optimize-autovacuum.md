@@ -6,12 +6,12 @@ ms.author: dianas
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 1917bd6744e100db54fe959292e29486f8a1784b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7dcc6f9ece407bee20ed344d91ee95e34f8f4c0a
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74770186"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848197"
 ---
 # <a name="optimize-autovacuum-on-an-azure-database-for-postgresql---single-server"></a>Az autovákuum optimalizálása egy Azure Database for PostgreSQL egyetlen kiszolgálón
 Ez a cikk bemutatja, hogyan optimalizálhatja hatékonyan az autovákuumot egy Azure Database for PostgreSQL-kiszolgálón.
@@ -47,7 +47,7 @@ Az autovákuumot vezérlő konfigurációs paraméterek két fő kérdésre vál
 Paraméter|Leírás|Alapértelmezett érték
 ---|---|---
 autovacuum_vacuum_threshold|Meghatározza, hogy legalább hány frissített vagy törölt rekordok van szükség ahhoz, hogy a vákuum-műveletet egyetlen táblában lehessen elindítani. Az alapértelmezett érték a 50 rekordok. Ezt a paramétert csak a PostgreSQL. conf fájlban vagy a Server parancssorban állítsa be. Az egyes táblák beállításainak felülbírálásához módosítsa a tábla tárolási paramétereit.|50
-autovacuum_vacuum_scale_factor|Megadja a tábla azon méretének a töredékét, amelyet hozzá szeretne adni a autovacuum_vacuum_thresholdhoz, amikor eldönti, hogy kell-e vákuum-műveletet indítania. Az alapértelmezett érték a 0,2, amely a tábla méretének 20 százalékát képezi. Ezt a paramétert csak a PostgreSQL. conf fájlban vagy a Server parancssorban állítsa be. Az egyes táblák beállításainak felülbírálásához módosítsa a tábla tárolási paramétereit.|5 százalék
+autovacuum_vacuum_scale_factor|Megadja a tábla azon méretének a töredékét, amelyet hozzá szeretne adni a autovacuum_vacuum_thresholdhoz, amikor eldönti, hogy kell-e vákuum-műveletet indítania. Az alapértelmezett érték a 0,2, amely a tábla méretének 20 százalékát képezi. Ezt a paramétert csak a PostgreSQL. conf fájlban vagy a Server parancssorban állítsa be. Az egyes táblák beállításainak felülbírálásához módosítsa a tábla tárolási paramétereit.|0,2
 autovacuum_vacuum_cost_limit|Meghatározza az automatikus vákuum-műveletekben használt költségfelosztás értékét. Ha-1 van megadva, amely az alapértelmezett, a rendszer a normál vacuum_cost_limit értéket használja. Ha több feldolgozó is van, akkor az értéket a futó autovacuum-feldolgozók között arányosan osztják el. Az egyes feldolgozók korlátainak összege nem haladja meg a változó értékét. Ezt a paramétert csak a PostgreSQL. conf fájlban vagy a Server parancssorban állítsa be. Az egyes táblák beállításainak felülbírálásához módosítsa a tábla tárolási paramétereit.|-1
 autovacuum_vacuum_cost_delay|Meghatározza az automatikus vákuum-műveletekben használt költséghatékonysági értéket. Ha a-1 érték van megadva, a rendszer a normál vacuum_cost_delay értéket használja. Az alapértelmezett érték 20 ezredmásodperc. Ezt a paramétert csak a PostgreSQL. conf fájlban vagy a Server parancssorban állítsa be. Az egyes táblák beállításainak felülbírálásához módosítsa a tábla tárolási paramétereit.|20 MS
 autovacuum_nap_time|Meghatározza az autoporszívó futtatásának minimális késleltetését az adott adatbázison. A démon minden körben megvizsgálja az adatbázist, és az adatbázisban lévő táblákhoz szükség szerint a szükséges vákuum-és elemzési parancsokat. A késleltetés mérése másodpercben történik, és az alapértelmezett érték egy perc (1 perc). Ezt a paramétert csak a PostgreSQL. conf fájlban vagy a Server parancssorban állítsa be.|15 s
@@ -91,7 +91,7 @@ A autovacuum_max_workers paraméter határozza meg a párhuzamosan futtatható a
 A PostgreSQL használatával ezeket a paramétereket a tábla szintjén vagy a példány szintjén állíthatja be. Manapság a táblázat szintjén állíthatja be ezeket a paramétereket Azure Database for PostgreSQL.
 
 ## <a name="optimize-autovacuum-per-table"></a>Autovákuum optimalizálása táblázat szerint
-A táblázat összes korábbi konfigurációs paraméterét beállíthatja. Például:
+A táblázat összes korábbi konfigurációs paraméterét beállíthatja. Íme egy példa:
 ```sql
 ALTER TABLE t SET (autovacuum_vacuum_threshold = 1000);
 ALTER TABLE t SET (autovacuum_vacuum_scale_factor = 0.1);

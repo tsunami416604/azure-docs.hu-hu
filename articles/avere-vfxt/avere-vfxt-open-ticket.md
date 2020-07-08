@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: rohogue
 ms.openlocfilehash: b3c604003f78a150067875fb2064ab5eca0600db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79252557"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847354"
 ---
 # <a name="get-help-with-your-system"></a>Segítség kérése a rendszeren
 
@@ -27,7 +27,7 @@ Ha a avere vFXT telepítése vagy használata során problémák merülnek fel, 
 
 Kövesse az alábbi lépéseket annak biztosításához, hogy a támogatási jegye a fürt egy erőforrásával legyen címkézve. A jegy címkézése segít a megfelelő támogatási erőforráshoz való átirányításban.
 
-1. Válassza [https://portal.azure.com](https://portal.azure.com)ki az **erőforráscsoportok**lehetőséget. Tallózással keresse meg azt a vFXT-fürtöt tartalmazó erőforráscsoportot, ahol a probléma felmerült, és kattintson az egyik avere-fürt virtuális gépre.
+1. [https://portal.azure.com](https://portal.azure.com)Válassza ki az **erőforráscsoportok**lehetőséget. Tallózással keresse meg azt a vFXT-fürtöt tartalmazó erőforráscsoportot, ahol a probléma felmerült, és kattintson az egyik avere-fürt virtuális gépre.
 
     ![képernyőfelvétel: Azure Portal erőforráscsoport – áttekintés panel egy adott virtuális géppel](media/avere-vfxt-ticket-vm.png)
 

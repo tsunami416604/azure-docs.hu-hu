@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43ac046f3480b08fdc3b8d582d9e724f4b9b93d5
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.openlocfilehash: 57a77b486239f1fd49a4979d7acbbfc8f0254311
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84975435"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848459"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Alkalmazásproxyval kapcsolatos problémák és hibaüzenetek elhárítása
 
@@ -43,7 +43,9 @@ Ha például közzéteszi az elérési utat `https://yourapp/app` , de az alkalm
 
 Ha az összekötő varázsló telepítésekor nem sikerül a regisztráció, kétféleképpen tekintheti meg a hiba okát. Keresse meg az eseménynaplót az **alkalmazások és szolgáltatások Logs\Microsoft\AadApplicationProxy\Connector\Admin**alatt, vagy futtassa a következő Windows PowerShell-parancsot:
 
-    Get-EventLog application –source "Microsoft AAD Application Proxy Connector" –EntryType "Error" –Newest 1
+```powershell
+Get-EventLog application –source "Microsoft AAD Application Proxy Connector" –EntryType "Error" –Newest 1
+```
 
 Miután megtalálta az összekötő hibáját az eseménynaplóból, a gyakori hibákkal kapcsolatos táblázat segítségével oldja meg a problémát:
 

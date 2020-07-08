@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 10/06/2017
 ms.author: amanbha
 ms.openlocfilehash: b05da78091260297d94062c06cba100d01ce7e2e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258316"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847867"
 ---
 # <a name="actor-lifecycle-automatic-garbage-collection-and-manual-delete"></a>Színészi életciklus, automatikus Garbage-gyűjtés és manuális törlés
 A színész akkor aktiválódik, amikor az első alkalommal hívást kezdeményeztek valamelyik metódusára. Egy szereplő inaktiválva van (a Actors Runtime által összegyűjtött szemetet), ha nem használják konfigurálható időtartamra. Egy színész és az állapota manuálisan is törölhető bármikor.
@@ -52,7 +52,7 @@ Az Inaktiválás részleteinek megkezdése előtt fontos a következő feltétel
 * *Ellenőrzési időköz*. Ez az az időtartam, amikor a szereplők futtatókörnyezete megkeresi az aktív Actors táblát a deaktiválható és az összegyűjtött szemetet. Az alapértelmezett érték 1 perc.
 * *Üresjárat időkorlátja*. Ez az az időtartam, ameddig egy szereplőnek fel kell használnia a használaton kívüli állapotot (inaktív), és a begyűjtött szemetet fel kell venni. Ennek alapértelmezett értéke 60 perc.
 
-Általában nem kell módosítania ezeket az alapértelmezett értékeket. Ha azonban szükséges, ezek az intervallumok a `ActorServiceSettings` [Actor szolgáltatás](service-fabric-reliable-actors-platform.md)regisztrálásakor változhatnak:
+Általában nem kell módosítania ezeket az alapértelmezett értékeket. Ha azonban szükséges, ezek az intervallumok `ActorServiceSettings` a [Actor szolgáltatás](service-fabric-reliable-actors-platform.md)regisztrálásakor változhatnak:
 
 ```csharp
 public class Program
@@ -85,9 +85,9 @@ public class Program
     }
 }
 ```
-A Actor Runtime minden aktív színésznél nyomon követi, hogy mennyi ideig tart a tétlenség (azaz nincs használatban). A Actor Runtime ellenőrzi, `ScanIntervalInSeconds` hogy az egyes szereplők képesek-e begyűjteni a szemetet, és jelzi, ha a szolgáltatás `IdleTimeoutInSeconds`tétlen volt.
+A Actor Runtime minden aktív színésznél nyomon követi, hogy mennyi ideig tart a tétlenség (azaz nincs használatban). A Actor Runtime ellenőrzi, hogy az egyes szereplők képesek-e `ScanIntervalInSeconds` begyűjteni a szemetet, és jelzi, ha a szolgáltatás tétlen volt `IdleTimeoutInSeconds` .
 
-Bármikor, ha a színész használatban van, a tétlenségi ideje 0-ra lesz állítva. Ezt követően a színész csak akkor gyűjthet szemetet, ha ismét tétlen marad `IdleTimeoutInSeconds`. Ne felejtse el, hogy egy szereplőt akkor kell használni, ha egy Actor Interface metódus vagy egy színészi emlékeztető visszahívása van végrehajtva. A szereplőt **nem** tekinti a rendszer, ha az időzítő visszahívását futtatja.
+Bármikor, ha a színész használatban van, a tétlenségi ideje 0-ra lesz állítva. Ezt követően a színész csak akkor gyűjthet szemetet, ha ismét tétlen marad `IdleTimeoutInSeconds` . Ne felejtse el, hogy egy szereplőt akkor kell használni, ha egy Actor Interface metódus vagy egy színészi emlékeztető visszahívása van végrehajtva. A szereplőt **nem** tekinti a rendszer, ha az időzítő visszahívását futtatja.
 
 Az alábbi ábrán egy színész életciklusa látható, amely szemlélteti ezeket a fogalmakat.
 

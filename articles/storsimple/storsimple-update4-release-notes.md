@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 01/23/2018
 ms.author: alkohli
 ms.openlocfilehash: ef95ca7b9f94690b607e37fbf5d9378c2f2bcfda
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254585"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847273"
 ---
 # <a name="storsimple-8000-series-update-4-release-notes"></a>StorSimple 8000 sorozat Update 4 kibocsátási megjegyzések
 
@@ -66,13 +66,13 @@ A 4. frissítés a következő főbb javításokat és hibajavításokat tartalm
 
 A következő táblázat a 4. frissítésben rögzített problémák összegzését tartalmazza.    
 
-| Nem | Szolgáltatás | Probléma | A fizikai eszközre vonatkozik | A virtuális eszközre vonatkozik |
+| No | Szolgáltatás | Probléma | A fizikai eszközre vonatkozik | A virtuális eszközre vonatkozik |
 | --- | --- | --- | --- | --- |
 | 1 |Feladatátvétel |A korábbi kiadásban a feladatátvétel után az ügyfél webhelyén megfigyelt törléssel kapcsolatos probléma merült fel. Ez a probléma ebben a kiadásban van kijavítva. |Igen |Igen |
-| 2 |Helyileg rögzített kötetek |Az előző kiadásban probléma merült fel a kapcsolódó kötetek létrehozásakor a helyileg rögzített kötetek esetében, amelyek mennyiségi létrehozási hibákhoz vezethetnek. Ezt a problémát a jelen kiadásban a gyökér okozta és javítottuk. |Igen |Nem |
+| 2 |Helyileg rögzített kötetek |Az előző kiadásban probléma merült fel a kapcsolódó kötetek létrehozásakor a helyileg rögzített kötetek esetében, amelyek mennyiségi létrehozási hibákhoz vezethetnek. Ezt a problémát a jelen kiadásban a gyökér okozta és javítottuk. |Yes |Nem |
 | 3 |Támogatási csomag |A korábbi kiadásokban a támogatási csomaggal kapcsolatos problémák merültek fel, amelyek egy rendszer. OutOfMemory kivételt vagy más hibát eredményeznek, ami a támogatási csomag létrehozásakor meghiúsult. Ezek a hibák ebben a kiadásban vannak kijavítva. |Igen |Igen |
 | 4 |Figyelés |A korábbi kiadásokban a helyileg rögzített kötetekhez kapcsolódó figyelési diagramokkal kapcsolatos probléma merült fel, ahol a felhasználás az EB-ben volt látható. Ez a hiba a jelen kiadásban van feloldva. |Igen |Igen |
-| 5 |Migrálás |A korábbi kiadásokban számos probléma merült fel az 5000-7000-es sorozatból a 8000 sorozatú eszközökre való Migrálás megbízhatóságával kapcsolatban. Ezek a problémák ebben a kiadásban lettek feldolgozva. |Igen |Igen |
+| 5 |Áttelepítés |A korábbi kiadásokban számos probléma merült fel az 5000-7000-es sorozatból a 8000 sorozatú eszközökre való Migrálás megbízhatóságával kapcsolatban. Ezek a problémák ebben a kiadásban lettek feldolgozva. |Igen |Igen |
 | 6 |Frissítés |A korábbi kiadásokban, ha frissítési hiba történt, a vezérlők helyreállítási módba kerülhetnek, így a felhasználó nem folytathatja a frissítést, és kapcsolatba kell lépnie Microsoft ügyfélszolgálataval. <br> Ebben a kiadásban ez a viselkedés megváltozott. Ha a felhasználó olyan frissítési hibát észlelt, hogy mindkét vezérlő ugyanazt a verziót futtatja (4. frissítés), akkor a vezérlők nem kerülnek helyreállítási módba. Ha a felhasználó ezt a hibát tapasztalja, javasoljuk, hogy várjon egy kicsit, majd próbálkozzon újra a frissítéssel. Az újrapróbálkozás sikeres volt. Ha az újrapróbálkozás sikertelen, vegye fel a kapcsolatot a Microsoft ügyfélszolgálatakal. |Igen |Igen |
 
 
