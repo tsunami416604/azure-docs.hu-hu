@@ -7,17 +7,16 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 5/7/2020
 ms.openlocfilehash: 9c5f4b1602182b3f9dca45c11d572e1fec2ff07c
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82925966"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mariadb"></a>Az SSL-kapcsolat konfigurálása az alkalmazásban a Azure Database for MariaDBhoz való biztonságos csatlakozáshoz
 A Azure Database for MariaDB támogatja a Azure Database for MariaDB-kiszolgáló SSL (SSL) használatával történő ügyfélalkalmazások összekapcsolását. Az adatbázis-kiszolgáló és az ügyfélalkalmazások közötti SSL-kapcsolatok kikényszerítése elősegíti a „köztes” támadások elleni védelmet, mert titkosítja a kiszolgáló és az alkalmazás közötti streameket.
 
 ## <a name="obtain-ssl-certificate"></a>SSL-tanúsítvány beszerzése
-Töltse le az SSL protokollon keresztüli kommunikációhoz szükséges tanúsítványt a [https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) Azure Database for MariaDB-kiszolgálóról, és mentse a tanúsítványt a helyi meghajtóra (ez az oktatóanyag az c:\ssl-t használja például).
+Töltse le az SSL protokollon keresztüli kommunikációhoz szükséges tanúsítványt a Azure Database for MariaDB-kiszolgálóról [https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) , és mentse a tanúsítványt a helyi meghajtóra (ez az oktatóanyag az c:\ssl-t használja például).
 **A Microsoft Internet Explorer és a Microsoft Edge esetében:** A letöltés befejezése után nevezze át a tanúsítványt a BaltimoreCyberTrustRoot. CRT. PEM névre.
 
 ## <a name="bind-ssl"></a>SSL kötése
@@ -43,7 +42,7 @@ mysql.exe -h mydemoserver.mariadb.database.azure.com -u Username@mydemoserver -p
 ```
 
 > [!NOTE]
-> A MySQL parancssori felület Windows rendszeren való használatakor hibaüzenetet `SSL connection error: Certificate signature check failed`kaphat. Ha ez történik, cserélje le `--ssl-mode=REQUIRED --ssl-ca={filepath}` a paramétereket `--ssl`a következőre:.
+> A MySQL parancssori felület Windows rendszeren való használatakor hibaüzenetet kaphat `SSL connection error: Certificate signature check failed` . Ha ez történik, cserélje le a paramétereket a következőre: `--ssl-mode=REQUIRED --ssl-ca={filepath}` `--ssl` .
 
 ## <a name="enforcing-ssl-connections-in-azure"></a>Az SSL-kapcsolatok kényszerítése az Azure-ban 
 ### <a name="using-the-azure-portal"></a>Az Azure Portal használata

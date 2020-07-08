@@ -11,10 +11,9 @@ ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: ea8c40faad4ee709ae98f868e36fd42e46501bea
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82927037"
 ---
 # <a name="azure-ad-b2c-session"></a>Azure AD B2C-munkamenet
@@ -37,7 +36,7 @@ A Azure AD B2C való integráció három típusú SSO-munkamenetet foglal magáb
 
 ### <a name="azure-ad-b2c-sso"></a>Egyszeri bejelentkezés Azure AD B2C 
 
-Amikor egy felhasználó sikeresen hitelesít egy helyi vagy közösségi fiókkal, a Azure AD B2C egy cookie-alapú munkamenetet tárol a felhasználó böngészőjében. A cookie-t a Azure AD B2C bérlői tartomány neve alatt tárolja, `https://contoso.b2clogin.com`például:.
+Amikor egy felhasználó sikeresen hitelesít egy helyi vagy közösségi fiókkal, a Azure AD B2C egy cookie-alapú munkamenetet tárol a felhasználó böngészőjében. A cookie-t a Azure AD B2C bérlői tartomány neve alatt tárolja, például: `https://contoso.b2clogin.com` .
 
 Ha egy felhasználó először összevont fiókkal jelentkezik be, majd a munkamenet ideje (élettartam vagy TTL) bejelentkezik egy adott alkalmazásba vagy egy másik alkalmazásba, Azure AD B2C megpróbál új hozzáférési jogkivonatot beszerezni az összevont identitás-szolgáltatótól. Ha az összevont identitás-szolgáltató munkamenete lejárt vagy érvénytelen, az összevont identitás szolgáltatója kéri a felhasználót a hitelesítő adataik megadására. Ha a munkamenet továbbra is aktív (vagy ha a felhasználó egy összevont fiók helyett helyi fiókkal jelentkezett be), a Azure AD B2C engedélyezi a felhasználó számára, és megszünteti a további kéréseket.
 
@@ -45,7 +44,7 @@ Konfigurálhatja a munkamenet viselkedését, beleértve a munkamenet ÉLETTARTA
 
 ### <a name="federated-identity-provider-sso"></a>Összevont identitás-szolgáltató egyszeri bejelentkezés
 
-A közösségi vagy vállalati identitás-szolgáltató a saját munkamenetét kezeli. A cookie-t az Identity Provider tartományneve (például `https://login.salesforce.com`) tárolja. Azure AD B2C nem szabályozza az összevont identitás-szolgáltatói munkamenetet. Ehelyett a munkamenet viselkedését az összevont identitás-szolgáltató határozza meg. 
+A közösségi vagy vállalati identitás-szolgáltató a saját munkamenetét kezeli. A cookie-t az Identity Provider tartományneve (például `https://login.salesforce.com` ) tárolja. Azure AD B2C nem szabályozza az összevont identitás-szolgáltatói munkamenetet. Ehelyett a munkamenet viselkedését az összevont identitás-szolgáltató határozza meg. 
 
 Vegyük példaként a következő esetet:
 
@@ -57,7 +56,7 @@ Vegyük példaként a következő esetet:
 
 A web-, mobil-vagy egyoldalas alkalmazások védelmét OAuth-hozzáférés, azonosító jogkivonatok vagy SAML-tokenek védik. Amikor egy felhasználó egy védett erőforráshoz próbál hozzáférni az alkalmazásban, az alkalmazás ellenőrzi, hogy van-e aktív munkamenet az alkalmazás oldalán. Ha nincs alkalmazás-munkamenet, vagy a munkamenet lejárt, akkor az alkalmazás beAzure AD B2C a bejelentkezési oldalra.
 
-Az alkalmazás-munkamenet lehet az alkalmazás tartományának neve alatt tárolt cookie-alapú munkamenet, például: `https://contoso.com`. A mobil alkalmazások eltérő módon tárolhatják a munkamenetet, de hasonló megközelítést alkalmaznak.
+Az alkalmazás-munkamenet lehet az alkalmazás tartományának neve alatt tárolt cookie-alapú munkamenet, például: `https://contoso.com` . A mobil alkalmazások eltérő módon tárolhatják a munkamenetet, de hasonló megközelítést alkalmaznak.
 
 ## <a name="azure-ad-b2c-session-configuration"></a>Azure AD B2C munkamenet-konfiguráció
 
@@ -107,10 +106,10 @@ A kijelentkezési szolgáltatás törli a felhasználó egyszeri bejelentkezési
 > [!NOTE]
 > Ez a szolgáltatás [Egyéni szabályzatokra](custom-policy-overview.md)korlátozódik.
 
-Amikor átirányítja a felhasználót a Azure AD B2C kijelentkezési végpontra (a OAuth2 és az SAML protokollok esetében egyaránt), Azure AD B2C törli a felhasználó munkamenetét a böngészőből. Előfordulhat azonban, hogy a felhasználó továbbra is be van jelentkezve más alkalmazásokba, amelyek az Azure AD B2C-t használják a hitelesítéshez. Ha engedélyezni szeretné, hogy az alkalmazások egyidejűleg írják alá a felhasználót, Azure AD B2C egy HTTP GET kérelmet küld az `LogoutUrl` összes olyan alkalmazás regisztrálásához, amelyhez a felhasználó jelenleg be van jelentkezve.
+Amikor átirányítja a felhasználót a Azure AD B2C kijelentkezési végpontra (a OAuth2 és az SAML protokollok esetében egyaránt), Azure AD B2C törli a felhasználó munkamenetét a böngészőből. Előfordulhat azonban, hogy a felhasználó továbbra is be van jelentkezve más alkalmazásokba, amelyek az Azure AD B2C-t használják a hitelesítéshez. Ha engedélyezni szeretné, hogy az alkalmazások egyidejűleg írják alá a felhasználót, Azure AD B2C egy HTTP GET kérelmet küld az összes olyan alkalmazás regisztrálásához, `LogoutUrl` amelyhez a felhasználó jelenleg be van jelentkezve.
 
 
-Az alkalmazásoknak válaszolnia kell erre a kérelemre a felhasználót azonosító munkamenetek törlésével `200` és a válasz visszaadásával. Ha az alkalmazásban szeretné támogatni az egyszeri kijelentkezést, az alkalmazás kódjában végre `LogoutUrl` kell hajtania egy alkalmazást. 
+Az alkalmazásoknak válaszolnia kell erre a kérelemre a felhasználót azonosító munkamenetek törlésével és a válasz visszaadásával `200` . Ha az alkalmazásban szeretné támogatni az egyszeri kijelentkezést, az alkalmazás kódjában végre kell hajtania egy `LogoutUrl` alkalmazást. 
 
 ## <a name="next-steps"></a>További lépések
 

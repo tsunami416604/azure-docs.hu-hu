@@ -8,10 +8,9 @@ ms.author: barbkess
 ms.reviewer: lcozzens
 ms.service: azure-app-configuration
 ms.openlocfilehash: 560a2df5946b9cfe1160864752595e86cc6eeb65
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82981221"
 ---
 # <a name="how-to-use-managed-identities-for-azure-app-configuration"></a>Felügyelt identitások használata az Azure-alkalmazások konfigurálásához
@@ -83,7 +82,7 @@ A következő lépések végigvezetik a felhasználó által hozzárendelt ident
     az appconfig create --name myTestAppConfigStore --location eastus --resource-group myResourceGroup --sku Free
     ```
 
-1. Hozzon létre egy felhasználó által hozzárendelt identitást a parancssori felület `myUserAssignedIdentity` használatával.
+1. Hozzon létre egy felhasználó által hozzárendelt identitást `myUserAssignedIdentity` a parancssori felület használatával.
 
     ```azurecli-interactive
     az identity create -resource-group myResourceGroup --name myUserAssignedIdentity
@@ -91,7 +90,7 @@ A következő lépések végigvezetik a felhasználó által hozzárendelt ident
 
     A parancs kimenetében jegyezze fel a `id` tulajdonság értékét.
 
-1. Futtassa az az [appconfig Identity assign] parancsot az új felhasználó által hozzárendelt identitás hozzárendeléséhez ehhez a konfigurációs tárolóhoz. Használja az előző lépésben feljegyzett `id` tulajdonság értékét.
+1. Futtassa az az [appconfig Identity assign] parancsot az új felhasználó által hozzárendelt identitás hozzárendeléséhez ehhez a konfigurációs tárolóhoz. Használja az `id` előző lépésben feljegyzett tulajdonság értékét.
 
     ```azurecli-interactive
     az appconfig identity assign --name myTestAppConfigStore --resource-group myResourceGroup --identities /subscriptions/[subscription id]/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myUserAssignedIdentity

@@ -8,10 +8,9 @@ ms.date: 05/07/2020
 ms.author: tisande
 ms.reviewer: sngun
 ms.openlocfilehash: 785c430347bc62a00eee80c977f2d6ce440c08db
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82982275"
 ---
 # <a name="javascript-query-api-in-azure-cosmos-db"></a>JavaScript lekérdezési API a Azure Cosmos DB
@@ -49,7 +48,7 @@ További információ: [Cosmos db kiszolgálóoldali JavaScript-dokumentáció](
 Az alábbi táblázat különböző SQL-lekérdezéseket és a kapcsolódó JavaScript-lekérdezéseket ismerteti. Az SQL-lekérdezésekhez hasonlóan a tulajdonságok (például a item.id) is megkülönböztetik a kis-és nagybetűket.
 
 > [!NOTE]
-> `__`(dupla aláhúzás) a JavaScript lekérdezési API `getContext().getCollection()` használatakor használt alias.
+> `__`(dupla aláhúzás) `getContext().getCollection()` a JavaScript lekérdezési API használatakor használt alias.
 
 |**SQL**|**JavaScript lekérdezési API**|**Leírás**|
 |---|---|---|

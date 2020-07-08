@@ -6,19 +6,18 @@ ms.topic: conceptual
 hide_comments: true
 hideEdit: true
 ms.openlocfilehash: 28870a197af07e964a50a06ffeef08f3b71451f4
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82891730"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric kiadások
 
-| <a href="https://github.com/Azure/Service-Fabric-Troubleshooting-Guides" target="blank">Hibaelhárítási útmutatók</a> 
-| a<a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-support" target="blank">támogatási lehetőségek</a> 
-| <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-versions" target="blank">támogatott verziók</a> 
-| <a href="https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0" target="blank">kód minták</a> <a href="https://github.com/Azure/service-fabric-issues" target="blank">követéséhez</a> 
-| 
+| <a href="https://github.com/Azure/Service-Fabric-Troubleshooting-Guides" target="blank">Hibaelhárítási útmutatók</a>  
+|  <a href="https://github.com/Azure/service-fabric-issues" target="blank">Probléma követése</a>  
+|  <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-support" target="blank">Támogatási lehetőségek</a>  
+|  <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-versions" target="blank">Támogatott verziók</a>  
+|  <a href="https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0" target="blank">Kód mintái</a>
 
 Ez a cikk további információkat tartalmaz a Service Fabric futtatókörnyezet és SDK-k legújabb kiadásairól és frissítéseiről.
 

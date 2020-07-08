@@ -10,10 +10,9 @@ ms.topic: reference
 ms.date: 11/08/2019
 ms.author: alkarche
 ms.openlocfilehash: 013001eebeec232cc60e31f1a850aeab4fd6c905
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82982241"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Azure Functions bemelegítő trigger
@@ -38,12 +37,12 @@ Vegye figyelembe, hogy a bemelegedési trigger csak a kibővített műveletekben
 
 ## <a name="trigger---example"></a>Trigger – példa
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Az alábbi példa egy [C#-függvényt](functions-dotnet-class-library.md) mutat be, amely minden egyes új példányon fut, amikor hozzáadják az alkalmazáshoz. Nincs szükség visszatérési érték attribútumra.
 
 
-* A függvénynek névvel ```warmup``` kell rendelkeznie (kis-és nagybetűk megkülönböztetése), és egy alkalmazás csak egy bemelegedési függvényt tartalmazhat.
+* A függvénynek névvel kell rendelkeznie ```warmup``` (kis-és nagybetűk megkülönböztetése), és egy alkalmazás csak egy bemelegedési függvényt tartalmazhat.
 * Ha a bemelegedési .NET Class Library-függvényt szeretné használni, győződjön meg arról, hogy a csomagra hivatkozik a **Microsoft. Azure. webjobs. extensions >= 3.0.5**
     * ```<PackageReference Include="Microsoft.Azure.WebJobs.Extensions" Version="3.0.5" />```
 
@@ -76,11 +75,11 @@ namespace WarmupSample
 # <a name="c-script"></a>[C#-parancsfájl](#tab/csharp-script)
 
 
-Az alábbi példa egy bemelegedési triggert mutat be egy *function. JSON* fájlban és egy [C# parancsfájl-függvényben](functions-reference-csharp.md) , amely minden egyes új példányon fut, amikor az alkalmazáshoz hozzáadva lesz.
+Az alábbi példa egy bemelegedési triggert mutat be egy *function.jsa* fájlban, és egy [C# parancsfájl-függvényt](functions-reference-csharp.md) , amely minden egyes új példányon fut, amikor hozzáadják az alkalmazáshoz.
 
 A függvénynek neve ```warmup``` (kis-és nagybetűk megkülönböztetése) kell, és az alkalmazásban csak egy bemelegedési függvény lehet.
 
-Itt látható a *function. JSON* fájl:
+A fájl *function.js* :
 
 ```json
 {
@@ -96,7 +95,7 @@ Itt látható a *function. JSON* fájl:
 
 A [konfigurációs](#trigger---configuration) szakasz ezeket a tulajdonságokat ismerteti.
 
-Az itt található C#-szkript a `HttpRequest`következőhöz kötődik:
+Az itt található C#-szkript a következőhöz kötődik `HttpRequest` :
 
 ```cs
 public static void Run(ILogger log)
@@ -107,11 +106,11 @@ public static void Run(ILogger log)
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Az alábbi példa egy bemelegedési triggert mutat be egy *function. JSON* fájlban, valamint egy [JavaScript-függvényt](functions-reference-node.md) , amely minden egyes új példányon futni fog, amikor az alkalmazáshoz kerül.
+Az alábbi példa egy bemelegedési triggert mutat be egy *function.jsa* fájlon, és egy [JavaScript-függvényt](functions-reference-node.md) , amely minden új példányon futni fog, amikor az alkalmazáshoz kerül.
 
-A függvénynek névvel ```warmup``` kell rendelkeznie (kis-és nagybetűk megkülönböztetése), és egy alkalmazás csak egy bemelegedési függvényt tartalmazhat.
+A függvénynek névvel kell rendelkeznie ```warmup``` (kis-és nagybetűk megkülönböztetése), és egy alkalmazás csak egy bemelegedési függvényt tartalmazhat.
 
-Itt látható a *function. JSON* fájl:
+A fájl *function.js* :
 
 ```json
 {
@@ -137,11 +136,11 @@ module.exports = async function (context, warmupContext) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Az alábbi példa egy bemelegedési triggert mutat be egy *function. JSON* fájlban és egy [Python-függvényben](functions-reference-python.md) , amely minden egyes új példányon futni fog, amikor az alkalmazáshoz kerül.
+Az alábbi példa egy bemelegedési triggert mutat be egy *function.jsa* fájlban, és egy [Python-függvényt](functions-reference-python.md) , amely minden új példányon fut, amikor az alkalmazáshoz kerül.
 
-A függvénynek névvel ```warmup``` kell rendelkeznie (kis-és nagybetűk megkülönböztetése), és egy alkalmazás csak egy bemelegedési függvényt tartalmazhat.
+A függvénynek névvel kell rendelkeznie ```warmup``` (kis-és nagybetűk megkülönböztetése), és egy alkalmazás csak egy bemelegedési függvényt tartalmazhat.
 
-Itt látható a *function. JSON* fájl:
+A fájl *function.js* :
 
 ```json
 {
@@ -172,7 +171,7 @@ def main(warmupContext: func.Context) -> None:
 
 Az alábbi példa egy bemelegedési triggert mutat be, amely akkor fut le, amikor az egyes új példányok bekerülnek az alkalmazásba.
 
-A függvénynek névvel `warmup` kell rendelkeznie (kis-és nagybetűk megkülönböztetése), és egy alkalmazás csak egy bemelegedési függvényt tartalmazhat.
+A függvénynek névvel kell rendelkeznie `warmup` (kis-és nagybetűk megkülönböztetése), és egy alkalmazás csak egy bemelegedési függvényt tartalmazhat.
 
 ```java
 @FunctionName("Warmup")
@@ -187,11 +186,11 @@ public void run( ExecutionContext context) {
 
 A [C# osztályok könyvtáraiban](functions-dotnet-class-library.md)az `WarmupTrigger` attribútum a függvény konfigurálására használható.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Ez a példa a [bemelegedési](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/src/WebJobs.Extensions/Extensions/Warmup/Trigger/WarmupTriggerAttribute.cs) attribútum használatát mutatja be.
 
-Vegye figyelembe, hogy a függvényt ```Warmup``` hívni kell, és egy alkalmazásban csak egy bemelegedési függvény lehet.
+Vegye figyelembe, hogy a függvényt hívni kell ```Warmup``` , és egy alkalmazásban csak egy bemelegedési függvény lehet.
 
 ```csharp
  [FunctionName("Warmup")]
@@ -224,13 +223,13 @@ A bemelegedési trigger nem támogatott a Javaban attribútumként.
 
 ## <a name="trigger---configuration"></a>Trigger – konfiguráció
 
-Az alábbi táblázat a *function. JSON* fájlban és az `WarmupTrigger` attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti.
+Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `WarmupTrigger` .
 
-|function. JSON-tulajdonság | Attribútum tulajdonsága |Leírás|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
-| **típusa** | n/a| Kötelező – a `warmupTrigger`következőre kell beállítani:. |
-| **direction** | n/a| Kötelező – a `in`következőre kell beállítani:. |
-| **név** | n/a| Kötelező – a függvény kódjában használt változó neve.|
+| **típusa** | n.a.| Kötelező – a következőre kell beállítani: `warmupTrigger` . |
+| **direction** | n.a.| Kötelező – a következőre kell beállítani: `in` . |
+| **név** | n.a.| Kötelező – a függvény kódjában használt változó neve.|
 
 ## <a name="trigger---usage"></a>Trigger – használat
 

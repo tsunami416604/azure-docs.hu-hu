@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: spelluru
 ms.openlocfilehash: f77a76d6acb67c739e0adf186d23e9b16ff7e2ee
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82928873"
 ---
 # <a name="azure-machine-learning-as-an-event-grid-source"></a>Azure Machine Learning Event Grid forrásként
@@ -24,7 +23,7 @@ Ez a cikk a Machine learning-munkaterület eseményeinek tulajdonságait és sé
 
 Azure Machine Learning a következő típusú eseményeket bocsátja ki:
 
-| Eseménytípus | Leírás |
+| Eseménytípus | Description |
 | ---------- | ----------- |
 | Microsoft. MachineLearningServices. ModelRegistered | Új modell vagy modell verziójának sikeres regisztrálásakor következik be. |
 | Microsoft. MachineLearningServices. ModelDeployed | Akkor következik be, amikor a modell (ek) sikeresen telepítve lett egy végpontra. |
@@ -190,14 +189,14 @@ Ez a szakasz egy példát mutat be, hogy az egyes események milyen módon nézn
 
 Egy esemény a következő legfelső szintű adattal rendelkezik:
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Típus | Description |
 | -------- | ---- | ----------- |
 | témakör | sztring | Az eseményforrás teljes erőforrás-elérési útja. Ez a mező nem írható. Az értéket az Event Grid adja meg. |
 | tulajdonos | sztring | Az esemény tárgyra mutató, a közzétevő által megadott elérési út. |
 | eventType | sztring | Az eseményforráshoz felvett eseménytípusok egyike. |
 | eventTime | sztring | Az esemény a szolgáltató UTC-ideje alapján történő létrehozásakor. |
 | id | sztring | Az esemény egyedi azonosítója. |
-| data | objektum | BLOB Storage-események |
+| adatok | objektum | BLOB Storage-események |
 | dataVersion | sztring | Az adatobjektum sémaverziója. A sémaverziót a közzétevő határozza meg. |
 | metadataVersion | sztring | Az esemény metaadatok sémaverziója. A legfelső szintű tulajdonságokra az Event Grid határozza meg a sémát. Az értéket az Event Grid adja meg. |
 
@@ -205,7 +204,7 @@ Az adatobjektum minden eseménytípus esetében a következő tulajdonságokkal 
 
 ### <a name="microsoftmachinelearningservicesmodelregistered"></a>Microsoft. MachineLearningServices. ModelRegistered
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Típus | Description |
 | -------- | ---- | ----------- |
 | Modellnév | sztring | A regisztrált modell neve. |
 | ModelVersion | sztring | A regisztrált modell verziója. |
@@ -214,7 +213,7 @@ Az adatobjektum minden eseménytípus esetében a következő tulajdonságokkal 
 
 ### <a name="microsoftmachinelearningservicesmodeldeployed"></a>Microsoft. MachineLearningServices. ModelDeployed
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Típus | Description |
 | -------- | ---- | ----------- |
 | ServiceName | sztring | A telepített szolgáltatás neve. |
 | ServiceComputeType | sztring | A központilag telepített szolgáltatás számítási típusa (pl. ACI, ak). |

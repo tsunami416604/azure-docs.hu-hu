@@ -9,17 +9,16 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/07/2020
 ms.openlocfilehash: 805b51bf4e6d8feab9539f660dfc72ca78b82d5c
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82982632"
 ---
 # <a name="exists-transformation-in-mapping-data-flow"></a>Létező átalakítás a leképezési adatfolyamban
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-A létező transzformáció egy sor-szűrési átalakítás, amely ellenőrzi, hogy az adatai más forrásban vagy adatfolyamban léteznek-e. A kimeneti adatfolyam tartalmazza a bal oldali stream összes olyan sorát, amely vagy létezik, vagy nem létezik a megfelelő streamben. A létező átalakítás hasonló a ```SQL WHERE EXISTS``` következőhöz ```SQL WHERE NOT EXISTS```: és.
+A létező transzformáció egy sor-szűrési átalakítás, amely ellenőrzi, hogy az adatai más forrásban vagy adatfolyamban léteznek-e. A kimeneti adatfolyam tartalmazza a bal oldali stream összes olyan sorát, amely vagy létezik, vagy nem létezik a megfelelő streamben. A létező átalakítás hasonló a következőhöz: ```SQL WHERE EXISTS``` és ```SQL WHERE NOT EXISTS``` .
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4vZKz]
 
@@ -54,7 +53,7 @@ Nem ajánlott letiltani a szórást a **kikapcsolási** lehetőséggel, kivéve,
 
 ## <a name="data-flow-script"></a>Adatfolyamszkript
 
-### <a name="syntax"></a>Szintaxis
+### <a name="syntax"></a>Syntax
 
 ```
 <leftStream>, <rightStream>
@@ -67,7 +66,7 @@ Nem ajánlott letiltani a szórást a **kikapcsolási** lehetőséggel, kivéve,
 
 ### <a name="example"></a>Példa
 
-Az alábbi példa egy nevű `checkForChanges` létező átalakítás, amely a streamet `NameNorm2` és a jobb `TypeConversions`oldali streamet veszi át.  A létező feltétel az a kifejezés `NameNorm2@EmpID == TypeConversions@EmpID && NameNorm2@Region == DimEmployees@Region` , amely igaz értéket ad vissza `EMPID` , `Region` ha az egyes streamek és az egyes adatfolyamok mindkét oszlopa megegyezik. Mivel a létezés ellenőrzése folyamatban van, `negate` hamis. Nem engedélyezzük az optimalizálás lapon a szórást, `broadcast` így az `'none'`érték van.
+Az alábbi példa egy nevű létező átalakítás, `checkForChanges` amely a streamet `NameNorm2` és a jobb oldali streamet veszi át `TypeConversions` .  A létező feltétel az a kifejezés `NameNorm2@EmpID == TypeConversions@EmpID && NameNorm2@Region == DimEmployees@Region` , amely igaz értéket ad vissza, ha az `EMPID` `Region` egyes streamek és az egyes adatfolyamok mindkét oszlopa megegyezik. Mivel a létezés ellenőrzése folyamatban van, `negate` hamis. Nem engedélyezzük az optimalizálás lapon a szórást, így az `broadcast` érték van `'none'` .
 
 Az Data Factory UX-ben ez az átalakítás az alábbi képhez hasonlóan néz ki:
 

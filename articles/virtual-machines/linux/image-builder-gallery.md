@@ -9,10 +9,9 @@ ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: danis
 ms.openlocfilehash: ccb622f786e6df5271684cf2aabba36cd2f5184f
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82930692"
 ---
 # <a name="preview-create-a-linux-image-and-distribute-it-to-a-shared-image-gallery"></a>Előzetes verzió: Linux-rendszerkép létrehozása és terjesztése megosztott képgyűjteménybe 
@@ -20,7 +19,7 @@ ms.locfileid: "82930692"
 Ebből a cikkből megtudhatja, hogyan használhatja az Azure rendszerkép-készítőt és az Azure CLI-t egy rendszerkép-verzió létrehozásához egy [megosztott rendszerkép](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries)-katalógusban, majd a rendszerkép globális terjesztését. Ezt a [Azure PowerShell](../windows/image-builder-gallery.md)használatával is elvégezheti.
 
 
-A rendszerkép konfigurálásához egy minta. JSON sablont fogunk használni. Az általunk használt. JSON fájl a következő: [helloImageTemplateforSIG. JSON](https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/1_Creating_a_Custom_Linux_Shared_Image_Gallery_Image/helloImageTemplateforSIG.json). 
+A rendszerkép konfigurálásához egy minta. JSON sablont fogunk használni. Az általunk használt. JSON fájl a következő: [helloImageTemplateforSIG.js](https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/1_Creating_a_Custom_Linux_Shared_Image_Gallery_Image/helloImageTemplateforSIG.json). 
 
 A rendszerkép megosztott képtárba való terjesztéséhez a sablon a [sharedImage](image-builder-json.md#distribute-sharedimage) használja a `distribute` sablon szakaszának értékeként.
 
