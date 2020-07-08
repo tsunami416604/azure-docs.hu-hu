@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: how-to
+ms.topic: troubleshooting
 ms.date: 03/15/2019
 ms.author: alkohli
-ms.openlocfilehash: 692944b792738b7102f41baa7ef0192cb580b95e
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 00aae3386b3f648eafdef31dccb640d8120f7ad8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84339382"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564002"
 ---
 # <a name="troubleshoot-your-azure-stack-edge-issues"></a>Az Azure Stack Edge-problémák elhárítása
 
@@ -84,6 +84,6 @@ A feltöltési és frissítési folyamat során észlelt hibákat a megfelelő h
     [!INCLUDE [data-box-edge-edge-upload-error-reference](../../includes/data-box-edge-gateway-upload-error-reference.md)]
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információk a [jelen kiadás ismert problémáiról](data-box-gateway-release-notes.md).

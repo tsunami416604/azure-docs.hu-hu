@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: c7bc818133a0bd708f9f850f0ad258dccc6c02cc
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: a4faab9ac6d5e1c39c1120e09dae792b95892d60
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84737988"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564405"
 ---
 # <a name="release-notes"></a>Kibocsátási megjegyzések
 
@@ -58,6 +58,9 @@ A **működési** fázis után a fürt egy másik 60 percet vár a fennmaradó 2
  
 ### <a name="create-new-service-principal-through-hdinsight"></a>Új egyszerű szolgáltatásnév létrehozása a HDInsight-en keresztül
 Korábban a fürt létrehozásával az ügyfelek létrehozhatnak egy új egyszerű szolgáltatást, amely hozzáfér a csatlakoztatott ADLS Gen 1 fiókhoz Azure Portal. A 15 2020. júniustól kezdődően az ügyfelek nem hozhatnak létre új szolgáltatásnevet a HDInsight-létrehozási munkafolyamatban, csak a meglévő egyszerű szolgáltatásnév támogatott. Lásd: [egyszerű szolgáltatásnév és tanúsítványok létrehozása Azure Active Directory használatával](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+
+### <a name="time-out-for-script-actions-with-cluster-creation"></a>Időtúllépés a fürt létrehozásával végzett parancsfájl-műveletekhez
+A HDInsight támogatja a fürt létrehozásával végzett parancsfájlok futtatását. Ettől a kiadástól kezdve a fürt létrehozásához szükséges összes parancsfájl **60 percen**belül befejeződik, vagy időtúllépés történik. A futó fürtökhöz küldött parancsfájl-műveletek nincsenek hatással a rendszerre. További információt [itt talál](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux#script-action-in-the-cluster-creation-process).
  
 ## <a name="upcoming-changes"></a>Közelgő változások
 Nincs szükség a közelgő változtatásokra, amelyekre figyelnie kell.
@@ -77,3 +80,7 @@ A Kafka verziója a 2.1.0 verzióról 2.1.1-re lett frissítve.
  
 A HDInsight 4,0 ad HDInsight 3,6 jelenlegi összetevő-verzióit [ebben a dokumentumban](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions) találja
 
+## <a name="known-issues"></a>Ismert problémák
+
+### <a name="hive-warehouse-connector-issue"></a>A méhkas Warehouse-összekötő hibája
+Ebben a kiadásban probléma van a méhkas Warehouse-összekötővel kapcsolatban. A javítás a következő kiadásban fog szerepelni. A jelen kiadás előtt létrehozott meglévő fürtöket nem érinti a rendszer. Ha lehetséges, ne dobja el és ne hozza létre újra a fürtöt. Ha további segítségre van szüksége, nyissa meg a támogatási jegyet.

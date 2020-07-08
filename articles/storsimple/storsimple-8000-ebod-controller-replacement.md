@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
-ms.openlocfilehash: 34a02181632c301f443ce48ade0de2013e2ae86c
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: bdafb4288bf818928aba43d09f15d4dd75092b24
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85508282"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564239"
 ---
 # <a name="replace-an-ebod-controller-on-your-storsimple-device"></a>EBOD-vezérlő cseréje a StorSimple-eszközön
 
@@ -35,7 +35,7 @@ Mielőtt elkezdené, vegye figyelembe a következő információkat:
 * A EBOD vezérlő könnyen cserélhető, és eltávolítható vagy lecserélhető. Ne távolítsa el a meghibásodott modult, amíg nincs csere. A helyettesítési folyamat elindításakor 10 percen belül be kell fejeznie.
 
 > [!IMPORTANT]
-> A StorSimple-összetevők eltávolításának vagy cseréjének megkísérlése előtt ellenőrizze, hogy megtekinti-e a [biztonsági ikon konvencióit](storsimple-safety.md#safety-icon-conventions) és az egyéb [biztonsági óvintézkedéseket](storsimple-safety.md).
+> A StorSimple-összetevők eltávolításának vagy cseréjének megkísérlése előtt ellenőrizze, hogy megtekinti-e a [biztonsági ikon konvencióit](storsimple-8000-safety.md#safety-icon-conventions) és az egyéb [biztonsági óvintézkedéseket](storsimple-8000-safety.md).
 
 ## <a name="remove-an-ebod-controller"></a>EBOD-vezérlő eltávolítása
 Mielőtt lecseréli a sikertelen EBOD vezérlő modult a StorSimple-eszközön, győződjön meg arról, hogy a másik EBOD vezérlő modul aktív és fut. A következő eljárás és táblázat ismerteti, hogyan távolíthatja el a EBOD vezérlő modult.
@@ -98,6 +98,6 @@ A következő eljárás és táblázat ismerteti, hogyan telepíthet egy EBOD ve
    | 8 |EBOD ház |
    | 9 |Energiaellátási egységek |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ a [StorSimple hardveres összetevők cseréjéről](storsimple-8000-hardware-component-replacement.md).
 

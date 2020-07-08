@@ -11,12 +11,12 @@ ms.date: 01/15/2019
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 73981cb0f124e1577690f893ead60e6375f16298
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 78899f44ba6610f17d19b025f61d968a629c8ad6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133148"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565892"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>IoT Hub kifejezések glosszáriuma
 
@@ -222,7 +222,7 @@ A IoT Hub egy teljes körűen felügyelt Azure-szolgáltatás, amely megbízhat�
 
 ## <a name="iot-hub-query-language"></a>IoT Hub lekérdezés nyelve
 
-A [IoT hub lekérdezési nyelv](iot-hub-devguide-query-language.md) egy SQL-szerű nyelv, amely lehetővé teszi a [](#job) és az eszközök lekérését.
+A [IoT hub lekérdezési nyelv](iot-hub-devguide-query-language.md) egy olyan SQL-szerű nyelv, amely lehetővé teszi a [feladatok](#job) és az eszközök ikrek általi lekérdezését.
 
 ## <a name="iot-hub-resource-rest-api"></a>Erőforrás-REST API IoT Hub
 
@@ -343,7 +343,7 @@ A jogkivonat-szolgáltatás használatával hitelesítési mechanizmust valósí
 
 ## <a name="twin-queries"></a>Dupla lekérdezés
 
-Az [eszközök és modulok két lekérdezése](iot-hub-devguide-query-language.md) az SQL-Like IoT hub lekérdezési nyelvet használja az eszközöktől az ikrekből vagy a modulokból származó adatok lekéréséhez. Ugyanezzel a IoT Hub lekérdezési nyelvvel kérheti le az IoT [](#job) hub futtatásával kapcsolatos információkat.
+Az [eszközök és modulok két lekérdezése](iot-hub-devguide-query-language.md) az SQL-Like IoT hub lekérdezési nyelvet használja az eszközöktől az ikrekből vagy a modulokból származó adatok lekéréséhez. Ugyanazt a IoT Hub lekérdezési nyelvet használhatja az IoT hub-on futó [feladatok](#job) adatainak lekéréséhez.
 
 ## <a name="twin-synchronization"></a>Kettős szinkronizálás
 

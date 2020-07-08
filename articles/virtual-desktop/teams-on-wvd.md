@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0b2ef8a944af9f80dd65ce75869bcf4e3156c63f
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 3fc44ca18f237fecd1c694e96f9ebc2d5b541757
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85254905"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564458"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>A Microsoft Teams használata a Windows rendszerű virtuális asztalon
 
@@ -135,7 +135,7 @@ A virtualizált környezetekben lévő csapatok használata eltér a nem virtual
 
 A virtualizált környezetekkel nem kapcsolatos ismert problémák esetén lásd: [támogatási csapatok a szervezetben](/microsoftteams/known-issues/)
 
-## <a name="feedback"></a>Visszajelzés
+## <a name="uservoice-site"></a>UserVoice-hely
 
 Küldjön visszajelzést a Microsoft Teams szolgáltatáshoz a Windows Virtual Desktopban a csapatok [UserVoice webhelyén](https://microsoftteams.uservoice.com/).
 

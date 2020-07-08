@@ -5,14 +5,14 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: conceptual
-ms.date: 10/24/2019
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 74e58c316651a1604984ac14c70a3a65d46d6d9f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 70026173d1cb932d30a59ea2b876ef22217a81bc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73518202"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563680"
 ---
 # <a name="azure-firewall-rule-processing-logic"></a>Az Azure Firewall szabályfeldolgozási logikája
 
@@ -20,7 +20,7 @@ Azure Firewall rendelkezik NAT-szabályokkal, hálózati szabályokkal és alkal
 
 ## <a name="network-rules-and-applications-rules"></a>Hálózati szabályok és alkalmazások szabályai
 
-Először alkalmazza a hálózati szabályokat, majd az alkalmazás szabályait. A szabályok leállnak. Tehát ha a hálózati szabályok egyezést találnak, akkor a rendszer nem dolgozza fel az alkalmazás szabályait.  Ha egyik hálózati szabály sem érvényes, és ha a csomag protokollja HTTP/HTTPS, a csomag ezután az alkalmazásszabályok szerint is ki lesz értékelve. Ha még mindig nem található egyezés, akkor a rendszer kiértékeli a csomagot az infrastruktúra-szabálygyűjtemény alapján. És ha továbbra sincs egyezés, a tűzfal a csomagot alapértelmezés szerint elutasítja.
+Először alkalmazza a hálózati szabályokat, majd az alkalmazás szabályait. A szabályok leállnak. Tehát ha a hálózati szabályok egyezést találnak, akkor a rendszer nem dolgozza fel az alkalmazás szabályait.  Ha egyetlen hálózati szabály sem egyezik, és ha a Packet protokoll HTTP/HTTPS, akkor a rendszer az alkalmazási szabályok alapján értékeli ki a csomagot. Ha még mindig nem található egyezés, akkor a rendszer kiértékeli a csomagot az infrastruktúra-szabálygyűjtemény alapján. Ha még mindig nincs egyezés, akkor a csomag alapértelmezés szerint meg van tagadva.
 
 ## <a name="nat-rules"></a>NAT-szabályok
 
@@ -34,4 +34,4 @@ Alapértelmezés szerint a házirend örökli a szülő házirend fenyegetésén
 
 ## <a name="next-steps"></a>További lépések
 
-- [További információ a Azure Firewall Manager előzetes verziójáról](overview.md)
+- [További információ a Azure Firewall Managerről](overview.md)

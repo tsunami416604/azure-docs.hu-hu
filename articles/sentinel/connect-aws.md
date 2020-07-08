@@ -1,6 +1,6 @@
 ---
 title: AWS-CloudTrail összekötése az Azure Sentinel szolgáltatással | Microsoft Docs
-description: Ismerje meg, hogyan csatlakoztatható az AWS CloudTrail-adatszolgáltatások az Azure Sentinelhez.
+description: Használja az AWS-összekötőt az AWS-erőforrásokhoz tartozó Azure Sentinel-hozzáférés delegálásához, az AWS CloudTrail és a Sentinel közötti megbízhatósági kapcsolat létrehozásához.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/27/2020
 ms.author: yelevin
-ms.openlocfilehash: 6f4b5713aed6bae574c30f555ef7f63307138a96
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: f8d296e62be9571bdedd5acf40d5547bae8c864e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84014978"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564575"
 ---
 # <a name="connect-azure-sentinel-to-aws-cloudtrail"></a>Az Azure Sentinel összekötése AWS-CloudTrail
 

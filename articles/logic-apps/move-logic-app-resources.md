@@ -1,17 +1,17 @@
 ---
-title: Logikai alkalmazások migrálása előfizetések, erőforráscsoportok vagy régiók között
+title: Logikai alkalmazások áthelyezése előfizetések, erőforráscsoportok vagy régiók között
 description: Logikai alkalmazások vagy integrációs fiókok áttelepíthetők más Azure-előfizetésekre,-erőforráscsoportok vagy-helyszínekre (régiók)
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 065bbc62d65d7e91728b10cd9f95b2e73ea03abc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d420f244b0d1e5ccf9a7aaa78c10f613cdbad38f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80878731"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564266"
 ---
 # <a name="move-logic-app-resources-to-other-azure-resource-groups-regions-or-subscriptions"></a>Logikai alkalmazás erőforrásainak áthelyezése más Azure-erőforráscsoportok,-régiók vagy-előfizetések között
 
@@ -86,7 +86,7 @@ A Logic apps üzembe helyezési sablonjaival kapcsolatos további információk�
 * [Áttekintés: üzembe helyezés automatizálása Azure Logic Appshez Azure Resource Manager sablonok használatával](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
 * [A logikai alkalmazás megkeresése, megnyitása és letöltése a Azure Portalból a Visual studióba](../logic-apps/manage-logic-apps-with-visual-studio.md)
 * [Azure Resource Manager-sablonok létrehozása a Azure Logic Appshoz](../logic-apps/logic-apps-create-azure-resource-manager-templates.md)
-* [Azure Logic Apps Azure Resource Manager sablonjainak üzembe helyezése](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md)
+* [Azure Resource Manager-sablonok üzembe helyezése Azure Logic Apps-alkalmazásokhoz](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md)
 
 ### <a name="related-resources"></a>Kapcsolódó források (lehet, hogy a cikkek angol nyelvűek)
 

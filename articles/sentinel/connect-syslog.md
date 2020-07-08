@@ -1,6 +1,6 @@
 ---
 title: Syslog-adatbázis összekötése az Azure Sentinel szolgáltatással | Microsoft Docs
-description: Ismerje meg, hogyan csatlakoztatható a syslog-adatbázis az Azure Sentinelhez.
+description: Csatlakoztasson bármely helyszíni készüléket, amely támogatja a syslog-t az Azure Sentinelhez egy Linux rendszerű gépen lévő ügynök használatával a készülék és a Sentinel között. 
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 73fd55fc24fd94dc88bba2f591c32480f77c7d5d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 65c4e5d9e0752379541063c8a80a4316196ad7c3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77588076"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565378"
 ---
 # <a name="connect-your-external-solution-using-syslog"></a>Külső megoldás összekötése a syslog használatával
 
@@ -38,7 +38,7 @@ További információ: [syslog-adatforrások Azure monitorban](../azure-monitor/
 > - Az ügynök több forrásból is gyűjthet naplókat, de a dedikált proxykiszolgálón kell telepítenie.
 > - Ha ugyanazon a virtuális gépen szeretné támogatni a CEF és a syslog összekötőit is, hajtsa végre az alábbi lépéseket az adatok duplikálása érdekében:
 >    1. A [CEF összekapcsolásához](connect-common-event-format.md)kövesse az utasításokat.
->    2. A syslog-adat összekapcsolásához lépjen a **Beállítások** > **munkaterület beállítások** > **Speciális beállítások** > **adat** > **syslog** elemre, és állítsa be a létesítményeket és azok prioritásait, hogy azok ne ugyanazok a létesítmények és tulajdonságok legyenek, amelyeket a CEF-konfigurációban használt. <br></br>Ha **az alábbi konfiguráció alkalmazása a saját gépekre**lehetőséget választja, akkor a rendszer ezeket a setings a munkaterülethez csatlakozó összes virtuális gépre alkalmazza.
+>    2. A syslog-adat összekapcsolásához lépjen a **Beállítások**  >  **munkaterület beállítások**  >  **Speciális beállítások**  >  **adat**  >  **syslog** elemre, és állítsa be a létesítményeket és azok prioritásait, hogy azok ne ugyanazok a létesítmények és tulajdonságok legyenek, amelyeket a CEF-konfigurációban használt. <br></br>Ha **az alábbi konfiguráció alkalmazása a saját gépekre**lehetőséget választja, akkor a rendszer ezeket a setings a munkaterülethez csatlakozó összes virtuális gépre alkalmazza.
 
 
 ## <a name="connect-your-syslog-appliance"></a>A syslog-berendezés összekötése
@@ -57,9 +57,9 @@ További információ: [syslog-adatforrások Azure monitorban](../azure-monitor/
 
 4. Válassza **a munkaterület speciális beállítások konfiguráció megnyitása**lehetőséget.
 
-5. A **Speciális beállítások** **panelen válassza ki az** > **adatsyslog**elemet. Ezután adja hozzá az összekötőhöz tartozó létesítményeket a gyűjtéshez.
+5. A **Speciális beállítások** **panelen válassza ki az**  >  **adatsyslog**elemet. Ezután adja hozzá az összekötőhöz tartozó létesítményeket a gyűjtéshez.
     
-    Adja hozzá azokat a létesítményeket, amelyeket a syslog-berendezés tartalmaz a naplójának fejlécében. Ezt a konfigurációt megtekintheti a syslog **-d** -ben a `/etc/rsyslog.d/security-config-omsagent.conf` mappában, és az **r-syslog** -ból `/etc/syslog-ng/security-config-omsagent.conf`.
+    Adja hozzá azokat a létesítményeket, amelyeket a syslog-berendezés tartalmaz a naplójának fejlécében. Ezt a konfigurációt megtekintheti a syslog **-d** -ben a `/etc/rsyslog.d/security-config-omsagent.conf` mappában, és az **r-syslog** -ból `/etc/syslog-ng/security-config-omsagent.conf` .
     
     Ha rendellenes SSH bejelentkezési észlelést szeretne használni a gyűjtött adatokkal, adja hozzá az **Auth** és a **authpriv**. További részletekért tekintse meg a [következő szakaszt](#configure-the-syslog-connector-for-anomalous-ssh-login-detection) .
 
@@ -100,7 +100,7 @@ Az észleléshez a syslog-adatösszekötő adott konfigurációja szükséges:
     
     Ha az eredményül kapott darabszám nulla, erősítse meg az összekötő konfigurációját, és hogy a figyelt számítógépek sikeres bejelentkezési tevékenységet hajtanak végre a lekérdezéshez megadott időszakra vonatkozóan.
     
-    Ha az eredményül kapott darabszám nagyobb nullánál, a syslog-adatok alkalmasak a rendellenes SSH-bejelentkezések észlelésére. Ezt az észlelést az **Analytics** >  -**szabály sablonjai** > **(előzetes verzió) rendellenes SSH-bejelentkezések észlelésével**engedélyezheti.
+    Ha az eredményül kapott darabszám nagyobb nullánál, a syslog-adatok alkalmasak a rendellenes SSH-bejelentkezések észlelésére. Ezt az észlelést az **Analytics**-  >   **szabály sablonjai**  >  **(előzetes verzió) rendellenes SSH-bejelentkezések észlelésével**engedélyezheti.
 
 ## <a name="next-steps"></a>További lépések
 Ebből a dokumentumból megtudhatta, hogyan kapcsolódhat a syslog helyszíni készülékekhez az Azure Sentinel szolgáltatáshoz. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/12/2020
-ms.openlocfilehash: 6199b2a322bc22f85d6fb8b422ea49c5f35f080e
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.openlocfilehash: 3399ace71d3a28ea903991e0439f1c9ddcc939d4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84753009"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565393"
 ---
 # <a name="documentation-resources-for-ai-enrichment-in-azure-cognitive-search"></a>Az AI-bővítés dokumentációs erőforrásai az Azure-ban Cognitive Search
 
@@ -23,7 +23,7 @@ A beépített feldolgozáshoz a Cognitive Services előképzett AI-modelljeit be
 
 Az alábbi lista a AI-bővítés dokumentációjának összevont listáját tartalmazza.
 
-## <a name="concepts"></a>Alapelvek
+## <a name="concepts"></a>Fogalmak
 
 + [AI-bővítések](cognitive-search-concept-intro.md)
 + [Készségek](cognitive-search-working-with-skillsets.md)
@@ -93,11 +93,11 @@ Az alábbi lista a AI-bővítés dokumentációjának összevont listáját tart
 ## <a name="apis"></a>API-k
 
 + [REST API](https://docs.microsoft.com/rest/api/searchservice/)
-  + [Készségkészlet létrehozása (API-Version = 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
-  + [Indexelő létrehozása (API-Version = 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
+  + [Készségkészlet létrehozása (API-Version = 2020-06-30)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
+  + [Indexelő létrehozása (API-Version = 2020-06-30)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
 
 ## <a name="see-also"></a>Lásd még
 
 + [Az Azure Cognitive Search REST API-jai](https://docs.microsoft.com/rest/api/searchservice/)
 + [Indexelők az Azure Cognitive Searchben](search-indexer-overview.md)
-+ [Mi az az Azure Cognitive Search?](search-what-is-azure-search.md)
++ [Mi az Azure Cognitive Search?](search-what-is-azure-search.md)

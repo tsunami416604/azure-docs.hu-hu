@@ -9,12 +9,12 @@ ms.author: flborn
 ms.date: 12/11/2019
 ms.topic: conceptual
 ms.service: azure-remote-rendering
-ms.openlocfilehash: 4854d5ff9d697a2bf082a788c0e761a2152b0294
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: d29500db5efd0abde4c9555fde9a7e3d5bbe070a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758707"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564982"
 ---
 # <a name="graphics-binding"></a>Grafikus kötés
 
@@ -27,7 +27,7 @@ A beállítás után a grafikus kötés hozzáférést biztosít a renderelt ké
 Az egységben a teljes kötést az `RemoteUnityClientInit` átadott struct kezeli `RemoteManagerUnity.InitializeManager` . A grafikus mód beállításához a `GraphicsApiType` mezőt a kiválasztott kötésre kell beállítani. A mező automatikusan ki lesz töltve attól függően, hogy van-e XRDevice. A viselkedés manuálisan felülbírálható a következő viselkedésekkel:
 
 * **2. HoloLens**: a [Windows vegyes valóság](#windows-mixed-reality) grafikájának kötése mindig használatban van.
-* **Flat UWP asztali alkalmazás**: a [Szimuláció](#simulation) mindig használatban van. Ha ezt a módot szeretné használni, kövesse az [oktatóanyag: Unity-projekt létrehozása a semmiből](../tutorials/unity/project-setup.md)című témakör lépéseit.
+* **Flat UWP asztali alkalmazás**: a [Szimuláció](#simulation) mindig használatban van.
 * **Unity Editor**: a [Szimuláció](#simulation) mindig használatban van, kivéve, ha egy WMR VR-fülhallgató csatlakozik, amely esetében az ARR le lesz tiltva, hogy az alkalmazás nem az ARR-vel kapcsolatos részeit lehessen elhárítani. Lásd még: [holografikus távelérés](../how-tos/unity/holographic-remoting.md).
 
 Az egység egyetlen további fontos része az [alapszintű kötés](#access)elérése, az alábbi összes további szakasz kihagyható.
@@ -233,4 +233,4 @@ else
 
 ## <a name="next-steps"></a>További lépések
 
-* [Oktatóanyag: Unity-projekt létrehozása a semmiből](../tutorials/unity/project-setup.md)
+* [Oktatóanyag: távolról megjelenített modellek megtekintése](../tutorials/unity/view-remote-models/view-remote-models.md)

@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: article
-ms.date: 02/18/2020
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: b946a360ced05500a4ef89cda7c623d8ae16658e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7a06111fbe38f167ddf3512fdb312d7de754a738
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77444575"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563569"
 ---
 # <a name="what-are-the-azure-firewall-manager-architecture-options"></a>Mik a Azure Firewall Manager architektúrájának lehetőségei?
 
@@ -37,14 +37,15 @@ A következő táblázat összehasonlítja ezt a két architektúrát, és segí
 |**Helyszíni kapcsolat**     |Akár 10 GB/s S2S-kapcsolatot VPN Gateway; ExpressRoute|Több skálázható VPN Gateway 20 GB/s és 1000 S2S-kapcsolattal; Expressz útvonal|
 |**Automatikus ág-kapcsolat a SDWAN használatával**      |Nem támogatott|Támogatott|
 |**Hubok régiónként**     |Régiónként több virtuális hálózat|Régiónként egyetlen virtuális központ. Több hub is lehetséges több virtuális WAN-vel|
-|**Azure Firewall – több nyilvános IP-cím**      |Ügyfél által megadott|Automatikusan generált. A GA elérhetővé tételéhez.|
-|**Azure Firewall Availability Zones**     |Támogatott|Előzetes verzióban nem érhető el. A GA elérhetővé tétele|
-|**Fejlett Internet-biztonság külső felektől származó biztonsági szolgáltatásként partnerként**     |Ügyfél által létesített és felügyelt VPN-kapcsolat a választott partneri szolgáltatással|Automatizált megbízható biztonsági partneri folyamattal és partner-felügyeleti felülettel|
+|**Azure Firewall – több nyilvános IP-cím**      |Ügyfél által megadott|Automatikusan generált|
+|**Azure Firewall Availability Zones**     |Támogatott|Egyelőre nem érhető el|
+|**Fejlett Internet-biztonság külső felektől származó biztonsági szolgáltatásként partnerként**     |Ügyfél által létesített és felügyelt VPN-kapcsolat a választott partneri szolgáltatással|Automatizált biztonsági partner-szolgáltatói folyamattal és partner-felügyeleti felülettel|
 |**Központosított irányítás a forgalom irányításához a központba**     |Ügyfél által felügyelt felhasználó által megadott útvonal|A BGP használatával támogatott|
+|**Több biztonsági szolgáltató támogatása**|A manuálisan konfigurált kényszerített bújtatás külső tűzfalakhoz való használata támogatott|Automatikus támogatás két biztonsági szolgáltatóhoz: Azure Firewall a privát forgalom szűréséhez és külső fél számára internetes szűréshez|
 |**Web Application Firewall az Application Gatewayen** |Virtual Network támogatott|Jelenleg támogatott a küllős hálózaton|
 |**Hálózati virtuális berendezés**|Virtual Network támogatott|Jelenleg támogatott a küllős hálózaton|
 
 ## <a name="next-steps"></a>További lépések
 
-- Tekintse át a [Azure Firewall Manager előzetes telepítésének áttekintését](deployment-overview.md)
+- Tekintse át a [Azure Firewall Manager üzembe helyezésének áttekintését](deployment-overview.md)
 - A [biztonságos virtuális hubok](secured-virtual-hub.md)megismerése.

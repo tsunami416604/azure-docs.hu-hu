@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 32d77b82b30411bd5b423f903c25392fd8e09e44
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 6ce4e308420fc3ea1928b44013a78d0ae57d2c35
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85080959"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85562377"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-10"></a>Frissítés az Azure Cognitive Search .NET SDK 10-es verziójára
 
@@ -22,7 +22,7 @@ Ha a [.net SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)9,0-
 
 Azure Search a 10-es verzióban az Azure Cognitive Search lett átnevezve, de a névterek és a csomagok nevei változatlanok. Az SDK korábbi verziói (9,0-es és korábbi verziók) továbbra is a korábbi nevet használják. További információ az SDK használatáról, beleértve a példákat: az [Azure Cognitive Search használata .NET-alkalmazásokból](search-howto-dotnet-sdk.md).
 
-A 10-es verzió számos funkciót és hibajavítást tartalmaz, így a REST API verziójának legújabb kiadásával azonos működési szintre helyezheti `2019-05-06` . Olyan esetekben, amikor a változás megszakítja a meglévő kódot, végigvezeti a [probléma megoldásához szükséges lépéseken](#UpgradeSteps).
+A 10-es verzió számos funkciót és hibajavítást tartalmaz, így a REST API verziószámával megegyező működési szintre helyezheti `2019-05-06` . Olyan esetekben, amikor a változás megszakítja a meglévő kódot, végigvezeti a [probléma megoldásához szükséges lépéseken](#UpgradeSteps).
 
 > [!NOTE]
 > Ha a 8,0-es vagy régebbi verziót használja, először frissítsen a 9-es verzióra, majd frissítsen a 10-es verzióra. Útmutatásért lásd: [a Azure Search .net SDK 9-es verziójára való frissítés](search-dotnet-sdk-migration-version-9.md) .
@@ -32,7 +32,7 @@ A 10-es verzió számos funkciót és hibajavítást tartalmaz, így a REST API 
 <a name="WhatsNew"></a>
 
 ## <a name="whats-new-in-version-10"></a>A 10-es verzió újdonságai
-Az Azure Cognitive Search .NET SDK 10-es verziója a REST API () legújabb általánosan elérhető verzióját célozza meg a `2019-05-06` következő frissítésekkel:
+Az Azure Cognitive Search .NET SDK-célok 10-ös verziója REST API a `2019-05-06` következő frissítésekkel:
 
 * Két új szaktudás bevezetése – a [feltételes szaktudás](cognitive-search-skill-conditional.md) és a [szöveg fordítási](cognitive-search-skill-text-translation.md)képességei.
 * A rendszer átalakította a [formálói képességek](cognitive-search-skill-shaper.md) bemeneteit, hogy az összevont környezetek összevonását is elférjen. További információt ebben a példában a [JSON-definícióban](https://docs.microsoft.com/azure/search/cognitive-search-skill-shaper#scenario-3-input-consolidation-from-nested-contexts)talál.

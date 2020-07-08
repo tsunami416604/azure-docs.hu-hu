@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 2cf997cbe16f7ff4bfe75f90d3797ec97e7d5069
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 2cb143e08e3901b1d0ab7181df68f06887069012
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84808757"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563262"
 ---
 # <a name="troubleshoot"></a>Hibaelhárítás
 
@@ -152,7 +152,7 @@ Ha a megjelenített rendszerkép a következőképpen néz ki: ![ Pepita ezt ](.
 
 ## <a name="the-rendered-image-in-unity-is-upside-down"></a>A megjelenített rendszerkép (Unity)
 
-Ügyeljen arra, hogy pontosan kövesse a [projekt telepítési útmutatóját](../tutorials/unity/project-setup.md) . A lefelé irányuló kép azt jelzi, hogy az egységnek a képernyőn kívüli megjelenítési cél létrehozásához kell tartoznia. Ez a viselkedés jelenleg nem támogatott, és óriási teljesítménybeli hatást eredményez a 2. HoloLens.
+Ügyeljen arra, hogy kövesse az [Unity oktatóanyagot: a távoli modellek pontosan megtekinthetők](../tutorials/unity/view-remote-models/view-remote-models.md) . A lefelé irányuló kép azt jelzi, hogy az egységnek a képernyőn kívüli megjelenítési cél létrehozásához kell tartoznia. Ez a viselkedés jelenleg nem támogatott, és óriási teljesítménybeli hatást eredményez a 2. HoloLens.
 
 A probléma oka a MSAA, a HDR vagy a post Processing engedélyezése lehet. Győződjön meg arról, hogy az alacsony színvonalú profil van kiválasztva, és alapértelmezettként van beállítva az egységben. Ehhez lépjen a *> projekt beállításainak szerkesztése... > minőség*gombra.
 

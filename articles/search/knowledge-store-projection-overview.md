@@ -1,24 +1,21 @@
 ---
-title: Vetületi fogalmak (előzetes verzió)
+title: Kivetítési fogalmak
 titleSuffix: Azure Cognitive Search
-description: A teljes szöveges kereséstől eltérő helyzetekben mentse és alakítsa ki a dúsított adatait a mesterséges intelligencia-bővítési folyamatból. A Knowledge Store jelenleg nyilvános előzetes verzióban érhető el.
+description: A teljes szöveges kereséstől eltérő helyzetekben mentse és alakítsa ki a dúsított adatait a mesterséges intelligencia-bővítési folyamatból.
 manager: nitinme
 author: vkurpad
 ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/08/2020
-ms.openlocfilehash: 894fc6efc99eb7fcc17f2199270c08bc3cee8e8e
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.date: 06/30/2020
+ms.openlocfilehash: 22db4f95bacd926208ac7edf3306cd136d81b00e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84750326"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565184"
 ---
 # <a name="knowledge-store-projections-in-azure-cognitive-search"></a>"Kivetítések" ismerete az Azure Cognitive Search
-
-> [!IMPORTANT] 
-> A Knowledge Store jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül érhetők el, és éles számítási feladatokhoz nem ajánlott. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A [REST API 2019-05-06-es verziójának előzetes verziója](search-api-preview.md) előzetes funkciókat biztosít. Jelenleg korlátozott a portál támogatása, és nincs .NET SDK-támogatás.
 
 Az Azure Cognitive Search lehetővé teszi a tartalom-bővítést a beépített kognitív képességek és egyéni képességek révén az indexelés részeként. A dúsítások olyan új adatokat hoznak létre, ahol még nem létezett adatok: információk kinyerése a képekből, az érzelmek észlelése, a legfontosabb kifejezések és a szövegből származó entitások, hogy csak néhányat említsünk. A dúsítás a nem differenciált szöveghez is felveszi a struktúrát. Ezen folyamatok mindegyike olyan dokumentumokat eredményez, amelyek a teljes szöveges keresést hatékonyabbá teszik. Számos esetben a bővített dokumentumok a kereséstől eltérő forgatókönyvek esetén hasznosak, például a Knowledge Mining esetében.
 

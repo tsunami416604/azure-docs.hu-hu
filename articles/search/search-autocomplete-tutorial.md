@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 60e9a435d705ee0fee6509e92cdcb056ac7ab609
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 004f1ea55bcda68485d8b11ed472b6cab2ca7545
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81758108"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85562479"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps"></a>Automatikus kiegészítés és javaslatok hozzáadása az ügyfélalkalmazások számára
 
@@ -34,7 +34,7 @@ A cikk további része a lekérdezésekre és az ügyfél kódjára összpontos�
 A kérelem elemei közé tartozik az egyik keresési típusú API, egy részleges lekérdezés és egy javaslat. A következő parancsfájl egy kérelem összetevőit mutatja be, az automatikus kiegészítési REST API használatával példaként.
 
 ```http
-POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2019-05-06
+POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2020-06-30
 {
   "search": "minecraf",
   "suggesterName": "sg"
@@ -68,10 +68,10 @@ A javaslatok esetében tovább pontosíthatja a választ, hogy elkerülje a dupl
 
 | Paraméter | Használat |
 |-----------|-------|
-| **$select** | Ha egy javaslat több **sourceFields** rendelkezik, akkor a **$Select** használatával kiválaszthatja, hogy melyik mező járul hozzá`$select=GameTitle`az értékekhez (). |
+| **$select** | Ha egy javaslat több **sourceFields** rendelkezik, akkor a **$Select** használatával kiválaszthatja, hogy melyik mező járul hozzá az értékekhez ( `$select=GameTitle` ). |
 | **searchFields** | A lekérdezés korlátozása adott mezőkre. |
-| **$filter** | Egyezési feltételek alkalmazása az eredményhalmaz (`$filter=Category eq 'ActionAdventure'`) értékre. |
-| **$top** | Korlátozza az eredményeket egy adott számra (`$top=5`).|
+| **$filter** | Egyezési feltételek alkalmazása az eredményhalmaz () értékre `$filter=Category eq 'ActionAdventure'` . |
+| **$top** | Korlátozza az eredményeket egy adott számra ( `$top=5` ).|
 
 ## <a name="add-user-interaction-code"></a>Felhasználói interakciós kód hozzáadása
 

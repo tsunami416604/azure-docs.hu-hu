@@ -1,6 +1,6 @@
 ---
 title: Symantec ICDx-adatkapcsolatok összekötése az Azure Sentinel szolgáltatással | Microsoft Docs
-description: Ismerje meg, hogyan csatlakoztathatók a Symantec ICDx-adatszolgáltatások az Azure Sentinelhez.
+description: Megtudhatja, hogyan használhatja a Symantec ICDx-összekötőt az összes Symantec biztonsági megoldás naplójának az Azure Sentinel használatával történő egyszerű összekapcsolásához.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: cac63aee5f9ebf3859b138e6444e40b1e2dd30f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 67fc80b5f34cf3a98fd39ddc352cb2dd9a5e7151
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77588093"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564911"
 ---
 # <a name="connect-your-symantec-icdx-appliance"></a>A Symantec ICDx-berendezés összekötése 
 

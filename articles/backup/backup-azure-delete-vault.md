@@ -3,12 +3,12 @@ title: Microsoft Azure Recovery Services-tároló törlése
 description: Ebből a cikkből megtudhatja, hogyan távolíthatja el a függőségeket, majd törölhet egy Azure Backup Recovery Services-tárolót.
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: 986b3c3ef5bd3903a764726281b6bd0a25ba76a4
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: e6aaab80cabbdd8a58d8adc64409bf1bcd8ebf03
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85506827"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563113"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Azure Backup Recovery Services-tároló törlése
 
@@ -16,10 +16,10 @@ Ez a cikk egy [Azure Backup](backup-overview.md) Recovery Services-tároló tör
 
 ## <a name="before-you-start"></a>Előkészületek
 
-Recovery Services tároló nem törölhető a következő függőségek bármelyikével:
+Az alábbi függőségek egyike esetén sem törölhet Recovery Services-tárolót:
 
 - Védett adatforrásokat (például IaaS virtuális gépeket, SQL-adatbázisokat, Azure-fájlmegosztást stb.) tartalmazó tárolót nem lehet törölni.  
-- Olyan tárolót nem lehet törölni, amely biztonsági másolatokat tartalmaz. A biztonsági másolatok törlését követően a rendszer a törölt állapotba lép.
+- Olyan tárolót nem lehet törölni, amely biztonsági másolatokat tartalmaz. A biztonságimásolat-adatok a törlést követően az adatok állapota helyreállíthatóan törölt lesz.
 - Nem törölhet olyan tárolót, amely biztonsági mentési állapotot tartalmaz a törölt törlési állapotban.
 - Regisztrált Storage-fiókkal rendelkező tárolót nem lehet törölni.
 
@@ -90,7 +90,7 @@ Először olvassa el az első **[lépések](#before-you-start)** szakaszt a füg
 
       - A MABS vagy a DPM lapon válassza a **biztonsági mentési felügyeleti kiszolgálók**lehetőséget. Ezután válassza ki a törölni kívánt kiszolgálót.
 
-          ![A MABS válassza ki a tárolót az irányítópult megnyitásához.](./media/backup-azure-delete-vault/delete-backup-management-servers.png)
+          ![A MABS vagy DPM válassza ki a tárolót az irányítópult megnyitásához.](./media/backup-azure-delete-vault/delete-backup-management-servers.png)
 
 3. A **Törlés** panel figyelmeztető üzenettel jelenik meg.
 
@@ -114,7 +114,7 @@ Először olvassa el az első **[lépések](#before-you-start)** szakaszt a füg
 A folyamat befejezése után törölheti a biztonsági mentési elemeket a felügyeleti konzolról:
 
 - [Biztonsági másolati elemek törlése a MARS felügyeleti konzolról](#delete-backup-items-from-the-mars-management-console)
-- [Biztonsági másolati elemek törlése a MABS felügyeleti konzolról](#delete-backup-items-from-the-mabs-management-console)
+- [Biztonsági másolati elemek törlése a MABS vagy a DPM felügyeleti konzolról](#delete-backup-items-from-the-mabs-or-dpm-management-console)
 
 ### <a name="delete-backup-items-from-the-mars-management-console"></a>Biztonsági másolati elemek törlése a MARS felügyeleti konzolról
 
@@ -142,12 +142,12 @@ A folyamat befejezése után törölheti a biztonsági mentési elemeket a felü
 
 A helyszíni biztonsági mentési elemek törlését követően kövesse a portál következő lépéseit.
 
-### <a name="delete-backup-items-from-the-mabs-management-console"></a>Biztonsági másolati elemek törlése a MABS felügyeleti konzolról
+### <a name="delete-backup-items-from-the-mabs-or-dpm-management-console"></a>Biztonsági másolati elemek törlése a MABS vagy a DPM felügyeleti konzolról
 
 >[!NOTE]
 >Ha a biztonsági mentés leállítása nélkül törölte vagy elvesztette a forrás gépet, a következő ütemezett biztonsági mentés sikertelen lesz. A régi helyreállítási pont a szabályzatnak megfelelően lejár, de az utolsó egyszeri helyreállítási pont mindig megmarad, amíg le nem állítja a biztonsági mentést, és nem törli az adatvesztést. Ezt a [szakasz](#delete-protected-items-on-premises)lépéseit követve teheti meg.
 
-A MABS felügyeleti konzolon két módszer használható a biztonsági mentési elemek törlésére.
+A MABS vagy a DPM felügyeleti konzolról kétféleképpen törölhet biztonsági másolati elemeket.
 
 #### <a name="method-1"></a>1. módszer
 
@@ -171,7 +171,7 @@ A védelem leállításához és a biztonsági másolatok állapotának törlés
 
 #### <a name="method-2"></a>2. módszer
 
-Nyissa meg a **MABS felügyeleti** konzolt. Az **adatvédelmi módszer kiválasztása**területen törölje a jelet a szeretnék **online védelem** jelölőnégyzetből.
+Nyissa meg a **MABS-kezelő** vagy a **DPM felügyeleti** konzolt. Az **adatvédelmi módszer kiválasztása**területen törölje a jelet a szeretnék **online védelem** jelölőnégyzetből.
 
   ![Válassza ki az adatvédelmi módszert.](./media/backup-azure-delete-vault/data-protection-method.png)
 

@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
-ms.topic: how-to
+ms.topic: troubleshooting
 ms.date: 06/14/2019
 ms.author: alkohli
-ms.openlocfilehash: 48a23c483ab4338492a407b60f3a5dfc95c0e680
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 35b4b206de9c16d66387135b0ca75b6aaeb7c744
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84607329"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565004"
 ---
 # <a name="use-logs-to-troubleshoot-validation-issues-in-azure-data-box-disk"></a>A Azure Data Box Disk érvényesítési problémáinak elhárítása naplók használatával
 
@@ -21,7 +21,7 @@ Ez a cikk Microsoft Azure Data Box Diskre vonatkozik. A cikk azt ismerteti, hogy
 
 ## <a name="validation-tool-log-files"></a>Ellenőrző eszköz naplófájljai
 
-Ha az [ellenőrzési eszközzel](data-box-disk-deploy-copy-data.md#validate-data)ellenőrzi a lemezeken lévő adatellenőrzéseket, a rendszer egy *error. xml fájlt* hoz létre a hibák naplózásához. A naplófájl a `Drive:\DataBoxDiskImport\logs` meghajtó mappájában található. Az érvényesítés futtatásakor a rendszer a hibanapló hivatkozását is megadja.
+Ha az [ellenőrzési eszközzel](data-box-disk-deploy-copy-data.md#validate-data)ellenőrzi a lemezeken lévő adatellenőrzéseket, a rendszer létrehoz egy *error.xml* a hibák naplózásához. A naplófájl a `Drive:\DataBoxDiskImport\logs` meghajtó mappájában található. Az érvényesítés futtatásakor a rendszer a hibanapló hivatkozását is megadja.
 
 <!--![Validation tool with link to error log](media/data-box-disk-troubleshoot/validation-tool-link-error-log.png)-->
 
@@ -71,9 +71,9 @@ Ha több munkamenetet is futtat az ellenőrzéshez, a rendszer egy naplófájlt 
 
 ## <a name="validation-tool-errors"></a>Ellenőrző eszköz hibái
 
-A *error. XML* fájlban található hibák a megfelelő ajánlott műveletekkel együtt a következő táblázatban vannak összefoglalva.
+A következő táblázat összegzi a *error.xmlban* szereplő hibákat a megfelelő javasolt műveletekkel.
 
-| Hibakód| Leírás                       | Ajánlott műveletek               |
+| Hibakód| Description                       | Ajánlott műveletek               |
 |------------|--------------------------|-----------------------------------|
 | `None` | Az adatellenőrzés sikeresen megtörtént. | Semmit nem kell tenni. |
 | `InvalidXmlCharsInPath` |Nem sikerült létrehozni a jegyzékfájlt, mert a fájl elérési útja érvénytelen karaktereket tartalmaz. | A folytatáshoz távolítsa el ezeket a karaktereket.  |
@@ -94,6 +94,6 @@ A *error. XML* fájlban található hibák a megfelelő ajánlott műveletekkel 
 | `NonVhdFileNotSupportedForManagedDisk` | Nem VHD-fájl nem tölthető fel felügyelt lemezként. |Távolítsa el a nem VHD-fájlokat a `ManagedDisk` mappából, mivel ezek nem támogatottak, vagy helyezze át ezeket a fájlokat egy `PageBlob` mappába. Próbálja megismételni az ellenőrzést. |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az adatfeltöltési hibák](data-box-disk-troubleshoot-upload.md)elhárítása.
