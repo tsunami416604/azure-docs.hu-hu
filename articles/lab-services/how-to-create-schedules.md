@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan hozhat létre ütemterveket a tanterem Labs szo
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: d6dcdd8d09c2c71c2d41aebd358639883ccfb33d
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85445780"
 ---
 # <a name="create-and-manage-schedules-for-classroom-labs-in-azure-lab-services"></a>Tantermi Labs-ütemtervek létrehozása és kezelése Azure Lab Services 

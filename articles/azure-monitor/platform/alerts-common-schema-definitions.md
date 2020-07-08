@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
 ms.openlocfilehash: 951894bcd047d93809b41f47213ad670823a27e0
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85445372"
 ---
 # <a name="common-alert-schema-definitions"></a>Gyakori riasztásiséma-definíciók
@@ -71,7 +71,7 @@ Minden riasztási példány leírja az érintett erőforrást és a riasztás ok
 
 ## <a name="essentials"></a>Alapvető erőforrások
 
-| Mező | Leírás|
+| Mező | Description|
 |:---|:---|
 | alertId | A riasztási példány egyedi azonosítására szolgáló GUID. |
 | alertRule | Annak a riasztási szabálynak a neve, amely a riasztási példányt generálta. |

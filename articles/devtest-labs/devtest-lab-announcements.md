@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan adhat hozzá hirdetményt laborhoz Azure DevTes
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: bac2b0a4e33a01977418b36ce6e3726999d10ed5
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85478994"
 ---
 # <a name="post-an-announcement-to-a-lab-in-azure-devtest-labs"></a>Hirdetmény küldése a laborba Azure DevTest Labs
@@ -149,7 +149,7 @@ Az alábbi példában látható módon megadhat egy bejelentést Azure Resource 
 
 A következő módszerek egyikével telepítheti Azure Resource Manager-sablont:
 
-- [Azure Portal](../azure-resource-manager/templates/deploy-portal.md)
+- [Azure Portalra](../azure-resource-manager/templates/deploy-portal.md)
 - [Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
 - [Azure CLI](../azure-resource-manager/templates/deploy-cli.md)
 - [REST API](../azure-resource-manager/templates/deploy-rest.md)

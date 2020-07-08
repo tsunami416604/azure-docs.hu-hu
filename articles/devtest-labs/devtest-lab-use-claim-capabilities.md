@@ -4,10 +4,10 @@ description: Ismerkedjen meg a Azure DevTest Labs jogcímek/jogcímek funkcióin
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 73ed3c0b94a66f5d17b5c8e2561c65bb48579aa1
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85476529"
 ---
 # <a name="use-claim-capabilities-in-azure-devtest-labs"></a>Jogcím-képességek használata Azure DevTest Labs

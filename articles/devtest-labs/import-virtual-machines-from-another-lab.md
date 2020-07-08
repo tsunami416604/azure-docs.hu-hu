@@ -4,10 +4,10 @@ description: Ez a cikk azt ismerteti, hogyan importálhat virtuális gépeket eg
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 0f664a0ae399575ee936565adaf7364fd1c5ce5c
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85475934"
 ---
 # <a name="import-virtual-machines-from-another-lab-in-azure-devtest-labs"></a>Virtuális gépek importálása egy másik laborból Azure DevTest Labs
@@ -53,7 +53,7 @@ Ennek a PowerShell-parancsfájlnak a végrehajtásához meg kell adnia a forrás
 ```
 
 ### <a name="use-powershell-to-import-all-vms-in-the-source-lab"></a>A PowerShell használata az összes virtuális gép importálásához a forrás laborban
-Ha nincs megadva a forrásként szolgáló virtuális gép, a parancsfájl automatikusan importálja az összes virtuális gépet a DevTest Labs-ben.  Példa:
+Ha nincs megadva a forrásként szolgáló virtuális gép, a parancsfájl automatikusan importálja az összes virtuális gépet a DevTest Labs-ben.  Például:
 
 ```powershell
 ./ImportVirtualMachines.ps1 -SourceSubscriptionId "<ID of the subscription that contains the source lab>" `

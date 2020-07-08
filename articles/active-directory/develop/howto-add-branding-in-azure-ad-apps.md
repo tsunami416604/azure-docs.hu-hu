@@ -14,10 +14,10 @@ ms.author: ryanwi
 ms.reviewer: arielgo
 ms.custom: aaddev, signin_art
 ms.openlocfilehash: c11bbe4aab064c8c1f32cf273cd3e0b6c2a3ae8f
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85478195"
 ---
 # <a name="branding-guidelines-for-applications"></a>Védjegyzési útmutató az alkalmazásokhoz
@@ -67,7 +67,7 @@ Miután a rendszergazdák beleegyeznek az alkalmazásba, választhatják, hogy h
 
 ![A Microsoft emblémát és a "Hozzáadás a saját szervezethez" szöveget megjelenítő gomb](./media/howto-add-branding-in-azure-ad-apps/add-to-my-org.png)
 
-Gombok használata helyett inkább magyarázó szövegek írását ajánljuk. Példa:
+Gombok használata helyett inkább magyarázó szövegek írását ajánljuk. Például:
 
 > *Ha már használja az Office 365-et vagy más üzleti szolgáltatást a Microsofttól, megadhatja <your_app_name> hozzáférést a szervezet adataihoz. Ez lehetővé teszi, hogy a felhasználók hozzáférhessenek <your_app_name> a meglévő munkahelyi fiókjaikkal.*
 

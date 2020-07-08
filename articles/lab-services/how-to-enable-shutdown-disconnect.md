@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan engedélyezheti vagy tilthatja le a virtuális 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 0c5c22d5e4a9d66413e37cce095f5497915bd122
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85445712"
 ---
 # <a name="enable-automatic-shutdown-of-vms-on-disconnect"></a>Virtuális gépek automatikus leállításának engedélyezése a kapcsolat bontásakor

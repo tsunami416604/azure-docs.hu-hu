@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 5eb30f7dcf4b459b0af0bd8de965971fbbe44863
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85477651"
 ---
 # <a name="avoid-page-reloads-when-acquiring-and-renewing-tokens-silently-using-msaljs"></a>Kerülje a lapok újratöltését, ha a tokenek beszerzése és megújítása csendesen a MSAL.js
@@ -35,7 +35,7 @@ Ha el szeretné kerülni, hogy a teljes alkalmazás újratöltődik újra, vagy 
 
 ## <a name="initialization-in-your-main-app-file"></a>Inicializálás a fő alkalmazás fájljában
 
-Ha az alkalmazás úgy van strukturálva, hogy az alkalmazás inicializálási, útválasztási és egyéb elemeinek definiálására egy központi JavaScript-fájl van, akkor az alkalmazás moduljait feltételesen is betöltheti, attól függően, hogy az alkalmazás betöltődik-e `iframe` vagy sem. Példa:
+Ha az alkalmazás úgy van strukturálva, hogy az alkalmazás inicializálási, útválasztási és egyéb elemeinek definiálására egy központi JavaScript-fájl van, akkor az alkalmazás moduljait feltételesen is betöltheti, attól függően, hogy az alkalmazás betöltődik-e `iframe` vagy sem. Például:
 
 A AngularJS: app.js
 

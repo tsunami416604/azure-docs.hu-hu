@@ -14,10 +14,10 @@ ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
 ms.openlocfilehash: f6816da35aad51e88449361d2a80542c4349ffac
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85479419"
 ---
 # <a name="android-microsoft-authentication-library-configuration-file"></a>Android Microsoft Authentication Library konfigurációs fájl
@@ -341,7 +341,7 @@ Az alábbi példa egy alapszintű konfigurációt mutat be, amely meghatározza 
 ## <a name="how-to-use-a-configuration-file"></a>Konfigurációs fájl használata
 
 1. Hozzon létre egy konfigurációs fájlt. Javasoljuk, hogy hozza létre az egyéni konfigurációs fájlt a alkalmazásban `res/raw/auth_config.json` . De tetszőleges helyre helyezheti.
-2. Adja meg a MSAL, hogy hol kell megkeresnie a konfigurációt a létrehozásakor `PublicClientApplication` . Példa:
+2. Adja meg a MSAL, hogy hol kell megkeresnie a konfigurációt a létrehozásakor `PublicClientApplication` . Például:
 
    ```java
    //On Worker Thread

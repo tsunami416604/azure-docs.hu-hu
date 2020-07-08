@@ -4,10 +4,10 @@ description: Ez a cikk azt ismerteti, hogyan konfigurálhatja saját kulcsát az
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: 2d82fc8c962496246196331c7d191c0fc057694f
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85479827"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Ügyfél által felügyelt kulcsok konfigurálása az Azure Event Hubs-adatok inaktív titkosításához a Azure Portal használatával
@@ -94,14 +94,14 @@ Az alábbi lépéseket követve engedélyezheti a naplók számára az ügyfél 
 ## <a name="log-schema"></a>Napló sémája 
 Az összes napló JavaScript Object Notation (JSON) formátumban van tárolva. Minden bejegyzés tartalmaz egy karakterlánc-mezőt, amely az alábbi táblázatban ismertetett formátumot használja. 
 
-| Name (Név) | Leírás |
+| Name | Description |
 | ---- | ----------- | 
 | Feladatnév | A sikertelen feladat leírása. |
 | Tevékenységazonosító | A nyomon követéshez használt belső azonosító. |
 | category | Meghatározza a feladat besorolását. Ha például a kulcstartó kulcsa le van tiltva, akkor az egy információs kategória lenne, vagy ha egy kulcs nem csomagolható ki, a hiba a következő lehet:. |
 | resourceId | Erőforrás-azonosító Azure Resource Manager |
 | keyVault | A Key Vault teljes neve. |
-| key | Az Event Hubs névtér titkosításához használt kulcsnév. |
+| kulcs | Az Event Hubs névtér titkosításához használt kulcsnév. |
 | version | A használt kulcs verziószáma. |
 | művelet | A Key vaultban a kulcsban végrehajtott művelet. Például letilthatja/engedélyezheti a kulcsot, becsomagolhatja vagy kicsomagolhatja |
 | code | A művelethez társított kód. Példa: hibakód, 404 azt jelenti, hogy a kulcs nem található. |

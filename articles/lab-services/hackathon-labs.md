@@ -4,10 +4,10 @@ description: Ez a cikk azt ismerteti, hogyan használhatók a Azure Lab Services
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 8727fad6f37d1365983127a1a514e87e3a5003b9
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85445882"
 ---
 # <a name="use-azure-lab-services-for-your-next-hackathon"></a>Azure Lab Services használata a következő Hackathon
@@ -15,7 +15,7 @@ A Azure Lab Services könnyű és könnyen használható, így gyorsan üzembe h
 
 Ha labor-szolgáltatásokat szeretne használni a Hackathon, győződjön meg arról, hogy a labor-fiók és a labor legalább néhány nappal a Hackathon kezdete előtt jön létre. Továbbá kövesse az alábbi útmutatást:
 
-## <a name="guidance"></a>Útmutatás
+## <a name="guidance"></a>Útmutató
 
 - **Hozza létre a labort a résztvevőkhöz legközelebb eső régióban vagy helyen**. 
 

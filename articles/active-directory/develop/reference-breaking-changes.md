@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: 55adff17445639ee5685613b418054075c704449
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85477243"
 ---
 # <a name="whats-new-for-authentication"></a>A hitelesítés újdonságai
@@ -193,7 +193,7 @@ Ha az alkalmazás az engedélyezési kódokat több erőforráshoz tartozó jogk
 
 További információ a frissítési tokenekről: [a hozzáférési tokenek frissítése](v2-oauth2-auth-code-flow.md#refresh-the-access-token).  A ADAL vagy a MSAL használata esetén ezt a függvénytár kezeli – a "AcquireTokenByAuthorizationCodeAsync" második példányát cserélje le a "AcquireTokenSilentAsync" értékre.
 
-## <a name="may-2018"></a>2018. május
+## <a name="may-2018"></a>2018. máj.
 
 ### <a name="id-tokens-cannot-be-used-for-the-obo-flow"></a>Az OBO-folyamathoz nem használhatók azonosító jogkivonatok
 

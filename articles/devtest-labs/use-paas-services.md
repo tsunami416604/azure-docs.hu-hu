@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan használhatók a szolgáltatásként nyújtott 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: eec37527386098174906dc2737d7b763241da3f2
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85478739"
 ---
 # <a name="use-platform-as-a-service-paas-services-in-azure-devtest-labs"></a>A szolgáltatásként nyújtott platform (a-Service) szolgáltatás használata Azure DevTest Labs
@@ -30,7 +30,7 @@ A nagyméretű szervezeteknél a fejlesztési csapatok jellemzően olyan környe
 
 ## <a name="customizations"></a>Testreszabások
 
-#### <a name="sandbox"></a>Tesztkörnyezet 
+#### <a name="sandbox"></a>Sandbox 
 A labor tulajdonosa testreszabhatja a tesztkörnyezet környezetét, hogy megváltoztassa a felhasználó szerepkörét a **Readerből** az erőforráscsoporthoz tartozó **közreműködővé** . Ez a funkció a labor **beállításai** oldalon található a tesztkörnyezet **konfigurációjában és házirendjeiben** . A szerepkör ezen módosítása lehetővé teszi, hogy a felhasználó erőforrásokat adjon hozzá vagy távolítson el az adott környezetben. Ha továbbra is szeretné korlátozni a hozzáférést, használja az Azure-szabályzatokat. Ez a funkció lehetővé teszi az erőforrások és a konfiguráció testreszabását az előfizetés szintjén való hozzáférés nélkül.
 
 #### <a name="custom-tokens"></a>Egyéni tokenek

@@ -13,10 +13,10 @@ ms.author: marsma
 ms.reviewer: lenalepa, keyam
 ms.custom: aaddev
 ms.openlocfilehash: f72e16afd61d364a2dad634f3502c801f1b99380
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85478144"
 ---
 # <a name="new-azure-portal-app-registration-training-guide"></a>Új alkalmazásregisztráció az Azure Portalon – képzési útmutató
@@ -56,7 +56,7 @@ A régi felület **tulajdonságlapja** volt. A **Tulajdonságok** a következő 
 
 - **Name (Név)**
 - **Objektumazonosító**
-- **Alkalmazás azonosítója**
+- **Alkalmazásazonosító**
 - **Alkalmazásazonosító URI**
 - **Embléma**
 - **Kezdőlap URL-címe**

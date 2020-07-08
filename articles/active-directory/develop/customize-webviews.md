@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.openlocfilehash: a8486ec87b5198231a33b1dab382ba457c8c8066
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85478127"
 ---
 # <a name="how-to-customize-browsers-and-webviews-for-iosmacos"></a>Útmutató: böngészők és webnézetek testreszabása iOS/macOS rendszerhez
@@ -75,9 +75,9 @@ A használt böngésző a cookie-k megosztása miatt hatással van az egyszeri b
 | Technológia    | Böngésző típusa  | iOS-elérhetőség | macOS-elérhetőség | Cookie-k és egyéb adatforgalom megosztása  | MSAL rendelkezésre állása | SSO |
 |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|-------------:|
 | [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession) | Rendszer | iOS12 és fel | macOS 10,15 és fel | Yes | iOS és macOS 10.15 + | w/Safari-példányok
-| [SFAuthenticationSession](https://developer.apple.com/documentation/safariservices/sfauthenticationsession) | Rendszer | iOS11 és fel | N/A | Yes | csak iOS esetén |  w/Safari-példányok
-| [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller) | Rendszer | iOS11 és fel | N/A | No | csak iOS esetén | Nem * *
-| **SFSafariViewController** | Rendszer | iOS10 | N/A | Yes | csak iOS esetén |  w/Safari-példányok
+| [SFAuthenticationSession](https://developer.apple.com/documentation/safariservices/sfauthenticationsession) | Rendszer | iOS11 és fel | N.A. | Yes | csak iOS esetén |  w/Safari-példányok
+| [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller) | Rendszer | iOS11 és fel | N.A. | No | csak iOS esetén | Nem * *
+| **SFSafariViewController** | Rendszer | iOS10 | N.A. | Yes | csak iOS esetén |  w/Safari-példányok
 | **WKWebView**  | Alkalmazáson belüli | iOS8 és fel | macOS 10,10 és fel | No | iOS és macOS | Nem * *
 
 * * Az egyszeri bejelentkezés működéséhez a tokeneket meg kell osztani az alkalmazások között. Ehhez jogkivonat-gyorsítótár vagy közvetítő alkalmazás szükséges, például Microsoft Authenticator iOS rendszerhez.
@@ -96,7 +96,7 @@ Minden kérés konfigurálható úgy, hogy a tulajdonság módosításával fel�
 
 Emellett a MSAL a tulajdonság beállításával támogatja a továbbítást az egyéni `WKWebView` beállításokban `MSALInteractiveTokenParameters.webviewParameters.customWebView` .
 
-Példa:
+Például:
 
 Objective-C
 ```objc

@@ -4,10 +4,10 @@ description: Ismerje meg, hogy a DevTest Labs hogyan könnyítheti meg az Azure-
 ms.topic: article
 ms.date: 06/20/2020
 ms.openlocfilehash: b7e6493e5fb1c99dfa7962ed464dca3ebc6b0c7e
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85480201"
 ---
 # <a name="about-azure-devtest-labs"></a>Információk az Azure DevTest Labs szolgáltatásról
@@ -23,7 +23,7 @@ A DevTest Labs használatával az alábbi feladatok végrehajtásával ellenőri
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/What-is-Azure-DevTest-Labs/player]
 
-## <a name="capabilities"></a>Funkciók
+## <a name="capabilities"></a>Képességek
 A DevTest Labs a következő lehetőségeket biztosítja a virtuális gépekkel dolgozó fejlesztők számára:
 
 - Hozzon létre gyorsan virtuális gépeket kevesebb mint öt egyszerű lépés után.

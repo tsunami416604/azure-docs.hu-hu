@@ -4,10 +4,10 @@ description: Ez a cikk egy olyan bemutatót tartalmaz, amely bemutatja, hogyan t
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: ff8ee15f35765027db1407f05c108739bd97433e
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85480779"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-powershell"></a>VHD-fájl feltöltése a labor Storage-fiókjába a PowerShell használatával

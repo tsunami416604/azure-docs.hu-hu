@@ -11,10 +11,10 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.openlocfilehash: b6a364cbd29c3273466bee15b9a54e097497a8e5
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85479113"
 ---
 # <a name="what-happened-to-my-mvc-project-visual-studio-azure-active-directory-connected-service"></a>Mi történt az MVC-projekttel (Visual Studio Azure Active Directory csatlakoztatott szolgáltatás)?
@@ -31,7 +31,7 @@ További információ a csatlakoztatott szolgáltatás használatáról: [első 
 
 Hatással van a projektfájl (*. NET-referenciák) és a `packages.config` (NuGet-hivatkozások) elemre.
 
-| Típus | Referencia |
+| Típus | Hivatkozás |
 | --- | --- |
 | NET NuGet | Microsoft. IdentityModel. Protocol. Extensions |
 | NET NuGet | Microsoft. Owin |
@@ -46,7 +46,7 @@ Hatással van a projektfájl (*. NET-referenciák) és a `packages.config` (NuGe
 
 További hivatkozások ha a címtár- **adatok olvasása** lehetőséget választotta:
 
-| Típus | Referencia |
+| Típus | Hivatkozás |
 | --- | --- |
 | NET NuGet | EntityFramework |
 | .NET        | EntityFramework. SqlServer (csak Visual Studio 2015) |
@@ -60,7 +60,7 @@ További hivatkozások ha a címtár- **adatok olvasása** lehetőséget válasz
 
 A következő hivatkozások törlődnek (csak ASP.NET 4 projekt, a Visual Studio 2015-as verziójában):
 
-| Típus | Referencia |
+| Típus | Hivatkozás |
 | --- | --- |
 | NET NuGet | Microsoft. AspNet. Identity. Core |
 | NET NuGet | Microsoft. AspNet. Identity. EntityFramework |
