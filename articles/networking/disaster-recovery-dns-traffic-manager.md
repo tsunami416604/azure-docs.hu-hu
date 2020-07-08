@@ -16,10 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 06/08/2018
 ms.author: kumud
 ms.openlocfilehash: 6eab1803bf5adab42be87b5f8567682c6d75947e
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74483533"
 ---
 # <a name="disaster-recovery-using-azure-dns-and-traffic-manager"></a>Vészhelyreállítás az Azure DNS-sel és a Traffic Managerrel
@@ -72,7 +71,7 @@ A vész-helyreállítási Azure DNS manuális feladatátvételi megoldás a szab
 
 A megoldásra tett feltételezések a következők:
 - Mind az elsődleges, mind a másodlagos végpontok statikus IP-címekkel rendelkeznek, amelyek nem változnak gyakran. Tegyük fel, hogy az elsődleges hely IP-címe 100.168.124.44, a másodlagos hely IP-címe pedig 100.168.124.43.
-- Az elsődleges és a másodlagos helyhez Azure DNS zóna is létezik. Tegyük fel, hogy az elsődleges hely a végpont prod.contoso.com, és a biztonsági mentési hely dr.contoso.com. Létezik egy DNS-rekord a fő alkalmazáshoz,\.amely a www contoso.com néven is ismert.   
+- Az elsődleges és a másodlagos helyhez Azure DNS zóna is létezik. Tegyük fel, hogy az elsődleges hely a végpont prod.contoso.com, és a biztonsági mentési hely dr.contoso.com. Létezik egy DNS-rekord a fő alkalmazáshoz, amely a www \. contoso.com néven is ismert.   
 - Az élettartam a szervezet RTO SLA-készletén vagy alatt van. Ha például egy vállalat a 60 percre állítja be az alkalmazás RTO, akkor az ÉLETTARTAMnak kevesebbnek kell lennie a 60 percnél, lehetőleg minél alacsonyabb legyen. 
   A manuális feladatátvételhez a következőképpen állíthatja be Azure DNS:
 - DNS-zóna létrehozása
@@ -80,7 +79,7 @@ A megoldásra tett feltételezések a következők:
 - CNAME rekord frissítése
 
 ### <a name="step-1-create-a-dns"></a>1. lépés: DNS létrehozása
-Hozzon létre egy DNS-zónát (\.például a www-contoso.com) az alábbi ábrán látható módon:
+Hozzon létre egy DNS-zónát (például a www- \. contoso.com) az alábbi ábrán látható módon:
 
 ![DNS-zóna létrehozása az Azure-ban](./media/disaster-recovery-dns-traffic-manager/create-dns-zone.png)
 
@@ -88,13 +87,13 @@ Hozzon létre egy DNS-zónát (\.például a www-contoso.com) az alábbi ábrán
 
 ### <a name="step-2-create-dns-zone-records"></a>2. lépés: DNS-zónák rekordjainak létrehozása
 
-A zónán belül hozzon létre három rekordot (például\.: www contoso.com, prod.contoso.com és Dr.consoto.com) az alábbi ábrán látható módon.
+A zónán belül hozzon létre három rekordot (például: www \. contoso.com, prod.contoso.com és Dr.consoto.com) az alábbi ábrán látható módon.
 
 ![DNS-zónák rekordjainak létrehozása](./media/disaster-recovery-dns-traffic-manager/create-dns-zone-records.png)
 
 *Ábra – DNS-zónák rekordjainak létrehozása az Azure-ban*
 
-Ebben a forgatókönyvben a www\.-contoso.com 30 perc élettartammal rendelkezik, amely jóval a megadott RTO alatt van, és az üzemi hely prod.contoso.com mutat. Ez a konfiguráció a normál üzleti műveletekben van. A prod.contoso.com és a dr.contoso.com ÉLETTARTAMa 300 másodpercre vagy 5 percre van beállítva. Használhat olyan Azure-figyelési szolgáltatást, mint például a Azure Monitor vagy az Azure app-elemzések, vagy bármely partner-figyelési megoldás, mint például a Dynatrace, olyan otthoni fejlesztésű megoldásokat is használhat, amelyek figyelik vagy észlelik az alkalmazás-vagy virtuális infrastruktúra-szintű hibákat.
+Ebben a forgatókönyvben a www- \. contoso.com 30 perc élettartammal rendelkezik, amely jóval a megadott RTO alatt van, és az üzemi hely prod.contoso.com mutat. Ez a konfiguráció a normál üzleti műveletekben van. A prod.contoso.com és a dr.contoso.com ÉLETTARTAMa 300 másodpercre vagy 5 percre van beállítva. Használhat olyan Azure-figyelési szolgáltatást, mint például a Azure Monitor vagy az Azure app-elemzések, vagy bármely partner-figyelési megoldás, mint például a Dynatrace, olyan otthoni fejlesztésű megoldásokat is használhat, amelyek figyelik vagy észlelik az alkalmazás-vagy virtuális infrastruktúra-szintű hibákat.
 
 ### <a name="step-3-update-the-cname-record"></a>3. lépés: a CNAME rekord frissítése
 
@@ -104,7 +103,7 @@ Ha a rendszer hibát észlelt, módosítsa a rekord értékét úgy, hogy az az 
 
 *Ábra – a CNAME rekord frissítése az Azure-ban*
 
-30 percen belül, amikor a legtöbb feloldó frissíti a gyorsítótárazott zónafájl fájlját, a rendszer a\.www-contoso.com irányuló összes lekérdezést átirányítja a Dr.contoso.com.
+30 percen belül, amikor a legtöbb feloldó frissíti a gyorsítótárazott zónafájl fájlját, a rendszer a www-contoso.com irányuló összes lekérdezést \. átirányítja a Dr.contoso.com.
 A CNAME érték módosításához a következő Azure CLI-parancsot is futtathatja:
  ```azurecli
    az network dns record-set cname set-record \

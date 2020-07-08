@@ -8,10 +8,9 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: be679be91d49516bd2f6c672eb53640cfad2ae2a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74763572"
 ---
 # <a name="configure-and-access-server-logs-by-using-azure-cli"></a>A kiszolgálói naplók konfigurálása és elérése az Azure CLI használatával
@@ -25,7 +24,7 @@ A útmutató lépéseinek elvégzéséhez a következőkre lesz szüksége:
 ## <a name="configure-logging"></a>Naplózás konfigurálása
 Beállíthatja, hogy a kiszolgáló hozzáférjen a lekérdezési naplókhoz és a hibák naplóihoz. A naplókhoz automatikus vákuum, kapcsolatok és ellenőrzőpont-információk is tartozhatnak.
 1. A naplózás bekapcsolása.
-2. A lekérdezések naplózásának engedélyezéséhez frissítse a **\_log utasítás** és a **napló\_minimális\_időtartama\_utasítást**.
+2. A lekérdezések naplózásának engedélyezéséhez frissítse a **log \_ utasítás** és a **napló \_ minimális \_ időtartama \_ utasítást**.
 3. A megőrzési időtartam frissítése.
 
 További információ: a [kiszolgáló konfigurációs paramétereinek testreszabása](howto-configure-server-parameters-using-cli.md).
@@ -33,7 +32,7 @@ További információ: a [kiszolgáló konfigurációs paramétereinek testresza
 ## <a name="list-logs"></a>Naplók listázása
 A kiszolgálóhoz elérhető naplófájlok listázásához futtassa az az [postgres Server-logs List](/cli/azure/postgres/server-logs) parancsot.
 
-A kiszolgálói **mydemoserver.postgres.database.Azure.com** tartozó naplófájlokat az erőforráscsoport **myresourcegroup**lehet kilistázni. Ezután irányítsa a naplófájlok listáját egy **naplófájlok\_\_listázása. txt**nevű szövegfájlba.
+A kiszolgálói **mydemoserver.postgres.database.Azure.com** tartozó naplófájlokat az erőforráscsoport **myresourcegroup**lehet kilistázni. Ezután irányítsa a naplófájlok listáját a naplófájlok ** \_ \_list.txt**nevű szövegfájlba.
 ```azurecli-interactive
 az postgres server-logs list --resource-group myresourcegroup --server mydemoserver > log_files_list.txt
 ```

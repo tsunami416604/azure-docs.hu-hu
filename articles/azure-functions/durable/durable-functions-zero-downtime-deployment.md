@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 8e12d58c0077084c181d111b0b017665b74b9157
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74231256"
 ---
 # <a name="zero-downtime-deployment-for-durable-functions"></a>Nulla – állásidő üzembe helyezése Durable Functions
@@ -54,17 +53,17 @@ A forgatókönyv beállításához kövesse az alábbi eljárást.
 
 1. Az egyes tárolóhelyek esetében állítsa be a [AzureWebJobsStorage alkalmazás beállítását](../functions-app-settings.md#azurewebjobsstorage) egy megosztott Storage-fiók kapcsolódási karakterláncára. Ezt a Storage-fiókhoz tartozó kapcsolási karakterláncot a Azure Functions futtatókörnyezet használja. Ezt a fiókot a Azure Functions futtatókörnyezet használja, és kezeli a függvény kulcsait.
 
-1. Az egyes tárolóhelyek esetében hozzon létre egy új alkalmazást, például `DurableManagementStorage`:. Állítsa az értékét a különböző Storage-fiókok kapcsolati karakterláncára. Ezeket a Storage-fiókokat a Durable Functions bővítmény használja a [megbízható végrehajtáshoz](durable-functions-checkpointing-and-replay.md). Mindegyik tárolóhelyhez külön Storage-fiókot használjon. Ne jelölje be a beállítást üzembe helyezési tárolóhelyként beállításként.
+1. Az egyes tárolóhelyek esetében hozzon létre egy új alkalmazást, például: `DurableManagementStorage` . Állítsa az értékét a különböző Storage-fiókok kapcsolati karakterláncára. Ezeket a Storage-fiókokat a Durable Functions bővítmény használja a [megbízható végrehajtáshoz](durable-functions-checkpointing-and-replay.md). Mindegyik tárolóhelyhez külön Storage-fiókot használjon. Ne jelölje be a beállítást üzembe helyezési tárolóhelyként beállításként.
 
-1. A Function app [Host. JSON fájljának durableTask szakaszában](durable-functions-bindings.md#hostjson-settings)adja meg `azureStorageConnectionStringName` a 3. lépésben létrehozott Alkalmazásbeállítás nevét.
+1. A Function app [host.jsfájl durableTask szakaszában](durable-functions-bindings.md#hostjson-settings)adja meg a `azureStorageConnectionStringName` 3. lépésben létrehozott Alkalmazásbeállítás nevét.
 
 A következő ábra az üzembe helyezési pontok és a Storage-fiókok leírt konfigurációját mutatja be. Ebben a lehetséges előtelepítési forgatókönyvben a Function app 2. verziója az üzemi tárolóhelyen fut, míg az 1. verzió az átmeneti tárolóhelyen marad.
 
 ![Üzembe helyezési pontok és Storage-fiókok](media/durable-functions-zero-downtime-deployment/deployment-slot.png)
 
-### <a name="hostjson-examples"></a>Host. JSON példák
+### <a name="hostjson-examples"></a>host.jspéldákon
 
-A következő JSON-töredékek a *Host. JSON* fájlban található kapcsolatok karakterlánc-beállításra mutatnak példákat.
+A következő JSON-töredékek példák a *host.js* fájlhoz tartozó kapcsolatok karakterlánc-beállítására.
 
 #### <a name="functions-20"></a>Függvények 2,0
 
@@ -164,7 +163,7 @@ Az útválasztó figyeli a (z) 1.0.1 verziójának összehangolása állapotát,
 
 ### <a name="tracking-store-settings"></a>Nyomkövetési tároló beállításai
 
-Mindegyik Function alkalmazásnak külön ütemezési várólistákat kell használnia, valószínűleg külön Storage-fiókokban. Ha az alkalmazás összes verziójában le szeretné kérdezni az összes előkészítési példányt, megoszthatja a példányok és az előzmények táblázatait a Function apps szolgáltatásban. A táblákat megoszthatja úgy `trackingStoreConnectionStringName` , `trackingStoreNamePrefix` hogy a és a beállításokat a [gazdagép. JSON beállítási](durable-functions-bindings.md#host-json) fájljában konfigurálja, hogy mindegyik ugyanazt az értéket használja.
+Mindegyik Function alkalmazásnak külön ütemezési várólistákat kell használnia, valószínűleg külön Storage-fiókokban. Ha az alkalmazás összes verziójában le szeretné kérdezni az összes előkészítési példányt, megoszthatja a példányok és az előzmények táblázatait a Function apps szolgáltatásban. A táblázatok megoszthatók úgy, `trackingStoreConnectionStringName` hogy a és a `trackingStoreNamePrefix` beállításokat a [host.jsa beállítási](durable-functions-bindings.md#host-json) fájlban konfigurálja, hogy mindegyik ugyanazt az értéket használja.
 
 További információ: a [példányok kezelése az Azure](durable-functions-instance-management.md)-ban Durable functions.
 

@@ -15,10 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2019
 ms.author: allensu
 ms.openlocfilehash: 6ea215b6aa826231e940f88c3687bb65591303f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74225325"
 ---
 # <a name="configure-dhcpv6-for-linux-vms"></a>A DHCPv6 konfigurálása Linux rendszerű virtuális gépekhez
@@ -64,7 +63,7 @@ Adja meg a *dhcp6: true* utasítást a konfigurációban található minden Ethe
             eno1:
               dhcp6: true
 
-A korai rendszerindítás során a "hálózati leképező" netplan úgy írja be a konfigurációt, hogy/Run az eszközök vezérlését a megadott hálózati démonnak a NETPLAN vonatkozó https://netplan.io/referencehivatkozási információkkal kapcsolatban:.
+A korai rendszerindítás során a "hálózati leképező" netplan úgy írja be a konfigurációt, hogy/Run az eszközök vezérlését a megadott hálózati démonnak a NETPLAN vonatkozó hivatkozási információkkal kapcsolatban: https://netplan.io/reference .
  
 ## <a name="debian"></a>Debian
 
@@ -105,7 +104,7 @@ A korai rendszerindítás során a "hálózati leképező" netplan úgy írja be
 
 Az Azure-ban a legutóbbi SUSE Linux Enterprise Server (SLES) és az openSUSE-lemezképek előre konfigurálva lettek a DHCPv6-vel. A rendszerképek használatakor nincs szükség további módosításokra. Ha olyan virtuális géppel rendelkezik, amely egy régebbi vagy egyéni SUSE-rendszerképen alapul, tegye a következőket:
 
-1. Szükség esetén `dhcp-client` telepítse a csomagot:
+1. `dhcp-client`Szükség esetén telepítse a csomagot:
 
     ```bash
     sudo zypper install dhcp-client
@@ -125,7 +124,7 @@ Az Azure-ban a legutóbbi SUSE Linux Enterprise Server (SLES) és az openSUSE-le
 
 Az Azure-ban a legutóbbi SLES-és openSUSE-lemezképek előre konfigurálva lettek a DHCPv6-sel. A rendszerképek használatakor nincs szükség további módosításokra. Ha olyan virtuális géppel rendelkezik, amely egy régebbi vagy egyéni SUSE-rendszerképen alapul, tegye a következőket:
 
-1. Szerkessze a */etc/sysconfig/network/ifcfg-eth0* fájlt, és cserélje `#BOOTPROTO='dhcp4'` le a paramétert a következő értékre:
+1. Szerkessze a */etc/sysconfig/network/ifcfg-eth0* fájlt, és cserélje le a `#BOOTPROTO='dhcp4'` paramétert a következő értékre:
 
         BOOTPROTO='dhcp'
 

@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 87cbb94dbab241630dc7585bdf4314d858d5b4da
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74232752"
 ---
 # <a name="versioning-in-durable-functions-azure-functions"></a>Verziószámozás Durable Functions (Azure Functions)
@@ -35,7 +34,7 @@ public static Task Run([OrchestrationTrigger] IDurableOrchestrationContext conte
 }
 ```
 
-Ez a leegyszerűsítő függvény a **foo** eredményeit veszi át, és a **sáv**felé továbbítja azt. Tegyük fel, hogy módosítani kell a **foo** értékének visszatérési `bool` értékét `int` a-ből a-re, hogy támogassa az eredmények szélesebb választékát. Az eredmény így néz ki:
+Ez a leegyszerűsítő függvény a **foo** eredményeit veszi át, és a **sáv**felé továbbítja azt. Tegyük fel, hogy módosítani kell a **foo** értékének visszatérési értékét a-ből a-re, `bool` `int` hogy támogassa az eredmények szélesebb választékát. Az eredmény így néz ki:
 
 ```csharp
 [FunctionName("FooBar")]
@@ -47,9 +46,9 @@ public static Task Run([OrchestrationTrigger] IDurableOrchestrationContext conte
 ```
 
 > [!NOTE]
-> Az előző C#-példák célja Durable Functions 2. x. Durable Functions 1. x esetén a helyett a `DurableOrchestrationContext` `IDurableOrchestrationContext`értéket kell használnia. A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
+> Az előző C#-példák célja Durable Functions 2. x. Durable Functions 1. x esetén a helyett a értéket kell használnia `DurableOrchestrationContext` `IDurableOrchestrationContext` . A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
 
-Ez a változás jól működik a Orchestrator függvény összes új példányán, de a repülés közbeni példányokat is megszakítja. Vegyük például azt az esetet, amikor egy összehangoló példány meghívja `Foo`a nevű függvényt, egy logikai értéket kap vissza, majd ellenőrzőpontokat. Ha az aláírás módosítása ezen a ponton történik, az ellenőrzőponttal rendelkező példány azonnal meghiúsul, amikor folytatja, és visszajátssza a hívást `context.CallActivityAsync<int>("Foo")`. Ez a hiba azért fordul elő, mert az előzmények tábla `bool` eredménye, de az új kód megpróbálja deszerializálni a `int`-ba.
+Ez a változás jól működik a Orchestrator függvény összes új példányán, de a repülés közbeni példányokat is megszakítja. Vegyük például azt az esetet, amikor egy összehangoló példány meghívja a nevű függvényt `Foo` , egy logikai értéket kap vissza, majd ellenőrzőpontokat. Ha az aláírás módosítása ezen a ponton történik, az ellenőrzőponttal rendelkező példány azonnal meghiúsul, amikor folytatja, és visszajátssza a hívást `context.CallActivityAsync<int>("Foo")` . Ez a hiba azért fordul elő, mert az előzmények tábla eredménye, `bool` de az új kód megpróbálja deszerializálni a-ba `int` .
 
 Ez a példa az aláírások módosításának számos különböző módja, amely megszakíthatja a meglévő példányokat. Általánosságban elmondható, hogy ha egy Orchestrator módosítania kell egy függvény meghívásának módját, akkor a változás valószínűleg problematikus lesz.
 
@@ -85,9 +84,9 @@ public static Task Run([OrchestrationTrigger] IDurableOrchestrationContext conte
 ```
 
 > [!NOTE]
-> Az előző C#-példák célja Durable Functions 2. x. Durable Functions 1. x esetén a helyett a `DurableOrchestrationContext` `IDurableOrchestrationContext`értéket kell használnia. A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
+> Az előző C#-példák célja Durable Functions 2. x. Durable Functions 1. x esetén a helyett a értéket kell használnia `DurableOrchestrationContext` `IDurableOrchestrationContext` . A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
 
-Ez a változás egy új függvény hívását adja hozzá a **SendNotification** a **foo** és a **Bar**között. Nincsenek aláírási változások. A probléma akkor fordul elő, amikor egy meglévő példány folytatja a hívást a **sávra**. Ha a visszajátszáskor a rendszer visszaküldi `true`a **foo** eredeti hívását, akkor a Orchestrator visszajátszás a **SendNotification**, amely nem szerepel a végrehajtás előzményeiben. Ennek eredményeképpen a tartós feladathoz tartozó keretrendszer meghiúsul, `NonDeterministicOrchestrationException` mert a **SendNotification** meghívását észlelte a rendszer, amikor a vártnál a **sáv**hívása látható. Ugyanaz a probléma akkor fordulhat elő, ha bármilyen hívást "tartós" API-khoz, `CreateTimer`például `WaitForExternalEvent`, stb.
+Ez a változás egy új függvény hívását adja hozzá a **SendNotification** a **foo** és a **Bar**között. Nincsenek aláírási változások. A probléma akkor fordul elő, amikor egy meglévő példány folytatja a hívást a **sávra**. Ha a visszajátszáskor a rendszer visszaküldi a **foo** eredeti hívását `true` , akkor a Orchestrator visszajátszás a **SendNotification**, amely nem szerepel a végrehajtás előzményeiben. Ennek eredményeképpen a tartós feladathoz tartozó keretrendszer meghiúsul, `NonDeterministicOrchestrationException` mert a **SendNotification** meghívását észlelte a rendszer, amikor a vártnál a **sáv**hívása látható. Ugyanaz a probléma akkor fordulhat elő, ha bármilyen hívást "tartós" API-khoz, például `CreateTimer` , `WaitForExternalEvent` stb.
 
 ## <a name="mitigation-strategies"></a>Kockázatcsökkentő stratégiák
 
@@ -116,11 +115,11 @@ A legtöbb sikertelen működést biztosító módszer, amellyel biztosítható,
 
 * Telepítse az összes frissítést teljes mértékben új függvényként, így a meglévő függvények is megmaradnak. Ez trükkös lehet, mert az új függvények verzióinak hívóit is frissíteni kell Ugyanezen irányelvek követésével.
 * Telepítse az összes frissítést új Function-alkalmazásként egy másik Storage-fiókkal.
-* Telepítse a Function alkalmazás egy új példányát ugyanazzal a Storage-fiókkal, de egy `taskHub` frissített névvel. Az ajánlott eljárás a párhuzamos üzembe helyezés.
+* Telepítse a Function alkalmazás egy új példányát ugyanazzal a Storage-fiókkal, de egy frissített `taskHub` névvel. Az ajánlott eljárás a párhuzamos üzembe helyezés.
 
 ### <a name="how-to-change-task-hub-name"></a>A feladat központ nevének módosítása
 
-A feladat hub a következő módon konfigurálható a *Host. JSON* fájlban:
+A feladat hub a következő módon konfigurálható a *host.js* fájlban:
 
 #### <a name="functions-1x"></a>Functions 1.x
 
@@ -144,7 +143,7 @@ A feladat hub a következő módon konfigurálható a *Host. JSON* fájlban:
 }
 ```
 
-Durable Functions v1. x alapértelmezett értéke a következő: `DurableFunctionsHub`. A Durable Functions 2.0-s verziótól kezdődően az alapértelmezett Task hub neve megegyezik a Function alkalmazás nevével az Azure- `TestHubName` ban, vagy ha az Azure-on kívül fut.
+Durable Functions v1. x alapértelmezett értéke a következő: `DurableFunctionsHub` . A Durable Functions 2.0-s verziótól kezdődően az alapértelmezett Task hub neve megegyezik a Function alkalmazás nevével az Azure-ban, vagy ha az Azure-on `TestHubName` kívül fut.
 
 Az összes Azure Storage-entitás neve a `hubName` konfigurációs érték alapján történik. Ha egy új nevet ad a Task hub számára, akkor az alkalmazás új verziójához külön üzenetsor-és előzmény-táblázatot kell létrehoznia. A Function alkalmazás azonban leállítja az események feldolgozását, illetve az előző feladathoz tartozó hub neve alatt létrehozott entitásokat.
 

@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tisande
 ms.openlocfilehash: cca62c358037dbe99fd16746ee081b1540161df2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74873420"
 ---
 # <a name="azure-cosmos-db-sql-query-constants"></a>Azure Cosmos DB SQL-lekérdezés állandói  
@@ -24,12 +23,12 @@ ms.locfileid: "74873420"
 |**Nem definiált**|Egyetlen érték: nem **definiált**|  
 |**Null**|Egyetlen érték: **Null**|  
 |**Logikai**|Értékek: **false**, **true**.|  
-|**Száma**|Egy kétszeres pontosságú lebegőpontos szám, IEEE 754 standard.|  
+|**Szám**|Egy kétszeres pontosságú lebegőpontos szám, IEEE 754 standard.|  
 |**Sztring**|Nulla vagy több Unicode-karakterből álló sorozatot. A karakterláncokat szimpla vagy idézőjelek közé kell foglalni.|  
 |**Tömb**|Nulla vagy több elemből álló sorozatot. Minden elem bármely skaláris adattípus értéke lehet, kivéve a nem **definiált**értéket.|  
 |**Objektum**|Nulla vagy több név/érték párok rendezetlen készlete. A név egy Unicode karakterlánc, az érték bármely skaláris adattípus lehet, kivéve a nem **definiált**értéket.|  
   
-## <a name="syntax"></a><a name="bk_syntax"></a>Szintaxis
+## <a name="syntax"></a><a name="bk_syntax"></a>Syntax
   
 ```sql  
 <constant> ::=  
@@ -107,7 +106,7 @@ ms.locfileid: "74873420"
 |-|-|-|  
 |\\'|aposztróf (')|U + 0027|  
 |\\"|idézőjel (")|U + 0022|  
-|\\\ |fordított solidus (\\)|U + 005C|  
+|\\\ |fordított solidus ( \\ )|U + 005C|  
 |\\/|solidus (/)|U + 002F|  
 |\b|Backspace|U + 0008|  
 |\f|űrlap-hírcsatorna|U + 000C|  

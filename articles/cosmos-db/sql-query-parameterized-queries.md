@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: tisande
 ms.openlocfilehash: e15a8236723c1efd80f27f2d253e9bbc44af4b0b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74870819"
 ---
 # <a name="parameterized-queries-in-azure-cosmos-db"></a>Paraméteres lekérdezések a Azure Cosmos DBban
@@ -19,7 +18,7 @@ Cosmos DB támogatja a ismerős @ jelöléssel kifejezett paramétereket tartalm
 
 ## <a name="examples"></a>Példák
 
-Írhat például egy olyan `lastName` lekérdezést, amely `address.state` paramétereket fogad el, és paraméterként végrehajtja azt, és a felhasználói `lastName` bevitelen `address.state` alapuló különböző értékekre hajtja végre.
+Írhat például egy olyan lekérdezést, amely `lastName` `address.state` paramétereket fogad el, és paraméterként végrehajtja azt, és a `lastName` `address.state` felhasználói bevitelen alapuló különböző értékekre hajtja végre.
 
 ```sql
     SELECT *

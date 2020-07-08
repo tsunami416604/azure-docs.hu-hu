@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/18/2019
 ms.openlocfilehash: 04faafca0811e60ded47d1e91a82054a1c1cdb25
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74406175"
 ---
 # <a name="use-apache-spark-structured-streaming-with-apache-kafka-and-azure-cosmos-db"></a>Apache Spark strukturált adatfolyam használata Apache Kafka és Azure Cosmos DB
@@ -47,7 +46,7 @@ Habár az Azure Virtual Network, a Kafka és a Spark-fürtök manuálisan is lé
     <img src="./media/apache-kafka-spark-structured-streaming-cosmosdb/resource-manager-deploy.png" alt="Deploy to Azure"/>
     </a>
 
-    A Azure Resource Manager sablon a projekthez tartozó GitHub-tárházban található ([https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb)).
+    A Azure Resource Manager sablon a projekthez tartozó GitHub-tárházban található ( [https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb) ).
 
     Ez a sablon a következő erőforrásokat hozza létre:
 
@@ -86,7 +85,7 @@ Habár az Azure Virtual Network, a Kafka és a Spark-fürtök manuálisan is lé
 
 Az ebben a dokumentumban használt projekt Cosmos DB tárolja az adattárakat. A kód futtatása előtt először létre kell hoznia egy _adatbázist_ és egy _gyűjteményt_ az Cosmos db-példányban. A dokumentum-végpontot és a Cosmos DBra irányuló kérelmek hitelesítéséhez használt _kulcsot_ is le kell kérni.
 
-Ennek egyik módja az [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)használata. A következő szkript létrehoz egy nevű `kafkadata` adatbázist és egy nevű `kafkacollection`gyűjteményt. Ezután visszaadja az elsődleges kulcsot.
+Ennek egyik módja az [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)használata. A következő szkript létrehoz egy nevű adatbázist `kafkadata` és egy nevű gyűjteményt `kafkacollection` . Ezután visszaadja az elsődleges kulcsot.
 
 ```azurecli
 #!/bin/bash
@@ -128,7 +127,7 @@ A dokumentum-végpont és az elsődleges kulcs adatai az alábbi szöveghez haso
 
 ## <a name="get-the-notebooks"></a>Jegyzetfüzetek letöltése
 
-A dokumentumban ismertetett példa kódja a következő címen érhető el: [https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb).
+A dokumentumban ismertetett példa kódja a következő címen érhető el: [https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb) .
 
 ## <a name="upload-the-notebooks"></a>A notebookok feltöltése
 

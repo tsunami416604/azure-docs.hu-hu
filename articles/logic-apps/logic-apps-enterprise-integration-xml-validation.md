@@ -9,13 +9,12 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 10/21/2019
 ms.openlocfilehash: ff21b059e712489c1914b2d12c6aa6a3d78d66d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74792164"
 ---
-# <a name="validate-xml-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>A B2B vállalati integráció XML-kódjának érvényesítése Azure Logic Appsban Enterprise Integration Pack
+# <a name="validate-xml-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>XML-ellenőrzés nagyvállalati integráció esetében az Azure Logic Appsben az Enterprise Integration Pack csomaggal
 
 Gyakran B2B-forgatókönyvekben a szerződésben szereplő kereskedelmi partnereknek biztosítaniuk kell, hogy az általuk továbbított üzenetek érvényesek legyenek az adatfeldolgozás megkezdése előtt. A dokumentumok egy előre definiált sémán keresztül ellenőrizhetők az XML-érvényesítési művelettel, amely a Enterprise Integration Pack érhető el.
 
@@ -31,11 +30,11 @@ Gyakran B2B-forgatókönyvekben a szerződésben szereplő kereskedelmi partnere
 
 1. A [Azure Portalban](https://portal.azure.com)nyissa meg a logikai alkalmazást a Logic app Designerben.
 
-1. Ha üres logikai alkalmazással rendelkezik, a Logic app Designerben, a keresőmezőbe írja be `HTTP request` szűrőként a kifejezést, majd válassza ki a http- **kérelem fogadásának időpontját** . Ellenkező esetben folytassa a következő lépéssel.
+1. Ha üres logikai alkalmazással rendelkezik, a Logic app Designerben, a keresőmezőbe írja be szűrőként a kifejezést, `HTTP request` majd válassza ki a **http-kérelem fogadásának időpontját** . Ellenkező esetben folytassa a következő lépéssel.
 
 1. A munkafolyamat utolsó lépése alatt válassza az **új lépés**lehetőséget.
 
-   A meglévő lépések közötti művelet hozzáadásához vigye az egérmutatót a lépéseket összekötő nyíl fölé úgy, hogy a plusz jel (**+**) megjelenjen. Válassza ki ezt a plusz jelet, majd válassza **a művelet hozzáadása**lehetőséget.
+   A meglévő lépések közötti művelet hozzáadásához vigye az egérmutatót a lépéseket összekötő nyíl fölé úgy, hogy a plusz jel ( **+** ) megjelenjen. Válassza ki ezt a plusz jelet, majd válassza **a művelet hozzáadása**lehetőséget.
 
 1. A **válasszon műveletet**területen válassza a **beépített**lehetőséget. A keresőmezőbe írja be `xml validation` szűrőként a kifejezést. A műveletek listából válassza az **XML-érvényesítés**lehetőséget.
 

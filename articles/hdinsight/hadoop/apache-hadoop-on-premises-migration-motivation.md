@@ -9,10 +9,9 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.openlocfilehash: 2440b93629416ea73fcf211cbe7bf5a3b72ab2e7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74267322"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>Helyszíni Apache Hadoop-fürtök migrálása az Azure HDInsight – motiváció és előnyök
@@ -51,9 +50,9 @@ Az Azure HDInsight a Hadoop-összetevők Felhőbeli eloszlása. Az Azure HDInsig
 
 - **Termelékenység** – különböző eszközöket használhat a Hadoop és a sparkhoz az előnyben részesített fejlesztési környezetben.
 
-- **Bővíthetőség egyéni eszközökkel vagy harmadik féltől származó alkalmazásokkal** – a HDInsight-fürtök bővíthetők a telepített összetevőkkel, és a többi Big Data megoldással is integrálhatók az Azure piactéren történő [egykattintásos](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) üzembe helyezések használatával.
+- **Bővíthetőség egyéni eszközökkel vagy harmadik féltől származó alkalmazásokkal** – a HDInsight-fürtök bővíthetők a telepített összetevőkkel, és a többi Big Data megoldással is integrálhatók az Azure piactéren történő [egykattintásos](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/)   üzembe helyezések használatával.
 
-- **Egyszerű felügyelet, felügyelet és figyelés** – az Azure HDInsight integrálható [Azure monitor naplókkal](../hdinsight-hadoop-oms-log-analytics-tutorial.md) , így egyetlen felületet biztosít, amellyel az összes fürtöt nyomon követheti.
+- **Egyszerű felügyelet, felügyelet és figyelés** – az Azure HDInsight integrálható [Azure monitor naplókkal](../hdinsight-hadoop-oms-log-analytics-tutorial.md)   , így egyetlen felületet biztosít, amellyel az összes fürtöt nyomon követheti.
 
 - **Integráció más Azure-szolgáltatásokkal** – a HDInsight könnyen integrálható más népszerű Azure-szolgáltatásokkal, például a következőkkel:
 
@@ -87,7 +86,7 @@ Ez a szakasz olyan sablon-kérdőíveket biztosít, amelyek segítenek a követk
 
 ### <a name="on-premises-deployment-questionnaire"></a>Helyszíni üzembe helyezési kérdőív
 
-| **Kérdés** | **Például** | **Válasz** |
+| **Kérdés** | **Példa** | **Válasz** |
 |---|---|---|
 |**Témakör**: **környezet**|||
 |Fürt terjesztési verziója|HDP 2.6.5, CDH 5,7|
@@ -101,7 +100,7 @@ Ez a szakasz olyan sablon-kérdőíveket biztosít, amelyek segítenek a követk
 |Fő csomópont konfigurálása|m/y, CPU, lemez stb.|
 |Adatcsomópontok konfigurálása|m/y, CPU, lemez stb.|
 |Peremhálózati csomópontok konfigurálása|m/y, CPU, lemez stb.|
-|HDFS titkosítás?|Igen|
+|HDFS titkosítás?|Yes|
 |Magas rendelkezésre állás|HDFS HA, Metaadattár HA|
 |Vész-helyreállítás/biztonsági mentés|Biztonsági mentési fürt?|  
 |Fürttől függő rendszerek|SQL Server, Teradata, Power BI, MongoDB|
@@ -119,7 +118,7 @@ Ez a szakasz olyan sablon-kérdőíveket biztosít, amelyek segítenek a követk
 
 ### <a name="project-details-questionnaire"></a>Project details – kérdőív
 
-|**Kérdés**|**Például**|**Válasz**|
+|**Kérdés**|**Példa**|**Válasz**|
 |---|---|---|
 |**Témakör**: számítási **feladatok és gyakoriság**|||
 |MapReduce-feladatok|10 feladat – naponta kétszer||
@@ -165,10 +164,10 @@ Ez a szakasz olyan sablon-kérdőíveket biztosít, amelyek segítenek a követk
 
 |**Témakör**: **infrastruktúra** |||
 |---|---|---|
-|**Kérdés**|**Például**|**Válasz**|
+|**Kérdés**|**Példa**|**Válasz**|
 | Előnyben részesített régió|USA keleti régiója||
-|VNet előnyben részesített?|Igen||
-|HA/DR szükséges?|Igen||
+|VNet előnyben részesített?|Yes||
+|HA/DR szükséges?|Yes||
 |Integráció más felhőalapú szolgáltatásokkal?|ADF, CosmosDB||
 |**Témakör**: **adatáthelyezés**  |||
 |Kezdeti betöltési beállítás|DistCp, adatmező, ADF, WANDisco||
@@ -177,29 +176,29 @@ Ez a szakasz olyan sablon-kérdőíveket biztosít, amelyek segítenek a követk
 |**Témakör**: **& riasztás figyelése** |||
 |Az Azure monitoring & a riasztások és a harmadik féltől származó figyelés integrálása|Az Azure monitoring & riasztások használata||
 |**Témakör**: **biztonsági beállítások** |||
-|Magán-és védett adatfolyamatok?|Igen||
-|Tartományhoz csatlakoztatott fürt (ESP)?|     Igen||
-|Helyszíni AD-szinkronizáló a felhőbe?|     Igen||
+|Magán-és védett adatfolyamatok?|Yes||
+|Tartományhoz csatlakoztatott fürt (ESP)?|     Yes||
+|Helyszíni AD-szinkronizáló a felhőbe?|     Yes||
 |A szinkronizálni kívánt AD-felhasználók száma?|          100||
-|Szeretné szinkronizálni a jelszavakat a felhőbe?|    Igen||
-|Csak Felhőbeli felhasználók?|                 Igen||
-|MFA szükséges?|                       Nem|| 
-|Az adatengedélyezési követelmények?|  Igen||
-|Szerepköralapú Access Control?|        Igen||
-|Naplózás szükséges?|                  Igen||
-|Inaktív adatok titkosítása?|          Igen||
-|Adattitkosítás az átvitel során?|       Igen||
+|Szeretné szinkronizálni a jelszavakat a felhőbe?|    Yes||
+|Csak Felhőbeli felhasználók?|                 Yes||
+|MFA szükséges?|                       No|| 
+|Az adatengedélyezési követelmények?|  Yes||
+|Szerepköralapú Access Control?|        Yes||
+|Naplózás szükséges?|                  Yes||
+|Inaktív adatok titkosítása?|          Yes||
+|Adattitkosítás az átvitel során?|       Yes||
 |**Témakör**: **újraarchitektúra beállításai** |||
 |Egyetlen fürt és adott fürtök típusai|Adott fürtök típusai||
 |A tárolók és a távoli tárolók is találhatók?|Távoli tárterület||
 |Kisebb a fürt mérete, mert az adattárolás távolról történik?|Kisebb fürt mérete||
 |Egy nagyméretű fürt helyett több kisebb fürtöt használjon?|Több kisebb fürt használata||
-|Távoli metaadattár használ?|Igen||
-|Megoszthatja a metaadattárak a különböző fürtök között?|Igen||
+|Távoli metaadattár használ?|Yes||
+|Megoszthatja a metaadattárak a különböző fürtök között?|Yes||
 |Felépítési feladatok elkészítése?|Kaptár-feladatok cseréje a Spark-feladatokkal||
 |Az ADF használata az adatelőkészítéshez?|Nem||
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Olvassa el a következő cikket a sorozatban:
 

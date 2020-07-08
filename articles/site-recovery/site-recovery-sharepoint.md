@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 6/27/2019
 ms.author: sutalasi
 ms.openlocfilehash: d74e28ce470c23bbc8ee2081532a198c260ccea5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74706367"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Vész-helyreállítás beállítása többrétegű SharePoint-alkalmazáshoz a vész-helyreállításhoz Azure Site Recovery használatával
@@ -65,7 +64,7 @@ Site Recovery az alkalmazás-független, és működnie kell a SharePoint bárme
 **Hyper-V** | Igen | Igen
 **VMware** | Igen | Igen
 **Fizikai kiszolgáló** | Igen | Igen
-**Azure** | NA | Igen
+**Azure** | NA | Yes
 
 
 ### <a name="things-to-keep-in-mind"></a>Ügyeljen az alábbiakra

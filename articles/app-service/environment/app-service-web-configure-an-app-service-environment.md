@@ -8,10 +8,9 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: b37708e27887b20604a1fe921f14e51387793737
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74687259"
 ---
 # <a name="configuring-an-app-service-environment-v1"></a>App Service Environment v1 konfigurálása
@@ -125,13 +124,13 @@ A teljes App Service csomagok dedikált App Service csomagok. Ez azt jelenti, ho
 ### <a name="settings"></a>Beállítások
 A beadási panelen egy olyan **Beállítások** szakasz található, amely számos fontos funkciót tartalmaz:
 
-**Beállítások** > tulajdonságai: a **Settings (beállítások** ) panel automatikusan megnyílik, amikor felveszi a beadási**panelt**. A tetején a **Tulajdonságok**láthatók. Itt számos elem van, amelyek redundánsak az **alapvető**erőforrásoknál, de a **virtuális IP-cím**és a **kimenő IP-címek**is hasznosak.
+**Beállítások**  >  Tulajdonságok: a **Settings (beállítások** ) panel automatikusan megnyílik, amikor felveszi a beadási **panelt**. A tetején a **Tulajdonságok**láthatók. Itt számos elem van, amelyek redundánsak az **alapvető**erőforrásoknál, de a **virtuális IP-cím**és a **kimenő IP-címek**is hasznosak.
 
 ![Beállítások panel és tulajdonságok][4]
 
-**Beállítások** > **IP-címei**: Ha IP-SSL (SSL-) alkalmazást hoz létre a kiegészítő szolgáltatásban, szüksége van egy IP SSL címre. Ahhoz, hogy beszerezze az egyiket, a szolgáltatónak meg kell IP SSLa a hozzárendelni kívánt címeket. A kisegítő szolgáltatás létrehozásakor egy IP SSL-címnek kell megadnia erre a célra, de továbbiak is hozzáadhatók. A további IP SSL címekért díjat számítunk fel, ahogy az a [app Service díjszabásban][AppServicePricing] is látható (az SSL-kapcsolatok szakaszban). A kiegészítő díj a IP SSL díj.
+**Beállítások**  >  **IP-címek**: Amikor létrehoz egy IP-SSL (SSL-) alkalmazást a beadásban, szüksége lesz egy IP SSL címre. Ahhoz, hogy beszerezze az egyiket, a szolgáltatónak meg kell IP SSLa a hozzárendelni kívánt címeket. A kisegítő szolgáltatás létrehozásakor egy IP SSL-címnek kell megadnia erre a célra, de továbbiak is hozzáadhatók. A további IP SSL címekért díjat számítunk fel, ahogy az a [app Service díjszabásban][AppServicePricing] is látható (az SSL-kapcsolatok szakaszban). A kiegészítő díj a IP SSL díj.
 
-**Beállítások** > **Front End Pool**előtér / -**munkavégző**készletei: az erőforráskészlet-lapok mindegyike lehetővé teszi, hogy csak az adott erőforráskészlet adatait tekintse meg, az adott erőforráskészlet teljes méretezésének biztosítása mellett.  
+**Beállítások**  >  **Előtér-készlet**  /  **Munkavégző készletek**: ezen erőforráskészlet-lapok mindegyike lehetővé teszi, hogy csak az adott erőforráskészlet adatait lássuk el, az erőforráskészlet teljes méretezésére szolgáló vezérlőelemek mellett.  
 
 Az egyes erőforráskészlet alappaneljének diagramja az adott erőforráskészlet metrikáit tartalmazza. Akárcsak a beadási panelen található diagramoknál, beléphet a diagramba, és igény szerint állíthatja be a riasztásokat. Egy adott erőforráskészlet bekapcsolási paneljéről érkező riasztások beállítása ugyanaz, mint az erőforráskészlet esetében. A Worker Pool **Beállítások** paneljén hozzáférhet az ebben a feldolgozó készletben futó összes alkalmazáshoz vagy app Service-csomaghoz.
 
@@ -154,7 +153,7 @@ Ha a skálázási műveletet a kisegítő panelen szeretné használni, húzza a
 
 ![Felhasználói felület méretezése][6]
 
-Ha egy adott erőforráskészlet manuális vagy automatikus méretezési képességeit szeretné használni, válassza a **Beállítások** > **előtér-készlet** / **feldolgozói készletek** lehetőséget. Ezután nyissa meg a módosítani kívánt készletet. Lépjen a **Beállítások** > **felskálázás** vagy a **Beállítások** > vertikális**felskálázás menüpontra.** A **kibővíthető** panel lehetővé teszi a példányok mennyiségének vezérlését. A vertikális **felskálázás** lehetővé teszi az erőforrások méretének szabályozását.  
+Ha egy adott erőforráskészlet manuális vagy automatikus méretezési képességeit szeretné használni, válassza a **Beállítások**  >  **előtér-készlet**  /  **feldolgozói készletek** lehetőséget. Ezután nyissa meg a módosítani kívánt készletet. Lépjen a **Beállítások**  >  **felskálázás** vagy a **Beállítások**vertikális felskálázás menüpontra  >  **Scale Up**. A **kibővíthető** panel lehetővé teszi a példányok mennyiségének vezérlését. A vertikális **felskálázás** lehetővé teszi az erőforrások méretének szabályozását.  
 
 ![Méretezési beállítások felhasználói felülete][7]
 

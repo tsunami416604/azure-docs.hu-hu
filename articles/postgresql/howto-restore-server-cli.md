@@ -8,10 +8,9 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.openlocfilehash: f0ea24133d7b6acdc4b099ee21a8711a2d99095d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74775704"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>Kiszolgáló biztonsági mentése és visszaállítása Azure Database for PostgreSQL – egyetlen kiszolgálón az Azure CLI használatával
@@ -27,7 +26,7 @@ A útmutató lépéseinek elvégzéséhez a következőkre lesz szüksége:
  
 
 > [!IMPORTANT]
-> Ehhez az útmutatóhoz az Azure CLI 2,0-es vagy újabb verzióját kell használnia. A verzió megerősítéséhez az Azure CLI parancssorában adja meg `az --version`a következőt:. A telepítéshez vagy a frissítéshez lásd: az [Azure CLI telepítése]( /cli/azure/install-azure-cli).
+> Ehhez az útmutatóhoz az Azure CLI 2,0-es vagy újabb verzióját kell használnia. A verzió megerősítéséhez az Azure CLI parancssorában adja meg a következőt: `az --version` . A telepítéshez vagy a frissítéshez lásd: az [Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
 ## <a name="set-backup-configuration"></a>Biztonsági mentési konfiguráció beállítása
 
@@ -37,9 +36,9 @@ Választhatja a kiszolgáló helyi redundáns biztonsági mentések vagy földra
 > A kiszolgáló létrehozása után a redundancia, földrajzilag redundáns vagy helyileg redundáns, nem állítható be.
 >
 
-A-kiszolgáló `az postgres server create` parancson keresztüli létrehozásakor `--geo-redundant-backup` a paraméter határozza meg a biztonsági mentési redundancia beállítást. Ha `Enabled`a, Geo redundáns biztonsági mentések készülnek. Vagy ha `Disabled` a rendszer helyileg redundáns biztonsági mentést végez. 
+A-kiszolgáló parancson keresztüli létrehozásakor `az postgres server create` a `--geo-redundant-backup` paraméter határozza meg a biztonsági mentési redundancia beállítást. Ha `Enabled` a, Geo redundáns biztonsági mentések készülnek. Vagy ha `Disabled` a rendszer helyileg redundáns biztonsági mentést végez. 
 
-A biztonsági mentés megőrzési időtartamát a paraméter `--backup-retention-days`határozza meg. 
+A biztonsági mentés megőrzési időtartamát a paraméter határozza meg `--backup-retention-days` . 
 
 További információ ezekről az értékekről a létrehozás során: [Azure Database for PostgreSQL Server CLI](quickstart-create-server-database-azure-cli.md)rövid útmutató.
 
@@ -71,8 +70,8 @@ A `az postgres server restore` parancshoz a következő paraméterek szükséges
 | Beállítás | Ajánlott érték | Leírás  |
 | --- | --- | --- |
 | resource-group |  myResourceGroup |  Az erőforráscsoport, amelyben a forráskiszolgáló található.  |
-| név | mydemoserver-restored | A visszaállítási paranccsal létrehozott új kiszolgáló neve. |
-| restore-point-in-time | 2018-03-13T13:59:00Z | Válasszon ki egy időpontot a visszaállításhoz. Ennek a dátumnak és időnek a forráskiszolgáló biztonsági mentésének megőrzési időszakán belül kell lennie. Használja a ISO8601 dátum és idő formátumát. Használhatja például a saját helyi időzónáját, például: `2018-03-13T05:59:00-08:00`. Az UTC Zulu formátumot is használhatja, például: `2018-03-13T13:59:00Z`. |
+| name | mydemoserver-restored | A visszaállítási paranccsal létrehozott új kiszolgáló neve. |
+| restore-point-in-time | 2018-03-13T13:59:00Z | Válasszon ki egy időpontot a visszaállításhoz. Ennek a dátumnak és időnek a forráskiszolgáló biztonsági mentésének megőrzési időszakán belül kell lennie. Használja a ISO8601 dátum és idő formátumát. Használhatja például a saját helyi időzónáját, például: `2018-03-13T05:59:00-08:00` . Az UTC Zulu formátumot is használhatja, például: `2018-03-13T13:59:00Z` . |
 | source-server | mydemoserver | A forráskiszolgáló neve vagy azonosítója, amelyről a visszaállítást végzi. |
 
 Amikor egy kiszolgálót egy korábbi időpontra állít vissza, létrejön egy új kiszolgáló. A rendszer átmásolja az eredeti kiszolgálót és a megadott időponthoz tartozó adatbázisait az új kiszolgálóra.
@@ -81,12 +80,12 @@ A visszaállított kiszolgáló helye és árképzési szintjei változatlanok m
 
 A visszaállítási folyamat befejeződése után keresse meg az új kiszolgálót, és győződjön meg róla, hogy az Adathelyreállítás a várt módon történik. Az új kiszolgáló ugyanazzal a kiszolgáló-rendszergazdai bejelentkezési névvel és jelszóval rendelkezik, amely a visszaállítás megkezdésének időpontjában érvényes a meglévő kiszolgálóhoz. A jelszót az új kiszolgáló **áttekintő** oldaláról lehet megváltoztatni.
 
-A visszaállítás során létrehozott új kiszolgáló nem rendelkezik az eredeti kiszolgálón található tűzfalszabályok vagy VNet szolgáltatás-végpontokkal. Ezeket a szabályokat külön kell beállítani az új kiszolgálóhoz.
+A visszaállítás során létrehozott új kiszolgáló nem rendelkezik az eredeti kiszolgálón található tűzfalszabályokkal vagy VNet-szolgáltatásvégpontokkal. Ezeket a szabályokat külön kell beállítani ehhez az új kiszolgálóhoz.
 
 ## <a name="geo-restore"></a>Geo-visszaállítás
 Ha a kiszolgálót földrajzilag redundáns biztonsági mentésre konfigurálta, akkor a rendszer létrehoz egy új kiszolgálót a meglévő kiszolgáló biztonsági másolatából. Ezt az új kiszolgálót bármely olyan régióban létre lehet hozni, amely Azure Database for PostgreSQL elérhető.  
 
-Ha egy olyan kiszolgálót szeretne létrehozni, amely egy földrajzi redundáns biztonsági mentést `az postgres server georestore` használ, használja az Azure CLI-parancsot.
+Ha egy olyan kiszolgálót szeretne létrehozni, amely egy földrajzi redundáns biztonsági mentést használ, használja az Azure CLI- `az postgres server georestore` parancsot.
 
 > [!NOTE]
 > A kiszolgálók első létrehozásakor előfordulhat, hogy a Geo-visszaállításhoz nem lesz azonnal elérhető. A szükséges metaadatok feltöltése néhány órát is igénybe vehet.
@@ -99,7 +98,7 @@ az postgres server georestore --resource-group myresourcegroup --name mydemoserv
 ```
 Ez a parancs létrehoz egy új, *mydemoserver-georestored* nevű kiszolgálót az USA keleti régiójában, amely a *myresourcegroup*-hoz fog tartozni. Ez egy általános célú, Gen 4 kiszolgáló 8 virtuális mag. A kiszolgáló a *mydemoserver*a Geo-redundáns biztonsági másolatból jön létre, amely szintén az erőforráscsoport *myresourcegroup*
 
-Ha az új kiszolgálót egy másik erőforráscsoporthoz szeretné létrehozni a meglévő kiszolgálóról, akkor a `--source-server` (z) paraméterben az alábbi példában látható módon kell minősítenie a kiszolgálónevet:
+Ha az új kiszolgálót egy másik erőforráscsoporthoz szeretné létrehozni a meglévő kiszolgálóról, akkor a (z) `--source-server` paraméterben az alábbi példában látható módon kell minősítenie a kiszolgálónevet:
 
 ```azurecli-interactive
 az postgres server georestore --resource-group newresourcegroup --name mydemoserver-georestored --source-server "/subscriptions/$<subscription ID>/resourceGroups/$<resource group ID>/providers/Microsoft.DBforPostgreSQL/servers/mydemoserver" --location eastus --sku-name GP_Gen4_8
@@ -111,7 +110,7 @@ A `az postgres server georestore` parancshoz a következő paraméterek szüksé
 | Beállítás | Ajánlott érték | Leírás  |
 | --- | --- | --- |
 |resource-group| myResourceGroup | Annak az erőforráscsoportnak a neve, amelyhez az új kiszolgáló tartozni fog.|
-|név | mydemoserver – georestored | Az új kiszolgáló neve. |
+|name | mydemoserver – georestored | Az új kiszolgáló neve. |
 |source-server | mydemoserver | Annak a meglévő kiszolgálónak a neve, amelynek a földrajzi redundáns biztonsági másolatait használja a rendszer. |
 |location | eastus | Az új kiszolgáló helye. |
 |sku-name| GP_Gen4_8 | Ez a paraméter beállítja az árképzési szintet, a számítási generációt és az új kiszolgáló virtuális mag számát. GP_Gen4_8 térképeket egy általános célú, Gen 4 Server 8 virtuális mag.|
@@ -120,7 +119,7 @@ Amikor új kiszolgálót hoz létre a Geo-visszaállítással, az örökli a for
 
 A visszaállítási folyamat befejeződése után keresse meg az új kiszolgálót, és győződjön meg róla, hogy az Adathelyreállítás a várt módon történik. Az új kiszolgáló ugyanazzal a kiszolgáló-rendszergazdai bejelentkezési névvel és jelszóval rendelkezik, amely a visszaállítás megkezdésének időpontjában érvényes a meglévő kiszolgálóhoz. A jelszót az új kiszolgáló **áttekintő** oldaláról lehet megváltoztatni.
 
-A visszaállítás során létrehozott új kiszolgáló nem rendelkezik az eredeti kiszolgálón található tűzfalszabályok vagy VNet szolgáltatás-végpontokkal. Ezeket a szabályokat külön kell beállítani az új kiszolgálóhoz.
+A visszaállítás során létrehozott új kiszolgáló nem rendelkezik az eredeti kiszolgálón található tűzfalszabályokkal vagy VNet-szolgáltatásvégpontokkal. Ezeket a szabályokat külön kell beállítani ehhez az új kiszolgálóhoz.
 
 ## <a name="next-steps"></a>További lépések
 - További információ a szolgáltatás [biztonsági mentéséről](concepts-backup.md)

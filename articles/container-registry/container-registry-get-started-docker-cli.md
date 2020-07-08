@@ -5,10 +5,9 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.custom: seodec18, H1Hack27Feb2017
 ms.openlocfilehash: 6751a04c3c1bfe826334161704c20c1ba2e5a6d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74456353"
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>Az első rendszerkép leküldése egy privát Docker-tároló beállításjegyzékébe a Docker parancssori felületével
@@ -36,10 +35,10 @@ A [Docker-bejelentkezés](https://docs.docker.com/engine/reference/commandline/l
 docker login myregistry.azurecr.io
 ```
 
-Mindkét parancs a `Login Succeeded` befejezés után visszatér.
+Mindkét parancs a `Login Succeeded` Befejezés után visszatér.
 
 > [!TIP]
-> Mindig a teljes beállításjegyzékbeli nevet adja meg (az összes kisbetűs) a `docker login` használatakor, és ha képeket címkéz fel a beállításjegyzékbe való leküldéshez. A cikkben szereplő példákban a teljes név *myregistry.azurecr.IO*.
+> Mindig a teljes beállításjegyzékbeli nevet adja meg (az összes kisbetűs) a használatakor `docker login` , és ha képeket címkéz fel a beállításjegyzékbe való leküldéshez. A cikkben szereplő példákban a teljes név *myregistry.azurecr.IO*.
 
 ## <a name="pull-the-official-nginx-image"></a>A hivatalos Nginx-rendszerkép lekérése
 
@@ -51,19 +50,19 @@ docker pull nginx
 
 ## <a name="run-the-container-locally"></a>Futtassa helyileg a tárolót
 
-A következő [Docker-futtatási](https://docs.docker.com/engine/reference/run/) parancs végrehajtásával indítsa el az Nginx-tároló helyi példányát`-it`interaktívan () a 8080-es porton. Az `--rm` argumentum azt adja meg, hogy a tárolót el kell távolítani, amikor leállítja.
+A következő [Docker-futtatási](https://docs.docker.com/engine/reference/run/) parancs végrehajtásával indítsa el az Nginx-tároló helyi példányát interaktívan ( `-it` ) a 8080-es porton. Az `--rm` argumentum azt adja meg, hogy a tárolót el kell távolítani, amikor leállítja.
 
 ```
 docker run -it --rm -p 8080:80 nginx
 ```
 
-`http://localhost:8080` Tallózással megtekintheti az Nginx által a futó tárolóban kiszolgált alapértelmezett weblapot. A következőhöz hasonló oldalnak kell megjelennie:
+Tallózással `http://localhost:8080` megtekintheti az Nginx által a futó tárolóban kiszolgált alapértelmezett weblapot. A következőhöz hasonló oldalnak kell megjelennie:
 
 ![Nginx egy helyi számítógépen](./media/container-registry-get-started-docker-cli/nginx.png)
 
-Mivel a tárolót interaktív módon indította el `-it`, az Nginx-kiszolgáló kimenetét a parancssorban láthatja a böngészőben való navigálás után.
+Mivel a tárolót interaktív módon indította el `-it` , az Nginx-kiszolgáló kimenetét a parancssorban láthatja a böngészőben való navigálás után.
 
-A tároló leállításához és eltávolításához `Control` + `C`nyomja meg a gombot.
+A tároló leállításához és eltávolításához nyomja meg a gombot `Control` + `C` .
 
 ## <a name="create-an-alias-of-the-image"></a>A rendszerkép aliasának létrehozása
 
@@ -99,9 +98,9 @@ A beállításjegyzékből lekért rendszerkép futtatásához használja a [Doc
 docker run -it --rm -p 8080:80 myregistry.azurecr.io/samples/nginx
 ```
 
-`http://localhost:8080` Tallózással keresse meg a futó tárolót.
+Tallózással keresse meg `http://localhost:8080` a futó tárolót.
 
-A tároló leállításához és eltávolításához `Control` + `C`nyomja meg a gombot.
+A tároló leállításához és eltávolításához nyomja meg a gombot `Control` + `C` .
 
 ## <a name="remove-the-image-optional"></a>A rendszerkép eltávolítása (nem kötelező)
 
@@ -111,7 +110,7 @@ Ha már nincs szüksége az Nginx-rendszerképre, helyileg törölheti a [Docker
 docker rmi myregistry.azurecr.io/samples/nginx
 ```
 
-Az Azure Container registryből származó rendszerképek eltávolításához használhatja az Azure CLI-parancsot az [ACR adattár delete](/cli/azure/acr/repository#az-acr-repository-delete)paranccsal. A következő parancs például törli a `samples/nginx:latest` címke által hivatkozott jegyzékfájlt, az egyedi réteget, valamint az összes többi, a jegyzékfájlra hivatkozó címkét.
+Az Azure Container registryből származó rendszerképek eltávolításához használhatja az Azure CLI-parancsot az [ACR adattár delete](/cli/azure/acr/repository#az-acr-repository-delete)paranccsal. A következő parancs például törli a címke által hivatkozott jegyzékfájlt `samples/nginx:latest` , az egyedi réteget, valamint az összes többi, a jegyzékfájlra hivatkozó címkét.
 
 ```azurecli
 az acr repository delete --name myregistry --image samples/nginx:latest

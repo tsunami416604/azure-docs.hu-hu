@@ -13,10 +13,9 @@ ms.workload: infrastructure
 ms.date: 11/20/2019
 ms.author: vilibert
 ms.openlocfilehash: 37cb201751f72918838efe5837aa0e357d483f24
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74408741"
 ---
 # <a name="troubleshoot-azure-linux-virtual-machines-boot-errors"></a>Azure Linux Virtual Machines rendszerindítási hibák elhárítása
@@ -39,8 +38,8 @@ Linux rendszerű virtuális gép hibáinak elhárítása az operációsrendszer-
 - [Rendszerhéj-helyreállítási parancsfájlok](https://github.com/Azure/azure-support-scripts/tree/master/VMRecovery/ResourceManager)
 - [bash helyreállítási parancsfájlok](https://github.com/sribs/azure-support-scripts)
 
-- [parancssori felület](troubleshoot-recovery-disks-linux.md)
-- [Azure Portal](troubleshoot-recovery-disks-portal-linux.md)
+- [Parancssori felület](troubleshoot-recovery-disks-linux.md)
+- [Azure Portalra](troubleshoot-recovery-disks-portal-linux.md)
 
 
 ## <a name="disk-swap-video"></a>Disk swap-videó:

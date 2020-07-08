@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
 ms.openlocfilehash: 42d9e8b190747a3ffaf0e46ea1eddda33d09bb24
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74870564"
 ---
 # <a name="sql-subquery-examples-for-azure-cosmos-db"></a>Példák az SQL allekérdezésre Azure Cosmos DB
@@ -79,7 +78,7 @@ Tegyük fel, hogy a címkék tömbben csak egy elem felel meg a szűrőnek, és 
 
 Az allekérdezések olyan költséges kifejezésekkel optimalizálják a lekérdezéseket, mint a felhasználó által definiált függvények (UDF), az összetett karakterláncok vagy a aritmetikai kifejezések. A kifejezést egy JOIN kifejezéssel együtt használva kiértékelheti a kifejezést egyszer, de többször is hivatkozhat rá.
 
-A következő lekérdezés kétszer futtatja `GetMaxNutritionValue` az UDF-t:
+A következő lekérdezés kétszer futtatja az UDF-t `GetMaxNutritionValue` :
 
 ```sql
 SELECT c.id, udf.GetMaxNutritionValue(c.nutrients) AS MaxNutritionValue
@@ -109,7 +108,7 @@ JOIN (SELECT udf.GetMaxNutritionValue(c.nutrients) AS MaxNutritionValue) m
 WHERE m.MaxNutritionValue > 100
 ```
 
-A megközelítés nem korlátozódik a UDF. Ez minden potenciálisan költséges kifejezésre vonatkozik. Tegyük fel, hogy ugyanezt a módszert használja a matematikai függvénnyel `avg`:
+A megközelítés nem korlátozódik a UDF. Ez minden potenciálisan költséges kifejezésre vonatkozik. Tegyük fel, hogy ugyanezt a módszert használja a matematikai függvénnyel `avg` :
 
 ```sql
 SELECT TOP 1000 c.id, AvgNutritionValue
@@ -124,7 +123,7 @@ Előfordulhat, hogy gyakran olyan statikus adatmennyiségre kell hivatkoznia, am
 
 Vegyük például a következő hivatkozási adatkészletet:
 
-| **Egység** | **Név**            | **Szorzó** | **Alapegység** |
+| **Egység** | **Name (Név)**            | **Szorzó** | **Alapegység** |
 | -------- | ------------------- | -------------- | ------------- |
 | ng       | Nanogrammos            | 1.00 e-09       | Gram          |
 | μg       | Mikrogramm           | 1.00 e-06       | Gram          |
@@ -191,7 +190,7 @@ Egy egyszerű kifejezéssel rendelkező skaláris segédlekérdezés olyan korre
 
 Íme néhány példa:
 
-**1. példa**
+**1\. példa**
 
 ```sql
 SELECT 1 AS a, 2 AS b
@@ -211,7 +210,7 @@ Mindkét lekérdezés ezt a kimenetet hozza létre:
 ]
 ```
 
-**2. példa**
+**2\. példa**
 
 ```sql
 SELECT TOP 5 Concat('id_', f.id) AS id
@@ -237,7 +236,7 @@ Lekérdezés kimenete:
 ]
 ```
 
-**3. példa**
+**3\. példa**
 
 ```sql
 SELECT TOP 5 f.id, Contains(f.description, 'fruit') = true ? f.description : undefined
@@ -291,7 +290,7 @@ Lekérdezés kimenete:
 ]
 ```
 
-**2. példa**
+**2\. példa**
 
 Íme egy segédlekérdezés több összesítő függvény kifejezéssel:
 
@@ -316,7 +315,7 @@ Lekérdezés kimenete:
 ]
 ```
 
-**3. példa**
+**3\. példa**
 
 Az alábbiakban egy összesítő allekérdezéssel rendelkező lekérdezés szerepel a vetítésben és a szűrőben:
 
@@ -366,7 +365,7 @@ Ha az előző allekérdezésben szereplő VALUE kulcsszó ki van hagyva, a leké
 SELECT EXISTS (SELECT undefined) 
 ```
 
-A segédlekérdezés egy objektum kiválasztott listájában lévő értékek listáját fogja csatolni. Ha a kiválasztott lista nem tartalmaz értékeket, a segédlekérdezés az "{}" egyetlen értéket fogja visszaadni. Ez az érték definiálva van, ezért a függvény Igaz értéket ad vissza.
+A segédlekérdezés egy objektum kiválasztott listájában lévő értékek listáját fogja csatolni. Ha a kiválasztott lista nem tartalmaz értékeket, a segédlekérdezés az "" egyetlen értéket fogja visszaadni {} . Ez az érték definiálva van, ezért a függvény Igaz értéket ad vissza.
 
 ### <a name="example-rewriting-array_contains-and-join-as-exists"></a>Példa: ARRAY_CONTAINS újraírása és csatlakozás LÉTEZŐként
 
@@ -388,7 +387,7 @@ WHERE EXISTS(SELECT VALUE t FROM t IN f.tags WHERE t.name = 'orange')
 
 Emellett a ARRAY_CONTAINS csak azt vizsgálhatja, hogy egy érték egyenlő-e egy tömbben lévő bármelyik elemmel. Ha összetettebb szűrőkre van szüksége a tömb tulajdonságainál, használja a JOIN (csatlakozás) parancsot.
 
-Vegye figyelembe a következő lekérdezést, amely a tömb egységei `nutritionValue` és tulajdonságai alapján szűr: 
+Vegye figyelembe a következő lekérdezést, amely a tömb egységei és tulajdonságai alapján szűr `nutritionValue` : 
 
 ```sql
 SELECT VALUE c.description

@@ -4,15 +4,14 @@ description: Hozzáférés biztosítása a privát tároló beállításjegyzék
 ms.topic: article
 ms.date: 10/04/2019
 ms.openlocfilehash: 37da784c8e95a5f5b924532e4a019552924a1a3f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74455410"
 ---
 # <a name="azure-container-registry-authentication-with-service-principals"></a>Azure Container Registry hitelesítés egyszerű szolgáltatásokkal
 
-Egy Azure Active Directory (Azure AD) egyszerű szolgáltatásnév használatával biztosíthatja a tárolók `docker push` rendszerképét `pull` , és hozzáférhet a tároló-beállításjegyzékhez. Egyszerű szolgáltatásnév használatával hozzáférést biztosíthat a "fej nélküli" szolgáltatásokhoz és alkalmazásokhoz.
+Egy Azure Active Directory (Azure AD) egyszerű szolgáltatásnév használatával biztosíthatja a tárolók rendszerképét `docker push` , és `pull` hozzáférhet a tároló-beállításjegyzékhez. Egyszerű szolgáltatásnév használatával hozzáférést biztosíthat a "fej nélküli" szolgáltatásokhoz és alkalmazásokhoz.
 
 ## <a name="what-is-a-service-principal"></a>Mi az a szolgáltatásnév?
 
@@ -24,7 +23,7 @@ Azure Container Registry kontextusában létrehozhat egy Azure AD-szolgáltatás
 
 Az Azure AD egyszerű szolgáltatásnév használatával hatókörön belüli hozzáférést biztosíthat a saját tároló-beállításjegyzékhez. Hozzon létre különböző egyszerű szolgáltatásokat az egyes alkalmazásokhoz vagy szolgáltatásokhoz, amelyek mindegyike testreszabott hozzáférési jogokkal rendelkezik a beállításjegyzékhez. Továbbá, mivel elkerülheti a hitelesítő adatok megosztását a szolgáltatások és az alkalmazások között, elforgathatja a hitelesítő adatokat, vagy visszavonhatja a hozzáférést csak az egyszerű szolgáltatásnév (és így az alkalmazás) közül.
 
-Például úgy konfigurálhatja a webalkalmazást, hogy olyan egyszerű szolgáltatásnevet használjon, amely csak `pull` képhozzáférést biztosít, míg a Build rendszer olyan szolgáltatásnevet használ, amely egyaránt `push` és `pull` hozzáféréssel rendelkezik. Ha megváltoztatja az alkalmazás fejlesztését, elforgathatja a szolgáltatás egyszerű hitelesítő adatait anélkül, hogy ez hatással lenne a Build rendszerre.
+Például úgy konfigurálhatja a webalkalmazást, hogy olyan egyszerű szolgáltatásnevet használjon `pull` , amely csak képhozzáférést biztosít, míg a Build rendszer olyan szolgáltatásnevet használ, amely egyaránt `push` és hozzáféréssel rendelkezik `pull` . Ha megváltoztatja az alkalmazás fejlesztését, elforgathatja a szolgáltatás egyszerű hitelesítő adatait anélkül, hogy ez hatással lenne a Build rendszerre.
 
 ## <a name="when-to-use-a-service-principal"></a>Mikor kell szolgáltatásnevet használni
 
@@ -47,12 +46,12 @@ Az előző minta parancsfájlokat az Azure CLI-hez, a GitHubon, valamint a Azure
 
 ## <a name="authenticate-with-the-service-principal"></a>Hitelesítés az egyszerű szolgáltatással
 
-Ha már rendelkezik egy olyan egyszerű szolgáltatással, amely hozzáférést kapott a tároló-beállításjegyzékhez, a hitelesítő adatait megadhatja a "fej nélküli" szolgáltatásokhoz és alkalmazásokhoz, vagy `docker login` megadhatja azokat a paranccsal. Használja a következő értékeket:
+Ha már rendelkezik egy olyan egyszerű szolgáltatással, amely hozzáférést kapott a tároló-beállításjegyzékhez, a hitelesítő adatait megadhatja a "fej nélküli" szolgáltatásokhoz és alkalmazásokhoz, vagy megadhatja azokat a `docker login` paranccsal. Használja a következő értékeket:
 
 * **Felhasználónév** – egyszerű szolgáltatásnév alkalmazásának azonosítója (más néven *ügyfél-azonosító*)
 * **Jelszó** – egyszerű szolgáltatás jelszava (más néven *ügyfél-titok*)
 
-Minden érték az űrlap `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`GUID-azonosítója. 
+Minden érték az űrlap GUID-azonosítója `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` . 
 
 > [!TIP]
 > Egy egyszerű szolgáltatásnév jelszavát az az [ad SP reset-hitelesítőadats](/cli/azure/ad/sp/credential#az-ad-sp-credential-reset) parancs futtatásával lehet újból előállítani.
@@ -66,7 +65,7 @@ A hitelesítő adatok használatával például lekérheti a rendszerképet egy 
 
 ### <a name="use-with-docker-login"></a>Használat a Docker-bejelentkezéssel
 
-Az egyszerű szolgáltatásnév `docker login` használatával is futtatható. A következő példában a szolgáltatás egyszerű alkalmazásának azonosítója a környezeti változóban `$SP_APP_ID`, a változóban `$SP_PASSWD`pedig a jelszót adja át. A Docker hitelesítő adatainak kezelésével kapcsolatos ajánlott eljárásokért tekintse meg a [Docker login](https://docs.docker.com/engine/reference/commandline/login/) parancs referenciáját.
+`docker login`Az egyszerű szolgáltatásnév használatával is futtatható. A következő példában a szolgáltatás egyszerű alkalmazásának azonosítója a környezeti változóban `$SP_APP_ID` , a változóban pedig a jelszót adja át `$SP_PASSWD` . A Docker hitelesítő adatainak kezelésével kapcsolatos ajánlott eljárásokért tekintse meg a [Docker login](https://docs.docker.com/engine/reference/commandline/login/) parancs referenciáját.
 
 ```bash
 # Log in to Docker with service principal credentials
@@ -93,7 +92,7 @@ Ezután futtassa az [ACR login][az-acr-login] parancsot a beállításjegyzékbe
 az acr login --name myregistry
 ```
 
-A CLI `az login` azt a tokent használja, amely akkor jön létre, amikor a-munkamenetet a beállításjegyzékkel hitelesíti.
+A CLI azt a tokent használja, amely akkor jön létre, amikor a `az login` -munkamenetet a beállításjegyzékkel hitelesíti.
 
 ## <a name="next-steps"></a>További lépések
 

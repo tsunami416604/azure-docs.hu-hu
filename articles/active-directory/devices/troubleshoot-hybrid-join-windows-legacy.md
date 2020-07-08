@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e168deea1ba442d48f483264c1e97ce618040f18
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74379122"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>A hibrid Azure Active Directory csatlakoztatása a régebbi verziójú eszközökhöz 
@@ -68,12 +67,12 @@ Ha az eszköz nem csatlakozott a hibrid Azure AD-hez, az "összekapcsolás" gomb
 
     ![Windows Workplace Join](./media/troubleshoot-hybrid-join-windows-legacy/02.png)
     
-   - Az autoworkplace. exe nem tudja csendesen hitelesíteni az Azure AD-t vagy AD FS. Ezt okozhatja a hiányzó vagy helytelenül konfigurált AD FS (összevont tartományok esetében), illetve hiányzik vagy helytelenül van konfigurálva az Azure AD zökkenőmentes egyszeri bejelentkezés (felügyelt tartományokhoz) vagy hálózati problémák. 
+   - A Autoworkplace.exe nem tud csendes hitelesítést végezni az Azure AD-vel vagy AD FSval. Ezt okozhatja a hiányzó vagy helytelenül konfigurált AD FS (összevont tartományok esetében), illetve hiányzik vagy helytelenül van konfigurálva az Azure AD zökkenőmentes egyszeri bejelentkezés (felügyelt tartományokhoz) vagy hálózati problémák. 
    - Előfordulhat, hogy a többtényezős hitelesítés (MFA) engedélyezve van/konfigurálva van a felhasználóhoz, és a WIAORMULTIAUTHN nincs konfigurálva a AD FS-kiszolgálón. 
-   - Egy másik lehetőség, hogy a Home Realm Discovery (HRD) oldal a felhasználói interakcióra vár, ami megakadályozza, hogy az **autoworkplace. exe** a tokent csendesen kérje.
+   - Egy másik lehetőség, hogy a Home Realm Discovery (HRD) oldal a felhasználói interakcióra vár, ami megakadályozza, hogy **autoworkplace.exe** a jogkivonat csendes kérelmezését.
    - Előfordulhat, hogy a AD FS és az Azure AD URL-címei hiányoznak az IE intranet zónájában az ügyfélen.
-   - A hálózati kapcsolat problémái miatt előfordulhat, hogy az **autoworkplace. exe** nem éri el AD FS vagy az Azure ad URL-címeit. 
-   - Az **autoworkplace. exe** megköveteli, hogy az ügyfél közvetlen vonallal lássa el az ügyfelet a szervezet helyszíni ad-tartományvezérlőjére, ami azt jelenti, hogy a hibrid Azure ad-csatlakozás csak akkor sikeres, ha az ügyfél a szervezet intranetéhez csatlakozik.
+   - Előfordulhat, hogy a hálózati kapcsolat problémái miatt **autoworkplace.exe** a AD FS vagy az Azure ad URL-címeinek elérését. 
+   - **Autoworkplace.exe** megköveteli, hogy az ügyfél közvetlen vonallal lássa el az ügyfelet a szervezet helyszíni ad-tartományvezérlőjére, ami azt jelenti, hogy a hibrid Azure ad-csatlakozás csak akkor sikeres, ha az ügyfél a szervezet intranetéhez csatlakozik.
    - A szervezet az Azure AD zökkenőmentes egyszeri bejelentkezést használja, `https://autologon.microsoftazuread-sso.com` vagy `https://aadg.windows.net.nsatc.net` nem szerepel az eszköz IE intranetes beállításain, és az **állapotsoron keresztüli frissítés engedélyezése parancsfájl használatával** nincs engedélyezve az intranetes zónában.
 - Nincs bejelentkezve tartományi felhasználóként
 

@@ -8,10 +8,9 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 4af0fb288961689fb051bab8091c838f793cfcc3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74765647"
 ---
 # <a name="create-and-manage-firewall-rules-in-azure-database-for-postgresql---single-server-using-azure-cli"></a>Tűzfalszabályok létrehozása és kezelése Azure Database for PostgreSQL – egyetlen kiszolgálón az Azure CLI használatával
@@ -32,7 +31,7 @@ A meglévő kiszolgálói tűzfalszabályok listázásához futtassa az az [post
 ```azurecli-interactive
 az postgres server firewall-rule list --resource-group myresourcegroup --server-name mydemoserver
 ```
-A kimenet felsorolja a tűzfalszabályok (ha vannak) alapértelmezés szerint JSON formátumban. A kapcsolót `--output table` a kimenetként olvasható táblázatos formátumra használhatja.
+A kimenet felsorolja a tűzfalszabályok (ha vannak) alapértelmezés szerint JSON formátumban. A kapcsolót a `--output table` kimenetként olvasható táblázatos formátumra használhatja.
 ```azurecli-interactive
 az postgres server firewall-rule list --resource-group myresourcegroup --server-name mydemoserver --output table
 ```

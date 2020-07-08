@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 71fd33388cb1bdf7c87c44fb3273c6850122a0cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74847849"
 ---
 # <a name="azure-ad-password-protection-agent-version-history"></a>Az Azure AD jelszavas védelmi ügynök korábbi verziói
@@ -42,9 +41,9 @@ Kiadás dátuma: 3/13/2019
   * A Server Core rendszerekben szükség lehet a/q jelző megadására a .NET 4,7 telepítőre, hogy a sikeres legyen.
 * A proxy szolgáltatás mostantól támogatja az automatikus frissítést. Az automatikus frissítés a Microsoft Azure AD összekapcsolási ügynök frissítési szolgáltatását használja, amely a proxy szolgáltatással párhuzamosan települ. Alapértelmezés szerint az automatikus frissítés be van kapcsolva.
 * Az automatikus frissítés a set-AzureADPasswordProtectionProxyConfiguration parancsmag használatával engedélyezhető vagy letiltható. Az aktuális beállítás a Get-AzureADPasswordProtectionProxyConfiguration parancsmag használatával kérdezhető le.
-* A DC Agent szolgáltatáshoz tartozó szolgáltatás bináris fájlját átnevezték a AzureADPasswordProtectionDCAgent. exe névre.
-* A proxy szolgáltatáshoz tartozó bináris fájl át lett nevezve a AzureADPasswordProtectionProxy. exe névre. Előfordulhat, hogy a tűzfalszabályok módosítására van szükség, ha egy külső gyártótól származó tűzfal van használatban.
-  * Megjegyzés: Ha egy http-proxy konfigurációs fájlját egy korábbi proxy telepítésekor használták, a frissítés után át kell őket átnevezni (a *proxyservice. exe. config* fájlból a *AzureADPasswordProtectionProxy. exe. config*fájlba).
+* A DC Agent szolgáltatáshoz tartozó bináris fájl átnevezve lett AzureADPasswordProtectionDCAgent.exera.
+* A proxy szolgáltatáshoz tartozó bináris fájl át lett nevezve AzureADPasswordProtectionProxy.exera. Előfordulhat, hogy a tűzfalszabályok módosítására van szükség, ha egy külső gyártótól származó tűzfal van használatban.
+  * Megjegyzés: Ha egy http-proxy konfigurációs fájlját egy korábbi proxy telepítésekor használták, akkor a frissítés után átnevezni kell ( *proxyservice.exe.configról* *AzureADPasswordProtectionProxy.exe.config*).
 * Az összes időkorlátos funkció-ellenőrzés el lett távolítva a DC-ügynökből.
 * A kisebb hibák javításai és naplózási funkciói.
 

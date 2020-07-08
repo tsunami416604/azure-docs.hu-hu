@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/22/2019
 ms.openlocfilehash: 41112359408497d84243ed9bb06f396acf008dc5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74666001"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---data-migration-best-practices"></a>Helyszíni Apache Hadoop-fürtök áttelepítése az Azure HDInsight – az adatáttelepítés ajánlott eljárásai
@@ -61,7 +60,7 @@ A DistCp megkísérli létrehozni a leképezési feladatokat, hogy mindegyik pé
 
 * A DistCp legalacsonyabb részletessége egyetlen fájl. Több, a forrásfájlok számánál nagyobb számú Mapper meghatározása nem segít, és a rendelkezésre álló fürterőforrás-erőforrások pazarlását fogja megadni.
 
-* Vegye figyelembe a rendelkezésre álló szál memóriáját a fürtön a leképezések számának megállapításához. Minden leképezési feladat egy szál-tárolóként indul el. Feltételezve, hogy a fürtön nem futnak más nagy terhelésű feladatok, a leképezések számát a következő képlet határozza meg: m = (a feldolgozó csomópontok \* száma az egyes munkavégző csomópontok számára)/a fonalak tárolójának mérete. Ha azonban más alkalmazások is használják a memóriát, a DistCp feladatokhoz csak a FONALak memóriájának egy részét használják.
+* Vegye figyelembe a rendelkezésre álló szál memóriáját a fürtön a leképezések számának megállapításához. Minden leképezési feladat egy szál-tárolóként indul el. Feltételezve, hogy a fürtön nem futnak más nagy terhelésű feladatok, a leképezések számát a következő képlet határozza meg: m = (a feldolgozó csomópontok száma az \* egyes munkavégző csomópontok számára)/a fonalak tárolójának mérete. Ha azonban más alkalmazások is használják a memóriát, a DistCp feladatokhoz csak a FONALak memóriájának egy részét használják.
 
 ### <a name="use-more-than-one-distcp-job"></a>Egynél több DistCp-feladatot használjon
 
@@ -73,15 +72,15 @@ Ha kis számú nagyméretű fájl van, akkor érdemes megfontolnia, hogy 256 MB 
 
 ### <a name="use-the-strategy-command-line-parameter"></a>A "stratégia" parancssori paraméter használata
 
-Érdemes lehet `strategy = dynamic` paramétert használni a parancssorban. A `strategy` paraméter alapértelmezett értéke: `uniform size`, ebben az esetben az egyes leképezések nagyjából azonos számú bájtot másolnak. Ha ez a paraméter a értékre `dynamic`módosul, a listaelem több "darab-fájlra" oszlik. Az adathalmazok száma – a fájlok száma a térképek számának többszöröse. Minden Térkép feladathoz hozzá van rendelve egy adathalmaz-fájl. Az adathalmaz összes elérési útjának feldolgozását követően a rendszer törli az aktuális adatrészletet, és új adatrészletet szerez be. A folyamat addig folytatódik, amíg nem állnak rendelkezésre több adathalmaz. Ez a "dinamikus" megközelítés lehetővé teszi a gyorsabb Térkép-feladatok használatát, hogy több útvonalat használjanak, mint a lassabbak, így a DistCp-feladat teljes felgyorsítása.
+Érdemes lehet `strategy = dynamic` paramétert használni a parancssorban. A paraméter alapértelmezett értéke `strategy` `uniform size` :, ebben az esetben az egyes leképezések nagyjából azonos számú bájtot másolnak. Ha ez a paraméter a értékre módosul `dynamic` , a listaelem több "darab-fájlra" oszlik. Az adathalmazok száma – a fájlok száma a térképek számának többszöröse. Minden Térkép feladathoz hozzá van rendelve egy adathalmaz-fájl. Az adathalmaz összes elérési útjának feldolgozását követően a rendszer törli az aktuális adatrészletet, és új adatrészletet szerez be. A folyamat addig folytatódik, amíg nem állnak rendelkezésre több adathalmaz. Ez a "dinamikus" megközelítés lehetővé teszi a gyorsabb Térkép-feladatok használatát, hogy több útvonalat használjanak, mint a lassabbak, így a DistCp-feladat teljes felgyorsítása.
 
 ### <a name="increase-the-number-of-threads"></a>A szálak számának növelésével
 
-Ellenőrizze, hogy a `-numListstatusThreads` paraméter növelése növeli-e a teljesítményt. Ezzel a paraméterrel állítható be, hogy hány szálat kell használni a fájlok listázásához, a 40 pedig a maximális értéket.
+Ellenőrizze, hogy a paraméter növelése növeli-e a `-numListstatusThreads` teljesítményt. Ezzel a paraméterrel állítható be, hogy hány szálat kell használni a fájlok listázásához, a 40 pedig a maximális értéket.
 
 ### <a name="use-the-output-committer-algorithm"></a>A kimeneti committer algoritmus használata
 
-Ellenőrizze, hogy a paraméter `-Dmapreduce.fileoutputcommitter.algorithm.version=2` átadása növeli-e a DistCp teljesítményét. Ez a kimeneti committer algoritmus optimalizációt tartalmaz a kimeneti fájlok célhelyre írásához. A következő parancs egy példát mutat be a különböző paraméterek használatára:
+Ellenőrizze, hogy a paraméter átadása növeli-e a `-Dmapreduce.fileoutputcommitter.algorithm.version=2` DistCp teljesítményét. Ez a kimeneti committer algoritmus optimalizációt tartalmaz a kimeneti fájlok célhelyre írásához. A következő parancs egy példát mutat be a különböző paraméterek használatára:
 
 ```bash
 hadoop distcp -Dmapreduce.fileoutputcommitter.algorithm.version=2 -numListstatusThreads 30 -m 100 -strategy dynamic hdfs://nn1:8020/foo/bar wasb://<container_name>@<storage_account_name>.blob.core.windows.net/foo/

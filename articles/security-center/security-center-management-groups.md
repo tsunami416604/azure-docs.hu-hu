@@ -14,10 +14,9 @@ ms.workload: na
 ms.date: 12/19/2018
 ms.author: memildin
 ms.openlocfilehash: 734876380d22f5d4d6dae0dd375b238fd5f6ffed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74559346"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>A Azure Security Center teljes bérlőre kiterjedő láthatóságának megszerzése
@@ -40,7 +39,7 @@ Az előfizetéseket felügyeleti csoportokba rendezheti, és az irányítási sz
 
  
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Válassza **a minden szolgáltatás** > **felügyeleti csoportok**lehetőséget.
+2. Válassza **a minden szolgáltatás**  >  **felügyeleti csoportok**lehetőséget.
 3. A főoldalon válassza az **új felügyeleti csoport elemet.** 
 
     ![Fő csoport](./media/security-center-management-groups/main.png) 
@@ -49,7 +48,7 @@ Az előfizetéseket felügyeleti csoportokba rendezheti, és az irányítási sz
     - A megjelenítendő név mező a Azure Portal belül megjelenő név. A felügyeleti csoport létrehozásakor egy külön megjelenítendő név nem választható mező, és bármikor módosítható.  
 
       ![Létrehozás](./media/security-center-management-groups/create_context_menu.png)  
-5.  **Mentés** kiválasztása
+5.  Válassza a **Mentés** lehetőséget.
 
 ### <a name="view-management-groups-in-the-azure-portal"></a>Felügyeleti csoportok megtekintése a Azure Portal
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).

@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.openlocfilehash: b7f0b77ba11a0c9c1670ec240caf45fcf61a934d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74896021"
 ---
 #  <a name="use-media-encoder-standard-to-auto-generate-a-bitrate-ladder"></a>Bitráta-létrák automatikus létrehozása a Media Encoder Standard használatával  
@@ -47,7 +46,7 @@ A következő kódrészlet a Media Services .NET SDK-t használja a következő 
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Egy Visual Studio-projekt létrehozása és konfigurálása
 
-Állítsa be a fejlesztési környezetet, és töltse fel az app. config fájlt a következő témakörben ismertetett módon: [Media Services fejlesztés a .net](media-services-dotnet-how-to-use.md)-tel. 
+Állítsa be a fejlesztési környezetet, és töltse fel a app.config fájlt a következő témakörben leírtak szerint: [Media Services fejlesztés a .net](media-services-dotnet-how-to-use.md)-tel. 
 
 #### <a name="example"></a>Példa
 
@@ -171,7 +170,7 @@ namespace AdaptiveStreamingMESPresest
 
 Ez a szakasz három példát mutat be a MES által előállított kimeneti rétegekre az **adaptív streaming** -beállításkészlet kódolása miatt. 
 
-### <a name="example-1"></a>1. példa
+### <a name="example-1"></a>1\. példa
 A "1080" magasságú és "29,970" framerátát tartalmazó forrás 6 videó réteget hoz létre:
 
 |Réteg|Height (Magasság)|Szélesség|Bitráta (Kbit/s)|
@@ -183,7 +182,7 @@ A "1080" magasságú és "29,970" framerátát tartalmazó forrás 6 videó rét
 |5|270|480|720|
 |6|180|320|380|
 
-### <a name="example-2"></a>2. példa
+### <a name="example-2"></a>2\. példa
 A "720" magasságú és "23,970" framerátát tartalmazó forrás 5 videó réteget állít elő:
 
 |Réteg|Height (Magasság)|Szélesség|Bitráta (Kbit/s)|
@@ -194,7 +193,7 @@ A "720" magasságú és "23,970" framerátát tartalmazó forrás 5 videó réte
 |4|270|480|600|
 |5|180|320|320|
 
-### <a name="example-3"></a>3. példa
+### <a name="example-3"></a>3\. példa
 A "360" magasságú és "29,970" framerátát tartalmazó forrás 3 videó réteget hoz létre:
 
 |Réteg|Height (Magasság)|Szélesség|Bitráta (Kbit/s)|

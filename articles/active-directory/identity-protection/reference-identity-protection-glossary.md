@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9a3e2df956aaa4f9fd0af83dd2a18e04d731c714
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74232345"
 ---
 # <a name="azure-active-directory-identity-protection-glossary"></a>Szószedet Azure Active Directory Identity Protection
@@ -116,7 +115,7 @@ A biztonsági rés súlyossági szintjének (magas, közepes vagy alacsony) jelz
 ### <a name="secure-identity"></a>Biztonságos (identitás)
 A feltört identitást nem sérült állapotra állíthatja vissza, például a jelszó módosítása vagy a számítógép-áttelepítési művelet.
 
-### <a name="security-policy"></a>Biztonsági házirend
+### <a name="security-policy"></a>Biztonsági szabályzat
 Házirend-szabályok és feltételek gyűjteménye. A szabályzatok alkalmazhatók olyan entitásokra, mint például a felhasználók, a csoportok, az alkalmazások, az eszközök, az eszközök platformok, az eszközök állapotai, az IP-tartományok és az Auth 2.0-ügyfél típusa. Ha a szabályzat engedélyezve van, akkor a rendszer akkor értékeli ki, ha a házirendben szereplő entitás jogkivonatot ad ki egy erőforráshoz.
 
 ### <a name="sign-in-v"></a>Bejelentkezés (v)

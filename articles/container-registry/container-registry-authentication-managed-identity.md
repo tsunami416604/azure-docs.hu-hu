@@ -4,10 +4,9 @@ description: Hozzáférés biztosítása a privát tároló beállításjegyzék
 ms.topic: article
 ms.date: 01/16/2019
 ms.openlocfilehash: 9b8bed78629d3a9739ec00772ad5c8216a04c122
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74456487"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>Azure-beli felügyelt identitás használata az Azure Container registryben való hitelesítéshez 
@@ -49,7 +48,7 @@ Ezt követően az identitás használatával hitelesítheti magát az [Azure ad-
 
 Ha még nem rendelkezik Azure Container Registry-regisztrációval, hozzon létre egy beállításjegyzéket, és küldje el a minta-tároló képét. A lépéseket a rövid útmutató [: privát tároló beállításjegyzékének létrehozása az Azure CLI használatával](container-registry-get-started-azure-cli.md)című témakörben tekintheti meg.
 
-Ez a cikk azt feltételezi, `aci-helloworld:v1` hogy a tároló rendszerképe a beállításjegyzékben van tárolva. A példák a *myContainerRegistry*beállításjegyzékbeli nevét használják. Cserélje le a változót a saját beállításjegyzékére és a képek nevére a későbbi lépésekben.
+Ez a cikk azt feltételezi, hogy a `aci-helloworld:v1` tároló rendszerképe a beállításjegyzékben van tárolva. A példák a *myContainerRegistry*beállításjegyzékbeli nevét használják. Cserélje le a változót a saját beállításjegyzékére és a képek nevére a későbbi lépésekben.
 
 ## <a name="create-a-docker-enabled-vm"></a>Docker-kompatibilis virtuális gép létrehozása
 
@@ -66,7 +65,7 @@ az vm create \
     --generate-ssh-keys
 ```
 
-A virtuális gép létrehozása néhány percig tart. Ha a parancs befejeződik, jegyezze fel az Azure `publicIpAddress` CLI által megjelenített adatmennyiséget. Ezzel a címtől SSH-kapcsolatokat hozhat a virtuális géphez.
+A virtuális gép létrehozása néhány percig tart. Ha a parancs befejeződik, jegyezze fel az `publicIpAddress` Azure CLI által megjelenített adatmennyiséget. Ezzel a címtől SSH-kapcsolatokat hozhat a virtuális géphez.
 
 ### <a name="install-docker-on-the-vm"></a>A Docker telepítése a virtuális gépre
 
@@ -160,19 +159,19 @@ az role assignment create --assignee $spID --scope $resourceID --role acrpull
 
 SSH-t az identitással konfigurált Docker virtuális gépre. Futtassa az alábbi Azure CLI-parancsokat a virtuális gépen telepített Azure CLI használatával.
 
-Először végezze el a hitelesítést az Azure CLI-vel az az [login][az-login]paranccsal, a virtuális gépen konfigurált identitás használatával. A `<userID>`esetében cserélje le az előző lépésben lekért identitás azonosítóját. 
+Először végezze el a hitelesítést az Azure CLI-vel az az [login][az-login]paranccsal, a virtuális gépen konfigurált identitás használatával. A esetében cserélje le az `<userID>` előző lépésben lekért identitás azonosítóját. 
 
 ```azurecli
 az login --identity --username <userID>
 ```
 
-Ezután hitelesítse magát a beállításjegyzékben az [az ACR login][az-acr-login]paranccsal. Ha ezt a parancsot használja, a CLI az Active Directory tokent használja, `az login` amely akkor jön létre, amikor a munkamenetet a tároló beállításjegyzékével zökkenőmentesen hitelesíti. (A virtuális gép telepítésének függvényében szükség lehet a parancs és a `sudo`Docker-parancsok futtatására.)
+Ezután hitelesítse magát a beállításjegyzékben az [az ACR login][az-acr-login]paranccsal. Ha ezt a parancsot használja, a CLI az Active Directory tokent használja, amely akkor jön létre, amikor a `az login` munkamenetet a tároló beállításjegyzékével zökkenőmentesen hitelesíti. (A virtuális gép telepítésének függvényében szükség lehet a parancs és a Docker-parancsok futtatására `sudo` .)
 
 ```azurecli
 az acr login --name myContainerRegistry
 ```
 
-Egy `Login succeeded` üzenetnek kell megjelennie. Ezután parancsok futtatásával `docker` hitelesítő adatok megadása nélkül is futtathat parancsokat. Például futtassa a [Docker pull][docker-pull] parancsot a `aci-helloworld:v1` rendszerkép lekéréséhez, adja meg a beállításjegyzék bejelentkezési kiszolgálójának nevét. A bejelentkezési kiszolgáló neve a tároló-beállításjegyzék neve (az összes kisbetűs), majd `.azurecr.io` a (z) `mycontainerregistry.azurecr.io`, például:.
+Egy üzenetnek kell megjelennie `Login succeeded` . Ezután parancsok futtatásával `docker` hitelesítő adatok megadása nélkül is futtathat parancsokat. Például futtassa a [Docker pull][docker-pull] parancsot a rendszerkép lekéréséhez `aci-helloworld:v1` , adja meg a beállításjegyzék bejelentkezési kiszolgálójának nevét. A bejelentkezési kiszolgáló neve a tároló-beállításjegyzék neve (az összes kisbetűs), majd a (z) `.azurecr.io` , például: `mycontainerregistry.azurecr.io` .
 
 ```
 docker pull mycontainerregistry.azurecr.io/aci-helloworld:v1
@@ -188,7 +187,7 @@ A következő az [VM Identity assign][az-vm-identity-assign] paranccsal konfigur
 az vm identity assign --resource-group myResourceGroup --name myDockerVM 
 ```
 
-Az az [VM show][az-vm-show] paranccsal állítson be egy változót a virtuális gép `principalId` identitásának (a szolgáltatás egyszerű azonosítója) értékére a későbbi lépésekben való használatra.
+Az az [VM show][az-vm-show] paranccsal állítson be egy változót a `principalId` virtuális gép identitásának (a szolgáltatás egyszerű azonosítója) értékére a későbbi lépésekben való használatra.
 
 ```azurecli-interactive
 spID=$(az vm show --resource-group myResourceGroup --name myDockerVM --query identity.principalId --out tsv)
@@ -218,13 +217,13 @@ Először hitelesítse az Azure CLI-t az [az login][az-login]paranccsal, a rends
 az login --identity
 ```
 
-Ezután hitelesítse magát a beállításjegyzékben az [az ACR login][az-acr-login]paranccsal. Ha ezt a parancsot használja, a CLI az Active Directory tokent használja, `az login` amely akkor jön létre, amikor a munkamenetet a tároló beállításjegyzékével zökkenőmentesen hitelesíti. (A virtuális gép telepítésének függvényében szükség lehet a parancs és a `sudo`Docker-parancsok futtatására.)
+Ezután hitelesítse magát a beállításjegyzékben az [az ACR login][az-acr-login]paranccsal. Ha ezt a parancsot használja, a CLI az Active Directory tokent használja, amely akkor jön létre, amikor a `az login` munkamenetet a tároló beállításjegyzékével zökkenőmentesen hitelesíti. (A virtuális gép telepítésének függvényében szükség lehet a parancs és a Docker-parancsok futtatására `sudo` .)
 
 ```azurecli
 az acr login --name myContainerRegistry
 ```
 
-Egy `Login succeeded` üzenetnek kell megjelennie. Ezután parancsok futtatásával `docker` hitelesítő adatok megadása nélkül is futtathat parancsokat. Például futtassa a [Docker pull][docker-pull] parancsot a `aci-helloworld:v1` rendszerkép lekéréséhez, adja meg a beállításjegyzék bejelentkezési kiszolgálójának nevét. A bejelentkezési kiszolgáló neve a tároló-beállításjegyzék neve (az összes kisbetűs), majd `.azurecr.io` a (z) `mycontainerregistry.azurecr.io`, például:.
+Egy üzenetnek kell megjelennie `Login succeeded` . Ezután parancsok futtatásával `docker` hitelesítő adatok megadása nélkül is futtathat parancsokat. Például futtassa a [Docker pull][docker-pull] parancsot a rendszerkép lekéréséhez `aci-helloworld:v1` , adja meg a beállításjegyzék bejelentkezési kiszolgálójának nevét. A bejelentkezési kiszolgáló neve a tároló-beállításjegyzék neve (az összes kisbetűs), majd a (z) `.azurecr.io` , például: `mycontainerregistry.azurecr.io` .
 
 ```
 docker pull mycontainerregistry.azurecr.io/aci-helloworld:v1
