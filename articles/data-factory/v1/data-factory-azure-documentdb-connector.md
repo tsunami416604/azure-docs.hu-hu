@@ -13,10 +13,9 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: a638184d5232de916ebd25360147301a93309dd9
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84702294"
 ---
 # <a name="move-data-to-and-from-azure-cosmos-db-using-azure-data-factory"></a>Adatok áthelyezése Azure Cosmos DBba és onnan a Azure Data Factory használatával
@@ -483,16 +482,16 @@ Azure Cosmos DB a JSON-dokumentumok NoSQL-tárolója, ahol beágyazott struktúr
 ## <a name="appendix"></a>Függelék
 1. **Kérdés:** Támogatja a másolási tevékenység a meglévő rekordok frissítését?
 
-    **Válasz:** nem.
+    **Válasz:** Nem.
 2. **Kérdés:** Hogyan próbálkozik újra egy másolattal, hogy Azure Cosmos DB a már másolt rekordokkal?
 
     **Válasz:** Ha a rekordok "ID" mezővel rendelkeznek, és a másolási művelet egy ugyanazzal az AZONOSÍTÓval rendelkező rekordot próbál beszúrni, a másolási művelet hibát jelez.
 3. **Kérdés:** Data Factory támogatja a [tartomány vagy a kivonatoló alapú adatparticionálást](../../cosmos-db/sql-api-partition-data.md)?
 
-    **Válasz:** nem.
+    **Válasz:** Nem.
 4. **Kérdés:** Megadhatok egynél több Azure Cosmos DB gyűjteményt egy táblához?
 
-    **Válasz:** nem. Jelenleg csak egy gyűjtemény adható meg.
+    **Válasz:** Nem. Jelenleg csak egy gyűjtemény adható meg.
 
 ## <a name="performance-and-tuning"></a>Teljesítmény és hangolás
 A [másolási tevékenység teljesítményének & hangolási útmutatójában](data-factory-copy-activity-performance.md) megismerheti azokat a főbb tényezőket, amelyek hatással vannak az adatáthelyezés (másolási tevékenység) teljesítményére Azure Data Factory és az optimalizálás különféle módjaival.

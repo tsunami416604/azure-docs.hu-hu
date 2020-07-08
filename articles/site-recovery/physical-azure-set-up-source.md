@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 07/03/2019
 ms.author: ramamill
 ms.openlocfilehash: 902c14211e91a1500c6b50cd790b347e337c4f70
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84699923"
 ---
 # <a name="set-up-the-configuration-server-for-disaster-recovery-of-physical-servers-to-azure"></a>A konfigurációs kiszolgáló beállítása az Azure-ba irányuló fizikai kiszolgálók vész-helyreállítására
@@ -24,7 +23,7 @@ Ez a cikk azt ismerteti, hogyan állíthatja be a helyszíni környezetet a Wind
 A cikk feltételezi, hogy már rendelkezik az alábbiakkal:
 - A [Azure Portal](https://portal.azure.com "Azure Portal")Recovery Services-tárolója.
 - Egy fizikai számítógép, amelyre telepíteni kívánja a konfigurációs kiszolgálót.
-- Ha letiltotta a TLS 1,0-et azon a számítógépen, amelyre a konfigurációs kiszolgálót telepíti, győződjön meg arról, hogy a TLs 1,2 engedélyezve van, és hogy a .NET-keretrendszer 4,6-as vagy újabb verziója telepítve van a gépen (erős kriptográfia engedélyezve van). [További információ](https://support.microsoft.com/help/4033999/how-to-resolve-azure-site-recovery-agent-issues-after-disabling-tls-1).
+- Ha letiltotta a TLS 1,0-et azon a számítógépen, amelyre a konfigurációs kiszolgálót telepíti, győződjön meg arról, hogy a TLs 1,2 engedélyezve van, és hogy a .NET-keretrendszer 4,6-as vagy újabb verziója telepítve van a gépen (erős kriptográfia engedélyezve van). [További információk](https://support.microsoft.com/help/4033999/how-to-resolve-azure-site-recovery-agent-issues-after-disabling-tls-1).
 
 ### <a name="configuration-server-minimum-requirements"></a>A konfigurációs kiszolgáló minimális követelményei
 A következő táblázat a konfigurációs kiszolgáló minimális hardver-, szoftver-és hálózati követelményeit sorolja fel.
@@ -63,7 +62,7 @@ A következő táblázat a konfigurációs kiszolgáló minimális hardver-, szo
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 
 > [!NOTE]
-> A konfigurációs kiszolgáló parancssor használatával telepíthető. [További információ](physical-manage-configuration-server.md#install-from-the-command-line).
+> A konfigurációs kiszolgáló parancssor használatával telepíthető. [További információk](physical-manage-configuration-server.md#install-from-the-command-line).
 
 
 ## <a name="common-issues"></a>Gyakori problémák

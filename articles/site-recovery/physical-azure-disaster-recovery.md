@@ -8,17 +8,16 @@ ms.topic: article
 ms.date: 11/12/2019
 ms.author: raynew
 ms.openlocfilehash: 2f92c2b800c6d30cc5f365e6d24925a70d3db55a
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84699906"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Vész-helyreállítás beállítása az Azure-ba helyszíni fizikai kiszolgálók esetén
 
 Az [Azure Site Recovery](site-recovery-overview.md) szolgáltatás a helyszíni számítógépek és az Azure-beli virtuális gépek replikálásának, feladatátvételének és feladat-visszavételének kezelésével és irányításával járul hozzá a vészhelyreállítási stratégia megvalósításához.
 
-Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be a helyszíni fizikai Windows-és Linux-kiszolgálók vész-helyreállítását az Azure-ba. Az oktatóanyag a következőket ismerteti:
+Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be a helyszíni fizikai Windows-és Linux-kiszolgálók vész-helyreállítását az Azure-ba. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Az Azure és a helyszíni előfeltételek beállítása

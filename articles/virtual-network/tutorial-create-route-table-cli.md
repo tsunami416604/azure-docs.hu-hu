@@ -18,10 +18,9 @@ ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: ''
 ms.openlocfilehash: 70f7bd4443602f6f18be54c5bc4ff038e868e58e
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84703349"
 ---
 # <a name="route-network-traffic-with-a-route-table-using-the-azure-cli"></a>Hálózati forgalom irányítása útválasztási táblázattal az Azure CLI használatával

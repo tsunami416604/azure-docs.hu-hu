@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
 ms.openlocfilehash: e890289230b3215bd102d8c5a78dca4f1b7b90f8
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84700497"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Apache Storm-topológiák üzembe helyezése és kezelése az Azure HDInsight
@@ -172,7 +171,7 @@ A Storm felhasználói felülete egy webes felületet biztosít a futó topológ
 
 A Storm felhasználói felületének fő lapja a következő információkat tartalmazza:
 
-| Section | Leírás |
+| Section | Description |
 | --- | --- |
 | Fürt összegzése| Alapszintű információk a Storm-fürtről. |
 | Nimbus összegzése | Az alapvető Nimbus-információk listája. |
@@ -188,7 +187,7 @@ A Storm UI főoldala a következő weboldalhoz hasonlóan néz ki:
 
 A **topológia összegzése** szakasz egy hivatkozásának kiválasztásával az alábbi információk jelennek meg a topológiával kapcsolatban:
 
-| Section | Leírás |
+| Section | Description |
 | --- | --- |
 | Topológia összegzése | A topológiával kapcsolatos alapvető információk. |
 | Topológiai műveletek| A topológiához elvégezhető felügyeleti műveletek. Az elérhető műveleteket a szakasz későbbi részében ismertetjük. |
@@ -205,7 +204,7 @@ A Storm-topológia összefoglalás lapja ehhez a weboldalhoz hasonlóan néz ki:
 
 A **topológiai műveletek** szakaszban a következő gombokra kattintva végezheti el a műveletet:
 
-| Gomb | Leírás |
+| Gomb | Description |
 | --- | --- |
 | Aktiválás | Folytatja a deaktivált topológia feldolgozását. |
 | Inaktiválás | Szünetelteti a futó topológiát. |
@@ -219,7 +218,7 @@ A **topológiai műveletek** szakaszban a következő gombokra kattintva végezh
 
 **A kiöntő vagy a** **boltokból** származó kiöntő kiválasztásakor az alábbi információk jelennek meg a kijelölt elemről:
 
-| Section | Leírás |
+| Section | Description |
 | --- | --- |
 | Összetevő összegzése | Alapszintű információk a kiöntő vagy a boltról. |
 | Összetevő-műveletek | **Hibakeresés** és **Leállítás** gombokkal. |
@@ -249,7 +248,7 @@ A Linux-alapú HDInsight-fürtökön lévő REST API alap URI-ja az URL-címen �
 
 A fürt fő csomópontjának teljes tartományneve (FQDN) több módon is megkereshető:
 
-| FQDN-felderítési módszer | Leírás |
+| FQDN-felderítési módszer | Description |
 | --- | --- |
 | SSH-munkamenet | Használja a parancsot `headnode -f` egy SSH-munkamenetből a fürtre. |
 | Ambari web | A Ambari-fürt weblapján ( `https://CLUSTERNAME.azurehdinsight.net` ) válassza ki a **szolgáltatások** elemet az oldal tetején, majd válassza a **Storm**lehetőséget. Az **Összefoglalás** lapon válassza a **Storm UI-kiszolgáló**lehetőséget. A Storm felhasználói felületet futtató csomópont teljes tartományneve és REST API a lap tetején jelenik meg. |

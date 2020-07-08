@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 8/24/2018
 ms.author: dekapur
 ms.openlocfilehash: 37162287e130b05dc41453c579b3a628ac878fca
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84699811"
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>A Stateful Reliable Services diagnosztikai funkciói
@@ -41,7 +40,7 @@ A StatefulRunAsyncSlowCancellation akkor bocsátja ki, ha a RunAsync feladat meg
 ## <a name="performance-counters"></a>Teljesítményszámlálók
 A Reliable Services futtatókörnyezet a következő teljesítményszámláló-kategóriákat definiálja:
 
-| Kategória | Leírás |
+| Kategória | Description |
 | --- | --- |
 | Tranzakciós replikátor Service Fabric |Az Azure Service Fabric tranzakciós Replikátorra jellemző számlálók |
 | Service Fabric TStore |Az Azure Service Fabric TStore kapcsolódó számlálók |
@@ -95,7 +94,7 @@ Az előző példában a `00d0126d-3e36-4d68-98da-cc4f7195d85e` Service Fabric pa
 
 A Reliable Services futtatókörnyezet a következő eseményeket bocsátja ki a `Service Fabric Transactional Replicator` kategóriába
 
- Számláló neve | Leírás |
+ Számláló neve | Description |
 | --- | --- |
 | Tranzakció művelet/s megkezdése | A másodpercenként létrehozott új írási tranzakciók száma|
 | Tranzakció művelet/mp | A megbízható gyűjteményeken végrehajtott hozzáadási/frissítési/törlési műveletek száma másodpercenként.|
@@ -108,7 +107,7 @@ A Reliable Services futtatókörnyezet a következő eseményeket bocsátja ki a
 
 A Reliable Services futtatókörnyezet a következő eseményeket bocsátja ki a `Service Fabric TStore` kategóriába
 
- Számláló neve | Leírás |
+ Számláló neve | Description |
 | --- | --- |
 | Elemek száma | Az áruházban lévő elemek száma.|
 | Lemezméret | Az áruházhoz tartozó ellenőrzőpont-fájlok teljes mérete (bájtban).|
