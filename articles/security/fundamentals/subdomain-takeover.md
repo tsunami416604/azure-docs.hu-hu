@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/23/2020
 ms.author: memildin
-ms.openlocfilehash: 4e5969b4c3a42fc8a2c4b1cd537c22a4422ca131
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 2baf2b209cae11f734494c377aebd731f69f514d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85268997"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610863"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>A DNS-bejegyzések letiltásának és a tartományon belüli átvétel elkerülésének megakadályozása
 
@@ -53,11 +53,11 @@ Egy altartomány átvételének gyakori forgatókönyve:
 
 
 
-## <a name="the-risks-of-dangling-dns-records"></a>A DNS-rekordok lelógó kockázatai
+## <a name="the-risks-of-subdomain-takeover"></a>Az altartomány átvételének kockázatai
 
-Ha egy DNS-rekord olyan erőforrásra mutat, amely nem érhető el, a rekordot el kell távolítani a DNS-zónából. Ha még nem törölte, a "lelógó DNS" rekord és a biztonsági kockázat.
+Ha egy DNS-rekord olyan erőforrásra mutat, amely nem érhető el, a rekordot el kell távolítani a DNS-zónából. Ha még nem törölte, a "lelógó DNS" rekord, amely lehetővé teszi az altartományok átvételét.
 
-A szervezet számára fennáll a veszélye, hogy a fenyegetést kezelő színész a kapcsolódó DNS-név irányítását a kártékony webhelyek vagy szolgáltatások üzemeltetésére is lehetővé teszi. A szervezet altartományának ezen kártékony webhelye a következőket eredményezheti:
+A kilógó DNS-bejegyzések révén a fenyegetést jelentő szereplők átvehetik a társított DNS-név irányítását egy rosszindulatú webhely vagy szolgáltatás üzemeltetéséhez. A szervezet altartományában található kártékony lapok és szolgáltatások a következőket okozhatják:
 
 - **Az altartomány tartalmának elvesztése** – negatívan megnyomható, hogy a szervezet nem tudja védeni a tartalmát, valamint a márka sérülését és a megbízhatóság elvesztését.
 
@@ -65,7 +65,7 @@ A szervezet számára fennáll a veszélye, hogy a fenyegetést kezelő színés
 
 - **Adathalászat-kampányok** – az autentikus megjelenésű altartományok használhatók az adathalászat-kampányok során. Ez a kártékony webhelyekhez és az olyan MX-rekordokhoz is igaz, amelyek lehetővé tennék a veszélyforrások számára, hogy olyan e-maileket kapjanak, amelyek egy ismert biztonságos márka megbízható altartományára irányulnak.
 
-- **További kockázatok** – más klasszikus támadásokra, például az XSS-re, a CSRF, a CORS megkerülésre és egyebekre.
+- **További kockázatok** – a kártékony webhelyek más klasszikus támadásokra is felhasználhatók, mint például az XSS, a CSRF, a CORS megkerülés és sok más.
 
 
 
@@ -78,7 +78,7 @@ A jelenleg elérhető megelőző intézkedések alább láthatók.
 
 ### <a name="use-azure-dns-alias-records"></a>Azure DNS alias-rekordok használata
 
-Azáltal, hogy szorosan összekapcsolja egy DNS-rekord életciklusát egy Azure-erőforrással, a Azure DNS [alias Records](https://docs.microsoft.com/azure/dns/dns-alias#scenarios) szolgáltatás megakadályozza a lelógó hivatkozásokat. Vegyünk például egy olyan DNS-rekordot, amely alias-rekordként van minősítve, hogy egy nyilvános IP-címre vagy egy Traffic Manager profilra mutasson. Ha törli a mögöttes erőforrásokat, a DNS-alias rekord üres halmaz lesz. A továbbiakban nem hivatkozik a törölt erőforrásra. Fontos megjegyezni, hogy az alias-rekordokkal védhető, hogy milyen korlátokat biztosít a védelem. A lista jelenleg a következőre korlátozódik:
+Ha szorosan összekapcsolja egy DNS-rekord életciklusát egy Azure-erőforrással, akkor a Azure DNS [alias-rekordjai](https://docs.microsoft.com/azure/dns/dns-alias#scenarios) megakadályozhatják a lelógó hivatkozásokat. Vegyünk például egy olyan DNS-rekordot, amely alias-rekordként van minősítve, hogy egy nyilvános IP-címre vagy egy Traffic Manager profilra mutasson. Ha törli a mögöttes erőforrásokat, a DNS-alias rekord üres halmaz lesz. A továbbiakban nem hivatkozik a törölt erőforrásra. Fontos megjegyezni, hogy az alias-rekordokkal védhető, hogy milyen korlátokat biztosít a védelem. A lista jelenleg a következőre korlátozódik:
 
 - Azure Front Door
 - Traffic Manager-profilok
@@ -95,7 +95,7 @@ Ha olyan erőforrásokkal rendelkezik, amelyeket az altartományból való átv�
 
 Azure App Service DNS-bejegyzéseinek létrehozásakor hozzon létre egy asuid. altartomány A tartomány-ellenőrzési AZONOSÍTÓval rendelkező TXT-rekord. Ha egy ilyen TXT-rekord létezik, egyetlen másik Azure-előfizetés sem tudja érvényesíteni az egyéni tartományt, amelyet átvesznek. 
 
-Ezek a rekordok nem akadályozzák meg, hogy valaki hozza létre a Azure App Servicet ugyanazzal a névvel, mint a CNAME-bejegyzésben, de nem fogja tudni fogadni a forgalmat, vagy nem tudja szabályozni a tartalmat, mert nem tudják bizonyítani a tartománynév tulajdonjogát.
+Ezek a rekordok nem akadályozzák meg, hogy valaki hozza létre a Azure App Servicet ugyanazzal a névvel, mint a CNAME-bejegyzésben. Anélkül, hogy bizonyítani tudja a tartománynév tulajdonjogát, a veszélyforrások nem fogadhatnak forgalmat, és nem vezérelhetik a tartalmat.
 
 [További](https://docs.microsoft.com/Azure/app-service/app-service-web-tutorial-custom-domain) információ arról, hogyan képezhető le egy meglévő egyéni DNS-név a Azure app Service.
 
@@ -111,7 +111,7 @@ Ez gyakran a fejlesztők és az operatív csapatok számára a kitakarítási fo
 
     - A szolgáltatások leszerelése után a szükséges ellenőrzések listájában helyezze el a "DNS-bejegyzés eltávolítása" lehetőséget.
 
-    - Helyezzen [törlési zárolásokat](https://docs.microsoft.com/azure/azure-resource-manager/management/lock-resources) minden olyan erőforrásra, amely egyéni DNS-bejegyzést tartalmaz. Ez azt jelzi, hogy a leképezést el kell távolítani az erőforrás megszüntetése előtt. Az ehhez hasonló mértékek csak a belső oktatási programok együttes használata esetén működhetnek.
+    - Helyezzen [törlési zárolásokat](https://docs.microsoft.com/azure/azure-resource-manager/management/lock-resources) minden olyan erőforrásra, amely egyéni DNS-bejegyzést tartalmaz. A törlési zárolás azt jelzi, hogy a leképezést el kell távolítani az erőforrás megszüntetése előtt. Az ehhez hasonló mértékek csak a belső oktatási programok együttes használata esetén működhetnek.
 
 - **Felderítési eljárások létrehozása:**
 

@@ -5,12 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dekapur
-ms.openlocfilehash: 16ec0eb429ec6e8f6613490226b7cff01dff1b32
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3195f1f409ab5cb87cd0520192a3dd362e188a3f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75451911"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610234"
 ---
 # <a name="scaling-service-fabric-standalone-clusters"></a>Önálló fürtök méretezése Service Fabric
 A Service Fabric-fürt olyan virtuális vagy fizikai gépek hálózathoz csatlakoztatott készlete, amelybe a rendszer üzembe helyezi és kezeli a szolgáltatásait. Egy fürt részét képező gépet vagy virtuális gépet csomópontnak nevezzük. A fürtök akár több ezer csomópontot is tartalmazhatnak. Service Fabric-fürt létrehozása után vízszintesen méretezheti a fürtöt (a csomópontok számának módosítása) vagy függőlegesen (a csomópontok erőforrásainak módosítása).  A fürtöt bármikor méretezheti, még akkor is, ha a munkaterhelések futnak a fürtön.  A fürt skálázása esetén az alkalmazások is automatikusan méretezhetők.
@@ -25,10 +25,10 @@ Megváltoztatja a fürt csomópontjainak számát.  Miután az új csomópontok 
 
 Az önálló fürtök lehetővé teszik Service Fabric-fürt üzembe helyezését a helyszínen vagy az Ön által választott felhőalapú szolgáltatón.  A csomópont-típusok fizikai gépekből vagy virtuális gépekből állnak, a telepítéstől függően. Az Azure-ban futó fürtökhöz képest egy különálló fürt méretezési folyamata valamivel nagyobb szerepet játszik.  Manuálisan módosítania kell a fürt csomópontjainak számát, majd futtatnia kell a fürt konfigurációjának frissítését.
 
-A csomópontok eltávolítása több frissítést is kezdeményezhet. Egyes csomópontok `IsSeedNode=”true”` címkével vannak megjelölve, és a fürt jegyzékfájljának lekérdezésével azonosíthatók a [Get-ServiceFabricClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest)használatával. Az ilyen csomópontok eltávolítása több időt is igénybe vehet, mivel a vetőmag-csomópontokat ilyen helyzetekben kell áthelyezni. A fürtnek legalább három elsődleges csomópont típusú csomópontot kell fenntartania.
+A csomópontok eltávolítása több frissítést is kezdeményezhet. Egyes csomópontok címkével vannak megjelölve `IsSeedNode=”true”` , és a fürt jegyzékfájljának lekérdezésével azonosíthatók a [Get-ServiceFabricClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest)használatával. Az ilyen csomópontok eltávolítása több időt is igénybe vehet, mivel a vetőmag-csomópontokat ilyen helyzetekben kell áthelyezni. A fürtnek legalább három elsődleges csomópont típusú csomópontot kell fenntartania.
 
 > [!WARNING]
-> Azt javasoljuk, hogy ne csökkentse a csomópontok számát a fürt [megbízhatósági rétegének mérete](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) alá. Ez meggátolja a Service Fabric rendszerszolgáltatások replikálását a fürtön keresztül, és destabilizálja vagy esetleg elpusztítja a fürtöt.
+> Azt javasoljuk, hogy ne csökkentse a csomópontok számát a fürt [megbízhatósági rétegének mérete](service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster) alá. Ez meggátolja a Service Fabric rendszerszolgáltatások replikálását a fürtön keresztül, és destabilizálja vagy esetleg elpusztítja a fürtöt.
 >
 
 Önálló fürt skálázásakor tartsa szem előtt a következő irányelveket:

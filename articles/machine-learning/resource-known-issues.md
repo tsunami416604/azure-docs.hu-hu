@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: troubleshooting
 ms.custom: contperfq4
 ms.date: 03/31/2020
-ms.openlocfilehash: 678a605ce1585b58cfc5f9aaea3423efa8d53ad3
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: a3e78ff2936cb3dbbc1bcf432f130fbd17622d14
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85296916"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610064"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Ismert problémák és hibaelhárítás a Azure Machine Learningban
 
@@ -46,16 +46,16 @@ Esetenként hasznos lehet, ha a Segítség kérése során diagnosztikai adatoka
 
    Ez a pip ismert korlátozása, mivel nem rendelkezik működő függőségi feloldóval, ha egyetlen vonalként telepíti. Az első egyedi függőség az egyetlen, amely a következőt keresi:. 
 
-   A következő kódban `azure-ml-datadrift` , és `azureml-train-automl` mindkettő egysoros pip-telepítéssel van telepítve. 
+   A következő kódban `azureml-datadrift` , és `azureml-train-automl` mindkettő egysoros pip-telepítéssel van telepítve. 
      ```
-       pip install azure-ml-datadrift, azureml-train-automl
+       pip install azureml-datadrift, azureml-train-automl
      ```
-   Ebben a példában tegyük fel, hogy `azure-ml-datadrift` > 1,0-es verzióra van szükség, és a `azureml-train-automl` < 1,2-es verzióra van szükség. Ha a legújabb verziója a `azure-ml-datadrift` 1,3, akkor mindkét csomag a 1,3-re frissül, függetlenül a `azureml-train-automl` korábbi verzióra vonatkozó csomag követelményeitől. 
+   Ebben a példában tegyük fel, hogy `azureml-datadrift` > 1,0-es verzióra van szükség, és a `azureml-train-automl` < 1,2-es verzióra van szükség. Ha a legújabb verziója a `azureml-datadrift` 1,3, akkor mindkét csomag a 1,3-re frissül, függetlenül a `azureml-train-automl` korábbi verzióra vonatkozó csomag követelményeitől. 
 
    Annak érdekében, hogy a megfelelő verziók telepítve legyenek a csomagokhoz, telepítsen több sort is, például a következő kódban. A megrendelés nem jelent problémát, mivel a pip explicit módon visszakerül a következő sor hívásának részeként. Így a megfelelő verzió-függőségek is érvényesek.
     
      ```
-        pip install azure-ml-datadrift
+        pip install azureml-datadrift
         pip install azureml-train-automl 
      ```
      

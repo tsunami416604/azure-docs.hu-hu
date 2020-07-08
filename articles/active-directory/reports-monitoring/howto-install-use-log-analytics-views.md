@@ -9,7 +9,7 @@ editor: ''
 ms.assetid: 2290de3c-2858-4da0-b4ca-a00107702e26
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b17026e4cfbe69e36c8e459aa259fe16b1c9d80d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 116c0d5becaea1ca6d488bbf7c94674934d4f7c5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74014418"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608194"
 ---
 # <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>A log Analytics-nézetek telepítése és használata Azure Active Directory
 
@@ -59,7 +59,7 @@ A log Analytics-nézetek használatához a következőkre lesz szüksége:
     ![Részletek](./media/howto-install-use-log-analytics-views/details.png)
 
 
-4. Válassza a **riasztás beállítása**lehetőséget, majd válassza ki, hogy az egyéni naplók keresésekor a **riasztási feltételek** szakaszban ne **legyen &lt;meghatározva&gt; a logikai** érték. Mivel a bejelentkezési hiba miatt riasztást szeretnénk kapni, állítsa az alapértelmezett riasztási logika **küszöbértékét** **1-re** , majd válassza a **kész**lehetőséget. 
+4. Válassza a **riasztás beállítása**lehetőséget, majd válassza ki, hogy az egyéni naplók keresésekor a **riasztási feltételek** szakaszban ne **legyen &lt; meghatározva &gt; a logikai** érték. Mivel a bejelentkezési hiba miatt riasztást szeretnénk kapni, állítsa az alapértelmezett riasztási logika **küszöbértékét** **1-re** , majd válassza a **kész**lehetőséget. 
 
     ![Jellogika konfigurálása](./media/howto-install-use-log-analytics-views/configure-signal-logic.png)
 

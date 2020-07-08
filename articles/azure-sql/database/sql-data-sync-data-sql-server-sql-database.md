@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 08/20/2019
-ms.openlocfilehash: a6e7e01917ac6499b9836b460077a5513782a4ce
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 80bc254aafa9c221fcaf724331928b7f30360eac
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85254004"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610846"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Mi az Azure-SQL-adatszinkronizálás?
 
@@ -34,7 +34,7 @@ Az adatszinkronizálás sugarasan és küllős topológiával szinkronizálja az
 
 - A **hub-adatbázisnak** Azure SQL Databasenak kell lennie.
 - A **tagsági adatbázisok** lehetnek Azure SQL Database vagy SQL Server példányaiban található adatbázisok.
-- A **szinkronizálási adatbázis** tartalmazza a metaadatokat és a naplót az adatok szinkronizálásához. A szinkronizálási adatbázisnak egy olyan Azure SQL Database kell lennie, amely ugyanabban a régióban található, mint a hub-adatbázis. A szinkronizálási adatbázis az ügyfél által létrehozott és az ügyfél tulajdonában van.
+- A **szinkronizálási metaadatok adatbázisa** tartalmazza a metaadatokat és a naplót az adatok szinkronizálásához. A szinkronizálási metaadat-adatbázisnak egy olyan Azure SQL Database kell lennie, amely ugyanabban a régióban található, mint a hub-adatbázis. A szinkronizálási metaadat-adatbázis az ügyfél által létrehozott és az ügyfél tulajdonában van. Régiónként és előfizetésen belül csak egy szinkronizálási metaadat-adatbázis lehet. A szinkronizálási metaadat-adatbázis nem törölhető vagy nem nevezhető át, amíg a szinkronizálási csoportok vagy a szinkronizálási ügynökök léteznek. A Microsoft azt javasolja, hogy hozzon létre egy új, üres adatbázist a szinkronizálási metaadat-adatbázisként való használatra. Az adatok szinkronizálása táblákat hoz létre ebben az adatbázisban, és gyakori számítási feladatokat futtat.
 
 > [!NOTE]
 > Ha helyszíni adatbázist használ tagként adatbázisként, [telepítenie és konfigurálnia kell egy helyi szinkronizáló ügynököt](sql-data-sync-sql-server-configure.md#add-on-prem).
@@ -155,7 +155,7 @@ Az adatszinkronizálás nem tudja szinkronizálni a csak olvasható vagy a rends
 
 #### <a name="limitations-on-service-and-database-dimensions"></a>A szolgáltatás-és adatbázis-méretek korlátozásai
 
-| **Méretek**                                                  | **Korlát**              | **Workaround**              |
+| **Méretek**                                                  | **Korlát**              | **Áthidaló megoldás**              |
 |-----------------------------------------------------------------|------------------------|-----------------------------|
 | A szinkronizált csoportok maximális száma, amelyhez bármely adatbázis tartozhat.       | 5                      |                             |
 | Végpontok maximális száma egyetlen szinkronizálási csoportban              | 30                     |                             |
@@ -235,6 +235,10 @@ Igen. A SQL-adatszinkronizálás a következő helyzetekben támogatja a rendez�
 ### <a name="is-federation-supported-in-sql-data-sync"></a>Támogatott-e az összevonás SQL-adatszinkronizálás
 
 Az összevonási gyökér adatbázisa korlátozás nélkül használható a SQL-adatszinkronizálás szolgáltatásban. Az összevont adatbázis-végpont nem adható hozzá a SQL-adatszinkronizálás aktuális verziójához.
+
+### <a name="can-i-use-data-sync-to-sync-data-exported-from-dynamics-365-using-bring-your-own-database-byod-feature"></a>Használhatom az adatszinkronizálást a Dynamics 365-ből exportált adatok szinkronizálására a saját adatbázis-(BYOD-) szolgáltatás használata révén?
+
+A Dynamics 365 saját adatbázis-funkciója lehetővé teszi, hogy a rendszergazdák a saját Microsoft Azure SQL Database-be exportálják az alkalmazásból az adatentitásokat. Az adatszinkronizálás használatával más adatbázisokba is szinkronizálhatja ezeket az adatfájlokat, ha az adatexportálás **növekményes leküldéses** használatával történik (a teljes leküldéses funkció nem támogatott), és az **Eseményindítók engedélyezése a célként megadott adatbázisban** **Igen**értékre van állítva.
 
 ## <a name="next-steps"></a>További lépések
 

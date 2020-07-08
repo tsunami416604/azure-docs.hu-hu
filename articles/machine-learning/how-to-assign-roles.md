@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.reviewer: jmartens
 ms.author: larryfr
 author: Blackmist
-ms.date: 03/06/2020
+ms.date: 06/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: eaa78637a2a88c1fceddf5b7ac9cd928ed8a444a
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: f289be1b3432d9c62b4841c513088afa16e0e447
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85261477"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85609248"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning munkaterület elérésének kezelése
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -62,6 +62,11 @@ az ml workspace share -w my_workspace -g my_resource_group --role Contributor --
 > [!NOTE]
 > "az ml Workspace Share" parancs nem működik összevont fiók esetén Azure Active Directory B2B-vel. A parancs helyett használja az Azure UI Portalt.
 
+
+## <a name="azure-machine-learning-operations"></a>Azure Machine Learning műveletek
+
+Számos művelethez és feladathoz Azure Machine Learning beépített műveleteket. Teljes listát az [Azure erőforrás-szolgáltatói műveletek](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)című témakörben talál.
+
 ## <a name="create-custom-role"></a>Egyéni szerepkör létrehozása
 
 Ha a beépített szerepkörök nem elégségesek, létrehozhat egyéni szerepköröket. Előfordulhat, hogy az egyéni szerepkörök olvasási, írási, törlési és számítási erőforrás-jogosultságokkal rendelkeznek az adott munkaterületen. A szerepkört egy adott munkaterület-szinten, egy adott erőforráscsoport-szinten vagy egy adott előfizetési szinten is elérhetővé teheti.
@@ -90,7 +95,8 @@ Egyéni szerepkör létrehozásához először létre kell hoznia egy szerepkör
 }
 ```
 
-A mező módosításával `AssignableScopes` beállíthatja az egyéni szerepkör hatókörét az előfizetés szintjén, az erőforráscsoport szintjén vagy egy adott munkaterület szintjén.
+> [!TIP]
+> A mező módosításával `AssignableScopes` beállíthatja az egyéni szerepkör hatókörét az előfizetés szintjén, az erőforráscsoport szintjén vagy egy adott munkaterület szintjén.
 
 Ez az egyéni szerepkör a munkaterületen mindent megtehet a következő műveletek kivételével:
 
@@ -113,9 +119,6 @@ az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientis
 
 Az egyéni szerepkörökkel kapcsolatos további információkért lásd: [Egyéni szerepkörök az Azure-erőforrásokhoz](/azure/role-based-access-control/custom-roles).
 
-További információ az egyéni szerepkörökkel használható műveletekről (műveletekről): [erőforrás-szolgáltatói műveletek](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices).
-
-
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
 
@@ -129,7 +132,7 @@ A következő táblázat a Azure Machine Learning tevékenységek összegzését
 | Új számítási fürt létrehozása | Nem kötelező | Nem kötelező | Tulajdonos, közreműködő vagy egyéni szerepkör, amely lehetővé teszi a következőket:`workspaces/computes/write` |
 | Új notebook virtuális gép létrehozása | Nem kötelező | Tulajdonos vagy közreműködő | Nem lehetséges |
 | Új számítási példány létrehozása | Nem kötelező | Nem kötelező | Tulajdonos, közreműködő vagy egyéni szerepkör, amely lehetővé teszi a következőket:`workspaces/computes/write` |
-| Adatsík tevékenység, például a Futtatás elküldése, adatok elérése, modell vagy közzétételi folyamat üzembe helyezése | Nem kötelező | Nem kötelező | Tulajdonos, közreműködő vagy egyéni szerepkör, amely lehetővé teszi a következőket:`workspaces/*/write` <br/> Vegye figyelembe, hogy a munkaterülethez regisztrált adattárral is rendelkeznie kell, hogy az MSI hozzáférjen a Storage-fiókban tárolt adataihoz. |
+| Adatsík tevékenység, például a Futtatás elküldése, az adatok elérése, a modell üzembe helyezése vagy a közzétételi folyamat | Nem kötelező | Nem kötelező | Tulajdonos, közreműködő vagy egyéni szerepkör, amely lehetővé teszi a következőket:`workspaces/*/write` <br/> Szüksége van egy adattárra is, amely regisztrálva van a munkaterületen, hogy az MSI hozzáférjen a Storage-fiókban lévő adataihoz. |
 
 
 ### <a name="q-how-do-i-list-all-the-custom-roles-in-my-subscription"></a>K. Hogyan a saját előfizetés összes egyéni szerepkörét listázom?
@@ -142,7 +145,7 @@ az role definition list --subscription <sub-id> --custom-role-only true
 
 ### <a name="q-how-do-i-find-the-role-definition-for-a-role-in-my-subscription"></a>K. Hogyan megkeresni az előfizetésben szereplő szerepkörhöz tartozó szerepkör-definíciót?
 
-Futtassa az alábbi parancsot az Azure CLI-ben. Vegye figyelembe, hogy a `<role-name>` fenti parancs által visszaadott formátumban kell lennie.
+Futtassa az alábbi parancsot az Azure CLI-ben. Az értéknek `<role-name>` a fenti parancs által visszaadott formátumban kell lennie.
 
 ```azurecli-interactive
 az role definition list -n <role-name> --subscription <sub-id>
@@ -156,7 +159,7 @@ Futtassa az alábbi parancsot az Azure CLI-ben.
 az role definition update --role-definition update_def.json --subscription <sub-id>
 ```
 
-Vegye figyelembe, hogy az új szerepkör-definíciók teljes hatókörére vonatkozó engedélyekkel kell rendelkeznie. Ha például az új szerepkör hatóköre három előfizetésben található, akkor mindhárom előfizetéshez engedélyekkel kell rendelkeznie. 
+Az új szerepkör-definíció teljes hatókörére vonatkozó engedélyekkel kell rendelkeznie. Ha például az új szerepkör hatóköre három előfizetésben található, akkor mindhárom előfizetéshez engedélyekkel kell rendelkeznie. 
 
 > [!NOTE]
 > A szerepkör frissítései 15 percet is igénybe vehetnek, hogy az adott hatókörben lévő összes szerepkör-hozzárendelésre érvényesek legyenek.
@@ -168,7 +171,7 @@ Igen, megadhat egy olyan szerepkört, amely megakadályozza a munkaterület kiad
 
 ### <a name="q-what-permissions-are-needed-to-perform-quota-operations-in-a-workspace"></a>K. Milyen engedélyekre van szükség a kvóta-műveletek végrehajtásához egy munkaterületen? 
 
-A munkaterületen a kvótával kapcsolatos műveletek elvégzéséhez előfizetési szintű engedélyekre van szükség. Ez azt jelenti, hogy az előfizetési szint kvótájának vagy a munkaterületnek a felügyelt számítási erőforrásokra vonatkozó kvótájának beállítása csak akkor fordulhat elő, ha az előfizetés hatókörében írási engedélyekkel rendelkezik. 
+Az előfizetési szintű engedélyekre van szükség a munkaterületen található kvóta-alapú műveletek elvégzéséhez. Ez azt jelenti, hogy az előfizetési szint kvótájának vagy a munkaterületnek a felügyelt számítási erőforrásokra vonatkozó kvótájának beállítása csak akkor fordulhat elő, ha az előfizetés hatókörében írási engedélyekkel rendelkezik. 
 
 
 ## <a name="next-steps"></a>További lépések

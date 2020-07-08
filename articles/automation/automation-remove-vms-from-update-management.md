@@ -1,16 +1,16 @@
 ---
 title: Virtuális gépek eltávolítása a Azure Automation Update Management
-description: Ez a cikk azt ismerteti, Hogyan távolítható el a virtuális gépek a Update Managementból.
+description: Ez a cikk azt ismerteti, Hogyan távolítható el a Update Management felügyelt gépek.
 services: automation
 ms.topic: conceptual
-ms.date: 05/10/2018
+ms.date: 06/30/2020
 ms.custom: mvc
-ms.openlocfilehash: 796cf18ae4dbab50eb7f968bda065ae0351f2ae8
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 9745ddea1035f239a9ca65a073fb698a8f42c01f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84169406"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610047"
 ---
 # <a name="remove-vms-from-update-management"></a>Virtuális gépek eltávolítása az Update Managementből
 
@@ -20,7 +20,7 @@ Amikor befejezte a frissítések telepítését a környezetben lévő virtuáli
 
 1. Az Automation-fiókban válassza **a frissítés kezelése lehetőséget az** **Update Management**alatt.
 
-2. A következő paranccsal azonosíthatja egy olyan virtuális gép UUID-azonosítóját, amelyet el szeretne távolítani a felügyelet alól.
+2. A következő paranccsal azonosíthatja egy olyan gép UUID-azonosítóját, amelyet el szeretne távolítani a felügyelet alól.
 
     ```azurecli
     az vm show -g MyResourceGroup -n MyVm -d
@@ -28,15 +28,18 @@ Amikor befejezte a frissítések telepítését a környezetben lévő virtuáli
 
 3. Az **általános**területen lévő log Analytics munkaterületen nyissa meg a hatókör-konfiguráció mentett kereséseit `MicrosoftDefaultScopeConfig-Updates` .
 
-4. A mentett kereséshez `MicrosoftDefaultComputerGroup` kattintson a jobb oldalon található három pontra, majd válassza a **Szerkesztés**lehetőséget. 
+4. A mentett kereséshez `MicrosoftDefaultComputerGroup` kattintson a jobb oldalon található három pontra, majd válassza a **Szerkesztés**lehetőséget.
 
 5. Távolítsa el a virtuális gép UUID-azonosítóját.
 
 6. Ismételje meg a lépéseket minden más virtuális gép eltávolításához.
 
-7. Mentse a mentett keresést a Szerkesztés befejezése után. 
+7. Mentse a mentett keresést a Szerkesztés befejezése után.
 
-## <a name="next-steps"></a>Következő lépések
+>[!NOTE]
+>A gépek még a regisztráció törlése után is megjelennek, mert az elmúlt 24 órában mért összes gépet bejelentjük. A gép leválasztása után 24 órát kell várnia, mielőtt azok már nem jelennek meg.
+
+## <a name="next-steps"></a>További lépések
 
 * A Update Management használatának folytatásához tekintse [meg az Azure-beli virtuális gépek frissítéseinek és javításának kezelése](automation-tutorial-update-management.md)című témakört.
 * Az általános szolgáltatással kapcsolatos problémák megoldásához tekintse meg a [Update Management problémák elhárítása](troubleshoot/update-management.md)című témakört.

@@ -4,14 +4,14 @@ description: Ismerje meg, hogyan használhatók a felügyelt identitások az Azu
 services: container-service
 author: mlearned
 ms.topic: article
-ms.date: 06/04/2020
+ms.date: 06/30/2020
 ms.author: mlearned
-ms.openlocfilehash: 5854f512eb5a85430fbf95499274187a6d66016c
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.openlocfilehash: 30d1290f9eb7b2750f09e5e256d4dd212c7e4607
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85445270"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610285"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Felügyelt identitások használata az Azure Kubernetes szolgáltatásban
 
@@ -36,9 +36,9 @@ A következő erőforrást kell telepítenie:
 
 Az AK számos felügyelt identitást használ a beépített szolgáltatásokhoz és bővítményekhez.
 
-| Identitás                       | Name (Név)    | Használati eset | Alapértelmezett engedélyek | Saját identitás használata
+| Identitás                       | Name    | Használati eset | Alapértelmezett engedélyek | Saját identitás használata
 |----------------------------|-----------|----------|
-| Vezérlő síkja | nem látható | A hálózati erőforrások kezeléséhez, például a Load Balancer létrehozásához, a nyilvános IP-címekhez stb.| A csomópont-erőforráscsoport közreműködői szerepköre | Egyelőre nem támogatott
+| Vezérlősík | nem látható | A hálózati erőforrások kezeléséhez, például a Load Balancer létrehozásához, a nyilvános IP-címekhez stb.| A csomópont-erőforráscsoport közreműködői szerepköre | Egyelőre nem támogatott
 | Kubelet | AK-fürt neve – agentpool | Hitelesítés Azure Container Registry (ACR) | A csomópont-erőforráscsoport olvasói szerepköre | Egyelőre nem támogatott
 | Bővítmény | AzureNPM | Nincs szükség identitásra | NA | No
 | Bővítmény | AzureCNI-hálózat figyelése | Nincs szükség identitásra | NA | No
@@ -105,3 +105,9 @@ az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster
 ```
 
 A fürtöt néhány percen belül létrehozza a rendszer. Ezután üzembe helyezheti az alkalmazás számítási feladatait az új fürtön, és ugyanúgy kezelheti, mint a Service-Principal-alapú AK-fürtökkel.
+
+## <a name="next-steps"></a>További lépések
+* Felügyelt identitást használó fürtök létrehozásához használjon [Azure Resource Manager (ARM) sablonokat][aks-arm-template] .
+
+<!-- LINKS - external -->
+[aks-arm-template]: https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters

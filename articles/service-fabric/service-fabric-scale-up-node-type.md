@@ -3,22 +3,19 @@ title: Azure Service Fabric csomópont-típus vertikális felskálázása
 description: Megtudhatja, hogyan méretezheti Service Fabric fürtöt egy virtuálisgép-méretezési csoport hozzáadásával.
 ms.topic: article
 ms.date: 02/13/2019
-ms.openlocfilehash: 5ea4f37a6c088c6f738ef05db8b5b295982c27fe
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 2d700367049e0bf9bf710aad110c850a78c26220
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83674223"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610693"
 ---
 # <a name="scale-up-a-service-fabric-cluster-primary-node-type"></a>Service Fabric-fürt elsődleges csomóponttípusának vertikális felskálázása
 Ez a cikk azt ismerteti, hogyan lehet a virtuális gépek erőforrásainak növelésével bővíteni egy Service Fabric-fürt elsődleges csomópontjának típusát. A Service Fabric-fürt olyan virtuális vagy fizikai gépek hálózathoz csatlakoztatott készlete, amelybe a rendszer üzembe helyezi és kezeli a szolgáltatásait. Egy fürt részét képező gépet vagy virtuális gépet csomópontnak nevezzük. A virtuálisgép-méretezési csoportok egy Azure-beli számítási erőforrás, amely készletként telepíti és felügyeli a virtuális gépek gyűjteményét. Az Azure-fürtben definiált összes csomópont-típus [külön méretezési csoportként van beállítva](service-fabric-cluster-nodetypes.md). Ezután mindegyik csomópont-típust külön lehet kezelni. Service Fabric-fürt létrehozása után függőlegesen méretezheti a fürt csomópontjának típusát (módosítsa a csomópontok erőforrásait), vagy frissítse a csomópont típusú virtuális gépek operációs rendszerét.  A fürtöt bármikor méretezheti, még akkor is, ha a munkaterhelések futnak a fürtön.  A fürt skálázása esetén az alkalmazások is automatikusan méretezhetők.
 
 > [!WARNING]
-> Ne kezdje el megváltoztatni az elsődleges NodeType VM SKU-t, ha a fürt állapota nem kifogástalan. Ha a fürt állapota nem megfelelő, akkor a rendszer csak a fürt állapotát fogja tovább kikényszeríteni, ha megpróbálja módosítani a virtuális gép SKU-jának változását.
+> Ha a fürt állapota nem kifogástalan, ne próbálkozzon az elsődleges csomópont típusú vertikális Felskálázási eljárással, mivel ez a művelet csak a fürt destabilizálására szolgál.
 >
-> Azt javasoljuk, hogy ne változtassa meg a méretezési csoport/csomópont típusa virtuálisgép-SKU-jának használatát, kivéve, ha az [ezüst tartósságon vagy annál nagyobb mértékben](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster)fut. A VM SKU méretének módosítása egy adatpusztító helyi infrastruktúra-művelet. A módosítás késleltetése vagy monitorozása nélkül lehetséges, hogy a művelet adatvesztést okozhat az állapot-nyilvántartó szolgáltatások számára, vagy más, előre nem látható működési problémákat okozhat, még az állapot nélküli munkaterhelések esetében is. Ez azt jelenti, hogy az elsődleges csomópont típusa, amely állapot-nyilvántartó Service Fabric rendszerszolgáltatásokat futtat, vagy bármely olyan csomópont-típus, amely az állapot-nyilvántartó alkalmazás munkaterheléseit futtatja.
->
-
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -71,7 +68,7 @@ $parameterFilePath = "C:\Deploy-2NodeTypes-2ScaleSets.parameters.json"
 > [!NOTE]
 > A parancs futtatása előtt győződjön meg arról, hogy a `certOutputFolder` hely létezik a helyi gépen, mielőtt új Service Fabric fürtöt szeretne üzembe helyezni.
 
-Ezután nyissa meg a *Deploy-2NodeTypes-2ScaleSets. Parameters. JSON* fájlt, és módosítsa a és a értékét a `clusterName` `dnsName` PowerShellben megadott dinamikus értékekre, és mentse a módosításokat.
+Ezután nyissa meg a *Deploy-2NodeTypes-2ScaleSets.parameters.js* fájlt, és módosítsa a és a értékét, `clusterName` hogy azok `dnsName` megfeleljenek a PowerShellben megadott dinamikus értékeknek, és mentse a módosításokat.
 
 Ezután telepítse a Service Fabric test-fürtöt:
 
@@ -159,6 +156,8 @@ Get-ServiceFabricClusterHealth
 ## <a name="migrate-nodes-to-the-new-scale-set"></a>Csomópontok migrálása az új méretezési csoportba
 
 Most már készen áll az eredeti méretezési csoport csomópontjainak letiltására. Mivel ezek a csomópontok le lesznek tiltva, a rendszerszolgáltatások és a vetőmag-csomópontok átkerülnek az új méretezési csoport virtuális gépei felé, mert az elsődleges csomópont-típusként is meg van jelölve.
+
+A nem elsődleges csomópontok típusának méretezéséhez ebben a lépésben módosítania kell a szolgáltatás elhelyezésére vonatkozó korlátozást, hogy tartalmazza az új virtuálisgép-méretezési csoport/csomópont típusát, majd csökkentse a régi virtuálisgép-méretezési csoport példányainak darabszámát nulla értékre, egyszerre egy csomópontot (a csomópont-eltávolítás nem befolyásolja a fürt megbízhatóságát).
 
 ```powershell
 # Disable the nodes in the original scale set.

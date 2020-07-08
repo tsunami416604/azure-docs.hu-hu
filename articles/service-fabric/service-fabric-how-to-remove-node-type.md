@@ -6,12 +6,12 @@ manager: sridmad
 ms.topic: conceptual
 ms.date: 02/21/2020
 ms.author: chrpap
-ms.openlocfilehash: 330b455a61c45ccdb59e5aef8162fd1b04859a00
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d9562c09fe99372a9b1106d3ae891f65663cf307
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78969405"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610099"
 ---
 # <a name="how-to-remove-a-service-fabric-node-type"></a>Service Fabric csomópont típusának eltávolítása
 Ez a cikk azt ismerteti, hogyan méretezhető egy Azure Service Fabric-fürt egy meglévő csomópont-típus fürtből való eltávolításával. A Service Fabric-fürt olyan virtuális vagy fizikai gépek hálózathoz csatlakoztatott készlete, amelybe a rendszer üzembe helyezi és kezeli a szolgáltatásait. Egy fürt részét képező gépet vagy virtuális gépet csomópontnak nevezzük. A virtuálisgép-méretezési csoportok egy Azure-beli számítási erőforrás, amely készletként telepíti és felügyeli a virtuális gépek gyűjteményét. Az Azure-fürtben definiált összes csomópont-típus [külön méretezési csoportként van beállítva](service-fabric-cluster-nodetypes.md). Ezután mindegyik csomópont-típust külön lehet kezelni. Service Fabric-fürt létrehozása után vízszintesen méretezheti a fürtöt egy csomópont-típus (virtuálisgép-méretezési csoport) és annak összes csomópontjának eltávolításával.  A fürtöt bármikor méretezheti, még akkor is, ha a munkaterhelések futnak a fürtön.  A fürt skálázása esetén az alkalmazások is automatikusan méretezhetők.
@@ -20,7 +20,7 @@ Ez a cikk azt ismerteti, hogyan méretezhető egy Azure Service Fabric-fürt egy
 > Ha ezt a módszert használja egy csomópont típusának éles fürtből való eltávolítására, nem ajánlott gyakran használni. Ez egy veszélyes parancs, mivel törli a virtuálisgép-méretezési csoport erőforrását a csomópont típusa mögött. 
 
 ## <a name="durability-characteristics"></a>Tartóssági jellemzők
-A Remove-AzServiceFabricNodeType használata esetén a biztonság prioritást élvez a sebességnél. A csomópont típusának ezüst vagy arany [tartóssági szintűnek](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster)kell lennie, mert:
+A Remove-AzServiceFabricNodeType használata esetén a biztonság prioritást élvez a sebességnél. A csomópont típusának ezüst vagy arany [tartóssági szintűnek](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#durability-characteristics-of-the-cluster)kell lennie, mert:
 - A bronz nem nyújt garanciát az állapotadatok mentésével kapcsolatban.
 - Az ezüst és az arany tartóssága a méretezési csoport minden módosítását elvégzi.
 - Az arany a méretezési csoport alatti Azure-frissítések felügyeletét is lehetővé teszi.
@@ -122,7 +122,7 @@ A bronz típusú csomópontok eltávolításakor a csomópont összes csomópont
     - Keresse meg az üzembe helyezéshez használt Azure Resource Manager sablont.
     - Keresse meg a csomópont típusával kapcsolatos szakaszt a Service Fabric szakaszban.
     - Távolítsa el a csomópont típusának megfelelő szakaszt.
-    - Csak ezüst és magasabb tartósságú fürtök esetén frissítse a sablonban lévő fürterőforrás-erőforrást, és konfigurálja az állapot-szabályzatokat a háló:/ `applicationDeltaHealthPolicies` rendszeralkalmazási `properties` állapot mellőzéséhez a fürterőforrás területen az alább megadott módon. Az alábbi házirend figyelmen kívül hagyja a meglévő hibákat, de nem engedélyezi az új állapotú hibákat. 
+    - Csak ezüst és magasabb tartósságú fürtök esetén frissítse a sablonban lévő fürterőforrás-erőforrást, és konfigurálja az állapot-szabályzatokat a háló:/rendszeralkalmazási állapot mellőzéséhez a `applicationDeltaHealthPolicies` fürterőforrás területen az `properties` alább megadott módon. Az alábbi házirend figyelmen kívül hagyja a meglévő hibákat, de nem engedélyezi az új állapotú hibákat. 
  
  
      ```json
@@ -158,9 +158,9 @@ A bronz típusú csomópontok eltávolításakor a csomópont összes csomópont
     },
     ```
 
-    - Telepítse a módosított Azure Resource Manager sablont. * * Ez a lépés eltarthat egy ideig, általában akár két óráig is. Ez a frissítés megváltoztatja a beállításokat a InfrastructureService, ezért szükség van a csomópontok újraindítására. Ebben az esetben `forceRestart` a rendszer figyelmen kívül hagyja a következőt:. 
-    A paraméter `upgradeReplicaSetCheckTimeout` megadja azt a maximális időtartamot, ameddig Service Fabric a partíció biztonságos állapotba kerül, ha még nem biztonságos állapotban van. Miután a biztonsági ellenőrzés egy csomóponton lévő összes partícióra kiterjed, Service Fabric folytatja a frissítést a csomóponton.
-    A paraméter `upgradeTimeout` értéke 6 órára csökkenthető, de a maximális biztonság érdekében 12 órát kell használni.
+    - Telepítse a módosított Azure Resource Manager sablont. * * Ez a lépés eltarthat egy ideig, általában akár két óráig is. Ez a frissítés megváltoztatja a beállításokat a InfrastructureService, ezért szükség van a csomópontok újraindítására. Ebben az esetben a `forceRestart` rendszer figyelmen kívül hagyja a következőt:. 
+    A paraméter `upgradeReplicaSetCheckTimeout` Megadja azt a maximális időtartamot, ameddig Service Fabric a partíció biztonságos állapotba kerül, ha még nem biztonságos állapotban van. Miután a biztonsági ellenőrzés egy csomóponton lévő összes partícióra kiterjed, Service Fabric folytatja a frissítést a csomóponton.
+    A paraméter értéke `upgradeTimeout` 6 órára csökkenthető, de a maximális biztonság érdekében 12 órát kell használni.
 
     Ezután ellenőrizze a következőket:
     - A portálon Service Fabric erőforrás készen áll.
@@ -175,6 +175,6 @@ A bronz típusú csomópontok eltávolításakor a csomópont összes csomópont
     - Várjon, amíg a telepítés befejeződik.
 
 ## <a name="next-steps"></a>További lépések
-- További információ a fürt [tartóssági jellemzőiről](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster).
+- További információ a fürt [tartóssági jellemzőiről](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#durability-characteristics-of-the-cluster).
 - További információ a [csomópontok típusairól és Virtual Machine Scale sets](service-fabric-cluster-nodetypes.md).
 - További információ a [Service Fabric-fürt skálázásáról](service-fabric-cluster-scaling.md).

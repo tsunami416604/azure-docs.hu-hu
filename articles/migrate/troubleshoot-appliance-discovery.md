@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: a4cbe49efd605e2104dbbc9f389a85e8fc4c468e
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: 92a8e129188f2790a3e46162b207373b5d6e6ce4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84449600"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611356"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>A Azure Migrate készülék és a felderítés hibáinak megoldása
 
@@ -144,6 +144,10 @@ Ha a felderített virtuális gépek nem jelennek meg a portálon, vagy ha a VM-a
 
 Ha törli a virtuális gépeket, és azok továbbra is megjelennek a portálon, várjon 30 percet. Ha továbbra is megjelennek, frissítse a fentiekben leírtak szerint.
 
+## <a name="i-do-not-see-performance-data-for-some-network-adapters-on-my-physical-servers"></a>Nem látok teljesítményadatokat a fizikai kiszolgálókon lévő egyes hálózati adapterekhez
+
+Ez akkor fordulhat elő, ha a fizikai kiszolgálón engedélyezve van a Hyper-V-virtualizálás. A termékekkel kapcsolatos hézagok miatt a rendszer rögzíti a hálózati átviteli sebességet a felderített virtuális hálózati adaptereken.
+
 ## <a name="error-the-file-uploaded-is-not-in-the-expected-format"></a>Hiba: A feltöltött fájl nem a várt formátumú
 Bizonyos eszközök regionális beállításai a CSV-fájl létrehozásakor pontosvesszőt adnak meg elválasztó karakterként. Módosítsa a beállításokat úgy, hogy az elválasztó karakter a vessző legyen.
 
@@ -167,7 +171,7 @@ Azure Migrate támogatja az alkalmazások, szerepkörök és szolgáltatások fe
 
 A szokásos alkalmazás-felderítési hibák a táblázatban vannak összegezve. 
 
-**Hiba** | **Okozhat** | **Művelet**
+**Hiba** | **Ok** | **Művelet**
 --- | --- | ---
 9000: a VMware-eszköz állapota nem észlelhető.     |   Előfordulhat, hogy a VMWare-eszközök nincsenek telepítve vagy sérültek.    |   Győződjön meg arról, hogy a VMware-eszközök telepítve vannak és futnak a virtuális gépen.
 9001: nincs telepítve a VMware-eszközök.     |   Előfordulhat, hogy a VMWare-eszközök nincsenek telepítve vagy sérültek.    |   Győződjön meg arról, hogy a VMware-eszközök telepítve vannak és futnak a virtuális gépen.
@@ -219,5 +223,5 @@ A szokásos alkalmazás-felderítési hibák a táblázatban vannak összegezve.
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Állítson be egy berendezést a [VMware](how-to-set-up-appliance-vmware.md), a [Hyper-V](how-to-set-up-appliance-hyper-v.md)vagy a [fizikai kiszolgálók](how-to-set-up-appliance-physical.md)számára.

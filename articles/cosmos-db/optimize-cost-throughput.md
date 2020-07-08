@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: afbf0bee86a3d600892ed562ee939d48168ddfdc
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 548faa6c702c599ed766c7f03123dd02fb43684d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85112939"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610727"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>A kiosztott átviteli sebesség költségeinek optimalizálása az Azure Cosmos DB-ben
 
@@ -57,9 +57,9 @@ Ahogy az az alábbi táblázatban is látható, az API megválasztása alapján 
 |----|----|----|
 |SQL API|Adatbázis|Tároló|
 |MongoDB-hez készült Azure Cosmos DB API|Adatbázis|Gyűjtemény|
-|Cassandra API|Kulcstartomány|Tábla|
+|Cassandra API|Kulcstartomány|Táblázat|
 |Gremlin API|Adatbázisfiók|Graph|
-|Table API|Adatbázisfiók|Tábla|
+|Table API|Adatbázisfiók|Táblázat|
 
 Az átviteli sebesség különböző szinteken való kiépítés révén a számítási feladatok jellemzői alapján optimalizálhatja költségeit. Ahogy azt korábban említettük, programozott módon és bármikor növelheti vagy csökkentheti a kiosztott átviteli sebességet az egyes tároló (k) esetében, vagy együttesen a különböző tárolók között. A számítási feladatok változásainak rugalmas skálázásával, csak a konfigurált átviteli sebességért kell fizetnie. Ha a tároló vagy a tárolók több régióban vannak elosztva, akkor a tárolón konfigurált átviteli sebesség és a tárolók halmaza garantáltan elérhető az összes régióban.
 
@@ -155,7 +155,7 @@ A következő lépések segítségével a megoldásait rugalmasan méretezhető 
 
 1. Ha jelentősen meghaladja a tárolók és adatbázisok kiépített átviteli sebességét, tekintse át az RUs által kiépített vs felhasznált RUs-t, és finomítsa a számítási feladatokat.  
 
-2. Az alkalmazás által igényelt fenntartott átviteli sebesség becslésének egyik módszere az, hogy rögzítse az alkalmazás által használt, jellemzően az Azure Cosmos-tárolón vagy-adatbázison alapuló, tipikus műveletekhez tartozó, a másodpercenkénti műveletek elvégzéséhez várhatóan elvégezhető műveletek számát. Ügyeljen arra, hogy a szokásos lekérdezéseket és azok használatát is mérje fel és vegye fel. Ha szeretné megtudni, hogyan becsülheti meg a lekérdezések RU-díjait programozott módon vagy a portál használatával, tekintse meg [a lekérdezési költségek optimalizálása](online-backup-and-restore.md)című témakört. 
+2. Az alkalmazás által igényelt fenntartott átviteli sebesség becslésének egyik módszere az, hogy rögzítse az alkalmazás által használt, jellemzően az Azure Cosmos-tárolón vagy-adatbázison alapuló, tipikus műveletekhez tartozó, a másodpercenkénti műveletek elvégzéséhez várhatóan elvégezhető műveletek számát. Ügyeljen arra, hogy a szokásos lekérdezéseket és azok használatát is mérje fel és vegye fel. Ha szeretné megtudni, hogyan becsülheti meg a lekérdezések RU-díjait programozott módon vagy a portál használatával, tekintse meg [a lekérdezési költségek optimalizálása](optimize-cost-queries.md)című témakört. 
 
 3. A műveletek és azok költségeinek egy másik módja, ha engedélyezi a Azure Monitor-naplókat, így a művelet/időtartam és a kérések díjszabása is elérhető. A Azure Cosmos DB minden művelethez megadja a kérelmek díját, így minden műveleti díj visszatárolható a válaszból, majd elemzésre használható. 
 

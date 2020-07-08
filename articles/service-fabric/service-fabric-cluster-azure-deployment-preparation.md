@@ -3,12 +3,12 @@ title: Azure Service Fabric-fürt üzembe helyezésének megtervezése
 description: Ismerje meg, hogyan tervezheti meg és készítse elő az Azure-beli üzemi Service Fabric-fürtök üzembe helyezését.
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: ad6a7a6ea9a90bea4a3b6bc553da67a46144dc03
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 462548d7f32a015701ef12e9777e8d9b1b1350f4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80422285"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610591"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>A fürt üzembe helyezésének megtervezése és előkészítése
 
@@ -28,7 +28,7 @@ A kapacitástervezés az éles rendszerek üzembe helyezésének lényeges lép�
 * A fürt megbízhatóságra és tartósságra vonatkozó jellemzői.
 
 ### <a name="select-the-initial-number-of-node-types"></a>Válassza ki a csomópontok típusának kezdeti számát
-Először is meg kell állapítania, hogy a létrehozandó fürt milyen módon lesz használatban. Milyen típusú alkalmazásokat kíván telepíteni a fürtbe? Az alkalmazása több szolgáltatással rendelkezik, és ezek közül bármelyiknek nyilvánosnak vagy internetkapcsolatnak kell lennie? Különböző infrastrukturális igényeket (például nagyobb RAM-ot vagy magasabb CPU-ciklusokat) igényelnek a szolgáltatásai (az alkalmazást alkotó alkalmazások)? Egy Service Fabric fürt több csomópontból állhat: egy elsődleges csomópont-típusból és egy vagy több nem elsődleges csomópont típusból. Mindegyik csomópont-típus egy virtuálisgép-méretezési csoportra van leképezve. Ezután mindegyik csomóponttípus egymástól függetlenül skálázható vertikálisan le vagy fel, eltérő nyitott portokkal rendelkezhet, és eltérő kapacitásmetrikái lehetnek. A [csomópont-tulajdonságok és elhelyezési megkötések][placementconstraints] beállítható úgy, hogy bizonyos szolgáltatásokat bizonyos csomópont-típusokra korlátozzanak.  További információért olvassa el [a fürthöz szükséges csomópontok számát](service-fabric-cluster-capacity.md#the-number-of-node-types-your-cluster-needs-to-start-out-with).
+Először is meg kell állapítania, hogy a létrehozandó fürt milyen módon lesz használatban. Milyen típusú alkalmazásokat kíván telepíteni a fürtbe? Az alkalmazása több szolgáltatással rendelkezik, és ezek közül bármelyiknek nyilvánosnak vagy internetkapcsolatnak kell lennie? Különböző infrastrukturális igényeket (például nagyobb RAM-ot vagy magasabb CPU-ciklusokat) igényelnek a szolgáltatásai (az alkalmazást alkotó alkalmazások)? Egy Service Fabric fürt több csomópontból állhat: egy elsődleges csomópont-típusból és egy vagy több nem elsődleges csomópont típusból. Mindegyik csomópont-típus egy virtuálisgép-méretezési csoportra van leképezve. Ezután mindegyik csomóponttípus egymástól függetlenül skálázható vertikálisan le vagy fel, eltérő nyitott portokkal rendelkezhet, és eltérő kapacitásmetrikái lehetnek. A [csomópont-tulajdonságok és elhelyezési megkötések][placementconstraints] beállítható úgy, hogy bizonyos szolgáltatásokat bizonyos csomópont-típusokra korlátozzanak.  További információ: Service Fabric a [fürt kapacitásának megtervezése](service-fabric-cluster-capacity.md).
 
 ### <a name="select-node-properties-for-each-node-type"></a>Csomópont-tulajdonságok kiválasztása minden csomópont-típushoz
 A csomópont-típusok a társított méretezési csoportba tartozó virtuális gépek SKU-azonosítóját, számát és tulajdonságait határozzák meg.
@@ -37,7 +37,7 @@ Az egyes csomópont-típusokhoz tartozó virtuális gépek minimális méretét 
 
 Az elsődleges csomópont típusához tartozó virtuális gépek minimális számát a választott [megbízhatósági szint][reliability] határozza meg.
 
-Tekintse meg az [elsődleges csomópontok típusaira](service-fabric-cluster-capacity.md#primary-node-type---capacity-guidance)vonatkozó minimális javaslatokat, a [nem elsődleges csomópont-típusokra vonatkozó állapot-nyilvántartó munkaterheléseket](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateful-workloads), valamint az [állapot nélküli munkaterheléseket a nem elsődleges csomópontok típusainál](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateless-workloads).
+Tekintse meg az [elsődleges csomópontok típusaira](service-fabric-cluster-capacity.md#primary-node-type)vonatkozó minimális javaslatokat, a [nem elsődleges csomópont-típusokra vonatkozó állapot-nyilvántartó munkaterheléseket](service-fabric-cluster-capacity.md#stateful-workloads), valamint az [állapot nélküli munkaterheléseket a nem elsődleges csomópontok típusainál](service-fabric-cluster-capacity.md#stateless-workloads).
 
 A csomópontok minimális számánál nagyobbnak kell lennie az ebben a csomópont-típusban futtatni kívánt alkalmazás/szolgáltatások replikáinak száma alapján.  [Service Fabric alkalmazások kapacitásának megtervezése](service-fabric-capacity-planning.md) segít megbecsülni az alkalmazások futtatásához szükséges erőforrásokat. Az alkalmazások számítási feladatainak módosításához a későbbiekben akár később, akár lejjebb is méretezheti a fürtöt. 
 
@@ -62,14 +62,14 @@ Az ideiglenes operációsrendszer-lemezek nem egy adott Service Fabric funkció,
     > [!NOTE]
     > Ügyeljen arra, hogy a virtuális gép operációsrendszer-lemezének méretével megegyező vagy nagyobb méretű virtuálisgép-méretet válasszon, ellenkező esetben az Azure-beli üzembe helyezés hibát eredményezhet (még akkor is, ha az eredetileg el van fogadva).
 
-2. Adja meg a (`vmssApiVersion`z) `2018-06-01` vagy újabb virtuálisgép-méretezési csoport verzióját:
+2. Adja meg a (z `vmssApiVersion` ) vagy újabb virtuálisgép-méretezési csoport verzióját `2018-06-01` :
 
     ```xml
     "variables": {
         "vmssApiVersion": "2018-06-01",
     ```
 
-3. A telepítési sablon virtuálisgép-méretezési csoport szakaszában adja meg `Local` a következő `diffDiskSettings`beállítást:
+3. A telepítési sablon virtuálisgép-méretezési csoport szakaszában adja meg a `Local` következő beállítást `diffDiskSettings` :
 
     ```xml
     "apiVersion": "[variables('vmssApiVersion')]",
@@ -123,5 +123,5 @@ Készen áll az alkalmazás és a fürt a termelési forgalom elvégzésére? Mi
 * [Linux rendszerű Service Fabric-fürt létrehozása](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
 
 [placementconstraints]: service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints
-[durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster
-[reliability]: service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster
+[durability]: service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster
+[reliability]: service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster

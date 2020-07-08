@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6d754b02566c3026b908ab0a3254db3113cd225
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 79552c099adfa94f3515ff1b9c78103cb82830a1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84727432"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611288"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Egy csoport licenc-hozzárendelési problémáinak azonosítása és megoldása Azure Active Directory
 
@@ -120,7 +120,7 @@ A licenc-hozzárendelés felhasználó általi frissítése a proxy-címek kisz�
 ## <a name="licenseassignmentattributeconcurrencyexception-in-audit-logs"></a>LicenseAssignmentAttributeConcurrencyException a naplókban
 
 **Probléma:** A felhasználó rendelkezik a LicenseAssignmentAttributeConcurrencyException a naplózási naplókban.
-Ha a csoportos licencelés megkísérli feldolgozni ugyanazon licenc egy felhasználóhoz való egyidejű licenc-hozzárendelését, a rendszer ezt a kivételt rögzíti a felhasználónál. Ez általában akkor fordul elő, ha egy felhasználó több, azonos hozzárendelt licenccel rendelkező csoport tagja. Az AZure AD megkísérli a felhasználói licenc feldolgozását, és elhárítja a problémát. A probléma megoldásához nem szükséges művelet az ügyféltől.
+Ha a csoportos licencelés megkísérli feldolgozni ugyanazon licenc egy felhasználóhoz való egyidejű licenc-hozzárendelését, a rendszer ezt a kivételt rögzíti a felhasználónál. Ez általában akkor fordul elő, ha egy felhasználó több, azonos hozzárendelt licenccel rendelkező csoport tagja. Az Azure AD megkísérli a felhasználói licenc feldolgozását, és elhárítja a problémát. A probléma megoldásához nem szükséges művelet az ügyféltől.
 
 ## <a name="more-than-one-product-license-assigned-to-a-group"></a>Egynél több, csoporthoz rendelt licenc
 

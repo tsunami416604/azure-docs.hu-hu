@@ -1,18 +1,18 @@
 ---
 title: Az Azure IoT Hub-modul ikrek ismertetése | Microsoft Docs
 description: Fejlesztői útmutató – a modulok ikrek használatával szinkronizálhatók az állapot-és konfigurációs adatokat IoT Hub és az eszközök között
-author: chrissie926
+author: ash2017
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 02/01/2020
-ms.author: menchi
-ms.openlocfilehash: 9d45da11b26a3c16c2be544fa449bdf36c0bcd25
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.date: 06/29/2020
+ms.author: asrastog
+ms.openlocfilehash: ef622d950595752e616608ef56d8df66b8a9813f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84737733"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610149"
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>Az ikrek megismerése és használata IoT Hub
 
@@ -236,35 +236,45 @@ Az [Azure IoT-eszközök SDK](iot-hub-devguide-sdks.md) -k megkönnyítik az el�
 
 A címkék, a kívánt tulajdonságok és a jelentett tulajdonságok a JSON-objektumok a következő korlátozásokkal:
 
-* **Kulcsok**: a JSON-objektumokban lévő összes kulcs kis-és nagybetűket megkülönböztető 64 bájtos UTF-8 Unicode-karakterlánc. Az engedélyezett karakterek kizárják a UNICODE vezérlő karaktereket (C0 és C1 szegmens), valamint `.` , SP és `$` .
+* **Kulcsok**: a JSON-objektumokban lévő összes kulcs UTF-8 kódolású, kis-és nagybetűket megkülönböztető, és legfeljebb 1 kb hosszúságú lehet. Az engedélyezett karakterek kizárják a UNICODE vezérlő karaktereket (a C0 és a C1 szegmenst), valamint a, és az SP-t `.` `$` .
 
 * **Értékek**: a JSON-objektumokban lévő összes érték a következő JSON-típusokkal rendelkezhet: logikai, szám, karakterlánc, objektum. Tömbök használata nem engedélyezett.
 
     * Az egész számok minimális értéke-4503599627370496 és a 4503599627370495-es maximális érték lehet.
 
-    * A karakterlánc-értékek UTF-8 kódolással rendelkeznek, és legfeljebb 512 bájt hosszúságú lehet.
+    * A karakterlánc-értékek UTF-8 kódolással rendelkeznek, és legfeljebb 4 KB-os hosszúságú lehet.
 
-* **Mélység**: a címkék, a kívánt és a jelentett tulajdonságok összes JSON-objektuma legfeljebb 5 lehet. Például a következő objektum érvényes:
+* **Mélység**: a címkékben, a kívánt tulajdonságokban és a jelentett tulajdonságok között a JSON-objektumok maximális mélysége 10. A következő objektum például érvényes:
 
-    ```json
-    {
-        ...
-        "tags": {
-            "one": {
-                "two": {
-                    "three": {
-                        "four": {
-                            "five": {
-                                "property": "value"
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        ...
-    }
-    ```
+   ```json
+   {
+       ...
+       "tags": {
+           "one": {
+               "two": {
+                   "three": {
+                       "four": {
+                           "five": {
+                               "six": {
+                                   "seven": {
+                                       "eight": {
+                                           "nine": {
+                                               "ten": {
+                                                   "property": "value"
+                                               }
+                                           }
+                                       }
+                                   }
+                               }
+                           }
+                       }
+                   }
+               }
+           }
+       },
+       ...
+   }
+   ```
 
 ## <a name="module-twin-size"></a>Modul mérete (Twin)
 

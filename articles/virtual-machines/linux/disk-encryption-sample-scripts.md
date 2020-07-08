@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: b54f9f3466fe5f7e2da622077f53575d6f43f72d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 32d4e709036135a9a88ec36eaafaa176df33fabf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80585958"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610353"
 ---
 # <a name="azure-disk-encryption-sample-scripts"></a>Azure Disk Encryption – mintaszkriptek 
 
@@ -104,7 +104,7 @@ A következő táblázat a PowerShell-parancsfájlban használható paraméterek
 4. Az operációs rendszer titkosításához a titkosítás engedélyezésekor az **összes** vagy az **operációs rendszer** volumeType kell megadni.
 
    > [!NOTE]
-   > A `systemd` szolgáltatásként nem futtató összes felhasználói terület folyamatát le kell ölni `SIGKILL`. Indítsa újra a virtuális gépet. Ha egy futó virtuális gépen engedélyezi az operációsrendszer-lemez titkosítását, tervezze meg a virtuális gépek leállását.
+   > A szolgáltatásként nem futtató összes felhasználói terület folyamatát le `systemd` kell ölni `SIGKILL` . Indítsa újra a virtuális gépet. Ha egy futó virtuális gépen engedélyezi az operációsrendszer-lemez titkosítását, tervezze meg a virtuális gépek leállását.
 
 5. A [következő szakaszban](#monitoring-os-encryption-progress)található utasítások alapján rendszeres időközönként figyelje a titkosítás előrehaladását.
 
@@ -132,7 +132,7 @@ Az operációs rendszer titkosítási folyamatát háromféle módon követheti 
     ```
   Miután a virtuális gép eléri az "operációsrendszer-lemez titkosítását", a Premium Storage-beli virtuális gépen körülbelül 40 – 50 percet vesz igénybe.
 
-  A [probléma #388](https://github.com/Azure/WALinuxAgent/issues/388) a WALinuxAgent-ben `OsVolumeEncrypted` , `DataVolumesEncrypted` és az egyes `Unknown` disztribúciókban is megjelenik. A WALinuxAgent 2.1.5-es és újabb verzióiban ez a probléma automatikusan rögzített. Ha a kimenetben látható `Unknown` , akkor a Azure erőforrás-kezelő használatával ellenőrizheti a lemez titkosításának állapotát.
+  A [probléma #388](https://github.com/Azure/WALinuxAgent/issues/388) a WALinuxAgent-ben, `OsVolumeEncrypted` és az `DataVolumesEncrypted` `Unknown` egyes disztribúciókban is megjelenik. A WALinuxAgent 2.1.5-es és újabb verzióiban ez a probléma automatikusan rögzített. Ha `Unknown` a kimenetben látható, akkor a Azure erőforrás-kezelő használatával ellenőrizheti a lemez titkosításának állapotát.
 
   Nyissa meg a [Azure erőforrás-kezelő](https://resources.azure.com/), majd bontsa ki ezt a hierarchiát a bal oldali kiválasztási panelen:
 
@@ -152,7 +152,7 @@ Az operációs rendszer titkosítási folyamatát háromféle módon követheti 
 
   ![Virtuálisgép-példány nézet](./media/disk-encryption/vm-instanceview.png)
 
-* Tekintse meg a [rendszerindítási diagnosztikát](https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/). Az ADE kiterjesztésből származó üzeneteket előre fel kell oldani `[AzureDiskEncryption]`.
+* Tekintse meg a [rendszerindítási diagnosztikát](https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/). Az ADE kiterjesztésből származó üzeneteket előre fel kell oldani `[AzureDiskEncryption]` .
 
 * Jelentkezzen be a virtuális gépre SSH-n keresztül, és szerezze be a bővítmény naplóját:
 
@@ -244,7 +244,7 @@ Az alábbi lépések végrehajtásával konfigurálhatja a titkosítást az Azur
     nls_utf8
     nls_iso8859-1
    ```
-6. A `update-initramfs -u -k all` futtatásával frissítse a initramfs, hogy `keyscript` az érvénybe lépne.
+6. A futtatásával `update-initramfs -u -k all` frissítse a initramfs, hogy az `keyscript` érvénybe lépne.
 
 7. Most már kiépítheti a virtuális gépet.
 
@@ -320,7 +320,7 @@ A titkosítás az Azure-ban való működésének konfigurálásához hajtsa vé
 
 6. Most kiépítheti a virtuális gépet, és feltöltheti a VHD-t az Azure-ba.
 
-### <a name="centos-7-and-rhel-81"></a>CentOS 7 és RHEL 8,1
+### <a name="centos-7-and-rhel-7"></a>CentOS 7 és RHEL 7
 
 A titkosítás konfigurálásához végezze el a következő lépéseket:
 1. Válassza **a saját adatai titkosítása a** lemezek particionálásakor lehetőséget.
@@ -529,12 +529,12 @@ Mielőtt feltölti a titkos kulcsot a kulcstartóba, lehetősége van arra, hogy
     $secretUrl = $response.id
 ```
 
-A következő lépésben használja `$KeyEncryptionKey` az operációsrendszer- [lemez csatlakoztatását a KEK használatával](#using-a-kek). `$secretUrl`
+A `$KeyEncryptionKey` `$secretUrl` következő lépésben használja az operációsrendszer- [lemez csatlakoztatását a KEK használatával](#using-a-kek).
 
 ##  <a name="specify-a-secret-url-when-you-attach-an-os-disk"></a>Titkos URL-cím megadása operációsrendszer-lemez csatlakoztatásakor
 
 ###  <a name="without-using-a-kek"></a>KEK használata nélkül
-Az operációsrendszer-lemez csatlakoztatása közben át kell adnia `$secretUrl`a következőt:. Az URL-cím a "lemez-titkosítási titok, amely nem titkosított KEK-sel" című szakaszban lett létrehozva.
+Az operációsrendszer-lemez csatlakoztatása közben át kell adnia a következőt: `$secretUrl` . Az URL-cím a "lemez-titkosítási titok, amely nem titkosított KEK-sel" című szakaszban lett létrehozva.
 ```powershell
     Set-AzVMOSDisk `
             -VM $VirtualMachine `
@@ -547,7 +547,7 @@ Az operációsrendszer-lemez csatlakoztatása közben át kell adnia `$secretUrl
             -DiskEncryptionKeyUrl $SecretUrl
 ```
 ### <a name="using-a-kek"></a>KEK használata
-Az operációsrendszer-lemez csatlakoztatásakor adja meg `$KeyEncryptionKey` a `$secretUrl`és a kapcsolót. Az URL-címet a "lemez titkosítási titka egy KEK-lel titkosítva" szakasz hozta létre.
+Az operációsrendszer-lemez csatlakoztatásakor adja meg a és a kapcsolót `$KeyEncryptionKey` `$secretUrl` . Az URL-címet a "lemez titkosítási titka egy KEK-lel titkosítva" szakasz hozta létre.
 ```powershell
     Set-AzVMOSDisk `
             -VM $VirtualMachine `

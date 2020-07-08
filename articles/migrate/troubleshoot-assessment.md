@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: 5323e54a81c7123e3e60f69d05accef9a63c7bc4
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: e5e55e3bfa5d30c74041b834483bc78875e7ce05
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84737444"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611373"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Értékelés/függőségek vizualizációjának hibaelhárítása
 
@@ -47,8 +47,14 @@ Nem található a szükséges magokkal és memóriával rendelkező virtuális g
 Belső hiba miatt nem sikerült meghatározni a virtuális gép alkalmasságát | Próbálja meg létrehozni a csoport új értékelését.
 Belső hiba miatt nem sikerült meghatározni egy vagy több lemez alkalmasságát | Próbálja meg létrehozni a csoport új értékelését.
 Belső hiba miatt nem sikerült meghatározni egy vagy több hálózati adapter megfelelőségét | Próbálja meg létrehozni a csoport új értékelését.
+Nem található virtuálisgép-méret az ajánlat pénzneme számára fenntartott példányhoz | A gép nem megfelelőként van megjelölve, mert a virtuális gép mérete nem található az RI, az ajánlat és a pénznem kiválasztott kombinációjára vonatkozóan. Szerkessze az értékelési tulajdonságokat az érvényes kombinációk kiválasztásához és az értékelés újraszámításához. 
+Feltételesen kész Internet Protocol | Csak az Azure VMware Solution (AVS) értékelésekre alkalmazható. Az AVS nem támogatja az IPv6-alapú internetes címek tényezőjét.Ha a számítógépet IPv6-kapcsolattal észleli, forduljon az AVS-csapathoz a szervizeléssel kapcsolatos útmutatásért.
 
-## <a name="linux-vms-are-conditionally-ready"></a>A Linux rendszerű virtuális gépek "feltételesen kész"
+## <a name="suggested-migration-tool-in-import-based-avs-assessment-marked-as-unknown"></a>Javasolt áttelepítési eszköz az importálási alapú AVS-felmérésben ismeretlenként megjelölve
+
+A CSV-fájlon keresztül importált gépek esetében ismeretlen az alapértelmezett áttelepítési eszköz és az AVS Assessment. A VMware-gépek esetében azonban ajánlott a VMWare Hybrid Cloud Extension (HCX) megoldás használata. [További információ](https://docs.microsoft.com/azure/azure-vmware/hybrid-cloud-extension-installation).
+
+## <a name="linux-vms-are-conditionally-ready-in-an-azure-vm-assessment"></a>A Linux rendszerű virtuális gépek feltételesen készen állnak egy Azure-beli virtuális gép értékelésére
 
 VMware és Hyper-V rendszerű virtuális gépek esetén a kiszolgáló értékelése a Linux rendszerű virtuális gépeket "feltételesen felkészültként" jelöli meg a kiszolgáló értékelésének ismert hiánya miatt. 
 
@@ -61,7 +67,7 @@ VMware és Hyper-V rendszerű virtuális gépek esetén a kiszolgáló értékel
 Ezt a rést a VMware virtuális gépeken az [alkalmazások felderítésének](https://docs.microsoft.com/azure/migrate/how-to-discover-applications) engedélyezésével lehet megoldani. A kiszolgáló értékelése a virtuális gépről a megadott vendég hitelesítő adatok használatával észlelt operációs rendszert használja. Ez az operációsrendszer-adat a Windows és Linux rendszerű virtuális gépek esetén a megfelelő operációsrendszer-információkat azonosítja.
 
 
-## <a name="azure-skus-bigger-than-on-premises"></a>Helyi Azure SKU-nál nagyobb
+## <a name="azure-skus-bigger-than-on-premises-in-an-azure-vm-assessment"></a>Azure SKU-ban nagyobb, mint a helyszíni Azure-beli virtuális gépek felmérése
 
 Azure Migrate kiszolgáló értékelése a felmérés típusa alapján több magot és memóriát is javasolhat az Azure-beli virtuális gépekhez, mint az aktuális helyszíni foglalás:
 
@@ -79,7 +85,7 @@ A helyszíni virtuális gép négy maggal és nyolc GB memóriával rendelkezik,
 - Ha az értékelés teljesítmény-alapú, a processzor és a memória tényleges kihasználtsága (50%-a 4 mag * 1,3 = 2,6 magok, valamint a 8 GB-os memória * 50%-a * 1,3 = 5,3-GB memória), ajánlott a négy mag (a legközelebbi támogatott alapszám) és a nyolc GB memória (a legközelebbi támogatott memória mérete) szerinti legolcsóbb VM SKU.
 - [További](concepts-assessment-calculation.md#types-of-assessments) információ az értékelés méretezéséről.
 
-## <a name="azure-disk-skus-bigger-than-on-premises"></a>A helyszínen nagyobb méretű Azure Disk SKU-lemez
+## <a name="azure-disk-skus-bigger-than-on-premises-in-an-azure-vm-assessment"></a>Azure Disk SKU-ban nagyobb, mint a helyszínen egy Azure-beli VM-felmérésben
 
 Azure Migrate kiszolgáló értékelése az értékelés típusától függően nagyobb lemezt javasolhat.
 - A kiszolgáló értékelése során a lemez méretezése két értékelési tulajdonságtól függ: a méretezési feltételektől és a tárolási típustól.
@@ -97,16 +103,37 @@ A kiszolgáló-értékelési jelentések "PercentageOfCoresUtilizedMissing" vagy
 - Ha a teljesítményszámlálók bármelyike hiányzik, Azure Migrate kiszolgáló értékelése visszaesik a lefoglalt magokra és a memóriára, és a virtuális gép megfelelő méretét javasolja.
 - Ha az összes teljesítményszámláló hiányzik, ellenőrizze, hogy teljesülnek-e az értékeléshez szükséges port hozzáférési követelményei. További információ a [VMware](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#port-access), a [Hyper-V](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v#port-access) és a [fizikai](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-physical#port-access) kiszolgáló értékeléséhez szükséges portokra vonatkozó hozzáférési követelményekről.
 
-## <a name="is-the-operating-system-license-included"></a>Tartalmazza az operációs rendszer licencét?
+## <a name="is-the-operating-system-license-included-in-an-azure-vm-assessment"></a>Az operációs rendszer licence egy Azure-beli virtuális gép értékelésében szerepel?
 
 Azure Migrate a kiszolgáló értékelése jelenleg csak Windows rendszerű gépek esetében veszi figyelembe az operációsrendszer-licenc költségeit. A Linux rendszerű gépek licencelési költségei jelenleg nem tekintendők.
 
-## <a name="how-does-performance-based-sizing-work"></a>Hogyan működik a teljesítmény-alapú méretezés?
+## <a name="how-does-performance-based-sizing-work-in-an-azure-vm-assessment"></a>Hogyan működik a teljesítmény-alapú méretezés az Azure-beli virtuális gépek felmérésében?
 
 A Server Assessment folyamatosan gyűjti a helyszíni gépek teljesítményadatait, és ezek alapján tesz javaslatot az Azure-beli virtuálisgép- és lemez-termékváltozatra. [Ismerje meg](concepts-assessment-calculation.md#calculate-sizing-performance-based) a teljesítmény-alapú adatok gyűjtésének módját.
 
 ## <a name="why-is-my-assessment-showing-a-warning-that-it-was-created-with-an-invalid-combination-of-reserved-instances-vm-uptime-and-discount-"></a>Miért van az értékelésem arra utaló figyelmeztetést mutat, hogy a fenntartott példányok érvénytelen kombinációjával lett létrehozva, a virtuális gép üzemidő és a kedvezmény (%)?
-Ha a "fenntartott példányok" lehetőséget választja, a "kedvezmény (%)" és a virtuális gép üzemidő tulajdonságai nem alkalmazhatók. Mivel az értékelés a tulajdonságok érvénytelen kombinációjával lett létrehozva, a Szerkesztés és az újraszámolás gomb le lesz tiltva. Hozzon létre egy új értékelést. [További információ](https://go.microsoft.com/fwlink/?linkid=2131554).
+Ha a "fenntartott példányok" lehetőséget választja, a "kedvezmény (%)" és a virtuális gép üzemidő tulajdonságai nem alkalmazhatók. Mivel az értékelés a tulajdonságok érvénytelen kombinációjával lett létrehozva, a Szerkesztés és az újraszámolás gomb le lesz tiltva. Hozzon létre egy új értékelést. [További információk](https://go.microsoft.com/fwlink/?linkid=2131554).
+
+## <a name="i-do-not-see-performance-data-for-some-network-adapters-on-my-physical-servers"></a>Nem látok teljesítményadatokat a fizikai kiszolgálókon lévő egyes hálózati adapterekhez
+
+Ez akkor fordulhat elő, ha a fizikai kiszolgálón engedélyezve van a Hyper-V-virtualizálás. Ezekben a kiszolgálókon a termékekkel kapcsolatos hézagok miatt Azure Migrate jelenleg a fizikai és a virtuális hálózati adaptereket is felfedi. A hálózati átviteli sebesség csak a felderített virtuális hálózati adaptereken van rögzítve.
+
+## <a name="recommended-azure-vm-sku-for-my-physical-server-is-oversized"></a>A fizikai kiszolgálóhoz ajánlott Azure VM SKU túl van méretezve
+
+Ez akkor fordulhat elő, ha a fizikai kiszolgálón engedélyezve van a Hyper-V-virtualizálás. Ezeken a kiszolgálókon Azure Migrate jelenleg a fizikai és a virtuális hálózati adaptereket is felfedi. Ezért a nem. a felderített hálózati adapterek száma magasabb a ténylegesnél. Mivel a kiszolgáló értékelése olyan Azure-beli virtuális gépet választ, amely képes támogatni a szükséges számú hálózati adaptert, ez potenciálisan túlméretezett virtuális gépet eredményezhet. [További](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#calculating-sizing) információ a nem hatásáról. a méretezés alatt álló hálózati adapterek. Ez egy olyan termékbeli hézag, amelyet a rendszer továbbít.
+
+## <a name="readiness-category-not-ready-for-my-physical-server"></a>A (z) "nem kész" készültségi kategória a fizikai kiszolgálóhoz
+
+Előfordulhat, hogy a készültségi kategória helytelenül van megjelölve "nem üzemkész" állapotban olyan fizikai kiszolgáló esetén, amelyen engedélyezve van a Hyper-V virtualizálása. Ezekben a kiszolgálókon a termékekkel kapcsolatos hézagok miatt Azure Migrate jelenleg a fizikai és a virtuális adaptereket is felfedi. Ezért a nem. a felderített hálózati adapterek száma magasabb a ténylegesnél. A kiszolgáló értékelése mind a helyszíni, mind a teljesítmény alapú felmérésekben olyan Azure-beli virtuális gépet választ, amely támogatja a szükséges számú hálózati adaptert. Ha a hálózati adapterek száma meghaladja a 32-as értéket, a maximális szám nem. Az Azure-beli virtuális gépeken támogatott hálózati adapterek esetében a gép "nem üzemkész" jelöléssel fog megjelenni.  [További](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#calculating-sizing) információ a nem hatásáról. a méretekben lévő hálózati adapterek.
+
+
+## <a name="number-of-discovered-nics-higher-than-actual-for-physical-servers"></a>A fizikai kiszolgálók esetében a ténylegesnél magasabban felderített hálózati adapterek száma
+
+Ez akkor fordulhat elő, ha a fizikai kiszolgálón engedélyezve van a Hyper-V-virtualizálás. Ezeken a kiszolgálókon Azure Migrate jelenleg a fizikai és a virtuális adaptereket is felfedi. Ezért a nem. a felderített hálózati adapterek száma magasabb a ténylegesnél.
+
+
+## <a name="low-confidence-rating-on-physical-server-assessments"></a>Alacsony megbízhatósági minősítés a fizikai kiszolgálók értékelése során
+A minősítés az értékelés kiszámításához szükséges adatpontok rendelkezésre állása alapján van kiosztva. Ha olyan fizikai kiszolgálókon van, amelyeken engedélyezve van a Hyper-V-virtualizálás, akkor az alacsony megbízhatósági minősítést helytelenül lehet hozzárendelni a fizikai kiszolgáló értékeléséhez. Ezeken a kiszolgálókon Azure Migrate jelenleg a fizikai és a virtuális adaptereket is felfedi. A rendszer rögzíti a hálózati átviteli sebességet a felderített virtuális hálózati adaptereken, de nem a fizikai hálózati adaptereken. A fizikai hálózati adaptereken lévő adatpontok hiánya miatt a megbízhatósági minősítés az alacsony minősítést eredményező következményekkel járhat. Ez egy olyan termékbeli hézag, amelyet a rendszer továbbít.
 
 ## <a name="dependency-visualization-in-azure-government"></a>Függőségi vizualizáció a Azure Government
 
