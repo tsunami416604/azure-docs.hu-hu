@@ -14,10 +14,9 @@ ms.date: 09/10/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 0585c1251ba18e1390f3eee28a989edee6eb8591
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77616935"
 ---
 # <a name="sap-hana-large-instances-high-availability-and-disaster-recovery-on-azure"></a>Magas rendelkezésre állású és vész-helyreállítási SAP HANA Large Instances az Azure-ban 
@@ -85,7 +84,7 @@ Az előző, a HANA nagyméretű példányokkal rendelkező helyreállítási be�
 - Rendeljen további tárhelyet a DR-webSAP HANA helyhez az Azure-beli (nagyméretű példányok) SKU-ra, amelyet a vész-helyreállítási helyen kíván helyreállítani. A további tárterület vásárlása lehetővé teszi a tárolási kötetek lefoglalását. Lefoglalhatja azokat a köteteket, amelyek az éles környezetbeli Azure-régióból származó tárolási replikálás célját jelentik a vész-helyreállítási Azure-régióban.
 - Abban az esetben, ha az elsődleges HSR van beállítva, és Storage-alapú replikációt telepít a DR-helyre, további tárhelyet kell vásárolnia a DR helyen, hogy az elsődleges és a másodlagos csomópontok is replikálva legyenek a DR-helyre.
 
-  **További lépések**
+  **Következő lépések**
 - Tekintse át [a biztonsági mentést és a visszaállítást](hana-backup-restore.md).
 
 

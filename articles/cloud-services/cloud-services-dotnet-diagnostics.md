@@ -11,10 +11,9 @@ ms.topic: article
 ms.date: 05/22/2017
 ms.author: tagore
 ms.openlocfilehash: 1e49a0935a70a2470267e5458fa1f55e3059e965
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77469765"
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services"></a>Azure Diagnostics engedélyezése az Azure-ban Cloud Services
@@ -136,12 +135,12 @@ namespace WorkerRole1
     ```powershell
     (Get-AzureServiceAvailableExtension -ExtensionName 'PaaSDiagnostics' -ProviderNamespace 'Microsoft.Azure.Diagnostics').PublicConfigurationSchema | Out-File -Encoding utf8 -FilePath 'WadConfig.xsd'
     ```
-2. Vegyen fel egy XML-fájlt a **WorkerRole1** -projektbe úgy, hogy a jobb gombbal a **WorkerRole1** projektre kattint, és kiválasztja az**új elem** **hozzáadása** -> lehetőséget. -> **Visual C#-elemek** -> **adatok** -> **XML-fájlja**. Nevezze el a "WadExample. xml" fájlt.
+2. Vegyen fel egy XML-fájlt a **WorkerRole1** -projektbe úgy, hogy a jobb gombbal a **WorkerRole1** projektre kattint, és kiválasztja az **Add**  ->  **új elem** hozzáadása lehetőséget. -> **Visual C# elemek**  ->  **Adatkezelés**  ->  **XML-fájl**. Nevezze el a következő fájlt: "WadExample.xml".
 
    ![CloudServices_diag_add_xml](./media/cloud-services-dotnet-diagnostics/AddXmlFile.png)
-3. Társítsa a WadConfig. XSD fájlt a konfigurációs fájllal. Győződjön meg arról, hogy az WadExample. XML szerkesztő ablak az aktív ablak. Nyomja le az **F4** billentyűt a **Tulajdonságok** ablak megnyitásához. Kattintson a **sémák** tulajdonságra a **Tulajdonságok** ablakban. Kattintson a **.** .. a **sémák** tulajdonságban. Kattintson a **Hozzáadás...** gombra, és navigáljon arra a helyre, ahová az XSD-fájlt mentette, majd válassza ki a WadConfig. XSD fájlt. Kattintson az **OK** gombra.
+3. Társítsa a WadConfig. XSD fájlt a konfigurációs fájllal. Győződjön meg arról, hogy az WadExample.xml szerkesztő ablak az aktív ablak. Nyomja le az **F4** billentyűt a **Tulajdonságok** ablak megnyitásához. Kattintson a **sémák** tulajdonságra a **Tulajdonságok** ablakban. Kattintson a **.** .. a **sémák** tulajdonságban. Kattintson a **Hozzáadás...** gombra, és navigáljon arra a helyre, ahová az XSD-fájlt mentette, majd válassza ki a WadConfig. XSD fájlt. Kattintson az **OK** gombra.
 
-4. Cserélje le a WadExample. xml konfigurációs fájl tartalmát a következő XML-fájlba, és mentse a fájlt. Ez a konfigurációs fájl egy pár teljesítményszámlálókat határoz meg a gyűjtéshez: egyet a CPU-használathoz, egyet pedig a memória kihasználtságához. Ezután a konfiguráció a SampleEventSourceWriter osztályban található metódusoknak megfelelő négy eseményt határozza meg.
+4. Cserélje le a WadExample.xml konfigurációs fájl tartalmát a következő XML-fájlra, és mentse a fájlt. Ez a konfigurációs fájl egy pár teljesítményszámlálókat határoz meg a gyűjtéshez: egyet a CPU-használathoz, egyet pedig a memória kihasználtságához. Ezután a konfiguráció a SampleEventSourceWriter osztályban található metódusoknak megfelelő négy eseményt határozza meg.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -170,7 +169,7 @@ namespace WorkerRole1
 A webes vagy feldolgozói szerepkör diagnosztika szolgáltatásának kezelésére szolgáló PowerShell-parancsmagok a következők: set-AzureServiceDiagnosticsExtension, Get-AzureServiceDiagnosticsExtension és Remove-AzureServiceDiagnosticsExtension.
 
 1. Nyissa meg Azure PowerShell.
-2. Futtassa a parancsfájlt a diagnosztika telepítéséhez a feldolgozói szerepkörön (cserélje le a *StorageAccountKey* -t a wadexample Storage-fiókja kulcsára, és *config_path* a *wadexample. XML* fájl elérési útját):
+2. Futtassa a parancsfájlt a diagnosztika telepítéséhez a feldolgozói szerepkörön (cserélje le a *StorageAccountKey* -t a wadexample Storage-fiókja kulcsára, és *config_path* a *WadExample.xml* -fájl elérési útját):
 
 ```powershell
 $storage_name = "wadexample"

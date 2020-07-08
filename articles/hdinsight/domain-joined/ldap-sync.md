@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/14/2020
 ms.openlocfilehash: 99bd1ac156b12a5be7b8c5c17eb5b568b7070a25
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77463218"
 ---
 # <a name="ldap-sync-in-ranger-and-apache-ambari-in-azure-hdinsight"></a>LDAP-szinkronizálás a Ranger és az Apache Ambari az Azure HDInsight
@@ -33,9 +32,9 @@ Biztonságos fürt telepítésekor a csoporttagok szinkronizálva vannak a Ambar
 
 ## <a name="ambari-user-sync-and-configuration"></a>Ambari-felhasználó szinkronizálása és konfigurálása
 
-A fő csomópontok egy cron-feladatot `/opt/startup_scripts/start_ambari_ldap_sync.py`futtatnak óránként, hogy ütemezik a felhasználói szinkronizálást. A cron-feladatok meghívja a Ambari REST API-kat a szinkronizálás végrehajtásához. A parancsfájl elküldi a szinkronizálandó felhasználók és csoportok listáját (mivel előfordulhat, hogy a felhasználók nem tartoznak a megadott csoportokhoz, mindkettő külön van megadva). A Ambari a sAMAccountName a Felhasználónév és az összes csoporttagok tranzitívnak szinkronizálja.
+A fő csomópontok egy cron-feladatot `/opt/startup_scripts/start_ambari_ldap_sync.py` futtatnak óránként, hogy ütemezik a felhasználói szinkronizálást. A cron-feladatok meghívja a Ambari REST API-kat a szinkronizálás végrehajtásához. A parancsfájl elküldi a szinkronizálandó felhasználók és csoportok listáját (mivel előfordulhat, hogy a felhasználók nem tartoznak a megadott csoportokhoz, mindkettő külön van megadva). A Ambari a sAMAccountName a Felhasználónév és az összes csoporttagok tranzitívnak szinkronizálja.
 
-A naplóknak a- `/var/log/ambari-server/ambari-server.log`ben kell lenniük. További információ: a [Ambari naplózási szintjének konfigurálása](https://docs.cloudera.com/HDPDocuments/Ambari-latest/administering-ambari/content/amb_configure_ambari_logging_level.html).
+A naplóknak a-ben kell lenniük `/var/log/ambari-server/ambari-server.log` . További információ: a [Ambari naplózási szintjének konfigurálása](https://docs.cloudera.com/HDPDocuments/Ambari-latest/administering-ambari/content/amb_configure_ambari_logging_level.html).
 
 Data Lake-fürtökön a felhasználó létrehozás utáni hookja a szinkronizált felhasználók otthoni mappáinak létrehozására szolgál, amelyek a Kezdőlap mappák tulajdonosaként vannak beállítva. Ha a felhasználó nincs megfelelően szinkronizálva a Ambari, akkor a felhasználó az átmeneti és az egyéb ideiglenes mappák elérésével kapcsolatos hibákba ütközne.
 
@@ -64,16 +63,16 @@ A növekményes szinkronizálás csak azokra a felhasználókra működik, akik 
 
 ### <a name="update-ranger-sync-filter"></a>A Ranger szinkronizálási szűrő frissítése
 
-Az LDAP-szűrő a Ambari felhasználói FELÜLETén, a Ranger felhasználó – szinkronizálás konfigurálása szakaszban található. A meglévő szűrő az űrlapon `(|(userPrincipalName=bob@contoso.com)(userPrincipalName=hdiwatchdog-core01@CONTOSO.ONMICROSOFT.COM)(memberOf:1.2.840.113556.1.4.1941:=CN=hadoopgroup,OU=AADDC Users,DC=contoso,DC=onmicrosoft,DC=com))`fog megjelenni. Győződjön meg arról, hogy a predikátumot a végén adja hozzá, majd `net ads` tesztelje a szűrőt a Search parancs vagy az Ldp. exe használatával, vagy valami hasonló.
+Az LDAP-szűrő a Ambari felhasználói FELÜLETén, a Ranger felhasználó – szinkronizálás konfigurálása szakaszban található. A meglévő szűrő az űrlapon fog megjelenni `(|(userPrincipalName=bob@contoso.com)(userPrincipalName=hdiwatchdog-core01@CONTOSO.ONMICROSOFT.COM)(memberOf:1.2.840.113556.1.4.1941:=CN=hadoopgroup,OU=AADDC Users,DC=contoso,DC=onmicrosoft,DC=com))` . Győződjön meg arról, hogy a predikátumot a végén adja hozzá, majd tesztelje a szűrőt a `net ads` Search paranccsal vagy ldp.exe vagy valamilyen hasonló módon.
 
 ## <a name="ranger-user-sync-logs"></a>A Ranger felhasználói szinkronizálási naplói
 
-A Ranger felhasználói szinkronizálása a átjárócsomópontokkal közül bármelyikből kiléphet. A naplók a- `/var/log/ranger/usersync/usersync.log`ben találhatók. A naplók részletességének növeléséhez hajtsa végre a következő lépéseket:
+A Ranger felhasználói szinkronizálása a átjárócsomópontokkal közül bármelyikből kiléphet. A naplók a-ben találhatók `/var/log/ranger/usersync/usersync.log` . A naplók részletességének növeléséhez hajtsa végre a következő lépéseket:
 
 1. Jelentkezzen be a Ambari.
 1. Lépjen a Ranger-konfiguráció szakaszra.
 1. Lépjen a speciális **usersync-log4j** szakaszra.
-1. Módosítsa a `log4j.rootLogger` ( `DEBUG` z `log4j.rootLogger = DEBUG,logFile,FilterLog`) szintet (a módosítás után a következőképpen kell kinéznie).
+1. Módosítsa a `log4j.rootLogger` `DEBUG` (z) szintet (a módosítás után a következőképpen kell kinéznie `log4j.rootLogger = DEBUG,logFile,FilterLog` ).
 1. Mentse a konfigurációt, és indítsa újra a Rangert.
 
 ## <a name="next-steps"></a>További lépések

@@ -14,10 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
 ms.openlocfilehash: 1e5253d617c87d5869cebc817da6d265ebfdfa7e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77539467"
 ---
 # <a name="troubleshoot-azure-private-link-connectivity-problems"></a>Az Azure privát kapcsolati szolgáltatás csatlakoztathatósági problémáinak elhárítása
@@ -81,7 +80,7 @@ Ha kapcsolódási problémák merülnek fel a privát kapcsolat beállításakor
 
        ![Láthatósági információk ellenőrzése](./media/private-link-tsg/pls-overview-pane-visibility.png)
 
-    g. Tekintse **át a terheléselosztó** információit az **Áttekintés** lapon.
+    : Tekintse **át a terheléselosztó** információit az **Áttekintés** lapon.
      - A Load balancert a terheléselosztó hivatkozásra kattintva érheti el.
 
        ![Terheléselosztó adatainak ellenőrzése](./media/private-link-tsg/pls-overview-pane-ilb.png)

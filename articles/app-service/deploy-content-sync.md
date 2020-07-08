@@ -7,10 +7,9 @@ ms.date: 12/03/2018
 ms.reviewer: dariac
 ms.custom: seodec18
 ms.openlocfilehash: 9f18eef607a5f655aecc0b6ebe1c85a239b34192
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77482972"
 ---
 # <a name="sync-content-from-a-cloud-folder-to-azure-app-service"></a>Tartalom szinkronizálása egy Felhőbeli mappából a Azure App Serviceba
@@ -22,7 +21,7 @@ Az igény szerinti tartalom-szinkronizálási telepítést a App Service [kudu �
 
 A tartalom szinkronizálásának engedélyezéséhez navigáljon a [Azure Portal](https://portal.azure.com)app Service alkalmazás lapjára.
 
-A bal oldali menüben kattintson a **Deployment Center** > **OneDrive** vagy a **Dropbox** > **engedélyezése**lehetőségre. Kövesse az engedélyezési utasításokat. 
+A bal oldali menüben kattintson a **Deployment Center**  >  **OneDrive** vagy a **Dropbox**  >  **engedélyezése**lehetőségre. Kövesse az engedélyezési utasításokat. 
 
 ![](media/app-service-deploy-content-sync/choose-source.png)
 
@@ -54,7 +53,7 @@ Ha a felhőalapú mappában lévő tartalmat szinkronizálni szeretné a App Ser
 
 A tartalom-szinkronizálás letiltásához navigáljon a [Azure Portal](https://portal.azure.com)app Service alkalmazás lapjára.
 
-A bal oldali menüben kattintson a **központi telepítési központ** > **kapcsolat bontása**elemre.
+A bal oldali menüben kattintson a **központi telepítési központ**  >  **kapcsolat bontása**elemre.
 
 ![](media/app-service-deploy-content-sync/disable.png)
 

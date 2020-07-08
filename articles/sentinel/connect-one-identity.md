@@ -15,10 +15,9 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: 849087cbbe91be799c51929353b9f020859c85b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77588144"
 ---
 # <a name="connect-one-identity-safeguard"></a>Egy Identity-védelem összekötése
@@ -31,7 +30,7 @@ Az egyetlen Identity védzáradék-összekötő fokozza a standard Common Event 
 
 ## <a name="connect-azure-sentinel-to-one-identity-safeguard"></a>Az Azure Sentinel összekötése egy identitás-védelmi kapcsolattal
 
-1. A Azure Portal navigáljon az **Azure Sentinel** > -**adatösszekötők** közé, majd válassza ki az **egyik identitás-védelmi** összekötőt.
+1. A Azure Portal navigáljon az **Azure Sentinel**-  >  **adatösszekötők** közé, majd válassza ki az **egyik identitás-védelmi** összekötőt.
 
 2. Válassza az **összekötő megnyitása lapot**.
 

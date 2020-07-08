@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
 ms.openlocfilehash: f9dfcb930e3fe4f862f9f51ff00270d0eb0c66ca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77539110"
 ---
 # <a name="scenario-apache-ambari-stale-alerts-in-azure-hdinsight"></a>Forgatókönyv: az Apache Ambari elavult riasztások az Azure HDInsight
@@ -74,7 +73,7 @@ Az elavult riasztások elvetéséhez tiltsa le, majd engedélyezze újra a köve
 
 Van egy türelmi időszak, mielőtt egy Ambari-ügynök jelentést készít arról, hogy egy konfigurált riasztás kihagyta az ütemtervét. Ha a riasztás kihagyta az ütemezett időpontot, de a türelmi időszakon belül futott, az elavult riasztás nem jön létre.
 
-Az alapértelmezett `alert_grace_period` érték 5 másodperc. Ezt a beállítást a/etc/ambari-Agent/conf/ambari-Agent.ini. szolgáltatásban konfigurálhatja Azokon a gazdagépeken, amelyeken az elavult riasztások rendszeres időközönként történnek, próbálja meg növelni az értéket 10-re. Ezután indítsa újra a Ambari-ügynököt.
+Az alapértelmezett `alert_grace_period` érték 5 másodperc. Ezt a beállítást a/etc/ambari-Agent/conf/ambari-agent.ini is konfigurálhatja. Azokon a gazdagépeken, amelyeken az elavult riasztások rendszeres időközönként történnek, próbálja meg növelni az értéket 10-re. Ezután indítsa újra a Ambari-ügynököt.
 
 ## <a name="next-steps"></a>További lépések
 

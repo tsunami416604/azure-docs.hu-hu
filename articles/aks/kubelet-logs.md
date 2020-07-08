@@ -5,17 +5,16 @@ services: container-service
 ms.topic: article
 ms.date: 03/05/2019
 ms.openlocfilehash: b7a74803af916f9e9de72dd528273007ce37832f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77595382"
 ---
 # <a name="get-kubelet-logs-from-azure-kubernetes-service-aks-cluster-nodes"></a>Kubelet-naplók lekérése Azure Kubernetes Service- (AKS-) fürtcsomópontokból
 
 Az AK-fürtök működtetésének részeként előfordulhat, hogy át kell tekintenie a naplókat a probléma elhárításához. A Azure Portal beépített funkciói lehetővé teszi a naplók megtekintését az AK-beli [fő összetevőkhöz][aks-master-logs] vagy [tárolóhoz egy AK-fürtben][azure-container-logs]. Esetenként előfordulhat, hogy hibaelhárítási célból a *kubelet* -naplókat egy AK-csomópontból kell lekérnie.
 
-Ez a cikk bemutatja, hogyan tekintheti `journalctl` meg a *kubelet* -naplókat egy AK-csomóponton.
+Ez a cikk bemutatja, hogyan `journalctl` tekintheti meg a *kubelet* -naplókat egy AK-csomóponton.
 
 ## <a name="before-you-begin"></a>Előkészületek
 

@@ -9,10 +9,9 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.openlocfilehash: bfa6690c636e15fa933f50698cd81359600b5c05
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77368304"
 ---
 # <a name="create-and-use-web-application-firewall-v2-custom-rules-on-application-gateway"></a>Webalkalmazási tűzfal v2 egyéni szabályainak létrehozása és használata Application Gateway
@@ -26,7 +25,7 @@ Ez a cikk néhány példát mutat be a v2-WAF létrehozásához és használatá
 
 ![WAF engedélyezése][fig1]
 
-## <a name="example-1"></a>1. példa
+## <a name="example-1"></a>1\. példa
 
 Tudja, hogy van egy *evilbot* nevű robot, amelyet le szeretne tiltani a webhely bejárásával. Ebben az esetben letiltja a felhasználói ügynök *evilbot* a kérések fejlécében.
 
@@ -126,7 +125,7 @@ $rule = New-AzApplicationGatewayFirewallCustomRule `
   }
 ```
 
-## <a name="example-2"></a>2. példa
+## <a name="example-2"></a>2\. példa
 
 Az GeoMatch operátor használatával szeretné engedélyezni az USA-beli forgalmat:
 
@@ -175,7 +174,7 @@ $rule = New-AzApplicationGatewayFirewallCustomRule `
 
 
 
-## <a name="example-3"></a>3. példa
+## <a name="example-3"></a>3\. példa
 
 Az IP-címekről érkező összes kérést le szeretné tiltani a 198.168.5.0/24 tartományon belül.
 

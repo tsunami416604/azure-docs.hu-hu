@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 02/20/2020
 ms.author: cshoe
 ms.openlocfilehash: d3ba9183cdea752c3e69a41770b6a5319a4a601d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77530249"
 ---
 # <a name="signalr-service-output-binding-for-azure-functions"></a>A signaler szolgáltatás kimeneti kötése Azure Functions
@@ -27,7 +26,7 @@ További információ a telepítésről és a konfigurációról: [Áttekintés]
 
 Az alábbi példa egy olyan függvényt mutat be, amely az összes csatlakoztatott ügyfél kimeneti kötését használva üzenetet küld. A *cél* az egyes ügyfeleken meghívott metódus neve. Az *argumentumok* tulajdonság az ügyfél metódusának átadandó nulla vagy több objektum tömbje.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```cs
 [FunctionName("SendMessage")]
@@ -46,9 +45,9 @@ public static Task SendMessage(
 
 # <a name="c-script"></a>[C#-parancsfájl](#tab/csharp-script)
 
-Itt a *function. JSON* fájlban található kötési adat:
+Itt található a fájlban lévő *function.js* lévő kötési érték:
 
-Példa a function. JSON fájlra:
+Példa function.jsa következőn:
 
 ```json
 {
@@ -81,9 +80,9 @@ public static Task Run(
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Itt a *function. JSON* fájlban található kötési adat:
+Itt található a fájlban lévő *function.js* lévő kötési érték:
 
-Példa a function. JSON fájlra:
+Példa function.jsa következőn:
 
 ```json
 {
@@ -108,9 +107,9 @@ module.exports = async function (context, req) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Itt a *function. JSON* fájlban található kötési adat:
+Itt található a fájlban lévő *function.js* lévő kötési érték:
 
-Példa a function. JSON fájlra:
+Példa function.jsa következőn:
 
 ```json
 {
@@ -157,7 +156,7 @@ public SignalRMessage sendMessage(
 
 Csak a felhasználó számára hitelesített kapcsolatokra küldhet üzenetet, ha beállítja a *felhasználói azonosítót* a jelző üzenetben.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```cs
 [FunctionName("SendMessage")]
@@ -178,7 +177,7 @@ public static Task SendMessage(
 
 # <a name="c-script"></a>[C#-parancsfájl](#tab/csharp-script)
 
-Példa a function. JSON fájlra:
+Példa function.jsa következőn:
 
 ```json
 {
@@ -213,7 +212,7 @@ public static Task Run(
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Példa a function. JSON fájlra:
+Példa function.jsa következőn:
 
 ```json
 {
@@ -240,9 +239,9 @@ module.exports = async function (context, req) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Itt a *function. JSON* fájlban található kötési adat:
+Itt található a fájlban lévő *function.js* lévő kötési érték:
 
-Példa a function. JSON fájlra:
+Példa function.jsa következőn:
 
 ```json
 {
@@ -292,7 +291,7 @@ public SignalRMessage sendMessage(
 
 Az üzenetet csak olyan kapcsolatokhoz küldheti, amelyeket a rendszer hozzáad egy csoporthoz a *csoport nevének* a jelző üzenetben való beállításával.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```cs
 [FunctionName("SendMessage")]
@@ -313,7 +312,7 @@ public static Task SendMessage(
 
 # <a name="c-script"></a>[C#-parancsfájl](#tab/csharp-script)
 
-Példa a function. JSON fájlra:
+Példa function.jsa következőn:
 
 ```json
 {
@@ -348,7 +347,7 @@ public static Task Run(
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Példa a function. JSON fájlra:
+Példa function.jsa következőn:
 
 ```json
 {
@@ -375,9 +374,9 @@ module.exports = async function (context, req) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Itt a *function. JSON* fájlban található kötési adat:
+Itt található a fájlban lévő *function.js* lévő kötési érték:
 
-Példa a function. JSON fájlra:
+Példa function.jsa következőn:
 
 ```json
 {
@@ -427,7 +426,7 @@ public SignalRMessage sendMessage(
 
 A signaler szolgáltatás lehetővé teszi a felhasználóknak a csoportokba való felvételét. Ezután üzeneteket küldhetnek egy csoportnak. A `SignalR` kimeneti kötés használatával kezelheti a felhasználók csoportjának tagságát.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ### <a name="add-user-to-a-group"></a>Felhasználó felvétele egy csoportba
 
@@ -476,7 +475,7 @@ public static Task RemoveFromGroup(
 ```
 
 > [!NOTE]
-> A `ClaimsPrincipal` megfelelő kötés eléréséhez konfigurálnia kell a hitelesítési beállításokat a Azure Functionsban.
+> A megfelelő kötés eléréséhez `ClaimsPrincipal` konfigurálnia kell a hitelesítési beállításokat a Azure Functionsban.
 
 # <a name="c-script"></a>[C#-parancsfájl](#tab/csharp-script)
 
@@ -484,7 +483,7 @@ public static Task RemoveFromGroup(
 
 A következő példa egy felhasználót egy csoportba helyez.
 
-Példa *function. JSON*
+Példa *function.jsbekapcsolva*
 
 ```json
 {
@@ -522,7 +521,7 @@ public static Task Run(
 
 A következő példa egy felhasználót távolít el egy csoportból.
 
-Példa *function. JSON*
+Példa *function.jsbekapcsolva*
 
 ```json
 {
@@ -557,7 +556,7 @@ public static Task Run(
 ```
 
 > [!NOTE]
-> A `ClaimsPrincipal` megfelelő kötés eléréséhez konfigurálnia kell a hitelesítési beállításokat a Azure Functionsban.
+> A megfelelő kötés eléréséhez `ClaimsPrincipal` konfigurálnia kell a hitelesítési beállításokat a Azure Functionsban.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -565,7 +564,7 @@ public static Task Run(
 
 A következő példa egy felhasználót egy csoportba helyez.
 
-Példa *function. JSON*
+Példa *function.jsbekapcsolva*
 
 ```json
 {
@@ -577,7 +576,7 @@ Példa *function. JSON*
 }
 ```
 
-*index. js*
+*index.js*
 
 ```javascript
 module.exports = async function (context, req) {
@@ -593,7 +592,7 @@ module.exports = async function (context, req) {
 
 A következő példa egy felhasználót távolít el egy csoportból.
 
-Példa *function. JSON*
+Példa *function.jsbekapcsolva*
 
 ```json
 {
@@ -605,7 +604,7 @@ Példa *function. JSON*
 }
 ```
 
-*index. js*
+*index.js*
 
 ```javascript
 module.exports = async function (context, req) {
@@ -623,7 +622,7 @@ module.exports = async function (context, req) {
 
 A következő példa egy felhasználót egy csoportba helyez.
 
-Példa *function. JSON*
+Példa *function.jsbekapcsolva*
 
 ```json
 {
@@ -650,7 +649,7 @@ def main(req: func.HttpRequest, action: func.Out[str]) -> func.HttpResponse:
 
 A következő példa egy felhasználót távolít el egy csoportból.
 
-Példa *function. JSON*
+Példa *function.jsbekapcsolva*
 
 ```json
 {
@@ -721,30 +720,30 @@ public SignalRGroupAction removeFromGroup(
 
 ---
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>Konfiguráció
 
 ### <a name="signalrconnectioninfo"></a>SignalRConnectionInfo
 
-Az alábbi táblázat a *function. JSON* fájlban és az `SignalRConnectionInfo` attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti.
+Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `SignalRConnectionInfo` .
 
-|function. JSON-tulajdonság | Attribútum tulajdonsága |Leírás|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
-|**típusa**| n/a | Értékre kell állítani `signalRConnectionInfo`.|
-|**direction**| n/a | Értékre kell állítani `in`.|
-|**név**| n/a | A kapcsolatkérelem-objektumhoz tartozó függvény kódjában használt változó neve. |
+|**típusa**| n.a. | Értékre kell állítani `signalRConnectionInfo` .|
+|**direction**| n.a. | Értékre kell állítani `in` .|
+|**név**| n.a. | A kapcsolatkérelem-objektumhoz tartozó függvény kódjában használt változó neve. |
 |**hubName**|**HubName**| Ezt az értéket annak a jelző-hubhoz a nevére kell beállítani, amelyhez a kapcsolódási adatok létrejöttek.|
 |**userId**|**UserId**| Nem kötelező: a hozzáférési kulcs jogkivonatában beállítani kívánt felhasználói azonosító jogcím értéke. |
 |**connectionStringSetting**|**ConnectionStringSetting**| A jelző szolgáltatás kapcsolódási sztringjét tartalmazó Alkalmazásbeállítás neve (alapértelmezett érték: "AzureSignalRConnectionString") |
 
 ### <a name="signalr"></a>SignalR
 
-Az alábbi táblázat a *function. JSON* fájlban és az `SignalR` attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti.
+Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `SignalR` .
 
-|function. JSON-tulajdonság | Attribútum tulajdonsága |Leírás|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
-|**típusa**| n/a | Értékre kell állítani `signalR`.|
-|**direction**| n/a | Értékre kell állítani `out`.|
-|**név**| n/a | A kapcsolatkérelem-objektumhoz tartozó függvény kódjában használt változó neve. |
+|**típusa**| n.a. | Értékre kell állítani `signalR` .|
+|**direction**| n.a. | Értékre kell állítani `out` .|
+|**név**| n.a. | A kapcsolatkérelem-objektumhoz tartozó függvény kódjában használt változó neve. |
 |**hubName**|**HubName**| Ezt az értéket annak a jelző-hubhoz a nevére kell beállítani, amelyhez a kapcsolódási adatok létrejöttek.|
 |**connectionStringSetting**|**ConnectionStringSetting**| A jelző szolgáltatás kapcsolódási sztringjét tartalmazó Alkalmazásbeállítás neve (alapértelmezett érték: "AzureSignalRConnectionString") |
 

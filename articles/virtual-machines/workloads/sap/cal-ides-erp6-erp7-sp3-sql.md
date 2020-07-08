@@ -16,10 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 09/16/2016
 ms.author: hermannd
 ms.openlocfilehash: 3efd92226b7c69590f3960458ffec49b63b8364f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77616703"
 ---
 # <a name="deploy-sap-ides-ehp7-sp3-for-sap-erp-60-on-azure"></a>SAP ide EHP7 SP3 telepítése SAP ERP 6,0-hez az Azure-ban
@@ -105,7 +104,7 @@ Sikeresen létrehozott egy SAP CAL-fiókot, amely a következőket teszi lehető
 
     ![SAP CAL alapszintű mód: példány létrehozása](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic10a.png)
 
-1. Kattintson a **Létrehozás**gombra. Némi várakozás után a megoldás méretétől és összetettségének függvényében (az SAP CAL becslést biztosít) az állapot aktívként jelenik meg, és készen áll a használatra: 
+1. Kattintson a **Létrehozás** lehetőségre. Némi várakozás után a megoldás méretétől és összetettségének függvényében (az SAP CAL becslést biztosít) az állapot aktívként jelenik meg, és készen áll a használatra: 
 
     ![SAP CAL-példányok](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic12a.png)
 

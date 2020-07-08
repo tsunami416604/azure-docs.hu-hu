@@ -10,10 +10,9 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 02/11/2020
 ms.openlocfilehash: 711071e08a52a0075512bc8b3ffe14707238cdfe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77209296"
 ---
 # <a name="manage-your-azure-cognitive-search-service-with-powershell"></a>Azure Cognitive Search szolgáltatás kezelése a PowerShell-lel
@@ -80,7 +79,7 @@ Ha több Azure-előfizetéssel rendelkezik, állítsa be az Azure-előfizetésé
 Get-AzSubscription | sort SubscriptionName | Select SubscriptionName
 ```
 
-Az előfizetés megadásához futtassa a következő parancsot. A következő példában az előfizetés neve: `ContosoSubscription`.
+Az előfizetés megadásához futtassa a következő parancsot. A következő példában az előfizetés neve: `ContosoSubscription` .
 
 ```azurepowershell-interactive
 Select-AzSubscription -SubscriptionName ContosoSubscription
@@ -193,11 +192,11 @@ Tags
 
 A [**New-AzSearchAdminKey**](https://docs.microsoft.com/powershell/module/az.search/new-azsearchadminkey?view=azps-1.4.0) a felügyeleti [API-kulcsok](search-security-api-keys.md)átadására szolgál. A hitelesített hozzáféréshez a szolgáltatás két rendszergazdai kulcsot hoz létre. Minden kérelemhez kulcsokra van szükség. Mindkét rendszergazdai kulcs funkcionálisan egyenértékű, és teljes írási hozzáférést biztosít egy keresési szolgáltatáshoz bármilyen információ lekéréséhez, illetve bármely objektum létrehozásához és törléséhez. Két kulcs létezik, hogy a másikat cserélje le. 
 
-Egyszerre csak egyszer lehet újradefiniálni, a vagy `primary` `secondary` a kulcsként megadva. A nem folytonos szolgáltatás esetében ne felejtse el frissíteni az összes állapotkódot, hogy másodlagos kulcsot használjon, miközben az elsődleges kulcsra mutat. Ne változtassa meg a kulcsokat, amíg a műveletek bekerülnek a repülésbe.
+Egyszerre csak egyszer lehet újradefiniálni, a `primary` vagy a `secondary` kulcsként megadva. A nem folytonos szolgáltatás esetében ne felejtse el frissíteni az összes állapotkódot, hogy másodlagos kulcsot használjon, miközben az elsődleges kulcsra mutat. Ne változtassa meg a kulcsokat, amíg a műveletek bekerülnek a repülésbe.
 
 Ahogy várható, ha az ügyfél kódjának frissítése nélkül újragenerálja a kulcsokat, a régi kulcsot használó kérelmek sikertelenek lesznek. Az összes új kulcs újragenerálása nem zárja ki véglegesen a szolgáltatást, és a portálon keresztül továbbra is hozzáférhet a szolgáltatáshoz. Az elsődleges és a másodlagos kulcsok újragenerálása után frissítheti az ügyfélszoftvert az új kulcsok használatára, és ennek megfelelően folytathatja a műveletet.
 
-Az API-kulcsok értékeit a szolgáltatás hozza létre. Nem adhat meg egyéni kulcsot az Azure Cognitive Search használatához. Hasonlóképpen, a rendszergazda API-kulcsok nem rendelkeznek felhasználó által definiált névvel. A kulcsra mutató hivatkozások rögzített karakterláncok, `primary` vagy `secondary`vagy. 
+Az API-kulcsok értékeit a szolgáltatás hozza létre. Nem adhat meg egyéni kulcsot az Azure Cognitive Search használatához. Hasonlóképpen, a rendszergazda API-kulcsok nem rendelkeznek felhasználó által definiált névvel. A kulcsra mutató hivatkozások rögzített karakterláncok, `primary` vagy vagy `secondary` . 
 
 ```azurepowershell-interactive
 New-AzSearchAdminKey -ResourceGroupName <resource-group-name> -ServiceName <search-service-name> -KeyKind Primary

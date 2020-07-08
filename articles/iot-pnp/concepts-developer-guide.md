@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: 5fda51e6d2f62b9cbef0fcac22d5bb2ea0df905b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77605222"
 ---
 # <a name="iot-plug-and-play-preview-modeling-developer-guide"></a>IoT Plug and Play előzetes verzió modellezése – fejlesztői útmutató
@@ -63,7 +62,7 @@ A megvalósítások szakaszban található felületek listájának minden bejegy
 
 További választható mezőket is használhat, amelyekkel további részleteket adhat hozzá a képesség modelljéhez, például a megjelenítendő név és a Leírás mezőben. A képességi modellben deklarált felületek az eszköz összetevőiként is megtekinthetők. A nyilvános előzetes verzióban az illesztőfelületek listájának sémája csak egy bejegyzéssel rendelkezhet.
 
-## <a name="interface"></a>Felület
+## <a name="interface"></a>Interfész
 
 A DTDL segítségével az eszköz képességeit a felületek használatával írhatja le. A felületek leírják, hogy a _Tulajdonságok_, a _telemetria_és a _parancsok_ hogyan implementálják az eszköz részét:
 
@@ -97,7 +96,7 @@ Az illesztőfelületnek van néhány kötelező mezője:
 
 Ebben az egyszerű példában csak egyetlen telemetria mező van. A mező minimális leírása a következőket tartalmazhatja:
 
-- `@type`: a képesség típusát adja meg: `Telemetry`, `Property`, vagy `Command`.
+- `@type`: a képesség típusát adja meg: `Telemetry` , `Property` , vagy `Command` .
 - `name`: megadja a telemetria értékének nevét.
 - `schema`: a telemetria adattípusát adja meg. Ez az érték egyszerű típus lehet, például dupla, Integer, Boolean vagy string. Az összetett objektumtípusok, tömbök és leképezések is támogatottak.
 
@@ -127,11 +126,11 @@ A parancsok szinkron vagy aszinkron jellegűek. A szinkron parancsoknak alapért
 
 Használjon aszinkron parancsokat a hosszan futó műveletekhez. Az eszköz telemetria-üzenetek használatával küldi el a végrehajtási adatokat. Ezek az állapotjelző üzenetek a következő fejléc-tulajdonságokkal rendelkeznek:
 
-- `iothub-command-name`: a parancs neve, például `UpdateFirmware`.
+- `iothub-command-name`: a parancs neve, például `UpdateFirmware` .
 - `iothub-command-request-id`: a kiszolgáló oldalán generált kérelem-azonosító, amelyet a rendszer a kezdeti hívásban az eszköznek küld.
-- `iothub-interface-id`: Annak az adapternek az azonosítója, amelyhez ez a parancs van meghatározva (például `urn:example:AssetTracker:1`).
- `iothub-interface-name`: az interfész példányának neve, például `myAssetTracker`.
-- `iothub-command-statuscode`: az eszközről visszaadott állapotkód, például `202`.
+- `iothub-interface-id`: Annak az adapternek az azonosítója, amelyhez ez a parancs van meghatározva (például `urn:example:AssetTracker:1` ).
+ `iothub-interface-name`: az interfész példányának neve, például `myAssetTracker` .
+- `iothub-command-statuscode`: az eszközről visszaadott állapotkód, például `202` .
 
 ## <a name="register-a-device"></a>Eszköz regisztrálása
 
@@ -182,35 +181,35 @@ result = DigitalTwin_DeviceClient_RegisterInterfacesAsync(
 
 A IoT Plug and Play lehetővé teszi olyan eszközök használatát, amelyek regisztrálták képességeiket az IoT hub-ban. Az eszköz tulajdonságait és parancsait például közvetlenül elérheti.
 
-Ha az IoT hubhoz csatlakoztatott IoT Plug and Play eszközt kíván használni, használja a IoT Hub REST API vagy az egyik IoT nyelvi SDK-t. Az alábbi példák a IoT Hub REST API használják. Az API jelenlegi verziója: `2019-07-01-preview`. Hozzáfűzés `?api-version=2019-07-01-preview` a REST PI-hívásokhoz.
+Ha az IoT hubhoz csatlakoztatott IoT Plug and Play eszközt kíván használni, használja a IoT Hub REST API vagy az egyik IoT nyelvi SDK-t. Az alábbi példák a IoT Hub REST API használják. Az API jelenlegi verziója: `2019-07-01-preview` . Hozzáfűzés `?api-version=2019-07-01-preview` a REST PI-hívásokhoz.
 
-Ha egy eszköz tulajdonság értékét (`fwVersion`például a belső vezérlőprogram verzióját) szeretné lekérni a termosztát `DeviceInformation` felületén, használja a digitális Twins REST API.
+Ha egy eszköz tulajdonság értékét (például a belső vezérlőprogram verzióját) szeretné lekérni a `fwVersion` `DeviceInformation` termosztát felületén, használja a digitális Twins REST API.
 
-Ha a termosztátos eszközt hívja `t-123`meg, az eszköz összes tulajdonságát egy REST API Get hívással érheti el:
+Ha a termosztátos eszközt hívja meg `t-123` , az eszköz összes tulajdonságát egy REST API Get hívással érheti el:
 
 ```REST
 GET /digitalTwins/t-123/interfaces
 ```
 
-Általánosságban az összes csatoló összes tulajdonsága elérhető ezzel a REST API sablonnal, ahol `{device-id}` az az eszköz azonosítója:
+Általánosságban az összes csatoló összes tulajdonsága elérhető ezzel a REST API sablonnal, ahol az az `{device-id}` eszköz azonosítója:
 
 ```REST
 GET /digitalTwins/{device-id}/interfaces
 ```
 
-Ha ismeri az interfész nevét, például a `deviceInformation`, és szeretné lekérni az adott csatoló tulajdonságait, a hatókört a megadott csatolóra kell szűkíteni név szerint:
+Ha ismeri az interfész nevét, például a `deviceInformation` , és szeretné lekérni az adott csatoló tulajdonságait, a hatókört a megadott csatolóra kell szűkíteni név szerint:
 
 ```REST
 GET /digitalTwins/t-123/interfaces/deviceInformation
 ```
 
-Általánosságban az adott interfész tulajdonságai a REST API sablonon keresztül érhetők el, ahol `device-id` az az eszköz azonosítója, és `{interface-name}` az interfész neve:
+Általánosságban az adott interfész tulajdonságai a REST API sablonon keresztül érhetők el, ahol az az `device-id` eszköz azonosítója, és az `{interface-name}` interfész neve:
 
 ```REST
 GET /digitalTwins/{device-id}/interfaces/{interface-name}
 ```
 
-Közvetlenül is meghívhatja a IoT Plug and Play eszköz parancsait. Ha az `Thermostat` `t-123` eszközön található felület rendelkezik `restart` PARANCCSAL, meghívhatja REST API post hívással:
+Közvetlenül is meghívhatja a IoT Plug and Play eszköz parancsait. Ha az `Thermostat` `t-123` eszközön található felület rendelkezik `restart` paranccsal, meghívhatja REST API post hívással:
 
 ```REST
 POST /digitalTwins/t-123/interfaces/thermostat/commands/restart

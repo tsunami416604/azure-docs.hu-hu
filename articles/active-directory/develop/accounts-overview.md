@@ -14,15 +14,14 @@ ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
 ms.openlocfilehash: d0497ad68e7b29e6d8c83dd860ba8f509e229579
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77611889"
 ---
 # <a name="accounts--tenant-profiles-android"></a>Fiókok és bérlői profilok (Android)
 
-Ez a cikk áttekintést nyújt arról, `account` hogy mi a Microsoft Identity platform.
+Ez a cikk áttekintést nyújt arról, hogy mi a `account` Microsoft Identity platform.
 
 A Microsoft Authentication Library (MSAL) API lecseréli a *felhasználó* kifejezést a term *fiókra*. Ennek egyik oka, hogy egy felhasználó (emberi vagy szoftver ügynök) több fiókot is használhat. Ezek a fiókok lehetnek a felhasználó saját szervezetében és/vagy más szervezetekben, amelyeknek a felhasználó a tagja.
 
@@ -32,7 +31,7 @@ A Microsoft Identity platform egyik fiókja a következőkből áll:
 - Egy vagy több hitelesítő adat, amely a fiók tulajdonjogának vagy vezérlésének bemutatására szolgál.
 - Egy vagy több olyan attribútum, amely többek között a következőkből áll:
   - Kép, Utónév, család neve, cím, iroda helye
-- A fióknak van egy szolgáltatói vagy nyilvántartási forrása. Ez az a rendszer, ahol a fiók létrejön, és ahol a fiókhoz társított hitelesítő adatok tárolódnak. A több-bérlős rendszerek (például a Microsoft Identity platform) esetében a rekord rendszere `tenant` a fiók létrehozásának helye. Ezt a bérlőt a `home tenant`következő néven is emlegetik:.
+- A fióknak van egy szolgáltatói vagy nyilvántartási forrása. Ez az a rendszer, ahol a fiók létrejön, és ahol a fiókhoz társított hitelesítő adatok tárolódnak. A több-bérlős rendszerek (például a Microsoft Identity platform) esetében a rekord rendszere a `tenant` fiók létrehozásának helye. Ezt a bérlőt a következő néven is emlegetik: `home tenant` .
 - A Microsoft Identity platform fiókjai a következő nyilvántartási rendszerekkel rendelkeznek:
   - Azure Active Directory, beleértve a Azure Active Directory B2C.
   - Microsoft-fiók (élő).
@@ -43,7 +42,7 @@ A Microsoft Identity platform egyik fiókja a következőkből áll:
 - A Microsoft Identity platform lehetővé teszi, hogy az egyik fiók a több szervezethez (Azure Active Directory bérlőhöz) tartozó erőforrások elérésére legyen használva.
   - Annak rögzítéséhez, hogy az egyik HRE (A bérlő A) egy fiók egy másik (HRE-bérlői) rekordban lévő erőforráshoz fér hozzá, a fióknak szerepelnie kell abban a bérlőn, ahol az erőforrás definiálva van. Ezt úgy teheti meg, hogy helyi rekordot hoz létre a fiókból a B rendszeren.
   - Ez a helyi rekord, amely a fiók ábrázolása, az eredeti fiókhoz van kötve.
-  - A MSAL ezt a `Tenant Profile`helyi rekordot teszi elérhetővé.
+  - A MSAL ezt a helyi rekordot teszi elérhetővé `Tenant Profile` .
   - A bérlői profilnak különböző attribútumai lehetnek, amelyek megfelelnek a helyi környezetnek, például a beosztás, az iroda helye, a kapcsolattartási adatok stb.
 - Mivel előfordulhat, hogy egy fiók egy vagy több bérlőn is megtalálható, egy fiók több profillal is rendelkezhet.
 
@@ -69,7 +68,7 @@ A fenti ábrán:
   - Egy bérlői profil `tom@live.com` létezik az egyes bérlők esetében.
 - A más bérlők Tom és Bob szolgáltatásával kapcsolatos információk eltérhetnek a rekordból. Eltérőek lehetnek az attribútumok, például a beosztás, az iroda helye stb. Az egyes szervezetekben (Azure Active Directory bérlőn) belüli csoportok és/vagy szerepkörök tagjai lehetnek. Ezt az információt a bob@contoso.com bérlői profilként tekintjük át.
 
-A diagramon bob@contoso.com tom@live.com a különböző Azure Active Directory bérlők erőforrásaihoz férhet hozzá. További információ: [Azure Active Directory B2B együttműködéssel rendelkező felhasználók hozzáadása a Azure Portal](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator).
+A diagramon a bob@contoso.com tom@live.com különböző Azure Active Directory bérlők erőforrásaihoz férhet hozzá. További információ: [Azure Active Directory B2B együttműködéssel rendelkező felhasználók hozzáadása a Azure Portal](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator).
 
 ## <a name="accounts-and-single-sign-on-sso"></a>Fiókok és egyszeri bejelentkezés (SSO)
 
@@ -125,7 +124,7 @@ String issuer = account.getClaims().get("iss"); // The tenant specific authority
 
 ### <a name="access-tenant-profile-claims"></a>Bérlői profil jogcímeinek elérése
 
-Ha más bérlők által megjelenő fiókhoz szeretne jogcímeket elérni, először be kell állítania a fiók objektumát `IMultiTenantAccount`. Az összes fiók több-bérlő lehet, de a MSAL-n keresztül elérhető bérlői profilok száma attól függ, hogy mely bérlők igényeltek jogkivonatot az aktuális fiók használatával.  Például:
+Ha más bérlők által megjelenő fiókhoz szeretne jogcímeket elérni, először be kell állítania a fiók objektumát `IMultiTenantAccount` . Az összes fiók több-bérlő lehet, de a MSAL-n keresztül elérhető bérlői profilok száma attól függ, hogy mely bérlők igényeltek jogkivonatot az aktuális fiók használatával.  Például:
 
 ```java
 // Psuedo Code
@@ -140,7 +139,7 @@ multiTenantAccount.getTenantProfiles().get("tenantid for contoso").getClaims().g
 
 A fiókok frissítési jogkivonatai nem oszthatók meg a B2C-szabályzatok között. Ennek eredményeképpen a tokeneket használó egyszeri bejelentkezés nem lehetséges. Ez nem jelenti azt, hogy az egyszeri bejelentkezés nem lehetséges. Ez azt jelenti, hogy az egyszeri bejelentkezéshez olyan interaktív élményt kell használni, amelyben az egyszeri bejelentkezés lehetővé teszi a cookie-t.
 
-Ez azt is jelenti, hogy a MSAL esetén, ha különböző B2C-szabályzatokat használó jogkivonatokat vásárol, ezeket külön fiókokként kezeli a rendszer, amelyek mindegyike saját azonosítóval rendelkezik. Ha egy fiók használatával `acquireTokenSilent`szeretne jogkivonatot használni, akkor ki kell választania a fiókot azon fiókok listájából, amelyek megfelelnek a jogkivonat-kérelemmel használt szabályzatnak. Például:
+Ez azt is jelenti, hogy a MSAL esetén, ha különböző B2C-szabályzatokat használó jogkivonatokat vásárol, ezeket külön fiókokként kezeli a rendszer, amelyek mindegyike saját azonosítóval rendelkezik. Ha egy fiók használatával szeretne jogkivonatot használni `acquireTokenSilent` , akkor ki kell választania a fiókot azon fiókok listájából, amelyek megfelelnek a jogkivonat-kérelemmel használt szabályzatnak. Például:
 
 ```java
 // Get Account For Policy

@@ -16,10 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 10/29/2019
 ms.author: radeltch
 ms.openlocfilehash: b41db629c5308348f632b3dc51c75822ba361c60
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77591353"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-windows-with-azure-netapp-filessmb-for-sap-applications"></a>Magas rendelkezésre állás a Windows rendszerű Azure-beli virtuális gépeken futó SAP NetWeaver számára az SAP-alkalmazások Azure NetApp Files (SMB) szolgáltatásával
@@ -147,7 +146,7 @@ Az SAP-től a következő szoftverekre van szüksége:
 
 ### <a name="install-an-ascsscs-instance-on-the-first-ascsscs-cluster-node"></a>Telepítsen egy ASCS-/SCS-példányt az első ASCS/SCS-fürtcsomóponton
 
-1. Telepítsen egy SAP ASCS/SCS-példányt az első fürtcsomóponton. Indítsa el az SAP SWPM telepítési eszközét, majd keresse meg a következőt: **termék** > **adatbázis-kezelője** > telepítés > Application Server ABAP (vagy Java) > magas rendelkezésre állású rendszer > ASCS/SCS-példány > első fürtcsomópont.  
+1. Telepítsen egy SAP ASCS/SCS-példányt az első fürtcsomóponton. Indítsa el az SAP SWPM telepítési eszközét, majd keresse meg a következőt: **termék**  >  **adatbázis-kezelője** > telepítés > Application Server ABAP (vagy Java) > magas rendelkezésre állású rendszer > ASCS/SCS-példány > első fürtcsomópont.  
 
 2. Válassza ki a **fájlmegosztás fürtöt** a SWPM-ben.  
 3. Ha a rendszer a **rendszerszintű SAP Rendszerfürt paramétereinek**megadását kéri, adja meg a korábban **fájlmegosztási állomásnévként**létrehozott Azure NetApp Files SMB-megosztás állomásnevét.  Ebben a példában az SMB-megosztás állomásneve a következő: **anfsmb-9562**. 
@@ -158,11 +157,11 @@ Az SAP-től a következő szoftverekre van szüksége:
 > [!TIP]
 > Ha az előfeltétel-ellenőrző eredményei a SWPM a swap-méret feltétele nem teljesülnek, akkor a saját számítógép>a Rendszertulajdonságok>a teljesítmény beállításai> a speciális> virtuális memória> módosítása elemre.  
 
-4. Konfiguráljon egy SAP-fürterőforrás, `SAP-SID-IP` a mintavételi portot a PowerShell használatával. Hajtsa végre ezt a konfigurációt az egyik SAP ASCS/SCS fürtcsomópontokon a mintavételi [port konfigurálása](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-installation-wsfc-shared-disk#10822f4f-32e7-4871-b63a-9b86c76ce761)című cikkben leírtak szerint.
+4. Konfiguráljon egy SAP-fürterőforrás, a mintavételi `SAP-SID-IP` portot a PowerShell használatával. Hajtsa végre ezt a konfigurációt az egyik SAP ASCS/SCS fürtcsomópontokon a mintavételi [port konfigurálása](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-installation-wsfc-shared-disk#10822f4f-32e7-4871-b63a-9b86c76ce761)című cikkben leírtak szerint.
 
 ### <a name="install-an-ascsscs-instance-on-the-second-ascsscs-cluster-node"></a>ASCS-/SCS-példány telepítése a második ASCS/SCS-fürtön
 
-1. Telepítsen egy SAP ASCS/SCS-példányt a második fürtcsomóponton. Indítsa el az SAP SWPM telepítési eszközét, majd navigáljon a **termék** > -**adatbázis-kezelő** > telepítés > Application Server ABAP (vagy Java) > magas rendelkezésre állású rendszer > ASCS/SCS-példány > további fürtcsomópont.  
+1. Telepítsen egy SAP ASCS/SCS-példányt a második fürtcsomóponton. Indítsa el az SAP SWPM telepítési eszközét, majd navigáljon a **termék**-  >  **adatbázis-kezelő** > telepítés > Application Server ABAP (vagy Java) > magas rendelkezésre állású rendszer > ASCS/SCS-példány > további fürtcsomópont.  
 
 ### <a name="install-a-dbms-instance-and-sap-application-servers"></a>Adatbázis-kezelő példány és SAP-alkalmazáskiszolgáló telepítése
 
@@ -177,9 +176,9 @@ Az SAP telepítésének befejezéséhez telepítse a következőket:
 ### <a name="fail-over-from-cluster-node-a-to-cluster-node-b-and-back"></a>Feladatátvétel a fürt "A" csomópontja és a B csomópont között
 Ebben a tesztelési forgatókönyvben a fürtcsomópont sapascs1 az A csomópontként, a csomópontok sapascs2 pedig a B csomópontként fogunk hivatkozni.
 
-1. Győződjön meg arról, hogy a fürterőforrás az A csomóponton ![fut. 1. ábra: a Windows Server feladatátvételi fürt erőforrásai az a csomóponton futnak a feladatátvételi teszt előtt.](./media/virtual-machines-shared-sap-high-availability-guide/high-availability-windows-azure-netapp-files-smb-figure-1.png)  
+1. Ellenőrizze, hogy a fürt erőforrásai futnak-e az A csomóponton. ![ 1. ábra: az A csomóponton futó Windows Server feladatátvételi fürt erőforrásai a feladatátvételi teszt előtt](./media/virtual-machines-shared-sap-high-availability-guide/high-availability-windows-azure-netapp-files-smb-figure-1.png)  
 
-2. Az A fürtcsomópont újraindítása. Az SAP-fürt erőforrásai a B csomópontra kerülnek át ![. 2. ábra: a feladatátvételi teszt után a b csomóponton futó Windows Server feladatátvételi fürt erőforrásai](./media/virtual-machines-shared-sap-high-availability-guide/high-availability-windows-azure-netapp-files-smb-figure-2.png)  
+2. Az A fürtcsomópont újraindítása. Az SAP-fürt erőforrásai a B fürt csomópontra kerülnek át. ![ 2. ábra: a feladatátvételi teszt után a B csomóponton futó Windows Server feladatátvételi fürt erőforrásai](./media/virtual-machines-shared-sap-high-availability-guide/high-availability-windows-azure-netapp-files-smb-figure-2.png)  
 
 
 ## <a name="lock-entry-test"></a>Bejegyzés zárolásának tesztelése

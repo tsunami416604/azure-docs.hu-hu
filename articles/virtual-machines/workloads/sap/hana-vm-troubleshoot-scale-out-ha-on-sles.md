@@ -13,10 +13,9 @@ ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
 ms.openlocfilehash: e93b3412785817050ac53030be9ff2172a678c06
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77617119"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>A kibővíthető magas rendelkezésre állású telepítés ellenőrzése és SAP HANA megoldása a SLES 12 SP3 rendszeren 
@@ -91,7 +90,7 @@ A következő SAP HANA hálózati javaslatok közül három alhálózat jött l�
 - 10.0.1.0/24 SAP HANA rendszer-replikáláshoz (HSR)
 - 10.0.0.0/24 minden más számára
 
-További információ a több hálózat használatával kapcsolatos SAP HANA konfigurációról: [SAP HANA Global. ini](#sap-hana-globalini).
+További információ a több hálózat használatával kapcsolatos SAP HANA konfigurációról: [SAP HANA global.ini](#sap-hana-globalini).
 
 A fürtben lévő minden virtuális gépnek három Vnic van, amelyek megfelelnek az alhálózatok számának. Linux rendszerű [virtuális gép létrehozása az Azure-ban több hálózati adapterrel][azure-linux-multiple-nics] az Azure-beli lehetséges útválasztási probléma a Linux rendszerű virtuális gépek telepítésekor. Ez a konkrét útválasztási cikk csak a több Vnic használatára vonatkozik. A problémát a SUSE alapértelmezés szerint oldja meg a SLES 12 SP3 verzióban. További információ: [multi-NIC a Cloud-netconfig a EC2 és az Azure-ban][suse-cloud-netconfig].
 
@@ -656,7 +655,7 @@ Waiting for 7 replies from the CRMd....... OK
 
 ## <a name="failover-or-takeover"></a>Feladatátvétel vagy átvétel
 
-A [Fontos megjegyzések](#important-notes)szerint a fürt feladatátvételének teszteléséhez vagy SAP HANA HSR átvételéhez nem ajánlott szabványos kecses leállítást alkalmazni. Ehelyett azt javasoljuk, hogy indítson el egy kernel-pánikot, kényszerítse az erőforrások áttelepítését, vagy esetleg állítsa le az összes hálózatot a virtuális gép operációsrendszer-szintjén. Egy másik módszer a **CRM \<-\> csomópont készenléti** parancsa. Lásd a [SUSE-dokumentumot][sles-12-ha-paper]. 
+A [Fontos megjegyzések](#important-notes)szerint a fürt feladatátvételének teszteléséhez vagy SAP HANA HSR átvételéhez nem ajánlott szabványos kecses leállítást alkalmazni. Ehelyett azt javasoljuk, hogy indítson el egy kernel-pánikot, kényszerítse az erőforrások áttelepítését, vagy esetleg állítsa le az összes hálózatot a virtuális gép operációsrendszer-szintjén. Egy másik módszer a **CRM \<node\> készenléti** parancsa. Lásd a [SUSE-dokumentumot][sles-12-ha-paper]. 
 
 A következő három minta parancs kényszerítheti a fürt feladatátvételét:
 
@@ -682,7 +681,7 @@ Emellett segít megtekinteni az SAP Python-szkriptből érkező SAP HANA tájké
 
 A szükségtelen feladatátvételek elkerülése érdekében újrapróbálkozik. A fürt csak akkor működik, ha az állapot az **OK**, a **4**. visszatérési érték, a **hiba**, az **1**. visszaadott érték változik. Ezért helyes, ha a **SAPHanaSR-showAttr** kimenete **Offline**állapotú virtuális gépet mutat be. Azonban még nincs tevékenység az elsődleges és a másodlagos váltáshoz. Nem indul el a fürt tevékenysége, amíg SAP HANA nem ad vissza hibát.
 
-Az SAP Python-szkriptet az alábbi módon figyelheti meg a SAP HANA fekvő állapotot felhasználó ** \<HANA SID\>adm** néven. Lehetséges, hogy az elérési utat módosítania kell:
+Az SAP Python-szkriptet az alábbi módon figyelheti a SAP HANA fekvő állapotának felhasználói ** \<HANA SID\> adm** -ként való meghívásával. Lehetséges, hogy az elérési utat módosítania kell:
 
 <pre><code>
 watch python /hana/shared/HSO/exe/linuxx86_64/HDB_2.00.032.00.1533114046_eeaf4723ec52ed3935ae0dc9769c9411ed73fec5/python_support/landscapeHostConfiguration.py
@@ -900,10 +899,10 @@ Sep 13 07:38:02 [4184] hso-hana-vm-s2-0       crmd:     info: pcmk_cpg_membershi
 
 
 
-## <a name="sap-hana-globalini"></a>SAP HANA Global. ini
+## <a name="sap-hana-globalini"></a>SAP HANA global.ini
 
 
-A következő részletek a SAP HANA **globális. ini** fájlból származnak a 2. fürt helyén. Ez a példa az állomásnév-feloldási bejegyzéseket mutatja be különböző hálózatok használatára SAP HANA csomópontok közötti kommunikációhoz és HSR:
+A következő részletek a SAP HANA **global.ini** fájlból származnak a (z) 2. fürtben. Ez a példa az állomásnév-feloldási bejegyzéseket mutatja be különböző hálózatok használatára SAP HANA csomópontok közötti kommunikációhoz és HSR:
 
 <pre><code>
 [communication]
@@ -945,7 +944,7 @@ listeninterface = .internal
 ## <a name="hawk"></a>Hawk
 
 A cluster megoldás egy böngésző felületét biztosítja, amely egy grafikus felhasználói felületet biztosít azon felhasználók számára, akik a menüket és a grafikát kedvelik a rendszerhéj szintjén lévő összes parancshoz.
-A böngésző felületének használatához cserélje le ** \<a\> csomópontot** egy tényleges SAP HANA csomópontra a következő URL-címben. Ezután adja meg a fürt hitelesítő adatait (felhasználói **fürt**):
+A böngésző felületének használatához cserélje le a-t **\<node\>** egy tényleges SAP HANA csomópontra a következő URL-címben. Ezután adja meg a fürt hitelesítő adatait (felhasználói **fürt**):
 
 <pre><code>
 https://&ltnode&gt:7630

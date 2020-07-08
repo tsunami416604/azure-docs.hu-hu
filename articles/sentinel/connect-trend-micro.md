@@ -15,10 +15,9 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: a25d76b4b8a6f516de70604146bd1b236ba3ca1e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77588025"
 ---
 # <a name="connect-trend-micro-deep-security"></a>A Trend Micro Deep Security összekötése
@@ -32,7 +31,7 @@ A Trend Micro Deep Security összekötővel könnyedén csatlakoztathatja a mél
 
 ## <a name="connect-azure-sentinel-to-trend-micro-deep-security"></a>Az Azure Sentinel összekötése a Trend Micro Deep Security szolgáltatással
 
-1. A Azure Portal navigáljon az **Azure Sentinel** > -**adatösszekötők területére** , majd válassza ki a **Trend Micro Deep Security** -összekötőt.
+1. A Azure Portal navigáljon az **Azure Sentinel**-  >  **adatösszekötők területére** , majd válassza ki a **Trend Micro Deep Security** -összekötőt.
 
 2. Válassza az **összekötő megnyitása lapot**.
 

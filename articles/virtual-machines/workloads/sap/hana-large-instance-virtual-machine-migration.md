@@ -14,10 +14,9 @@ ms.date: 02/11/2020
 ms.author: bentrin
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: fd1267711871b3e55f1a6229e46ae27b360322f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77617036"
 ---
 # <a name="sap-hana-on-azure-large-instance-migration-to-azure-virtual-machines"></a>SAP HANA Azure-beli nagyméretű példányok áttelepítése az Azure-ba Virtual Machines
@@ -49,21 +48,21 @@ A HLI-ügyfelekkel közös üzembe helyezési modellek a következő táblázatb
 
 | Forgatókönyv azonosítója | HLI forgatókönyv | Áttelepítés a Verbatim virtuális gépre? | Megjegyzés |
 | --- | --- | --- | --- |
-| 1 | [Egyetlen csomópont egyetlen SID-vel](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-one-sid) | Igen | - |
-| 2 | [Egyetlen csomópont a MCOS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-mcos) | Igen | - |
-| 3 | [Önálló csomópont a Storage-replikációt használó DR használatával](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-dr-using-storage-replication) | Nem | A Storage-replikáció nem érhető el az Azure Virtual platformon, és nem változtathatja meg a jelenlegi DR-megoldást HSR vagy biztonsági mentésre vagy visszaállításra |
-| 4 | [Egyetlen csomópont DR (többcélú) tároló-replikáció használatával](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-dr-multipurpose-using-storage-replication) | Nem | A Storage-replikáció nem érhető el az Azure Virtual platformon, és nem változtathatja meg a jelenlegi DR-megoldást HSR vagy biztonsági mentésre vagy visszaállításra |
-| 5 | [HSR és STONITH a magas rendelkezésre állás érdekében](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#hsr-with-stonith-for-high-availability) | Igen | Nincsenek előre konfigurált SBD a cél virtuális gépekhez.  Válasszon ki és helyezzen üzembe egy STONITH-megoldást.  Lehetséges beállítások: Azure vívó Agent ( [RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker), [SLES](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker)), SBD |
-| 6 | [HA a HSR, a DR és a Storage replikációja](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#high-availability-with-hsr-and-dr-with-storage-replication) | Nem | Cserélje le a DR HSR vagy a Backup/Restore szolgáltatáshoz tartozó tárolási replikációt |
-| 7 | [Gazdagép automatikus feladatátvétele (1 + 1)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#host-auto-failover-11) | Igen | ANF használata megosztott tárolóhoz Azure-beli virtuális gépekkel |
-| 8 | [Kibővíthető készenléti állapottal](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-with-standby) | Igen | BW/4HANA a M128s, a M416s, a M416ms virtuális gépek és a ANF használatával |
-| 9 | [Vertikális felskálázás készenlét nélkül](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-without-standby) | Igen | BW/4HANA a M128s, a M416s és a M416ms virtuális gépekkel (a Storage-ANF használatával vagy anélkül) |
-| 10 | [Méretezés a DR használatával a Storage replikálásával](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-with-dr-using-storage-replication) | Nem | Cserélje le a DR HSR vagy a Backup/Restore szolgáltatáshoz tartozó tárolási replikációt |
-| 11 | [Egyetlen csomópont a DR használatával HSR](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-dr-using-hsr) | Igen | - |
-| 12 | [Egyetlen csomópontos HSR a DR (Cost optimalizált)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-hsr-to-dr-cost-optimized) | Igen | - |
-| 13 | [HA és DR a HSR](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#high-availability-and-disaster-recovery-with-hsr) | Igen | - |
-| 14 | [HA és DR a HSR (Cost optimalizált)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#high-availability-and-disaster-recovery-with-hsr-cost-optimized) | Igen | - |
-| 15 | [Vertikális felskálázás DR használatával HSR](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-with-dr-using-hsr) | Igen | BW/4HANA a M128s. M416s, M416ms virtuális gépek (ANF használatával vagy anélkül) |
+| 1 | [Egyetlen csomópont egyetlen SID-vel](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-one-sid) | Yes | - |
+| 2 | [Egyetlen csomópont a MCOS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-mcos) | Yes | - |
+| 3 | [Önálló csomópont a Storage-replikációt használó DR használatával](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-dr-using-storage-replication) | No | A Storage-replikáció nem érhető el az Azure Virtual platformon, és nem változtathatja meg a jelenlegi DR-megoldást HSR vagy biztonsági mentésre vagy visszaállításra |
+| 4 | [Egyetlen csomópont DR (többcélú) tároló-replikáció használatával](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-dr-multipurpose-using-storage-replication) | No | A Storage-replikáció nem érhető el az Azure Virtual platformon, és nem változtathatja meg a jelenlegi DR-megoldást HSR vagy biztonsági mentésre vagy visszaállításra |
+| 5 | [HSR és STONITH a magas rendelkezésre állás érdekében](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#hsr-with-stonith-for-high-availability) | Yes | Nincsenek előre konfigurált SBD a cél virtuális gépekhez.  Válasszon ki és helyezzen üzembe egy STONITH-megoldást.  Lehetséges beállítások: Azure vívó Agent ( [RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker), [SLES](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker)), SBD |
+| 6 | [HA a HSR, a DR és a Storage replikációja](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#high-availability-with-hsr-and-dr-with-storage-replication) | No | Cserélje le a DR HSR vagy a Backup/Restore szolgáltatáshoz tartozó tárolási replikációt |
+| 7 | [Gazdagép automatikus feladatátvétele (1 + 1)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#host-auto-failover-11) | Yes | ANF használata megosztott tárolóhoz Azure-beli virtuális gépekkel |
+| 8 | [Kibővíthető készenléti állapottal](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-with-standby) | Yes | BW/4HANA a M128s, a M416s, a M416ms virtuális gépek és a ANF használatával |
+| 9 | [Vertikális felskálázás készenlét nélkül](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-without-standby) | Yes | BW/4HANA a M128s, a M416s és a M416ms virtuális gépekkel (a Storage-ANF használatával vagy anélkül) |
+| 10 | [Méretezés a DR használatával a Storage replikálásával](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-with-dr-using-storage-replication) | No | Cserélje le a DR HSR vagy a Backup/Restore szolgáltatáshoz tartozó tárolási replikációt |
+| 11 | [Egyetlen csomópont a DR használatával HSR](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-dr-using-hsr) | Yes | - |
+| 12 | [Egyetlen csomópontos HSR a DR (Cost optimalizált)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-hsr-to-dr-cost-optimized) | Yes | - |
+| 13 | [HA és DR a HSR](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#high-availability-and-disaster-recovery-with-hsr) | Yes | - |
+| 14 | [HA és DR a HSR (Cost optimalizált)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#high-availability-and-disaster-recovery-with-hsr-cost-optimized) | Yes | - |
+| 15 | [Vertikális felskálázás DR használatával HSR](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-with-dr-using-hsr) | Yes | BW/4HANA a M128s. M416s, M416ms virtuális gépek (ANF használatával vagy anélkül) |
 
 
 ## <a name="source-hli-planning"></a>Forrás (HLI) tervezése

@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: fa8b2da683d68a337df38e13726f22c5af43540a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77565927"
 ---
 # <a name="set-up-private-cloud-as-a-disaster-recovery-target-with-vmware-site-recovery-manager"></a>Saját felhő beállítása vész-helyreállítási célként a VMware Site Recovery Managerrel
@@ -146,7 +145,7 @@ A vSphere-replikáció 6,5-es verziójának részletes telepítési utasításai
 
 Jelentkezzen be a vCenter-be a cloudowner felhasználói hitelesítő adataival a CloudSimple-portálra vonatkozó jogosultságok kiterjesztését követően.
 
-Hozzon létre egy új `srm-soln-admin`felhasználót, a vCenter-ben, és adja hozzá a rendszergazdák csoporthoz a vCenter-ben.
+Hozzon létre egy új felhasználót, `srm-soln-admin` a vCenter-ben, és adja hozzá a rendszergazdák csoporthoz a vCenter-ben.
 Jelentkezzen ki a vCenter cloudowner-felhasználóként, és jelentkezzen be az *SRM-soln-admin* felhasználóként.
 
 #### <a name="cloudsimple-portal-configure-firewall-rules-for-vra"></a>CloudSimple-portál: a vRA vonatkozó tűzfalszabályok konfigurálása
@@ -219,7 +218,7 @@ Teljes körűen szabályozhatja a vSphere-replikációt és az SRM-szoftvereket 
 
  A [Array-alapú replikáció és a vSphere replikációs technológiák egyszerre is használhatók az SRM](https://blogs.vmware.com/virtualblocks/2017/06/22/srm-array-based-replication-vs-vsphere-replication) szolgáltatással együtt. Ezeket azonban a virtuális gépek elkülönített készletére kell alkalmazni (az adott virtuális gép a tömb alapú replikálás vagy a vSphere replikálás, de nem mindkettő) számára is védhető. Emellett a CloudSimple-hely több védett helyhez is konfigurálható helyreállítási helyként. További információ a többhelyes konfigurációkról: [SRM többhelyes beállításai](https://blogs.vmware.com/virtualblocks/2016/07/28/srm-multisite/) .
 
-## <a name="references"></a>Referencia
+## <a name="references"></a>Hivatkozások
 
 * [A VMware Site Recovery Manager dokumentációja](https://docs.vmware.com/en/Site-Recovery-Manager/index.html)
 * [A Site Recovery Manager 6,5 működési korlátai](https://kb.vmware.com/s/article/2147110)

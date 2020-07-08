@@ -17,10 +17,9 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a393c1ac09283f1570908cea72750ed5ae28f81e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77617329"
 ---
 # <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>Az SAP NetWeaver magas rendelkezésre állásának telepítése Windows feladatátvevő fürtön és fájlmegosztás az Azure-beli SAP ASCS/SCS-példányok esetén
@@ -231,13 +230,13 @@ A különböző adatbázis-kezelői szolgáltatások az Azure-ban az ilyen típu
 
 Hozza létre a következő kötet-és fájlmegosztást a SOFS-fürtön:
 
-* SAP GLOBALHOST- `C:\ClusterStorage\Volume1\usr\sap\<SID>\SYS\` fájl szerkezete a SOFS-fürt megosztott kötetén (CSV)
+* SAP GLOBALHOST `C:\ClusterStorage\Volume1\usr\sap\<SID>\SYS\` -fájl szerkezete a SOFS-fürt megosztott kötetén (CSV)
 
 * SAPMNT-fájlmegosztás
 
 * A SAPMNT-fájlmegosztás és-mappa biztonságának beállítása a teljes hozzáférés-vezérléssel:
-    * A \<tartomány> \ SAP_\<SID>_GlobalAdmin felhasználói csoport
-    * Az SAP ASCS/SCS fürtcsomópont számítógép-objektumok \<tartománya> \clusternode1 $ \<és a tartomány> \clusternode2 $
+    * A \<DOMAIN> \ SAP_ \<SID> _GlobalAdmin felhasználói csoport
+    * Az SAP ASCS/SCS-fürt csomópontjának számítógép-objektumai a \<DOMAIN> $ és a \<DOMAIN> \ClusterNode2 $ \ClusterNode1
 
 Ha egy CSV-kötetet tükrözött rugalmassággal szeretne létrehozni, hajtsa végre a következő PowerShell-parancsmagot az egyik SOFS-fürt csomópontjain:
 
@@ -299,7 +298,7 @@ Hozzon létre egy SAP ASCS/SCS-fürt hálózati nevét (például **PR1-ASCS [10
 
 Telepítsen egy SAP ASCS/SCS-példányt az első fürtcsomóponton. A példány telepítéséhez az SAP SWPM telepítési eszközében válassza a következőt:
 
-**\<Termék>**  >   >  **Installation** >  >  >  **Java****First cluster node****Application Server ABAP** ** \<adatbázis-kezelő>** telepítő Application Server ABAP (vagy Java) > **magas rendelkezésre állású rendszer****ASCS/SCS instance**első fürtcsomópont.
+**\<Product>** > **\<DBMS>** > **Telepítés**  >  Az **Application Server ABAP** (vagy **Java**) > **magas rendelkezésre állású rendszer-**  >  **ASCS/SCS-példányok**  >  **első fürtcsomópont**.
 
 ### <a name="add-a-probe-port"></a>Mintavételi Port hozzáadása
 
@@ -309,12 +308,12 @@ Konfigurálja az SAP-fürt erőforrását, az SAP-SID-IP mintavételi portot a P
 
 Telepítsen egy SAP ASCS/SCS-példányt a második fürtcsomóponton. A példány telepítéséhez az SAP SWPM telepítési eszközében válassza a következőt:
 
-**\<Termék>**  >   >  **Installation** >  >  >  **Java****Additional cluster node****Application Server ABAP** ** \<adatbázis-kezelő>** telepítő Application Server ABAP (vagy Java) > **magas rendelkezésre állású rendszer****ASCS/SCS instance**további fürtcsomópont.
+**\<Product>** > **\<DBMS>** > **Telepítés**  >  Az **Application Server ABAP** (vagy **Java**) > **magas rendelkezésre állású rendszer-**  >  **ASCS/SCS-példány**  >  **további fürtcsomópont**.
 
 
 ## <a name="update-the-sap-ascsscs-instance-profile"></a>Az SAP ASCS/SCS-példány profiljának frissítése
 
-Frissítse a paramétereket az SAP ASCS/SCS instance profil \<SID>_ASCS/SCS\<Nr>_ \<Host>.
+Frissítse a paramétereket az SAP ASCS/SCS instance Profile \<SID> _ASCS/ \<Nr> SCS_-ben \<Host> .
 
 
 | Paraméter neve | Paraméter értéke |
@@ -323,7 +322,7 @@ Frissítse a paramétereket az SAP ASCS/SCS instance profil \<SID>_ASCS/SCS\<Nr>
 | enque/encni/set_so_keepalive  | **igaz** |
 | szolgáltatás/ha_check_node | **1** |
 
-Indítsa újra az SAP ASCS/SCS-példányt. Állítsa `KeepAlive` be a paramétereket mind az SAP-ASCS, mind az SCS-fürtcsomópontok esetében, és az [SAP ASCS/SCS-példány fürtcsomópontok esetében adja meg a beállításjegyzékbeli bejegyzéseket][high-availability-guide]. 
+Indítsa újra az SAP ASCS/SCS-példányt. Állítsa be a `KeepAlive` paramétereket mind az SAP-ASCS, mind az SCS-fürtcsomópontok esetében, és az [SAP ASCS/SCS-példány fürtcsomópontok esetében adja meg a beállításjegyzékbeli bejegyzéseket][high-availability-guide]. 
 
 ## <a name="install-a-dbms-instance-and-sap-application-servers"></a>Adatbázis-kezelő példány és SAP-alkalmazáskiszolgáló telepítése
 

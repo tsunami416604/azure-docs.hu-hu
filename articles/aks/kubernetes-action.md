@@ -7,17 +7,16 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: atulmal
 ms.openlocfilehash: 5ee8ee4d2c9e225d82e58daffeef9e5f09e43e6b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77595365"
 ---
 # <a name="github-actions-for-deploying-to-kubernetes-service"></a>A Kubernetes szolgáltatás üzembe helyezéséhez szükséges GitHub-műveletek
 
 A [GitHub-műveletek](https://help.github.com/en/articles/about-github-actions) révén rugalmasan hozhat létre automatizált szoftverfejlesztési életciklus-munkafolyamatot. A Kubernetes művelet [azure/aks-set-context@v1](https://github.com/Azure/aks-set-context) megkönnyíti az Azure Kubernetes Service-fürtök üzembe helyezését. A művelet beállítja a cél AK-alapú fürt kontextusát, amelyet más műveletek, például az [Azure/k8s-Deploy](https://github.com/Azure/k8s-deploy/tree/master), az [Azure/k8s-Create-Secret](https://github.com/Azure/k8s-create-secret/tree/master) stb. használhatnak, vagy futtathatnak bármilyen kubectl-parancsot.
 
-A munkafolyamatot egy YAML-(. YML) fájl határozza meg `/.github/workflows/` a tárház elérési útjában. Ez a definíció a munkafolyamatot alkotó különböző lépéseket és paramétereket tartalmazza.
+A munkafolyamatot egy YAML-(. YML) fájl határozza meg a `/.github/workflows/` tárház elérési útjában. Ez a definíció a munkafolyamatot alkotó különböző lépéseket és paramétereket tartalmazza.
 
 Az AK-t tartalmazó munkafolyamatok esetében a fájl három szakaszt tartalmaz:
 
@@ -58,7 +57,7 @@ A titkok konfigurálásához kövesse a következő lépéseket:
 
     ![titkok](media/kubernetes-action/secrets.png)
 
-2. Illessze be a fenti `az cli` parancs tartalmát a titkos változó értékére. Például: `AZURE_CREDENTIALS`.
+2. Illessze be a fenti parancs tartalmát a `az cli` titkos változó értékére. Például: `AZURE_CREDENTIALS`.
 
 3. Hasonlóképpen adja meg a következő további titkokat a tároló beállításjegyzékbeli hitelesítő adataihoz, és állítsa be őket a Docker bejelentkezési műveletben. 
 
@@ -71,7 +70,7 @@ A titkok konfigurálásához kövesse a következő lépéseket:
 
 ##  <a name="build-a-container-image-and-deploy-to-azure-kubernetes-service-cluster"></a>Tároló lemezképének létrehozása és üzembe helyezése az Azure Kubernetes Service-fürtön
 
-A tároló lemezképek felépítésének és leküldésének `Azure/docker-login@v1` lépései a művelet használatával hajthatók végre. Ha a Container-lemezképet AK-ba szeretné telepíteni, akkor a `Azure/k8s-deploy@v1` műveletet kell használnia. Ehhez a művelethez öt paraméter tartozik:
+A tároló lemezképek felépítésének és leküldésének lépései a művelet használatával hajthatók végre `Azure/docker-login@v1` . Ha a Container-lemezképet AK-ba szeretné telepíteni, akkor a műveletet kell használnia `Azure/k8s-deploy@v1` . Ehhez a művelethez öt paraméter tartozik:
 
 | **Paraméter**  | **Magyarázat**  |
 |---------|---------|

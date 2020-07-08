@@ -7,19 +7,18 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.openlocfilehash: a12738f5de783c8a34718b8d9cb4bbf54f230589
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77201271"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>PostgreSQL-bővítmények Azure Database for PostgreSQL – egyetlen kiszolgáló
 A PostgreSQL lehetőséget nyújt az adatbázis funkcióinak kiterjesztésére a bővítmények használatával. A bővítmények több kapcsolódó SQL-objektumot egyesítenek egyetlen csomagban, amely egyetlen paranccsal tölthető be vagy távolítható el az adatbázisból. Az adatbázisba való betöltés után a bővítmények a beépített funkciókhoz hasonlóan működnek.
 
 ## <a name="how-to-use-postgresql-extensions"></a>A PostgreSQL-bővítmények használata
-A PostgreSQL-bővítményeket a használatuk előtt telepíteni kell az adatbázisba. Egy adott bővítmény telepítéséhez futtassa a [bővítmény](https://www.postgresql.org/docs/current/sql-createextension.html) létrehozása parancsot a psql eszközből a csomagolt objektumok adatbázisba való betöltéséhez.
+A PostgreSQL-bővítményeket a használatuk előtt telepíteni kell az adatbázisba. Egy adott bővítmény telepítéséhez futtassa a [bővítmény létrehozása](https://www.postgresql.org/docs/current/sql-createextension.html)   parancsot a psql eszközből a csomagolt objektumok adatbázisba való betöltéséhez.
 
-A Azure Database for PostgreSQL a következő listában szereplő kulcs-kiterjesztések részhalmazát támogatja. Ezek az információk a futtatásával `SELECT * FROM pg_available_extensions;`is elérhetők. A felsorolt bővítmények nem támogatottak. Nem hozhat létre saját bővítményt Azure Database for PostgreSQLban.
+A Azure Database for PostgreSQL a következő listában szereplő kulcs-kiterjesztések részhalmazát támogatja. Ezek az információk a futtatásával is elérhetők `SELECT * FROM pg_available_extensions;` . A felsorolt bővítmények nem támogatottak. Nem hozhat létre saját bővítményt Azure Database for PostgreSQLban.
 
 ## <a name="postgres-11-extensions"></a>Postgres 11 bővítmény
 
@@ -205,9 +204,9 @@ A következő bővítmények érhetők el a 9,5-es postgres-verzióval rendelkez
 
 ## <a name="pg_stat_statements"></a>pg_stat_statements
 A [pg_stat_statements bővítmény](https://www.postgresql.org/docs/current/pgstatstatements.html) minden Azure Database for PostgreSQL-kiszolgálón előre be van töltve, így biztosíthatja az SQL-utasítások végrehajtási statisztikáinak nyomon követését.
-A beállítás `pg_stat_statements.track`, amely azt szabályozza, hogy a bővítmény mely utasításokat számítja ki, az `top`alapértelmezett érték, ami azt jelenti, hogy az ügyfelek által közvetlenül kiadott összes utasítás nyomon van követve. A két másik követési szint `none` a `all`és a. Ez a beállítás kiszolgálói paraméterként konfigurálható a [Azure Portalon](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-portal) vagy az [Azure CLI](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-cli)-n keresztül.
+A beállítás `pg_stat_statements.track` , amely azt szabályozza, hogy a bővítmény mely utasításokat számítja ki, az alapértelmezett érték `top` , ami azt jelenti, hogy az ügyfelek által közvetlenül kiadott összes utasítás nyomon van követve. A két másik követési szint a `none` és a `all` . Ez a beállítás kiszolgálói paraméterként konfigurálható a [Azure Portalon](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-portal) vagy az [Azure CLI](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-cli)-n keresztül.
 
-Az egyes SQL-utasítások beolvasása során kompromisszumot pg_stat_statements a lekérdezés végrehajtási információi, valamint a kiszolgáló teljesítményére gyakorolt hatás. Ha nem használja aktívan a pg_stat_statements bővítményt, javasoljuk, hogy állítsa `pg_stat_statements.track` a `none`következőre:. Vegye figyelembe, hogy egyes harmadik féltől származó figyelési szolgáltatások felhasználhatják a lekérdezési teljesítménnyel kapcsolatos megállapítások kézbesítésének pg_stat_statementsét, így meggyőződhet arról, hogy ez a helyzet-e az Ön számára.
+Az egyes SQL-utasítások beolvasása során kompromisszumot pg_stat_statements a lekérdezés végrehajtási információi, valamint a kiszolgáló teljesítményére gyakorolt hatás. Ha nem használja aktívan a pg_stat_statements bővítményt, javasoljuk, hogy állítsa a következőre: `pg_stat_statements.track` `none` . Vegye figyelembe, hogy egyes harmadik féltől származó figyelési szolgáltatások felhasználhatják a lekérdezési teljesítménnyel kapcsolatos megállapítások kézbesítésének pg_stat_statementsét, így meggyőződhet arról, hogy ez a helyzet-e az Ön számára.
 
 ## <a name="dblink-and-postgres_fdw"></a>dblink és postgres_fdw
 a [dblink](https://www.postgresql.org/docs/current/contrib-dblink-function.html) és a [postgres_fdw](https://www.postgresql.org/docs/current/postgres-fdw.html) lehetővé teszik, hogy az egyik PostgreSQL-kiszolgálóról egy másikra, vagy ugyanabban a kiszolgálón található másik adatbázishoz kapcsolódjon. A fogadó kiszolgálónak engedélyeznie kell a kapcsolódást a küldő kiszolgálóról a tűzfalon keresztül. Ha ezekkel a bővítményekkel csatlakozik Azure Database for PostgreSQL kiszolgálók között, ezt az "Azure-szolgáltatásokhoz való hozzáférés engedélyezése" beállítással teheti meg. Erre akkor is szükség van, ha a bővítmények használatával szeretne visszakapcsolni ugyanarra a kiszolgálóra. Az "Azure-szolgáltatásokhoz való hozzáférés engedélyezése" beállítás megtalálhatók a postgres-kiszolgáló Azure Portal lapján, a kapcsolat biztonsága lehetőségnél. Az "Azure-szolgáltatásokhoz való hozzáférés engedélyezése" beállítás bekapcsolásával az összes Azure-beli IP-címet az engedélyezési listán helyezheti el.
@@ -215,7 +214,7 @@ a [dblink](https://www.postgresql.org/docs/current/contrib-dblink-function.html)
 A Azure Database for PostgreSQL kimenő kapcsolatai jelenleg nem támogatottak, kivéve a más Azure Database for PostgreSQL kiszolgálókhoz való kapcsolódást.
 
 ## <a name="uuid"></a>uuid
-Ha az [UUID-ossp bővítményből](https://www.postgresql.org/docs/current/uuid-ossp.html)tervezi használni a használatát, érdemes lehet összehasonlítást `gen_random_uuid()` alkalmazni `uuid_generate_v4()` a [pgcrypto-bővítménnyel](https://www.postgresql.org/docs/current/pgcrypto.html) a teljesítménnyel kapcsolatos előnyökhöz.
+Ha `uuid_generate_v4()` az [UUID-ossp bővítményből](https://www.postgresql.org/docs/current/uuid-ossp.html)tervezi használni a használatát, érdemes lehet összehasonlítást alkalmazni `gen_random_uuid()` a [pgcrypto-bővítménnyel](https://www.postgresql.org/docs/current/pgcrypto.html) a teljesítménnyel kapcsolatos előnyökhöz.
 
 ## <a name="pgaudit"></a>pgAudit
 Az [pgAudit bővítmény](https://github.com/pgaudit/pgaudit/blob/master/README.md) munkamenet-és objektum-naplózási naplózást biztosít. Ha meg szeretné tudni, hogyan használhatja ezt a bővítményt Azure Database for PostgreSQLban, tekintse meg a [naplózási fogalmakat ismertető cikket](concepts-audit.md). 
@@ -258,7 +257,7 @@ CREATE EXTENSION IF NOT EXISTS timescaledb CASCADE;
 Most már létrehozhat egy TimescaleDB-hypertable [a semmiből](https://docs.timescale.com/getting-started/creating-hypertables) , vagy áttelepítheti a [meglévő idősoros adatok a PostgreSQL-ben](https://docs.timescale.com/getting-started/migrating-data).
 
 ### <a name="restoring-a-timescale-database"></a>Időskála-adatbázis visszaállítása
-Ha pg_dump és pg_restore használatával kívánja visszaállítani az időskála-adatbázist, a céladatbázis két segítő eljárását kell futtatnia `timescaledb_pre_restore()` : `timescaledb_post restore()`és.
+Ha pg_dump és pg_restore használatával kívánja visszaállítani az időskála-adatbázist, a céladatbázis két segítő eljárását kell futtatnia: `timescaledb_pre_restore()` és `timescaledb_post restore()` .
 
 Először készítse elő a céladatbázis-adatbázist:
 

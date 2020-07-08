@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.openlocfilehash: 752529454a5b6293d9cbfdf8378b46947aed5a0e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77564644"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>Az Azure Time Series Insights integrálása a távoli monitorozással
@@ -51,7 +50,7 @@ Ezután telepítse a Time Series Insightst további erőforrásként a távoli f
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-1. Válassza **az erőforrás** > **létrehozása eszközök internetes hálózata** > **Time Series Insights**lehetőséget.
+1. Válassza **az erőforrás létrehozása**  >  **eszközök internetes hálózata**  >  **Time Series Insights**lehetőséget.
 
     ![Új Time Series Insights](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/new-time-series-insights.png)
 
@@ -68,7 +67,7 @@ Ezután telepítse a Time Series Insightst további erőforrásként a távoli f
 
     ![Time Series Insights létrehozása](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/new-time-series-insights-create.png)
 
-1. Kattintson a **Létrehozás**gombra. A környezet létrehozása eltarthat egy kis ideig.
+1. Kattintson a **Létrehozás** lehetőségre. A környezet létrehozása eltarthat egy kis ideig.
 
 ## <a name="create-event-source"></a>Eseményforrás létrehozása
 
@@ -101,7 +100,7 @@ Hozzon létre egy új eseményforrás az IoT hubhoz való kapcsolódáshoz. Győ
 
     ![Eseményforrás létrehozása](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/time-series-insights-event-source-create.png)
 
-1. Kattintson a **Létrehozás**gombra.
+1. Kattintson a **Létrehozás** lehetőségre.
 
 ## <a name="configure-the-data-access-policy"></a>Az adatelérési házirend konfigurálása
 
@@ -205,7 +204,7 @@ A Time Series Insights integráció befejezéséhez konfigurálnia kell az üzem
 
 ### <a name="basic-deployments"></a>Alapszintű központi telepítések
 
-Konfigurálja az üzemelő `basic` példányok környezetét a frissített Service-szolgáltatásokhoz.
+Konfigurálja az üzemelő példányok környezetét `basic` a frissített Service-szolgáltatásokhoz.
 
 1. A Azure Portal kattintson a bal oldali panel **Azure Active Directory** fülére.
 
@@ -213,15 +212,15 @@ Konfigurálja az üzemelő `basic` példányok környezetét a frissített Servi
 
 1. Keresse meg a **ContosoRM** alkalmazást, és kattintson rá.
 
-1. Navigáljon a **Beállítások** > **kulcsaihoz** , és hozzon létre egy új kulcsot az alkalmazáshoz. Ügyeljen arra, hogy a kulcs értékét a biztonságos helyre másolja.
+1. Navigáljon a **Beállítások**  >  **kulcsaihoz** , és hozzon létre egy új kulcsot az alkalmazáshoz. Ügyeljen arra, hogy a kulcs értékét a biztonságos helyre másolja.
 
 1. A legfrissebb címkével lekérheti a GitHub-tárház [legújabb YAML-fájlját](https://github.com/Azure/pcs-cli/tree/5a9b4e0dbe313172eff19236e54a4d461d4f3e51/solutions/remotemonitoring/single-vm) . 
 
 1. SSH-t a virtuális gépre az [ssh-kulcsok létrehozása és használata](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows)című témakör lépéseit követve.
 
-1. Csatlakozás után írja be `cd /app`a következőt:.
+1. Csatlakozás után írja be a következőt: `cd /app` .
 
-1. Adja hozzá az alábbi környezeti változókat a Docker-összeállítás YAML-fájljában található minden `env-setup` egyes Service-hez, és a parancsfájlt a virtuális gépen:
+1. Adja hozzá az alábbi környezeti változókat a Docker-összeállítás YAML-fájljában található minden egyes Service-hez, és a `env-setup` parancsfájlt a virtuális gépen:
 
     ```sh
     PCS_TELEMETRY_STORAGE_TYPE=tsi
@@ -233,9 +232,9 @@ Konfigurálja az üzemelő `basic` példányok környezetét a frissített Servi
 
 1. A fenti környezeti változók hozzáadásával navigáljon a **telemetria szolgáltatáshoz** , és szerkessze a Docker-összeállítási fájlt is.
 
-1. Navigáljon a **ASA Manager szolgáltatáshoz** , és szerkessze a Docker- `PCS_TELEMETRY_STORAGE_TYPE`összeállítás fájlt hozzáadásával.
+1. Navigáljon a **ASA Manager szolgáltatáshoz** , és szerkessze a Docker-összeállítás fájlt hozzáadásával `PCS_TELEMETRY_STORAGE_TYPE` .
 
-1. Indítsa újra a Docker- `sudo ./start.sh` tárolókat a használatával a virtuális gépről.
+1. Indítsa újra a Docker-tárolókat `sudo ./start.sh` a használatával a virtuális gépről.
 
 > [!NOTE]
 > A környezeti változók fenti konfigurációja a távoli figyelési verziók esetében érvényes a 1.0.2 előtt
@@ -244,7 +243,7 @@ Konfigurálja az üzemelő `basic` példányok környezetét a frissített Servi
 
 Konfigurálja az üzemelő `standard` példány környezetét a fenti frissített Micro Services-szolgáltatásokhoz
 
-1. A parancssorban futtassa `kubectl proxy`a parancsot. További információ: [hozzáférés a KUBERNETES API](https://kubernetes.io/docs/tasks/access-kubernetes-api/http-proxy-access-api/#using-kubectl-to-start-a-proxy-server)-hoz.
+1. A parancssorban futtassa a parancsot `kubectl proxy` . További információ: [hozzáférés a KUBERNETES API](https://kubernetes.io/docs/tasks/access-kubernetes-api/http-proxy-access-api/#using-kubectl-to-start-a-proxy-server)-hoz.
 
 1. Nyissa meg a Kubernetes felügyeleti konzolt.
 

@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 02/05/2020
 ms.author: Zhchia
 ms.openlocfilehash: 119690b9046821ab538d879e1209c6ef77277370
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77370680"
 ---
 # <a name="tutorial-configure-purecloud-by-genesys-for-automatic-user-provisioning"></a>Oktatóanyag: a PureCloud konfigurálása a Genesys-ben a felhasználók automatikus kiépítési felállításához
@@ -90,7 +89,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Kiépítés lap](common/provisioning-automatic.png)
 
-5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a PureCloud a Genesys API URL-cím és a OAuth-jogkivonat alapján a **bérlői URL** -cím és a **titkos jogkivonat** mezőiben. Az API URL-címe strukturálva lesz `{{API Url}}/api/v2/scim/v2`, a PureCloud-régió API URL-címének használatával a [PureCloud fejlesztői központból](https://developer.mypurecloud.com/api/rest/index.html). Kattintson a kapcsolat tesztelése elemre annak **ellenőrzéséhez** , hogy az Azure ad tud-e csatlakozni a PureCloud-hez Genesys. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Genesys-fiók PureCloud rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
+5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a PureCloud a Genesys API URL-cím és a OAuth-jogkivonat alapján a **bérlői URL** -cím és a **titkos jogkivonat** mezőiben. Az API URL-címe strukturálva lesz `{{API Url}}/api/v2/scim/v2` , a PureCloud-régió API URL-címének használatával a [PureCloud fejlesztői központból](https://developer.mypurecloud.com/api/rest/index.html). Kattintson a kapcsolat tesztelése elemre annak **ellenőrzéséhez** , hogy az Azure ad tud-e csatlakozni a PureCloud-hez Genesys. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Genesys-fiók PureCloud rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
     ![kiépítési](./media/purecloud-by-genesys-provisioning-tutorial/provisioning.png)
 
@@ -114,7 +113,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
      |phoneNumbers [type EQ "Mobile"]. Value|Sztring|
      |phoneNumbers [type EQ "work"]. Value|Sztring|
      |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: felhasználó: részleg|Sztring|
-     |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: User: Manager|Referencia|
+     |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: User: Manager|Hivatkozás|
 
 10. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása lehetőséget, hogy a Genesys PureCloud**.
 
@@ -124,7 +123,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
       |---|---|
       |displayName|Sztring|
       |externalId|Sztring|
-      |tagok|Referencia|
+      |tagok|Hivatkozás|
 
 12. A hatóköri szűrők konfigurálásához tekintse meg az alábbi utasításokat a [hatókör szűrője oktatóanyagban](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
@@ -149,7 +148,7 @@ Miután konfigurálta az üzembe helyezést, a következő erőforrásokkal figy
 * Ellenőrizze a [folyamatjelző sáv](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) állapotát a kiépítési ciklus állapotának megtekintéséhez és a Befejezés befejezéséhez.
 * Ha úgy tűnik, hogy a kiépítési konfiguráció sérült állapotban van, az alkalmazás Karanténba kerül. További információ a karanténba [helyezett állapotokról](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

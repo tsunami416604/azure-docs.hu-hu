@@ -14,10 +14,9 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 854fb4649f8c1113f20abe5807dd0ce473ba6ee3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77368065"
 ---
 # <a name="what-is-the-azure-active-directory-architecture"></a>Mi a Azure Active Directory architektúra?
@@ -79,7 +78,7 @@ Az olvasási műveletek (amelyek száma nagyságrendekkel meghaladja az írások
 
 Az írás a tartósan előtt legalább két adatközponthoz van véglegesítve. Ez először véglegesíti az írást az elsődlegesen, majd azonnal replikálja az írást legalább egy másik adatközpontba. Ez az írási művelet biztosítja, hogy az elsődlegesként szolgáló adatközpont potenciális katasztrofális elvesztése ne okozza az adatvesztést.
 
-Az Azure AD egy nulla [helyreállítási időre vonatkozó célkitűzést (RTO)](https://en.wikipedia.org/wiki/Recovery_time_objective) tart fenn, hogy ne veszítse el a feladatátvételsel kapcsolatos adatvesztést. Az érintett műveletek közé tartoznak az alábbiak:
+Az Azure AD egy nulla [helyreállítási időre vonatkozó célkitűzést (RTO)](https://en.wikipedia.org/wiki/Recovery_time_objective) tart fenn, hogy ne veszítse el a feladatátvételsel kapcsolatos adatvesztést. Ide tartoznak az alábbiak:
 
 * Jogkivonat-kiállítási és könyvtár-olvasások
 * Csak körülbelül 5 perces RTO engedélyezése a címtárbeli írásokhoz

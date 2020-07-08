@@ -14,10 +14,9 @@ ms.date: 05/25/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: f7ac8e69c4e149fdd0f365e19f7a0282a547af43
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77617185"
 ---
 # <a name="connect-a-virtual-network-to-hana-large-instances"></a>Virtuális hálózat összekapcsolása a HANA nagyméretű példányaival
@@ -35,7 +34,7 @@ Ha egy átjáró már létezik, ellenőrizze, hogy a ExpressRoute-átjáró-e va
   - Ha a Azure Portal használja, vegyen fel egy új **Virtual Network-átjárót**, majd válassza a **ExpressRoute** lehetőséget az átjáró típusaként.
   - Ha a PowerShellt használja, először töltse le és használja a legújabb [Azure POWERSHELL SDK](https://azure.microsoft.com/downloads/)-t. 
  
-Az alábbi parancsok ExpressRoute-átjárót hoznak létre. A által _$_ megelőzt szövegek a felhasználó által definiált változók, amelyeket frissíteni kell az adott információkkal.
+Az alábbi parancsok ExpressRoute-átjárót hoznak létre. A által megelőzt szövegek a _$_ felhasználó által definiált változók, amelyeket frissíteni kell az adott információkkal.
 
 ```powershell
 # These Values should already exist, update to match your environment

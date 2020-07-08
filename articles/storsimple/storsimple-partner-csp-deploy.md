@@ -15,10 +15,9 @@ ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
 ms.openlocfilehash: 7f1927a67127766c72be463c283225135b2a2aad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77466909"
 ---
 # <a name="deploy-storsimple-virtual-array-for-cloud-solution-provider-program"></a>A StorSimple Virtual Array üzembe helyezése a Cloud Solution Provider programhoz
@@ -81,7 +80,7 @@ Bizonyos esetekben előfordulhat, hogy van egy meglévő ügyfele, és hozzá ke
 
      ![Irányítópult a partner Centerben](./media/storsimple-partner-csp-deploy/image1.png)
                               
-2. A bal oldali ablaktáblán kattintson az **ügyfelek**elemre. Keresse meg vagy Navigáljon arra az ügyfélre, amelyhez előfizetést szeretne hozzáadni. A ![kibontási pipa](./media/storsimple-partner-csp-deploy/expand_pane_icon.png) ikonra kattintva kibonthatja az ügyfélhez tartozó vállalat nevét. A Részletek területen kattintson az **előfizetések hozzáadása**lehetőségre.
+2. A bal oldali ablaktáblán kattintson az **ügyfelek**elemre. Keresse meg vagy Navigáljon arra az ügyfélre, amelyhez előfizetést szeretne hozzáadni. A ![ kibontási pipa ikonra kattintva ](./media/storsimple-partner-csp-deploy/expand_pane_icon.png) kibonthatja az ügyfélhez tartozó vállalat nevét. A Részletek területen kattintson az **előfizetések hozzáadása**lehetőségre.
 
     ![Ügyfelek](./media/storsimple-partner-csp-deploy/image10.png)
 

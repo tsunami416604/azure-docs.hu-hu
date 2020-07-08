@@ -11,10 +11,9 @@ ms.topic: article
 ms.date: 02/18/2020
 ms.author: juliako
 ms.openlocfilehash: 245eabdf4d77682c87062c2581239a554112d748
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77468762"
 ---
 # <a name="upload-and-index-your-videos"></a>Videók feltöltése és indexelése  
@@ -40,7 +39,7 @@ A cikk bemutatja, hogyan tölthet fel és indexelheti a videókat a következő 
 - A kérelem URL-címének hossza legfeljebb 6144 karakter hosszúságú lehet, ahol a lekérdezési karakterlánc URL-címe legfeljebb 4096 karakter hosszúságú lehet.
 - A byte Array kapcsolóval rendelkező feltöltési méret 2 GB-ra van korlátozva.
 - A bájtos tömb beállítása 30 percnél hosszabb időt vesz igénybe.
-- A `videoURL` paraméterben megadott URL-címet kódolni kell.
+- A paraméterben megadott URL-címet `videoURL` kódolni kell.
 - Az indexelési Media Servicesi eszközök ugyanazzal a korlátozással rendelkeznek, mint az URL-cím indexelése.
 - A Video Indexer legfeljebb 4 órát tartalmaz egyetlen fájlra vonatkozóan.
 - Az URL-címnek elérhetőnek kell lennie (például egy nyilvános URL-cím). 
@@ -93,24 +92,24 @@ Egy URL-cím, amely az ügyfél (POST-kérelem használatával) értesítésére
 - Az indexelési állapot változása: 
     - Tulajdonságok:    
     
-        |Name (Név)|Leírás|
+        |Name|Description|
         |---|---|
         |id|A videó azonosítója|
         |state|A videó állapota|  
-    - Például: https:\//test.com/Notifyme?projectName=MyProject&ID = 1234abcd&State = Processed
+    - Például: https: \/ /test.com/notifyme?projectName=MyProject&ID = 1234abcd&State = Processed
 - A videóban azonosított személy:
   - Tulajdonságok
     
-      |Name (Név)|Leírás|
+      |Name|Description|
       |---|---|
       |id| A videó azonosítója|
       |faceId|A videó indexében megjelenő Arcfelismerés|
       |knownPersonId|Az arc-modellen belül egyedi személy azonosítója|
       |personName|A személy neve|
         
-    - Például: https:\//test.com/Notifyme?projectName=MyProject&ID = 1234abcd&faceid = 12&knownPersonId = CCA84350-89B7-4262-861C-3CAC796542A5&personName = Inigo_Montoya 
+    - Például: https: \/ /test.com/notifyme?projectName=MyProject&ID = 1234abcd&faceid = 12&knownPersonId = CCA84350-89B7-4262-861C-3CAC796542A5&personName = Inigo_Montoya 
 
-##### <a name="notes"></a>Megjegyzések
+##### <a name="notes"></a>Jegyzetek
 
 - Video Indexer az eredeti URL-címben megadott meglévő paramétereket adja vissza.
 - A megadott URL-címet kódolni kell.
@@ -126,7 +125,7 @@ Akkor használja ezt a paramétert, ha a nyers vagy külső felvételek háttér
 
 > [!NOTE]
 > A Video Indexer akár két hangsávot is magában foglalhat. Ha a fájlban további hangsávok szerepelnek, a rendszer egyetlen számként kezeli őket.<br/>
-Ha a sávokat külön szeretné indexelni, ki kell bontania a megfelelő hangfájlt, és indexelni `AudioOnly`kell azt.
+Ha a sávokat külön szeretné indexelni, ki kell bontania a megfelelő hangfájlt, és indexelni kell azt `AudioOnly` .
 
 Az árat a kiválasztott indexelési lehetőség határozza meg.  
 
@@ -164,9 +163,9 @@ A kód a fejlesztői platformra való másolása után két paramétert kell meg
 
     Az API-kulcs beszerzéséhez folytassa ezt a folyamatot:
 
-    * Navigáljon ahttps://api-portal.videoindexer.ai/
+    * Navigáljon ide: https://api-portal.videoindexer.ai/
     * Bejelentkezés
-    * Ugrás a **termékek** -> **engedélyezési** -> **engedélyezési előfizetésére**
+    * Ugrás a **termékek**  ->  **engedélyezési**  ->  **engedélyezési előfizetésére**
     * Az **elsődleges kulcs** másolása
 * Videó URL-címe – az indexelni kívánt videó/hangfájl URL-címe. Az URL-címnek egy médiafájlra kell mutatnia (a HTML-lapok nem támogatottak). A fájl védelme az URI részeként biztosított hozzáférési jogkivonattal biztosítható, a fájlt szolgáltató végpontot pedig TLS 1.2-es vagy újabb verzióval kell védeni. Az URL-címet kódolni kell.
 
@@ -348,7 +347,7 @@ public class AccountContractSlim
 
 A Feltöltés művelet által visszaadott lehetséges állapotkódok az alábbi táblázatban láthatók.
 
-|Állapotkód|Hibatípus (a válasz törzsében)|Leírás|
+|Állapotkód|Hibatípus (a válasz törzsében)|Description|
 |---|---|---|
 |409|VIDEO_INDEXING_IN_PROGRESS|Ugyanannak a videónak a feldolgozása már folyamatban van az adott fiókban.|
 |400|VIDEO_ALREADY_FAILED|Ugyanannak a videónak a feldolgozása már meghiúsult az adott fiókban 2 órán belül. Az API-ügyfeleknek legalább 2 órát várniuk kell a videó ismételt feltöltése előtt.|

@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 02/17/2020
 ms.openlocfilehash: 577bed7ce342be14a50077a3ffd841cd901b5b31
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77473011"
 ---
 # <a name="manage-disk-space-in-azure-hdinsight"></a>Lemezterület kezelése az Azure HDInsight
@@ -20,11 +19,11 @@ Ez a cikk az Azure HDInsight-fürtökkel való interakció során felmerülő pr
 
 ## <a name="hive-log-configurations"></a>Struktúra-naplózási konfigurációk
 
-1. Egy webböngészőből nyissa meg `https://CLUSTERNAME.azurehdinsight.net`a következőt:, ahol `CLUSTERNAME` a a fürt neve.
+1. Egy webböngészőből nyissa meg a következőt: `https://CLUSTERNAME.azurehdinsight.net` , ahol a a `CLUSTERNAME` fürt neve.
 
-1. Navigáljon a **kaptár** > **konfigurációk** > **speciális** > **speciális kaptár-log4j**. Tekintse át a következő beállításokat:
+1. Navigáljon a **kaptár**  >  **konfigurációk**  >  **speciális**  >  **speciális kaptár-log4j**. Tekintse át a következő beállításokat:
 
-    * `hive.root.logger=DEBUG,RFA`. Ez az alapértelmezett érték, és a [naplózási szintet](https://logging.apache.org/log4j/2.x/log4j-api/apidocs/org/apache/logging/log4j/Level.html) `INFO` módosítsa a kevesebb napló bejegyzéseinek kinyomtatásához.
+    * `hive.root.logger=DEBUG,RFA`. Ez az alapértelmezett érték, és a [naplózási szintet](https://logging.apache.org/log4j/2.x/log4j-api/apidocs/org/apache/logging/log4j/Level.html) módosítsa a `INFO` kevesebb napló bejegyzéseinek kinyomtatásához.
 
     * `log4jhive.log.maxfilesize=1024MB`. Ez az alapértelmezett érték, amelyet igény szerint kell módosítani.
 
@@ -36,13 +35,13 @@ Tekintse át a következő konfigurációkat:
 
 * Apache Ambari
 
-    1. Egy webböngészőből nyissa meg `https://CLUSTERNAME.azurehdinsight.net`a következőt:, ahol `CLUSTERNAME` a a fürt neve.
+    1. Egy webböngészőből nyissa meg a következőt: `https://CLUSTERNAME.azurehdinsight.net` , ahol a a `CLUSTERNAME` fürt neve.
 
-    1. Navigáljon a **struktúra** > -**konfigurációk** > **speciális** > **erőforrás-kezelőjéhez**. Ellenőrizze, hogy be van-e jelölve a **naplózási összesítés engedélyezése** jelölőnégyzet. Ha le van tiltva, a name csomópontok helyileg megőrzik a naplókat, és nem összesítik azokat a távoli tárolóban az alkalmazás befejezésekor vagy megszakításakor.
+    1. Navigáljon a **struktúra**-  >  **konfigurációk**  >  **speciális**  >  **erőforrás-kezelőjéhez**. Ellenőrizze, hogy be van-e jelölve a **naplózási összesítés engedélyezése** jelölőnégyzet. Ha le van tiltva, a name csomópontok helyileg megőrzik a naplókat, és nem összesítik azokat a távoli tárolóban az alkalmazás befejezésekor vagy megszakításakor.
 
 * Győződjön meg arról, hogy a fürt mérete megfelelő a számítási feladathoz. Lehetséges, hogy a számítási feladat nemrég módosult, vagy előfordulhat, hogy a fürt átméretezése megtörtént. A fürt vertikális [Felskálázása nagyobb számítási](../hdinsight-scaling-best-practices.md) feladatokhoz.
 
-* `/mnt/resource`Előfordulhat, hogy az árva fájlokkal van feltöltve (a Resource Manager újraindítása esetén). Ha szükséges, manuálisan törölje `/mnt/resource/hadoop/yarn/log` és `/mnt/resource/hadoop/yarn/local`.
+* `/mnt/resource`Előfordulhat, hogy az árva fájlokkal van feltöltve (a Resource Manager újraindítása esetén). Ha szükséges, manuálisan törölje `/mnt/resource/hadoop/yarn/log` és `/mnt/resource/hadoop/yarn/local` .
 
 ## <a name="next-steps"></a>További lépések
 

@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
 ms.openlocfilehash: 45977f52226fac0a3e23455ce9457a721947a8cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77425884"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>A MirrorMaker használata Apache Kafka-témakörök replikálására a Kafka on HDInsight esetében
@@ -81,7 +80,7 @@ Ez az architektúra két fürtöt tartalmaz különböző erőforráscsoportok �
 1. Hozzon létre virtuális hálózati társításokat. Ez a lépés két társítást hoz létre: egyet a **Kafka-Primary-vnet** és a **Kafka-másodlagos-vnet** , valamint a Kafka- **másodlagos-vnet** és a **Kafka-Primary-vnet**között.
     1. Válassza ki a **Kafka-Primary-vnet** virtuális hálózatot.
     1. Válassza **a** **Beállítások**területen a társítások lehetőséget.
-    1. Válassza a **Hozzáadás** lehetőséget.
+    1. Válassza a **Hozzáadás** elemet.
     1. A társ-kezelés **hozzáadása** képernyőn adja meg a részleteket az alábbi képernyőképen látható módon.
 
         ![HDInsight Kafka vnet-társítás hozzáadása](./media/apache-kafka-mirroring/hdi-add-vnet-peering.png)
@@ -90,8 +89,8 @@ Ez az architektúra két fürtöt tartalmaz különböző erőforráscsoportok �
 
 Konfigurálja az IP-hirdetést úgy, hogy az ügyfél a tartománynevek helyett a Broker IP-címeivel kapcsolódjon.
 
-1. Nyissa meg az elsődleges fürt Ambari-irányítópultját `https://PRIMARYCLUSTERNAME.azurehdinsight.net`:.
-1. Válassza a **szolgáltatások** > **Kafka**lehetőséget. CliSelectck a **konfigurációk** lapon.
+1. Nyissa meg az elsődleges fürt Ambari-irányítópultját: `https://PRIMARYCLUSTERNAME.azurehdinsight.net` .
+1. Válassza a **szolgáltatások**  >  **Kafka**lehetőséget. CliSelectck a **konfigurációk** lapon.
 1. Adja hozzá a következő konfigurációs sorokat az alsó **Kafka-env sablon** szakaszhoz. Kattintson a **Mentés** gombra.
 
     ```
@@ -105,13 +104,13 @@ Konfigurálja az IP-hirdetést úgy, hogy az ügyfél a tartománynevek helyett 
 1. Írjon be egy megjegyzést a **konfiguráció mentése** képernyőn, majd kattintson a **Mentés**gombra.
 1. Ha a rendszer konfigurációs figyelmeztetést kér, kattintson a **Folytatás**gombra.
 1. Kattintson az **OK gombra** a **konfiguráció módosításainak mentése**elemre.
-1. Az újraindítás **szükséges** értesítésnél válassza az**összes érintett újraindítás újraindítása** elemet. **Restart** >  Válassza **az összes újraindításának megerősítése**lehetőséget.
+1. **Restart**  >  Az újraindítás **szükséges** értesítésnél válassza az**összes érintett újraindítás újraindítása** elemet. Válassza **az összes újraindításának megerősítése**lehetőséget.
 
     ![Az Apache Ambari újraindítása minden érintett](./media/apache-kafka-mirroring/ambari-restart-notification.png)
 
 ### <a name="configure-kafka-to-listen-on-all-network-interfaces"></a>A Kafka beállítása az összes hálózati adapter figyelésére.
     
-1. Maradjon a **konfigurációk** lapon a**Kafka**- **szolgáltatások** > területen. A **Kafka-átvitelszervező** szakaszban állítsa be a **figyelők** tulajdonságot `PLAINTEXT://0.0.0.0:9092`a következőre:.
+1. Maradjon a **konfigurációk** lapon a Kafka- **szolgáltatások**területen  >  **Kafka**. A **Kafka-átvitelszervező** szakaszban állítsa be a **figyelők** tulajdonságot a következőre: `PLAINTEXT://0.0.0.0:9092` .
 1. Kattintson a **Mentés** gombra.
 1. Válassza az **Újraindítás**lehetőséget, és **erősítse meg az összes újraindítását**.
 
@@ -136,14 +135,14 @@ Konfigurálja az IP-hirdetést úgy, hogy az ügyfél a tartománynevek helyett 
 
     További információk: [Az SSH használata HDInsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-1. Az alábbi paranccsal hozzon létre egy változót az Apache Zookeeper-gazdagépek használatával az elsődleges fürthöz. A hasonló `ZOOKEEPER_IP_ADDRESS1` sztringeket a korábban rögzített aktuális IP-címekkel, például a `10.23.0.11` és `10.23.0.7`a kifejezéssel kell helyettesíteni. Ha FQDN-feloldást használ egyéni DNS-kiszolgálóval, kövesse az [alábbi lépéseket](apache-kafka-get-started.md#getkafkainfo) a közvetítő és a Zookeeper nevének beszerzéséhez:
+1. Az alábbi paranccsal hozzon létre egy változót az Apache Zookeeper-gazdagépek használatával az elsődleges fürthöz. A hasonló sztringeket `ZOOKEEPER_IP_ADDRESS1` a korábban rögzített aktuális IP-címekkel, például a és a kifejezéssel kell helyettesíteni `10.23.0.11` `10.23.0.7` . Ha FQDN-feloldást használ egyéni DNS-kiszolgálóval, kövesse az [alábbi lépéseket](apache-kafka-get-started.md#getkafkainfo) a közvetítő és a Zookeeper nevének beszerzéséhez:
 
     ```bash
     # get the zookeeper hosts for the primary cluster
     export PRIMARY_ZKHOSTS='ZOOKEEPER_IP_ADDRESS1:2181, ZOOKEEPER_IP_ADDRESS2:2181, ZOOKEEPER_IP_ADDRESS3:2181'
     ```
 
-1. Egy nevű `testtopic`témakör létrehozásához használja a következő parancsot:
+1. Egy nevű témakör létrehozásához `testtopic` használja a következő parancsot:
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 2 --partitions 8 --topic testtopic --zookeeper $PRIMARY_ZKHOSTS
@@ -155,7 +154,7 @@ Konfigurálja az IP-hirdetést úgy, hogy az ügyfél a tartománynevek helyett 
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --list --zookeeper $PRIMARY_ZKHOSTS
     ```
 
-    A válasz tartalmaz `testtopic`.
+    A válasz tartalmaz `testtopic` .
 
 1. A következő paranccsal tekintheti meg az adott ( **elsődleges**) fürt Zookeeper-gazdagépének adatait:
 
@@ -187,7 +186,7 @@ Konfigurálja az IP-hirdetést úgy, hogy az ügyfél a tartománynevek helyett 
     nano consumer.properties
     ```
 
-    Használja a következő szöveget a `consumer.properties` fájl tartalmának:
+    Használja a következő szöveget a fájl tartalmának `consumer.properties` :
 
     ```yaml
     zookeeper.connect=PRIMARY_ZKHOSTS
@@ -210,13 +209,13 @@ Konfigurálja az IP-hirdetést úgy, hogy az ügyfél a tartománynevek helyett 
 
     `10.23.0.14:9092,10.23.0.4:9092,10.23.0.12:9092`
 
-1. A `producer.properties` rendszer egy fájlt használ a **másodlagos** fürt kommunikációjához. A fájl létrehozásához használja a következő parancsot:
+1. `producer.properties`A rendszer egy fájlt használ a **másodlagos** fürt kommunikációjához. A fájl létrehozásához használja a következő parancsot:
 
     ```bash
     nano producer.properties
     ```
 
-    Használja a következő szöveget a `producer.properties` fájl tartalmának:
+    Használja a következő szöveget a fájl tartalmának `producer.properties` :
 
     ```yaml
     bootstrap.servers=SECONDARY_BROKERHOSTS
@@ -244,16 +243,16 @@ Konfigurálja az IP-hirdetést úgy, hogy az ügyfél a tartománynevek helyett 
         /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 2 --partitions 8 --topic testtopic --zookeeper $SECONDARY_ZKHOSTS
         ```
 
-        A `testtopic` helyére írja be a létrehozandó témakör nevét.
+        A helyére írja `testtopic` be a létrehozandó témakör nevét.
 
     * **A fürt konfigurálása automatikus témakör-létrehozáshoz**: Ez a beállítás lehetővé teszi, hogy a MirrorMaker automatikusan hozzon létre témákat, azonban az elsődleges témakörtől eltérő számú partícióval vagy replikációs tényezővel is létrehozhatók.
 
         Ha úgy szeretné beállítani a másodlagos fürtöt, hogy automatikusan hozzon létre témákat, hajtsa végre a következő lépéseket:
 
-        1. Nyissa meg a Ambari irányítópultot a másodlagos fürthöz: `https://SECONDARYCLUSTERNAME.azurehdinsight.net`.
-        1. Kattintson a **szolgáltatások** > **Kafka**lehetőségre. Kattintson a **konfigurációk** fülre.
-        1. A __szűrő__ mezőbe írja be a értékét `auto.create`. Ezzel kiszűri a tulajdonságok listáját, és `auto.create.topics.enable` megjeleníti a beállítást.
-        1. Módosítsa az értéket True `auto.create.topics.enable` értékre, majd válassza a __Mentés__lehetőséget. Vegyen fel egy megjegyzést, majd válassza a __Mentés__ újra lehetőséget.
+        1. Nyissa meg a Ambari irányítópultot a másodlagos fürthöz: `https://SECONDARYCLUSTERNAME.azurehdinsight.net` .
+        1. Kattintson a **szolgáltatások**  >  **Kafka**lehetőségre. Kattintson a **konfigurációk** fülre.
+        1. A __szűrő__ mezőbe írja be a értékét `auto.create` . Ezzel kiszűri a tulajdonságok listáját, és megjeleníti a `auto.create.topics.enable` beállítást.
+        1. Módosítsa az értéket True értékre `auto.create.topics.enable` , majd válassza a __Mentés__lehetőséget. Vegyen fel egy megjegyzést, majd válassza a __Mentés__ újra lehetőséget.
         1. Válassza ki a __Kafka__ szolgáltatást, válassza az __Újraindítás__lehetőséget, majd kattintson az __összes érintett újraindítása__elemre. Ha a rendszer kéri, válassza __az összes újraindításának megerősítése__lehetőséget.
 
         ![a Kafka automatikus létrehozási témaköreinek engedélyezése](./media/apache-kafka-mirroring/kafka-enable-auto-create-topics.png)
@@ -270,8 +269,8 @@ Konfigurálja az IP-hirdetést úgy, hogy az ügyfél a tartománynevek helyett 
 
     |Paraméter |Leírás |
     |---|---|
-    |– Consumer. config|A fogyasztói tulajdonságokat tartalmazó fájlt adja meg. Ezek a tulajdonságok az *elsődleges* Kafka-fürtből beolvasott fogyasztó létrehozására szolgálnak.|
-    |--producer. config|A gyártói tulajdonságokat tartalmazó fájlt adja meg. Ezek a tulajdonságok egy olyan gyártó létrehozásához használatosak, amely a *másodlagos* Kafka-fürtbe ír.|
+    |--consumer.config|A fogyasztói tulajdonságokat tartalmazó fájlt adja meg. Ezek a tulajdonságok az *elsődleges* Kafka-fürtből beolvasott fogyasztó létrehozására szolgálnak.|
+    |--producer.config|A gyártói tulajdonságokat tartalmazó fájlt adja meg. Ezek a tulajdonságok egy olyan gyártó létrehozásához használatosak, amely a *másodlagos* Kafka-fürtbe ír.|
     |--engedélyezési lista|Azon témakörök listája, amelyeket a MirrorMaker az elsődleges fürtről a másodlagosra replikál.|
     |--NUM. streamek|A létrehozandó felhasználói szálak száma.|
 
@@ -292,7 +291,7 @@ Konfigurálja az IP-hirdetést úgy, hogy az ügyfél a tartománynevek helyett 
     /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server $SECONDARY_ZKHOSTS --topic testtopic --from-beginning
     ```
 
-    A témakörök listája mostantól tartalmazza `testtopic`, amely akkor jön létre, amikor a MirrorMaster az elsődleges fürtről a másodlagosra tükrözi a témakört. A témakörből beolvasott üzenetek megegyeznek az elsődleges fürtön megadott adatokkal.
+    A témakörök listája mostantól tartalmazza `testtopic` , amely akkor jön létre, amikor a MirrorMaster az elsődleges fürtről a másodlagosra tükrözi a témakört. A témakörből beolvasott üzenetek megegyeznek az elsődleges fürtön megadott adatokkal.
 
 ## <a name="delete-the-cluster"></a>A fürt törlése
 

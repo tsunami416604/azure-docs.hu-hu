@@ -14,10 +14,9 @@ ms.date: 09/10/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 047ea4d07f2b497ac8c7deb90c056d63976094f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77617071"
 ---
 # <a name="monitoring-and-troubleshooting-from-hana-side"></a>HANA-oldali monitorozás és hibaelhárítás
@@ -70,7 +69,7 @@ A hibaelhárítással kapcsolatos további információkért tekintse meg a [SAP
 
 A Linux SAP HANAének egyik legfontosabb ellenőrzése az, hogy az átlátszó, hatalmas lapok le legyenek tiltva, lásd: [SAP Note #2131662 – transzparens hatalmas lapok (THP) a SAP HANA-kiszolgálókon](https://launchpad.support.sap.com/#/notes/2131662).
 
-- A következő Linux-paranccsal ellenőrizhető, hogy a transzparens hatalmas lapok engedélyezve vannak **-e:\_Cat/sys/kernel/mm/transparent hugepage/enabled**
+- A következő Linux-paranccsal ellenőrizhető, hogy a transzparens hatalmas lapok engedélyezve vannak-e: **Cat/sys/kernel/mm/transparent \_ hugepage/enabled**
 - Ha _mindig_ az alábbi zárójelek közé van bejelölve, az azt jelenti, hogy az átlátszó hatalmas lapok engedélyezve vannak: [mindig] madvise soha; Ha _soha nem_ az alábbi zárójelek közé van lefoglalva, az azt jelenti, hogy az átlátszó hatalmas lapok le vannak tiltva: mindig madvise [soha]
 
 A következő Linux-parancsnak semmit nem kell visszaadnia: **rpm-QA | grep ulimit.** Ha úgy tűnik, hogy a _ulimit_ telepítve van, azonnal távolítsa el.
@@ -93,10 +92,10 @@ A hibaelhárítással kapcsolatos további információkért tekintse meg a [SAP
 Tekintse meg az [SAP note #2081065 – hibaelhárítás SAP HANA hálózat](https://launchpad.support.sap.com/#/notes/2081065) és az SAP-Megjegyzés hálózati hibaelhárítási lépéseinek elvégzése című témakört.
 
 1. A kiszolgáló és az ügyfél közötti oda-és visszautazási idő elemzése.
-  A. Futtassa az SQL- [_parancsfájl\_HANA\_hálózati ügyfeleit_](https://launchpad.support.sap.com/#/notes/1969700)_._
+  A. Futtassa az SQL-parancsfájl [_HANA \_ hálózati \_ ügyfeleit_](https://launchpad.support.sap.com/#/notes/1969700)_._
   
 2. A csomópontok közötti kommunikáció elemzése.
-  A. Futtassa az SQL [_-\_parancsfájl\_HANA hálózati szolgáltatásait_](https://launchpad.support.sap.com/#/notes/1969700)_._
+  A. Futtassa az SQL-parancsfájl [_HANA \_ hálózati \_ szolgáltatásait_](https://launchpad.support.sap.com/#/notes/1969700)_._
 
 3. Linux-parancs futtatása **ifconfig** (a kimenetben látható, hogy van-e a csomag elvesztése).
 4. Futtassa a Linux parancs **tcpdump**.
@@ -119,15 +118,15 @@ Tekintse át a [SAP HANA hibaelhárítási: I/O-hez kapcsolódó kiváltó okoka
 
 ## <a name="diagnostic-tools"></a>Diagnosztikai eszközök
 
-SAP HANA állapot-ellenőrzés végrehajtása a HANA\_konfigurációs\_Minichecks. Ez az eszköz olyan potenciálisan kritikus technikai problémákat ad vissza, amelyeket SAP HANA Studióban már riasztásként kellett volna kiváltani.
+SAP HANA állapot-ellenőrzés végrehajtása a HANA \_ konfigurációs \_ Minichecks. Ez az eszköz olyan potenciálisan kritikus technikai problémákat ad vissza, amelyeket SAP HANA Studióban már riasztásként kellett volna kiváltani.
 
-Tekintse meg az [SAP note #1969700 – SQL-utasítás gyűjteményét SAP HANA](https://launchpad.support.sap.com/#/notes/1969700) és töltse le a megjegyzéshez csatolt SQL-utasítások. zip fájlt. Tárolja a. zip fájlt a helyi merevlemezen.
+Tekintse meg az [SAP note #1969700 – SQL-utasítás gyűjteményét SAP HANA](https://launchpad.support.sap.com/#/notes/1969700) és töltse le a megjegyzéshez csatolt SQL Statements.zip fájlt. Tárolja a. zip fájlt a helyi merevlemezen.
 
 SAP HANA Studióban a **rendszerinformációk** lapon kattintson a jobb gombbal a **név** oszlopra, és válassza az **SQL-utasítások importálása**lehetőséget.
 
 ![SAP HANA Studióban a rendszerinformációk lapon kattintson a jobb gombbal a név oszlopra, és válassza az SQL-utasítások importálása elemet.](./media/troubleshooting-monitoring/image7-import-statements-a.png)
 
-Válassza ki a helyileg tárolt SQL-utasítások. zip fájlt, és a rendszer importálja a megfelelő SQL-utasításokkal rendelkező mappát. Ezen a ponton számos különböző diagnosztikai ellenőrzés futtatható ezekkel az SQL-utasításokkal.
+Válassza ki a helyileg tárolt SQL Statements.zip fájlt, és a rendszer importálja a megfelelő SQL-utasításokkal rendelkező mappát. Ezen a ponton számos különböző diagnosztikai ellenőrzés futtatható ezekkel az SQL-utasításokkal.
 
 A rendszerreplikálási sávszélességre vonatkozó követelmények SAP HANA teszteléséhez például kattintson a jobb gombbal a **sávszélesség** -utasításra a **replikálás: sávszélesség** területen, és válassza a **Megnyitás** az SQL-konzolban lehetőséget.
 
@@ -143,30 +142,30 @@ Ennek eredményeként a következő információk segítenek a hibaelhárításb
 
 ![Ez olyan információkat eredményez, amelyek segítséget nyújtanak a hibaelhárításhoz](./media/troubleshooting-monitoring/image10-import-statements-d.png)
 
-Végezze el ugyanezt\_a\_HANA-konfiguráció Minichecks, és keressen _X_ jeleket a _C_ (kritikus) oszlopban.
+Végezze el ugyanezt a HANA- \_ konfiguráció \_ Minichecks, és keressen _X_ jeleket a _C_ (kritikus) oszlopban.
 
 Példa kimenetek:
 
-**HANA\_-\_konfiguráció\_MiniChecks Rev 102.01 + 1** az általános SAP HANA ellenőrzésekhez.
+**HANA \_ Konfiguráció \_ MiniChecks \_ Rev 102.01 + 1** az általános SAP HANA ellenőrzésekhez.
 
-![HANA\_-\_konfiguráció\_MiniChecks rev 102.01 + 1 az általános SAP HANA ellenőrzésekhez](./media/troubleshooting-monitoring/image11-configuration-minichecks.png)
+![HANA- \_ konfiguráció \_ MiniChecks \_ Rev 102.01 + 1 az általános SAP HANA ellenőrzésekhez](./media/troubleshooting-monitoring/image11-configuration-minichecks.png)
 
-**A\_HANA\_Services áttekintése áttekintést** nyújt arról, hogy milyen SAP HANA szolgáltatások futnak jelenleg.
+**HANA \_ A szolgáltatások \_ áttekintése** a jelenleg futó SAP HANA-szolgáltatások áttekintéséhez.
 
-![A\_HANA\_Services áttekintése a jelenleg futó SAP HANA-szolgáltatások áttekintéséhez](./media/troubleshooting-monitoring/image12-services-overview.png)
+![A HANA \_ Services \_ áttekintése a jelenleg futó SAP HANA-szolgáltatások áttekintéséhez](./media/troubleshooting-monitoring/image12-services-overview.png)
 
-**HANA\_Services\_-statisztikák** SAP HANA szolgáltatással kapcsolatos információkhoz (CPU, memória stb.).
+**HANA \_ Szolgáltatások \_ statisztikája** SAP HANA szolgáltatással kapcsolatos információk (CPU, memória stb.).
 
-![HANA\_Services\_-statisztikák SAP HANA szolgáltatás adataihoz](./media/troubleshooting-monitoring/image13-services-statistics.png)
+![HANA \_ Services- \_ statisztikák SAP HANA szolgáltatás adataihoz](./media/troubleshooting-monitoring/image13-services-statistics.png)
 
-**HANA\_-\_konfiguráció\_áttekintése Rev110 +** az SAP HANA példányra vonatkozó általános információkhoz.
+**HANA \_ Konfigurációs \_ Áttekintés \_ Rev110 +** az SAP HANA-példányra vonatkozó általános információkhoz.
 
-![HANA\_-\_konfiguráció\_áttekintése Rev110 + az SAP HANA példányra vonatkozó általános információkért](./media/troubleshooting-monitoring/image14-configuration-overview.png)
+![HANA- \_ konfiguráció \_ áttekintése \_ Rev110 + az SAP HANA példányra vonatkozó általános információkért](./media/troubleshooting-monitoring/image14-configuration-overview.png)
 
-**HANA\_konfigurációs\_paraméterek\_Rev70 +** a SAP HANA paramétereinek vizsgálatához.
+**HANA \_ Konfigurációs \_ Paraméterek \_ Rev70 +** a SAP HANA paramétereinek vizsgálatához.
 
-![HANA\_konfigurációs\_paraméterek\_Rev70 + a SAP HANA paramétereinek vizsgálatához](./media/troubleshooting-monitoring/image15-configuration-parameters.png)
+![HANA \_ konfigurációs \_ Paraméterek \_ Rev70 + a SAP HANA paramétereinek vizsgálatához](./media/troubleshooting-monitoring/image15-configuration-parameters.png)
 
-**További lépések**
+**Következő lépések**
 
 - Tekintse át [a magas rendelkezésre állású készletet a SuSE-ben a STONITH használatával](ha-setup-with-stonith.md).

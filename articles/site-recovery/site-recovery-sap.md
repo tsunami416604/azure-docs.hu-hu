@@ -6,10 +6,9 @@ manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
 ms.openlocfilehash: 29acd1b00d23e4f1c2f241027dadbbb406e5e049
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77190796"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>Vész-helyreállítás beállítása többrétegű SAP NetWeaver-alkalmazások telepítéséhez
@@ -119,7 +118,7 @@ Az összes SAP-alkalmazás virtuális gép Azure vész-helyreállítási adatkö
 
 ## <a name="networking-configuration"></a>Hálózati konfiguráció
 
-Ha statikus IP-címet használ, megadhatja azt az IP-címet, amelyet el szeretne végezni a virtuális gépen. Az IP-cím beállításához nyissa meg a **számítási és hálózati beállítások** > **hálózati adapter lapot**.
+Ha statikus IP-címet használ, megadhatja azt az IP-címet, amelyet el szeretne végezni a virtuális gépen. Az IP-cím beállításához nyissa meg a **számítási és hálózati beállítások**  >  **hálózati adapter lapot**.
 
 ![A magánhálózati IP-cím megadását bemutató képernyőkép a Site Recovery hálózati adapter panelen](./media/site-recovery-sap/sap-static-ip.png)
 

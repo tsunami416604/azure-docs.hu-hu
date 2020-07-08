@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 09/11/2019
 ms.author: cshoe
 ms.openlocfilehash: befdb4a8cceaef18961c1e9297e23ed5d405ff50
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77586189"
 ---
 # <a name="azure-functions-error-handling"></a>Azure Functions hibakezelés
@@ -38,6 +37,6 @@ Az Azure-szolgáltatásokkal való integráció során a hibák a mögöttes szo
 
 + [Üzenetsor-tárolás](functions-bindings-storage-queue-output.md#exceptions-and-return-codes)
 
-+ [Service Bus](functions-bindings-service-bus-output.md#exceptions-and-return-codes)
++ [Szolgáltatásbusz](functions-bindings-service-bus-output.md#exceptions-and-return-codes)
 
 + [Table Storage](functions-bindings-storage-table.md#exceptions-and-return-codes)

@@ -14,10 +14,9 @@ ms.date: 09/10/2018
 ms.author: hermannd
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 699a8a69621642d07d3547c07bb20c0d32ca7686
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77616991"
 ---
 # <a name="set-up-smt-server-for-suse-linux"></a>Az SMT-kiszolgáló beállítása SUSE Linux rendszerhez
@@ -34,7 +33,7 @@ A HANA nagyméretű példányokra vonatkozó feladatot teljesítő SMT-kiszolgá
 
 Először jelentkezzen be a [SUSE Customer Center webhelyre](https://scc.suse.com/).
 
-Lépjen a **szervezeti** > **szervezet hitelesítő adataihoz**. Ebben a szakaszban az SMT-kiszolgáló beállításához szükséges hitelesítő adatokat kell megkeresnie.
+Lépjen a **szervezeti**  >  **szervezet hitelesítő adataihoz**. Ebben a szakaszban az SMT-kiszolgáló beállításához szükséges hitelesítő adatokat kell megkeresnie.
 
 Ezután telepítsen egy SUSE Linux rendszerű virtuális GÉPET az Azure Virtual Network-ben. A virtuális gép üzembe helyezéséhez készítsen SLES 12 SP2 katalógust az Azure-ról (válassza a BYOS SUSE-lemezképet). A telepítési folyamat során ne adjon meg DNS-nevet, és ne használjon statikus IP-címeket.
 
@@ -83,7 +82,7 @@ Az SMT-csomagok telepítéséhez a YAST eszközt is használhatja. A YAST-ben l�
 ![Képernyőfelvétel a YAST-beli SMT-ről](./media/hana-installation/image5_smt_in_yast.PNG)
 
 
-Fogadja el a kijelölést a smtserver való telepítéshez. A telepítés befejezése után nyissa meg az SMT-kiszolgáló konfigurációját. Adja meg a korábban lekért SUSE Customer Center szervezeti hitelesítő adatait. Adja meg az Azure-beli virtuális gép állomásnevét is az SMT-kiszolgáló URL-címének megadásával. Ebben a bemutatóban ez a https:\//smtserver.
+Fogadja el a kijelölést a smtserver való telepítéshez. A telepítés befejezése után nyissa meg az SMT-kiszolgáló konfigurációját. Adja meg a korábban lekért SUSE Customer Center szervezeti hitelesítő adatait. Adja meg az Azure-beli virtuális gép állomásnevét is az SMT-kiszolgáló URL-címének megadásával. Ebben a bemutatóban ez a https: \/ /smtserver.
 
 ![Az SMT-kiszolgáló konfigurációjának képernyőképe](./media/hana-installation/image6_configuration_of_smtserver1.png)
 

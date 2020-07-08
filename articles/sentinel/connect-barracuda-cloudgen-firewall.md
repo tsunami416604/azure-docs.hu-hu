@@ -15,10 +15,9 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: aaedbfdd3b1bbbc653756d74ee86fc277b21caec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77588501"
 ---
 # <a name="connect-barracuda-cloudgen-firewall"></a>A Barracuda CloudGen tűzfal csatlakoztatása
@@ -36,7 +35,7 @@ A Barracuda CloudGen Firewall (CGFW) összekötővel könnyedén csatlakoztathat
 
 ## <a name="connect-azure-sentinel-to-barracuda-cloudgen-firewall"></a>Az Azure Sentinel összekapcsolása a Barracuda CloudGen tűzfallal
 
-1. A Azure Portal navigáljon az **Azure Sentinel** > -**adatösszekötők területére** , majd válassza a **Barracuda CloudGen tűzfal** -összekötőt.
+1. A Azure Portal navigáljon az **Azure Sentinel**-  >  **adatösszekötők területére** , majd válassza a **Barracuda CloudGen tűzfal** -összekötőt.
 
 2. Válassza az **összekötő megnyitása lapot**.
 

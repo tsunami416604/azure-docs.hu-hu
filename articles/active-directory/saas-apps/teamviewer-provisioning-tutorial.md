@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 01/27/2020
 ms.author: Zhchia
 ms.openlocfilehash: dc33cf9249a5b804ef46e75ff1822eaa5c6f9d6a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77366432"
 ---
 # <a name="tutorial-configure-teamviewer-for-automatic-user-provisioning"></a>Oktatóanyag: a TeamViewer konfigurálása automatikus felhasználói üzembe helyezéshez
@@ -101,7 +100,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Kiépítés lap](common/provisioning-automatic.png)
 
-5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg `ttps://webapi.teamviewer.com/scim/v2` a **sátor URL-címe** mezőt, és adja meg a **titkos jogkivonatban**korábban létrehozott parancsfájl-tokent. Kattintson a kapcsolat tesztelése elemre annak **ellenőrzéséhez** , hogy az Azure ad tud-e csatlakozni a teamviewerhez. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a TeamViewer-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
+5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a `ttps://webapi.teamviewer.com/scim/v2` **sátor URL-címe** mezőt, és adja meg a **titkos jogkivonatban**korábban létrehozott parancsfájl-tokent. Kattintson a kapcsolat tesztelése elemre annak **ellenőrzéséhez** , hogy az Azure ad tud-e csatlakozni a teamviewerhez. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a TeamViewer-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
     ![kiépítési](./media/teamViewer-provisioning-tutorial/provisioning.png)
 
@@ -144,7 +143,7 @@ Miután konfigurálta az üzembe helyezést, a következő erőforrásokkal figy
 * Ellenőrizze a [folyamatjelző sáv](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) állapotát a kiépítési ciklus állapotának megtekintéséhez és a Befejezés befejezéséhez.
 * Ha úgy tűnik, hogy a kiépítési konfiguráció sérült állapotban van, az alkalmazás Karanténba kerül. További információ a karanténba [helyezett állapotokról](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

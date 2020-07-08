@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: 8518e30a54c2486abf84cd9ac026cc4dccb3fa84
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77593900"
 ---
 # <a name="istio"></a>Istio
@@ -43,7 +42,7 @@ A következő architektúra-diagram azt mutatja be, hogy az adatsíkon és a vez
 Fontos megérteni és figyelembe venni a következő területeket a számítási feladatok Istio kiértékelése során:
 
 - [Tervezési célok](#design-goals)
-- [Funkciók](#capabilities)
+- [Képességek](#capabilities)
 - [Forgatókönyvek](#scenarios)
 
 
@@ -60,7 +59,7 @@ A következő tervezési célok a Istio projektet [ismertetik][design-goals] :
 - **Házirend-egységesség** – a házirend-definíció konzisztenciája számos különböző erőforrásban.
 
 
-### <a name="capabilities"></a>Funkciók
+### <a name="capabilities"></a>Képességek
 
 A Istio a következő funkciókat biztosítja:
 

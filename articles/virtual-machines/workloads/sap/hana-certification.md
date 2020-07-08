@@ -14,10 +14,9 @@ ms.date: 09/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 2a02f0e1b05b9de8105126d1c9e4e3f79057285f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77617231"
 ---
 # <a name="certification"></a>Tanúsítvány
@@ -40,5 +39,5 @@ A virtuális gépeken futó SAP HANAhoz képest ez a megoldás előnyt élvez. S
 - Az itt ismertetett megoldásokon kívül telepítheti az Azure-előfizetéshez tartozó egyéb összetevőket is, amelyek az Azure-ban (nagyméretű példányokon) SAP HANAhez kapcsolódnak. Ilyenek például az olyan összetevők, amelyek lehetővé teszik a vagy közvetlenül a SAP HANA adatbázissal való kommunikációt, például a Jump-kiszolgálók, az RDP-kiszolgálók, a SAP HANA Studio, az SAP-Data Services az SAP BI-forgatókönyvekhez vagy a hálózati figyelési megoldások
 - Az Azure-ban a HANA nagyméretű példány támogatja a magas rendelkezésre állást és a vész-helyreállítási funkciókat.
 
-**További lépések**
+**Következő lépések**
 - [Rendelkezésre álló SKU-HLI](hana-available-skus.md) 
