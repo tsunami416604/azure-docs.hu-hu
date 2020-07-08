@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 05/18/2017
 ms.author: tagore
 ms.openlocfilehash: 63cf864a3f3b92728ad613ac45542bdbce2c9858
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80811339"
 ---
 # <a name="how-to-create-and-deploy-a-cloud-service"></a>Felhőalapú szolgáltatás létrehozása és üzembe helyezése
@@ -25,7 +24,7 @@ Ez a cikk azt ismerteti, hogyan használható a gyors létrehozás módszer egy 
 >
 >
 
-## <a name="concepts"></a>Alapelvek
+## <a name="concepts"></a>Fogalmak
 Az Azure-ban az alkalmazások felhőalapú szolgáltatásként való üzembe helyezéséhez három összetevő szükséges:
 
 * **Szolgáltatás definíciója**  

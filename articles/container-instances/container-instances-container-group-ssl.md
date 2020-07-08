@@ -4,10 +4,9 @@ description: Hozzon létre egy SSL-vagy TLS-végpontot egy Azure Container Insta
 ms.topic: article
 ms.date: 02/14/2020
 ms.openlocfilehash: b9ea9367219db694b89d6bf4a1e52efb373c71c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80984606"
 ---
 # <a name="enable-a-tls-endpoint-in-a-sidecar-container"></a>TLS-végpont engedélyezése oldalkocsi-tárolóban
@@ -46,19 +45,19 @@ A következő parancs futtatásával hozza létre az önaláírt tanúsítványt
 openssl x509 -req -days 365 -in ssl.csr -signkey ssl.key -out ssl.crt
 ```
 
-Ekkor három fájlnak kell megjelennie a könyvtárban: a tanúsítványkérelem (`ssl.csr`), a titkos kulcs (`ssl.key`) és az önaláírt tanúsítvány (`ssl.crt`). A és `ssl.key` `ssl.crt` a későbbi lépésekben is használható.
+Ekkor három fájlnak kell megjelennie a könyvtárban: a tanúsítványkérelem ( `ssl.csr` ), a titkos kulcs ( `ssl.key` ) és az önaláírt tanúsítvány ( `ssl.crt` ). `ssl.key` `ssl.crt` A és a későbbi lépésekben is használható.
 
 ## <a name="configure-nginx-to-use-tls"></a>Az Nginx konfigurálása a TLS használatára
 
 ### <a name="create-nginx-configuration-file"></a>Nginx konfigurációs fájl létrehozása
 
-Ebben a szakaszban egy konfigurációs fájlt hoz létre a Nginx használatához a TLS használatára. Először másolja a következő szöveget egy nevű `nginx.conf`új fájlba. A Azure Cloud Shell a Visual Studio Code használatával hozhatja létre a fájlt a munkakönyvtárában:
+Ebben a szakaszban egy konfigurációs fájlt hoz létre a Nginx használatához a TLS használatára. Először másolja a következő szöveget egy nevű új fájlba `nginx.conf` . A Azure Cloud Shell a Visual Studio Code használatával hozhatja létre a fájlt a munkakönyvtárában:
 
 ```console
 code nginx.conf
 ```
 
-A `location`-ben ügyeljen arra, `proxy_pass` hogy a megfelelő porton legyen beállítva az alkalmazáshoz. Ebben a példában a `aci-helloworld` tárolóhoz a 80-es portot állítjuk be.
+A-ben `location` ügyeljen arra, hogy `proxy_pass` a megfelelő porton legyen beállítva az alkalmazáshoz. Ebben a példában a tárolóhoz a 80-es portot állítjuk be `aci-helloworld` .
 
 ```console
 # nginx Configuration File
@@ -138,13 +137,13 @@ Most telepítse a tároló csoportot egy [YAML-fájlban](container-instances-mul
 
 ### <a name="create-yaml-file"></a>YAML-fájl létrehozása
 
-Másolja a következő YAML egy nevű `deploy-aci.yaml`új fájlba. A Azure Cloud Shell a Visual Studio Code használatával hozhatja létre a fájlt a munkakönyvtárában:
+Másolja a következő YAML egy nevű új fájlba `deploy-aci.yaml` . A Azure Cloud Shell a Visual Studio Code használatával hozhatja létre a fájlt a munkakönyvtárában:
 
 ```console
 code deploy-aci.yaml
 ```
 
-Adja meg a Base64 kódolású fájlok tartalmát, ahol az szerepel `secret`. Például az `cat` egyes Base64 kódolású fájlok megtekinthetik a tartalmukat. Az üzembe helyezés során ezeket a fájlokat a rendszer hozzáadja a tároló csoportban található [titkos kötethez](container-instances-volume-secret.md) . Ebben a példában a titkos kötet az Nginx-tárolóhoz van csatlakoztatva.
+Adja meg a Base64 kódolású fájlok tartalmát, ahol az szerepel `secret` . Például az `cat` egyes Base64 kódolású fájlok megtekinthetik a tartalmukat. Az üzembe helyezés során ezeket a fájlokat a rendszer hozzáadja a tároló csoportban található [titkos kötethez](container-instances-volume-secret.md) . Ebben a példában a titkos kötet az Nginx-tárolóhoz van csatlakoztatva.
 
 ```YAML
 api-version: 2018-10-01
@@ -223,7 +222,7 @@ app-with-ssl  myresourcegroup  Running   nginx, mcr.microsoft.com/azuredocs/aci-
 
 ## <a name="verify-tls-connection"></a>TLS-kapcsolatok ellenőrzése
 
-A böngésző segítségével navigáljon a Container Group nyilvános IP-címére. Az ebben a példában `52.157.22.76`látható IP-cím a következő:. **https://52.157.22.76** Az Nginx-kiszolgáló konfigurációja miatt a futó alkalmazás megtekintéséhez a HTTPS protokollt kell használnia. HTTP-kapcsolaton keresztüli sikertelen kapcsolódási kísérlet.
+A böngésző segítségével navigáljon a Container Group nyilvános IP-címére. Az ebben a példában látható IP-cím a következő: `52.157.22.76` **https://52.157.22.76** . Az Nginx-kiszolgáló konfigurációja miatt a futó alkalmazás megtekintéséhez a HTTPS protokollt kell használnia. HTTP-kapcsolaton keresztüli sikertelen kapcsolódási kísérlet.
 
 ![Képernyőkép a böngészőről, ahol egy Azure-tárolópéldányban futó alkalmazás látható](./media/container-instances-container-group-ssl/aci-app-ssl-browser.png)
 

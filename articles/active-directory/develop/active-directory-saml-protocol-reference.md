@@ -13,10 +13,9 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
 ms.openlocfilehash: 44d06030d8015d2df9499ce903eb9cb06e1ef27a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80885650"
 ---
 # <a name="how-azure-ad-uses-the-saml-protocol"></a>Hogyan használja az Azure AD a SAML-protokollt
@@ -31,8 +30,8 @@ Az Azure AD a Cloud Service **metaadat-URI-ját** használja az aláíró kulcs 
 
 Azure Active Directory a bérlő-specifikus és a közös (bérlői független) egyszeri bejelentkezéses és egyszeri kijelentkezési végpontokat teszi elérhetővé. Ezek az URL-címek címezhető helyet jelölnek – nem csupán azonosítók –, így a végpontra léphet a metaadatok olvasásához.
 
-* A bérlő-specifikus végpont a következő helyen `https://login.microsoftonline.com/<TenantDomainName>/FederationMetadata/2007-06/FederationMetadata.xml`található:. A * \<bérlőtartományneve>* helyőrző egy Azure ad-bérlő regisztrált tartománynevét vagy TenantID GUID azonosítóját jelöli. Az contoso.com-bérlő összevonási metaadatai például a következő helyen találhatóak:https://login.microsoftonline.com/contoso.com/FederationMetadata/2007-06/FederationMetadata.xml
+* A bérlő-specifikus végpont a következő helyen található: `https://login.microsoftonline.com/<TenantDomainName>/FederationMetadata/2007-06/FederationMetadata.xml` . A *\<TenantDomainName>* helyőrző egy Azure ad-bérlő regisztrált tartománynevét vagy TenantID GUID azonosítóját jelöli. Az contoso.com-bérlő összevonási metaadatai például a következő helyen találhatóak:https://login.microsoftonline.com/contoso.com/FederationMetadata/2007-06/FederationMetadata.xml
 
-* A bérlőtől független végpont a következő helyen `https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml`található:. Ebben a végpontban az **általános** név a bérlői tartománynév vagy azonosító helyett jelenik meg.
+* A bérlőtől független végpont a következő helyen található: `https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml` . Ebben a végpontban az **általános** név a bérlői tartománynév vagy azonosító helyett jelenik meg.
 
 Az Azure AD által közzétett összevonási metaadatokat tartalmazó dokumentumokkal kapcsolatos információkért lásd: [összevonási metaadatok](../azuread-dev/azure-ad-federation-metadata.md).

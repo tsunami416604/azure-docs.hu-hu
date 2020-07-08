@@ -13,10 +13,9 @@ ms.author: marsma
 ms.reviewer: ''
 ms.custom: aaddev
 ms.openlocfilehash: 7a8a1667ba1ca2a99c053c6941e3ba778299fd53
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80880750"
 ---
 # <a name="how-to-sso-between-adal-and-msal-apps-on-macos-and-ios"></a>Útmutató: ADAL és MSAL alkalmazások közötti egyszeri bejelentkezés macOS és iOS rendszeren
@@ -37,19 +36,19 @@ A ADAL 2.7. x megtekintheti a MSAL cache formátumát. A ADAL 2.7. x verziójáv
 
 ### <a name="account-identifier-differences"></a>Fiókazonosító-különbségek
 
-A MSAL és a ADAL eltérő fiókazonosító használatát teszik ki. A ADAL az UPN-t használja elsődleges fiókazonosítóként. A MSAL egy nem megjeleníthető fiókot használ, amely egy objektumazonosító és egy HRE-fiókhoz tartozó bérlői azonosító, valamint más típusú fiókok `sub` esetében egy jogcím alapján működik.
+A MSAL és a ADAL eltérő fiókazonosító használatát teszik ki. A ADAL az UPN-t használja elsődleges fiókazonosítóként. A MSAL egy nem megjeleníthető fiókot használ, amely egy objektumazonosító és egy HRE-fiókhoz tartozó bérlői azonosító, valamint `sub` más típusú fiókok esetében egy jogcím alapján működik.
 
-Ha a MSAL eredményben egy `MSALAccount` objektumot kap, akkor a `identifier` tulajdonságban egy fiókazonosító szerepel. Az alkalmazásnak ezt az azonosítót kell használnia az ezt követő csendes kérelmekhez.
+Ha `MSALAccount` a MSAL eredményben egy objektumot kap, akkor a tulajdonságban egy fiókazonosító szerepel `identifier` . Az alkalmazásnak ezt az azonosítót kell használnia az ezt követő csendes kérelmekhez.
 
-Az `identifier` `MSALAccount` objektumon kívül a nevű `username`kitalálható azonosító is szerepel. A ADAL `userId` -ben lefordítva. `username`nem tekinthető egyedi azonosítónak, és bármikor megváltozhat, így csak a ADAL-vel való visszamenőleges kompatibilitási forgatókönyvekhez használható. A MSAL támogatja a gyorsítótárazási `username` lekérdezéseket a vagy `identifier`a használatával `identifier` , ahol a lekérdezés a alapján javasolt.
+Az `identifier` `MSALAccount` objektumon kívül a nevű kitalálható azonosító is szerepel `username` . A `userId` ADAL-ben lefordítva. `username`nem tekinthető egyedi azonosítónak, és bármikor megváltozhat, így csak a ADAL-vel való visszamenőleges kompatibilitási forgatókönyvekhez használható. A MSAL támogatja a gyorsítótárazási lekérdezéseket a vagy a használatával `username` `identifier` , ahol a lekérdezés a alapján `identifier` javasolt.
 
 A következő táblázat összefoglalja a ADAL és a MSAL közötti fiókazonosító-különbségeket:
 
 | Fiókazonosító                | MSAL                                                         | ADAL 2.7. x      | Régebbi ADAL (az ADAL 2.7. x előtt) |
 | --------------------------------- | ------------------------------------------------------------ | --------------- | ------------------------------ |
 | nem játszható azonosító            | `username`                                                   | `userId`        | `userId`                       |
-| egyedi, nem játszható azonosító | `identifier`                                                 | `homeAccountId` | N/A                            |
-| Nem ismert fiókazonosító               | Az összes fiók lekérdezése az API-n keresztül `allAccounts:``MSALPublicClientApplication` | N/A             | N/A                            |
+| egyedi, nem játszható azonosító | `identifier`                                                 | `homeAccountId` | N.A.                            |
+| Nem ismert fiókazonosító               | Az összes fiók lekérdezése `allAccounts:` az API-n keresztül`MSALPublicClientApplication` | N.A.             | N.A.                            |
 
 Ez az `MSALAccount` azonosítókat biztosító interfész:
 
@@ -84,7 +83,7 @@ Ez az `MSALAccount` azonosítókat biztosító interfész:
 
 ### <a name="sso-from-msal-to-adal"></a>Egyszeri bejelentkezés a MSAL-ből a ADAL-be
 
-Ha rendelkezik egy MSAL-alkalmazással és egy ADAL-alkalmazással, és a felhasználó először bejelentkezik a MSAL-alapú alkalmazásba, akkor a ADAL-alkalmazásban `username` lévő egyszeri bejelentkezést az `MSALAccount` objektumból mentheti, majd átadja a ADAL `userId`-alapú alkalmazásnak. A ADAL a fiók adatait csendesen megtalálhatja az `acquireTokenSilentWithResource:clientId:redirectUri:userId:completionBlock:` API-val.
+Ha rendelkezik egy MSAL-alkalmazással és egy ADAL-alkalmazással, és a felhasználó először bejelentkezik a MSAL-alapú alkalmazásba, akkor a ADAL-alkalmazásban lévő egyszeri bejelentkezést az `username` `MSALAccount` objektumból mentheti, majd átadja a ADAL-alapú alkalmazásnak `userId` . A ADAL a fiók adatait csendesen megtalálhatja az `acquireTokenSilentWithResource:clientId:redirectUri:userId:completionBlock:` API-val.
 
 ### <a name="sso-from-adal-to-msal"></a>Egyszeri bejelentkezés a ADAL-ből a MSAL-be
 
@@ -92,20 +91,20 @@ Ha rendelkezik egy MSAL-alkalmazással és egy ADAL-alkalmazással, és a felhas
 
 #### <a name="adals-homeaccountid"></a>ADAL homeAccountId
 
-A ADAL 2.7. x a `homeAccountId` következő tulajdonságon keresztül adja vissza az `ADUserInformation` objektumot az eredményben:
+A ADAL 2.7. x a következő `homeAccountId` `ADUserInformation` tulajdonságon keresztül adja vissza az objektumot az eredményben:
 
 ```objc
 /*! Unique AAD account identifier across tenants based on user's home OID/home tenantId. */
 @property (readonly) NSString *homeAccountId;
 ```
 
-`homeAccountId`a ADAL a MSAL `identifier` -ben egyenértékű. Ezt az azonosítót mentheti a MSAL-ben való használatra az `accountForIdentifier:error:` API-val való fiókok keresésekor.
+`homeAccountId`a ADAL a `identifier` MSAL-ben egyenértékű. Ezt az azonosítót mentheti a MSAL-ben való használatra az API-val való fiókok keresésekor `accountForIdentifier:error:` .
 
 #### <a name="adals-userid"></a>ADAL`userId`
 
-Ha `homeAccountId` a nem érhető el, vagy csak a megtekinthető azonosítóval rendelkezik, a ADAL `userId` segítségével megkeresheti a fiókot a MSAL-ben.
+Ha a `homeAccountId` nem érhető el, vagy csak a megtekinthető azonosítóval rendelkezik, a ADAL segítségével `userId` megkeresheti a FIÓKOT a MSAL-ben.
 
-A MSAL-ben először keressen egy fiókot a `username` vagy `identifier`a használatával. Mindig a `identifier` lekérdezéshez használja, ha rendelkezik vele, és csak tartalékként használja `username` . Ha a rendszer megtalálta a fiókot, használja a `acquireTokenSilent` hívásokat a hívásokban.
+A MSAL-ben először keressen egy fiókot a `username` vagy a használatával `identifier` . Mindig `identifier` a lekérdezéshez használja, ha rendelkezik vele, és csak `username` tartalékként használja. Ha a rendszer megtalálta a fiókot, használja a `acquireTokenSilent` hívásokat a hívásokban.
 
 Objective-C:
 
@@ -190,7 +189,7 @@ Ez a szakasz a MSAL és a ADAL 2. x-2.6.6 közötti SSO-különbségeket ismerte
 
 A régebbi ADAL-verziók nem támogatják natív módon a MSAL-gyorsítótár formátumát. A ADAL-ről a MSAL-re történő zökkenőmentes áttelepítés biztosítása érdekében azonban a MSAL a korábbi ADAL-gyorsítótár formátumát is beolvashatja anélkül, hogy újra kellene kérnie a felhasználói hitelesítő adatokat.
 
-Mivel `homeAccountId` a nem érhető el a régebbi ADAL-verziókban, a következő paranccsal kell megkeresnie a `username`fiókokat:
+Mivel a `homeAccountId` nem érhető el a régebbi ADAL-verziókban, a következő paranccsal kell megkeresnie a fiókokat `username` :
 
 ```objc
 /*!

@@ -5,10 +5,9 @@ ms.topic: article
 ms.date: 04/07/2020
 ms.author: danlep
 ms.openlocfilehash: bd21a511641d5ea027c18bedb4dce47749110bcb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80892393"
 ---
 # <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>Tároló csoport és példány naplózása Azure Monitor naplókkal
@@ -39,7 +38,7 @@ A log Analytics-munkaterület AZONOSÍTÓjának és elsődleges kulcsának besze
 
 1. Az Azure Portalon lépjen a saját Log Analytics-munkaterületére
 1. A **Beállítások**területen válassza a **Speciális beállítások** lehetőséget.
-1. **Csatlakoztatott források** > kiválasztása**Windows-kiszolgálók** (vagy Linux- **kiszolgálók**) – az azonosító és a kulcsok mindkét esetében azonosak.)
+1. **Csatlakoztatott források**kiválasztása  >  **Windows-kiszolgálók** (vagy Linux- **kiszolgálók**) – az azonosító és a kulcsok mindkét esetében azonosak.)
 1. Jegyezze fel a következőket:
    * **MUNKATERÜLET AZONOSÍTÓJA**
    * **ELSŐDLEGES KULCS**
@@ -92,7 +91,7 @@ tags: null
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
-Ezután hajtsa végre a következő parancsot a tároló csoport üzembe helyezéséhez. Cserélje `myResourceGroup` le az kifejezést az előfizetéshez tartozó erőforráscsoporthoz (vagy először hozzon létre egy "myResourceGroup" nevű erőforráscsoportot):
+Ezután hajtsa végre a következő parancsot a tároló csoport üzembe helyezéséhez. Cserélje le az kifejezést az `myResourceGroup` előfizetéshez tartozó erőforráscsoporthoz (vagy először hozzon létre egy "myResourceGroup" nevű erőforráscsoportot):
 
 ```azurecli-interactive
 az container create --resource-group myResourceGroup --name mycontainergroup001 --file deploy-aci.yaml
@@ -115,7 +114,7 @@ A lekérdezésnek számos találatot kell megjelennie. Ha először nem lát ere
 
 ## <a name="view-events"></a>Események megtekintése
 
-Megtekintheti a Azure Portal tároló példányainak eseményeit is. Az események közé tartozik a példány létrehozásának és indításának időpontja. A `ContainerEvent_CL` táblázatban szereplő esemény-adatértékek megtekintése:
+Megtekintheti a Azure Portal tároló példányainak eseményeit is. Az események közé tartozik a példány létrehozásának és indításának időpontja. A táblázatban szereplő esemény-adatértékek megtekintése `ContainerEvent_CL` :
 
 1. Az Azure Portalon lépjen a saját Log Analytics-munkaterületére
 1. Az **általános**területen válassza a **naplók** lehetőséget.  
@@ -130,7 +129,7 @@ A lekérdezésnek számos találatot kell megjelennie. Ha először nem lát ere
 
 Azure Monitor naplók széles körű [lekérdezési nyelvet][query_lang] foglalnak magukban, hogy az információk a naplófájlok esetlegesen több ezer sorából legyenek kihúzva.
 
-A lekérdezés alapstruktúrája a forrástábla (ebben a cikkben vagy `ContainerInstanceLog_CL` `ContainerEvent_CL`), majd a cső karakterrel (`|`) elválasztott operátorok sorozata. Több operátor sorba állításával finomíthatja az eredményeket, és speciális funkciókat végezhet el.
+A lekérdezés alapstruktúrája a forrástábla (ebben a cikkben `ContainerInstanceLog_CL` vagy), majd a `ContainerEvent_CL` cső karakterrel () elválasztott operátorok sorozata `|` . Több operátor sorba állításával finomíthatja az eredményeket, és speciális funkciókat végezhet el.
 
 A lekérdezés eredményeinek megtekintéséhez illessze be a következő lekérdezést a lekérdezés szövegmezőbe, majd kattintson a **Futtatás** gombra a lekérdezés végrehajtásához. Ez a lekérdezés megjeleníti az összes olyan naplóbejegyzést, amelynek „Message” (Üzenet) mezője tartalmazza a „warn” (figyelmeztetés) szót:
 

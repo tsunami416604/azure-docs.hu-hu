@@ -12,15 +12,14 @@ ms.date: 05/06/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.openlocfilehash: 5b70b109f43e80fc3ec68f52aef2dba6823033bb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80882131"
 ---
 # <a name="single-page-application-call-a-web-api"></a>Egyoldalas alkalmazás: webes API meghívása
 
-Javasoljuk, hogy a webes API `acquireTokenSilent` meghívása előtt hívja meg a metódust egy hozzáférési jogkivonat beszerzéséhez vagy megújításához. A jogkivonat meghívása után meghívhat egy védett webes API-t.
+Javasoljuk, hogy a `acquireTokenSilent` webes API meghívása előtt hívja meg a metódust egy hozzáférési jogkivonat beszerzéséhez vagy megújításához. A jogkivonat meghívása után meghívhat egy védett webes API-t.
 
 ## <a name="call-a-web-api"></a>Webes API-hívás
 
@@ -53,4 +52,4 @@ A MSAL szögletes burkolója kihasználja a HTTP-Interceptor előnyeit, hogy a h
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Átállás éles üzemre](scenario-spa-production.md)
+> [Áthelyezés éles környezetbe](scenario-spa-production.md)

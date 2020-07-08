@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 05/30/2019
 ms.subservice: alerts
 ms.openlocfilehash: 7950b3f584c36b68a4eff66b05e83ba94c1ec1dd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81114368"
 ---
 # <a name="switch-api-preference-for-log-alerts"></a>API-beállítások váltása naplózási riasztásokhoz
@@ -50,7 +49,7 @@ A preferencia scheduledQueryRules API-ra gyakorolt hatásait az alábbiakban for
 A riasztási szabályok a [régi log Analytics riasztási API](api-alerts.md) -ból való áthelyezésének folyamata nem jár semmilyen módon a riasztás definíciójának, lekérdezésének vagy konfigurációjának módosításával. A riasztási szabályok és a figyelés nem érintett, és a riasztások nem állnak le, illetve nem állnak le a kapcsoló alatt vagy azt követően. Az egyetlen változás a következő:
 
 - Az API-beállítások módosítása és a szabályokhoz való hozzáférés új API-n keresztül.
-- Egy módosított riasztási szabály erőforrás-URI-ja, amely az [örökölt log Analytics riasztási API](api-alerts.md) -ban használt azonosítókat tartalmazza `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>`a riasztási szabály neve helyett ebben a struktúrában. A riasztási szabály megjelenítendő neve változatlan marad.
+- Egy módosított riasztási szabály erőforrás-URI-ja, amely az [örökölt log Analytics riasztási API](api-alerts.md) -ban használt azonosítókat tartalmazza a riasztási szabály neve helyett ebben a struktúrában `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` . A riasztási szabály megjelenítendő neve változatlan marad.
 
 Minden olyan ügyfél, aki önként kíván váltani az új [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) , és letiltja az [örökölt log Analytics riasztási API](api-alerts.md)használatát. Ezt úgy teheti meg, hogy egy PUT hívást hajt végre az alábbi API-ban az adott Log Analytics munkaterülethez társított összes riasztási szabály átváltásához.
 

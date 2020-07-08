@@ -12,16 +12,15 @@ ms.date: 01/29/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.openlocfilehash: d82f9beecb1b558fca094c31f8c6718c990debd1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80885769"
 ---
 # <a name="add-the-applications-registration-information-to-your-app"></a>Adja hozzá az alkalmazás regisztrációs adatait az alkalmazáshoz
 Ebben a lépésben hozzá kell adnia az alkalmazás azonosítóját a projekthez.
 
-1.  Nyissa meg `App.xaml.cs` és cserélje le a `ClientId` -t tartalmazó sort:
+1.  Nyissa meg `App.xaml.cs` és cserélje le a-t tartalmazó sort `ClientId` :
 
 ```csharp
 private static string ClientId = "[Enter the application Id here]";

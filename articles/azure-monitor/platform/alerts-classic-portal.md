@@ -6,10 +6,9 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.openlocfilehash: e635c243a887690fb1f7a5dcd017c1130d74a747
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81114584"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>Klasszikus metrikai riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával
@@ -34,7 +33,7 @@ A klasszikus metrikus riasztások Azure Monitor lehetővé teszik, hogy értesí
 
 6. Válassza ki az **e-mail-tulajdonosokat...** ha azt szeretné, hogy a rendszergazdák és a társ-rendszergazdák e-mail értesítéseket kapjanak, amikor a riasztás tüzek
 
-7. Ha értesítést szeretne küldeni a riasztások további e-mail-címeire, vegye fel őket a **további rendszergazdai e-mailek (ok)** mezőbe. Pontosvesszővel elválasztva több e-mailt a következő formátumban: *e-mail\@contoso. com; email2\@contoso.com*
+7. Ha értesítést szeretne küldeni a riasztások további e-mail-címeire, vegye fel őket a **további rendszergazdai e-mailek (ok)** mezőbe. Pontosvesszővel elválasztva több e-mailt a következő formátumban: *e-mail \@ contoso. com; email2 \@ contoso.com*
 
 8. Ha azt szeretné, hogy a riasztás bekövetkezik, a **webhook** mezőben érvényes URI-t kell létrehoznia.
 

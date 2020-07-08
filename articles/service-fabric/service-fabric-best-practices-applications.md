@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: mfussell
 ms.openlocfilehash: 56df6e28940eb15597a3d6bccca3f85e5f690f89
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80991654"
 ---
 # <a name="azure-service-fabric-application-design-best-practices"></a>Azure Service Fabric alkalmazás-tervezési ajánlott eljárások
@@ -57,9 +56,9 @@ Költségek megtakarítása és a rendelkezésre állás javítása:
 
 ## <a name="how-to-work-with-reliable-services"></a>A Reliable Services használata
 Service Fabric Reliable Services segítségével egyszerűen hozhat létre állapot nélküli és állapot-nyilvántartó szolgáltatásokat. További információ: [Bevezetés a Reliable Servicesba](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-introduction).
-- Mindig tartsa tiszteletben a [lemondási jogkivonatot](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-lifecycle#stateful-service-primary-swaps) `RunAsync()` az állapot nélküli és állapot- `ChangeRole()` nyilvántartó szolgáltatások esetében, valamint az állapot-nyilvántartó szolgáltatások módszerét. Ha nem, Service Fabric nem tudja, hogy a szolgáltatás lezárható-e. Ha például nem tartja tiszteletben a lemondási tokent, sokkal több alkalmazás-frissítési idő merülhet fel.
+- Mindig tartsa tiszteletben a [lemondási jogkivonatot](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-lifecycle#stateful-service-primary-swaps) az `RunAsync()` állapot nélküli és állapot-nyilvántartó szolgáltatások esetében, valamint az `ChangeRole()` állapot-nyilvántartó szolgáltatások módszerét. Ha nem, Service Fabric nem tudja, hogy a szolgáltatás lezárható-e. Ha például nem tartja tiszteletben a lemondási tokent, sokkal több alkalmazás-frissítési idő merülhet fel.
 -    A [kommunikációs figyelők](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-communication) megnyitása és lezárása időben, és a lemondási jogkivonatok tiszteletben tartása.
--    Soha ne keverje aszinkron kóddal a szinkronizálási kódot. Például ne használja `.GetAwaiter().GetResult()` az aszinkron hívásokat. A hívási veremben használjon aszinkron *módon* .
+-    Soha ne keverje aszinkron kóddal a szinkronizálási kódot. Például ne használja az `.GetAwaiter().GetResult()` aszinkron hívásokat. A hívási veremben használjon aszinkron *módon* .
 
 ## <a name="how-to-work-with-reliable-actors"></a>A Reliable Actors használata
 A Service Fabric Reliable Actors lehetővé teszi az állapot-nyilvántartó, virtuális szereplők egyszerű létrehozását. További információ: [Bevezetés a Reliable Actorsba](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-introduction).
@@ -70,7 +69,7 @@ A Service Fabric Reliable Actors lehetővé teszi az állapot-nyilvántartó, vi
 - Az egymásra [épülő Egyidejűség](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-introduction#concurrency)miatt a szereplők a legjobban független objektumokként használatosak. Ne hozzon létre több résztvevőből álló, szinkron metódusú hívásokat (amelyek mindegyike valószínűleg külön hálózati hívás lesz), vagy hozzon létre körkörös színészi kéréseket. Ezek jelentős hatással lesznek a teljesítményre és a skálázásra.
 - Ne keverje aszinkron kóddal a szinkronizálási kódot. A teljesítménnyel kapcsolatos problémák elkerülése érdekében következetesen használja az aszinkron módon.
 - Ne tegyen hosszan futó hívásokat a szereplőkkel. A hosszan futó hívások letiltják az ugyanahhoz a szereplőhöz tartozó más hívásokat a turn-based Egyidejűség miatt.
-- Ha más szolgáltatásokkal kommunikál [Service Fabric a távoli](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-communication-remoting) eljáráshívás `ServiceProxyFactory`használatával, és létrehozza a-t, hozza létre a gyárat a [Actor-Service](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-using) szinten, és *ne* a színész szintjén.
+- Ha más szolgáltatásokkal kommunikál [Service Fabric a távoli](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-communication-remoting) eljáráshívás használatával, és létrehozza a `ServiceProxyFactory` -t, hozza létre a gyárat a [Actor-Service](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-using) szinten, és *ne* a színész szintjén.
 
 
 ## <a name="application-diagnostics"></a>Application Diagnostics

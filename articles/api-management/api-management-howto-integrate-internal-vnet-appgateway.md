@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: sasolank
 ms.openlocfilehash: 733f4b74ca7643476586189b36f4e1d3e446968b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80811173"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>API Management integrálása egy belső VNET Application Gateway
@@ -87,11 +86,11 @@ Ebben az útmutatóban a **fejlesztői portált** külső célközönségeknek i
 > Ha az Azure AD-t vagy harmadik féltől származó hitelesítést használ, engedélyezze Application Gateway a [cookie-alapú munkamenet-affinitás](../application-gateway/features.md#session-affinity) funkciót.
 
 > [!WARNING]
-> Ha meg szeretné akadályozni, hogy Application Gateway WAF a OpenAPI-specifikáció letöltését a fejlesztői portálon, le kell tiltania a tűzfalszabályok listáját `942200 - "Detects MySQL comment-/space-obfuscated injections and backtick termination"`.
+> Ha meg szeretné akadályozni, hogy Application Gateway WAF a OpenAPI-specifikáció letöltését a fejlesztői portálon, le kell tiltania a tűzfalszabályok listáját `942200 - "Detects MySQL comment-/space-obfuscated injections and backtick termination"` .
 
 ## <a name="create-a-resource-group-for-resource-manager"></a>Erőforráscsoport létrehozása a Resource Managerhez
 
-### <a name="step-1"></a>1. lépés
+### <a name="step-1"></a>1\. lépés
 
 Jelentkezzen be az Azure-ba
 
@@ -126,7 +125,7 @@ Az Azure Resource Manager megköveteli, hogy minden erőforráscsoport adjon meg
 
 Az alábbi példa bemutatja, hogyan hozhat létre Virtual Network a Resource Manager használatával.
 
-### <a name="step-1"></a>1. lépés
+### <a name="step-1"></a>1\. lépés
 
 Rendelje hozzá a 10.0.0.0/24 címtartományt az alhálózati változóhoz, amelyet a rendszer a Virtual Network létrehozásakor Application Gateway használni.
 
@@ -163,7 +162,7 @@ $apimsubnetdata = $vnet.Subnets[1]
 
 Az alábbi példa bemutatja, hogyan hozhat létre egy API Management szolgáltatást egy VNET, amely csak belső hozzáférésre van konfigurálva.
 
-### <a name="step-1"></a>1. lépés
+### <a name="step-1"></a>1\. lépés
 
 Hozzon létre egy API Management Virtual Network objektumot a fent létrehozott alhálózati $apimsubnetdata használatával.
 
@@ -189,9 +188,9 @@ A fenti parancs sikeres végrehajtásához tekintse meg a [belső VNET elérés�
 > [!IMPORTANT]
 > Az [új fejlesztői portálhoz](api-management-howto-developer-portal.md) az alábbi lépéseken felül a API Management felügyeleti végpontjának való kapcsolódás engedélyezése is szükséges.
 
-### <a name="step-1"></a>1. lépés
+### <a name="step-1"></a>1\. lépés
 
-Inicializálja a következő változókat a tartományokhoz tartozó titkos kulcsokkal rendelkező tanúsítványok részleteivel. Ebben a példában a és `api.contoso.net` `portal.contoso.net`a-t fogjuk használni.  
+Inicializálja a következő változókat a tartományokhoz tartozó titkos kulcsokkal rendelkező tanúsítványok részleteivel. Ebben a példában a és a-t fogjuk használni `api.contoso.net` `portal.contoso.net` .  
 
 ```powershell
 $gatewayHostname = "api.contoso.net"                 # API gateway host
@@ -220,7 +219,7 @@ Set-AzApiManagement -InputObject $apimService
 ```
 
 > [!NOTE]
-> A korábbi fejlesztői portál kapcsolatának konfigurálásához a következővel `-HostnameType DeveloperPortal` kell `-HostnameType Portal`helyettesítenie:.
+> A korábbi fejlesztői portál kapcsolatának konfigurálásához a következővel kell helyettesítenie: `-HostnameType DeveloperPortal` `-HostnameType Portal` .
 
 ## <a name="create-a-public-ip-address-for-the-front-end-configuration"></a>Nyilvános IP-cím létrehozása az előtérbeli konfigurációhoz
 
@@ -236,7 +235,7 @@ Amikor a szolgáltatás elindul, egy IP-cím lesz kiosztva az Application Gatewa
 
 Az Application Gateway létrehozása előtt minden konfigurációs elemet be kell állítani. Az alábbi lépések létrehozzák az Application Gateway erőforráshoz szükséges konfigurációs elemeket.
 
-### <a name="step-1"></a>1. lépés
+### <a name="step-1"></a>1\. lépés
 
 Hozzon létre egy **gatewayIP01** nevű Application Gateway IP-konfigurációt. Amikor az Application Gateway elindul, a konfigurált alhálózatból felvesz egy IP-címet, és a hálózati forgalmat a háttérbeli IP-készlet IP-címeihez irányítja. Ne feledje, hogy minden példány egy IP-címet vesz fel.
 
@@ -280,10 +279,10 @@ $portalListener = New-AzApplicationGatewayHttpListener -Name "listener02" -Proto
 
 ### <a name="step-6"></a>6. lépés
 
-Hozzon létre egyéni mintavételeket a API Management `ContosoApi` Service proxy tartomány végpontján. Az elérési út `/status-0123456789abcdef` a API Management összes szolgáltatásán üzemeltetett alapértelmezett állapot-végpont. Egyéni `api.contoso.net` mintavételi állomásnévként állítsa be a TLS/SSL-tanúsítvánnyal való védelmét.
+Hozzon létre egyéni mintavételeket a API Management Service `ContosoApi` proxy tartomány végpontján. Az elérési út a `/status-0123456789abcdef` API Management összes szolgáltatásán üzemeltetett alapértelmezett állapot-végpont. `api.contoso.net`Egyéni mintavételi állomásnévként állítsa be a TLS/SSL-tanúsítvánnyal való védelmét.
 
 > [!NOTE]
-> Az állomásnév `contosoapi.azure-api.net` az alapértelmezett proxy állomásnév, amelyet a `contosoapi` rendszer a nyilvános Azure-ban létrehozott szolgáltatás létrehozásakor konfigurált.
+> Az állomásnév `contosoapi.azure-api.net` az alapértelmezett proxy állomásnév, `contosoapi` amelyet a rendszer a nyilvános Azure-ban létrehozott szolgáltatás létrehozásakor konfigurált.
 >
 
 ```powershell

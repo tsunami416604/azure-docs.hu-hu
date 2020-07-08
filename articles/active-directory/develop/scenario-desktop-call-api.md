@@ -12,10 +12,9 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 753892790a6f6b898b48d955e6806837967f3e92
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80882964"
 ---
 # <a name="desktop-app-that-calls-web-apis-call-a-web-api"></a>Webes API-kat meghívó asztali alkalmazás: webes API meghívása
@@ -64,7 +63,7 @@ JSONObject responseObject = HttpClientHelper.processResponse(responseCode, respo
 
 ## <a name="call-a-web-api-in-msal-for-ios-and-macos"></a>Webes API meghívása iOS és macOS rendszerű MSAL
 
-A jogkivonatok beszerzésének módszerei `MSALResult` egy objektumot adnak vissza. `MSALResult`egy olyan `accessToken` tulajdonság közzététele, amely a webes API-k meghívására használható. A védett webes API-hoz való hozzáférés meghívása előtt adjon hozzá egy hozzáférési jogkivonatot a HTTP-engedélyezési fejléchez.
+A jogkivonatok beszerzésének módszerei egy objektumot adnak vissza `MSALResult` . `MSALResult`egy olyan `accessToken` tulajdonság közzététele, amely a webes API-k meghívására használható. A védett webes API-hoz való hozzáférés meghívása előtt adjon hozzá egy hozzáférési jogkivonatot a HTTP-engedélyezési fejléchez.
 
 Objective-C:
 
@@ -94,7 +93,7 @@ task.resume()
 
 ## <a name="call-several-apis-incremental-consent-and-conditional-access"></a>Több API meghívása: növekményes beleegyezettés és feltételes hozzáférés
 
-Ha több API-t szeretne meghívni ugyanahhoz a felhasználóhoz, az első API-hoz tartozó jogkivonat `AcquireTokenSilent`beszerzése után hívja meg a következőt:. A többi API-hoz az idő nagy részében csendes tokent kap.
+Ha több API-t szeretne meghívni ugyanahhoz a felhasználóhoz, az első API-hoz tartozó jogkivonat beszerzése után hívja meg a következőt: `AcquireTokenSilent` . A többi API-hoz az idő nagy részében csendes tokent kap.
 
 ```csharp
 var result = await app.AcquireTokenXX("scopeApi1")
@@ -130,4 +129,4 @@ catch(MsalUiRequiredException ex)
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Átállás éles üzemre](scenario-desktop-production.md)
+> [Áthelyezés éles környezetbe](scenario-desktop-production.md)

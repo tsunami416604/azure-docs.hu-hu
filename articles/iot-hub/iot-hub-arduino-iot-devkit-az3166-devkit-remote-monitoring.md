@@ -10,10 +10,9 @@ ms.tgt_pltfrm: arduino
 ms.date: 02/02/2018
 ms.author: liydu
 ms.openlocfilehash: 598e361949b000724645c841910b1682a7bbb1a3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81258456"
 ---
 # <a name="connect-mxchip-iot-devkit-to-azure-iot-remote-monitoring-solution-accelerator"></a>A MXChip IoT fejlesztői készlet és az Azure IoT távoli monitorozási megoldásának gyorsítása
@@ -54,7 +53,7 @@ Aktív Azure-előfizetés. Ha még nem rendelkezik ilyennel, a következő két 
 
    ![Irányítópult](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/azure-iot-suite-new-solution-created.png)
   
-   ![Konzol](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/azure-iot-suite-console.png)
+   ![Console](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/azure-iot-suite-console.png)
 
 5. Kattintson **az eszköz hozzáadása**lehetőségre.
 
@@ -62,7 +61,7 @@ Aktív Azure-előfizetés. Ha még nem rendelkezik ilyennel, a következő két 
   
    ![Új eszköz hozzáadása](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/azure-iot-suite-add-new-device.png)
 
-7. Kattintson **a saját eszköz azonosítójának definiálása**elemre `AZ3166`, írja be a értéket, majd kattintson a **Létrehozás**gombra.
+7. Kattintson **a saját eszköz azonosítójának definiálása**elemre, írja be a értéket `AZ3166` , majd kattintson a **Létrehozás**gombra.
   
    ![AZONOSÍTÓval rendelkező eszköz létrehozása](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/azure-iot-suite-new-device-configuration.png)
 
@@ -82,11 +81,11 @@ Aktív Azure-előfizetés. Ha még nem rendelkezik ilyennel, a következő két 
 4. Bontsa ki a bal oldali **ARDUINO-példák** szakaszt, és keresse meg a **PÉLDÁKAT a MXCHIP AZ3166 > AzureIoT**, és válassza a **RemoteMonitoring**lehetőséget. Megnyílik egy új VS Code-ablak a projekt mappájával.
 
    > [!NOTE]
-   > Ha véletlenül bezárná a panelt, újra megnyithatja. A `Ctrl+Shift+P` (MacOS: `Cmd+Shift+P`) paranccsal nyissa meg a parancssort, írja be az **Arduino**parancsot, majd keresse meg és válassza ki az **Arduino: példák**elemet.
+   > Ha véletlenül bezárná a panelt, újra megnyithatja. `Ctrl+Shift+P`A (MacOS: `Cmd+Shift+P` ) paranccsal nyissa meg a parancssort, írja be az **Arduino**parancsot, majd keresse meg és válassza ki az **Arduino: példák**elemet.
 
 ## <a name="provision-required-azure-services"></a>Szükséges Azure-szolgáltatások kiépítése
 
-A megoldás ablakban futtassa a `Ctrl+P` (z) (MacOS: `Cmd+P`) feladatot a megadott `task cloud-provision` szövegmező beírásával.
+A megoldás ablakban futtassa a `Ctrl+P` (z) (MacOS:) feladatot a `Cmd+P` megadott szövegmező beírásával `task cloud-provision` .
 
 A VS Code terminalban egy interaktív parancssor végigvezeti a szükséges Azure-szolgáltatások kiépítési folyamatán.
 
@@ -94,15 +93,15 @@ A VS Code terminalban egy interaktív parancssor végigvezeti a szükséges Azur
 
 ## <a name="build-and-upload-the-device-code"></a>Az eszköz kódjának létrehozása és feltöltése
 
-1. Használja `Ctrl+P` a (MacOS `Cmd + P`:) parancsot, és írja be a következőt: **Task config-Device--kapcsolatok**.
+1. Használja `Ctrl+P` a (MacOS: `Cmd + P` ) parancsot, és írja be a következőt: **Task config-Device--kapcsolatok**.
 
-2. A terminál megkérdezi, hogy szeretné-e használni a `task cloud-provision` lépésből lekért kapcsolódási karakterláncot. Az "új létrehozása..." gombra kattintva is beírhatja a saját eszköz-kapcsolatok sztringjét.
+2. A terminál megkérdezi, hogy szeretné-e használni a lépésből lekért kapcsolódási karakterláncot `task cloud-provision` . Az "új létrehozása..." gombra kattintva is beírhatja a saját eszköz-kapcsolatok sztringjét.
 
 3. A terminál felszólítja a konfigurációs mód megadására. Ehhez tartsa lenyomva az A gombot, majd nyomja le és szabadítsa fel az Alaphelyzetbe állítás gombot. A képernyőn a fejlesztői készlet-azonosító és a "konfiguráció" látható.
 
    ![Bemeneti kapcsolatok karakterlánca](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/config-device-connection.png)
 
-4. A `task config-device-connection` befejezést követően kattintson `F1` ide a vs Code-parancsok betöltéséhez és a kijelöléshez `Arduino: Upload`. A VS Code elindítja az Arduino-vázlat ellenőrzését és feltöltését.
+4. `task config-device-connection`A befejezést követően kattintson ide `F1` a vs Code-parancsok betöltéséhez és a kijelöléshez `Arduino: Upload` . A VS Code elindítja az Arduino-vázlat ellenőrzését és feltöltését.
   
    ![Az Arduino-vázlat ellenőrzése és feltöltése](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/arduino-upload.png)
 

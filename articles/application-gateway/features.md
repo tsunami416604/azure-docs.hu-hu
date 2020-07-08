@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: victorh
 ms.openlocfilehash: f021eed959ef88a1ef3671e1d0ace8080710c92a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80810232"
 ---
 # <a name="azure-application-gateway-features"></a>Azure Application Gateway-funkciók
@@ -26,7 +25,7 @@ Application Gateway a következő funkciókat tartalmazza:
 - [Automatikus skálázás](#autoscaling)
 - [Zóna redundancia](#zone-redundancy)
 - [Statikus VIP](#static-vip)
-- [Web Application Firewall (Webalkalmazási tűzfal)](#web-application-firewall)
+- [Webalkalmazási tűzfal](#web-application-firewall)
 - [Bejövőforgalom-vezérlő az AKS-hez](#ingress-controller-for-aks)
 - [URL-alapú útválasztás](#url-based-routing)
 - [Több hely üzemeltetése](#multiple-site-hosting)
@@ -58,7 +57,7 @@ A Standard_v2 Application Gateway több Availability Zonesra terjedhet ki, így 
 
 Az Application Gateway Standard_v2 SKU kizárólag a statikus VIP-típust támogatja. Ez biztosítja, hogy az Application gatewayhez társított virtuális IP-cím még a Application Gateway élettartama alatt sem változik.
 
-## <a name="web-application-firewall"></a>Web Application Firewall (Webalkalmazási tűzfal)
+## <a name="web-application-firewall"></a>Webalkalmazási tűzfal
 
 A webalkalmazási tűzfal (WAF) egy olyan szolgáltatás, amely központosított védelmet biztosít a webalkalmazások számára a gyakori biztonsági rések és sebezhetőségek ellen. A WAF a [OWASP (webalkalmazás-biztonsági projekt megnyitása) alapszabálya](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) , a 3,1 (csak WAF_v2), a 3,0 és a 2.2.9. 
 

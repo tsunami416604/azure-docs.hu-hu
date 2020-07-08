@@ -4,10 +4,9 @@ description: Adja hozzá az üzembe helyezést, vagy készítsen jelölőket a m
 ms.topic: conceptual
 ms.date: 07/01/2019
 ms.openlocfilehash: 0ad773ca6a7102ac718d43dfbbf6a4f834e681a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81010719"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Jegyzetek a metrikus diagramokon Application Insights
@@ -63,7 +62,7 @@ Hozzon létre külön API-kulcsot az Azure-folyamatok egyes kiadási sablonjaiho
    
 1. A kiadási sablon ablak **változók** lapján válassza a **Hozzáadás** lehetőséget az új API-kulcs változó definíciójának létrehozásához.
 
-1. A **név**mezőben adja `ApiKey`meg az értéket, majd az **érték**alatt illessze be a másolt API-kulcsot az **API-hozzáférés** lapról.
+1. A **név**mezőben adja meg `ApiKey` az értéket, majd az **érték**alatt ILLESSZE be a másolt API-kulcsot az **API-hozzáférés** lapról.
    
    ![Az Azure DevOps-változók lapon válassza a Hozzáadás elemet, nevezze el a ApiKey változót, majd illessze be az API-kulcsot az érték mezőbe.](./media/annotations/7-paste-api-key.png)
    
@@ -94,7 +93,7 @@ A kiadás részleteinek megnyitásához válassza a Megjegyzés jelölőjét, be
 ## <a name="create-custom-annotations-from-powershell"></a>Egyéni jegyzetek létrehozása a PowerShellből
 A GitHubról származó [CreateReleaseAnnotation](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1) PowerShell-szkripttel megjegyzéseket hozhat létre bármely olyan folyamatból, amely az Azure DevOps használata nélkül használható. 
 
-1. Készítse el a [CreateReleaseAnnotation. ps1](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)helyi példányát.
+1. Készítse elő [CreateReleaseAnnotation.ps1](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)helyi másolatát.
    
 1. Az előző eljárás lépéseit követve szerezze be a Application Insights azonosítót, és hozzon létre egy API-kulcsot a Application Insights **API-hozzáférés** lapon.
    

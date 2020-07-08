@@ -13,10 +13,9 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 79f8eb9e804502a7c0e61c18e4998fa05db10278
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80885140"
 ---
 # <a name="a-web-api-that-calls-web-apis-acquire-a-token-for-the-app"></a>Webes API-kat meghívó webes API: az alkalmazás jogkivonatának beszerzése
@@ -48,7 +47,7 @@ private async Task GetTodoList(bool isAppStarting)
 }
 ```
 
-`BuildConfidentialClient()`hasonló a webes API- [kat meghívó webes API](scenario-web-api-call-api-app-configuration.md)-hoz használt forgatókönyvhöz: az alkalmazás konfigurációja. `BuildConfidentialClient()``IConfidentialClientApplication` példányok egy olyan gyorsítótárral, amely csak egy fiókra vonatkozó információt tartalmaz. A fiókot a `GetAccountIdentifier` metódus biztosítja.
+`BuildConfidentialClient()`hasonló a webes API- [kat meghívó webes API](scenario-web-api-call-api-app-configuration.md)-hoz használt forgatókönyvhöz: az alkalmazás konfigurációja. `BuildConfidentialClient()`példányok `IConfidentialClientApplication` egy olyan gyorsítótárral, amely csak egy fiókra vonatkozó információt tartalmaz. A fiókot a metódus biztosítja `GetAccountIdentifier` .
 
 A `GetAccountIdentifier` metódus a felhasználó identitásához társított jogcímeket használja, akik számára a webes API megkapta a JSON web token (JWT):
 
@@ -91,7 +90,7 @@ public class ApiController {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Egy Python webes API-nak bizonyos middleware-t kell használnia az ügyféltől kapott tulajdonosi jogkivonat ellenőrzéséhez. A webes API ezt követően a [`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) metódus meghívásával lekérheti az alsóbb rétegbeli API hozzáférési tokenjét a MSAL Python Library használatával. A folyamatot bemutató minta a MSAL Python szolgáltatással még nem érhető el.
+Egy Python webes API-nak bizonyos middleware-t kell használnia az ügyféltől kapott tulajdonosi jogkivonat ellenőrzéséhez. A webes API ezt követően a metódus meghívásával lekérheti az alsóbb rétegbeli API hozzáférési tokenjét a MSAL Python Library használatával [`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) . A folyamatot bemutató minta a MSAL Python szolgáltatással még nem érhető el.
 
 ---
 

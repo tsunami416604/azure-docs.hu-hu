@@ -5,10 +5,9 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/19/2018
 ms.openlocfilehash: d9b6118bc165a9b0a78ae9c4da895719249b22b7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81114233"
 ---
 # <a name="azure-monitor-retirement-of-classic-deployment-model-apis-for-metrics-and-autoscale"></a>A klasszikus üzembe helyezési modell API-jai kiAzure Monitor a metrikák és az autoskálázás számára
@@ -35,9 +34,9 @@ Ez a cikk Önre vonatkozik, ha a következő összetevőket használja:
 
 Ha nem biztos abban, hogy a kód vagy az egyéni eszközök meghívja a klasszikus API-kat, tekintse meg a következőket:
 
-- Tekintse át a kódban vagy eszközben hivatkozott URI-t. A klasszikus API-k az https://management.core.windows.netURI-t használják. A-vel `https://management.azure.com/`kezdődően a Resource Manager-alapú API-k újabb URI-ját kell használnia.
+- Tekintse át a kódban vagy eszközben hivatkozott URI-t. A klasszikus API-k az URI-t használják https://management.core.windows.net . A-vel kezdődően a Resource Manager-alapú API-k újabb URI-JÁT kell használnia `https://management.azure.com/` .
 
-- Hasonlítsa össze a szerelvény nevét a gépen. A régi klasszikus szerelvény a következő https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/címen érhető el:.
+- Hasonlítsa össze a szerelvény nevét a gépen. A régi klasszikus szerelvény a következő címen érhető el: https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/ .
 
 - Ha tanúsítványalapú hitelesítést használ a metrikák vagy az autoscale API-k eléréséhez, klasszikus végpontot és könyvtárat használ. Az újabb Resource Manager API-k Azure Active Directory hitelesítést igényelnek egy egyszerű szolgáltatásnév vagy egy egyszerű felhasználó használatával.
 
@@ -83,9 +82,9 @@ A rendszer kivonulási értesítést küldött az e-mail-címekre a következő 
 - Fiók-és szolgáltatás-rendszergazdák
 - Társrendszergazdák  
 
-Ha kérdése van, lépjen kapcsolatba velünk a következő MonitorClassicAPIhelp@microsoft.comcímen:.  
+Ha kérdése van, lépjen kapcsolatba velünk a következő címen: MonitorClassicAPIhelp@microsoft.com .  
 
-## <a name="references"></a>Referencia
+## <a name="references"></a>Hivatkozások
 
 - [Újabb REST API-k a Azure Monitorhoz](https://docs.microsoft.com/rest/api/monitor/) 
 - [Újabb Azure Monitor SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/)

@@ -4,10 +4,9 @@ description: A ASP.NET-alkalmazásokból származó kivételek rögzítése a k�
 ms.topic: conceptual
 ms.date: 07/11/2019
 ms.openlocfilehash: 9f24f09e7d2ef0a3e5f3a8f6546a9115118473ab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80892342"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Webalkalmazások kivételeinek diagnosztizálása az Application Insightsszal
@@ -157,7 +156,7 @@ A tulajdonságok és a mérések paramétereinek megadása nem kötelező, de ha
 ## <a name="browser-exceptions"></a>Böngészőkivételek
 A legtöbb böngészőbeli kivételt jelenteni kell.
 
-Ha a weblap parancsfájlokat tartalmaz a Content Delivery Networks vagy más tartományokból, győződjön meg arról, hogy a ```crossorigin="anonymous"```parancsfájl címkéje rendelkezik az attribútummal, és hogy a kiszolgáló [CORS-fejléceket](https://enable-cors.org/)küld. Ez lehetővé teszi, hogy lekérje a verem nyomon követését és részleteit a nem kezelt JavaScript-kivételekről ezekből az erőforrásokból.
+Ha a weblap parancsfájlokat tartalmaz a Content Delivery Networks vagy más tartományokból, győződjön meg arról, hogy a parancsfájl címkéje rendelkezik az attribútummal ```crossorigin="anonymous"``` , és hogy a kiszolgáló [CORS-fejléceket](https://enable-cors.org/)küld. Ez lehetővé teszi, hogy lekérje a verem nyomon követését és részleteit a nem kezelt JavaScript-kivételekről ezekből az erőforrásokból.
 
 ## <a name="reuse-your-telemetry-client"></a>A telemetria-ügyfél újrafelhasználása
 
@@ -209,12 +208,12 @@ Számos esetben a kivétel szűrői nem kezelhetik. Például:
 * Kivétel történt a háttérben végzett feladatokban.
 
 Az alkalmazás által *kezelt* összes kivételt manuálisan kell nyomon követni.
-A vezérlőkből származó nem kezelt kivételek általában 500 "belső kiszolgálóhiba" választ eredményeznek. Ha az ilyen választ a kezelt kivétel (vagy egyáltalán nem kivétel) eredményeképpen manuálisan készíti el, azt a `ResultCode` 500-es megfelelő kérelem telemetria nyomon követheti, azonban Application Insights SDK nem tudja követni a megfelelő kivételt.
+A vezérlőkből származó nem kezelt kivételek általában 500 "belső kiszolgálóhiba" választ eredményeznek. Ha az ilyen választ a kezelt kivétel (vagy egyáltalán nem kivétel) eredményeképpen manuálisan készíti el, azt a 500-es megfelelő kérelem telemetria nyomon követheti `ResultCode` , azonban Application INSIGHTS SDK nem tudja követni a megfelelő kivételt.
 
 ### <a name="prior-versions-support"></a>Korábbi verziók támogatása
 Ha a Application Insights web SDK 2,5-as (és korábbi) MVC 4 (és korábbi) változatát használja, a kivételek nyomon követéséhez tekintse meg az alábbi példákat.
 
-Ha a [CustomErrors](https://msdn.microsoft.com/library/h0hfz6fc.aspx) `Off`-konfiguráció, akkor a kivételek lesznek elérhetők a [http-modul](https://msdn.microsoft.com/library/ms178468.aspx) összegyűjtéséhez. Ha azonban az `RemoteOnly` (alapértelmezett) vagy `On`a, akkor a rendszer törli a kivételt, és nem lesz elérhető Application Insights számára az automatikus gyűjtéshez. A [System. Web. MVC. HandleErrorAttribute osztály](https://msdn.microsoft.com/library/system.web.mvc.handleerrorattribute.aspx)felülbírálásával és a felülbírált osztály alkalmazásával az alábbi, a különböző MVC-verzióknál ([GitHub-forrás](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions/blob/master/MVC2App/Controllers/AiHandleErrorAttribute.cs)) látható módon kijavíthatja a következőt:
+Ha a [CustomErrors](https://msdn.microsoft.com/library/h0hfz6fc.aspx) -konfiguráció `Off` , akkor a kivételek lesznek elérhetők a [http-modul](https://msdn.microsoft.com/library/ms178468.aspx) összegyűjtéséhez. Ha azonban az `RemoteOnly` (alapértelmezett) vagy `On` a, akkor a rendszer törli a kivételt, és nem lesz elérhető Application Insights számára az automatikus gyűjtéshez. A [System. Web. MVC. HandleErrorAttribute osztály](https://msdn.microsoft.com/library/system.web.mvc.handleerrorattribute.aspx)felülbírálásával és a felülbírált osztály alkalmazásával az alábbi, a különböző MVC-verzióknál ([GitHub-forrás](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions/blob/master/MVC2App/Controllers/AiHandleErrorAttribute.cs)) látható módon kijavíthatja a következőt:
 
 ```csharp
     using System;
@@ -301,7 +300,7 @@ Számos esetben a kivétel szűrői nem kezelhetik. Például:
 * Kivétel történt a háttérben végzett feladatokban.
 
 Az alkalmazás által *kezelt* összes kivételt manuálisan kell nyomon követni.
-A vezérlőkből származó nem kezelt kivételek általában 500 "belső kiszolgálóhiba" választ eredményeznek. Ha az ilyen választ a kezelt kivétel (vagy egyáltalán nem kivétel) eredményeképpen manuálisan készíti el, azt a 500-es `ResultCode` megfelelő kérelem telemetria nyomon követheti, azonban Application Insights SDK nem tudja követni a megfelelő kivételt.
+A vezérlőkből származó nem kezelt kivételek általában 500 "belső kiszolgálóhiba" választ eredményeznek. Ha az ilyen választ a kezelt kivétel (vagy egyáltalán nem kivétel) eredményeképpen manuálisan készíti el, azt a 500-es megfelelő kérelem telemetria nyomon követheti `ResultCode` , azonban Application INSIGHTS SDK nem tudja követni a megfelelő kivételt.
 
 ### <a name="prior-versions-support"></a>Korábbi verziók támogatása
 Ha Application Insights web SDK 2,5 (és korábbi) WebAPI 1 (és korábbi) használatát használja, a kivételek nyomon követéséhez tekintse meg az alábbi példákat.

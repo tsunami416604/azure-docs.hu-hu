@@ -7,10 +7,9 @@ ms.author: yalavi
 author: yalavi
 ms.subservice: alerts
 ms.openlocfilehash: d31c856e17348c23ad61130869af6ae440d3050d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81114305"
 ---
 # <a name="understand-how-the-migration-tool-works"></a>A migrálási eszköz működésének ismertetése
@@ -121,10 +120,10 @@ Ezek a klasszikus riasztási szabályok a korábban támogatott metrikák eseté
 
 ## <a name="how-equivalent-new-alert-rules-and-action-groups-are-created"></a>Hogyan hozhatók létre egyenértékű új riasztási szabályok és műveleti csoportok
 
-Az áttelepítési eszköz a klasszikus riasztási szabályokat egyenértékű új riasztási szabályokkal és műveleti csoportokkal alakítja át. A klasszikus riasztási szabályok többsége esetében az egyenértékű új riasztási szabályok ugyanazon a metrikán vannak, mint `windowSize` a `aggregationType`és a. Van azonban néhány klasszikus riasztási szabály olyan metrikák esetében, amelyek eltérő, egyenértékű metrikával rendelkeznek az új rendszeren. A klasszikus riasztások áttelepítésére az alábbi alapelvek érvényesek, kivéve, ha az alábbi szakaszban szerepel:
+Az áttelepítési eszköz a klasszikus riasztási szabályokat egyenértékű új riasztási szabályokkal és műveleti csoportokkal alakítja át. A klasszikus riasztási szabályok többsége esetében az egyenértékű új riasztási szabályok ugyanazon a metrikán vannak, mint a `windowSize` és a `aggregationType` . Van azonban néhány klasszikus riasztási szabály olyan metrikák esetében, amelyek eltérő, egyenértékű metrikával rendelkeznek az új rendszeren. A klasszikus riasztások áttelepítésére az alábbi alapelvek érvényesek, kivéve, ha az alábbi szakaszban szerepel:
 
 - **Gyakoriság**: azt határozza meg, hogy egy klasszikus vagy új riasztási szabály milyen gyakran ellenőrizze a feltételt. A `frequency` klasszikus riasztási szabályokat a felhasználó nem konfigurálta, és minden erőforrástípus esetében 5 perc volt, kivéve azokat Application Insights összetevőket, amelyekhez 1 perc volt. Ezért az egyenértékű szabályok gyakorisága 5 perc és 1 perc is lehet.
-- **Összesítés típusa**: meghatározza, hogy a metrika hogyan legyen összesítve az adott ablakban. A `aggregationType` a klasszikus riasztások és az új riasztások a legtöbb metrika esetében is megegyeznek. Bizonyos esetekben, mivel a metrika különbözik a klasszikus riasztások és az új riasztások `aggregationType` , az `primary Aggregation Type` egyenértékű vagy a mérőszámhoz megadott értéktől.
+- **Összesítés típusa**: meghatározza, hogy a metrika hogyan legyen összesítve az adott ablakban. A a `aggregationType` klasszikus riasztások és az új riasztások a legtöbb metrika esetében is megegyeznek. Bizonyos esetekben, mivel a metrika különbözik a klasszikus riasztások és az új riasztások, az egyenértékű `aggregationType` vagy a `primary Aggregation Type` mérőszámhoz megadott értéktől.
 - **Units**: a riasztást létrehozó metrika tulajdonsága. Egyes egyenértékű mérőszámok eltérő egységekkel rendelkeznek. A küszöbértéket szükség szerint korrigálni kell. Ha például az eredeti metrika másodperceket tartalmaz egységként, de az egyenértékű új metrika egységként Ezredmásodperctel rendelkezik, az eredeti küszöbértéket a 1000-es értékkel kell megszorozni, hogy az azonos viselkedést biztosítson.
 - **Ablak mérete**: meghatározza azt az ablakot, amely alatt a metrikai adatok összesítése történik a küszöbértékkel való összehasonlításhoz. A standard `windowSize` értékek, például a 5mins, a 15mins, a 30mins, a 1óra, a 3hours, a 6 óra, a 12 óra, 1 nap, az egyenértékű új riasztási szabály esetében nem történt változás. Más értékek esetén a legközelebb `windowSize` van kiválasztva a használathoz. A legtöbb ügyfél esetében ez a változás nem befolyásolja a változást. Az ügyfelek kis hányada esetében előfordulhat, hogy a küszöbértéket úgy kell megcsípni, hogy pontosan ugyanazt a viselkedést kapja.
 
@@ -146,12 +145,12 @@ A Storage-fiókokhoz, például a blobhoz, a táblához, a fájlokhoz és a vár
 | AuthorizationError | Tranzakciós metrika a következő dimenziókkal: "ResponseType" = "AuthorizationError" | |
 | AverageE2ELatency | SuccessE2ELatency | |
 | AverageServerLatency | SuccessServerLatency | |
-| Kapacitás | BlobCapacity | Az `aggregationType` "átlag" helyett használja a "Last" értéket. A metrika csak a blob-szolgáltatásokra vonatkozik |
+| Kapacitás | BlobCapacity | `aggregationType`Az "átlag" helyett használja a "Last" értéket. A metrika csak a blob-szolgáltatásokra vonatkozik |
 | ClientOtherError | Tranzakciós metrika a következő dimenziókkal: "ResponseType" = "ClientOtherError"  | |
 | ClientTimeoutError | Tranzakciós metrika a következő dimenziókkal: "ResponseType" = "ClientTimeOutError" | |
-| ContainerCount | ContainerCount | Az `aggregationType` "átlag" helyett használja a "Last" értéket. A metrika csak a blob-szolgáltatásokra vonatkozik |
+| ContainerCount | ContainerCount | `aggregationType`Az "átlag" helyett használja a "Last" értéket. A metrika csak a blob-szolgáltatásokra vonatkozik |
 | NetworkError | Tranzakciós metrika a következő dimenziókkal: "ResponseType" = "NetworkError" | |
-| ObjectCount | BlobCount| Az `aggregationType` "átlag" helyett használja a "Last" értéket. A metrika csak a blob-szolgáltatásokra vonatkozik |
+| ObjectCount | BlobCount| `aggregationType`Az "átlag" helyett használja a "Last" értéket. A metrika csak a blob-szolgáltatásokra vonatkozik |
 | SASAuthorizationError | Tranzakciós metrika a következő dimenziókkal: "ResponseType" = "AuthorizationError" és "Authentication" = "SAS" | |
 | SASClientOtherError | Tranzakciós metrika a következő dimenziókkal: "ResponseType" = "ClientOtherError" és "Authentication" = "SAS" | |
 | SASClientTimeOutError | Tranzakciós metrika a következő dimenziókkal: "ResponseType" = "ClientTimeOutError" és "Authentication" = "SAS" | |
@@ -175,8 +174,8 @@ Application Insights esetén az egyenértékű mérőszámok az alábbiak szerin
 |--------------------------|---------------------------------|---------|
 | rendelkezésre állás. availabilityMetric. Value | availabilityResults/availabilityPercentage|   |
 | rendelkezésre állás. durationMetric. Value | availabilityResults/időtartam| Az eredeti küszöbértéket 1000-ként szorozzuk meg, mivel a klasszikus metrika egysége másodpercben van, és az új érték ezredmásodpercben van.  |
-| basicExceptionBrowser. Count | kivételek/böngésző|  A `aggregationType` "Sum" helyett használja a "Count" értéket. |
-| basicExceptionServer. Count | kivételek/kiszolgáló| A `aggregationType` "Sum" helyett használja a "Count" értéket.  |
+| basicExceptionBrowser. Count | kivételek/böngésző|  `aggregationType`A "Sum" helyett használja a "Count" értéket. |
+| basicExceptionServer. Count | kivételek/kiszolgáló| `aggregationType`A "Sum" helyett használja a "Count" értéket.  |
 | clientPerformance. clientProcess. Value | browserTimings/processingDuration| Az eredeti küszöbértéket 1000-ként szorozzuk meg, mivel a klasszikus metrika egysége másodpercben van, és az új érték ezredmásodpercben van.  |
 | clientPerformance. networkConnection. Value | browserTimings/networkDuration|  Az eredeti küszöbértéket 1000-ként szorozzuk meg, mivel a klasszikus metrika egysége másodpercben van, és az új érték ezredmásodpercben van. |
 | clientPerformance. receiveRequest. Value | browserTimings/receiveDuration| Az eredeti küszöbértéket 1000-ként szorozzuk meg, mivel a klasszikus metrika egysége másodpercben van, és az új érték ezredmásodpercben van.  |
@@ -194,10 +193,10 @@ Application Insights esetén az egyenértékű mérőszámok az alábbiak szerin
 | performanceCounter. requests_per_sec. Value | performanceCounters/requestsPerSecond|   |
 | kérelem. időtartam | kérelmek/időtartam| Az eredeti küszöbértéket 1000-ként szorozzuk meg, mivel a klasszikus metrika egysége másodpercben van, és az új érték ezredmásodpercben van.  |
 | kérelem. arány | kérelmek/díjszabás|   |
-| requestFailed. Count | kérelmek/sikertelen| A `aggregationType` "Sum" helyett használja a "Count" értéket.   |
-| megtekintés. darabszám | Oldalmegtekintések/darabszám| A `aggregationType` "Sum" helyett használja a "Count" értéket.   |
+| requestFailed. Count | kérelmek/sikertelen| `aggregationType`A "Sum" helyett használja a "Count" értéket.   |
+| megtekintés. darabszám | Oldalmegtekintések/darabszám| `aggregationType`A "Sum" helyett használja a "Count" értéket.   |
 
-### <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft. DocumentDB/databaseAccounts
+### <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.DocumentDB/databaseAccounts
 
 Cosmos DB esetén az egyenértékű mérőszámok az alábbiak szerint jelennek meg:
 

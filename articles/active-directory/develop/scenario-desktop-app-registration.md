@@ -12,10 +12,9 @@ ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 599603ba867e21694392e38e9692280f010e08eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80885157"
 ---
 # <a name="desktop-app-that-calls-web-apis-app-registration"></a>Webes API-kat meghívó asztali alkalmazás: alkalmazás regisztrálása
@@ -40,10 +39,10 @@ Ha az asztali alkalmazás interaktív hitelesítést használ, bármilyen [fiók
 
 Az asztali alkalmazásokban használandó átirányítási URI-k a használni kívánt folyamattól függenek.
 
-- Ha az interaktív hitelesítést vagy az eszköz kódjának folyamatát `https://login.microsoftonline.com/common/oauth2/nativeclient`használja, használja a t. A konfiguráció eléréséhez válassza ki a megfelelő URL-címet az alkalmazás **hitelesítés** szakaszában.
+- Ha az interaktív hitelesítést vagy az eszköz kódjának folyamatát használja, használja a t `https://login.microsoftonline.com/common/oauth2/nativeclient` . A konfiguráció eléréséhez válassza ki a megfelelő URL-címet az alkalmazás **hitelesítés** szakaszában.
   
   > [!IMPORTANT]
-  > Napjainkban a MSAL.NET egy másik átirányítási URI-t használ a Windows (`urn:ietf:wg:oauth:2.0:oob`) rendszeren futó asztali alkalmazásokban. A jövőben módosítani fogjuk ezt az alapértelmezett értéket, ezért javasoljuk, hogy használja `https://login.microsoftonline.com/common/oauth2/nativeclient`a következőt:.
+  > Napjainkban a MSAL.NET egy másik átirányítási URI-t használ a Windows () rendszeren futó asztali alkalmazásokban `urn:ietf:wg:oauth:2.0:oob` . A jövőben módosítani fogjuk ezt az alapértelmezett értéket, ezért javasoljuk, hogy használja a következőt: `https://login.microsoftonline.com/common/oauth2/nativeclient` .
 
 - Ha macOS-hez készült natív Objective-C vagy SWIFT alkalmazást hoz létre, regisztrálja az átirányítási URI-t az alkalmazás köteg-azonosítója alapján a következő formátumban: msauth. <your.app.bundle.id>://auth. cserélje le <your.app.bundle.id> az alkalmazás Bundle-azonosítójával.
 - Ha az alkalmazás kizárólag integrált Windows-hitelesítést vagy felhasználónevet és jelszót használ, nem kell regisztrálnia az alkalmazás átirányítási URI-JÁT. Ezek a folyamatok a Microsoft Identity platform 2.0-s végpontján keresztül egy oda-vissza. Az alkalmazás nem hívható vissza semmilyen konkrét URI-ra.

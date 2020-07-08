@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
 ms.openlocfilehash: f31fcc07bed0287c2f86ca4fe52bf02a2a1d2a71
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81114410"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>Logikai alkalmazások és runbookok előkészítése a klasszikus riasztási szabályok migrálására
@@ -24,7 +23,7 @@ Ha úgy dönt, hogy önként áttelepíti a klasszikus riasztási szabályokat a
 
 ## <a name="api-changes"></a>API-változások
 
-A klasszikus riasztási szabályokat`microsoft.insights/alertrules`létrehozó és kezelő API-k eltérnek az új metrikai riasztásokat (`microsoft.insights/metricalerts`) létrehozó és kezelő API-kkal. Ha még ma hozza létre és felügyeli a klasszikus riasztási szabályokat, frissítse az üzembe helyezési parancsfájlokat az új API-kkal való együttműködéshez.
+A klasszikus riasztási szabályokat létrehozó és kezelő API-k `microsoft.insights/alertrules` eltérnek az új metrikai riasztásokat () létrehozó és kezelő API-kkal `microsoft.insights/metricalerts` . Ha még ma hozza létre és felügyeli a klasszikus riasztási szabályokat, frissítse az üzembe helyezési parancsfájlokat az új API-kkal való együttműködéshez.
 
 A következő táblázat a klasszikus és az új riasztások programozott interfészeit ismerteti:
 
@@ -32,7 +31,7 @@ A következő táblázat a klasszikus és az új riasztások programozott interf
 |---------|---------|---------|
 |REST API     | [Microsoft. bepillantások/alertrules](https://docs.microsoft.com/rest/api/monitor/alertrules)         | [Microsoft. bepillantások/metricalerts](https://docs.microsoft.com/rest/api/monitor/metricalerts)       |
 |Azure CLI     | [az monitor Alert](https://docs.microsoft.com/cli/azure/monitor/alert?view=azure-cli-latest)        | [az monitor Metrics Alert](https://docs.microsoft.com/cli/azure/monitor/metrics/alert?view=azure-cli-latest)        |
-|PowerShell      | [Referencia](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrule)       |  [Referencia](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2)    |
+|PowerShell      | [Hivatkozás](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrule)       |  [Hivatkozás](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2)    |
 | Azure Resource Manager-sablon | [Klasszikus riasztások esetén](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-enable-template)|[Új metrikai riasztások esetén](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates)|
 
 ## <a name="notification-payload-changes"></a>Értesítési tartalom változásai

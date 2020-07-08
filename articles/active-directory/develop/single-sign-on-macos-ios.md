@@ -14,10 +14,9 @@ ms.author: marsma
 ms.reviewer: ''
 ms.custom: aaddev
 ms.openlocfilehash: 25389348476552298ddb947ccb59acb8b3d5bc57
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80881248"
 ---
 # <a name="how-to-configure-sso-on-macos-and-ios"></a>Útmutató: az SSO konfigurálása macOS és iOS rendszeren
@@ -78,7 +77,7 @@ App3 átirányítási URI:`msauth.com.contoso.mytestapp3://auth`
 
 A kulcstartó megosztásának engedélyezéséhez tekintse meg az Apple [hozzáadási képességeivel](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html) foglalkozó cikket. Fontos, hogy eldöntse, mit szeretne meghívni a kulcstartót, és ezt a képességet adja hozzá az összes olyan alkalmazáshoz, amely az egyszeri bejelentkezésben részt vesz.
 
-Ha helyesen állította be a jogosultságokat, egy olyan `entitlements.plist` fájlt fog látni a projekt könyvtárában, amely a következőhöz hasonló példát tartalmaz:
+Ha helyesen állította be a jogosultságokat, egy olyan fájlt fog látni `entitlements.plist` a projekt könyvtárában, amely a következőhöz hasonló példát tartalmaz:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -106,7 +105,7 @@ További információ: kulcstartó- [csoportok](howto-v2-keychain-objc.md).
 
 ## <a name="configure-the-application-object"></a>Az alkalmazás-objektum konfigurálása
 
-Miután az összes alkalmazásban engedélyezte a kulcstartó jogosultságot, és készen áll az egyszeri bejelentkezés használatára, konfigurálja `MSALPublicClientApplication` a kulcstartó-hozzáférési csoporttal a következő példában látható módon:
+Miután az összes alkalmazásban engedélyezte a kulcstartó jogosultságot, és készen áll az egyszeri bejelentkezés használatára, konfigurálja a `MSALPublicClientApplication` kulcstartó-hozzáférési csoporttal a következő példában látható módon:
 
 Objective-C:
 
@@ -145,7 +144,7 @@ A MSAL támogatja a Microsoft Authenticator felügyelt hitelesítését. A Micro
 
 Az alábbi lépéseket követve engedélyezheti az egyszeri bejelentkezést az alkalmazáshoz tartozó hitelesítési közvetítő használatával:
 
-1. Regisztráljon egy Broker-kompatibilis átirányítási URI-formátumot az alkalmazás info. plist fájljában. A Broker-kompatibilis átirányítási URI `msauth.<app.bundle.id>://auth`formátuma. Cserélje le az "<app.bundle.id>" "helyére az alkalmazás Bundle-azonosítójával. Például:
+1. Regisztráljon egy Broker-kompatibilis átirányítási URI-formátumot az alkalmazás info. plist fájljában. A Broker-kompatibilis átirányítási URI formátuma `msauth.<app.bundle.id>://auth` . Cserélje le az "<app.bundle.id>" "helyére az alkalmazás Bundle-azonosítójával. Például:
 
     ```xml
     <key>CFBundleURLSchemes</key>
@@ -154,7 +153,7 @@ Az alábbi lépéseket követve engedélyezheti az egyszeri bejelentkezést az a
     </array>
     ```
 
-1. Adja hozzá az alábbi sémákat az alkalmazás info. plist fájljában `LSApplicationQueriesSchemes`:
+1. Adja hozzá az alábbi sémákat az alkalmazás info. plist fájljában `LSApplicationQueriesSchemes` :
 
     ```xml
     <key>LSApplicationQueriesSchemes</key>
@@ -164,7 +163,7 @@ Az alábbi lépéseket követve engedélyezheti az egyszeri bejelentkezést az a
     </array>
     ```
 
-1. Adja hozzá a következőt `AppDelegate.m` a fájlhoz a visszahívások kezeléséhez:
+1. Adja hozzá a következőt a `AppDelegate.m` fájlhoz a visszahívások kezeléséhez:
 
     Objective-C:
     

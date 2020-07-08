@@ -18,10 +18,9 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0822bdd886a9a29f2cdb6843d3dc4404d7360f32
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81261023"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure AD-tevékenységek naplói a Azure Monitor
@@ -78,10 +77,10 @@ Az alábbi táblázat tartalmaz egy költségbecslést a bérlő méretének fü
 
 | Naplókategória | Felhasználók száma | Napi események | Havi adatmennyiség (becsült) | Havi költség (becsült) | Éves költség (becsült) |
 |--------------|-----------------|----------------------|--------------------------------------|----------------------------|---------------------------|
-| Naplózás | 100 000 | 1,5&nbsp;millió | 90 GB | 1,93 dollár | 23,12 dollár |
+| Naplózás | 100.000 | 1,5&nbsp;millió | 90 GB | 1,93 dollár | 23,12 dollár |
 | Naplózás | 1,000 | 15 000 | 900 MB | 0,02 dollár | 0,24 dollár |
 | Bejelentkezések | 1,000 | 34 800 | 4 GB | 0,13 dollár | 1,56 dollár |
-| Bejelentkezések | 100 000 | 15&nbsp;millió | 1,7 TB | 35,41 dollár | 424,92 dollár |
+| Bejelentkezések | 100.000 | 15&nbsp;millió | 1,7 TB | 35,41 dollár | 424,92 dollár |
  
 
 
@@ -102,9 +101,9 @@ Az alábbi táblázat az USA nyugati régiójában található alapszintű Event
 
 | Naplókategória | Felhasználók száma | Események száma másodpercenként | Események száma ötperces időközönként | Adatmennyiség az egyes időablakokban | Üzenetek száma időközönként | Üzenetek száma havonta | Havi költség (becsült) |
 |--------------|-----------------|-------------------------|----------------------------------------|---------------------|---------------------------------|------------------------------|----------------------------|
-| Naplózás | 100 000 | 18 | 5400 | 10,8 MB | 43 | 371 520 | 10,83 dollár |
-| Naplózás | 1,000 | 0,1 | 52 | 104 KB | 1 | 8640 | 10,80 dollár |
-| Bejelentkezések | 100 000 | 18000 | 5 400 000 | 10,8 GB | 42188 | 364 504 320 | $23,9 |  
+| Naplózás | 100.000 | 18 | 5400 | 10,8 MB | 43 | 371 520 | 10,83 dollár |
+| Naplózás | 1,000 | 0.1 | 52 | 104 KB | 1 | 8640 | 10,80 dollár |
+| Bejelentkezések | 100.000 | 18000 | 5 400 000 | 10,8 GB | 42188 | 364 504 320 | $23,9 |  
 | Bejelentkezések | 1,000 | 178 | 53 400 | 106,8&nbsp;MB | 418 | 3 611 520 | 11,06 dollár |  
 
 ### <a name="azure-monitor-logs-cost-considerations"></a>A Azure Monitor naplózza a költségeket
@@ -113,9 +112,9 @@ Az alábbi táblázat az USA nyugati régiójában található alapszintű Event
 
 | Naplókategória       | Felhasználók száma | Napi események | Esemény havonta (30 nap) | Havi díj USD-ben (EST) |
 | :--                | ---             | ---            | ---                        | --:                          |
-| Naplózás és bejelentkezések | 100 000         | 16 500 000     | 495 000 000                |  $1093,00                       |
-| Naplózás              | 100 000         | 1 500 000      | 45 000 000                 |  $246,66                     |
-| Bejelentkezések           | 100 000         | 15 000 000     | 450 000 000                |  $847,28                     |
+| Naplózás és bejelentkezések | 100.000         | 16 500 000     | 495 000 000                |  $1093,00                       |
+| Naplózás              | 100.000         | 1 500 000      | 45 000 000                 |  $246,66                     |
+| Bejelentkezések           | 100.000         | 15 000 000     | 450 000 000                |  $847,28                     |
 
 
 

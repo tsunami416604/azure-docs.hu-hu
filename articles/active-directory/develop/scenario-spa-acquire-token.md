@@ -12,15 +12,14 @@ ms.date: 08/20/2019
 ms.author: negoe
 ms.custom: aaddev
 ms.openlocfilehash: eeba01a609a1a21ed564c0b9cb78a28a4ad5c95a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80882318"
 ---
 # <a name="single-page-application-acquire-a-token-to-call-an-api"></a>Egyoldalas alkalmazás: token beszerzése egy API meghívásához
 
-A MSAL. js használatával az API-k jogkivonatok beszerzésének mintája először egy csendes jogkivonat-kérést `acquireTokenSilent` próbál meg használni a metódussal. A metódus meghívásakor a függvénytár először ellenőrzi a gyorsítótárat a böngésző tárolójában, hogy létezik-e érvényes jogkivonat, és visszaadja azt. Ha nem található érvényes jogkivonat a gyorsítótárban, egy csendes jogkivonat-kérést küld Azure Active Directory (Azure AD) egy rejtett iframe-ből. Ez a módszer azt is lehetővé teszi, hogy a könyvtár megújítsa a jogkivonatokat. További információ az egyszeri bejelentkezési munkamenetről és a jogkivonat élettartamának értékéről az Azure AD-ben: [token élettartama](active-directory-configurable-token-lifetimes.md).
+A MSAL.js az API-k jogkivonatok beszerzésének mintája, ha először egy csendes jogkivonat-kérést próbál meg használni a `acquireTokenSilent` metódus használatával. A metódus meghívásakor a függvénytár először ellenőrzi a gyorsítótárat a böngésző tárolójában, hogy létezik-e érvényes jogkivonat, és visszaadja azt. Ha nem található érvényes jogkivonat a gyorsítótárban, egy csendes jogkivonat-kérést küld Azure Active Directory (Azure AD) egy rejtett iframe-ből. Ez a módszer azt is lehetővé teszi, hogy a könyvtár megújítsa a jogkivonatokat. További információ az egyszeri bejelentkezési munkamenetről és a jogkivonat élettartamának értékéről az Azure AD-ben: [token élettartama](active-directory-configurable-token-lifetimes.md).
 
 Az Azure AD-ba érkező csendes jogkivonat-kérések sikertelenek lehetnek olyan okokból, mint a lejárt Azure AD-munkamenet vagy a jelszó módosítása. Ebben az esetben meghívhatja az egyik interaktív metódust (amely felszólítja a felhasználót) a tokenek beszerzésére:
 
@@ -70,7 +69,7 @@ userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(access
 
 A MSAL szögletes burkolója biztosítja a HTTP Interceptor-t, amely a hozzáférési jogkivonatokat csendes üzemmódban automatikusan beszerzi, és csatolja őket a HTTP-kérésekhez API-khoz.
 
-A `protectedResourceMap` konfigurációs beállításban megadhatja az API-k hatóköreit. `MsalInterceptor`a a jogkivonatok automatikus beszerzése után fogja kérni ezeket a hatóköröket.
+A konfigurációs beállításban megadhatja az API-k hatóköreit `protectedResourceMap` . `MsalInterceptor`a a jogkivonatok automatikus beszerzése után fogja kérni ezeket a hatóköröket.
 
 ```javascript
 // app.module.ts
@@ -126,7 +125,7 @@ ngOnDestroy() {
  }
 ```
 
-Azt is megteheti, hogy a tokeneket explicit módon beolvassa a beszerzési lexikális metódusok használatával, ahogy azt az alapvető MSAL. js-függvénytárban ismertetjük.
+Azt is megteheti, hogy a tokeneket explicit módon beolvassa a beszerzési lexikális metódusok használatával, az alapvető MSAL.js könyvtárában leírtaknak megfelelően.
 
 ---
 
@@ -168,7 +167,7 @@ A választható jogcímeket a következő célokra használhatja:
 - Módosítsa az Azure AD által a jogkivonatokban visszaadott jogcímek viselkedését.
 - Egyéni jogcímek hozzáadása és elérése az alkalmazáshoz.
 
-Ha választható jogcímeket `IdToken`szeretne kérni a alkalmazásban, a sztringesített jogcím- `claimsRequest` objektumot az `AuthenticationParameters.ts` osztály mezőjébe küldheti.
+Ha választható jogcímeket szeretne kérni a alkalmazásban `IdToken` , a sztringesített jogcím-objektumot az `claimsRequest` osztály mezőjébe küldheti `AuthenticationParameters.ts` .
 
 ```javascript
 "optionalClaims":

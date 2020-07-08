@@ -13,10 +13,9 @@ ms.date: 08/28/2019
 ms.author: marsma
 ms.custom: aaddev
 ms.openlocfilehash: 1507231c3ab395319d5ce95ec06dbb592c324aa6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80881077"
 ---
 # <a name="how-to-troubleshoot-msal-for-ios-and-macos-tlsssl-issues"></a>Útmutató: az iOS-és macOS-alapú TLS/SSL-problémák MSAL hibaelhárítása
@@ -27,7 +26,7 @@ Ez a cikk az [iOS és a MacOS rendszerhez készült Microsoft Authentication Lib
 
 **Hiba-1200**: "SSL-hiba történt, és nem hozható létre biztonságos kapcsolat a kiszolgálóval."
 
-Ez a hiba azt jelenti, hogy a kapcsolatok nem biztonságosak. Akkor következik be, amikor egy tanúsítvány érvénytelen. Ha további információra van szó, beleértve a TLS-ellenőrzési hibát nem teljesítő kiszolgálót `NSURLErrorFailingURLErrorKey` , tekintse meg a következő témakört: `userInfo` .
+Ez a hiba azt jelenti, hogy a kapcsolatok nem biztonságosak. Akkor következik be, amikor egy tanúsítvány érvénytelen. Ha további információra van szó, beleértve a TLS-ellenőrzési hibát nem teljesítő kiszolgálót, tekintse meg a következő témakört `NSURLErrorFailingURLErrorKey` : `userInfo` .
 
 Ez a hiba az Apple hálózatkezelési könyvtárából származik. A NSURL-hibakódok teljes listája a macOS és iOS SDK-ban található NSURLError. h nyelven érhető el. A hibával kapcsolatos további információkért tekintse meg a [rendszerhiba-kódok betöltését](https://developer.apple.com/documentation/foundation/1508628-url_loading_system_error_codes?language=objc)ismertető témakört.
 

@@ -9,10 +9,9 @@ ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/15/2016
 ms.openlocfilehash: 0a8d79af9f45731971cb1be1f39fc193f9d0f0d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80878969"
 ---
 # <a name="outbound-authentication-for-azure-scheduler"></a>Kimenő hitelesítés az Azure Schedulerben
@@ -32,35 +31,35 @@ A Scheduler a következő hitelesítési modelleket támogatja:
 
 ## <a name="add-or-remove-authentication"></a>Hitelesítés hozzáadása vagy eltávolítása
 
-* Ha egy ütemező feladatokhoz szeretne hitelesítést felvenni, a feladatok létrehozásakor vagy frissítésekor `authentication` adja hozzá a JavaScript Object Notation (JSON) gyermek `request` elemet a elemhez. 
+* Ha egy ütemező feladatokhoz szeretne hitelesítést felvenni, a feladatok létrehozásakor vagy frissítésekor adja hozzá a `authentication` JavaScript Object Notation (JSON) gyermek elemet a `request` elemhez. 
 
-  A válaszok soha nem adnak vissza az ütemező szolgáltatásnak átadott titkos kulcsokat egy PUT, PATCH vagy POST `authentication` kéréssel az objektumban. 
+  A válaszok soha nem adnak vissza az ütemező szolgáltatásnak átadott titkos kulcsokat egy PUT, PATCH vagy POST kéréssel az `authentication` objektumban. 
   A válaszok NULL értékűre állítanak titkos adatokat, vagy a hitelesített entitást képviselő nyilvános jogkivonatot is használhatnak. 
 
-* Ha el szeretné távolítani a hitelesítést egy ütemező feladatokból, explicit módon futtasson egy PUT vagy PATCH kérelmet a `authentication` feladatokon, és állítsa az objektumot NULL értékre. A válasz nem tartalmaz hitelesítési tulajdonságokat.
+* Ha el szeretné távolítani a hitelesítést egy ütemező feladatokból, explicit módon futtasson egy PUT vagy PATCH kérelmet a feladatokon, és állítsa az `authentication` objektumot NULL értékre. A válasz nem tartalmaz hitelesítési tulajdonságokat.
 
 ## <a name="client-certificate"></a>Ügyféltanúsítvány
 
 ### <a name="request-body---client-certificate"></a>Kérelem törzse – ügyféltanúsítvány
 
-Ha a `ClientCertificate` modell használatával ad hozzá hitelesítést, adja meg ezeket a további elemeket a kérelem törzsében.  
+Ha a modell használatával ad hozzá hitelesítést `ClientCertificate` , adja meg ezeket a további elemeket a kérelem törzsében.  
 
 | Elem | Kötelező | Leírás |
 |---------|----------|-------------|
 | **hitelesítés** (szülő elem) | SSL/TLS-ügyféltanúsítvány használatára szolgáló hitelesítési objektum |
-| **típusa** | Igen | A hitelesítési típus. Az SSL/TLS-Ügyféltanúsítványok esetében az érték a `ClientCertificate`következő:. |
-| **pfx** | Igen | A PFX-fájl Base64 kódolású tartalma |
-| **alaphelyzetbe állítása** | Igen | A PFX-fájl eléréséhez használt jelszó |
+| **típusa** | Yes | A hitelesítési típus. Az SSL/TLS-Ügyféltanúsítványok esetében az érték a következő: `ClientCertificate` . |
+| **pfx** | Yes | A PFX-fájl Base64 kódolású tartalma |
+| **alaphelyzetbe állítása** | Yes | A PFX-fájl eléréséhez használt jelszó |
 ||| 
 
 ### <a name="response-body---client-certificate"></a>Válasz törzse – ügyféltanúsítvány 
 
 Ha a rendszer hitelesítési adatokkal küldi el a kérelmet, a válasz tartalmazza ezeket a hitelesítési elemeket.
 
-| Elem | Leírás | 
+| Elem | Description | 
 |---------|-------------| 
 | **hitelesítés** (szülő elem) | SSL/TLS-ügyféltanúsítvány használatára szolgáló hitelesítési objektum |
-| **típusa** | A hitelesítési típus. Az SSL/TLS-Ügyféltanúsítványok esetében az érték a `ClientCertificate`következő:. |
+| **típusa** | A hitelesítési típus. Az SSL/TLS-Ügyféltanúsítványok esetében az érték a következő: `ClientCertificate` . |
 | **certificateThumbprint** |A Tanúsítvány ujjlenyomata |
 | **certificateSubjectName** |A tanúsítvány tulajdonosának megkülönböztető neve |
 | **certificateExpiration** | A tanúsítvány lejárati dátuma |
@@ -159,28 +158,28 @@ Date: Wed, 16 Mar 2016 19:04:23 GMT
 }
 ```
 
-## <a name="basic"></a>Basic
+## <a name="basic"></a>Alapszintű
 
 ### <a name="request-body---basic"></a>Kérelem törzse – alapszintű
 
-Ha a `Basic` modell használatával ad hozzá hitelesítést, adja meg ezeket a további elemeket a kérelem törzsében.
+Ha a modell használatával ad hozzá hitelesítést `Basic` , adja meg ezeket a további elemeket a kérelem törzsében.
 
 | Elem | Kötelező | Leírás |
 |---------|----------|-------------|
 | **hitelesítés** (szülő elem) | Az alapszintű hitelesítés használatára szolgáló hitelesítési objektum | 
-| **típusa** | Igen | A hitelesítési típus. Az alapszintű hitelesítés esetében az `Basic`érték a következő:. | 
-| **username** | Igen | A hitelesíteni kívánt Felhasználónév | 
-| **alaphelyzetbe állítása** | Igen | A hitelesíteni kívánt jelszó |
+| **típusa** | Yes | A hitelesítési típus. Az alapszintű hitelesítés esetében az érték a következő: `Basic` . | 
+| **username** | Yes | A hitelesíteni kívánt Felhasználónév | 
+| **alaphelyzetbe állítása** | Yes | A hitelesíteni kívánt jelszó |
 |||| 
 
 ### <a name="response-body---basic"></a>Válasz törzse – alapszintű
 
 Ha a rendszer hitelesítési adatokkal küldi el a kérelmet, a válasz tartalmazza ezeket a hitelesítési elemeket.
 
-| Elem | Leírás | 
+| Elem | Description | 
 |---------|-------------|
 | **hitelesítés** (szülő elem) | Az alapszintű hitelesítés használatára szolgáló hitelesítési objektum |
-| **típusa** | A hitelesítési típus. Az alapszintű hitelesítés esetében az `Basic`érték a következő:. |
+| **típusa** | A hitelesítési típus. Az alapszintű hitelesítés esetében az érték a következő: `Basic` . |
 | **username** | A hitelesített Felhasználónév |
 ||| 
 
@@ -281,28 +280,28 @@ Date: Wed, 16 Mar 2016 19:05:06 GMT
 
 ### <a name="request-body---active-directory-oauth"></a>Kérelem törzse – Active Directory OAuth 
 
-Ha a `ActiveDirectoryOAuth` modell használatával ad hozzá hitelesítést, adja meg ezeket a további elemeket a kérelem törzsében.
+Ha a modell használatával ad hozzá hitelesítést `ActiveDirectoryOAuth` , adja meg ezeket a további elemeket a kérelem törzsében.
 
 | Elem | Kötelező | Leírás |
 |---------|----------|-------------|
-| **hitelesítés** (szülő elem) | Igen | A ActiveDirectoryOAuth-hitelesítés használatára szolgáló hitelesítési objektum |
-| **típusa** | Igen | A hitelesítési típus. A ActiveDirectoryOAuth-hitelesítés esetében az érték `ActiveDirectoryOAuth`a következő:. |
-| **Bérlő** | Igen | Az Azure AD-bérlő bérlői azonosítója. Az Azure AD-bérlő bérlői azonosítójának megkereséséhez `Get-AzureAccount` futtassa a következőt: Azure PowerShell. |
-| **célközönség** | Igen | Ez az érték a következőre van beállítva: `https://management.core.windows.net/`. | 
-| **clientId** | Igen | Az Azure AD-alkalmazás ügyfél-azonosítója | 
-| **titkos kód** | Igen | A jogkivonatot kérő ügyfél titka | 
+| **hitelesítés** (szülő elem) | Yes | A ActiveDirectoryOAuth-hitelesítés használatára szolgáló hitelesítési objektum |
+| **típusa** | Yes | A hitelesítési típus. A ActiveDirectoryOAuth-hitelesítés esetében az érték a következő: `ActiveDirectoryOAuth` . |
+| **bérlő** | Yes | Az Azure AD-bérlő bérlői azonosítója. Az Azure AD-bérlő bérlői azonosítójának megkereséséhez futtassa a `Get-AzureAccount` következőt: Azure PowerShell. |
+| **célközönség** | Yes | Ez az érték a következőre van beállítva: `https://management.core.windows.net/` . | 
+| **clientId** | Yes | Az Azure AD-alkalmazás ügyfél-azonosítója | 
+| **titkos** | Yes | A jogkivonatot kérő ügyfél titka | 
 |||| 
 
 ### <a name="response-body---active-directory-oauth"></a>Válasz törzse – Active Directory OAuth
 
 Ha a rendszer hitelesítési adatokkal küldi el a kérelmet, a válasz tartalmazza ezeket a hitelesítési elemeket.
 
-| Elem | Leírás |
+| Elem | Description |
 |---------|-------------|
 | **hitelesítés** (szülő elem) | A ActiveDirectoryOAuth-hitelesítés használatára szolgáló hitelesítési objektum |
-| **típusa** | A hitelesítési típus. A ActiveDirectoryOAuth-hitelesítés esetében az érték `ActiveDirectoryOAuth`a következő:. | 
-| **Bérlő** | Az Azure AD-bérlő bérlői azonosítója |
-| **célközönség** | Ez az érték a következőre van beállítva: `https://management.core.windows.net/`. |
+| **típusa** | A hitelesítési típus. A ActiveDirectoryOAuth-hitelesítés esetében az érték a következő: `ActiveDirectoryOAuth` . | 
+| **bérlő** | Az Azure AD-bérlő bérlői azonosítója |
+| **célközönség** | Ez az érték a következőre van beállítva: `https://management.core.windows.net/` . |
 | **clientId** | Az Azure AD-alkalmazás ügyfél-azonosítója |
 ||| 
 

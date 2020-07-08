@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 04/10/2020
 ms.author: victorh
 ms.openlocfilehash: 93677b3e473ab825665fed5590ac345a8cfcc300
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81113435"
 ---
 # <a name="azure-firewall-rule-processing-logic"></a>Az Azure Firewall szabályfeldolgozási logikája
@@ -40,7 +39,7 @@ Az alkalmazás szabályai nem alkalmazhatók a bejövő kapcsolatokra. Ha tehát
 
 A következő példák a szabályok néhány kombinációjának eredményét mutatják be.
 
-### <a name="example-1"></a>1. példa
+### <a name="example-1"></a>1\. példa
 
 A google.com való kapcsolódás a megfelelő hálózati szabály miatt engedélyezett.
 
@@ -49,7 +48,7 @@ A google.com való kapcsolódás a megfelelő hálózati szabály miatt engedél
 - Művelet: Engedélyezés
 
 
-|név  |Protocol (Protokoll)  |Forrás típusa  |Forrás  |Cél típusa  |Cél címe  |Célportok|
+|name  |Protokoll  |Forrás típusa  |Forrás  |Cél típusa  |Cél címe  |Célportok|
 |---------|---------|---------|---------|----------|----------|--------|
 |Engedélyezés – web     |TCP|IP-cím|*|IP-cím|*|80 443
 
@@ -57,7 +56,7 @@ A google.com való kapcsolódás a megfelelő hálózati szabály miatt engedél
 
 - Művelet: megtagadás
 
-|név  |Forrás típusa  |Forrás  |Protokoll: Port|Cél teljes tartománynevek|
+|name  |Forrás típusa  |Forrás  |Protokoll: Port|Cél teljes tartománynevek|
 |---------|---------|---------|---------|----------|----------|
 |Megtagadás – Google     |IP-cím|*|http: 80, https: 443|google.com
 
@@ -65,7 +64,7 @@ A google.com való kapcsolódás a megfelelő hálózati szabály miatt engedél
 
 A google.com-kapcsolat engedélyezve van, mert a csomag megfelel az *Allow-web* Network szabálynak. Ezen a ponton a szabályok feldolgozása leáll.
 
-### <a name="example-2"></a>2. példa
+### <a name="example-2"></a>2\. példa
 
 Az SSH-forgalmat a rendszer megtagadja, mert egy magasabb prioritású hálózati szabálygyűjtemény *tiltja* azt.
 
@@ -75,7 +74,7 @@ Az SSH-forgalmat a rendszer megtagadja, mert egy magasabb prioritású hálózat
 - Prioritás: 200
 - Művelet: Engedélyezés
 
-|név  |Protocol (Protokoll)  |Forrás típusa  |Forrás  |Cél típusa  |Cél címe  |Célportok|
+|name  |Protokoll  |Forrás típusa  |Forrás  |Cél típusa  |Cél címe  |Célportok|
 |---------|---------|---------|---------|----------|----------|--------|
 |Engedélyezés – SSH     |TCP|IP-cím|*|IP-cím|*|22
 
@@ -85,7 +84,7 @@ Az SSH-forgalmat a rendszer megtagadja, mert egy magasabb prioritású hálózat
 - Prioritás: 100
 - Művelet: megtagadás
 
-|név  |Protocol (Protokoll)  |Forrás típusa  |Forrás  |Cél típusa  |Cél címe  |Célportok|
+|name  |Protokoll  |Forrás típusa  |Forrás  |Cél típusa  |Cél címe  |Célportok|
 |---------|---------|---------|---------|----------|----------|--------|
 |Megtagadás – SSH     |TCP|IP-cím|*|IP-cím|*|22
 

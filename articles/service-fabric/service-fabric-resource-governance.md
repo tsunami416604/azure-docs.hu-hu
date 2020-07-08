@@ -4,10 +4,9 @@ description: Az Azure Service Fabric lehetővé teszi erőforrás-korlátok mega
 ms.topic: conceptual
 ms.date: 8/9/2017
 ms.openlocfilehash: 11ca6e29829d911717a829b3e4dee0a190856a52
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81115148"
 ---
 # <a name="resource-governance"></a>Erőforrások szabályozása
@@ -21,9 +20,9 @@ Ha több szolgáltatást futtat ugyanazon a csomóponton vagy fürtön, lehetsé
 
 Az erőforrás-szabályozás Service Fabric a [szervizcsomaggal](service-fabric-application-model.md)összhangban támogatott. A szervizcsomaghoz rendelt erőforrások tovább oszthatók a csomagok között. A megadott erőforrás-korlátok az erőforrások lefoglalását is jelentik. Service Fabric támogatja a CPU és a memória megadását a szervizcsomagok esetében, két beépített [metrikával](service-fabric-cluster-resource-manager-metrics.md):
 
-* *CPU* (metrika neve `servicefabric:/_CpuCores`): a gazdagépen elérhető logikai mag. Az összes csomóponton lévő összes mag súlyozása azonos.
+* *CPU* (metrika neve `servicefabric:/_CpuCores` ): a gazdagépen elérhető logikai mag. Az összes csomóponton lévő összes mag súlyozása azonos.
 
-* *Memória* (metrika neve `servicefabric:/_MemoryInMB`): a memória megabájtban van kifejezve, és a számítógépen elérhető fizikai memóriára van leképezve.
+* *Memória* (metrika neve `servicefabric:/_MemoryInMB` ): a memória megabájtban van kifejezve, és a számítógépen elérhető fizikai memóriára van leképezve.
 
 Ezen két metrika esetében a [fürterőforrás-kezelő](service-fabric-cluster-resource-manager-cluster-description.md) nyomon követi a fürt teljes kapacitását, a fürt egyes csomópontjainak terhelését, valamint a fürt többi erőforrását. Ez a két metrika egyenértékű a többi felhasználóval vagy egyéni metrikával. Az összes meglévő funkció használható együtt:
 
@@ -206,7 +205,7 @@ Az ilyen helyzetek elkerülése érdekében Service Fabric lehetővé teszi, hog
 
 További megjegyzések:
 
-* Az erőforrás-korlátozás kényszerítése csak `servicefabric:/_CpuCores` a `servicefabric:/_MemoryInMB` és az erőforrás-metrikára vonatkozik
+* Az erőforrás-korlátozás kényszerítése csak a `servicefabric:/_CpuCores` és az `servicefabric:/_MemoryInMB` erőforrás-metrikára vonatkozik
 * Az erőforrás-korlátozás kényszerítése csak akkor működik, ha az erőforrás-metrikák csomópont-kapacitása Service Fabric elérhető az automatikus észlelési mechanizmuson keresztül, vagy a felhasználók manuálisan, a csomópontok kapacitásának megadásával (ahogy azt az [erőforrás-irányítás engedélyezése](service-fabric-resource-governance.md#cluster-setup-for-enabling-resource-governance) című szakasz ismerteti).Ha a csomópont kapacitása nincs konfigurálva, az erőforrás-korlát kényszerítési funkciója nem használható, mert Service Fabric nem tudja, hogy mennyi erőforrást kell lefoglalni a felhasználói szolgáltatásokhoz.Ha a "EnforceUserServiceMetricCapacities" érték igaz, de a csomópont kapacitása nincs konfigurálva, a Service Fabric állapot figyelmeztetést ad ki.
 
 ## <a name="other-resources-for-containers"></a>A tárolók egyéb erőforrásai

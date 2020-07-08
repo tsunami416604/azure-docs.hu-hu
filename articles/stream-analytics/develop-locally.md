@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 03/31/2020
 ms.service: stream-analytics
 ms.openlocfilehash: 736fce1d4b347e36ad5c10ca89ad0627104a0232
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80879842"
 ---
 # <a name="develop-and-debug-azure-stream-analytics-jobs-locally"></a>Azure Stream Analytics feladatok helyi fejlesztése és hibakeresése
@@ -23,7 +22,7 @@ A Stream Analytics feladatok helyi számítógépen való fejlesztésének módj
 
 A következő táblázat környezetei támogatják a helyi fejlesztést:
 
-|Környezet                              |Leírás    |
+|Környezet                              |Description    |
 |-----------------------------------------|------------|
 |[Visual Studio Code](visual-studio-code-explore-jobs.md)| A Visual Studio Code-hoz készült [Azure stream Analytics Tools bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-bigdatatools.vscode-asa) lehetővé teszi a stream Analytics-feladatok helyben és a felhőben való létrehozását, kezelését és tesztelését, valamint a sokoldalú IntelliSense és a natív verziókövetés használatát. Támogatja a fejlesztést Linux, MacOS és Windows rendszeren. További információ: [Azure stream Analytics-feladatok létrehozása a Visual Studio Code-ban](quick-create-vs-code.md).|
 |[Visual Studio 2019](stream-analytics-tools-for-visual-studio-install.md) |A Stream Analytics-eszközök az Azure fejlesztési és adattárolási és-feldolgozási számítási feladatainak részét képezik a Visual Studióban. A Visual Studióval egyéni C# felhasználó által definiált függvények és deszerializálók írhatók. További információ: Azure Stream Analytics- [feladatok létrehozása a Visual Studio használatával](stream-analytics-quick-create-vs.md).|

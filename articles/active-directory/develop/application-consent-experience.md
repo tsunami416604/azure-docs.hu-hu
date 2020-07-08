@@ -14,10 +14,9 @@ ms.date: 03/27/2019
 ms.author: ryanwi
 ms.reviewer: zachowd
 ms.openlocfilehash: e96442be50a075ebf2cd81bf1b6fb0f58f883bad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80885582"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>Az Azure AD-alkalmazások hozzájárulási folyamatának ismertetése
@@ -31,7 +30,7 @@ A hozzájárulás egy olyan felhasználó, aki engedélyt ad egy alkalmazásnak 
 A jogosultság megadásának tényleges felhasználói élménye a felhasználó bérlője, a felhasználó jogosultsági köre (vagy szerepkör), valamint az ügyfélalkalmazás által kért [engedélyek](https://docs.microsoft.com/azure/active-directory/azuread-dev/v1-permissions-consent) típusa szerint változhat. Ez azt jelenti, hogy az alkalmazás-fejlesztőknek és a bérlői rendszergazdáknak van némi hozzáférésük a beleegyező felhasználói élményhez A rendszergazdák rugalmasan állíthatják be és letilthatják a szabályzatokat a bérlőn vagy az alkalmazáson a bérlőn való részvételi élmény szabályozása érdekében. Az alkalmazások fejlesztői megadhatják, hogy milyen típusú engedélyekre van szükség, és ha a felhasználókat a felhasználói beleegyező folyamaton vagy a rendszergazdai beleegyező folyamaton keresztül szeretnék irányítani.
 
 - A **felhasználói hozzájárulás folyamata** az, amikor egy alkalmazás fejlesztője a felhasználókat az engedélyezési végpontra irányítja, hogy csak az aktuális felhasználó belefoglalását jegyezze fel.
-- A rendszergazdai belefoglalási **folyamat** az, amikor egy alkalmazás fejlesztője a felhasználókat a rendszergazdai belefoglalási végpontra irányítja azzal a szándékkal, hogy rögzítse a teljes bérlőhöz való hozzájárulásukat. Annak biztosítása érdekében, hogy a rendszergazdai jogosultságok folyamata megfelelően működjön, az alkalmazás- `RequiredResourceAccess` fejlesztőknek az alkalmazás jegyzékfájljában szereplő összes engedélyt listáznia kell. További információ: [Application manifest](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest).
+- A rendszergazdai belefoglalási **folyamat** az, amikor egy alkalmazás fejlesztője a felhasználókat a rendszergazdai belefoglalási végpontra irányítja azzal a szándékkal, hogy rögzítse a teljes bérlőhöz való hozzájárulásukat. Annak biztosítása érdekében, hogy a rendszergazdai jogosultságok folyamata megfelelően működjön, az alkalmazás-fejlesztőknek az alkalmazás jegyzékfájljában szereplő összes engedélyt listáznia kell `RequiredResourceAccess` . További információ: [Application manifest](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest).
 
 ## <a name="building-blocks-of-the-consent-prompt"></a>A hozzájárulási kérés építőelemei
 
@@ -41,7 +40,7 @@ A következő diagram és táblázat a hozzájárulási kérés építőelemeit 
 
 ![A hozzájárulási kérés építőelemei](./media/application-consent-experience/consent_prompt.png)
 
-| # | Összetevő | Cél |
+| # | Összetevő | Szerep |
 | ----- | ----- | ----- |
 | 1 | Felhasználói azonosító | Ez az azonosító azt a felhasználót jelöli, akit az ügyfélalkalmazás a következő nevében a védett erőforrásokhoz való hozzáférésre kéri. |
 | 2 | Cím | A cím változása attól függően változik, hogy a felhasználók a felhasználói vagy a rendszergazdai beleegyező folyamaton keresztül mennek keresztül. A felhasználói beleegyező folyamatokban a cím "engedély kérése", míg a rendszergazda beleegyező folyamatában a cím egy további, "elfogadás a szervezet számára" sort fog tartalmazni. |

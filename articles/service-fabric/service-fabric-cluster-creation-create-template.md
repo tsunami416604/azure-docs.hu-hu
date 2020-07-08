@@ -4,10 +4,9 @@ description: Megtudhatja, hogyan hozhat létre Resource Manager-sablont egy Serv
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.openlocfilehash: 6cf0f9c3b8b54db7bd27ec8dd9c9d59d849c74cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80985371"
 ---
 # <a name="create-a-service-fabric-cluster-resource-manager-template"></a>Service Fabric fürterőforrás-kezelő sablon létrehozása
@@ -24,13 +23,13 @@ Mielőtt éles környezetben üzembe helyezi a termelési feladatokat, először
 ## <a name="create-the-resource-manager-template"></a>A Resource Manager-sablon létrehozása
 A minta Resource Manager-sablonok a [githubon elérhető Azure-mintákon](https://github.com/Azure-Samples/service-fabric-cluster-templates)érhetők el. Ezek a sablonok a fürt sablonjának kiindulási pontként használhatók.
 
-Ez a cikk az [öt csomópontos biztonságos fürt][service-fabric-secure-cluster-5-node-1-nodetype] – példa sablont és a sablon paramétereit használja. Töltse le a *azuredeploy. JSON* és a *azuredeploy. Parameters. JSON* fájlt a számítógépre, és nyissa meg mindkét fájlt a kedvenc szövegszerkesztőben.
+Ez a cikk az [öt csomópontos biztonságos fürt][service-fabric-secure-cluster-5-node-1-nodetype] – példa sablont és a sablon paramétereit használja. Töltse le a *azuredeploy.jst* , és *azuredeploy.parameters.jsa* számítógépre, és nyissa meg mindkét fájlt a kedvenc szövegszerkesztőben.
 
 > [!NOTE]
-> Az országos felhők (Azure Government, az Azure China, az Azure Germany) esetében `fabricSettings` a következőt is hozzá kell adnia a `AADLoginEndpoint`sablonhoz: `AADTokenEndpointFormat` és `AADCertEndpointFormat`.
+> Az országos felhők (Azure Government, az Azure China, az Azure Germany) esetében a következőt is hozzá kell adnia a `fabricSettings` sablonhoz: `AADLoginEndpoint` `AADTokenEndpointFormat` és `AADCertEndpointFormat` .
 
 ## <a name="add-certificates"></a>Tanúsítványok hozzáadása
-Tanúsítványokat adhat hozzá egy fürterőforrás-kezelő sablonhoz a tanúsítvány kulcsait tartalmazó kulcstartóra való hivatkozással. Adja hozzá ezeket a Key-Vault paramétereket és értékeket egy Resource Manager-sablon paramétereinek fájljában (*azuredeploy. Parameters. JSON*).
+Tanúsítványokat adhat hozzá egy fürterőforrás-kezelő sablonhoz a tanúsítvány kulcsait tartalmazó kulcstartóra való hivatkozással. Adja hozzá ezeket a Key-Vault paramétereket és értékeket egy Resource Manager-sablon paramétereinek fájljában (*azuredeploy.parameters.js*).
 
 ### <a name="add-all-certificates-to-the-virtual-machine-scale-set-osprofile"></a>Az összes tanúsítvány hozzáadása a virtuálisgép-méretezési csoport osProfile
 A fürtön telepített összes tanúsítványt konfigurálni kell a méretezési csoport erőforrásának **osProfile** szakaszában (Microsoft. számítás/virtualMachineScaleSets). Ez a művelet arra utasítja az erőforrás-szolgáltatót, hogy telepítse a tanúsítványt a virtuális gépekre. Ez a telepítés tartalmazza a fürt tanúsítványát és az alkalmazásokhoz használni kívánt összes biztonsági tanúsítványt:
@@ -132,7 +131,7 @@ A fürt hitelesítési tanúsítványát mind a Service Fabric fürterőforrás 
 
 ## <a name="add-azure-ad-configuration-to-use-azure-ad-for-client-access"></a>Azure AD-konfiguráció hozzáadása az Azure AD ügyfél-hozzáféréshez való használatához
 
-Adja hozzá az Azure AD-konfigurációt egy fürterőforrás-kezelő sablonhoz a tanúsítvány kulcsait tartalmazó kulcstartóra való hivatkozással. Adja hozzá ezeket az Azure AD-paramétereket és-értékeket egy Resource Manager-sablon paramétereinek fájljában (*azuredeploy. Parameters. JSON*). 
+Adja hozzá az Azure AD-konfigurációt egy fürterőforrás-kezelő sablonhoz a tanúsítvány kulcsait tartalmazó kulcstartóra való hivatkozással. Adja hozzá ezeket az Azure AD-paramétereket és-értékeket egy Resource Manager-sablon paramétereinek fájljában (*azuredeploy.parameters.js*). 
 
 > [!NOTE]
 > Linux rendszeren a fürt létrehozása előtt létre kell hozni az Azure AD-bérlőket és a felhasználókat.  További információért olvassa el az [Azure ad beállítása az ügyfelek hitelesítéséhez](service-fabric-cluster-creation-setup-aad.md)című témakört.

@@ -16,10 +16,9 @@ ms.workload: na
 ms.date: 04/08/2020
 ms.author: terrylan
 ms.openlocfilehash: e1223560c5d7b19bf9da4c7c16a56c4741e582a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80981307"
 ---
 # <a name="security-management-in-azure"></a>Biztonságkezelés az Azure-ban
@@ -138,7 +137,7 @@ A szigorú hozzáférés-vezérlést magában foglaló házirend-kikényszerít�
 ## <a name="client-configuration"></a>Ügyfél-konfiguráció
 Háromféle elsődleges megerősített munkaállomás-konfigurációt ajánlunk. Legjobban a költség, használhatóság és hozzáférhetőség terén különböznek egymástól, de mind a három lehetőség hasonló biztonsági profillal rendelkezik. A következő táblázat egy rövid elemzést tartalmaz a három lehetőséggel járó előnyökről és kockázatokról. (Ne feledje, a „vállalati PC” általános jellegű asztali PC-konfigurációt jelent, amely minden tartományi felhasználó számítógépe esetében egyforma, szerepkörtől függetlenül.)
 
-| Configuration | Előnyök | Hátrányok |
+| Konfiguráció | Előnyök | Hátrányok |
 | --- | --- | --- |
 | Önálló, megerősített munkaállomás |Szigorúan ellenőrzött munkaállomás |A dedikált asztali gépek magasabb költsége |
 | - | Az alkalmazások biztonsági réseinek kihasználásával kapcsolatos kisebb kockázat |Nagyobb energiabefektetést igénylő felügyelet |

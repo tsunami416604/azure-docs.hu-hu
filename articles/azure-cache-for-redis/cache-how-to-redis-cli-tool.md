@@ -1,25 +1,24 @@
 ---
 title: A Redis-CLI használata az Azure cache használatával a Redis
-description: Megtudhatja, hogyan használhatja a *Redis-CLI. exe* parancssori eszközt az Redis-hez készült Azure cache-vel való interakcióhoz.
+description: Megtudhatja, hogyan használhatja a *redis-cli.exe* parancssori eszközként a Redis-hez készült Azure cache-sel való interakcióhoz.
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.openlocfilehash: bd2da798cae92a7e47bd879b69dd108618463402
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81010766"
 ---
 # <a name="how-to-use-the-redis-command-line-tool-with-azure-cache-for-redis"></a>A Redis parancssori eszköz használata az Azure cache használatával a Redis
 
-a *Redis-CLI. exe* egy népszerű parancssori eszköz, amely egy Azure cache-t biztosít a Redis ügyfélként való működéséhez. Ez az eszköz a Redis készült Azure cache szolgáltatással is használható.
+A *redis-cli.exe* egy népszerű parancssori eszköz, amely a Redis-ügyfélként használható Azure cache-t használja. Ez az eszköz a Redis készült Azure cache szolgáltatással is használható.
 
 Az eszköz a Windows-platformokhoz is elérhető a [Windows Redis parancssori eszközeinek](https://github.com/MSOpenTech/redis/releases/)letöltésével. 
 
-Ha egy másik platformon szeretné futtatni a parancssori eszközt, töltse le az Azure cache-t [https://redis.io/download](https://redis.io/download)a Redis.
+Ha egy másik platformon szeretné futtatni a parancssori eszközt, töltse le az Azure cache-t a Redis [https://redis.io/download](https://redis.io/download) .
 
 ## <a name="gather-cache-access-information"></a>Gyorsítótár-hozzáférési információk összegyűjtése
 
@@ -36,11 +35,11 @@ Ebben a szakaszban a kulcsokat a Azure Portal fogja lekérni.
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-access-keys.md)]
 
 
-## <a name="enable-access-for-redis-cliexe"></a>A Redis-CLI. exe elérésének engedélyezése
+## <a name="enable-access-for-redis-cliexe"></a>redis-cli.exe hozzáférésének engedélyezése
 
 Az Azure cache for Redis esetében a rendszer alapértelmezés szerint csak a TLS-portot (6380) engedélyezi. A `redis-cli.exe` parancssori eszköz nem támogatja a TLS-t. Két konfigurációs lehetőség közül választhat:
 
-1. [A nem TLS port (6379)](cache-configure.md#access-ports) - engedélyezése**Ez a konfiguráció nem ajánlott** , mert ebben a konfigurációban a hozzáférési kulcsok küldése a TCP-n keresztül, tiszta szövegként történik. Ez a módosítás a gyorsítótárhoz való hozzáférést is veszélyeztetheti. Az egyetlen forgatókönyv, ahol érdemes megfontolni ezt a konfigurációt, ha csak egy tesztelési gyorsítótárhoz fér hozzá.
+1. [A nem TLS port engedélyezése (6379)](cache-configure.md#access-ports)  -  **Ez a konfiguráció nem ajánlott** , mert ebben a konfigurációban a hozzáférési kulcsokat a TCP protokollon keresztül, tiszta szövegként küldik el. Ez a módosítás a gyorsítótárhoz való hozzáférést is veszélyeztetheti. Az egyetlen forgatókönyv, ahol érdemes megfontolni ezt a konfigurációt, ha csak egy tesztelési gyorsítótárhoz fér hozzá.
 
 2. Töltse le és telepítse a [stunnel](https://www.stunnel.org/downloads.html).
 
@@ -48,9 +47,9 @@ Az Azure cache for Redis esetében a rendszer alapértelmezés szerint csak a TL
 
     Kattintson a jobb gombbal a stunnel-kiszolgáló tálcán látható ikonjára, majd kattintson a **napló megjelenítése ablakra**.
 
-    Az aktuális konfigurációs fájl megnyitásához a stunnel-napló ablak menüjében kattintson a konfiguráció **Configuration** > **szerkesztése konfiguráció** elemre.
+    Az aktuális konfigurációs fájl megnyitásához a stunnel-napló ablak menüjében **kattintson a konfiguráció**  >  **szerkesztése konfiguráció** elemre.
 
-    Adja hozzá a következő bejegyzést a *Redis-CLI. exe fájlhoz* a **szolgáltatási definíciók** szakaszban. Szúrja be a tényleges gyorsítótár nevét a `yourcachename`helyére. 
+    Adja hozzá a következő bejegyzést a *redis-cli.exehoz* a **szolgáltatási definíciók** szakaszban. Szúrja be a tényleges gyorsítótár nevét a helyére `yourcachename` . 
 
     ```
     [redis-cli]
@@ -61,12 +60,12 @@ Az Azure cache for Redis esetében a rendszer alapértelmezés szerint csak a TL
 
     Mentse és zárjuk be a konfigurációs fájlt. 
   
-    A stunnel-napló ablak menüjében kattintson a **konfiguráció** > **újratöltésének konfigurációja**elemre.
+    A stunnel-napló ablak menüjében kattintson a **konfiguráció**  >  **újratöltésének konfigurációja**elemre.
 
 
 ## <a name="connect-using-the-redis-command-line-tool"></a>Kapcsolódjon a Redis parancssori eszköz használatával.
 
-A stunnel használatakor futtassa a *Redis-CLI. exe fájlt*, és csak a *portot*és a *hozzáférési kulcsot* (elsődleges vagy másodlagos) adja át a gyorsítótárhoz való csatlakozáshoz.
+A stunnel használatakor futtassa *redis-cli.exe*, és csak a *portot*, a *hozzáférési kulcsot* (elsődleges vagy másodlagos) a gyorsítótárhoz való csatlakozáshoz adja át.
 
 ```
 redis-cli.exe -p 6380 -a YourAccessKey
@@ -74,7 +73,7 @@ redis-cli.exe -p 6380 -a YourAccessKey
 
 ![stunnel és Redis – parancssori felület](media/cache-how-to-redis-cli-tool/cache-redis-cli-stunnel.png)
 
-Ha tesztelési gyorsítótárat használ a nem **biztonságos** TLS-porthoz `redis-cli.exe` , futtassa és adja át az *állomásnevet*, a *portot*és a *hozzáférési kulcsot* (elsődleges vagy másodlagos) a tesztelési gyorsítótárhoz való csatlakozáshoz.
+Ha tesztelési gyorsítótárat használ a nem **biztonságos** TLS-porthoz, futtassa `redis-cli.exe` és adja át az *állomásnevet*, a *portot*és a *hozzáférési kulcsot* (elsődleges vagy másodlagos) a tesztelési gyorsítótárhoz való csatlakozáshoz.
 
 ```
 redis-cli.exe -h yourcachename.redis.cache.windows.net -p 6379 -a YourAccessKey
