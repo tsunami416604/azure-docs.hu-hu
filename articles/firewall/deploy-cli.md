@@ -6,13 +6,13 @@ author: vhorne
 ms.service: firewall
 ms.date: 08/29/2019
 ms.author: victorh
-ms.topic: article
-ms.openlocfilehash: e97783d1a32916cad151f1d0858a8190d0005fd0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.openlocfilehash: 3087b01e849aaa4d1f3c2b6b4060cf202927f55f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73831969"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85602635"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-azure-cli"></a>Azure Firewall üzembe helyezése és konfigurálása az Azure CLI-vel
 
@@ -45,7 +45,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 Ha szeretné, az eljárást a [Azure Portal](tutorial-firewall-deploy-portal.md) vagy [Azure PowerShell](deploy-ps.md)használatával végezheti el.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -284,14 +284,14 @@ Most tesztelje a tűzfalat, és ellenőrizze, hogy az a várt módon működik-e
    Invoke-WebRequest -Uri https://www.microsoft.com
    ```
 
-   A `www.google.com` kérések sikeresek lesznek, `www.microsoft.com` és a kérések sikertelenek lesznek. Ez azt mutatja, hogy a tűzfalszabályok a várt módon működnek.
+   A `www.google.com` kérések sikeresek lesznek, és a `www.microsoft.com` kérések sikertelenek lesznek. Ez azt mutatja, hogy a tűzfalszabályok a várt módon működnek.
 
 Most ellenőrizte, hogy a tűzfalszabályok működnek-e:
 
 * Fel tudja oldani a DNS-neveket a konfigurált külső DNS-kiszolgálóval.
 * Az egyetlen engedélyezett FQDN-t el tudja érni, de másokat nem.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 A következő oktatóanyagban megtarthatja a tűzfal erőforrásait, vagy ha már nincs rá szükség, törölje a **test-FW-RG** erőforráscsoportot az összes tűzfalhoz kapcsolódó erőforrás törléséhez:
 
