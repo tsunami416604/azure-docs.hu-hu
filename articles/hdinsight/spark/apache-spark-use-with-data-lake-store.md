@@ -6,14 +6,14 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/13/2019
-ms.openlocfilehash: f7a6ab954aff1bcc2e3dae3fc035db4b136ccbbe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 583a5bcac71265596127c7860c0509963f76b2fb
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73818166"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86080941"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage-gen1"></a>Az HDInsight Spark-fürt használata Data Lake Storage Gen1ban lévő adatelemzéshez
 
@@ -32,31 +32,37 @@ Ebben a cikkben a HDInsight Spark-fürtökkel elérhető [Jupyter Notebookeket](
 
 Ha olyan HDInsight-fürtöt hozott létre, amely Data Lake Storage további tárterületként, és Azure Storage Blob alapértelmezett tárolóként, akkor először másolja át néhány mintaadatok a Data Lake Storage-fiókba. A mintaadatok a HDInsight-fürthöz társított Azure Storage Blob alapján használhatók. Ehhez a [ADLCopy eszközt](https://www.microsoft.com/download/details.aspx?id=50358) használhatja. Töltse le és telepítse az eszközt a hivatkozásból.
 
-1. Nyisson meg egy parancssort, és navigáljon ahhoz a könyvtárhoz, ahol `%HOMEPATH%\Documents\adlcopy`a AdlCopy telepítve van, jellemzően.
+1. Nyisson meg egy parancssort, és navigáljon ahhoz a könyvtárhoz, ahol a AdlCopy telepítve van, jellemzően `%HOMEPATH%\Documents\adlcopy` .
 
 2. Futtassa a következő parancsot egy adott blobnak a forrás tárolójából Data Lake Storageba való másolásához:
 
-        AdlCopy /source https://<source_account>.blob.core.windows.net/<source_container>/<blob name> /dest swebhdfs://<dest_adls_account>.azuredatalakestore.net/<dest_folder>/ /sourcekey <storage_account_key_for_storage_container>
+    ```scala
+    AdlCopy /source https://<source_account>.blob.core.windows.net/<source_container>/<blob name> /dest swebhdfs://<dest_adls_account>.azuredatalakestore.net/<dest_folder>/ /sourcekey <storage_account_key_for_storage_container>
+    ```
 
-    Másolja a **HVAC. csv** minta adatfájlját a **/HdiSamples/HdiSamples/SensorSampleData/hvac/** címen a Azure Data Lake Storage fiókba. A kódrészletnek a következőképpen kell kinéznie:
+    Másolja a **HVAC.csv** Sample adatfájlt a **/HdiSamples/HdiSamples/SensorSampleData/hvac/** címen a Azure Data Lake Storage-fiókba. A kódrészletnek a következőképpen kell kinéznie:
 
-        AdlCopy /Source https://mydatastore.blob.core.windows.net/mysparkcluster/HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv /dest swebhdfs://mydatalakestore.azuredatalakestore.net/hvac/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ==
+    ```scala
+    AdlCopy /Source https://mydatastore.blob.core.windows.net/mysparkcluster/HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv /dest swebhdfs://mydatalakestore.azuredatalakestore.net/hvac/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ==
+    ```
 
    > [!WARNING]  
    > Győződjön meg arról, hogy a fájl-és elérésiút-nevek a megfelelő nagybetűket használják.
 
 3. A rendszer felszólítja, hogy adja meg az Azure-előfizetéshez tartozó hitelesítő adatokat, amely alatt a Data Lake Storage fiókja van. Az alábbi kódrészlethez hasonló kimenet jelenik meg:
 
-        Initializing Copy.
-        Copy Started.
-        100% data copied.
-        Copy Completed. 1 file copied.
+    ```output
+    Initializing Copy.
+    Copy Started.
+    100% data copied.
+    Copy Completed. 1 file copied.
+    ```
 
-    A rendszer az adatfájlt (**HVAC. csv**) a Data Lake Storage fiók **/HVAC** mappájában másolja át.
+    Az adatfájl (**HVAC.csv**) a Data Lake Storage-fiók **/HVAC** mappájában lesz átmásolva.
 
 ## <a name="use-an-hdinsight-spark-cluster-with-data-lake-storage-gen1"></a>HDInsight Spark-fürt használata Data Lake Storage Gen1
 
-1. A [Azure Portal](https://portal.azure.com/)a kezdőpulton kattintson a Apache Spark-fürthöz tartozó csempére (ha rögzítette azt a kezdőpulton). A fürtöt a **Tallózás az összes** > **HDInsight**-fürt területen is megnyithatja.
+1. A [Azure Portal](https://portal.azure.com/)a kezdőpulton kattintson a Apache Spark-fürthöz tartozó csempére (ha rögzítette azt a kezdőpulton). A fürtöt a **Tallózás az összes**HDInsight-fürt területen is megnyithatja  >  **HDInsight Clusters**.
 
 2. A Spark-fürt panelén kattintson a **Quick Links** (Gyorshivatkozások) lehetőségre, majd a **Cluster Dashboard** (Fürt irányítópultja) panelen a **Jupyter Notebook** elemre. Ha a rendszer felkéri rá, adja meg a fürthöz tartozó rendszergazdai hitelesítő adatokat.
 
@@ -71,48 +77,59 @@ Ha olyan HDInsight-fürtöt hozott létre, amely Data Lake Storage további tár
 
 4. Mivel a notebook PySpark kernel használatával jött létre, explicit módon semmilyen tartalmat nem kell létrehozni. Az első kódcella futtatásakor a Spark- és Hive-környezetek automatikusan létrejönnek. Ennek az első lépése a jelen forgatókönyvhöz szükséges típusok importálása. Ehhez illessze be a következő kódrészletet a cellába, majd nyomja le a **SHIFT + ENTER** billentyűkombinációt.
 
-        from pyspark.sql.types import *
+    ```scala
+    from pyspark.sql.types import *
+    ```
 
     Minden alkalommal, amikor a Jupyterben feladatot futtat, a webböngésző ablakának címsorában **(Foglalt)** állapot jelenik meg a notebook neve mellett. A jobb felső sarokban lévő **PySpark** felirat mellett ekkor egy teli kör is megjelenik. A feladat befejezését követően ez a jel üres körre változik.
 
      ![A Jupyter notebook feladat állapota](./media/apache-spark-use-with-data-lake-store/hdinsight-jupyter-job-status.png "A Jupyter notebook feladat állapota")
 
-5. A mintaadatok betöltése egy ideiglenes táblába a Data Lake Storage Gen1 fiókba másolt **HVAC. csv** fájl használatával. A Data Lake Storage fiókban lévő adatai a következő URL-minta használatával érhetők el.
+5. Az Data Lake Storage Gen1-fiókba másolt **HVAC.csv** fájl használatával helyezzen be mintaadatok egy ideiglenes táblába. A Data Lake Storage fiókban lévő adatai a következő URL-minta használatával érhetők el.
 
-   * Ha Data Lake Storage Gen1 alapértelmezett tárolóként, a HVAC. csv a következő URL-címhez hasonló elérési úton lesz:
+   * Ha Data Lake Storage Gen1 alapértelmezett tárolóként, HVAC.csv a következő URL-címhez hasonló elérési úton lesz:
 
-           adl://<data_lake_store_name>.azuredatalakestore.net/<cluster_root>/HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv
+        ```scala
+        adl://<data_lake_store_name>.azuredatalakestore.net/<cluster_root>/HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv
+        ```
 
        Vagy rövidített formátumot is használhat, például az alábbiakat:
 
-           adl:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv
+        ```scala
+        adl:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv
+        ```
 
-   * Ha Data Lake Storage további tárterületként, a HVAC. csv fájl azon a helyen lesz, ahová a fájlt másolta, például:
+   * Ha Data Lake Storage további tárterületként, HVAC.csv a másolt helyen lesz, például:
 
-           adl://<data_lake_store_name>.azuredatalakestore.net/<path_to_file>
+        ```scala
+        adl://<data_lake_store_name>.azuredatalakestore.net/<path_to_file>
+        ```
 
      Illessze be a következő kódot egy üres cellába, és cserélje le az **MYDATALAKESTORE** -t a Data Lake Storage fiók nevére, majd nyomja le a **SHIFT + ENTER**billentyűkombinációt. Ez a kódpélda az adatokat a **hvac** nevű ideiglenes táblába regisztrálja.
 
-           # Load the data. The path below assumes Data Lake Storage is default storage for the Spark cluster
-           hvacText = sc.textFile("adl://MYDATALAKESTORE.azuredatalakestore.net/cluster/mysparkcluster/HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
+      ```scala
+      # Load the data. The path below assumes Data Lake Storage is   default storage for the Spark cluster
+      hvacText = sc.textFile("adl://MYDATALAKESTORazuredatalakestore.  net/cluster/mysparkclusteHdiSamples/HdiSamples/  SensorSampleData/hvac/HVAC.csv")
 
-           # Create the schema
-           hvacSchema = StructType([StructField("date", StringType(), False),StructField("time", StringType(), False),StructField("targettemp", IntegerType(), False),StructField("actualtemp", IntegerType(), False),StructField("buildingID", StringType(), False)])
+      # Create the schema
+      hvacSchema = StructType([StructField("date", StringTy(), False)  ,StructField("time", StringType(), FalseStructField  ("targettemp", IntegerType(), FalseStructField("actualtemp",   IntegerType(), FalseStructField("buildingID", StringType(),   False)])
 
-           # Parse the data in hvacText
-           hvac = hvacText.map(lambda s: s.split(",")).filter(lambda s: s[0] != "Date").map(lambda s:(str(s[0]), str(s[1]), int(s[2]), int(s[3]), str(s[6]) ))
+      # Parse the data in hvacText
+      hvac = hvacText.map(lambda s: s.split(",")).filt(lambda s: s  [0] != "Date").map(lambda s:(str(s[0]), s(s[1]), int(s[2]), int  (s[3]), str(s[6]) ))
 
-           # Create a data frame
-           hvacdf = sqlContext.createDataFrame(hvac,hvacSchema)
+      # Create a data frame
+      hvacdf = sqlContext.createDataFrame(hvac,hvacSchema)
 
-           # Register the data fram as a table to run queries against
-           hvacdf.registerTempTable("hvac")
+      # Register the data fram as a table to run queries against
+      hvacdf.registerTempTable("hvac")
+      ```
 
 6. Mivel PySpark kernelt használ, most közvetlenül futtathat SQL-lekérdezést az imént létrehozott **hvac** ideiglenes táblán, a `%%sql` funkció használatával. További információ a `%%sql` magicról, valamint a PySpark kernelben elérhető egyéb varázslatokról: [Jupyter notebookokon elérhető kernelek Apache Spark HDInsight-fürtökkel](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic).
 
-        %%sql
-        SELECT buildingID, (targettemp - actualtemp) AS temp_diff, date FROM hvac WHERE date = \"6/1/13\"
-
+    ```sql
+    %%sql
+    SELECT buildingID, (targettemp - actualtemp) AS temp_diff, date FROM hvac WHERE date = \"6/1/13\"
+    ```
 7. A feladat sikeres végrehajtását követően alapértelmezés szerint az alábbi táblázatos kimenet jelenik meg.
 
       ![A lekérdezés eredményének táblázatos kimenete](./media/apache-spark-use-with-data-lake-store/jupyter-tabular-output.png "A lekérdezés eredményének táblázatos kimenete")

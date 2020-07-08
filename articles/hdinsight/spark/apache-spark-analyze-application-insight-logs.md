@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
-ms.openlocfilehash: 6fd7682f56fbe446904a4acdb39e78525f2523a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1ddf2b6879d8d33f99281daba6fb1040e24a37af
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75435240"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078799"
 ---
 # <a name="analyze-application-insights-telemetry-logs-with-apache-spark-on-hdinsight"></a>Application Insights telemetria-naplók elemzése a HDInsight Apache Spark
 
@@ -31,7 +31,7 @@ A [Visual Studio Application Insights](../../azure-monitor/app/app-insights-over
 
 A következő erőforrásokat használták a dokumentum fejlesztése és tesztelése során:
 
-* Application Insights telemetria-adat a [Application Insights használatára konfigurált Node. js-webalkalmazás](../../azure-monitor/app/nodejs.md)használatával lett létrehozva.
+* Application Insights telemetria az [Application Insights használatára konfiguráltNode.js webalkalmazás](../../azure-monitor/app/nodejs.md)használatával generálták.
 
 * A Linux-alapú Spark on HDInsight-fürt 3,5-es verziója az adatelemzésre szolgál.
 
@@ -80,19 +80,21 @@ Az Azure Storage-fiók meglévő fürthöz való hozzáadásához használja a [
    sc._jsc.hadoopConfiguration().set('mapreduce.input.fileinputformat.input.dir.recursive', 'true')
    ```
 
-    Ez a kód úgy konfigurálja a Sparkot, hogy a bemeneti adatokhoz való rekurzív módon hozzáférhessen a címtár struktúrájához. Application Insights telemetria a következőhöz hasonló címtár-struktúrába van `/{telemetry type}/YYYY-MM-DD/{##}/`naplózva:.
+    Ez a kód úgy konfigurálja a Sparkot, hogy a bemeneti adatokhoz való rekurzív módon hozzáférhessen a címtár struktúrájához. Application Insights telemetria a következőhöz hasonló címtár-struktúrába van naplózva: `/{telemetry type}/YYYY-MM-DD/{##}/` .
 
-4. A kód futtatásához használja a **SHIFT + ENTER** billentyűkombinációt. A cella bal oldalán egy "\*" szöveg jelenik meg a zárójelek között, hogy jelezze, hogy a cellában lévő kód végrehajtása folyamatban van. Ha a művelet befejeződött, a "\*" szám módosul, és az alábbi szöveghez hasonló kimenet jelenik meg a cella alatt:
+4. A kód futtatásához használja a **SHIFT + ENTER** billentyűkombinációt. A cella bal oldalán egy " \* " szöveg jelenik meg a zárójelek között, hogy jelezze, hogy a cellában lévő kód végrehajtása folyamatban van. Ha a művelet befejeződött, a " \* " szám módosul, és az alábbi szöveghez hasonló kimenet jelenik meg a cella alatt:
 
-        Creating SparkContext as 'sc'
+    ```output
+    Creating SparkContext as 'sc'
 
-        ID    YARN Application ID    Kind    State    Spark UI    Driver log    Current session?
-        3    application_1468969497124_0001    pyspark    idle    Link    Link    ✔
+    ID    YARN Application ID    Kind    State    Spark UI    Driver log    Current session?
+    3    application_1468969497124_0001    pyspark    idle    Link    Link    ✔
 
-        Creating HiveContext as 'sqlContext'
-        SparkContext and HiveContext created. Executing user code ...
+    Creating HiveContext as 'sqlContext'
+    SparkContext and HiveContext created. Executing user code ...
+    ```
 
-5. Az első egy új cella jön létre. Adja meg a következő szöveget az új cellában. Cserélje `CONTAINER` le `STORAGEACCOUNT` az és az attribútumot az Azure Storage-fiók nevére és a blob-tároló nevére, amely Application Insights-adathalmazt tartalmaz.
+5. Az első egy új cella jön létre. Adja meg a következő szöveget az új cellában. Cserélje le az és az attribútumot `CONTAINER` `STORAGEACCOUNT` Az Azure Storage-fiók nevére és a blob-tároló nevére, amely Application Insights-adathalmazt tartalmaz.
 
    ```python
    %%bash
@@ -101,15 +103,17 @@ Az Azure Storage-fiók meglévő fürthöz való hozzáadásához használja a [
 
     A cella végrehajtásához használja a **SHIFT + ENTER** billentyűkombinációt. A következő szöveghez hasonló eredmény jelenik meg:
 
-        Found 1 items
-        drwxrwxrwx   -          0 1970-01-01 00:00 wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_2bededa61bc741fbdee6b556571a4831
+    ```output
+    Found 1 items
+    drwxrwxrwx   -          0 1970-01-01 00:00 wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_2bededa61bc741fbdee6b556571a4831
+    ```
 
     A visszaadott wasbs útvonal a Application Insights telemetria-adatmennyiség helye. Módosítsa a `hdfs dfs -ls` cella vonalát a visszaadott wasbs elérési út használatára, majd a **SHIFT + ENTER** billentyűkombinációval futtassa újra a cellát. Ezúttal az eredményeknek meg kell jelennie a telemetria tartalmazó címtárakban.
 
    > [!NOTE]  
    > Az ebben a szakaszban szereplő lépések hátralévő részében a `wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_{ID}/Requests` könyvtárat használták. A címtár szerkezete eltérő lehet.
 
-6. A következő cellában adja meg a következő kódot: cserélje `WASB_PATH` le az előző lépésben megadott elérési útra.
+6. A következő cellában adja meg a következő kódot: cserélje le az `WASB_PATH` előző lépésben megadott elérési útra.
 
    ```python
    jsonFiles = sc.textFile('WASB_PATH')
@@ -123,68 +127,70 @@ Az Azure Storage-fiók meglévő fürthöz való hozzáadásához használja a [
    jsonData.printSchema()
    ```
 
-    Az egyes telemetria sémája eltér. A következő példa a webes kérelmekhez létrehozott séma (az `Requests` alkönyvtárban tárolt adattartalom):
+    Az egyes telemetria sémája eltér. A következő példa a webes kérelmekhez létrehozott séma (az alkönyvtárban tárolt adattartalom `Requests` ):
 
-        root
-        |-- context: struct (nullable = true)
-        |    |-- application: struct (nullable = true)
-        |    |    |-- version: string (nullable = true)
-        |    |-- custom: struct (nullable = true)
-        |    |    |-- dimensions: array (nullable = true)
-        |    |    |    |-- element: string (containsNull = true)
-        |    |    |-- metrics: array (nullable = true)
-        |    |    |    |-- element: string (containsNull = true)
-        |    |-- data: struct (nullable = true)
-        |    |    |-- eventTime: string (nullable = true)
-        |    |    |-- isSynthetic: boolean (nullable = true)
-        |    |    |-- samplingRate: double (nullable = true)
-        |    |    |-- syntheticSource: string (nullable = true)
-        |    |-- device: struct (nullable = true)
-        |    |    |-- browser: string (nullable = true)
-        |    |    |-- browserVersion: string (nullable = true)
-        |    |    |-- deviceModel: string (nullable = true)
-        |    |    |-- deviceName: string (nullable = true)
-        |    |    |-- id: string (nullable = true)
-        |    |    |-- osVersion: string (nullable = true)
-        |    |    |-- type: string (nullable = true)
-        |    |-- location: struct (nullable = true)
-        |    |    |-- city: string (nullable = true)
-        |    |    |-- clientip: string (nullable = true)
-        |    |    |-- continent: string (nullable = true)
-        |    |    |-- country: string (nullable = true)
-        |    |    |-- province: string (nullable = true)
-        |    |-- operation: struct (nullable = true)
-        |    |    |-- name: string (nullable = true)
-        |    |-- session: struct (nullable = true)
-        |    |    |-- id: string (nullable = true)
-        |    |    |-- isFirst: boolean (nullable = true)
-        |    |-- user: struct (nullable = true)
-        |    |    |-- anonId: string (nullable = true)
-        |    |    |-- isAuthenticated: boolean (nullable = true)
-        |-- internal: struct (nullable = true)
-        |    |-- data: struct (nullable = true)
-        |    |    |-- documentVersion: string (nullable = true)
-        |    |    |-- id: string (nullable = true)
-        |-- request: array (nullable = true)
-        |    |-- element: struct (containsNull = true)
-        |    |    |-- count: long (nullable = true)
-        |    |    |-- durationMetric: struct (nullable = true)
-        |    |    |    |-- count: double (nullable = true)
-        |    |    |    |-- max: double (nullable = true)
-        |    |    |    |-- min: double (nullable = true)
-        |    |    |    |-- sampledValue: double (nullable = true)
-        |    |    |    |-- stdDev: double (nullable = true)
-        |    |    |    |-- value: double (nullable = true)
-        |    |    |-- id: string (nullable = true)
-        |    |    |-- name: string (nullable = true)
-        |    |    |-- responseCode: long (nullable = true)
-        |    |    |-- success: boolean (nullable = true)
-        |    |    |-- url: string (nullable = true)
-        |    |    |-- urlData: struct (nullable = true)
-        |    |    |    |-- base: string (nullable = true)
-        |    |    |    |-- hashTag: string (nullable = true)
-        |    |    |    |-- host: string (nullable = true)
-        |    |    |    |-- protocol: string (nullable = true)
+    ```output
+    root
+    |-- context: struct (nullable = true)
+    |    |-- application: struct (nullable = true)
+    |    |    |-- version: string (nullable = true)
+    |    |-- custom: struct (nullable = true)
+    |    |    |-- dimensions: array (nullable = true)
+    |    |    |    |-- element: string (containsNull = true)
+    |    |    |-- metrics: array (nullable = true)
+    |    |    |    |-- element: string (containsNull = true)
+    |    |-- data: struct (nullable = true)
+    |    |    |-- eventTime: string (nullable = true)
+    |    |    |-- isSynthetic: boolean (nullable = true)
+    |    |    |-- samplingRate: double (nullable = true)
+    |    |    |-- syntheticSource: string (nullable = true)
+    |    |-- device: struct (nullable = true)
+    |    |    |-- browser: string (nullable = true)
+    |    |    |-- browserVersion: string (nullable = true)
+    |    |    |-- deviceModel: string (nullable = true)
+    |    |    |-- deviceName: string (nullable = true)
+    |    |    |-- id: string (nullable = true)
+    |    |    |-- osVersion: string (nullable = true)
+    |    |    |-- type: string (nullable = true)
+    |    |-- location: struct (nullable = true)
+    |    |    |-- city: string (nullable = true)
+    |    |    |-- clientip: string (nullable = true)
+    |    |    |-- continent: string (nullable = true)
+    |    |    |-- country: string (nullable = true)
+    |    |    |-- province: string (nullable = true)
+    |    |-- operation: struct (nullable = true)
+    |    |    |-- name: string (nullable = true)
+    |    |-- session: struct (nullable = true)
+    |    |    |-- id: string (nullable = true)
+    |    |    |-- isFirst: boolean (nullable = true)
+    |    |-- user: struct (nullable = true)
+    |    |    |-- anonId: string (nullable = true)
+    |    |    |-- isAuthenticated: boolean (nullable = true)
+    |-- internal: struct (nullable = true)
+    |    |-- data: struct (nullable = true)
+    |    |    |-- documentVersion: string (nullable = true)
+    |    |    |-- id: string (nullable = true)
+    |-- request: array (nullable = true)
+    |    |-- element: struct (containsNull = true)
+    |    |    |-- count: long (nullable = true)
+    |    |    |-- durationMetric: struct (nullable = true)
+    |    |    |    |-- count: double (nullable = true)
+    |    |    |    |-- max: double (nullable = true)
+    |    |    |    |-- min: double (nullable = true)
+    |    |    |    |-- sampledValue: double (nullable = true)
+    |    |    |    |-- stdDev: double (nullable = true)
+    |    |    |    |-- value: double (nullable = true)
+    |    |    |-- id: string (nullable = true)
+    |    |    |-- name: string (nullable = true)
+    |    |    |-- responseCode: long (nullable = true)
+    |    |    |-- success: boolean (nullable = true)
+    |    |    |-- url: string (nullable = true)
+    |    |    |-- urlData: struct (nullable = true)
+    |    |    |    |-- base: string (nullable = true)
+    |    |    |    |-- hashTag: string (nullable = true)
+    |    |    |    |-- host: string (nullable = true)
+    |    |    |    |-- protocol: string (nullable = true)
+    ```
 
 8. A következő paranccsal regisztrálja a dataframe ideiglenes táblaként, és futtasson lekérdezést az adatkezeléshez:
 
@@ -201,15 +207,17 @@ Az Azure Storage-fiók meglévő fürthöz való hozzáadásához használja a [
 
     Ez a lekérdezés az alábbi szöveghez hasonló adatokat ad vissza:
 
-        +---------+
-        |     city|
-        +---------+
-        | Bellevue|
-        |  Redmond|
-        |  Seattle|
-        |Charlotte|
-        ...
-        +---------+
+    ```output
+    +---------+
+    |     city|
+    +---------+
+    | Bellevue|
+    |  Redmond|
+    |  Seattle|
+    |Charlotte|
+    ...
+    +---------+
+    ```
 
 ## <a name="analyze-the-data-scala"></a>Az adatelemzés: Scala
 
@@ -223,19 +231,21 @@ Az Azure Storage-fiók meglévő fürthöz való hozzáadásához használja a [
    sc.hadoopConfiguration.set("mapreduce.input.fileinputformat.input.dir.recursive", "true")
    ```
 
-    Ez a kód úgy konfigurálja a Sparkot, hogy a bemeneti adatokhoz való rekurzív módon hozzáférhessen a címtár struktúrájához. Application Insights telemetria a következőhöz hasonló címtár-struktúrába `/{telemetry type}/YYYY-MM-DD/{##}/`van naplózva:.
+    Ez a kód úgy konfigurálja a Sparkot, hogy a bemeneti adatokhoz való rekurzív módon hozzáférhessen a címtár struktúrájához. Application Insights telemetria a következőhöz hasonló címtár-struktúrába van naplózva: `/{telemetry type}/YYYY-MM-DD/{##}/` .
 
-4. A kód futtatásához használja a **SHIFT + ENTER** billentyűkombinációt. A cella bal oldalán egy "\*" szöveg jelenik meg a zárójelek között, hogy jelezze, hogy a cellában lévő kód végrehajtása folyamatban van. Ha a művelet befejeződött, a "\*" szám módosul, és az alábbi szöveghez hasonló kimenet jelenik meg a cella alatt:
+4. A kód futtatásához használja a **SHIFT + ENTER** billentyűkombinációt. A cella bal oldalán egy " \* " szöveg jelenik meg a zárójelek között, hogy jelezze, hogy a cellában lévő kód végrehajtása folyamatban van. Ha a művelet befejeződött, a " \* " szám módosul, és az alábbi szöveghez hasonló kimenet jelenik meg a cella alatt:
 
-        Creating SparkContext as 'sc'
+    ```output
+    Creating SparkContext as 'sc'
 
-        ID    YARN Application ID    Kind    State    Spark UI    Driver log    Current session?
-        3    application_1468969497124_0001    spark    idle    Link    Link    ✔
+    ID    YARN Application ID    Kind    State    Spark UI    Driver log    Current session?
+    3    application_1468969497124_0001    spark    idle    Link    Link    ✔
 
-        Creating HiveContext as 'sqlContext'
-        SparkContext and HiveContext created. Executing user code ...
+    Creating HiveContext as 'sqlContext'
+    SparkContext and HiveContext created. Executing user code ...
+    ```
 
-5. Az első egy új cella jön létre. Adja meg a következő szöveget az új cellában. A `CONTAINER` és `STORAGEACCOUNT` az helyére írja be az Azure Storage-fiók nevét és a blob-tároló nevét, amely Application Insights naplókat tartalmaz.
+5. Az első egy új cella jön létre. Adja meg a következő szöveget az új cellában. A és az helyére írja be `CONTAINER` `STORAGEACCOUNT` Az Azure Storage-fiók nevét és a blob-tároló nevét, amely Application Insights naplókat tartalmaz.
 
    ```scala
    %%bash
@@ -244,15 +254,17 @@ Az Azure Storage-fiók meglévő fürthöz való hozzáadásához használja a [
 
     A cella végrehajtásához használja a **SHIFT + ENTER** billentyűkombinációt. A következő szöveghez hasonló eredmény jelenik meg:
 
-        Found 1 items
-        drwxrwxrwx   -          0 1970-01-01 00:00 wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_2bededa61bc741fbdee6b556571a4831
+    ```output
+    Found 1 items
+    drwxrwxrwx   -          0 1970-01-01 00:00 wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_2bededa61bc741fbdee6b556571a4831
+    ```
 
     A visszaadott wasbs útvonal a Application Insights telemetria-adatmennyiség helye. Módosítsa a `hdfs dfs -ls` cella vonalát a visszaadott wasbs elérési út használatára, majd a **SHIFT + ENTER** billentyűkombinációval futtassa újra a cellát. Ezúttal az eredményeknek meg kell jelennie a telemetria tartalmazó címtárakban.
 
    > [!NOTE]  
    > Az ebben a szakaszban szereplő lépések hátralévő részében a `wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_{ID}/Requests` könyvtárat használták. Előfordulhat, hogy ez a könyvtár nem létezik, kivéve, ha a telemetria-adatai egy webalkalmazáshoz készültek.
 
-6. A következő cellában adja meg a következő kódot: cserélje `WASB\_PATH` le az előző lépésben megadott elérési útra.
+6. A következő cellában adja meg a következő kódot: cserélje le az `WASB\_PATH` előző lépésben megadott elérési útra.
 
    ```scala
    var jsonFiles = sc.textFile('WASB_PATH')
@@ -268,68 +280,70 @@ Az Azure Storage-fiók meglévő fürthöz való hozzáadásához használja a [
    jsonData.printSchema
    ```
 
-    Az egyes telemetria sémája eltér. A következő példa a webes kérelmekhez létrehozott séma (az `Requests` alkönyvtárban tárolt adattartalom):
+    Az egyes telemetria sémája eltér. A következő példa a webes kérelmekhez létrehozott séma (az alkönyvtárban tárolt adattartalom `Requests` ):
 
-        root
-        |-- context: struct (nullable = true)
-        |    |-- application: struct (nullable = true)
-        |    |    |-- version: string (nullable = true)
-        |    |-- custom: struct (nullable = true)
-        |    |    |-- dimensions: array (nullable = true)
-        |    |    |    |-- element: string (containsNull = true)
-        |    |    |-- metrics: array (nullable = true)
-        |    |    |    |-- element: string (containsNull = true)
-        |    |-- data: struct (nullable = true)
-        |    |    |-- eventTime: string (nullable = true)
-        |    |    |-- isSynthetic: boolean (nullable = true)
-        |    |    |-- samplingRate: double (nullable = true)
-        |    |    |-- syntheticSource: string (nullable = true)
-        |    |-- device: struct (nullable = true)
-        |    |    |-- browser: string (nullable = true)
-        |    |    |-- browserVersion: string (nullable = true)
-        |    |    |-- deviceModel: string (nullable = true)
-        |    |    |-- deviceName: string (nullable = true)
-        |    |    |-- id: string (nullable = true)
-        |    |    |-- osVersion: string (nullable = true)
-        |    |    |-- type: string (nullable = true)
-        |    |-- location: struct (nullable = true)
-        |    |    |-- city: string (nullable = true)
-        |    |    |-- clientip: string (nullable = true)
-        |    |    |-- continent: string (nullable = true)
-        |    |    |-- country: string (nullable = true)
-        |    |    |-- province: string (nullable = true)
-        |    |-- operation: struct (nullable = true)
-        |    |    |-- name: string (nullable = true)
-        |    |-- session: struct (nullable = true)
-        |    |    |-- id: string (nullable = true)
-        |    |    |-- isFirst: boolean (nullable = true)
-        |    |-- user: struct (nullable = true)
-        |    |    |-- anonId: string (nullable = true)
-        |    |    |-- isAuthenticated: boolean (nullable = true)
-        |-- internal: struct (nullable = true)
-        |    |-- data: struct (nullable = true)
-        |    |    |-- documentVersion: string (nullable = true)
-        |    |    |-- id: string (nullable = true)
-        |-- request: array (nullable = true)
-        |    |-- element: struct (containsNull = true)
-        |    |    |-- count: long (nullable = true)
-        |    |    |-- durationMetric: struct (nullable = true)
-        |    |    |    |-- count: double (nullable = true)
-        |    |    |    |-- max: double (nullable = true)
-        |    |    |    |-- min: double (nullable = true)
-        |    |    |    |-- sampledValue: double (nullable = true)
-        |    |    |    |-- stdDev: double (nullable = true)
-        |    |    |    |-- value: double (nullable = true)
-        |    |    |-- id: string (nullable = true)
-        |    |    |-- name: string (nullable = true)
-        |    |    |-- responseCode: long (nullable = true)
-        |    |    |-- success: boolean (nullable = true)
-        |    |    |-- url: string (nullable = true)
-        |    |    |-- urlData: struct (nullable = true)
-        |    |    |    |-- base: string (nullable = true)
-        |    |    |    |-- hashTag: string (nullable = true)
-        |    |    |    |-- host: string (nullable = true)
-        |    |    |    |-- protocol: string (nullable = true)
+    ```output
+    root
+    |-- context: struct (nullable = true)
+    |    |-- application: struct (nullable = true)
+    |    |    |-- version: string (nullable = true)
+    |    |-- custom: struct (nullable = true)
+    |    |    |-- dimensions: array (nullable = true)
+    |    |    |    |-- element: string (containsNull = true)
+    |    |    |-- metrics: array (nullable = true)
+    |    |    |    |-- element: string (containsNull = true)
+    |    |-- data: struct (nullable = true)
+    |    |    |-- eventTime: string (nullable = true)
+    |    |    |-- isSynthetic: boolean (nullable = true)
+    |    |    |-- samplingRate: double (nullable = true)
+    |    |    |-- syntheticSource: string (nullable = true)
+    |    |-- device: struct (nullable = true)
+    |    |    |-- browser: string (nullable = true)
+    |    |    |-- browserVersion: string (nullable = true)
+    |    |    |-- deviceModel: string (nullable = true)
+    |    |    |-- deviceName: string (nullable = true)
+    |    |    |-- id: string (nullable = true)
+    |    |    |-- osVersion: string (nullable = true)
+    |    |    |-- type: string (nullable = true)
+    |    |-- location: struct (nullable = true)
+    |    |    |-- city: string (nullable = true)
+    |    |    |-- clientip: string (nullable = true)
+    |    |    |-- continent: string (nullable = true)
+    |    |    |-- country: string (nullable = true)
+    |    |    |-- province: string (nullable = true)
+    |    |-- operation: struct (nullable = true)
+    |    |    |-- name: string (nullable = true)
+    |    |-- session: struct (nullable = true)
+    |    |    |-- id: string (nullable = true)
+    |    |    |-- isFirst: boolean (nullable = true)
+    |    |-- user: struct (nullable = true)
+    |    |    |-- anonId: string (nullable = true)
+    |    |    |-- isAuthenticated: boolean (nullable = true)
+    |-- internal: struct (nullable = true)
+    |    |-- data: struct (nullable = true)
+    |    |    |-- documentVersion: string (nullable = true)
+    |    |    |-- id: string (nullable = true)
+    |-- request: array (nullable = true)
+    |    |-- element: struct (containsNull = true)
+    |    |    |-- count: long (nullable = true)
+    |    |    |-- durationMetric: struct (nullable = true)
+    |    |    |    |-- count: double (nullable = true)
+    |    |    |    |-- max: double (nullable = true)
+    |    |    |    |-- min: double (nullable = true)
+    |    |    |    |-- sampledValue: double (nullable = true)
+    |    |    |    |-- stdDev: double (nullable = true)
+    |    |    |    |-- value: double (nullable = true)
+    |    |    |-- id: string (nullable = true)
+    |    |    |-- name: string (nullable = true)
+    |    |    |-- responseCode: long (nullable = true)
+    |    |    |-- success: boolean (nullable = true)
+    |    |    |-- url: string (nullable = true)
+    |    |    |-- urlData: struct (nullable = true)
+    |    |    |    |-- base: string (nullable = true)
+    |    |    |    |-- hashTag: string (nullable = true)
+    |    |    |    |-- host: string (nullable = true)
+    |    |    |    |-- protocol: string (nullable = true)
+    ```
 
 8. A következő paranccsal regisztrálja a dataframe ideiglenes táblaként, és futtasson lekérdezést az adatkezeléshez:
 
@@ -345,15 +359,17 @@ Az Azure Storage-fiók meglévő fürthöz való hozzáadásához használja a [
 
     Ez a lekérdezés az alábbi szöveghez hasonló adatokat ad vissza:
 
-        +---------+
-        |     city|
-        +---------+
-        | Bellevue|
-        |  Redmond|
-        |  Seattle|
-        |Charlotte|
-        ...
-        +---------+
+    ```output
+    +---------+
+    |     city|
+    +---------+
+    | Bellevue|
+    |  Redmond|
+    |  Seattle|
+    |Charlotte|
+    ...
+    +---------+
+    ```
 
 ## <a name="next-steps"></a>További lépések
 

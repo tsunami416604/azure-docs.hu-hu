@@ -1,5 +1,5 @@
 ---
-title: SQL Server adatbázis áttelepítése egyetlen vagy készletezett adatbázisba Azure SQL Database
+title: SQL Server adatbázis áttelepítése Azure SQL Databasere
 description: Ismerkedjen meg a Azure SQL Database SQL Server adatbázis-áttelepítéssel.
 keywords: adatbázis-áttelepítés,sql server-adatbázis áttelepítése,adatbázis-áttelepítési eszközök,adatbázis áttelepítése,sql database áttelepítése
 services: sql-database
@@ -12,20 +12,21 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 02/11/2019
-ms.openlocfilehash: 861c6749c7843d64a39376366544668c77883c9c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 106337fb4756052ee682624290620093bf4a70b3
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84338345"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86081944"
 ---
 # <a name="sql-server-database-migration-to-azure-sql-database"></a>SQL Server adatbázis áttelepítése Azure SQL Databasere
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Ebből a cikkből megtudhatja, hogyan telepíthet egy SQL Server 2005-es vagy újabb verziójú adatbázist egyetlen vagy készletezett adatbázisba Azure SQL Database-ben. A felügyelt Azure SQL-példányra való áttelepítéssel kapcsolatos információkért lásd: [SQL Server példány áttelepítése az Azure SQL felügyelt példányára](../managed-instance/migrate-to-instance-from-sql-server.md). A más platformokról való áttelepítéssel kapcsolatos információkért lásd: az [Azure Database áttelepítési útmutatója](https://datamigration.microsoft.com/).
+Ebből a cikkből megtudhatja, hogyan telepíthet át egy SQL Server 2005-es vagy újabb verziójú adatbázist Azure SQL Databasere. A felügyelt Azure SQL-példányra való áttelepítéssel kapcsolatos információkért lásd: [SQL Server példány áttelepítése az Azure SQL felügyelt példányára](../managed-instance/migrate-to-instance-from-sql-server.md). A más platformokról való áttelepítéssel kapcsolatos információkért lásd: az [Azure Database áttelepítési útmutatója](https://datamigration.microsoft.com/).
 
 ## <a name="migrate-to-a-single-database-or-a-pooled-database"></a>Migrálás önálló adatbázisba vagy készletezett adatbázisba
 
-A SQL Server 2005-es vagy újabb verziójú adatbázisok egyetlen vagy készletezett adatbázisba való áttelepítésére két elsődleges módszer áll rendelkezésre Azure SQL Database. Az első módszer egyszerűbb, azonban jelentős állásidőt igényelhet a migrálás során. A második módszer bonyolultabb, viszont nem jár állásidővel a migrálás közben.
+Két elsődleges módszer létezik egy SQL Server 2005-es vagy újabb adatbázis áttelepítésére Azure SQL Databasere. Az első módszer egyszerűbb, azonban jelentős állásidőt igényelhet a migrálás során. A második módszer bonyolultabb, viszont nem jár állásidővel a migrálás közben.
 
 Mindkét esetben biztosítania kell, hogy a forrásadatbázis kompatibilis legyen Azure SQL Database a [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595)használatával. A SQL Database a [szolgáltatás paritása](features-comparison.md) SQL Serverekkel közelíthető meg, a kiszolgálói szintű és az adatbázison átívelő műveletekkel kapcsolatos problémák kivételével. A [részben támogatott vagy nem támogatott funkciókra](transact-sql-tsql-differences-sql-server.md) támaszkodó adatbázisokat és alkalmazásokat [némileg át kell alakítani](migrate-to-database-from-sql-server.md#resolving-database-migration-compatibility-issues) ezen inkompatibilitások kijavítása érdekében, még mielőtt áttelepíthetné az SQL Server-adatbázist.
 

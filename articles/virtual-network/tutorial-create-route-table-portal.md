@@ -13,16 +13,16 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: 854bf2d1ed2155290c2ecebd17695049fdd0c8bb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d630a41f9b83a852605ffad2a85ad6dd14bbac73
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81314286"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86079649"
 ---
 # <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>Oktatóanyag: Hálózati forgalom útválasztási táblázattal való irányítása az Azure Portalon
 
-Az Azure alapértelmezés szerint átirányítja a forgalmat a virtuális hálózaton belüli összes alhálózat között. Az Azure alapértelmezett útválasztását felülírhatja saját maga által létrehozott útvonalakkal. Az egyéni útvonalak hasznosak lehetnek, ha például az alhálózatok közötti adatforgalmat egy hálózati virtuális berendezésen (NVA) keresztül szeretné irányítani. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az Azure alapértelmezés szerint átirányítja a forgalmat a virtuális hálózaton belüli összes alhálózat között. Az Azure alapértelmezett útválasztását felülírhatja saját maga által létrehozott útvonalakkal. Az egyéni útvonalak hasznosak lehetnek, ha például az alhálózatok közötti adatforgalmat egy hálózati virtuális berendezésen (NVA) keresztül szeretné irányítani. Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Forgalmat irányító hálózati virtuális berendezés létrehozása
@@ -34,7 +34,7 @@ Az Azure alapértelmezés szerint átirányítja a forgalmat a virtuális háló
 
 Ez az oktatóanyag a [Azure Portal](https://portal.azure.com)használja. Használhatja az [Azure CLI](tutorial-create-route-table-cli.md) -t vagy a [Azure PowerShell](tutorial-create-route-table-powershell.md)is.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="create-an-nva"></a>NVA létrehozása
 
@@ -42,7 +42,7 @@ A hálózati virtuális berendezések (NVA) olyan virtuális gépek, amelyek seg
 
 1. A [Azure Portal](https://portal.azure.com) menüben vagy a **Kezdőlap** lapon válassza az **erőforrás létrehozása**lehetőséget.
 
-1. Válassza a **Biztonság** > **Windows Server 2016 Datacenter**lehetőséget.
+1. Válassza a **Biztonság**  >  **Windows Server 2016 Datacenter**lehetőséget.
 
     ![Windows Server 2016 Datacenter, hozzon létre egy virtuális gépet, Azure Portal](./media/tutorial-create-route-table-portal/vm-ws2016-datacenter.png)
 
@@ -136,7 +136,7 @@ A hálózati virtuális berendezések (NVA) olyan virtuális gépek, amelyek seg
 
     ![Útválasztási táblázat létrehozása, Azure Portal](./media/tutorial-create-route-table-portal/create-route-table.png)
 
-5. Kattintson a **Létrehozás** gombra.
+5. Válassza a **Létrehozás** lehetőséget.
 
 ## <a name="create-a-route"></a>Útvonal létrehozása
 
@@ -144,7 +144,7 @@ A hálózati virtuális berendezések (NVA) olyan virtuális gépek, amelyek seg
 
 1. Válassza ki az útválasztási táblázat nevét (**myroutetablepublic elemet**).
 
-1. Válassza az **útvonalak** > **Hozzáadás**lehetőséget.
+1. Válassza az **útvonalak**  >  **Hozzáadás**lehetőséget.
 
     ![Útvonal, útválasztási táblázat, Azure Portal hozzáadása](./media/tutorial-create-route-table-portal/add-route.png)
 
@@ -157,7 +157,7 @@ A hálózati virtuális berendezések (NVA) olyan virtuális gépek, amelyek seg
     | A következő ugrás típusa | **Virtuális berendezés** |
     | A következő ugrás címe | *10.0.2.4* (a *DMZ* -alhálózat címtartomány tartományán belüli címe) |
 
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
 
 ## <a name="associate-a-route-table-to-a-subnet"></a>Útválasztási táblázat társítása alhálózattal
 
@@ -239,9 +239,9 @@ Mielőtt a **Létrehozás** gombra kattint a nyilvános vagy a virtuális gép l
 
 1. Az **RDP-kapcsolat** lapon válassza az **RDP-fájl letöltése**lehetőséget. Az Azure létrehoz egy RDP protokoll (*. rdp*) fájlt, és letölti a számítógépre.
 
-1. Nyissa meg a letöltött *. rdp* fájlt. Ha a rendszer kéri, válassza a **Csatlakozás** lehetőséget. Válassza a további lehetőségek lehetőséget**egy másik fiók használata** **lehetőségnél** > , majd adja meg a magánhálózati virtuális gép létrehozásakor megadott felhasználónevet és jelszót.
+1. Nyissa meg a letöltött *. rdp* fájlt. Ha a rendszer kéri, válassza a **Csatlakozás** lehetőséget. Válassza a **további lehetőségek**lehetőséget  >  **egy másik fiók használata**lehetőségnél, majd adja meg a magánhálózati virtuális gép létrehozásakor megadott felhasználónevet és jelszót.
 
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
 
 1. Ha a bejelentkezési folyamat során figyelmeztetést kap a tanúsítványról, válassza az **Igen** lehetőséget a virtuális géphez való csatlakozáshoz.
 
@@ -275,7 +275,7 @@ Egy későbbi lépésben a nyomkövetési útvonal eszköz használatával teszt
     Set-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters -Name IpEnableRouter -Value 1
     ```
 
-1. Indítsa újra *a myVmNva* virtuális gépet: a tálcán válassza **a Start** > **Power** **(tervezett)** > **Folytatás**lehetőséget.
+1. Indítsa újra a *myVmNva* virtuális gépet: a tálcán válassza a **Start**  >  **Power** **(tervezett)**  >  **Folytatás**lehetőséget.
 
     Ezzel leválasztja a távoli asztali munkamenetet is.
 
@@ -339,7 +339,7 @@ Először is tesztelje a *myVmPublic* virtuális gépről a *myVmPrivate* virtu�
 
 1. Zárja be a *myVmPrivate* virtuális gépre irányuló távoli asztali munkamenetet.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha az erőforráscsoport már nem szükséges, törölje a *myResourceGroup* és az összes erőforrást:
 
@@ -351,7 +351,7 @@ Ha az erőforráscsoport már nem szükséges, törölje a *myResourceGroup* és
 
 1. A megerősítő párbeszédpanelen írja be *myResourceGroup* a myResourceGroup **nevet az erőforráscsoport neve**mezőbe, majd válassza a **Törlés**lehetőséget. Az Azure törli a *myResourceGroup* és az ehhez az erőforráscsoporthoz kötött összes erőforrást, beleértve az útválasztási táblákat, a Storage-fiókokat, a virtuális hálózatokat, a virtuális gépeket, a hálózati adaptereket és a nyilvános IP-címeket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban létrehozott egy útválasztási táblázatot, és hozzárendelte egy alhálózathoz. Létrehozott egy egyszerű NVA-t, amely átirányította a forgalmat egy nyilvános alhálózatról egy privát alhálózatra. Mostantól különböző előre konfigurált NVA telepíthet az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking)-ről, amely számos hasznos hálózati funkciót biztosít. További információ az útválasztásról: [Az útválasztás áttekintése](virtual-networks-udr-overview.md); [Útválasztási táblázat kezelése](manage-route-table.md).
 
@@ -359,3 +359,6 @@ Habár számos Azure-erőforrást telepíthet egy virtuális hálózaton belül,
 
 > [!div class="nextstepaction"]
 > [PaaS-erőforrásokhoz való hálózati hozzáférés korlátozása](tutorial-restrict-network-access-to-resources.md)
+
+> [!NOTE] 
+> Az Azure-szolgáltatások pénzbe kerülnek. A Azure Cost Management segítségével megadhatja a költségvetéseket, és konfigurálhatja a riasztásokat, hogy megőrizze a költségek szabályozását. Cost Managementával elemezheti, kezelheti és optimalizálhatja Azure-költségeit. További információkért tekintse meg a [költségek elemzését](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)ismertető rövid útmutatót.

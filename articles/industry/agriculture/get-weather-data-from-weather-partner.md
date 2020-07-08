@@ -5,17 +5,20 @@ author: sunasing
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: sunasing
-ms.openlocfilehash: 66138fb04b1053215a2c2ec07cec1b56e38fed0b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 39d37b1a032a386219a98a409f2eb04a6ccc6eca
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85800647"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078729"
 ---
 # <a name="get-weather-data-from-weather-partners"></a>Időjárási adatok beolvasása a partnerektől
 
 Az Azure FarmBeats segítségével a Docker-alapú összekötő-keretrendszer használatával időjárási adatokhoz viheti az időjárási adatok szolgáltatója (ke) t. Ezen keretrendszer használatával az időjárási adatszolgáltatók olyan Docker-t valósítanak meg, amely integrálható a FarmBeats. Jelenleg a következő időjárási adatszolgáltatók támogatottak:
 
-[DTN](https://www.dtn.com/dtn-content-integration/)
+  ![DTN](./media/get-sensor-data-from-sensor-partner/dtn-logo.png)
+
+  [DTN](https://www.dtn.com/dtn-content-integration/)
 
 Az időjárási információk használatával a gyakorlatban hasznosítható elemzések hozhatók létre, és mesterséges intelligencia/ML-modelleket hozhatnak létre a FarmBeats.
 
@@ -59,6 +62,9 @@ A FarmBeats-adatközpont időjárási adatainak beszerzéséhez kövesse az alá
    ```
 
    Ha például a DTN időjárási adatait szeretné lekérni, használja az alábbi adattartalmat. A név és a leírás a saját igényei szerint módosítható.
+
+   > [!NOTE]
+   > Az alábbi lépéshez API-kulcsot kell megadnia, forduljon a DTN-hoz, és tegye meg ugyanezt a DTN-előfizetéséhez.
 
    ```json
    {

@@ -11,11 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 48b51c40e5de8f10d9d1d16b02e2c70b045816b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d462f146f3f094602835d88e48815d5537c58665
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84687446"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078782"
 ---
 # <a name="scenarios-for-advanced-analytics-in-azure-machine-learning"></a>Speciális elemzési forgatókönyvek az Azure Machine Learning rendszerben
 Ez a cikk a különböző típusú adatforrások és a [csoportos adatelemzési folyamat (TDSP)](overview.md)által kezelhető célzott forgatókönyvek körét ismerteti. A TDSP egy szisztematikus módszert biztosít a csapatok számára, hogy működjenek együtt az intelligens alkalmazások létrehozásán. Az itt bemutatott forgatókönyvek az adatfeldolgozási munkafolyamatban elérhető lehetőségeket illusztrálják, amelyek az Azure-ban az adatok jellemzőitől, a forrás helyeitől és a cél adattáraktól függenek.
@@ -193,9 +194,7 @@ Ha a teljes SQL Server adatbázist szeretné replikálni a SQL Server VMban, akk
 1. Hozzon létre egy Azure HDInsight Hadoop fürtöt.
 1. Választható Előre feldolgozható és megtisztított adathalmazok.
    
-   a.  Adatok előfeldolgozása és tisztítása IPython-jegyzetfüzetben, adatok elérése az Azure-ból
-   
-       blobs.
+   a.  Az Azure-blobokból származó adatokhoz való hozzáférés előtt a IPython notebookon megjelenő adatok előfeldolgozása és tisztítása.
    
    b.  Szükség esetén alakítsa át az adatokat egy tisztított táblázatos űrlapra.
    

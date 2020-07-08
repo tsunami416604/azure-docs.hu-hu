@@ -5,15 +5,15 @@ author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/27/2019
-ms.openlocfilehash: 7f8f20be81e815414c283f7ec48aa6503e3b60ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d1dff01c9e7b5232cfac0cf5581c077e67f6937
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75552644"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86079496"
 ---
 # <a name="apache-phoenix-performance-best-practices"></a>Az Apache Phoenix teljesítményével kapcsolatos ajánlott eljárások
 
@@ -52,7 +52,7 @@ Ezzel az új elsődleges kulccsal a Phoenix által generált sorok kulcsai a kö
 
 A fenti első sorban a rowkey az alábbi módon jelenik meg:
 
-|rowkey|       kulcs|   érték|
+|rowkey|       kulcs|   value|
 |------|--------------------|---|
 |  Dole-John-111|address |1111 San Gabriel Dr.|  
 |  Dole-John-111|telefon |1-425-000-0002|  
@@ -82,13 +82,17 @@ A Phoenix lehetővé teszi, hogy szabályozza a régiók számát, ahol az adata
 
 Egy tábla a létrehozás során történő megadásához határozza meg a sós gyűjtők számát:
 
-    CREATE TABLE CONTACTS (...) SALT_BUCKETS = 16
+```sql
+CREATE TABLE CONTACTS (...) SALT_BUCKETS = 16
+```
 
 Ez a sós feldarabolja a táblázatot az elsődleges kulcsok értékei mellett, automatikusan kiválasztja az értékeket. 
 
 A tábla felosztásának szabályozásához megadhatja a tábla előzetes felosztását úgy, hogy megadja a tartomány értékeit, amelyeken a felosztás történik. Például egy három régióra bontott tábla létrehozásához:
 
-    CREATE TABLE CONTACTS (...) SPLIT ON ('CS','EU','NA')
+```sql
+CREATE TABLE CONTACTS (...) SPLIT ON ('CS','EU','NA')
+```
 
 ## <a name="index-design"></a>Index kialakítása
 
@@ -120,11 +124,15 @@ A példában szereplő Contact táblában például létrehozhat egy másodlagos
 
 Ha azonban általában a firstName és a lastName alapján szeretné megkeresni a socialSecurityNum, létrehozhat egy kezelt indexet, amely tartalmazza a firstName és a lastName adatokat az index táblában lévő tényleges adatokként:
 
-    CREATE INDEX ssn_idx ON CONTACTS (socialSecurityNum) INCLUDE(firstName, lastName);
+```sql
+CREATE INDEX ssn_idx ON CONTACTS (socialSecurityNum) INCLUDE(firstName, lastName);
+```
 
 Ez a kezelt index lehetővé teszi, hogy a következő lekérdezés csak a másodlagos indexet tartalmazó táblából olvassa be az összes adatforrást:
 
-    SELECT socialSecurityNum, firstName, lastName FROM CONTACTS WHERE socialSecurityNum > 100;
+```sql
+SELECT socialSecurityNum, firstName, lastName FROM CONTACTS WHERE socialSecurityNum > 100;
+```
 
 ### <a name="use-functional-indexes"></a>Funkcionális indexek használata
 
@@ -132,7 +140,9 @@ A funkcionális indexek lehetővé teszik, hogy indexet hozzon létre egy tetsz�
 
 Létrehozhat például egy indexet, amely lehetővé teszi a kis-és nagybetűket megkülönböztető keresések használatát egy személy összevont vezetékneve és vezetékneve alapján:
 
-     CREATE INDEX FULLNAME_UPPER_IDX ON "Contacts" (UPPER("firstName"||' '||"lastName"));
+```sql
+CREATE INDEX FULLNAME_UPPER_IDX ON "Contacts" (UPPER("firstName"||' '||"lastName"));
+```
 
 ## <a name="query-design"></a>Lekérdezési terv
 
@@ -153,46 +163,64 @@ A [az sqlline használata](http://sqlline.sourceforge.net/)-ben használja a mag
 
 Tegyük fel például, hogy rendelkezik egy REPÜLŐJÁRATok nevű táblázattal, amely a repülési késleltetési adatokat tárolja.
 
-Az összes olyan járat kiválasztásához `19805`, amely egy airlineid rendelkezik, ahol a airlineid olyan mező, amely nem szerepel az elsődleges kulcsban vagy bármely indexben:
+Az összes olyan járat kiválasztásához, amely egy airlineid rendelkezik `19805` , ahol a airlineid olyan mező, amely nem szerepel az elsődleges kulcsban vagy bármely indexben:
 
-    select * from "FLIGHTS" where airlineid = '19805';
+```sql
+select * from "FLIGHTS" where airlineid = '19805';
+```
 
 Futtassa a magyarázat parancsot az alábbiak szerint:
 
-    explain select * from "FLIGHTS" where airlineid = '19805';
+```sql
+explain select * from "FLIGHTS" where airlineid = '19805';
+```
 
 A lekérdezési terv így néz ki:
 
-    CLIENT 1-CHUNK PARALLEL 1-WAY ROUND ROBIN FULL SCAN OVER FLIGHTS
-        SERVER FILTER BY AIRLINEID = '19805'
+```sql
+CLIENT 1-CHUNK PARALLEL 1-WAY ROUND ROBIN FULL SCAN OVER FLIGHTS
+   SERVER FILTER BY AIRLINEID = '19805'
+```
 
 Ebben a csomagban jegyezze fel a teljes VIZSGÁLATra vonatkozó mondatot a JÁRATokon. Ez a kifejezés azt jelzi, hogy a végrehajtás a tábla összes sorának átvizsgálása helyett a hatékonyabb tartomány-ellenőrzés vagy a vizsgálat kihagyása lehetőség használatával történik.
 
-Most tegyük fel, hogy a 2014 január 2-án szeretné lekérdezni a `AA` járatokat, ahol a flightnum nagyobb volt, mint 1. Tegyük fel, hogy az év, hónap, dayofmonth, Carrier és flightnum oszlopok szerepelnek a példában szereplő táblázatban, és az összetett elsődleges kulcsnak mind részét képezik. A lekérdezés a következőképpen néz ki:
+Most tegyük fel, hogy a 2014 január 2-án szeretné lekérdezni a járatokat, `AA` ahol a flightnum nagyobb volt, mint 1. Tegyük fel, hogy az év, hónap, dayofmonth, Carrier és flightnum oszlopok szerepelnek a példában szereplő táblázatban, és az összetett elsődleges kulcsnak mind részét képezik. A lekérdezés a következőképpen néz ki:
 
-    select * from "FLIGHTS" where year = 2014 and month = 1 and dayofmonth = 2 and carrier = 'AA' and flightnum > 1;
+```sql
+select * from "FLIGHTS" where year = 2014 and month = 1 and dayofmonth = 2 and carrier = 'AA' and flightnum > 1;
+```
 
 Vizsgáljuk meg a lekérdezés tervét a következővel:
 
-    explain select * from "FLIGHTS" where year = 2014 and month = 1 and dayofmonth = 2 and carrier = 'AA' and flightnum > 1;
+```sql
+explain select * from "FLIGHTS" where year = 2014 and month = 1 and dayofmonth = 2 and carrier = 'AA' and flightnum > 1;
+```
 
 A létrejövő terv a következő:
 
-    CLIENT 1-CHUNK PARALLEL 1-WAY ROUND ROBIN RANGE SCAN OVER FLIGHTS [2014,1,2,'AA',2] - [2014,1,2,'AA',*]
+```sql
+CLIENT 1-CHUNK PARALLEL 1-WAY ROUND ROBIN RANGE SCAN OVER FLIGHTS [2014,1,2,'AA',2] - [2014,1,2,'AA',*]
+```
 
-A szögletes zárójelben lévő értékek az elsődleges kulcsok értékeinek tartománya. Ebben az esetben a tartomány értékeit a 2014, az 1. és a 2. hónap, a dayofmonth pedig a 2. és a (`*`z) flightnum értékekkel kell megállapítani. A lekérdezési terv megerősíti, hogy az elsődleges kulcs a várt módon van használatban.
+A szögletes zárójelben lévő értékek az elsődleges kulcsok értékeinek tartománya. Ebben az esetben a tartomány értékeit a 2014, az 1. és a 2. hónap, a dayofmonth pedig a 2. és a (z) flightnum értékekkel kell megállapítani `*` . A lekérdezési terv megerősíti, hogy az elsődleges kulcs a várt módon van használatban.
 
-Ezután hozzon létre egy indexet az nevű `carrier2_idx` Flights táblán, amely csak a hordozófrekvencia mezőben szerepel. Ez az index a flightdate, a tailnum, a Origin és a flightnum is tartalmazza olyan kezelt oszlopként, amely az indexben is tárolva van.
+Ezután hozzon létre egy indexet az nevű FLIGHTs táblán, `carrier2_idx` amely csak a hordozófrekvencia mezőben szerepel. Ez az index a flightdate, a tailnum, a Origin és a flightnum is tartalmazza olyan kezelt oszlopként, amely az indexben is tárolva van.
 
-    CREATE INDEX carrier2_idx ON FLIGHTS (carrier) INCLUDE(FLIGHTDATE,TAILNUM,ORIGIN,FLIGHTNUM);
+```sql
+CREATE INDEX carrier2_idx ON FLIGHTS (carrier) INCLUDE(FLIGHTDATE,TAILNUM,ORIGIN,FLIGHTNUM);
+```
 
 Tegyük fel, hogy a szállítót a flightdate és a tailnum együtt szeretné beszerezni, ahogy az a következő lekérdezésben is szerepel:
 
-    explain select carrier,flightdate,tailnum from "FLIGHTS" where carrier = 'AA';
+```sql
+explain select carrier,flightdate,tailnum from "FLIGHTS" where carrier = 'AA';
+```
 
 Ezt az indexet kell használnia:
 
-    CLIENT 1-CHUNK PARALLEL 1-WAY ROUND ROBIN RANGE SCAN OVER CARRIER2_IDX ['AA']
+```sql
+CLIENT 1-CHUNK PARALLEL 1-WAY ROUND ROBIN RANGE SCAN OVER CARRIER2_IDX ['AA']
+```
 
 A kiértékelési terv eredményei között megjelenő elemek teljes listájáért tekintse meg a [Apache Phoenix hangolási útmutató](https://phoenix.apache.org/tuning_guide.html)a csomagok ismertetése című szakaszát.
 
@@ -200,7 +228,7 @@ A kiértékelési terv eredményei között megjelenő elemek teljes listájáé
 
 Általában érdemes elkerülni az illesztéseket, ha az egyik oldal kicsi, különösen a gyakori lekérdezéseknél.
 
-Ha szükséges, nagy illesztéseket végezhet a `/*+ USE_SORT_MERGE_JOIN */` mutatóval, de a nagyméretű illesztés egy költséges művelet, amely nagy mennyiségű sort használ. Ha a jobb oldali táblák teljes mérete túllépi a rendelkezésre álló memóriát, használja a `/*+ NO_STAR_JOIN */` mutatót.
+Ha szükséges, nagy illesztéseket végezhet a mutatóval `/*+ USE_SORT_MERGE_JOIN */` , de a nagyméretű illesztés egy költséges művelet, amely nagy mennyiségű sort használ. Ha a jobb oldali táblák teljes mérete túllépi a rendelkezésre álló memóriát, használja a mutatót `/*+ NO_STAR_JOIN */` .
 
 ## <a name="scenarios"></a>Forgatókönyvek
 
@@ -222,7 +250,9 @@ Nagyméretű adatkészletek törlésekor a DELETE lekérdezés kiadása előtt k
 
 Ha a forgatókönyv az adatok integritásának írási sebességét részesíti előnyben, érdemes lehet letiltani a Write-Ahead naplót a táblák létrehozásakor:
 
-    CREATE TABLE CONTACTS (...) DISABLE_WAL=true;
+```sql
+CREATE TABLE CONTACTS (...) DISABLE_WAL=true;
+```
 
 Ezen és egyéb beállításokkal kapcsolatos további információkért lásd: [Apache Phoenix nyelvtan](https://phoenix.apache.org/language/index.html#options).
 

@@ -7,17 +7,20 @@ ms.topic: conceptual
 ms.date: 06/12/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 1b834f6222885ea9c5930081738a80be28f9c545
-ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
+ms.openlocfilehash: 77946694253ff0c1c6953d0b20836d3cb6733801
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84947073"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86082301"
 ---
 # <a name="azure-activity-log"></a>Azure-tevékenység naplója
 A műveletnapló egy Azure-beli [platform-napló](platform-logs-overview.md) , amely betekintést nyújt az előfizetési szintű eseményekre. Ez olyan adatokat tartalmaz, mint amikor egy erőforrás módosul, vagy amikor a virtuális gép elindul. Megtekintheti a tevékenység naplóját a Azure Portal vagy beolvashatja a bejegyzéseket a PowerShell és a parancssori felület használatával. További funkciókért hozzon létre egy diagnosztikai beállítást, amely elküldi a tevékenység naplóját [Azure monitor naplókba](data-platform-logs.md), az Azure Event Hubs az Azure-on kívülre vagy az Azure Storage-ba az archiváláshoz. Ez a cikk részletesen ismerteti a tevékenység naplójának megtekintését és a különböző célhelyekre való küldését.
 
 A diagnosztikai beállítások létrehozásával kapcsolatos részletekért tekintse meg a [diagnosztikai beállítások létrehozása a platform naplófájljainak és metrikáinak a különböző célhelyekre való küldéséhez](diagnostic-settings.md) című témakört.
+
+> [!NOTE]
+> A műveletnapló bejegyzései a rendszer által generált és nem módosíthatók és nem törölhetők.
 
 ## <a name="view-the-activity-log"></a>A műveletnapló megtekintése
 A tevékenység naplóját a Azure Portal legtöbb menüjéből elérheti. A megnyíló menü meghatározza a kezdeti szűrőt. Ha a **figyelés** menüből nyitja meg, akkor az egyetlen szűrő lesz az előfizetésben. Ha egy erőforrás menüjéből nyitja meg, akkor a szűrő erre az erőforrásra lesz beállítva. A szűrőt bármikor módosíthatja, ha az összes többi bejegyzést meg szeretné tekinteni. Kattintson a **szűrő hozzáadása** lehetőségre további tulajdonságok hozzáadásához a szűrőhöz.
@@ -63,14 +66,14 @@ Ha például meg szeretné tekinteni az egyes kategóriákhoz tartozó műveletn
 
 ```kusto
 AzureActivity
-| summarize count() by CategoryValue
+| summarize count() by Category
 ```
 
 A felügyeleti kategória összes rekordjának lekéréséhez használja a következő lekérdezést.
 
 ```kusto
 AzureActivity
-| where CategoryValue == "Administrative"
+| where Category == "Administrative"
 ```
 
 

@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/25/2019
-ms.openlocfilehash: 5cf1986711479f7330b0cd477744d9f4e2ac6459
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d8dd9aaeaadf13fa48577cf2853e7bcf58badb41
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76548934"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86079292"
 ---
 # <a name="use-the-extended-features-of-the-apache-spark-history-server-to-debug-and-diagnose-spark-applications"></a>A Apache Spark History Server kiterjesztett funkcióinak használata a Spark-alkalmazások hibakereséséhez és diagnosztizálásához
 
@@ -32,7 +32,7 @@ A Spark History-kiszolgáló a Spark-alkalmazások befejezéséhez és futtatás
 
 ### <a name="open-the-spark-history-server-web-ui-by-url"></a>A Spark History Server webes felhasználói felületének megnyitása URL-cím alapján
 
-Nyissa meg a Spark History-kiszolgálót `https://CLUSTERNAME.azurehdinsight.net/sparkhistory`tallózással, ahol a **CLUSTERNAME** a Spark-fürt neve.
+Nyissa meg a Spark History-kiszolgálót tallózással `https://CLUSTERNAME.azurehdinsight.net/sparkhistory` , ahol a **CLUSTERNAME** a Spark-fürt neve.
 
 A Spark History Server webes FELÜLETe a következő képhez hasonlóan néz ki:
 
@@ -97,7 +97,7 @@ Válassza ki a feladatsort, majd az adatnézet megjelenítéséhez válassza az 
    ![A Spark-alkalmazás & a feladatok Gráfjának lapja.](./media/apache-azure-spark-history-server/sparkui-graph-heatmap.png)
 
 
-    |Color |Leírás |
+    |Szín |Description |
     |---|---|
     |Zöld|A feladatot sikeresen befejezte.|
     |Narancssárga|A feladat nem sikerült, de ez nem befolyásolja a feladat végső eredményét. Ezek a feladatok ismétlődő vagy újrapróbálkozási példányokkal rendelkeznek, amelyek később is sikeresek lehetnek.|
@@ -130,7 +130,7 @@ Válassza ki a feladatsort, majd az adatnézet megjelenítéséhez válassza az 
     ![Az elferdített feladat ikon a Spark-alkalmazás & a feladatok gráfja oldalon.](./media/apache-azure-spark-history-server/sparkui-graph-skew-icon.png)
 
 + A feladatütemezés csomópontja a következő információkat jeleníti meg az egyes szakaszokról:
-  + ID (Azonosító)
+  + ID
   + Név vagy Leírás
   + Feladat teljes száma
   + Olvasott adatok: a bemeneti méret és a shuffle olvasási méret összege
@@ -208,7 +208,7 @@ A szín ikonra kattintva kiválaszthatja vagy kiválaszthatja a megfelelő tarta
 A közösségi verzióra való visszaálláshoz hajtsa végre a következő lépéseket.
 
 1. Nyissa meg a fürtöt a Ambari-ben.
-1. Navigáljon a **Spark2** > -**konfigurációkhoz**.
+1. Navigáljon a **Spark2**-  >  **konfigurációkhoz**.
 1. Válassza az **Egyéni spark2 – Alapértelmezések**lehetőséget.
 1. Válassza a **tulajdonság hozzáadása...** lehetőséget.
 1. Adja hozzá a **Spark. UI. Enhancement. enabled = FALSE értéket**, majd mentse azt.
@@ -245,7 +245,7 @@ Ha hibát észlel a Spark History-kiszolgálón, az alábbi lépéseket követve
 
 ### <a name="how-do-i-upgrade-a-jar-file-in-a-hotfix-scenario"></a>Hogyan frissíteni egy. jar-fájlt egy gyorsjavítási forgatókönyvben?
 
-Ha gyorsjavítással szeretné frissíteni, használja a következő parancsfájlt, amely frissíteni `spark-enhancement.jar*`fogja.
+Ha gyorsjavítással szeretné frissíteni, használja a következő parancsfájlt, amely frissíteni fogja `spark-enhancement.jar*` .
 
 **upgrade_spark_enhancement. sh**:
 
@@ -310,7 +310,7 @@ Ha gyorsjavítással szeretné frissíteni, használja a következő parancsfáj
     |Tulajdonság |Érték |
     |---|---|
     |Parancsfájl típusa|– Egyéni|
-    |Name (Név)|UpgradeJar|
+    |Name|UpgradeJar|
     |Bash-parancsfájl URI-ja|`https://hdinsighttoolingstorage.blob.core.windows.net/shsscriptactions/upgrade_spark_enhancement.sh`|
     |Csomópont típusa (i)|Head, Worker|
     |Paraméterek|`https://${account_name}.blob.core.windows.net/packages/jars/spark-enhancement-${version}.jar`|
@@ -328,6 +328,6 @@ Ha gyorsjavítással szeretné frissíteni, használja a következő parancsfáj
 + [Apache Spark-fürt erőforrásainak kezelése a HDInsight-ben](apache-spark-resource-manager.md)
 + [Az Apache Spark beállításainak konfigurálása](apache-spark-settings.md)
 
-## <a name="feedback"></a>Visszajelzés
+## <a name="suggestions"></a>Javaslatok
 
-Ha bármilyen észrevétele van, vagy az eszköz használata során bármilyen problémába ütközik, küldjön egy e-[hdivstool@microsoft.com](mailto:hdivstool@microsoft.com)mailt a következő címre: ().
+Ha bármilyen észrevétele van, vagy az eszköz használata során bármilyen problémába ütközik, küldjön egy e-mailt a következő címre: ( [hdivstool@microsoft.com](mailto:hdivstool@microsoft.com) ).

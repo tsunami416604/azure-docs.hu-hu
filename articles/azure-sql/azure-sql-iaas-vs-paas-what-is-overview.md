@@ -13,11 +13,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/27/2020
-ms.openlocfilehash: 1ad7dc2452cdc2756413db1a07da74e2a1dc3fcd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7a4f26b11911caaa7bce40b77570331b492ceb9d
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84344628"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86080176"
 ---
 # <a name="what-is-azure-sql"></a>Mi az az Azure SQL? 
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
@@ -58,7 +59,7 @@ Az Azure folyamatosan figyeli az adatait a fenyegetések ellen. Az Azure SQL-sze
 Több tényező is befolyásolhatja a különböző adatajánlatok közötti választást:
 
 - [Költség](#cost): a Pásti és a IaaS beállítás tartalmazza a mögöttes infrastruktúrát és a licencelést is magában foglaló alapdíjat. A IaaS beállítással azonban további időt és erőforrásokat kell megadnia az adatbázis kezeléséhez, míg a Pástiban a jelen adminisztrációs funkciók bekerülnek a díjszabásba. A IaaS lehetővé teszi az erőforrások leállítását, miközben Ön nem használja őket a díjak csökkentése érdekében, míg a Pásti mindig fut, hacsak nem dobja el és nem hozza létre újra az erőforrásokat, amikor szükség van rájuk.
-- [Felügyelet](#administration): a Pásti-beállítások csökkentik az adatbázis felügyeletéhez szükséges időt. Emellett korlátozza az egyéni adminisztrációs feladatok és a végrehajtható vagy futtatható parancsfájlok tartományát is. Például a CLR nem támogatott egyetlen vagy készletezett adatbázis esetén, de az SQL által felügyelt példányok egy példánya esetében támogatott. Emellett a Pásti-beli üzembe helyezési lehetőségek nem támogatják a nyomkövetési jelzők használatát.
+- [Felügyelet](#administration): a Pásti-beállítások csökkentik az adatbázis felügyeletéhez szükséges időt. Emellett korlátozza az egyéni adminisztrációs feladatok és a végrehajtható vagy futtatható parancsfájlok tartományát is. Például a CLR nem támogatott a SQL Database, de az SQL felügyelt példányainak egy példánya támogatja. Emellett a Pásti-beli üzembe helyezési lehetőségek nem támogatják a nyomkövetési jelzők használatát.
 - [Szolgáltatói szerződés](#service-level-agreement-sla): a IaaS és a Péter is magas, iparági szabványoknak megfelelő SLA-t biztosít. A Péter opció garantálja a 99,99%-os SLA-t, míg a IaaS garantálja a 99,95%-os SLA-t az infrastruktúrához, ami azt jelenti, hogy további mechanizmusokra van szükség az adatbázisok rendelkezésre állásának A 99,99%-os SLA-t egy további SQL virtuális gép létrehozásával, valamint a SQL Server always on rendelkezésre állási csoport magas rendelkezésre állási megoldásának megvalósításával érheti el. 
 - Az Azure-ba való [áttérés ideje](#market): SQL Server az Azure-beli virtuális gépen a környezet pontos egyezése, így a helyszínről az Azure-ba történő Migrálás nem különbözik az adatbázisok egyik helyszíni kiszolgálóról egy másikba való áthelyezésének. Az SQL felügyelt példánya egyszerű áttelepítést is lehetővé tesz; Előfordulhat azonban, hogy az áttelepítés előtt bizonyos módosításokat kell alkalmaznia. 
 

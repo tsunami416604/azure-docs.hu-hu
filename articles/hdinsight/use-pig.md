@@ -7,14 +7,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/28/2020
-ms.openlocfilehash: ea960a92aee1c9447bb12d27cffdc42de9fd907a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bb6c540573ecd3163e9200be66edb58ed2ca4751
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77672123"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86079207"
 ---
 # <a name="use-apache-pig-with-apache-hadoop-on-hdinsight"></a>Az Apache Pig használata a Apache Hadoop on HDInsight
 
@@ -44,11 +44,13 @@ A Pig Latin nyelvről további információt a [Pig Latin Reference Manual 1](ht
 
 ## <a name="example-data"></a><a id="data"></a>Példaadatok
 
-A HDInsight különböző, a és `/example/data` `/HdiSamples` a címtárakban tárolt adatkészleteket biztosít. Ezek a könyvtárak a fürt alapértelmezett tárolójában találhatók. Az ebben a dokumentumban szereplő Pig példa a *log4j* fájlt használja `/example/data/sample.log`.
+A HDInsight különböző, a és a címtárakban tárolt adatkészleteket biztosít `/example/data` `/HdiSamples` . Ezek a könyvtárak a fürt alapértelmezett tárolójában találhatók. Az ebben a dokumentumban szereplő Pig példa a *log4j* fájlt használja `/example/data/sample.log` .
 
 A fájlban lévő összes napló egy olyan mezőből áll, amely tartalmaz egy `[LOG LEVEL]` mezőt a típus és a súlyosság megjelenítéséhez, például:
 
-    2012-02-03 20:26:41 SampleClass3 [ERROR] verbose detail for id 1527353937
+```output
+2012-02-03 20:26:41 SampleClass3 [ERROR] verbose detail for id 1527353937
+```
 
 Az előző példában a naplózási szint hiba.
 
@@ -59,15 +61,15 @@ Az előző példában a naplózási szint hiba.
 
 A következő Pig Latin-feladatok betöltik a `sample.log` fájlt a HDInsight-fürt alapértelmezett tárolójából. Ezután végrehajtja az átalakítások egy sorozatát, ami azt eredményezi, hogy hányszor fordult elő az egyes naplók a bemeneti adatokban. Az eredmények az STDOUT-ba íródnak.
 
-    ```
-    LOGS = LOAD 'wasb:///example/data/sample.log';
-    LEVELS = foreach LOGS generate REGEX_EXTRACT($0, '(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)', 1)  as LOGLEVEL;
-    FILTEREDLEVELS = FILTER LEVELS by LOGLEVEL is not null;
-    GROUPEDLEVELS = GROUP FILTEREDLEVELS by LOGLEVEL;
-    FREQUENCIES = foreach GROUPEDLEVELS generate group as LOGLEVEL, COUNT(FILTEREDLEVELS.LOGLEVEL) as COUNT;
-    RESULT = order FREQUENCIES by COUNT desc;
-    DUMP RESULT;
-    ```
+```output
+LOGS = LOAD 'wasb:///example/data/sample.log';
+LEVELS = foreach LOGS generate REGEX_EXTRACT($0, '(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)', 1)  as LOGLEVEL;
+FILTEREDLEVELS = FILTER LEVELS by LOGLEVEL is not null;
+GROUPEDLEVELS = GROUP FILTEREDLEVELS by LOGLEVEL;
+FREQUENCIES = foreach GROUPEDLEVELS generate group as LOGLEVEL, COUNT(FILTEREDLEVELS.LOGLEVEL) as COUNT;
+RESULT = order FREQUENCIES by COUNT desc;
+DUMP RESULT;
+```
 
 Az alábbi képen egy Összegzés látható, hogy az egyes átalakítások mit tesznek az adatokon.
 

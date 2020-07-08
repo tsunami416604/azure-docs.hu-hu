@@ -3,11 +3,12 @@ title: VMware virtuális gépek biztonsági mentése a Azure Backup Server
 description: Ebből a cikkből megtudhatja, hogyan használhatja a Azure Backup Servert a VMware vCenter/ESXi-kiszolgálón futó VMware virtuális gépek biztonsági mentésére.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: deb72ad1f2b9b18368ef5134ecc23048b483f3f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fed088a9c5eea461f93c844dcb0eead74761237e
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84628443"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86081060"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>VMware virtuális gépek biztonsági mentése a Azure Backup Server
 
@@ -26,9 +27,8 @@ Ez a cikk a következőket ismerteti:
 - Győződjön meg arról, hogy a vCenter/ESXi olyan verzióját futtatja, amely támogatja a biztonsági mentést. Tekintse meg a támogatási mátrixot [itt](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix).
 - Győződjön meg arról, hogy beállította Azure Backup Server. Ha még nem tette meg, a Kezdés előtt [végezze el a](backup-azure-microsoft-azure-backup.md) következőt:. A legújabb frissítésekkel Azure Backup Servert kell futtatnia.
 - Győződjön meg arról, hogy a következő hálózati portok nyitva vannak:
-    - MABS és vCenter közötti TCP 443
-    - TCP 443 és TCP 902 a MABS és ESXi-gazdagép között
-
+  - MABS és vCenter közötti TCP 443
+  - TCP 443 és TCP 902 a MABS és ESXi-gazdagép között
 
 ## <a name="create-a-secure-connection-to-the-vcenter-server"></a>Biztonságos kapcsolatok létrehozása a vCenter Server
 
@@ -133,72 +133,75 @@ A Azure Backup Server egy olyan felhasználói fiókra van szüksége, amely jog
 
 ### <a name="role-permissions"></a>Szerepkör-engedélyek
 
-| Jogosultságok a vCenter 6,7 felhasználói fiókhoz                     | Jogosultságok a vCenter 6,5 felhasználói fiókhoz                     |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Adattár-cluster.Configdatatstore-fürt            | Adattár-cluster.Configdatatstore-fürt            |
-| Adattár. AllocateSpace                                      | Adattár. AllocateSpace                                      |
-| Adattár. Tallózás az adattárban                                   | Adattár. Tallózás az adattárban                                   |
-| Adattár. alacsony szintű fájl műveletei                          | Adattár. alacsony szintű fájl műveletei                          |
-| Globális. disable metódusok                                       | Globális. disable metódusok                                       |
-| Globális. Enable metódusok                                        | Globális. Enable metódusok                                        |
-| Global. licenses                                              | Global. licenses                                              |
-| Globális. log esemény                                             | Globális. log esemény                                             |
-| Globális. egyéni attribútumok kezelése                              | Globális. egyéni attribútumok kezelése                              |
-| Globális. egyéni attribútum beállítása                                  | Globális. egyéni attribútum beállítása                                  |
-| Gazdagép. local művelet. Virtuális gép létrehozása                | Gazdagép. local művelet. Virtuális gép létrehozása                |
-| Hálózat. hálózati hozzárendelés                                       | Hálózat. hálózati hozzárendelés                                       |
-| Erőforrás. Virtuális gép erőforrás-készlethez rendelése           | Erőforrás. Virtuális gép erőforrás-készlethez rendelése           |
-| vApp. virtuális gép hozzáadása                                     | vApp. virtuális gép hozzáadása                                     |
-| vApp. erőforrás-készlet társítása                                    | vApp. erőforrás-készlet társítása                                    |
-| vApp. Regisztráció törlése                                              | vApp. Regisztráció törlése                                              |
-| VirtualMachine.Configszülő. Eszköz hozzáadása vagy eltávolítása          | VirtualMachine.Configszülő. Eszköz hozzáadása vagy eltávolítása          |
-| Virtuális machine.Configszülő. Lemez bérletének beolvasása            | Virtuális machine.Configszülő. Lemez bérlete                     |
-| Virtuális machine.Configszülő. Új lemez hozzáadása                   | Virtuális machine.Configszülő. Új lemez hozzáadása                   |
-| Virtuális machine.Configszülő. Speciális konfiguráció        | Virtuális machine.Configszülő. Speciális                       |
-| Virtuális machine.Configszülő. Lemez változás-követésének váltása   | Virtuális machine.Configszülő. Lemez változásának követése          |
-| Virtuális machine.Configuration.Configure-gazdagép USB-eszköze     | Virtuális machine.Configszülő. Gazdagép USB-eszköze               |
-| Virtuális machine.Configszülő. Virtuális lemez kiterjesztése           | Virtuális machine.Configszülő. Virtuális lemez kiterjesztése           |
-| Virtuális machine.Configszülő. A nem birtokolt fájlok lekérdezése           | Virtuális machine.Configszülő. A nem birtokolt fájlok lekérdezése           |
-| Virtuális machine.Configszülő. Swapfile elhelyezésének módosítása     | Virtuális machine.Configszülő. Swapfile elhelyezése            |
-| Virtuális gép. Guest Operations. Guest Operation program végrehajtása | Virtuális gép. Guest Operations. Guest Operation program végrehajtása |
-| Virtuális gép. Vendég műveletek. vendég művelet módosításai | Virtuális gép. Vendég műveletek. vendég művelet módosításai |
-| Virtuális gép. Vendég műveletek. vendég műveleti lekérdezések    | Virtuális gép. Vendég műveletek. vendég műveleti lekérdezések    |
-| Virtuális gép. Kölcsönhatás. Eszköz csatlakoztatása             | Virtuális gép. Kölcsönhatás. Eszköz csatlakoztatása             |
+A következő táblázat rögzíti azokat a jogosultságokat, amelyeket a létrehozott felhasználói fiókhoz kell rendelni:
+
+| Jogosultságok a vCenter 6,5 felhasználói fiókhoz                          | Jogosultságok a vCenter 6,7 felhasználói fiókhoz                            |
+|----------------------------------------------------------------------------|----------------------------------------------------------------------------|
+| Adattár cluster.Configegy adattár-fürthöz                           | Adattár cluster.Configegy adattár-fürthöz                           |
+| Adattár. AllocateSpace                                                    | Adattár. AllocateSpace                                                    |
+| Adattár. Tallózás az adattárban                                                 | Adattár. Tallózás az adattárban                                                 |
+| Adattár. alacsony szintű fájl műveletei                                        | Adattár. alacsony szintű fájl műveletei                                        |
+| Globális. disable metódusok                                                     | Globális. disable metódusok                                                     |
+| Globális. Enable metódusok                                                      | Globális. Enable metódusok                                                      |
+| Global. licenses                                                            | Global. licenses                                                            |
+| Globális. log esemény                                                           | Globális. log esemény                                                           |
+| Globális. egyéni attribútumok kezelése                                            | Globális. egyéni attribútumok kezelése                                            |
+| Globális. egyéni attribútum beállítása                                                | Globális. egyéni attribútum beállítása                                                |
+| Gazdagép. local művelet. Virtuális gép létrehozása                               | Gazdagép. local művelet. Virtuális gép létrehozása                               |
+| Hálózat. hálózati hozzárendelés                                                     | Hálózat. hálózati hozzárendelés                                                     |
+| Erőforrás. Virtuális gép erőforrás-készlethez rendelése                          | Erőforrás. Virtuális gép erőforrás-készlethez rendelése                          |
+| vApp. virtuális gép hozzáadása                                                   | vApp. virtuális gép hozzáadása                                                   |
+| vApp. erőforrás-készlet társítása                                                  | vApp. erőforrás-készlet társítása                                                  |
+| vApp. Regisztráció törlése                                                            | vApp. Regisztráció törlése                                                            |
+| VirtualMachine.Configszülő. Eszköz hozzáadása vagy eltávolítása                         | VirtualMachine.Configszülő. Eszköz hozzáadása vagy eltávolítása                         |
+| Virtuális machine.Configszülő. Lemez bérlete                                   | Virtuális machine.Configszülő. Lemez bérletének beolvasása                           |
+| Virtuális machine.Configszülő. Új lemez hozzáadása                                 | Virtuális machine.Configszülő. Új lemez hozzáadása                                 |
+| Virtuális machine.Configszülő. Speciális                                     | Virtuális machine.Configszülő. Speciális konfiguráció                       |
+| Virtuális machine.Configszülő. Lemez változásának követése                         | Virtuális machine.Configszülő. Lemez változás-követésének váltása                  |
+| Virtuális machine.Configszülő. Gazdagép USB-eszköze                              | Virtuális machine.Configuration.Configure-gazdagép USB-eszköze                    |
+| Virtuális machine.Configszülő. Virtuális lemez kiterjesztése                          | Virtuális machine.Configszülő. Virtuális lemez kiterjesztése                          |
+| Virtuális machine.Configszülő. A nem birtokolt fájlok lekérdezése                          | Virtuális machine.Configszülő. A nem birtokolt fájlok lekérdezése                          |
+| Virtuális machine.Configszülő. Swapfile elhelyezése                           | Virtuális machine.Configszülő. Swapfile elhelyezésének módosítása                    |
+| Virtuális gép. Guest Operations. Guest Operation program végrehajtása         | Virtuális gép. Guest Operations. Guest Operation program végrehajtása         |
+| Virtuális gép. Vendég műveletek. vendég művelet módosításai             | Virtuális gép. Vendég műveletek. vendég művelet módosításai             |
+| Virtuális gép. Vendég műveletek. vendég műveleti lekérdezések                   | Virtuális gép. Vendég műveletek. vendég műveleti lekérdezések                   |
+| Virtuális gép. Kölcsönhatás. Eszköz csatlakoztatása                            | Virtuális gép. Kölcsönhatás. Eszköz csatlakoztatása                            |
 | Virtuális gép. Kölcsönhatás. Vendég operációs rendszer felügyelete a VIX API-val | Virtuális gép. Kölcsönhatás. Vendég operációs rendszer felügyelete a VIX API-val |
-| Virtuális gép. Kölcsönhatás. Kikapcsolás                      | Virtuális gép. Kölcsönhatás. Kikapcsolás                      |
-| Virtuális gép. Leltár. új létrehozása                        | Virtuális gép. Leltár. új létrehozása                        |
-| Virtuális gép. Leltár. Eltávolítás                            | Virtuális gép. Leltár. Eltávolítás                            |
-| Virtuális gép. Leltár. regisztráció                          | Virtuális gép. Leltár. regisztráció                          |
-| Virtuális gép. Kiépítés. lemezes hozzáférés engedélyezése             | Virtuális gép. Kiépítés. lemezes hozzáférés engedélyezése             |
-| Virtuális gép. Kiépítés. fájlok hozzáférésének engedélyezése             | Virtuális gép. Kiépítés. fájlok hozzáférésének engedélyezése             |
-| Virtuális gép. Kiépítés. írásvédett lemezes hozzáférés engedélyezése   | Virtuális gép. Kiépítés. írásvédett lemezes hozzáférés engedélyezése   |
-| Virtuális gép. Üzembe helyezés. virtuális gép letöltésének engedélyezése | Virtuális gép. Üzembe helyezés. virtuális gép letöltésének engedélyezése |
-| Virtuális gép. Pillanatképek kezelése.  Pillanatkép készítése       | Virtuális gép. Pillanatképek kezelése.  Pillanatkép készítése       |
-| Virtuális gép. Pillanatképek kezelése. Pillanatkép eltávolítása        | Virtuális gép. Pillanatképek kezelése. Pillanatkép eltávolítása        |
-| Virtuális gép. Pillanatképek kezelése. Helyreállítás pillanatképre     | Virtuális gép. Pillanatképek kezelése. Helyreállítás pillanatképre     |
+| Virtuális gép. Kölcsönhatás. Kikapcsolás                                    | Virtuális gép. Kölcsönhatás. Kikapcsolás                                    |
+| Virtuális gép. Leltár. új létrehozása                                      | Virtuális gép. Leltár. új létrehozása                                      |
+| Virtuális gép. Leltár. Eltávolítás                                          | Virtuális gép. Leltár. Eltávolítás                                          |
+| Virtuális gép. Leltár. regisztráció                                        | Virtuális gép. Leltár. regisztráció                                        |
+| Virtuális gép. Kiépítés. lemezes hozzáférés engedélyezése                            | Virtuális gép. Kiépítés. lemezes hozzáférés engedélyezése                            |
+| Virtuális gép. Kiépítés. fájlok hozzáférésének engedélyezése                            | Virtuális gép. Kiépítés. fájlok hozzáférésének engedélyezése                            |
+| Virtuális gép. Kiépítés. írásvédett lemezes hozzáférés engedélyezése                  | Virtuális gép. Kiépítés. írásvédett lemezes hozzáférés engedélyezése                  |
+| Virtuális gép. Üzembe helyezés. virtuális gép letöltésének engedélyezése               | Virtuális gép. Üzembe helyezés. virtuális gép letöltésének engedélyezése               |
+| Virtuális gép. Pillanatképek kezelése. Pillanatkép készítése                      | Virtuális gép. Pillanatképek kezelése. Pillanatkép készítése                      |
+| Virtuális gép. Pillanatképek kezelése. Pillanatkép eltávolítása                       | Virtuális gép. Pillanatképek kezelése. Pillanatkép eltávolítása                       |
+| Virtuális gép. Pillanatképek kezelése. Helyreállítás pillanatképre                    | Virtuális gép. Pillanatképek kezelése. Helyreállítás pillanatképre                    |
 
-<br>
+> [!NOTE]
+> A következő táblázat felsorolja a vCenter 6,0 és a vCenter 5,5 felhasználói fiókok jogosultságait.
 
-| **Jogosultságok a vCenter 6,0 felhasználói fiókhoz**                | **Jogosultságok a vCenter 5,5 felhasználói fiókhoz** |
-| ---------------------------------------------------------- | ------------------------------------------- |
-| Adattár. AllocateSpace                                    | Network. assign                              |
-| Globális. egyéni attribútumok kezelése                           | Adattár. AllocateSpace                     |
-| Globális. egyéni attribútum beállítása                               | VirtualMachine.Config. Változáskövetési        |
-| Gazdagép. local művelet. Virtuális gép létrehozása              | VirtualMachine. State. RemoveSnapshot         |
-| Hálózati.  Hálózat kiosztása                                   | VirtualMachine. State. CreateSnapshot         |
-| Erőforrás.  Virtuális gép erőforrás-készlethez rendelése         | VirtualMachine. kiépítés. DiskRandomRead  |
-| Virtuális machine.Configszülő. Új lemez hozzáadása                | VirtualMachine. Interact. erő            |
-| Virtuális machine.Configszülő. Speciális                    | VirtualMachine. Inventory. Create             |
-| Virtuális machine.Configszülő. Lemez változásának követése        | VirtualMachine.Config. AddNewDisk            |
-| Virtuális machine.Configszülő. Gazdagép USB-eszköze             | VirtualMachine.Config. HostUSBDevice         |
-| Virtuális machine.Configszülő. A nem birtokolt fájlok lekérdezése         | VirtualMachine.Config. AdvancedConfig        |
-| Virtuális machine.Configszülő. Swapfile elhelyezése          | VirtualMachine.Config. SwapPlacement         |
-| Virtuális gép. Interakció. kikapcsolás                     | Global. ManageCustomFields                   |
-| Virtuális gép. Hardverleltár. Új létrehozása                     |                                             |
-| Virtuális gép. Kiépítés. lemezes hozzáférés engedélyezése            |                                             |
-| Virtuális gép. Kiépítési. Írásvédett lemezes hozzáférés engedélyezése |                                             |
-| Virtuális gép. Pillanatképek kezelése. Pillanatkép létrehozása       |                                             |
-| Virtuális gép. Pillanatképek kezelése. Pillanatkép eltávolítása       |                                             |
+| Jogosultságok a vCenter 6,0 felhasználói fiókhoz | Jogosultságok a vCenter 5,5 felhasználói fiókhoz |
+| --- | --- |
+| Adattár. AllocateSpace | Network. assign |
+| Globális. egyéni attribútumok kezelése | Adattár. AllocateSpace |
+| Globális. egyéni attribútum beállítása | VirtualMachine.Config. Változáskövetési |
+| Gazdagép. local művelet. Virtuális gép létrehozása | VirtualMachine. State. RemoveSnapshot |
+| Hálózati. Hálózat kiosztása | VirtualMachine. State. CreateSnapshot |
+| Erőforrás. Virtuális gép erőforrás-készlethez rendelése | VirtualMachine. kiépítés. DiskRandomRead |
+| Virtuális machine.Configszülő. Új lemez hozzáadása | VirtualMachine. Interact. erő |
+| Virtuális machine.Configszülő. Speciális | VirtualMachine. Inventory. Create |
+| Virtuális machine.Configszülő. Lemez változásának követése | VirtualMachine.Config. AddNewDisk |
+| Virtuális machine.Configszülő. Gazdagép USB-eszköze | VirtualMachine.Config. HostUSBDevice |
+| Virtuális machine.Configszülő. A nem birtokolt fájlok lekérdezése | VirtualMachine.Config. AdvancedConfig |
+| Virtuális machine.Configszülő. Swapfile elhelyezése | VirtualMachine.Config. SwapPlacement |
+| Virtuális gép. Interakció. kikapcsolás | Global. ManageCustomFields |
+| Virtuális gép. Hardverleltár. Új létrehozása |   |
+| Virtuális gép. Kiépítés. lemezes hozzáférés engedélyezése |   |
+| Virtuális gép. Kiépítési. Írásvédett lemezes hozzáférés engedélyezése |   |
+| Virtuális gép. Pillanatképek kezelése. Pillanatkép létrehozása |   |
+| Virtuális gép. Pillanatképek kezelése. Pillanatkép eltávolítása |   |
 
 ## <a name="create-a-vmware-account"></a>VMware-fiók létrehozása
 

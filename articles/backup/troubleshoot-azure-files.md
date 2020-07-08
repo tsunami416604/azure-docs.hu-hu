@@ -3,12 +3,12 @@ title: Azure-fájlmegosztás biztonsági mentésének hibáinak megoldása
 description: A cikk olyan hibákkal kapcsolatos hibaelhárítási információkat tartalmaz, amelyek az Azure fájlmegosztások védelmekor következnek be.
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 15cea28ee6c6a969b56e34242e2631b0aa760331
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d09c89433be17e16ad768e2d28305819146e6b5e
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85130398"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86079887"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>Az Azure-fájlmegosztás biztonsági mentése során felmerülő problémák elhárítása
 
@@ -277,8 +277,6 @@ Hibakód: BMSUserErrorObjectLocked
 Hibaüzenet: egy másik művelet van folyamatban a kijelölt elemen.
 
 Várjon, amíg a másik folyamatban lévő művelet befejeződik, és próbálkozzon újra később.
-
-A fájlból: troubleshoot-azure-files.md
 
 ## <a name="common-soft-delete-related-errors"></a>Gyakori törléssel kapcsolatos gyakori hibák
 

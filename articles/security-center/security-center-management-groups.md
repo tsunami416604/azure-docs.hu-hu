@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/19/2018
 ms.author: memildin
-ms.openlocfilehash: 734876380d22f5d4d6dae0dd375b238fd5f6ffed
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 236153612f6056e90cb9b5af128f49ed550e3fe9
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74559346"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86080873"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>A Azure Security Center teljes bérlőre kiterjedő láthatóságának megszerzése
 Ez a cikk bemutatja, hogyan kezelheti a szervezete biztonsági állapotát a Azure Active Directory bérlőhöz kapcsolódó összes Azure-előfizetésre vonatkozó biztonsági szabályzatok alkalmazásával.
@@ -73,7 +74,7 @@ Egy Azure Active Directory bérlői rendszergazdának nincs közvetlen hozzáfé
 
 3. Az **Azure-erőforrások hozzáférés-kezelés**területén állítsa a kapcsolót **Igen**értékre.
 
-   ![A globális rendszergazda felügyelheti az Azure-előfizetéseket és Management Groups – képernyőfelvétel](./media/security-center-management-groups/aad-properties-global-admin-setting.png)
+   ![Hozzáférés-kezelés az Azure-erőforrásokhoz – képernyőfelvétel](./media/security-center-management-groups/aad-properties-global-admin-setting.png)
 
    - Ha az Igen értékre állítja a kapcsolót, a rendszer az Azure RBAC felhasználói hozzáférés rendszergazdai szerepkörét rendeli hozzá a gyökérszintű hatókörben (/). Ez lehetővé teszi, hogy az ehhez az Azure AD-címtárhoz társított összes Azure-előfizetéshez és felügyeleti csoporthoz rendeljen szerepköröket. Ez a kapcsoló csak olyan felhasználók számára érhető el, akik a globális rendszergazdai szerepkörhöz vannak rendelve az Azure AD-ben.
 
@@ -160,7 +161,7 @@ Miután hozzárendelte a RBAC szerepköröket a felhasználókhoz, a bérlői re
 
 2. A navigációs listában kattintson a **Azure Active Directory** elemre, majd a **Tulajdonságok**elemre.
 
-3. A **globális rendszergazda területen kezelheti az Azure-előfizetéseket és a Management groups**, a **nem**értékre állíthatja a kapcsolót.
+3. Az **Azure-erőforrások hozzáférés-kezelés**területén állítsa a **nem**értékre a kapcsolót.
 
 4. A beállítás mentéséhez kattintson a **Save (Mentés** ) gombra.
 

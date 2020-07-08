@@ -11,11 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d5e44d6b34a16f03d4ca1f82453f1f6e9f074917
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7cce0a927c2ffd69252a22ea4459f789d22721c2
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83860613"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86080737"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Struktúra-táblák létrehozása és adatok betöltése az Azure Blob Storage
 
@@ -69,7 +70,9 @@ A parancs futtatásával `hive -e "<your hive query>;` egyszerű kaptár-lekérd
 #### <a name="submit-hive-queries-in-hql-files"></a>Kaptár-lekérdezések küldése a ". HQL" fájlokban
 Ha a kaptár-lekérdezés bonyolultabb, és több sorral rendelkezik, a parancssorban vagy a kaptár-konzolon végzett szerkesztési lekérdezések nem praktikusak. Egy másik lehetőség, hogy egy szövegszerkesztőt használ a Hadoop-fürt fő csomópontjában, hogy mentse a kaptár lekérdezéseit egy ". HQL" fájlba a fő csomópont helyi könyvtárában. Ezután a ". HQL" fájlban a kaptár lekérdezését a következő argumentummal lehet elküldeni `-f` :
 
-    hive -f "<path to the '.hql' file>"
+```console
+hive -f "<path to the '.hql' file>"
+```
 
 ![Struktúra lekérdezése egy ". HQL" fájlban](./media/move-hive-tables/run-hive-queries-3.png)
 
@@ -77,8 +80,10 @@ Ha a kaptár-lekérdezés bonyolultabb, és több sorral rendelkezik, a parancss
 
 Alapértelmezés szerint a Hadoop parancssorban a kaptár-lekérdezés elküldése után a rendszer kinyomtatja a Térkép/csökkentés feladatot a képernyőn. Ha el szeretné tiltani a Térkép/a feladatok csökkentésének folyamatát, a parancssorban egy argumentumot `-S` ("S") is használhat a parancssorban az alábbiak szerint:
 
-    hive -S -f "<path to the '.hql' file>"
-    hive -S -e "<Hive queries>"
+```console
+hive -S -f "<path to the '.hql' file>"
+hive -S -e "<Hive queries>"
+```
 
 #### <a name="submit-hive-queries-in-hive-command-console"></a>Kaptár-lekérdezések elküldése a kaptár parancssori konzolon.
 Azt is megteheti, hogy a Hadoop parancssorban futtatja az parancsot `hive` , majd elküldi a kaptár-lekérdezéseket a kaptár parancssori konzolon. Íme egy példa. Ebben a példában a két piros mező kiemeli a kaptár-konzol megadásához használt parancsokat, valamint a kaptár parancssori konzolon küldött struktúra-lekérdezést. A zöld mező kiemeli a kaptár lekérdezés kimenetét.
@@ -90,7 +95,9 @@ Az előző példákban közvetlenül a kaptár-lekérdezés eredményei láthat�
 **A kimeneti struktúra lekérdezési eredményei helyi fájlba kerülnek.**
 A kaptár lekérdezési eredményeinek a fő csomóponton egy helyi könyvtárába való kimenetéhez a következő módon el kell küldenie a kaptár-lekérdezést a Hadoop parancssorba:
 
-    hive -e "<hive query>" > <local path in the head node>
+```console
+hive -e "<hive query>" > <local path in the head node>
+```
 
 A következő példában a kaptár-lekérdezés kimenete egy fájlba kerül a `hivequeryoutput.txt` címtárban `C:\apps\temp` .
 
@@ -100,7 +107,9 @@ A következő példában a kaptár-lekérdezés kimenete egy fájlba kerül a `h
 
 A kaptár lekérdezési eredményeit egy Azure-blobba is kiválaszthatja a Hadoop-fürt alapértelmezett tárolóján belül. A kaptár lekérdezése a következő:
 
-    insert overwrite directory wasb:///<directory within the default container> <select clause from ...>
+```console
+insert overwrite directory wasb:///<directory within the default container> <select clause from ...>
+```
 
 A következő példában a kaptár-lekérdezés kimenetét a rendszer a `queryoutputdir` Hadoop-fürt alapértelmezett tárolójában lévő blob könyvtárba írja. Itt csak a könyvtár nevét kell megadnia a blob neve nélkül. A rendszer hibát jelez, ha a címtár-és a Blobok nevét is megadja, például: `wasb:///queryoutputdir/queryoutput.txt` .
 
@@ -121,18 +130,20 @@ A kaptár-lekérdezések meg vannak osztva a [GitHub-tárházban](https://github
 
 Itt látható az a kaptár-lekérdezés, amely létrehoz egy struktúra-táblázatot.
 
-    create database if not exists <database name>;
-    CREATE EXTERNAL TABLE if not exists <database name>.<table name>
-    (
-        field1 string,
-        field2 int,
-        field3 float,
-        field4 double,
-        ...,
-        fieldN string
-    )
-    ROW FORMAT DELIMITED FIELDS TERMINATED BY '<field separator>' lines terminated by '<line separator>'
-    STORED AS TEXTFILE LOCATION '<storage location>' TBLPROPERTIES("skip.header.line.count"="1");
+```hiveql
+create database if not exists <database name>;
+CREATE EXTERNAL TABLE if not exists <database name>.<table name>
+(
+    field1 string,
+    field2 int,
+    field3 float,
+    field4 double,
+    ...,
+    fieldN string
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '<field separator>' lines terminated by '<line separator>'
+STORED AS TEXTFILE LOCATION '<storage location>' TBLPROPERTIES("skip.header.line.count"="1");
+```
 
 Itt láthatók a bekapcsolni és egyéb konfigurációkhoz szükséges mezők leírása:
 
@@ -146,7 +157,9 @@ Itt láthatók a bekapcsolni és egyéb konfigurációkhoz szükséges mezők le
 ## <a name="load-data-to-hive-tables"></a><a name="load-data"></a>Adatgyűjtés a kaptár tábláiba
 Itt látható a kaptár-lekérdezés, amely betölti az adathalmazt egy struktúra-táblába.
 
-    LOAD DATA INPATH '<path to blob data>' INTO TABLE <database name>.<table name>;
+```hiveql
+LOAD DATA INPATH '<path to blob data>' INTO TABLE <database name>.<table name>;
+```
 
 * **\<path to blob data\>**: Ha a kaptár táblába való feltöltésre kerülő blob-fájl a HDInsight Hadoop-fürt alapértelmezett tárolójában van, akkor az értéknek *\<path to blob data\>* *"wasb:// \<directory in this container> / \<blob file name> "* formátumúnak kell lennie. A blob fájl a HDInsight Hadoop-fürt további tárolójában is szerepelhet. Ebben az esetben *\<path to blob data\>* a következő formátumúnak kell lennie: *"wasb:// \<container name> @ \<storage account name> . blob.Core.Windows.net/ \<blob file name> "*.
 
@@ -163,69 +176,83 @@ A kaptár-táblázatok particionálásán kívül hasznos lehet a kaptár-adatok
 ### <a name="partitioned-table"></a>Particionált tábla
 Itt látható a kaptár-lekérdezés, amely létrehoz egy particionált táblát, és betölti az betöltést.
 
-    CREATE EXTERNAL TABLE IF NOT EXISTS <database name>.<table name>
-    (field1 string,
-    ...
-    fieldN string
-    )
-    PARTITIONED BY (<partitionfieldname> vartype) ROW FORMAT DELIMITED FIELDS TERMINATED BY '<field separator>'
-         lines terminated by '<line separator>' TBLPROPERTIES("skip.header.line.count"="1");
-    LOAD DATA INPATH '<path to the source file>' INTO TABLE <database name>.<partitioned table name>
-        PARTITION (<partitionfieldname>=<partitionfieldvalue>);
+```hiveql
+CREATE EXTERNAL TABLE IF NOT EXISTS <database name>.<table name>
+(field1 string,
+...
+fieldN string
+)
+PARTITIONED BY (<partitionfieldname> vartype) ROW FORMAT DELIMITED FIELDS TERMINATED BY '<field separator>'
+    lines terminated by '<line separator>' TBLPROPERTIES("skip.header.line.count"="1");
+LOAD DATA INPATH '<path to the source file>' INTO TABLE <database name>.<partitioned table name>
+    PARTITION (<partitionfieldname>=<partitionfieldvalue>);
+```
 
 Particionált táblák lekérdezése esetén ajánlott hozzáadni a partíciós feltételt a záradék **elején** `where` , ami javítja a keresési hatékonyságot.
 
-    select
-        field1, field2, ..., fieldN
-    from <database name>.<partitioned table name>
-    where <partitionfieldname>=<partitionfieldvalue> and ...;
+```hiveql
+select
+    field1, field2, ..., fieldN
+from <database name>.<partitioned table name>
+where <partitionfieldname>=<partitionfieldvalue> and ...;
+```
 
 ### <a name="store-hive-data-in-orc-format"></a><a name="orc"></a>Struktúra-adattárolók az ork formátumban
 Az adatok nem tölthetők be közvetlenül a blob Storage-ból olyan struktúra-táblákba, amelyek az ork formátumban vannak tárolva. Az alábbi lépésekkel végezheti el az adatok Azure-blobokból való betöltését az ork-formátumban tárolt struktúra-táblákba.
 
 Hozzon létre egy **TEXTFILE tárolt** külső táblázatot, és töltse be az adatok a blob Storage-ból a táblába.
 
-        CREATE EXTERNAL TABLE IF NOT EXISTS <database name>.<external textfile table name>
-        (
-            field1 string,
-            field2 int,
-            ...
-            fieldN date
-        )
-        ROW FORMAT DELIMITED FIELDS TERMINATED BY '<field separator>'
-            lines terminated by '<line separator>' STORED AS TEXTFILE
-            LOCATION 'wasb:///<directory in Azure blob>' TBLPROPERTIES("skip.header.line.count"="1");
+```hiveql
+CREATE EXTERNAL TABLE IF NOT EXISTS <database name>.<external textfile table name>
+(
+    field1 string,
+    field2 int,
+    ...
+    fieldN date
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '<field separator>'
+    lines terminated by '<line separator>' STORED AS TEXTFILE
+    LOCATION 'wasb:///<directory in Azure blob>' TBLPROPERTIES("skip.header.line.count"="1");
 
-        LOAD DATA INPATH '<path to the source file>' INTO TABLE <database name>.<table name>;
+LOAD DATA INPATH '<path to the source file>' INTO TABLE <database name>.<table name>;
+```
 
 Hozzon létre egy belső táblázatot ugyanazzal a sémával, mint az 1. lépésben szereplő külső táblával, ugyanazzal a mezővel, és tárolja a kaptár-adatforrást az ork formátumban.
 
-        CREATE TABLE IF NOT EXISTS <database name>.<ORC table name>
-        (
-            field1 string,
-            field2 int,
-            ...
-            fieldN date
-        )
-        ROW FORMAT DELIMITED FIELDS TERMINATED BY '<field separator>' STORED AS ORC;
+```hiveql
+CREATE TABLE IF NOT EXISTS <database name>.<ORC table name>
+(
+    field1 string,
+    field2 int,
+    ...
+    fieldN date
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '<field separator>' STORED AS ORC;
+```
 
 Válassza ki az 1. lépésben szereplő külső tábla adatait, és illessze be az ork táblázatba
 
-        INSERT OVERWRITE TABLE <database name>.<ORC table name>
-            SELECT * FROM <database name>.<external textfile table name>;
+```hiveql
+INSERT OVERWRITE TABLE <database name>.<ORC table name>
+    SELECT * FROM <database name>.<external textfile table name>;
+```
 
 > [!NOTE]
 > Ha a TEXTFILE tábla * \<database name\> . \<external textfile table name\> * partíciók vannak, a 3. lépésben a `SELECT * FROM <database name>.<external textfile table name>` parancs kiválasztja a partíció változót a visszaadott adatkészletben lévő mezőként. Beillesztés a alkalmazásba * \<database name\> . \<ORC table name\> * a művelet óta * \<database name\> . \<ORC table name\> * a nem rendelkezik a partíció változóval a tábla séma mezőjében. Ebben az esetben kifejezetten ki kell választania a beszúrandó mezőket * \<database name\> . \<ORC table name\> * az alábbiak szerint:
 >
 >
 
-        INSERT OVERWRITE TABLE <database name>.<ORC table name> PARTITION (<partition variable>=<partition value>)
-           SELECT field1, field2, ..., fieldN
-           FROM <database name>.<external textfile table name>
-           WHERE <partition variable>=<partition value>;
+```hiveql
+INSERT OVERWRITE TABLE <database name>.<ORC table name> PARTITION (<partition variable>=<partition value>)
+    SELECT field1, field2, ..., fieldN
+    FROM <database name>.<external textfile table name>
+    WHERE <partition variable>=<partition value>;
+```
 
 *\<external text file table name\>* Ha az összes adattal beszúrta * \<database name\> \<ORC table name\> *, a következő lekérdezés használata esetén a rendszer biztonságosan elvégezheti a használatát:
 
-        DROP TABLE IF EXISTS <database name>.<external textfile table name>;
+```hiveql
+    DROP TABLE IF EXISTS <database name>.<external textfile table name>;
+```
 
 Az eljárás követése után egy, az ork formátumú, használatra kész táblát tartalmazó táblával kell rendelkeznie.  

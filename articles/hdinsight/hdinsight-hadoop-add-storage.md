@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: d5dde8c45331cf8c443aba86c96ba12c8277472c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 44262c30dc49182314fb70dbb814be25c49e9d50
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82192484"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86080006"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>További Storage-fiókok hozzáadása a HDInsight-hez
 
@@ -133,14 +133,6 @@ A probléma megkerülése:
 
 > [!IMPORTANT]  
 > A fürthöz csatolt elsődleges Storage-fiók tárolási kulcsának elforgatása nem támogatott.
-
-### <a name="poor-performance"></a>Gyenge teljesítmény
-
-Ha a Storage-fiók a HDInsight-fürttől eltérő régióban található, a teljesítmény gyenge lehet. Az adatok egy másik régióban való elérése a regionális Azure-adatközponton kívüli hálózati forgalmat küld. És a nyilvános interneten keresztül, amely képes késést bevezetni.
-
-### <a name="additional-charges"></a>További díjak
-
-Ha a Storage-fiók a HDInsight-fürttől eltérő régióban található, az Azure-számlázás további kimenő költségeire is figyelmeztetheti. Ha az adatközpont elhagyja a helyi adatközpontot, a kimenő forgalom díját is alkalmazza. Ez a díj akkor is alkalmazható, ha a forgalmat egy másik régióban lévő Azure-adatközpontra szánják.
 
 ## <a name="next-steps"></a>További lépések
 

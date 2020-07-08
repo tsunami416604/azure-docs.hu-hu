@@ -12,11 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/12/2018
 ms.author: genli
-ms.openlocfilehash: 315974e4995630eb3af055ac0e1c44f7d8dd0737
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6bce1616ce0c7f7e42810a551acb2f02165ccf93
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77918240"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078629"
 ---
 #  <a name="cannot-remote-desktop-to-a-vm-because-the-network-interface-is-disabled"></a>Nem lehet a Távoli asztalt a virtuális géphez kapcsolni, mert a hálózati adapter le van tiltva
 
@@ -39,21 +40,29 @@ A virtuális gép felületének engedélyezéséhez használja a soros vezérlé
 ). Ha a soros konzol nincs engedélyezve a virtuális gépen, tekintse meg a [hálózati adapter alaphelyzetbe állítása](#reset-network-interface)című témakört.
 2. Győződjön meg arról, hogy a hálózati adapter állapota:
 
-        netsh interface show interface
+    ```console
+    netsh interface show interface
+    ```
 
     Jegyezze fel a letiltott hálózati adapter nevét.
 
 3. A hálózati adapter engedélyezése:
 
-        netsh interface set interface name="interface Name" admin=enabled
+    ```console
+    netsh interface set interface name="interface Name" admin=enabled
+    ```
 
     Ha például az adatkapcsolati felület neve "Ethernet 2", futtassa a következő parancsot:
 
-        netsh interface set interface name="Ethernet 2" admin=enabled
+    ```console
+    netsh interface set interface name="Ethernet 2" admin=enabled
+    ```
 
 4.  Ellenőrizze a hálózati adapter állapotát, és győződjön meg arról, hogy a hálózati adapter engedélyezve van.
 
-        netsh interface show interface
+    ```console
+    netsh interface show interface
+    ```
 
     Ezen a ponton nem kell újraindítani a virtuális gépet. A virtuális gép elérhető lesz.
 

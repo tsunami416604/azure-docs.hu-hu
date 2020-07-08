@@ -9,12 +9,12 @@ ms.reviewer: dseven
 ms.author: matjazl
 author: matjazl
 ms.date: 10/13/2019
-ms.openlocfilehash: 068af40ed42d0211eed6e1a315016bb8ecc40d05
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 937be72bfec96119474e7effe9ba88a2cf253444
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954213"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86081843"
 ---
 # <a name="add-data-to-audit-logs-by-using-custom-http-headers"></a>Az egyéni HTTP-fejlécek használatával adhat hozzá adatnaplókat a naplókhoz
 
@@ -36,7 +36,7 @@ A különböző típusú információk rögzítéséhez egyéni fejléceket hasz
 > [!IMPORTANT]
 > Ügyeljen arra, hogy az egyéni fejlécekben elküldött adatok tárolása a Microsoft belső naplózási rendszerében 30 nappal az Azure-naplók figyelése után történik. Javasoljuk, hogy az egyéni fejlécekhez való hozzáadás előtt titkosítsa az adatokat. Az ügyfél-fejléceken keresztül nem adhat át PHI-információkat.
 
-A következő elnevezési konvenciót kell használnia a HTTP-fejlécekhez: X-MS-AZUREFHIR-AUDIT-AUDIT- \<name> .
+A következő elnevezési konvenciót kell használnia a HTTP-fejlécekhez: X-MS-AZUREFHIR-AUDIT- \<name> .
 
 Ezek a HTTP-fejlécek szerepelnek a naplóba felvett egyik tulajdonságlapon is. Például:
 
@@ -75,7 +75,7 @@ client.OnBeforeRequest += (object sender, BeforeRequestEventArgs e) =>
 };
 client.Get("Patient");
 ```
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebből a cikkből megtudhatta, hogyan adhat hozzá adatnaplókat egyéni fejlécek használatával a FHIR készült Azure API-ban. Következő lépésként megismerheti a FHIR készült Azure API-ban konfigurálható további beállításokat is.
  
 >[!div class="nextstepaction"]

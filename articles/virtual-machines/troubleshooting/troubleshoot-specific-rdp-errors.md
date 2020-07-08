@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 851c5eb4ebfee4e4a4836a07b51578dd2b0c68cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b3e06ff28c7980910636edeb06c5863859120484
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84701881"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86081570"
 ---
 # <a name="troubleshooting-specific-rdp-error-messages-to-a-windows-vm-in-azure"></a>Azure-beli Windows virtuális gépek konkrét RDP-hibaüzeneteinek elhárítása
 A Windows rendszerű virtuális gépekhez (VM) az Azure-ban Távoli asztal-csatlakozás használatakor hibaüzenet jelenhet meg. Ez a cikk a leggyakoribb hibaüzenetek némelyikét ismerteti, valamint a hibaelhárítási lépéseket. Ha olyan problémák merülnek fel, amelyek RDP használatával kapcsolódnak a virtuális géphez, de nem találnak konkrét hibaüzenetet, tekintse [meg a távoli asztal hibaelhárítási útmutatóját](troubleshoot-rdp-connection.md).
@@ -39,7 +40,9 @@ Ok: a Távoli asztal kiszolgálói szerepkör 120 napos licencelési türelmi id
 
 Megkerülő megoldásként mentse az RDP-fájl egy helyi példányát a portálról, és futtassa ezt a parancsot egy PowerShell-parancssorból a kapcsolódáshoz. Ez a lépés letiltja a csak a következő kapcsolatok licencelését:
 
-        mstsc <File name>.RDP /admin
+```powershell
+mstsc <File name>.RDP /admin
+```
 
 Ha valójában nem szükséges több mint két egyidejű Távoli asztal kapcsolat a virtuális géppel, a Kiszolgálókezelő használatával távolíthatja el a Távoli asztal kiszolgálói szerepkört.
 
@@ -54,9 +57,11 @@ Lehetséges megoldások:
 
 * Ha a szervezet intranetén található, győződjön meg arról, hogy a számítógépe rendelkezik hozzáféréssel a proxykiszolgálóhoz, és HTTPS-forgalmat tud küldeni a kiszolgálónak.
 * Ha helyileg tárolt RDP-fájlt használ, próbálja meg használni a portál által generált ilyet. Ez a lépés biztosítja, hogy a virtuális gép, illetve a felhőalapú szolgáltatás és a virtuális gép végpont-portjának helyes DNS-neve legyen. Íme egy példa a portál által generált RDP-fájlra:
-  
-        full address:s:tailspin-azdatatier.cloudapp.net:55919
-        prompt for credentials:i:1
+
+    ```output
+    full address:s:tailspin-azdatatier.cloudapp.net:55919
+    prompt for credentials:i:1
+    ```
 
 Az RDP-fájl címzési része a következő:
 

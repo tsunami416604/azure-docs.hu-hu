@@ -3,18 +3,18 @@ title: Azure-Application Insights ASP.NET Core alkalmazásokhoz | Microsoft Docs
 description: ASP.NET Core webalkalmazások figyelése a rendelkezésre állás, a teljesítmény és a használat érdekében.
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: f9e51521e9bd35c6afb3dbe7cafb1e56e847756a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e575bf0d1fe138ae9dd4160b55be4f2c8ea5bea
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390125"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86082199"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights ASP.NET Core alkalmazásokhoz
 
 Ez a cikk azt ismerteti, hogyan engedélyezhető a Application Insights [ASP.net Core](https://docs.microsoft.com/aspnet/core) alkalmazáshoz. A cikkben szereplő utasítások elvégzése után a Application Insights összegyűjti a kérelmeket, a függőségeket, a kivételeket, a teljesítményszámlálókat, a szívveréseket és a naplókat a ASP.NET Core alkalmazásból.
 
-Az itt használt példa egy [MVC-alkalmazás](https://docs.microsoft.com/aspnet/core/tutorials/first-mvc-app) , amely a célokat célozza `netcoreapp3.0` . Ezek az utasítások az összes ASP.NET Core alkalmazásra alkalmazhatók.
+Az itt használt példa egy [MVC-alkalmazás](https://docs.microsoft.com/aspnet/core/tutorials/first-mvc-app) , amely a célokat célozza `netcoreapp3.0` . Ezek az utasítások az összes ASP.NET Core alkalmazásra alkalmazhatók. Ha a [Worker szolgáltatást](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services#worker-service-template)használja, használja az [itt](./worker-service.md)található utasításokat.
 
 ## <a name="supported-scenarios"></a>Támogatott esetek
 
@@ -225,7 +225,7 @@ További információ: [adaptív mintavételezés konfigurálása ASP.net Core a
 
 ### <a name="adding-telemetryinitializers"></a>TelemetryInitializers hozzáadása
 
-Ha az összes telemetria ellátott globális tulajdonságokat szeretné definiálni, használja a [telemetria-inicializálást](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#addmodify-properties-itelemetryinitializer) .
+Használjon [telemetria-inicializálást](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#addmodify-properties-itelemetryinitializer) , ha további információkkal szeretné bővíteni a telemetria.
 
 Vegyen fel minden újat a `TelemetryInitializer` `DependencyInjection` tárolóba, ahogy az a következő kódban is látható. Az SDK automatikusan felveszi `TelemetryInitializer` a tárolóba felvett bármelyiket `DependencyInjection` .
 
@@ -282,7 +282,7 @@ A Application Insights telemetria-modulok használatával automatikusan gyűjti 
 A következő automatikus gyűjtési modulok alapértelmezés szerint engedélyezve vannak. Ezeknek a moduloknak a feladata a telemetria automatikus gyűjtése. Az alapértelmezett viselkedés megváltoztatásához letilthatja vagy konfigurálhatja őket.
 
 * `RequestTrackingTelemetryModule`– RequestTelemetry gyűjt a bejövő webes kérelmekből.
-* `DependencyTrackingTelemetryModule`– A kimenő HTTP-hívások és az SQL-hívások DependencyTelemetry gyűjti.
+* `DependencyTrackingTelemetryModule`– A kimenő HTTP-hívások és az SQL-hívások [DependencyTelemetry](./asp-net-dependencies.md) gyűjti.
 * `PerformanceCollectorModule`– A Windows PerformanceCounters gyűjti.
 * `QuickPulseTelemetryModule`– Az élő metrika portálon megjelenített telemetria gyűjti.
 * `AppServicesHeartbeatTelemetryModule`-Gyűjti a szívveréseket (amelyek egyéni mérőszámként lesznek elküldve), Azure App Service környezettel kapcsolatban, ahol az alkalmazás fut.
@@ -329,7 +329,7 @@ A 2.12.2-verziótól kezdődően [`ApplicationInsightsServiceOptions`](#using-ap
 
 ### <a name="configuring-a-telemetry-channel"></a>Telemetria-csatorna konfigurálása
 
-Az alapértelmezett csatorna: `ServerTelemetryChannel` . A következő példában látható módon felülbírálhatja azt.
+Az alapértelmezett [telemetria csatorna](./telemetry-channels.md) `ServerTelemetryChannel` . A következő példában látható módon felülbírálhatja azt.
 
 ```csharp
 using Microsoft.ApplicationInsights.Channel;
@@ -398,7 +398,7 @@ public class HomeController : Controller
     }
 ```
 
-További információ a Application Insightsban található egyéni adatjelentésekről: [Application Insights egyéni metrikák API-referencia](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics/).
+További információ a Application Insightsban található egyéni adatjelentésekről: [Application Insights egyéni metrikák API-referencia](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics/). Hasonló módszer használható egyéni metrikák küldésére Application Insights a [GETMETRIC API](./get-metric.md)használatával.
 
 ### <a name="some-visual-studio-templates-used-the-useapplicationinsights-extension-method-on-iwebhostbuilder-to-enable-application-insights-is-this-usage-still-valid"></a>Egyes Visual Studio-sablonok a IWebHostBuilder UseApplicationInsights () bővítményi metódusát használták a Application Insights engedélyezéséhez. Még érvényes ez a használat?
 

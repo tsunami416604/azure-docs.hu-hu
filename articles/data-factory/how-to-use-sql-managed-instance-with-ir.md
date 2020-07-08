@@ -11,11 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/15/2020
-ms.openlocfilehash: f53c7ccec5e82b79966807f12978adfb00940354
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c9da25a7d7521108195d3183f52b914e13105e8d
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84195368"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86082267"
 ---
 # <a name="use-azure-sql-managed-instance-with-sql-server-integration-services-ssis-in-azure-data-factory"></a>Az Azure SQL felügyelt példányának használata SQL Server Integration Services (SSIS) használatával Azure Data Factory
 
@@ -40,8 +41,8 @@ Most már áthelyezheti SQL Server Integration Services (SSIS) projektjeit, csom
     - Privát végponton keresztül (előnyben részesített)
 
         1. Válassza ki a virtuális hálózatot, Azure-SSIS IR csatlakozni szeretne:
-            - Ugyanazon a virtuális hálózaton belül, amelyen az SQL felügyelt példánya **eltérő alhálózattal**rendelkezik.
-            - Egy másik virtuális hálózaton belül, mint az SQL felügyelt példánya, virtuális hálózati társításon keresztül (amely ugyanahhoz a régióhoz van korlátozva a globális VNet-megkötések miatt) vagy virtuális hálózatról virtuális hálózatra való kapcsolódás.
+            - Ugyanazon a virtuális hálózaton belül, ahol a felügyelt példány **eltérő alhálózattal**rendelkezik.
+            - Egy másik virtuális hálózaton belül, mint a felügyelt példány, virtuális hálózati közvetítéssel (amely az adott régióra korlátozódik a globális VNet-megkötések miatt) vagy virtuális hálózatról virtuális hálózatra való kapcsolódás esetén.
 
             További információ az SQL felügyelt példányok kapcsolatáról: [az alkalmazás csatlakoztatása az Azure SQL felügyelt példányához](https://review.docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app).
 

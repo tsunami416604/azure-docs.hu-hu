@@ -12,11 +12,12 @@ author: dalechen
 ms.author: ninarn
 ms.reviewer: carlrab, vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: b7cf4ab817f222f3a36a047e1e4d379f5bd6b73e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: acc61cefbc9d89f11eae5b6549add57871035ddb
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84668406"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078969"
 ---
 # <a name="troubleshoot-transient-connection-errors-in-sql-database-and-sql-managed-instance"></a>A SQL Database és az SQL felügyelt példányának átmeneti csatlakoztatási hibáinak elhárítása
 
@@ -104,7 +105,7 @@ A teszt gyakorlati elvégzéséhez a program elindítása előtt húzza ki a sz�
 - A további végrehajtás szüneteltetéséhez használja a **Console. readline** metódust vagy egy OK gombbal rendelkező párbeszédpanelt. A felhasználó a számítógép hálózati csatlakoztatása után megnyomja az ENTER billentyűt.
 - Próbálja megismételni a kapcsolódást, és várta a sikerességet.
 
-#### <a name="test-by-misspelling-the-database-name-when-connecting"></a>Tesztelés: az adatbázis nevének elírása a csatlakozáskor
+#### <a name="test-by-misspelling-the-user-name-when-connecting"></a>Tesztelés a Felhasználónév elírásával kapcsolódáskor
 
 A program szándékosan helytelenül betűzheti a felhasználónevet az első kapcsolódási kísérlet előtt. A hiba a következő:
 

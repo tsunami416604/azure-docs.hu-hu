@@ -3,12 +3,12 @@ title: A szolgáltatási költségek csökkentése Azure Advisor használatával
 description: A Azure Advisor használatával optimalizálhatja az Azure-beli üzemelő példányok költségeit.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 8ff4e2d8f778d05e9a0fa271600446e1c24380be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad8340595b10ce9c729c9c89f0099434c15a9ff2
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85130629"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078561"
 ---
 # <a name="reduce-service-costs-by-using-azure-advisor"></a>A szolgáltatási költségek csökkentése Azure Advisor használatával
 
@@ -60,7 +60,7 @@ Az Advisor elemzi a használati mintákat az elmúlt 30 napban a következő er�
 Az Advisor elemzi a Azure Cosmos DB használati mintáit az elmúlt 30 napban, és javaslatot tesz a fenntartott kapacitás vásárlására a költségek optimalizálása érdekében. A fenntartott kapacitás használatával előre megvásárolhatja Azure Cosmos DB óránkénti használatot, és az utólagos elszámolású költségek megtakarítását is elvégezheti. A fenntartott kapacitás számlázási juttatás, és automatikusan érvényes az új és a meglévő központi telepítésekre. Az Advisor 3 éves foglalási díjszabással és az elmúlt 30 napban megfigyelt használati minták kivetítésével számítja ki az egyéni előfizetések megtakarítási becsléseit. A megosztott hatókörre vonatkozó javaslatok elérhetők a fenntartott kapacitású vásárlásokhoz, és növelhetik a megtakarítást.
 
 ### <a name="sql-paas-reserved-capacity"></a>SQL Péter lefoglalt kapacitása
-Az Advisor elemzi az SQL Péter rugalmas adatbázis-készleteit és a felügyelt példányok használati mintáit az elmúlt 30 napban. Ezután javaslatot tesz a fenntartott kapacitások vásárlására a költségek optimalizálása érdekében. A fenntartott kapacitás használatával előre megvásárolhatja az SQL-adatbázis óránkénti használatát, és mentheti az SQL-számítási költségeket. Az SQL-licencet külön kell fizetni, és a foglalás nem kedvezményes. A fenntartott kapacitás számlázási juttatás, és automatikusan érvényes az új és a meglévő központi telepítésekre. Az Advisor 3 éves foglalási díjszabással és az elmúlt 30 napban megfigyelt használati minták kivetítésével számítja ki az egyéni előfizetések megtakarítási becsléseit. A megosztott hatókörre vonatkozó javaslatok elérhetők a fenntartott kapacitású vásárlásokhoz, és növelhetik a megtakarítást.
+Az Advisor az SQL Péter rugalmas adatbázis-készleteit és az SQL felügyelt példányok használati mintáit az elmúlt 30 napban elemzi. Ezután javaslatot tesz a fenntartott kapacitások vásárlására a költségek optimalizálása érdekében. A fenntartott kapacitás használatával előre megvásárolhatja az SQL-adatbázis óránkénti használatát, és mentheti az SQL-számítási költségeket. Az SQL-licencet külön kell fizetni, és a foglalás nem kedvezményes. A fenntartott kapacitás számlázási juttatás, és automatikusan érvényes az új és a meglévő központi telepítésekre. Az Advisor 3 éves foglalási díjszabással és az elmúlt 30 napban megfigyelt használati minták kivetítésével számítja ki az egyéni előfizetések megtakarítási becsléseit. A megosztott hatókörre vonatkozó javaslatok elérhetők a fenntartott kapacitású vásárlásokhoz, és növelhetik a megtakarítást.
 
 ### <a name="app-service-stamp-fee-reserved-capacity"></a>App Service Stamp díj számára fenntartott kapacitás
 Az Advisor az elmúlt 30 napban a Azure App Service izolált környezethez tartozó Stamp díjas használati mintát elemzi, és a fenntartott kapacitások vásárlását javasolja a költségek optimalizálása érdekében. A fenntartott kapacitás használatával előre megvásárolható óránkénti használat az elkülönített környezet pecsétje díj ellenében, és az utólagos elszámolású költségek megtakarítása is elérhető. Vegye figyelembe, hogy a fenntartott kapacitás csak a Stamp díjra vonatkozik, és nem App Service példányokra. A fenntartott kapacitás számlázási juttatás, és automatikusan érvényes az új és a meglévő központi telepítésekre. Az Advisor a használati minták alapján az elmúlt 30 napban kiszámítja az egyéni előfizetésekre vonatkozó becslések megtakarítását.
