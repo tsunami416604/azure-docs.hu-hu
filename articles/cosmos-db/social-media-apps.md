@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: maquaran
-ms.openlocfilehash: df48be038635799c08be409f7f1600e324cd8380
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: d4fbadd03f443d28376a122c7ecb06c475c2247d
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85392165"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85850693"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Közösségi Azure Cosmos DB
 
@@ -39,22 +39,24 @@ A tartalom kiszolgálása érdekében egy hatalmas SQL-példányt is használhat
 
 Ez a cikk végigvezeti Önt a közösségi platform adatainak az Azure NoSQL-adatbázissal való modellezésében [Azure Cosmos db](https://azure.microsoft.com/services/cosmos-db/) költséghatékonyan. Azt is megtudhatja, hogyan használhat más Azure Cosmos DB funkciókat, például a [GREMLIN API](../cosmos-db/graph-introduction.md)-t. Az [NoSQL](https://en.wikipedia.org/wiki/NoSQL) megközelítés használatával az adattárolás JSON formátumban és a [denormalizálás](https://en.wikipedia.org/wiki/Denormalization)alkalmazása során a korábban bonyolított post egyetlen [dokumentumba](https://en.wikipedia.org/wiki/Document-oriented_database)alakítható át:
 
-    {
-        "id":"ew12-res2-234e-544f",
-        "title":"post title",
-        "date":"2016-01-01",
-        "body":"this is an awesome post stored on NoSQL",
-        "createdBy":User,
-        "images":["https://myfirstimage.png","https://mysecondimage.png"],
-        "videos":[
-            {"url":"https://myfirstvideo.mp4", "title":"The first video"},
-            {"url":"https://mysecondvideo.mp4", "title":"The second video"}
-        ],
-        "audios":[
-            {"url":"https://myfirstaudio.mp3", "title":"The first audio"},
-            {"url":"https://mysecondaudio.mp3", "title":"The second audio"}
-        ]
-    }
+```json
+{
+    "id":"ew12-res2-234e-544f",
+    "title":"post title",
+    "date":"2016-01-01",
+    "body":"this is an awesome post stored on NoSQL",
+    "createdBy":User,
+    "images":["https://myfirstimage.png","https://mysecondimage.png"],
+    "videos":[
+        {"url":"https://myfirstvideo.mp4", "title":"The first video"},
+        {"url":"https://mysecondvideo.mp4", "title":"The second video"}
+    ],
+    "audios":[
+        {"url":"https://myfirstaudio.mp3", "title":"The first audio"},
+        {"url":"https://mysecondaudio.mp3", "title":"The second audio"}
+    ]
+}
+```
 
 Emellett egyetlen lekérdezéssel is felhívható, és nem lehet illesztés. Ez a lekérdezés sokkal egyszerűbb és egyszerű, és a költségvetés-Wise, kevesebb erőforrást igényel a jobb eredmény eléréséhez.
 
@@ -62,39 +64,45 @@ Azure Cosmos DB ellenőrzi, hogy az összes tulajdonság indexelve van-e az auto
 
 A bejegyzésekkel kapcsolatos megjegyzések a szülő tulajdonsággal rendelkező egyéb bejegyzésekként is kezelhetők. (Ez a gyakorlat leegyszerűsíti az objektumok leképezését.)
 
-    {
-        "id":"1234-asd3-54ts-199a",
-        "title":"Awesome post!",
-        "date":"2016-01-02",
-        "createdBy":User2,
-        "parent":"ew12-res2-234e-544f"
-    }
+```json
+{
+    "id":"1234-asd3-54ts-199a",
+    "title":"Awesome post!",
+    "date":"2016-01-02",
+    "createdBy":User2,
+    "parent":"ew12-res2-234e-544f"
+}
 
-    {
-        "id":"asd2-fee4-23gc-jh67",
-        "title":"Ditto!",
-        "date":"2016-01-03",
-        "createdBy":User3,
-        "parent":"ew12-res2-234e-544f"
-    }
+{
+    "id":"asd2-fee4-23gc-jh67",
+    "title":"Ditto!",
+    "date":"2016-01-03",
+    "createdBy":User3,
+    "parent":"ew12-res2-234e-544f"
+}
+```
 
 A közösségi interakciók pedig külön objektumként tárolhatók számlálóként:
 
-    {
-        "id":"dfe3-thf5-232s-dse4",
-        "post":"ew12-res2-234e-544f",
-        "comments":2,
-        "likes":10,
-        "points":200
-    }
+```json
+{
+    "id":"dfe3-thf5-232s-dse4",
+    "post":"ew12-res2-234e-544f",
+    "comments":2,
+    "likes":10,
+    "points":200
+}
+```
 
 A hírcsatornák létrehozása csak olyan dokumentumok létrehozására szolgál, amelyek egy adott fontossági sorrendbe tartozó post-azonosítók listáját tudják tárolni:
 
-    [
-        {"relevance":9, "post":"ew12-res2-234e-544f"},
-        {"relevance":8, "post":"fer7-mnb6-fgh9-2344"},
-        {"relevance":7, "post":"w34r-qeg6-ref6-8565"}
-    ]
+```json
+[
+    {"relevance":9, "post":"ew12-res2-234e-544f"},
+    {"relevance":8, "post":"fer7-mnb6-fgh9-2344"},
+    {"relevance":7, "post":"w34r-qeg6-ref6-8565"}
+]
+```
 
 Lehet, hogy a "legújabb" streamet a létrehozási dátum szerint rendezve rendezi a rendszer. Vagy lehet, hogy az elmúlt 24 órában egy "legforróbb" streamtel rendelkezik azokkal az álláshelyekkel, amelyek több szeretnek. Akár egyéni streamet is megvalósíthat az egyes felhasználók számára logika, például követők és érdeklődési körök alapján. Továbbra is a hozzászólások listája. Ennek a listának a létrehozása, de az olvasási teljesítmény nem hátráltatható. Miután megszerezte az egyik listát, egyetlen lekérdezést ad ki, hogy Cosmos DB a (z) [kulcsszó](sql-query-keywords.md#in) használatával, hogy egyszerre kapjon bejegyzéseket.
 
@@ -104,28 +112,32 @@ A pontok és a kedvelt bejegyzések feldolgozhatók egy késleltetett módon, ez
 
 A követői trükkösebbak. Cosmos DB a dokumentum mérete korlátozott, és a nagyméretű dokumentumok olvasása/írása hatással lehet az alkalmazás méretezhetőségére. Így úgy gondolja, hogy a követőket a következő struktúrával rendelkező dokumentumként tárolja:
 
-    {
-        "id":"234d-sd23-rrf2-552d",
-        "followersOf": "dse4-qwe2-ert4-aad2",
-        "followers":[
-            "ewr5-232d-tyrg-iuo2",
-            "qejh-2345-sdf1-ytg5",
-            //...
-            "uie0-4tyg-3456-rwjh"
-        ]
-    }
+```json
+{
+    "id":"234d-sd23-rrf2-552d",
+    "followersOf": "dse4-qwe2-ert4-aad2",
+    "followers":[
+        "ewr5-232d-tyrg-iuo2",
+        "qejh-2345-sdf1-ytg5",
+        //...
+        "uie0-4tyg-3456-rwjh"
+    ]
+}
+```
 
 Ez a struktúra több ezer követővel rendelkező felhasználó számára is működhet. Ha azonban néhány híresség csatlakozik a ranglétrához, ez a módszer nagy méretű dokumentumokhoz vezethet, és végül a dokumentum méretére vonatkozó korlátot is elérheti.
 
 A probléma megoldásához vegyes megközelítést használhat. A felhasználói statisztikai dokumentum részeként tárolhatja a követők számát:
 
-    {
-        "id":"234d-sd23-rrf2-552d",
-        "user": "dse4-qwe2-ert4-aad2",
-        "followers":55230,
-        "totalPosts":452,
-        "totalPoints":11342
-    }
+```json
+{
+    "id":"234d-sd23-rrf2-552d",
+    "user": "dse4-qwe2-ert4-aad2",
+    "followers":55230,
+    "totalPosts":452,
+    "totalPoints":11342
+}
+```
 
 Azure Cosmos DB [GREMLIN API](../cosmos-db/graph-introduction.md) -val a követői tényleges gráfját tárolhatja az egyes felhasználók és [élek](http://mathworld.wolfram.com/GraphEdge.html) [számára,](http://mathworld.wolfram.com/GraphVertex.html) amelyek az "a-Follow-B" kapcsolatokat használják. A Gremlin API-val egy adott felhasználó követői olvashatók be, és összetettebb lekérdezések hozhatók létre, amelyek közösen javasolják az embereket. Ha felveszi a diagramba azokat a tartalmi kategóriákat, amelyeket az emberek szeretnek vagy szeretnek, megkezdheti az intelligens tartalom felderítését, az olyan tartalmak megkeresését, amelyeket az Ön által követett személyeknek ajánlanak, vagy megtalálhatja azokat a személyeket, akikkel a közös használatban lehet.
 
@@ -141,19 +153,21 @@ Ezt úgy oldja meg, hogy azonosítja az alkalmazásban az egyes tevékenységekh
 
 Vegyük például a felhasználói adatokat:
 
-    {
-        "id":"dse4-qwe2-ert4-aad2",
-        "name":"John",
-        "surname":"Doe",
-        "address":"742 Evergreen Terrace",
-        "birthday":"1983-05-07",
-        "email":"john@doe.com",
-        "twitterHandle":"\@john",
-        "username":"johndoe",
-        "password":"some_encrypted_phrase",
-        "totalPoints":100,
-        "totalPosts":24
-    }
+```json
+{
+    "id":"dse4-qwe2-ert4-aad2",
+    "name":"John",
+    "surname":"Doe",
+    "address":"742 Evergreen Terrace",
+    "birthday":"1983-05-07",
+    "email":"john@doe.com",
+    "twitterHandle":"\@john",
+    "username":"johndoe",
+    "password":"some_encrypted_phrase",
+    "totalPoints":100,
+    "totalPosts":24
+}
+```
 
 Ennek az információnak a megtekintésével gyorsan észlelhető, hogy melyik a kritikus információ, ami nem így van, így a "létra" létrehozása is megtörténik:
 
@@ -167,26 +181,30 @@ A legnagyobb a kiterjesztett felhasználó. Magában foglalja a kritikus fontoss
 
 Miért érdemes felosztani a felhasználót, és más helyeken is tárolni ezeket az információkat? Mivel a teljesítmény szempontjából, annál nagyobb a dokumentumok, a drágább a lekérdezések. Tartsa a dokumentumok Slim-et, és a megfelelő információkkal elvégezheti a közösségi hálózat teljesítmény-függő lekérdezéseit. A további információkat az esetleges forgatókönyvek, például a teljes profil szerkesztése, a bejelentkezések és az adatbányászat a használati elemzésekhez és a Big Information-kezdeményezésekhez című témakörben tárolja. Valójában nem érdekli, hogy az adatbányászati adatgyűjtés lassabb-e, mert Azure SQL Database fut. Aggálya van annak ellenére, hogy a felhasználók gyors és karcsú felhasználói élményt nyújtanak. Cosmos DB tárolt felhasználó a következő kódhoz hasonlóan fog kinézni:
 
-    {
-        "id":"dse4-qwe2-ert4-aad2",
-        "name":"John",
-        "surname":"Doe",
-        "username":"johndoe"
-        "email":"john@doe.com",
-        "twitterHandle":"\@john"
-    }
+```json
+{
+    "id":"dse4-qwe2-ert4-aad2",
+    "name":"John",
+    "surname":"Doe",
+    "username":"johndoe"
+    "email":"john@doe.com",
+    "twitterHandle":"\@john"
+}
+```
 
 A post így néz ki:
 
-    {
-        "id":"1234-asd3-54ts-199a",
-        "title":"Awesome post!",
-        "date":"2016-01-02",
-        "createdBy":{
-            "id":"dse4-qwe2-ert4-aad2",
-            "username":"johndoe"
-        }
+```json
+{
+    "id":"1234-asd3-54ts-199a",
+    "title":"Awesome post!",
+    "date":"2016-01-02",
+    "createdBy":{
+        "id":"dse4-qwe2-ert4-aad2",
+        "username":"johndoe"
     }
+}
+```
 
 Ha egy szerkesztés olyankor lép fel, ahol a rendszer a darab attribútumot érinti, könnyedén megtalálhatja az érintett dokumentumokat. Csak az indexelt attribútumokra mutató lekérdezéseket használja, például: `SELECT * FROM posts p WHERE p.createdBy.id == "edited_user_id"` , majd frissítse az adattömböket.
 
@@ -212,7 +230,7 @@ De mit tud tanulni? Néhány egyszerű példa az [érzelmek elemzésére](https:
 
 Most, hogy megkaptam a hurkot, valószínűleg úgy gondolja, hogy szüksége van néhány PhD-re a matematika-tudományban, hogy kinyerje ezeket a mintákat és információkat az egyszerű adatbázisokból és fájlokból, de helytelen lenne.
 
-[Azure Machine learning](https://azure.microsoft.com/services/machine-learning/)a [Cortana Intelligence Suite](https://social.technet.microsoft.com/wiki/contents/articles/36688.introduction-to-cortana-intelligence-suite.aspx)része, egy teljes körűen felügyelt felhőalapú szolgáltatás, amely lehetővé teszi, hogy az algoritmusokat használó munkafolyamatokat hozzon létre egy egyszerű, fogd és vidd felületen, kód formájában saját algoritmusokat az [R](https://en.wikipedia.org/wiki/R_\(programming_language\))-ben, vagy használja a már létrehozott és használatra kész api-kat (például: [text Analytics](https://gallery.cortanaanalytics.com/MachineLearningAPI/Text-Analytics-2), [Content moderator vagy [javaslatok](https://gallery.azure.ai/Solution/Recommendations-Solution)).
+[Azure Machine learning](https://azure.microsoft.com/services/machine-learning/)a [Cortana Intelligence Suite](https://social.technet.microsoft.com/wiki/contents/articles/36688.introduction-to-cortana-intelligence-suite.aspx)része, egy teljes körűen felügyelt felhőalapú szolgáltatás, amely lehetővé teszi, hogy az algoritmusokat használó munkafolyamatokat hozzon létre egy egyszerű, fogd és vidd felületen, kód formájában saját algoritmusokat az [R](https://en.wikipedia.org/wiki/R_\(programming_language\))-ben, vagy használja a már létrehozott és használatra kész api-kat (például: [text Analytics](https://gallery.cortanaanalytics.com/MachineLearningAPI/Text-Analytics-2), Content moderator vagy [javaslatok](https://gallery.azure.ai/Solution/Recommendations-Solution)).
 
 Ezen Machine Learning forgatókönyvek eléréséhez használhatja a [Azure Data Laket](https://azure.microsoft.com/services/data-lake-store/) az információk különböző forrásokból való betöltéséhez. A [U-SQL](https://azure.microsoft.com/documentation/videos/data-lake-u-sql-query-execution/) használatával feldolgozhatja az adatokat, és létrehozhat egy Azure Machine learning által feldolgozható kimenetet.
 
@@ -250,6 +268,6 @@ Ez a cikk néhány fényt mutat be a közösségi hálózatok teljes körű lét
 
 Az igazság az, hogy az ilyen forgatókönyvek esetében nincs ilyen típusú ezüst-felsorolásjel. Ez a nagyszerű szolgáltatások kombinációja által létrehozott szinergia, amely lehetővé teszi számunkra, hogy nagyszerű tapasztalatokat építsünk ki: a Azure Cosmos DB gyorsasága és szabadsága, hogy kiváló közösségi alkalmazást, az intelligenciát egy olyan első osztályú keresési megoldás mögött, mint az Azure Cognitive Search, a rugalmasság az Azure-App Services, hogy még a nem egyenletes nyelvezetű alkalmazásokat, de hatékony háttér-folyamatokat, valamint a bővíthető Azure Storage-t és Azure SQL Database nagy mennyiségű adat tárolásához és az Azure Machine analitikai teljesítményének biztosításához. Tanuljon olyan tudást és intelligenciát létrehozni, amely visszajelzést tud adni a folyamatokról, és segít a megfelelő tartalomnak a megfelelő felhasználók számára történő továbbításában.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha többet szeretne megtudni a Cosmos DB használatáról, tekintse meg az [általános Cosmos db használati esetek](use-cases.md)című témakört.

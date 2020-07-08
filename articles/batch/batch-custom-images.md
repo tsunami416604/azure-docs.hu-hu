@@ -1,21 +1,23 @@
 ---
-title: Egyéni készlet kiépítése felügyelt rendszerképből
-description: Hozzon létre egy batch-készletet egy felügyelt rendszerkép-erőforrásból, hogy kiépítse a számítási csomópontokat az alkalmazás szoftverével és adataival.
+title: Felügyelt rendszerkép használata egyéni rendszerkép-készlet létrehozásához
+description: Hozzon létre egy batch egyéni rendszerkép-készletet egy felügyelt rendszerképből, hogy kiépítse a számítási csomópontokat az alkalmazás szoftverével és adataival.
 ms.topic: conceptual
-ms.date: 05/22/2020
-ms.openlocfilehash: fbb336ff9d3d53cc53004c577e291afdba7702f6
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.date: 07/01/2020
+ms.openlocfilehash: 45bf0f8b3cb335b7025ff06189bf6bc4e0a896ad
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847990"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851297"
 ---
-# <a name="use-a-managed-image-to-create-a-pool-of-virtual-machines"></a>Felügyelt rendszerkép használata virtuális gépek készletének létrehozásához
+# <a name="use-a-managed-image-to-create-a-custom-image-pool"></a>Felügyelt rendszerkép használata egyéni rendszerkép-készlet létrehozásához
 
-Ha egyéni rendszerképet szeretne létrehozni a Batch-készlet virtuális gépei (VM-EK) számára, felügyelt rendszerképeket használhat a [megosztott képgyűjtemény](batch-sig-images.md)létrehozásához. A csak a felügyelt rendszerképek használata támogatott, de csak az API-verziók esetében, amelyek akár a 2019-08-01-es verzióra is kiterjednek.
+Ha egyéni képkészletet szeretne létrehozni a Batch-készlet virtuális gépei (VM-EK) számára, felügyelt rendszerkép használatával létrehozhat egy megosztott képkatalógus- [rendszerképet](batch-sig-images.md). A csak a felügyelt rendszerképek használata támogatott, de csak az API-verziók esetében, amelyek akár a 2019-08-01-es verzióra is kiterjednek. 
 
 > [!IMPORTANT]
 > A legtöbb esetben egyéni lemezképeket kell létrehoznia a megosztott képkatalógus használatával. A megosztott képtárat használva gyorsabban kiépítheti a készleteket, méretezheti nagyobb mennyiségű virtuális gépet, és megbízhatóbb megbízhatóságot biztosít a virtuális gépek kiépítésekor. További információ: [a megosztott rendszerkép-katalógus használata egyéni készlet létrehozásához](batch-sig-images.md).
+
+Ez a témakör azt ismerteti, hogyan hozhat létre egyéni képkészletet csak felügyelt rendszerkép használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -26,7 +28,7 @@ Ha egyéni rendszerképet szeretne létrehozni a Batch-készlet virtuális gépe
 
 - **Azure Active Directory (Azure ad) hitelesítés**. A Batch-ügyfél API-nak az Azure AD-hitelesítést kell használnia. Az Azure AD Azure Batch-támogatásának dokumentációjáért lásd a [Batch szolgáltatás Active Directoryval történő hitelesítésével](batch-aad-auth.md) foglalkozó témakört.
 
-## <a name="prepare-a-custom-image"></a>Egyéni rendszerkép előkészítése
+## <a name="prepare-a-managed-image"></a>Felügyelt rendszerkép előkészítése
 
 Az Azure-ban felügyelt rendszerképeket készíthet a következő helyekről:
 
@@ -57,7 +59,7 @@ A pillanatkép egy virtuális merevlemez teljes, írásvédett másolata. A virt
 
 Felügyelt rendszerkép pillanatképből való létrehozásához használja az Azure parancssori eszközeit, például az az [rendszerkép Create](/cli/azure/image) parancsot. Rendszerkép létrehozásához az operációsrendszer-lemez pillanatképének megadásával és opcionálisan egy vagy több adatlemez-pillanatképet kell megadnia.
 
-## <a name="create-a-pool-from-a-custom-image"></a>Készlet létrehozása egyéni rendszerképből
+## <a name="create-a-pool-from-a-managed-image"></a>Készlet létrehozása felügyelt rendszerképből
 
 Miután megtalálta a felügyelt rendszerkép erőforrás-AZONOSÍTÓját, hozzon létre egy egyéni rendszerkép-készletet a rendszerképből. A következő lépések bemutatják, hogyan hozhat létre egyéni képkészletet a Batch szolgáltatással vagy a kötegelt felügyelettel.
 

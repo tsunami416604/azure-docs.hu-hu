@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: jawilley
-ms.openlocfilehash: ce0bc73fd21210e7cd5cd48c8134abd5f014b026
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 30fdc3c2b75d8ae567acfc612514ab080b929c5f
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85392420"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85850252"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Az Azure Cosmos DB és a .NET teljesítményével kapcsolatos tippek
 
@@ -99,7 +99,7 @@ Mivel a TCP csak közvetlen módban támogatott, ha átjáró üzemmódot haszn�
 
 :::image type="content" source="./media/performance-tips/connection-policy.png" alt-text="A Azure Cosmos DB-kapcsolatok házirendje" border="false":::
 
-**Ideiglenes port kimerülése**
+**Rövid élettartamú portok elfogyása**
 
 Ha a példányok nagy mennyiségű vagy magas portszámú használatot lát, először ellenőrizze, hogy az ügyfél példányai egyediek-e. Más szóval az ügyfél példányának egyedinek kell lennie az alkalmazás élettartama szempontjából.
 
@@ -247,9 +247,11 @@ Az ebben a fejlécben visszaadott kérelem díja a kiépített átviteli sebess�
 
 Ha egy ügyfél megpróbál meghaladni egy fiók fenntartott átviteli sebességét, nincs teljesítmény-romlás a kiszolgálón, és a lefoglalt szinten túl nem használható az átviteli kapacitás. A kiszolgáló a RequestRateTooLarge (429-as HTTP-állapotkód) végére fogja megelőző jelleggel a kérést. Egy [x-MS-újrapróbálkozás-After-MS](/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) fejlécet ad vissza, amely megadja, hogy a felhasználónak mennyi ideig kell várnia, mielőtt újra megkísérli a kérést.
 
+```xml
     HTTP Status 429,
     Status Line: RequestRateTooLarge
     x-ms-retry-after-ms :100
+```
 
 Az SDK-k minden implicit módon elkapják ezt a választ, tiszteletben tartsák a kiszolgáló által megadott újrapróbálkozás utáni újrapróbálkozást, majd próbálja megismételni a kérelmet. Ha a fiókját több ügyfél egyidejűleg nem éri el, a következő újrapróbálkozás sikeres lesz.
 
@@ -263,7 +265,7 @@ Az automatikus újrapróbálkozási viselkedés segíti a legtöbb alkalmazás r
 
 Egy adott műveletre vonatkozó kérelem díja (azaz a kérelmek feldolgozási díja) közvetlenül a dokumentum méretével összefügg. A nagyméretű dokumentumokon végzett műveletek többek között a kis dokumentumokon végzett műveletekhez szükségesek.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az egyes ügyfélszámítógépeken a nagy teljesítményű forgatókönyvek Azure Cosmos DB kiértékeléséhez használt minta alkalmazással kapcsolatban lásd: [teljesítmény-és méretezési tesztek a Azure Cosmos db](performance-testing.md)használatával.
 
 Ha többet szeretne megtudni az alkalmazás méretezési és nagy teljesítményű kialakításáról, tekintse meg [a particionálás és skálázás Azure Cosmos DBban](partition-data.md)című témakört.

@@ -10,43 +10,43 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 5f66e29e4c1bc85981202251e0de8288f4baee4e
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: f37109cc2677ad5ef18c5677bda9308a78cebccf
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307842"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851307"
 ---
-# <a name="add-interaction-rules"></a>Kapcsolatitevékenység-szabályok hozzáadása
+# <a name="add-interaction-rules"></a>Használati szabályok hozzáadása
 
-Ebben a cikkben az **interakciós szabályokról**olvashat. Ezek a további szabályok az összetettebb vagy összetett helyzetek kezelésére szolgálnak. Habár ingyenes a saját egyéni interakciós szabályainak megalkotása, ebben a cikkben a következő célcsoportokra vonatkozó interakciós szabályokat használhatja:
+Ebben a cikkben az *interakciós szabályokról*olvashat. Ezek a további szabályok konkrétabb vagy összetettebb helyzeteket kezelnek. Saját egyéni interakciós szabályokat hozhat létre, de ebben a cikkben a következő célcsoportokra vonatkozó interakciós szabályok használatát végezheti el:
 
 * Parancsok megerősítése
-* Egy lépésből álló javítás hozzáadása a parancsokhoz
+* Egy lépésből álló korrekció hozzáadása parancsokhoz
 
-A kapcsolati szabályokkal kapcsolatos további információkért tekintse meg a [hivatkozások](./custom-commands-references.md) szakaszt.
+Ha többet szeretne megtudni a kapcsolati szabályokról, ugorjon a [hivatkozások](./custom-commands-references.md) szakaszra.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A következő cikkekben ismertetett lépéseket kell végrehajtania:
+A következő cikkekben ismertetett lépéseket kell elvégezni:
 > [!div class="checklist"]
-> * [Útmutató: alkalmazás létrehozása egyszerű parancsokkal](./how-to-custom-commands-create-application-with-simple-commands.md)
-> * [Útmutató: paraméterek hozzáadása parancsokhoz](./how-to-custom-commands-add-parameters-to-commands.md)
+> * [Alkalmazás létrehozása egyszerű parancsokkal](./how-to-custom-commands-create-application-with-simple-commands.md)
+> * [Paraméterek hozzáadása parancsokhoz](./how-to-custom-commands-add-parameters-to-commands.md)
 
 ## <a name="add-confirmations-to-a-command"></a>Megerősítések hozzáadása parancshoz
 
-Megerősítés hozzáadásához használja a **SetTemperature** parancsot. A megerősítés érdekében a következő lépésekkel hozhat létre interakciós szabályokat.
+Megerősítés hozzáadásához használja a **SetTemperature** parancsot. A megerősítéshez a következő lépésekkel hozhat létre interakciós szabályokat.
 
-1. Válassza a **SetTemperature** parancsot a bal oldali ablaktáblán.
-2. A középső ablaktáblán a **Hozzáadás** elem kiválasztásával, majd a **Kapcsolatitevékenység-szabályok**  >  **megerősítése parancs**kiválasztásával kapcsolatitevékenység-szabályokat adhat hozzá.
+1. Válassza ki a **SetTemperature** parancsot a bal oldali ablaktáblán.
+1. A középső ablaktáblán a **Hozzáadás** gombra kattintva vegyen fel kapcsolatitevékenység-szabályokat. Ezután válassza a **kapcsolati szabályok**  >  **megerősítése parancsot**.
 
-    Ez 3 interakciós szabályt ad hozzá, ez a szabály kéri a felhasználót, hogy erősítse meg a riasztás dátumát és időpontját, és egy megerősítést (igen/nem) vár a következő bekapcsoláshoz.
+    Ez a művelet három interakciós szabályt hoz létre. Ez a szabály kéri a felhasználót, hogy erősítse meg a riasztás dátumát és időpontját, és megerősítse (igen/nem) a következő bekapcsoláshoz.
 
-    1. Módosítsa a **parancs megerősítése** interakciós szabályt a következő konfiguráció szerint
-        1. Nevezze át a **nevet** a következőre: **`Confirm Temperature`** .
-        1. Új feltétel hozzáadása **kötelező paraméterek > hőmérséklet**
-        1. Új művelet típusként való hozzáadása **> a beszédfelismerési válasz küldése `Are you sure you want to set the temperature as {Temperature} degrees?` >**
-        1. Az elvárások szakaszban hagyja meg az alapértelmezett érték **megérkezését a felhasználótól** .
+    1. Módosítsa a **parancs megerősítése** beavatkozási szabályt a következő konfiguráció szerint:
+        1. Nevezze át a **nevet** a **hőmérséklet megerősítéséhez**.
+        1. Adjon hozzá egy új feltételt a **kötelező paraméterek**  >  **hőmérsékletének**megfelelően.
+        1. Új művelet hozzáadása a **Type**  >  **beszédfelismerési válasz**típusaként  >  **biztos, hogy a hőmérsékletet {hőmérséklet} fok értékre szeretné beállítani?**
+        1. Az **elvárások** szakaszban hagyja meg az alapértelmezett érték **megérkezését a felhasználótól** .
       
          > [!div class="mx-imgBorder"]
          > ![Kötelező paraméter-válasz létrehozása](media/custom-speech-commands/add-validation-set-temperature.png)
@@ -54,92 +54,92 @@ Megerősítés hozzáadásához használja a **SetTemperature** parancsot. A meg
 
     1. Módosítsa a **megerősítő** sikeres interakciós szabályt a sikeres megerősítés kezelésére (a felhasználó azt mondta, hogy igen).
       
-          1. Módosítsa a **nevet** a következőre: **`Confirmation temperature succeeded`** .
+          1. A **név** **megerősítő hőmérsékletre**való módosítása sikeres volt.
           1. Hagyja, hogy a már meglévő **megerősítés sikeres** állapotú legyen.
-          1. Új feltétel típusként való hozzáadása **> kötelező paraméterek > hőmérséklet**
+          1. Adjon hozzá egy új feltételt **típus**  >  **kötelező paraméterek**  >  **hőmérsékletének**beállításához.
           1. Hagyja meg a **végrehajtás utáni állapot** alapértelmezett értékét **végrehajtási befejezési szabályokként**.
 
-    1. Módosítsa a **megtagadást** (azt mondta, hogy a felhasználó nem) olyan forgatókönyvek kezelésére, amikor a megerősítés megtagadva.
+    1. Módosítsa a **megerősítő megtagadási** kapcsolati szabályt úgy, hogy kezelni tudja a megerősítés megtagadásakor jelentkező forgatókönyveket (a felhasználó nem).
 
-          1. Módosítsa a **nevet** a következőre: **`Confirmation temperature denied`** .
+          1. Módosítsa a **nevet** a **megerősítési hőmérséklet megtagadására**.
           1. Hagyja meg a már meglévő **megerősítés** feltételét.
-          1. Új feltétel típusként való hozzáadása **> kötelező paraméterek > hőmérséklet**
-          1. Új művelet típusként való hozzáadása **> a beszédfelismerési válasz küldése `No problem. What temperature then?` >**
+          1. Adjon hozzá egy új feltételt **típus**  >  **kötelező paraméterek**  >  **hőmérsékletének**beállításához.
+          1. Adjon hozzá egy új műveletet **típusként**, mert a  >  **beszédfelismerési válasz küldése**  >  **nem jelent problémát. Milyen hőmérsékletet?**
           1. A **felhasználó bemenetének várakozás**után hagyja meg a **végrehajtás utáni állapot** alapértelmezett értékét.
 
 > [!IMPORTANT]
-> Ebben a cikkben a beépített megerősítő funkciót használta. Azt is megteheti, hogy az interakciós szabályokat egyenként, manuálisan adja hozzá.
+> Ebben a cikkben a beépített megerősítő funkciót használta. A kapcsolatitevékenység-szabályokat manuálisan is hozzáadhatja egyenként.
    
 
 ### <a name="try-out-the-changes"></a>Próbálja ki a módosításokat
 
-Válassza a **vonat**lehetőséget, várjon, amíg befejeződik a képzés, és válassza a **teszt**lehetőséget.
+Válassza a betanítás lehetőséget, várjon, amíg befejeződik a betanítás, majd válassza a **teszt** **lehetőséget.**
 
-- Bemenet: hőmérséklet beállítása 80 fokos értékre
-- Kimenet: ok 80?
-- Bemenet: nem
-- Kimenet: nincs probléma. milyen hőmérsékletet?
-- Bemenet: 83 fok
-- Kimenet: ok 83?
-- Bemenet: igen
-- Kimenet: ok, hőmérséklet beállítása 83 fok
+- **Bemenet**: állítsa be a hőmérsékletet 80 fok értékre.
+- **Kimenet**: ok 80?
+- **Bemenet**: nem.
+- **Kimenet**: nincs probléma. Milyen hőmérsékletet?
+- **Bemenet**: 83 fok.
+- **Kimenet**: ok 83?
+- **Bemenet**: igen.
+- **Kimenet**: ok, a hőmérséklet beállítása 83 fok.
 
 
-## <a name="implementing-corrections-in-a-command"></a>Javítások végrehajtása egy parancsban
+## <a name="implement-corrections-in-a-command"></a>Javítások implementálása egy parancsban
 
-Ebben a szakaszban egy lépésenkénti korrekciót konfigurálunk, amelyet a rendszer a teljesítési művelet végrehajtása után használ. Azt is láthatja, hogy a javítás alapértelmezés szerint engedélyezve van abban az esetben, ha a parancs még nem teljesül. Ha a parancs nem fejeződött be, adjon hozzá egy új **AlarmTone**paramétert.
+Ebben a szakaszban egy egylépéses korrekciót állít be, amelyet a rendszer a teljesítési művelet végrehajtása után használ. Azt is láthatja, hogyan engedélyezhető a javítás alapértelmezés szerint, ha a parancs még nem teljesül. Ha a parancs nem fejeződött be, adja hozzá az új **AlarmTone**paramétert a javításhoz.
 
-Válassza a **SetAlarm** parancsot a bal oldali ablaktáblán, és adjon hozzá egy új **AlarmTone**paramétert.
+Válassza ki a **SetAlarm** parancsot a bal oldali ablaktáblán, és adja hozzá az új **AlarmTone**paramétert.
         
-- **név** > `AlarmTone`
-- **Írja be** a > karakterláncot
-- **Alapértelmezett érték** > `Chimes`
-- A **konfiguráció** > fogad előre megadott bemeneti értékeket a belső katalógusból
-- **Előre meghatározott bemeneti értékek**:  >  `Chimes` `Jingle` , és `Echo` . Mindegyik egyedi előre megadott bemenet.
+- **Név**  >  **AlarmTone**
+- **Típus**  >  **Karakterlánc**
+- **Alapértelmezett érték**  >  **Harangjáték**
+- **Konfiguráció**  >  **Előre megadott bemeneti értékek elfogadása a belső katalógusból**
+- **Előre megadott bemeneti értékek**  >  **Harangjáték**, **Jingle**és **echo** egyéni előre definiált bemenetként
 
 
-Ezután frissítse a DateTime paraméterre adott választ a következőre: `Ready to set alarm with tone as {AlarmTone}. For what time?` . Ezután módosítsa a befejezési szabályt az alábbiak szerint.
+Ezután frissítse a **datetime** paraméterre adott választ úgy, hogy a **riasztást a (z) {AlarmTone} hangjelzéssel állítsa be. Milyen időpontra?** Ezután módosítsa a befejezési szabályt a következőképpen:
 
 1. Válassza ki a meglévő befejezési szabályt **ConfirmationResponse**.
-1. A jobb oldali panelen vigye a kurzort a meglévő művelet fölé, és válassza a **Szerkesztés** gombot.
-1. Beszédre adott válasz frissítése`Ok, alarm set for {DateTime}. The alarm tone is {AlarmTone}.`
+1. A jobb oldali ablaktáblán vigye a kurzort a meglévő művelet fölé, és válassza a **Szerkesztés**lehetőséget.
+1. Frissítse a beszédfelismerési választ az OK értékre **, a riasztási készletet pedig a következőre: {DateTime}. Az ébresztési hang: {AlarmTone}.**
 
 ### <a name="try-out-the-changes"></a>Próbálja ki a módosításokat
 
-Válassza ki a **betanítás elemet, várjon**, amíg befejeződik a képzés, és válassza a **teszt**lehetőséget.
+Válassza a betanítás lehetőséget, várjon, amíg befejeződik a betanítás, majd válassza a **teszt** **lehetőséget.**
 Próbálja ki a következő hosszúságú kimondott szöveg:
 
-- Bemenet: riasztás beállítása
-- Kimenet: készen áll a riasztás hangjelzéssel való beállítására. Mennyi ideig?
-- Bemenet: ébresztés beállítása a csengőhangként a 9-es holnapnál
-- Kimenet: ok, riasztás beállítva a 2020-05-30 09:00:00-hez. Az ébresztési hang a Jingle.
+- **Bemenet**: riasztás beállítása.
+- **Kimenet**: készen áll a riasztás hangjelzéssel való beállítására. Mennyi ideig?
+- **Bemenet**: állítson be egy riasztást a csengőhangként a 9. holnapnál.
+- **Kimenet**: ok, riasztás beállítva a 2020-05-30 09:00:00-hez. Az ébresztési hang a Jingle.
 
 > [!IMPORTANT]
-> Figyelje meg, hogy az ébresztési hang egy folyamatban lévő parancs explicit konfigurációja nélkül is módosítható, azaz ha a parancs még nem fejeződött be. **A javítás alapértelmezés szerint engedélyezve van az összes parancs paraméteréhez, függetlenül attól, hogy a parancs még teljesítve van-e.**
+> Az ébresztési hang egy folyamatban lévő parancs explicit konfigurációja nélkül is módosítható, például ha a parancs még nem fejeződött be. *Alapértelmezés szerint a parancs összes paramétere esetében engedélyezve van a javítás, függetlenül attól, hogy a parancs még teljesítve van-e.*
 
 ### <a name="correction-when-command-is-completed"></a>Javítás a parancs befejezésekor
 
-Az egyéni parancsok platform az egylépéses javítás lehetőségét is biztosítja, még akkor is, ha a parancs befejeződött. Ez a funkció azonban alapértelmezés szerint nincs engedélyezve, és explicit módon kell konfigurálni. Az alábbi lépésekkel konfigurálhatja az egylépéses javítást.
+Az egyéni parancsok platform lehetővé teszi egy egylépéses javítás lehetőségét is, még akkor is, ha a parancs befejeződött. Ez a funkció alapértelmezés szerint nincs engedélyezve. Explicit módon kell konfigurálni. A következő lépésekkel konfigurálhat egy egylépéses javítást.
 
-1. A **SetAlarm** parancsban vegyen fel egy **korábbi frissítési művelet** típusú interakciós szabályt a korábban beállított riasztás frissítéséhez. Nevezze át a kapcsolatitevékenység-szabály alapértelmezett **nevét** az **előző riasztás frissítéséhez**.
+1. A **SetAlarm** parancsban vegyen fel egy interakciós szabályt az **előző verzió frissítése paranccsal** a korábban beállított riasztás frissítéséhez. Nevezze át a kapcsolatitevékenység-szabály alapértelmezett **nevét** az **előző riasztás frissítéséhez**.
 1. Hagyja meg az alapértelmezett feltétel **előző parancsának frissítését** .
-1.  Adjon hozzá egy új feltételt **Type > Required paraméter > datetime**.
-1. Vegyen fel egy új műveletet **típusként > a beszédfelismerési válasz küldése `Updating previous alarm time to {DateTime}.` > egyszerű szerkesztő >**
-1. A végrehajtás utáni állapot alapértelmezett értékének meghagyása a **parancs befejezésekor**.
+1. Adjon hozzá egy új feltételt **típus**  >  **kötelező paraméterének**  >  **datetime**értékként.
+1. Vegyen fel egy új műveletet **típusként**a  >  **beszédfelismerési válasz**  >  **egyszerű szerkesztője**  >  **a korábbi riasztási idő frissítése a következőre: {DateTime}.**
+1. A **végrehajtás utáni állapot** alapértelmezett értékének meghagyása a **parancs végrehajtása után**.
 
 ### <a name="try-out-the-changes"></a>Próbálja ki a módosításokat
 
-Válassza a **vonat**lehetőséget, várjon, amíg befejeződik a képzés, és válassza a **teszt**lehetőséget.
+Válassza a betanítás lehetőséget, várjon, amíg befejeződik a betanítás, majd válassza a **teszt** **lehetőséget.**
 
-- Bemenet: riasztás beállítása
-- Kimenet: készen áll a riasztás hangjelzéssel való beállítására. mikor?
-- Bemenet: ébresztés beállítása a csengőhangként a 9-es holnapnál
-- Kimenet: ok, riasztás beállítva a 2020-05-21 09:00:00-hez. Az ébresztési hang a Jingle.
-- Bemenet: nem, 8
-- Kimenet: az előző riasztási idő frissítése 2020-05-29 08:00-re.
+- **Bemenet**: riasztás beállítása.
+- **Kimenet**: készen áll a riasztás hangjelzéssel való beállítására. Mennyi ideig?
+- **Bemenet**: állítson be egy riasztást a csengőhangként a 9. holnapnál.
+- **Kimenet**: ok, riasztás beállítva a 2020-05-21 09:00:00-hez. Az ébresztési hang a Jingle.
+- **Bemenet**: nem, 8.
+- **Kimenet**: az előző riasztási idő frissítése 2020-05-29 08:00-re.
 
 > [!NOTE]
-> Egy valós alkalmazásban a helyesbítő szabály műveletek szakaszában is el kell küldenie egy tevékenységet az ügyfélnek, vagy egy HTTP-végpontot kell meghívnia, hogy frissítse a riasztási időt a rendszeren. Ez a művelet csak a riasztási idő frissítése és a parancs egyéb attribútuma (ebben az esetben az ébresztési hang) esetében lehet külön felelős.
+> Egy valós alkalmazásban a helyesbítő szabály **műveletek** szakaszában is el kell küldenie egy tevékenységet az ügyfélnek, vagy egy http-végpontot kell meghívnia, hogy frissítse a riasztási időt a rendszeren. Ennek a műveletnek kizárólag a riasztási idő frissítéséhez kell tartoznia, és nem a parancs egyéb attribútumait. Ebben az esetben ez az ébresztési hang lenne.
 
 ## <a name="next-steps"></a>További lépések
 

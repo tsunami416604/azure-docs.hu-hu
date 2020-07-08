@@ -16,12 +16,12 @@ ms.date: 05/31/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59f252eac53f3aab2263f2019c9d4b13b0f68dce
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 7a49abdea9d5b80687c53fbaa3d41480825ed504
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85358888"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849943"
 ---
 # <a name="multiple-domain-support-for-federating-with-azure-ad"></a>Többtartományos támogatás az Azure AD összevonási szolgáltatásához
 Az alábbi dokumentáció ismerteti, hogyan használható több legfelső szintű tartomány és altartomány a egyesítő Office 365-vagy Azure AD-tartományokkal való használata esetén.
@@ -73,7 +73,9 @@ Ha például egy felhasználó UPN bsimon@bmcontoso.com -je, a jogkivonat Issuer
 
 A következő a testre szabott jogcím-szabály, amely megvalósítja ezt a logikát:
 
-    c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, ".+@(?<domain>.+)", "http://${domain}/adfs/services/trust/"));
+```
+c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, ".+@(?<domain>.+)", "http://${domain}/adfs/services/trust/"));
+```
 
 
 > [!IMPORTANT]
@@ -144,7 +146,9 @@ Ennek a viselkedésnek a megkerüléséhez a Microsoft Online AD FS függő enti
 
 A következő jogcím ezt teszi:
 
-    c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, "^.*@([^.]+\.)*?(?<domain>([^.]+\.?){2})$", "http://${domain}/adfs/services/trust/"));
+```    
+c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, "^.*@([^.]+\.)*?(?<domain>([^.]+\.?){2})$", "http://${domain}/adfs/services/trust/"));
+```
 
 [!NOTE]
 A reguláris kifejezésben szereplő utolsó szám azt határozza meg, hogy hány szülő tartomány van a gyökértartomány tartományában. Itt bmcontoso.com van használatban, így két szülő tartományra van szükség. Ha három szülő tartományt kell megőrizni (például: corp.bmcontoso.com), akkor a szám három volt. Végül egy tartomány is megadható, és a egyezés mindig a maximális tartománynak megfelelően fog történni. " {2,3} " két-három tartományhoz fog illeszkedni (például: bmfabrikam.com és Corp.bmcontoso.com).
@@ -156,11 +160,14 @@ A következő lépésekkel adhat hozzá egyéni jogcímet az altartományok tám
 3. Válassza ki a harmadik jogcím szabályát, és cserélje le az ![ igény szerinti módosítást.](./media/how-to-connect-install-multiple-domains/sub1.png)
 4. Az aktuális jogcím cseréje:
 
-        c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, ".+@(?<domain>.+)","http://${domain}/adfs/services/trust/"));
+   ```
+   c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, ".+@(?<domain>.+)","http://${domain}/adfs/services/trust/"));
+   ```
+    a
 
-       with
-
-        c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, "^.*@([^.]+\.)*?(?<domain>([^.]+\.?){2})$", "http://${domain}/adfs/services/trust/"));
+   ```
+   c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, "^.*@([^.]+\.)*?(?<domain>([^.]+\.?){2})$", "http://${domain}/adfs/services/trust/"));
+   ```
 
     ![Jogcím cseréje](./media/how-to-connect-install-multiple-domains/sub2.png)
 

@@ -17,12 +17,12 @@ ms.date: 07/17/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f289d1467528bdb38e05e6a8de28ae9fe526592
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: c8d0e8301fe5443e548dd35a6b6058e8c7a409d0
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85359551"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849905"
 ---
 # <a name="federate-multiple-instances-of-azure-ad-with-single-instance-of-ad-fs"></a>Több Azure AD-példány összevonása egyetlen AD FS-példánnyal
 
@@ -58,10 +58,14 @@ A tartomány-összevonási beállítás kiállítója a "http \: //contoso.com/A
  
 Az Azure AD PowerShell-munkamenetben hajtsa végre a következő lépéseket: Csatlakozzon a fabrikam.com tartományt tartalmazó Azure Active Directory-címtárhoz
 
-    Connect-MsolService
+```powershell
+Connect-MsolService
+```
 Konvertálja a fabrikam.com felügyelt tartományt összevontra:
 
-    Convert-MsolDomainToFederated -DomainName fabrikam.com -Verbose -SupportMultipleDomain
+```powershell
+Convert-MsolDomainToFederated -DomainName fabrikam.com -Verbose -SupportMultipleDomain
+```
  
 A fenti művelet összevonja a fabrikam.com tartományt ugyanazon AD FS-szel. Mindkét tartományban a Get-MsolDomainFederationSettings használatával ellenőrizheti a tartomány beállításait.
 

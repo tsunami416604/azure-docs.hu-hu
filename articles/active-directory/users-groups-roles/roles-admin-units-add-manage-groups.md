@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4ad55a98f3f4f38601d2eac54c30f2e5e9a8831
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 76026313eea8c8fbb2f3e55321e2e4ebbe5dcfc7
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85316508"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85850925"
 ---
 # <a name="add-and-manage-groups-in-administrative-units-in-azure-active-directory"></a>Csoportok hozzáadása és kezelése felügyeleti egységekben Azure Active Directory
 
@@ -47,27 +47,33 @@ Az előzetes verzióban csak az egyes felügyeleti egységekhez rendelhet csopor
 
 ### <a name="powershell"></a>PowerShell
 
-    $administrative unitObj = Get-AzureADAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
-    $GroupObj = Get-AzureADGroup -Filter "displayname eq 'TestGroup'"
-    Add-AzureADAdministrativeUnitMember -ObjectId $administrative unitObj.ObjectId -RefObjectId $GroupObj.ObjectId
+```powershell
+$administrative unitObj = Get-AzureADAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
+$GroupObj = Get-AzureADGroup -Filter "displayname eq 'TestGroup'"
+Add-AzureADAdministrativeUnitMember -ObjectId $administrative unitObj.ObjectId -RefObjectId $GroupObj.ObjectId
+```
 
 Ebben a példában az Add-AzureADAdministrativeUnitMember parancsmag használatával lehet hozzáadni a csoportot a felügyeleti egységhez. A felügyeleti egység és a hozzáadni kívánt csoport objektumazonosító-azonosítója argumentumként történik. A Kiemelt szakasz szükség szerint módosítható az adott környezetben.
 
 ### <a name="microsoft-graph"></a>Microsoft Graph
 
-    Http request
-    POST /administrativeUnits/{Admin Unit id}/members/$ref
+```http
+Http request
+POST /administrativeUnits/{Admin Unit id}/members/$ref
 
-    Request body
-    {
-      "@odata.id":"https://graph.microsoft.com/beta/groups/{id}"
-    }
+Request body
+{
+"@odata.id":"https://graph.microsoft.com/beta/groups/{id}"
+}
+```
 
 Példa:
 
-    {
-      "@odata.id":"https://graph.microsoft.com/beta/groups/ 871d21ab-6b4e-4d56-b257-ba27827628f3"
-    }
+```http
+{
+"@odata.id":"https://graph.microsoft.com/beta/groups/ 871d21ab-6b4e-4d56-b257-ba27827628f3"
+}
+```
 
 ## <a name="list-groups-in-an-au"></a>AU-beli csoportok listázása
 
@@ -79,25 +85,30 @@ Nyissa meg az **Azure AD > felügyeleti egységeket** a portálon. Válassza ki 
 
 ### <a name="powershell"></a>PowerShell
 
-    $administrative unitObj = Get-AzureADAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
-    Get-AzureADAdministrativeUnitMember -ObjectId $administrative unitObj.ObjectId
+```powershell
+$administrative unitObj = Get-AzureADAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
+Get-AzureADAdministrativeUnitMember -ObjectId $administrative unitObj.ObjectId
+```
 
 Ez segítséget nyújt a felügyeleti egység összes tagjának beszerzéséhez. Ha meg szeretné jeleníteni az összes olyan csoportot, amely tagja a felügyeleti egységnek, használhatja az alábbi kódrészletet:
 
-    foreach ($member in (Get-AzureADAdministrativeUnitMember -ObjectId $administrative unitObj.ObjectId)) 
-    {
-    if($member.ObjectType -eq "Group")
-    {
-    Get-AzureADGroup -ObjectId $member.ObjectId
-    }
-    }
-
+```http
+foreach ($member in (Get-AzureADAdministrativeUnitMember -ObjectId $administrative unitObj.ObjectId)) 
+{
+if($member.ObjectType -eq "Group")
+{
+Get-AzureADGroup -ObjectId $member.ObjectId
+}
+}
+```
 ### <a name="microsoft-graph"></a>Microsoft Graph
 
-    HTTP request
-    GET /administrativeUnits/{Admin id}/members/$/microsoft.graph.group
-    Request body
-    {}
+```http
+HTTP request
+GET /administrativeUnits/{Admin id}/members/$/microsoft.graph.group
+Request body
+{}
+```
 
 ## <a name="list-aus-for-a-group"></a>Csoporthoz tartozó AUs listázása
 
@@ -109,11 +120,15 @@ Az Azure AD-portálon **csoportok**megnyitásával nyithatja meg a csoport adata
 
 ### <a name="powershell"></a>PowerShell
 
-    Get-AzureADAdministrativeUnit | where { Get-AzureADAdministrativeUnitMember -ObjectId $_.ObjectId | where {$_.ObjectId -eq $groupObjId} }
+```powershell
+Get-AzureADAdministrativeUnit | where { Get-AzureADAdministrativeUnitMember -ObjectId $_.ObjectId | where {$_.ObjectId -eq $groupObjId} }
+```
 
 ### <a name="microsoft-graph"></a>Microsoft Graph
 
-    https://graph.microsoft.com/beta/groups/<group-id>/memberOf/$/Microsoft.Graph.AdministrativeUnit
+```http
+https://graph.microsoft.com/beta/groups/<group-id>/memberOf/$/Microsoft.Graph.AdministrativeUnit
+```
 
 ## <a name="remove-a-group-from-an-au"></a>Csoport eltávolítása egy AU-ból
 
@@ -131,11 +146,15 @@ Másik lehetőségként megnyithatja az **Azure ad**  >  **felügyeleti egysége
 
 ### <a name="powershell"></a>PowerShell
 
-    Remove-AzureADAdministrativeUnitMember -ObjectId $auId -MemberId $memberGroupObjId
+```powershell
+Remove-AzureADAdministrativeUnitMember -ObjectId $auId -MemberId $memberGroupObjId
+```
 
 ### <a name="microsoft-graph"></a>Microsoft Graph
 
-    https://graph.microsoft.com/beta/administrativeUnits/<adminunit-id>/members/<group-id>/$ref
+```http
+https://graph.microsoft.com/beta/administrativeUnits/<adminunit-id>/members/<group-id>/$ref
+```
 
 ## <a name="next-steps"></a>További lépések
 

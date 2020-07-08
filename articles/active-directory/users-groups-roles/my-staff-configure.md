@@ -13,12 +13,12 @@ ms.date: 05/08/2020
 ms.author: curtand
 ms.reviewer: sahenry
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 40d1efd5d5e8dc5fed07bf5b9ab1cfa70927b5cf
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: dc4e71f4283d78c2b241441810a8c1313f002152
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84732582"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85850906"
 ---
 # <a name="manage-your-users-with-my-staff-preview"></a>Felhasználók kezelése a munkatársaival (előzetes verzió)
 
@@ -71,9 +71,10 @@ Határozottan javasoljuk, hogy az [Azure ad feltételes hozzáférési szabályz
 1. Telepítse a [Microsoft Graph Beta PowerShell-parancsmagokat](https://github.com/microsoftgraph/msgraph-sdk-powershell/blob/dev/samples/0-InstallModule.ps1).
 1. Futtassa az alábbi parancsot:
 
-        Connect-Graph -Scopes "Directory.AccessAsUser.All"
-        New-MgServicePrincipal -DisplayName "My Staff" -AppId "ba9ff945-a723-4ab5-a977-bd8c9044fe61"
-
+   ```powershell
+   Connect-Graph -Scopes "Directory.AccessAsUser.All"
+   New-MgServicePrincipal -DisplayName "My Staff" -AppId "ba9ff945-a723-4ab5-a977-bd8c9044fe61"
+   ```
 1. Hozzon létre egy feltételes hozzáférési szabályzatot, amely a saját személyzet Felhőbeli alkalmazására vonatkozik.
 
     ![Feltételes hozzáférési szabályzat létrehozása a saját munkatársak alkalmazáshoz](media/my-staff-configure/conditional-access.png)
@@ -124,7 +125,7 @@ A saját munkatársaiban található keresősáv használatával kereshet a szer
 
 Egy AU-n belül is kereshet egy felhasználót. Ehhez használja a felhasználói lista tetején található keresési sávot.
 
-## <a name="audit-logs"></a>Naplók
+## <a name="audit-logs"></a>Auditnaplók
 
 A naplókat megtekintheti a munkatársaim által a Azure Active Directory portálon végrehajtott műveletekhez. Ha a naplót egy, a munkatársain végrehajtott művelet hozta létre, akkor ez a naplózási esemény további részletei között jelenik meg.
 

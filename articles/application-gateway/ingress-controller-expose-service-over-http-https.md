@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 2f3f871ccd29456b086d939277d94b5e4eac23c6
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 3b816ddc0eccf8c406cfed37d6bfc594e27d3629
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84807928"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85850352"
 ---
 # <a name="expose-an-aks-service-over-http-or-https-using-application-gateway"></a>AK-szolgáltatás közzététele HTTP-n vagy HTTPS-en keresztül Application Gateway 
 
@@ -162,22 +162,22 @@ Mostantól az `guestbook` alkalmazás csak a megadott gazdagépen, a HTTP-n és 
 
 A következő bejövő forgalom lehetővé teszi további elérési utak hozzáadását ebbe a bejövő forgalomba, és átirányítani ezeket az útvonalakat más szolgáltatásokra:
 
-    ```yaml
-    apiVersion: extensions/v1beta1
-    kind: Ingress
-    metadata:
-      name: guestbook
-      annotations:
-        kubernetes.io/ingress.class: azure/application-gateway
-    spec:
-      rules:
-      - http:
-          paths:
-          - path: </other/*>
-            backend:
-              serviceName: <other-service>
-              servicePort: 80
-          - backend:
-              serviceName: frontend
-              servicePort: 80
-    ```
+```yaml
+apiVersion: extensions/v1beta1
+  kind: Ingress
+  metadata:
+    name: guestbook
+    annotations:
+      kubernetes.io/ingress.class: azure/application-gateway
+  spec:
+    rules:
+    - http:
+        paths:
+        - path: </other/*>
+          backend:
+            serviceName: <other-service>
+            servicePort: 80
+        - backend:
+            serviceName: frontend
+            servicePort: 80
+```

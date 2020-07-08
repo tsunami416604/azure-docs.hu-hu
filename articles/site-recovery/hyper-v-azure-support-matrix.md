@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 1/27/2020
 ms.author: raynew
-ms.openlocfilehash: 1fee761c8377824773fa56ba25edd2a779c33547
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: da2cc3dade843b1ea207eb4ec5bf33a41a289d7e
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84710218"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851481"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>A helyszíni Hyper-V virtuális gépek Azure-ba való vész-helyreállításának támogatási mátrixa
 
@@ -137,6 +137,7 @@ Blokkblobok | Nem | Nem
 Titkosítás nyugalmi állapotban (SSE)| Igen | Igen
 Inaktív titkosítás (CMK) <br></br> (Csak a felügyelt lemezekre történő feladatátvétel esetén)| Igen (a PowerShell az 3.3.0 modultól kezdődően) | Igen (a PowerShell az 3.3.0 modultól kezdődően)
 Prémium szintű Storage | Igen | Igen
+Standard szintű Storage | Igen | Igen
 Importálási/exportálási szolgáltatás | Nem | Nem
 Azure Storage-fiókok engedélyezve tűzfallal | Igen. A cél tárolásához és a gyorsítótárhoz. | Igen. A cél tárolásához és a gyorsítótárhoz.
 Storage-fiók módosítása | Nem. A cél Azure Storage-fiók nem módosítható a replikáció engedélyezése után. A vész-helyreállítási szolgáltatás módosításához tiltsa le, majd engedélyezze újra. | No
@@ -168,7 +169,7 @@ FC-lemez | Nem támogatott | Az Előfeltételek ellenőrzése sikertelen, ha nem
 Merevlemez formátuma | VHD <br/><br/> VHDX | A Site Recovery automatikusan átalakítja a VHDX a VHD-re, amikor feladatátvételt hajt végre az Azure-ba. Ha a feladatátvételt a helyszíni rendszerre végzi, a virtuális gépek továbbra is a VHDX formátumot használják.
 BitLocker | Nem támogatott | A virtuális gép replikálásának engedélyezése előtt le kell tiltani a BitLockert.
 a virtuális gép neve | 1 és 63 karakter között. Csak betűket, számokat és kötőjelet tartalmazhat. A virtuális gép nevének betűvel vagy számmal kell kezdődnie és végződnie. | Frissítse az értéket a virtuális gép tulajdonságainál Site Recoveryban.
-Virtuális gép típusa | 1. generációs<br/><br/> 2. generációs – Windows | A 2. generációs virtuális gépek alapszintű operációsrendszer-lemezzel (amely egy vagy két VHDX formázott adatkötetet tartalmaz) és kevesebb mint 300 GB lemezterületet támogat.<br></br>A Linux 2. generációs virtuális gépek nem támogatottak. [További információ](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/).|
+Virtuális gép típusa | 1. generációs<br/><br/> 2. generációs – Windows | A 2. generációs virtuális gépek alapszintű operációsrendszer-lemezzel (amely egy vagy két VHDX formázott adatkötetet tartalmaz) és kevesebb mint 300 GB lemezterületet támogat.<br></br>A Linux 2. generációs virtuális gépek nem támogatottak. [További információk](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/).|
 
 ## <a name="recovery-services-vault-actions"></a>Recovery Services tároló műveletei
 

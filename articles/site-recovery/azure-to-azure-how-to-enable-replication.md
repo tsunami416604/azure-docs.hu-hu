@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/29/2018
-ms.openlocfilehash: 1c6b7cfbf193f02598052b6922efec17fb16ec83
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 58ddb7363ece5ebdb06df29c27ff76b27da627a4
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75973695"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851175"
 ---
 # <a name="replicate-azure-vms-to-another-azure-region"></a>Azure-beli virtuális gépek replikálása másik Azure-régióba
 
@@ -113,12 +113,13 @@ A Site Recovery által használt alapértelmezett cél beállításokat módosí
     - Ha azt szeretné, hogy a Linux rendszerű virtuális gépek egy replikációs csoport részévé legyenek, győződjön meg arról, hogy az 20004-as porton a kimenő forgalom manuálisan nyílik meg az adott Linux-verzió útmutatása szerint.
 ![A replikáció engedélyezése](./media/site-recovery-replicate-azure-to-azure/multivmsettings.PNG)
 
-5. Kattintson a **cél erőforrás** > létrehozása**replikáció engedélyezése**lehetőségre.
+5. Kattintson a **cél erőforrás létrehozása**  >  **replikáció engedélyezése**lehetőségre.
 6. Miután a virtuális gépek engedélyezve vannak a replikáláshoz, a virtuális gép állapotának állapotát a **replikált elemek** területen tekintheti meg
 
 >[!NOTE]
->A kezdeti replikálás során az állapot frissítés nélkül is eltarthat egy ideig. Kattintson a **frissítés** gombra a legutóbbi állapot lekéréséhez.
 >
+> - A kezdeti replikálás során az állapot frissítés nélkül is eltarthat egy ideig. Kattintson a **frissítés** gombra a legutóbbi állapot lekéréséhez.
+> - Ha egy helyreállítási pont nem lett létrehozva az elmúlt 60 percben, a virtuális gép replikációs állapota kritikus lesz.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 0f0b3488bd34a31002449b9b7635064d5d835072
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: ff7eac9e004a06925fbfa657278e6ec848a7d600
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465575"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851277"
 ---
 # <a name="list-blobs-with-net"></a>Blobok listázása .NET-tel
 
@@ -81,6 +81,8 @@ Ha elválasztó karakterrel nevezi el a blobokat, a Blobok hierarchikus listáz�
 Alapértelmezés szerint a listázási művelet egy egyszerű listaelemben lévő blobokat ad vissza. Egy egyszerű felsorolásban a blobokat nem a virtuális könyvtár rendezi.
 
 Az alábbi példa felsorolja a megadott tárolóban lévő blobokat egy egyszerű lista használatával, egy választható szegmens méretének megadása mellett, és a blob nevét a konzol ablakába írja.
+
+Ha engedélyezte a hierarchikus névtér funkciót a fiókjában, a címtárak nem virtuálisak. Ehelyett konkrét, független objektumok. Így a címtárak nulla hosszúságú blobként jelennek meg a listában.
 
 # <a name="net-v12-sdk"></a>[.NET V12 SDK](#tab/dotnet)
 
@@ -241,7 +243,7 @@ Blob name: FolderA/FolderB/FolderC/blob3.txt
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Blobok listázása](/rest/api/storageservices/list-blobs)
 - [BLOB-erőforrások enumerálása](/rest/api/storageservices/enumerating-blob-resources)

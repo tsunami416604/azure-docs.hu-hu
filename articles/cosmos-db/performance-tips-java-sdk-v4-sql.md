@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: how-to
 ms.date: 06/11/2020
 ms.author: anfeldma
-ms.openlocfilehash: d4e21e03770591229416c1f70bbd5a715b43362c
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: c6ff105a03181b588a9074675c97930696ac5e87
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85263466"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85850207"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-java-sdk-v4"></a>Teljesítménnyel kapcsolatos tippek Azure Cosmos DB Java SDK v4-hez
 
@@ -374,9 +374,11 @@ További részletekért tekintse meg a Windows és a [Linux](https://docs.micros
 
     Ha egy ügyfél megpróbál meghaladni egy fiók fenntartott átviteli sebességét, nincs teljesítmény-romlás a kiszolgálón, és a lefoglalt szinten túl nem használható az átviteli kapacitás. A kiszolgáló megelőző jelleggel a kérést a RequestRateTooLarge (429-es HTTP-állapotkód), és visszaküldi az [x-MS-újrapróbálkozás-After-MS](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) fejlécet, jelezve azt az időtartamot (ezredmásodpercben), ameddig a felhasználónak meg kell várnia a kérés ismételt megkísérlése előtt.
 
+    ```xml
         HTTP Status 429,
         Status Line: RequestRateTooLarge
         x-ms-retry-after-ms :100
+    ```
 
     Az SDK-k minden implicit módon elkapják ezt a választ, tiszteletben tartsák a kiszolgáló által megadott újrapróbálkozás utáni újrapróbálkozást, majd próbálja megismételni a kérelmet. Ha a fiókját több ügyfél egyidejűleg nem éri el, a következő újrapróbálkozás sikeres lesz.
 

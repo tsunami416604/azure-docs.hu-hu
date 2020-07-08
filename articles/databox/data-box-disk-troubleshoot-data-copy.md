@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
-ms.topic: how-to
+ms.topic: troubleshooting
 ms.date: 06/13/2019
 ms.author: alkohli
-ms.openlocfilehash: 14c5413939deeedfd7c4e894b1919031062bf13a
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 5d977fe0b7459af35f678e77681d3b27c31431cc
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84610610"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849186"
 ---
 # <a name="troubleshoot-data-copy-issues-in-azure-data-box-disk"></a>A Azure Data Box Disk adatmásolási problémáinak elhárítása
 
@@ -32,11 +32,13 @@ Ennek oka lehet egy nem tiszta fájlrendszer.
 
 A meghajtó újracsatlakoztatása írható-olvashatóként nem működik Data Box lemezekkel. Ez a forgatókönyv nem támogatott a delocker által visszafejtett meghajtókon. Lehetséges, hogy sikeresen újracsatlakoztatta az eszközt az alábbi parancs használatával:
 
-    `# mount -o remount, rw /mnt/DataBoxDisk/mountVol1`
+```
+# mount -o remount, rw /mnt/DataBoxDisk/mountVol1
+```
 
 Bár az újracsatlakoztatás sikeres volt, a rendszer nem őrzi meg az adatmennyiséget.
 
-**Felbontás**
+**Resolution** (Osztás)
 
 Hajtsa végre a következő lépéseket a Linux rendszeren:
 
@@ -76,7 +78,7 @@ Hajtsa végre a következő lépéseket a Linux rendszeren:
 
 Ha úgy látja, hogy a meghajtó nem rendelkezik a leválasztást követően (bár az adatmásolt), akkor lehetséges, hogy a meghajtót csak olvashatóként csatlakoztatta újra írásra.
 
-**Felbontás**
+**Resolution** (Osztás)
  
 Ebben az esetben tekintse meg a [csak olvashatóként csatlakoztatott meghajtók](#issue-drive-getting-mounted-as-read-only)feloldását.
 
@@ -91,12 +93,12 @@ Az alábbi táblázatban láthatók a megosztott másolási eszközök több lem
 |---------|---------|
 |Információ A következő kötet BitLocker-jelszavának beolvasása: m <br>Hiba Kivétel történt az m kötet BitLocker-kulcsának beolvasása közben:<br> A szekvencia nem tartalmaz elemeket.|Ez a hibaüzenet azt jelzi, hogy a Data Box Disk célhelye offline állapotú. <br> A lemezek online állapotúvá tételéhez használja a `diskmgmt.msc` eszközt.|
 |[Hiba] A következő kivétel történt: A WMI-művelet sikertelen volt:<br> Method=UnlockWithNumericalPassword, ReturnValue=2150694965, <br>Win32Message=A megadott helyreállítási jelszó formátuma érvénytelen. <br>A Bitlocker helyreállítási jelszavai 48 számjegyűek. <br>Ellenőrizze a helyreállítási jelszó formátumát, majd próbálkozzon újra.|Először oldja fel a lemezek zárolását a Data Box Disk lemezzárolás-feloldó eszközével, majd próbálja újból végrehajtani a parancsot. További információért lásd: <li> [a Data Box Disk lemezzárolás-feloldó eszközének Windows-ügyfélen való használatát ismertető részt](data-box-disk-deploy-set-up.md#unlock-disks-on-windows-client). </li><li> [a Data Box Disk lemezzárolás-feloldó eszközének Linux-ügyfélen való használatát ismertető részt](data-box-disk-deploy-set-up.md#unlock-disks-on-linux-client). </li>|
-|[Hiba] A következő kivétel történt: A DriveManifest.xml fájl megtalálható a célmeghajtón. <br> Ez azt jelezheti, hogy a célmeghajtót más naplófájllal készítették elő. <br>Ha további adatokat szeretne hozzáadni ugyanahhoz a meghajtóhoz, használja az előző naplófájlt. A meglévő adatok törléséhez és a célként megadott meghajtó újrafelhasználásához törölje a *DriveManifest. xml fájlt* a meghajtón. Futtassa újra ezt a parancsot egy új naplófájllal.| Ez a hiba akkor fordulhat elő, ha több importálási munkamenethez is ugyanazt a meghajtókészletet próbálja használni. <br> Egy adott meghajtókészletet csak egyetlen másolásfelosztási munkamenethez használjon.|
+|[Hiba] A következő kivétel történt: A DriveManifest.xml fájl megtalálható a célmeghajtón. <br> Ez azt jelezheti, hogy a célmeghajtót más naplófájllal készítették elő. <br>Ha további adatokat szeretne hozzáadni ugyanahhoz a meghajtóhoz, használja az előző naplófájlt. A meglévő adatok törléséhez és a célként megadott meghajtó új importálási feladatokhoz való újrafelhasználásához törölje a *DriveManifest.xml* a meghajtón. Futtassa újra ezt a parancsot egy új naplófájllal.| Ez a hiba akkor fordulhat elő, ha több importálási munkamenethez is ugyanazt a meghajtókészletet próbálja használni. <br> Egy adott meghajtókészletet csak egyetlen másolásfelosztási munkamenethez használjon.|
 |[Hiba] A következő kivétel történt: A CopySessionId importdata-sept-test-1 egy korábbi másolási munkamenetre hivatkozik, és nem használható fel újra egy új másolási munkamenethez.|Ez a hiba akkor fordulhat elő, ha egy új feladat neveként egy korábban már sikeresen befejeződött feladat nevét próbálja megadni.<br> Egyedi nevet adjon meg az új feladat számára.|
 |[Információ] A célfájl vagy -könyvtár neve túllépte az NTFS fájlrendszerre érvényes hosszkorlátot. |Ezt az üzenetet akkor kapja, ha át kellett nevezni a célfájlt, mert túl hosszú volt a fájl elérési útja.<br> Ezt a viselkedést a `config.json` fájl diszponálási beállításánál módosíthatja.|
 |[Hiba] A következő kivétel történt: Hibás JSON-feloldókarakter. |Ezt az üzenetet akkor kapja, ha a config.json fájl érvénytelen formátumot használ. <br> A fájl mentése előtt ellenőrizze a `config.json` fájlt a [JSONlint](https://jsonlint.com/) eszközzel.|
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerje meg, hogy miként lehet [elhárítani az ellenőrző eszköz hibáit](data-box-disk-troubleshoot.md).

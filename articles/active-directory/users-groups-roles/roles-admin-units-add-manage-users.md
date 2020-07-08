@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a57392b0072f6e6bb692ad0a28e6adf87f615eed
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: a9b76ac103b873026dce3d3f8f92e54dc3afc14c
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84732554"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85850930"
 ---
 # <a name="add-and-manage-users-in-an-administrative-unit-in-azure-active-directory"></a>Felhasználók hozzáadása és kezelése egy felügyeleti egységben Azure Active Directory
 
@@ -51,26 +51,32 @@ A felhasználókat kétféleképpen rendelheti hozzá felügyeleti egységekhez.
 
 ### <a name="powershell"></a>PowerShell
 
-    $administrativeunitObj = Get-AzureADAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
-    $UserObj = Get-AzureADUser -Filter "UserPrincipalName eq 'billjohn@fabidentity.onmicrosoft.com'"
-    Add-AzureADAdministrativeUnitMember -ObjectId $administrativeunitObj.ObjectId -RefObjectId $UserObj.ObjectId
+```powershell
+$administrativeunitObj = Get-AzureADAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
+$UserObj = Get-AzureADUser -Filter "UserPrincipalName eq 'billjohn@fabidentity.onmicrosoft.com'"
+Add-AzureADAdministrativeUnitMember -ObjectId $administrativeunitObj.ObjectId -RefObjectId $UserObj.ObjectId
+```
 
 A fenti példában az Add-AzureADAdministrativeUnitMember parancsmag használatával lehet hozzáadni a felhasználót a felügyeleti egységhez. Annak a felügyeleti egységnek az azonosítója, amelyhez a felhasználót hozzá kívánja adni, valamint a hozzáadni kívánt felhasználó objektumazonosító argumentumként. A Kiemelt szakasz szükség szerint módosítható az adott környezetben.
 
 ### <a name="microsoft-graph"></a>Microsoft Graph
 
-    Http request
-    POST /administrativeUnits/{Admin Unit id}/members/$ref
-    Request body
-    {
-      "@odata.id":"https://graph.microsoft.com/beta/users/{id}"
-    }
+```http
+Http request
+POST /administrativeUnits/{Admin Unit id}/members/$ref
+Request body
+{
+  "@odata.id":"https://graph.microsoft.com/beta/users/{id}"
+}
+```
 
 Példa:
 
-    {
-      "@odata.id":"https://graph.microsoft.com/beta/users/johndoe@fabidentity.com"
-    }
+```http
+{
+  "@odata.id":"https://graph.microsoft.com/beta/users/johndoe@fabidentity.com"
+}
+```
 
 ## <a name="list-administrative-units-for-a-user"></a>Felhasználók felügyeleti egységeinek listázása
 
@@ -86,11 +92,15 @@ A bal oldali panelen válassza a **felügyeleti egységek** lehetőséget, hogy 
 
 ### <a name="powershell"></a>PowerShell
 
-    Get-AzureADAdministrativeUnit | where { Get-AzureADAdministrativeUnitMember -ObjectId $_.ObjectId | where {$_.ObjectId -eq $userObjId} }
+```powershell
+Get-AzureADAdministrativeUnit | where { Get-AzureADAdministrativeUnitMember -ObjectId $_.ObjectId | where {$_.ObjectId -eq $userObjId} }
+```
 
 ### <a name="microsoft-graph"></a>Microsoft Graph
 
-    https://graph.microsoft.com/beta/users//memberOf/$/Microsoft.Graph.AdministrativeUnit
+```http
+https://graph.microsoft.com/beta/users//memberOf/$/Microsoft.Graph.AdministrativeUnit
+```
 
 ## <a name="remove-a-single-user-from-an-au"></a>Egyetlen felhasználó eltávolítása egy AU-ból
 
@@ -106,7 +116,9 @@ Egy felhasználót az **Azure ad**  >  **felügyeleti egységekben** is eltávol
 
 ### <a name="powershell"></a>PowerShell
 
-    Remove-AzureADAdministrativeUnitMember -ObjectId $auId -MemberId $memberUserObjId
+```powershell
+Remove-AzureADAdministrativeUnitMember -ObjectId $auId -MemberId $memberUserObjId
+```
 
 ### <a name="microsoft-graph"></a>Microsoft Graph
 

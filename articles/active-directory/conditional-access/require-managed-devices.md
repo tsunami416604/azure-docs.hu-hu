@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 690582638451f1691b2ed7a4d0d4d6a7880fd80a
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: cf3fd50b907e69311c475af844c7969f081a3094
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85253205"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849926"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Útmutató: felügyelt eszközök megkövetelése a Cloud app Accesshez feltételes hozzáféréssel
 
@@ -95,6 +95,28 @@ A megfelelőként megjelölt eszközök esetében feltételezhető, hogy:
 - A munkaerő által használt mobil alkalmazások kezelése
 - A céges adatok védelméhez segítséget nyújt a munkatársak hozzáférésének és megosztásának szabályozása
 - Az eszköz és az alkalmazásai megfelelnek a vállalat biztonsági követelményeinek
+
+### <a name="scenario-require-device-enrollment-for-ios-and-android-devices"></a>Forgatókönyv: eszközök beléptetésének megkövetelése iOS-és Android-eszközökön
+
+Ebben az esetben a contoso úgy döntött, hogy az Office 365-erőforrásokhoz való összes mobil hozzáférésnek regisztrált eszközt kell használnia. Az összes felhasználó már be van jelentkezni az Azure AD hitelesítő adataival, és rendelkezik a hozzájuk rendelt licenccel prémium szintű Azure AD P1 vagy P2 és Microsoft Intune.
+
+A szervezeteknek a következő lépéseket kell végrehajtaniuk ahhoz, hogy megkövetelje a regisztrált mobileszköz használatát.
+
+1. Jelentkezzen be a **Azure Portal** globális rendszergazdaként, biztonsági rendszergazdaként vagy feltételes hozzáférést biztosító rendszergazdaként.
+1. Keresse meg **Azure Active Directory**  >  **biztonsági**  >  **feltételes hozzáférését**.
+1. Válassza az **új szabályzat**lehetőséget.
+1. Adjon nevet a szabályzatnak. Javasoljuk, hogy a szervezetek értelmes szabványt hozzanak létre a szabályzatok nevében.
+1. A **hozzárendelések**alatt válassza a **felhasználók és csoportok** lehetőséget.
+   1. A **Belefoglalás**területen válassza ki az **összes felhasználó** elemet, illetve azokat a **felhasználókat és csoportokat** , amelyekre alkalmazni szeretné a szabályzatot. 
+   1. Válassza a **Done** (Kész) lehetőséget.
+1. A **Cloud apps vagy a műveletek**területen  >  **Include**válassza az **Office 365 (előzetes verzió)** lehetőséget.
+1. A **feltételek**területen válassza az **eszközök platformok**elemet.
+   1. Állítsa **az** **Igen**értékre.
+   1. **Android** és **iOS**is.
+1. A **hozzáférés-vezérlés**  >  **megadása**területen válassza ki a következő beállításokat:
+   - **Eszköz megfelelőként való megjelölésének megkövetelése**
+1. Erősítse meg a beállításokat, és állítsa be az engedélyezési **szabályzatot** **bekapcsolva**értékre.
+1. Válassza a **Létrehozás** lehetőséget a szabályzat létrehozásához és engedélyezéséhez.
 
 ### <a name="known-behavior"></a>Ismert viselkedés
 

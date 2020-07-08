@@ -16,12 +16,12 @@ ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10e6d3a419bdf8b14675f0edabd63ed4b4f4b86f
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 86e7f1fc18738eef39f8ec29da8763b862cdcc2b
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85359449"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849971"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Az Azure AD Connect Health-ügynök telepítése
 
@@ -31,7 +31,7 @@ Ez a dokumentum végigvezeti az Azure AD Connect Health-ügynökök telepítés�
 
 Az alábbi táblázat az Azure AD Connect Health használatának követelményeit sorolja fel.
 
-| Követelmény | Leírás |
+| Követelmény | Description |
 | --- | --- |
 | Azure AD Premium |Az Azure AD Connect Health egy Azure AD Premium szolgáltatás, amelyhez Azure AD Premium szükséges. <br /><br />További információ: [Bevezetés a prémium szintű Azure ad](../fundamentals/active-directory-get-started-premium.md) használatába <br />Egy 30 napos ingyenes próbaverzió indításához lásd: [Próbaverzió indítása.](https://azure.microsoft.com/trial/get-started-active-directory/) |
 | Az Azure AD Connect Health szolgáltatás indításához az Azure AD szolgáltatásban globális rendszergazdának kell lennie |Alapértelmezés szerint kizárólag a globális rendszergazdák telepíthetik és konfigurálhatják az állapotügynököket, hogy azok elinduljanak, a portálhoz hozzáférjenek, és műveleteket hajtsanak végre az Azure AD Connect Health szolgáltatásban. További információkért lásd: [Az Azure AD-címtár felügyelete](../fundamentals/active-directory-administer.md). <br /><br /> A szerepköralapú hozzáférés-vezérlés használatával hozzáférést engedhet az Azure AD Connect Health szolgáltatáshoz más felhasználók számára is a szervezetben. További információ: [szerepköralapú Access Control Azure ad Connect Healthhoz.](how-to-connect-health-operations.md#manage-access-with-role-based-access-control) <br /><br />**Fontos:** Az ügynökök telepítésekor használt fióknak munkahelyi vagy iskolai fióknak kell lennie. Nem lehet Microsoft-fiók. További információkért lásd: [Regisztráció az Azure-ba szervezetként](../fundamentals/sign-up-organization.md) |
@@ -329,19 +329,25 @@ Az alábbi beállítások használhatóak az Azure AD Connect Health-ügynökök
 
 Az Internet Explorer HTTP-proxybeállításai importálhatók az Azure AD Connect Health-ügynökök általi használatra. A Health-ügynököt futtató minden egyes kiszolgálón hajtsa végre a következő PowerShell-parancsot:
 
-    Set-AzureAdConnectHealthProxySettings -ImportFromInternetSettings
+```powershell
+Set-AzureAdConnectHealthProxySettings -ImportFromInternetSettings
+```
 
 ##### <a name="import-from-winhttp"></a>Importálás WinHTTP-ből
 
 A WinHTTP proxybeállításai importálhatók az Azure AD Connect Health-ügynökök általi használatra. A Health-ügynököt futtató minden egyes kiszolgálón hajtsa végre a következő PowerShell-parancsot:
 
-    Set-AzureAdConnectHealthProxySettings -ImportFromWinHttp
+```powershell
+Set-AzureAdConnectHealthProxySettings -ImportFromWinHttp
+```
 
 #### <a name="specify-proxy-addresses-manually"></a>Proxycímek manuális megadása
 
 A következő PowerShell-parancs futtatásával manuálisan megadhat egy proxykiszolgálót a Health-ügynököt futtató minden egyes kiszolgálón:
 
-    Set-AzureAdConnectHealthProxySettings -HttpsProxyAddress address:port
+```powershell
+Set-AzureAdConnectHealthProxySettings -HttpsProxyAddress address:port
+```
 
 Példa: *Set-AzureAdConnectHealthProxySettings -HttpsProxyAddress myproxyserver: 443*
 
@@ -352,15 +358,17 @@ Példa: *Set-AzureAdConnectHealthProxySettings -HttpsProxyAddress myproxyserver:
 
 A meglévő proxykonfigurációt a következő parancs futtatásával törölheti:
 
-    Set-AzureAdConnectHealthProxySettings -NoProxy
-
+```powershell
+Set-AzureAdConnectHealthProxySettings -NoProxy
+```
 
 ### <a name="read-current-proxy-settings"></a>Meglévő proxybeállítások olvasása
 
 A jelenleg konfigurált proxybeállításokat a következő parancs futtatásával olvashatja:
 
-    Get-AzureAdConnectHealthProxySettings
-
+```powershell
+Get-AzureAdConnectHealthProxySettings
+```
 
 ## <a name="test-connectivity-to-azure-ad-connect-health-service"></a>Az Azure AD Connect Health szolgáltatás kapcsolódásának tesztelése
 
@@ -368,7 +376,9 @@ Előfordulhat, hogy hibák lépnek fel, amelyek hatására az Azure AD Connect H
 
 Ha a ügynök több mint két órán keresztül képtelen adatokat küldeni az Azure AD Connect Health szolgáltatásnak, a következő szövegű riasztás jelenik meg a portálon: „Az üzemállapot-figyelő szolgáltatás adatai nem naprakészek.” A következő PowerShell-parancs futtatásával ellenőrizheti, hogy az érintett Azure AD Connect Health-ügynök fel tudja-e tölteni az adatokat az Azure AD Connect Health szolgáltatásba:
 
-    Test-AzureADConnectHealthConnectivity -Role ADFS
+```powershell
+Test-AzureADConnectHealthConnectivity -Role ADFS
+```
 
 A szerepkör-paraméter a következő értékeket veheti:
 

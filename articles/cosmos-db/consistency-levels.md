@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 5b80a0b03959ec3fba90ed21e291c1fd021916c2
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 5ba3fc70a2ccfbe342e222dbb475658629ec60a4
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85119290"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851704"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB konzisztenciáji szintjei
 
@@ -31,7 +31,7 @@ Az olvasási konzisztencia a logikai partíción belüli egyetlen olvasási műv
 
 ## <a name="configure-the-default-consistency-level"></a>Az alapértelmezett konzisztenciaszint beállítása
 
-Bármikor megadhatja az alapértelmezett konzisztencia-szintet az Azure Cosmos-fiókban. A fiókban konfigurált alapértelmezett konzisztencia-szint az adott fiókhoz tartozó összes Azure Cosmos-adatbázisra és-tárolóra vonatkozik. A tárolók vagy adatbázisok által kiadott összes olvasás és lekérdezés alapértelmezés szerint a megadott konzisztencia-szintet használja. További információ: [az alapértelmezett konzisztencia-szint konfigurálása](how-to-manage-consistency.md#configure-the-default-consistency-level).
+Bármikor megadhatja az alapértelmezett konzisztencia-szintet az Azure Cosmos-fiókban. A fiókban konfigurált alapértelmezett konzisztencia-szint az adott fiókhoz tartozó összes Azure Cosmos-adatbázisra és-tárolóra vonatkozik. A tárolók vagy adatbázisok által kiadott összes olvasás és lekérdezés alapértelmezés szerint a megadott konzisztencia-szintet használja. További információ: [az alapértelmezett konzisztencia-szint konfigurálása](how-to-manage-consistency.md#configure-the-default-consistency-level). Felülbírálhatja egy adott kérelem alapértelmezett konzisztencia-szintjét is, ha további információt szeretne megtudni az [alapértelmezett konzisztencia-szint felülbírálásáról](how-to-manage-consistency.md?#override-the-default-consistency-level) szóló cikkben.
 
 ## <a name="guarantees-associated-with-consistency-levels"></a>Konzisztencia-szintekhez kapcsolódó garanciák
 

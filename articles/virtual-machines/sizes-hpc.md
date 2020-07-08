@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 961e5a0febc0212b8a747b052b3fd6f696689351
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 2d52287d1c343ada58ed4f7e5e1d3e85a4e7162e
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84678630"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85850446"
 ---
 # <a name="high-performance-computing-vm-sizes"></a>Nagy teljesítményű számítástechnikai VM-méretek
 
@@ -38,13 +38,13 @@ A HPC VM-méretek többsége (HBv2, HB, HC, H16r, H16mr, A8 és A9) egy hálóza
 Ez az interfész lehetővé teszi, hogy a RDMA-kompatibilis példányok InfiniBand (IB) hálózaton keresztül kommunikáljanak, a HBv2 HDR-díjszabása, a HB, az HC, a FDR díjszabása pedig a H16r, a H16mr és a RDMA-kompatibilis N sorozatú virtuális gépek esetében, valamint az A8-as és A9-es VM-EK QDR-díjait. Ezek a RDMA-képességek növelhetik bizonyos Message Passing Interface-(MPI-) alkalmazások méretezhetőségét és teljesítményét. A sebességgel kapcsolatos további információkért tekintse meg az ezen a lapon található táblázatok részleteit.
 
 > [!NOTE]
-> Az Azure HPC-ben a virtuális gépek két osztálya van attól függően, hogy az SR-IOV engedélyezve van-e a InfiniBand. Jelenleg a InfiniBand-kompatibilis virtuális gépek SR-IOV a következők: HBv2, HB, HC és NCv3. A InfiniBand-kompatibilis virtuális gépek többi része nem engedélyezett az SR-IOV.
+> Az Azure HPC-ben a virtuális gépek két osztálya van attól függően, hogy az SR-IOV engedélyezve van-e a InfiniBand. Jelenleg a InfiniBand-kompatibilis virtuális gépek SR-IOV a következők: HBv2, HB, HC, NCv3 és NDv2. A InfiniBand-kompatibilis virtuális gépek többi része nem engedélyezett az SR-IOV.
 > Az IB protokollon keresztüli RDMA minden RDMA-kompatibilis virtuális gép esetében támogatott.
 > Az IB protokollon keresztüli IP-cím csak az SR-IOV-kompatibilis virtuális gépeken támogatott.
 
-- **Operációs rendszer** – a Linux a HPC-alapú virtuális gépek, disztribúciók, például a CentOS, a RHEL, az Ubuntu és a SUSE együttes használatát is támogatja. A Windows-támogatással kapcsolatban a HPC sorozatú virtuális gépeken a Windows Server 2016 támogatott. A Windows Server 2012 R2, a Windows Server 2012 is támogatott a nem SR-IOV-kompatibilis virtuális gépeken.
+- **Operációs rendszer** – a Linux a HPC-alapú virtuális gépek esetében nagyon jól támogatott; általában a CentOS, a RHEL, az Ubuntu és a SUSE rendszerű disztribúciókat használják. A Windows-támogatással kapcsolatban a Windows Server 2016-es és újabb verziói támogatottak az összes HPC sorozatú virtuális gépen. A Windows Server 2012 R2, a Windows Server 2012 is támogatott a nem SR-IOV-kompatibilis virtuális gépeken (H16r, H16mr, A8 és A9). Vegye figyelembe, hogy [a Windows Server 2012 R2 nem támogatott a HBv2 és más, több mint 64 (virtuális vagy fizikai) magokkal rendelkező virtuális gépeken](https://docs.microsoft.com/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows).
 
-- **MPI** – az SR-IOV által engedélyezett virtuálisgép-méretek az Azure-ban (HBV2, HB, HC, NCv3) lehetővé teszik szinte bármely MPI-íz használatát a Mellanox OFED.
+- **MPI** – az SR-IOV engedélyezett virtuálisgép-méretek az Azure-ban (HBV2, HB, HC, NCv3, NDv2) lehetővé teszik szinte bármely MPI-íz használatát a Mellanox OFED.
 A nem SR-IOV-kompatibilis virtuális gépeken támogatott MPI-implementációk a Microsoft Network Direct (ND) felületet használják a virtuális gépek közötti kommunikációhoz. Ezért csak a Microsoft MPI (MS-MPI) 2012 R2 vagy újabb, illetve az Intel MPI 5. x verziói támogatottak. Az Intel MPI runtime library újabb verziói (2017, 2018) vagy esetleg nem kompatibilisek az Azure RDMA-illesztőprogramokkal.
 
 - **InfiniBandDriver<Linux | Windows>** virtuálisgép-BŐVÍTMÉNY RDMA-kompatibilis virtuális gépeken, adja hozzá a InfiniBandDriver<Linux rendszerhez | Windows> bővítmény a InfiniBand engedélyezéséhez. Linux rendszeren a InfiniBandDriverLinux virtuálisgép-bővítmény telepíti a Mellanox OFED-illesztőprogramokat (SR-IOV virtuális gépeken) a RDMA-kapcsolathoz. Windows rendszeren a InfiniBandDriverWindows virtuálisgép-bővítmény telepíti a Windows Network Direct-illesztőprogramokat (nem SR-IOV virtuális gépeken) vagy a Mellanox OFED-illesztőprogramokat (SR-IOV virtuális gépeken) a RDMA-kapcsolathoz.
@@ -121,7 +121,7 @@ Az Azure számos lehetőséget kínál a RDMA-hálózattal kommunikáló Windows
 - [GPU-optimalizált](sizes-gpu.md)
 - [Előző generációk](sizes-previous-gen.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ az Azure-hoz készült HPC-alkalmazás optimalizálásáról és néhány példa a [HPC-Munkaterhelésekre](https://docs.microsoft.com/azure/virtual-machines/workloads/hpc/overview) 
 
