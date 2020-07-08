@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 03/21/2018
 ms.author: atsenthi
 ms.openlocfilehash: a25f16f08ab8ae9564363f179d19d4b30c5315fa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75464288"
 ---
 # <a name="run-a-service-startup-script-as-a-local-user-or-system-account"></a>Szolgáltatásindítási szkript futtatása helyi felhasználóként vagy rendszerfiókként
@@ -18,7 +17,7 @@ A Service Fabric szolgáltatás végrehajtható fájljának elindítása előtt 
 A telepítési belépési pont**SetupEntryPoint** (a SetupEntryPoint [) egy](service-fabric-application-and-service-manifests.md)emelt szintű belépési pont, amely alapértelmezés szerint ugyanazokkal a hitelesítő adatokkal fut, mint a Service Fabric (jellemzően a *NetworkService* fiók) a többi belépési pont előtt. A **BelépésiPont** által megadott végrehajtható fájl általában a hosszan futó szolgáltatás gazdagépe. A **BelépésiPont** végrehajtható fájl futtatása a **SetupEntryPoint** végrehajtható fájl sikeres bezárása után történik. Az eredményül kapott folyamat figyelése és újraindítása megkezdődött, és újra megkezdődik a **SetupEntryPoint** , ha még leáll vagy összeomlik. 
 
 ## <a name="configure-the-service-setup-entry-point"></a>Szolgáltatásbeállítás belépési pontjának konfigurálása
-Az alábbiakban egy olyan állapot nélküli szolgáltatás egyszerű szolgáltatási jegyzékfájlja látható, amely a *MySetup. bat* telepítési parancsfájlt ad meg a szolgáltatás **SetupEntryPoint**.  A **argumentumok** argumentumokat adnak át a parancsfájlnak a futtatásakor.
+Az alábbiakban egy olyan állapot nélküli szolgáltatás egyszerű szolgáltatási jegyzékfájlja látható, amely a szolgáltatás **SetupEntryPoint** *MySetup.bat* telepítési parancsfájlt határoz meg.  A **argumentumok** argumentumokat adnak át a parancsfájlnak a futtatásakor.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -97,7 +96,7 @@ A következő Application manifest-példa azt mutatja be, hogyan lehet konfigur�
 
 Először hozzon létre egy **rendszerbiztonsági tag** nevű szakaszt egy felhasználónévvel, például SetupAdminUser. A SetupAdminUser felhasználói fiók a rendszergazdák Rendszercsoport tagja.
 
-Ezután a **ServiceManifestImport** szakaszban állítson be egy házirendet, amely alkalmazza ezt a rendszerbiztonsági tag **SetupEntryPoint**. Ez a szabályzat azt közli Service Fabric, hogy a **MySetup. bat** fájl futtatásakor a SetupAdminUser (rendszergazdai jogosultságokkal) kell futnia. Mivel *nem* alkalmazott szabályzatot a fő belépési pontra, a **MyServiceHost. exe** fájl kódja a System **NetworkService** fiók alatt fut. Ez az alapértelmezett fiók, amelyet az összes szolgáltatási belépési pont futtat.
+Ezután a **ServiceManifestImport** szakaszban állítson be egy házirendet, amely alkalmazza ezt a rendszerbiztonsági tag **SetupEntryPoint**. Ez a szabályzat azt közli Service Fabric, hogy a **MySetup.bat** fájl futtatásakor SetupAdminUser kell futnia (rendszergazdai jogosultságokkal). Mivel *nem* alkalmazott szabályzatot a fő belépési pontra, a **MyServiceHost.exe** a System **NetworkService** fiókban fut. Ez az alapértelmezett fiók, amelyet az összes szolgáltatási belépési pont futtat.
 
 ### <a name="configure-the-policy-by-using-local-system-accounts"></a>A házirend konfigurálása helyi rendszerfiókok használatával
 Gyakran érdemes az indítási parancsfájlt helyi rendszerfiókkal futtatni, nem pedig rendszergazdai fiókot használni. Ha a futtató házirendet a rendszergazdák csoport tagjaként futtatja, általában nem működik megfelelően, mert a számítógépeken alapértelmezés szerint engedélyezve van a felhasználói Access Control (UAC). Ilyen esetekben az ajánlott, hogy a SetupEntryPoint a LocalSystem-ként futtassa, nem pedig helyi felhasználóként a rendszergazdák csoporthoz. A következő példa azt mutatja be, hogy a SetupEntryPoint a LocalSystem fiókkal való futtatásra van beállítva:
@@ -136,13 +135,13 @@ Gyakran érdemes az indítási parancsfájlt helyi rendszerfiókkal futtatni, ne
 ## <a name="run-a-script-from-the-setup-entry-point"></a>Parancsfájl futtatása a telepítési belépési pontról
 Most adjon hozzá egy indítási parancsfájlt a projekthez, hogy rendszergazdai jogosultságok alatt fusson. 
 
-A Visual Studióban kattintson a jobb gombbal a szolgáltatási projektre, és adjon hozzá egy új, *MySetup. bat*nevű fájlt.
+A Visual Studióban kattintson a jobb gombbal a szolgáltatási projektre, és adjon hozzá egy *MySetup.bat*nevű új fájlt.
 
-Ezután győződjön meg arról, hogy a *MySetup. bat* fájl szerepel a szervizcsomagban. Alapértelmezés szerint nem. Válassza ki a fájlt, kattintson a jobb gombbal a helyi menü beolvasásához, majd válassza a **Tulajdonságok parancsot**. A Tulajdonságok párbeszédpanelen győződjön meg arról, hogy a **Másolás a kimeneti könyvtárba** beállítás a másolás, **Ha újabb**. Tekintse meg a következő képernyőképet.
+Ezután győződjön meg arról, hogy a *MySetup.bat* fájl szerepel a szervizcsomagban. Alapértelmezés szerint nem. Válassza ki a fájlt, kattintson a jobb gombbal a helyi menü beolvasásához, majd válassza a **Tulajdonságok parancsot**. A Tulajdonságok párbeszédpanelen győződjön meg arról, hogy a **Másolás a kimeneti könyvtárba** beállítás a másolás, **Ha újabb**. Tekintse meg a következő képernyőképet.
 
 ![Visual Studio-CopyToOutput a SetupEntryPoint batch-fájlhoz][image1]
 
-Most szerkessze a *MySetup. bat* fájlt, és adja hozzá a következő parancsokat a rendszerkörnyezeti változó beállításához és egy szövegfájl kimenetéhez:
+Most szerkessze a *MySetup.bat* fájlt, és adja hozzá a következő parancsokat a rendszerkörnyezeti változó beállításához és egy szövegfájl kimenetéhez:
 
 ```
 REM Set a system environment variable. This requires administrator privilege
@@ -154,23 +153,23 @@ REM To delete this system variable us
 REM REG delete "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v TestVariable /f
 ```
 
-Ezután hozza létre és telepítse a megoldást egy helyi fejlesztési fürtre. A szolgáltatás elindítása után, ahogy az [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)látható, láthatja, hogy a MySetup. bat fájl két módon volt sikeres. Nyisson meg egy PowerShell-parancssort, és írja be a következőt:
+Ezután hozza létre és telepítse a megoldást egy helyi fejlesztési fürtre. A szolgáltatás elindítása után, ahogy az [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)látható, láthatja, hogy a MySetup.bat fájl két módon volt sikeres. Nyisson meg egy PowerShell-parancssort, és írja be a következőt:
 
 ```
 PS C:\ [Environment]::GetEnvironmentVariable("TestVariable","Machine")
 MyValue
 ```
 
-Ezt követően jegyezze fel annak a csomópontnak a nevét, amelyen a szolgáltatás központi telepítése megkezdődött, és [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)indult el. Például: 2. csomópont. Ezután keresse meg az alkalmazás példányának munkahelyi mappáját, és keresse meg a **TestVariable**értékét megjelenítő out. txt fájlt. Ha például a szolgáltatás a 2. csomópontra lett telepítve, akkor az alábbi elérési útra léphet a **MyApplicationType**:
+Ezt követően jegyezze fel annak a csomópontnak a nevét, amelyen a szolgáltatás központi telepítése megkezdődött, és [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)indult el. Például: 2. csomópont. Ezután keresse meg az alkalmazás példányának munkahelyi mappáját, és keresse meg a **TestVariable**értékét megjelenítő out.txt fájlt. Ha például a szolgáltatás a 2. csomópontra lett telepítve, akkor az alábbi elérési útra léphet a **MyApplicationType**:
 
 ```
 C:\SfDevCluster\Data\_App\Node.2\MyApplicationType_App\work\out.txt
 ```
 
 ## <a name="run-powershell-commands-from-a-setup-entry-point"></a>PowerShell-parancsok futtatása telepítési belépési pontról
-Ha a PowerShellt a **SetupEntryPoint** pontról szeretné futtatni, futtassa a **PowerShell. exe** fájlt egy olyan batch-fájlban, amely egy PowerShell-fájlra mutat. Először adjon hozzá egy PowerShell-fájlt a szolgáltatási projekthez – például **MySetup. ps1**. Ne felejtse el megadni a *másolást, ha újabb* tulajdonságot szeretne, hogy a fájl is szerepeljen a szervizcsomagban. Az alábbi példa egy MySetup. ps1 nevű PowerShell-fájlt indít, amely egy **TestVariable**nevű rendszerkörnyezeti változót állít be.
+Ha a PowerShellt a **SetupEntryPoint** pontról szeretné futtatni, **PowerShell.exe** futtathat egy olyan batch-fájlban, amely egy PowerShell-fájlra mutat. Először adjon hozzá egy PowerShell-fájlt a szolgáltatási projekthez – például **MySetup.ps1**. Ne felejtse el megadni a *másolást, ha újabb* tulajdonságot szeretne, hogy a fájl is szerepeljen a szervizcsomagban. Az alábbi példa egy MySetup.ps1 nevű PowerShell-fájlt indít, amely egy **TestVariable**nevű rendszerkörnyezeti változót állít be.
 
-MySetup. bat – PowerShell-fájl elindítása:
+MySetup.bat egy PowerShell-fájl indításához:
 
 ```
 powershell.exe -ExecutionPolicy Bypass -Command ".\MySetup.ps1"
@@ -184,7 +183,7 @@ A PowerShell-fájlban adja hozzá a következőt a rendszerkörnyezeti változó
 ```
 
 > [!NOTE]
-> Alapértelmezés szerint a batch-fájl futtatásakor a rendszer a **Work** for Files nevű alkalmazás mappát tekinti meg. Ebben az esetben a MySetup. bat futtatásakor azt szeretnénk, hogy a MySetup. ps1 fájlt ugyanabban a mappában találja, amely az alkalmazáscsomag- **csomag** mappája. A mappa módosításához állítsa be a munkamappát:
+> Alapértelmezés szerint a batch-fájl futtatásakor a rendszer a **Work** for Files nevű alkalmazás mappát tekinti meg. Ebben az esetben, ha MySetup.bat fut, azt szeretnénk, hogy a MySetup.ps1 fájlt ugyanabban a mappában találja, amely az alkalmazáscsomag- **csomag** mappája. A mappa módosításához állítsa be a munkamappát:
 > 
 > 
 
@@ -217,7 +216,7 @@ A következő Service manifest-példa azt mutatja be, hogyan kell beállítani a
 </SetupEntryPoint>
 ```
 
-Ha most megváltoztatja a MySetup. ps1 fájlt egy **echo** -parancs írásához, a rendszer hibakeresési célból a kimeneti fájlba írja a következőt:
+Ha most módosítja a MySetup.ps1 fájlt egy **echo** -parancs írásához, a rendszer hibakeresési célból a kimeneti fájlba írja a következőt:
 
 ```
 Echo "Test console redirection which writes to the application log folder on the node that the application is deployed to"

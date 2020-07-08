@@ -4,21 +4,20 @@ description: Ismerteti, hogyan lehet megtekinteni egy futó Service Fabric Conta
 ms.topic: conceptual
 ms.date: 05/15/2018
 ms.openlocfilehash: c47a408b272f95dbfcf3d791c644bfeb52254a72
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75458184"
 ---
 # <a name="view-logs-for-a-service-fabric-container-service"></a>Service Fabric tároló szolgáltatás naplófájljainak megtekintése
 Az Azure Service Fabric egy tároló-Orchestrator, és támogatja a [Linux-és Windows-tárolókat](service-fabric-containers-overview.md)is.  Ez a cikk azt ismerteti, hogyan lehet megtekinteni egy futó tároló szolgáltatás vagy egy elhalt tároló tároló naplóit, így diagnosztizálhatja és elháríthatja a problémákat.
 
 ## <a name="access-the-logs-of-a-running-container"></a>Egy futó tároló naplóihoz való hozzáférés
-A tároló naplói [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)használatával érhetők el.  Egy webböngészőben nyissa meg Service Fabric Explorer a fürt felügyeleti végpontján, ehhez `http://mycluster.region.cloudapp.azure.com:19080/Explorer`navigáljon a következőre:.  
+A tároló naplói [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)használatával érhetők el.  Egy webböngészőben nyissa meg Service Fabric Explorer a fürt felügyeleti végpontján, ehhez navigáljon a következőre: `http://mycluster.region.cloudapp.azure.com:19080/Explorer` .  
 
-A tároló-naplók azon a fürtcsomóponton találhatók, amelyen a Container Service-példány fut. Tegyük fel például, hogy beolvassa a [linuxos szavazási minta alkalmazás](service-fabric-quickstart-containers-linux.md)webes kezelőfelületének naplóit. A fanézetben bontsa ki a **cluster**>**Applications**>**VotingType**>**Fabric:/szavazás/azurevotefront**elemet.  Ezután bontsa ki a partíciót (ebben a példában a d1aa737e-f22a-e347-be16-eec90be24bc1), és ellenőrizze, hogy a tároló fut-e a fürtcsomópont *_lnxvm_0*.
+A tároló-naplók azon a fürtcsomóponton találhatók, amelyen a Container Service-példány fut. Tegyük fel például, hogy beolvassa a [linuxos szavazási minta alkalmazás](service-fabric-quickstart-containers-linux.md)webes kezelőfelületének naplóit. A fanézetben bontsa ki a **cluster** > **Applications** > **VotingType** > **Fabric:/szavazás/azurevotefront**elemet.  Ezután bontsa ki a partíciót (ebben a példában a d1aa737e-f22a-e347-be16-eec90be24bc1), és ellenőrizze, hogy a tároló fut-e a fürtcsomópont *_lnxvm_0*.
 
-A fanézetben keresse meg a *_lnxvm_0* csomóponton található kódot a **csomópontok**>kibontásával **_lnxvm_0**>**Fabric:/szavazó**>**azurevotfrontPkg**>**Code Packages**>**code**kód.  Ezután válassza a **tárolói naplók** lehetőséget a tároló naplófájljainak megjelenítéséhez.
+A fanézetben keresse meg a *_lnxvm_0* csomóponton található kódot a **csomópontok**kibontásával > **_lnxvm_0** > **Fabric:/szavazó** > **azurevotfrontPkg** > **kód** > **code**.  Ezután válassza a **tárolói naplók** lehetőséget a tároló naplófájljainak megjelenítéséhez.
 
 ![Service Fabric platform][Image1]
 
@@ -33,7 +32,7 @@ A tárolóindítási hibák diagnosztizálásának elősegítése céljából a 
 
 A **ContainersRetentionCount** beállítása megadja a hiba esetén megőrzendő tárolók számát. Ha negatív érték van megadva, a rendszer minden olyan tárolót megőriz, amelyen hiba jelentkezik. Ha a **ContainersRetentionCount** attribútum nincs megadva, a rendszer nem őrzi meg a tárolókat. A **ContainersRetentionCount** attribútum az Alkalmazásparamétereket is támogatja, így a felhasználók különböző értékeket adhatnak meg a tesztelési és az éles fürtökön. A funkció használatakor alkalmazzon elhelyezési korlátozásokat, hogy a tárolószolgáltatás egy adott csomóponton maradjon, és a rendszer ne kerüljön át más csomópontokra. Az ezzel a funkcióval megőrzött tárolókat manuálisan kell eltávolítani.
 
-A **RunInteractive** beállítás a Docker és `--interactive` `tty` a [Flags](https://docs.docker.com/engine/reference/commandline/run/#options)értéknek felel meg. Ha a jegyzékfájl értéke TRUE (igaz), akkor ezek a jelzők a tároló elindítására szolgálnak.  
+A **RunInteractive** beállítás a Docker és a `--interactive` `tty` [Flags](https://docs.docker.com/engine/reference/commandline/run/#options)értéknek felel meg. Ha a jegyzékfájl értéke TRUE (igaz), akkor ezek a jelzők a tároló elindítására szolgálnak.  
 
 ### <a name="rest"></a>REST
 A csomópont-művelethez tartozó [tároló-naplók beolvasása](/rest/api/servicefabric/sfclient-api-getcontainerlogsdeployedonnode) paranccsal lekérheti egy összeomlott tároló naplóit. Adja meg annak a csomópontnak a nevét, amelyen a tároló fut, az alkalmazás neve, a szolgáltatás jegyzékfájljának neve és a kód csomag neve.  Adja meg a következőt: `&Previous=true`. A válasz tartalmazni fogja a kód csomag példányának Holt tárolójának tároló naplóit.
@@ -55,7 +54,7 @@ GET http://localhost:19080/Nodes/_Node_0/$/GetApplications/SimpleHttpServerApp/$
 ```
 
 ### <a name="service-fabric-sfctl"></a>Service Fabric (SFCTL)
-Az összeomlott tároló naplófájljainak beolvasásához használja a [Get-Container-logs parancsot a sfctl szolgáltatásban](service-fabric-sfctl-service.md) .  Adja meg annak a csomópontnak a nevét, amelyen a tároló fut, az alkalmazás neve, a szolgáltatás jegyzékfájljának neve és a kód csomag neve. Határozza meg `--previous` a jelzőt.  A válasz tartalmazni fogja a kód csomag példányának Holt tárolójának tároló naplóit.
+Az összeomlott tároló naplófájljainak beolvasásához használja a [Get-Container-logs parancsot a sfctl szolgáltatásban](service-fabric-sfctl-service.md) .  Adja meg annak a csomópontnak a nevét, amelyen a tároló fut, az alkalmazás neve, a szolgáltatás jegyzékfájljának neve és a kód csomag neve. Határozza meg a `--previous` jelzőt.  A válasz tartalmazni fogja a kód csomag példányának Holt tárolójának tároló naplóit.
 
 ```
 sfctl service get-container-logs --node-name _Node_0 --application-id SimpleHttpServerApp --service-manifest-name SimpleHttpServerSvcPkg --code-package-name Code –-previous

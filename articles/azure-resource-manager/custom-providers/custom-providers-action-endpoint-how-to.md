@@ -6,10 +6,9 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: 6110a7952b7c29609d2b98e135b61032aec3fa52
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75650395"
 ---
 # <a name="adding-custom-actions-to-azure-rest-api"></a>Egyéni műveletek hozzáadása az Azure REST APIhoz
@@ -18,7 +17,7 @@ Ez a cikk az egyéni műveleteket megvalósító Azure-beli egyéni erőforrás-
 
 ## <a name="how-to-define-an-action-endpoint"></a>Műveleti végpont definiálása
 
-A **végpont** olyan URL-cím, amely egy szolgáltatásra mutat, amely megvalósítja az alapul szolgáló szerződést az IT és az Azure között. A végpont az egyéni erőforrás-szolgáltatóban van definiálva, és bármely nyilvánosan elérhető URL-cím lehet. Az alábbi minta egy implementált nevű `myCustomAction` **műveletet** tartalmaz `endpointURL`.
+A **végpont** olyan URL-cím, amely egy szolgáltatásra mutat, amely megvalósítja az alapul szolgáló szerződést az IT és az Azure között. A végpont az egyéni erőforrás-szolgáltatóban van definiálva, és bármely nyilvánosan elérhető URL-cím lehet. Az alábbi minta egy implementált nevű **műveletet** tartalmaz `myCustomAction` `endpointURL` .
 
 Minta **ResourceProvider**:
 
@@ -42,7 +41,7 @@ Minta **ResourceProvider**:
 
 ## <a name="building-an-action-endpoint"></a>Műveleti végpont létrehozása
 
-Egy **műveletet** végrehajtó **végpontnak** az új API-ra vonatkozó kérést és választ kell kezelnie az Azure-ban. Ha egy **művelettel** rendelkező egyéni erőforrás-szolgáltatót hoz létre, új API-készletet fog létrehozni az Azure-ban. Ebben az esetben a művelet egy új Azure Action API-t hoz majd `POST` a hívásokhoz:
+Egy **műveletet** végrehajtó **végpontnak** az új API-ra vonatkozó kérést és választ kell kezelnie az Azure-ban. Ha egy **művelettel** rendelkező egyéni erőforrás-szolgáltatót hoz létre, új API-készletet fog létrehozni az Azure-ban. Ebben az esetben a művelet egy új Azure Action API-t hoz majd a `POST` hívásokhoz:
 
 ``` JSON
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomAction

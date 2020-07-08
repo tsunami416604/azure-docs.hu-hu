@@ -4,14 +4,13 @@ description: További információ a meglévő alkalmazások vendég végrehajth
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.openlocfilehash: 3d7aab28a32effa2caf7b04b830d72e5e3dfda56
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75457832"
 ---
 # <a name="deploy-an-existing-executable-to-service-fabric"></a>Meglévő végrehajtható fájl üzembe helyezése Service Fabric
-Bármilyen típusú kódot futtathat, például a Node. js, a Java vagy a C++ parancsot az Azure Service Fabric szolgáltatásként. A Service Fabric vendég végrehajtható fájlokként hivatkozik az ilyen típusú szolgáltatásokra.
+Az Azure Service Fabric szolgáltatásban bármilyen típusú kódot futtathat, például Node.js, Java vagy C++. A Service Fabric vendég végrehajtható fájlokként hivatkozik az ilyen típusú szolgáltatásokra.
 
 A vendég végrehajtható fájlokat a Service Fabric, például az állapot nélküli szolgáltatások kezelik. Ennek eredményeképpen a fürt csomópontjain vannak elhelyezve a rendelkezésre állás és az egyéb mérőszámok alapján. Ez a cikk azt ismerteti, hogyan lehet a Visual Studióval vagy egy parancssori segédprogrammal becsomagolni és üzembe helyezni egy vendég végrehajtható fájlt egy Service Fabric-fürtön.
 
@@ -29,7 +28,7 @@ A Service Fabric-fürtben több előnye van a vendég végrehajtható fájl futt
 * [Minta két vendég végrehajtható fájlról (C# és NodeJS) az elnevezési szolgáltatáson keresztül a REST használatával](https://github.com/Azure-Samples/service-fabric-dotnet-containers)
 
 ## <a name="overview-of-application-and-service-manifest-files"></a>Az alkalmazások és szolgáltatások jegyzékfájljának áttekintése
-A vendég végrehajtható fájlok üzembe helyezésének részeként érdemes megismerni a Service Fabric csomagolási és telepítési modellt az [Application modelben](service-fabric-application-model.md)leírtak szerint. A Service Fabric csomagolási modell két XML-fájlra támaszkodik: az alkalmazásra és a szolgáltatásokra vonatkozó jegyzékfájlokra. A ApplicationManifest. XML és az ServiceManifest. XML fájlok sémájának definíciója az Service Fabric SDK-ba van telepítve a *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*.
+A vendég végrehajtható fájlok üzembe helyezésének részeként érdemes megismerni a Service Fabric csomagolási és telepítési modellt az [Application modelben](service-fabric-application-model.md)leírtak szerint. A Service Fabric csomagolási modell két XML-fájlra támaszkodik: az alkalmazásra és a szolgáltatásokra vonatkozó jegyzékfájlokra. A ApplicationManifest.xml és ServiceManifest.xml fájlok sémájának definíciója telepítve van a Service Fabric SDK-ba a *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*.
 
 * **Alkalmazás jegyzékfájlja** Az alkalmazás jegyzékfájlja az alkalmazás leírására szolgál. Felsorolja az azt alkotó szolgáltatásokat, valamint azokat a paramétereket, amelyek segítségével meghatározható egy vagy több szolgáltatás üzembe helyezése, például a példányok száma.
 
@@ -51,14 +50,14 @@ Egy alkalmazás Service Fabricba való telepítéséhez az alkalmazásnak egy el
     |-- ApplicationManifest.xml
 ```
 
-A ApplicationPackageRoot tartalmazza az alkalmazást definiáló ApplicationManifest. xml fájlt. Az alkalmazásban található összes szolgáltatás alkönyvtára a szolgáltatás által igényelt összes összetevőt tartalmazza. Ezek az alkönyvtárak a ServiceManifest. XML, és általában a következők:
+A ApplicationPackageRoot tartalmazza az alkalmazást definiáló ApplicationManifest.xml fájlt. Az alkalmazásban található összes szolgáltatás alkönyvtára a szolgáltatás által igényelt összes összetevőt tartalmazza. Ezek az alkönyvtárak a ServiceManifest.xml és jellemzően a következők:
 
 * *Kód*. Ez a könyvtár tartalmazza a szolgáltatási kódot.
-* *Konfiguráció*. Ez a könyvtár tartalmaz egy Settings. xml fájlt (és szükség esetén más fájlokat is), amelyekkel a szolgáltatás futásidőben elérheti az adott konfigurációs beállításokat.
+* *Konfiguráció*. Ez a könyvtár tartalmaz egy Settings.xml fájlt (és szükség esetén más fájlokat is), amelyekkel a szolgáltatás futásidőben elérheti az adott konfigurációs beállításokat.
 * *Az adathalmazt*. Ez egy további könyvtár a szolgáltatás által igényelt további helyi információk tárolására. Csak az időszakos adattárolást kell használni. Service Fabric nem másolja vagy replikálja az adatkönyvtár módosításait, ha a szolgáltatást át kell helyezni (például a feladatátvétel során).
 
 > [!NOTE]
-> Ha nincs szüksége rájuk, nem `config` kell `data` létrehoznia a és a címtárakat.
+> Ha nincs szüksége rájuk, nem kell létrehoznia a `config` és a `data` címtárakat.
 >
 >
 

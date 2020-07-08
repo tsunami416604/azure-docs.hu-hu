@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/26/2019
 ms.openlocfilehash: 5989692aeb59c7394299b4cb2474b244818895b2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75500075"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>A Scaleer és a Spark kombinálása a HDInsight-ben
@@ -29,7 +28,7 @@ A jelen dokumentumban ismertetett lépések feltételezik, hogy az R-nek van egy
 
 ## <a name="the-airline-and-weather-datasets"></a>A légitársaság és az időjárási adatkészletek
 
-A repülési adatok az [Egyesült Államok kormányzati levéltárában](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236)érhetők el. Emellett zip-ként is elérhető a [AirOnTimeCSV. zip](https://packages.revolutionanalytics.com/datasets/AirOnTime87to12/AirOnTimeCSV.zip)fájlból.
+A repülési adatok az [Egyesült Államok kormányzati levéltárában](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236)érhetők el. A [AirOnTimeCSV.zip](https://packages.revolutionanalytics.com/datasets/AirOnTime87to12/AirOnTimeCSV.zip)zip-ként is elérhető.
 
 Az időjárási adatok zip-fájlként tölthetők le nyers formában, a [nemzeti óceáni és a légköri adminisztrációs tárházban](https://www.ncdc.noaa.gov/orders/qclcd/). Ebben a példában a május 2007 – december 2012. Az óránkénti adatfájlok és `YYYYMMMstation.txt` a fájlok használata az egyes zip-fájlokon belül.
 

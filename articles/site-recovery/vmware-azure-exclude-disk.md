@@ -7,10 +7,9 @@ ms.date: 12/10/2019
 ms.author: mayg
 ms.topic: conceptual
 ms.openlocfilehash: cd54da5ee01206e576157435135065189bfb8035
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75495367"
 ---
 # <a name="exclude-disks-from-vmware-vm-replication-to-azure"></a>Lemezek kizárása a VMware VM-replikációból az Azure-ba
@@ -42,7 +41,7 @@ A lemezek replikációból való kizárása előtt:
 
 ## <a name="exclude-disks-from-replication"></a>Lemezek kizárása a replikációból
 
-1. Ha [engedélyezi a replikálást](site-recovery-hyper-v-site-to-azure.md) egy VMware virtuális gép számára, a replikálni kívánt virtuális gépek kiválasztása után a **replikálási** > **Tulajdonságok** > **konfigurálása** tulajdonságlapon tekintse át a **replikálni kívánt lemezeket** . Alapértelmezés szerint az összes lemez ki van választva replikálásra.
+1. Ha [engedélyezi a replikálást](site-recovery-hyper-v-site-to-azure.md) egy VMware virtuális gép számára, a replikálni kívánt virtuális gépek kiválasztása után a **replikálási**  >  **Tulajdonságok**  >  **konfigurálása** tulajdonságlapon tekintse át a **replikálni kívánt lemezeket** . Alapértelmezés szerint az összes lemez ki van választva replikálásra.
 2. Ha nem szeretne replikálni egy adott lemezt, a **lemezeken a replikáláshoz** törölje a kizárni kívánt lemezek kijelölését. 
 
     ![Lemezek kizárása a replikációból](./media/vmware-azure-exclude-disk/enable-replication-exclude-disk1.png)

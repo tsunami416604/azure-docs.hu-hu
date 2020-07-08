@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/24/2019
 ms.openlocfilehash: a9d71c8aebb9cc4a0adbd461aead6e2612bd13bd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75552491"
 ---
 # <a name="run-apache-hive-queries-using-hdinsight-net-sdk"></a>Apache Hive lekérdezések futtatása a HDInsight .NET SDK-val
@@ -45,7 +44,7 @@ A HDInsight .NET SDK .NET-ügyfélszoftvereket biztosít, ami megkönnyíti a HD
 
         Install-Package Microsoft.Azure.Management.HDInsight.Job
 
-1. Szerkessze az alábbi kódot a változók értékeinek inicializálásához: `ExistingClusterName, ExistingClusterUsername, ExistingClusterPassword,DefaultStorageAccountName,DefaultStorageAccountKey,DefaultStorageContainerName`. Ezután használja a felülvizsgált kódot a **program.cs** teljes tartalmára a Visual Studióban.
+1. Szerkessze az alábbi kódot a változók értékeinek inicializálásához: `ExistingClusterName, ExistingClusterUsername, ExistingClusterPassword,DefaultStorageAccountName,DefaultStorageAccountKey,DefaultStorageContainerName` . Ezután használja a felülvizsgált kódot a **program.cs** teljes tartalmára a Visual Studióban.
 
     ```csharp
     using System.Collections.Generic;

@@ -1,24 +1,23 @@
 ---
 title: Definíciós összetevő hivatkozásának megtekintése
-description: Példát mutat a Azure Managed Applications megjelenítésének definíciós összetevője számára. A fájl neve viewDefinition. JSON.
+description: Példát mutat a Azure Managed Applications megjelenítésének definíciós összetevője számára. A fájl neve viewDefinition.jsa következőn:.
 ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 07/11/2019
 ms.openlocfilehash: 5173db54abef132a4a4d5d117881352ca37d6b23
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75651201"
 ---
 # <a name="reference-view-definition-artifact"></a>Hivatkozás: definíciós összetevő megtekintése
 
-Ez a cikk a Azure Managed Applications *viewDefinition. JSON* összetevőjét ismerteti. További információ a létrehozási nézetek konfigurációjával kapcsolatban: a [definíciós összetevő megtekintése](concepts-view-definition.md).
+Ez a cikk a Azure Managed Applications összetevőn belüli *viewDefinition.jsra* mutat. További információ a létrehozási nézetek konfigurációjával kapcsolatban: a [definíciós összetevő megtekintése](concepts-view-definition.md).
 
 ## <a name="view-definition"></a>Meghatározás megtekintése
 
-A következő JSON a Azure Managed Applications *viewDefinition. JSON* fájljának példáját mutatja be:
+A következő JSON-példa a Azure Managed Applications *viewDefinition.js* fájlját mutatja be:
 
 ```json
 {

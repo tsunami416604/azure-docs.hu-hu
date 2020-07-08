@@ -4,10 +4,9 @@ description: Leírja, hogyan kezeli a Azure Resource Manager a különböző bé
 ms.topic: conceptual
 ms.date: 10/11/2019
 ms.openlocfilehash: 7a13ba6f6cbfc10c52484c45e4011da7a0d8ee4c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75478824"
 ---
 # <a name="authenticate-requests-across-tenants"></a>Kérelmek hitelesítése a bérlők között
@@ -18,10 +17,10 @@ Több-bérlős alkalmazások létrehozásakor előfordulhat, hogy a különböz�
 
 A kérelem a következő hitelesítési fejléc-értékekkel rendelkezik:
 
-| Fejléc neve | Leírás | Példaérték |
+| Fejléc neve | Description | Példaérték |
 | ----------- | ----------- | ------------ |
-| Engedélyezés | Elsődleges jogkivonat | Tulajdonos &lt;elsődleges – token&gt; |
-| x-MS-Authorization-kiegészítő | Kiegészítő tokenek | Tulajdonos- &lt;kiegészítő – token1&gt;, EncryptedBearer &lt;-kiegészítő –&gt;token2, tulajdonosi &lt;segéd – token3&gt; |
+| Engedélyezés | Elsődleges jogkivonat | Tulajdonos &lt; elsődleges – token&gt; |
+| x-MS-Authorization-kiegészítő | Kiegészítő tokenek | Tulajdonos &lt; -kiegészítő – token1 &gt; , EncryptedBearer &lt; -kiegészítő – token2 &gt; , tulajdonosi &lt; segéd – token3&gt; |
 
 A kiegészítő fejléc legfeljebb három kiegészítő tokent tud tárolni. 
 

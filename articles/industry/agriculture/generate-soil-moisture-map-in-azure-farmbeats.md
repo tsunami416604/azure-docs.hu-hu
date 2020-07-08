@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: a2115e9c1601c86cce8857c10baf12b91cc2b997
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75482568"
 ---
 # <a name="generate-soil-moisture-heatmap"></a>Talaj nedvesség-hő előállítása
@@ -51,7 +50,7 @@ Miután megadta a hitelesítő adatait, és kiválasztja a **beküldés** lehet�
 Miután összekapcsolta a Sensor-fiókját az Azure FarmBeats, hozzá kell rendelnie a talajhoz tartozó nedvesség-érzékelőket a farmhoz.
 
 1.  A kezdőlapon válassza a **farmok** lehetőséget a menüből, a **farmok** listája lap jelenik meg.
-2.  Válassza a **MyFarm** > **eszközök hozzáadása**elemet.
+2.  Válassza a **MyFarm**  >  **eszközök hozzáadása**elemet.
 3.  Megjelenik az **eszközök hozzáadása** ablak. Válassza ki a farm nedvesség-érzékelőkhöz kapcsolódó összes eszközt.
 
     ![A Project Farm veri](./media/get-sensor-data-from-sensor-partner/add-devices-1.png)

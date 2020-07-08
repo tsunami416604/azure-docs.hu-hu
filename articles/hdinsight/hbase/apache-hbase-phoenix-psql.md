@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
 ms.openlocfilehash: 845c4a62aee04a8acdc645ba4c41f1f5496537c3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75552610"
 ---
 # <a name="bulk-load-data-into-apache-phoenix-using-psql"></a>Adatok tömeges betöltése az Apache Phoenixbe a psql használatával
@@ -21,19 +20,19 @@ A [Apache Phoenix](https://phoenix.apache.org/) egy [Apache HBase](../hbase/apac
 
 ## <a name="bulk-loading-with-apache-phoenix"></a>Tömeges betöltés Apache Phoenix
 
-Több módon is beszerezhetők az adatok a HBase-be, például az ügyféloldali API-k, a MapReduce-feladatok és a TableOutputFormat használatával, illetve az adatok manuális bevitele a HBase-rendszerhéj használatával. A Phoenix két módszert biztosít a CSV-táblázatok Phoenix `psql`-táblákba való betöltéséhez: egy ügyfél-betöltési eszközt és egy MapReduce-alapú tömeges betöltési eszközt.
+Több módon is beszerezhetők az adatok a HBase-be, például az ügyféloldali API-k, a MapReduce-feladatok és a TableOutputFormat használatával, illetve az adatok manuális bevitele a HBase-rendszerhéj használatával. A Phoenix két módszert biztosít a CSV-táblázatok Phoenix-táblákba való betöltéséhez: egy ügyfél-betöltési eszközt `psql` és egy MapReduce-alapú tömeges betöltési eszközt.
 
-Az `psql` eszköz egyszálas, és a legmegfelelőbb a megabájt vagy gigabájt adat betöltéséhez. A betöltendő CSV-fájloknak a ". csv" kiterjesztéssel kell rendelkezniük.  Az SQL-parancsfájlokat a `psql` parancssorban is megadhatja az ". SQL" fájlkiterjesztés használatával.
+Az `psql` eszköz egyszálas, és a legmegfelelőbb a megabájt vagy gigabájt adat betöltéséhez. A betöltendő CSV-fájloknak a ". csv" kiterjesztéssel kell rendelkezniük.  Az SQL-parancsfájlokat a parancssorban is megadhatja az `psql` ". SQL" fájlkiterjesztés használatával.
 
 A tömeges betöltés a MapReduce használatával sokkal nagyobb adatmennyiségekhez használatos, jellemzően éles környezetben, mivel a MapReduce több szálat használ.
 
-Az adattöltés megkezdése előtt ellenőrizze, hogy a Phoenix engedélyezve van-e, és hogy a lekérdezés időtúllépési beállításai a vártak.  Nyissa meg a HDInsight-fürt [Apache Ambari](https://ambari.apache.org/) irányítópultját, válassza a HBase, majd a konfiguráció lapot.  Görgessen lefelé, és ellenőrizze, hogy a `enabled` Apache Phoenix a következőre van-e beállítva:
+Az adattöltés megkezdése előtt ellenőrizze, hogy a Phoenix engedélyezve van-e, és hogy a lekérdezés időtúllépési beállításai a vártak.  Nyissa meg a HDInsight-fürt [Apache Ambari](https://ambari.apache.org/) irányítópultját, válassza a HBase, majd a konfiguráció lapot.  Görgessen lefelé, és ellenőrizze, hogy a Apache Phoenix a következőre van-e beállítva `enabled` :
 
 ![Apache Phoenix HDInsight](./media/apache-hbase-phoenix-psql/apache-ambari-phoenix.png)
 
-### <a name="use-psql-to-bulk-load-tables"></a>Táblázatok `psql` tömeges betöltésére használható
+### <a name="use-psql-to-bulk-load-tables"></a>`psql`Táblázatok tömeges betöltésére használható
 
-1. Hozzon létre egy `createCustomersTable.sql`nevű fájlt, és másolja az alábbi kódot a fájlba. Ezután mentse és zárja be a fájlt.
+1. Hozzon létre egy nevű fájlt `createCustomersTable.sql` , és másolja az alábbi kódot a fájlba. Ezután mentse és zárja be a fájlt.
 
     ```sql
     CREATE TABLE Customers (
@@ -44,13 +43,13 @@ Az adattöltés megkezdése előtt ellenőrizze, hogy a Phoenix engedélyezve va
         Country varchar);
     ```
 
-1. Hozzon létre egy `listCustomers.sql`nevű fájlt, és másolja az alábbi kódot a fájlba. Ezután mentse és zárja be a fájlt.
+1. Hozzon létre egy nevű fájlt `listCustomers.sql` , és másolja az alábbi kódot a fájlba. Ezután mentse és zárja be a fájlt.
 
     ```sql
     SELECT * from Customers;
     ```
 
-1. Hozzon létre egy `customers.csv`nevű fájlt, és másolja az alábbi kódot a fájlba. Ezután mentse és zárja be a fájlt.
+1. Hozzon létre egy nevű fájlt `customers.csv` , és másolja az alábbi kódot a fájlba. Ezután mentse és zárja be a fájlt.
 
     ```txt
     1,Samantha,260000.0,18,US
@@ -58,7 +57,7 @@ Az adattöltés megkezdése előtt ellenőrizze, hogy a Phoenix engedélyezve va
     3,Anton,550150.0,42,Norway
     ```
 
-1. Hozzon létre egy `customers2.csv`nevű fájlt, és másolja az alábbi kódot a fájlba. Ezután mentse és zárja be a fájlt.
+1. Hozzon létre egy nevű fájlt `customers2.csv` , és másolja az alábbi kódot a fájlba. Ezután mentse és zárja be a fájlt.
 
     ```txt
     4,Nicolle,180000.0,22,US
@@ -98,7 +97,7 @@ Az adattöltés megkezdése előtt ellenőrizze, hogy a Phoenix engedélyezve va
     Time: 0.081 sec(s)
     ```
 
-1. Továbbra is használhatja `psql` az ügyfelek tábla tartalmának megtekintését. Hajtsa végre az alábbi kódot:
+1. Továbbra is használhatja az `psql` ügyfelek tábla tartalmának megtekintését. Hajtsa végre az alábbi kódot:
 
     ```bash
     python psql.py /tmp/listCustomers.sql
@@ -116,7 +115,7 @@ Az adattöltés megkezdése előtt ellenőrizze, hogy a Phoenix engedélyezve va
 
 A fürtön keresztül terjesztett nagyobb átviteli sebességű betöltéshez használja a MapReduce Load eszközt. Ez a betöltő először átalakítja az összes adatmennyiséget a HFiles, majd a létrehozott HFiles a HBase.
 
-1. Ez a szakasz az SSH-munkamenetet és a korábban létrehozott objektumokat is folytatja. Hozza létre a **Customers** táblát és a **customers. csv** fájlt szükség szerint a fenti lépések alapján. Szükség esetén hozza létre újra az SSH-kapcsolatot.
+1. Ez a szakasz az SSH-munkamenetet és a korábban létrehozott objektumokat is folytatja. A fenti lépésekkel hozza létre az **ügyfelek** táblát, és szükség szerint **customers.csv** fájlt. Szükség esetén hozza létre újra az SSH-kapcsolatot.
 
 1. A **Customers** tábla tartalmának csonkítása. Az Open SSH-munkamenetből hajtsa végre az alábbi parancsokat:
 
@@ -126,7 +125,7 @@ A fürtön keresztül terjesztett nagyobb átviteli sebességű betöltéshez ha
     exit
     ```
 
-1. Másolja a `customers.csv` fájlt a Átjárócsomóponthoz az Azure Storage-ba.
+1. Másolja a `customers.csv` fájlt a átjárócsomóponthoz az Azure Storage-ba.
 
     ```bash
     hdfs dfs -put /tmp/customers.csv wasbs:///tmp/customers.csv
@@ -138,7 +137,7 @@ A fürtön keresztül terjesztett nagyobb átviteli sebességű betöltéshez ha
     cd /usr/hdp/current/phoenix-client
     ```
 
-1. Indítsa el a CSV-MapReduce betöltőjét `hadoop` a (z) paranccsal a Phoenix Client jar használatával:
+1. Indítsa el a CSV-MapReduce betöltőjét a (z) `hadoop` paranccsal a Phoenix Client jar használatával:
 
     ```bash
     HADOOP_CLASSPATH=/usr/hdp/current/hbase-client/lib/hbase-protocol.jar:/etc/hbase/conf hadoop jar phoenix-client.jar org.apache.phoenix.mapreduce.CsvBulkLoadTool --table Customers --input /tmp/customers.csv
@@ -155,7 +154,7 @@ A fürtön keresztül terjesztett nagyobb átviteli sebességű betöltéshez ha
     19/12/18 18:30:57 INFO mapreduce.AbstractBulkLoadTool: Removing output directory /tmp/50254426-aba6-400e-88eb-8086d3dddb6
     ```
 
-1. Ha a MapReduce-t a Azure Data Lake Storage használatával szeretné használni, keresse meg a Data Lake Storage `hbase.rootdir` gyökérkönyvtárat `hbase-site.xml`, amely a értéke. A következő parancsban a Data Lake Storage gyökérkönyvtára `adl://hdinsightconf1.azuredatalakestore.net:443/hbase1`. Ebben a parancsban adja meg a bemeneti és kimeneti mappák Data Lake Storage paraméterként:
+1. Ha a MapReduce-t a Azure Data Lake Storage használatával szeretné használni, keresse meg a Data Lake Storage gyökérkönyvtárat, amely a `hbase.rootdir` értéke `hbase-site.xml` . A következő parancsban a Data Lake Storage gyökérkönyvtára `adl://hdinsightconf1.azuredatalakestore.net:443/hbase1` . Ebben a parancsban adja meg a bemeneti és kimeneti mappák Data Lake Storage paraméterként:
 
     ```bash
     cd /usr/hdp/current/phoenix-client
@@ -169,7 +168,7 @@ A fürtön keresztül terjesztett nagyobb átviteli sebességű betöltéshez ha
 
 ## <a name="recommendations"></a>Javaslatok
 
-* Ugyanazt a tárolóeszközt használja a bemeneti és a kimeneti mappákhoz, vagy az Azure Storage (WASB) vagy a Azure Data Lake Storage (ADL) számára. Az adatok Azure Storage-ból Data Lake Storageba való átviteléhez a `distcp` következő parancsot használhatja:
+* Ugyanazt a tárolóeszközt használja a bemeneti és a kimeneti mappákhoz, vagy az Azure Storage (WASB) vagy a Azure Data Lake Storage (ADL) számára. Az adatok Azure Storage-ból Data Lake Storageba való átviteléhez a következő `distcp` parancsot használhatja:
 
     ```bash
     hadoop distcp wasb://@.blob.core.windows.net/example/data/gutenberg adl://.azuredatalakestore.net:443/myfolder

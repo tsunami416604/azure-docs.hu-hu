@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 12/06/2017
 ms.author: mikhegn
 ms.openlocfilehash: f4c4f2a1c140e3d0f181c4fd55482056f9f91b62
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75614315"
 ---
 # <a name="how-to-specify-environment-variables-for-services-in-service-fabric"></a>Környezeti változók megadása a Service Fabric szolgáltatásaihoz
@@ -20,7 +19,7 @@ Ez a cikk bemutatja, hogyan határozhat meg környezeti változókat egy szolgá
 
 Ebben a példában egy környezeti változót állít be egy tárolóhoz. A cikk feltételezi, hogy már rendelkezik egy alkalmazás-és szolgáltatás-jegyzékfájlval.
 
-1. Nyissa meg a ServiceManifest. xml fájlt.
+1. Nyissa meg a ServiceManifest.xml fájlt.
 2. A `CodePackage` elemben adjon hozzá egy új `EnvironmentVariables` elemet és egy `EnvironmentVariable` elemet az egyes környezeti változókhoz.
 
     ```xml

@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: evanhi
 ms.openlocfilehash: 7f475774828bcaecd471e13de994b156041323ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75651383"
 ---
 # <a name="enable-and-request-just-in-time-access-for-azure-managed-applications"></a>Igény szerinti hozzáférés engedélyezése és kérése Azure Managed Applications
@@ -34,9 +33,9 @@ Ez a cikk a-közzétevők által a JIT-hozzáférés engedélyezéséhez és a k
 
 ## <a name="add-jit-access-step-to-ui"></a>JIT hozzáférési lépés hozzáadása a felhasználói felülethez
 
-A CreateUiDefinition. JSON fájl pontosan olyan, mint az állandó hozzáféréshez létrehozott felhasználói felületi fájl, csak egy lépést kell tartalmaznia, amely lehetővé teszi a felhasználók számára a JIT-hozzáférés engedélyezését. Ha többet szeretne megtudni az első felügyelt alkalmazás Azure Marketplace-en való közzétételéről, tekintse meg [a Azure Managed Applications a piactéren](publish-marketplace-app.md).
+A CreateUiDefinition.jsfájl pontosan az állandó hozzáféréshez létrehozott felhasználói felületi fájlhoz hasonlít, kivéve, ha olyan lépést kell tartalmaznia, amely lehetővé teszi a felhasználók számára a JIT-hozzáférés engedélyezését. Ha többet szeretne megtudni az első felügyelt alkalmazás Azure Marketplace-en való közzétételéről, tekintse meg [a Azure Managed Applications a piactéren](publish-marketplace-app.md).
 
-Az ajánlathoz tartozó JIT-képesség támogatásához adja hozzá a következő tartalmat a CreateUiDefinition. JSON fájlhoz:
+Az ajánlathoz tartozó JIT-képesség támogatásához adja hozzá a következő tartalmat a CreateUiDefinition.jsfájlhoz:
 
 A "Steps":
 

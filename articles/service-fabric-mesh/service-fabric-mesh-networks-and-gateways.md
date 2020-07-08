@@ -7,10 +7,9 @@ ms.date: 11/26/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: dc793e2991783cc9b7b46d92fcc8e0267feb529b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75459139"
 ---
 # <a name="introduction-to-networking-in-service-fabric-mesh-applications"></a>Service Fabric Mesh-alkalmazások hálózatkezelésének bemutatása
@@ -30,7 +29,7 @@ Az átjáró két hálózat összeépítésére szolgál. Az átjáró erőforr�
 
 ![Hálózat és átjáró][Image1]
 
-A hálózati erőforrás létrehozásakor `ingressConfig`a rendszer egy nyilvános IP-címet rendel hozzá a hálózati erőforráshoz. A nyilvános IP-cím a hálózati erőforrás élettartamához lesz kötve.
+A hálózati erőforrás létrehozásakor a rendszer `ingressConfig` egy nyilvános IP-címet rendel hozzá a hálózati erőforráshoz. A nyilvános IP-cím a hálózati erőforrás élettartamához lesz kötve.
 
 Egy rácsvonal-alkalmazás létrehozásakor egy meglévő hálózati erőforrásra kell hivatkoznia. Új nyilvános portok adhatók hozzá, vagy a meglévő portok eltávolíthatók a bejövő konfigurációból. Egy hálózati erőforrás törlése sikertelen lesz, ha egy alkalmazás-erőforrás hivatkozik rá. Az alkalmazás törlésekor a hálózati erőforrás el lesz távolítva.
 

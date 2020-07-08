@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
 ms.openlocfilehash: 97c3be391dfbee7301ea47bf7234a9549d373370
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75464720"
 ---
 # <a name="application-logging"></a>Alkalmazásnaplózás
@@ -26,7 +25,7 @@ A Application Insights gazdag integrációval rendelkezik Service Fabric a doboz
 
 ## <a name="eventsource"></a>EventSource
 
-Amikor létrehoz egy Service Fabric megoldást egy sablonból a Visual Studióban, létrejön egy **EventSource**származtatott osztály (**ServiceEventSource** vagy **ActorEventSource**). Létrejön egy sablon, amelyben eseményeket adhat hozzá az alkalmazáshoz vagy szolgáltatáshoz. A **EventSource** nevének **egyedinek kell** lennie, és átnevezni kell az alapértelmezett sablon sztring SajátVállalat&lt;– megoldás&gt;-&lt;projektből&gt;. Ha több olyan **EventSource** -definíció is van, amelyek ugyanazt a nevet használják, a probléma futás közben is hibát okoz. Minden meghatározott eseménynek egyedi azonosítóval kell rendelkeznie. Ha egy azonosító nem egyedi, futásidejű hiba történik. Egyes szervezetek a különböző fejlesztői csapatok közötti ütközések elkerülése érdekében előrendelik az azonosítók tartományait. További információ: a [Vance blogja](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/) vagy az [MSDN dokumentációja](https://msdn.microsoft.com/library/dn774985(v=pandp.20).aspx).
+Amikor létrehoz egy Service Fabric megoldást egy sablonból a Visual Studióban, létrejön egy **EventSource**származtatott osztály (**ServiceEventSource** vagy **ActorEventSource**). Létrejön egy sablon, amelyben eseményeket adhat hozzá az alkalmazáshoz vagy szolgáltatáshoz. A **EventSource** nevének **egyedinek kell** lennie, és átnevezni kell az alapértelmezett sablon sztring SajátVállalat – &lt; megoldás &gt; - &lt; projektből &gt; . Ha több olyan **EventSource** -definíció is van, amelyek ugyanazt a nevet használják, a probléma futás közben is hibát okoz. Minden meghatározott eseménynek egyedi azonosítóval kell rendelkeznie. Ha egy azonosító nem egyedi, futásidejű hiba történik. Egyes szervezetek a különböző fejlesztői csapatok közötti ütközések elkerülése érdekében előrendelik az azonosítók tartományait. További információ: a [Vance blogja](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/) vagy az [MSDN dokumentációja](https://msdn.microsoft.com/library/dn774985(v=pandp.20).aspx).
 
 ## <a name="aspnet-core-logging"></a>ASP.NET Core naplózás
 

@@ -4,10 +4,9 @@ description: Leírja, hogyan határozhat meg változókat egy Azure Resource Man
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.openlocfilehash: cf135959d30702ea58b7a1d4fdd82625a39245d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75483816"
 ---
 # <a name="variables-in-azure-resource-manager-template"></a>Változók Azure Resource Manager sablonban
@@ -85,7 +84,7 @@ A megadott környezet beállításainak beolvasásához használja együtt a vá
 
 Az alábbi példák a változók használatára vonatkozó forgatókönyveket szemléltetik.
 
-|Sablon  |Leírás  |
+|Sablon  |Description  |
 |---------|---------|
 | [változók definíciói](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variables.json) | Bemutatja a különböző típusú változókat. A sablon nem telepít semmilyen erőforrást. Változó értékeket hoz létre, és visszaadja ezeket az értékeket. |
 | [konfigurációs változó](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variablesconfigurations.json) | A konfigurációs értékeket meghatározó változó használatát mutatja be. A sablon nem telepít semmilyen erőforrást. Változó értékeket hoz létre, és visszaadja ezeket az értékeket. |

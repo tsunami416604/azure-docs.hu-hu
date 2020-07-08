@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 10/06/2017
 ms.author: amanbha
 ms.openlocfilehash: 73c149a0d0992fecd1acf633891057570285df64
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75639666"
 ---
 # <a name="actor-events"></a>Színészi események
@@ -17,7 +16,7 @@ A színészi események lehetővé teszik a legjobb erőfeszítést jelző érte
 
 A következő kódrészletek azt mutatják be, hogyan használhatók a Actor Events az alkalmazásban.
 
-Definiáljon egy felületet, amely leírja a színész által közzétett eseményeket. Ezt az illesztőfelületet az `IActorEvents` illesztőfelületből kell származtatni. A metódusok argumentumai csak [szerializálható adategyezmények](service-fabric-reliable-actors-notes-on-actor-type-serialization.md)lehetnek. A metódusoknak Void értéket kell visszaadnia, mivel az eseményekre vonatkozó értesítések az egyik módszer és a legjobb erőfeszítés.
+Definiáljon egy felületet, amely leírja a színész által közzétett eseményeket. Ezt az illesztőfelületet az illesztőfelületből kell származtatni `IActorEvents` . A metódusok argumentumai csak [szerializálható adategyezmények](service-fabric-reliable-actors-notes-on-actor-type-serialization.md)lehetnek. A metódusoknak Void értéket kell visszaadnia, mivel az eseményekre vonatkozó értesítések az egyik módszer és a legjobb erőfeszítés.
 
 ```csharp
 public interface IGameEvents : IActorEvents
@@ -85,7 +84,7 @@ GameActor actorProxy = ActorProxyBase.create<GameActor>(GameActor.class, new Act
 return ActorProxyEventUtility.subscribeAsync(actorProxy, new GameEventsHandler());
 ```
 
-Feladatátvétel esetén a szereplő egy másik folyamathoz vagy csomóponthoz is átadhatja a feladatokat. A Actor proxy kezeli az aktív előfizetéseket, és automatikusan újra Előfizeti őket. Az előfizetések intervallumát az `ActorProxyEventExtensions.SubscribeAsync<TEvent>` API használatával szabályozhatja. A leiratkozáshoz használja az `ActorProxyEventExtensions.UnsubscribeAsync<TEvent>` API-t.
+Feladatátvétel esetén a szereplő egy másik folyamathoz vagy csomóponthoz is átadhatja a feladatokat. A Actor proxy kezeli az aktív előfizetéseket, és automatikusan újra Előfizeti őket. Az előfizetések intervallumát az API használatával szabályozhatja `ActorProxyEventExtensions.SubscribeAsync<TEvent>` . A leiratkozáshoz használja az API-t `ActorProxyEventExtensions.UnsubscribeAsync<TEvent>` .
 
 A színészen tegye közzé az eseményeket, ahogy történnek. Ha vannak előfizetők az eseményhez, a szereplők futtatókörnyezete elküldi nekik az értesítést.
 

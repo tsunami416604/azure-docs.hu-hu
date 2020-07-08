@@ -6,21 +6,20 @@ ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
 ms.openlocfilehash: 1c044d5fd973d3c577088a887f2fac413d2ab79d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75551828"
 ---
 # <a name="infrastructure-as-code"></a>Infrastruktúra mint kód
 
 Éles környezetben hozzon létre Azure Service Fabric-fürtöket Resource Manager-sablonok használatával. A Resource Manager-sablonok nagyobb mértékben szabályozzák az erőforrás-tulajdonságokat, és gondoskodnak arról, hogy konzisztens erőforrás-modell álljon rendelkezésre.
 
-A Windows és Linux rendszerhez készült Resource Manager-sablonok a [githubon elérhető Azure-mintákon](https://github.com/Azure-Samples/service-fabric-cluster-templates)érhetők el. Ezek a sablonok a fürt sablonjának kiindulási pontként használhatók. Töltse `azuredeploy.json` le `azuredeploy.parameters.json` és szerkessze őket, hogy megfeleljenek az egyéni követelményeknek.
+A Windows és Linux rendszerhez készült Resource Manager-sablonok a [githubon elérhető Azure-mintákon](https://github.com/Azure-Samples/service-fabric-cluster-templates)érhetők el. Ezek a sablonok a fürt sablonjának kiindulási pontként használhatók. Töltse le `azuredeploy.json` és `azuredeploy.parameters.json` szerkessze őket, hogy megfeleljenek az egyéni követelményeknek.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-A `azuredeploy.json` fent letöltött és `azuredeploy.parameters.json` sablonok üzembe helyezéséhez használja az alábbi Azure CLI-parancsokat:
+A `azuredeploy.json` fent letöltött és sablonok üzembe helyezéséhez `azuredeploy.parameters.json` használja az alábbi Azure CLI-parancsokat:
 
 ```azurecli
 ResourceGroupName="sfclustergroup"

@@ -8,10 +8,9 @@ ms.subservice: security-develop
 ms.topic: article
 ms.date: 08/17/2017
 ms.openlocfilehash: 88eea0eb2bceb0f6322381a94d4339cbdfa662c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75552117"
 ---
 # <a name="threat-modeling-tool-feature-overview"></a>A Threat Modeling Tool funkcióinak áttekintése
@@ -54,7 +53,7 @@ A szimbólumok a legfelső szintű menük parancsikonjai:
 | --------------------------------------- | ------------ |
 | **Megnyitás** | Új fájl megnyitása. |
 | **Mentés** | Az aktuális fájl mentése. |
-| **Kialakítás** | Megnyitja a **tervezési** nézetet, ahol létrehozhat modelleket. |
+| **Tervezés** | Megnyitja a **tervezési** nézetet, ahol létrehozhat modelleket. |
 | **Elemzés** | Megjeleníti a generált fenyegetéseket és azok tulajdonságait. |
 | **Diagram hozzáadása** | Új diagramot szúr be (az Excel új lapjaihoz hasonlóan). |
 | **Diagram törlése** | Törli az aktuális diagramot. |
@@ -100,7 +99,7 @@ Az elem tulajdonságai a kiválasztott elemektől függően változnak. A megbí
 
 | Elem tulajdonsága                               | Részletek      |
 | --------------------------------------- | ------------ |
-| **Név** | Hasznos lehet a folyamatok, a tárolók, a reaktorok és a folyamatok elnevezéséhez, hogy azok könnyen felismerhetők legyenek. |
+| **Name (Név)** | Hasznos lehet a folyamatok, a tárolók, a reaktorok és a folyamatok elnevezéséhez, hogy azok könnyen felismerhetők legyenek. |
 | **Hatókörön kívül** | Ha be van jelölve, a rendszer kiveszi az elemet a fenyegetést generáló mátrixból (nem ajánlott). |
 | **Hatókörön kívüli ok** | Indoklási mező, amely lehetővé teszi a felhasználóknak, hogy a hatókör kiválasztásának miért van kiválasztva. |
 
@@ -160,7 +159,7 @@ Ha létrehoz egy fenyegetési modellt, és elfelejti az adatfolyamatok elemekhez
 
 ![Üzenetek](./media/threat-modeling-tool-feature-overview/messages.png)
 
-### <a name="notes"></a>Megjegyzések
+### <a name="notes"></a>Jegyzetek
 
 Ha megjegyzéseket szeretne adni a diagramhoz, váltson az **üzenetek** lapra a **jegyzetek** lapra.
 
@@ -194,11 +193,11 @@ Ahogy az előző képen is látható, módosíthatja az eszköz által létrehoz
 
 ## <a name="reports"></a>Jelentések
 
-Miután befejezte a prioritások módosítását és az egyes generált fenyegetések állapotának frissítését, mentheti a fájlt, és/vagy kinyomtathatja a jelentést. Nyissa meg a **jelentés** > **létrehozása teljes jelentést**. Nevezze el a jelentést, és az alábbi képhez hasonlóan kell megjelennie:
+Miután befejezte a prioritások módosítását és az egyes generált fenyegetések állapotának frissítését, mentheti a fájlt, és/vagy kinyomtathatja a jelentést. Nyissa meg a **jelentés**  >  **létrehozása teljes jelentést**. Nevezze el a jelentést, és az alábbi képhez hasonlóan kell megjelennie:
 
 ![Jelentés](./media/threat-modeling-tool-feature-overview/report.png)
 
 ## <a name="next-steps"></a>További lépések
 
-- Küldje el kérdéseit, megjegyzéseit és tmtextsupport@microsoft.comproblémáit. A kezdéshez **[töltse le](https://aka.ms/threatmodelingtool)** a Threat Modeling Tool.
+- Küldje el kérdéseit, megjegyzéseit és problémáit tmtextsupport@microsoft.com . A kezdéshez **[töltse le](https://aka.ms/threatmodelingtool)** a Threat Modeling Tool.
 - A sablon a Közösséghez való hozzájárulásához lépjen a [GitHub](https://github.com/Microsoft/threat-modeling-templates) oldalra.

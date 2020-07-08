@@ -6,10 +6,9 @@ ms.topic: troubleshooting
 ms.date: 5/20/2019
 ms.author: pepogors
 ms.openlocfilehash: c30eedb6782e4172d677f16e27441f28c78cdd89
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75614349"
 ---
 # <a name="use-visual-studio-to-create-and-publish-net-core-applications-targeting-a-remote-linux-service-fabric-cluster"></a>A Visual Studio használatával létrehozhat és közzétehet egy távoli linuxos Service Fabric-fürtöt célzó .net Core-alkalmazásokat
@@ -38,7 +37,7 @@ A Visual Studio-eszközökkel olyan Service Fabric .net Core-alkalmazásokat fej
     <UpdateServiceFabricManifestEnabled>False</UpdateServiceFabricManifestEnabled>
 ```
 > [!Note]
-> A UpdateServiceFabricManifestEnabled hamis értékre állításával letilthatja a ServiceManifest. XML frissítését a Build során. A ServiceManifest. xml fájl nem tükrözi a szolgáltatáshoz való hozzáadással, eltávolítással vagy átnevezéssel kapcsolatos bármilyen változást. Ha bármilyen módosítást hajt végre, manuálisan kell frissítenie a ServiceManifest, vagy átmenetileg be kell állítania a UpdateServiceFabricManifestEnabled, és létre kell hoznia azt a szolgáltatást, amely frissíti a ServiceManifest. xml fájlt, majd visszaállítja a hamis értékre.
+> A UpdateServiceFabricManifestEnabled hamis értékre állításával letilthatja a ServiceManifest.xml frissítését a Build során. A rendszer nem jeleníti meg azokat a módosításokat, mint például a szolgáltatás hozzáadása, eltávolítása vagy átnevezése a ServiceManifest.xml. Ha bármilyen módosítást hajt végre, manuálisan kell frissítenie a ServiceManifest, vagy átmenetileg be kell állítania a UpdateServiceFabricManifestEnabled, és létre kell hoznia azt a szolgáltatást, amely frissíti a ServiceManifest.xml, majd visszaállítja a hamis értéket.
 >
 
 4. Frissítse a RuntimeIndetifier a Win7-x64-ből a cél platformra a szolgáltatási projektben.

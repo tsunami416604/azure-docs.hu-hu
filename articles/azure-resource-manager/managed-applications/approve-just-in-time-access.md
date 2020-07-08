@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: evanhi
 ms.openlocfilehash: 4a3604a3256fb2d3f4253891bbc28c7685748cd2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75651019"
 ---
 # <a name="configure-and-approve-just-in-time-access-for-azure-managed-applications"></a>Igény szerinti hozzáférés konfigurálása és jóváhagyása Azure Managed Applications
@@ -37,7 +36,7 @@ Ez a cikk a felhasználók által a JIT-hozzáférés engedélyezéséhez és a 
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-1. Egy felügyelt alkalmazáshoz tartozó piactér-bejegyzés keresése, amelyen engedélyezve van az JIT. Kattintson a **Létrehozás** gombra.
+1. Egy felügyelt alkalmazáshoz tartozó piactér-bejegyzés keresése, amelyen engedélyezve van az JIT. Válassza a **Létrehozás** lehetőséget.
 
 1. Az új felügyelt alkalmazáshoz tartozó értékek megadásakor az **JIT konfigurációs** lépés lehetővé teszi a felügyelt alkalmazáshoz tartozó JIT-hozzáférés engedélyezését vagy letiltását. Válassza az **Igen** lehetőséget a **JIT-hozzáférés engedélyezéséhez**. Ez a beállítás alapértelmezés szerint a piactéren engedélyezett JIT-vel definiált felügyelt alkalmazások esetében van kiválasztva.
 

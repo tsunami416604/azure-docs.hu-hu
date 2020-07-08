@@ -4,10 +4,9 @@ description: Meglévő Node.js-alkalmazás üzemeltetése egy Azure Service Fabr
 ms.topic: conceptual
 ms.date: 12/06/2017
 ms.openlocfilehash: 9153fc4cd60cb892532db49bf4339b517320b1a6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75614842"
 ---
 # <a name="host-a-nodejs-application-on-azure-service-fabric"></a>Node.js-alkalmazás üzemeltetése az Azure Service Fabricban
@@ -43,7 +42,7 @@ Adja a **MyGuestService** nevet a szolgáltatásnak, adja meg a következő ért
 
 | Beállítás                   | Érték |
 | ------------------------- | ------ |
-| Kódcsomag mappája       | _&lt;a Node. js-alkalmazással rendelkező mappa&gt;_ |
+| Kódcsomag mappája       | _&lt;az Node.js alkalmazást tartalmazó mappa&gt;_ |
 | Kódcsomag viselkedése     | A mappa tartalmának másolása a projektbe |
 | Program                   | node.exe |
 | Argumentumok                 | server.js |
@@ -97,13 +96,13 @@ Válassza ki a **PublishProfiles\Cloud.xml** célprofilt.
 
 Ha korábban még nem tette meg, válassza ki az üzembe helyezés céljaként szolgáló Azure-fiókot. Ha még nem rendelkezik ilyen fiókkal, [regisztráljon egyet][create-account].
 
-A **Kapcsolati végpont** területen válassza ki az üzembe helyezés céljaként szolgáló Service Fabric-fürtöt. Ha még nem rendelkezik ilyennel, válassza az ** &lt;új fürt létrehozása... lehetőséget. &gt; ** ekkor megnyílik a webböngésző ablaka a Azure Portal. További információért lásd: [Fürt létrehozása a portálon](service-fabric-cluster-creation-via-portal.md#create-cluster-in-the-azure-portal). 
+A **Kapcsolati végpont** területen válassza ki az üzembe helyezés céljaként szolgáló Service Fabric-fürtöt. Ha még nem rendelkezik ilyennel, válassza az ** &lt; új fürt létrehozása.. &gt; .** lehetőséget, amely megnyitja a webböngésző ablakát a Azure Portal. További információért lásd: [Fürt létrehozása a portálon](service-fabric-cluster-creation-via-portal.md#create-cluster-in-the-azure-portal). 
 
 A Service Fabric-fürt létrehozásakor ügyeljen rá, hogy az **Egyéni végpontok** beállítás értéke **80** legyen.
 
 ![Service Fabric-csomóponttípus konfigurálása egyéni végponttal][custom-endpoint]
 
-Az új Service Fabric-fürt létrehozása eltarthat egy ideig. Miután létrejött, lépjen vissza a közzététel párbeszédpanelre, és válassza a ** &lt;frissítés&gt;** lehetőséget. Válassza ki a legördülő listában megjelenő új fürtöt.
+Az új Service Fabric-fürt létrehozása eltarthat egy ideig. Miután létrejött, lépjen vissza a közzététel párbeszédpanelre, és válassza a ** &lt; frissítés &gt; **lehetőséget. Válassza ki a legördülő listában megjelenő új fürtöt.
 
 Kattintson a **Közzététel** gombra, és várjon, amíg az üzembe helyezés befejeződik.
 

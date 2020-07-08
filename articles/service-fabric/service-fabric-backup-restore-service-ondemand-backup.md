@@ -6,17 +6,16 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: aagup
 ms.openlocfilehash: d5eada62bec49fe771373671e9438d2786d6b165
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75458416"
 ---
 # <a name="on-demand-backup-in-azure-service-fabric"></a>Igény szerinti biztonsági mentés az Azure Service Fabric
 
 A megbízható állapot-nyilvántartó szolgáltatások és a Reliable Actors adatok biztonsági mentésével felgyorsíthatja a katasztrófák vagy az adatvesztési helyzetek megoldását.
 
-Az Azure Service Fabric rendelkezik az [adatfeldolgozás rendszeres biztonsági mentéséhez](service-fabric-backuprestoreservice-quickstart-azurecluster.md) szükséges funkciókkal és az adatbiztonsági mentéssel. Az igény szerinti biztonsági mentés azért hasznos, mert a mögöttes szolgáltatásban vagy annak környezetében tervezett változások miatt védelmet biztosít az _adatvesztési_/_adatsérülés_ ellen.
+Az Azure Service Fabric rendelkezik az [adatfeldolgozás rendszeres biztonsági mentéséhez](service-fabric-backuprestoreservice-quickstart-azurecluster.md) szükséges funkciókkal és az adatbiztonsági mentéssel. Az igény szerinti biztonsági mentés azért hasznos, mert a _data loss_ / mögöttes szolgáltatásban vagy annak környezetében tervezett változások miatt védelmet biztosít az adatvesztési_adatsérülés_ ellen.
 
 Az igény szerinti biztonsági mentési funkciók hasznosak lehetnek a szolgáltatások állapotának rögzítéséhez, mielőtt manuálisan elindítja a szolgáltatás-vagy szolgáltatási környezet műveletét. Ha például a szolgáltatás verziófrissítése vagy lefokozása során módosítja a szolgáltatás bináris fájljait. Ebben az esetben az igény szerinti biztonsági mentés segít megvédeni az adatsérülést az alkalmazás kódjának hibáival.
 ## <a name="prerequisites"></a>Előfeltételek
@@ -27,7 +26,7 @@ Az igény szerinti biztonsági mentési funkciók hasznosak lehetnek a szolgált
     Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
 ```
 
-- Győződjön meg arról, hogy a fürt a `Connect-SFCluster` paranccsal van csatlakoztatva, mielőtt konfigurációs kérelmet hozna a Microsoft. ServiceFabric. PowerShell. http modul használatával.
+- Győződjön meg arról, hogy a fürt a paranccsal van csatlakoztatva, `Connect-SFCluster` mielőtt konfigurációs kérelmet hozna a Microsoft. ServiceFabric. PowerShell. http modul használatával.
 
 ```powershell
 
@@ -56,7 +55,7 @@ Backup-SFPartition -PartitionId '974bd92a-b395-4631-8a7f-53bd4ae9cf22'
 
 #### <a name="rest-call-using-powershell"></a>Rest-hívás a PowerShell használatával
 
-A [BackupPartition](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-backuppartition) API használatával beállíthatja az indítást az igény szerinti biztonsági mentéshez a partíció- `974bd92a-b395-4631-8a7f-53bd4ae9cf22`azonosítóhoz.
+A [BackupPartition](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-backuppartition) API használatával beállíthatja az indítást az igény szerinti biztonsági mentéshez a partíció-azonosítóhoz `974bd92a-b395-4631-8a7f-53bd4ae9cf22` .
 
 ```powershell
 $url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/Partitions/974bd92a-b395-4631-8a7f-53bd4ae9cf22/$/Backup?api-version=6.4"
@@ -81,7 +80,7 @@ Backup-SFPartition -PartitionId '974bd92a-b395-4631-8a7f-53bd4ae9cf22' -AzureBlo
 
 #### <a name="rest-call-using-powershell"></a>Rest-hívás a PowerShell használatával
 
-A [BackupPartition](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-backuppartition) API használatával beállíthatja az indítást az igény szerinti biztonsági mentéshez a partíció- `974bd92a-b395-4631-8a7f-53bd4ae9cf22`azonosítóhoz. A következő Azure Storage-információk belefoglalása:
+A [BackupPartition](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-backuppartition) API használatával beállíthatja az indítást az igény szerinti biztonsági mentéshez a partíció-azonosítóhoz `974bd92a-b395-4631-8a7f-53bd4ae9cf22` . A következő Azure Storage-információk belefoglalása:
 
 ```powershell
 $StorageInfo = @{

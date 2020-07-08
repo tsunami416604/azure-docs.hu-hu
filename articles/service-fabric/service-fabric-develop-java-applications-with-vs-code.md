@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 06/29/2018
 ms.author: pepogors
 ms.openlocfilehash: 999dbb8c36c4e0413f287b2a73cf39ab4acd15f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75610046"
 ---
 # <a name="develop-java-service-fabric-applications-with-visual-studio-code"></a>Java Service Fabric-alkalmazások fejlesztése a Visual Studio Code-ban
@@ -57,11 +56,11 @@ Az alkalmazás létrehozása után üzembe helyezheti azt a helyi fürtön.
 
    ![Alkalmazás üzembe helyezése parancs a VS Code-ban](./media/service-fabric-develop-java-applications-with-vs-code/sf-deploy-application.png)
 
-4. Ha a telepítés befejeződött, indítson el egy böngészőt, és `http://localhost:19080/Explorer`nyissa meg Service Fabric Explorer:. Látnia kell, hogy az alkalmazás fut. Ez eltarthat egy ideig, így türelmesnek kell lennie. 
+4. Ha a telepítés befejeződött, indítson el egy böngészőt, és nyissa meg Service Fabric Explorer: `http://localhost:19080/Explorer` . Látnia kell, hogy az alkalmazás fut. Ez eltarthat egy ideig, így türelmesnek kell lennie. 
 
    ![Szavazási alkalmazás Service Fabric Explorer](./media/service-fabric-develop-java-applications-with-vs-code/sfx-localhost-java.png)
 
-4. Miután ellenőrizte, hogy fut-e az alkalmazás, indítson el egy böngészőt, `http://localhost:8080`és nyissa meg a következő oldalt:. Ez az alkalmazás webes kezelőfelülete. Hozzáadhat elemeket, és kattintson rájuk a szavazáshoz.
+4. Miután ellenőrizte, hogy fut-e az alkalmazás, indítson el egy böngészőt, és nyissa meg a következő oldalt: `http://localhost:8080` . Ez az alkalmazás webes kezelőfelülete. Hozzáadhat elemeket, és kattintson rájuk a szavazáshoz.
 
    ![Szavazási alkalmazás a böngészőben](./media/service-fabric-develop-java-applications-with-vs-code/voting-sample-in-browser.png)
 
@@ -82,30 +81,30 @@ Tegye megjegyzésbe a parancsot a 6. sorban (használja a "#" utasítást), és 
    java -Xdebug -Xrunjdwp:transport=dt_socket,address=8001,server=y,suspend=n -Djava.library.path=$LD_LIBRARY_PATH -jar VotingDataService.jar
    ```
 
-2. Frissítse a *szavazás/VotingApplication/ApplicationManifest. XML* fájlt. Állítsa a **MinReplicaSetSize** és a **TargetReplicaSetSize** attribútumot "1" értékre a **StatefulService** elemben:
+2. A *szavazási/VotingApplication/ApplicationManifest.xml* fájl frissítése. Állítsa a **MinReplicaSetSize** és a **TargetReplicaSetSize** attribútumot "1" értékre a **StatefulService** elemben:
    
    ```xml
          <StatefulService MinReplicaSetSize="1" ServiceTypeName="VotingDataServiceType" TargetReplicaSetSize="1">
    ```
 
-3. A VS Code-ban a hibakereső nézet megnyitásához kattintson a **tevékenység sávján** található hibakeresés ikonra. Kattintson a fogaskerék ikonra a hibakereső nézet tetején, és válassza a **Java** elemet a legördülő menüből. Megnyílik a Launch. JSON fájl. 
+3. A VS Code-ban a hibakereső nézet megnyitásához kattintson a **tevékenység sávján** található hibakeresés ikonra. Kattintson a fogaskerék ikonra a hibakereső nézet tetején, és válassza a **Java** elemet a legördülő menüből. Megnyílik a launch.jsfájl. 
 
    ![Hibakeresés ikon a VS Code munkaterületen](./media/service-fabric-develop-java-applications-with-vs-code/debug-icon-workspace.png)
 
-3. A Launch. JSON fájlban állítsa be a port értékét a **Debug (csatolás)** nevű konfigurációban a **8001**értékre. Mentse a fájlt.
+3. A launch.jsfájlon állítsa be a port értékét a **Debug (csatolás)** nevű konfigurációban a **8001**értékre. Mentse a fájlt.
 
-   ![Hibakeresési konfiguráció a Launch. JSON fájlhoz](./media/service-fabric-develop-java-applications-with-vs-code/launch-json-java.png)
+   ![Hibakeresési konfiguráció a launch.json](./media/service-fabric-develop-java-applications-with-vs-code/launch-json-java.png)
 
 4. Telepítse az alkalmazást a helyi fürtre a **Service Fabric: Deploy Application (localhost)** parancs használatával. Ellenőrizze, hogy az alkalmazás fut-e Service Fabric Explorer. Az alkalmazás most már készen áll a hibakeresésre.
 
 Töréspont beállításához hajtsa végre a következő lépéseket:
 
-1. Az Explorerben nyissa meg a */voting/VotingDataService/src/statefulservice/VotingDataService.Java* fájlt. Állítson be egy töréspontot a kód első sorában a `try` `addItem` metódusban található blokkban (80. sor).
+1. Az Explorerben nyissa meg a */voting/VotingDataService/src/statefulservice/VotingDataService.Java* fájlt. Állítson be egy töréspontot a kód első sorában a `try` metódusban található blokkban `addItem` (80. sor).
    
    ![Töréspont beállítása a szavazó adatszolgáltatásban](./media/service-fabric-develop-java-applications-with-vs-code/breakpoint-set.png)
 
    > [!IMPORTANT]
-   > Ügyeljen arra, hogy töréspontokat állítson be a kód végrehajtható sorain. A Debugger nem fogja kihagyni például a metódus `try` deklarációinak, `catch` utasításait vagy utasításait használó töréspontokat.
+   > Ügyeljen arra, hogy töréspontokat állítson be a kód végrehajtható sorain. `try` `catch` A Debugger nem fogja kihagyni például a metódus deklarációinak, utasításait vagy utasításait használó töréspontokat.
 2. A hibakeresés megkezdéséhez kattintson a hibakeresés ikonra a **tevékenység sávján**, válassza a hibakeresés **(csatolás)** konfigurációt a hibakeresés menüben, majd kattintson a Futtatás gombra (zöld nyíl).
 
    ![Hibakeresés (csatolás) konfigurálása](./media/service-fabric-develop-java-applications-with-vs-code/debug-attach-java.png)

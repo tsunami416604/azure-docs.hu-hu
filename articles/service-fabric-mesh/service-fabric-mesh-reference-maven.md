@@ -6,10 +6,9 @@ ms.author: suhuruli
 ms.date: 11/26/2018
 ms.topic: reference
 ms.openlocfilehash: bcc3fb7c6c3adce0997d0960c4d98227089b048b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75459017"
 ---
 # <a name="maven-plugin-for-service-fabric-mesh"></a>Maven beépülő modul a Service Fabric Meshhoz
@@ -24,13 +23,13 @@ ms.locfileid: "75459017"
 ## <a name="goals"></a>Célok
 
 ### `azure-sfmesh:init`
-- Létrehoz egy `servicefabric` mappát, amely tartalmazza `appresources` a `application.yaml` fájlt tartalmazó mappát. 
+- Létrehoz egy `servicefabric` mappát, amely tartalmazza `appresources` a fájlt tartalmazó mappát `application.yaml` . 
 
 ### `azure-sfmesh:addservice`
-- Létrehoz egy mappát a `servicefabric` mappán belül a szolgáltatás nevével, és létrehozza a szolgáltatás YAML-fájlját. 
+- Létrehoz egy mappát `servicefabric` a mappán belül a szolgáltatás nevével, és létrehozza a szolgáltatás YAML-fájlját. 
 
 ### `azure-sfmesh:addnetwork`
-- Létrehoz egy `network` YAML a megadott hálózati névvel a `appresources` mappában. 
+- Létrehoz egy `network` YAML a megadott hálózati névvel a mappában. `appresources` 
 
 ### `azure-sfmesh:addgateway`
 - Létrehoz egy `gateway` YAML a megadott átjáró nevével a `appresources` mappában. 
@@ -39,7 +38,7 @@ ms.locfileid: "75459017"
 - Létrehoz egy `volume` YAML a megadott kötet nevével a `appresources` mappában.
 
 ### `azure-sfmesh:addsecret`
-- Létrehoz egy `secret` YAML a megadott titkos névvel a `appresources` mappában. 
+- Létrehoz egy `secret` YAML a megadott titkos névvel a mappában. `appresources` 
 
 ### `azure-sfmesh:addsecretvalue`
 - Létrehoz egy `secretvalue` YAML a megadott titkos és titkos érték nevével a `appresources` mappában. 
@@ -49,13 +48,13 @@ ms.locfileid: "75459017"
 - Az összes erőforrás üzembe helyezése az Azure Service Fabric Mesh-környezetben 
 
 ### `azure-sfmesh:deploytocluster`
-- Létrehoz egy mappát (`meshDeploy`), amely tartalmazza a yamls létrehozott telepítési JSON-ket, amelyek Service Fabric fürtökre alkalmazhatók
+- Létrehoz egy mappát ( `meshDeploy` ), amely tartalmazza a yamls létrehozott telepítési JSON-ket, amelyek Service Fabric fürtökre alkalmazhatók
 - Az összes erőforrás üzembe helyezése a Service Fabric-fürtön
  
 
 ## <a name="usage"></a>Használat
 
-Ha a Maven Java-alkalmazásban szeretné használni a Maven beépülő modult, adja hozzá a következő kódrészletet a Pom. xml fájlhoz:
+Ha a Maven Java-alkalmazásban szeretné használni a Maven beépülő modult, adja hozzá a következő kódrészletet a pom.xml fájlhoz:
 
 ```XML
 <project>
@@ -98,7 +97,7 @@ Futtassa az alábbi parancsot egy hálózati erőforrás YAML létrehozásához.
 mvn azure-sfmesh:addnetwork -DnetworkName=helloworldservicenetwork -DnetworkAddressPrefix=10.0.0.0/22
 ```
 
-- Létrehoz egy hálózati YAML a ( `servicefabric->appresources` z) nevű mappában.`network_helloworldservicenetwork`
+- Létrehoz egy hálózati YAML a (z) nevű mappában. `servicefabric->appresources``network_helloworldservicenetwork`
 
 #### <a name="add-a-new-service-to-your-application"></a>Új szolgáltatás hozzáadása az alkalmazáshoz
 A szolgáltatás YAML létrehozásához futtassa az alábbi parancsot. 
@@ -107,7 +106,7 @@ A szolgáltatás YAML létrehozásához futtassa az alábbi parancsot.
 mvn azure-sfmesh:addservice -DapplicationName=helloworldserver -DserviceName=helloworldservice -DimageName=helloworldserver:latest -DlistenerPort=8080 -DnetworkRef=helloworldservicenetwork
 ```
 
-- `servicefabric->helloworldservice` Létrehoz egy YAML a nevű `service_helloworldservice` mappában, amely & `helloworldservicenetwork` az `helloworldserver` alkalmazásra hivatkozik
+- Létrehoz egy YAML a nevű mappában `servicefabric->helloworldservice` `service_helloworldservice` , amely `helloworldservicenetwork` & az `helloworldserver` alkalmazásra hivatkozik
 - A szolgáltatás a 8080-es portot figyeli.
 - A szolgáltatás a ***helloworldserver: Latest*** használja, mivel a tároló képe.
 
@@ -118,8 +117,8 @@ Futtassa az alábbi parancsot egy átjáró-erőforrás YAML létrehozásához.
 mvn azure-sfmesh:addgateway -DapplicationName=helloworldserver -DdestinationNetwork=helloworldservicenetwork -DgatewayName=helloworldgateway -DlistenerName=helloworldserviceListener -DserviceName=helloworldservice -DsourceNetwork=open -DtcpPort=80
 ```
 
-- Új átjáró YAML létrehozása a (z `servicefabric->appresources` ) nevű mappában`gateway_helloworldgateway`
-- Az `helloworldservicelistener` átjárótól érkező hívásokat figyelő szolgáltatás-figyelőre mutató hivatkozások. A a szolgáltatásra, `helloworldservice` `helloworldservicenetwork` a hálózatra és `helloworldserver` az alkalmazásra is hivatkozik. 
+- Új átjáró YAML létrehozása a (z) `servicefabric->appresources` nevű mappában`gateway_helloworldgateway`
+- `helloworldservicelistener`Az átjárótól érkező hívásokat figyelő szolgáltatás-figyelőre mutató hivatkozások. A a `helloworldservice` szolgáltatásra, `helloworldservicenetwork` a hálózatra és `helloworldserver` az alkalmazásra is hivatkozik. 
 - Az 80-es porton érkező kérések figyelése
 
 #### <a name="add-a-new-volume-to-your-application"></a>Új kötet hozzáadása az alkalmazáshoz
@@ -129,8 +128,8 @@ Futtassa az alábbi parancsot egy mennyiségi erőforrás YAML létrehozásához
 mvn azure-sfmesh:addvolume -DvolumeAccountKey=key -DvolumeAccountName=name -DvolumeName=vol1 -DvolumeShareName=share
 ```
 
-- Létrehoz egy kötet YAML a ( `servicefabric->appresources` z) nevű mappában.`volume_vol1`
-- Beállítja a szükséges paraméterek tulajdonságait, `volumeAccountKey`és `volumeShareName` a fentiek szerint
+- Létrehoz egy kötet YAML a (z) nevű mappában. `servicefabric->appresources``volume_vol1`
+- Beállítja a szükséges paraméterek tulajdonságait, `volumeAccountKey` és `volumeShareName` a fentiek szerint
 - A létrehozott kötetre való hivatkozással kapcsolatos további információkért tekintse meg a következőt, és [telepítse az alkalmazást Azure Files kötet használatával](service-fabric-mesh-howto-deploy-app-azurefiles-volume.md)
 
 #### <a name="add-a-new-secret-resource-to-your-application"></a>Új titkos erőforrás hozzáadása az alkalmazáshoz
@@ -140,7 +139,7 @@ Az alábbi parancs futtatásával hozzon létre egy titkos erőforrás-YAML.
 mvn azure-sfmesh:addsecret -DsecretName=secret1
 ```
 
-- Létrehoz egy titkos YAML a ( `servicefabric->appresources` z) nevű mappában.`secret_secret1`
+- Létrehoz egy titkos YAML a (z) nevű mappában. `servicefabric->appresources``secret_secret1`
 - A létrehozott titokra való hivatkozással kapcsolatos további információkért tekintse meg a következőt: [titkok kezelése](service-fabric-mesh-howto-manage-secrets.md)
 
 #### <a name="add-a-new-secretvalue-resource-to-your-application"></a>Új secretvalue-erőforrás hozzáadása az alkalmazáshoz
@@ -150,11 +149,11 @@ Futtassa az alábbi parancsot egy secretvalue erőforrás-YAML létrehozásához
 mvn azure-sfmesh:addsecretvalue -DsecretValue=someVal -DsecretValueName=secret1/v1
 ```
 
-- Hozzon létre egy secretvalue- `servicefabric->appresources` YAML a (z) nevű mappában`secretvalue_secret1_v1`
+- Hozzon létre egy secretvalue-YAML a (z) `servicefabric->appresources` nevű mappában`secretvalue_secret1_v1`
 
 ### <a name="run-the-application-locally"></a>Az alkalmazás helyi futtatása
 
-A cél `azure-sfmesh:deploytocluster`segítségével helyileg is futtathatja az alkalmazást az alábbi parancs használatával:
+A cél segítségével `azure-sfmesh:deploytocluster` helyileg is futtathatja az alkalmazást az alábbi parancs használatával:
 
 ```cmd
 mvn azure-sfmesh:deploytocluster
@@ -167,12 +166,12 @@ Alapértelmezés szerint ez a cél telepíti az erőforrásokat a helyi fürtre.
 
 ### <a name="deploy-application-to-azure-service-fabric-mesh"></a>Alkalmazás üzembe helyezése az Azure Service Fabric Meshban
 
-A cél `azure-sfmesh:deploy`segítségével az alábbi parancs futtatásával üzembe helyezheti Service Fabric Mesh-környezetet:
+A cél segítségével az `azure-sfmesh:deploy` alábbi parancs futtatásával üzembe helyezheti Service Fabric Mesh-környezetet:
 
 ```cmd
 mvn azure-sfmesh:deploy -DresourceGroup=todoapprg -Dlocation=eastus
 ```
 
-- Létrehoz egy nevű `todoapprg` erőforráscsoportot, ha az nem létezik.
+- Létrehoz egy nevű erőforráscsoportot `todoapprg` , ha az nem létezik.
 - Létrehoz egy Azure Resource Manager sablon JSON-t a YAMLs egyesítésével. 
 - Üzembe helyezi a JSON-t az Azure Service Fabric Mesh-környezetben.

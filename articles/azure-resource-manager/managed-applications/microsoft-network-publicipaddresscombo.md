@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: tomfitz
 ms.openlocfilehash: 0393673663df8f3ca580ff34e16bee910b955f8d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75651916"
 ---
 # <a name="microsoftnetworkpublicipaddresscombo-ui-element"></a>Microsoft. Network. PublicIpAddressCombo FELHASZNÁLÓIFELÜLET-elem
@@ -80,16 +79,16 @@ Ha a felhasználó új vagy meglévő IP-címet választ, a vezérlő a követke
 }
 ```
 
-- Ha `options.hideNone` a értéke **true**(igaz `newOrExistingOrNone` ), akkor csak az **új** vagy a **meglévő**értéket fogja megadni.
-- Ha `options.hideDomainNameLabel` a értéke **true**(igaz `domainNameLabel` ), akkor nincs deklarálva.
+- Ha `options.hideNone` a értéke **true (igaz**), `newOrExistingOrNone` akkor csak az **új** vagy a **meglévő**értéket fogja megadni.
+- Ha `options.hideDomainNameLabel` a értéke **true (igaz**), `domainNameLabel` akkor nincs deklarálva.
 
 ## <a name="remarks"></a>Megjegyzések
 
-- Ha `constraints.required.domainNameLabel` a értéke **true (igaz**), a felhasználónak meg kell adnia egy tartománynév címkét új nyilvános IP-cím létrehozásakor. Egy címke nélküli meglévő nyilvános IP-címek nem választhatók ki a kijelöléshez.
-- Ha `options.hideNone` a értéke **true (igaz**), akkor a nyilvános IP-cím **egyikének** kiválasztására szolgáló beállítás rejtett. Az alapértelmezett érték: **hamis**.
-- Ha `options.hideDomainNameLabel` a értéke **true (igaz**), akkor a tartománynév feliratának szövegmezője rejtett. Az alapértelmezett érték: **hamis**.
-- Ha `options.hideExisting` az értéke igaz, a felhasználó nem választhat meglévő nyilvános IP-címet. Az alapértelmezett érték: **hamis**.
-- A `zone`esetében csak a megadott zónához vagy zónához tartozó nyilvános IP-címek érhetők el.
+- Ha a `constraints.required.domainNameLabel` értéke **true (igaz**), a felhasználónak meg kell adnia egy tartománynév címkét új nyilvános IP-cím létrehozásakor. Egy címke nélküli meglévő nyilvános IP-címek nem választhatók ki a kijelöléshez.
+- Ha a `options.hideNone` értéke **true (igaz**), akkor a nyilvános IP-cím **egyikének** kiválasztására szolgáló beállítás rejtett. Az alapértelmezett érték: **hamis**.
+- Ha a `options.hideDomainNameLabel` értéke **true (igaz**), akkor a tartománynév feliratának szövegmezője rejtett. Az alapértelmezett érték: **hamis**.
+- Ha az `options.hideExisting` értéke igaz, a felhasználó nem választhat meglévő nyilvános IP-címet. Az alapértelmezett érték: **hamis**.
+- A esetében `zone` csak a megadott zónához vagy zónához tartozó nyilvános IP-címek érhetők el.
 
 ## <a name="next-steps"></a>További lépések
 

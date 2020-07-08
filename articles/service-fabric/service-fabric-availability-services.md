@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 5306439184561e8dec8303a7b149f51d6c2f6e08
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75551862"
 ---
 # <a name="availability-of-service-fabric-services"></a>Service Fabric szolgáltatások rendelkezésre állása
@@ -18,7 +17,7 @@ Ez a cikk áttekintést nyújt arról, hogyan kezeli az Azure Service Fabric egy
 ## <a name="availability-of-service-fabric-stateless-services"></a>Service Fabric állapot nélküli szolgáltatások rendelkezésre állása
 Service Fabric szolgáltatások lehetnek állapot-nyilvántartó vagy állapot nélküliek. Az állapot nélküli szolgáltatás olyan alkalmazás-szolgáltatás, amely nem rendelkezik olyan [helyi állapottal](service-fabric-concepts-state.md) , amely nem igényel jelentős rendelkezésre állást vagy megbízhatóságot.
 
-Állapot nélküli szolgáltatás létrehozásához definiálni kell `InstanceCount`egy. A példányszám határozza meg az állapot nélküli szolgáltatás alkalmazás-logikájának azon példányainak számát, amelyeknek futniuk kell a fürtben. A példányok számának növelésével az állapot nélküli szolgáltatások horizontális felskálázásának ajánlott módja.
+Állapot nélküli szolgáltatás létrehozásához definiálni kell egy `InstanceCount` . A példányszám határozza meg az állapot nélküli szolgáltatás alkalmazás-logikájának azon példányainak számát, amelyeknek futniuk kell a fürtben. A példányok számának növelésével az állapot nélküli szolgáltatások horizontális felskálázásának ajánlott módja.
 
 Ha egy állapot nélküli névvel ellátott szolgáltatás egy példánya meghibásodik, egy új példány jön létre egy jogosult csomóponton a fürtben. Előfordulhat például, hogy egy állapot nélküli szolgáltatási példány meghiúsul a Csomópont1, és újra létre kell hozni a Csomópont5 számítógépre.
 

@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.author: mayg
 ms.date: 11/12/2019
 ms.openlocfilehash: 50fb6da2905b2ae27547f25cce3d7a76ca7976b7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75498132"
 ---
 # <a name="exclude-disks-from-replication"></a>Lemezek kizárása a replikációból
@@ -41,7 +40,7 @@ A Kezdés előtt vegye figyelembe a következőket:
 
 ## <a name="exclude-disks"></a>Lemezek kizárása
 
-1. Ha egy Hyper-V virtuális gép [replikálásának engedélyezése](site-recovery-hyper-v-site-to-azure.md) után szeretné kizárni a lemezeket, a replikálni kívánt virtuális gépek kiválasztása után a **replikálási** > **Tulajdonságok** > **konfigurálása tulajdonságok** lapon tekintse át az oszlop **replikálásához szükséges lemezeket** . Alapértelmezés szerint az összes lemez ki van választva replikálásra.
+1. Ha egy Hyper-V virtuális gép [replikálásának engedélyezése](site-recovery-hyper-v-site-to-azure.md) után szeretné kizárni a lemezeket, a replikálni kívánt virtuális gépek kiválasztása után a **replikálási**  >  **Tulajdonságok**  >  **konfigurálása tulajdonságok** lapon tekintse át az oszlop **replikálásához szükséges lemezeket** . Alapértelmezés szerint az összes lemez ki van választva replikálásra.
 2. Ha nem szeretne replikálni egy adott lemezt, a **lemezeken a replikáláshoz** törölje a kizárni kívánt lemezek kijelölését. 
 
     ![Lemezek kizárása a replikációból](./media/hyper-v-exclude-disk/enable-replication6-with-exclude-disk.png)

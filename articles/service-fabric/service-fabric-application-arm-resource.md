@@ -4,10 +4,9 @@ description: Megtudhatja, hogyan helyezhet üzembe alkalmazásokat és szolgált
 ms.topic: conceptual
 ms.date: 12/06/2017
 ms.openlocfilehash: a2dfe54bf2c6b4fa8814f10c10576a73727a7417
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75610250"
 ---
 # <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>Alkalmazások és szolgáltatások kezelése Azure Resource Manager erőforrásként
@@ -244,7 +243,7 @@ A következő kódrészlet a sablonon keresztül felügyelhető erőforrások k�
    ```
 
    > [!NOTE] 
-   > A *apiVersion* a következőre kell `"2019-03-01"`beállítani:. Ez a sablon a fürttől függetlenül is telepíthető, feltéve, hogy a fürt már telepítve van.
+   > A *apiVersion* a következőre kell beállítani: `"2019-03-01"` . Ez a sablon a fürttől függetlenül is telepíthető, feltéve, hogy a fürt már telepítve van.
 
 5. Telepíteni! 
 

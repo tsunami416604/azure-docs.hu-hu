@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/24/2019
 ms.openlocfilehash: deaa934b257fab74830d75e308a283e7608dc590
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75552593"
 ---
 # <a name="run-apache-hive-queries-using-powershell"></a>Apache Hive lekérdezések futtatása a PowerShell használatával
@@ -42,15 +41,15 @@ A következő parancsmagok használhatók a kaptár-lekérdezések távoli HDIns
 * `Wait-AzHDInsightJob`: A Job objektum használatával vizsgálja meg a feladatok állapotát. Megvárja, amíg a feladatok befejeződik, vagy túllépi a várakozási időt.
 * `Get-AzHDInsightJobOutput`: A feladatok kimenetének beolvasására szolgál.
 * `Invoke-AzHDInsightHiveJob`: HiveQL utasítások futtatására szolgál. Ez a parancsmag blokkolja a lekérdezés befejeződését, majd visszaadja az eredményeket.
-* `Use-AzHDInsightCluster`: Beállítja a `Invoke-AzHDInsightHiveJob` parancshoz használandó aktuális fürtöt.
+* `Use-AzHDInsightCluster`: Beállítja a parancshoz használandó aktuális fürtöt `Invoke-AzHDInsightHiveJob` .
 
 A következő lépések bemutatják, hogyan használhatja ezeket a parancsmagokat a feladatok futtatásához a HDInsight-fürtben:
 
-1. Szerkesztő használatával mentse a következő kódot `hivejob.ps1`.
+1. Szerkesztő használatával mentse a következő kódot `hivejob.ps1` .
 
     [!code-powershell[main](../../../powershell_scripts/hdinsight/use-hive/use-hive.ps1?range=5-42)]
 
-2. Nyisson meg egy új **Azure PowerShell** parancssort. Módosítsa a könyvtárakat a `hivejob.ps1` fájl helyére, majd futtassa a következő parancsot a szkript futtatásához:
+2. Nyisson meg egy új **Azure PowerShell** parancssort. Módosítsa a könyvtárakat a fájl helyére `hivejob.ps1` , majd futtassa a következő parancsot a szkript futtatásához:
 
         .\hivejob.ps1
 
@@ -74,7 +73,7 @@ A következő lépések bemutatják, hogyan használhatja ezeket a parancsmagoka
         2012-02-03    19:25:27    SampleClass4    [ERROR]    incorrect    id
 
    > [!NOTE]  
-   > A hosszú HiveQL lekérdezések esetében használhatja a Azure PowerShell **itt-Strings** parancsmagot vagy a HiveQL parancsfájl-fájlokat. A következő kódrészlet azt mutatja be, hogyan `Invoke-Hive` használható a parancsmag egy HiveQL parancsfájl futtatásához. A HiveQL parancsfájlt fel kell tölteni a wasbs://-be.
+   > A hosszú HiveQL lekérdezések esetében használhatja a Azure PowerShell **itt-Strings** parancsmagot vagy a HiveQL parancsfájl-fájlokat. A következő kódrészlet azt mutatja be, hogyan használható a `Invoke-Hive` parancsmag egy HiveQL parancsfájl futtatásához. A HiveQL parancsfájlt fel kell tölteni a wasbs://-be.
    >
    > `Invoke-AzHDInsightHiveJob -File "wasbs://<ContainerName>@<StorageAccountName>/<Path>/query.hql"`
    >
@@ -82,7 +81,7 @@ A következő lépések bemutatják, hogyan használhatja ezeket a parancsmagoka
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-Ha a rendszer nem ad vissza információt a feladatok befejezésekor, tekintse meg a hibák naplóit. Ha meg szeretné tekinteni a feladattal kapcsolatos hibákat, adja hozzá a következőt `hivejob.ps1` a fájl végéhez, mentse, majd futtassa újra.
+Ha a rendszer nem ad vissza információt a feladatok befejezésekor, tekintse meg a hibák naplóit. Ha meg szeretné tekinteni a feladattal kapcsolatos hibákat, adja hozzá a következőt a fájl végéhez `hivejob.ps1` , mentse, majd futtassa újra.
 
 ```powershell
 # Print the output of the Hive job.

@@ -13,10 +13,9 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c2ad7b769dc890917e5364fe57582acdfe16acac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75482126"
 ---
 # <a name="get-all-application-proxy-apps-with-a-token-lifetime-policy"></a>Az összes alkalmazásproxy-alkalmazás beolvasása jogkivonat-élettartam-házirenddel
@@ -37,7 +36,7 @@ Ehhez a mintához a [Graph modul előzetes verziójának (AzureADPreview) AzureA
 
 ## <a name="script-explanation"></a>Szkript ismertetése
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 |[Get-AzureADServicePrincipal](https://docs.microsoft.com/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0) | Egy egyszerű szolgáltatásnév beolvasása. |
 |[Get-AzureADApplication](https://docs.microsoft.com/powershell/module/azuread/get-azureadapplication?view=azureadps-2.0) | Beolvas egy Azure AD-alkalmazást. |

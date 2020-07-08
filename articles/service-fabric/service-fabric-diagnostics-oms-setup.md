@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: srrengar
 ms.openlocfilehash: cf0fab9942dcbb7ee09e554f2c9ba8738f208009
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75609927"
 ---
 # <a name="set-up-azure-monitor-logs-for-a-cluster"></a>Azure Monitor naplók beállítása fürthöz
@@ -32,7 +31,7 @@ Ha egy fürt üzembe helyezése után szeretne hozzáadni egy Log Analytics munk
 
 2. **Service Fabric Analytics**keresése. Válassza ki a megjelenő erőforrást.
 
-3. Kattintson a **Létrehozás** gombra.
+3. Válassza a **Létrehozás** lehetőséget.
 
     ![Service Fabric Analytics a piactéren](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics.png)
 
@@ -47,17 +46,17 @@ Ha Windows rendszert használ, folytassa a következő lépésekkel, hogy össze
 
 ### <a name="connect-the-log-analytics-workspace-to-your-cluster"></a>A Log Analytics munkaterület összekötése a fürttel 
 
-1. A munkaterületet a fürtről érkező diagnosztikai adatokhoz kell csatlakoztatni. Keresse meg azt az erőforráscsoportot, amelyben létrehozta a Service Fabric Analytics megoldást. Válassza **ki\<a\> ServiceFabric nameOfWorkspace** , és lépjen az Áttekintés lapra. Itt módosíthatja a megoldás beállításait, a munkaterület beállításait, és elérheti a Log Analytics munkaterületet.
+1. A munkaterületet a fürtről érkező diagnosztikai adatokhoz kell csatlakoztatni. Keresse meg azt az erőforráscsoportot, amelyben létrehozta a Service Fabric Analytics megoldást. Válassza **az \<nameOfWorkspace\> ServiceFabric** lehetőséget, és lépjen az Áttekintés lapra. Itt módosíthatja a megoldás beállításait, a munkaterület beállításait, és elérheti a Log Analytics munkaterületet.
 
 2. A bal oldali navigációs menü munkaterület- **adatforrások**területén válassza ki a **Storage-fiókok naplóit**.
 
 3. A **Storage-fiók naplói** lapon a felül található **Hozzáadás** gombra kattintva adja hozzá a fürt naplóit a munkaterülethez.
 
-4. Válassza ki a **Storage-fiók** lehetőséget a fürtben létrehozott megfelelő fiók hozzáadásához. Ha az alapértelmezett nevet használta, a Storage-fiók **sfdg\<resourceGroupName\>**. Ezt a **applicationDiagnosticsStorageAccountName**használt érték ellenőrzésével is ellenőrizheti a fürt üzembe helyezéséhez használt Azure Resource Manager sablonnal. Ha a név nem jelenik meg, görgessen lefelé, és válassza a **továbbiak betöltés**lehetőséget. Válassza ki a Storage-fiók nevét.
+4. Válassza ki a **Storage-fiók** lehetőséget a fürtben létrehozott megfelelő fiók hozzáadásához. Ha az alapértelmezett nevet használta, a **sfdg \<resourceGroupName\> **a Storage-fiók. Ezt a **applicationDiagnosticsStorageAccountName**használt érték ellenőrzésével is ellenőrizheti a fürt üzembe helyezéséhez használt Azure Resource Manager sablonnal. Ha a név nem jelenik meg, görgessen lefelé, és válassza a **továbbiak betöltés**lehetőséget. Válassza ki a Storage-fiók nevét.
 
 5. Adja meg az adattípust. Állítsa be **Service Fabric eseményekre**.
 
-6. Győződjön meg arról, hogy a forrás automatikusan **WADServiceFabric\*EventTable**van beállítva.
+6. Győződjön meg arról, hogy a forrás automatikusan **WADServiceFabric \* EventTable**van beállítva.
 
 7. A munkaterület naplóihoz való kapcsolódáshoz kattintson **az OK gombra** .
 
@@ -81,7 +80,7 @@ Amikor Resource Manager-sablonnal telepít egy fürtöt, a sablon új Log Analyt
 * A Log Analytics munkaterület konfigurálása a táblák eseményeinek olvasásához
 
 
-A sablont üzembe helyezheti erőforrás-kezelőként a fürtön a Azure PowerShell modul `New-AzResourceGroupDeployment` API használatával. Példa a következő parancsra:
+A sablont üzembe helyezheti erőforrás-kezelőként a fürtön a `New-AzResourceGroupDeployment` Azure PowerShell modul API használatával. Példa a következő parancsra:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName "<resourceGroupName>" -TemplateFile "<templatefile>.json" 

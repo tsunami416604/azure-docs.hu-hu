@@ -6,10 +6,9 @@ ms.author: dekapur
 ms.date: 11/29/2018
 ms.topic: conceptual
 ms.openlocfilehash: 40c4e9972a3d83a5dd8247bacac12e9d67a15f66
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75497979"
 ---
 # <a name="optimize-visual-studio-performance-for-service-fabric-mesh-projects"></a>A Visual Studio teljesítményének optimalizálása Service Fabric Mesh-projektekhez
@@ -18,7 +17,7 @@ Ez a cikk bemutatja, hogyan optimalizálhatja a Visual Studio teljesítményét 
 
 ## <a name="change-visual-studio-settings"></a>A Visual Studio beállításainak módosítása
  
-A Visual Studióban az **eszközök** > **Beállítások**  > **Service Fabric Mesh Tools** > **általános**területen a következő beállításokat módosíthatja:
+A Visual Studióban az **eszközök**  >  **Beállítások**   >  **Service Fabric Mesh Tools**  >  **általános**területen a következő beállításokat módosíthatja:
 
 - A **kötelező Docker-rendszerképek lekérése a projekt megnyitásakor** az első hibakeresési művelet (F5) gyorsabb lesz, ha elindítja a lemezkép letöltési folyamatát, miközben a projekt betöltődik.  
 - Az **alkalmazás üzembe helyezése a projekt megnyitásakor** megteheti az első hibakeresési műveletet (F5), ha a projekt megnyitása után elindítja a telepítés folyamatát.  

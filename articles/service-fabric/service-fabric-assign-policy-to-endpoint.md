@@ -4,14 +4,13 @@ description: Megtudhatja, hogyan rendelhet biztonsági hozzáférési házirende
 ms.topic: conceptual
 ms.date: 03/21/2018
 ms.openlocfilehash: c7d30e85848f045b5724bb8bdc6e5c810102c044
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75614655"
 ---
 # <a name="assign-a-security-access-policy-for-http-and-https-endpoints"></a>Biztonsági hozzáférési házirend kiosztása HTTP-és HTTPS-végpontokhoz
-Ha a futtatási házirendet alkalmazza, és a szolgáltatás jegyzékfájlja deklarálja a HTTP-végpont erőforrásait, meg kell adnia egy **SecurityAccessPolicy**.  A **SecurityAccessPolicy** biztosítja, hogy az ezekhez a végpontokhoz lefoglalt portok megfelelően legyenek korlátozva a szolgáltatás által futtatott felhasználói fiókra. Ellenkező esetben a **http. sys** nem fér hozzá a szolgáltatáshoz, és az ügyféltől érkező hívásokkal kapcsolatos hibákhoz juthat. A következő példa egy **végpontneve**nevű végpontra alkalmazza a Customer1-fiókot, amely teljes körű hozzáférési jogosultságokat biztosít.
+Ha a futtatási házirendet alkalmazza, és a szolgáltatás jegyzékfájlja deklarálja a HTTP-végpont erőforrásait, meg kell adnia egy **SecurityAccessPolicy**.  A **SecurityAccessPolicy** biztosítja, hogy az ezekhez a végpontokhoz lefoglalt portok megfelelően legyenek korlátozva a szolgáltatás által futtatott felhasználói fiókra. Ellenkező esetben a **http.sys** nem fér hozzá a szolgáltatáshoz, és az ügyféltől érkező hívásokkal kapcsolatos hibákhoz juthat. A következő példa egy **végpontneve**nevű végpontra alkalmazza a Customer1-fiókot, amely teljes körű hozzáférési jogosultságokat biztosít.
 
 ```xml
 <Policies>

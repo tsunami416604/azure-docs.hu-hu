@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: tomfitz
 ms.openlocfilehash: 53c9653b44a6c9d26d49d37b351cf6000676e2d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75651968"
 ---
 # <a name="microsoftnetworkvirtualnetworkcombo-ui-element"></a>Microsoft. Network. VirtualNetworkCombo FELHASZNÁLÓIFELÜLET-elem
@@ -105,12 +104,12 @@ Ha a felhasználó egy meglévő virtuális hálózatot vesz fel, a felhasznál�
 
 ## <a name="remarks"></a>Megjegyzések
 
-- Ha meg `defaultValue.addressPrefixSize` van adva, a rendszer az első nem átfedésben lévő címzési előtagot automatikusan meghatározza a felhasználó előfizetésében lévő virtuális hálózatok alapján.
-- A `defaultValue.name` és `defaultValue.addressPrefixSize` az alapértelmezett értéke **Null**.
+- Ha meg van adva, a rendszer az első nem átfedésben lévő címzési előtagot `defaultValue.addressPrefixSize` automatikusan meghatározza a felhasználó előfizetésében lévő virtuális hálózatok alapján.
+- A és az alapértelmezett `defaultValue.name` értéke `defaultValue.addressPrefixSize` **Null**.
 - `constraints.minAddressPrefixSize`meg kell adni. A megadott értéknél kisebb címtartományt tartalmazó meglévő virtuális hálózatok nem választhatók ki a kijelöléshez.
 - `subnets`meg kell adni, és `constraints.minAddressPrefixSize` minden alhálózathoz meg kell adni.
-- Új virtuális hálózat létrehozásakor az egyes alhálózatok címének előtagját a rendszer automatikusan kiszámítja a virtuális hálózat címének előtagja és a megfelelő `addressPrefixSize`alapján.
-- Meglévő virtuális hálózat használata esetén a megfelelőnél `constraints.minAddressPrefixSize` kisebb alhálózatok nem érhetők el a kiválasztáshoz. Emellett, ha meg van adva, a legalább `minAddressCount` elérhető címekkel nem rendelkező alhálózatok nem érhetők el a kijelöléshez. Az alapértelmezett érték a **0**. Ha biztosítani szeretné, hogy az elérhető címek folytonos **true** legyenek `requireContiguousAddresses`, a igaz értéket kell megadni a következőhöz:. Az alapértelmezett érték **true (igaz**).
+- Új virtuális hálózat létrehozásakor az egyes alhálózatok címének előtagját a rendszer automatikusan kiszámítja a virtuális hálózat címének előtagja és a megfelelő alapján `addressPrefixSize` .
+- Meglévő virtuális hálózat használata esetén a megfelelőnél kisebb alhálózatok nem `constraints.minAddressPrefixSize` érhetők el a kiválasztáshoz. Emellett, ha meg van adva, a legalább elérhető címekkel nem rendelkező alhálózatok nem `minAddressCount` érhetők el a kijelöléshez. Az alapértelmezett érték a **0**. Ha biztosítani szeretné, hogy az elérhető címek folytonos legyenek, a **igaz** értéket kell megadni a következőhöz: `requireContiguousAddresses` . Az alapértelmezett érték **true (igaz**).
 - Az alhálózatok meglévő virtuális hálózatban való létrehozása nem támogatott.
 - Ha `options.hideExisting` az értéke **igaz**, a felhasználó nem választhat meglévő virtuális hálózatot. Az alapértelmezett érték: **hamis**.
 

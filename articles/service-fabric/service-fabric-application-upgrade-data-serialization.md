@@ -5,17 +5,16 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.openlocfilehash: 7dc60c28b56982f82c1ac90db55ac752977ea2d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75457497"
 ---
 # <a name="how-data-serialization-affects-an-application-upgrade"></a>Az adatszerializálás hatása az alkalmazás frissítésére
 Egy [működés közbeni alkalmazás frissítése](service-fabric-application-upgrade.md)esetén a frissítés a csomópontok egy részhalmazára lesz alkalmazva, egyszerre egy frissítési tartomány. A folyamat során egyes frissítési tartományok az alkalmazás újabb verziójára vonatkoznak, és néhány frissítési tartomány az alkalmazás régebbi verziójára mutat. A bevezetés során az alkalmazás új verziójának képesnek kell lennie az adatai régi verziójának olvasására, és az alkalmazás régi verziójának képesnek kell lennie az adatai új verziójának olvasására. Ha az adatformátum nem továbbítható, és visszafelé nem kompatibilis, a frissítés meghiúsulhat, vagy rosszabb lehet, az adat elveszhet vagy sérült lehet. Ez a cikk azt ismerteti, hogy mit jelent az adatformátuma, és ajánlott eljárásokat biztosít az adattovábbítás és a visszamenőleges kompatibilitás biztosításához.
 
 ## <a name="what-makes-up-your-data-format"></a>Mi teszi az adatformátumot?
-Az Azure Service Fabricban a megőrzött és replikált adatok a C#-osztályokból származnak. A [megbízható gyűjteményeket](service-fabric-reliable-services-reliable-collections.md)használó alkalmazások esetében ez az érték a megbízható szótárakban és várólistákban lévő objektumok. A [Reliable Actorst](service-fabric-reliable-actors-introduction.md)használó alkalmazások esetében ez a biztonsági másolati állapot. Ezeket a C# osztályokat szerializálni kell a megőrzéshez és a replikáláshoz. Ezért az adatformátumot a szerializált mezők és tulajdonságok határozzák meg, valamint a szerializált módon. Például `IReliableDictionary<int, MyClass>` az adatsorok szerializálva `int` és szerializálva vannak. `MyClass`
+Az Azure Service Fabricban a megőrzött és replikált adatok a C#-osztályokból származnak. A [megbízható gyűjteményeket](service-fabric-reliable-services-reliable-collections.md)használó alkalmazások esetében ez az érték a megbízható szótárakban és várólistákban lévő objektumok. A [Reliable Actorst](service-fabric-reliable-actors-introduction.md)használó alkalmazások esetében ez a biztonsági másolati állapot. Ezeket a C# osztályokat szerializálni kell a megőrzéshez és a replikáláshoz. Ezért az adatformátumot a szerializált mezők és tulajdonságok határozzák meg, valamint a szerializált módon. Például az `IReliableDictionary<int, MyClass>` adatsorok szerializálva `int` és szerializálva vannak `MyClass` .
 
 ### <a name="code-changes-that-result-in-a-data-format-change"></a>Adatformátumot eredményező kód módosítása
 Mivel az adatformátumot C# osztályok határozzák meg, az osztályok módosításai az adatformátum megváltozását okozhatják. Ügyelni kell arra, hogy a működés közbeni frissítés képes legyen az adatformátum módosítására. Az adatformátum változását okozó példák:

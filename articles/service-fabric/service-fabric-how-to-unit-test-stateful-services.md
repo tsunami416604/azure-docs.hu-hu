@@ -4,10 +4,9 @@ description: Ismerje meg az Azure-Service Fabric az állapot-nyilvántartó szol
 ms.topic: conceptual
 ms.date: 09/04/2018
 ms.openlocfilehash: 9c657bd8295d01a4e0fa4e44e969b33946684bfa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75639836"
 ---
 # <a name="create-unit-tests-for-stateful-services"></a>Egységbeli tesztek létrehozása állapot-nyilvántartó szolgáltatásokhoz
@@ -22,20 +21,20 @@ Ez a cikk azt feltételezi, hogy az [egység tesztelési állapot-nyilvántartó
 ## <a name="the-servicefabricmocks-library"></a>A ServiceFabric. mocks könyvtár
 A 3.3.0 verziótól kezdve a [ServiceFabric. mocks](https://www.nuget.org/packages/ServiceFabric.Mocks/) olyan API-t biztosít, amely a replikák és az állapotadatok előkészítését is lehetővé teszi. Ezt a példákban fogjuk használni.
 
-[Nuget](https://www.nuget.org/packages/ServiceFabric.Mocks/)
-[GitHub](https://github.com/loekd/ServiceFabric.Mocks)
+[Nuget](https://www.nuget.org/packages/ServiceFabric.Mocks/) 
+ [GitHub](https://github.com/loekd/ServiceFabric.Mocks)
 
 *A ServiceFabric. mocks nem a Microsoft tulajdona vagy tartja karban. Ez azonban jelenleg a Microsoft által javasolt, az állapot-nyilvántartó szolgáltatások tesztelésére szolgáló könyvtár.*
 
 ## <a name="set-up-the-mock-orchestration-and-state"></a>Az alakzat előkészítésének és állapotának beállítása
-A tesztek elrendezési részének részeként létrejön egy modell-replika és egy állapotfigyelő. A replikakészlet ezután létrehozza a tesztelt szolgáltatás egy példányát az egyes replikák esetében. Emellett olyan életciklus-eseményeket is végrehajt, mint a `OnChangeRole` és `RunAsync`a. Az ál-állapot kezelője gondoskodik arról, hogy az állami kezelőn végrehajtott összes művelet fusson, és a tényleges State Manager maradjon.
+A tesztek elrendezési részének részeként létrejön egy modell-replika és egy állapotfigyelő. A replikakészlet ezután létrehozza a tesztelt szolgáltatás egy példányát az egyes replikák esetében. Emellett olyan életciklus-eseményeket is végrehajt, mint a `OnChangeRole` és a `RunAsync` . Az ál-állapot kezelője gondoskodik arról, hogy az állami kezelőn végrehajtott összes művelet fusson, és a tényleges State Manager maradjon.
 
-1. Hozzon létre egy Service Factory-delegált, amely létrehozza a tesztelni kívánt szolgáltatást. Ehhez hasonlónak vagy azonosnak kell lennie, mint a Service Factory `Program.cs` visszahívása, általában a Service Fabric szolgáltatás vagy színész számára. Ennek a következő aláírást kell követnie:
+1. Hozzon létre egy Service Factory-delegált, amely létrehozza a tesztelni kívánt szolgáltatást. Ehhez hasonlónak vagy azonosnak kell lennie, mint a Service Factory visszahívása, általában a `Program.cs` Service Fabric szolgáltatás vagy színész számára. Ennek a következő aláírást kell követnie:
    ```csharp
    MyStatefulService CreateMyStatefulService(StatefulServiceContext context, IReliableStateManagerReplica2 stateManager)
    ```
-2. Hozzon létre egy `MockReliableStateManager` osztály egy példányát. Ez az állapot-kezelővel folytatott összes interakciót kigúnyolja.
-3. Hozzon létre egy `MockStatefulServiceReplicaSet<TStatefulService>` példányt `TStatefulService` , ahol a a tesztelt szolgáltatás típusa. Ehhez létre kell hoznia a delegált a következő lépésben: #1 és a State Manager példánya #2
+2. Hozzon létre egy osztály egy példányát `MockReliableStateManager` . Ez az állapot-kezelővel folytatott összes interakciót kigúnyolja.
+3. Hozzon létre egy példányt, ahol a a `MockStatefulServiceReplicaSet<TStatefulService>` `TStatefulService` tesztelt szolgáltatás típusa. Ehhez létre kell hoznia a delegált a következő lépésben: #1 és a State Manager példánya #2
 4. Hozzon létre replikákat a kópiakészlet számára. A szerepkör (például elsődleges, ActiveSecondary, IdleSecondary) és a replika AZONOSÍTÓjának meghatározása
    > Tartsa be a replika-azonosítókat! Ezeket a rendszer valószínűleg felhasználja a művelet során, és az adott egység tesztelésének egyes részeit.
 
@@ -90,7 +89,7 @@ PromoteNewReplicaToPrimaryAsync(4)
 ```
 
 ## <a name="putting-it-all-together"></a>Végső összeállítás
-A következő teszt egy három csomópontos replikakészlet beállítását mutatja be, és azt ellenőrzi, hogy az adatok elérhetők-e egy másodlagos szerepkör változása után. Ez egy jellemző probléma, amely akkor fordulhat elő, ha `InsertAsync` a korábban hozzáadott adatmennyiséget a memóriában vagy egy megbízható gyűjteményben mentik a futtatása `CommitAsync`nélkül. Mindkét esetben a másodlagos nem lesz szinkronban az elsődlegesvel. Ez a szolgáltatás áthelyezése után inkonzisztens válaszokat eredményezne.
+A következő teszt egy három csomópontos replikakészlet beállítását mutatja be, és azt ellenőrzi, hogy az adatok elérhetők-e egy másodlagos szerepkör változása után. Ez egy jellemző probléma, amely akkor fordulhat elő, ha a korábban hozzáadott adatmennyiséget a `InsertAsync` memóriában vagy egy megbízható gyűjteményben mentik a futtatása nélkül `CommitAsync` . Mindkét esetben a másodlagos nem lesz szinkronban az elsődlegesvel. Ez a szolgáltatás áthelyezése után inkonzisztens válaszokat eredményezne.
 
 ```csharp
 [TestMethod]
