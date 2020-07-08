@@ -15,10 +15,9 @@ ms.topic: conceptual
 ms.date: 05/27/2020
 ms.author: b-juche
 ms.openlocfilehash: 78af9c12fb54b63e1a94c8b41a7ec2ac5c9b4e27
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84142146"
 ---
 # <a name="cost-model-for-azure-netapp-files"></a>Az Azure NetApp Files költségmodellje 
@@ -89,7 +88,7 @@ Az alábbi ábra a következő fogalmakat szemlélteti:
 
 Azure NetApp Files a pillanatképek kapacitásának felhasználását a fölérendelt kötet kvótája alapján számítjuk fel.  Ennek eredményeképpen ugyanazzal a számlázási sebességgel osztozik, mint a kötethez tartozó kapacitási készlet.  Az aktív kötettől eltérően azonban a pillanatkép-felhasználás a felhasznált növekményes kapacitás alapján mérhető.  Azure NetApp Files Pillanatképek eltérő jellegűek. Az adatváltozási aránytól függően a pillanatképek gyakran sokkal kevesebb kapacitást használnak, mint az aktív kötet logikai kapacitása. Tegyük fel például, hogy van egy 500-GiB kötet pillanatképe, amely csak 10 GiB különbözeti adatokból áll. A pillanatképre vonatkozó mennyiségi kvóta alapján felszámított kapacitás 10 GiB, nem 500 GiB. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Azure NetApp Files díjszabási oldala](https://azure.microsoft.com/pricing/details/storage/netapp/)
 * [Az Azure NetApp Files szolgáltatásszintjei](azure-netapp-files-service-levels.md)

@@ -15,10 +15,9 @@ ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
 ms.openlocfilehash: 7f20d79ea353830b41290c7b91d8d1de2b1b3abe
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84014859"
 ---
 # <a name="configure-the-always-on-availability-group-on-an-azure-vm-with-powershell"></a>Az Always On rendelkezésre állási csoport konfigurálása Azure-beli virtuális gépen PowerShell-lel
@@ -179,7 +178,7 @@ A tartományvezérlő-kiszolgáló sikeresen kiépítve. Ezután konfigurálja a
 ## <a name="configure-the-domain-controller"></a>A tartományvezérlő konfigurálása
 1. Kapcsolódjon a tartományvezérlő kiszolgálóhoz a távoli asztal fájljának elindításával. Használja a gép rendszergazdája Felhasználónév AzureAdmin és a **contoso! 000**jelszót, amelyet az új virtuális gép létrehozásakor adott meg.
 2. Nyisson meg egy PowerShell-ablakot rendszergazdai módban.
-3. Futtassa a következő **Dcpromo-t. EXE** -parancs a **Corp.contoso.com** tartomány beállításához az M meghajtón lévő adatkönyvtárakkal.
+3. Futtassa a következő **DCPROMO.EXE** parancsot a **Corp.contoso.com** tartomány beállításához az M meghajtón található adatkönyvtárakkal.
 
         dcpromo.exe `
             /unattend `
@@ -481,7 +480,7 @@ Végül már készen áll a rendelkezésre állási csoport konfigurálására. 
         $svc2.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Stopped,$timeout)
         $svc2.Start();
         $svc2.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Running,$timeout)
-7. Töltse le a **CreateAzureFailoverCluster. ps1** -t a [feladatátvevő fürt létrehozása az Azure-beli virtuális gépen található always on rendelkezésre állási csoportokhoz](https://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a) a helyi munkakönyvtárba. Ezt a szkriptet fogja használni a funkcionális feladatátvevő fürt létrehozásához. Fontos információk arról, hogy a Windows feladatátvételi fürtszolgáltatás hogyan kommunikál az Azure-hálózattal: a [magas rendelkezésre állás és a vész-helyreállítás az azure Virtual Machines SQL Server](../../../azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json).
+7. Töltse le **CreateAzureFailoverCluster.ps1t** a [feladatátvevő fürt létrehozása az Azure-beli virtuális gépen található always on rendelkezésre állási csoportokhoz](https://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a) a helyi munkakönyvtárba. Ezt a szkriptet fogja használni a funkcionális feladatátvevő fürt létrehozásához. Fontos információk arról, hogy a Windows feladatátvételi fürtszolgáltatás hogyan kommunikál az Azure-hálózattal: a [magas rendelkezésre állás és a vész-helyreállítás az azure Virtual Machines SQL Server](../../../azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json).
 8. Váltson a munkakönyvtárra, és hozza létre a feladatátvevő fürtöt a letöltött parancsfájllal.
 
         Set-ExecutionPolicy Unrestricted -Force

@@ -12,10 +12,9 @@ manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/08/2019
 ms.openlocfilehash: e928a6b54e53f9076ffe184ed4868e7741661d7e
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84118828"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>A SSIS Integration Runtime-kezelés hibáinak megoldása Azure Data Factory
@@ -124,7 +123,7 @@ Ennek a hibának több különböző okból jelentkezhet. A hiba elhárításáh
 
 ### <a name="forbidden"></a>Forbidden
 
-Ez a hiba a következőhöz hasonló lehet: "a denetid nincs engedélyezve az aktuális fiókhoz. A Microsoft. batch erőforrás-szolgáltató nincs regisztrálva a VNet azonos előfizetésében. "
+Ez a hiba a következőhöz hasonló lehet: "a denetid nincs engedélyezve az aktuális fiókhoz. Microsoft.BatCH erőforrás-szolgáltató nincs regisztrálva a VNet azonos előfizetésében. "
 
 Ezek a részletek azt jelentik, hogy az Azure Batch nem fér hozzá a virtuális hálózathoz. Regisztrálja a Microsoft.Batch erőforrás-szolgáltatót ugyanabban az előfizetésében, amelybe a virtuális hálózat is tartozik.
 

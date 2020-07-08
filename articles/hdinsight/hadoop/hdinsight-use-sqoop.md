@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.openlocfilehash: 091ce1cc0b2540a02e62e1e85c5515f6aa62b93c
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84018837"
 ---
 # <a name="use-apache-sqoop-with-hadoop-in-hdinsight"></a>Apache Sqoop használata a Hadooppal a HDInsightban
@@ -116,7 +115,7 @@ A HDInsight számos módszer használatával futtathat Sqoop-feladatokat. A köv
 * Tömeges exportálás – a Linux-alapú HDInsight a Sqoop-összekötő, amellyel az adatexportálás Microsoft SQL Server vagy SQL Database jelenleg nem támogatja a tömeges beszúrásokat.
 * Kötegelt feldolgozás – a Linux-alapú HDInsight, amikor a `-batch` kapcsolót a lapkák végrehajtásakor használja, a Sqoop több beszúrást hajt végre a beszúrási műveletek kötegelt feldolgozása helyett.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most már megtanulta, hogyan használhatja a Sqoop-t. További tudnivalókért lásd:
 

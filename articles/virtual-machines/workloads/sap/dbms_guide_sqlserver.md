@@ -16,10 +16,9 @@ ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 011904d7ce14f346b678c753c10a8f3258730ee1
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84014519"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SQL Server Azure Virtual Machines adatbázis-kezelő rendszerbe állítás az SAP NetWeaver számára
@@ -448,7 +447,7 @@ Mivel az Azure Marketplace-en lévő SQL Server rendszerképek nincsenek beáll�
 
 * Nyisson meg egy Windows-parancssorablakot rendszergazdaként.
 * A könyvtár módosítása a C:\Program Files\Microsoft SQL Server\110\Setup Bootstrap\SQLServer2012.
-* Hajtsa végre a parancsot: setup. exe/QUIET/ACTION = REBUILDDATABASE/INSTANCENAME = MSSQLSERVER/SQLSYSADMINACCOUNTS = `<local_admin_account_name` >/SQLCOLLATION = SQL_Latin1_General_Cp850_BIN2   
+* Hajtsa végre a parancsot: Setup.exe/QUIET/ACTION = REBUILDDATABASE/INSTANCENAME = MSSQLSERVER/SQLSYSADMINACCOUNTS = `<local_admin_account_name`>/SQLCOLLATION = SQL_Latin1_General_Cp850_BIN2   
   * `<local_admin_account_name`> az a fiók, amely rendszergazdai fiókként lett meghatározva a virtuális gép első telepítésekor a katalóguson keresztül.
 
 A folyamat csak néhány percet vesz igénybe. A következő lépések végrehajtásával győződjön meg arról, hogy a lépés a megfelelő eredménnyel zárult-e:

@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 12/20/2018
 ms.openlocfilehash: f4a851377128577cc7e50af777b502c9f59211c7
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84188244"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>Az SQL Data Synckel kapcsolatos hibák elhárítása
@@ -181,7 +180,7 @@ A szinkronizálási csoport törlésére tett kísérlet sikertelen. A következ
     d. Kattintson a jobb gombbal a **SQL-adatszinkronizálás** szolgáltatásra.  
     e. Ha a szolgáltatás fut, állítsa le.  
     f. Kattintson a jobb gombbal a szolgáltatásra, majd válassza az **Indítás**lehetőséget.  
-    g. Győződjön meg arról, hogy az adatbázis még regisztrálva van-e. Ha már nincs regisztrálva, elkészült. Ellenkező esetben folytassa a következő lépéssel.
+    : Győződjön meg arról, hogy az adatbázis még regisztrálva van-e. Ha már nincs regisztrálva, elkészült. Ellenkező esetben folytassa a következő lépéssel.
   1. Nyissa meg az ügyfél-ügynök alkalmazást (SqlAzureDataSyncAgent).
   1. Válassza a **hitelesítő adatok szerkesztése**lehetőséget, majd adja meg az adatbázishoz tartozó hitelesítő adatokat.
   1. Folytassa a regisztráció megszüntetésével.

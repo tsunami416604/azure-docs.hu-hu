@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
 ms.openlocfilehash: 4c3a141525f650d6e254f79ce9e3396f2c35a95f
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84051884"
 ---
 # <a name="general-guidance-for-working-with-wingtip-tickets-sample-saas-apps"></a>Általános útmutató a Wingtip jegyek használatához – példa SaaS-alkalmazásokra
@@ -33,7 +32,7 @@ A Windows letilthatja a végrehajtható tartalmat (parancsfájlokat, DLL-eket), 
     - [WingtipTicketsSaaS-MultiTenantDb](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDb)
 2. Kattintson a **klónozás vagy a letöltés**elemre.
 3. Kattintson a **zip letöltése** elemre, és mentse a fájlt.
-4. Kattintson a jobb gombbal a zip-fájlra, és válassza a **Tulajdonságok**lehetőséget. A zip-fájl neve meg fog egyezni a tárház nevével. például. _WingtipTicketsSaaS-DbPerTenant-Master. zip_)
+4. Kattintson a jobb gombbal a zip-fájlra, és válassza a **Tulajdonságok**lehetőséget. A zip-fájl neve meg fog egyezni a tárház nevével. például. _WingtipTicketsSaaS-DbPerTenant-master.zip_)
 5. Az **általános** lapon válassza a **Tiltás feloldása**lehetőséget.
 6. Kattintson az **OK** gombra.
 7. Bontsa ki a fájlokat.

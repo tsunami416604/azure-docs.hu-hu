@@ -13,10 +13,9 @@ ms.author: rohitna
 ms.reviewer: genemi, amagarwa, maboja, jrasnick, vanto
 ms.date: 05/14/2019
 ms.openlocfilehash: 3acbdd5c933bc2010a26e2039ece378774055d30
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84050400"
 ---
 # <a name="powershell-for-dns-alias-to-azure-sql-database"></a>PowerShell DNS-aliashoz Azure SQL Database
@@ -59,7 +58,7 @@ A használt parancsmagok a következők:
 
 A telepítéshez vagy frissítéshez olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket.
 
-`Get-Module -ListAvailable Az`A verzió megkereséséhez használja a *PowerShell \_ ISE. exe fájlját*.
+`Get-Module -ListAvailable Az`A verzió megkereséséhez használja a *PowerShell \_ise.exe*.
 
 ```powershell
 $subscriptionName = '<subscriptionName>';
@@ -140,6 +139,6 @@ az sql server dns-alias delete –-resource-group $resourceGroupName2 --server $
 
 * * *
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A SQL Database DNS-alias funkciójának részletes ismertetését lásd: [Azure SQL Database DNS-aliasa](../../sql-database/dns-alias-overview.md).

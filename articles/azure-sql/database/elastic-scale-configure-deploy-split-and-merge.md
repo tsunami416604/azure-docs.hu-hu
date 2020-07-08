@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
 ms.openlocfilehash: 200a6b1bc2f960555fae1d910dfebde66628d13a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84045647"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>Felosztási-egyesítési szolgáltatás üzembe helyezése a szilánkokra osztott adatbázisok közötti adatáthelyezéshez
@@ -27,7 +26,7 @@ A felosztott egyesítés eszköz lehetővé teszi az adatáthelyezést a törede
 
 1. Töltse le a legújabb NuGet-verziót a [NuGet](https://docs.nuget.org/docs/start-here/installing-nuget)webhelyről.
 
-1. Nyisson meg egy parancssort, és navigáljon ahhoz a könyvtárhoz, ahová letöltötte a nuget. exe fájlt. A letöltés PowerShell-parancsokat tartalmaz.
+1. Nyisson meg egy parancssort, és navigáljon ahhoz a könyvtárhoz, ahová a nuget.exe letöltötte. A letöltés PowerShell-parancsokat tartalmaz.
 
 1. Töltse le a legújabb felosztott egyesítési csomagot az aktuális könyvtárba az alábbi paranccsal:
 
@@ -176,9 +175,9 @@ A központi telepítés és a környezet a mellékelt minta PowerShell-szkriptek
 
 A parancsfájl fájljai a következők:
 
-1. *SetupSampleSplitMergeEnvironment. ps1* – egy teszt adatréteget állít be a felosztáshoz/egyesítéshez (lásd az alábbi táblázatot a részletes leíráshoz)
-2. *ExecuteSampleSplitMerge. ps1* – tesztelési műveleteket hajt végre a teszt adatrétegen (lásd az alábbi táblázatot a részletes leíráshoz)
-3. *GetMappings. ps1* – legfelső szintű minta parancsfájl, amely kinyomtatja a szegmens leképezések aktuális állapotát.
+1. *SetupSampleSplitMergeEnvironment.ps1* – egy tesztelési adatréteget állít be a felosztáshoz/egyesítéshez (lásd az alábbi táblázatot a részletes leíráshoz)
+2. *ExecuteSampleSplitMerge.ps1* – tesztelési műveleteket hajt végre a teszt adatrétegen (lásd az alábbi táblázatot a részletes leíráshoz)
+3. *GetMappings.ps1* – legfelső szintű parancsfájl, amely kinyomtatja a szegmens leképezések aktuális állapotát.
 4. *ShardManagement. psm1* – segítő parancsfájl, amely a ShardManagement API-t csomagolja
 5. *SqlDatabaseHelpers. psm1* – segítő parancsfájl az adatbázisok létrehozásához és kezeléséhez SQL Database
 
@@ -188,7 +187,7 @@ A parancsfájl fájljai a következők:
        <th>Lépések</th>
      </tr>
      <tr>
-       <th rowspan="5">SetupSampleSplitMergeEnvironment. ps1</th>
+       <th rowspan="5">SetupSampleSplitMergeEnvironment.ps1</th>
        <td>1. Egy szegmens Map Manager-adatbázis létrehozása</td>
      </tr>
      <tr>
@@ -210,7 +209,7 @@ A parancsfájl fájljai a következők:
        <th>Lépések</th>
      </tr>
    <tr>
-       <th rowspan="4">ExecuteSampleSplitMerge. ps1 </th>
+       <th rowspan="4">ExecuteSampleSplitMerge.ps1 </th>
        <td>1. Elküld egy felosztott kérelmet a Split-Merge szolgáltatás webes felületének, amely az első szegmens adatainak felére osztja ketté a második szilánkot.</td>
      </tr>
      <tr>
@@ -231,13 +230,13 @@ A parancsfájl fájljai a következők:
 2. Hozzon létre egy kiszolgálót (vagy válasszon ki egy meglévő kiszolgálót), ahol a rendszer létrehozza a szegmenses Térkép kezelőjét és a szilánkokat.
 
    > [!NOTE]
-   > A *SetupSampleSplitMergeEnvironment. ps1* parancsfájl alapértelmezés szerint ugyanazon a kiszolgálón hozza létre az összes adatbázist, hogy a szkriptet egyszerűként tárolja. Ez nem korlátozza a felosztási-egyesítési szolgáltatást.
+   > A *SetupSampleSplitMergeEnvironment.ps1* parancsfájl alapértelmezés szerint ugyanazon a kiszolgálón hozza létre az összes adatbázist, hogy a szkriptet egyszerűként tárolja. Ez nem korlátozza a felosztási-egyesítési szolgáltatást.
 
    Ahhoz, hogy a felosztott egyesítési szolgáltatás adatokat helyezzen át, és frissítse a szegmenses térképet, egy SQL-hitelesítési bejelentkezésre van szükség az adatbázisok olvasási/olvasási hozzáféréssel. Mivel a felosztási-egyesítési szolgáltatás a felhőben fut, jelenleg nem támogatja az integrált hitelesítést.
 
    Győződjön meg arról, hogy a kiszolgáló úgy van konfigurálva, hogy engedélyezze az ezen parancsfájlokat futtató gép IP-címének elérését. Ezt a beállítást az SQL Server/tűzfalak és a virtuális hálózatok/ügyfél IP-címei területen találja.
 
-3. Futtassa a *SetupSampleSplitMergeEnvironment. ps1* parancsfájlt a minta környezet létrehozásához.
+3. Futtassa a *SetupSampleSplitMergeEnvironment.ps1* szkriptet a minta környezet létrehozásához.
 
    A parancsfájl futtatásakor a rendszer törli az összes meglévő, a szegmensek közötti Térkép-felügyeleti adatstruktúrákat a szegmenses Térkép-kezelő adatbázisán és a szegmenseken. Előfordulhat, hogy újra kell futtatnia a szkriptet, ha újra szeretné inicializálni a szegmenses térképet vagy a szegmenseket.
 
@@ -248,14 +247,14 @@ A parancsfájl fájljai a következők:
     -UserName 'mysqluser' -Password 'MySqlPassw0rd' -ShardMapManagerServerName 'abcdefghij.database.windows.net'
    ```
 
-4. Hajtsa végre a Getmappings. ps1 parancsfájlt a mintavételi környezetben jelenleg létező leképezések megtekintéséhez.
+4. Hajtsa végre a Getmappings.ps1 szkriptet a mintavételi környezetben jelenleg létező leképezések megtekintéséhez.
 
    ```cmd
    .\GetMappings.ps1
     -UserName 'mysqluser' -Password 'MySqlPassw0rd' -ShardMapManagerServerName 'abcdefghij.database.windows.net'
    ```
 
-5. Hajtsa végre a *ExecuteSampleSplitMerge. ps1* parancsfájlt egy felosztott művelet végrehajtásához (az első szegmens adatai felé haladva a második szilánkra), majd egy egyesítési műveletet (az adatáthelyezést az első szegmensre). Ha a TLS-t konfigurálta, és a http-végpontot letiltotta, akkor használja helyette az https://-végpontot.
+5. Hajtsa végre az *ExecuteSampleSplitMerge.ps1* -szkriptet egy felosztott művelet végrehajtásához (az első szegmens adatai felé haladva a második szilánkra), majd egy egyesítési műveletet (az adatáthelyezést az első szegmensre). Ha a TLS-t konfigurálta, és a http-végpontot letiltotta, akkor használja helyette az https://-végpontot.
 
     Minta parancssor:
 
@@ -324,7 +323,7 @@ A felosztott egyesítési művelet végrehajtásához deklarálnia kell az áthe
 4. Szerezzen be egy **ShardMapManager** objektumra mutató hivatkozást, és hívja meg a **GetSchemaInfoCollection**.
 5. Adja hozzá a **SchemaInfo** a **SchemaInfoCollection**, amely megadja a szegmens leképezésének nevét.
 
-Erre példa látható a SetupSampleSplitMergeEnvironment. ps1 parancsfájlban.
+Erre egy példa látható a SetupSampleSplitMergeEnvironment.ps1 parancsfájlban.
 
 A felosztási-egyesítési szolgáltatás nem hozza létre a célként megadott adatbázist (vagy sémát az adatbázis bármely táblájához). A szolgáltatásnak küldött kérések elküldése előtt előre létre kell hozni őket.
 

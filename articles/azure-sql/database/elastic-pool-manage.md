@@ -11,10 +11,9 @@ ms.reviewer: carlrab
 ms.date: 03/12/2019
 ms.custom: seoapril2019 sqldbrb=1
 ms.openlocfilehash: 0fc4f9c2142011edf78033d36d13ecb9115a8850
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84044989"
 ---
 # <a name="manage-elastic-pools-in-azure-sql-database"></a>Rugalmas készletek kezelése Azure SQL Database
@@ -48,7 +47,7 @@ SQL Database rugalmas készletek és készletezett adatbázisok Azure PowerShell
 > A PowerShell-szkriptek esetében lásd: [rugalmas készletek létrehozása és adatbázisok áthelyezése készletek és készlet között a PowerShell használatával](scripts/move-database-between-elastic-pools-powershell.md) , valamint a [PowerShell használatával egy rugalmas SQL-készlet figyelése és méretezése Azure SQL Databaseban](scripts/monitor-and-scale-pool-powershell.md).
 >
 
-| Parancsmag | Leírás |
+| Parancsmag | Description |
 | --- | --- |
 |[Új – AzSqlElasticPool](/powershell/module/az.sql/new-azsqlelasticpool)|Rugalmas készletet hoz létre.|
 |[Get-AzSqlElasticPool](/powershell/module/az.sql/get-azsqlelasticpool)|Rugalmas készleteket és azok tulajdonságainak értékét kapja meg.|
@@ -71,7 +70,7 @@ SQL Database rugalmas készletek az [Azure CLI](/cli/azure)-vel való létrehoz�
 > Az Azure CLI példa parancsfájljaihoz lásd: a [CLI használata egy adatbázis SQL Databaseba való áthelyezéséhez egy rugalmas SQL-készletben](scripts/move-database-between-elastic-pools-cli.md) , és az [Azure CLI használatával MÉRETEZHETŐ egy rugalmas SQL-készlet a Azure SQL Database](scripts/scale-pool-cli.md).
 >
 
-| Parancsmag | Leírás |
+| Parancsmag | Description |
 | --- | --- |
 |[az SQL rugalmas készlet létrehozása](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-create)|Rugalmas készletet hoz létre.|
 |[az SQL rugalmas készlet listája](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-list)|Egy kiszolgálón lévő rugalmas készletek listáját adja vissza.|
@@ -88,7 +87,7 @@ A meglévő rugalmas készletekben lévő adatbázisok létrehozásához és át
 > Azure SQL Database rugalmas készlet nem hozható létre, nem frissíthető és nem törölhető a Transact-SQL használatával. Hozzáadhat vagy eltávolíthat egy rugalmas készletből származó adatbázisokat, és a DMV használatával a meglévő rugalmas készletekre vonatkozó információkat adhat vissza.
 >
 
-| Parancs | Leírás |
+| Parancs | Description |
 | --- | --- |
 |[ADATBÁZIS létrehozása (Azure SQL Database)](/sql/t-sql/statements/create-database-azure-sql-database)|Új adatbázist hoz létre egy meglévő készletben vagy egyetlen adatbázisként. Új adatbázis létrehozásához csatlakoznia kell a Master adatbázishoz.|
 | [ALTER DATABASE (Azure SQL Database)](/sql/t-sql/statements/alter-database-azure-sql-database) |Egy adatbázis áthelyezése a, a vagy a rugalmas készletek között.|
@@ -100,7 +99,7 @@ A meglévő rugalmas készletekben lévő adatbázisok létrehozásához és át
 
 SQL Database rugalmas készletek és készletezett adatbázisok létrehozásához és kezeléséhez használja ezeket a REST API kérelmeket.
 
-| Parancs | Leírás |
+| Parancs | Description |
 | --- | --- |
 |[Rugalmas készletek – létrehozás vagy frissítés](https://docs.microsoft.com/rest/api/sql/elasticpools/createorupdate)|Létrehoz egy új rugalmas készletet, vagy frissít egy meglévő rugalmas készletet.|
 |[Rugalmas készletek – törlés](https://docs.microsoft.com/rest/api/sql/elasticpools/delete)|Törli a rugalmas készletet.|

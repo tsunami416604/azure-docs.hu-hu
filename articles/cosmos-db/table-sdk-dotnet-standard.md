@@ -9,10 +9,9 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/18/2019
 ms.openlocfilehash: 097868c0f6c64ad8b58dce365a2232bb02b786e2
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84168199"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Azure Cosmos DB table .NET Standard API: letöltési és kibocsátási megjegyzések
@@ -28,7 +27,7 @@ ms.locfileid: "84168199"
 |---|---|
 |**SDK letöltése**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)|
 |**Minta**|[Cosmos DB Table API .NET-minta](https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started)|
-|**Gyorsútmutató**|[Gyorsútmutató](create-table-dotnet.md)|
+|**Gyors útmutató**|[Gyors útmutató](create-table-dotnet.md)|
 |**Oktatóanyag**|[Oktatóanyag](tutorial-develop-table-dotnet.md)|
 |**Jelenleg támogatott keretrendszer**|[Microsoft .NET Standard 2,0](https://www.nuget.org/packages/NETStandard.Library)|
 |**Probléma jelentése**|[Probléma jelentése](https://github.com/Azure/azure-cosmos-table-dotnet/issues)|
@@ -40,10 +39,10 @@ a 2.0.0 sorozat a [Microsoft. Azure. Cosmos](https://www.nuget.org/packages/Micr
 * a 2.0.0 Table SDK kezdeti előzetes verziója, amely a [Microsoft. Azure. Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/)függőségét veszi igénybe, a teljesítmény javításával és a névtér-konszolidációval Cosmos db végpontra. A nyilvános API-k változatlanok maradnak.
 
 ## <a name="release-notes-for-100-series"></a>A 1.0.0 sorozat kibocsátási megjegyzései
-a 1.0.0-sorozat a [Microsoft. Azure. DocumentDB. Core](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/)fájltól függ.
+a 1.0.0 sorozat [Microsoft.Azure.DocumentDB. Core](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/)fájltól függ.
 
 ### <a name="107"></a><a name="1.0.7"></a>1.0.7
-* A teljesítmény javítása a Table SDK alapértelmezett nyomkövetési szintjének a SourceLevels. Off értékre állításával, amely az app. config fájlon keresztül engedélyezhető.
+* A teljesítmény javítása a Table SDK alapértelmezett nyomkövetési szintjének a SourceLevels. Off értékre állításával, amely a következőn keresztül engedélyezhető: app.config
 
 ### <a name="105"></a><a name="1.0.5"></a>1.0.5
 * A TableClientConfiguration alatt új konfigurációt kell bevezetni a REST-végrehajtó használatára Cosmos DB Table API való kommunikációhoz
@@ -91,12 +90,12 @@ A Microsoft legalább **12 hónappal** korábban értesítést küld az SDK kivo
 Ez a platformfüggetlen .NET Standard könyvtár a [Microsoft. Azure. Cosmos. table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) a [Microsoft. Azure. CosmosDB. table](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table).NET-keretrendszer könyvtárát fogja cserélni.
 
 ### <a name="200-series"></a>2.0.0 sorozat
-| Verzió | Kiadás dátuma | Nyugdíjazás dátuma |
+| Verzió | Kiadás dátuma | Kivonás dátuma |
 | --- | --- | --- |
 | [2.0.0 – előzetes verzió](#2.0.0-preview) |Auguest 22, 2019 |--- |
 
 ### <a name="100-series"></a>1.0.0-sorozat
-| Verzió | Kiadás dátuma | Nyugdíjazás dátuma |
+| Verzió | Kiadás dátuma | Kivonás dátuma |
 | --- | --- | --- |
 | [1.0.5](#1.0.5) |Szeptember 13., 2019 |--- |
 | [1.0.5 – előzetes verzió](#1.0.5-preview) |Auguest 20, 2019 |--- |

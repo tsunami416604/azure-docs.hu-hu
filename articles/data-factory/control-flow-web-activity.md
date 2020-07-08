@@ -12,10 +12,9 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/19/2018
 ms.openlocfilehash: 150ee15adb042841f74ffbf3b75338b2dd569333
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84017664"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Webes tevékenység Azure Data Factory
@@ -27,7 +26,7 @@ A webes tevékenység segítségével meghívható egy egyéni REST-végpont egy
 > [!NOTE]
 > A webes tevékenység csak nyilvánosan elérhető URL-címeket hívhat fel. A magánhálózati virtuális hálózatokban tárolt URL-címek esetében nem támogatott.
 
-## <a name="syntax"></a>Szintaxis
+## <a name="syntax"></a>Syntax
 
 ```json
 {
@@ -68,15 +67,15 @@ A webes tevékenység segítségével meghívható egy egyéni REST-végpont egy
 
 Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
-name | A webes tevékenység neve | Sztring | Igen
-típus | **Webtevékenységre**kell beállítani. | Sztring | Igen
-method | A célként megadott végpont REST API-metódusa. | Sztring. <br/><br/>Támogatott típusok: "GET", "POST", "PUT" | Igen
-url | Cél végpontja és elérési útja | Karakterlánc (vagy resultType karakterláncot tartalmazó kifejezés). A tevékenység 1 percenként időtúllépést jelez, ha a végponttól nem érkezik válasz. | Igen
+name | A webes tevékenység neve | Sztring | Yes
+típus | **Webtevékenységre**kell beállítani. | Sztring | Yes
+method | A célként megadott végpont REST API-metódusa. | Sztring. <br/><br/>Támogatott típusok: "GET", "POST", "PUT" | Yes
+url | Cél végpontja és elérési útja | Karakterlánc (vagy resultType karakterláncot tartalmazó kifejezés). A tevékenység 1 percenként időtúllépést jelez, ha a végponttól nem érkezik válasz. | Yes
 fejlécek | A kérelembe küldendő fejlécek. Például egy kérelem nyelvének és típusának megadásához: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }` . | Karakterlánc (vagy resultType karakterláncot tartalmazó kifejezés) | Igen, a Content-Type fejléc megadása kötelező. `"headers":{ "Content-Type":"application/json"}`
 body (Törzs) | A végpontnak elküldhető adattartalmat jelöli.  | Karakterlánc (vagy resultType karakterláncot tartalmazó kifejezés). <br/><br/>Tekintse meg a kérelem hasznos adatainak sémáját a [kérelmek hasznos adatait tartalmazó sémában](#request-payload-schema) . | A POST/PUT metódusokhoz szükséges.
-hitelesítés | A végpont meghívásához használt hitelesítési módszer. A támogatott típusok az "alapszintű vagy ClientCertificate". További információ: [hitelesítés](#authentication) szakasz. Ha nincs szükség hitelesítésre, zárja be ezt a tulajdonságot. | Karakterlánc (vagy resultType karakterláncot tartalmazó kifejezés) | Nem
-adathalmazok | A végpontnak átadott adatkészletek listája. | Adatkészlet-hivatkozások tömbje. Üres tömb lehet. | Igen
-linkedServices | A végpontnak átadott társított szolgáltatások listája. | Társított szolgáltatási referenciák tömbje. Üres tömb lehet. | Igen
+hitelesítés | A végpont meghívásához használt hitelesítési módszer. A támogatott típusok az "alapszintű vagy ClientCertificate". További információ: [hitelesítés](#authentication) szakasz. Ha nincs szükség hitelesítésre, zárja be ezt a tulajdonságot. | Karakterlánc (vagy resultType karakterláncot tartalmazó kifejezés) | No
+adathalmazok | A végpontnak átadott adatkészletek listája. | Adatkészlet-hivatkozások tömbje. Üres tömb lehet. | Yes
+linkedServices | A végpontnak átadott társított szolgáltatások listája. | Társított szolgáltatási referenciák tömbje. Üres tömb lehet. | Yes
 
 > [!NOTE]
 > A webes tevékenység által meghívott REST-végpontoknak JSON típusú választ kell visszaadniuk. A tevékenység 1 percenként időtúllépést jelez, ha a végponttól nem érkezik válasz.
@@ -95,11 +94,11 @@ A következő táblázat a JSON-tartalomra vonatkozó követelményeket mutatja 
 
 Az alábbiakban láthatók a webes tevékenységben támogatott hitelesítési típusok.
 
-### <a name="none"></a>Nincs
+### <a name="none"></a>None
 
 Ha nincs szükség hitelesítésre, ne adja meg a "hitelesítés" tulajdonságot.
 
-### <a name="basic"></a>Basic
+### <a name="basic"></a>Alapszintű
 
 Adja meg az alapszintű hitelesítéshez használni kívánt felhasználónevet és jelszót.
 

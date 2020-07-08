@@ -16,10 +16,9 @@ ms.date: 03/07/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 3b977c0900178d64f202d4faa122f5d0ef90187c
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84014655"
 ---
 # <a name="automated-patching-for-sql-server-in-azure-virtual-machines-classic"></a>Az Azure Virtual Machines SQL Server automatikus javítása (klasszikus)
@@ -65,7 +64,7 @@ Az automatikus javítás használatához vegye figyelembe a következő előfelt
 ## <a name="settings"></a>Beállítások
 Az alábbi táblázat az automatikus javításhoz konfigurálható beállításokat ismerteti. A klasszikus virtuális gépek esetében a PowerShell használatával kell konfigurálni ezeket a beállításokat.
 
-| Beállítás | Lehetséges értékek | Leírás |
+| Beállítás | Lehetséges értékek | Description |
 | --- | --- | --- |
 | **Automatikus javítás** |Engedélyezés/letiltás (letiltva) |Engedélyezheti vagy letilthatja az Azure-beli virtuális gépek automatikus javítását. |
 | **Karbantartási ütemezés** |Mindennap, hétfő, kedd, szerda, csütörtök, péntek, szombat, vasárnap |A virtuális géphez tartozó Windows-, SQL Server-és Microsoft-frissítések letöltésének és telepítésének ütemterve. |

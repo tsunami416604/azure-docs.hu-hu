@@ -15,10 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
 ms.openlocfilehash: 9f3d95d7ae725dba700b0a060ba74552d6b83ad5
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84172367"
 ---
 # <a name="public-ip-addresses"></a>Nyilvános IP-címek
@@ -60,7 +59,7 @@ Standard SKU nyilvános IP-címei:
 > [!NOTE]
 > A [példány metaadatainak szolgáltatás IMDS](../virtual-machines/windows/instance-metadata-service.md)használata esetén csak az alapszintű SKU-val rendelkező nyilvános IP-címek érhetők el. A standard SKU nem támogatott.
 
-### <a name="basic"></a>Basic
+### <a name="basic"></a>Alapszintű
 
 A termékváltozatok bevezetése előtt létrehozott minden nyilvános IP-cím alapszintű termékváltozatú nyilvános IP-cím. 
 
@@ -186,7 +185,7 @@ A korlátok régiónként és előfizetésenként értendőek. [Vegye fel a kapc
 
 A nyilvános IP-címek kapcsán névleges díjak merülhetnek fel. Ha többet szeretne megtudni az Azure-ban használt IP-címek díjszabásáról, tekintse át az [IP-címek díjszabását](https://azure.microsoft.com/pricing/details/ip-addresses) ismertető oldalt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További információ [Az Azure-beli magánhálózati IP-címekről](private-ip-addresses.md)
 * [Statikus nyilvános IP-címmel rendelkező virtuális gép telepítése az Azure Portal használatával](virtual-network-deploy-static-pip-arm-portal.md)
 

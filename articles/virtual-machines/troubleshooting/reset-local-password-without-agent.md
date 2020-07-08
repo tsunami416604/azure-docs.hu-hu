@@ -14,10 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: genli
 ms.openlocfilehash: 11d1a4743f9aaf70d96e6cfd1f22ff31def440f1
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84021262"
 ---
 # <a name="reset-local-windows-password-for-azure-vm-offline"></a>Azure-beli virtuális gép helyi Windows-jelszavának visszaállítása kapcsolat nélküli üzemmódban
@@ -45,7 +44,7 @@ A következő lépések elvégzése előtt mindig próbálja meg alaphelyzetbe �
 
 1. Készítsen pillanatképet az érintett virtuális gép operációsrendszer-lemezéről, hozzon létre egy lemezt a pillanatképből, majd csatolja a lemezt egy hibakeresési virtuális géphez. További információ: Windows rendszerű [virtuális gép hibáinak elhárítása az operációsrendszer-lemez egy helyreállítási virtuális géphez való csatolásával a Azure Portal használatával](troubleshoot-recovery-disks-portal-windows.md).
 2. Kapcsolódjon a hibaelhárítási virtuális géphez Távoli asztal használatával.
-3. Létrehozás `gpt.ini` a `\Windows\System32\GroupPolicy` forrás virtuális gép meghajtóján (ha a GPT. ini létezik, nevezze át a GPT. ini. bak névre):
+3. Hozza létre a `gpt.ini` `\Windows\System32\GroupPolicy` t a forrás virtuális gép meghajtóján (ha gpt.ini létezik, nevezze át gpt.ini. bak névre):
    
    > [!WARNING]
    > Győződjön meg arról, hogy nem véletlenül hozza létre a következő fájlokat a C:\Windows-ban, a hibaelhárítási virtuális gép operációsrendszer-meghajtóján. Hozza létre a következő fájlokat az operációsrendszer-meghajtón a forrásként szolgáló virtuális gép számára, amely adatlemezként van csatolva.
@@ -59,7 +58,7 @@ A következő lépések elvégzése előtt mindig próbálja meg alaphelyzetbe �
      Version=1
      ```
      
-     ![GPT. ini létrehozása](./media/reset-local-password-without-agent/create-gpt-ini.png)
+     ![gpt.ini létrehozása](./media/reset-local-password-without-agent/create-gpt-ini.png)
 
 4. Létrehozás `scripts.ini` a alkalmazásban `\Windows\System32\GroupPolicy\Machine\Scripts\` . Győződjön meg arról, hogy a rejtett mappák láthatók. Szükség esetén hozza létre a `Machine` vagy a `Scripts` mappákat.
    
@@ -71,7 +70,7 @@ A következő lépések elvégzése előtt mindig próbálja meg alaphelyzetbe �
      0Parameters=
      ```
      
-     ![Scripts. ini létrehozása](./media/reset-local-password-without-agent/create-scripts-ini.png)
+     ![scripts.ini létrehozása](./media/reset-local-password-without-agent/create-scripts-ini.png)
 
 5. Hozzon létre a `FixAzureVM.cmd` -ben `\Windows\System32` a következő tartalommal, `<username>` és cserélje le a `<newpassword>` saját értékeit:
    
@@ -96,9 +95,9 @@ A következő lépések elvégzése előtt mindig próbálja meg alaphelyzetbe �
     * A%windir%\System32ből
       * a FixAzureVM. cmd fájl eltávolítása
     * %Windir%\System32\GroupPolicy\Machine\Scripts
-      * a scripts. ini fájl eltávolítása
+      * scripts.ini eltávolítása
     * %Windir%\System32\GroupPolicy
-      * távolítsa el a GPT. ini fájlt (ha a GPT. ini korábban már létezett, és átnevezte a GPT. ini. bak névre, nevezze át a. bak fájlt a GPT. ini fájlba)
+      * távolítsa el gpt.ini (ha gpt.ini létezett, és átnevezte gpt.ini. bak névre, nevezze át a. bak fájlt gpt.ini)
 
 ## <a name="detailed-steps-for-classic-vm"></a>Klasszikus virtuális gép részletes lépései
 
@@ -163,7 +162,7 @@ A következő lépések elvégzése előtt mindig próbálja meg alaphelyzetbe �
      Version=1
      ```
      
-     ![GPT. ini létrehozása](./media/reset-local-password-without-agent/create-gpt-ini-classic.png)
+     ![gpt.ini létrehozása](./media/reset-local-password-without-agent/create-gpt-ini-classic.png)
 
 5. Létrehozás `scripts.ini` a alkalmazásban `\Windows\System32\GroupPolicy\Machines\Scripts\` . Győződjön meg arról, hogy a rejtett mappák láthatók. Szükség esetén hozza létre a `Machine` vagy a `Scripts` mappákat.
    
@@ -175,7 +174,7 @@ A következő lépések elvégzése előtt mindig próbálja meg alaphelyzetbe �
      0Parameters=
      ```
      
-     ![Scripts. ini létrehozása](./media/reset-local-password-without-agent/create-scripts-ini-classic.png)
+     ![scripts.ini létrehozása](./media/reset-local-password-without-agent/create-scripts-ini-classic.png)
 
 6. Hozzon létre a `FixAzureVM.cmd` -ben `\Windows\System32` a következő tartalommal, `<username>` és cserélje le a `<newpassword>` saját értékeit:
    

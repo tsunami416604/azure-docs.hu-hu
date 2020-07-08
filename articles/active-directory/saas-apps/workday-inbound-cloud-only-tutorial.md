@@ -15,10 +15,9 @@ ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
 ms.openlocfilehash: 6fb80af84379a1a0bc174a7318c8150a98bea95e
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84041812"
 ---
 # <a name="tutorial-configure-workday-to-azure-ad-user-provisioning"></a>Oktatóanyag: munkanapok konfigurálása az Azure AD-beli felhasználók üzembe helyezéséhez
@@ -210,7 +209,7 @@ Miután befejezte a munkaidő-kiépítési alkalmazás konfigurációját, bekap
    > [!div class="mx-imgBorder"]
    > ![Kiépítés folyamatjelző sáv](./media/sap-successfactors-inbound-provisioning/prov-progress-bar-stats.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [További információ a bejövő kiépítés támogatott munkanapokhoz tartozó attribútumairól](../app-provisioning/workday-attribute-reference.md)
 * [Tudnivalók a munkanap visszaírási konfigurálásáról](workday-writeback-tutorial.md)

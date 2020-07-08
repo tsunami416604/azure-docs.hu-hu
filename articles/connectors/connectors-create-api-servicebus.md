@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 09/19/2019
 tags: connectors
 ms.openlocfilehash: 50f43283d1113a5beb05b5898514623be37e5de9
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84141993"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Exchange-üzenetek a felhőben Azure Logic Apps és Azure Service Bus használatával
@@ -168,6 +167,6 @@ A Service Bus-összekötő egyszerre akár 1 500 egyedi munkamenetet is megtakar
 
 Az eseményindítókkal, műveletekkel és korlátokkal kapcsolatos egyéb technikai részletekért, amelyeket az összekötő hencegő leírása ismertet, tekintse át az [összekötő-hivatkozás lapot](/connectors/servicebus/). További információ a Azure Service Bus üzenetkezelésről: [Mi az Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)?
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

@@ -15,10 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
 ms.openlocfilehash: 13688b73c0cd73e13e407f1b75beb8dda61a754f
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84172374"
 ---
 # <a name="private-ip-addresses"></a>Magánhálózati IP-címek
@@ -104,6 +103,6 @@ A lehetséges használható kiosztási módszerek is megjelennek:
 ## <a name="limits"></a>Korlátok
 Az IP-címzés korlátai az Azure-ban a [hálózatkezelés korlátainak](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) teljes készletében találhatók. A korlátok régiónként és előfizetésenként értendőek. [Vegye fel a kapcsolatot az ügyfélszolgálattal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , és növelje az alapértelmezett korlátokat az üzleti igényeknek megfelelő maximális korlátig.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az [Azure-nyilvános IP-címek](public-ip-addresses.md) megismerése
 * [Statikus magánhálózati IP-címmel rendelkező virtuális gép telepítése az Azure Portal használatával](virtual-networks-static-private-ip-arm-pportal.md)

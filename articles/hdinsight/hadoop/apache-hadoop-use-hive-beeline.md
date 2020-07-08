@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/17/2020
 ms.openlocfilehash: 3b270b8ae4e9729d2c0f8ae99a3c19c68561df95
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84119250"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Az Apache Beeline-ügyfél használata Apache Hive-val
@@ -205,7 +204,7 @@ Ez a példa az előző példa folytatását szemlélteti. A következő lépése
         +---------------+---------------+---------------+---------------+---------------+---------------+---------------+--+
         3 rows selected (0.813 seconds)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További általános információk a HDInsight-beli Kaptárról: [Apache Hive használata a Apache Hadoop használatával a HDInsight](hdinsight-use-hive.md)
 

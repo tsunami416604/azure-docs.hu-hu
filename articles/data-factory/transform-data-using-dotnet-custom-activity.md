@@ -10,11 +10,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/26/2018
-ms.openlocfilehash: 98f0eb89893ff7394390d2fc1fc77497f1bf948d
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.openlocfilehash: 74e381a9ad32acdaa8cbb719824d74ca6d339f30
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84019962"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Egyéni tevékenységek használata Azure Data Factory-folyamatban
@@ -35,7 +34,7 @@ Ha olyan adattárból/adattárba szeretne áthelyezni, amely nem támogatja a Da
 
 Tekintse meg a következő cikkeket, ha új Azure Batch szolgáltatás:
 
-* A Azure Batch szolgáltatás áttekintéséhez [Azure batch alapjai](../azure-sql/database/sql-database-paas-overview.md) .
+* A Azure Batch szolgáltatás áttekintéséhez [Azure batch alapjai](../batch/batch-technical-overview.md) .
 * A [New-AzBatchAccount](/powershell/module/az.batch/New-azBatchAccount) parancsmaggal hozzon létre egy Azure batch-fiókot (vagy) [Azure Portal](../batch/batch-account-create-portal.md) a Azure batch-fiók Azure Portal használatával történő létrehozásához. A parancsmag használatával kapcsolatos részletes utasításokért lásd: a [PowerShell használata Azure batch-fiók kezeléséhez](https://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx) .
 * [New-AzBatchPool](/powershell/module/az.batch/New-AzBatchPool) parancsmag Azure batch készlet létrehozásához.
 
@@ -96,22 +95,22 @@ A következő JSON-kódrészlet egy egyszerű egyéni tevékenységgel rendelkez
 }
 ```
 
-Ebben a példában a HelloWorld. exe a resourceLinkedService használt Azure Storage-fiók customactv2/HelloWorld mappájában tárolt egyéni alkalmazás. Az egyéni tevékenység elküldi ezt az egyéni alkalmazást a Azure Batch végrehajtásához. A parancsot lecserélheti bármely előnyben részesített alkalmazásra, amely végrehajtható a Azure Batch Pool-csomópontok cél operációs rendszerén.
+Ebben a példában a helloworld.exe a resourceLinkedService használt Azure Storage-fiók customactv2/HelloWorld mappájában tárolt egyéni alkalmazás. Az egyéni tevékenység elküldi ezt az egyéni alkalmazást a Azure Batch végrehajtásához. A parancsot lecserélheti bármely előnyben részesített alkalmazásra, amely végrehajtható a Azure Batch Pool-csomópontok cél operációs rendszerén.
 
 A következő táblázat ismerteti a tevékenységre jellemző tulajdonságok nevét és leírását.
 
 | Tulajdonság              | Leírás                              | Kötelező |
 | :-------------------- | :--------------------------------------- | :------- |
-| name                  | A folyamatban szereplő tevékenység neve     | Igen      |
-| leírás           | A tevékenység működését leíró szöveg  | Nem       |
-| típus                  | Egyéni tevékenység esetén a tevékenység típusa **Egyéni**. | Igen      |
-| linkedServiceName     | Társított szolgáltatás Azure Batch. A társított szolgáltatással kapcsolatos további információkért lásd: [számítási társított szolgáltatások](compute-linked-services.md) cikk.  | Igen      |
-| command               | A végrehajtandó egyéni alkalmazás parancsa. Ha az alkalmazás már elérhető a Azure Batch készlet csomóponton, a resourceLinkedService és a folderPath kihagyható. Megadhatja például a következő parancsot `cmd /c dir` :, amelyet natív módon támogat a Windows batch-készlet csomópont. | Igen      |
+| name                  | A folyamatban szereplő tevékenység neve     | Yes      |
+| leírás           | A tevékenység működését leíró szöveg  | No       |
+| típus                  | Egyéni tevékenység esetén a tevékenység típusa **Egyéni**. | Yes      |
+| linkedServiceName     | Társított szolgáltatás Azure Batch. A társított szolgáltatással kapcsolatos további információkért lásd: [számítási társított szolgáltatások](compute-linked-services.md) cikk.  | Yes      |
+| command               | A végrehajtandó egyéni alkalmazás parancsa. Ha az alkalmazás már elérhető a Azure Batch készlet csomóponton, a resourceLinkedService és a folderPath kihagyható. Megadhatja például a következő parancsot `cmd /c dir` :, amelyet natív módon támogat a Windows batch-készlet csomópont. | Yes      |
 | resourceLinkedService | Azure Storage-beli társított szolgáltatás az egyéni alkalmazást tároló Storage-fiókhoz | Nincs &#42;       |
 | folderPath            | Az egyéni alkalmazás mappájának és az összes függőségének elérési útja<br/><br/>Ha az almappákban tárolt függőségek vannak – vagyis a *folderPath* alatt lévő hierarchikus mappák struktúrájában – a rendszer jelenleg összefoglalja a mappa struktúráját, amikor a fájlok Azure Batchba másolódnak. Ez azt is megtörténik, hogy minden fájl egyetlen mappába van másolva, és nincs almappa. A viselkedés megkerüléséhez vegye fontolóra a fájlok tömörítését, a tömörített fájl másolását, majd a kívánt helyen lévő egyéni kóddal való kicsomagolását. | Nincs &#42;       |
-| referenceObjects      | Meglévő társított szolgáltatások és adatkészletek tömbje. A hivatkozott társított szolgáltatásokat és adatkészleteket a rendszer JSON formátumban adja át az egyéni alkalmazásnak, így az egyéni kód hivatkozhat a Data Factory erőforrásaira | Nem       |
-| Extendedproperties példányt paraméterként    | Felhasználó által definiált tulajdonságok, amelyek JSON formátumban adhatók át az egyéni alkalmazásnak, így az egyéni kód további tulajdonságokat is hivatkozhat | Nem       |
-| retentionTimeInDays | Az egyéni tevékenységhez elküldött fájlok megőrzési ideje. Az alapértelmezett érték 30 nap. | Nem |
+| referenceObjects      | Meglévő társított szolgáltatások és adatkészletek tömbje. A hivatkozott társított szolgáltatásokat és adatkészleteket a rendszer JSON formátumban adja át az egyéni alkalmazásnak, így az egyéni kód hivatkozhat a Data Factory erőforrásaira | No       |
+| Extendedproperties példányt paraméterként    | Felhasználó által definiált tulajdonságok, amelyek JSON formátumban adhatók át az egyéni alkalmazásnak, így az egyéni kód további tulajdonságokat is hivatkozhat | No       |
+| retentionTimeInDays | Az egyéni tevékenységhez elküldött fájlok megőrzési ideje. Az alapértelmezett érték 30 nap. | No |
 
 &#42; a tulajdonságokat `resourceLinkedService` , és `folderPath` mindkettőt meg kell adni, vagy mindkettőt el kell hagyni.
 
@@ -190,7 +189,7 @@ Ez a minta azt mutatja be, hogy a referenceObjects és a Extendedproperties pél
 }
 ```
 
-A tevékenység végrehajtásakor a referenceObjects és a Extendedproperties példányt paraméterként a PéldaAlkalmazás. exe ugyanazon végrehajtási mappájába telepített következő fájlokban tárolódik:
+A tevékenység végrehajtásakor a rendszer a referenceObjects és a Extendedproperties példányt paraméterként a következő, a SampleApp.exe ugyanazon végrehajtási mappájába telepített fájlokban tárolja:
 
 - `activity.json`
 
@@ -204,7 +203,7 @@ A tevékenység végrehajtásakor a referenceObjects és a Extendedproperties p�
 
   A referenceObjects tulajdonságban definiált adatkészletek tömbjét tárolja.
 
-A következő mintakód bemutatja, hogyan érheti el a PéldaAlkalmazás. exe a szükséges információkat a JSON-fájlokból:
+A következő mintakód bemutatja, hogyan érheti el a SampleApp.exe a JSON-fájlokból a szükséges információkat:
 
 ```csharp
 using Newtonsoft.Json;
@@ -298,10 +297,10 @@ Activity Error section:
 "target": "MyCustomActivity"
 ```
 
-Ha az StdOut. txt fájlt szeretné használni az alárendelt tevékenységekben, a "Activity (" MyCustomActivity ") kifejezésben található StdOut. txt fájl elérési útját is elérheti \@ . output. outputs [0]".
+Ha az alsóbb rétegbeli tevékenységekben lévő stdout.txt tartalmát szeretné használni, lekérheti a stdout.txt fájl elérési útját a " \@ Activity (" MyCustomActivity ") kifejezésben. output. outputs [0]".
 
 > [!IMPORTANT]
-> - A Activity. JSON, a linkedServices. JSON és az adatkészletek. JSON a Batch feladat futásidejű mappájában tárolódik. Ebben a példában a Activity. JSON, a linkedServices. JSON és az adatkészletek. JSON az `"https://adfv2storage.blob.core.windows.net/adfjobs/\<GUID>/runtime/"` elérési úton van tárolva. Szükség esetén külön kell megtisztítani őket.
+> - A activity.json, linkedServices.json és a datasets.json a Batch feladat futtatókörnyezet mappájába kerül. Ebben a példában a activity.jsbekapcsolva, linkedServices.jsbekapcsolva, és a datasets.jsbe van tárolva az `"https://adfv2storage.blob.core.windows.net/adfjobs/\<GUID>/runtime/"` elérési úton. Szükség esetén külön kell megtisztítani őket.
 > - A saját üzemeltetésű Integration Runtime használó társított szolgáltatások esetében a helyi Integration Runtime titkosítja a bizalmas adatokat, például a kulcsokat vagy a jelszavakat, így biztosítva, hogy a hitelesítő adatok az ügyfél által meghatározott magánhálózati környezetben maradnak. Bizonyos bizalmas mezők hiányoznak, amikor az egyéni alkalmazás kódja erre hivatkozik. Ha szükséges, használja a SecureString-t a Extendedproperties példányt paraméterként-ben a társított szolgáltatás hivatkozásának használata helyett.
 
 ## <a name="pass-outputs-to-another-activity"></a>Kimenetek továbbítása egy másik tevékenységbe
@@ -331,7 +330,7 @@ Az 1. Azure Data Factory-es verzióban egy (egyéni) DotNet-tevékenységet val�
 
 A Azure Data Factory v2 egyéni tevékenységben nem szükséges .NET-felületet megvalósítani. Mostantól közvetlenül futtathat parancsokat, parancsfájlokat és saját egyéni kódot, amely végrehajtható fájlként van lefordítva. A megvalósítás konfigurálásához adja meg a `Command` tulajdonságot a `folderPath` tulajdonsággal együtt. Az egyéni tevékenység feltölti a végrehajtható fájlt és annak függőségeit, `folderpath` és végrehajtja a parancsot.
 
-A (referenceObjects-ben definiált) társított szolgáltatások, adatkészletek, valamint a Data Factory v2 egyéni tevékenység JSON-adattartalmában definiált kiterjesztett tulajdonságok a végrehajtható fájl JSON-fájlként érhetők el. A szükséges tulajdonságokat egy JSON-szerializáló használatával érheti el, ahogy az a fenti PéldaAlkalmazás. exe-kódban is látható.
+A (referenceObjects-ben definiált) társított szolgáltatások, adatkészletek, valamint a Data Factory v2 egyéni tevékenység JSON-adattartalmában definiált kiterjesztett tulajdonságok a végrehajtható fájl JSON-fájlként érhetők el. A szükséges tulajdonságokat egy JSON-szerializáló használatával érheti el, ahogy az előző SampleApp.exe Code-mintában látható.
 
 A Data Factory v2 egyéni tevékenységben bevezetett változások esetében megírhatja az egyéni kód logikáját az előnyben részesített nyelven, és a Azure Batch által támogatott Windows-és Linux-operációs rendszereken is végrehajthatja.
 
@@ -344,15 +343,15 @@ Az alábbi táblázat a Data Factory v2 egyéni tevékenység és az Data Factor
 |Parancsfájlok végrehajtása      |Támogatja a parancsfájlok közvetlen végrehajtását (például "cmd/c echo Hello World") a Windows rendszerű virtuális gépen      |Implementáció szükséges a .NET DLL-ben      |
 |Adatkészlet szükséges      |Választható      |A tevékenységek láncolásához és az információk továbbításához szükséges      |
 |Információk átadása a tevékenységtől az egyéni logikáig      |ReferenceObjects (LinkedServices és adatkészletek) és Extendedproperties példányt paraméterként (egyéni tulajdonságok)      |Extendedproperties példányt paraméterként (egyéni tulajdonságok), bemeneti és kimeneti adatkészletek      |
-|Információk beolvasása az egyéni logikában      |Elemzi a tevékenység. JSON, linkedServices. JSON és adatkészletek. JSON fájlt, amely ugyanabban a mappában található a végrehajtható fájlban.      |.NET SDK-n keresztül (.NET frame 4.5.2)      |
+|Információk beolvasása az egyéni logikában      |A végrehajtható fájl ugyanazon mappájában tárolt activity.jselemzése, linkedServices.jsbe-és datasets.js      |.NET SDK-n keresztül (.NET frame 4.5.2)      |
 |Naplózás      |Írás közvetlenül az STDOUT-ba      |A naplózó implementálása a .NET DLL-ben      |
 
 Ha az 1. verziójú (egyéni) DotNet-tevékenységhez már létezik .NET-kód, módosítania kell a kódot, hogy az az egyéni tevékenység aktuális verziójával működjön. Módosítsa a kódot a következő magas szintű irányelvek követésével:
 
   - Módosítsa a projektet egy .NET-osztály könyvtárából egy Console-alkalmazásra.
   - Indítsa el az alkalmazást a `Main` metódussal. A `Execute` csatoló metódusa `IDotNetActivity` már nem szükséges.
-  - A társított szolgáltatások, adatkészletek és tevékenységek olvasása és elemzése JSON-szerializáló, és nem erős módon beírt objektumokként. Adja át a szükséges tulajdonságok értékeit a fő egyéni kód logikájának. Példaként tekintse meg az előző PéldaAlkalmazás. exe-kódot.
-  - A naplózó objektum már nem támogatott. A végrehajtható fájl kimenete nyomtatható a konzolon, és az StdOut. txt fájlba lesz mentve.
+  - A társított szolgáltatások, adatkészletek és tevékenységek olvasása és elemzése JSON-szerializáló, és nem erős módon beírt objektumokként. Adja át a szükséges tulajdonságok értékeit a fő egyéni kód logikájának. Példaként tekintse meg az előző SampleApp.exe kódot.
+  - A naplózó objektum már nem támogatott. A végrehajtható fájl kimenete kinyomtatható a konzolra, és stdout.txtba menthető.
   - A Microsoft. Azure. Management. DataFactories NuGet csomagra már nincs szükség.
   - Fordítsa le a kódot, töltse fel a végrehajtható fájlt és annak függőségeit az Azure Storage-ba, és adja meg az elérési utat a `folderPath` tulajdonságban.
 

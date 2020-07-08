@@ -5,10 +5,9 @@ services: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.openlocfilehash: 643d25e99bef191bfce77f092a9f2218c891a442
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84171378"
 ---
 # <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes szolgáltatásban (ak) lévő alkalmazások tárolási lehetőségei
@@ -120,7 +119,7 @@ spec:
         claimName: azure-managed-disk
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A kapcsolódó ajánlott eljárásokért lásd: [ajánlott eljárások a tároláshoz és a biztonsági mentéshez az AK-ban][operator-best-practices-storage].
 

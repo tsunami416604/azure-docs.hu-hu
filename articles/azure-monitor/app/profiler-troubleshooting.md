@@ -7,10 +7,9 @@ ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 7c9dd20aea410aecb34811ca6e08e0f641be292b
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84148344"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Az Application Insights Profiler engedélyezésével vagy megtekintésével kapcsolatos problémák elhárítása
@@ -169,7 +168,7 @@ A Azure Diagnostics konfigurálásához használt beállítások ellenőrzését
 
 1. Ellenőrizze, hogy helyes-e a Rendszerállapotkulcsot a Profiler parancssorban. 
 
-1. Az előző *config. JSON* fájlban található elérési út használatával keresse meg a Profiler-naplófájlt, az úgynevezett **BootstrapN. log**fájlt. Megjeleníti a Profiler által használt beállításokat jelző hibakeresési információkat. Megjeleníti a Profiler állapot-és hibaüzeneteit is.  
+1. A fájl előzőconfig.jstalálható elérési út használatával keresse *meg* a Profiler-naplófájlt ( **BootstrapN. log**). Megjeleníti a Profiler által használt beállításokat jelző hibakeresési információkat. Megjeleníti a Profiler állapot-és hibaüzeneteit is.  
 
     A virtuális gépek esetében általában a fájl a következő:
     ```

@@ -12,10 +12,9 @@ ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
 ms.openlocfilehash: faba9eaf59f5d1c941bacb58ba1faf9f817d39cf
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84046984"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-azure-sql-database"></a>A kibővített eseményekhez tartozó gyűrűs pufferek Azure SQL Database
@@ -47,8 +46,8 @@ Ez a témakör egy Transact-SQL-kód mintát mutat be, amely a következőket ta
 * Bármely adatbázis, amelyben létrehozhat egy táblát.
   
   * Igény szerint percek alatt [létrehozhat egy **AdventureWorksLT** bemutató adatbázist](single-database-create-quickstart.md) .
-* SQL Server Management Studio (SSMS. exe), ideális esetben a legújabb havi frissítési verzió.
-  A legújabb SSMS. exe fájlt a következő címről töltheti le:
+* SQL Server Management Studio (ssms.exe), ideális esetben a legújabb havi frissítési verzió.
+  A legújabb ssms.exe a következő címről töltheti le:
   
   * A című témakör a [letöltés SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
   * [Közvetlen hivatkozás a letöltésre.](https://go.microsoft.com/fwlink/?linkid=616025)
@@ -220,7 +219,7 @@ GO
 
 Az eredmények megtekintéséhez a **target_data_XML**oszlop fejléc alatti cellára kattintott.
 
-Ezután az eredmények ablaktáblán rákattintott a cellára **target_data_XML**oszlop fejlécében. Ehhez kattintson a létrehozott egy másik fájl fülre a SSMS. exe fájlban, amelyben az eredmény cellájának tartalma XML-ként jelenik meg.
+Ezután az eredmények ablaktáblán rákattintott a cellára **target_data_XML**oszlop fejlécében. Ekkor kattintson a létrehozott egy másik fájl fülre a ssms.exe, amelyben az eredmény cellájának tartalma XML-ként jelenik meg.
 
 A kimenet az alábbi blokkban látható. Úgy néz ki, hogy hosszú, de csak két **\<event>** elemből áll.
 

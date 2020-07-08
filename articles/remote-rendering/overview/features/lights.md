@@ -1,18 +1,17 @@
 ---
-title: Jelenet világítása
+title: Jelenet megvilágítása
 description: A fényforrás leírása és tulajdonságai
 author: florianborn71
 ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
 ms.openlocfilehash: e33e012480c876dc5befbb93404bdb131ea9329a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84022146"
 ---
-# <a name="scene-lighting"></a>Jelenet világítása
+# <a name="scene-lighting"></a>Jelenet megvilágítása
 
 Alapértelmezés szerint a távolról megjelenített objektumok egy [Sky-fénnyel](sky.md)vannak kivilágítva. A legtöbb alkalmazás esetében ez már elegendő, de további fényforrásokat is hozzáadhat a jelenethez.
 

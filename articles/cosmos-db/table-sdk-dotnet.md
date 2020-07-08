@@ -9,10 +9,9 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/17/2018
 ms.openlocfilehash: 419c3f21c8606bb16112fd18cfe141655fd7b868
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84168148"
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB table .NET API: letöltési és kibocsátási megjegyzések
@@ -27,7 +26,7 @@ ms.locfileid: "84168148"
 |   |   |
 |---|---|
 |**SDK letöltése**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table)|
-|**Gyorsútmutató**|[Azure Cosmos DB: alkalmazás létrehozása a .NET-tel és a Table API](create-table-dotnet.md)|
+|**Gyors útmutató**|[Azure Cosmos DB: alkalmazás létrehozása a .NET-tel és a Table API](create-table-dotnet.md)|
 |**Oktatóanyag**|[Azure Cosmos DB: Fejlesztés a Table API-val .NET-keretrendszerben](tutorial-develop-table-dotnet.md)|
 |**Jelenleg támogatott keretrendszer**|[Microsoft .NET-keretrendszer 4.5.1](https://www.microsoft.com/en-us/download/details.aspx?id=40779)|
 
@@ -50,11 +49,11 @@ ms.locfileid: "84168148"
 ### <a name="200"></a><a name="2.0.0"></a>2.0.0
 
 * Többrégiós írási támogatás hozzáadva
-* Rögzített NuGet-csomagok függőségei a Microsoft. Azure. DocumentDB, a Microsoft. OData. Core, a Microsoft. OData. EDM, a Microsoft. térbeli
+* Rögzített NuGet-csomag függőségei Microsoft.Azure.DocumentDB, Microsoft. OData. Core, Microsoft. OData. EDM, Microsoft. térbeli
 
 ### <a name="113"></a><a name="1.1.3"></a>1.1.3
 
-* Rögzített NuGet-csomagok függőségei a Microsoft. Azure. Storage. Common és a Microsoft. Azure. DocumentDB.
+* Rögzített NuGet-csomagok függőségei a Microsoft. Azure. Storage. Common és a Microsoft.Azure.DocumentDB.
 * Hibajavítások a tábla szerializálásakor, ha a JsonConvert. DefaultSettings konfigurálva van.
 
 ### <a name="111"></a><a name="1.1.1"></a>1.1.1
@@ -87,7 +86,7 @@ A [WindowsAzure. Storage-PremiumTable](https://www.nuget.org/packages/WindowsAzu
 A szolgáltatás elutasítja a kivont SDK használatával Azure Cosmos DB kérelmeket.
 <br/>
 
-| Verzió | Kiadás dátuma | Nyugdíjazás dátuma |
+| Verzió | Kiadás dátuma | Kivonás dátuma |
 | --- | --- | --- |
 | [2.1.2](#2.1.2) |Szeptember 16., 2019| |
 | [2.1.0](#2.1.0) |2019. január 22.|Április 01., 2020 |

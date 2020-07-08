@@ -4,10 +4,9 @@ description: Megtudhatja, hogyan készítheti elő a Windows Server 2003-kiszolg
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.openlocfilehash: 33519764b138c7711e6c03a85aa33ec6f936a748
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84172283"
 ---
 # <a name="prepare-windows-server-2003-machines-for-migration"></a>Windows Server 2003 rendszerű gépek előkészítése áttelepítésre
@@ -38,13 +37,13 @@ Az áttelepítés előtt ellenőrizze, hogy telepítve van-e a Hyper-V integrác
 3. Másolja a telepítési mappát a VMware virtuális gépre.
 4. Futtassa a parancsot a virtuális gép parancssorából ```gpedit.msc``` .
 5. Nyissa meg a **Számítógép konfigurációja**  >  **Windows**  >  **-Beállítások parancsfájlokat (indítás/leállítás)**.
-6. Az **indításkor**  >  **adja**meg  >  a**parancsfájl nevét**mezőbe írja be a Setup. exe-címeket.
+6. Az **indításkor**  >  **adja**meg  >  a**parancsfájl nevét**mezőbe írja be a setup.exe-címeket.
 7. Az Azure-ba való Migrálás után a szkript az Azure-beli virtuális gép első indításakor fut le.
 8. Manuálisan indítsa újra az Azure-beli virtuális gépet. A rendszerindítási diagnosztika előugró ablaka jelzi, hogy újraindítás szükséges.
 9. A szkript futtatása és a Hyper-V integrációs szolgáltatások az Azure-beli virtuális gépen való telepítése után eltávolíthatja a parancsfájlt az indításból.
 10. A telepítést követően meghagyhatja az alapértelmezett beállításokat az integrációs szolgáltatásokban. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse át a [VMware](migrate-support-matrix-vmware-migration.md) és a [Hyper-V](migrate-support-matrix-hyper-v-migration.md) virtuális gépek áttelepítési követelményeit.
 - Telepítse át a [VMware](server-migrate-overview.md) és a [Hyper-V](tutorial-migrate-hyper-v.md) virtuális gépeket.

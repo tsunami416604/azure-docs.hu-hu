@@ -16,10 +16,9 @@ ms.date: 06/01/2017
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: ca11fce252192cbf8e5f0bc2cfb5fcd38f5d4443
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84020880"
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>Az Azure Premium Storage és az SQL Server együttes használata virtuális gépeken
@@ -33,7 +32,7 @@ Az [Azure Premium SSD](../disks-types.md) -k a tárterület következő generác
 
 Ez a cikk a SQL Server rendszert futtató virtuális gépek Premium Storage használatára való áttelepítésének tervezését és útmutatását ismerteti. Ez magában foglalja az Azure-infrastruktúrát (Hálózatkezelés, tárolás) és a vendég Windowsos virtuális gép lépéseit. A [függelékben](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage) szereplő példa átfogó teljes körű áttelepítést mutat be, amellyel a nagyobb méretű virtuális gépeket áthelyezheti a továbbfejlesztett helyi SSD-tároló kihasználása érdekében a PowerShell használatával.
 
-Fontos megérteni az Azure-Premium Storage az IAAS-alapú virtuális gépekkel való SQL Serverának teljes körű folyamatát. Az érintett műveletek közé tartoznak az alábbiak:
+Fontos megérteni az Azure-Premium Storage az IAAS-alapú virtuális gépekkel való SQL Serverának teljes körű folyamatát. Ide tartoznak az alábbiak:
 
 * A Premium Storage használatának előfeltételeinek azonosítása.
 * Példák a SQL Server IaaS való üzembe helyezésére Premium Storage az új központi telepítések esetén.

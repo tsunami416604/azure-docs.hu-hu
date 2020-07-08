@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
 ms.openlocfilehash: 9303d84b2862b556a9ccc286ffa118bf1e52b715
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84047523"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>Adatok mozgatása kiterjesztett felhőalapú adatbázisok között
@@ -141,7 +140,7 @@ A felosztási-egyesítési szolgáltatási csomag tartalmaz egy feldolgozói sze
 
 - **Forrás tartománya (felosztás és egyesítés)**
 
-  A felosztott és egyesítési művelet az alacsony és a magas kulcs használatával dolgozza fel a tartományt. Ha nem kötött magas kulccsal rendelkező műveletet szeretne megadni, jelölje be a "magas kulcs max." jelölőnégyzetet, és hagyja üresen a magas kulcs mezőt. A megadott tartomány-kulcs értékeinek nem kell pontosan egyezniük a leképezés és a hozzá tartozó szegélyek között a szegmens térképen. Ha nem ad meg tartományon kívüli határokat az összes szolgáltatásnál, a rendszer automatikusan kikövetkezteti a legközelebbi tartományt. A GetMappings. ps1 PowerShell-parancsfájl segítségével lekérheti az aktuális leképezéseket egy adott szegmens-térképen.
+  A felosztott és egyesítési művelet az alacsony és a magas kulcs használatával dolgozza fel a tartományt. Ha nem kötött magas kulccsal rendelkező műveletet szeretne megadni, jelölje be a "magas kulcs max." jelölőnégyzetet, és hagyja üresen a magas kulcs mezőt. A megadott tartomány-kulcs értékeinek nem kell pontosan egyezniük a leképezés és a hozzá tartozó szegélyek között a szegmens térképen. Ha nem ad meg tartományon kívüli határokat az összes szolgáltatásnál, a rendszer automatikusan kikövetkezteti a legközelebbi tartományt. A GetMappings.ps1 PowerShell-parancsfájl segítségével lekérheti az aktuális leképezéseket egy adott szegmens-térképen.
 
 - **Felosztott forrás viselkedése (Split)**
 

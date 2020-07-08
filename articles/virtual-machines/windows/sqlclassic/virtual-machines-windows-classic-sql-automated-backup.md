@@ -16,10 +16,9 @@ ms.date: 01/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: c792b217f49121b6d3d6eaf2d8f8380997683bd8
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84014672"
 ---
 # <a name="automated-backup-for-sql-server-in-azure-virtual-machines-classic"></a>SQL Server automatikus biztonsági mentése az Azure Virtual Machines (klasszikus)
@@ -66,7 +65,7 @@ Az automatikus biztonsági mentés használatához vegye figyelembe a következ�
 ## <a name="settings"></a>Beállítások
 Az alábbi táblázat az automatikus biztonsági mentéshez konfigurálható beállításokat ismerteti. A klasszikus virtuális gépek esetében a PowerShell használatával kell konfigurálni ezeket a beállításokat.
 
-| Beállítás | Tartomány (alapértelmezett) | Leírás |
+| Beállítás | Tartomány (alapértelmezett) | Description |
 | --- | --- | --- |
 | **Automatikus biztonsági mentés** |Engedélyezés/letiltás (letiltva) |Engedélyezheti vagy letilthatja a SQL Server 2014 standard vagy Enterprise rendszert futtató Azure-beli virtuális gépek automatizált biztonsági mentését. |
 | **Megtartási időszak** |1-30 nap (30 nap) |A biztonsági másolat megőrzésének napjainak száma. |

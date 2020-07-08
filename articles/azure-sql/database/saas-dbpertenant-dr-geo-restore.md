@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: sstein
 ms.date: 01/14/2019
 ms.openlocfilehash: 70d21170bfc172f30b01c2af093bc82a54c80dd3
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84043127"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>Geo-visszaállítás használata több-bérlős SaaS-alkalmazás helyreállításához az adatbázis biztonsági másolatainak használatával
@@ -108,7 +107,7 @@ Ebben a feladatban elindít egy folyamatot, amely a kiszolgálók, a rugalmas k�
 
 1. A PowerShell ISE-ben nyissa meg a. ..\Learning Modules\UserConfig.psm1 fájlt. Cserélje le a `<resourcegroup>` és `<user>` a értéket a 10-es és a 11-es vonalakra az alkalmazás üzembe helyezésekor használt értékkel. Mentse a fájlt.
 
-2. A PowerShell ISE-ben nyissa meg a. ..\Learning Modules\Business folytonosságát és a katasztrófa-Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 parancsfájlt.
+2. A PowerShell ISE-ben nyissa meg a. ..\Learning Modules\Business folytonosságát és a katasztrófa Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 szkriptet.
 
     Ebben az oktatóanyagban futtatja az egyes forgatókönyveket ebben a PowerShell-parancsfájlban, ezért ne nyissa meg a fájlt.
 
@@ -172,7 +171,7 @@ A helyreállítási folyamat a következő műveleteket végzi el:
 
 Képzelje el, hogy a régióban az alkalmazás központi telepítése történik, és futtassa a helyreállítási parancsfájlt:
 
-1. A PowerShell ISE-ben a. ..\Learning Modules\Business folytonossága és a katasztrófa-Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 parancsfájlban állítsa be a következő értéket:
+1. A PowerShell ISE-ben a. ..\Learning Modules\Business folytonossága és a katasztrófa Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 parancsfájlban állítsa be a következő értéket:
 
     $DemoScenario = 2: állítsa helyre az alkalmazást egy helyreállítási régióban a Geo-redundáns biztonsági másolatokből való visszaállítással.
 
@@ -207,7 +206,7 @@ Amíg az alkalmazás végpontja le van tiltva a Traffic Managerban, az alkalmaz�
 ## <a name="provision-a-new-tenant-in-the-recovery-region"></a>Új bérlő kiépítése a helyreállítási régióban
 Még a bérlői adatbázisok visszaállítása előtt is kiépítheti az új bérlőket a helyreállítási régióban. A helyreállítási régióban kiépített új bérlői adatbázisok haza a helyreállított adatbázisokkal.   
 
-1. A PowerShell ISE-ben, a. ..\Learning Modules\Business folytonossága és a katasztrófa-Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 parancsfájlban állítsa be a következő tulajdonságot:
+1. A PowerShell ISE-ben a. ..\Learning Modules\Business folytonossága és a katasztrófa Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 parancsfájlban állítsa be a következő tulajdonságot:
 
     $DemoScenario = 3: új bérlő kiépítése a helyreállítási régióban.
 
@@ -260,7 +259,7 @@ Ebben a feladatban frissíti a visszaállított bérlői adatbázisok egyikét. 
 
 1. A böngészőben keresse meg a contoso Concert Hall eseményeinek listáját, Görgesse végig az eseményeket, és figyelje meg az utolsó eseményt, amely súlyosan Strauss.
 
-2. A PowerShell ISE-ben a. ..\Learning Modules\Business folytonossága és a katasztrófa-Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 parancsfájlban állítsa be a következő értéket:
+2. A PowerShell ISE-ben a. ..\Learning Modules\Business folytonossága és a katasztrófa Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 parancsfájlban állítsa be a következő értéket:
 
     $DemoScenario = 4: esemény törlése a helyreállítási régióban lévő bérlőből.
 
@@ -318,7 +317,7 @@ Képzelje el, hogy a leállás megoldódott, és futtatja a rehazatérési paran
 
 Ha követte az oktatóanyagot, a szkript azonnal újraaktiválja a fabrikam jazz Clubot és a Som Dojot az eredeti régióban, mert változatlanok maradnak. Ezután repatriates az új bérlőt, a Hawthorn hallt és a contoso Concert hallt, mert módosították. A szkript a katalógust is repatriates, amely a Hawthorn Hall üzembe helyezésekor frissült.
   
-1. A PowerShell ISE-ben, a. ..\Learning Modules\Business folytonossága és a katasztrófa-Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 parancsfájlban ellenőrizze, hogy a katalógus szinkronizálási folyamata továbbra is fut-e a PowerShell-példányában. Szükség esetén indítsa újra a beállítást:
+1. A PowerShell ISE-ben a. ..\Learning Modules\Business folytonossága és a katasztrófa Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 parancsfájlban ellenőrizze, hogy a katalógus szinkronizálási folyamata továbbra is fut-e a PowerShell-példányában. Szükség esetén indítsa újra a beállítást:
 
     $DemoScenario = 1: a bérlői kiszolgáló, a készlet és az adatbázis-konfigurációs adatok szinkronizálásának megkezdése a katalógusba.
 
@@ -350,7 +349,7 @@ A rehazatérés befejezése után biztonságos törölni a helyreállítási ré
 
 A visszaállítási folyamat létrehozza a helyreállítási erőforráscsoport összes helyreállítási erőforrását. A karbantartási folyamat törli ezt az erőforráscsoportot, és eltávolítja az erőforrásokra mutató összes hivatkozást a katalógusból. 
 
-1. A PowerShell ISE-ben, a. ..\Learning Modules\Business folytonossági és katasztrófa-Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 parancsfájljában állítsa be a következőket:
+1. A PowerShell ISE-ben a. ..\Learning Modules\Business folytonossága és a katasztrófa Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 parancsfájlban állítsa be a következőket:
     
     $DemoScenario = 6: elavult erőforrások törlése a helyreállítási régióból.
 
