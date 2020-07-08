@@ -3,8 +3,8 @@ title: Összehasonlítja SQL Database és az SQL felügyelt példányának adatb
 titleSuffix: Azure SQL Database & SQL Managed Instance
 description: Ez a cikk a Azure SQL Database és az Azure SQL felügyelt példányának adatbázismotor-funkcióit hasonlítja össze.
 services: sql-database
-ms.service: sql-database
-ms.subservice: service
+ms.service: sql-db-mi
+ms.subservice: features
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 06/25/2020
-ms.openlocfilehash: 9cefd07e02eaf80b7cfdf65cab8d4eb410da4677
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.openlocfilehash: e48a027af70ec9d002ddcfbb2ee36ded4ca7875a
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85373284"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85983519"
 ---
 # <a name="features-comparison-azure-sql-database-and-azure-sql-managed-instance"></a>Szolgáltatások összehasonlítása: Azure SQL Database és az Azure SQL felügyelt példánya
 
@@ -71,7 +71,7 @@ A következő táblázat a SQL Server főbb funkcióit sorolja fel, és informá
 | [Fájlok és fájlcsoportok](https://docs.microsoft.com/sql/relational-databases/databases/database-files-and-filegroups) | Csak az elsődleges fájl csoport | Igen. A rendszer automatikusan hozzárendeli a fájlelérési utakat, és a fájl helye nem adható meg az `ALTER DATABASE ADD FILE` [utasításban](../managed-instance/transact-sql-tsql-differences-sql-server.md#alter-database-statement).  |
 | [Fájlstream](https://docs.microsoft.com/sql/relational-databases/blob/filestream-sql-server) | No | [Nem](../managed-instance/transact-sql-tsql-differences-sql-server.md#filestream-and-filetable) |
 | [Teljes szöveges keresés (FTS)](https://docs.microsoft.com/sql/relational-databases/search/full-text-search) |  Igen, de a harmadik féltől származó Word-megszakítók nem támogatottak | Igen, de [a harmadik féltől származó Word-megszakítók nem támogatottak](../managed-instance/transact-sql-tsql-differences-sql-server.md#full-text-semantic-search) |
-| [Függvények](https://docs.microsoft.com/sql/t-sql/functions/functions) | A legtöbb esetben – lásd az egyes függvényeket | Igen – lásd: [tárolt eljárások, függvények, eseményindítók eltérései](../managed-instance/transact-sql-tsql-differences-sql-server.md#stored-procedures-functions-and-triggers) |
+| [Functions](https://docs.microsoft.com/sql/t-sql/functions/functions) | A legtöbb esetben – lásd az egyes függvényeket | Igen – lásd: [tárolt eljárások, függvények, eseményindítók eltérései](../managed-instance/transact-sql-tsql-differences-sql-server.md#stored-procedures-functions-and-triggers) |
 | [Memóriabeli optimalizálás](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) | Igen – a [prémium és a üzletileg kritikus szint csak](../in-memory-oltp-overview.md) korlátozott mértékben támogatja a nem állandó memóriabeli objektumokat, például a táblák típusát | Igen – [csak üzletileg kritikus réteg](../managed-instance/sql-managed-instance-paas-overview.md) |
 | [Nyelvi elemek](https://docs.microsoft.com/sql/t-sql/language-elements/language-elements-transact-sql) | A legtöbb esetben – lásd az egyes elemeket |  Igen – lásd: a [T-SQL eltérései](../managed-instance/transact-sql-tsql-differences-sql-server.md) |
 | [Társított kiszolgálók](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) | Nem – lásd: [rugalmas lekérdezés](elastic-query-horizontal-partitioning.md) | Igen. Csak [SQL Server és SQL Database](../managed-instance/transact-sql-tsql-differences-sql-server.md#linked-servers) elosztott tranzakciók nélkül. |
@@ -177,9 +177,9 @@ A különböző áttelepítési módszerek használatával áthelyezheti az adat
 | --- | --- | --- |
 | SQL Server (helyszíni, AzureVM, Amazon RDS) | **Online:** [adatáttelepítési szolgáltatás (DMS)](https://docs.microsoft.com/sql/dma/dma-overview), [tranzakciós replikáció](../managed-instance/replication-transactional-overview.md) <br/> **Offline:** [BACPAC-fájl (Importálás)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP | **Online:** [adatáttelepítési szolgáltatás (DMS)](https://docs.microsoft.com/sql/dma/dma-overview), [tranzakciós replikáció](../managed-instance/replication-transactional-overview.md) <br/> **Offline:** Natív biztonsági mentés/visszaállítás, [BACPAC fájl (Importálás)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [Pillanatkép-replikáció](../managed-instance/replication-transactional-overview.md) |
 | Önálló adatbázis | **Offline:** [BACPAC-fájl (Importálás)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP | **Offline:** [BACPAC-fájl (Importálás)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP |
-| SQL Managed Instance | **Online:** [tranzakciós replikáció](../managed-instance/replication-transactional-overview.md) <br/> **Offline:** [BACPAC-fájl (Importálás)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [Pillanatkép-replikáció](../managed-instance/replication-transactional-overview.md) | **Online:** [tranzakciós replikáció](../managed-instance/replication-transactional-overview.md) <br/> **Offline:** Példányok közötti időponthoz tartozó visszaállítás ([Azure PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase?#examples) vagy [Azure CLI](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Cross-instance-point-in-time-restore-in-Azure-SQL-Database/ba-p/386208)), [natív biztonsági mentés/visszaállítás](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore), [BACPAC fájl (Importálás)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [Pillanatkép-replikáció](../managed-instance/replication-transactional-overview.md) |
+| Felügyelt SQL-példány | **Online:** [tranzakciós replikáció](../managed-instance/replication-transactional-overview.md) <br/> **Offline:** [BACPAC-fájl (Importálás)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [Pillanatkép-replikáció](../managed-instance/replication-transactional-overview.md) | **Online:** [tranzakciós replikáció](../managed-instance/replication-transactional-overview.md) <br/> **Offline:** Példányok közötti időponthoz tartozó visszaállítás ([Azure PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase?#examples) vagy [Azure CLI](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Cross-instance-point-in-time-restore-in-Azure-SQL-Database/ba-p/386208)), [natív biztonsági mentés/visszaállítás](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore), [BACPAC fájl (Importálás)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [Pillanatkép-replikáció](../managed-instance/replication-transactional-overview.md) |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Microsoft továbbra is felveszi a szolgáltatásokat a Azure SQL Databasehoz. Az alábbi szűrőket használó legújabb frissítésekért látogasson el az Azure Service Updates weblapjára:
 
