@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 06/28/2020
 ms.author: jingwang
 ms.openlocfilehash: 729d863e0f7c9d183554cbc65e9a8410ff17359a
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85516853"
 ---
 | Kategória              | Adattár                                                   | [Másolási tevékenység](../articles/data-factory/copy-activity-overview.md) (forrás/fogadó) | [Leképezési](../articles/data-factory/concepts-data-flow-overview.md) adatfolyam (forrás/fogadó) | [Keresési tevékenység](../articles/data-factory/control-flow-lookup-activity.md) | [Metaadatok beolvasása tevékenység](../articles/data-factory/control-flow-get-metadata-activity.md) / [Érvényesítési tevékenység](../articles/data-factory/control-flow-validation-activity.md) | [Tevékenység törlése](../articles/data-factory/delete-activity.md) |

@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46e37365c73c603a8cd742e2f7943c2f5116ce22
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 0b5e1db2c86f6118c3cd333974c9cfd64f747128
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85387051"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551432"
 ---
 # <a name="add-facebook-as-an-identity-provider-for-external-identities"></a>Facebook hozzáadása identitás-szolgáltatóként külső identitásokhoz
 
@@ -32,7 +32,7 @@ Facebook-fiók [identitás-szolgáltatóként](identity-providers.md)való haszn
 
 > [!NOTE]  
 > Használja az alábbi URL-címeket az alábbi 9. és 16. lépésekben.
-> - Adja meg a **webhely URL-címét** `https://login.microsoftonline.com` .
+> - A **webhely URL-** címe mezőben adja meg az alkalmazás címét, például: `https://contoso.com` .
 > - **Érvényes OAuth átirányítási URI**-k esetén adja meg a következőt: `https://login.microsoftonline.com/te/<tenant-id>/oauth2/authresp` . A Azure Active Directory áttekintés paneljén található `<tenant-ID>` .
 
 
@@ -101,6 +101,6 @@ A Facebook-összevonási telepítőt törölheti. Ha így tesz, a felhasználói
    > [!NOTE]
    > További információ: [Remove-AzureADMSIdentityProvider](https://docs.microsoft.com/powershell/module/azuread/Remove-AzureADMSIdentityProvider?view=azureadps-2.0-preview). 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Önkiszolgáló regisztráció hozzáadása egy alkalmazáshoz](self-service-sign-up-user-flow.md)

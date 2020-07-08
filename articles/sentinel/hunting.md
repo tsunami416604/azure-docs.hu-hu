@@ -1,6 +1,6 @@
 ---
 title: A vadászat lehetőségei az Azure Sentinelben | Microsoft Docs
-description: Ez a cikk az Azure Sentinel-vadászati képességeinek használatát ismerteti.
+description: Az Azure Sentinel beépített vadászati lekérdezéseit használva segítséget kaphat az adataiban felmerülő problémák megoldásához.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2019
 ms.author: yelevin
-ms.openlocfilehash: 52af688917aa531d125f83844df29a988ed7cb7e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cceeb1fc9715dfd7b1ac714c424421c51d292757
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81686633"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85552280"
 ---
 # <a name="hunt-for-threats-with-azure-sentinel"></a>A fenyegetések vadászata az Azure Sentinel szolgáltatással
 
@@ -76,7 +76,7 @@ Tekintse meg a [vadászati lekérdezés tárházát](https://github.com/Azure/Or
 
 ## <a name="sample-query"></a>Mintalekérdezés
 
-Egy tipikus lekérdezés a tábla nevével kezdődik, majd egy, a által \|elválasztott operátorok sorozata.
+Egy tipikus lekérdezés a tábla nevével kezdődik, majd egy, a által elválasztott operátorok sorozata \| .
 
 A fenti példában Kezdje a Table Name SecurityEvent, és szükség szerint adja hozzá a vezetékes elemeket.
 
@@ -84,7 +84,7 @@ A fenti példában Kezdje a Table Name SecurityEvent, és szükség szerint adja
 
 2. Adjon hozzá egy szűrőt a lekérdezésben, hogy csak a 4688-es AZONOSÍTÓJÚ esemény jelenjen meg.
 
-3. Vegyen fel egy szűrőt a parancssori lekérdezésben, hogy csak a cscript. exe példányait tartalmazza.
+3. Vegyen fel egy szűrőt a parancssori lekérdezésben, hogy csak a cscript.exe példányait tartalmazza.
 
 4. Csak azokat az oszlopokat adja meg, amelyeket szeretne felderíteni, és korlátozza az eredményeket 1000-re, és kattintson a **lekérdezés futtatása**gombra.
 5. Kattintson a zöld háromszögre, és futtassa a lekérdezést. Tesztelheti a lekérdezést, és futtathatja a rendellenes viselkedés kereséséhez.

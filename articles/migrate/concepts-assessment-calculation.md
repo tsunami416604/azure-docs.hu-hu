@@ -1,16 +1,16 @@
 ---
-title: Értékelések a Azure Migrate Server Assessment szolgáltatásban
+title: Azure VM-értékelések Azure Migrate Server Assessment-ben
 description: Tudnivalók a Azure Migrate Server Assessment értékeléséről
 ms.topic: conceptual
 ms.date: 05/27/2020
-ms.openlocfilehash: ee6b13edd12109b7f748abeaf13a5e8f3ded2a8e
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 33051fbcfb792d3fa9734a818d293775486de647
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343948"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85549950"
 ---
-# <a name="assessments-in-azure-migrate-server-assessment"></a>Értékelések a Azure Migrateban: kiszolgáló értékelése
+# <a name="azure-vm-assessments-in-azure-migrate-server-assessment"></a>Azure VM-értékelések Azure Migrateban: kiszolgáló értékelése
 
 Ez a cikk áttekintést nyújt a [Azure Migrate: Server Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool) Tool értékeléséről. Az eszköz képes a helyszíni VMware virtuális gépek, a Hyper-V virtuális gépek és a fizikai kiszolgálók értékelésére az Azure-ba való Migrálás céljából.
 
@@ -23,7 +23,14 @@ A kiszolgáló-értékelési eszközzel végzett értékelés méri a készülts
 
 ## <a name="types-of-assessments"></a>Az értékelések típusai
 
-A kiszolgáló-értékeléssel létrehozott értékelések az adatok időpontra vonatkozó pillanatképei. A kiszolgáló értékelése két típusú értékelést biztosít.
+A Azure Migrate: Server Assessment használatával kétféle értékelést hozhat létre.
+
+**Értékelés típusa** | **Részletek**
+--- | --- 
+**Azure VM** | Értékelések a helyszíni kiszolgálók Azure-beli virtuális gépekre való átköltöztetéséhez. <br/><br/> A helyszíni [VMWare virtuális gépeket](how-to-set-up-appliance-vmware.md), a [Hyper-V virtuális gépeket](how-to-set-up-appliance-hyper-v.md)és a [fizikai kiszolgálókat](how-to-set-up-appliance-physical.md) felhasználhatja az Azure-ba való áttelepítéshez ezzel az értékelési típussal.
+**Azure VMware Solution (AVS)** | A helyszíni kiszolgálók [Azure VMware-megoldásba (AVS)](https://docs.microsoft.com/azure/azure-vmware/introduction)való átköltöztetésének felmérése. <br/><br/> A helyszíni [VMWare virtuális gépeket](how-to-set-up-appliance-vmware.md) az értékelés típusának használatával értékelheti az Azure VMware-megoldásba (AVS) való áttelepítésre. [További információ](concepts-azure-vmware-solution-assessment-calculation.md)
+
+A kiszolgáló-értékeléssel létrehozott értékelések az adatok időpontra vonatkozó pillanatképei. Az Azure-beli virtuális gépek értékelése a kiszolgálók értékelése során két méretezési feltétel közül választhat:
 
 **Értékelés típusa** | **Részletek** | **Adatok**
 --- | --- | ---
@@ -45,7 +52,7 @@ Ha Azure Migrate berendezést helyez üzembe a helyszíni kiszolgálók felderí
 1. Az első értékeléshez hozzon létre egy Azure-projektet, és adja hozzá a kiszolgáló-értékelési eszközt.
 1. Egyszerűsített Azure Migrate berendezés üzembe helyezése. A készülék folyamatosan felfedi a helyszíni gépeket, és számítógép-metaadatokat és teljesítményadatokat küld Azure Migrate. Telepítse a készüléket virtuális gépre vagy fizikai gépre. Semmit nem kell telepítenie az értékelni kívánt gépekre.
 
-Miután a készülék megkezdte a számítógép-felderítést, összegyűjtheti azokat a gépeket, amelyeket fel szeretne mérni egy csoportba, és a csoport értékelését futtathatja.
+Miután a készülék megkezdte a számítógép-felderítést, összegyűjtheti azokat a gépeket, amelyeket fel szeretne mérni egy csoportba, és értékelést kell futtatnia a csoportnak az **Azure VM**értékelési típussal.
 
 Kövesse a [VMware](tutorial-prepare-vmware.md), a [Hyper-V](tutorial-prepare-hyper-v.md)vagy a [fizikai kiszolgálók](tutorial-prepare-physical.md) oktatóanyagait, hogy kipróbálja ezeket a lépéseket.
 
@@ -57,7 +64,7 @@ Ha egy CSV-fájl használatával értékeli a kiszolgálókat, nincs szüksége 
 1. Az első értékeléshez hozzon létre egy Azure-projektet, és adja hozzá a kiszolgáló-értékelési eszközt.
 1. Töltsön le egy CSV-sablont, és adja hozzá a kiszolgálói adatfájlokat.
 1. Importálja a sablont a kiszolgálói felmérésbe.
-1. Az importálással hozzáadott kiszolgálók felderítése, összegyűjtése egy csoportba, és a csoport értékelésének futtatása.
+1. Az importálással hozzáadott kiszolgálók felderítése, összegyűjtése egy csoportba, és értékelés futtatása a csoportnak az **Azure VM**értékelési típussal.
 
 ## <a name="what-data-does-the-appliance-collect"></a>Milyen adatokat gyűjt a készülék?
 
@@ -89,7 +96,7 @@ Ha a készüléket a felderítéshez használja, a következő lépésekkel gyű
     - Lemez átviteli sebessége (olvasás és írás)
     - Hálózati átviteli sebesség (be és ki)
 
-## <a name="how-are-assessments-calculated"></a>Hogyan számítják ki az értékeléseket?
+## <a name="how-are-azure-vm-assessments-calculated"></a>Hogyan számítják ki az Azure-beli virtuális gépek értékelését?
 
 A kiszolgáló értékelése a helyszíni gépek metaadatait és teljesítményadatait használja az értékelések kiszámításához. Ha telepíti a Azure Migrate készüléket, az értékelés a készülék által gyűjtött adatokat használja. Ha azonban egy CSV-fájllal importált értékelést futtat, akkor megadja a számítás metaadatait.
 
@@ -101,11 +108,11 @@ A számítások a következő három szakaszban történnek:
 
 A számítások az előző sorrendben vannak. A számítógép-kiszolgálók csak akkor mozdulnak el egy későbbi fázisra, ha az előzőt átadja. Ha például egy kiszolgáló meghibásodik az Azure készültségi fázisában, az az Azure számára nem megfelelőként van megjelölve. A méretezés és a költségszámítás nem történik meg az adott kiszolgálón.
 
-## <a name="whats-in-an-assessment"></a>Mit tartalmaz egy értékelés?
+## <a name="whats-in-an-azure-vm-assessment"></a>Mi az Azure-beli virtuális gépek felmérése?
 
-A kiszolgáló értékelése során a következők szerepelnek:
+Itt található egy Azure-beli virtuális gép értékelése a kiszolgáló értékelése során:
 
-Tulajdonság | Részletek
+**Tulajdonság** | **Részletek**
 --- | ---
 **Célhely** | Az áttelepíteni kívánt hely. A kiszolgáló értékelése jelenleg a következő Azure-régiókat támogatja:<br/><br/> Kelet-Ausztrália, Kelet-Ausztrália, Dél-Brazília, Közép-Kanada, Kelet-Kanada, Közép-India, USA középső régiója, Kelet-Kína, Észak-Kína, Kelet-Ázsia, USA keleti régiója, USA 2. keleti régiója, Közép-Németország, Északkelet-Németország, Kelet-Japán, Nyugat-Japán, Dél-Korea, Dél-Korea, Egyesült Királyság déli régiója, Észak-Európa , Az USA nyugati középső régiója, Nyugat-Európa, Nyugat-India, USA nyugati régiója és az USA 2. nyugati régiója.
 **Cél Storage-lemez (méretezés)** | Az Azure-beli tároláshoz használandó lemez típusa. <br/><br/> A célként megadott Storage-lemezt prémium szintű felügyelt, standard SSD által felügyelt vagy standard HDD által felügyelt határozza meg.
@@ -128,7 +135,7 @@ Tulajdonság | Részletek
 
 ## <a name="calculate-readiness"></a>Készültség kiszámítása
 
-Nem minden gép alkalmas az Azure-ban való futtatásra. A kiszolgáló értékelése az összes helyszíni gépet kiértékeli, és felkészültségi kategóriát rendel hozzájuk.
+Nem minden gép alkalmas az Azure-ban való futtatásra. Az Azure-beli virtuális gépek felmérése az összes helyszíni gépet kiértékeli, és felkészültségi kategóriát rendel hozzájuk.
 
 - **Készen áll az Azure-ra**: a gép a következőképpen telepíthető át az Azure-ba, változtatás nélkül. Az Azure teljes körű Azure-támogatással fog indulni.
 - **Feltételesen készen áll az Azure-ra**: a gép elindulhat az Azure-ban, de nem rendelkezik teljes körű Azure-támogatással. Az Azure például nem támogatja a Windows Server korábbi verzióját futtató gépeket. Mielőtt áttelepíti ezeket a gépeket az Azure-ba, körültekintően kell eljárnia. A készültségi problémák elhárításához kövesse az értékeléssel kapcsolatos szervizelési útmutatót.
@@ -139,19 +146,19 @@ A készültség kiszámításához a kiszolgáló értékelése a következő t�
 
 ### <a name="machine-properties"></a>Számítógép tulajdonságai
 
-A kiszolgáló értékelése a helyszíni virtuális gép alábbi tulajdonságait vizsgálja meg annak meghatározására, hogy futtatható-e az Azure-ban.
+Az Azure-beli virtuális gépek felmérése esetén a kiszolgáló értékelése a helyszíni virtuális gép alábbi tulajdonságait ellenőrzi, hogy az futtatható-e az Azure-beli virtuális gépeken.
 
 Tulajdonság | Részletek | Azure-készültségi állapot
 --- | --- | ---
 **Rendszerindítás típusa** | Az Azure a BIOS rendszerindítási típusával támogatja a virtuális gépeket, nem az UEFI-t. | Feltételesen üzemkész, ha a rendszerindítás UEFI típusú.
 **Cores** | Minden gépnek legfeljebb 128 maggal kell rendelkeznie, amely az Azure-beli virtuális gépek által támogatott maximális szám.<br/><br/> Ha rendelkezésre áll a teljesítmény előzményei, Azure Migrate az összehasonlításhoz a felhasznált magokat veszi figyelembe. Ha az értékelési beállítások egy kényelmi tényezőt határoznak meg, a kihasználatlan magok száma megszorozza a komfort tényezővel.<br/><br/> Ha nincsenek teljesítménybeli előzmények, Azure Migrate a lefoglalt magokat a komfort tényező alkalmazása nélkül használja. | Készen áll, ha a magok száma a határértéken belül van
-**RAM** | Az egyes gépek legfeljebb 3 892 GB RAM-mal rendelkezhetnek, ami az Azure M sorozatú Standard_M128m &nbsp; <sup>2</sup> virtuális gép által támogatott maximális méret. [További információ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).<br/><br/> Ha elérhetők a teljesítmény előzményei, Azure Migrate a felhasznált RAM-ot az összehasonlításhoz. Ha meg van adva egy kényelmi tényező, a kihasznált RAM-ot a komfort faktor megszorozza.<br/><br/> Ha nincsenek előzmények, a lefoglalt RAM-ot a komfort faktor alkalmazása nélkül használja a rendszer.<br/><br/> | Készen áll, ha a RAM mennyisége a határértéken belül van
+**RAM** | Az egyes gépek legfeljebb 3 892 GB RAM-mal rendelkezhetnek, ami az Azure M sorozatú Standard_M128m &nbsp; <sup>2</sup> virtuális gép által támogatott maximális méret. [További információk](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).<br/><br/> Ha elérhetők a teljesítmény előzményei, Azure Migrate a felhasznált RAM-ot az összehasonlításhoz. Ha meg van adva egy kényelmi tényező, a kihasznált RAM-ot a komfort faktor megszorozza.<br/><br/> Ha nincsenek előzmények, a lefoglalt RAM-ot a komfort faktor alkalmazása nélkül használja a rendszer.<br/><br/> | Készen áll, ha a RAM mennyisége a határértéken belül van
 **Storage-lemez** | A lemez lefoglalt mérete nem haladhatja meg a 32 TB-ot. Bár az Azure támogatja az 64 TB-os lemezeket az Azure ultra SSD Disks szolgáltatással, Azure Migrate: a Server Assessment jelenleg a 32 TB-ot ellenőrzi a lemez mérete miatt, mert még nem támogatja ultra SSD. <br/><br/> A géphez csatolt lemezek számának, beleértve az operációsrendszer-lemezt, 65 vagy kevesebbnek kell lennie. | Készen áll, ha a lemez mérete és száma a határértékeken belül van
 **Hálózat** | A gépekhez nem tartozhat több, mint 32 hálózati adapter (NIC). | Készen áll, ha a hálózati adapterek száma a korláton belül van
 
 ### <a name="guest-operating-system"></a>Vendég operációs rendszer
 
-A virtuálisgép-tulajdonságok áttekintésével együtt a kiszolgáló értékelése egy gép vendég operációs rendszerét vizsgálja, hogy képes-e futni az Azure-ban.
+Az Azure-beli virtuális gépek értékeléséhez, valamint a virtuális gép tulajdonságainak áttekintéséhez a kiszolgáló értékelése egy gép vendég operációs rendszerét vizsgálja meg, hogy képes-e futni az Azure-ban.
 
 > [!NOTE]
 > A VMware virtuális gépek vendég-elemzésének kezeléséhez a kiszolgáló értékelése a virtuális gép számára megadott operációs rendszert használja vCenter Serverban. A vCenter Server azonban nem biztosítja a Linux rendszerű virtuális gépek operációs rendszereinek kernel-verzióját. A verzió felderítéséhez be kell állítania az alkalmazás- [felderítést](https://docs.microsoft.com/azure/migrate/how-to-discover-applications). Ezután a készülék felderíti a verziók adatait az App-Discovery beállításakor megadott vendég hitelesítő adatok használatával.
@@ -178,11 +185,11 @@ Az operációs rendszer **vCenter Serverként van megadva** | Ebben az esetben a
 
 ## <a name="calculating-sizing"></a>Méretezés kiszámítása
 
-Ha a gép az Azure-hoz való használatra készként van megjelölve, a kiszolgáló értékelése méretezési javaslatokat tesz. Ezek az ajánlások azonosítják az Azure-beli virtuális gépet és a lemez SKU-t. A méretezési számítások attól függnek, hogy a-t használja-e helyszíni méretezéssel vagy teljesítmény-alapú méretezéssel.
+Ha a gép az Azure-ra való használatra készként van megjelölve, a kiszolgáló értékelése az Azure-beli virtuális gépek felmérésében foglalt javaslatokat tesz elérhetővé. Ezek az ajánlások azonosítják az Azure-beli virtuális gépet és a lemez SKU-t. A méretezési számítások attól függnek, hogy a-t használja-e helyszíni méretezéssel vagy teljesítmény-alapú méretezéssel.
 
 ### <a name="calculate-sizing-as-is-on-premises"></a>Méretezés kiszámítása (helyszíni)
 
- Ha a as-helyszíni méretezést használja, a kiszolgáló értékelése nem veszi figyelembe a virtuális gépek és lemezek teljesítményének előzményeit.
+ Ha a as-helyszíni méretezést használja, a kiszolgáló értékelése nem veszi figyelembe a virtuális gépek és lemezek teljesítményének előzményeit az Azure-beli virtuálisgép-felmérésben.
 
 - **Számítási méretezés**: a kiszolgáló értékelése egy Azure-beli virtuális gép SKU-jának kiosztása a helyszínen lefoglalt méret alapján.
 - **Tárolás és lemez méretezése**: a kiszolgáló értékelése az értékelés tulajdonságaiban megadott tárolási típust vizsgálja, és a megfelelő típusú lemez használatát javasolja. A lehetséges tárolási típusok a következők: standard HDD, standard SSD és prémium. Az alapértelmezett tárolási típus a prémium.
@@ -190,7 +197,7 @@ Ha a gép az Azure-hoz való használatra készként van megjelölve, a kiszolg�
 
 ### <a name="calculate-sizing-performance-based"></a>Méretezés kiszámítása (teljesítmény-alapú)
 
-Ha teljesítmény-alapú méretezést használ, a kiszolgáló értékelése a következőképpen teszi a méretezési javaslatokat:
+Ha teljesítmény-alapú méretezést használ egy Azure-beli virtuális gépek felmérésében, a kiszolgáló értékelése a következőképpen teszi a méretezési javaslatokat:
 
 - A kiszolgáló értékelése a gép teljesítményének előzményeit veszi figyelembe, hogy azonosítsa a virtuális gép méretét és a lemez típusát az Azure-ban.
 - Ha egy CSV-fájl használatával importálja a kiszolgálókat, a rendszer a megadott értékeket használja. Ez a módszer különösen akkor hasznos, ha túlterhelt a helyszíni gép, a kihasználtság alacsony, és szeretné megfelelő méretben helyezheti az Azure-beli virtuális gépet a költségek megtakarítása érdekében.
@@ -198,7 +205,7 @@ Ha teljesítmény-alapú méretezést használ, a kiszolgáló értékelése a k
 
 #### <a name="calculate-storage-sizing"></a>A tároló méretezésének kiszámítása
 
-A tárolás méretezése érdekében a Azure Migrate megkísérli leképezni a géphez csatolt összes lemezt egy Azure-lemezre. A méretezés a következőképpen működik:
+Az Azure-beli virtuális gépek felmérésében a tárolók méretezése Azure Migrate megkísérli leképezni a géphez csatolt összes lemezt egy Azure-lemezre. A méretezés a következőképpen működik:
 
 1. A kiszolgáló értékelése hozzáadja a lemez olvasási és írási IOPS az összes szükséges IOPS lekéréséhez. Hasonlóképpen hozzáadja az olvasási és írási sebesség értékét az egyes lemezek teljes átviteli sebességének lekéréséhez. Importálási alapú értékelések esetén lehetősége van a teljes IOPS, a teljes átviteli sebesség és az összes nem érték megadására. az importált fájlban lévő lemezek külön lemezes beállítások megadása nélkül. Ha ezt teszi, a rendszer kihagyja az egyes lemezek méretezését, és a megadott adatok közvetlenül a számítási méretezéshez használatosak, és kiválasztja a megfelelő VM SKU-t.
 
@@ -211,7 +218,7 @@ A tárolás méretezése érdekében a Azure Migrate megkísérli leképezni a g
 
 #### <a name="calculate-network-sizing"></a>Hálózati méretezés kiszámítása
 
-A kiszolgáló értékelése megpróbál olyan Azure-beli virtuális gépet találni, amely támogatja a helyszíni géphez csatlakoztatott hálózati adapterek számát és a szükséges teljesítményt.
+Az Azure-beli virtuális gépek értékeléséhez a Server Assessment megpróbál olyan Azure-beli virtuális gépet találni, amely támogatja a helyszíni géphez csatlakoztatott hálózati adapterek számát és a szükséges teljesítményt.
 
 - A helyszíni virtuális gép hatékony hálózati teljesítményének lekéréséhez a kiszolgáló értékelése összesíti az adatátviteli sebességet az összes hálózati adapteren kívülről (hálózatról). Ezután alkalmazza a komfort tényezőt. Az eredményül kapott értéket használva olyan Azure-beli virtuális gépet talál, amely támogatja a szükséges hálózati teljesítményt.
 - A hálózati teljesítménnyel együtt a kiszolgáló értékelése azt is mérlegeli, hogy az Azure-beli virtuális gép képes-e támogatni a szükséges számú hálózati adaptert.
@@ -228,7 +235,7 @@ A tárolási és hálózati követelmények kiszámítását követően a kiszol
 
 ## <a name="confidence-ratings-performance-based"></a>Megbízhatósági minősítések (teljesítmény-alapú)
 
-Azure Migrate minden teljesítmény-alapú értékelése megbízhatósági minősítéssel van társítva. A minősítés az egyik (legalacsonyabb) és az öt (a legmagasabb) csillag közötti tartományba esik. A megbízhatósági minősítés segít megbecsülni a Azure Migrate által biztosított méretre vonatkozó ajánlások megbízhatóságát.
+A Azure Migrate minden teljesítmény-alapú Azure-beli virtuális gép értékelése megbízhatósági minősítéssel van társítva. A minősítés az egyik (legalacsonyabb) és az öt (a legmagasabb) csillag közötti tartományba esik. A megbízhatósági minősítés segít megbecsülni a Azure Migrate által biztosított méretre vonatkozó ajánlások megbízhatóságát.
 
 - A megbízhatósági minősítés egy értékeléshez van rendelve. A minősítés az értékelés kiszámításához szükséges adatpontok rendelkezésre állásán alapul.
 - A teljesítmény-alapú méretezéshez a kiszolgáló értékeléséhez a következőket kell tennie:
@@ -266,7 +273,7 @@ Ez a táblázat a kiértékelési megbízhatósági minősítéseket mutatja be,
 
 ## <a name="calculate-monthly-costs"></a>Havi költségek kiszámítása
 
-A méretezési javaslatok befejezését követően a Azure Migrate kiszámítja a számítási és tárolási költségeket az áttelepítés után.
+A méretezési javaslatok befejezése után az Azure-beli virtuális gépek felmérése Azure Migrate kiszámítja a számítási és tárolási költségeket a Migrálás után.
 
 - **Számítási költség**: Azure Migrate a virtuális gép havi költségének kiszámításához a javasolt Azure-beli virtuálisgép-méretet és az Azure számlázási API-t használja.
 
@@ -286,7 +293,7 @@ A méretezési javaslatok befejezését követően a Azure Migrate kiszámítja 
 
 A költségek az értékelési beállításokban megadott pénznemben jelennek meg.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Tekintse át](best-practices-assessment.md) az értékelések létrehozásával kapcsolatos ajánlott eljárásokat. 
 

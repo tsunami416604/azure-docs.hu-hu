@@ -11,13 +11,13 @@ ms.workload: infrastructure-services
 ms.date: 06/25/2020
 ms.author: osamaz
 ms.openlocfilehash: 4f513da4e7883cd273098039c9c4a4645d849f0f
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85516263"
 ---
-# <a name="azure-for-network-engineers"></a>Azure hálózati mérnököknek
+# <a name="azure-for-network-engineers"></a>Azure hálózattervezőknek
 Hagyományos hálózati mérnökként olyan fizikai eszközökkel foglalkozott, mint az útválasztók, kapcsolók, kábelek, tűzfalak az infrastruktúra kiépítéséhez. Egy logikai rétegben konfigurálta a virtuális helyi hálózatot (VLAN), az átfedő faprotokollot (STP), az útválasztási protokollokat (RIP, OSPF, BGP). Felügyeli a hálózatot a felügyeleti eszközök és a parancssori felület használatával. A felhőben való hálózatkezelés más, mint a hálózati végpontok logikai és az útválasztási protokollok használata minimális. Az Azure-beli eszközök konfigurálásához és kezeléséhez Azure Resource Manager API-val, az Azure CLI-vel és a PowerShell-lel fog dolgozni. A hálózati utazást a felhőben az Azure Networking alapbérlők megismerésével indíthatja el. 
 ## <a name="virtual-network"></a>Virtuális hálózat
 Ha alulról tervez egy hálózatot, néhány alapvető információt gyűjthet. Ezek az adatok lehetnek a gazdagépek, a hálózati eszközök, az alhálózatok száma, az alhálózatok közötti útválasztás, az elkülönítési tartományok, például a VLAN-ok. Ez az információ segít a hálózati és biztonsági eszközök méretezésében, valamint az alkalmazások és szolgáltatások támogatásához szükséges architektúra létrehozásában.
@@ -79,7 +79,7 @@ A létrehozott útvonalak, az Azure alapértelmezett útvonalak és a helyszíni
 ### <a name="network-security-groups"></a>Network Security Groups (Hálózati biztonsági csoportok)
 A hálózati adapterre alkalmazott érvényes biztonsági szabályok a hálózati adapterhez társított NSG található szabályok összesítései, valamint a hálózati adaptert tartalmazó alhálózat. A virtuális gép hálózati adapterén alkalmazott NSG érvényes biztonsági szabályokat a portálon, a PowerShellen vagy a CLI-n keresztül navigálva tekintheti meg a hálózati ADAPTERen.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További tudnivalók a [Virtual networkről][VNet].
 

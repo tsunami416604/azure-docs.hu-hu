@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/17/2019
 ms.author: hamusa
-ms.openlocfilehash: 13c640d25265b2663520ef7ab203b0b0a33829e2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 867124a08bbad88b7dac5386ee6bc1c9c4d99c12
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "68301703"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85549899"
 ---
 # <a name="create-a-group-for-assessment"></a>Csoport létrehozása az értékeléshez
 
@@ -36,18 +36,18 @@ Létrehozhat egy csoportot is, ha létrehoz egy [értékelést](how-to-create-as
 Ha manuálisan szeretne létrehozni egy csoportot az értékelés létrehozásán kívül, tegye a következőket:
 
 1. A Azure Migrate projekt > **áttekintése**területen kattintson a **kiszolgálók felmérése és migrálása**elemre. **Azure Migrate: kiszolgáló értékelése**, kattintson a **csoportok** elemre.
-    - Ha még nem adta hozzá a Azure Migrate: Server Assessment eszközt, kattintson ide a hozzáadásához. [További információ](how-to-assess.md).
+    - Ha még nem adta hozzá a Azure Migrate: Server Assessment eszközt, kattintson ide a hozzáadásához. [További információk](how-to-assess.md).
     - Ha még nem hozott létre Azure Migrate projektet, [További információt itt](how-to-add-tool-first-time.md)olvashat.
 
     ![Csoportok kiválasztása](./media/how-to-create-a-group/select-groups.png)
 
 2. Kattintson a **csoport** ikonra.
 3. A **csoport létrehozása**területen adja meg a csoport nevét és a **készülék neve**területen válassza ki a számítógép-felderítéshez használt Azure Migrate készüléket.
-1. A számítógép listából válassza ki azokat a gépeket, amelyeket hozzá szeretne adni a csoporthoz > **Létrehozás**gombra.
+4. A számítógép listából válassza ki azokat a gépeket, amelyeket hozzá szeretne adni a csoporthoz > **Létrehozás**gombra.
 
     ![Csoport létrehozása](./media/how-to-create-a-group/create-group.png)
 
-Ezt a csoportot már használhatja [értékelés létrehozásakor](how-to-create-assessment.md)is.
+Mostantól használhatja ezt a csoportot, amikor [létrehoz egy Azure-beli VM-felmérést](how-to-create-assessment.md) vagy [egy Azure VMware-megoldás (AVS) értékelését](how-to-create-azure-vmware-solution-assessment.md). Vegye figyelembe, hogy csak a VMware virtuális gépekkel rendelkező csoportokra vonatkozó AVS-értékelést hozhat létre. 
 
 ## <a name="refine-a-group-with-dependency-mapping"></a>Csoport szűkítése függőségi leképezéssel
 
@@ -60,7 +60,7 @@ Ha már [beállította a függőségi leképezést](how-to-create-group-machine-
 
 1. A **kiszolgálók** lap **Azure Migrate: kiszolgáló értékelése** csempén kattintson a **csoportok**elemre.
 2. Kattintson arra a csoportra, amelyet szeretne pontosítani.
-    - Ha még nem állította be a függőségi leképezést, akkor a **függőségek** oszlopban a **szükséges telepítési** állapot jelenik meg. Minden olyan virtuális géphez, amelynek függőségeit szeretné megjeleníteni, kattintson a **telepítés szükséges**elemre. Telepítsen néhány ügynököt az egyes virtuális gépekre, mielőtt le tudja képezni a számítógép-függőségeket. [További információ](how-to-create-group-machine-dependencies.md).
+    - Ha még nem állította be a függőségi leképezést, akkor a **függőségek** oszlopban a **szükséges telepítési** állapot jelenik meg. Minden olyan virtuális géphez, amelynek függőségeit szeretné megjeleníteni, kattintson a **telepítés szükséges**elemre. Telepítsen néhány ügynököt az egyes virtuális gépekre, mielőtt le tudja képezni a számítógép-függőségeket. [További információk](how-to-create-group-machine-dependencies.md).
 
         ![Függőségi leképezés hozzáadása](./media/how-to-create-a-group/add-dependency-mapping.png)
 

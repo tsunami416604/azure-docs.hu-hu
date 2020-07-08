@@ -7,12 +7,12 @@ ms.subservice: diagnostic-extension
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: bwren
-ms.openlocfilehash: a964a28b728a2b1741fb555f47fe6e329bc9902a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 10d4c2d6650502510bd160cc452ac2289130263b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655701"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85549497"
 ---
 # <a name="install-and-configure-windows-azure-diagnostics-extension-wad"></a>A Windows Azure Diagnostics bővítmény (WAD) telepítése és konfigurálása
 Az [Azure Diagnostics bővítmény](diagnostics-extension-overview.md) olyan Azure monitor ügynöke, amely a vendég operációs rendszerből és az Azure-beli virtuális gépek és egyéb számítási erőforrások munkaterhelésével kapcsolatos figyelési adatokat gyűjt. Ez a cikk részletesen ismerteti a Windows diagnosztikai bővítmény telepítését és konfigurálását, valamint az adatok tárolásának és az Azure Storage-fiókban tárolt információk leírásának ismertetését.
@@ -20,7 +20,7 @@ Az [Azure Diagnostics bővítmény](diagnostics-extension-overview.md) olyan Azu
 A diagnosztikai bővítmény a [virtuálisgép-bővítményként](../../virtual-machines/extensions/overview.md) van implementálva az Azure-ban, így ugyanazokat a telepítési lehetőségeket támogatja a Resource Manager-sablonok, a PowerShell és a parancssori felület használatával. A virtuálisgép-bővítmények telepítésével és karbantartásával kapcsolatos részletekért lásd: [virtuálisgép-bővítmények és-szolgáltatások a Windows](../../virtual-machines/extensions/features-windows.md) rendszerhez.
 
 ## <a name="overview"></a>Áttekintés
-Ha a Windows Azure-t konfigurálja a diagnosztikai bővítményben, meg kell adnia egy Storage-fiókot, ahol az összes megadott adattal el lesz küldve. Ha további *adatvesztést* szeretne hozzáadni az adattárolók különböző helyeire való küldéséhez, opcionálisan hozzáadhat egyet.
+Ha a Windows Azure-t konfigurálja a diagnosztikai bővítményben, meg kell adnia egy Storage-fiókot, ahol az összes megadott adattal el lesz küldve. Opcionálisan hozzáadhat egy vagy több *adattárolót* az adattárolók különböző helyszínekre való elküldéséhez.
 
 - Azure Monitor fogadó – a vendég teljesítményadatokat Azure Monitor metrikák küldéséhez.
 - Event hub-fogadó – vendég teljesítmény és naplózási adat küldése az Azure Event hubokba az Azure-on kívüli továbbításhoz. Ez a fogadó nem konfigurálható a Azure Portalban.

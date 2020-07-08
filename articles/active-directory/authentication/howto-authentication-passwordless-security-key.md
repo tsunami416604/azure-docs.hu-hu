@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 066ab7892bed6e7505e7ee114ff37a7850ef5c9b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 300bb317d521ac9202fdd1a02328f844110a48e4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81450921"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85550420"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>Jelszó nélküli biztonsági kulcs bejelentkezésének engedélyezése (előzetes verzió)
 
@@ -24,10 +24,8 @@ Azok a vállalatok, amelyek a jelszavakat ma és megosztott számítógépes kö
 
 Ez a dokumentum a biztonsági kulcson alapuló jelszavas hitelesítés engedélyezését összpontosítja. A cikk végén az Azure AD-fiókjával bejelentkezhet a web-alapú alkalmazásokba egy FIDO2 biztonsági kulccsal.
 
-|     |
-| --- |
-| A FIDO2 biztonsági kulcsai a Azure Active Directory nyilvános előzetes verziója. További információ az előzetes verziókról: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
-|     |
+> [!NOTE]
+> A FIDO2 biztonsági kulcsai a Azure Active Directory nyilvános előzetes verziója. További információ az előzetes verziókról: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="requirements"></a>Követelmények
 
@@ -53,7 +51,7 @@ A jelszóval nem rendelkező hitelesítési módszerek regisztrációs funkciói
 ### <a name="enable-fido2-security-key-method"></a>FIDO2 biztonsági kulcs módszerének engedélyezése
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Keresse meg a **Azure Active Directory** > **biztonsági** > **hitelesítési módszerek** > **hitelesítési módszer házirendjét (előzetes verzió)**.
+1. Keresse meg a **Azure Active Directory**  >  **biztonsági**  >  **hitelesítési módszerek**  >  **hitelesítési módszer házirendjét (előzetes verzió)**.
 1. A Method **FIDO2 biztonsági kulcs**alatt válassza a következő beállításokat:
    1. **Engedélyezés** – igen vagy nem
    1. **Cél** – az összes felhasználó vagy a felhasználók kiválasztása
@@ -61,7 +59,7 @@ A jelszóval nem rendelkező hitelesítési módszerek regisztrációs funkciói
 
 ## <a name="user-registration-and-management-of-fido2-security-keys"></a>FIDO2 biztonsági kulcsok felhasználói regisztrációja és kezelése
 
-1. Keresse meg [https://myprofile.microsoft.com](https://myprofile.microsoft.com)a következőt:.
+1. Lépjen a [https://myprofile.microsoft.com](https://myprofile.microsoft.com) lapra.
 1. Ha még nem tette meg, jelentkezzen be.
 1. Kattintson a **biztonsági adatok**elemre.
    1. Ha a felhasználónak már van legalább egy Azure Multi-Factor Authentication-metódusa, akkor azonnal regisztrálhatnak egy FIDO2 biztonsági kulcsot.

@@ -11,19 +11,17 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 85f217266a2b28bfaf15df6a70a28784873dd123
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: c03c2c55988df04cc45ef4a1d66d959513c1626d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85386912"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551361"
 ---
 # <a name="invite-internal-users-to-b2b-collaboration"></a>Belső felhasználók meghívása B2B együttműködésre
 
-|     |
-| --- |
-| A belső felhasználók meghívása a B2B együttműködés használatára a Azure Active Directory nyilvános előzetes verziója. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). |
-|     |
+> [!NOTE]
+> A belső felhasználók meghívása a B2B együttműködés használatára a Azure Active Directory nyilvános előzetes verziója. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Az Azure AD B2B-együttműködés rendelkezésre állása előtt a szervezetek a belső hitelesítő adatok beállításával együttműködhetnek a forgalmazókkal, a szállítókkal, a szállítókkal és a többi vendég felhasználóval. Ha ilyen belső vendég felhasználókkal rendelkezik, meghívhatja őket a B2B-együttműködés használatára, így kihasználhatja az Azure AD B2B előnyeinek előnyeit is. A B2B vendég felhasználói saját identitásuk és hitelesítő adataik használatával jelentkezhetnek be, és nem kell megtartania a jelszavakat, és nem kell kezelnie a fiókok életciklusát.
 
@@ -99,6 +97,6 @@ ContentType: application/json
 
 Az API-ra adott válasz ugyanazt a választ kapja, amikor új vendég felhasználót hív meg a címtárban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [VÁLLALATKÖZI együttműködés meghívásának beváltása](redemption-experience.md)

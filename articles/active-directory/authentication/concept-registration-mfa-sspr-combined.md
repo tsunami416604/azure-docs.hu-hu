@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d4caaf8704f2ee49f8f094ad22065ae462154be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 87cec45ac3d7bf491278a4ba8520e8257fd0f6c1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82143922"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85550665"
 ---
 # <a name="combined-security-information-registration-overview"></a>A kombinált biztonsági információk regisztrációjának áttekintése
 
@@ -34,11 +34,11 @@ Az új felület engedélyezése előtt tekintse át ezt a rendszergazda által i
 Az Azure AD kombinált biztonsági információinak regisztrációja jelenleg nem érhető el olyan nemzeti felhők számára, mint az Azure US government, az Azure Germany vagy az Azure China 21Vianet.
 
 > [!IMPORTANT]
-> Azok a felhasználók, akik számára engedélyezve van az eredeti előzetes verzió és a bővített kombinált regisztrációs élmény, az új viselkedést fogják látni. Azok a felhasználók, akik mindkét élmény esetében engedélyezve vannak, csak az új saját profilt fogják látni. Az új saját profil a közös regisztráció megjelenésével és működésével igazodik, és zökkenőmentes felhasználói élményt nyújt a felhasználóknak. A felhasználók a következő címen érhetik el [https://myprofile.microsoft.com](https://myprofile.microsoft.com)a profilt:.
+> Azok a felhasználók, akik számára engedélyezve van az eredeti előzetes verzió és a bővített kombinált regisztrációs élmény, az új viselkedést fogják látni. Azok a felhasználók, akik mindkét élmény esetében engedélyezve vannak, csak az új saját profilt fogják látni. Az új saját profil a közös regisztráció megjelenésével és működésével igazodik, és zökkenőmentes felhasználói élményt nyújt a felhasználóknak. A felhasználók a következő címen érhetik el a profilt: [https://myprofile.microsoft.com](https://myprofile.microsoft.com) .
 >
 > Előfordulhat, hogy hibaüzenet jelenik meg, amikor megpróbál hozzáférni a biztonsági adatok lehetőséghez. Például: "sajnos nem tudjuk bejelentkezni". Ebben az esetben győződjön meg arról, hogy nincs olyan konfigurációs vagy csoportházirend-objektuma, amely blokkolja a külső felek cookie-jait a böngészőben.
 
-A saját profil oldalai honosítva vannak az oldalt elérő számítógép nyelvi beállításai alapján. A Microsoft a böngésző gyorsítótárában használt legújabb nyelvet tárolja, így a lapok elérésére irányuló próbálkozások továbbra is az utolsó használt nyelven jelennek meg. Ha törli a gyorsítótárat, az oldalak újra megjelennek. Ha egy adott nyelvet szeretne kényszeríteni, hozzáadhat `?lng=<language>` az URL végéhez, ahol `<language>` a a megjeleníteni kívánt nyelv kódja.
+A saját profil oldalai honosítva vannak az oldalt elérő számítógép nyelvi beállításai alapján. A Microsoft a böngésző gyorsítótárában használt legújabb nyelvet tárolja, így a lapok elérésére irányuló próbálkozások továbbra is az utolsó használt nyelven jelennek meg. Ha törli a gyorsítótárat, az oldalak újra megjelennek. Ha egy adott nyelvet szeretne kényszeríteni, hozzáadhat az `?lng=<language>` URL végéhez, ahol a a `<language>` megjeleníteni kívánt nyelv kódja.
 
 ![SSPR vagy egyéb biztonsági ellenőrzési módszerek beállítása](media/howto-registration-mfa-sspr-combined/combined-security-info-my-profile.png)
 
@@ -46,17 +46,17 @@ A saját profil oldalai honosítva vannak az oldalt elérő számítógép nyelv
 
 A kombinált regisztráció a következő hitelesítési módszereket és műveleteket támogatja:
 
-|   | Regisztráljon | Módosítás | Törlés |
+| Metódus | Regisztráció | Módosítás | Törlés |
 | --- | --- | --- | --- |
-| Microsoft Authenticator | Igen (legfeljebb 5) | Nem | Igen |
-| Egyéb hitelesítő alkalmazás | Igen (legfeljebb 5) | Nem | Igen |
-| Hardver jogkivonata | Nem | Nem | Igen |
+| Microsoft Authenticator | Igen (legfeljebb 5) | No | Yes |
+| Egyéb hitelesítő alkalmazás | Igen (legfeljebb 5) | No | Yes |
+| Hardver jogkivonata | Nem | Nem | Yes |
 | Telefon | Igen | Igen | Igen |
 | Másik telefon | Igen | Igen | Igen |
 | Munkahelyi telefon | Nem | Nem | Nem |
 | E-mail | Igen | Igen | Igen |
-| Biztonsági kérdések | Igen | Nem | Igen |
-| Alkalmazásjelszavak. | Igen | Nem | Igen |
+| Biztonsági kérdések | Yes | No | Yes |
+| Alkalmazásjelszavak. | Yes | No | Yes |
 | FIDO2 biztonsági kulcsok<br />*Felügyelt mód csak a [biztonsági adatok](https://mysignins.microsoft.com/security-info) lapról*| Igen | Igen | Igen |
 
 > [!NOTE]
@@ -111,7 +111,7 @@ Ha a SSPR-szabályzat megköveteli, hogy a felhasználók rendszeres időközön
 
 ### <a name="manage-mode"></a>Kezelés módja
 
-A felhasználók a saját profil [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) **biztonsági adatainak** kiválasztásával érhetik el a kezelési módot. A felhasználók hozzáadhatnak metódusokat, törölhetik vagy módosíthatják a meglévő metódusokat, módosíthatják az alapértelmezett metódust és egyebeket.
+A felhasználók a [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) saját profil **biztonsági adatainak** kiválasztásával érhetik el a kezelési módot. A felhasználók hozzáadhatnak metódusokat, törölhetik vagy módosíthatják a meglévő metódusokat, módosíthatják az alapértelmezett metódust és egyebeket.
 
 ## <a name="key-usage-scenarios"></a>Kulcshasználat forgatókönyvek
 
@@ -125,15 +125,15 @@ Egy felhasználó nem állította be az összes szükséges biztonsági adatot, 
 
 Egy rendszergazda nem kényszerített regisztrációt.
 
-Egy olyan felhasználó, aki még nem állította be az összes szükséges biztonsági [https://myprofile.microsoft.com](https://myprofile.microsoft.com)adatot, a következőre lép:. A felhasználó a bal oldali panelen kiválasztja a **biztonsági adatokat** . Onnan a felhasználó úgy dönt, hogy hozzáad egy metódust, kiválasztja az elérhető módszerek bármelyikét, és az adott metódus beállításának lépéseit követi. Ha elkészült, a felhasználó az imént beállított módszert látja el a biztonsági adatok lapon.
+Egy olyan felhasználó, aki még nem állította be az összes szükséges biztonsági adatot, a következőre lép: [https://myprofile.microsoft.com](https://myprofile.microsoft.com) . A felhasználó a bal oldali panelen kiválasztja a **biztonsági adatokat** . Onnan a felhasználó úgy dönt, hogy hozzáad egy metódust, kiválasztja az elérhető módszerek bármelyikét, és az adott metódus beállításának lépéseit követi. Ha elkészült, a felhasználó az imént beállított módszert látja el a biztonsági adatok lapon.
 
 ### <a name="delete-security-info-from-my-profile"></a>Biztonsági adatok törlése a saját profilból
 
-Az a felhasználó, aki korábban beállított legalább egy metódust, navigál a [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo)következőhöz:. A felhasználó úgy dönt, hogy törli a korábban regisztrált módszerek egyikét. Ha elkészült, a felhasználó már nem látja ezt a metódust a biztonsági adatok lapon.
+Az a felhasználó, aki korábban beállított legalább egy metódust, navigál a következőhöz: [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) . A felhasználó úgy dönt, hogy törli a korábban regisztrált módszerek egyikét. Ha elkészült, a felhasználó már nem látja ezt a metódust a biztonsági adatok lapon.
 
 ### <a name="change-the-default-method-from-my-profile"></a>A saját profil alapértelmezett módszerének módosítása
 
-Az a felhasználó, aki korábban beállított legalább egy olyan metódust, amelyet Multi-Factor Authentication használhat a alkalmazásban [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo). A felhasználó az aktuális alapértelmezett metódust egy másik alapértelmezett metódusra módosítja. Ha elkészült, a felhasználó az új alapértelmezett metódust látja a biztonsági adatok lapon.
+Az a felhasználó, aki korábban beállított legalább egy olyan metódust, amelyet Multi-Factor Authentication használhat a alkalmazásban [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) . A felhasználó az aktuális alapértelmezett metódust egy másik alapértelmezett metódusra módosítja. Ha elkészült, a felhasználó az új alapértelmezett metódust látja a biztonsági adatok lapon.
 
 ## <a name="next-steps"></a>További lépések
 

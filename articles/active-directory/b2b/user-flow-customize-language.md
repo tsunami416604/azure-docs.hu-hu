@@ -11,18 +11,17 @@ ms.date: 05/06/2020
 ms.author: mimart
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 856338e6c5a2bac55fee57d3ea09575a1a4d14ed
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: abd6423ebbdba11cd1b0e0c2d00cfd36aa745e72
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85386538"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551147"
 ---
 # <a name="language-customization-in-azure-active-directory-preview"></a>Nyelvi Testreszabás a Azure Active Directoryban (előzetes verzió)
-|     |
-| --- |
-| Az önkiszolgáló regisztráció a Azure Active Directory nyilvános előzetes funkciója. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
-|     |
+
+> [!NOTE]
+> Az önkiszolgáló regisztráció a Azure Active Directory nyilvános előzetes funkciója. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 A Azure Active Directory (Azure AD) nyelvi testreszabása lehetővé teszi a felhasználói folyamat számára, hogy a felhasználók igényeinek megfelelően különböző nyelveket fogadjon. A Microsoft [36 nyelvekhez](#supported-languages)biztosít fordításokat. Akkor is testreszabhatja az attribútumok nevét az attribútumok gyűjteménye lapon, ha a felhasználói élmény csak egyetlen nyelvhez van megadva.
 
@@ -201,6 +200,6 @@ Az Azure AD az alábbi nyelvek támogatását tartalmazza. A felhasználói foly
 | Thai                  | adik            | ![igen](./media/user-flow-customize-language/yes.png) | ![igen](./media/user-flow-customize-language/yes.png) |
 | Török               | TR            | ![igen](./media/user-flow-customize-language/yes.png) | ![igen](./media/user-flow-customize-language/yes.png) |
 | Ukrán             | uk            | ![nem](./media/user-flow-customize-language/no.png) | ![igen](./media/user-flow-customize-language/yes.png) |
-| Vietnami            | VI            | ![nem](./media/user-flow-customize-language/no.png) | ![igen](./media/user-flow-customize-language/yes.png) |
+| Vietnámi            | VI            | ![nem](./media/user-flow-customize-language/no.png) | ![igen](./media/user-flow-customize-language/yes.png) |
 | Kínai – egyszerűsített  | zh-Hans       | ![igen](./media/user-flow-customize-language/yes.png) | ![igen](./media/user-flow-customize-language/yes.png) |
 | Kínai – hagyományos | zh-Hant       | ![igen](./media/user-flow-customize-language/yes.png) | ![igen](./media/user-flow-customize-language/yes.png) |

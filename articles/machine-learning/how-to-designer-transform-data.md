@@ -11,10 +11,10 @@ ms.author: peterlu
 ms.date: 06/28/2020
 ms.custom: designer
 ms.openlocfilehash: ea0ba58c3eb38a54be5ff777519ca12d6a2cf9ce
-ms.sourcegitcommit: 581aaca8956b1717b7bc1c1d7710c782c22e6320
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85517528"
 ---
 # <a name="transform-data-in-azure-machine-learning-designer-preview"></a>Az adatátalakítás Azure Machine Learning Designerben (előzetes verzió)
@@ -164,13 +164,13 @@ A folyamat futásának befejeződése után megtekintheti az eredményeket, ha a
 
 1. Ellenőrizze, hogy a "natív ország" oszlop nem tartalmazza-e az "Egyesült Államok" értéket.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ugorja át ezt a szakaszt, ha továbbra is az útmutató 2. részében kívánja folytatni a [modellek újratanítását Azure Machine learning Designer](how-to-retrain-designer.md)használatával.
 
 [!INCLUDE [aml-ui-cleanup](../../includes/aml-ui-cleanup.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta, hogyan alakíthat át egy adatkészletet, és hogyan mentheti egy regisztrált adattárba.
 
