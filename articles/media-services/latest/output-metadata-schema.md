@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 06/03/2020
 ms.author: juliako
 ms.openlocfilehash: 692fe12d12538bc35e3a22d4af1bd185839f69d4
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84418714"
 ---
 # <a name="output-metadata"></a>Kimeneti metaadatok
@@ -26,7 +25,7 @@ A kódolási feladatok olyan bemeneti adategységekhez (vagy eszközökhöz) van
 
 Media Services nem megelőző jelleggel a bemeneti eszközöket a metaadatok létrehozásához. A bemeneti metaadatok csak olyan összetevőként jönnek létre, amikor egy bemeneti objektumot dolgoz fel egy feladatban. Ezért ez az összetevő a kimeneti eszközre íródik. A bemeneti eszközök és a kimeneti eszközök metaadatainak létrehozásához különböző eszközök használhatók. Ezért a bemeneti metaadatok némileg eltérő sémával rendelkeznek, mint a kimeneti metaadatok.
 
-Ez a cikk a JSON-séma azon elemeit és típusait ismerteti, amelyeken a kimeneti metaadatok ( &lt; source_file_name &gt; _manifest. JSON) alapulnak. <!--For information about the file that contains metadata about the input asset, see [Input metadata](input-metadata-schema.md).  -->
+Ez a cikk a JSON-séma azon elemeit és típusait ismerteti, amelyeken a kimeneti metaadatok ( &lt; source_file_name &gt;_manifest.js) alapulnak. <!--For information about the file that contains metadata about the input asset, see [Input metadata](input-metadata-schema.md).  -->
 
 A teljes séma kód és a JSON-példa a cikk végén található.  
 
@@ -34,7 +33,7 @@ A teljes séma kód és a JSON-példa a cikk végén található.
 
 A kódolási feladatokhoz tartozó AssetFile-bejegyzések gyűjteménye.  
 
-| Name | Leírás |
+| Name | Description |
 | --- | --- |
 | **Források** |A AssetFile létrehozásához feldolgozott bemeneti/forrás médiafájlok gyűjteménye.<br />Például: `"Sources": [{"Name": "Ignite-short_1280x720_AACAudio_3551.mp4"}]`|
 | **VideoTracks**|Minden fizikai AssetFile tartalmazhatnak nulla vagy több, a megfelelő tároló formátumba felhasználható videó-zeneszámot. <br />Lásd: [VideoTracks](#videotracks). |
@@ -47,7 +46,7 @@ A kódolási feladatokhoz tartozó AssetFile-bejegyzések gyűjteménye.
 
 Minden fizikai AssetFile tartalmazhatnak nulla vagy több, a megfelelő tároló formátumba felhasználható videó-zeneszámot. A **VideoTracks** elem az összes videó sáv gyűjteményét jelöli.  
 
-| Name | Leírás |
+| Name | Description |
 | --- | --- |
 | **ID**<br /> Kötelező |A videó nyomon követésének nulla alapú indexe. **Megjegyzés:**  Ez az **azonosító** nem feltétlenül az MP4-fájlban használt TrackID. <br /><br />Például: `"Id": 1`|
 | **FourCC**<br />Kötelező | Az FFmpeg által jelentett video codec FourCC-kód.  <br /><br />Például: `"FourCC": "avc1"`|
@@ -65,7 +64,7 @@ Minden fizikai AssetFile tartalmazhatnak nulla vagy több, a megfelelő tároló
 
 Minden fizikai AssetFile tartalmazhatnak nulla vagy több hangsávot a megfelelő tároló formátumba. A **AudioTracks** elem az összes hangsávok gyűjteményét jelöli.  
 
-| Name  | Leírás |
+| Name  | Description |
 | --- | --- |
 | **ID**<br />Kötelező  |A hangsávok nulla alapú indexe. **Megjegyzés:**  Ez nem feltétlenül az MP4-fájlokban használt TrackID.  <br /><br />Például: `"Id": 2`|
 | **Codec**  |Hangsávok kodekének karakterlánca  <br /><br />Például: `"Codec": "aac"`|
@@ -258,6 +257,6 @@ Minden fizikai AssetFile tartalmazhatnak nulla vagy több hangsávot a megfelel�
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Feladathoz tartozó bemenet létrehozása HTTPS URL-címről](job-input-from-http-how-to.md)

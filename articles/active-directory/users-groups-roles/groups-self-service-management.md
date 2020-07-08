@@ -16,10 +16,9 @@ ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7ce5d96d3ca65efb69bf322cf4a5f5563b83d8ce
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84727874"
 ---
 # <a name="set-up-self-service-group-management-in-azure-active-directory"></a>Önkiszolgáló csoport felügyeletének beállítása Azure Active Directory 
@@ -33,7 +32,7 @@ Ha a biztonsági csoportokat a Azure Portal vagy az Azure AD PowerShell használ
 Létrehozott csoportok | Biztonsági csoport alapértelmezett viselkedése | Office 365-csoport alapértelmezett viselkedése
 ------------------ | ------------------------------- | ---------------------------------
 [Azure AD PowerShell](groups-settings-cmdlets.md) | Csak a tulajdonosok adhatnak hozzá tagokat<br>Látható, de nem érhető el a hozzáférési panelen való csatlakozáshoz | Megnyitás az összes felhasználóhoz való csatlakozáshoz
-[Azure Portal](https://portal.azure.com) | Csak a tulajdonosok adhatnak hozzá tagokat<br>Látható, de nem érhető el a hozzáférési panelen való csatlakozáshoz<br>A tulajdonos nincs automatikusan hozzárendelve a csoport létrehozásakor | Megnyitás az összes felhasználóhoz való csatlakozáshoz
+[Azure Portalra](https://portal.azure.com) | Csak a tulajdonosok adhatnak hozzá tagokat<br>Látható, de nem érhető el a hozzáférési panelen való csatlakozáshoz<br>A tulajdonos nincs automatikusan hozzárendelve a csoport létrehozásakor | Megnyitás az összes felhasználóhoz való csatlakozáshoz
 [Hozzáférési panel](https://account.activedirectory.windowsazure.com/r#/joinGroups) | Megnyitás az összes felhasználóhoz való csatlakozáshoz<br>A tagsági beállítások megváltoztathatók a csoport létrehozásakor | Megnyitás az összes felhasználóhoz való csatlakozáshoz<br>A tagsági beállítások megváltoztathatók a csoport létrehozásakor
 
 ## <a name="self-service-group-management-scenarios"></a>Önkiszolgáló csoportos felügyeleti forgatókönyvek

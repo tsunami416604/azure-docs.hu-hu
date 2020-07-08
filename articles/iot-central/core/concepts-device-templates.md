@@ -8,13 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 2d5009086a24a54c9a2ec4734d3c4dcbebb04475
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84418798"
 ---
-# <a name="what-are-device-templates"></a>Mik azok az eszközök sablonjai?
+# <a name="what-are-device-templates"></a>Mik azok az eszközsablonok?
 
 _Ez a cikk az eszközök fejlesztőire és megoldás-építői vonatkozik._
 
@@ -219,7 +218,7 @@ A megoldás fejlesztői olyan nézeteket hoznak létre, amelyek lehetővé teszi
 
 A nézetekhez felvehető telemetria, tulajdonságokat és parancsokat a DCM, a Cloud Properties és a testreszabások határozzák meg az eszköz sablonjában.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerte az eszközök sablonjait, a következő lépésekből megtudhatja, hogyan regisztrálhat [Az Azure IoT Centralhoz](./concepts-get-connected.md) , és hogyan regisztrálja az eszközöket a IoT Central, és hogy miként IoT Central biztonságossá teszi az eszköz kapcsolatait.
 

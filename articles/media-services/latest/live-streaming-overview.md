@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 03/18/2020
 ms.author: juliako
 ms.openlocfilehash: 23ee7ba7a5456916eb307e21aa2074924614cb4b
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84418143"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Élő közvetítés a Azure Media Services v3-val
@@ -79,9 +78,9 @@ Az élő átírás egy olyan szolgáltatás, amellyel áteresztő vagy élő kó
 
 Az Media Services v3 élő közvetítési munkafolyamatának megismeréséhez először tekintse át és Ismerje meg a következő fogalmakat: 
 
-- [Folyamatos átviteli végpontok](streaming-endpoint-concept.md)
+- [Streamvégpontok](streaming-endpoint-concept.md)
 - [Élő események és élő kimenetek](live-events-outputs-concept.md)
-- [Folyamatos átviteli lokátorok](streaming-locators-concept.md)
+- [Streameléskeresők](streaming-locators-concept.md)
 
 ### <a name="general-steps"></a>Általános lépések
 
@@ -129,7 +128,7 @@ Tekintse meg a [Gyakori kérdések](frequently-asked-questions.md#live-streaming
 
 Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Élő közvetítés – gyors üzembe helyezés](live-events-wirecast-quickstart.md)
 * [Élő közvetítés – oktatóanyag](stream-live-tutorial-with-api.md)

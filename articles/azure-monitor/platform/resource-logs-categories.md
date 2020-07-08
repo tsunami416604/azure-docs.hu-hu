@@ -5,10 +5,9 @@ ms.subservice: logs
 ms.topic: reference
 ms.date: 06/03/2020
 ms.openlocfilehash: 6156b9d311859534160258256ff6315b037f3a14
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84418763"
 ---
 # <a name="supported-categories-for-azure-resource-logs"></a>Az Azure erőforrás-naplók támogatott kategóriái
@@ -67,14 +66,14 @@ Ha még valami hiányzik, megnyithatja a cikk alján található GitHub-megjegyz
 |DscNodeStatus|DSC-csomópont állapota|
 
 
-## <a name="microsoftbatchbatchaccounts"></a>Microsoft. batch/batchAccounts
+## <a name="microsoftbatchbatchaccounts"></a>Microsoft.BatCH/batchAccounts
 
 |Kategória|Kategória megjelenítendő neve|
 |---|---|
 |ServiceLog|Szolgáltatási naplók|
 
 
-## <a name="microsoftbatchaiworkspaces"></a>Microsoft. BatchAI/munkaterületek
+## <a name="microsoftbatchaiworkspaces"></a>Microsoft.BatchAI/munkaterületek
 
 |Kategória|Kategória megjelenítendő neve|
 |---|---|
@@ -297,7 +296,7 @@ Ha még valami hiányzik, megnyithatja a cikk alján található GitHub-megjegyz
 |ServiceOperations|Szolgáltatási műveletek|
 
 
-## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft. DocumentDB/databaseAccounts
+## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.DocumentDB/databaseAccounts
 
 |Kategória|Kategória megjelenítendő neve|
 |---|---|
@@ -358,7 +357,7 @@ Ha még valami hiányzik, megnyithatja a cikk alján található GitHub-megjegyz
 
 |Kategória|Kategória megjelenítendő neve|
 |---|---|
-|AuditLogs|Naplók|
+|AuditLogs|Auditnaplók|
 
 
 ## <a name="microsoftinsightsautoscalesettings"></a>Microsoft. bepillantások/AutoscaleSettings
