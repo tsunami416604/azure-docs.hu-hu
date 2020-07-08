@@ -2,24 +2,23 @@
 title: Az Azure Automation integrálása az Event Griddel | Microsoft Docs
 description: Ismerje meg, hogyan adhat hozzá automatikusan címkéket az új virtuális gépek létrehozásakor, valamint küldhet értesítést a Microsoft Teamsbe.
 keywords: automation, runbook, teams, event grid, virtuális gép, VM
-services: automation
+services: automation,event-grid
 author: eamonoreilly
-manager: ''
 ms.service: automation
 ms.topic: tutorial
 ms.workload: infrastructure-services
-ms.date: 05/10/2019
+ms.date: 07/07/2020
 ms.author: eamono
-ms.openlocfilehash: 9f99ce5862850c2453e9e72241fff77fe091616f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 79f3d83417a99d40ea0d4bd101a89300bc85a393
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "65521429"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114516"
 ---
 # <a name="tutorial-integrate-azure-automation-with-event-grid-and-microsoft-teams"></a>Oktatóanyag: Azure Automation integrálása a Event Grid és a Microsoft Teams szolgáltatással
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Event Grid-runbookminta importálása.
@@ -28,7 +27,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Event Grid-előfizetés létrehozása.
 > * A runbookot aktiváló virtuális gép létrehozása.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -53,7 +52,7 @@ Az oktatóanyag elvégzéséhez egy [Azure Automation-fiók](../automation/autom
 4. Válassza az **Importálás** lehetőséget, és nevezze el a **Watch-VMWrite** néven.
 
 5. Az importálás befejeztével válassza a **Szerkesztés** lehetőséget a runbook forrásának megtekintéséhez. 
-6. Frissítse a (74 `Tag` `Tags`) sort a parancsfájlban a helyett.
+6. Frissítse a (74) sort a parancsfájlban a `Tag` helyett `Tags` .
 
     ```powershell
     Update-AzureRmVM -ResourceGroupName $VMResourceGroup -VM $VM -Tag $Tag | Write-Verbose
@@ -124,7 +123,7 @@ Az oktatóanyag elvégzéséhez egy [Azure Automation-fiók](../automation/autom
 
     ![Microsoft Teams-értesítés](media/ensure-tags-exists-on-new-virtual-machines/teams-vm-message.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban az Event Grid és az Automation közötti integrációt állította be. Megismerte, hogyan végezheti el az alábbi műveleteket:
 

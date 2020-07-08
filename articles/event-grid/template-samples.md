@@ -1,31 +1,27 @@
 ---
 title: Azure Resource Manager-sablonminták – Event Grid | Microsoft Docs
 description: Ez a cikk a GitHub-Azure Event Grid Azure Resource Manager sablonjának mintáit sorolja fel.
-services: event-grid
-author: spelluru
-manager: timlt
-ms.service: event-grid
-ms.devlang: na
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.date: 01/23/2020
-ms.author: spelluru
-ms.openlocfilehash: 38d8db0bcc504760595fe51b63072f63e785577a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 07/07/2020
+ms.openlocfilehash: 910012adf2dc930e6f1a26f1a7fc41f5ed0580c9
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76720622"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119055"
 ---
 # <a name="azure-resource-manager-templates-for-event-grid"></a>Azure Resource Manager-sablonok az Event Gridhez
 
 A sablonban használandó JSON-szintaxis és-tulajdonságok megtekintéséhez lásd: [Microsoft. EventGrid-erőforrástípusok](/azure/templates/microsoft.eventgrid/allversions). A következő táblázat az Event Gridhez való Azure Resource Manager-sablonokra mutató hivatkozásokat tartalmaz.
 
-| | |
-|-|-|
-|**Event Grid-feliratkozások**||
-| [Egyéni témakör és feliratkozás WebHook-végponttal](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid)| Üzembe helyez egy egyéni Event Grid-témakört, és létrehoz egy Webhook-végpontot használó feliratkozást az üzembe helyezett témakörhöz. |
-| [Egyéni témakör és feliratkozás EventHub-végponttal](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-event-hubs-handler)| Létrehoz egy Event Grid-feliratkozást egy egyéni témakörhöz. A feliratkozás egy eseményközpontot használ végpontként. |
-| [Azure-előfizetés vagy erőforráscsoport-előfizetés](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-resource-events-to-webhook)| Feliratkozik egy erőforráscsoport vagy Azure-előfizetés eseményeire. Az üzembe helyezés során célként megadott erőforráscsoport az események forrása. A feliratkozás egy webhookot használ végpontként. |
-| [Blob Storage-fiók és feliratkozás](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-subscription-and-storage)| Üzembe helyez egy Azure Blob Storage-fiókot, és feliratkozik a vele kapcsolatos eseményekre. |
-| | |
+## <a name="event-grid-subscriptions"></a>Event Grid-feliratkozások
+- [Egyéni témakör és előfizetés webhook-végponttal](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid) – üzembe helyez egy Event Grid egyéni témakört. és létrehoz egy Webhook-végpontot használó feliratkozást az üzembe helyezett témakörhöz. 
+- [Egyéni témakör-előfizetés EventHub-végponttal](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-event-hubs-handler) – létrehoz egy Event Grid-előfizetést egy egyéni témakörhöz. A feliratkozás egy eseményközpontot használ végpontként. 
+- [Azure-előfizetés vagy erőforráscsoport-előfizetés](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-resource-events-to-webhook) – előfizet egy erőforráscsoport vagy Azure-előfizetés eseményeire. Az üzembe helyezés során célként megadott erőforráscsoport az események forrása. A feliratkozás egy webhookot használ végpontként. 
+- [Blob Storage-fiók és-előfizetés](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-subscription-and-storage) – üzembe helyez egy Azure Blob Storage-fiókot, és előfizet az adott tárolási fiók eseményeire. 
+
+## <a name="next-steps"></a>Következő lépések
+Tekintse meg a következő mintákat:
+
+- [PowerShell-példák](powershell-samples.md)
+- [CLI-minták](cli-samples.md)
