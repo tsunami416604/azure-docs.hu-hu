@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 3de9ef12619ed27eb48af64c4bf4bd1a79229d04
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: b165741f9f7a4eb7af8424b9175aa5ec9261fbcc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85483159"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85602720"
 ---
 # <a name="azure-firewall-certifications"></a>Azure Firewall minősítések
 
@@ -93,7 +93,7 @@ A következő Azure Firewall minősítések a Azure Government:
 - EAR
 - FIPS 140-2
 - FedRAMP High
-- HIPPA
+- HIPAA
 - HITECH-szabály (US)
 - HITRUST
 - IRS 1075

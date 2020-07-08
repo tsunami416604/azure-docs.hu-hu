@@ -4,14 +4,14 @@ description: Ez a cikk azt ismerteti, hogyan kezelhetők a leltár-gyűjteménye
 services: automation
 ms.subservice: change-inventory-management
 keywords: leltár, automatizálás, változás, követés
-ms.date: 01/28/2020
+ms.date: 06/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: d237b016b8f3430ed0b28becd2712bd0c41d17b4
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 73f5105240b8b6475bb9ebed48baadd501aec87d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83830616"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85603111"
 ---
 # <a name="manage-inventory-collection-from-vms"></a>Leltárkezelés virtuális gépekről
 
@@ -100,7 +100,7 @@ A számítógépcsoportok megtekintéséhez válassza a **Machine groups (szám�
 
 ![Számítógépcsoportok megtekintése a leltár lapon](./media/automation-vm-inventory/inventory-machine-groups.png)
 
-Ha kijelöl egy gépcsoport elemet a listából, megnyílik a számítógép-csoportok lap. Ez az oldal a számítógépcsoport részleteit jeleníti meg. Ezek az adatok tartalmazzák a csoport definiálásához használt log Analytics-lekérdezést. A lap alján található a csoport részét képező gépek lapozható listája.
+Ha kijelöl egy gépcsoport elemet a listából, megnyílik a számítógép-csoportok lap. Ez az oldal a számítógépcsoport részleteit jeleníti meg. Ezek az adatok tartalmazzák a csoport definiálásához használt Azure Monitor log-lekérdezést. A lap alján található a csoport részét képező gépek lapozható listája.
 
 ![Számítógép-csoport megtekintése lap](./media/automation-vm-inventory/machine-group-page.png)
 
@@ -115,15 +115,18 @@ Ha új számítógépcsoportot szeretne létrehozni, kattintson **a + számító
 A virtuális gép eltávolítása a Change Tracking és a leltár-kezelésből:
 
 1. A Azure Portal bal oldali ablaktábláján válassza a **log Analytics**lehetőséget, majd válassza ki azt a munkaterületet, amelyet a virtuális gép Change Trackinghoz és leltárhoz való engedélyezésekor használt.
-2. A Log Analytics lapon nyissa meg az **erőforrás** menüt.
+2. A **log Analytics** lapon nyissa meg az **erőforrás** menüt.
 3. Válassza a **Virtual Machines** lehetőséget a **munkaterület-adatforrások**területen.
 4. A listából válassza ki a leválasztani kívánt virtuális gépet. A gép a **OMS-kapcsolatok** oszlopban a **munkaterület** mellett zöld pipa jelöl.
 
    >[!NOTE]
    >Az Operations Management Suite (OMS) mostantól Azure Monitor naplók néven is ismert.
-   
+
 5. A következő lap tetején kattintson a **Leválasztás**elemre.
 6. A megerősítést kérő ablakban kattintson az **Igen** gombra a gép a felügyelet alól való leválasztásához.
+
+>[!NOTE]
+>A gépek még a regisztráció törlése után is megjelennek, mert az elmúlt 24 órában az összes gépen leltározott jelentést küldünk. A gép leválasztása után 24 órát kell várnia, mielőtt azok már nem jelennek meg.
 
 ## <a name="next-steps"></a>További lépések
 

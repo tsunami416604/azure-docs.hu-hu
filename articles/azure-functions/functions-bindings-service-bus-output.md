@@ -1,5 +1,5 @@
 ---
-title: Azure Functions-kötések Azure Service Bus
+title: Azure Functions Azure Service Bus kimeneti kötései
 description: Megtudhatja, hogyan küldhet Azure Service Bus üzeneteket a Azure Functionsból.
 author: craigshoemaker
 ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: 1d3441847fc47146418265804457c37c693bd60b
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 6159ea7c9e00e822019a0d6542be2e84dbbdc335
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85297018"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85603638"
 ---
 # <a name="azure-service-bus-output-binding-for-azure-functions"></a>Azure Functions Azure Service Bus kimeneti kötése
 
@@ -280,7 +280,7 @@ A `ServiceBusQueueOutput` és a `ServiceBusTopicOutput` jegyzetek elérhetők eg
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `ServiceBus` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
 |**típusa** | n.a. | "ServiceBus" értékre kell állítani. Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban.|
 |**direction** | n.a. | "Out" értékre kell állítani. Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban. |
@@ -346,7 +346,7 @@ A beépített kimeneti kötés helyett használja a [Azure Service Bus SDK](http
 
 ## <a name="exceptions-and-return-codes"></a>Kivételek és visszatérési kódok
 
-| Kötés | Referencia |
+| Kötés | Hivatkozás |
 |---|---|
 | Service Bus | [Service Bus hibakódok](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-messaging-exceptions) |
 | Service Bus | [Service Bus korlátok](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-quotas) |
@@ -381,13 +381,14 @@ Ez a szakasz a kötéshez elérhető globális konfigurációs beállításokat 
     }
 }
 ```
+
 Ha a értékre van `isSessionsEnabled` állítva `true` , a `sessionHandlerOptions` rendszer tiszteletben tartja a következőt:.  Ha a értékre van `isSessionsEnabled` állítva `false` , a `messageHandlerOptions` rendszer tiszteletben tartja a következőt:.
 
-|Tulajdonság  |Alapértelmezett | Leírás |
+|Tulajdonság  |Alapértelmezett | Description |
 |---------|---------|---------|
 |prefetchCount|0|Lekérdezi vagy beállítja az üzenet fogadója által egyidejűleg igényelhető üzenetek számát.|
 |maxAutoRenewDuration|00:05:00|Az a maximális időtartam, amelyen belül az üzenet zárolása automatikusan meg lesz újítva.|
-|Automatikus kiegészítés|igaz|Azt jelzi, hogy a triggernek a feldolgozás után automatikusan kell-e meghívnia a feladatokat, vagy ha a függvény kódja manuálisan hívja meg a műveletet.|
+|Automatikus kiegészítés|igaz|Azt jelzi, hogy a triggernek a feldolgozás után automatikusan kell-e meghívnia a feladatokat, vagy ha a függvény kódja manuálisan hívja meg a műveletet.<br><br>A beállítás `false` értéke csak C# esetén támogatott.<br><br>Ha a értékre van állítva `true` , akkor az trigger automatikusan befejeződik, ha a függvény végrehajtása sikeresen befejeződött, és a rendszer nem hagyja el az üzenetet.<br><br>Ha a értékre `false` van állítva, akkor a [MessageReceiver](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet) metódusok meghívásával kell meghívnia az üzenetet az üzenet befejezésére, elhagyására vagy kézbesítetlen levelek. Ha kivétel keletkezik (és egyik `MessageReceiver` metódus sem lett meghívva), akkor a zárolás továbbra is fennáll. A zárolás lejárta után a rendszer újra várólistára helyezi az üzenetet, `DeliveryCount` és automatikusan megújítja a zárolást.<br><br>A nem C # függvények esetében a függvényben lévő kivételek a háttérben futó futásidejű hívásokat eredményezik `abandonAsync` . Ha nem történik kivétel, `completeAsync` a rendszer a háttérben hívja meg. |
 |maxConcurrentCalls|16|A visszahívás egyidejű hívások maximális száma, amelyet az üzenet-szivattyúnak méretezhető példányon kell kezdeményeznie. Alapértelmezés szerint a függvények futtatókörnyezete egyszerre több üzenetet dolgoz fel.|
 |maxConcurrentSessions|2000|A többméretű példányon egyidejűleg kezelhető munkamenetek maximális száma.|
 

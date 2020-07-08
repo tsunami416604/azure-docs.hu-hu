@@ -7,18 +7,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/06/2018
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2df52969ea79e5d1af132aa82c2ec1ceedb92b82
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 87b063a4d51d5d5d1e3d7949be3754ccbe74acca
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75422893"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85604114"
 ---
 # <a name="assign-administrator-and-non-administrator-roles-to-users-with-azure-active-directory"></a>Rendszergazdai és nem rendszergazdai szerepkörök kiosztása a felhasználóknak a Azure Active Directory
 Ha a szervezet egyik felhasználójának jogosultsággal kell rendelkeznie Azure Active Directory (Azure AD-) erőforrások kezeléséhez, a felhasználónak megfelelő szerepkört kell rendelnie az Azure AD-ben azon műveletek alapján, amelyekre a felhasználónak szüksége van a végrehajtásához.
@@ -38,7 +38,7 @@ A szerepköröket Privileged Identity Management (PIM) használatával is hozzá
       ![Azure Active Directory Azure Portal keresése](media/active-directory-users-assign-role-azure-portal/search-azure-active-directory.png)
 
 
-3. Válassza a **Felhasználók** lehetőséget.
+3. Válassza a **felhasználók**lehetőséget.
 
 4. Keresse meg és válassza ki a szerepkör-hozzárendelést beolvasó felhasználót. Például _Alain Charon_.
 
