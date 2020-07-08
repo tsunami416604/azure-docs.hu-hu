@@ -13,10 +13,9 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, srbozovi, bonova
 ms.date: 02/18/2019
 ms.openlocfilehash: 76c4e2c5052e70c4c6cb8ff631151a5e6fc544e5
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84706358"
 ---
 # <a name="quickstart-configure-an-azure-vm-to-connect-to-azure-sql-managed-instance"></a>Gyors útmutató: Azure-beli virtuális gép konfigurálása a felügyelt Azure SQL-példányhoz való kapcsolódáshoz
@@ -53,10 +52,10 @@ A következő lépések új alhálózatot hoznak létre az SQL felügyelt péld�
    | ---------------- | ----------------- | ----------- |
    | **Name (Név)** | Bármely érvényes név|Az érvényes nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/architecture/best-practices/resource-naming) ismertető cikket.|
    | **Címtartomány (CIDR-blokk)** | Érvényes tartomány | Az alapértelmezett érték jó ehhez a rövid útmutatóhoz.|
-   | **Hálózati biztonsági csoport** | Nincs | Az alapértelmezett érték jó ehhez a rövid útmutatóhoz.|
-   | **Útválasztási táblázat** | Nincs | Az alapértelmezett érték jó ehhez a rövid útmutatóhoz.|
+   | **Hálózati biztonsági csoport** | None | Az alapértelmezett érték jó ehhez a rövid útmutatóhoz.|
+   | **Útválasztási táblázat** | None | Az alapértelmezett érték jó ehhez a rövid útmutatóhoz.|
    | **Szolgáltatásvégpontok** | 0 kijelölve | Az alapértelmezett érték jó ehhez a rövid útmutatóhoz.|
-   | **Alhálózat delegálása** | Nincs | Az alapértelmezett érték jó ehhez a rövid útmutatóhoz.|
+   | **Alhálózat delegálása** | None | Az alapértelmezett érték jó ehhez a rövid útmutatóhoz.|
 
    ![Új SQL felügyelt példány alhálózata ügyfél virtuális géphez](./media/connect-vm-instance-configure/new-subnet.png)
 

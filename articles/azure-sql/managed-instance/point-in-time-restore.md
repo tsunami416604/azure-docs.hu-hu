@@ -13,10 +13,9 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, mathoma
 ms.date: 08/25/2019
 ms.openlocfilehash: 407d56c209f64d350906a17c0746b1c43f969d43
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84708651"
 ---
 # <a name="restore-a-database-in-azure-sql-managed-instance-to-a-previous-point-in-time"></a>Adatbázis visszaállítása az Azure SQL felügyelt példányában egy korábbi időpontra
@@ -46,7 +45,7 @@ Az alábbi táblázat az SQL felügyelt példányának időponthoz kapcsolódó 
 
 |           |Meglévő adatbázis visszaállítása a felügyelt SQL-példány ugyanazon példányára| Meglévő adatbázis visszaállítása másik SQL felügyelt példányra|Az eldobott adatbázis visszaállítása ugyanazon SQL felügyelt példányra|Az eldobott adatbázis visszaállítása egy másik felügyelt SQL-példányra|
 |:----------|:----------|:----------|:----------|:----------|
-|**Azure Portal**| Yes|No |Yes|No|
+|**Azure Portalra**| Yes|No |Yes|No|
 |**Azure CLI**|Igen |Igen |Nem|Nem|
 |**PowerShell**| Igen|Igen |Igen|Igen|
 

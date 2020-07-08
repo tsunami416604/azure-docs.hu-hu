@@ -12,10 +12,9 @@ ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: iainfou
 ms.openlocfilehash: d43c12681c7230dc4959261ffd6d96f74ea095d7
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84734724"
 ---
 # <a name="join-a-red-hat-enterprise-linux-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>Red Hat Enterprise Linux virtuális gép csatlakoztatása Azure Active Directory Domain Services felügyelt tartományhoz
@@ -42,7 +41,7 @@ Ha rendelkezik egy meglévő RHEL Linux virtuális géppel az Azure-ban, csatlak
 
 Ha létre kell hoznia egy RHEL Linux rendszerű virtuális gépet, vagy létre szeretne hozni egy tesztelési virtuális gépet, amely a jelen cikkben használható, a következő módszerek egyikét használhatja:
 
-* [Azure Portal](../virtual-machines/linux/quick-create-portal.md)
+* [Azure Portalra](../virtual-machines/linux/quick-create-portal.md)
 * [Azure CLI](../virtual-machines/linux/quick-create-cli.md)
 * [Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md)
 

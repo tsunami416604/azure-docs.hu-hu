@@ -13,10 +13,9 @@ ms.topic: article
 ms.date: 01/30/2020
 ms.author: juliako
 ms.openlocfilehash: 1d28fc37b98493322b9e201ac899b7911dd1d705
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84708960"
 ---
 # <a name="analyze-video-and-audio-files-with-azure-media-services"></a>Videó-és hangfájlok elemzése Azure Media Services
@@ -67,7 +66,7 @@ A kimenet tartalmaz egy JSON-fájlt (insights.json) a videóban vagy hangban tal
 
 ### <a name="transcript"></a>átirat
 
-|Name|Leírás|
+|Name|Description|
 |---|---|
 |id|A sor azonosítója.|
 |szöveg|Maga a átirat.|
@@ -105,7 +104,7 @@ Példa:
 
 ### <a name="ocr"></a>OCR
 
-|Name|Leírás|
+|Name|Description|
 |---|---|
 |id|Az OCR-sor azonosítója.|
 |szöveg|Az OCR szövege.|
@@ -148,7 +147,7 @@ Példa:
 
 ### <a name="faces"></a>arcok
 
-|Name|Leírás|
+|Name|Description|
 |---|---|
 |id|A Face azonosító.|
 |name|Az arc neve. Ez lehet "ismeretlen #0", egy azonosított híresség vagy egy felhasználó által betanított személy.|
@@ -193,7 +192,7 @@ Példa:
 
 ### <a name="shots"></a>lövések
 
-|Name|Leírás|
+|Name|Description|
 |---|---|
 |id|A shot azonosítója.|
 |Kulcsképek|A shot keretén belüli kulcstárolók listája (mindegyik rendelkezik egy AZONOSÍTÓval és egy példányok időtartományával). A kulcstároló-példányok egy thumbnailId-mezővel rendelkeznek, amely a kulcs miniatűrjét AZONOSÍTÓval rendelkezik.|
@@ -250,7 +249,7 @@ Példa:
 
 ### <a name="statistics"></a>statisztikák
 
-|Name|Leírás|
+|Name|Description|
 |---|---|
 |CorrespondenceCount|A videóban található Levelezések száma.|
 |WordCount|A beszélő szavak száma.|
@@ -263,7 +262,7 @@ Példa:
 
 Az érzelmeket a sentimentType mező alapján összesítjük (pozitív/semleges/negatív). Például: 0-0,1, 0,1-0.2.
 
-|Name|Leírás|
+|Name|Description|
 |---|---|
 |id|Az érzelmi azonosító.|
 |averageScore |Az adott érzelmi típus összes példányának átlaga – pozitív/semleges/negatív|
@@ -298,7 +297,7 @@ Az érzelmeket a sentimentType mező alapján összesítjük (pozitív/semleges/
 
 ### <a name="labels"></a>Címkék
 
-|Name|Leírás|
+|Name|Description|
 |---|---|
 |id|A címke azonosítója|
 |name|A címke neve (például "számítógép", "TV").|
@@ -356,7 +355,7 @@ Az érzelmeket a sentimentType mező alapján összesítjük (pozitív/semleges/
 
 ### <a name="keywords"></a>kulcsszavak
 
-|Name|Leírás|
+|Name|Description|
 |---|---|
 |id|A kulcsszó azonosítója.|
 |szöveg|A kulcsszó szövege.|
@@ -407,7 +406,7 @@ A visualContentModeration blokk olyan időtartományokat tartalmaz, amelyeknek a
 
 A felnőtt vagy zamatos tartalmat tartalmazó videók csak privát nézethez érhetők el. A felhasználók a tartalom emberi felülvizsgálatára vonatkozó kérelmet küldhetnek, amely esetben az attribútum az `IsAdult` emberi felülvizsgálat eredményét fogja tartalmazni.
 
-|Name|Leírás|
+|Name|Description|
 |---|---|
 |id|A vizuális tartalom moderálásának azonosítója.|
 |adultScore|A felnőtt pontszám (a tartalom moderátora).|

@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 12/09/2019
 ms.custom: sfrev
 ms.openlocfilehash: a5c82f49195fc6d790ca4308d78b70106b6cc042
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84710303"
 ---
 # <a name="using-managed-identities-for-azure-with-service-fabric"></a>Felügyelt identitások használata az Azure-hoz a Service Fabric
@@ -20,7 +19,7 @@ Az Azure- *erőforrások felügyelt identitásai* ingyenesek az Azure ad-vel az 
 > [!NOTE]
 > A *felügyelt identitások az Azure* -ban a korábbi Managed Service Identity (MSI) néven ismert szolgáltatás neve.
 
-## <a name="concepts"></a>Alapelvek
+## <a name="concepts"></a>Fogalmak
 
 Az Azure-hoz készült felügyelt identitások számos kulcsfontosságú koncepción alapulnak:
 

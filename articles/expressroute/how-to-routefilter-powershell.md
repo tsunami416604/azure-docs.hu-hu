@@ -9,10 +9,9 @@ ms.date: 02/25/2019
 ms.author: charwen
 ms.custom: seodec18
 ms.openlocfilehash: f5a294a051350c4b08b34356abcd883b7580164e
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84729302"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-powershell"></a>Útválasztási szűrők konfigurálása a Microsoft-partnerek számára: PowerShell

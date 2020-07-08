@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 09/12/2019
 ms.author: rajanaki
 ms.openlocfilehash: 4b005ae308576db6fd26fcf079161430b266ec3f
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84710252"
 ---
 # <a name="run-a-failback-for-hyper-v-vms"></a>Feladat-visszavétel futtatása Hyper-V rendszerű virtuális gépekhez
@@ -29,7 +28,7 @@ Ez a cikk a Hyper-V virtuális gépek helyszíni helyről az Azure-ba történő
 2. Győződjön meg arról, hogy az Azure-beli virtuális gépek Storage-fiókot és nem felügyelt lemezeket használnak. A felügyelt lemezek használatával replikált Hyper-V virtuális gépek feladat-visszavétele nem támogatott.
 3. Ellenőrizze, hogy fut-e a helyszíni Hyper-V-gazdagép (vagy a System Center VMM-kiszolgáló, ha a Site Recovery használatával működik), és csatlakozik az Azure-hoz. 
 4. Győződjön meg arról, hogy a feladatátvétel és a végrehajtás befejeződött a virtuális gépek számára. Nem kell beállítania a Hyper-V virtuális gépek Azure-ból történő feladat-visszavételéhez szükséges konkrét Site Recovery-összetevőket.
-5. Az adatok szinkronizálásának befejezéséhez és a helyszíni virtuális gép elindításához szükséges idő számos tényezőtől függ. Az adatletöltés felgyorsításához beállíthatja, hogy a Microsoft Recovery Services-ügynök több szálat használjon a letöltés integrálással. [További információ](https://support.microsoft.com/help/3056159/how-to-manage-on-premises-to-azure-protection-network-bandwidth-usage).
+5. Az adatok szinkronizálásának befejezéséhez és a helyszíni virtuális gép elindításához szükséges idő számos tényezőtől függ. Az adatletöltés felgyorsításához beállíthatja, hogy a Microsoft Recovery Services-ügynök több szálat használjon a letöltés integrálással. [További információk](https://support.microsoft.com/help/3056159/how-to-manage-on-premises-to-azure-protection-network-bandwidth-usage).
 
 
 ## <a name="fail-back-to-the-original-location"></a>Feladat-visszavétel az eredeti helyre

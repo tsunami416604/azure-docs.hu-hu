@@ -4,10 +4,9 @@ description: Megtudhatja, hogyan használhatja a REST APIt az Azure-fájlmegoszt
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.openlocfilehash: 1c3160491ef92c62745af1468556e7d5c30437fc
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84710575"
 ---
 # <a name="restore-azure-file-shares-using-rest-api"></a>Azure-fájlmegosztás visszaállítása REST API használatával
@@ -160,7 +159,7 @@ POST https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48a
 
 Egy Azure-fájlmegosztás visszaállításának elindításához a kérelem törzsének összetevői a következők:
 
-Name |  Típus   |   Leírás
+Name |  Típus   |   Description
 --- | ---- | ----
 Tulajdonságok | AzureFileShareRestoreRequest | RestoreRequestResource tulajdonságai
 
@@ -370,7 +369,7 @@ POST https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48a
 
 Egy Azure-fájlmegosztás visszaállításának elindításához a kérelem törzsének összetevői a következők:
 
-Name |  Típus   |   Leírás
+Name |  Típus   |   Description
 --- | ---- | ----
 Tulajdonságok | AzureFileShareRestoreRequest | RestoreRequestResource tulajdonságai
 

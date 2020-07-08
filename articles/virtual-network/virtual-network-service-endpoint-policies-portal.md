@@ -13,17 +13,16 @@ ms.workload: infrastructure
 ms.date: 02/21/2020
 ms.author: rdhillon
 ms.openlocfilehash: bdf0e87c92a55d0dbb5bbe34334a6de4580cb350
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84708178"
 ---
 # <a name="create-change-or-delete-service-endpoint-policy-using-the-azure-portal"></a>Szolgáltatás-végponti házirend létrehozása, módosítása vagy törlése a Azure Portal használatával
 
 A szolgáltatás-végponti házirendek lehetővé teszik a virtuális hálózati forgalom szűrését bizonyos Azure-erőforrásokra, a szolgáltatási végpontokon keresztül. Ha még nem ismeri a szolgáltatás-végponti házirendeket, tekintse meg a [szolgáltatás-végponti házirendek áttekintését](virtual-network-service-endpoint-policies-overview.md) .
 
- Az oktatóanyag a következőket ismerteti:
+ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Szolgáltatás-végponti szabályzat létrehozása

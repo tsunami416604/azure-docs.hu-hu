@@ -16,10 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 02/07/2020
 ms.author: kumud
 ms.openlocfilehash: c8fdba59a8d31c064745c7a1904204359b386a7f
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84707854"
 ---
 # <a name="configure-a-private-ip-address-for-a-vm-using-the-azure-portal"></a>Magánhálózati IP-cím konfigurálása virtuális géphez a Azure Portal használatával
@@ -57,7 +56,7 @@ Ha egy *DNS01* nevű virtuális gépet szeretne létrehozni egy *TestVNet*nevű 
     | **Erőforráscsoport** | **TestRG** (kiválasztás a legördülő listából) |
     | **Virtuális gép neve** | *DNS01* |
     | **Régió** | **USA USA keleti régiója** |
-    | **Kép** | **Windows Server 2019 Datacenter** |
+    | **Rendszerkép** | **Windows Server 2019 Datacenter** |
     | **Méret** | **B1ls** **virtuális gép mérete** , **standard szintű** **ajánlat** |
     | **Username** | A rendszergazdai fiók felhasználóneve |
     | **Jelszó** | A rendszergazda fiókja felhasználónevének jelszava |

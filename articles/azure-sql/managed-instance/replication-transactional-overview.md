@@ -13,10 +13,9 @@ ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 04/20/2020
 ms.openlocfilehash: 2163a6e47767f6ce990526c7ececb7b4b554bf4e
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84708498"
 ---
 # <a name="transactional-replication-with-azure-sql-managed-instance"></a>Tranzakciós replikáció az Azure SQL felügyelt példányával

@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 05/23/2019
 ms.author: juliako
 ms.openlocfilehash: fdf29924da31db0347938df89e698cb258c2336b
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84708297"
 ---
 # <a name="filters"></a>Szűrők
@@ -47,7 +46,7 @@ A forgatókönyvtől függően eldöntheti, hogy a szűrő milyen típusú legye
 
 A szűrők leírásához a következő tulajdonságokat használhatja. 
 
-|Name|Leírás|
+|Name|Description|
 |---|---|
 |firstQuality|A szűrő első minőségi bitrátája.|
 |presentationTimeRange|A megjelenítési idő tartománya. Ez a tulajdonság a jegyzékfájl kezdő/záró pontjainak, a megjelenítési időszak hosszának és az élő indítási pozíciónak a szűrésére szolgál. <br/>További információ: [PresentationTimeRange](#presentationtimerange).|
@@ -57,7 +56,7 @@ A szűrők leírásához a következő tulajdonságokat használhatja.
 
 Ezt a tulajdonságot használja az **Asset Filters**használatával. A tulajdonságot nem ajánlott a **fiók szűrőinek**beállításával beállítani.
 
-|Name|Leírás|
+|Name|Description|
 |---|---|
 |**endTimestamp**|Az igény szerinti videóra vonatkozik (VoD).<br/>Az élő közvetítés megjelenítéséhez a rendszer csendben figyelmen kívül hagyja és alkalmazza a bemutatót, amikor a bemutató véget ér, és az adatfolyam a VoD-ra változik.<br/>Ez egy hosszú érték, amely a bemutató abszolút végpontját jelöli, a legközelebbi következő GOP-kezdésig kerekítve. Az egység az időskála, így a 1800000000-es endTimestamp 3 percet vesz igénybe.<br/>A startTimestamp és a endTimestamp használatával vágja le a lista (manifest) töredékeit.<br/>Például a startTimestamp = 40000000 és a endTimestamp = 100000000 az alapértelmezett időskálával létrehoz egy olyan lejátszási listát, amely 4 másodperc és 10 másodperc közötti töredékeket tartalmaz a VoD-bemutatóból. Ha egy töredék átnyúlik a határt, a teljes töredék szerepelni fog a jegyzékfájlban.|
 |**forceEndTimestamp**|Csak az élő közvetítésre vonatkozik.<br/>Azt jelzi, hogy a endTimestamp tulajdonságnak jelen kell-e lennie. Ha az értéke igaz, a endTimestamp meg kell adni, vagy rossz kérési kódot ad vissza.<br/>Megengedett értékek: false, True.|
@@ -72,7 +71,7 @@ Itt adhatja meg a szűrési nyomon követési tulajdonságok (FilterTrackPropert
 
 A szűrési tulajdonságok a következő táblázatban ismertetett típusok és műveletek (EQUAL, NotEqual) szerint vannak leírva: Track types (értékek). 
 
-|Name|Leírás|
+|Name|Description|
 |---|---|
 |**Sávszélességű**|Használja a nyomkövetési sebesség használatát a szűréshez.<br/><br/>A javasolt érték a bitsebességek tartománya, a bitek száma másodpercenként. Például: "0-2427000".<br/><br/>Megjegyzés: egy adott bitráta-érték (például 250000 (bit/másodperc) használata esetén ez a megközelítés nem ajánlott, mivel a pontos bitsebességek az egyik eszközről a másikra ingadoznak.|
 |**FourCC**|A szűrési nyomon követéshez használja a FourCC értékét.<br/><br/>Az érték a codec-formátum első eleme, amely az [RFC 6381](https://tools.ietf.org/html/rfc6381)-ben van megadva. Jelenleg a következő kodekek támogatottak: <br/>Videó: "AVC1", "hev1", "hvc1"<br/>Hang: "mp4a", "EC-3"<br/><br/>Egy adott eszközön lévő zeneszámok FourCC-értékeinek meghatározásához szerezze be és vizsgálja meg a jegyzékfájlt.|
