@@ -16,10 +16,9 @@ ms.date: 07/12/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: fe899eebb0139dffabef96da32ab1641c983f726
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84338407"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-with-the-sql-server-agent-extension-classic"></a>Felügyeleti feladatok automatizálása az Azure Virtual Machines a SQL Server Agent bővítménnyel (klasszikus)
@@ -37,11 +36,11 @@ Az SQL Server IaaS-ügynök bővítmény (SQLIaaSAgent) az Azure Virtual Machine
 ## <a name="supported-services"></a>Támogatott szolgáltatások
 A SQL Server IaaS-ügynök bővítmény a következő felügyeleti feladatokat támogatja:
 
-| Felügyeleti funkció | Leírás |
+| Felügyeleti funkció | Description |
 | --- | --- |
 | **SQL automatikus biztonsági mentés** |Automatizálja a biztonsági mentések ütemezését az összes adatbázishoz a virtuális gép SQL Server alapértelmezett példánya számára. További információ: [SQL Server automatikus biztonsági mentése az Azure Virtual Machines (klasszikus)](../classic/sql-automated-backup.md). |
 | **SQL automatikus javítás** |Beállítja a karbantartási időszakot, amely alatt a virtuális gép fontos Windows-frissítései elhelyezhetők, így elkerülhetők a frissítések a számítási feladatok maximális ideje alatt. További információ: [SQL Server automatikus javítása az Azure Virtual Machines (klasszikus)](../classic/sql-automated-patching.md). |
-| **Azure Key Vault integráció** |Lehetővé teszi Azure Key Vault automatikus telepítését és konfigurálását a SQL Server VM. További információ: [Azure Key Vault integrációjának konfigurálása SQL Server Azure-beli virtuális gépeken (klasszikus)](../classic/ps-sql-keyvault.md). |
+| **Azure Key Vault-integráció** |Lehetővé teszi Azure Key Vault automatikus telepítését és konfigurálását a SQL Server VM. További információ: [Azure Key Vault integrációjának konfigurálása SQL Server Azure-beli virtuális gépeken (klasszikus)](../classic/ps-sql-keyvault.md). |
 
 ## <a name="prerequisites"></a>Előfeltételek
 A SQL Server IaaS-ügynök bővítményének használatára vonatkozó követelmények a virtuális gépen:

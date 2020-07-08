@@ -16,10 +16,9 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
 ms.openlocfilehash: fc79d7204ba360696b8d9411cd56efd09d1678dc
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84021840"
 ---
 # <a name="azure-database-security-checklist"></a>Az Azure Database biztonsági ellenőrzőlistája
@@ -44,7 +43,7 @@ A felhő-számítástechnika olyan új biztonsági paradigmokat igényel, amelye
 Javasoljuk, hogy az ellenőrzőlista áttekintése előtt olvassa el az [Azure-adatbázis biztonsági eljárásairól](database-best-practices.md) szóló cikket. Az ajánlott eljárások megismerése után a lehető legtöbbet hozhatja ki ebből az ellenőrzőlistából. Ezt a feladatlistát követve meggyőződhet arról, hogy az Azure Database biztonságával kapcsolatos fontos problémák merültek fel.
 
 
-|Ellenőrzőlista kategóriája| Leírás|
+|Ellenőrzőlista kategóriája| Description|
 | ------------ | -------- |
 |**Az adatvédelem**||
 | <br> Titkosítás a mozgásban/átvitelben| <ul><li>[Transport Layer Security](https://docs.microsoft.com/windows-server/security/tls/transport-layer-security-protocol)az adattitkosításhoz, amikor az adatátvitelt a hálózatokra helyezi.</li><li>Az adatbázishoz biztonságos kommunikáció szükséges az ügyfelektől a (z) [TDS (táblázatos adatfolyam)](https://msdn.microsoft.com/library/dd357628.aspx) protokollon keresztül a TLS protokoll (Transport Layer Security) alapján.</li></ul> |

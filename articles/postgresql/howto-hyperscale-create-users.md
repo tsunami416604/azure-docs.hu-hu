@@ -8,10 +8,9 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 1/8/2019
 ms.openlocfilehash: b8d47d1036473af1b367cc0266aae3ea1bceeada
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84343931"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---hyperscale-citus"></a>Felhasználók létrehozása a Azure Database for PostgreSQL-nagy kapacitású (Citus)
@@ -81,7 +80,7 @@ Egy felhasználó frissítéséhez keresse fel a nagy kapacitású-kiszolgálóc
 
 A `citus` szerepkör jogosultsággal rendelkezik, és nem törölhető.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Nyissa meg a tűzfalat az új felhasználói gépek IP-címei számára, hogy csatlakozhasson a kapcsolódáshoz: [nagy kapacitású-(Citus-) tűzfalszabályok létrehozása és kezelése a Azure Portal használatával](howto-hyperscale-manage-firewall-using-portal.md).
 

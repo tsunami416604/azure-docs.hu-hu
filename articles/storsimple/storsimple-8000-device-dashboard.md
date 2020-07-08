@@ -15,10 +15,9 @@ ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
 ms.openlocfilehash: ed624fd5fb86b95e0b79c1c7ed4de50749ec7046
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85512038"
 ---
 # <a name="use-the-device-summary-in-storsimple-device-manager-service"></a>Az eszköz összegzésének használata a StorSimple Eszközkezelő szolgáltatásban
@@ -93,7 +92,7 @@ Az Essentials terület a fontos tulajdonságok, például az állapot, a modell,
     ![Kattintson a használati diagram elemre.](./media/storsimple-8000-device-dashboard/device-summary13.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További információ a [StorSimple szolgáltatás összefoglalási](storsimple-8000-service-dashboard.md)paneljéről.
 * További információ [a StorSimple Eszközkezelő szolgáltatás a StorSimple-eszköz felügyeletéhez való használatáról](storsimple-8000-manager-service-administration.md).
 

@@ -7,22 +7,21 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/25/2019
 ms.author: ajburnle
 ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69c96d123ebe97ba4a7a6df0395efe698924fef1
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
-ms.translationtype: MT
+ms.openlocfilehash: 1cfa00cceac6c30219d4577cc4ba29c84cb1a75a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82734739"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85603961"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>Egyéni tartománynév hozzáadása a Azure Active Directory portál használatával
 
-Minden új Azure ad-bérlőhöz tartozik egy kezdeti tartománynév, * \<tartománynév>. onmicrosoft.com*. A kezdeti tartománynév nem módosítható vagy törölhető, de felveheti a szervezet nevét. Az egyéni tartománynevek hozzáadásával a felhasználók számára ismerős felhasználónevek (például *alain\@contoso.com*) hozhatók létre.
+Minden új Azure AD-bérlő kezdeti tartománynevet, * \<domainname> . onmicrosoft.com*tartalmaz. A kezdeti tartománynév nem módosítható vagy törölhető, de felveheti a szervezet nevét. Az egyéni tartománynevek hozzáadásával a felhasználók számára ismerős felhasználónevek (például *alain \@ contoso.com*) hozhatók létre.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -50,7 +49,7 @@ A címtár létrehozása után felveheti az egyéni tartománynevet.
 
 1. A címtár eléréséhez globális rendszergazdai fiókkal jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
-1. Keresse meg és válassza ki a *Azure Active Directory* bármely oldalon. Ezután válassza az **Egyéni tartománynevek** > **egyéni tartomány hozzáadása**elemet.
+1. Keresse meg és válassza ki a *Azure Active Directory* bármely oldalon. Ezután válassza az **Egyéni tartománynevek**  >  **egyéni tartomány hozzáadása**elemet.
 
     ![Custom Domain Names (egyéni tartománynevek) lap, amelyen az egyéni tartomány hozzáadása látható](media/add-custom-domain/add-custom-domain.png)
 

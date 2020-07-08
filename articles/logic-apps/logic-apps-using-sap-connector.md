@@ -10,10 +10,9 @@ ms.topic: article
 ms.date: 06/23/2020
 tags: connectors
 ms.openlocfilehash: 01c1a2b3f9455f19877f1b16b7fff5a7c2e77c76
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85323161"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Csatlakozás SAP-rendszerekhez az Azure Logic Appsből
@@ -23,7 +22,7 @@ ms.locfileid: "85323161"
 >
 > A régebbi összekötőket használó logikai alkalmazások esetében [telepítse át a legújabb összekötőt](#migrate) az Érvénytelenítési dátum előtt. Ellenkező esetben ezek a logikai alkalmazások a végrehajtási hibákat tapasztalják, és nem tudnak üzeneteket küldeni az SAP-rendszernek.
 
-Ez a cikk bemutatja, hogyan érheti el a helyszíni SAP-erőforrásokat egy logikai alkalmazásból az SAP-összekötő használatával. Az összekötő az SAP klasszikus kiadásaival működik, mint például az R/3 és az ECC rendszerek a helyszínen. Az összekötő az SAP újabb HANA-alapú SAP-rendszereivel, például az S/4 HANA-vel való integrációt is lehetővé teszi, függetlenül attól, hogy azok a helyszínen vagy a felhőben vannak tárolva. Az SAP-összekötő támogatja az SAP NetWeaver-alapú rendszerek üzenet-vagy adatintegrációját köztes dokumentumon (IDoc), a Business Application Programming Interface (BAPI) vagy a Remote Function Call (RFC) szolgáltatáson keresztül.
+Ez a cikk bemutatja, hogyan érheti el a helyszíni SAP-erőforrásokat egy logikai alkalmazásból az SAP-összekötő használatával. Az összekötő az SAP klasszikus kiadásaival működik, mint például az R/3 és az ECC rendszerek a helyszínen. Emellett az összekötő lehetővé teszi az integrációt az SAP újabb HANA-alapú SAP-rendszereivel, például az S/4 HANA-val, függetlenül attól, hogy a rendszerek a helyszínen vagy a felhőben üzemelnek. Az SAP-összekötő az üzenetek és az adatok NetWeaver-alapú SAP-rendszerekkel történő integrációját a köztes dokumentum (Intermediate Document, IDoc), az üzleti alkalmazásprogramozási felület (Business Application Programming Interface, BAPI) vagy a távoli függvényhívás (Remote Function Call, RFC) használatával támogatja.
 
 Az SAP-összekötő az [SAP .net Connector (NKH) függvénytárát](https://support.sap.com/en/product/connectors/msnet.html) használja, és a következő műveleteket biztosítja:
 
@@ -583,7 +582,7 @@ A IDocs SAP-ból logikai alkalmazásba való elküldéséhez a következő minim
 
 1. A IDoc- **feldolgozási beállítások tesztelési eszközének** megnyitásához az SAP-felületen használja az **we19** -tranzakció kódját (T Code) a **/n** előtaggal.
 
-1. A **sablon a teszteléshez**területen válassza az **üzenet típusa**lehetőséget, majd írja be az üzenet típusát (például: **cremas**). Kattintson a **Létrehozás** gombra.
+1. A **sablon a teszteléshez**területen válassza az **üzenet típusa**lehetőséget, majd írja be az üzenet típusát (például: **cremas**). Válassza a **Létrehozás** lehetőséget.
 
 1. A **Folytatás**gombra kattintva erősítse meg, hogy **melyik IDoc-típust?** üzenet jelenik meg.
 

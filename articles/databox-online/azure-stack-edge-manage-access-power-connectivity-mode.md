@@ -9,10 +9,9 @@ ms.topic: how-to
 ms.date: 06/24/2019
 ms.author: alkohli
 ms.openlocfilehash: 6e46d1a923eec5244bf77c201ff0b3189699c9ea
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84339722"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge"></a>Az Azure Stack Edge hozzáférés-, energiagazdálkodási és csatlakozási módjának kezelése
@@ -132,6 +131,6 @@ Leállíthatja vagy újraindíthatja a fizikai eszközt a helyi webes felhaszná
 > [!NOTE]
 > Ha leállítja a fizikai eszközt, a bekapcsolásához le kell küldenie az eszköz főkapcsoló gombját.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Megtudhatja, hogyan [kezelheti a megosztásokat](azure-stack-edge-manage-shares.md).

@@ -13,10 +13,9 @@ ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 12/04/2018
 ms.openlocfilehash: 6a8770cfaf5acedcf3549d92f1365948acda8bc7
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84344645"
 ---
 # <a name="designing-globally-available-services-using-azure-sql-database"></a>Globálisan elérhető szolgáltatások tervezése Azure SQL Database használatával
@@ -161,7 +160,7 @@ Az adott Felhőbeli vész-helyreállítási stratégia kombinálhatja vagy kiter
 ||Olvasási és írási hozzáférés = nulla | Olvasási és írási hozzáférés = hiba észlelési ideje + türelmi időszak adatvesztéssel |
 |||
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Az üzletmenet folytonosságának áttekintése és forgatókönyvei: az [üzletmenet folytonosságának áttekintése](business-continuity-high-availability-disaster-recover-hadr-overview.md)
 * Az aktív geo-replikációval kapcsolatos információkért lásd: [aktív földrajzi replikálás](active-geo-replication-overview.md).

@@ -4,10 +4,9 @@ description: Ismerteti, Hogyan oldhatók fel a sablon érvénytelen hibái Azure
 ms.topic: troubleshooting
 ms.date: 05/22/2020
 ms.openlocfilehash: 2902a6d82c32192bb241697825a31d759d5c7b75
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84324062"
 ---
 # <a name="resolve-errors-for-invalid-template"></a>Érvénytelen sablonnal kapcsolatos hibák elhárítása

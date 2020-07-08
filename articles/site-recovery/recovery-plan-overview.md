@@ -4,10 +4,9 @@ description: A Azure Site Recovery helyreállítási terveinek megismerése.
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.openlocfilehash: 8d191781cacc37242dd1be31d6cb87ef196e5e7a
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84343914"
 ---
 # <a name="about-recovery-plans"></a>A helyreállítási tervek ismertetése
@@ -91,7 +90,7 @@ Tekintse meg a kétrétegű WordPress-alkalmazás helyreállítási tervének eg
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Hozzon létre](site-recovery-create-recovery-plans.md) egy helyreállítási tervet.
 - Feladatátvételek [futtatása](site-recovery-failover.md) . 

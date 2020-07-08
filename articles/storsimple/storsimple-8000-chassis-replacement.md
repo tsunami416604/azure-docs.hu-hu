@@ -15,10 +15,9 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: de0f6299f35f9d76fdade976bf70456426e5ec51
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85513428"
 ---
 # <a name="replace-the-chassis-on-your-storsimple-device"></a>Az alváz cseréje a StorSimple-eszközön
@@ -56,6 +55,6 @@ A következő lépésekkel telepítheti az alvázt a StorSimple-eszközön.
   
 4. Az eszköz és a telepített összetevők csatlakoztatásával csatlakoztathatja az eszközt a megfelelő áramforrásokhoz, és bekapcsolhatja az eszközt. Részletekért lásd: [a StorSimple 8100-eszköz](storsimple-8100-hardware-installation.md#cable-your-storsimple-8100-device) vagy [a StorSimple 8600-eszköz](storsimple-8600-hardware-installation.md#cable-your-storsimple-8600-device)csatlakoztatása.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ a [StorSimple hardveres összetevők cseréjéről](storsimple-8000-hardware-component-replacement.md).
 

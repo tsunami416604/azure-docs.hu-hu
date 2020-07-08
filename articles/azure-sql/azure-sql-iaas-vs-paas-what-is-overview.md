@@ -14,10 +14,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/27/2020
 ms.openlocfilehash: 1ad7dc2452cdc2756413db1a07da74e2a1dc3fcd
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84344628"
 ---
 # <a name="what-is-azure-sql"></a>Mi az az Azure SQL? 
@@ -167,7 +166,7 @@ Az SQL az Azure-beli **virtuális gépen** tökéletes megoldás, ha meglévő v
 
 [!INCLUDE [sql-database-create-manage-portal](includes/sql-database-create-manage-portal.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse meg [az első Azure SQL-adatbázissal](database/single-database-create-quickstart.md) foglalkozó témakört, hogy megismerkedhessen az SQL Database használatának első lépéseivel.
 - Az SQL felügyelt példányának megismeréséhez tekintse [meg az első Azure SQL-beli felügyelt példányát](managed-instance/instance-create-quickstart.md) . 

@@ -4,10 +4,9 @@ description: Az Azure Container Registry, például a hitelesítés, a képküld
 ms.topic: article
 ms.date: 06/01/2020
 ms.openlocfilehash: b41b1001a669fe42721471bc196e7628eabff983
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84343183"
 ---
 # <a name="azure-container-registry-logs-for-diagnostic-evaluation-and-auditing"></a>Azure Container Registry naplók a diagnosztika kiértékeléséhez és a naplózáshoz
@@ -144,7 +143,7 @@ Amellett, hogy a naplókat Log Analyticsre küldi, vagy egy másik megoldáskén
 
 A diagnosztikai napló eseményeit egy [Azure Event hub](../event-hubs/event-hubs-what-is-event-hubs.md)-ba is továbbíthatja. A Event Hubs másodpercenként több millió eseményt képes befogadni, amelyet később bármilyen valós idejű elemzési szolgáltató használatával átalakíthat és tárolhat. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ a [log Analytics](../azure-monitor/log-query/get-started-portal.md) használatáról és a [naplók](../azure-monitor/log-query/get-started-queries.md)létrehozásáról.
 * A különböző Azure-rétegekben elérhető platform-naplók megismeréséhez tekintse meg [Az Azure platform-naplók áttekintése](../azure-monitor/platform/platform-logs-overview.md) című témakört.

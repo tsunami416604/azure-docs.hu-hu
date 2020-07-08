@@ -9,10 +9,9 @@ ms.topic: how-to
 ms.date: 07/11/2019
 ms.author: alkohli
 ms.openlocfilehash: 4d513471e288c1aadbf70b24ef367965a0b69a80
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84339909"
 ---
 # <a name="open-a-support-ticket-for-azure-stack-edge-and-azure-data-box-gateway"></a>Támogatási jegy megnyitása Azure Stack Edge-hez és Azure Data Box Gateway
@@ -57,7 +56,7 @@ Támogatási kérelem létrehozásához hajtsa végre a következő lépéseket:
 
         ![Probléma](./media/azure-stack-edge-contact-microsoft-support/data-box-edge-support-request-2.png)
 
-4. A **felülvizsgálat + létrehozás** lapon tekintse át a támogatási jegyhez kapcsolódó információkat. Kattintson a **Létrehozás** gombra. 
+4. A **felülvizsgálat + létrehozás** lapon tekintse át a támogatási jegyhez kapcsolódó információkat. Válassza a **Létrehozás** lehetőséget. 
 
     ![Probléma](./media/azure-stack-edge-contact-microsoft-support/data-box-edge-support-request-3.png)
 
@@ -96,7 +95,7 @@ A támogatási jegy létrehozása után a jegyet a teljes életciklusán kereszt
 
 3. Válasszon ki egy támogatási kérést, és kattintson rá. Megtekintheti a kérelem állapotát és részleteit. Ha ezt a kérést szeretné követni, kattintson az **+ új üzenet** elemre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan lehet [elhárítani az Azure stack Edge-vel kapcsolatos problémákat](azure-stack-edge-troubleshoot.md).
 Ismerje meg, hogyan lehet [elhárítani a Data Box Gateway kapcsolatos problémákat](data-box-gateway-troubleshoot.md).

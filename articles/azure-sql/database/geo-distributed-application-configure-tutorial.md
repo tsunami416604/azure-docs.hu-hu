@@ -12,10 +12,9 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 03/12/2019
 ms.openlocfilehash: 523fd3103585865a969f6463b3dc41fe362b9130
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84324722"
 ---
 # <a name="tutorial-implement-a-geo-distributed-database-azure-sql-database"></a>Oktatóanyag: földrajzilag elosztott adatbázis implementálása (Azure SQL Database)
@@ -140,7 +139,7 @@ A Geo-replikálási beállítások a Azure Portalban is megváltoztathatók, ha 
    cd SqlDbSample
    ```
 
-1. A kedvenc szerkesztője segítségével nyissa meg a *Pom. XML* fájlt a Project mappában.
+1. A kedvenc szerkesztője segítségével nyissa meg a *pom.xml* fájlt a Project mappában.
 
 1. A következő szakasz hozzáadásával adja hozzá a Microsoft JDBC-illesztőprogramot SQL Server-függőséghez `dependency` . A függőséget a nagyobb szakaszba kell beilleszteni `dependencies` .
 
@@ -368,7 +367,7 @@ Feladatátvétel tesztelése:
 
 * * *
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban egy adatbázist konfigurált Azure SQL Database és egy távoli régióba való feladatátvételre szolgáló alkalmazást, és tesztelt egy feladatátvételi tervet. Megismerte, hogyan végezheti el az alábbi műveleteket:
 

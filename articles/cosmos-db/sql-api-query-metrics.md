@@ -8,10 +8,9 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: sngun
 ms.openlocfilehash: 8776ecae982a4b1c67f6b66f16fceec930a561f0
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85392131"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>A lekérdezési teljesítmény finomhangolása az Azure Cosmos DB-vel
@@ -271,7 +270,7 @@ Az ügyfél SDK-k belsőleg több lekérdezési műveletet végezhetnek el a lek
 | `SELECT TOP 500 c.Name FROM c WHERE STARTSWITH(LOWER(c.Name), 'den')` | `"IndexLookupTime": "00:00:00", "RetrievedDocumentCount": 2491,  "OutputDocumentCount": 500` | A lekérdezés vizsgálatként történik, mivel a rendszer a-t használja `LOWER` , és 500-ből 2491 lekért dokumentumokat ad vissza. |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További információ a támogatott SQL-lekérdezési operátorokról és-kulcsszavakról: [SQL-lekérdezés](sql-query-getting-started.md). 
 * A kérelmek egységeit a [kérelmek egységei](request-units.md)című témakörben tekintheti meg.
 * Az indexelési szabályzattal kapcsolatos további tudnivalókért lásd: [indexelési házirend](index-policy.md) 

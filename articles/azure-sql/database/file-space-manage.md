@@ -12,10 +12,9 @@ ms.author: moslake
 ms.reviewer: jrasnick, carlrab
 ms.date: 03/12/2019
 ms.openlocfilehash: ebaddbcacbc20097b2ec5606244650ea2916edfe
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84324538"
 ---
 # <a name="manage-file-space-for-databases-in-azure-sql-database"></a>Azure SQL Database-adatbázisok tárterületének kezelése
@@ -124,7 +123,7 @@ A következő tárolóhelyek mennyiségének megismerése fontos a rugalmas kés
 
 ## <a name="query-an-elastic-pool-for-storage-space-information"></a>Rugalmas készlet lekérdezése a tárolóhelyekkel kapcsolatos információkhoz
 
-A következő lekérdezések segítségével határozható meg a rugalmas készlet tárolóhelyek mennyisége.  
+Az alábbi lekérdezések segítségével meghatározható a rugalmas készlethez kapcsolódó tárterület mennyisége.  
 
 ### <a name="elastic-pool-data-space-used"></a>Rugalmas készlethez felhasznált adatterület
 
@@ -232,7 +231,7 @@ További információ erről a parancsról: [adatbázis-beállítási](https://d
 
 Az adatbázis-adatfájlok összezsugorodása után az indexek töredezettek lehetnek, és elveszítik a teljesítmény optimalizálásának hatékonyságát. Ha a teljesítmény romlása történik, érdemes megfontolnia az adatbázis-indexek újjáépítését. Az indexek töredezettségével és újraépítésével kapcsolatos további információkért lásd: az [indexek újrarendezése és újraépítése](https://docs.microsoft.com/sql/relational-databases/indexes/reorganize-and-rebuild-indexes).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az adatbázis maximális méretével kapcsolatos információkért lásd:
   - [Azure SQL Database virtuális mag-alapú beszerzési modell korlátai egyetlen adatbázishoz](resource-limits-vcore-single-databases.md)
