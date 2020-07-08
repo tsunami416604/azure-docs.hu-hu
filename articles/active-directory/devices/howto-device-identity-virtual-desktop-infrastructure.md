@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7b431cee3b8e5fc168dec2766442d6f6b9869d1e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74900371"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>Eszköz-identitás és asztali virtualizálási
@@ -43,20 +42,20 @@ Mielőtt az eszköz identitásait az Azure AD-ben konfigurálja a VDI-környezet
 
 | Eszköz identitásának típusa | Identitás-infrastruktúra | Windows rendszerű eszközök | VDI platform verziója | Támogatott |
 | --- | --- | --- | --- | --- |
-| csatlakozik a Hibrid Azure AD-hez | Összevont | Windows jelenlegi * * * és Windows Down-Level * * * * | Állandó | Igen |
-|   |   | Windows jelenlegi | Nem állandó | Nem |
-|   |   | Korábbi verziójú Windows | Nem állandó | Igen |
-|   | Felügyelt * * | Windows jelenlegi és Windows Down-Level | Állandó | Igen |
-|   |   | Windows jelenlegi | Nem állandó | Nem |
-|   |   | Korábbi verziójú Windows | Nem állandó | Igen |
-| Azure AD-hez csatlakoztatva | Összevont | Windows jelenlegi | Állandó | Nem |
-|   |   |   | Nem állandó | Nem |
-|   | Kezelt | Windows jelenlegi | Állandó | Nem |
-|   |   |   | Nem állandó | Nem |
-| Az Azure AD-ban regisztrálva | Összevont | Windows jelenlegi | Állandó | Nem |
-|   |   |   | Nem állandó | Nem |
-|   | Kezelt | Windows jelenlegi | Állandó | Nem |
-|   |   |   | Nem állandó | Nem |
+| csatlakozik a Hibrid Azure AD-hez | Összevont | Windows jelenlegi * * * és Windows Down-Level * * * * | Állandó | Yes |
+|   |   | Windows jelenlegi | Nem állandó | No |
+|   |   | Korábbi verziójú Windows | Nem állandó | Yes |
+|   | Felügyelt * * | Windows jelenlegi és Windows Down-Level | Állandó | Yes |
+|   |   | Windows jelenlegi | Nem állandó | No |
+|   |   | Korábbi verziójú Windows | Nem állandó | Yes |
+| Azure AD-hez csatlakoztatva | Összevont | Windows jelenlegi | Állandó | No |
+|   |   |   | Nem állandó | No |
+|   | Felügyelt | Windows jelenlegi | Állandó | No |
+|   |   |   | Nem állandó | No |
+| Az Azure AD-ban regisztrálva | Összevont | Windows jelenlegi | Állandó | No |
+|   |   |   | Nem állandó | No |
+|   | Felügyelt | Windows jelenlegi | Állandó | No |
+|   |   |   | Nem állandó | No |
 
 \*Az **összevont** identitás-infrastruktúra környezete olyan identitás-szolgáltatói környezetet képvisel, mint például a AD FS vagy más harmadik féltől származó identitásszolgáltató.
 
@@ -73,7 +72,7 @@ A rendszergazdáknak az identitás-infrastruktúrájuk alapján kell megismerni�
 - [Hibrid Azure Active Directory csatlakozás konfigurálása összevont környezethez](hybrid-azuread-join-federated-domains.md)
 - [Hibrid Azure Active Directory csatlakozás konfigurálása felügyelt környezethez](hybrid-azuread-join-managed-domains.md)
 
-Ha a rendszer-előkészítő eszközön (Sysprep. exe) található, és ha a telepítés előtt Windows 10 1809 rendszerképet használ, győződjön meg arról, hogy a rendszerkép nem egy olyan eszközről származik, amely már regisztrálva van az Azure AD-ben hibrid Azure AD-hez.
+Ha a rendszer-előkészítő eszközre (sysprep.exe) támaszkodik, és ha a telepítés előtt Windows 10 1809 rendszerképet használ, győződjön meg arról, hogy a rendszerkép nem egy olyan eszközről származik, amely már regisztrálva van az Azure AD-ben hibrid Azure AD-hez.
 
 Ha virtuális gép (VM) pillanatképét szeretné létrehozni további virtuális gépek létrehozásához, győződjön meg arról, hogy a pillanatkép nem olyan virtuális gépről származik, amely már regisztrálva van az Azure AD-ben hibrid Azure AD-csatlakozásként.
 
@@ -81,7 +80,7 @@ Nem állandó VDI telepítésekor a rendszergazdáknak Kiemelt figyelmet kell fo
 
 - Hozzon létre és használjon egy előtagot annak a számítógépnek a megjelenítendő neveként, amely VDI-alapúként jelöli meg az asztalt.
 - A következő parancs végrehajtása a kijelentkezési parancsfájl részeként. Ez a parancs elindítja az Azure AD-nek a legjobb erőfeszítést az eszköz törléséhez.
-   - Windows Down-szintű eszközökhöz – autoworkplace. exe/Leave
+   - Windows Down-szintű eszközök esetén – autoworkplace.exe/Leave
 - Az [elavult eszközök kezelésére](manage-stale-devices.md)szolgáló folyamat meghatározása és implementálása.
    - Ha már van egy stratégia a nem állandó hibrid Azure AD-hez csatlakoztatott eszközök azonosítására, akkor agresszívebb lehet ezen eszközök tisztítása, hogy a címtár ne legyen felhasználva sok elavult eszközzel.
  

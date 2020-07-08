@@ -16,10 +16,9 @@ ms.date: 03/14/2019
 ms.author: Juliako
 ms.reviewer: willzhan
 ms.openlocfilehash: 29a344c739d8d99da2e5c81d41a11c601e48022e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74969140"
 ---
 # <a name="using-castlabs-to-deliver-widevine-licenses-to-azure-media-services"></a>A castLabs használata a Widevine-licencek közvetítéséhez az Azure Media Servicesbe 
@@ -68,7 +67,7 @@ Az alábbi táblázat az AMS JWT tokenjét ismerteti.
 
 A következő táblázat a castLabs JWT tokenjét ismerteti. 
 
-| Name (Név) | Leírás |
+| Name | Description |
 | --- | --- |
 | optData |Egy JSON-karakterlánc, amely az Ön adatait tartalmazza. |
 | CRT |Egy olyan JSON-karakterlánc, amely az eszközre, a licencre és a lejátszási jogosultságokra vonatkozó információkat tartalmaz. |
@@ -84,7 +83,7 @@ A [minta megoldás](https://github.com/AzureMediaServicesSamples/CastlabsIntegra
 
 A konzol alkalmazás használata:
 
-1. Módosítsa az app. config fájlt, és állítsa be az AMS hitelesítő adatait, a castLabs hitelesítő adatait, az STS-konfigurációt és a megosztott kulcsot.
+1. Módosítsa a app.config az AMS hitelesítő adatainak beállításához, a hitelesítő adatok castLabs, az STS-konfigurációhoz és a megosztott kulcshoz.
 2. Eszköz feltöltése AMS-be.
 3. Kérje le az UUID-t a feltöltött objektumból, és változtassa meg a 32-as sort a Program.cs fájlban:
    
@@ -96,7 +95,7 @@ A konzol alkalmazás használata:
 
 A webalkalmazás (STS) használata:
 
-1. Módosítsa a web. config fájlt a castlabs kereskedelmi AZONOSÍTÓjának, az STS-konfigurációnak és a megosztott kulcsnak a beállításához.
+1. Módosítsa a web.configt a castlabs kereskedelmi AZONOSÍTÓjának, az STS-konfigurációnak és a megosztott kulcsnak a beállításához.
 2. Üzembe helyezés az Azure-webhelyeken.
 3. Navigáljon a webhelyre.
 

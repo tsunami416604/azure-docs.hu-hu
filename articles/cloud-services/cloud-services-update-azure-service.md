@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
 ms.openlocfilehash: 731f4e8cc8a93f33d6887f44fc8d09585e92a75a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75360344"
 ---
 # <a name="how-to-update-a-cloud-service"></a>Felhőalapú szolgáltatás frissítése
@@ -53,7 +52,7 @@ A következő táblázat a szolgáltatásnak a frissítés során engedélyezett
 | Helyi tárolási beállítások |Csak<sup>2</sup> |Igen |Igen |
 | Szerepkörök hozzáadása vagy eltávolítása egy szolgáltatásban |Igen |Igen |Igen |
 | Egy adott szerepkör példányainak száma |Igen |Igen |Igen |
-| A szolgáltatáshoz tartozó végpontok száma vagy típusa |Igen<sup>2</sup> |Nem |Igen |
+| A szolgáltatáshoz tartozó végpontok száma vagy típusa |Igen<sup>2</sup> |Nem |Yes |
 | A konfigurációs beállítások nevei és értékei |Igen |Igen |Igen |
 | A konfigurációs beállítások értékei (de nem nevei) |Igen |Igen |Igen |
 | Új tanúsítványok hozzáadása |Igen |Igen |Igen |
@@ -124,7 +123,7 @@ Az Azure rugalmasságot biztosít a szolgáltatások a frissítések során tör
 A folyamatban lévő frissítés visszaállítása a következő hatásokkal jár az üzemelő példányra:
 
 * Az új verzióra még nem frissített vagy frissített összes szerepkör-példány frissítése vagy frissítése nem történik meg, mert ezek a példányok már futtatják a szolgáltatás cél verzióját.
-* Minden olyan szerepkör-példány, amely már frissítve lett vagy frissítve lett a szervizcsomag (\*. cspkg) vagy a szolgáltatás konfigurációs (\*. cscfg) fájljának új verziójára (vagy mindkét fájlra), a rendszer visszaállította a fájlok verziófrissítés előtti verzióját.
+* Minden olyan szerepkör-példány, amely már frissítve lett vagy frissítve lett a szervizcsomag ( \* . cspkg) vagy a szolgáltatás konfigurációs ( \* . cscfg) fájljának új verziójára (vagy mindkét fájlra), a rendszer visszaállította a fájlok verziófrissítés előtti verzióját.
 
 Ezt a funkciót a következő funkciók biztosítják:
 

@@ -8,10 +8,9 @@ ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 6c4838e3226b91cbb5d6f86b83266a986418c120
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75430512"
 ---
 # <a name="create-an-external-app-service-environment"></a>Külső App Service-környezet létrehozása
@@ -40,7 +39,7 @@ A bekészítés létrehozása után a következők nem módosíthatók:
 - Alhálózat mérete
 
 > [!NOTE]
-> Ha kiválaszt egy VNet, és megad egy alhálózatot, győződjön meg arról, hogy elég nagy a jövőbeli növekedési és skálázási igények kielégítéséhez. A 256- `/24` es címmel rendelkező méretet javasoljuk.
+> Ha kiválaszt egy VNet, és megad egy alhálózatot, győződjön meg arról, hogy elég nagy a jövőbeli növekedési és skálázási igények kielégítéséhez. A `/24` 256-es címmel rendelkező méretet javasoljuk.
 >
 
 ## <a name="three-ways-to-create-an-ase"></a>Három módszer a bekészítés létrehozására
@@ -59,11 +58,11 @@ Az App Service terv az alkalmazások tárolója. Amikor App Serviceban hoz létr
 
 A beApp Servicei csomag létrehozásakor hozzon létre egy kiegészítő csomagot:
 
-1. A [Azure Portal](https://portal.azure.com/)válassza az **erőforrás** > létrehozása**web és mobil** > **webalkalmazás**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)válassza az **erőforrás létrehozása**  >  **web és mobil**  >  **webalkalmazás**lehetőséget.
 
     ![Webalkalmazás létrehozása][1]
 
-2. Válassza ki előfizetését. Az alkalmazás és a kiegészítő szolgáltatás ugyanabban az előfizetésben jön létre.
+2. Válassza ki az előfizetését. Az alkalmazás és a kiegészítő szolgáltatás ugyanabban az előfizetésben jön létre.
 
 3. Válasszon ki vagy hozzon létre egy erőforráscsoportot. Az erőforráscsoportok segítségével a kapcsolódó Azure-erőforrásokat egységként kezelheti. Az erőforráscsoportok akkor is hasznosak, ha szerepköralapú Access Control szabályokat hoz létre az alkalmazásaihoz. További információért lásd [az Azure Resource Manager áttekintését][ARMOverview].
 
@@ -83,13 +82,13 @@ A beApp Servicei csomag létrehozásakor hozzon létre egy kiegészítő csomago
 
     ![Új App Service csomag neve][4]
 
-9. Adja meg az Azure-beli virtuális hálózatkezelés részleteit. Válassza az **új létrehozása** vagy a **meglévő kiválasztása**lehetőséget. A meglévő VNet kiválasztásának lehetősége csak akkor érhető el, ha a kiválasztott régió VNet rendelkezik. Ha az **új létrehozása**lehetőséget választja, adja meg a VNet nevét. Létrejön egy új Resource Manager-VNet ezzel a névvel. A kiválasztott régióban lévő címterület `192.168.250.0/23` használatával működik. Ha a **meglévő kiválasztása**lehetőséget választja, a következőket kell tennie:
+9. Adja meg az Azure-beli virtuális hálózatkezelés részleteit. Válassza az **új létrehozása** vagy a **meglévő kiválasztása**lehetőséget. A meglévő VNet kiválasztásának lehetősége csak akkor érhető el, ha a kiválasztott régió VNet rendelkezik. Ha az **új létrehozása**lehetőséget választja, adja meg a VNet nevét. Létrejön egy új Resource Manager-VNet ezzel a névvel. A kiválasztott régióban lévő címterület használatával működik `192.168.250.0/23` . Ha a **meglévő kiválasztása**lehetőséget választja, a következőket kell tennie:
 
     a. Ha egynél többre van szüksége, válassza ki a VNet.
 
     b. Adja meg az új alhálózat nevét.
 
-    c. Válassza ki az alhálózat méretét. *Ne feledje, hogy elég nagy méretűre kell kiválasztania, hogy megfeleljen a beadásának jövőbeli növekedésének.* Azt javasoljuk `/24`, hogy a 128-es címekkel rendelkezik, és képes legyen a maximális méretű betekintő szolgáltatás kezelésére. Nem ajánlott `/28`például, mert csak 16 cím érhető el. Az infrastruktúra legalább hét címet használ, és az Azure Networking egy másik 5-öt használ. Egy `/28` alhálózatban marad a 4 app Service-es csomag-példányok, amelyek egy külső beILBnek, és mindössze 3 app Service megtervezik az előfizetést.
+    c. Válassza ki az alhálózat méretét. *Ne feledje, hogy elég nagy méretűre kell kiválasztania, hogy megfeleljen a beadásának jövőbeli növekedésének.* Azt javasoljuk `/24` , hogy a 128-es címekkel rendelkezik, és képes legyen a maximális méretű betekintő szolgáltatás kezelésére. Nem ajánlott `/28` például, mert csak 16 cím érhető el. Az infrastruktúra legalább hét címet használ, és az Azure Networking egy másik 5-öt használ. Egy `/28` alhálózatban marad a 4 app Service-es csomag-példányok, amelyek egy külső BEILBnek, és mindössze 3 app Service megtervezik az előfizetést.
 
     d. Válassza ki az alhálózat IP-tartományát.
 
@@ -97,11 +96,11 @@ A beApp Servicei csomag létrehozásakor hozzon létre egy kiegészítő csomago
 
 ## <a name="create-an-ase-and-a-linux-web-app-using-a-custom-docker-image-together"></a>Az egyéni Docker-rendszerkép együttes használatával létrehozhat egy beadási és egy linuxos webalkalmazást
 
-1. A [Azure Portal](https://portal.azure.com/) **hozzon létre egy erőforrást** > **web és mobil** > **Web App for containers.** 
+1. A [Azure Portal](https://portal.azure.com/) **hozzon létre egy erőforrást**  >  **web és mobil**  >  **Web App for containers.** 
 
     ![Webalkalmazás létrehozása][7]
 
-1. Válassza ki előfizetését. Az alkalmazás és a kiegészítő szolgáltatás ugyanabban az előfizetésben jön létre.
+1. Válassza ki az előfizetését. Az alkalmazás és a kiegészítő szolgáltatás ugyanabban az előfizetésben jön létre.
 
 1. Válasszon ki vagy hozzon létre egy erőforráscsoportot. Az erőforráscsoportok segítségével a kapcsolódó Azure-erőforrásokat egységként kezelheti. Az erőforráscsoportok akkor is hasznosak, ha szerepköralapú Access Control szabályokat hoz létre az alkalmazásaihoz. További információért lásd [az Azure Resource Manager áttekintését][ARMOverview].
 
@@ -119,13 +118,13 @@ A beApp Servicei csomag létrehozásakor hozzon létre egy kiegészítő csomago
 
     ![Új App Service csomag neve][4]
 
-1. Adja meg az Azure-beli virtuális hálózatkezelés részleteit. Válassza az **új létrehozása** vagy a **meglévő kiválasztása**lehetőséget. A meglévő VNet kiválasztásának lehetősége csak akkor érhető el, ha a kiválasztott régió VNet rendelkezik. Ha az **új létrehozása**lehetőséget választja, adja meg a VNet nevét. Létrejön egy új Resource Manager-VNet ezzel a névvel. A kiválasztott régióban lévő címterület `192.168.250.0/23` használatával működik. Ha a **meglévő kiválasztása**lehetőséget választja, a következőket kell tennie:
+1. Adja meg az Azure-beli virtuális hálózatkezelés részleteit. Válassza az **új létrehozása** vagy a **meglévő kiválasztása**lehetőséget. A meglévő VNet kiválasztásának lehetősége csak akkor érhető el, ha a kiválasztott régió VNet rendelkezik. Ha az **új létrehozása**lehetőséget választja, adja meg a VNet nevét. Létrejön egy új Resource Manager-VNet ezzel a névvel. A kiválasztott régióban lévő címterület használatával működik `192.168.250.0/23` . Ha a **meglévő kiválasztása**lehetőséget választja, a következőket kell tennie:
 
     a. Ha egynél többre van szüksége, válassza ki a VNet.
 
     b. Adja meg az új alhálózat nevét.
 
-    c. Válassza ki az alhálózat méretét. *Ne feledje, hogy elég nagy méretűre kell kiválasztania, hogy megfeleljen a beadásának jövőbeli növekedésének.* Azt javasoljuk `/24`, hogy a 128-es címekkel rendelkezik, és képes legyen a maximális méretű betekintő szolgáltatás kezelésére. Nem ajánlott `/28`például, mert csak 16 cím érhető el. Az infrastruktúra legalább hét címet használ, és az Azure Networking egy másik 5-öt használ. Egy `/28` alhálózatban marad a 4 app Service-es csomag-példányok, amelyek egy külső beILBnek, és mindössze 3 app Service megtervezik az előfizetést.
+    c. Válassza ki az alhálózat méretét. *Ne feledje, hogy elég nagy méretűre kell kiválasztania, hogy megfeleljen a beadásának jövőbeli növekedésének.* Azt javasoljuk `/24` , hogy a 128-es címekkel rendelkezik, és képes legyen a maximális méretű betekintő szolgáltatás kezelésére. Nem ajánlott `/28` például, mert csak 16 cím érhető el. Az infrastruktúra legalább hét címet használ, és az Azure Networking egy másik 5-öt használ. Egy `/28` alhálózatban marad a 4 app Service-es csomag-példányok, amelyek egy külső BEILBnek, és mindössze 3 app Service megtervezik az előfizetést.
 
     d. Válassza ki az alhálózat IP-tartományát.
 
@@ -141,13 +140,13 @@ A beApp Servicei csomag létrehozásakor hozzon létre egy kiegészítő csomago
 
 Ha önálló kisegítő lehetőséget hoz létre, azzal semmi sincs benne. Egy üres bevezetési szolgáltatás továbbra is havi díjat számít fel az infrastruktúra számára. Kövesse az alábbi lépéseket egy ILB létrehozásához, vagy egy saját erőforráscsoport létrehozásához. A szolgáltató létrehozása után a normál folyamat használatával létrehozhat alkalmazásokat. Válassza ki az új beadási helyet.
 
-1. Keresse meg **app Service Environment**az Azure Marketplace piactéren, vagy válassza az **erőforrás** > létrehozása**web Mobile** > **app Service Environment**lehetőséget. 
+1. Keresse meg **app Service Environment**az Azure Marketplace piactéren, vagy válassza az **erőforrás létrehozása**  >  **web Mobile**  >  **app Service Environment**lehetőséget. 
 
 1. Adja meg a beadás nevét. A rendszer ezt a nevet használja a központhoz létrehozott alkalmazásokhoz. Ha a név *mynewdemoase*, az altartomány neve: *. mynewdemoase.p.azurewebsites.net*. Ha létrehoz egy *mytestapp*nevű alkalmazást, a címe a következő címen található: mytestapp.mynewdemoase.p.azurewebsites.net. Nem használhat szóközt a névben. Nagybetűs karakterek használata esetén a tartománynév a név teljes kisbetűs verziója. Ha ILB használ, a beléptetési név nem használatos az altartományban, hanem explicit módon meg van határozva a központilag történő létrehozás során.
 
     ![Beosztási elnevezés][5]
 
-1. Válassza ki előfizetését. Ez az előfizetés egyben az is, amelyet a központhoz tartozó összes alkalmazás használ. Egy másik előfizetésben található VNet nem helyezheti üzembe a központot.
+1. Válassza ki az előfizetését. Ez az előfizetés egyben az is, amelyet a központhoz tartozó összes alkalmazás használ. Egy másik előfizetésben található VNet nem helyezheti üzembe a központot.
 
 1. Válasszon ki vagy adjon meg egy új erőforráscsoportot. A VNet használt erőforráscsoportot meg kell egyeznie a saját előfizetésével. Ha kiválaszt egy meglévő VNet, a rendszer frissíti a beadási csoport kiválasztott erőforrását, hogy tükrözze a VNet. *Ha Resource Manager-sablont használ, létrehozhat egy olyan erőforráscsoportot, amely nem azonos a VNet erőforráscsoporthoz.* Ha egy sablonból szeretne létrehozni egy előkészítő-t, tekintse meg a [app Service környezet sablonból][MakeASEfromTemplate]való létrehozását ismertető témakört.
 

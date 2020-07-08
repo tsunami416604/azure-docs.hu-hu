@@ -15,10 +15,9 @@ ms.date: 06/13/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 74516aa921e45917f327a193a1c972b021c9c8ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74896071"
 ---
 # <a name="creating-filters-with-cli"></a>Szűrők létrehozása a parancssori felülettel 
@@ -104,7 +103,7 @@ Lásd még: [JSON-példák szűrőkhöz](https://docs.microsoft.com/rest/api/med
 
 Megadhatja az eszköz vagy a fiók szűrőinek listáját, amely a folyamatos átviteli Lokátorra vonatkozik. A [dinamikus csomagoló (streaming Endpoint)](dynamic-packaging-overview.md) a szűrők ezen listáját alkalmazza, az ügyfél által megadott URL-címen. Ez a kombináció létrehoz egy [dinamikus jegyzékfájlt](filters-dynamic-manifest-overview.md), amely a streaming keresőben megadott URL + szűrők szűrői alapján történik. Azt javasoljuk, hogy használja ezt a funkciót, ha szűrőket kíván alkalmazni, de nem szeretné kitenni a szűrő nevét az URL-címben.
 
-A következő CLI-kód bemutatja, hogyan hozhat létre adatfolyam-keresőt `filters`, és hogyan adható meg. Ez egy nem kötelezően megadandó tulajdonság, amely az eszközök és/vagy a fiókok szűrési neveinek szóközzel tagolt listáját veszi figyelembe.
+A következő CLI-kód bemutatja, hogyan hozhat létre adatfolyam-keresőt, és hogyan adható meg `filters` . Ez egy nem kötelezően megadandó tulajdonság, amely az eszközök és/vagy a fiókok szűrési neveinek szóközzel tagolt listáját veszi figyelembe.
 
 ```azurecli
 az ams streaming-locator create -a amsAccount -g resourceGroup -n streamingLocatorName \
@@ -120,7 +119,7 @@ A szűrők meghatározása után az ügyfelek a streaming URL-ben használhatjá
 
 Az alábbi táblázat néhány példát mutat be a szűrőket tartalmazó URL-címekre:
 
-|Protocol (Protokoll)|Példa|
+|Protokoll|Példa|
 |---|---|
 |HLS|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=m3u8-aapl,filter=myAccountFilter)`|
 |MPEG DASH|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=mpd-time-csf,filter=myAssetFilter)`|

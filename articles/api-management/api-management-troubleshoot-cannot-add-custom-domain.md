@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 07/19/2019
 ms.author: tehnoonr
 ms.openlocfilehash: a09c15466a4a9f62b2696b087cb7ab23cc767379
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75430573"
 ---
 # <a name="failed-to-update-api-management-service-hostnames"></a>Nem sikerült frissíteni API Management Service-gazdagépeket
@@ -28,7 +27,7 @@ Ez a cikk a "nem sikerült frissíteni API Management Service hostnames" hibát 
 
 Ha a API Management szolgáltatáshoz egyéni tartományt próbál felvenni egy Azure Key Vault tanúsítványának használatával, a következő hibaüzenet jelenik meg:
 
-- Nem sikerült frissíteni API Management Service-gazdagépeket. A (z)https://vaultname.vault.azure.net/secrets/secretname/?api-version=7.0"" erőforrásra irányuló kérelem sikertelen a következővel: statuscode: tiltott a kérelemazonosító:. Kivételt jelző üzenet: a művelet érvénytelen állapotkódot ("tiltott") adott vissza.
+- Nem sikerült frissíteni API Management Service-gazdagépeket. A (z) "" erőforrásra irányuló kérelem https://vaultname.vault.azure.net/secrets/secretname/?api-version=7.0 sikertelen a következővel: statuscode: tiltott a kérelemazonosító:. Kivételt jelző üzenet: a művelet érvénytelen állapotkódot ("tiltott") adott vissza.
 
 ## <a name="cause"></a>Ok
 

@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 07/10/2019
 ms.author: stevelas
 ms.openlocfilehash: b483317960409fe1fbea181706f12375606fe659
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75445736"
 ---
 # <a name="recommendations-for-tagging-and-versioning-container-images"></a>A tároló lemezképének címkézésére és verziószámozására vonatkozó javaslatok
@@ -53,11 +52,11 @@ Az egyedi címkézés egyszerűen azt jelenti, hogy a beállításjegyzékbe lek
 * **Manifest Digest** – a tároló-beállításjegyzékbe leküldött összes tároló-rendszerkép egy jegyzékfájlhoz van társítva, amely egyedi SHA-256 kivonattal vagy kivonattal van azonosítva. Míg egyedi, a kivonat hosszú, nehezen olvasható és nem korrelál a Build-környezettel.
 * **Build azonosítója** – ez a lehetőség lehet a legjobb megoldás, mivel ez valószínűleg növekményes, és lehetővé teszi, hogy az összes összetevő és napló megtalálásához visszakapcsolja az adott buildet. A manifest-kivonatokhoz hasonlóan előfordulhat, hogy az embernek nem kell elolvasnia a problémát.
 
-  Ha a szervezet több Build-rendszerrel rendelkezik, a címke előállítása a létrehozási rendszer nevével a következő beállítás egyik `<build-system>-<build-id>`változata:. Megkülönböztetni például az API csapat Jenkins Build rendszerét és a webes csapat Azure-folyamatait.
+  Ha a szervezet több Build-rendszerrel rendelkezik, a címke előállítása a létrehozási rendszer nevével a következő beállítás egyik változata: `<build-system>-<build-id>` . Megkülönböztetni például az API csapat Jenkins Build rendszerét és a webes csapat Azure-folyamatait.
 
 ### <a name="lock-deployed-image-tags"></a>Telepített képcímkék zárolása
 
-Ajánlott eljárásként Azt javasoljuk, hogy az `write-enabled` attribútumának beállításával [zárolja](container-registry-image-lock.md) az összes üzembe helyezett képcímkét `false`. Ez a gyakorlat megakadályozza, hogy véletlenül eltávolítsa a rendszerképet a beállításjegyzékből, és esetleg megszakítsa a telepítést. A zárolási lépést felveheti a kiadási folyamatba.
+Ajánlott eljárásként Azt javasoljuk, hogy az attribútumának beállításával [zárolja](container-registry-image-lock.md) az összes üzembe helyezett képcímkét `write-enabled` `false` . Ez a gyakorlat megakadályozza, hogy véletlenül eltávolítsa a rendszerképet a beállításjegyzékből, és esetleg megszakítsa a telepítést. A zárolási lépést felveheti a kiadási folyamatba.
 
 Az üzembe helyezett lemezkép zárolása továbbra is lehetővé teszi, hogy a beállításjegyzékben a többi, nem telepített lemezképet eltávolítsa a beállításjegyzékből Azure Container Registry szolgáltatások használatával. Például a címkézetlen jegyzékfájlok [automatikus kiürítése](container-registry-auto-purge.md) vagy a megadott időtartamnál régebbi lemezképek kijavítása, illetve a címkézetlen jegyzékfájlok [megőrzési szabályának](container-registry-retention-policy.md) beállítása.
 

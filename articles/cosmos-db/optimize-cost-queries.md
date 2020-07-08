@@ -7,10 +7,9 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: dd75ad4ed1024292868f113e474fe8b8b73679b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75445133"
 ---
 # <a name="optimize-query-cost-in-azure-cosmos-db"></a>A lekérdezési költségek optimalizálása az Azure Cosmos DB-ben
@@ -33,7 +32,7 @@ Az egy vagy több partícióból beolvasott lekérdezések nagyobb késéssel j�
 
 Ha az Azure Cosmos-tárolókban tárolt néhány adattal, a lekérdezések létrehozásához és futtatásához a Azure Portal Adatkezelő is használhatja. A lekérdezések költségeit az adatkezelővel is lekérheti. Ezzel a módszerrel a rendszer által támogatott tipikus lekérdezésekkel és műveletekkel kapcsolatos tényleges költségek is megadhatók.
 
-Az SDK-k segítségével programozott módon is lekérheti a lekérdezések költségeit. Az olyan műveletek terhelésének méréséhez, mint például a létrehozás, az Update vagy a `x-ms-request-charge` DELETE, a REST API használatakor vizsgálja meg a fejlécet. Ha a .NET-et vagy a Java SDK-t használja `RequestCharge` , a tulajdonság az egyenértékű tulajdonság a kérési díj beszerzéséhez, és ez a tulajdonság a ResourceResponse vagy a FeedResponse belül szerepel.
+Az SDK-k segítségével programozott módon is lekérheti a lekérdezések költségeit. Az olyan műveletek terhelésének méréséhez, mint például a létrehozás, az Update vagy a DELETE, a `x-ms-request-charge` REST API használatakor vizsgálja meg a fejlécet. Ha a .NET-et vagy a Java SDK-t használja, a `RequestCharge` tulajdonság az egyenértékű tulajdonság a kérési díj beszerzéséhez, és ez a tulajdonság a ResourceResponse vagy a FeedResponse belül szerepel.
 
 ```csharp
 // Measure the performance (request units) of writes 

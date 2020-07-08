@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: e0dec0a67ed33186797ccec8066aaad89ceb8dcb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75434738"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>A bérlős kiépítése 
@@ -200,7 +199,7 @@ Ebben a szakaszban az Azure IoT C SDK-t minden egyes virtuális gépen klónozot
 
 1. Keresse meg az SDK [legújabb kiadásához](https://github.com/Azure/azure-iot-sdk-c/releases/latest) tartozó címke nevét.
 
-1. Az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) klónozása mindkét virtuális gépen.  Használja az előző lépésben megtalált címkét a `-b` paraméter értékeként:
+1. Az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) klónozása mindkét virtuális gépen.  Használja az előző lépésben megtalált címkét a paraméter értékeként `-b` :
 
     ```bash
     git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
@@ -304,7 +303,7 @@ A mintakód szimulál egy eszköz rendszerindítási sorozatot, amely elküldi a
 
     ![Az eszközkiépítési szolgáltatás végpontadatainak kinyerése a portál paneljéről](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 
-1. Nyissa meg a **\_~/Azure-IOT-SDK-c/Provisioning Client/\_Samples\_/prov dev\_\_Client\_Sample/prov dev Client\_sample. c-** t mindkét virtuális gépen való szerkesztéshez.
+1. Nyissa meg a **~/Azure-IOT-SDK-c/Provisioning \_ Client/Samples/prov \_ dev \_ Client \_ Sample/prov \_ dev \_ Client \_ sample. c-** t mindkét virtuális gépen való szerkesztéshez.
 
     ```bash
     vi ~/azure-iot-sdk-c/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c
@@ -316,7 +315,7 @@ A mintakód szimulál egy eszköz rendszerindítási sorozatot, amely elküldi a
     static const char* id_scope = "0ne00002193";
     ```
 
-1. Keresse meg a `main()` függvény definícióját ugyanebben a fájlban. Győződjön meg arról `hsm_type` , hogy a változó `SECURE_DEVICE_TYPE_SYMMETRIC_KEY` az alább látható módon van beállítva, hogy megfeleljen a regisztrációs csoport igazolási módszerének. 
+1. Keresse meg a `main()` függvény definícióját ugyanebben a fájlban. Győződjön meg arról, hogy a `hsm_type` változó az `SECURE_DEVICE_TYPE_SYMMETRIC_KEY` alább látható módon van beállítva, hogy megfeleljen a regisztrációs csoport igazolási módszerének. 
 
     Mentse a fájlokat mindkét virtuális gépen.
 
@@ -327,7 +326,7 @@ A mintakód szimulál egy eszköz rendszerindítási sorozatot, amely elküldi a
     hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-1. Mindkét virtuális gépen keresse meg a " **prov\_dev\_Client\_sample. c** " hívást `prov_dev_set_symmetric_key_info()` , amely megjegyzésként szerepel.
+1. Mindkét virtuális gépen keresse meg a " `prov_dev_set_symmetric_key_info()` **prov \_ dev \_ Client \_ sample. c** " hívást, amely megjegyzésként szerepel.
 
     ```c
     // Set the symmetric key if using they auth type
@@ -357,7 +356,7 @@ A mintakód szimulál egy eszköz rendszerindítási sorozatot, amely elküldi a
     cmake --build . --target prov_dev_client_sample --config Debug
     ```
 
-1. Ha a létrehozás sikeres, futtassa a **prov\_dev\_Client\_sample. exe** parancsot mindkét virtuális gépen a bérlői eszköz minden egyes régióból való szimulálása érdekében. Figyelje meg, hogy minden eszköz a szimulált eszköz régióihoz legközelebb eső bérlői IoT hubhoz van lefoglalva.
+1. Ha a létrehozás sikeres, futtassa a **prov \_ dev \_ Client \_sample.exet** mindkét virtuális gépen a bérlői eszköz minden egyes régióból való szimulálása érdekében. Figyelje meg, hogy minden eszköz a szimulált eszköz régióihoz legközelebb eső bérlői IoT hubhoz van lefoglalva.
 
     Futtassa a szimulációt:
     ```bash
@@ -398,7 +397,7 @@ A mintakód szimulál egy eszköz rendszerindítási sorozatot, amely elküldi a
 
 
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha azt tervezi, hogy folytatja a jelen cikkben létrehozott erőforrásokkal való munkát, meghagyhatja őket. Ha nem tervezi tovább használni az erőforrást, a következő lépésekkel törölheti a cikkben létrehozott összes erőforrást a szükségtelen költségek elkerülése érdekében.
 

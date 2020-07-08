@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: robinsh
 ms.openlocfilehash: c54853717f7e0b234df013e5aee575682d0d3d97
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75429151"
 ---
 # <a name="how-to-clone-an-azure-iot-hub-to-another-region"></a>Azure IoT hub klónozása egy másik régióba
@@ -107,7 +106,7 @@ Ez a szakasz részletes útmutatást nyújt a központ áttelepítéséhez.
 
 ### <a name="find-the-original-hub-and-export-it-to-a-resource-template"></a>Keresse meg az eredeti hubot, és exportálja egy erőforrás-sablonba.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
+1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com). 
 
 1. Lépjen az **erőforráscsoportok** elemre, és válassza ki azt az erőforráscsoportot, amely az áthelyezni kívánt hubot tartalmazza. Az **erőforrásokra** is rákereshet, és megkeresheti a hubot. Válassza ki a hubot.
 
@@ -121,7 +120,7 @@ Ez a szakasz részletes útmutatást nyújt a központ áttelepítéséhez.
 
 ### <a name="view-the-template"></a>A sablon megtekintése 
 
-1. Nyissa meg a letöltések mappát (vagy a sablon exportálásakor használt mappát), és keresse meg a zip-fájlt. Nyissa meg a zip-fájlt, és `template.json`keresse meg a nevű fájlt. Jelölje ki, majd válassza a CTRL + C billentyűkombinációt a sablon másolásához. Lépjen egy másik mappába, amely nem szerepel a zip-fájlban, és illessze be a fájlt (CTRL + V). Most már szerkesztheti is.
+1. Nyissa meg a letöltések mappát (vagy a sablon exportálásakor használt mappát), és keresse meg a zip-fájlt. Nyissa meg a zip-fájlt, és keresse meg a nevű fájlt `template.json` . Jelölje ki, majd válassza a CTRL + C billentyűkombinációt a sablon másolásához. Lépjen egy másik mappába, amely nem szerepel a zip-fájlban, és illessze be a fájlt (CTRL + V). Most már szerkesztheti is.
  
     Az alábbi példa egy általános, útválasztási konfiguráció nélküli hubhoz mutat. Ez egy, a **ContosoTestHub29358** nevű S1 szintű hub (1 egység) a **westus**régióban. Itt látható az exportált sablon.
 
@@ -308,9 +307,9 @@ Ha olyan hubhoz exportálja a Resource Manager-sablont, amely rendelkezik konfig
    "containerName": "fabrikamresults",
    ```
 
-1. Miután beolvasta a Storage-fiókhoz tartozó fiók kulcsát, a csillagokban lévő záradékban `AccountKey=****` helyezze el azt a sablonban. 
+1. Miután beolvasta a Storage-fiókhoz tartozó fiók kulcsát, a csillagokban lévő záradékban helyezze el azt a sablonban `AccountKey=****` . 
 
-1. A Service Bus-várólisták esetében szerezze be a SharedAccessKeyName megfelelő megosztott elérési kulcsot. Itt látható a kulcs és a `SharedAccessKeyName` a JSON-ban:
+1. A Service Bus-várólisták esetében szerezze be a SharedAccessKeyName megfelelő megosztott elérési kulcsot. Itt látható a kulcs és a a `SharedAccessKeyName` JSON-ban:
 
    ```json
    "connectionString": "Endpoint=sb://fabrikamsbnamespace1234.servicebus.windows.net:5671/;
@@ -347,13 +346,13 @@ Most már rendelkezik egy olyan sablonnal, amely egy olyan új hubot hoz létre,
 
 Hozza létre az új hubot az új helyen a sablon használatával. Ha útválasztási erőforrásokkal rendelkezik, amelyeket át szeretne helyezni, az erőforrásokat az új helyen kell beállítani, és a sablonban szereplő hivatkozások a megfelelő értékre frissülnek. Ha nem helyezi át az útválasztási erőforrásokat, a frissített kulcsokkal rendelkező sablonban kell lenniük.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com).
 
 1. Válassza az **Erőforrás létrehozása** lehetőséget. 
 
 1. A keresőmezőbe írja be a "sablon központi telepítése" kifejezést, és válassza az ENTER billentyűt.
 
-1. Válassza **a sablon központi telepítése (üzembe helyezés egyéni sablonok használatával)** lehetőséget. Ekkor megjelenik a Template deployment képernyője. Kattintson a **Létrehozás** gombra. Ekkor az alábbi képernyő jelenik meg:
+1. Válassza **a sablon központi telepítése (üzembe helyezés egyéni sablonok használatával)** lehetőséget. Ekkor megjelenik a Template deployment képernyője. Válassza a **Létrehozás** lehetőséget. Ekkor az alábbi képernyő jelenik meg:
 
    ![A saját sablon létrehozásához szükséges parancsot ábrázoló képernyőkép](./media/iot-hub-how-to-clone/iot-hub-custom-deployment.png)
 
@@ -485,7 +484,7 @@ Most már rendelkezik a környezeti változókkal a SET parancsokkal rendelkező
 
 ### <a name="running-the-sample-application-and-using-command-line-arguments"></a>A minta alkalmazás futtatása és parancssori argumentumok használata
 
-1. Nyisson meg egy parancsablakot. Válassza a Windows lehetőséget, `command prompt` és írja be a parancsot a parancssori ablak beszerzéséhez.
+1. Nyisson meg egy parancsablakot. Válassza a Windows lehetőséget, és írja be a `command prompt` parancsot a parancssori ablak beszerzéséhez.
 
 1. Másolja a környezeti változókat beállító parancsokat egy időben, és illessze be őket a parancssorablakba, és válassza az ENTER billentyűt. Ha elkészült, írja be `SET` a parancssori ablakot a környezeti változók és azok értékeinek megtekintéséhez. Miután bemásolta ezeket a parancssori ablakba, nem kell újból átmásolnia, hacsak nem nyit meg egy új parancssori ablakot.
 
@@ -549,7 +548,7 @@ Megtekintheti az eszközöket a [Azure Portalban](https://portal.azure.com) , é
 
 1. Nyissa meg az új hubot a [Azure Portal](https://portal.azure.com)használatával. Válassza ki a hubot, majd válassza az **IoT-eszközök**lehetőséget. A régi központból a klónozott hubhoz másolt eszközök láthatók. Megtekintheti a klónozott központ tulajdonságait is. 
 
-1. Az importálási/exportálási hibák ellenőrzéséhez lépjen a [Azure Portal](https://portal.azure.com) Azure Storage-fiókjába, és tekintse meg `devicefiles` a `ImportErrors.log`tárolóját. Ha a fájl üres (a méret 0), nem történt hiba. Ha ugyanazt az eszközt többször próbálja meg importálni, a rendszer visszautasítja az eszközt a második alkalommal, és hibaüzenetet küld a naplófájlba.
+1. Az importálási/exportálási hibák ellenőrzéséhez lépjen a [Azure Portal](https://portal.azure.com) Azure Storage-fiókjába, és tekintse meg a `devicefiles` tárolóját `ImportErrors.log` . Ha a fájl üres (a méret 0), nem történt hiba. Ha ugyanazt az eszközt többször próbálja meg importálni, a rendszer visszautasítja az eszközt a második alkalommal, és hibaüzenetet küld a naplófájlba.
 
 ### <a name="committing-the-changes"></a>A módosítások véglegesítése 
 

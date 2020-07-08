@@ -6,17 +6,16 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 876c4f5f45ff6c81a53274cf32e8bebecc1acfce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75349308"
 ---
 # <a name="notes-on-service-fabric-reliable-actors-type-serialization"></a>Megjegyzések Service Fabric Reliable Actors típus szerializálásához
 Az összes metódus argumentumai, a színészi felületen az egyes metódusok által visszaadott tevékenységek eredményei, valamint a színészek állapot-kezelőjében tárolt objektumok esetében a [szerializálható adategyezménynek](/dotnet/framework/wcf/feature-details/types-supported-by-the-data-contract-serializer)kell szerepelnie. Ez a [színészi esemény-illesztőfelületekben](service-fabric-reliable-actors-events.md)definiált metódusok argumentumait is érinti. (A színészi esemény felületi módszerei mindig semmisnek térnek vissza.)
 
 ## <a name="custom-data-types"></a>Egyéni adattípusok
-Ebben a példában a következő Actor Interface olyan metódust határoz meg, amely egy nevű `VoicemailBox`egyéni adattípust ad vissza:
+Ebben a példában a következő Actor Interface olyan metódust határoz meg, amely egy nevű egyéni adattípust ad vissza `VoicemailBox` :
 
 ```csharp
 public interface IVoiceMailBoxActor : IActor
@@ -68,7 +67,7 @@ public class VoiceMailBoxActorImpl extends FabricActor implements VoicemailBoxAc
 
 ```
 
-Ebben a példában az objektum `VoicemailBox` szerializálása a következő esetekben történik:
+Ebben a példában az `VoicemailBox` objektum szerializálása a következő esetekben történik:
 
 * Az objektum egy Actor-példány és egy hívó között lesz továbbítva.
 * Az objektum a State Managerbe kerül, ahol a lemez tárolva van, és más csomópontokra replikálva van.

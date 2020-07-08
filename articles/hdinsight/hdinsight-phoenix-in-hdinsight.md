@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
 ms.openlocfilehash: b1d81296c996ab09cb6482cb970496779ccf8bd6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75435496"
 ---
 # <a name="apache-phoenix-in-azure-hdinsight"></a>Apache Phoenix az Azure HDInsight
@@ -45,7 +44,7 @@ A Phoenix-nézetek segítségével leküzdheti a HBase korlátozásokat, ahol a 
 
 A Phoenix nézet létrehozása hasonló a szabványos SQL View szintaxis használatához. Az egyik különbség az, hogy a nézet oszlopait az alaptáblától örökölt oszlopok mellett is meghatározhatja. Emellett új `KeyValue` oszlopokat is hozzáadhat.
 
-Például itt látható egy nevű `product_metrics` fizikai tábla a következő definícióval:
+Például itt látható egy nevű fizikai tábla `product_metrics` a következő definícióval:
 
 ```sql
 CREATE  TABLE product_metrics (
@@ -64,13 +63,13 @@ SELECT * FROM product_metrics
 WHERE metric_type = 'm';
 ```
 
-Ha később további oszlopokat szeretne hozzáadni, `ALTER VIEW` használja az utasítást.
+Ha később további oszlopokat szeretne hozzáadni, használja az `ALTER VIEW` utasítást.
 
 ### <a name="skip-scan"></a>Vizsgálat kihagyása
 
 A kihagyott vizsgálat egy összetett index egy vagy több oszlopát használja a különböző értékek megkereséséhez. A tartomány-ellenőrzéstől eltérően a kihagyás a vizsgálaton belüli beolvasást valósít meg, ami [jobb teljesítményt](https://phoenix.apache.org/performance.html#Skip-Scan)eredményez. A vizsgálat során az első egyező értéket a rendszer kihagyja az indextel együtt, amíg a következő érték nem található.
 
-A kihagyási vizsgálat a `SEEK_NEXT_USING_HINT` HBase szűrő enumerálását használja. A `SEEK_NEXT_USING_HINT`használatával a vizsgálat kihagyása nyomon követi, hogy a rendszer mely kulcsokat vagy tartományokat használja az egyes oszlopokban. A kiugrási vizsgálat ezután a szűrő kiértékelése során átadott kulcsot fogad el, és meghatározza, hogy az egyik kombináció-e. Ha nem, a kiugrási vizsgálat kiértékeli a következő legmagasabb kulcsot a ugráshoz.
+A kihagyási vizsgálat a `SEEK_NEXT_USING_HINT` HBase szűrő enumerálását használja. `SEEK_NEXT_USING_HINT`A használatával a vizsgálat kihagyása nyomon követi, hogy a rendszer mely kulcsokat vagy tartományokat használja az egyes oszlopokban. A kiugrási vizsgálat ezután a szűrő kiértékelése során átadott kulcsot fogad el, és meghatározza, hogy az egyik kombináció-e. Ha nem, a kiugrási vizsgálat kiértékeli a következő legmagasabb kulcsot a ugráshoz.
 
 ### <a name="transactions"></a>Tranzakciók
 
@@ -80,7 +79,7 @@ Csakúgy, mint a hagyományos SQL-tranzakciók esetében, a Phoenix Transaction 
 
 A Phoenix-tranzakciók engedélyezéséhez tekintse meg a [Apache Phoenix tranzakció dokumentációját](https://phoenix.apache.org/transactions.html).
 
-Ha olyan új táblát szeretne létrehozni, amelyeken engedélyezve vannak `TRANSACTIONAL` a tranzakciók `true` , állítsa `CREATE` a tulajdonságot egy utasításban:
+Ha olyan új táblát szeretne létrehozni, amelyeken engedélyezve vannak a tranzakciók, állítsa a `TRANSACTIONAL` tulajdonságot `true` egy `CREATE` utasításban:
 
 ```sql
 CREATE TABLE my_table (k BIGINT PRIMARY KEY, v VARCHAR) TRANSACTIONAL=true;
@@ -124,7 +123,7 @@ CREATE TABLE Saltedweblogs (
 
 An méretű HDInsight HBase-fürt tartalmazza a [Ambari felhasználói felületét](hdinsight-hadoop-manage-ambari.md) , amely a konfiguráció módosítását teszi elérhetővé.
 
-1. A Phoenix engedélyezéséhez vagy letiltásához, valamint a Phoenix lekérdezési időtúllépési beállításainak szabályozásához jelentkezzen be a`https://YOUR_CLUSTER_NAME.azurehdinsight.net`Ambari webes felhasználói felületére () a Hadoop felhasználói hitelesítő adataival.
+1. A Phoenix engedélyezéséhez vagy letiltásához, valamint a Phoenix lekérdezési időtúllépési beállításainak szabályozásához jelentkezzen be a Ambari webes felhasználói felületére ( `https://YOUR_CLUSTER_NAME.azurehdinsight.net` ) a Hadoop felhasználói hitelesítő adataival.
 
 2. A bal oldali menüben válassza a **HBase** lehetőséget, majd válassza a **konfigurációk** lapot.
 

@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 9962d4333e458243670d1005ad2ccfbc0bb7c92a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75348922"
 ---
 # <a name="reliable-actors-state-management"></a>Reliable Actors állapot kezelése
@@ -72,9 +71,9 @@ class MyActorImpl extends FabricActor implements MyActor
 Ez a beállítás a memóriában tárolt állapot-szolgáltatót használja, és a replika darabszámát 1-re állítja.
 
 ### <a name="defaults-and-generated-settings"></a>Alapértékek és generált beállítások
-Az `StatePersistence` attribútum használatakor a rendszer automatikusan kijelöli az állami szolgáltatót a futtatáskor, amikor a Actor szolgáltatás elindul. A replika száma azonban a Visual Studio Actor Build eszközeinek fordítási ideje szerint van beállítva. A build-eszközök automatikusan létrehozzák a Actors szolgáltatás *alapértelmezett szolgáltatását* a ApplicationManifest. xml fájlban. A paramétereket a rendszer a **minimális replika méretének** és a **célként megadott replika méretének**beállítására hozza létre.
+Az attribútum használatakor a `StatePersistence` rendszer automatikusan kijelöli az állami szolgáltatót a futtatáskor, amikor a Actor szolgáltatás elindul. A replika száma azonban a Visual Studio Actor Build eszközeinek fordítási ideje szerint van beállítva. A build-eszközök automatikusan létrehozzák a Actors szolgáltatás *alapértelmezett szolgáltatását* ApplicationManifest.xmlban. A paramétereket a rendszer a **minimális replika méretének** és a **célként megadott replika méretének**beállítására hozza létre.
 
-Ezeket a paramétereket manuálisan is módosíthatja. Az `StatePersistence` attribútum minden módosításakor azonban a paraméterek a kiválasztott `StatePersistence` attribútum alapértelmezett replikakészlet-méret értékeire vannak beállítva, felülbírálva a korábbi értékeket. Más szóval a ServiceManifest. xml fájlban megadott értékek *csak* a kiépítési időpontban vannak felülbírálva, amikor megváltoztatja az `StatePersistence` attribútumérték értékét.
+Ezeket a paramétereket manuálisan is módosíthatja. Az `StatePersistence` attribútum minden módosításakor azonban a paraméterek a kiválasztott attribútum alapértelmezett replikakészlet-méret értékeire vannak beállítva `StatePersistence` , felülbírálva a korábbi értékeket. Más szóval a ServiceManifest.xmlban megadott értékek *csak* a létrehozáskor vannak felülbírálva, amikor megváltoztatja az `StatePersistence` attribútumérték értékét.
 
 ```xml
 <ApplicationManifest xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="Application12Type" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">

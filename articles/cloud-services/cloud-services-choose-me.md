@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
 ms.openlocfilehash: c531e02656c9f6342670024b2220386e789a2d98
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75386850"
 ---
 # <a name="overview-of-azure-cloud-services"></a>Az Azure Cloud Services áttekintése
@@ -45,7 +44,7 @@ Az Azure Cloud Services Pásti természete más következményekkel is jár. Az 
 
 ## <a name="next-steps"></a>További lépések
 * [Cloud Service-alkalmazás létrehozása a .NET-ben](cloud-services-dotnet-get-started.md) 
-* [Cloud Service-alkalmazás létrehozása a Node. js-ben](cloud-services-nodejs-develop-deploy-app.md) 
+* [Cloud Service-alkalmazás létrehozása Node.js](cloud-services-nodejs-develop-deploy-app.md) 
 * [Cloud Service-alkalmazás létrehozása PHP-ben](../cloud-services-php-create-web-role.md) 
 * [Cloud Service-alkalmazás létrehozása Pythonban](cloud-services-python-ptvs.md)
 

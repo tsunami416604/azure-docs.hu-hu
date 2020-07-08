@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
 ms.openlocfilehash: 006310f1a0efa69881bbe6d6ea4403b9c50402e6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75435395"
 ---
 # <a name="streaming-at-scale-in-hdinsight"></a>Ipari léptékű streamelés a HDInsightban
@@ -49,7 +48,7 @@ A technológiák leválasztása számos előnnyel jár. Például a Kafka egy es
 
 ### <a name="scale-the-stream-buffering-layer"></a>Az adatfolyam-pufferelés rétegének méretezése
 
-Az adatfolyam-pufferelési technológiák Event Hubs és a Kafka is használja a partíciókat és a fogyasztókat. A bemeneti átviteli sebesség méretezése a partíciók számának és a partíciók hozzáadásának növelését teszi lehetővé. Event Hubs a partíciók száma nem módosítható az üzembe helyezés után, ezért fontos, hogy a célként megadott méretezéssel kezdődjön. A Kafka használatával [partíciókat is hozzáadhat](https://kafka.apache.org/documentation.html#basic_ops_cluster_expansion), még akkor is, ha a Kafka adatfeldolgozást végez. A Kafka eszköz lehetővé teszi a partíciók újbóli hozzárendelését `kafka-reassign-partitions.sh`. A HDInsight `rebalance_rackaware.py`egy [partíciós replika-átegyenlítő eszközt](https://github.com/hdinsight/hdinsight-kafka-tools)biztosít. Ez a kiegyenlítő eszköz úgy `kafka-reassign-partitions.sh` hívja meg az eszközt, hogy az egyes replikák külön tartalék tartományba és frissítési tartományba tartoznak, így a Kafka rack tisztában lesz, és növeli a hibatűrést.
+Az adatfolyam-pufferelési technológiák Event Hubs és a Kafka is használja a partíciókat és a fogyasztókat. A bemeneti átviteli sebesség méretezése a partíciók számának és a partíciók hozzáadásának növelését teszi lehetővé. Event Hubs a partíciók száma nem módosítható az üzembe helyezés után, ezért fontos, hogy a célként megadott méretezéssel kezdődjön. A Kafka használatával [partíciókat is hozzáadhat](https://kafka.apache.org/documentation.html#basic_ops_cluster_expansion), még akkor is, ha a Kafka adatfeldolgozást végez. A Kafka eszköz lehetővé teszi a partíciók újbóli hozzárendelését `kafka-reassign-partitions.sh` . A HDInsight egy [partíciós replika-átegyenlítő eszközt](https://github.com/hdinsight/hdinsight-kafka-tools)biztosít `rebalance_rackaware.py` . Ez a kiegyenlítő eszköz úgy hívja `kafka-reassign-partitions.sh` meg az eszközt, hogy az egyes replikák külön tartalék tartományba és frissítési tartományba tartoznak, így a Kafka rack tisztában lesz, és növeli a hibatűrést.
 
 ### <a name="scale-the-stream-processing-layer"></a>Az adatfolyam feldolgozási rétegének méretezése
 
@@ -57,7 +56,7 @@ A Apache Storm és a Spark streaming is támogatja a munkavégző csomópontok h
 
 Ahhoz, hogy kihasználhassa az új csomópontok skálázásával hozzáadott csomópontokat, újra kell osztania a fürt méretének növelése előtt elindított Storm-topológiákat. Ez a kiegyensúlyozás a Storm webes kezelőfelületén vagy a parancssori felületén végezhető el. További információ: [Apache Storm dokumentáció](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html).
 
-A Apache Spark három fő paramétert használ a környezet konfigurálásához az alkalmazás követelményeitől függően `spark.executor.instances`: `spark.executor.cores`, és `spark.executor.memory`. A *végrehajtó* egy Spark-alkalmazáshoz indított folyamat. Egy végrehajtó fut a munkavégző csomóponton, és felelős az alkalmazás feladatainak végrehajtásáért. Az egyes fürtökhöz tartozó végrehajtók és a végrehajtói méretek alapértelmezett száma a munkavégző csomópontok száma és a munkavégző csomópont mérete alapján történik. Ezeket a számokat a rendszer a `spark-defaults.conf`fürt minden egyes csomópontján tárolja a fájlban.
+A Apache Spark három fő paramétert használ a környezet konfigurálásához az alkalmazás követelményeitől függően: `spark.executor.instances` , `spark.executor.cores` és `spark.executor.memory` . A *végrehajtó* egy Spark-alkalmazáshoz indított folyamat. Egy végrehajtó fut a munkavégző csomóponton, és felelős az alkalmazás feladatainak végrehajtásáért. Az egyes fürtökhöz tartozó végrehajtók és a végrehajtói méretek alapértelmezett száma a munkavégző csomópontok száma és a munkavégző csomópont mérete alapján történik. Ezeket a számokat a rendszer a `spark-defaults.conf` fürt minden egyes csomópontján tárolja a fájlban.
 
 Ez a három paraméter a fürt szintjén konfigurálható a fürtön futó összes alkalmazás esetében, és az egyes alkalmazásokhoz is megadható. További információ: Apache Spark- [fürtök erőforrásainak kezelése](spark/apache-spark-resource-manager.md).
 

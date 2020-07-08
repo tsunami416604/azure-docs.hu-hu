@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 09/10/2018
 ms.openlocfilehash: 255888acf5da6149b6a964b23ed038b99715481c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75364951"
 ---
 # <a name="workspace-expression-in-azure-monitor-log-query"></a>munkaterület () kifejezés Azure Monitor napló lekérdezésében
@@ -18,7 +17,7 @@ ms.locfileid: "75364951"
 A `workspace` kifejezés egy Azure monitor lekérdezésben szerepel, hogy az adott munkaterületről, egy másik erőforráscsoporthoz vagy egy másik előfizetésből származó adatokból kérdezze le azokat. Ez hasznos lehet a naplózási adatApplication Insightsi lekérdezésekben, valamint az adatlekérdezés több munkaterületen is a napló lekérdezésében.
 
 
-## <a name="syntax"></a>Szintaxis
+## <a name="syntax"></a>Syntax
 
 `workspace(`*Azonosító*`)`
 
@@ -30,11 +29,11 @@ A `workspace` kifejezés egy Azure monitor lekérdezésben szerepel, hogy az ado
 |:---|:---|:---|
 | Erőforrás neve | A munkaterület emberi olvasási neve (más néven "összetevő neve") | munkaterület ("contosoretail") |
 | Minősített név | A munkaterület teljes neve a következő formában: "subscriptionName/resourceGroup/componentName" | munkaterület ("contoso/ContosoResource/ContosoWorkspace") |
-| ID (Azonosító) | A munkaterület GUID azonosítója | munkaterület ("b438b3f6-912a-46d5-9db1-b42069242ab4") |
+| ID | A munkaterület GUID azonosítója | munkaterület ("b438b3f6-912a-46d5-9db1-b42069242ab4") |
 | Azure-erőforrás azonosítója | Az Azure-erőforrás azonosítója | munkaterület ("/subscriptions/e4227-645-44e-9c67-3b84b5982/resourcegroups/ContosoAzureHQ/providers/Microsoft.OperationalInsights/workspaces/contosoretail") |
 
 
-## <a name="notes"></a>Megjegyzések
+## <a name="notes"></a>Jegyzetek
 
 * Olvasási hozzáféréssel kell rendelkeznie a munkaterülethez.
 * A kapcsolódó kifejezések `app` lehetővé teszik Application Insights alkalmazások lekérdezését.

@@ -10,16 +10,15 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
 ms.openlocfilehash: e4e8dca6c5359e865e6a17fc47fe47802b0ee9e6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75386119"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-powershell"></a>Távoli asztali kapcsolat engedélyezése az Azure Cloud Services szerepkörhöz a PowerShell használatával
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](cloud-services-role-enable-remote-desktop-new-portal.md)
+> * [Azure Portalra](cloud-services-role-enable-remote-desktop-new-portal.md)
 > * [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
 > * [Visual Studio](cloud-services-role-enable-remote-desktop-visual-studio.md)
 
@@ -98,7 +97,7 @@ Remove-AzureServiceRemoteDesktopExtension -ServiceName $servicename -UninstallCo
 >
 > A **UninstallConfiguration** paraméter eltávolítja a szolgáltatásra alkalmazott bővítmények konfigurációját. Minden bővítmény-konfiguráció a szolgáltatás konfigurációjával van társítva. A *Remove* parancsmag meghívása anélkül, hogy a **UninstallConfiguration** leválasztja a <mark>központi telepítést</mark> a bővítmény konfigurációjától, így gyakorlatilag eltávolítja a bővítményt. A bővítmény konfigurációja azonban továbbra is hozzá van rendelve a szolgáltatáshoz.
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 [A Cloud Services Konfigurálása](cloud-services-how-to-configure-portal.md)
 

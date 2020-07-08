@@ -11,10 +11,9 @@ ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: d064e940997d13e51be4fd38e9f678b778ce31f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74900047"
 ---
 # <a name="samples-on-azure-data-science-virtual-machines"></a>Minták az Azure adatelemzési Virtual Machines
@@ -28,7 +27,7 @@ Az Azure adatelemzési Virtual Machines (Dsvm) tartalmaz egy átfogó mintakód-
 A minták futtatásához Data Science Virtual Machine kell kiépíteni. Tekintse meg a [Windows](./provision-vm.md) és az [Ubuntu](./dsvm-ubuntu-intro.md)gyors útmutatóit.
 
 ## <a name="available-samples"></a>Rendelkezésre álló minták
-| Minták kategóriája | Leírás | Helyek |
+| Minták kategóriája | Description | Helyek |
 | ------------- | ------------- | ------------- |
 | R nyelv  | A minták olyan forgatókönyveket mutatnak be, mint például az Azure-alapú felhőalapú adattárakkal való kapcsolódás, valamint a nyílt forráskódú R-és Microsoft Machine Learning Server összevetése. Azt is ismertetik, hogyan működővé tenni modelleket Microsoft Machine Learning Server és SQL Server. <br/> [R nyelv](#r-language) | <br/>`~notebooks` <br/> <br/> `~samples/MicrosoftR` <br/> <br/> `~samples/RSqlDemo` <br/> <br/> `~samples/SQLRServices`<br/> <br/>|
 | Python nyelv  | A példák olyan forgatókönyveket mutatnak be, mint például az Azure-alapú felhőalapú adattárakkal való kapcsolódás, valamint a Azure Machine Learning használata.  <br/> [Python nyelv](#python-language) | <br/>`~notebooks` <br/><br/>|
@@ -40,13 +39,13 @@ A minták futtatásához Data Science Virtual Machine kell kiépíteni. Tekintse
 | Caffe2 | Caffe2-alapú neurális hálózatokat használó mélyreható tanulási minták. Több jegyzetfüzet is megismerkedjen a felhasználókkal a Caffe2, és hogyan használhatja azt hatékonyan. Ilyenek például a képek előfeldolgozása és az adatkészlet létrehozása. Emellett a regressziót és az előképzetlen modellek használatát is tartalmazzák. <br/> [Caffe2](#caffe2) | <br/>`~notebooks/Deep_learning_frameworks/caffe2`<br/><br/> |
 | H2O   | Python-alapú minták, amelyek a H2O-t használják a valós problémás forgatókönyvekhez. <br/> [H2O](#h2o) | <br/>`~notebooks/h2o`<br/><br/> |
 | SparkML nyelve  | A Apache Spark MLLib Toolkit funkcióit használó minták a pySpark és a MMLSpark: Microsoft Machine Learning a Apache Spark Apache Spark 2. x.  <br/> [SparkML nyelve](#sparkml) | <br/>`~notebooks/SparkML/pySpark`<br/>`~notebooks/MMLSpark`<br/><br/>  |
-| Xgboost | Szabványos gépi tanulási minták a XGBoost olyan forgatókönyvekhez, mint például a besorolás és a regresszió. <br/> [XGBoost](#xgboost) | <br/>Windows:<br/>`\dsvm\samples\xgboost\demo`<br/><br/> |
+| XGBoost | Szabványos gépi tanulási minták a XGBoost olyan forgatókönyvekhez, mint például a besorolás és a regresszió. <br/> [XGBoost](#xgboost) | <br/>Windows:<br/>`\dsvm\samples\xgboost\demo`<br/><br/> |
 
 <br/>
 
 ## <a name="access-jupyter"></a>Jupyter elérése 
 
-A Jupyter eléréséhez válassza a **Jupyter** ikont az asztal vagy az alkalmazás menüjében. A Jupyter-t egy DSVM linuxos kiadásán is elérheti. Ha távolról szeretne hozzáférni egy webböngészőből, `https://<Full Domain Name or IP Address of the DSVM>:8000` lépjen az Ubuntu webhelyre.
+A Jupyter eléréséhez válassza a **Jupyter** ikont az asztal vagy az alkalmazás menüjében. A Jupyter-t egy DSVM linuxos kiadásán is elérheti. Ha távolról szeretne hozzáférni egy webböngészőből, lépjen az Ubuntu webhelyre `https://<Full Domain Name or IP Address of the DSVM>:8000` .
 
 A következő útmutatást követve adhat hozzá kivételeket, és elérhetővé teheti a Jupyter-hozzáférést böngészőn keresztül:
 
@@ -92,6 +91,6 @@ Jelentkezzen be ugyanazzal a jelszóval, amelyet a Data Science Virtual Machineb
 ## <a name="sparkml"></a>SparkML 
 <br/>![SparkML-minták](./media/sparkml-samples.png)<br/>
 
-## <a name="xgboost"></a>Xgboost 
+## <a name="xgboost"></a>XGBoost 
 <br/>![XGBoost-minták](./media/xgboost-samples.png)<br/>
 

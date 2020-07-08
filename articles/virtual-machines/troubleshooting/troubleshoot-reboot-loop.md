@@ -13,10 +13,9 @@ ms.workload: infrastructure
 ms.date: 10/15/2018
 ms.author: genli
 ms.openlocfilehash: 3fd0a8bf6bacfec5e2be6dfa52ca51e46c7025f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75443582"
 ---
 # <a name="windows-reboot-loop-on-an-azure-vm"></a>Windows újraindítási hurok Azure-beli virtuális gépen
@@ -62,7 +61,7 @@ A probléma megoldásához [végezze el az operációsrendszer-lemez biztonsági
 
 4. A mentési virtuális gépen nyissa meg a Windows rendszerleíróadatbázis-szerkesztőt (Regedit).
 
-5. Válassza ki a **HKEY_LOCAL_MACHINE** kulcsot, majd válassza ki a **fájl** > **betöltése struktúra** elemet a menüből.
+5. Válassza ki a **HKEY_LOCAL_MACHINE** kulcsot, majd válassza ki a **fájl**  >  **betöltése struktúra** elemet a menüből.
 
 6. Keresse meg a rendszerfájlt a **\Windows\System32\config** mappában.
 
@@ -86,7 +85,7 @@ A probléma megoldásához [végezze el az operációsrendszer-lemez biztonsági
     - `HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Services\AzureWLBackupInquirySvc\ErrorControl`
     - `HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Services\AzureWLBackupPluginSvc\ErrorControl`
 
-13. Válassza ki a **BROKENSYSTEM** kulcsot, majd válassza ki a **fájl** > **kitöltése struktúrát** a menüből.
+13. Válassza ki a **BROKENSYSTEM** kulcsot, majd válassza ki a **fájl**  >  **kitöltése struktúrát** a menüből.
 
 14. Válassza le az operációsrendszer-lemezt a hibaelhárítási virtuális gépről.
 
@@ -94,7 +93,7 @@ A probléma megoldásához [végezze el az operációsrendszer-lemez biztonsági
 
 16. [Hozzon létre egy új virtuális gépet az operációsrendszer-lemezről](../windows/create-vm-specialized.md).
 
-17. Ha a probléma kijavítva van, előfordulhat, hogy újra kell telepítenie a [RDAgent](https://blogs.msdn.microsoft.com/mast/2014/04/07/install-the-vm-agent-on-an-existing-azure-vm/) (WaAppAgent. exe).
+17. Ha a probléma kijavítva van, előfordulhat, hogy újra kell telepítenie a [RDAgent](https://blogs.msdn.microsoft.com/mast/2014/04/07/install-the-vm-agent-on-an-existing-azure-vm/) (WaAppAgent.exe).
 
 ### <a name="solution-for-cause-2"></a>Megoldás a 2. ok esetén
 

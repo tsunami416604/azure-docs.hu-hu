@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
 ms.openlocfilehash: 238f37cc1e8cbc8d3260693181d6e54ac5f592f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75435708"
 ---
 # <a name="use-mapreduce-in-apache-hadoop-on-hdinsight"></a>A MapReduce használata a HDInsight-alapú Apache Hadoopban
@@ -21,13 +20,13 @@ Ismerje meg, hogyan futtathat MapReduce-feladatokat HDInsight-fürtökön.
 
 ## <a name="example-data"></a>Példaadatok
 
-A HDInsight különböző, a és `/example/data` `/HdiSamples` a címtárban tárolt adatkészleteket biztosít. Ezek a könyvtárak a fürt alapértelmezett tárolójában találhatók. Ebben a dokumentumban a `/example/data/gutenberg/davinci.txt` fájlt használjuk. Ez a fájl tartalmazza a Leonardo da Vinci jegyzetfüzeteit.
+A HDInsight különböző, a és a címtárban tárolt adatkészleteket biztosít `/example/data` `/HdiSamples` . Ezek a könyvtárak a fürt alapértelmezett tárolójában találhatók. Ebben a dokumentumban a `/example/data/gutenberg/davinci.txt` fájlt használjuk. Ez a fájl tartalmazza a Leonardo da Vinci jegyzetfüzeteit.
 
 ## <a name="example-mapreduce"></a>Példa MapReduce
 
-A HDInsight-fürt tartalmazza például a MapReduce Word Count alkalmazást. Ez a példa a fürt `/example/jars/hadoop-mapreduce-examples.jar` alapértelmezett tárolójában található.
+A HDInsight-fürt tartalmazza például a MapReduce Word Count alkalmazást. Ez a példa a `/example/jars/hadoop-mapreduce-examples.jar` fürt alapértelmezett tárolójában található.
 
-A következő Java-kód a `hadoop-mapreduce-examples.jar` fájlban található MapReduce-alkalmazás forrása:
+A következő Java-kód a fájlban található MapReduce-alkalmazás forrása `hadoop-mapreduce-examples.jar` :
 
 ```java
 package org.apache.hadoop.examples;

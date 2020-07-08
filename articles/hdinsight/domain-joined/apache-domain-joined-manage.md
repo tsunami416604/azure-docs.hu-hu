@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/04/2019
 ms.openlocfilehash: 93880269edd72477f3aa85b2dbdc9d9f3ec8ef25
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75435882"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>HDInsight-fürtök kezelése Enterprise Security Package
@@ -21,7 +20,7 @@ Megismerheti a HDInsight Enterprise Security Package (ESP) felhasználóit és s
 
 ## <a name="use-vscode-to-link-to-domain-joined-cluster"></a>VSCode használata egy tartományhoz csatlakozó fürthöz való kapcsolódáshoz
 
-Az Apache Ambari Managed username használatával összekapcsolhat egy normál fürtöt, és a tartomány felhasználóneve (például: `user1@contoso.com`) használatával is összekapcsolhatja a biztonsági Apache Hadoop fürtöt.
+Az Apache Ambari Managed username használatával összekapcsolhat egy normál fürtöt, és a tartomány felhasználóneve (például:) használatával is összekapcsolhatja a biztonsági Apache Hadoop fürtöt `user1@contoso.com` .
 
 1. Nyissa meg a [Visual Studio Code](https://code.visualstudio.com/)-ot. Győződjön meg arról, hogy a [Spark & struktúra-eszközök](../hdinsight-for-vscode.md) bővítmény telepítve van.
 
@@ -29,7 +28,7 @@ Az Apache Ambari Managed username használatával összekapcsolhat egy normál f
 
 ## <a name="use-intellij-to-link-to-domain-joined-cluster"></a>IntelliJ használata egy tartományhoz csatlakozó fürthöz való kapcsolódáshoz
 
-A Ambari Managed username használatával összekapcsolhat egy normál fürtöt, és a tartomány felhasználóneve (például: `user1@contoso.com`) használatával is összekapcsolhatja a biztonsági Hadoop-fürtöt.
+A Ambari Managed username használatával összekapcsolhat egy normál fürtöt, és a tartomány felhasználóneve (például:) használatával is összekapcsolhatja a biztonsági Hadoop-fürtöt `user1@contoso.com` .
 
 1. Nyissa meg az IntelliJ IDEA-t. Győződjön meg arról, hogy minden [előfeltétel](../spark/apache-spark-intellij-tool-plugin.md#prerequisites) teljesül.
 
@@ -37,7 +36,7 @@ A Ambari Managed username használatával összekapcsolhat egy normál fürtöt,
 
 ## <a name="use-eclipse-to-link-to-domain-joined-cluster"></a>Eclipse használata egy tartományhoz csatlakozó fürthöz való kapcsolódáshoz
 
-A Ambari Managed username használatával összekapcsolhat egy normál fürtöt, és a tartomány felhasználóneve (például: `user1@contoso.com`) használatával is összekapcsolhatja a biztonsági Hadoop-fürtöt.
+A Ambari Managed username használatával összekapcsolhat egy normál fürtöt, és a tartomány felhasználóneve (például:) használatával is összekapcsolhatja a biztonsági Hadoop-fürtöt `user1@contoso.com` .
 
 1. Nyissa meg az Eclipse környezetet. Győződjön meg arról, hogy minden [előfeltétel](../spark/apache-spark-eclipse-tool-plugin.md#prerequisites) teljesül.
 
@@ -87,7 +86,7 @@ A átjárócsomóponthoz teljes tartománynevének megkereséséhez használja a
 
 A nem ESP-alapú HDInsight-fürtök két, a fürt létrehozása során létrehozott felhasználói fiókkal rendelkeznek:
 
-- **Ambari-rendszergazda**: Ez a fiók *Hadoop felhasználóként* vagy *http-felhasználóként*is ismert. Ez a fiók használható a Ambari-ba való bejelentkezéshez `https://CLUSTERNAME.azurehdinsight.net`. Emellett a Ambari-nézeteken végzett lekérdezések futtatására, a feladatok külső eszközökön (például a PowerShell, a Templeton, a Visual Studio) keresztül történő végrehajtására, valamint a kaptár ODBC-illesztővel és BI-eszközökkel való hitelesítésére is használható (például Excel, Power BI vagy tabló).
+- **Ambari-rendszergazda**: Ez a fiók *Hadoop felhasználóként* vagy *http-felhasználóként*is ismert. Ez a fiók használható a Ambari-ba való bejelentkezéshez `https://CLUSTERNAME.azurehdinsight.net` . Emellett a Ambari-nézeteken végzett lekérdezések futtatására, a feladatok külső eszközökön (például a PowerShell, a Templeton, a Visual Studio) keresztül történő végrehajtására, valamint a kaptár ODBC-illesztővel és BI-eszközökkel való hitelesítésére is használható (például Excel, Power BI vagy tabló).
 
 Az ESP-vel rendelkező HDInsight-fürtök három új felhasználóval rendelkeznek a Ambari-rendszergazda mellett.
 

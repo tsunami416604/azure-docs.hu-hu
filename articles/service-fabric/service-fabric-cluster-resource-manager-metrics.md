@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: ea21502cdab35b261e20af7f23b7b522f77c6667
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75452002"
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>Az erőforrás-felhasználás és a terhelések kezelése a metrikákkal Service Fabric
@@ -183,7 +182,7 @@ A szolgáltatáshoz társított mérőszámok listája és a metrikák tulajdons
   - új metrika engedélyezése csak azt követően, hogy a kód már üzembe lett helyezve és érvényesítve más mechanizmusokon keresztül
   - egy szolgáltatás alapértelmezett terhelésének módosítása a megfigyelt viselkedés és a felhasználás alapján
 
-A metrikák konfigurációjának módosítására szolgáló `FabricClient.ServiceManagementClient.UpdateServiceAsync` fő API- `Update-ServiceFabricService` k a C# és a PowerShell-ben találhatók. Az ezekkel az API-kkal megadott információk azonnal lecserélik a szolgáltatás meglévő metrikai információit. 
+A metrikák konfigurációjának módosítására szolgáló fő API `FabricClient.ServiceManagementClient.UpdateServiceAsync` -k a C# és a PowerShell-ben találhatók `Update-ServiceFabricService` . Az ezekkel az API-kkal megadott információk azonnal lecserélik a szolgáltatás meglévő metrikai információit. 
 
 ## <a name="mixing-default-load-values-and-dynamic-load-reports"></a>Alapértelmezett betöltési értékek és dinamikus betöltési jelentések keverése
 Az alapértelmezett terhelés és a dinamikus terhelések is használhatók ugyanahhoz a szolgáltatáshoz. Ha egy szolgáltatás az alapértelmezett betöltési és dinamikus betöltési jelentéseket is használja, az alapértelmezett terhelés becslésként szolgál a dinamikus jelentések megjelenítése előtt. Az alapértelmezett betöltés jó, mert a fürterőforrás-kezelőhöz való munkavégzést biztosít. Az alapértelmezett betöltés lehetővé teszi, hogy a fürterőforrás-kezelő a létrehozáskor megfelelő helyen helyezze el a szolgáltatási objektumokat. Ha nincs megadva alapértelmezett betöltési információ, a szolgáltatások elhelyezése gyakorlatilag véletlenszerű. Ha a betöltési jelentések később érkeznek, a kezdeti véletlenszerű elhelyezés gyakran helytelen, és a fürterőforrás-kezelőnek át kell helyeznie a szolgáltatásokat.

@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 08/21/2018
 ms.openlocfilehash: 6346055f1169bfa533d5dbfe441ecf27fb0d78a7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75397745"
 ---
 # <a name="splunk-to-azure-monitor-log-query"></a>Splunk Azure Monitor naplózási lekérdezés
@@ -26,7 +25,7 @@ A következő táblázat összehasonlítja a splunk és az Azure Monitor-naplók
  | Üzembe helyezési egység  | cluster |  cluster |  A Azure Monitor lehetővé teszi a fürtök tetszőleges típusú lekérdezését. A splunk nem. |
  | Adatgyorsítótárak |  vödör  |  Gyorsítótárazási és adatmegőrzési szabályzatok |  Az adatpontok és a gyorsítótárazási szint szabályozása. Ez a beállítás közvetlenül befolyásolja a lekérdezések teljesítményét és a telepítés költségeit. |
  | Az adatlogikai partíció  |  index  |  adatbázis  |  Lehetővé teszi az adatmennyiségek logikai elkülönítését. Mindkét implementáció lehetővé teszi a szakszervezetek és az ezekhez való csatlakozást a partíciók között. |
- | Strukturált esemény metaadatainak | N/A | tábla |  A splunk nem rendelkezik az esemény metaadatainak keresési nyelvén elérhető koncepcióval. Azure Monitor a naplók egy tábla fogalmával rendelkeznek, amelynek vannak oszlopai. Minden Event-példány egy sorra van leképezve. |
+ | Strukturált esemény metaadatainak | N.A. | tábla |  A splunk nem rendelkezik az esemény metaadatainak keresési nyelvén elérhető koncepcióval. Azure Monitor a naplók egy tábla fogalmával rendelkeznek, amelynek vannak oszlopai. Minden Event-példány egy sorra van leképezve. |
  | Adatrekord | esemény | sor |  Csak a terminológia módosul. |
  | Adatrekord-attribútum | mező |  oszlop |  A Azure Monitorban ez a tábla struktúrájának részeként van definiálva. A splunk minden esemény saját mezőket tartalmaz. |
  | Típusok | adattípus |  adattípus |  Azure Monitor adattípusok világosabbak, mert az oszlopokra vannak beállítva. Mindkettő képes dinamikusan dolgozni az adattípusokkal és nagyjából egyenértékű adattípusokkal, beleértve a JSON-támogatást is. |
@@ -44,18 +43,18 @@ A következő táblázat a splunk függvényekkel egyenértékű Azure Monitor f
 |if     | IFF ()   | 1 |
 |tonumber | todouble()<br>tolong()<br>toint() | 1 |
 |felső<br>alacsonyabb |toupper()<br>tolower()|1 |
-| csere | replace() | 1<br> Azt is vegye figyelembe `replace()` , hogy míg három paramétert vesz igénybe mindkét termékben, a paraméterek eltérőek. |
+| csere | replace() | 1<br> Azt is vegye figyelembe, hogy míg `replace()` három paramétert vesz igénybe mindkét termékben, a paraméterek eltérőek. |
 | substr | substring() | 1<br>Azt is vegye figyelembe, hogy a splunk egy-alapú indexeket használ. Azure Monitor Megjegyzés nulla alapú indexek. |
 | ToLower |  tolower() | 1 |
 | toupper | toupper() | 1 |
 | mérkőzés | megfelel a regexnek |  (2)  |
-| regex | megfelel a regexnek | A splunk `regex` -ben egy operátor. A Azure Monitorban ez egy összehasonlító operátor. |
+| regex | megfelel a regexnek | A splunk-ben `regex` egy operátor. A Azure Monitorban ez egy összehasonlító operátor. |
 | searchmatch | == | A splunk `searchmatch` lehetővé teszi a pontos karakterlánc keresését.
 | véletlenszerű | rand()<br>rand (n) | A splunk függvény nulla és 2<sup>31</sup>– 1 közötti számot ad vissza. A Azure Monitor "egy 0,0 és 1,0 közötti számot ad vissza, vagy ha a megadott paraméter 0 és n – 1 között van.
 | most | now() | 1
-| relative_time | totimespan() | 1<br>A Azure Monitor relative_time (datetimeVal, offsetVal) a következő splunk egyenértékű: datetimeVal + ToTimeSpan (offsetVal).<br>Például a következő <code>search &#124; eval n=relative_time(now(), "-1d@d")</code> lesz <code>...  &#124; extend myTime = now() - totimespan("1d")</code>:.
+| relative_time | totimespan() | 1<br>A Azure Monitor relative_time (datetimeVal, offsetVal) a következő splunk egyenértékű: datetimeVal + ToTimeSpan (offsetVal).<br>Például a következő <code>search &#124; eval n=relative_time(now(), "-1d@d")</code> lesz: <code>...  &#124; extend myTime = now() - totimespan("1d")</code> .
 
-(1) a splunk a függvényt a `eval` rendszer a kezelővel hívja meg. A Azure Monitor a `extend` vagy `project`a részeként használatos.<br>(2) a splunk a függvényt a `eval` rendszer a kezelővel hívja meg. A Azure Monitor a `where` kezelővel használható.
+(1) a splunk a függvényt a rendszer a `eval` kezelővel hívja meg. A Azure Monitor a vagy a részeként használatos `extend` `project` .<br>(2) a splunk a függvényt a rendszer a `eval` kezelővel hívja meg. A Azure Monitor a `where` kezelővel használható.
 
 
 ## <a name="operators"></a>Operátorok
@@ -66,7 +65,7 @@ A következő részekben példákat talál a splunk és a Azure Monitor között
 > Az alábbi példában az splunk-mező _szabálya_ a Azure monitor egyik táblájára mutat, és a splunk alapértelmezett időbélyeg-leképezése a Logs Analytics _ingestion_time ()_ oszlopra mutat.
 
 ### <a name="search"></a>Keresés
-A splunk kihagyhatja a `search` kulcsszót, és megadhat egy idézőjelet nem tartalmazó karakterláncot. Azure Monitor el kell indítania az egyes lekérdezéseket a alkalmazásban `find`, a nem jegyzett sztringek oszlop neve, a keresési értéknek pedig egy idézőjeles karakterláncnak kell lennie. 
+A splunk kihagyhatja a `search` kulcsszót, és megadhat egy idézőjelet nem tartalmazó karakterláncot. Azure Monitor el kell indítania az egyes lekérdezéseket a alkalmazásban `find` , a nem jegyzett sztringek oszlop neve, a keresési értéknek pedig egy idézőjeles karakterláncnak kell lennie. 
 
 | |  | |
 |:---|:---|:---|
@@ -75,7 +74,7 @@ A splunk kihagyhatja a `search` kulcsszót, és megadhat egy idézőjelet nem ta
 | | |
 
 ### <a name="filter"></a>Szűrés
-Azure Monitor a naplók lekérdezése táblázatos eredményhalmaz alapján kezdődik, ahol a szűrő. A splunk-ben a szűrés az aktuális index alapértelmezett művelete. Használhatja a splunk `where` operátort is, de nem ajánlott.
+Azure Monitor a naplók lekérdezése táblázatos eredményhalmaz alapján kezdődik, ahol a szűrő. A splunk-ben a szűrés az aktuális index alapértelmezett művelete. Használhatja `where` a splunk operátort is, de nem ajánlott.
 
 | |  | |
 |:---|:---|:---|
@@ -85,7 +84,7 @@ Azure Monitor a naplók lekérdezése táblázatos eredményhalmaz alapján kezd
 
 
 ### <a name="getting-n-eventsrows-for-inspection"></a>N esemény/sor beolvasása vizsgálathoz 
-A Azure Monitor log-lekérdezések `take` aliasként is támogatják `limit`a következőt:. Ha a splunk az eredmények sorrendjét adják meg `head` , az az első n eredményt fogja visszaadni. Azure Monitor esetén a korlát nem rendezett, de a megtalált első n sort adja vissza.
+A Azure Monitor log-lekérdezések aliasként is támogatják a következőt: `take` `limit` . Ha a splunk az eredmények sorrendjét adják meg, `head` az az első n eredményt fogja visszaadni. Azure Monitor esetén a korlát nem rendezett, de a megtalált első n sort adja vissza.
 
 | |  | |
 |:---|:---|:---|
@@ -96,7 +95,7 @@ A Azure Monitor log-lekérdezések `take` aliasként is támogatják `limit`a k�
 
 
 ### <a name="getting-the-first-n-eventsrows-ordered-by-a-fieldcolumn"></a>Az első n esemény/sor beolvasása egy mező/oszlop alapján rendezve
-Az alsó eredmények esetében a splunk használja `tail`. A Azure Monitorban megadhatja a sorrend irányát a használatával `asc`.
+Az alsó eredmények esetében a splunk használja `tail` . A Azure Monitorban megadhatja a sorrend irányát a használatával `asc` .
 
 | |  | |
 |:---|:---|:---|
@@ -108,7 +107,7 @@ Az alsó eredmények esetében a splunk használja `tail`. A Azure Monitorban me
 
 
 ### <a name="extending-the-result-set-with-new-fieldscolumns"></a>Az eredményhalmaz kiterjesztése új mezőkkel/oszlopokkal
-A splunk is tartalmaz `eval` egy függvényt, amely nem hasonlítható össze az `eval` operátorral. Mind a `eval` splunk, mind a Azure monitor `extend` operátora csak a skaláris függvények és a aritmetikai operátorok támogatását támogatja.
+A splunk is tartalmaz egy `eval` függvényt, amely nem hasonlítható össze az `eval` operátorral. Mind a `eval` splunk, mind a `extend` Azure monitor operátora csak a skaláris függvények és a aritmetikai operátorok támogatását támogatja.
 
 | |  | |
 |:---|:---|:---|
@@ -118,7 +117,7 @@ A splunk is tartalmaz `eval` egy függvényt, amely nem hasonlítható össze az
 
 
 ### <a name="rename"></a>Átnevezés 
-Azure Monitor az `project-rename` operátor használatával nevezi át a mezőt. `project-rename`lehetővé teszi a lekérdezés számára, hogy kihasználhassa a mezőhöz előre elkészített indexeket. A splunk rendelkezik `rename` egy operátorral, amely ugyanezt teszi.
+Azure Monitor az `project-rename` operátor használatával nevezi át a mezőt. `project-rename`lehetővé teszi a lekérdezés számára, hogy kihasználhassa a mezőhöz előre elkészített indexeket. A splunk rendelkezik egy `rename` operátorral, amely ugyanezt teszi.
 
 | |  | |
 |:---|:---|:---|
@@ -130,7 +129,7 @@ Azure Monitor az `project-rename` operátor használatával nevezi át a mezőt.
 
 
 ### <a name="format-resultsprojection"></a>Találatok és leképezések formázása
-Úgy tűnik, hogy a splunk nem rendelkezik hasonló operátorral `project-away`. A felhasználói felület használatával szűrheti a mezőket.
+Úgy tűnik, hogy a splunk nem rendelkezik hasonló operátorral `project-away` . A felhasználói felület használatával szűrheti a mezőket.
 
 | |  | |
 |:---|:---|:---|
@@ -145,7 +144,7 @@ Tekintse meg az összesítéseket Azure Monitor a különböző aggregációs f�
 
 | |  | |
 |:---|:---|:---|
-| Splunk | **statisztikák** |  <code>search (Rule=120502.*)<br>&#124; stats count by OSEnv, Audience</code> |
+| Splunk | **stats** |  <code>search (Rule=120502.*)<br>&#124; stats count by OSEnv, Audience</code> |
 | Azure Monitor | **Összegzés** | <code>Office_Hub_OHubBGTaskError<br>&#124; summarize count() by App_Platform, Release_Audience</code> |
 | | |
 
@@ -198,7 +197,7 @@ A Azure Portal Log Analyticsban csak az első oszlop van kitéve. Az összes osz
 
 
 ### <a name="de-duplicate"></a>De-Duplicate
-Ehelyett a kiválasztott `summarize arg_min()` rekord sorrendjének megfordítására használható.
+`summarize arg_min()`Ehelyett a kiválasztott rekord sorrendjének megfordítására használható.
 
 | |  | |
 |:---|:---|:---|

@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.date: 12/16/2019
 ms.openlocfilehash: f3705170be28f33e5994bd00e363dc7ec7f94642
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75435616"
 ---
 # <a name="analyze-twitter-data-using-apache-hive-and-apache-hadoop-on-hdinsight"></a>Twitter-adataik elemzése Apache Hive és Apache Hadoop használatával a HDInsight-on
@@ -28,7 +27,7 @@ A Twitter lehetővé teszi az egyes tweetek JavaScript Object Notation (JSON) do
 
 ### <a name="create-a-twitter-application"></a>Twitter-alkalmazás létrehozása
 
-1. Egy webböngészőből jelentkezzen be a [https://developer.twitter.com/apps/](https://developer.twitter.com/apps/)következőbe:. Ha nem rendelkezik Twitter-fiókkal, válassza a **regisztráció most** hivatkozást.
+1. Egy webböngészőből jelentkezzen be a következőbe: [https://developer.twitter.com/apps/](https://developer.twitter.com/apps/) . Ha nem rendelkezik Twitter-fiókkal, válassza a **regisztráció most** hivatkozást.
 
 2. Válassza az **új alkalmazás létrehozása**lehetőséget.
 
@@ -37,7 +36,7 @@ A Twitter lehetővé teszi az egyes tweetek JavaScript Object Notation (JSON) do
    | Mező | Érték |
    |--- |--- |
    | Name (Név) |MyHDInsightApp |
-   | Leírás |MyHDInsightApp |
+   | Description |MyHDInsightApp |
    | Webhely |`https://www.myhdinsightapp.com` |
 
 4. Válassza az **Igen, elfogadom**lehetőséget, majd válassza **a Twitter-alkalmazás létrehozása**lehetőséget.
@@ -54,7 +53,7 @@ A Twitter lehetővé teszi az egyes tweetek JavaScript Object Notation (JSON) do
 
 ### <a name="download-tweets"></a>Tweetek letöltése
 
-A következő Python-kód letölti az 10 000 tweeteket a Twitterről, és menti őket egy **tweetes. txt**nevű fájlba.
+A következő Python-kód letölti az 10 000 tweeteket a Twitterről, és menti azokat egy **tweets.txt**nevű fájlba.
 
 > [!NOTE]  
 > A HDInsight-fürtön a következő lépések végezhetők el, mivel a Python már telepítve van.
@@ -84,7 +83,7 @@ A következő Python-kód letölti az 10 000 tweeteket a Twitterről, és menti 
    nano gettweets.py
    ```
 
-1. Szerkessze az alábbi kódot a `Your consumer secret`Twitter `Your consumer key`- `Your access token`alkalmazásból `Your access token secret` származó releváns információk kiváltásával. Ezután illessze be a szerkesztett kódot a **gettweets.py** -fájl tartalmába.
+1. Szerkessze az alábbi kódot a `Your consumer secret` `Your consumer key` Twitter- `Your access token` `Your access token secret` alkalmazásból származó releváns információk kiváltásával. Ezután illessze be a szerkesztett kódot a **gettweets.py** -fájl tartalmába.
 
    ```python
    #!/usr/bin/python

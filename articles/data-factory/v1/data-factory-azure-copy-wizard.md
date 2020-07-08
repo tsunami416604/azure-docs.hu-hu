@@ -14,10 +14,9 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: fef9059700e2bd94029c40bb819870a7174e0812
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74930122"
 ---
 # <a name="azure-data-factory-copy-wizard"></a>Azure Data Factory másolási varázsló
@@ -60,7 +59,7 @@ Egy legördülő lista használatával kiválaszthat egy oszlopot a forrásoldal
 A forrásadatok szűrésével kiválaszthatja azokat az adatforrásokat, amelyeket át kell másolni a fogadó adattárba. A szűrés csökkenti a fogadó adattárba másolandó adatok mennyiségét, így fokozza a másolási művelet átviteli sebességét. Rugalmas módszert biztosít a kapcsolódó adatbázisokban lévő adatok szűrésére az SQL lekérdezési nyelv vagy az Azure Blob mappában található fájlok használatával [Data Factory függvények és változók](data-factory-functions-variables.md)használatával.   
 
 ### <a name="filtering-of-data-in-a-database"></a>Adatbázisbeli Adatszűrés
-Az alábbi képernyőfelvételen egy SQL-lekérdezés látható `Text.Format` a függvény `WindowStart` és a változó használatával.
+Az alábbi képernyőfelvételen egy SQL-lekérdezés látható a `Text.Format` függvény és a `WindowStart` változó használatával.
 
 ![Kifejezések ellenőrzése](./media/data-factory-copy-wizard/validate-expressions.png)
 

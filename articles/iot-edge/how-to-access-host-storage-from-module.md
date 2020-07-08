@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 079d5845917e63fadcf0466e5a744ed637d704ca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75434528"
 ---
 # <a name="give-modules-access-to-a-devices-local-storage"></a>Hozzáférés biztosítása modulok számára egy eszköz helyi tárterületéhez
@@ -70,11 +69,11 @@ A helyi tárolót közvetlenül a telepítési jegyzékben is konfigurálhatja. 
 }
 ```
 
-Cserélje `<HostStoragePath>` le `<ModuleStoragePath>` a és a-t a gazdagép és a modul tárolási útvonalára; mindkét értéknek abszolút elérési útnak kell lennie.
+Cserélje `<HostStoragePath>` le `<ModuleStoragePath>` a és a értéket a gazdagép és a modul tárolási útjára; mindkét értéknek abszolút elérési útnak kell lennie.
 
-A Linux rendszeren `"Binds":["/etc/iotedge/storage/:/iotedge/storage/"]` például a gazdagép **/etc/iotedge/Storage** lévő könyvtárat a rendszer a tároló **/iotedge/Storage/** képezi le. Egy Windows rendszerű rendszeren, mint egy másik `"Binds":["C:\\temp:C:\\contemp"]` példa, azt jelenti, hogy a gazdagépen a **c:\\Temp** könyvtárat a rendszer a tárolóban lévő **c\\:** a következő könyvtárba rendeli.
+A Linux rendszeren például `"Binds":["/etc/iotedge/storage/:/iotedge/storage/"]` a gazdagép **/etc/iotedge/Storage** lévő könyvtárat a rendszer a tároló **/iotedge/Storage/** képezi le. Egy Windows rendszerű rendszeren, mint egy másik példa, `"Binds":["C:\\temp:C:\\contemp"]` azt jelenti, hogy a gazdagépen a **c: \\ temp** könyvtárat a rendszer a tárolóban lévő **c: \\ ** a következő könyvtárba rendeli.
 
-Emellett a Linux-eszközökön ellenőrizze, hogy a modul felhasználói profilja rendelkezik-e a gazdagép rendszerkönyvtárához szükséges olvasási, írási és végrehajtási engedélyekkel. Visszatérve a korábbi példához, amely lehetővé teszi, hogy IoT Edge hub üzeneteket tároljon az eszköz helyi tárolójában, engedélyeket kell adnia a felhasználói profiljához, az UID 1000-hez. (A IoT Edge ügynök root-ként működik, ezért nincs szükség további engedélyekre.) A Linux rendszereken több módon is kezelhetők a címtár-engedélyek, beleértve `chown` a használatával a címtár tulajdonosának módosítását, majd `chmod` az engedélyek módosítását, például:
+Emellett a Linux-eszközökön ellenőrizze, hogy a modul felhasználói profilja rendelkezik-e a gazdagép rendszerkönyvtárához szükséges olvasási, írási és végrehajtási engedélyekkel. Visszatérve a korábbi példához, amely lehetővé teszi, hogy IoT Edge hub üzeneteket tároljon az eszköz helyi tárolójában, engedélyeket kell adnia a felhasználói profiljához, az UID 1000-hez. (A IoT Edge ügynök root-ként működik, ezért nincs szükség további engedélyekre.) A Linux rendszereken több módon is kezelhetők a címtár-engedélyek, beleértve a használatával a `chown` címtár tulajdonosának módosítását, majd `chmod` az engedélyek módosítását, például:
 
 ```bash
 sudo chown 1000 <HostStoragePath>

@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 4e485463f41cdfbadeb166ecbb3a86d4a32c1589
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75348926"
 ---
 # <a name="polymorphism-in-the-reliable-actors-framework"></a>Polimorfizmus a Reliable Actors-keretrendszerben
@@ -21,7 +20,7 @@ A Reliable Actors-keretrendszerhez meg kell határoznia legalább egy olyan fel�
 ![Alakzat szereplőinek illesztőfelület-hierarchiája][shapes-interface-hierarchy]
 
 ## <a name="types"></a>Típusok
-Létrehozhatja a Actor típusú hierarchiát is, amely a platform által biztosított alapszintű Actor osztályból származik. Az alakzatok esetében előfordulhat, hogy egy alap `Shape`(C#) vagy `ShapeImpl`(Java) típusú típust tartalmaz:
+Létrehozhatja a Actor típusú hierarchiát is, amely a platform által biztosított alapszintű Actor osztályból származik. Az alakzatok esetében előfordulhat, hogy egy alap `Shape` (C#) vagy `ShapeImpl` (Java) típusú típust tartalmaz:
 
 ```csharp
 public abstract class Shape : Actor, IShape
@@ -40,7 +39,7 @@ public abstract class ShapeImpl extends FabricActor implements Shape
 }
 ```
 
-A `Shape`(C#) vagy `ShapeImpl`(Java) altípusok felülbírálják a metódusokat az alapból.
+A `Shape` (C#) vagy `ShapeImpl` (Java) altípusok felülbírálják a metódusokat az alapból.
 
 ```csharp
 [ActorService(Name = "Circle")]
@@ -83,7 +82,7 @@ public class Circle extends ShapeImpl implements Circle
 }
 ```
 
-Jegyezze fel `ActorService` az attribútumot a színész típusán. Ez az attribútum tájékoztatja a megbízható szereplői keretrendszert arról, hogy automatikusan létre kell hoznia egy szolgáltatást az ilyen típusú szereplők üzemeltetéséhez. Bizonyos esetekben előfordulhat, hogy olyan alaptípust szeretne létrehozni, amely kizárólag altípusokkal való megosztásra szolgál, és soha nem lesz felhasználva konkrét szereplők létrehozásához. Ezekben az esetekben a `abstract` kulcsszó használatával jelezze, hogy soha nem fog létrehozni egy szereplőt az adott típus alapján.
+Jegyezze fel az `ActorService` attribútumot a színész típusán. Ez az attribútum tájékoztatja a megbízható szereplői keretrendszert arról, hogy automatikusan létre kell hoznia egy szolgáltatást az ilyen típusú szereplők üzemeltetéséhez. Bizonyos esetekben előfordulhat, hogy olyan alaptípust szeretne létrehozni, amely kizárólag altípusokkal való megosztásra szolgál, és soha nem lesz felhasználva konkrét szereplők létrehozásához. Ezekben az esetekben a `abstract` kulcsszó használatával jelezze, hogy soha nem fog létrehozni egy szereplőt az adott típus alapján.
 
 ## <a name="next-steps"></a>További lépések
 * Ismerje meg, [hogyan használja ki a Reliable Actors Framework a Service Fabric platformot](service-fabric-reliable-actors-platform.md) a megbízhatóság, a méretezhetőség és a konzisztens állapot biztosításához.

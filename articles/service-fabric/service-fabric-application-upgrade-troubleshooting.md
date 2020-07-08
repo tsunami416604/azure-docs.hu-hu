@@ -4,10 +4,9 @@ description: Ez a cikk a Service Fabric-alkalmazások frissítésével és megol
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: d462f2c2482e0fbb4d252967754a9675ed362674
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75377922"
 ---
 # <a name="troubleshoot-application-upgrades"></a>Alkalmazásfrissítések hibaelhárítása
@@ -190,7 +189,7 @@ A frissítés az utolsó felfüggesztést követően a frissítési tartományb�
 
 1. lehetséges ok:
 
-Service Fabric lefordítja az összes százalékos arányt a tényleges számú entitásra (például replikák, partíciók és szolgáltatások) az állapot kiértékeléséhez, és mindig teljes entitásokra kerekít. Ha például a maximális *MaxPercentUnhealthyReplicasPerPartition* 21%, és öt replika van, akkor Service Fabric legfeljebb két sérült replikát (azaz`Math.Ceiling (5*0.21)`) tesz lehetővé. Ezért az állapotfigyelő házirendeket ennek megfelelően kell beállítani.
+Service Fabric lefordítja az összes százalékos arányt a tényleges számú entitásra (például replikák, partíciók és szolgáltatások) az állapot kiértékeléséhez, és mindig teljes entitásokra kerekít. Ha például a maximális *MaxPercentUnhealthyReplicasPerPartition* 21%, és öt replika van, akkor Service Fabric legfeljebb két sérült replikát (azaz) tesz lehetővé `Math.Ceiling (5*0.21)` . Ezért az állapotfigyelő házirendeket ennek megfelelően kell beállítani.
 
 2. lehetséges ok:
 
@@ -200,7 +199,7 @@ A frissítés során azonban a D állapota Kifogástalan lehet, amíg a C nem me
 
 ### <a name="i-did-not-specify-a-health-policy-for-application-upgrade-but-the-upgrade-still-fails-for-some-time-outs-that-i-never-specified"></a>Nem határoztam meg az alkalmazás frissítésére vonatkozó állapotfigyelő szabályzatot, de a frissítés továbbra is meghiúsul egy olyan időtúllépés miatt, amely soha nem volt megadva
 
-Ha a frissítési kérelem nem ad meg állapotházirend-szabályzatot, a rendszer az aktuális alkalmazás verziójának *ApplicationManifest. XML fájlját* veszi át. Ha például az X alkalmazást az 1,0-es verzióról az 2,0-es verzióra frissíti, a rendszer az 1,0-as verzióban megadott Application Health-szabályzatokat használja. Ha a frissítéshez másik állapotházirend használata szükséges, akkor a szabályzatot az alkalmazás-frissítési API-hívás részeként kell megadni. Az API-hívás részeként megadott szabályzatok csak a frissítés során érvényesek. A frissítés befejezése után a rendszer a *ApplicationManifest. xml fájlban* megadott szabályzatokat használja.
+Ha a frissítési kérelem nem ad meg állapot-szabályzatokat, azok az alkalmazás aktuális verziójának *ApplicationManifest.xml* származnak. Ha például az X alkalmazást az 1,0-es verzióról az 2,0-es verzióra frissíti, a rendszer az 1,0-as verzióban megadott Application Health-szabályzatokat használja. Ha a frissítéshez másik állapotházirend használata szükséges, akkor a szabályzatot az alkalmazás-frissítési API-hívás részeként kell megadni. Az API-hívás részeként megadott szabályzatok csak a frissítés során érvényesek. A frissítés befejezése után a rendszer a *ApplicationManifest.xmlban* megadott házirendeket használja.
 
 ### <a name="incorrect-time-outs-are-specified"></a>Helytelen időtúllépés van megadva
 
@@ -212,9 +211,9 @@ A frissítés befejezésének ideje a megadott állapot-ellenőrzéstől és id�
 
 Íme egy gyors frissítő, hogy az időtúllépés hogyan működjön együtt a frissítési időpontokkal:
 
-A frissítési tartomány frissítései nem hajthatók végre gyorsabban, mint a *HealthCheckWaitDuration* + *HealthCheckStableDuration*.
+A frissítési tartomány frissítései nem hajthatók végre gyorsabban, mint a *HealthCheckWaitDuration*  +  *HealthCheckStableDuration*.
 
-A frissítési hiba nem fordulhat elő gyorsabban, mint a *HealthCheckWaitDuration* + *HealthCheckRetryTimeout*.
+A frissítési hiba nem fordulhat elő gyorsabban, mint a *HealthCheckWaitDuration*  +  *HealthCheckRetryTimeout*.
 
 A frissítési tartomány frissítési idejét a *UpgradeDomainTimeout*korlátozza.  Ha a *HealthCheckRetryTimeout* és a *HealthCheckStableDuration* értéke nem nulla, és az alkalmazás állapota továbbra is folyamatosra vált, a frissítés végül a *UpgradeDomainTimeout*-on történik. A *UpgradeDomainTimeout* megkezdi az aktuális frissítési tartomány verziófrissítésének megkezdését.
 

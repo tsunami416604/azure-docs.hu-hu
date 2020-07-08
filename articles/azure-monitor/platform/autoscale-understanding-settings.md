@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 12/18/2017
 ms.subservice: autoscale
 ms.openlocfilehash: 9a2b94208de7ce490a0e7acfbb71175b4a7c846e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75364305"
 ---
 # <a name="understand-autoscale-settings"></a>Ismerkedés az automatikus méretezési beállításokkal
@@ -85,14 +84,14 @@ Az autoskálázási beállítás sémájának szemléltetéséhez a következő 
 }
 ```
 
-| Section | Elem neve | Leírás |
+| Section | Elem neve | Description |
 | --- | --- | --- |
-| Beállítás | ID (Azonosító) | Az autoskálázási beállítás erőforrás-azonosítója. Az autoskálázási beállítások egy Azure Resource Manager erőforrás. |
-| Beállítás | név | Az autoskálázási beállítás neve. |
+| Beállítás | ID | Az autoskálázási beállítás erőforrás-azonosítója. Az autoskálázási beállítások egy Azure Resource Manager erőforrás. |
+| Beállítás | name | Az autoskálázási beállítás neve. |
 | Beállítás | location | Az autoskálázási beállítás helye Ez a hely nem lehet azonos a méretezni kívánt erőforrás helyétől. |
 | properties | targetResourceUri | A méretezni kívánt erőforrás erőforrás-azonosítója. Erőforráshoz csak egy méretezési beállítás adható meg. |
 | properties | profilok | Az autoskálázási beállítás egy vagy több profilból áll. Minden alkalommal, amikor az autoskálázási motor fut, egy profilt hajt végre. |
-| profil | név | A profil neve. Bármely olyan nevet választhat, amely segít azonosítani a profilt. |
+| profil | name | A profil neve. Bármely olyan nevet választhat, amely segít azonosítani a profilt. |
 | profil | Kapacitás. maximum | A maximális kapacitás megengedett. Gondoskodik arról, hogy a profil végrehajtásakor az autoskálázás ne méretezi az erőforrást ezen szám felett. |
 | profil | Kapacitás. minimum | A minimális kapacitás megengedett. Gondoskodik arról, hogy a profil végrehajtásakor az autoskálázás ne méretezi az erőforrást ennél a számnál. |
 | profil | Kapacitás. default | Ha probléma merül fel az erőforrás-metrika (ebben az esetben a "vmss1" CPU) beolvasásakor, és a jelenlegi kapacitás az alapértelmezett érték alatt van, az autoskálázás az alapértelmezett értékre áll. Ez biztosítja az erőforrás rendelkezésre állását. Ha az aktuális kapacitás már magasabb az alapértelmezett kapacitásnál, az autoskálázás nem méretezhető a-ben. |
@@ -106,7 +105,7 @@ Az autoskálázási beállítás sémájának szemléltetéséhez a következő 
 | metricTrigger | timeAggregation | A mintául szolgáló mérőszámok összesítéséhez használt összesítési módszer. Például a **TimeAggregation = "Average"** értéknek összesíteni kell a mintavételezési metrikákat az átlag kiszámításával. Az előző esetben végezze el a TEN 1 perces mintákat, és az átlagot. |
 | szabály | scaleAction | A szabály metricTrigger elindításához végrehajtandó művelet. |
 | scaleAction | irány | "Növelje" a méretezéshez, vagy "csökkentse" a méretezést a alkalmazásban.|
-| scaleAction | érték | Mennyit növelheti vagy csökkentheti az erőforrás kapacitását. |
+| scaleAction | value | Mennyit növelheti vagy csökkentheti az erőforrás kapacitását. |
 | scaleAction | cooldown | Az a várakozási idő, ameddig a méretezési művelet a méretezés előtt újra meg nem telik. Ha például a **cooldown = "PT10M"**, az autoskálázás nem próbálkozik újra a méretezéssel újabb 10 percre. A cooldown a példányok hozzáadását vagy eltávolítását követően a mérőszámok stabilizálását teszi lehetővé. |
 
 ## <a name="autoscale-profiles"></a>Autoskálázási profilok

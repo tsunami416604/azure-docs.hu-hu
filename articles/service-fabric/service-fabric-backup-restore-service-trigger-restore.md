@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: aagup
 ms.openlocfilehash: 1737102ee652cc2263bd0a908c1336bc93a6757b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75377905"
 ---
 # <a name="restoring-backup-in-azure-service-fabric"></a>Biztonsági mentés visszaállítása az Azure-ban Service Fabric
@@ -34,7 +33,7 @@ Beállíthat például egy szolgáltatást úgy, hogy biztonsági másolatot ké
     Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
 ```
 
-- Győződjön meg arról, hogy a fürt a `Connect-SFCluster` paranccsal van csatlakoztatva, mielőtt konfigurációs kérelmet hozna a Microsoft. ServiceFabric. PowerShell. http modul használatával.
+- Győződjön meg arról, hogy a fürt a paranccsal van csatlakoztatva, `Connect-SFCluster` mielőtt konfigurációs kérelmet hozna a Microsoft. ServiceFabric. PowerShell. http modul használatával.
 
 ```powershell
 
@@ -54,7 +53,7 @@ A visszaállítás a következő esetekben indítható el:
 
 Ha egy teljes Service Fabric-fürt elvész, helyreállíthatja az adatokat a megbízható állapot-nyilvántartó szolgáltatás partíciói számára, és Reliable Actors. A kívánt biztonsági mentést kiválaszthatja a listából, ha [GetBackupAPI használ a biztonsági mentési tár részleteivel](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getbackupsfrombackuplocation). A biztonsági mentés enumerálása lehet egy alkalmazás, szolgáltatás vagy partíció.
 
-A következő példában feltételezzük, hogy az elveszett fürt ugyanaz a fürt, amely a [megbízható állapot-nyilvántartó szolgáltatás és a Reliable Actors rendszeres biztonsági mentésének engedélyezése](service-fabric-backuprestoreservice-quickstart-azurecluster.md#enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors)című részében szerepel. Ebben az esetben a `SampleApp` a biztonsági mentési szabályzattal van telepítve, és a biztonsági másolatok az Azure Storage-ba vannak konfigurálva.
+A következő példában feltételezzük, hogy az elveszett fürt ugyanaz a fürt, amely a [megbízható állapot-nyilvántartó szolgáltatás és a Reliable Actors rendszeres biztonsági mentésének engedélyezése](service-fabric-backuprestoreservice-quickstart-azurecluster.md#enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors)című részében szerepel. Ebben az esetben a a `SampleApp` biztonsági mentési szabályzattal van telepítve, és a biztonsági másolatok az Azure Storage-ba vannak konfigurálva.
 
 #### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>PowerShell a Microsoft. ServiceFabric. PowerShell. http modul használatával
 
@@ -65,7 +64,7 @@ Get-SFBackupsFromBackupLocation -Application -ApplicationName 'fabric:/SampleApp
 
 #### <a name="rest-call-using-powershell"></a>Rest-hívás a PowerShell használatával
 
-Hajtson végre egy PowerShell-szkriptet a REST API használatára az alkalmazásban található `SampleApp` összes partícióhoz létrehozott biztonsági másolatok listájának visszaküldéséhez. Az API-nak szüksége van a biztonsági mentési tár adataira az elérhető biztonsági másolatok listázásához.
+Hajtson végre egy PowerShell-szkriptet a REST API használatára az alkalmazásban található összes partícióhoz létrehozott biztonsági másolatok listájának visszaküldéséhez `SampleApp` . Az API-nak szüksége van a biztonsági mentési tár adataira az elérhető biztonsági másolatok listázásához.
 
 ```powershell
 $StorageInfo = @{
@@ -152,7 +151,7 @@ A Restore API esetében meg kell adnia a _biztonsági másolat azonosítója_ é
 
 A [partíciós sémában](service-fabric-concepts-partitioning.md#get-started-with-partitioning)részletezett módon ki kell választania egy célként megadott partíciót is a másodlagos fürtben. A másodlagos fürt biztonsági mentését a rendszer visszaállítja a partíciós sémában megadott partícióra az eredeti elveszett fürtből.
 
-Ha a partíció-azonosító a másodlagos fürtön van `1c42c47f-439e-4e09-98b9-88b8f60800c6`, akkor az eredeti fürtözött partíció-azonosítóhoz `974bd92a-b395-4631-8a7f-53bd4ae9cf22` rendelhető hozzá, ha összehasonlítja a magas kulcsot és az alacsony kulcsot a tartományon kívüli _particionáláshoz (UniformInt64Partition)_.
+Ha a partíció-azonosító a másodlagos fürtön van, akkor az `1c42c47f-439e-4e09-98b9-88b8f60800c6` eredeti fürtözött partíció-azonosítóhoz rendelhető hozzá, ha `974bd92a-b395-4631-8a7f-53bd4ae9cf22` összehasonlítja a magas kulcsot és az alacsony kulcsot a _tartományon kívüli particionáláshoz (UniformInt64Partition)_.
 
 A _nevesített particionáláshoz_a név értékét a rendszer összehasonlítja a másodlagos fürtben található cél partíció azonosításához.
 
@@ -201,7 +200,7 @@ Service Fabric Explorerről is indíthat visszaállítást. Győződjön meg arr
 
     ![Partíció-visszaállítási fájlmegosztás][3]
 
-### <a name="data-restore-for-_data-corruption__data-loss_"></a>Adatvesztés _adatsérülése_/_data loss_ esetén
+### <a name="data-restore-for-_data-corruption__data-loss_"></a>Adatvesztés _adatsérülése_ / _data loss_ esetén
 
 _Adatvesztés_ vagy _adatsérülés_esetén a megbízható állapot-nyilvántartó szolgáltatáshoz és Reliable Actors partícióhoz tartozó biztonsági másolatok visszaállíthatók a kiválasztott biztonsági másolatokra.
 
@@ -209,7 +208,7 @@ A következő példa a [megbízható állapot-nyilvántartó szolgáltatás és 
 
 Válasszon ki egy biztonsági másolatot a [GetBackupAPI](service-fabric-backuprestoreservice-quickstart-azurecluster.md#list-backups)kimenetéről. Ebben a forgatókönyvben a biztonsági mentés ugyanabból a fürtből jön létre, mint korábban.
 
-A visszaállítás elindításához válasszon ki egy biztonsági másolatot a listából. Az _adatvesztés_/aktuális_adatsérülése_esetén válassza a következő biztonsági mentést:
+A visszaállítás elindításához válasszon ki egy biztonsági másolatot a listából. Az _adatvesztés_aktuális / _adatsérülése_esetén válassza a következő biztonsági mentést:
 
 ```
 BackupId                : b0035075-b327-41a5-a58f-3ea94b68faa4

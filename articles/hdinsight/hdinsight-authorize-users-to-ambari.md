@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
 ms.openlocfilehash: 3bb58334e96bf5378fb78b70125f9c7994a7c2fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75435649"
 ---
 # <a name="authorize-users-for-apache-ambari-views"></a>Az Apache Ambari Views használatának engedélyezése felhasználók számára
@@ -28,7 +27,7 @@ Ha még nem tette meg, kövesse az [alábbi utasításokat](./domain-joined/apac
 
 ## <a name="access-the-ambari-management-page"></a>A Ambari-kezelés lap elérése
 
-Az [Apache Ambari webes felületén](hdinsight-hadoop-manage-ambari.md)található **Ambari-kezelés lap** megnyitásához keresse meg a `https://CLUSTERNAME.azurehdinsight.net`következőt:. Adja meg a fürt létrehozásakor megadott Fürtfelügyelő-felhasználónevet és-jelszót. Ezután a Ambari-irányítópulton válassza a **felügyelet Ambari** alatt a **felügyeleti** menü alatt:
+Az [Apache Ambari webes felületén](hdinsight-hadoop-manage-ambari.md)található **Ambari-kezelés lap** megnyitásához keresse meg a következőt: `https://CLUSTERNAME.azurehdinsight.net` . Adja meg a fürt létrehozásakor megadott Fürtfelügyelő-felhasználónevet és-jelszót. Ezután a Ambari-irányítópulton válassza a **felügyelet Ambari** alatt a **felügyeleti** menü alatt:
 
 ![Apache Ambari-irányítópult kezelése](./media/hdinsight-authorize-users-to-ambari/manage-apache-ambari.png)
 
@@ -46,7 +45,7 @@ Az [Apache Ambari webes felületén](hdinsight-hadoop-manage-ambari.md)találhat
 
 ### <a name="add-users-through-powershell"></a>Felhasználók hozzáadása a PowerShell-lel
 
-Szerkessze az alábbi változókat `CLUSTERNAME`a `NEWUSER`megfelelő értékekre való lecserélésével `PASSWORD` .
+Szerkessze az alábbi változókat `CLUSTERNAME` `NEWUSER` `PASSWORD` a megfelelő értékekre való lecserélésével.
 
 ```powershell
 # Set-ExecutionPolicy Unrestricted
@@ -135,7 +134,7 @@ Write-Output $zookeeperHosts
 
 ### <a name="add-users-through-curl"></a>Felhasználók hozzáadása a Curlon keresztül
 
-Az alábbi változók szerkesztéséhez cserélje `CLUSTERNAME` `ADMINPASSWORD`le a `NEWUSER`,, `USERPASSWORD` , és a értéket a megfelelő értékekre. A szkript a bash használatával hajtható végre. Kisebb módosítások szükségesek a Windows-parancssorhoz.
+Az alábbi változók szerkesztéséhez cserélje le a,, `CLUSTERNAME` `ADMINPASSWORD` `NEWUSER` , és a `USERPASSWORD` értéket a megfelelő értékekre. A szkript a bash használatával hajtható végre. Kisebb módosítások szükségesek a Windows-parancssorhoz.
 
 ```bash
 export clusterName="CLUSTERNAME"
@@ -179,9 +178,9 @@ A Ambari többek között a [Apache Hive](https://hive.apache.org/) és az [Apac
 
 3. Görgessen a nézet oldalának aljára. Az *engedélyek* szakaszban két lehetőség közül választhat a tartományi felhasználók számára a nézetre vonatkozó engedélyek megadásához:
 
-Engedély megadása a **felhasználóknak** ![a felhasználók számára](./media/hdinsight-authorize-users-to-ambari/hdi-add-user-to-view.png)
+**Engedély megadása a felhasználóknak** ![ Engedély megadása a felhasználóknak](./media/hdinsight-authorize-users-to-ambari/hdi-add-user-to-view.png)
 
-Engedélyek megadása **ezekhez** ![a csoportokhoz engedélyek megadása ezekhez a csoportokhoz](./media/hdinsight-authorize-users-to-ambari/add-group-to-view-permission.png)
+**Engedélyek megadása ezekhez a csoportokhoz** ![ Engedélyek megadása ezekhez a csoportokhoz](./media/hdinsight-authorize-users-to-ambari/add-group-to-view-permission.png)
 
 1. Felhasználó hozzáadásához kattintson a **felhasználó hozzáadása** gombra.
 

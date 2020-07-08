@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: vturecek
 ms.openlocfilehash: 41ba3f9c7d362756b800005d0c140c23dd96caa6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75370459"
 ---
 # <a name="implement-reliable-actors-backup-and-restore"></a>Reliable Actors biztonsági mentés és visszaállítás megvalósítása
@@ -18,7 +17,7 @@ ms.locfileid: "75370459"
 > A Microsoft azt javasolja, hogy [rendszeres biztonsági mentést és visszaállítást](service-fabric-backuprestoreservice-quickstart-azurecluster.md) használjon a megbízható állapot-nyilvántartó szolgáltatások és Reliable Actors biztonsági mentésének konfigurálásához. 
 > 
 
-A következő példában egy egyéni Actor szolgáltatás egy metódust tesz elérhetővé a Actor-adatbiztonsági mentéshez, és kihasználja a már meglévő távelérés `ActorService`-figyelő előnyeit:
+A következő példában egy egyéni Actor szolgáltatás egy metódust tesz elérhetővé a Actor-adatbiztonsági mentéshez, és kihasználja a már meglévő távelérés-figyelő előnyeit `ActorService` :
 
 ```csharp
 public interface IMyActorService : IService
@@ -94,7 +93,7 @@ class MyActorServiceImpl extends ActorService implements MyActorService
 }
 ```
 
-Ebben a `IMyActorService` példában egy olyan `IService` távelérési szerződés (C#) és `Service` (Java), amelyet a implementál. `MyActorService` A távelérési szerződés hozzáadásával a metódusok mostantól elérhetők az ügyfelek számára a `IMyActorService` következő módon: `ActorServiceProxy`
+Ebben a példában `IMyActorService` egy olyan távelérési szerződés `IService` (C#) és `Service` (Java), amelyet a implementál `MyActorService` . A távelérési szerződés hozzáadásával a metódusok `IMyActorService` mostantól elérhetők az ügyfelek számára a következő módon `ActorServiceProxy` :
 
 ```csharp
 IMyActorService myActorServiceProxy = ActorServiceProxy.Create<IMyActorService>(

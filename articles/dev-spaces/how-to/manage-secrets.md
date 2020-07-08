@@ -6,10 +6,9 @@ ms.topic: conceptual
 description: Ismerje meg, hogyan használhatja a Kubernetes titkokat futtatáskor vagy létrehozáskor az Azure dev Spaces-alkalmazások fejlesztésekor
 keywords: Docker, Kubernetes, Azure, AK, Azure Container Service, tárolók
 ms.openlocfilehash: d9dd0de348612bbb3baf5fb351c1c9af1c228c1f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75438461"
 ---
 # <a name="how-to-manage-secrets-when-working-with-an-azure-dev-space"></a>A titkok kezelése az Azure fejlesztői területtel való munka során
@@ -18,14 +17,14 @@ A szolgáltatásokhoz bizonyos jelszavak, a kapcsolatok karakterláncai és egy�
 
 ## <a name="storing-and-using-runtime-secrets"></a>Futásidejű titkok tárolása és használata
 
-Az Azure dev Spaces szolgáltatás két ajánlott, egyszerűbb lehetőséget biztosít a titkok tárolására az Azure dev Spaces-ügyfél eszközei által létrehozott Helm-diagramokon: a `values.dev.yaml` fájlban, és közvetlenül `azds.yaml`a-ben. A `values.yaml`titkos kódok tárolása nem ajánlott.
+Az Azure dev Spaces szolgáltatás két ajánlott, egyszerűbb lehetőséget biztosít a titkok tárolására az Azure dev Spaces-ügyfél eszközei által létrehozott Helm-diagramokon: a `values.dev.yaml` fájlban, és közvetlenül a-ben `azds.yaml` . A titkos kódok tárolása nem ajánlott `values.yaml` .
 
 > [!NOTE]
 > Az alábbi módszerek azt mutatják be, hogyan tárolhatók és használhatók az ügyfél-eszközkészlet által létrehozott Helm-diagramok titkai. Ha létrehoz egy saját Helm-diagramot, a Helm diagramot közvetlenül is használhatja a titkok kezeléséhez és tárolásához.
 
 ### <a name="using-valuesdevyaml"></a>A Values. dev. YAML használata
 
-Egy olyan projektben, amelyet már előkészített az Azure dev Spaces használatával, `values.dev.yaml` hozzon létre egy fájlt ugyanabban `azds.yaml` a mappában, mint a titkos kulcsok és értékek meghatározásához. Például:
+Egy olyan projektben, amelyet már előkészített az Azure dev Spaces használatával, hozzon létre egy `values.dev.yaml` fájlt ugyanabban a mappában, mint a `azds.yaml` titkos kulcsok és értékek meghatározásához. Például:
 
 ```yaml
 secrets:
@@ -35,7 +34,7 @@ secrets:
     key: "secretkeyhere"
 ```
 
-Győződjön meg `azds.yaml` arról, `values.dev.yaml` hogy a fájl hivatkozásai `?`nem választhatók a használatával. Például:
+Győződjön meg arról, hogy a `azds.yaml` fájl hivatkozásai nem `values.dev.yaml` választhatók a használatával `?` . Például:
 
 ```yaml
 install:
@@ -54,24 +53,24 @@ var host = process.env.REDIS_HOST
 var theKey = process.env.REDIS_KEY
 ```
     
-Futtassa a frissített szolgáltatásait `azds up`a használatával.
+Futtassa a frissített szolgáltatásait a használatával `azds up` .
 
 ```console
 azds up
 ```
  
-A `kubectl` használatával ellenőrizheti, hogy a titkok létrejöttek-e.
+A használatával `kubectl` ellenőrizheti, hogy a titkok létrejöttek-e.
 
 ```console
 kubectl get secret --namespace default -o yaml 
 ```
 
 > [!IMPORTANT]
-> Nem ajánlott a titkokat a forrás vezérlőelemben tárolni. Ha a git-t `values.dev.yaml` használja, `.gitignore` vegye fel a fájlt a fájlba, hogy elkerülje a titkos kódok véglegesítését a verziókövetés során.
+> Nem ajánlott a titkokat a forrás vezérlőelemben tárolni. Ha a git-t használja, vegye fel `values.dev.yaml` a `.gitignore` fájlt a fájlba, hogy elkerülje a titkos kódok véglegesítését a verziókövetés során.
 
 ### <a name="using-azdsyaml"></a>A azds. YAML használata
 
-Egy olyan projektben, amelyet már előkészített az Azure dev Spaces használatával, adja hozzá a titkos kulcsokat és az értékeket az *$PLACEHOLDER* szintaxissal a konfigurációk `azds.yaml`területen *. fejlessze. install. set* in. Például:
+Egy olyan projektben, amelyet már előkészített az Azure dev Spaces használatával, adja hozzá a titkos kulcsokat és az értékeket az *$PLACEHOLDER* szintaxissal a *konfigurációk területen. fejlessze. install. set* in `azds.yaml` . Például:
 
 ```yaml
 configurations:
@@ -87,9 +86,9 @@ configurations:
 ```
 
 > [!NOTE]
-> A titkos értékeket közvetlenül a `azds.yaml` *$PLACEHOLDER* szintaxisának használata nélkül is megadhatja. Ez a megközelítés azonban nem ajánlott, mivel `azds.yaml` a forrás-vezérlőelemben van tárolva.
+> A titkos értékeket közvetlenül a *$PLACEHOLDER* szintaxisának használata nélkül is megadhatja `azds.yaml` . Ez a megközelítés azonban nem ajánlott, mivel a `azds.yaml` forrás-vezérlőelemben van tárolva.
      
-Hozzon `.env` létre egy fájlt ugyanabban a mappában `azds.yaml` , mint a *$PLACEHOLDER* értékek meghatározásához. Például:
+Hozzon létre egy `.env` fájlt ugyanabban a mappában, mint a `azds.yaml` *$PLACEHOLDER* értékek meghatározásához. Például:
 
 ```
 REDIS_PORT=3333
@@ -98,7 +97,7 @@ REDIS_KEY=myrediskey
 ```
 
 > [!IMPORTANT]
-> Nem ajánlott a titkokat a forrás vezérlőelemben tárolni. Ha a git-t `.env` használja, `.gitignore` vegye fel a fájlt a fájlba, hogy elkerülje a titkos kódok véglegesítését a verziókövetés során.
+> Nem ajánlott a titkokat a forrás vezérlőelemben tárolni. Ha a git-t használja, vegye fel `.env` a `.gitignore` fájlt a fájlba, hogy elkerülje a titkos kódok véglegesítését a verziókövetés során.
 
 Frissítse vagy ellenőrizze, hogy a szolgáltatás környezeti változókként hivatkozik-e a titkokra. Például:
 
@@ -108,13 +107,13 @@ var host = process.env.REDIS_HOST
 var theKey = process.env.REDIS_KEY
 ```
     
-Futtassa a frissített szolgáltatásait `azds up`a használatával.
+Futtassa a frissített szolgáltatásait a használatával `azds up` .
 
 ```console
 azds up
 ```
  
-A `kubectl` használatával ellenőrizheti, hogy a titkok létrejöttek-e.
+A használatával `kubectl` ellenőrizheti, hogy a titkok létrejöttek-e.
 
 ```console
 kubectl get secret --namespace default -o yaml 
@@ -122,9 +121,9 @@ kubectl get secret --namespace default -o yaml
 
 ## <a name="using-secrets-as-build-arguments"></a>Titkok használata Build argumentumként
 
-Az előző szakaszban megmutatta, hogyan tárolhat és használhat titkokat a tároló futási idején. A (z) használatával `azds.yaml`bármilyen titkos kulcsot is használhat a tároló létrehozási idején, például egy privát NuGet tartozó jelszót.
+Az előző szakaszban megmutatta, hogyan tárolhat és használhat titkokat a tároló futási idején. A (z) használatával bármilyen titkos kulcsot is használhat a tároló létrehozási idején, például egy privát NuGet tartozó jelszót `azds.yaml` .
 
-A `azds.yaml`-ben állítsa be a konfigurációkban a létrehozási idő titkait. a `<variable name>: ${secret.<secret name>.<secret key>}` szintaxis használatával *fejlessze a. Build. ARG* -t. Például:
+A-ben `azds.yaml` állítsa be a konfigurációkban a létrehozási idő titkait. a szintaxis használatával *fejlessze a. Build. ARG* -t. `<variable name>: ${secret.<secret name>.<secret key>}` Például:
 
 ```yaml
 configurations:
@@ -140,7 +139,7 @@ configurations:
 A fenti példában a *mynugetsecret* egy meglévő titkos kulcs, és a *pattoken* egy meglévő kulcs.
 
 >[!NOTE]
-> A titkos nevek és kulcsok tartalmazhatják `.` a karaktert. A `\` Escape `.` használata a titkokat Build argumentumként való átadásakor. Ha például egy *foo. bar* nevű titkos kulcsot szeretne átadni a *jogkivonat*kulcsaként: `MYTOKEN: ${secret.foo\.bar.token}`. Emellett a titkokat előtaggal és Postfix szöveggel is kiértékelheti. Például: `MYURL: eus-${secret.foo\.bar.token}-version1`. Emellett a szülő és a nagyszülő terekben elérhető titkokat Build argumentumként lehet átadni.
+> A titkos nevek és kulcsok tartalmazhatják a `.` karaktert. `\`A Escape használata a `.` titkokat Build argumentumként való átadásakor. Ha például egy *foo. bar* nevű titkos kulcsot szeretne átadni a *jogkivonat*kulcsaként: `MYTOKEN: ${secret.foo\.bar.token}` . Emellett a titkokat előtaggal és Postfix szöveggel is kiértékelheti. Például: `MYURL: eus-${secret.foo\.bar.token}-version1`. Emellett a szülő és a nagyszülő terekben elérhető titkokat Build argumentumként lehet átadni.
 
 A Docker használja az *ARG* direktívát a titkos kód felhasználásához, majd használja ugyanezt a változót később a Docker. Például:
 

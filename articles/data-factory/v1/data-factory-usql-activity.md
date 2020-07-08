@@ -13,10 +13,9 @@ ms.author: abnarain
 manager: anandsub
 robots: noindex
 ms.openlocfilehash: c6d3510dfdd02bf2eb07d656c706c44d895c582d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74927904"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Adatok átalakítása az Azure Data Lake Analyticsben található U-SQL-szkriptek futtatásával 
@@ -47,9 +46,9 @@ A következő táblázat a JSON-definícióban használt általános tulajdonsá
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| **típusa** |A Type tulajdonságot a következőre kell beállítani: **AzureDataLakeAnalytics**. |Igen |
-| **accountName** |Azure Data Lake Analytics fiók neve. |Igen |
-| **dataLakeAnalyticsUri** |Azure Data Lake Analytics URI. |Nem |
+| **típusa** |A Type tulajdonságot a következőre kell beállítani: **AzureDataLakeAnalytics**. |Yes |
+| **accountName** |Azure Data Lake Analytics fiók neve. |Yes |
+| **dataLakeAnalyticsUri** |Azure Data Lake Analytics URI. |No |
 | **subscriptionId** |Azure-előfizetés azonosítója |Nem (ha nincs megadva, a rendszer az adatfeldolgozó előfizetését használja). |
 | **resourceGroupName** |Azure-erőforráscsoport neve |Nem (ha nincs megadva, a rendszer az adatfeldolgozó erőforráscsoportot használja). |
 
@@ -63,9 +62,9 @@ Az egyszerű szolgáltatás hitelesítését a következő tulajdonságok megad�
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| **servicePrincipalId** | Határozza meg az alkalmazás ügyfél-AZONOSÍTÓját. | Igen |
-| **servicePrincipalKey** | Az alkalmazás kulcsának meghatározása. | Igen |
-| **Bérlő** | Adja meg a bérlői adatokat (tartománynevet vagy bérlői azonosítót), amely alatt az alkalmazás található. Lekérheti a Azure Portal jobb felső sarkában lévő egér fölé. | Igen |
+| **servicePrincipalId** | Határozza meg az alkalmazás ügyfél-AZONOSÍTÓját. | Yes |
+| **servicePrincipalKey** | Az alkalmazás kulcsának meghatározása. | Yes |
+| **bérlő** | Adja meg a bérlői adatokat (tartománynevet vagy bérlői azonosítót), amely alatt az alkalmazás található. Lekérheti a Azure Portal jobb felső sarkában lévő egér fölé. | Yes |
 
 **Példa: egyszerű szolgáltatásnév hitelesítése**
 ```json
@@ -91,8 +90,8 @@ Azt is megteheti, hogy a következő tulajdonságok megadásával felhasználói
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| **engedély** | Kattintson az **Engedélyezés** gombra a Data Factory szerkesztőben, és adja meg a hitelesítő adatait, amely hozzárendeli az automatikusan létrehozott engedélyezési URL-címet ehhez a tulajdonsághoz. | Igen |
-| **sessionId** | OAuth munkamenet-azonosító a OAuth-engedélyezési munkamenetből. Az egyes munkamenet-AZONOSÍTÓk egyediek, és csak egyszer használhatók fel. Ez a beállítás automatikusan létrejön a Data Factory-szerkesztő használatakor. | Igen |
+| **engedély** | Kattintson az **Engedélyezés** gombra a Data Factory szerkesztőben, és adja meg a hitelesítő adatait, amely hozzárendeli az automatikusan létrehozott engedélyezési URL-címet ehhez a tulajdonsághoz. | Yes |
+| **sessionId** | OAuth munkamenet-azonosító a OAuth-engedélyezési munkamenetből. Az egyes munkamenet-AZONOSÍTÓk egyediek, és csak egyszer használhatók fel. Ez a beállítás automatikusan létrejön a Data Factory-szerkesztő használatakor. | Yes |
 
 **Példa: felhasználói hitelesítő adatok hitelesítése**
 ```json
@@ -117,7 +116,7 @@ Az **Engedélyezés** gomb használatával létrehozott engedélyezési kód egy
 
 | Felhasználó típusa | Lejárat után lejár |
 |:--- |:--- |
-| Nem Azure Active Directory által felügyelt felhasználói fiókok@hotmail.com( @live.com, stb.) |12 óra |
+| NEM Azure Active Directory által felügyelt felhasználói fiókok ( @hotmail.com , @live.com stb.) |12 óra |
 | A Azure Active Directory által kezelt felhasználói fiókok (HRE) |14 nappal az utolsó szelet futtatása után. <br/><br/>90 nap, ha egy OAuth-alapú társított szolgáltatáson alapuló szelet 14 naponta legalább egyszer fut. |
 
 A hiba elkerüléséhez vagy megoldásához **engedélyezze újra az Engedélyezés gombot,** ha a **jogkivonat lejár** , majd újból üzembe helyezi a társított szolgáltatást. A **munkamenet** -azonosító és az **engedélyezési** tulajdonságok értékét programozott módon is létrehozhatja a következő módon:
@@ -147,7 +146,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 }
 ```
 
-A kódban használt Data Factory osztályok részleteiért tekintse meg a [AzureDataLakeStoreLinkedService Class](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx), a [AzureDataLakeAnalyticsLinkedService Class](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)és a [AuthorizationSessionGetResponse osztály](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx) témakört. Adjon hozzá egy hivatkozást a következőhöz: Microsoft. IdentityModel. clients. ActiveDirectory. WindowsForms. dll a WindowsFormsWebAuthenticationDialog osztályhoz. 
+A kódban használt Data Factory osztályok részleteiért tekintse meg a [AzureDataLakeStoreLinkedService Class](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx), a [AzureDataLakeAnalyticsLinkedService Class](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)és a [AuthorizationSessionGetResponse osztály](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx) témakört. Adjon hozzá egy hivatkozást a következőhöz: Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll a WindowsFormsWebAuthenticationDialog osztályhoz. 
 
 ## <a name="data-lake-analytics-u-sql-activity"></a>Data Lake Analytics U-SQL-tevékenység
 A következő JSON-kódrészlet egy Data Lake Analytics U-SQL-tevékenységgel rendelkező folyamatot határoz meg. A tevékenység definíciója a korábban létrehozott Azure Data Lake Analytics társított szolgáltatásra mutató hivatkozást tartalmaz.   
@@ -207,18 +206,18 @@ A következő táblázat ismerteti a tevékenységre jellemző tulajdonságok ne
 
 | Tulajdonság            | Leírás                              | Kötelező                                 |
 | :------------------ | :--------------------------------------- | :--------------------------------------- |
-| type                | A Type tulajdonságot **DataLakeAnalyticsU-SQL**értékre kell beállítani. | Igen                                      |
-| linkedServiceName   | Hivatkozás a társított szolgáltatásként regisztrált Azure Data Lake Analytics Data Factory | Igen                                      |
+| típus                | A Type tulajdonságot **DataLakeAnalyticsU-SQL**értékre kell beállítani. | Yes                                      |
+| linkedServiceName   | Hivatkozás a társított szolgáltatásként regisztrált Azure Data Lake Analytics Data Factory | Yes                                      |
 | scriptPath          | A U-SQL-parancsfájlt tartalmazó mappa elérési útja. A fájl neve megkülönbözteti a kis-és nagybetűket. | Nem (ha parancsfájlt használ)                   |
 | Scriptlinkedservice szolgáltatás | Társított szolgáltatás, amely összekapcsolja a parancsfájlt tartalmazó tárolót az adatgyárba | Nem (ha parancsfájlt használ)                   |
-| szkriptet.              | A scriptPath és a Scriptlinkedservice szolgáltatás meghatározása helyett beágyazott parancsfájlt adjon meg. Például: `"script": "CREATE DATABASE test"`. | Nem (scriptPath és Scriptlinkedservice szolgáltatás használata esetén) |
-| Analyticsunits | A feladatok futtatásához egyidejűleg használt csomópontok maximális száma. | Nem                                       |
-| prioritású            | Meghatározza, hogy az összes várólistán lévő feladatra kiválassza az első futtatást. Minél kisebb a szám, annál magasabb a prioritás. | Nem                                       |
-| paraméterek          | A U-SQL-parancsfájl paramétereinek          | Nem                                       |
-| runtimeVersion      | A használni kívánt U-SQL-motor futtatókörnyezet-verziója | Nem                                       |
-| compilationMode     | <p>U-SQL fordítási módja. A következő értékek egyikének kell lennie:</p> <ul><li>**Szemantika:** Csak szemantikai ellenőrzéseket és a szükséges józan ész-ellenőrzéseket kell végrehajtania.</li><li>**Teljes:** Végezze el a teljes fordítást, beleértve a szintaxis-ellenőrzést, az optimalizálást, a kód generálását stb.</li><li>**SingleBox:** Hajtsa végre a teljes fordítást a TargetType beállítással a SingleBox.</li></ul><p>Ha nem ad meg értéket ehhez a tulajdonsághoz, a kiszolgáló meghatározza az optimális fordítási módot. </p> | Nem                                       |
+| parancsfájl              | A scriptPath és a Scriptlinkedservice szolgáltatás meghatározása helyett beágyazott parancsfájlt adjon meg. Példa: `"script": "CREATE DATABASE test"`. | Nem (scriptPath és Scriptlinkedservice szolgáltatás használata esetén) |
+| Analyticsunits | A feladatok futtatásához egyidejűleg használt csomópontok maximális száma. | No                                       |
+| prioritású            | Meghatározza, hogy az összes várólistán lévő feladatra kiválassza az első futtatást. Minél kisebb a szám, annál magasabb a prioritás. | No                                       |
+| paraméterek          | A U-SQL-parancsfájl paramétereinek          | No                                       |
+| runtimeVersion      | A használni kívánt U-SQL-motor futtatókörnyezet-verziója | No                                       |
+| compilationMode     | <p>U-SQL fordítási módja. A következő értékek egyikének kell lennie:</p> <ul><li>**Szemantika:** Csak szemantikai ellenőrzéseket és a szükséges józan ész-ellenőrzéseket kell végrehajtania.</li><li>**Teljes:** Végezze el a teljes fordítást, beleértve a szintaxis-ellenőrzést, az optimalizálást, a kód generálását stb.</li><li>**SingleBox:** Hajtsa végre a teljes fordítást a TargetType beállítással a SingleBox.</li></ul><p>Ha nem ad meg értéket ehhez a tulajdonsághoz, a kiszolgáló meghatározza az optimális fordítási módot. </p> | No                                       |
 
-Lásd: [SearchLogProcessing. txt parancsfájl definíciója](#sample-u-sql-script) a parancsfájl definíciójában. 
+Lásd [SearchLogProcessing.txt parancsfájl](#sample-u-sql-script) definícióját. 
 
 ## <a name="sample-input-and-output-datasets"></a>Minta bemeneti és kimeneti adatkészletek
 ### <a name="input-dataset"></a>Bemeneti adatkészlet
@@ -316,7 +315,7 @@ OUTPUT @rs1
       USING Outputters.Tsv(quoting:false, dateTimeFormat:null);
 ```
 
-Az U-SQL- ** \@** parancsfájlban ** \@lévő** és a kimenő paraméterek értékeit az ADF dinamikusan továbbítja a "parameters" szakasz használatával. Tekintse meg a folyamat definíciójának paraméterek szakaszát.
+Az U-SQL-parancsfájlban ** \@ lévő** és a ** \@ kimenő** paraméterek értékeit az ADF dinamikusan továbbítja a "parameters" szakasz használatával. Tekintse meg a folyamat definíciójának paraméterek szakaszát.
 
 Egyéb tulajdonságokat is megadhat, például a Analyticsunits és a prioritást, valamint a folyamat definícióját a Azure Data Lake Analytics szolgáltatásban futó feladatok esetében.
 
