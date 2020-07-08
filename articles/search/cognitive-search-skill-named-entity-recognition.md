@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 7d7227a0eeaa496dd774eb962946a4ee85e22009
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85080014"
 ---
 #    <a name="named-entity-recognition-cognitive-skill"></a>Elnevezett entitások felismerése – kognitív képesség
@@ -38,7 +37,7 @@ A rekordok maximális méretének 50 000 karakternek kell lennie, a következők
 
 A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
 
-| Paraméter neve     | Leírás |
+| Paraméter neve     | Description |
 |--------------------|-------------|
 | kategóriák    | A kinyerni kívánt kategóriák tömbje.  Lehetséges kategóriájú típusok: `"Person"` , `"Location"` , `"Organization"` . Ha nincs megadva kategória, a rendszer az összes típust adja vissza.|
 |defaultLanguageCode |  A bemeneti szöveg nyelvi kódja A következő nyelvek támogatottak:`de, en, es, fr, it`|
@@ -46,14 +45,14 @@ A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
 
 ## <a name="skill-inputs"></a>Szaktudás bemenetei
 
-| Bemeneti név      | Leírás                   |
+| Bemeneti név      | Description                   |
 |---------------|-------------------------------|
 | languageCode  | Választható. Az alapértelmezett szint a `"en"`.  |
 | szöveg          | Az elemezni kívánt szöveg.          |
 
 ## <a name="skill-outputs"></a>Szaktudás kimenetei
 
-| Kimenet neve     | Leírás                   |
+| Kimenet neve     | Description                   |
 |---------------|-------------------------------|
 | személyek      | Karakterláncok tömbje, amelyben minden sztring egy személy nevét jelöli. |
 | helyek  | Karakterláncok tömbje, amelyben minden sztring egy helyet jelöl. |

@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 59d181d8f4c176a8fc00ac0fb8ab0216c6ae27f4
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85080020"
 ---
 # <a name="built-in-cognitive-skills-for-text-and-image-processing-during-indexing-azure-cognitive-search"></a>Beépített kognitív képességek a szöveg-és képfeldolgozáshoz az indexelés során (Azure Cognitive Search)
@@ -31,7 +30,7 @@ Ebből a cikkből megismerheti az Azure Cognitive Search által biztosított kog
 
 Az általuk felhasznált vagy előállított képességek számos képességgel rendelkeznek. Általánosságban elmondható, hogy a legtöbb ismeret az előre betanított modelleken alapul, ami azt jelenti, hogy a modellt nem lehet a saját betanítási adataival betanítani. A következő táblázat felsorolja és leírja a Microsoft által biztosított képességeket. 
 
-| Ügyességi | Leírás |
+| Ügyességi | Description |
 |-------|-------------|
 |[Microsoft. Skills. Text. CustomEntityLookupSkill](cognitive-search-skill-custom-entity-lookup.md)| Szöveget keres a szavak és kifejezések egyéni, felhasználó által meghatározott listájából.|
 | [Microsoft. Skills. Text. KeyPhraseSkill](cognitive-search-skill-keyphrases.md) | Ez a képesség egy előképzett modellt használ a fontos kifejezések elhelyezésére, a nyelvi szabályokra, a más feltételekhez való közelségre, valamint arra, hogy a kifejezés milyen szokatlanul legyen a forrásadatok között. |

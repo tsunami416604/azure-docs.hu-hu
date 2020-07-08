@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.openlocfilehash: bec993c2b59aa03195b78a02668baf3f5fac6695
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85080752"
 ---
 #    <a name="pii-detection-cognitive-skill"></a>Személyes adatok észlelése – kognitív képességek
@@ -38,7 +37,7 @@ A rekordok maximális méretének 50 000 karakternek kell lennie, a következők
 
 A paraméterek megkülönböztetik a kis-és nagybetűket, és az összes nem kötelező.
 
-| Paraméter neve     | Leírás |
+| Paraméter neve     | Description |
 |--------------------|-------------|
 | `defaultLanguageCode` |    A bemeneti szöveg nyelvi kódja Egyelőre csak a `en` támogatott. |
 | `minimumPrecision` | 0,0 és 1,0 közötti érték. Ha a megbízhatósági pontszám (a `piiEntities` kimenetben) kisebb, mint a beállított `minimumPrecision` érték, akkor az entitás nem lesz visszaadva vagy maszkolt. Az alapértelmezett érték a 0,0. |
@@ -48,14 +47,14 @@ A paraméterek megkülönböztetik a kis-és nagybetűket, és az összes nem k�
 
 ## <a name="skill-inputs"></a>Szaktudás bemenetei
 
-| Bemeneti név      | Leírás                   |
+| Bemeneti név      | Description                   |
 |---------------|-------------------------------|
 | `languageCode`    | Választható. Az alapértelmezett szint a `en`.  |
 | `text`          | Az elemezni kívánt szöveg.          |
 
 ## <a name="skill-outputs"></a>Szaktudás kimenetei
 
-| Kimenet neve      | Leírás                   |
+| Kimenet neve      | Description                   |
 |---------------|-------------------------------|
 | `piiEntities` | Összetett típusok tömbje, amely a következő mezőket tartalmazza: <ul><li>szöveg (a tényleges személyes adatok kinyerése)</li> <li>típus</li><li>Altípus</li><li>pontszám (a magasabb érték azt jelenti, hogy nagyobb a valószínűsége, hogy valódi entitás lesz)</li><li>eltolás (a bemeneti szövegbe)</li><li>hossz</li></ul> </br> [Itt megtalálhatja a lehetséges típusokat és altípusokat.](https://docs.microsoft.com/azure/cognitive-services/text-analytics/named-entity-types?tabs=personal) |
 | `maskedText` | Ha a értéke nem a (z) `maskingMode` értékre van állítva `none` , akkor ez a kimenet lesz a bemenő szövegen a kiválasztott módon végrehajtott maszkolás karakterláncának eredménye `maskingMode` .  Ha a `maskingMode` értéke `none` , akkor ez a kimenet nem jelenik meg. |

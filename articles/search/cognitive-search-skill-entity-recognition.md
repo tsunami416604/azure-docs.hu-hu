@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.openlocfilehash: 716951616a82dfd13d6bdcf127c4c4382576e792
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85080853"
 ---
 #    <a name="entity-recognition-cognitive-skill"></a>Entitás-felismerés – kognitív képesség
@@ -35,7 +34,7 @@ A rekordok maximális méretének 50 000 karakternek kell lennie, a következők
 
 A paraméterek megkülönböztetik a kis-és nagybetűket, és mindegyik nem kötelező.
 
-| Paraméter neve     | Leírás |
+| Paraméter neve     | Description |
 |--------------------|-------------|
 | `categories`    | A kinyerni kívánt kategóriák tömbje.  Lehetséges kategóriájú típusok:,,,, `"Person"` `"Location"` `"Organization"` `"Quantity"` `"Datetime"` , `"URL"` , `"Email"` . Ha nincs megadva kategória, a rendszer az összes típust adja vissza.|
 | `defaultLanguageCode` |    A bemeneti szöveg nyelvi kódja A következő nyelvek támogatottak: `ar, cs, da, de, en, es, fi, fr, hu, it, ja, ko, nl, no, pl, pt-BR, pt-PT, ru, sv, tr, zh-hans` . Nem minden entitás-kategória támogatott az összes nyelven; lásd az alábbi megjegyzést.|
@@ -45,7 +44,7 @@ A paraméterek megkülönböztetik a kis-és nagybetűket, és mindegyik nem kö
 
 ## <a name="skill-inputs"></a>Szaktudás bemenetei
 
-| Bemeneti név      | Leírás                   |
+| Bemeneti név      | Description                   |
 |---------------|-------------------------------|
 | `languageCode`    | Választható. Az alapértelmezett szint a `"en"`.  |
 | `text`          | Az elemezni kívánt szöveg.          |
@@ -55,7 +54,7 @@ A paraméterek megkülönböztetik a kis-és nagybetűket, és mindegyik nem kö
 > [!NOTE]
 > Az entitások összes kategóriája nem támogatott az összes nyelv esetében. A `"Person"` , a `"Location"` és az `"Organization"` Entity kategóriájú típusok a fenti nyelvek teljes listáját támogatják. Csak a _de_, az _en_, az _es_, a _fr_és a _zh-Hans_ támogatás támogatja a,, `"Quantity"` `"Datetime"` `"URL"` és `"Email"` típus kinyerését. További információ: [a Text Analytics API nyelv és régió támogatása](https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support).  
 
-| Kimenet neve      | Leírás                   |
+| Kimenet neve      | Description                   |
 |---------------|-------------------------------|
 | `persons`       | Karakterláncok tömbje, amelyben minden sztring egy személy nevét jelöli. |
 | `locations`  | Karakterláncok tömbje, amelyben minden sztring egy helyet jelöl. |

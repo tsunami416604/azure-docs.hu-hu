@@ -12,10 +12,9 @@ ms.reviewer: larryfr
 ms.date: 04/27/2020
 ms.custom: tracking-python
 ms.openlocfilehash: 31daec93352c0e142075a55c61f2b8d3a6d56fab
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85080230"
 ---
 # <a name="use-workspace-behind-azure-firewall-for-azure-machine-learning"></a>Azure Firewall mögötti munkaterület használata Azure Machine Learning
@@ -37,7 +36,7 @@ A tűzfalon hozzon létre egy hálózati szabályt, amely engedélyezi a cikkben
 
 Az ebben a szakaszban található gazdagépek a Microsoft tulajdonában vannak, és biztosítják a munkaterület megfelelő működéséhez szükséges szolgáltatásokat.
 
-| **Állomásnév** | **Cél** |
+| **Állomásnév** | **Szerep** |
 | ---- | ---- |
 | **\*. batchai.core.windows.net** | Csoportok betanítása |
 | **ml.azure.com** | Azure Machine Learning Studio |
@@ -58,7 +57,7 @@ Az ebben a szakaszban található gazdagépek a Microsoft tulajdonában vannak, 
 
 Az ebben a szakaszban található gazdagépek a Python-csomagok telepítéséhez használatosak. A fejlesztés, a képzés és a telepítés során szükségesek. 
 
-| **Állomásnév** | **Cél** |
+| **Állomásnév** | **Szerep** |
 | ---- | ---- |
 | **anaconda.com** | Conda-csomagok telepítésekor használatos |
 | **pypi.org** | Pip-csomagok telepítésekor használatos |
@@ -70,7 +69,7 @@ A jelen szakaszban található gazdagépek az R-csomagok telepítéséhez haszn�
 > [!IMPORTANT]
 > Belsőleg az R SDK for Azure Machine Learning Python-csomagokat használ. Így a Python-gazdagépeket is engedélyeznie kell a tűzfalon.
 
-| **Állomásnév** | **Cél** |
+| **Állomásnév** | **Szerep** |
 | ---- | ---- |
 | **cloud.r-project.org** | A CRAN-csomagok telepítésekor használatos. |
 
