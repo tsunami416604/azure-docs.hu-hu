@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.openlocfilehash: f0c7b966b9fa7580809d2df0f4d05a7146ca0fd1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79272200"
 ---
 # <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>Az Apache Hadoop YARN hibaelhárítása az Azure HDInsighttal
@@ -95,7 +94,7 @@ Ezek a változások azonnal láthatók a fonal-ütemező felhasználói felület
     yarn logs -applicationIdn logs -applicationId <application_id> -am ALL > amlogs.txt
     ```
 
-    Ez a parancs létrehoz egy amlogs. txt nevű naplófájlt.
+    Ez a parancs létrehoz egy amlogs.txt nevű naplófájlt.
 
 1. Ha csak a legújabb alkalmazás-főkiszolgáló esetében szeretné letölteni a fonal-tároló naplóit, használja a következő parancsot:
 
@@ -103,7 +102,7 @@ Ezek a változások azonnal láthatók a fonal-ütemező felhasználói felület
     yarn logs -applicationIdn logs -applicationId <application_id> -am -1 > latestamlogs.txt
     ```
 
-    Ez a parancs létrehoz egy latestamlogs. txt nevű naplófájlt.
+    Ez a parancs létrehoz egy latestamlogs.txt nevű naplófájlt.
 
 1. Ha az első két alkalmazás-főkiszolgáló esetében le szeretné tölteni a fonal-tároló naplóit, használja a következő parancsot:
 
@@ -111,7 +110,7 @@ Ezek a változások azonnal láthatók a fonal-ütemező felhasználói felület
     yarn logs -applicationIdn logs -applicationId <application_id> -am 1,2 > first2amlogs.txt
     ```
 
-    Ez a parancs létrehoz egy first2amlogs. txt nevű naplófájlt.
+    Ez a parancs létrehoz egy first2amlogs.txt nevű naplófájlt.
 
 1. Az összes FONALas tároló naplójának letöltéséhez használja a következő parancsot:
 
@@ -119,7 +118,7 @@ Ezek a változások azonnal láthatók a fonal-ütemező felhasználói felület
     yarn logs -applicationIdn logs -applicationId <application_id> > logs.txt
     ```
 
-    Ez a parancs egy logs. txt nevű naplófájlt hoz létre.
+    Ez a parancs létrehoz egy logs.txt nevű naplófájlt.
 
 1. Egy adott tárolóhoz tartozó fonal-tároló naplójának letöltéséhez használja a következő parancsot:
 
@@ -127,7 +126,7 @@ Ezek a változások azonnal láthatók a fonal-ütemező felhasználói felület
     yarn logs -applicationIdn logs -applicationId <application_id> -containerId <container_id> > containerlogs.txt
     ```
 
-    Ez a parancs létrehoz egy containerlogs. txt nevű naplófájlt.
+    Ez a parancs létrehoz egy containerlogs.txt nevű naplófájlt.
 
 ### <a name="additional-reading"></a><a name="additional-reading-2"></a>További olvasnivaló
 

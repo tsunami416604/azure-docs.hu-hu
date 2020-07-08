@@ -8,10 +8,9 @@ services: iot-dps
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.openlocfilehash: 0b13040b39ed491ec4fee4d6922d41f086edeeb2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79284914"
 ---
 # <a name="use-ip-filters"></a>IP-szűrők használata
@@ -48,7 +47,7 @@ Az **IP-szűrési szabály hozzáadása**lehetőség kiválasztását követően
 
 ![Az IP-szűrési szabály hozzáadása lehetőség kiválasztását követően](./media/iot-dps-ip-filtering/ip-filter-after-selecting-add.png)
 
-* Adja meg az IP-szűrési szabály **nevét** . Ennek egyedi, kis-és nagybetűket nem megkülönböztető, alfanumerikus sztringnek kell lennie legfeljebb 128 karakter hosszú lehet. Csak az ASCII 7 bites alfanumerikus karaktereket és `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}` a rendszer fogadja el.
+* Adja meg az IP-szűrési szabály **nevét** . Ennek egyedi, kis-és nagybetűket nem megkülönböztető, alfanumerikus sztringnek kell lennie legfeljebb 128 karakter hosszú lehet. Csak az ASCII 7 bites alfanumerikus karaktereket és a `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}` rendszer fogadja el.
 
 * Adjon meg egyetlen IPv4-címet vagy IP-címet a CIDR-jelölésben. Például a CIDR 192.168.100.0/22 jelölése 1024 a 192.168.100.0 és a 192.168.103.255 közötti IPv4-címeket jelöli.
 
@@ -74,7 +73,7 @@ Ha törölni szeretne egy IP-szűrési szabályt, válassza a Kuka ikont az adot
 
 ## <a name="update-ip-filter-rules-in-code"></a>IP-szűrési szabályok frissítése a kódban
 
-A DPS IP-szűrőt az Azure erőforrás-szolgáltató REST-végpontjának használatával kérheti le és módosíthatja. Lásd `properties.ipFilterRules` : a [createorupdate metódusban](https://docs.microsoft.com/rest/api/iot-dps/iotdpsresource/createorupdate).
+A DPS IP-szűrőt az Azure erőforrás-szolgáltató REST-végpontjának használatával kérheti le és módosíthatja. Lásd: `properties.ipFilterRules` a [createorupdate metódusban](https://docs.microsoft.com/rest/api/iot-dps/iotdpsresource/createorupdate).
 
 A DPS IP-szűrési szabályok frissítése jelenleg nem támogatott az Azure CLI-ben vagy Azure PowerShell, de Azure Resource Manager-sablonokkal is elvégezhető. A Resource Manager-sablonok használatával kapcsolatos útmutatásért lásd: [Azure Resource Manager sablonok](../azure-resource-manager/templates/overview.md) . Az alábbi példák azt mutatják be, hogyan hozhatja létre, szerkesztheti és törölheti a DPS IP-szűrési szabályait.
 
@@ -135,8 +134,8 @@ Frissítse a sablon IP-szűrési szabályának attribútumait a követelmények 
 
 | Attribútum                | Leírás |
 | ------------------------ | ----------- |
-| **FilterName**           | Adja meg az IP-szűrési szabály nevét. Ennek egyedi, kis-és nagybetűket nem megkülönböztető, alfanumerikus sztringnek kell lennie legfeljebb 128 karakter hosszú lehet. Csak az ASCII 7 bites alfanumerikus karakterek ({"-", ":", "/"\', ".", "+", "%", "_", "#", "*", "?"), "!", a (z) "(", ")", ",", "=", "@", ";", "}" és "}" is elfogadva. |
-| **Művelet**               | Az elfogadott értékek **elfogadják** vagy **elutasítja** az IP-szűrési szabály műveletét. |
+| **FilterName**           | Adja meg az IP-szűrési szabály nevét. Ennek egyedi, kis-és nagybetűket nem megkülönböztető, alfanumerikus sztringnek kell lennie legfeljebb 128 karakter hosszú lehet. Csak az ASCII 7 bites alfanumerikus karakterek ({"-", ":", "/", " \' .", "+", "%", "_", "#", "*", "?"), "!", a (z) "(", ")", ",", "=", "@", ";", "}" és "}" is elfogadva. |
+| **Művelet**               | Az elfogadott értékek **elfogadják**   vagy **elutasítja**   az IP-szűrési szabály műveletét. |
 | **ipMask**               | Adjon meg egyetlen IPv4-címet vagy IP-címet a CIDR-jelölésben. Például a CIDR 192.168.100.0/22 jelölése 1024 a 192.168.100.0 és a 192.168.103.255 közötti IPv4-címeket jelöli. |
 
 

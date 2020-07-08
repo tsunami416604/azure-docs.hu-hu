@@ -7,10 +7,9 @@ ms.topic: article
 ms.date: 11/09/2018
 ms.author: edprice
 ms.openlocfilehash: 98e912894a4d93a057a2f6a2153d0690deaed250
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78968892"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>Az IBM DB2-pureScale üzembe helyezése az Azure-ban
@@ -75,13 +74,13 @@ A GitHub-tárház tartalmazza a DB2server. RSP, a Response (. RSP) fájlt, amely
 |---------------------------|----------------------------------------------|-------------------------------------------------------------------------------------------------------|
 | Üdvözlőképernyő                   |                                              | Új telepítés                                                                                           |
 | Termék kiválasztása          |                                              | A DB2 verziója 11.1.3.3. Kiszolgálói kiadások DB2 pureScale                                              |
-| Configuration             | Címtár                                    | /data1/opt/ibm/db2/V11.1                                                                              |
+| Konfiguráció             | Címtár                                    | /data1/opt/ibm/db2/V11.1                                                                              |
 |                           | A telepítés típusának kiválasztása                 | Tipikus                                                                                               |
 |                           | Elfogadom az IBM használati feltételeit                     | Bejelölve                                                                                               |
 | Példány tulajdonosa            | Meglévő felhasználó, példány, Felhasználónév        | DB2sdin1                                                                                              |
 | Bekerített felhasználó               | Meglévő felhasználó, felhasználó neve                     | DB2sdfe1                                                                                              |
 | Fürt fájlrendszere       | Megosztott lemezpartíció eszközének elérési útja            | /dev/dm-2                                                                                             |
-|                           | Csatlakoztatási pont                                  | /DB2sd\_1804a                                                                                         |
+|                           | Csatlakoztatási pont                                  | /DB2sd \_ 1804a                                                                                         |
 |                           | Megosztott lemez az adattároláshoz                         | /dev/dm-1                                                                                             |
 |                           | Csatlakoztatási pont (adatcsatorna)                           | /DB2fs/datafs1                                                                                        |
 |                           | Naplóhoz tartozó megosztott lemez                          | /dev/dm-0                                                                                             |
@@ -111,7 +110,7 @@ A GitHub-tárház tartalmazza a DB2server. RSP, a Response (. RSP) fájlt, amely
 
 - A telepítési parancsfájlok aliasokat használnak az iSCSI-lemezekhez, hogy a tényleges nevek könnyen megtalálhatók legyenek.
 
-- Ha a d0 futtatja a telepítési parancsfájlt, **a\* /dev/DM-** -értékek a D1, a cf0 és a cf1 értéktől eltérőek lehetnek. Az értékek különbsége nem befolyásolja a DB2 pureScale telepítését.
+- Ha a d0 futtatja a telepítési parancsfájlt, **a \* /dev/DM-** -értékek a D1, a cf0 és a cf1 értéktől eltérőek lehetnek. Az értékek különbsége nem befolyásolja a DB2 pureScale telepítését.
 
 ## <a name="troubleshooting-and-known-issues"></a>Hibaelhárítás és ismert problémák
 

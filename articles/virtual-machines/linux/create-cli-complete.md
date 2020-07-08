@@ -7,10 +7,9 @@ ms.topic: article
 ms.date: 12/14/2017
 ms.author: cynthn
 ms.openlocfilehash: 7ee4674f5e7c04709256459c3417a1379a65aedc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78969563"
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>Teljes linuxos virtuális gép létrehozása az Azure CLI-vel
@@ -27,7 +26,7 @@ Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe h
 az group create --name myResourceGroup --location eastus
 ```
 
-Alapértelmezés szerint az Azure CLI-parancsok kimenete JSON (JavaScript Object Notation). Az alapértelmezett kimenet listára vagy táblára való módosításához használja például az [az configure--output](/cli/azure/reference-index)értéket. Bármely parancshoz hozzáadhatja `--output` azt is, ha a kimeneti formátum egy alkalommal változik. A következő példa a `az group create` parancs JSON-kimenetét mutatja:
+Alapértelmezés szerint az Azure CLI-parancsok kimenete JSON (JavaScript Object Notation). Az alapértelmezett kimenet listára vagy táblára való módosításához használja például az [az configure--output](/cli/azure/reference-index)értéket. Bármely parancshoz hozzáadhatja azt is, ha `--output` a kimeneti formátum egy alkalommal változik. A következő példa a parancs JSON-kimenetét mutatja `az group create` :
 
 ```json                       
 {
@@ -94,7 +93,7 @@ A kimenet azt mutatja, hogy az alhálózat logikailag jön létre a virtuális h
 
 
 ## <a name="create-a-public-ip-address"></a>Hozzon létre egy nyilvános IP-címet
-Most hozzon létre egy nyilvános IP-címet az [az Network Public-IP Create](/cli/azure/network/public-ip)paranccsal. Ez a nyilvános IP-cím lehetővé teszi, hogy az internetről csatlakozhasson a virtuális gépekhez. Mivel az alapértelmezett címek dinamikusak, hozzon létre egy nevesített DNS- `--domain-name-label` bejegyzést a paraméterrel. A következő példa egy *myPublicIP* nevű nyilvános IP-címet hoz létre a *mypublicdns*DNS-nevével. Mivel a DNS-névnek egyedinek kell lennie, meg kell adnia a saját egyedi DNS-nevét:
+Most hozzon létre egy nyilvános IP-címet az [az Network Public-IP Create](/cli/azure/network/public-ip)paranccsal. Ez a nyilvános IP-cím lehetővé teszi, hogy az internetről csatlakozhasson a virtuális gépekhez. Mivel az alapértelmezett címek dinamikusak, hozzon létre egy nevesített DNS-bejegyzést a `--domain-name-label` paraméterrel. A következő példa egy *myPublicIP* nevű nyilvános IP-címet hoz létre a *mypublicdns*DNS-nevével. Mivel a DNS-névnek egyedinek kell lennie, meg kell adnia a saját egyedi DNS-nevét:
 
 ```azurecli
 az network public-ip create \
@@ -471,7 +470,7 @@ A kimeneti megjegyzések tartalék tartományai és frissítési tartományai:
 ## <a name="create-a-vm"></a>Virtuális gép létrehozása
 Létrehozta a hálózati erőforrásokat az internetről elérhető virtuális gépek támogatásához. Most hozzon létre egy virtuális gépet, és gondoskodjon róla, hogy SSH-kulccsal lássa el. Ebben a példában hozzunk létre egy Ubuntu virtuális gépet a legfrissebb LTS alapján. További rendszerképeket az [az VM Image List](/cli/azure/vm/image)paranccsal talál, az [Azure VM-rendszerképek megkeresése](cli-ps-findimage.md)című témakörben leírtak szerint.
 
-A hitelesítéshez használandó SSH-kulcs megadása. Ha nem rendelkezik nyilvános SSH-kulcspárt, [létrehozhatja őket](mac-create-ssh-keys.md) , vagy használhatja a `--generate-ssh-keys` paramétert a létrehozásához. Ha már van kulcspár, a paraméter a alkalmazásban `~/.ssh`meglévő kulcsokat használ.
+A hitelesítéshez használandó SSH-kulcs megadása. Ha nem rendelkezik nyilvános SSH-kulcspárt, [létrehozhatja őket](mac-create-ssh-keys.md) , vagy használhatja a `--generate-ssh-keys` paramétert a létrehozásához. Ha már van kulcspár, a paraméter a alkalmazásban meglévő kulcsokat használ `~/.ssh` .
 
 Hozza létre a virtuális gépet úgy, hogy az az [VM Create](/cli/azure/vm) paranccsal együtt létrehozza az összes erőforrást és információt. A következő példa egy *myVM*nevű virtuális gépet hoz létre:
 
@@ -556,7 +555,7 @@ Mi a teendő, ha már szeretne egy további fejlesztési környezetet létrehozn
 az group export --name myResourceGroup > myResourceGroup.json
 ```
 
-Ez a parancs az `myResourceGroup.json` aktuális munkakönyvtárban hozza létre a fájlt. Amikor létrehoz egy környezetet a sablonból, a rendszer az összes erőforrás nevét kéri. Ezeket a neveket feltöltheti a sablon fájljába úgy, hogy hozzáadja `--include-parameter-default-value` a paramétert `az group export` a parancshoz. Szerkessze a JSON-sablont az erőforrásnevek megadásához, vagy [hozzon létre egy Parameters. JSON fájlt](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) , amely megadja az erőforrások nevét.
+Ez a parancs az `myResourceGroup.json` aktuális munkakönyvtárban hozza létre a fájlt. Amikor létrehoz egy környezetet a sablonból, a rendszer az összes erőforrás nevét kéri. Ezeket a neveket feltöltheti a sablon fájljába úgy, hogy hozzáadja a `--include-parameter-default-value` paramétert a `az group export` parancshoz. Szerkessze a JSON-sablont az erőforrásnevek megadásához, vagy [hozzon létre egy parameters.js](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) az erőforrás nevét megadó fájlon.
 
 Ha létre szeretne hozni egy környezetet a sablonból, használja az [az Group Deployment Create](/cli/azure/group/deployment) elemet a következő módon:
 

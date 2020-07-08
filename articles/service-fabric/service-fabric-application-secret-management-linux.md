@@ -6,17 +6,16 @@ ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: shsha
 ms.openlocfilehash: b8e0a19e3f654fc561e7c7e26c6a2da463e24d5f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78969032"
 ---
 # <a name="set-up-an-encryption-certificate-and-encrypt-secrets-on-linux-clusters"></a>Titkosítási tanúsítvány beállítása és a titkok titkosítása Linux-fürtökön
 Ez a cikk bemutatja, hogyan állíthat be titkosítási tanúsítványt, és hogyan titkosíthatja a titkokat a Linux-fürtökön. Windows-fürtök esetén lásd: [titkosítási tanúsítvány beállítása és a titkok titkosítása Windows-fürtökön][secret-management-windows-specific-link].
 
 ## <a name="obtain-a-data-encipherment-certificate"></a>Titkosítási-tanúsítvány beszerzése
-Az titkosítási-tanúsítvány szigorúan a szolgáltatás beállításaiban található [Paraméterek][parameters-link] titkosítására és visszafejtésére szolgál. az XML-és [környezeti változók][environment-variables-link] a szolgáltatás ServiceManifest. XML fájljában jelennek meg. Nem használatos a titkosított szöveg hitelesítéséhez vagy aláírásához. A tanúsítványnak meg kell felelnie a következő követelményeknek:
+A titkosítási-tanúsítványokat szigorúan a szolgáltatás Settings.xml és [környezeti változói][environment-variables-link] által használt [Paraméterek][parameters-link] titkosítására és visszafejtésére használják a szolgáltatás ServiceManifest.xml. Nem használatos a titkosított szöveg hitelesítéséhez vagy aláírásához. A tanúsítványnak meg kell felelnie a következő követelményeknek:
 
 * A tanúsítványnak tartalmaznia kell egy titkos kulcsot.
 * A tanúsítvány használatának tartalmaznia kell az adatok titkosítási (10), és nem tartalmazhat kiszolgálói hitelesítést vagy ügyfél-hitelesítést.
@@ -29,7 +28,7 @@ Az titkosítási-tanúsítvány szigorúan a szolgáltatás beállításaiban ta
   ```
 
 ## <a name="install-the-certificate-in-your-cluster"></a>A tanúsítvány telepítése a fürtben
-A tanúsítványt a fürt mindegyik csomópontján telepíteni kell `/var/lib/sfcerts`. Az a felhasználói fiók, `/var/lib/sfcerts/TestCert.pem` amelyben a szolgáltatás fut (alapértelmezés szerint sfuser) **olvasási hozzáféréssel kell rendelkeznie** a telepített tanúsítványhoz (azaz az aktuális példához).
+A tanúsítványt a fürt mindegyik csomópontján telepíteni kell `/var/lib/sfcerts` . Az a felhasználói fiók, amelyben a szolgáltatás fut (alapértelmezés szerint sfuser) **olvasási hozzáféréssel kell rendelkeznie** a telepített tanúsítványhoz (azaz `/var/lib/sfcerts/TestCert.pem` az aktuális példához).
 
 ## <a name="encrypt-secrets"></a>Titkos kulcsok titkosítása
 A titkos kód titkosításához a következő kódrészlet használható. Ez a kódrészlet csak az értéket titkosítja; **nem** írja alá a titkosítási szöveget. Ugyanazt a titkosítási-tanúsítványt **kell használnia** , amely a fürtbe van telepítve, hogy rejtjelezett hozzon létre a titkos értékekhez.
@@ -39,7 +38,7 @@ user@linux:$ echo "Hello World!" > plaintext.txt
 user@linux:$ iconv -f ASCII -t UTF-16LE plaintext.txt | tr -d '\n' > plaintext_UTF-16.txt
 user@linux:$ openssl smime -encrypt -in plaintext_UTF-16.txt -binary -outform der TestCert.pem | base64 > encrypted.txt
 ```
-Az eredményül kapott Base-64 kódolású karakterlánc kimenete titkosítva. txt tartalmazza a titkos rejtjelezett, valamint a titkosításhoz használt tanúsítvánnyal kapcsolatos információkat is. Az érvényességét az OpenSSL-vel való visszafejtéssel ellenőrizheti.
+Az eredményül kapott Base-64 kódolású karakterlánc kimenete encrypted.txt tartalmazza a titkos rejtjelezett, valamint a titkosításhoz használt tanúsítvánnyal kapcsolatos információkat is. Az érvényességét az OpenSSL-vel való visszafejtéssel ellenőrizheti.
 ```console
 user@linux:$ cat encrypted.txt | base64 -d | openssl smime -decrypt -inform der -inkey TestCert.prv
 ```

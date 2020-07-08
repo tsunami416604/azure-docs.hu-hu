@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
 ms.openlocfilehash: 59c8b31dcc8594d2cafb2db7832e290b01026f60
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79367584"
 ---
 # <a name="geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Térinformatikai és GeoJSON helye Azure Cosmos DB
@@ -156,9 +155,9 @@ Mivel a föld alakja szabálytalan, a földrajzi térinformatikai adathalmazok k
 A jelenleg használatban lévő legnépszerűbb CRS a [WGS-84](https://earth-info.nga.mil/GandG/update/index.php)globális geodéziai rendszer. A GPS-eszközök és számos leképezési szolgáltatás, például a Google Maps és a Bing Maps API-k a WGS-84-et használják. Azure Cosmos DB támogatja a földrajzi térinformatikai adatai indexelését és lekérdezését kizárólag a WGS-84 CRS használatával.
 
 ## <a name="creating-documents-with-spatial-data"></a>Dokumentumok létrehozása térbeli adattal
-Ha GeoJSON-értékeket tartalmazó dokumentumokat hoz létre, azok automatikusan egy térbeli indextel lesznek indexelve a tároló indexelési házirendjének megfelelően. Ha egy Azure Cosmos DB SDK-val dolgozik egy dinamikusan gépelt nyelven (például Python vagy Node. js), akkor érvényes GeoJSON kell létrehoznia.
+Ha GeoJSON-értékeket tartalmazó dokumentumokat hoz létre, azok automatikusan egy térbeli indextel lesznek indexelve a tároló indexelési házirendjének megfelelően. Ha egy Azure Cosmos DB SDK-val dolgozik olyan dinamikusan gépelt nyelven, mint a Python vagy a Node.js, akkor érvényes GeoJSON kell létrehoznia.
 
-**Dokumentum létrehozása térinformatikai adattal a Node. js-ben**
+**Térinformatikai adattal rendelkező dokumentum létrehozása Node.js**
 
 ```javascript
 var userProfileDocument = {
@@ -174,7 +173,7 @@ client.createDocument(`dbs/${databaseName}/colls/${collectionName}`, userProfile
 });
 ```
 
-Ha az SQL API-kkal dolgozik, `Point`a `LineString` `Polygon` `MultiPolygon` `Microsoft.Azure.Cosmos.Spatial` névtéren belül a,, és osztályok használatával ágyazhatja be a hely adatait az alkalmazásobjektumok között. Ezek az osztályok segítenek leegyszerűsíteni a térbeli adatainak szerializálását és deszerializálását a GeoJSON.
+Ha az SQL API-kkal dolgozik, a `Point` `LineString` névtéren belül a,, `Polygon` és `MultiPolygon` osztályok használatával `Microsoft.Azure.Cosmos.Spatial` ágyazhatja be a hely adatait az alkalmazásobjektumok között. Ezek az osztályok segítenek leegyszerűsíteni a térbeli adatainak szerializálását és deszerializálását a GeoJSON.
 
 **Dokumentum létrehozása térinformatikai adattal a .NET-ben**
 

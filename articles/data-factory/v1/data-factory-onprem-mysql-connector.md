@@ -13,10 +13,9 @@ ms.date: 06/06/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 90fccba016a3db9ff85f8ec7c8fd426ef3c896a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79281287"
 ---
 # <a name="move-data-from-mysql-using-azure-data-factory"></a>Adatok áthelyezése a MySQL-ből Azure Data Factory használatával
@@ -67,14 +66,14 @@ A következő táblázat a MySQL-hez társított szolgáltatáshoz tartozó JSON
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| type |A Type tulajdonságot a következőre kell beállítani: **OnPremisesMySql** |Igen |
-| kiszolgáló |A MySQL-kiszolgáló neve. |Igen |
-| adatbázis |A MySQL-adatbázis neve. |Igen |
-| séma |A séma neve az adatbázisban. |Nem |
-| authenticationType |A MySQL-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. A lehetséges értékek a `Basic`következők:. |Igen |
-| userName (Felhasználónév) |Adja meg a MySQL-adatbázishoz való kapcsolódáshoz használandó felhasználónevet. |Igen |
-| jelszó |Adja meg a megadott felhasználói fiók jelszavát. |Igen |
-| Átjáró neve |Annak az átjárónak a neve, amelyet a Data Factory szolgáltatásnak használnia kell a helyszíni MySQL-adatbázishoz való kapcsolódáshoz. |Igen |
+| típus |A Type tulajdonságot a következőre kell beállítani: **OnPremisesMySql** |Yes |
+| kiszolgáló |A MySQL-kiszolgáló neve. |Yes |
+| adatbázis |A MySQL-adatbázis neve. |Yes |
+| séma |A séma neve az adatbázisban. |No |
+| authenticationType |A MySQL-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. A lehetséges értékek a következők: `Basic` . |Yes |
+| userName (Felhasználónév) |Adja meg a MySQL-adatbázishoz való kapcsolódáshoz használandó felhasználónevet. |Yes |
+| jelszó |Adja meg a megadott felhasználói fiók jelszavát. |Yes |
+| Átjáró neve |Annak az átjárónak a neve, amelyet a Data Factory szolgáltatásnak használnia kell a helyszíni MySQL-adatbázishoz való kapcsolódáshoz. |Yes |
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 Az adatkészletek definiálásához rendelkezésre álló & tulajdonságok teljes listáját az [adatkészletek létrehozása](data-factory-create-datasets.md) című cikkben találja. Az adathalmazok (például a struktúra, a rendelkezésre állás és a szabályzat) minden adatkészlet esetében hasonlóak (például az Azure SQL, az Azure Blob, az Azure Table stb.).
@@ -312,7 +311,7 @@ Az adatok MySQL-re való áthelyezésekor a következő leképezések használat
 | dupla pontosság |Double |
 | double |Double |
 | Enum |Sztring |
-| lebegőpontos |Egyirányú |
+| lebegőpontos |Egyszeres |
 | int előjel nélküli |Int64 |
 | int |Int32 |
 | egész szám előjel nélküli |Int64 |

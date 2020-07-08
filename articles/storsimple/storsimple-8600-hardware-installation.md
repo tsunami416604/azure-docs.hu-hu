@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 8d118e71b29b54b034788c37916091ad8f8b996f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79254754"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8600-device"></a>A StorSimple 8600-eszköz kicsomagolása, rack-csatlakoztatása és kábele
@@ -27,7 +26,7 @@ Az alábbi lépések részletesen ismertetik a StorSimple 8600 Storage-eszköz k
 ### <a name="prepare-to-unpack-your-device"></a>Felkészülés az eszköz kicsomagolására
 Az eszköz kicsomagolása előtt tekintse át a következő információkat.
 
-![Figyelmeztetés ikon](./media/storsimple-safety/IC740879.png)![nagy súly ikon](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) **Figyelmeztetés!**
+![Figyelmeztetés ikon ](./media/storsimple-safety/IC740879.png)![ nagy súly ikon ](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) **Figyelmeztetés!**
 
 1. Győződjön meg arról, hogy két személy áll rendelkezésre az eszköz súlyozásának kezeléséhez, ha manuálisan végzi a kezelést. Egy teljesen konfigurált ház súlya 32 kg (70 lbs) lehet.
 2. Helyezze a csomagot egy sima, vízszintes felületre.
@@ -42,7 +41,7 @@ Ezután végezze el az alábbi lépéseket az eszköz kicsomagolásához.
    
     **A tárolóeszköz kicsomagolt nézete**
    
-   | Címke | Leírás |
+   | Címke | Description |
    | --- | --- |
    |   1 |Csomagolási mező |
    |   2 |SAS-kábelek (a tartozékok és kábelek tálcájában) |
@@ -85,7 +84,7 @@ A házakat standard 19 hüvelykes állványra kell telepíteni, amely az első �
 2. Győződjön meg arról, hogy a hely, ahol be kívánja állítani a standard szintű AC-áramellátást egy független forrásból vagy egy, a szünetmentes áramforrást (UPS-t) biztosító Power Distribution Unit (PDU) szolgáltatásból.
 3. Győződjön meg arról, hogy az állványon egy 4U (2 X 2U) tárolóhely áll rendelkezésre, amelyben csatlakoztatni kívánja a házakat.
 
-![Figyelmeztetés ikon](./media/storsimple-safety/IC740879.png)![nagy súly ikon](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) **Figyelmeztetés!**
+![Figyelmeztetés ikon ](./media/storsimple-safety/IC740879.png)![ nagy súly ikon ](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) **Figyelmeztetés!**
 
  Ügyeljen arra, hogy a súlyozás kezeléséhez két személy legyen elérhető, ha az eszköz telepítését manuálisan végzi. Egy teljesen konfigurált ház súlya 32 kg (70 lbs) lehet.
 
@@ -106,7 +105,7 @@ A rendszer a 19 hüvelykes rack kabinet használva biztosítja a csatlakoztatás
    
     **Vasúti diaképek csatlakoztatása a ház oldalaihoz**
    
-   | Címke | Leírás |
+   | Címke | Description |
    | --- | --- |
    |  1 |M 3x4 gomb – Head csavarok |
    |  2 |Alváz-diák |
@@ -119,7 +118,7 @@ A rendszer a 19 hüvelykes rack kabinet használva biztosítja a csatlakoztatás
    
     **Vasúti szerelvények csatlakoztatása a rackhez**
    
-   | Címke | Leírás |
+   | Címke | Description |
    | --- | --- |
    |   1 |Befogó csavar |
    |   2 |Szögletes furatos elülső állvány utáni csavar |
@@ -145,7 +144,7 @@ Az imént telepített rack Rails használatával hajtsa végre a következő lé
    
     **A karima-sapkák telepítése**
    
-   | Címke | Leírás |
+   | Címke | Description |
    | --- | --- |
    |   1 |Rögzítési csavar |
 
@@ -198,7 +197,7 @@ A redundáns vezérlő feladatátvételének támogatásához a következő lép
    
     **Az eszköz hátoldala, amely az adatportokat mutatja**
    
-   | Címke | Leírás |
+   | Címke | Description |
    | --- | --- |
    |   0, 1, 4, 5 |1 GbE hálózati adapterek |
    |   2, 3 |10 GbE hálózati adapter |
@@ -209,7 +208,7 @@ A redundáns vezérlő feladatátvételének támogatásához a következő lép
 
 **Az eszköz hálózati kábelezései**
 
-| Címke | Leírás |
+| Címke | Description |
 | --- | --- |
 | A |Helyi Internet-hozzáféréssel rendelkező LAN |
 | B |Vezérlő 0 |

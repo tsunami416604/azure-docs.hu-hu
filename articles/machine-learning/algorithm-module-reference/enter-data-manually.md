@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
 ms.openlocfilehash: 35e31e5ace53654e8aad794dd3e25fc04bd9a088
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79367516"
 ---
 # <a name="enter-data-manually-module"></a>Manuálisan adja meg az adatmodult
@@ -28,7 +27,7 @@ Ez a modul a következő helyzetekben lehet hasznos:
 - A címkék rövid listájának létrehozása.  
 - Az adatkészletbe beszúrandó oszlopnevek listájának beírása.
 
-## <a name="create-a-dataset"></a>Adatkészlet létrehozása 
+## <a name="create-a-dataset"></a>Adathalmaz létrehozása 
   
 1. Adja hozzá az [adatbevitel manuálisan](./enter-data-manually.md) modult a folyamathoz. Ezt a modult a Azure Machine Learning **adatbevitel és kimenet** kategóriájában találja. 
   
@@ -57,7 +56,7 @@ Ez a modul a következő helyzetekben lehet hasznos:
   
    - **ARFF**: beillesztés meglévő ARFF-formátumú fájlba. Ha közvetlenül ír be értékeket, ügyeljen arra, hogy az adatok elején adja hozzá az opcionális fejlécet és a kötelező attribútum mezőket. 
 
-     A következő fejléc-és attribútum-sorok például hozzáadhatók egy egyszerű listához. Az oszlop fejléce: `SampleText`. Vegye figyelembe, hogy a karakterlánc típusa nem támogatott.
+     A következő fejléc-és attribútum-sorok például hozzáadhatók egy egyszerű listához. Az oszlop fejléce: `SampleText` . Vegye figyelembe, hogy a karakterlánc típusa nem támogatott.
     
      ```text
      % Title: SampleText.ARFF  

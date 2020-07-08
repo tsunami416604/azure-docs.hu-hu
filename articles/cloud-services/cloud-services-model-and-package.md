@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
 ms.openlocfilehash: 32603f4ab33e020245861e5dc66d2ade545fa627
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79247487"
 ---
 # <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>Mi a Cloud Service-modell, és hogyan lehet becsomagolni?
@@ -221,15 +220,15 @@ Az [Azure runtime library](/previous-versions/azure/reference/mt419365(v=azure.1
 
 Egy alkalmazás Azure-beli felhőalapú szolgáltatásként történő üzembe helyezéséhez először a megfelelő formátumban kell becsomagolni az alkalmazást. A **CSPack** parancssori eszközt (az [Azure SDK](https://azure.microsoft.com/downloads/)-val együtt) a Visual Studio alternatívájaként a csomagfájl létrehozásához használhatja.
 
-A **CSPack** a Service definition fájl és a szolgáltatás konfigurációs fájljának tartalmát használja a csomag tartalmának meghatározásához. A **CSPack** létrehoz egy alkalmazáscsomag-fájlt (. cspkg), amelyet feltölt az Azure-ba a [Azure Portal](cloud-services-how-to-create-deploy-portal.md#create-and-deploy)használatával. Alapértelmezés szerint a csomag neve `[ServiceDefinitionFileName].cspkg`, de más nevet is megadhat a `/out` **CSPack**lehetőség használatával.
+A **CSPack** a Service definition fájl és a szolgáltatás konfigurációs fájljának tartalmát használja a csomag tartalmának meghatározásához. A **CSPack** létrehoz egy alkalmazáscsomag-fájlt (. cspkg), amelyet feltölt az Azure-ba a [Azure Portal](cloud-services-how-to-create-deploy-portal.md#create-and-deploy)használatával. Alapértelmezés szerint a csomag neve `[ServiceDefinitionFileName].cspkg` , de más nevet is megadhat a `/out` **CSPack**lehetőség használatával.
 
 A **CSPack** a következő helyen található:  
 `C:\Program Files\Microsoft SDKs\Azure\.NET SDK\[sdk-version]\bin\`
 
 > [!NOTE]
-> A CSPack. exe (Windows rendszeren) az SDK-val telepített **Microsoft Azure parancssori** parancsikon futtatásával érhető el.  
+> CSPack.exe (Windows rendszeren) az SDK-val telepített **Microsoft Azure parancssori** parancsikon futtatásával érhető el.  
 > 
-> Futtassa a CSPack. exe programot saját maga által a lehetséges kapcsolók és parancsok dokumentációjának megtekintéséhez.
+> Az CSPack.exe programot saját maga futtatva tekintheti meg az összes lehetséges kapcsolóról és parancsról szóló dokumentációt.
 > 
 > 
 
@@ -266,7 +265,7 @@ Ahol a változók a következőképpen vannak meghatározva:
 | --- | --- |
 | \[Könyvtárnév\] |Az Azure-projekt. csdef fájlját tartalmazó legfelső szintű projekt könyvtárában található alkönyvtár. |
 | \[ServiceDefinition\] |A szolgáltatás definíciós fájljának neve. Alapértelmezés szerint a fájl neve ServiceDefinition. csdef. |
-| \[OutputFileName\] |A létrehozott csomagfájl neve. Ez általában az alkalmazás nevére van beállítva. Ha nincs megadva fájlnév, az alkalmazáscsomag az ApplicationName \[\]. cspkg néven jön létre. |
+| \[OutputFileName\] |A létrehozott csomagfájl neve. Ez általában az alkalmazás nevére van beállítva. Ha nincs megadva fájlnév, az alkalmazáscsomag az \[ ApplicationName. cspkg néven jön létre \] . |
 | \[RoleName\] |A szolgáltatás definíciós fájljában definiált szerepkör neve. |
 | \[RoleBinariesDirectory] |A szerepkör bináris fájljainak helye. |
 | \[VirtuálisElérésiÚt\] |A szolgáltatás definíciójának helyek szakaszában meghatározott virtuális elérési utak fizikai könyvtárai. |

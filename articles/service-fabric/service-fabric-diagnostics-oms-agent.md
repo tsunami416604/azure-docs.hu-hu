@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 04/16/2018
 ms.author: srrengar
 ms.openlocfilehash: c3c1bf511f3313e7408d6ce90b73de60bd1309f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79366745"
 ---
 # <a name="performance-monitoring-with-azure-monitor-logs"></a>Teljesítményfigyelés Azure Monitor naplókkal
@@ -25,7 +24,7 @@ Ez a cikk a Log Analytics-ügynök virtuálisgép-méretezési csoportként val�
 
 Az Log Analytics-ügynök fürthöz való hozzáadásának legjobb módja az Azure CLI-vel elérhető virtuálisgép-méretezési csoport API-k használatával. Ha még nem állította be az Azure CLI-t, látogasson el Azure Portalre, és nyisson meg egy [Cloud Shell](../cloud-shell/overview.md) példányt, vagy [telepítse az Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)-t.
 
-1. A Cloud Shell kérése után ellenőrizze, hogy az erőforrással megegyező előfizetésben dolgozik-e. Jelölje be ezt `az account show` a elemet, és győződjön meg arról, hogy a "Name" (név) érték megegyezik a fürt előfizetésével.
+1. A Cloud Shell kérése után ellenőrizze, hogy az erőforrással megegyező előfizetésben dolgozik-e. Jelölje be ezt a `az account show` elemet, és győződjön meg arról, hogy a "Name" (név) érték megegyezik a fürt előfizetésével.
 
 2. A portálon navigáljon ahhoz az erőforráscsoporthoz, ahol a Log Analytics munkaterület található. Kattintson a log Analytics-erőforrásra (az erőforrás típusa Log Analytics munkaterület lesz). Az erőforrás-Áttekintés lapon kattintson a **Speciális beállítások** elemre a bal oldali menüben a beállítások szakaszban.
 
@@ -51,7 +50,7 @@ Az Log Analytics-ügynök fürthöz való hozzáadásának legjobb módja az Azu
 
     ![Log Analytics Agent CLI-parancs](media/service-fabric-diagnostics-oms-agent/cli-command.png)
 
-5. Ennek elvégzéséhez kevesebb, mint 15 percnek kell lennie ahhoz, hogy sikeresen hozzáadja az ügynököt a csomópontokhoz. A (z) `az vmss extension list` API használatával ellenőrizheti, hogy az ügynökök hozzá lettek-e adva:
+5. Ennek elvégzéséhez kevesebb, mint 15 percnek kell lennie ahhoz, hogy sikeresen hozzáadja az ügynököt a csomópontokhoz. A (z) API használatával ellenőrizheti, hogy az ügynökök hozzá lettek-e adva `az vmss extension list` :
 
     ```azurecli
     az vmss extension list --resource-group <nameOfResourceGroup> --vmss-name <nameOfNodeType>
@@ -67,7 +66,7 @@ A sablont letöltheti és módosíthatja úgy, hogy olyan fürtöt helyezzen üz
 
 Most, hogy hozzáadta a Log Analytics-ügynököt, a Log Analytics portálra bejelentkezve kiválaszthatja, hogy mely teljesítményszámlálókat szeretné összegyűjteni.
 
-1. A Azure Portal keresse meg azt az erőforráscsoportot, amelyben létrehozta a Service Fabric Analytics megoldást. Válassza **a\<ServiceFabric nameOfLog\>AnalyticsWorkspace**lehetőséget.
+1. A Azure Portal keresse meg azt az erőforráscsoportot, amelyben létrehozta a Service Fabric Analytics megoldást. Válassza **a \<nameOfLog AnalyticsWorkspace\> ServiceFabric**lehetőséget.
 
 2. Kattintson a **Log Analytics** elemre.
 

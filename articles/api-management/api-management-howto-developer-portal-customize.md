@@ -13,10 +13,9 @@ ms.topic: article
 ms.date: 03/05/2020
 ms.author: apimpm
 ms.openlocfilehash: af7c995c11322a538dd9e27a905f1ddbc723e8ab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79244094"
 ---
 # <a name="access-and-customize-developer-portal"></a>A fejlesztői portál elérése és testreszabása
@@ -68,7 +67,7 @@ A laphoz egy pluszjelet tartalmazó kék ikonra kattintva adhat hozzá sorokat. 
 
 Az elrendezések határozzák meg a lapok megjelenítésének módját. Az alapértelmezett tartalomban például két elrendezés létezik – az egyik a kezdőlapra, a másik pedig az összes többi oldalra vonatkozik.
 
-A rendszer egy elrendezést alkalmaz egy lapra úgy, hogy az URL-sablonját a lap URL-címéhez társítja. A ( `/wiki/*` z) URL-sablonnal ellátott elrendezés például a következő URL-címen lévő `/wiki/` összes oldalra vonatkozik: `/wiki/getting-started`, `/wiki/styles`stb.
+A rendszer egy elrendezést alkalmaz egy lapra úgy, hogy az URL-sablonját a lap URL-címéhez társítja. A (z) URL-sablonnal ellátott elrendezés például a következő `/wiki/*` URL-címen lévő összes oldalra vonatkozik `/wiki/` : `/wiki/getting-started` , `/wiki/styles` stb.
 
 A fenti képen az elrendezéshez tartozó tartalom kék színnel van megjelölve, míg a lap piros színnel van megjelölve. A menüpontok vannak megjelölve.
 
@@ -91,7 +90,7 @@ Amikor változást hajt végre a portálon, manuálisan kell mentenie a **Save (
 Ahhoz, hogy a portál elérhető legyen a látogatók számára, testre kell szabnia az automatikusan generált tartalmat. Az ajánlott módosítások közé tartozik a Kezdőlap elrendezései, stílusa és tartalma.
 
 > [!NOTE]
-> Az integrációs megfontolások miatt a következő lapok nem távolíthatók el és nem helyezhetők át másik URL `/404`- `/500`cím `/captcha`alá `/change-password`: `/config.json` `/confirm/invitation` `/confirm-v2/identities/basic/signup` `/confirm-v2/password` `/internal-status-0123456789abcdef` `/publish` `/signin`,,,,,,, `/signin-sso`, `/signup`,,,,.
+> Az integrációs megfontolások miatt a következő lapok nem távolíthatók el és nem helyezhetők át másik URL-cím alá:,,,,,,,,,,, `/404` `/500` `/captcha` `/change-password` `/config.json` `/confirm/invitation` `/confirm-v2/identities/basic/signup` `/confirm-v2/password` `/internal-status-0123456789abcdef` `/publish` `/signin` `/signin-sso` , `/signup` .
 
 ### <a name="home-page"></a>Kezdőlap
 
@@ -124,7 +123,7 @@ Ahhoz, hogy a portál és a legújabb módosításai elérhetők legyenek a lát
 
 ## <a name="visit-the-published-portal"></a>A közzétett portál meglátogatása
 
-A portál közzététele után a felügyeleti panellel megegyező URL-címen férhet hozzá, például `https://contoso-api.developer.azure-api.net`:. Megtekintheti egy különálló böngésző-munkamenetben (inkognitóban/privát böngészési mód) külső látogatóként.
+A portál közzététele után a felügyeleti panellel megegyező URL-címen férhet hozzá, például: `https://contoso-api.developer.azure-api.net` . Megtekintheti egy különálló böngésző-munkamenetben (inkognitóban/privát böngészési mód) külső látogatóként.
 
 ## <a name="apply-the-cors-policy-on-apis"></a>A CORS szabályzat alkalmazása az API-kra
 

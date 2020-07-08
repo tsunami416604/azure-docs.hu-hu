@@ -10,10 +10,9 @@ ms.topic: troubleshooting
 ms.workload: big-data
 ms.date: 10/11/2019
 ms.openlocfilehash: f909419810cbd837e57b19a13b2df6ae9ad2ee97
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79213581"
 ---
 # <a name="azure-data-lake-analytics-is-upgrading-to-the-net-framework-v472"></a>A Azure Data Lake Analytics a .NET-keretrendszer v 4.7.2 frissít
@@ -39,7 +38,7 @@ Ellenőrizze, hogy lehetséges-e a visszamenőleges kompatibilitást okozó hib�
 1. Futtassa a visszamenőleges kompatibilitás-ellenőrzési szolgáltatást a .NET-DLL-eken vagy a
    1. A Visual Studio bővítmény használata a [.net-hordozhatósági elemző Visual Studio-bővítményben](https://marketplace.visualstudio.com/items?itemName=ConnieYau.NETPortabilityAnalyzer)
    1. Az önálló eszköz letöltése és használata a [GitHub dotnetapiport](https://github.com/microsoft/dotnet-apiport). Az önálló eszköz futtatására vonatkozó utasítások a [GitHub dotnetapiport-megszakítási változások](https://github.com/microsoft/dotnet-apiport/blob/dev/docs/HowTo/BreakingChanges.md)
-   1. 4.7.2. kompatibilitás, `read isRetargeting == True` a lehetséges problémák azonosítása.
+   1. 4.7.2. kompatibilitás, a `read isRetargeting == True` lehetséges problémák azonosítása.
 2. Ha az eszköz azt jelzi, hogy a kód érintheti-e a lehetséges visszamenőleges inkompatibilitást (néhány gyakori példa az inkompatibilitásra), további ellenőrzéshez használhatja a következőt:
    1. A kód elemzése és annak azonosítása, hogy a kód az érintett API-kra mutat-e értékeket
    1. Végezzen futtatókörnyezet-ellenőrzéseket. A futtatókörnyezet központi telepítése nem párhuzamosan történik a ADLA-ben. A frissítés előtt elvégezheti a futtatókörnyezet ellenőrzését, ha a VisualStudio helyi futtatását helyi .NET-keretrendszerrel 4.7.2 egy jellemző adatkészleten keresztül.
@@ -65,27 +64,27 @@ A leggyakoribb visszamenőleges inkompatibilitás, amelyet az ellenőrzés való
   - Javasolt művelet: Ellenőrizze, hogy a TaskFactory. FromAsync igaz értéket ad-e vissza.
 
 - A DataObject. GetData mostantól UTF-8-ként kérdezi le az adatfájlokat
-  - A .NET-keretrendszer 4-es verzióját vagy a .NET-keretrendszer 4.5.1-es vagy korábbi verzióit célzó alkalmazások esetében a DataObject. GetData egy ASCII-karakterláncként kéri le a HTML formátumú adatformátumot. Ennek eredményeképpen a nem ASCII karakterek (amelyek ASCII-kódjai nagyobbak, mint 0x7F) két véletlenszerű karakterből állhatnak. #N # #N # a .NET-keretrendszert 4,5-as vagy újabb verzióra irányuló, illetve a .NET-keretrendszer `DataObject.GetData` 4.5.2-es verziójával rendelkező alkalmazások esetében az UTF-8 értékkel rendelkező HTML formátumú adat lekérdezése, amely nagyobb, mint a 0x7F karakter.
+  - A .NET-keretrendszer 4-es verzióját vagy a .NET-keretrendszer 4.5.1-es vagy korábbi verzióit célzó alkalmazások esetében a DataObject. GetData egy ASCII-karakterláncként kéri le a HTML formátumú adatformátumot. Ennek eredményeképpen a nem ASCII karakterek (amelyek ASCII-kódjai nagyobbak, mint 0x7F) két véletlenszerű karakterből állhatnak. #N # #N # a .NET-keretrendszert 4,5-as vagy újabb verzióra irányuló, illetve a .NET-keretrendszer 4.5.2-es verziójával rendelkező alkalmazások esetében az `DataObject.GetData` UTF-8 értékkel rendelkező HTML formátumú adat lekérdezése, amely nagyobb, mint a 0x7F karakter.
   - Érintett kódtárak: Glo
   - Javasolt művelet: a beolvasott adatformátumot a kívánt formátumban kell megadni
 
 - A XmlWriter érvénytelen helyettesítő párokat dob
-  - A .NET-keretrendszer 4.5.2-es vagy korábbi verzióit célzó alkalmazások esetén érvénytelen helyettesítő párokat kell megírni, ha a kivétel-visszaállítási szolgáltatás nem mindig kivételt jelez. A .NET-keretrendszer 4,6-at célzó alkalmazások esetében az érvénytelen helyettesítő párok írására tett kísérlet `ArgumentException`.
-  - Érintett kódtárak: System. XML, System. xml. ReaderWriter
+  - A .NET-keretrendszer 4.5.2-es vagy korábbi verzióit célzó alkalmazások esetén érvénytelen helyettesítő párokat kell megírni, ha a kivétel-visszaállítási szolgáltatás nem mindig kivételt jelez. A .NET-keretrendszer 4,6-at célzó alkalmazások esetében az érvénytelen helyettesítő párok írására tett kísérlet `ArgumentException` .
+  - Érintett kódtárak: System.Xml, System.Xml. ReaderWriter
   - Javasolt művelet: Ügyeljen arra, hogy ne írjon be érvénytelen helyettesítő párt, amely argumentum-kivételt eredményez.
 
-- A HtmlTextWriter nem teszi `<br/>` lehetővé az elemek megfelelő megjelenítését
-  - A .NET-keretrendszer 4,6-es verziójától `HtmlTextWriter.RenderEndTag()` kezdve az `<BR />` elem meghívása `HtmlTextWriter.RenderBeginTag()` és egy `<BR />` elemmel való beállítása helyesen csak egy (két helyett) lesz.
+- A HtmlTextWriter nem teszi lehetővé az `<br/>` elemek megfelelő megjelenítését
+  - A .NET-keretrendszer 4,6-es verziójától kezdve az elem meghívása `HtmlTextWriter.RenderBeginTag()` és `HtmlTextWriter.RenderEndTag()` egy elemmel való beállítása `<BR />` helyesen csak egy `<BR />` (két helyett) lesz.
   - Érintett kódtárak: System. Web
   - Javasolt művelet: Ügyeljen arra, hogy beillessze a `<BR />` várt mennyiséget, hogy az éles környezetben ne legyen véletlenszerű viselkedés.
 
 - A CreateDefaultAuthorizationContext hívása null értékű argumentummal megváltozott
-  - A null értékű Applyallocationpolicy argumentum hívásával `CreateDefaultAuthorizationContext(IList<IAuthorizationPolicy>)` visszaadott AuthorizationContext megvalósítása megváltoztatta a .NET-keretrendszer 4,6-es verziójának implementációját.
+  - A null értékű Applyallocationpolicy argumentum hívásával visszaadott AuthorizationContext megvalósítása `CreateDefaultAuthorizationContext(IList<IAuthorizationPolicy>)` megváltoztatta a .NET-keretrendszer 4,6-es verziójának implementációját.
   - Érintett kódtárak: System. IdentityModel
   - Javasolt művelet: gondoskodjon arról, hogy az új várt viselkedést kezelje, ha van null engedélyezési házirend
   
 - A RSACng mostantól helyesen tölti be a nem szabványos kulcsú RSA-kulcsokat
-  - A .NET-keretrendszer 4.6.2 előtti verzióiban az RSA-tanúsítványok nem szabványos méretekkel rendelkező ügyfelei nem férhetnek hozzá ezekhez a kulcsokhoz `GetRSAPublicKey()` a `GetRSAPrivateKey()` és a bővítmény módszerein keresztül. `CryptographicException` A "a kért kulcs mérete nem támogatott" üzenet jelenik meg. A .NET-keretrendszer 4.6.2 Ez a probléma kijavítva. Hasonlóképpen, `RSA.ImportParameters()` és `RSACng.ImportParameters()` most már a nem szabványos méretek is használhatók a `CryptographicException`dobások nélkül.
+  - A .NET-keretrendszer 4.6.2 előtti verzióiban az RSA-tanúsítványok nem szabványos méretekkel rendelkező ügyfelei nem férhetnek hozzá ezekhez a kulcsokhoz a `GetRSAPublicKey()` és a `GetRSAPrivateKey()` bővítmény módszerein keresztül. A `CryptographicException` "a kért kulcs mérete nem támogatott" üzenet jelenik meg. A .NET-keretrendszer 4.6.2 Ez a probléma kijavítva. Hasonlóképpen, `RSA.ImportParameters()` és `RSACng.ImportParameters()` most már a nem szabványos méretek is használhatók a dobások nélkül `CryptographicException` .
   - Érintett kódtárak: mscorlib, System. Core
   - Javasolt művelet: Ellenőrizze, hogy az RSA-kulcsok a várt módon működnek-e
 
@@ -95,11 +94,11 @@ A leggyakoribb visszamenőleges inkompatibilitás, amelyet az ellenőrzés való
   - Javasolt művelet:
 
 - ClaimsIdentity konstruktorok hívásai
-  - A .NET-keretrendszer 4.6.2 kezdve megváltozik a `T:System.Security.Claims.ClaimsIdentity` `T:System.Security.Principal.IIdentity` `P:System.Security.Claims.ClaimsIdentify.Actor` tulajdonságot megadó paraméterekkel rendelkező konstruktorok beállítása. Ha az `T:System.Security.Principal.IIdentity` argumentum egy `T:System.Security.Claims.ClaimsIdentity` objektum, és az `P:System.Security.Claims.ClaimsIdentify.Actor` `T:System.Security.Claims.ClaimsIdentity` objektum tulajdonsága nem `null`, a `P:System.Security.Claims.ClaimsIdentify.Actor` tulajdonság a `M:System.Security.Claims.ClaimsIdentity.Clone` metódussal van csatolva. A keretrendszer 4.6.1-es és korábbi verzióiban `P:System.Security.Claims.ClaimsIdentify.Actor` a tulajdonság meglévő hivatkozásként van csatolva. A módosítás miatt a .NET-keretrendszer 4.6.2 `P:System.Security.Claims.ClaimsIdentify.Actor` kezdve az új `T:System.Security.Claims.ClaimsIdentity` objektum tulajdonsága nem egyenlő a konstruktor `P:System.Security.Claims.ClaimsIdentify.Actor` `T:System.Security.Principal.IIdentity` argumentumának tulajdonságával. A .NET-keretrendszer 4.6.1-es és korábbi verzióiban ez egyenlő.
+  - A .NET-keretrendszer 4.6.2 kezdve megváltozik a `T:System.Security.Claims.ClaimsIdentity` `T:System.Security.Principal.IIdentity` tulajdonságot megadó paraméterekkel rendelkező konstruktorok beállítása `P:System.Security.Claims.ClaimsIdentify.Actor` . Ha az `T:System.Security.Principal.IIdentity` argumentum egy `T:System.Security.Claims.ClaimsIdentity` objektum, és az `P:System.Security.Claims.ClaimsIdentify.Actor` objektum tulajdonsága `T:System.Security.Claims.ClaimsIdentity` nem `null` , a `P:System.Security.Claims.ClaimsIdentify.Actor` tulajdonság a metódussal van csatolva `M:System.Security.Claims.ClaimsIdentity.Clone` . A keretrendszer 4.6.1-es és korábbi verzióiban a `P:System.Security.Claims.ClaimsIdentify.Actor` tulajdonság meglévő hivatkozásként van csatolva. A módosítás miatt a .NET-keretrendszer 4.6.2 kezdve az `P:System.Security.Claims.ClaimsIdentify.Actor` új objektum tulajdonsága `T:System.Security.Claims.ClaimsIdentity` nem egyenlő a `P:System.Security.Claims.ClaimsIdentify.Actor` konstruktor `T:System.Security.Principal.IIdentity` argumentumának tulajdonságával. A .NET-keretrendszer 4.6.1-es és korábbi verzióiban ez egyenlő.
   - Érintett kódtárak: mscorlib
   - Javasolt művelet: gondoskodjon arról, hogy a ClaimsIdentity a várt módon működjön az új futtatókörnyezetben
 
 - A vezérlési karakterek DataContractJsonSerializer-vel való szerializálása mostantól kompatibilis a ECMAScript v6-val és a V8-val
   - A .NET-keretrendszer 4.6.2 és korábbi verzióiban a DataContractJsonSerializer nem hajtottak végre olyan speciális vezérlő karaktereket, mint például a \b, a \f és a \t, így az a ECMAScript V6-os és a V8-as szabványokkal kompatibilis. A .NET-keretrendszer 4,7-es verziótól kezdődően a vezérlő karakterek szerializálása kompatibilis a ECMAScript v6 és a V8 használatával.
-  - Érintett kódtárak: System. Runtime. szerializálás. JSON
+  - Érintett kódtárak: System.Runtime.Serialization.Js
   - Javasolt művelet: azonos viselkedés biztosítása a DataContractJsonSerializer

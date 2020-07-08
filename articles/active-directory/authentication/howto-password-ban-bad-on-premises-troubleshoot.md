@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 79ebf543a3880a4f2c8ee8c0d706c268ef3f08d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79263646"
 ---
 # <a name="troubleshoot-on-premises-azure-ad-password-protection"></a>Hibakeresés: helyszíni Azure AD jelszavas védelem
@@ -50,9 +49,9 @@ Ennek a problémának a fő tünete a DC-ügynök rendszergazdai eseménynaplój
 
 1. Győződjön meg arról, hogy az erdő és az összes proxykiszolgáló regisztrálva van ugyanazon az Azure-bérlőn.
 
-   Ezt a követelményt a és `Get-AzureADPasswordProtectionProxy` `Get-AzureADPasswordProtectionDCAgent` a PowerShell-parancsmagok futtatásával, majd az `AzureTenant` egyes visszaadott elemek tulajdonságának összehasonlításával is megtekintheti. A megfelelő működés érdekében a jelentett bérlő nevének meg kell egyeznie az összes tartományvezérlő-ügynök és proxykiszolgáló között.
+   Ezt a követelményt a `Get-AzureADPasswordProtectionProxy` és a PowerShell- `Get-AzureADPasswordProtectionDCAgent` parancsmagok futtatásával, majd az `AzureTenant` egyes visszaadott elemek tulajdonságának összehasonlításával is megtekintheti. A megfelelő működés érdekében a jelentett bérlő nevének meg kell egyeznie az összes tartományvezérlő-ügynök és proxykiszolgáló között.
 
-   Ha egy Azure-bérlő regisztrációjának eltérési feltétele létezik, ezt a `Register-AzureADPasswordProtectionProxy` problémát a és/vagy `Register-AzureADPasswordProtectionForest` a PowerShell-parancsmagok igény szerint történő futtatásával lehet megállapítani, hogy az összes regisztrációhoz ugyanazt az Azure-bérlő hitelesítő adatait használja.
+   Ha egy Azure-bérlő regisztrációjának eltérési feltétele létezik, ezt a problémát a `Register-AzureADPasswordProtectionProxy` és/vagy a PowerShell-parancsmagok igény szerint történő futtatásával lehet megállapítani `Register-AzureADPasswordProtectionForest` , hogy az összes regisztrációhoz ugyanazt az Azure-bérlő hitelesítő adatait használja.
 
 ## <a name="dc-agent-is-unable-to-encrypt-or-decrypt-password-policy-files"></a>A tartományvezérlő ügynöke nem tudja titkosítani vagy visszafejteni a jelszóházirend fájljait
 
@@ -94,7 +93,7 @@ A probléma több oka is lehet.
 
 1. Előfordulhat, hogy a jelszó-ellenőrzési algoritmus ténylegesen a várt módon működik. Tekintse meg [, hogyan történik a jelszavak kiértékelése](concept-password-ban-bad.md#how-are-passwords-evaluated).
 
-## <a name="ntdsutilexe-fails-to-set-a-weak-dsrm-password"></a>Az Ntdsutil. exe nem tudja beállítani a gyenge címtárszolgáltatások helyreállító módjának jelszavát
+## <a name="ntdsutilexe-fails-to-set-a-weak-dsrm-password"></a>A Ntdsutil.exe nem tudja beállítani a gyenge címtárszolgáltatások helyreállító jelszavát
 
 A Active Directory mindig érvényesíti az új címtárszolgáltatások helyreállító módjának jelszavát, hogy az megfeleljen a tartomány jelszó-bonyolultsági követelményeinek. Ez az ellenőrzés a jelszó-szűrési DLL-eket, például az Azure AD jelszavas védelmet is kéri. Ha a rendszer visszautasítja az új címtárszolgáltatások helyreállító módjának jelszavát, a következő hibaüzenet jelenik meg:
 
@@ -166,7 +165,7 @@ Mivel a határidőt csak a kezdeti rendszerindítás során ellenőrzi a rendsze
 > [!IMPORTANT]
 > A Microsoft azt javasolja, hogy a lejárt nyilvános előzetes tartományvezérlő ügynökök azonnal frissítve legyenek a legújabb verzióra.
 
-A parancsmag futtatásával egyszerűen felderítheti az olyan TARTOMÁNYVEZÉRLŐi ügynököket, amelyeket frissíteni kell, `Get-AzureADPasswordProtectionDCAgent` például a következő módon:
+A parancsmag futtatásával egyszerűen felderítheti az olyan TARTOMÁNYVEZÉRLŐi ügynököket, amelyeket frissíteni kell `Get-AzureADPasswordProtectionDCAgent` , például a következő módon:
 
 ```powershell
 PS C:\> Get-AzureADPasswordProtectionDCAgent
@@ -216,7 +215,7 @@ Ha úgy döntött, hogy eltávolítja az Azure AD jelszavas védelem szoftverét
 
    Ne hagyja ki a csillagot ("*") a $keywords változó értékének végén.
 
-   Az eredményül kapott objektum (ok) megtalálhatók a `Get-ADObject` parancs segítségével `Remove-ADObject`, vagy manuálisan is törölhetők.
+   Az eredményül kapott objektum (ok) megtalálhatók a `Get-ADObject` parancs segítségével `Remove-ADObject` , vagy manuálisan is törölhetők.
 
 4. Manuálisan távolítsa el az összes tartományvezérlői ügynök csatlakoztatási pontját az egyes tartománynév-névhasználati környezetekben. A szoftver központi telepítésének módjától függően előfordulhat, hogy az erdőn belül egy adott objektum egy tartományvezérlőn található. Az objektum helye a következő Active Directory PowerShell-paranccsal deríthető fel:
 
@@ -226,7 +225,7 @@ Ha úgy döntött, hogy eltávolítja az Azure AD jelszavas védelem szoftverét
    Get-ADObject -SearchScope Subtree -Filter { objectClass -eq $scp -and keywords -like $keywords }
    ```
 
-   Az eredményül kapott objektum (ok) megtalálhatók a `Get-ADObject` parancs segítségével `Remove-ADObject`, vagy manuálisan is törölhetők.
+   Az eredményül kapott objektum (ok) megtalálhatók a `Get-ADObject` parancs segítségével `Remove-ADObject` , vagy manuálisan is törölhetők.
 
    Ne hagyja ki a csillagot ("*") a $keywords változó értékének végén.
 

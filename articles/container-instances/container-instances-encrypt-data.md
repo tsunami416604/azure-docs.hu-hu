@@ -6,10 +6,9 @@ ms.date: 01/17/2020
 author: dkkapur
 ms.author: dekapur
 ms.openlocfilehash: ad232c5d9df9f6bfae3a79dbd72e2c68143be949
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79080360"
 ---
 # <a name="encrypt-deployment-data"></a>Üzembehelyezési adatok titkosítása
@@ -83,7 +82,7 @@ Hozzon létre egy új hozzáférési szabályzatot, amely lehetővé teszi, hogy
 
 * Miután létrehozta a kulcsot, a Key Vault erőforrás-paneljén a beállítások területen kattintson a **hozzáférési házirendek**elemre.
 * A Key vaulthoz tartozó hozzáférési szabályzatok lapon kattintson a **hozzáférési házirend hozzáadása**lehetőségre.
-* Adja meg a kulcs *engedélyeit* a **beolvasás** és **kicsomagolás kulcs** ![beállítása kulcs engedélyeinek befoglalásához](./media/container-instances-encrypt-data/set-key-permissions.png)
+* Adja meg a kulcs *engedélyeit* a **beolvasás** és **kicsomagolás kulcs** ![ beállítása kulcs engedélyeinek befoglalásához](./media/container-instances-encrypt-data/set-key-permissions.png)
 * Válassza ki a *rendszerbiztonsági tag*lehetőséget, majd válassza az **Azure Container instance Service** elemet.
 * Kattintson a **Hozzáadás** gombra a lap alján 
 
@@ -97,12 +96,12 @@ A hozzáférési szabályzatnak ekkor meg kell jelennie a Key Vault hozzáféré
 > A központi telepítési adatai ügyfél által felügyelt kulccsal történő titkosítása a legújabb API-verzióban (2019-12-01) érhető el, amely jelenleg ki van vezetve. Adja meg ezt az API-verziót a telepítési sablonban. Ha problémája merül fel, forduljon az Azure ügyfélszolgálatához.
 
 A Key Vault-kulcs és a hozzáférési házirend beállítása után adja hozzá a következő tulajdonságokat az ACI telepítési sablonhoz. További információ az ACI-erőforrások üzembe helyezéséről a sablonnal az [oktatóanyagban: többtárolós csoport üzembe helyezése Resource Manager-sablonnal](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
-* A `resources`alatt állítsa `apiVersion` be `2019-12-01`a következőt:.
-* A telepítési sablon tároló csoport tulajdonságai szakaszában adja `encryptionProperties`meg a következő értékeket tartalmazó értéket:
+* A alatt `resources` állítsa be a következőt: `apiVersion` `2019-12-01` .
+* A telepítési sablon tároló csoport tulajdonságai szakaszában adja meg a `encryptionProperties` következő értékeket tartalmazó értéket:
   * `vaultBaseUrl`: a Key Vault DNS-neve a Key Vault-erőforrás áttekintés paneljén található a portálon
   * `keyName`: a korábban generált kulcs neve
   * `keyVersion`: a kulcs jelenlegi verziója. Ez úgy érhető el, ha magára a kulcsra kattint (a Key Vault-erőforrás beállítások szakaszában a "kulcsok" alatt)
-* A tároló csoport tulajdonságai területen adjon hozzá egy `sku` tulajdonságot értékkel `Standard`. A `sku` tulajdonságot az 2019-12-01-os API-verzióban kell megadni.
+* A tároló csoport tulajdonságai területen adjon hozzá egy `sku` tulajdonságot értékkel `Standard` . A `sku` tulajdonságot az 2019-12-01-os API-verzióban kell megadni.
 
 A következő kódrészlet ezeket a további tulajdonságokat jeleníti meg a központi telepítési információk titkosításához:
 

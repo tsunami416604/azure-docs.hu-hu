@@ -12,10 +12,9 @@ ms.workload: infrastructure
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.openlocfilehash: e1bc7c8a6f97d6dc6bb1d6cb54825425244b2158
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78944889"
 ---
 # <a name="how-to-install-and-configure-mongodb-on-a-linux-vm"></a>A MongoDB telepítése és konfigurálása Linux rendszerű virtuális gépen
@@ -47,7 +46,7 @@ az vm create \
     --generate-ssh-keys
 ```
 
-SSH-t a virtuális géphez saját felhasználónevével és `publicIpAddress` az előző lépés kimenetében szereplővel:
+SSH-t a virtuális géphez saját felhasználónevével és az `publicIpAddress` előző lépés kimenetében szereplővel:
 
 ```bash
 ssh azureuser@<publicIpAddress>
@@ -59,7 +58,7 @@ A MongoDB telepítési forrásainak hozzáadásához hozzon létre egy **yum** a
 sudo touch /etc/yum.repos.d/mongodb-org-3.6.repo
 ```
 
-Nyissa meg szerkesztésre a MongoDB-tárház fájlját `vi` , `nano`például: vagy. Adja hozzá a következő sorokat:
+Nyissa meg szerkesztésre a MongoDB-tárház fájlját, például: `vi` vagy `nano` . Adja hozzá a következő sorokat:
 
 ```sh
 [mongodb-org-3.6]
@@ -89,7 +88,7 @@ Indítsa el a MongoDB szolgáltatást a következőképpen:
 sudo service mongod start
 ```
 
-Ellenőrizze a MongoDB telepítését a helyi `mongo` ügyfél használatával történő csatlakozással:
+Ellenőrizze a MongoDB telepítését a helyi ügyfél használatával történő csatlakozással `mongo` :
 
 ```bash
 mongo
@@ -143,7 +142,7 @@ SSH-t a virtuális géphez saját felhasználónevével és nyilvános DNS-címe
 ssh azureuser@mypublicdns.eastus.cloudapp.azure.com
 ```
 
-A következő módon ellenőrizze a MongoDB telepítését a helyi `mongo` ügyfél használatával történő csatlakozással:
+A következő módon ellenőrizze a MongoDB telepítését a helyi ügyfél használatával történő csatlakozással `mongo` :
 
 ```bash
 mongo

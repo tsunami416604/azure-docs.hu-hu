@@ -4,10 +4,9 @@ description: Tudnivalók a feladatátvételről és a Azure Site Recovery sikert
 ms.topic: conceptual
 ms.date: 12/24/2019
 ms.openlocfilehash: d9b54f3c452212e12419a5ffd67b116c8660308d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79281807"
 ---
 # <a name="about-on-premises-disaster-recovery-failoverfailback"></a>A helyszíni vész-helyreállítási feladatátvétel/feladat-visszavétel
@@ -45,7 +44,7 @@ Ha az RDP/SSH használatával a feladatátvételt követően létrehozott Azure-
 
 **Feladatátvétel** | **Hely** | **Műveletek**
 --- | --- | ---
-**Azure VM (Windows (** | A helyszíni gépen a feladatátvétel előtt | **Hozzáférés az interneten keresztül**: engedélyezze az RDP-t. Győződjön meg arról, hogy a TCP-és UDP-szabályok **nyilvánosak**, és az RDP engedélyezve van a **Windows tűzfal** > **engedélyezett alkalmazásaiban**található összes profilhoz.<br/><br/> **Hozzáférés helyek közötti VPN-hez**: engedélyezze az RDP-t a gépen. Győződjön meg arról, hogy az RDP engedélyezve van a **Windows tűzfal** -> **engedélyezett alkalmazásaiban és szolgáltatásaiban** **tartomány-és magánhálózatok** esetén.<br/><br/>  Győződjön meg arról, hogy az operációs rendszer SAN-szabályzata **OnlineAll**értékre van állítva. [További információ](https://support.microsoft.com/kb/3031135).<br/><br/> Győződjön meg arról, hogy a virtuális gépen nincsenek függőben lévő Windows-frissítések a feladatátvétel elindításakor. Előfordulhat, hogy a Windows Update a feladatátvétel során indul el, és a frissítések elvégzése előtt nem tud majd bejelentkezni a virtuális gépre.
+**Azure VM (Windows (** | A helyszíni gépen a feladatátvétel előtt | **Hozzáférés az interneten keresztül**: engedélyezze az RDP-t. Győződjön meg arról, hogy a TCP-és UDP-szabályok **nyilvánosak**, és az RDP engedélyezve van a **Windows tűzfal**  >  **engedélyezett alkalmazásaiban**található összes profilhoz.<br/><br/> **Hozzáférés helyek közötti VPN-hez**: engedélyezze az RDP-t a gépen. Győződjön meg arról, hogy az RDP engedélyezve van a **Windows tűzfal**  ->  **engedélyezett alkalmazásaiban és szolgáltatásaiban** **tartomány-és magánhálózatok** esetén.<br/><br/>  Győződjön meg arról, hogy az operációs rendszer SAN-szabályzata **OnlineAll**értékre van állítva. [További információk](https://support.microsoft.com/kb/3031135).<br/><br/> Győződjön meg arról, hogy a virtuális gépen nincsenek függőben lévő Windows-frissítések a feladatátvétel elindításakor. Előfordulhat, hogy a Windows Update a feladatátvétel során indul el, és a frissítések elvégzése előtt nem tud majd bejelentkezni a virtuális gépre.
 **Windows rendszerű Azure-beli virtuális gép** | Az Azure virtuális gépen feladatátvétel után |  [Nyilvános IP-cím hozzáadása](https://aka.ms/addpublicip) a virtuális gép számára.<br/><br/> A sikertelenül átadott virtuális gépen (és az Azure-alhálózaton, amelyhez csatlakozik) a hálózati biztonsági csoport szabályainak engedélyezniük kell a bejövő kapcsolatokat az RDP-porton.<br/><br/> A **rendszerindítási diagnosztika** ellenőrzésével ellenőrizheti a virtuális gép képernyőképét. Ha nem tud kapcsolatot létesíteni, ellenőrizze, hogy fut-e a virtuális gép, és tekintse át a [hibaelhárítási tippeket](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
 **Linux rendszerű Azure-beli virtuális gép** | A helyszíni gépen a feladatátvétel előtt | Győződjön meg arról, hogy a virtuális gépen a Secure Shell szolgáltatás automatikusan elindul a rendszerindításkor.<br/><br/> Ellenőrizze, hogy a tűzfalszabályok engedélyezik-e az SSH-kapcsolatot.
 **Linux rendszerű Azure-beli virtuális gép** | Az Azure virtuális gépen feladatátvétel után | Az átadott virtuális gép (és az ahhoz csatlakozó Azure-alhálózat) hálózati biztonsági csoportra vonatkozó szabályainak engedélyeznie kell a bejövő kapcsolatokat az SSH-porton.<br/><br/> [Nyilvános IP-cím hozzáadása](https://aka.ms/addpublicip) a virtuális gép számára.<br/><br/> A virtuális gép képernyőképének megtekintése a **rendszerindítási diagnosztika** szolgáltatásban.<br/><br/>

@@ -10,10 +10,9 @@ ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
 ms.topic: conceptual
 ms.date: 12/05/2016
 ms.openlocfilehash: 8a6b7cb3fd45e17b84519efcaa826b569083e156
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79265700"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>Az Azure Data Lake Analytics kezelése az Azure Portal használatával
@@ -30,14 +29,14 @@ Ez a cikk ismerteti, hogyan kezelheti Azure Data Lake Analytics fiókokat, adatf
 ### <a name="create-an-account"></a>Fiók létrehozása
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Kattintson **az erőforrás** > **létrehozása Intelligence + Analytics** > **Data Lake Analytics**elemre.
+2. Kattintson **az erőforrás létrehozása**  >  **Intelligence + Analytics**  >  **Data Lake Analytics**elemre.
 3. Adja meg az alábbi elemek értékeit: 
    1. **Name (név**): az Data Lake Analytics fiók neve.
    2. **Előfizetés**: a fiókhoz használt Azure-előfizetés.
    3. **Erőforráscsoport**: az az Azure-erőforráscsoport, amelyben létre kell hozni a fiókot. 
    4. **Hely**: az Data Lake Analytics-fiókhoz tartozó Azure-adatközpont. 
    5. **Data Lake Store**: a Data Lake Analytics-fiókhoz használandó alapértelmezett tároló. A Azure Data Lake Store fióknak és a Data Lake Analytics fióknak ugyanazon a helyen kell lennie.
-4. Kattintson a **Létrehozás**gombra. 
+4. Kattintson a **Létrehozás** lehetőségre. 
 
 ### <a name="delete-a-data-lake-analytics-account"></a>Data Lake Analytics fiók törlése
 
@@ -111,7 +110,7 @@ A Data Lake Analytics fejlesztői szerepkör használatával engedélyezheti a U
 ### <a name="add-users-or-security-groups-to-a-data-lake-analytics-account"></a>Felhasználók vagy biztonsági csoportok hozzáadása egy Data Lake Analytics-fiókhoz
 
 1. A Azure Portal lépjen a Data Lake Analytics-fiókra.
-2. Kattintson a **hozzáférés-vezérlés (iam)** > **szerepkör-hozzárendelés hozzáadása**elemre.
+2. Kattintson a **hozzáférés-vezérlés (iam)**  >  **szerepkör-hozzárendelés hozzáadása**elemre.
 3. Válasszon egy szerepkört.
 4. Adjon hozzá egy felhasználót.
 5. Kattintson az **OK** gombra.

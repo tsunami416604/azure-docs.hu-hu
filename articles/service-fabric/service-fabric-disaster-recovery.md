@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: b29985d40ae3a1bf582099e998e000fed83460f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79371647"
 ---
 # <a name="disaster-recovery-in-azure-service-fabric"></a>Vész-helyreállítás az Azure Service Fabric
@@ -60,7 +59,7 @@ Az egyes gépek bármilyen okból sikertelenek lehetnek. Előfordulhat, hogy a h
 
 A szolgáltatás típusától függetlenül az adott példány futtatása az adott szolgáltatáshoz tartozó állásidőt eredményezi, ha a kód egyetlen példánya valamilyen okból meghiúsul. 
 
-Egyetlen hiba kezeléséhez a legegyszerűbb dolog, ha a szolgáltatások alapértelmezés szerint egynél több csomóponton futnak. Az állapot nélküli szolgáltatások esetében ügyeljen arra, `InstanceCount` hogy az nagyobb legyen, mint 1. Az állapot-nyilvántartó szolgáltatások esetében a minimális javaslat az `TargetReplicaSetSize` , `MinReplicaSetSize` hogy mindkét érték 3. A szolgáltatási kód több példányának futtatásával biztosítható, hogy a szolgáltatás automatikusan kezeljen egyetlen hibát. 
+Egyetlen hiba kezeléséhez a legegyszerűbb dolog, ha a szolgáltatások alapértelmezés szerint egynél több csomóponton futnak. Az állapot nélküli szolgáltatások esetében ügyeljen arra, hogy `InstanceCount` az nagyobb legyen, mint 1. Az állapot-nyilvántartó szolgáltatások esetében a minimális javaslat az, hogy `TargetReplicaSetSize` `MinReplicaSetSize` mindkét érték 3. A szolgáltatási kód több példányának futtatásával biztosítható, hogy a szolgáltatás automatikusan kezeljen egyetlen hibát. 
 
 ### <a name="handling-coordinated-failures"></a>Koordinált hibák kezelése
 A fürtben található koordinált hibák oka lehet tervezett vagy nem tervezett infrastruktúra-meghibásodás és-változás, illetve a tervezett szoftverek módosítása. Az olyan infrastruktúra-zónák Service Fabric, amelyek az összehangolt hibákat a tartalék *tartományokban*tapasztalják. Az összehangolt szoftveres változásokat tapasztaló területek *frissítési tartományként*lesznek modellezve. További információ a tartalék tartományokról, a frissítési tartományokról és a fürt topológiáról: [Service Fabric-fürt leírása a fürterőforrás-kezelő használatával](service-fabric-cluster-resource-manager-cluster-description.md).
@@ -125,12 +124,12 @@ Annak megállapítása, hogy vészhelyzet történt-e egy állapot-nyilvántart�
 
    Ha a kvórum elvesztését deklarálták (akár automatikusan, akár rendszergazdai műveleten keresztül), Service Fabric és a szolgáltatások bekerülnek annak meghatározására, hogy az adatvesztés ténylegesen megszakadt-e. Ezen a ponton Service Fabric azt is tudja, hogy a többi replika nem jön vissza. Ez a döntés akkor történt, amikor a rendszer nem várta, hogy a kvórum elvesztését megszüntették. A szolgáltatásra vonatkozó legjobb művelet általában lefagy, és megvárja az adott rendszergazdai beavatkozást.
    
-   Ha Service Fabric meghívja `OnDataLossAsync` a metódust, mindig a _feltételezett_ adatvesztés miatt. Service Fabric biztosítja, hogy a rendszer a hívást a _legjobb_ fennmaradó replikára továbbítsa. Ez az a replika, amely a legtöbb folyamatot elvégezte. 
+   Ha Service Fabric meghívja a `OnDataLossAsync` metódust, mindig a _feltételezett_ adatvesztés miatt. Service Fabric biztosítja, hogy a rendszer a hívást a _legjobb_ fennmaradó replikára továbbítsa. Ez az a replika, amely a legtöbb folyamatot elvégezte. 
    
    A _feltételezett_ adatvesztés oka az, hogy a fennmaradó replika állapota megegyezik az elsődlegesvel, amikor a kvórum elvész. Azonban anélkül, hogy ez az állapot össze legyen hasonlítva a szolgáltatással, nincs jó módszer arra, hogy a Service Fabric vagy az operátorok biztosan tudják.     
    
-   Mi a `OnDataLossAsync` módszer tipikus implementációja?
-   1. A rendszer `OnDataLossAsync` elindította a megvalósítási naplókat, és kikapcsolja a szükséges rendszergazdai riasztásokat.
+   Mi a módszer tipikus implementációja `OnDataLossAsync` ?
+   1. A rendszer elindította a megvalósítási naplókat `OnDataLossAsync` , és kikapcsolja a szükséges rendszergazdai riasztásokat.
    1. A megvalósítás általában szünetel, és megvárja a további döntéseket és a manuális teendőket. Ennek az az oka, hogy akkor is elő kell készíteni a biztonsági mentéseket, ha vannak ilyenek. 
    
       Ha például két különböző szolgáltatás koordinálja az adatokat, előfordulhat, hogy ezeket a biztonsági másolatokat módosítani kell annak érdekében, hogy a visszaállítás után a két szolgáltatás által biztosított információk konzisztensek legyenek. 
@@ -171,7 +170,7 @@ Az alábbi műveletek adatvesztést okozhatnak. A követés előtt tekintse meg 
 > Ezeket a metódusokat _soha nem_ lehet biztonságos módon használni, mint az adott partíciók esetében. 
 >
 
-- Használja a `Repair-ServiceFabricPartition -PartitionId` vagy `System.Fabric.FabricClient.ClusterManagementClient.RecoverPartitionAsync(Guid partitionId)` az API-t. Ez az API lehetővé teszi a partíció AZONOSÍTÓjának megadását, hogy kilépjen a kvórum elvesztésével és a lehetséges adatvesztéssel.
+- Használja a `Repair-ServiceFabricPartition -PartitionId` vagy az API-t `System.Fabric.FabricClient.ClusterManagementClient.RecoverPartitionAsync(Guid partitionId)` . Ez az API lehetővé teszi a partíció AZONOSÍTÓjának megadását, hogy kilépjen a kvórum elvesztésével és a lehetséges adatvesztéssel.
 - Ha a fürt olyan gyakori hibákba ütközik, amelyek következtében a szolgáltatások kvórum elvesztése állapotba kerülnek, és a lehetséges _adatvesztés elfogadható_, a megfelelő [QuorumLossWaitDuration](https://docs.microsoft.com/powershell/module/servicefabric/update-servicefabricservice?view=azureservicefabricps) érték megadásával a szolgáltatás automatikusan helyreállítható. A helyreállítás végrehajtása előtt Service Fabric várnia kell a megadott `QuorumLossWaitDuration` értéket (az alapértelmezett érték a végtelen). Ez a módszer *nem* ajánlott, mert váratlan adatvesztést okozhat.
 
 ## <a name="availability-of-the-service-fabric-cluster"></a>A Service Fabric-fürt rendelkezésre állása

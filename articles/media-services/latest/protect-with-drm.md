@@ -16,10 +16,9 @@ ms.date: 05/25/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 14ba5f270138db22a76fd697b264046e22577427
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79086734"
 ---
 # <a name="tutorial-use-drm-dynamic-encryption-and-license-delivery-service"></a>Oktatóanyag: a DRM dinamikus titkosításának és a licenc-kézbesítési szolgáltatásnak a használata
@@ -57,7 +56,7 @@ Az oktatóanyag elvégzésének feltételei a következők:
 * Telepítse a Visual Studio Code vagy a Visual Studio alkalmazást.
 * Hozzon létre egy új Azure Media Services-fiókot [az ebben a gyors útmutatóban](create-account-cli-quickstart.md) leírt módon.
 * Szerezze be a Media Services API-k használatához szükséges hitelesítő adatokat az [adatelérési API-kat](access-api-cli-how-to.md) bemutató szakasz leírását követve.
-* Állítsa be a megfelelő értékeket az alkalmazás konfigurációs fájljába (appSettings. JSON).
+* Állítsa be a megfelelő értékeket az alkalmazás konfigurációs fájljába (appsettings.js).
 
 ## <a name="download-code"></a>Kód letöltése
 
@@ -114,7 +113,7 @@ A tartalomkulcsok biztonságos hozzáférést nyújtanak az objektumokhoz. A tar
 
 Meg kell adnia azokat a **tartalmi kulcsokra vonatkozó házirend** követelményeit (korlátozásait), amelyeknek teljesülniük kell ahhoz, hogy a kulcsok a megadott konfigurációval legyenek kézbesítve. Ebben a példában a következő konfigurációkat és követelményeket állítjuk be:
 
-* Configuration
+* Konfiguráció
 
     A [PlayReady](playready-license-template-overview.md)- és a [Widevine](widevine-license-template-overview.md)-licencek úgy vannak konfigurálva, hogy a Media Services licenctovábbítási szolgáltatása továbbítani tudja azokat. Annak ellenére, hogy ez a minta alkalmazás nem konfigurálja a [Fairplay](fairplay-license-overview.md) -licencet, a Fairplay konfigurálásához használható metódust tartalmaz. A FairPlay-konfigurációt másik lehetőségként is hozzáadhatja.
 
@@ -135,7 +134,7 @@ A kódolás befejezése és a tartalomkulcs-szabályzat beállítása után a k�
 
 Az **adatfolyam-kereső** létrehozásának folyamatát közzétételnek nevezzük. Alapértelmezés szerint az **adatfolyam-kereső** az API-hívások után azonnal érvényes. Addig tart, amíg nem törlik, hacsak nem konfigurálja a nem kötelező kezdési és befejezési időpontokat.
 
-**Adatfolyam-kereső**létrehozásakor meg kell adnia a kívántat `StreamingPolicyName`. Ebben az oktatóanyagban az egyik előre definiált adatfolyam-szabályzatot használjuk, amely azt ismerteti, Azure Media Services hogyan teheti közzé a tartalmat a streaminghez. Ebben a példában a StreamingLocator.StreamingPolicyName elemet állítjuk be a „Predefined_MultiDrmCencStreaming” szabályzathoz. A rendszer alkalmazza a PlayReady és a Widevine titkosítást, és a kulcsot a konfigurált DRM-licencek alapján továbbítja a rendszer a lejátszási ügyfélnek. Ha CBCS (FairPlay) licenccel is titkosítani szeretné a streamet, használja a következőt: „Predefined_MultiDrmStreaming”.
+**Adatfolyam-kereső**létrehozásakor meg kell adnia a kívántat `StreamingPolicyName` . Ebben az oktatóanyagban az egyik előre definiált adatfolyam-szabályzatot használjuk, amely azt ismerteti, Azure Media Services hogyan teheti közzé a tartalmat a streaminghez. Ebben a példában a StreamingLocator.StreamingPolicyName elemet állítjuk be a „Predefined_MultiDrmCencStreaming” szabályzathoz. A rendszer alkalmazza a PlayReady és a Widevine titkosítást, és a kulcsot a konfigurált DRM-licencek alapján továbbítja a rendszer a lejátszási ügyfélnek. Ha CBCS (FairPlay) licenccel is titkosítani szeretné a streamet, használja a következőt: „Predefined_MultiDrmStreaming”.
 
 > [!IMPORTANT]
 > Ha egyéni [folyamatos átviteli szabályzatot](streaming-policy-concept.md)használ, meg kell terveznie az ilyen szabályzatok korlátozott készletét a Media Service-fiókjához, és újra fel kell használni azokat a StreamingLocators, amikor ugyanazok a titkosítási beállítások és protokollok szükségesek. A Media Service-fiókban korlátozva van a StreamingPolicy-bejegyzések száma. Minden StreamingLocator új StreamingPolicy kell létrehoznia.
@@ -168,7 +167,7 @@ Megnyithat egy böngészőt, és beillesztheti az eredményül kapott URL-t, ame
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#CleanUp)]
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs szüksége az erőforráscsoportban lévő egyik erőforrásra sem, beleértve a jelen oktatóanyagban létrehozott Media Services- és Storage-fiókokat, törölje a korábban létrehozott erőforráscsoportot.
 

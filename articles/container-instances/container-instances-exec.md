@@ -4,10 +4,9 @@ description: Megtudhatja, hogyan hajthat végre egy parancsot egy olyan tároló
 ms.topic: article
 ms.date: 03/30/2018
 ms.openlocfilehash: de48e6ac246e2b0751561b4c60bb63d88b599bdf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79247201"
 ---
 # <a name="execute-a-command-in-a-running-azure-container-instance"></a>Parancs végrehajtása egy futó Azure Container-példányban
@@ -28,7 +27,7 @@ Például egy bash-rendszerhéj elindításához egy Nginx-tárolóban:
 az container exec --resource-group myResourceGroup --name mynginx --exec-command "/bin/bash"
 ```
 
-Az alábbi példában a bash rendszerhéj egy futó Linux-tárolóban indul el, amely egy olyan terminált biztosít, `ls` amelyben a végrehajtás fut:
+Az alábbi példában a bash rendszerhéj egy futó Linux-tárolóban indul el, amely egy olyan terminált biztosít, amelyben a `ls` végrehajtás fut:
 
 ```output
 root@caas-83e6c883014b427f9b277a2bba3b7b5f-708716530-2qv47:/# ls
@@ -72,7 +71,7 @@ Bye.
 
 ## <a name="multi-container-groups"></a>Többtárolós csoportok
 
-Ha a [tároló-csoport](container-instances-container-groups.md) több tárolót tartalmaz, például egy alkalmazás-tárolót és egy az oldalkocsit, adja meg annak a tárolónak a nevét, `--container-name`amelyben a parancsot futtatni kívánja.
+Ha a [tároló-csoport](container-instances-container-groups.md) több tárolót tartalmaz, például egy alkalmazás-tárolót és egy az oldalkocsit, adja meg annak a tárolónak a nevét, amelyben a parancsot futtatni kívánja `--container-name` .
 
 Például a Container Group *mynginx* két tároló, *Nginx-app* és *Logger*. Rendszerhéj elindítása az *Nginx-app* tárolóban:
 
@@ -82,7 +81,7 @@ az container exec --resource-group myResourceGroup --name mynginx --container-na
 
 ## <a name="restrictions"></a>Korlátozások
 
-Azure Container Instances jelenleg egyetlen folyamat indítását támogatja az [az Container exec][az-container-exec]paranccsal, és a parancs argumentumai nem adhatók át. Például nem lehet a (z) vagy a `sh -c "echo FOO && echo BAR"`Execute `echo FOO`parancshoz hasonló parancsokat kikötni.
+Azure Container Instances jelenleg egyetlen folyamat indítását támogatja az [az Container exec][az-container-exec]paranccsal, és a parancs argumentumai nem adhatók át. Például nem lehet a (z) vagy a Execute parancshoz hasonló parancsokat kikötni `sh -c "echo FOO && echo BAR"` `echo FOO` .
 
 ## <a name="next-steps"></a>További lépések
 

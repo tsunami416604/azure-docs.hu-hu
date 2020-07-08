@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 02/06/2020
 ms.author: tagore
 ms.openlocfilehash: c41292a05e5c857cd0b1c120784a400f2f5410ab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78945358"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-cli"></a>IaaS-erőforrások migrálása a klasszikusból Resource Manager-alapú környezetbe az Azure CLI használatával
@@ -67,11 +66,11 @@ Regisztrálja az áttelepítési erőforrás-szolgáltatót az alábbi parancs h
 
     azure provider register Microsoft.ClassicInfrastructureMigrate
 
-Várjon öt percet, amíg a regisztráció befejeződik. A jóváhagyás állapotát a következő parancs használatával tekintheti meg. A `Registered` folytatás előtt győződjön meg arról, hogy a RegistrationState.
+Várjon öt percet, amíg a regisztráció befejeződik. A jóváhagyás állapotát a következő parancs használatával tekintheti meg. A folytatás előtt győződjön meg arról, hogy a RegistrationState `Registered` .
 
     azure provider show Microsoft.ClassicInfrastructureMigrate
 
-Most váltson a CLI- `asm` re a módba.
+Most váltson a CLI-re a `asm` módba.
 
     azure config mode asm
 
@@ -118,7 +117,7 @@ Ha a Resource Manager-alapú üzemi modellben meglévő virtuális hálózatra k
 
     azure service deployment prepare-migration <serviceName> <deploymentName> existing <destinationVNETResourceGroupName> <subnetName> <vnetName>
 
-Az előkészítési művelet sikeres végrehajtása után megtekintheti a részletes kimenetet, hogy beolvassa a virtuális gépek áttelepítési állapotát, és győződjön meg `Prepared` arról, hogy azok állapotban vannak.
+Az előkészítési művelet sikeres végrehajtása után megtekintheti a részletes kimenetet, hogy beolvassa a virtuális gépek áttelepítési állapotát, és győződjön meg arról, hogy azok `Prepared` állapotban vannak.
 
     azure vm show <vmName> -vv
 

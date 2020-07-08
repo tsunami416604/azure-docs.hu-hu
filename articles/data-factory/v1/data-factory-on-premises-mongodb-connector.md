@@ -10,10 +10,9 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/13/2018
 ms.openlocfilehash: edddd100bddab1d642a8169353298a2d20620274
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79281339"
 ---
 # <a name="move-data-from-mongodb-using-azure-data-factory"></a>Adatok áthelyezése a MongoDB a Azure Data Factory használatával
@@ -63,16 +62,16 @@ A következő táblázat a **OnPremisesMongoDB** társított szolgáltatáshoz t
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| type |A Type tulajdonságot a következőre kell beállítani: **OnPremisesMongoDb** |Igen |
-| kiszolgáló |A MongoDB-kiszolgáló IP-címe vagy állomásneve. |Igen |
+| típus |A Type tulajdonságot a következőre kell beállítani: **OnPremisesMongoDb** |Yes |
+| kiszolgáló |A MongoDB-kiszolgáló IP-címe vagy állomásneve. |Yes |
 | port |A MongoDB-kiszolgáló által az ügyfélkapcsolatok figyeléséhez használt TCP-port. |Nem kötelező, alapértelmezett érték: 27017 |
-| authenticationType |Alapszintű vagy névtelen. |Igen |
+| authenticationType |Alapszintű vagy névtelen. |Yes |
 | felhasználónév |Felhasználói fiók a MongoDB eléréséhez. |Igen (ha alapszintű hitelesítést használ). |
 | jelszó |A felhasználó jelszava. |Igen (ha alapszintű hitelesítést használ). |
 | authSource |Annak a MongoDB-adatbázisnak a neve, amelyet a hitelesítés hitelesítő adatainak ellenőrzéséhez használni kíván. |Nem kötelező (ha alapszintű hitelesítést használ). alapértelmezett: a databaseName tulajdonsággal megadott rendszergazdai fiókot és adatbázist használja. |
-| databaseName |Az elérni kívánt MongoDB-adatbázis neve. |Igen |
-| Átjáró neve |Azon átjáró neve, amely hozzáfér az adattárhoz. |Igen |
-| encryptedCredential |Az átjáró által titkosított hitelesítő adat. |Optional |
+| databaseName |Az elérni kívánt MongoDB-adatbázis neve. |Yes |
+| Átjáró neve |Azon átjáró neve, amely hozzáfér az adattárhoz. |Yes |
+| encryptedCredential |Az átjáró által titkosított hitelesítő adat. |Választható |
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 Az adatkészletek definiálásához rendelkezésre álló & tulajdonságok teljes listáját az [adatkészletek létrehozása](data-factory-create-datasets.md) című cikkben találja. Az adathalmazok (például a struktúra, a rendelkezésre állás és a szabályzat) minden adatkészlet esetében hasonlóak (például az Azure SQL, az Azure Blob, az Azure Table stb.).
@@ -81,7 +80,7 @@ A **typeProperties** szakasz különbözik az egyes adatkészletek típusaitól,
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| collectionName |A gyűjtemény neve a MongoDB adatbázisban. |Igen |
+| collectionName |A gyűjtemény neve a MongoDB adatbázisban. |Yes |
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 A tevékenységek definiálásához elérhető & tulajdonságok teljes listáját a [folyamatok létrehozása](data-factory-create-pipelines.md) című cikkben találja. A tulajdonságok, például a név, a leírás, a bemeneti és a kimeneti táblák, valamint a szabályzatok minden típusú tevékenységhez elérhetők.
@@ -293,7 +292,7 @@ Az adatok MongoDB való áthelyezésekor a rendszer a következő leképezéseke
 | MongoDB típusa | .NET-keretrendszer típusa |
 | --- | --- |
 | Bináris |Bájt [] |
-| Logikai |Logikai |
+| Logikai érték |Logikai |
 | Dátum |DateTime |
 | NumberDouble |Double |
 | NumberInt |Int32 |

@@ -11,10 +11,9 @@ ms.topic: article
 ms.date: 06/22/2018
 ms.author: tagore
 ms.openlocfilehash: c830dc0ee38ad808579a62274e3db87d0696e099
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79214721"
 ---
 # <a name="install-net-on-azure-cloud-services-roles"></a>A .NET telepítése Azure Cloud Services-szerepkörökre
@@ -35,11 +34,11 @@ A .NET-keretrendszerhez készült web Installer letöltéséhez válassza ki a t
 * [.NET-keretrendszer 4.6.2 web Installer](https://www.microsoft.com/download/details.aspx?id=53345)
 
 A telepítő hozzáadása *webes* szerepkörhöz:
-  1. **Megoldáskezelő**a Cloud Service-projekt **szerepkörei** alatt kattintson a jobb gombbal a *webes* szerepkörre, és válassza az**új mappa** **hozzáadása** > lehetőséget. Hozzon létre egy **bin**nevű mappát.
-  2. Kattintson a jobb gombbal a Bin mappára, **Add** > és válassza a**meglévő elem hozzáadása elemet**. Válassza ki a .NET-telepítőt, és adja hozzá a bin mappához.
+  1. **Megoldáskezelő**a Cloud Service-projekt **szerepkörei** alatt kattintson a jobb gombbal a *webes* szerepkörre, és válassza **Add**az  >  **új mappa**hozzáadása lehetőséget. Hozzon létre egy **bin**nevű mappát.
+  2. Kattintson a jobb gombbal a Bin mappára, **Add**és válassza a  >  **meglévő elem hozzáadása elemet**. Válassza ki a .NET-telepítőt, és adja hozzá a bin mappához.
   
 A telepítő hozzáadása *feldolgozói* szerepkörhöz:
-* Kattintson a jobb gombbal a *feldolgozói* szerepkörre, és válassza a**meglévő elem** **hozzáadása** > lehetőséget. Válassza ki a .NET-telepítőt, és adja hozzá a szerepkörhöz. 
+* Kattintson a jobb gombbal a *feldolgozói* szerepkörre, és válassza a **Add**  >  **meglévő elem**hozzáadása lehetőséget. Válassza ki a .NET-telepítőt, és adja hozzá a szerepkörhöz. 
 
 Ha a fájlokat így hozzáadja a szerepkör-tartalom mappájához, azok automatikusan hozzáadódnak a Cloud Service-csomaghoz. Ezután a rendszer a virtuális gép egy konzisztens helyére telepíti a fájlokat. Ismételje meg ezt a folyamatot a felhőalapú szolgáltatás minden webes és feldolgozói szerepköre esetében, hogy minden szerepkör rendelkezik a telepítő másolatával.
 
@@ -197,7 +196,7 @@ Az indítási feladatokkal műveleteket hajthat végre a szerepkörök elkezdés
    EXIT /B 0
    ```
 
-3. Adja hozzá az install. cmd fájlt az egyes szerepkörökhöz **Add** > **meglévő elem** hozzáadása **megoldáskezelő** a témakör korábbi részében leírtak szerint. 
+3. Adja hozzá az install. cmd fájlt az egyes szerepkörökhöz **Add**  >  **meglévő elem** hozzáadása **megoldáskezelő** a témakör korábbi részében leírtak szerint. 
 
     A lépés befejezése után az összes szerepkörnek rendelkeznie kell a .NET Installer-fájllal és a install. cmd fájllal.
 
@@ -222,7 +221,7 @@ Ez az XML úgy konfigurálja a diagnosztikát, hogy a **NETFXInstall** erőforr�
 ## <a name="deploy-your-cloud-service"></a>A Cloud Service üzembe helyezése
 A Cloud Service üzembe helyezésekor az indítási feladatok telepítik a .NET-keretrendszert, ha még nincs telepítve. A felhőalapú szolgáltatási szerepkörök *elfoglalt* állapotban vannak a keretrendszer telepítésekor. Ha a keretrendszer telepítése újraindítást igényel, előfordulhat, hogy a szolgáltatási szerepkörök is újraindulnak. 
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 * [A .NET-keretrendszer telepítése][Installing the .NET Framework]
 * [A .NET-keretrendszer telepített verzióinak meghatározása][How to: Determine Which .NET Framework Versions Are Installed]
 * [A .NET-keretrendszer telepítésének hibaelhárítása][Troubleshooting .NET Framework Installations]
