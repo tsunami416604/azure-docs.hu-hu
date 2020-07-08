@@ -4,10 +4,10 @@ description: Ebből a cikkből megtudhatja, hogyan adhat hozzá dinamikusan part
 ms.topic: how-to
 ms.date: 06/23/2020
 ms.openlocfilehash: ea0477dcc695c7a2fb936daadc3679c94bfac12f
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85317950"
 ---
 # <a name="dynamically-add-partitions-to-an-event-hub-apache-kafka-topic-in-azure-event-hubs"></a>Partíciók dinamikus hozzáadása egy Event hub-hoz (Apache Kafka témakörhöz) az Azure-ban Event Hubs

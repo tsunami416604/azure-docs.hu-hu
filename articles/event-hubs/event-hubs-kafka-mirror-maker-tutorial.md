@@ -4,10 +4,10 @@ description: Ebből a cikkből megtudhatja, hogyan használhatja a Kafka-MirrorM
 ms.topic: how-to
 ms.date: 06/23/2020
 ms.openlocfilehash: aea8ebcfa65d5f4c90aa1908d03f0fcde8906bba
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85320190"
 ---
 # <a name="use-kafka-mirrormaker-with-event-hubs-for-apache-kafka"></a>A Kafka MirrorMaker használata a Event Hubs for Apache Kafka
@@ -126,5 +126,5 @@ Ha többet szeretne megtudni a Kafka-Event Hubsről, tekintse meg a következő 
 - [Apache Flink csatlakoztatása egy eseményközponthoz](event-hubs-kafka-flink-tutorial.md)
 - [A Kafka-kapcsolat integrálása az Event hubhoz](event-hubs-kafka-connect-tutorial.md)
 - [További példák a GitHubon](https://github.com/Azure/azure-event-hubs-for-kafka)
-- [Az Akka Streams csatlakoztatása eseményközponthoz](event-hubs-kafka-akka-streams-tutorial.md)
+- [A befogadó streamek összekötése egy Event hubhoz](event-hubs-kafka-akka-streams-tutorial.md)
 - [Apache Kafka fejlesztői útmutató az Azure-hoz Event Hubs](apache-kafka-developer-guide.md)

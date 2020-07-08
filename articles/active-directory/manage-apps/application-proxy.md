@@ -14,10 +14,10 @@ ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
 ms.openlocfilehash: 84cd6f9d7612cc6cf5829c03c398dd65a6eec412
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85318028"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-active-directorys-application-proxy"></a>Távoli hozzáférés helyszíni alkalmazásokhoz Azure Active Directory alkalmazásproxy használatával
@@ -60,7 +60,7 @@ Az alábbi ábra bemutatja, hogyan működik együtt az Azure AD és az alkalmaz
 5. Az összekötő elküldi a kérést a helyszíni alkalmazásnak.
 6. A választ az összekötő és az alkalmazásproxy szolgáltatás továbbítja a felhasználónak.
 
-| Összetevő | Leírás |
+| Összetevő | Description |
 | --------- | ----------- |
 | Végpont  | A végpont egy URL-cím vagy egy [végfelhasználói portál](end-user-experiences.md). A felhasználók a hálózaton kívül érhetik el az alkalmazásokat egy külső URL-cím elérésével. A hálózaton belüli felhasználók egy URL-címen vagy egy végfelhasználói portálon keresztül érhetik el az alkalmazást. Ha a felhasználók ezen végpontok egyikén jelentkeznek, a hitelesítés az Azure AD-ben történik, majd az összekötőn keresztül a helyszíni alkalmazáshoz irányítja őket.|
 | Azure AD | Az Azure AD a felhőben tárolt bérlői könyvtár használatával végzi a hitelesítést. |

@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.openlocfilehash: 4f1154b994e512521edf22a3b8dc5819a93a5249
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85319208"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Az Azure HDInsight 3,6 kaptár számítási feladatait áttelepítheti HDInsight 4,0
@@ -44,7 +44,7 @@ Használja az alábbi táblázatban szereplő értékeket. Cserélje le a `SQLSE
 |Tulajdonság | Érték |
 |---|---|
 |Parancsfájl típusa|– Egyéni|
-|Name (Név)|Struktúra frissítése|
+|Name|Struktúra frissítése|
 |Bash-parancsfájl URI-ja|`https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/launch-schema-upgrade.sh`|
 |Csomópont típusa (i)|Head|
 |Paraméterek|SQLSERVERNAME DATABASENAME FELHASZNÁLÓNÉV JELSZAVA|
@@ -217,7 +217,7 @@ A HDInsight 3,6-ben a kaptár-kiszolgálóval való interakcióra szolgáló gra
 |Tulajdonság | Érték |
 |---|---|
 |Parancsfájl típusa|– Egyéni|
-|Name (Név)|DAS|
+|Name|DAS|
 |Bash-parancsfájl URI-ja|`https://hdiconfigactions.blob.core.windows.net/dasinstaller/LaunchDASInstaller.sh`|
 |Csomópont típusa (i)|Head|
 

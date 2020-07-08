@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 9b5a2bb939384ff06423693c8e4a788b80f3908c
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85318892"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory – JSON-parancsfájlok leírása
@@ -83,7 +83,7 @@ A folyamat definíciójában (tevékenységek elem) belüli tevékenység magas 
 
 A következő táblázat a tevékenység JSON-definíciójában található tulajdonságokat ismerteti:
 
-| Címke | Leírás | Kötelező |
+| Címke | Description | Kötelező |
 | --- | --- | --- |
 | name |A tevékenység neve. Adjon meg egy nevet, amely azt a műveletet jelöli, amely szerint a tevékenység konfigurálva van<br/><ul><li>A karakterek maximális száma: 260</li><li>Betűvel vagy aláhúzással () kell kezdődnie \_</li><li>A következő karakterek nem engedélyezettek: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":" \\ , ""</li></ul> |Yes |
 | leírás |Azon szöveg, amely leírja, hogy milyen tevékenység van használatban. |No |
@@ -98,7 +98,7 @@ A következő táblázat a tevékenység JSON-definíciójában található tula
 ### <a name="policies"></a>Házirendek
 A házirendek hatással vannak egy tevékenység futásidejű viselkedésére, különösen akkor, ha egy tábla szeletét dolgozzák fel. A részleteket a következő táblázat tartalmazza.
 
-| Tulajdonság | Megengedett értékek | Alapértelmezett érték | Leírás |
+| Tulajdonság | Megengedett értékek | Alapértelmezett érték | Description |
 | --- | --- | --- | --- |
 | Egyidejűség |Egész szám <br/><br/>Maximális érték: 10 |1 |A tevékenység egyidejű végrehajtásának száma.<br/><br/>Meghatározza, hogy hány párhuzamos tevékenység-végrehajtás történhet a különböző szeleteken. Ha például egy tevékenységnek az elérhető adatmennyiség nagy készletén kell haladnia, a nagyobb párhuzamossági érték felgyorsítja az adatfeldolgozást. |
 | executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |Meghatározza a feldolgozás alatt álló adatszeletek sorrendjét.<br/><br/>Ha például 2 szelete van (egy 16:00-kor történik, egy másik pedig 5 órakor), és mindkettő függőben van. Ha úgy állítja be a executionPriorityOrder, hogy a NewestFirst, a szeletet 5 ÓRAKOR dolgozza fel a rendszer. Hasonlóképpen, ha úgy állítja be a executionPriorityORder, hogy a OldestFIrst legyen, akkor a szelet 4 ÓRAKOR lesz feldolgozva. |
@@ -334,12 +334,12 @@ A következő rendelkezésre állási szakasz azt adja meg, hogy a kimeneti adat
 
 Az adatkészlet definíciójának **szabályzat** szakasza meghatározza azokat a feltételeket vagy feltételt, amelyeknek az adatkészlet-szeleteknek teljesíteniük kell.
 
-| Házirend neve | Leírás | Alkalmazva erre | Kötelező | Alapértelmezett |
+| Házirend neve | Description | Alkalmazva erre | Kötelező | Alapértelmezett |
 | --- | --- | --- | --- | --- |
 | minimumSizeMB |Ellenőrzi, hogy egy **Azure-blobban** lévő adat megfelel-e a minimális méretre vonatkozó követelményeknek (megabájtban). |Azure-blob |No |NA |
 | minimumRows |Ellenőrzi, hogy **Azure SQL Database** vagy egy **Azure-táblában** lévő adatmennyiség tartalmazza-e a sorok minimális számát. |<ul><li>Azure SQL Database</li><li>Azure-tábla</li></ul> |No |NA |
 
-**Például**
+**Példa:**
 
 ```json
 "policy":
@@ -354,7 +354,7 @@ Az adatkészlet definíciójának **szabályzat** szakasza meghatározza azokat 
 
 Ha Azure Data Factory nem állít elő adatkészletet, akkor azt **külsőnek**kell megjelölni. Ez a beállítás általában a folyamat első tevékenységének bemenetére vonatkozik, kivéve, ha a tevékenység vagy a folyamat láncolására kerül sor.
 
-| Name (Név) | Leírás | Kötelező | Alapértelmezett érték |
+| Name | Description | Kötelező | Alapértelmezett érték |
 | --- | --- | --- | --- |
 | dataDelay |Az adott szelet külső adatának rendelkezésre állására vonatkozó ellenőrzések késleltetésének ideje. Ha például az adatmennyiség óránként elérhető, az ellenőrzéssel megtekintheti a külső adatforrásokat, és a megfelelő szelet készen áll a dataDelay használatával.<br/><br/>Csak a jelen időpontra érvényes.  Ha például ez a 1:00 PM, és ez az érték 10 perc, az érvényesítés 1:10 ÓRAKOR kezdődik.<br/><br/>Ez a beállítás nem érinti a múltban lévő szeleteket (a szeletek a szeletek befejezési idejével + dataDelay < most) késleltetés nélkül lesznek feldolgozva.<br/><br/>A 23:59 óránál nagyobb időt kell megadni a formátum használatával `day.hours:minutes:seconds` . Ha például 24 órát szeretne megadni, ne használja a 24:00:00; Ehelyett használja az 1.00:00:00 értéket. Ha 24:00:00-et használ, azt 24 nap (24.00:00:00) kezeli. 1 és 4 óra esetén a 1:04:00:00-es megadását kell megadnia. |No |0 |
 | retryInterval |A hiba és a következő újrapróbálkozási kísérlet közötti várakozási idő. Ha a próbálkozás sikertelen, a következő próbálkozás a retryInterval után következik be. <br/><br/>Ha jelenleg 1:00 PM, kezdjük az első próbálkozással. Ha az első érvényesítési ellenőrzés befejezésének időtartama 1 perc, és a művelet meghiúsult, a következő Újrapróbálkozás 1:00 + 1 percnél (időtartam) + 1 perc (újrapróbálkozás időköze) = 1:02 PM. <br/><br/>A múltban a szeletek esetében nincs késés. Az újrapróbálkozás azonnal megtörténik. |No |00:01:00 (1 perc) |
@@ -1287,7 +1287,7 @@ Az Azure Cognitive Search társított szolgáltatás definiálásához állítsa
 | Tulajdonság | Leírás | Kötelező |
 | -------- | ----------- | -------- |
 | url | A keresési szolgáltatás URL-címe. | Yes |
-| key | A keresési szolgáltatáshoz tartozó rendszergazdai kulcs. | Yes |
+| kulcs | A keresési szolgáltatáshoz tartozó rendszergazdai kulcs. | Yes |
 
 #### <a name="example"></a>Példa
 
@@ -1401,7 +1401,7 @@ Ha az Azure Storage-fiókot egy adatgyárhoz szeretné kapcsolni a **fiók kulcs
 | típus |A Type tulajdonságot a következőre kell beállítani: **AzureStorage** |Yes |
 | connectionString |Itt adhatja meg az Azure Storage-hoz a connectionString tulajdonsághoz való kapcsolódáshoz szükséges adatokat. |Yes |
 
-**Például**
+**Példa:**
 
 ```json
 {
@@ -1423,7 +1423,7 @@ Az Azure Storage SAS társított szolgáltatása lehetővé teszi egy Azure Stor
 | típus |A Type tulajdonságot a következőre kell beállítani: **AzureStorageSas** |Yes |
 | sasUri |Az Azure Storage-erőforrásokhoz, például a blobhoz, a tárolóhoz vagy a táblához válassza a közös hozzáférési aláírás URI-JÁT. |Yes |
 
-**Például**
+**Példa:**
 
 ```json
 {
@@ -3176,7 +3176,7 @@ Az Amazon S3-adatkészletek definiálásához állítsa az adatkészlet **típus
 | Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
 | bucketName |Az S3-gyűjtő neve. |Sztring |Yes |
-| key |Az S3-objektum kulcsa. |Sztring |No |
+| kulcs |Az S3-objektum kulcsa. |Sztring |No |
 | előtag |Az S3-objektum kulcsának előtagja. Azok az objektumok, amelyek esetében ezzel az előtaggal kezdődnek a kulcsok. Csak akkor érvényes, ha a kulcs üres. |Sztring |No |
 | version |Az S3-verzió verziója, ha az S3 Verziószámozás engedélyezve van. |Sztring |No |
 | formátumban | A következő típusú formátumok támogatottak: **Szövegformátum**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. A **Type (típus** ) tulajdonságot állítsa a Format értékre a következő értékek egyikére. További információkért lásd: [Szövegformátum](data-factory-supported-file-and-compression-formats.md#text-format), JSON- [Formátum](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formátum](data-factory-supported-file-and-compression-formats.md#avro-format), [ork-formátum](data-factory-supported-file-and-compression-formats.md#orc-format)és a [parketta formátuma](data-factory-supported-file-and-compression-formats.md#parquet-format) című rész. <br><br> Ha **fájlokat szeretne másolni** a fájl alapú tárolók között (bináris másolás), ugorja át a formátum szakaszt mind a bemeneti, mind a kimeneti adatkészlet-definíciókban. |No | |
@@ -5057,7 +5057,7 @@ További információ: SQL Server- [összekötő](data-factory-sqlserver-connect
 
 ## <a name="data-transformation-activities"></a>ADATÁTALAKÍTÁSI TEVÉKENYSÉGEK
 
-Tevékenység | Leírás
+Tevékenység | Description
 -------- | -----------
 [HDInsight-struktúra tevékenység](#hdinsight-hive-activity) | A Data Factory folyamat HDInsight-struktúrájának tevékenysége a saját vagy igény szerinti Windows/Linux-alapú HDInsight-fürtön hajtja végre a kaptár-lekérdezéseket.
 [HDInsight Pig-tevékenység](#hdinsight-pig-activity) | A HDInsight Pig-tevékenység egy Data Factory folyamat során a Pig-lekérdezéseket a saját vagy igény szerinti Windows/Linux-alapú HDInsight-fürtön hajtja végre.
@@ -5076,7 +5076,7 @@ A következő tulajdonságokat adhatja meg egy struktúra-tevékenység JSON-def
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| szkriptet. |A struktúra-parancsfájl beágyazottként való megadásának meghatározása |No |
+| parancsfájl |A struktúra-parancsfájl beágyazottként való megadásának meghatározása |No |
 | parancsfájl elérési útja |Tárolja a kaptár parancsfájlt egy Azure Blob Storage-tárolóban, és adja meg a fájl elérési útját. Használja a "script" vagy a "scriptPath" tulajdonságot. Mindkettő nem használható együtt. A fájl neve megkülönbözteti a kis-és nagybetűket. |No |
 | meghatározza |Adja meg a paramétereket kulcs/érték párokként a kaptár parancsfájlban a "hiveconf" használatával való hivatkozáshoz. |No |
 
@@ -5122,7 +5122,7 @@ A következő tulajdonságokat adhatja meg egy Pig-tevékenység JSON-definíci�
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| szkriptet. |Adja meg a Pig-szkriptet beágyazottként |No |
+| parancsfájl |Adja meg a Pig-szkriptet beágyazottként |No |
 | parancsfájl elérési útja |Tárolja a Pig-szkriptet egy Azure Blob Storage-tárolóban, és adja meg a fájl elérési útját. Használja a "script" vagy a "scriptPath" tulajdonságot. Mindkettő nem használható együtt. A fájl neve megkülönbözteti a kis-és nagybetűket. |No |
 | meghatározza |Adja meg a paramétereket kulcs/érték párokként a Pig-szkripten belüli hivatkozáshoz |No |
 
@@ -5476,7 +5476,7 @@ A következő tulajdonságokat adhatja meg egy U-SQL-tevékenység JSON-definíc
 |:--- |:--- |:--- |
 | scriptPath |A U-SQL-parancsfájlt tartalmazó mappa elérési útja. A fájl neve megkülönbözteti a kis-és nagybetűket. |Nem (ha parancsfájlt használ) |
 | Scriptlinkedservice szolgáltatás |Társított szolgáltatás, amely összekapcsolja a parancsfájlt tartalmazó tárolót az adatgyárba |Nem (ha parancsfájlt használ) |
-| szkriptet. |A scriptPath és a Scriptlinkedservice szolgáltatás meghatározása helyett beágyazott parancsfájlt adjon meg. Például: "script": "CREATE DATABASE test". |Nem (scriptPath és Scriptlinkedservice szolgáltatás használata esetén) |
+| parancsfájl |A scriptPath és a Scriptlinkedservice szolgáltatás meghatározása helyett beágyazott parancsfájlt adjon meg. Például: "script": "CREATE DATABASE test". |Nem (scriptPath és Scriptlinkedservice szolgáltatás használata esetén) |
 | Analyticsunits |A feladatok futtatásához egyidejűleg használt csomópontok maximális száma. |No |
 | prioritású |Meghatározza, hogy az összes várólistán lévő feladatra kiválassza az első futtatást. Minél kisebb a szám, annál magasabb a prioritás. |No |
 | paraméterek |A U-SQL-parancsfájl paramétereinek |No |

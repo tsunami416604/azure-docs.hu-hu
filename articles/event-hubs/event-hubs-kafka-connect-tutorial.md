@@ -4,10 +4,10 @@ description: Ez a cikk tájékoztatást nyújt arról, hogyan használható a Ap
 ms.topic: how-to
 ms.date: 06/23/2020
 ms.openlocfilehash: 2e7a6b406b6d33c94c6fddea2f73b70c24f45f86
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85320172"
 ---
 # <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-preview"></a>Az Apache Kafka Connect-támogatás és az Azure Event Hubs integrálása (előzetes verzió)
@@ -158,5 +158,5 @@ Ha többet szeretne megtudni a Kafka-Event Hubsről, tekintse meg a következő 
 - [Apache Spark csatlakoztatása egy eseményközponthoz](event-hubs-kafka-spark-tutorial.md)
 - [Apache Flink csatlakoztatása egy eseményközponthoz](event-hubs-kafka-flink-tutorial.md)
 - [További példák a GitHubon](https://github.com/Azure/azure-event-hubs-for-kafka)
-- [Az Akka Streams csatlakoztatása eseményközponthoz](event-hubs-kafka-akka-streams-tutorial.md)
+- [A befogadó streamek összekötése egy Event hubhoz](event-hubs-kafka-akka-streams-tutorial.md)
 - [Apache Kafka fejlesztői útmutató az Azure-hoz Event Hubs](apache-kafka-developer-guide.md)

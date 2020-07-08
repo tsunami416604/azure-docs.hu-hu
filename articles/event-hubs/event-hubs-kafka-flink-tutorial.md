@@ -4,10 +4,10 @@ description: Ez a cikk azt ismerteti, hogyan csatlakoztatható az Apache flink e
 ms.topic: how-to
 ms.date: 06/23/2020
 ms.openlocfilehash: 43cbf99a6ba2c0384ceffc10b01916f6ad22b26a
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85320138"
 ---
 # <a name="use-apache-flink-with-azure-event-hubs-for-apache-kafka"></a>Az Apache Flink használata az Apache Kafkához készült Event Hubs szolgáltatással
@@ -123,5 +123,5 @@ Ha többet szeretne megtudni a Kafka-Event Hubsről, tekintse meg a következő 
 - [Apache Spark csatlakoztatása egy eseményközponthoz](event-hubs-kafka-spark-tutorial.md)
 - [A Kafka-kapcsolat integrálása az Event hubhoz](event-hubs-kafka-connect-tutorial.md)
 - [További példák a GitHubon](https://github.com/Azure/azure-event-hubs-for-kafka)
-- [Az Akka Streams csatlakoztatása eseményközponthoz](event-hubs-kafka-akka-streams-tutorial.md)
+- [A befogadó streamek összekötése egy Event hubhoz](event-hubs-kafka-akka-streams-tutorial.md)
 - [Apache Kafka fejlesztői útmutató az Azure-hoz Event Hubs](apache-kafka-developer-guide.md)

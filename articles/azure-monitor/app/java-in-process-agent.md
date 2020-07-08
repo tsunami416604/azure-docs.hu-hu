@@ -4,10 +4,10 @@ description: Alkalmazások teljesítményének figyelése bármilyen környezetb
 ms.topic: conceptual
 ms.date: 03/29/2020
 ms.openlocfilehash: 3e3d108603ad6210143deea58049ff7b230bb6fa
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85319703"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>A Java Code unapplication monitoring Azure monitor Application Insights – nyilvános előzetes verzió
@@ -20,7 +20,7 @@ Az Application Insights Java SDK-nak az alkalmazáshoz való hozzáadása már n
 
 Továbbra is küldhet egyéni telemetria az alkalmazásból. Az 3,0-ügynök nyomon követheti és korrelálhatja azt az összes automatikusan összegyűjtött telemetria együtt.
 
-## <a name="quickstart"></a>Első lépések
+## <a name="quickstart"></a>Gyorsútmutató
 
 **1. Töltse le az ügynököt**
 

@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: e0707f9a7694741f54771699f5aeb3b452b11b8c
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85319720"
 ---
 # <a name="data-factory-scheduling-and-execution"></a>Data Factory ütemezés és végrehajtás
@@ -25,8 +25,8 @@ ms.locfileid: "85319720"
 Ez a cikk ismerteti az Azure Data Factory-alkalmazásmodell ütemezési és végrehajtási aspektusait. Ez a cikk azt feltételezi, hogy tisztában van a Data Factory az alkalmazás modelljével kapcsolatos fogalmak, például a tevékenységek, a folyamatok, a társított szolgáltatások és az adatkészletek alapjaival. A Azure Data Factory alapvető fogalmait a következő cikkekben találja:
 
 * [A Data Factory bemutatása](data-factory-introduction.md)
-* [Folyamatok](data-factory-create-pipelines.md)
-* [Adathalmazok](data-factory-create-datasets.md) 
+* [Pipelines](data-factory-create-pipelines.md)
+* [Adatkészletek](data-factory-create-datasets.md) 
 
 ## <a name="start-and-end-times-of-pipeline"></a>A folyamat kezdő és befejező időpontja
 A folyamat csak a **kezdő** és a **befejező** időpont között aktív. A kezdési időpont előtt vagy a befejezési időpont előtt nem hajtható végre. Ha a folyamat szüneteltetve van, a rendszer nem hajtja végre az indítási és befejezési időponttól függetlenül. Ahhoz, hogy egy folyamat fusson, nem szabad szüneteltetni. Ezeket a beállításokat (indítás, Befejezés, szüneteltetett) a folyamat definíciójában találja: 
@@ -230,7 +230,7 @@ Az adatkészlet rendelkezhet egy olyan érvényesítési házirenddel, amely meg
 
 Az adatkészlet definíciójának **szabályzat** szakasza meghatározza azokat a feltételeket vagy feltételt, amelyeknek az adatkészlet-szeleteknek teljesíteniük kell. A következő táblázat a **szabályzat** szakaszban használható tulajdonságokat ismerteti:
 
-| Házirend neve | Leírás | Alkalmazva erre | Kötelező | Alapértelmezett |
+| Házirend neve | Description | Alkalmazva erre | Kötelező | Alapértelmezett |
 | --- | --- | --- | --- | --- |
 | minimumSizeMB | Ellenőrzi, hogy egy **Azure-blobban** lévő adat megfelel-e a minimális méretre vonatkozó követelményeknek (megabájtban). |Azure-blob |No |NA |
 | minimumRows | Ellenőrzi, hogy a **Azure SQL Database** vagy az **Azure táblában** lévő adatmennyiség tartalmazza-e a sorok minimális számát. |<ul><li>Azure SQL Database</li><li>Azure-tábla</li></ul> |No |NA |
@@ -266,7 +266,7 @@ További információt ezekről a tulajdonságokról és példákról az [adatk�
 ## <a name="activity-policies"></a>Tevékenység-szabályzatok
 A házirendek hatással vannak egy tevékenység futásidejű viselkedésére, különösen akkor, ha egy tábla szeletét dolgozzák fel. A részleteket a következő táblázat tartalmazza.
 
-| Tulajdonság | Megengedett értékek | Alapértelmezett érték | Leírás |
+| Tulajdonság | Megengedett értékek | Alapértelmezett érték | Description |
 | --- | --- | --- | --- |
 | Egyidejűség |Egész szám <br/><br/>Maximális érték: 10 |1 |A tevékenység egyidejű végrehajtásának száma.<br/><br/>Meghatározza, hogy hány párhuzamos tevékenység-végrehajtás történhet a különböző szeleteken. Ha például egy tevékenységnek az elérhető adatmennyiség nagy készletén kell haladnia, a nagyobb párhuzamossági érték felgyorsítja az adatfeldolgozást. |
 | executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |Meghatározza a feldolgozás alatt álló adatszeletek sorrendjét.<br/><br/>Ha például 2 szelete van (egy 16:00-kor történik, egy másik pedig 5 órakor), és mindkettő függőben van. Ha úgy állítja be a executionPriorityOrder, hogy a NewestFirst, a szeletet 5 ÓRAKOR dolgozza fel a rendszer. Hasonlóképpen, ha úgy állítja be a executionPriorityORder, hogy a OldestFIrst legyen, akkor a szelet 4 ÓRAKOR lesz feldolgozva. |
