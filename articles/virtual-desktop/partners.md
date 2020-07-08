@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/12/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 332ce90de334a384ee6017a12781d0ddb2ed4158
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: a0853266e4fda4393ba49fb740755e6b8bd03cf5
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85126144"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86038055"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows rendszerű virtuális asztali partner-integrációk
 
@@ -255,7 +255,7 @@ A nyomtatás alapvető feladat minden irodai és kisméretű üzleti környezetb
 
 A RDPSoft egy olyan Windows rendszerű virtuális asztali partner, amely hatékony és költséges monitorozási, felügyeleti és jelentéskészítési megoldásokat kínál. A Távoli asztal Commander-ajánlatok lehetővé teszik az informatikai szakemberek számára, hogy betekintést kapjanak a Windows rendszerű virtuális asztali környezetek állapotával, teljesítményével, felhasználói tevékenységével, licencelésével és biztonságával. 
  
-A RDPSoft Távoli asztal Commander-megoldásai fokozzák a Windows rendszerű virtuális asztali felügyeletet. A prémium szintű felügyeleti funkciók lehetővé teszik a Windows rendszerű virtuális asztalok felügyeleti feladatainak delegálását, és támogatják a Távsegítség, a felhasználói munkamenetek és a folyamatok kezelését. Ugyanakkor a Távoli asztal Commander Suite részletes mérőszámokat gyűjt a felhasználónkénti teljesítményről és betöltésről, a felhasználói tevékenységekről és a naplózásról, a Windows virtuális asztali kapcsolat minőségéről (késés és sávszélesség), a licencelésről és a biztonságról egy központi Azure SQL Database-példányra a felülvizsgálathoz. A RDPSoft, a gazdag történelmi jelentéskészítés és az átfogó irányítópultok csupán egy kattintással elérhetők.
+A RDPSoft Távoli asztal Commander-megoldásai fokozzák a Windows rendszerű virtuális asztali felügyeletet. A prémium szintű felügyeleti funkciók lehetővé teszik a Windows rendszerű virtuális asztalok felügyeleti feladatainak delegálását, és támogatják a Távsegítség, a felhasználói munkamenetek és a folyamatok kezelését. Ugyanakkor a Távoli asztal Commander Suite részletes mérőszámokat gyűjt a felhasználónkénti teljesítményéről és terheléséről, a felhasználói tevékenységekről és a naplózásról, a Windows virtuális asztali kapcsolat minőségéről (késés és sávszélesség), a licencelésről és a biztonságról egy központi Azure SQL Database-példányra felülvizsgálat céljából. A RDPSoft, a gazdag történelmi jelentéskészítés és az átfogó irányítópultok csupán egy kattintással elérhetők.
 
 - [Lépjen a partner webhelyére](https://www.rdpsoft.com/products/remote-desktop-commander/suite/).
 

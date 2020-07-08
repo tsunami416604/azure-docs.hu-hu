@@ -1,7 +1,7 @@
 ---
 title: Az olvasói gyors ügyféloldali kódtár gyors üzembe helyezése
 titleSuffix: Azure Cognitive Services
-description: Ebben a rövid útmutatóban létrehozhat egy webalkalmazást a semmiből, és hozzáadhatja a magával ragadó olvasó API funkcióját.
+description: Ebben a rövid útmutatóban egy új iOS-alkalmazást hoz létre, és hozzáadja a magával ragadó olvasó API-funkciót.
 services: cognitive-services
 author: pasta
 manager: nitinme
@@ -9,18 +9,18 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/20/2020
 ms.author: pasta
-ms.openlocfilehash: 191d802064d477babd8aa1f782ad15876b821d11
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 3d0a8444312f37b1f59817d50bdc50d3aff22164
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84268748"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86038364"
 ---
 A teljes [olvasó](https://www.onenote.com/learningtools) egy olyan, integráltan kialakított eszköz, amely bevált technikákat valósít meg az olvasási szövegértés javítására.
 
 Ebben a rövid útmutatóban egy iOS-alkalmazást hoz létre a semmiből, és integrálja a magával ragadó olvasót. Ebben a [rövid útmutatóban](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/ios)egy teljes körű működő minta érhető el.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -527,7 +527,7 @@ public func launchImmersiveReader(navController: UINavigationController, token: 
 }
 ```
 
-Adjon hozzá egy fájlt a *iFrameMessaging. js* nevű *erőforrások* mappájához, és adja hozzá a következő kódot.
+Adjon hozzá egy fájlt a *iFrameMessaging.js* nevű *erőforrások* mappához, és adja hozzá a következő kódot.
 
 ```javascript
 window.addEventListener("message", function(message) {
@@ -573,4 +573,4 @@ Ha a **magától** megjelenő olvasó gombra kattint, megjelenik az alkalmazásb
 
 ## <a name="next-steps"></a>További lépések
 
-* Ismerje meg az [olvasói SDK-referenciát](../../reference.md)
+* Ismerkedjen meg a [magára az olvasói SDK](https://github.com/microsoft/immersive-reader-sdk) -val és az [olvasói SDK-referenciával](../../reference.md)

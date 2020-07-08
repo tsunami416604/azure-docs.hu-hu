@@ -9,18 +9,18 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/20/2020
 ms.author: pasta
-ms.openlocfilehash: 2b6f4bb707d6c5c07dd6a1205ce7be542a220f17
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: a5bd7b3e6262fa21865f04a6b65d1a75faafefa4
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84268734"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86038359"
 ---
 A teljes [olvasó](https://www.onenote.com/learningtools) egy olyan, integráltan kialakított eszköz, amely bevált technikákat valósít meg az olvasási szövegértés javítására.
 
 Ebben a rövid útmutatóban létrehozhat egy webalkalmazást a semmiből, és integrálhatja a magával ragadó olvasót az olvasói ügyféloldali kódtár használatával. Ebben a [rövid útmutatóban](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-csharp)egy teljes körű működő minta érhető el.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -41,7 +41,7 @@ Hozzon létre egy új projektet a Visual Studióban a ASP.NET Core webalkalmazá
 
 ### <a name="configure-authentication-values"></a>Hitelesítési értékek konfigurálása
 
-Kattintson a jobb gombbal a projektre a _megoldáskezelő_ , majd válassza a **felhasználói titkok kezelése**lehetőséget. Ekkor megnyílik egy _Secrets. JSON_nevű fájl. Ezt a fájlt a verziókövetés nem ellenőrzi. További információ [itt](https://docs.microsoft.com/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows). Cserélje le a _Secrets. JSON_ fájl tartalmát a következőre, és adja meg a magával ragadó olvasó erőforrásának létrehozásakor megadott értékeket.
+Kattintson a jobb gombbal a projektre a _megoldáskezelő_ , majd válassza a **felhasználói titkok kezelése**lehetőséget. Ekkor megnyílik egy _secrets.js_nevű fájl. Ezt a fájlt a verziókövetés nem ellenőrzi. További információ [itt](https://docs.microsoft.com/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows). Cserélje le asecrets.jstartalmát a következőre, és adja _meg_ a magával ragadó olvasó erőforrásának létrehozásakor megadott értékeket.
 
 ```json
 {
@@ -70,7 +70,7 @@ Nyissa meg a _Controllers\HomeController.cs_, és adja hozzá a következő kód
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 ```
 
-Most a vezérlőt úgy konfigurálja, hogy az Azure AD-értékeket beszerezze a _Secrets. JSON_fájlból. A _HomeController_ osztály tetején, az után ```public class HomeController : Controller {``` adja hozzá a következő kódot.
+Most úgy konfigurálja a vezérlőt, hogy beszerezze az Azure AD-értékeket _secrets.jsról_. A _HomeController_ osztály tetején, az után ```public class HomeController : Controller {``` adja hozzá a következő kódot.
 
 ```csharp
 private readonly string TenantId;     // Azure subscription TenantId
@@ -305,7 +305,8 @@ Ha a "magára olvasó" gombra kattint, megjelenik a megjelenő, az oldalon talá
 
 ## <a name="next-steps"></a>További lépések
 
-* Tekintse meg a [Node. js](../../quickstart-nodejs.md) rövid útmutatóját, és tekintse meg, hogy a Node. js használatával milyen műveleteket végezhet el az olvasó ügyféloldali függvénytárával.
+* Tekintse meg a [Node.js](../../tutorial-nodejs.md) rövid útmutatót, amelyből megtudhatja, mit tehet az olvasó ügyféloldali kódtár használatával Node.js
+* Tekintse meg az [Android-oktatóanyagot](../../tutorial-android.md) , amelyből megtudhatja, hogy mi a teendő a Java vagy a Kotlin for Android használatával.
+* Tekintse meg az [iOS-oktatóanyagot](../../tutorial-ios.md) , amelyből megtudhatja, hogy mit tehet a gyors iOS-es verzióban
 * Tekintse meg a [Python-oktatóanyagot](../../tutorial-python.md) , amelyből megtudhatja, mit tehet az olvasó ügyféloldali kódtár a Python használatával
-* Tekintse meg az [iOS-oktatóanyagot](../../tutorial-ios-picture-immersive-reader.md) , amelyből megtudhatja, mit tehet a gyors
 * Ismerkedjen meg a [magára az olvasói SDK](https://github.com/microsoft/immersive-reader-sdk) -val és az [olvasói SDK-referenciával](../../reference.md)

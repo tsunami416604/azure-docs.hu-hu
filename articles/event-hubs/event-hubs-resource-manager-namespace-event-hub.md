@@ -2,31 +2,32 @@
 title: 'Rövid útmutató: Event hub létrehozása fogyasztói csoporttal – Azure Event Hubs'
 description: 'Gyors útmutató: Event Hubs névtér létrehozása egy Event hub és egy fogyasztói csoport számára Azure Resource Manager sablonok használatával'
 ms.topic: quickstart
+ms.custom: subject-armqs
 ms.date: 06/23/2020
-ms.openlocfilehash: 6ddf17030da8b0ff50f10938221b9c1dba08084d
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 1aa1dc0a4be8c74651a764788184ae1eefe17e75
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964294"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86038089"
 ---
-# <a name="quickstart-create-an-event-hub-by-using-an-azure-resource-manager-template"></a>Rövid útmutató: Event hub létrehozása Azure Resource Manager sablon használatával
+# <a name="quickstart-create-an-event-hub-by-using-an-arm-template"></a>Rövid útmutató: Event hub létrehozása ARM-sablonnal
 
-Az Azure Event Hubs egy Big Data streamplatform és eseményfeldolgozó szolgáltatás, amely másodpercenként több millió esemény fogadására és feldolgozására képes. Az Event Hubs képes az elosztott szoftverek és eszközök által generált események, adatok vagy telemetria feldolgozására és tárolására. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók. Az Event Hubs részletes áttekintéséért lásd az [Event Hubs áttekintését](event-hubs-about.md) és az [Event Hubs-szolgáltatásokat](event-hubs-features.md) ismertető cikket. Ebben a rövid útmutatóban egy [Azure Resource Manager sablon](../azure-resource-manager/management/overview.md)használatával hoz létre egy Event hub-t. Egy Azure Resource Manager sablon üzembe helyezésével létrehozhat egy [Event Hubs](event-hubs-what-is-event-hubs.md)típusú névteret egy Event hub-val.
+Az Azure Event Hubs egy Big Data streamplatform és eseményfeldolgozó szolgáltatás, amely másodpercenként több millió esemény fogadására és feldolgozására képes. Az Event Hubs képes az elosztott szoftverek és eszközök által generált események, adatok vagy telemetria feldolgozására és tárolására. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók. Az Event Hubs részletes áttekintéséért lásd az [Event Hubs áttekintését](event-hubs-about.md) és az [Event Hubs-szolgáltatásokat](event-hubs-features.md) ismertető cikket. Ebben a rövid útmutatóban egy [Azure Resource Manager sablon (ARM-sablon)](../azure-resource-manager/management/overview.md)használatával hoz létre egy Event hub-t. Egy ARM-sablon üzembe helyezésével létrehozhat egy [Event Hubs](event-hubs-what-is-event-hubs.md)típusú névteret, amely egy Event hub-t tartalmaz.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonok használatát, válassza az **üzembe helyezés az Azure** -ban gombot. A sablon megnyílik a Azure Portalban.
+
+[![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-eventhubs-create-namespace-and-eventhub%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Nincsenek.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
 
-## <a name="create-an-event-hub"></a>Eseményközpont létrehozása
+## <a name="review-the-template"></a>A sablon áttekintése
 
-### <a name="review-the-template"></a>A sablon áttekintése
-
-Az ebben a gyorsútmutatóban használt sablon az [Azure gyorsindítási sablontárból](https://azure.microsoft.com/resources/templates/101-eventhubs-create-namespace-and-eventhub/) származik.
+Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/101-eventhubs-create-namespace-and-eventhub/)származik.
 
 :::code language="json" source="~/quickstart-templates/101-eventhubs-create-namespace-and-eventhub/azuredeploy.json" range="1-61" highlight="32-59":::
 
@@ -37,7 +38,7 @@ A sablonban definiált erőforrások a következők:
 
 További sablon-példákat az [Azure Gyorsindítás sablonjaiban](https://azure.microsoft.com/resources/templates/?term=eventhub&pageNumber=1&sort=Popular)talál.
 
-### <a name="deploy-the-template"></a>A sablon üzembe helyezése
+## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
 A sablon üzembe helyezése:
 
@@ -60,9 +61,9 @@ A sablon üzembe helyezése:
 1. A PowerShell-szkript másolásához válassza a **Másolás** lehetőséget.
 1. Kattintson a jobb gombbal a rendszerhéj-konzolra, majd válassza a **Beillesztés**lehetőséget.
 
-## <a name="verify-the-deployment"></a>A telepítés ellenőrzése
+## <a name="validate-the-deployment"></a>Az üzembe helyezés ellenőrzése
 
-A központi telepítés ellenőrzéséhez megnyithatja az erőforráscsoportot a [Azure Portalból](https://portal.azure.com), vagy használhatja az alábbi Azure PowerShell parancsfájlt.  Ha a Cloud Shell továbbra is nyitva van, nem kell átmásolnia/futtatnia az első sort (olvasás-gazdagép).
+A központi telepítés ellenőrzéséhez megnyithatja az erőforráscsoportot a [Azure Portalból](https://portal.azure.com), vagy használhatja az alábbi Azure PowerShell parancsfájlt. Ha a Cloud Shell továbbra is nyitva van, nem kell átmásolnia/futtatnia az első sort (olvasás-gazdagép).
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter the same project name that you used in the last procedure"
