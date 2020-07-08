@@ -8,10 +8,10 @@ ms.date: 04/28/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc
 ms.openlocfilehash: 78f50abf68412d2edcb7a6504c8e5c1b788e5901
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85413161"
 ---
 # <a name="regions-and-availability-zones-in-azure"></a>Régiók és Availability Zones az Azure-ban
@@ -22,7 +22,7 @@ Microsoft Azure szolgáltatások globálisan elérhetők a Felhőbeli műveletek
 
 A régiók és Availability Zones az Azure-ban való jobb megismeréséhez segít megérteni a kulcsfontosságú feltételeket vagy fogalmakat.
 
-| Kifejezés vagy fogalom | Leírás |
+| Kifejezés vagy fogalom | Description |
 | --- | --- |
 | régió | A késés által meghatározott kerületben üzembe helyezett adatközpontok halmaza, amely egy dedikált regionális, kis késleltetésű hálózaton keresztül csatlakozik. |
 | földrajz | A világ egyik területe, amely legalább egy Azure-régiót tartalmaz. A földrajzi területek olyan diszkrét piacot határoznak meg, amely megőrizheti az adattárolási és megfelelőségi határokat. A régiócsoportok lehetővé teszik, hogy a speciális adattárolási és megfelelőségi igényekkel rendelkező ügyfelek földrajzilag közel tárolhassák adataikat és alkalmazásaikat. A földrajzi területek hibatűrők, hogy a teljes régió meghibásodása a dedikált nagy kapacitású hálózati infrastruktúrával való kapcsolaton keresztül álljanak. |
@@ -79,7 +79,7 @@ Ha egy szolgáltatási ajánlat nem érhető el egy adott régióban, a Microsof
 | Régió típusa | Nem regionális | Alapító | Mainstream | Specializált | Rendelkezésre állási zónák | Adattárolási hely |
 | --- | --- | --- | --- | --- | --- | --- |
 | Ajánlott | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Igény szerint vezérelt | :heavy_check_mark: | :heavy_check_mark: |
-| Alternatív | :heavy_check_mark: | :heavy_check_mark: | Igény szerint vezérelt | Igény szerint vezérelt | N/A | :heavy_check_mark: |
+| Alternatív | :heavy_check_mark: | :heavy_check_mark: | Igény szerint vezérelt | Igény szerint vezérelt | N.A. | :heavy_check_mark: |
 
 ### <a name="services-by-category"></a>Szolgáltatások kategóriánként
 
@@ -112,7 +112,7 @@ Ahogy azt korábban említettük, az Azure három kategóriába sorolja a szolg�
 > | Service Bus | Azure Firewall | Data Box Heavy |
 > | Service Fabric | Azure Functions | Data Catalog |
 > | Virtual Machine Scale Sets | Azure HPC Cache | Data Factory: Data Factory v1 |
-> | Virtuális gépek | Azure IoT Hub | Data Lake Analytics |
+> | Virtual Machines | Azure IoT Hub | Data Lake Analytics |
 > | Virtual Machines: Av2 sorozat | Azure Kubernetes Service (AKS) | Machine Learning Studio |
 > | Virtual Machines: BS sorozat | Azure Machine Learning | Microsoft Genomics |
 > | Virtual Machines: DSv2 sorozat | Azure Private Link | Remote Rendering |
@@ -132,7 +132,7 @@ Ahogy azt korábban említettük, az Azure három kategóriába sorolja a szolg�
 > |  | Cognitive Services: Language Understanding | Virtual Machines: HCv1 sorozat |
 > |  | Cognitive Services: Speech Services | Virtual Machines: H sorozat |
 > |  | Cognitive Services: QnA Maker | Virtual Machines: LS-sorozat |
-> |  | Tárolópéldányok | Virtual Machines: LSv2 sorozat |
+> |  | Container Instances | Virtual Machines: LSv2 sorozat |
 > |  | Container Registry | Virtual Machines: Mv2 sorozat |
 > |  | Data Factory | Virtual Machines: NC sorozat |
 > |  | Event Grid | Virtual Machines: NCv2 sorozat |
@@ -148,7 +148,7 @@ Ahogy azt korábban említettük, az Azure három kategóriába sorolja a szolg�
 > |  | Ultra Disk Storage |  |
 > |  | Virtual Machines: Fsv2 sorozat |  |
 > |  | Virtual Machines: M sorozat |  |
-> |  | Virtuális WAN |  |
+> |  | Virtual WAN |  |
 
 ###  <a name="services-resiliency"></a>Szolgáltatások rugalmassága
 

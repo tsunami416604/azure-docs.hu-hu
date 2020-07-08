@@ -12,10 +12,10 @@ ms.date: 06/25/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 2b66ef1a28faf97759045d40ea0f649282b2d837
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85392917"
 ---
 # <a name="custom-email-verification-with-mailjet"></a>Egyéni e-mail-ellenőrzés a mailjet
@@ -47,13 +47,13 @@ Ezután tárolja a mailjet API-kulcsot egy Azure AD B2C házirend-kulcsban a sza
 1. Adja meg a szabályzat kulcsának **nevét** . Például: `MailjetApiKey`. A rendszer automatikusan hozzáadja az előtagot a `B2C_1A_` kulcs nevéhez.
 1. A **Secret (titkos**kulcs) mezőben adja meg a korábban rögzített mailjet **API-kulcsot** .
 1. A **kulcshasználat**beállításnál válassza az **aláírás**lehetőséget.
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 1. Válassza a **szabályzat kulcsok** lehetőséget, majd kattintson a **Hozzáadás**gombra.
 1. A **Beállítások**területen válassza a **manuális**lehetőséget.
 1. Adja meg a szabályzat kulcsának **nevét** . Például: `MailjetSecretKey`. A rendszer automatikusan hozzáadja az előtagot a `B2C_1A_` kulcs nevéhez.
 1. A **Secret (titkos**kulcs) mezőben adja meg a korábban rögzített **titkos** mailjet.
 1. A **kulcshasználat**beállításnál válassza az **aláírás**lehetőséget.
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 ## <a name="create-a-mailjet-template"></a>Mailjet-sablon létrehozása
 
@@ -499,7 +499,7 @@ Az e-mail honosítása érdekében honosított karakterláncokat kell küldenie 
     </InputClaimsTransformations>
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A GitHubon megtalálhatja például az egyéni e-mail-ellenőrzési szabályzatot:
 

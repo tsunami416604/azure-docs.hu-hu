@@ -8,10 +8,10 @@ ms.date: 05/05/2020
 ms.topic: article
 ms.service: digital-twins
 ms.openlocfilehash: 6b29937e53fd58886d770ec15c803fb814a155ae
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85391808"
 ---
 # <a name="service-limits-in-public-preview"></a>Nyilvános előzetes verzióban elérhető a szolgáltatás korlátai
@@ -27,7 +27,7 @@ Ezek a nyilvános előzetes verzióban elérhető Azure Digital Twins szolgálta
 
 [!INCLUDE [Azure Digital Twins limits](../../includes/digital-twins-limits.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az Azure Digital Twins aktuális előzetes kiadásáról a szolgáltatás áttekintésében:
 * [Áttekintés: Mi az Azure Digital Twins?](overview.md)

@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 6/9/2020
 ms.author: baanders
 ms.openlocfilehash: 76ccd6f42f2cfd83512a2e817e8c2ac9aa61a28b
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85391483"
 ---
 ### <a name="functional-limits"></a>Működési korlátok
@@ -31,7 +31,7 @@ Az alábbi táblázat felsorolja az Azure Digital Twins működési korlátait a
 | Lekérdezés | A lekérdezésben szereplő karakterek száma | 8,000 | Igen |
 | Lekérdezés | `JOINS`Lekérdezésben szereplő szám | 1 | Yes |
 
-### <a name="rate-limits"></a>Díjszabási korlátok
+### <a name="rate-limits"></a>Sebességkorlátok
 
 Ez a táblázat a különböző API-k díjszabását tükrözi.
 

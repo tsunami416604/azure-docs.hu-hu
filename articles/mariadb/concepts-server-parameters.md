@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 6/25/2020
 ms.openlocfilehash: 7d530180b499495e97cb635186fc6a0d5cbd9044
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85392726"
 ---
 # <a name="server-parameters-in-azure-database-for-mariadb"></a>Kiszolgálói paraméterek a Azure Database for MariaDB
@@ -84,8 +84,8 @@ A paraméterrel kapcsolatos további információkért tekintse meg a [MariaDB d
 
 |**Díjszabási csomag**|**Virtuális mag (ok)**|**Alapértelmezett érték (bájt)**|**Minimális érték (bájt)**|**Maximális érték (bájt)**|
 |---|---|---|---|---|
-|Alapszintű|1|Alapszintű csomag nem konfigurálható|N/A|N/A|
-|Alapszintű|2|Alapszintű csomag nem konfigurálható|N/A|N/A|
+|Alapszintű|1|Alapszintű csomag nem konfigurálható|N.A.|N.A.|
+|Alapszintű|2|Alapszintű csomag nem konfigurálható|N.A.|N.A.|
 |Általános célú|2|262144|128|268435455|
 |Általános célú|4|262144|128|536870912|
 |Általános célú|8|262144|128|1073741824|
@@ -133,8 +133,8 @@ A paraméterrel kapcsolatos további információkért tekintse meg a [MariaDB d
 
 |**Díjszabási csomag**|**Virtuális mag (ok)**|**Alapértelmezett érték (bájt)**|**Minimális érték (bájt)**|**Maximális érték (bájt)**|
 |---|---|---|---|---|
-|Alapszintű|1|Alapszintű csomag nem konfigurálható|N/A|N/A|
-|Alapszintű|2|Alapszintű csomag nem konfigurálható|N/A|N/A|
+|Alapszintű|1|Alapszintű csomag nem konfigurálható|N.A.|N.A.|
+|Alapszintű|2|Alapszintű csomag nem konfigurálható|N.A.|N.A.|
 |Általános célú|2|16777216|16384|268435455|
 |Általános célú|4|16777216|16384|536870912|
 |Általános célú|8|16777216|16384|1073741824|
@@ -155,8 +155,8 @@ A paraméterrel kapcsolatos további információkért tekintse meg a [MariaDB d
 
 |**Díjszabási csomag**|**Virtuális mag (ok)**|**Alapértelmezett érték (bájt)**|**Minimális érték (bájt)**|* * Maximális érték * *|
 |---|---|---|---|---|
-|Alapszintű|1|Alapszintű csomag nem konfigurálható|N/A|N/A|
-|Alapszintű|2|Alapszintű csomag nem konfigurálható|N/A|N/A|
+|Alapszintű|1|Alapszintű csomag nem konfigurálható|N.A.|N.A.|
+|Alapszintű|2|Alapszintű csomag nem konfigurálható|N.A.|N.A.|
 |Általános célú|2|0|0|16777216|
 |Általános célú|4|0|0|33554432|
 |Általános célú|8|0|0|67108864|
@@ -175,8 +175,8 @@ A paraméterrel kapcsolatos további információkért tekintse meg a [MariaDB d
 
 |**Díjszabási csomag**|**Virtuális mag (ok)**|**Alapértelmezett érték (bájt)**|**Minimális érték (bájt)**|**Maximális érték (bájt)**|
 |---|---|---|---|---|
-|Alapszintű|1|Alapszintű csomag nem konfigurálható|N/A|N/A|
-|Alapszintű|2|Alapszintű csomag nem konfigurálható|N/A|N/A|
+|Alapszintű|1|Alapszintű csomag nem konfigurálható|N.A.|N.A.|
+|Alapszintű|2|Alapszintű csomag nem konfigurálható|N.A.|N.A.|
 |Általános célú|2|524288|32768|4194304|
 |Általános célú|4|524288|32768|8388608|
 |Általános célú|8|524288|32768|16777216|
@@ -195,8 +195,8 @@ A paraméterrel kapcsolatos további információkért tekintse meg a [MariaDB d
 
 |**Díjszabási csomag**|**Virtuális mag (ok)**|**Alapértelmezett érték (bájt)**|**Minimális érték (bájt)**|**Maximális érték (bájt)**|
 |---|---|---|---|---|
-|Alapszintű|1|Alapszintű csomag nem konfigurálható|N/A|N/A|
-|Alapszintű|2|Alapszintű csomag nem konfigurálható|N/A|N/A|
+|Alapszintű|1|Alapszintű csomag nem konfigurálható|N.A.|N.A.|
+|Alapszintű|2|Alapszintű csomag nem konfigurálható|N.A.|N.A.|
 |Általános célú|2|16777216|1024|67108864|
 |Általános célú|4|16777216|1024|134217728|
 |Általános célú|8|16777216|1024|268435456|
@@ -227,7 +227,7 @@ Az alábbi kiszolgálói paraméterek nem konfigurálhatók a szolgáltatásban:
 
 Az itt felsorolt egyéb kiszolgálói paraméterek a [MariaDB](https://mariadb.com/kb/en/server-system-variables/)alapértelmezett értékeit adják meg a MariaDB.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Megtudhatja, hogyan [konfigurálhat sever-paramétereket a Azure Portal használatával](./howto-server-parameters.md)
 - Megtudhatja, hogyan [konfigurálhat sever-paramétereket az Azure CLI használatával](./howto-configure-server-parameters-cli.md)

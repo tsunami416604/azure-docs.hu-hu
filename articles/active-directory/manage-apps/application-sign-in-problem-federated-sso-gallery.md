@@ -17,10 +17,10 @@ ms.author: kenwith
 ms.reviewer: luleon, asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 68dc90cdb096849df17bc25ac185b1239b46ec72
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85413144"
 ---
 # <a name="problems-signing-in-to-a-gallery-application-configured-for-federated-single-sign-on"></a>Problémák egy összevont egyszeri bejelentkezésre konfigurált, katalógusbeli alkalmazásba való bejelentkezés során
@@ -39,7 +39,7 @@ Az alábbi bejelentkezési problémák elhárításához javasoljuk, hogy köves
 
 Az `Issuer` SAML-kérelemben az alkalmazásból az Azure ad-be elküldett attribútum nem egyezik az alkalmazáshoz az Azure ad-ben konfigurált azonosító értékkel.
 
-**Felbontás**
+**Resolution** (Osztás)
 
 Győződjön meg arról, hogy az `Issuer` SAML-kérelemben szereplő attribútum megegyezik az Azure ad-ben konfigurált azonosító értékkel. Ha a Azure Portal a saját alkalmazások biztonságos böngésző bővítménnyel használja a [tesztelési élményt](../azuread-dev/howto-v1-debug-saml-sso-issues.md) , nem kell manuálisan végrehajtania ezeket a lépéseket.
 
@@ -69,7 +69,7 @@ Győződjön meg arról, hogy az `Issuer` SAML-kérelemben szereplő attribútum
 
 Az `AssertionConsumerServiceURL` SAML-kérelemben szereplő érték nem felel meg az Azure ad-ben konfigurált válasz URL-értéknek vagy mintának. Az `AssertionConsumerServiceURL` SAML-kérelemben szereplő érték a hibaüzenetben látható URL-cím.
 
-**Felbontás**
+**Resolution** (Osztás)
 
 Győződjön meg arról, hogy az `AssertionConsumerServiceURL` SAML-kérelemben szereplő érték megegyezik az Azure ad-ben konfigurált válasz URL-értékkel. Ha a Azure Portal a saját alkalmazások biztonságos böngésző bővítménnyel használja a [tesztelési élményt](../azuread-dev/howto-v1-debug-saml-sso-issues.md) , nem kell manuálisan végrehajtania ezeket a lépéseket.
 
@@ -99,7 +99,7 @@ Miután frissítette a válasz URL-értékét az Azure AD-ben, és megfelel az a
 
 A felhasználó nem kapott hozzáférési jogot az alkalmazáshoz az Azure AD-ben.
 
-**Felbontás**
+**Resolution** (Osztás)
 
 Egy vagy több felhasználó közvetlenül egy alkalmazáshoz való hozzárendeléséhez kövesse az alábbi lépéseket. Ha a Azure Portal a saját alkalmazások biztonságos böngésző bővítménnyel használja a [tesztelési élményt](../azuread-dev/howto-v1-debug-saml-sso-issues.md) , nem kell manuálisan végrehajtania ezeket a lépéseket.
 
@@ -148,7 +148,7 @@ Az Azure AD nem támogatja az alkalmazás egyszeri bejelentkezésre vonatkozó S
 -   Kötelező mezők hiányoznak az SAML-kérelemből
 -   Az SAML-kérelem metódusa kódolt
 
-**Felbontás**
+**Resolution** (Osztás)
 
 1. Az SAML-kérelem rögzítése. Kövesse az [SAML-alapú egyszeri bejelentkezés az Azure ad-alkalmazásokban való hibakeresését](../azuread-dev/howto-v1-debug-saml-sso-issues.md) ismertető oktatóanyagot, amelyből megtudhatja, hogyan rögzítheti az SAML-kérelmet.
 
@@ -168,7 +168,7 @@ Az alkalmazás gyártójának ellenőriznie kell, hogy az Azure AD SAML-implemen
 
 Az `Issuer` SAML-kérelemben az alkalmazásból az Azure ad-be elküldett attribútum nem egyezik az alkalmazáshoz az Azure ad-ben konfigurált azonosító értékkel.
 
-**Felbontás**
+**Resolution** (Osztás)
 
 Győződjön meg arról, hogy az `Issuer` SAML-kérelemben szereplő attribútum megegyezik az Azure ad-ben konfigurált azonosító értékkel. Ha a Azure Portal a saját alkalmazások biztonságos böngésző bővítménnyel használja a [tesztelési élményt](../azuread-dev/howto-v1-debug-saml-sso-issues.md) , nem kell manuálisan végrehajtania a következő lépéseket:
 
@@ -197,7 +197,7 @@ Győződjön meg arról, hogy az `Issuer` SAML-kérelemben szereplő attribútum
 
 Az Application objektum sérült, és az Azure AD nem ismeri fel az alkalmazáshoz konfigurált tanúsítványt.
 
-**Felbontás**
+**Resolution** (Osztás)
 
 Új tanúsítvány törléséhez és létrehozásához kövesse az alábbi lépéseket:
 
@@ -233,7 +233,7 @@ Az Application objektum sérült, és az Azure AD nem ismeri fel az alkalmazásh
 
 Az Azure AD nem tudta azonosítani az SAML-kérelmet a HTTP-kérelem URL-paraméterei között. Ez akkor fordulhat elő, ha az alkalmazás nem használ HTTP-átirányítási kötést az SAML-kérelem Azure AD-be való küldésekor.
 
-**Felbontás**
+**Resolution** (Osztás)
 
 Az alkalmazásnak HTTP-átirányítási kötés használatával kell elküldenie a Location fejlécbe kódolt SAML-kérelmet. Ennek megvalósításáról további információt [az SAML protokoll specifikációját tartalmazó dokumentumban](https://docs.oasis-open.org/security/saml/v2.0/saml-bindings-2.0-os.pdf) talál.
 
@@ -245,7 +245,7 @@ Az egyszeri bejelentkezés során, ha a bejelentkezési kérés nem tartalmaz ex
 
 Amikor az alkalmazás hozzá lett adva nem katalógusbeli alkalmazásként, az Azure Active Directory ezt a válasz-URL-címet alapértelmezett értékként hozta létre. Ez a viselkedés azóta megváltozott, és az Azure Active Directory már nem adja hozzá ezt az URL-címet alapértelmezés szerint. 
 
-**Felbontás**
+**Resolution** (Osztás)
 
 Törölje az alkalmazáshoz konfigurált nem használt válasz URL-címeket.
 

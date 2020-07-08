@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan becsülheti meg a költségvetési Azure Backup
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.openlocfilehash: 274a61ff5a98fa1291f9d8917af9ab1d1b3da2fd
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85391111"
 ---
 # <a name="azure-backup-pricing"></a>Az Azure Backup díjszabása
@@ -148,6 +148,6 @@ Az Azure-beli virtuális gépeken futó SAP HANA-kiszolgálók Azure Backup hasz
 - **Opcionális** – regionális díjszabás módosítása vagy kedvezményes díjszabás alkalmazása
   - Ha egy másik régióra vagy kedvezményes díjszabásra vonatkozó becsléseket szeretne megtekinteni, válassza az **Igen** lehetőséget **egy másik régióra vonatkozó kipróbálási becslések esetében?** lehetőségre, és adja meg azokat a díjakat, amelyeknek a becsléseit futtatni kívánja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Mi a Azure Backup szolgáltatás?](backup-overview.md)

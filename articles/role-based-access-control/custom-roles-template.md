@@ -11,10 +11,10 @@ ms.workload: identity
 ms.date: 06/25/2020
 ms.author: rolyon
 ms.openlocfilehash: bcf1966ffc326291448cb611d99390fe0d652151
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85392929"
 ---
 # <a name="create-an-azure-custom-role-using-an-azure-resource-manager-template"></a>Egyéni Azure-szerepkör létrehozása Azure Resource Manager sablon használatával
@@ -151,7 +151,7 @@ Az alábbi lépéseket követve ellenőrizheti, hogy létrejött-e az egyéni sz
 
    ![Új egyéni szerepkör a Azure Portal](./media/custom-roles-template/custom-role-template-portal.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Az egyéni szerepkör eltávolításához kövesse az alábbi lépéseket.
 
@@ -163,7 +163,7 @@ Az egyéni szerepkör eltávolításához kövesse az alábbi lépéseket.
 
 1. Az **Y** érték megadásával erősítse meg, hogy el kívánja távolítani az egyéni szerepkört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure szerepkör-definíciók ismertetése](role-definitions.md)
 - [Gyors útmutató: Azure-beli szerepkör-hozzárendelés hozzáadása Azure Resource Manager sablon használatával](quickstart-role-assignments-template.md)
