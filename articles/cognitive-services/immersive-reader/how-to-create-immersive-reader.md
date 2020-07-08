@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: 79014d318da1732d48eeb893aa383e948e1036cd
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 972eb3f9983004ec7dbb3cb0df7bb3c59bdc9122
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267103"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042014"
 ---
 # <a name="create-an-immersive-reader-resource-and-configure-azure-active-directory-authentication"></a>Részletes olvasó erőforrás létrehozása és Azure Active Directory hitelesítés konfigurálása
 
@@ -183,9 +183,10 @@ A szkript rugalmasnak lett tervezve. Először az előfizetésben található, a
 
 ## <a name="next-steps"></a>További lépések
 
-* Tekintse meg a [Node. js](./quickstarts/client-libraries.md?pivots=programming-language-nodejs) rövid útmutatóját, amelyből megtudhatja, hogy mit tehet a magával az olvasó SDK-val a Node. js használatával
+* Tekintse meg a [Node.js](./quickstarts/client-libraries.md?pivots=programming-language-nodejs) rövid útmutatót, amelyből megtudhatja, hogy mit tehet a magától az olvasói SDK-val a Node.js használatával
+* Tekintse meg az [Android-oktatóanyagot](./tutorial-android.md) , amelyből megtudhatja, hogy mi a teendő a Java vagy a Kotlin for Android használatával.
+* Tekintse meg az [iOS-oktatóanyagot](./tutorial-ios.md) , amelyből megtudhatja, hogy mit tehet a gyors iOS-es verzióban
 * Tekintse meg a [Python-oktatóanyagot](./tutorial-python.md) , amelyből megtudhatja, hogy mit tehet a részletes olvasó SDK-val a Python használatával
-* Tekintse meg a [Swift-oktatóanyagot](./tutorial-ios-picture-immersive-reader.md) , amelyből megtudhatja, mit tehet a gyors
 * Ismerkedjen meg a [magára az olvasói SDK](https://github.com/microsoft/immersive-reader-sdk) -val és az [olvasói SDK-referenciával](./reference.md)
 
 

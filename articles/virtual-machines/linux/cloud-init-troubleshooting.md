@@ -5,15 +5,15 @@ author: danielsollondon
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.topic: troubleshooting
-ms.date: 06/22/2020
+ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 92c878497f16162f46f4da34501885b73ff85dfc
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 2bf0443465f0cfd98f8bce93e60f9007ac7503be
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85306905"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042075"
 ---
 # <a name="troubleshooting-vm-provisioning-with-cloud-init"></a>A virtuális gépek üzembe helyezésének hibaelhárítása a Cloud-init használatával
 
@@ -27,13 +27,13 @@ Néhány példa a kiépítési problémákra:
 - A hálózatkezelés nincs megfelelően beállítva
 - Fájl-vagy particionálási hibák cseréje
 
-Ez a cikk végigvezeti a Cloud-init hibaelhárításának lépésein. Részletesebb részleteket a [Cloud-init működésével](https://msazure.visualstudio.com/AzureWiki/_wiki/wikis/AzureWiki.wiki/53162/cloud-init-deep-dive)foglalkozó témakörben talál.
+Ez a cikk végigvezeti a Cloud-init hibaelhárításának lépésein. Részletesebb részleteket a [Cloud-init Deep Dive](https://docs.microsoft.com/azure/virtual-machines/linux/cloud-init-deep-dive)című témakörben talál.
 
 ## <a name="step-1-test-the-deployment-without-customdata"></a>1. lépés: az üzemelő példány tesztelése customData nélkül
 
 A Cloud-init a virtuális gép létrehozásakor fogadja el az átadott customData. Először is győződjön meg arról, hogy ez nem okoz problémát az üzemelő példányokkal kapcsolatban. Próbálja meg kiépíteni a virtuális gépet bármilyen konfiguráció nélkül. Ha úgy találja, hogy a virtuális gép nem tud kiépíteni, folytassa az alábbi lépésekkel, ha úgy találja, hogy az átadott konfiguráció nem lesz alkalmazva, ugorjon a [4. lépésre](). 
 
-## <a name="step-2-review-image-requirements-are-satisfied"></a>2. lépés: a rendszerkép-követelmények áttekintése teljesül
+## <a name="step-2-review-image-requirements"></a>2. lépés: a rendszerképre vonatkozó követelmények áttekintése
 A virtuális gép kiépítési hibájának elsődleges oka az, hogy az operációs rendszer rendszerképe nem felel meg az Azure-ban való futtatás előfeltételeinek. Győződjön meg arról, hogy a lemezképek megfelelően vannak előkészítve, mielőtt üzembe helyezi őket az Azure-ban. 
 
 
@@ -59,22 +59,16 @@ Amíg a virtuális gép fut, szüksége lesz a virtuális gép naplóira, hogy m
 
 - A virtuális gép létrehozása előtt [engedélyezze a rendszerindítási diagnosztikát](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-monitor#enable-boot-diagnostics) , majd [tekintse meg](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-monitor#view-boot-diagnostics) őket a rendszerindítás során.
 
-- [Az operációsrendszer-lemez manuális csatlakoztatása és csatlakoztatása](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-recovery-disks-portal-linux) egy futó virtuális géphez a naplók kinyeréséhez – Azure-beli virtuális gép javítása
-
-Gyűjtse össze ezeket a naplókat:
+- [Futtassa az az VM Repair parancsot](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-linux-vm-using-azure-virtual-machine-repair-commands) az operációsrendszer-lemez csatlakoztatásához és csatlakoztatásához, amely lehetővé teszi a naplók összegyűjtését:
 ```bash
+/var/log/cloud-init*
 /var/log/waagent*
 /var/log/syslog*
 /var/log/rsyslog*
 /var/log/messages*
 /var/log/kern*
 /var/log/dmesg*
-/var/log/dpkg*
-/var/log/yum*
-/var/log/cloud-init*
 /var/log/boot*
-/var/log/auth*
-/var/log/secure*
 ```
 A kezdeti hibaelhárítás megkezdéséhez Kezdje a Cloud-init naplókkal, és Ismerje meg, hogy hol történt a hiba, majd használja a többi naplót a mélyebb merüléshez, és adjon meg további elemzéseket. 
 * /var/log/cloud-init.log
@@ -138,4 +132,4 @@ A Cloud-init nem minden hibája végzetes kiépítési hibát eredményez. Ha p�
 
 ## <a name="next-steps"></a>További lépések
 
-Ha továbbra sem tudja elkülöníteni, hogy a Cloud-init miért nem futtatta a konfigurációt, jobban meg kell vizsgálnia, hogy mi történik az egyes felhő-init fázisokban, és mikor futnak a modulok. További információkért lásd: a [Cloud-init-konfiguráció mélyebbre váltása](https://msazure.visualstudio.com/AzureWiki/_wiki/wikis/AzureWiki.wiki/53162/cloud-init-deep-dive) . 
+Ha továbbra sem tudja elkülöníteni, hogy a Cloud-init miért nem futtatta a konfigurációt, jobban meg kell vizsgálnia, hogy mi történik az egyes felhő-init fázisokban, és mikor futnak a modulok. További információkért lásd: a [Cloud-init-konfiguráció mélyebbre váltása](https://docs.microsoft.com/azure/virtual-machines/linux/cloud-init-deep-dive) . 

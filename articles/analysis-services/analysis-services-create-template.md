@@ -8,35 +8,37 @@ ms.service: analysis-services
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: 6f0d5f084c5cd48abf399e351c627d64951ce719
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 4dd7906ed32faa630ba074cb29e7987a64205cb5
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697440"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042101"
 ---
-# <a name="quickstart-create-a-server---azure-resource-manager-template"></a>Gyors útmutató: kiszolgáló Azure Resource Manager sablon létrehozása
+# <a name="quickstart-create-a-server---arm-template"></a>Gyors útmutató: kiszolgálói ARM-sablon létrehozása
 
-Ez a rövid útmutató azt ismerteti, hogyan lehet létrehozni egy Analysis Services Server-erőforrást az Azure-előfizetésben egy Resource Manager-sablon használatával.
+Ez a rövid útmutató azt ismerteti, hogyan hozhat létre Analysis Services Server-erőforrást az Azure-előfizetésben egy Azure Resource Manager-sablon (ARM-sablon) használatával.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonok használatát, válassza az **üzembe helyezés az Azure** -ban gombot. A sablon megnyílik a Azure Portalban.
+
+[![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-analysis-services-create%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * **Azure-előfizetés**: A fiók létrehozásával kapcsolatban lásd: [Ingyenes Azure-próbaverzió](https://azure.microsoft.com/offers/ms-azr-0044p/).
 * **Azure Active Directory**: Előfizetésének egy Azure Active Directory-bérlőhöz kell tartoznia. Emellett be kell jelentkeznie az Azure-ba az adott Azure Active Directoryban található fiókkal. További információ: [Hitelesítés és felhasználói engedélyek](analysis-services-manage-users.md).
 
-## <a name="create-a-server"></a>A kiszolgáló létrehozása
-
-### <a name="review-the-template"></a>A sablon áttekintése
+## <a name="review-the-template"></a>A sablon áttekintése
 
 Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/101-analysis-services-create/)származik.
 
 :::code language="json" source="~/quickstart-templates/101-analysis-services-create/azuredeploy.json" range="1-79" highlight="63-78":::
 
-A sablonban definiált egyetlen [Microsoft. AnalysisServices/Servers](https://docs.microsoft.com/azure/templates/microsoft.analysisservices/2017-08-01/servers) erőforrás egy tűzfalszabály használatával. 
+A sablonban definiált egyetlen [Microsoft. AnalysisServices/Servers](/azure/templates/microsoft.analysisservices/servers) erőforrás egy tűzfalszabály használatával.
 
-### <a name="deploy-the-template"></a>A sablon üzembe helyezése
+## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
 1. A következő üzembe helyezés az Azure-ban hivatkozásra kattintva jelentkezzen be az Azure-ba, és nyisson meg egy sablont. A sablon Analysis Services kiszolgáló-erőforrás létrehozására, valamint a szükséges és választható tulajdonságok megadására szolgál.
 
@@ -56,11 +58,11 @@ A sablonban definiált egyetlen [Microsoft. AnalysisServices/Servers](https://do
     * **Kapacitás**: adja meg a lekérdezési replika kibővíthető példányainak teljes számát. Egynél több példány kiskálázása csak a régiók kiválasztása esetén támogatott.
     * **Tűzfalbeállítások**: adja meg a kiszolgálóhoz definiálni kívánt bejövő tűzfalszabályok beállításait. Ha nincs megadva, a tűzfal le van tiltva.
     * **Biztonsági mentési blob Container URI**: írja be az SAS URI-t egy privát Azure Blob Storage-tárolóba olvasási, írási és listázási engedélyekkel. Csak akkor szükséges, ha a [Backup/Restore szolgáltatást](analysis-services-backup.md)szeretné használni.
-    * **Elfogadom a fenti feltételeket és kikötéseket**: Válassza ki.
+    * **Elfogadom a fenti használati feltételeket**: Válassza ezt.
 
 3. Válassza a **Beszerzés** lehetőséget. A kiszolgáló sikeres üzembe helyezését követően értesítést kap:
 
-   ![Resource Manager-sablon, üzembe helyezési portál értesítése](./media/analysis-services-create-template/notification.png)
+   ![ARM-sablon, portál-értesítés üzembe helyezése](./media/analysis-services-create-template/notification.png)
 
 ## <a name="validate-the-deployment"></a>Az üzembe helyezés ellenőrzése
 
@@ -80,7 +82,7 @@ $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
 
 Ha már nincs rá szükség, használja az Azure Portalt, az Azure CLI-t vagy Azure PowerShell az erőforráscsoport és a kiszolgálói erőforrás törléséhez.
 
-# <a name="cli"></a>[parancssori felület](#tab/CLI)
+# <a name="cli"></a>[Parancssori felület](#tab/CLI)
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -99,9 +101,10 @@ Write-Host "Press [ENTER] to continue..."
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban egy Azure Resource Manager sablont használt egy új erőforráscsoport és egy Azure Analysis Services Server-erőforrás létrehozásához. Miután létrehozta a kiszolgálói erőforrást a sablon használatával, vegye figyelembe a következőket:
+Ebben a rövid útmutatóban egy ARM-sablont használt egy új erőforráscsoport és egy Azure Analysis Services kiszolgálói erőforrás létrehozásához. Miután létrehozott egy kiszolgálói erőforrást a sablon használatával, vegye figyelembe a következőket:
+
 - [Gyors útmutató: Kiszolgáló létrehozása – PowerShell](analysis-services-create-powershell.md)
 - [Mintamodell hozzáadása a portálról](analysis-services-create-sample-model.md)
 - [A kiszolgáló rendszergazdájának és felhasználói szerepköreinek konfigurálása](tutorials/analysis-services-tutorial-roles.md)
