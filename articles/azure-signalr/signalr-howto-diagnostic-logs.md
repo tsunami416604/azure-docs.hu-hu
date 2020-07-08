@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: wanl
 ms.openlocfilehash: 55482457058d01162116494b637661db40010a50
-ms.sourcegitcommit: 666303748238dfdf9da30d49d89b915af73b0468
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85132008"
 ---
 # <a name="resource-logs-for-azure-signalr-service"></a>Az Azure Signaler szolgáltatás erőforrás-naplói
@@ -68,7 +68,7 @@ Az Archive log JSON-karakterláncok az alábbi táblázatokban felsorolt elemeke
 
 **Formátum**
 
-Name | Leírás
+Name | Description
 ------- | -------
 time | Napló eseményének időpontja
 szint | Naplózási esemény szintje
@@ -81,7 +81,7 @@ properties | A naplózási eseményhez kapcsolódó részletes tulajdonságok. T
 
 **Tulajdonságok tábla**
 
-Name | Leírás
+Name | Description
 ------- | -------
 típus | A naplózási esemény típusa Jelenleg az Azure Signaler szolgáltatással való kapcsolattal kapcsolatos információkat biztosítunk. Csak `ConnectivityLogs` a típus érhető el
 gyűjtemény | A naplózási esemény gyűjteménye. Az engedélyezett értékek a következők: `Connection` , `Authorization` és`Throttling`
@@ -128,7 +128,7 @@ Az erőforrás-naplók megtekintéséhez kövesse az alábbi lépéseket:
 
 Az archiválási napló oszlopai a következő táblázatban felsorolt elemeket tartalmazzák:
 
-Name | Leírás
+Name | Description
 ------- | ------- 
 TimeGenerated | Napló eseményének időpontja
 Gyűjtemény | A naplózási esemény gyűjteménye. Az engedélyezett értékek a következők: `Connection` , `Authorization` és`Throttling`
@@ -162,7 +162,7 @@ A és a közötti különbség a `ConnectionAborted` `ConnectionEnded` `Connecti
 
 A megszakítás okai a következő táblázatban láthatók:
 
-Ok | Leírás
+Ok | Description
 ------- | ------- 
 A kapcsolatok száma eléri a korlátot | A kapcsolatok száma eléri a jelenlegi árszint korlátját. A szolgáltatási egység vertikális felskálázása
 Az alkalmazáskiszolgáló lezárta a kapcsolatokat | Az App Server elindítja az abortuszt. A várt abortusznak számít

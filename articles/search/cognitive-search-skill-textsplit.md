@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.openlocfilehash: 52aaeb01fef551eee350c6db662c2690ef7b3e78
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84981948"
 ---
 # <a name="text-split-cognitive-skill"></a>Szöveg felosztása kognitív képességgel
@@ -29,7 +29,7 @@ Microsoft. Skills. Text. SplitSkill
 
 A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
 
-| Paraméter neve     | Leírás |
+| Paraméter neve     | Description |
 |--------------------|-------------|
 | `textSplitMode`    | Vagy "Pages" vagy "mondatok" | 
 | `maximumPageLength` | Ha a textSplitMode "Pages" (lapok) értékre van állítva, ez az oldal maximális hosszára vonatkozik `String.Length` . A minimális érték 300.  Ha a textSplitMode "Pages" értékre van állítva, az algoritmus megpróbálja felosztani a szöveget a legtöbb "maximumPageLength" méretű darabokra. Ebben az esetben az algoritmus elvégzi a legjobbat, hogy a mondatot egy mondat határán megtörje, így a tömb mérete valamivel kisebb lehet, mint a "maximumPageLength". | 
@@ -38,14 +38,14 @@ A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
 
 ## <a name="skill-inputs"></a>Szaktudás bemenetei
 
-| Paraméter neve       | Leírás      |
+| Paraméter neve       | Description      |
 |----------------------|------------------|
 | `text`    | Az alsztringbe feldarabolt szöveg |
 | `languageCode`    | Választható A dokumentumhoz tartozó nyelvi kód. Ha nem ismeri a nyelvet (azaz a szöveget fel kell osztania a [LanguageDetectionSkill](cognitive-search-skill-language-detection.md)), akkor a rendszer biztonságosan eltávolítja a bemenetet.  |
 
 ## <a name="skill-outputs"></a>Szaktudás kimenetei 
 
-| Paraméter neve     | Leírás |
+| Paraméter neve     | Description |
 |--------------------|-------------|
 | `textItems`   | A kinyert alsztringek tömbje. |
 

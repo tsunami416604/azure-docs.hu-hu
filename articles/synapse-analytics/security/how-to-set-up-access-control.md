@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
 ms.openlocfilehash: 1a8023a700e83892fae9a16bb2bfbe2a2eb0b307
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85193413"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>A szinapszis munkaterület biztonságossá tétele (előzetes verzió)
@@ -36,7 +36,7 @@ A szinapszis-munkaterület (előzetes verzió) biztonságossá tételéhez köve
 
 Ez a dokumentum szabványos neveket használ az utasítások egyszerűsítéséhez. Cserélje le azokat bármely tetszőleges névvel.
 
-|Beállítás | Példaérték | Leírás |
+|Beállítás | Példaérték | Description |
 | :------ | :-------------- | :---------- |
 | **Szinapszis-munkaterület** | WS1 |  A szinapszis munkaterület neve. |
 | **ADLSGEN2-fiók** | STG1 | A munkaterülethez használni kívánt ADLS-fiók. |
@@ -86,7 +86,7 @@ A Azure Portal hozzon létre egy szinapszis-munkaterületet:
 
 A szinapszis munkaterületnek hozzá kell férnie a STG1 és a CNT1, hogy képes legyen a folyamatok futtatására és rendszerfeladatok végrehajtására.
 
-- A Azure Portal megnyitása
+- Nyissa meg az Azure Portalt
 - STG1 megkeresése
 - Navigáljon a CNT1
 - Győződjön meg arról, hogy a WS1 MSI-fájlja (Managed Service Identity) hozzá van rendelve a **Storage blob adatközreműködői** szerepkörhöz a CNT1
@@ -95,7 +95,7 @@ A szinapszis munkaterületnek hozzá kell férnie a STG1 és a CNT1, hogy képes
 
 ## <a name="step-5-configure-admin-access-for-sql-pools"></a>5. lépés: rendszergazdai hozzáférés konfigurálása SQL-készletekhez
 
-- A Azure Portal megnyitása
+- Nyissa meg az Azure Portalt
 - Navigáljon a WS1
 - A **Beállítások**területen kattintson az **SQL Active Directory-rendszergazda** lehetőségre.
 - Kattintson a **rendszergazda beállítása** elemre, és válassza a WS1 \_ SQLAdmins

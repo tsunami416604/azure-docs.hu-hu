@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 4b085fbc6e330d38b59fce0c494f672b00c712b7
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85120520"
 ---
 # <a name="stylesobject-schema-reference-guide-for-dynamic-maps"></a>StylesObject-séma – útmutató dinamikus térképekhez
@@ -64,7 +64,7 @@ Az alábbi JSON egy névvel ellátott `BooleanTypeStyleRule` `occupied` és egy 
 
  A a `NumericTypeStyleRule` [`StyleObject`](#styleobject) és a a következő tulajdonságokat tartalmazza:
 
-| Tulajdonság | Típus | Leírás | Kötelező |
+| Tulajdonság | Típus | Description | Kötelező |
 |-----------|----------|-------------|-------------|
 | `keyName` | sztring | Az *állapot* vagy a dinamikus tulajdonság neve. Az A `keyName` tömbön belül egyedinek kell lennie `StyleObject` .| Yes |
 | `type` | sztring | Az érték "numerikus". | Yes |
@@ -101,7 +101,7 @@ A következő JSON-mintában mindkét tartomány igaz értéket fog tartani, ha 
 ]
 ```
 
-| Tulajdonság | Típus | Leírás | Kötelező |
+| Tulajdonság | Típus | Description | Kötelező |
 |-----------|----------|-------------|-------------|
 | `range` | [RangeObject](#rangeobject) | A [RangeObject](#rangeobject) logikai tartományra vonatkozó feltételeket határoz meg, amelyek esetében az `true` *állapot* megjelenítési színét a tulajdonságban megadott színre kell módosítani `color` . Ha `range` nincs megadva, akkor a tulajdonságban definiált szín `color` mindig fel lesz használva.   | No |
 | `color` | sztring | Az a szín, amelyet akkor kell használni, ha az állapot értéke a tartományba esik. A `color` tulajdonság egy JSON-karakterlánc a következő formátumok valamelyikében: <ul><li> HTML-stílusú hexadecimális értékek </li><li> RGB ("#ff0", "#ffff00", "RGB (255, 255, 0)")</li><li> RGBA ("RGBA (255, 255, 0, 1)")</li><li> HSL ("HSL (100, 50%, 50%)")</li><li> HSLA ("HSLA (100, 50%, 50%, 1)")</li><li> Előre definiált HTML-színek nevei, például sárga és kék.</li></ul> | Yes |
@@ -110,7 +110,7 @@ A következő JSON-mintában mindkét tartomány igaz értéket fog tartani, ha 
 
 A `RangeObject` meghatározza az a numerikus tartomány értékét [`NumberRuleObject`](#numberruleobject) . Ahhoz, hogy az *állapot* értéke a tartományba essen, az összes megadott feltételnek igaznak kell lennie. 
 
-| Tulajdonság | Típus | Leírás | Kötelező |
+| Tulajdonság | Típus | Description | Kötelező |
 |-----------|----------|-------------|-------------|
 | `minimum` | double | Az x ≥ x `minimum` . szám.| No |
 | `maximum` | double | Az x összes x ≤ betűje `maximum` . | No |
@@ -148,7 +148,7 @@ A következő JSON egy `NumericTypeStyleRule` nevű *állapotot* ábrázol `temp
 
 A a `BooleanTypeStyleRule` [`StyleObject`](#styleobject) és a a következő tulajdonságokat tartalmazza:
 
-| Tulajdonság | Típus | Leírás | Kötelező |
+| Tulajdonság | Típus | Description | Kötelező |
 |-----------|----------|-------------|-------------|
 | `keyName` | sztring |  Az *állapot* vagy a dinamikus tulajdonság neve.  Az értéknek `keyName` egyedinek kell lennie a Style tömbben.| Yes |
 | `type` | sztring |Az érték "boolean". | Yes |
@@ -158,7 +158,7 @@ A a `BooleanTypeStyleRule` [`StyleObject`](#styleobject) és a a következő tul
 
 A `BooleanRuleObject` meghatározza a színeket `true` és az `false` értékeket.
 
-| Tulajdonság | Típus | Leírás | Kötelező |
+| Tulajdonság | Típus | Description | Kötelező |
 |-----------|----------|-------------|-------------|
 | `true` | sztring | Az *állapot* értékének megadásakor használandó szín `true` A `color` tulajdonság egy JSON-karakterlánc a következő formátumok valamelyikében: <ul><li> HTML-stílusú hexadecimális értékek </li><li> RGB ("#ff0", "#ffff00", "RGB (255, 255, 0)")</li><li> RGBA ("RGBA (255, 255, 0, 1)")</li><li> HSL ("HSL (100, 50%, 50%)")</li><li> HSLA ("HSLA (100, 50%, 50%, 1)")</li><li> Előre definiált HTML-színek nevei, például sárga és kék.</li></ul>| Yes |
 | `false` | sztring | Az *állapot* értékének megadásakor használandó szín `false` | Yes |

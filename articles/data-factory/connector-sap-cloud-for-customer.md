@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/12/2020
 ms.openlocfilehash: 9544d0298a7aa62d5fd935e8670d02e470ac15e5
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84987565"
 ---
 # <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory"></a>Adatok másolása az SAP Cloud for Customer (C4C) szolgáltatásból Azure Data Factory használatával
@@ -59,7 +59,7 @@ Az SAP Cloud for Customer társított szolgáltatáshoz a következő tulajdons�
 >[!IMPORTANT]
 >Az SAP felhőbe való adatmásoláshoz az ügyfél számára explicit módon [hozzon létre egy Azure IR](create-azure-integration-runtime.md#create-azure-ir) az SAP-felhő közelében az ügyfél számára, és társítsa a társított szolgáltatáshoz a következő példában látható módon:
 
-**Például**
+**Példa:**
 
 ```json
 {
@@ -93,7 +93,7 @@ Ha az SAP-felhőből szeretne adatokat másolni az ügyfél számára, állítsa
 | típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **SapCloudForCustomerResource** |Yes |
 | path | Az SAP C4C OData entitás elérési útjának megadása. |Yes |
 
-**Például**
+**Példa:**
 
 ```json
 {
@@ -128,7 +128,7 @@ Az SAP felhőből az ügyfélnek történő adatmásoláshoz állítsa a forrás
 
 Példa lekérdezésre egy adott napra vonatkozó adat lekéréséhez:`"query": "$filter=CreatedOn ge datetimeoffset'2017-07-31T10:02:06.4202620Z' and CreatedOn le datetimeoffset'2017-08-01T10:02:06.4202620Z'"`
 
-**Például**
+**Példa:**
 
 ```json
 "activities":[
@@ -170,7 +170,7 @@ Ha az ügyfél számára szeretne Adatmásolást készíteni az SAP-felhőbe, a 
 | writeBehavior | A művelet írási viselkedése. Lehet "Insert", "Update". | Nem. Alapértelmezett "Beszúrás". |
 | writeBatchSize | Az írási művelet kötegének mérete. A legjobb teljesítmény eléréséhez használt köteg mérete eltérő lehet a különböző táblák vagy kiszolgálók esetében. | Nem. Alapértelmezett 10. |
 
-**Például**
+**Példa:**
 
 ```json
 "activities":[

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: srchi
 ms.openlocfilehash: a6f486f15fb5967dfb14508115e2340e4953be81
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85116026"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>Mi a Azure Cosmos DB Analytical Store (előzetes verzió)?
@@ -142,7 +142,7 @@ Ahhoz, hogy egy Azure Cosmos DB-tárolón az analitikai tárolót engedélyező 
 
 ## <a name="analytical-time-to-live-ttl"></a><a id="analytical-ttl"></a>Analitikus élettartam (TTL)
 
-Az analitikai élettartam azt jelzi, hogy az analitikai tárolóban mennyi ideig kell megőrizni az adattárolást egy tároló számára. 
+Az elemzési élettartam jelzi, hogy mennyi ideig kell megőrizni az adott tároló adatait az elemzési tárban. 
 
 A rendszer automatikusan szinkronizálja az operatív adatok beszúrását, frissítését és törlését a tranzakciós tárolóból az analitikai tárolóba, a tranzakciós TTL-konfigurációtól függetlenül. A működési adatoknak az analitikai tárolóban való megőrzését a tároló szintjén található analitikai TTL-érték szabályozhatja az alább megadott módon:
 
@@ -170,6 +170,6 @@ További információért lásd a következő dokumentumokat:
 
 * [Az Azure Cosmos DB-hez készült Azure Synapse Link használatának első lépései](configure-synapse-link.md)
 
-* [Gyakori kérdések a szinapszis hivatkozásáról Azure Cosmos DB](synapse-link-frequently-asked-questions.md)
+* [Gyakori kérdések az Azure Cosmos DB-hez készült Azure Synapse Linkkel kapcsolatban](synapse-link-frequently-asked-questions.md)
 
 * [Az Azure Cosmos DB-hez készült Azure Synapse Link használati esetei](synapse-link-use-cases.md)
