@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: virtual-machines
 author: ayshakeen
 ms.service: virtual-machines
@@ -9,10 +9,10 @@ ms.date: 09/18/2019
 ms.author: azcspmt;ayshak;cynthn
 ms.custom: include file
 ms.openlocfilehash: 033ec0f4011cae657fc464849aac5c5d9a850907
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83343320"
 ---
 Az Azure-beli számítások olyan virtuálisgép-méreteket biztosítanak, amelyek egy adott hardvereszközhöz vannak elkülönítve, és egyetlen ügyfélhez vannak hozzárendelve.  Ezek a virtuálisgép-méretek olyan számítási feladatokhoz ideálisak, amelyek nagy fokú elkülönítést igényelnek más ügyfelektől olyan munkaterhelések esetén, mint például a megfelelőségi és szabályozási követelmények.  Az ügyfelek emellett dönthetnek úgy is, hogy a [beágyazott virtuális gépek Azure-támogatásának](https://azure.microsoft.com/blog/nested-virtualization-in-azure/)használatával tovább alcsoportba helyezik az elkülönített virtuális gépek erőforrásait.
@@ -87,8 +87,8 @@ Válasz **: igen**, a méret csak a 2021. május 15-ig érhető el. Azon ügyfel
 | RI |  Példány méretének rugalmassága | Juttatások támogathatósága |   
 | --- | --- | --- |
 |   D15_v2  |   Ki     |   D15_v2 és D15i_v2 |    
-|   D15_v2  |   Bekapcsolva  |   D15_v2 adatsorozat-és D15i_v2 az RI-juttatást is megkapja. |    
-|   D14_v2  |   Bekapcsolva  |   D15_v2 adatsorozat-és D15i_v2 az RI-juttatást is megkapja. |    
+|   D15_v2  |   Be  |   D15_v2 adatsorozat-és D15i_v2 az RI-juttatást is megkapja. |    
+|   D14_v2  |   Be  |   D15_v2 adatsorozat-és D15i_v2 az RI-juttatást is megkapja. |    
  
 Hasonlóképpen a Dsv2 sorozathoz.
  
@@ -98,9 +98,9 @@ Hasonlóképpen a Dsv2 sorozathoz.
 | RI |  Példány méretének rugalmassága | Juttatások támogathatósága |   
 | --- | --- | --- |
 | D15_v2 |  Ki |   Csak D15_v2  
-| D15_v2 |  Bekapcsolva |    A D15_v2 sorozat az RI juttatást fogja kapni. Az új D15i_v2 nem jogosult a ri-típusból származó RI juttatásra. | 
+| D15_v2 |  Be |    A D15_v2 sorozat az RI juttatást fogja kapni. Az új D15i_v2 nem jogosult a ri-típusból származó RI juttatásra. | 
 | D15i_v2 |     Ki | Csak D15i_v2 |  
-| D15i_v2 |     Bekapcsolva  | Csak D15i_v2 | 
+| D15i_v2 |     Be  | Csak D15i_v2 | 
  
 A példányok méretének rugalmassága nem használható más méretekre, például D2_v2re, D4_v2ra vagy D15_v2re. Hasonlóképpen, a Dsv2 sorozathoz.  
  

@@ -1,79 +1,79 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 09/30/2019
 ms.author: cynthn
 ms.openlocfilehash: feea9696316723a2750be6fc1e13001224320324
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81865629"
 ---
-Az Azure-ban üzemeltetett virtuális gépek jelentős növekedésével fontos, hogy azonosítsa azokat a teljesítmény- és állapotproblémákat, amelyek hatással vannak az általuk támogatott alkalmazásokra és infrastruktúra-szolgáltatásokra. Az alapvető figyelést alapértelmezés szerint a CPU-használat, a lemezkihasználtság, a memóriakihasználtság és a gazdahipervizor által gyűjtött hálózati forgalom biztosítja az Azure-ban. További metrika- és naplóadatok gyűjthetők [bővítmények](../articles/virtual-machines/windows/extensions-features.md) használatával a vendég operációs rendszer ből származó virtuális gépek diagnosztika konfigurálásához.
+Az Azure-ban üzemeltetett virtuális gépek jelentős növekedésével fontos, hogy azonosítsa azokat a teljesítménnyel és állapottal kapcsolatos problémákat, amelyek hatással vannak az alkalmazások és az infrastruktúra által nyújtott szolgáltatásokra. Az alapszintű figyelés alapértelmezés szerint az Azure-ban a CPU-használat, a lemez kihasználtsága, a memória kihasználtsága és a gazdagép hypervisora által gyűjtött hálózati forgalom mérőszámait írja le. A további metrikai és naplózási adatok összegyűjthetők a [bővítmények](../articles/virtual-machines/windows/extensions-features.md) használatával, hogy a diagnosztika konfigurálható legyen a virtuális gépeken a vendég operációs rendszerből.
 
-A vendég operációs rendszer, a .NET alapú vagy a Virtuális gépen belül futó Java webalkalmazás-összetevők teljesítmény- és állapotproblémáinak észlelése és diagnosztizálása érdekében az Azure Monitor átfogó funkciókkal, például a virtuális gépek azure-figyelőjével és az Application Insights-mal biztosítja a központosított figyelést.
+A virtuális gépen futó .NET-alapú vagy Java-webalkalmazás-összetevőkkel kapcsolatos teljesítmény-és állapotadatok észleléséhez és diagnosztizálásához Azure Monitor központosított figyelést biztosít olyan átfogó funkciókkal, mint például a Azure Monitor for VMs és a Application Insights.
 
-## <a name="diagnostics-and-metrics"></a>Diagnosztika és metrikák 
+## <a name="diagnostics-and-metrics"></a>Diagnosztika és mérőszámok 
 
-Beállíthatja és figyelheti a [diagnosztikai adatok gyűjtését](https://docs.microsoft.com/cli/azure/vm/diagnostics) az Azure Portalon, az Azure CLI, az Azure PowerShell és a programozási alkalmazások programozási felületein (API-k) [metrikák](../articles/monitoring-and-diagnostics/monitoring-overview-metrics.md) használatával. Megteheti például a következőt:
+A [diagnosztikai adatok](https://docs.microsoft.com/cli/azure/vm/diagnostics) gyűjteményét beállíthatja és figyelheti a Azure Portal, az Azure CLI, a Azure PowerShell és a programozási alkalmazások API-k [mérőszámait](../articles/monitoring-and-diagnostics/monitoring-overview-metrics.md) használva. Megteheti például a következőt:
 
-- **Vegye figyelembe a virtuális gép alapvető metrikák.** Az Azure Portal áttekintő képernyőjén a bemutatott alapvető metrikák közé tartozik a PROCESSZOR-használat, a hálózati használat, a lemezbájtok száma és a lemezműveletek másodpercenkénti száma.
+- **Figyelje meg a virtuális gép alapvető mérőszámait.** A Azure Portal áttekintés képernyőjén az alapszintű mérőszámok tartalmazzák a CPU-használatot, a hálózati használatot, a lemez bájtjainak teljes számát és a lemezes műveletek másodpercenkénti számát.
 
-- **Engedélyezze a rendszerindítási diagnosztika gyűjteményét, és tekintse meg az Azure Portalhasználatával.** Amikor saját lemezképet hoz az Azure-ba, vagy akár a platformrendszerképek egyikének indításakor számos oka lehet annak, hogy a virtuális gép nem indítható állapotba kerül. A rendszerindítási diagnosztika egyszerűen engedélyezhető, ha virtuális gép létrehozásakor az **Engedélyezve** a rendszerindítási diagnosztika elemre kattint a Beállítások képernyő Figyelés szakaszában.
+- **Engedélyezze a rendszerindítási diagnosztika gyűjteményét, és tekintse meg a Azure Portal használatával.** Ha a saját lemezképét az Azure-ba hozza, vagy akár a platform rendszerképeinek rendszerindítását is, számos oka lehet annak, hogy a virtuális gép nem indítható állapotba kerül. A virtuális gép létrehozásakor egyszerűen engedélyezheti a rendszerindítási diagnosztika **szolgáltatást** , ha a beállítások képernyő figyelés szakaszában a rendszerindítási diagnosztika lehetőségre kattint.
 
-    Virtuális gépindításakor a rendszerindító diagnosztikai ügynök rögzíti a rendszerindító kimenetet, és tárolja azt az Azure storage-ban. Ezek az adatok a virtuális gépek rendszerindítási problémáinak hibaelhárításához használhatóak. A rendszerindítási diagnosztika nem lesz automatikusan engedélyezve, ha parancssori eszközökből hoz létre virtuális gépet. Ahhoz, hogy a rendszerindítási diagnosztikát engedélyezni lehessen, tárfiókot kell létrehozni a rendszerindítási naplók tárolásához. Ha engedélyezi a rendszerindítási diagnosztikát az Azure Portalon, a rendszer automatikusan létrehoz egy tárfiókot.
+    A virtuális gépek indításakor a rendszerindítási diagnosztikai ügynök rögzíti a rendszerindítási kimenetet, és tárolja azt az Azure Storage-ban. Ezek az adatok a virtuális gépek rendszerindítási problémáinak hibaelhárításához használhatóak. A rendszerindítási diagnosztika nem lesz automatikusan engedélyezve, amikor parancssori eszközökről hoz létre virtuális gépet. Ahhoz, hogy a rendszerindítási diagnosztikát engedélyezni lehessen, tárfiókot kell létrehozni a rendszerindítási naplók tárolásához. Ha engedélyezi a rendszerindítási diagnosztikát a Azure Portal, automatikusan létrejön egy Storage-fiók.
 
-    Ha a virtuális gép létrehozásakor nem engedélyezte a rendszerindítási diagnosztikát, később bármikor engedélyezheti azt [az Azure CLI](https://docs.microsoft.com/cli/azure/vm/boot-diagnostics), [az Azure PowerShell](https://docs.microsoft.com/powershell/module/az.compute/set-azvmbootdiagnostic)vagy az [Azure Resource Manager-sablon](../articles/virtual-machines/windows/extensions-diagnostics-template.md)használatával.
+    Ha nem engedélyezte a rendszerindítási diagnosztika használatát a virtuális gép létrehozásakor, később bármikor engedélyezheti az [Azure CLI](https://docs.microsoft.com/cli/azure/vm/boot-diagnostics), [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.compute/set-azvmbootdiagnostic)vagy egy [Azure Resource Manager sablon](../articles/virtual-machines/windows/extensions-diagnostics-template.md)használatával.
 
-- **Engedélyezze a vendég operációsrendszer diagnosztikai adatainak gyűjtését.** Virtuális gép létrehozásakor lehetősége van a beállítások képernyőn a vendég operációs rendszer diagnosztika engedélyezéséhez. Ha engedélyezi a diagnosztikai adatok gyűjtését, az [IaaSDiagnostics bővítmény Linux](../articles/virtual-machines/linux/diagnostic-extension.md) vagy az [IaaSDiagnostics bővítmény a Windows](../articles/virtual-machines/windows/ps-extensions-diagnostics.md) a virtuális gép, amely lehetővé teszi, hogy további lemez,CPU és a memória adatok gyűjtése.
+- **A vendég operációs rendszer diagnosztikai adatgyűjtési szolgáltatásának engedélyezése.** Amikor létrehoz egy virtuális gépet, lehetősége van arra, hogy a beállítások képernyőn engedélyezze a vendég operációs rendszer diagnosztikát. Ha engedélyezi a diagnosztikai adatok gyűjtését, a [Linux IaaSDiagnostics-bővítményét](../articles/virtual-machines/linux/diagnostic-extension.md) vagy a [Windows IaaSDiagnostics-bővítményét a rendszer](../articles/virtual-machines/windows/ps-extensions-diagnostics.md) hozzáadja a virtuális géphez, amely lehetővé teszi további lemez-, processzor-és memória-adatok gyűjtését.
 
-    Az összegyűjtött diagnosztikai adatok használatával konfigurálhatja a virtuális gépek automatikus skálázás. Az Azure Monitor Naplók az adatok [tárolására](../articles/azure-monitor/platform/data-platform-logs.md) is konfigurálhatók, és riasztásokat állíthat be, amelyek értesítik, ha a teljesítmény nem megfelelő.
+    Az összegyűjtött diagnosztikai adatok használatával konfigurálhatja a virtuális gépek automatikus skálázását. [Azure monitor naplókat](../articles/azure-monitor/platform/data-platform-logs.md) is konfigurálhat az adattároláshoz, és riasztásokat állíthat be, amelyekkel megtudhatja, ha a teljesítmény nem megfelelő.
 
 ## <a name="alerts"></a>Riasztások
 
-Riasztásokat [alerts](../articles/azure-monitor/platform/alerts-overview.md) adott teljesítménymutatók alapján hozhat létre. Példák a problémák, amelyeket figyelmeztetni lehet, például, ha az átlagos CPU-használat meghaladja egy bizonyos küszöbértéket, vagy a rendelkezésre álló szabad lemezterület egy bizonyos összeg alá csökken. A riasztások konfigurálhatók az [Azure Portalon](../articles/azure-monitor/platform/alerts-metric.md#create-with-azure-portal), [az Azure Resource Manager-sablonok](../articles/azure-monitor/platform/alerts-metric-create-templates.md)vagy [az Azure CLI](../articles/azure-monitor/platform/alerts-metric.md#with-azure-cli)használatával.
+A [riasztásokat](../articles/azure-monitor/platform/alerts-overview.md) meghatározott teljesítmény-mérőszámok alapján hozhatja létre. Példák azokra a problémákra, amelyekről értesítést kaphat, ha az átlagos CPU-használat meghaladja a megadott küszöbértéket, vagy a rendelkezésre álló szabad lemezterület egy bizonyos mennyiség alá csökken. A riasztásokat a [Azure Portal](../articles/azure-monitor/platform/alerts-metric.md#create-with-azure-portal) [Azure Resource Manager sablonok](../articles/azure-monitor/platform/alerts-metric-create-templates.md)vagy az [Azure CLI](../articles/azure-monitor/platform/alerts-metric.md#with-azure-cli)használatával lehet konfigurálni.
 
 ## <a name="azure-service-health"></a>Azure Service Health
 
-[Az Azure Service Health](../articles/service-health/service-health-overview.md) személyre szabott útmutatást és támogatást nyújt, ha az Azure-szolgáltatásokban felmerülő problémák érintik Önt, és segít felkészülni a közelgő tervezett karbantartásra. Az Azure Service Health célzott és rugalmas értesítések használatával figyelmezteti Önt és csapatait.
+A [Azure Service Health](../articles/service-health/service-health-overview.md) személyre szabott útmutatást és támogatást nyújt, ha az Azure-szolgáltatások problémái vannak, és segít felkészülni a közelgő tervezett karbantartásra. Azure Service Health riasztást küld Önnek és csapatának a megcélzó és rugalmas értesítések használatával.
 
 ## <a name="azure-resource-health"></a>Azure Resource Health
 
-[Az Azure Resource állapotának](../articles/service-health/resource-health-overview.md) segítségével diagnosztizálhatja és támogatást kaphat, ha egy Azure-probléma hatással van az erőforrásokra. Tájékoztatja az erőforrásai aktuális és korábbi állapotáról, és segít a problémák kezelésében. A Resource Health műszaki támogatást nyújt, ha segítségre van szüksége az Azure szolgáltatásait érintő problémákkal kapcsolatban.
+Az [Azure Resource Health](../articles/service-health/resource-health-overview.md) segítséget nyújt a diagnosztizálásban és a támogatásban, ha egy Azure-probléma hatással van az erőforrásaira. Tájékoztatja az erőforrásai aktuális és korábbi állapotáról, és segít a problémák kezelésében. A Resource Health műszaki támogatást nyújt, ha segítségre van szüksége az Azure szolgáltatásait érintő problémákkal kapcsolatban.
 
 ## <a name="azure-activity-log"></a>Azure-tevékenységnapló
 
-Az [Azure-tevékenységnapló](../articles/azure-monitor/platform/platform-logs-overview.md) egy előfizetési napló, amely betekintést nyújt az Azure-ban bekövetkezett előfizetési szintű eseményekbe. A napló egy adattartományt tartalmaz, az Azure Resource Manager működési adataitól a Service Health-események frissítéseiig. Az Azure Portalon a Tevékenységnapló elemre kattintva megtekintheti a virtuális gép naplóját.
+Az [Azure-tevékenység naplója](../articles/azure-monitor/platform/platform-logs-overview.md) egy előfizetési napló, amely betekintést nyújt az Azure-ban bekövetkezett előfizetési szintű eseményekre. A napló számos adattartományt tartalmaz, Azure Resource Manager operatív adatokból Service Health események frissítéseire. A Azure Portalban található műveletnapló elemre kattintva megtekintheti a virtuális gép naplóját.
 
-A tevékenységnaplóval többek között a következőket teheti:
+A műveletnapló többek között a következőkre használható:
 
-- Hozzon létre [riasztást egy tevékenységnapló-eseményen.](../articles/azure-monitor/platform/platform-logs-overview.md)
-- [Továbbítsa egy eseményközpontba,](../articles/azure-monitor/platform/activity-logs-stream-event-hubs.md) hogy egy külső szolgáltatás vagy egyéni elemzési megoldás, például a Power BI betöltést.
-- Elemezze a Power BI-ban a [Power BI tartalomcsomagjával.](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/)
-- [Mentse el egy tárfiókba](../articles/azure-monitor/platform/archive-activity-log.md) archiváláshoz vagy manuális ellenőrzéshez. Megadhatja a megőrzési időt (napokban) a naplóprofil használatával.
+- Hozzon létre egy [riasztást egy tevékenység napló eseményén](../articles/azure-monitor/platform/platform-logs-overview.md).
+- [Továbbítsa azt egy Event hub](../articles/azure-monitor/platform/activity-logs-stream-event-hubs.md) -nak egy harmadik féltől származó szolgáltatás vagy egyéni elemzési megoldás (például Power BI) betöltéséhez.
+- Elemezze Power BI a [Power bi Content Pack](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/)használatával.
+- [Mentse azt egy Storage-fiókba](../articles/azure-monitor/platform/archive-activity-log.md) archiválás vagy manuális ellenőrzés céljából. Az adatmegőrzési időt (nap) megadhatja a log profil használatával.
 
-A tevékenységnapló-adatokat az [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.insights/), az [Azure CLI](https://docs.microsoft.com/cli/azure/monitor)vagy a [REST API-k figyelése](https://docs.microsoft.com/rest/api/monitor/)segítségével is elérheti.
+A műveletnapló adatai [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.insights/), az [Azure CLI](https://docs.microsoft.com/cli/azure/monitor)használatával vagy a [REST API-k figyelésével](https://docs.microsoft.com/rest/api/monitor/)is elérhetők.
 
-[Az Azure Resource Logs](../articles/azure-monitor/platform/platform-logs-overview.md) a virtuális gép által kibocsátott naplók, amelyek gazdag, gyakori adatokat biztosítanak a működéséről. Az erőforrásnaplók eltérnek a tevékenységnaplótól azáltal, hogy betekintést nyújtanak a virtuális gépen belül végrehajtott műveletekbe.
+Az [Azure-erőforrás-naplók](../articles/azure-monitor/platform/platform-logs-overview.md) a virtuális gép által kibocsátott naplók, amelyek a működésével kapcsolatos gazdag és gyakori információkat biztosítanak. Az erőforrás-naplók különböznek a tevékenység naplójától azáltal, hogy betekintést adnak a virtuális gépen végrehajtott műveletekre.
 
-A diagnosztikai naplókkal többek között a következő műveleteket teheti meg:
+A diagnosztikai naplókhoz többek között a következőket teheti:
 
-- [Mentse őket egy tárfiókba](../articles/azure-monitor/platform/archive-diagnostic-logs.md) naplózásra vagy manuális ellenőrzésre. Megadhatja a megőrzési idő (napokban) az erőforrás-diagnosztikai beállítások használatával.
-- [Továbbítsa őket az Event Hubs-ba](../articles/azure-monitor/platform/resource-logs-stream-event-hubs.md) egy külső szolgáltatás vagy egyéni elemzési megoldás, például a Power BI általi betöltéshez.
-- Elemezze őket a [Log Analytics](../articles/log-analytics/log-analytics-azure-storage.md)segítségével.
+- A naplózáshoz vagy a manuális ellenőrzéshez [mentse őket egy Storage-fiókba](../articles/azure-monitor/platform/archive-diagnostic-logs.md) . Megadhatja a megőrzési időt (napokban) az erőforrás-diagnosztikai beállítások használatával.
+- A harmadik féltől származó szolgáltatás vagy egyéni elemzési megoldás (például a Power BI) betöltéséhez [továbbíthatja őket Event Hubs](../articles/azure-monitor/platform/resource-logs-stream-event-hubs.md) .
+- Elemezze azokat [log Analyticsokkal](../articles/log-analytics/log-analytics-azure-storage.md).
 
 ## <a name="advanced-monitoring"></a>Speciális figyelés
 
-Az Azure virtuális gép és a virtuális gép méretezési csoportja által támogatott alkalmazás vagy szolgáltatás láthatóságához, a vendég operációs rendszerrel vagy a virtuális gépen futó számítási feladattal kapcsolatos problémák azonosításához, hogy megállapítsa, ha az hatással van az alkalmazás rendelkezésre állására vagy teljesítményére, vagy az alkalmazással kapcsolatos probléma, engedélyezze az [Azure-figyelő virtuális gépekés](../articles/azure-monitor/insights/vminsights-overview.md) [az Application Insights](../articles/azure-monitor/app/app-insights-overview.md)számára.
+Az Azure-beli virtuális gép és a virtuálisgép-méretezési csoportok által támogatott alkalmazások vagy szolgáltatások láthatósága érdekében a virtuális gépen futó vendég operációs rendszer vagy munkaterhelések problémáinak azonosítása annak megismeréséhez, hogy az az alkalmazás rendelkezésre állását vagy teljesítményét befolyásolja-e, vagy az alkalmazással kapcsolatos probléma, engedélyezze a [Azure monitor for VMS](../articles/azure-monitor/insights/vminsights-overview.md) és a [Application Insights](../articles/azure-monitor/app/app-insights-overview.md)is.
 
-Az Azure Monitor virtuális gépek figyeli az Azure virtuális gépek (VM) a Windows és a Linux virtuális gépek teljesítményének és állapotának elemzésével, beleértve a különböző folyamatok és az összekapcsolt függőségek más erőforrások és külső folyamatok általa felderített. Számos trendteljesítmény-diagramot tartalmaz, amelyek segítenek a problémák kivizsgálásában és a virtuális gépek kapacitásának felmérésében. A függőségi térkép a figyelt és nem figyelt gépeket, a folyamatok és a gépek közötti sikertelen és aktív hálózati kapcsolatokat jeleníti meg, és a szabványos hálózati kapcsolatmérőszámokkal rendelkező trenddiagramokat jeleníti meg. Az Application Insights segítségével figyelheti az alkalmazást, és rögzítheti a telemetriai adatokat, például a HTTP-kérelmeket, a kivételeket stb., így korrelálhatja a virtuális gépek és az alkalmazás közötti problémákat. Konfigurálja [az Azure Monitor riasztások riasztást](../articles/azure-monitor/platform/alerts-overview.md) a fontos körülmények észlelése az Azure Monitor virtuális gépekhez gyűjtött adatok figyelése.
+A Azure Monitor for VMs az Azure-beli virtuális gépeket (VM) a Windows-és Linux-alapú VM-EK teljesítményének és állapotának elemzésével figyeli, beleértve a különböző folyamatokat és a más erőforrásokkal és a felhasználható külső folyamatokkal kapcsolatos eltérő függőségeket is. Számos trend Performance diagramot tartalmaz, amelyek segítenek a problémák kivizsgálásában és a virtuális gépek kapacitásának felmérésében. A függőségi Térkép megjeleníti a felügyelt és a nem figyelt gépeket, a sikertelen és az aktív hálózati kapcsolatokat a folyamatok és a számítógépek között, és a szabványos hálózati kapcsolati metrikákkal rendelkező trend-diagramokat jeleníti meg. A Application Insightsával kombinálva figyelheti az alkalmazást, és rögzítheti a telemetria, például a HTTP-kérelmeket, kivételeket stb., így a virtuális gépek és az alkalmazás közötti problémák is összekapcsolhatók. [Azure monitor riasztásokat](../articles/azure-monitor/platform/alerts-overview.md) konfigurálhat, hogy riasztást kapjon a Azure monitor for VMS által gyűjtött figyelési adatokból észlelt fontos feltételekről.
 
 ## <a name="next-steps"></a>További lépések
 
-- Az Azure PowerShell segítségével a [Windows virtuális gép figyelése](../articles/virtual-machines/windows/tutorial-monitoring.md) vagy [a Linux virtuális gép figyelése az Azure CLI segítségével](../articles/virtual-machines/linux/tutorial-monitoring.md)című lépések lépéseit.
+- Végigvezeti a [Windows rendszerű virtuális gép figyelésének](../articles/virtual-machines/windows/tutorial-monitoring.md) lépésein Azure PowerShell vagy [egy linuxos virtuális gép figyelése az Azure CLI-vel](../articles/virtual-machines/linux/tutorial-monitoring.md).
 
-- További információ a [figyelés és a diagnosztika gyakorlati tanácsairól.](https://docs.microsoft.com/azure/architecture/best-practices/monitoring)
+- További információ a [monitorozás és a diagnosztika](https://docs.microsoft.com/azure/architecture/best-practices/monitoring)szolgáltatással kapcsolatos ajánlott eljárásokról.

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 07/10/2019
 ms.author: danlep
 ms.openlocfilehash: 35f506235f698fbcf42308e6f0b0f400e925df29
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68361543"
 ---
 ### <a name="bastion-tier"></a>Megerősített szintek
@@ -23,4 +23,4 @@ Az SSH-ügynök továbbítása is engedélyezhető a virtuális gépeken, ami le
 ssh -A -t user@BASTION_SERVER_IP ssh -A root@TARGET_SERVER_IP`
 ```
 
-Ez a parancs csatlakozik a megerősített szolgáltatáshoz, majd `ssh` azonnal újra fut, így a rendszer egy terminált kap a cél példányon. Előfordulhat, hogy a célként megadott példányon kívül más felhasználót kell megadnia, ha a fürt másképp van konfigurálva. Az `-A` argumentum továbbítja az ügynöki kapcsolatokat, így a helyi gépen lévő titkos kulcsot automatikusan használja a rendszer. Vegye figyelembe, hogy az ügynök továbbítása egy lánc, `ssh` ezért a második `-A` parancs azt is tartalmazza, hogy a célként megadott példányon kezdeményezett további SSH-kapcsolatok a helyi titkos kulcsot is használják.
+Ez a parancs csatlakozik a megerősített szolgáltatáshoz, majd azonnal `ssh` újra fut, így a rendszer egy terminált kap a cél példányon. Előfordulhat, hogy a célként megadott példányon kívül más felhasználót kell megadnia, ha a fürt másképp van konfigurálva. Az `-A` argumentum továbbítja az ügynöki kapcsolatokat, így a helyi gépen lévő titkos kulcsot automatikusan használja a rendszer. Vegye figyelembe, hogy az ügynök továbbítása egy lánc, ezért a második `ssh` parancs azt is tartalmazza, `-A` hogy a célként megadott példányon kezdeményezett további SSH-kapcsolatok a helyi titkos kulcsot is használják.

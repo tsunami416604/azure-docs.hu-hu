@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: clemensv
 ms.openlocfilehash: ceb2626a43ed44338bb0faad475ae2333af2de9e
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67179351"
 ---
 Ellenőrizze, hogy már [létrehozott-e Relay-névteret][namespace-how-to].
@@ -26,6 +26,6 @@ Ellenőrizze, hogy már [létrehozott-e Relay-névteret][namespace-how-to].
 6. A **Hibrid kapcsolat létrehozása** alatt adjon meg egy értéket a hibrid kapcsolat neveként. A többi alapértelmezett értéket ne módosítsa.
    
     ![Új kiválasztása](./media/relay-create-hybrid-connection-portal/create-hc-3.png)
-7. Kattintson a **Létrehozás** gombra.
+7. Válassza a **Létrehozás** lehetőséget.
 
 [namespace-how-to]: ../articles/service-bus-relay/relay-create-namespace-portal.md 

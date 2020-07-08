@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: iot-hub
 author: dominicbetts
 ms.service: iot-hub
@@ -9,10 +9,10 @@ ms.date: 09/07/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: 68260bf8aafbbe5afd46ec7dfb763eb88ee2123e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78892954"
 ---
 Ebben a szakaszban az Azure CLI használatával hozza létre az eszköz identitását ehhez a cikkhez. Az eszközazonosítókban különbözőnek számítanak a kis- és nagybetűk.
@@ -25,7 +25,7 @@ Ebben a szakaszban az Azure CLI használatával hozza létre az eszköz identit�
     az extension add --name azure-iot
     ```
 
-2. Hozzon létre egy új eszköz `myDeviceId` identitását, és kérje le az eszköz-kapcsolatok karakterláncát a következő parancsokkal:
+2. Hozzon létre egy új eszköz identitását, `myDeviceId` és kérje le az eszköz-kapcsolatok karakterláncát a következő parancsokkal:
 
     ```azurecli-interactive
     az iot hub device-identity create --device-id myDeviceId --hub-name {Your IoT Hub name}

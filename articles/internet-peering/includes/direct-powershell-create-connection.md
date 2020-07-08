@@ -1,7 +1,7 @@
 ---
-title: fájl belefoglalása
+title: fájlbefoglalás
 titleSuffix: Azure
-description: fájl belefoglalása
+description: fájlbefoglalás
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 610bac5c08d7f3aa3c93e273bc6573a08ca1239f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81680748"
 ---
 Az alábbi példa bemutatja, hogyan hozhat létre egy 10 GB/s-os közvetlen társas kapcsolatot Seattle-ben.
@@ -32,7 +32,7 @@ $connection1 = New-AzPeeringDirectConnectionObject `
 ```
 
 > [!NOTE]
-> Az előző példában <index>szereplő **$peeringLocation []** <index> értékének meg kell egyeznie az Ön által választott egyenrangú hellyel.
+> Az <index> előző példában szereplő **$peeringLocation []** értékének <index> meg kell egyeznie az Ön által választott egyenrangú hellyel.
 
 Hozzon létre egy másik kapcsolatot abban az esetben, ha redundancia szükséges egy adott összevonási helyen.
 

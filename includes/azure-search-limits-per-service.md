@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: search
 author: HeidiSteen
 ms.service: cognitive-search
@@ -9,10 +9,10 @@ ms.date: 05/11/2020
 ms.author: heidist
 ms.custom: include file
 ms.openlocfilehash: fe5c8129434ddb4eec2dd25a3f123f28b4db221b
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83682609"
 ---
 A keresési szolgáltatást a lemezterület korlátozza, vagy az indexek vagy indexelő maximális számának korlátozásával, attól függően, hogy melyik következik be először. A következő táblázat a dokumentumok tárolási korlátait tartalmazza. Az objektumok maximális korlátaihoz lásd: [erőforrások korlátozása](../articles/search/search-limits-quotas-capacity.md#index-limits).
@@ -21,9 +21,9 @@ A keresési szolgáltatást a lemezterület korlátozza, vagy az indexek vagy in
 | -------- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Szolgáltatói szerződés (SLA)<sup>2</sup>  |Nem |Igen |Igen |Igen |Igen |Igen |Igen |Igen |
 | Tárterület partíciónként |50 MB |2 GB |25 GB |100 GB |200 GB |200 GB |1 TB |2 TB |
-| Partíciók szolgáltatásonként |N/A |1 |12 |12 |12 |3 |12 |12 |
-| Partíció mérete |N/A |2 GB |25 GB |100 GB |200 GB |200 GB |1 TB |2 TB |
-| Replikák |N/A |3 |12 |12 |12 |12 |12 |12 |
+| Partíciók szolgáltatásonként |N.A. |1 |12 |12 |12 |3 |12 |12 |
+| Partíció mérete |N.A. |2 GB |25 GB |100 GB |200 GB |200 GB |1 TB |2 TB |
+| Replikák |N.A. |3 |12 |12 |12 |12 |12 |12 |
 
 <sup>1</sup> az alapszintű partíció egy rögzített partíciót tartalmaz. További keresési egységek is felhasználhatók a nagyobb lekérdezési kötetek replikáinak hozzáadására.
 

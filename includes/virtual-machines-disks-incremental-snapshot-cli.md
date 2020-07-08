@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -9,11 +9,11 @@ ms.date: 03/05/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: cbd6f821326c86983ceb3ae5b90969e522c187fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80343050"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82204636"
 ---
 [!INCLUDE [virtual-machines-disks-incremental-snapshots-description](virtual-machines-disks-incremental-snapshots-description.md)]
 
@@ -23,17 +23,17 @@ ms.locfileid: "80343050"
 
 ## <a name="cli"></a>parancssori felület
 
-Létrehozhat egy növekményes pillanatképet az Azure CLI-vel, szüksége lesz az Azure CLI legújabb verziójára. 
+Növekményes pillanatképet is létrehozhat az Azure CLI-vel, az Azure CLI legújabb verziójára lesz szüksége. 
 
-Windows rendszerben a következő parancs telepíti vagy frissíti a meglévő telepítést a legújabb verzióra:
+Windows rendszeren a következő parancs telepíti vagy frissíti a meglévő telepítését a legújabb verzióra:
 ```PowerShell
 Invoke-WebRequest -Uri https://aka.ms/installazurecliwindows -OutFile .\AzureCLI.msi; Start-Process msiexec.exe -Wait -ArgumentList '/I AzureCLI.msi /quiet'
 ```
-Linux alatt a CLI telepítése az operációs rendszer verziójától függően változik.  Lásd: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli) az adott Linux-verzióhoz.
+Linux rendszeren a CLI telepítése az operációs rendszer verziójától függően eltérő lesz.  Lásd: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli) az adott Linux-verzióra.
 
-Növekményes pillanatkép létrehozásához `--incremental` használja [az pillanatkép létrehozása](https://docs.microsoft.com/cli/azure/snapshot?view=azure-cli-latest#az-snapshot-create) a paraméterrel.
+Növekményes pillanatkép létrehozásához használja az [az Snapshot Create](https://docs.microsoft.com/cli/azure/snapshot?view=azure-cli-latest#az-snapshot-create) `--incremental` paramétert.
 
-A következő példa létrehoz egy `<yourDesiredSnapShotNameHere>` `<yourResourceGroupNameHere>`növekményes pillanatképet, a , a ,`<exampleDiskName>`és `<exampleLocation>` a saját értékeit, majd futtassa a példát:
+A következő példa egy növekményes pillanatképet hoz létre, és lecseréli a `<yourDesiredSnapShotNameHere>` `<yourResourceGroupNameHere>` `<exampleDiskName>` `<exampleLocation>` saját értékeit, majd futtatja a példát:
 
 ```bash
 sourceResourceId=$(az disk show -g <yourResourceGroupNameHere> -n <exampleDiskName> --query '[id]' -o tsv)
@@ -45,13 +45,13 @@ az snapshot create -g <yourResourceGroupNameHere> \
 --incremental
 ```
 
-Azonosíthatja a növekményes `SourceResourceId` pillanatképek ugyanabból a lemezről a és a `SourceUniqueId` pillanatképek tulajdonságait. `SourceResourceId`A szülőlemez Azure Resource Manager erőforrás-azonosítója. `SourceUniqueId`A lemez `UniqueId` tulajdonságától örökölt érték. Ha töröl egy lemezt, majd új lemezt hoz létre ugyanazzal a névvel, a `UniqueId` tulajdonság értéke megváltozik.
+Az azonos lemezről származó növekményes pillanatképeket a `SourceResourceId` és a `SourceUniqueId` Pillanatképek tulajdonságaival is azonosíthatja. `SourceResourceId`a szülő lemez Azure Resource Manager erőforrás-azonosítója. `SourceUniqueId`az érték a `UniqueId` lemez tulajdonságában örökölt. Ha töröl egy lemezt, majd létrehoz egy azonos nevű új lemezt, a `UniqueId` tulajdonság módosul.
 
-Használhatja `SourceResourceId` és `SourceUniqueId` létrehozhatja az adott lemezhez társított összes pillanatkép listáját. A következő példa felsorolja az adott lemezhez társított összes növekményes pillanatképet, de némi beállítást igényel.
+A `SourceResourceId` és az használatával `SourceUniqueId` létrehozhat egy adott lemezhez társított összes pillanatkép listáját. Az alábbi példa felsorolja az adott lemezzel kapcsolatos összes növekményes pillanatképet, de szükség van rá néhány beállításra.
 
-Ez a példa a jq az adatok lekérdezéséhez. A példa futtatásához [telepítenie](https://stedolan.github.io/jq/download/)kell a jq .
+Ez a példa jQ használ az adatlekérdezéshez. A példa futtatásához [telepítenie](https://stedolan.github.io/jq/download/)kell a jQ.
 
-Cserélje `<yourResourceGroupNameHere>` `<exampleDiskName>` le és használja az értékeket, majd a következő példával listázhatja a meglévő növekményes pillanatképeket, feltéve, hogy telepítette a jq-t is:
+Cserélje le az `<yourResourceGroupNameHere>` `<exampleDiskName>` értékeket, és az értékeit használva a következő példával listázhatja a meglévő növekményes pillanatképeket, feltéve, hogy a jQ is telepítette:
 
 ```bash
 sourceUniqueId=$(az disk show -g <yourResourceGroupNameHere> -n <exampleDiskName> --query '[uniqueId]' -o tsv)
@@ -65,7 +65,7 @@ az snapshot list -g <yourResourceGroupNameHere> -o json \
 
 ## <a name="resource-manager-template"></a>Resource Manager-sablon
 
-Az Azure Resource Manager-sablonok használatával növekményes pillanatképet is létrehozhat. Győződjön meg arról, hogy az apiVersion **értéke 2019-03-01,** és hogy a növekményes tulajdonság is igaz. A következő kódrészlet egy példa arra, hogyan hozhat létre növekményes pillanatképet az Erőforrás-kezelő sablonokkal:
+Növekményes pillanatkép létrehozásához Azure Resource Manager sablonokat is használhat. Győződjön meg arról, hogy a apiVersion értéke **2019-03-01** , és hogy a növekményes tulajdonság értéke TRUE (igaz) is. A következő kódrészlet egy példa arra, hogyan hozhat létre növekményes pillanatképet Resource Manager-sablonokkal:
 
 ```json
 {
@@ -101,4 +101,4 @@ Az Azure Resource Manager-sablonok használatával növekményes pillanatképet 
 
 ## <a name="next-steps"></a>További lépések
 
-Ha a .NET használatával a növekményes pillanatképek különbözeti képességét bemutató mintakódot szeretne látni, olvassa el az [Azure felügyelt lemezek biztonsági másolata egy másik régióba a növekményes pillanatképek különbözeti képességével rendelkező témakört.](https://github.com/Azure-Samples/managed-disks-dotnet-backup-with-incremental-snapshots)
+Ha szeretné megtekinteni a növekményes Pillanatképek különbözeti képességét bemutató mintakód használatát, tekintse meg az [Azure-Managed Disks biztonsági mentések másolása másik régióba a növekményes Pillanatképek különbözeti képességével](https://github.com/Azure-Samples/managed-disks-dotnet-backup-with-incremental-snapshots)című témakört.
