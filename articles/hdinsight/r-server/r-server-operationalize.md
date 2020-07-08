@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/27/2018
-ms.openlocfilehash: a05bcdef2b7456fbab852e9728c156e57f847f57
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1a5a46957c92fb2c14907db728216481f3f57aac
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71123562"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087690"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Működővé tenni ML Services-fürt az Azure HDInsight
 
@@ -32,7 +32,9 @@ Miután a HDInsight-ben használta a ML Services-fürtöt az adatmodellezés bef
 
 1. Jelentkezzen be SSH-n keresztül az élcsomópontba.
 
-        ssh USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net
+    ```bash
+    ssh USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net
+    ```
 
     Az SSH és az Azure HDInsight használatával kapcsolatos utasításokért lásd: az [SSH használata a HDInsight.](../hdinsight-hadoop-linux-use-ssh-unix.md)
 
@@ -40,13 +42,17 @@ Miután a HDInsight-ben használta a ML Services-fürtöt az adatmodellezés bef
 
     - Microsoft ML Server 9,1 esetén:
 
-            cd /usr/lib64/microsoft-r/rserver/o16n/9.1.0
-            sudo dotnet Microsoft.RServer.Utils.AdminUtil/Microsoft.RServer.Utils.AdminUtil.dll
+        ```bash
+        cd /usr/lib64/microsoft-r/rserver/o16n/9.1.0
+        sudo dotnet Microsoft.RServer.Utils.AdminUtil/Microsoft.RServer.Utils.AdminUtil.dll
+        ```
 
     - Microsoft R Server 9.0 esetén:
 
-            cd /usr/lib64/microsoft-deployr/9.0.1
-            sudo dotnet Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
+        ```bash
+        cd /usr/lib64/microsoft-deployr/9.0.1
+        sudo dotnet Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
+        ```
 
 1. A választható lehetőségek közül választhat. Válassza az első lehetőséget, ahogyan az a következő képernyőképen is látható, a **operacionalizálási ml Server konfigurálásához**.
 
@@ -82,19 +88,20 @@ Miután a HDInsight-ben használta a ML Services-fürtöt az adatmodellezés bef
 
 Ha hosszú késleltetést tapasztal, amikor egy Apache Spark számítási környezetben mrsdeploy függvényekkel létrehozott webszolgáltatást próbál felhasználni, előfordulhat, hogy hozzá kell adnia néhány hiányzó mappát. A Spark-alkalmazás egy *rserve2* nevű felhasználóhoz tartozik, ha egy mrsdeploy függvényeket használó webszolgáltatásból hívja meg. Megkerülő megoldás a problémára:
 
-    # Create these required folders for user 'rserve2' in local and hdfs:
+```r
+# Create these required folders for user 'rserve2' in local and hdfs:
 
-    hadoop fs -mkdir /user/RevoShare/rserve2
-    hadoop fs -chmod 777 /user/RevoShare/rserve2
+hadoop fs -mkdir /user/RevoShare/rserve2
+hadoop fs -chmod 777 /user/RevoShare/rserve2
 
-    mkdir /var/RevoShare/rserve2
-    chmod 777 /var/RevoShare/rserve2
+mkdir /var/RevoShare/rserve2
+chmod 777 /var/RevoShare/rserve2
 
 
-    # Next, create a new Spark compute context:
- 
-    rxSparkConnect(reset = TRUE)
+# Next, create a new Spark compute context:
 
+rxSparkConnect(reset = TRUE)
+```
 
 Az operacionalizálás konfigurációja ezzel befejeződött. Most már használhatja a `mrsdeploy` csomagot a rclientben, hogy csatlakozhasson a operacionalizálási a peremhálózati csomóponton, és megkezdje az olyan funkciók használatát, mint a [távoli végrehajtás](https://docs.microsoft.com/machine-learning-server/r/how-to-execute-code-remotely) és a [webes szolgáltatások](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services). Attól függően, hogy fürt virtuális hálózaton van-e beállítva, szükség lehet porttovábbító bújtatás kialakítására SSH-bejelentkezésen keresztül. Az alábbi szakaszok ismertetik, hogyan állíthatja be ezt az alagutat.
 
@@ -102,15 +109,15 @@ Az operacionalizálás konfigurációja ezzel befejeződött. Most már használ
 
 Bizonyosodjon meg róla, hogy engedélyezett a forgalom az 12800-as porton az élcsomópont felé. Így az élcsomópont használatával kapcsolódhat az operacionalizálási szolgáltatáshoz.
 
+```r
+library(mrsdeploy)
 
-    library(mrsdeploy)
-
-    remoteLogin(
-        deployr_endpoint = "http://[your-cluster-name]-ed-ssh.azurehdinsight.net:12800",
-        username = "admin",
-        password = "xxxxxxx"
-    )
-
+remoteLogin(
+    deployr_endpoint = "http://[your-cluster-name]-ed-ssh.azurehdinsight.net:12800",
+    username = "admin",
+    password = "xxxxxxx"
+)
+```
 
 Ha a `remoteLogin()` metódus nem tud kapcsolódni az élcsomóponthoz, de SSH-n be tud jelentkezni az élcsomópontba, győződjön meg róla, hogy a szabály, amely engedélyezi a forgalmat az 12800-as porton, megfelelően van-e beállítva. Ha a probléma továbbra is jelentkezik, egy másik megoldás segítségével is beállíthat porttovábbító alagutat az SSH-n keresztül. Útmutatásért tekintse meg a következő szakaszt:
 
@@ -118,19 +125,21 @@ Ha a `remoteLogin()` metódus nem tud kapcsolódni az élcsomóponthoz, de SSH-n
 
 Ha a fürt nem a virtuális hálózaton van beállítva vagy problémás a kapcsolódás a virtuális hálózaton keresztül, akkor használhatja az SSH porttovábbító alagutat:
 
-    ssh -L localhost:12800:localhost:12800 USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net
+```bash
+ssh -L localhost:12800:localhost:12800 USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net
+```
 
 Ha az SSH-munkamenet aktív, a rendszer a helyi gép 12800-as portján keresztül továbbítja a forgalmat az 12800-es portra az SSH-munkamenetben. A `127.0.0.1:12800` címet használja a `remoteLogin()` metódusban. Ez a csomópont operacionalizálási keresztül jelentkezik be a peremhálózat csomópontjaira.
 
+```r
+library(mrsdeploy)
 
-    library(mrsdeploy)
-
-    remoteLogin(
-        deployr_endpoint = "http://127.0.0.1:12800",
-        username = "admin",
-        password = "xxxxxxx"
-    )
-
+remoteLogin(
+    deployr_endpoint = "http://127.0.0.1:12800",
+    username = "admin",
+    password = "xxxxxxx"
+)
+```
 
 ## <a name="scale-operationalized-compute-nodes-on-hdinsight-worker-nodes"></a>Működő számítási csomópontok méretezése a HDInsight Worker csomópontjain
 
@@ -146,17 +155,17 @@ A munkavégző csomópontok leszereléséhez kövesse az alábbi lépéseket:
 
 1. Válassza ki a munkavégző csomópontokat (leszerelni kívánt).
 
-1. Kattintson a **műveletek** > **kiválasztott gazdagépek** > **gazdagépek** > **karbantartási mód bekapcsolása**elemre. A következő képen például a wn3 és a wn4 pontokat választottuk ki leszerelésre.  
+1. Kattintson a **műveletek**  >  **kiválasztott gazdagépek**  >  **gazdagépek**  >  **karbantartási mód bekapcsolása**elemre. A következő képen például a wn3 és a wn4 pontokat választottuk ki leszerelésre.  
 
    ![Az Apache Ambari bekapcsolja a karbantartási módot](./media/r-server-operationalize/get-started-operationalization.png)  
 
-* Válassza a **műveletek** > **kiválasztott gazdagépek** > **adatcsomópontok** > kattintson a **leszerelés**elemre.
-* Válassza a **műveletek** > **kiválasztott gazdagépek** > **csomópontkezelők** > kattintson a **leszerelés**elemre.
-* Válassza a **műveletek** > **kiválasztott gazdagépek** > **adatcsomópontok** > kattintson a **Leállítás**gombra.
-* Válassza a **műveletek** > **kiválasztott gazdagépek** > **csomópontkezelők** > kattintson a **Leállítás**gombra.
-*  > Válassza **Actions**a**kijelölt gazdagépek** > **gazdagépek > kattintson** **az összes összetevő leállítása**elemre.
+* Válassza a **műveletek**  >  **kiválasztott gazdagépek**  >  **adatcsomópontok** > kattintson a **leszerelés**elemre.
+* Válassza a **műveletek**  >  **kiválasztott gazdagépek**  >  **csomópontkezelők** > kattintson a **leszerelés**elemre.
+* Válassza a **műveletek**  >  **kiválasztott gazdagépek**  >  **adatcsomópontok** > kattintson a **Leállítás**gombra.
+* Válassza a **műveletek**  >  **kiválasztott gazdagépek**  >  **csomópontkezelők** > kattintson a **Leállítás**gombra.
+* Válassza **Actions**  >  a**kijelölt gazdagépek**gazdagépek  >  **Hosts** > kattintson **az összes összetevő leállítása**elemre.
 * Szüntesse meg a feldolgozó csomópontok kijelölését, és jelölje ki az átjárócsomópontokat.
-*  > Válassza **Actions**a**kijelölt gazdagépek** > "**gazdagépek** > **újraindítása az összes összetevőt**.
+* Válassza **Actions**  >  a**kijelölt gazdagépek** > "**gazdagépek**  >  **újraindítása az összes összetevőt**.
 
 ### <a name="step-2-configure-compute-nodes-on-each-decommissioned-worker-nodes"></a>2. lépés: a számítási csomópontok konfigurálása az összes leszerelt feldolgozó csomópont (ok) számára
 
@@ -164,11 +173,13 @@ A munkavégző csomópontok leszereléséhez kövesse az alábbi lépéseket:
 
 1. Futtassa a felügyeleti segédprogramot a megfelelő DLL-fájl használatával a ML Services-fürthöz. ML Server 9,1 esetében futtassa a következőt:
 
-        dotnet /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
+    ```bash
+    dotnet /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
+    ```
 
 1. Adja meg az **1** értéket, és válassza **a operacionalizálási ml Server konfigurálása**lehetőséget.
 
-1. Adja meg a **C** értéket `C. Compute node`a lehetőség kiválasztásához. Ez konfigurálja a számítási csomópontot a feldolgozó csomóponton.
+1. Adja meg a **C** értéket a lehetőség kiválasztásához `C. Compute node` . Ez konfigurálja a számítási csomópontot a feldolgozó csomóponton.
 
 1. Lépjen ki az admin segédprogramból.
 
@@ -182,12 +193,14 @@ Miután az összes leszerelt feldolgozó csomópont konfigurálva van a számít
 
 1. Keresse meg az "URI-k" szakaszt, és adja hozzá a feldolgozói csomópont IP-címét és portjának adatait.
 
-       "Uris": {
-         "Description": "Update 'Values' section to point to your backend machines. Using HTTPS is highly recommended",
-         "Values": [
-           "http://localhost:12805", "http://[worker-node1-ip]:12805", "http://[workder-node2-ip]:12805"
-         ]
-       }
+    ```json
+    "Uris": {
+        "Description": "Update 'Values' section to point to your backend machines. Using HTTPS is highly recommended",
+        "Values": [
+            "http://localhost:12805", "http://[worker-node1-ip]:12805", "http://[workder-node2-ip]:12805"
+        ]
+    }
+    ```
 
 ## <a name="next-steps"></a>További lépések
 

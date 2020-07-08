@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/07/2020
 ms.custom: tracking-python
-ms.openlocfilehash: a20cbf14ea2aa2475f25236615b85d6697ce252b
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: d00e4ad8b0a9f1f50c30144867babcd8c782734d
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84704862"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087129"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>A Spark &-struktúra eszközeinek használata a Visual Studio Code-hoz
 
@@ -71,7 +71,7 @@ A nemzeti Felhőbeli felhasználók számára az alábbi lépéseket követve á
 
 ## <a name="connect-to-an-azure-account"></a>Kapcsolódás Azure-fiókhoz
 
-Mielőtt parancsfájlokat szeretne küldeni a fürtökhöz a Visual Studio Code-ból, csatlakoznia kell az Azure-fiókjához, vagy hozzá kell kötnie egy fürtöt. Használja az Apache Ambari-felhasználónevet és a jelszó hitelesítő adatait, vagy egy tartományhoz csatlakoztatott fiókot. Az Azure-hoz való kapcsolódáshoz kövesse az alábbi lépéseket:
+Ahhoz, hogy parancsfájlokat küldhessen a fürtökhöz a Visual Studio Code-ból, a felhasználó bejelentkezhet az Azure-előfizetésbe, vagy [csatolhat HDInsight-fürtöt](#link-a-cluster)is. A HDInsight-fürthöz való csatlakozáshoz használja az ESP-fürthöz tartozó Ambari Felhasználónév/jelszó vagy tartományhoz csatlakoztatott hitelesítő adatokat. Az Azure-hoz való kapcsolódáshoz kövesse az alábbi lépéseket:
 
 1. A menüsávban navigáljon a **View**  >  **parancs paletta megtekintése...** elemre, és írja be az **Azure: bejelentkezés**:
 
@@ -292,6 +292,21 @@ Az eszköz a **Spark SQL** -lekérdezést is támogatja:
 
 Miután elküldte a Python-feladatot, a küldési naplók a Visual Studio Code **kimenet** ablakában jelennek meg. A Spark felhasználói felület URL-címe és a fonal felhasználói felületének URL-címe is megjelenik. A feladatok állapotának nyomon követéséhez megnyithatja az URL-címet egy böngészőben.
 
+## <a name="integrate-with-hdinsight-identity-broker-hib"></a>Integráció a HDInsight Identity Broker (HIB) szolgáltatással
+
+### <a name="connect-to-your-hdinsight-esp-cluster-with-id-broker-hib"></a>Kapcsolódás a HDInsight ESP-fürthöz az ID Broker (HIB) használatával
+
+A normál lépéseket követve bejelentkezhet az Azure-előfizetésbe, hogy csatlakozhasson a HDInsight ESP-fürthöz az ID Broker (HIB) használatával. Bejelentkezés után a rendszer a fürt listáját fogja látni az Azure Explorerben. További útmutatásért lásd: [Kapcsolódás a HDInsight-fürthöz](#connect-to-an-azure-account).
+
+### <a name="run-a-hivepyspark-job-on-an-hdinsight-esp-cluster-with-id-broker-hib"></a>Kaptár/PySpark-feladatok futtatása egy HDInsight ESP-fürtön az ID Broker (HIB) szolgáltatással
+
+A kaptár-feladatok futtatásához kövesse a normál lépéseket, hogy elküldje a feladatot HDInsight ESP-fürtre az ID Broker (HIB) használatával. További útmutatásért tekintse meg az [interaktív struktúra-lekérdezések és a kaptár batch-parancsfájlok beküldését](#submit-interactive-hive-queries-and-hive-batch-scripts) ismertető témakört.
+
+Interaktív PySpark-feladat futtatásához kövesse a normál lépéseket, hogy a HDInsight ESP-fürtöt az ID Broker (HIB) segítségével küldje el. További útmutatásért tekintse meg az [interaktív PySpark-lekérdezések küldését](#submit-interactive-pyspark-queries) ismertető témakört.
+
+PySpark batch-feladat futtatásához kövesse a normál lépéseket, hogy a HDInsight ESP-fürtöt küldje el az ID Broker (HIB) használatával. További útmutatásért tekintse meg a [PySpark batch-feladatok elküldése](#submit-pyspark-batch-job) című témakört.
+
+
 ## <a name="apache-livy-configuration"></a>Apache Livy-konfiguráció
 
 Az [Apache Livy](https://livy.incubator.apache.org/) -konfiguráció támogatott. A munkaterület mappában található fájl **.VSCode\settings.js** is konfigurálhatja. A Livy-konfiguráció jelenleg csak a Python-szkripteket támogatja. További információ: [LIVY readme](https://github.com/cloudera/livy/blob/master/README.rst ).
@@ -324,7 +339,7 @@ A 2. módszer elküld egy fájlt, és megfigyelheti, hogy a `.vscode` rendszer a
     | args | Az alkalmazás parancssori argumentumai | Karakterláncok listája |
     | üvegek | A munkamenetben használandó tégelyek | Karakterláncok listája | 
     | pyFiles | A munkamenetben használni kívánt Python-fájlok | Karakterláncok listája |
-    | fájlokat | A munkamenetben használni kívánt fájlok | Karakterláncok listája |
+    | fájlok | A munkamenetben használni kívánt fájlok | Karakterláncok listája |
     | driverMemory | Az illesztőprogram-folyamathoz használandó memória mennyisége | Sztring |
     | driverCores | Az illesztőprogram-folyamathoz használandó magok száma | Int |
     | executorMemory | A felhasználható memória mennyisége/végrehajtó folyamat | Sztring |

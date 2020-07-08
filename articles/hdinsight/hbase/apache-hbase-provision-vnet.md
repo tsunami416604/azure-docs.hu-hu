@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/23/2019
-ms.openlocfilehash: e4e15d1c6554fc567f668b2033bff5b5664db918
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 82e3374491aa119d9985ea7ef31e180c920511d3
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75972798"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087741"
 ---
 # <a name="create-apache-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Apache HBase-fürtök létrehozása a HDInsight-ben az Azure-ban Virtual Network
 
@@ -51,7 +51,7 @@ Ebben a szakaszban egy Linux-alapú Apache HBase-fürtöt hoz létre egy Azure-b
 
 1. Az **Egyéni telepítés** párbeszédpanelen válassza a **Sablon szerkesztése**lehetőséget.
 
-1. Az 165. sorban módosítsa az `Standard_A3` `Standard_A4_V2`értéket a következőre:. Ezután válassza a **Save** (Mentés) lehetőséget.
+1. Az 165. sorban módosítsa az értéket a következőre: `Standard_A3` `Standard_A4_V2` . Kattintson a **Mentés** gombra.
 
 1. Fejezze be a fennmaradó sablont a következő információkkal:
 
@@ -82,7 +82,7 @@ Hozzon létre egy infrastruktúra-szolgáltatási (IaaS) virtuális gépet ugyan
 * **Alhálózat**: subnet1
 
 > [!IMPORTANT]  
-> Cserélje `CLUSTERNAME` le a nevet a HDInsight-fürt előző lépésekben való létrehozásakor használt névre.
+> Cserélje le a `CLUSTERNAME` nevet a HDInsight-fürt előző lépésekben való létrehozásakor használt névre.
 
 Ezeknek az értékeknek a használatával a virtuális gép ugyanahhoz a virtuális hálózathoz és alhálózathoz kerül, mint a HDInsight-fürt. Ez a konfiguráció lehetővé teszi, hogy közvetlenül kommunikáljanak egymással. Egy üres peremhálózati csomóponttal rendelkező HDInsight-fürtöt is létrehozhat. A peremhálózati csomópontot a fürt kezelésére használhatja.  További információ: [üres peremhálózati csomópontok használata a HDInsight-ben](../hdinsight-apps-use-edge-node.md).
 
@@ -130,14 +130,16 @@ A tartománynév a fürt nevétől kezdődő része a DNS-utótag. Például: `h
 
 ### <a name="verify-communication-inside-virtual-network"></a>A virtuális hálózaton belüli kommunikáció ellenőrzése
 
-Annak ellenőrzéséhez, hogy a virtuális gép tud-e kommunikálni a HBase- `ping headnode0.<dns suffix>` fürttel, használja a parancsot a virtuális gépről. Például: `ping hn0-hbaseg.hjfrnszlumfuhfk4pi1guh410c.bx.internal.cloudapp.net`.
+Annak ellenőrzéséhez, hogy a virtuális gép tud-e kommunikálni a HBase-fürttel, használja a parancsot a `ping headnode0.<dns suffix>` virtuális gépről. Például: `ping hn0-hbaseg.hjfrnszlumfuhfk4pi1guh410c.bx.internal.cloudapp.net`.
 
-Ha ezt az információt Java-alkalmazásokban szeretné használni, kövesse az [Apache Maven használata olyan Java-alkalmazások létrehozásához, amelyek Apache HBase-t használnak a HDInsight (Hadoop)](./apache-hbase-build-java-maven-linux.md) alkalmazással. Ha azt szeretné, hogy az alkalmazás kapcsolódjon egy távoli HBase-kiszolgálóhoz, módosítsa az ebben a példában szereplő **hbase-site. XML** fájlt úgy, hogy a teljes tartománynevet használja a Zookeeper. Például:
+Ha ezt az információt Java-alkalmazásokban szeretné használni, kövesse az [Apache Maven használata olyan Java-alkalmazások létrehozásához, amelyek Apache HBase-t használnak a HDInsight (Hadoop)](./apache-hbase-build-java-maven-linux.md) alkalmazással. Ha azt szeretné, hogy az alkalmazás kapcsolódjon egy távoli HBase-kiszolgálóhoz, módosítsa az ebben a példában szereplő **hbase-site.xml** fájlt, hogy a teljes tartománynevet használja a Zookeeper. Például:
 
-    <property>
-        <name>hbase.zookeeper.quorum</name>
-        <value>zookeeper0.<dns suffix>,zookeeper1.<dns suffix>,zookeeper2.<dns suffix></value>
-    </property>
+```xml
+<property>
+    <name>hbase.zookeeper.quorum</name>
+    <value>zookeeper0.<dns suffix>,zookeeper1.<dns suffix>,zookeeper2.<dns suffix></value>
+</property>
+```
 
 > [!NOTE]  
 > További információ az Azure-beli virtuális hálózatok névfeloldásáról, beleértve a saját DNS-kiszolgáló használatának módját: [névfeloldás (DNS)](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).

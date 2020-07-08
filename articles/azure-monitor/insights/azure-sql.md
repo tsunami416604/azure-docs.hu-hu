@@ -7,11 +7,12 @@ author: danimir
 ms.author: danil
 ms.date: 02/21/2020
 ms.reviewer: carlrab
-ms.openlocfilehash: d1f8a30145cc0d61f110c0f47459a4f1db03325b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bb9bc847944a4228a7b583e21d0aa957f1910a29
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85249415"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087180"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Azure SQL Database figyelése Azure SQL Analytics használatával (előzetes verzió)
 
@@ -71,7 +72,7 @@ Azure SQL Analytics a munkaterülethez való hozzáadásakor a rendszer hozzáad
 
 ![Azure SQL Analytics összefoglaló csempe](./media/azure-sql/azure-sql-sol-tile-01.png)
 
-A betöltést követően a csempén látható az adatbázisok és a rugalmas készletek száma a SQL Database és felügyelt példányokban és példány-adatbázisokban az SQL felügyelt példányában, amelyből a Azure SQL Analytics diagnosztikai telemetria kap.
+A betöltést követően a csempén látható az adatbázisok és a rugalmas készletek száma a SQL Database, valamint a példányok és példányok adatbázisaiban az SQL felügyelt példányában, amelyből a Azure SQL Analytics diagnosztikai telemetria kap.
 
 ![Azure SQL Analytics csempe](./media/azure-sql/azure-sql-sol-tile-02.png)
 
@@ -105,7 +106,7 @@ Miután kiválasztotta az adatbázisok Azure SQL Analytics csempét, megjelenik 
 
 A csempék bármelyikének kiválasztásával megnyithatja a részletezési jelentést az adott perspektívában. A perspektíva kiválasztását követően megnyílik a részletezési jelentés.
 
-Az SQL felügyelt példány nézetének kiválasztásával megtekintheti a felügyelt példányok kihasználtságát, a benne lévő adatbázisokat és a telemetria a példányon végrehajtott lekérdezések részleteit.
+Az SQL felügyelt példány nézetének kiválasztásával megtekintheti a felügyelt példányon végrehajtott lekérdezésekben a példány kihasználtsága, a példány adatbázisai és a telemetria részleteit.
 
 ![Azure SQL Analytics időtúllépések](./media/azure-sql/azure-sql-sol-metrics-mi.png)
 
@@ -268,7 +269,7 @@ AzureDiagnostics
 
 > [!NOTE]
 >
-> - A riasztás beállításának előfeltétele, hogy a felügyelt példány figyelése a ResourceUsageStats-napló folyamatos átvitelét teszi lehetővé Azure SQL Analytics.
+> - A riasztás beállításának előfeltétele, hogy a figyelt felügyelt példányon engedélyezve legyen a ResourceUsageStats-napló folyamatos átvitele Azure SQL Analytics.
 > - Ehhez a lekérdezéshez riasztási szabályt kell beállítani a riasztás kikapcsolásához, ha a lekérdezés eredménye (> 0 eredmény) létezik, jelezve, hogy a feltétel létezik a felügyelt példányon. A kimenet a felügyelt példány tárolási százalékos aránya.
 
 #### <a name="cpu-average-consumption-is-above-95-in-the-last-1-hr"></a>A CPU átlagos fogyasztása 95% fölött van az elmúlt 1 HR-ben

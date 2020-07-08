@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 04/16/2020
-ms.openlocfilehash: 17c73866a11aae23efea90073f64b61808c13a35
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: b5ea227ba75a9ecf6666883603dad97d02385b5c
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834713"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086483"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>Üres peremhálózati csomópontok használata Apache Hadoop-fürtökön a HDInsight-ben
 
@@ -62,7 +62,6 @@ Miután létrehozott egy peremhálózati csomópontot, az SSH használatával ka
 > Az Edge-csomópontra telepített egyéni összetevők a Microsofttól kereskedelmileg ésszerű támogatást kapnak. Ez az észlelt problémák megoldásához vezethet. Vagy ha további segítségre van szüksége, közösségi erőforrásokra is utalhat. A következőkben néhány, a Közösségtől származó Súgó közül a legaktívabb helyek közül:
 >
 > * [Microsoft Q&HDInsight] (https://docs.microsoft.com/answers/topics/azure-hdinsight.html
-
 > * [https://stackoverflow.com](https://stackoverflow.com).
 >
 > Ha Apache-technológiát használ, lehet, hogy az Apache-projekt webhelyein [https://apache.org](https://apache.org) , például a [Apache Hadoop](https://hadoop.apache.org/) webhelyen tud segítséget találni.
@@ -143,11 +142,15 @@ A peremhálózati csomópont alkalmazásként jelenik meg a Azure Portalon.  A p
 
 2. Miután az SSH-val csatlakozott az Edge-csomóponthoz, a következő parancs használatával nyissa meg a kaptár-konzolt:
 
-        hive
+    ```console
+    hive
+    ```
 
 3. Futtassa a következő parancsot a kaptár-táblák megjelenítéséhez a fürtben:
 
-        show tables;
+    ```hiveql
+    show tables;
+    ```
 
 ## <a name="delete-an-edge-node"></a>Peremhálózati csomópont törlése
 

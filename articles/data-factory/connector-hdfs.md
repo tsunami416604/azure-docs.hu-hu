@@ -11,11 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/15/2020
 ms.author: jingwang
-ms.openlocfilehash: 5ec6778e3e00a85a2fa7d43383df5c2ce6c47faa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8041ce07c08c3b6063e2a1b3c7b55b1cec59b19a
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84629497"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087758"
 ---
 # <a name="copy-data-from-the-hdfs-server-by-using-azure-data-factory"></a>Adatok másolása a HDFS-kiszolgálóról Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki a használni kívánt Data Factory-szolgáltatás verzióját:"]
@@ -286,17 +287,21 @@ Két lehetőség áll rendelkezésre a helyszíni környezet beállítására Ke
 
     A gépet egy munkacsoport tagjaként kell konfigurálni, mert egy Kerberos-tartomány eltér a Windows-tartománytól. Ezt a konfigurációt úgy érheti el, ha beállítja a Kerberos-tartományt, és hozzáadja a KDC-kiszolgálót a következő parancsok futtatásával. Cserélje le a *REALM.com* a saját tartománynevére.
 
-            C:> Ksetup /setdomain REALM.COM
-            C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
+    ```console
+    C:> Ksetup /setdomain REALM.COM
+    C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
+    ```
 
     A parancsok futtatása után indítsa újra a gépet.
 
 2.  Ellenőrizze a konfigurációt a `Ksetup` paranccsal. A kimenetnek az alábbihoz hasonlónak kell lennie:
 
-            C:> Ksetup
-            default realm = REALM.COM (external)
-            REALM.com:
-                kdc = <your_kdc_server_address>
+    ```output
+    C:> Ksetup
+    default realm = REALM.COM (external)
+    REALM.com:
+        kdc = <your_kdc_server_address>
+    ```
 
 **Az adatgyárban:**
 
@@ -318,45 +323,49 @@ Két lehetőség áll rendelkezésre a helyszíni környezet beállítására Ke
 
 1. Szerkessze a KDC konfigurációját a *krb5. conf* fájlban, hogy a KDC megbízhatónak minősítse a Windows-tartományt a következő konfigurációs sablonra való hivatkozással. Alapértelmezés szerint a konfiguráció a következő helyen található: */etc/krb5.conf állományt*.
 
-           [logging]
-            default = FILE:/var/log/krb5libs.log
-            kdc = FILE:/var/log/krb5kdc.log
-            admin_server = FILE:/var/log/kadmind.log
+   ```config
+   [logging]
+    default = FILE:/var/log/krb5libs.log
+    kdc = FILE:/var/log/krb5kdc.log
+    admin_server = FILE:/var/log/kadmind.log
             
-           [libdefaults]
-            default_realm = REALM.COM
-            dns_lookup_realm = false
-            dns_lookup_kdc = false
-            ticket_lifetime = 24h
-            renew_lifetime = 7d
-            forwardable = true
+   [libdefaults]
+    default_realm = REALM.COM
+    dns_lookup_realm = false
+    dns_lookup_kdc = false
+    ticket_lifetime = 24h
+    renew_lifetime = 7d
+    forwardable = true
             
-           [realms]
-            REALM.COM = {
-             kdc = node.REALM.COM
-             admin_server = node.REALM.COM
-            }
-           AD.COM = {
-            kdc = windc.ad.com
-            admin_server = windc.ad.com
-           }
+   [realms]
+    REALM.COM = {
+     kdc = node.REALM.COM
+     admin_server = node.REALM.COM
+    }
+   AD.COM = {
+    kdc = windc.ad.com
+    admin_server = windc.ad.com
+   }
             
-           [domain_realm]
-            .REALM.COM = REALM.COM
-            REALM.COM = REALM.COM
-            .ad.com = AD.COM
-            ad.com = AD.COM
+   [domain_realm]
+    .REALM.COM = REALM.COM
+    REALM.COM = REALM.COM
+    .ad.com = AD.COM
+    ad.com = AD.COM
             
-           [capaths]
-            AD.COM = {
-             REALM.COM = .
-            }
+   [capaths]
+    AD.COM = {
+     REALM.COM = .
+    }
+    ```
 
    A fájl konfigurálása után indítsa újra a KDC szolgáltatást.
 
 2. Készítse elő a *krbtgt/REALM. COM \@ ad.com* nevű rendszerbiztonsági tag a KDC-kiszolgálón a következő paranccsal:
 
-           Kadmin> addprinc krbtgt/REALM.COM@AD.COM
+    ```cmd
+    Kadmin> addprinc krbtgt/REALM.COM@AD.COM
+    ```
 
 3. A *Hadoop. Security. auth_to_local* HDFS szolgáltatás konfigurációs fájljában adja hozzá a t `RULE:[1:$1@$0](.*\@AD.COM)s/\@.*//` .
 
@@ -364,12 +373,16 @@ Két lehetőség áll rendelkezésre a helyszíni környezet beállítására Ke
 
 1.  `Ksetup`Tartományi bejegyzés hozzáadásához futtassa a következő parancsokat:
 
-        C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
-        C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
+    ```cmd
+    C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
+    C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
+    ```
 
 2.  Hozzon létre megbízhatóságot a Windows-tartományból a Kerberos tartományba. a [password] a fő *krbtgt/REALM. COM \@ ad.com*tartozó jelszó.
 
-        C:> netdom trust REALM.COM /Domain: AD.COM /add /realm /password:[password]
+    ```cmd
+    C:> netdom trust REALM.COM /Domain: AD.COM /add /realm /password:[password]
+    ```
 
 3.  Válassza ki a Kerberosban használt titkosítási algoritmust.
 
@@ -383,7 +396,9 @@ Két lehetőség áll rendelkezésre a helyszíni környezet beállítására Ke
 
     d. A `Ksetup` parancs használatával adja meg a megadott tartományon használni kívánt titkosítási algoritmust.
 
-        C:> ksetup /SetEncTypeAttr REALM.COM DES-CBC-CRC DES-CBC-MD5 RC4-HMAC-MD5 AES128-CTS-HMAC-SHA1-96 AES256-CTS-HMAC-SHA1-96
+    ```cmd
+    C:> ksetup /SetEncTypeAttr REALM.COM DES-CBC-CRC DES-CBC-MD5 RC4-HMAC-MD5 AES128-CTS-HMAC-SHA1-96 AES256-CTS-HMAC-SHA1-96
+    ```
 
 4.  Hozzon létre egy leképezést a tartományi fiók és a Kerberos-tag között, hogy a Kerberos-rendszerbiztonsági tag legyen a Windows-tartományban.
 
@@ -401,8 +416,10 @@ Két lehetőség áll rendelkezésre a helyszíni környezet beállítására Ke
 
 * A következő parancsok futtatásával `Ksetup` adhat hozzá egy tartományi bejegyzést.
 
-        C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
-        C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
+   ```cmd
+   C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
+   C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
+   ```
 
 **Az adatgyárban:**
 

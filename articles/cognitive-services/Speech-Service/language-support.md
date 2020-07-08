@@ -11,11 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 148b344d469c78936b56b96090c76e379bb63731
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: eb9e0f126a25bfb0f2db18074bd7200e1a7c2001
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027494"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087146"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Beszédfelismerési szolgáltatás nyelvi és hangalapú támogatása
 
@@ -100,27 +101,42 @@ További információ a regionális elérhetőségről: [régiók](regions.md#st
 
 |Területi beállítás  | Nyelv            | Nem | Hang neve | Stílus támogatása |
 |--|--|--|--|--|
+| `ar-EG` | Arab (Egyiptom)                  | Nő | `ar-EG-SalmaNeural`      | Általános kérdések |
+| `ar-SA` | Arab (Szaúd-Arábia)           | Nő | `ar-SA-ZariyahNeura`     | Általános kérdések |
+| `ca-ES` | Katalán (Spanyolország)                 | Nő | `ca-ES-AlbaNeural`       | Általános kérdések |
+| `da-DK` | Dán (Dánia)                | Nő | `da-DK-ChristelNeural`   | Általános kérdések |
 | `de-DE` | Német (Németország)                | Nő | `de-DE-KatjaNeural`      | Általános kérdések |
 | `en-AU` | Angol (Ausztrália)             | Nő | `en-AU-NatashaNeural`    | Általános kérdések |
 | `en-CA` | Angol (Kanada)                | Nő | `en-CA-ClaraNeural`      | Általános kérdések |
 | `en-GB` | Angol (Egyesült Királyság)                    | Nő | `en-GB-LibbyNeural`      | Általános kérdések |
 |         |                                 | Nő | `en-GB-MiaNeural`        | Általános kérdések |
+| `en-IN` | Angol (India)                 | Nő | `en-IN-NeerjaNeural`     | Általános kérdések |
 | `en-US` | Angol (US)                    | Nő | `en-US-AriaNeural`       | Általános, több hangstílus érhető el |
 |         |                                 | Férfi   | `en-US-GuyNeural`        | Általános kérdések |
 | `es-ES` | Spanyol (Spanyolország)                 | Nő | `es-ES-ElviraNeural`     | Általános kérdések |
 | `es-MX` | Spanyol (Mexikó)                | Nő | `es-MX-DaliaNeural`      | Általános kérdések |
+| `fi-FI` | Finn (Finnország)               | Nő | `fi-FI-NooraNeural`      | Általános kérdések |
 | `fr-CA` | Francia (Kanada)                 | Nő | `fr-CA-SylvieNeural`     | Általános kérdések |
 | `fr-FR` | Francia (Franciaország)                 | Nő | `fr-FR-DeniseNeural`     | Általános kérdések |
+| `hi-IN` | Hindi (India)                   | Nő | `hi-IN-SwaraNeural`      | Általános kérdések |
 | `it-IT` | Olasz (Olaszország)                 | Nő | `it-IT-ElsaNeural`       | Általános kérdések |
 | `ja-JP` | Japán                        | Nő | `ja-JP-NanamiNeural`     | Általános kérdések |
 | `ko-KR` | Koreai                          | Nő | `ko-KR-SunHiNeural`      | Általános kérdések |
 | `nb-NO` | Norvég                       | Nő | `nb-NO-IselinNeural`     | Általános kérdések |
-| `pt-BR` | Portugál (Brazília)             | Nő | `pt-BR-FranciscaNeural`  | Általános kérdések |
+| `nl-NL` | Holland (Hollandia)              | Nő | `nl-NL-ColetteNeural`    | Általános kérdések |
+| `pl-PL` | Lengyel (Lengyelország)                 | Nő | `pl-PL-ZofiaNeural`      | Általános kérdések |
+| `pt-BR` | Portugál (Brazília)             | Nő | `pt-BR-FranciscaNeural`  | Általános, több hangstílus érhető el |
 | `tr-TR` | Török                         | Nő | `tr-TR-EmelNeural`       | Általános kérdések |
+| `pt-PT` | Portugál (Portugália)           | Nő | `pt-PT-FernandaNeural`   | Általános kérdések |
+| `ru-RU` | Orosz (Oroszország)                | Nő | `ru-RU-DariyaNeural`     | Általános kérdések |
+| `sv-SE` | Svéd (Svédország)                | Nő | `sv-SE-HilleviNeural`    | Általános kérdések |
+| `th-TH` | Thai (Thaiföld)                 | Nő | `th-TH-AcharaNeural`     | Általános kérdések |
 | `zh-CN` | Kínai (mandarin, egyszerűsített)  | Nő | `zh-CN-XiaoxiaoNeural`   | Általános, több hangstílus érhető el |
 |         |                                 | Nő | `zh-CN-XiaoyouNeural`    | A szövegegység elbeszéléséhez optimalizált, gyerek hang |
 |         |                                 | Férfi   | `zh-CN-YunyangNeural`    | A hírek olvasására optimalizált, több hangstílus érhető el |
 |         |                                 | Férfi   | `zh-CN-YunyeNeural`      | A történet elbeszéléséhez optimalizált |
+| `zh-HK` | Kínai (kantoni, tranditional)   | Nő | `zh-HK-HiuGaaiNeural`| Általános kérdések |
+| `zh-TW` | Kínai (tajvani mandarin)   | Nő | `zh-TW-HsiaoYuNeural`    | Általános kérdések |
 
 > [!IMPORTANT]
 > A hang a következőre `en-US-JessaNeural` változott: `en-US-AriaNeural` . Ha korábban a "Jessa" kifejezést használta, váltson át az "aria" kifejezésre.
@@ -312,7 +328,7 @@ A **Speech Translation** API különböző nyelveket támogat a beszédfelismer�
 | walesi                   | `cy`          |
 | Yucatec Maya            | `yua`         |
 
-## <a name="speaker-recognition"></a>Speaker Recognition
+## <a name="speaker-recognition"></a>Beszélőfelismerés
 
 A különböző Speaker Recognition API-khoz támogatott nyelveket a következő táblázat tartalmazza. További információ a Speaker Recognitionról: [Áttekintés](speaker-recognition-overview.md) .
 

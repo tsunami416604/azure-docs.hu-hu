@@ -12,11 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: 7bc2c0f472a03c3f069a889c360bea9017a780f2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f1ffd26a243d15f7ee6e06d6c52406a16327b4a0
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77918206"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086772"
 ---
 #  <a name="cannot-rdp-to-a-vm-because-the-vm-boots-into-safe-mode"></a>Nem lehet RDP-t a virtuális géphez, mert a virtuális gép biztonságos módba indul
 
@@ -46,7 +47,9 @@ A probléma megoldásához a soros vezérlő használatával konfigurálja a vir
    ). Ha a soros konzol nincs engedélyezve a virtuális gépen, tekintse meg [a virtuális gép offline állapotba](#repair-the-vm-offline)helyezését ismertető témakört.
 2. A rendszerindítási konfigurációs adatértékek keresése:
 
-        bcdedit /enum
+    ```console
+    bcdedit /enum
+    ```
 
     Ha a virtuális gép csökkentett módban történő rendszerindításra van konfigurálva, a **Windows rendszerindítási betöltő** szakaszának **safeboot**nevű további jelző jelenik meg. Ha nem látja a **safeboot** jelzőt, a virtuális gép nem biztonságos módban van. Ez a cikk nem vonatkozik a forgatókönyvre.
 
@@ -60,11 +63,15 @@ A probléma megoldásához a soros vezérlő használatával konfigurálja a vir
 
 3. Törölje a **safemoade** jelzőt, így a virtuális gép normál módba fog indulni:
 
-        bcdedit /deletevalue {current} safeboot
+    ```console
+    bcdedit /deletevalue {current} safeboot
+    ```
 
 4. Ellenőrizze a rendszerindítási konfigurációs beállításokat, és győződjön meg arról, hogy a **safeboot** jelző el lett távolítva:
 
-        bcdedit /enum
+    ```console
+    bcdedit /enum
+    ```
 
 5. Indítsa újra a virtuális gépet, és győződjön meg arról, hogy a probléma megoldódott-e.
 
@@ -114,7 +121,10 @@ A memóriakép és a soros konzol engedélyezéséhez futtassa az alábbi szkrip
 1. Nyisson meg egy rendszergazda jogú parancssor-munkamenetet (**Futtatás rendszergazdaként**).
 2. Keresse meg a rendszerindítási konfigurációs adatkészletet. A következő parancsokban feltételezzük, hogy a csatlakoztatott operációsrendszer-lemezhez rendelt meghajtóbetűjel F. cserélje le a meghajtóbetűjelet a virtuális gép megfelelő értékére.
 
-        bcdedit /store F:\boot\bcd /enum
+    ```console
+    bcdedit /store F:\boot\bcd /enum
+    ```
+
     Jegyezze fel a **\Windows** mappát tartalmazó partíció azonosítójának nevét. Alapértelmezés szerint az azonosító neve "default".
 
     Ha a virtuális gép csökkentett módban történő rendszerindításra van konfigurálva, a **Windows rendszerindítási betöltő** szakaszának **safeboot**nevű további jelző jelenik meg. Ha nem látja a **safeboot** jelzőt, ez a cikk nem vonatkozik a forgatókönyvre.
@@ -123,8 +133,14 @@ A memóriakép és a soros konzol engedélyezéséhez futtassa az alábbi szkrip
 
 3. Távolítsa el a **safeboot** jelzőt, így a virtuális gép normál módba fog indulni:
 
-        bcdedit /store F:\boot\bcd /deletevalue {Default} safeboot
+    ```console
+    bcdedit /store F:\boot\bcd /deletevalue {Default} safeboot
+    ```
+
 4. Ellenőrizze a rendszerindítási konfigurációs beállításokat, és győződjön meg arról, hogy a **safeboot** jelző el lett távolítva:
 
-        bcdedit /store F:\boot\bcd /enum
+    ```console
+    bcdedit /store F:\boot\bcd /enum
+    ```
+
 5. [Válassza le az operációsrendszer-lemezt, és hozza létre újra a virtuális gépet](../windows/troubleshoot-recovery-disks-portal.md). Ezután győződjön meg arról, hogy a probléma megoldódott-e.

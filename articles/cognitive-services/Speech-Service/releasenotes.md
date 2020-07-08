@@ -11,14 +11,82 @@ ms.topic: conceptual
 ms.date: 06/08/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 13a7250bc89b1c9f81996dfa4e15d7d4469779ab
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: c4e9668459856af52ae1a905de8ba76dc36758fd
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84607873"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086294"
 ---
 # <a name="release-notes"></a>Kibocsátási megjegyzések
+
+## <a name="text-to-speech-2020-july-release"></a>Szöveg-beszéd 2020 – júliusi kiadás
+
+### <a name="new-features"></a>Új funkciók
+
+* **NEURÁLIS TTS, 15 új neurális hang**: a neurális TTS-portfólióhoz hozzáadott új hangok az Arab (Egyiptom), a Zariyah Arab (Szaúd-Arábiai), a katalán (spanyolországi), a dán (dániai) Orsi, angol nyelven (India Swara in hindi (India), Colette holland (Hollandia), Zofia lengyel (Lengyelország), Fernanda portugál (portugáliai), Dariya in Russian (Oroszország), Hillevi svéd (svédországi), Achara in thai (Thailand), Iselin norvég (nyelven) (Norvégia), HiuGaai kínai (Hongkong) és HsiaoYu kínai (Tajvan). Az összes [támogatott nyelv](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices)ellenõrzése.  
+
+* **Egyéni hang-és hangvezérelt hangalapú tesztelés a felhasználói élmény egyszerűbbé tétele érdekében**: az új tesztelési funkcióval az egyes nyelvekre optimalizált, előre definiált, az általános és a hangsegéd-forgatókönyveket lefedő tesztelési készlettel automatikusan teszteli a rendszer. Ezeket a teszteket a rendszer gondosan kijelöli és teszteli, hogy tartalmazza a jellemző használati eseteket és a fonémák a nyelven. Emellett a felhasználók továbbra is kiválaszthatják saját tesztelési parancsfájljaik feltöltését a modellek betanításakor.
+
+* **Hangtartalom létrehozása: új funkciók állnak rendelkezésére, amelyek nagyobb teljesítményű hanghangolási és hangkezelési képességeket tesznek lehetővé**
+
+    * `Pitch`a, a `rate` és a `volume` továbbfejlesztett, hogy a hangolást előre meghatározott értékkel támogassa, például lassú, közepes és gyors. Most már egyértelmű, hogy a felhasználók "konstans" értéket válasszanak a hangszerkesztéshez.
+
+    ![Hang hangolás](media/release-notes/audio-tuning.png)
+
+    * A felhasználók most már áttekinthetik a `Audio history` munkahelyi fájljaikat. Ezzel a funkcióval a felhasználók könnyedén követhetik a munkafájlhoz kapcsolódó összes generált hangot. Megtekinthetik az előzmények verzióját, és összehasonlítják a minőséget a hangolással egyidejűleg. 
+
+    ![Hangelőzmények](media/release-notes/audio-history.png)
+
+    * A `Clear` funkció mostantól rugalmasabb. A felhasználók törölhetnek egy adott hangolási paramétert a kiválasztott tartalomhoz elérhető egyéb paraméterek megőrzése mellett.  
+
+    * A kezdőlapon egy oktatóanyag-videó lett hozzáadva [, amellyel a](https://speech.microsoft.com/audiocontentcreation) felhasználók gyorsan megkezdhetik a TTS hanghangolási és hangkezelési szolgáltatásait. 
+
+### <a name="general-tts-voice-quality-improvements"></a>Általános TTS hang minőségének fejlesztése
+
+* Továbbfejlesztett TTS-vocoder a jobb hűség és az alacsonyabb késés érdekében.
+
+    * A frissített Elsa (olasz) egy új vocoder, amely a + 0,464 CMOS-t (összehasonlító középértéket) a hangminőségben, a 40%-ban gyorsabb a szintézisben, és 30%-kal csökkenti az első bájt késését. 
+    * Frissített Xiaoxiao a kínai nyelvről az új vocoder, az általános tartományhoz + 0148 CMOS-nyereséggel, + 0,348 a benyújtó stílushoz és + 0,195 a lírai stílushoz. 
+
+* Frissített `de-DE` és `ja-JP` hangmodellek, hogy a TTS kimenete természetesebb legyen.
+    
+    * A legújabb prosody modellezési módszerrel frissített Katja német nyelven, a MOS (mean vélemények pontszáma) nyereség pedig + 0,13. 
+    * Frissített Nanami a Japánban egy új pitch Accent prosody-modellel, a MOS (mean vélemények pontszáma) nyereség + 0,19;  
+
+* Jobb Word szintű kiejtési pontosság 5 nyelven.
+
+    | Nyelv | Kiejtési hiba csökkentése |
+    |---|---|
+    | en-GB | 51% |
+    | ko-KR | 17 |
+    | pt-BR | 39% |
+    | pt-PT | 77% |
+    | id-ID | 46% |
+
+### <a name="bug-fixes"></a>Hibajavítások
+
+* Pénznem olvasása
+    * Kijavítottuk a és a pénznem beolvasásával kapcsolatos problémát `es-ES``es-MX`
+     
+    | Nyelv | Bevitel | Fejlesztés utáni kiolvasás |
+    |---|---|---|
+    | es-MX | $1,58 | un peso cincuenta y Ocho centavos |
+    | es-ES | $1,58 | un dólar cincuenta y Ocho centavos |
+
+    * A negatív pénznem támogatása (például "-€325") a következő területi beállításokban:,,,, `en-US` `en-GB` `fr-FR` `it-IT` `en-AU` , `en-CA` .
+
+* Továbbfejlesztett címek beolvasása `pt-PT` .
+* A " `en-AU` `en-UK` for" és a "Four" szó fix Natasha () és a (z) "a" kiejtéssel kapcsolatos problémái.  
+* Rögzített hibák a hangtartalom-létrehozási eszközön
+    * A második bekezdés után megjelenő további és váratlan szüneteltetés.  
+    * A "No break" funkció vissza lett adva egy regressziós hibából. 
+    * A Speech Studio véletlenszerű frissítési hibája kijavítva.  
+
+### <a name="samplessdk"></a>Minták/SDK
+
+* JavaScript: megjavítja a FireFox lejátszási problémáját, valamint a Safarit macOS és iOS rendszeren. 
+
 ## <a name="speech-sdk-1121-2020-june-release"></a>Speech SDK 1.12.1:2020 – júniusi kiadás
 **Speech CLI (más néven SPX)**
 -   Megjelent a CLI súgó Keresési funkciói:
@@ -322,7 +390,7 @@ Ez egy csak JavaScript kiadás. Nem lettek hozzáadva funkciók. A következő j
 - A Java, a .NET Core, a C++ és a Objective-C beszédfelismerési SDK-t a macOS-támogatás nyerte. A macOS-hez készült Objective-C-támogatás jelenleg béta verzióban érhető el.
 - iOS: az iOS-hez készült Speech SDK (Objective-C) mostantól CocoaPod is közzé lett téve.
 - JavaScript: nem alapértelmezett mikrofon bemeneti eszközként való támogatása.
-- JavaScript: proxy-támogatás a Node. js-hez.
+- JavaScript: Node.js proxy támogatása.
 
 **Példák**
 
@@ -412,7 +480,7 @@ Ez egy csak JavaScript kiadás. Nem lettek hozzáadva funkciók. A következő j
   - A Python-támogatás bétaverziója (3,5 és újabb) ebben a kiadásban érhető el. További információ: itt] (rövid útmutató – python.md).
 - JavaScript
   - A JavaScripthez készült Speech SDK nyílt forráskódú. A forráskód elérhető a [githubon](https://github.com/Microsoft/cognitive-services-speech-sdk-js).
-  - Mostantól a Node. js-t is támogatja, további információ [itt](quickstart-js-node.md)található.
+  - Most már támogatjuk a Node.jst, további információt [itt](quickstart-js-node.md)találhat.
   - A hangmunkamenetek hosszának korlátozása el lett távolítva, az újrakapcsolódás automatikusan megtörténik a fedél alatt.
 - `Connection`objektum
   - A-ben elérheti az `Recognizer` `Connection` objektumokat. Ezzel az objektummal explicit módon kezdeményezheti a szolgáltatás kapcsolatát, és előfizethet az események csatlakoztatására és leválasztására.
@@ -443,7 +511,7 @@ Ez egy csak JavaScript kiadás. Nem lettek hozzáadva funkciók. A következő j
 **Példák**
 
 - Több minta frissítése és javítása (például kimeneti hangok a fordításhoz stb.).
-- Node. js-minták lettek hozzáadva a [minta tárházban](https://aka.ms/csspeech/samples).
+- Node.js mintákat vett fel a [minta adattárba](https://aka.ms/csspeech/samples).
 
 ## <a name="speech-sdk-110"></a>Speech SDK 1.1.0
 

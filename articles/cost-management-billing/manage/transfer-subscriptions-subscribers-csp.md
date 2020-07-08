@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 06/19/2020
 ms.author: banders
-ms.openlocfilehash: 91f11502a136ca08d62072808d270f8e840a8710
-ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
+ms.openlocfilehash: 925a69f1f3a408e50cb9dc1d03cb5c1cf673ef41
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85106431"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86102684"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>Azure-előfizetések átvitele az előfizetők és a CSP-k között
 
@@ -67,4 +67,4 @@ Bármely más előfizetés egy felhőszolgáltatói partnertől bármely egyéb 
 
 ## <a name="next-steps"></a>További lépések
 - [Azure-előfizetés számlázási tulajdonjogának beszerzése az MPA-fiókjához](mpa-request-ownership.md).
-- További szükséges ismeretek: [Fiókok és előfizetések kezelése az Azure Billinggel](index.yml).
+- További szükséges ismeretek: [Fiókok és előfizetések kezelése az Azure Billinggel](../index.yml).

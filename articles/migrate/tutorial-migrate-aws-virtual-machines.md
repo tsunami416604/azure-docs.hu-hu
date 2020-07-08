@@ -1,17 +1,17 @@
 ---
-title: Amazon Web Services (AWS) virtuális gépek felderítése, felmérése és migrálása az Azure-ba
+title: Amazon Web Services-beli (AWS) virtuális gépek felderítése, felmérése és migrálása az Azure-ba
 description: Ez a cikk az AWS virtuális gépek Azure-ba történő áttelepítését ismerteti Azure Migrateokkal.
 ms.topic: tutorial
 ms.date: 06/16/2020
 ms.custom: MVC
-ms.openlocfilehash: 739439f63c81ef75cdcbe0b9e1d3f367d073d43b
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: 6eeff73bdcac214eb3836731fcbfd2f9410c6045
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85199090"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86102803"
 ---
-# <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>Amazon Web Services (AWS) virtuális gépek felderítése, felmérése és migrálása az Azure-ba
+# <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>Amazon Web Services-beli (AWS) virtuális gépek felderítése, felmérése és migrálása az Azure-ba
 
 Ebből az oktatóanyagból megtudhatja, hogyan derítheti fel, értékelheti és áttelepítheti Amazon Web Services (AWS) virtuális gépeket az Azure-beli virtuális gépekre Azure Migrate: Server Assessment és Server áttelepítési eszközök használatával
 
@@ -39,8 +39,8 @@ Az Azure-ba való Migrálás előtt javasoljuk, hogy hajtsa végre a virtuális 
 
 Az értékelést a következőképpen állíthatja be:
 
-1. Az AWS-beli virtuális gépek fizikai gépként való kezelésével az értékelés elvégzéséhez a Azure Migrate: Server Assessment Tool használatával végezheti el az értékelést. Az [oktatóanyag](https://docs.microsoft.com/azure/migrate/tutorial-prepare-physical) alapján állítsa be az Azure-t, és készítse elő az AWS virtuális gépeket egy értékeléshez.
-2. Ezt az [oktatóanyagot](https://docs.microsoft.com/azure/migrate/tutorial-assess-physical) követve beállíthat egy Azure Migrate projektet és berendezést az AWS virtuális gépek felderítéséhez és értékeléséhez.
+1. Az AWS-beli virtuális gépek fizikai gépként való kezelésével az értékelés elvégzéséhez a Azure Migrate: Server Assessment Tool használatával végezheti el az értékelést. Az [oktatóanyag](./tutorial-prepare-physical.md) alapján állítsa be az Azure-t, és készítse elő az AWS virtuális gépeket egy értékeléshez.
+2. Ezt az [oktatóanyagot](./tutorial-assess-physical.md) követve beállíthat egy Azure Migrate projektet és berendezést az AWS virtuális gépek felderítéséhez és értékeléséhez.
 
 Bár javasoljuk, hogy kipróbáljon egy értékelést, és az értékelés végrehajtása nem kötelező lépés a virtuális gépek áttelepítéséhez.
 
@@ -48,9 +48,9 @@ Bár javasoljuk, hogy kipróbáljon egy értékelést, és az értékelés végr
 
 ## <a name="1-prerequisites-for-migration"></a>1. az áttelepítésre vonatkozó előfeltételek
 
-- Győződjön meg arról, hogy az áttelepíteni kívánt AWS virtuális gépek támogatott operációsrendszer-verziót futtatnak. Az AWS-alapú virtuális gépeket a Migrálás céljára szolgáló fizikai gépek kezelik. Tekintse át a fizikai kiszolgáló áttelepítési munkafolyamatának [támogatott operációs rendszereit](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#replicated-machines) . Javasoljuk, hogy végezzen el egy teszt-áttelepítést (feladatátvételi teszt) annak ellenőrzéséhez, hogy a virtuális gép a várt módon működik-e a tényleges áttelepítés folytatása előtt.
-- Győződjön meg arról, hogy az AWS-beli virtuális gépek megfelelnek az Azure-ba való Migrálás [támogatott konfigurációinak](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-physical-migration#physical-server-requirements) .
-- Ellenőrizze, hogy az Azure-ba replikált AWS virtuális gépek megfelelnek-e az Azure-beli [virtuális gép követelményeinek.](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-physical-migration#azure-vm-requirements)
+- Győződjön meg arról, hogy az áttelepíteni kívánt AWS virtuális gépek támogatott operációsrendszer-verziót futtatnak. Az AWS-alapú virtuális gépeket a Migrálás céljára szolgáló fizikai gépek kezelik. Tekintse át a fizikai kiszolgáló áttelepítési munkafolyamatának [támogatott operációs rendszereit](../site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines) . Javasoljuk, hogy végezzen el egy teszt-áttelepítést (feladatátvételi teszt) annak ellenőrzéséhez, hogy a virtuális gép a várt módon működik-e a tényleges áttelepítés folytatása előtt.
+- Győződjön meg arról, hogy az AWS-beli virtuális gépek megfelelnek az Azure-ba való Migrálás [támogatott konfigurációinak](./migrate-support-matrix-physical-migration.md#physical-server-requirements) .
+- Ellenőrizze, hogy az Azure-ba replikált AWS virtuális gépek megfelelnek-e az Azure-beli [virtuális gép követelményeinek.](./migrate-support-matrix-physical-migration.md#azure-vm-requirements)
 - Az Azure-ba történő Migrálás előtt néhány módosításra van szükség a virtuális gépeken.
     - Egyes operációs rendszerek esetében a Azure Migrate automatikusan végrehajtja ezeket a módosításokat.
     - Az áttelepítés megkezdése előtt fontos, hogy elvégezze ezeket a módosításokat. Ha a módosítás előtt áttelepíti a virtuális gépet, előfordulhat, hogy a virtuális gép nem indul el az Azure-ban.
@@ -98,7 +98,7 @@ Azure Migrate: a kiszolgáló áttelepítése replikációs berendezés használ
 
 Készítse elő a berendezés központi telepítését a következőképpen:
 
-- Állítson be egy különálló EC2 virtuális gépet a replikációs berendezés üzemeltetéséhez. Ennek a példánynak Windows Server 2012 R2 vagy Windows Server 2016 rendszernek kell futnia. [Tekintse át](https://docs.microsoft.com/azure/migrate/migrate-replication-appliance#appliance-requirements) a készülék hardver-, szoftver-és hálózati követelményeit.
+- Állítson be egy különálló EC2 virtuális gépet a replikációs berendezés üzemeltetéséhez. Ennek a példánynak Windows Server 2012 R2 vagy Windows Server 2016 rendszernek kell futnia. [Tekintse át](./migrate-replication-appliance.md#appliance-requirements) a készülék hardver-, szoftver-és hálózati követelményeit.
 - A készüléket nem szabad olyan forrásoldali virtuális gépre telepíteni, amelyet replikálni szeretne. Ezt egy másik virtuális gépre kell telepíteni.
 - Az áttelepítendő forrás AWS-beli virtuális gépeknek hálózati vonallal kell rendelkezniük a replikációs berendezéshez. Konfigurálja a szükséges biztonsági csoportok szabályait ennek engedélyezéséhez. Javasoljuk, hogy a replikációs berendezést ugyanabban a VPC-ban telepítse, mint az áttelepítendő forrásként szolgáló virtuális gépeket. Ha a replikációs berendezésnek egy másik VPC-ban kell lennie, a VPCs a VPC-kapcsolaton keresztül kell csatlakoztatni.
 - A forrás AWS-alapú virtuális gépek a replikálási felügyelet és a replikálási adatforgalom esetében a HTTPS 443 (vezérlési csatorna összehangolása) és a TCP 9443 (adatátviteli) porton keresztül kommunikálnak a replikációs berendezéssel. A replikációs berendezés a HTTPS 443 kimenő porton keresztül irányítja és küldi el a replikációs adatokat az Azure-nak. Ezeknek a szabályoknak a konfigurálásához szerkessze a biztonsági csoport bejövő/kimenő szabályait a megfelelő portokkal és a forrás IP-címmel kapcsolatos információkkal.
@@ -183,7 +183,7 @@ A mobilitási szolgáltatás ügynökét telepíteni kell az áttelepítendő, a
 
 1. Jelentkezzen be a replikációs berendezésbe.
 2. Navigáljon a **%ProgramData%\ASR\home\svsystems\pushinstallsvc\repository**.
-3. Keresse meg a forrás AWS virtuális gépek operációs rendszerének és verziójának telepítőjét. Tekintse át a [támogatott operációs rendszereket](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#replicated-machines).
+3. Keresse meg a forrás AWS virtuális gépek operációs rendszerének és verziójának telepítőjét. Tekintse át a [támogatott operációs rendszereket](../site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines).
 4. Másolja a telepítőfájlt arra a forrás AWS virtuális gépre, amelyet át szeretne telepíteni.
 5. Győződjön meg arról, hogy a mentett jelszó szövegfájlja a replikációs berendezés telepítésekor lett létrehozva.
     - Ha elfelejtette a jelszó mentését, megtekintheti a hozzáférési kódot a replikációs berendezésen ezzel a lépéssel. A parancssorból futtassa a **C:\ProgramData\ASR\home\svsystems\bin\genpassphrase.exe-v** parancsot az aktuális jelszó megtekintéséhez.
@@ -335,7 +335,7 @@ Miután ellenőrizte, hogy a teszt áttelepítése a várt módon működik-e, �
     - Leállítja az AWS virtuális gép replikálását.
     - Eltávolítja az AWS virtuális gépet a **replikálási kiszolgálók** száma Azure Migrate: kiszolgáló áttelepítése.
     - A virtuális gép replikációs állapotára vonatkozó információk tisztítása.
-2. Telepítse a [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) -ügynököt az áttelepített gépekre. Az Azure VM Windows-ügynök előre telepítve van az áttelepítési folyamat során.
+2. Telepítse a [Linux](../virtual-machines/extensions/agent-linux.md) -ügynököt az áttelepített gépekre. Az Azure VM Windows-ügynök előre telepítve van az áttelepítési folyamat során.
 3. Hajtson végre minden áttelepítés utáni módosítást az alkalmazáson (például adatbázis-kapcsolati sztringek frissítése és webes kiszolgálók konfigurálása).
 4. Végezze el a végső alkalmazás- és áttelepítés-elfogadás teszteket az Azure-on jelenleg futó alkalmazásoknál.
 5. Az áttelepített Azure virtuálisgép-példány felé irányuló forgalom kivágása.
@@ -344,19 +344,19 @@ Miután ellenőrizte, hogy a teszt áttelepítése a várt módon működik-e, �
 ## <a name="post-migration-best-practices"></a>Az áttelepítés utáni ajánlott eljárások
 
 - A nagyobb rugalmasság érdekében:
-    - Biztonságba helyezheti az adatokat, ha biztonsági másolatot készít az Azure virtuális gépekről az Azure Backup szolgáltatással. [További információ](../backup/quick-backup-vm-portal.md).
-    - Biztosíthatja a számítási feladatok folyamatos futtatását és rendelkezésre állását, ha az Azure virtuális gépeket egy másodlagos régióba replikálja a Site Recovery használatával. [További információ](../site-recovery/azure-to-azure-tutorial-enable-replication.md).
+    - Biztonságba helyezheti az adatokat, ha biztonsági másolatot készít az Azure virtuális gépekről az Azure Backup szolgáltatással. [További információk](../backup/quick-backup-vm-portal.md).
+    - Biztosíthatja a számítási feladatok folyamatos futtatását és rendelkezésre állását, ha az Azure virtuális gépeket egy másodlagos régióba replikálja a Site Recovery használatával. [További információk](../site-recovery/azure-to-azure-tutorial-enable-replication.md).
 - A biztonság fokozása érdekében:
-    - Zárolja és korlátozza a bejövő adatforgalom elérését [Azure Security Center – igény szerinti felügyelettel](https://docs.microsoft.com/azure/security-center/security-center-just-in-time).
-    - Korlátozza a forgalmat felügyeleti végpontokra [hálózati biztonsági csoportok](https://docs.microsoft.com/azure/virtual-network/security-overview) használatával.
-    - Az [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-overview) üzembe helyezésével biztonságba helyezheti a lemezeket, és megóvhatja az adatokat a lopási kísérletektől és a jogosulatlan hozzáféréstől.
+    - Zárolja és korlátozza a bejövő adatforgalom elérését [Azure Security Center – igény szerinti felügyelettel](../security-center/security-center-just-in-time.md).
+    - Korlátozza a forgalmat felügyeleti végpontokra [hálózati biztonsági csoportok](../virtual-network/security-overview.md) használatával.
+    - Az [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md) üzembe helyezésével biztonságba helyezheti a lemezeket, és megóvhatja az adatokat a lopási kísérletektől és a jogosulatlan hozzáféréstől.
     - Látogasson el a [az Azure Security Center](https://azure.microsoft.com/services/security-center/) webhelyére, és tudjon meg többet az [IaaS-erőforrások biztosításáról](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/).
 - Figyelési és felügyeleti eszközök:
-    - Fontolja meg az [Azure Cost Management](https://docs.microsoft.com/azure/cost-management/overview) üzembe helyezését az erőforrás-használat és a költségek figyeléséhez.
+    - Fontolja meg az [Azure Cost Management](../cost-management-billing/cloudyn/overview.md) üzembe helyezését az erőforrás-használat és a költségek figyeléséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Vizsgálja meg a [felhőalapú migrációs utat](https://docs.microsoft.com/azure/architecture/cloud-adoption/getting-started/migrate) az Azure Cloud bevezetési keretrendszerében.
+Vizsgálja meg a [felhőalapú migrációs utat](/azure/architecture/cloud-adoption/getting-started/migrate) az Azure Cloud bevezetési keretrendszerében.
 
 ## <a name="troubleshooting--tips"></a>Hibaelhárítás/tippek
 

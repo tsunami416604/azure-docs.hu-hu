@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: d27905acc60e953ec5ed92e77d7a352c1c3fec8b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 13fcda03f3ccd0c28e1dce594c46b8c0d9449054
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84196571"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086568"
 ---
 # <a name="migrate-sql-server-integration-services-packages-to-an-azure-sql-managed-instance"></a>SQL Server Integration Services csomagok migrálása egy felügyelt Azure SQL-példányra
 Ha SQL Server Integration Servicest (SSIS) használ, és szeretné áttelepíteni a SSIS-projekteket/csomagokat a SQL Server által üzemeltetett SSISDB a felügyelt Azure SQL-példányok által üzemeltetett cél SSISDB, használhatja a Azure Database Migration Service.
@@ -84,7 +85,7 @@ Bár a forrás-SSISDB értékelése még nincs integrálva az adatbázis Migrati
 
     A virtuális hálózatok Azure Portalban való létrehozásával kapcsolatos további információkért tekintse meg a [virtuális hálózat létrehozása a Azure Portal használatával](https://aka.ms/DMSVnet)című cikket.
 
-    További részletekért tekintse meg a [hálózati topológiák az Azure SQL db felügyelt példányainak áttelepítése a Azure Database Migration Service használatával](https://aka.ms/dmsnetworkformi)című cikket.
+    További részletekért tekintse meg a [hálózati topológiák az Azure SQL felügyelt példányok áttelepítése a Azure Database Migration Service használatával](https://aka.ms/dmsnetworkformi)című cikket.
 
 6. Válasszon tarifacsomagot.
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d6aa1fc1e5978f59fc01dd41a89800629fa60ded
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 218ec6a5beab32729e106a7397d58ebaa2a30123
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84735098"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086925"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>A Windows 10 Enterprise több munkamenetes használata – gyakori kérdések
 
@@ -61,7 +61,7 @@ Az Azure Gallery számos kiadással rendelkezik, többek között a Windows 10 E
  
 ## <a name="which-windows-10-enterprise-multi-session-versions-are-supported"></a>Mely Windows 10 Enterprise több munkamenetes verzió támogatott?
 
-A Windows 10 Enterprise multi-session, a 1809-es és újabb verziói támogatottak, és elérhetők az Azure Galleryben. Ezek a kiadások a Windows 10 Enterprise verzióval azonos támogatási életciklus-szabályzatot követnek, ami azt jelenti, hogy a Spring kiadás 18 hónapig, a csökkenés pedig 30 hónapig érvényes.
+A Windows 10 Enterprise multi-session, a 1809-es és újabb verziói támogatottak, és elérhetők az Azure Galleryben. Ezek a kiadások a Windows 10 Enterprise verzióval megegyező támogatási életciklus-szabályzatot követik, ami azt jelenti, hogy a márciusi kiadás 18 hónapig, a szeptemberi kiadás pedig 30 hónapig használható.
  
 ## <a name="which-profile-management-solution-should-i-use-for-windows-10-enterprise-multi-session"></a>Milyen profil-felügyeleti megoldást használhatok a Windows 10 Enterprise multi-session szolgáltatáshoz?
 

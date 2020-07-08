@@ -12,11 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: a2d4c9ad5a64fecaad023907351101942c4edac2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a83020af17758b570030a4c6129ffdd7dec58094
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84188312"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087078"
 ---
 # <a name="data-management-gateway"></a>Adatkezelési átjáró
 > [!NOTE]
@@ -246,7 +247,9 @@ A **hitelesítő adatok beállítása** alkalmazás a **8050** bejövő portot h
 
 Ha külső gyártótól származó tűzfalat használ, a 8050-es portot manuálisan is megnyithatja. Ha tűzfalon futtatja a problémát az átjáró telepítésekor, a következő parancs használatával telepítheti az átjárót a tűzfal konfigurálása nélkül.
 
-    msiexec /q /i DataManagementGateway.msi NOFIREWALL=1
+```cmd
+msiexec /q /i DataManagementGateway.msi NOFIREWALL=1
+```
 
 Ha úgy dönt, hogy nem nyitja meg az 8050-as portot az átjárót tartalmazó gépen, használja a **hitelesítő adatok beállítása** az adattároló hitelesítő adatainak beállításához használt mechanizmusokat. Használhatja például a [New-AzDataFactoryEncryptValue PowerShell-](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) parancsmagot. Lásd: a hitelesítő adatok és a Biztonság beállítása szakasz, amely az adattár hitelesítő adatainak beállítását ismerteti.
 
