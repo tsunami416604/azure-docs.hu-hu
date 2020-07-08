@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
 ms.openlocfilehash: a19f81fab525b44f0b55244281930977e0e1f476
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85254616"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory-legacy"></a>Támogatott fájlformátumok és tömörítési kodekek a Azure Data Factory (örökölt)
@@ -445,7 +445,7 @@ Példa: állítsa be `_JAVA_OPTIONS` a változót értékkel `-Xms256m -Xmx16g` 
 
 | Az adatgyár átmeneti adattípusa | Parketta primitív típusa | Parketta eredeti típusa (deszerializálása) | Parketta eredeti típusa (szerializálás) |
 |:--- |:--- |:--- |:--- |
-| Logikai érték | Logikai érték | N/A | N/A |
+| Logikai érték | Logikai érték | N.A. | N.A. |
 | Sbyte érték | Int32 | Int8 | Int8 |
 | Bájt | Int32 | UInt8 | Int16 |
 | Int16 | Int32 | Int16 | Int16 |
@@ -454,17 +454,17 @@ Példa: állítsa be `_JAVA_OPTIONS` a változót értékkel `-Xms256m -Xmx16g` 
 | UInt32 | Int64 | UInt32 | Int64 |
 | Int64 | Int64 | Int64 | Int64 |
 | UInt64 | Int64/bináris | UInt64 | Decimal |
-| Egyszeres | Float | N/A | N/A |
-| Double | Double | N/A | N/A |
+| Egyszeres | Float | N.A. | N.A. |
+| Double | Double | N.A. | N.A. |
 | Decimal | Bináris | Decimal | Decimal |
 | Sztring | Bináris | Utf8 | Utf8 |
-| DateTime | Int96 | N/A | N/A |
-| időtartam | Int96 | N/A | N/A |
-| DateTimeOffset | Int96 | N/A | N/A |
-| ByteArray | Bináris | N/A | N/A |
+| DateTime | Int96 | N.A. | N.A. |
+| időtartam | Int96 | N.A. | N.A. |
+| DateTimeOffset | Int96 | N.A. | N.A. |
+| ByteArray | Bináris | N.A. | N.A. |
 | Guid | Bináris | Utf8 | Utf8 |
 | Char | Bináris | Utf8 | Utf8 |
-| CharArray | Nem támogatott | N/A | N/A |
+| CharArray | Nem támogatott | N.A. | N.A. |
 
 ## <a name="orc-format-legacy"></a><a name="orc-format"></a>ORK formátum (örökölt)
 

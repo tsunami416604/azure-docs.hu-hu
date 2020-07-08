@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 tags: connectors
 ms.openlocfilehash: ba8a6e5b53634850670a7d6b2fb55ef0e7b18d09
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85255500"
 ---
 # <a name="automate-workflows-for-a-sql-database-by-using-azure-logic-apps"></a>Az SQL Database munkafolyamatainak automatizálása Azure Logic Apps használatával
@@ -71,7 +71,7 @@ Amikor először ad hozzá egy [SQL-triggert](#add-sql-trigger) vagy egy [SQL-m�
 
 1. A **Hitelesítés típusa**mezőben válassza ki Azure SQL Database vagy az Azure SQL felügyelt példányán az adatbázishoz szükséges és engedélyezett hitelesítést:
 
-   | Hitelesítés | Leírás |
+   | Hitelesítés | Description |
    |----------------|-------------|
    | [**Azure AD-integráció**](../azure-sql/database/authentication-aad-overview.md) | -A nem ISE és ISE SQL Server összekötőt is támogatja. <p><p>– Az adatbázishoz hozzáféréssel rendelkező Azure Active Directory (Azure AD) érvényes identitást igényel. <p>További információt az alábbi témakörökben talál: <p>- [Az Azure SQL biztonsági áttekintése – hitelesítés](../azure-sql/database/security-overview.md#authentication) <br>- [Adatbázis-hozzáférés engedélyezése az Azure SQL-hitelesítéshez és engedélyezéshez](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) <br>- [Azure SQL – Azure AD – integrált hitelesítés](../azure-sql/database/authentication-aad-overview.md) |
    | [**SQL Server-hitelesítés**](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | -A nem ISE és ISE SQL Server összekötőt is támogatja. <p><p>– Az adatbázisban létrehozott és tárolt érvényes felhasználónevet és erős jelszót kell megadnia. <p>További információt az alábbi témakörökben talál: <p>- [Az Azure SQL biztonsági áttekintése – hitelesítés](../azure-sql/database/security-overview.md#authentication) <br>- [Adatbázis-hozzáférés engedélyezése az Azure SQL-hitelesítéshez és engedélyezéshez](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) |
@@ -115,7 +115,7 @@ Amikor először ad hozzá egy [SQL-triggert](#add-sql-trigger) vagy egy [SQL-m�
 
 1. A **Hitelesítés típusa**mezőben válassza ki a SQL Server szükséges és engedélyezett hitelesítést:
 
-   | Hitelesítés | Leírás |
+   | Hitelesítés | Description |
    |----------------|-------------|
    | [**Windows-hitelesítés**](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-windows-authentication) | – Csak a nem ISE SQL Server összekötőt támogatja, amelyhez a kapcsolathoz korábban az Azure-ban létrehozott adatátjáró-erőforrás szükséges, függetlenül attól, hogy több-bérlős Azure-t vagy ISE-t használ. <p><p>– Érvényes Windows-felhasználónevet és-jelszót kell megadnia az identitás Windows-fiókon keresztüli megerősítéséhez. <p>További információ: Windows- [hitelesítés](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-windows-authentication) |
    | [**SQL Server-hitelesítés**](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | -A nem ISE és ISE SQL Server összekötőt is támogatja. <p><p>– A SQL Server létrehozott és tárolt érvényes felhasználónevet és erős jelszót igényel. <p>További információ: [SQL Server hitelesítés](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication). |

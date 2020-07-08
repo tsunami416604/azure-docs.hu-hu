@@ -16,10 +16,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 11/13/2019
 ms.openlocfilehash: 0fe4ae76645ec2a0ae8aae93b9db987ece9a45b9
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85255126"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Leküldéses értesítések az Azure Notification Hubs: gyakori kérdések
@@ -151,7 +151,7 @@ Minden kapcsolat, a küldőtől az Azure Notification Hubs a PNS, használja a H
 
 Bizalmas adattartalom küldéséhez biztonságos leküldéses mintát ajánlott használni. A küldő a bizalmas adattartalom nélkül kézbesít egy, az eszközhöz tartozó üzenet-azonosítóval rendelkező ping-értesítést. Amikor az eszközön az alkalmazás megkapja a hasznos adatokat, az alkalmazás közvetlenül a biztonságos API-t hívja meg az üzenet részleteinek beolvasásához. A minta megvalósításának útmutatóját a [Notification Hubs biztonságos leküldéses oktatóanyag] oldalán találja.
 
-## <a name="operations"></a>Üzemeltetés
+## <a name="operations"></a>Műveletek
 
 ### <a name="what-support-is-provided-for-disaster-recovery"></a>Milyen támogatást biztosít a vész-helyreállítás?
 
@@ -200,7 +200,7 @@ Programozott módon is elérheti a metrikákat. További információért tekint
 > [!NOTE]
 > A sikeres értesítések egyszerűen leküldéses értesítéseket küldenek a külső PNS (például iOS-re, macOS-re vagy FCM-re Android-eszközök esetén). A PNS feladata az értesítések továbbítása az eszközök számára. A PNS jellemzően nem tesznek elérhetővé kézbesítési metrikákat harmadik félnek.  
 
-[Azure Portal]: https://portal.azure.com
+[Azure Portalra]: https://portal.azure.com
 [Díjszabás Notification Hubs]: https://azure.microsoft.com/pricing/details/notification-hubs/
 [Notification Hubs SLA]: https://azure.microsoft.com/support/legal/sla/
 [Notification Hubs REST API-k]: https://msdn.microsoft.com/library/azure/dn530746.aspx
@@ -212,6 +212,6 @@ Programozott módon is elérheti a metrikákat. További információért tekint
 [Hibaelhárítás Notification Hubs]: https://azure.microsoft.com/documentation/articles/notification-hubs-diagnosing/
 [Notification Hubs metrikák]: ../azure-monitor/platform/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs
 [Regisztráció Exportálás/Importálás]: https://docs.microsoft.com/azure/notification-hubs/export-modify-registrations-bulk
-[Azure Portal]: https://portal.azure.com
+[Azure Portalra]: https://portal.azure.com
 [complete samples]: https://github.com/Azure/azure-notificationhubs-samples
 [App Service Pricing]: https://azure.microsoft.com/pricing/details/app-service/

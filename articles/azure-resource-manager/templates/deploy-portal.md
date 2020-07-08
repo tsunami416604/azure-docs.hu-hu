@@ -4,10 +4,10 @@ description: A Azure Portal és az Azure Erőforrás-kezelés használatával az
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.openlocfilehash: 31f80eb617820def871633dac1541c7dc3bed691
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85255262"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-portal"></a>Erőforrások üzembe helyezése ARM-sablonokkal és Azure Portal
@@ -82,7 +82,7 @@ Ha egy központi telepítést kíván végrehajtani, de nem használja a piacté
 
    ![Sablon központi telepítésének keresése](./media/deploy-portal/search-template.png)
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 1. A sablonok létrehozásához több lehetőség is megjelenik:
 
     - **Saját sablon készítése a szerkesztőben**: sablon létrehozása a portál sablon szerkesztőjével.  A szerkesztő képes az erőforrás-sablon sémájának hozzáadására.

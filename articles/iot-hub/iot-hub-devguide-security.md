@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 2e1167c92dccdfa7600a4827c0081647c190d7d4
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85252134"
 ---
 # <a name="control-access-to-iot-hub"></a>IoT Hub-hozzáférés szabályozása
@@ -137,7 +137,7 @@ A biztonsági jogkivonat formátuma a következő:
 
 A várt értékek a következők:
 
-| Érték | Leírás |
+| Érték | Description |
 | --- | --- |
 | aláírás |Az űrlap HMAC-SHA256 aláírási karakterlánca: `{URL-encoded-resourceURI} + "\n" + expiry` . **Fontos**: a kulcs dekódolása base64-ből történik, és kulcsként használatos a HMAC-sha256 számítás végrehajtásához. |
 | ResourceURI |A jogkivonattal elérhető végpontok URI-előtagja (szegmens szerint), az IoT hub állomásneve (nincs protokoll). Például: `myHub.azure-devices.net/devices/device1` |

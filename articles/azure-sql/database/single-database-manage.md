@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
 ms.openlocfilehash: 43e28774625db0217dde1227bad160ba87750c8c
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85254990"
 ---
 # <a name="create-and-manage-servers-and-single-databases-in-azure-sql-database"></a>Kiszolgálók és önálló adatbázisok létrehozása és kezelése Azure SQL Database
@@ -65,7 +65,7 @@ A következő PowerShell-parancsmagokkal hozhat létre és kezelhet kiszolgáló
 > [!TIP]
 > A PowerShell-parancsfájlok esetében lásd: [a PowerShell használata a SQL Database adatbázis létrehozásához és a kiszolgáló szintű tűzfalszabály konfigurálásához](scripts/create-and-configure-database-powershell.md) és a [SQL Database-adatbázis figyeléséhez és méretezéséhez a PowerShell használatával](scripts/monitor-and-scale-database-powershell.md).
 
-| Parancsmag | Leírás |
+| Parancsmag | Description |
 | --- | --- |
 |[Új – AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase)|Létrehoz egy adatbázist |
 |[Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase)|Egy vagy több adatbázis beolvasása|
@@ -90,7 +90,7 @@ A kiszolgálók, adatbázisok és tűzfalak [Azure CLI](/cli/azure)-vel történ
 > Azure CLI-gyors útmutató: [egyetlen Azure SQL Database létrehozása az Azure CLI használatával](az-cli-script-samples-content-guide.md). Az Azure CLI példa parancsfájljai esetében lásd: [a CLI használata adatbázis létrehozásához Azure SQL Database és SQL Database tűzfalszabály konfigurálása](scripts/create-and-configure-database-cli.md) , valamint a [CLI használata az adatbázisok figyeléséhez és méretezéséhez Azure SQL Databaseban](scripts/monitor-and-scale-database-cli.md).
 >
 
-| Parancsmag | Leírás |
+| Parancsmag | Description |
 | --- | --- |
 |[az sql db create](/cli/azure/sql/db#az-sql-db-create) |Létrehoz egy adatbázist|
 |[az SQL db List](/cli/azure/sql/db#az-sql-db-list)|Egy kiszolgáló összes adatbázisát és adattárházát, vagy egy rugalmas készletben lévő összes adatbázist listáz|
@@ -121,7 +121,7 @@ A kiszolgálók, adatbázisok és tűzfalak a Transact-SQL használatával tört
 > [!IMPORTANT]
 > A Transact-SQL használatával nem lehet kiszolgálót létrehozni vagy törölni.
 
-| Parancs | Leírás |
+| Parancs | Description |
 | --- | --- |
 |[ADATBÁZIS LÉTREHOZÁSA](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current)|Létrehoz egy új önálló adatbázist. Új adatbázis létrehozásához csatlakoznia kell a Master adatbázishoz.|
 | [ADATBÁZIS MÓDOSÍTÁSA](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Módosít egy adatbázist vagy egy rugalmas készletet. |
@@ -142,7 +142,7 @@ A kiszolgálók, adatbázisok és tűzfalak a Transact-SQL használatával tört
 
 A kiszolgálók, adatbázisok és tűzfalak létrehozásához és kezeléséhez használja ezeket a REST API kérelmeket.
 
-| Parancs | Leírás |
+| Parancs | Description |
 | --- | --- |
 |[Kiszolgálók – létrehozás vagy frissítés](https://docs.microsoft.com/rest/api/sql/servers/createorupdate)|Új kiszolgáló létrehozása vagy frissítése.|
 |[Kiszolgálók – törlés](https://docs.microsoft.com/rest/api/sql/servers/delete)|Töröl egy SQL-kiszolgálót.|

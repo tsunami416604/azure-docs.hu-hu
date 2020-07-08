@@ -15,10 +15,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 11/07/2019
 ms.openlocfilehash: 643ef90f4d1fca3dd97a248dae304f98ff1c3ec0
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85254378"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-ios-devices-using-azure-notification-hubs"></a>Oktatóanyag: leküldéses értesítések küldése adott iOS-eszközökre az Azure Notification Hubs használatával
@@ -369,4 +369,4 @@ Ebben az oktatóanyagban szórásos értesítéseket küldött az egyes kategór
 [Notification Hubs Guidance]: https://msdn.microsoft.com/library/dn530749.aspx
 [Notification Hubs How-To for iOS]: https://msdn.microsoft.com/library/jj927168.aspx
 [get-started]: ios-sdk-get-started.md
-[Azure Portal]: https://portal.azure.com
+[Azure Portalra]: https://portal.azure.com
