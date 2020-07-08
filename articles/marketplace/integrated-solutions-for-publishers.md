@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: dsindona
 ms.openlocfilehash: a2bce05288d0085306a59f3ff5ee62939941bbaf
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83800601"
 ---
 # <a name="publish-an-integrated-solution"></a>Integrált megoldás közzététele
@@ -65,7 +64,7 @@ Ha jóváhagyta a jelölést, a csatolt program erőforrásaival fejlesztheti az
     * Ügyfelek megcélzása
     * Érték kiosztása
     * Díjszabás
-    * Licencelés
+    * Licencek
     * használati feltételei
     * Támogatási megközelítés
     * Marketing tevékenységek
@@ -112,6 +111,6 @@ Bár öt szolgáltatási típus érhető el a tanácsadási szolgáltatásokhoz,
 
 Ha a megoldás a Microsoft AppSource vagy az Azure Marketplace-en él, érdemes lehet a marketing-tevékenységekkel kapcsolatos ismereteket és igényt vezetnie. Tekintse át a [projekt tervében és idővonalában](https://aka.ms/AA5qiuc)felsorolt tevékenységeket. Ez az erőforrás olyan tevékenységeket tartalmaz, amelyeket a partnerek a saját csapatában és egymással tudnak vezetni. Ezután elérheti a piactéren közzétett partnereink piacra jutási [előnyeit](./gtm-your-marketplace-benefits.md#list-trial-and-consulting-benefits) . Minden integrált megoldási ajánlat próbaverziós ellátásra alkalmas.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az integrált megoldásoknak a piactéren való megvásárlásával kapcsolatos információkért lásd: [integrált megoldások](./integrated-solutions.md).

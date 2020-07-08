@@ -7,10 +7,9 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/05/2019
 ms.openlocfilehash: 986440db7f8d4e1d4d46832543f58fa2985a4df4
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83831619"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Munkafolyamatok tevékenységeit ismétlő vagy tömböket feldolgozó hurkok létrehozása az Azure Logic Appsben
@@ -191,7 +190,7 @@ Ez a példa minden nap 8:00-kor kezdődik, így a logikai alkalmazás egy válto
 
    | Tulajdonság | Érték | Leírás |
    | -------- | ----- | ----------- |
-   | **Név** | Korlát | A változó neve | 
+   | **Name (Név)** | Korlát | A változó neve | 
    | **Típus** | Egész szám | Változó adattípusa | 
    | **Érték** | 0 | A változó kezdő értéke | 
    |||| 
@@ -230,9 +229,9 @@ Ez a példa minden nap 8:00-kor kezdődik, így a logikai alkalmazás egy válto
 
       ![E-mail-tulajdonságok beállítása](./media/logic-apps-control-flow-loops/do-until-loop-send-email-settings.png)
 
-      | Tulajdonság | Érték | Leírás |
+      | Tulajdonság | Érték | Description |
       | -------- | ----- | ----------- | 
-      | **Hogy** | *\<e-mail-cím \@ tartomány>* | A címzett e-mail-címe. Teszteléshez használja a saját e-mail-címét. | 
+      | **Hogy** | *\<email-address\@domain>* | A címzett e-mail-címe. Teszteléshez használja a saját e-mail-címét. | 
       | **Tárgy** | A "Limit" jelenlegi értéke **limit** | Határozza meg az e-mail tárgyát. Ebben a példában ellenőrizze, hogy tartalmazza-e a **határérték** változót. | 
       | **Törzs** | <*e-mail – tartalom*> | Itt adhatja meg a küldeni kívánt e-mail üzenet tartalmát. Ebben a példában írjon be egy tetszőleges szöveget. | 
       |||| 
@@ -247,7 +246,7 @@ Ez a példa minden nap 8:00-kor kezdődik, így a logikai alkalmazás egy válto
 
 A "ig" ciklusban az alapértelmezett korlátok a végrehajtás leállítása, ha bármelyik feltétel teljesül:
 
-| Tulajdonság | Alapértelmezett érték | Leírás | 
+| Tulajdonság | Alapértelmezett érték | Description | 
 | -------- | ------------- | ----------- | 
 | **Száma** | 60 | A hurok bezárása előtt futó hurkok maximális száma. Az alapértelmezett érték 60 ciklus. | 
 | **Időtúllépés** | PT1H | A huroknak a hurokból való kilépése előtti futtatásának legnagyobb ideje. Az alapértelmezett érték egy óra, és ISO 8601 formátumban van megadva. <p>Az időtúllépési érték kiértékelése minden hurok ciklusakor megtörténik. Ha a hurok bármelyik művelete hosszabb időt vesz igénybe, mint az időkorlát, az aktuális ciklus nem áll le. A következő ciklus azonban nem indul el, mert a korlátozási feltétel nem teljesül. | 

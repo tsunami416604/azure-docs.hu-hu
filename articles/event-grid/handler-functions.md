@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: spelluru
 ms.openlocfilehash: 0152a9fc11562744f83ab9d20466a3dcc8e2e6e0
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83800415"
 ---
 # <a name="azure-function-as-an-event-handler-for-event-grid-events"></a>Azure-függvény Event Grid események eseménykezelőként
@@ -52,5 +51,5 @@ További információ: [Event Grid trigger a Azure functions](../azure-functions
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A támogatott eseménykezelők listáját az [eseménykezelők](event-handlers.md) című cikkben tekintheti meg. 

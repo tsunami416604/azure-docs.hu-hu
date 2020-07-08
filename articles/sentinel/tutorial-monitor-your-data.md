@@ -15,10 +15,9 @@ ms.workload: na
 ms.date: 05/04/2020
 ms.author: yelevin
 ms.openlocfilehash: 8d8f1343d92f66dc464ab7064949bbabb813268e
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83798536"
 ---
 # <a name="tutorial-visualize-and-monitor-your-data"></a>Oktatóanyag: az adatai megjelenítése és figyelése
@@ -86,7 +85,7 @@ Testreszabott munkafüzet törléséhez a munkafüzetek lapon válassza ki a tö
 > [!NOTE]
 > Ezzel eltávolítja az erőforrást, valamint a sablonon végrehajtott módosításokat is. Az eredeti sablon továbbra is elérhető marad.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan tekintheti meg adatait az Azure Sentinelben.
 

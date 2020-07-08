@@ -4,10 +4,9 @@ description: Támogatott erőforrástípusok az Azure Resource Health használat
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.openlocfilehash: 38c7e0754649d650521cc510bcac326496bcec38
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83816098"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Erőforrástípusok és állapot-ellenőrzések az Azure Resource Health-ben
@@ -23,7 +22,7 @@ Az alábbi lista az erőforrás-állapoton keresztül végrehajtott összes elle
 |---|
 |<ul><li>Működik az API Management szolgáltatás?</li></ul>|
 
-## <a name="microsoftbatchbatchaccounts"></a>Microsoft. batch/batchAccounts
+## <a name="microsoftbatchbatchaccounts"></a>Microsoft.BatCH/batchAccounts
 |Végrehajtott ellenőrzések|
 |---|
 |<ul><li>Működik a Batch-fiókja?</li><li>Túllépte a készlet kvótáját ehhez a Batch-fiókhoz?</li></ul>|
@@ -104,7 +103,7 @@ Az alábbi lista az erőforrás-állapoton keresztül végrehajtott összes elle
 |---|
 |<ul><li>A IoT hub működik?</li></ul>|
 
-## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft. documentdb/databaseAccounts
+## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.documentdb/databaseAccounts
 |Végrehajtott ellenőrzések|
 |---|
 |<ul><li>Van-e olyan adatbázis-vagy gyűjtési kérelem, amely egy Azure Cosmos DB szolgáltatás nem rendelkezésre állása miatt nem szolgált?</li><li>Van-e olyan dokumentumra vonatkozó kérelem, amely egy Azure Cosmos DB szolgáltatás nem rendelkezésre állása miatt nem szolgált?</li></ul>|

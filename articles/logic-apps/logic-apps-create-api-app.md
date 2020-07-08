@@ -7,10 +7,9 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/26/2017
 ms.openlocfilehash: 45b53b0e692a1272ba59719655c8d60c90fd6c96
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83834492"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Egyéni API-k létrehozása, melyeket hívhat Azure Logic Apps
@@ -21,7 +20,7 @@ Habár Azure Logic Apps [több száz összekötőt](../connectors/apis-list.md) 
 * Segítheti az ügyfeleket a szolgáltatásban a szakmai vagy személyes feladatok kezelésében.
 * Bővítse a szolgáltatás elérhetőségét, a felderíthetőség és a használatot.
 
-Az összekötők alapvetően olyan webes API-k, amelyek REST-t használnak a csatlakoztatott interfészekhez, a dokumentációhoz a [hencegő metaadatok formátumát](https://swagger.io/specification/) , valamint a JSON-t adatcsere-formátumként. Mivel az összekötők olyan REST API-k, amelyek HTTP-végpontokon keresztül kommunikálnak, bármilyen nyelvet használhat, például a .NET, a Java, a Python vagy a Node. js segítségével összekötők létrehozásához. Az API-kat [Azure app Service](../app-service/overview.md), egy szolgáltatásként nyújtott platformon is üzemeltetheti, amely az API-k egyik legjobb, legegyszerűbb és leginkább méretezhető módját kínálja. 
+Az összekötők alapvetően olyan webes API-k, amelyek REST-t használnak a csatlakoztatott interfészekhez, a dokumentációhoz a [hencegő metaadatok formátumát](https://swagger.io/specification/) , valamint a JSON-t adatcsere-formátumként. Mivel az összekötők olyan REST API-k, amelyek HTTP-végpontokon keresztül kommunikálnak, bármilyen nyelvet, például .NET, Java, Python vagy Node.js használhat az összekötők létrehozásához. Az API-kat [Azure app Service](../app-service/overview.md), egy szolgáltatásként nyújtott platformon is üzemeltetheti, amely az API-k egyik legjobb, legegyszerűbb és leginkább méretezhető módját kínálja. 
 
 Ahhoz, hogy egyéni API-k működjenek a logikai alkalmazásokkal, az API olyan [*műveleteket*](./logic-apps-overview.md#logic-app-concepts) is biztosít, amelyek adott feladatokat hajtanak végre a Logic apps-munkafolyamatokban. Az API olyan [*eseményindítóként*](./logic-apps-overview.md#logic-app-concepts) is működhet, amely elindítja a Logic app-munkafolyamatot, amikor új vagy egy esemény megfelel egy megadott feltételnek. Ez a témakör azokat a gyakori mintákat ismerteti, amelyekkel az API-k által biztosított viselkedés alapján műveleteket és eseményindítókat hozhat létre az API-ban.
 
@@ -41,7 +40,7 @@ Az API-kat üzemeltetheti [Azure app Serviceon](../app-service/overview.md), egy
 
 ## <a name="how-do-custom-apis-differ-from-custom-connectors"></a>Miben különböznek az egyéni API-k az egyéni összekötők?
 
-Az egyéni API-k és az [Egyéni összekötők](../logic-apps/custom-connector-overview.md) olyan webes API-k, amelyek Rest-t használnak a csatlakoztatott felületek számára, a dokumentációhoz tartozó [hencegés metaadatainak formátuma](https://swagger.io/specification/) , valamint a JSON adatcsere formátuma Mivel ezek az API-k és összekötők olyan REST API-k, amelyek HTTP-végpontokon keresztül kommunikálnak, az egyéni API-k és összekötők létrehozásához bármilyen nyelvet használhat, például .NET, Java, Python vagy Node. js.
+Az egyéni API-k és az [Egyéni összekötők](../logic-apps/custom-connector-overview.md) olyan webes API-k, amelyek Rest-t használnak a csatlakoztatott felületek számára, a dokumentációhoz tartozó [hencegés metaadatainak formátuma](https://swagger.io/specification/) , valamint a JSON adatcsere formátuma Mivel ezek az API-k és összekötők olyan REST API-k, amelyek HTTP-végpontokon keresztül kommunikálnak, az egyéni API-k és összekötők létrehozásához bármilyen nyelvet használhat, például .NET, Java, Python vagy Node.js.
 
 Az egyéni API-k segítségével olyan API-kat hívhat meg, amelyek nem összekötők, és olyan végpontokat biztosítanak, amelyek HTTP + hencegés, Azure API Management vagy App Services használatával hívhatók meg. Az egyéni összekötők úgy működnek, mint az egyéni API-k, de ezek az attribútumok is a következők:
 
@@ -173,8 +172,8 @@ Ha például rendszeresen szeretné ellenőrizni a szolgáltatást az új fájlo
 
 | A kérelem tartalmazza `triggerState` ? | API-válasz | 
 | -------------------------------- | -------------| 
-| Nem | Egy HTTP `202 ACCEPTED` -állapotot, valamint egy fejlécet ad vissza, amely `location` `triggerState` az aktuális időpontra, az `retry-after` intervallum pedig 15 másodpercre van állítva. | 
-| Igen | Győződjön meg arról, hogy a szolgáltatásban a `DateTime` for () után hozzáadott fájlok szerepelnek `triggerState` . | 
+| No | Egy HTTP `202 ACCEPTED` -állapotot, valamint egy fejlécet ad vissza, amely `location` `triggerState` az aktuális időpontra, az `retry-after` intervallum pedig 15 másodpercre van állítva. | 
+| Yes | Győződjön meg arról, hogy a szolgáltatásban a `DateTime` for () után hozzáadott fájlok szerepelnek `triggerState` . | 
 ||| 
 
 | Talált fájlok száma | API-válasz | 

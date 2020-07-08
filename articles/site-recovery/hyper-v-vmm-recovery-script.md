@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
 ms.openlocfilehash: 14c2a9a2ad818cc358535a91f9a6813ec7b91a6f
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83826281"
 ---
 # <a name="add-a-vmm-script-to-a-recovery-plan"></a>VMM-parancsfájl hozzáadása helyreállítási tervhez
@@ -60,9 +59,9 @@ A helyreállítási tervekben PowerShell-parancsfájlokat is használhat. Ahhoz,
 
 Ha rendelkezik VMM, létrehozhat egy parancsfájlt a VMM-kiszolgálón. Ezután vegye fel a szkriptet a helyreállítási tervbe.
 
-1. A könyvtár megosztásában hozzon létre egy új mappát. Például: \< VMM-kiszolgáló neve> \msscvmmlibrary\rpscripts. Helyezze a mappát a forrás és a cél VMM-kiszolgálókra.
+1. A könyvtár megosztásában hozzon létre egy új mappát. Például: \<VMM server name> \MSSCVMMLibrary\RPScripts. Helyezze a mappát a forrás és a cél VMM-kiszolgálókra.
 1. Hozza létre a parancsfájlt. Adja meg például a RPScript parancsfájl nevét. Ellenőrizze, hogy a parancsfájl a várt módon működik-e.
-1. Helyezze a parancsfájlt a \< VMM-kiszolgáló neve> \msscvmmlibrary mappába a forrás és a cél VMM-kiszolgálókon.
+1. Helyezze a parancsfájlt a \<VMM server name> forrás és a cél VMM-kiszolgálók \MSSCVMMLibrary mappájába.
 
 ## <a name="add-the-script-to-a-recovery-plan"></a>A parancsfájl hozzáadása helyreállítási tervhez
 
@@ -71,11 +70,11 @@ Miután hozzáadta a virtuális gépeket vagy replikációs csoportokat egy hely
 1. Nyissa meg a helyreállítási tervet.
 1. A **lépés** listában válasszon ki egy elemet. Ezután válassza a **parancsfájl** vagy a **manuális művelet**lehetőséget.
 1. Adja meg, hogy a parancsfájlt vagy műveletet a kijelölt elem előtt vagy után kívánja-e hozzáadni. Ha feljebb **vagy lejjebb szeretné** helyezni a szkript pozícióját, válassza a **feljebb és lejjebb** gombokat.
-1. Ha VMM-parancsfájlt ad hozzá, válassza a **FELADATÁTVÉTEL VMM szkriptet**. A **parancsfájl elérési útja**mezőben adja meg a megosztás relatív elérési útját. Írja be például a következőt: **\RPScripts\RPScript.ps1**.
+1. Ha VMM-parancsfájlt ad hozzá, válassza a **FELADATÁTVÉTEL VMM szkriptet**. A **parancsfájl elérési útja**mezőben adja meg a megosztás relatív elérési útját. Adja meg például a következőt: **\RPScripts\RPScript.PS1**.
 1. Ha hozzáad egy Azure Automation runbook, adja meg azt az Automation-fiókot, amelyben a runbook található. Ezután válassza ki a használni kívánt Azure runbook-szkriptet.
 1. Annak érdekében, hogy a parancsfájl a várt módon működjön, végezzen feladatátvételi tesztet a helyreállítási tervből.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További információ a [feladatátvételek futtatásáról](site-recovery-failover.md).
 

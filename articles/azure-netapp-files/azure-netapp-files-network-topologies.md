@@ -15,10 +15,9 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: ramakk
 ms.openlocfilehash: d81ae835fa62c5188c8d71a5ae0563259ab027f3
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83797431"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Az Azure NetApp Files hálózattervezési irányelvei
@@ -57,7 +56,7 @@ A következő táblázat a Azure NetApp Files által támogatott hálózati topo
 |-------------------------------------------------------------------------------------------------------------------------------|--------------------|-----------------------------------------------------------------------------|
 |    Kapcsolat a kötettel a helyi VNet    |    Yes    |         |
 |    Kapcsolat a kötettel egy társ VNet (ugyanabban a régióban)    |    Yes    |         |
-|    Kapcsolat a kötettel egy társ VNet (régió vagy globális társ)    |    No    |    Nincs    |
+|    Kapcsolat a kötettel egy társ VNet (régió vagy globális társ)    |    No    |    None    |
 |    Kapcsolat egy kötettel a ExpressRoute-átjárón keresztül    |    Yes    |         |
 |    Helyszíni kapcsolat a ExpressRoute-átjárón keresztüli küllős VNet, valamint az átjárók közötti VNet    |    Yes    |        |
 |    Helyszíni kapcsolat a VPN-átjárón keresztül küllős VNet lévő kötetre    |    Yes    |         |
@@ -130,6 +129,6 @@ A fenti ábrán látható topológiában a helyszíni hálózat egy Azure-beli h
 * A küllős VNet 1 virtuális gép 4-es verziójában nem lehet csatlakozni a 3. kötethez a küllős VNet 2. Emellett a küllős VNet2 5. virtuális gép nem tud csatlakozni a 2. kötethez a küllős VNet 1. Ez azért van így, mert a küllős virtuális hálózatok nem támogatottak, és az _átviteli útválasztás nem támogatott a VNet_-társítások esetében.
 * A fenti architektúrában, ha van egy átjáró a küllős VNET, akkor a ANF-kötetnek az átjárón keresztül a hub-on keresztül való kapcsolata elvész. A megtervezéssel előnyben részesítette az átjárót a küllő VNet, így csak az átjárón keresztül csatlakozó gépek csatlakozhatnak a ANF-kötethez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Alhálózat delegálása az Azure NetApp Fileshoz](azure-netapp-files-delegate-subnet.md)

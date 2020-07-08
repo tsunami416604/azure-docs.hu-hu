@@ -12,10 +12,9 @@ ms.author: daperlov
 manager: jroth
 ms.reviewer: maghan
 ms.openlocfilehash: a0b5fa16658d3e354bcb4f90ad998997fc844a84
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83832785"
 ---
 # <a name="set-variable-activity-in-azure-data-factory"></a>Változó tevékenység beállítása Azure Data Factoryban
@@ -30,7 +29,7 @@ Tulajdonság | Leírás | Kötelező
 name | A tevékenység neve a folyamatban | igen
 leírás | A tevékenység működését leíró szöveg | nem
 típus | **SetVariable** értékre kell állítani | igen
-érték | Karakterlánc-vagy kifejezési objektum értéke, amelyhez a változó hozzá van rendelve | igen
+value | Karakterlánc-vagy kifejezési objektum értéke, amelyhez a változó hozzá van rendelve | igen
 variableName | A tevékenység által beállított változó neve | igen
 
 ## <a name="incrementing-a-variable"></a>Változó növelése

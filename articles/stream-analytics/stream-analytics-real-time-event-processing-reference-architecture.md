@@ -8,10 +8,9 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/24/2017
 ms.openlocfilehash: 23c7112639a64097d95df29bde16636702837f9e
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83832979"
 ---
 # <a name="reference-architecture-real-time-event-processing-with-microsoft-azure-stream-analytics"></a>Hivatkozási architektúra: valós idejű események feldolgozása Microsoft Azure Stream Analytics
@@ -23,7 +22,7 @@ Az elemzési megoldások hagyományosan olyan képességek alapján lettek kiala
 Microsoft Azure széles körű katalógust nyújt az elemzési technológiákról, amelyek képesek a különböző megoldási forgatókönyvek és követelmények tömbjét támogatni. Ha kiválasztja, hogy mely Azure-szolgáltatások telepíthetők egy teljes körű megoldásra, az ajánlatok szélessége is kihívást jelenthet. A tanulmány célja, hogy leírja a különböző Azure-szolgáltatások, amelyek támogatják az esemény-adatfolyamos megoldást. Emellett ismerteti azokat a forgatókönyveket is, amelyekben az ügyfelek kihasználhatják az ilyen típusú megközelítést.
 
 ## <a name="contents"></a>Tartalom
-* Vezetői összefoglaló
+* Végrehajtási összefoglaló
 * A valós idejű elemzés bemutatása
 * Valós idejű adatértékek kiosztása az Azure-ban
 * Gyakori forgatókönyvek a valós idejű elemzésekhez

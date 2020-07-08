@@ -9,10 +9,9 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.openlocfilehash: 78dde3f6706ecbc54daca162ac718911752fa0ca
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83832962"
 ---
 # <a name="common-query-patterns-in-azure-stream-analytics"></a>Gyakori lekérdezési minták a Azure Stream Analytics
@@ -35,14 +34,14 @@ Egy egyszerű átmenő lekérdezéssel másolhatók a bemeneti adatfolyam-adatok
 
 **Bemenet**:
 
-| Gyártmány | Time | Tömeg |
+| Gyártó | Idő | Tömeg |
 | --- | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |"1000" |
 | Make1 |2015-01-01T00:00:02.0000000 Z |"2000" |
 
 **Kimenet**:
 
-| Gyártmány | Time | Tömeg |
+| Gyártó | Idő | Tömeg |
 | --- | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |"1000" |
 | Make1 |2015-01-01T00:00:02.0000000 Z |"2000" |
@@ -60,7 +59,7 @@ A Select * lekérdezés a bejövő események összes mezőjét **kijelöli** , 
 
 **Bemenet**:
 
-| Gyártmány | Time | Tömeg |
+| Gyártó | Idő | Tömeg |
 | --- | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |1000 |
 | Make1 |2015-01-01T00:00:02.0000000 Z |2000 |
@@ -68,7 +67,7 @@ A Select * lekérdezés a bejövő események összes mezőjét **kijelöli** , 
 
 **Kimenet**:
 
-| Gyártmány | Time |
+| Gyártó | Idő |
 | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |
 | Make1 |2015-01-01T00:00:02.0000000 Z |
@@ -88,7 +87,7 @@ Az adatok egy adott időtartományon keresztüli kiszámításához összesíthe
 
 **Bemenet**:
 
-| Gyártmány | Time | Tömeg |
+| Gyártó | Idő | Tömeg |
 | --- | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |1000 |
 | Make1 |2015-01-01T00:00:02.0000000 Z |2000 |
@@ -96,7 +95,7 @@ Az adatok egy adott időtartományon keresztüli kiszámításához összesíthe
 
 **Kimenet**:
 
-| Gyártmány | Darabszám |
+| Gyártó | Darabszám |
 | --- | --- |
 | Make1 | 2 |
 | Make2 | 1 |
@@ -126,14 +125,14 @@ Az adatátviteli **módszer használatával** valós időben lehet átadni az ad
 
 **Bemenet**:
 
-| Gyártmány | Time | Tömeg |
+| Gyártó | Idő | Tömeg |
 | --- | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |"1000" |
 | Make1 |2015-01-01T00:00:02.0000000 Z |"2000" |
 
 **Kimenet**:
 
-| Gyártmány | Tömeg |
+| Gyártó | Tömeg |
 | --- | --- |
 | Make1 |3000 |
 
@@ -160,7 +159,7 @@ További információ az [Adatátalakítási függvényekről](/stream-analytics
 
 **Bemenet**:
 
-| Gyártmány | License_plate | Time |
+| Gyártó | License_plate | Idő |
 | --- | --- | --- |
 | Make1 |ABC-123 |2015-01-01T00:00:01.0000000 Z |
 | Make2 |AAA-999 |2015-01-01T00:00:02.0000000 Z |
@@ -168,7 +167,7 @@ További információ az [Adatátalakítási függvényekről](/stream-analytics
 
 **Kimenet**:
 
-| Gyártmány | License_plate | Time |
+| Gyártó | License_plate | Idő |
 | --- | --- | --- |
 | Make2 |AAA-999 |2015-01-01T00:00:02.0000000 Z |
 | Make3 |ABC-369 |2015-01-01T00:00:03.0000000 Z |
@@ -192,7 +191,7 @@ A **Case** utasítások különböző számításokat biztosíthatnak különbö
 
 **Bemenet**:
 
-| Gyártmány | Time |
+| Gyártó | Idő |
 | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |
 | Make2 |2015-01-01T00:00:02.0000000 Z |
@@ -200,7 +199,7 @@ A **Case** utasítások különböző számításokat biztosíthatnak különbö
 
 **Kimenet**:
 
-| Gyártmány |Dispatch_to_lane | Time |
+| Gyártó |Dispatch_to_lane | Idő |
 | --- | --- | --- |
 | Make1 |Egy |2015-01-01T00:00:01.0000000 Z |
 | Make2 |B |2015-01-01T00:00:02.0000000 Z |
@@ -229,7 +228,7 @@ Több **Select** utasítás is használható az adatkimenet különböző kimene
 
 **Bemenet**:
 
-| Gyártmány | Time |
+| Gyártó | Idő |
 | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |
 | Make1 |2015-01-01T00:00:02.0000000 Z |
@@ -239,7 +238,7 @@ Több **Select** utasítás is használható az adatkimenet különböző kimene
 
 **Kimeneti ArchiveOutput**:
 
-| Gyártmány | Time |
+| Gyártó | Idő |
 | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |
 | Make1 |2015-01-01T00:00:02.0000000 Z |
@@ -249,7 +248,7 @@ Több **Select** utasítás is használható az adatkimenet különböző kimene
 
 **Kimeneti AlertOutput**:
 
-| Gyártmány | Time | Darabszám |
+| Gyártó | Idő | Darabszám |
 | --- | --- | --- |
 | Make2 |2015-01-01T00:00:10.0000000 Z |3 |
 
@@ -314,7 +313,7 @@ A **darabszám** és a **DISTINCT** érték az adatfolyamban megjelenő egyedi m
 
 **Bemenet**:
 
-| Gyártmány | Time |
+| Gyártó | Idő |
 | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |
 | Make1 |2015-01-01T00:00:02.0000000 Z |
@@ -324,7 +323,7 @@ A **darabszám** és a **DISTINCT** érték az adatfolyamban megjelenő egyedi m
 
 **Kimeneti**
 
-| Count_make | Time |
+| Count_make | Idő |
 | --- | --- |
 | 2 |2015-01-01T00:00:02.000 Z |
 | 1 |2015-01-01T00:00:04.000 Z |
@@ -349,14 +348,14 @@ A **lag** függvény használatával megtekintheti a múltbeli eseményeket egy 
 
 **Bemenet**:
 
-| Gyártmány | Time |
+| Gyártó | Idő |
 | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |
 | Make2 |2015-01-01T00:00:02.0000000 Z |
 
 **Kimenet**:
 
-| Gyártmány | Time |
+| Gyártó | Idő |
 | --- | --- |
 | Make2 |2015-01-01T00:00:02.0000000 Z |
 
@@ -382,7 +381,7 @@ A **IsFirst** az első esemény egy időablakban való lekérésére használhat
 
 **Bemenet**:
 
-| License_plate | Gyártmány | Time |
+| License_plate | Gyártó | Idő |
 | --- | --- | --- |
 | DXE 5291 |Make1 |2015-07-27T00:00:05.0000000 Z |
 | YZK 5704 |Make3 |2015-07-27T00:02:17.0000000 Z |
@@ -394,7 +393,7 @@ A **IsFirst** az első esemény egy időablakban való lekérésére használhat
 
 **Kimenet**:
 
-| License_plate | Gyártmány | Time |
+| License_plate | Gyártó | Idő |
 | --- | --- | --- |
 | DXE 5291 |Make1 |2015-07-27T00:00:05.0000000 Z |
 | QYF 9358 |Make1 |2015-07-27T00:12:02.0000000 Z |
@@ -416,7 +415,7 @@ A **IsFirst** az adatparticionálást is elvégezheti, és az első eseményt ki
 
 **Kimenet**:
 
-| License_plate | Gyártmány | Time |
+| License_plate | Gyártó | Idő |
 | --- | --- | --- |
 | DXE 5291 |Make1 |2015-07-27T00:00:05.0000000 Z |
 | YZK 5704 |Make3 |2015-07-27T00:02:17.0000000 Z |
@@ -445,7 +444,7 @@ Mivel a rendszer valós időben használja az eseményeket, nincs olyan függvé
 
 **Bemenet**:
 
-| License_plate | Gyártmány | Time |
+| License_plate | Gyártó | Idő |
 | --- | --- | --- |
 | DXE 5291 |Make1 |2015-07-27T00:00:05.0000000 Z |
 | YZK 5704 |Make3 |2015-07-27T00:02:17.0000000 Z |
@@ -457,7 +456,7 @@ Mivel a rendszer valós időben használja az eseményeket, nincs olyan függvé
 
 **Kimenet**:
 
-| License_plate | Gyártmány | Time |
+| License_plate | Gyártó | Idő |
 | --- | --- | --- |
 | VFE 1616 |Make2 |2015-07-27T00:09:31.0000000 Z |
 | MDR 6128 |Make4 |2015-07-27T00:13:45.0000000 Z |
@@ -499,7 +498,7 @@ Az egyazon adatfolyamban található események korrelációját a **lag** függ
 
 **Bemenet**:
 
-| Gyártmány | License_plate | Time |
+| Gyártó | License_plate | Idő |
 | --- | --- | --- |
 | Make1 |ABC-123 |2015-01-01T00:00:01.0000000 Z |
 | Make1 |AAA-999 |2015-01-01T00:00:02.0000000 Z |
@@ -508,7 +507,7 @@ Az egyazon adatfolyamban található események korrelációját a **lag** függ
 
 **Kimenet**:
 
-| Gyártmány | Time | Current_car_license_plate | First_car_license_plate | First_car_time |
+| Gyártó | Idő | Current_car_license_plate | First_car_license_plate | First_car_time |
 | --- | --- | --- | --- | --- |
 | Make1 |2015-01-01T00:00:02.0000000 Z |AAA-999 |ABC-123 |2015-01-01T00:00:01.0000000 Z |
 
@@ -537,7 +536,7 @@ Az események időtartamát úgy számíthatja ki, hogy megtekinti az utolsó in
 
 **Bemenet**:  
 
-| Felhasználó | Szolgáltatás | Esemény | Time |
+| Felhasználó | Szolgáltatás | Esemény | Idő |
 | --- | --- | --- | --- |
 | user@location.com |RightMenu |Indítás |2015-01-01T00:00:01.0000000 Z |
 | user@location.com |RightMenu |Befejezés |2015-01-01T00:00:08.0000000 Z |
@@ -571,7 +570,7 @@ A több eseményre kiterjedő feltételek esetén a **lag** függvény használa
 
 **Bemenet**:
 
-| Gyártmány | Time | Tömeg |
+| Gyártó | Idő | Tömeg |
 | --- | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |2000 |
 | Make2 |2015-01-01T00:00:02.0000000 Z |25000 |
@@ -618,7 +617,7 @@ Szabálytalan vagy hiányzó események esetén rendszeres időközi kimenet hoz
 
 **Bemenet**:
 
-| Time | Érték |
+| Idő | Érték |
 | --- | --- |
 | "2014-01-01T06:01:00" |1 |
 | "2014-01-01T06:01:05" |2 |
@@ -665,7 +664,7 @@ Például a 2. *TollID* eszköz órája öt másodperccel az 1. *TollID* mögöt
 
 **Bemenet**:
 
-| LicensePlate | Gyártmány | Time | TollID |
+| LicensePlate | Gyártó | Idő | TollID |
 | --- | --- | --- | --- |
 | DXE 5291 |Make1 |2015-07-27T00:00:01.0000000 Z | 1 |
 | YHN 6970 |Make2 |2015-07-27T00:00:05.0000000 Z | 1 |
@@ -708,7 +707,7 @@ Ha olyan műveletet hajt végre, mint például az átlagok kiszámítása egy a
 
 **Bemenet**:  
 
-| DeviceId | Time | Attribútum | Érték |
+| DeviceId | Idő | Attribútum | Érték |
 | --- | --- | --- | --- |
 | 1 |2018-07-27T00:00:01.0000000 Z |Hőmérséklet |50 |
 | 1 |2018-07-27T00:00:01.0000000 Z |Hőmérséklet |50 |
@@ -759,7 +758,7 @@ Ha például egy felhasználó egy olyan weblappal működik együtt, amelyben a
 
 **Bemenet**:
 
-| User_id | Time | URL-cím |
+| User_id | Idő | URL-cím |
 | --- | --- | --- |
 | 0 | 2017-01-26T00:00:00.0000000 Z | "www.example.com/a.html" |
 | 0 | 2017-01-26T00:00:20.0000000 Z | "www.example.com/b.html" |
@@ -845,7 +844,7 @@ Az ATM-et például valós időben figyelik a hibák, az ATM működése során,
 
 **Bemenet**:
 
-| ATM_id | Operation_id | Return_Code | Time |
+| ATM_id | Operation_id | Return_Code | Idő |
 | --- | --- | --- | --- |
 | 1 | "PIN-kód beírása" | Sikeres | 2017-01-26T00:10:00.0000000 Z |
 | 2 | "A pénz megnyitása tárolóhely" | Sikeres | 2017-01-26T00:10:07.0000000 Z |
@@ -892,7 +891,7 @@ A gyártás szeretné nyomon követni ezeknek a gépeknek a helyét, és riaszt�
 
 **Bemenet**:
 
-| Equipment_id | Equipment_current_location | Time |
+| Equipment_id | Equipment_current_location | Idő |
 | --- | --- | --- |
 | 1 | "PONT (-122.13288797982818 47.64082002051315)" | 2017-01-26T00:10:00.0000000 Z |
 | 1 | "PONT (-122.13307252987875 47.64081350934929)" | 2017-01-26T00:11:00.0000000 Z |
@@ -907,7 +906,7 @@ A gyártás szeretné nyomon követni ezeknek a gépeknek a helyét, és riaszt�
 
 **Kimenet**:
 
-| Equipment_id | Equipment_alert_location | Time |
+| Equipment_id | Equipment_alert_location | Idő |
 | --- | --- | --- |
 | 1 | "PONT (-122.13341048821462 47.64043760861279)" | 2017-01-26T00:13:00.0000000 Z |
 

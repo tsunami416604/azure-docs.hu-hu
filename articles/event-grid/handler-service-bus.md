@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: spelluru
 ms.openlocfilehash: c9e1c9aa664065371595ed34a3af28330bd7e0db
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83798883"
 ---
 # <a name="service-bus-queues-and-topics-as-event-handlers-for-azure-event-grid-events"></a>Várólisták és témakörök Service Bus Azure Event Grid események eseménykezelői számára
@@ -161,5 +160,5 @@ Az esemény-azonosító az esemény ismételt kézbesítése során is megmarad,
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A támogatott eseménykezelők listáját az [eseménykezelők](event-handlers.md) című cikkben tekintheti meg. 

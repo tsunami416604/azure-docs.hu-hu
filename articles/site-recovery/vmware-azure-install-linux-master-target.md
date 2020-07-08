@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: mayg
 ms.openlocfilehash: 9ab4db53086046ff831fe91d003599841aa8148c
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83829783"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Linux fő célkiszolgáló telepítése feladat-visszavételhez
@@ -244,7 +243,7 @@ Adatmegőrzési lemez létrehozásához kövesse az alábbi lépéseket:
 
     ![Többutas azonosító](./media/vmware-azure-install-linux-master-target/image27.png)
 
-3. Formázza a meghajtót, majd hozzon létre egy fájlrendszert az új meghajtón: **mkfs. ext4/dev/Mapper/ \< adatmegőrzési lemez többutas azonosító>**.
+3. Formázza a meghajtót, majd hozzon létre egy fájlrendszert az új meghajtón: **mkfs. ext4 \<Retention disk's multipath id> /dev/Mapper/**.
     
     ![Fájlrendszer](./media/vmware-azure-install-linux-master-target/image23-centos.png)
 
@@ -261,7 +260,7 @@ Adatmegőrzési lemez létrehozásához kövesse az alábbi lépéseket:
     
     A fájl szerkesztésének megkezdéséhez kattintson a **Beszúrás** gombra. Hozzon létre egy új sort, majd szúrja be a következő szöveget. Szerkessze a lemez többutas AZONOSÍTÓját az előző parancs kijelölt többutas AZONOSÍTÓjának alapján.
 
-    **/dev/Mapper/ \< adatmegőrzési lemezek többutas azonosítója>/mnt/Retention ext4 rw 0 0**
+    **/dev/Mapper/ \<Retention disks multipath id> /mnt/Retention ext4 rw 0 0**
 
     Válassza az **ESC**lehetőséget, majd írja be a következőt **: wq** (írás és Kilépés) a szerkesztő ablak bezárásához.
 
@@ -274,7 +273,7 @@ Adatmegőrzési lemez létrehozásához kövesse az alábbi lépéseket:
 > [!NOTE]
 > A fő célkiszolgáló telepítése előtt győződjön meg arról, hogy a virtuális gépen található **/etc/hosts** -fájl olyan bejegyzéseket tartalmaz, amelyek leképezik a helyi gazdagépet az összes hálózati adapterhez társított IP-címekre.
 
-1. Másolja a jelszót a **C:\ProgramData\Microsoft Azure site Recovery\private\connection.passphrase** a konfigurációs kiszolgálón. Ezt követően a következő parancs futtatásával mentse a (z **) jelszót. txt** néven a helyi könyvtárban:
+1. Másolja a jelszót a **C:\ProgramData\Microsoft Azure site Recovery\private\connection.passphrase** a konfigurációs kiszolgálón. Ezután mentse **passphrase.txtként** ugyanabban a helyi könyvtárban a következő parancs futtatásával:
 
     `echo <passphrase> >passphrase.txt`
 

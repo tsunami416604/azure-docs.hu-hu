@@ -6,10 +6,9 @@ ms.subservice: dsc
 ms.topic: conceptual
 ms.date: 08/08/2018
 ms.openlocfilehash: a45aa8299d61e89f2a21bc9c53de3a88f88cbb93
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83827896"
 ---
 # <a name="configure-machines-to-a-desired-state"></a>Gépek célállapotba történő konfigurálása
@@ -51,7 +50,7 @@ Connect-AzAccount
 ## <a name="create-and-upload-a-configuration-to-azure-automation"></a>Konfiguráció létrehozása és feltöltése Azure Automation
 
 
-Egy szövegszerkesztőben írja be a következőt, és mentse helyileg **TestConfig. ps1**néven.
+Egy szövegszerkesztőben írja be a következőt, és mentse helyileg **TestConfig.ps1ként **.
 
 ```powershell
 configuration TestConfig {
