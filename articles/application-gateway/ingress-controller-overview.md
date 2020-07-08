@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 06/10/2020
 ms.author: caya
 ms.openlocfilehash: c1bd41587e4f56fb0a7f3eb8285d301751f558d1
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84668100"
 ---
 # <a name="what-is-application-gateway-ingress-controller"></a>Mi az Application Gateway beáramló vezérlő?
@@ -72,7 +71,7 @@ A következő táblázatok rendezik, hogy jelenleg milyen forgatókönyvek támo
 |**1 AGIC**|N.A. |N.A. |
 |**2 + AGICs**|Megosztott ProhibitedTarget funkciót kell használnia |N.A. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [**AK-bővítmény zöldmezős üzembe helyezése**](tutorial-ingress-controller-add-on-new.md): a AGIC-bővítmény, az AK és a Application Gateway telepítésére vonatkozó utasítások üres-pala infrastruktúrán.
 - [**AK-bővítmény rozsdaövezetek rehabilitálása telepítése**](tutorial-ingress-controller-add-on-existing.md): telepítse a AGIC bővítményt egy AK-fürtön egy meglévő Application Gateway.
 - [**Helm Greenfield üzembe helyezése**](ingress-controller-install-new.md): telepítse a AGIC-t a Helm, az új AK-fürt és az új Application Gateway az üres-pala infrastruktúrán keresztül.

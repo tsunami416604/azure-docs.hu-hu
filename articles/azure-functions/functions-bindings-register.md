@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 07/08/2019
 ms.author: cshoe
 ms.openlocfilehash: 1688fe848beb62731391bf4399a0dabec5265320
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84697340"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>Azure Functions kötési bővítmények regisztrálása
@@ -29,7 +28,7 @@ A következő táblázat azt mutatja be, hogy mikor és hogyan regisztrálja a k
 |Azure Portal|Automatikus|Automatikus|
 |Non-.NET-nyelvek vagy helyi Azure Core-eszközök fejlesztése|Automatikus|[Azure Functions Core Tools-és bővítmény-csomagok használata](#extension-bundles)|
 |C# Class Library a Visual Studióval|[NuGet-eszközök használata](#vs)|[NuGet-eszközök használata](#vs)|
-|C# Class Library a Visual Studio Code használatával|N/A|[A .NET Core parancssori felülete használata](#vs-code)|
+|C# Class Library a Visual Studio Code használatával|N.A.|[A .NET Core parancssori felülete használata](#vs-code)|
 
 ## <a name="extension-bundles-for-local-development"></a><a name="extension-bundles"></a>Kiterjesztési csomagok helyi fejlesztéshez
 

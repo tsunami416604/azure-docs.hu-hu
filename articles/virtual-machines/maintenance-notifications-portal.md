@@ -8,10 +8,9 @@ ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: shants
 ms.openlocfilehash: 77d5731738fbade97be08841428c3bc6b712a7a8
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84678732"
 ---
 # <a name="handling-planned-maintenance-notifications-using-the-portal"></a>Tervezett karbantartási értesítések feldolgozása a portál használatával
@@ -67,6 +66,6 @@ A karbantartás megkezdése után a rendszer karbantartja a virtuális gépet, �
 Ha kihagyta az önkiszolgáló ablakot, akkor továbbra is megtekintheti az ablakot, amikor a virtuális gépet az Azure fogja karbantartani. 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A tervezett karbantartást az [Azure CLI](maintenance-notifications-cli.md) vagy a [PowerShell](maintenance-notifications-powershell.md)használatával is kezelheti.

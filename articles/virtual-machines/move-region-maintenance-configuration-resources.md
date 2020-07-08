@@ -7,10 +7,9 @@ ms.topic: how-to
 ms.date: 03/04/2020
 ms.author: shants
 ms.openlocfilehash: baf7201176fc3d6c70881817ff21b44c2615241a
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84676891"
 ---
 # <a name="move-resources-in-a-maintenance-control-configuration-to-another-region"></a>Erőforrások áthelyezése egy karbantartási vezérlő konfigurációjában egy másik régióba
@@ -91,6 +90,6 @@ Ellenőrizze az új régióban lévő erőforrásokat, és ellenőrizze az új r
 Az áthelyezést követően érdemes törölni az áthelyezett erőforrásokat a forrás régióban.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Kövesse [ezeket az utasításokat](move-region-maintenance-configuration.md) , ha a karbantartási konfigurációkat át kell helyeznie. 

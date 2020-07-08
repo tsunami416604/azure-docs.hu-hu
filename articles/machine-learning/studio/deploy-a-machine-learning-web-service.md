@@ -11,10 +11,9 @@ ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
 ms.openlocfilehash: 3fcf4e180233c6ceaa552b3505462639569ed974
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84696388"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-classic-web-service"></a>Azure Machine Learning Studio (klasszikus) webszolgáltatás üzembe helyezése
@@ -40,7 +39,7 @@ A magas szintű nézetből három lépésben helyezheti üzembe a modelljét:
 
 A prediktív elemzési modellek betanításához Azure Machine Learning Studio (klasszikus) használatával hozzon létre egy képzési kísérletet, ahol különféle modulokat tartalmaz a betanítási adatgyűjtés betöltéséhez, a szükséges, a gépi tanulási algoritmusok alkalmazásához, valamint az eredmények kiértékeléséhez. Megismételheti a kísérletet, és különböző gépi tanulási algoritmusok kipróbálásával összehasonlíthatja és értékelheti az eredményeket.
 
-A képzési kísérletek létrehozásának és kezelésének folyamata máshol még alaposabban szerepel. További információval a következő cikkek szolgálnak:
+A képzési kísérletek létrehozásának és kezelésének folyamata máshol még alaposabban szerepel. További információért lásd a következő cikkeket:
 
 * [Egyszerű kísérlet létrehozása Azure Machine Learning Studio (klasszikus)](create-experiment.md)
 * [Prediktív megoldás fejlesztése Azure Machine Learning Studio (klasszikus)](tutorial-part1-credit-risk.md)

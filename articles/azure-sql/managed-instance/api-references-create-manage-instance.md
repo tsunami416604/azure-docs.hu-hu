@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/12/2019
 ms.openlocfilehash: 3f0eb2c1ecb26475b25cd5ca41c9c61d5e2b47a3
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84695606"
 ---
 # <a name="managed-api-reference-for-azure-sql-managed-instance"></a>Felügyelt API-referenciák az Azure SQL felügyelt példányaihoz
@@ -38,7 +37,7 @@ Felügyelt példányok Azure PowerShell használatával történő létrehozás�
 > [!TIP]
 > A PowerShell-parancsfájlok esetében lásd [: gyors útmutató parancsfájl: felügyelt példány létrehozása PowerShell-függvénytár használatával](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../quick-start-script-create-azure-sql-managed-instance-using-powershell/).
 
-| Parancsmag | Leírás |
+| Parancsmag | Description |
 | --- | --- |
 |[Új – AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstance)|Létrehoz egy felügyelt példányt. |
 |[Get-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstance)|Egy felügyelt példányra vonatkozó adatokat ad vissza.|
@@ -56,7 +55,7 @@ Felügyelt példányok [Azure CLI](/cli/azure)-vel történő létrehozásához 
 > [!TIP]
 > Azure CLI-gyors útmutató: az [SQL felügyelt példány használata az Azure CLI használatával](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44).
 
-| Parancsmag | Leírás |
+| Parancsmag | Description |
 | --- | --- |
 |[az SQL mi Create](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-create) |Létrehoz egy felügyelt példányt.|
 |[az SQL mi List](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-list)|Felsorolja az elérhető felügyelt példányokat.|
@@ -78,7 +77,7 @@ A felügyelt példány létrehozása után hozzon létre és konfiguráljon pél
 > [!IMPORTANT]
 > Felügyelt példány nem hozható létre és nem törölhető a Transact-SQL használatával.
 
-| Parancs | Leírás |
+| Parancs | Description |
 | --- | --- |
 |[ADATBÁZIS LÉTREHOZÁSA](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current)|Létrehoz egy új példány-adatbázist a felügyelt SQL-példányban. Új adatbázis létrehozásához csatlakoznia kell a Master adatbázishoz.|
 | [ADATBÁZIS MÓDOSÍTÁSA](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current) |Módosítja egy példány-adatbázist az SQL felügyelt példányában.|
@@ -87,7 +86,7 @@ A felügyelt példány létrehozása után hozzon létre és konfiguráljon pél
 
 Felügyelt példányok létrehozásához és konfigurálásához használja ezeket a REST API kérelmeket.
 
-| Parancs | Leírás |
+| Parancs | Description |
 | --- | --- |
 |[Felügyelt példányok – létrehozás vagy frissítés](https://docs.microsoft.com/rest/api/sql/managedinstances/createorupdate)|Felügyelt példány létrehozása vagy frissítése.|
 |[Felügyelt példányok – törlés](https://docs.microsoft.com/rest/api/sql/managedinstances/delete)|Felügyelt példány törlése.|

@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 96bd6b461a5374b5f5bc578c5f58dbcd09cd7087
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84699294"
 ---
 # <a name="develop-your-own-iot-edge-modules"></a>Saját IoT Edge-modulok fejlesztése
@@ -77,7 +76,7 @@ Az alábbi táblázatban szereplő összes nyelv esetében IoT Edge támogatja a
 
 | Fejlesztési nyelv | Fejlesztési eszközök |
 | -------------------- | ----------------- |
-| C | Visual Studio Code<br>Visual Studio 2017/2019 |
+| C# | Visual Studio Code<br>Visual Studio 2017/2019 |
 | C# | Visual Studio Code<br>Visual Studio 2017/2019 |
 | Java | Visual Studio Code |
 | Node.js | Visual Studio Code |
@@ -92,7 +91,7 @@ Az alábbi táblázatban szereplő összes nyelv esetében IoT Edge támogatja a
 
 | Fejlesztési nyelv | Fejlesztési eszközök |
 | -------------------- | ----------------- |
-| C | Visual Studio 2017/2019 |
+| C# | Visual Studio 2017/2019 |
 | C# | Visual Studio Code (nincs hibakeresési képesség)<br>Visual Studio 2017/2019 |
 
 ## <a name="next-steps"></a>További lépések

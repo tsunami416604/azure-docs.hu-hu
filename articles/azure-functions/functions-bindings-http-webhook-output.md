@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.openlocfilehash: a25658677e436edf4d001599bb4981f527016596
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84697442"
 ---
 # <a name="azure-functions-http-output-bindings"></a>HTTP-kimeneti kötések Azure Functions
@@ -64,7 +63,7 @@ Ez a szakasz a kötéshez elérhető globális konfigurációs beállításokat 
 }
 ```
 
-|Tulajdonság  |Alapértelmezett | Leírás |
+|Tulajdonság  |Alapértelmezett | Description |
 |---------|---------|---------| 
 | customHeaders|Nincs|Lehetővé teszi egyéni fejlécek beállítását a HTTP-válaszban. Az előző példa hozzáadja a `X-Content-Type-Options` fejlécet a válaszhoz, hogy elkerülje a tartalomtípus-elemzést. |
 |dynamicThrottlesEnabled|igaz<sup>\*</sup>|Ha engedélyezve van, ez a beállítás hatására a kérelmek feldolgozási folyamata rendszeres időközönként ellenőrzi a rendszerteljesítmény-számlálókat, `connections/threads/processes/memory/cpu/etc` és ha ezek a számlálók egy beépített magas küszöbértéken (80%) vannak, akkor a rendszer a kérelmeket csak akkor utasítja el, ha `429 "Too Busy"` a számláló (k) a normál szintre tér vissza.<br/><sup>\*</sup>Az alapértelmezett érték a felhasználási terv `true` . Az alapértelmezett érték egy dedikált csomag `false` .|

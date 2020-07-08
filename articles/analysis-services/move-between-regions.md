@@ -8,10 +8,9 @@ ms.date: 06/09/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: ff012dc78f3981b6fb5fdbd8a5bde45083dd997b
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84699430"
 ---
 # <a name="move-analysis-services-to-a-different-region"></a>Analysis Services áthelyezése másik régióba
@@ -68,7 +67,7 @@ A sablon a forráskiszolgáló konfigurációs tulajdonságait tartalmazza.
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-Sablon exportálása Azure Portal használatával:
+Sablon exportálása az Azure Portallal:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
@@ -190,13 +189,13 @@ Ha új kiszolgálói erőforrást szeretne üzembe helyezni egy másik régióba
 
 1. A portálon válassza az **erőforrás létrehozása**lehetőséget.
 
-2. A **Keresés a Marketplace-en** mezőbe írja be a **template deployment** kifejezést, majd nyomja le az **ENTER** billentyűt.
+2. A **Keresés a piactéren**mezőbe írja be a **sablon központi telepítése**kifejezést, majd nyomja le az **ENTER**billentyűt.
 
-3. Válassza a **Template deployment** lehetőséget.
+3. Válassza a **template Deployment**lehetőséget.
 
-4. Kattintson a **Létrehozás** gombra.
+4. Válassza a **Létrehozás** lehetőséget.
 
-5. Válassza a **Saját sablon készítése a szerkesztőben** lehetőséget.
+5. Válassza **a saját sablon létrehozása lehetőséget a szerkesztőben**.
 
 6. Válassza a **fájl betöltése**lehetőséget, majd kövesse az utasításokat az exportált és módosított fájl **template.js** betöltéséhez.
 

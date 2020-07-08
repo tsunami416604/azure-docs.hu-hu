@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 11/29/2017
 ms.author: cshoe
 ms.openlocfilehash: 9ed2b81c12c698822b9542bb6903189c865b572b
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84697357"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>SendGrid-kötések Azure Functions
@@ -354,7 +353,7 @@ A [SendGridOutput](https://github.com/Azure/azure-functions-java-library/blob/ma
 
 A következő táblázat felsorolja a *function.js* fájlon és az `SendGrid` attribútumon/jegyzeten elérhető kötési konfigurációs tulajdonságokat.
 
-| *function.jsa* tulajdonságon | Attribútum/Megjegyzés tulajdonság | Leírás | Választható |
+| *function.jsa* tulajdonságon | Attribútum/Megjegyzés tulajdonság | Description | Választható |
 |--------------------------|-------------------------------|-------------|----------|
 | típus |n.a.| Értékre kell állítani `sendGrid` .| No |
 | irány |n.a.| Értékre kell állítani `out` .| No |
@@ -389,7 +388,7 @@ Ez a szakasz a kötéshez elérhető globális konfigurációs beállításokat 
 }
 ```  
 
-|Tulajdonság  |Alapértelmezett | Leírás |
+|Tulajdonság  |Alapértelmezett | Description |
 |---------|---------|---------| 
 |a|n.a.|A küldő e-mail-címe az összes függvényen belül.| 
 

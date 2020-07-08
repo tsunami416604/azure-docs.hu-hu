@@ -7,10 +7,9 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.openlocfilehash: ad03538cafcce9c1d660d0f2ac5eb3c6ae5f4f38
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84694905"
 ---
 # <a name="create-an-azure-ad-tenant-for-azure-red-hat-openshift"></a>Azure AD-bérlő létrehozása az Azure Red Hat OpenShift
@@ -37,7 +36,7 @@ Bérlő létrehozása:
 
 [tenantcallout]: ./media/howto-create-tenant/tenant-callout.png
 
-## <a name="resources"></a>További források
+## <a name="resources"></a>Erőforrások
 
 Az [Azure ad-Bérlővel](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)kapcsolatos további információkért tekintse meg [Azure Active Directory dokumentációját](https://docs.microsoft.com/azure/active-directory/) .
 

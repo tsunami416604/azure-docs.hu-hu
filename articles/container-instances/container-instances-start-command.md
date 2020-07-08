@@ -4,10 +4,9 @@ description: Parancssor beállítása a BelépésiPont felülbírálására egy 
 ms.topic: article
 ms.date: 04/15/2019
 ms.openlocfilehash: d9554603f78a07fa44af51d8f39a91e1b3c39f70
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84693056"
 ---
 # <a name="set-the-command-line-in-a-container-instance-to-override-the-default-command-line-operation"></a>A parancssor beállítása tároló-példányban az alapértelmezett parancssori művelet felülbírálásához
@@ -20,7 +19,7 @@ Például a [környezeti változók](container-instances-environment-variables.m
 
 * Alapértelmezés szerint a parancssor egyetlen folyamatot határoz meg, amely a tárolóban lévő *rendszerhéj nélkül indul* el. Előfordulhat például, hogy a parancssor egy Python-parancsfájlt vagy egy végrehajtható fájlt futtat. A folyamat további paramétereket vagy argumentumokat adhat meg.
 
-* Több parancs végrehajtásához indítsa el a parancssort a tároló operációs rendszer által támogatott rendszerhéj-környezet beállításával. Angol nyelvű Példák:
+* Több parancs végrehajtásához indítsa el a parancssort a tároló operációs rendszer által támogatott rendszerhéj-környezet beállításával. Példák:
 
   |Operációs rendszer  |Alapértelmezett rendszerhéj  |
   |---------|---------|

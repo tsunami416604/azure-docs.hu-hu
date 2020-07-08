@@ -13,10 +13,9 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: ff608cac9786ebc0d3908ce4d88fb501e621be6c
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84690183"
 ---
 # <a name="azure-api-management-page-controls"></a>Az Azure API Management oldalának vezérlői
@@ -187,7 +186,7 @@ További információ a sablonok használatáról: [API Management fejlesztői p
 ### <a name="developer-portal-templates"></a>Fejlesztői portál sablonjai  
  A `subscribe-button` vezérlőt a következő fejlesztői portál-sablonokban lehet használni:  
   
--   [Termék](api-management-product-templates.md#Product)  
+-   [Product](api-management-product-templates.md#Product)  
   
 ##  <a name="subscription-cancel"></a><a name="subscription-cancel"></a>előfizetés – megszakítás  
  A `subscription-cancel` vezérlő a fejlesztői portál felhasználói profil lapján lévő termékre vonatkozó előfizetés megszakítására szolgáló vezérlőelemet biztosít.  
@@ -212,7 +211,7 @@ További információ a sablonok használatáról: [API Management fejlesztői p
 ### <a name="developer-portal-templates"></a>Fejlesztői portál sablonjai  
  A `subscription-cancel` vezérlőt a következő fejlesztői portál-sablonokban lehet használni:  
   
--   [Termék](api-management-product-templates.md#Product)
+-   [Product](api-management-product-templates.md#Product)
 
 ## <a name="next-steps"></a>További lépések
 További információ a sablonok használatáról: [API Management fejlesztői portál testreszabása sablonok használatával](api-management-developer-portal-templates.md).

@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 06/07/2017
 ms.author: motanv
 ms.openlocfilehash: 4bdb00eec38addc0c9f88eba8b73185ec5721277
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84692580"
 ---
 # <a name="testability-actions"></a>Tesztelési műveletek
@@ -28,7 +27,7 @@ A tesztelési műveletek két fő gyűjtőbe sorolhatók:
 A jobb minőség-ellenőrzés érdekében futtassa a szolgáltatást és az üzleti számítási feladatot, miközben a különböző kecses és zavartalan hibákat okoz. A hibát okozó hibák olyan forgatókönyveket mutatnak be, amelyekben a szolgáltatási folyamat hirtelen kilép egy munkafolyamat közepéről. Ez ellenőrzi a helyreállítási útvonalat, miután a Service Fabric visszaállította a szolgáltatás replikáját. Ez segít az adatkonzisztencia tesztelésében, valamint azt, hogy a szolgáltatás állapota a hibák után megfelelően van-e karbantartva. A további hibák (a kecses meghibásodások) azt tesztelik, hogy a szolgáltatás megfelelően áthelyezi a replikákat Service Fabric. Ez a RunAsync metódus lemondásának kezelését ellenőrzi. A szolgáltatásnak ellenőriznie kell a beállított lemondási tokent, helyesen kell mentenie az állapotát, és ki kell lépnie a RunAsync metódusból.
 
 ## <a name="testability-actions-list"></a>Tesztelési műveletek listája
-| Műveletek | Leírás | Felügyelt API | PowerShell-parancsmag | Kecses/nem zökkenőmentes hibák |
+| Műveletek | Description | Felügyelt API | PowerShell-parancsmag | Kecses/nem zökkenőmentes hibák |
 | --- | --- | --- | --- | --- |
 | CleanTestState |Eltávolítja az összes teszt állapotot a fürtből a tesztelési illesztőprogram hibás leállítása esetén. |CleanTestStateAsync |Remove-ServiceFabricTestState |Nem értelmezhető |
 | InvokeDataLoss |Adatvesztést okoz a szolgáltatás partíciójában. |InvokeDataLossAsync |Invoke-ServiceFabricPartitionDataLoss |Biztonságos |

@@ -14,10 +14,9 @@ ms.workload: ''
 ms.date: 03/26/2018
 ms.author: robreed
 ms.openlocfilehash: 592c731d1851ac36cf9b57864750df0603b6c3fd
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84689486"
 ---
 # <a name="powershell-dsc-extension"></a>PowerShell DSC-bővítmény
@@ -106,7 +105,7 @@ A következő JSON a DSC-bővítmény beállítások részének sémáját mutat
 
 ### <a name="settings-property-values"></a>Beállítások tulajdonság értékei
 
-| Name | Adattípus | Leírás
+| Name | Adattípus | Description
 | ---- | ---- | ---- |
 | Settings. wmfVersion | sztring | Meghatározza a Windows felügyeleti keretrendszer azon verzióját, amelyet telepíteni kell a virtuális gépre. Ha ezt a tulajdonságot "Latest" értékre állítja, a rendszer a WMF legújabb verzióját telepíti. Ennek a tulajdonságnak csak az aktuális lehetséges értékei: "4,0", "5,0" és "Latest". Ezek a lehetséges értékek a frissítések tárgya. Az alapértelmezett érték a "Latest". |
 | settings.configszülő. URL | sztring | Meghatározza azt az URL-címet, amelyből le szeretné tölteni a DSC-konfiguráció zip-fájlját. Ha a megadott URL-címnek SAS-tokenre van szüksége a hozzáféréshez, akkor a protectedSettings.configurationUrlSasToken tulajdonságot az SAS-token értékére kell állítania. Ez a tulajdonság akkor szükséges, ha settings.configszülő. script és/vagy settings.configszülő. Function van definiálva.
@@ -120,7 +119,7 @@ A következő JSON a DSC-bővítmény beállítások részének sémáját mutat
 
 ### <a name="protected-settings-property-values"></a>Védett beállítások tulajdonságértékek
 
-| Name | Adattípus | Leírás
+| Name | Adattípus | Description
 | ---- | ---- | ---- |
 | protectedSettings.configurationArguments | sztring | Meghatározza a DSC-konfigurációnak átadandó paramétereket. Ez a tulajdonság titkosítva lesz. |
 | protectedSettings.configurationUrlSasToken | sztring | Meghatározza a Configuration. URL által definiált URL-cím elérésére szolgáló SAS-tokent. Ez a tulajdonság titkosítva lesz. |

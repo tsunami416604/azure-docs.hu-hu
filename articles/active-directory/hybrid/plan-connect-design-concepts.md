@@ -18,10 +18,9 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bb41e14a7ecf41a2698a063c3067a98d8acf8f07
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84698597"
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect: tervezési fogalmak
@@ -119,7 +118,7 @@ A Azure AD Connect egyéni módban való telepítésekor a Azure AD Connect var�
 
 ![Egyéni telepítés – sourceAnchor-konfiguráció](./media/plan-connect-design-concepts/consistencyGuid-02.png)
 
-| Beállítás | Leírás |
+| Beállítás | Description |
 | --- | --- |
 | Let Azure manage the source anchor for me (Az Azure kezelje a forráshorgonyt) | Válassza ezt a lehetőséget, ha azt szeretné, hogy az Azure AD válassza ki az attribútumot. Ha ezt a lehetőséget választja, a Azure AD Connect varázsló ugyanazt a [sourceAnchor attribútumot alkalmazza, amelyet az expressz telepítéskor használ](#express-installation)a rendszer. Az expressz telepítéshez hasonlóan a varázsló arról tájékoztatja, hogy az egyéni telepítés befejeződése után melyik attribútumot választotta a forrás-szerkesztőpont attribútumként. |
 | A specific attribute (Egy adott attribútum) | Válassza ezt a lehetőséget, ha meglévő AD-attribútumot szeretne megadni forráshorgony-attribútumként. |

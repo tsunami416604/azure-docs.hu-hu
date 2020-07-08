@@ -6,13 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
 ms.openlocfilehash: d41fd7f66ecef3a563345424d7dc4366e47d3f0e
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84687650"
 ---
-# <a name="azure-functions-triggers-and-bindings-concepts"></a>Triggerek és kötések Azure Functions fogalmak
+# <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions-eseményindítók és -kötések – fogalmak
 
 Ebből a cikkből megtudhatja, hogy milyen magas szintű fogalmakat indít a functions-eseményindítók és-kötések.
 
@@ -79,7 +78,7 @@ Ha az [attribútumokat egy osztály-függvénytárban](functions-dotnet-class-li
 
 További információ arról, hogy mely kötések érhetők el előzetes verzióban, vagy hogy a rendszer az éles használatra jóváhagyja a [támogatott nyelveket](supported-languages.md).
 
-## <a name="resources"></a>További források
+## <a name="resources"></a>Erőforrások
 - [Kötési kifejezések és minták](./functions-bindings-expressions-patterns.md)
 - [Az Azure Function Return értékének használata](./functions-bindings-return-value.md)
 - [Kötési kifejezés regisztrálása](./functions-bindings-register.md)

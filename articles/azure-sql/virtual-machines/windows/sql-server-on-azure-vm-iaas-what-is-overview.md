@@ -14,10 +14,9 @@ ms.date: 11/27/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: f1786123808371601467926c2a114c676e898330
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84668627"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Mi az Azure Virtual Machines SQL Server (Windows)
@@ -138,10 +137,10 @@ A Felhasználói élmény fokozása program (CEIP) alapértelmezés szerint enge
 ### <a name="windows-virtual-machines"></a>Windows rendszerű virtuális gépek
 * [Az Azure Virtual Machines áttekintése](../../../virtual-machines/windows/overview.md)
 
-### <a name="storage"></a>Tárolás
+### <a name="storage"></a>Storage
 * [A Microsoft Azure Storage bemutatása](../../../storage/common/storage-introduction.md)
 
-### <a name="networking"></a>Hálózatkezelés
+### <a name="networking"></a>Hálózat
 * [Virtual Network áttekintése](../../../virtual-network/virtual-networks-overview.md)
 * [IP-címek az Azure-ban](../../../virtual-network/public-ip-addresses.md)
 * [Teljes tartománynév létrehozása az Azure Portalon](../../../virtual-machines/linux/portal-create-fqdn.md)
@@ -150,7 +149,7 @@ A Felhasználói élmény fokozása program (CEIP) alapértelmezés szerint enge
 * [Az SQL Server dokumentációja](https://docs.microsoft.com/sql/index)
 * [Az Azure SQL Database összehasonlítása](../../azure-sql-iaas-vs-paas-what-is-overview.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerkedjen meg az Azure Virtual Machines SQL Serverával:
 

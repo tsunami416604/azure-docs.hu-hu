@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 113b72ddf7e5d508c8a0b577d4004d4fbd83e8e5
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84699107"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8100-device"></a>A StorSimple 8100-eszköz kicsomagolása, rack-csatlakoztatása és kábele
@@ -42,7 +41,7 @@ Ezután végezze el az alábbi lépéseket az eszköz kicsomagolásához.
    
     **A tárolóeszköz kicsomagolt nézete**
    
-   | Címke | Leírás |
+   | Címke | Description |
    | --- | --- |
    |   1 |Csomagolási mező |
    |   2 |Alsó hab |
@@ -104,7 +103,7 @@ A 19 hüvelykes rack kabinet használva a csatlakoztatási sínek készlete is e
 
     **Belső vasúti diaképek csatlakoztatása a ház oldalaihoz**
    
-    Címke | Leírás
+    Címke | Description
     ----- | -----------
     1     | M 3x4 gomb – Head csavarok
     2     | Alváz-diák
@@ -118,7 +117,7 @@ A 19 hüvelykes rack kabinet használva a csatlakoztatási sínek készlete is e
    
     **Külső sín szerelvények csatlakoztatása a rackhez**
    
-   | Címke | Leírás |
+   | Címke | Description |
    | --- | --- |
    |   1 |Befogó csavar |
    |   2 |Szögletes furatos elülső állvány utáni csavar |
@@ -144,7 +143,7 @@ Az imént telepített rack Rails használatával hajtsa végre az alábbi lépé
    
     **A karima-sapkák telepítése**
    
-   | Címke | Leírás |
+   | Címke | Description |
    | --- | --- |
    |   1 |Rögzítési csavar |
 
@@ -184,7 +183,7 @@ A redundáns vezérlő feladatátvételének támogatásához csatlakoztassa az 
    
     **Az eszköz hátoldala, amely az adatportokat mutatja**
    
-   | Címke | Leírás |
+   | Címke | Description |
    | --- | --- |
    |   0, 1, 4, 5 |1 GbE hálózati adapterek |
    |   2, 3 |10 GbE hálózati adapter |
@@ -195,11 +194,11 @@ A redundáns vezérlő feladatátvételének támogatásához csatlakoztassa az 
 
     **Az eszköz hálózati kábelezései**
 
-   |Címke | Leírás |
+   |Címke | Description |
    |----- | ----------- |
    | A    | Helyi Internet-hozzáféréssel rendelkező LAN |
    | B    | Vezérlő 0 |
-   | C    | PCM 0 |
+   | C#    | PCM 0 |
    | D    | Vezérlő 1 |
    | E    | PCM 1 |
    | F, G | Hosts |

@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 4e4081ecca4714c713d105d363a83a4f96a0d3fc
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84697843"
 ---
 # <a name="http-api-reference"></a>HTTP API-referenciák
@@ -18,7 +17,7 @@ Az Durable Functions-bővítmény olyan beépített HTTP API-kat tesz elérhető
 
 A bővítmény által megvalósított összes HTTP API-nak a következő paramétereket kell megadni. Az összes paraméter adattípusa `string` .
 
-| Paraméter        | Paraméter típusa  | Leírás |
+| Paraméter        | Paraméter típusa  | Description |
 |------------------|-----------------|-------------|
 | **`taskHub`**    | Lekérdezési sztring    | A [feladat hub](durable-functions-task-hubs.md)neve. Ha nincs megadva, a rendszer feltételezi, hogy az aktuális Function-alkalmazás feladatának hub-neve. |
 | **`connection`** | Lekérdezési sztring    | A Storage-fiókhoz tartozó kapcsolatok karakterláncának **neve** . Ha nincs megadva, a rendszer a Function alkalmazás alapértelmezett kapcsolatok sztringjét feltételezi. |
@@ -54,7 +53,7 @@ POST /runtime/webhooks/durabletask/orchestrators/{functionName}/{instanceId?}
 
 Az API-hoz tartozó kérelmek paraméterei közé tartozik a korábban említett alapértelmezett készlet, valamint a következő egyedi paraméterek:
 
-| Mező              | Paraméter típusa  | Leírás |
+| Mező              | Paraméter típusa  | Description |
 |--------------------|-----------------|-------------|
 | **`functionName`** | URL-cím             | Az elindítani kívánt Orchestrator-függvény neve. |
 | **`instanceId`**   | URL-cím             | Nem kötelező megadni. A koordináló példány azonosítója. Ha nincs megadva, a Orchestrator függvény véletlenszerűen kiválasztott AZONOSÍTÓJÚ példánnyal fog kezdődni. |
@@ -82,7 +81,7 @@ Content-Length: 83
 
 A **HTTP 202** -esetek válasza egy JSON-objektum, amely a következő mezőket tartalmazhatja:
 
-| Mező                       | Leírás                          |
+| Mező                       | Description                          |
 |-----------------------------|--------------------------------------|
 | **`id`**                    |A koordináló példány azonosítója. |
 | **`statusQueryGetUri`**     |A koordináló példány állapotának URL-címe |
@@ -144,7 +143,7 @@ GET /runtime/webhooks/durabletask/instances/{instanceId}
 
 Az API-hoz tartozó kérelmek paraméterei közé tartozik a korábban említett alapértelmezett készlet, valamint a következő egyedi paraméterek:
 
-| Mező                   | Paraméter típusa  | Leírás |
+| Mező                   | Paraméter típusa  | Description |
 |-------------------------|-----------------|-------------|
 | **`instanceId`**        | URL-cím             | A koordináló példány azonosítója. |
 | **`showInput`**         | Lekérdezési sztring    | Nem kötelező megadni. Ha a értékre `false` van állítva, a függvény bemenete nem fog szerepelni a válasz adattartalomban.|
@@ -272,7 +271,7 @@ GET /runtime/webhooks/durableTask/instances?
 
 Az API-hoz tartozó kérelmek paraméterei közé tartozik a korábban említett alapértelmezett készlet, valamint a következő egyedi paraméterek:
 
-| Mező                   | Paraméter típusa  | Leírás |
+| Mező                   | Paraméter típusa  | Description |
 |-------------------------|-----------------|-------------|
 | **`instanceId`**        | URL-cím             | A koordináló példány azonosítója. |
 | **`showInput`**         | Lekérdezési sztring    | Nem kötelező megadni. Ha a értékre `false` van állítva, a függvény bemenete nem fog szerepelni a válasz adattartalomban.|
@@ -370,7 +369,7 @@ DELETE /runtime/webhooks/durabletask/instances/{instanceId}
 
 Az API-hoz tartozó kérelmek paraméterei közé tartozik a korábban említett alapértelmezett készlet, valamint a következő egyedi paraméterek:
 
-| Mező             | Paraméter típusa  | Leírás |
+| Mező             | Paraméter típusa  | Description |
 |-------------------|-----------------|-------------|
 | **`instanceId`**  | URL-cím             | A koordináló példány azonosítója. |
 
@@ -383,7 +382,7 @@ A következő HTTP-állapotkód értékei adhatók vissza.
 
 A **HTTP 200** eset válaszának tartalma egy JSON-objektum, amely a következő mezővel rendelkezik:
 
-| Mező                  | Adattípus | Leírás |
+| Mező                  | Adattípus | Description |
 |------------------------|-----------|-------------|
 | **`instancesDeleted`** | egész szám   | A példányok száma törölve. Az Egypéldányos eset esetében ennek az értéknek mindig a következőnek kell lennie: `1` . |
 
@@ -427,7 +426,7 @@ DELETE /runtime/webhooks/durabletask/instances
 
 Az API-hoz tartozó kérelmek paraméterei közé tartozik a korábban említett alapértelmezett készlet, valamint a következő egyedi paraméterek:
 
-| Mező                 | Paraméter típusa  | Leírás |
+| Mező                 | Paraméter típusa  | Description |
 |-----------------------|-----------------|-------------|
 | **`createdTimeFrom`** | Lekérdezési sztring    | A megadott ISO8601 időbélyegzőn vagy azt követően létrehozott kiürített példányok listájának szűrése.|
 | **`createdTimeTo`**   | Lekérdezési sztring    | Nem kötelező megadni. Ha meg van adva, szűri az adott ISO8601 időbélyegzőn vagy azt megelőzően létrehozott kiürített példányok listáját.|
@@ -445,7 +444,7 @@ A következő HTTP-állapotkód értékei adhatók vissza.
 
 A **HTTP 200** eset válaszának tartalma egy JSON-objektum, amely a következő mezővel rendelkezik:
 
-| Mező                   | Adattípus | Leírás |
+| Mező                   | Adattípus | Description |
 |-------------------------|-----------|-------------|
 | **`instancesDeleted`**  | egész szám   | A példányok száma törölve. |
 
@@ -483,7 +482,7 @@ POST /runtime/webhooks/durabletask/instances/{instanceId}/raiseEvent/{eventName}
 
 Az API-hoz tartozó kérelmek paraméterei közé tartozik a korábban említett alapértelmezett készlet, valamint a következő egyedi paraméterek:
 
-| Mező             | Paraméter típusa  | Leírás |
+| Mező             | Paraméter típusa  | Description |
 |-------------------|-----------------|-------------|
 | **`instanceId`**  | URL-cím             | A koordináló példány azonosítója. |
 | **`eventName`**   | URL-cím             | Annak az eseménynek a neve, amelyre a cél-előkészítési példány várakozik. |
@@ -538,7 +537,7 @@ POST /runtime/webhooks/durabletask/instances/{instanceId}/terminate
 
 Az API-hoz tartozó kérelmek paraméterei közé tartozik a korábban említett alapértelmezett készlet, valamint a következő egyedi paraméter.
 
-| Mező             | Paraméter típusa  | Leírás |
+| Mező             | Paraméter típusa  | Description |
 |-------------------|-----------------|-------------|
 | **`instanceId`**  | URL-cím             | A koordináló példány azonosítója. |
 | **`reason`**      | Lekérdezési sztring    | Választható. Az előkészítési példány megszakításának oka. |
@@ -587,7 +586,7 @@ POST /runtime/webhooks/durabletask/instances/{instanceId}/rewind
 
 Az API-hoz tartozó kérelmek paraméterei közé tartozik a korábban említett alapértelmezett készlet, valamint a következő egyedi paraméter.
 
-| Mező             | Paraméter típusa  | Leírás |
+| Mező             | Paraméter típusa  | Description |
 |-------------------|-----------------|-------------|
 | **`instanceId`**  | URL-cím             | A koordináló példány azonosítója. |
 | **`reason`**      | Lekérdezési sztring    | Választható. Az előkészítési példány újratekercselésének oka. |
@@ -629,7 +628,7 @@ POST /runtime/webhooks/durabletask/entities/{entityName}/{entityKey}
 
 Az API-hoz tartozó kérelmek paraméterei közé tartozik a korábban említett alapértelmezett készlet, valamint a következő egyedi paraméterek:
 
-| Mező             | Paraméter típusa  | Leírás |
+| Mező             | Paraméter típusa  | Description |
 |-------------------|-----------------|-------------|
 | **`entityName`**  | URL-cím             | Az entitás neve (típusa). |
 | **`entityKey`**   | URL-cím             | Az entitás kulcsa (egyedi azonosítója). |
@@ -718,7 +717,7 @@ GET /runtime/webhooks/durabletask/entities/{entityName}
 
 Az API-hoz tartozó kérelmek paraméterei közé tartozik a korábban említett alapértelmezett készlet, valamint a következő egyedi paraméterek:
 
-| Mező                       | Paraméter típusa  | Leírás |
+| Mező                       | Paraméter típusa  | Description |
 |-----------------------------|-----------------|-------------|
 | **`entityName`**            | URL-cím             | Választható. Ha meg van adva, az entitás neve alapján szűri a visszaadott entitások listáját (kis-és nagybetűk megkülönböztetése). |
 | **`fetchState`**            | Lekérdezési sztring    | Nem kötelező megadni. Ha a értékre `true` van állítva, az entitás állapota szerepelni fog a válasz adattartalmaban. |

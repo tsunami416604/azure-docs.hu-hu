@@ -8,10 +8,9 @@ ms.topic: how-to
 ms.date: 7/13/2019
 ms.author: rohink
 ms.openlocfilehash: f4eb26678dee161451ff10144c2eaa3321ecc011
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84693112"
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>Az Azure-szolgáltatás egyéni tartományi beállításainak megadása a Azure DNS használatával
@@ -38,7 +37,7 @@ Jegyezze fel az aktuális URL-címet az **Egyéni tartományok** panelen, ez a c
 
 Navigáljon a DNS-zónához, és kattintson a **+ rekordazonosító**elemre. Adja meg a következő információkat a **rekordazonosító hozzáadása** panelen, és kattintson **az OK** gombra a létrehozásához.
 
-|Tulajdonság  |Érték  |Leírás  |
+|Tulajdonság  |Érték  |Description  |
 |---------|---------|---------|
 |Name     | myfunctionapp        | Ez az érték a tartománynév címkével együtt az Egyéni tartománynév teljes tartománynevét adja meg.        |
 |Típus     | CNAME        | CNAME rekord használata alias használatával.        |
@@ -63,7 +62,7 @@ Navigáljon a **hálózat**  >  **nyilvános IP-címéhez**, válassza ki a nyil
 Navigáljon a DNS-zónához, és kattintson a **+ rekordazonosító**elemre. Adja meg a következő információkat a **rekordazonosító hozzáadása** panelen, és kattintson **az OK** gombra a létrehozásához.
 
 
-|Tulajdonság  |Érték  |Leírás  |
+|Tulajdonság  |Érték  |Description  |
 |---------|---------|---------|
 |Name     | mywebserver        | Ez az érték a tartománynév címkével együtt az Egyéni tartománynév teljes tartománynevét adja meg.        |
 |Típus     | A        | Használjon egy rekordot, mert az erőforrás egy IP-cím.        |
@@ -90,7 +89,7 @@ Jegyezze fel az aktuális URL-címet az **Egyéni tartományok** panelen, ez a c
 Navigáljon a DNS-zónához, és kattintson a **+ rekordazonosító**elemre. Adja meg a következő információkat a **rekordazonosító hozzáadása** panelen, és kattintson **az OK** gombra a létrehozásához.
 
 
-|Tulajdonság  |Érték  |Leírás  |
+|Tulajdonság  |Érték  |Description  |
 |---------|---------|---------|
 |Name     | mywebserver        | Ez az érték a tartománynév címkével együtt az Egyéni tartománynév teljes tartománynevét adja meg.        |
 |Típus     | CNAME        | CNAME rekord használata alias használatával. Ha az erőforrás IP-címet használt, a rendszer egy rekordot fog használni.        |
@@ -126,7 +125,7 @@ Navigáljon a **Storage**  >  **Storage-fiókok**elemre, válassza ki a Storage-
 Navigáljon a DNS-zónához, és kattintson a **+ rekordazonosító**elemre. Adja meg a következő információkat a **rekordazonosító hozzáadása** panelen, és kattintson **az OK** gombra a létrehozásához.
 
 
-|Tulajdonság  |Érték  |Leírás  |
+|Tulajdonság  |Érték  |Description  |
 |---------|---------|---------|
 |Name     | asverify. mystorageaccount        | Ez az érték a tartománynév címkével együtt az Egyéni tartománynév teljes tartománynevét adja meg.        |
 |Típus     | CNAME        | CNAME rekord használata alias használatával.        |
@@ -154,7 +153,7 @@ Válassza ki azt a végpontot, amellyel dolgozik, és kattintson az **+ egyéni 
 
 Navigáljon a DNS-zónához, és kattintson a **+ rekordazonosító**elemre. Adja meg a következő információkat a **rekordazonosító hozzáadása** panelen, és kattintson **az OK** gombra a létrehozásához.
 
-|Tulajdonság  |Érték  |Leírás  |
+|Tulajdonság  |Érték  |Description  |
 |---------|---------|---------|
 |Name     | cdnverify. mycdnendpoint        | Ez az érték a tartománynév címkével együtt az Egyéni tartománynév teljes tartománynevét adja meg.        |
 |Típus     | CNAME        | CNAME rekord használata alias használatával.        |
