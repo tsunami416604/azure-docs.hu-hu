@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Kinect, Azure, szenzor, SDK, mélység, RGB, rekord, lejátszás, Matroska, MKV
 ms.openlocfilehash: fe403f314c1df415537d090433f34627eb1249e7
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85277271"
 ---
 # <a name="the-azure-kinect-playback-api"></a>Az Azure Kinect lejátszási API-ját
@@ -140,18 +140,18 @@ Ha a címke nem létezik, a rendszer azt feltételezi, hogy az alapértelmezett 
 | `K4A_DEPTH_MODE`             | KIKAPCSOLÁSA              | `depth_mode` / `depth_track_enabled` | Lehetséges értékek: "OFF", "NFOV_UNBINNED", "PASSIVE_IR" stb.                                                |
 | `K4A_IR_MODE`                | KIKAPCSOLÁSA              | `depth_mode` / `ir_track_enabled`    | Lehetséges értékek: "OFF", "ACTIVE", "passzív"                                                                    |
 | `K4A_IMU_MODE`               | KIKAPCSOLÁSA              | `imu_track_enabled`                  | Lehetséges értékek: "ON", "OFF"                                                                                   |
-| `K4A_CALIBRATION_FILE`       | "calibration.jsbekapcsolva" | N/A                                  | Lásd[`k4a_device_get_raw_calibration()`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga8c4e46642cee3115aeb0b33e2b43b24f.html#ga8c4e46642cee3115aeb0b33e2b43b24f) |
+| `K4A_CALIBRATION_FILE`       | "calibration.jsbekapcsolva" | N.A.                                  | Lásd[`k4a_device_get_raw_calibration()`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga8c4e46642cee3115aeb0b33e2b43b24f.html#ga8c4e46642cee3115aeb0b33e2b43b24f) |
 | `K4A_DEPTH_DELAY_NS`         | 0                | `depth_delay_off_color_usec`         | A nanoszekundumban-ben tárolt érték (API) másodperceket biztosít.                                                        |
 | `K4A_WIRED_SYNC_MODE`        | ÖNÁLLÓ       | `wired_sync_mode`                    | Lehetséges értékek: "STANDALONE", "MASTER", "ALÁRENDELT"                                                         |
 | `K4A_SUBORDINATE_DELAY_NS`   | 0                | `subordinate_delay_off_master_usec`  | A nanoszekundumban-ben tárolt érték (API) másodperceket biztosít.                                                        |
-| `K4A_COLOR_FIRMWARE_VERSION` | ""                 | N/A                                  | Eszköz színének belső vezérlőprogram-verziója, például "1. x. xx"                                                            |
-| `K4A_DEPTH_FIRMWARE_VERSION` | ""                 | N/A                                  | Az eszköz részletes belső vezérlőprogram-verziója, például "1. x. xx"                                                            |
-| `K4A_DEVICE_SERIAL_NUMBER`   | ""                 | N/A                                  | Eszköz sorozatszámának rögzítése                                                                                 |
+| `K4A_COLOR_FIRMWARE_VERSION` | ""                 | N.A.                                  | Eszköz színének belső vezérlőprogram-verziója, például "1. x. xx"                                                            |
+| `K4A_DEPTH_FIRMWARE_VERSION` | ""                 | N.A.                                  | Az eszköz részletes belső vezérlőprogram-verziója, például "1. x. xx"                                                            |
+| `K4A_DEVICE_SERIAL_NUMBER`   | ""                 | N.A.                                  | Eszköz sorozatszámának rögzítése                                                                                 |
 | `K4A_START_OFFSET_NS`        | 0                | `start_timestamp_offset_usec`        | Lásd alább az [időbélyeg-szinkronizálást](record-playback-api.md#timestamp-synchronization) .                       |
-| `K4A_COLOR_TRACK`            | Nincs               | N/A                                  | Lásd: a [fájl formátumának rögzítése – számok azonosítása](record-file-format.md#identifying-tracks).                     |
-| `K4A_DEPTH_TRACK`            | Nincs               | N/A                                  | Lásd: a [fájl formátumának rögzítése – számok azonosítása](record-file-format.md#identifying-tracks).                     |
-| `K4A_IR_TRACK`               | Nincs               | N/A                                  | Lásd: a [fájl formátumának rögzítése – számok azonosítása](record-file-format.md#identifying-tracks).                     |
-| `K4A_IMU_TRACK`              | Nincs               | N/A                                  | Lásd: a [fájl formátumának rögzítése – számok azonosítása](record-file-format.md#identifying-tracks).                     |
+| `K4A_COLOR_TRACK`            | None               | N.A.                                  | Lásd: a [fájl formátumának rögzítése – számok azonosítása](record-file-format.md#identifying-tracks).                     |
+| `K4A_DEPTH_TRACK`            | None               | N.A.                                  | Lásd: a [fájl formátumának rögzítése – számok azonosítása](record-file-format.md#identifying-tracks).                     |
+| `K4A_IR_TRACK`               | None               | N.A.                                  | Lásd: a [fájl formátumának rögzítése – számok azonosítása](record-file-format.md#identifying-tracks).                     |
+| `K4A_IMU_TRACK`              | None               | N.A.                                  | Lásd: a [fájl formátumának rögzítése – számok azonosítása](record-file-format.md#identifying-tracks).                     |
 
 ## <a name="timestamp-synchronization"></a>Időbélyeg-szinkronizálás
 

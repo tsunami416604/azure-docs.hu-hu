@@ -8,10 +8,10 @@ ms.date: 07/22/2019
 ms.author: sngun
 ms.reviewer: sngun
 ms.openlocfilehash: 5ce805fb302264a0c3907c006983f9d939a2908e
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85262072"
 ---
 # <a name="migrate-data-to-azure-cosmos-db-sql-api-account-using-striim"></a>Az adatáttelepítés Azure Cosmos DB SQL API-fiókba a Striim használatával
@@ -40,7 +40,7 @@ Ez a cikk bemutatja, hogyan telepítheti át az Striim egy **Oracle-adatbázisb�
 
 1. A **Striim-fürt beállításai** ablaktáblán válassza ki a Striim-telepítés típusát és a virtuális gép méretét.
 
-   |Beállítás | Érték | Leírás |
+   |Beállítás | Érték | Description |
    | ---| ---| ---|
    |Striim központi telepítési típus |Különálló | A Striim **önálló** vagy **Fürtbeli** központi telepítési típusokban is futtathatók. Az önálló mód a Striim-kiszolgálót egyetlen virtuális gépre telepíti, és az adatmennyiségtől függően kiválaszthatja a virtuális gépek méretét. A fürt mód két vagy több virtuális gépre telepíti a Striim-kiszolgálót a kiválasztott mérettel. A több mint 2 csomóponttal rendelkező fürt-környezetek automatikus magas rendelkezésre állást és feladatátvételt biztosítanak.</br></br> Ebben az oktatóanyagban a különálló lehetőséget választhatja. Használja az alapértelmezett "Standard_F4s" méretű virtuális gépet.  | 
    | A Striim-fürt neve|    <Striim_cluster_Name>|  A Striim-fürt neve.|

@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 06/10/2020
 ms.author: anfeldma
 ms.openlocfilehash: e6f63807eeea32a7cce7e028dab5e16114bf9643
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85261562"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Az Azure Cosmos DB konzisztenciaszintjeinek kezelése
@@ -23,7 +23,7 @@ Ez a cikk azt ismerteti, hogyan kezelhető a konzisztencia szintjei Azure Cosmos
 
 Az [alapértelmezett konzisztencia-szint](consistency-levels.md) az ügyfelek által alapértelmezés szerint használt konzisztencia-szint.
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portalra](#tab/portal)
 
 Ha szeretné megtekinteni vagy módosítani az alapértelmezett konzisztencia-szintet, jelentkezzen be a Azure Portalba. Keresse meg az Azure Cosmos-fiókját, és nyissa meg az **alapértelmezett konzisztencia** -ablaktáblát. Válassza ki az új alapértelmezettként használni kívánt konzisztencia szintjét, majd kattintson a **Mentés**gombra. A Azure Portal a különböző konzisztencia-szintek vizualizációját is megjeleníti zenei megjegyzésekkel. 
 

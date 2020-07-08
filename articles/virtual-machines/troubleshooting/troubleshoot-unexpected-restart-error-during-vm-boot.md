@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 06/22/2020
 ms.author: v-mibufo
 ms.openlocfilehash: daefaca45adb061295928c64b6a0e328a12d8a3e
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85269061"
 ---
 # <a name="os-start-up--computer-restarted-unexpectedly-or-encountered-an-unexpected-error"></a>Operációs rendszer indítása – a számítógép váratlanul újraindult, vagy váratlan hibát észlelt.
@@ -37,7 +37,7 @@ Ha [rendszerindítási diagnosztika](https://docs.microsoft.com/azure/virtual-ma
 
 ## <a name="cause"></a>Ok
 
-A gép egy [általánosított rendszerkép](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation)kezdeti indítását kísérli meg, de a feldolgozás alatt álló egyéni válaszfájl (unattend.xml) miatt problémát tapasztal. Az egyéni válaszfájlok nem támogatottak az Azure-ban. 
+A gép egy [általánosított rendszerkép](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation)kezdeti indítását kísérli meg, de a feldolgozás alatt álló egyéni válaszfájl (unattend.xml) miatt problémát tapasztal. Az egyéni válaszfájlok használata nem támogatott az Azure-ban. 
 
 A válaszfájl egy speciális XML-fájl, amely a Windows Server operációs rendszer telepítése során automatizálni kívánt konfigurációs beállítások definícióit és értékeit tartalmazza. A konfigurációs beállítások közé tartozik a lemezek particionálásával kapcsolatos utasítások, a telepítendő Windows-rendszerkép, az alkalmazandó termékkulcs és a futtatni kívánt egyéb parancsok.
 

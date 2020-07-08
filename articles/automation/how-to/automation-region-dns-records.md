@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 06/22/2020
 ms.topic: conceptual
 ms.openlocfilehash: 44d70db195850b3f87806c69755095b521078b2e
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85298310"
 ---
 # <a name="dns-records-for-azure-regions-used-by-azure-automation"></a>Az Azure Automation által használt Azure-régiók DNS-rekordjai

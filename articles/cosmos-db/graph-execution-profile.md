@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 03/27/2019
 ms.author: lbosq
 ms.openlocfilehash: faacaf6700b14ba068d5cf0a48ea851f562e2302
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85261800"
 ---
 # <a name="how-to-use-the-execution-profile-step-to-evaluate-your-gremlin-queries"></a>Gremlin-lekérdezések kiértékelése a végrehajtási profil lépés segítségével
@@ -155,7 +155,7 @@ A executionProfile () függvény válasza a JSON-objektumok hierarchiáját fogj
     - `storeOps.count`: A tárolási művelet által visszaadott eredmények számát jelöli.
     - `storeOps.size`: Egy adott tárolási művelet eredményének mérete bájtban kifejezve.
 
-Cosmos DB Gremlin Runtime operátor|Leírás
+Cosmos DB Gremlin Runtime operátor|Description
 ---|---
 `GetVertices`| Ez a lépés egy predikátum-készletet szerez be az adatmegőrzési rétegből. 
 `GetEdges`| Ez a lépés a csúcspontok egy halmazához szomszédos éleket szerzi be. Ez a lépés egy vagy több tárolási művelethez vezethet.

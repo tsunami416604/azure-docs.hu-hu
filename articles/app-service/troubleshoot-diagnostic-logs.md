@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 09/17/2019
 ms.custom: seodec18
 ms.openlocfilehash: 8b415c9582af2303451a8076307f07ee92ac08d0
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85261341"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Diagnosztikai naplózás engedélyezése a Azure App Serviceban lévő alkalmazásokhoz
@@ -23,7 +23,7 @@ Ez a cikk a [Azure Portal](https://portal.azure.com) és az Azure CLI-t használ
 >
 >
 
-|Típus|Platform|Hely|Leírás|
+|Típus|Platform|Hely|Description|
 |-|-|-|-|
 | Alkalmazásnaplózás | Windows, Linux | App Service fájlrendszer és/vagy Azure Storage-Blobok | Az alkalmazás kódjában létrehozott üzenetek naplózása. Az üzeneteket a választott webes keretrendszer hozza létre, vagy az alkalmazás kódjából közvetlenül a nyelv szabványos naplózási mintájának használatával. Minden üzenethez a következő kategóriák egyike van rendelve: **kritikus**, **hiba**, **Figyelmeztetés**, **információ**, **hibakeresés**és **nyomkövetés**. Kiválaszthatja, hogy milyen részletességgel szeretné a naplózást beállítani a súlyossági szint beállításával az alkalmazások naplózásának engedélyezésekor.|
 | Webkiszolgáló naplózása| Windows | App Service fájlrendszer vagy Azure Storage-Blobok| Nyers HTTP-kérelmekre vonatkozó, a [W3C bővített naplófájl formátuma](/windows/desktop/Http/w3c-logging). Minden naplóbejegyzés olyan adatforrást tartalmaz, mint például a HTTP-metódus, az erőforrás URI-ja, az ügyfél IP-címe, az ügyfél portja, a felhasználói ügynök, a válasz kódja stb. |
@@ -62,7 +62,7 @@ Válassza ki a **szintet**, vagy a naplózni kívánt részletességi szintet. A
 
 | Szint | Belefoglalt kategóriák |
 |-|-|
-|**Letiltva** | Nincs |
+|**Letiltva** | None |
 |**Hiba** | Hiba, kritikus |
 |**Figyelmeztetés** | Figyelmeztetés, hiba, kritikus|
 |**Információ** | Információ, figyelmeztetés, hiba, kritikus|
@@ -166,7 +166,7 @@ A Linux/Container alkalmazások esetében a ZIP-fájl konzol kimeneti naplókat 
 
 Windows-alkalmazások esetén a ZIP-fájl tartalmazza a *D:\Home\LogFiles* könyvtárának tartalmát a app Service fájlrendszerben. A következő szerkezettel rendelkezik:
 
-| Napló típusa | Címtár | Leírás |
+| Napló típusa | Címtár | Description |
 |-|-|-|
 | **Alkalmazás-naplók** |*/LogFiles/Application/* | Egy vagy több szövegfájlt tartalmaz. A naplóüzenetek formátuma a használt naplózási szolgáltatótól függ. |
 | **Sikertelen kérelmek nyomkövetése** | */LogFiles/W3SVC#########/* | XML-fájlokat és XSL-fájlt tartalmaz. A formázott XML-fájlok megtekinthetők a böngészőben. |
@@ -185,7 +185,7 @@ Az új [Azure monitor integrációval](https://aka.ms/appsvcblog-azmon) [diagnos
 
 A következő táblázat a támogatott naplózási típusokat és leírásokat tartalmazza: 
 
-| Napló típusa | Windows-támogatás | Linux (Docker) támogatása | Leírás |
+| Napló típusa | Windows-támogatás | Linux (Docker) támogatása | Description |
 |-|-|-|
 | AppServiceConsoleLogs | TBA | Yes | Standard kimenet és standard hiba |
 | AppServiceHTTPLogs | Igen | Igen | Webkiszolgáló-naplók |

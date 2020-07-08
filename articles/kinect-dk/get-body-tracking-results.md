@@ -9,13 +9,13 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Kinect, Azure, szenzor, SDK, szövegtörzs, nyomon követés, közös
 ms.openlocfilehash: 1b62022242144d5db51455a32ac04b67c3e5dd7a
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85277560"
 ---
-# <a name="get-body-tracking-results"></a>Törzs nyomon követési eredményeinek beolvasása
+# <a name="get-body-tracking-results"></a>Testkövetési eredmények lekérése
 
 A Body Tracking SDK egy szövegtörzs-követési objektumot használ az Azure Kinect DK rögzítéséhez és a törzs nyomon követési eredményeinek létrehozásához. Emellett a Szemléző globális állapotát, a feldolgozási várólistákat és a kimeneti várólistát is fenntartja. A Body Tracker használatának három lépése van:
 
@@ -131,4 +131,4 @@ k4abt_frame_release(body_frame); // Remember to release the body frame once you 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
->[Adathozzáférés a törzs keretén belül](access-data-body-frame.md)
+>[Adatok elérése a testkeretben](access-data-body-frame.md)

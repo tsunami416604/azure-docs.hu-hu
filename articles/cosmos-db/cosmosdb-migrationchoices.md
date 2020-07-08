@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/23/2019
 ms.openlocfilehash: a1b8ddba84920d8d3b6871ab404081d3b24c72e1
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85261970"
 ---
 # <a name="options-to-migrate-your-on-premises-or-cloud-data-to-azure-cosmos-db"></a>A helyszíni vagy a Felhőbeli adatátviteli beállítások Azure Cosmos DB
@@ -31,7 +31,7 @@ A következő tényezők határozzák meg az áttelepítési eszköz kiválaszt�
 * **Várható áttelepítési időtartam**: a Migrálás úgy konfigurálható, hogy lassú, növekményes ütemben történjen, amely kevesebb átviteli sebességet használ, vagy felhasználja a cél Azure Cosmos db tárolóban kiosztott teljes átviteli sebességet, és az áttelepítést kevesebb idő alatt végrehajtja.
 
 ## <a name="azure-cosmos-db-sql-api"></a>Azure Cosmos DB SQL API
-|**Áttelepítés típusa**|**Megoldás**|**Megfontolandó szempontok**|
+|**Áttelepítés típusa**|**Megoldás**|**Megfontolások**|
 |---------|---------|---------|
 |Offline|[Adatáttelepítési eszköz](https://docs.microsoft.com/azure/cosmos-db/import-data)|&bull;Egyszerűen beállítható és támogatott több forrás <br/>&bull;Nagyméretű adathalmazokhoz nem alkalmas|
 |Offline|[Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-cosmos-db)|&bull;Egyszerűen beállítható és támogatott több forrás <br/>&bull;A Azure Cosmos DB tömeges végrehajtó függvénytár használatát teszi lehetővé <br/>&bull;Nagyméretű adatkészletekhez alkalmas <br/>&bull;Ellenőrzőpontok hiánya – ez azt jelenti, hogy ha probléma merül fel az áttelepítés során, újra kell indítania a teljes áttelepítési folyamatot.<br/>&bull;A kézbesítetlen levelek várólistájának hiánya – ez azt jelenti, hogy néhány hibás fájl leállíthatja a teljes áttelepítési folyamatot.|
@@ -42,7 +42,7 @@ A következő tényezők határozzák meg az áttelepítési eszköz kiválaszt�
 |Online|[Striim](https://docs.microsoft.com/azure/cosmos-db/cosmosdb-sql-api-migrate-data-striim)|&bull;Sokféle forrással működik, például Oracle, DB2, SQL Server <br/>&bull;Egyszerűen készíthet ETL-folyamatokat, és irányítópultot biztosít a figyeléshez <br/>&bull;Nagyobb adatkészletek támogatása <br/>&bull;Mivel ez egy harmadik féltől származó eszköz, azt a piactéren kell megvásárolni, és telepíteni kell a felhasználó környezetében.|
 
 ## <a name="azure-cosmos-db-mongo-api"></a>Azure Cosmos DB Mongo API
-|**Áttelepítés típusa**|**Megoldás**|**Megfontolandó szempontok**|
+|**Áttelepítés típusa**|**Megoldás**|**Megfontolások**|
 |---------|---------|---------|
 |Offline|[Adatáttelepítési eszköz](https://docs.microsoft.com/azure/cosmos-db/import-data)|&bull;Egyszerűen beállítható és támogatott több forrás <br/>&bull;Nagyméretű adathalmazokhoz nem alkalmas|
 |Offline|[Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-cosmos-db)|&bull;Egyszerűen beállítható és támogatott több forrás <br/>&bull;A Azure Cosmos DB tömeges végrehajtó függvénytár használatát teszi lehetővé <br/>&bull;Nagyméretű adatkészletekhez alkalmas <br/>&bull;Az ellenőrzőpontok hiánya azt jelenti, hogy az áttelepítés során esetlegesen felmerülő problémákhoz a teljes áttelepítési folyamat újraindítása szükséges.<br/>&bull;A kézbesítetlen levelek várólistájának hiánya azt jelenti, hogy néhány hibás fájl nem tudja leállítani a teljes áttelepítési folyamatot <br/>&bull;Egyéni kóddal kell rendelkeznie bizonyos adatforrások olvasási teljesítményének növeléséhez|
@@ -50,7 +50,7 @@ A következő tényezők határozzák meg az áttelepítési eszköz kiválaszt�
 |Online|[Azure Database Migration Service](https://docs.microsoft.com/azure/dms/tutorial-mongodb-cosmos-db-online)|&bull;A Azure Cosmos DB tömeges végrehajtó függvénytár használatát teszi lehetővé <br/>&bull;Nagyméretű adatkészletekhez alkalmas, és gondoskodik az élő módosítások replikálásáról <br/>&bull;Csak más MongoDB-forrásokkal működik|
 
 ## <a name="azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API
-|**Áttelepítés típusa**|**Megoldás**|**Megfontolandó szempontok**|
+|**Áttelepítés típusa**|**Megoldás**|**Megfontolások**|
 |---------|---------|---------|
 |Offline|[cqlsh MÁSOLÁSi parancs](https://docs.microsoft.com/azure/cosmos-db/cassandra-import-data#migrate-data-using-cqlsh-copy-command)|&bull;Egyszerűen beállítható <br/>&bull;Nagyméretű adathalmazokhoz nem alkalmas <br/>&bull;Csak akkor működik, ha a forrás egy Cassandra-tábla|
 |Offline|[Táblázat másolása a Sparktal](https://docs.microsoft.com/azure/cosmos-db/cassandra-import-data#migrate-data-using-spark) |&bull;A Spark-funkciók használatával integrálással az átalakítást és a betöltést <br/>&bull;Konfigurálnia kell egy egyéni újrapróbálkozási szabályzatot a szabályozások kezeléséhez|

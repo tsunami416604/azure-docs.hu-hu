@@ -9,13 +9,13 @@ ms.date: 06/26/2019
 ms.topic: how-to
 keywords: törzs, keret, Azure, Kinect, Body, Tracking, tippek
 ms.openlocfilehash: be44f59cb84e99129bf526575293eee69ca64598
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85277566"
 ---
-# <a name="access-data-in-body-frame"></a>Adathozzáférés a törzs keretén belül
+# <a name="access-data-in-body-frame"></a>Adatok elérése a testkeretben
 
 Ez a cikk a törzs keretén belül található és az adatok eléréséhez szükséges függvényeket ismerteti.
 

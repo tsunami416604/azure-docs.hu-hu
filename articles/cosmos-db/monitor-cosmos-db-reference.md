@@ -10,10 +10,10 @@ ms.author: bwren
 ms.custom: subject-monitoring
 ms.subservice: logs
 ms.openlocfilehash: 446d876033b09728ebcbec43c6300884a5c29cd3
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85262735"
 ---
 # <a name="azure-cosmos-db-monitoring-data-reference"></a>Azure Cosmos DB-adatmonitorozási referencia
@@ -23,7 +23,7 @@ Ez a cikk referenciaként szolgál az Azure Cosmos DB teljesítményének és re
 ## <a name="resource-logs"></a>Erőforrásnaplók
 A következő táblázat a Azure Monitor-naplókba vagy az Azure Storage-ba gyűjtött Azure Cosmos DB erőforrás-naplók tulajdonságait sorolja fel. Azure Monitor naplókban a rendszer a **AzureDiagnostics** táblában gyűjti össze a *MICROSOFT.DOCUMENTDB* **ResourceProvider** értékével. 
 
-| Azure Storage-mező vagy-tulajdonság | Azure Monitor naplók tulajdonsága | Leírás |
+| Azure Storage-mező vagy-tulajdonság | Azure Monitor naplók tulajdonsága | Description |
 | --- | --- | --- |
 | **idő** | **TimeGenerated** | A művelet bekövetkeztekor megadott dátum és idő (UTC). |
 | **resourceId** | **Erőforrás** | Az Azure Cosmos DB fiók, amely számára engedélyezve vannak a naplók.|
@@ -53,7 +53,7 @@ Az összes Azure Monitor támogatási metrikák (beleértve a CosmosDB) listáj�
 
 #### <a name="request-metrics"></a>Kérelmek metrikái
             
-|Metrika (metrika megjelenítendő neve)|Egység (aggregáció típusa) |Leírás|Dimenziók| Időbeli részletesség| Örökölt metrika leképezése | Használat |
+|Metrika (metrika megjelenítendő neve)|Egység (aggregáció típusa) |Description|Dimenziók| Időbeli részletesség| Örökölt metrika leképezése | Használat |
 |---|---|---|---| ---| ---| ---|
 | TotalRequests (összes kérelem) | Darabszám (darabszám) | Benyújtott kérelmek száma| DatabaseName, CollectionName, régió, StatusCode| Mind | TotalRequests, http-2xx, http-3xx, http 400, HTTP 401, belső kiszolgálóhiba, szolgáltatás nem érhető el, szabályozott kérelmek, átlagos kérelmek másodpercenként | Az állapotkód, a tároló percenkénti részletességgel történő figyelésére használatos. Az átlagos kérelmek másodpercenkénti lekéréséhez használja a Count összesítést percek alatt, és ossza meg a 60-as számmal. |
 | MetadataRequests (metaadat-kérelmek) |Darabszám (darabszám) | A metaadat-kérelmek száma. Azure Cosmos DB minden fiókhoz rendszermetaadat-tárolót tart fenn, amely lehetővé teszi a gyűjtemények, adatbázisok stb. és azok konfigurációinak számbavételét díjmentesen. | DatabaseName, CollectionName, régió, StatusCode| Mind| |Metaadat-kérelmek miatti szabályozások figyelésére használatos.|
@@ -61,7 +61,7 @@ Az összes Azure Monitor támogatási metrikák (beleértve a CosmosDB) listáj�
 
 #### <a name="request-unit-metrics"></a>Adategység metrikáinak kérése
 
-|Metrika (metrika megjelenítendő neve)|Egység (aggregáció típusa)|Leírás|Dimenziók| Időbeli részletesség| Örökölt metrika leképezése | Használat |
+|Metrika (metrika megjelenítendő neve)|Egység (aggregáció típusa)|Description|Dimenziók| Időbeli részletesség| Örökölt metrika leképezése | Használat |
 |---|---|---|---| ---| ---| ---|
 | MongoRequestCharge (Mongo-kérelem díja) | Darabszám (összesen) |Felhasznált Mongo-kérelmek egységei| DatabaseName, CollectionName, régió, CommandName, ErrorCode| Mind |Mongo-lekérdezési kérelem díja, Mongo frissítési kérelmének díja, Mongo törlési kérelmének díja, Mongo-kérelem díja, Mongo száma kérelmek díja| Egy percen belül figyeli a Mongo-erőforrást.|
 | TotalRequestUnits (összes kérelem egysége)| Darabszám (összesen) | Felhasználható kérési egységek| DatabaseName, CollectionName, régió, StatusCode |Mind| TotalRequestUnits| A teljes RU-használat figyelésére használható percenkénti részletességgel. Ha másodpercenként átlagosan felhasznált RU-t szeretné lekérni, használja a teljes összesítést percenként, és ossza meg a 60-as számmal.|
@@ -69,7 +69,7 @@ Az összes Azure Monitor támogatási metrikák (beleértve a CosmosDB) listáj�
 
 #### <a name="storage-metrics"></a>Tárolási metrikák
 
-|Metrika (metrika megjelenítendő neve)|Egység (aggregáció típusa)|Leírás|Dimenziók| Időbeli részletesség| Örökölt metrika leképezése | Használat |
+|Metrika (metrika megjelenítendő neve)|Egység (aggregáció típusa)|Description|Dimenziók| Időbeli részletesség| Örökölt metrika leképezése | Használat |
 |---|---|---|---| ---| ---| ---|
 | AvailableStorage (rendelkezésre álló tár) |Bájtok (összesen) | Régiónként 5 perces részletességgel jelentett teljes rendelkezésre álló tárterület| DatabaseName, CollectionName, régió| 5 M| Rendelkezésre álló tárhely| A rendelkezésre álló tárolókapacitás (csak a rögzített tárolási gyűjtemények esetében érvényes) figyeléséhez használatos minimális részletességnek 5 percnek kell lennie.| 
 | DataUsage (adathasználat) |Bájtok (összesen) |Régiónként 5 perces részletességgel jelentett teljes adatfelhasználás| DatabaseName, CollectionName, régió| 5 M |Adatméret | A tároló és régió teljes adatfelhasználásának figyelésére szolgál, a minimális részletességnek 5 percnek kell lennie.|
@@ -79,7 +79,7 @@ Az összes Azure Monitor támogatási metrikák (beleértve a CosmosDB) listáj�
 
 #### <a name="latency-metrics"></a>Késési metrikák
 
-|Metrika (metrika megjelenítendő neve)|Egység (aggregáció típusa)|Leírás|Dimenziók| Időbeli részletesség| Használat |
+|Metrika (metrika megjelenítendő neve)|Egység (aggregáció típusa)|Description|Dimenziók| Időbeli részletesség| Használat |
 |---|---|---|---| ---| ---|
 | ReplicationLatency (replikációs késés)| Ezredmásodperc (minimum, maximum, átlag) | P99 replikációs késés a forrás-és a célcsoportok között a Geo-kompatibilis fiókhoz| SourceRegion, TargetRegion| Mind | Egy földrajzilag replikált fiók két régiója közötti P99-replikációs késés figyelésére használatos. |
 | Kiszolgálóoldali késés| Ezredmásodperc (átlagos) | A kiszolgáló által a kérelem feldolgozásához szükséges idő. | CollectionName, ConnectionMode, DatabaseName, OperationType, PublicAPIType, régió | Mind | A kérés késésének figyelésére szolgál a Azure Cosmos DB kiszolgálón. |
@@ -88,14 +88,14 @@ Az összes Azure Monitor támogatási metrikák (beleértve a CosmosDB) listáj�
 
 #### <a name="availability-metrics"></a>Rendelkezésre állási metrikák
 
-|Metrika (metrika megjelenítendő neve) |Egység (aggregáció típusa)|Leírás| Időbeli részletesség| Örökölt metrika leképezése | Használat |
+|Metrika (metrika megjelenítendő neve) |Egység (aggregáció típusa)|Description| Időbeli részletesség| Örökölt metrika leképezése | Használat |
 |---|---|---|---| ---| ---|
 | ServiceAvailability (szolgáltatás rendelkezésre állása)| Százalék (minimum, maximum) | A fiók egy órás részletességgel kéri a rendelkezésre állást| 1H | Szolgáltatás rendelkezésre állása | Az átadott kérelmek százalékos arányát jelöli. A rendszer hibát okozó kérést küld, ha az állapotkód 410, 500 vagy 503, amely a fiók rendelkezésre állásának figyelésére használatos az óránkénti részletességgel. |
 
 
 #### <a name="cassandra-api-metrics"></a>Cassandra API metrikák
 
-|Metrika (metrika megjelenítendő neve)|Egység (aggregáció típusa)|Leírás|Dimenziók| Időbeli részletesség| Használat |
+|Metrika (metrika megjelenítendő neve)|Egység (aggregáció típusa)|Description|Dimenziók| Időbeli részletesség| Használat |
 |---|---|---|---| ---| ---|
 | CassandraRequests (Cassandra-kérelmek) | Darabszám (darabszám) | Cassandra API kérelmek száma| DatabaseName, CollectionName, ErrorCode, régió, OperationType, ResourceType| Mind| A Cassandra-kérések figyelésére szolgál percenkénti részletességgel. Az átlagos kérelmek másodpercenkénti lekéréséhez használja a Count összesítést percek alatt, és ossza meg a 60-as számmal.|
 | CassandraRequestCharges (Cassandra-kérelmek díjai) | Darabszám (Sum, min, Max, AVG) | Cassandra API kérelmek által felhasznált kérési egységek| DatabaseName, CollectionName, régió, OperationType, ResourceType| Mind| Egy Cassandra API fiók által percenként használt RUs figyelésére használatos.|

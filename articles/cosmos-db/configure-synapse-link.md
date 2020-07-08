@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: srchi
 ms.openlocfilehash: d2a10d064bed3e2e2e798d16ce72ccf55c965f8d
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85262038"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db-preview"></a>Azure szinapszis-hivatkozás konfigurálása és használata Azure Cosmos DB (előzetes verzió)
@@ -203,7 +203,7 @@ További információért lásd a következő dokumentumokat:
 
 * [Az Azure szinapszis hivatkozása Azure Cosmos DB.](synapse-link.md)
 
-* [Azure Cosmos DB analitikus áruház áttekintése.](analytical-store-introduction.md)
+* [Az Azure Cosmos DB elemzési tár áttekintése.](analytical-store-introduction.md)
 
 * [Gyakran ismételt kérdések a Azure Cosmos DB-ra vonatkozó szinapszis-hivatkozásról.](synapse-link-frequently-asked-questions.md)
 

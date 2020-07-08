@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/21/2019
 ms.author: cawa
 ms.openlocfilehash: 56c20c995a95058b5039b7268c7b7b1426e900fa
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85298123"
 ---
 # <a name="manage-azure-blob-storage-resources-with-storage-explorer"></a>Azure Blob Storage-erőforrások kezelése Storage Explorer
@@ -169,7 +169,7 @@ Miután létrehozott egy BLOB-tárolót, feltöltheti a blobot a blob-tárolóba
 A következő lépések bemutatják, hogyan kezelhetők a Blobok (és mappák) a blob-tárolón belül.
 
 1. Nyissa meg a Storage Explorert.
-2. A bal oldali ablaktáblán bontsa ki a kezelni kívánt BLOB-tárolót tartalmazó Storage-fiókot.
+2. A bal oldali panelen bontsa ki a kezelni kívánt blobtárolót tartalmazó tárfiókot.
 3. Bontsa ki a Storage-fiók **blob-tárolóit**.
 4. Kattintson duplán a megtekinteni kívánt blob-tárolóra.
 5. A fő panelen megjelenik a blob tároló tartalma.

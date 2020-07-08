@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
 ms.openlocfilehash: d59335c5c4ebd2688097539594f11ea349939eff
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85298514"
 ---
 # <a name="azure-functions-premium-plan"></a>Prémium csomag Azure Functions
@@ -90,7 +90,7 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 
 A csomag létrehozásakor vagy skálázásakor három példány mérete közül választhat.  A rendszer a másodpercenként felhasznált magok és memória teljes számát számlázza.  Az alkalmazás igény szerint automatikusan több példányra is kibővíthető.  
 
-|Termékváltozat|Cores|Memory (Memória)|Tárolás|
+|Termékváltozat|Cores|Memory (Memória)|Storage|
 |--|--|--|--|
 |EP1|1|3.5 GB|250GB|
 |EP2|2|7GB|250GB|

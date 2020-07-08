@@ -12,10 +12,10 @@ ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: e529e398b90050bf654c702ec34686bdc173c9e5
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85299330"
 ---
 # <a name="azure-synapse-analytics-business-intelligence-partners"></a>Azure szinapszis Analytics üzleti intelligencia-partnerek
@@ -23,7 +23,7 @@ ms.locfileid: "85299330"
 A teljes adattárház-megoldás létrehozásához a szinapszis SQL-készlet használatával az Azure szinapszison belül számos piacvezető eszköz közül választhat.  Ez a cikk a Azure SQL Data Warehouset támogató hivatalos üzleti intelligenciával (BI) kapcsolatos megoldásokkal foglalkozó Microsoft-partneri vállalatokat emeli ki.
 
 ## <a name="our-business-intelligence-partners"></a>Üzleti intelligencia partnereink
-| Partner | Leírás | Webhely/termék hivatkozása |
+| Partner | Description | Webhely/termék hivatkozása |
 | ------- | ----------- | -------------------- |
 | ![Birst](./media/sql-data-warehouse-partner-business-intelligence/birst_logo.png) |**Birst**<br>A Birst a teljes szervezetet összekapcsolja egy közös, közös analitikai hálóra épülő, összeszőtt virtualizált BI-példányok hálózatán.|[Termék lap](https://www.birst.com/)<br> |
 | ![ClearStory-adathalmazok](./media/sql-data-warehouse-partner-business-intelligence/clearstory_data_logo.png) |**ClearStory-adatszolgáltatások (folyamatos üzleti elemzések)**<br>A ClearStory adatai lehetővé teszik a gyors ciklusú elemzést a szinapszis SQL-készletben tárolt különböző adategységek között. A ClearStory integrált Spark-alapú platform-és elemzési alkalmazási sebessége adatelérést és a különböző adathalmazok harmonizálását is tartalmazza. Ezek lehetővé teszik a gyors, együttműködésen alapuló feltárást, amely támogatja az üzleti felhasználók számára a gyors bepillantást. |[Termék lap](https://www.clearstorydata.com/product/continuous-insights/)<br> |

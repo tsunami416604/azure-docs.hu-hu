@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 06/04/2020
 ms.author: lbosq
 ms.openlocfilehash: ffa30b0fa42abc69c19b5e6c32f4224f3ad1c95a
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85263058"
 ---
 # <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>Áttelepítés előtti lépések a MongoDB-ből Azure Cosmos DB API-MongoDB való áttelepítéshez
@@ -42,7 +42,7 @@ A MongoDB Azure Cosmos DB API-ját a következők konkrét jellemzőkkel bírnak
 
 A [Azure Cosmos db API-MongoDB való Azure Database Migration Service](../dms/tutorial-mongodb-cosmos-db.md) egy olyan mechanizmust biztosít, amely leegyszerűsíti az adatáttelepítést azáltal, hogy teljes körűen felügyelt üzemeltetési platformot biztosít, áttelepítési figyelési lehetőségeket és automatikus szabályozási kezelést tesz lehetővé. A lehetőségek teljes listája a következő:
 
-|**Áttelepítés típusa**|**Megoldás**|**Megfontolandó szempontok**|
+|**Áttelepítés típusa**|**Megoldás**|**Megfontolások**|
 |---------|---------|---------|
 |Offline|[Adatáttelepítési eszköz](https://docs.microsoft.com/azure/cosmos-db/import-data)|&bull;Egyszerűen beállítható és támogatott több forrás <br/>&bull;Nagyméretű adathalmazokhoz nem alkalmas.|
 |Offline|[Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-cosmos-db)|&bull;Egyszerűen beállítható és támogatott több forrás <br/>&bull;A Azure Cosmos DB tömeges végrehajtó függvénytár használatát teszi lehetővé <br/>&bull;Nagyméretű adatkészletekhez alkalmas <br/>&bull;Az ellenőrzőpontok hiánya azt jelenti, hogy az áttelepítés során esetlegesen felmerülő problémákhoz a teljes áttelepítési folyamat újraindítása szükséges.<br/>&bull;A kézbesítetlen levelek várólistájának hiánya azt jelenti, hogy néhány hibás fájl nem tudja leállítani a teljes áttelepítési folyamatot <br/>&bull;Egyéni kóddal kell rendelkeznie bizonyos adatforrások olvasási teljesítményének növeléséhez|

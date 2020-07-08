@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Azure, Kinect, érzékelő, megjelenítő, vizualizáció, mélység, RGB, szín, IMU, hang, mikrofon, pont felhő
 ms.openlocfilehash: 57cf7df831e97da4143a7f196b69a3a10609a017
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85277283"
 ---
 # <a name="azure-kinect-viewer"></a>Azure Kinect Viewer
@@ -56,7 +56,7 @@ Nyissa meg az eszköz belső vezérlőprogram-verzióját a konfigurációs abla
 
 Például ebben az esetben a részletes kamera ISP az FW 1.5.63-t futtatja.
 
-## <a name="depth-camera"></a>Részletes kamera
+## <a name="depth-camera"></a>Mélységi kamera
 
 A részletes kamera megjelenítője két ablakot fog megjeleníteni:
 

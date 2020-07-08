@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/20/2020
 ms.openlocfilehash: 591bff468c90b17812554b02810d9a6cd4f874d1
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85262157"
 ---
 # <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>Az Azure Cognitive Searchban való szövegszerkesztés elemzői
@@ -44,7 +44,7 @@ Az alapértelmezett mező felülbírálható a mezők alapján. Az alternatív e
 
 Az alábbi lista ismerteti, hogy mely elemzők érhetők el az Azure Cognitive Searchban.
 
-| Kategória | Leírás |
+| Kategória | Description |
 |----------|-------------|
 | [Standard Lucene analizátor](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) | Default (Alapértelmezett): Nincs szükség specifikációra vagy konfigurációra. Ez az általános célú elemző számos nyelvet és forgatókönyvet is végrehajt.|
 | Előre definiált elemzők | A szolgáltatásként való használatra szánt késztermékként kínált termék. <br/>Két típus létezik: speciális és nyelvi. Mi teszi őket "előre definiált" értékre, ha név szerint hivatkozik rájuk, konfiguráció vagy testreszabás nélkül. <br/><br/>A [speciális (nyelv – agnosztikus) elemzők](index-add-custom-analyzers.md#AnalyzerTable) akkor használatosak, ha a szöveges bemenetek speciális feldolgozást vagy minimális feldolgozást igényelnek. A nem nyelvi előre definiált elemzők közé tartozik a **Asciifolding**, a **kulcsszó**, a **minta**, az **egyszerű**, a **Leállítás**és a **szóközök**.<br/><br/>[Nyelvi elemzőket](index-add-language-analyzers.md) akkor kell használni, ha az egyes nyelvekhez széles körű nyelvi támogatásra van szükség. Az Azure Cognitive Search támogatja a 35 Lucene Language Analyzers és a 50 Microsoft Natural Language Processing-elemzőt. |
