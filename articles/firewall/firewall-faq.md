@@ -5,13 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 06/08/2020
+ms.date: 07/07/2020
 ms.author: victorh
-ms.openlocfilehash: cf896f6783cca0a61892c43860328d87ada56a9c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 27cdff24672f70407e8f8f89c6c49a8c2de87d0a
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791486"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078425"
 ---
 # <a name="azure-firewall-faq"></a>Azure Firewall GYIK
 
@@ -218,3 +219,7 @@ Nem, az IP-csoportok másik erőforráscsoporthoz való áthelyezése jelenleg n
 ## <a name="what-is-the-tcp-idle-timeout-for-azure-firewall"></a>Mi a Azure Firewall TCP üresjárati időkorlátja?
 
 A hálózati tűzfal szabványos viselkedése a TCP-kapcsolatok életben tartásának biztosítása, és ha nincs tevékenység, azonnal lezárhatja őket. Azure Firewall TCP Üresjárati időkorlát négy perc. Ez a beállítás nem konfigurálható. Ha egy inaktivitási időtartam hosszabb az időtúllépési értéknél, nincs garancia arra, hogy a TCP-vagy HTTP-munkamenet továbbra is fennáll. Gyakori eljárás a TCP Keep-Alive használata. Ez a gyakorlat hosszabb ideig tart a kapcsolatok aktív állapotban. További információ: [.net-példák](https://docs.microsoft.com/dotnet/api/system.net.servicepoint.settcpkeepalive?redirectedfrom=MSDN&view=netcore-3.1#System_Net_ServicePoint_SetTcpKeepAlive_System_Boolean_System_Int32_System_Int32_).
+
+## <a name="can-i-deploy-azure-firewall-without-a-public-ip-address"></a>Telepíthetek Azure Firewall nyilvános IP-cím nélkül?
+
+Nem, jelenleg a Azure Firewall nyilvános IP-címmel kell telepíteni.
