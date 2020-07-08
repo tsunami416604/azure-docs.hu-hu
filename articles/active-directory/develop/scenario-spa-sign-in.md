@@ -12,17 +12,16 @@ ms.date: 02/11/2020
 ms.author: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: 53a84bd970d564411ec9a56b54159e5a96717a6e
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84558762"
 ---
 # <a name="single-page-application-sign-in-and-sign-out"></a>Egyoldalas alkalmazás: bejelentkezés és kijelentkezés
 
 Megtudhatja, hogyan adhat hozzá bejelentkezést az egyoldalas alkalmazás kódjához.
 
-Ahhoz, hogy a tokenek hozzáférjenek az alkalmazás API-khoz, hitelesített felhasználói környezetre van szükség. A felhasználókat a MSAL. js fájlban kétféleképpen lehet bejelentkezni:
+Ahhoz, hogy a tokenek hozzáférjenek az alkalmazás API-khoz, hitelesített felhasználói környezetre van szükség. A felhasználókat kétféleképpen lehet bejelentkezni az alkalmazásba MSAL.js módon:
 
 * [Előugró ablak](#sign-in-with-a-pop-up-window)a `loginPopup` metódus használatával
 * [Átirányítás](#sign-in-with-redirect)a `loginRedirect` metódus használatával
@@ -30,7 +29,7 @@ Ahhoz, hogy a tokenek hozzáférjenek az alkalmazás API-khoz, hitelesített fel
 Igény szerint átadhatja azon API-k hatóköreit, amelyekhez a felhasználónak a bejelentkezéskor hozzá kell járulnia.
 
 > [!NOTE]
-> Ha az alkalmazásnak már van hozzáférése egy hitelesített felhasználói környezethez vagy azonosító jogkivonathoz, kihagyhatja a bejelentkezési lépést, és közvetlenül is beszerezheti a jogkivonatokat. Részletekért lásd: [SSO MSAL. js bejelentkezés nélkül](msal-js-sso.md#sso-without-msaljs-login).
+> Ha az alkalmazásnak már van hozzáférése egy hitelesített felhasználói környezethez vagy azonosító jogkivonathoz, kihagyhatja a bejelentkezési lépést, és közvetlenül is beszerezheti a jogkivonatokat. Részletekért lásd: [egyszeri bejelentkezés MSAL.js bejelentkezés nélkül](msal-js-sso.md#sso-without-msaljs-login).
 
 ## <a name="choosing-between-a-pop-up-or-redirect-experience"></a>Egy előugró vagy átirányítási élmény közötti választás
 
@@ -205,7 +204,7 @@ this.authService.logout();
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Alkalmazás-jogkivonat beszerzése](scenario-spa-acquire-token.md)

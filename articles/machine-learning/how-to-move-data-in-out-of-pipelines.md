@@ -11,10 +11,9 @@ author: lobrien
 ms.date: 04/01/2020
 ms.custom: contperfq4, tracking-python
 ms.openlocfilehash: 54b8161634d15853719d98a52d0d17e2e55a6bb3
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84559354"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>Adatok áthelyezése gép tanulási folyamatok lépéseibe és azok között (Python)
@@ -235,7 +234,7 @@ step1_output_ds = step1_output_data.as_dataset()
 step1_output_ds.register(name="processed_data", create_new_version=True)
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Azure Machine learning-adatkészlet létrehozása](how-to-create-register-datasets.md)
 * [Gépi tanulási folyamatokat hozhat létre és futtathat Azure Machine Learning SDK-val](how-to-create-your-first-pipeline.md)

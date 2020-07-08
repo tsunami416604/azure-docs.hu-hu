@@ -8,10 +8,9 @@ ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: tracking-python
 ms.openlocfilehash: b40da0c8746bc63a99394027b61d777a611727e3
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84559590"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>Üzembe helyezés a App Service GitHub-műveletek használatával
@@ -194,7 +193,7 @@ A kód App Service alkalmazásba való üzembe helyezéséhez használja a `azur
 
 ### <a name="deploy-using-publish-profile"></a>Üzembe helyezés a közzétételi profil használatával
 
-Az alábbi példa a Node. js-alkalmazások Azure-ban való létrehozására és üzembe helyezésére szolgáló minta munkafolyamat a közzétételi profil használatával.
+Alább látható egy Node.js-alkalmazás Azure-ban való létrehozásához és üzembe helyezéséhez szükséges minta munkafolyamat a közzétételi profil használatával.
 
 ```yaml
 # File: .github/workflows/workflow.yml
@@ -228,7 +227,7 @@ jobs:
 
 ### <a name="deploy-using-azure-service-principal"></a>Üzembe helyezés az Azure egyszerű szolgáltatásával
 
-Az alábbi példa a Node. js-alkalmazások Azure-beli egyszerű szolgáltatással történő létrehozásához és üzembe helyezéséhez használható minta munkafolyamat.
+Az alábbi példa egy Azure-szolgáltatásnév használatával Node.js alkalmazás Azure-beli létrehozásához és üzembe helyezéséhez használható minta munkafolyamat.
 
 ```yaml
 on: [push]
@@ -269,7 +268,7 @@ jobs:
         az logout
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtalálhatja a GitHubon különböző adattárakba csoportosított műveleteit, amelyek mindegyike dokumentációt és példákat tartalmaz, amelyek segítséget nyújtanak a GitHub használatához a CI/CD-hez, és az alkalmazások üzembe helyezését az Azure-ban.
 

@@ -14,10 +14,9 @@ ms.workload: na
 ms.date: 03/13/2019
 ms.author: memildin
 ms.openlocfilehash: c58f70126c72a84b09f6eadc251949a0f0021657
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84628293"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Fájlintegritás monitorozása az Azure Security Centerben
@@ -62,19 +61,19 @@ A Security Center az alábbi, az ismert támadási minták alapján figyelt elem
 |:----|:----|:----|
 |/bin/login|C:\autoexec.bat|HKLM\SOFTWARE\Microsoft\Cryptography\OID\EncodingType 0 \ CryptSIPDllRemoveSignedDataMsg \{ C689AAB8-8E78-11D0-8C47-00C04FC295EE}|
 |/bin/passwd|C:\boot.ini|HKLM\SOFTWARE\Microsoft\Cryptography\OID\EncodingType 0 \ CryptSIPDllRemoveSignedDataMsg \{ 603BCC1F-4B59-4E08-B724-D2C6297EF351}|
-|/etc/*. conf|C:\Config.sys|HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\IniFileMapping\SYSTEM.ini\boot|
+|/etc/*. conf|C:\config.sys|HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\IniFileMapping\SYSTEM.ini \Boot|
 |/usr/bin|C:\Windows\system.ini|HKLM\SOFTWARE\Microsoft\Windows CurrentVersion|
 |/usr/sbin|C:\Windows\win.ini|HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon|
 |/bin|C:\Windows\regedit.exe|Hklmsoftwaremicrosoftwindowscurrentversionexplorershell\\\\ mappák|
-|/sbin|CWindowsSystem32Userinit|HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User rendszerhéj-mappák|
-|/boot|CWindowsExplorer|HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run|
+|/sbin|C:\Windows\System32\userinit.exe|HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User rendszerhéj-mappák|
+|/boot|C:\Windows\explorer.exe|HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run|
 |/usr/local/bin helyekre|C:\Program Files\Microsoft biztonsági Client\msseces.exe|HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce|
 |/usr/local/sbin||HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnceEx|
 |/opt/bin||HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\RunServices|
 |/opt/sbin||HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\RunServicesOnce|
 |/etc/crontab||HKLM\SOFTWARE\WOW6432Node\Microsoft\Cryptography\OID\EncodingType 0 \ CryptSIPDllRemoveSignedDataMsg \{ C689AAB8-8E78-11D0-8C47-00C04FC295EE}|
 |/etc/init.d||HKLM\SOFTWARE\WOW6432Node\Microsoft\Cryptography\OID\EncodingType 0 \ CryptSIPDllRemoveSignedDataMsg \{ 603BCC1F-4B59-4E08-B724-D2C6297EF351}|
-|/etc/cron.hourly||HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion\IniFileMapping\system.ini\boot|
+|/etc/cron.hourly||HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion\IniFileMapping\system.ini \Boot|
 |/etc/cron.daily||HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows CurrentVersion|
 |/etc/cron.weekly||HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion\Winlogon|
 |/etc/cron.monthly||HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer\Shell mappák|
@@ -240,7 +239,7 @@ A FIM letiltható. A FIM az Azure Change Tracking megoldást használja a körny
 
 4. A letiltáshoz válassza az **Eltávolítás** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a cikkben megtanulta, hogyan használhatja a fájlok integritásának figyelését (FIM) a Security Centerban. Ha többet szeretne megtudni a Security Centerről, tekintse meg a következő lapokat:
 
 * [Biztonsági házirendek beállítása](tutorial-security-policy.md) – megtudhatja, hogyan konfigurálhat biztonsági házirendeket az Azure-előfizetések és-erőforráscsoportok számára.

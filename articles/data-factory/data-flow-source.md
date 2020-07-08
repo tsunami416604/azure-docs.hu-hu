@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/05/2020
 ms.openlocfilehash: e106f5b615cd667551ef3d597a45b522320eed6e
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84610183"
 ---
 # <a name="source-transformation-in-mapping-data-flow"></a>Forrás-átalakítás a leképezési adatfolyamban 
@@ -115,6 +114,6 @@ Ha Azure SQL Database forrásból olvassa be az olvasást, az egyéni **forrás*
 
 További információ a leképezési adatfolyamon belüli optimalizálásról: [optimalizálás lap](concepts-data-flow-overview.md#optimize).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megkezdheti az adatforgalom kiépítése egy [származtatott oszlopos átalakítással](data-flow-derived-column.md) és egy [kiválasztott átalakítással](data-flow-select.md).

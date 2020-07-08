@@ -4,10 +4,9 @@ description: Ez az útmutató végigvezeti az olyan erőforrások szervizelésé
 ms.date: 06/09/2020
 ms.topic: how-to
 ms.openlocfilehash: be55f16734a94acfcc89d632f4cb79f550fa74d5
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84636308"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Nem megfelelő erőforrások szervizelése Azure Policy
@@ -182,7 +181,7 @@ Más szervizelési parancsmagok és példák esetében tekintse meg az az [. Pol
 
 A Szervizelési feladatok zökkenőmentes létrehozásához a Azure Portal a házirend-hozzárendelés során. Ha a hozzárendelni kívánt házirend-definíció **deployIfNotExists** vagy **módosítási** hatás, a **szervizelés** lapon lévő varázsló egy _szervizelési feladat létrehozása_ lehetőséget kínál. Ha ez a beállítás be van jelölve, a rendszer a szabályzat-hozzárendeléssel megegyező időpontban létrehoz egy szervizelési feladatot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse át a példákat [Azure Policy mintákon](../samples/index.md).
 - Tekintse meg az [Azure szabályzatdefiníciók struktúrája](../concepts/definition-structure.md) szakaszt.

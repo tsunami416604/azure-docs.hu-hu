@@ -10,10 +10,9 @@ author: lobrien
 ms.date: 04/01/2020
 ms.custom: tracking-python
 ms.openlocfilehash: 7d34b54349a681061f80798a19ce65d2266f589d
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84559471"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Mik azok a Azure Machine Learning folyamatok?
@@ -192,7 +191,7 @@ Amíg egy projekt nagy vagy közel kerül a központi telepítéshez, a folyamat
 
 A gépi tanulási munkafolyamatok folyamatainak használatának fő előnyei a következők:
 
-|Kulcs előnye|Leírás|
+|Kulcs előnye|Description|
 |:-------:|-----------|
 |**Felügyelet nélküli &nbsp; futtatások**|A lépéseket párhuzamosan vagy egymás után, megbízható és felügyelet nélküli módon történő futtatásra ütemezze. Az adatok előkészítése és modellezése az elmúlt napokban vagy hetekben is elvégezhető, és a folyamatok lehetővé teszik, hogy a folyamat futása közben más feladatokra összpontosítson. |
 |**Különböző számítás**|Több folyamat is használható, amelyek megbízhatóan vannak összehangolva a heterogén és skálázható számítási erőforrások és a tárolási hely között. A rendelkezésre álló számítási erőforrások hatékony felhasználása a különböző számítási célokon, például a HDInsight, a GPU-adatelemzési virtuális gépeken és a Databricks futó egyes folyamatok lépéseinek futtatásával.|
@@ -221,7 +220,7 @@ A modulok a folyamat lépéseihez hasonlóan hasonlóak, de a munkaterületen el
 
 Az Azure Machine Learning-folyamatok moduljainak létrehozásához, összekapcsolásához és használatához szükséges példákért tekintse meg a [notebookot](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-how-to-use-modulestep.ipynb) .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure ML-folyamatok egy hatékony létesítmény, amely megkezdi az értékek megvalósítását a korai fejlesztési fázisokban. Az érték növekszik, ahogy a csapat és a projekt növekszik. Ez a cikk azt ismerteti, hogyan vannak megadva a folyamatok a Azure Machine Learning Python SDK-val és az Azure-ban. Megismerte az alapszintű forráskódot, és bevezette néhányat a `PipelineStep` rendelkezésre álló osztályokba. Érdemes lehet az Azure ML-adatfolyamatok és az Azure-t futtató folyamatok használatára. 
 

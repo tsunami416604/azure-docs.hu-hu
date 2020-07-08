@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.custom: tracking-python
 ms.openlocfilehash: 7945b3b0aeba7f5135665f4413d304eb225ac749
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84604694"
 ---
 # <a name="example-create-a-custom-skill-using-python"></a>Példa: egyéni szakértelem létrehozása a Python használatával
@@ -264,7 +263,7 @@ Most, hogy már rendelkezik egy új egyéni képességgel, hozzáadhatja a kész
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Gratulálunk! Létrehozta az első egyéni szaktudását. Mostantól ugyanezt a mintát követheti saját egyéni funkcióinak hozzáadásával is. További információért kattintson az alábbi hivatkozásokra.
 
 + [Energiaellátási készségek: az egyéni képességek tárháza](https://github.com/Azure-Samples/azure-search-power-skills)

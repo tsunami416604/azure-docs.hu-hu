@@ -10,10 +10,9 @@ ms.date: 04/09/2020
 ms.author: robinsh
 ms.custom: mqtt, tracking-python
 ms.openlocfilehash: 12d25fd06ddfa8265dbf046093d3854f7fde4f33
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84609556"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-python"></a>Üzenetküldés a felhőből az eszközre IoT Hub (Python)
@@ -233,7 +232,7 @@ Most már készen áll az alkalmazások futtatására.
 
     ![Üzenet érkezett](./media/iot-hub-python-python-c2d/device-2.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan küldhet és fogadhat üzeneteket a felhőből az eszközre.
 

@@ -13,10 +13,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 08/12/2019
 ms.openlocfilehash: eba63ff500aad4538f5b30f11bac168cf14816c0
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84558166"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Adatok másolása a MongoDB a Azure Data Factory használatával
@@ -55,7 +54,7 @@ A MongoDB társított szolgáltatás a következő tulajdonságokat támogatja:
 | adatbázis | Az elérni kívánt adatbázis neve. | Yes |
 | Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. |No |
 
-**Például**
+**Példa:**
 
 ```json
 {
@@ -83,7 +82,7 @@ Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdon
 | típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **MongoDbV2Collection** | Yes |
 | collectionName |A gyűjtemény neve a MongoDB adatbázisban. |Yes |
 
-**Például**
+**Példa:**
 
 ```json
 {
@@ -123,7 +122,7 @@ A másolási tevékenység **forrása** szakasz a következő tulajdonságokat t
 >[!TIP]
 >Az ADF támogatja a BSON-dokumentumok **szigorú módban**történő felhasználását. Győződjön meg arról, hogy a szűrő lekérdezése a rendszerhéj mód helyett szigorú módban van. További Leírás a következő helyen található: [MongoDB Manual](https://docs.mongodb.com/manual/reference/mongodb-extended-json/index.html).
 
-**Például**
+**Példa:**
 
 ```json
 "activities":[
@@ -169,5 +168,5 @@ Ezt a MongoDB-összekötőt használhatja a JSON-dokumentumok exportálására e
 
 Ha adatokat szeretne másolni a MongoDB-ből a táblázatos fogadóba, tekintse meg a [séma-hozzárendelést](copy-activity-schema-and-type-mapping.md#schema-mapping).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A Azure Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

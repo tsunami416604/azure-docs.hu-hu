@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: has-adal-ref, tracking-python
 ms.date: 04/03/2020
 ms.openlocfilehash: 5260da53ac7b65b68be58046ac6cb20e66c213c6
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84605493"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>Az Azure HDInsight Apache Kafka-fürtök használata REST-proxy használatával
@@ -150,6 +149,6 @@ Az alábbi minta alapján megtalálhatja, hogyan szerezhet be tokent az Azure fo
 curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=<clientid>&client_secret=<clientsecret>&grant_type=client_credentials&scope=https://hib.azurehdinsight.net/.default' 'https://login.microsoftonline.com/<tenantid>/oauth2/v2.0/token'
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A Kafka REST proxy API-dokumentációja](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy/)

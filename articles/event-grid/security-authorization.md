@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: femila
 ms.openlocfilehash: 87d436024dae21b0122bf6b861b8a3ae4299db73
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84559007"
 ---
 # <a name="authorizing-access-to-event-grid-resources"></a>Event Grid erőforrásokhoz való hozzáférés engedélyezése
@@ -112,7 +111,7 @@ Ha a beépített szerepköröktől eltérő engedélyeket kell megadnia, létreh
 
 A következő példa olyan Event Grid szerepkör-definíciókat mutat be, amelyek lehetővé teszik a felhasználók számára a különböző műveletek elvégzését. Ezek az egyéni szerepkörök különböznek a beépített szerepköröktől, mert szélesebb körű hozzáférést biztosítanak, mint a csak az esemény-előfizetések.
 
-**EventGridReadOnlyRole. JSON**: csak olvasási műveletek engedélyezése.
+**EventGridReadOnlyRole.jsbekapcsolva**: csak olvasási műveletek engedélyezése.
 
 ```json
 {
@@ -131,7 +130,7 @@ A következő példa olyan Event Grid szerepkör-definíciókat mutat be, amelye
 }
 ```
 
-**EventGridNoDeleteListKeysRole. JSON**: a korlátozás utáni műveletek engedélyezése, de a törlési műveletek letiltása.
+**EventGridNoDeleteListKeysRole.jsbekapcsolva: a**korlátozott post műveletek engedélyezése, de a törlési műveletek letiltása.
 
 ```json
 {
@@ -154,7 +153,7 @@ A következő példa olyan Event Grid szerepkör-definíciókat mutat be, amelye
 }
 ```
 
-**EventGridContributorRole. JSON**: engedélyezi az összes Event Grid-műveletet.
+**EventGridContributorRole.json**: engedélyezi az összes Event Grid-műveletet.
 
 ```json
 {
@@ -201,6 +200,6 @@ Ha például egy **mytopic**nevű egyéni témakörre szeretne előfizetni, szü
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A Event Grid bevezetését lásd: [About Event Grid](overview.md)

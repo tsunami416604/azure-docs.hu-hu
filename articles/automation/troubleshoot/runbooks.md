@@ -10,10 +10,9 @@ ms.service: automation
 manager: carmonm
 ms.custom: has-adal-ref
 ms.openlocfilehash: 5de4b6f16f52d7cab7088ab39aa70267110eed88
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84606887"
 ---
 # <a name="troubleshoot-runbook-issues"></a>Runbookkal kapcsolatos hibák elhárítása
@@ -625,7 +624,7 @@ Ha a runbook vagy alkalmazás egy Azure-beli homokozóban próbál futni, a kör
 
 ### <a name="cause"></a>Ok
 
-Ez a probléma azért fordulhat elő, mert az Azure-beli munkaterületek megakadályozzák az összes folyamaton kívüli COM-kiszolgáló elérését. Például egy munkapéldányos alkalmazás vagy runbook nem hívható meg Windows Management Instrumentation (WMI) vagy a Windows Installer szolgáltatásba (MSIServer. exe). 
+Ez a probléma azért fordulhat elő, mert az Azure-beli munkaterületek megakadályozzák az összes folyamaton kívüli COM-kiszolgáló elérését. Például egy munkapéldányos alkalmazás vagy runbook nem hívható meg Windows Management Instrumentation (WMI) vagy a Windows Installer szolgáltatásba (msiserver.exe). 
 
 ### <a name="resolution"></a>Megoldás:
 
@@ -663,7 +662,7 @@ Kövesse az [5. lépés – hitelesítés hozzáadása az Azure-erőforrások ke
 * [Runbook végrehajtása az Azure Automationben](../automation-runbook-execution.md)
 * [Runbook indítása Azure Automation](../automation-starting-a-runbook.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha nem találja a problémát, vagy nem tudja feloldani a problémát, próbálja ki a következő csatornák egyikét a további támogatáshoz:
 

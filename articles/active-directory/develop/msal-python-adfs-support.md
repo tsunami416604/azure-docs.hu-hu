@@ -14,10 +14,9 @@ ms.author: abpati
 ms.reviewer: nacanuma
 ms.custom: aaddev, tracking-python
 ms.openlocfilehash: 2e5df49ea681eefeccaf621739de185767c0aa16
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84558632"
 ---
 # <a name="active-directory-federation-services-support-in-msal-for-python"></a>Active Directory összevonási szolgáltatások (AD FS) támogatás a MSAL for Pythonban
@@ -59,6 +58,6 @@ A MSAL Python az ADFS 2019-et támogatja.
 
 Nem támogatja a közvetlen kapcsolódást az ADFS 2016 vagy az ADFS v2 szolgáltatáshoz. Ha olyan forgatókönyveket kell támogatnia, amelyek közvetlen kapcsolatban állnak az ADFS 2016-tel, használja a ADAL Python legújabb verzióját. Miután frissítette a helyszíni rendszert az ADFS 2019-re, használhatja a MSAL Pythont.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az összevont esetért lásd: [Azure Active Directory bejelentkezési viselkedésének konfigurálása alkalmazáshoz egy otthoni tartomány felderítési házirendjének használatával](../manage-apps/configure-authentication-for-federated-users-portal.md)

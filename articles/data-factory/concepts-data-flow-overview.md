@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/09/2020
 ms.openlocfilehash: e8efb43ac0711bac1324ac2c9e3b59373ce59419
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84635125"
 ---
 # <a name="what-are-mapping-data-flows"></a>Mik azok a leképezési adatfolyamok?
@@ -151,7 +150,7 @@ Ha elrejti a gráfot, az **előző** és a **következő** gombokon keresztül b
 
 ![Előző és következő gomb](media/data-flow/showhide.png "előző és következő gomb")
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Megtudhatja, hogyan hozhat létre [forrás-átalakítást](data-flow-source.md).
 * Megtudhatja, hogyan hozhat létre adatfolyamatokat [hibakeresési módban](concepts-data-flow-debug-mode.md).

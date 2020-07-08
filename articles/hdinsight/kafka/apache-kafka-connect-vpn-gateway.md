@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive, tracking-python
 ms.date: 03/04/2020
 ms.openlocfilehash: d8bf80cad86f45c24a475799a840b861c23fc28a
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84610916"
 ---
 # <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Csatlakozás az Apache Kafkához HDInsight-on egy Azure-beli virtuális hálózaton keresztül
@@ -366,7 +365,7 @@ A Kafka-kapcsolat ellenőrzéséhez kövesse az alábbi lépéseket egy Python-g
 
     * Ha engedélyezte a névfeloldást __egy egyéni DNS-kiszolgálón__, cserélje le a `kafka_broker` bejegyzéseket a munkavégző csomópontok teljes tartománynevére.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A HDInsight virtuális hálózattal való használatával kapcsolatos további információkért tekintse meg a [virtuális hálózat központi telepítésének megtervezése az Azure HDInsight-fürtökhöz](../hdinsight-plan-virtual-network-deployment.md) című dokumentumot.
 

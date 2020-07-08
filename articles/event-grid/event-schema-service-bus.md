@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: femila
 ms.openlocfilehash: 5152c1579d46bfbff6c85b2cd19425aee0dd3290
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84559496"
 ---
 # <a name="azure-service-bus-as-an-event-grid-source"></a>Azure Service Bus Event Grid forrásként
@@ -24,7 +23,7 @@ Ez a cikk a Service Bus eseményeinek tulajdonságait és sémáját ismerteti.A
 
 Service Bus a következő típusú eseményeket bocsátja ki:
 
-| Eseménytípus | Leírás |
+| Eseménytípus | Description |
 | ---------- | ----------- |
 | Microsoft. ServiceBus. ActiveMessagesAvailableWithNoListeners | Akkor következik be, amikor aktív üzenetek vannak egy várólistában vagy előfizetésben, és nincsenek figyelő fogadók. |
 | Microsoft. ServiceBus. DeadletterMessagesAvailableWithNoListener | Akkor következik be, amikor aktív üzenetek vannak egy kézbesítetlen levelek várólistájában, és nincsenek aktív figyelők. |
@@ -86,7 +85,7 @@ Egy esemény a következő legfelső szintű adattal rendelkezik:
 | eventType | sztring | Az eseményforráshoz felvett eseménytípusok egyike. |
 | eventTime | sztring | Az esemény a szolgáltató UTC-ideje alapján történő létrehozásakor. |
 | id | sztring | Az esemény egyedi azonosítója. |
-| data | objektum | BLOB Storage-események |
+| adatok | objektum | BLOB Storage-események |
 | dataVersion | sztring | Az adatobjektum sémaverziója. A sémaverziót a közzétevő határozza meg. |
 | metadataVersion | sztring | Az esemény metaadatok sémaverziója. A legfelső szintű tulajdonságokra az Event Grid határozza meg a sémát. Az értéket az Event Grid adja meg. |
 
@@ -107,7 +106,7 @@ Az adatobjektum a következő tulajdonságokkal rendelkezik:
 | [Oktatóanyag: Azure Service Bus Azure Event Grid integrációs példák](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Event Grid üzeneteket küld Service Bus témakörből az alkalmazás és a logikai alkalmazás működéséhez. |
 | [Azure Service Bus az integráció Event Grid](../service-bus-messaging/service-bus-to-event-grid-integration-concept.md) | A Service Bus és a Event Grid integrálásának áttekintése. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A Azure Event Grid bemutatása: [Mi az Event Grid?](overview.md)
 * Azure Event Grid-előfizetés létrehozásával kapcsolatos további információkért lásd: [Event Grid előfizetés sémája](subscription-creation-schema.md).

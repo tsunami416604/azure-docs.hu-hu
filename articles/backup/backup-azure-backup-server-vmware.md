@@ -4,10 +4,9 @@ description: Ebből a cikkből megtudhatja, hogyan használhatja a Azure Backup 
 ms.topic: conceptual
 ms.date: 05/24/2020
 ms.openlocfilehash: deb72ad1f2b9b18368ef5134ecc23048b483f3f8
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84628443"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>VMware virtuális gépek biztonsági mentése a Azure Backup Server
@@ -62,7 +61,7 @@ A következőképpen állíthatja be a biztonságos csatornát:
 
 4. Mentse a fájlt a Azure Backup Server gépre. zip kiterjesztéssel.
 
-5. Kattintson a jobb gombbal a **download. zip**  >  **kibontása**elemre. A. zip fájl kibontja a tartalmát a **tanúsítványok** mappába, amely a következőket tartalmazza:
+5. Kattintson a jobb gombbal **download.zip**  >  **az összes kibontása**elemre. A. zip fájl kibontja a tartalmát a **tanúsítványok** mappába, amely a következőket tartalmazza:
    - A főtanúsítvány fájlja egy olyan bővítménnyel, amely egy számú, például. 0 és. 1 típusú sorszámmal kezdődik.
    - A CRL-fájl kiterjesztése olyan, mint. R0 vagy. R1. A CRL-fájl egy tanúsítvánnyal van társítva.
 
@@ -136,7 +135,7 @@ A Azure Backup Server egy olyan felhasználói fiókra van szüksége, amely jog
 
 | Jogosultságok a vCenter 6,7 felhasználói fiókhoz                     | Jogosultságok a vCenter 6,5 felhasználói fiókhoz                     |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Adattár-fürt. Datatstore-fürt konfigurálása            | Adattár-fürt. Datatstore-fürt konfigurálása            |
+| Adattár-cluster.Configdatatstore-fürt            | Adattár-cluster.Configdatatstore-fürt            |
 | Adattár. AllocateSpace                                      | Adattár. AllocateSpace                                      |
 | Adattár. Tallózás az adattárban                                   | Adattár. Tallózás az adattárban                                   |
 | Adattár. alacsony szintű fájl műveletei                          | Adattár. alacsony szintű fájl műveletei                          |
@@ -152,15 +151,15 @@ A Azure Backup Server egy olyan felhasználói fiókra van szüksége, amely jog
 | vApp. virtuális gép hozzáadása                                     | vApp. virtuális gép hozzáadása                                     |
 | vApp. erőforrás-készlet társítása                                    | vApp. erőforrás-készlet társítása                                    |
 | vApp. Regisztráció törlése                                              | vApp. Regisztráció törlése                                              |
-| VirtualMachine. Configuration. Eszköz hozzáadása vagy eltávolítása          | VirtualMachine. Configuration. Eszköz hozzáadása vagy eltávolítása          |
-| Virtuális gép. Konfiguráció. a lemez bérletének beolvasása            | Virtuális gép. Konfiguráció. Disk bérlet                     |
-| Virtuális gép. Konfiguráció. új lemez hozzáadása                   | Virtuális gép. Konfiguráció. új lemez hozzáadása                   |
-| Virtuális gép. Konfiguráció. Speciális konfiguráció        | Virtuális gép. Konfigurálás. speciális                       |
-| Virtuális gép. Konfiguráció. lemez változás-követésének váltása   | Virtuális gép. Konfiguráció. lemez változásának követése          |
-| Virtuális gép. Konfigurálás. gazdagép USB-eszközének konfigurálása     | Virtuális gép. Configuration. Host USB-eszköz               |
-| Virtuális gép. Konfiguráció. virtuális lemez kiterjesztése           | Virtuális gép. Konfiguráció. virtuális lemez kiterjesztése           |
-| Virtuális gép. Konfiguráció. a nem tulajdonában lévő fájlok lekérdezése           | Virtuális gép. Konfiguráció. a nem tulajdonában lévő fájlok lekérdezése           |
-| Virtuális gép. Configuration. Change swapfile elhelyezése     | Virtuális gép. Configuration. swapfile elhelyezése            |
+| VirtualMachine.Configszülő. Eszköz hozzáadása vagy eltávolítása          | VirtualMachine.Configszülő. Eszköz hozzáadása vagy eltávolítása          |
+| Virtuális machine.Configszülő. Lemez bérletének beolvasása            | Virtuális machine.Configszülő. Lemez bérlete                     |
+| Virtuális machine.Configszülő. Új lemez hozzáadása                   | Virtuális machine.Configszülő. Új lemez hozzáadása                   |
+| Virtuális machine.Configszülő. Speciális konfiguráció        | Virtuális machine.Configszülő. Speciális                       |
+| Virtuális machine.Configszülő. Lemez változás-követésének váltása   | Virtuális machine.Configszülő. Lemez változásának követése          |
+| Virtuális machine.Configuration.Configure-gazdagép USB-eszköze     | Virtuális machine.Configszülő. Gazdagép USB-eszköze               |
+| Virtuális machine.Configszülő. Virtuális lemez kiterjesztése           | Virtuális machine.Configszülő. Virtuális lemez kiterjesztése           |
+| Virtuális machine.Configszülő. A nem birtokolt fájlok lekérdezése           | Virtuális machine.Configszülő. A nem birtokolt fájlok lekérdezése           |
+| Virtuális machine.Configszülő. Swapfile elhelyezésének módosítása     | Virtuális machine.Configszülő. Swapfile elhelyezése            |
 | Virtuális gép. Guest Operations. Guest Operation program végrehajtása | Virtuális gép. Guest Operations. Guest Operation program végrehajtása |
 | Virtuális gép. Vendég műveletek. vendég művelet módosításai | Virtuális gép. Vendég műveletek. vendég művelet módosításai |
 | Virtuális gép. Vendég műveletek. vendég műveleti lekérdezések    | Virtuális gép. Vendég műveletek. vendég műveleti lekérdezések    |
@@ -184,16 +183,16 @@ A Azure Backup Server egy olyan felhasználói fiókra van szüksége, amely jog
 | ---------------------------------------------------------- | ------------------------------------------- |
 | Adattár. AllocateSpace                                    | Network. assign                              |
 | Globális. egyéni attribútumok kezelése                           | Adattár. AllocateSpace                     |
-| Globális. egyéni attribútum beállítása                               | VirtualMachine. config. változáskövetési        |
+| Globális. egyéni attribútum beállítása                               | VirtualMachine.Config. Változáskövetési        |
 | Gazdagép. local művelet. Virtuális gép létrehozása              | VirtualMachine. State. RemoveSnapshot         |
 | Hálózati.  Hálózat kiosztása                                   | VirtualMachine. State. CreateSnapshot         |
 | Erőforrás.  Virtuális gép erőforrás-készlethez rendelése         | VirtualMachine. kiépítés. DiskRandomRead  |
-| Virtuális gép. Konfiguráció. új lemez hozzáadása                | VirtualMachine. Interact. erő            |
-| Virtuális gép. Konfigurálás. speciális                    | VirtualMachine. Inventory. Create             |
-| Virtuális gép. Konfiguráció. lemez változásának követése        | VirtualMachine. config. AddNewDisk            |
-| Virtuális gép. Configuration. Host USB-eszköz             | VirtualMachine. config. HostUSBDevice         |
-| Virtuális gép. Konfiguráció. a nem tulajdonában lévő fájlok lekérdezése         | VirtualMachine. config. AdvancedConfig        |
-| Virtuális gép. Configuration. swapfile elhelyezése          | VirtualMachine. config. SwapPlacement         |
+| Virtuális machine.Configszülő. Új lemez hozzáadása                | VirtualMachine. Interact. erő            |
+| Virtuális machine.Configszülő. Speciális                    | VirtualMachine. Inventory. Create             |
+| Virtuális machine.Configszülő. Lemez változásának követése        | VirtualMachine.Config. AddNewDisk            |
+| Virtuális machine.Configszülő. Gazdagép USB-eszköze             | VirtualMachine.Config. HostUSBDevice         |
+| Virtuális machine.Configszülő. A nem birtokolt fájlok lekérdezése         | VirtualMachine.Config. AdvancedConfig        |
+| Virtuális machine.Configszülő. Swapfile elhelyezése          | VirtualMachine.Config. SwapPlacement         |
 | Virtuális gép. Interakció. kikapcsolás                     | Global. ManageCustomFields                   |
 | Virtuális gép. Hardverleltár. Új létrehozása                     |                                             |
 | Virtuális gép. Kiépítés. lemezes hozzáférés engedélyezése            |                                             |
@@ -422,7 +421,7 @@ Windows Registry Editor Version 5.00
 > [!NOTE]
 > Ez a funkció a MABS v3 UR1 esetében alkalmazható.
 
-A MABS v3 UR1 kihagyhatja a VMware virtuális gép biztonsági mentésének adott lemezét. A **ExcludeDisk. ps1** konfigurációs parancsfájl a alkalmazásban található `C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin folder` .
+A MABS v3 UR1 kihagyhatja a VMware virtuális gép biztonsági mentésének adott lemezét. A konfigurációs parancsfájl **ExcludeDisk.ps1** a alkalmazásban található `C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin folder` .
 
 A lemezek kizárásának konfigurálásához kövesse az alábbi lépéseket:
 
@@ -479,7 +478,7 @@ Navigáljon arra a MABS-kiszolgálóra, ahol a VMware virtuális gép védelemre
         Vcentervm1   TestVM4   VMware
         ```
 
-  4. A lemez kizárásához navigáljon a `Bin` mappához, és futtassa a *ExcludeDisk. ps1* parancsfájlt a következő paraméterekkel:
+  4. A lemez kizárásához navigáljon a `Bin` mappához, és futtassa a *ExcludeDisk.ps1* parancsfájlt a következő paraméterekkel:
 
         > [!NOTE]
         > A parancs futtatása előtt állítsa le a DPMRA szolgáltatást a MABS-kiszolgálón. Ellenkező esetben a parancsfájl sikeres értéket ad vissza, de nem frissíti a kizárási listát. Győződjön meg arról, hogy a szolgáltatás leállítása előtt nincsenek folyamatban lévő feladatok.
@@ -537,6 +536,6 @@ A lemez kizárásból való eltávolításához futtassa a következő parancsot
 C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin> ./ExcludeDisk.ps1 -Datasource $vmDsInfo[2] -Remove "[datastore1] TestVM4/TestVM4\_1.vmdk"
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A biztonsági másolatok beállítása során felmerülő problémák elhárításához tekintse át a [Azure Backup Server hibaelhárítási útmutatóját](./backup-azure-mabs-troubleshoot.md).

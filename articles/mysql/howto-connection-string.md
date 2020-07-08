@@ -1,6 +1,6 @@
 ---
 title: Kapcsolatok karakterláncai – Azure Database for MySQL
-description: Ez a dokumentum felsorolja a jelenleg támogatott kapcsolati karakterláncokat, amelyekkel az alkalmazások csatlakozhatnak a Azure Database for MySQLhoz, beleértve a ADO.NET (C#), a JDBC, a Node. js, az ODBC, a PHP, a Python és a Ruby alkalmazásokat.
+description: Ez a dokumentum felsorolja a jelenleg támogatott kapcsolati karakterláncokat, amelyekkel az alkalmazások csatlakozhatnak a Azure Database for MySQLhoz, beleértve a ADO.NET (C#), a JDBC, a Node.js, az ODBC, a PHP, a Python és a Ruby alkalmazást.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.custom: tracking-python
 ms.openlocfilehash: 1683fba2d8f085569c7cc62a06d0fe95803d4346
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84559199"
 ---
 # <a name="how-to-connect-applications-to-azure-database-for-mysql"></a>Alkalmazások csatlakoztatása az Azure Database for MySQL-adatbázishoz
@@ -67,5 +66,5 @@ A [Azure Portal](https://portal.azure.com)nyissa meg a Azure Database for MySQL-
 
 A karakterlánc olyan adatokat tartalmaz, mint például az illesztőprogram, a kiszolgáló és más adatbázis-kapcsolati paraméterek. Módosítsa ezeket a példákat saját paraméterek használatára, például az adatbázis nevére, jelszavára stb. Ezt a karakterláncot használhatja a kód és az alkalmazások kiszolgálóhoz való kapcsolódáshoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - További információ a kapcsolatok könyvtárairól: [fogalmak – kapcsolatok kódtárai](./concepts-connection-libraries.md).

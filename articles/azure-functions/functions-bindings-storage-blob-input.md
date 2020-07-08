@@ -7,10 +7,9 @@ ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: tracking-python
 ms.openlocfilehash: 1dbd3765b691d1ba7b958d765a59f6451f380a2e
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84559074"
 ---
 # <a name="azure-blob-storage-input-binding-for-azure-functions"></a>Az Azure Blob Storage bemeneti kötése Azure Functions
@@ -40,9 +39,9 @@ public static void Run(
 
 <!--Same example for input and output. -->
 
-A következő példa a blob bemeneti és kimeneti kötéseit ábrázolja egy *function. JSON* fájlban és [C# parancsfájlban (. CSX)](functions-reference-csharp.md) , amely a kötéseket használja. A függvény egy szöveges blob másolatát készíti el. A függvényt egy üzenetsor-üzenet indítja el, amely a másolandó blob nevét tartalmazza. Az új blob neve *{originalblobname} – Copy*.
+Az alábbi példa a blob bemeneti és kimeneti kötéseit mutatja be egy olyan *function.jsa* fájl-és [C#-parancsfájl (. CSX)](functions-reference-csharp.md) kódjában, amely a kötéseket használja. A függvény egy szöveges blob másolatát készíti el. A függvényt egy üzenetsor-üzenet indítja el, amely a másolandó blob nevét tartalmazza. Az új blob neve *{originalblobname} – Copy*.
 
-A *function. JSON* fájlban a `queueTrigger` metaadatok tulajdonság a következő tulajdonságok alapján adható meg `path` :
+A fájl *function.js* a `queueTrigger` metaadatok tulajdonság használatával adja meg a blob nevét a `path` Tulajdonságok között:
 
 ```json
 {
@@ -89,9 +88,9 @@ public static void Run(string myQueueItem, string myInputBlob, out string myOutp
 
 <!--Same example for input and output. -->
 
-Az alábbi példa a blob bemeneti és kimeneti kötéseit mutatja be egy *function. JSON* fájlban és [JavaScript-kódban](functions-reference-node.md) , amely a kötéseket használja. A függvény egy blob másolatát készíti el. A függvényt egy üzenetsor-üzenet indítja el, amely a másolandó blob nevét tartalmazza. Az új blob neve *{originalblobname} – Copy*.
+Az alábbi példa a blob bemeneti és kimeneti kötéseit mutatja be egy *function.jsa* fájl-és [JavaScript-kódban](functions-reference-node.md) , amely a kötéseket használja. A függvény egy blob másolatát készíti el. A függvényt egy üzenetsor-üzenet indítja el, amely a másolandó blob nevét tartalmazza. Az új blob neve *{originalblobname} – Copy*.
 
-A *function. JSON* fájlban a `queueTrigger` metaadatok tulajdonság a következő tulajdonságok alapján adható meg `path` :
+A fájl *function.js* a `queueTrigger` metaadatok tulajdonság használatával adja meg a blob nevét a `path` Tulajdonságok között:
 
 ```json
 {
@@ -138,9 +137,9 @@ module.exports = function(context) {
 
 <!--Same example for input and output. -->
 
-A következő példa egy *function. JSON* fájlban és a kötéseket használó [Python-kódban](functions-reference-python.md) mutatja be a blob bemeneti és kimeneti kötéseit. A függvény egy blob másolatát készíti el. A függvényt egy üzenetsor-üzenet indítja el, amely a másolandó blob nevét tartalmazza. Az új blob neve *{originalblobname} – Copy*.
+Az alábbi példa a blob bemeneti és kimeneti kötéseit mutatja be egy *function.jsa* fájlban és a [Python-kódban](functions-reference-python.md) , amely a kötéseket használja. A függvény egy blob másolatát készíti el. A függvényt egy üzenetsor-üzenet indítja el, amely a másolandó blob nevét tartalmazza. Az új blob neve *{originalblobname} – Copy*.
 
-A *function. JSON* fájlban a `queueTrigger` metaadatok tulajdonság a következő tulajdonságok alapján adható meg `path` :
+A fájl *function.js* a `queueTrigger` metaadatok tulajdonság használatával adja meg a blob nevét a `path` Tulajdonságok között:
 
 ```json
 {
@@ -300,9 +299,9 @@ Az `@BlobInput` attribútum hozzáférést biztosít a függvényt kiváltó blo
 
 ## <a name="configuration"></a>Konfiguráció
 
-Az alábbi táblázat a *function. JSON* fájlban és az attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti `Blob` .
+Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `Blob` .
 
-|function. JSON-tulajdonság | Attribútum tulajdonsága |Leírás|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
 |**típusa** | n.a. | Értékre kell állítani `blob` . |
 |**direction** | n.a. | Értékre kell állítani `in` . A kivételek a [használat](#usage) szakaszban vannak feltüntetve. |
@@ -325,7 +324,7 @@ Az alábbi táblázat a *function. JSON* fájlban és az attribútumban beállí
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-A Blobok adataihoz való hozzáférés `context.bindings.<NAME>` `<NAME>` a *function. JSON*fájlban megadott értéknek felel meg.
+A Blobok adataihoz való hozzáférés `context.bindings.<NAME>` `<NAME>` a *function.js*által megadott értéknek felel meg.
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -337,7 +336,7 @@ Az `@BlobInput` attribútum hozzáférést biztosít a függvényt kiváltó blo
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Függvény futtatása a blob Storage-beli adatváltozások esetén](./functions-bindings-storage-blob-trigger.md)
 - [BLOB Storage-adatok írása függvényből](./functions-bindings-storage-blob-output.md)

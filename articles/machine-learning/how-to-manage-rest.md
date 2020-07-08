@@ -11,10 +11,9 @@ ms.topic: how-to
 ms.date: 01/31/2020
 ms.custom: tracking-python
 ms.openlocfilehash: 6b74f9cdc5b3317edc8bf2339ba1d2c29f43e55b
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84560175"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>Azure ML-erőforrások létrehozása, futtatása és törlése a REST használatával
@@ -202,13 +201,13 @@ providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/mod
 
 Figyelje meg, hogy az elérési úton megjelenő kísérletek listája a `history/v1.0` modellek listázása mellett kezdődik `modelmanagement/v1.0` . A REST API több operatív csoportba vannak osztva, amelyek mindegyike külön elérési úttal rendelkezik. Az alábbi hivatkozásokon található API-referenciák a különböző műveletekhez tartozó műveletekkel, paraméterekkel és válaszokkal kapcsolatos kódokat felsorolják.
 
-|Terület|Elérési út|Referencia|
+|Terület|Elérési út|Hivatkozás|
 |-|-|-|
-|Artifacts|összetevő/v 2.0/|[REST API referenciája](https://docs.microsoft.com/rest/api/azureml/artifacts)|
-|Adattárolók|adattár/v 1.0/|[REST API referenciája](https://docs.microsoft.com/rest/api/azureml/datastores)|
-|Hiperparaméterek finomhangolása|HyperDrive/v 1.0/|[REST API referenciája](https://docs.microsoft.com/rest/api/azureml/hyperparametertuning)|
-|Modellek|modelmanagement/v 1.0/|[REST API referenciája](https://docs.microsoft.com/rest/api/azureml/modelsanddeployments/mlmodels)|
-|Előzmények|végrehajtás/v 1.0/és előzmények/v 1.0/|[REST API referenciája](https://docs.microsoft.com/rest/api/azureml/runs)|
+|Artifacts|összetevő/v 2.0/|[REST API-referencia](https://docs.microsoft.com/rest/api/azureml/artifacts)|
+|Adattárolók|adattár/v 1.0/|[REST API-referencia](https://docs.microsoft.com/rest/api/azureml/datastores)|
+|Hiperparaméterek finomhangolása|HyperDrive/v 1.0/|[REST API-referencia](https://docs.microsoft.com/rest/api/azureml/hyperparametertuning)|
+|Modellek|modelmanagement/v 1.0/|[REST API-referencia](https://docs.microsoft.com/rest/api/azureml/modelsanddeployments/mlmodels)|
+|Előzmények|végrehajtás/v 1.0/és előzmények/v 1.0/|[REST API-referencia](https://docs.microsoft.com/rest/api/azureml/runs)|
 
 A REST API a következő általános mintázattal derítheti fel:
 
@@ -271,7 +270,7 @@ Egy sikeres kérelem kap egy `201 Created` választ, de a válasz egyszerűen az
 
 ### <a name="create-an-experimental-run"></a>Kísérleti Futtatás létrehozása
 
-Egy kísérleten belüli Futtatás indításához szüksége van egy zip-mappára, amely tartalmazza a betanítási parancsfájlt és a kapcsolódó fájlokat, valamint egy Run definition JSON-fájlt. A zip-mappának tartalmaznia kell a Python-bejegyzés fájlját a gyökérkönyvtárában. Tegyük fel például, hogy egy triviális Python-programot, például a következőt egy **Train. zip**nevű mappába helyezi.
+Egy kísérleten belüli Futtatás indításához szüksége van egy zip-mappára, amely tartalmazza a betanítási parancsfájlt és a kapcsolódó fájlokat, valamint egy Run definition JSON-fájlt. A zip-mappának tartalmaznia kell a Python-bejegyzés fájlját a gyökérkönyvtárában. Például egy triviális Python-programot, például a következőt egy **train.zip**nevű mappába.
 
 ```python
 # hello.py
@@ -279,7 +278,7 @@ Egy kísérleten belüli Futtatás indításához szüksége van egy zip-mappár
 print("Hello, REST!")
 ```
 
-Mentse ezt a következő kódrészletet **definition. JSON**néven. Ellenőrizze, hogy a "script" érték megegyezik-e a csak a tömörített Python-fájl nevével. Ellenőrizze, hogy a "Target" érték megegyezik-e egy elérhető számítási erőforrás nevével. 
+Mentse ezt a következő kódrészletet **definition.jsként**. Ellenőrizze, hogy a "script" érték megegyezik-e a csak a tömörített Python-fájl nevével. Ellenőrizze, hogy a "Target" érték megegyezik-e egy elérhető számítási erőforrás nevével. 
 
 ```json
 {
@@ -420,7 +419,7 @@ A Azure Machine Learning munkaterület egyes műveletekhez Azure Container Regis
 
 [!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerkedjen meg a teljes [AzureML REST API-referenciával](https://docs.microsoft.com/rest/api/azureml/).
 - Megtudhatja, hogyan használhatja a Studio & designert [az autó árának előrejelzésére a Designerben (előzetes verzió)](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-train-score).

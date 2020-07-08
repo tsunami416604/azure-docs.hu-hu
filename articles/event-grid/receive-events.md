@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 01/01/2019
 ms.author: femila
 ms.openlocfilehash: dd7535030ea4f6d6769630e463618faab62944a0
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84558476"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>Események fogadása HTTP-végponton
@@ -32,7 +31,7 @@ Ha a .NET-ben fejleszt fejlesztést, [vegyen fel egy függőséget](../azure-fun
 
 A más nyelvekhez készült SDK-k az SDK-k [közzététele](./sdk-overview.md#data-plane-sdks) hivatkozáson keresztül érhetők el. Ezek a csomagok a natív eseménytípus modelljeit (például `EventGridEvent` ,, `StorageBlobCreatedEventData` és `EventHubCaptureFileCreatedEventData` ) rendelkeznek.
 
-Kattintson a fájlok megtekintése hivatkozásra az Azure-függvényben (a jobb oldali ablaktábla az Azure functions portálon), és hozzon létre egy Project. JSON nevű fájlt. Adja hozzá a következő tartalmat a `project.json` fájlhoz, és mentse azt:
+Kattintson a fájlok megtekintése hivatkozásra az Azure-függvényben (az Azure functions portál jobb oldali ablaktábláján), és hozzon létre egy project.jsnevű fájlt. Adja hozzá a következő tartalmat a `project.json` fájlhoz, és mentse azt:
 
  ```json
 {
@@ -366,7 +365,7 @@ Végezetül ellenőrizze, hogy a függvény mostantól képes-e kezelni az egyé
 
 Ezt a funkciót élőben is tesztelheti, ha [Egyéni eseményt küld a portálról,](./custom-event-quickstart-portal.md) vagy [egy egyéni témakörbe](./post-to-custom-topic.md) helyezi el egy olyan szolgáltatással vagy alkalmazással, amely egy végpontra, például [Poster](https://www.getpostman.com/)-re tehet közzé. Hozzon létre egy egyéni témakört és egy esemény-előfizetést a függvény URL-címének megfelelő végponttal.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Az [SDK-k Azure Event Grid felügyeletének és közzétételének](./sdk-overview.md) megismerése
 * Útmutató [Egyéni témakörhöz való közzétételhez](./post-to-custom-topic.md)

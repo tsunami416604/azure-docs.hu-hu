@@ -10,10 +10,9 @@ ms.tgt_pltfrm: arduino
 ms.date: 6/08/2020
 ms.author: robinsh
 ms.openlocfilehash: ed429d2f584da20439b0cb0eedcf4742b9ae4599
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84634519"
 ---
 # <a name="visualize-real-time-sensor-data-from-azure-iot-hub-using-power-bi"></a>Valós idejű érzékelők adatainak megjelenítése az Azure IoT Hub használatával Power BI
@@ -36,7 +35,7 @@ Megtudhatja, hogyan jelenítheti meg a valós idejű érzékelők adatait, amely
 
 ## <a name="what-you-need"></a>Mi szükséges
 
-* Fejezze be a [málna PI online szimulátor](iot-hub-raspberry-pi-web-simulator-get-started.md) oktatóanyagát vagy az eszköz egyik oktatóanyagát; például: [málna PI és Node. js](iot-hub-raspberry-pi-kit-node-get-started.md). Ezek a cikkek a következő követelményekre vonatkoznak:
+* Fejezze be a [málna PI online szimulátor](iot-hub-raspberry-pi-web-simulator-get-started.md) oktatóanyagát vagy az eszköz egyik oktatóanyagát; például a [málna PI és a node.js](iot-hub-raspberry-pi-kit-node-get-started.md). Ezek a cikkek a következő követelményekre vonatkoznak:
   
   * Aktív Azure-előfizetés.
   * Az előfizetéshez tartozó Azure IoT hub.
@@ -64,7 +63,7 @@ Kezdjük egy Stream Analytics feladatok létrehozásával. A feladatnak a létre
 
    ![Stream Analytics-feladatok létrehozása az Azure-ban](./media/iot-hub-live-data-visualization-in-power-bi/create-stream-analytics-job.png)
 
-3. Kattintson a **Létrehozás** gombra.
+3. Válassza a **Létrehozás** lehetőséget.
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Bemenet hozzáadása a Stream Analytics-feladathoz
 
@@ -195,7 +194,7 @@ Megadhatja a jelentés hivatkozását, amelyet bárki megoszthat a jelentésekhe
 
 A Microsoft a mobileszköz-irányítópultok és-jelentések megtekintését és Power BI interakcióját is biztosítja a [Power bi Mobile apps](https://powerbi.microsoft.com/en-us/documentation/powerbi-power-bi-apps-for-mobile-devices/) szolgáltatásban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Sikeresen felhasználta Power BI az Azure IoT hub valós idejű érzékelői adatainak megjelenítéséhez.
 

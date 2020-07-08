@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017, tracking-python
 ms.date: 12/16/2019
 ms.openlocfilehash: 71709e2f1dcbab188646241eaeb4809e168d5697
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84608774"
 ---
 # <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>Apache Storm-topológiák fejlesztése a Python használatával a HDInsight-on
@@ -143,6 +142,6 @@ A topológia elindítása után a következő szöveghez hasonló módon bocsát
 
 A topológia leállításához használja a __CTRL + C billentyűkombinációt__.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Python és a HDInsight használatának egyéb módjairól a következő dokumentumokban talál további információt: a [Python felhasználói függvények (UDF) használata az Apache Pig és a Apache Hiveban](../hadoop/python-udf-hdinsight.md).

@@ -13,10 +13,9 @@ ms.reviewer: nibaccam
 ms.date: 01/09/2020
 ms.custom: tracking-python
 ms.openlocfilehash: c6d2e05104e2801129544b1cc91d3d7a00161f86
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84560150"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>A betanítási futtatások elindítása, figyelése és megszakítása a Pythonban
@@ -403,7 +402,7 @@ Az Azure CLI eredményeinek lekérdezésével kapcsolatos további információk
 
 1. A keresősáv használatával szűrheti a folyamatokat a címkék, a leírások, a kísérletezési nevek és a küldő neve alapján.
 
-## <a name="example-notebooks"></a>Jegyzetfüzetek – példa
+## <a name="example-notebooks"></a>Példajegyzetfüzetek
 
 A következő jegyzetfüzetek a cikkben ismertetett fogalmakat mutatják be:
 
@@ -411,7 +410,7 @@ A következő jegyzetfüzetek a cikkben ismertetett fogalmakat mutatják be:
 
 * A Azure Machine Learning SDK-val való futtatásával kapcsolatos további információkért tekintse meg a [futtatási jegyzetfüzet kezelése](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/track-and-monitor-experiments/manage-runs/manage-runs.ipynb)című témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ha szeretné megtudni, hogyan naplózhatja a kísérletek mérőszámait, tekintse meg a következő témakört: a [betanítási mérőszámok](how-to-track-experiments.md).
 * Ha szeretné megismerni, hogyan figyelheti Azure Machine Learning erőforrásait és naplóit, tekintse meg a [figyelés Azure Machine learning](monitor-azure-machine-learning.md).

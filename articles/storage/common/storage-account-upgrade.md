@@ -9,10 +9,9 @@ ms.topic: how-to
 ms.date: 02/25/2019
 ms.author: tamram
 ms.openlocfilehash: 725c319e4abb6cc65e1e6a900218393ace2d4d16
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84629566"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Frissítés általános célú v2-tárfiókra
@@ -165,6 +164,6 @@ A Blob Storage-tárfiókok georeplikációs adatátviteli költségei szintén a
 > [!NOTE]
 > A gyakori és ritka elérésű tárolási hozzáférési szint használatának költségeinek kiszámításához tekintse meg a *"mi a gyors és a lassú elérési szint, és Hogyan határozható meg, hogy melyiket érdemes használni?"* című részt. az [Azure Storage díjszabását tartalmazó oldalon](https://azure.microsoft.com/pricing/details/storage/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Tárfiók létrehozása](storage-account-create.md)

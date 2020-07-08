@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.custom: seoapr2020, tracking-python
 ms.date: 04/23/2020
 ms.openlocfilehash: 0a434e09e940bcfaa459b45ef402b72229bb9375
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84610015"
 ---
 # <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>A PySpark interaktív környezet beállítása a Visual Studio Code-hoz
@@ -55,7 +54,7 @@ sudo apt-get install python-dev
 
 Indítsa újra a VSCode, majd térjen vissza a VSCode-szerkesztőhöz, és futtassa a **Spark: PySPark Interactive** parancsot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 ### <a name="demo"></a>Bemutató
 

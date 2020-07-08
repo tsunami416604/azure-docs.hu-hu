@@ -7,10 +7,9 @@ ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: tracking-python
 ms.openlocfilehash: c88ace8693d15a58c78c70ba46001c98e92fc0a6
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84559975"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>Azure Blob Storage-trigger Azure Functions
@@ -59,9 +58,9 @@ További információ az `BlobTrigger` attribútumról: [attribútumok és jegyz
 
 # <a name="c-script"></a>[C#-parancsfájl](#tab/csharp-script)
 
-Az alábbi példa egy blob trigger kötést mutat be egy *function. JSON* fájlban és a kötést használó kódban. A függvény naplót ír, amikor egy blobot vesznek fel vagy frissülnek a `samples-workitems` [tárolóban](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources).
+A következő példa egy blob trigger kötést mutat be egy *function.jsa* fájlban és a kódban, amely a kötést használja. A függvény naplót ír, amikor egy blobot vesznek fel vagy frissülnek a `samples-workitems` [tárolóban](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources).
 
-Itt található a *function. JSON* fájlban található kötési adat:
+A *function.js* fájlban található kötési adatfájlok:
 
 ```json
 {
@@ -80,7 +79,7 @@ Itt található a *function. JSON* fájlban található kötési adat:
 
 A `{name}` blob trigger elérési útjának karakterlánca `samples-workitems/{name}` egy [kötési kifejezést](./functions-bindings-expressions-patterns.md) hoz létre, amelyet a függvény kódjában használhat az indító blob fájlnevének eléréséhez. További információ: [blob Name Patterns](#blob-name-patterns) a cikk későbbi részében.
 
-További információ a *function. JSON* fájl tulajdonságairól: [konfigurációs](#configuration) szakasz ismerteti ezeket a tulajdonságokat.
+További információ a fájltulajdonságok *function.jsáról* : [konfigurációs](#configuration) szakasz ismerteti ezeket a tulajdonságokat.
 
 Az alábbi C#-szkript a következőhöz kötődik `Stream` :
 
@@ -106,9 +105,9 @@ public static void Run(CloudBlockBlob myBlob, string name, ILogger log)
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-A következő példa egy blob trigger kötést mutat be egy *function. JSON* fájlban és [JavaScript-kódban](functions-reference-node.md) , amely a kötést használja. A függvény naplót ír, amikor egy blobot vesznek fel vagy frissülnek a `samples-workitems` tárolóban.
+A következő példa egy blob trigger kötést mutat be egy *function.jsa* fájlban és a [JavaScript-kódban](functions-reference-node.md) , amely a kötést használja. A függvény naplót ír, amikor egy blobot vesznek fel vagy frissülnek a `samples-workitems` tárolóban.
 
-Itt látható a *function. JSON* fájl:
+A fájl *function.js* :
 
 ```json
 {
@@ -127,7 +126,7 @@ Itt látható a *function. JSON* fájl:
 
 A `{name}` blob trigger elérési útjának karakterlánca `samples-workitems/{name}` egy [kötési kifejezést](./functions-bindings-expressions-patterns.md) hoz létre, amelyet a függvény kódjában használhat az indító blob fájlnevének eléréséhez. További információ: [blob Name Patterns](#blob-name-patterns) a cikk későbbi részében.
 
-További információ a *function. JSON* fájl tulajdonságairól: [konfigurációs](#configuration) szakasz ismerteti ezeket a tulajdonságokat.
+További információ a fájltulajdonságok *function.jsáról* : [konfigurációs](#configuration) szakasz ismerteti ezeket a tulajdonságokat.
 
 Itt látható a JavaScript-kód:
 
@@ -140,9 +139,9 @@ module.exports = function(context) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Az alábbi példa egy blob trigger kötést mutat be egy *function. JSON* fájlban és a kötést használó [Python-kódban](functions-reference-python.md) . A függvény naplót ír, amikor egy blobot vesznek fel vagy frissülnek a `samples-workitems` [tárolóban](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources).
+A következő példa egy blob trigger kötést mutat be egy *function.jsa* fájlban és a [Python-kódban](functions-reference-python.md) , amely a kötést használja. A függvény naplót ír, amikor egy blobot vesznek fel vagy frissülnek a `samples-workitems` [tárolóban](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources).
 
-Itt látható a *function. JSON* fájl:
+A fájl *function.js* :
 
 ```json
 {
@@ -162,7 +161,7 @@ Itt látható a *function. JSON* fájl:
 
 A `{name}` blob trigger elérési útjának karakterlánca `samples-workitems/{name}` egy [kötési kifejezést](./functions-bindings-expressions-patterns.md) hoz létre, amelyet a függvény kódjában használhat az indító blob fájlnevének eléréséhez. További információ: [blob Name Patterns](#blob-name-patterns) a cikk későbbi részében.
 
-További információ a *function. JSON* fájl tulajdonságairól: [konfigurációs](#configuration) szakasz ismerteti ezeket a tulajdonságokat.
+További információ a fájltulajdonságok *function.jsáról* : [konfigurációs](#configuration) szakasz ismerteti ezeket a tulajdonságokat.
 
 Itt látható a Python-kód:
 
@@ -273,9 +272,9 @@ Az `@BlobTrigger` attribútummal hozzáférést biztosíthat a függvényt kivá
 
 ## <a name="configuration"></a>Konfiguráció
 
-Az alábbi táblázat a *function. JSON* fájlban és az attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti `BlobTrigger` .
+Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `BlobTrigger` .
 
-|function. JSON-tulajdonság | Attribútum tulajdonsága |Leírás|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
 |**típusa** | n.a. | Értékre kell állítani `blobTrigger` . Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban.|
 |**direction** | n.a. | Értékre kell állítani `in` . Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban. A kivételek a [használat](#usage) szakaszban vannak feltüntetve. |
@@ -297,7 +296,7 @@ Az alábbi táblázat a *function. JSON* fájlban és az attribútumban beállí
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-A Blobok adataihoz való hozzáférés `context.bindings.<NAME>` `<NAME>` a *function. JSON*fájlban megadott értéknek felel meg.
+A Blobok adataihoz való hozzáférés `context.bindings.<NAME>` `<NAME>` a *function.js*által megadott értéknek felel meg.
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -311,7 +310,7 @@ Az `@BlobTrigger` attribútummal hozzáférést biztosíthat a függvényt kivá
 
 ## <a name="blob-name-patterns"></a>BLOB nevének mintázata
 
-A blob neve mintát megadhatja a `path` *function. JSON* fájlban vagy az `BlobTrigger` Attribute konstruktorban. A név minta lehet [szűrő vagy kötési kifejezés](./functions-bindings-expressions-patterns.md)is. A következő szakasz példákat tartalmaz.
+A blob neve mintát megadhatja a `path` tulajdonságban *function.json* vagy az `BlobTrigger` Attribute konstruktorban. A név minta lehet [szűrő vagy kötési kifejezés](./functions-bindings-expressions-patterns.md)is. A következő szakasz példákat tartalmaz.
 
 ### <a name="get-file-name-and-extension"></a>Fájl nevének és kiterjesztésének beolvasása
 
@@ -321,7 +320,7 @@ Az alábbi példa bemutatja, hogyan köthető a blob-fájl nevéhez és kiterjes
 "path": "input/{blobname}.{blobextension}",
 ```
 
-Ha a blob neve *Original-Blob1. txt*, a (z) és a (z `blobname` `blobextension` ) függvény kódjában található változók értékei az *eredeti-Blob1* és a *txt*.
+Ha a blob neve *original-Blob1.txt*, a (z) és a (z `blobname` `blobextension` ) függvény kódjában szereplő változók értékei az *eredeti-Blob1* és a *txt*.
 
 ### <a name="filter-on-blob-name"></a>Szűrés a blob nevén
 
@@ -331,7 +330,7 @@ Az alábbi példa csak a tárolóban lévő blobokat indítja `input` el, amelye
 "path": "input/original-{name}",
 ```
 
-Ha a blob neve *Original-Blob1. txt*, a `name` függvény kódjában található változó értéke `Blob1` .
+Ha a blob neve *original-Blob1.txt*, a `name` függvény kódjában található változó értéke `Blob1` .
 
 ### <a name="filter-on-file-type"></a>Szűrés fájltípus alapján
 
@@ -349,7 +348,7 @@ Ha kapcsos zárójeleket szeretne keresni a fájlnevekben, a kapcsos zárójelek
 "path": "images/{{20140101}}-{name}",
 ```
 
-Ha a blob neve * {20140101} -soundfile. mp3*, a `name` függvény kódjában található változó értéke *hangállomány. mp3*.
+Ha a blob neve * {20140101}-soundfile.mp3*, a `name` függvény kódjában található változó értéke *soundfile.mp3*.
 
 ## <a name="metadata"></a>Metaadatok
 
@@ -408,7 +407,7 @@ Ha mind az 5 próbálkozás sikertelen, Azure Functions hozzáadja az üzenetet 
 
 ## <a name="concurrency-and-memory-usage"></a>Egyidejűség és memóriahasználat
 
-A blob-trigger belsőleg használ egy várólistát, így az egyidejű függvények maximális száma a [Host. JSON fájlban található várólisták konfigurációjának megfelelően](functions-host-json.md#queues)van szabályozva. Az alapértelmezett beállítások a párhuzamosságot 24 hívásra korlátozzák. Ez a korlát külön vonatkozik a blob-triggert használó összes függvényre.
+A blob-trigger belsőleg használ egy várólistát, így az egyidejű függvények maximális számát a [host.js-ben lévő várólisták konfigurációja](functions-host-json.md#queues)vezérli. Az alapértelmezett beállítások a párhuzamosságot 24 hívásra korlátozzák. Ez a korlát külön vonatkozik a blob-triggert használó összes függvényre.
 
 [A használati terv az](functions-scale.md#how-the-consumption-and-premium-plans-work) egyik virtuális GÉPEN (VM) lévő function alkalmazást 1,5 GB memóriára korlátozza. A memóriát a párhuzamosan futó és a functions Runtime is használja. Ha egy blob által aktivált függvény a teljes blobot betölti a memóriába, az adott függvény által a Blobok által használt maximális memória 24 * a blob maximális mérete. Például a három blob által aktivált függvényt használó Function alkalmazás, valamint az alapértelmezett beállítások esetében a 3 * 24 = 72 függvény meghívása esetén a virtuális gépek maximális száma.
 
@@ -424,7 +423,7 @@ A lekérdezés hibridként működik a naplók vizsgálata és az időszakos tá
 > Ha gyorsabb vagy megbízhatóbb blob-feldolgozásra van szüksége, érdemes lehet üzenetsor- [üzenetet](../storage/queues/storage-dotnet-how-to-use-queues.md) létrehozni a blob létrehozásakor. Ezután használjon egy [üzenetsor-triggert](functions-bindings-storage-queue.md) a blob-trigger helyett a blob feldolgozásához. Egy másik lehetőség a Event Grid használata; Tekintse meg az oktatóanyagot, amely [automatizálja a feltöltött képek átméretezését Event Grid használatával](../event-grid/resize-images-on-storage-blob-upload-event.md).
 >
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [BLOB Storage-adat olvasása függvény futtatásakor](./functions-bindings-storage-blob-input.md)
 - [BLOB Storage-adatok írása függvényből](./functions-bindings-storage-blob-output.md)

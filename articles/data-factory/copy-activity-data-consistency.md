@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.date: 3/27/2020
 ms.author: yexu
 ms.openlocfilehash: a45c8ce820532d11f18758924dc3399818cb9158
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84610219"
 ---
 #  <a name="data-consistency-verification-in-copy-activity-preview"></a>Adatkonzisztencia-ellenőrzés a másolási tevékenységben (előzetes verzió)
@@ -136,7 +135,7 @@ Ha úgy konfigurálja, hogy naplózza a inkonzisztens fájlt, a naplófájlt a k
 
 A naplófájl sémája a következő:
 
-Oszlop | Leírás 
+Oszlop | Description 
 -------- | -----------  
 Időbélyeg | A nem konzisztens fájlok kihagyása az ADF-ben.
 Szint | Az adott tétel naplózási szintje. A fájl kihagyása esetén a rendszer figyelmeztetési szinten jeleníti meg az elemeket.
@@ -149,11 +148,11 @@ A naplófájl példája a következő:
 Timestamp, Level, OperationName, OperationItem, Message
 2020-02-26 06:22:56.3190846, Warning, FileSkip, "sample1.csv", "File is skipped after read 548000000 bytes: ErrorCode=DataConsistencySourceDataChanged,'Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,Message=Source file 'sample1.csv' is changed by other clients during the copy activity run.,Source=,'." 
 ```
-A fenti naplófájlban láthatja, hogy a sample1. csv fájl ki lett hagyva, mert nem sikerült ellenőrizni, hogy konzisztens-e a forrás-és a célhely-tároló között. További részleteket tudhat meg arról, hogy a sample1. csv miért inkonzisztens lesz, mert más alkalmazások is módosították, amikor az ADF másolási tevékenysége egyidejű másolást végez. 
+A fenti naplófájlban láthatja, sample1.csv ki lett hagyva, mert nem sikerült ellenőrizni, hogy konzisztens-e a forrás-és a célhely-tároló között. További részleteket tudhat meg arról, hogy miért inkonzisztensek az sample1.csv, mert más alkalmazások is módosították, amikor az ADF másolási tevékenysége egy időben történik. 
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Lásd a másolási tevékenység egyéb cikkeit:
 
 - [Másolási tevékenység – áttekintés](copy-activity-overview.md)

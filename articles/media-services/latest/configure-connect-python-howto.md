@@ -15,10 +15,9 @@ ms.date: 04/15/2019
 ms.author: juliako
 ms.custom: tracking-python
 ms.openlocfilehash: 3e6e421d346925f751595ce2fb2d0891e31dc108
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84559620"
 ---
 # <a name="connect-to-media-services-v3-api---python"></a>Kapcsolódás Media Services V3 API-hoz – Python
@@ -102,7 +101,7 @@ pip3 install azure-mgmt-media==1.1.1
 
 1. A fájl futtatása
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A [PYTHON SDK](https://aka.ms/ams-v3-python-sdk)használata.
 - Tekintse át a Media Services [Python ref](https://aka.ms/ams-v3-python-ref) dokumentációját.

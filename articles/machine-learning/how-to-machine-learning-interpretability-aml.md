@@ -12,10 +12,9 @@ ms.reviewer: Luis.Quintanilla
 ms.date: 04/12/2020
 ms.custom: tracking-python
 ms.openlocfilehash: 32b33eed6b4dba303993f4c16fbd2ad42b3902f9
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84560207"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python"></a>Az adatelemzési csomag használata a Pythonban & ML-modellek elmagyarázása érdekében
@@ -304,7 +303,7 @@ Miután letöltötte a magyarázatokat a helyi Jupyter notebookon, a vizualizác
 
 A következő mintaterületek átfogó képet nyújtanak a betanított modellről, valamint az előrejelzéseit és magyarázatait.
 
-|Telek|Leírás|
+|Telek|Description|
 |----|-----------|
 |Adatelemzés| Az adatkészlet áttekintését jeleníti meg az előrejelzési értékekkel együtt.|
 |Globális fontosság|Az összesítések az egyes datapoints fontossági értékeit jelenítik meg a modell általános felső K (a konfigurálható K) fontos funkcióinak megjelenítéséhez. Segít az alapul szolgáló modell általános működésének megértésében.|
@@ -318,7 +317,7 @@ A következő mintaterületek átfogó képet nyújtanak a betanított modellrő
 
 Bármilyen adatponthoz betöltheti az egyes funkció fontossági területét, ha az összes adatpontra kattint a teljes mintaterületeken.
 
-|Telek|Leírás|
+|Telek|Description|
 |----|-----------|
 |Helyi fontosság|Megjeleníti az egyes előrejelzésekhez tartozó legfontosabb funkciókat (K). Segít bemutatni az alapul szolgáló modell helyi viselkedését egy adott adatponton.|
 |Perturbáció-feltárás (mi a teendő, ha elemzés)|Lehetővé teszi a kijelölt adatponthoz tartozó szolgáltatások értékének módosítását, és megfigyelheti az előrejelzés értékének változásait.|
@@ -567,7 +566,7 @@ A magyarázatot az eredeti modellel is üzembe helyezheti, és a következtetés
 
    Központilag telepített webszolgáltatás törléséhez használja a következőt: `service.delete()` .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [További információ a modell értelmezéséről](how-to-machine-learning-interpretability.md)
 

@@ -8,10 +8,9 @@ ms.date: 10/16/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: 6f16784d89d1f3edec491d5c7ae312dbd46212f1
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84658133"
 ---
 # <a name="attach-a-data-disk-to-a-windows-vm-with-powershell"></a>Adatlemez csatolása Windows rendszerű virtuális géphez a PowerShell-lel
@@ -115,6 +114,6 @@ $vm = Add-AzVMDataDisk -CreateOption Attach -Lun 0 -VM $vm -ManagedDiskId $disk.
 Update-AzVM -VM $vm -ResourceGroupName $rgName
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A felügyelt lemezeket sablonok használatával is üzembe helyezheti. További információ: [Managed Disks használata Azure Resource Manager sablonokban](using-managed-disks-template-deployments.md) vagy a gyors üzembe helyezési [sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-multiple-data-disk) több adatlemez telepítéséhez.

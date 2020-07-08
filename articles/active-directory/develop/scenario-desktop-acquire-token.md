@@ -13,10 +13,9 @@ ms.date: 05/18/2020
 ms.author: jmprieur
 ms.custom: aaddev, tracking-python
 ms.openlocfilehash: 58be0315b272199e74f28654aae315a8c6c5f7b5
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84558824"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Webes API-kat meghívó asztali alkalmazás: token beszerzése
@@ -1388,7 +1387,7 @@ namespace CommonCacheMsalV3
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Webes API meghívása az asztali alkalmazásból](scenario-desktop-call-api.md)

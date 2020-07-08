@@ -8,10 +8,9 @@ ms.author: femila
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.openlocfilehash: 10a0b138c702d4e4d09608c42959c68e97790f81
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84560991"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>Témakörök kezelése és események közzététele az Event Domain használatával
@@ -212,6 +211,6 @@ Get-AzureRmEventGridDomainKey `
 
 Ezt követően pedig kedvenc metódusával teheti közzé az eseményeket a Event Grid tartományában.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ az Event-tartományok magas szintű fogalmakról és azok hasznos okairól: az esemény- [tartományok fogalmi áttekintése](event-domains.md).

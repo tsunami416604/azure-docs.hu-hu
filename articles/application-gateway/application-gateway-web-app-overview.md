@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 06/09/2020
 ms.author: victorh
 ms.openlocfilehash: 308098bd1ac49510afccf0a7964face726906332
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84628676"
 ---
 # <a name="application-gateway-support-for-multi-tenant-back-ends-such-as-app-service"></a>Application Gateway támogatja a több-bérlős háttérrendszer, például az App Service használatát
@@ -61,6 +60,6 @@ Előfordulhatnak olyan forgatókönyvek, amelyekben az App Service-válaszban sz
 
 Az ilyen esetek megoldásához lásd: [az App Service URL-címére irányuló átirányítás hibaelhárítása](https://docs.microsoft.com/azure/application-gateway/troubleshoot-app-service-redirection-app-service-url).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtudhatja, hogyan állíthat be egy olyan Application Gateway-t egy több-bérlős alkalmazással, mint például az Azure app Service web app a háttérbeli készlet tagjaként, ha meglátogatja [app Service webalkalmazások konfigurálását Application Gateway](https://docs.microsoft.com/azure/application-gateway/configure-web-app-portal)

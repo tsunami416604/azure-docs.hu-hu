@@ -9,10 +9,9 @@ ms.topic: how-to
 ms.date: 08/07/2019
 ms.author: alkohli
 ms.openlocfilehash: 22fd67797bbec516317aadaa4b33371c5d335b36
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84609454"
 ---
 # <a name="use-the-azure-portal-to-administer-your-azure-data-box-and-azure-data-box-heavy"></a>A Azure Portal használatával felügyelheti Azure Data Box és Azure Data Box Heavy
@@ -48,7 +47,7 @@ A rendelések klónozásához kövesse az alábbi lépéseket.
 
     ![Rendelés klónozása 1](media/data-box-portal-admin/clone-order1.png)
 
-2.  A rendelés részletei változatlanok maradnak. A rendelés neve az eredeti rendelés neve lesz a *-Klón* utótaggal kiegészítve. Jelölje be a jelölőnégyzetet annak megerősítéséhez, hogy átolvasta az adatvédelmi információkat. Kattintson a **Létrehozás**gombra.
+2.  A rendelés részletei változatlanok maradnak. A rendelés neve az eredeti rendelés neve lesz a *-Klón* utótaggal kiegészítve. Jelölje be a jelölőnégyzetet annak megerősítéséhez, hogy átolvasta az adatvédelmi információkat. Kattintson a **Létrehozás** lehetőségre.
 
 A klón létrehozása néhány percet vesz igénybe, és a portálon megjelenik az új rendelés.
 
@@ -197,7 +196,7 @@ Emellett a felügyeleti naplók láncát, azaz az auditnaplókat és a darabjegy
 
 Az eszköz állapotának a portálon való változásáról a rendszer értesítést küld e-mailben.
 
-|Rendelés állapota |Leírás |
+|Rendelés állapota |Description |
 |---------|---------|
 |Megrendelve     | A rendelés sikeresen fel lett adva. <br>Ha az eszköz elérhető, a Microsoft kiválaszt egy eszközt a szállításhoz, és előkészíti. <br> Ha az eszköz nem érhető el azonnal, a rendelés akkor lesz feldolgozva, amikor az eszköz elérhetővé válik. A rendelés feldolgozása néhány napot, de akár hónapokat is igénybe vehet. Ha a rendelés nem hajtható végre 90 napon belül, akkor a rendszer visszavonja azt, és e-mailben értesíti Önt.         |
 |Feldolgozva     | A rendelés feldolgozása befejeződött. Az eszköz szállításra való előkészítése a rendelésnek megfelelően megtörténik az adatközpontban.         |
@@ -214,6 +213,6 @@ Az eszköz állapotának a portálon való változásáról a rendszer értesít
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerje meg, hogyan lehet [elhárítani a Data Box és Data Box Heavy problémákat](data-box-troubleshoot.md).

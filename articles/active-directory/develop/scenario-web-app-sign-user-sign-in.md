@@ -12,10 +12,9 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev, tracking-python
 ms.openlocfilehash: 41124e7237c2c16034fe8cce1fa89fa0132d09b7
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84558922"
 ---
 # <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>Felhasználók számára bejelentkező webes alkalmazás: bejelentkezés és kijelentkezés
@@ -291,7 +290,7 @@ else
 
 # <a name="java"></a>[Java](#tab/java)
 
-A Java gyors útmutatóban a kijelentkezés gomb a main/resources/templates/auth_page.html fájlban található.
+A Java gyors útmutatóban a kijelentkezés gomb a Main/Resources/templates/auth_page.html fájlban található.
 
 ```html
 <!DOCTYPE html>
@@ -306,7 +305,7 @@ A Java gyors útmutatóban a kijelentkezés gomb a main/resources/templates/auth
 
 # <a name="python"></a>[Python](#tab/python)
 
-A Python rövid útmutatójában a kijelentkezés gomb a [templates/index. html # L10](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/e03be352914bfbd58be0d4170eba1fb7a4951d84/templates/index.html#L10) fájlban található.
+A Python rövid útmutatójában a kijelentkezés gomb a [templates/index.html # L10](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/e03be352914bfbd58be0d4170eba1fb7a4951d84/templates/index.html#L10) fájlban található.
 
 ```html
 <!DOCTYPE html>
@@ -335,7 +334,7 @@ A ASP.NET Core sablonok korábbi verzióiban a `Account` vezérlőt a webalkalma
 - Meghívások `Signout()` , amelyek lehetővé teszi, hogy az OpenID Connect middleware kapcsolatba lépjen a Microsoft Identity platform- `logout` végponttal. A végpont ekkor:
 
   - Törli a munkamenet-cookie-t a böngészőből.
-  - A kijelentkezési URL-címet hívja vissza. Alapértelmezés szerint a kijelentkezési URL-cím a [SignedOut. html](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Pages/Account/SignedOut.cshtml)kijelentkezett nézet lapját jeleníti meg. Ez az oldal a MIcrosoft. Identity. Web részeként is elérhető.
+  - A kijelentkezési URL-címet hívja vissza. Alapértelmezés szerint a kijelentkezési URL-cím megjeleníti a kijelentkezett nézet oldalt [SignedOut.html](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Pages/Account/SignedOut.cshtml). Ez az oldal a MIcrosoft. Identity. Web részeként is elérhető.
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
@@ -418,11 +417,11 @@ public class AccountController : Controller
 
 # <a name="java"></a>[Java](#tab/java)
 
-A Java gyors útmutatóban a kijelentkezés utáni átirányítási URI csak az index. html lapot jeleníti meg.
+A Java gyors útmutatóban a kijelentkezés utáni átirányítási URI csak a index.html oldalt jeleníti meg.
 
 # <a name="python"></a>[Python](#tab/python)
 
-A Python rövid útmutatójában a kijelentkezés utáni átirányítási URI csak az index. html lapot jeleníti meg.
+A Python rövid útmutatójában a kijelentkezés utáni átirányítási URI csak a index.html oldalt jeleníti meg.
 
 ---
 
@@ -430,7 +429,7 @@ A Python rövid útmutatójában a kijelentkezés utáni átirányítási URI cs
 
 Ha többet szeretne megtudni a kijelentkezésről, olvassa el az [Open ID csatlakozással](./v2-protocols-oidc.md)elérhető protokoll dokumentációját.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Átállás éles üzemre](scenario-web-app-sign-user-production.md)
+> [Áthelyezés éles környezetbe](scenario-web-app-sign-user-production.md)

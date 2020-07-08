@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: jingwang
 ms.openlocfilehash: 32af8c1b19d57fdba58ce27700e5d1e7a34f9c64
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84604983"
 ---
 # <a name="avro-format-in-azure-data-factory"></a>Avro formátuma Azure Data Factory
@@ -91,7 +90,7 @@ Az adatfolyamatok leképezése során a következő adattárakban olvashatók é
 
 Az alábbi táblázatban a Avro-forrás által támogatott tulajdonságok szerepelnek. Ezeket a tulajdonságokat a **forrás beállításai** lapon módosíthatja.
 
-| Name | Leírás | Kötelező | Megengedett értékek | Adatfolyam-parancsfájl tulajdonsága |
+| Name | Description | Kötelező | Megengedett értékek | Adatfolyam-parancsfájl tulajdonsága |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Wild kártya elérési útjai | A rendszer feldolgozza a helyettesítő karakteres elérési úttal egyező összes fájlt. Felülbírálja az adatkészletben beállított mappát és a fájl elérési útját. | nem | Karakterlánc [] | wildcardPaths |
 | Partíció gyökerének elérési útja | A particionált fájlok esetében megadhatja a partíció gyökerének elérési útját, hogy a particionált mappák oszlopként legyenek olvashatók. | nem | Sztring | partitionRootPath |
@@ -104,7 +103,7 @@ Az alábbi táblázatban a Avro-forrás által támogatott tulajdonságok szerep
 
 Az alábbi táblázat felsorolja a Avro-fogadó által támogatott tulajdonságokat. Ezeket a tulajdonságokat a **Beállítások** lapon módosíthatja.
 
-| Name | Leírás | Kötelező | Megengedett értékek | Adatfolyam-parancsfájl tulajdonsága |
+| Name | Description | Kötelező | Megengedett értékek | Adatfolyam-parancsfájl tulajdonsága |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Mappa törlése | Ha a célmappa az írás előtt törlődik | nem | `true` vagy `false` | truncate |
 | Fájlnév beállítás | Az írt adatnév formátuma. Alapértelmezés szerint egy fájl/partíció formátumban`part-#####-tid-<guid>` | nem | Minta: karakterlánc <br> /Partíció: karakterlánc [] <br> Oszlopbeli adatként: karakterlánc <br> Kimenet egyetlen fájlba:`['<fileName>']`  | filePattern <br> partitionFileNames <br> rowUrlColumn <br> partitionFileNames |
@@ -118,7 +117,7 @@ A Avro [összetett adattípusok](https://avro.apache.org/docs/current/spec.html#
 ### <a name="data-flows"></a>Adatfolyamok
 Az adatfolyamatok Avro-fájljainak használatakor az összetett adattípusok olvashatók és írhatók, de ügyeljen rá, hogy először törölje a fizikai sémát az adatkészletből. Az adatfolyamatokban beállíthatja a logikai kivetítést, és kiszármaztathatja az összetett struktúrákat tartalmazó oszlopokat, majd automatikusan leképezheti ezeket a mezőket egy Avro-fájlra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Másolási tevékenység – áttekintés](copy-activity-overview.md)
 - [Keresési tevékenység](control-flow-lookup-activity.md)

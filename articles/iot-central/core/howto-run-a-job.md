@@ -8,10 +8,9 @@ ms.author: sahubbar
 ms.date: 06/08/2020
 ms.topic: how-to
 ms.openlocfilehash: dec9abc38bc0354ef3d22994a7988bfb006f5769
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84609742"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>Feladatok létrehozása és futtatása az Azure IoT Central alkalmazásban
@@ -130,7 +129,7 @@ Adja meg a feladatok nevét és leírását, majd válassza a **feladatok újraf
 > [!NOTE]
 > Ha a feladatok befejeződik, és törli a feladathoz tartozó eszközök listáján szereplő eszközt, az eszköz neve és az eszköz részletei hivatkozása nem érhető el a törölt eszközhöz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerte, hogyan hozhat létre feladatokat az Azure IoT Central alkalmazásban, néhány további lépés:
 

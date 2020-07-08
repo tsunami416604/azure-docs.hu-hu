@@ -12,10 +12,9 @@ ms.author: daperlov
 manager: anandsub
 ms.custom: tracking-python
 ms.openlocfilehash: 983beb70ef1919dc3230d5daa6d29fb7209f69aa
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84561222"
 ---
 # <a name="programmatically-monitor-an-azure-data-factory"></a>Azure-beli adatgyár programozott figyelése
@@ -155,6 +154,6 @@ A folyamat PowerShell használatával történő létrehozásával és figyelés
 
 A PowerShell-parancsmagokkal kapcsolatos teljes dokumentációért lásd: [Data Factory PowerShell-parancsmagok leírása](/powershell/module/az.datafactory).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Lásd: [folyamatok figyelése Azure monitor cikk használatával](monitor-using-azure-monitor.md) , amelyből megtudhatja, hogyan használhatja a Azure Monitor a Data Factory folyamatok figyelésére. 
 

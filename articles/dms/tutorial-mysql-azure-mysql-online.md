@@ -13,17 +13,16 @@ ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/08/2020
 ms.openlocfilehash: e9fc2913a526e01ea5279c476e3deab779db88c1
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84609233"
 ---
 # <a name="tutorial-migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>Oktatóanyag: MySQL online migrálása az Azure Database for MySQL-be a DMS használatával
 
 A Azure Database Migration Service segítségével telepítheti át az adatbázisokat egy helyszíni MySQL-példányból, hogy [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/) minimális állásidővel. Ez azt jelenti, hogy a migrálás az alkalmazás minimális ideig tartó leállásával végezhető el. Ebben az oktatóanyagban áttelepíti az **alkalmazottak** minta-adatbázisát a MySQL 5,7 helyszíni példányáról, hogy Azure Database for MySQL a Azure Database Migration Service Online áttelepítési tevékenységével.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 >
 > * A mintaséma migrálása a mysqldump segédprogrammal.
@@ -270,7 +269,7 @@ Az első teljes betöltés elkészültével az adatbázisok **Átállásra kész
 3. Kattintson a **Megerősítés**, majd az **Alkalmaz** gombra.
 4. Ha az adatbázis migrálási állapota **Befejezve** értékre vált, csatlakoztassa alkalmazásait az új Azure SQL-céladatbázishoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Az Azure Database for MySQL-be történő online migrálás végrehajtásakor felmerülő ismert hibákhoz és korlátozásokhoz kapcsolódó információk: [Az Azure Database for MySQL online migrálásával kapcsolatos ismert hibák és kerülő megoldások](known-issues-azure-mysql-online.md).
 * További információ a Azure Database Migration Serviceről: mi a [Azure Database Migration Service?](https://docs.microsoft.com/azure/dms/dms-overview).

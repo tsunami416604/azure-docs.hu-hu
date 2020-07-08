@@ -9,10 +9,9 @@ ms.topic: how-to
 ms.date: 06/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 4e16f57d7a8ee10ef870ac102c5458cea4946304
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84608247"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>A helyi webes felhasználói felület használata a Data Box és Data Box Heavy felügyeletéhez
@@ -100,13 +99,13 @@ Mielőtt elkezdené, győződjön meg arról, hogy az eszköz elvégezte **szál
 
     |Fájlnév  |Azure Storage-típus  |Használt kapcsolati protokoll |
     |---------|---------|---------|
-    |databoxe2etest_BlockBlob. txt     |Blokkblobok         |SMB/NFS         |
-    |databoxe2etest_PageBlob. txt     |Lapblobok         |SMB/NFS         |
-    |databoxe2etest_AzFile-BOM. txt    |Azure Files         |SMB/NFS         |
-    |databoxe2etest_PageBlock_Rest-BOM. txt     |Lapblobok         |REST        |
-    |databoxe2etest_BlockBlock_Rest-BOM. txt    |Blokkblobok         |REST         |
-    |mydbmdrg1_MDisk-BOM. txt    |Felügyelt lemez         |SMB/NFS         |
-    |mydbmdrg2_MDisk-BOM. txt     |Felügyelt lemez         |SMB/NFS         |
+    |databoxe2etest_BlockBlob.txt     |Blokkblobok         |SMB/NFS         |
+    |databoxe2etest_PageBlob.txt     |Lapblobok         |SMB/NFS         |
+    |databoxe2etest_AzFile-BOM.txt    |Azure Files         |SMB/NFS         |
+    |databoxe2etest_PageBlock_Rest-BOM.txt     |Lapblobok         |REST        |
+    |databoxe2etest_BlockBlock_Rest-BOM.txt    |Blokkblobok         |REST         |
+    |mydbmdrg1_MDisk-BOM.txt    |Felügyelt lemez         |SMB/NFS         |
+    |mydbmdrg2_MDisk-BOM.txt     |Felügyelt lemez         |SMB/NFS         |
 
 Ezt a listát használhatja az Azure Storage-fiókba feltöltött fájlok ellenőrzéséhez, miután a Data Box visszatér az Azure-adatközpontba. Alább látható egy minta manifest-fájl.
 

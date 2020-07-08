@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 05/20/2020
 ms.openlocfilehash: 0c9982fd4aa6459cdcbd715077f08092075a9776
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84610066"
 ---
 # <a name="customer-owned-storage-accounts-for-log-ingestion-in-azure-monitor"></a>Felhasználói tulajdonban lévő Storage-fiókok a naplózás betöltéséhez Azure Monitor
@@ -230,6 +229,6 @@ Ha a munkaterület regisztrált Storage-fiókja egy másik régióban találhat�
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A privát hivatkozások beállításával kapcsolatos további információkért lásd: az [Azure privát hivatkozás használata a hálózatok biztonságos csatlakoztatásához Azure monitor](private-link-security.md)

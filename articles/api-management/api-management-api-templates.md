@@ -15,10 +15,9 @@ ms.date: 11/04/2019
 ms.author: apimpm
 ms.custom: tracking-python
 ms.openlocfilehash: 467d8b89ef5c114d647a257053ed3367d6336bdc
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84559340"
 ---
 # <a name="api-templates-in-azure-api-management"></a>API-sablonok az Azure API Management
@@ -90,7 +89,7 @@ Az ebben a szakaszban található sablonok segítségével testre szabhatja az A
   
 ### <a name="data-model"></a>Adatmodell  
   
-|Tulajdonság|Típus|Leírás|  
+|Tulajdonság|Típus|Description|  
 |--------------|----------|-----------------|  
 |`apis`|[API összefoglaló](api-management-template-data-model-reference.md#APISummary) entitások gyűjteménye.|Az aktuális felhasználó számára látható API-k.|  
   
@@ -1473,5 +1472,5 @@ puts response.body
 }  
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ a sablonok használatáról: [API Management fejlesztői portál testreszabása sablonok használatával](api-management-developer-portal-templates.md).

@@ -8,10 +8,9 @@ ms.topic: reference
 ms.date: 01/23/2020
 ms.author: femila
 ms.openlocfilehash: 933987f405b306607ae36c3f7b626108d641abf9
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84558976"
 ---
 # <a name="event-grid-subscription-schema"></a>Event Grid előfizetési séma
@@ -32,21 +31,21 @@ Az esemény-előfizetés nevének 3-64 karakter hosszúnak kell lennie, és csak
  
 ## <a name="event-subscription-properties"></a>Esemény-előfizetés tulajdonságai
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Típus | Description |
 | -------- | ---- | ----------- |
 | destination | objektum | A végpontot meghatározó objektum. |
 | filter | objektum | Egy választható mező az események típusának szűréséhez. |
 
 ### <a name="destination-object"></a>célobjektum
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Típus | Description |
 | -------- | ---- | ----------- |
 | endpointType | sztring | Az előfizetés végpontjának típusa (webhook/HTTP, Event hub vagy üzenetsor). | 
 | endpointUrl | sztring | Az esemény-előfizetésben szereplő események céljának URL-címe. | 
 
 ### <a name="filter-object"></a>objektum szűrése
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Típus | Description |
 | -------- | ---- | ----------- |
 | includedEventTypes | tömb | Egyezés, ha az eseményben szereplő eseménytípus pontos egyezést mutat az adott eseménytípus egyikének megadásához. Hibát jelez, ha az esemény neve nem egyezik az eseményforrás regisztrált eseménytípus nevével. Az alapértelmezett érték minden eseménytípus esetében megfelel. |
 | subjectBeginsWith | sztring | Előtag – az üzenet tárgy mezőjének megfelelő szűrő. Az alapértelmezett vagy az üres karakterlánc mindennek megfelel. | 
@@ -75,6 +74,6 @@ Az esemény-előfizetés nevének 3-64 karakter hosszúnak kell lennie, és csak
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A Event Grid bemutatása: [Mi az Event Grid?](overview.md)

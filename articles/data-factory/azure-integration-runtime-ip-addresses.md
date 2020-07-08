@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/06/2020
 ms.openlocfilehash: f3eed03c585ba6b48a21b36c21cb77585456fc2c
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84660268"
 ---
 # <a name="azure-integration-runtime-ip-addresses"></a>Azure Integration Runtime – IP-címek
@@ -40,6 +39,6 @@ Az Azure Integration Runtime számára felsorolt IP-címekről érkező forgalom
 
   Ehelyett javasoljuk, [hogy megbízható szolgáltatásokat használjon az Azure Storage-hoz való csatlakozáskor](https://techcommunity.microsoft.com/t5/azure-data-factory/data-factory-is-now-a-trusted-service-in-azure-storage-and-azure/ba-p/964993). 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A Azure Data Factory adatáthelyezésének biztonsági szempontjai](data-movement-security-considerations.md)

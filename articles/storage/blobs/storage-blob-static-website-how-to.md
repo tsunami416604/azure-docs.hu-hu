@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.author: normesta
 ms.date: 03/04/2020
 ms.openlocfilehash: 1fb4e7cf589d63e9e595a35c34a2728d564b309b
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84609930"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Statikus webhely üzemeltetése az Azure Storage-ban
@@ -34,11 +33,11 @@ A statikus webhely üzemeltetése olyan szolgáltatás, amelyet engedélyeznie k
 
 4. Válassza az engedélyezve lehetőséget a statikus webhely-üzemeltetési **funkció** engedélyezéséhez a Storage-fiókhoz.
 
-5. Az **index dokumentum neve** mezőben adja meg az alapértelmezett index lapot (például: *index. html*). 
+5. Az **index dokumentum neve** mezőben adja meg az alapértelmezett index lapot (például: *index.html*). 
 
    Az alapértelmezett index lap akkor jelenik meg, ha a felhasználó a statikus webhely gyökerére navigál.  
 
-6. A **hiba-dokumentum elérési útja** mezőben írjon be egy alapértelmezett hibaüzenetet (például: *404. html*). 
+6. A **hiba-dokumentum elérési útja** mezőben válasszon egy alapértelmezett hibaüzenetet (például: *404.html*). 
 
    Az alapértelmezett hiba lap akkor jelenik meg, ha a felhasználó olyan oldalra próbál navigálni, amely nem szerepel a statikus webhelyén.
 
@@ -72,7 +71,7 @@ A statikus webhely üzemeltetését az [Azure parancssori felületének (CLI)](h
 
    * Cserélje le a `<error-document-name>` helyőrzőt a felhasználók számára megjelenő hibaüzenet nevére, ha egy böngésző olyan oldalt kér a webhelyen, amely nem létezik.
 
-   * Cserélje le a `<index-document-name>` helyőrzőt az index dokumentum nevére. Ez a dokumentum általában "index. html".
+   * Cserélje le a `<index-document-name>` helyőrzőt az index dokumentum nevére. Ez a dokumentum általában "index.html".
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -124,7 +123,7 @@ A Azure PowerShell modul használatával engedélyezheti a statikus webhely üze
 
    * Cserélje le a `<error-document-name>` helyőrzőt a felhasználók számára megjelenő hibaüzenet nevére, ha egy böngésző olyan oldalt kér a webhelyen, amely nem létezik.
 
-   * Cserélje le a `<index-document-name>` helyőrzőt az index dokumentum nevére. Ez a dokumentum általában "index. html".
+   * Cserélje le a `<index-document-name>` helyőrzőt az index dokumentum nevére. Ez a dokumentum általában "index.html".
 
 ---
 
@@ -272,7 +271,7 @@ A metrikák engedélyezése után a **$web** tárolóban található fájlokra v
    >[!NOTE]
    > A **GetWebContent** jelölőnégyzet csak akkor jelenik meg, ha az API-tag egy adott időkereten belül volt használva. A portál csak az adott időkereten belül használt API-tagokat jeleníti meg, hogy csak az adatvisszaadó tagokra összpontosítsanak. Ha nem talál egy adott API-tagot ebben a listában, bontsa ki az időkeretet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Megtudhatja, hogyan konfigurálhat egy egyéni tartományt a statikus webhellyel. Lásd: [egyéni tartomány leképezése egy Azure Blob Storage-végpontra](storage-custom-domain-name.md).
 

@@ -4,10 +4,9 @@ description: További információ az offline biztonsági mentés összetevőir�
 ms.topic: conceptual
 ms.date: 1/28/2020
 ms.openlocfilehash: 84f79efe10f867b37d1e3bb21363be4b12156615
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84628347"
 ---
 # <a name="overview-of-offline-backup"></a>Az offline biztonsági mentés áttekintése
@@ -79,7 +78,7 @@ A következő táblázat összehasonlítja a két elérhető lehetőséget, így
 
 * Ha az országa vagy régiója nem rendelkezik Azure-adatközpontgal, a lemezeket egy másik országban/régióban lévő Azure-adatközpontba kell szállítani.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Offline biztonsági mentés Azure Backup Azure Data Box használatával](offline-backup-azure-data-box.md#backup-data-size-and-supported-data-box-skus)
 - [Offline biztonsági mentési munkafolyamat a Azure Backup](backup-azure-backup-import-export.md)

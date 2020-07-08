@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 5/31/2019
 ms.subservice: alerts
 ms.openlocfilehash: 0e81d48f4e709a9a0bb8ebb33c7029d3841167b6
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84609046"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Riasztások naplózása Azure Monitor
@@ -164,7 +163,7 @@ Ha el szeretné távolítani a riasztási szabályok számlázásához létrehoz
 
 A riasztási szabályok a [régi log Analytics API](api-alerts.md)-val való számlázásához létrehozott rejtett scheduleQueryRules-erőforrások mellett a Put művelethez hasonló módosítási műveletek sikertelenek lesznek. Mivel a `microsoft.insights/scheduledqueryrules` pszeudo-szabályok az [örökölt log Analytics API](api-alerts.md)használatával létrehozott riasztási szabályok számlázására szolgálnak. A riasztási szabályok módosítását [örökölt log Analytics API](api-alerts.md) -val kell elvégezni (vagy) [a felhasználó átválthatja a riasztási szabályok API-BEÁLLÍTÁSAIT](../../azure-monitor/platform/alerts-log-api-switch.md) a [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) használatára.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerje meg [, hogyan hozhat létre naplóbeli riasztásokat az Azure](../../azure-monitor/platform/alerts-log.md)-ban.
 * Ismerkedjen meg [a webhookokkal a log-riasztásokban az Azure-ban](alerts-log-webhook.md).

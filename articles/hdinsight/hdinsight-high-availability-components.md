@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/11/2019
 ms.openlocfilehash: e1da26d9067427734d407451bdb53e51ba1e6243
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84609165"
 ---
 # <a name="high-availability-services-supported-by-azure-hdinsight"></a>Az Azure HDInsight által támogatott magas rendelkezésre állású szolgáltatások
@@ -138,7 +137,7 @@ A fonal erőforráskezelő magas rendelkezésre állása független a NameNode �
 
 A HDInsight HBase-fürtök támogatják HBase Master magas rendelkezésre állást. A átjárócsomópontokkal-on futó egyéb HA-szolgáltatásokkal ellentétben a HBase-főkiszolgálók a három Zookeeper csomóponton futnak, ahol az egyik az aktív főkiszolgáló, a másik kettő pedig készenléti. A NameNode-hez hasonlóan HBase Master az Apache Zookeeper-vel való koordinátákat a Leader-választásokhoz, és automatikus feladatátvételt hajt végre, ha a jelenlegi aktív főkiszolgáló problémába Egyszerre csak egy aktív HBase Master van.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Apache Hadoop-fürtök rendelkezésre állása és megbízhatósága a HDInsight-ben](hdinsight-high-availability-linux.md)
 - [Azure HDInsight virtuális hálózati architektúra](hdinsight-virtual-network-architecture.md)

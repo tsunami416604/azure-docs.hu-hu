@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
 ms.openlocfilehash: c97dafa80adedd64d45666eb98ef6b1e69850719
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84629394"
 ---
 # <a name="workflow-automation"></a>Munkafolyamat-automatizálás
@@ -104,7 +103,7 @@ Egy logikai alkalmazás manuális futtatásához nyisson meg egy riasztást vagy
 
 A logikai alkalmazás-példánynak átadott biztonsági riasztások vagy javaslatok eseményeinek nyers esemény-sémáit a munkafolyamat- [automatizálási adattípusok sémái](https://aka.ms/ASCAutomationSchemas)között tekintheti meg. Ez olyan esetekben lehet hasznos, amikor nem használja a fent említett Security Center beépített logikai alkalmazás-összekötőit, de ehelyett a Logic app általános HTTP-összekötőjét használja – az Event JSON-sémával manuálisan elemezheti azt, ahogy jónak látja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből a cikkből megtudhatta, hogyan hozhat létre Logic Apps, hogyan automatizálhatja a végrehajtást a Security Centerban, és hogyan futtathatja őket manuálisan. 
 

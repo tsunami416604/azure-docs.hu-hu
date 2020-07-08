@@ -7,10 +7,9 @@ ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47, tracking-python
 ms.openlocfilehash: eb61cad5f505e6895b550adca3e9f156222d6d30
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84559960"
 ---
 # <a name="azure-queue-storage-output-bindings-for-azure-functions"></a>Az Azure üzenetsor-tároló kimeneti kötései Azure Functions
@@ -41,9 +40,9 @@ public static class QueueFunctions
 
 # <a name="c-script"></a>[C#-parancsfájl](#tab/csharp-script)
 
-Az alábbi példa egy HTTP-trigger kötést mutat be egy *function. JSON* -fájlban és [C#-parancsfájlban (. CSX)](functions-reference-csharp.md) , amely a kötést használja. A függvény egy **CustomQueueMessage** objektum-adattartalommal rendelkező üzenetsor-objektumot hoz létre minden fogadott http-kérelemhez.
+Az alábbi példa egy HTTP-trigger kötést mutat be egy olyan *function.jsa* fájl-és [C#-parancsfájl (. CSX)](functions-reference-csharp.md) kódjában, amely a kötést használja. A függvény egy **CustomQueueMessage** objektum-adattartalommal rendelkező üzenetsor-objektumot hoz létre minden fogadott http-kérelemhez.
 
-Itt látható a *function. JSON* fájl:
+A fájl *function.js* :
 
 ```json
 {
@@ -102,9 +101,9 @@ public static void Run(
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Az alábbi példa egy HTTP-trigger kötést mutat be egy *function. JSON* fájlban, valamint egy [JavaScript-függvényt](functions-reference-node.md) , amely a kötést használja. A függvény minden fogadott HTTP-kérelemhez létrehoz egy üzenetsor-tételt.
+Az alábbi példa egy HTTP trigger kötést mutat be egy *function.jsa* fájlban, és egy [JavaScript-függvényt](functions-reference-node.md) , amely a kötést használja. A függvény minden fogadott HTTP-kérelemhez létrehoz egy üzenetsor-tételt.
 
-Itt látható a *function. JSON* fájl:
+A fájl *function.js* :
 
 ```json
 {
@@ -153,9 +152,9 @@ module.exports = function(context) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Az alábbi példa bemutatja, hogyan lehet egy és több értéket kiadni a tárolási várólistáknak. A *function. JSON* fájlhoz szükséges konfiguráció ugyanaz, mint az egyik módja.
+Az alábbi példa bemutatja, hogyan lehet egy és több értéket kiadni a tárolási várólistáknak. A *function.jshoz* szükséges konfiguráció ugyanaz, mint az egyik módja.
 
-A Storage-várólista kötése a *function. JSON* fájlban van definiálva, ahol a *Type* érték van beállítva `queue` .
+A tárolási várólista kötése olyanfunction.jsvan definiálva, ahol *a* *típus* értékre van állítva `queue` .
 
 ```json
 {
@@ -313,9 +312,9 @@ A jegyzethez társított paraméter `QueueOutput` [OutputBinding \<T\> ](https:/
 
 ## <a name="configuration"></a>Konfiguráció
 
-Az alábbi táblázat a *function. JSON* fájlban és az attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti `Queue` .
+Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `Queue` .
 
-|function. JSON-tulajdonság | Attribútum tulajdonsága |Leírás|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
 |**típusa** | n.a. | Értékre kell állítani `queue` . Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban.|
 |**direction** | n.a. | Értékre kell állítani `out` . Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban. |
@@ -345,7 +344,7 @@ A C# és C# parancsfájlban több üzenetsor-üzenetet is írhat a következő t
 
 # <a name="c-script"></a>[C#-parancsfájl](#tab/csharp-script)
 
-Egyetlen üzenetsor-üzenetet írhat egy metódus-paraméter (például `out T paramName` ) használatával. A a `paramName` `name` *function. JSON*tulajdonságban megadott érték. Paraméter helyett a metódus visszatérési típusát is használhatja `out` , és a `T` következő típusok bármelyike lehet:
+Egyetlen üzenetsor-üzenetet írhat egy metódus-paraméter (például `out T paramName` ) használatával. A `paramName` értéke `name` *function.json*tulajdonságában megadott érték. Paraméter helyett a metódus visszatérési típusát is használhatja `out` , és a `T` következő típusok bármelyike lehet:
 
 * Egy, JSON-ként szerializálható objektum
 * `string`
@@ -361,13 +360,13 @@ A C# és C# parancsfájlban több üzenetsor-üzenetet is írhat a következő t
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-A kimeneti várólista elem elérhető, `context.bindings.<NAME>` ahol `<NAME>` megegyezik a *function. JSON*fájlban megadott névvel. A várólista-elem hasznos adatainak karakterláncot vagy JSON-szerializálható objektumot is használhat.
+A kimeneti várólista elem elérhető, `context.bindings.<NAME>` ahol a `<NAME>` megegyezik a *function.js*által megadott névvel. A várólista-elem hasznos adatainak karakterláncot vagy JSON-szerializálható objektumot is használhat.
 
 # <a name="python"></a>[Python](#tab/python)
 
 Az Event hub-üzenetek egy függvényből való üzembe helyezésének két lehetősége van:
 
-- **Visszatérési érték**: állítsa be a `name` tulajdonságot a *függvény. JSON* fájljában `$return` . Ezzel a konfigurációval a függvény visszatérési értéke üzenetsor-tárolási üzenetként is megmarad.
+- Visszaadott **érték**: állítsa be `name` *function.js* tulajdonságát a értékre `$return` . Ezzel a konfigurációval a függvény visszatérési értéke üzenetsor-tárolási üzenetként is megmarad.
 
 - **Elengedhetetlen**: adjon meg egy értéket a [set](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none) metódusnak, amely [kimenő](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python) típusként van deklarálva. Az átadott értéket `set` üzenetsor-tárolási üzenetként őrzi meg a rendszer.
 
@@ -383,7 +382,7 @@ Az Event hub-üzenetek egy függvényből való üzembe helyezésére két lehet
 
 ## <a name="exceptions-and-return-codes"></a>Kivételek és visszatérési kódok
 
-| Kötés |  Referencia |
+| Kötés |  Hivatkozás |
 |---|---|
 | Várólista | [Üzenetsor-hibakódok](https://docs.microsoft.com/rest/api/storageservices/queue-service-error-codes) |
 | BLOB, tábla, üzenetsor | [Tárolási hibakódok](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
@@ -391,12 +390,12 @@ Az Event hub-üzenetek egy függvényből való üzembe helyezésére két lehet
 
 <a name="host-json"></a>  
 
-## <a name="hostjson-settings"></a>gazdagép. JSON-beállítások
+## <a name="hostjson-settings"></a>Beállítások host.js
 
-Ez a szakasz a kötéshez elérhető globális konfigurációs beállításokat ismerteti 2. x vagy újabb verziókban. A következő példa a Host. JSON fájlt tartalmazza, csak a 2. x + beállításokat a kötéshez. További információ a 2. x verzióban található globális konfigurációs beállításokról: a [Host. JSON dokumentációja Azure functions](functions-host-json.md).
+Ez a szakasz a kötéshez elérhető globális konfigurációs beállításokat ismerteti 2. x vagy újabb verziókban. Az alábbi példában szereplő host.jscsak a kötés 2. x verziójának beállításait tartalmazza. További információ a 2. x verzióban található globális konfigurációs beállításokról és azon kívül: [host.jsAzure functions](functions-host-json.md).
 
 > [!NOTE]
-> Az 1. x függvények Host. JSON fájljának hivatkozását lásd: [Host. JSON-dokumentáció Azure functions 1. x-hez](functions-host-json-v1.md).
+> Az 1. x függvények host.jsának hivatkozását lásd:host.jsaz [Azure functions 1. x](functions-host-json-v1.md)esetében.
 
 ```json
 {
@@ -413,7 +412,7 @@ Ez a szakasz a kötéshez elérhető globális konfigurációs beállításokat 
 }
 ```
 
-|Tulajdonság  |Alapértelmezett | Leírás |
+|Tulajdonság  |Alapértelmezett | Description |
 |---------|---------|---------|
 |maxPollingInterval|00:00:01|A várólista-lekérdezések közötti maximális időköz. Minimum 00:00:00.100 (100 MS), és legfeljebb 00:01:00 (1 perc) értékkel növekszik.  Az 1. x adattípusa ezredmásodperc, a 2. x és a magasabb érték pedig egy TimeSpan.|
 |visibilityTimeout|00:00:00|Az újrapróbálkozások között eltelt idő az üzenet feldolgozásakor. |
@@ -421,7 +420,7 @@ Ez a szakasz a kötéshez elérhető globális konfigurációs beállításokat 
 |maxDequeueCount|5|Azon alkalmak száma, amelyekkel az üzenetek feldolgozására kerül sor, mielőtt a rendszer áthelyezi azt a Megmérgező várólistára.|
 |newBatchThreshold|batchSize/2|Ha az egyidejűleg feldolgozható üzenetek száma leállítja ezt a számot, a futtatókörnyezet egy másik köteget kérdez le.|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Függvény futtatása üzenetsor-tárolási adatváltozásként (trigger)](./functions-bindings-storage-queue-trigger.md)
 

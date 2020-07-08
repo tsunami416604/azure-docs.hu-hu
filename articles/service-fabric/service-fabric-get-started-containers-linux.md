@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 1/4/2019
 ms.custom: tracking-python
 ms.openlocfilehash: 07e3682ec1787ceb350ac72c8b80d86eed80b339
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84560652"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Az első Service Fabric-tárolóalkalmazás létrehozása Linux rendszeren
@@ -466,7 +465,7 @@ A Service Fabric-futtatókörnyezet 6.2-es vagy újabb verzióiban a Docker-dém
 
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További információk a [tárolók futtatásáról a Service Fabricban](service-fabric-containers-overview.md).
 * Tekintse meg a [.NET-alkalmazás üzembe helyezését](service-fabric-host-app-in-a-container.md) ismertető oktatóanyagot.
 * További információk a Service Fabric [alkalmazásainak élettartamáról](service-fabric-application-lifecycle.md).

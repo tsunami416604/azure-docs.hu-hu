@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: jingwang
 ms.openlocfilehash: 7fd8fd35ee411d929843be81a1daaa512e0b3ca1
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84611047"
 ---
 # <a name="json-format-in-azure-data-factory"></a>JSON formátum Azure Data Factory
@@ -200,7 +199,7 @@ Az adatfolyamatok leképezése során a következő adattárakban olvasható és
 
 Az alábbi táblázat felsorolja a JSON-forrás által támogatott tulajdonságokat. Ezeket a tulajdonságokat a **forrás beállításai** lapon módosíthatja.
 
-| Name | Leírás | Kötelező | Megengedett értékek | Adatfolyam-parancsfájl tulajdonsága |
+| Name | Description | Kötelező | Megengedett értékek | Adatfolyam-parancsfájl tulajdonsága |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Wild kártya elérési útjai | A rendszer feldolgozza a helyettesítő karakteres elérési úttal egyező összes fájlt. Felülbírálja az adatkészletben beállított mappát és a fájl elérési útját. | nem | Karakterlánc [] | wildcardPaths |
 | Partíció gyökerének elérési útja | A particionált fájlok esetében megadhatja a partíció gyökerének elérési útját, hogy a particionált mappák oszlopként legyenek olvashatók. | nem | Sztring | partitionRootPath |
@@ -295,7 +294,7 @@ Válassza ki a **fordított perjelet** , ha a rendszer fordított perjeleket has
 
 Az alábbi táblázatban a JSON-fogadó által támogatott tulajdonságok szerepelnek. Ezeket a tulajdonságokat a **Beállítások** lapon módosíthatja.
 
-| Name | Leírás | Kötelező | Megengedett értékek | Adatfolyam-parancsfájl tulajdonsága |
+| Name | Description | Kötelező | Megengedett értékek | Adatfolyam-parancsfájl tulajdonsága |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Mappa törlése | Ha a célmappa az írás előtt törlődik | nem | `true` vagy `false` | truncate |
 | Fájlnév beállítás | Az írt adatnév formátuma. Alapértelmezés szerint egy fájl/partíció formátumban`part-#####-tid-<guid>` | nem | Minta: karakterlánc <br> /Partíció: karakterlánc [] <br> Oszlopbeli adatként: karakterlánc <br> Kimenet egyetlen fájlba:`['<fileName>']`  | filePattern <br> partitionFileNames <br> rowUrlColumn <br> partitionFileNames |
@@ -366,7 +365,7 @@ Ha ez a kifejezés egy "complexColumn" nevű oszlophoz lett megadva, akkor a ren
 )
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Másolási tevékenység – áttekintés](copy-activity-overview.md)
 - [Adatfolyam hozzárendelése](concepts-data-flow-overview.md)

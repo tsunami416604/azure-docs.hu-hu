@@ -11,10 +11,9 @@ ms.author: akjosh
 ms.reviewer: cynthn
 ms.custom: ''
 ms.openlocfilehash: 8d129ae2c6048e592bfc43f07ee609ce930aa3fd
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84558777"
 ---
 # <a name="create-and-use-shared-images-for-virtual-machine-scale-sets-with-the-azure-cli-20"></a>Megosztott rendszerképek létrehozása és használata a virtuálisgép-méretezési csoportokhoz az Azure CLI 2,0-vel
@@ -27,7 +26,7 @@ A megosztott rendszerkép-katalógus segítségével másokkal is megoszthatja a
 [!INCLUDE [virtual-machines-common-shared-images-cli](../../includes/virtual-machines-common-shared-images-cli.md)]
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Hozzon létre egy rendszerkép-verziót egy [virtuális](../virtual-machines/image-version-vm-cli.md)gépről vagy egy [felügyelt rendszerképből](../virtual-machines/image-version-managed-image-cli.md).
 

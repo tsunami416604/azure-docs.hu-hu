@@ -4,10 +4,9 @@ description: Megtudhatja, hogyan használhatja hatékonyan a Azure Monitor-napl�
 ms.date: 02/03/2020
 ms.topic: how-to
 ms.openlocfilehash: bdd91cec650d6810d1d62230219f840a172141d9
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84634115"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>A delegált erőforrások nagy léptékű figyelése
@@ -36,7 +35,7 @@ Ha meghatározta, hogy mely házirendeket kell telepítenie, akkor a [delegált 
 
 A szabályzatok üzembe helyezése után a rendszer az egyes ügyfelek bérlői által létrehozott Log Analytics munkaterületeken naplózza az adatait. Az összes felügyelt ügyfélhez olyan eszközöket használhat, mint például a [Azure monitor munkafüzetek](../../azure-monitor/platform/workbooks-overview.md) több adatforrásból származó információk gyűjtésére és elemzésére.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A [Azure monitor](../../azure-monitor/index.yml)megismerése.
 - Ismerkedjen meg [Azure monitor naplókkal](../../azure-monitor/platform/data-platform-logs.md).

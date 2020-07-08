@@ -4,10 +4,9 @@ description: A Microsoft Azure Backup-kiszolgáló továbbfejlesztett biztonság
 ms.topic: conceptual
 ms.date: 05/24/2020
 ms.openlocfilehash: 5f8d0aa83f6d54575b76847efa892864b32c456d
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84629092"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server-mabs"></a>A Microsoft Azure Backup-kiszolgáló újdonságai (MABS)
@@ -121,7 +120,7 @@ További információ [a MABS telepítési](https://docs.microsoft.com/azure/bac
 >
 > A MABS ugyanazzal a kóddal rendelkezik, mint a System Center Data Protection Manager. A MABS v3 egyenértékű a Data Protection Manager 1807-vel. A MABS v3 UR1 egyenértékű a Data Protection Manager 2019 UR1.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtudhatja, hogyan készítheti elő a kiszolgálót, vagy megkezdheti a munkaterhelés védelmét:
 

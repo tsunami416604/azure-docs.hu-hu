@@ -8,10 +8,9 @@ ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.custom: tracking-python
 ms.openlocfilehash: ca186fa62605953bfb90c1a4669fc8283eb78469
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84559783"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Telemetria korreláció a Application Insightsban
@@ -137,7 +136,7 @@ public void ConfigureServices(IServiceCollection services)
 #### <a name="java-sdk"></a>Java SDK
 - **Bejövő konfiguráció**
 
-  - Java EE-alkalmazások esetén adja hozzá a következőt a `<TelemetryModules>` címkéhez a ApplicationInsights. xml fájlban:
+  - Java EE-alkalmazások esetén adja hozzá a következőt a `<TelemetryModules>` címkéhez ApplicationInsights.xml:
 
     ```xml
     <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebRequestTrackingTelemetryModule>
@@ -153,7 +152,7 @@ public void ConfigureServices(IServiceCollection services)
 
 - **Kimenő konfiguráció**
 
-  Adja hozzá a következőt a AI-Agent. xml fájlhoz:
+  Adja hozzá a következőt a AI-Agent.xmlhoz:
 
   ```xml
   <Instrumentation>
@@ -353,7 +352,7 @@ A [Java-ügynök](https://docs.microsoft.com/azure/azure-monitor/app/java-in-pro
     ```
     A Felhőbeli szerepkör nevét a környezeti változó használatával is beállíthatja `APPLICATIONINSIGHTS_ROLE_NAME` .
 
-- A Application Insights Java SDK 2.5.0-es és újabb verzióiban a `cloud_RoleName` ApplicationInsights. xml fájl hozzáadásával adhatja meg a következőt `<RoleName>` :
+- A Application Insights Java SDK 2.5.0-es és újabb verzióiban megadhatja az `cloud_RoleName` `<RoleName>` ApplicationInsights.xml fájl hozzáadásával:
 
   ```XML
   <?xml version="1.0" encoding="utf-8"?>
@@ -370,7 +369,7 @@ A [Java-ügynök](https://docs.microsoft.com/azure/azure-monitor/app/java-in-pro
 
   A Spring boot Starter automatikusan hozzárendeli `cloudRoleName` a `spring.application.name` tulajdonsághoz megadott értéket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Egyéni telemetria](../../azure-monitor/app/api-custom-events-metrics.md)írása.
 - A ASP.NET Core-és ASP.NET speciális korrelációs forgatókönyvei: [Egyéni műveletek nyomon követése](custom-operations-tracking.md).

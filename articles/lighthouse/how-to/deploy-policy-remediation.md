@@ -4,10 +4,9 @@ description: Ismerje meg, hogyan végezheti el az ügyfelek bevezetését az Azu
 ms.date: 10/11/2019
 ms.topic: how-to
 ms.openlocfilehash: a953db44d8b4fc035d947d3534185062d0ec884b
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84634132"
 ---
 # <a name="deploy-a-policy-that-can-be-remediated-within-a-delegated-subscription"></a>A delegált előfizetésen belüli szervizelésre alkalmas szabályzat telepítése
@@ -64,7 +63,7 @@ Az alábbi példa egy **delegatedManagedIdentityResourceId**rendelkező szerepk�
 > [!TIP]
 > A rendszer egy [hasonló mintát](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-add-or-replace-tag) mutat be, amely bemutatja, hogyan helyezhet üzembe egy olyan szabályzatot, amely egy (a módosítás hatásával) címkét hozzáad vagy eltávolít egy delegált előfizetéshez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A [Azure Policy](../../governance/policy/index.yml)megismerése.
 - Ismerje meg [Az Azure-erőforrások felügyelt identitásait](../../active-directory/managed-identities-azure-resources/overview.md).

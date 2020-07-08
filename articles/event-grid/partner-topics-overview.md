@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: femila
 ms.openlocfilehash: 5327efea8af734c723ba76d1a00b72c08f5c88b9
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84560275"
 ---
 # <a name="partner-topics-in-azure-event-grid-preview"></a>Partneri témakörök Azure Event Grid (előzetes verzió)
@@ -31,7 +30,7 @@ A partneri témakörök nyilvános előzetes verzióban érhetők el. A nyilván
 ## <a name="how-do-i-become-an-event-grid-partner"></a>Hogyan váljon Event Grid partner?
 Az indítás támogatásához létrehozott infrastruktúra megkönnyíti az új partnerek számára, hogy Event Grid használatával integrálják az eseményekkel kapcsolatos képességeiket. További információkért tekintse meg a partner bevezetési [dokumentációját](partner-onboarding-overview.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Auth0-partneri témakör](auth0-overview.md)
 - [Az Auth0-partneri témakör használata](auth0-how-to.md)

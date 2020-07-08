@@ -4,10 +4,9 @@ description: Ismerje meg az Azure VMware-megoldás (AVS) előzetes privát felh�
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.openlocfilehash: 7f92e8f961422f8354e55192ebdddd077d61acd1
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84604116"
 ---
 # <a name="azure-vmware-solution-avs-preview-storage-concepts"></a>Azure VMware-megoldás (AVS) – előzetes verziójú tárolási fogalmak
@@ -21,7 +20,7 @@ Az egyes vSAN lévő helyi tárterületet a rendszer az adattárolók részekén
 A fürtállomások helyi tárterülete a fürtre kiterjedő vSAN-adattárban használatos. A rendszer minden adattárolót egy privát Felhőbeli üzembe helyezés részeként hoz létre, és azonnal használható. A cloudadmin-felhasználó és a CloudAdmin csoport összes felhasználója felügyelheti az adattárolókat ezekkel a vSAN jogosultságokkal:
 - Adattár. AllocateSpace
 - Datastore.Browse
-- Adattár. config
+- Datastore.Config
 - Adattár. DeleteFile
 - Adattár. FileManagement
 - Adattár. UpdateVirtualMachineMetadata
@@ -38,7 +37,7 @@ A natív fürt tárolókapacitása méretezhető úgy, hogy gazdagépeket ad hoz
 
 Használhatja az Azure Storage-szolgáltatásokat a saját felhőben futó munkaterheléseken. Az Azure Storage szolgáltatásai közé tartoznak a Storage-fiókok, a Table Storage és a Blob Storage. A számítási feladatok Azure Storage-szolgáltatásokhoz való kapcsolódása nem haladja meg az internetet. Ez a kapcsolat nagyobb biztonságot nyújt, és lehetővé teszi SLA-alapú Azure Storage-szolgáltatások használatát a saját Felhőbeli számítási feladatokban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő lépés a [saját Felhőbeli identitással kapcsolatos fogalmak][concepts-identity]megismerése.
 

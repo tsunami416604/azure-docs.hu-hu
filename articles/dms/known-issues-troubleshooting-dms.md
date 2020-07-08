@@ -12,10 +12,9 @@ ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
 ms.openlocfilehash: 40c7b1b0ae2065ed00cf21f99ab2046e25970237
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84609437"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>Gyakori Azure Database Migration Service problémák és hibák elhárítása
@@ -130,7 +129,7 @@ Ha egy vagy több elnevezett példányon vagy dinamikus porton futó SQL Server-
 * [Ismert problémák/áttelepítési korlátozások az online áttelepítéssel Azure Database for MySQL](https://docs.microsoft.com/azure/dms/known-issues-azure-mysql-online)
 * [Ismert problémák/áttelepítési korlátozások az online áttelepítéssel Azure Database for PostgreSQL](https://docs.microsoft.com/azure/dms/known-issues-azure-postgresql-online)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Tekintse meg a [Azure Database Migration Service PowerShellt](https://docs.microsoft.com/powershell/module/azurerm.datamigration/?view=azurermps-6.13.0#data_migration)ismertető cikket.
 * A Azure Portal használatával megtekintheti a [kiszolgáló paramétereinek konfigurálása Azure Database for MySQLben](https://docs.microsoft.com/azure/mysql/howto-server-parameters)című cikket.

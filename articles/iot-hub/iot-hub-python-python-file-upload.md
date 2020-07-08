@@ -10,10 +10,9 @@ ms.date: 03/31/2020
 ms.author: robinsh
 ms.custom: mqtt, tracking-python
 ms.openlocfilehash: 9a3782c0d5791f20f14aabb53d486fc012518c1f
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84608502"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-python"></a>Fájlok feltöltése az eszközről a felhőbe IoT Hub (Python)
@@ -195,7 +194,7 @@ Most már készen áll az alkalmazás futtatására.
 
     ![Feltöltött fájl](./media/iot-hub-python-python-file-upload/view-blob.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan használhatja a IoT Hub fájlfeltöltés funkcióit az eszközökről történő fájlfeltöltés egyszerűsítése érdekében. A IoT hub funkcióit és forgatókönyveit továbbra is megismerheti a következő cikkekkel:
 

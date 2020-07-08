@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: femila
 ms.openlocfilehash: 57827b1c5a43a3408d374e8bddb7b91113b2929a
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84560696"
 ---
 # <a name="cloudevents-v10-schema-with-event-grid"></a>CloudEvents v 1.0 séma Event Grid
@@ -71,5 +70,5 @@ A CloudEvents-sémában lévő események bemenetéhez és kimenetéhez Event Gr
 
 Az összes esemény sémája esetében a Event Grid érvényesítést igényel az Event Grid-témakörre való közzétételkor és az esemény-előfizetés létrehozásakor. További információ: [Event Grid biztonság és hitelesítés](security-authentication.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Lásd: [a CloudEvents 1.0-s verziójának használata Event Grid használatával](cloudevents-schema.md).  

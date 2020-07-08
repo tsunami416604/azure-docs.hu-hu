@@ -13,10 +13,9 @@ ms.reviewer: nibaccam
 ms.date: 04/20/2020
 ms.custom: tracking-python
 ms.openlocfilehash: a9b9faed111e6126bfdb30e4237a988afd947823
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84560139"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>Betanítás Azure Machine Learning-adatkészletekkel
@@ -222,7 +221,7 @@ print (mounted_path)
 
 Az [adatkészlet jegyzetfüzetei](https://aka.ms/dataset-tutorial) bemutatják és kibővítik az ebben a cikkben szereplő fogalmakat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Gépi tanulási modellek automatikus tanítása](how-to-auto-train-remote.md) a TabularDatasets.
 

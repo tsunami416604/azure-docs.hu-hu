@@ -8,13 +8,12 @@ ms.topic: conceptual
 ms.date: 06/09/2020
 tags: connectors
 ms.openlocfilehash: 23c6a555909d43f640fb5089fb60da8bac065886
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84609519"
 ---
-# <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>Szolgáltatási végpontok hívása HTTP vagy HTTPS protokollon keresztül Azure Logic Apps
+# <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>Szolgáltatásvégpontok HTTP-n vagy HTTPS-en keresztül történő meghívása az Azure Logic Appsből
 
 A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és a beépített http-trigger vagy művelet használatával olyan automatizált feladatokat és munkafolyamatokat hozhat létre, amelyek http-vagy https-kapcsolaton keresztül küldenek kéréseket a szolgáltatási végpontoknak. Megfigyelheti például a webhely szolgáltatási végpontját, ha ellenőrzi, hogy a végpont egy adott időpontban van-e. Ha a megadott esemény a végponton történik, például a webhely leállásakor, az esemény elindítja a logikai alkalmazás munkafolyamatát, és futtatja az adott munkafolyamat műveleteit. Ha ehelyett a bejövő HTTPS-hívásokat szeretné fogadni és válaszolni, használja a beépített [kérelem-triggert vagy a válasz műveletet](../connectors/connectors-native-reqres.md).
 
@@ -253,14 +252,14 @@ Az trigger-és műveleti paraméterekkel kapcsolatos további információkért 
 
 Itt talál további információt a HTTP-triggerből vagy-műveletből származó kimenetekről, ami visszaadja ezt az információt:
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Típus | Description |
 |----------|------|-------------|
 | `headers` | JSON-objektum | A kérelemben szereplő fejlécek |
 | `body` | JSON-objektum | A kérelem szövegtörzsét tartalmazó objektum |
 | `status code` | Egész szám | A kérelemben szereplő állapotkód |
 |||
 
-| Állapotkód | Leírás |
+| Állapotkód | Description |
 |-------------|-------------|
 | 200 | OK |
 | 202 | Elfogadva |
@@ -271,6 +270,6 @@ Itt talál további információt a HTTP-triggerből vagy-műveletből származ�
 | 500 | Belső kiszolgálóhiba. Ismeretlen hiba történt. |
 |||
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

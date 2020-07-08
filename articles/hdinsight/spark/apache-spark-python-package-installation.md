@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: seoapr2020, tracking-python
 ms.date: 04/29/2020
 ms.openlocfilehash: f1ed0ae33d1f83fd77adb337aded95605c17f38b
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84607312"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Python-környezet biztonságos kezelése az Azure HDInsightban szkriptműveletekkel
@@ -33,7 +32,7 @@ A Microsoft Azure HDInsight szolgáltatás olyan nyílt forráskódú technológ
 
 A HDInsight szolgáltatásban kétféle nyílt forráskódú összetevő érhető el:
 
-|Összetevő |Leírás |
+|Összetevő |Description |
 |---|---|
 |Beépített|Ezek az összetevők előre telepítve vannak a HDInsight-fürtökön, és biztosítják a fürt alapvető funkcióit. Például Apache Hadoop a fonal Resource Manager, a Apache Hive lekérdezési nyelv (HiveQL) és a Mahout könyvtár ehhez a kategóriához tartozik. A fürt összetevőinek teljes listája a [HDInsight által biztosított Apache Hadoop-fürt verziójának újdonságai](../hdinsight-component-versioning.md)című részében érhető el.|
 |Egyéni|A fürt felhasználója a munkaterhelésben telepítheti vagy használhatja a Közösségben elérhető vagy Ön által létrehozott összetevőket.|
@@ -50,8 +49,8 @@ A HDInsight Spark-fürt az anaconda telepítésével jön létre. Két Python-te
 | |Python 2,7|Python 3,5|
 |----|----|----|
 |Elérési út|/usr/bin/anaconda/bin|/usr/bin/anaconda/envs/py35/bin|
-|Spark|Alapértelmezett érték 2,7|N/A|
-|Livy|Alapértelmezett érték 2,7|N/A|
+|Spark|Alapértelmezett érték 2,7|N.A.|
+|Livy|Alapértelmezett érték 2,7|N.A.|
 |Jupyter|PySpark kernel|PySpark3 kernel|
 
 ## <a name="safely-install-external-python-packages"></a>Külső Python-csomagok biztonságos telepítése
@@ -150,7 +149,7 @@ Létezik egy ismert hiba a anaconda-verzió `4.7.11` , a és a esetében `4.7.12
 
 A anaconda verziójának megadásához SSH-t használhat a fürt fejlécére, és futtathatja a parancsot `/usr/bin/anaconda/bin/conda --v` .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Overview: Apache Spark on Azure HDInsight (Áttekintés: Apache Spark on Azure HDInsight)](apache-spark-overview.md)
 * [Külső csomagok Jupyter notebookokkal Apache Spark](apache-spark-jupyter-notebook-use-external-packages.md)

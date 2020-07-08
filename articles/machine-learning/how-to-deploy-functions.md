@@ -12,10 +12,9 @@ ms.reviewer: larryfr
 ms.date: 03/06/2020
 ms.custom: tracking-python
 ms.openlocfilehash: 3afe5d0993f7e647cbae1281cb9e7387df6e2f50
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84560415"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>Gépi tanulási modell üzembe helyezése Azure Functions (előzetes verzió)
@@ -294,7 +293,7 @@ Miután betöltötte a rendszerképet, és az alkalmazás elérhetővé válik, 
 
 A blob-eseményindítók használatával kapcsolatos további információkért tekintse meg az [Azure Blob Storage által aktivált függvények létrehozását](/azure/azure-functions/functions-create-storage-blob-triggered-function) ismertető cikket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerje meg, hogyan konfigurálhatja a functions alkalmazást a [functions](/azure/azure-functions/functions-create-function-linux-custom-image) dokumentációjában.
 * További információ a blob Storage eseményindítók [Azure Blob Storage-kötésekről](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob).

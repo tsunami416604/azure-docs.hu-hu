@@ -14,10 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 07/20/2019
 ms.author: akjosh
 ms.openlocfilehash: a002479375d835f7fafe031517e5b2fe61b77b5b
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84608689"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Az Azure Virtual Machine Agent áttekintése
@@ -107,14 +106,14 @@ foreach ($vm in $vms) {
 
 ### <a name="manual-detection"></a>Manuális észlelés
 
-Windows rendszerű virtuális gépre való bejelentkezéskor a Feladatkezelő segítségével megvizsgálhatja a futó folyamatokat. Az Azure-beli virtuálisgép-ügynök kereséséhez nyissa meg a Feladatkezelő eszközt, kattintson a *részletek* fülre, és keresse meg a **WindowsAzureGuestAgent. exe**nevű folyamatot. A folyamat jelenléte azt jelzi, hogy a virtuálisgép-ügynök telepítve van.
+Windows rendszerű virtuális gépre való bejelentkezéskor a Feladatkezelő segítségével megvizsgálhatja a futó folyamatokat. Az Azure-beli virtuálisgép-ügynök kereséséhez nyissa meg a Feladatkezelő eszközt, kattintson a *részletek* lapra, és keresse meg a folyamat nevét **WindowsAzureGuestAgent.exe**. A folyamat jelenléte azt jelzi, hogy a virtuálisgép-ügynök telepítve van.
 
 
 ## <a name="upgrade-the-vm-agent"></a>A virtuálisgép-ügynök frissítése
 A Windows rendszerhez készült Azure VM-ügynök automatikusan frissül. Mivel az új virtuális gépek üzembe helyezése az Azure-ban történik, a virtuálisgép-kiépítési idő szerint kapják meg a legújabb virtuálisgép-ügynököt. Az egyéni virtuálisgép-rendszerképeket manuálisan kell frissíteni, hogy az új virtuálisgép-ügynököt a lemezkép létrehozási idején is tartalmazza.
 
 ## <a name="windows-guest-agent-automatic-logs-collection"></a>A Windows vendég ügynökének automatikus naplófájljainak gyűjteménye
-A Windows vendég ügynökének van egy funkciója, amellyel automatikusan gyűjthet néhány naplót. Ezt a funkciót a CollectGuestLogs. exe folyamat végzi. Mind a Péter Cloud Services, mind a IaaS Virtual Machines, és a célja, hogy gyorsan & automatikusan gyűjtsön néhány diagnosztikai naplót egy virtuális gépről, így offline elemzéshez is használhatók. Az összegyűjtött naplók az eseménynaplók, az operációs rendszer naplói, az Azure-naplók és egyes beállításkulcsok. Létrehoz egy ZIP-fájlt, amely a virtuális gép Gazdagépére kerül át. Ebben a ZIP-fájlban a mérnöki csapatok és a támogatási szakemberek a virtuális gép tulajdonosának kérelmére vonatkozó problémák kivizsgálására is rámutatnak.
+A Windows vendég ügynökének van egy funkciója, amellyel automatikusan gyűjthet néhány naplót. Ezt a funkciót a CollectGuestLogs.exe folyamat vezérlője. Mind a Péter Cloud Services, mind a IaaS Virtual Machines, és a célja, hogy gyorsan & automatikusan gyűjtsön néhány diagnosztikai naplót egy virtuális gépről, így offline elemzéshez is használhatók. Az összegyűjtött naplók az eseménynaplók, az operációs rendszer naplói, az Azure-naplók és egyes beállításkulcsok. Létrehoz egy ZIP-fájlt, amely a virtuális gép Gazdagépére kerül át. Ebben a ZIP-fájlban a mérnöki csapatok és a támogatási szakemberek a virtuális gép tulajdonosának kérelmére vonatkozó problémák kivizsgálására is rámutatnak.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ a virtuálisgép-bővítményekről: [Azure-beli virtuális gépek bővítményei és funkcióinak áttekintése](overview.md).

@@ -8,10 +8,9 @@ ms.author: femila
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.openlocfilehash: 11ecf5c2a7bea8a9ef2047bdabcbfd4d844c5a3a
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84559512"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>Az Event Grid témakörök kezeléséhez kapcsolódó események tartományának ismertetése
@@ -112,6 +111,6 @@ Az esemény-tartományok ugyanazokat az [üzemeltetési díjszabást](https://az
 
 A műveletek ugyanúgy működnek az esemény-tartományokban, mint az egyéni témakörökben. Az események egy adott esemény tartományba való beáramlása egy művelet, és az eseményekhez tartozó minden kézbesítési kísérlet egy művelet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Az események tartományának beállításával, a témakörök létrehozásával, az esemény-előfizetések létrehozásával és az események közzétételével kapcsolatos további tudnivalókért lásd: események [tartományának kezelése](./how-to-event-domains.md).

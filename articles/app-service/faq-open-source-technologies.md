@@ -10,10 +10,9 @@ ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18, tracking-python
 ms.openlocfilehash: 82bdf4cd25d486d48f4f2adda222197a600434d8
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84559579"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Nyílt forráskódú technológiákkal kapcsolatos gyakori kérdések az Azure-beli Web Apps
@@ -31,8 +30,8 @@ A PHP-naplózás bekapcsolása:
 3. Válassza ki a **hely** mappáját.
 4. Válassza ki a **wwwroot** mappát.
 5. Válassza ki az **+** ikont, majd válassza az **új fájl**elemet.
-6. Állítsa a fájlnevet **. user. ini**névre.
-7. Válassza a **. user. ini**melletti ceruza ikont.
+6. Adja meg a fájl nevét **.user.ini**.
+7. Válassza a **.user.ini**melletti ceruza ikont.
 8. A fájlban adja hozzá a következő kódot:`log_errors=on`
 9. Kattintson a **Mentés** gombra.
 10. Válassza a **wp-config. php**melletti ceruza ikont.
@@ -48,31 +47,31 @@ További információ: a [WordPress-hibák naplózásának engedélyezése](http
 ## <a name="how-do-i-log-python-application-errors-in-apps-that-are-hosted-in-app-service"></a>Hogyan a Python-alkalmazások hibáit a App Serviceban üzemeltetett alkalmazásokban?
 [!INCLUDE [web-sites-python-troubleshooting-wsgi-error-log](../../includes/web-sites-python-troubleshooting-wsgi-error-log.md)]
 
-## <a name="how-do-i-change-the-version-of-the-nodejs-application-that-is-hosted-in-app-service"></a>Hogyan megváltoztathatja a App Service üzemeltetett Node. js-alkalmazás verzióját?
+## <a name="how-do-i-change-the-version-of-the-nodejs-application-that-is-hosted-in-app-service"></a>Hogyan módosítja a App Service-ben üzemeltetett Node.js alkalmazás verzióját?
 
-A Node. js-alkalmazás verziójának módosításához a következő lehetőségek közül választhat:
+A Node.js alkalmazás verziójának módosításához a következő lehetőségek egyikét használhatja:
 
 * Az Azure Portalban használja az **Alkalmazásbeállítások alkalmazást**.
   1. A Azure Portal nyissa meg a webalkalmazást.
   2. A **Beállítások** panelen válassza az **Alkalmazásbeállítások**lehetőséget.
-  3. Az **Alkalmazásbeállítások**között megadhatja a kulcsként WEBSITE_NODE_DEFAULT_VERSION, valamint az értékként használni kívánt Node. js-verziót.
+  3. Az **Alkalmazásbeállítások**között megadhatja a kulcsként WEBSITE_NODE_DEFAULT_VERSION, valamint az értékként használni kívánt Node.js verzióját.
   4. Nyissa meg a **kudu-konzolt** ( `https://*yourwebsitename*.scm.azurewebsites.net` ).
-  5. A Node. js verziójának megadásához írja be a következő parancsot:  
+  5. A Node.js verziójának vizsgálatához írja be a következő parancsot:  
      ```
      node -v
      ```
-* Módosítsa a iisnode. YML fájlt. A Node. js verziójának módosítása a iisnode. YML fájlban csak a iisnode által használt futásidejű környezetet állítja be. A kudu cmd és mások továbbra is a Azure Portal **alkalmazás beállításaiban** beállított Node. js-verziót használják.
+* Módosítsa a iisnode. YML fájlt. A iisnode. YML fájl Node.js verziójának módosítása csak azt a futásidejű környezetet állítja be, amelyet a iisnode használ. A kudu cmd és mások továbbra is a Azure Portal **alkalmazás beállításaiban** beállított Node.js verziót használják.
 
   A iisnode. YML manuális beállításához hozzon létre egy iisnode. YML fájlt az alkalmazás gyökérkönyvtárában. A fájlban adja meg a következő sort:
   ```yml
   nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\5.9.1\node.exe"
   ```
    
-* Állítsa be a iisnode. YML fájlt a verziókövetés üzembe helyezése során a Package. JSON használatával.
+* Állítsa be a iisnode. YML fájlt a verziókövetés üzembe helyezése során package.jshasználatával.
   Az Azure-verziókövetés telepítési folyamata a következő lépésekkel jár:
   1. Tartalmat helyez át az Azure-webalkalmazásba.
   2. Létrehoz egy alapértelmezett telepítési parancsfájlt, ha nincs egyetlen (Deploy. cmd,. Deployment Files) a webalkalmazás gyökérkönyvtárában.
-  3. Futtat egy telepítési parancsfájlt, amelyben létrehoz egy iisnode. YML fájlt, ha megemlíti a Node. js-verziót a Package. JSON fájl > motorjában`"engines": {"node": "5.9.1","npm": "3.7.3"}`
+  3. Futtat egy üzembe helyezési parancsfájlt, amelyben létrehoz egy iisnode. YML fájlt, ha a package.js> Engine-ben megemlíti a Node.js verzióját.`"engines": {"node": "5.9.1","npm": "3.7.3"}`
   4. A iisnode. YML fájl a következő kódrészlettel rendelkezik:
       ```yml
       nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\5.9.1\node.exe"
@@ -89,11 +88,11 @@ Ha a naplók engedélyezve vannak, reprodukálja a hibát, majd ellenőrizze a n
 
 Ha ezt a hibát a Debug. log vagy a php_errors. log fájlban látja, az alkalmazás túllépi a kapcsolatok számát. Ha a ClearDB-on üzemelteti, ellenőrizze a [szolgáltatási](https://www.cleardb.com/pricing.view)csomagban elérhető kapcsolatok számát.
 
-## <a name="how-do-i-debug-a-nodejs-app-thats-hosted-in-app-service"></a>Hogyan a App Service üzemeltetett Node. js-alkalmazás hibakeresését?
+## <a name="how-do-i-debug-a-nodejs-app-thats-hosted-in-app-service"></a>Hogyan a App Serviceban üzemeltetett Node.js-alkalmazás hibakeresését?
 
 1.  Nyissa meg a **kudu-konzolt** ( `https://*yourwebsitename*.scm.azurewebsites.net/DebugConsole` ).
 2.  Nyissa meg az Application logs mappát (D:\home\LogFiles\Application).
-3.  A logging_errors. txt fájlban keresse meg a tartalmat.
+3.  A logging_errors.txt fájlban keresse meg a tartalmat.
 
 ## <a name="how-do-i-install-native-python-modules-in-an-app-service-web-app-or-api-app"></a>Hogyan natív Python-modulokat telepíthet egy App Service Web App vagy API-alkalmazásban?
 
@@ -138,7 +137,7 @@ A hiba elhárítása:
 
 1. Távolítsa el az sqljdbc*. jar fájlt az alkalmazás/lib mappából.
 2. Ha az egyéni tomcat vagy az Azure Marketplace tomcat webkiszolgálót használja, másolja ezt a. jar-fájlt a Tomcat lib mappájába.
-3. Ha engedélyezi a javát a Azure Portalból (válassza a **Java 1,8**  >  **tomcat-kiszolgálót**), másolja a sqljdbc. * jar fájlt az alkalmazásával párhuzamos mappába. Ezután adja hozzá a következő osztályútvonal-beállítást a web. config fájlhoz:
+3. Ha engedélyezi a javát a Azure Portalból (válassza a **Java 1,8**  >  **tomcat-kiszolgálót**), másolja a sqljdbc. * jar fájlt az alkalmazásával párhuzamos mappába. Ezután adja hozzá a következő osztályútvonal-beállítást a web.config fájlhoz:
 
     ```xml
     <httpPlatform>
@@ -206,7 +205,7 @@ A WordPress biztonsági eljárásaival kapcsolatos további információkért l�
 
 ## <a name="i-am-trying-to-use-phpmyadmin-and-i-see-the-message-access-denied-how-do-i-resolve-this"></a>A PHPMyAdmin használatával próbálkozom, és a "hozzáférés megtagadva" üzenet jelenik meg. Hogyan oldhatom meg ezt?
 
-Ez a probléma akkor fordulhat elő, ha a beépített mySQL funkció még nem fut ebben a App Service-példányban. A probléma megoldásához próbálja meg elérni a webhelyét. Ez elindítja a szükséges folyamatokat, beleértve a beépített mySQL folyamatot is. Annak ellenőrzéséhez, hogy a beépített mySQL fut-e, a Process Explorerben ellenőrizze, hogy szerepel-e a mysqld. exe a folyamatokban.
+Ez a probléma akkor fordulhat elő, ha a beépített mySQL funkció még nem fut ebben a App Service-példányban. A probléma megoldásához próbálja meg elérni a webhelyét. Ez elindítja a szükséges folyamatokat, beleértve a beépített mySQL folyamatot is. Annak ellenőrzéséhez, hogy a beépített mySQL fut-e, a Process Explorerben ellenőrizze, hogy a mysqld.exe szerepel-e a folyamatokban.
 
 Miután meggyőződni arról, hogy a beépített mySQL fut, próbálkozzon a PHPMyAdmin használatával.
 

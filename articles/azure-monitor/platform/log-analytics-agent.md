@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 02/04/2020
 ms.openlocfilehash: ce7edf4dd5ae52f3ea604fe4b8d88d1a29de5a69
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84608366"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics-ügynök áttekintése
@@ -39,7 +38,7 @@ Log Analytics ügynöknek nincs díja, de a betöltött adatokért díjat szám�
 ## <a name="data-collected"></a>Összegyűjtött adatok
 A következő táblázat felsorolja azokat az adattípusokat, amelyekkel a Log Analytics munkaterületek összegyűjthetők az összes csatlakoztatott ügynökből. Tekintse meg a [Azure monitor által figyelt adatokat?](../monitor-reference.md) az elemzések, megoldások és egyéb olyan megoldások listáját, amelyek a log Analytics-ügynököt használják más típusú adatok gyűjtésére.
 
-| Adatforrás | Leírás |
+| Adatforrás | Description |
 | --- | --- |
 | [Windows-eseménynaplók](data-sources-windows-events.md) | A Windows eseménynaplózási rendszernek eljuttatott információk. |
 | [Rendszernapló](data-sources-syslog.md)                     | A Linux-eseménynaplózási rendszernek eljuttatott információk. |
@@ -70,7 +69,7 @@ Ha System Center Operations Manager 2012 R2 vagy újabb verziót használ:
 
 Több módszerrel is telepítheti a Log Analytics-ügynököt, és a saját igényeinek megfelelően Azure Monitor csatlakozhat a számítógéphez. Az alábbi táblázat az egyes módszereket ismerteti, amelyekkel meghatározhatja, hogy melyik működik a legjobban a szervezetében.
 
-|Forrás | Metódus | Leírás|
+|Forrás | Metódus | Description|
 |-------|-------------|-------------|
 |Azure VM| [Manuálisan a Azure Portal](../../azure-monitor/learn/quick-collect-azurevm.md?toc=/azure/azure-monitor/toc.json) | A Log Analytics munkaterületről telepítendő virtuális gépek meghatározása. |
 | | Log Analytics virtuálisgép-bővítmény Windows vagy [Linux](../../virtual-machines/extensions/oms-linux.md) [rendszerhez](../../virtual-machines/extensions/oms-windows.md) az Azure CLI használatával vagy egy Azure Resource Manager sablonnal | A bővítmény telepíti a Log Analytics ügynököt az Azure Virtual Machines szolgáltatásban, és egy meglévő Azure Monitor-munkaterületre regisztrálja őket. |
@@ -148,7 +147,7 @@ A Linux-ügynök a Linux operációs rendszer következő verzióit támogatja h
 
 A következő táblázat a támogatott Linux-disztribúciók számára szükséges csomagokat mutatja be, amelyekre az ügynököt telepíteni fogja.
 
-|Szükséges csomag |Leírás |Minimális verzió |
+|Szükséges csomag |Description |Minimális verzió |
 |-----------------|------------|----------------|
 |Glibc |    GNU C könyvtár | 2.5-12 
 |Openssl    | OpenSSL-kódtárak | 1.0. x vagy 1.1. x |
@@ -223,7 +222,7 @@ Például:`https://user01:password@proxy01.contoso.com:30443`
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Tekintse át az [adatforrásokat](agent-data-sources.md) , és Ismerje meg, hogy milyen adatforrások érhetők el az adatok Windows vagy Linux rendszerből való gyűjtéséhez. 
 * További információ az adatforrásokból és megoldásokból gyűjtött adatok elemzéséhez szükséges [naplók lekérdezéséről](../log-query/log-query-overview.md) . 

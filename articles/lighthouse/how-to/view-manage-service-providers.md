@@ -4,10 +4,9 @@ description: Az ügyfelek a Azure Portal szolgáltatók lapján tekinthetik meg 
 ms.date: 04/24/2020
 ms.topic: how-to
 ms.openlocfilehash: 8b48fb9c92cf6922cea62fe04943ae76d3d3b590
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84636461"
 ---
 # <a name="view-and-manage-service-providers"></a>Szolgáltatók megtekintése és kezelése
@@ -77,7 +76,7 @@ Egy [Azure Policy beépített szabályzat-definíciót](../../governance/policy/
 
 A szabályzatok hozzárendeléséről és a megfelelőségi állapot eredményeinek megtekintéséhez lásd: gyors útmutató [: szabályzat-hozzárendelés létrehozása](../../governance/policy/assign-policy-portal.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ az [Azure Lighthouse](../overview.md)-ról.
 - Ismerje meg, hogy a szolgáltatók hogyan [tekinthetik meg és kezelhetik az ügyfeleket](view-manage-customers.md) a Azure Portal **saját ügyfelek** lapján.

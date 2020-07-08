@@ -10,10 +10,9 @@ ms.date: 03/17/2020
 ms.author: robinsh
 ms.custom: tracking-python
 ms.openlocfilehash: ea63b4bd40a610227b4315f9e6e858c39ff9ff6a
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84606462"
 ---
 # <a name="schedule-and-broadcast-jobs-python"></a>Feladatok ütemezett és szórása (Python)
@@ -334,7 +333,7 @@ Most már készen áll az alkalmazások futtatására.
 
     ![IoT Hub Job minta 2 – eszköz kimenete](./media/iot-hub-python-python-schedule-jobs/sample2-deviceoutput.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban egy olyan feladatot használt, amely egy közvetlen metódust ütemez egy eszközre, és az eszköz Twin tulajdonságainak frissítését.
 

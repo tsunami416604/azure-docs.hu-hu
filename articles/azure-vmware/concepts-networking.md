@@ -4,10 +4,9 @@ description: Ismerje meg az Azure VMware-megoldás (AVS) legfontosabb szempontja
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.openlocfilehash: 35d886fe0f6a68e522d7f2cf20b450b5d9afc199
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84629207"
 ---
 # <a name="azure-vmware-solution-avs-preview-networking-and-interconnectivity-concepts"></a>Azure VMware-megoldás (AVS) – előzetes hálózati és összekapcsolási fogalmak
@@ -75,7 +74,7 @@ Az alhálózatok:
 | Virtuális gépek számítási feladatai | `/24`   | `10.10.2.0/24`   |
 | ExpressRoute-társítás | `/24`    | `10.10.3.8/30`   |
 
-## <a name="next-steps"></a>Következő lépések 
+## <a name="next-steps"></a>További lépések 
 
 A következő lépés a [saját Felhőbeli tárolási fogalmak](concepts-storage.md)megismerése.
 

@@ -15,10 +15,9 @@ ms.topic: troubleshooting
 ms.date: 05/07/2020
 ms.author: v-mibufo
 ms.openlocfilehash: 187098f557cb691e023abb282a265b11e975c544
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84629265"
 ---
 # <a name="vm-is-unresponsive-when-applying-group-policy-local-users-and-groups-policy"></a>A virtuális gép nem válaszol Csoportházirend helyi felhasználók és csoportok házirend alkalmazásakor
@@ -148,6 +147,6 @@ Ne használja ezt a házirendet:
 
 `Machine\Admin Templates\System\User Profiles\Delete user profiles older than a specified number of days on system restart`
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha a Windows Update alkalmazása során problémák merülnek fel, tekintse meg [a virtuális gép nem válaszol "C01A001D" hibaüzenettel a Windows Update alkalmazásakor](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/unresponsive-vm-apply-windows-update).

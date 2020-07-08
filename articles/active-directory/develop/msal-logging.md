@@ -14,10 +14,9 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev, tracking-python
 ms.openlocfilehash: 300b7e4fe3e3c150a78fee5b63458feab266aafe
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84558673"
 ---
 # <a name="logging-in-msal-applications"></a>MSAL-alkalmazások naplózása
@@ -126,7 +125,7 @@ Logger.getInstance().setEnableLogcatLog(true);
 
 ## <a name="javascript"></a>[JavaScript](#tab/javascript)
 
- Engedélyezze a naplózást a MSAL. js (JavaScript) alkalmazásban, ha átadja egy naplózó objektumot a konfiguráció során egy példány létrehozásához `UserAgentApplication` . Ez a naplózó objektum a következő tulajdonságokkal rendelkezik:
+ Az MSAL.js (JavaScript) naplózásának engedélyezése egy naplózó objektum átadásával a konfiguráció során egy példány létrehozásához `UserAgentApplication` . Ez a naplózó objektum a következő tulajdonságokkal rendelkezik:
 
 - `localCallback`: egy visszahívási példány, amelyet a fejlesztő biztosíthat a naplók egyéni módon történő felhasználásához és közzétételéhez. A localCallback metódus implementálása attól függően, hogy hogyan szeretné átirányítani a naplókat.
 - `level`(nem kötelező): a konfigurálható naplózási szint. A támogatott naplózási szintek a következők:,, `Error` `Warning` `Info` és `Verbose` . A mező alapértelmezett értéke: `Info`.
@@ -210,7 +209,7 @@ MSALGlobalConfig.loggerConfig.piiEnabled = NO;
 
 Ha az iOS-es és macOS-es MSAL használatával jelentkezik be, a naplózási szint beállításához használja a következő értékek egyikét:
 
-|Szint  |Leírás |
+|Szint  |Description |
 |---------|---------|
 | `MSALLogLevelNothing`| Az összes naplózás letiltása |
 | `MSALLogLevelError` | Alapértelmezett szint, csak akkor jeleníti meg az adatokat, ha hibák történnek |
@@ -287,7 +286,7 @@ MSALGlobalConfig.loggerConfig.piiEnabled = false
 
 Ha az iOS-es és macOS-es MSAL használatával jelentkezik be, a naplózási szint beállításához használja a következő értékek egyikét:
 
-|Szint  |Leírás |
+|Szint  |Description |
 |---------|---------|
 | `MSALLogLevelNothing`| Az összes naplózás letiltása |
 | `MSALLogLevelError` | Alapértelmezett szint, csak akkor jeleníti meg az adatokat, ha hibák történnek |

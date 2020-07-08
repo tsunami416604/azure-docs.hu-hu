@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020, tracking-python
 ms.date: 04/27/2020
 ms.openlocfilehash: c67e8a79e2339c4a329e276c52703bd749137037
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84608417"
 ---
 # <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Gépi tanulási alkalmazások készítése és adatkészletek elemzése Apache Spark MLlib használatával
@@ -38,7 +37,7 @@ A logisztikai regresszió a besoroláshoz használt algoritmus. A Spark logiszti
 
 ## <a name="predictive-analysis-example-on-food-inspection-data"></a>Prediktív elemzési példa az élelmiszer-ellenőrzési adataira
 
-Ebben a példában a Spark használatával végez némi prediktív elemzést az élelmiszer-ellenőrzési adatain (**Food_Inspections1. csv**). A [Chicago adatportálon](https://data.cityofchicago.org/)keresztül beszerzett adatmennyiség. Ez az adatkészlet a Chicago-ban végrehajtott élelmiszer-létesítési vizsgálatokról tartalmaz információkat. Beleértve az egyes létesítményekkel kapcsolatos információkat, a megtalált szabálysértéseket (ha vannak ilyenek) és a vizsgálat eredményeit. A CSV-adatfájl már elérhető a fürthöz társított Storage-fiókban a **/hdisamples/hdisamples/foodinspectiondata/Food_Inspections1. csv**fájlban.
+Ebben a példában a Spark használatával végez némi prediktív elemzést az élelmiszer-ellenőrzési adatain (**Food_Inspections1.csv**). A [Chicago adatportálon](https://data.cityofchicago.org/)keresztül beszerzett adatmennyiség. Ez az adatkészlet a Chicago-ban végrehajtott élelmiszer-létesítési vizsgálatokról tartalmaz információkat. Beleértve az egyes létesítményekkel kapcsolatos információkat, a megtalált szabálysértéseket (ha vannak ilyenek) és a vizsgálat eredményeit. A CSV-adatfájl már elérhető a (z) **/HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections1.csv**fürthöz társított Storage-fiókban.
 
 Az alábbi lépésekben egy modellt fejleszt ki, amelyből megtudhatja, mit kell tennie az élelmiszer-ellenőrzés elvégzéséhez vagy elutasításához.
 
@@ -252,7 +251,7 @@ model = pipeline.fit(labeledData)
 
 ## <a name="evaluate-the-model-using-another-dataset"></a>Modell kiértékelése egy másik adatkészlet használatával
 
-A korábban létrehozott modellt használva *megjósolhatja* , hogy az új ellenőrzések eredményei milyen eredményeket kapnak. A jóslatok a megfigyelt szabálysértéseken alapulnak. Ezt a modellt a (z **) Food_Inspections1. csv**adatkészleten tanítja ki. A modell erősségének *kiértékeléséhez* használhat egy második adatkészletet ( **Food_Inspections2. csv)**, amely az új adatokat használja. Ez a második adatkészlet (**Food_Inspections2. csv**) a fürthöz társított alapértelmezett tárolóban található.
+A korábban létrehozott modellt használva *megjósolhatja* , hogy az új ellenőrzések eredményei milyen eredményeket kapnak. A jóslatok a megfigyelt szabálysértéseken alapulnak. Ezt a modellt a **Food_Inspections1.csv**adatkészleten tanítja ki. A modell erősségének *kiértékeléséhez* használhat egy második adatkészletet ( **Food_Inspections2.csv**). Ez a második adathalmaz (**Food_Inspections2.csv**) a fürthöz társított alapértelmezett tárolóban található.
 
 1. A következő kód futtatásával hozzon létre egy új dataframe, amely a modell által generált **predictionsDf** tartalmazza. A kódrészlet létrehoz egy, az **előrejelzések** alapján létrehozott ideiglenes táblát is a dataframe alapján.
 
@@ -359,7 +358,7 @@ Most létrehozhat egy végső vizualizációt, amely segít a teszt eredményein
 
 Miután befejezte az alkalmazás futtatását, állítsa le a notebookot az erőforrások felszabadításához. Ehhez a notebook **File** (Fájl) menüjében kattintson a **Close and Halt** (Bezárás és leállítás) elemre. Ez a művelet leállítja és bezárja a notebookot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Overview: Apache Spark on Azure HDInsight (Áttekintés: Apache Spark on Azure HDInsight)](apache-spark-overview.md)
 * [Webhely-naplózási elemzés Apache Spark használatával a HDInsight-ben](apache-spark-custom-library-website-log-analysis.md)

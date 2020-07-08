@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020, tracking-python
 ms.date: 04/23/2020
 ms.openlocfilehash: 2084bf136300126e56414599caa63d24c98f4542
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84604235"
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>Telepítse a Jupyter notebookot a számítógépre, és kapcsolódjon Apache Spark a HDInsight
@@ -100,7 +99,7 @@ Ebben a szakaszban azt a Spark-varázst konfigurálja, amelyet korábban telepí
     exit()
     ```
 
-3. A mappában `.sparkmagic` hozzon létre egy **config. JSON** nevű fájlt, és adja hozzá a következő JSON-kódrészletet benne.  
+3. A mappában `.sparkmagic` hozzon létre egy **config.js** nevű fájlt, és adja hozzá a következő JSON-kódrészletet.  
 
     ```json
     {
@@ -135,7 +134,7 @@ Ebben a szakaszban azt a Spark-varázst konfigurálja, amelyet korábban telepí
     |{BASE64ENCODEDPASSWORD}|A tényleges jelszó Base64 kódolású jelszava.  Base64-jelszót is létrehozhat a következő helyen: [https://www.url-encode-decode.com/base64-encode-decode/](https://www.url-encode-decode.com/base64-encode-decode/) .|
     |`"livy_server_heartbeat_timeout_seconds": 60`|Tartsa meg, hogy használja `sparkmagic 0.12.7` -e (a v 3.5 és a v 3.6 fürtöket).  Ha a használatakor `sparkmagic 0.2.3` (fürtök: v 3.4), cserélje le a következőre: `"should_heartbeat": true` .|
 
-    A [minta config. JSON](https://github.com/jupyter-incubator/sparkmagic/blob/master/sparkmagic/example_config.json)fájlban egy teljes példa látható.
+    Megtekintheti a [minta config.json](https://github.com/jupyter-incubator/sparkmagic/blob/master/sparkmagic/example_config.json)található teljes példaként szolgáló fájlt.
 
    > [!TIP]  
    > A szívverések elküldése annak biztosítására, hogy a munkamenetek nem szivárognak ki. Ha egy számítógép alvó állapotba kerül, vagy leáll, a szívverés nem kerül elküldésre, ami a munkamenet tisztítását eredményezi. Ha szeretné letiltani ezt a viselkedést, a v 3.4 fürtök esetében beállíthatja a Livy konfigurációját `livy.server.interactive.heartbeat.timeout` `0` a Ambari felhasználói felületéről. Ha az v 3.5 fürtök esetében nem állítja be az 3,5-es konfigurációt, a rendszer nem törli a munkamenetet.
@@ -164,7 +163,7 @@ Ebben a szakaszban azt a Spark-varázst konfigurálja, amelyet korábban telepí
 
     Ha sikeresen beolvasta a kimenetet, a rendszer teszteli a HDInsight-fürthöz való kapcsolódást.
 
-    Ha frissíteni szeretné a jegyzetfüzet konfigurációját egy másik fürthöz való kapcsolódáshoz, frissítse a config. JSON fájlt az új értékekkel, ahogy azt a fenti 3. lépés mutatja.
+    Ha szeretné frissíteni a jegyzetfüzet konfigurációját egy másik fürthöz való kapcsolódáshoz, frissítse a config.jst az új értékekkel, a fenti 3. lépésben látható módon.
 
 ## <a name="why-should-i-install-jupyter-on-my-computer"></a>Miért érdemes telepíteni a Jupyter a számítógépre?
 
@@ -179,7 +178,7 @@ A Jupyter telepítésének okai a számítógépen, majd a HDInsight-fürthöz v
 > [!WARNING]  
 > Ha a Jupyter telepítve van a helyi számítógépen, a több felhasználó ugyanazon a Spark-fürtön is futtathatja ugyanazt a jegyzetfüzetet. Ilyen esetben a rendszer több Livy-munkamenetet hoz létre. Ha problémát tapasztal, és azt szeretné, hogy a rendszer hibakeresést végezzen, az egy összetett feladat, amellyel nyomon követheti, hogy melyik Livy-munkamenet melyik felhasználóhoz tartozik.  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Overview: Apache Spark on Azure HDInsight (Áttekintés: Apache Spark on Azure HDInsight)](apache-spark-overview.md)
 * [Kernelek Jupyter notebookhoz Apache Sparkon](apache-spark-jupyter-notebook-kernels.md)

@@ -10,10 +10,9 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
 ms.openlocfilehash: c38bb6100665cc9456b66608660bdca520b934c6
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84636240"
 ---
 # <a name="configure-azure-sql-edge-preview"></a>Az Azure SQL Edge konfigurálása (előzetes verzió)
@@ -32,7 +31,7 @@ Az Azure SQL Edge számos különböző környezeti változót tesz elérhetőv�
 
 Az Azure SQL Edge nem támogatja az alábbi SQL Server on Linux környezeti változót. Ha meg van adva, a rendszer a tároló inicializálása során figyelmen kívül hagyja ezt a környezeti változót.
 
-| Környezeti változó | Leírás |
+| Környezeti változó | Description |
 |-----|-----|
 | **MSSQL_ENABLE_HADR** | Rendelkezésre állási csoport engedélyezése. Az **1** érték például engedélyezve van, és a **0** le van tiltva. |
 
@@ -73,7 +72,7 @@ Az Azure SQL Edge nem tartalmazza az [MSSQL-conf konfigurációs segédprogramot
 
 A következő MSSQL. conf beállítások nem alkalmazhatók az SQL Edge-re:
 
-|Beállítás|Leírás|
+|Beállítás|Description|
 |:---|:---|
 |**Felhasználói visszajelzés** | Válassza ki, hogy SQL Server küldjön-e visszajelzést a Microsoftnak. |
 |**Adatbázisbeli levelezési profil** | Állítsa be SQL Server on Linux alapértelmezett adatbázis-levelezési profilját. |
@@ -114,7 +113,7 @@ traceflag1 = 3605
 traceflag2 = 1204
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Kapcsolódás az Azure SQL Edge-hez](connect.md)
 - [Teljes körű IoT-megoldás kiépítése az SQL Edge használatával](tutorial-deploy-azure-resources.md)

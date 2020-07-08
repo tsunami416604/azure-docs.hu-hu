@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: jingwang
 ms.openlocfilehash: 9ad0ccdabd0320d8821d0760ca9802db37049149
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84611032"
 ---
 # <a name="parquet-format-in-azure-data-factory"></a>A parketta formátuma Azure Data Factory
@@ -90,7 +89,7 @@ Az adatfolyamatok leképezése során a következő adattárakban olvashatók é
 
 Az alábbi táblázat a Parquet-forrás által támogatott tulajdonságokat sorolja fel. Ezeket a tulajdonságokat a **forrás beállításai** lapon módosíthatja.
 
-| Name | Leírás | Kötelező | Megengedett értékek | Adatfolyam-parancsfájl tulajdonsága |
+| Name | Description | Kötelező | Megengedett értékek | Adatfolyam-parancsfájl tulajdonsága |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Formátum | A formátumot kötelező megadni`parquet` | igen | `parquet` | formátumban |
 | Wild kártya elérési útjai | A rendszer feldolgozza a helyettesítő karakteres elérési úttal egyező összes fájlt. Felülbírálja az adatkészletben beállított mappát és a fájl elérési útját. | nem | Karakterlánc [] | wildcardPaths |
@@ -119,7 +118,7 @@ source(allowSchemaDrift: true,
 
 Az alábbi táblázat a Parquet-forrás által támogatott tulajdonságokat sorolja fel. Ezeket a tulajdonságokat a **forrás beállításai** lapon módosíthatja.
 
-| Name | Leírás | Kötelező | Megengedett értékek | Adatfolyam-parancsfájl tulajdonsága |
+| Name | Description | Kötelező | Megengedett értékek | Adatfolyam-parancsfájl tulajdonsága |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Formátum | A formátumot kötelező megadni`parquet` | igen | `parquet` | formátumban |
 | Mappa törlése | Ha a célmappa az írás előtt törlődik | nem | `true` vagy `false` | truncate |
@@ -156,7 +155,7 @@ A Parquet komplex adattípusok jelenleg nem támogatottak (például Térkép, l
 A saját üzemeltetésű, a Parquet-fájlok szerializálásával/deszerializálásával futó másolás esetén az ADF a Java futtatókörnyezetet úgy keresi meg, hogy először ellenőrzi a JRE beállításjegyzékét *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* , ha nem található, másodsorban a OpenJDK rendszer-változó ellenőrzése *`JAVA_HOME`* .
 
 - A **JRE használatához**: a 64 bites IR használatához 64 bites JRE szükséges. [Itt](https://go.microsoft.com/fwlink/?LinkId=808605)találhatja meg.
-- **A OpenJDK használata**: az IR 3,13-es verzió óta támogatott. Csomagolja a JVM. dll fájlt a OpenJDK összes többi szükséges szerelvényéhez a saját üzemeltetésű IR-gépre, és ennek megfelelően állítsa be a rendszerkörnyezeti változót JAVA_HOME.
+- **A OpenJDK használata**: az IR 3,13-es verzió óta támogatott. Csomagolja ki a jvm.dllt a OpenJDK összes többi szükséges szerelvényével a saját üzemeltetésű IR-gépre, és ennek megfelelően állítsa be a rendszerkörnyezeti változót JAVA_HOME.
 - **Visual c++ 2010 Újraterjeszthető csomag telepítése: a**visual c++ 2010 Újraterjeszthető csomag nincs telepítve a saját üzemeltetésű IR-telepítésekkel. [Itt](https://www.microsoft.com/download/details.aspx?id=14632)találhatja meg.
 
 > [!TIP]
@@ -166,7 +165,7 @@ A saját üzemeltetésű, a Parquet-fájlok szerializálásával/deszerializál�
 
 Példa: állítsa be `_JAVA_OPTIONS` a változót értékkel `-Xms256m -Xmx16g` . A jelző `Xms` meghatározza a Java virtuális gép (JVM) kezdeti memória-kiosztási készletét, míg `Xmx` a maximális memória-kiosztási készletet adja meg. Ez azt jelenti, hogy a JVM a memóriával fog elindulni, `Xms` és a memória maximális mennyiségét fogja tudni használni `Xmx` . Alapértelmezés szerint az ADF minimális 64 MB és Max 1G értéket használ.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Másolási tevékenység – áttekintés](copy-activity-overview.md)
 - [Adatfolyam hozzárendelése](concepts-data-flow-overview.md)
