@@ -3,12 +3,12 @@ title: Meglévő hozzárendelés frissítése a portálról
 description: Ismerje meg, hogyan frissíthet egy meglévő tervezet-hozzárendelést a portálról az Azure-tervezetekben.
 ms.date: 04/15/2020
 ms.topic: how-to
-ms.openlocfilehash: a00a8bcc10b37af576777e3816a794225a3832f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 03c954517662c1f54fcca9fbb96ebdf48afdedef
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81381790"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85969464"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>Meglévő terv-hozzárendelés frissítése
 
@@ -50,18 +50,18 @@ A frissített hozzárendelések telepítése néhány fontos szabályt követ. E
   - Ha a szabályzat-hozzárendelés definíciója módosul, létrejön egy új szabályzat-hozzárendelés.
     A korábban üzembe helyezett szabályzat-hozzárendelések továbbra is érvényben maradnak.
   - Ha a szabályzat-hozzárendelési összetevő el lett távolítva a tervből, a rendszer az üzembe helyezett szabályzat-hozzárendeléseket is megmarad.
-- Azure Resource Manager-sablonok
+- Azure Resource Manager sablonok (ARM-sablonok)
   - A sablon a Resource Manageren keresztül lesz feldolgozva **put**-ként. Mivel minden erőforrástípus eltérően kezeli ezt a műveletet, tekintse át az egyes befoglalt erőforrások dokumentációját, hogy meghatározza a művelet hatását a tervrajzok futtatásakor.
 
 ## <a name="possible-errors-on-updating-assignments"></a>A hozzárendelések frissítésének lehetséges hibái
 
-A hozzárendelések frissítésekor lehetséges, hogy a végrehajtott módosítások megszakadnak. Ilyen például a már üzembe helyezett erőforráscsoport helyének módosítása. A [Azure Resource Manager](../../../azure-resource-manager/management/overview.md) által támogatott bármely módosítás elvégezhető, de előfordulhat, hogy a Azure Resource Manager által hibát eredményező változás a hozzárendelés hibáját is eredményezi.
+A hozzárendelések frissítésekor lehetséges, hogy a végrehajtott módosítások megszakadnak. Ilyen például a már üzembe helyezett erőforráscsoport helyének módosítása. A [Resource Manager](../../../azure-resource-manager/management/overview.md) által támogatott bármely módosítás elvégezhető, de az erőforrás-kezelőn keresztüli hibát eredményező módosítások a hozzárendelés hibáját is eredményezik.
 
 Korlátlan számú hozzárendelés frissíthető. Ha hiba történik, állapítsa meg a hibát, és készítsen egy másik frissítést a hozzárendeléshez.  Példa a hibákra:
 
 - Rossz paraméter
 - Már létező objektum
-- Azure Resource Manager által nem támogatott módosítás
+- A Resource Manager nem támogatja a változást
 
 ## <a name="next-steps"></a>További lépések
 
