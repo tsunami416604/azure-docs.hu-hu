@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 06/26/2020
 ms.custom: seodec18
 ms.openlocfilehash: 3ff8995217521199436e0924acc691dab7c4baef
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85506601"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Azure Batch-készlet létrehozása egy virtuális hálózaton
@@ -64,7 +64,7 @@ UDR hozzáadásakor adja meg az útvonalat az egyes kapcsolódó batch IP-címek
 > [!WARNING]
 > A Batch szolgáltatás IP-címei idővel módosulhatnak. Az IP-címek változása miatti kimaradások megelőzése érdekében hozzon létre egy folyamatot, amely automatikusan frissíti a Batch szolgáltatás IP-címeit, és naprakészen tartja azokat az útválasztási táblázatban. Másik lehetőségként [létrehozhat egy adott IP-címmel rendelkező készletet, amelyet Ön vezérel](create-pool-public-ip.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerje meg a [Batch szolgáltatás munkafolyamatát és az elsődleges erőforrásokat](batch-service-workflow-features.md) , például a készleteket, a csomópontokat, a feladatokat és a feladatokat.
 - Megtudhatja, hogyan [hozhat létre felhasználó által megadott útvonalat a Azure Portalban](../virtual-network/tutorial-create-route-table-portal.md).

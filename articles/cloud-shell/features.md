@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/26/2019
 ms.author: damaerte
 ms.openlocfilehash: 409e8667f03843ae1b1bad56f189ff17b29d549a
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85506565"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Szolgáltatások & eszközök Azure Cloud Shell
@@ -27,7 +27,7 @@ ms.locfileid: "85506565"
 
 Azure Cloud Shell fut `Ubuntu 16.04 LTS` .
 
-## <a name="features"></a>Funkciók
+## <a name="features"></a>Szolgáltatások
 
 ### <a name="secure-automatic-authentication"></a>Biztonságos automatikus hitelesítés
 
@@ -76,7 +76,7 @@ A Cloud Shell a nyílt forráskódú eszközök, például a Terraform, a Ansibl
 |Szövegszerkesztők           |Code (Cloud Shell Editor)<br> vim<br> nano<br> emacs    |
 |Verziókövetés         |git                    |
 |Buildelő eszközök            |make<br> maven<br> npm<br> pip         |
-|Tárolók             |[Docker Machine](https://github.com/docker/machine)<br> [Kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)<br> [Helm](https://github.com/kubernetes/helm)<br> [DC/OS PARANCSSORI FELÜLET](https://github.com/dcos/dcos-cli)         |
+|Containers             |[Docker Machine](https://github.com/docker/machine)<br> [Kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)<br> [Helm](https://github.com/kubernetes/helm)<br> [DC/OS PARANCSSORI FELÜLET](https://github.com/dcos/dcos-cli)         |
 |Adatbázisok              |MySQL-ügyfél<br> PostgreSql-ügyfél<br> [Sqlcmd segédprogram](https://docs.microsoft.com/sql/tools/sqlcmd-utility)<br> [MSSQL – parancsfájl](https://github.com/Microsoft/sql-xplat-cli) |
 |Egyéb                  |iPython-ügyfél<br> [Cloud Foundry parancssori felület](https://github.com/cloudfoundry/cli)<br> [Terraform](https://www.terraform.io/docs/providers/azurerm/)<br> [Ansible](https://www.ansible.com/microsoft-azure)<br> [Chef Inspect](https://www.chef.io/inspec/)<br> [Báb-bolt](https://puppet.com/docs/bolt/latest/bolt.html)<br> [HashiCorp-csomagoló](https://www.packer.io/)<br> [Office 365 parancssori felület](https://pnp.github.io/office365-cli/)|
 
@@ -85,13 +85,13 @@ A Cloud Shell a nyílt forráskódú eszközök, például a Terraform, a Ansibl
 |Nyelv   |Verzió   |
 |---|---|
 |.NET Core  |2.2.402       |
-|Go         |1.9        |
+|Indítás         |1.9        |
 |Java       |1.8        |
 |Node.js    |8.16.0      |
 |PowerShell |[7.0.0](https://github.com/PowerShell/powershell/releases)       |
 |Python     |2,7 és 3,5 (alapértelmezett)|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Bash Cloud Shell rövid útmutatóban](quickstart.md) <br>
 [PowerShell Cloud Shell rövid útmutató](quickstart-powershell.md) <br>
 [További tudnivalók az Azure CLI-ről](https://docs.microsoft.com/cli/azure/) <br>

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/11/2016
 ms.author: alkohli
 ms.openlocfilehash: d806d8a04dc1bd8547808d20c77bfec310f7dd06
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85507483"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-jobs-for-the-storsimple-virtual-array"></a>A StorSimple Eszközkezelő szolgáltatás használata a StorSimple virtuális tömbhöz tartozó feladatok megtekintéséhez
@@ -63,6 +63,6 @@ A következő hibaüzenet jelenik meg: "az eszköz ideje nem szinkronizálható 
 
 Ezek a hibák a biztonsági mentési, visszaállítási, frissítési és feladatátvételi feladatokra vonatkoznak. Ha a virtuális gép a Hyper-V-ben lett kiépítve, a gép végül szinkronizálja az időt a hypervisorral. Ha ez bekövetkezik, indítsa újra a feladatot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Megtudhatja, hogyan használhatja a helyi webes felhasználói felületet a StorSimple virtuális tömb felügyeletére](storsimple-ova-web-ui-admin.md).
 

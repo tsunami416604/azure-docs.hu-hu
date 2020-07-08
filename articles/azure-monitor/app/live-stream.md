@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.reviewer: sdash
 ms.openlocfilehash: 10818a531a43b50b86a6d413c7a504e2c19c3986
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85507346"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Élő metrikastream: figyelje & diagnosztizálása 1 másodperces késéssel
@@ -29,7 +29,7 @@ A Élő metrikastream a következőket teheti:
 
 Az élő metrikák jelenleg a ASP.NET, a ASP.NET Core, a Azure Functions, a Java és a Node.js alkalmazások esetében támogatottak.
 
-## <a name="get-started"></a>Első lépések
+## <a name="get-started"></a>Bevezetés
 
 1. [Telepítse a Application Insights](../../azure-monitor/azure-monitor-app-hub.yml) alkalmazást az alkalmazásban.
 2. A standard Application Insights csomagokon kívül a [Microsoft. ApplicationInsights. PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/) csomagok is szükségesek az élő metrikák adatfolyamának engedélyezéséhez.
@@ -208,7 +208,7 @@ Alapértelmezés szerint az élő metrikák le vannak tiltva a Node.js SDK-ban. 
 
 Nincs adat? Ha az alkalmazás védett hálózaton van: Élő metrikastream eltérő IP-címeket használ, mint a többi Application Insights telemetria. Győződjön meg arról, hogy az [IP-címek](../../azure-monitor/app/ip-addresses.md) meg vannak nyitva a tűzfalon.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Használat figyelése Application Insights](../../azure-monitor/app/usage-overview.md)
 * [A diagnosztikai keresés használata](../../azure-monitor/app/diagnostic-search.md)
 * [Profilkészítő](../../azure-monitor/app/profiler.md)

@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: twooley
 ms.openlocfilehash: 97bb232f726dada5241242e4a1d90e120c07e38c
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85506259"
 ---
 # <a name="use-storsimple-snapshot-manager-to-create-and-manage-volume-groups"></a>StorSimple-Snapshot Manager használata a kötetek létrehozásához és kezeléséhez
@@ -125,7 +125,7 @@ A köteteket a következő eljárással törölheti.
    
     A törölt számítógépcsoport eltűnik az **eredményeket** tartalmazó ablaktábla listájáról, és az adott kötethez társított összes biztonsági mentés törlődik a biztonsági mentési katalógusból.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Ismerje meg, hogyan kezelheti [a StorSimple-megoldást a StorSimple Snapshot Manager használatával](storsimple-snapshot-manager-admin.md).
 * Ismerje meg, hogyan [hozhat létre és kezelhet biztonsági mentési házirendeket a StorSimple Snapshot Manager használatával](storsimple-snapshot-manager-manage-backup-policies.md).
 
