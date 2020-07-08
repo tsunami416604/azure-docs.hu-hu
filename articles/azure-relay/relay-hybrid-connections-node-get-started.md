@@ -4,10 +4,10 @@ description: Node.js-konzolalkalmazást hozhat létre a hibrid Azure Relay-kapcs
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: 86897c0a752e4203537135dbac68cc0b4c1da44c
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85316932"
 ---
 # <a name="get-started-with-relay-hybrid-connections-websockets-in-nodejs"></a>Ismerkedés a Relay Hibrid kapcsolatok WebSockets szolgáltatással Node.js

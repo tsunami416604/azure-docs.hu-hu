@@ -6,10 +6,10 @@ ms.subservice: update-management
 ms.date: 06/23/2020
 ms.topic: conceptual
 ms.openlocfilehash: 86116e4aa76b376331e25719d128fc733c3257ae
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85316404"
 ---
 # <a name="update-management-overview"></a>A frissítéskezelés áttekintése
@@ -166,7 +166,7 @@ A felügyeleti csomagok frissítéseivel kapcsolatos további információkért 
 
 A következő táblázat ismerteti a Update Management által támogatott csatlakoztatott forrásokat:
 
-| Csatlakoztatott forrás | Támogatott | Leírás |
+| Csatlakoztatott forrás | Támogatott | Description |
 | --- | --- | --- |
 | Windows-ügynökök |Yes |Update Management adatokat gyűjt a Windows-ügynököktől a rendszerfrissítésekről, majd elindítja a szükséges frissítések telepítését. |
 | Linux-ügynökök |Yes |Update Management adatokat gyűjt a Linux-ügynököktől a rendszerfrissítésekről, majd elindítja a szükséges frissítések telepítését a támogatott disztribúciók esetében. |
@@ -207,7 +207,7 @@ Az internet-hozzáféréssel nem rendelkező számítógépek konfigurálásáho
 
 A következő táblázat azokat a besorolásokat határozza meg, amelyeket Update Management támogat a Windows-frissítésekhez. 
 
-|Osztályozás  |Leírás  |
+|Osztályozás  |Description  |
 |---------|---------|
 |Kritikus frissítések     | Egy adott problémára vonatkozó frissítés, amely kritikus, nem biztonsággal kapcsolatos hibára vonatkozik.        |
 |Biztonsági frissítések     | Egy termékre vonatkozó, biztonsággal kapcsolatos probléma frissítése.        |
@@ -220,7 +220,7 @@ A következő táblázat azokat a besorolásokat határozza meg, amelyeket Updat
 
 A következő táblázat a Linux-frissítések támogatott besorolásait határozza meg.
 
-|Osztályozás  |Leírás  |
+|Osztályozás  |Description  |
 |---------|---------|
 |Kritikus vagy biztonsági frissítések     | Adott probléma vagy termékspecifikus, biztonsággal kapcsolatos probléma frissítései.         |
 |Egyéb frissítések     | Minden egyéb olyan frissítés, amely nem kritikus jellegű, vagy amelyek nem biztonsági frissítések.        |

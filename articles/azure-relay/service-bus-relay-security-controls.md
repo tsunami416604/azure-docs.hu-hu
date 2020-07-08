@@ -4,10 +4,10 @@ description: Ez a cikk a Azure Relay kiértékelésére szolgáló beépített b
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: 64abee031bb20e2bdb10bf1cc3cd77e135713550
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85316612"
 ---
 # <a name="security-controls-for-azure-relay"></a>A Azure Relay biztonsági vezérlői
@@ -22,7 +22,7 @@ Ez a cikk a Azure Relay beépített biztonsági vezérlőket dokumentálja.
 |---|---|--|--|
 | Szolgáltatás végpontjának támogatása| No |  |   |
 | Hálózati elkülönítés és tűzfalak támogatása| No |  |   |
-| Kényszerített bújtatás támogatása| N/A | A Relay a TLS-alagút  |   |
+| Kényszerített bújtatás támogatása| N.A. | A Relay a TLS-alagút  |   |
 
 ## <a name="monitoring--logging"></a>& naplózás figyelése
 
@@ -43,9 +43,9 @@ Ez a cikk a Azure Relay beépített biztonsági vezérlőket dokumentálja.
 
 | Biztonsági ellenőrzés | Igen/nem | Jegyzetek | Dokumentáció |
 |---|---|--|--|
-| Kiszolgálóoldali titkosítás nyugalmi állapotban: Microsoft által felügyelt kulcsok |  N/A | A Relay egy webes szoftvercsatorna, és nem őrzi meg az adatmegőrzési időt. |   |
+| Kiszolgálóoldali titkosítás nyugalmi állapotban: Microsoft által felügyelt kulcsok |  N.A. | A Relay egy webes szoftvercsatorna, és nem őrzi meg az adatmegőrzési időt. |   |
 | Kiszolgálóoldali titkosítás nyugalmi állapotban: ügyfél által felügyelt kulcsok (BYOK) | No | Csak a Microsoft TLS-tanúsítványokat használja.  |   |
-| Oszlop szintű titkosítás (Azure Data Services)| N/A | |   |
+| Oszlop szintű titkosítás (Azure Data Services)| N.A. | |   |
 | Az átvitel közbeni titkosítás (például ExpressRoute titkosítás, VNet titkosítás és VNet-VNet titkosítás)| Yes | A szolgáltatáshoz TLS szükséges. |   |
 | Titkosított API-hívások| Yes | HTTPS. |
 

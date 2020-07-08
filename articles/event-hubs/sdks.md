@@ -4,10 +4,10 @@ description: Ez a cikk az Azure Event Hubs-hez készült ügyféloldali SDK-k ad
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 4c3557556500f2a536e20331bd3d05d84f608f0b
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85312548"
 ---
 # <a name="azure-event-hubs---client-sdks"></a>Azure Event Hubs – ügyfél SDK-k
@@ -20,7 +20,7 @@ Ez a cikk az Azure Event Hubs által támogatott SDK-k alábbi információit ta
 ## <a name="client-sdks"></a>Ügyfél-SDK-k
 Az alábbi táblázat az összes jelenleg elérhető Azure Event Hubs Runtime-ügyfelet ismerteti. Habár a kódtárak némelyike korlátozott felügyeleti funkciókat is tartalmaz, a felügyeleti műveletekhez külön könyvtárak is tartoznak. Ezen könyvtárak fő témája az, hogy **üzeneteket küldjön és fogadjon** az Event hub-ból.
 
-| Nyelv | Csomag | Referencia | 
+| Nyelv | Csomag | Hivatkozás | 
 | -------- | ------- | --------------- | 
 | . NET Standard (a**legújabb** és a .net Core és a .NET Framework is támogatja) | [Azure. Messaging. EventHubs](https://www.nuget.org/packages/Azure.Messaging.EventHubs/) |<ul><li>[GitHub helye](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs)</li><li>[Oktatóanyag](get-started-dotnet-standard-send-v2.md)</li></ul> |
 |       | [Azure. Messaging. EventHubs. Processor](https://www.nuget.org/packages/Azure.Messaging.EventHubs.Processor/) | <ul><li>[GitHub helye](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor)</li><li>[Oktatóanyag](get-started-dotnet-standard-send-v2.md)</li></ul> |
@@ -39,7 +39,7 @@ Az alábbi táblázat az összes jelenleg elérhető Azure Event Hubs Runtime-ü
 ## <a name="management-sdks"></a>Felügyeleti SDK-k
 A következő táblázat felsorolja az aktuálisan elérhető felügyeleti könyvtárakat. Ezen függvénytárak egyike sem tartalmaz futtatókörnyezeti műveleteket, és kizárólag **Event Hubs entitások kezelésének**céljára szolgál.
 
-| Nyelv | Csomag | Referencia | 
+| Nyelv | Csomag | Hivatkozás | 
 | -------- | ------- | --------------- | 
 | .NET Standard | [Microsoft.Azure.Management.EventHub](https://www.nuget.org/packages/Microsoft.Azure.Management.EventHub) |<ul><li>[GitHub helye](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Microsoft.Azure.Management.EventHub)</li><li>[Oktatóanyag](get-started-dotnet-standard-send-v2.md)</li></ul> |
 

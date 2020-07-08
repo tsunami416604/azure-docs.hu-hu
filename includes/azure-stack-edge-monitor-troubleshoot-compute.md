@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 07/26/2019
 ms.author: alkohli
 ms.openlocfilehash: 350d41980e3128a8747a673ebea82afbe4fab49b
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85313225"
 ---
 Egy olyan Azure Stack Edge-eszközön, amelyen a számítási szerepkör konfigurálva van, a modulok figyeléséhez vagy a hibák megoldásához a Docker-parancsok egy részhalmaza érhető el. Az elérhető parancsok listájának megtekintéséhez [kapcsolódjon a PowerShell-felülethez](#connect-to-the-powershell-interface) , és használja a `dkrdbe` függvényt.
@@ -37,7 +37,7 @@ Commands:
 ```
 A következő táblázat a rendelkezésre álló parancsok rövid leírását tartalmazza `dkrdbe` :
 
-|command  |Leírás |
+|command  |Description |
 |---------|---------|
 |`image`     | Lemezképek kezelése. A nem használt képek eltávolításához használja a következőt:`dkrdbe image prune -a -f`       |
 |`images`     | Lemezképek listázása         |

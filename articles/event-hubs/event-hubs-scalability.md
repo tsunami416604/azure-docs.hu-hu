@@ -4,10 +4,10 @@ description: Ez a cikk az Azure-Event Hubs partíciók és átviteli egységek h
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 6d1c7bc5a0206b634e5a85243f25b2c926762d7e
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85315483"
 ---
 # <a name="scaling-with-event-hubs"></a>Méretezés Event Hubs

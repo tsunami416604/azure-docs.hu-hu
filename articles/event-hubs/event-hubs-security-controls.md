@@ -4,10 +4,10 @@ description: Ez a cikk az Azure-Event Hubs (hálózat, identitás, adatvédelem 
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: da20778f1e24372e445d635e675df6484905f195
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85315398"
 ---
 # <a name="security-controls-for-azure-event-hubs"></a>Az Azure Event Hubs biztonsági vezérlői
@@ -46,7 +46,7 @@ Ez a cikk az Azure Event Hubs beépített biztonsági vezérlőket dokumentálja
 |---|---|--|--|
 | Kiszolgálóoldali titkosítás nyugalmi állapotban: Microsoft által felügyelt kulcsok |  Yes | |  |
 | Kiszolgálóoldali titkosítás nyugalmi állapotban: ügyfél által felügyelt kulcsok (BYOK) | Igen. Dedikált fürtökhöz érhető el. | Az Azure kulcstartóban lévő ügyfél által felügyelt kulcs használatával titkosíthatja az adatok egy nyugalmi állapotban lévő alközpontban. | [Ügyfél által felügyelt kulcsok konfigurálása az Azure Event Hubs-adatok inaktív titkosításához a Azure Portal használatával](configure-customer-managed-key.md) |
-| Oszlop szintű titkosítás (Azure Data Services)| N/A | |  |
+| Oszlop szintű titkosítás (Azure Data Services)| N.A. | |  |
 | Az átvitel közbeni titkosítás (például ExpressRoute titkosítás, VNet titkosítás és VNet-VNet titkosítás)| Yes | |  |
 | Titkosított API-hívások| Yes |  |  |
 

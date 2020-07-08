@@ -4,10 +4,10 @@ description: Ez a cikk a Kafka-alkalmazások Azure-Event Hubs való integrálás
 ms.date: 06/23/2020
 ms.topic: article
 ms.openlocfilehash: bbd173a7f81042c0839cec81838172b21f80d5cd
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85314232"
 ---
 # <a name="apache-kafka-developer-guide-for-azure-event-hubs"></a>Apache Kafka fejlesztői útmutató az Azure-hoz Event Hubs
@@ -22,7 +22,7 @@ Itt megtalálhatja a GitHubon található gyors útmutatókat, és ebben a tarta
 ### <a name="quickstarts-in-github"></a>Rövid útmutatók a GitHubon
 Tekintse meg az alábbi rövid útmutatókat az **Azure-Event-hubok-for-Kafka** tárházban: 
 
-| Ügyfél nyelve/keretrendszere | Leírás | 
+| Ügyfél nyelve/keretrendszere | Description | 
 | ------------------------- | ----------- | 
 | [.NET](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart/dotnet) | <p>Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre és csatlakozhat egy Event Hubs Kafka-végponthoz egy, a .NET Core 2,0-t használó, C# nyelven írt gyártóval és fogyasztóval.</p><p>Ez a minta a [Apache Kafka .net-ügyfélen](https://github.com/confluentinc/confluent-kafka-dotnet)alapul, amelyet a rendszer a Kafka-Event Hubs való használatra módosít.</p> | 
 | [Java](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart/java) | Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre és csatlakozhat egy Event Hubs Kafka-végponthoz egy, a Java-ban írt példát gyártó és fogyasztó használatával. |
@@ -42,7 +42,7 @@ Tekintse meg a gyors üzembe helyezési útmutatót: a [Event Hubs a Kafka proto
 ### <a name="tutorials-in-github"></a>Oktatóanyagok a GitHubban
 Tekintse meg az alábbi oktatóanyagokat a GitHubon:
 
-| Oktatóanyag | Leírás | 
+| Oktatóanyag | Description | 
 | ------------------------- | ----------- | 
 | [Akka](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/akka/java) | Ebből az oktatóanyagból megtudhatja, hogyan csatlakoztathatók a-beli és a Kafka-kompatibilis Event Hubs a protokoll-ügyfelek módosítása vagy a saját fürtök futtatása nélkül. A **Java** és a **Scala** programozási nyelve két külön oktatóanyagot használ. | 
 | [Kapcsolódás](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/connect) | Ez a dokumentum végigvezeti Önt a Kafka-csatlakozás Azure-Event Hubs való integrálásán, valamint az alapszintű FileStreamSource-és FileStreamSink-összekötők üzembe helyezésén. Habár ezek az összekötők nem éles használatra készültek, egy teljes körű Kafka-kapcsolódási forgatókönyvet mutatnak be, amelyben az Azure Event Hubs egy Kafka-közvetítőként álarcos.| 
@@ -63,13 +63,13 @@ Tekintse meg a következő oktatóanyagot: [Apache Kafka feldolgozása Event Hub
 ## <a name="how-to-guides"></a>Útmutatók
 A dokumentációban a következő útmutatók olvashatók:
 
-| Cikk | Leírás | 
+| Cikk | Description | 
 | ------- | ----------- | 
 | [Kafka-közvetítő tükrözése egy eseményközpontba](event-hubs-kafka-mirror-maker-tutorial.md) | Bemutatja, hogyan tükrözött egy Kafka-közvetítő egy Event hub-ban a Kafka MirrorMaker használatával. |
 | [Apache Spark csatlakoztatása egy eseményközponthoz](event-hubs-kafka-spark-tutorial.md) | Végigvezeti a Spark-alkalmazás a valós idejű folyamatos átvitelhez való csatlakoztatásának Event Hubsán. |
 | [Apache Flink csatlakoztatása egy eseményközponthoz](event-hubs-kafka-flink-tutorial.md) | Bemutatja, hogyan csatlakoztathatja az Apache flink egy Event hubhoz a protokoll-ügyfelek módosítása vagy a saját fürtök futtatása nélkül. |
 | [Apache Kafka-kapcsolat integrálása az Event hub-nal (előzetes verzió)](event-hubs-kafka-connect-tutorial.md) | Végigvezeti a Kafka-csatlakozás esemény-hubhoz való integrálásán és az alapszintű FileStreamSource és FileStreamSink-összekötők üzembe helyezésén. |
-| [Az Akka Streams csatlakoztatása eseményközponthoz](event-hubs-kafka-akka-streams-tutorial.md) | Azt mutatja be, hogyan csatlakoztathat a kisegítő adatfolyamokat egy Event hubhoz a protokoll-ügyfelek módosítása vagy a saját fürtök futtatása nélkül. |
+| [A befogadó streamek összekötése egy Event hubhoz](event-hubs-kafka-akka-streams-tutorial.md) | Azt mutatja be, hogyan csatlakoztathat a kisegítő adatfolyamokat egy Event hubhoz a protokoll-ügyfelek módosítása vagy a saját fürtök futtatása nélkül. |
 | [A Spring boot Starter for Apache Kafka használata az Azure-ban Event Hubs](/azure/developer/java/spring-framework/configure-spring-cloud-stream-binder-java-app-kafka-azure-event-hub) | Bemutatja, hogyan konfigurálhat egy, a Spring boot Inicializálással létrehozott Java-alapú Spring Cloud stream-kötést Apache Kafka Azure Event Hubs használatával. |
 
 ## <a name="next-steps"></a>További lépések

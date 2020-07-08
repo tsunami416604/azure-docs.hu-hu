@@ -4,10 +4,10 @@ description: Ez a cikk azt ismerteti, hogyan engedélyezhető az események rög
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: 103aa4e3da84e41275bec6310035c117fe780a18
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85315736"
 ---
 # <a name="enable-capturing-of-events-streaming-through-azure-event-hubs"></a>Az Azure Event Hubs használatával streamelt események rögzítésének engedélyezése

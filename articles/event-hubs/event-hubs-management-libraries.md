@@ -4,10 +4,10 @@ description: Ez a cikk az Azure Event Hubs névterek és entitások .NET-beli ke
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: f3129ae5586a3096dda89eea3af21eefd1606f30
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85312978"
 ---
 # <a name="event-hubs-management-libraries"></a>Event Hubs felügyeleti könyvtárak
