@@ -4,10 +4,10 @@ description: Ez a cikk az elérhető Azure Relay API-k (.NET Standard, .NET-kere
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 15e13ccac9b05e6e1b0730b38b372dec20c69dda
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85316963"
 ---
 # <a name="available-relay-apis"></a>Elérhető Relay API-k
@@ -21,7 +21,7 @@ A [További információ](#additional-information) szakasz további információ
 | Nyelv/platform | Elérhető funkció | Ügyfélcsomag | Adattár |
 | --- | --- | --- | --- |
 | .NET Standard | Hibrid kapcsolatok | [Microsoft.Azure.Relay](https://www.nuget.org/packages/Microsoft.Azure.Relay/) | [GitHub](https://github.com/azure/azure-relay-dotnet) |
-| .NET-keretrendszer | WCF-továbbító | [WindowsAzure. ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) | N/A |
+| .NET-keretrendszer | WCF-továbbító | [WindowsAzure. ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) | N.A. |
 | Csomópont | Hibrid kapcsolatok | [WebSockets protokoll`hyco-ws`](https://www.npmjs.com/package/hyco-ws)<br/>[WebSockets protokoll`hyco-websocket`](https://www.npmjs.com/package/hyco-websocket)<br/>[HTTP-kérelmek:`hyco-https`](https://www.npmjs.com/package/hyco-https) | [GitHub](https://github.com/Azure/azure-relay-node) |
 
 ### <a name="additional-information"></a>További információ

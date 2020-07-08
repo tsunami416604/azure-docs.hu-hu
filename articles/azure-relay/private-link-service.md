@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan integrálható Azure Relay az Azure Private lin
 ms.date: 06/23/2020
 ms.topic: article
 ms.openlocfilehash: a113e52b892a25fd2b12a18d73df443d9a9866f2
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85317308"
 ---
 # <a name="integrate-azure-relay-with-azure-private-link-preview"></a>Azure Relay integrálása az Azure Private Linktel (előzetes verzió)
@@ -158,7 +158,7 @@ Privát végpont létrehozásakor jóvá kell hagyni a kapcsolódást. Ha az er�
 
 Négy kiépítési állapot létezik:
 
-| Szolgáltatási művelet | A szolgáltatás fogyasztói magánhálózati végpontjának állapota | Leírás |
+| Szolgáltatási művelet | A szolgáltatás fogyasztói magánhálózati végpontjának állapota | Description |
 |--|--|--|
 | None | Függőben | A kapcsolatok létrehozása manuálisan történik, és a Azure Relay névtér tulajdonosának jóváhagyása függőben van. |
 | Jóváhagyás | Approved | A kapcsolódás automatikusan vagy manuálisan lett jóváhagyva, és készen áll a használatra. |

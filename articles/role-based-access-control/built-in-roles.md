@@ -9,10 +9,10 @@ author: rolyon
 ms.author: rolyon
 ms.date: 06/18/2020
 ms.openlocfilehash: b645945cc082b321e63e9d02e0bb6a799e82364d
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85317303"
 ---
 # <a name="azure-built-in-roles"></a>Azure beépített szerepkörök
@@ -26,7 +26,7 @@ Az alábbi táblázat egy rövid leírást és az egyes beépített szerepkörö
 ## <a name="all"></a>Mind
 
 > [!div class="mx-tableFixed"]
-> | Beépített szerepkör | Leírás | ID |
+> | Beépített szerepkör | Description | ID |
 > | --- | --- | --- |
 > | **Általános** |  |  |
 > | [Közreműködő](#contributor) | Lehetővé teszi az összes funkció kezelését, kivéve az erőforrásokhoz való hozzáférés biztosítását. | b24988ac-6180-42a0-ab88-20f7382dd24c |
@@ -108,7 +108,7 @@ Az alábbi táblázat egy rövid leírást és az egyes beépített szerepkörö
 > | [HDInsight tartományi szolgáltatások közreműködője](#hdinsight-domain-services-contributor) | Elolvashatja, létrehozhatja, módosíthatja és törölheti a HDInsight kapcsolatos tartományi szolgáltatásokat Enterprise Security Package | 8d8d5a11-05d3-4bda-a417-a08778121c7c |
 > | [Log Analytics közreműködő](#log-analytics-contributor) | Log Analytics közreműködő képes olvasni az összes figyelési és szerkesztési beállítást. A figyelési beállítások szerkesztése magában foglalja a virtuálisgép-bővítmény virtuális gépekhez való hozzáadását. a Storage-fiók kulcsainak beolvasása az Azure Storage-ból származó naplók gyűjtésének konfigurálásához; Automation-fiókok létrehozása és konfigurálása; megoldások hozzáadása; és az Azure Diagnostics konfigurálása az összes Azure-erőforráshoz. | 92aaf0da-9dab-42b6-94a3-d43ce8d16293 |
 > | [Log Analytics olvasó](#log-analytics-reader) | Log Analytics olvasó megtekintheti és megkeresheti az összes figyelési adatait, valamint megtekintheti a figyelési beállításokat, beleértve az Azure Diagnostics konfigurációjának megtekintését az összes Azure-erőforráson. | 73c42c96-874c-492b-b04d-ab87d138a893 |
-> | **Blokklánc** |  |  |
+> | **Blockchain** |  |  |
 > | [Blockchain-hozzáférés (előzetes verzió)](#blockchain-member-node-access-preview) | Engedélyezi a hozzáférést a Blockchain-tagok csomópontjaihoz | 31a002a1-acaf-453e-8a5b-297c9ca1ea24 |
 > | **AI és gépi tanulás** |  |  |
 > | [Cognitive Services közreműködő](#cognitive-services-contributor) | Lehetővé teszi Cognitive Services kulcsainak létrehozását, olvasását, frissítését, törlését és kezelését. | 25fbc0a9-bd7c-42a3-aa1a-3b75d497ee68 |
@@ -1155,7 +1155,7 @@ Lehetővé teszi a Traffic Manager-profilok kezelését, de nem teszi lehetővé
 }
 ```
 
-## <a name="storage"></a>Tárolás
+## <a name="storage"></a>Storage
 
 
 ### <a name="avere-contributor"></a>Avere közreműködője
@@ -2604,7 +2604,7 @@ Azure Storage-várólisták és üzenetsor-üzenetek olvasása és listázása. 
 }
 ```
 
-## <a name="web"></a>Web
+## <a name="web"></a>Webes
 
 
 ### <a name="azure-maps-data-reader"></a>Adatolvasó Azure Maps
@@ -4310,7 +4310,7 @@ Log Analytics olvasó megtekintheti és megkeresheti az összes figyelési adata
 }
 ```
 
-## <a name="blockchain"></a>Blokklánc
+## <a name="blockchain"></a>Blockchain
 
 
 ### <a name="blockchain-member-node-access-preview"></a>Blockchain-hozzáférés (előzetes verzió)

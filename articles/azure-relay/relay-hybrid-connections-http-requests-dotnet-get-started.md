@@ -4,10 +4,10 @@ description: C#-konzolalkalmazást hozhat létre a hibrid Azure Relay-kapcsolato
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: 270e1bf0f9655705afe4d3657af03152957227c3
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85317052"
 ---
 # <a name="get-started-with-relay-hybrid-connections-http-requests-in-net"></a>Ismerkedés a hibrid Relay-kapcsolatok HTTP-kéréseivel a .NET-ben
@@ -27,7 +27,7 @@ Ebben a rövid útmutatóban a következő lépéseket hajtja végre:
 
 Az oktatóanyag teljesítéséhez a következő előfeltételekre lesz szüksége:
 
-* [Visual Studio 2015 vagy újabb](https://www.visualstudio.com). A jelen oktatóanyag példái a Visual Studio 2017-et használják.
+* [Visual Studio 2015 vagy újabb verzió](https://www.visualstudio.com). A jelen oktatóanyag példái a Visual Studio 2017-et használják.
 * Azure-előfizetés. Ha még nincs előfizetése, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
 
 ## <a name="create-a-namespace"></a>Névtér létrehozása

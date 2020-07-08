@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 95455d389669b89075ca0ea8583cc7858bb532f0
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85317614"
 ---
 # <a name="tutorial-configure-atlassian-cloud-for-automatic-user-provisioning"></a>Oktatóanyag: a Atlassian-felhő konfigurálása automatikus felhasználó-kiépítési szolgáltatáshoz
@@ -124,7 +124,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
       |---|---|
       |displayName|Sztring|
       |externalId|Sztring|
-      |tagok|Referencia|
+      |tagok|Hivatkozás|
 
 12. A hatóköri szűrők konfigurálásához tekintse meg az alábbi utasításokat a [hatókör szűrője oktatóanyagban](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 

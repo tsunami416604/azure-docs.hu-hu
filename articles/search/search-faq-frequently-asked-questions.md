@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.openlocfilehash: d3c5a998db5e76118b0c5a73b6df8bdedadc6dfb
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85317226"
 ---
 # <a name="azure-cognitive-search---frequently-asked-questions-faq"></a>Azure Cognitive Search – gyakori kérdések (GYIK)
@@ -105,4 +105,4 @@ Egy hiányzó funkcióval vagy funkcióval kapcsolatos kérdése van? Kérje a s
 
  [StackOverflow: Azure Cognitive Search](https://stackoverflow.com/questions/tagged/azure-search)   
  [A teljes szöveges keresés működése az Azure Cognitive Searchben](search-lucene-query-architecture.md)  
- [Mi az az Azure Cognitive Search?](search-what-is-azure-search.md)
+ [Mi az Azure Cognitive Search?](search-what-is-azure-search.md)
