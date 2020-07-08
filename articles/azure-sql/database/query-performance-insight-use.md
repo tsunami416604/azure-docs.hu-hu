@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 03/10/2020
-ms.openlocfilehash: afb8e18cbad6a47a99d3ccf05bdb9957f1f9778e
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 01287f344d77dedade30892d76f5fdbd54481df1
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84048153"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042883"
 ---
 # <a name="query-performance-insight-for-azure-sql-database"></a>Azure SQL Database Lekérdezési terheléselemző
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -32,7 +32,7 @@ A Lekérdezési terheléselemző az önálló és a készletezett adatbázisok i
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Lekérdezési terheléselemző megköveteli, hogy a [lekérdezési tároló](https://msdn.microsoft.com/library/dn817826.aspx) aktív legyen az adatbázisban. Alapértelmezés szerint automatikusan engedélyezve van az Azure SQL Database-adatbázisok összes adatbázisa. Ha a lekérdezési tároló nem fut, a Azure Portal kérni fogja, hogy engedélyezze.
+Lekérdezési terheléselemző megköveteli, hogy a [lekérdezési tároló](https://msdn.microsoft.com/library/dn817826.aspx) aktív legyen az adatbázisban. Alapértelmezés szerint automatikusan engedélyezve van a Azure SQL Database összes adatbázisa. Ha a lekérdezési tároló nem fut, a Azure Portal kérni fogja, hogy engedélyezze.
 
 > [!NOTE]
 > Ha a "lekérdezési tároló nincs megfelelően konfigurálva ezen az adatbázisban" üzenet jelenik meg a portálon, tekintse meg [a lekérdezés-tároló konfigurációjának optimalizálása](#optimize-the-query-store-configuration)című témakört.
@@ -276,6 +276,6 @@ Ezen beállítások alkalmazása végül a Query Store telemetria gyűjti az új
     ALTER DATABASE [YourDB] SET QUERY_STORE CLEAR;
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Érdemes [Azure SQL Analyticst](../../azure-monitor/insights/azure-sql.md) használni az önálló és készletezett adatbázisok, rugalmas készletek, felügyelt példányok és példány-adatbázisok nagy flottájának speciális teljesítményének figyelésére.

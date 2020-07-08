@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/01/2020
 ms.author: memildin
-ms.openlocfilehash: 85460724071347a768a924f34290a75d2383b4c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 539b663366cd2820eec62a18d1fc2989c6b3c9b0
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78209362"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042356"
 ---
 # <a name="feature-coverage-for-azure-paas-services"></a>A szolgáltatás lefedettsége az Azure Pásti-szolgáltatásokhoz<a name="paas-services"></a>
 
@@ -45,7 +45,8 @@ Az alábbi táblázat a támogatott Azure Pásti-erőforrások Azure Security Ce
 |Azure Kubernetes Service|✔|✔|-|
 |Azure Load Balancer|✔|-|-|
 |Azure Logic Apps|✔|-|-|
-|Azure SQL-adatbázisok|✔|✔|✔|
+|Azure SQL Database|✔|✔|✔|
+|Felügyelt Azure SQL-példány|✔|✔|✔|
 |Azure Service Bus névtér|✔|-|-|
 |Azure Service Fabric-fiók|✔|-|-|
 |Azure Storage-fiókok|✔|-|-|

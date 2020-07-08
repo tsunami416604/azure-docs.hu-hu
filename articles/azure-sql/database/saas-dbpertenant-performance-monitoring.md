@@ -1,6 +1,6 @@
 ---
 title: 'SaaS-alkalmazás: számos adatbázis teljesítményének figyelése'
-description: Azure SQL-adatbázisok és-készletek teljesítményének figyelése és kezelése több-bérlős SaaS-alkalmazásokban
+description: Azure SQL Database teljesítményének figyelése és kezelése több-bérlős SaaS-alkalmazásokban
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
@@ -11,14 +11,14 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 458349ec666de7cdb94fca5422143738fea50a26
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 714ddf69bd8bca70019487576830b319bd25a7c0
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84042847"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042815"
 ---
-# <a name="monitor-and-manage-performance-of-azure-sql-database-and-pools-in-a-multi-tenant-saas-app"></a>Azure SQL Database és készletek teljesítményének figyelése és kezelése több-bérlős SaaS-alkalmazásokban
+# <a name="monitor-and-manage-performance-of-azure-sql-database-in-a-multi-tenant-saas-app"></a>Azure SQL Database teljesítményének figyelése és kezelése több-bérlős SaaS-alkalmazásokban
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Ebben az oktatóanyagban az SaaS-alkalmazásokban használt fő teljesítmény-kezelési forgatókönyveket vizsgálja. A betöltési generátor használatával az összes bérlői adatbázison szimulálhatja a tevékenységeket, és a SQL Database és a rugalmas készletek beépített figyelési és riasztási funkcióit mutatjuk be.
@@ -69,7 +69,7 @@ Noha a készletek használata már két S3-adatbázis esetén is költséghaték
 
 Ha egy korábbi oktatóanyagban már kiépített bérlők kötegét, ugorjon a [használat szimulálása az összes bérlői adatbázison](#simulate-usage-on-all-tenant-databases) szakaszra.
 
-1. A **POWERSHELL ISE**-ben nyissa meg a... \\ Learning \\ -modulok teljesítményének figyelése és kezelése \\ *demo-PerformanceMonitoringAndManagement. ps1*. Tartsa ezt a szkriptet nyitva, mivel az oktatóanyag során több különböző forgatókönyvet is futtatnia kell majd.
+1. A **POWERSHELL ISE**-ben nyissa meg a... \\ Tanulási modulok \\ teljesítményének figyelése és kezelése \\ *Demo-PerformanceMonitoringAndManagement.ps1*. Tartsa ezt a szkriptet nyitva, mivel az oktatóanyag során több különböző forgatókönyvet is futtatnia kell majd.
 1. **$DemoScenario**  =  **1**beállítása, **bérlők kötegének kiépítése**
 1. A szkript futtatásához nyomja le az **F5** billentyűt.
 
@@ -79,9 +79,9 @@ A *New-TenantBatch* parancsfájl a bérlők kötegét létrehozó [Resource Mana
 
 ## <a name="simulate-usage-on-all-tenant-databases"></a>Az összes bérlői adatbázis használatának szimulálása
 
-A *demo-PerformanceMonitoringAndManagement. ps1* parancsfájl az összes bérlői adatbázison futó munkaterhelést szimulálja. A terhelés a rendelkezésre álló betöltési forgatókönyvek egyikével jön létre:
+A *Demo-PerformanceMonitoringAndManagement.ps1* parancsfájlt, amely az összes bérlői adatbázison futó munkaterhelést szimulál. A terhelés a rendelkezésre álló betöltési forgatókönyvek egyikével jön létre:
 
-| Bemutató | Eset |
+| Bemutató | Forgatókönyv |
 |:--|:--|
 | 2 | Normál intenzitású terhelés előállítása (körülbelül 40 DTU) |
 | 3 | Terhelés létrehozása adatbázisonkénti hosszabb és gyakoribb adatlöketekkel|
@@ -91,7 +91,7 @@ A *demo-PerformanceMonitoringAndManagement. ps1* parancsfájl az összes bérlő
 
 A terhelésgenerátor egy *szintetikus* CPU-terhelést alkalmaz az összes bérlői adatbázison. A generátor minden bérlői adatbázis számára elindít egy feladatot, amely időközönként meghív egy, a terhelést létrehozó tárolt eljárást. A terhelések szintje (eDTU-ban mérve), időtartama és időköze minden adatbázis esetén más és más, ezzel szimulálva a kiszámíthatatlan bérlői aktivitást.
 
-1. A **POWERSHELL ISE**-ben nyissa meg a... \\ Learning \\ -modulok teljesítményének figyelése és kezelése \\ *demo-PerformanceMonitoringAndManagement. ps1*. Tartsa ezt a szkriptet nyitva, mivel az oktatóanyag során több különböző forgatókönyvet is futtatnia kell majd.
+1. A **POWERSHELL ISE**-ben nyissa meg a... \\ Tanulási modulok \\ teljesítményének figyelése és kezelése \\ *Demo-PerformanceMonitoringAndManagement.ps1*. Tartsa ezt a szkriptet nyitva, mivel az oktatóanyag során több különböző forgatókönyvet is futtatnia kell majd.
 1. A **$DemoScenario**  =  **2**beállítása, a *normál intenzitású terhelés létrehozása*.
 1. Nyomja le az **F5** billentyűt, hogy az összes bérlői adatbázist érje terhelés.
 
@@ -195,7 +195,7 @@ Ha a készletben lévő egyes adatbázisok tartós magas terhelést tapasztalnak
 
 Ez a gyakorlat a Contoso Concert Hall magas terhelésének a hatását szimulálja, amikor megkezdődik a jegyek árusítása egy népszerű koncertre.
 
-1. A **POWERSHELL ISE**-ben nyissa meg a... \\ *Demo-PerformanceMonitoringAndManagement. ps1* parancsfájl.
+1. A **POWERSHELL ISE**-ben nyissa meg a... \\ *Demo-PerformanceMonitoringAndManagement.ps1* szkript.
 1. Állítsa be **$DemoScenario = 5, normál terhelés létrehozása, valamint egy adott bérlő nagy terhelését (körülbelül 95 DTU).**
 1. Állítsa be a **$SingleTenantDatabaseName = contosoconcerthall**értéket.
 1. Futtassa a szkriptet az **F5** billentyűvel.

@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
-ms.openlocfilehash: d43f95b91df7d0c9c442339de51936200f4688e2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3f8753518e1d54ddba4fc15a5a030308d0c112a1
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75441250"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042492"
 ---
 # <a name="linq-to-sql-translation"></a>LINQ to SQL fordítás
 
-A Azure Cosmos DB lekérdezési szolgáltató a LINQ-lekérdezésből származó legjobb műveletet hajtja végre egy Cosmos DB SQL-lekérdezésben. A következő leírás feltételezi, hogy a LINQ alapvető ismerete.
+A Azure Cosmos DB lekérdezési szolgáltató a LINQ-lekérdezésből származó legjobb műveletet hajtja végre egy Cosmos DB SQL-lekérdezésben. Ha a LINQ-re fordított SQL-lekérdezést szeretné lekérni, használja a `ToString()` metódust a generált `IQueryable` objektumon. A következő leírás feltételezi, hogy a LINQ alapvető ismerete.
 
 A lekérdezés-szolgáltató típusa a rendszeren csak a JSON egyszerű típusokat támogatja: numerikus, logikai, karakterlánc és null.
 
@@ -59,18 +59,18 @@ A lekérdezési szolgáltató a következő skaláris kifejezéseket támogatja:
 Az SQL .NET SDK-ban található LINQ Provider a következő operátorokat támogatja:
 
 - **Válassza ki**a kivetítések lefordítását az SQL SELECT (objektum-kialakítás) elemre.
-- **Hol**: a szűrők lefordítása az SQL-re, `&&`és `||`a, `!` és az SQL-operátorok közötti fordítás támogatása
+- **Hol**: a szűrők lefordítása az SQL-re, és a, és `&&` `||` `!` az SQL-operátorok közötti fordítás támogatása
 - **SelectMany**: lehetővé teszi a tömbök felcsévélését az SQL JOIN záradékba. A paranccsal a tömb elemeinek szűréséhez használhatja a kifejezéseket.
 - **OrderBy** és **OrderByDescending**: lefordítható az ASC vagy a desc szerinti sorrendbe.
 - Az összesítéshez a **Count**, a **Sum**, a **min**, a **Max**és az **átlag** operátor, valamint a **CountAsync**, a **SumAsync**, a **MinAsync**, a **MaxAsync**és a **AverageAsync**.
 - **Compareto metódus végrehajtása**: a tartomány-összehasonlításokra fordít. Általában a sztringek esetében használatos, mivel azok nem összehasonlíthatóak a .NET-ben.
 - **Kihagyás** és **igény**: az SQL-eltolás és a lekérdezési eredmények korlátozásának korlátozása és a tördelés végrehajtása.
-- **Matematikai függvények**: a .net `Abs`, `Acos` `Asin` `Atan` `Ceiling` `Cos` `Truncate` ,,,,,,,,,,,,,,, és az egyenértékű SQL beépített függvényekre való fordítást támogatja. `Exp` `Floor` `Log` `Log10` `Pow` `Round` `Sign` `Sin` `Sqrt` `Tan`
-- **Karakterlánc-függvények**: támogatja a .net `Concat`, `Contains` `Count` `EndsWith``IndexOf` `Replace` `Reverse` `StartsWith` `TrimStart` ,,,,,,,,,, és és az egyenértékű SQL beépített függvények fordítását. `SubString` `ToLower` `ToUpper` `TrimEnd`
-- **Array functions**: támogatja a .net `Concat`- `Contains`ről való `Count` fordítást, valamint a megfelelő SQL beépített függvényeket.
-- **Térinformatikai bővítmény függvények**: a helyettes metódusokból `Distance`, `IsValid`, `IsValidDetailed`és `Within` az egyenértékű SQL beépített függvényekbe való fordítást támogatja.
+- **Matematikai függvények**: a .net,,,,,,,,,,,,,,,, `Abs` `Acos` `Asin` `Atan` `Ceiling` `Cos` `Exp` `Floor` `Log` `Log10` `Pow` `Round` `Sign` `Sin` `Sqrt` `Tan` és `Truncate` az egyenértékű SQL beépített függvényekre való fordítást támogatja.
+- **Karakterlánc-függvények**: támogatja a .net,,,,,,,,,,, `Concat` `Contains` `Count` `EndsWith` `IndexOf` `Replace` `Reverse` `StartsWith` `SubString` `ToLower` `ToUpper` `TrimEnd` és és `TrimStart` az egyenértékű SQL beépített függvények fordítását.
+- **Array functions**: támogatja a .net-ről való fordítást, `Concat` `Contains` valamint `Count` a megfelelő SQL beépített függvényeket.
+- **Térinformatikai bővítmény függvények**: a helyettes metódusokból `Distance` , `IsValid` , `IsValidDetailed` és `Within` az egyenértékű SQL beépített függvényekbe való fordítást támogatja.
 - **Felhasználó által definiált függvény kiterjesztési funkciója**: a helyettes metódusból `UserDefinedFunctionProvider.Invoke` a megfelelő felhasználó által definiált függvénybe való fordítást támogatja.
-- **Egyéb**: támogatja a és `Coalesce` a feltételes operátorok fordítását. A ( `Contains` z) a (z) függvényt a környezettől függően a karakterláncra, ARRAY_CONTAINS vagy SQL értékre fordíthatja.
+- **Egyéb**: támogatja a `Coalesce` és a feltételes operátorok fordítását. A (z) a (z `Contains` ) függvényt a környezettől függően a karakterláncra, ARRAY_CONTAINS vagy SQL értékre fordíthatja.
 
 ## <a name="examples"></a>Példák
 
@@ -78,7 +78,7 @@ A következő példák azt szemléltetik, hogy a standard LINQ lekérdezési ope
 
 ### <a name="select-operator"></a>Operátor kiválasztása
 
-A szintaxis az `input.Select(x => f(x))`, ahol `f` a egy skaláris kifejezés.
+A szintaxis az `input.Select(x => f(x))` , ahol a egy `f` skaláris kifejezés.
 
 **Operátor kiválasztása, 1. példa:**
 
@@ -132,7 +132,7 @@ A szintaxis az `input.Select(x => f(x))`, ahol `f` a egy skaláris kifejezés.
 
 ### <a name="selectmany-operator"></a>SelectMany operátor
 
-A szintaxis az `input.SelectMany(x => f(x))`, ahol `f` a egy skaláris kifejezés, amely egy tároló típusát adja vissza.
+A szintaxis az `input.SelectMany(x => f(x))` , ahol a egy `f` skaláris kifejezés, amely egy tároló típusát adja vissza.
 
 - **LINQ lambda kifejezés**
   
@@ -149,7 +149,7 @@ A szintaxis az `input.SelectMany(x => f(x))`, ahol `f` a egy skaláris kifejezé
 
 ### <a name="where-operator"></a>Where operátor
 
-A szintaxis az `input.Where(x => f(x))`, ahol `f` a egy skaláris kifejezés, amely egy logikai értéket ad vissza.
+A szintaxis az `input.Where(x => f(x))` , ahol a egy `f` skaláris kifejezés, amely egy logikai értéket ad vissza.
 
 **Where operátor, 1. példa:**
 
@@ -192,7 +192,7 @@ Az előző operátorokat az erősebb lekérdezések létrehozásához is létreh
 
 ### <a name="concatenation"></a>Összefűzés
 
-A szintaxis: `input(.|.SelectMany())(.Select()|.Where())*`. Az összefűzött lekérdezések egy opcionális `SelectMany` lekérdezéssel kezdődhetnek, amelyet több `Select` vagy `Where` operátor is követ.
+A szintaxis: `input(.|.SelectMany())(.Select()|.Where())*` . Az összefűzött lekérdezések egy opcionális `SelectMany` lekérdezéssel kezdődhetnek, amelyet több `Select` vagy operátor is követ `Where` .
 
 **Összefűzés, 1. példa:**
 
@@ -264,7 +264,7 @@ A szintaxis: `input(.|.SelectMany())(.Select()|.Where())*`. Az összefűzött le
 
 ### <a name="nesting"></a>Fészkelő
 
-`input.SelectMany(x=>x.Q())` A szintaxis `Q` az a `Select`, `SelectMany`a vagy `Where` az operátor.
+A szintaxis az `input.SelectMany(x=>x.Q())` `Q` a, a `Select` `SelectMany` vagy az `Where` operátor.
 
 Egy beágyazott lekérdezés a belső lekérdezést alkalmazza a külső tároló minden elemére. Az egyik fontos funkció, hogy a belső lekérdezés hivatkozhat a külső tárolóban található elemek mezőire, például egy önillesztésre.
 

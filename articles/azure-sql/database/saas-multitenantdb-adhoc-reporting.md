@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/30/2018
-ms.openlocfilehash: 8e4f042e162408fef44b5c525b3a737e37005fdd
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 7564adb6e2e596b95cd138c8e4e2190a4c1e2a57
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84042511"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042645"
 ---
 # <a name="run-ad-hoc-analytics-queries-across-multiple-databases-azure-sql-database"></a>Alkalmi elemzési lekérdezések futtatása több adatbázison keresztül (Azure SQL Database)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -59,7 +59,7 @@ A Wingtip jegyek SaaS több-bérlős adatbázis-parancsfájljai és az alkalmaz�
 
 Ha több érdekes adathalmazon szeretne lekérdezéseket futtatni, a Ticket-Generator futtatásával hozzon létre jegyeladási adatforgalmat.
 
-1. A *POWERSHELL ISE*-ben nyissa meg a... \\ A képzési modulok \\ operatív elemzési ad \\ hoc jelentése \\ *demo-AdhocReporting. ps1* parancsfájl, és a következő értékeket adja meg:
+1. A *POWERSHELL ISE*-ben nyissa meg a... \\ A képzési modulok \\ operatív elemzési ad \\ hoc jelentéskészítés \\ *Demo-AdhocReporting.ps1* parancsfájlt, és a következő értékeket adja meg:
    * **$DemoScenario** = 1, **jegyek vásárlása minden helyszínen**.
 2. Nyomja le az **F5** billentyűt a szkript futtatásához és a jegyek értékesítésének létrehozásához. A parancsfájl futása közben folytassa az oktatóanyag lépéseit. A jegyeket az *ad hoc elosztott lekérdezések futtatása* szakaszban kérdezi le, ezért várjon, amíg a Ticket Generator befejeződik.
 
@@ -73,7 +73,7 @@ Ennek a mintának az eléréséhez minden bérlői tábla tartalmaz egy *VenueId
 
 Ez a gyakorlat telepíti a *adhocreporting* -adatbázist. Ez az a fő adatbázis, amely az összes bérlői adatbázis lekérdezéséhez használt sémát tartalmazza. A rendszer telepíti az adatbázist a meglévő Catalog kiszolgálóra, amely a minta alkalmazásban található összes felügyelettel kapcsolatos adatbázishoz használt kiszolgáló.
 
-1. Megnyitás.. \\ . A tanulási modulok \\ operatív elemzési ad \\ hoc jelentése \\ *demo-AdhocReporting. ps1* a *PowerShell ISE* -ben, és állítsa be a következő értékeket:
+1. Megnyitás.. \\ . Képzési modulok \\ operatív elemzési ad \\ hoc jelentéskészítés \\ *Demo-AdhocReporting.ps1* a *PowerShell ISE* -ben, és állítsa be a következő értékeket:
    * **$DemoScenario** = 2, **ad hoc elemzési adatbázis üzembe helyezése**.
 
 2. Nyomja le az **F5** billentyűt a szkript futtatásához és a *adhocreporting* -adatbázis létrehozásához.
@@ -159,4 +159,4 @@ Most próbálja ki a [bérlői elemzési oktatóanyagot](saas-multitenantdb-tena
 * Additional [tutorials that build upon the Wingtip Tickets SaaS Multi-tenant Database application](saas-multitenantdb-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 -->
 
-* [Elastic Query](elastic-query-overview.md)
+* [Rugalmas lekérdezés](elastic-query-overview.md)

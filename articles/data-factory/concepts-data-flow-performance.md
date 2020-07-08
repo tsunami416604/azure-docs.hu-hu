@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 05/21/2020
-ms.openlocfilehash: 327fffd807d93fda67ff650954ece65e5db58e63
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.date: 07/06/2020
+ms.openlocfilehash: 1c63568418f21da0556ced0d004e04e7909118fb
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83798113"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042628"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Adatfolyamatok teljesítményének és hangolási útmutatójának leképezése
 
@@ -40,8 +40,10 @@ A leképezési adatfolyamatok tervezésekor az egyes átalakításokat egységes
 ## <a name="increasing-compute-size-in-azure-integration-runtime"></a>Azure Integration Runtime számítási méretének növelése
 
 A több magot tartalmazó Integration Runtime növeli a Spark számítási környezetekben lévő csomópontok számát, és nagyobb feldolgozási teljesítményt biztosít az adatok olvasásához, írásához és átalakításához. Az ADF-adatfolyamatok a Sparkot használják a számítási motorhoz. A Spark-környezet nagyon jól működik a memóriára optimalizált erőforrásokon.
-* Ha azt szeretné, hogy a feldolgozási sebesség nagyobb legyen, mint a bemeneti sebesség, próbálkozzon egy **számítási optimalizált** fürttel.
-* Ha a memóriában további adatok gyorsítótárazására van szükség, próbálkozzon a **memóriával optimalizált** fürttel. Az optimalizált memória magasabb árat mutat, mint a számítási optimalizált érték, de valószínűleg gyorsabb átalakítási sebességet eredményez. Ha az adatfolyamatok végrehajtása során a memóriával kapcsolatos hibákat tapasztal, váltson a memóriára optimalizált Azure IR konfigurációra.
+
+Javasoljuk, hogy a legtöbb számítási feladathoz **optimalizált memóriát** használjon. A memóriában több adattal is tárolhatók, és a memóriában lévő hibák csökkenthetők. Az optimalizált memória magasabb árat mutat, mint a számítási optimalizált érték, de valószínűleg gyorsabb átalakítási sebességet és sikeres folyamatokat eredményez. Ha az adatfolyamatok végrehajtása során a memóriával kapcsolatos hibákat tapasztal, váltson a memóriára optimalizált Azure IR konfigurációra.
+
+A **számításra optimalizált számítási** funkció elegendő a korlátozott számú adatsor hibakereséséhez és adatmegjelenítéséhez. A számítási feladatokra optimalizált számítások valószínűleg nem lesznek végrehajtva az éles munkaterhelések esetében is.
 
 ![Új IR](media/data-flow/ir-new.png "Új IR")
 
@@ -110,7 +112,7 @@ Ha el szeretné kerülni a sorok közötti beszúrást a DW-be, jelölje be az *
 
 ## <a name="optimizing-for-files"></a>Fájlok optimalizálása
 
-Minden átalakításnál beállíthatja azt a particionálási sémát, amelyet az adatelőállítót használni kíván az optimalizálás lapon. Célszerű először a fájl alapú mosogatókat tesztelni az alapértelmezett particionálás és optimalizálás megtartása mellett.
+Minden átalakításnál beállíthatja azt a particionálási sémát, amelyet az adatelőállítót használni kíván az optimalizálás lapon. Célszerű először a fájl alapú mosogatókat tesztelni az alapértelmezett particionálás és optimalizálás megtartása mellett. Ha kihagyja a particionálást az "aktuális particionálás" értékre a fájl célhelyén, a Spark lehetővé teszi a számítási feladatok megfelelő alapértelmezett particionálását. Az alapértelmezett particionálás 128 MB/s partíciót használ.
 
 * Kisebb fájlok esetében előfordulhat, hogy a kevesebb partíció kiválasztásával időnként jobb és gyorsabb lehet a kis méretű fájlok particionálása, mint a Spark megkérdezése.
 * Ha nem rendelkezik elegendő információval a forrásadatok közül, válassza a *ciklikus multiplexelés* particionálás lehetőséget, és állítsa be a partíciók számát.
@@ -153,19 +155,19 @@ Az átviteli sebesség és a Batch tulajdonságainak beállítása a CosmosDB-t�
 * Átviteli sebesség: állítsa be a nagyobb átviteli sebesség beállítását, hogy a dokumentumok gyorsabban CosmosDB. Ne feledje, hogy a magasabb szintű RU-költségek nagy adatátviteli beállításokon alapulnak.
 *   Írási átviteli sebesség költségvetése: olyan értéket használjon, amely kisebb, mint a percenkénti összes RUs. Ha nagy számú Spark-partícióval rendelkező adatfolyamot tartalmaz, a költségvetés átviteli sebességének beállítása nagyobb egyensúlyt tesz lehetővé a partíciók között.
 
-## <a name="join-performance"></a>Csatlakozás a teljesítményhez
+## <a name="join-and-lookup-performance"></a>Csatlakozás és keresési teljesítmény
 
 Az adatfolyamok teljesítményének kezelése nagyon gyakori művelet, amelyet az adatátalakítások életciklusa során fog elvégezni. Az ADF-ben az adatfolyamok nem igénylik, hogy az összekapcsolások előtt rendezze az adatokat, mivel ezek a műveletek a Sparkban található kivonatoló illesztések. Azonban a jobb teljesítmény kihasználható a "szórás" illesztési optimalizálással, amely az illesztésekre, a meglévő és a keresési átalakításokra vonatkozik.
 
 Ezzel a lépéssel elkerülhető, hogy az illesztési kapcsolat mindkét oldalának tartalmát lenyomva a Spark-csomópontra kerül. Ez jól működik a hivatkozási keresésekhez használt kisebb táblák esetében is. A csomópont memóriájában esetleg nem illeszkedő nagyobb táblák nem jó jelöltek a szórásos optimalizáláshoz.
 
-A sok illesztési művelettel rendelkező adatforgalomhoz ajánlott konfiguráció az optimalizálás "automatikus" értékre állítása a "szórás" beállításnál, és a memória optimalizált Azure Integration Runtime konfigurációjának használata. Ha a memóriában hibák léptek fel, vagy az adatfolyam-végrehajtás során a szórási időtúllépések is fennállnak, kikapcsolhatja a szórásos optimalizálást. Ez azonban lassabban fogja végrehajtani az adatfolyamatokat. Ha szeretné, a pushdown csak a csatlakozás bal vagy jobb oldalán, vagy mindkettőn keresztül utasíthatja el az adatfolyamot.
+A sok illesztési művelettel rendelkező adatforgalomhoz ajánlott konfiguráció az optimalizálás "automatikus" értékre állítása a "szórás" beállításnál, és a ***memória optimalizált*** Azure Integration Runtime konfigurációjának használata. Ha a memóriában hibák léptek fel, vagy az adatfolyam-végrehajtás során a szórási időtúllépések is fennállnak, kikapcsolhatja a szórásos optimalizálást. Ez azonban lassabban fogja végrehajtani az adatfolyamatokat. Ha szeretné, a pushdown csak a csatlakozás bal vagy jobb oldalán, vagy mindkettőn keresztül utasíthatja el az adatfolyamot.
 
 ![Szórási beállítások](media/data-flow/newbroad.png "Szórási beállítások")
 
 Egy másik illesztési optimalizálás az összekapcsolások összekapcsolása oly módon, hogy elkerülje a Spark tendenciáját a több illesztés megvalósításában. Ha például belefoglalja az illesztési feltételekben szereplő literál értékeket, a Spark azt láthatja, hogy először egy teljes Descartes-szorzatot kell végrehajtania, majd ki kell szűrnie az illesztett értékeket. Ha azonban gondoskodni szeretne arról, hogy az összekapcsolási feltétel mindkét oldalán legyen oszlopos érték, elkerülheti a Spark által okozott Descartes-szorzatot, és javíthatja az illesztések és az adatfolyamatok teljesítményét.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse meg a teljesítménnyel kapcsolatos egyéb adatfolyam-cikkeket:
 
