@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: how-to
 ms.date: 04/20/2020
-ms.openlocfilehash: d4c2dc58ca341db7ba17dbaf6a5ce7c009983379
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 62d4e26d5a0d3d86cc58421dab4167d5d9d2562d
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81727241"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961779"
 ---
 # <a name="azure-media-player-full-setup"></a>Az Azure Media Player teljes telepítése #
 
@@ -20,20 +20,23 @@ A Azure Media Player egyszerűen beállítható. Csak néhány percet vesz igén
 
 ## <a name="step-1-include-the-javascript-and-css-files-in-the-head-of-your-page"></a>1. lépés: a JavaScript-és CSS-fájlok belefoglalása az oldal élére ##
 
-A Azure Media Player használatával a CDN által üzemeltetett verzióból férhet hozzá a szkriptekhez. Azt javasoljuk, hogy a `<body>` `<head>`JavaScriptet még a befejezést megelőzően, de a (z) Azure Media Player tartalmaz egy "HTML5 szilánkot", amely a régebbi verziókban a korábbi verziókhoz szükséges, hogy a videó címkéjét érvényes elemként vegye figyelembe.
+A Azure Media Player használatával a CDN által üzemeltetett verzióból férhet hozzá a szkriptekhez. Azt javasoljuk, hogy a JavaScriptet még a befejezést megelőzően `<body>` `<head>` , de a (z) Azure Media Player tartalmaz egy "HTML5 szilánkot", amely a régebbi verziókban a korábbi verziókhoz szükséges, hogy a videó címkéjét érvényes elemként vegye figyelembe.
 
 > [!NOTE]
-> Ha már használ egy HTML5-szilánkot, például a [modernizációt](http://modernizr.com/) , bárhol is használhatja a Azure Media Player JavaScriptet. Azonban győződjön meg arról, hogy a modernizáló verziója tartalmazza a szilánkot a videóhoz.
+> Ha már használ egy HTML5-szilánkot, például a [modernizációt](https://modernizr.com/) , bárhol is használhatja a Azure Media Player JavaScriptet. Azonban győződjön meg arról, hogy a modernizáló verziója tartalmazza a szilánkot a videóhoz.
 
 ### <a name="cdn-version"></a>CDN-verzió ###
+
+```html
     <link href="//amp.azure.net/libs/amp/latest/skins/amp-default/azuremediaplayer.min.css" rel="stylesheet">
     <script src= "//amp.azure.net/libs/amp/latest/azuremediaplayer.min.js"></script>
+```
 
 > [!IMPORTANT]
-> A `latest` verziót **ne** használja éles környezetben, mert az igény szerint változhat. Cserélje `latest` le a helyére a Azure Media Player egy verzióját. Például cserélje le `latest` a `2.1.1`következőt:. Azure Media Player verziók lekérdezése [innen](azure-media-player-changelog.md)lehetséges.
+> A verziót **ne** használja `latest` éles környezetben, mert az igény szerint változhat. Cserélje le a helyére a `latest` Azure Media Player egy verzióját. Például cserélje le a következőt: `latest` `2.1.1` . Azure Media Player verziók lekérdezése [innen](azure-media-player-changelog.md)lehetséges.
 
 > [!NOTE]
-> Mivel a `1.2.0` kiadás már nem szükséges ahhoz, hogy a tartalék technológiák helyére belekerüljön a hely, a rendszer automatikusan felveszi a helyet a azuremediaplayer. min. js fájl relatív elérési útjából. A tartalék technológiák helyét úgy módosíthatja, hogy a fenti szkriptek `<head>` után hozzáadja a következő parancsfájlt.
+> Mivel a `1.2.0` kiadás már nem szükséges ahhoz, hogy a tartalék technológiák helyére belekerüljön a hely, a rendszer automatikusan felveszi a helyet a azuremediaplayer.min.js fájl relatív elérési útjából. A tartalék technológiák helyét úgy módosíthatja, hogy a fenti szkriptek után hozzáadja a következő parancsfájlt `<head>` .
 
 > [!NOTE]
 > A Flash és a Silverlight beépülő modul jellegéből adódóan az SWF-és a XAP-fájlokat bizalmas információ vagy adatok nélkül kell üzemeltetni, ezért a rendszer automatikusan gondoskodik az Azure CDN üzemeltetett verzióról.
@@ -49,7 +52,7 @@ A Azure Media Player használatával a CDN által üzemeltetett verzióból fér
 
 A Azure Media Player használatával a videó beágyazására használható HTML5-videó címkével. A Azure Media Player ezután elolvassa a címkét, és az összes böngészőben, nem csak a HTML5-videót támogató böngészőkben fog működni. Az alapszintű jelölésen felül Azure Media Player néhány további részletre van szükség.
 
-1. Az `<data-setup>` attribútum `<video>` az Azure Media Playeron automatikusan beállítja a videót, amikor az oldal elkészült, és az attribútumból beolvassa az összes (JSON formátumban).
+1. Az `<data-setup>` attribútum az `<video>` Azure Media Playeron automatikusan beállítja a videót, amikor az oldal elkészült, és az attribútumból beolvassa az összes (JSON formátumban).
 1. A `id` következő attribútumot kell használni, és egyedinek kell lennie minden videóhoz ugyanazon a lapon.
 1. Az `class` attribútum két osztályt tartalmaz:
     - `azuremediaplayer`a Azure Media Player felhasználói felület funkcióinak használatához szükséges stílusokat alkalmazza.
@@ -57,7 +60,7 @@ A Azure Media Player használatával a videó beágyazására használható HTML
 1. A `<source>` két kötelező attribútumot tartalmaz
     - `src`az attribútum tartalmazhatja a **. ISM/manifest* fájlt Azure Media Services hozzáadásával, Azure Media Player automatikusan HOZZÁADJA a Dash, a Smooth és a HLS URL-címeit a lejátszóhoz.
     - `type`az attribútum a stream kötelező MIME-típusa. A *". ISM/manifest"* kifejezéshez társított MIME-típus az *"Application/vnd. MS-sstr + XML"* .
-1. Az Azure Media Player nem *kötelező* `<data-setup>` attribútuma `<source>` , ha a streamhez egyedi kézbesítési szabályzatok tartoznak Azure Media Services, beleértve a (z) titkosítási típust (AES vagy PlayReady, Widevine vagy Fairplay) és a tokent.
+1. Az *optional* `<data-setup>` Azure Media Player nem kötelező attribútuma, `<source>` Ha a streamhez egyedi kézbesítési szabályzatok tartoznak Azure Media Services, beleértve a (z) titkosítási típust (AES vagy PlayReady, Widevine vagy Fairplay) és a tokent.
 
 Az attribútumok, a beállítások, a források és a nyomon követések pontosan úgy foglalhatók el/zárhatók ki, mint a HTML5-videóknál.
 
@@ -70,7 +73,7 @@ Az attribútumok, a beállítások, a források és a nyomon követések pontosa
     </video>
 ```
 
-Alapértelmezés szerint a nagyméretű Lejátszás gomb a bal felső sarokban található, így nem fedi fel a plakát érdekes részeit. Ha inkább a nagy lejátszás gombot szeretné központilag felvenni, hozzáadhat egy további `amp-big-play-centered` `class` `<video>` elemet is az elemhez.
+Alapértelmezés szerint a nagyméretű Lejátszás gomb a bal felső sarokban található, így nem fedi fel a plakát érdekes részeit. Ha inkább a nagy lejátszás gombot szeretné központilag felvenni, hozzáadhat egy további elemet is az `amp-big-play-centered` `class` `<video>` elemhez.
 
 ### <a name="alternative-setup-for-dynamically-loaded-html"></a>Alternatív beállítás a dinamikusan betöltött HTML-fájlokhoz ###
 
@@ -99,7 +102,7 @@ Ha a weblap vagy alkalmazás dinamikusan betölti a videó címkéjét (Ajax, ap
     }]);
 ```
 
-A `amp` függvény első argumentuma a videó címkéjének azonosítója. Cserélje le saját.
+A függvény első argumentuma `amp` a videó címkéjének azonosítója. Cserélje le saját.
 
 A második argumentum egy Options objektum. Lehetővé teszi további beállítások megadását, például az adattelepítő attribútumot.
 

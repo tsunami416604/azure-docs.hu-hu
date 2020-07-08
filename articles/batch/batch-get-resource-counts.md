@@ -4,22 +4,22 @@ description: Azure Batch feladatok és számítási csomópontok állapotának m
 ms.date: 06/18/2020
 ms.topic: how-to
 ms.custom: seodec18
-ms.openlocfilehash: d702cb4ec34925e8b9ce6f0c2e47af81db149a3e
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 90f741b9ec5e17da4fd0cc95ef921e116b0c27dc
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85299449"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960588"
 ---
 # <a name="monitor-batch-solutions-by-counting-tasks-and-nodes-by-state"></a>Batch-megoldások figyelése a feladatok és a csomópontok állapot szerinti számlálásával
 
 A nagyméretű Azure Batch megoldások figyeléséhez és kezeléséhez előfordulhat, hogy meg kell határoznia a különböző állapotokban lévő erőforrások számát. Azure Batch hatékony műveleteket biztosít a Batch-feladatok és a számítási csomópontok számának beolvasásához. Ezeket a műveleteket a lehetséges időigényes lekérdezések helyett használhatja, amelyek részletes információkat adnak vissza a tevékenységek vagy csomópontok nagy gyűjteményéről.
 
-- A feladatok [beolvasása](https://docs.microsoft.com/rest/api/batchservice/job/gettaskcounts) érték a feladat aktív, futó és befejezett feladatai, valamint a sikeres vagy sikertelen feladatok összesített számát mutatja be. 
+- A feladatok [beolvasása](/rest/api/batchservice/job/gettaskcounts) érték a feladat aktív, futó és befejezett feladatai, valamint a sikeres vagy sikertelen feladatok összesített számát mutatja be. 
 
   Az egyes állapotokban megjelenő feladatok megszámlálásával egyszerűbben jelenítheti meg a feladat előrehaladását egy felhasználónál, vagy észlelheti a feladattal esetlegesen befolyásoló váratlan késéseket és hibákat. A lekérési feladatok száma a Batch Service API 2017 -06-01.5.1 és a kapcsolódó SDK-k és eszközök használatával érhető el.
 
-- A [lista csomópontjainak](https://docs.microsoft.com/rest/api/batchservice/account/listpoolnodecounts) száma lekéri a dedikált és alacsony prioritású számítási csomópontok számát a különböző állapotú készletekben: létrehozás, üresjárat, offline, előzik, újraindítás, lemezkép-készítés, Indítás és egyebek.
+- A [lista csomópontjainak](/rest/api/batchservice/account/listpoolnodecounts) száma lekéri a dedikált és alacsony prioritású számítási csomópontok számát a különböző állapotú készletekben: létrehozás, üresjárat, offline, előzik, újraindítás, lemezkép-készítés, Indítás és egyebek.
 
   Az egyes állapotokban lévő csomópontok megszámlálásával meghatározhatja, hogy mikor van elegendő számítási erőforrás a feladatok futtatásához és a készletekkel kapcsolatos lehetséges problémák azonosításához. A lista készlet-csomópontjainak száma a Batch szolgáltatás API 2018 -03-01.6.1 és a kapcsolódó SDK-k és eszközök használatával érhető el.
 
@@ -30,9 +30,9 @@ Vegye figyelembe, hogy időnként a műveletek által visszaadott számok nem na
 A lekérési feladatok számlálása művelet a következő állapotok szerint számítja ki a feladatokat:
 
 - **Aktív** – a várólistára helyezett és futtatandó feladat, de jelenleg nincs hozzárendelve számítási csomóponthoz. A feladat akkor is fennáll, `active` Ha [egy olyan fölérendelt feladattól függ](batch-task-dependencies.md) , amely még nem fejeződött be. 
-- **Futtatás** – egy számítási csomóponthoz rendelt feladat, de még nem fejeződött be. A feladatok akkor számítanak bele, `running` Ha `preparing` az állapota vagy `running` a, ahogy azt a feladat műveletével kapcsolatos [információk lekérése](https://docs.microsoft.com/rest/api/batchservice/task/get) jelzi.
+- **Futtatás** – egy számítási csomóponthoz rendelt feladat, de még nem fejeződött be. A feladatok akkor számítanak bele, `running` Ha `preparing` az állapota vagy `running` a, ahogy azt a feladat műveletével kapcsolatos [információk lekérése](/rest/api/batchservice/task/get) jelzi.
 - **Befejezve** – olyan feladat, amely már nem jogosult a futtatásra, mert az sikeresen befejeződött, vagy a művelet sikertelenül fejeződött be, és kimerítette az újrapróbálkozási korlátot is. 
-- **Sikeres** – A feladat végrehajtásának eredményét eredményező feladat `success` . A Batch meghatározza, hogy a feladat sikeres volt-e, vagy sikertelen volt-e a `TaskExecutionResult` [executionInfo](https://docs.microsoft.com/rest/api/batchservice/task/get) tulajdonság tulajdonságának ellenőrzésével.
+- **Sikeres** – A feladat végrehajtásának eredményét eredményező feladat `success` . A Batch meghatározza, hogy a feladat sikeres volt-e, vagy sikertelen volt-e a `TaskExecutionResult` [executionInfo](/rest/api/batchservice/task/get) tulajdonság tulajdonságának ellenőrzésével.
 - **Sikertelen művelet** Egy feladat, amelynek eredményeként a feladat végrehajtása történik `failure` .
 
 A következő .NET-kód minta bemutatja, hogyan lehet lekérdezni a tevékenységek számát állapot szerint:
@@ -65,7 +65,7 @@ A címkészlet-csomópontok számlálása művelet a következő állapotok alap
 - **Reimaging** – a csomópont, amelyen az operációs rendszer újratelepítése zajlik.
 - **Futtatás** – egy vagy több feladatot futtató csomópont (az indítási tevékenységen kívül).
 - **Indítás** – a Batch szolgáltatást indító csomópont. 
-- **StartTaskFailed** – olyan csomópont, amelyen az [indítási feladat](https://docs.microsoft.com/rest/api/batchservice/pool/add#starttask) meghiúsult, és az összes újrapróbálkozást kimerítette, és amelyen az `waitForSuccess` indítási tevékenység van beállítva. A csomópont nem használható a feladatok futtatásához.
+- **StartTaskFailed** – olyan csomópont, amelyen az [indítási feladat](/rest/api/batchservice/pool/add#starttask) meghiúsult, és az összes újrapróbálkozást kimerítette, és amelyen az `waitForSuccess` indítási tevékenység van beállítva. A csomópont nem használható a feladatok futtatásához.
 - **Ismeretlen** – egy olyan csomópont, amely elvesztette a kapcsolatot a Batch szolgáltatással, és amelynek állapota nem ismert.
 - **Használhatatlan** – olyan csomópont, amely hibák miatt nem használható a feladatok végrehajtásához.
 - **WaitingForStartTask** – olyan csomópont, amelyen az indítási tevékenység fut, de `waitForSuccess` be van állítva, és az indítási tevékenység nem fejeződött be.

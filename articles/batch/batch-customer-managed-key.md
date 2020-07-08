@@ -5,18 +5,18 @@ author: pkshultz
 ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: peshultz
-ms.openlocfilehash: c1fe01634a004ec06df441bb890de1652cbab4b9
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.openlocfilehash: d0dcb79d5e319abd46515162ce5a17e935d9693b
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84754538"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960886"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-batch-account-with-azure-key-vault-and-managed-identity"></a>Ügyfél által felügyelt kulcsok konfigurálása a Azure Batch-fiókhoz Azure Key Vault és felügyelt identitással
 
 Alapértelmezés szerint a Azure Batch platform által felügyelt kulcsokkal titkosítja az Azure Batch szolgáltatásban tárolt összes ügyféladatokat, például a tanúsítványokat, a feladatok/feladatok metaadatait. Igény szerint használhatja a saját kulcsait, például az ügyfél által felügyelt kulcsokat a Azure Batchban tárolt adattitkosításhoz.
 
-Az Ön által megadott kulcsokat [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/general/basic-concepts)kell létrehoznia, és az ügyfél által felügyelt kulcsokkal konfigurálni kívánt batch-fiókokat engedélyezni kell az [Azure felügyelt identitásával](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+Az Ön által megadott kulcsokat [Azure Key Vault](../key-vault/general/basic-concepts.md)kell létrehoznia, és az ügyfél által felügyelt kulcsokkal konfigurálni kívánt batch-fiókokat engedélyezni kell az [Azure felügyelt identitásával](../active-directory/managed-identities-azure-resources/overview.md).
 
 > [!IMPORTANT]
 > Az ügyfél által felügyelt kulcsok támogatása a Azure Batch jelenleg nyilvános előzetes verzióban érhető el az USA nyugati középső régiójában, az USA keleti régiójában, az USA déli középső régiójában, az USA US Gov Virginia 2. nyugati régiójában, valamint a US Gov Arizona régióban.
@@ -28,11 +28,11 @@ Az Ön által megadott kulcsokat [Azure Key Vault](https://docs.microsoft.com/az
 
 Ha a [Azure Portal](https://portal.azure.com/)batch-fiókokat hoz létre, válassza a **speciális** lapon az Identity (identitás) elemnél **hozzárendelt rendszer** kiválasztása értéket.
 
-![](./media/batch-customer-managed-key/create-batch-account.png)
+![Új batch-fiók rendszerhez rendelt identitás-típussal](./media/batch-customer-managed-key/create-batch-account.png)
 
 A fiók létrehozása után egy egyedi GUID-azonosítót talál a **tulajdonság** szakaszának **identitás egyszerű azonosítója** mezőjében. Megjelenik az **identitás típusa** `SystemAssigned` .
 
-![](./media/batch-customer-managed-key/linked-batch-principal.png)
+![Egyedi GUID az identitás elsődleges azonosítója mezőben](./media/batch-customer-managed-key/linked-batch-principal.png)
  
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -64,23 +64,23 @@ az batch account show \
 
 Ha Azure Batch ügyfél által felügyelt kulcsokkal rendelkező Azure Key Vault-példányt hoz létre, győződjön meg arról, hogy a helyreállítható **törlési** és **törlési védelem** egyaránt engedélyezve van.
 
-![](./media/batch-customer-managed-key/create-key-vault.png)
+![Key Vault létrehozási képernyő](./media/batch-customer-managed-key/create-key-vault.png)
 
 ### <a name="add-an-access-policy-to-your-azure-key-vault-instance"></a>Hozzáférési szabályzat hozzáadása az Azure Key Vault-példányhoz
 
 A Key Vault létrehozása után a Azure Portal a **hozzáférési házirendben** a **beállítás**területen adja hozzá a Batch-fiókhoz való hozzáférést a felügyelt identitás használatával. A **kulcs engedélyei**területen válassza a **beolvasás**, **kulcs** és **kicsomagolás**kulcs elemet. 
 
-![](./media/batch-customer-managed-key/key-permissions.png)
- 
+![Hozzáférési szabályzat hozzáadása](./media/batch-customer-managed-key/key-permissions.png)
+
 A Select ( **egyszerű**) mezőben **válassza** ki a `principalId` korábban beolvasott elemet, vagy a Batch-fiók nevét.
 
-![](./media/batch-customer-managed-key/principal-id.png)
- 
+![PrincipalId megadása](./media/batch-customer-managed-key/principal-id.png)
+
 ### <a name="generate-a-key-in-azure-key-vault"></a>Kulcs létrehozása Azure Key Vault
 
 A Azure Portal lépjen a **kulcs** szakaszban található Key Vault példányra, majd válassza a **Létrehozás/importálás**lehetőséget. Válassza ki a használandó **kulcs típusát** `RSA` és a **kulcs méretét** `2048` .
 
-![](./media/batch-customer-managed-key/create-key.png)
+![Kulcs létrehozása](./media/batch-customer-managed-key/create-key.png)
 
 A kulcs létrehozása után kattintson az újonnan létrehozott kulcsra és a jelenlegi verzióra, másolja a **kulcs azonosítóját** a **Properties (Tulajdonságok** ) szakaszban.  Győződjön meg róla, hogy az **engedélyezett műveletek**alatt a **wrap Key** és a **dewrap Key** is be van jelölve.
 
@@ -88,9 +88,9 @@ A kulcs létrehozása után kattintson az újonnan létrehozott kulcsra és a je
 
 ### <a name="azure-portal"></a>Azure Portal
 
-A [Azure Portal](https://portal.azure.com/)nyissa meg a Batch-fiók lapot. A **titkosítás** szakaszban engedélyezze az **ügyfél által felügyelt kulcsokat**. Közvetlenül használhatja a kulcs azonosítóját, vagy kiválaszthatja a kulcstárolót, majd kattintson a **kulcstartó és-kulcs kiválasztása**elemre.
+A [Azure Portal](https://portal.azure.com/)nyissa meg a Batch-fiók lapot. A **titkosítás** szakaszban engedélyezze az **ügyfél által felügyelt kulcsot**. Közvetlenül használhatja a kulcs azonosítóját, vagy kiválaszthatja a kulcstárolót, majd kattintson a **kulcstartó és-kulcs kiválasztása**elemre.
 
-![](./media/batch-customer-managed-key/encryption-page.png)
+![A titkosítás alatt engedélyezze az ügyfél által felügyelt kulcsot](./media/batch-customer-managed-key/encryption-page.png)
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -139,10 +139,10 @@ az batch account set \
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
   * **Támogatottak-e az ügyfél által felügyelt kulcsok a meglévő batch-fiókok esetében?** Nem. Az ügyfél által felügyelt kulcsok csak új batch-fiókok esetén támogatottak.
   * **Milyen műveletek érhetők el az ügyfél által felügyelt kulcs visszavonása után?** Az egyetlen engedélyezett művelet a fiók törlése, ha a Batch elveszti a hozzáférést az ügyfél által felügyelt kulcshoz.
-  * **Hogyan kell visszaállítani a Batch-fiókhoz való hozzáférést, ha véletlenül törölem a Key Vault kulcsot?** Mivel a kiürítési védelem és a helyreállítható törlés engedélyezve van, visszaállíthatja a meglévő kulcsokat. További információ: [Azure Key Vault helyreállítása]( https://docs.microsoft.com/azure/key-vault/general/soft-delete-cli#recovering-a-key-vault).
+  * **Hogyan kell visszaállítani a Batch-fiókhoz való hozzáférést, ha véletlenül törölem a Key Vault kulcsot?** Mivel a kiürítési védelem és a helyreállítható törlés engedélyezve van, visszaállíthatja a meglévő kulcsokat. További információ: [Azure Key Vault helyreállítása](../key-vault/general/soft-delete-cli.md#recovering-a-key-vault).
   * **Letiltható az ügyfél által felügyelt kulcsok?** A Batch-fiók titkosítási típusát bármikor visszaállíthatja a "Microsoft Managed Key" értékre. Ezt követően ingyenesen törölheti vagy módosíthatja a kulcsot.
   * **Hogyan lehet elforgatni a kulcsokat?** Az ügyfél által felügyelt kulcsok nem lesznek automatikusan elforgatva. A kulcs elforgatásához frissítse a fiókhoz társított kulcs azonosítóját.
   * **Miután visszaállítottam a hozzáférést, mennyi ideig tart a Batch-fiók újbóli működése?** Akár 10 percet is igénybe vehet, amíg a fiók újra elérhető lesz a hozzáférés visszaállítása után.
   * **Amíg a Batch-fiók nem érhető el, mi történik az erőforrásokkal?** Az ügyfél által felügyelt kulcsokhoz való batch-hozzáférés megszakadását futtató készletek továbbra is futnak. A csomópontok azonban elérhetetlenné válnak, és a tevékenységek nem fognak futni (és újra kell őket várólistára állítani). A hozzáférés visszaállítása után a csomópontok újra elérhetővé válnak, és a feladatok újra lesznek indítva.
-  * **A titkosítási mechanizmus a Batch-készletben lévő virtuálisgép-lemezekre vonatkozik?** Nem. A Cloud Service-konfigurációs készletek esetében az operációs rendszer és az ideiglenes lemez titkosítása nem lesz alkalmazva. A virtuális gépek konfigurációs készletei esetében az operációs rendszer és a megadott adatlemezek alapértelmezés szerint a Microsoft platform által felügyelt kulccsal lesznek titkosítva. Jelenleg nem adhat meg saját kulcsot ezekhez a lemezekhez. A Microsoft platform által felügyelt kulccsal rendelkező batch-készletekhez tartozó virtuális gépek ideiglenes lemezének titkosításához engedélyeznie kell a [diskEncryptionConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#diskencryptionconfiguration) tulajdonságot a [virtuálisgép-konfigurációs](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration) készletben. A fokozottan bizalmas környezetek esetében ajánlott engedélyezni az ideiglenes lemezek titkosítását, és elkerülni az operációs rendszer és az adatlemezek bizalmas adatok tárolására szolgáló adatokat.
+  * **A titkosítási mechanizmus a Batch-készletben lévő virtuálisgép-lemezekre vonatkozik?** Nem. A Cloud Service-konfigurációs készletek esetében az operációs rendszer és az ideiglenes lemez titkosítása nem lesz alkalmazva. A virtuális gépek konfigurációs készletei esetében az operációs rendszer és a megadott adatlemezek alapértelmezés szerint a Microsoft platform által felügyelt kulccsal lesznek titkosítva. Jelenleg nem adhat meg saját kulcsot ezekhez a lemezekhez. A Microsoft platform által felügyelt kulccsal rendelkező batch-készletekhez tartozó virtuális gépek ideiglenes lemezének titkosításához engedélyeznie kell a [diskEncryptionConfiguration](/rest/api/batchservice/pool/add#diskencryptionconfiguration) tulajdonságot a [virtuálisgép-konfigurációs](/rest/api/batchservice/pool/add#virtualmachineconfiguration) készletben. A fokozottan bizalmas környezetek esetében ajánlott engedélyezni az ideiglenes lemezek titkosítását, és elkerülni az operációs rendszer és az adatlemezek bizalmas adatok tárolására szolgáló adatokat.
   

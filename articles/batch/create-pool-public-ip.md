@@ -3,12 +3,12 @@ title: Megadott nyilvános IP-címmel rendelkező készlet létrehozása
 description: Megtudhatja, hogyan hozhat létre saját nyilvános IP-címeket használó batch-készletet.
 ms.topic: how-to
 ms.date: 06/16/2020
-ms.openlocfilehash: 9992ae573ea5c9590f15d6cffa11da599026c0a9
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 51cb023bf3749233878fa4d544c6fd8ef4703645
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84884967"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961557"
 ---
 # <a name="create-an-azure-batch-pool-with-specified-public-ip-addresses"></a>Megadott nyilvános IP-címmel rendelkező Azure Batch-készlet létrehozása
 
@@ -16,13 +16,15 @@ Azure Batch készlet létrehozásakor [kiépítheti a készletet](batch-virtual-
 
 Létrehozhat egy listát a készletben lévő virtuális gépekhez használható statikus nyilvános IP-címekről. Ez lehetővé teszi a nyilvános IP-címek listájának szabályozását, és biztosítja, hogy a rendszer váratlanul ne változzon meg. Ez különösen akkor lehet hasznos, ha olyan külső szolgáltatással dolgozik, mint például egy adatbázis, amely korlátozza bizonyos IP-címek elérését.
 
+A készletek nyilvános IP-címek nélküli létrehozásával kapcsolatos információkért olvassa el a [Azure batch-készlet létrehozása nyilvános IP-címek nélkül](./batch-pool-no-public-ip-address.md)című témakört.
+
 ## <a name="prerequisites"></a>Előfeltételek
 
 - **Hitelesítés**. Nyilvános IP-cím használatához a Batch-ügyfél API-nak [Azure Active Directory (ad) hitelesítést](batch-aad-auth.md)kell használnia.
 
 - **Egy Azure-VNet**. Egy olyan Azure-előfizetésből származó [virtuális hálózatot](batch-virtual-network.md) kell használnia, amelyben létrehozza a készletet és az IP-címeit. Csak Azure Resource Manager-alapú virtuális hálózatok lehet használni. Ügyeljen arra, hogy a VNet megfeleljen az összes [általános követelménynek](batch-virtual-network.md#vnet-requirements).
 
-- **Legalább egy nyilvános Azure IP-cím**. Egy vagy több nyilvános IP-cím létrehozásához használhatja a [Azure Portal](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address), az [Azure parancssori felületét (CLI)](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create)vagy [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress). Ügyeljen arra, hogy kövesse az alább felsorolt követelményeket.
+- **Legalább egy nyilvános Azure IP-cím**. Egy vagy több nyilvános IP-cím létrehozásához használhatja a [Azure Portal](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address), az [Azure parancssori felületét (CLI)](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create)vagy [Azure PowerShell](/powershell/module/az.network/new-azpublicipaddress). Ügyeljen arra, hogy kövesse az alább felsorolt követelményeket.
 
 > [!NOTE]
 > A Batch automatikusan lefoglalja a nyilvános IP-címeket tartalmazó erőforráscsoport további hálózati erőforrásait. Minden 100 dedikált csomópont esetében a Batch általában egy hálózati biztonsági csoportot (NSG) és egy terheléselosztó-t foglal le. Ezeket az erőforrásokat az előfizetés erőforrás-kvótái korlátozzák. Nagyobb készletek használata esetén előfordulhat, hogy egy vagy több ilyen erőforrás esetében [kvótát](batch-quota-limit.md#increase-a-quota) kell megadnia.
@@ -43,7 +45,7 @@ A nyilvános IP-címek létrehozásakor vegye figyelembe a következő követelm
 
 ## <a name="create-a-batch-pool-with-public-ip-addresses"></a>Nyilvános IP-címmel rendelkező batch-készlet létrehozása
 
-Az alábbi példa bemutatja, hogyan használható a [Azure batch Service REST API](https://docs.microsoft.com/rest/api/batchservice/pool/add) egy nyilvános IP-címeket használó készlet létrehozásához.
+Az alábbi példa bemutatja, hogyan használható a [Azure batch Service REST API](/rest/api/batchservice/pool/add) egy nyilvános IP-címeket használó készlet létrehozásához.
 
 ### <a name="batch-service-rest-api"></a>A Batch szolgáltatás REST API-ja
 
@@ -95,3 +97,5 @@ Kérelem törzse
 
 - Ismerje meg a [Batch szolgáltatás munkafolyamatát és az elsődleges erőforrásokat](batch-service-workflow-features.md) , például a készleteket, a csomópontokat, a feladatokat és a feladatokat.
 - Ismerje meg [, hogyan hozhat létre készletet egy Azure-beli virtuális hálózat alhálózatában](batch-virtual-network.md).
+- Tudnivalók a [Azure batch-készletek nyilvános IP-címek nélküli létrehozásáról](./batch-pool-no-public-ip-address.md).
+

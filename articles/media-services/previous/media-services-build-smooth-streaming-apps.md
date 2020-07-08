@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 9ff961638aa170948d51793a21e86d18dd7e1d80
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 65e1fa07d2af15e9ccb5f85ce4645e3e6c287952
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "69016792"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960367"
 ---
 # <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>Smooth Streaming Windows áruházbeli alkalmazás létrehozása  
 
@@ -66,11 +66,11 @@ A Windows áruházbeli alkalmazások fejlesztésével kapcsolatos további infor
 1. Kattintson a **File** (Fájl) menüben a **New** (Új), majd a **Project** (Projekt) elemre.
 1. Az új projekt párbeszédpanelen írja be vagy válassza ki a következő értékeket:
 
-    | Name (Név) | Érték |
+    | Name | Érték |
     | --- | --- |
     | Sablon csoport |Telepített/sablonok/Visual C#/Windows Store |
     | Sablon |Üres alkalmazás (XAML) |
-    | Name (Név) |SSPlayer |
+    | Name |SSPlayer |
     | Hely |C:\SSTutorials |
     | Megoldás neve |SSPlayer |
     | Könyvtár létrehozása a megoldáshoz |kiválasztott |
@@ -82,10 +82,10 @@ A Windows áruházbeli alkalmazások fejlesztésével kapcsolatos további infor
 1. Megoldáskezelő kattintson a jobb gombbal a **SSPlayer**elemre, majd kattintson a **hivatkozás hozzáadása**parancsra.
 1. Írja be vagy válassza ki az alábbi értékeket:
 
-    | Name (Név) | Érték |
+    | Name | Érték |
     | --- | --- |
     | Hivatkozási csoport |Windows/bővítmények |
-    | Referencia |Válassza a Microsoft Smooth Streaming ügyféloldali SDK Windows 8 és a Microsoft Visual C++ futtatókörnyezethez csomagot |
+    | Hivatkozás |Válassza a Microsoft Smooth Streaming ügyféloldali SDK Windows 8 és a Microsoft Visual C++ futtatókörnyezethez csomagot |
 
 1. Kattintson az **OK** gombra. 
 
@@ -94,7 +94,7 @@ A hivatkozások hozzáadása után ki kell választania a célként megadott pla
 ### <a name="to-design-the-player-user-interface"></a>A lejátszó felhasználói felületének megtervezése
 
 1. A Megoldáskezelő kattintson duplán a **Főoldal. XAML** elemre a tervezési nézetben való megnyitásához.
-2. Keresse meg ** &lt;a&gt; Grid** és ** &lt;a/Grid&gt; ** címkét a XAML-fájlban, és illessze be a következő kódot a két címke közé:
+2. Keresse meg a ** &lt; Grid &gt; ** és a ** &lt; /Grid &gt; ** címkét a XAML-fájlban, és illessze be a következő kódot a két címke közé:
 
    ```xml
          <Grid.RowDefinitions>
@@ -151,15 +151,24 @@ Ebben a XAML-fájlban egyes eseménykezelők a vezérlőkhöz vannak társítva.
 
 1. Megoldáskezelő kattintson a jobb gombbal a **Főoldal. XAML**elemre, majd kattintson a **kód megtekintése**elemre.
 2. A fájl tetején adja hozzá a következő using utasítást:
-   
+
+    ```csharp
         using Windows.Media;
+    ```
+
 3. A **Főoldal** osztály elején adja hozzá a következő adattagot:
-   
-         private MediaExtensionManager extensions = new MediaExtensionManager();
+
+    ```csharp
+        private MediaExtensionManager extensions = new MediaExtensionManager();
+    ```
+
 4. A **Főoldal** konstruktorának végén adja hozzá a következő két sort:
-   
+
+    ```csharp
         extensions.RegisterByteStreamHandler("Microsoft.Media.AdaptiveStreaming.SmoothByteStreamHandler", ".ism", "text/xml");
         extensions.RegisterByteStreamHandler("Microsoft.Media.AdaptiveStreaming.SmoothByteStreamHandler", ".ism", "application/vnd.ms-sstr+xml");
+    ```
+
 5. A **Főoldal** osztály végén illessze be a következő kódot:
    ```csharp
          # region UI Button Click Events
@@ -253,7 +262,7 @@ Ez a lecke az alábbi eljárásokat tartalmazza:
          private Windows.Foundation.Collections.PropertySet propertySet = new Windows.Foundation.Collections.PropertySet();             
          private IAdaptiveSourceManager adaptiveSourceManager;
    ```
-4. Adja hozzá a következő kódot a **Főoldal** konstruktorában **. Összetevők inicializálása ();** az előző leckében írt vonal és regisztrációs kód sorai:
+4. A **Főoldal** konstruktorában adja hozzá a következő kódot a **this.Initialize Components ();** sor és az előző leckében írt regisztrációs kód sorai után:
 
    ```csharp
         // Gets the default instance of AdaptiveSourceManager which manages Smooth 
@@ -552,7 +561,7 @@ A Smooth Streaming képes a tartalmak több, a nézők által kiválasztható ha
 ### <a name="to-modify-the-xaml-file"></a>A XAML fájl módosítása
 
 1. Megoldáskezelő kattintson a jobb gombbal a **Főoldal. XAML**elemre, majd kattintson a **tervező megtekintése**elemre.
-2. Keresse &lt;meg a Grid&gt;. RowDefinitions, és módosítsa a RowDefinitions úgy, hogy a következőképpen néznek ki:
+2. Keresse meg &lt; a Grid. RowDefinitions &gt; , és módosítsa a RowDefinitions úgy, hogy a következőképpen néznek ki:
 
    ```xml
          <Grid.RowDefinitions>            
@@ -563,7 +572,7 @@ A Smooth Streaming képes a tartalmak több, a nézők által kiválasztható ha
             <RowDefinition Height="50"/>
          </Grid.RowDefinitions>
    ```
-3. A &lt;Grid&gt;&lt;/Grid&gt; címkén belül adja hozzá a következő kódot a lista vezérlőelem definiálásához, így a felhasználók láthatják az elérhető streamek listáját, és kiválaszthatják a streameket:
+3. A &lt; Grid &gt; &lt; /Grid &gt; címkén belül adja hozzá a következő kódot a lista vezérlőelem definiálásához, így a felhasználók láthatják az elérhető streamek listáját, és kiválaszthatják a streameket:
 
    ```xml
          <Grid Name="gridStreamAndBitrateSelection" Grid.Row="3">
@@ -830,7 +839,7 @@ Egy Smooth Streaming bemutató több, különböző minőségi szinttel (átvite
 ### <a name="to-modify-the-xaml-file"></a>A XAML fájl módosítása
 
 1. Megoldáskezelő kattintson a jobb gombbal a **Főoldal. XAML**elemre, majd kattintson a **tervező megtekintése**elemre.
-2. Keresse meg &lt;a&gt; **gridStreamAndBitrateSelection**nevű rács címkét, fűzze hozzá a következő kódot a címke végéhez:
+2. Keresse meg &lt; a &gt; **gridStreamAndBitrateSelection**nevű rács címkét, fűzze hozzá a következő kódot a címke végéhez:
    ```xml
          <StackPanel Name="spBitRateSelection" Grid.Row="1" Grid.Column="1">
          <StackPanel Orientation="Horizontal">

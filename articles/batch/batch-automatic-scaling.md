@@ -4,12 +4,12 @@ description: A készletben lévő számítási csomópontok számának dinamikus
 ms.topic: how-to
 ms.date: 10/24/2019
 ms.custom: H1Hack27Feb2017,fasttrack-edit
-ms.openlocfilehash: 223ba348ce1f8b69791581a70cd21af621c28b24
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: cb40ea72dad2313618fb3c38bf73bf822f4b4433
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84609012"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960843"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Automatikus képlet létrehozása a számítási csomópontok méretezéséhez egy batch-készletben
 
@@ -92,7 +92,7 @@ Az alábbi táblázatokban a Batch szolgáltatás által definiált írható és
 
 A szolgáltatás által definiált változók értékeit lekérheti és beállíthatja a készletben lévő számítási csomópontok számának kezeléséhez:
 
-| Olvasási és írási szolgáltatás által definiált változók | Leírás |
+| Olvasási és írási szolgáltatás által definiált változók | Description |
 | --- | --- |
 | $TargetDedicatedNodes |A készlet dedikált számítási csomópontjainak megcélzott száma. A dedikált csomópontok száma célként van megadva, mert előfordulhat, hogy a készlet nem mindig éri el a kívánt számú csomópontot. Ha például a dedikált csomópontok megcélzott száma módosítva van egy autoskálázási kiértékeléssel, mielőtt a készlet elérte a kezdeti célt, akkor előfordulhat, hogy a készlet nem éri el a célt. <br /><br /> Előfordulhat, hogy a Batch szolgáltatás konfigurációjával létrehozott fiók nem éri el a célját, ha a cél meghaladja a Batch-fiók csomópontját vagy a fő kvótát. Előfordulhat, hogy a felhasználói előfizetés-konfigurációval létrehozott fiókban lévő készlet nem éri el a célját, ha a cél meghaladja az előfizetés megosztott alapszintű kvótáját.|
 | $TargetLowPriorityNodes |A készlet alacsony prioritású számítási csomópontjainak megcélzott száma. Az alacsony prioritású csomópontok száma célként van megadva, mert előfordulhat, hogy a készlet nem mindig éri el a kívánt számú csomópontot. Ha például az alacsony prioritású csomópontok megcélzott száma módosítva van egy autoskálázási kiértékeléssel, mielőtt a készlet elérte a kezdeti célt, akkor előfordulhat, hogy a készlet nem éri el a célt. Előfordulhat, hogy a készlet nem éri el a célját, ha a cél meghaladja a Batch-fiók csomópontját vagy a fő kvótát. <br /><br /> Az alacsony prioritású számítási csomópontokkal kapcsolatos további információkért lásd: [alacsony prioritású virtuális gépek használata a Batch használatával](batch-low-pri-vms.md). |
@@ -105,7 +105,7 @@ A szolgáltatás által definiált változók értékeit lekérheti és beállí
 
 A szolgáltatás által definiált változók értékének beszerzésével a Batch szolgáltatás mérőszámai alapján végezheti el a módosításokat:
 
-| Csak olvasható, szolgáltatás által definiált változók | Leírás |
+| Csak olvasható, szolgáltatás által definiált változók | Description |
 | --- | --- |
 | $CPUPercent |A CPU-használat átlagos százalékos aránya. |
 | $WallClockSeconds |A felhasznált másodpercek száma. |
@@ -165,7 +165,7 @@ Ezek a típusok a következő képletekben támogatottak:
   * TimeInterval_Week
   * TimeInterval_Year
 
-## <a name="operations"></a>Üzemeltetés
+## <a name="operations"></a>Műveletek
 
 Ezek a műveletek az előző szakaszban felsorolt típusoknál engedélyezettek.
 
@@ -190,10 +190,10 @@ Ezek a műveletek az előző szakaszban felsorolt típusoknál engedélyezettek.
 
 Ternáris operátorral () való dupla tesztelés esetén a nem `double ? statement1 : statement2` nulla érték **igaz**, és a nulla **hamis**.
 
-## <a name="functions"></a>Függvények
+## <a name="functions"></a>Functions
 Ezek az előre definiált **függvények** használhatók az automatikus skálázási képlet definiálásához.
 
-| Függvény | Visszatérési típus | Leírás |
+| Függvény | Visszatérési típus | Description |
 | --- | --- | --- |
 | átlag (doubleVecList) |double |A doubleVecList lévő összes érték átlagos értékét adja vissza. |
 | Len (doubleVecList) |double |A doubleVecList létrehozott vektor hosszát adja vissza. |
@@ -229,7 +229,7 @@ Az autoskálázási képletek a Batch szolgáltatás által biztosított mérős
 $CPUPercent.GetSample(TimeInterval_Minute * 5)
 ```
 
-| Metódus | Leírás |
+| Metódus | Description |
 | --- | --- |
 | GetSample() |A `GetSample()` metódus adatmintákból álló vektort ad vissza.<br/><br/>A minta a metrikák adataihoz tartozó 30 másodperc. Más szóval a mintákat 30 másodpercenként szerzi be a rendszer. De ahogy az alábbiakban is látható, a rendszer a mintavétel begyűjtésének és a képletek számára elérhetővé tételének késleltetését jelzi. Így az adott időszakra vonatkozóan nem minden minta lehet egy képlet alapján kiértékelésre.<ul><li>`doubleVec GetSample(double count)`<br/>Meghatározza, hogy a rendszer hány mintát kapjon a legutóbbi összegyűjtött mintákból.<br/><br/>`GetSample(1)`az utolsó elérhető mintát adja vissza. A hasonló mérőszámok esetében `$CPUPercent` azonban ez nem használható, mert nem lehet tudni, hogy *Mikor* gyűjtötték be a mintát. Előfordulhat, hogy a legutóbbi vagy a rendszerproblémák miatt sokkal régebbi. Ilyen esetekben jobb, ha az alább látható időintervallumot használja.<li>`doubleVec GetSample((timestamp or timeinterval) startTime [, double samplePercent])`<br/>Meghatározza a mintaadatok gyűjtésének időkeretét. Azt is meghatározza, hogy a minták hány százalékát kell elérhetőnek lennie a kért időkeretben.<br/><br/>`$CPUPercent.GetSample(TimeInterval_Minute * 10)`20 mintát ad vissza, ha az utolsó 10 perc összes mintája megtalálható a CPUPercent előzményeiben. Ha a korábbi előzmények nem voltak elérhetők, de csak 18 mintát ad vissza. Ebben az esetben:<br/><br/>`$CPUPercent.GetSample(TimeInterval_Minute * 10, 95)`a művelet sikertelen, mert a minták 90%-a elérhető.<br/><br/>`$CPUPercent.GetSample(TimeInterval_Minute * 10, 80)`sikeres volt.<li>`doubleVec GetSample((timestamp or timeinterval) startTime, (timestamp or timeinterval) endTime [, double samplePercent])`<br/>Megadja az adatgyűjtés időkeretét, a kezdési és befejezési időpontot is beleértve.<br/><br/>A fentiekben leírtaknak megfelelően a rendszer a mintavétel begyűjtését és a képletek számára elérhetővé tételét késlelteti. Ezt a késleltetést a metódus használatakor érdemes figyelembe venni `GetSample` . Lásd `GetSamplePercent` alább. |
 | GetSamplePeriod() |Egy korábbi mintaadatok-készletben szereplő minták időszakát adja vissza. |
@@ -375,17 +375,17 @@ $TargetDedicatedNodes = min(400, $totalDedicatedNodes)
 
 ## <a name="create-an-autoscale-enabled-pool-with-batch-sdks"></a>A Batch SDK-val rendelkező, automéretezést támogató készlet létrehozása
 
-A készlet automatikus skálázása a Batch [SDK](batch-apis-tools.md#azure-accounts-for-batch-development)-k, a Batch [REST API](https://docs.microsoft.com/rest/api/batchservice/) a Batch [PowerShell-parancsmagok](batch-powershell-cmdlets-get-started.md)és a [Batch CLI](batch-cli-get-started.md)használatával konfigurálható. Ebben a szakaszban a .NET és a Python esetében is láthat példákat.
+A készlet automatikus skálázása a Batch [SDK](batch-apis-tools.md#azure-accounts-for-batch-development)-k, a Batch [REST API](/rest/api/batchservice/) a Batch [PowerShell-parancsmagok](batch-powershell-cmdlets-get-started.md)és a [Batch CLI](batch-cli-get-started.md)használatával konfigurálható. Ebben a szakaszban a .NET és a Python esetében is láthat példákat.
 
 ### <a name="net"></a>.NET
 
 A .NET-ben engedélyezett automatikus skálázással rendelkező készlet létrehozásához kövesse az alábbi lépéseket:
 
-1. Hozza létre a készletet a [BatchClient. PoolOperations. CreatePool](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.createpool).
-1. Állítsa a [CloudPool. AutoScaleEnabled](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleenabled) tulajdonságot a következőre: `true` .
-1. Állítsa be az [CloudPool. AutoScaleFormula](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleformula) tulajdonságot az autoscale képlettel.
-1. Választható A [CloudPool. AutoScaleEvaluationInterval](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleevaluationinterval) tulajdonság beállítása (az alapértelmezett érték 15 perc).
-1. Véglegesítse a készletet a [CloudPool. commit](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.commit) vagy a [CommitAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.commitasync).
+1. Hozza létre a készletet a [BatchClient. PoolOperations. CreatePool](/dotnet/api/microsoft.azure.batch.pooloperations.createpool).
+1. Állítsa a [CloudPool. AutoScaleEnabled](/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleenabled) tulajdonságot a következőre: `true` .
+1. Állítsa be az [CloudPool. AutoScaleFormula](/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleformula) tulajdonságot az autoscale képlettel.
+1. Választható A [CloudPool. AutoScaleEvaluationInterval](/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleevaluationinterval) tulajdonság beállítása (az alapértelmezett érték 15 perc).
+1. Véglegesítse a készletet a [CloudPool. commit](/dotnet/api/microsoft.azure.batch.cloudpool.commit) vagy a [CommitAsync](/dotnet/api/microsoft.azure.batch.cloudpool.commitasync).
 
 Az alábbi kódrészlet egy automatikusan méretezhető, .NET-alapú készletet hoz létre. A készlet autoskálázási képlete a dedikált csomópontok megcélzott számát 5 – hétfő értékre állítja, a hét minden más napján pedig 1 értéket. Az [automatikus skálázási időköz](#automatic-scaling-interval) 30 percre van beállítva. Ebben és a cikkben szereplő többi C#-kódrészlet a `myBatchClient` [BatchClient][net_batchclient] osztály megfelelően inicializált példánya.
 
@@ -522,11 +522,11 @@ Kiértékelheti a képletet, mielőtt alkalmazná egy készletre. Ily módon tes
 
 Egy automatikus méretezési képlet kiértékeléséhez először engedélyeznie kell az automatikus skálázást a készleten érvényes képlettel. Ha olyan készlethez szeretne tesztelni egy képletet, amelyen még nincs engedélyezve az automatikus skálázás, akkor az automatikus `$TargetDedicatedNodes = 0` skálázás első engedélyezésekor használja az egysoros képletet. Ezután a következők egyikével értékelje ki a tesztelni kívánt képletet:
 
-* [BatchClient. PoolOperations. EvaluateAutoScale](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.evaluateautoscale) vagy [EvaluateAutoScaleAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.evaluateautoscaleasync)
+* [BatchClient. PoolOperations. EvaluateAutoScale](/dotnet/api/microsoft.azure.batch.pooloperations.evaluateautoscale) vagy [EvaluateAutoScaleAsync](/dotnet/api/microsoft.azure.batch.pooloperations.evaluateautoscaleasync)
 
     Ezek a Batch .NET-metódusok megkövetelik egy meglévő készlet AZONOSÍTÓját, valamint egy olyan karakterláncot, amely a kiértékeléshez az autoskálázási képletet tartalmazza.
 
-* [Automatikus skálázási képlet kiértékelése](https://docs.microsoft.com/rest/api/batchservice/evaluate-an-automatic-scaling-formula)
+* [Automatikus skálázási képlet kiértékelése](/rest/api/batchservice/evaluate-an-automatic-scaling-formula)
 
     Ebben az REST API-kérelemben adja meg a készlet AZONOSÍTÓját az URI-ban, valamint az autoskálázási képletet a *autoScaleFormula* elemben. A művelet válasza tartalmaz minden olyan hibaüzenetet, amely lehet a képlethez köthető.
 
@@ -612,13 +612,13 @@ AutoScaleRun.Results:
 
 Annak érdekében, hogy a képlet a várt módon legyen végrehajtva, javasoljuk, hogy rendszeresen ellenőrizze az automatikus skálázás futtatásának eredményét, hogy a Batch végrehajtsa a készletet. Ehhez szerezze be (vagy frissítse) a készletre mutató hivatkozást, és vizsgálja meg az utolsó méretezési Futtatás tulajdonságait.
 
-A Batch .NET-ben a [CloudPool. AutoScaleRun](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscalerun) tulajdonság több olyan tulajdonsággal rendelkezik, amelyek információt nyújtanak a készleten végrehajtott legújabb automatikus skálázási futtatásról:
+A Batch .NET-ben a [CloudPool. AutoScaleRun](/dotnet/api/microsoft.azure.batch.cloudpool.autoscalerun) tulajdonság több olyan tulajdonsággal rendelkezik, amelyek információt nyújtanak a készleten végrehajtott legújabb automatikus skálázási futtatásról:
 
-* [AutoScaleRun. timestamp](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.autoscalerun.timestamp)
-* [AutoScaleRun. Results](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.autoscalerun.results)
-* [AutoScaleRun. error](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.autoscalerun.error)
+* [AutoScaleRun. timestamp](/dotnet/api/microsoft.azure.batch.autoscalerun.timestamp)
+* [AutoScaleRun. Results](/dotnet/api/microsoft.azure.batch.autoscalerun.results)
+* [AutoScaleRun. error](/dotnet/api/microsoft.azure.batch.autoscalerun.error)
 
-A REST API a [készletre vonatkozó kérés információi](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-pool) a készletre vonatkozó információkat adnak vissza, amely magában foglalja a legújabb automatikus skálázási futtatási információkat a [autoScaleRun](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-pool) tulajdonságban.
+A REST API a [készletre vonatkozó kérés információi](/rest/api/batchservice/get-information-about-a-pool) a készletre vonatkozó információkat adnak vissza, amely magában foglalja a legújabb automatikus skálázási futtatási információkat a [autoScaleRun](/rest/api/batchservice/get-information-about-a-pool) tulajdonságban.
 
 A következő C# kódrészlet a Batch .NET-függvénytárat használja az utolsó automatikus skálázási futtatással kapcsolatos információk nyomtatásához a _myPool_:
 
@@ -730,20 +730,20 @@ string formula = string.Format(@"
     ", now, 4);
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A [Azure batch számítási erőforrások használatának maximalizálása egyidejű csomópont-feladatokkal](batch-parallel-node-tasks.md) : részletes információ arról, hogy miként hajtható végre egyszerre több feladat a készlet számítási csomópontjain. Az automatikus skálázás mellett ez a funkció bizonyos munkaterhelések esetében csökkentheti a feladatok időtartamát, így pénzt takaríthat meg.
 * Egy másik hatékonysági emlékeztető esetén győződjön meg arról, hogy a Batch-alkalmazás a legoptimálisabb módon kérdezi le a Batch szolgáltatást. Lásd: [a Azure batch szolgáltatás hatékony lekérdezése](batch-efficient-list-queries.md) , amelyből megtudhatja, hogy miként lehet korlátozni a drótot keresztező adatok mennyiségét, ha egy akár több ezer számítási csomópont vagy feladat állapotát kérdezi le.
 
-[net_api]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch
-[net_batchclient]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.batchclient
-[net_cloudpool_autoscaleformula]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleformula
-[net_cloudpool_autoscaleevalinterval]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleevaluationinterval
-[net_enableautoscaleasync]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.enableautoscaleasync
-[net_maxtasks]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.maxtaskspercomputenode
-[net_poolops_resizepoolasync]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.resizepoolasync
+[net_api]: /dotnet/api/microsoft.azure.batch
+[net_batchclient]: /dotnet/api/microsoft.azure.batch.batchclient
+[net_cloudpool_autoscaleformula]: /dotnet/api/microsoft.azure.batch.cloudpool.autoscaleformula
+[net_cloudpool_autoscaleevalinterval]: /dotnet/api/microsoft.azure.batch.cloudpool.autoscaleevaluationinterval
+[net_enableautoscaleasync]: /dotnet/api/microsoft.azure.batch.pooloperations.enableautoscaleasync
+[net_maxtasks]: /dotnet/api/microsoft.azure.batch.cloudpool.maxtaskspercomputenode
+[net_poolops_resizepoolasync]: /dotnet/api/microsoft.azure.batch.pooloperations.resizepoolasync
 
-[rest_api]: https://docs.microsoft.com/rest/api/batchservice/
-[rest_autoscaleformula]: https://docs.microsoft.com/rest/api/batchservice/enable-automatic-scaling-on-a-pool
-[rest_autoscaleinterval]: https://docs.microsoft.com/rest/api/batchservice/enable-automatic-scaling-on-a-pool
-[rest_enableautoscale]: https://docs.microsoft.com/rest/api/batchservice/enable-automatic-scaling-on-a-pool
+[rest_api]: /rest/api/batchservice/
+[rest_autoscaleformula]: /rest/api/batchservice/enable-automatic-scaling-on-a-pool
+[rest_autoscaleinterval]: /rest/api/batchservice/enable-automatic-scaling-on-a-pool
+[rest_enableautoscale]: /rest/api/batchservice/enable-automatic-scaling-on-a-pool

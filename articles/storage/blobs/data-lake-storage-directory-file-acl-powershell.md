@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 04/21/2020
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: aeb3273622b863f04c73561520efe3be6cc6fec2
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 67aa9fcb51742432dcd629073f15a65d14bf3597
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84804921"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961200"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>A PowerShell használatával kezelheti a címtárakat, a fájlokat és a hozzáférés-vezérlési listákat Azure Data Lake Storage Gen2
 
@@ -261,7 +261,7 @@ A (z `-Force` ) paraméterrel a fájl parancssor nélkül is eltávolítható.
 
 ## <a name="manage-access-permissions"></a>Hozzáférési engedélyek kezelése
 
-Lekérheti, beállíthatja és frissítheti a fájlrendszerek, könyvtárak és fájlok hozzáférési engedélyeit. Ezeket az engedélyeket a hozzáférés-vezérlési listák (ACL-ek) rögzítik.
+Lekérheti, beállíthatja és frissítheti a címtárak és fájlok hozzáférési engedélyeit. Ezeket az engedélyeket a hozzáférés-vezérlési listák (ACL-ek) rögzítik.
 
 > [!NOTE]
 > Ha Azure Active Directory (Azure AD) használatával engedélyezi a parancsokat, akkor győződjön meg arról, hogy a rendszerbiztonsági tag hozzá lett rendelve a [Storage blob-adat tulajdonosi szerepköréhez](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Ha többet szeretne megtudni az ACL-engedélyek alkalmazásáról és azok módosításának hatásairól, tekintse meg a [Azure Data Lake Storage Gen2 hozzáférés-vezérlését](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)ismertető témakört.
@@ -270,7 +270,7 @@ Lekérheti, beállíthatja és frissítheti a fájlrendszerek, könyvtárak és 
 
 Egy könyvtár vagy fájl hozzáférés-vezérlési listájának lekérése a `Get-AzDataLakeGen2Item` parancsmag használatával.
 
-Ez a példa egy **fájlrendszer** ACL-listáját kéri le, majd kiírja az ACL-t a konzolra.
+Ez a példa lekéri a **fájlrendszer** gyökérkönyvtárát, majd kinyomtatja az ACL-t a konzolra.
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -305,7 +305,7 @@ Ebben a példában a tulajdonos felhasználó olvasási, írási és végrehajt�
 
 A `set-AzDataLakeGen2ItemAclObject` parancsmag használatával hozzon létre egy ACL-t a tulajdonos felhasználó, tulajdonos csoport vagy más felhasználók számára. Ezután a parancsmag használatával `Update-AzDataLakeGen2Item` véglegesítse az ACL-t.
 
-Ez a példa egy fájlrendszer ACL- **fájlját** állítja be a tulajdonos felhasználó, tulajdonos csoport vagy más felhasználók számára, majd kinyomtatja az ACL-t a konzolra.
+Ez a példa egy **fájlrendszer** gyökérkönyvtárát állítja be a tulajdonos felhasználó, tulajdonos csoport vagy más felhasználók számára, majd kinyomtatja az ACL-t a konzolra.
 
 ```powershell
 $filesystemName = "my-file-system"

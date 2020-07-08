@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: a01c8658ff4929d07cd185dcea45393cfe3b2a17
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: e0f0f0fdb75961f3ea9ed90e1684ff5ecd2a792d
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858315"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961540"
 ---
 # <a name="publishing-guide-for-virtual-machine-offers"></a>A virtuális gépekkel kapcsolatos ajánlatok közzétételi útmutatója
 
@@ -54,7 +54,7 @@ Ha virtuális berendezést telepít az ügyfélhez társított előfizetésre, h
 | Követelmény | Részletek |  
 |:--- |:--- | 
 | Számlázás és mérés | A virtuális gépnek BYOL vagy utólagos elszámolású havi számlázást kell támogatnia. |  
-| Azure-kompatibilis virtuális merevlemez (VHD) | A virtuális gépeket Windows vagy Linux rendszerre kell építeni. A virtuális merevlemezek létrehozásával kapcsolatos további információkért lásd: <ul> <li>Az Azure-ban [támogatott Linux-disztribúciók](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) (linuxos virtuális merevlemezek esetén).</li> <li>[Azure-kompatibilis VHD létrehozása](./partner-center-portal/azure-vm-create-offer.md) (Windows rendszerű virtuális merevlemezekhez).</li> </ul> |  
+| Azure-kompatibilis virtuális merevlemez (VHD) | A virtuális gépeket Windows vagy Linux rendszerre kell építeni. A virtuális merevlemezek létrehozásával kapcsolatos további információkért lásd: <ul> <li>Az Azure-ban [támogatott Linux-disztribúciók](../virtual-machines/linux/endorsed-distros.md) (linuxos virtuális merevlemezek esetén).</li> <li>[Azure-kompatibilis VHD létrehozása](./partner-center-portal/azure-vm-create-offer.md) (Windows rendszerű virtuális merevlemezekhez).</li> </ul> |  
 
 >[!Note]
 >Már elérhető a felhőalapú megoldás-szolgáltató (CSP) Partner Channel-beli aktiválása. Az ajánlat Microsoft CSP-partneri csatornákon keresztüli forgalmazásával kapcsolatos további információkért tekintse meg a [Cloud Solution Providers](./cloud-solution-providers.md)című témakört.
