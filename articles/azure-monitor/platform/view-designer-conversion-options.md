@@ -7,10 +7,9 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.openlocfilehash: 7bfa831332451718c0c9c05023b90104d2b8b02b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77658710"
 ---
 # <a name="azure-monitor-view-designer-to-workbooks-conversion-options"></a>Azure Monitor a Designer és a munkafüzetek közötti átalakítási beállítások megjelenítése
@@ -20,12 +19,12 @@ A [tervező](view-designer.md) a Azure monitor egyik funkciója, amely lehetőv�
 
 A tervezőben rögzített statikus ábrázolási stílus szerepel, míg a munkafüzetek lehetővé teszik az adatmegjelenítést és az adatmegjelenítést. Az alábbi ábrán két példa látható arra, hogyan rendezheti a munkafüzeteket a nézetek konvertálásakor.
 
-[Függőleges függőleges munkafüzet](view-designer-conversion-examples.md#vertical)
-![](media/view-designer-conversion-options/view-designer-vertical.png)
+[Függőleges munkafüzet](view-designer-conversion-examples.md#vertical) 
+ ![ Függőleges](media/view-designer-conversion-options/view-designer-vertical.png)
 
-[A többlapos munkafüzet](view-designer-conversion-examples.md#tabbed)
-![adattípusának](media/view-designer-conversion-options/distribution-tab.png)
-![terjesztési lapjának adattípusai az idő lapon](media/view-designer-conversion-options/over-time-tab.png)
+[Többlapos munkafüzet](view-designer-conversion-examples.md#tabbed) 
+ ![ Adattípus terjesztési lapjának ](media/view-designer-conversion-options/distribution-tab.png)
+ ![ adattípusai az idő lapon](media/view-designer-conversion-options/over-time-tab.png)
 
 ## <a name="tile-conversion"></a>Csempe konvertálása
 A tervező a teljes állapot ábrázolására és összegzésére használja az Áttekintés csempe funkciót. Ezek hét csempén jelennek meg, a számoktól a diagramig terjedően. A munkafüzetekben a felhasználók hasonló vizualizációkat hozhatnak létre, és rögzíthetik őket az áttekintő csempék eredeti stílusához hasonló módon. 

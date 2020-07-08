@@ -4,10 +4,9 @@ description: Új alkalmazás figyelésének megkezdése új kialakítási kulccs
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.openlocfilehash: 395e8d667985318f4a084428c6fd4c395ee8b956
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77671443"
 ---
 # <a name="monitor-a-sharepoint-site-with-application-insights"></a>SharePoint-hely megfigyelése az Application Insights segítségével
@@ -39,7 +38,7 @@ var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=wi
 </script>
 ```
 
-Szúrja be a szkriptet &lt;közvetlenül&gt; az összes nyomon követni kívánt oldal/Head címkéjébe. Ha a webhelynek van főoldala, akkor a parancsfájlt ott helyezheti el. Egy ASP.NET MVC-projektben a következő helyre helyezné a szkriptet: View\Shared\_Layout.cshtml
+Szúrja be a szkriptet közvetlenül az &lt; &gt; összes nyomon követni kívánt oldal/Head címkéjébe. Ha a webhelynek van főoldala, akkor a parancsfájlt ott helyezheti el. Egy ASP.NET MVC-projektben a következő helyre helyezné a szkriptet: View\Shared\_Layout.cshtml
 
 A szkript tartalmazza a kialakítási kulcsot, amely a telemetriát az Application Insights-erőforrásra irányítja.
 
@@ -51,7 +50,7 @@ Tekintse át a mesterlapot, és szerkessze a SharePoint Designerrel vagy más sz
 
 ![](./media/sharepoint/03-master.png)
 
-Adja hozzá a kódot közvetlenül a(z) </head> címke elé. 
+Adja hozzá a kódot közvetlenül a </head> tag. 
 
 ![](./media/sharepoint/04-code.png)
 

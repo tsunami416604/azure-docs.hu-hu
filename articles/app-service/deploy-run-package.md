@@ -4,10 +4,9 @@ description: Az alkalmazás ZIP-csomagjának üzembe helyezése az atomenergia-s
 ms.topic: article
 ms.date: 01/14/2020
 ms.openlocfilehash: 5cc909d79b3f5ea2b4c6a3da12bc7250addbe00c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77920722"
 ---
 # <a name="run-your-app-in-azure-app-service-directly-from-a-zip-package"></a>Az alkalmazás futtatása Azure App Service közvetlenül egy ZIP-csomagból
@@ -47,15 +46,15 @@ A App Service-csomag futtatásának legegyszerűbb módja az Azure CLI az [WebAp
 az webapp deployment source config-zip --resource-group <group-name> --name <app-name> --src <filename>.zip
 ```
 
-Mivel az `WEBSITE_RUN_FROM_PACKAGE` Alkalmazásbeállítások be van állítva, ez a parancs nem bontja ki a csomag tartalmát az alkalmazás *D:\home\site\wwwroot* könyvtárába. Ehelyett feltölti a ZIP-fájlt a *D:\home\data\SitePackages*, és létrehoz egy *PackageName. txt* fájlt ugyanabban a címtárban, amely tartalmazza a FUTTATÁSkor betölteni kívánt zip-csomag nevét. Ha a ZIP-csomagot más módon (például [FTP](deploy-ftp.md)) tölti fel, akkor manuálisan kell létrehoznia a *D:\home\data\SitePackages* könyvtárat és a *PackageName. txt* fájlt.
+Mivel az Alkalmazásbeállítások `WEBSITE_RUN_FROM_PACKAGE` be van állítva, ez a parancs nem bontja ki a csomag tartalmát az alkalmazás *D:\home\site\wwwroot* könyvtárába. Ehelyett feltölti a ZIP-fájlt a *D:\home\data\SitePackages*, és létrehoz egy *packagename.txt* ugyanabban a címtárban, amely tartalmazza a futásidőben betölteni kívánt zip-csomag nevét. Ha a ZIP-csomagot más módon (például [FTP](deploy-ftp.md)) tölti fel, a *D:\home\data\SitePackages* könyvtárat és a *packagename.txt* fájlt manuálisan kell létrehoznia.
 
-A parancs az alkalmazást is újraindítja. Mivel `WEBSITE_RUN_FROM_PACKAGE` a be van állítva, app Service a feltöltött csomagot írásvédett *wwwroot* -címtárként csatlakoztatja, és közvetlenül az adott csatlakoztatott könyvtárból futtatja az alkalmazást.
+A parancs az alkalmazást is újraindítja. Mivel a `WEBSITE_RUN_FROM_PACKAGE` be van állítva, app Service a feltöltött csomagot írásvédett *wwwroot* -címtárként csatlakoztatja, és közvetlenül az adott csatlakoztatott könyvtárból futtatja az alkalmazást.
 
 ## <a name="run-from-external-url-instead"></a>Futtatás külső URL-címről
 
 A csomagokat külső URL-címről, például az Azure Blob Storage is futtathatja. A [Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) használatával tölthet fel csomagokat a blob Storage-fiókjába. Egy [megosztott hozzáférési aláírással (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) rendelkező privát tárolót kell használnia, amely lehetővé teszi, hogy a app Service futtatókörnyezet biztonságosan hozzáférjen a csomaghoz. 
 
-Miután feltöltötte a fájlt a blob Storage-ba, és egy SAS URL-címmel rendelkezik `WEBSITE_RUN_FROM_PACKAGE` a fájlhoz, állítsa az alkalmazás beállítást az URL-címre. Az alábbi példa az Azure CLI-t használja:
+Miután feltöltötte a fájlt a blob Storage-ba, és egy SAS URL-címmel rendelkezik a fájlhoz, állítsa az `WEBSITE_RUN_FROM_PACKAGE` alkalmazás beállítást az URL-címre. Az alábbi példa az Azure CLI-t használja:
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_RUN_FROM_PACKAGE="https://myblobstorage.blob.core.windows.net/content/SampleCoreMVCApp.zip?st=2018-02-13T09%3A48%3A00Z&se=2044-06-14T09%3A48%3A00Z&sp=rl&sv=2017-04-17&sr=b&sig=bNrVrEFzRHQB17GFJ7boEanetyJ9DGwBSV8OM3Mdh%2FM%3D"
@@ -65,10 +64,10 @@ Ha a blob Storage-hoz azonos nevű frissített csomagot tesz közzé, újra kell
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-- A közvetlenül a csomagból való `wwwroot` futtatása csak olvasható. Az alkalmazás hibaüzenetet küld, ha fájlokat próbál írni ebbe a könyvtárba.
+- A közvetlenül a csomagból való futtatása `wwwroot` csak olvasható. Az alkalmazás hibaüzenetet küld, ha fájlokat próbál írni ebbe a könyvtárba.
 - A TAR és a GZIP formátum nem támogatott.
 - Ez a funkció nem kompatibilis a [helyi gyorsítótárral](overview-local-cache.md).
-- A jobb hidegindító teljesítmény érdekében használja a helyi zip-beállítást (`WEBSITE_RUN_FROM_PACKAGE`= 1).
+- A jobb hidegindító teljesítmény érdekében használja a helyi zip-beállítást ( `WEBSITE_RUN_FROM_PACKAGE` = 1).
 
 ## <a name="more-resources"></a>További erőforrások
 

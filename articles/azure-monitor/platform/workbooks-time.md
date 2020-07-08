@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: 380b8a7ce286ab06b6935bf63bf3a0e82f371c2f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77658013"
 ---
 # <a name="workbook-time-parameters"></a>Munkafüzet-idő paraméterei
@@ -40,7 +39,7 @@ A munkafüzet a következőképpen fog kinézni, mint az olvasási módban.
 ## <a name="referencing-a-time-parameter"></a>Egy Time paraméterre hivatkozik
 ### <a name="via-bindings"></a>Kötések útján
 1. Vegyen fel egy lekérdezés vezérlőelemet a munkafüzetbe, és válasszon ki egy Application Insights erőforrást.
-2. A legtöbb munkafüzet-vezérlő támogatja az _időtartomány_ hatókör-választóját. Nyissa meg az _időtartomány_ legördülő listát, `{TimeRange}` és válassza ki az időkorlát-paraméterek csoportot alul.
+2. A legtöbb munkafüzet-vezérlő támogatja az _időtartomány_ hatókör-választóját. Nyissa meg az _időtartomány_ legördülő listát, és válassza ki az `{TimeRange}` időkorlát-paraméterek csoportot alul.
 3. Ezzel a beállítással az időtartomány paraméter a diagram időtartományához köthető. A minta lekérdezés időbeli hatóköre mostantól az elmúlt 24 órában érhető el.
 4. Lekérdezés futtatása az eredmények megtekintéséhez
 
@@ -49,7 +48,7 @@ A munkafüzet a következőképpen fog kinézni, mint az olvasási módban.
 ### <a name="in-kql"></a>A KQL
 1. Vegyen fel egy lekérdezés vezérlőelemet a munkafüzetbe, és válasszon ki egy Application Insights erőforrást.
 2. A KQL adja meg az időtartomány szűrőt a (z) paraméter használatával:`| where timestamp {TimeRange}`
-3. Ez kibővíti a lekérdezés értékelésének `| where timestamp > ago(1d)`idejét a értékre, amely a paraméter időtartományának értéke.
+3. Ez kibővíti a lekérdezés értékelésének idejét a értékre `| where timestamp > ago(1d)` , amely a paraméter időtartományának értéke.
 4. Lekérdezés futtatása az eredmények megtekintéséhez
 
     ![A KQL-ben hivatkozott időtartományt ábrázoló kép](./media/workbooks-time/time-in-code.png)

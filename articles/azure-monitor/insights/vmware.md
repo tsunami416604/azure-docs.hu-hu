@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 05/04/2018
 ms.openlocfilehash: c1622ef16155206d779c6d703fc7da568d233e7e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77664779"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>VMware Monitoring (elavult) megoldás a Azure Monitor
@@ -40,10 +39,10 @@ Hozzon létre egy Linux operációs rendszer virtuális gépet az ESXi-gazdagép
    ![syslog-folyamat](./media/vmware/diagram.png)
 
 ### <a name="configure-syslog-collection"></a>Syslog-gyűjtemény konfigurálása
-1. Állítsa be a syslog-továbbítást a VSphere. A syslog-továbbítás beállításával kapcsolatos részletes információkért lásd: [a syslog konfigurálása ESXi 5,0 és újabb rendszereken (2003322)](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2003322). Ugrás az **ESXi-gazdagép konfigurációs** > **szoftver** > **Speciális beállítások** > **syslog**.
+1. Állítsa be a syslog-továbbítást a VSphere. A syslog-továbbítás beállításával kapcsolatos részletes információkért lásd: [a syslog konfigurálása ESXi 5,0 és újabb rendszereken (2003322)](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2003322). Ugrás az **ESXi-gazdagép konfigurációs**  >  **szoftver**  >  **Speciális beállítások**  >  **syslog**.
    ![vsphereconfig](./media/vmware/vsphere1.png)  
 1. A *syslog. Global. logHost* mezőben adja hozzá a Linux-kiszolgálót és a *1514*-as portszámot. Példa: `tcp://hostname:1514` vagy `tcp://123.456.789.101:1514`
-1. Nyissa meg az ESXi-gazdagép tűzfalát a syslog számára. **ESXi-gazdagép konfigurációs** > **szoftver** > **biztonsági profilja** > **tűzfal** és nyitott **Tulajdonságok**.  
+1. Nyissa meg az ESXi-gazdagép tűzfalát a syslog számára. **ESXi-gazdagép konfigurációja**  >  **Szoftver**  >  **Biztonsági profil**  >  **Tűzfal** és nyitott **Tulajdonságok**.  
 
     ![vspherefw](./media/vmware/vsphere2.png)  
 
@@ -56,7 +55,7 @@ Hozzon létre egy Linux operációs rendszer virtuális gépet az ESXi-gazdagép
     sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/vmware_esxi.conf /etc/opt/microsoft/omsagent/conf/omsagent.d
    sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf
     ```
-1. Indítsa újra a Log Analytics Linux-ügynököt `sudo /opt/microsoft/omsagent/bin/service_control restart`a futtatásával.
+1. Indítsa újra a Log Analytics Linux-ügynököt a futtatásával `sudo /opt/microsoft/omsagent/bin/service_control restart` .
 1. Tesztelje a Linux-kiszolgáló és az ESXi-gazdagép közötti kapcsolatot az `nc` ESXi-gazdagépen található parancs használatával. Például:
 
     ```
@@ -64,9 +63,9 @@ Hozzon létre egy Linux operációs rendszer virtuális gépet az ESXi-gazdagép
     Connection to 123.456.789.101 1514 port [tcp/*] succeeded!
     ```
 
-1. A Azure Portal hajtson végre egy log-lekérdezést `VMware_CL`a következőhöz:. Amikor Azure Monitor gyűjti a syslog-adatokat, megőrzi a syslog formátumát. A portálon bizonyos mezők rögzítése történik, például az *állomásnév* és a *processname*.  
+1. A Azure Portal hajtson végre egy log-lekérdezést a következőhöz: `VMware_CL` . Amikor Azure Monitor gyűjti a syslog-adatokat, megőrzi a syslog formátumát. A portálon bizonyos mezők rögzítése történik, például az *állomásnév* és a *processname*.  
 
-    ![type](./media/vmware/type.png)  
+    ![típus](./media/vmware/type.png)  
 
     Ha a nézet naplójának keresési eredményei hasonlóak a fenti képen láthatóhoz, akkor a VMware Monitoring megoldás irányítópultjának használatára van beállítva.  
 
@@ -133,7 +132,7 @@ Egyetlen ESXi-gazdagép több naplót hoz létre a folyamataik alapján. A VMwar
 
 További részletezéshez kattintson egy ESXi-gazdagépre vagy egy esemény típusára.
 
-Az ESXi-állomásnévre kattintva megtekintheti az adott ESXi-gazdagép adatait. Ha az esemény típusával szeretné szűkíteni az eredményeket, vegye `“ProcessName_s=EVENT TYPE”` fel a kifejezést a keresési lekérdezésbe. A keresési szűrőben a **processname** is kiválaszthatja. Ez leszűkíti az adatokat.
+Az ESXi-állomásnévre kattintva megtekintheti az adott ESXi-gazdagép adatait. Ha az esemény típusával szeretné szűkíteni az eredményeket, vegye fel a `“ProcessName_s=EVENT TYPE”` kifejezést a keresési lekérdezésbe. A keresési szűrőben a **processname** is kiválaszthatja. Ez leszűkíti az adatokat.
 
 ![részletezés](./media/vmware/eventhostdrilldown.png)
 
@@ -188,9 +187,9 @@ Több oka is lehet:
 * A Log Analytics ügynökkel rendelkező virtuális gép helytelenül van beállítva. Ennek teszteléséhez hajtsa végre a következő lépéseket:
 
   1. Log Analytics figyeli a 1514-es portot. A megnyitásának ellenőrzéséhez futtassa a következő parancsot:`netstat -a | grep 1514`
-  1. Ekkor meg kell jelennie `1514/tcp` a port megnyitásának. Ha nem, ellenőrizze, hogy a omsagent megfelelően van-e telepítve. Ha nem látja a port információit, akkor a syslog-port nincs megnyitva a virtuális gépen.
+  1. Ekkor meg kell jelennie a port `1514/tcp` megnyitásának. Ha nem, ellenőrizze, hogy a omsagent megfelelően van-e telepítve. Ha nem látja a port információit, akkor a syslog-port nincs megnyitva a virtuális gépen.
 
-    a. Ellenőrizze, hogy a Log Analytics-ügynök fut- `ps -ef | grep oms`e a használatával. Ha nem fut, indítsa el a folyamatot a parancs futtatásával.`sudo /opt/microsoft/omsagent/bin/service_control start`
+    a. Ellenőrizze, hogy a Log Analytics-ügynök fut-e a használatával `ps -ef | grep oms` . Ha nem fut, indítsa el a folyamatot a parancs futtatásával.`sudo /opt/microsoft/omsagent/bin/service_control start`
 
      b. Nyissa meg az `/etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf` fájlt.
 

@@ -17,10 +17,9 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 25a0ac9ab349cfe8bef8e33d3f533bc5942e6323
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77623834"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>Azure Virtual Machines magas rendelkezésre állás az SAP NetWeaver számára
@@ -196,8 +195,8 @@ A cikksorozat a következőkre terjed ki:
     > Javasoljuk, hogy az SAP-telepítések Azure Resource Manager üzemi modelljét használja. Számos előnyt kínál, amelyek nem érhetők el a klasszikus üzemi modellben. További információ az Azure [üzembe helyezési modelljeiről][virtual-machines-azure-resource-manager-architecture-benefits-arm].   
     >
 * Magas szintű SAP-elérhetőség:
-  * ![Windows][Logo_Windows]**Windows**, Windows **Server feladatátvevő fürt (WSFC)** használatával  
-  * ![][Logo_Linux] Linux **Linux**, Linux rendszerű **fürt keretrendszer** használatával
+  * ![Windows ][Logo_Windows] **Windows**, Windows **Server feladatátvevő fürt (WSFC)** használatával  
+  * ![Linux ][Logo_Linux] **Linux**, Linux rendszerű **fürt keretrendszer** használatával
 
 Ebből a cikkből megtudhatja, hogyan teheti lehetővé az egypontos meghibásodási (SPOF) összetevők, például az SAP Central Services (ASCS/SCS) és az adatbázis-kezelő rendszerek (adatbázisok) védelmének biztosítását. Az Azure-ban található redundáns összetevőkről, például az SAP Application Serverről is tájékozódhat.
 
@@ -209,7 +208,7 @@ Ebből a cikkből megtudhatja, hogyan teheti lehetővé az egypontos meghibásod
 
 * [Azure Virtual Machines magas rendelkezésre állású architektúra és forgatókönyvek az SAP NetWeaver-hoz][sap-high-availability-architecture-scenarios]
 
-A cikk a Windows ![][Logo_Windows] **Windows** és ![Linux][Logo_Linux] **Linux**rendszerű számítógépeket is tartalmazza.
+A cikk a ![ Windows ][Logo_Windows] **Windows** és ![ Linux ][Logo_Linux] **Linux**rendszerű számítógépeket is tartalmazza.
 
 
 ## <a name="azure-infrastructure-preparation-for-sap-netweaver-high-availability-deployment"></a>Azure-infrastruktúra előkészítése az SAP NetWeaver magas rendelkezésre állású üzembe helyezéséhez
@@ -218,17 +217,17 @@ A cikk a Windows ![][Logo_Windows] **Windows** és ![Linux][Logo_Linux] **Linux*
 
 **Frissítve:** Március 2019
 
-* ![A][Logo_Windows] Windows [Azure-infrastruktúrát készít az SAP magas rendelkezésre állásához egy Windows feladatátvevő fürt és az SAP ASCS/SCS-példányok **megosztott lemezének** használatával][sap-high-availability-infrastructure-wsfc-shared-disk]
+* ![A Windows ][Logo_Windows] [Azure-infrastruktúrát KÉSZÍT az SAP magas rendelkezésre állásához egy Windows feladatátvevő fürt és az SAP ASCS/SCS-példányok **megosztott lemezének** használatával][sap-high-availability-infrastructure-wsfc-shared-disk]
 
-* ![A][Logo_Windows] Windows [Azure-infrastruktúrát készít az SAP magas rendelkezésre állásához Windows feladatátvevő fürt és **fájlmegosztás** használatával SAP ASCS/SCS-példányok esetén][sap-high-availability-infrastructure-wsfc-file-share]
+* ![A Windows ][Logo_Windows] [Azure-infrastruktúrát KÉSZÍT az SAP magas rendelkezésre állásához Windows feladatátvevő fürt és **FÁJLMEGOSZTÁS** használatával SAP ASCS/SCS-példányok esetén][sap-high-availability-infrastructure-wsfc-file-share]
 
 * ![][Logo_Linux] [A Linux előkészíti az Azure-infrastruktúrát a magas rendelkezésre álláshoz az SAP ASCS/SCS-példányok SUSE Linux Enterprise Server-fürt keretrendszerének használatával][sap-suse-ascs-ha-setting-ha-nfs]
 
 * ![][Logo_Linux] [A Linux előkészíti az Azure-infrastruktúrát a magas rendelkezésre álláshoz az SAP ASCS/SCS-példányok Azure NetApp-fájlokkal való SUSE Linux Enterprise Server-keretrendszerének használatával][sap-suse-ascs-ha-setting-ha-anf]
 
-* ![RHEL][Logo_Linux] [Az Azure-infrastruktúra előkészítése az SAP ASCS/SCS magas rendelkezésre álláshoz – GlusterFS beállítása a RHEL-on][high-availability-guide-rhel-glusterfs]
+* ![RHEL ][Logo_Linux] [Az Azure-infrastruktúra előkészítése az SAP ASCS/SCS magas rendelkezésre álláshoz – GlusterFS beállítása a RHEL-on][high-availability-guide-rhel-glusterfs]
 
-* ![RHEL][Logo_Linux] [előkészíti az Azure-infrastruktúrát az SAP ASCS/SCS magas rendelkezésre álláshoz – a pacemaker beállítása a RHEL][high-availability-guide-rhel-pacemaker]
+* ![RHEL ][Logo_Linux] [előkészíti az Azure-infrastruktúrát az SAP ASCS/SCS magas rendelkezésre álláshoz – a pacemaker beállítása a RHEL][high-availability-guide-rhel-pacemaker]
 
 ## <a name="installation-of-an-sap-netweaver-high-availability-system-in-azure"></a>SAP NetWeaver magas rendelkezésre állású rendszer telepítése az Azure-ban
 
@@ -236,15 +235,15 @@ A cikk a Windows ![][Logo_Windows] **Windows** és ![Linux][Logo_Linux] **Linux*
 
 **Frissítve:** Március 2019
 
-* ![Windows][Logo_Windows] az [SAP NetWeaver magas rendelkezésre állásának telepítése Windows feladatátvevő fürt és **megosztott lemez** használatával SAP ASCS/SCS-példányok esetén][sap-high-availability-installation-wsfc-shared-disk]
+* ![Windows az ][Logo_Windows] [SAP NetWeaver magas rendelkezésre állásának telepítése Windows feladatátvevő fürt és **megosztott lemez** használatával SAP ASCS/SCS-példányok esetén][sap-high-availability-installation-wsfc-shared-disk]
 
-* ![Windows][Logo_Windows] az [SAP NetWeaver magas rendelkezésre állásának telepítése Windows feladatátvevő fürt és **fájlmegosztás** használatával SAP ASCS/SCS-példányok esetén][sap-high-availability-installation-wsfc-file-share]
+* ![Windows az ][Logo_Windows] [SAP NetWeaver magas rendelkezésre állásának telepítése Windows feladatátvevő fürt és **FÁJLMEGOSZTÁS** használatával SAP ASCS/SCS-példányok esetén][sap-high-availability-installation-wsfc-file-share]
 
-* ![Linux][Logo_Linux] az [SAP NetWeaver magas rendelkezésre állásának telepítése egy SUSE Linux Enterprise Server cluster Framework for SAP ASCS/SCS instances használatával][sap-suse-ascs-ha-sap-installation]
+* ![Linux az ][Logo_Linux] [SAP NetWeaver magas rendelkezésre állásának telepítése egy SUSE Linux Enterprise Server cluster FRAMEWORK for SAP ASCS/SCS instances használatával][sap-suse-ascs-ha-sap-installation]
 
-* ![Linux][Logo_Linux] az SAP [NetWeaver magas rendelkezésre állásának telepítése az SAP ASCS/SCS-példányok SUSE Linux Enterprise Server-keretrendszerének használatával Azure NetApp Files][sap-suse-ascs-ha-sap-installation-anf]
+* ![Linux az SAP ][Logo_Linux] [NetWeaver magas rendelkezésre állásának telepítése az SAP ASCS/SCS-példányok SUSE Linux Enterprise Server-keretrendszerének használatával Azure NetApp Files][sap-suse-ascs-ha-sap-installation-anf]
 
-* ![RHEL][Logo_Linux] [az SAP NetWeaver ASCS/SCS telepítése magas rendelkezésre állású konfigurációban a RHEL-ben][sap-rhel-ascs-ha]
+* ![RHEL ][Logo_Linux] [az SAP NetWeaver ASCS/SCS telepítése magas rendelkezésre állású konfigurációban a RHEL-ben][sap-rhel-ascs-ha]
 
-* ![A][Logo_Linux] RHEL az [SAP NetWeaver ASCS/SCS-t a magas rendelkezésre állási konfigurációban telepíti a RHEL-ben Azure NetApp Files][sap-rhel-ascs-ha-sap-installation-anf]
+* ![A RHEL az ][Logo_Linux] [SAP NetWeaver ASCS/SCS-t a magas rendelkezésre állási konfigurációban telepíti a RHEL-ben Azure NetApp Files][sap-rhel-ascs-ha-sap-installation-anf]
 

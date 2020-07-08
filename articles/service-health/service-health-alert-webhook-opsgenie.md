@@ -4,10 +4,9 @@ description: Személyre szabott értesítések beszerzése a OpsGenie-példány 
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.openlocfilehash: def12d5e7b1b93b8370cd7be61538fca53531ae1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77654137"
 ---
 # <a name="send-azure-service-health-alerts-with-opsgenie-using-webhooks"></a>Azure szolgáltatásbeli állapottal kapcsolatos riasztások küldése a OpsGenie webhookok használatával
@@ -29,7 +28,7 @@ Ebből a cikkből megtudhatja, hogyan állíthatja be az Azure szolgáltatás á
 
 1.  Töltse ki a többi mezőt, például a **címzetteket**, az **engedélyezést**és az **értesítések mellőzését**.
 
-1.  Másolja ki és mentse el `apiKey` az **integrációs URL-címet**, amelynek már tartalmaznia kell a hozzáfűzést a végéhez.
+1.  Másolja ki és mentse el az **integrációs URL-címet**, amelynek már tartalmaznia kell a `apiKey` hozzáfűzést a végéhez.
 
     ![Az "integrációs URL" a OpsGenie](./media/webhook-alerts/opsgenie-integration-url.png)
 
@@ -78,7 +77,7 @@ Ebből a cikkből megtudhatja, hogyan állíthatja be az Azure szolgáltatás á
 
     BODY        <service health payload>
     ```
-1. A "sikeres" `200 OK` állapotú üzenetnek kell megjelennie.
+1. A `200 OK` "sikeres" állapotú üzenetnek kell megjelennie.
 
 1. Nyissa meg a [OpsGenie](https://www.opsgenie.com/) , és ellenőrizze, hogy sikeresen beállította-e az integrációt.
 

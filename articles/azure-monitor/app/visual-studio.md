@@ -8,10 +8,9 @@ ms.date: 07/07/2017
 ms.reviewer: mbullwin
 ms.custom: vs-azure
 ms.openlocfilehash: 8905222214d58eeba24ecf50da768ffa1d65c39d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77670882"
 ---
 # <a name="debug-your-applications-with-azure-application-insights-in-visual-studio"></a>Alkalmazások hibakeresése az Azure Application Insights a Visual Studióban
@@ -81,7 +80,7 @@ Az adatokban előforduló rendellenességek felderítéséhez válassza valamely
 [További információ a Trendekről](../../azure-monitor/app/visual-studio-trends.md).
 
 ## <a name="local-monitoring"></a>Helyi figyelés
-(A Visual Studio 2015 Update 2) Ha nem konfigurálta az SDK-t, hogy telemetria küldjön a Application Insights portálra (így nincs rendszerállapot-kulcs a ApplicationInsights. config fájlban), akkor a diagnosztika ablak a legutóbbi hibakeresési munkamenetből származó telemetria jeleníti meg. 
+(A Visual Studio 2015 Update 2) Ha nem konfigurálta az SDK-t, hogy telemetria küldjön a Application Insights portálra (így nincs rendszerállapot-kulcs a ApplicationInsights.config), akkor a diagnosztika ablak a legújabb hibakeresési munkamenetből származó telemetria jeleníti meg. 
 
 Ez akkor javasolt, ha már közzétette az alkalmazás korábbi verzióit. Az nem lenne szerencsés, ha a hibakeresési munkamenetek telemetriája összekeveredjen a közzétett alkalmazás Application Insights portálján lévő telemetriával.
 
@@ -90,7 +89,7 @@ Az is hasznos, ha van [egyéni telemetriája](../../azure-monitor/app/api-custom
 * *Először teljesen konfiguráltam Application Insights, hogy telemetria küldjenek a portálra. Most azonban azt szeretném, hogy a telemetria csak a Visual Studióban legyen látható.*
   
   * A Keresés ablak Beállításai között lehetősége van a helyi diagnosztika keresésére még akkor is, ha az alkalmazás elküldi a telemetriát a portálra.
-  * A telemetria a portálra való elküldésének leállításához tegye `<instrumentationkey>...` megjegyzésbe az ApplicationInsights. config fájlból származó sort. Ha készen áll arra, hogy ismét elküldhesse a telemetria a portálra, tegye meg a megjegyzéseit.
+  * Ha nem szeretné, hogy a telemetria elküldjék a portálra, tegye megjegyzésbe a sort a `<instrumentationkey>...` ApplicationInsights.configból. Ha készen áll arra, hogy ismét elküldhesse a telemetria a portálra, tegye meg a megjegyzéseit.
 
 
 ## <a name="next-steps"></a>További lépések

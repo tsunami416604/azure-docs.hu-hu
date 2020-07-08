@@ -5,10 +5,9 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/06/2017
 ms.openlocfilehash: 142e3e19c13710963d239a75bc237b63713c29cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77672208"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>Az Azure-szolgáltatások figyelése a Grafana-ben
@@ -42,7 +41,7 @@ Helyi Grafana-kiszolgáló beállításához [töltse le és telepítse a Grafan
 
 ## <a name="sign-in-to-grafana"></a>Bejelentkezés a Grafana
 
-1. A kiszolgáló IP-címének használatával nyissa meg a bejelentkezési oldalt a következő címen *: http://\<IP-cím\>: 3000* vagy a * \<DNSName \:>3000* a böngészőben. Míg a 3000 az alapértelmezett port, a telepítés során lehetséges, hogy egy másik portot jelölt ki. Ekkor megjelenik a létrehozott Grafana-kiszolgáló bejelentkezési lapja.
+1. A kiszolgáló IP-címének használatával nyissa meg a bejelentkezési oldalt a következő címen * \<IP address\> : http://: 3000* vagy a * \<DNSName> \: 3000* a böngészőben. Míg a 3000 az alapértelmezett port, a telepítés során lehetséges, hogy egy másik portot jelölt ki. Ekkor megjelenik a létrehozott Grafana-kiszolgáló bejelentkezési lapja.
 
     ![Grafana bejelentkezési képernyő](./media/grafana-plugin/grafana-login-screen.png)
 
@@ -150,7 +149,7 @@ A Grafana számos hasznos funkciója az irányítópult-lejátszási lista. Töb
 
 ![Grafana lejátszási lista – példa](./media/grafana-plugin/grafana7.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha a Grafana-környezetet az Azure-ban állította be, akkor a virtuális gépek akkor számítanak fel díjat, ha Ön használ vagy sem. Ha el szeretné kerülni a további költségek felmerülését, törölje a cikkben létrehozott erőforráscsoportot.
 

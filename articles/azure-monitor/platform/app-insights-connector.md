@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 02/13/2019
 ms.openlocfilehash: c143d8aa24d3479f4619ea2c220d4a0c593f9cb1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77665153"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights Connector felügyeleti megoldás (elavult)
@@ -42,12 +41,12 @@ A megoldás használatakor a következőket teheti:
 
 A legtöbb más Log Analytics-megoldástól eltérően az ügynökök nem gyűjtenek adatokat az Application Insights Connector. A megoldás által használt összes adatok közvetlenül az Azure-ból származnak.
 
-| Összekapcsolt forrás | Támogatott | Leírás |
+| Összekapcsolt forrás | Támogatott | Description |
 | --- | --- | --- |
-| [Windows-ügynökök](../../azure-monitor/platform/agent-windows.md) | Nem | A megoldás nem gyűjt adatokat a Windows-ügynököktől. |
-| [Linux-ügynökök](../../azure-monitor/learn/quick-collect-linux-computer.md) | Nem | A megoldás nem gyűjt adatokat a Linux-ügynököktől. |
-| [SCOM felügyeleti csoport](../../azure-monitor/platform/om-agents.md) | Nem | A megoldás nem gyűjt adatokat a csatlakoztatott SCOM felügyeleti csoportba tartozó ügynököktől. |
-| [Azure Storage-fiók](collect-azure-metrics-logs.md) | Nem | A megoldás nem gyűjt adatokat az Azure Storage-ból. |
+| [Windows-ügynökök](../../azure-monitor/platform/agent-windows.md) | No | A megoldás nem gyűjt adatokat a Windows-ügynököktől. |
+| [Linux-ügynökök](../../azure-monitor/learn/quick-collect-linux-computer.md) | No | A megoldás nem gyűjt adatokat a Linux-ügynököktől. |
+| [SCOM felügyeleti csoport](../../azure-monitor/platform/om-agents.md) | No | A megoldás nem gyűjt adatokat a csatlakoztatott SCOM felügyeleti csoportba tartozó ügynököktől. |
+| [Azure Storage-fiók](collect-azure-metrics-logs.md) | No | A megoldás nem gyűjt adatokat az Azure Storage-ból. |
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -55,7 +54,7 @@ A legtöbb más Log Analytics-megoldástól eltérően az ügynökök nem gyűjt
 - Legalább egy konfigurált Application Insights erőforrással kell rendelkeznie.
 - A Application Insights erőforrás tulajdonosának vagy közreműködőnek kell lennie.
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>Konfiguráció
 
 1. Engedélyezze a Azure Web Apps Analytics megoldást az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AppInsights?tab=Overview) -en, vagy használja az [Solutions Gallery log Analytics-megoldások hozzáadása](../../azure-monitor/insights/solutions.md)című témakörben leírt eljárást.
 2. Keresse fel az [Azure Portalt](https://portal.azure.com). Application Insights megnyitásához válassza **az összes szolgáltatás** elemet. Ezután keressen rá Application Insights. 
@@ -95,9 +94,9 @@ Az irányítópulton szerepelnek a táblázatban látható pengék. Minden panel
 | Alkalmazások – alkalmazások száma | Az alkalmazás erőforrásaiban található alkalmazások számát jeleníti meg. Az alkalmazások neveinek, valamint az alkalmazások rekordjainak számát is felsorolja. Kattintson a számra a naplóbeli keresés futtatásához<code>ApplicationInsights &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName</code> <br><br>  Kattintson egy alkalmazás nevére, és futtassa az alkalmazás rekordjait a gazdagépen, a telemetria típusú rekordok és az összes adat típus szerint (az elmúlt nap alapján). |
 | Adatmennyiség – adatok küldésére szolgáló gazdagépek | Az adatokat küldő számítógép-gazdagépek számát jeleníti meg. Az egyes gazdagépek számítógép-gazdagépeit és rekordjainak darabszámát is felsorolja. Kattintson a számra a naplóbeli keresés futtatásához<code>ApplicationInsights &#124; summarize AggregatedValue = sum(SampledCount) by Host</code> <br><br> Kattintson egy számítógépnévre, és futtassa a naplót a gazdagépen, amely a gazdagépen, a rekordok szerint telemetria és az összes adat típus szerint (az elmúlt nap alapján) jeleníti meg az adatokat. |
 | Rendelkezésre állás – webteszt eredményei | Megjelenít egy perecdiagram a webes tesztek eredményeihez, amely jelzi a pass vagy a Fail argumentumot. Kattintson a diagramra a naplóbeli keresés futtatásához<code>ApplicationInsights &#124; where TelemetryType == "Availability" &#124; summarize AggregatedValue = sum(SampledCount) by AvailabilityResult</code> <br><br> Az eredmények az összes teszt menetének és hibáinak számát mutatják. Ez az összes Web Apps az elmúlt percben forgalmas forgalmat mutatja. Az alkalmazás nevére kattintva megtekintheti a naplóbeli keresést, amely a sikertelen webes tesztek részleteit jeleníti meg. |
-| Kiszolgálói kérelmek – kérelmek/óra | Megjeleníti a kiszolgálói kérelmek óránkénti sorát a különböző alkalmazásokhoz. Vigye a kurzort a diagram egyik sorára, és tekintse meg az adott időpontra vonatkozó kérelmeket fogadó első 3 alkalmazást. A kérelmeket fogadó alkalmazások és a kijelölt időszakra vonatkozó kérelmek számát is megjeleníti. <br><br>Kattintson a gráfra, hogy futtasson egy <code>ApplicationInsights &#124; where TelemetryType == "Request" &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code> naplóbeli keresést, amely a különböző alkalmazások óránkénti kiszolgálói kéréseinek részletes táblázatát jeleníti meg. <br><br> Kattintson egy alkalmazásra a listában egy olyan napló kereséséhez, <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true</code> amely megjeleníti a kérelmek listáját, a kérelmekre vonatkozó diagramokat, valamint a kérelem időtartamát és a kérelmekre vonatkozó válaszi kódok listáját.   |
-| Hibák – sikertelen kérelmek/óra | Megjeleníti a sikertelen alkalmazás-kérelmek óránkénti diagramját. Vigye az egérmutatót a diagram fölé, és tekintse meg az első 3 alkalmazást egy adott időpontra vonatkozó sikertelen kérelmekkel. Az egyes alkalmazásokhoz tartozó sikertelen kérelmek számát tartalmazó alkalmazások listáját is megjeleníti. Kattintson a diagramra, hogy futtasson egy <code>ApplicationInsights &#124; where TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code> naplóbeli keresést, amely a sikertelen kérelmek részletesebb diagramját jeleníti meg. <br><br>Kattintson a lista egyik elemére, és futtasson egy naplóbeli keresést, <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true</code> amely megjeleníti a sikertelen kérelmeket, a sikertelen kérelmekre vonatkozó diagramokat, valamint a kérelmek időtartamát és a sikertelen kérelmekre adott válaszokat tartalmazó listát. |
-| Kivételek – kivételek óránként | Megjeleníti a kivételek óránkénti grafikonját. Vigye az egérmutatót a diagram fölé, és tekintse meg az első 3 alkalmazást, amely egy adott időpontra vonatkozó kivételeket mutat. Megjeleníti az alkalmazások listáját is, amely az egyes kivételek számát tartalmazza. Kattintson a diagramra, hogy futtasson egy <code>ApplicationInsights &#124; where TelemetryType == "Exception" &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code> naplóbeli keresést, amely a kivételek részletesebb diagramját jeleníti meg. <br><br>Kattintson a lista egyik elemére, és futtasson egy naplóbeli keresést, <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Exception"</code> amely megjeleníti a kivételek listáját, a kivételek diagramját az idő és a sikertelen kérelmek esetében, valamint a kivétel típusok listáját.  |
+| Kiszolgálói kérelmek – kérelmek/óra | Megjeleníti a kiszolgálói kérelmek óránkénti sorát a különböző alkalmazásokhoz. Vigye a kurzort a diagram egyik sorára, és tekintse meg az adott időpontra vonatkozó kérelmeket fogadó első 3 alkalmazást. A kérelmeket fogadó alkalmazások és a kijelölt időszakra vonatkozó kérelmek számát is megjeleníti. <br><br>Kattintson a gráfra, hogy futtasson egy naplóbeli keresést, <code>ApplicationInsights &#124; where TelemetryType == "Request" &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code> amely a különböző alkalmazások óránkénti kiszolgálói kéréseinek részletes táblázatát jeleníti meg. <br><br> Kattintson egy alkalmazásra a listában egy olyan napló kereséséhez <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true</code> , amely megjeleníti a kérelmek listáját, a kérelmekre vonatkozó diagramokat, valamint a kérelem időtartamát és a kérelmekre vonatkozó válaszi kódok listáját.   |
+| Hibák – sikertelen kérelmek/óra | Megjeleníti a sikertelen alkalmazás-kérelmek óránkénti diagramját. Vigye az egérmutatót a diagram fölé, és tekintse meg az első 3 alkalmazást egy adott időpontra vonatkozó sikertelen kérelmekkel. Az egyes alkalmazásokhoz tartozó sikertelen kérelmek számát tartalmazó alkalmazások listáját is megjeleníti. Kattintson a diagramra, hogy futtasson egy naplóbeli keresést, <code>ApplicationInsights &#124; where TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code> amely a sikertelen kérelmek részletesebb diagramját jeleníti meg. <br><br>Kattintson a lista egyik elemére, és futtasson egy naplóbeli keresést <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true</code> , amely megjeleníti a sikertelen kérelmeket, a sikertelen kérelmekre vonatkozó diagramokat, valamint a kérelmek időtartamát és a sikertelen kérelmekre adott válaszokat tartalmazó listát. |
+| Kivételek – kivételek óránként | Megjeleníti a kivételek óránkénti grafikonját. Vigye az egérmutatót a diagram fölé, és tekintse meg az első 3 alkalmazást, amely egy adott időpontra vonatkozó kivételeket mutat. Megjeleníti az alkalmazások listáját is, amely az egyes kivételek számát tartalmazza. Kattintson a diagramra, hogy futtasson egy naplóbeli keresést <code>ApplicationInsights &#124; where TelemetryType == "Exception" &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code> , amely a kivételek részletesebb diagramját jeleníti meg. <br><br>Kattintson a lista egyik elemére, és futtasson egy naplóbeli keresést, <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Exception"</code> amely megjeleníti a kivételek listáját, a kivételek diagramját az idő és a sikertelen kérelmek esetében, valamint a kivétel típusok listáját.  |
 
 ### <a name="view-the-application-insights-perspective-with-log-search"></a>A Application Insights perspektívájának megtekintése a naplóbeli kereséssel
 
@@ -190,7 +189,7 @@ Minden típusú bemeneti adathoz létrejön egy *ApplicationInsights* *típusú*
 | Város | A kérést kezdeményező város vagy város |
 | isSynthetic | Azt jelzi, hogy a kérést egy felhasználó vagy egy automatikus metódus hozta-e létre. True = automatizált metódus vagy hamis = felhasználó által generált |
 | SamplingRate | A portálra eljuttatott SDK által generált telemetria százalékos aránya. Tartomány 0,0 – 100.0. |
-| SampledCount | 100/(SamplingRate). Például: 4 =&gt; 25% |
+| SampledCount | 100/(SamplingRate). Például: 4 = &gt; 25% |
 | IsAuthenticated | Igaz vagy hamis |
 | OperationID | Az azonos műveleti AZONOSÍTÓval rendelkező elemek a portálon kapcsolódó elemként jelennek meg. Általában a kérelem azonosítója |
 | ParentOperationID | A szülő művelet azonosítója |
@@ -207,11 +206,11 @@ Minden típusú bemeneti adathoz létrejön egy *ApplicationInsights* *típusú*
 | AvailabilityRunLocation | Http-kérelem földrajzi forrása |
 | AvailabilityResult | A webes teszt sikerességének eredményét jelzi. |
 | AvailabilityMessage | A webes teszthez csatolt üzenet |
-| AvailabilityCount | 100/(mintavételi sebesség). Például: 4 =&gt; 25% |
+| AvailabilityCount | 100/(mintavételi sebesség). Például: 4 = &gt; 25% |
 | DataSizeMetricValue | 1,0 vagy 0,0 |
-| DataSizeMetricCount | 100/(mintavételi sebesség). Például: 4 =&gt; 25% |
+| DataSizeMetricCount | 100/(mintavételi sebesség). Például: 4 = &gt; 25% |
 | AvailabilityDuration | A webes teszt időtartamának ideje (ezredmásodpercben) |
-| AvailabilityDurationCount | 100/(mintavételi sebesség). Például: 4 =&gt; 25% |
+| AvailabilityDurationCount | 100/(mintavételi sebesség). Például: 4 = &gt; 25% |
 | AvailabilityValue |   |
 | AvailabilityMetricCount |   |
 | AvailabilityTestId | A webes teszt egyedi GUID azonosítója |
@@ -233,7 +232,7 @@ Minden típusú bemeneti adathoz létrejön egy *ApplicationInsights* *típusú*
 | ExceptionAssembly | A szerelvény tartalmazza a keretrendszert és a verziót, valamint a nyilvános kulcs tokenjét. |
 | ExceptionGroup | A kivétel típusa |
 | ExceptionHandledAt | Azt a szintet jelzi, amely a kivételt kezelte |
-| ExceptionCount | 100/(mintavételi sebesség). Például: 4 =&gt; 25% |
+| ExceptionCount | 100/(mintavételi sebesség). Például: 4 = &gt; 25% |
 | ExceptionMessage | A kivétel üzenete |
 | ExceptionStack | A kivétel teljes vereme |
 | ExceptionHasStack | Igaz, ha a kivétel veremmel rendelkezik |
@@ -255,8 +254,8 @@ Minden típusú bemeneti adathoz létrejön egy *ApplicationInsights* *típusú*
 | Gazdagép | Webkiszolgáló-gazdagép |
 | URLBase | A kérelem teljes URL-címe |
 | ApplicationProtocol | Az alkalmazás által használt protokoll típusa |
-| RequestCount | 100/(mintavételi sebesség). Például: 4 =&gt; 25% |
-| RequestDurationCount | 100/(mintavételi sebesség). Például: 4 =&gt; 25% |
+| RequestCount | 100/(mintavételi sebesség). Például: 4 = &gt; 25% |
+| RequestDurationCount | 100/(mintavételi sebesség). Például: 4 = &gt; 25% |
 | RequestDurationMin | A mintául szolgáló rekordok esetében ebben a mezőben a bejelölt adatpontok minimális kérésének időtartama (ezredmásodpercben) látható. |
 | RequestDurationMax | A mintául szolgáló rekordok esetében ebben a mezőben a kérelmek maximális időtartama (ezredmásodpercben) látható a képviselt adatpontok esetében. |
 | RequestDurationStdDev | A mintául szolgáló rekordok esetében ebben a mezőben az összes kérelem időtartama (ezredmásodpercben) közötti szórás látható a képviselt adatpontok esetében. |

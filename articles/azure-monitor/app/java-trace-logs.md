@@ -4,10 +4,9 @@ description: Log4J-vagy Logback-nyomkövetés keresése a Application Insightsba
 ms.topic: conceptual
 ms.date: 05/18/2019
 ms.openlocfilehash: da1b76d52ab93f4d1be7196d6eb7286579481119
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77657214"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Ismerkedjen meg a Java-nyomkövetési naplók Application Insights
@@ -20,7 +19,7 @@ Ha a nyomkövetéshez Logback vagy Log4J (v 1.2 vagy v 2.0) használ, a nyomköv
 
 Alapértelmezés szerint a Application Insights Java-ügynök automatikusan rögzíti a naplózást a `WARN` szinten vagy felett.
 
-A `AI-Agent.xml` fájl használatával rögzített naplózási küszöbértéket módosíthatja:
+A fájl használatával rögzített naplózási küszöbértéket módosíthatja `AI-Agent.xml` :
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -33,7 +32,7 @@ A `AI-Agent.xml` fájl használatával rögzített naplózási küszöbértéket
 </ApplicationInsightsAgent>
 ```
 
-A Java-ügynök naplózási rögzítését a `AI-Agent.xml` fájl használatával tilthatja le:
+A Java-ügynök naplózási rögzítését a fájl használatával tilthatja le `AI-Agent.xml` :
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -56,7 +55,7 @@ Ha még nem tette meg, kövesse az utasításokat a [Java Application INSIGHTS S
 *Válassza ki a projektnek megfelelő módszert.*
 
 #### <a name="if-youre-using-maven"></a>Ha Mavent használ...
-Ha a projekt már úgy van beállítva, hogy a Mavent a buildhez használja, egyesítse az alábbi kódrészletek egyikét a Pom. XML fájlba.
+Ha a projekt már beállította a Maven használatát a buildhez, egyesítse az alábbi kódrészletek egyikét a pom.xml fájlba.
 
 Ezután frissítse a projekt függőségeit a letöltött bináris fájlok letöltéséhez.
 

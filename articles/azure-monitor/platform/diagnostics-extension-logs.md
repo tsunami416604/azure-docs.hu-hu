@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
 ms.openlocfilehash: 44368ab90abd189c6a8a0792494828c87142eb20
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77672395"
 ---
 # <a name="collect-data-from-azure-diagnostics-extension-to-azure-monitor-logs"></a>Adatok gyűjtése az Azure Diagnostics bővítményből Azure Monitor naplókba
@@ -24,13 +23,13 @@ Az Azure Diagnostics bővítmény egy Azure Storage-fiókban tárolja az adatait
 
 | Napló típusa | Erőforrás típusa | Hely |
 | --- | --- | --- |
-| IIS-naplók |Virtuális gépek <br> Webes szerepkörök <br> Feldolgozói szerepkörök |wad-IIS-LogFiles (Blob Storage) |
-| Rendszernapló |Virtuális gépek |LinuxsyslogVer2v0 (Table Storage) |
+| IIS-naplók |Virtual Machines <br> Webes szerepkörök <br> Feldolgozói szerepkörök |wad-IIS-LogFiles (Blob Storage) |
+| Rendszernapló |Virtual Machines |LinuxsyslogVer2v0 (Table Storage) |
 | Operatív események Service Fabric |Service Fabric csomópontok |WADServiceFabricSystemEventTable |
 | Megbízható Actors-események Service Fabric |Service Fabric csomópontok |WADServiceFabricReliableActorEventTable |
 | Megbízható szolgáltatási események Service Fabric |Service Fabric csomópontok |WADServiceFabricReliableServiceEventTable |
-| Windows-eseménynaplók |Service Fabric csomópontok <br> Virtuális gépek <br> Webes szerepkörök <br> Feldolgozói szerepkörök |WADWindowsEventLogsTable (Table Storage) |
-| Windows ETW-naplók |Service Fabric csomópontok <br> Virtuális gépek <br> Webes szerepkörök <br> Feldolgozói szerepkörök |WADETWEventTable (Table Storage) |
+| Windows-eseménynaplók |Service Fabric csomópontok <br> Virtual Machines <br> Webes szerepkörök <br> Feldolgozói szerepkörök |WADWindowsEventLogsTable (Table Storage) |
+| Windows ETW-naplók |Service Fabric csomópontok <br> Virtual Machines <br> Webes szerepkörök <br> Feldolgozói szerepkörök |WADETWEventTable (Table Storage) |
 
 ## <a name="data-types-not-supported"></a>Az adattípusok nem támogatottak
 

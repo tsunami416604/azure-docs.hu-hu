@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 08/23/2018
 tags: connectors
 ms.openlocfilehash: 32b482607827ee4420e39b1936586d64f9ea3139
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77651381"
 ---
 # <a name="access-and-manage-ibm-db2-resources-by-using-azure-logic-apps"></a>Az IBM DB2-erőforrások elérése és kezelése Azure Logic Apps használatával
@@ -82,12 +81,12 @@ A kapcsolat beállításához adja meg a kapcsolódási adatokat, ha a rendszer 
 
 | Tulajdonság | Kötelező | Leírás |
 |----------|----------|-------------|
-| **Kapcsolat helyszíni átjárón keresztül** | Nem | Csak helyszíni kapcsolatokra vonatkozik. |
-| **Kapcsolat neve** | Igen | A kapcsolatok neve, például "MyLogicApp-DB2-kapcsolatok" |
-| **Kiszolgáló** | Igen | A DB2-kiszolgáló címe vagy aliasának kettőspont-portszáma, például: "myDB2server.cloudapp.net:50000" <p><p>**Megjegyzés**: ez az érték olyan karakterlánc, amely egy TCP/IP-címet vagy aliast jelöl IPv4-vagy IPv6-formátumban, majd egy kettőspontot és egy TCP/IP-portszámot. |
-| **Adatbázis** | Igen | Az adatbázis neve <p><p>**Megjegyzés**: ez az érték olyan karakterlánc, amely a DRDA-adatbázis nevét (RDBNAM) jelöli: <p>– A z/OS esetében a DB2 egy 16 bájtos karakterláncot fogad el, amelyben az adatbázis "IBM DB2 for z/OS" néven ismert. <br>-DB2 for i elfogadok egy 18 bájtos karakterláncot, amelyben az adatbázis "IBM DB2 for i" néven ismert. <br>-A DB2 for LUW 8 bájtos karakterláncot fogad el. |
-| **Username** | Igen | Az adatbázishoz tartozó Felhasználónév <p><p>**Megjegyzés**: ez az érték olyan karakterlánc, amelynek hossza az adott adatbázison alapul: <p><p>– A z/OS esetében a DB2 egy 8 bájtos karakterláncot fogad el. <br>-DB2 – 10 bájtos karakterláncot Fogadok el. <br>– A Linux vagy UNIX rendszerhez készült DB2 8 bájtos karakterláncot fogad el. <br>-A DB2 for Windows egy 30 bájtos karakterláncot fogad el. |
-| **Jelszó** | Igen | Az adatbázis jelszava |
+| **Kapcsolat helyszíni átjárón keresztül** | No | Csak helyszíni kapcsolatokra vonatkozik. |
+| **Kapcsolat neve** | Yes | A kapcsolatok neve, például "MyLogicApp-DB2-kapcsolatok" |
+| **Kiszolgáló** | Yes | A DB2-kiszolgáló címe vagy aliasának kettőspont-portszáma, például: "myDB2server.cloudapp.net:50000" <p><p>**Megjegyzés**: ez az érték olyan karakterlánc, amely egy TCP/IP-címet vagy aliast jelöl IPv4-vagy IPv6-formátumban, majd egy kettőspontot és egy TCP/IP-portszámot. |
+| **Adatbázis** | Yes | Az adatbázis neve <p><p>**Megjegyzés**: ez az érték olyan karakterlánc, amely a DRDA-adatbázis nevét (RDBNAM) jelöli: <p>– A z/OS esetében a DB2 egy 16 bájtos karakterláncot fogad el, amelyben az adatbázis "IBM DB2 for z/OS" néven ismert. <br>-DB2 for i elfogadok egy 18 bájtos karakterláncot, amelyben az adatbázis "IBM DB2 for i" néven ismert. <br>-A DB2 for LUW 8 bájtos karakterláncot fogad el. |
+| **Username** | Yes | Az adatbázishoz tartozó Felhasználónév <p><p>**Megjegyzés**: ez az érték olyan karakterlánc, amelynek hossza az adott adatbázison alapul: <p><p>– A z/OS esetében a DB2 egy 8 bájtos karakterláncot fogad el. <br>-DB2 – 10 bájtos karakterláncot Fogadok el. <br>– A Linux vagy UNIX rendszerhez készült DB2 8 bájtos karakterláncot fogad el. <br>-A DB2 for Windows egy 30 bájtos karakterláncot fogad el. |
+| **Jelszó** | Yes | Az adatbázis jelszava |
 ||||
 
 Például:
@@ -102,14 +101,14 @@ A kapcsolatok létrehozása előtt már telepítve kell lennie a helyszíni adat
 
 | Tulajdonság | Kötelező | Leírás |
 |----------|----------|-------------|
-| **Kapcsolat helyszíni átjárón keresztül** | Igen | Akkor érvényes, ha helyszíni csatlakozást szeretne használni, és megjeleníti a helyszíni kapcsolódási tulajdonságokat. |
-| **Kapcsolat neve** | Igen | A kapcsolatok neve, például "MyLogicApp-DB2-kapcsolatok" | 
-| **Kiszolgáló** | Igen | A DB2-kiszolgáló címe vagy aliasának kettőspont-portszáma, például: "myDB2server: 50000" <p><p>**Megjegyzés**: ez az érték olyan karakterlánc, amely egy TCP/IP-címet vagy aliast jelöl IPv4-vagy IPv6-formátumban, majd egy kettőspontot és egy TCP/IP-portszámot. |
-| **Adatbázis** | Igen | Az adatbázis neve <p><p>**Megjegyzés**: ez az érték olyan karakterlánc, amely a DRDA-adatbázis nevét (RDBNAM) jelöli: <p>– A z/OS esetében a DB2 egy 16 bájtos karakterláncot fogad el, amelyben az adatbázis "IBM DB2 for z/OS" néven ismert. <br>-DB2 for i elfogadok egy 18 bájtos karakterláncot, amelyben az adatbázis "IBM DB2 for i" néven ismert. <br>-A DB2 for LUW 8 bájtos karakterláncot fogad el. |
-| **Hitelesítés** | Igen | A kapcsolatok hitelesítési típusa, például "alapszintű" <p><p>**Megjegyzés**: válassza ki ezt az értéket a listából, amely alapszintű vagy Windows (Kerberos) elemet tartalmaz. |
-| **Username** | Igen | Az adatbázishoz tartozó Felhasználónév <p><p>**Megjegyzés**: ez az érték olyan karakterlánc, amelynek hossza az adott adatbázison alapul: <p><p>– A z/OS esetében a DB2 egy 8 bájtos karakterláncot fogad el. <br>-DB2 – 10 bájtos karakterláncot Fogadok el. <br>– A Linux vagy UNIX rendszerhez készült DB2 8 bájtos karakterláncot fogad el. <br>-A DB2 for Windows egy 30 bájtos karakterláncot fogad el. |
-| **Jelszó** | Igen | Az adatbázis jelszava |
-| **Átjáró** | Igen | A telepített helyszíni adatátjáró neve <p><p>**Megjegyzés**: válassza ki ezt az értéket a listából, amely tartalmazza az Azure-előfizetésben és az erőforráscsoporthoz található összes telepített adatátjárót. |
+| **Kapcsolat helyszíni átjárón keresztül** | Yes | Akkor érvényes, ha helyszíni csatlakozást szeretne használni, és megjeleníti a helyszíni kapcsolódási tulajdonságokat. |
+| **Kapcsolat neve** | Yes | A kapcsolatok neve, például "MyLogicApp-DB2-kapcsolatok" | 
+| **Kiszolgáló** | Yes | A DB2-kiszolgáló címe vagy aliasának kettőspont-portszáma, például: "myDB2server: 50000" <p><p>**Megjegyzés**: ez az érték olyan karakterlánc, amely egy TCP/IP-címet vagy aliast jelöl IPv4-vagy IPv6-formátumban, majd egy kettőspontot és egy TCP/IP-portszámot. |
+| **Adatbázis** | Yes | Az adatbázis neve <p><p>**Megjegyzés**: ez az érték olyan karakterlánc, amely a DRDA-adatbázis nevét (RDBNAM) jelöli: <p>– A z/OS esetében a DB2 egy 16 bájtos karakterláncot fogad el, amelyben az adatbázis "IBM DB2 for z/OS" néven ismert. <br>-DB2 for i elfogadok egy 18 bájtos karakterláncot, amelyben az adatbázis "IBM DB2 for i" néven ismert. <br>-A DB2 for LUW 8 bájtos karakterláncot fogad el. |
+| **Hitelesítés** | Yes | A kapcsolatok hitelesítési típusa, például "alapszintű" <p><p>**Megjegyzés**: válassza ki ezt az értéket a listából, amely alapszintű vagy Windows (Kerberos) elemet tartalmaz. |
+| **Username** | Yes | Az adatbázishoz tartozó Felhasználónév <p><p>**Megjegyzés**: ez az érték olyan karakterlánc, amelynek hossza az adott adatbázison alapul: <p><p>– A z/OS esetében a DB2 egy 8 bájtos karakterláncot fogad el. <br>-DB2 – 10 bájtos karakterláncot Fogadok el. <br>– A Linux vagy UNIX rendszerhez készült DB2 8 bájtos karakterláncot fogad el. <br>-A DB2 for Windows egy 30 bájtos karakterláncot fogad el. |
+| **Jelszó** | Yes | Az adatbázis jelszava |
+| **Átjáró** | Yes | A telepített helyszíni adatátjáró neve <p><p>**Megjegyzés**: válassza ki ezt az értéket a listából, amely tartalmazza az Azure-előfizetésben és az erőforráscsoporthoz található összes telepített adatátjárót. |
 ||||
 
 Például:
@@ -141,7 +140,7 @@ Bontsa ki a **táblák beolvasása** műveletet.
 
 ## <a name="get-row"></a>Sor beolvasása
 
-Egy DB2-adatbázistábla egyik rekordjának beolvasásához használja a logikai alkalmazás **sor beolvasása** műveletét. Ez a művelet egy DB2 `SELECT WHERE` -utasítást futtat, például `SELECT FROM AREA WHERE AREAID = '99999'`:.
+Egy DB2-adatbázistábla egyik rekordjának beolvasásához használja a logikai alkalmazás **sor beolvasása** műveletét. Ez a művelet egy DB2 `SELECT WHERE` -utasítást futtat, például: `SELECT FROM AREA WHERE AREAID = '99999'` .
 
 1. Ha még soha nem használta a DB2-műveleteket a logikai alkalmazásban, tekintse át a következő témakör lépéseit: a [DB2 művelet – táblák beolvasása](#add-db2-action) szakasz, de adja hozzá a **sor beolvasása** műveletet, majd térjen vissza ide a folytatáshoz.
 
@@ -153,8 +152,8 @@ Egy DB2-adatbázistábla egyik rekordjának beolvasásához használja a logikai
 
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
-   | **Tábla neve** | Igen | A kívánt rekordot tartalmazó tábla, például "térség" ebben a példában |
-   | **Területi azonosító** | Igen | A kívánt rekord azonosítója (például "99999") ebben a példában |
+   | **Table name (Táblázat neve)** | Yes | A kívánt rekordot tartalmazó tábla, például "térség" ebben a példában |
+   | **Területi azonosító** | Yes | A kívánt rekord azonosítója (például "99999") ebben a példában |
    ||||
 
    ![Tábla kiválasztása](./media/connectors-create-api-db2/db2-get-row-action-select-table.png)
@@ -182,7 +181,7 @@ Bontsa ki a **sor beolvasása** műveletet.
 
 ## <a name="get-rows"></a>Sorok beolvasása
 
-Egy DB2-adatbázistábla összes rekordjának beolvasásához használja a logikai alkalmazás **sorok beolvasása** műveletét. Ez a művelet egy DB2 `SELECT` -utasítást futtat, például `SELECT * FROM AREA`:.
+Egy DB2-adatbázistábla összes rekordjának beolvasásához használja a logikai alkalmazás **sorok beolvasása** műveletét. Ez a művelet egy DB2 `SELECT` -utasítást futtat, például: `SELECT * FROM AREA` .
 
 1. Ha még soha nem használta a DB2-műveleteket a logikai alkalmazásban, tekintse át a következő témakör lépéseit: a [DB2 művelet – táblák beolvasása](#add-db2-action) szakasz, de adja hozzá a **sorok beolvasása** műveletet, majd térjen vissza ide a folytatáshoz.
 
@@ -219,7 +218,7 @@ Bontsa ki a **sorok beolvasása** műveletet.
 
 ## <a name="insert-row"></a>Sor beszúrása
 
-Ha egyetlen rekordot szeretne hozzáadni egy DB2-adatbázis táblához, használja a **sor beszúrása** műveletet a logikai alkalmazásban. Ez a művelet egy DB2 `INSERT` -utasítást futtat, például `INSERT INTO AREA (AREAID, AREADESC, REGIONID) VALUES ('99999', 'Area 99999', 102)`:.
+Ha egyetlen rekordot szeretne hozzáadni egy DB2-adatbázis táblához, használja a **sor beszúrása** műveletet a logikai alkalmazásban. Ez a művelet egy DB2 `INSERT` -utasítást futtat, például: `INSERT INTO AREA (AREAID, AREADESC, REGIONID) VALUES ('99999', 'Area 99999', 102)` .
 
 1. Ha még soha nem használta a DB2-műveleteket a logikai alkalmazásban, tekintse át a következő témakör lépéseit: a [DB2 művelet – táblák beolvasása](#add-db2-action) szakasz, de adja hozzá Ehelyett a **sor beszúrása** műveletet, majd térjen vissza ide a folytatáshoz.
 
@@ -233,10 +232,10 @@ Ha egyetlen rekordot szeretne hozzáadni egy DB2-adatbázis táblához, használ
 
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
-   | **Tábla neve** | Igen | A rekord hozzáadására szolgáló tábla, például "térség" |
-   | **Területi azonosító** | Igen | A hozzáadandó régió azonosítója, például "99999" |
-   | **A környék leírása** | Igen | A felvenni kívánt területek leírása, például "99999. rész" |
-   | **Régió azonosítója** | Igen | A hozzáadandó régió azonosítója, például: "102" |
+   | **Table name (Táblázat neve)** | Yes | A rekord hozzáadására szolgáló tábla, például "térség" |
+   | **Területi azonosító** | Yes | A hozzáadandó régió azonosítója, például "99999" |
+   | **A környék leírása** | Yes | A felvenni kívánt területek leírása, például "99999. rész" |
+   | **Régió azonosítója** | Yes | A hozzáadandó régió azonosítója, például: "102" |
    |||| 
 
    Például:
@@ -266,7 +265,7 @@ Bontsa ki a **sor beszúrása** műveletet.
 
 ## <a name="update-row"></a>Sor frissítése
 
-Ha egy DB2-adatbázistábla egyetlen rekordját szeretné frissíteni, használja a logikai alkalmazásban a **sor frissítése** műveletet. Ez a művelet egy DB2 `UPDATE` -utasítást futtat, például `UPDATE AREA SET AREAID = '99999', AREADESC = 'Updated 99999', REGIONID = 102)`:.
+Ha egy DB2-adatbázistábla egyetlen rekordját szeretné frissíteni, használja a logikai alkalmazásban a **sor frissítése** műveletet. Ez a művelet egy DB2 `UPDATE` -utasítást futtat, például: `UPDATE AREA SET AREAID = '99999', AREADESC = 'Updated 99999', REGIONID = 102)` .
 
 1. Ha még soha nem használta a DB2-műveleteket a logikai alkalmazásban, tekintse át a következő témakör lépéseit: a [DB2 művelet – táblák beolvasása](#add-db2-action) szakasz, de adja hozzá Ehelyett a **frissítési sor** műveletet, majd térjen vissza ide a folytatáshoz.
 
@@ -280,11 +279,11 @@ Ha egy DB2-adatbázistábla egyetlen rekordját szeretné frissíteni, használj
 
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
-   | **Tábla neve** | Igen | A rekord frissítésére szolgáló tábla, például "térség" |
-   | **Sor azonosítója** | Igen | A frissítendő rekord azonosítója, például: "99999" |
-   | **Területi azonosító** | Igen | Az új területi azonosító, például "99999" |
-   | **A környék leírása** | Igen | Az új környék leírása, például "frissítve 99999" |
-   | **Régió azonosítója** | Igen | Az új régió azonosítója, például "102" |
+   | **Table name (Táblázat neve)** | Yes | A rekord frissítésére szolgáló tábla, például "térség" |
+   | **Sor azonosítója** | Yes | A frissítendő rekord azonosítója, például: "99999" |
+   | **Területi azonosító** | Yes | Az új területi azonosító, például "99999" |
+   | **A környék leírása** | Yes | Az új környék leírása, például "frissítve 99999" |
+   | **Régió azonosítója** | Yes | Az új régió azonosítója, például "102" |
    ||||
 
    Például:
@@ -314,7 +313,7 @@ Bontsa ki a **frissítési sor** műveletet.
 
 ## <a name="delete-row"></a>Sor törlése
 
-Ha egyetlen rekordot szeretne törölni egy DB2-adatbázis táblából, használja a **sor törlése** műveletet a logikai alkalmazásban. Ez a művelet egy DB2 `DELETE` -utasítást futtat, például `DELETE FROM AREA WHERE AREAID = '99999'`:.
+Ha egyetlen rekordot szeretne törölni egy DB2-adatbázis táblából, használja a **sor törlése** műveletet a logikai alkalmazásban. Ez a művelet egy DB2 `DELETE` -utasítást futtat, például: `DELETE FROM AREA WHERE AREAID = '99999'` .
 
 1. Ha még soha nem használta a DB2-műveleteket a logikai alkalmazásban, tekintse át a következő témakör lépéseit: a [DB2 művelet – táblák beolvasása](#add-db2-action) szakasz, de vegye fel a **sor törlése** műveletet, majd térjen vissza ide a folytatáshoz.
 
@@ -328,8 +327,8 @@ Ha egyetlen rekordot szeretne törölni egy DB2-adatbázis táblából, használ
 
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
-   | **Tábla neve** | Igen | A rekord törlésére szolgáló tábla, például "térség" |
-   | **Sor azonosítója** | Igen | A törlendő rekord azonosítója, például: "99999" |
+   | **Table name (Táblázat neve)** | Yes | A rekord törlésére szolgáló tábla, például "térség" |
+   | **Sor azonosítója** | Yes | A törlendő rekord azonosítója, például: "99999" |
    ||||
 
    Például:

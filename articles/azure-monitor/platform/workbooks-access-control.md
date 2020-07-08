@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: 20116ab105e4eb12875ba3cb279fb261eb5c70e4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77658421"
 ---
 # <a name="access-control"></a>Hozzáférés-vezérlés
@@ -31,7 +30,7 @@ A munkafüzetek hozzáférés-vezérlése két dologra utal:
 
 A [monitorozási olvasó](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) olyan szabványos/Read jogosultságokat tartalmaz, amelyeket a figyelési eszközök (például a munkafüzetek) használnak az erőforrások adatainak olvasásához.
 
-A [figyelő közreműködői](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) a különböző `/write` figyelési eszközök által az elemek mentéséhez használt általános jogosultságokat `workbooks/write` tartalmazza (beleértve a megosztott munkafüzetek mentésére vonatkozó jogosultságot).
+A [figyelő közreműködői](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) `/write` a különböző figyelési eszközök által az elemek mentéséhez használt általános jogosultságokat tartalmazza (beleértve `workbooks/write` a megosztott munkafüzetek mentésére vonatkozó jogosultságot).
 A "munkafüzetek közreműködői" felveszi a "munkafüzetek/írás" jogosultságokat egy objektumba a megosztott munkafüzetek mentéséhez.
 Nincs szükség különleges jogosultságra ahhoz, hogy a felhasználók olyan privát munkafüzeteket mentsenek, amelyeket csak láthatnak.
 

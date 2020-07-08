@@ -16,10 +16,9 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: ea448b87f9e6954abecead2934bfb7f4ed04a9c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77920144"
 ---
 # <a name="detailed-troubleshooting-steps-for-remote-desktop-connection-issues-to-windows-vms-in-azure"></a>A Windows rendszerű virtuális gépekkel létesített távoli asztali kapcsolatok problémáinak részletes hibaelhárítási útmutatója
@@ -114,7 +113,7 @@ Annak vizsgálatához, hogy a végpont a probléma forrása-e, távolítsa el az
 ## <a name="source-4-network-security-groups"></a>4. Forrás: hálózati biztonsági csoportok
 A hálózati biztonsági csoportok lehetővé teszik a bejövő és kimenő forgalom részletesebb szabályozását. Az alhálózatokat és a Cloud Servicest egy Azure-beli virtuális hálózaton átívelő szabályok hozhatók létre.
 
-Az [IP-folyamat ellenőrzésével](../../network-watcher/network-watcher-check-ip-flow-verify-portal.md) győződjön meg róla, hogy a hálózati biztonsági csoportok szabályai nem blokkolják a virtuális gépek kimenő és bejövő forgalmát. A hatályos biztonsági csoportok szabályait is áttekintheti, így biztosítva, hogy a bejövő "engedélyezés" NSG szabály létezik, és az RDP-portra van rangsorolva (alapértelmezett 3389). További információ: [hatékony biztonsági szabályok használata a virtuális gépek forgalmának hibakereséséhez](../../virtual-network/diagnose-network-traffic-filter-problem.md).
+Az [IP-folyamat ellenőrzésével](../../network-watcher/network-watcher-check-ip-flow-verify-portal.md) ellenőrizze, hogy egy hálózati biztonsági csoportban lévő szabály blokkolja-e a virtuális gép felé irányuló vagy onnan érkező forgalmat. A hatályos biztonsági csoportok szabályait is áttekintheti, így biztosítva, hogy a bejövő "engedélyezés" NSG szabály létezik, és az RDP-portra van rangsorolva (alapértelmezett 3389). További információ: [hatékony biztonsági szabályok használata a virtuális gépek forgalmának hibakereséséhez](../../virtual-network/diagnose-network-traffic-filter-problem.md).
 
 ## <a name="source-5-windows-based-azure-vm"></a>5. Forrás: Windows-alapú Azure-beli virtuális gép
 ![](./media/detailed-troubleshoot-rdp/tshootrdp_5.png)
@@ -131,11 +130,11 @@ Próbálja megismételni a kapcsolatokat a számítógépről. Ha továbbra sem 
 * A Windows tűzfal vagy egy másik helyi tűzfal olyan kimenő szabályt tartalmaz, amely megakadályozza a Távoli asztal forgalmat.
 * Az Azure-beli virtuális gépen futó behatolás-észlelési vagy Hálózatfigyelő szoftver megakadályozza a Távoli asztal kapcsolatokat.
 
-A klasszikus üzemi modellel létrehozott virtuális gépek esetében távoli Azure PowerShell munkamenetet használhat az Azure-beli virtuális géphez. Először telepítenie kell egy tanúsítványt a virtuális gép üzemeltetési felhőalapú szolgáltatásához. Lépjen a [biztonságos távoli PowerShell-hozzáférés konfigurálása az Azure Virtual Machineshoz](https://gallery.technet.microsoft.com/scriptcenter/Configures-Secure-Remote-b137f2fe) , és töltse le a **InstallWinRMCertAzureVM. ps1** parancsfájlt a helyi számítógépre.
+A klasszikus üzemi modellel létrehozott virtuális gépek esetében távoli Azure PowerShell munkamenetet használhat az Azure-beli virtuális géphez. Először telepítenie kell egy tanúsítványt a virtuális gép üzemeltetési felhőalapú szolgáltatásához. Lépjen a [biztonságos távoli PowerShell-hozzáférés konfigurálása az Azure Virtual Machineshoz](https://gallery.technet.microsoft.com/scriptcenter/Configures-Secure-Remote-b137f2fe) , és töltse le a **InstallWinRMCertAzureVM.ps1** parancsfájlt a helyi számítógépre.
 
 Ezután telepítse Azure PowerShell, ha még nem tette meg. Lásd: [How to install and configure Azure PowerShell](/powershell/azure/overview) (Az Azure PowerShell telepítése és konfigurálása).
 
-Ezután nyisson meg egy Azure PowerShell parancssort, és módosítsa az aktuális mappát a **InstallWinRMCertAzureVM. ps1** parancsfájl helyére. Azure PowerShell szkript futtatásához be kell állítania a megfelelő végrehajtási házirendet. Futtassa a **Get-ExecutionPolicy** parancsot az aktuális házirend szintjének meghatározásához. A megfelelő szint beállításával kapcsolatos információkért lásd: [Set-ExecutionPolicy](https://technet.microsoft.com/library/hh849812.aspx).
+Ezután nyisson meg egy Azure PowerShell parancssort, és módosítsa az aktuális mappát a **InstallWinRMCertAzureVM.ps1** parancsfájl helyére. Azure PowerShell szkript futtatásához be kell állítania a megfelelő végrehajtási házirendet. Futtassa a **Get-ExecutionPolicy** parancsot az aktuális házirend szintjének meghatározásához. A megfelelő szint beállításával kapcsolatos információkért lásd: [Set-ExecutionPolicy](https://technet.microsoft.com/library/hh849812.aspx).
 
 Ezután töltse ki az Azure-előfizetés nevét, a Cloud Service-nevet és a virtuális gép nevét (a < és > karaktereket), majd futtassa ezeket a parancsokat.
 
@@ -193,7 +192,7 @@ Exit-PSSession
 
 Győződjön meg arról, hogy az Azure-beli virtuális gép Távoli asztal végpontja a 3398-as TCP-portot is használja belső portként. Indítsa újra az Azure-beli virtuális gépet, majd próbálja megismételni a Távoli asztal-kapcsolatokat.
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 [Jelszó alaphelyzetbe állítása vagy a Távoli asztal szolgáltatás használata Windows rendszerű virtuális gépekhez](../windows/reset-rdp.md)
 
 [How to install and configure Azure PowerShell (Az Azure PowerShell telepítése és konfigurálása)](/powershell/azure/overview)

@@ -17,10 +17,9 @@ ms.workload: na
 ms.date: 10/2/2019
 ms.author: terrylan
 ms.openlocfilehash: a1726e18ea8c1ba86d77d7b9ca3d50c444620361
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77657163"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Az Azure Virtual Machines biztonsági áttekintése
@@ -64,7 +63,7 @@ A fokozottan hatékony védelem érdekében érdemes lehet a [Windows Defender k
 * [Biztonsági pontszám](/windows/security/threat-protection/microsoft-defender-atp/configuration-score)
 * [Speciális vadászat](/windows/security/threat-protection/windows-defender-atp/overview-hunting-windows-defender-advanced-threat-protection)
 * [Felügyelet és API-k](/windows/security/threat-protection/windows-defender-atp/management-apis)
-* [Microsoft Threat Protection](/windows/security/threat-protection/windows-defender-atp/threat-protection-integration)
+* [Microsoft veszélyforrások elleni védelem](/windows/security/threat-protection/windows-defender-atp/threat-protection-integration)
 
 További információ:
 

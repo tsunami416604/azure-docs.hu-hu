@@ -5,15 +5,14 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
 ms.openlocfilehash: 31958b26cdb8a7897cf0051af6600014c07949fd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77671953"
 ---
 # <a name="trace-telemetry-application-insights-data-model"></a>Nyomkövetési telemetria: Application Insights adatmodell
 
-A nyomkövetési telemetria ( [Application Insights](../../azure-monitor/app/app-insights-overview.md)) `printf` a szöveg által keresett stílusú nyomkövetési utasításokat jelöli. `Log4Net`, `NLog`és más szöveg-alapú naplófájl-bejegyzések lefordítása ilyen típusú példányokra történik. A nyomkövetés nem rendelkezik bővíthetőségi mértékkel.
+A nyomkövetési telemetria ( [Application Insights](../../azure-monitor/app/app-insights-overview.md)) a `printf` szöveg által keresett stílusú nyomkövetési utasításokat jelöli. `Log4Net`, `NLog` és más szöveg-alapú naplófájl-bejegyzések lefordítása ilyen típusú példányokra történik. A nyomkövetés nem rendelkezik bővíthetőségi mértékkel.
 
 ## <a name="message"></a>Üzenet
 
@@ -23,7 +22,7 @@ Maximális hossz: 32768 karakter
 
 ## <a name="severity-level"></a>Súlyossági szint
 
-Nyomkövetés súlyossági szintje Az érték lehet `Verbose` `Information` `Warning`:,, `Error`, `Critical`,.
+Nyomkövetés súlyossági szintje Az érték lehet:,,, `Verbose` `Information` `Warning` `Error` , `Critical` .
 
 ## <a name="custom-properties"></a>Egyéni tulajdonságok
 

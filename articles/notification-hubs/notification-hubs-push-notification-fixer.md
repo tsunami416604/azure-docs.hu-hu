@@ -17,10 +17,9 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 04/04/2019
 ms.openlocfilehash: 1f3c16e6fe1855cf7882d83e620c70d15ce3cb92
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77657583"
 ---
 # <a name="diagnose-dropped-notifications-in-azure-notification-hubs"></a>Eldobott értesítések diagnosztizálása az Azure-ban Notification Hubs
@@ -116,7 +115,7 @@ Ha egy leküldéses értesítési szolgáltatás megpróbál kézbesíteni egy �
 
 Minden alkalmazás csak egy közelmúltbeli értesítést tárol. Ha a rendszer több értesítést küld, amikor egy eszköz offline állapotban van, minden új értesítés miatt a rendszer elveti az utolsót. Csak a legújabb értesítéseket kell a APNs-ben és az *coalescing* -ben az FCM-ben *összeomlani* . (Az FCM egy összeomló kulcsot használ.) Ha az eszköz hosszú ideje offline állapotban marad, a rendszer elveti az eszközön tárolt értesítéseket. További információ: a [APNs áttekintése] és [az FCM-üzenetek].
 
-A Notification Hubs használatával egy coalescing-kulcsot egy HTTP-fejlécen keresztül adhat át az általános SendNotification API-val. A .NET SDK esetében például a következőt használja `SendNotificationAsync`:. A SendNotification API emellett a HTTP-fejléceket is végrehajtja, amelyeket a rendszer a megfelelő leküldéses értesítési szolgáltatásnak ad át.
+A Notification Hubs használatával egy coalescing-kulcsot egy HTTP-fejlécen keresztül adhat át az általános SendNotification API-val. A .NET SDK esetében például a következőt használja: `SendNotificationAsync` . A SendNotification API emellett a HTTP-fejléceket is végrehajtja, amelyeket a rendszer a megfelelő leküldéses értesítési szolgáltatásnak ad át.
 
 ## <a name="self-diagnosis-tips"></a>Öndiagnosztikai tippek
 
@@ -199,7 +198,7 @@ Ha az értesítés nem érkezik meg az ügyfél-eszközre, akkor hiba történt,
 
 A leküldéses értesítési szolgáltatás hibáinak megismeréséhez használhatja a [EnableTestSend] tulajdonságot. Ez a tulajdonság automatikusan engedélyezve lesz, amikor tesztüzenet küld a portálról vagy a Visual Studio-ügyfélről. Ennek a tulajdonságnak a használatával részletes hibakeresési információkat és API-kat is megtekintheti. Jelenleg a .NET SDK-ban is használható. A rendszer az összes ügyfél SDK-nak végül hozzáadja.
 
-Ha a REST `EnableTestSend` -hívással szeretné használni a tulajdonságot, a küldési hívás végéhez fűzze hozzá a *test* nevű lekérdezési karakterlánc paramétert. Például:
+Ha a REST-hívással szeretné használni a `EnableTestSend` tulajdonságot, a küldési hívás végéhez fűzze hozzá a *test* nevű lekérdezési karakterlánc paramétert. Például:
 
 ```text
 https://mynamespace.servicebus.windows.net/mynotificationhub/messages?api-version=2013-10&test
@@ -215,7 +214,7 @@ var result = await hub.SendWindowsNativeNotificationAsync(toast);
 Console.WriteLine(result.State);
 ```
 
-A végrehajtás végén `result.State` egyszerűen állapotú `Enqueued`. Az eredmények nem biztosítanak betekintést a leküldéses értesítésbe történt információkba.
+A végrehajtás végén `result.State` egyszerűen állapotú `Enqueued` . Az eredmények nem biztosítanak betekintést a leküldéses értesítésbe történt információkba.
 
 A következő lépésben használhatja a `EnableTestSend` logikai tulajdonságot. Használja a `EnableTestSend` tulajdonságot az inicializálás során `NotificationHubClient` , hogy részletes állapotot kapjon az értesítés elküldésekor előforduló leküldéses értesítési szolgáltatás hibáiról. A küldési hívás további időt vesz igénybe, mert először Notification Hubs kell küldenie az értesítést a leküldéses értesítési szolgáltatásnak.
 
@@ -244,7 +243,7 @@ The Token obtained from the Token Provider is wrong
 Ez az üzenet azt jelzi, hogy a Notification Hubsban konfigurált hitelesítő adatok érvénytelenek, vagy hogy probléma van a központban található regisztrációval. Törölje a regisztrációt, és hagyja, hogy az ügyfél újból létrehozza a regisztrációt az üzenet elküldése előtt.
 
 > [!NOTE]
-> A `EnableTestSend` tulajdonság használata nagy mértékben szabályozott. Ezt a lehetőséget csak fejlesztési és tesztelési környezetben, valamint korlátozott számú regisztrációval használhatja. A hibakeresési értesítések csak 10 eszközre lesznek elküldve. A hibakeresési műveletek másodpercenként 10 percenként is megadhatók.
+> A tulajdonság használata `EnableTestSend` nagy mértékben szabályozott. Ezt a lehetőséget csak fejlesztési és tesztelési környezetben, valamint korlátozott számú regisztrációval használhatja. A hibakeresési értesítések csak 10 eszközre lesznek elküldve. A hibakeresési műveletek másodpercenként 10 percenként is megadhatók.
 
 ### <a name="review-telemetry"></a>Telemetria áttekintése
 

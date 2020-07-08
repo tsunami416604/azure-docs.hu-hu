@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 03/31/2017
 ms.subservice: alerts
 ms.openlocfilehash: c076b8dcea350f9ddd66977e89ce99b81f377b17
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77669046"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Webhookok az Azure-beli tevékenység naplójának értesítéseihez
@@ -23,7 +22,7 @@ A műveleti csoportokról a [műveleti csoportok létrehozása](../../azure-moni
 
 
 ## <a name="authenticate-the-webhook"></a>A webhook hitelesítése
-A webhook igény szerint jogkivonat-alapú hitelesítést is használhat a hitelesítéshez. A webhook URI-ja egy jogkivonat-AZONOSÍTÓval lett mentve `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`, például:.
+A webhook igény szerint jogkivonat-alapú hitelesítést is használhat a hitelesítéshez. A webhook URI-ja egy jogkivonat-AZONOSÍTÓval lett mentve, például: `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue` .
 
 ## <a name="payload-schema"></a>Hasznos adatok sémája
 A POST műveletben található JSON-adattartalom eltér a hasznos adatok. Context. activityLog. eventSource mező alapján.
@@ -254,20 +253,20 @@ A szolgáltatás állapotával kapcsolatos értesítési tevékenységekről ér
 }
 ```
 
-| Elem neve | Leírás |
+| Elem neve | Description |
 | --- | --- |
 | status |Metrikus riasztásokhoz használatos. Mindig az "aktivált" értékre kell beállítani a tevékenység naplójának riasztásai esetében. |
 | összefüggésben |Az esemény kontextusa. |
 | resourceProviderName |Az érintett erőforrás erőforrás-szolgáltatója. |
 | conditionType |Mindig "esemény". |
-| név |A riasztási szabály neve. |
+| name |A riasztási szabály neve. |
 | id |A riasztás erőforrás-azonosítója. |
 | leírás |Riasztás leírásának beállítása a riasztás létrehozásakor. |
 | subscriptionId |Azure-előfizetés azonosítója. |
 | időbélyeg |Az az idő, amikor az eseményt a kérelmet feldolgozó Azure-szolgáltatás hozta létre. |
 | resourceId |Az érintett erőforrás erőforrás-azonosítója. |
 | resourceGroupName |Az érintett erőforráshoz tartozó erőforráscsoport neve. |
-| properties |Az esemény `<Key, Value>` részleteit tartalmazó párok ( `Dictionary<String, String>`azaz) készlete. |
+| properties |Az `<Key, Value>` esemény részleteit tartalmazó párok (azaz) készlete `Dictionary<String, String>` . |
 | esemény |Az eseménnyel kapcsolatos metaadatokat tartalmazó elem. |
 | engedélyezés |Az esemény szerepköralapú Access Control tulajdonságai. Ezek a tulajdonságok általában tartalmazzák a műveletet, a szerepkört és a hatókört. |
 | category |Az esemény kategóriája. A támogatott értékek a következők: adminisztráció, riasztás, biztonság, ServiceHealth és javaslatok. |

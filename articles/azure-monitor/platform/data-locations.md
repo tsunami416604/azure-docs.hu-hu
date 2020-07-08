@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 05/21/2019
 ms.openlocfilehash: 7d4459867081d920fefb9471b1a682d21040da9d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77666615"
 ---
 # <a name="monitoring-data-locations-in-azure-monitor"></a>Adatterületek figyelése Azure Monitor
@@ -21,15 +20,15 @@ Azure Monitor a [naplók](data-platform-logs.md) és [mérőszámok](data-platfo
 
 A következő táblázat azokat a különböző helyeket tartalmazza, amelyeken az Azure-beli figyelési adatok és a hozzájuk tartozó különböző módszerek találhatók.
 
-| Hely | Leírás | Hozzáférési módszerek |
+| Hely | Description | Hozzáférési módszerek |
 |:---|:---|:---|:--|
 | Azure Monitor metrikák | Idősorozat-adatbázis, amely az időbélyegzővel ellátott adatok elemzésére van optimalizálva. | [Metrikaböngésző](metrics-getting-started.md)<br>[Azure Monitor mérőszámok API](/rest/api/monitor/metrics) |
 | Azure Monitor-naplók    | Log Analytics az Azure Adatkezelő-alapú munkaterületet, amely hatékony elemzési motort és gazdag lekérdezési nyelvet biztosít. | [Log Analytics](../log-query/portals.md)<br>[Log Analytics API](https://dev.loganalytics.io/)<br>[Application Insights API](https://dev.applicationinsights.io/reference/get-query) |
-| Tevékenységnapló | A tevékenység naplójából származó adatok akkor hasznosak, ha Azure Monitor naplókba küldi őket, hogy elemezze más adatokkal, de azt is saját maga gyűjti, hogy közvetlenül a Azure Portal lehessen megtekinteni. | [Azure Portal](activity-log-view.md#azure-portal)<br>[Azure Monitor Events API](/rest/api/monitor/eventcategories) |
+| Tevékenységnapló | A tevékenység naplójából származó adatok akkor hasznosak, ha Azure Monitor naplókba küldi őket, hogy elemezze más adatokkal, de azt is saját maga gyűjti, hogy közvetlenül a Azure Portal lehessen megtekinteni. | [Azure Portalra](activity-log-view.md#azure-portal)<br>[Azure Monitor Events API](/rest/api/monitor/eventcategories) |
 | Azure Storage | Egyes adatforrások közvetlenül az Azure Storage-ba fognak írni, és az adatnaplókba való áthelyezéshez konfigurációt igényelnek. Az Azure Storage szolgáltatásba az archiváláshoz és a külső rendszerekkel való integrációhoz is küldhet adatküldést.  | [Storage Analytics](/rest/api/storageservices/storage-analytics)<br>[Server Explorer (Kiszolgálókezelő)](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage)<br>[Storage Explorer](/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows) |
 | Event Hubs | Adatküldés az Azure Event Hubsba, hogy továbbítsa azt más helyszínekre. | [Rögzítés a tárolóba](../../event-hubs/event-hubs-capture-overview.md)  |
-| Azure Monitor virtuális gépekhez | A Azure Monitor for VMs a számítási feladatok állapotát olyan egyéni helyen tárolja, amelyet a Azure Portal figyelési tapasztalata használ. | [Azure Portal](../insights/vminsights-overview.md)<br>[Munkaterhelés-figyelő REST API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components)<br>[Azure Resource Health REST API](https://docs.microsoft.com/rest/api/resourcehealth/)  |
-| Riasztások | A Azure Monitor által létrehozott riasztások. | [Azure Portal](alerts-managing-alert-instances.md)<br>[Riasztások kezelése REST API](https://docs.microsoft.com/rest/api/monitor/alertsmanagement/alerts) |
+| Azure Monitor virtuális gépekhez | A Azure Monitor for VMs a számítási feladatok állapotát olyan egyéni helyen tárolja, amelyet a Azure Portal figyelési tapasztalata használ. | [Azure Portalra](../insights/vminsights-overview.md)<br>[Munkaterhelés-figyelő REST API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components)<br>[Azure Resource Health REST API](https://docs.microsoft.com/rest/api/resourcehealth/)  |
+| Riasztások | A Azure Monitor által létrehozott riasztások. | [Azure Portalra](alerts-managing-alert-instances.md)<br>[Riasztások kezelése REST API](https://docs.microsoft.com/rest/api/monitor/alertsmanagement/alerts) |
 
 
 

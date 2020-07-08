@@ -13,10 +13,9 @@ ms.workload: infrastructure
 ms.date: 10/24/2018
 ms.author: genli
 ms.openlocfilehash: c22a401a6b25f7bb2c27a10e52214fa42ac6089b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77918223"
 ---
 # <a name="remote-desktop-disconnects-frequently-in-azure-vm"></a>A távoli asztal kapcsolata gyakran megszakad az Azure-beli virtuális gépen
@@ -90,8 +89,8 @@ A probléma elhárításához a virtuális gép operációsrendszer-lemezét egy
 1. [Csatlakoztassa az operációsrendszer-lemezt egy helyreállítási virtuális géphez](../windows/troubleshoot-recovery-disks-portal.md).
 2. Miután az operációsrendszer-lemezt csatlakoztatta a helyreállítási virtuális géphez, ellenőrizze, hogy a lemez **online** állapotban van-e megjelölve a Lemezkezelés konzolon. Jegyezze fel a csatlakoztatott operációsrendszer-lemezhez rendelt meghajtóbetűjelet.
 3. A csatlakoztatott operációsrendszer-lemezen navigáljon a **\Windows\System32\Config** mappára. Másolja a mappában található összes fájlt biztonsági másolatként, ha visszaállításra van szükség.
-4. Indítsa el a Beállításszerkesztőt (Regedit. exe).
-5. Válassza ki a **HKEY_LOCAL_MACHINE** kulcsot. A menüben válassza a **fájl** > **Load struktúra**elemet:
+4. Indítsa el a Beállításszerkesztőt (regedit.exe).
+5. Válassza ki a **HKEY_LOCAL_MACHINE** kulcsot. A menüben válassza a **fájl**  >  **Load struktúra**elemet:
 6. Keresse meg a **\windows\system32\config\SYSTEM** mappát a csatlakoztatott operációsrendszer-lemezen. A struktúra neveként írja be a következőt: **BROKENSYSTEM**. Az új beállításjegyzék-struktúra a **HKEY_LOCAL_MACHINE** kulcs alatt jelenik meg. Ezután töltse be a szoftver-struktúra **\windows\system32\config\SOFTWARE** a **HKEY_LOCAL_MACHINE** kulcs alatt. A kaptár szoftver neveként írja be a következőt: **BROKENSOFTWARE**. 
 7. Nyisson meg egy rendszergazda jogú parancssort (**Futtatás rendszergazdaként**), és futtassa a további lépések parancsait az RDP-konfigurációk alaphelyzetbe állításához. 
 8. Csökkentse az RDP biztonsági réteget 0-ra, hogy a kiszolgáló és az ügyfél közötti kommunikáció a natív RDP-titkosítást használja:

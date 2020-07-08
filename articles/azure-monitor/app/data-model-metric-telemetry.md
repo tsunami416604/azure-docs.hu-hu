@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
 ms.openlocfilehash: 3e4a1fc3de58b8e65ab9c7a288bdf3eb37e7bae0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77671970"
 ---
 # <a name="metric-telemetry-application-insights-data-model"></a>Metrikus telemetria: Application Insights adatmodell
@@ -33,7 +32,7 @@ A rendszerszintű és a folyamat számlálóit jelölő metrika:
 | `\ASP.NET Applications(??APP_W3SVC_PROC??)\Request Execution Time`   | Munka folyamatban... | [requestExecutionTime](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestExecutionTime) | kérelmek átlagos végrehajtási ideje
 | `\ASP.NET Applications(??APP_W3SVC_PROC??)\Requests In Application Queue` | Munka folyamatban... | [requestsInQueue](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestsInQueue) | a várólistán való feldolgozásra váró kérelmek száma
 
-## <a name="name"></a>Name (Név)
+## <a name="name"></a>Name
 
 A Application Insights Portálon és felhasználói felületen megjelenő metrika neve. 
 

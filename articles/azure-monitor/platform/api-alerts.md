@@ -5,10 +5,9 @@ ms.subservice: logs
 ms.topic: conceptual
 ms.date: 07/29/2018
 ms.openlocfilehash: a85dad2ba638505233e5df769e55fa5bd7b8dafd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77665000"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Riasztási szabályok létrehozása és kezelése a Log Analyticsban REST API 
@@ -122,7 +121,7 @@ Művelet törléséhez használja a DELETE metódust a műveleti AZONOSÍTÓval.
 ### <a name="alert-actions"></a>Riasztási műveletek
 Az ütemtervnek egy és csak egy riasztási művelettel kell rendelkeznie.  A riasztási műveletekhez a következő táblázat egy vagy több szakaszában található.  Az alábbiakban részletesebben is olvashat.
 
-| Section | Leírás | Használat |
+| Section | Description | Használat |
 |:--- |:--- |:--- |
 | Küszöbérték |A művelet futtatásának feltételei.| Minden riasztáshoz szükséges, az Azure-ra való kiterjesztés előtt vagy után. |
 | Severity |Az aktiváláskor a riasztás osztályozásához használt címke.| Minden riasztáshoz szükséges, az Azure-ra való kiterjesztés előtt vagy után. |
@@ -267,7 +266,7 @@ A Put metódust meglévő műveleti AZONOSÍTÓval használva módosíthatja az 
 Alapértelmezés szerint a műveletek standard sablont és formátumot követve értesítések küldéséhez. A felhasználó azonban testre szabhatja bizonyos műveleteket, még akkor is, ha azokat műveleti csoportok vezérlik. Jelenleg az e-mailek tárgya és a webhook adattartalma is testreszabható.
 
 ##### <a name="customize-e-mail-subject-for-action-group"></a>A műveleti csoport E-Mail tárgyának testreszabása
-Alapértelmezés szerint az e-mail-tárgy a riasztások esetében `<AlertName>` a `<WorkspaceName>`riasztási értesítés a következőhöz:. Ez azonban testreszabható, így konkrét szavakat vagy címkéket is használhat, így egyszerűen alkalmazhatja a beérkezett fájlok szűrési szabályait. Az e-mail-fejléc testreszabása részleteit a ActionGroup részleteivel együtt kell elküldeni, ahogy az alábbi példában is látható.
+Alapértelmezés szerint az e-mail-tárgy a riasztások esetében a riasztási értesítés `<AlertName>` a következőhöz: `<WorkspaceName>` . Ez azonban testreszabható, így konkrét szavakat vagy címkéket is használhat, így egyszerűen alkalmazhatja a beérkezett fájlok szűrési szabályait. Az e-mail-fejléc testreszabása részleteit a ActionGroup részleteivel együtt kell elküldeni, ahogy az alábbi példában is látható.
 
      "etag": "W/\"datetime'2017-12-13T10%3A52%3A21.1697364Z'\"",
       "properties": {

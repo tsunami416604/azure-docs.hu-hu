@@ -4,10 +4,9 @@ description: Személyre szabott értesítések beszerzése a PagerDuty-példány
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.openlocfilehash: bb449a5279f3cea55e6aec2f72edfd11fb26227a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77654069"
 ---
 # <a name="send-azure-service-health-alerts-with-pagerduty-using-webhooks"></a>Azure szolgáltatásbeli állapottal kapcsolatos riasztások küldése a PagerDuty webhookok használatával
@@ -27,7 +26,7 @@ Ebből a cikkből megtudhatja, hogyan állíthatja be az Azure szolgáltatás á
 
     a. **Integráció típusa**: Microsoft Azure
 
-    b. **Integráció neve**: \<név\>
+    b. **Integráció neve**:\<Name\>
 
     ![Az "integrációs beállítások" a PagerDuty](./media/webhook-alerts/pagerduty-integration-settings.png)
 
@@ -80,7 +79,7 @@ Ebből a cikkből megtudhatja, hogyan állíthatja be az Azure szolgáltatás á
 
     BODY        <service health payload>
     ```
-1. `202 Accepted` Az "eseményazonosító" üzenetet tartalmazó üzenet jelenik meg.
+1. Az `202 Accepted` "eseményazonosító" üzenetet tartalmazó üzenet jelenik meg.
 
 1. Nyissa meg a [PagerDuty](https://www.pagerduty.com/) , és ellenőrizze, hogy sikeresen beállította-e az integrációt.
 

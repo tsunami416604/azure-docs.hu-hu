@@ -12,10 +12,9 @@ ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
 ms.openlocfilehash: 31b49cdd9e0e5569981b2a0b0c6efcab7239e019
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77648512"
 ---
 # <a name="monitor-migration-activity-using-the-azure-database-migration-service"></a>Áttelepítési tevékenység figyelése a Azure Database Migration Service használatával
@@ -63,7 +62,7 @@ A következő táblázat felsorolja az adatbázis szintű panel mezőit, és ism
       <td>A DMS-folyamat fut és az áttelepítés végrehajtása folyamatban van.</td>
     </tr>
     <tr>
-      <td>Befejezve</td>
+      <td>Kész</td>
       <td>Az áttelepítés befejeződött.</td>
     </tr>
     <tr>
@@ -93,7 +92,7 @@ A következő táblázat felsorolja az adatbázis szintű panel mezőit, és ism
     </tr>
     <tr>
       <td rowspan="1" class="duration"><strong>Időtartam</strong></td>
-      <td>N/A</td>
+      <td>N.A.</td>
       <td>Az áttelepítési tevékenységnek az áttelepítésre való inicializálásának teljes ideje, vagy hiba történt az áttelepítés során.</td>
     </tr>
      </tbody>
@@ -108,7 +107,7 @@ A panel alsó részén láthatók a táblák, és az áttelepítés előrehalad�
 
 Az alábbi táblázat a tábla szintű részletekben látható mezőket ismerteti.
 
-| Mező neve        | Leírás       |
+| Mező neve        | Description       |
 | ------------- | ------------- |
 | **A teljes terhelés befejeződött**      | A táblák száma teljes adatterheléssel fejeződött be. |
 | **Teljes terhelés várólistán**      | A teljes betöltésre váró táblák száma.      |
@@ -129,10 +128,10 @@ Két lap jelenik meg, amelyek az áttelepítés előrehaladását mutatják be a
 
 Az alábbi táblázat a táblázat szintű áttelepítési folyamat során megjelenő mezőket ismerteti.
 
-| Mező neve        | Leírás       |
+| Mező neve        | Description       |
 | ------------- | ------------- |
 | **Állapot – szinkronizálás**      | Folyamatos szinkronizálás fut. |
-| **Beszúrás**      | A célhelyre alkalmazott CDC-beszúrások száma.      |
+| **Insert**      | A célhelyre alkalmazott CDC-beszúrások száma.      |
 | **Frissítés** | A cél értékre alkalmazott CDC-frissítések száma.      |
 | **Szabályzat**      | A megadott számú CDC-törlés a célhelyre alkalmazott sorokban. |
 | **Összes alkalmazott**      | A CDC összes frissítésének, beszúrásának és törlésének összege a célhelyre alkalmazott sorokban. |

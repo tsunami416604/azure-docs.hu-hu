@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 04/20/2018
 ms.author: akjosh
 ms.openlocfilehash: cffd2eab3a616b4d16d847d0f2e1a26655f40459
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77919923"
 ---
 # <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>A Trend Micro Deep Security telepítése és konfigurálása Windows rendszerű virtuális gépen
@@ -57,7 +56,7 @@ A varázsló **Beállítások** paneljén hajtsa végre a következő lépéseke
 ## <a name="install-the-deep-security-agent-on-an-existing-vm"></a>A mély biztonsági ügynök telepítése meglévő virtuális gépre
 Az ügynök meglévő virtuális gépen való telepítéséhez a következő elemek szükségesek:
 
-* A Azure PowerShell modul, a 0.8.2 vagy újabb verziója telepítve van a helyi számítógépen. A telepített Azure PowerShell verziószámát a **Get-Module Azure | Format-Table Version** paranccsal tudja megtekinteni. Útmutatást és a legújabb verzióra mutató hivatkozást a [Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview)című témakörben talál. Jelentkezzen be az Azure-előfizetésbe a használatával `Add-AzureAccount`.
+* A Azure PowerShell modul, a 0.8.2 vagy újabb verziója telepítve van a helyi számítógépen. A telepített Azure PowerShell verziószámát a **Get-Module Azure | Format-Table Version** paranccsal tudja megtekinteni. Útmutatást és a legújabb verzióra mutató hivatkozást a [Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview)című témakörben talál. Jelentkezzen be az Azure-előfizetésbe a használatával `Add-AzureAccount` .
 * A virtuális gépre telepített virtuálisgép-ügynök.
 
 Először ellenőrizze, hogy a virtuálisgép-ügynök már telepítve van-e. Adja meg a felhőalapú szolgáltatás nevét és a virtuális gép nevét, majd futtassa a következő parancsokat egy rendszergazda szintű Azure PowerShell parancssorban. Cserélje le az idézőjelek közé eső összes karaktert, beleértve a < és a > karaktereket is.
@@ -84,7 +83,7 @@ Néhány percet vesz igénybe, amíg az ügynök elindul a telepítéskor. Ezt k
 * Egy [minta Windows PowerShell-parancsfájl](https://go.microsoft.com/fwlink/?LinkId=404100) a virtuális gép konfigurálásához
 * A minta [utasításai](https://go.microsoft.com/fwlink/?LinkId=404099)
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 [Bejelentkezés Windows Servert futtató virtuális gépre]
 
 [Azure-beli virtuálisgép-bővítmények és-funkciók]

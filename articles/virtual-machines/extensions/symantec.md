@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/31/2017
 ms.author: akjosh
 ms.openlocfilehash: 63f9441d4df9551405c2ab2bf8c0c67d7de5753c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77919906"
 ---
 # <a name="how-to-install-and-configure-symantec-endpoint-protection-on-a-windows-vm"></a>Symantec-Endpoint Protection telepítése és konfigurálása Windowsos virtuális gépen
@@ -33,7 +32,7 @@ Ha a Symantec meglévő előfizetése egy helyszíni megoldáshoz tartozik, hasz
 ## <a name="install-symantec-endpoint-protection-on-an-existing-vm"></a>A Symantec Endpoint Protection telepítése meglévő virtuális gépre
 A Kezdés előtt a következőkre lesz szüksége:
 
-* A Azure PowerShell modul, 0.8.2 vagy újabb verzió a munkahelyi számítógépen. A **Get-Module Azure | Format-Table Version** paranccsal megtekintheti Azure PowerShell telepített verzióját. Útmutatást és a legújabb verzióra mutató hivatkozást a [Azure PowerShell telepítése és konfigurálása][PS]című témakörben talál. Jelentkezzen be az Azure-előfizetésbe a használatával `Add-AzureAccount`.
+* A Azure PowerShell modul, 0.8.2 vagy újabb verzió a munkahelyi számítógépen. A **Get-Module Azure | Format-Table Version** paranccsal megtekintheti Azure PowerShell telepített verzióját. Útmutatást és a legújabb verzióra mutató hivatkozást a [Azure PowerShell telepítése és konfigurálása][PS]című témakörben talál. Jelentkezzen be az Azure-előfizetésbe a használatával `Add-AzureAccount` .
 * Az Azure-beli virtuális gépen futó virtuálisgép-ügynök.
 
 Először ellenőrizze, hogy a virtuálisgép-ügynök már telepítve van-e a virtuális gépen. Adja meg a felhőalapú szolgáltatás nevét és a virtuális gép nevét, majd futtassa a következő parancsokat egy rendszergazda szintű Azure PowerShell parancssorban. Cserélje le az idézőjelek közé eső összes karaktert, beleértve a < és a > karaktereket is.
@@ -65,7 +64,7 @@ Annak ellenőrzéséhez, hogy telepítve van-e a Symantec biztonsági bővítmé
 2. Windows Server 2008 R2 esetén kattintson a **Start > Symantec Endpoint Protection**lehetőségre. A Windows Server 2012 vagy a Windows Server 2012 R2 esetében a kezdőképernyőn írja be a **Symantec**parancsot, majd kattintson a **Symantec Endpoint Protection**elemre.
 3. Az **állapot – Symantec Endpoint Protection** ablak **állapot** lapján frissítse a frissítéseket, vagy szükség esetén indítsa újra a rendszert.
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 [Bejelentkezés Windows Servert futtató virtuális gépre][Logon]
 
 [Azure-beli virtuálisgép-bővítmények és-funkciók][Ext]

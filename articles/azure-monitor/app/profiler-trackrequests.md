@@ -7,10 +7,9 @@ ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: c59cbe852a91a91c7b3adb4452328700ec718a82
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77671596"
 ---
 # <a name="write-code-to-track-requests-with-application-insights"></a>Kód írása a kérelmek nyomon követéséhez Application Insights
@@ -31,7 +30,7 @@ A kérelmek manuális nyomon követéséhez tegye a következőket:
         ```
       A globális rendszerállapot-konfigurációval kapcsolatos további információkért lásd: [a Service Fabric használata Application Insights használatával](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/blob/dev/appinsights/ApplicationInsights.md).  
 
-  1. Minden olyan kódrészlethez, amelyet szeretne felvenni, vegyen fel `StartOperation<RequestTelemetry>` egy **using** utasítást az alábbi példában látható módon:
+  1. Minden olyan kódrészlethez, amelyet szeretne felvenni, vegyen fel egy `StartOperation<RequestTelemetry>` **using** utasítást az alábbi példában látható módon:
 
         ```csharp
         using Microsoft.ApplicationInsights;
@@ -45,7 +44,7 @@ A kérelmek manuális nyomon követéséhez tegye a következőket:
         }
         ```
 
-        Egy `StartOperation<RequestTelemetry>` másik `StartOperation<RequestTelemetry>` hatókörön belüli hívás nem támogatott. Ehelyett a beágyazott `StartOperation<DependencyTelemetry>` hatókörben használható. Például:  
+        `StartOperation<RequestTelemetry>`Egy másik `StartOperation<RequestTelemetry>` hatókörön belüli hívás nem támogatott. `StartOperation<DependencyTelemetry>`Ehelyett a beágyazott hatókörben használható. Például:  
         
         ```csharp
         using (var getDetailsOperation = client.StartOperation<RequestTelemetry>("GetProductDetails"))

@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.reviewer: sdash
 ms.openlocfilehash: 39c4c51a1bc84e06efac3674b1ee5b487f9e6729
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77671137"
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>Egyesített ágazatközi tranzakciós diagnosztika
@@ -66,9 +65,9 @@ Ez az összecsukható ablaktábla a szűrési feltételeknek megfelelő egyéb e
 
 A [Application Insights Profiler](../../azure-monitor/app/profiler.md) vagy a [Snapshot Debugger](snapshot-debugger.md) segítséget nyújt a teljesítménnyel és a hibákkal kapcsolatos hibák diagnosztizálására. Ezzel a megoldással a Profiler-nyomkövetéseket és-pillanatképeket bármely összetevőből megtekintheti egyetlen kattintással.
 
-Ha nem tudja beolvasni a Profilert, forduljon **a\@serviceprofilerhelp Microsoft.com**
+Ha nem tudja beolvasni a Profilert, forduljon a **serviceprofilerhelp \@ Microsoft.com**
 
-Ha nem Snapshot Debugger munkát, forduljon a **snapshothelp\@Microsoft.com**
+Ha nem Snapshot Debugger munkát, forduljon a **snapshothelp \@ Microsoft.com**
 
 ![Profiler-integráció](media/transaction-diagnostics/profilerTraces.png)
 

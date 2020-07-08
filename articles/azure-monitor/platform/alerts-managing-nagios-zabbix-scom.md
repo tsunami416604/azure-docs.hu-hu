@@ -1,17 +1,16 @@
 ---
-title: System Center Operations Manager-, Zabbix-és Nagios-riasztások kezelése Azure Monitor
-description: System Center Operations Manager-, Zabbix-és Nagios-riasztások kezelése Azure Monitor
+title: A System Center Operations Manager, a Zabbix és a Nagios riasztásainak kezelése az Azure Monitorban
+description: A System Center Operations Manager, a Zabbix és a Nagios riasztásainak kezelése az Azure Monitorban
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.subservice: alerts
 ms.openlocfilehash: 5ef03f522fb91302bfdec985f1e3c5cf8138ae97
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77667448"
 ---
-# <a name="manage-alerts-from-system-center-operations-manager-zabbix-and-nagios-in-azure-monitor"></a>System Center Operations Manager-, Zabbix-és Nagios-riasztások kezelése Azure Monitor
+# <a name="manage-alerts-from-system-center-operations-manager-zabbix-and-nagios-in-azure-monitor"></a>A System Center Operations Manager, a Zabbix és a Nagios riasztásainak kezelése az Azure Monitorban
 
 Most már megtekintheti a riasztásokat a Nagios, a Zabbix és a System Center Operations Manager [Azure monitorban](https://aka.ms/azure-alerts-overview). Ezek a riasztások a Nagios/Zabbix-kiszolgálókkal való integrációk vagy a Log Analyticsba System Center Operations Manager. 
 

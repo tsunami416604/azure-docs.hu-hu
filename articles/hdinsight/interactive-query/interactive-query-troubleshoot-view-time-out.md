@@ -8,10 +8,9 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/30/2019
 ms.openlocfilehash: f00f70e674ac0b83b737d6b2a4bf9d20400736fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77672021"
 ---
 # <a name="scenario-apache-hive-view-times-out-when-fetching-a-query-result-in-azure-hdinsight"></a>Forgatókönyv: Apache Hive megtekintési időtúllépés az Azure HDInsight lekérdezési eredményének beolvasása során
@@ -33,7 +32,7 @@ A kaptár nézet alapértelmezett időtúllépési értéke nem lehet megfelelő
 
 ## <a name="resolution"></a>Megoldás:
 
-Növelje az Apache Ambari- `/etc/ambari-server/conf/ambari.properties`struktúra nézet időtúllépéseit az alábbi tulajdonságok beállításával.
+Növelje az Apache Ambari-struktúra nézet időtúllépéseit az alábbi tulajdonságok beállításával `/etc/ambari-server/conf/ambari.properties` .
 
 ```
 views.ambari.request.read.timeout.millis=300000
@@ -41,7 +40,7 @@ views.request.read.timeout.millis=300000
 views.ambari.hive.<HIVE_VIEW_INSTANCE_NAME>.result.fetch.timeout=300000
 ```
 
-A (z `HIVE_VIEW_INSTANCE_NAME` ) értéke a kaptár nézet URL-címének végén érhető el.
+A `HIVE_VIEW_INSTANCE_NAME` (z) értéke a kaptár nézet URL-címének végén érhető el.
 
 ## <a name="next-steps"></a>További lépések
 

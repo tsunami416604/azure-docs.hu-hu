@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 09/26/2019
 ms.openlocfilehash: 1e889aaef7cd01cd743e8063a8a1dd5138ba9d0e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77670593"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Egyéni naplók az Azure Monitorban
@@ -50,7 +49,7 @@ Egyéni naplófájl definiálásához használja az alábbi eljárást.  Görges
 Az egyéni napló varázsló a Azure Portal fut, és lehetővé teszi, hogy megadjon egy új egyéni naplót a gyűjtéshez.
 
 1. A Azure Portal válassza a **log Analytics munkaterületek** > a munkaterület > **Speciális beállítások**lehetőséget.
-2. Kattintson az **Data** > **Egyéni adatnaplók**elemre.
+2. Kattintson az **Data**  >  **Egyéni adatnaplók**elemre.
 3. Alapértelmezés szerint a rendszer az összes konfigurációs módosítást automatikusan leküldi az összes ügynöknek. Linux-ügynökök esetében a rendszer egy konfigurációs fájlt küld a Fluent-adatgyűjtőnek.
 4. Kattintson a **Hozzáadás +** elemre az egyéni napló varázsló megnyitásához.
 
@@ -70,25 +69,25 @@ Időbélyeg-elválasztó használata esetén a Azure Monitorban tárolt egyes re
 ### <a name="step-3-add-log-collection-paths"></a>3. lépés Napló-gyűjtemény elérési útjának hozzáadása
 Meg kell adnia egy vagy több elérési utat az ügynökön, ahol megtalálhatja az egyéni naplót.  Megadhat egy adott elérési utat és nevet a naplófájlhoz, vagy megadhat egy elérési utat, amely helyettesítő karaktert tartalmaz a névhez. Ez olyan alkalmazásokat támogat, amelyek naponta új fájlt hoznak létre, vagy amikor egy fájl elér egy adott méretet. Egyetlen naplófájlhoz több elérési utat is megadhat.
 
-Előfordulhat például, hogy egy alkalmazás minden nap létrehoz egy naplófájlt a névben szereplő dátummal a log20100316. txt fájlban. Az ilyen naplók mintája lehet a *\*log. txt* fájl, amely az alkalmazás elnevezési sémáját követő minden naplófájlra vonatkozni fog.
+Előfordulhat például, hogy egy alkalmazás minden nap létrehoz egy naplófájlt a névben szereplő dátummal együtt log20100316.txt. Az ilyen naplók mintája lehet a *log \* . txt* fájl, amely az alkalmazás elnevezési sémáját követő minden naplófájlra vonatkozni fog.
 
 A következő táblázat példákat tartalmaz a különböző naplófájlok megadására szolgáló érvényes mintákra.
 
-| Leírás | Útvonal |
+| Description | Elérési út |
 |:--- |:--- |
-| A *c:\logs mappa* összes fájlja. txt kiterjesztéssel a Windows-ügynökön |C:\logs mappa\\\*. txt |
-| A *c:\logs mappa* összes fájlja a log és a. txt kiterjesztéssel kezdődő névvel a Windows-ügynökön |C:\Logs\log\*. txt |
+| A *c:\logs mappa* összes fájlja. txt kiterjesztéssel a Windows-ügynökön |C:\logs mappa \\ \* . txt |
+| A *c:\logs mappa* összes fájlja a log és a. txt kiterjesztéssel kezdődő névvel a Windows-ügynökön |C:\Logs\log \* . txt |
 | A */var/log/audit* összes fájlja. txt kiterjesztéssel a Linux-ügynökön |/var/log/audit/*. txt |
-| A */var/log/audit* összes fájlja a log és a. txt kiterjesztéssel kezdődő névvel Linux-ügynökön |/var/log/audit/log\*. txt |
+| A */var/log/audit* összes fájlja a log és a. txt kiterjesztéssel kezdődő névvel Linux-ügynökön |/var/log/audit/log \* . txt |
 
 1. Válassza a Windows vagy a Linux lehetőséget a hozzáadni kívánt elérési út megadásához.
-2. Írja be az elérési utat, **+** majd kattintson a gombra.
+2. Írja be az elérési utat, majd kattintson a **+** gombra.
 3. Ismételje meg a folyamatot bármilyen további elérési útra.
 
 ### <a name="step-4-provide-a-name-and-description-for-the-log"></a>4. lépés Adja meg a napló nevét és leírását
 A rendszer a megadott nevet fogja használni a naplózási típushoz a fent leírtak szerint.  A szolgáltatás mindig _CL, hogy egyéni naplóként megkülönböztesse azt.
 
-1. Írja be a napló nevét.  A ** \_CL** -utótagot a rendszer automatikusan megadja.
+1. Írja be a napló nevét.  A ** \_ CL** -utótagot a rendszer automatikusan megadja.
 2. Adjon hozzá egy opcionális **leírást**.
 3. Az egyéni napló definíciójának mentéséhez kattintson a **tovább** gombra.
 
@@ -122,7 +121,7 @@ Az egyéni naplók egy olyan típussal rendelkeznek, amely tartalmazza a megadot
 | TimeGenerated |A rekord Azure Monitor általi gyűjtésének dátuma és időpontja.  Ha a napló időalapú határolójelet használ, akkor ez a bejegyzésből begyűjtött idő. |
 | SourceSystem |Az ügynök típusa, amelyet a rendszer a rekordból gyűjtött. <br> OpsManager – Windows-ügynök, közvetlen kapcsolat vagy System Center Operations Manager <br> Linux – minden Linux-ügynök |
 | RawData |Az összegyűjtött bejegyzés teljes szövege. Valószínűleg ezeket az adatelemzéseket az [egyes tulajdonságokkal szeretné elemezni](../log-query/parse-text.md). |
-| ManagementGroupName |A System Center-műveletek felügyeleti csoportjának neve, ügynökök kezelése.  Más ügynökök esetében ez az AOI-\<Workspace azonosító\> |
+| ManagementGroupName |A System Center-műveletek felügyeleti csoportjának neve, ügynökök kezelése.  Más ügynökök esetében ez az AOI-\<workspace ID\> |
 
 
 ## <a name="sample-walkthrough-of-adding-a-custom-log"></a>Példa egyéni napló hozzáadására
@@ -140,7 +139,7 @@ A naplófájlok egyikét biztosítjuk, és láthatjuk, hogy milyen események le
 ![Minta napló feltöltése és elemzése](media/data-sources-custom-logs/delimiter.png)
 
 ### <a name="add-log-collection-paths"></a>Napló-gyűjtemény elérési útjának hozzáadása
-A naplófájlok a *C:\MyApp\Logs*-ben lesznek elhelyezve.  Minden nap egy új fájl jön létre, amelynek a neve tartalmazza a *appYYYYMMDD. log*nevű mintát.  A naplóhoz elegendő minta lenne a *\\\*C:\MyApp\Logs. log*.
+A naplófájlok a *C:\MyApp\Logs*-ben lesznek elhelyezve.  Minden nap egy új fájl jön létre, amelynek a neve tartalmazza a *appYYYYMMDD. log*nevű mintát.  A naplóhoz elegendő minta lenne a *C:\MyApp\Logs \\ \* . log*.
 
 ![Napló gyűjteményének elérési útja](media/data-sources-custom-logs/collection-path.png)
 

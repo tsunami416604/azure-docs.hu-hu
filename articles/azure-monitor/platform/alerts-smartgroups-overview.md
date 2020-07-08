@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 05/15/2018
 ms.openlocfilehash: 05b05f8bc079bb3768ac2f1a03593bc9260b41aa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77665493"
 ---
 # <a name="smart-groups"></a>Intelligens csoportok
@@ -27,7 +26,7 @@ Az intelligens csoport állapota a riasztási állapothoz hasonló fogalom, amel
 
 A következő intelligens csoportos állapotok támogatottak.
 
-| Állapot | Leírás |
+| Állam | Leírás |
 |:---|:---|
 | Új | A probléma nemrég észlelhető, és még nem lett ellenőrizve. |
 | Nyugtázva | A rendszergazda áttekintette az intelligens csoportot, és megkezdte a munkát. |
@@ -47,7 +46,7 @@ Ha intelligens csoportot választ, az intelligens csoport részletei lap jelenik
 
 Az intelligens csoport részleteit tartalmazó oldal a következő részekből áll.
 
-| Section | Leírás |
+| Section | Description |
 |:---|:---|
 | Riasztások | Felsorolja az intelligens csoportban található egyes riasztásokat. Válasszon ki egy riasztást a riasztás részletei lap megnyitásához. |
 | Előzmények | Felsorolja az intelligens csoport által végrehajtott összes műveletet, valamint a rajta végrehajtott módosításokat. Ez jelenleg csak az állapot változásaira és a riasztások tagságának változásaira korlátozódik. |

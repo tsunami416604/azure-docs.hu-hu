@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: ea7c98a1b5b4059c5fea0cf1e8ea2ff5ef08d9d1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77655378"
 ---
 # <a name="working-with-date-time-values-in-azure-monitor-log-queries"></a>A dátum-és időértékek használata Azure Monitor log-lekérdezésekben
@@ -38,7 +37,7 @@ A időtávok tizedes törtként van megadva, majd egy időegység után:
 |mikromásodperces | mikromásodperces  |
 |osztásjel        | NS   |
 
-A dátum-és időértékek létrehozásához egy karakterláncot kell bemutatnia a `todatetime` kezelő használatával. Ha például át szeretné tekinteni az adott időkereten belül küldött virtuális gépek szívverését, `between` az operátor használatával adhatja meg az időtartományt.
+A dátum-és időértékek létrehozásához egy karakterláncot kell bemutatnia a `todatetime` kezelő használatával. Ha például át szeretné tekinteni az adott időkereten belül küldött virtuális gépek szívverését, az `between` operátor használatával adhatja meg az időtartományt.
 
 ```Kusto
 Heartbeat
@@ -58,7 +57,7 @@ Heartbeat
 | where TimeGenerated > now(-2m)
 ```
 
-A legrövidebb és a legkönnyebben olvasható módszer `ago` azonban az operátort használja:
+A legrövidebb és a legkönnyebben olvasható módszer azonban az `ago` operátort használja:
 ```Kusto
 Heartbeat
 | where TimeGenerated > ago(2m)
@@ -84,7 +83,7 @@ Event
 | extend timeAgo = now() - TimeGenerated 
 ```
 
-Az `timeAgo` oszlop a következő értékeket tartalmazza: "00:09:31.5118992", ami azt jelenti, hogy óó: PP: SS. fffffff formátumban vannak formázva. Ha ezeket az értékeket `numver` a kezdési időpont óta percre szeretné formázni, az értéket az "1 perc" értékkel kell elosztani:
+Az `timeAgo` oszlop a következő értékeket tartalmazza: "00:09:31.5118992", ami azt jelenti, hogy óó: PP: SS. fffffff formátumban vannak formázva. Ha ezeket az értékeket a `numver` kezdési időpont óta percre szeretné formázni, az értéket az "1 perc" értékkel kell elosztani:
 
 ```Kusto
 Event
@@ -117,7 +116,7 @@ Ez a lekérdezés a következő táblázatot állítja elő:
 |2018-08-01T09:50:00.000|41|
 |2018-08-01T09:55:00.000|16|
 
-A gyűjtők létrehozásának másik módja a függvények használata, például `startofday`:
+A gyűjtők létrehozásának másik módja a függvények használata, például `startofday` :
 
 ```Kusto
 Event

@@ -8,10 +8,9 @@ ms.date: 02/16/2018
 ms.author: dukek
 ms.subservice: alerts
 ms.openlocfilehash: 50ad9d57b24fab9ee57c2f9caae8f4c39d2681f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77669080"
 ---
 # <a name="create-an-action-group-with-a-resource-manager-template"></a>Műveleti csoport létrehozása Resource Manager-sablonnal
@@ -27,7 +26,7 @@ Először is leírjuk, hogyan hozhat létre Resource Manager-sablont egy olyan m
 
 ## <a name="resource-manager-templates-for-an-action-group"></a>A műveleti csoport Resource Manager-sablonjai
 
-Ha Resource Manager-sablonnal szeretne létrehozni egy műveleti csoportot, létre kell hoznia egy típusú `Microsoft.Insights/actionGroups`erőforrást. Ezután töltse ki az összes kapcsolódó tulajdonságot. A következő két minta sablon hozzon létre egy műveleti csoportot.
+Ha Resource Manager-sablonnal szeretne létrehozni egy műveleti csoportot, létre kell hoznia egy típusú erőforrást `Microsoft.Insights/actionGroups` . Ezután töltse ki az összes kapcsolódó tulajdonságot. A következő két minta sablon hozzon létre egy műveleti csoportot.
 
 ```json
 {

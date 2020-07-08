@@ -7,10 +7,9 @@ ms.author: bfung
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: 194a2da23c8fb405c492df8f6ee173cc97fde4ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77671341"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-service-fabric-cloud-service-and-virtual-machines"></a>A .NET-alkalmazások Snapshot Debugger engedélyezése az Azure Service Fabric, a Cloud Service és a Virtual Machines
@@ -25,7 +24,7 @@ Ha az alkalmazás az Azure Service Fabric, a Cloud Service, a Virtual Machines v
 
 2. Adja meg a [Microsoft. ApplicationInsights. snapshotcollector nugetcsomag](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet-csomagot az alkalmazásban.
 
-3. Ha szükséges, testreszabhatja a [ApplicationInsights. config fájlhoz](../../azure-monitor/app/configuration-with-applicationinsights-config.md)hozzáadott Snapshot Debugger konfigurációt. Az alapértelmezett Snapshot Debugger konfiguráció többnyire üres, és az összes beállítás megadása nem kötelező. Az alábbi példa az alapértelmezett konfigurációval egyenértékű konfigurációt mutatja be:
+3. Ha szükséges, testreszabhatja a [ApplicationInsights.confighoz ](../../azure-monitor/app/configuration-with-applicationinsights-config.md)hozzáadott Snapshot Debugger konfigurációt. Az alapértelmezett Snapshot Debugger konfiguráció többnyire üres, és az összes beállítás megadása nem kötelező. Az alábbi példa az alapértelmezett konfigurációval egyenértékű konfigurációt mutatja be:
 
     ```xml
     <TelemetryProcessors>
@@ -72,18 +71,18 @@ Ha az alkalmazás az Azure Service Fabric, a Cloud Service, a Virtual Machines v
 2. Adja meg a [Microsoft. ApplicationInsights. snapshotcollector nugetcsomag](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet-csomagot az alkalmazásban.
 
 3. Módosítsa az alkalmazás `Startup` osztályát a Snapshot Collector telemetria-processzorának hozzáadásához és konfigurálásához.
-    1. Ha a [Microsoft. ApplicationInsights. snapshotcollector nugetcsomag](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet-csomag 1.3.5 vagy újabb verziója használatban van, akkor adja hozzá a `Startup.cs`következő using utasítást a következőhöz:.
+    1. Ha a [Microsoft. ApplicationInsights. snapshotcollector nugetcsomag](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet-csomag 1.3.5 vagy újabb verziója használatban van, akkor adja hozzá a következő using utasítást a következőhöz: `Startup.cs` .
 
        ```csharp
             using Microsoft.ApplicationInsights.SnapshotCollector;
        ```
 
-       Adja hozzá a következőt a ConfigureServices metódus végén a `Startup` osztályban a ben. `Startup.cs`
+       Adja hozzá a következőt a ConfigureServices metódus végén a osztályban a `Startup` ben `Startup.cs` .
 
        ```csharp
             services.AddSnapshotCollector((configuration) => Configuration.Bind(nameof(SnapshotCollectorConfiguration), configuration));
        ```
-    2. Ha a [Microsoft. ApplicationInsights. snapshotcollector nugetcsomag](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet-csomag 1.3.4 vagy újabb verziója használatban van, akkor adja hozzá a `Startup.cs`következő using utasítást a következőhöz:.
+    2. Ha a [Microsoft. ApplicationInsights. snapshotcollector nugetcsomag](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet-csomag 1.3.4 vagy újabb verziója használatban van, akkor adja hozzá a következő using utasítást a következőhöz: `Startup.cs` .
 
        ```csharp
        using Microsoft.ApplicationInsights.SnapshotCollector;
@@ -92,7 +91,7 @@ Ha az alkalmazás az Azure Service Fabric, a Cloud Service, a Virtual Machines v
        using Microsoft.ApplicationInsights.Extensibility;
        ```
     
-       Adja hozzá a `SnapshotCollectorTelemetryProcessorFactory` következő osztályt az `Startup` osztályhoz.
+       Adja hozzá a következő `SnapshotCollectorTelemetryProcessorFactory` osztályt az `Startup` osztályhoz.
     
        ```csharp
        class Startup
@@ -112,7 +111,7 @@ Ha az alkalmazás az Azure Service Fabric, a Cloud Service, a Virtual Machines v
            }
            ...
         ```
-        Adja hozzá `SnapshotCollectorConfiguration` a `SnapshotCollectorTelemetryProcessorFactory` és a szolgáltatásokat az indítási folyamathoz:
+        Adja hozzá a `SnapshotCollectorConfiguration` és a `SnapshotCollectorTelemetryProcessorFactory` szolgáltatásokat az indítási folyamathoz:
     
         ```csharp
            // This method gets called by the runtime. Use this method to add services to the container.
@@ -129,7 +128,7 @@ Ha az alkalmazás az Azure Service Fabric, a Cloud Service, a Virtual Machines v
        }
        ```
 
-4. Ha szükséges, a appSettings. JSON fájlhoz való hozzáadásával testre szabhatja a Snapshot Debugger konfigurációt a SnapshotCollectorConfiguration. A Snapshot Debugger konfigurációjának összes beállítása nem kötelező. Az alábbi példa az alapértelmezett konfigurációval egyenértékű konfigurációt mutatja be:
+4. Ha szükséges, testreszabhatja a Snapshot Debugger konfigurációt úgy, hogy hozzáad egy SnapshotCollectorConfiguration szakaszt a appsettings.jshoz. A Snapshot Debugger konfigurációjának összes beállítása nem kötelező. Az alábbi példa az alapértelmezett konfigurációval egyenértékű konfigurációt mutatja be:
 
    ```json
    {

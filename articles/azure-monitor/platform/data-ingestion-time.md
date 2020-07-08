@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
 ms.openlocfilehash: 99d5594dd3ebe3750cb0a09ea803065e2aeb5ba2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77666637"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Naplóadatok feldolgozási ideje az Azure Monitorban
@@ -60,7 +59,7 @@ A gyűjtemény gyakoriságának meghatározásához tekintse meg az egyes megold
 Miután betöltötte a naplóbejegyzések betöltését a Azure Monitori folyamatba (ahogy az a [_TimeReceived](log-standard-properties.md#_timereceived) tulajdonságban van meghatározva), a bérlők elkülönítésének biztosításához, valamint az adatok nem elvesztésének megtételéhez a rendszer az ideiglenes tárhelyre írja őket. Ez a folyamat általában 5-15 másodpercet vesz igénybe. Egyes felügyeleti megoldások súlyosabb algoritmusokat implementálnak az adatösszesítéshez és az elemzések kinyeréséhez, mivel az adatátviteli szolgáltatás a ben. A hálózati teljesítmény figyelése például 3 perces intervallumokban összesíti a bejövő adatokat, ami gyakorlatilag 3 perces késéssel jár. Egy másik folyamat, amely a késést adja meg, az egyéni naplókat kezelő folyamat. Bizonyos esetekben előfordulhat, hogy a folyamat néhány percet vesz igénybe az ügynök által a fájlokból gyűjtött naplók számára.
 
 ### <a name="new-custom-data-types-provisioning"></a>Új egyéni adattípusok kiépítés
-Amikor új egyéni adattípust hoz létre egy [Egyéni naplóból](data-sources-custom-logs.md) vagy az adatgyűjtő [API](data-collector-api.md)-ból, a rendszer létrehoz egy dedikált tároló-tárolót. Ez egy egyszeri terhelés, amely csak az adattípus első megjelenésekor fordul elő.
+Amikor új egyéni adattípust hoz létre egy [Egyéni naplóból](data-sources-custom-logs.md) vagy az adatgyűjtő [API](data-collector-api.md)-ból, a rendszer létrehoz egy dedikált tároló-tárolót. Ez egy egyszeri többletterhelés, amely csak ezen adattípus első megjelenésekor jelentkezik.
 
 ### <a name="surge-protection"></a>Túlfeszültség-védelem
 Azure Monitor elsődleges prioritása annak biztosítása, hogy az ügyféladatok ne legyenek elveszve, így a rendszer beépített védelmet biztosít az adathullámok számára. Ilyenek például a pufferek, amelyekkel biztosítható, hogy a rendszer még az óriási terhelés mellett is működőképes maradjon. A normál betöltés alatt ezek a vezérlőelemek kevesebb mint egy percet vesznek igénybe, de szélsőséges körülmények között és meghibásodás esetén jelentős időt vehetnek igénybe, miközben az adat biztonságos.
@@ -79,7 +78,7 @@ A betöltési idő különböző körülmények között eltérő lehet. A napl�
 |:---|:---|:---|
 | Rekord létrehozva az adatforrásban | [TimeGenerated](log-standard-properties.md#timegenerated-and-timestamp) <br>Ha az adatforrás nem állítja be ezt az értéket, akkor a _TimeReceived-val megegyező időpontra lesz beállítva. |
 | Azure Monitor betöltési végpont által fogadott rekord | [_TimeReceived](log-standard-properties.md#_timereceived) | |
-| A munkaterületen tárolt és a lekérdezésekhez elérhető rekord | [ingestion_time()](/azure/kusto/query/ingestiontimefunction) | |
+| A munkaterületen tárolt és a lekérdezésekhez elérhető rekord | [ingestion_time ()](/azure/kusto/query/ingestiontimefunction) | |
 
 ### <a name="ingestion-latency-delays"></a>Betöltési késés késése
 Egy adott rekord késését mérhetővé teheti, ha összehasonlítja a [ingestion_time ()](/azure/kusto/query/ingestiontimefunction) függvény eredményét a _TimeGenerated_ tulajdonsággal. Ezeket az adatmennyiségeket különböző összesítésekkel lehet használni, hogy megtudja, hogyan viselkedik a betöltési késés. Vizsgálja meg a betöltési idő néhány százalékos arányát, hogy nagy mennyiségű adatot kapjon. 
@@ -95,7 +94,7 @@ Heartbeat
 | top 20 by percentile_E2EIngestionLatency_95 desc
 ```
 
-Az előző percentilis-ellenőrzések hasznosak a késés általános trendjeinek megkereséséhez. Ha egy rövid távú csúcsot szeretne meghatározni a késésben, a maximális`max()`() érték használata hatékonyabb lehet.
+Az előző percentilis-ellenőrzések hasznosak a késés általános trendjeinek megkereséséhez. Ha egy rövid távú csúcsot szeretne meghatározni a késésben, a maximális () érték használata `max()` hatékonyabb lehet.
 
 Ha egy adott számítógép betöltési idejét egy adott időszakon belül szeretné részletezni, használja a következő lekérdezést, amely a diagramon az elmúlt nap adatait is megjeleníti: 
 

@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
 ms.openlocfilehash: 1b3ae6295a639c3d59643b106b920cb606572e0a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77670576"
 ---
 # <a name="collect-iis-logs-in-azure-monitor"></a>IIS-naplók összegyűjtése Azure Monitor
@@ -43,7 +42,7 @@ Az IIS-naplóbejegyzések típusa **W3CIISLog** , és a következő táblázatba
 | csUserName |A kiszolgálót elérő hitelesített felhasználó neve. A névtelen felhasználókat kötőjel jelöli. |
 | csUriStem |A kérelem célja, például weblap. |
 | csUriQuery |Lekérdezés, ha van ilyen, amelyet az ügyfél megpróbált végrehajtani. |
-| ManagementGroupName |Operations Manager ügynökök felügyeleti csoportjának neve.  Más ügynökök esetében ez az AOI-\<Workspace azonosító\> |
+| ManagementGroupName |Operations Manager ügynökök felügyeleti csoportjának neve.  Más ügynökök esetében ez az AOI-\<workspace ID\> |
 | RemoteIPCountry |Az ügyfél IP-címének országa/régiója. |
 | RemoteIPLatitude |Az ügyfél IP-címének földrajzi szélességét. |
 | RemoteIPLongitude |Az ügyfél IP-címének hosszúsága. |
@@ -60,12 +59,12 @@ Az IIS-naplóbejegyzések típusa **W3CIISLog** , és a következő táblázatba
 ## <a name="log-queries-with-iis-logs"></a>Lekérdezések naplózása IIS-naplókkal
 Az alábbi táblázat különböző példákat tartalmaz az IIS-naplóbejegyzések lekérésére szolgáló naplókra.
 
-| Lekérdezés | Leírás |
+| Lekérdezés | Description |
 |:--- |:--- |
 | W3CIISLog |Az összes IIS-naplózási rekord. |
 | W3CIISLog &#124;, ahol scStatus = = 500 |Az összes IIS-naplózási rekord 500-as visszatérési állapottal. |
 | W3CIISLog &#124; összegzések száma () a cIP szerint |IIS-naplóbejegyzések száma az ügyfél IP-címe alapján. |
-| W3CIISLog &#124;, ahol csHost = = "\.www contoso.com" &#124; összesítések száma () a csUriStem szerint |Az IIS-naplóbejegyzések száma a gazdagép www\.contoso.com URL-címe alapján. |
+| W3CIISLog &#124;, ahol csHost = = "www \. contoso.com" &#124; összesítések száma () a csUriStem szerint |Az IIS-naplóbejegyzések száma a gazdagép www contoso.com URL-címe alapján \. . |
 | W3CIISLog &#124; a Sum (csBytes) összegzése a számítógépen &#124; Take 500000 |AZ egyes IIS-számítógépek által fogadott bájtok száma. |
 
 ## <a name="next-steps"></a>További lépések

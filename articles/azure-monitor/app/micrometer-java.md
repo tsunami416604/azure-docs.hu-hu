@@ -6,17 +6,16 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 11/01/2018
 ms.openlocfilehash: dd04087db32f0bbfa75dafa7e12c355e5ab7b515
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77670066"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>A Mikrométer használata az Azure Application Insights Java SDK-val
 A Mikrométer alkalmazás-figyelési mérőszámai a JVM-alapú alkalmazás kódjára vonatkoznak, és lehetővé teszi az adatok exportálását kedvenc megfigyelési rendszerbe. Ez a cikk bemutatja, hogyan használható a Mikrométer a Application Insights a Spring boot és a nem rugós rendszerindítási alkalmazásokhoz.
 
 ## <a name="using-spring-boot-15x"></a>Spring boot 1.5 x használata
-Adja hozzá a következő függőségeket a Pom. XML vagy Build. gradle fájlhoz: 
+Adja hozzá a következő függőségeket a pom.xml vagy Build. gradle fájlhoz: 
 * [Application Insights Spring-boot-Starter](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/azure-application-insights-spring-boot-starter) 2.5.0 vagy újabb verzió
 * Mikrométer Azure Registry 1.1.0 vagy újabb
 * A [mikrométer rugó örökölt](https://micrometer.io/docs/ref/spring/1.5) 1.1.0-es vagy újabb (ez a backports az automatikus konfigurációs kód a Spring Framework-ben).
@@ -24,7 +23,7 @@ Adja hozzá a következő függőségeket a Pom. XML vagy Build. gradle fájlhoz
 
 Lépések
 
-1. Frissítse a Spring boot-alkalmazás Pom. XML fájlját, és adja hozzá az alábbi függőségeket:
+1. Frissítse a Spring boot-alkalmazás pom.xml-fájlját, és adja hozzá az alábbi függőségeket:
 
     ```XML
     <dependency>
@@ -54,7 +53,7 @@ Lépések
 
 ## <a name="using-spring-2x"></a>A Spring 2. x használata
 
-Adja hozzá a következő függőségeket a Pom. XML vagy Build. gradle fájlhoz:
+Adja hozzá a következő függőségeket a pom.xml vagy Build. gradle fájlhoz:
 
 * Application Insights Spring-boot-Starter 2.1.2 vagy újabb verzió
 * Azure-Spring-boot-metrikák-kezdő 2.0.7 vagy újabb
@@ -62,7 +61,7 @@ Adja hozzá a következő függőségeket a Pom. XML vagy Build. gradle fájlhoz
 
 Lépések:
 
-1. Frissítse a Spring boot-alkalmazás Pom. XML fájlját, és adja hozzá a következő függőséget:
+1. Frissítse a Spring boot-alkalmazás pom.xml-fájlját, és adja hozzá a következő függőséget:
 
     ```XML
     <dependency> 
@@ -113,7 +112,7 @@ Az automatikus metrikák gyűjtésének kikapcsolása:
 
 ## <a name="use-micrometer-with-non-spring-boot-web-applications"></a>A Mikrométer használata nem rugós rendszerindító webalkalmazásokkal
 
-Adja hozzá a következő függőségeket a Pom. XML vagy Build. gradle fájlhoz:
+Adja hozzá a következő függőségeket a pom.xml vagy Build. gradle fájlhoz:
 
 * Application Insights web Auto 2.5.0 vagy újabb verzió
 * Mikrométer Azure Registry 1.1.0 vagy újabb
@@ -121,7 +120,7 @@ Adja hozzá a következő függőségeket a Pom. XML vagy Build. gradle fájlhoz
 
 Lépések:
 
-1. Adja hozzá a következő függőségeket a Pom. XML vagy Build. gradle fájlhoz:
+1. Adja hozzá a következő függőségeket a pom.xml vagy Build. gradle fájlhoz:
 
     ```XML
         <dependency>
@@ -137,7 +136,7 @@ Lépések:
         </dependency>
      ```
 
-2. Fájl `ApplicationInsights.xml` elhelyezése a Resources mappában:
+2. `ApplicationInsights.xml`Fájl elhelyezése a Resources mappában:
 
     ```XML
     <?xml version="1.0" encoding="utf-8"?>

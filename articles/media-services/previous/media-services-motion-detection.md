@@ -15,10 +15,9 @@ ms.date: 03/19/2019
 ms.author: juliako
 ms.reviewer: milanga
 ms.openlocfilehash: f4c021531a4d04bf16e5dbee4172952433f675d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77913004"
 ---
 # <a name="detect-motions-with-azure-media-analytics"></a>Mozgások észlelése Azure Media Analytics
@@ -45,7 +44,7 @@ Ha **Azure Media Motion Detectorkal**rendelkező feladatot hoz létre, meg kell 
 ### <a name="parameters"></a>Paraméterek
 A következő paramétereket használhatja:
 
-| Name (Név) | Beállítások | Leírás | Alapértelmezett |
+| Name | Beállítások | Description | Alapértelmezett |
 | --- | --- | --- | --- |
 | sensitivityLevel |Karakterlánc: "Low", "medium", "High" |Meghatározza a mozgások jelentésének érzékenységi szintjét. Módosítsa a hamis pozitív számok számának módosítását. |közepes |
 | frameSamplingValue |Pozitív egész szám |Meghatározza az algoritmus futtatásának gyakoriságát. 1 egyenlő minden kerettel, 2 azt jelenti, hogy minden második keret és így tovább. |1 |
@@ -98,7 +97,7 @@ A mozgásérzékelő API-k jelzik, hogy vannak-e mozgásban lévő objektumok eg
 
 A következő táblázat a kimeneti JSON-fájl elemeit ismerteti.
 
-| Elem | Leírás |
+| Elem | Description |
 | --- | --- |
 | version |Ez a videó API verziójára vonatkozik. A jelenlegi verzió: 2. |
 | időskála |A videó másodpercenkénti száma. |
@@ -109,7 +108,7 @@ A következő táblázat a kimeneti JSON-fájl elemeit ismerteti.
 | duration |Az esemény hosszúsága "ketyeg". |
 | interval |Az esemény egyes bejegyzéseinek intervalluma ("ticks"). |
 | események |Az egyes események töredékei az adott időtartamon belül észlelt mozgást tartalmazzák. |
-| type |A jelenlegi verzióban ez mindig "2" az általános mozgáshoz. Ez a címke a videó API-k számára biztosít rugalmasságot a jövőbeli verziókban való mozgás kategorizálásához. |
+| típus |A jelenlegi verzióban ez mindig "2" az általános mozgáshoz. Ez a címke a videó API-k számára biztosít rugalmasságot a jövőbeli verziókban való mozgás kategorizálásához. |
 | regionId |A fentiekben leírtaknak megfelelően ez a verzió mindig 0 lesz. Ez a címke a videó API rugalmasságát kínálja a különböző régiókban a jövőbeli verziókban való mozgás megkereséséhez. |
 | régiók |A videó azon részére utal, amelyben érdekli a mozgás. <br/><br/>-az "id" a régió területét jelenti – ebben a verzióban csak egy azonosító 0. <br/>a "type" kifejezés a mozgáshoz szükséges régió alakját jelöli. Jelenleg a "téglalap" és a "sokszög" támogatott.<br/> Ha a "téglalap" értéket adta meg, a régió mérete X, Y, width és height. Az X és Y koordináták a régió bal oldali XY koordinátáit jelölik a 0,0 és 1,0 közötti normalizált méretekben. A szélesség és a magasság a 0,0 és 1,0 közötti normalizált skálán lévő régió méretét jelöli. Az aktuális verzióban az X, Y, width és height mindig a 0, 0 és 1, 1. <br/>Ha a "sokszög" értéket adta meg, a régió méretei vannak a pontokban. <br/> |
 | töredékek |A metaadatok a töredékek nevű különböző szegmensekben vannak kiosztva. Minden töredék tartalmaz kezdési időpontot, időtartamot, intervallumszámot és esemény(eke)t. Az események nélküli töredékek azt jelzik, hogy a kezdési idő és az időtartam során nem észlelhető mozgás. |
@@ -208,7 +207,7 @@ A következő program a következőket mutatja be:
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Egy Visual Studio-projekt létrehozása és konfigurálása
 
-Állítsa be a fejlesztési környezetet, és töltse fel az app. config fájlt a következő témakörben ismertetett módon: [Media Services fejlesztés a .net](media-services-dotnet-how-to-use.md)-tel. 
+Állítsa be a fejlesztési környezetet, és töltse fel a app.config fájlt a következő témakörben leírtak szerint: [Media Services fejlesztés a .net](media-services-dotnet-how-to-use.md)-tel. 
 
 #### <a name="example"></a>Példa
 

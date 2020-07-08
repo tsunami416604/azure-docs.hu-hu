@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 02/25/2020
 ms.author: rajanaki
 ms.openlocfilehash: 208177d10e9002fafe2495710da229541a11a43e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77661670"
 ---
 # <a name="deprecation-of-disaster-recovery-between-customer-managed-sites-with-vmm-using-azure-site-recovery"></a>Az ügyfél által felügyelt webhelyek (VMM) közötti vész-helyreállítás elavult Azure Site Recovery használatával
@@ -57,7 +56,7 @@ Ha az 1. lehetőséget választja, hajtsa végre a következő lépéseket:
 
 Ha a Hyper-V replika használatának 2. lehetőségét választja, hajtsa végre a következő lépéseket:
 
-1. A **védett elemek** > **replikált elemek**területen kattintson a jobb gombbal a gépre > a **replikáció letiltása**lehetőségre.
+1. A **védett elemek**  >  **replikált elemek**területen kattintson a jobb gombbal a gépre > a **replikáció letiltása**lehetőségre.
 2. A **replikáció letiltása**lapon válassza az **Eltávolítás**lehetőséget.
 
     Ezzel eltávolítja a replikált elemet a Azure Site Recoveryról (a számlázás leállt). A helyszíni virtuális gépen a replikálási konfiguráció **nem** lesz törölve. 

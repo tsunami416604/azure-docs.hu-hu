@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 08/06/2018
 ms.openlocfilehash: e13f4abc37e348759e7d0b8a2f7d890c82fe0d15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77660240"
 ---
 # <a name="search-queries-in-azure-monitor-logs"></a>Keresési lekérdezések Azure Monitor naplókban
@@ -29,7 +28,7 @@ search "error"
 Habár egyszerűen használhatók, a nem hatókörű lekérdezések, mint például a fentiekben láthatók, nem hatékonyak, és sok lényegtelen eredményt adnak vissza. A jobb gyakorlat a megfelelő táblában, vagy akár egy adott oszlopban is megkereshető.
 
 ### <a name="table-scoping"></a>Táblázat hatóköre
-Egy adott tábla kifejezésének kereséséhez vegye fel `in (table-name)` a következőt közvetlenül a **keresési** operátor után:
+Egy adott tábla kifejezésének kereséséhez vegye fel a következőt `in (table-name)` közvetlenül a **keresési** operátor után:
 
 ```Kusto
 search in (Event) "error"
@@ -51,10 +50,10 @@ search in (Event) Source:"error"
 ```
 
 > [!TIP]
-> Ha a helyett `==` a `:`-t használja, az eredmények olyan rekordokat is tartalmaznak, amelyekben a *forrás* oszlop pontos értéke "Error", és ebben a pontos esetben. A ":" használatával olyan rekordokat fog tartalmazni, amelyekben a *forrás* olyan értékekkel rendelkezik, mint például a "hibakód 404" vagy a "hiba".
+> Ha a `==` helyett `:` a-t használja, az eredmények olyan rekordokat is tartalmaznak, amelyekben a *forrás* oszlop pontos értéke "Error", és ebben a pontos esetben. A ":" használatával olyan rekordokat fog tartalmazni, amelyekben a *forrás* olyan értékekkel rendelkezik, mint például a "hibakód 404" vagy a "hiba".
 
 ## <a name="case-sensitivity"></a>Kis-és nagybetűk megkülönböztetése
-Alapértelmezés szerint a kifejezéses keresés a kis-és nagybetűk megkülönböztetése, ezért a "DNS" keresése olyan eredményeket eredményezhet, mint például a "DNS", a "DNS" vagy a "DNS". A keresési kis-és nagybetűk megkülönböztetéséhez használja `kind` a következő lehetőséget:
+Alapértelmezés szerint a kifejezéses keresés a kis-és nagybetűk megkülönböztetése, ezért a "DNS" keresése olyan eredményeket eredményezhet, mint például a "DNS", a "DNS" vagy a "DNS". A keresési kis-és nagybetűk megkülönböztetéséhez használja a következő `kind` lehetőséget:
 
 ```Kusto
 search kind=case_sensitive in (Event) "DNS"
@@ -89,10 +88,10 @@ search in (Event) "corp*.com"
 | take 100
 ```
 
-Egy táblában is megtudhatja, hogy csak egy Wild kártyát használ: `search in (Event) *`, de az csak `Event`az írást fogja használni.
+Egy táblában is megtudhatja, hogy csak egy Wild kártyát használ: `search in (Event) *` , de az csak az írást fogja használni `Event` .
 
 > [!TIP]
-> Habár `search *` a segítségével minden oszlopból lekérheti az összes oszlopot, azt javasoljuk, hogy a lekérdezéseket mindig az adott táblákra szűkítse. A nem hatókörű lekérdezések végrehajtása hosszabb időt is igénybe vehet, és előfordulhat, hogy túl sok eredményt ad vissza.
+> Habár a segítségével minden `search *` oszlopból lekérheti az összes oszlopot, azt javasoljuk, hogy a lekérdezéseket mindig az adott táblákra szűkítse. A nem hatókörű lekérdezések végrehajtása hosszabb időt is igénybe vehet, és előfordulhat, hogy túl sok eredményt ad vissza.
 
 ## <a name="add-and--or-to-search-queries"></a>Lekérdezések hozzáadása *és* / *or* keresése
 A **és** a használatával több kifejezést tartalmazó rekordokat kereshet:

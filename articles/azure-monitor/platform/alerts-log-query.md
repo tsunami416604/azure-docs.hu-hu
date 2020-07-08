@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.subservice: alerts
 ms.openlocfilehash: fdf492b8f103e725046b9b1cbbd079c4d249664a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77667788"
 ---
 # <a name="log-alert-queries-in-azure-monitor"></a>Riasztási lekérdezések naplózása Azure Monitor
@@ -25,7 +24,7 @@ Például a következő lekérdezés hatóköre a _SecurityEvent_ táblára vona
 SecurityEvent | where EventID == 4624 
 ```
 
-A `search` -től kezdődő vagy `union` egy tábla több oszlopában, vagy akár több táblában is kereshet. Az alábbi példák több módszert is mutatnak a feltételek _memóriabeli_kereséséhez:
+A-től kezdődő `search` vagy `union` egy tábla több oszlopában, vagy akár több táblában is kereshet. Az alábbi példák több módszert is mutatnak a feltételek _memóriabeli_kereséséhez:
 
 ```Kusto
 search "Memory"
@@ -38,9 +37,9 @@ union * | where ObjectName == "Memory"
 Bár `search` és `union` hasznosak lehetnek az adatfeltárás során, a kifejezéseket a teljes adatmodellben keresik, kevésbé hatékonyak, mint a tábla használata, mert több táblában kell megvizsgálni. Mivel a riasztási szabályok lekérdezéseit rendszeres időközönként futtatják, ez túlzott terhelést eredményezhet a riasztáshoz képest. Ezen terhelés miatt az Azure-beli naplózási riasztási szabályok lekérdezései mindig táblázattal kezdődnek, hogy egyértelmű hatókört határozzanak meg, ami javítja a lekérdezési teljesítményt és az eredmények relevanciáját.
 
 ## <a name="unsupported-queries"></a>Nem támogatott lekérdezések
-A 2019. január 11-én kezdődően a-t használó `search` `union` log riasztási szabályok létrehozása vagy módosítása nem támogatott a Azure Portal. Ha ezeket a kezelőket riasztási szabályban használja, hibaüzenetet ad vissza. Ez a változás nem érinti a meglévő riasztási szabályokat és a Log Analytics API-val szerkesztett riasztási szabályokat. Érdemes megfontolnia az ilyen típusú lekérdezéseket használó riasztási szabályok módosítását is, de így hatékonyabbá teheti a hatékonyságát.  
+A 2019. január 11-én kezdődően a-t használó log riasztási szabályok létrehozása vagy módosítása `search` `union` nem támogatott a Azure Portal. Ha ezeket a kezelőket riasztási szabályban használja, hibaüzenetet ad vissza. Ez a változás nem érinti a meglévő riasztási szabályokat és a Log Analytics API-val szerkesztett riasztási szabályokat. Érdemes megfontolnia az ilyen típusú lekérdezéseket használó riasztási szabályok módosítását is, de így hatékonyabbá teheti a hatékonyságát.  
 
-A riasztási szabályok [több erőforrással végzett lekérdezések](../log-query/cross-workspace-query.md) használatával történő naplózása nem érinti ezt a változást, mivel `union`az erőforrások közötti lekérdezések használata a lekérdezés hatókörét meghatározott erőforrásokra korlátozza. Ez nem egyenértékű, `union *` mert nem használható.  A következő példa egy naplózási riasztási szabályban érvényes:
+A riasztási szabályok [több erőforrással végzett lekérdezések](../log-query/cross-workspace-query.md) használatával történő naplózása nem érinti ezt a változást, mivel az erőforrások közötti lekérdezések használata `union` a lekérdezés hatókörét meghatározott erőforrásokra korlátozza. Ez nem egyenértékű, mert nem `union *` használható.  A következő példa egy naplózási riasztási szabályban érvényes:
 
 ```Kusto
 union 
@@ -53,10 +52,10 @@ workspace('Contoso-workspace1').Perf
 >Az új [SCHEDULEDQUERYRULES API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)támogatja a naplózási riasztásokban lévő [erőforrás-lekérdezések közötti lekérdezést](../log-query/cross-workspace-query.md) . Alapértelmezés szerint a Azure Monitor az [örökölt log Analytics riasztási API](api-alerts.md) -t használja az új naplózási riasztási szabályok létrehozásához Azure Portalból, kivéve, ha az [örökölt naplózási riasztások API](alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api)-ból vált. A kapcsoló után az új API lesz az új riasztási szabályok alapértelmezett értéke Azure Portalban, és lehetővé teszi az erőforrások közötti lekérdezési napló riasztási szabályainak létrehozását. A [SCHEDULEDQUERYRULES API ARM-sablonjának](alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template) használata nélkül hozhat létre [erőforrás-lekérdezési](../log-query/cross-workspace-query.md) napló-riasztási szabályokat, de ez a riasztási szabály kezelhető, bár a [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) nem Azure Portal.
 
 ## <a name="examples"></a>Példák
-Az alábbi példákban a és `search` `union` a által használt naplózási lekérdezések szerepelnek, valamint azokat a lépéseket, amelyek segítségével módosíthatja ezeket a lekérdezéseket a riasztási szabályokkal való használatra.
+Az alábbi példákban a és a által használt naplózási lekérdezések szerepelnek, valamint azokat a lépéseket, amelyek segítségével `search` `union` módosíthatja ezeket a lekérdezéseket a riasztási szabályokkal való használatra.
 
-### <a name="example-1"></a>1. példa
-A következő lekérdezéssel szeretne létrehozni egy naplózási riasztási szabályt, amely a következők használatával `search`kérdezi le a teljesítményadatokat: 
+### <a name="example-1"></a>1\. példa
+A következő lekérdezéssel szeretne létrehozni egy naplózási riasztási szabályt, amely a következők használatával kérdezi le a teljesítményadatokat `search` : 
 
 ``` Kusto
 search * | where Type == 'Perf' and CounterName == '% Free Space' 
@@ -85,8 +84,8 @@ Perf
 ```
 
 
-### <a name="example-2"></a>2. példa
-A következő lekérdezéssel szeretne létrehozni egy naplózási riasztási szabályt, amely a következők használatával `search`kérdezi le a teljesítményadatokat: 
+### <a name="example-2"></a>2\. példa
+A következő lekérdezéssel szeretne létrehozni egy naplózási riasztási szabályt, amely a következők használatával kérdezi le a teljesítményadatokat `search` : 
 
 ``` Kusto
 search ObjectName =="Memory" and CounterName=="% Committed Bytes In Use"  
@@ -117,9 +116,9 @@ Perf
 ```
  
 
-### <a name="example-3"></a>3. példa
+### <a name="example-3"></a>3\. példa
 
-A következő lekérdezéssel szeretne létrehozni egy naplózási riasztási szabályt, amely a `search` ( `union` z) és a teljesítmény-információk lekérésére is használja: 
+A következő lekérdezéssel szeretne létrehozni egy naplózási riasztási szabályt, amely a (z) `search` és a `union` teljesítmény-információk lekérésére is használja: 
 
 ``` Kusto
 search (ObjectName == "Processor" and CounterName == "% Idle Time" and InstanceName == "_Total")  
@@ -161,7 +160,7 @@ Perf
 ``` 
 
 ### <a name="example-4"></a>4. példa
-A következő lekérdezéssel szeretne létrehozni egy naplózási riasztási szabályt, amely összekapcsolja a `search` két lekérdezés eredményét:
+A következő lekérdezéssel szeretne létrehozni egy naplózási riasztási szabályt, amely összekapcsolja a két lekérdezés eredményét `search` :
 
 ```Kusto
 search Type == 'SecurityEvent' and EventID == '4625' 

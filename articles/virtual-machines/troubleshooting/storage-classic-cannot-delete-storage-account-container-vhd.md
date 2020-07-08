@@ -9,10 +9,9 @@ ms.topic: troubleshooting
 ms.date: 01/11/2019
 ms.author: annayak
 ms.openlocfilehash: 95c85309058911d6767eb44efd7b37ddac7a9119
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77915037"
 ---
 # <a name="troubleshoot-classic-storage-resource-deletion-errors"></a>A klasszikus tárolási erőforrás törlésével kapcsolatos hibák elhárítása
@@ -97,8 +96,8 @@ A portálon két élmény lehet a törlésre kijelölt Blobok listájától füg
 
 
 2. Ha a "bérelt" és "elérhető" Blobok kombinációja be van jelölve, a "Törlés" gomb jelenik meg. A "Törlés" művelet azonban az oldal Blobok mögött marad, amelyeknek lemezes bérletük van. 
-![Képernyőkép a portálról: a tároló blob "List" panelje megnyitja](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_vhd_leased_and_unleased_portal_1.jpg)
-![a portál képernyőképét, és megnyílik a kiválasztott blob "Törlés" panelje.](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_vhd_leased_and_unleased_portal_2.jpg)
+![Képernyőkép a portálról: a tároló blob "List" panelje megnyitja ](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_vhd_leased_and_unleased_portal_1.jpg)
+ ![ a portál képernyőképét, és megnyílik a kiválasztott blob "Törlés" panelje.](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_vhd_leased_and_unleased_portal_2.jpg)
 
 #### <a name="azure-powershell"></a>Azure PowerShell 
 Ha a felhasználó a PowerShell használatával választja a törlést, a következő hibaüzenetet fogja eredményezni. 
@@ -114,7 +113,7 @@ Ha a felhasználó a PowerShell használatával választja a törlést, a követ
 Kövesse az alábbi lépéseket a Azure Portalon:
 1.  Navigáljon a [Azure Portal](https://portal.azure.com).
 2.  Navigáljon a lemezekhez (klasszikus). 
-3.  Kattintson a lemezek fülre. ![képernyőkép a portálról, amelyen a tároló blob "List" panelje meg van nyitva](./media/storage-classic-cannot-delete-storage-account-container-vhd/resolution_click_disks_tab.jpg)
+3.  Kattintson a lemezek fülre. ![ Képernyőkép a portálról, amelyen a tároló blob "List" panelje meg van nyitva](./media/storage-classic-cannot-delete-storage-account-container-vhd/resolution_click_disks_tab.jpg)
  
 4.  Válassza ki az adatlemezt, majd kattintson a Lemez törlése gombra.
  ![Képernyőkép a portálról, amelyen a tároló blob "List" panelje meg van nyitva](./media/storage-classic-cannot-delete-storage-account-container-vhd/resolution_click_delete_disk.jpg)
