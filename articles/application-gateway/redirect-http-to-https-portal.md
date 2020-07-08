@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
 ms.openlocfilehash: dbf4770bf5ac1747d596e6907dbc903ce8c16de9
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84804349"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-portal"></a>HTTP-alapú Application Gateway létrehozása a HTTPS-átirányítás Azure Portal használatával
@@ -146,7 +146,7 @@ Ebben a példában egy olyan virtuálisgép-méretezési csoportot hoz létre, a
 12. A **hálózatkezelés**területen győződjön meg arról, hogy a terheléselosztási **beállítások** beállítás értéke **Application Gateway**.
 13. Győződjön meg arról, hogy az **Application Gateway** **myAppGateway**van beállítva.
 14. Győződjön meg arról, hogy az **alhálózat** **myBackendSubnet**értékre van beállítva.
-15. Kattintson a **Létrehozás** gombra.
+15. Válassza a **Létrehozás** lehetőséget.
 
 ### <a name="associate-the-scale-set-with-the-proper-backend-pool"></a>A méretezési csoport hozzárendelése a megfelelő háttér-készlethez
 

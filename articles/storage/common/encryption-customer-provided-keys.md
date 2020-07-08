@@ -11,10 +11,10 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.openlocfilehash: 0e5a85bcc4ded3b4bf3fcbcaf095d7c8ef01c458
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84805316"
 ---
 # <a name="provide-an-encryption-key-on-a-request-to-blob-storage-preview"></a>Titkosítási kulcs megadása blob Storage-kérelemre (előzetes verzió)
@@ -39,7 +39,7 @@ Minden blob-pillanatképhez saját titkosítási kulcs tartozhat.
 
 REST-hívások esetén az ügyfelek a következő fejlécek segítségével biztonságosan továbbítják a titkosítási kulcs információit a blob Storage-kérelemre:
 
-|Kérelem fejléce | Leírás |
+|Kérelem fejléce | Description |
 |---------------|-------------|
 |`x-ms-encryption-key` |Írási és olvasási kérelmek esetén egyaránt szükséges. Base64 kódolású AES-256 titkosítási kulcs értéke. |
 |`x-ms-encryption-key-sha256`| Írási és olvasási kérelmek esetén egyaránt szükséges. A titkosítási kulcs Base64 kódolású SHA256. |

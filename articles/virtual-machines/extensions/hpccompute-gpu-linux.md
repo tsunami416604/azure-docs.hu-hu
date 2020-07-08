@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 02/11/2019
 ms.author: akjosh
 ms.openlocfilehash: 68dddde965900b966efa96fbd7da7141f1ed8a94
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84753546"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>NVIDIA GPU illesztőprogram-bővítmény Linux rendszerhez
@@ -83,7 +83,7 @@ A következő JSON a bővítmény sémáját jeleníti meg.
 
 Az összes beállítás megadása nem kötelező. Az alapértelmezett viselkedés nem frissíti a rendszermagot, ha az illesztőprogram telepítéséhez nem szükséges, telepítse a legújabb támogatott illesztőprogramot és a CUDA-eszközkészletet (a megfelelő módon).
 
-| Name | Leírás | Alapértelmezett érték | Érvényes értékek | Adattípus |
+| Name | Description | Alapértelmezett érték | Érvényes értékek | Adattípus |
 | ---- | ---- | ---- | ---- | ---- |
 | updateOS | A kernel frissítése akkor is, ha az illesztőprogram telepítése nem szükséges | hamis | igaz, hamis | logikai |
 | driverVersion | NV: GRID-illesztőprogram verziója<br> NC/ND: CUDA Toolkit verziója. A kiválasztott CUDA legújabb illesztőprogramjai automatikusan települnek. | legújabb | RÁCS: "430,30", "418,70", "410,92", "410,71", "390,75", "390,57", "390,42"<br> CUDA: "10.0.130", "9.2.88", "9.1.85" | sztring |

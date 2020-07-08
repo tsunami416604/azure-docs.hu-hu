@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 10/25/2019
 ms.author: victorh
 ms.openlocfilehash: a84e48c7fbb6d63a4bf8946b66bd35f354643ccb
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84753604"
 ---
 # <a name="resource-logs-for-azure-web-application-firewall"></a>Az Azure webalkalmazási tűzfal erőforrás-naplói
@@ -87,7 +87,7 @@ Az Azure alapértelmezés szerint a tevékenység naplóját hozza létre. A nap
 
 A hozzáférési napló csak akkor jön létre, ha minden Application Gateway példányon engedélyezte az előző lépésekben részletezett módon. Az adatai a naplózás engedélyezésekor megadott Storage-fiókban tárolódnak. A Application Gateway minden hozzáférése JSON formátumban van naplózva, ahogyan az a V1-hez készült következő példában látható:
 
-|Érték  |Leírás  |
+|Érték  |Description  |
 |---------|---------|
 |instanceId     | Application Gateway a kérelmet kézbesítő példány.        |
 |Ügyfélip     | A kérelemből származó IP-cím.        |
@@ -131,7 +131,7 @@ A hozzáférési napló csak akkor jön létre, ha minden Application Gateway p�
 ```
 Application Gateway és WAF v2 esetén a naplók valamivel több információt mutatnak be:
 
-|Érték  |Leírás  |
+|Érték  |Description  |
 |---------|---------|
 |instanceId     | Application Gateway a kérelmet kézbesítő példány.        |
 |Ügyfélip     | A kérelemből származó IP-cím.        |
@@ -185,7 +185,7 @@ Application Gateway és WAF v2 esetén a naplók valamivel több információt m
 A rendszer csak akkor hozza létre a teljesítményadatokat, ha minden Application Gateway példányon engedélyezte azt az előző lépésekben részletezett módon. Az adatai a naplózás engedélyezésekor megadott Storage-fiókban tárolódnak. A Teljesítménynapló adatai 1 percenként jönnek létre. Csak a v1 SKU esetében érhető el. A v2 SKU esetében használja a teljesítményadatok [mérőszámait](../../application-gateway/application-gateway-metrics.md) . A rendszer naplózza a következő adatnaplókat:
 
 
-|Érték  |Leírás  |
+|Érték  |Description  |
 |---------|---------|
 |instanceId     |  Application Gateway példány, amelynél a teljesítményadatokat generálja a rendszer. A többpéldányos Application Gateway esetében a példányok száma egy sor.        |
 |healthyHostCount     | A háttér-készletben található kifogástalan állapotú gazdagépek száma.        |
@@ -222,7 +222,7 @@ A rendszer csak akkor hozza létre a teljesítményadatokat, ha minden Applicati
 A rendszer csak akkor hozza létre a tűzfal-naplót, ha engedélyezte az összes Application Gateway számára az előző lépésekben részletezett módon. Ehhez a naplóhoz az is szükséges, hogy a webalkalmazási tűzfal konfigurálva legyen egy Application gatewayen. Az adatai a naplózás engedélyezésekor megadott Storage-fiókban tárolódnak. A rendszer naplózza a következő adatnaplókat:
 
 
-|Érték  |Leírás  |
+|Érték  |Description  |
 |---------|---------|
 |instanceId     | Application Gateway a példány, amelyről a rendszer a tűzfalat hozza létre. A többpéldányos Application Gateway esetében a példányok száma egy sor.         |
 |Ügyfélip     |   A kérelemből származó IP-cím.      |

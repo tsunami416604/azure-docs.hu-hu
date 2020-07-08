@@ -12,10 +12,10 @@ ms.date: 05/19/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
 ms.openlocfilehash: 0c9844d5e3f65dba5e51170367cfd16715a08883
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84763465"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>A végfelhasználók alkalmazásokra vonatkozó hozzájárulásának konfigurálása
@@ -228,7 +228,7 @@ A [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=az
 
 1. A beállítás értékeinek megismerése. Két beállítási érték határozza meg, hogy mely felhasználók számára engedélyezhető, hogy egy alkalmazás hozzáférhessen a csoport adatait:
 
-    | Beállítás       | Típus         | Leírás  |
+    | Beállítás       | Típus         | Description  |
     | ------------- | ------------ | ------------ |
     | _EnableGroupSpecificConsent_   | Logikai | Jelző, amely azt jelzi, hogy a csoportok tulajdonosai jogosultak-e a csoportra vonatkozó engedélyek megadására. |
     | _ConstrainGroupSpecificConsentToMembersOfGroupId_ | Guid | Ha a _EnableGroupSpecificConsent_ értéke "true" (igaz), és ez az érték egy csoport objektumazonosító, akkor az azonosított csoport tagjai jogosultak a csoportokra vonatkozó engedélyek megadására a saját maguknak. |
@@ -286,7 +286,7 @@ Ezt a fentiekben látható lépések végrehajtásával is megteheti a [csoport 
 
 1. A kockázati alapú lépésekre vonatkozó beleegyezés értékeinek ismertetése:
 
-    | Beállítás       | Típus         | Leírás  |
+    | Beállítás       | Típus         | Description  |
     | ------------- | ------------ | ------------ |
     | _BlockUserConsentForRiskyApps_   | Logikai |  Jelző, amely azt jelzi, hogy a felhasználó beleegyezik-e a kockázatos kérelem észlelésekor. |
 

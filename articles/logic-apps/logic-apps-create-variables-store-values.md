@@ -7,13 +7,13 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.openlocfilehash: 02e9426c7fc537a43fadddb5e2c34fd9c311d69b
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84753253"
 ---
-# <a name="store-and-manage-values-by-using-variables-in-azure-logic-apps"></a>Értékek tárolása és kezelése a Azure Logic Apps változók használatával
+# <a name="store-and-manage-values-by-using-variables-in-azure-logic-apps"></a>Értékek tárolása és felügyelete változók használatával az Azure Logic Appsben
 
 Ez a cikk bemutatja, hogyan hozhatók létre és használhatók a logikai alkalmazásban található értékek tárolására használt változók. A változók segítségével például nyomon követheti, hogy hány alkalommal fut a hurok. Ha egy tömböt szeretne megismételni, vagy egy adott elem tömbjét szeretné megtekinteni, használhat egy változót az egyes tömbökhöz tartozó indexek hivatkozási számának megadásához.
 
