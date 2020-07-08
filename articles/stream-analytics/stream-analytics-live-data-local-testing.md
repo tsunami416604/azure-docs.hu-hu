@@ -5,15 +5,15 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: f2876ea32bdcd900a454ae6b7ac58c11b8ec67c3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fe1caca11ec0a3d89ddae140d00cd3556b9d3d89
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76840485"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044464"
 ---
 # <a name="test-live-data-locally-using-azure-stream-analytics-tools-for-visual-studio-preview"></a>Élő adatellenőrzés helyi tesztelése a Visual Studio Azure Stream Analytics eszközeivel (előzetes verzió)
 
@@ -23,7 +23,7 @@ A Azure Stream Analytics Tools for Visual Studio lehetővé teszi, hogy az Azure
 
 A következő helyi tesztelési lehetőségek támogatottak:
 
-|**Input (Bemenet)**  |**Kimenet**  |**Feladattípus**  |
+|**Bevitel**  |**Kimenet**  |**Feladattípus**  |
 |---------|---------|---------|
 |Helyi statikus adattartalom   |  Helyi statikus adattartalom   |   Felhő/Edge |
 |Élő bemeneti adatok   |  Helyi statikus adattartalom   |   Felhő |

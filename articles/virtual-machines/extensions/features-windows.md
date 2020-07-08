@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cd6439bf1b1f52b8e63819e8e519fc4971d1bc2a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ff4fb08b1e627184760bb0a33797b2a324d4c55
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80066855"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045909"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Virtuálisgép-bővítmények és-szolgáltatások a Windows rendszerhez
 
@@ -150,7 +150,7 @@ Az alábbi példa a Microsoft antimalware bővítmény telepítését mutatja be
 
 ### <a name="azure-resource-manager-templates"></a>Azure Resource Manager-sablonok
 
-A virtuálisgép-bővítmények hozzáadhatók egy Azure Resource Manager sablonhoz, és a sablon üzembe helyezésével hajthatók végre. Ha sablonnal telepít egy bővítményt, létrehozhat teljesen konfigurált Azure-telepítéseket. Például a következő JSON-t egy Resource Manager-sablon telepíti, amely elosztott terhelésű virtuális gépeket és egy Azure SQL Database-adatbázist telepít, majd telepíti a .NET Core-alkalmazást minden egyes virtuális gépre. A virtuálisgép-bővítmény gondoskodik a szoftver telepítéséről.
+A virtuálisgép-bővítmények hozzáadhatók egy Azure Resource Manager sablonhoz, és a sablon üzembe helyezésével hajthatók végre. Ha sablonnal telepít egy bővítményt, létrehozhat teljesen konfigurált Azure-telepítéseket. Például a következő JSON egy Resource Manager-sablonból van üzembe helyezve egy elosztott terhelésű virtuális gép és egy Azure SQL Database, majd telepíti a .NET Core-alkalmazást minden egyes virtuális gépre. A virtuálisgép-bővítmény gondoskodik a szoftver telepítéséről.
 
 További információ: [teljes Resource Manager-sablon](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-windows).
 
@@ -421,7 +421,7 @@ A bővítményeket a következőképpen is eltávolíthatja a Azure Portalban:
 4. Válassza az **Eltávolítás**lehetőséget.
 
 ## <a name="common-vm-extensions-reference"></a>Gyakori virtuálisgép-bővítmények ismertetése
-| Kiterjesztés neve | Leírás | További információ |
+| Kiterjesztés neve | Description | További információ |
 | --- | --- | --- |
 | Egyéniszkript-bővítmény Windows rendszerre |Parancsfájlok futtatása Azure-beli virtuális gépeken |[Egyéniszkript-bővítmény Windows rendszerre](custom-script-windows.md) |
 | DSC-bővítmény a Windowshoz |PowerShell DSC (kívánt állapot konfiguráció) bővítmény |[DSC-bővítmény a Windowshoz](dsc-overview.md) |

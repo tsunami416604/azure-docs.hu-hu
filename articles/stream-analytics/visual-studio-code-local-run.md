@@ -5,13 +5,13 @@ ms.service: stream-analytics
 author: su-jie
 ms.author: sujie
 ms.date: 11/10/2019
-ms.topic: conceptual
-ms.openlocfilehash: c29d0d9ecd856ee9611df21d23b1b2b763e24652
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.openlocfilehash: a47b641f4f5049beb605490122a33d407ac3e222
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75486468"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044362"
 ---
 # <a name="test-stream-analytics-queries-locally-with-sample-data-using-visual-studio-code"></a>A Visual Studio Code segítségével helyileg tesztelheti Stream Analytics lekérdezéseket a mintaadatok használatával
 
@@ -35,7 +35,7 @@ Először elő kell készítenie a minta bemeneti adatfájljait. Ha már rendelk
 
 ## <a name="define-a-local-input"></a>Helyi bemenet megadása
 
-1. A Stream Analytics projekt bemenetek mappájában kattintson a **input. JSON** elemre. Ezután válassza a **helyi bemenet hozzáadása** lehetőséget a felső sorban.
+1. Kattintson a **input.js** elemre a stream Analytics projekt bemenetek mappájában. Ezután válassza a **helyi bemenet hozzáadása** lehetőséget a felső sorban.
 
     ![Helyi bemenet hozzáadása a projektből](./media/quick-create-vs-code/add-input-from-project.png)
 
@@ -55,7 +55,7 @@ Először elő kell készítenie a minta bemeneti adatfájljait. Ha már rendelk
 
     ![Új ASA helyi bemeneti alias hozzáadása](./media/vscode-local-run/new-local-input-alias.png)
 
-5. Az újonnan létrehozott **LocalInput_Input. JSON** fájlban adja meg a fájl elérési útját, ahol a helyi adatfájl található.
+5. Az újonnan létrehozott **LocalInput_Input.js** fájljában adja meg a fájl elérési útját, ahol a helyi adatfájl található.
 
     ![Adja meg a helyi fájl elérési útját a Visual Studióban](./media/vscode-local-run/local-file-path.png)
 

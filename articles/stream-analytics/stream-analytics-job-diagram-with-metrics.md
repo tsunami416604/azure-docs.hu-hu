@@ -5,14 +5,14 @@ author: jseb225
 ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/01/2017
-ms.openlocfilehash: 00e1175cc85f1c34260c5e03ed3f81ac25cf7448
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: fdb3c5c12af8e9022f5babc84126badda890dce5
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836498"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044481"
 ---
 # <a name="data-driven-debugging-by-using-the-job-diagram"></a>Adatvezérelt hibakeresés a feladatábra használatával
 
@@ -81,7 +81,7 @@ Ha a fenti lekérdezési lépés egy bemeneti processzor, a bemeneti metrikák s
 ## <a name="get-help"></a>Segítség kérése
 További segítségért próbálja ki a [Microsoft Q&a Azure stream Analytics vonatkozó kérdés oldalát](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html). 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Bevezetés a Stream Analyticsba](stream-analytics-introduction.md)
 * [Ismerkedés a Stream Analytics szolgáltatással](stream-analytics-real-time-fraud-detection.md)
 * [Stream Analytics-feladatok skálázása](stream-analytics-scale-jobs.md)

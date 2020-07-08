@@ -3,12 +3,12 @@ title: Szabályzatok megfelelőségi állapotának beolvasása
 description: Azure Policy értékelések és hatások határozzák meg a megfelelőséget. Ismerje meg, hogyan kérheti le Azure-erőforrásai megfelelőségi adatait.
 ms.date: 05/20/2020
 ms.topic: how-to
-ms.openlocfilehash: e4d63355b793f69ccc2ed7aaa44bfb60a3a8440e
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: 53c946c59862451859616cb87d1101ae8fd5f15b
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84204837"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045195"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Azure-erőforrások megfelelőségi információk beolvasása
 
@@ -34,7 +34,7 @@ A hozzárendelt szabályzatok és kezdeményezések értékelése a különböz�
 
 - Egy hatókörhöz már hozzárendelt házirend vagy kezdeményezés frissül. A kiértékelési ciklus és a forgatókönyv időzítése megegyezik egy hatókör új hozzárendelésével.
 
-- Egy erőforrást egy, a Resource Managerrel, REST-vel, Azure CLI-vel vagy Azure PowerShell-vel való hozzárendeléssel rendelkező hatókörre telepítenek. Ebben az esetben az egyes erőforrásokra vonatkozó hatás esemény (Hozzáfűzés, naplózás, megtagadás, üzembe helyezés) és a megfelelő állapotadatok elérhetővé válnak a Portálon és az SDK-k körülbelül 15 perccel később. Ez az esemény nem okoz más erőforrások kiértékelését.
+- Egy erőforrást Azure Resource Manager, REST, Azure CLI vagy Azure PowerShell használatával egy hozzárendelési hatókörre telepítenek. Ebben az esetben az egyes erőforrásokra vonatkozó hatás esemény (Hozzáfűzés, naplózás, megtagadás, üzembe helyezés) és a megfelelő állapotadatok elérhetővé válnak a Portálon és az SDK-k körülbelül 15 perccel később. Ez az esemény nem okoz más erőforrások kiértékelését.
 
 - Szabványos megfelelőség kiértékelési ciklusa. 24 óránként egyszer automatikusan újraértékeli a hozzárendeléseket. Számos erőforrás nagyméretű házirendje vagy kezdeményezése időt vehet igénybe, így a próbaverzió befejezését követően nincs előre definiált várakozási idő. A befejezést követően a frissített megfelelőségi eredmények elérhetők a Portálon és az SDK-ban.
 
@@ -429,7 +429,7 @@ Trent Baker
 
 ## <a name="azure-monitor-logs"></a>Azure Monitor-naplók
 
-Ha [Log Analytics workspace](../../../log-analytics/log-analytics-overview.md) `AzureActivity` az előfizetéshez kötött [Activity Log Analytics megoldásból](../../../azure-monitor/platform/activity-log-collect.md) származó log Analytics munkaterülettel rendelkezik, a kiértékelési ciklusból az egyszerű Kusto lekérdezések és a tábla használatával is megtekintheti a nem megfelelőségi eredményeket `AzureActivity` . Azure Monitor naplók részleteivel a riasztások úgy konfigurálhatók, hogy megfigyeljék a nem megfelelőséget.
+Ha [Log Analytics workspace](../../../azure-monitor/log-query/log-query-overview.md) `AzureActivity` az előfizetéshez kötött [Activity Log Analytics megoldásból](../../../azure-monitor/platform/activity-log.md) származó log Analytics munkaterülettel rendelkezik, a kiértékelési ciklusból az egyszerű Kusto lekérdezések és a tábla használatával is megtekintheti a nem megfelelőségi eredményeket `AzureActivity` . Azure Monitor naplók részleteivel a riasztások úgy konfigurálhatók, hogy megfigyeljék a nem megfelelőséget.
 
 :::image type="content" source="../media/getting-compliance-data/compliance-loganalytics.png" alt-text="Megfelelőség Azure Policy Azure Monitor naplók használatával" border="false":::
 

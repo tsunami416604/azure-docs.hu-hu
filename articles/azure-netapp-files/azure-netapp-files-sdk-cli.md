@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/28/2019
+ms.date: 07/06/2020
 ms.author: b-juche
-ms.openlocfilehash: 93d51681a703258477baa81cc8737fefd4955e82
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b0cb29d6db339a64a1d9b753acbfd2334364853a
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82731678"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045467"
 ---
 # <a name="azure-netapp-files-sdks-and-cli-tools"></a>Azure NetApp Files SDK-k és CLI-eszközök
 
@@ -33,7 +33,7 @@ Az alábbi táblázat felsorolja a támogatott SDK-kat.  A támogatott SDK-k ré
 |------------------|--------------------------------------------------------------|
 |    .NET  |    [Azure/Azure-SDK-for-net](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/netapp)    |
 |    Python  |  [Azure/Azure-SDK-for-Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/netapp)    |
-|    Go    |    [Azure/Azure-SDK-for-go](https://github.com/Azure/azure-sdk-for-go/tree/master/services/netapp)       |
+|    Indítás    |    [Azure/Azure-SDK-for-go](https://github.com/Azure/azure-sdk-for-go/tree/master/services/netapp)       |
 |    Java |     [Azure/Azure-SDK-for-Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/netapp) |
 |    JavaScript    |    [Azure/Azure-SDK-for-js](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/netapp/arm-netapp)    |
 |    Ruby   |    [Azure/Azure-SDK-for-Ruby](https://github.com/Azure/azure-sdk-for-ruby/tree/master/management/azure_mgmt_netapp)    |
@@ -49,12 +49,7 @@ Az alábbi táblázat felsorolja a támogatott CLI-eszközöket és azok parancs
 
 ## <a name="code-samples"></a>Kódminták
 
-Az alábbi táblázat felsorolja a hivatkozáshoz tartozó kódrészleteket.   
-
-|    Nyelv/eszköz    |    Mintakód dokumentációja    |
-|------------------|--------------------------------------------|
-|    .NET   |    [Azure NetApp Files SDK-minta a következőhöz:. NETCore](https://docs.microsoft.com/samples/azure-samples/netappfiles-dotnetcore-sdk-sample/azure-netappfiles-sdk-sample-for-net-core/) |    
-|    Python    |    [Azure NetApp Files SDK-minta a Pythonhoz](https://docs.microsoft.com/samples/azure-samples/netappfiles-python-sdk-sample/azure-netappfiles-sdk-sample-for-python/)    |
+Lásd: [Azure NetApp Files-kód mintái](https://docs.microsoft.com/samples/browse/?filter-products=netapp&products=azure-netapp-files).
 
 ## <a name="next-steps"></a>További lépések   
  [Azure SDK-k letöltése](https://azure.microsoft.com/downloads/)

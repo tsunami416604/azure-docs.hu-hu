@@ -1,5 +1,5 @@
 ---
-title: Azure szinapszis Studio (előzetes verzió) jegyzetfüzetek létrehozása, fejlesztése és karbantartása
+title: Szinapszis Studio-jegyzetfüzetek
 description: Ebből a cikkből megtudhatja, hogyan hozhat létre és fejleszthet Azure szinapszis Studio (előzetes verzió) jegyzetfüzeteket az adatelőkészítés és a vizualizációk elvégzéséhez.
 services: synapse analytics
 author: ruixinxu
@@ -10,16 +10,16 @@ ms.date: 05/01/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: tracking-python
-ms.openlocfilehash: 458cbe35e9d46b8a6afde399e20f3b484dfe6478
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.openlocfilehash: e0b0525035732a54965f7c391ac6041b114d7304
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85373369"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045688"
 ---
-# <a name="create-develop-and-maintain-azure-synapse-studio-preview-notebooks"></a>Azure szinapszis Studio (előzetes verzió) jegyzetfüzetek létrehozása, fejlesztése és karbantartása
+# <a name="create-develop-and-maintain-synapse-studio-preview-notebooks-in-azure-synapse-analytics"></a>A szinapszis Studio (előzetes verzió) jegyzetfüzetek létrehozása, fejlesztése és karbantartása az Azure szinapszis Analyticsben
 
-Az Azure szinapszis Studio (előzetes verzió) jegyzetfüzet egy webes kezelőfelület, amellyel élő kódokat, vizualizációkat és narratív szöveget tartalmazó fájlokat hozhat létre. A jegyzetfüzetek jó kiindulópontot nyújtanak az ötletek érvényesítéséhez és a gyors kísérletekhez az adatokból származó elemzések megszerzéséhez. A jegyzetfüzeteket is széles körben használják az adatok előkészítésében, az adatvizualizációban, a gépi tanulásban és más Big-adatokban.
+A szinapszis Studio (előzetes verzió) jegyzetfüzet egy webes kezelőfelület, amellyel élő kódokat, vizualizációkat és elbeszélési szöveget tartalmazó fájlokat hozhat létre. A jegyzetfüzetek jó kiindulópontot nyújtanak az ötletek érvényesítéséhez és a gyors kísérletekhez az adatokból származó elemzések megszerzéséhez. A jegyzetfüzeteket is széles körben használják az adatok előkészítésében, az adatvizualizációban, a gépi tanulásban és más Big-adatokban.
 
 Az Azure szinapszis Studio notebook használatával a következőket teheti:
 
@@ -110,7 +110,7 @@ Az adat-és változók nem hivatkozhatnak közvetlenül különböző nyelveken 
 
 ### <a name="ide-style-intellisense"></a>IDE-Style IntelliSense
 
-Az Azure szinapszis Studio notebookok integrálva vannak a Monaco-szerkesztővel, hogy IDE-stílusú IntelliSense kerüljön a cellás szerkesztőbe. A szintaxis kiemelése, a hiba-előállító és az automatikus kód befejezése segít a kód írásához és a problémák gyorsabb azonosításához.
+Az Azure szinapszis Studio notebookok integrálva vannak a Monaco-szerkesztővel, hogy IDE-stílusú IntelliSense kerüljön a cellás szerkesztőbe. A szintaxis kiemelése, a hiba jelölője és az automatikus kód befejezése segít a kód írásához és a problémák gyorsabb azonosításához.
 
 Az IntelliSense-funkciók a különböző nyelveken a lejárat különböző szintjein vannak. Az alábbi táblázat segítségével megtekintheti, hogy mi támogatott.
 
@@ -389,7 +389,7 @@ A következő billentyűleütés-billentyűparancsokkal könnyebben navigálhat 
 |Kihúzás|CTRL + [|
 |Váltás parancs módba| Esc |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Rövid útmutató: Apache Spark készlet (előzetes verzió) létrehozása az Azure szinapszis Analytics szolgáltatásban webes eszközök használatával](../quickstart-apache-spark-notebook.md)
 - [Az Azure szinapszis Analytics Apache Spark](apache-spark-overview.md)

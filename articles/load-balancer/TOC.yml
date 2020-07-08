@@ -66,6 +66,8 @@
       href: load-balancer-standard-availability-zones.md
     - name: Beépített biztonsági vezérlők
       href: load-balancer-security-controls.md
+    - name: Háttérkészlet kezelése
+      href: backend-pool-management.md
 - name: Útmutató
   items:
     - name: Virtuálisgép-méretezési csoportok

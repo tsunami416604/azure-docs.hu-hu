@@ -5,14 +5,14 @@ author: su-jie
 ms.author: sujie
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/15/2019
-ms.openlocfilehash: 11e68aaa7c70d4f888c0009bc28d9bb90f431f3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 56fb677ca80c047fb90c58a3e0aedb41e6d4a3f2
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75354445"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045093"
 ---
 # <a name="use-the-azure-stream-analytics-cicd-nuget-package-for-integration-and-development"></a>A Azure Stream Analytics CI/CD NuGet csomag használata az integrációhoz és a fejlesztéshez 
 Ez a cikk azt ismerteti, hogyan használható a Azure Stream Analytics CI/CD NuGet csomag a folyamatos integrációs és üzembe helyezési folyamat beállításához.
@@ -34,15 +34,19 @@ A standard Visual Studio MSBuild-élményhez hasonlóan a projekt létrehozásá
 
 Stream Analytics Visual Studio-projekt sikeres létrehozásakor a a következő két Azure Resource Manager sablonfájlt hozza létre a **bin/[debug/Retail]/Deploy** mappában: 
 
-*  Resource Manager-sablonfájl
+* Resource Manager-sablonfájl
 
-       [ProjectName].JobTemplate.json 
+   ```
+   [ProjectName].JobTemplate.json 
+   ```
 
-*  Resource Manager-paraméterek fájlja
+* Resource Manager-paraméterek fájlja
+   
+   ```
+   [ProjectName].JobTemplate.parameters.json
+   ```
 
-       [ProjectName].JobTemplate.parameters.json   
-
-A Parameters. JSON fájlban lévő alapértelmezett paraméterek a Visual Studio-projekt beállításaiból származnak. Ha egy másik környezetbe szeretne telepíteni, cserélje le a paramétereket ennek megfelelően.
+A fájl parameters.jsjában lévő alapértelmezett paraméterek a Visual Studio-projekt beállításaiból származnak. Ha egy másik környezetbe szeretne telepíteni, cserélje le a paramétereket ennek megfelelően.
 
 > [!NOTE]
 > Az összes hitelesítő adat esetében az alapértelmezett értékek NULL értékre vannak állítva. A felhőbe való üzembe helyezés előtt **be kell állítania** az értékeket.
@@ -60,7 +64,7 @@ Ha Azure Data Lake Store Gen1 felügyelt identitást szeretne használni kimenet
 ## <a name="command-line-tool"></a>Parancssori eszköz
 
 ### <a name="build-the-project"></a>A projekt felépítése
-Az NuGet-csomag egy **sa. exe**nevű parancssori eszközzel rendelkezik. Támogatja a projektek kialakítását és a helyi tesztelést egy tetszőleges gépen, amelyet a folyamatos integráció és a folyamatos kézbesítés folyamata használhat. 
+Az NuGet-csomag **SA.exe**nevű parancssori eszközzel rendelkezik. Támogatja a projektek kialakítását és a helyi tesztelést egy tetszőleges gépen, amelyet a folyamatos integráció és a folyamatos kézbesítés folyamata használhat. 
 
 A központi telepítési fájlok alapértelmezés szerint az aktuális könyvtár alá kerülnek. A kimeneti elérési utat a következő-OutputPath paraméter használatával adhatja meg:
 

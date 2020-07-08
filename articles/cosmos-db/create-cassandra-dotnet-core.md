@@ -8,12 +8,12 @@ ms.author: thvankra
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/18/2020
-ms.openlocfilehash: 56adfa2ddab011372783a7a7872b4f4c8d7fc050
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: e30bee23b634db12def62e906183c6087c6613e6
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118440"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044294"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-net-core-and-azure-cosmos-db"></a>Gyors útmutató: Cassandra-alkalmazás létrehozása a .NET Core és a Azure Cosmos DB használatával
 
@@ -133,7 +133,7 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
 
 1. Az [Azure Portalon](https://portal.azure.com/) válassza a **Kapcsolati sztring** lehetőséget.
 
-1. Válassza a ![a képernyő jobb oldalán található Másolás gombot](./media/create-cassandra-dotnet/copy.png) a USERNAME érték másolásához.
+1. A :::image type="icon" source="./media/create-cassandra-dotnet/copy.png"::: Felhasználónév értékének másolásához használja a képernyő jobb oldalán található gombot.
 
    :::image type="content" source="./media/create-cassandra-dotnet/keys.png" alt-text="Hozzáférési kulcs megtekintése és másolása az Azure Portal Kapcsolati sztring oldalán":::
 

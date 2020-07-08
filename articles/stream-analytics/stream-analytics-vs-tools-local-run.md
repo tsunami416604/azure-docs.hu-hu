@@ -5,14 +5,14 @@ author: su-jie
 ms.author: sujie
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/10/2018
-ms.openlocfilehash: 34c8555356d5c0142d7b677c8119fe66806ab064
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aa1d8ff0743399d96436f33426ebc4c4ab4a29f6
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76834909"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045637"
 ---
 # <a name="test-stream-analytics-queries-locally-with-visual-studio"></a>A Visual Studióval helyileg tesztelheti Stream Analytics lekérdezéseit
 
@@ -36,7 +36,7 @@ Az előugró ablakban válassza a mintaadatok lehetőséget a helyi elérési ú
    
 ![Helyi bemenet hozzáadása](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-add-local-input-02.png)
    
-A rendszer automatikusan felvesz egy **local_EntryStream. JSON** nevű fájlt a bemenetek mappájába.
+A rendszer automatikusan felvesz egy **local_EntryStream.js** nevű fájlt a bemenetek mappájába.
    
 ![Helyi bemeneti mappa fájljának listája](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-add-local-input-03.png)
    

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 035894c80e619851264aae91daa2d7852d156964
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d89320807c6322120490db85100453edf593aded
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81408543"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045535"
 ---
 # <a name="security-control-data-protection"></a>Biztonság-ellenőrzés: Adatvédelem
 
@@ -34,7 +34,7 @@ A címkék használatával segítheti a bizalmas adatokat tároló vagy feldolgo
 |--|--|--|
 | 4.2 | 13,2, 2,10 | Ügyfél |
 
-Különálló előfizetések és felügyeleti csoportok használatával különítse el az elkülönítést az egyes biztonsági tartományok, például a környezeti típus és az adatérzékenység szintjén. Korlátozhatja az alkalmazásaihoz és a vállalati környezetekhez igénybe veheti az Azure-erőforrásokhoz való hozzáférés szintjét. Az Azure-erőforrásokhoz való hozzáférést Azure Active Directory szerepköralapú hozzáférés-vezérlés segítségével szabályozhatja. 
+Különálló előfizetések és felügyeleti csoportok használatával különítse el az elkülönítést az egyes biztonsági tartományok, például a környezeti típus és az adatérzékenység szintjén. Korlátozhatja az alkalmazásaihoz és a vállalati környezetekhez igénybe veheti az Azure-erőforrásokhoz való hozzáférés szintjét. Az Azure-erőforrásokhoz való hozzáférést az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) segítségével szabályozhatja. 
 
 - [További Azure-előfizetések létrehozása](https://docs.microsoft.com/azure/billing/billing-create-subscription)
 
@@ -76,7 +76,7 @@ Ha az Azure-ban egyetlen szolgáltatás sem érhető el, egy külső gyártótó
 
 Az Office 365-dokumentumokban lévő bizalmas adatok azonosításához használja a Azure Information Protection.
 
-Az Azure SQL Information Protection használatával segítséget nyújthat az Azure SQL Database-adatbázisokban tárolt adatok besorolásában és címkézésében.
+Az Azure SQL Information Protection használatával segítheti a Azure SQL Database tárolt információk besorolását és címkézését.
 
 - [Az Azure SQL-adatfelderítés megvalósítása](https://docs.microsoft.com/azure/sql-database/sql-database-data-discovery-and-classification)
 

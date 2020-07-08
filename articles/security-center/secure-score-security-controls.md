@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2020
 ms.author: memildin
-ms.openlocfilehash: 46b78ca6f385f62d265210b41e634bbbd9a2041c
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 2ad817afd8f4e80e99055646dca34b9bb05d100f
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262718"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044311"
 ---
 # <a name="enhanced-secure-score-in-azure-security-center"></a>Fokozottan biztonságos pontszám Azure Security Center
 
@@ -132,7 +132,7 @@ Az alábbi táblázat a Azure Security Center biztonsági vezérlőit sorolja fe
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Titkosítás engedélyezése nyugalmi állapotban (max. pontszám 4)</p></strong>A inaktív adatok <a href="https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest">titkosítása</a> adatvédelmet biztosít a tárolt adatok számára. A REST-adatok elleni támadások közé tartozik az adatok tárolására szolgáló hardver fizikai hozzáférésének megszerzésére irányuló kísérlet. Az Azure szimmetrikus titkosítást használ a nagy mennyiségű inaktív adatok titkosításához és visszafejtéséhez. A szimmetrikus titkosítási kulcs használatával titkosíthatja az adattárakat a tárolóba való írás során. Ezt a titkosítási kulcsot is használja a rendszer, hogy visszafejtse az adott adatmennyiséget, mert az readied a memóriában való használathoz. A kulcsokat biztonságos helyen kell tárolni, az identitás-alapú hozzáférés-vezérléssel és a naplózási házirendekkel. Egy ilyen biztonságos hely Azure Key Vault. Ha egy támadó megszerzi a titkosított, de nem a titkosítási kulcsokat, a támadó nem fér hozzá az adatforráshoz a titkosítás megszakítása nélkül.</td>
-    <td class="tg-lboi"; width=55%>-A lemezes titkosítást a virtuális gépeken kell alkalmazni<br>-Az SQL-adatbázisokon engedélyezni kell transzparens adattitkosítás<br>-Az Automation-fiók változóit titkosítani kell<br>-Service Fabric-fürtökön a ClusterProtectionLevel tulajdonságot EncryptAndSign értékre kell beállítani<br>-Az SQL Server TDE-védőt a saját kulccsal kell titkosítani</td>
+    <td class="tg-lboi"; width=55%>-A lemezes titkosítást a virtuális gépeken kell alkalmazni<br>-Engedélyezve kell lennie a SQL Database transzparens adattitkosítás<br>-Az Automation-fiók változóit titkosítani kell<br>-Service Fabric-fürtökön a ClusterProtectionLevel tulajdonságot EncryptAndSign értékre kell beállítani<br>-Az SQL Server TDE-védőt a saját kulccsal kell titkosítani</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Adatforgalom titkosítása (max. pontszám 4)</p></strong>Az adatok átvitele az összetevők, a helyszínek és a programok között történik. Azok a szervezetek, amelyek nem védik az adatátvitelt, a támadók, a lehallgatás és a munkamenet-eltérítések érzékenyek. Az adatcseréhez és a VPN-hez ajánlott SSL/TLS protokollt használni. Amikor titkosított adatokat küld egy Azure-beli virtuális gép és egy helyszíni hely között az interneten keresztül, egy virtuális hálózati átjárót (például az <a href="https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways">azure VPN Gateway</a> -t) használhat a titkosított forgalom elküldéséhez.</td>
@@ -151,7 +151,7 @@ Az alábbi táblázat a Azure Security Center biztonsági vezérlőit sorolja fe
     <td class="tg-lboi"; width=55%>-A virtuális gépen lévő IP-továbbítást le kell tiltani<br>-A Kubernetes-szolgáltatásokban (előzetes verzió) meg kell határozni a jóváhagyott IP-tartományokat.<br>-ELAVULT A App Services elérését korlátozni kell (előzetes verzió)<br>-ELAVULT A IaaS-NSG lévő webalkalmazások szabályait meg kell erősíteni<br>-A virtuális gépeket hálózati biztonsági csoporttal kell társítani<br>-A CORS nem teszi lehetővé minden erőforrás számára az API-alkalmazás elérését<br>-A CORS nem teszi lehetővé minden erőforrás számára a függvényalkalmazás elérését<br>-A CORS nem engedheti meg, hogy minden erőforrás hozzáférjen a webalkalmazáshoz<br>-A távoli hibakeresést ki kell kapcsolni az API-alkalmazáshoz<br>-A távoli hibakeresést ki kell kapcsolni függvényalkalmazás<br>-A távoli hibakeresést ki kell kapcsolni a webalkalmazáshoz<br>-A hozzáférésnek korlátozva kell lennie az internetre irányuló virtuális gépekkel rendelkező, engedékeny hálózati biztonsági csoportoknak<br>-Az internetre irányuló virtuális gépek hálózati biztonsági csoportjának szabályait meg kell szigorítani</td>
   </tr>
   <tr>
-    <td class="tg-lboi"><strong><p style="font-size: 16px">Adaptív alkalmazások vezérlésének alkalmazása (max. pontszám 3)</p></strong>Az adaptív alkalmazás-vezérlés (AAC) egy intelligens, automatizált és teljes körű megoldás, amellyel szabályozhatja, hogy mely alkalmazások futhatnak az Azure-ban és a nem Azure-beli gépeken. Emellett segít megerősíteni a gépeket a kártevők ellen.<br>A Security Center gépi tanulással hozza létre az ismert biztonságos alkalmazások egy csoportjára vonatkozó engedélyezési listát.<br>Ez az alkalmazás-engedélyezési lista innovatív megközelítése a kezelési komplexitás nélkül biztosítja a biztonsági előnyöket.<br>Az AAC különösen fontos az olyan célra kiépített kiszolgálók esetében, amelyeknek adott alkalmazások futtatására van szükségük.</td>
+    <td class="tg-lboi"><strong><p style="font-size: 16px">Adaptív alkalmazások vezérlésének alkalmazása (max. pontszám 3)</p></strong>Az adaptív alkalmazás-vezérlés (AAC) egy intelligens, automatizált és teljes körű megoldás, amellyel szabályozhatja, hogy mely alkalmazások futhatnak az Azure-ban és a nem Azure-beli gépeken. Emellett segít megerősíteni a gépeket a kártevők ellen.<br>A Security Center gépi tanulással hozza létre a számítógépek egy csoportjának ismert, biztonságos alkalmazásainak listáját.<br>A jóváhagyott alkalmazások listájának innovatív megközelítése a kezelési komplexitás nélkül biztosítja a biztonsági előnyöket.<br>Az AAC különösen fontos az olyan célra kiépített kiszolgálók esetében, amelyeknek adott alkalmazások futtatására van szükségük.</td>
     <td class="tg-lboi"; width=55%>-Az adaptív alkalmazások vezérlőit engedélyezni kell a virtuális gépeken<br>-A figyelési ügynököt telepíteni kell a virtuális gépekre<br>-A figyelési ügynököt telepíteni kell a gépekre<br>-Log Analytics ügynöknek telepítve kell lennie a Windows-alapú Azure arc-gépeken (előzetes verzió)<br>-Log Analytics ügynöknek telepítve kell lennie a Linux-alapú Azure arc-gépeken (előzetes verzió)<br>-A figyelési ügynök állapotával kapcsolatos problémákat fel kell oldani a gépeken</td>
   </tr>
   <tr>

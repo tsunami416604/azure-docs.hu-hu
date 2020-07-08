@@ -3,12 +3,12 @@ title: 'Rövid útmutató: terv létrehozása a portálon'
 description: Ebben a rövid útmutatóban az Azure-tervezeteket használja az összetevők létrehozásához, definiálásához és üzembe helyezéséhez a Azure Portalon keresztül.
 ms.date: 03/25/2020
 ms.topic: quickstart
-ms.openlocfilehash: aac4e13ca0da73f8b7915ea6655343d5cf0b94cb
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: dfd0aeb22801776fc9effdf8d0418a9c9b6ab802
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970977"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045212"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Rövid útmutató: terv meghatározása és hozzárendelése a portálon
 
@@ -206,7 +206,7 @@ A terv közzététele után hozzárendelhető egy előfizetéshez. Rendelje hozz
 
 1. A **terv kiosztása** lap **előfizetés** legördülő listájában válassza ki azokat az előfizetéseket, amelyekre a tervet telepíteni szeretné.
 
-   Ha az [Azure-számlázás](../../billing/index.md)által támogatott nagyvállalati ajánlatok érhetők el, akkor a **Create New** link az **előfizetés** mezőben aktiválva lesz. Kövesse az alábbi lépéseket:
+   Ha az [Azure-számlázás](../../cost-management-billing/index.yml)által támogatott nagyvállalati ajánlatok érhetők el, akkor a **Create New** link az **előfizetés** mezőben aktiválva lesz. Kövesse az alábbi lépéseket:
 
    1. Válassza az **új létrehozása** hivatkozást, és hozzon létre egy új előfizetést a meglévők kiválasztása helyett.
 

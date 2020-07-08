@@ -5,14 +5,14 @@ author: sidram
 ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/12/2019
-ms.openlocfilehash: 4472909b731af5067b4d38c2a04a2d10a4039242
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: e9617018b06d4f62b49946ae5593bd51805355e0
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560003"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044566"
 ---
 # <a name="configuring-event-ordering-policies-for-azure-stream-analytics"></a>Az események rendezésére vonatkozó szabályzatok konfigurálása Azure Stream Analyticshoz
 
@@ -76,6 +76,6 @@ Ez az üzenet tájékoztat arról, hogy a bemenetben legalább egy partíció ü
 1. Győződjön meg arról, hogy az Event hub/IoT Hub összes partíciója fogadja a bemenetet. 
 2. A lekérdezésben használja a Partition by PartitionID záradékot. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Időkezelési megfontolások](stream-analytics-time-handling.md)
 * [Stream Analytics elérhető metrikák](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-monitoring#metrics-available-for-stream-analytics)

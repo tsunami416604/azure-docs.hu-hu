@@ -5,14 +5,14 @@ author: jseb225
 ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 06/18/2020
-ms.openlocfilehash: 4737b8f13a3a4a1e65c4c7812bd514f76a24d2e3
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 2fb1f22fd555e8ddbdc04842906cddb990956fb5
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85119032"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044515"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-resource-logs"></a>Azure Stream Analyticsek hibakeresése erőforrás-naplók használatával
 
@@ -94,7 +94,7 @@ Azure Stream Analytics az erőforrás-naplók két kategóriáját rögzíti:
 
 Az összes napló JSON formátumban van tárolva. Mindegyik bejegyzés a következő általános karakterlánc-mezőket tartalmazhatja:
 
-Name | Leírás
+Name | Description
 ------- | -------
 time | A napló időbélyegzője (UTC).
 resourceId | Annak az erőforrásnak az azonosítója, amelyre a művelet bekerült, nagybetűvel. Magában foglalja az előfizetés-azonosítót, az erőforráscsoportot és a feladatnév nevét. Például: **/Subscriptions/6503D296-DAC1-4449-9B03-609A1F4A1C87/RESOURCEGROUPS/My-Resource-Group/Providers/Microsoft. STREAMANALYTICS/STREAMINGJOBS/MYSTREAMINGJOB**.
@@ -112,7 +112,7 @@ A végrehajtási naplók információkkal rendelkeznek a Stream Analytics felada
 
 Minden olyan hiba, amely akkor fordul elő, amikor a feladatsor az adatok feldolgozását végzi. Ezek a naplók leggyakrabban az adatok olvasási, szerializálási és írási műveletei során jönnek létre. Ezek a naplók nem tartalmaznak csatlakozási hibákat. A csatlakozási hibákat általános eseményekként kezeli a rendszer. További információt a különböző [bemeneti és kimeneti adatokkal kapcsolatos hibák](https://docs.microsoft.com/azure/stream-analytics/data-errors)okairól itt talál.
 
-Name | Leírás
+Name | Description
 ------- | -------
 Forrás | A feladathoz tartozó bemenet vagy kimenet neve, ahol a hiba történt.
 Üzenet | A hibához tartozó üzenet.
@@ -133,7 +133,7 @@ A **operationName** értékétől függően az adathibák a következő sémáva
 
 Az általános események minden mást lefedik.
 
-Name | Leírás
+Name | Description
 -------- | --------
 Hiba | választható Hiba adatai. Általában ez a kivételi információ, ha elérhető.
 Üzenet| A naplózási üzenet.

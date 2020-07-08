@@ -6,15 +6,15 @@ ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.topic: how-to
 ms.workload: infrastructure
-ms.date: 06/22/2020
+ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: d5d173e0b0204ee9e9dbe6e8b51d38d4e42d4fc2
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 133de199c240cbc4ea7246a29e65347d53c50545
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85306902"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045756"
 ---
 # <a name="disable-or-remove-the-linux-agent-from-vms-and-images"></a>A Linux-ügynök letiltása vagy eltávolítása a virtuális gépekről és a lemezképekről
 
@@ -36,6 +36,9 @@ Több módon is letilthatja a bővítmények feldolgozását, az igényeinek meg
 ```bash
 az vm extension delete -g MyResourceGroup --vm-name MyVm -n extension_name
 ```
+> [!Note]
+> 
+> Ha ezt nem teszi meg, a platform megpróbálja elküldeni a bővítmény konfigurációját és időtúllépését a 40min után.
 
 ### <a name="disable-at-the-control-plane"></a>Letiltás a vezérlési síkon
 Ha nem biztos abban, hogy a jövőben szükség van-e a bővítményekre, a Linux-ügynököt a virtuális gépre is telepítheti, majd letilthatja a bővítmény feldolgozási képességeit a platformról. Ez a beállítás az API- `Microsoft.Compute` verzióban `2018-06-01` vagy magasabbban érhető el, és nem függ a Linux-ügynök telepített verziójától.
@@ -45,36 +48,13 @@ az vm update -g <resourceGroup> -n <vmName> --set osProfile.allowExtensionOperat
 ```
 A bővítmény feldolgozását könnyedén újraengedélyezheti a platformról, a fenti paranccsal azonban "true" (igaz) értékre állíthatja.
 
-### <a name="optional---reduce-the-functionality"></a>Nem kötelező – a funkciók csökkentése 
-
-A Linux-ügynököt csökkentett működési módba is helyezheti. Ebben a módban a vendég ügynök továbbra is sokkal korlátozottabb módon kommunikál az Azure Fabric-vel és a jelentések vendég állapotával, de nem dolgozza fel a bővítmények frissítéseit. A funkciók csökkentése érdekében konfigurációs változást kell végeznie a virtuális gépen. Az újraengedélyezéshez SSH-t kell telepítenie a virtuális gépre, de ha ki van zárva a virtuális gépről, akkor a bővítmény feldolgozását nem lehet újra engedélyezni, ez valószínűleg problémát jelent, ha SSH-vagy jelszó-visszaállítást kell végeznie.
-
-A mód engedélyezéséhez a WALinuxAgent 2.2.32 vagy újabb verziója szükséges, és állítsa be a következő beállítást a/etc/waagent.conf-ben:
-
-```bash
-Extensions.Enabled=n
-```
-
-Ezt a "letiltás a vezérlési síkon" beállítással **együtt kell elvégezni** .
-
 ## <a name="remove-the-linux-agent-from-a-running-vm"></a>Linux-ügynök eltávolítása egy futó virtuális gépről
 
 Győződjön meg arról, hogy az összes meglévő bővítményt **eltávolította** a virtuális gépről a fentiek szerint.
 
-### <a name="step-1-disable-extension-processing"></a>1. lépés: a bővítmény feldolgozásának letiltása
+### <a name="step-1-remove-the-azure-linux-agent"></a>1. lépés: az Azure Linux-ügynök eltávolítása
 
-Le kell tiltania a bővítmények feldolgozását.
-
-```bash
-az vm update -g <resourceGroup> -n <vmName> --set osProfile.allowExtensionOperations=false
-```
-> [!Note]
-> 
-> Ha ezt nem teszi meg, a platform megpróbálja elküldeni a bővítmény konfigurációját és időtúllépését a 40min után.
-
-### <a name="step-2-remove-the-azure-linux-agent"></a>2. lépés: az Azure Linux-ügynök eltávolítása
-
-Az Azure Linux-ügynök eltávolításához futtassa a következők egyikét:
+Ha csak a Linux-ügynököt távolítja el, és nem a társított konfigurációs összetevőket, akkor később újratelepítheti. Az Azure Linux-ügynök eltávolításához futtassa a következők egyikét:
 
 #### <a name="for-ubuntu-1804"></a>Ubuntu >= 18,04
 ```bash
@@ -91,17 +71,16 @@ yum -y remove WALinuxAgent
 zypper --non-interactive remove python-azure-agent
 ```
 
-### <a name="step-3-optional-remove-the-azure-linux-agent-artifacts"></a>3. lépés: (nem kötelező) az Azure Linux-ügynök összetevőinek eltávolítása
+### <a name="step-2-optional-remove-the-azure-linux-agent-artifacts"></a>2. lépés: (nem kötelező) az Azure Linux-ügynök összetevőinek eltávolítása
 > [!IMPORTANT] 
 >
-> A Linux-ügynök összes összetevőjét eltávolíthatja, de ez azt jelenti, hogy később nem lehet újratelepíteni. Ezért javasoljuk, hogy először tiltsa le a Linux-ügynököt, és távolítsa el a Linux-ügynököt a fentiekben leírtak szerint. 
+> Eltávolíthatja a Linux-ügynök összes kapcsolódó összetevőjét, de ez azt jelenti, hogy később nem lehet újratelepíteni. Ezért javasoljuk, hogy először tiltsa le a Linux-ügynököt, és távolítsa el a Linux-ügynököt a fentiekben leírtak szerint. 
 
 Ha tudja, hogy többé nem fogja újra újratelepíteni a Linux-ügynököt, futtassa a következőt:
 
 #### <a name="for-ubuntu-1804"></a>Ubuntu >= 18,04
 ```bash
-apt -y remove walinuxagent
-rm -f /etc/waagent.conf
+apt -y purge walinuxagent
 rm -rf /var/lib/waagent
 rm -f /var/log/waagent.log
 ```

@@ -4,14 +4,14 @@ description: Ez a cikk azt ismerteti, hogyan használható a Azure Stream Analyt
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/02/2019
-ms.openlocfilehash: 5a3aa3786469c3df37b53cb82bdd396871689297
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9792641da4b3aebad047179e2c02dad757027801
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75443637"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045263"
 ---
 # <a name="geofencing-and-geospatial-aggregation-scenarios-with-azure-stream-analytics"></a>Geokerítések és térinformatikai összesítési forgatókönyvek Azure Stream Analytics
 
@@ -29,7 +29,7 @@ Az ebben a példában használt hivatkozási adatok a geokerítésen informáci�
 
 ### <a name="define-geofences-in-reference-data"></a>Geofences definiálása
 
-Egy geokerítésen GeoJSON objektummal is meghatározható. A 1,2-es vagy újabb kompatibilitási verzióval rendelkező feladatok esetében a geofences a jól ismert szöveg (WKT) használatával `NVARCHAR(MAX)`is meghatározható. A WKT egy Nyílt térinformatikai konzorcium (OGC) szabvány, amely szöveges formátumban jeleníti meg a térbeli adattípusokat.
+Egy geokerítésen GeoJSON objektummal is meghatározható. A 1,2-es vagy újabb kompatibilitási verzióval rendelkező feladatok esetében a geofences a jól ismert szöveg (WKT) használatával is meghatározható `NVARCHAR(MAX)` . A WKT egy Nyílt térinformatikai konzorcium (OGC) szabvány, amely szöveges formátumban jeleníti meg a térbeli adattípusokat.
 
 A beépített térinformatikai függvények a definiált geofences segítségével megtudhatják, hogy egy elem egy adott geokerítésen-sokszögben van-e vagy sem.
 
@@ -43,7 +43,7 @@ Az alábbi táblázat az Azure Blob Storage-ban vagy egy Azure SQL-táblában t�
 
 ### <a name="generate-alerts-with-geofence"></a>Riasztások előállítása a geokerítésen
 
-Az eszközök percenként bocsátják ki az azonosítót és a helyet a nevű `DeviceStreamInput`streamen keresztül. A következő táblázat a bemeneti adatfolyamot tartalmazza.
+Az eszközök percenként bocsátják ki az azonosítót és a helyet a nevű streamen keresztül `DeviceStreamInput` . A következő táblázat a bemeneti adatfolyamot tartalmazza.
 
 |DeviceID|GeoPosition|
 |--------|-----------|
@@ -70,7 +70,7 @@ A "C" eszköz a 2. AZONOSÍTÓJÚ épületen belül található, amely nem enged
 
 ### <a name="site-with-multiple-allowed-devices"></a>Hely több engedélyezett eszközzel
 
-Ha egy hely több eszközt is engedélyez, az eszközök azonosítóinak tömbje meghatározható `AllowedDeviceID` a alkalmazásban, és egy felhasználó által definiált függvény `WHERE` használható a záradékban annak ellenőrzéséhez, hogy az adatfolyam-eszköz azonosítója megfelel-e a listában szereplő összes eszköz azonosítójának. További információkért tekintse meg a [JavaScript UDF](stream-analytics-javascript-user-defined-functions.md) -oktatóanyag a felhőalapú feladatokhoz és a [C# UDF](stream-analytics-edge-csharp-udf.md) -oktatóanyag az Edge-feladatokhoz című témakört.
+Ha egy hely több eszközt is engedélyez, az eszközök azonosítóinak tömbje meghatározható a alkalmazásban, `AllowedDeviceID` és egy felhasználó által definiált függvény használható a `WHERE` záradékban annak ellenőrzéséhez, hogy az adatfolyam-eszköz azonosítója megfelel-e a listában szereplő összes eszköz azonosítójának. További információkért tekintse meg a [JavaScript UDF](stream-analytics-javascript-user-defined-functions.md) -oktatóanyag a felhőalapú feladatokhoz és a [C# UDF](stream-analytics-edge-csharp-udf.md) -oktatóanyag az Edge-feladatokhoz című témakört.
 
 ## <a name="geospatial-aggregation"></a>Térinformatikai összesítés
 

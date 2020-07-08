@@ -3,12 +3,12 @@ title: A felhőbevezetési keretrendszer migrálási célzónára vonatkozó ter
 description: Az Azure Migrate-hez készült felhőbevezetési keretrendszer migrálási célzónára vonatkozó tervmintájának áttekintése és architektúrája.
 ms.date: 04/15/2020
 ms.topic: sample
-ms.openlocfilehash: c4720ec3e94ee928553cd62017831e5158ac9b97
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 45479fd6fa3a49d2639e587d3dba2aaaf567d0b1
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81459865"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044821"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-migration-landing-zone-blueprint-sample"></a>Az Azure-beli migráláshoz készült Microsoft Cloud bevezetési keretrendszer migrálási célzónára vonatkozó tervmintájának áttekintése
 
@@ -28,7 +28,7 @@ Ez a környezet több Azure-szolgáltatásból épül fel, és biztonságos, tel
 - A [Log Analytics](../../../../azure-monitor/overview.md) üzembe helyezése biztosítja, hogy a migrálás megkezdésétől fogva az összes művelet és szolgáltatás naplózása egyetlen központi helyen történjen
 - Az [Azure Security Center](../../../../security-center/security-center-intro.md) üzembe helyezése (standard verzió) fenyegetésvédelmet nyújt a migrált számítási feladatok számára.
 - Az [Azure Virtual Network](../../../../virtual-network/virtual-networks-overview.md) üzembe helyezése izolált hálózatot és alhálózatokat biztosít a virtuális gép számára.
-- Az [Azure Migrate-projekt](../../../..//migrate/migrate-overview.md) üzembe helyezésével felderítést és értékelést végezhet. Folyamatosan biztosítunk eszközöket a kiszolgálóértékelési és -migrálási, valamint az adatbázis-értékelési és -migrálási folyamatokhoz.  
+- Az [Azure Migrate-projekt](../../../../migrate/migrate-services-overview.md) üzembe helyezésével felderítést és értékelést végezhet. Folyamatosan biztosítunk eszközöket a kiszolgálóértékelési és -migrálási, valamint az adatbázis-értékelési és -migrálási folyamatokhoz.  
 
 
 A fentiek mindegyike teljesíti az [Azure Architecture Center referenciaarchitektúrákkal foglalkozó részében](/azure/architecture/reference-architectures/) közzétett, bevált módszerek követelményeit.

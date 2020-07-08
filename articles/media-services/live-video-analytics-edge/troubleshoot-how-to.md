@@ -1,14 +1,16 @@
 ---
 title: Élő videó-elemzések – IoT Edge – Azure
 description: Ez a cikk a IoT Edge élő videó-elemzések hibaelhárítási lépéseit ismerteti.
+author: IngridAtMicrosoft
 ms.topic: how-to
+ms.author: inhenkel
 ms.date: 05/24/2020
-ms.openlocfilehash: c235dd27da1d370531c1668c40586d4ae479aec7
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: dd55050521a1791a11f220cd5617d9df2fa2d160
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84261120"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045576"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>Élő videó-elemzések hibáinak megoldása IoT Edge
 
@@ -128,7 +130,7 @@ A probléma megoldása:
     ```
 1. Győződjön meg arról, hogy telepítve vannak a következő bővítmények. Az útmutató írásakor a bővítmények verziója a következő:
 
-    |||
+    | Mellék | Verzió |
     |---|---|
     |azure-cli   |      2.5.1|
     |parancssori modulok – nspkg         |   2.0.3|
@@ -199,7 +201,7 @@ A kiadás részeként elérhetővé tettünk néhány .NET-mintakód a fejleszt�
     sudo iotedge support-bundle --since 2h
     ```
 1. Ha a 400-as kódú hibakód jelenik meg, akkor győződjön meg arról, hogy a metódus Meghívási adattartalma megfelelően van-e kialakítva a [közvetlen metódusok](direct-methods.md) útmutatója alapján.
-1. Ha a 200-as kódú állapotot kapja, az azt jelzi, hogy a központ jól működik, és a modul üzembe helyezése megfelelő és rugalmas. A következő lépésben ellenőrizze, hogy az alkalmazás konfigurációja pontos-e. Az alkalmazás konfigurációja a appSettings. JSON fájl következő mezőiből áll. Ellenőrizze, hogy a deviceId és a moduleId pontosak-e. Ez egy egyszerű módja annak, hogy ezt a VSCode Azure IoT Hub Extension szakasza tartalmazza. A appSettings. JSON fájlban és a IoT Hub szakaszban szereplő értékeknek egyezniük kell.
+1. Ha a 200-as kódú állapotot kapja, az azt jelzi, hogy a központ jól működik, és a modul üzembe helyezése megfelelő és rugalmas. A következő lépésben ellenőrizze, hogy az alkalmazás konfigurációja pontos-e. Az alkalmazás konfigurációja a következő mezőkből áll a fájl appsettings.js. Ellenőrizze, hogy a deviceId és a moduleId pontosak-e. Ez egy egyszerű módja annak, hogy ezt a VSCode Azure IoT Hub Extension szakasza tartalmazza. A fájl appsettings.jsértékének és a IoT Hub szakasznak meg kell egyeznie.
     
     ```
     {
@@ -211,7 +213,7 @@ A kiadás részeként elérhetővé tettünk néhány .NET-mintakód a fejleszt�
 
     ![IOT HUB](./media/troubleshoot-how-to/iot-hub.png)
 
-1. Végül győződjön meg arról, hogy a appSettings. JSON fájlon belül IoT Hub a kapcsolatok karakterlánca, nem pedig a IoT Hub eszköz-kapcsolatok karakterlánca, mivel a [formátumuk](https://devblogs.microsoft.com/iotdev/understand-different-connection-strings-in-azure-iot-hub/) eltérő.
+1. Végül győződjön meg róla, hogy a appsettings.json belül megadott IoT Hub a kapcsolatok karakterlánca, nem pedig a IoT Hub eszköz-kapcsolatok karakterlánca, mivel a [formátumuk](https://devblogs.microsoft.com/iotdev/understand-different-connection-strings-in-azure-iot-hub/) eltérő.
 
 ### <a name="live-video-analytics-working-with-external-modules"></a>Külső modulok használata élő videó-elemzéssel
 
@@ -241,9 +243,94 @@ A HTTP-bővítményt használó élő videó-elemzés kiterjesztheti a Media Gra
 
 A IoT Edge Live Video Analytics olyan közvetlen metódus-alapú programozási modellt biztosít, amely lehetővé teszi több topológia és több gráf-példány beállítását. A topológia és a gráf beállításának részeként több közvetlen metódust hív meg az Edge-modulban. Ha meghívja ezeket a több metódust, különösen a gráfok indítását és leállítását, párhuzamosan előfordulhat, hogy bizonyos időtúllépési hibákat tapasztal, például az alábbiakat. 
 
-A szerelvény inicializálási módszere a Microsoft. Media. LiveVideoAnalytics. test. Feature. Edge. AssemblyInitializer. InitializeAssemblyAsync kivételt váltott ki. Microsoft. Azure. Devices. Common. kivétellistájára. IotHubException: Microsoft. Azure. Devices. Common. kivételek. IotHubException:<br/> `{"Message":"{\"errorCode\":504101,\"trackingId\":\"55b1d7845498428593c2738d94442607-G:32-TimeStamp:05/15/2020 20:43:10-G:10-TimeStamp:05/15/2020 20:43:10\",\"message\":\"Timed out waiting for the response from device.\",\"info\":{},\"timestampUtc\":\"2020-05-15T20:43:10.3899553Z\"}","ExceptionMessage":""}. Aborting test execution. `
+A szerelvény inicializálási metódusa Microsoft.Media.LiveVideoAnalytics.Test.Feature.Edge.AssemblyInitializer.InitializeAssemblyAsync kivételt okozott. Microsoft. Azure. Devices. Common. kivétellistájára. IotHubException: Microsoft. Azure. Devices. Common. kivételek. IotHubException:<br/> `{"Message":"{\"errorCode\":504101,\"trackingId\":\"55b1d7845498428593c2738d94442607-G:32-TimeStamp:05/15/2020 20:43:10-G:10-TimeStamp:05/15/2020 20:43:10\",\"message\":\"Timed out waiting for the response from device.\",\"info\":{},\"timestampUtc\":\"2020-05-15T20:43:10.3899553Z\"}","ExceptionMessage":""}. Aborting test execution. `
 
-Javasoljuk, hogy ne hívja meg a közvetlen metódusokat párhuzamosan, hanem egymást követő módon, azaz  egy közvetlen metódus hívása csak az előző befejeződése után. 
+Javasoljuk, hogy ne hívja meg a közvetlen metódusokat párhuzamosan, hanem egymást követő módon, azaz  egy közvetlen metódus hívása csak az előző befejeződése után.
+
+### <a name="collecting-logs-for-submitting-a-support-ticket"></a>A támogatási jegy beküldéséhez szükséges naplók összegyűjtése
+
+Ha az önálló irányítású hibaelhárítási lépések nem oldják meg a problémákat, lépjen a Azure Portalra, és [Nyisson meg egy támogatási jegyet](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request).
+
+Folytassa a következő lépésekkel, hogy összegyűjtse a jegyhez hozzáadandó releváns naplókat. A naplófájlokat a támogatási kérelem **részletek** lapján töltheti fel.
+
+### <a name="support-bundle"></a>Támogatás – csomag
+
+Ha IoT Edge-eszközről kell összegyűjtenie a naplókat, a legegyszerűbb módszer a `support-bundle` parancs használata. Ez a parancs a következőket gyűjti:
+
+- Modulok naplói
+- A IoT Edge Security Manager és a Container Engine naplói
+- Iotedge-ellenőrzési JSON-kimenet
+- Hasznos hibakeresési információk
+
+#### <a name="use-the-iot-edge-security-manager"></a>A IoT Edge Security Manager használata
+ 
+A IoT Edge Security Manager felelős az olyan műveletekért, mint a IoT Edge rendszer inicializálásakor az indítási és kiépítési eszközökön. Ha IoT Edge nem indul el, a Security Manager naplói hasznos információkat nyújthatnak. A IoT Edge Security Manager részletesebb naplófájljainak megtekintéséhez:
+
+1. Szerkessze a IoT Edge Daemon-beállításokat az IoT Edge-eszközön:
+
+    ```
+    sudo systemctl edit iotedge.service
+    ```
+
+1. Frissítse a következő sorokat:
+
+    ```
+    [Service]
+    Environment=IOTEDGE_LOG=edgelet=debug
+    ```
+
+1. Indítsa újra a IoT Edge biztonsági démont a következő parancsok futtatásával:
+
+    ```
+    sudo systemctl cat iotedge.service
+    sudo systemctl daemon-reload
+    sudo systemctl restart iotedge
+    ```
+
+1. Futtassa a `support-bundle` parancsot a--since jelzővel annak megadásához, hogy a múltban mennyi ideig szeretné lekérni a naplókat. Például a 2H az elmúlt két órában lekéri a naplókat. A jelző értékét módosíthatja úgy, hogy a naplókat egy másik időszakban is tartalmazza.
+
+    ```
+    sudo iotedge support-bundle --since 2h
+    ```
+
+### <a name="lva-debug-logs"></a>Hibakeresési naplók LVA
+
+A következő lépésekkel konfigurálhatja a LVA IoT Edge modulban a hibakeresési naplók létrehozásához:
+
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és navigáljon az IoT hubhoz.
+1. A menüből válassza a **IoT Edge** lehetőséget.
+1. Kattintson a céleszköz AZONOSÍTÓJÁRA az eszközök listájából.
+1. Kattintson a **modulok beállítása** hivatkozásra a felső menüben.
+
+  ![modulok beállítása az Azure Portalon](media/troubleshoot-how-to/set-modules.png)
+
+5. A IoT Edge-modulok szakaszban keresse meg és kattintson a **lvaEdge**elemre.
+1. Kattintson a **tároló létrehozási beállítások**elemre.
+1. A kötések szakaszban adja hozzá a következő parancsot:
+
+    `/var/local/mediaservices/logs:/var/lib/azuremediaservices/logs`
+
+    Ez köti a naplók mappáit a peremhálózati eszköz és a tároló között.
+
+1. Kattintson az **Update (frissítés** ) gombra
+1. Kattintson a lap alján található **felülvizsgálat + létrehozás** gombra. Egy egyszerű ellenőrzésre kerül sor, és a rendszer egy zöld szalagcím alatt sikeres érvényesítési üzenetet küld.
+1. Kattintson a **Létrehozás** gombra.
+1. Ezután frissítse a **modul Identity Twin** elemet, hogy a DebugLogsDirectory paramétert arra a könyvtárra mutasson, amelyben a naplók gyűjtése történik:
+    1. A **modulok** táblázatban válassza a **lvaEdge** lehetőséget.
+    1. Kattintson a **modul Identity Twin** hivatkozására. Ezt az oldal tetején találja. Ekkor megnyílik egy szerkeszthető ablaktábla.
+    1. Adja hozzá a következő kulcs-érték párt a **kívánt kulcsban**:
+
+        `"DebugLogsDirectory": "/var/lib/azuremediaservices/logs"`
+
+    1. Kattintson a **Save (Mentés**) gombra.
+
+1. Reprodukálja a problémát.
+1. Kapcsolódjon a virtuális géphez a portál IoT Hub oldaláról.
+1. Navigáljon a mappához `/var/local/mediaservices/logs` , és küldje el a mappa bin tartalmát, és ossza meg velünk. (Ezek a naplófájlok nem a saját diagnosztika céljára szolgálnak. Ezek az Azure Engineering a problémák elemzéséhez készültek.)
+
+1. A napló-gyűjtemény leállítható úgy, hogy a **modul identitása Twin** értékre állítja a *Null* értéket. Térjen vissza a **modul Identity Twin** oldalára, és frissítse a következő paramétert:
+
+    `"DebugLogsDirectory": ""`
 
 ## <a name="next-steps"></a>További lépések
 

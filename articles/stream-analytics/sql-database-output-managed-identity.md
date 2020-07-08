@@ -4,14 +4,14 @@ description: Ez a cikk azt ismerteti, hogyan használhatók a felügyelt identit
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/08/2020
-ms.openlocfilehash: a8699b3942fe3a4b23f1d72036b7364cdab36f8e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 757dd7280867e9b31fdc0750fc0848de8f266770
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83651983"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045620"
 ---
 # <a name="use-managed-identities-to-access-azure-sql-database-from-an-azure-stream-analytics-job-preview"></a>Felügyelt identitások használata Azure SQL Database Azure Stream Analytics feladatokból való eléréséhez (előzetes verzió)
 
@@ -70,7 +70,7 @@ A felügyelt identitás létrehozása után ki kell választania egy Active Dire
 
 Ezután létre kell hoznia egy tárolt adatbázis-felhasználót a SQL Database, amely a Azure Active Directory identitásra van leképezve. A tárolt adatbázis-felhasználó nem rendelkezik bejelentkezési azonosítóval a Master adatbázishoz, de az adatbázishoz társított címtárban található identitáshoz rendeli. A Azure Active Directory identitás lehet egyéni felhasználói fiók vagy csoport. Ebben az esetben létre kell hoznia egy tárolt adatbázis-felhasználót a Stream Analytics feladatokhoz. 
 
-1. Kapcsolódjon az SQL-adatbázishoz SQL Server Management Studio használatával. A **Felhasználónév** egy Azure Active Directory felhasználó, aki módosítja a **felhasználó** engedélyeit. A SQL Server beállított rendszergazda egy példa. **Azure Active Directory – Universal és MFA** hitelesítés használata. 
+1. Kapcsolódás SQL Database SQL Server Management Studio használatával. A **Felhasználónév** egy Azure Active Directory felhasználó, aki módosítja a **felhasználó** engedélyeit. A SQL Server beállított rendszergazda egy példa. **Azure Active Directory – Universal és MFA** hitelesítés használata. 
 
    ![Csatlakozás az SQL Serverhez](./media/sql-db-output-managed-identity/connect-sql-server.png)
 
@@ -96,7 +96,7 @@ Ezután létre kell hoznia egy tárolt adatbázis-felhasználót a SQL Database,
    CREATE USER [ASA_JOB_NAME] FROM EXTERNAL PROVIDER; 
    ```
 
-1. Ahhoz, hogy a Microsoft Azure Active Directory ellenőrizze, hogy a Stream Analytics-feladatot elérheti-e a SQL Database, Azure Active Directory engedélyt kell adni az adatbázissal való kommunikációra. Ehhez nyissa meg ismét a "tűzfalak és virtuális hálózat" lapot az Azure Portalon, és engedélyezze az "Azure-szolgáltatások és-erőforrások elérésének engedélyezése ehhez a kiszolgálóhoz" című részt. 
+1. Ahhoz, hogy a Microsoft Azure Active Directory ellenőrizze, hogy a Stream Analytics-feladatot elérheti-e a SQL Database, Azure Active Directory engedélyt kell adni az adatbázissal való kommunikációra. Ehhez nyissa meg a "tűzfalak és virtuális hálózat" lapot Azure Portal újra, és engedélyezze az "Azure-szolgáltatások és-erőforrások elérésének engedélyezése a kiszolgálóhoz" lehetőséget. 
 
    ![Tűzfal és virtuális hálózat](./media/sql-db-output-managed-identity/allow-access.png)
 

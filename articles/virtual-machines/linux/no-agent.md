@@ -6,21 +6,21 @@ ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.topic: how-to
 ms.workload: infrastructure
-ms.date: 06/22/2020
+ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: e5e47b5822127bcd00fd2d67efff9a786f00a258
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: d177e7fd7d18b24f9d8fd7f3e6662abe16bba317
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85306918"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045331"
 ---
 # <a name="creating-generalized-images-without-a-provisioning-agent"></a>Általánosított rendszerképek létrehozása kiépítési ügynök nélkül
 
 A Microsoft Azure a [walinuxagent](https://github.com/Azure/WALinuxAgent) vagy a [Cloud-init](https://github.com/canonical/cloud-init) (ajánlott) formában biztosítja a linuxos virtuális gépek kiépítési ügynökeit. Előfordulhat azonban, hogy nem kívánja használni ezeket az alkalmazásokat a kiépítési ügynökhöz, például a következő esetekben:
 
-- A Linux-disztribúció/-verzió nem támogatja a Cloud-init használatát.
+- A Linux-disztribúció/-verzió nem támogatja a Cloud-init/Linux-ügynököt.
 - Szükség van bizonyos virtuálisgép-tulajdonságok beállítására, például az állomásnévre.
 
 > [!NOTE] 
@@ -70,7 +70,7 @@ $ az vm create \
 Ha a virtuális gép üzembe helyezése megtörtént, SSH-t telepíthet a gépre, és eltávolíthatja a Linux-ügynököt:
 
 ```bash
-$ sudo apt remove -y waagent
+$ sudo apt purge -y waagent
 $ sudo rm -rf /var/lib/waagent /etc/waagent.conf /var/log/waagent.log
 ```
 

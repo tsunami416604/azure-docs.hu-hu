@@ -3,12 +3,12 @@ title: Erőforrás-módosítások lekérése
 description: Ismerje meg, hogy miként lehet megkeresni egy erőforrás megváltozását, lekérni a módosított tulajdonságok listáját, és kiértékelni a különbségeket.
 ms.date: 05/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 9e233ebbdd1d70d483af44eacf12cc924deaafac
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: ace911361ccb96cab3d5c7557ba0e524dbf801d2
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84167162"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044991"
 ---
 # <a name="get-resource-changes"></a>Erőforrás-módosítások lekérése
 
@@ -28,7 +28,7 @@ Az észlelés és a részletek változása az alábbi példák esetében hasznos
 Ez a cikk bemutatja, hogyan gyűjtheti ezeket az információkat az erőforrás-gráf SDK-n keresztül. Ha szeretné megtekinteni ezeket az információkat a Azure Portalban, tekintse meg a Azure Policy [változási előzményeit](../../policy/how-to/determine-non-compliance.md#change-history) vagy az Azure-tevékenység naplójának [módosításait](../../../azure-monitor/platform/activity-log-view.md#azure-portal). Az alkalmazásoknak az infrastruktúra rétegből való változásairól az alkalmazások telepítésének módjáról az alkalmazás- [módosítási elemzés használata (előzetes verzió)](../../../azure-monitor/app/change-analysis.md) című témakörben olvashat bővebben Azure monitor.
 
 > [!NOTE]
-> Az erőforrás-diagram adatainak módosítása a Resource Manager-tulajdonságok. A virtuális gépek változásainak nyomon követéséhez tekintse meg a Azure Automation [változások követése](../../../automation/automation-change-tracking.md) vagy a Azure Policy a virtuális gépekhez [tartozó vendég konfigurációját](../../policy/concepts/guest-configuration.md).
+> Az erőforrás-diagram adatainak módosítása a Resource Manager-tulajdonságok. A virtuális gépek változásainak nyomon követéséhez tekintse meg a Azure Automation [változások követése](../../../automation/change-tracking.md) vagy a Azure Policy a virtuális gépekhez [tartozó vendég konfigurációját](../../policy/concepts/guest-configuration.md).
 
 > [!IMPORTANT]
 > Az Azure Resource Graph változási előzményei nyilvános előzetes verzióban érhetők el.
@@ -283,7 +283,7 @@ a **beforeSnapshot** és a **afterSnapshot** mindegyike megadja a pillanatkép k
 
 Az eredmények összehasonlításához használja a **resourceChanges** **Changes** tulajdonságát, vagy értékelje ki a **resourceChangeDetails** egyes Pillanatképek **tartalom** részét a különbség megállapításához. Ha összehasonlítja a pillanatképeket, az **időbélyegző** mindig különbséget mutat a vártnál.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse meg az [alapszintű lekérdezésekben](../samples/starter.md)használt nyelvet.
 - Lásd: speciális alkalmazások a [speciális lekérdezésekben](../samples/advanced.md).

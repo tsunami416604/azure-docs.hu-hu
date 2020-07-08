@@ -4,14 +4,14 @@ description: Ez a cikk azt ismerteti, hogyan titkosíthatja a Azure Stream Analy
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/05/2020
-ms.openlocfilehash: 8d201beb2ff4aba815749b12a506d2292779cb82
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 637ac97d1e054599ec297344ff0c5fff600c8487
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857286"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045348"
 ---
 # <a name="data-protection-in-azure-stream-analytics"></a>Adatvédelem a Azure Stream Analyticsban 
 
@@ -36,7 +36,7 @@ A következő lépésekkel konfigurálhatja a Storage-fiókot a privát adategys
 
 1. Kattintson az Azure Portal bal felső sarkában található **Erőforrás létrehozása** gombra. 
 
-1. Válassza az **elemzési** > **stream Analytics feladatot** az eredmények listából. 
+1. Válassza az **elemzési**   >  **stream Analytics feladatot**   az eredmények listából. 
 
 1. Töltse ki a Stream Analytics feladatot tartalmazó oldalt a szükséges adatokkal, például a név, a régió és a skála lehetőséggel. 
 
