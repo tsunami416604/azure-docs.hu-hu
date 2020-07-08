@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 8254d121c62a20de0a1593920b7793195f8eb50e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78926715"
 ---
 # <a name="import-the-postman-environment"></a>A Poster-környezet importálása  
@@ -25,7 +24,7 @@ ms.locfileid: "78926715"
 Ez a cikk **a Poster-környezet azon** változóinak definícióját tartalmazza, amelyek a Media Services REST API-kat meghívó CSOPORTOSÍTott http-kérelmeket tartalmazó [Poster-gyűjteményt](postman-collection.md) használják. A környezet és a gyűjtemény fájljait a [Poster beállítása a Media Services REST API-hívások](media-rest-apis-with-postman.md) oktatóanyagához használja.
 
 > [!NOTE]
-> A értéke `AzureADSTSEndpoint `  =  `https://login.microsoftonline.com/{{TenantId}}/oauth2/token`. A bérlői azonosító lekéréséhez vigye az egérmutatót a saját felhasználónevére a portálon (a jobb felső sarokban), és a "címtár: Microsoft ({{TENANTID}})" könyvtárba kerül.
+> A értéke `AzureADSTSEndpoint `  =  `https://login.microsoftonline.com/{{TenantId}}/oauth2/token` . A bérlői azonosító lekéréséhez vigye az egérmutatót a saját felhasználónevére a portálon (a jobb felső sarokban), és a "címtár: Microsoft ({{TENANTID}})" könyvtárba kerül.
 
 ```
 {

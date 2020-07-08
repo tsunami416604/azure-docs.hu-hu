@@ -8,10 +8,9 @@ ms.date: 03/04/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 8b70738a439b6c64a84a63adf63c83995530e92e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78302695"
 ---
 # <a name="asin-azure-cosmos-db"></a>ASIN (Azure Cosmos DB)
@@ -34,7 +33,7 @@ ASIN(<numeric_expr>)
   
 ## <a name="examples"></a>Példák
   
-  A következő példa a `ASIN` -1 értéket adja vissza.  
+  A következő példa a-1 értéket adja vissza `ASIN` .  
   
 ```sql
 SELECT ASIN(-1) AS asin  

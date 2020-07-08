@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/13/2020
 ms.openlocfilehash: abc3cc8c526e37e18f1e67b109a9a8e15ff8c989
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78302712"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>MapReduce-feladatok futtatása a HDInsight Apache Hadoop a REST használatával
@@ -57,7 +56,7 @@ Vagy:
    * **-u**: megadja a kérelem hitelesítéséhez használt felhasználónevet és jelszót
    * **-G**: azt jelzi, hogy ez a művelet egy Get kérelem
 
-   Az URI `https://CLUSTERNAME.azurehdinsight.net/templeton/v1`kezdetének értéke az összes kérelem esetében azonos.
+   Az URI kezdetének `https://CLUSTERNAME.azurehdinsight.net/templeton/v1` értéke az összes kérelem esetében azonos.
 
     A következő JSON-hoz hasonló válasz érkezik:
 
@@ -87,7 +86,7 @@ Vagy:
 
        job_1415651640909_0026
 
-1. A feladatok állapotának megtekintéséhez használja a következő parancsot. A értékét `JOBID` cserélje le az előző lépésben visszaadott **tényleges** értékre. Szükség szerint módosítsa a **jQ** helyét.
+1. A feladatok állapotának megtekintéséhez használja a következő parancsot. A értékét cserélje le az `JOBID` előző lépésben visszaadott **tényleges** értékre. Szükség szerint módosítsa a **jQ** helyét.
 
     ```cmd
     set JOBID=job_1415651640909_0026
@@ -98,7 +97,7 @@ Vagy:
 
 ### <a name="powershell"></a>PowerShell
 
-1. Az egyszerű használat érdekében állítsa be az alábbi változókat. Cserélje `CLUSTERNAME` le a nevet a tényleges fürt nevére. Hajtsa végre a parancsot, és ha a rendszer kéri, adja meg a fürt bejelentkezési jelszavát.
+1. Az egyszerű használat érdekében állítsa be az alábbi változókat. Cserélje le a `CLUSTERNAME` nevet a tényleges fürt nevére. Hajtsa végre a parancsot, és ha a rendszer kéri, adja meg a fürt bejelentkezési jelszavát.
 
     ```powershell
     $clusterName="CLUSTERNAME"
@@ -167,9 +166,9 @@ Vagy:
 
 ### <a name="both-methods"></a>Mindkét módszer
 
-1. Ha a feladatok befejeződik, a visszaadott állapot `SUCCEEDED`a következő:.
+1. Ha a feladatok befejeződik, a visszaadott állapot a következő: `SUCCEEDED` .
 
-1. Ha a feladatokhoz tartozó állapot módosult `SUCCEEDED`, az Azure Blob Storage-ból kérheti le a feladatok eredményét. A `statusdir` lekérdezéssel átadott paraméter tartalmazza a kimeneti fájl helyét. Ebben a példában a hely a következő `/example/curl`:. Ez a címe tárolja a feladatok kimenetét a fürtök alapértelmezett tárolójában a `/example/curl`következő helyen:.
+1. Ha a feladatokhoz tartozó állapot módosult `SUCCEEDED` , az Azure Blob Storage-ból kérheti le a feladatok eredményét. A `statusdir` lekérdezéssel átadott paraméter tartalmazza a kimeneti fájl helyét. Ebben a példában a hely a következő: `/example/curl` . Ez a címe tárolja a feladatok kimenetét a fürtök alapértelmezett tárolójában a következő helyen: `/example/curl` .
 
 Ezeket a fájlokat az [Azure CLI](/cli/azure/install-azure-cli)használatával listázhatja és letöltheti. Az Azure CLI Azure Blob Storage-hoz való használatáról további információt a rövid útmutató [: Blobok létrehozása, letöltése és listázása az Azure CLI](../../storage/blobs/storage-quickstart-blobs-cli.md)használatával című témakörben talál.
 

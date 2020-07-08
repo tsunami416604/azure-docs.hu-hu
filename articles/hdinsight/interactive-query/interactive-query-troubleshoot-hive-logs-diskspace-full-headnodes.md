@@ -8,10 +8,9 @@ ms.author: nisgoel
 ms.reviewer: jasonh
 ms.date: 03/05/2020
 ms.openlocfilehash: d843b942702d335065a5f3798572e34c71b4cd0e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78943966"
 ---
 # <a name="scenario-apache-hive-logs-are-filling-up-the-disk-space-on-the-head-nodes-in-azure-hdinsight"></a>Forgatókönyv: Apache Hive naplók kitöltik a lemezterületet az Azure HDInsight lévő fő csomópontokon
@@ -25,7 +24,7 @@ Egy Apache Hive-vagy LLAP-fürtön a nem kívánt naplók a teljes lemezterület
 1. Az SSH-hozzáférés meghiúsul, mert nincs szóköz a főcsomóponton.
 2. A Ambari *http-hibát ad: a 503 szolgáltatás nem érhető el*.
 
-A `ambari-agent` naplók a probléma előfordulásakor az alábbiakat mutatják be.
+A naplók a probléma előfordulásakor az `ambari-agent` alábbiakat mutatják be.
 ```
 ambari_agent - Controller.py - [54697] - Controller - ERROR - Error:[Errno 28] No space left on device
 ```
@@ -41,11 +40,11 @@ A speciális kaptár-log4j konfigurációk esetében a *log4j. Append. RFA. MaxB
 
 1. A Ambari-portálon navigáljon a kaptár összetevő összefoglalásához, és kattintson a `Configs` Tab gombra.
 
-2. Ugrás a `Advanced hive-log4j` speciális beállítások területen található szakaszra.
+2. Ugrás a `Advanced hive-log4j` Speciális beállítások területen található szakaszra.
 
 3. Állítsa `log4j.appender.RFA` a paramétert RollingFileAppender értékre. 
 
-4. Állítsa `log4j.appender.RFA.MaxFileSize` be `log4j.appender.RFA.MaxBackupIndex` és az alábbiak szerint.
+4. Állítsa be `log4j.appender.RFA.MaxFileSize` és `log4j.appender.RFA.MaxBackupIndex` az alábbiak szerint.
 
 ```
 log4jhive.log.maxfilesize=1024MB

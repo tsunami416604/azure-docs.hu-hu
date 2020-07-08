@@ -4,10 +4,9 @@ description: Ebből az oktatóanyagból megtudhatja, hogyan futtathat egy Azure 
 ms.topic: article
 ms.date: 06/27/2019
 ms.openlocfilehash: 3202b5d8c426165d81129f1affa69b3a3d515ce9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78402879"
 ---
 # <a name="run-an-acr-task-on-a-defined-schedule"></a>ACR-feladat futtatása meghatározott ütemterven
@@ -32,7 +31,7 @@ Az Azure CLI Azure Cloud Shell vagy helyi telepítését használhatja a cikkben
 
 * **Trigger a cron kifejezéssel** – a feladatok időzítő triggere cron- *kifejezést*használ. A kifejezés egy öt mezőt tartalmazó karakterlánc, amely a feladat elindításához a percet, az órát, a napot, a hónapot és a hét napját adja meg. A percenkénti gyakoriságok támogatottak.
 
-  A kifejezés `"0 12 * * Mon-Fri"` például elindít egy feladatot a nap minden napján, UTC órakor. A [részleteket](#cron-expressions) a cikk későbbi részében találja.
+  A kifejezés például `"0 12 * * Mon-Fri"` elindít egy feladatot a nap minden napján, UTC órakor. A [részleteket](#cron-expressions) a cikk későbbi részében találja.
 * **Több időzítő eseményindító** – több időzítő hozzáadása egy feladathoz, ha az ütemtervek eltérnek.
     * A feladat létrehozásakor több időzítő eseményindítót adjon meg, vagy később adja hozzá őket.
     * Szükség esetén megadhatja az eseményindítókat az egyszerűbb kezelés érdekében, vagy az ACR-feladatok alapértelmezett eseményindító-neveket biztosítanak.
@@ -41,7 +40,7 @@ Az Azure CLI Azure Cloud Shell vagy helyi telepítését használhatja a cikkben
 
 ## <a name="create-a-task-with-a-timer-trigger"></a>Feladat létrehozása időzítő-triggerrel
 
-Amikor az [az ACR Task Create][az-acr-task-create] paranccsal hoz létre egy feladatot, lehetősége van egy időzítő-trigger hozzáadására. Adja hozzá `--schedule` a paramétert, és adjon meg egy cron-kifejezést az időzítőhöz.
+Amikor az [az ACR Task Create][az-acr-task-create] paranccsal hoz létre egy feladatot, lehetősége van egy időzítő-trigger hozzáadására. Adja hozzá a `--schedule` paramétert, és adjon meg egy cron-kifejezést az időzítőhöz.
 
 Egyszerű példaként a következő parancs elindítja a `hello-world` rendszerképet a Docker hub-ból minden nap 21:00 UTC időpontban. A feladat forráskód-környezet nélkül fut.
 
@@ -181,10 +180,10 @@ Minden mezőhöz a következő típusú értékek tartozhatnak:
 |Típus  |Példa  |Aktiváláskor  |
 |---------|---------|---------|
 |Egy adott érték |<nobr>`"5 * * * *"`</nobr>|minden órában, 5 perccel az óra múltán|
-|Minden érték (`*`)|<nobr>`"* 5 * * *"`</nobr>|az óra 5:00 UTC-től számított percenként (naponta 60 alkalommal)|
-|Tartomány (`-` operátor)|<nobr>`"0 1-3 * * *"`</nobr>|naponta 3 alkalommal, 1:00, 2:00 és 3:00 UTC|
-|Értékek halmaza (`,` operátor)|<nobr>`"20,30,40 * * * *"`</nobr>|óránként 3 alkalommal, 20 perc, 30 perc és 40 perccel elmúlt|
-|Intervallum értéke (`/` operátor)|<nobr>`"*/10 * * * *"`</nobr>|óránként 6 alkalommal, 10 perc, 20 perc és így tovább, az óra vége
+|Minden érték ( `*` )|<nobr>`"* 5 * * *"`</nobr>|az óra 5:00 UTC-től számított percenként (naponta 60 alkalommal)|
+|Tartomány ( `-` operátor)|<nobr>`"0 1-3 * * *"`</nobr>|naponta 3 alkalommal, 1:00, 2:00 és 3:00 UTC|
+|Értékek halmaza ( `,` operátor)|<nobr>`"20,30,40 * * * *"`</nobr>|óránként 3 alkalommal, 20 perc, 30 perc és 40 perccel elmúlt|
+|Intervallum értéke ( `/` operátor)|<nobr>`"*/10 * * * *"`</nobr>|óránként 6 alkalommal, 10 perc, 20 perc és így tovább, az óra vége
 
 [!INCLUDE [functions-cron-expressions-months-days](../../includes/functions-cron-expressions-months-days.md)]
 
@@ -200,7 +199,7 @@ Minden mezőhöz a következő típusú értékek tartozhatnak:
 |`"30 9 * * 1-5"`|minden hétköznap 9:30 UTC-kor|
 |`"30 9 * Jan Mon"`|Január 9:30-kor, minden hétfőn|
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha el szeretné távolítani az oktatóanyag-sorozatban létrehozott összes erőforrást, beleértve a tároló-beállításjegyzéket vagy a jegyzékeket, a tároló-példányt, a kulcstartót és a szolgáltatásnevet, adja ki a következő parancsokat:
 

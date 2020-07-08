@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 03/04/2020
 ms.openlocfilehash: 2ed7a5b9c81d1b50f80f379a88688b69c49ed382
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78897918"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>A HDInsight csatlakoztatása a helyszíni hálózathoz
@@ -69,7 +68,7 @@ Ezek a lépések a [Azure Portal](https://portal.azure.com) használatával lét
 
     ![Ubuntu rendszerű virtuális gép létrehozása](./media/connect-on-premises-network/azure-portal-create-resource.png)
 
-1. A **virtuális gép létrehozása** lapon válassza a **számítási** > **virtuális gép** lehetőséget.
+1. **Compute**  >  A **virtuális gép létrehozása** lapon válassza a számítási**virtuális gép** lehetőséget.
 
 1. Az __alapok__ lapon adja meg a következő adatokat:  
   
@@ -116,7 +115,7 @@ Miután létrehozta a virtuális gépet, az **üzembe helyezés sikeres** értes
 
 ### <a name="install-and-configure-bind-dns-software"></a>Kötés telepítése és konfigurálása (DNS-szoftver)
 
-1. Használja az SSH-t a virtuális gép __nyilvános IP-címéhez__ való kapcsolódáshoz. A `sshuser` helyére írja be a virtuális gép létrehozásakor megadott SSH-felhasználói fiókot. A következő példa egy virtuális géphez csatlakozik a 40.68.254.142-ben:
+1. Használja az SSH-t a virtuális gép __nyilvános IP-címéhez__ való kapcsolódáshoz. A helyére írja `sshuser` be a virtuális gép létrehozásakor megadott SSH-felhasználói fiókot. A következő példa egy virtuális géphez csatlakozik a 40.68.254.142-ben:
 
     ```bash
     ssh sshuser@40.68.254.142
@@ -129,7 +128,7 @@ Miután létrehozta a virtuális gépet, az **üzembe helyezés sikeres** értes
     sudo apt-get install bind9 -y
     ```
 
-3. Ha úgy szeretné konfigurálni a kötést, hogy a névfeloldási kérelmeket továbbítsa a helyszíni DNS-kiszolgálóra, használja a `/etc/bind/named.conf.options` következő szöveget a fájl tartalmának használatával:
+3. Ha úgy szeretné konfigurálni a kötést, hogy a névfeloldási kérelmeket továbbítsa a helyszíni DNS-kiszolgálóra, használja a következő szöveget a fájl tartalmának használatával `/etc/bind/named.conf.options` :
 
         acl goodclients {
             10.0.0.0/16; # Replace with the IP address range of the virtual network
@@ -156,9 +155,9 @@ Miután létrehozta a virtuális gépet, az **üzembe helyezés sikeres** értes
         };
 
     > [!IMPORTANT]  
-    > Cserélje le a `goodclients` szakasz értékeit a virtuális hálózat és a helyszíni hálózat IP-címének tartományára. Ez a szakasz azokat a címeket határozza meg, amelyekkel a DNS-kiszolgáló fogadja a kérelmeket.
+    > Cserélje le a szakasz értékeit a `goodclients` virtuális hálózat és a helyszíni hálózat IP-címének tartományára. Ez a szakasz azokat a címeket határozza meg, amelyekkel a DNS-kiszolgáló fogadja a kérelmeket.
     >
-    > Cserélje le `192.168.0.1` a `forwarders` szakasz BEJEGYZÉSÉT a helyszíni DNS-kiszolgáló IP-címére. Ez a bejegyzés a DNS-kéréseket a helyszíni DNS-kiszolgálóra irányítja a feloldáshoz.
+    > Cserélje le a `192.168.0.1` szakasz bejegyzését a helyszíni `forwarders` DNS-kiszolgáló IP-címére. Ez a bejegyzés a DNS-kéréseket a helyszíni DNS-kiszolgálóra irányítja a feloldáshoz.
 
     A fájl szerkesztéséhez használja a következő parancsot:
 
@@ -182,7 +181,7 @@ Miután létrehozta a virtuális gépet, az **üzembe helyezés sikeres** értes
 
     A `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` szöveg a virtuális hálózat __DNS-utótagja__ . Mentse ezt az értéket, mivel később használatban van.
 
-5. A virtuális hálózaton belüli erőforrások DNS-neveinek feloldásához a kötés konfigurálásához használja a következő szöveget a `/etc/bind/named.conf.local` fájl tartalmának használatával:
+5. A virtuális hálózaton belüli erőforrások DNS-neveinek feloldásához a kötés konfigurálásához használja a következő szöveget a fájl tartalmának használatával `/etc/bind/named.conf.local` :
 
         // Replace the following with the DNS suffix for your virtual network
         zone "icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net" {
@@ -191,7 +190,7 @@ Miután létrehozta a virtuális gépet, az **üzembe helyezés sikeres** értes
         };
 
     > [!IMPORTANT]  
-    > Le kell cserélnie `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` a-t a korábban lekért DNS-utótaggal.
+    > Le kell cserélnie a `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` -t a korábban lekért DNS-utótaggal.
 
     A fájl szerkesztéséhez használja a következő parancsot:
 
@@ -215,9 +214,9 @@ Miután létrehozta a virtuális gépet, az **üzembe helyezés sikeres** értes
     ```
 
     > [!IMPORTANT]  
-    > Cserélje `dns.mynetwork.net` le a értéket a helyszíni hálózatban lévő erőforrás teljes tartománynevére (FQDN).
+    > Cserélje le a értéket `dns.mynetwork.net` a helyszíni hálózatban lévő erőforrás teljes tartománynevére (FQDN).
     >
-    > Cserélje `10.0.0.4` le a értékét a virtuális hálózatban lévő egyéni DNS __-kiszolgáló belső IP-címére__ .
+    > Cserélje le a értékét a `10.0.0.4` virtuális hálózatban lévő egyéni DNS __-kiszolgáló belső IP-címére__ .
 
     A válasz az alábbi szöveghez hasonlóan jelenik meg:
 
@@ -234,7 +233,7 @@ Miután létrehozta a virtuális gépet, az **üzembe helyezés sikeres** értes
 
 Ha úgy szeretné konfigurálni a virtuális hálózatot, hogy az egyéni DNS-kiszolgálót használja az Azure rekurzív feloldó helyett, kövesse az alábbi lépéseket a [Azure Portal](https://portal.azure.com):
 
-1. A bal oldali menüben navigáljon az **összes szolgáltatás** > **hálózati** > **virtuális hálózat**elemre.
+1. A bal oldali menüben navigáljon az **összes szolgáltatás**  >  **hálózati**  >  **virtuális hálózat**elemre.
 
 2. Válassza ki a virtuális hálózatot a listából, amely megnyitja a virtuális hálózat alapértelmezett nézetét.  
 
@@ -269,7 +268,7 @@ Miután konfigurálta a helyszíni DNS-kiszolgálót, `nslookup` a helyszíni h�
 nslookup dnsproxy.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net 196.168.0.4
 ```
 
-Ez a példa a helyszíni DNS-kiszolgálót használja a 196.168.0.4-ben az egyéni DNS-kiszolgáló nevének feloldásához. Cserélje le az IP-címet a helyszíni DNS-kiszolgáló egyikére. Cserélje le `dnsproxy` a címeket az egyéni DNS-kiszolgáló teljesen minősített tartománynevére.
+Ez a példa a helyszíni DNS-kiszolgálót használja a 196.168.0.4-ben az egyéni DNS-kiszolgáló nevének feloldásához. Cserélje le az IP-címet a helyszíni DNS-kiszolgáló egyikére. Cserélje le a `dnsproxy` címeket az egyéni DNS-kiszolgáló teljesen minősített tartománynevére.
 
 ## <a name="optional-control-network-traffic"></a>Nem kötelező: hálózati forgalom szabályozása
 
@@ -302,7 +301,7 @@ A HDInsight-fürt létrehozásához használja a [HDInsight-fürt létrehozása 
 
 A HDInsight legtöbb dokumentációja feltételezi, hogy a fürthöz az interneten keresztül férhet hozzá. Például hogy a `https://CLUSTERNAME.azurehdinsight.net` címen tud csatlakozni a fürthöz. Ez a címe a nyilvános átjárót használja, amely nem érhető el, ha a NSG vagy a UDR használatával korlátozza a hozzáférést az internetről.
 
-Egyes dokumentációk arra `headnodehost` is hivatkoznak, amikor egy SSH-munkamenetből csatlakozik a fürthöz. Ez a címe csak a fürtben lévő csomópontokból érhető el, és nem használható a virtuális hálózaton keresztül csatlakozó ügyfeleken.
+Egyes dokumentációk arra is hivatkoznak `headnodehost` , amikor egy SSH-munkamenetből csatlakozik a fürthöz. Ez a címe csak a fürtben lévő csomópontokból érhető el, és nem használható a virtuális hálózaton keresztül csatlakozó ügyfeleken.
 
 Ha közvetlenül szeretne csatlakozni a HDInsight a virtuális hálózaton keresztül, kövesse az alábbi lépéseket:
 

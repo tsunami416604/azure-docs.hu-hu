@@ -5,10 +5,9 @@ ms.topic: article
 ms.date: 08/23/2018
 ms.custom: seodec18
 ms.openlocfilehash: dbeba56820a520e3435eeb0c5c8dbc5aae981241
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78403240"
 ---
 # <a name="quickstart-send-events-from-private-container-registry-to-event-grid"></a>Gyors útmutató: események küldése a privát tároló beállításjegyzékből a Event Gridba
@@ -19,7 +18,7 @@ A cikk lépéseinek elvégzése után a tároló-beállításjegyzékből eljutt
 
 ![Webböngésző – a minta-webalkalmazás három fogadott eseménysel való megjelenítése][sample-app-01]
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot][azure-account] .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot][azure-account].
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -37,7 +36,7 @@ az group create --name $RESOURCE_GROUP_NAME --location eastus
 
 ## <a name="create-a-container-registry"></a>Tároló-beállításjegyzék létrehozása
 
-Ezután helyezzen üzembe egy tároló-beállításjegyzéket az erőforráscsoporthoz az alábbi parancsokkal. Az az [ACR Create][az-acr-create] parancs futtatása előtt állítsa `ACR_NAME` be a beállításjegyzék nevét. A névnek egyedinek kell lennie az Azure-on belül, és 5-50 alfanumerikus karakterre van korlátozva.
+Ezután helyezzen üzembe egy tároló-beállításjegyzéket az erőforráscsoporthoz az alábbi parancsokkal. Az az [ACR Create][az-acr-create] parancs futtatása előtt állítsa be a `ACR_NAME` beállításjegyzék nevét. A névnek egyedinek kell lennie az Azure-on belül, és 5-50 alfanumerikus karakterre van korlátozva.
 
 ```azurecli-interactive
 ACR_NAME=<acrName>
@@ -141,7 +140,7 @@ Most, hogy már működik a minta alkalmazás, és előfizetett a beállításje
 
 ### <a name="build-and-push-image"></a>Rendszerkép létrehozása és leküldése
 
-A következő Azure CLI-parancs végrehajtásával hozzon létre egy tároló-rendszerképet egy GitHub-tárház tartalmából. Alapértelmezés szerint az ACR-feladatok automatikusan leküldenek egy sikeresen létrehozott rendszerképet a beállításjegyzékbe, `ImagePushed` amely létrehozza az eseményt.
+A következő Azure CLI-parancs végrehajtásával hozzon létre egy tároló-rendszerképet egy GitHub-tárház tartalmából. Alapértelmezés szerint az ACR-feladatok automatikusan leküldenek egy sikeresen létrehozott rendszerképet a beállításjegyzékbe, amely létrehozza az `ImagePushed` eseményt.
 
 ```azurecli-interactive
 az acr build --registry $ACR_NAME --image myimage:v1 -f Dockerfile https://github.com/Azure-Samples/acr-build-helloworld-node.git
@@ -179,7 +178,7 @@ A létrehozott rendszerkép "v1" címkéje a kimenetben jelenik meg, a következ
 
 ### <a name="delete-the-image"></a>A rendszerkép törlése
 
-Most állítson elő `ImageDeleted` egy eseményt a rendszerkép törlésével az az [ACR repository delete][az-acr-repository-delete] paranccsal:
+Most állítson elő egy `ImageDeleted` eseményt a rendszerkép törlésével az az [ACR repository delete][az-acr-repository-delete] paranccsal:
 
 ```azurecli-interactive
 az acr repository delete --name $ACR_NAME --image myimage:v1
@@ -194,15 +193,15 @@ Are you sure you want to continue? (y/n):
 
 ## <a name="view-registry-events"></a>Beállításjegyzék-események megtekintése
 
-Most leküldte a rendszerképet a beállításjegyzékbe, majd törölte. Navigáljon a Event Grid Viewer webalkalmazáshoz, és mindkettőt `ImageDeleted` és `ImagePushed` eseményt kell látnia. Előfordulhat, hogy megjelenik egy előfizetés-ellenőrzési esemény is, amelyet a [Feliratkozás a beállításjegyzék eseményeire](#subscribe-to-registry-events) című szakaszban található parancs végrehajtásával generált.
+Most leküldte a rendszerképet a beállításjegyzékbe, majd törölte. Navigáljon a Event Grid Viewer webalkalmazáshoz, és mindkettőt és eseményt kell látnia `ImageDeleted` `ImagePushed` . Előfordulhat, hogy megjelenik egy előfizetés-ellenőrzési esemény is, amelyet a [Feliratkozás a beállításjegyzék eseményeire](#subscribe-to-registry-events) című szakaszban található parancs végrehajtásával generált.
 
 Az alábbi képernyőfelvételen a három eseménnyel rendelkező minta alkalmazás látható, az `ImageDeleted` esemény pedig kibontva jelenik meg a részletek megjelenítéséhez.
 
 ![Webböngésző, amely a ImagePushed és a ImageDeleted eseményekkel rendelkező minta alkalmazást jeleníti meg][sample-app-03]
 
-Gratulálunk! Ha a és `ImageDeleted` az `ImagePushed` eseményeket látja, a beállításjegyzék az eseményeket Event Gridba küldi, és Event Grid továbbítja ezeket az eseményeket a webalkalmazás-végpontnak.
+Gratulálunk! Ha a és az `ImagePushed` `ImageDeleted` eseményeket látja, a beállításjegyzék az eseményeket Event Gridba küldi, és Event Grid továbbítja ezeket az eseményeket a webalkalmazás-végpontnak.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha elkészült az ebben a rövid útmutatóban létrehozott erőforrásokkal, az alábbi Azure CLI-paranccsal törölheti őket. Egy erőforráscsoport törlésekor a benne lévő összes erőforrás véglegesen törlődik.
 

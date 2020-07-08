@@ -10,10 +10,9 @@ ms.topic: how-to
 ms.date: 02/25/2020
 ms.author: lcozzens
 ms.openlocfilehash: da64f22981cc33772783093cfe75daa3eac5cef1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78672146"
 ---
 # <a name="route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>Azure-alkalmazás konfigurációs eseményeinek átirányítása webes végpontra az Azure CLI-vel
@@ -36,7 +35,7 @@ Az Event Grid-témakörök Azure-erőforrások, amelyeket egy Azure-erőforrásc
 
 Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. 
 
-A következő példában létrehozunk egy nevű `<resource_group_name>` erőforráscsoportot a *westus* helyen.  A `<resource_group_name>` elemet az erőforráscsoport egyedi nevére cserélje le.
+A következő példában létrehozunk egy nevű erőforráscsoportot `<resource_group_name>` a *westus* helyen.  A `<resource_group_name>` elemet az erőforráscsoport egyedi nevére cserélje le.
 
 ```azurecli-interactive
 az group create --name <resource_group_name> --location westus
@@ -44,7 +43,7 @@ az group create --name <resource_group_name> --location westus
 
 ## <a name="create-an-app-configuration-store"></a>Alkalmazás-konfigurációs tároló létrehozása
 
-A `<appconfig_name>` helyére írja be a konfigurációs tároló egyedi nevét, valamint `<resource_group_name>` a korábban létrehozott erőforráscsoportot. A névnek egyedinek kell lennie, mert DNS-névként van használatban.
+A helyére írja `<appconfig_name>` be a konfigurációs tároló egyedi nevét, valamint `<resource_group_name>` a korábban létrehozott erőforráscsoportot. A névnek egyedinek kell lennie, mert DNS-névként van használatban.
 
 ```azurecli-interactive
 az appconfig create \
@@ -97,7 +96,7 @@ Tekints meg újra a webalkalmazást, ahol láthatja, hogy az fogadta az előfize
 
 ## <a name="trigger-an-app-configuration-event"></a>Alkalmazás-konfigurációs esemény elindítása
 
-Most aktiváljunk egy eseményt, és lássuk, hogyan küldi el az üzenetet az Event Grid a végpontnak. Hozzon létre egy kulcs-érték `<appconfig_name>` értéket a-ből a korábbi verziók használatával.
+Most aktiváljunk egy eseményt, és lássuk, hogyan küldi el az üzenetet az Event Grid a végpontnak. Hozzon létre egy kulcs-érték értéket a- `<appconfig_name>` ből a korábbi verziók használatával.
 
 ```azurecli-interactive
 az appconfig kv set --name <appconfig_name> --key Foo --value Bar --yes
@@ -121,7 +120,7 @@ az appconfig kv set --name <appconfig_name> --key Foo --value Bar --yes
 }]
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 Ha azt tervezi, hogy folytatja az alkalmazás konfigurálását és az esemény-előfizetést, ne törölje az ebben a cikkben létrehozott erőforrásokat. Ha nem folytatja a munkát, akkor a következő paranccsal törölheti a cikkben létrehozott erőforrásokat.
 
 A `<resource_group_name>` elemet cserélje le a fent létrehozott erőforráscsoportra.

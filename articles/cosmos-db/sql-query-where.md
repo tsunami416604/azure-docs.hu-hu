@@ -7,15 +7,14 @@ ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: tisande
 ms.openlocfilehash: 483a0533eafc81ef8698d260a753062ae074f6d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78898774"
 ---
 # <a name="where-clause-in-azure-cosmos-db"></a>WHERE záradék Azure Cosmos DB
 
-A választható WHERE záradék (`WHERE <filter_condition>`) olyan feltételt határoz meg, amelynek a forrás JSON-elemeinek meg kell felelniük ahhoz, hogy a lekérdezés tartalmazza azokat az eredmények között. A JSON-elemek kiértékeléséhez a megadott `true` feltételeket kell figyelembe venni az eredmény szempontjából. Az index réteg a WHERE záradék használatával határozza meg az eredmény részét képező forrásoldali elemek legkisebb részhalmazát.
+A választható WHERE záradék ( `WHERE <filter_condition>` ) olyan feltételt határoz meg, amelynek a forrás JSON-elemeinek meg kell felelniük ahhoz, hogy a lekérdezés tartalmazza azokat az eredmények között. A JSON-elemek kiértékeléséhez a megadott feltételeket kell `true` figyelembe venni az eredmény szempontjából. Az index réteg a WHERE záradék használatával határozza meg az eredmény részét képező forrásoldali elemek legkisebb részhalmazát.
   
 ## <a name="syntax"></a>Szintaxis
   
@@ -37,13 +36,13 @@ WHERE <filter_condition>
   
 ## <a name="remarks"></a>Megjegyzések
   
-  Ahhoz, hogy a dokumentum visszaadja a szűrési feltételnek megadott kifejezést, az igaz értéket kell kiértékelni. Csak a logikai `true` érték felel meg a feltételnek, bármely más érték: nem definiált, null, hamis, szám, tömb vagy objektum nem felel meg a feltételnek.
+  Ahhoz, hogy a dokumentum visszaadja a szűrési feltételnek megadott kifejezést, az igaz értéket kell kiértékelni. Csak a logikai érték `true` felel meg a feltételnek, bármely más érték: nem definiált, null, hamis, szám, tömb vagy objektum nem felel meg a feltételnek.
 
   Ha egy egyenlőségi szűrő részeként belefoglalja a partíciós kulcsot a `WHERE` záradékba, a lekérdezés automatikusan csak a megfelelő partíciókat fogja szűrni.
 
 ## <a name="examples"></a>Példák
 
-A következő lekérdezés olyan `id` elemeket kér, amelyek értéke a tulajdonság. `AndersenFamily` Kizár minden olyan olyan tételt, amely nem rendelkezik `id` tulajdonsággal, vagy amelynek értéke nem `AndersenFamily`egyezik.
+A következő lekérdezés olyan elemeket kér, amelyek `id` értéke a tulajdonság `AndersenFamily` . Kizár minden olyan olyan tételt, amely nem rendelkezik `id` tulajdonsággal, vagy amelynek értéke nem egyezik `AndersenFamily` .
 
 ```sql
     SELECT f.address
@@ -74,7 +73,7 @@ A következő támogatott bináris operátorok használhatók:
 |Aritmetikai | +,-,*,/,% |
 |Bitenkénti    | \|, &, ^,  <<,  >>,  >>>  (nulla kitöltés jobb eltolása) |
 |Logikai    | ÉS, VAGY NEM      |
-|Összehasonlítás | =,! =, &lt;, &gt;, &lt;=, &gt;=,  <> |
+|Összehasonlítás | =,! =, &lt; , &gt; , &lt; =, &gt; =,  <> |
 |Sztring     |  \|\|CONCATENATE |
 
 A következő lekérdezések bináris operátorokat használnak:
@@ -105,10 +104,10 @@ A következő példákban látható módon használhatja az unáris operátorok 
     WHERE (-c.grade = -5)  -- matching grades == 5
 ```
 
-A lekérdezésekben tulajdonságok hivatkozásait is használhatja. Például `SELECT * FROM Families f WHERE f.isRegistered` visszaadja a tulajdonságot `isRegistered` tartalmazó olyan JSON- `true`tételt, amelynek értéke egyenlő. Bármely más érték `false`, például `null` `Undefined` `<number>` `<string>` `<object>`,,,,, vagy `<array>`, kizárja az elemet az eredményből.
+A lekérdezésekben tulajdonságok hivatkozásait is használhatja. Például `SELECT * FROM Families f WHERE f.isRegistered` visszaadja a tulajdonságot tartalmazó olyan JSON-tételt, `isRegistered` amelynek értéke egyenlő `true` . Bármely más érték, például,,,,, `false` `null` vagy, `Undefined` `<number>` `<string>` `<object>` `<array>` kizárja az elemet az eredményből.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Első lépések](sql-query-getting-started.md)
+- [Bevezetés](sql-query-getting-started.md)
 - [A kulcsszóban](sql-query-keywords.md#in)
 - [FROM záradék](sql-query-from.md)

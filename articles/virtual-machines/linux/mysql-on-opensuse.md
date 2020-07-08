@@ -11,10 +11,9 @@ ms.topic: article
 ms.date: 07/11/2018
 ms.author: cynthn
 ms.openlocfilehash: 0d3f0a61da3654c31c99cfac43c86b081876f700
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78944572"
 ---
 # <a name="install-mysql-on-a-virtual-machine-running-opensuse-linux-in-azure"></a>A MySQL telepítése az Azure-beli OpenSUSE Linux rendszerű virtuális gépeken
@@ -98,7 +97,7 @@ sudo reboot
 
 ## <a name="mysql-password"></a>MySQL-jelszó
 
-A telepítés után a MySQL-gyökér jelszava alapértelmezés szerint üres. Futtassa a **MySQL\_biztonságos\_telepítési** szkriptjét a MySQL védelméhez. A parancsfájl felszólítja a MySQL-gyökér jelszavának módosítására, a névtelen felhasználói fiókok eltávolítására, a távoli rendszergazdai bejelentkezés letiltására, a tesztelési adatbázisok eltávolítására és a jogosultságok tábla újratöltésére. 
+A telepítés után a MySQL-gyökér jelszava alapértelmezés szerint üres. Futtassa a **MySQL \_ biztonságos \_ telepítési** szkriptjét a MySQL védelméhez. A parancsfájl felszólítja a MySQL-gyökér jelszavának módosítására, a névtelen felhasználói fiókok eltávolítására, a távoli rendszergazdai bejelentkezés letiltására, a tesztelési adatbázisok eltávolítására és a jogosultságok tábla újratöltésére. 
 
 A kiszolgáló újraindítása után ismét SSH-t a virtuális gépre.
 
@@ -133,7 +132,7 @@ A Semi-Colon (;) a sor végén elengedhetetlen a parancs befejezése.
 ## <a name="create-a-database"></a>Adatbázis létrehozása
 
 
-Hozzon létre egy adatbázist, `mysqluser` és adja meg a felhasználói engedélyeket.
+Hozzon létre egy adatbázist, és adja meg a `mysqluser` felhasználói engedélyeket.
 
 ```sql
 CREATE DATABASE testdatabase;

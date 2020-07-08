@@ -10,10 +10,9 @@ ms.suite: infrastructure-services
 ms.topic: article
 ms.date: 11/14/2018
 ms.openlocfilehash: b85932bf0d4fd080afadef2bc28d6a218b2d627a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78898589"
 ---
 # <a name="build-advanced-schedules-and-recurrences-for-jobs-in-azure-scheduler"></a>Speciális ütemezések és ismétlődések létrehozása a feladatokhoz az Azure Schedulerben
@@ -66,13 +65,13 @@ Ez a táblázat a feladatok ismétlődésének és ütemezéseinak beállítása
 
 | Elem | Kötelező | Leírás | 
 |---------|----------|-------------|
-| **startTime** | Nem | Az [ISO 8601 formátumú](https://en.wikipedia.org/wiki/ISO_8601) datetime karakterlánc-érték, amely megadja, hogy a feladat Mikor indul el alapszintű ütemterv szerint. <p>Összetett ütemtervek esetén a feladat nem indul el hamarabb, mint a **kezdő időpont**. | 
-| **megismétlődésének** | Nem | Az ismétlődési szabályok a feladatok futásakor. Az **ismétlődési** objektum a következő elemeket támogatja: **gyakoriság**, **intervallum**, **ütemezése**, **darabszám**és **Befejezés**. <p>Ha az **Ismétlődés** elemet használja, a **Frequency** elemet is használnia kell, míg más **ismétlődési** elemek nem kötelezőek. |
+| **startTime** | No | Az [ISO 8601 formátumú](https://en.wikipedia.org/wiki/ISO_8601) datetime karakterlánc-érték, amely megadja, hogy a feladat Mikor indul el alapszintű ütemterv szerint. <p>Összetett ütemtervek esetén a feladat nem indul el hamarabb, mint a **kezdő időpont**. | 
+| **megismétlődésének** | No | Az ismétlődési szabályok a feladatok futásakor. Az **ismétlődési** objektum a következő elemeket támogatja: **gyakoriság**, **intervallum**, **ütemezése**, **darabszám**és **Befejezés**. <p>Ha az **Ismétlődés** elemet használja, a **Frequency** elemet is használnia kell, míg más **ismétlődési** elemek nem kötelezőek. |
 | **frekvencia** | Igen, az **Ismétlődés** használatakor | Az előfordulások közötti időegység, amely a következő értékeket támogatja: "minute", "Hour", "Day", "Week", "Month" és "Year" | 
-| **interval** | Nem | Pozitív egész szám, amely meghatározza, hogy a **gyakoriság**alapján hány időegység legyen az előfordulások között. <p>Ha például az **intervallum** 10, a **gyakoriság** pedig a "Week", a feladattípus 10 hetente ismétlődik. <p>Az egyes gyakoriságok esetében a legtöbb intervallum a következő: <p>– 18 hónap <br>– 78 hét <br>– 548 nap <br>-Óra és perc esetén a tartomány 1 <= <*intervallum*> <= 1000. | 
-| **menetrend** | Nem | Az ismétlődés változásait határozza meg a megadott percenkénti jelek, óra-jelek, a hét napjai és a hónap napjai alapján. | 
-| **száma** | Nem | Pozitív egész szám, amely meghatározza, hogy a feladatok hányszor futnak a befejezés előtt. <p>Ha például egy napi feladatnak 7 **értékűnek** kell lennie, és a kezdő dátum hétfő, a feladatok vasárnap futnak. Ha a kezdő dátum már át lett adva, az első futtatás a létrehozási időpontból lesz kiszámítva. <p>A **Befejezés** vagy a **szám**nélkül a feladatok végtelenül futnak. Ugyanabban a feladatokban nem használhatók a **Count** és a **befejezési** érték, de az első befejezési szabály is tiszteletben van. | 
-| **endTime** | Nem | Az [ISO 8601 formátumban](https://en.wikipedia.org/wiki/ISO_8601) megadott dátum-vagy datetime-karakterlánc, amely meghatározza, hogy a rendszer mikor futtassa a feladatot. Megadhat egy **értéket a korábbi** időpontokban. <p>A **Befejezés** vagy a **szám**nélkül a feladatok végtelenül futnak. Ugyanabban a feladatokban nem használhatók a **Count** és a **befejezési** érték, de az első befejezési szabály is tiszteletben van. |
+| **interval** | No | Pozitív egész szám, amely meghatározza, hogy a **gyakoriság**alapján hány időegység legyen az előfordulások között. <p>Ha például az **intervallum** 10, a **gyakoriság** pedig a "Week", a feladattípus 10 hetente ismétlődik. <p>Az egyes gyakoriságok esetében a legtöbb intervallum a következő: <p>– 18 hónap <br>– 78 hét <br>– 548 nap <br>-Óra és perc esetén a tartomány 1 <= <*intervallum*> <= 1000. | 
+| **menetrend** | No | Az ismétlődés változásait határozza meg a megadott percenkénti jelek, óra-jelek, a hét napjai és a hónap napjai alapján. | 
+| **száma** | No | Pozitív egész szám, amely meghatározza, hogy a feladatok hányszor futnak a befejezés előtt. <p>Ha például egy napi feladatnak 7 **értékűnek** kell lennie, és a kezdő dátum hétfő, a feladatok vasárnap futnak. Ha a kezdő dátum már át lett adva, az első futtatás a létrehozási időpontból lesz kiszámítva. <p>A **Befejezés** vagy a **szám**nélkül a feladatok végtelenül futnak. Ugyanabban a feladatokban nem használhatók a **Count** és a **befejezési** érték, de az első befejezési szabály is tiszteletben van. | 
+| **endTime** | No | Az [ISO 8601 formátumban](https://en.wikipedia.org/wiki/ISO_8601) megadott dátum-vagy datetime-karakterlánc, amely meghatározza, hogy a rendszer mikor futtassa a feladatot. Megadhat egy **értéket a korábbi** időpontokban. <p>A **Befejezés** vagy a **szám**nélkül a feladatok végtelenül futnak. Ugyanabban a feladatokban nem használhatók a **Count** és a **befejezési** érték, de az első befejezési szabály is tiszteletben van. |
 |||| 
 
 Ez a JSON-séma például egy alapszintű ütemtervet és ismétlődést ír le egy feladathoz: 
@@ -160,7 +159,7 @@ Ha egynél több Schedule elemet ad meg, a kiértékelés sorrendje a legnagyobb
 
 A következő táblázat részletesen ismerteti a schedule elemeit:
 
-| JSON-név | Leírás | Érvényes értékek |
+| JSON-név | Description | Érvényes értékek |
 |:--- |:--- |:--- |
 | **perc** |A feladatot futtató óra percben. |Egész számok tömbje. |
 | **óra** |A nap azon órája, amelyben a feladatot futtatják. |Egész számok tömbje. |
@@ -174,7 +173,7 @@ Az alábbi példák különböző ismétlődési ütemezéseket mutatnak be. A p
 
 Ezek az ütemtervek azt feltételezik, hogy az **intervallum** értéke 1\. A példák azt is feltételezik, hogy a megfelelő **gyakorisági** értékek szerepelnek az **ütemezett**értékekben. Például nem használhatja a "Day" **gyakoriságát** , és **monthDays** módosítást **ütemezhet**. Ezeket a korlátozásokat a cikk korábbi részeiben ismertetjük.
 
-| Példa | Leírás |
+| Példa | Description |
 |:--- |:--- |
 | `{"hours":[5]}` |Minden nap 5 ÓRAKOR fut.<br /><br />A Scheduler az egyes értékeket "óra" értékben, a "Minutes" értékkel együtt, egyenként, a feladatok futtatásának minden időpontját tartalmazó listát hoz létre. |
 | `{"minutes":[15], "hours":[5]}` |Minden nap 05:15-kor fut le. |
