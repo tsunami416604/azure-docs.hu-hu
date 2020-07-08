@@ -7,15 +7,14 @@ ms.date: 04/27/2020
 ms.author: mahender
 ms.custom: mvc
 ms.openlocfilehash: 5607a737fa4616d4eda3d174144c1717125f4181
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83122773"
 ---
 # <a name="customize-an-http-endpoint-in-azure-functions"></a>HTTP-végpont testreszabása Azure Functions
 
-Ebből a cikkből megtudhatja, hogyan hozhat létre a Azure Functions a jól méretezhető API-kat. A Azure Functions beépített HTTP-eseményindítók és-kötések gyűjteményét kínálja, amelyek megkönnyítik a végpontok különböző nyelveken történő készítését, beleértve a Node. js-t, a C#-ot és egyebeket. Ebben a cikkben egy HTTP-trigger testreszabásával kezelheti az API-kialakításban meghatározott műveleteket. Emellett előkészítheti az API-t azáltal, hogy integrálja Azure Functions-proxyk és a modell API-k beállításával. Ezek a feladatok a kiszolgáló nélküli számítási környezeten felül érhetők el, így nem kell aggódnia az erőforrások méretezésével kapcsolatban – csak az API-logikára koncentrálhat.
+Ebből a cikkből megtudhatja, hogyan hozhat létre a Azure Functions a jól méretezhető API-kat. A Azure Functions beépített HTTP-eseményindítók és-kötések gyűjteményét kínálja, amelyek megkönnyítik a végpontok különböző nyelveken történő készítését, többek között a Node.js, a C# és egyebeket. Ebben a cikkben egy HTTP-trigger testreszabásával kezelheti az API-kialakításban meghatározott műveleteket. Emellett előkészítheti az API-t azáltal, hogy integrálja Azure Functions-proxyk és a modell API-k beállításával. Ezek a feladatok a kiszolgáló nélküli számítási környezeten felül érhetők el, így nem kell aggódnia az erőforrások méretezésével kapcsolatban – csak az API-logikára koncentrálhat.
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
@@ -37,7 +36,7 @@ Alapértelmezés szerint a HTTP-trigger függvény a HTTP-metódusok fogadásár
 
 1. Használja az alábbi táblázatban megadott HTTP-trigger beállításait.
 
-    | Mező | Mintaérték | Leírás |
+    | Mező | Mintaérték | Description |
     |---|---|---|
     | Útvonalsablon | /hello | Meghatározza, hogy melyik útvonalat használja a függvény meghívására |
     | Authorization level (Engedélyszint) | Névtelen | Opcionális: A függvényt API-kulcs nélkül is elérhetővé teszi |
@@ -105,7 +104,7 @@ Ismételje meg a [Függvényalkalmazás létrehozása](https://docs.microsoft.co
 
 1. Az **új proxy** lapon használja az alábbi táblázatban szereplő beállításokat, majd válassza a **Létrehozás**lehetőséget.
 
-    | Mező | Mintaérték | Leírás |
+    | Mező | Mintaérték | Description |
     |---|---|---|
     | Name | HelloProxy | Felhasználóbarát név, kizárólag kezelési célra |
     | Útvonalsablon | /api/remotehello | Meghatározza, hogy melyik útvonalat használja a proxy meghívására |
@@ -128,7 +127,7 @@ A modell-API létrehozásához új proxyt hozunk létre, ezúttal a [app Service
 
 Válassza ki a `proxies.json` elemet a bal oldali navigációs sávon. Ez a fájl tárolja az összes proxy konfigurációját. Ha a [függvények központi telepítési módszereit](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment)használja, ezt a fájlt a forrás vezérlőelemben tartja karban. A fájlról itt olvashat részletesen: [Proxyk speciális konfigurációja](https://docs.microsoft.com/azure/azure-functions/functions-proxies#advanced-configuration).
 
-Ha eddig is követte, a proxys. JSON a következőképpen fog kinézni:
+Ha követte az eddigi lépéseket, a proxies.jsa következőhöz hasonlóan kell kinéznie:
 
 ```json
 {
@@ -144,7 +143,7 @@ Ha eddig is követte, a proxys. JSON a következőképpen fog kinézni:
 }
 ```
 
-Ezután adja hozzá a modell API-ját. Cserélje le a proxys. JSON fájlt a következő kódra:
+Ezután adja hozzá a modell API-ját. Cserélje le a proxies.jst a fájlra a következő kóddal:
 
 ```json
 {

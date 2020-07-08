@@ -4,10 +4,9 @@ description: Ismerje meg, hogyan konfigurálhatja a Durable Functions automatiku
 ms.topic: conceptual
 ms.date: 04/25/2020
 ms.openlocfilehash: c0106f3754e0cdcbf1f295fbe3f1b5def8dc3ca1
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83124258"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Durable Functions Publishing to Azure Event Grid (előzetes verzió)
@@ -32,7 +31,7 @@ Az alábbiakban néhány olyan forgatókönyvet ismertetünk, amelyekben ez a fu
 
 Hozzon létre egy Event Grid témakört az események Durable Functionsból való küldéséhez. Az alábbi utasítások bemutatják, hogyan hozhat létre egy témakört az Azure CLI használatával. A témakört a [PowerShell](../../event-grid/custom-event-quickstart-powershell.md) vagy [a Azure Portal](../../event-grid/custom-event-quickstart-portal.md)használatával is létrehozhatja.
 
-### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Hozzon létre egy erőforráscsoportot az `az group create` paranccsal. A Azure Event Grid jelenleg nem támogatja az összes régiót. További információ a támogatott régiókról: [Azure Event Grid Overview (áttekintés](../../event-grid/overview.md)).
 
@@ -101,7 +100,7 @@ Adjon hozzá egy `notifications` szakaszt a `durableTask` fájl tulajdonságáho
 }
 ```
 
-A lehetséges Azure Event Grid konfigurációs tulajdonságok a [Host. JSON dokumentációjában](../functions-host-json.md#durabletask)találhatók. A fájl konfigurálása után `host.json` a Function alkalmazás életciklus-eseményeket küld a Event Grid témakörnek. Ez a művelet akkor indul el, ha a Function alkalmazást helyileg és az Azure-ban futtatja.
+A lehetséges Azure Event Grid konfigurációs tulajdonságok a [host.jsdokumentációjában](../functions-host-json.md#durabletask)találhatók. A fájl konfigurálása után `host.json` a Function alkalmazás életciklus-eseményeket küld a Event Grid témakörnek. Ez a művelet akkor indul el, ha a Function alkalmazást helyileg és az Azure-ban futtatja.
 
 Adja meg a témakörben a függvényalkalmazás és a témakörhöz tartozó Alkalmazásbeállítások beállításait `local.settings.json` . A következő JSON egy minta a `local.settings.json` helyi hibakereséshez. Cserélje le `<topic_key>` a billentyűt a témakörre.  
 
@@ -182,7 +181,7 @@ Mostantól hozzáadhat egy Event Grid-előfizetést a létrehozott Event Grid t�
 
 1. Válassza ki az előfizetést. Ezután válassza ki az Event Grid témakörhöz létrehozott erőforráscsoportot és erőforrást. 
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
     :::image type="content" source="./media/durable-functions-event-publishing/event-grid-subscription-details.png" alt-text="Event Grid-előfizetés létrehozása." border="true":::
 
@@ -232,7 +231,7 @@ A korábban konfigurált Durable Functions-projektben indítsa el a hibakeresés
 2019-04-20T09:28:37.098 [Info] Function completed (Success, Id=36fadea5-198b-4345-bb8e-2837febb89a2, Duration=0ms)
 ```
 
-## <a name="event-schema"></a>Eseményséma
+## <a name="event-schema"></a>Esemény sémája
 
 Az alábbi lista az életciklus-események sémáját mutatja be:
 

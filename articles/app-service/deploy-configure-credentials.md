@@ -6,10 +6,9 @@ ms.date: 08/14/2019
 ms.reviewer: byvinyal
 ms.custom: seodec18
 ms.openlocfilehash: c6f7c2422e043da6df498fe81da938576687b916
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83649116"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Központi telepítési hitelesítő adatok konfigurálása Azure App Servicehoz
@@ -23,7 +22,7 @@ A felhasználói szintű hitelesítő adatokat bármely alkalmazás [erőforrás
 
 ### <a name="in-the-cloud-shell"></a>A Cloud Shell
 
-Ha a [Cloud Shell](https://shell.azure.com)szeretné konfigurálni a központi telepítési felhasználót, futtassa az az [WebApp Deployment User set](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) parancsot. Cserélje le \< a felhasználónév> és \< a jelszó> egy üzembe helyezési felhasználónévvel és jelszóval. 
+Ha a [Cloud Shell](https://shell.azure.com)szeretné konfigurálni a központi telepítési felhasználót, futtassa az az [WebApp Deployment User set](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) parancsot. Cserélje \<username> le \<password> a és a értékét egy üzembe helyezési felhasználói felhasználónévre és jelszóra. 
 
 - A felhasználónévnek egyedinek kell lennie az Azure-ban, a helyi git-leküldések esetében pedig nem tartalmazhatja a "@" szimbólumot. 
 - A jelszónak legalább nyolc karakterből kell állnia, és a következő három elem közül kettőnek kell lennie: betűk, számok és szimbólumok. 
@@ -38,7 +37,7 @@ A JSON-kimenet a jelszót jeleníti meg `null` . `'Conflict'. Details: 409` hiba
 
 A Azure Portalben legalább egy alkalmazásnak rendelkeznie kell a központi telepítési hitelesítő adatok lap eléréséhez. Felhasználói szintű hitelesítő adatok konfigurálása:
 
-1. A [Azure Portal](https://portal.azure.com)bal oldali menüjében válassza a **app Services**  >  ** \< any_app>**  >  **központi telepítési központ**  >  **FTP**-  >  **irányítópult**elemet.
+1. A [Azure Portal](https://portal.azure.com)bal oldali menüjében válassza ki **app Services**  >  **\<any_app>**  >  **központi telepítési központ**  >  **FTP**-  >  **irányítópultot**.
 
     ![](./media/app-service-deployment-credentials/access-no-git.png)
 

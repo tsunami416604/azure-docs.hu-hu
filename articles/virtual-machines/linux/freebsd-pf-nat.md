@@ -9,10 +9,9 @@ ms.workload: infrastructure-services
 ms.date: 02/20/2017
 ms.author: kyliel
 ms.openlocfilehash: eeeb60cc41f96edbf8733468ca0cfd18d2939af7
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83652541"
 ---
 # <a name="how-to-use-freebsds-packet-filter-to-create-a-secure-firewall-in-azure"></a>Biztonságos tűzfal létrehozása az Azure-ban a FreeBSD csomagszűrő használatával
@@ -34,7 +33,7 @@ Az az [login](/cli/azure/reference-index)használatával telepítenie kell a leg
 az group create --name myResourceGroup --location westus
 ```
 
-Ezután telepítse a PF-FreeBSD-Setup sablont az [az Group Deployment Create](/cli/azure/group/deployment)paranccsal. Töltse le az azuredeploy. Parameters. JSON fájlt ugyanazon az elérési úton, és adja meg a saját erőforrás-értékeit, például,, `adminPassword` `networkPrefix` és `domainNamePrefix` . 
+Ezután telepítse a PF-FreeBSD-Setup sablont az [az Group Deployment Create](/cli/azure/group/deployment)paranccsal. Töltse le azuredeploy.parameters.jsugyanazon az elérési úton, és adja meg a saját erőforrás-értékeit, például: `adminPassword` , `networkPrefix` és `domainNamePrefix` . 
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup --name myDeploymentName \

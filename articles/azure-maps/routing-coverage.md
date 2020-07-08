@@ -9,10 +9,9 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: e04f3d2f5ed575e9401c53faebd91b3bde004601
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83123887"
 ---
 # <a name="azure-maps-routing-coverage"></a>Útválasztási lefedettség Azure Maps
@@ -25,7 +24,7 @@ Tekintse meg a [**rendering**](render-coverage.md)lefedettségét.
 <br>  
 **Jelmagyarázat**
 
-| Szimbólum             | Jelentés                                |
+| Szimbólum             | Értelmezés                                |
 |--------------------|----------------------------------------|
 | ✓                  | Részletes információkkal ellátott ország/régió.   |
 | Ø                  | Egyszerűsített adattal rendelkező ország/régió. |
@@ -80,7 +79,7 @@ A következő táblázat a Azure Maps útválasztásának lefedettségi informá
 | Zimbabwe                       |        ✓       |                       |             |
 
 
-## <a name="americas"></a>Amerika
+## <a name="americas"></a>Észak-, Dél- és Közép-Amerika
 
 | Ország/régió                 | Útválasztás         | Útválasztás forgalommal | Tehergépkocsi-Útválasztás |
 |--------------------------------|:---------------:|:--------------------:|:------------:|
@@ -222,7 +221,7 @@ A következő táblázat a Azure Maps útválasztásának lefedettségi informá
 | + Gibraltár                     |        ✓       |         ✓            |             | 
 | + Montserrat                    |        ✓       |                      |             |
 | + Turks-és Caicos-szigetek      |        ✓       |                      |             |
-| Vatikáni Városállam                   |        ✓       |         ✓            |             |
+| Vatikán                   |        ✓       |         ✓            |             |
 | Man-sziget                    |        ✓       |                      |             |
 
 

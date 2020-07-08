@@ -4,10 +4,9 @@ description: A .NET Core/. NET Framework nem HTTP-alkalmazások figyelése Azure
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.openlocfilehash: 1f9b35022e63c4c3fe671237149602f8db465466
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83117877"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>Application Insights Worker Service-alkalmazásokhoz (nem HTTP-alkalmazások)
@@ -351,7 +350,7 @@ Vegye figyelembe, hogy ebben az SDK-ban a ASP.NET Core SDK-ban lévő `Applicati
 
 Leggyakrabban használt beállítások a`ApplicationInsightsServiceOptions`
 
-|Beállítás | Leírás | Alapértelmezett
+|Beállítás | Description | Alapértelmezett
 |---------------|-------|-------
 |EnableQuickPulseMetricStream | LiveMetrics funkció engedélyezése/letiltása | igaz
 |EnableAdaptiveSampling | Adaptív mintavételezés engedélyezése/letiltása | igaz

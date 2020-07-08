@@ -15,10 +15,9 @@ ms.workload: infrastructure
 ms.date: 02/13/2020
 ms.author: juergent
 ms.openlocfilehash: 1a00a3c1e0d34a8c7abbcd5bfc7a6771d9e2a4c3
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82983040"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-red-hat-enterprise-linux-server"></a>Az IBM Db2 LUW magas rendelkezésre állása Azure-beli virtuális gépeken Red Hat Enterprise Linux Serveren
@@ -33,7 +32,7 @@ A támogatott IBM DB2-verziók 10,5-es és újabb verziójúak, az SAP Note [192
 
 A telepítés megkezdése előtt tekintse meg a következő SAP-megjegyzéseket és dokumentációt:
 
-| SAP-Megjegyzés | Leírás |
+| SAP-Megjegyzés | Description |
 | --- | --- |
 | [1928533] | SAP-alkalmazások az Azure-ban: támogatott termékek és Azure-beli virtuális gépek típusai |
 | [2015553] | SAP az Azure-on: támogatási előfeltételek |
@@ -59,7 +58,7 @@ A telepítés megkezdése előtt tekintse meg a következő SAP-megjegyzéseket 
 | [Magas rendelkezésre állású bővítmények leírása][rhel-ha-ref] |
 | [A RHEL magas rendelkezésre állású fürtökre vonatkozó támogatási szabályzatok – Microsoft Azure Virtual Machines a fürt tagjai][rhel-azr-supp]
 | [Red Hat Enterprise Linux 7,4 (és újabb) magas rendelkezésre állású fürt telepítése és konfigurálása Microsoft Azure][rhel-azr-inst]
-| [IBM DB2 Azure Virtual Machines adatbázis-kezelő üzembe helyezés az SAP-munkaterheléshez][dbms-db2] |
+| [IBM Db2 Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz][dbms-db2] |
 | [IBM DB2 HADR 11,1][db2-hadr-11.1] |
 | [IBM DB2 HADR 10,5][db2-hadr-10.5] |
 | [Támogatási szabályzat a RHEL magas rendelkezésre állású fürtökhöz – az IBM DB2 for Linux, UNIX és Windows rendszerű fürtben való kezelése][rhel-db2-supp]
@@ -205,7 +204,7 @@ Az előző paramétereket a kezdeti feladatátvételi/átvételi tesztelés alap
 
 Ha a készenléti adatbázis-kiszolgálót az SAP homogén rendszermásolási eljárással szeretné beállítani, hajtsa végre a következő lépéseket:
 
-1. Válassza a **rendszermásolási** lehetőség > a **célként kijelölt rendszerek** > **elosztott** > **adatbázis-példányát**.
+1. Válassza a **rendszermásolási** lehetőség > a **célként kijelölt rendszerek**  >  **elosztott**  >  **adatbázis-példányát**.
 1. Másolási módszerként válassza a **homogén rendszer** lehetőséget, hogy a biztonsági mentés használatával visszaállítsa a biztonsági mentést a készenléti kiszolgáló példányán.
 1. Amikor eléri a kilépési lépést az adatbázis homogén rendszermásolásra való visszaállításához, lépjen ki a telepítőből. Állítsa vissza az adatbázist az elsődleges gazdagép biztonsági másolatából. Az összes további telepítési fázis már végre lett hajtva az elsődleges adatbázis-kiszolgálón.
 
@@ -336,8 +335,8 @@ A következő elemek előtaggal vannak ellátva:
 - **[2]**: csak a 2. csomópontra vonatkozik
 
 **[A]** a pacemaker konfigurálásának előfeltételei:
-1. Állítsa le mindkét adatbázis-kiszolgálót a DB2\<SID> a db2stop.
-1. Módosítsa a rendszerhéj környezetét DB2\<SID> felhasználó */bin/ksh*:
+1. Állítsa le mindkét adatbázis-kiszolgálót a db2stop-mel rendelkező User DB2- \<sid> vel.
+1. A/bin/ksh-re vonatkozó rendszerhéj \<sid> -környezet */bin/ksh*módosítása:
 <pre><code># Install korn shell:
 sudo yum install ksh
 # Change users shell:
@@ -413,7 +412,7 @@ Azure Load Balancer konfigurálásához javasoljuk, hogy az [Azure standard Load
 
    c. Állítsa a **hozzárendelést** **statikus**értékre, és adja meg az elején megadott IP **-cím virtuális IP-** címét.
 
-   d. Kattintson az **OK** gombra.
+   d. Válassza az **OK** lehetőséget.
 
    e. Az új előtér-IP-készlet létrehozása után jegyezze fel a készlet IP-címét.
 
@@ -429,7 +428,7 @@ Azure Load Balancer konfigurálásához javasoljuk, hogy az [Azure standard Load
 
    e. Válassza ki az IBM DB2-fürthöz tartozó virtuális gépeket.
 
-   f. Kattintson az **OK** gombra.
+   f. Válassza az **OK** lehetőséget.
 
 1. Állapot mintavételének létrehozása:
 
@@ -439,7 +438,7 @@ Azure Load Balancer konfigurálásához javasoljuk, hogy az [Azure standard Load
 
    c. Válassza a **TCP** lehetőséget a protokoll és a **62500**-es port közül. Tartsa meg az **intervallum** értékét **5**értékre, és tartsa meg a nem kifogástalan **állapot küszöbértékét** **2**értékre.
 
-   d. Kattintson az **OK** gombra.
+   d. Válassza az **OK** lehetőséget.
 
 1. Hozza létre a terheléselosztási szabályokat:
 
@@ -455,7 +454,7 @@ Azure Load Balancer konfigurálásához javasoljuk, hogy az [Azure standard Load
 
    f. Ügyeljen arra, hogy a **lebegő IP-címet engedélyezze**.
 
-   g. Kattintson az **OK** gombra.
+   : Válassza az **OK** lehetőséget.
 
 **[A]** tűzfalszabály hozzáadása a mintavételi porthoz:
 <pre><code>sudo firewall-cmd --add-port=<b><probe-port></b>/tcp --permanent
@@ -464,12 +463,12 @@ sudo firewall-cmd --reload</code></pre>
 ### <a name="make-changes-to-sap-profiles-to-use-virtual-ip-for-connection"></a>Az SAP-profilok módosítása virtuális IP-cím használatára a kapcsolódáshoz
 A HADR-konfiguráció elsődleges példányához való kapcsolódáshoz az SAP-alkalmazás rétegének a Azure Load Balancerhoz megadott és konfigurált virtuális IP-címet kell használnia. A következő módosítások szükségesek:
 
-/sapmnt/\<SID>/Profile/default. PFL
+/sapmnt/ \<SID> /Profile/default. PFL
 <pre><code>SAPDBHOST = db-virt-hostname
 j2ee/dbhost = db-virt-hostname
 </code></pre>
 
-/sapmnt/\<SID>/Global/DB6/db2cli.ini
+/sapmnt/ \<SID> /global/db6/db2cli.ini
 <pre><code>Hostname=db-virt-hostname
 </code></pre>
 
@@ -490,12 +489,12 @@ A J2EE konfigurációs eszköz használatával megvizsgálhatja vagy frissíthet
     <pre><code>sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh</code></pre>  
     
 1. A bal oldali keretben válassza a **biztonsági tároló**elemet.
-1. A jobb oldali keretben válassza ki a `jdbc/pool/\<SAPSID>/url`kulcsot.
+1. A jobb oldali keretben válassza ki a kulcsot `jdbc/pool/\<SAPSID>/url` .
 1. Módosítsa az állomásnév nevét a JDBC URL-címében a virtuális állomásnévre.
     
     <pre><code>jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0</code></pre>  
     
-1. Válassza a **Hozzáadás** lehetőséget.
+1. Válassza a **Hozzáadás** elemet.
 1. A módosítások mentéséhez válassza a bal felső sarokban található lemez ikont.
 1. A konfigurációs eszköz bezárásához.
 1. Indítsa újra a Java-példányt.
@@ -557,7 +556,7 @@ Az SAP-rendszer eredeti állapota dokumentálva van a Transaction DBACOCKPIT > C
 > A teszt elkezdése előtt győződjön meg a következőket:
 > * A pacemaker nem rendelkezik sikertelen műveletekkel (számítógépek állapota).
 > * Nincsenek megkötések (az áttelepítési teszt maradékai)
-> * Az IBM DB2 HADR szinkronizálása működik. Keresés DB2\<SID-vel> <pre><code>db2pd -hadr -db \<DBSID></code></pre>
+> * Az IBM DB2 HADR szinkronizálása működik. Keresés DB2-vel\<sid> <pre><code>db2pd -hadr -db \<DBSID></code></pre>
 
 
 Telepítse át az elsődleges DB2-adatbázist futtató csomópontot a következő parancs végrehajtásával:
@@ -613,9 +612,9 @@ Telepítse át az erőforrást az *az-idb01-* be, és törölje a hely megköté
 sudo pcs resource clear Db2_HADR_<b>ID2</b>-master
 </code></pre>
 
-- **számítógépek erőforrásának \<áthelyezése RES_NAME <host>>:** Megkötéseket hoz létre, és problémákat okozhat az átvétel során
-- **számítógépek erőforrásának \<törlése RES_NAME>**: törli a hely megkötéseit
-- **számítógépek erőforrás- \<karbantartási RES_NAME>**: törli az erőforrás összes hibáját
+- **számítógépek erőforrásának mozgatása \<res_name> <host> :** megkötéseket hoz létre, és problémákat okozhat az átvétel során
+- **számítógépek erőforrásának \<res_name> törlése **: törli a hely megkötéseit
+- **számítógépek erőforrás- \<res_name> karbantartása **: törli az erőforrás összes hibáját
 
 ### <a name="test-a-manual-takeover"></a>Manuális átvétel tesztelése
 
@@ -710,7 +709,7 @@ A DB2-példány újra lesz indítva a korábban hozzárendelt másodlagos szerep
 
 ### <a name="stop-db-via-db2stop-force-on-the-node-that-runs-the-hadr-primary-database-instance"></a>Az adatbázis leállítása az elsődleges HADR futtató csomóponton a db2stop kényszerített használatával
 
-Felhasználó DB2\<SID> Execute parancs db2stop Force:
+Felhasználó DB2- \<sid> db2stop kényszerítési parancsának futtatása:
 <pre><code>az-idb01:db2ptr> db2stop force</code></pre>
 
 Hiba észlelhető:

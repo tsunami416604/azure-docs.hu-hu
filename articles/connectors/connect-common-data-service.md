@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 tags: connectors
 ms.openlocfilehash: 98da7e959e4b59ad2d0f3f3f79364391b4ceddbd
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82997099"
 ---
 # <a name="create-and-manage-records-in-common-data-service-by-using-azure-logic-apps"></a>Rekordok létrehozása és kezelése Common Data Serviceban Azure Logic Apps használatával
@@ -51,9 +50,9 @@ Ebben a példában adja hozzá a Common Data Service eseményindítót, amely ú
 
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
-   | **Környezet** | Igen | A figyelni kívánt környezet, például "Fabrikam Sales Production". További információ: [Power platform – környezetek – áttekintés](https://docs.microsoft.com/power-platform/admin/environments-overview). |
-   | **Entitás neve** | Igen | A figyelni kívánt entitás, például "leads" |
-   | **Hatókör** | Igen | Az új rekordot létrehozó forrás, például egy felhasználó a céges egységben vagy a szervezet bármely felhasználója. Ez a példa a "Business Unit" szolgáltatást használja. |
+   | **Környezet** | Yes | A figyelni kívánt környezet, például "Fabrikam Sales Production". További információ: [Power platform – környezetek – áttekintés](https://docs.microsoft.com/power-platform/admin/environments-overview). |
+   | **Entitás neve** | Yes | A figyelni kívánt entitás, például "leads" |
+   | **Hatókör** | Yes | Az új rekordot létrehozó forrás, például egy felhasználó a céges egységben vagy a szervezet bármely felhasználója. Ez a példa a "Business Unit" szolgáltatást használja. |
    ||||
 
 ## <a name="add-common-data-service-action"></a>Common Data Service művelet hozzáadása
@@ -72,8 +71,8 @@ Most adjon hozzá egy Common Data Service műveletet, amely létrehoz egy új "l
 
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
-   | **Szervezet neve** | Igen | Az a környezet, amelyben létre kívánja hozni a rekordot, és nem feltétlenül ugyanazt a környezetet kell megadnia az triggerben, de ebben a példában a "Fabrikam értékesítési termelés" szerepel. |
-   | **Entitás neve** | Igen | Az entitás, amelyben létre szeretné hozni a rekordot, például "feladatok" |
+   | **Szervezet neve** | Yes | Az a környezet, amelyben létre kívánja hozni a rekordot, és nem feltétlenül ugyanazt a környezetet kell megadnia az triggerben, de ebben a példában a "Fabrikam értékesítési termelés" szerepel. |
+   | **Entitás neve** | Yes | Az entitás, amelyben létre szeretné hozni a rekordot, például "feladatok" |
    | **Tárgy** | Igen, az ebben a példában kiválasztott entitás alapján | A feladat céljával kapcsolatos rövid leírás |
    ||||
 
@@ -87,7 +86,7 @@ Most adjon hozzá egy Common Data Service műveletet, amely létrehoz egy új "l
 
       ![Válassza ki a feladat rekordban használni kívánt trigger-kimeneteket](./media/connect-common-data-service/create-new-record-action-select-trigger-outputs.png)
 
-      | Trigger kimenete | Leírás |
+      | Trigger kimenete | Description |
       |----------------|-------------|
       | **Keresztnév** | Az első név a rekordban, amelyet elsődleges partnerként kíván használni a feladatban. |
       | **Vezetéknév** | A tevékenység rekordjában az elsődleges partnerként használandó utolsó név a vezető rekordban |
@@ -126,7 +125,7 @@ A rekordokat visszaadó műveletek, például a **rekordok listázása** művele
 
    ![Adja meg a rekordok szűrésére szolgáló ODATA-szűrési lekérdezést](./media/connect-common-data-service/list-records-action-filter-query-value.png)
 
-További információ `$filter` a rendszerlekérdezési lehetőségekről: [Common Data Service-Filter Results](https://docs.microsoft.com/powerapps/developer/common-data-service/webapi/query-data-web-api#filter-results).
+További információ a `$filter` rendszerlekérdezési lehetőségekről: [Common Data Service-Filter Results](https://docs.microsoft.com/powerapps/developer/common-data-service/webapi/query-data-web-api#filter-results).
 
 ## <a name="list-records-based-on-an-order"></a>Rekordok listázása rendelés alapján
 
@@ -140,7 +139,7 @@ A rekordokat visszaadó műveletek, például a **rekordok listázása** művele
 
    ![Adja meg a ODATA szűrő lekérdezését a rekordok rendezéséhez](./media/connect-common-data-service/list-records-action-order-by-value.png)
 
-További információ `$orderby` a rendszerlekérdezési lehetőségekről: [Common Data Service Order Results](https://docs.microsoft.com/powerapps/developer/common-data-service/webapi/query-data-web-api#order-results).
+További információ a `$orderby` rendszerlekérdezési lehetőségekről: [Common Data Service Order Results](https://docs.microsoft.com/powerapps/developer/common-data-service/webapi/query-data-web-api#order-results).
 
 ## <a name="field-data-types"></a>Mező adattípusai
 
@@ -148,19 +147,19 @@ Függetlenül attól, hogy manuálisan adott-e meg egy értéket, vagy kijelöl 
 
 Ez a táblázat néhány mezőtípus és azon adattípusok leírását írja le, amelyekre ezek a mezők az értékekhez szükségesek.
 
-| Mező | Adattípus | Leírás |
+| Mező | Adattípus | Description |
 |-------|-----------|-------------|
 | Szövegmező | Egysoros szöveg | Egy olyan szöveges vagy dinamikus tartalmat igényel, amely a szöveg adattípussal rendelkezik, például a következő tulajdonságokkal: <p><p>- **Leírás** <br>- **Kategória** |
 | Egész szám mező | Egész szám | Az egész szám adattípusú egész vagy dinamikus tartalmat igényel, például ezek a tulajdonságok: <p><p>- **Készültségi százalék** <br>- **Időtartama** |
 | Dátum mező | Dátum és idő | A (z) hh/nn/YYY formátumú vagy a dátum adattípusú dinamikus tartalomra vonatkozó dátumot igényel, például ezek a tulajdonságok: <p><p>- **Létrehozva:** <br>- **Kezdési dátum** <br>- **Tényleges indítás** <br>- **Tényleges Befejezés** <br>- **Esedékesség dátuma** |
-| Egy másik entitási rekordra hivatkozó mező | Elsődleges kulcs | A rekord AZONOSÍTÓját (például GUID) és egy keresési típust is igényli, ami azt jelenti, hogy a dinamikus tartalom lista értékei nem működnek, például ezek a tulajdonságok: <p><p>- **Tulajdonos**: érvényes felhasználói azonosítónak vagy Team Record azonosítónak kell lennie. <br>- **Tulajdonos típusa**: olyan keresési típusnak kell lennie `systemusers` , `teams`mint a vagy a. <p><p>- **Kapcsolatban**: érvényes rekordazonosítónek kell lennie, például egy fiók azonosítójának vagy egy kapcsolattartói rekord azonosítójának. <br>- A **típushoz kapcsolódóan a következő**keresési típusnak `accounts` kell `contacts`lennie:, vagy, illetve. <p><p>- **Ügyfél**: érvényes rekordazonosító, például fiókazonosító vagy kapcsolattartói rekord azonosítója. <br>- **Ügyfél típusa**: a keresési típusnak (például `accounts` vagy `contacts`) kell lennie. |
+| Egy másik entitási rekordra hivatkozó mező | Elsődleges kulcs | A rekord AZONOSÍTÓját (például GUID) és egy keresési típust is igényli, ami azt jelenti, hogy a dinamikus tartalom lista értékei nem működnek, például ezek a tulajdonságok: <p><p>- **Tulajdonos**: érvényes felhasználói azonosítónak vagy Team Record azonosítónak kell lennie. <br>- **Tulajdonos típusa**: olyan keresési típusnak kell lennie `systemusers` , mint a vagy a `teams` . <p><p>- **Kapcsolatban**: érvényes rekordazonosítónek kell lennie, például egy fiók azonosítójának vagy egy kapcsolattartói rekord azonosítójának. <br>- A **típushoz kapcsolódóan a következő**keresési típusnak kell lennie: `accounts` `contacts` , vagy, illetve. <p><p>- **Ügyfél**: érvényes rekordazonosító, például fiókazonosító vagy kapcsolattartói rekord azonosítója. <br>- **Ügyfél típusa**: a keresési típusnak (például vagy) kell lennie `accounts` `contacts` . |
 ||||
 
 Ez a példa azt szemlélteti, hogy az **új rekord létrehozása** művelet hogyan hoz létre egy új "Tasks" rekordot, amely más entitás-rekordokhoz van társítva, konkrétan egy felhasználói rekorddal és egy fiók rekorddal. A művelet az adott entitás rekordjaihoz tartozó azonosítókat és keresési típusokat adja meg a releváns tulajdonságok várt adattípusának megfelelő értékek használatával.
 
 * A **tulajdonos** tulajdonság alapján, amely megadja a felhasználói azonosítót és a **tulajdonos Type** tulajdonságát, amely megadja a `systemusers` keresési típust, a művelet az új "feladatok" rekordot társítja egy adott felhasználóval.
 
-* A **kapcsolódó** tulajdonság alapján, amely meghatározza a rekord azonosítóját, és a **Regarding Type** `accounts` keresési típust meghatározó Type tulajdonságot, a művelet társítja az új "feladatok" rekordot egy adott fiókkal.
+* A **kapcsolódó** tulajdonság alapján, amely meghatározza a rekord azonosítóját, és a keresési típust meghatározó **Type** tulajdonságot, `accounts` a művelet társítja az új "feladatok" rekordot egy adott fiókkal.
 
 ![Azonosítókkal és keresési típusokkal társított "feladatok" rekord létrehozása](./media/connect-common-data-service/create-new-record-task-properties.png)
 

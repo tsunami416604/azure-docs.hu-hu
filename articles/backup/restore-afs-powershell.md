@@ -4,10 +4,9 @@ description: Ebből a cikkből megtudhatja, hogyan állíthatja vissza Azure Fil
 ms.topic: conceptual
 ms.date: 1/27/2020
 ms.openlocfilehash: 63c318b66ec8f876a260b3c5b8db38bb088fb862
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83201953"
 ---
 # <a name="restore-azure-files-with-powershell"></a>Azure Files visszaállítása a PowerShell-lel
@@ -125,7 +124,7 @@ A [Restore-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/m
 
 ### <a name="restore-multiple-files"></a>Több fájl visszaállítása
 
-A következő szkriptben megpróbáljuk visszaállítani a *FileSharePage. png* és a *MyTestFile. txt* fájlokat.
+A következő szkriptben megpróbáljuk visszaállítani a *FileSharePage.png* és *MyTestFile.txt* fájlokat.
 
 ```powershell
 $vault = Get-AzRecoveryServicesVault -ResourceGroupName "azurefiles" -Name "azurefilesvault"

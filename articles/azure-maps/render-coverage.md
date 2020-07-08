@@ -9,10 +9,9 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: e7fffa0e5ab75767ab36c83542ac0e3a9ffb1231
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83123938"
 ---
 # <a name="azure-maps-render-coverage"></a>Azure Maps megjelenítési lefedettség
@@ -23,7 +22,7 @@ A Maps azonban nem rendelkezik azonos szintű információval és pontossággal 
 
 ## <a name="legend"></a>Jelmagyarázat
 
-| Szimbólum | Jelentés |
+| Szimbólum | Értelmezés |
 |--------|---------|
 | ✓ | A régió részletes információkat jelenít meg.   |
 | Ø | A régió egyszerűsített adatként van ábrázolva. |
@@ -90,7 +89,7 @@ A Maps azonban nem rendelkezik azonos szintű információval és pontossággal 
 | Zambia                           | ✓ | ✓ |
 | Zimbabwe                         | ✓ | ✓ |
 
-## <a name="americas"></a>Amerika
+## <a name="americas"></a>Észak-, Dél- és Közép-Amerika
 
 | Ország/régió | Raszteres csempék egyesített | Vektoros csempék egyesített |
 | ------ | :------------------: | :------------------: |
@@ -296,7 +295,7 @@ A Maps azonban nem rendelkezik azonos szintű információval és pontossággal 
 | Törökország                    | ✓ | ✓ |
 | Ukrajna                   | ✓ | ✓ |
 | Egyesült Királyság            | ✓ | ✓ |
-| Vatikáni Városállam              | ✓ | ✓ |
+| Vatikán              | ✓ | ✓ |
 
 ## <a name="next-steps"></a>További lépések
 

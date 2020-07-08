@@ -11,10 +11,9 @@ ms.topic: article
 ms.date: 05/08/2020
 ms.author: juliako
 ms.openlocfilehash: 405533aad8247350d45cc53009abe6b58a511264
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83005931"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Az Azure-hoz csatlakoztatott Video Indexer-fiók létrehozása
@@ -131,7 +130,7 @@ Ha nem sikerült csatlakozni az Azure-hoz, a probléma megoldásához manuálisa
     2. Válassza ki az [egyszerű szolgáltatás hitelesítési módszerét](../previous/media-services-portal-get-started-with-aad.md).
     3. Az ügyfél-azonosító és az ügyfél titkos kulcsának beolvasása
 
-        Miután kiválasztotta a **Beállítások**->**kulcsokat**, adja hozzá a **leírást**, nyomja meg a **Mentés**gombot, és a kulcs értéke feltöltve lesz.
+        Miután kiválasztotta a **Beállítások** -> **kulcsokat**, adja hozzá a **leírást**, nyomja meg a **Mentés**gombot, és a kulcs értéke feltöltve lesz.
 
         Ha a kulcs lejár, a fiók tulajdonosának kapcsolatba kell lépnie Video Indexer támogatással a kulcs megújításához.
 
@@ -144,7 +143,7 @@ A **video Indexer csatlakoztatása egy Azure-előfizetéshez** párbeszédpanel 
 
 A párbeszédpanelen adja meg a következő adatokat:
 
-|Beállítás|Leírás|
+|Beállítás|Description|
 |---|---|
 |Video Indexer fiók régiója|Az Video Indexer-fiók régiójának neve. A jobb teljesítmény és az alacsonyabb költségek érdekében javasoljuk, hogy adja meg annak a régiónak a nevét, ahol a Azure Media Services erőforrás és az Azure Storage-fiók található. |
 |Azure AD-bérlő|Az Azure AD-bérlő neve, például "contoso.onmicrosoft.com". A bérlő adatai a Azure Portalból kérhetők le. Vigye a kurzort a bejelentkezett felhasználó nevére a jobb felső sarokban. Keresse meg a **tartománytól**jobbra található nevet.|

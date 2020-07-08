@@ -15,10 +15,9 @@ ms.date: 09/18/2019
 ms.author: juliako
 ms.custom: has-adal-ref
 ms.openlocfilehash: 6dc05f225e3585b83bd6a57ca47bd5adf97934ea
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83201118"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>Kapcsolódás Media Services V3 API-hoz – .NET
@@ -56,19 +55,19 @@ Az ebben a témakörben található minta alkalmazás a célokat célozza meg `n
 
 ## <a name="create-and-configure-the-app-settings-file"></a>Az Alkalmazásbeállítások fájl létrehozása és konfigurálása
 
-### <a name="create-appsettingsjson"></a>AppSettings. JSON létrehozása
+### <a name="create-appsettingsjson"></a>appsettings.jslétrehozása a következőn
 
 1. Ugrás az **általános**  >  **szövegfájlba**.
-1. Nevezze el "appSettings. JSON" néven.
+1. Nevezze el "appsettings.jsbekapcsolva" értékre.
 1. Állítsa a. JSON fájl "másolás a kimeneti könyvtárba" tulajdonságát a "Copy if újabb" értékre (hogy az alkalmazás elérhető legyen a közzétételkor).
 
-### <a name="set-values-in-appsettingsjson"></a>Értékek beállítása a appSettings. JSON fájlban
+### <a name="set-values-in-appsettingsjson"></a>Értékek beállítása appsettings.json
 
-Futtassa a `az ams account sp create` parancsot a következő témakörben leírtak szerint: [Access API](access-api-cli-how-to.md)-k. A parancs visszaadja a JSON-t, amelyet a "appSettings. JSON" fájlba kell másolni.
+Futtassa a `az ams account sp create` parancsot a következő témakörben leírtak szerint: [Access API](access-api-cli-how-to.md)-k. A parancs visszaadja a JSON-t, amelyet a "appsettings.jsbe" gombra kell másolni.
  
 ## <a name="add-configuration-file"></a>Konfigurációs fájl hozzáadása
 
-A kényelem érdekében adjon hozzá egy olyan konfigurációs fájlt, amely felelős az értékek "appSettings. JSON"-ból való olvasásához.
+A kényelem érdekében adjon hozzá egy olyan konfigurációs fájlt, amely felelős az értékek "appsettings.json" értékről való olvasásához.
 
 1. Adjon hozzá egy új. cs osztályt a projekthez. Nevezze el a következőképpen: `ConfigWrapper`. 
 1. Illessze be a következő kódot a fájlba (ez a példa feltételezi, hogy rendelkezik a névtérrel `ConsoleApp1` ).

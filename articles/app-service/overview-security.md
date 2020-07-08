@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 08/24/2018
 ms.custom: seodec18
 ms.openlocfilehash: 0a4d3518c3325eff2b3c3db111babb9e784d5e31
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83649028"
 ---
 # <a name="security-in-azure-app-service"></a>Biztonság a Azure App Service
@@ -22,7 +21,7 @@ Az alábbi fejezetek azt mutatják be, hogyan lehet tovább védelemmel ellátni
 
 ## <a name="https-and-certificates"></a>HTTPS és tanúsítványok
 
-A App Service segítségével biztonságossá teheti az alkalmazásokat a [https](https://wikipedia.org/wiki/HTTPS)használatával. Az alkalmazás létrehozásakor az alapértelmezett tartományneve ( \< app_name>. azurewebsites.net) már elérhető a HTTPS protokoll használatával. Ha [Egyéni tartományt állít be az alkalmazáshoz](app-service-web-tutorial-custom-domain.md), akkor azt is biztonságossá kell tennie [egy TLS-/SSL-tanúsítvánnyal](configure-ssl-bindings.md) , hogy az ügyféloldali böngészők biztonságos HTTPS-kapcsolatot tegyenek lehetővé az egyéni tartományhoz. A App Service számos különböző típusú tanúsítványt támogat:
+A App Service segítségével biztonságossá teheti az alkalmazásokat a [https](https://wikipedia.org/wiki/HTTPS)használatával. Az alkalmazás létrehozásakor az alapértelmezett tartományneve ( \<app_name> . azurewebsites.net) már elérhető a HTTPS protokoll használatával. Ha [Egyéni tartományt állít be az alkalmazáshoz](app-service-web-tutorial-custom-domain.md), akkor azt is biztonságossá kell tennie [egy TLS-/SSL-tanúsítvánnyal](configure-ssl-bindings.md) , hogy az ügyféloldali böngészők biztonságos HTTPS-kapcsolatot tegyenek lehetővé az egyéni tartományhoz. A App Service számos különböző típusú tanúsítványt támogat:
 
 - Felügyelt tanúsítvány Ingyenes App Service
 - Tanúsítvány App Service
@@ -43,7 +42,7 @@ A App Service az FTP-t és a FTPS is támogatja a fájlok telepítéséhez. A FT
 
 Alapértelmezés szerint a App Service alkalmazás az internetről érkező összes IP-címről fogad kérelmeket, de az IP-címek kis részhalmazára korlátozhatja a hozzáférést. A Windows App Service lehetővé teszi az alkalmazás elérésére jogosult IP-címek listájának megadását. Az engedélyezett lista tartalmazhat egyedi IP-címeket vagy egy alhálózati maszk által meghatározott IP-címtartományt. További információ: [Azure app Service statikus IP-korlátozások](app-service-ip-restrictions.md).
 
-A Windows App Service esetében a _web. config_fájl konfigurálásával dinamikusan is korlátozhatja az IP-címeket. További információ: [dinamikus IP-biztonsági \< dynamicIpSecurity>](https://docs.microsoft.com/iis/configuration/system.webServer/security/dynamicIpSecurity/).
+A Windows App Service esetén a _web.config_konfigurálásával dinamikusan is korlátozhatja az IP-címeket. További információ: [dinamikus IP-biztonság \<dynamicIpSecurity> ](https://docs.microsoft.com/iis/configuration/system.webServer/security/dynamicIpSecurity/).
 
 ## <a name="client-authentication-and-authorization"></a>Ügyfél-hitelesítés és engedélyezés
 

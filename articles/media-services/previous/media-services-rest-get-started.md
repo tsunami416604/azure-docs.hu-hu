@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 46d00df4970a7268c9856de6d7c090f2deffc7ea
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83654517"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>Ismerkedés a tartalom igény szerinti kézbesítésével a REST használatával  
@@ -95,7 +94,7 @@ Az eszközök létrehozásakor szükséges értékek egyike az eszköz létrehoz
 * **CommonEncryptionProtected**  =  **2** – ezt a lehetőséget akkor használja, ha olyan tartalmat tölt fel, amely már titkosítva van, és Common encryption vagy PlayReady DRM-mel védett (például a PlayReady DRM-mel védett Smooth streaming).
 * **EnvelopeEncryptionProtected**  =  **4** – ezt a beállítást akkor használja, ha AES-titkosítással titkosított HLS tölt fel. A fájlokat kódolni és titkosítani kell az átalakító-kezelővel.
 
-### <a name="create-an-asset"></a>Eszköz létrehozása
+### <a name="create-an-asset"></a>Adategység létrehozása
 Az eszköz a Media Servicesban található objektumok különböző típusaihoz vagy csoportjaihoz tartozó tároló, beleértve a videó, a hang, a képek, a miniatűr gyűjtemények, a szöveges számok és a kódolt feliratok fájljait. A REST APIban az adategység létrehozásához POST-kérést kell küldenie Media Services és az objektumra vonatkozó összes tulajdonságot a kérelem törzsében kell elhelyezni.
 
 Az alábbi példa bemutatja, hogyan hozhat létre egy eszközt.

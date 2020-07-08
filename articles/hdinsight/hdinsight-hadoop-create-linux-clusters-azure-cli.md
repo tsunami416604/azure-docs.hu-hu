@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/03/2020
 ms.openlocfilehash: 5cab7f962a829ab8609325e8bb1b35498568726c
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82994184"
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-cli"></a>HDInsight-fürtök létrehozása az Azure CLI használatával
@@ -23,7 +22,7 @@ A jelen dokumentumban ismertetett lépések – HDInsight 3,6-fürt létrehozás
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -46,12 +45,12 @@ Azure CLI-vel. Ha még nem telepítette az Azure CLI-t, olvassa el a következő
 
     |Paraméter | Leírás |
     |---|---|
-    |`--workernode-count`| A fürtben lévő munkavégző csomópontok száma. Ez a cikk a változót `clusterSizeInNodes` használja az átadott `--workernode-count`értékként. |
-    |`--version`| A HDInsight-fürt verziója. Ez a cikk a változót `clusterVersion` használja az átadott `--version`értékként. Lásd még: [támogatott HDInsight-verziók](./hdinsight-component-versioning.md#supported-hdinsight-versions).|
-    |`--type`| A HDInsight-fürt típusa, például: Hadoop, interactivehive, hbase, Kafka, Storm, Spark, Rserver, mlservices.  Ez a cikk a változót `clusterType` használja az átadott `--type`értékként. Lásd még: [fürtök típusai és konfigurálása](./hdinsight-hadoop-provision-linux-clusters.md#cluster-type).|
-    |`--component-version`|A különböző Hadoop-összetevők verziói az "összetevő = verzió" formátumban, szóközzel tagolt verziókban. Ez a cikk a változót `componentVersion` használja az átadott `--component-version`értékként. Lásd még: [Hadoop-összetevők](./hdinsight-component-versioning.md#apache-components-available-with-different-hdinsight-versions).|
+    |`--workernode-count`| A fürtben lévő munkavégző csomópontok száma. Ez a cikk a változót használja az `clusterSizeInNodes` átadott értékként `--workernode-count` . |
+    |`--version`| A HDInsight-fürt verziója. Ez a cikk a változót használja az `clusterVersion` átadott értékként `--version` . Lásd még: [támogatott HDInsight-verziók](./hdinsight-component-versioning.md#supported-hdinsight-versions).|
+    |`--type`| A HDInsight-fürt típusa, például: Hadoop, interactivehive, hbase, Kafka, Storm, Spark, Rserver, mlservices.  Ez a cikk a változót használja az `clusterType` átadott értékként `--type` . Lásd még: [fürtök típusai és konfigurálása](./hdinsight-hadoop-provision-linux-clusters.md#cluster-type).|
+    |`--component-version`|A különböző Hadoop-összetevők verziói az "összetevő = verzió" formátumban, szóközzel tagolt verziókban. Ez a cikk a változót használja az `componentVersion` átadott értékként `--component-version` . Lásd még: [Hadoop-összetevők](./hdinsight-component-versioning.md#apache-components-available-with-different-hdinsight-versions).|
 
-    `LOCATION`Cserélje `RESOURCEGROUPNAME`le a `CLUSTERNAME`, `STORAGEACCOUNTNAME`,, `PASSWORD` , és értéket a kívánt értékekre. Szükség szerint módosítsa a többi változó értékét. Ezután írja be a CLI-parancsokat.
+    Cserélje le a,, `RESOURCEGROUPNAME` `LOCATION` ,, `CLUSTERNAME` `STORAGEACCOUNTNAME` és `PASSWORD` értéket a kívánt értékekre. Szükség szerint módosítsa a többi változó értékét. Ezután írja be a CLI-parancsokat.
 
     ```azurecli-interactive
     export resourceGroupName=RESOURCEGROUPNAME
@@ -76,7 +75,7 @@ Azure CLI-vel. Ha még nem telepítette az Azure CLI-t, olvassa el a következő
         --name $resourceGroupName
     ```
 
-    Az érvényes helyszínek listájához használja a `az account list-locations` parancsot, majd használja az `name` érték egyik helyét.
+    Az érvényes helyszínek listájához használja a `az account list-locations` parancsot, majd használja az érték egyik helyét `name` .
 
 4. [Hozzon létre egy Azure Storage-fiókot](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) az alábbi parancs beírásával:
 
@@ -134,7 +133,7 @@ Azure CLI-vel. Ha még nem telepítette az Azure CLI-t, olvassa el a következő
 
     A fürt létrehozási folyamata több percet is igénybe vehet. Általában körülbelül 15.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 A cikk befejezése után érdemes törölni a fürtöt. A HDInsight az adatait az Azure Storage tárolja, így biztonságosan törölheti a fürtöt, ha az nincs használatban. A HDInsight-fürtökért is fizetnie kell, még akkor is, ha nincs használatban. Mivel a fürt díjai több időt vesznek igénybe, mint a tárterületre vonatkozó díjak, a gazdasági érzékek törlik a fürtöket, ha nincsenek használatban.
 

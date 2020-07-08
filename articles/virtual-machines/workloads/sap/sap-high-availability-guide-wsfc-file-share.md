@@ -17,10 +17,9 @@ ms.date: 07/24/2019
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 2df092d49f2dfe9153b52be677e8ee6314dd9b60
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82982972"
 ---
 # <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-file-share-in-azure"></a>SAP ASCS-/SCS-példány fürthöz való fürtözése Windows feladatátvevő fürtön egy Azure-beli fájlmegosztás használatával
@@ -70,10 +69,10 @@ Ez az architektúra a következő módokon jellemző:
 
 * Az SAP központi szolgáltatásai (a saját fájl-struktúra, az üzenet-és a sorba helyezni-folyamatok esetében) eltérnek az SAP globális gazdagép fájljaitól.
 * Az SAP központi szolgáltatásai egy SAP ASCS/SCS-példány alatt futnak.
-* Az SAP ASCS/SCS-példány fürtözött, és a \<ASCS/SCS virtuális állomásnév\> virtuális gazdagép neve használatával érhető el.
-* Az SAP globális fájljai az SMB-fájlmegosztás számára vannak elhelyezve, \<és az SAP globális gazdagép\> állomásneve használatával érhetők el: \\ \\ &lt;SAP Global Host&gt;\sapmnt\\&lt;SID&gt;\SYS\..
+* Az SAP ASCS/SCS-példány fürtözött, és a \<ASCS/SCS virtual host name\> virtuális gazdagép neve alapján érhető el.
+* Az SAP globális fájljai az SMB-fájlmegosztás számára vannak elhelyezve, és a következő állomásnév használatával érhetők el \<SAP global host\> : \\ \\ &lt; SAP Global Host &gt; \sapmnt \\ &lt; SID &gt; \SYS \. ..
 * Az SAP ASCS/SCS-példány egy helyi lemezre van telepítve a fürtcsomópontok között.
-* A \<ASCS/SCS virtuális állomásnév\> hálózatának neve eltér az &lt;SAP globális gazdagéptől&gt;.
+* A \<ASCS/SCS virtual host name\> hálózat neve eltér az &lt; SAP globális gazdagéptől &gt; .
 
 ![2. ábra: SAP ASCS/SCS HA architektúra SMB-fájlmegosztás esetén][sap-ha-guide-figure-8004]
 
@@ -82,17 +81,17 @@ _**2. ábra:** Új SAP ASCS/SCS HA architektúra SMB-fájlmegosztás esetén_
 SMB-fájlmegosztás előfeltételei:
 
 * SMB 3,0 (vagy újabb) protokoll.
-* Lehetőség Active Directory hozzáférés-vezérlési listák (ACL-ek) beállítására Active Directory felhasználói `computer$` csoportok és a számítógép-objektum számára.
+* Lehetőség Active Directory hozzáférés-vezérlési listák (ACL-ek) beállítására Active Directory felhasználói csoportok és a `computer$` számítógép-objektum számára.
 * A fájlmegosztás csak akkor engedélyezhető, HA engedélyezve van:
     * A fájlok tárolására használt lemezek nem lehetnek egyetlen meghibásodási pontnak sem.
     * A kiszolgáló vagy a virtuális gép leállása nem okoz állásidőt a fájlmegosztás esetében.
 
-Az SAP \<SID\> -fürt szerepkör nem tartalmaz fürtözött megosztott lemezeket vagy általános fájlmegosztási fürterőforrás-erőforrást.
+Az SAP- \<SID\> fürt szerepkör nem tartalmazza a fürt megosztott lemezeit vagy egy általános fájlmegosztási fürterőforrás-erőforrást.
 
 
-![3. ábra: \<az\> SAP SID-fürt szerepkörének erőforrásai a fájlmegosztás használatához][sap-ha-guide-figure-8005]
+![3. ábra: \< az SAP SID- \> fürt szerepkörének erőforrásai a fájlmegosztás használatához][sap-ha-guide-figure-8005]
 
-_**3. ábra:** SAP &lt;SID&gt; -fürt szerepkör erőforrásai a fájlmegosztás használatához_
+_**3. ábra:** SAP &lt; SID- &gt; fürt szerepkör erőforrásai a fájlmegosztás használatához_
 
 
 ## <a name="scale-out-file-shares-with-storage-spaces-direct-in-azure-as-an-sapmnt-file-share"></a>Kibővített fájlmegosztás Közvetlen tárolóhelyek az Azure-ban SAPMNT-fájlmegosztásként
@@ -137,20 +136,20 @@ A kibővített fájlmegosztás használatához a rendszernek meg kell felelnie a
 * A virtuális gépek közötti megfelelő hálózati teljesítmény érdekében, amely Közvetlen tárolóhelyek lemezes szinkronizáláshoz szükséges, használjon olyan virtuálisgép-típust, amely legalább egy "magas" hálózati sávszélességgel rendelkezik.
     További információ: a [DSv2 sorozat][dv2-series] és a [DS-sorozat][ds-series] specifikációja.
 * Javasoljuk, hogy foglaljon le néhány le nem foglalt kapacitást a tárolóban. Ha a tárolóhelyen nem foglalt kapacitást ad meg, a kötetek lemezterületet biztosítanak a "helyben" javításhoz, ha a meghajtó meghibásodik. Ez javítja az adatbiztonságot és a teljesítményt.  További információ: a [kötet méretének kiválasztása][choosing-the-size-of-volumes-s2d].
-* Nem kell konfigurálnia az Azure belső Load balancert a kibővített fájlmegosztás hálózati neveként, például az \<SAP globális gazdagéphez.\> Ez az SAP ASCS/ \<SCS-példány vagy az adatbázis\> -kezelő rendszerhez készült ASCS/SCS virtuális gazdagép neveként történik. A kibővített fájlmegosztás az összes fürtcsomóponton kibővíti a terhelést. \<Az SAP Global\> Host az összes fürtcsomópont helyi IP-címét használja.
+* Nem kell konfigurálnia az Azure belső Load balancert a kibővített fájlmegosztás hálózati neveként, például: \<SAP global host\> . Ez az \<ASCS/SCS virtual host name\> SAP ASCS/SCS példány vagy az adatbázis-kezelő rendszer esetében történik. A kibővített fájlmegosztás az összes fürtcsomóponton kibővíti a terhelést. \<SAP global host\>a a fürt összes csomópontjának helyi IP-címét használja.
 
 
 > [!IMPORTANT]
-> A SAPMNT fájlmegosztás nem nevezhető át, amely az \<SAP globális gazdagépre\>mutat. Az SAP csak a "sapmnt" megosztási nevet támogatja.
+> A SAPMNT-fájlmegosztás nem nevezhető át, amely a következőre mutat: \<SAP global host\> . Az SAP csak a "sapmnt" megosztási nevet támogatja.
 >
 > További információ: [SAP Note 2492395 – a megosztás neve sapmnt módosítható?][2492395]
 
 ### <a name="configure-sap-ascsscs-instances-and-a-scale-out-file-share-in-two-clusters"></a>Az SAP ASCS/SCS-példányok és a kibővíthető fájlmegosztás konfigurálása két fürtben
 
-Az SAP ASCS/SCS-példányokat egy fürtön helyezheti üzembe, a \<saját\> SAP SID-fürt szerepkörével együtt. Ebben az esetben a kibővíthető fájlmegosztást egy másik fürtön konfigurálja, egy másik fürt szerepkörrel.
+Az SAP ASCS/SCS-példányokat egy fürtön helyezheti üzembe, saját SAP- \<SID\> fürt szerepkörével. Ebben az esetben a kibővíthető fájlmegosztást egy másik fürtön konfigurálja, egy másik fürt szerepkörrel.
 
 > [!IMPORTANT]
->Ebben az esetben az SAP ASCS/SCS-példány úgy van konfigurálva, hogy az SAP globális gazdagépet az UNC \\ \\ &lt;elérési út&gt;SAP\\&lt;Global&gt;Host \sapmnt SID \SYS használatával elérje.\.
+>Ebben az esetben az SAP ASCS/SCS-példány úgy van konfigurálva, hogy az SAP globális gazdagépet az UNC elérési út \\ \\ &lt; SAP Global Host &gt; \sapmnt \\ &lt; SID &gt; \SYS használatával elérje.\.
 >
 
 ![5. ábra: SAP ASCS/SCS-példány és két fürtön üzembe helyezett kibővített fájlmegosztás][sap-ha-guide-figure-8007]

@@ -9,10 +9,9 @@ ms.author: magoedte
 ms.date: 05/18/2020
 ms.topic: conceptual
 ms.openlocfilehash: 965e59f9c51cc41d4e5a8e8931b5c2f62c260599
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83648104"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>A csatlakoztatott gép ügynökének kezelése és karbantartása
@@ -52,7 +51,7 @@ Ha nem ismeri a Windows Installer csomagok parancssori kapcsolóit, tekintse át
 
 1. Jelentkezzen be a számítógépre egy rendszergazdai jogosultságokkal rendelkező fiókkal.
 
-2. Futtassa a **AzureConnectedMachineAgent. msi fájlt** a telepítővarázsló elindításához.
+2. **AzureConnectedMachineAgent.msi** végrehajtása a telepítővarázsló elindításához.
 
 A telepítővarázsló felfedi, hogy létezik-e korábbi verzió, és hogy automatikusan végrehajtja-e az ügynök frissítését. Ha a frissítés befejeződött, a telepítővarázsló automatikusan bezáródik.
 
@@ -125,7 +124,7 @@ A [Zypper](https://en.opensuse.org/Portal:Zypper) parancs műveleteit, például
 
 ## <a name="about-the-azcmagent-tool"></a>Tudnivalók a Azcmagent eszközről
 
-A Azcmagent eszköz (Azcmagent. exe) segítségével konfigurálhatja az Azure arc for Servers (előzetes verzió) szolgáltatáshoz csatlakoztatott gépi ügynököt a telepítés során, vagy módosíthatja az ügynök kezdeti konfigurációját a telepítés után. A Azcmagent. exe parancssori paramétereket biztosít az ügynök testreszabásához és az állapotának megtekintéséhez:
+A Azcmagent eszköz (Azcmagent.exe) segítségével konfigurálható az Azure arc for Servers (előzetes verzió) csatlakoztatott gépi ügynök a telepítés során, vagy az ügynök kezdeti konfigurációját a telepítés után módosíthatja. A Azcmagent.exe parancssori paramétereket biztosít az ügynök testreszabásához és az állapotának megtekintéséhez:
 
 * **Kapcsolódás** – a gép és az Azure-ív összekapcsolásához
 
@@ -212,11 +211,11 @@ A következő módszerek mindegyike eltávolítja az ügynököt, de nem távol�
     c. A **programok és szolgáltatások**területen válassza **Az Azure Connected Machine Agent ügynököt**, válassza az **Eltávolítás**lehetőséget, majd válassza az **Igen**lehetőséget.  
 
     >[!NOTE]
-    > Az ügynök telepítővarázslójának futtatásához kattintson duplán a **AzureConnectedMachineAgent. msi** telepítőcsomag-csomagra.
+    > Az ügynök telepítővarázslója úgy is futtatható, ha duplán kattint a **AzureConnectedMachineAgent.msi** telepítőcsomag csomagra.
 
 #### <a name="uninstall-from-the-command-line"></a>Eltávolítás a parancssorból
 
-Ha manuálisan szeretné eltávolítani az ügynököt a parancssorból, vagy automatikus metódust (például egy parancsfájlt) szeretne használni, használja az alábbi példát. Először le kell kérnie a termékkód beolvasását, amely az alkalmazáscsomag elsődleges azonosítója, az operációs rendszerből. Az Eltávolítás az msiexec. exe parancssor használatával történik `msiexec /x {Product Code}` .
+Ha manuálisan szeretné eltávolítani az ügynököt a parancssorból, vagy automatikus metódust (például egy parancsfájlt) szeretne használni, használja az alábbi példát. Először le kell kérnie a termékkód beolvasását, amely az alkalmazáscsomag elsődleges azonosítója, az operációs rendszerből. Az Eltávolítás a Msiexec.exe parancssor használatával történik `msiexec /x {Product Code}` .
 
 1. Nyissa meg a beállításszerkesztőt.
 

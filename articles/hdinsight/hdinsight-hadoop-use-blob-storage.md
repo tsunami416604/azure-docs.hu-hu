@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
 ms.openlocfilehash: c08adca17948aceb54b937526dacebbaa13a0530
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83655181"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Az Azure Storage és az Azure HDInsight-fürtök együttes használata
@@ -29,7 +28,7 @@ Ebből a cikkből megtudhatja, hogyan használható az Azure Storage a HDInsight
 | Storage-fiók típusa | Támogatott szolgáltatások | Támogatott teljesítményszint |Nem támogatott teljesítményszint| Támogatott hozzáférési szintek |
 |----------------------|--------------------|-----------------------------|---|------------------------|
 | StorageV2 (általános célú v2)  | Blob     | Standard                    |Prémium| Gyors elérésű, ritka elérésű Archívum\*   |
-| Tároló (általános célú v1)   | Blob     | Standard                    |Prémium| N/A                    |
+| Tároló (általános célú v1)   | Blob     | Standard                    |Prémium| N.A.                    |
 | BlobStorage                    | Blob     | Standard                    |Prémium| Gyors elérésű, ritka elérésű Archívum\*   |
 
 Nem javasoljuk, hogy az üzleti adattároláshoz használja az alapértelmezett BLOB-tárolót. Az alapértelmezett blobtárolót ajánlatos törölni minden egyes használat után. Az alapértelmezett tároló alkalmazás-és rendszernaplókat tartalmaz. A tároló törlése előtt gondoskodjon a naplók begyűjtéséről.
@@ -129,7 +128,7 @@ A Microsoft az alábbi eszközöket biztosítja az Azure Storage-hoz való együ
 
 | Eszköz | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
-| [Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md) |✔ |✔ |✔ |
+| [Azure Portalra](../storage/blobs/storage-quickstart-blobs-portal.md) |✔ |✔ |✔ |
 | [Azure CLI](../storage/blobs/storage-quickstart-blobs-cli.md) |✔ |✔ |✔ |
 | [Azure PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md) | | |✔ |
 | [AzCopy](../storage/common/storage-use-azcopy-v10.md) |✔ | |✔ |

@@ -16,10 +16,9 @@ ms.date: 05/07/2020
 ms.author: willzhan
 ms.reviewer: dwgeo
 ms.openlocfilehash: 618803e8e94f96a63e0c39c27b40a933acac7cb4
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82995531"
 ---
 # <a name="offline-fairplay-streaming-for-ios"></a>Offline FairPlay-streamelés iOS-hez 
@@ -134,7 +133,7 @@ Az FPS nélküli offline üzemmódú támogatás csak iOS 10 és újabb rendszer
 
 Ezek a lépések bemutatják, hogyan állíthat be egy futó iOS-lejátszót. Tegyük fel, hogy az FPS Server SDK-ban a HLSCatalog mintából indul el a következő kód módosításával:
 
-A HLSCatalog\Shared\Managers\ContentKeyDelegate.swift alkalmazásban implementálja `requestContentKeyFromKeySecurityModule(spcData: Data, assetID: String)` a metódust a következő kóddal. Hagyja, hogy a "drmUr" változó legyen a HLS URL-címhez rendelve.
+A HLSCatalog\Shared\Managers\ContentKeyDelegate.swift alkalmazásban implementálja a metódust `requestContentKeyFromKeySecurityModule(spcData: Data, assetID: String)` a következő kóddal. Hagyja, hogy a "drmUr" változó legyen a HLS URL-címhez rendelve.
 
 ```swift
     var ckcData: Data? = nil
@@ -167,7 +166,7 @@ A HLSCatalog\Shared\Managers\ContentKeyDelegate.swift alkalmazásban implementá
     return ckcData
 ```
 
-A HLSCatalog\Shared\Managers\ContentKeyDelegate.swift-ben implementálja `requestApplicationCertificate()`a metódust. Ez a megvalósítás attól függ, hogy a tanúsítványt (csak nyilvános kulcs) ágyazza-e be az eszközzel, vagy a tanúsítványt a weben tárolja. A következő implementáció a tesztelési mintákban használt üzemeltetett alkalmazás tanúsítványát használja. Hagyja, hogy a "certUrl" olyan változó legyen, amely az alkalmazás tanúsítványának URL-címét tartalmazza.
+A HLSCatalog\Shared\Managers\ContentKeyDelegate.swift-ben implementálja a metódust `requestApplicationCertificate()` . Ez a megvalósítás attól függ, hogy a tanúsítványt (csak nyilvános kulcs) ágyazza-e be az eszközzel, vagy a tanúsítványt a weben tárolja. A következő implementáció a tesztelési mintákban használt üzemeltetett alkalmazás tanúsítványát használja. Hagyja, hogy a "certUrl" olyan változó legyen, amely az alkalmazás tanúsítványának URL-címét tartalmazza.
 
 ```swift
 func requestApplicationCertificate() throws -> Data {
@@ -212,11 +211,11 @@ A következő gyakran ismételt kérdések segítséget nyújtanak a hibaelhár�
 `Microsoft.WindowsAzure.MediaServices.Client.FairPlay.FairPlayConfiguration.CreateSerializedFairPlayOptionConfiguration(objX509Certificate2, pfxPassword, pfxPasswordId, askId, iv, RentalAndLeaseKeyType.PersistentUnlimited, 0x9999);`
 
     Az API dokumentációja: [FairPlayConfiguration. CreateSerializedFairPlayOptionConfiguration metódus](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.mediaservices.client.FairPlay.FairPlayconfiguration.createserializedFairPlayoptionconfiguration?view=azure-dotnet). A paraméter az offline bérlet időtartamát jelöli, a második pedig az egységet.
-- **Mi a letöltött/offline fájl szerkezete iOS-eszközökön?** Az iOS-eszközön a letöltött fájl szerkezete a következő képernyőképre hasonlít. A `_keys` mappa a letöltött fps-licenceket egy áruházbeli fájllal tárolja az egyes licencelési szolgáltatások gazdagépei számára. A `.movpkg` mappa tárolja a hang-és video-tartalmakat. Az első mappa, amelynek a neve szaggatott vonallal végződik, majd egy numerikus tartalmat tartalmaz. A numerikus érték a PeakBandwidth. A második mappa, amelynek neve kötőjel, majd 0, hanganyagot tartalmaz. Az "adat" nevű harmadik mappa az FPS-tartalom fő lejátszási listáját tartalmazza. Végül a boot. XML a `.movpkg` mappa tartalmának teljes leírását tartalmazza. 
+- **Mi a letöltött/offline fájl szerkezete iOS-eszközökön?** Az iOS-eszközön a letöltött fájl szerkezete a következő képernyőképre hasonlít. A `_keys` mappa a letöltött fps-licenceket egy áruházbeli fájllal tárolja az egyes licencelési szolgáltatások gazdagépei számára. A `.movpkg` mappa tárolja a hang-és video-tartalmakat. Az első mappa, amelynek a neve szaggatott vonallal végződik, majd egy numerikus tartalmat tartalmaz. A numerikus érték a PeakBandwidth. A második mappa, amelynek neve kötőjel, majd 0, hanganyagot tartalmaz. Az "adat" nevű harmadik mappa az FPS-tartalom fő lejátszási listáját tartalmazza. Végezetül boot.xml a mappa tartalmának teljes leírását tartalmazza `.movpkg` . 
 
 ![Offline FairPlay iOS minta alkalmazás fájljának szerkezete](media/media-services-protect-hls-with-offline-FairPlay/media-services-offline-FairPlay-file-structure.png)
 
-Egy minta rendszerindító. xml fájl:
+Minta boot.xml fájl:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <HLSMoviePackage xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://apple.com/IMG/Schemas/HLSMoviePackage" xsi:schemaLocation="http://apple.com/IMG/Schemas/HLSMoviePackage /System/Library/Schemas/HLSMoviePackage.xsd">

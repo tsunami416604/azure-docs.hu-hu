@@ -13,10 +13,9 @@ ms.topic: article
 ms.date: 03/12/2019
 ms.author: apimpm
 ms.openlocfilehash: c1a9f3e76622523dde03cc2a639cce33227dff5f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83649218"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Az API Management-szolgáltatáskonfiguráció mentése és konfigurálása a Git használatával
@@ -160,7 +159,7 @@ A helyi git-tárházban található fájlok és mappák tartalmazzák a szolgál
 
 Minden mappa tartalmazhat egy vagy több fájlt, bizonyos esetekben pedig egy vagy több mappát, például az egyes API-k, termékek vagy csoportok mappáit. Az egyes mappákban található fájlok a Mappanév által leírt típusú entitásokra vonatkoznak.
 
-| Fájl típusa | Cél |
+| Fájl típusa | Szerep |
 | --- | --- |
 | json |A megfelelő entitás konfigurációs adatai |
 | html |Az entitásra vonatkozó leírások, amelyek gyakran megjelennek a fejlesztői portálon |

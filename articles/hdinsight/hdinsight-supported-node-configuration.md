@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 05/14/2020
 ms.openlocfilehash: 0bf5559590b66400fc4fc4dc27ea88c3522effb1
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83646617"
 ---
 # <a name="what-are-the-default-and-recommended-node-configurations-for-azure-hdinsight"></a>Mik az Azure HDInsight alapértelmezett és ajánlott csomópont-konfigurációi?
@@ -53,7 +52,7 @@ Az egyes virtuálisgép-típusok leírásával kapcsolatos további információ
 > [!Note]
 > Ahhoz, hogy az SKU-azonosító a PowerShellben és más parancsfájlokban is használható legyen, az `Standard_` alábbi táblázatokban adja hozzá az összes virtuális gép SKU elejéhez. Ilyen lehet például a következő: `D12_v2` `Standard_D12_v2` .
 
-| Fürt típusa | Hadoop | HBase | Interaktív lekérdezés | Vihar | Spark | ML Server | Kafka |
+| Fürt típusa | Hadoop | HBase | Interaktív lekérdezés | Storm | Spark | ML Server | Kafka |
 |---|---|---|---|---|---|---|---|
 | Fej: alapértelmezett VM-méret | D12_v2 | D12_v2 | D13_v2 | A4_v2 | D12_v2, <br/>D13_v2 * | D12_v2 | D3_v2 |
 | Head: a minimálisan ajánlott virtuálisgép-méretek | D5_v2 | D3_v2 | D13_v2 | A4_v2 | D12_v2, <br/>D13_v2 * | D12_v2 | D3_v2 |
@@ -68,7 +67,7 @@ Az egyes virtuálisgép-típusok leírásával kapcsolatos további információ
 
 ### <a name="brazil-south-and-japan-west-only"></a>Dél-Brazília és Nyugat-Japán
 
-| Fürt típusa | Hadoop | HBase | Interaktív lekérdezés | Vihar | Spark | ML-szolgáltatások |
+| Fürt típusa | Hadoop | HBase | Interaktív lekérdezés | Storm | Spark | ML-szolgáltatások |
 |---|---|---|---|---|---|---|
 | Fej: alapértelmezett VM-méret | D12 | D12 | D13 | A4_v2 | D12 | D12 |
 | Head: a minimálisan ajánlott virtuálisgép-méretek | D5_v2 | D3_v2 | D13_v2 | A4_v2 | D12_v2 | D12_v2 |

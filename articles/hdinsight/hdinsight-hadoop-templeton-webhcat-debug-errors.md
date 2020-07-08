@@ -9,10 +9,9 @@ ms.topic: troubleshooting
 ms.custom: hdinsightactive
 ms.date: 04/14/2020
 ms.openlocfilehash: 40d49d156b76db5e02ec48defbb82ed60819c478
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83651109"
 ---
 # <a name="understand-and-resolve-errors-received-from-webhcat-on-hdinsight"></a>A WebHCattől kapott hibák megértése és megoldása HDInsightban
@@ -34,7 +33,7 @@ Ha túllépi a következő alapértelmezett értékeket, akkor csökkenhet a Web
 | Beállítás | Művelet | Alapértelmezett érték |
 | --- | --- | --- |
 | [fonal. Scheduler. Capacity. max-Applications][maximum-applications] |A egyszerre aktív feladatok maximális száma (függőben vagy fut) |10,000 |
-| [Templeton. exec. max-procs][max-procs] |Az egyszerre kiszolgálható kérelmek maximális száma |20 |
+| [templeton.exec. max-procs][max-procs] |Az egyszerre kiszolgálható kérelmek maximális száma |20 |
 | [MapReduce. jobhistory. max-Age-MS][max-age-ms] |Azon napok száma, ameddig a feladatok előzményei megmaradnak |7 nap |
 
 ## <a name="too-many-requests"></a>Túl sok kérelem

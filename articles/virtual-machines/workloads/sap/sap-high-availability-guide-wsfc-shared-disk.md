@@ -17,10 +17,9 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: cf85632ff062bff5b71451379f37c14830bf6b68
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82982955"
 ---
 # <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-cluster-shared-disk-in-azure"></a>Az SAP ASCS/SCS-példányok fürtözése Windows feladatátvevő fürtön az Azure-ban megosztott fürtözött lemez használatával
@@ -60,15 +59,15 @@ A Windows rendszerben az SAP ASCS/SCS példány az SAP Central Services, az SAP 
 Az SAP-ASCS/SCS-példányok a következő összetevőket tartalmazják:
 
 * SAP központi szolgáltatások:
-    * Két folyamat, egy üzenet-és sorba helyezni-kiszolgáló, \<valamint egy ASCS/SCS virtuális gazdagép neve>, amely a két folyamat elérésére szolgál.
-    * Fájl szerkezete: S:\usr\sap\\&lt;SID&gt;\ ASCS/SCS\<instance Number\>
+    * Két folyamat, egy üzenet-és sorba helyezni-kiszolgáló, valamint egy \<ASCS/SCS virtual host name> , amely a két folyamat elérésére szolgál.
+    * Fájl szerkezete: S:\usr\sap \\ &lt; SID &gt; \ ASCS/SCS\<instance number\>
 
 
 * SAP globális gazdagép fájljai:
-  * Fájl szerkezete: S:\usr\sap\\&lt;SID&gt;\SYS\...
-  * A sapmnt fájlmegosztás, amely lehetővé teszi a hozzáférést a globális S:\usr\sap\\&lt;SID&gt;\SYS\.. fájlok a következő UNC elérési úttal:
+  * Fájl szerkezete: S:\usr\sap \\ &lt; SID &gt; \SYS \. ..
+  * A sapmnt fájlmegosztást, amely \\ &lt; &gt; a következő UNC elérési út használatával engedélyezi a hozzáférést a globális S:\usr\sap SID \SYS \. .. fájlokhoz:
 
-    \\\\<ASCS/SCS virtuális gazdagép neve\>\sapmnt\\&lt;SID&gt;\SYS\...
+    \\\\<ASCS/SCS virtuális gazdagép neve \> \Sapmnt \\ &lt; SID &gt; \SYS \. ..
 
 
 ![2. ábra: a folyamatok, a fájlok szerkezete és a globális gazdagép sapmnt egy SAP ASCS/SCS-példányon][sap-ha-guide-figure-8001]
@@ -83,7 +82,7 @@ _**3. ábra:** SAP ASCS/SCS HA architektúra megosztott lemezzel_
 
 > [!IMPORTANT]
 > Ez a két összetevő ugyanazon az SAP ASCS/SCS-példányon fut:
->* Ugyanaz \<a ASCS/SCS virtuális állomásnév,> az SAP-üzenet és a sorba helyezni-kiszolgáló folyamatainak eléréséhez, valamint az SAP globális gazdagépek fájljaihoz is használható a sapmnt-fájlmegosztás használatával.
+>* Ugyanezt \<ASCS/SCS virtual host name> használja az SAP-üzenetek és a sorba helyezni-kiszolgáló folyamatainak, valamint az SAP globális gazdagép-fájlok elérésére a sapmnt-fájlmegosztás segítségével.
 >* Ugyanaz a fürt megosztott lemezmeghajtója van megosztva egymás között.
 >
 

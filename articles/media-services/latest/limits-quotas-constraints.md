@@ -12,10 +12,9 @@ ms.topic: article
 ms.date: 04/01/2020
 ms.author: juliako
 ms.openlocfilehash: 055f651552313732c000a2e91d2862cda22a9c26
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82995875"
 ---
 <!-- If you update limits in this topic, make sure to also update https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#media-services-limits -->
@@ -90,7 +89,7 @@ A fiók 90 napnál régebbi feladatait automatikusan törli a rendszer, még akk
 | --- | --- | 
 | [Adatfolyam-végpontok](streaming-endpoint-concept.md) (leállított vagy futó) Media Services fiókkal|2 |
 | [Dinamikusjegyzék-szűrők](filters-dynamic-manifest-overview.md)|100|
-| [Streamelési szabályok](streaming-policy-concept.md) | 100 <sup>(6)</sup> |
+| [Folyamatos átviteli házirendek](streaming-policy-concept.md) | 100 <sup>(6)</sup> |
 | Egy adott eszközhöz társított egyedi [streaming-lokátorok](streaming-locators-concept.md) | 100<sup>(7)</sup> (rögzített) |
 
 <sup>6</sup> ha egyéni [folyamatos átviteli szabályzatot](https://docs.microsoft.com/rest/api/media/streamingpolicies)használ, a Media Service-fiókjához korlátozott készletet kell terveznie, és újra fel kell használni a StreamingLocators, amikor ugyanazok a titkosítási beállítások és protokollok szükségesek. Ne hozzon létre új folyamatos átviteli szabályzatot minden egyes adatfolyam-keresőhöz.

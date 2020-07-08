@@ -11,10 +11,9 @@ author: peterclu
 ms.date: 01/09/2020
 ms.custom: designer
 ms.openlocfilehash: af676f128796c762b330d986836ea825a36cb246
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83646293"
 ---
 # <a name="use-a-keyboard-to-use-azure-machine-learning-designer-preview"></a>Billentyűzet használata Azure Machine Learning Designer (előzetes verzió) használatához
@@ -65,7 +64,7 @@ A modul tulajdonságainak módosítása:
 
 Használja az alábbi parancsikonokat a hozzáférési kulccsal. A hozzáférési kulcsokkal kapcsolatos további információkért lásd: https://en.wikipedia.org/wiki/Access_key .
 
-| Billentyűleütés | Művelet |
+| Billentyűleütés | Műveletek |
 |-|-|
 | Elérési kulcs + R | Futtatás |
 | Elérési kulcs + P | Közzététel |

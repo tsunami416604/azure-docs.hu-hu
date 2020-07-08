@@ -7,10 +7,9 @@ ms.topic: how-to
 ms.date: 04/29/2020
 ms.author: alkarche
 ms.openlocfilehash: ffb6378d3dc4cc3fb23ea62157aad393d8ae6642
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83122847"
 ---
 # <a name="create-a-function-using-azure-for-students-starter"></a>Függvény létrehozása az Azure diákoknak kezdőknek
@@ -77,7 +76,7 @@ Ezután létrehozhat egy függvényt az új függvényalkalmazásban.
 
    ![A függvények naplómegtekintője az Azure Portalon.](./media/functions-create-student-starter/function-view-logs.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 [!INCLUDE [Clean-up resources](../../includes/functions-quickstart-cleanup.md)]
 
@@ -89,7 +88,7 @@ Az Azure diákoknak kezdők számára a Azure Functions futtatókörnyezet legt�
     * Minden bemenet és minden kimeneti kötés támogatott! [Itt tekintheti meg a teljes listát.](functions-triggers-bindings.md)
 * Támogatott nyelvek: 
     * C# (.NET Core 2)
-    * JavaScript (node. js 8 & 10)
+    * JavaScript (Node.js 8 & 10)
     * F # (.NET Core 2)
     * [A magasabb csomagokban támogatott nyelveket itt tekintheti meg](supported-languages.md)
 * A Windows az egyetlen támogatott operációs rendszer.

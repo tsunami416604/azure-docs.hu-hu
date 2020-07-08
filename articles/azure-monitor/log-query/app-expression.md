@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 05/09/2019
 ms.openlocfilehash: 5d31c829487400f8eb239c0b837e53eecafeb900
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83201108"
 ---
 # <a name="app-expression-in-azure-monitor-query"></a>alkalmazás () kifejezés Azure Monitor lekérdezésben
@@ -20,7 +19,7 @@ A `app` kifejezés egy Azure monitor lekérdezésben van használatban, amely eg
 > [!IMPORTANT]
 > Ha [munkaterületen alapuló Application Insights erőforrást](../app/create-workspace-resource.md) használ, a rendszer nem használja az app () kifejezést, mert a rendszer egy log Analytics munkaterületen tárolja a naplóbeli adatkészletet. A log () kifejezés használatával olyan lekérdezést írhat, amely több munkaterületen is tartalmaz alkalmazást. Ugyanazon a munkaterületen több alkalmazás esetében nincs szükség több munkaterület-lekérdezésre.
 
-## <a name="syntax"></a>Szintaxis
+## <a name="syntax"></a>Syntax
 
 `app(`*Azonosító*`)`
 
@@ -33,11 +32,11 @@ A `app` kifejezés egy Azure monitor lekérdezésben van használatban, amely eg
 |:---|:---|:---|
 | Erőforrás neve | Az alkalmazás olvasható neve (más néven "összetevő neve") | alkalmazás ("fabrikamapp") |
 | Minősített név | Az alkalmazás teljes neve a következő formában: "subscriptionName/resourceGroup/componentName" | alkalmazás (AI-Prototype/Fabrikam/fabrikamapp) |
-| ID (Azonosító) | Az alkalmazás GUID azonosítója | alkalmazás ("988ba129-363e-4415-8fe7-8cbab5447518") |
+| ID | Az alkalmazás GUID azonosítója | alkalmazás ("988ba129-363e-4415-8fe7-8cbab5447518") |
 | Azure-erőforrás azonosítója | Az Azure-erőforrás azonosítója |alkalmazás ("/subscriptions/7293b69-db12-44fc-9a66-9c2005c3051d/resourcegroups/Fabrikam/providers/microsoft.insights/components/fabrikamapp") |
 
 
-## <a name="notes"></a>Megjegyzések
+## <a name="notes"></a>Jegyzetek
 
 * Olvasási hozzáféréssel kell rendelkeznie az alkalmazáshoz.
 * Ha az alkalmazás neve alapján azonosítja az alkalmazást, azt feltételezi, hogy az összes elérhető előfizetésen belül egyedi. Ha több alkalmazás is van a megadott névvel, a lekérdezés nem fog sikerülni a kétértelműség miatt. Ebben az esetben a többi azonosító egyikét kell használnia.

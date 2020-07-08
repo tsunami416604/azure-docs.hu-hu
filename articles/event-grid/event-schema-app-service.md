@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: jafreebe
 ms.openlocfilehash: 0a24e8ba84739dbc1b5de5e0546a8fe0d2e826f1
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83650705"
 ---
 # <a name="azure-app-service-as-an-event-grid-source"></a>Azure App Service Event Grid forrásként
@@ -54,7 +53,7 @@ Ez a szakasz egy példát mutat be, hogy az egyes események milyen módon nézn
 |    eventType          |    sztring    |    Az eseményforrás egyik regisztrált eseménytípus.                                                                                  |
 |    eventTime          |    sztring    |    Az esemény a szolgáltató UTC-ideje alapján történő létrehozásakor.                                                                         |
 |    id                 |    sztring    |    Az esemény egyedi azonosítója.                                                                                                            |
-|    data               |    objektum    |    BLOB Storage-események                                                                                                                    |
+|    adatok               |    objektum    |    BLOB Storage-események                                                                                                                    |
 |    dataVersion        |    sztring    |    Az adatobjektum séma-verziója. A sémaverziót a közzétevő határozza meg.                                                          |
 |    metadataVersion    |    sztring    |    Az esemény metaadatainak séma-verziója. A legfelső szintű tulajdonságokra az Event Grid határozza meg a sémát. Event Grid megadja ezt az értéket.    |
 

@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 09/10/2019
 ms.openlocfilehash: 06c8949be681d13b9dc7d5c433197dd9371aeef8
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83651860"
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>Az Active Directory környezet-optimalizálása az Azure Monitor Active Directory Health Check megoldásával
@@ -40,7 +39,7 @@ A megoldás hozzáadása és az ellenőrzések befejezése után a fókusz terü
 * Log Analytics munkaterület, amely az Azure Portal Azure Marketplace-en adja hozzá a Active Directory Health-ellenőrzési megoldást. Nincs szükség további konfigurációra.
 
   > [!NOTE]
-  > A megoldás hozzáadása után a rendszer hozzáadja a AdvisorAssessment. exe fájlt az ügynökökkel rendelkező kiszolgálókhoz. A rendszer beolvassa és elküldi a konfigurációs adatfeldolgozást a felhőben lévő Azure Monitorba. A felhőszolgáltatás egy logikát alkalmaz a kapott adatokon, és rögzíti azokat.
+  > A megoldás hozzáadása után a AdvisorAssessment.exe fájl hozzá lesz adva a-ügynökökkel rendelkező kiszolgálókhoz. A rendszer beolvassa és elküldi a konfigurációs adatfeldolgozást a felhőben lévő Azure Monitorba. A felhőszolgáltatás egy logikát alkalmaz a kapott adatokon, és rögzíti azokat.
   >
   >
 
@@ -140,9 +139,9 @@ Az alábbi képernyőképen a log lekérdezés látható: <
 
 Válassza ki a figyelmen kívül hagyni kívánt ajánlásokat. A következő eljárásban a RecommendationId értékeit fogja használni.
 
-### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>IgnoreRecommendations. txt szövegfájl létrehozása és használata
+### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>IgnoreRecommendations.txt szövegfájl létrehozása és használata
 
-1. Hozzon létre egy IgnoreRecommendations. txt nevű fájlt.
+1. Hozzon létre egy IgnoreRecommendations.txt nevű fájlt.
 
 2. Illessze be vagy írja be az egyes RecommendationId minden olyan javaslathoz, amelyet szeretne figyelmen kívül hagyni Azure Monitor külön sorban, majd mentse és zárjuk be a fájlt.
 
@@ -162,7 +161,7 @@ A következő ütemezett állapot-ellenőrzés után, alapértelmezés szerint h
     ADAssessmentRecommendation | where RecommendationResult == "Ignored" | sort by Computer asc | project Computer, RecommendationId, Recommendation
     ```
 
-2. Ha később úgy dönt, hogy szeretné látni a figyelmen kívül hagyott javaslatokat, távolítsa el az összes IgnoreRecommendations. txt fájlt, vagy távolítsa el a RecommendationIDs.
+2. Ha később úgy dönt, hogy szeretné megtekinteni a figyelmen kívül hagyott javaslatokat, távolítson el minden IgnoreRecommendations.txt fájlt, vagy távolítsa el a RecommendationIDs.
 
 ## <a name="ad-health-check-solutions-faq"></a>AD Health Check megoldás – gyakori kérdések
 
@@ -195,7 +194,7 @@ Az eredmények az Excel programba exportálhatók további áttekintés céljáb
 
 *Mi az adatgyűjtés folyamatának neve?*
 
-* AdvisorAssessment. exe
+* AdvisorAssessment.exe
 
 *Mennyi időt vesz igénybe az adatok gyűjtése?*
 

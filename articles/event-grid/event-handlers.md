@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: spelluru
 ms.openlocfilehash: c29526bdee5ad70b3acb23117ee003877f52a55e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83592457"
 ---
 # <a name="event-handlers-in-azure-event-grid"></a>Eseménykezelők a Azure Event Gridban
@@ -22,10 +21,10 @@ A támogatott eseménykezelők a következők:
 
 - [Webhookok](handler-webhooks.md). Azure Automation runbookok és Logic Apps webhookok használatával támogatottak. 
 - [Azure functions](handler-functions.md)
-- [Event hubok](handler-event-hubs.md)
-- [Hibrid kapcsolatok továbbítása](handler-relay-hybrid-connections.md)
+- [Event Hubs](handler-event-hubs.md)
+- [Relay hibrid kapcsolatok](handler-relay-hybrid-connections.md)
 - [Várólisták és témakörök Service Bus](handler-service-bus.md)
-- [Tárolási várólisták](handler-storage-queues.md)
+- [Tárolási üzenetsorok](handler-storage-queues.md)
 
 ## <a name="next-steps"></a>További lépések
 - Az Event Grid ismertetése: [Az Event Grid bemutatása](overview.md).

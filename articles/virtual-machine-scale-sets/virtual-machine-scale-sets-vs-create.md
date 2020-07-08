@@ -10,10 +10,9 @@ ms.date: 09/09/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
 ms.openlocfilehash: 826dc1858984508e54e160675dd10f6dfad88af8
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83124363"
 ---
 # <a name="how-to-create-a-virtual-machine-scale-set-with-visual-studio"></a>Virtuálisgép-méretezési csoport létrehozása a Visual Studióval
@@ -44,7 +43,7 @@ A Virtual Machine Scale Sets a Visual Studióban való üzembe helyezésének me
 
     ![A projekt neve és létrehozása](media/virtual-machine-scale-sets-vs-create/configure-azure-resource-group.png)
 
-1. A sablonok listájában válassza a **Windows virtuálisgép-méretezési csoport** vagy a **Linux virtuálisgép** -méretezési csoport sablonját. Kattintson az **OK** gombra.
+1. A sablonok listájában válassza a **Windows virtuálisgép-méretezési csoport** vagy a **Linux virtuálisgép** -méretezési csoport sablonját. Válassza az **OK** lehetőséget.
 
    ![Virtuálisgép-sablon kiválasztása](media/virtual-machine-scale-sets-vs-create/select-vm-template.png)
 
@@ -78,7 +77,7 @@ Helyezze üzembe a Azure Resource Manager sablont a virtuálisgép-méretezési 
 
     ![Telepítési paraméterek szerkesztése](media/virtual-machine-scale-sets-vs-create/edit-deployment-parameters.png)
 
-1. Az **üzembe helyezés az erőforráscsoporthoz**területen válassza a **telepítés**lehetőséget. A művelet a **Deploy-AzureResourceGroup. ps1** parancsfájlt futtatja. A **kimeneti** ablak megjeleníti a telepítési folyamatot.
+1. Az **üzembe helyezés az erőforráscsoporthoz**területen válassza a **telepítés**lehetőséget. A művelet a **Deploy-AzureResourceGroup.ps1** parancsfájlt futtatja. A **kimeneti** ablak megjeleníti a telepítési folyamatot.
 
    ![A kimenet az eredményeket jeleníti meg](media/virtual-machine-scale-sets-vs-create/deployment-output.png)
 

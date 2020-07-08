@@ -11,10 +11,9 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.openlocfilehash: ae1beeebfddfe250ae20a70c3e78ec32774218d4
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82996322"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>A Azure Machine Learning költségeinek megtervezése és kezelése
@@ -103,9 +102,9 @@ Ha a kvótákat a munkaterület szintjén szeretné beállítani, kezdje a [Azur
 Bizonyos esetekben konfigurálnia kell a betanítási időszakokat, hogy azok az időtartamra korlátozzák, vagy korán megszakítsák őket. Ha például Azure Machine Learning beépített hiperparaméter-hangolást vagy automatizált gépi tanulást használ.
 
 Íme néhány lehetőség:
-* Definiáljon egy nevű `max_run_duration_seconds` paramétert a RunConfiguration annak a maximális időtartamnak a szabályozására, ameddig a Futtatás kiterjeszthető a kiválasztott számítási lehetőségre (helyi vagy távoli Felhőbeli számítás).
-* A [hiperparaméter-hangoláshoz](how-to-tune-hyperparameters.md#early-termination)adjon meg egy korai megszakítási szabályzatot egy bandita-házirendből, egy középértékes leállítási házirendből vagy egy csonkolt kiválasztási szabályzatból. A hiperparaméter-lóversenyfogadások további szabályozásához használja a következő `max_total_runs` paramétereket `max_duration_minutes`: vagy.
-* Az [automatizált gépi tanuláshoz](how-to-configure-auto-train.md#exit)állítson be hasonló megszakítási házirendeket a `enable_early_stopping` jelző használatával. Olyan tulajdonságokat is használhat, `iteration_timeout_minutes` mint `experiment_timeout_minutes` a és a a Futtatás maximális időtartamának szabályozására, vagy a teljes kísérletre.
+* Definiáljon egy nevű paramétert a `max_run_duration_seconds` RunConfiguration annak a maximális időtartamnak a szabályozására, ameddig a Futtatás kiterjeszthető a kiválasztott számítási lehetőségre (helyi vagy távoli Felhőbeli számítás).
+* A [hiperparaméter-hangoláshoz](how-to-tune-hyperparameters.md#early-termination)adjon meg egy korai megszakítási szabályzatot egy bandita-házirendből, egy középértékes leállítási házirendből vagy egy csonkolt kiválasztási szabályzatból. A hiperparaméter-lóversenyfogadások további szabályozásához használja a következő paramétereket: `max_total_runs` vagy `max_duration_minutes` .
+* Az [automatizált gépi tanuláshoz](how-to-configure-auto-train.md#exit)állítson be hasonló megszakítási házirendeket a `enable_early_stopping` jelző használatával. Olyan tulajdonságokat is használhat, mint a és a a `iteration_timeout_minutes` `experiment_timeout_minutes` Futtatás maximális időtartamának szabályozására, vagy a teljes kísérletre.
 
 ## <a name="use-low-priority-vms"></a>Alacsony prioritású virtuális gépek használata
 
@@ -117,7 +116,7 @@ Az alacsony prioritású virtuális gépek egyetlen kvótával rendelkeznek a de
 
 * A Studióban válassza az **alacsony prioritású** virtuális gép létrehozása lehetőséget.
 
-* A Python SDK-val állítsa be `vm_priority` az attribútumot a létesítési konfigurációban.  
+* A Python SDK-val állítsa be az `vm_priority` attribútumot a létesítési konfigurációban.  
 
     ```python
     compute_config = AmlCompute.provisioning_configuration(vm_size='STANDARD_D2_V2',
@@ -125,7 +124,7 @@ Az alacsony prioritású virtuális gépek egyetlen kvótával rendelkeznek a de
                                                                max_nodes=4)
     ```
 
-* A CLI használatával állítsa be a `vm-priority`következőket:
+* A CLI használatával állítsa be a `vm-priority` következőket:
 
     ```azurecli-interactive
     az ml computetarget create amlcompute --name lowpriocluster --vm-size Standard_NC6 --max-nodes 5 --vm-priority lowpriority

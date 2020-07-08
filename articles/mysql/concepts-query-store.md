@@ -7,10 +7,9 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 5/12/2020
 ms.openlocfilehash: b47ab44c5a5f8faad85b60032a6781475235a170
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83402236"
 ---
 # <a name="monitor-azure-database-for-mysql-performance-with-query-store"></a>A Azure Database for MySQL teljesítményének figyelése a lekérdezési tárolóval
@@ -89,7 +88,7 @@ A lekérdezési tároló paramétereinek konfigurálásához a következő beál
 
 | **Paraméter** | **Leírás** | **Alapértelmezett** | **Tartomány** |
 |---|---|---|---|
-| query_store_capture_mode | A lekérdezési tároló funkció be-és kikapcsolása az érték alapján. Megjegyzés: Ha a performance_schema ki van kapcsolva, a bekapcsolás query_store_capture_mode bekapcsolja performance_schema és a teljesítmény-séma eszközeinek egy részhalmazát, amely ehhez a szolgáltatáshoz szükséges. | AZ ÖSSZES | NINCS, AZ ÖSSZES |
+| query_store_capture_mode | A lekérdezési tároló funkció be-és kikapcsolása az érték alapján. Megjegyzés: Ha a performance_schema ki van kapcsolva, a bekapcsolás query_store_capture_mode bekapcsolja performance_schema és a teljesítmény-séma eszközeinek egy részhalmazát, amely ehhez a szolgáltatáshoz szükséges. | ALL | NINCS, AZ ÖSSZES |
 | query_store_capture_interval | A lekérdezési tár rögzítési időköze percben kifejezve. Lehetővé teszi a lekérdezési metrikák összesítésének intervallumának megadását | 15 | 5 - 60 |
 | query_store_capture_utility_queries | Be-és kikapcsolás a rendszeren futtatott összes segédprogram-lekérdezés rögzítéséhez. | NO | IGEN, NEM |
 | query_store_retention_period_in_days | A lekérdezési tárolóban tárolt adatmegőrzési idő (nap). | 7 | 1 - 30 |
@@ -116,7 +115,7 @@ A lekérdezések normalizálása úgy történik, hogy a konstansok és konstans
 
 Ez a nézet a lekérdezési tárolóban lévő összes adathalmazt adja vissza. Minden különböző adatbázis-AZONOSÍTÓhoz, felhasználói AZONOSÍTÓhoz és lekérdezési AZONOSÍTÓhoz egy sor van.
 
-| **Név** | **Adattípus** | **IS_NULLABLE** | **Leírás** |
+| **Name (Név)** | **Adattípus** | **IS_NULLABLE** | **Leírás** |
 |---|---|---|---|
 | `schema_name`| varchar (64) | NO | A séma neve |
 | `query_id`| bigint (20) | NO| Az adott lekérdezéshez generált egyedi azonosító, ha ugyanazt a lekérdezést különböző sémában hajtja végre, a rendszer új azonosítót fog generálni. |
@@ -149,7 +148,7 @@ Ez a nézet a lekérdezési tárolóban lévő összes adathalmazt adja vissza. 
 
 Ez a nézet visszaadja az események várakozási idejének értékét a lekérdezési tárolóban. Minden különböző adatbázis-AZONOSÍTÓhoz, felhasználói AZONOSÍTÓhoz, lekérdezési AZONOSÍTÓhoz és eseményhez egy sor van.
 
-| **Név**| **Adattípus** | **IS_NULLABLE** | **Leírás** |
+| **Name (Név)**| **Adattípus** | **IS_NULLABLE** | **Leírás** |
 |---|---|---|---|
 | `interval_start` | időbélyeg | NO| Az időköz kezdete (15 perces növekmény)|
 | `interval_end` | időbélyeg | NO| Az intervallum vége (15 perces növekmény)|
@@ -163,7 +162,7 @@ Ez a nézet visszaadja az események várakozási idejének értékét a lekérd
 
 ### <a name="functions"></a>Functions
 
-| **Név**| **Leírás** |
+| **Name (Név)**| **Leírás** |
 |---|---|
 | `mysql.az_purge_querystore_data(TIMESTAMP)` | A lekérdezési tár összes adatának kiürítése a megadott időbélyegző előtt |
 | `mysql.az_procedure_purge_querystore_event(TIMESTAMP)` | A várakozási esemény összes adatának törlése a megadott időbélyegző előtt |
