@@ -7,17 +7,16 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/01/2019
 ms.openlocfilehash: 6240b0813132f4a14dbe94b870774ebe7a0663aa
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83714576"
 ---
-# <a name="call-azure-functions-from-azure-logic-apps"></a>Azure functions hívása Azure Logic Apps
+# <a name="call-azure-functions-from-azure-logic-apps"></a>Azure-függvények meghívása az Azure Logic Appsből
 
-Ha olyan kódot szeretne futtatni, amely egy adott feladatot hajt végre a logikai alkalmazásokban, [Azure functions](../azure-functions/functions-overview.md)használatával létrehozhatja saját függvényét. Ez a szolgáltatás segít a Node. js, a C# és az F # függvények létrehozásában, így nem kell teljes alkalmazást vagy infrastruktúrát létrehoznia a kód futtatásához. [A Logic apps-t az Azure functions használatával is meghívhatja](#call-logic-app). A Azure Functions kiszolgáló nélküli számítástechnikai szolgáltatásokat biztosít a felhőben, és hasznos lehet olyan feladatok elvégzéséhez, mint például az alábbi példák:
+Ha olyan kódot szeretne futtatni, amely egy adott feladatot hajt végre a logikai alkalmazásokban, [Azure functions](../azure-functions/functions-overview.md)használatával létrehozhatja saját függvényét. Ez a szolgáltatás segít a Node.js-, C#- és F#-függvények létrehozásában, így nem kell teljes alkalmazást vagy infrastruktúrát létrehoznia a kód futtatásához. [A Logic apps-t az Azure functions használatával is meghívhatja](#call-logic-app). A Azure Functions kiszolgáló nélküli számítástechnikai szolgáltatásokat biztosít a felhőben, és hasznos lehet olyan feladatok elvégzéséhez, mint például az alábbi példák:
 
-* Kiterjesztheti a logikai alkalmazás viselkedését a Node. js-ben vagy a C#-ban található functions használatával.
+* A logikai alkalmazás viselkedését kiterjesztheti Node.js vagy C# függvényekkel.
 * Számítások végrehajtása a logikai alkalmazás munkafolyamatában.
 * Alkalmazzon speciális formázási vagy számítási mezőket a logikai alkalmazásokban.
 
@@ -125,7 +124,7 @@ Ahhoz azonban, hogy bármely Azure-függvényt létre lehessen hozni, már rende
 
    1. A **függvény neve** mezőben adja meg a függvény nevét.
 
-   1. A **Code (kód** ) mezőben adja hozzá a kódot a függvény sablonhoz, beleértve a logikai alkalmazásnak a működés befejezése után visszaadott válaszokat és hasznos adatokat. Amikor elkészült, válassza a **Létrehozás** lehetőséget.
+   1. A **Code (kód** ) mezőben adja hozzá a kódot a függvény sablonhoz, beleértve a logikai alkalmazásnak a működés befejezése után visszaadott válaszokat és hasznos adatokat. Ha elkészült, válassza a **Létrehozás** lehetőséget.
 
    Például:
 
@@ -200,7 +199,7 @@ Ha egy logikai alkalmazást egy Azure-függvényen belül szeretne elindítani, 
 
 ## <a name="enable-authentication-for-azure-functions"></a>Az Azure functions hitelesítésének engedélyezése
 
-Ha egyszerűen hitelesíteni szeretné a Azure Active Directory (Azure AD) által védett más erőforrásokhoz való hozzáférést anélkül, hogy be kellene jelentkeznie, és meg kell adnia a hitelesítő adatokat vagy a titkos kulcsokat, a logikai alkalmazás [felügyelt identitást](../active-directory/managed-identities-azure-resources/overview.md) (korábbi nevén Managed Service Identity vagy msi) is használhat. Az Azure kezeli ezt az identitást, és segít a hitelesítő adatok biztonságossá tételében, mert nem kell a titkokat megadnia vagy elforgatnia. További információ az Azure [AD-hitelesítés felügyelt identitásait támogató Azure-szolgáltatásokról](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
+Ha egyszerűen hitelesíteni szeretné a Azure Active Directory (Azure AD) által védett más erőforrásokhoz való hozzáférést anélkül, hogy be kellene jelentkeznie, és meg kell adnia a hitelesítő adatokat vagy a titkos kulcsokat, a logikai alkalmazás [felügyelt identitást](../active-directory/managed-identities-azure-resources/overview.md) (korábbi nevén Managed Service Identity vagy msi) is használhat. Az Azure kezeli Ön helyett ezt az identitást, és segít biztonságban tartani az Ön hitelesítő adatait, mivel így nincs szükség titkos kulcsok megadására és rendszeres módosítására. További információ az Azure [AD-hitelesítés felügyelt identitásait támogató Azure-szolgáltatásokról](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
 
 Ha úgy állítja be a logikai alkalmazást, hogy a rendszer által hozzárendelt identitást vagy manuálisan létrehozott, felhasználó által hozzárendelt identitást használja, akkor a logikai alkalmazásban található Azure-függvények ugyanezt az identitást is használhatják a hitelesítéshez. További információ a Logic apps Azure functions szolgáltatásának hitelesítés-támogatásáról: [hitelesítés hozzáadása a kimenő hívásokhoz](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
@@ -235,7 +234,7 @@ Ha a logikai alkalmazás felügyelt identitását szeretné használni az Azure-
 
 1. Nyissa meg a `function.json` fájlt szerkesztésre.
 
-   ![Kattintson a Szerkesztés elemre a "Function. JSON" fájlhoz](./media/logic-apps-azure-functions/edit-function-json-file.png)
+   ![Kattintson a Szerkesztés elemre a "function.json" fájlhoz](./media/logic-apps-azure-functions/edit-function-json-file.png)
 
 1. Az `bindings` objektumban győződjön meg arról, hogy a `authLevel` tulajdonság létezik. Ha a tulajdonság létezik, állítsa a tulajdonság értékét értékre `anonymous` . Ellenkező esetben adja hozzá ezt a tulajdonságot, és állítsa be az értéket.
 
@@ -312,6 +311,6 @@ Most már készen áll az Azure AD-hitelesítés beállítására a Function alk
 
 1. Térjen vissza a Logic app Designer szolgáltatáshoz, és kövesse a [lépéseket a felügyelt identitással való hozzáférés hitelesítéséhez](../logic-apps/create-managed-service-identity.md#authenticate-access-with-identity).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Tudnivalók az [Logic apps-összekötőről](../connectors/apis-list.md)

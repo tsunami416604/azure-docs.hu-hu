@@ -4,10 +4,9 @@ description: Gyakori kérdések a Application Insights.
 ms.topic: conceptual
 ms.date: 04/04/2017
 ms.openlocfilehash: 9ca5900bc9172b1f4ef9b1a7a660c6936ac38095
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83701945"
 ---
 # <a name="how-do-i--in-application-insights"></a>Hogyan tegyem... az Application Insights szolgáltatásban?
@@ -74,7 +73,7 @@ Néhány megfontolandó szempont:
 ## <a name="separate-telemetry-from-different-versions"></a>Különálló telemetria különböző verziókból
 
 * Több szerepkör egy alkalmazásban: használjon egyetlen Application Insights erőforrást, és szűrje a [cloud_Rolename](../../azure-monitor/app/app-map.md).
-* A fejlesztési, tesztelési és kiadási verziók elkülönítése: használjon különböző Application Insights erőforrásokat. Vegye fel a kialakítási kulcsokat a web. config fájlból. [További információ](../../azure-monitor/app/separate-resources.md)
+* A fejlesztési, tesztelési és kiadási verziók elkülönítése: használjon különböző Application Insights erőforrásokat. Vegye fel a rendszerállapot-kulcsokat a web.configból. [További információ](../../azure-monitor/app/separate-resources.md)
 * Jelentéskészítési Build verziók: adjon hozzá egy tulajdonságot egy telemetria inicializáló használatával. [További információ](../../azure-monitor/app/separate-resources.md)
 
 ## <a name="monitor-backend-servers-and-desktop-apps"></a>Háttérbeli kiszolgálók és asztali alkalmazások figyelése
@@ -118,7 +117,7 @@ Ha olyan felhasználók listáját szeretné megtekinteni, amelyeknek az inform�
 * Ha csak kis számú felhasználóval rendelkezik, küldjön egyéni eseményeket vagy metrikákat, a kamatot a metrika értékeként vagy az esemény neveként használja, és állítsa be a felhasználói azonosítót tulajdonságként. Az oldalletöltések elemzéséhez cserélje le a szokásos JavaScript trackPageView hívást. A kiszolgálóoldali telemetria elemzéséhez egy telemetria inicializáló használatával adja hozzá a felhasználói azonosítót az összes kiszolgáló telemetria. Ezután szűrheti és szegmentálhatja a mérőszámokat, és megkeresheti a felhasználói azonosítót.
 
 ## <a name="reduce-traffic-from-my-app-to-application-insights"></a>Az alkalmazásból a Application Insightsre irányuló forgalom csökkentése
-* A [ApplicationInsights. config fájlban](../../azure-monitor/app/configuration-with-applicationinsights-config.md)tiltsa le a nem szükséges modulokat, például a teljesítményszámláló gyűjtőjét.
+* A [ApplicationInsights.configban ](../../azure-monitor/app/configuration-with-applicationinsights-config.md)tiltsa le a nem szükséges modulokat, például a teljesítményszámláló gyűjtőjét.
 * [Mintavétel és szűrés](../../azure-monitor/app/api-filtering-sampling.md) használata az SDK-ban.
 * A weblapokon korlátozza az összes oldal nézethez jelentett Ajax-hívások számát. A parancsfájl-kódrészletbe `instrumentationKey:...` szúrja be a `,maxAjaxCallsPerView:3` következőt: (vagy egy megfelelő szám).
 * Ha a [TrackMetric](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric)-t használja, akkor az eredmény elküldése előtt számítsa ki a metrikai értékek kötegének összesítését. A TrackMetric () túlterhelést biztosít.
@@ -145,7 +144,7 @@ ASP.NET Core alkalmazásokhoz `TelemetryConfiguration` [ASP.net Core függőség
 ## <a name="disable-selected-standard-collectors"></a>Kiválasztott standard gyűjtők letiltása
 Letilthatja a standard gyűjtőket (például teljesítményszámlálók, HTTP-kérelmek vagy függőségek).
 
-* **ASP.NET-alkalmazások** – az [ApplicationInsights. config fájlban](../../azure-monitor/app/configuration-with-applicationinsights-config.md) található megfelelő sorok törlése vagy megjegyzése
+* **ASP.NET-alkalmazások** – az [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) megfelelő sorainak törlése vagy megjegyzése
 * **ASP.net Core alkalmazások** – kövesse a telemetria-modulok konfigurációs beállításait a [ApplicationInsights ASP.net Core](../../azure-monitor/app/asp-net-core.md#configuring-or-removing-default-telemetrymodules)
 
 ## <a name="view-system-performance-counters"></a>Rendszerteljesítmény-számlálók megtekintése

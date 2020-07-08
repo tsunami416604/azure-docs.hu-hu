@@ -8,12 +8,11 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: f7f460b01674359847427296e4526fc5771658f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 6c222ab15ba2ad2d06667b8549f4fb3e7cc8d216
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82191957"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037936"
 ---
 # <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Kernelek Jupyter notebookhoz Apache Spark-fürtökön az Azure HDInsight
 
@@ -59,20 +58,22 @@ Egy Apache Spark-fürt a HDInsight-ben. További útmutatásért lásd: [Apache 
 
     Ezért **nem** kell az alábbihoz hasonló utasításokat futtatnia a kontextusok beállításához:
 
-         sc = SparkContext('yarn-client')
-         sqlContext = HiveContext(sc)
+    ```sql
+    sc = SparkContext('yarn-client')
+    sqlContext = HiveContext(sc)
+    ```
 
     Ehelyett közvetlenül is használhatja az előre definiált kontextusokat az alkalmazásban.
 
-- **Cella-varázslatok**. A PySpark kernel néhány előre definiált "varázslatot" tartalmaz, amelyek olyan speciális parancsok, amelyeket meghívhat `%%` (például `%%MAGIC` `<args>`). A Magic parancsnak a kód első szava kell lennie, és több sornyi tartalmat is engedélyeznie kell. A bűvös szó csak a cella első szava lehet. A Magic, még a megjegyzések előtt bármit is megadhat, ami hibát okoz.     A Magics szolgáltatással kapcsolatos további információkért lásd [itt](https://ipython.readthedocs.org/en/stable/interactive/magics.html).
+- **Cella-varázslatok**. A PySpark kernel néhány előre definiált "varázslatot" tartalmaz, amelyek olyan speciális parancsok, amelyeket meghívhat `%%` (például `%%MAGIC` `<args>` ). A Magic parancsnak a kód első szava kell lennie, és több sornyi tartalmat is engedélyeznie kell. A bűvös szó csak a cella első szava lehet. A Magic, még a megjegyzések előtt bármit is megadhat, ami hibát okoz.     A Magics szolgáltatással kapcsolatos további információkért lásd [itt](https://ipython.readthedocs.org/en/stable/interactive/magics.html).
 
     A következő táblázat a kerneleken keresztül elérhető különböző varázslatokat sorolja fel.
 
-   | Magic | Példa | Leírás |
+   | Magic | Példa | Description |
    | --- | --- | --- |
    | segítség |`%%help` |Létrehoz egy táblázatot az összes elérhető varázslatról a példával és a leírással |
    | információ |`%%info` |A jelenlegi Livy-végponthoz tartozó munkamenet-információk kimenete |
-   | konfigurálása |`%%configure -f`<br>`{"executorMemory": "1000M"`,<br>`"executorCores": 4`} |Konfigurálja a munkamenetek létrehozásához szükséges paramétereket. A kényszerített jelző`-f`() megadása kötelező, ha már létrejött egy munkamenet, amely biztosítja a munkamenet eldobását és újbóli létrehozását. Tekintse meg az érvényes paraméterek listáját a [LIVY post/Sessions kérelem törzsében](https://github.com/cloudera/livy#request-body) . A paramétereket JSON-karakterláncként kell átadni, és a Magic után a következő sorban kell szerepelniük, ahogy az a példában látható oszlopban látható. |
+   | konfigurálása |`%%configure -f`<br>`{"executorMemory": "1000M"`,<br>`"executorCores": 4`} |Konfigurálja a munkamenetek létrehozásához szükséges paramétereket. A kényszerített jelző ( `-f` ) megadása kötelező, ha már létrejött egy munkamenet, amely biztosítja a munkamenet eldobását és újbóli létrehozását. Tekintse meg az érvényes paraméterek listáját a [LIVY post/Sessions kérelem törzsében](https://github.com/cloudera/livy#request-body) . A paramétereket JSON-karakterláncként kell átadni, és a Magic után a következő sorban kell szerepelniük, ahogy az a példában látható oszlopban látható. |
    | sql |`%%sql -o <variable name>`<br> `SHOW TABLES` |Struktúra-lekérdezést hajt végre a sqlContext. Ha a `-o` paramétert átadja, a lekérdezés eredménye a (z)%% helyi Python-kontextusban marad a [pandák](https://pandas.pydata.org/) dataframe. |
    | helyi |`%%local`<br>`a=1` |A későbbi sorokban lévő összes kód helyileg lesz végrehajtva. A kódnak érvényes Python2-kódnak kell lennie, függetlenül attól, hogy melyik kernelt használja. Tehát akkor is, ha a **PySpark3** vagy a **Spark** kernelt választotta a jegyzetfüzet létrehozásakor, ha a `%%local` magict egy cellában használja, akkor a cellának csak érvényes Python2-kóddal kell rendelkeznie. |
    | naplók |`%%logs` |Megjeleníti a naplókat az aktuális Livy-munkamenethez. |
@@ -80,7 +81,7 @@ Egy Apache Spark-fürt a HDInsight-ben. További útmutatásért lásd: [Apache 
    | tisztítás |`%%cleanup -f` |Törli az aktuális Livy-végpont összes munkamenetét, beleértve a jegyzetfüzetek munkamenetét is. A Force jelző-f megadása kötelező. |
 
    > [!NOTE]  
-   > A PySpark kernel által hozzáadott varázslatok mellett használhatja a [beépített IPython-varázslatokat](https://ipython.org/ipython-doc/3/interactive/magics.html#cell-magics)is, beleértve `%%sh`a következőt:. A `%%sh` Magic használatával parancsfájlokat és blokkokat futtathat a fürt átjárócsomóponthoz.
+   > A PySpark kernel által hozzáadott varázslatok mellett használhatja a [beépített IPython-varázslatokat](https://ipython.org/ipython-doc/3/interactive/magics.html#cell-magics)is, beleértve a következőt: `%%sh` . A `%%sh` Magic használatával parancsfájlokat és blokkokat futtathat a fürt átjárócsomóponthoz.
 
 - **Automatikus vizualizáció**. A Pyspark-kernel automatikusan megjeleníti a struktúra és az SQL-lekérdezések kimenetét. Számos különböző típusú vizualizáció közül választhat, például a tábla, a torta, a vonal, a terület és a sáv.
 
@@ -88,25 +89,27 @@ Egy Apache Spark-fürt a HDInsight-ben. További útmutatásért lásd: [Apache 
 
 A `%%sql` Magic különböző paramétereket támogat, amelyek segítségével szabályozhatja a lekérdezések futtatásakor kapott kimenet típusát. A következő táblázat felsorolja a kimenetet.
 
-| Paraméter | Példa | Leírás |
+| Paraméter | Példa | Description |
 | --- | --- | --- |
 | -o |`-o <VARIABLE NAME>` |Ezzel a paraméterrel megtarthatja a lekérdezés eredményét a (z)%% helyi Python kontextusban, [pandák](https://pandas.pydata.org/) dataframe. A dataframe változó neve a megadott név. |
-| -q |`-q` |Ezzel a paraméterrel kikapcsolhatja a cella vizualizációit. Ha nem szeretné megjeleníteni a cella tartalmát, és csak dataframe szeretné rögzíteni, használja `-q -o <VARIABLE>`a következőt:. Ha az eredmények rögzítése nélkül szeretné kikapcsolni a vizualizációkat (például egy SQL-lekérdezés, például egy `CREATE TABLE` utasítás futtatásához), használja `-q` az `-o` argumentum megadása nélkül. |
-| – m |`-m <METHOD>` |Ahol a **metódus** vagy a **Take** vagy a **Sample** (alapértelmezett **érték).** Ha a metódus értéke **`take`**, a kernel a MAXROWS által meghatározott eredmény-adathalmaz elejétől (a táblázat későbbi részében leírtak szerint) kiválasztja az elemeket. Ha a metódus **minta**, a kernel véletlenszerűen mintákat hoz `-r` létre az adatkészletből a paraméternek megfelelően, a következő táblázatban ismertetett módon. |
-| -r |`-r <FRACTION>` |Itt a **frakció** egy 0,0 és 1,0 közötti lebegőpontos szám. Ha az SQL `sample`-lekérdezés mintavételi módszere, akkor a kernel véletlenszerűen megkeresi az eredményhalmaz elemeinek megadott részét. Ha például SQL-lekérdezést futtat az argumentumokkal `-m sample -r 0.01`, akkor az eredmény sorainak 1%-a véletlenszerűen lett kiválasztva. |
+| -q |`-q` |Ezzel a paraméterrel kikapcsolhatja a cella vizualizációit. Ha nem szeretné megjeleníteni a cella tartalmát, és csak dataframe szeretné rögzíteni, használja a következőt: `-q -o <VARIABLE>` . Ha az eredmények rögzítése nélkül szeretné kikapcsolni a vizualizációkat (például egy SQL-lekérdezés, például egy utasítás futtatásához `CREATE TABLE` ), használja az `-q` argumentum megadása nélkül `-o` . |
+| – m |`-m <METHOD>` |Ahol a **metódus** vagy a **Take** vagy a **Sample** (alapértelmezett **érték).** Ha a metódus értéke **`take`** , a kernel a MAXROWS által meghatározott eredmény-adathalmaz elejétől (a táblázat későbbi részében leírtak szerint) kiválasztja az elemeket. Ha a metódus **minta**, a kernel véletlenszerűen mintákat hoz létre az adatkészletből a `-r` paraméternek megfelelően, a következő táblázatban ismertetett módon. |
+| -r |`-r <FRACTION>` |Itt a **frakció** egy 0,0 és 1,0 közötti lebegőpontos szám. Ha az SQL-lekérdezés mintavételi módszere `sample` , akkor a kernel véletlenszerűen megkeresi az eredményhalmaz elemeinek megadott részét. Ha például SQL-lekérdezést futtat az argumentumokkal `-m sample -r 0.01` , akkor az eredmény sorainak 1%-a véletlenszerűen lett kiválasztva. |
 | -n |`-n <MAXROWS>` |A **MAXROWS** egész érték. A kernel korlátozza az **MAXROWS**kimeneti sorok számát. Ha a **MAXROWS** negatív szám, például **-1**, akkor az eredményhalmaz sorainak száma nem korlátozott. |
 
-**Például**
+**Példa:**
 
-    %%sql -q -m sample -r 0.1 -n 500 -o query2
-    SELECT * FROM hivesampletable
+```sql
+%%sql -q -m sample -r 0.1 -n 500 -o query2
+SELECT * FROM hivesampletable
+```
 
 A fenti utasítás a következő műveleteket végzi el:
 
 - A **hivesampletable**összes rekordjának kijelölése.
 - Mivel a-q-t használjuk, kikapcsolja az autovizualizációt.
-- A használat `-m sample -r 0.1 -n 500`során véletlenszerűen mintákat vesz fel a hivesampletable sorainak 10%-ában, és az eredményhalmaz méretét 500 sorra korlátozza.
-- Végül, mivel használtuk `-o query2` , a kimenetet egy **query2**nevű dataframe menti.
+- A használat során `-m sample -r 0.1 -n 500` véletlenszerűen mintákat vesz fel a hivesampletable sorainak 10%-ában, és az eredményhalmaz méretét 500 sorra korlátozza.
+- Végül, mivel használtuk, `-o query2` a kimenetet egy **query2**nevű dataframe menti.
 
 ## <a name="considerations-while-using-the-new-kernels"></a>Az új kernelek használatának szempontjai
 
@@ -114,24 +117,26 @@ A használt kernelek, így a futtatott jegyzetfüzetek a fürt erőforrásait ha
 
 ## <a name="where-are-the-notebooks-stored"></a>Hol tárolódnak a jegyzetfüzetek?
 
-Ha a fürt az Azure Storage-t használja alapértelmezett Storage-fiókként, a rendszer a Jupyter-jegyzetfüzeteket a **/HdiNotebooks** mappa alatt menti a Storage-fiókba.  A Jupyter belül létrehozott jegyzetfüzetek, szövegfájlok és mappák elérhetők a Storage-fiókból.  Ha például a Jupyter használatával hoz létre egy mappát **`myfolder`** és egy jegyzetfüzet **MyFolder/mynotebook. ipynb**, a jegyzetfüzetet a Storage-fiókon `/HdiNotebooks/myfolder/mynotebook.ipynb` belül is elérheti.  A fordított érték szintén igaz, azaz ha közvetlenül a Storage `/HdiNotebooks/mynotebook1.ipynb`-fiókjába tölt fel egy jegyzetfüzetet, a jegyzetfüzet a Jupyter is látható.  A jegyzetfüzetek a fürt törlése után is a Storage-fiókban maradnak.
+Ha a fürt az Azure Storage-t használja alapértelmezett Storage-fiókként, a rendszer a Jupyter-jegyzetfüzeteket a **/HdiNotebooks** mappa alatt menti a Storage-fiókba.  A Jupyter belül létrehozott jegyzetfüzetek, szövegfájlok és mappák elérhetők a Storage-fiókból.  Ha például a Jupyter használatával hoz létre egy mappát **`myfolder`** és egy jegyzetfüzet **MyFolder/mynotebook. ipynb**, a jegyzetfüzetet `/HdiNotebooks/myfolder/mynotebook.ipynb` a Storage-fiókon belül is elérheti.  A fordított érték szintén igaz, azaz ha közvetlenül a Storage-fiókjába tölt fel egy jegyzetfüzetet `/HdiNotebooks/mynotebook1.ipynb` , a jegyzetfüzet a Jupyter is látható.  A jegyzetfüzetek a fürt törlése után is a Storage-fiókban maradnak.
 
 > [!NOTE]  
 > Az alapértelmezett tárolóval rendelkező Azure Data Lake Storage HDInsight-fürtök nem tárolnak jegyzetfüzeteket a társított tárolóban.
 
 A jegyzetfüzetek a Storage-fiókba való mentésének módja kompatibilis a [Apache HADOOP HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html). Ha a fürtbe SSH-t használ, használhatja a fájlkezelési parancsokat:
 
-    hdfs dfs -ls /HdiNotebooks                            # List everything at the root directory – everything in this directory is visible to Jupyter from the home page
-    hdfs dfs –copyToLocal /HdiNotebooks                   # Download the contents of the HdiNotebooks folder
-    hdfs dfs –copyFromLocal example.ipynb /HdiNotebooks   # Upload a notebook example.ipynb to the root folder so it's visible from Jupyter
+| Parancs | Description |
+|---------|-------------|
+| `hdfs dfs -ls /HdiNotebooks` | # Összes listázása a gyökérkönyvtárban – az ebben a könyvtárban található összes elem látható a Jupyter a kezdőlapon |
+| `hdfs dfs –copyToLocal /HdiNotebooks` | # A HdiNotebooks mappa tartalmának letöltése|
+| `hdfs dfs –copyFromLocal example.ipynb /HdiNotebooks` | # Töltsön fel egy jegyzetfüzetet, például a ipynb a gyökérkönyvtárba, hogy a Jupyter látható legyen. |
 
-Azt határozza meg, hogy a fürt az Azure Storage-t használja-e, vagy Azure Data Lake Storage alapértelmezett Storage-fiókként, a jegyzetfüzeteket a fürt átjárócsomóponthoz is menti a rendszer `/var/lib/jupyter`.
+Azt határozza meg, hogy a fürt az Azure Storage-t használja-e, vagy Azure Data Lake Storage alapértelmezett Storage-fiókként, a jegyzetfüzeteket a fürt átjárócsomóponthoz is menti a rendszer `/var/lib/jupyter` .
 
 ## <a name="supported-browser"></a>Támogatott böngésző
 
 A Spark HDInsight-fürtökön található Jupyter-jegyzetfüzetek csak a Google Chrome-ban támogatottak.
 
-## <a name="feedback"></a>Visszajelzés
+## <a name="suggestions"></a>Javaslatok
 
 Az új kernelek folyamatosan fejlődnek, és idővel kiforrnak. Így az API-k megváltozhatnak, mivel ezek a kernelek kiforrtak. Nagyra értékeljük az új kernelek használata során felmerülő visszajelzéseket. A visszajelzés hasznos lehet ezen kernelek végleges kiadásának alakításában. A megjegyzéseit/visszajelzéseit a cikk alján található **visszajelzések** szakaszban hagyhatja.
 

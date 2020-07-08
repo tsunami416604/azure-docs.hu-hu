@@ -13,13 +13,12 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 03/17/2020
 ms.openlocfilehash: 5d91fc0d5dd51ea5ef766f23519f38202b24a337
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84711306"
 ---
-# <a name="configure-an-existing-virtual-network-for-azure-sql-managed-instance"></a>Meglévő virtuális hálózat konfigurálása az Azure SQL felügyelt példányaihoz
+# <a name="configure-an-existing-virtual-network-for-azure-sql-managed-instance"></a>Meglévő virtuális hálózat konfigurálása felügyelt Azure SQL-példányhoz
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 Az Azure SQL felügyelt példányát egy Azure-beli [virtuális hálózaton](../../virtual-network/virtual-networks-overview.md) belül kell telepíteni, és csak a felügyelt példányok számára dedikált alhálózatot kell üzembe helyezni. A meglévő virtuális hálózatot és alhálózatot akkor használhatja, ha az [SQL felügyelt példányának virtuális hálózati követelményeinek](connectivity-architecture-overview.md#network-requirements)megfelelően vannak konfigurálva.

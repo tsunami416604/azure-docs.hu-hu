@@ -15,10 +15,9 @@ ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
 ms.openlocfilehash: dc23a0a68471b82c990d5d8a3086e2e71e88d0c8
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85513923"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-jobs-update-3-and-later"></a>Feladatok megtekintése és kezelése a StorSimple Eszközkezelő szolgáltatással (3. frissítés és újabb)
@@ -85,7 +84,7 @@ Egy futó feladat megszakításához hajtsa végre az alábbi lépéseket.
 
 3. Ha a rendszer megerősítést kér, kattintson az **Igen** gombra. Ez a feladat most meg lett szakítva.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Ismerje meg, hogyan [kezelheti a StorSimple biztonsági mentési szabályzatait](storsimple-8000-manage-backup-policies-u2.md).
 * Ismerje meg, hogyan kezelheti a [StorSimple-eszközt a StorSimple Eszközkezelő szolgáltatással](storsimple-8000-manager-service-administration.md).
 

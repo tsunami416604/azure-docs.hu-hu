@@ -8,12 +8,11 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/24/2019
-ms.openlocfilehash: 19cfd5d8ed4100048c270fb41e5e54a920c61516
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 9e29d91aa3b146a8aacdccec01b67506d5e45bb3
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75548836"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037919"
 ---
 # <a name="overview-of-apache-spark-structured-streaming"></a>Strukturált streaming Apache Spark áttekintése
 
@@ -62,53 +61,65 @@ Nem minden teljes üzemmódot használó lekérdezés fogja eredményezni, hogy 
 
 Egy egyszerű példa lekérdezés a hőmérséklet-beolvasásokat óránkénti Windows-alapú összesítéssel összegzi. Ebben az esetben a rendszer az Azure Storage-ban található JSON-fájlokban tárolja az adatfájlokat (a HDInsight-fürt alapértelmezett tárolóként van csatolva):
 
-    {"time":1469501107,"temp":"95"}
-    {"time":1469501147,"temp":"95"}
-    {"time":1469501202,"temp":"95"}
-    {"time":1469501219,"temp":"95"}
-    {"time":1469501225,"temp":"95"}
+```json
+{"time":1469501107,"temp":"95"}
+{"time":1469501147,"temp":"95"}
+{"time":1469501202,"temp":"95"}
+{"time":1469501219,"temp":"95"}
+{"time":1469501225,"temp":"95"}
+```
 
-Ezeket a JSON-fájlokat a HDInsight `temps` -fürt tárolója alatti almappában tárolja a rendszer.
+Ezeket a JSON-fájlokat a `temps` HDInsight-fürt tárolója alatti almappában tárolja a rendszer.
 
 ### <a name="define-the-input-source"></a>A bemeneti forrás megadása
 
 Először állítson be egy DataFrame, amely leírja az adatforrást, valamint a forrás által igényelt beállításokat. Ez a példa az Azure Storage-ban található JSON-fájlokból származik, és egy sémát alkalmaz rájuk olvasási időpontban.
 
-    import org.apache.spark.sql.types._
-    import org.apache.spark.sql.functions._
+```sql
+import org.apache.spark.sql.types._
+import org.apache.spark.sql.functions._
 
-    //Cluster-local path to the folder containing the JSON files
-    val inputPath = "/temps/" 
+//Cluster-local path to the folder containing the JSON files
+val inputPath = "/temps/" 
 
-    //Define the schema of the JSON files as having the "time" of type TimeStamp and the "temp" field of type String
-    val jsonSchema = new StructType().add("time", TimestampType).add("temp", StringType)
+//Define the schema of the JSON files as having the "time" of type TimeStamp and the "temp" field of type String
+val jsonSchema = new StructType().add("time", TimestampType).add("temp", StringType)
 
-    //Create a Streaming DataFrame by calling readStream and configuring it with the schema and path
-    val streamingInputDF = spark.readStream.schema(jsonSchema).json(inputPath) 
+//Create a Streaming DataFrame by calling readStream and configuring it with the schema and path
+val streamingInputDF = spark.readStream.schema(jsonSchema).json(inputPath)
+``` 
 
 #### <a name="apply-the-query"></a>A lekérdezés alkalmazása
 
 Ezután alkalmazzon egy olyan lekérdezést, amely a kívánt műveleteket tartalmazza a folyamatos átviteli DataFrame. Ebben az esetben egy összesítés csoportosítja az összes sort az 1 órás Windowsba, majd kiszámítja az 1 órás időszak minimális, átlagos és maximális hőmérsékletét.
 
-    val streamingAggDF = streamingInputDF.groupBy(window($"time", "1 hour")).agg(min($"temp"), avg($"temp"), max($"temp"))
+```sql
+val streamingAggDF = streamingInputDF.groupBy(window($"time", "1 hour")).agg(min($"temp"), avg($"temp"), max($"temp"))
+```
 
 ### <a name="define-the-output-sink"></a>A kimeneti fogadó megadása
 
 Ezután adja meg az egyes triggerek intervallumában az eredmények táblához hozzáadott sorok célját. Ebben a példában az összes sort egy memóriában lévő táblába `temps` helyezi, amelyet később a SparkSQL-sel lehet lekérdezni. A teljes kimeneti mód biztosítja, hogy minden Windows-sor minden alkalommal kimenetet végezzen.
 
-    val streamingOutDF = streamingAggDF.writeStream.format("memory").queryName("temps").outputMode("complete") 
+```sql
+val streamingOutDF = streamingAggDF.writeStream.format("memory").queryName("temps").outputMode("complete")
+``` 
 
 ### <a name="start-the-query"></a>A lekérdezés elindítása
 
 Indítsa el az adatfolyam-lekérdezést, és futtassa a parancsot, amíg meg nem érkezik a megszakítási jel.
 
-    val query = streamingOutDF.start()  
+```sql
+val query = streamingOutDF.start() 
+``` 
 
 ### <a name="view-the-results"></a>Eredmények megtekintése
 
 Amíg a lekérdezés fut, ugyanabban a SparkSession futtathat egy SparkSQL-lekérdezést azon a `temps` táblán, amelyen a lekérdezési eredményeket tárolják.
 
-    select * from temps
+```sql
+select * from temps
+```
 
 A lekérdezés a következőhöz hasonló eredményeket eredményez:
 

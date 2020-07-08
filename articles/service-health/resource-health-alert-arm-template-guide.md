@@ -4,13 +4,12 @@ description: Programozott módon hozhat létre riasztásokat, amelyek értesíti
 ms.topic: conceptual
 ms.date: 9/4/2018
 ms.openlocfilehash: 60ff5bdf2f4f0dab94c18fd7c751869c1893ad65
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81759016"
 ---
-# <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Erőforrás-állapotra vonatkozó riasztások konfigurálása Resource Manager-sablonok használatával
+# <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Resource Health-riasztások konfigurálása Resource Manager-sablonok használatával
 
 Ez a cikk bemutatja, hogyan hozhat létre Resource Health tevékenység-naplózási riasztásokat programozott módon Azure Resource Manager sablonok és Azure PowerShell használatával.
 
@@ -40,7 +39,7 @@ Az oldalon található utasítások követéséhez előre be kell állítania n�
 
         (Get-AzActionGroup -ResourceGroupName <resourceGroup> -Name <actionGroup>).Id
 
-3. Hozzon létre és mentsen egy Resource Manager-sablont a `resourcehealthalert.json` Resource Health riasztásokhoz ([lásd az alábbi részleteket](#resource-manager-template-options-for-resource-health-alerts))
+3. Hozzon létre és mentsen egy Resource Manager-sablont a Resource Health riasztásokhoz `resourcehealthalert.json` ([lásd az alábbi részleteket](#resource-manager-template-options-for-resource-health-alerts))
 
 4. Új Azure Resource Manager központi telepítés létrehozása a sablon használatával
 
@@ -192,12 +191,12 @@ Az előfizetés vagy az erőforráscsoport szintjén lévő riasztások különb
 },
 ```
 
-Itt a `anyOf` burkoló segítségével engedélyezheti, hogy az erőforrás-állapot riasztása megfeleljen az általunk megadott feltételeknek, ami lehetővé teszi, hogy a riasztások adott típusú erőforrásokra legyenek érvényesek.
+Itt a burkoló segítségével `anyOf` engedélyezheti, hogy az erőforrás-állapot riasztása megfeleljen az általunk megadott feltételeknek, ami lehetővé teszi, hogy a riasztások adott típusú erőforrásokra legyenek érvényesek.
 
 ### <a name="adjusting-the-resource-health-events-that-alert-you"></a>A Resource Health riasztási események módosítása
-Ha az erőforrások bekerülnek az állapotba, akkor a következő állapotot képviselő szakaszok egy sorozatán keresztül haladnak: `Active` `In Progress` `Updated`,, és `Resolved`.
+Ha az erőforrások bekerülnek az állapotba, akkor a következő állapotot képviselő szakaszok egy sorozatán keresztül haladnak:,, `Active` `In Progress` `Updated` és `Resolved` .
 
-Előfordulhat, hogy csak akkor szeretne értesítést kapni, ha egy erőforrás nem `status` `Active`megfelelő állapotba kerül, ebben az esetben a riasztást úgy kell konfigurálni, hogy csak akkor kapjon értesítést, ha a. Ha azonban más fázisokban is értesítést szeretne kapni, az alábbihoz hasonló adatokat is hozzáadhat:
+Előfordulhat, hogy csak akkor szeretne értesítést kapni, ha egy erőforrás nem megfelelő állapotba kerül, ebben az esetben a riasztást úgy kell konfigurálni, hogy csak akkor kapjon értesítést, ha a `status` `Active` . Ha azonban más fázisokban is értesítést szeretne kapni, az alábbihoz hasonló adatokat is hozzáadhat:
 
 ```json
 "condition": {
@@ -227,7 +226,7 @@ Előfordulhat, hogy csak akkor szeretne értesítést kapni, ha egy erőforrás 
 }
 ```
 
-Ha az állapotadatok mind a négy fázisa esetében értesítést szeretne kapni, ezt a feltételt egyszerre távolíthatja el, a riasztás pedig a `status` tulajdonságtól függetlenül értesíti Önt.
+Ha az állapotadatok mind a négy fázisa esetében értesítést szeretne kapni, ezt a feltételt egyszerre távolíthatja el, a riasztás pedig a tulajdonságtól függetlenül értesíti Önt `status` .
 
 > [!NOTE]
 > Minden "anyOf" szakasz csak egyetlen mezőtípus-értéket tartalmazhat.

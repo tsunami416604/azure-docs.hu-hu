@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.custom: sfrev
 ms.openlocfilehash: 6be9cbe77ef5e64659e56447d0a5b6be30b05272
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84324742"
 ---
 # <a name="certificate-management-in-service-fabric-clusters"></a>Tanúsítványkezelő Service Fabric-fürtökben
@@ -69,7 +68,7 @@ A fentiekben ismertetett első két lépés nagyrészt nem kapcsolódó. az egye
 
 Ezek a lépések az alábbi ábrán láthatók: Figyelje meg, hogy az ujjlenyomattal és a köznapi névvel deklarált tanúsítványok közötti különbségek kiépítve.
 
-*1. ábra.* Az ujjlenyomattal deklarált tanúsítványok kiállítása és kiépítési folyamata.
+*1\. ábra* Az ujjlenyomattal deklarált tanúsítványok kiállítása és kiépítési folyamata.
 ![Az ujjlenyomattal deklarált tanúsítványok kiépítés][Image1]
 
 *2. ábra.* A tanúsítvány kiállítása és kiépítési folyamata a tulajdonos köznapi neve szerint deklarálva.
