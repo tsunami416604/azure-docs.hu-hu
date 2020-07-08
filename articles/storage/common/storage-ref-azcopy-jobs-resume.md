@@ -9,10 +9,9 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: e143a5e82b817aaba37750a8cce08e3f74f0abc8
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84220023"
 ---
 # <a name="azcopy-jobs-resume"></a>azcopy jobs resume
@@ -34,7 +33,7 @@ azcopy jobs resume [jobID] [flags]
 
 ## <a name="options"></a>Beállítások
 
-|Beállítás|Leírás|
+|Beállítás|Description|
 |--|--|
 |--cél-sas-karakterlánc|Az adott JobId céljának cél SAS-je.|
 |– karakterlánc kizárása|Szűrő: a sikertelen átvitel (ek) kizárása a feladatok folytatásakor. A fájlokat ";" karakterrel kell elválasztani.|
@@ -44,7 +43,7 @@ azcopy jobs resume [jobID] [flags]
 
 ## <a name="options-inherited-from-parent-commands"></a>A szülő parancsoktól örökölt beállítások
 
-|Beállítás|Leírás|
+|Beállítás|Description|
 |---|---|
 |--Cap-Mbps UInt32|Az adatátviteli sebesség (megabit/másodperc). A pillanatnyi átviteli sebesség a korláttól némileg eltérő lehet. Ha a beállítás értéke nulla, vagy nincs megadva, az átviteli sebesség nem lesz maximális.|
 |--output-Type karakterlánc|A parancs kimenetének formátuma. A lehetőségek a következők: Text, JSON. Az alapértelmezett érték a "text".|

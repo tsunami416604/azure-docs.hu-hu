@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 04/14/2019
 ms.author: rajanaki
 ms.openlocfilehash: 6ba1568e5fb05954313f50e63364a2e475dfbab7
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84195277"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>A Hyper-V-ről az Azure-ba végzett replikáció és feladatátvétel hibaelhárítása
@@ -53,8 +52,8 @@ A kezdeti és a folyamatban lévő replikációval kapcsolatos problémákat a k
     - Ha a VMM-ben végzi a replikálást a környezetben, ellenőrizze, hogy a szolgáltatások futnak-e:
         - A Hyper-V gazdagépen győződjön meg arról, hogy fut a Virtuálisgép-kezelő szolgáltatás, a Microsoft Azure Recovery Services ügynök és a WMI-szolgáltató gazda szolgáltatása.
         - A VMM-kiszolgálón ellenőrizze, hogy fut-e a System Center Virtual Machine Manager szolgáltatás.
-4. Ellenőrizze a Hyper-V-kiszolgáló és az Azure közti kapcsolatot. A kapcsolat kereséséhez nyissa meg a Feladatkezelő eszközt a Hyper V-gazdagépen. A **teljesítmény** lapon kattintson a **erőforrás-figyelő megnyitása**lehetőségre. A **hálózat** lapon > a **hálózati tevékenységgel végzett folyamatot**, és győződjön meg arról, hogy a cbengine. exe aktívan küld-e nagy mennyiségű (MBS) adatokat.
-5. Ellenőrizze, hogy a Hyper-V-gazdagépek csatlakozni tudnak-e az Azure Storage-blob URL-címéhez. Jelölje be a **cbengine. exe fájlt**, és ellenőrizze, hogy a gazdagépek csatlakozhatnak-e. A **TCP-kapcsolatok** megtekintése a gazdagép és az Azure Storage blob közötti kapcsolat ellenőrzéséhez.
+4. Ellenőrizze a Hyper-V-kiszolgáló és az Azure közti kapcsolatot. A kapcsolat kereséséhez nyissa meg a Feladatkezelő eszközt a Hyper V-gazdagépen. A **teljesítmény** lapon kattintson a **erőforrás-figyelő megnyitása**lehetőségre. A **hálózat** lapon > **folyamat hálózati tevékenységgel**területen győződjön meg arról, hogy cbengine.exe aktívan küld-e nagy mennyiségű (MBS) adatokat.
+5. Ellenőrizze, hogy a Hyper-V-gazdagépek csatlakozni tudnak-e az Azure Storage-blob URL-címéhez. Ellenőrizze, hogy a gazdagépek csatlakozhatnak-e, majd jelölje be a **cbengine.exe**. A **TCP-kapcsolatok** megtekintése a gazdagép és az Azure Storage blob közötti kapcsolat ellenőrzéséhez.
 6. Tekintse át a teljesítménnyel kapcsolatos problémákat az alább leírtak szerint.
     
 ### <a name="performance-issues"></a>Teljesítményproblémák
@@ -135,7 +134,7 @@ Az alkalmazás-konzisztens pillanatkép a virtuális gépen belüli alkalmazása
 
 ### <a name="common-errors"></a>Gyakori hibák
 
-**Hibakód** | **Üzenetet** | **Részletek**
+**Hibakód** | **Üzenet** | **Részletek**
 --- | --- | ---
 **0x800700EA** | "A Hyper-V nem tudta létrehozni a VSS pillanatkép-készletet a virtuális géphez: további adatok érhetők el. (0x800700EA). A VSS-pillanatkép-készlet létrehozása sikertelen lehet, ha a biztonsági mentési művelet folyamatban van.<br/><br/> A virtuális gép replikálási művelete sikertelen volt: További információ érhető el. " | Ellenőrizze, hogy a virtuális gépen engedélyezve van-e a dinamikus lemez. Ez a funkció nem támogatott.
 **0x80070032** | "A Hyper-V Kötet árnyékmásolata kérelmező nem tudott kapcsolódni a (z) <./VMname> virtuális géphez, mert a verzió nem egyezik a Hyper-V által várt verzióval | Ellenőrizze, hogy telepítve vannak-e a legújabb Windows-frissítések.<br/><br/> [Frissítsen](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date) az integrációs szolgáltatások legújabb verziójára.

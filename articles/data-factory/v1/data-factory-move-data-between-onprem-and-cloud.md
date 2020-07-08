@@ -13,10 +13,9 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 7f07f08cd320d94495403b0f5ae65d60d8dc93b5
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84195985"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Adatáthelyezés a helyszíni források és a felhő között adatkezelés átjáróval
@@ -104,7 +103,7 @@ Ebben a lépésben a Azure Portal használatával hoz létre egy **ADFTutorialOn
 
     ![Átjáró – Konfigurálás lap](./media/data-factory-move-data-between-onprem-and-cloud/OnPremGatewayConfigureBlade.png)
 
-    Így a legegyszerűbb módszer (egy kattintással) az átjáró letöltésére, telepítésére, konfigurálására és regisztrálására egyetlen lépésben. Láthatja, hogy a **Microsoft adatkezelés Gateway Configuration Manager** alkalmazás telepítve van a számítógépen. A végrehajtható **ConfigManager. exe** fájlt a (z) **C:\Program Files\Microsoft adatkezelés Gateway\2.0\Shared**mappában is megtalálhatja.
+    Így a legegyszerűbb módszer (egy kattintással) az átjáró letöltésére, telepítésére, konfigurálására és regisztrálására egyetlen lépésben. Láthatja, hogy a **Microsoft adatkezelés Gateway Configuration Manager** alkalmazás telepítve van a számítógépen. A végrehajtható **ConfigManager.exe** a mappában is megtalálható: **C:\Program Files\Microsoft adatkezelés Gateway\2.0\Shared**.
 
     Az átjárót manuálisan is letöltheti és telepítheti az ezen a lapon található hivatkozások segítségével, és regisztrálhatja az **új kulcs** szövegmezőben látható kulccsal.
 
@@ -117,7 +116,7 @@ Ebben a lépésben a Azure Portal használatával hoz létre egy **ADFTutorialOn
 5. Várjon néhány percet, vagy várjon, amíg meg nem jelenik a következő értesítési üzenet:
 
     ![Az átjáró telepítése sikerült](./media/data-factory-move-data-between-onprem-and-cloud/gateway-install-success.png)
-6. Indítsa el **adatkezelés Gateway Configuration Manager** alkalmazást a számítógépen. A **Keresés** ablakban írja be **adatkezelés átjárót** a segédprogram eléréséhez. A végrehajtható **ConfigManager. exe** fájl a mappában is található: **C:\Program Files\Microsoft adatkezelés Gateway\2.0\Shared**
+6. Indítsa el **adatkezelés Gateway Configuration Manager** alkalmazást a számítógépen. A **Keresés** ablakban írja be **adatkezelés átjárót** a segédprogram eléréséhez. A végrehajtható **ConfigManager.exe** a mappában is megtalálható: **C:\Program Files\Microsoft adatkezelés Gateway\2.0\Shared**
 
     ![Átjáró Configuration Manager](./media/data-factory-move-data-between-onprem-and-cloud/OnPremDMGConfigurationManager.png)
 7. Ellenőrizze, hogy megjelenik-e az `adftutorialgateway is connected to the cloud service` üzenet. A Lenti állapotsor a **Cloud Service-hez csatlakozik,** és **zöld pipa jelzi**.
@@ -279,7 +278,7 @@ Ebben a lépésben olyan bemeneti és kimeneti adatkészleteket hoz létre, amel
    * a **folderPath** a **adftutorial/outfromonpremdf** értékre van állítva, ahol a outfromonpremdf a adftutorial tárolóban található mappa. Ha még nem létezik, hozza létre az **adftutorial** tárolót.
    * Az **availability** (rendelkezésre állás) paraméter **hourly** (óránként) értékre van állítva (a **frequency** (gyakoriság) paraméter **hour** (óra), az **interval** (időköz) paraméter pedig **1** értékre).  A Data Factory szolgáltatás minden órában létrehoz egy kimeneti adatszeletet az Azure SQL Database **EMP** táblájában.
 
-   Ha nem adja meg a **filename** paramétert a **kimeneti táblához**, a **folderPath** létrehozott fájlok a következő formátumban lesznek elnevezve: `Data.<Guid>.txt` (például::. 0a405f8a-93ff-4c6f-B3BE-f69616f1df7a. txt.).
+   Ha nem adja meg a **filename** paramétert a **kimeneti táblához**, a **folderPath** létrehozott fájlok a következő formátumban lesznek elnevezve: `Data.<Guid>.txt` (például: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.).
 
    Ha a **folderPath** és a **fileName** tulajdonságokat dinamikusan szeretné beállítani a **SliceStart** változó időpontja alapján, használja a partitionedBy tulajdonságot. A következő példában a folderPath tulajdonság a SliceStart (a feldolgozás alatt álló szelet kezdő időpontja) változó Év, Hónap és Nap értékeit, a fileName tulajdonság pedig a SliceStart változó Óra értékét használja. Ha például a szelet előállítása a 2014-10-20T08:00:00 időpontban kezdődik, a folderName tulajdonság beállítása wikidatagateway/wikisampledataout/2014/10/20, a fileName beállítása pedig 08.csv lesz.
 

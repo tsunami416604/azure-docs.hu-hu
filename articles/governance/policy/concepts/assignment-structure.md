@@ -4,10 +4,9 @@ description: Az Azure Policy által használt szabályzat-hozzárendelési defin
 ms.date: 04/15/2020
 ms.topic: conceptual
 ms.openlocfilehash: c9f400aa72508822f8fff2fe41fb17ce98339737
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84205041"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure Policy-hozzárendelés struktúrája
@@ -61,10 +60,10 @@ A **enforcementMode** tulajdonság lehetővé teszi a felhasználók számára, 
 
 Ennek a tulajdonságnak a következő értékei vannak:
 
-|Mód |JSON-érték |Típus |Szervizelés manuálisan |Tevékenység naplójának bejegyzése |Leírás |
+|Mód |JSON-érték |Típus |Szervizelés manuálisan |Tevékenység naplójának bejegyzése |Description |
 |-|-|-|-|-|-|
 |Engedélyezve |Alapértelmezett |sztring |Igen |Igen |A házirend hatása az erőforrás létrehozásakor vagy frissítésekor lép érvénybe. |
-|Letiltva |DoNotEnforce |sztring |Igen |Nem | A házirend-effektus nem kényszerített az erőforrás létrehozásakor vagy frissítésekor. |
+|Letiltva |DoNotEnforce |sztring |Yes |Nem | A házirend-effektus nem kényszerített az erőforrás létrehozásakor vagy frissítésekor. |
 
 Ha a **enforcementMode** nincs megadva házirend-vagy kezdeményezési definícióban, a rendszer az _alapértelmezett_ értéket használja. A [szervizelési feladatok](../how-to/remediate-resources.md) a [deployIfNotExists](./effects.md#deployifnotexists) házirendek esetében is elindíthatók, még akkor is, ha a **enforcementMode** beállítása _DoNotEnforce_.
 

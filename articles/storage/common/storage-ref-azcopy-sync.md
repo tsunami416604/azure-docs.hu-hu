@@ -9,10 +9,9 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: d4b43b590b147335a70877a7c3c0b07f8b818e3c
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84221063"
 ---
 # <a name="azcopy-sync"></a>azcopy sync
@@ -142,7 +141,7 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 
 **– kizárás – attribútumok** karakterlánca (csak Windows) kizárhatja azokat a fájlokat, amelyek attribútumai megegyeznek az attribútumok listájával. Például: A; S R
 
-**--kizárás – az elérési út** karakterlánca kizárja ezeket az elérési utakat másoláskor. Ez a beállítás nem támogatja a helyettesítő karaktereket (*). Ellenőrzi a relatív elérési út előtagját (például: myFolder; myFolder/subDirName/file. pdf). Ha a fiókhoz való bejárással együtt használja, az elérési utak nem tartalmazzák a tároló nevét.
+**--kizárás – az elérési út** karakterlánca kizárja ezeket az elérési utakat másoláskor. Ez a beállítás nem támogatja a helyettesítő karaktereket (*). Ellenőrzi a relatív elérési út előtagját (például: myFolder; myFolder/subDirName/file.pdf). Ha a fiókhoz való bejárással együtt használja, az elérési utak nem tartalmazzák a tároló nevét.
 
 **--kizárás-Pattern** karakterlánc zárja ki azokat a fájlokat, amelyeknek a neve megegyezik a minta listával. Például: \* . jpg; \* . PDF; exactName
 
@@ -160,7 +159,7 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 
 ## <a name="options-inherited-from-parent-commands"></a>A szülő parancsoktól örökölt beállítások
 
-|Beállítás|Leírás|
+|Beállítás|Description|
 |---|---|
 |--Cap-Mbps UInt32|Az adatátviteli sebesség (megabit/másodperc). A pillanatnyi átviteli sebesség a korláttól némileg eltérő lehet. Ha a beállítás értéke nulla, vagy nincs megadva, az átviteli sebesség nem lesz maximális.|
 |--output-Type karakterlánc|A parancs kimenetének formátuma. A lehetőségek a következők: Text, JSON. Az alapértelmezett érték a "text".|

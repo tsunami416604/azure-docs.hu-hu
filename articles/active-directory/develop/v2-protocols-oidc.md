@@ -14,10 +14,9 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 741e7a13513d571fbaabd17016b2282a860271cd
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84263278"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft Identity platform és OpenID Connect protokoll
@@ -43,7 +42,7 @@ Hitelesítésszolgáltató`https://login.microsoftonline.com/{tenant}/v2.0`
 
 A `{tenant}` négy érték egyikét is elvégezheti:
 
-| Érték | Leírás |
+| Érték | Description |
 | --- | --- |
 | `common` |Az Azure AD-ben személyes Microsoft-fiók és munkahelyi vagy iskolai fiókkal rendelkező felhasználók is bejelentkezhetnek az alkalmazásba. |
 | `organizations` |Csak az Azure AD-ből munkahelyi vagy iskolai fiókkal rendelkező felhasználók jelentkezhetnek be az alkalmazásba. |
@@ -116,7 +115,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &nonce=678910
 ```
 
-| Paraméter | Állapot | Leírás |
+| Paraméter | Állapot | Description |
 | --- | --- | --- |
 | `tenant` | Kötelező | A `{tenant}` kérelem elérési útjának értékét követve szabályozhatja, hogy ki jelentkezhet be az alkalmazásba. Az engedélyezett értékek:,, `common` `organizations` `consumers` és bérlői azonosítók. További információ: [protokoll alapjai](active-directory-v2-protocols.md#endpoints). |
 | `client_id` | Kötelező | Az alkalmazáshoz hozzárendelt [Azure Portal – Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) felhasználói felület **(ügyfél) azonosítója** . |
@@ -172,7 +171,7 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 A következő táblázat azokat a hibakódokat ismerteti, amelyeket a rendszer a `error` hiba válaszának paraméterében adhat vissza:
 
-| Hibakód | Leírás | Ügyfél művelete |
+| Hibakód | Description | Ügyfél művelete |
 | --- | --- | --- |
 | `invalid_request` | Protokollhiba, például hiányzó, kötelező paraméter. |Javítsa ki és küldje el újra a kérelmet. Ez egy olyan fejlesztési hiba, amelyet általában a kezdeti tesztelés során kapnak. |
 | `unauthorized_client` | Az ügyfélalkalmazás nem kérhet engedélyezési kódot. |Ez általában akkor fordul elő, ha az ügyfélalkalmazás nincs regisztrálva az Azure AD-ben, vagy nem kerül be a felhasználó Azure AD-bérlőbe. Az alkalmazás arra kéri a felhasználót, hogy telepítse az alkalmazást, és adja hozzá az Azure AD-hez. |
@@ -292,7 +291,7 @@ GET https://login.microsoftonline.com/common/oauth2/v2.0/logout?
 post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 ```
 
-| Paraméter | Állapot | Leírás |
+| Paraméter | Állapot | Description |
 | ----------------------- | ------------------------------- | ------------ |
 | `post_logout_redirect_uri` | Ajánlott | Az URL-cím, amelyet a felhasználó átirányított a sikeres kijelentkezés után. Ha a paraméter nincs feltüntetve, a felhasználó egy általános üzenetet jelenít meg, amelyet a Microsoft Identity platform végpontja generált. Ennek az URL-címnek meg kell egyeznie az alkalmazás regisztrációs portálján az alkalmazáshoz regisztrált átirányítási URI-k egyikével. |
 

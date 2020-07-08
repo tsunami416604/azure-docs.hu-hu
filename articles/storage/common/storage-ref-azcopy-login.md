@@ -9,10 +9,9 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: 8d2adca661882ea11d04ebe55afe25f7f9c2ef4e
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84219968"
 ---
 # <a name="azcopy-login"></a>azcopy login
@@ -99,7 +98,7 @@ azcopy login --service-principal --certificate-path /path/to/my/cert
 
 ## <a name="options"></a>Beállítások
 
-|Beállítás|Leírás|
+|Beállítás|Description|
 |--|--|
 |--HRE-végpont|A használandó Azure Active Directory végpont. Az alapértelmezett ( `https://login.microsoftonline.com` ) helyes a nyilvános Azure-felhőben. Adja meg ezt a paramétert a hitelesítéshez a nemzeti felhőben. Lásd: [Azure ad-hitelesítési végpontok](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints).
 Ez a jelző nem szükséges a Managed Service Identityhoz.|
@@ -115,7 +114,7 @@ Ez a jelző nem szükséges a Managed Service Identityhoz.|
 
 ## <a name="options-inherited-from-parent-commands"></a>A szülő parancsoktól örökölt beállítások
 
-|Beállítás|Leírás|
+|Beállítás|Description|
 |---|---|
 |--Cap-Mbps UInt32|Az adatátviteli sebesség (megabit/másodperc). A pillanatnyi átviteli sebesség a korláttól némileg eltérő lehet. Ha a beállítás értéke nulla, vagy nincs megadva, az átviteli sebesség nem lesz maximális.|
 |--output-Type karakterlánc|A parancs kimenetének formátuma. A lehetőségek a következők: Text, JSON. Az alapértelmezett érték a "text".|

@@ -8,10 +8,9 @@ ms.topic: how-to
 ms.date: 05/08/2020
 ms.author: buhollan
 ms.openlocfilehash: a7215790a7f052227b08f51dcd7ad5dd337bb4e9
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84259269"
 ---
 # <a name="set-up-local-development-for-azure-static-web-apps-preview"></a>Helyi fejlesztés beállítása az Azure statikus Web Apps előzetes verziójához
@@ -122,7 +121,7 @@ Az API-létrehozási folyamat részeként létrejön egy indítási konfiguráci
 
 ### <a name="debugging-the-api"></a>Az API hibakeresése
 
-1. Nyissa meg az _API/GetMessage/index. js_ fájlt a Visual Studio Code-ban.
+1. Nyissa meg az _API/GetMessage/index.js_ fájlt a Visual Studio Code-ban.
 
 1. A Töréspont beállításához kattintson a 2. sorban lévő bal oldali margóra. Megjelenik egy piros pont, amely azt jelzi, hogy a Töréspont be van állítva.
 

@@ -5,10 +5,9 @@ ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.openlocfilehash: 6225a7eb8198ffcca0d1e3e15f64e2b3c977dc16
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84248277"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Továbbfejlesztett biztonsági mentési és visszaállítási teljesítmény Azure Backup azonnali visszaállítási képességgel
@@ -28,12 +27,12 @@ Az azonnali visszaállítás új modellje a következő funkciókat biztosítja:
 
 ## <a name="whats-new-in-this-feature"></a>A szolgáltatás újdonságai
 
-A biztonsági mentési feladatok jelenleg két fázisból állnak:
+A biztonsági mentési feladat jelenleg két fázisból áll:
 
-1. A virtuális gép pillanatképének készítése.
-2. Virtuális gép pillanatképének továbbítása az Azure Recovery Services-tárba.
+1. A virtuális gép pillanatképének elkészítése.
+2. A virtuális gép pillanatképének átvitele az Azure Recovery Services-tárba.
 
-A helyreállítási pontok csak az 1. és 2. fázisok befejezése után tekinthetők meg. A frissítés részeként létrejön egy helyreállítási pont, amint a pillanatkép elkészült, és a pillanatkép-típus helyreállítási pontja ugyanazzal a visszaállítási folyamattal végezheti el a visszaállítást. Ezt a helyreállítási pontot a Azure Portal a helyreállítási pont típusaként a "pillanatkép" használatával azonosíthatja, és a pillanatkép a tárolóba való átvitele után a helyreállítási pont típusa a "Snapshot and Vault" értékre változik.
+A rendszer csak az 1. és 2. fázis elvégzése után tekinti befejezettnek a helyreállítási pont létrehozását. A frissítés részeként, a pillanatkép elkészítésekor létrejön egy helyreállítási pont. Ezzel a pillanatkép típusú helyreállítási ponttal visszaállítást lehet végezni, ugyanazzal a visszaállítási folyamattal. Ezt a helyreállítási pontot a Azure Portal a helyreállítási pont típusaként a "pillanatkép" használatával azonosíthatja, és a pillanatkép a tárolóba való átvitele után a helyreállítási pont típusa a "Snapshot and Vault" értékre változik.
 
 ![Biztonsági mentési feladatok a virtuális gépek biztonsági mentési verem Resource Manager-alapú üzemi modelljében – tárolás és tár](./media/backup-azure-vms/instant-rp-flow.png)
 

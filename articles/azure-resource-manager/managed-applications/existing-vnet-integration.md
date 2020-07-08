@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: tomfitz
 ms.openlocfilehash: fa5e59b96aada06c2dd486094d9be6a52c79e43e
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84261288"
 ---
 # <a name="use-existing-virtual-network-with-azure-managed-applications"></a>Meglévő virtuális hálózat használata Azure Managed Applications
@@ -18,7 +17,7 @@ Ez a cikk bemutatja, hogyan határozhat meg egy olyan Azure által felügyelt al
 
 ## <a name="main-template"></a>Fő sablon
 
-Először nézzük meg a **mainTemplate. JSON** fájlt. Alább látható a teljes sablon a virtuális gépek és a hozzájuk tartozó erőforrások üzembe helyezéséhez. Később alaposabban megvizsgálhatja a sablon azon részeit, amelyek a meglévő virtuális hálózatok használatával kapcsolatosak.
+Először nézzük meg a fájl **mainTemplate.jsét** . Alább látható a teljes sablon a virtuális gépek és a hozzájuk tartozó erőforrások üzembe helyezéséhez. Később alaposabban megvizsgálhatja a sablon azon részeit, amelyek a meglévő virtuális hálózatok használatával kapcsolatosak.
 
 :::code language="json" source="~/resourcemanager-templates/managed-app-existing-vnet/mainTemplate.json":::
 
@@ -38,7 +37,7 @@ A hálózati adapter az alhálózati azonosító változóra van beállítva.
 
 ## <a name="ui-definition"></a>Felhasználói felület definíciója
 
-Most nézzük meg a **createUiDefinition. JSON** fájlt. A teljes fájl:
+Most nézzük meg a fájl **createUiDefinition.js** . A teljes fájl:
 
 :::code language="json" source="~/resourcemanager-templates/managed-app-existing-vnet/createUiDefinition.json":::
 
@@ -59,4 +58,4 @@ A kimenetekben szerepel egy érték, amely jelzi, hogy a fogyasztó új vagy meg
 
 ## <a name="next-steps"></a>További lépések
 
-Ha többet szeretne megtudni a felhasználói felület definíciós fájljának létrehozásáról, tekintse meg a [CreateUiDefinition. JSON fájlt az Azure által felügyelt alkalmazás létrehozásának élményét](create-uidefinition-overview.md).
+Ha többet szeretne megtudni a felhasználói felület definíciós fájljának létrehozásáról, tekintse meg az [Azure felügyelt alkalmazás létrehozási felületénekCreateUiDefinition.jsát](create-uidefinition-overview.md)ismertető témakört.

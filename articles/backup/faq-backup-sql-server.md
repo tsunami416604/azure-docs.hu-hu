@@ -5,10 +5,9 @@ ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.openlocfilehash: 11657a5dda79fc550f4c07d4020d75c671335da4
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84248260"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Gyakori kérdések az Azure-beli virtuális gépek biztonsági mentését futtató SQL Server-adatbázisokról
@@ -32,8 +31,8 @@ Bizonyos körülmények között a Azure Backup szolgáltatás elindítja a jav�
 
 Automatikus gyógyulás, mivel a funkció alapértelmezés szerint engedélyezve van az összes felhasználó számára; Ha azonban úgy dönt, hogy kikapcsolja, akkor hajtsa végre az alábbi műveleteket:
 
-- A SQL Server példányon a *C:\Program Files\Azure munkaterhelés Backup\bin* mappában hozza létre vagy szerkessze a **ExtensionSettingsOverrides. JSON** fájlt.
-- A **ExtensionSettingsOverrides. JSON**fájlban állítsa be a *{"EnableAutoHealer": false}* értéket.
+- A SQL Server példányon a *C:\Program Files\Azure munkaterhelés Backup\bin* mappában hozza létre vagy szerkessze a fájlt a **ExtensionSettingsOverrides.js** .
+- A **ExtensionSettingsOverrides.jsa**(z) beállításnál állítsa be a (z) *{"EnableAutoHealer": false}* értéket.
 - Mentse a módosításokat, és zárjuk be a fájlt.
 - A SQL Server-példányon nyissa meg a **feladat kezelése** , majd a **AzureWLBackupCoordinatorSvc** szolgáltatás újraindítása műveletet.
 
@@ -41,8 +40,8 @@ Automatikus gyógyulás, mivel a funkció alapértelmezés szerint engedélyezve
 
 Igen. A biztonsági mentési házirend futási arányának szabályozásával csökkentheti a SQL Server-példányra gyakorolt hatást. A beállítás módosítása:
 
-1. A SQL Server-példányon, a *C:\Program Files\Azure munkaterhelés Backup\bin* mappában hozza létre a *ExtensionSettingsOverrides. JSON* fájlt.
-2. A *ExtensionSettingsOverrides. JSON* fájlban módosítsa a **DefaultBackupTasksThreshold** beállítást alacsonyabb értékre (például 5). <br>
+1. A SQL Server-példányon, a *C:\Program Files\Azure munkaterhelés Backup\bin* mappában hozza létre a *ExtensionSettingsOverrides.js* fájlt.
+2. A *ExtensionSettingsOverrides.js* fájlban módosítsa a **DefaultBackupTasksThreshold** beállítást alacsonyabb értékre (például 5). <br>
   `{"DefaultBackupTasksThreshold": 5}`
 <br>
 A DefaultBackupTasksThreshold alapértelmezett értéke **20**.

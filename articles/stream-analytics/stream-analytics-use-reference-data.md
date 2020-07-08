@@ -8,10 +8,9 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 5/11/2020
 ms.openlocfilehash: 8aae9a0ff3ffdbd4f6bc93db5c6f15dcb938080e
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84196425"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>A Stream Analytics-keresések hivatkozási adatainak használata
@@ -45,7 +44,7 @@ A hivatkozási adatok konfigurálásához először létre kell hoznia egy olyan
 |Tárfiók   | Annak a Storage-fióknak a neve, ahol a Blobok találhatók. Ha a Stream Analytics-feladatokkal megegyező előfizetésben szerepel, kiválaszthatja a legördülő menüből.   |
 |Storage-fiók kulcsa   | A Storage-fiókhoz társított titkos kulcs. Ezt automatikusan kitölti a rendszer, ha a Storage-fiók ugyanabban az előfizetésben van, mint a Stream Analytics-feladatokhoz.   |
 |Storage-tároló   | A tárolók logikai csoportosítást biztosítanak a Microsoft Azure Blob service tárolt blobokhoz. Amikor feltölt egy blobot a Blob serviceba, meg kell adnia egy tárolót a blobhoz.   |
-|Path Pattern (Elérésiút-minta)   | Ez egy kötelező tulajdonság, amely a Blobok a megadott tárolón belüli megkeresésére szolgál. Az elérési úton a következő két változó egy vagy több példányát is megadhatja:<BR>{Date}, {Time}<BR>1. példa: termékek/{Date}/{Time}/Product-list. csv<BR>2. példa: termékek/{Date}/Product-list. csv<BR>3. példa: Product-list. csv<BR><br> Ha a blob nem létezik a megadott elérési úton, a Stream Analytics-feladatot a blob elérhetővé válása határozatlan ideig megvárja.   |
+|Path Pattern (Elérésiút-minta)   | Ez egy kötelező tulajdonság, amely a Blobok a megadott tárolón belüli megkeresésére szolgál. Az elérési úton a következő két változó egy vagy több példányát is megadhatja:<BR>{Date}, {Time}<BR>1. példa: termékek/{Date}/{Time}/product-list.csv<BR>2. példa: termékek/{Date}/product-list.csv<BR>3. példa: product-list.csv<BR><br> Ha a blob nem létezik a megadott elérési úton, a Stream Analytics-feladatot a blob elérhetővé válása határozatlan ideig megvárja.   |
 |Dátumformátum [nem kötelező]   | Ha a megadott elérésiút-mintában a {Date} értéket használta, akkor kiválaszthatja azt a dátumformátum-formátumot, amelyben a Blobok a támogatott formátumok legördülő menüjéből vannak rendszerezve.<BR>Példa: éééé/hh/nn, hh/nn/éééé stb.   |
 |Időformátum [nem kötelező]   | Ha a megadott elérési úton a {Time} értéket használta, akkor kiválaszthatja azt az időformátumot, amelyben a Blobok a támogatott formátumok legördülő menüjéből vannak rendszerezve.<BR>Példa: HH, HH/hh vagy HH-mm.  |
 |Esemény szerializálási formátuma   | Annak biztosítása érdekében, hogy a lekérdezések a várt módon működjenek, Stream Analytics tudnia kell, hogy melyik szerializálási formátumot használja a bejövő adatfolyamok számára. A hivatkozási adatformátumok esetében a támogatott formátumok a CSV és a JSON.  |

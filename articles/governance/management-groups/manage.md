@@ -4,10 +4,9 @@ description: Útmutató a felügyeleti csoport hierarchiájának megtekintéséh
 ms.date: 04/15/2020
 ms.topic: conceptual
 ms.openlocfilehash: b60adbdf404f40739d6bcab7a0a3ceaf24c0b59f
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84259405"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Erőforrások kezelése felügyeleti csoportokkal

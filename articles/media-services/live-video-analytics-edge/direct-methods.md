@@ -4,10 +4,9 @@ description: A IoT Edge Live Video Analytics számos közvetlen módszert tesz e
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: b87452de6b12b0335afca5e28abb3ef6adb29157
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84261372"
 ---
 # <a name="direct-methods"></a>Közvetlen metódusok
@@ -98,7 +97,7 @@ Részletes érvényesítési hiba, például a Graph-modul érvényességi adata
 }
 ```
 
-|Állapot|    Részletes kód   |Leírás|
+|Állapot|    Részletes kód   |Description|
 |---|---|---|
 |400|   GraphValidationError|   Általános gráf-hibák, például ciklusok vagy particionálások stb.|
 |400|   ModuleValidationError|  Modul-specifikus érvényesítési hibák.|
@@ -142,7 +141,7 @@ Ez a közvetlen metódus egyetlen gráf topológiát kérdez le.
 
 |Állapot  |Állapotkód    |Részletes hibakód|
 |---|---|---|
-|Entitás található|  200 |N/A
+|Entitás található|  200 |N.A.
 |Általános felhasználói hibák    |400 tartomány  ||
 |Az entitás nem található   |404        ||
 |Általános kiszolgálói hibák| 500 tartomány       ||
@@ -193,8 +192,8 @@ Legfontosabb szempontok:
 
 |Állapot  |Állapotkód    |Részletes hibakód|
 |---|---|---|
-Meglévő entitás frissítve |200|   N/A|
-Új entitás létrehozva  |201|   N/A|
+Meglévő entitás frissítve |200|   N.A.|
+Új entitás létrehozva  |201|   N.A.|
 Általános felhasználói hibák |400 tartomány  ||
 Gráf-érvényesítési hibák |400    |GraphValidationError|
 Modul-ellenőrzési hibák|   400 |ModuleValidationError|
@@ -229,8 +228,8 @@ Egyetlen gráf topológiát töröl.
 
 |Állapot  |Állapotkód    |Részletes hibakód|
 |---|---|---|
-|Entitás törölve|    200|    N/A|
-|Az entitás nem található|  204|    N/A|
+|Entitás törölve|    200|    N.A.|
+|Az entitás nem található|  204|    N.A.|
 |Általános felhasználói hibák|   400 tartomány   ||
 |A Graph-topológiát egy vagy több gráf-példány hivatkozik| 409 |GraphTopologyInUse|
 |Általános kiszolgálói hibák| 500 tartomány   ||
@@ -287,7 +286,7 @@ A szűrési feltételeknek megfelelő gráf-topológiák listájának beolvasás
 
 |Állapot  |Állapotkód    |Részletes hibakód|
 |---|---|---|
-|Sikeres|   200 |N/A|
+|Sikeres|   200 |N.A.|
 |Általános felhasználói hibák|   400 tartomány   ||
 |Általános kiszolgálói hibák| 500 tartomány   ||
 
@@ -325,7 +324,7 @@ Egyetlen gráf-példányt kér le:
 
 |Állapot  |Állapotkód    |Részletes hibakód|
 |---|---|---|
-|Entitás található   |200|   N/A|
+|Entitás található   |200|   N.A.|
 |Általános felhasználói hibák|   400 tartomány   ||
 |Az entitás nem található|  404 ||
 |Általános kiszolgálói hibák| 500 tartomány   ||
@@ -375,8 +374,8 @@ Legfontosabb szempontok:
 
 |Állapot  |Állapotkód    |Részletes hibakód|
 |---|---|---|
-|Meglévő entitás frissítve    |200    |N/A|
-|Új entitás létrehozva|    201 |N/A|
+|Meglévő entitás frissítve    |200    |N.A.|
+|Új entitás létrehozva|    201 |N.A.|
 |Általános felhasználói hibák|   400 tartomány   ||
 |Gráf-érvényesítési hibák    |400|   GraphValidationError|
 |Modul-ellenőrzési hibák|  400 |ModuleValidationError|
@@ -416,8 +415,8 @@ Legfontosabb szempontok:
 
 |Állapot  |Állapotkód    |Részletes hibakód|
 |---|---|---|
-|A gráf törlése sikerült|    200|    N/A|
-|A gráf nem található|   204|    N/A|
+|A gráf törlése sikerült|    200|    N.A.|
+|A gráf nem található|   204|    N.A.|
 |Általános felhasználói hibák    |400 tartomány  ||
 |A gráf nem a "leállítva" állapotban van    |409    |OperationNotAllowedInState|
 |Általános kiszolgálói hibák| 500 tartomány   ||
@@ -474,7 +473,7 @@ Lekéri az összes olyan gráf-példány listáját, amely megfelel a szűrési 
 
 |Állapot  |Állapotkód    |Részletes hibakód|
 |---|---|---|
-|Sikeres    |200    |N/A|
+|Sikeres    |200    |N.A.|
 |Általános felhasználói hibák|   400 tartomány   ||
 |Általános kiszolgálói hibák| 500 tartomány   ||
 
@@ -518,8 +517,8 @@ Kulcsfontosságú szempontok
 
 |Állapot  |Állapotkód    |Részletes hibakód|
 |---|---|---|
-|A gráf sikeresen aktiválva   |200    |N/A|
-|Új entitás létrehozva |201|   N/A|
+|A gráf sikeresen aktiválva   |200    |N.A.|
+|Új entitás létrehozva |201|   N.A.|
 |Általános felhasználói hibák    |400 tartomány  ||
 |Modul-ellenőrzési hibák   |400|   ModuleValidationError|
 |Erőforrás-ellenőrzési hibák|    409|    ResourceValidationError|
@@ -567,12 +566,12 @@ Legfontosabb szempontok:
 
 |Állapot  |Állapotkód    |Részletes hibakód|
 |---|---|---|
-|A gráf sikeresen aktiválva   |200|   N/A|
-|Új entitás létrehozva |201|   N/A|
+|A gráf sikeresen aktiválva   |200|   N.A.|
+|Új entitás létrehozva |201|   N.A.|
 |Általános felhasználói hibák    |400 tartomány  ||
 |A gráf aktiváló állapotban van   |409|   OperationNotAllowedInState|
 |Általános kiszolgálói hibák  |500 tartomány  ||
 
 ## <a name="next-steps"></a>További lépések
 
-[Ikermodul konfigurációs sémája](module-twin-configuration-schema.md)
+[Modul – különálló konfigurációs séma](module-twin-configuration-schema.md)

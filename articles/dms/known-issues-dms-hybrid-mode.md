@@ -12,10 +12,9 @@ ms.custom: mvc
 ms.topic: article
 ms.date: 02/20/2020
 ms.openlocfilehash: 5347cda14773583bcfe92a702e59d4967ce2ea09
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84196276"
 ---
 # <a name="known-issuesmigration-limitations-with-using-hybrid-mode"></a>Ismert problémák/áttelepítési korlátozások hibrid mód használatával
@@ -24,7 +23,7 @@ Az Azure Database Migration Service hibrid módban való használatával kapcsol
 
 ## <a name="installer-fails-to-authenticate"></a>A telepítő nem tud hitelesíteni
 
-A tanúsítványnak a AdApp való feltöltése után néhány perc késéssel elvégezhető a hitelesítés az Azure-ban. A telepítő megkísérli az újrapróbálkozást némi késéssel, de lehetséges, hogy a terjesztési késleltetés hosszabb az újrapróbálkozásnál, és egy **FailedToGetAccessTokenException** üzenetet fog látni. Ha a tanúsítvány a megfelelő AdApp lett feltöltve, és a megfelelő AppId lett megadva a dmsSettings. JSON fájlban, próbálja meg újból futtatni a install parancsot.
+A tanúsítványnak a AdApp való feltöltése után néhány perc késéssel elvégezhető a hitelesítés az Azure-ban. A telepítő megkísérli az újrapróbálkozást némi késéssel, de lehetséges, hogy a terjesztési késleltetés hosszabb az újrapróbálkozásnál, és egy **FailedToGetAccessTokenException** üzenetet fog látni. Ha a tanúsítvány a megfelelő AdApp lett feltöltve, és a dmsSettings.jsa megfelelő AppId adta meg, akkor próbálja meg újból futtatni a install parancsot.
 
 ## <a name="service-offline-after-successful-installation"></a>"Offline" szolgáltatás a sikeres telepítés után
 
@@ -55,7 +54,7 @@ Ha a szolgáltatás offline állapotba kerül, miután a telepítési folyamat s
 
 ## <a name="using-your-own-signed-certificate"></a>Saját aláírt tanúsítvány használata
 
-A művelet GenerateCert által létrehozott tanúsítvány egy önaláírt tanúsítvány, amely nem fogadható el a belső biztonsági házirendek alapján. A tanúsítvány használata helyett megadhatja saját tanúsítványát, és megadhatja az ujjlenyomatot a dmsSettings. JSON fájlban. Ezt a tanúsítványt fel kell tölteni a AdApp, és telepítve kell lennie azon a számítógépen, amelyre a Azure Database Migration Service hibrid feldolgozót telepíti. Ezt követően telepítse a tanúsítványt a titkos kulccsal a helyi számítógép tanúsítványtárolóba.
+A művelet GenerateCert által létrehozott tanúsítvány egy önaláírt tanúsítvány, amely nem fogadható el a belső biztonsági házirendek alapján. A tanúsítvány használata helyett megadhatja saját tanúsítványát, és megadhatja az ujjlenyomatot a dmsSettings.js. Ezt a tanúsítványt fel kell tölteni a AdApp, és telepítve kell lennie azon a számítógépen, amelyre a Azure Database Migration Service hibrid feldolgozót telepíti. Ezt követően telepítse a tanúsítványt a titkos kulccsal a helyi számítógép tanúsítványtárolóba.
 
 ## <a name="running-the-worker-service-as-a-low-privilege-account"></a>A Worker szolgáltatás futtatása alacsony jogosultsági szintű fiókként
 

@@ -4,10 +4,9 @@ description: Ez a cikk ismerteti a metrikák figyelési költségeit, & a Azure 
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.openlocfilehash: a03e94fa7650c56a4d3b3beda3c27283329aebbe
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84204650"
 ---
 # <a name="understand-monitoring-costs-for-azure-monitor-for-containers"></a>A tárolók Azure Monitor figyelési költségeinek megismerése
@@ -110,7 +109,7 @@ Ha engedélyezte a következőképpen konfigurált AK-fürtök figyelését,
 
 A hozzárendelt Log Analytics munkaterületen megtekintheti az óránként generált táblákat és adatmennyiséget. További információ ezekről a táblákról: [tároló rekordjai](container-insights-log-search.md#container-records).
 
-|Tábla | Becsült méret (MB/óra) |
+|Táblázat | Becsült méret (MB/óra) |
 |------|---------------|
 |Teljesítmény | 12,9 |
 |InsightsMetrics | 11,3 |

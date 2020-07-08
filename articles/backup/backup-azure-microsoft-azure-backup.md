@@ -4,10 +4,9 @@ description: Ebből a cikkből megtudhatja, hogyan készítheti elő a környeze
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.openlocfilehash: 2cf6d88ad37ec1368e53c7213ea771c028a56643
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84247274"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Server telepítése és frissítése
@@ -147,7 +146,7 @@ A tárreplikációs beállítás szerkesztése:
 
 ### <a name="extracting-the-software-package"></a>A szoftvercsomag kibontása
 
-Miután letöltötte az összes fájlt, kattintson a **MicrosoftAzureBackupInstaller. exe**fájlra. Ekkor elindul a **Microsoft Azure Backup** telepítővarázsló, hogy kicsomagolja a telepítőfájlokat az Ön által megadott helyre. Folytassa a varázslót, és kattintson a **Kibontás** gombra a kinyerési folyamat megkezdéséhez.
+Az összes fájl letöltése után kattintson a **MicrosoftAzureBackupInstaller.exe**elemre. Ekkor elindul a **Microsoft Azure Backup** telepítővarázsló, hogy kicsomagolja a telepítőfájlokat az Ön által megadott helyre. Folytassa a varázslót, és kattintson a **Kibontás** gombra a kinyerési folyamat megkezdéséhez.
 
 > [!WARNING]
 > A telepítőfájlok kibontásához legalább 4 GB szabad terület szükséges.
@@ -156,7 +155,7 @@ Miután letöltötte az összes fájlt, kattintson a **MicrosoftAzureBackupInsta
 
 ![Microsoft Azure Backup telepítővarázslója](./media/backup-azure-microsoft-azure-backup/extract/03.png)
 
-Ha a kinyerési folyamat befejeződött, jelölje be a jelölőnégyzetet, hogy elindítsa a frissen kibontott *Setup. exe fájlt* a Microsoft Azure Backup kiszolgáló telepítésének megkezdéséhez, majd kattintson a **Befejezés** gombra.
+Miután a kinyerési folyamat befejeződött, jelölje be a jelölőnégyzetet a frissen kinyert *setup.exe* elindításához a Microsoft Azure Backup-kiszolgáló telepítésének megkezdéséhez, majd kattintson a **Befejezés** gombra.
 
 ### <a name="installing-the-software-package"></a>A szoftvercsomag telepítése
 

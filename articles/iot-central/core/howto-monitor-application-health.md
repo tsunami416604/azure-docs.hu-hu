@@ -8,10 +8,9 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 664819b209aeb09093ce8711456b86ff4d3e8949
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84249577"
 ---
 # <a name="monitor-the-overall-health-of-the-devices-connected-to-an-iot-central-application"></a>IoT Central alkalmazáshoz csatlakoztatott eszközök általános állapotának figyelése
@@ -43,7 +42,7 @@ A Azure Portal metrikáinak elérését az [Azure szerepköralapú hozzáférés
 
 A következő táblázat ismerteti a IoT Central jelenleg elérhető metrikákat:
 
-| Metrika | Metrika megjelenítendő neve | Unit (Egység) | Összesítés típusa | Leírás |
+| Metrika | Metrika megjelenítendő neve | Unit (Egység) | Összesítés típusa | Description |
 |--------|---------------------|------|------------------|-------------|
 | connectedDeviceCount         | Csatlakoztatott eszközök összesen                              | Darabszám  | Összesen             | IoT Centralhoz csatlakoztatott eszközök száma                               |
 | C2D. Property. Read. success    | Az eszköz tulajdonságainak olvasása IoT Central    | Darabszám  | Összesen             | Az IoT Centralról kezdeményezett sikeres tulajdonságok száma    |

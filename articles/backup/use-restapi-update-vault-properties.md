@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
 ms.openlocfilehash: eadcebdaf4db3dbe6c0a62b8631ff7d76fa50fad
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84248226"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>Az Azure Recovery Services-tároló konfigurációinak frissítése REST API használatával
@@ -43,7 +42,7 @@ GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 A "GET" művelet sikeres válasza alább látható:
 
-|Name  |Típus  |Leírás  |
+|Name  |Típus  |Description  |
 |---------|---------|---------|
 |200 OK     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | OK        |
 
@@ -83,7 +82,7 @@ A kérelem törzsének létrehozásához a következő általános definíciók 
 
 További részletekért tekintse meg [a REST API dokumentációját](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/update#request-body) .
 
-|Name  |Kötelező  |Típus  |Leírás  |
+|Name  |Kötelező  |Típus  |Description  |
 |---------|---------|---------|---------|
 |eTag     |         |   Sztring      |  Opcionális eTag       |
 |location     |  igaz       |Sztring         |   Erőforrás helye      |
@@ -107,7 +106,7 @@ A következő példa a helyreállítható törlési állapot frissítésére szo
 
 A "PATCH" művelet sikeres válasza alább látható:
 
-|Name  |Típus  |Leírás  |
+|Name  |Típus  |Description  |
 |---------|---------|---------|
 |200 OK     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | OK        |
 

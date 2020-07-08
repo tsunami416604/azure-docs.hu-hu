@@ -4,13 +4,12 @@ description: Ez a témakör a rögzítési szabályzat kezelését ismerteti.
 ms.topic: how-to
 ms.date: 04/27/2020
 ms.openlocfilehash: 321e68087bfe2a8b3e1354e49585a89f9d3af295
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84261316"
 ---
-# <a name="manage-recording-policy"></a>Rögzítési szabályzat kezelése
+# <a name="manage-recording-policy"></a>Felvételkészítési szabályzat kezelése
 
 Élő videó-elemzést használhat IoT Edge a [folyamatos videofelvételek rögzítéséhez](continuous-video-recording-concept.md), amelyekkel hetek vagy hónapok szerint rögzíthet videókat a felhőbe. A Felhőbeli Archívum hossza (nap) az Azure Storage-ba beépített életciklus- [kezelési eszközökkel](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal) kezelhető.  
 

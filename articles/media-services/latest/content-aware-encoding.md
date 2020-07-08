@@ -13,10 +13,9 @@ ms.date: 04/29/2020
 ms.author: juliako
 ms.custom: ''
 ms.openlocfilehash: 57a8d308955719be0d84b87fb3a23c6f510c2836
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84234899"
 ---
 # <a name="use-the-content-aware-encoding-preset-to-find-the-optimal-bitrate-value-for-a-given-resolution"></a>Az adott megoldás optimális bitráta-értékének megkereséséhez használja a Content-Aware kódolási beállításkészletet
@@ -85,4 +84,4 @@ TransformOutput[] output = new TransformOutput[]
 * [Oktatóanyag: távoli fájl kódolása URL-cím alapján és stream a videó – REST](stream-files-tutorial-with-rest.md)
 * [Oktatóanyag: távoli fájl kódolása URL-cím alapján és a videó továbbítása – parancssori felület](stream-files-cli-quickstart.md)
 * [Oktatóanyag: távoli fájl kódolása URL-cím alapján és stream a video-.NET](stream-files-dotnet-quickstart.md)
-* [Oktatóanyag: távoli fájl kódolása URL-cím alapján és stream a video-Node. js-hez](stream-files-nodejs-quickstart.md)
+* [Oktatóanyag: távoli fájl kódolása URL-cím alapján és stream a videón – Node.js](stream-files-nodejs-quickstart.md)

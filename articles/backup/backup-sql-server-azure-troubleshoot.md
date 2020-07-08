@@ -4,10 +4,9 @@ description: Hibaelhárítási információk az Azure-beli virtuális gépeken f
 ms.topic: troubleshooting
 ms.date: 06/18/2019
 ms.openlocfilehash: a4397f0bfa50990a7ad8080579261ed4587c4958
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84247954"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>SQL Server adatbázis biztonsági mentésének hibáinak megoldása Azure Backup használatával
@@ -50,9 +49,9 @@ Időnként véletlenszerű hibák fordulnak elő a biztonsági mentési és viss
 
 1. Zárja ki a virtuális gépen belül futó következő három folyamatot víruskereső vizsgálatból:
 
-    - IaasWLPluginSvc. exe
-    - IaasWorkloadCoordinaorService. exe
-    - TriggerExtensionJob. exe
+    - IaasWLPluginSvc.exe
+    - IaasWorkloadCoordinaorService.exe
+    - TriggerExtensionJob.exe
 
 1. Az SQL Emellett néhány útmutatót is biztosít a víruskereső programokkal való együttműködéshez. További részletekért tekintse meg [ezt a cikket](https://support.microsoft.com/help/309422/choosing-antivirus-software-for-computers-that-run-sql-server) .
 
@@ -60,7 +59,7 @@ Időnként véletlenszerű hibák fordulnak elő a biztonsági mentési és viss
 
 ### <a name="backup-type-unsupported"></a>A biztonsági mentés típusa nem támogatott
 
-| Severity | Leírás | Lehetséges okok | Javasolt művelet |
+| Severity | Description | Lehetséges okok | Javasolt művelet |
 |---|---|---|---|
 | Figyelmeztetés | Az adatbázis jelenlegi beállításai nem támogatják a társított szabályzatban található egyes biztonsági mentési típusokat. | <li>A Master adatbázison csak a teljes adatbázis biztonsági mentési művelete hajtható végre. Sem a különbözeti biztonsági mentés, sem a tranzakciós napló biztonsági mentése nem lehetséges. </li> <li>Az egyszerű helyreállítási modellben lévő adatbázisok nem teszik lehetővé a tranzakciónaplók biztonsági mentését.</li> | Módosítsa az adatbázis beállításait úgy, hogy a szabályzat összes biztonsági mentési típusa támogatott legyen. Vagy módosítsa a jelenlegi szabályzatot úgy, hogy csak a támogatott biztonsági mentési típusokat tartalmazza. Ellenkező esetben a rendszer kihagyja a nem támogatott biztonsági mentési típusokat az ütemezett biztonsági mentés során, vagy a biztonsági mentési feladat sikertelen lesz az igény szerinti biztonsági mentés során.
 

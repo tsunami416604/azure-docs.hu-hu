@@ -13,10 +13,9 @@ ms.date: 5/28/2020
 ms.author: inhenkel
 ms.custom: references_regions
 ms.openlocfilehash: cefd366e29fe1c6f68ec38816247f78bb53cd6e6
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84196236"
 ---
 # <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>Felhők és régiók, amelyekben Azure Media Services v3 létezik
@@ -25,7 +24,7 @@ A Azure Media Services v3 a globális Azure-ban, a Azure Government, az Azure Ge
 
 ## <a name="feature-availability-in-azure-clouds"></a>Funkciók elérhetősége az Azure-felhőkben
 
-| Funkció|Globális Azure-régiók | Azure Government|Azure Germany|Azure China 21Vianet|
+| Szolgáltatás|Globális Azure-régiók | Azure Government|Azure Germany|Azure China 21Vianet|
 | --- | --- | --- | --- | --- |
 | [Azure EventGrid](reacting-to-media-services-events.md) | Elérhető | Nem érhető el | Nem érhető el | Nem érhető el |
 | [VideoAnalyzerPreset](analyzing-video-audio-files-concept.md) |  Elérhető | Nem érhető el | Nem érhető el | Nem érhető el |

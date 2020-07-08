@@ -4,10 +4,9 @@ description: Megtudhatja, hogyan adhat hozzá áttelepítési eszközöket a Azu
 ms.topic: article
 ms.date: 04/26/2020
 ms.openlocfilehash: 670341adca7ab2958d43132aab164d7bba0f87d0
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84195826"
 ---
 # <a name="add-migration-tools"></a>Migrálási eszközök hozzáadása

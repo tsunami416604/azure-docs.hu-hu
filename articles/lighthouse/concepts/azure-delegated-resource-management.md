@@ -4,10 +4,9 @@ description: A felügyelt szolgáltatások lehetővé teszik a szolgáltatók sz
 ms.date: 05/28/2020
 ms.topic: conceptual
 ms.openlocfilehash: e6f741ccbf0d52e0859722aa304aa6c273fb5acf
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84219067"
 ---
 # <a name="azure-delegated-resource-management"></a>Az Azure által delegált erőforrás-kezelés

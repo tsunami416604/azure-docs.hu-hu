@@ -10,17 +10,16 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
 ms.openlocfilehash: 0ddd1544c6a51ff1e2f98a28e40d9eb2ee0b47c7
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84233278"
 ---
 # <a name="sql-database-dac-packages-in-sql-edge"></a>DAC-csomagok SQL Database az SQL Edge-ben
 
 Az Azure SQL Edge (előzetes verzió) egy optimalizált, a IoT és a peremhálózati környezetekben üzemelő üzemelő adatbázis motorja. Ez az Microsoft SQL Server adatbázismotor legújabb verziójára épül, amely piacvezető teljesítményt, biztonságot és lekérdezés-feldolgozási képességeket biztosít. Az Azure SQL Edge a SQL Server piacvezető, az adatbázis-kezelési képességeivel együtt biztosítja a valós idejű elemzési és összetett események feldolgozására szolgáló, beépített folyamatos átviteli képességet.
 
-Az Azure SQL Edge a SqlPackage. exe natív implementációját is biztosítja, amely lehetővé teszi, hogy [SQL Database DAC](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications) -csomagot helyezzen üzembe az SQL Edge üzembe helyezése során. A SQL Database dacpacs az SQL Edge-modulon keresztül elérhető SqlPackage paraméterrel is üzembe helyezhetők az SQL Edge-ben `module twin's desired properties` :
+Az Azure SQL Edge olyan SqlPackage.exe natív implementációját is biztosítja, amely lehetővé teszi egy [SQL Database DAC](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications) -csomag üzembe helyezését az SQL Edge üzembe helyezése során. A SQL Database dacpacs az SQL Edge-modulon keresztül elérhető SqlPackage paraméterrel is üzembe helyezhetők az SQL Edge-ben `module twin's desired properties` :
 
 ```json
 {
@@ -32,7 +31,7 @@ Az Azure SQL Edge a SqlPackage. exe natív implementációját is biztosítja, a
 }
 ```
 
-|Mező | Leírás |
+|Mező | Description |
 |------|-------------|
 | SqlPackage | Az SQL Database DAC-csomagot tartalmazó *. zip fájl Azure Blob Storage URI azonosítója.
 | ASAJobInfo | Az ASA Edge-feladatokhoz tartozó Azure Blob Storage URI-ja.

@@ -4,13 +4,12 @@ description: Ez a cikk útmutatást nyújt az éles környezetekben IoT Edge mod
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: a5a2ff78d456d4423facdf5f3533ee94bc25bfc4
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84261071"
 ---
-# <a name="production-readiness-and-best-practices"></a>Üzemi készültség és ajánlott eljárások
+# <a name="production-readiness-and-best-practices"></a>Termelési készenlét és ajánlott eljárások
 
 Ez a cikk útmutatást nyújt az éles környezetekben IoT Edge modul élő videós elemzésének konfigurálásához és üzembe helyezéséhez. Tekintse át a [felkészülés a IoT Edge megoldás éles környezetben való üzembe helyezését](https://docs.microsoft.com/azure/iot-edge/production-checklist) ismertető cikket is a IoT Edge megoldás előkészítéséhez. 
 
@@ -107,7 +106,7 @@ Ezután a központi telepítési jegyzékfájlban az Edge-modul létrehozási be
 
 Ha a rövid útmutatóhoz és az oktatóanyagokhoz, például a [folyamatos videofelvételek](continuous-video-recording-tutorial.md)megjelenítéséhez tekinti meg a minta adathordozó-diagramokat, vegye figyelembe, hogy a Media cache Directory (localMediaCachePath) a applicationDataDirectory alatti alkönyvtárat használja. Ez az ajánlott módszer, mivel a gyorsítótár átmeneti adattartalomot tartalmaz.
 
-### <a name="naming-video-assets-or-files"></a>Video-eszközök vagy-fájlok elnevezése
+### <a name="naming-video-assets-or-files"></a>Videóobjektumok vagy -fájlok elnevezése
 
 Az adathordozó-diagramok lehetővé teszik az eszközök Felhőbeli vagy MP4-fájlokban való létrehozását az Edge-ben. A média eszközei a [folyamatos videorögzítés](continuous-video-recording-tutorial.md) vagy az [eseményvezérelt videofelvételek](event-based-video-recording-tutorial.md)segítségével hozhatók létre. Habár ezek az eszközök és fájlok megtekinthetők a kívánt névvel, a folyamatos videofelvétel-alapú adathordozó javasolt elnevezési struktúrája a következő: " &lt; anytext &gt; -$ {System. GraphTopologyName}-$ {System. GraphInstanceName}". Például a következő módon állíthatja be a assetNamePattern az eszköz fogadóján:
 

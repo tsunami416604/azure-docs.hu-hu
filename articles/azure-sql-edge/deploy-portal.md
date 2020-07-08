@@ -10,10 +10,9 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
 ms.openlocfilehash: 43359b66ba747dba7b3294d022a2c1aa2a3e624c
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84233244"
 ---
 # <a name="deploy-azure-sql-edge-preview"></a>Az Azure SQL Edge üzembe helyezése (előzetes verzió) 
@@ -57,7 +56,7 @@ Az Azure Marketplace egy online alkalmazások és szolgáltatások piaca, ahol a
 
    |**Paraméter**  |**Leírás**|
    |---------|---------|
-   | Name (Név) | A modul neve. |
+   | Name | A modul neve. |
    |SA_PASSWORD  | Erős jelszót kell megadnia az SQL Edge rendszergazdai fiókjához. |
    |MSSQL_LCID   | Beállítja a SQL Server használandó nyelvi azonosítót. Például 1036 a francia. |
    |MSSQL_COLLATION | Beállítja SQL Server alapértelmezett rendezését. Ez a beállítás felülbírálja a nyelvi azonosító (LCID) alapértelmezett leképezését a rendezéshez. |

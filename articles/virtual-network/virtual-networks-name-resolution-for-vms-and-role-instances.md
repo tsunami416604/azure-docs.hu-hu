@@ -14,10 +14,9 @@ ms.date: 3/2/2020
 ms.author: rohink
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 32ef66c0a6d585e785fccb038a2b499c7f7f66db
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84204769"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure virtuális hálózatokon található erőforrások névfeloldása
@@ -47,8 +46,8 @@ A használt névfeloldási típus attól függ, hogy az erőforrásoknak hogyan 
 | Az egyik virtuális hálózatban található App Service Web Apps névfeloldása egy másik virtuális hálózatban lévő virtuális gépekre. |Az ügyfél által felügyelt DNS-kiszolgálók lekérdezést továbbítanak a virtuális hálózatok között az Azure (DNS-proxy) általi feloldáshoz. Lásd: [névfeloldás a saját DNS-kiszolgáló használatával](#name-resolution-that-uses-your-own-dns-server). |Csak FQDN |
 | A helyszíni számítógépek és szolgáltatások neveinek feloldása az Azure-beli virtuális gépek vagy szerepkör-példányok között. |Ügyfél által felügyelt DNS-kiszolgálók (helyszíni tartományvezérlő, helyi írásvédett tartományvezérlő vagy a zónaletöltés használatával szinkronizált másodlagos DNS-kiszolgáló). Lásd: [névfeloldás a saját DNS-kiszolgáló használatával](#name-resolution-that-uses-your-own-dns-server). |Csak FQDN |
 | Az Azure-beli állomásnevek feloldása a helyszíni számítógépekről. |Továbbítsa a lekérdezéseket egy ügyfél által felügyelt DNS-proxykiszolgálóhoz a megfelelő virtuális hálózatban, a proxykiszolgáló lekérdezéseket továbbít az Azure-nak a feloldáshoz. Lásd: [névfeloldás a saját DNS-kiszolgáló használatával](#name-resolution-that-uses-your-own-dns-server). |Csak FQDN |
-| Fordított DNS a belső IP-címekhez. |[Saját DNS-kiszolgálóval](#name-resolution-that-uses-your-own-dns-server) [Azure DNS saját zónák](../dns/private-dns-overview.md) vagy az [Azure által biztosított](#azure-provided-name-resolution) névfeloldás vagy névfeloldás. |Nem alkalmazható |
-| A különböző felhőalapú szolgáltatásokban található virtuális gépek vagy szerepkör-példányok közötti névfeloldás a virtuális hálózatban nem. |Nem alkalmazható. A virtuális hálózatokon kívül nem támogatott a virtuális gépek és a szerepkör-példányok közötti kapcsolat a különböző felhőalapú szolgáltatásokban. |Nem alkalmazható|
+| Fordított DNS a belső IP-címekhez. |[Saját DNS-kiszolgálóval](#name-resolution-that-uses-your-own-dns-server) [Azure DNS saját zónák](../dns/private-dns-overview.md) vagy az [Azure által biztosított](#azure-provided-name-resolution) névfeloldás vagy névfeloldás. |Nem értelmezhető |
+| A különböző felhőalapú szolgáltatásokban található virtuális gépek vagy szerepkör-példányok közötti névfeloldás a virtuális hálózatban nem. |Nem alkalmazható. A virtuális hálózatokon kívül nem támogatott a virtuális gépek és a szerepkör-példányok közötti kapcsolat a különböző felhőalapú szolgáltatásokban. |Nem értelmezhető|
 
 ## <a name="azure-provided-name-resolution"></a>Azure által biztosított névfeloldás
 

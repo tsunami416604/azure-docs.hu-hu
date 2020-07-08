@@ -4,10 +4,9 @@ description: Az Azure-beli virtuális gépek biztonsági mentését és helyreá
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.openlocfilehash: 4b869b24392fa597f752992fb65de46785117618
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84234710"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Azure-beli virtuális gépek biztonsági mentése és visszaállítása a PowerShell-lel
@@ -489,7 +488,7 @@ Adjon meg egy további paramétert, amely meghatározza, hogy a rendszer mely **
 $restorejob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "DestAccount" -StorageAccountResourceGroupName "DestRG" -TargetResourceGroupName "DestRGforManagedDisks" -VaultId $targetVault.ID
 ```
 
-A rendszer visszaállítja a **VMConfig. JSON** fájlt a Storage-fiókba, és a felügyelt lemezeket a rendszer visszaállítja a megadott cél RG-ra.
+A rendszer visszaállítja a fájlVMConfig.JSa Storage-fiókba, és a felügyelt lemezeket a rendszer visszaállítja a megadott cél RG- **ra** .
 
 A kimenet a következő példához hasonló:
 

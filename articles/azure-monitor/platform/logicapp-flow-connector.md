@@ -8,10 +8,9 @@ author: bwren
 ms.author: bwren
 ms.date: 03/13/2020
 ms.openlocfilehash: 193aa168cff436512dc2044d0986df508fd6bfa9
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84248736"
 ---
 # <a name="azure-monitor-logs-connector-for-logic-apps-and-flow"></a>Azure Monitor a naplók összekötőjét a Logic Apps és a flow számára
@@ -35,7 +34,7 @@ A következő táblázat ismerteti a Azure Monitor naplók összekötőhöz tart
 > A Azure Monitor naplók összekötő helyettesíti az [azure log Analytics-összekötőt](https://docs.microsoft.com/connectors/azureloganalytics/) és az [Azure Application Insights-összekötőt](https://docs.microsoft.com/connectors/applicationinsights/). Ez az összekötő ugyanazokat a funkciókat biztosítja, mint a többi, és az előnyben részesített módszer egy Log Analytics-munkaterületre vagy egy Application Insights alkalmazásra vonatkozó lekérdezés futtatásához.
 
 
-| Műveletek | Leírás |
+| Műveletek | Description |
 |:---|:---|
 | [Lekérdezési és listázási eredmények futtatása](https://docs.microsoft.com/connectors/azuremonitorlogs/#run-query-and-list-results) | Az egyes sorok visszaadása saját objektumként. Akkor használja ezt a műveletet, ha az egyes sorokat a munkafolyamat többi részén külön szeretné használni. A műveletet általában az [egyes tevékenységek esetében](../../logic-apps/logic-apps-control-flow-loops.md#foreach-loop)követi. |
 | [Lekérdezés futtatása és eredmények megjelenítése](https://docs.microsoft.com/connectors/azuremonitorlogs/#run-query-and-visualize-results) | Az eredményhalmaz összes sorát adja vissza egyetlen formázott objektumként. Akkor használja ezt a műveletet, ha az eredmény-készletet a munkafolyamat többi részén együtt szeretné használni, például az eredményeket egy levélben küldje el.  |

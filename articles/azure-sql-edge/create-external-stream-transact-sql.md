@@ -10,10 +10,9 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
 ms.openlocfilehash: 9e1f672a62ee7687fec9cea96ca03240c893ba95
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84233331"
 ---
 # <a name="create-external-stream-transact-sql"></a>KÜLSŐ STREAM létrehozása (Transact-SQL)
@@ -157,7 +156,7 @@ Paraméterek:
 - Kiszolgáló (SQL Databasehoz szükséges) 
 - Username (a SQL Databasehoz szükséges) 
 - Jelszó (SQL Databasehoz szükséges) 
-- Tábla 
+- Táblázat 
 - Egyesítse az összes bemeneti partíciót egyetlen írási vagy öröklési sémával az előző lekérdezési lépés vagy bemenet számára (SQL Database szükséges) 
 - Kötegek maximális száma 
 
@@ -421,7 +420,7 @@ Paraméterek:
 - Kiszolgáló 
 - Felhasználónév 
 - Jelszó 
-- Tábla 
+- Táblázat 
 - Átmeneti környezet (MÁSOLÁShoz) 
 
 Szintaxis:

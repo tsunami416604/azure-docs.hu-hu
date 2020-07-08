@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: dekapur
 ms.openlocfilehash: 8c1be30750e6a6d1c541f244c4d0c3875e7dd927
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84234698"
 ---
 # <a name="overview-of-service-fabric-clusters-on-azure"></a>Az Azure-beli Service Fabric-fürtök áttekintése
@@ -31,7 +30,7 @@ Az Azure-beli Service Fabric-fürtök olyan Azure-erőforrások, amelyek más Az
 ![Service Fabric fürt][Image]
 
 ### <a name="virtual-machine"></a>Virtuális gép
-A fürt részét képező [virtuális gépeket](/azure/virtual-machines/) a rendszer egy csomópontnak nevezi, azonban a fürtcsomópont egy Service Fabric futtatókörnyezeti folyamat. Minden csomóponthoz hozzá van rendelve egy csomópontnév (egy sztring). A csomópontok jellemzői, például [elhelyezési tulajdonságok](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints). Minden gépen vagy virtuális gépnek van egy automatikus indítási szolgáltatása, a *hálóbeli. exe*, amely indításkor elindul, majd elindítja a csomópontot alkotó két végrehajtható fájlt, a *Fabric. exe* és a *FabricGateway. exe*programot. Az éles üzembe helyezés fizikai vagy virtuális gépenként egy csomópont. Tesztelési forgatókönyvek esetén több csomópontot is tárolhat egyetlen gépen vagy virtuális gépen a *Fabric. exe* és a *FabricGateway. exe*több példányának futtatásával.
+A fürt részét képező [virtuális gépeket](/azure/virtual-machines/) a rendszer egy csomópontnak nevezi, azonban a fürtcsomópont egy Service Fabric futtatókörnyezeti folyamat. Minden csomóponthoz hozzá van rendelve egy csomópontnév (egy sztring). A csomópontok jellemzői, például [elhelyezési tulajdonságok](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints). Mindegyik gépen vagy virtuális gépen van egy automatikus indítási szolgáltatás, *FabricHost.exe*, amely indításkor elindul, majd elindítja a csomópontot alkotó két végrehajtható fájl, *Fabric.exe* és *FabricGateway.exe*. Az éles üzembe helyezés fizikai vagy virtuális gépenként egy csomópont. Tesztelési forgatókönyvek esetén több csomópontot is tárolhat egyetlen számítógépen vagy virtuális gépen a *Fabric.exe* és *FabricGateway.exe*több példányának futtatásával.
 
 Minden virtuális gép egy virtuális hálózati adapterrel (NIC) van társítva, és minden hálózati adapterhez magánhálózati IP-cím van hozzárendelve.  A virtuális gépeket a hálózati ADAPTERen keresztül egy virtuális hálózathoz és egy helyi Balancerhez rendeli a rendszer.
 

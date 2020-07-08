@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 83c3797cc3d9232f8589527285cc56c5cbff9a8a
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84221321"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Általános indexelő hibák és figyelmeztetések hibaelhárítása Az Azure Cognitive Search
@@ -34,7 +33,7 @@ Az API-verziótól kezdődően az `2019-05-06` elemszintű indexelő hibái és 
 
 | Tulajdonság | Leírás | Példa |
 | --- | --- | --- |
-| key | A hibát vagy figyelmeztetést érintő dokumentum AZONOSÍTÓját. | https: \/ /coromsearch.blob.Core.Windows.net/JFK-1k/docid-32112954.pdf |
+| kulcs | A hibát vagy figyelmeztetést érintő dokumentum AZONOSÍTÓját. | https: \/ /coromsearch.blob.core.windows.net/jfk-1k/docid-32112954.pdf |
 | name | Annak a műveletnek a neve, amelyben a hiba vagy a figyelmeztetés történt. Ezt a következő struktúra hozza létre: [category]. [Alkategória]. [resourceType]. ResourceName | DocumentExtraction. azureblob. myBlobContainerName alkoholtartalom-növelés. WebApiSkill. mySkillName vetítés. SearchIndex. OutputFieldMapping. myOutputFieldName vetítés. SearchIndex. MergeOrUpload. myIndexName vetítés. KnowledgeStore. table. myTableName |
 | message | A hiba vagy figyelmeztetés magas szintű leírása. | A képesség nem hajtható végre, mert a webes API-kérelem sikertelen volt. |
 | Részletek | További részletek, amelyek hasznosak lehetnek a probléma diagnosztizálásához, például a WebApi-válaszhoz, ha az egyéni képességet nem sikerült végrehajtani. | `link-cryptonyms-list - Error processing the request record : System.ArgumentNullException: Value cannot be null. Parameter name: source at System.Linq.Enumerable.All[TSource](IEnumerable`1 forrás, függvény `2 predicate) at Microsoft.CognitiveSearch.WebApiSkills.JfkWebApiSkills.` ... fennmaradó verem nyomkövetése... |

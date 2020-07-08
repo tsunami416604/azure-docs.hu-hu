@@ -4,10 +4,9 @@ description: A Azure Functions Alkalmazásbeállítások vagy környezeti válto
 ms.topic: conceptual
 ms.date: 09/22/2018
 ms.openlocfilehash: 5a0201eeed1678299ec16ff268062463b9c75e5c
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84235352"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions – alkalmazásbeállítási referencia
@@ -16,7 +15,7 @@ A Function alkalmazásban az Alkalmazásbeállítások olyan globális konfigur�
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 
-A [Host. JSON](functions-host-json.md) fájlban és a [Local. Settings. JSON](functions-run-local.md#local-settings-file) fájlban más globális konfigurációs lehetőségek is vannak.
+Más globális konfigurációs beállítások is találhatók a fájl [host.jsjában](functions-host-json.md) , a fájl [local.settings.js](functions-run-local.md#local-settings-file) pedig a fájlban.
 
 ## <a name="appinsights_instrumentationkey"></a>APPINSIGHTS_INSTRUMENTATIONKEY
 
@@ -40,7 +39,7 @@ A functions futtatókörnyezet 2. x vagy újabb verziójában a futásidejű kö
 
 ## <a name="azurefunctionsjobhost__"></a>AzureFunctionsJobHost__\*
 
-A functions futtatókörnyezet 2. x vagy újabb verziójában az Alkalmazásbeállítások felülbírálják a [gazdagép. JSON](functions-host-json.md) beállításait az aktuális környezetben. Ezek a felülbírálások az Alkalmazásbeállítások nevű alkalmazás-beállításokban vannak kifejezve `AzureFunctionsJobHost__path__to__setting` . További információ: a [Host. JSON értékek felülbírálása](functions-host-json.md#override-hostjson-values).
+A functions futtatókörnyezet 2. x vagy újabb verziójában az Alkalmazásbeállítások felülbírálják [host.js](functions-host-json.md) az aktuális környezet beállításainál. Ezek a felülbírálások az Alkalmazásbeállítások nevű alkalmazás-beállításokban vannak kifejezve `AzureFunctionsJobHost__path__to__setting` . További információ: [host.jsfelülbírálása az értékeken](functions-host-json.md#override-hostjson-values).
 
 ## <a name="azurewebjobsdashboard"></a>AzureWebJobsDashboard
 
@@ -87,7 +86,7 @@ Megadja a kulcstárolóhoz használandó tárházat vagy szolgáltatót. Jelenle
 
 |Kulcs|Mintaérték|
 |---|------------|
-|AzureWebJobsSecretStorageType|Fájlok|
+|AzureWebJobsSecretStorageType|Files|
 
 ## <a name="azurewebjobsstorage"></a>AzureWebJobsStorage
 
@@ -181,7 +180,7 @@ Azon példányok maximális száma, amelyeket a Function alkalmazás fel tud sk�
 ## <a name="website_node_default_version"></a>WEBHELY- \_ csomópont \_ DEFAULT_VERSION
 
 _Csak Windows._  
-Beállítja a Node. js azon verzióját, amelyet a Function alkalmazás Windows rendszeren való futtatásakor használ. Ha a futásidejű modult használja, használjon egy tilde (~) verziót a célként megadott főverzió legújabb elérhető verziójának használatára. Ha például a értékre `~10` van állítva, a rendszer a Node. js 10 legújabb verzióját használja. Ha egy főverziót egy tilde megcéloz, nem kell manuálisan frissítenie a másodlagos verziót. 
+A Function alkalmazás Windows rendszeren való futtatásakor használandó Node.js verzióját állítja be. Ha a futásidejű modult használja, használjon egy tilde (~) verziót a célként megadott főverzió legújabb elérhető verziójának használatára. Ha például a értékre `~10` van állítva, a rendszer a Node.js 10 legújabb verzióját használja. Ha egy főverziót egy tilde megcéloz, nem kell manuálisan frissítenie a másodlagos verziót. 
 
 |Kulcs|Mintaérték|
 |---|------------|
@@ -201,7 +200,7 @@ Az érvényes értékek egy URL-cím, amely feloldja a központi telepítési cs
 
 Alapértelmezés szerint a függvények proxyi olyan parancsikont használnak, amely az API-hívásokat közvetlenül az azonos függvényalkalmazás lévő függvények számára küldi el, nem pedig új HTTP-kérést hoz létre. Ezzel a beállítással letilthatja ezt a viselkedést.
 
-|Kulcs|Érték|Leírás|
+|Kulcs|Érték|Description|
 |-|-|-|
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|igaz|A helyi függvényalkalmazás függvényére mutató háttér-URL-címmel rendelkező hívások a továbbiakban nem lesznek közvetlenül a függvénynek elküldve, és helyette a függvényalkalmazás a HTTP-kezelőfelületre lesznek irányítva.|
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|hamis|Ez az alapértelmezett érték. A helyi függvényalkalmazás függvényére mutató háttérbeli URL-címmel rendelkező hívások közvetlenül erre a függvényre lesznek továbbítva|
@@ -211,14 +210,14 @@ Alapértelmezés szerint a függvények proxyi olyan parancsikont használnak, a
 
 Ezzel a beállítással megadható, hogy a (z)% 2F dekódolva van-e a háttérbeli URL-címekbe illesztett útvonal-paraméterekben. 
 
-|Kulcs|Érték|Leírás|
+|Kulcs|Érték|Description|
 |-|-|-|
 |AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|igaz|A kódolt perjelekkel ellátott útválasztási paraméterek dekódolva lesznek. `example.com/api%2ftest`lesz`example.com/api/test`|
 |AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|hamis|Ez az alapértelmezett viselkedés. A rendszer az összes útvonal paraméterét változatlanul adja át|
 
 ### <a name="example"></a>Példa
 
-Íme egy példa a proxys. JSON fájlra az URL-myfunction.com található Function alkalmazásban.
+Íme egy példa proxies.jsa myfunction.com URL-címen található Function alkalmazásban
 
 ```JSON
 {
@@ -243,6 +242,6 @@ Ezzel a beállítással megadható, hogy a (z)% 2F dekódolva van-e a háttérbe
 
 [Ismerje meg, hogyan frissítheti az alkalmazás beállításait](functions-how-to-use-azure-function-app-settings.md#settings)
 
-[Lásd: globális beállítások a Host. JSON fájlban](functions-host-json.md)
+[Lásd: a fájl host.jsjának globális beállításai](functions-host-json.md)
 
 [További Alkalmazásbeállítások App Service alkalmazásokhoz](https://github.com/projectkudu/kudu/wiki/Configurable-settings)

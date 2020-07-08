@@ -14,10 +14,9 @@ ms.date: 04/29/2020
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 04706de4b1cc18a4f3146f75442de84340319cef
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84220166"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>Videó és hang kódolása Media Services
@@ -60,7 +59,7 @@ Amikor feladatokat küld a videók feldolgozásához, meg kell tudnia Media Serv
 * [Kódolás HTTPS-alapú URL-címről a .NET-tel](stream-files-dotnet-quickstart.md)
 * [Kódolás HTTPS URL-címről a REST használatával](stream-files-tutorial-with-rest.md)
 * [Kódolás HTTPS URL-címről a parancssori felületről](stream-files-cli-quickstart.md)
-* [Kódolás HTTPS URL-címről a Node. js használatával](stream-files-nodejs-quickstart.md)
+* [Kódolás HTTPS URL-címről Node.js](stream-files-nodejs-quickstart.md)
 
 ### <a name="creating-job-input-from-a-local-file"></a>Feladathoz tartozó bemenet létrehozása helyi fájlból
 

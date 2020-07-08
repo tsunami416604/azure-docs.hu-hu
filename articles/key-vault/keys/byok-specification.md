@@ -11,13 +11,12 @@ ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: ambapat
 ms.openlocfilehash: 80796d852c07952b7100c6dd7802bc9279f3218c
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84198999"
 ---
-# <a name="bring-your-own-key-specification"></a>Saját kulcs specifikációjának megadása
+# <a name="bring-your-own-key-specification"></a>Saját kulcs használatának specifikációja
 
 Ez a dokumentum ismerteti a HSM-védelemmel ellátott kulcsok az ügyfelek helyszíni HSM a Key Vaultba való importálásának specifikációit.
 
@@ -31,7 +30,7 @@ A követelmények a következők:
 
 ## <a name="terminology"></a>Terminológia
 
-|Kulcs neve|Kulcs típusa|Forrás|Leírás|
+|Kulcs neve|Kulcs típusa|Forrás|Description|
 |---|---|---|---|
 |Key Exchange-kulcs (KEK)|RSA|Azure Key Vault HSM|HSM-es biztonsági másolattal rendelkező RSA-kulcspár, amely Azure Key Vaultban lett létrehozva
 Becsomagolási kulcs|AES|Szállítói HSM|Egy [ideiglenes] AES-kulcs, amely a HSM-on keresztül lett létrehozva

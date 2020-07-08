@@ -7,10 +7,9 @@ ms.date: 10/09/2019
 ms.author: dastrebe
 zone_pivot_groups: client-operating-system
 ms.openlocfilehash: ef77037526beba1be2e4e8a834dbd09c8a73310c
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84197234"
 ---
 # <a name="install-and-use-consul-in-azure-kubernetes-service-aks"></a>A konzul telepítése és használata az Azure Kubernetes szolgáltatásban (ak)

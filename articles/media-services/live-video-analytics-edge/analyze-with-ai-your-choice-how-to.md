@@ -4,13 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan hozhat létre olyan IoT Edge 
 ms.topic: how-to
 ms.date: 04/27/2020
 ms.openlocfilehash: 0ac2af280eefd5ce293a8be422551d5ee6f6d3f3
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84261260"
 ---
-# <a name="analyze-live-video-with-ai-of-your-choice"></a>Élő videó elemzése az Ön által választott AI-vel
+# <a name="analyze-live-video-with-ai-of-your-choice"></a>Élő videó elemzése tetszőleges mesterséges intelligenciával
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre olyan IoT Edge modult, amely integrálható az élő videók elemzésével IoT Edge az élő videók elemzéséhez egy tetszőleges számítógépes látási modell használatával. 
 

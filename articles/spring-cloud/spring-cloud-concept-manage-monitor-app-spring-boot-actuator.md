@@ -1,5 +1,5 @@
 ---
-title: Alkalmazás kezelése és figyelése az Azure Spring boot indítószerkezettel
+title: Alkalmazás kezelése és monitorozása az Azure Spring Boot Actuatorrel
 description: Ismerje meg, hogyan kezelheti és figyelheti az alkalmazást a Spring boot indítószerkezettel.
 author: MikeDodaro
 ms.author: brendm
@@ -7,13 +7,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.openlocfilehash: e932930e43e6131e8e1e82fe2f42246c967a19fe
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84206008"
 ---
-# <a name="manage-and-monitor-app-with-azure-spring-boot-actuator"></a>Alkalmazás kezelése és figyelése az Azure Spring boot indítószerkezettel
+# <a name="manage-and-monitor-app-with-azure-spring-boot-actuator"></a>Alkalmazás kezelése és monitorozása az Azure Spring Boot Actuatorrel
 
 Miután telepítette az új bináris alkalmazást az alkalmazásba, érdemes megtekinteni a funkciót, és megtekintheti a futó alkalmazással kapcsolatos információkat. Ez a cikk azt ismerteti, hogyan érheti el az API-t egy Azure Spring Cloud által biztosított tesztelési végpontból, és elérhetővé teheti az alkalmazás éles használatra kész funkcióit.
 

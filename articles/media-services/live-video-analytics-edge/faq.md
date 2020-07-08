@@ -4,10 +4,9 @@ description: Ez a témakör válaszokat ad az élő videók elemzésére IoT Edg
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: 0a6c1c0f26116227454fa0968264644ea7a43178
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84261323"
 ---
 # <a name="frequently-asked-questions-faqs"></a>Gyakori kérdések (GYIK)
@@ -18,7 +17,7 @@ Ez a témakör válaszokat ad az élő videók elemzésére IoT Edge GYIK-ben.
 
 Mik azok a rendszerváltozók, amelyek használhatók a Graph topológia definíciójában?
 
-|Változó   |Leírás|
+|Változó   |Description|
 |---|---|
 |[System. DateTime](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/linq/system-datetime-methods)|Egy azonnali időpontot jelöl, amely általában dátum és napszak szerint van megadva.|
 |System. GraphTopologyName   |Egy Graph-topológiát jelöl, amely egy gráf tervrajzát tartalmazza.|
@@ -31,17 +30,17 @@ Telepíthetem a Media Edge-modult egy Windows 10-es eszközre?
 
 ## <a name="capture-from-ip-camera-and-rtsp-settings"></a>Rögzítés az IP-kamera és az RTSP-beállítások alapján
 
-* Kell-e egy speciális SDK-t használni az eszközön egy videó streamben való küldéshez?
+* Speciális SDK-t kell használnom az eszközömön videóstream küldéséhez?
     * Nem. A IoT Edge Live Video Analytics támogatja az adathordozók rögzítését az RTSP Video Streaming Protocol használatával (amely a legtöbb IP-kamera esetében támogatott).
 * Leküldhetem a médiát a IoT Edge az RTMP vagy a Smooth (például egy Media Services élő esemény) használatával élő video Analyticsre?
     * Nem. A LVA csak az RTSP-t támogatja a videók IP-kamerákból való rögzítéséhez.
     * Minden olyan kamera, amely támogatja a TCP/HTTP protokollon keresztüli RTSP-átvitelt, működnie kell. 
-* Alaphelyzetbe állíthatom vagy frissíthetem az RTSP-forrás URL-címét egy Graph-példányon?
+* Alaphelyzetbe állíthatom vagy frissíthetem az RTSP-forrás URL-címét egy grafikonpéldányon?
     * Igen, ha a Graph-példány inaktív állapotban van.  
 * Van elérhető RTSP-szimulátor a tesztelés és a fejlesztés során?
-    * Igen. A gyors üzembe helyezési útmutatóban egy [RTSP szimulátor](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) Edge-modul használható, amely támogatja a tanulási folyamatot. Ez a modul a legjobb megoldás, és előfordulhat, hogy nem mindig érhető el. Javasoljuk, hogy ezt ne használja több órán át. Az éles környezetben történő üzembe helyezés előtt érdemes befektetni a tényleges RTSP-forrással végzett tesztelésbe.
-* Támogatja az IP-ONVIF felderítését az Edge-ben?
-    * Nem, a peremhálózati eszközök ONVIF felderítése nem támogatott.
+    * Igen. A gyors üzembe helyezési útmutatóban egy [RTSP szimulátor](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) Edge-modul használható, amely támogatja a tanulási folyamatot. Ezt a modult tájékoztató jelleggel biztosítjuk, és előfordulhat, hogy nem mindig érhető el. Javasoljuk, hogy ezt ne használja több órán át. Az éles környezetben történő üzembe helyezés előtt érdemes befektetni a tényleges RTSP-forrással végzett tesztelésbe.
+* Támogatott az IP-kamerák ONVIF-felderítése a peremhálózaton?
+    * Nem, az eszközök ONVIF-felderítése nem támogatott a peremhálózaton.
 
 ## <a name="streaming-and-playback"></a>Folyamatos átvitel és lejátszás
 
@@ -54,9 +53,9 @@ Telepíthetem a Media Edge-modult egy Windows 10-es eszközre?
     A teszteléshez ajánlott játékosok a következők:
 
     * [Azure Media Player](../latest/use-azure-media-player.md)
-    * [HLS. js](https://hls-js.netlify.app/demo/)
-    * [Videó. js](https://videojs.com/)
-    * [Dash. js](https://github.com/Dash-Industry-Forum/dash.js/wiki)
+    * [HLS.js](https://hls-js.netlify.app/demo/)
+    * [Video.js](https://videojs.com/)
+    * [Dash.js](https://github.com/Dash-Industry-Forum/dash.js/wiki)
     * [A-lejátszó](https://github.com/google/shaka-player)
     * [ExoPlayer](https://github.com/google/ExoPlayer)
     * [Apple Native HTTP Live Streaming](https://developer.apple.com/streaming/)

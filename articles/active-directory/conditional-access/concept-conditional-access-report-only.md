@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b45b2294d56de896849dca0f387a4e26b845aa93
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84204191"
 ---
 # <a name="what-is-conditional-access-report-only-mode"></a>Mi a csak feltételes hozzáférés jelentési módja?
@@ -38,7 +37,7 @@ A csak jelentési mód egy új feltételes hozzáférési szabályzat, amely leh
 
 Ha egy adott bejelentkezésnél egy házirend csak jelentési módban van kiértékelve, akkor négy új lehetséges eredmény érhető el:
 
-| Eredmény | Leírás |
+| Eredmény | Description |
 | --- | --- |
 | Csak jelentés: sikeres | Az összes konfigurált házirend-feltétel, a szükséges nem interaktív engedélyezési vezérlők és a munkamenet-vezérlők teljesültek. Ha például egy többtényezős hitelesítési követelményt egy olyan MFA-jogcím teljesít, amely már szerepel a jogkivonatban, vagy a megfelelő eszköz szabályzata megfelel a megfelelő eszközön lévő eszközök ellenőrzésének. |
 | Csak jelentés: hiba | Az összes konfigurált házirend-feltétel teljesült, de nem az összes szükséges nem interaktív engedélyezési vezérlő vagy munkamenet-vezérlőelem teljesült. Egy szabályzat például egy olyan felhasználóra vonatkozik, amelyen a blokk vezérlőelem konfigurálva van, vagy ha egy eszköz nem felel meg a megfelelő eszköz házirendjének. |

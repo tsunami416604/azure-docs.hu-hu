@@ -9,10 +9,9 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: ab085b9a41120a9f56c1c2e39a89def8c3893747
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84221068"
 ---
 # <a name="azcopy-remove"></a>azcopy remove
@@ -91,7 +90,7 @@ azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory
 
 **--delete-Pillanatképek** sztring alapértelmezés szerint a törlési művelet meghiúsul, ha egy blob pillanatképekkel rendelkezik. A "Belefoglalás" beállítás megadásával távolítsa el a gyökér blobot és annak összes pillanatképét; másik lehetőségként csak a pillanatképeket távolítsa el, de megtarthatja a gyökérkönyvtárat.
 
-**--kizárás – a Path** karakterlánc kizárja ezeket az elérési utakat a eltávolításakor. Ez a beállítás nem támogatja a helyettesítő karaktereket (*). Ellenőrzi a relatív elérési út előtagját. Például: myFolder; myFolder/subDirName/file. PDF.
+**--kizárás – a Path** karakterlánc kizárja ezeket az elérési utakat a eltávolításakor. Ez a beállítás nem támogatja a helyettesítő karaktereket (*). Ellenőrzi a relatív elérési út előtagját. Például: myFolder; myFolder/subDirName/file.pdf.
 
 **--kizárás-Pattern** karakterlánc zárja ki azokat a fájlokat, amelyeknek a neve megegyezik a minta listával. Például: *. jpg;*. PDF; exactName
 
@@ -99,7 +98,7 @@ azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory
 
 **-h,--Súgó** az eltávolításhoz
 
-a- **-include-Path** sztring csak az eltávolításkor megadott elérési utakat tartalmazza. Ez a beállítás nem támogatja a helyettesítő karaktereket (*). Ellenőrzi a relatív elérési út előtagját. Például: myFolder; myFolder/subDirName/file. pdf
+a- **-include-Path** sztring csak az eltávolításkor megadott elérési utakat tartalmazza. Ez a beállítás nem támogatja a helyettesítő karaktereket (*). Ellenőrzi a relatív elérési út előtagját. Például: myFolder; myFolder/subDirName/file.pdf
 
 **--include-Pattern** sztring csak olyan fájlokat tartalmazhat, amelyekben a név megegyezik a minta listával. Például: *. jpg;*. PDF; exactName
 
@@ -111,7 +110,7 @@ a- **-include-Path** sztring csak az eltávolításkor megadott elérési utakat
 
 ## <a name="options-inherited-from-parent-commands"></a>A szülő parancsoktól örökölt beállítások
 
-|Beállítás|Leírás|
+|Beállítás|Description|
 |---|---|
 |--Cap-Mbps UInt32|Az adatátviteli sebesség (megabit/másodperc). A pillanatnyi átviteli sebesség a korláttól némileg eltérő lehet. Ha a beállítás értéke nulla, vagy nincs megadva, az átviteli sebesség nem lesz maximális.|
 |--output-Type karakterlánc|A parancs kimenetének formátuma. A lehetőségek a következők: Text, JSON. Az alapértelmezett érték a "text".|

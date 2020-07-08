@@ -4,21 +4,20 @@ description: A CCTV kamerákhoz készült videó-felügyeleti rendszer kontextus
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: c03472f577e67d5b2705a2ebe3f53e85e0849819
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84260945"
 ---
-# <a name="video-recording"></a>Videofelvétel
+# <a name="video-recording"></a>Videófelvétel
 
 A CCTV kamerákhoz készült videó-felügyeleti rendszer kontextusában a videó rögzítése arra a folyamatra utal, amely videót készít a kamerákból, és rögzíti a mobil-és böngésző-alkalmazásokban való megtekintésre. A videofelvételek a folyamatos videofelvételek és az eseményvezérelt videofelvételek alapján is kategorizálható. 
 
-## <a name="continuous-video-recording"></a>Folyamatos videofelvétel  
+## <a name="continuous-video-recording"></a>Folyamatos videófelvétel  
 
 A folyamatos videofelvétel (CVR) arra a folyamatra utal, amely folyamatosan rögzíti a videó forrásaként rögzített összes videót. A CVR biztosítja, hogy az összes videó elérhető legyen (a [rögzítési házirend](#recording-policy)által diktálva) egy későbbi időpontban történő elemzéshez és/vagy naplózáshoz.
 
-## <a name="event-based-video-recording"></a>Event-alapú videó rögzítése  
+## <a name="event-based-video-recording"></a>Eseményalapú videófelvétel  
 
 Az Event-based video Recording (EVR) az esemény által aktivált videó rögzítési folyamatára utal. Előfordulhat, hogy a szóban forgó esemény a videó-jel feldolgozása miatt vagy egy független forrásból (például egy ajtó-érzékelőből) származik. Az Event-based video Recording (EVR) szolgáltatás megtakarítást eredményezhet, azonban további összetevőket is igényel, amelyek előidézik az eseményeket, és elindítják a videofelvételt (egy előre meghatározott házirend alapján). Más szóval a EVR további döntéseket kell hoznia a videó rögzítését kiváltó eseményekről, valamint a videofelvételekhez kapcsolódó szabályzatról (más néven rögzítési szabályzat). Egy házirend például a következőhöz hasonló lehet: a videó rögzítése 2 percig az esemény időpontja előtt 30 másodperctől kezdődően. Előfordulhat, hogy a szóban forgó események a kamera általi feldolgozás miatt is származhatnak. Például több kamera támogatja a mozgásészlelési jel esemény létrehozását, ha a kamera nézőpontjában egy előre konfigurált zónán belül mozgás észlelhető. Az események a videónak egy másik eszközön történő feldolgozásával is létrehozhatók, amely rögzíti a videót a kamerából, és az egyszerű képfeldolgozási technikák vagy kifinomult gépi tanulási modellek használatával elemzi azt. 
 
@@ -32,6 +31,6 @@ A rögzítési házirend azokra a szabályzatokra vonatkozik, amelyek megírják
 
 ## <a name="next-steps"></a>További lépések
 
-* [Mozgás észlelése, videoklipek rögzítése Azure Media Services](detect-motion-record-video-clips-media-services-quickstart.md)
+* [Mozgás észlelése, videóklipek készítése az Azure Media Servicesbe](detect-motion-record-video-clips-media-services-quickstart.md)
 * [Mozgás észlelése, videoklipek rögzítése az Edge-eszközökön](detect-motion-record-video-clips-edge-devices-quickstart.md)
 

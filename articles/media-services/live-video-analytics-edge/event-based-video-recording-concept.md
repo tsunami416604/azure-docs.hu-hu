@@ -4,17 +4,16 @@ description: Az Event-based video Recording (EVR) az esemény által aktivált v
 ms.topic: conceptual
 ms.date: 05/27/2020
 ms.openlocfilehash: 0a6f7ca4233c195c7494fc6f63e7dfb5bf654c17
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84261330"
 ---
-# <a name="event-based-video-recording"></a>Event-alapú videó rögzítése  
+# <a name="event-based-video-recording"></a>Eseményalapú videófelvétel  
  
 ## <a name="suggested-pre-reading"></a>Javasolt előzetes olvasás  
 
-* [Folyamatos videofelvétel](continuous-video-recording-concept.md)
+* [Folyamatos videófelvétel](continuous-video-recording-concept.md)
 * [Rögzített tartalom lejátszása](video-playback-concept.md)
 * [A Media Graph koncepciója](media-graph-concept.md)
 

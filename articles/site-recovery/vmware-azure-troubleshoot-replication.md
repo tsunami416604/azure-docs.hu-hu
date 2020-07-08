@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 08/2/2019
 ms.author: mayg
 ms.openlocfilehash: 1db32d506cc455b020fc6c0f2bba10361e961324
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84197040"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>A VMware virtuális gépek és a fizikai kiszolgálók replikációs problémáinak elhárítása
@@ -71,7 +70,7 @@ Lehetséges okok:
 - A virtuális gép listázott lemezén lévő adatváltozási sebesség (bájt/s) nagyobb, mint a replikációs cél Storage-fióktípus [Azure site Recovery támogatott korlátai](site-recovery-vmware-deployment-planner-analyze-report.md#azure-site-recovery-limits) .
 - Az elváltozási arány hirtelen megszeghető, mivel a feltöltésre váró nagy mennyiségű adatok.
 
-A probléma megoldásához:
+A hiba megoldása érdekében:
 - Győződjön meg arról, hogy a célként megadott Storage-fiók típusa (standard vagy prémium) a forrásnál az adatforgalom arányára vonatkozó követelményként van kiépítve.
 - Ha már rendelkezik egy prémium szintű felügyelt lemezre (asrseeddisk-típus), győződjön meg arról, hogy a lemez mérete támogatja a megfigyelt adatforgalom mértékét Site Recovery korlátként. Szükség esetén növelheti a asrseeddisk méretét. Kövesse az alábbi lépéseket:
     - Navigáljon az érintett replikált gép lemezek paneljére, és másolja a replika lemez nevét

@@ -13,10 +13,9 @@ ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
 ms.openlocfilehash: 4421ad4260ff8eada87cdebc031d09922860324f
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84196331"
 ---
 # <a name="troubleshoot-dms-errors-when-connecting-to-source-databases"></a>A forrásadatbázisokhoz való csatlakozás során fellépő DMS-hibák elhárítása

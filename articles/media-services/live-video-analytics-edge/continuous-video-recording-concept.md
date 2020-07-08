@@ -4,13 +4,12 @@ description: A folyamatos videofelvétel (CVR) arra a folyamatra utal, amely fol
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: 9a785125d4cfb2324224f4676e1d429342ec325c
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84261246"
 ---
-# <a name="continuous-video-recording"></a>Folyamatos videofelvétel  
+# <a name="continuous-video-recording"></a>Folyamatos videófelvétel  
 
 ## <a name="suggested-pre-reading"></a>Javasolt előzetes olvasás  
 
@@ -21,7 +20,7 @@ ms.locfileid: "84261246"
 
 A folyamatos videofelvétel (CVR) arra a folyamatra utal, amely folyamatosan rögzíti a videót a videó forrásaként. A IoT Edge élő videó-elemzési szolgáltatás támogatja a videó folyamatos, nonstop-alapú, a CCTV kamerából való rögzítését egy olyan [adathordozó-gráfon](media-graph-concept.md) keresztül, amely egy RTSP-forrás csomópontból és egy eszköz fogadó csomópontból áll. Az alábbi ábrán egy ilyen adathordozó-gráf grafikus ábrázolása látható. Az ilyen adathordozó-gráf [gráf-topológiájának](media-graph-concept.md?branch=release-preview-media-services-lva#media-graph-topologies-and-instances) JSON-ábrázolása [itt](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/cvr-asset)található.
 
-![Folyamatos videofelvétel](./media/continuous-video-recording/continuous-video-recording-overview.png)
+![Folyamatos videófelvétel](./media/continuous-video-recording/continuous-video-recording-overview.png)
 
 A fent ábrázolt adathordozó-gráf egy peremhálózati eszközön futtatható, az eszköz fogadója pedig egy Azure Media Services [eszközre](terminology.md#asset)rögzíti a videót. A videó addig lesz rögzítve, amíg az adathordozó-gráf aktivált állapotban marad. Mivel a videó egy eszközként van rögzítve, a Media Services meglévő folyamatos átviteli képességeivel is lejátszhatók. További részletekért lásd [a rögzített tartalom lejátszását](video-playback-concept.md) ismertető témakört.
 
@@ -54,7 +53,7 @@ A segmentLength tulajdonság biztosítja, hogy az Edge-modul segmentLength máso
 
 ## <a name="see-also"></a>Lásd még
 
-* [Event-alapú videó rögzítése](event-based-video-recording-concept.md)
+* [Eseményalapú videófelvétel](event-based-video-recording-concept.md)
 * [Rögzített tartalom lejátszása](video-playback-concept.md)
 
 

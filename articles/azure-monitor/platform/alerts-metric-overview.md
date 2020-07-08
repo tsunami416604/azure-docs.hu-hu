@@ -5,10 +5,9 @@ ms.date: 03/17/2020
 ms.topic: conceptual
 ms.subservice: alerts
 ms.openlocfilehash: 603df6f9b00c9261885937a3d85052b3806ff4f8
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84248821"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>A metrikariasztások működése az Azure Monitorban
@@ -129,9 +128,9 @@ Ez a funkció jelenleg a platform metrikái (nem egyéni metrikák) esetén tám
 | Szolgáltatás | Nyilvános Azure | Government | Kína |
 |:--------|:--------|:--------|:--------|
 | Virtual machines (Virtuális gépek)  | **Igen** | Nem | Nem |
-| SQL Server-adatbázisok | **Igen** | **Igen** | Nem |
-| SQL Server rugalmas készletek | **Igen** | **Igen** | Nem |
-| Adatmező peremhálózati eszközei | **Igen** | **Igen** | Nem |
+| SQL Server-adatbázisok | **Igen** | **Igen** | No |
+| SQL Server rugalmas készletek | **Igen** | **Igen** | No |
+| Adatmező peremhálózati eszközei | **Igen** | **Igen** | No |
 
 A figyelés hatókörét a három módszer egyikével adhatja meg egyetlen metrikai riasztási szabály segítségével. A Virtual Machines használatával például a következő módon adhatja meg a hatókört:  
 

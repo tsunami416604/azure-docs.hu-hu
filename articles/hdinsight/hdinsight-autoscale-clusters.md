@@ -1,5 +1,5 @@
 ---
-title: Azure HDInsight-fürtök automatikus méretezése
+title: Azure HDInsight-fürtök automatikus skálázása
 description: Az Azure HDInsight automatikus méretezési funkciója segítségével automatikusan Apache Hadoop a fürtök méretezése
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,13 +9,12 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/29/2020
 ms.openlocfilehash: ccd729510341a9232764b1c211aa18c197ad5a37
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84248634"
 ---
-# <a name="automatically-scale-azure-hdinsight-clusters"></a>Azure HDInsight-fürtök automatikus méretezése
+# <a name="automatically-scale-azure-hdinsight-clusters"></a>Azure HDInsight-fürtök automatikus skálázása
 
 Az Azure HDInsight ingyenes automatikus méretezési funkciója a korábban beállított feltételek alapján automatikusan növelheti vagy csökkentheti a fürt munkavégző csomópontjainak számát. A fürt létrehozása során a csomópontok minimális és maximális számát állíthatja be, a méretezési feltételeket a napi ütemterv vagy a megadott teljesítmény-mérőszámok alapján kell meghatározni, és a HDInsight platform a REST-t használja.
 
@@ -66,9 +65,9 @@ A leskálázáshoz az autoskálázás bizonyos számú csomópont eltávolítás
 ### <a name="cluster-compatibility"></a>Fürt kompatibilitása
 
 > [!Important]
-> Az Azure HDInsight autoscale funkciójának kiadása a Spark-és Hadoop-fürtökre vonatkozó 2019, november 7-én általánosan elérhető, és a szolgáltatás előzetes verziójában nem érhető el. Ha a Spark-fürtöt a 2019 november 7. előtt hozta létre, és szeretné használni az autoscale funkciót a fürtön, az ajánlott elérési út egy új fürt létrehozása, és az autoskálázás engedélyezése az új fürtön.
+> Az Azure HDInsight automatikus skálázási funkciója 2019. november 7. óta általánosan elérhető a Spark- és Hadoop-fürtökhöz, és olyan fejlesztéseket tartalmaz, amelyek a funkció előzetes verziójában nem voltak elérhetők. Ha a 2019. november 7. előtt létrehozott egy Spark-fürtöt, és használni szeretné rajta az automatikus skálázási funkciót, akkor azt az eljárást javasoljuk, hogy hozzon létre egy új fürtöt, és azon engedélyezze az automatikus skálázást.
 >
-> Az interaktív lekérdezés (LLAP) és a HBase-fürtök autoskálázása még előzetes verzióban érhető el. Az autoskálázás csak a Spark, a Hadoop, az interaktív lekérdezés és a HBase-fürtökön érhető el.
+> Az automatikus skálázás az Interactive Query- (LLAP) és HBase-fürtökhöz továbbra is előzetes verzióként érhető el. Az automatikus skálázás kizárólag a Spark-, Hadoop-, Interactive Query és HBase-fürtökhöz érhető el.
 
 Az alábbi táblázat az autoscale szolgáltatással kompatibilis fürtök típusát és verzióját ismerteti.
 
@@ -225,7 +224,7 @@ A Azure Portalban felsorolt fürt állapota segíthet az autoskálázási tevék
 
 Az alábbi listában az összes olyan fürt állapotüzenetek látható, amelyet látni fog.
 
-| Fürt állapota | Leírás |
+| Fürt állapota | Description |
 |---|---|
 | Fut | A fürt rendesen működik. Az összes korábbi autoskálázási tevékenység sikeresen befejeződött. |
 | Frissítése  | A fürt automatikus skálázási konfigurációjának frissítése folyamatban van.  |
@@ -243,7 +242,7 @@ A **figyelés**területen válassza a **metrikák** lehetőséget. Ezután vála
 
 ![A feldolgozói csomópont Schedule-alapú autoskálázási metrikájának engedélyezése](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-chart-metric.png)
 
-## <a name="other-considerations"></a>Egyéb szempontok
+## <a name="other-considerations"></a>További szempontok
 
 ### <a name="consider-the-latency-of-scale-up-or-scale-down-operations"></a>Vegye figyelembe a vertikális Felskálázási vagy leskálázási műveletek késését
 

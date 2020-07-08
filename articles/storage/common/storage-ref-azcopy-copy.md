@@ -9,10 +9,9 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: 7f55b22938bd6f18bae1576a0c64e673996d38bf
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84220136"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
@@ -99,7 +98,7 @@ Töltsön le egyetlen fájlt a OAuth-hitelesítés használatával. Ha még nem 
 
 Egyetlen fájl letöltése SAS-token használatával:
 
-- azcopy CP "https://[fiók]. blob. Core. Windows. net/[Container]/[elérési_út/to/blob]? [SAS] ""/Path/to/file.txt "
+- azcopy CP "https://[fiók]. blob. Core. Windows. net/[Container]/[elérési_út/to/blob]? [SAS] ""/Path/to/file.txt
 
 Egyetlen fájl letöltése SAS-token használatával, majd a kimenet fájlba állítása (csak a Blobok blokkolása esetén):
   
@@ -197,7 +196,7 @@ Másolja a gyűjtők egy részhalmazát egy helyettesítő karakter (*) szimból
 
 **--kizárás-blob-Type** karakterlánc opcionálisan megadja a blob (BlockBlob/PageBlob/AppendBlob) típusát, amelyet a rendszer a tárolóból vagy a fiókból származó Blobok másolásakor figyelmen kívül hagy. A jelző használata nem alkalmazható az adatok nem Azure-szolgáltatásból szolgáltatásba történő másolására. Több blobot ";" karakterrel kell elválasztani.
 
-**--kizárás – az elérési út** karakterlánca kizárja ezeket az elérési utakat másoláskor. Ez a beállítás nem támogatja a helyettesítő karaktereket (*). Ellenőrzi a relatív elérési út előtagját (például: myFolder; myFolder/subDirName/file. pdf). Ha a fiókhoz való bejárással együtt használja, az elérési utak nem tartalmazzák a tároló nevét.
+**--kizárás – az elérési út** karakterlánca kizárja ezeket az elérési utakat másoláskor. Ez a beállítás nem támogatja a helyettesítő karaktereket (*). Ellenőrzi a relatív elérési út előtagját (például: myFolder; myFolder/subDirName/file.pdf). Ha a fiókhoz való bejárással együtt használja, az elérési utak nem tartalmazzák a tároló nevét.
 
 **--kizárás-Pattern** sztring kizárja ezeket a fájlokat másoláskor. Ez a beállítás támogatja a helyettesítő karaktereket (*)
 
@@ -209,7 +208,7 @@ Másolja a gyűjtők egy részhalmazát egy helyettesítő karakter (*) szimból
 
 **--include-attributes** sztring (csak Windows) olyan fájlokat tartalmaz, amelyek attribútumai megegyeznek az attribútumok listájával. Például: A; S R
 
-a- **-include-Path** sztring csak a másoláskor tartalmazza ezeket az elérési utakat. Ez a beállítás nem támogatja a helyettesítő karaktereket (*). Ellenőrzi a relatív elérési út előtagját (például: myFolder; myFolder/subDirName/file. pdf).
+a- **-include-Path** sztring csak a másoláskor tartalmazza ezeket az elérési utakat. Ez a beállítás nem támogatja a helyettesítő karaktereket (*). Ellenőrzi a relatív elérési út előtagját (például: myFolder; myFolder/subDirName/file.pdf).
 
 **--include-Pattern** sztring csak a másoláskor tartalmazza ezeket a fájlokat. Ez a beállítás támogatja a helyettesítő karaktereket (*). A fájlokat a ";" használatával válassza el.
 

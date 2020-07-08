@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 05/15/2020
 ms.author: Zhchia
 ms.openlocfilehash: b200aabff1231cdf383d30ad2e671c4b46ca91bb
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84196212"
 ---
 # <a name="tutorial-configure-8x8-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés 8x8 konfigurálása
@@ -120,11 +119,11 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 9. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban lévő 8x8. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a 8x8 felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. Ha úgy dönt, hogy módosítja a [megfelelő cél attribútumot](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes), akkor biztosítania kell, hogy a 8x8 API támogassa a felhasználók szűrését az adott attribútum alapján. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-   |Attribútum|Típus|Megjegyzések|
+   |Attribútum|Típus|Jegyzetek|
    |---|---|---|
    |userName (Felhasználónév)|Sztring|A Felhasználónév és az összevonási azonosító beállítása|
    |externalId|Sztring||
-   |Active|Logikai érték||
+   |Active|Logikai||
    |cím|Sztring||
    |e-mailek [type EQ "work"]. Value|Sztring||
    |név. givenName|Sztring||

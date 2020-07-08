@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 09/12/2018
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
 ms.openlocfilehash: 87e3d75d925968b6521324f5b776cf8df1f6af11
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84247799"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>Azure-beli virtuális gépek visszaállítása REST API használatával
@@ -31,7 +30,7 @@ A *Get* URI az összes szükséges paraméterrel rendelkezik. Nincs szükség to
 
 ### <a name="responses"></a>Válaszok
 
-|Name  |Típus  |Leírás  |
+|Name  |Típus  |Description  |
 |---------|---------|---------|
 |200 OK     |   [RecoveryPointResourceList](https://docs.microsoft.com/rest/api/backup/recoverypoints/list#recoverypointresourcelist)      |       OK  |
 
@@ -117,7 +116,7 @@ A helyreállítási pont a `{name}` fenti válaszban található mezővel azonos
 
 ## <a name="restore-disks"></a>Lemezek visszaállítása
 
-Ha testre kell szabnia egy virtuális gép létrehozását a biztonsági másolati adatokból, akkor a lemezeket csak egy kiválasztott Storage-fiókba állíthatja vissza, és a követelmények szerint hozhat létre virtuális gépet ezekből a lemezekről. A Storage-fióknak ugyanabban a régióban kell lennie, mint a Recovery Services-tárolónak, és nem szabad zónába esnie. A lemezeket és a biztonsági másolattal ellátni kívánt virtuális gép konfigurációját ("VMConfig. JSON") a rendszer a megadott Storage-fiókban tárolja.
+Ha testre kell szabnia egy virtuális gép létrehozását a biztonsági másolati adatokból, akkor a lemezeket csak egy kiválasztott Storage-fiókba állíthatja vissza, és a követelmények szerint hozhat létre virtuális gépet ezekből a lemezekről. A Storage-fióknak ugyanabban a régióban kell lennie, mint a Recovery Services-tárolónak, és nem szabad zónába esnie. A lemezeket és a biztonsági másolatban szereplő virtuális gép konfigurációját ("vmconfig.json") a rendszer a megadott Storage-fiókban tárolja.
 
 A visszaállítási lemezek elindítása *post* kérelem. Ha többet szeretne tudni a lemezek visszaállítása műveletről, tekintse meg a ["trigger Restore" REST API](https://docs.microsoft.com/rest/api/backup/restores/trigger).
 
@@ -131,7 +130,7 @@ A `{containerName}` és a `{protectedItemName}` kiépítve [itt](backup-azure-ar
 
 Egy lemez Azure-beli virtuális gép biztonsági mentésből való visszaállításának elindításához kövesse a kérelem törzsének összetevőit.
 
-|Name  |Típus  |Leírás  |
+|Name  |Típus  |Description  |
 |---------|---------|---------|
 |properties     | [IaaSVMRestoreRequest](https://docs.microsoft.com/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
 
@@ -165,7 +164,7 @@ A visszaállítási lemez indítása [aszinkron művelet](https://docs.microsoft
 
 Két választ ad vissza: 202 (elfogadva), ha egy másik művelet jön létre, majd 200 (OK), amikor a művelet befejeződik.
 
-|Name  |Típus  |Leírás  |
+|Name  |Típus  |Description  |
 |---------|---------|---------|
 |202 elfogadva     |         |     Elfogadva    |
 
@@ -229,7 +228,7 @@ X-Powered-By: ASP.NET
 
 Mivel a biztonsági mentési feladat hosszú ideig futó művelet, azt a [feladatok figyelése REST API dokumentum használatával](backup-azure-arm-userestapi-managejobs.md#tracking-the-job)című részben leírtak szerint kell követni.
 
-A hosszú ideig tartó feladatok befejezése után a rendszer a biztonsági másolatban szereplő virtuális gép ("VMConfig. JSON") lemezeit és konfigurációját a megadott Storage-fiókban fogja megjelenni.
+Ha a hosszú ideig futó feladatok befejeződik, a rendszer a biztonsági másolatban szereplő virtuális gép lemezeit és konfigurációját ("VMConfig.json") a megadott Storage-fiókban fogja megjelenni.
 
 ## <a name="restore-as-another-virtual-machine"></a>Visszaállítás másik virtuális gépként
 

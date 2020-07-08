@@ -4,10 +4,9 @@ description: A Media Graph használatával egyszerűen kinyerheti az elemzéseke
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: 29e00b9c04a652771ca150e2a45e980d20f8bc1f
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84260938"
 ---
 # <a name="analyzing-live-video-without-any-recording"></a>Élő videó elemzése rögzítés nélkül
@@ -15,7 +14,7 @@ ms.locfileid: "84260938"
 ## <a name="suggested-pre-reading"></a>Javasolt előzetes olvasás 
 
 * [A Media Graph koncepciója](media-graph-concept.md)
-* [Event-alapú videó rögzítése](event-based-video-recording-concept.md)
+* [Eseményalapú videófelvétel](event-based-video-recording-concept.md)
 
 ## <a name="overview"></a>Áttekintés  
 
@@ -41,4 +40,4 @@ Ennek a példának a továbbfejlesztése egy mozgásérzékelős processzor hasz
 
 ## <a name="next-steps"></a>További lépések
 
-[Folyamatos videofelvétel](continuous-video-recording-concept.md)
+[Folyamatos videófelvétel](continuous-video-recording-concept.md)
