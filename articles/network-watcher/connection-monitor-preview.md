@@ -16,10 +16,10 @@ ms.date: 01/27/2020
 ms.author: vinigam
 ms.custom: mvc
 ms.openlocfilehash: 52d33e7292ebe7b27eede2b89aa605780f826392
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84737614"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor-preview"></a>Hálózati kapcsolat figyelése a kapcsolat figyelője (előzetes verzió)
@@ -472,10 +472,10 @@ A tesztelési csoportba felvett összes forrás, cél és tesztelési konfigurá
 | 6 | B | D | 2. konfiguráció |
 | 7 | B | E | 1. konfiguráció |
 | 8 | B | E | 2. konfiguráció |
-| 9 | C | D | 1. konfiguráció |
-| 10 | C | D | 2. konfiguráció |
-| 11 | C | E | 1. konfiguráció |
-| 12 | C | E | 2. konfiguráció |
+| 9 | C# | D | 1. konfiguráció |
+| 10 | C# | D | 2. konfiguráció |
+| 11 | C# | E | 1. konfiguráció |
+| 12 | C# | E | 2. konfiguráció |
 
 ### <a name="scale-limits"></a>Skálázási korlátok
 
@@ -616,7 +616,7 @@ A Csatlakozáskezelő (előzetes verzió) felhasználói felülete előtt létre
 
 Metrikák használata esetén állítsa be az erőforrástípust a Microsoft. Network/networkWatchers/connectionMonitors
 
-| Metrika | Megjelenített név | Unit (Egység) | Összesítés típusa | Leírás | Dimenziók |
+| Metrika | Megjelenített név | Unit (Egység) | Összesítés típusa | Description | Dimenziók |
 | --- | --- | --- | --- | --- | --- |
 | ProbesFailedPercent | %-Os mintavétel sikertelen | Százalék | Átlag | A kapcsolat figyelési mintavételének százalékos aránya meghiúsult. | Nincsenek méretek |
 | AverageRoundtripMs | Átlagos menetidő (MS) | Ezredmásodpercben | Átlag | A forrás és a cél között eljuttatott kapcsolat-figyelési mintavételek átlagos hálózati RTT. |             Nincsenek méretek |

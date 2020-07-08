@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.openlocfilehash: 7162e2e8c42f3e83a47c46d739f93cfc4cfcaac6
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84737631"
 ---
 # <a name="data-storage-optimization-for-apache-spark"></a>Apache Spark adattárolási optimalizálása
@@ -64,7 +64,7 @@ A korábbi Spark-verziók a RDD és az absztrakt adatokat, a Spark 1,3-es és a 
 
 A tárolási lehetőségek teljes leírását lásd: [tárolási lehetőségek összehasonlítása az Azure HDInsight-fürtökkel való használathoz](../hdinsight-hadoop-compare-storage-options.md).
 
-## <a name="use-the-cache"></a>A gyorsítótár használata
+## <a name="use-the-cache"></a>Gyorsítótár használata
 
 A Spark saját natív gyorsítótárazási mechanizmusokat biztosít, amelyek különböző módszerekkel használhatók, például:, `.persist()` `.cache()` és `CACHE TABLE` . Ez a natív gyorsítótárazás a kis adathalmazok és az ETL-folyamatok esetében érvényes, ahol a közbenső eredmények gyorsítótárazására van szükség. A Spark natív gyorsítótárazás azonban jelenleg nem működik megfelelően a particionálással, mivel a gyorsítótárazott táblák nem őrzik meg a particionálási adatmennyiséget. Egy általánosabb és megbízható gyorsítótárazási módszer a *tárolási réteg gyorsítótárazása*.
 
@@ -88,7 +88,7 @@ A Spark-feladatok terjesztése megtörténik, ezért a megfelelő adatszerializ�
 * A Java-szerializálás az alapértelmezett.
 * `Kryo`a szerializálás egy újabb formátum, amely gyorsabb és kompakt szerializálást eredményezhet a Javánál.  `Kryo`Ehhez regisztrálnia kell az osztályokat a programban, és még nem támogatja az összes szerializálható típust.
 
-## <a name="use-bucketing"></a>A gyűjtő használata
+## <a name="use-bucketing"></a>Gyűjtés használata
 
 A gyűjtő hasonló az adatparticionáláshoz. Az egyes gyűjtők azonban nem csupán egy oszlop értékeit tárolhatják. Ez a módszer jól működik, ha nagy (millió vagy több) értéket, például termékazonosítókat kíván particionálni. A gyűjtőt a sor gyűjtő kulcsának kivonatolásával határozzuk meg. A gyűjtő táblák egyedi optimalizációkat biztosítanak, mert metaadatokat tárolnak a gyűjtők és a rendezésük módjával kapcsolatban.
 

@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 11/04/2019
 ms.author: allensu
 ms.openlocfilehash: d074128376d481902a203de3d32ef89aa72d7b3a
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84737716"
 ---
 # <a name="connect-privately-to-an-azure-cosmos-account-using-azure-private-link"></a>Csatlakozzon privát módon egy Azure Cosmos-fiókokhoz az Azure Private Linkkel
@@ -130,7 +130,7 @@ Ebben a szakaszban a magánhálózati végpont használatával csatlakozik az Az
 
    [Magánhálózati IP-cím] [Fiók végpontja]. Documents. Azure. com
 
-   **Például**
+   **Példa:**
 
    10.1.255.13 mycosmosaccount.documents.azure.com
 

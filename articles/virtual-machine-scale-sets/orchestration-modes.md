@@ -10,10 +10,10 @@ ms.date: 10/23/2019
 ms.reviewer: jushiman
 ms.custom: mimckitt
 ms.openlocfilehash: 54515b347a95b9315ca9ba87568fb2104c3b2b45
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84737002"
 ---
 # <a name="orchestration-modes-preview"></a>Előkészítési módok (előzetes verzió)
@@ -44,7 +44,7 @@ A virtuálisgép-méretezési csoportok két különböző előkészítési mód
 
 |                             | "orchestrationMode": "VM" (VirtualMachine) | "orchestrationMode": "ScaleSetVM" (VirtualMachineScaleSetVM) |
 |-----------------------------|--------------------------------------------|--------------------------------------------------------------|
-| Virtuális gép konfigurációs modellje      | Nincs                                       | Kötelező |
+| Virtuális gép konfigurációs modellje      | None                                       | Kötelező |
 | Új virtuális gép felvétele a méretezési csoportba  | A virtuális gép létrehozásakor a rendszer explicit módon hozzáadja a virtuális gépeket a méretezési csoporthoz. | A virtuális gépek implicit módon jönnek létre és a méretezési csoportba kerülnek a virtuálisgép-konfigurációs modell, a példányszám és az automatikus skálázási szabályok alapján. | |
 | Virtuális gép törlése                   | A virtuális gépeket külön kell törölni, a méretezési csoport nem lesz törölve, ha rendelkezik virtuális gépekkel. | A virtuális gépek egyenként törölhetők, a méretezési csoport törlése pedig törli az összes virtuálisgép-példányt.  |
 | Virtuális gépek csatlakoztatása/leválasztása           | Nem támogatott                              | Nem támogatott |

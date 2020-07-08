@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/12/2020
 ms.openlocfilehash: 32650d44b452b90ffd2935eb31f7c7b958c0f7ae
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84737758"
 ---
 # <a name="copy-data-from-and-to-the-sftp-server-by-using-azure-data-factory"></a>Adatok másolása a és az SFTP-kiszolgálóra Azure Data Factory használatával
@@ -75,7 +75,7 @@ Az alapszintű hitelesítés használatához állítsa a *authenticationType* tu
 | userName (Felhasználónév) | Az a felhasználó, aki hozzáfér az SFTP-kiszolgálóhoz. |Yes |
 | jelszó | A felhasználó jelszava (userName). Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja azt az adatgyárban, vagy [hivatkozzon az Azure Key vaultban tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Yes |
 
-**Például**
+**Példa:**
 
 ```json
 {
@@ -190,7 +190,7 @@ A következő tulajdonságokat támogatja az SFTP a `location` Format-alapú ada
 | folderPath | A mappa elérési útja. Ha a mappa szűréséhez helyettesítő karaktert szeretne használni, hagyja ki ezt a beállítást, és határozza meg az elérési utat a tevékenység forrásának beállításai között. | No       |
 | fileName   | A megadott folderPath tartozó fájlnév. Ha helyettesítő karaktert szeretne használni a fájlok szűréséhez, hagyja ki ezt a beállítást, és adja meg a fájl nevét a tevékenység forrásának beállításaiban. | No       |
 
-**Például**
+**Példa:**
 
 ```json
 {
@@ -241,7 +241,7 @@ Az SFTP `storeSettings` Formátum-alapú másolási forrás beállításai alatt
 | modifiedDatetimeEnd      | Ugyanaz, mint a fenti.                                               | No                                            |
 | maxConcurrentConnections | A tárolóhoz egyidejűleg csatlakozni képes kapcsolatok száma. Csak akkor adhat meg értéket, ha korlátozni szeretné az egyidejű kapcsolódást az adattárhoz. | No                                            |
 
-**Például**
+**Példa:**
 
 ```json
 "activities":[
@@ -299,7 +299,7 @@ A következő tulajdonságok támogatottak az SFTP `storeSettings` Formátum ala
 >[!TIP]
 >Ha a "UserErrorSftpPathNotFound", "UserErrorSftpPermissionDenied" vagy "SftpOperationFail" hibaüzenet jelenik meg az SFTP-be való írás során, és *a használt SFTP-felhasználó rendelkezik a* megfelelő engedélyekkel, ellenőrizze, hogy működik-e az SFTP-kiszolgáló a fájl átnevezési műveletének támogatásával. Ha nem, tiltsa le a **feltöltés a temp file** ( `useTempFileRename` ) kapcsolóval, és próbálkozzon újra. A tulajdonsággal kapcsolatos további tudnivalókért tekintse meg az előző táblázatot. Ha a másolási tevékenységhez saját üzemeltetésű integrációs modult használ, ügyeljen arra, hogy a 4,6-es vagy újabb verziót használja.
 
-**Például**
+**Példa:**
 
 ```json
 "activities":[
@@ -388,7 +388,7 @@ A törlési tevékenység tulajdonságaival kapcsolatos információkért lásd:
 >[!NOTE]
 >Ha a *fileFilter* tulajdonságot használta a fájl szűrőhöz, azt a rendszer továbbra is támogatja, de azt javasoljuk, hogy mostantól a *fájlnévhez* hozzáadott új szűrő funkciót használja.
 
-**Például**
+**Példa:**
 
 ```json
 {
@@ -427,7 +427,7 @@ A törlési tevékenység tulajdonságaival kapcsolatos információkért lásd:
 | rekurzív | Azt jelzi, hogy az adatok rekurzív módon olvashatók-e az almappákból, vagy csak a megadott mappából. Ha a rekurzív értéke TRUE ( *igaz* ), a fogadó pedig egy fájl alapú tároló, az üres mappákat és almappákat a rendszer nem másolja vagy hozza létre a fogadón.<br/>Az engedélyezett értékek értéke *true* (alapértelmezett) és *false (hamis* ) | No |
 | maxConcurrentConnections | A tárolási tárolóhoz egyidejűleg csatlakozható kapcsolatok száma. Csak akkor válasszon számot, ha szeretné korlátozni az egyidejű kapcsolatokat az adattárral. | No |
 
-**Például**
+**Példa:**
 
 ```json
 "activities":[

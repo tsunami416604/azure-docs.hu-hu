@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
 ms.openlocfilehash: 20695d183ea8184f7ee2948b3897fa1f3a741411
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84737495"
 ---
 # <a name="manage-a-private-endpoint-connection"></a>Privátvégpont-kapcsolat kezelése
@@ -26,9 +26,9 @@ Két kapcsolat-jóváhagyási módszer van, amelyet a privát kapcsolati szolgá
 Az alábbi táblázatban láthatók a különböző szolgáltatói műveletek, valamint a magánhálózati végpontok számára létrejövő kapcsolatok állapota.  A szolgáltató a privát végpontok kapcsolatainak egy későbbi időpontban is megváltoztathatja a fogyasztó beavatkozása nélkül. A művelet frissíti a végpont állapotát a felhasználói oldalon. 
 
 
-|Szolgáltatói művelet   |A szolgáltatás fogyasztói magánhálózati végpontjának állapota   |Leírás   |
+|Szolgáltatói művelet   |A szolgáltatás fogyasztói magánhálózati végpontjának állapota   |Description   |
 |---------|---------|---------|
-|Nincs    |    Függőben     |    A kapcsolat manuálisan jön létre, és függőben van a privát hivatkozás erőforrás-tulajdonosa általi jóváhagyásra.       |
+|None    |    Függőben     |    A kapcsolat manuálisan jön létre, és függőben van a privát hivatkozás erőforrás-tulajdonosa általi jóváhagyásra.       |
 |Jóváhagyás    |  Approved       |  A kapcsolódás automatikusan vagy manuálisan lett jóváhagyva, és készen áll a használatra.     |
 |Elutasítás     | Elutasítva        | A magánhálózati kapcsolat erőforrásának tulajdonosa elutasította a kapcsolatot.        |
 |Eltávolítás    |  Leválasztott       | A kapcsolatot a privát kapcsolat erőforrás-tulajdonosa eltávolította, a magánhálózati végpont informatív lesz, és törölni kell a karbantartást.        |

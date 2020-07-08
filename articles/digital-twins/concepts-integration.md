@@ -7,17 +7,14 @@ ms.author: baanders
 ms.date: 3/16/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: e266e9f8738a0c7d06c1f3b3f7213ad807e179fc
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: ba4188445f9bdf791ef760936bd27ac0f507fb4c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84737172"
 ---
 # <a name="integrate-azure-digital-twins-with-other-services"></a>Az Azure Digital Twins integrálása más szolgáltatásokkal
-
-[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Az Azure digitális Twins jellemzően más szolgáltatásokkal együtt használható. Az [**Event Routes**](concepts-route-events.md)használatával az Azure Digital Twins olyan felsőbb rétegbeli szolgáltatásokból származó adatokhoz jut, mint például a [IoT hub](../iot-hub/about-iot-hub.md), amely a telemetria és az értesítések továbbítására szolgál. Az Azure Digital Twins a tárolás, a munkafolyamat-integráció, az elemzés és más felhasználás céljából is továbbíthatja az adattovábbítást a későbbi szolgáltatásokhoz. 
 
@@ -34,7 +31,7 @@ Ha IoT Hubről szeretne adatot bevenni az Azure digitális Twinsba, használjon 
 Az Azure Digital Twins képes az adatküldés a csatlakoztatott **végpontokra**. A támogatott végpontok a következőket tehetik:
 * [Eseményközpont](../event-hubs/event-hubs-about.md)
 * [Event Grid](../event-grid/overview.md)
-* [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)
+* [Szolgáltatásbusz](../service-bus-messaging/service-bus-messaging-overview.md)
 
 A végpontokat a felügyeleti API-k vagy a Azure Portal használatával csatlakoztatják az Azure Digital Twins szolgáltatáshoz. További információ a végpontok Azure digitális Ikrekhez való csatlakoztatásáról [: végpontok és útvonalak kezelése](how-to-manage-routes.md).
 
