@@ -9,10 +9,10 @@ ms.date: 04/26/2019
 ms.topic: article
 manager: carmonm
 ms.openlocfilehash: a14fafde8ecea0370c74cdbfd39a85d8dfb15612
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83651072"
 ---
 # <a name="run-shell-scripts-in-your-linux-vm-by-using-run-command"></a>Rendszerhéj-parancsfájlok futtatása Linux rendszerű virtuális gépen a Futtatás parancs használatával
@@ -49,7 +49,7 @@ Ez a táblázat a Linux rendszerű virtuális gépekhez elérhető parancsok lis
 The entity was not found in this Azure location
 ```
 
-|**Név**|**Leírás**|
+|**Name (Név)**|**Leírás**|
 |---|---|
 |**RunShellScript**|Linux rendszerű rendszerhéj-parancsfájlt futtat.|
 |**ifconfig**| Az összes hálózati adapter konfigurációjának beolvasása.|
@@ -96,6 +96,6 @@ A parancs futtatásához `Microsoft.Compute/virtualMachines/runCommand/action` e
 
 Használhatja a [beépített szerepkörök](../../role-based-access-control/built-in-roles.md) egyikét, vagy létrehozhat egy [Egyéni szerepkört](../../role-based-access-control/custom-roles.md) a futtatási parancs használatához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a parancsfájlok és parancsok távoli virtuális gépen való futtatásának egyéb módjairól, olvassa el a [parancsfájlok futtatása a linuxos virtuális gépen](run-scripts-in-vm.md)című témakört.
