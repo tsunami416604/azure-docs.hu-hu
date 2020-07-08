@@ -4,10 +4,10 @@ description: Ez a cikk bemutatja, hogyan konfigurálhat és használhat nyilván
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 61cabdb296c3fff75137c7ce7e87652241fd2926
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85482666"
 ---
 # <a name="configure-and-use-public-environments-in-azure-devtest-labs"></a>Nyilvános környezetek konfigurálása és használata Azure DevTest Labs

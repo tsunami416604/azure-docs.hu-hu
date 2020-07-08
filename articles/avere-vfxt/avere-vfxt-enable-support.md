@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 12/14/2019
 ms.author: rohogue
 ms.openlocfilehash: fc86cca1b73eb58a038a0a6da109e86b995709c9
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85505477"
 ---
 # <a name="enable-support-uploads"></a>Támogatási feltöltések engedélyezése
@@ -40,7 +40,7 @@ A támogatás aktiválásához kövesse az alábbi lépéseket a avere Vezérlő
 
    ![A támogatási beállítások lapon található, biztonságos proaktív támogatásról szóló szakaszt tartalmazó képernyőkép](media/avere-vfxt-support-sps.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha helyszíni vagy meglévő felhőalapú tárolási rendszerre van szüksége a fürthöz, kövesse a [tárterület konfigurálása](avere-vfxt-add-storage.md)című témakör útmutatását.
 

@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan lehet elhárítani az összetevők egy Azure De
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: a89b675a1b3bf134b98e09c7278f0eccb594c325
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85483193"
 ---
 # <a name="troubleshoot-issues-when-applying-artifacts-in-an-azure-devtest-labs-virtual-machine"></a>Az összetevők Azure DevTest Labs virtuális gépen való alkalmazásával kapcsolatos hibák elhárítása
@@ -58,7 +58,7 @@ Ha egy összetevő úgy tűnik, hogy lefagy, először határozza meg, hogy hol 
     - A tevékenység naplóját a labor virtuális gép oldalának navigációs sávjából érheti el. Ha kiválasztja, megjelenik egy bejegyzés, amely az összetevők **virtuális gépre való alkalmazására** vonatkozik (ha az összetevők alkalmazása műveletet közvetlenül aktiválták), vagy **virtuális gépeket ad hozzá vagy módosít** (ha az összetevők alkalmazása művelet a virtuális gép létrehozási folyamatának része volt).
     - Keresse meg a hibákat a bejegyzések alatt. Időnként a hiba nem lesz címkézve, és minden egyes bejegyzést meg kell vizsgálnia.
     - Az egyes bejegyzések adatainak kivizsgálása során mindenképpen tekintse át a JSON-adattartalom tartalmát. Előfordulhat, hogy a dokumentum alján egy hibaüzenet jelenik meg.
-- **Az összetevő futtatására tett kísérlet során**. Hálózati vagy tárolási problémákhoz vezethet. A részletekért tekintse meg a jelen cikk későbbi részében található megfelelő szakaszt. A szkript létrehozási módja miatt is előfordulhat. Példa:
+- **Az összetevő futtatására tett kísérlet során**. Hálózati vagy tárolási problémákhoz vezethet. A részletekért tekintse meg a jelen cikk későbbi részében található megfelelő szakaszt. A szkript létrehozási módja miatt is előfordulhat. Például:
     - Egy PowerShell-parancsfájl **kötelező paraméterekkel**rendelkezik, de az egyik nem tud értéket adni neki, mert lehetővé teszi, hogy a felhasználó üresen hagyja, vagy mert nem rendelkezik alapértelmezett értékkel a tulajdonsághoz a artifactfile.jsa definíciós fájlban. A parancsfájl nem válaszol, mert a felhasználói bevitelre vár.
     - A PowerShell-parancsfájlok végrehajtásának részeként **felhasználói bevitelre van szükség** . A parancsfájlokat úgy kell írni, hogy a beavatkozás nélkül is csendesen működjenek.
 - **A virtuálisgép-ügynök hosszú ideig tart, hogy készen**álljon. A virtuális gép első indításakor, vagy ha az egyéni parancsfájl-bővítményt először telepíti az összetevők alkalmazására irányuló kérelem kiszolgálására, akkor a virtuális gépnek frissítenie kell a virtuálisgép-ügynököt, vagy várnia kell a virtuálisgép-ügynök inicializálására. Lehetnek olyan szolgáltatások, amelyeken a virtuálisgép-ügynök attól függ, hogy a rendszer mennyi időt vesz igénybe az inicializáláskor. Ilyen esetekben az [Azure Virtual Machine Agent áttekintése](../virtual-machines/extensions/agent-windows.md) című témakörben talál további hibaelhárítást.

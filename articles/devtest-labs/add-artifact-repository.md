@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan adhat hozzá egy műtárgy-tárházat a laborho
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 0c2c1b5f93e2b4dcaae818b3f529dc16440c3c75
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85483907"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>A DevTest Labs szolgáltatásban lévő tároló hozzáadása a laborhoz
@@ -48,7 +48,7 @@ Ahhoz, hogy egy tárházat vegyen fel a laborba, először szerezze be a legfont
    2. A **szervezet** listában válassza az **összes elérhető szervezet**lehetőséget.
    3. A **lejárat (UTC)** listában válassza a **90 nap**lehetőséget, vagy egy egyéni meghatározott lejárati időszakot.
    4. Válassza ki a hatókörök **teljes hozzáférési** beállítását.
-   5. Kattintson a **Létrehozás** gombra.
+   5. Válassza a **Létrehozás** lehetőséget.
 9. Az új jogkivonat megjelenik a **személyes hozzáférési tokenek** listájában. Válassza a **token másolása**lehetőséget, majd mentse a jogkivonat értékét későbbi használatra.
 10. Folytassa a labor összekapcsolásával a tárház szakaszával.
 

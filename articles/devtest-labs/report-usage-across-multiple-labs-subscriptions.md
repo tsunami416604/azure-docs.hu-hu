@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan jelentheti Azure DevTest Labs használatát tö
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 8650244df4c8eb08d4ccc87b1e23fe1e3d047c54
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85483431"
 ---
 # <a name="report-azure-devtest-labs-usage-across-multiple-labs-and-subscriptions"></a>Jelentés Azure DevTest Labs használat több Labs és előfizetés között
@@ -75,7 +75,7 @@ A [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) haszn
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha a rendszer be van állítva, és az adatai a hosszú távú tárolásra kerülnek, a következő lépés az, hogy milyen kérdésekre kell válaszolnia. Példa: 
+Ha a rendszer be van állítva, és az adatai a hosszú távú tárolásra kerülnek, a következő lépés az, hogy milyen kérdésekre kell válaszolnia. Például: 
 
 -   Mi a virtuális gép méretének használata?
 

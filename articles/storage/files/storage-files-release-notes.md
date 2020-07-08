@@ -9,10 +9,10 @@ ms.date: 6/26/2020
 ms.author: wgries
 ms.subservice: files
 ms.openlocfilehash: 54a7f3f50de27747ab15f6895ebfb4f65faf5fdf
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85484060"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Az Azure File Sync ügynök kibocsátási megjegyzései
@@ -23,7 +23,7 @@ A jelen cikk az Azure File Sync ügynök támogatott verzióinak kibocsátási m
 ## <a name="supported-versions"></a>Támogatott verziók
 Az Azure File Sync ügynök alábbi verziói támogatottak:
 
-| Mérföldkő | Az ügynök verziószáma | Kiadási dátum | status |
+| Mérföldkő | Az ügynök verziószáma | Kiadási dátum | Állapot |
 |----|----------------------|--------------|------------------|
 | V 10.1 kiadás – [KB4522411](https://support.microsoft.com/en-us/help/4522411)| 10.1.0.0 | 2020. június 5. | Támogatott – Berepülés |
 | 2020. május kumulatív frissítés – [KB4522412](https://support.microsoft.com/help/4522412)| 10.0.2.0 | Május 19., 2020 | Támogatott |
@@ -34,11 +34,11 @@ Az Azure File Sync ügynök alábbi verziói támogatottak:
 | 2019. júliusi kumulatív frissítés – [KB4490497](https://support.microsoft.com/help/4490497)| 7.2.0.0 | 2019. július 24. | Támogatott – az ügynök verziószáma 2020. szeptember 1-jén lejár |
 | 2019. júliusi kumulatív frissítés – [KB4490496](https://support.microsoft.com/help/4490496)| 7.1.0.0 | 2019. július 12. | Támogatott – az ügynök verziószáma 2020. szeptember 1-jén lejár |
 | V7-kiadás – [KB4490495](https://support.microsoft.com/help/4490495)| 7.0.0.0 | Június 19., 2019 | Támogatott – az ügynök verziószáma 2020. szeptember 1-jén lejár |
-| V6-os kiadás | 6.0.0.0 – 6.3.0.0 | N/A | Nem támogatott – az ügynök verziószáma 2020. április 21-én lejárt |
-| V5-kiadás | 5.0.2.0 – 5.2.0.0 | N/A | Nem támogatott – az ügynök verziói a 2020. március 18-án lejártak. |
-| V4-kiadás | 4.0.1.0 – 4.3.0.0 | N/A | Nem támogatott – az ügynök verziói 2019 november 6-án lejártak |
-| V3 kiadás | 3.1.0.0 – 3.4.0.0 | N/A | Nem támogatott – az ügynök verziói lejártak a 2019-es augusztus 19-én |
-| Pre-GA ügynökök | 1.1.0.0 – 3.0.13.0 | N/A | Nem támogatott – az ügynök verziói lejártak 2018 október 1-jén |
+| V6-os kiadás | 6.0.0.0 – 6.3.0.0 | N.A. | Nem támogatott – az ügynök verziószáma 2020. április 21-én lejárt |
+| V5-kiadás | 5.0.2.0 – 5.2.0.0 | N.A. | Nem támogatott – az ügynök verziói a 2020. március 18-án lejártak. |
+| V4-kiadás | 4.0.1.0 – 4.3.0.0 | N.A. | Nem támogatott – az ügynök verziói 2019 november 6-án lejártak |
+| V3 kiadás | 3.1.0.0 – 3.4.0.0 | N.A. | Nem támogatott – az ügynök verziói lejártak a 2019-es augusztus 19-én |
+| Pre-GA ügynökök | 1.1.0.0 – 3.0.13.0 | N.A. | Nem támogatott – az ügynök verziói lejártak 2018 október 1-jén |
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Az Azure File Sync ügynökének frissítési szabályzata
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]

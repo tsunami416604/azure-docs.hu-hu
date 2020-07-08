@@ -4,10 +4,10 @@ description: Ez a cikk azt ismerteti, hogyan lehet nyomon követni a labor (havi
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: b8bf8b1db82983cd7e1ecc5a45bf2d47a2787cc2
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85482768"
 ---
 # <a name="track-costs-associated-with-a-lab-in-azure-devtest-labs"></a>Laborhoz kapcsolódó költségek nyomon követése Azure DevTest Labs
@@ -28,7 +28,7 @@ A havi becsült költség trend diagram megtekintéséhez kövesse az alábbi l�
 
     A **becsült költségérték** az aktuális naptári hónap becsült költséghatékony értéke. A **tervezett költségek** a teljes aktuális naptári hónap becsült díja, amelyet az előző öt nap Lab-díja alapján számítunk fel.
 
-    A rendszer a következő egész számra kerekíti a költségeket. Példa: 
+    A rendszer a következő egész számra kerekíti a költségeket. Például: 
 
    * 5,01 legfeljebb 6 
    * 5,50 legfeljebb 6

@@ -4,10 +4,10 @@ description: A DevTest Labs erőforrásainak fejlesztéséhez ajánlott eljárá
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: c18bbbfd3ad727811cc28c424381e5caf32b1cfc
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85483805"
 ---
 # <a name="best-practices-for-distributed-and-collaborative-development-of-azure-devtest-labs-resources"></a>Ajánlott eljárások az Azure DevTest Labs-erőforrások elosztott és együttműködő fejlesztéséhez

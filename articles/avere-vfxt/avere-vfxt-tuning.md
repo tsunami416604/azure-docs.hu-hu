@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 12/19/2019
 ms.author: rohogue
 ms.openlocfilehash: 2d06e3cc80f05cc86980dd2570d1d4d203295ff2
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85505290"
 ---
 # <a name="cluster-tuning"></a>A fürtök finomhangolása
@@ -34,7 +34,7 @@ Ezeket a módosításokat az adatkészlet tulajdonságai vagy a munkafolyamat st
 
 ## <a name="cloud-nas-or-cloud-gateway-optimizations"></a>Cloud NAS vagy Cloud Gateway-optimalizálás
 
-A Felhőbeli NAS-vagy átjáró-forgatókönyvekben a vFXT-fürt NAS stílusú hozzáférést biztosít egy felhőalapú tárolóhoz. A vFXT-fürt és a Felhőbeli tárolók közötti nagyobb adatsebességek kihasználásához a képviselő javaslatot tehet a beállítások módosítására, hogy a rendszer a gyorsítótárból agresszíven küldje el az adatait a tárolási kötetre. Példa:
+A Felhőbeli NAS-vagy átjáró-forgatókönyvekben a vFXT-fürt NAS stílusú hozzáférést biztosít egy felhőalapú tárolóhoz. A vFXT-fürt és a Felhőbeli tárolók közötti nagyobb adatsebességek kihasználásához a képviselő javaslatot tehet a beállítások módosítására, hogy a rendszer a gyorsítótárból agresszíven küldje el az adatait a tárolási kötetre. Például:
 
 * Növelje meg a fürt és a tároló közötti TCP-kapcsolatok számát
 

@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan használja a Azure DevTest Labs megosztott IP-c
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 36a5da1b2b6252d0adb480a622c461b33425e675
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85484094"
 ---
 # <a name="understand-shared-ip-addresses-in-azure-devtest-labs"></a>A Azure DevTest Labs megosztott IP-címeinek megismerése

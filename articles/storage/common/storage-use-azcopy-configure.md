@@ -9,15 +9,15 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
 ms.openlocfilehash: acfe868f26d7509d1dd06554482b4fb3b29a5b22
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85504355"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy konfigurálása, optimalizálása és megoldása
 
-A AzCopy olyan parancssori segédprogram, amellyel blobokat vagy fájlokat másolhat a Storage-fiókba, vagy átmásolhatja azokat. Ez a cikk segítséget nyújt a speciális konfigurációs feladatok elvégzésében, valamint a AzCopy használata során felmerülő problémák elhárításában.
+Az AzCopy egy parancssori segédprogram, amellyel blobokat és fájlokat másolhat a tárfiókok között. Ez a cikk segítséget nyújt a speciális konfigurációs feladatok elvégzéséhez és az AzCopy használata során felmerülő problémák elhárításához.
 
 > [!NOTE]
 > Ha olyan tartalmat keres, amely segítséget nyújt a AzCopy megkezdéséhez, tekintse meg a következő cikkeket:
@@ -124,7 +124,7 @@ A [azcopy másolási](storage-ref-azcopy-copy.md) parancs nem törli a célhelyr
 
 ## <a name="troubleshoot-issues"></a>Problémák elhárítása
 
-A AzCopy minden feladattípus esetében létrehozza a naplófájlokat és megtervezi a fájlokat. A naplók segítségével megvizsgálhatja és elháríthatja a lehetséges problémákat. 
+Az AzCopy napló- és tervfájlokat hoz létre az összes feladathoz. A naplók segítségével kivizsgálhatja és elháríthatja a lehetséges problémákat. 
 
 A naplók a hiba ( `UPLOADFAILED` , `COPYFAILED` , és `DOWNLOADFAILED` ) állapotát, a teljes elérési utat és a hiba okát fogják tartalmazni.
 

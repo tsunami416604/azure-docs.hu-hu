@@ -4,10 +4,10 @@ description: Ez a cikk bemutatja, hogyan tölthetők fel a AzCopy parancssori se
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: cbed78af3e74af5cf72fd20866abf1ee79011ef4
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85483210"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-azcopy"></a>VHD-fájl feltöltése a labor Storage-fiókjába a AzCopy használatával
