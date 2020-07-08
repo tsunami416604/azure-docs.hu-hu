@@ -4,21 +4,21 @@ description: Ez a cikk azt ismerteti, hogyan kezelhetők a kiszolgálók rendsze
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/15/2020
+ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 944a84405bd7e03b72b2610278f9f0e4d3cfaf38
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9edc43f9b2b62a3d9da9d6fba5ab52318e8b6427
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81454237"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077507"
 ---
 # <a name="manage-server-administrators"></a>A kiszolgálók rendszergazdáinak kezelése
 
-A kiszolgálói rendszergazdáknak érvényes felhasználói vagy biztonsági csoportnak kell lenniük a Azure Active Directoryban (Azure AD) ahhoz a bérlőhöz, amelyben a kiszolgáló található. A kiszolgálói rendszergazdák kezeléséhez **Analysis Services rendszergazdákat** használhat a Azure Portal, a SSMS, a PowerShellben vagy a REST API kiszolgálói tulajdonságaiban. 
+A kiszolgálói rendszergazdáknak érvényes felhasználó, szolgáltatásnév vagy biztonsági csoportnak kell lenniük a Azure Active Directoryban (Azure AD) azon bérlő számára, amelyben a kiszolgáló található. A kiszolgálói rendszergazdák kezeléséhez **Analysis Services rendszergazdákat** használhat a Azure Portal, a SSMS, a PowerShellben vagy a REST API kiszolgálói tulajdonságaiban. 
 
-**Biztonsági csoport**hozzáadásakor használja a t `obj:groupid@tenantid` .
+**Biztonsági csoport**hozzáadásakor használja a t `obj:groupid@tenantid` . Az egyszerű szolgáltatások nem támogatottak a kiszolgálói rendszergazdai szerepkörhöz hozzáadott biztonsági csoportokban.
 
 ## <a name="to-add-server-administrators-by-using-azure-portal"></a>Kiszolgáló-rendszergazdák hozzáadása a Azure Portal használatával
 

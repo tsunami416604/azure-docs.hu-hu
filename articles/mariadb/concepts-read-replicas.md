@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 6/24/2020
-ms.openlocfilehash: d1d1dbb273ed1da3835f533b5f38743db73816c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 7/7/2020
+ms.openlocfilehash: bed89b325ce28ab969bad5ed30802bdb67a21a96
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85367332"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86076555"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Olvasási replikák az Azure Database for MariaDB-ben
 
@@ -108,6 +108,25 @@ Ha úgy dönt, hogy leállítja a replikálást egy replikára, az elveszíti az
 > Mielőtt leállítja a replikálást egy olvasási replikán, győződjön meg arról, hogy a replika rendelkezik a szükséges összes adattal.
 
 Megtudhatja, hogyan [állíthatja le a replikálást egy replikára](howto-read-replicas-portal.md).
+
+## <a name="failover"></a>Feladatátvétel
+
+A fő-és a replika-kiszolgálók között nincs automatikus feladatátvétel. 
+
+Mivel a replikáció aszinkron, a főkiszolgáló és a replika között késés van. A késés mértékét számos tényező befolyásolja, például a főkiszolgálón futó munkaterhelés, valamint az adatközpontok közötti késleltetés. A legtöbb esetben a replika-késés néhány másodperc és néhány perc között mozog. A tényleges replikációs késést a metrikai *replika késésének*használatával követheti nyomon, amely az egyes replikák esetében elérhető. Ez a metrika az utolsó újrajátszott tranzakció óta eltelt időt mutatja. Azt javasoljuk, hogy azonosítsa az átlagos késést úgy, hogy a replika késését egy adott időszakra figyelje. Beállíthat egy riasztást a replika késésével kapcsolatban, hogy ha az a várt tartományon kívül esik, megteheti a műveletet.
+
+> [!Tip]
+> Ha feladatátvételt hajt végre a replikára, akkor a replika a főkiszolgálóról való leválasztásakor a késés azt jelzi, hogy mekkora adatvesztés történik.
+
+Ha úgy döntött, hogy feladatátvételt kíván replikálni egy replikára, 
+
+1. A replika replikálásának leállítása<br/>
+   Ez a lépés szükséges ahhoz, hogy a replika-kiszolgáló el tudja fogadni az írásokat. Ennek a folyamatnak a részeként a replika kiszolgáló leválasztása a főkiszolgálóról történik. Miután elindította a replikálást, a háttérrendszer-folyamat általában 2 percet vesz igénybe. A művelet következményeinek megismeréséhez tekintse meg a jelen cikk [replikálás leállítása](#stop-replication) című szakaszát.
+    
+2. Az alkalmazás átirányítása a (korábbi) replikára<br/>
+   Minden kiszolgálón egyedi a kapcsolatok karakterlánca. Frissítse az alkalmazást, hogy a főkiszolgáló helyett a (korábbi) replikára mutasson.
+    
+Miután az alkalmazás sikeresen feldolgozta az olvasásokat és az írásokat, befejezte a feladatátvételt. Az alkalmazás által tapasztalható állásidő mennyisége a probléma észlelése és a fenti 1. és 2. lépés elvégzése után függ.
 
 ## <a name="considerations-and-limitations"></a>Megfontolandó szempontok és korlátozások
 

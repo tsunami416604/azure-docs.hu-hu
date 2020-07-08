@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 01153317b49e4543f10faa517bce7bcc01ce22d4
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: c55d8201d00daedaf87f270f365573040d799fba
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84708331"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86058197"
 ---
 # <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>Az AES-128 dinamikus titkosítás és a kulcskézbesítési szolgáltatás használata
 > [!div class="op_single_selector"]
@@ -161,28 +161,32 @@ A HLS esetében a gyökérszintű jegyzékfájl a szegmens fájlokba van bontva.
 
 A legfelső szintű jegyzékfájl például a következő: http: \/ /test001.Origin.Mediaservices.Windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ISM/manifest (Format = m3u8-AAPL). A szegmensek fájlneveit tartalmazó listát tartalmaz.
 
-    . . . 
-    #EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=630133,RESOLUTION=424x240,CODECS="avc1.4d4015,mp4a.40.2",AUDIO="audio"
-    QualityLevels(514369)/Manifest(video,format=m3u8-aapl)
-    #EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=965441,RESOLUTION=636x356,CODECS="avc1.4d401e,mp4a.40.2",AUDIO="audio"
-    QualityLevels(842459)/Manifest(video,format=m3u8-aapl)
-    …
+```text
+. . . 
+#EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=630133,RESOLUTION=424x240,CODECS="avc1.4d4015,mp4a.40.2",AUDIO="audio"
+QualityLevels(514369)/Manifest(video,format=m3u8-aapl)
+#EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=965441,RESOLUTION=636x356,CODECS="avc1.4d401e,mp4a.40.2",AUDIO="audio"
+QualityLevels(842459)/Manifest(video,format=m3u8-aapl)
+…
+```
 
 Ha egy szövegszerkesztőben (például a http: \/ /test001.Origin.Mediaservices.Windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ISM/QualityLevels (514369)/manifest (videó, Format = m3u8-AAPL) található szegmens fájlok egyikét nyitja meg, akkor #EXT-X-Key, amely azt jelzi, hogy a fájl titkosítva van.
 
-    #EXTM3U
-    #EXT-X-VERSION:4
-    #EXT-X-ALLOW-CACHE:NO
-    #EXT-X-MEDIA-SEQUENCE:0
-    #EXT-X-TARGETDURATION:9
-    #EXT-X-KEY:METHOD=AES-128,
-    URI="https://wamsbayclus001kd-hs.cloudapp.net/HlsHandler.ashx?
-         kid=da3813af-55e6-48e7-aa9f-a4d6031f7b4d",
-            IV=0XD7D7D7D7D7D7D7D7D7D7D7D7D7D7D7D7
-    #EXT-X-PROGRAM-DATE-TIME:1970-01-01T00:00:00.000+00:00
-    #EXTINF:8.425708,no-desc
-    Fragments(video=0,format=m3u8-aapl)
-    #EXT-X-ENDLIST
+```text
+#EXTM3U
+#EXT-X-VERSION:4
+#EXT-X-ALLOW-CACHE:NO
+#EXT-X-MEDIA-SEQUENCE:0
+#EXT-X-TARGETDURATION:9
+#EXT-X-KEY:METHOD=AES-128,
+URI="https://wamsbayclus001kd-hs.cloudapp.net/HlsHandler.ashx?
+        kid=da3813af-55e6-48e7-aa9f-a4d6031f7b4d",
+        IV=0XD7D7D7D7D7D7D7D7D7D7D7D7D7D7D7D7
+#EXT-X-PROGRAM-DATE-TIME:1970-01-01T00:00:00.000+00:00
+#EXTINF:8.425708,no-desc
+Fragments(video=0,format=m3u8-aapl)
+#EXT-X-ENDLIST
+```
 
 >[!NOTE] 
 >Ha AES-titkosítású HLS szeretne lejátszani a Safariban, tekintse meg [ezt a blogot](https://azure.microsoft.com/blog/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/).
@@ -246,7 +250,7 @@ A következő kód bemutatja, hogyan küldhet egy kérést a Media Services Key 
     <add key="Audience" value="urn:test"/>
     ```
 
-### <a name="example"></a><a id="example"></a>Példa
+### <a name="example"></a><a id="example"></a>Például
 
 Írja felül a Program.cs fájlban található kódot az itt látható kóddal.
  

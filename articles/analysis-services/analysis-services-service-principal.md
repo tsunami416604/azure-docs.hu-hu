@@ -4,15 +4,15 @@ description: Megtudhatja, hogyan hozhat létre egyszerű szolgáltatásnevet Azu
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/26/2020
+ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f2ffd1ea098bcf98e25958ca40318a65b0ef6605
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 28947d1fa4ece5d6285651ef07342cae06ad8bc8
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361455"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077371"
 ---
 # <a name="automation-with-service-principals"></a>Automatizálás szolgáltatásnevekkel
 
@@ -38,7 +38,7 @@ Az egyszerű szolgáltatás hitelesítő adatai és tanúsítványai biztonságo
 
 ## <a name="add-service-principals-to-server-admin-role"></a>Egyszerű szolgáltatások hozzáadása a kiszolgálói rendszergazdai szerepkörhöz
 
-Ahhoz, hogy egy egyszerű szolgáltatást Analysis Services kiszolgálófelügyeleti műveletekhez lehessen használni, hozzá kell adnia azt a kiszolgálói rendszergazdák szerepkörhöz. További információ: [egyszerű szolgáltatásnév hozzáadása a kiszolgálói rendszergazdai szerepkörhöz](analysis-services-addservprinc-admins.md).
+Ahhoz, hogy egy egyszerű szolgáltatást Analysis Services kiszolgálófelügyeleti műveletekhez lehessen használni, hozzá kell adnia azt a kiszolgálói rendszergazdák szerepkörhöz. Az egyszerű szolgáltatásokat közvetlenül a kiszolgálói rendszergazdai szerepkörhöz kell hozzáadni. Egyszerű szolgáltatásnév hozzáadása egy biztonsági csoporthoz, és a biztonsági csoport hozzáadása a kiszolgálói rendszergazdai szerepkörhöz nem támogatott. További információ: [egyszerű szolgáltatásnév hozzáadása a kiszolgálói rendszergazdai szerepkörhöz](analysis-services-addservprinc-admins.md).
 
 ## <a name="service-principals-in-connection-strings"></a>Egyszerű szolgáltatások a kapcsolódó sztringekben
 

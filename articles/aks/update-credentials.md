@@ -5,12 +5,12 @@ description: Megtudhatja, hogyan frissítheti vagy állíthatja alaphelyzetbe az
 services: container-service
 ms.topic: article
 ms.date: 03/11/2019
-ms.openlocfilehash: 914e043e2c0cf39c18480b5ca5e34332398806f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7dcbd91063d4f36c4d78023b6548db0c968eda74
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84905374"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077694"
 ---
 # <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service (ak) hitelesítő adatainak frissítése vagy elforgatása
 
@@ -30,6 +30,16 @@ Ha egy AK-fürt hitelesítő adatait szeretné frissíteni, a következőket teh
 
 * frissítse a fürt által használt meglévő egyszerű szolgáltatás hitelesítő adatait, vagy
 * hozzon létre egy egyszerű szolgáltatásnevet, és frissítse a fürtöt az új hitelesítő adatok használatára.
+
+### <a name="check-the-expiration-date-of-your-service-principal"></a>Az egyszerű szolgáltatás lejárati idejének megtekintése
+
+Az egyszerű szolgáltatás lejárati idejének ellenőrzéséhez használja az az [ad SP hitelesítőadat-lista][az-ad-sp-credential-list] parancsot. A következő példa beolvassa a *myAKSCluster* nevű fürt egyszerű SZOLGÁLTATÁSának azonosítóját a *myResourceGroup* -erőforráscsoporthoz az az [AK show][az-aks-show] parancs használatával. Az egyszerű szolgáltatás azonosítója *SP_ID* nevű változóként van beállítva az az [ad SP hitelesítőadat-lista][az-ad-sp-credential-list] paranccsal való használatra.
+
+```azurecli
+SP_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster \
+    --query servicePrincipalProfile.clientId -o tsv)
+az ad sp credential list --id $SP_ID --query "[].endDate" -o tsv
+```
 
 ### <a name="reset-existing-service-principal-credential"></a>Meglévő egyszerű szolgáltatásnév hitelesítő adatainak alaphelyzetbe állítása
 
@@ -88,7 +98,7 @@ az aks update-credentials \
     --name myAKSCluster \
     --reset-service-principal \
     --service-principal $SP_ID \
-    --client-secret $SP_SECRET
+    --client-secret "$SP_SECRET"
 ```
 
 Néhány percet vesz igénybe, hogy az egyszerű szolgáltatás hitelesítő adatai frissítve legyenek az AK-ban.
@@ -120,4 +130,5 @@ Ebben a cikkben a saját AK-fürthöz tartozó egyszerű szolgáltatás és a HR
 [aad-integration]: azure-ad-integration.md
 [create-aad-app]: azure-ad-integration.md#create-the-server-application
 [az-ad-sp-create]: /cli/azure/ad/sp#az-ad-sp-create-for-rbac
+[az-ad-sp-credential-list]: /cli/azure/ad/sp/credential#az-ad-sp-credential-list
 [az-ad-sp-credential-reset]: /cli/azure/ad/sp/credential#az-ad-sp-credential-reset

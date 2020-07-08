@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: masnider
-ms.openlocfilehash: 17827342b67d37d9fbeb56654824e004367823ef
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 1780cb47696813b5d26035f54e0685969482dba6
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84710694"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86058112"
 ---
 # <a name="scaling-in-service-fabric"></a>Méretezés Service Fabric
 Az Azure Service Fabric használatával könnyedén méretezhető alkalmazások hozhatók létre egy fürt csomópontjain található szolgáltatások, partíciók és replikák kezelésével. Számos számítási feladat ugyanazon a hardveren való futtatása lehetővé teszi az erőforrások maximális kihasználtságát, azonban rugalmasságot is biztosít a munkaterhelések skálázása szempontjából. Ez a Channel 9 videó azt ismerteti, hogyan hozhat létre méretezhető Service-alkalmazásokat:
@@ -127,7 +127,7 @@ De miért is érdemes egyetlen partíciós sémát kiválasztania az összes fel
 A skála kialakításakor vegye figyelembe a következő dinamikus mintát. Előfordulhat, hogy módosítania kell a helyzetet:
 
 1. Ahelyett, hogy kiválasszon egy particionálási sémát mindenki számára, hozzon létre egy "Manager-szolgáltatást".
-2. A Manager szolgáltatás feladata, hogy a szolgáltatásra való feliratkozáskor megtekintse a vásárlói adatokat. Ezután attól függően, hogy a kezelő szolgáltatás melyik információ alapján hozza létre a _tényleges_ Contact-Storage szolgáltatás egy példányát, _csak az adott ügyfél számára_. Ha speciális konfigurációra, elkülönítésre vagy frissítésre van szükség, dönthet úgy is, hogy egy alkalmazás-példányt indít el ehhez az ügyfélhez. 
+2. A Manager szolgáltatás feladata, hogy a szolgáltatásra való feliratkozáskor megtekintse a vásárlói adatokat. Ezután attól függően, hogy a kezelő szolgáltatás a _tényleges_ Contact-Storage szolgáltatás egy példányát hozza létre, _csak az adott ügyfél számára_. Ha speciális konfigurációra, elkülönítésre vagy frissítésre van szükség, dönthet úgy is, hogy egy alkalmazás-példányt indít el ehhez az ügyfélhez. 
 
 Ez a dinamikus létrehozási minta számos előnnyel jár:
 

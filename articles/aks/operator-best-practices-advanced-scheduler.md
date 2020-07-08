@@ -5,11 +5,12 @@ description: Ismerje meg a fürt operátorának ajánlott eljárásait a speciá
 services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: f63db0efb509223715efd4848a91d0435ab54af7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5b003c9f0c3b47779bd7da92fb64c57830911fae
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340855"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077847"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások az Azure Kubernetes Service (ak) speciális ütemező funkcióiról
 
@@ -100,7 +101,7 @@ A szennyező anyagok és a tolerálás a nehezen kivágott erőforrások logikai
 Tekintsük át a nagy mennyiségű memóriával rendelkező csomópontok példáját. Ezek a csomópontok előnyt biztosíthatnak a nagy mennyiségű memóriát igénylő hüvelyek számára. Győződjön meg arról, hogy az erőforrások nem tétlenek, hanem más hüvelyek futtatását is lehetővé teszik.
 
 ```console
-kubectl label node aks-nodepool1 hardware:highmem
+kubectl label node aks-nodepool1 hardware=highmem
 ```
 
 A pod-specifikáció ezt követően hozzáadja a `nodeSelector` tulajdonságot olyan csomópont-választó definiálásához, amely megfelel a csomóponton beállított címkének:

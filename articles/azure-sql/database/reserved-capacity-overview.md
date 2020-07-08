@@ -3,8 +3,8 @@ title: Számítási költségek mentése fenntartott kapacitással
 titleSuffix: Azure SQL Database & SQL Managed Instance
 description: Megtudhatja, hogyan vásárolhat Azure SQL Database és az SQL felügyelt példányának fenntartott kapacitását a számítási költségek mentéséhez.
 services: sql-database
-ms.service: sql-database
-ms.subservice: service
+ms.service: sql-db-mi
+ms.subservice: features
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
 ms.date: 08/29/2019
-ms.openlocfilehash: 1a733ea631b5c11b9686682420311a0d35cf46a5
-ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
+ms.openlocfilehash: 81e3547dbd86c840baed8e044a84afd3b63f5be5
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84718573"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86075773"
 ---
 # <a name="save-costs-for-resources-with-reserved-capacity---azure-sql-database--sql-managed-instance"></a>Fenntartott kapacitással rendelkező erőforrások költségeinek mentése – Azure SQL Database & SQL felügyelt példánya
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)] 
@@ -44,13 +44,13 @@ Tegyük fel például, hogy egy általános célt futtat, Gen5 – 16 virtuális
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Válassza a **Minden szolgáltatás** > **Reservations** lehetőséget.
 3. Válassza a **Hozzáadás** lehetőséget, majd a **foglalások** ablaktáblán válassza a **SQL Database** lehetőséget a SQL Database új foglalásának megvásárlásához.
-4. Töltse ki a kötelező mezőket. Meglévő adatbázisok (egy vagy készletezett) vagy felügyelt példányok, amelyek megfelelnek a kiválasztott attribútumoknak, a fenntartott kapacitás kedvezményének beszerzéséhez. A kedvezményt megkapó adatbázisok vagy felügyelt példányok tényleges száma a kiválasztott hatókörtől és mennyiségtől függ.
+4. Töltse ki a kötelező mezőket. A SQL Database és az SQL felügyelt példányának meglévő adatbázisai, amelyek megfelelnek a kiválasztott attribútumoknak, a fenntartott kapacitás kedvezményét kapják meg. A kedvezményt megkapó adatbázisok vagy felügyelt példányok tényleges száma a kiválasztott hatókörtől és mennyiségtől függ.
 
     ![A fenntartott kapacitás vásárlásának elküldése előtt képernyőkép](./media/reserved-capacity-overview/sql-reserved-vcores-purchase.png)
 
     A következő táblázat a kötelező mezőket ismerteti.
     
-    | Mező      | Leírás|
+    | Mező      | Description|
     |------------|--------------|
     |Előfizetés|A kapacitás foglalásának megfizetéséhez használt előfizetés. Az előfizetéshez tartozó fizetési módot a foglalás előzetes költségei alapján számítjuk fel. Az előfizetés típusának nagyvállalati szerződésnek (az MS-AZR-0017P vagy MS-AZR-0148P) vagy az utólagos elszámolású díjszabásnak (az MS-AZR-0003P vagy az MS-AZR-0023P) megfelelő egyedi szerződésnek kell lennie. Nagyvállalati előfizetésnél a díjak a regisztrációhoz tartozó keretek egyenlegeiből lesznek levonva, illetve túlhasználatként lesznek számlázva. Az utólagos elszámolású előfizetések esetében az előfizetés díjait a bankkártya vagy a számla fizetési módja alapján számítjuk fel.|
     |Hatókör       |A virtuális mag foglalási hatóköre egyetlen előfizetésre vagy több előfizetésre (megosztott hatókörre) is vonatkozhat. Ha a lehetőséget választja <br/><br/>**Megosztva**a virtuális mag foglalási kedvezményt a számlázási környezetben lévő előfizetésekben futó adatbázisra vagy felügyelt példányra alkalmazza a rendszer. A vállalati ügyfelek esetében a közös hatókör a regisztráció, és a regisztráción belüli összes előfizetés szerepel. A használatalapú fizetéses ügyfelek esetében a megosztott hatókör a fiókadminisztrátor által létrehozott, használatalapú fizetéses előfizetéseket foglalja magában.<br/><br/>**Egyszeri előfizetés**esetén a virtuális mag foglalási kedvezményt az előfizetésben lévő adatbázisokra vagy felügyelt példányokra alkalmazza a rendszer. <br/><br/>**Egy erőforráscsoport**, a foglalási kedvezmény a kiválasztott előfizetésben található adatbázisok vagy felügyelt példányok példányaira, valamint az adott előfizetéshez tartozó kiválasztott erőforráscsoporthoz lesz alkalmazva.|

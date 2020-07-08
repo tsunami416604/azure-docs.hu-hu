@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
-ms.openlocfilehash: edb6846d199470818e07a208feb778aca3021d9e
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: e12f0cd44143621d34096a6c1161a22a89d21d9b
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85253664"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077651"
 ---
 # <a name="branching-and-chaining-activities-in-an-azure-data-factory-pipeline-using-the-azure-portal"></a>Elágazó és láncolási tevékenységek egy Azure Data Factory-folyamatban a Azure Portal használatával
 
@@ -139,7 +139,8 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 
    Az Azure-beli adatgyár nevének **globálisan egyedinek**kell lennie. Ha a következő hibaüzenetet kapja, módosítsa a data factory nevét (például sajátnévADFTutorialDataFactory-ra), majd próbálkozzon újra a létrehozással. A Data Factory-összetevők részleteit a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
 
-       `Data factory name “ADFTutorialDataFactory” is not available`
+   *A "ADFTutorialDataFactory" nevű adatgyár nem érhető el.*
+
 3. Válassza ki azt az **Azure-előfizetést**, amelyben az adat-előállítót létre szeretné hozni.
 4. Az **erőforráscsoport**esetében hajtsa végre az alábbi lépések egyikét:
 
@@ -202,10 +203,11 @@ Ebben a lépésben egy másolási tevékenységgel és két webes tevékenységg
    ![Új Azure Storage-beli társított szolgáltatás](./media/tutorial-control-flow-portal/new-azure-storage-linked-service.png)
 12. Adja meg a `@pipeline().parameters.sourceBlobContainer` mappanevet és az `emp.txt` fájlnevet. A sourceBlobContainer folyamatparaméterrel adhatja meg az adatkészlet mappájának elérési útját.
 
-   ![Forrásadatkészlet beállításai](./media/tutorial-control-flow-portal/source-dataset-settings.png)
-13. Váltson a **folyamatot** tartalmazó lapra, (vagy) kattintson a folyamatra a fanézetben. Győződjön meg arról, hogy a **Forrásadatkészlet** mezőben a **SourceBlobDataset** adatkészlet van kiválasztva.
+    ![Forrásadatkészlet beállításai](./media/tutorial-control-flow-portal/source-dataset-settings.png)
 
-    ![Forrásadatkészlet](./media/tutorial-control-flow-portal/pipeline-source-dataset-selected.png)
+13. Váltson a **folyamatot** tartalmazó lapra, (vagy) kattintson a folyamatra a fanézetben. Győződjön meg arról, hogy a **Forrásadatkészlet** mezőben a **SourceBlobDataset** adatkészlet van kiválasztva.
+      
+   ![Forrásadatkészlet](./media/tutorial-control-flow-portal/pipeline-source-dataset-selected.png)
 
 13. A tulajdonságok ablakában váltson a **Fogadó** lapra, és kattintson az **+ Új** elemre a **Fogadó adatkészlet** mezőben. Ebben a lépésben a forrásadatkészlet létrehozásához hasonlóan létrehoz egy fogadó adatkészletet a másolási tevékenységhez.
 
@@ -329,7 +331,7 @@ Ebben a lépésben egy másolási tevékenységgel és két webes tevékenységg
 
     ![Tevékenységfuttatási hiba](./media/tutorial-control-flow-portal/activity-run-error.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az oktatóanyagban az alábbi lépéseket hajtotta végre:
 
 > [!div class="checklist"]

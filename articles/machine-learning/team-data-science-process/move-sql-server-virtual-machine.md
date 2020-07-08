@@ -11,11 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: be1abe415955b52cbd639faef703e5c2fbd257b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 82ef70677dd0ede4ddfdd0899747c18f335da5a7
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84194372"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077031"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>Adatok áthelyezés SQL Server-kiszolgálóra Azure-beli virtuális gépeken
 
@@ -186,11 +187,11 @@ Számos módszer használható a helyszíni SQL Server adatainak tömeges export
 
     Fájl létrehozásának formázása a BCP SQL Server számítógépről való futtatásakor
 
-        bcp dbname..tablename format nul -c -x -f exportformatfilename.xml -S servername\sqlinstance -T -t \t -r \n
+    `bcp dbname..tablename format nul -c -x -f exportformatfilename.xml -S servername\sqlinstance -T -t \t -r \n`
 
     Fájl létrehozásának formázása, ha a BCP-t távolról futtatja egy SQL Server
 
-        bcp dbname..tablename format nul -c -x -f  exportformatfilename.xml  -U username@servername.database.windows.net -S tcp:servername -P password  --t \t -r \n
+    `bcp dbname..tablename format nul -c -x -f  exportformatfilename.xml  -U username@servername.database.windows.net -S tcp:servername -P password  --t \t -r \n`
 4. Az [adatok beolvasása a fájl forrása](#filesource_to_sqlonazurevm) című részben leírt módszerek bármelyikével áthelyezheti az adatok egy SQL Serverba.
 
 ### <a name="sql-database-migration-wizard"></a><a name="sql-migration"></a>SQL Database áttelepítési varázsló
@@ -208,7 +209,7 @@ Alább látható az adatbázis biztonsági mentési/visszaállítási lehetősé
 
 ![SQL Server importálási eszköz][1]
 
-## <a name="resources"></a>Erőforrások
+## <a name="resources"></a>További források
 [Adatbázis migrálása SQL Server Azure-beli virtuális gépen](../../azure-sql/virtual-machines/windows/migrate-to-vm-from-sql-server.md)
 
 [Az SQL Server használata az Azure Virtual Machinesben – áttekintés](../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)

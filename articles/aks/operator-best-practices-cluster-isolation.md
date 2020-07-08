@@ -5,11 +5,12 @@ description: Ismerje meg az Azure Kubernetes Service-ben (ak) való elkülönít
 services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: 00643dc1699d1cbd47efd271738015ea05e895e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 12c65f3b4241d3e732c51acb6ffa95ff314efb50
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80668343"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077764"
 ---
 # <a name="best-practices-for-cluster-isolation-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások a fürtök elkülönítéséhez az Azure Kubernetes szolgáltatásban (ak)
 
@@ -29,7 +30,7 @@ A Kubernetes lehetővé teszi az egyazon fürtön található csapatok és szám
   * A fejlettebb Scheduler-funkciók közé tartozik a szennyező elemek és a tolerálás, a csomópont-választó, valamint a csomópont-és a pod-affinitás, illetve a kapcsolati affinitás. További információ ezekről a funkciókról: [ajánlott eljárások a speciális Scheduler-funkciókhoz az AK-ban][aks-best-practices-advanced-scheduler].
 * A **hálózatkezelés** magában foglalja a hálózati házirendek használatát a hüvelyen belüli és kívüli adatforgalom szabályozásához.
 * A **hitelesítés és engedélyezés** magában foglalja a szerepköralapú hozzáférés-vezérlés (RBAC) és a Azure Active Directory (ad) integrációját, a pod-identitásokat és a titkokat Azure Key Vaultokban. További információ ezekről a funkciókról: [ajánlott eljárások a hitelesítéshez és engedélyezéshez az AK-ban][aks-best-practices-identity].
-* A **tárolók** közé tartoznak a pod biztonsági szabályzatok, a pod biztonsági környezetek, a képek és a biztonsági rések keresése. Emellett az App Armor vagy a Seccompot (Secure Computing) használatát is magában foglalja a tároló elérésének korlátozásához a mögöttes csomóponthoz.
+* A **tárolók** a hüvelyek biztonságának betartatására, a pod biztonsági környezetek használatára és a biztonsági rések futtatására szolgáló rendszerképek és futtatókörnyezet vizsgálatára szolgáló Azure Policy-bővítményt tartalmaznak. Emellett az App Armor vagy a Seccompot (Secure Computing) használatát is magában foglalja a tároló elérésének korlátozásához a mögöttes csomóponthoz.
 
 ## <a name="logically-isolate-clusters"></a>Fürtök logikai elkülönítése
 

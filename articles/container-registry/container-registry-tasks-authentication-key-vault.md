@@ -2,13 +2,13 @@
 title: Külső hitelesítés az ACR-feladatból
 description: Konfiguráljon egy Azure Container Registry feladatot (ACR-feladatot) az Azure Key vaultban tárolt Docker hub hitelesítő adatok olvasásához az Azure-erőforrások felügyelt identitásának használatával.
 ms.topic: article
-ms.date: 01/14/2020
-ms.openlocfilehash: 47d3d643ee1287ef4f444095a2c6cfe6dcab294b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 07/06/2020
+ms.openlocfilehash: 0bc43f958a14016146160a06372af0b36a9fff75
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76842520"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86058129"
 ---
 # <a name="external-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>Külső hitelesítés egy ACR-feladatban egy Azure által felügyelt identitás használatával 
 
@@ -68,7 +68,7 @@ Egy valós forgatókönyvben a titkokat valószínűleg egy külön folyamat fog
 
 ## <a name="define-task-steps-in-yaml-file"></a>Feladat lépéseinek meghatározása a YAML fájlban
 
-A példához tartozó lépések egy [YAML fájlban](container-registry-tasks-reference-yaml.md)vannak meghatározva. Hozzon létre egy `dockerhubtask.yaml` nevű fájlt egy helyi munkakönyvtárban, és illessze be a következő tartalmakat. Ügyeljen arra, hogy a Key Vault nevét a Key Vault nevű fájlban cserélje le.
+A példához tartozó lépések egy [YAML fájlban](container-registry-tasks-reference-yaml.md)vannak meghatározva. Hozzon létre egy nevű fájlt `dockerhubtask.yaml` egy helyi munkakönyvtárban, és illessze be a következő tartalmakat. Ügyeljen arra, hogy a Key Vault nevét a Key Vault nevű fájlban cserélje le.
 
 ```yml
 version: v1.1.0
@@ -91,7 +91,7 @@ steps:
 A feladat lépései a következők:
 
 * Titkos hitelesítő adatok kezelése a Docker hub használatával történő hitelesítéshez.
-* Hitelesítés a Docker hub használatával a titkoknak a `docker login` parancsba való átadásával.
+* Hitelesítés a Docker hub használatával a titkoknak a parancsba való átadásával `docker login` .
 * Hozzon létre egy rendszerképet az [Azure-Samples/ACR-Tasks](https://github.com/Azure-Samples/acr-tasks.git) tárház Docker használatával.
 * Küldje le a rendszerképet a privát Docker hub adattárba.
 
@@ -104,7 +104,7 @@ Az ebben a szakaszban szereplő lépések egy feladatot hoznak létre, és enged
 
 ### <a name="create-task"></a>Feladat létrehozása
 
-Hozza létre a feladat *dockerhubtask* a következő az [ACR Task Create][az-acr-task-create] parancs végrehajtásával. A feladat forráskód-környezet nélkül fut, és a parancs a munkakönyvtárban `dockerhubtask.yaml` található fájlra hivatkozik. A `--assign-identity` paraméter átadja a felhasználó által hozzárendelt identitás erőforrás-azonosítóját. 
+Hozza létre a feladat *dockerhubtask* a következő az [ACR Task Create][az-acr-task-create] parancs végrehajtásával. A feladat forráskód-környezet nélkül fut, és a parancs a `dockerhubtask.yaml` munkakönyvtárban található fájlra hivatkozik. A `--assign-identity` paraméter átadja a felhasználó által hozzárendelt identitás erőforrás-azonosítóját. 
 
 ```azurecli
 az acr task create \
@@ -117,13 +117,27 @@ az acr task create \
 
 [!INCLUDE [container-registry-tasks-user-id-properties](../../includes/container-registry-tasks-user-id-properties.md)]
 
+
+### <a name="grant-identity-access-to-key-vault"></a>Identitás-hozzáférés biztosítása a Key vaulthoz
+
+A Key vaultra vonatkozó hozzáférési szabályzat beállításához futtassa a következőt az kulcstartó [set-Policy][az-keyvault-set-policy] paranccsal. A következő példa lehetővé teszi, hogy az identitás a Key vaultból olvassa a titkos kulcsokat. 
+
+```azurecli
+az keyvault set-policy --name mykeyvault \
+  --resource-group myResourceGroup \
+  --object-id $principalID \
+  --secret-permissions get
+```
+
+Folytassa [a feladat manuális futtatásával](#manually-run-the-task).
+
 ## <a name="option-2-create-task-with-system-assigned-identity"></a>2. lehetőség: feladat létrehozása rendszer által hozzárendelt identitással
 
 Az ebben a szakaszban szereplő lépések egy feladatot hoznak létre, és engedélyezik a rendszer által hozzárendelt identitást. Ha inkább egy felhasználó által hozzárendelt identitást szeretne engedélyezni, tekintse meg az [1. lehetőség: feladat létrehozása felhasználó által hozzárendelt identitással](#option-1-create-task-with-user-assigned-identity)című témakört. 
 
 ### <a name="create-task"></a>Feladat létrehozása
 
-Hozza létre a feladat *dockerhubtask* a következő az [ACR Task Create][az-acr-task-create] parancs végrehajtásával. A feladat forráskód-környezet nélkül fut, és a parancs a munkakönyvtárban `dockerhubtask.yaml` található fájlra hivatkozik. Az `--assign-identity` érték nélküli paraméter lehetővé teszi a rendszer által hozzárendelt identitást a feladatban.  
+Hozza létre a feladat *dockerhubtask* a következő az [ACR Task Create][az-acr-task-create] parancs végrehajtásával. A feladat forráskód-környezet nélkül fut, és a parancs a `dockerhubtask.yaml` munkakönyvtárban található fájlra hivatkozik. Az `--assign-identity` érték nélküli paraméter lehetővé teszi a rendszer által hozzárendelt identitást a feladatban.  
 
 ```azurecli
 az acr task create \
@@ -136,7 +150,7 @@ az acr task create \
 
 [!INCLUDE [container-registry-tasks-system-id-properties](../../includes/container-registry-tasks-system-id-properties.md)]
 
-## <a name="grant-identity-access-to-key-vault"></a>Identitás-hozzáférés biztosítása a Key vaulthoz
+### <a name="grant-identity-access-to-key-vault"></a>Identitás-hozzáférés biztosítása a Key vaulthoz
 
 A Key vaultra vonatkozó hozzáférési szabályzat beállításához futtassa a következőt az kulcstartó [set-Policy][az-keyvault-set-policy] paranccsal. A következő példa lehetővé teszi, hogy az identitás a Key vaultból olvassa a titkos kulcsokat. 
 
@@ -202,7 +216,7 @@ Sending build context to Docker daemon    129kB
 Run ID: cf24 was successful after 15s
 ```
 
-A rendszerkép leküldésének megerősítéséhez keresse meg a saját Docker`cf24` hub-tárházban található címkét (ebben a példában).
+A rendszerkép leküldésének megerősítéséhez keresse meg a saját Docker hub-tárházban található címkét ( `cf24` ebben a példában).
 
 ## <a name="next-steps"></a>További lépések
 

@@ -11,12 +11,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: how-to
 ms.date: 03/28/2017
-ms.openlocfilehash: 634c8b118a9d1f041e536f17cc9588f3a85fa4d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b844a18a5acbd7a631bfe3b650dfa155d0e064ba
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85321826"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86076657"
 ---
 # <a name="deploy-azure-machine-learning-studio-classic-web-services-that-use-data-import-and-data-export-modules"></a>Az adatimportálást és az adatexportálási modulokat használó Azure Machine Learning Studio (klasszikus) webszolgáltatások üzembe helyezése
 
@@ -41,8 +41,8 @@ Az Azure SQL-táblából származó adatok beolvasása:
 6. Az adatbázis- **kiszolgáló neve**, az **adatbázis neve**, a **Felhasználónév**és a **jelszó** mezőben adja meg az adatbázishoz szükséges adatokat.
 7. Az adatbázis-lekérdezés mezőben adja meg a következő lekérdezést.
 
-     Válassza a [kor] lehetőséget,
-
+    ```tsql
+     select [age],
         [workclass],
         [fnlwgt],
         [education],
@@ -57,7 +57,8 @@ Az Azure SQL-táblából származó adatok beolvasása:
         [hours-per-week],
         [native-country],
         [income]
-     a következőből: dbo. censusdata;
+     from dbo.censusdata;
+    ```
 8. A kísérlet vászon alján kattintson a **Futtatás**elemre.
 
 ## <a name="create-the-predictive-experiment"></a>A prediktív kísérlet létrehozása
@@ -105,13 +106,15 @@ A klasszikus webszolgáltatásként való üzembe helyezéshez és a használatb
 8. Frissítse a *apiKey* változó értékét a korábban mentett API-kulccsal.
 9. Keresse meg a kérelem deklarációját, és frissítse az adatok *importálása* és *exportálása* modulba átadott webszolgáltatás-paraméterek értékeit. Ebben az esetben az eredeti lekérdezést kell használnia, de meg kell adnia egy új táblanév nevet.
 
-        var request = new BatchExecutionRequest()
-        {
-            GlobalParameters = new Dictionary<string, string>() {
-                { "Query", @"select [age], [workclass], [fnlwgt], [education], [education-num], [marital-status], [occupation], [relationship], [race], [sex], [capital-gain], [capital-loss], [hours-per-week], [native-country], [income] from dbo.censusdata" },
-                { "Table", "dbo.ScoredTable2" },
-            }
-        };
+    ```csharp
+    var request = new BatchExecutionRequest()
+    {
+        GlobalParameters = new Dictionary<string, string>() {
+            { "Query", @"select [age], [workclass], [fnlwgt], [education], [education-num], [marital-status], [occupation], [relationship], [race], [sex], [capital-gain], [capital-loss], [hours-per-week], [native-country], [income] from dbo.censusdata" },
+            { "Table", "dbo.ScoredTable2" },
+        }
+    };
+    ```
 10. Futtassa az alkalmazást.
 
 A Futtatás befejezésekor új tábla kerül a pontozási eredményeket tartalmazó adatbázisba.
@@ -133,15 +136,17 @@ A Futtatás befejezésekor új tábla kerül a pontozási eredményeket tartalma
 8. Frissítse a *apiKey* változó értékét az **alapszintű felhasználás adatai** szakaszban található **elsődleges kulccsal** .
 9. Keresse meg a *scoreRequest* -deklarációt, és frissítse az adatok *importálása* és *exportálása* modulba átadott webszolgáltatás-paraméterek értékeit. Ebben az esetben az eredeti lekérdezést kell használnia, de meg kell adnia egy új táblanév nevet.
 
-        var scoreRequest = new
+    ```csharp
+    var scoreRequest = new
+    {
+        Inputs = new Dictionary<string, StringTable>()
         {
-            Inputs = new Dictionary<string, StringTable>()
-            {
-            },
-            GlobalParameters = new Dictionary<string, string>() {
-                { "Query", @"select [age], [workclass], [fnlwgt], [education], [education-num], [marital-status], [occupation], [relationship], [race], [sex], [capital-gain], [capital-loss], [hours-per-week], [native-country], [income] from dbo.censusdata" },
-                { "Table", "dbo.ScoredTable3" },
-            }
-        };
+        },
+        GlobalParameters = new Dictionary<string, string>() {
+            { "Query", @"select [age], [workclass], [fnlwgt], [education], [education-num], [marital-status], [occupation], [relationship], [race], [sex], [capital-gain], [capital-loss], [hours-per-week], [native-country], [income] from dbo.censusdata" },
+            { "Table", "dbo.ScoredTable3" },
+        }
+    };
+    ```
 10. Futtassa az alkalmazást.
 

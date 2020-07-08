@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: 832caaed0816e3dd7d177f634209dea42e5312c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6490292ef898e00c7677c829be41f3b06c638164
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82192680"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86076606"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Apache Ambari Hive-nézet használata Apache Hadooppal a HDInsightban
 
@@ -60,7 +60,7 @@ Hadoop-fürt a HDInsight-on. Lásd: Ismerkedés [a HDInsight Linux rendszeren](.
 
     Ezek az utasítások a következő műveleteket végzik el:
 
-    |Nyilatkozat | Leírás |
+    |Nyilatkozat | Description |
     |---|---|
     |TÁBLÁZAT ELDOBÁSA|Törli a táblát és az adatfájlt arra az esetre, ha a tábla már létezik.|
     |KÜLSŐ TÁBLA LÉTREHOZÁSA|Létrehoz egy új "külső" táblát a kaptárban. A külső táblák csak a struktúra tábla definícióját tárolják. Az adatmező az eredeti helyen marad.|

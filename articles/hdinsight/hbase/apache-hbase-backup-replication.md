@@ -5,15 +5,15 @@ author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
-ms.openlocfilehash: c6d33158b581bf4394a0d1bac2b277830328e110
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b1830ddef44ef33d19c953622951779632e33e71
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75495935"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86076742"
 ---
 # <a name="set-up-backup-and-replication-for-apache-hbase-and-apache-phoenix-on-hdinsight"></a>A biztonsági mentés és a replikálás beállítása az Apache HBase és a Apache Phoenix on HDInsight
 
@@ -36,19 +36,15 @@ Ezzel a módszerrel az összes HBase-adatait másolja, anélkül, hogy ki kellen
 
 A HDInsight HBase a fürt létrehozásakor kiválasztott alapértelmezett tárolót használja, vagy az Azure Storage-blobokat vagy Azure Data Lake Storage. Mindkét esetben a HBase a következő elérési úton tárolja az adat-és metaadat-fájljait:
 
-    /hbase
+`/hbase`
 
-* Egy Azure Storage-fiókban `hbase` a mappa a blob-tároló gyökerében található:
+* Egy Azure Storage-fiókban a `hbase` mappa a blob-tároló gyökerében található:
 
-    ```
-    wasbs://<containername>@<accountname>.blob.core.windows.net/hbase
-    ```
+  `wasbs://<containername>@<accountname>.blob.core.windows.net/hbase`
 
-* Azure Data Lake Storage a `hbase` mappa a fürt kiépítés során megadott gyökér elérési útjában található. Ennek a gyökér elérési útnak `clusters` általában egy mappája van, amely a HDInsight-fürt után megnevezett almappát tartalmaz:
+* Azure Data Lake Storage a mappa a `hbase` fürt kiépítés során megadott gyökér elérési útjában található. Ennek a gyökér elérési útnak általában egy `clusters` mappája van, amely a HDInsight-fürt után megnevezett almappát tartalmaz:
 
-    ```
-    /clusters/<clusterName>/hbase
-    ```
+  `/clusters/<clusterName>/hbase`
 
 Mindkét esetben a `hbase` mappa tartalmazza a HBase által a lemezre kiürített összes olyan adatmennyiséget, amelyek nem tartalmazzák a memóriában tárolt adatmennyiséget. Ahhoz, hogy ezt a mappát a HBase adatok pontos ábrázolására lehessen támaszkodni, le kell állítania a fürtöt.
 
@@ -64,56 +60,65 @@ A forrás HDInsight-fürtön használja az [Exportálás segédprogramot](https:
 
 A tábla adatai exportálásához először SSH-t a forrás HDInsight-fürt fő csomópontjára, majd futtassa a következő `hbase` parancsot:
 
-    hbase org.apache.hadoop.hbase.mapreduce.Export "<tableName>" "/<path>/<to>/<export>"
+```console
+hbase org.apache.hadoop.hbase.mapreduce.Export "<tableName>" "/<path>/<to>/<export>"
+```
 
 Az exportálási könyvtárnak még nem kell létezni. A tábla neve megkülönbözteti a kis-és nagybetűket.
 
-A tábla adatai importálásához az SSH-t a cél HDInsight-fürt fő csomópontjára, majd futtassa a `hbase` következő parancsot:
+A tábla adatai importálásához az SSH-t a cél HDInsight-fürt fő csomópontjára, majd futtassa a következő `hbase` parancsot:
 
-    hbase org.apache.hadoop.hbase.mapreduce.Import "<tableName>" "/<path>/<to>/<export>"
+```console
+hbase org.apache.hadoop.hbase.mapreduce.Import "<tableName>" "/<path>/<to>/<export>"
+```
 
 A táblának már léteznie kell.
 
 Az alapértelmezett tárolóhoz vagy a csatlakoztatott tárolási beállításokhoz tartozó teljes exportálási útvonal megadása. Például az Azure Storage-ban:
 
-    wasbs://<containername>@<accountname>.blob.core.windows.net/<path>
+`wasbs://<containername>@<accountname>.blob.core.windows.net/<path>`
 
 A Azure Data Lake Storage Gen2 szintaxisa a következőket eredményezi:
 
-    abfs://<containername>@<accountname>.dfs.core.windows.net/<path>
+`abfs://<containername>@<accountname>.dfs.core.windows.net/<path>`
 
 A Azure Data Lake Storage Gen1 szintaxisa a következőket eredményezi:
 
-    adl://<accountName>.azuredatalakestore.net:443/<path>
+`adl://<accountName>.azuredatalakestore.net:443/<path>`
 
 Ez a megközelítés táblázatos részletességgel rendelkezik. Megadhat egy dátumtartományt is a befoglalni kívánt sorokhoz, ami lehetővé teszi a folyamat növekményes végrehajtását. A UNIX-kor óta minden dátum ezredmásodpercben van.
 
-    hbase org.apache.hadoop.hbase.mapreduce.Export "<tableName>" "/<path>/<to>/<export>" <numberOfVersions> <startTimeInMS> <endTimeInMS>
+```console
+hbase org.apache.hadoop.hbase.mapreduce.Export "<tableName>" "/<path>/<to>/<export>" <numberOfVersions> <startTimeInMS> <endTimeInMS>
+```
 
-Vegye figyelembe, hogy az exportálandó sorok verziószámát meg kell adnia. A dátumtartomány összes verziójának belefoglalásához állítsa `<numberOfVersions>` a megengedettnél nagyobb értéket (például 100000).
+Vegye figyelembe, hogy az exportálandó sorok verziószámát meg kell adnia. A dátumtartomány összes verziójának belefoglalásához állítsa a `<numberOfVersions>` megengedettnél nagyobb értéket (például 100000).
 
 ## <a name="copy-tables"></a>Táblák másolása
 
 A [CopyTable segédprogram](https://hbase.apache.org/book.html#copy.table) a forrás táblából, egy sorba, egy meglévő, a forrással megegyező sémával rendelkező céltábla adatait másolja. A cél tábla lehet ugyanazon a fürtön vagy egy másik HBase-fürtön is. A táblák nevei megkülönböztetik a kis-és nagybetűket.
 
-Ha a CopyTable-t fürtön belül szeretné használni, SSH-t a forrás HDInsight-fürt fő csomópontjára `hbase` , majd futtassa a következő parancsot:
+Ha a CopyTable-t fürtön belül szeretné használni, SSH-t a forrás HDInsight-fürt fő csomópontjára, majd futtassa a következő `hbase` parancsot:
 
-    hbase org.apache.hadoop.hbase.mapreduce.CopyTable --new.name=<destTableName> <srcTableName>
+```console
+hbase org.apache.hadoop.hbase.mapreduce.CopyTable --new.name=<destTableName> <srcTableName>
+```
 
+Ha a CopyTable-t egy másik fürt egyik táblájába kívánja másolni, adja hozzá a `peer` kapcsolót a célként megadott fürt címe:
 
-Ha a CopyTable-t egy másik fürt egyik táblájába kívánja másolni, `peer` adja hozzá a kapcsolót a célként megadott fürt címe:
-
-    hbase org.apache.hadoop.hbase.mapreduce.CopyTable --new.name=<destTableName> --peer.adr=<destinationAddress> <srcTableName>
+```console
+hbase org.apache.hadoop.hbase.mapreduce.CopyTable --new.name=<destTableName> --peer.adr=<destinationAddress> <srcTableName>
+```
 
 A cél címe a következő három részből áll:
 
-    <destinationAddress> = <ZooKeeperQuorum>:<Port>:<ZnodeParent>
+`<destinationAddress> = <ZooKeeperQuorum>:<Port>:<ZnodeParent>`
 
 * `<ZooKeeperQuorum>`Apache ZooKeeper csomópontok vesszővel tagolt listája, például:
 
     zk0-hdizc 2.54 o2oqawzlwevlfxgay2500xtg. DX. internal. cloudapp. net, zk4-hdizc 2.54 o2oqawzlwevlfxgay2500xtg. DX. internal. cloudapp. net, zk3-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net
 
-* `<Port>`a HDInsight alapértelmezett értéke 2181, `<ZnodeParent>` `/hbase-unsecure`így a teljes `<destinationAddress>` érték a következő:
+* `<Port>`a HDInsight alapértelmezett értéke 2181, `<ZnodeParent>` `/hbase-unsecure` így a teljes érték a `<destinationAddress>` következő:
 
     zk0-hdizc 2.54 o2oqawzlwevlfxgay2500xtg. DX. internal. cloudapp. net, zk4-hdizc 2.54 o2oqawzlwevlfxgay2500xtg. DX. internal. cloudapp. net, zk3-hdizc 2.54 o2oqawzlwevlfxgay2500xtg. DX. internal. cloudapp. net: 2181:/hbase-unsecure
 
@@ -121,12 +126,14 @@ A HDInsight-fürt értékeinek beolvasásával kapcsolatban lásd a jelen cikk [
 
 A CopyTable segédprogram emellett a paramétereket is támogatja a másolandó sorok időtartományának megadásához, valamint a másolandó táblázatos családok részhalmazának megadásához. A CopyTable által támogatott paraméterek teljes listájának megjelenítéséhez paraméterek nélkül futtassa a CopyTable:
 
-    hbase org.apache.hadoop.hbase.mapreduce.CopyTable
+```console
+hbase org.apache.hadoop.hbase.mapreduce.CopyTable
+```
 
 A CopyTable megvizsgálja a teljes forrástábla tartalmát, amelyet a rendszer átmásol a célhelyre. Ez csökkentheti a HBase-fürt teljesítményét a CopyTable végrehajtása közben.
 
 > [!NOTE]  
-> Az adatok táblák közötti másolásának automatizálásához tekintse meg `hdi_copy_table.sh` a szkriptet az [Azure HBase utils](https://github.com/Azure/hbase-utils/tree/master/replication) adattárában a githubon.
+> Az adatok táblák közötti másolásának automatizálásához tekintse `hdi_copy_table.sh` meg a szkriptet az [Azure HBase utils](https://github.com/Azure/hbase-utils/tree/master/replication) adattárában a githubon.
 
 ### <a name="manually-collect-the-apache-zookeeper-quorum-list"></a>A Apache ZooKeeper kvórumok listájának manuális összegyűjtése
 
@@ -134,29 +141,35 @@ Ha mindkét HDInsight-fürt ugyanabban a virtuális hálózatban található, ah
 
 A kvórum állomásneve a következő curl-parancs futtatásával szerezhető be:
 
-    curl -u admin:<password> -X GET -H "X-Requested-By: ambari" "https://<clusterName>.azurehdinsight.net/api/v1/clusters/<clusterName>/configurations?type=hbase-site&tag=TOPOLOGY_RESOLVED" | grep "hbase.zookeeper.quorum"
+```console
+curl -u admin:<password> -X GET -H "X-Requested-By: ambari" "https://<clusterName>.azurehdinsight.net/api/v1/clusters/<clusterName>/configurations?type=hbase-site&tag=TOPOLOGY_RESOLVED" | grep "hbase.zookeeper.quorum"
+```
 
 A curl-parancs egy JSON-dokumentumot kér le a HBase konfigurációs adataival, és a GREP parancs csak a "HBase. Zookeeper. kvórum" bejegyzést adja vissza, például:
 
-    "hbase.zookeeper.quorum" : "zk0-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk4-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk3-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net"
+```output
+"hbase.zookeeper.quorum" : "zk0-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk4-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk3-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net"
+```
 
 A kvórum állomásneve érték a kettőspont jobb oldalán lévő teljes sztring.
 
 A gazdagépek IP-címeinek lekéréséhez használja a következő cURL-parancsot az előző lista minden gazdagépéhez:
 
-    curl -u admin:<password> -X GET -H "X-Requested-By: ambari" "https://<clusterName>.azurehdinsight.net/api/v1/clusters/<clusterName>/hosts/<zookeeperHostFullName>" | grep "ip"
+```console
+curl -u admin:<password> -X GET -H "X-Requested-By: ambari" "https://<clusterName>.azurehdinsight.net/api/v1/clusters/<clusterName>/hosts/<zookeeperHostFullName>" | grep "ip"
+```
 
-Ebben a curl-parancsban `<zookeeperHostFullName>` a egy ZooKeeper-gazdagép teljes DNS-neve, például a példa `zk0-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net`. A parancs kimenete tartalmazza a megadott gazdagép IP-címét, például:
+Ebben a curl-parancsban `<zookeeperHostFullName>` a egy ZooKeeper-gazdagép teljes DNS-neve, például a példa `zk0-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net` . A parancs kimenete tartalmazza a megadott gazdagép IP-címét, például:
 
-    100    "ip" : "10.0.0.9",
+`100    "ip" : "10.0.0.9",`
 
 Miután összegyűjtötte az IP-címeket a kvórum összes ZooKeeper-csomópontján, építse újra a cél címét:
 
-    <destinationAddress>  = <Host_1_IP>,<Host_2_IP>,<Host_3_IP>:<Port>:<ZnodeParent>
+`<destinationAddress>  = <Host_1_IP>,<Host_2_IP>,<Host_3_IP>:<Port>:<ZnodeParent>`
 
 A példánkban:
 
-    <destinationAddress> = 10.0.0.9,10.0.0.8,10.0.0.12:2181:/hbase-unsecure
+`<destinationAddress> = 10.0.0.9,10.0.0.8,10.0.0.12:2181:/hbase-unsecure`
 
 ## <a name="snapshots"></a>Pillanatképek
 
@@ -164,33 +177,45 @@ A [Pillanatképek](https://hbase.apache.org/book.html#ops.snapshots) lehetővé 
 
 Pillanatkép létrehozásához SSH-t a HDInsight HBase-fürt fő csomópontjára, és indítsa el a `hbase` rendszerhéjat:
 
-    hbase shell
+```console
+hbase shell
+```
 
 A hbase-rendszerhéjon belül használja a pillanatkép-parancsot a tábla és a pillanatkép nevével:
 
-    snapshot '<tableName>', '<snapshotName>'
+```console
+snapshot '<tableName>', '<snapshotName>'
+```
 
-Ha a `hbase` rendszerhéjon belüli név alapján szeretné visszaállítani a pillanatképet, először tiltsa le a táblát, majd állítsa vissza a pillanatképet, és engedélyezze újra a táblázatot:
+Ha a rendszerhéjon belüli név alapján szeretné visszaállítani a pillanatképet `hbase` , először tiltsa le a táblát, majd állítsa vissza a pillanatképet, és engedélyezze újra a táblázatot:
 
-    disable '<tableName>'
-    restore_snapshot '<snapshotName>'
-    enable '<tableName>'
+```console
+disable '<tableName>'
+restore_snapshot '<snapshotName>'
+enable '<tableName>'
+```
 
 A pillanatkép új táblára való visszaállításához használja a clone_snapshot:
 
-    clone_snapshot '<snapshotName>', '<newTableName>'
+```console
+clone_snapshot '<snapshotName>', '<newTableName>'
+```
 
-Ha egy pillanatképet HDFS szeretne exportálni egy másik fürt általi használatra, először hozza létre a pillanatképet a korábban leírtak szerint, majd használja a ExportSnapshot segédprogramot. Futtassa ezt a segédprogramot az SSH-munkamenetből a fő csomópontra, nem `hbase` pedig a rendszerhéjon belül:
+Ha egy pillanatképet HDFS szeretne exportálni egy másik fürt általi használatra, először hozza létre a pillanatképet a korábban leírtak szerint, majd használja a ExportSnapshot segédprogramot. Futtassa ezt a segédprogramot az SSH-munkamenetből a fő csomópontra, nem pedig a `hbase` rendszerhéjon belül:
 
-     hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -snapshot <snapshotName> -copy-to <hdfsHBaseLocation>
+```console
+hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -snapshot <snapshotName> -copy-to <hdfsHBaseLocation>
+```
 
-A `<hdfsHBaseLocation>` a forrás-fürt számára elérhető tárolóhelyek bármelyike lehet, és a célként megadott fürt által használt hbase mappára kell mutatnia. Ha például egy másodlagos Azure Storage-fiók van csatlakoztatva a forrás-fürthöz, és a fiók hozzáférést biztosít a célként megadott fürt alapértelmezett tárolójában használt tárolóhoz, akkor a következő parancsot használhatja:
+A a `<hdfsHBaseLocation>` forrás-fürt számára elérhető tárolóhelyek bármelyike lehet, és a célként megadott fürt által használt hbase mappára kell mutatnia. Ha például egy másodlagos Azure Storage-fiók van csatlakoztatva a forrás-fürthöz, és a fiók hozzáférést biztosít a célként megadott fürt alapértelmezett tárolójában használt tárolóhoz, akkor a következő parancsot használhatja:
 
-    hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -snapshot 'Snapshot1' -copy-to 'wasbs://secondcluster@myaccount.blob.core.windows.net/hbase'
+```console
+hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -snapshot 'Snapshot1' -copy-to 'wasbs://secondcluster@myaccount.blob.core.windows.net/hbase'
+```
 
 A Pillanatkép exportálása után az SSH-t a célszámítógép fő csomópontjára helyezi, és a restore_snapshot parancs használatával visszaállíthatja a pillanatképet az előzőekben leírtak szerint.
 
-A pillanatképek a `snapshot` parancs időpontjában teljes biztonsági mentést biztosítanak a tábláról. A pillanatképek nem teszik lehetővé a növekményes Pillanatképek elvégzését a Windowsban, és nem határozzák meg a pillanatképbe foglalandó oszlopok családokat.
+A pillanatképek a parancs időpontjában teljes biztonsági mentést biztosítanak a tábláról `snapshot` . A pillanatképek nem teszik lehetővé a növekményes Pillanatképek elvégzését a Windowsban, és nem határozzák meg a pillanatképbe foglalandó oszlopok családokat.
 
 ## <a name="replication"></a>Replikáció
 

@@ -4,19 +4,23 @@ description: Megtudhatja, hogyan adhat hozzá egy Automation-szolgáltatásnevet
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: fasttrack-edit
-ms.openlocfilehash: bc3e17ce5becf039703585167e1ef3aa825cf2ab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4ce23e9da84d01a288c1c37c6a6d884db2ed3969
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83697531"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077558"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>Egyszerű szolgáltatásnév hozzáadása a kiszolgáló-rendszergazdai szerepkörhöz 
 
- A felügyelet nélküli PowerShell-feladatok automatizálásához egy egyszerű szolgáltatásnak **rendszergazdai** jogosultságokkal kell rendelkeznie a felügyelt Analysis Services kiszolgálón. Ez a cikk azt ismerteti, hogyan adhat hozzá egy egyszerű szolgáltatást egy Azure-beli kiszolgáló-rendszergazdák szerepkörhöz. Ezt a SQL Server Management Studio vagy egy Resource Manager-sablon használatával teheti meg.
+ A felügyelet nélküli PowerShell-feladatok automatizálásához egy egyszerű szolgáltatásnak **rendszergazdai** jogosultságokkal kell rendelkeznie a felügyelt Analysis Services kiszolgálón. Ez a cikk azt ismerteti, hogyan adhat hozzá egy egyszerű szolgáltatást egy Azure-beli kiszolgáló-rendszergazdák szerepkörhöz. Ezt a SQL Server Management Studio vagy egy Resource Manager-sablon használatával teheti meg. 
+
+> [!NOTE]
+> Az egyszerű szolgáltatásokat közvetlenül a kiszolgálói rendszergazdai szerepkörhöz kell hozzáadni. Egyszerű szolgáltatásnév hozzáadása egy biztonsági csoporthoz, és a biztonsági csoport hozzáadása a kiszolgálói rendszergazdai szerepkörhöz nem támogatott. 
 
 ## <a name="before-you-begin"></a>Előkészületek
 A feladat elvégzése előtt rendelkeznie kell egy Azure Active Directoryban regisztrált egyszerű szolgáltatással.

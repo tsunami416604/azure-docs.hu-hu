@@ -3,12 +3,12 @@ title: Ajánlott eljárások a sablonokhoz
 description: A Azure Resource Manager sablonok létrehozásához ajánlott megközelítéseket ismerteti. Javaslatokat nyújt a gyakori problémák elkerülésére a sablonok használatakor.
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: c00a3a1162ffec4ce89c43ef2f76796fb5943438
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: a85e9afd64c416628c35bd36d16086f28d0732d3
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85254089"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86058061"
 ---
 # <a name="arm-template-best-practices"></a>ARM-sablon – ajánlott eljárások
 
@@ -170,7 +170,7 @@ A beállított [függőségek](define-resource-dependency.md) meghatározásakor
 
 * Ha az üzembe helyezés előtt meg lehet határozni egy értéket, próbálja meg az erőforrást függőség nélkül telepíteni. Ha például egy konfigurációs értéknek egy másik erőforrás nevére van szüksége, lehet, hogy nincs szüksége függőségre. Ez az útmutató nem mindig működik, mert egyes erőforrások ellenőrzik a másik erőforrás létezését. Ha hibaüzenetet kap, vegyen fel egy függőséget.
 
-## <a name="resources"></a>További források
+## <a name="resources"></a>Erőforrások
 
 A következő információk hasznosak lehetnek az [erőforrásokkal](template-syntax.md#resources)való munka során:
 
@@ -230,7 +230,7 @@ A következő információk hasznosak lehetnek az [erőforrásokkal](template-sy
    * [WinRM-hozzáférés beállítása virtuális gépekhez Azure Resource Manager](../../virtual-machines/windows/winrm.md)
    * [Külső hozzáférés engedélyezése a virtuális géphez a Azure Portal használatával](../../virtual-machines/windows/nsg-quickstart-portal.md)
    * [Külső hozzáférés engedélyezése a virtuális géphez a PowerShell használatával](../../virtual-machines/windows/nsg-quickstart-powershell.md)
-   * [Külső hozzáférés engedélyezése linuxos virtuális géphez az Azure CLI használatával](../../virtual-machines/virtual-machines-linux-nsg-quickstart.md)
+   * [Külső hozzáférés engedélyezése linuxos virtuális géphez az Azure CLI használatával](../../virtual-machines/linux/nsg-quickstart.md)
 
 * A nyilvános IP-címek **domainnamelabel értékkel** tulajdonságának egyedinek kell lennie. A **domainnamelabel értékkel** értékének 3 és 63 karakter közöttinek kell lennie, és követnie kell az ebben a reguláris kifejezésben megadott szabályokat: `^[a-z][a-z0-9-]{1,61}[a-z0-9]$` . Mivel a **uniqueString** függvény 13 karakter hosszúságú karakterláncot hoz létre, a **dnsPrefixString** paraméter 50 karakterre van korlátozva:
 

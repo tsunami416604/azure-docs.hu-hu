@@ -7,16 +7,16 @@ ms.subservice: sizes
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 07e11e3dbd7141ed3f54debfe4bafbda9431486b
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 44f9261c8054ea0575f2fcab0dc8bb6c0d6f0ce4
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84703880"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86058265"
 ---
 # <a name="fsv2-series"></a>Fsv2 sorozat
 
-A Fsv2 sorozat az Intel® Xeon® Platinum 8272CL (Cascade Lake) processzorokon és Intel® Xeon® Platinum 8168 processzorokon fut. A szolgáltatás egy tartós, 3,4 GHz-es, a Turbo órajelét és a 3,7 GHz-es max. Intel® AVX-512 utasítások az Intel skálázható processzorok újdonságai. Ezek az utasítások akár kétszeres teljesítmény-növekedést is biztosítanak a vektoros feldolgozási feladatokhoz egy-és dupla pontosságú lebegőpontos műveletekben. Más szóval a számítási feladatokhoz nagyon gyorsak.
+A Fsv2 sorozat az Intel® Xeon® Platinum 8272CL (Cascade Lake) processzorokon és az Intel® Xeon® Platinum 8168 (Skylake) processzorokon fut. A szolgáltatás egy tartós, 3,4 GHz-es, a Turbo órajelét és a 3,7 GHz-es max. Intel® AVX-512 utasítások az Intel skálázható processzorok újdonságai. Ezek az utasítások akár kétszeres teljesítmény-növekedést is biztosítanak a vektoros feldolgozási feladatokhoz egy-és dupla pontosságú lebegőpontos műveletekben. Más szóval a számítási feladatokhoz nagyon gyorsak.
 
 Az Fsv2 sorozatú virtuális gépek Intel® Hyper-Threading technológiával rendelkeznek.
 

@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: c01e0df1f420c8489ca3445d9fa025b251a870f2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 7/7/2020
+ms.openlocfilehash: c1f4945cda9db0f99799ea072737d4524f04e481
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79532391"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86076572"
 ---
 # <a name="understand-business-continuity-in-azure-database-for-mariadb"></a>Az üzletmenet folytonosságának megismerése Azure Database for MariaDB
 
@@ -48,11 +48,12 @@ A másik lehetőség a Azure Database for MariaDB geo-visszaállítási funkció
 > [!IMPORTANT]
 > A Geo-visszaállítás csak akkor lehetséges, ha a kiszolgálót geo-redundáns biztonsági mentési tárolóval kiépített.
 
+## <a name="cross-region-read-replicas"></a>Régiók közötti olvasási replikák
+
+Az üzleti folytonosság és a vész-helyreállítás megtervezése érdekében a tartományok közötti olvasási replikákat is használhatja. Az olvasási replikák aszinkron módon frissülnek a MariaDB bináris naplójának replikációs technológiájának használatával. További információk az olvasási replikák, az elérhető régiók és a feladatátvétel az [olvasási replikák fogalmai című cikkben](concepts-read-replicas.md)olvashatók. 
+
 ## <a name="next-steps"></a>További lépések
 
-- Az automatikus biztonsági mentéssel kapcsolatos további tudnivalókért tekintse meg a [biztonsági mentések a Azure Database for MariaDBban](concepts-backup.md)című témakört.
-- Ha a Azure Portal használatával szeretne visszaállítani egy adott időpontra, tekintse meg [az adatbázis visszaállítása egy időpontra a Azure Portal használatával](howto-restore-server-portal.md)című témakört.
-
-<!--
-- To restore to a point in time using Azure CLI, see [restore database to a point in time using CLI](howto-restore-server-cli.md). 
--->
+- További információ a [Azure Database for MariaDB automatikus biztonsági mentéséről](concepts-backup.md).
+- Ismerje meg, hogyan lehet visszaállítani [a Azure Portal](howto-restore-server-portal.md) vagy [Az Azure CLI](howto-restore-server-cli.md)használatával.
+- További információ a [Azure Database for MariaDB található olvasási replikáról](concepts-read-replicas.md).

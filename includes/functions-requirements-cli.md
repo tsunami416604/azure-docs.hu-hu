@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/25/2020
 ms.author: glenga
-ms.openlocfilehash: 49610c178b577c4d81376a535355d140e8a144cb
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 9e9f9c71701ceb1c76bc162f22e166b4565e731b
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84145004"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86062683"
 ---
 ## <a name="configure-your-local-environment"></a>A helyi környezet konfigurálása
 
@@ -17,7 +17,7 @@ Mielőtt elkezdené, a következőkkel kell rendelkeznie:
 
 + Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell"  
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-java"  
 + A [Azure functions Core Tools](../articles/azure-functions/functions-run-local.md#v2) verziója 2.7.1846 vagy újabb 2. x verzió.
 ::: zone-end  
 ::: zone pivot="programming-language-python"
@@ -32,7 +32,7 @@ Mielőtt elkezdené, a következőkkel kell rendelkeznie:
 
 + Az [Azure CLI](/cli/azure/install-azure-cli) 2,4-es vagy újabb verziója. 
 ::: zone pivot="programming-language-javascript,programming-language-typescript"
-+ [Node. js](https://nodejs.org/), aktív LTS és karbantartási LTS-verziók (8.11.1 és 10.14.1 ajánlott).
++ [Node.js](https://nodejs.org/), aktív LTS-és karbantartási LTS-verziók (8.11.1 és 10.14.1 ajánlott).
 ::: zone-end
 
 ::: zone pivot="programming-language-python"

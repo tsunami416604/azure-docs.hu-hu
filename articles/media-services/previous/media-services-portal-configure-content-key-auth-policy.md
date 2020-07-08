@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 8580bafd4d68ef6567b09fefcaa01c682ae2cafe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9b81d58bbb79b05ea54af8b3f06f29b4a45a6555
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74968790"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86058163"
 ---
 # <a name="configure-a-content-key-authorization-policy"></a>A tartalmi kulcs engedélyezési házirendjének konfigurálása
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
@@ -42,7 +42,7 @@ Ha több tartalmi kulcsot szeretne használni, vagy egy kulcs/licenc kézbesít�
 * A Media Services-fiók létrehozásakor a rendszer hozzáad egy alapértelmezett streamvégpontot a fiókhoz Leállítva állapotban. A tartalom folyamatos átvitelének megkezdéséhez, valamint a dinamikus csomagolás és a dinamikus titkosítás kihasználásához a folyamatos átviteli végpontnak "Running" állapotban kell lennie. 
 * Az eszköznek az adaptív sávszélességű MP4 vagy az adaptív sávszélességű Smooth Streaming fájlokat kell tartalmaznia. További információ: [eszköz kódolása](media-services-encode-asset.md).
 * A Key Delivery szolgáltatás 15 percig gyorsítótárazza a ContentKeyAuthorizationPolicy és kapcsolódó objektumait (házirend-beállítások és korlátozások). Létrehozhat egy ContentKeyAuthorizationPolicy, és megadhatja, hogy jogkivonat-korlátozást használjon, tesztelje, majd frissítse a szabályzatot a megnyitási korlátozásra. Ez a folyamat nagyjából 15 percet vesz igénybe, mielőtt a házirend a megnyitott verzióra vált.
-* A Media Services streaming végpontja a CORS Access-Control-Allow-Origin fejléc értékét az elővizsgálati válaszban a következő\*helyettesítő karakterrel állítja be: "". Ez az érték jól működik a legtöbb játékossal, beleértve a Azure Media Player, a Roku és a JWPlayer és egyebeket. Azonban egyes, a Dash. js-t használó játékosok nem működnek, mivel a hitelesítő adatok mód értéke "include", a Dash. js fájlban nem engedélyezi a "\*" helyettesítő karaktert a hozzáférés-vezérlés-engedélyezés-forrás értékként. Ha az ügyfelet egyetlen tartományból futtatja, megkerülő megoldásként ezt a korlátozást kell megadnia a Dash. js-ben, Media Services megadhatja az adott tartományt az elővizsgálati válasz fejlécében. Segítségért nyisson meg egy támogatási jegyet a Azure Portalon keresztül.
+* A Media Services streaming végpontja a CORS Access-Control-Allow-Origin fejléc értékét az elővizsgálati válaszban a következő helyettesítő karakterrel állítja be: " \* ". Ez az érték jól működik a legtöbb játékossal, beleértve a Azure Media Player, a Roku és a JWPlayer és egyebeket. Egyes dash.jst használó játékosok azonban nem működnek, mivel a hitelesítő adatok "include" értékre van állítva, a dash.js nem engedélyezik a "" helyettesítő karaktert a \* hozzáférés-vezérlés – engedélyezés – forrás értékeként. Ha az ügyfelet egyetlen tartományból futtatja, megkerülő megoldásként dash.js a korlátozást, Media Services az elővizsgálati válasz fejlécében megadhatja az adott tartományt. Segítségért nyisson meg egy támogatási jegyet a Azure Portalon keresztül.
 
 ## <a name="configure-the-key-authorization-policy"></a>A kulcs engedélyezési házirendjének konfigurálása
 A kulcs-engedélyezési házirend konfigurálásához válassza a **tartalomvédelem** lapot.
@@ -66,17 +66,19 @@ Ha a jogkivonat-korlátozott szabályzatot konfigurálja, meg kell adnia az els�
 ### <a name="playready"></a>PlayReady
 Ha a tartalmat a PlayReady-mel védik, az engedélyezési házirendben megadott egyik dolog egy XML-karakterlánc, amely meghatározza a PlayReady-licenc sablonját. Alapértelmezés szerint a következő házirend van beállítva:
 
-    <PlayReadyLicenseResponseTemplate xmlns:i="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1">
-          <LicenseTemplates>
-            <PlayReadyLicenseTemplate><AllowTestDevices>true</AllowTestDevices>
-              <ContentKey i:type="ContentEncryptionKeyFromHeader" />
-              <LicenseType>Nonpersistent</LicenseType>
-              <PlayRight>
-                <AllowPassingVideoContentToUnknownOutput>Allowed</AllowPassingVideoContentToUnknownOutput>
-              </PlayRight>
-            </PlayReadyLicenseTemplate>
-          </LicenseTemplates>
-        </PlayReadyLicenseResponseTemplate>
+```xml
+<PlayReadyLicenseResponseTemplate xmlns:i="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1">
+  <LicenseTemplates>
+    <PlayReadyLicenseTemplate><AllowTestDevices>true</AllowTestDevices>
+      <ContentKey i:type="ContentEncryptionKeyFromHeader" />
+      <LicenseType>Nonpersistent</LicenseType>
+      <PlayRight>
+        <AllowPassingVideoContentToUnknownOutput>Allowed</AllowPassingVideoContentToUnknownOutput>
+      </PlayRight>
+    </PlayReadyLicenseTemplate>
+  </LicenseTemplates>
+</PlayReadyLicenseResponseTemplate>
+```
 
 Kiválaszthatja a **szabályzat XML importálása** gombot, és megadhat egy másik XML-t, amely megfelel a [Media Services PlayReady-sablon ÁTTEKINTÉSÉBEN](media-services-playready-license-template-overview.md)meghatározott XML-sémának.
 

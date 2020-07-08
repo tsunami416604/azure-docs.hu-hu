@@ -11,11 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: juliako
-ms.openlocfilehash: 6abb44012035f31f970a347687964afb0c715d29
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d09fba2130dc302378a59200349a569cc248234b
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84983383"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86075433"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>A Azure Media Services v3 kibocsátási megjegyzései
 
@@ -42,6 +43,16 @@ A legújabb fejleményekkel naprakészen tarthatja a cikket, amely a következő
 A IoT Edge élő videós elemzésének előnézete nyilvános volt. További információ: [kibocsátási megjegyzések](../live-video-analytics-edge/release-notes.md).
 
 A IoT Edge Live Video Analytics szolgáltatás a Media Service-család bővítése. Lehetővé teszi az élő videók elemzését a saját peremhálózati eszközein választott AI-modellekkel, és szükség esetén rögzítheti és rögzítheti a videót. Mostantól a valós idejű videó-elemzéseket tartalmazó alkalmazásokat is létrehozhat, és nem kell aggódnia az élő videós folyamat kiépítésének és működésének összetettsége nélkül.
+
+### <a name="search-by-topics"></a>Keresés témakörök szerint
+
+Mostantól használhatja a Search API-t adott témakörökkel rendelkező videók keresésére (csak API-val).
+
+A témaköröket a (választható paraméter) részeként adja hozzá a rendszer `textScope` . Részletekért lásd az [API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Search-Videos) -t.  
+
+### <a name="labels-enhancement"></a>Címkék továbbfejlesztése
+
+A felirat fogójának frissítése megtörtént, és most már több vizuális címkét is tartalmaz, amelyek azonosíthatók.
 
 ## <a name="may-2020"></a>2020. május
 

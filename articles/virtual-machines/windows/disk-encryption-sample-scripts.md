@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: e5e0a970df680df43a7bd303636b3d81bda3e141
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1a0bac96c3daa0d81786b1a3facf6ccd328cd579
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82085705"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86076759"
 ---
 # <a name="azure-disk-encryption-sample-scripts"></a>Azure Disk Encryption – mintaszkriptek 
 
@@ -76,22 +76,30 @@ Konfigurálja a BitLocker csoportházirend beállítást **BitLocker meghajtóti
 ### <a name="install-bitlocker-feature-components"></a>A BitLocker szolgáltatás összetevőinek telepítése
 A Windows Server 2012-es és újabb verzióiban használja a következő parancsot:
 
-    dism /online /Enable-Feature /all /FeatureName:BitLocker /quiet /norestart
+```console
+dism /online /Enable-Feature /all /FeatureName:BitLocker /quiet /norestart
+```
 
 Windows Server 2008 R2 esetén használja a következő parancsot:
 
-    ServerManagerCmd -install BitLockers
+```console
+ServerManagerCmd -install BitLockers
+```
 
 ### <a name="prepare-the-os-volume-for-bitlocker-by-using-bdehdcfg"></a>A BitLocker operációsrendszer-kötetének előkészítése a használatával`bdehdcfg`
 Az operációsrendszer-partíció tömörítéséhez és a számítógép BitLockerhez való előkészítéséhez hajtsa végre a [bdehdcfg](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-basic-deployment) , ha szükséges:
 
-    bdehdcfg -target c: shrink -quiet 
+```console
+bdehdcfg -target c: shrink -quiet 
+```
 
 ### <a name="protect-the-os-volume-by-using-bitlocker"></a>Az operációs rendszer kötetének biztosítása a BitLocker használatával
 A [`manage-bde`](https://technet.microsoft.com/library/ff829849.aspx) parancs használatával engedélyezze a titkosítást a rendszerindító köteten egy külső kulcstartó használatával. Helyezze a külső kulcsot (. BEK fájlt) a külső meghajtóra vagy kötetre. A következő újraindítás után a titkosítás engedélyezve van a rendszer/rendszerindító köteten.
 
-    manage-bde -on %systemdrive% -sk [ExternalDriveOrVolume]
-    reboot
+```console
+manage-bde -on %systemdrive% -sk [ExternalDriveOrVolume]
+reboot
+```
 
 > [!NOTE]
 > Készítse elő a virtuális gépet egy külön adat/erőforrás virtuális merevlemezen a külső kulcs BitLocker használatával történő beolvasásához.

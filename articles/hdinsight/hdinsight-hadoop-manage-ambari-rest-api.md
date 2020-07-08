@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: 48602cb65430bcf6720b4d6f4ba05c771a7bd55b
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 03ef1708f836eb016d8f2fce530b9588cc61cd35
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82559961"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86075705"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>HDInsight-fürtök kezelése az Apache Ambari REST API használatával
 
@@ -31,19 +31,19 @@ Az Apache Ambari megkönnyíti a Hadoop-fürtök felügyeletét és figyelését
 
 * Bash on Ubuntu on Windows 10.  A cikkben szereplő példák a bash rendszerhéjt használják a Windows 10 rendszeren. A telepítési lépésekért lásd: [Windows-alrendszer Linux-telepítési útmutató Windows 10](https://docs.microsoft.com/windows/wsl/install-win10) rendszerhez.  Más [UNIX-rendszerhéj](https://www.gnu.org/software/bash/) is működik.  Néhány kis módosítással a Windows parancssorban is működhet.  Vagy használhatja a Windows PowerShellt is.
 
-* jQ, parancssori JSON-processzor.  Lásd [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/):.
+* jQ, parancssori JSON-processzor.  Lásd: [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/) .
 
 * Windows PowerShell.  Vagy használhatja a bash-t is.
 
 ## <a name="base-uniform-resource-identifier-for-ambari-rest-api"></a>Alapszintű Uniform Resource Identifier a Ambari REST API-hoz
 
- A HDInsight Ambari REST API alapszintű Uniform Resource Identifier (URI) `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME`, ahol `CLUSTERNAME` a a fürt neve.  Az URI-k fürtjének nevei **megkülönböztetik a kis-és nagybetűket**.  Míg a fürt neve az URI (`CLUSTERNAME.azurehdinsight.net`) teljes TARTOMÁNYNEVE (FQDN) része, a kis-és nagybetűk megkülönböztetése, az URI-n belüli más előfordulások megkülönböztetik a kis-és nagybetűket.
+ A HDInsight Ambari REST API alapszintű Uniform Resource Identifier (URI) `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME` , ahol a a `CLUSTERNAME` fürt neve.  Az URI-k fürtjének nevei **megkülönböztetik a kis-és nagybetűket**.  Míg a fürt neve az URI () teljes tartományneve (FQDN) része, a kis-és nagybetűk megkülönböztetése `CLUSTERNAME.azurehdinsight.net` , az URI-n belüli más előfordulások megkülönböztetik a kis-és nagybetűket.
 
 ## <a name="authentication"></a>Hitelesítés
 
 A HDInsight Ambari-hez való csatlakozáshoz HTTPS szükséges. Használja a rendszergazdai fiók nevét (az alapértelmezett a **rendszergazda**) és a jelszót, amelyet a fürt létrehozásakor adott meg.
 
-Enterprise Security Package-fürtök esetében a helyett `admin`használjon egy teljesen minősített felhasználónevet, `username@domain.onmicrosoft.com`például:.
+Enterprise Security Package-fürtök esetében a helyett `admin` használjon egy teljesen minősített felhasználónevet, például: `username@domain.onmicrosoft.com` .
 
 ## <a name="examples"></a>Példák
 
@@ -52,7 +52,7 @@ Enterprise Security Package-fürtök esetében a helyett `admin`használjon egy 
 Őrizze meg a hitelesítő adatait, hogy elkerülje az egyes példák újbóli beírását.  A fürt nevét külön lépésben megőrzi a rendszer.
 
 **A. bash**  
-Szerkessze az alábbi szkriptet `PASSWORD` úgy, hogy lecseréli a tényleges jelszavát.  Ezután adja meg a parancsot.
+Szerkessze az alábbi szkriptet úgy, hogy lecseréli a `PASSWORD` tényleges jelszavát.  Ezután adja meg a parancsot.
 
 ```bash
 export password='PASSWORD'
@@ -68,7 +68,7 @@ $creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"
 
 A fürt nevének tényleges burkolata eltérő lehet a vártnál.  Az itt látható lépések megjelenítik a tényleges burkolatot, majd egy változóban tárolják az összes későbbi példát.
 
-Szerkessze az alábbi parancsfájlokat `CLUSTERNAME` a fürt nevével való lecseréléséhez. Ezután adja meg a parancsot. (Az FQDN fürt neve nem megkülönbözteti a kis-és nagybetűket.)
+Szerkessze az alábbi parancsfájlokat a `CLUSTERNAME` fürt nevével való lecseréléséhez. Ezután adja meg a parancsot. (Az FQDN fürt neve nem megkülönbözteti a kis-és nagybetűket.)
 
 ```bash
 export clusterName=$(curl -u admin:$password -sS -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters" | jq -r '.items[].Clusters.cluster_name')
@@ -87,7 +87,7 @@ $clusterName
 
 ### <a name="parsing-json-data"></a>JSON-adatbázis elemzése
 
-A következő példa a [jQ](https://stedolan.github.io/jq/) vagy a [ConvertFrom-JSON](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/convertfrom-json) használatával értelmezi a JSON-válasz dokumentumát `health_report` , és csak az eredményekből jeleníti meg az adatokat.
+A következő példa a [jQ](https://stedolan.github.io/jq/) vagy a [ConvertFrom-JSON](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/convertfrom-json) használatával értelmezi a JSON-válasz dokumentumát, és csak az eredményekből jeleníti meg az `health_report` adatokat.
 
 ```bash
 curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName" \
@@ -210,13 +210,13 @@ $respObj.items.configurations.properties.'fs.defaultFS'
 ```
 
 > [!IMPORTANT]  
-> Ezek a példák a kiszolgálóra (`service_config_version=1`) vonatkozó első konfigurációt adják vissza, amely tartalmazza ezt az információt. Ha olyan értéket kér le, amely a fürt létrehozása után módosult, előfordulhat, hogy fel kell sorolnia a konfigurációs verzióit, és le kell kérnie a legújabbat.
+> Ezek a példák a kiszolgálóra () vonatkozó első konfigurációt adják vissza, `service_config_version=1` amely tartalmazza ezt az információt. Ha olyan értéket kér le, amely a fürt létrehozása után módosult, előfordulhat, hogy fel kell sorolnia a konfigurációs verzióit, és le kell kérnie a legújabbat.
 
 A visszatérési érték az alábbi példák egyikéhez hasonló:
 
 * `wasbs://CONTAINER@ACCOUNTNAME.blob.core.windows.net`– Ez az érték azt jelzi, hogy a fürt egy Azure Storage-fiókot használ az alapértelmezett tárolóhoz. Az `ACCOUNTNAME` érték a Storage-fiók neve. A `CONTAINER` rész a blob tároló neve a Storage-fiókban. A tároló a fürt HDFS-kompatibilis tárterületének gyökere.
 
-* `abfs://CONTAINER@ACCOUNTNAME.dfs.core.windows.net`– Ez az érték azt jelzi, hogy a fürt Azure Data Lake Storage Gen2 használ az alapértelmezett tárolóhoz. A `ACCOUNTNAME` és `CONTAINER` az értékek azonos jelentéssel rendelkeznek, mint a korábban említett Azure Storage-hoz.
+* `abfs://CONTAINER@ACCOUNTNAME.dfs.core.windows.net`– Ez az érték azt jelzi, hogy a fürt Azure Data Lake Storage Gen2 használ az alapértelmezett tárolóhoz. A `ACCOUNTNAME` és az `CONTAINER` értékek azonos jelentéssel rendelkeznek, mint a korábban említett Azure Storage-hoz.
 
 * `adl://home`– Ez az érték azt jelzi, hogy a fürt Azure Data Lake Storage Gen1 használ az alapértelmezett tárolóhoz.
 
@@ -234,7 +234,7 @@ A visszatérési érték az alábbi példák egyikéhez hasonló:
     $respObj.items.configurations.properties.'dfs.adls.home.hostname'
     ```
 
-    A visszatérési érték a következőhöz `ACCOUNTNAME.azuredatalakestore.net`hasonló `ACCOUNTNAME` :, ahol a a Data Lake Storage fiók neve.
+    A visszatérési érték a következőhöz hasonló: `ACCOUNTNAME.azuredatalakestore.net` , ahol a a `ACCOUNTNAME` Data Lake Storage fiók neve.
 
     A fürt tárolóját tartalmazó Data Lake Storageon belüli könyvtár megkereséséhez használja az alábbi példákat:
 
@@ -250,7 +250,7 @@ A visszatérési érték az alábbi példák egyikéhez hasonló:
     $respObj.items.configurations.properties.'dfs.adls.home.mountpoint'
     ```
 
-    A visszatérési érték hasonló a `/clusters/CLUSTERNAME/`következőhöz:. Ez az érték a Data Lake Storage fiókon belüli elérési út. Ez az elérési út a fürt HDFS-kompatibilis fájlrendszerének gyökere.  
+    A visszatérési érték hasonló a következőhöz: `/clusters/CLUSTERNAME/` . Ez az érték a Data Lake Storage fiókon belüli elérési út. Ez az elérési út a fürt HDFS-kompatibilis fájlrendszerének gyökere.  
 
 > [!NOTE]  
 > A [Azure PowerShell](/powershell/azure/overview) által megadott [Get-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightcluster) parancsmag a fürt tárolási adatait is visszaadja.
@@ -288,7 +288,7 @@ Ez a példa egy JSON-dokumentumot ad vissza, amely a telepített összetevők ak
 
 ### <a name="get-configuration-for-specific-component"></a>Adott összetevő konfigurációjának beolvasása
 
-Szerezze be annak az összetevőnek a konfigurációját, amelyre kíváncsi. Az alábbi példában cserélje le `INITIAL` az elemet az előző kérelemből visszaadott címke értékre.
+Szerezze be annak az összetevőnek a konfigurációját, amelyre kíváncsi. Az alábbi példában cserélje le az `INITIAL` elemet az előző kérelemből visszaadott címke értékre.
 
 ```bash
 curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations?type=livy2-conf&tag=INITIAL"
@@ -300,15 +300,15 @@ $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/c
 $resp.Content
 ```
 
-Ez a példa egy JSON-dokumentumot ad vissza, amely az `livy2-conf` összetevő aktuális konfigurációját tartalmazza.
+Ez a példa egy JSON-dokumentumot ad vissza, amely az összetevő aktuális konfigurációját tartalmazza `livy2-conf` .
 
 ### <a name="update-configuration"></a>Konfiguráció frissítése
 
-1. Létrehozás `newconfig.json`.  
+1. Létrehozás `newconfig.json` .  
    Módosítsa, majd írja be az alábbi parancsokat:
 
-   * Cserélje `livy2-conf` le az elemet az új összetevőre.
-   * Cserélje `INITIAL` le a értéket a beolvasás tényleges értékére `tag` az [összes konfigurációból](#get-all-configurations).
+   * Cserélje le `livy2-conf` az elemet az új összetevőre.
+   * Cserélje le a értéket a beolvasás `INITIAL` tényleges értékére az `tag` [összes konfigurációból](#get-all-configurations).
 
      **A. bash**
 
@@ -318,7 +318,7 @@ Ez a példa egy JSON-dokumentumot ad vissza, amely az `livy2-conf` összetevő a
      ```
 
      **B. PowerShell**  
-     A PowerShell-szkript [jQ](https://stedolan.github.io/jq/)használ.  Az `C:\HD\jq\jq-win64` alábbi szerkesztéssel jelenítheti meg a [jQ](https://stedolan.github.io/jq/)aktuális elérési útját és verzióját.
+     A PowerShell-szkript [jQ](https://stedolan.github.io/jq/)használ.  Az alábbi szerkesztéssel jelenítheti `C:\HD\jq\jq-win64` meg a [jQ](https://stedolan.github.io/jq/)aktuális elérési útját és verzióját.
 
      ```powershell
      $epoch = Get-Date -Year 1970 -Month 1 -Day 1 -Hour 0 -Minute 0 -Second 0
@@ -331,15 +331,15 @@ Ez a példa egy JSON-dokumentumot ad vissza, amely az `livy2-conf` összetevő a
 
      A jQ a HDInsight-ből beolvasott adatok új konfigurációs sablonba való bekapcsolására szolgálnak. Ezek a példák a következő műveleteket végzik el:
 
-   * Létrehoz egy egyedi értéket, amely tartalmazza a "version" karakterláncot és a dátumot, amely `newtag`a ben tárolódik.
+   * Létrehoz egy egyedi értéket, amely tartalmazza a "version" karakterláncot és a dátumot, amely a ben tárolódik `newtag` .
 
    * Létrehoz egy legfelső szintű dokumentumot az új konfigurációhoz.
 
-   * Lekéri a `.items[]` tömb tartalmát, és hozzáadja azt a **desired_config** elemhez.
+   * Lekéri a tömb tartalmát `.items[]` , és hozzáadja azt a **desired_config** elemhez.
 
-   * Törli a `href`, `version`a és `Config` az elemeket, mivel ezek az elemek nem szükségesek új konfiguráció elküldéséhez.
+   * Törli a `href` , a `version` és az `Config` elemeket, mivel ezek az elemek nem szükségesek új konfiguráció elküldéséhez.
 
-   * Hozzáadott egy `tag` elemet a értékkel `version#################`. A numerikus rész az aktuális dátumon alapul. Minden konfigurációnak egyedi címkével kell rendelkeznie.
+   * Hozzáadott egy `tag` elemet a értékkel `version#################` . A numerikus rész az aktuális dátumon alapul. Minden konfigurációnak egyedi címkével kell rendelkeznie.
 
      Végül a rendszer menti az adatfájlokat a `newconfig.json` dokumentumba. A dokumentum struktúrájának az alábbi példához hasonlóan kell megjelennie:
 
@@ -361,14 +361,16 @@ Ez a példa egy JSON-dokumentumot ad vissza, amely az `livy2-conf` összetevő a
      }
      ```
 
-2. Szerkesztés `newconfig.json`.  
-   Nyissa `newconfig.json` meg a dokumentumot, és módosítsa/adja `properties` hozzá a kívánt értékeket az objektumhoz. A következő példa a értékét a `"livy.server.csrf_protection.enabled"` értékre `"true"` módosítja `"false"`.
+2. Szerkesztés `newconfig.json` .  
+   Nyissa meg a `newconfig.json` dokumentumot, és módosítsa/adja hozzá a kívánt értékeket az `properties` objektumhoz. A következő példa a értékét a értékre módosítja `"livy.server.csrf_protection.enabled"` `"true"` `"false"` .
 
-        "livy.server.csrf_protection.enabled": "false",
+    ```json
+    "livy.server.csrf_protection.enabled": "false",
+    ```
 
     A módosítások végrehajtása után mentse a fájlt.
 
-3. Küldés `newconfig.json`.  
+3. Küldés `newconfig.json` .  
    A frissített konfiguráció Ambari való elküldéséhez használja a következő parancsokat.
 
     ```bash
@@ -385,7 +387,7 @@ Ez a példa egy JSON-dokumentumot ad vissza, amely az `livy2-conf` összetevő a
     $resp.Content
     ```  
 
-    Ezek a parancsok a **newconfig. JSON** fájl tartalmát az új konfigurációként küldi el a fürtön. A kérelem egy JSON-dokumentumot ad vissza. A dokumentum **versionTag** elemének meg kell egyeznie az elküldött verzióval, és a **konfigurációk** objektum tartalmazza a kért konfigurációs módosításokat.
+    Ezek a parancsok elküldik a fájl **newconfig.js** tartalmát a fürtre új konfigurációként. A kérelem egy JSON-dokumentumot ad vissza. A dokumentum **versionTag** elemének meg kell egyeznie az elküldött verzióval, és a **konfigurációk** objektum tartalmazza a kért konfigurációs módosításokat.
 
 ### <a name="restart-a-service-component"></a>Szolgáltatás-összetevő újraindítása
 
@@ -424,7 +426,7 @@ Ezen a ponton a Ambari webes felület azt jelzi, hogy a Spark szolgáltatást ú
     $respObj.ServiceInfo.maintenance_state
     ```
 
-    A visszatérési érték `ON`:.
+    A visszatérési érték: `ON` .
 
 3. Ezután a Spark2 szolgáltatás kikapcsolásához használja a következőt:
 
@@ -456,10 +458,10 @@ Ezen a ponton a Ambari webes felület azt jelzi, hogy a Spark szolgáltatást ú
     ```
 
     > [!IMPORTANT]  
-    > Az `href` URI által visszaadott érték a fürtcsomópont belső IP-címét használja. Ha a fürtön kívülről szeretné használni, cserélje `10.0.0.18:8080` le a részét a fürt teljes tartománynevére.  
+    > Az `href` URI által visszaadott érték a fürtcsomópont belső IP-címét használja. Ha a fürtön kívülről szeretné használni, cserélje le a `10.0.0.18:8080` részét a fürt teljes tartománynevére.  
 
 4. Ellenőrizze a kérelmet.  
-    Szerkessze az alábbi parancsot úgy `29` , hogy az előző lépésben `id` visszaadott tényleges értéket cseréli le.  A kérelem állapota a következő parancsokkal kérdezhető le:
+    Szerkessze az alábbi parancsot úgy, hogy `29` az `id` előző lépésben visszaadott tényleges értéket cseréli le.  A kérelem állapota a következő parancsokkal kérdezhető le:
 
     ```bash
     curl -u admin:$password -sS -H "X-Requested-By: ambari" \

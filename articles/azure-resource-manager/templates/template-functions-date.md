@@ -3,12 +3,12 @@ title: Sablon functions – dátum
 description: A Azure Resource Manager-sablonban a dátumokkal végzett munkához használandó függvényeket ismerteti.
 ms.topic: conceptual
 ms.date: 06/22/2020
-ms.openlocfilehash: e1d9c354c53404bddc31d565b45e608567b218d6
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: abdc88ce15279b90f8f9dc05a38a2ae236498f12
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85205169"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86058044"
 ---
 # <a name="date-functions-for-arm-templates"></a>Az ARM-sablonokhoz tartozó Date functions
 
@@ -25,11 +25,11 @@ Az időtartamot adja hozzá egy alapértékhez. Az ISO 8601 formátuma várható
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
 | base | Yes | sztring | A Hozzáadás kezdő datetime értéke. Az [ISO 8601 timestamp formátumot](https://en.wikipedia.org/wiki/ISO_8601)használja. |
 | duration | Yes | sztring | Az alaphoz hozzáadandó idő érték. Ez lehet negatív érték. Az [ISO 8601 időtartam formátuma](https://en.wikipedia.org/wiki/ISO_8601#Durations). |
-| formátumban | No | sztring | A dátum és idő eredményének kimeneti formátuma Ha nincs megadva, a rendszer az alapérték formátumát használja. Használjon [szabványos formázó karakterláncokat](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy [Egyéni formázó karakterláncokat](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). |
+| formátumban | No | sztring | A dátum és idő eredményének kimeneti formátuma Ha nincs megadva, a rendszer az alapérték formátumát használja. Használjon [szabványos formázó karakterláncokat](/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy [Egyéni formázó karakterláncokat](/dotnet/standard/base-types/custom-date-and-time-format-strings). |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -142,9 +142,9 @@ Az aktuális (UTC) dátum és idő értéket adja vissza a megadott formátumban
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| formátumban |No |sztring |A karakterláncra konvertálandó URI-kódolású érték. Használjon [szabványos formázó karakterláncokat](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy [Egyéni formázó karakterláncokat](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). |
+| formátumban |No |sztring |A karakterláncra konvertálandó URI-kódolású érték. Használjon [szabványos formázó karakterláncokat](/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy [Egyéni formázó karakterláncokat](/dotnet/standard/base-types/custom-date-and-time-format-strings). |
 
 ### <a name="remarks"></a>Megjegyzések
 
