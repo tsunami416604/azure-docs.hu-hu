@@ -3,12 +3,11 @@ title: Alkalmazások és az alkalmazások másolása a készlet csomópontjaira
 description: Ismerje meg, hogyan másolhat alkalmazásokat és információkat a készlet csomópontjaira.
 ms.topic: how-to
 ms.date: 02/17/2020
-ms.openlocfilehash: dad52a69ee468872c10b3a9e66b967a1c7bd101d
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: MT
+ms.openlocfilehash: e21b8551fb62c4335910fd05bb9590eaf6f7e35a
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726825"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954893"
 ---
 # <a name="copy-applications-and-data-to-pool-nodes"></a>Alkalmazások és az alkalmazások másolása a készlet csomópontjaira
 
@@ -19,13 +18,13 @@ Azure Batch számos módszert támogat az adatok és alkalmazások számítási 
 Példák: 
 - Alkalmazások áthelyezése vagy telepítése a feladat indítása parancssor használatával
 
-- Adott fájlok vagy tárolók listájának megadásához egy Azure Storage-fiókban. További információ: [Add # resourcefile in Rest dokumentáció](https://docs.microsoft.com/rest/api/batchservice/pool/add#resourcefile)
+- Adott fájlok vagy tárolók listájának megadásához egy Azure Storage-fiókban. További információ: [Add # resourcefile in Rest dokumentáció](/rest/api/batchservice/pool/add#resourcefile)
 
-- A készleten futó összes feladattípus futtatja a MyApplication. exe fájlt, amelyet először a MyApplication. msi fájllal kell telepíteni. Ha ezt a mechanizmust használja, be kell állítania az indítási tevékenység **várakozási** idejének sikerességét **true**értékre. További információ: [# startTask hozzáadása a REST dokumentációban](https://docs.microsoft.com/rest/api/batchservice/pool/add#starttask).
+- A készleten futó összes feladattípus MyApplication.exe fut, amelyet először MyApplication.msi kell telepíteni. Ha ezt a mechanizmust használja, be kell állítania az indítási tevékenység **várakozási** idejének sikerességét **true**értékre. További információ: [# startTask hozzáadása a REST dokumentációban](/rest/api/batchservice/pool/add#starttask).
 
-- **Alkalmazáscsomag-hivatkozások** a készletre: olyan alkalmazásokhoz vagy adatokhoz, amelyeket a készlet minden csomópontján telepíteni kell. Nincs hozzárendelve telepítési parancs egy alkalmazáscsomag számára, de az indítási tevékenységgel bármilyen telepítési parancsot futtathat. Ha az alkalmazás nem igényel telepítést, vagy nagy mennyiségű fájlt tartalmaz, ezt a metódust használhatja. Az alkalmazáscsomag nagy mennyiségű fájlhoz alkalmas, mert nagy mennyiségű fájl hivatkozást egyesít egy kis adattartalommal. Ha több mint 100 különálló erőforrást próbál felvenni egyetlen feladatba, előfordulhat, hogy a Batch szolgáltatás egy adott feladat belső rendszerkorlátain kívül esik. Az alkalmazás-csomagokat is használhatja, ha olyan szigorú verziószámozási követelményekkel rendelkezik, amelyekben számos különböző verziója lehet ugyanazon alkalmazásnak, és ezek közül kell választania. További információért olvassa el az [alkalmazások üzembe helyezése számítási csomópontokhoz kötegelt alkalmazáscsomag használatával](https://docs.microsoft.com/azure/batch/batch-application-packages)című témakört.
+- **Alkalmazáscsomag-hivatkozások** a készletre: olyan alkalmazásokhoz vagy adatokhoz, amelyeket a készlet minden csomópontján telepíteni kell. Nincs hozzárendelve telepítési parancs egy alkalmazáscsomag számára, de az indítási tevékenységgel bármilyen telepítési parancsot futtathat. Ha az alkalmazás nem igényel telepítést, vagy nagy mennyiségű fájlt tartalmaz, ezt a metódust használhatja. Az alkalmazáscsomag nagy mennyiségű fájlhoz alkalmas, mert nagy mennyiségű fájl hivatkozást egyesít egy kis adattartalommal. Ha több mint 100 különálló erőforrást próbál felvenni egyetlen feladatba, előfordulhat, hogy a Batch szolgáltatás egy adott feladat belső rendszerkorlátain kívül esik. Az alkalmazás-csomagokat is használhatja, ha olyan szigorú verziószámozási követelményekkel rendelkezik, amelyekben számos különböző verziója lehet ugyanazon alkalmazásnak, és ezek közül kell választania. További információért olvassa el az [alkalmazások üzembe helyezése számítási csomópontokhoz kötegelt alkalmazáscsomag használatával](./batch-application-packages.md)című témakört.
 
-- **Feladat-előkészítési tevékenység erőforrás-fájljai**: olyan alkalmazásokhoz vagy adatokhoz, amelyeket telepíteni kell a feladat futtatásához, de nem kell a teljes készletre telepíteni. Például: Ha a készlet több különböző típusú feladattal rendelkezik, és a futtatáshoz csak egy MyApplication. msi szükséges, érdemes a telepítési lépést a feladat-előkészítési feladatba helyezni. A feladat-előkészítési feladatokkal kapcsolatos további információkért lásd: [feladat-előkészítési és feladat-felszabadítási feladatok futtatása kötegelt számítási csomópontokon](https://azure.microsoft.com/documentation/articles/batch-job-prep-release/).
+- **Feladat-előkészítési tevékenység erőforrás-fájljai**: olyan alkalmazásokhoz vagy adatokhoz, amelyeket telepíteni kell a feladat futtatásához, de nem kell a teljes készletre telepíteni. Ha például a készlet számos különböző típusú feladattal rendelkezik, és csak egy feladattípusra van szükség MyApplication.msi futtatásához, érdemes a telepítési lépést a feladat-előkészítési feladatba helyezni. A feladat-előkészítési feladatokkal kapcsolatos további információkért lásd: [feladat-előkészítési és feladat-felszabadítási feladatok futtatása kötegelt számítási csomópontokon](./batch-job-prep-release.md).
 
 - **Feladat-erőforrások fájljai**: Ha egy alkalmazás vagy adat csak egy adott feladathoz van jelentősége. Tegyük fel például, hogy öt tevékenységgel rendelkezik, amelyek mindegyike egy másik fájlt dolgoz fel, majd a kimenetet a blob Storage-ba írja.  Ebben az esetben a bemeneti fájlt meg kell adni a **feladatok erőforrás-fájlok** gyűjteményben, mert minden egyes feladathoz saját bemeneti fájl tartozik.
 

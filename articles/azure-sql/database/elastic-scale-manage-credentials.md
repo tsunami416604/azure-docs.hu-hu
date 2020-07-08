@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
 ms.openlocfilehash: cd33e202a76a5ae55a68d902bb4812dcaaf348aa
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84047537"
 ---
 # <a name="credentials-used-to-access-the-elastic-database-client-library"></a>Az Elastic Database ügyféloldali kódtár eléréséhez használt hitelesítő adatok
@@ -73,7 +72,7 @@ Ebben a példában a **smmUserConnectionString** a felhasználói hitelesítő a
 
 A rendszergazdai hitelesítő adatokhoz hasonlóan a "" formában ne használja az értékeket username@server . Ehelyett egyszerűen használja a "username" kifejezést.  Azt is vegye figyelembe, hogy a kapcsolatok karakterlánca nem tartalmazza a kiszolgáló nevét és az adatbázis nevét. Ennek az az oka, hogy a **OpenConnectionForKey** -hívás automatikusan irányítja a kapcsolódást a megfelelő szegmensre a kulcs alapján. Ezért az adatbázis neve és a kiszolgáló neve nincs megadva.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 [Adatbázisok és bejelentkezések kezelése az Azure SQL Database-ben](logins-create-manage.md)
 

@@ -9,12 +9,11 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/17/2017
 ms.author: tagore
-ms.openlocfilehash: 23fbb0b4c506b2f72000add9704618337b8b24cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 774d2bb58fd7dd75825be8f433f078d70c13fe8c
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75386187"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85919983"
 ---
 # <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>Node.js-alkalmazás létrehozása és telepítése egy Azure-felhőszolgáltatásban
 
@@ -47,19 +46,24 @@ Hajtsa végre az alábbi feladatokat egy új Azure Cloud Service-projekt létreh
 2. A [PowerShell összekapcsolása] az előfizetéssel.
 3. A projekt létrehozásához adja meg a következő PowerShell-parancsmagot:
 
-        New-AzureServiceProject helloworld
+   ```powershell
+   New-AzureServiceProject helloworld
+   ```
 
-    ![A New-AzureService helloworld parancs eredménye][The result of the New-AzureService helloworld command]
+   ![A New-AzureService helloworld parancs eredménye][The result of the New-AzureService helloworld command]
 
-    A **New-AzureServiceProject** parancsmag létrehoz egy alapszintű struktúrát egy Node.js-alkalmazás közzétételéhez egy Cloud Service szolgáltatásban. Az Azure-ban való közzétételhez szükséges konfigurációs fájlokat tartalmaz. A parancsmag emellett a munkakönyvtárat a szolgáltatás könyvtárára módosítja.
+   A **New-AzureServiceProject** parancsmag létrehoz egy alapszintű struktúrát egy Node.js-alkalmazás közzétételéhez egy Cloud Service szolgáltatásban. Az Azure-ban való közzétételhez szükséges konfigurációs fájlokat tartalmaz. A parancsmag emellett a munkakönyvtárat a szolgáltatás könyvtárára módosítja.
 
-    A parancsmag a következő fájlokat hozza létre:
+   A parancsmag a következő fájlokat hozza létre:
 
    * **ServiceConfiguration.Cloud.cscfg**, **ServiceConfiguration.Local.cscfg** és **ServiceDefinition.csdef**: az alkalmazás közzétételéhez szükséges Azure-specifikus fájlok. További információkért lásd: [Üzemeltetett szolgáltatás létrehozása az Azure-ban – áttekintés].
    * **deploymentSettings.json**: Az Azure PowerShell telepítési parancsmagok által használt helyi beállításokat tárolja.
+
 4. Új webes szerepkör hozzáadásához adja meg az alábbi parancsot:
 
-       Add-AzureNodeWebRole
+   ```powershell
+   Add-AzureNodeWebRole
+   ```
 
    ![Az Add-AzureNodeWebRole parancs kimenete][The output of the Add-AzureNodeWebRole command]
 
@@ -70,12 +74,14 @@ Hajtsa végre az alábbi feladatokat egy új Azure Cloud Service-projekt létreh
 
 A Node.js-alkalmazás a **server.js**-fájlban van meghatározva, amely a webes szerepkör könyvtárában található (alapértelmezés szerint **WebRole1**). A kód itt látható:
 
-    var http = require('http');
-    var port = process.env.port || 1337;
-    http.createServer(function (req, res) {
-        res.writeHead(200, { 'Content-Type': 'text/plain' });
-        res.end('Hello World\n');
-    }).listen(port);
+```js
+var http = require('http');
+var port = process.env.port || 1337;
+http.createServer(function (req, res) {
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    res.end('Hello World\n');
+}).listen(port);
+```
 
 Ez a kód lényegében megegyezik a [nodejs.org] webhelyen található „Hello World” példával, azt leszámítva, hogy a felhőkörnyezet által hozzárendelt portszámot használja.
 
@@ -89,14 +95,18 @@ Az alkalmazás közzétételéhez az Azure-ban először le kell töltenie a kö
 
 1. Futtassa a következő Azure PowerShell-parancsmagot:
 
-       Get-AzurePublishSettingsFile
+    ```powershell
+    Get-AzurePublishSettingsFile
+    ```
 
    Ezáltal a böngészője megnyitja a közzétételi beállítások letöltése oldalt. A rendszer arra kérheti, hogy jelentkezzen be egy Microsoft-fiókkal. Ebben az esetben használja az Azure-előfizetéséhez társított fiókot.
 
    Mentse a letöltött profilt egy olyan fájlhelyre, amelyhez könnyen hozzáfér.
 2. Futtassa a következő parancsmagot a letöltött közzétételi profil importálásához:
 
-       Import-AzurePublishSettingsFile [path to file]
+    ```powershell
+    Import-AzurePublishSettingsFile [path to file]
+    ```
 
     > [!NOTE]
     > A közzétételi beállítások importálása után érdemes törölni a letöltött .publishSettings-fájlt, ugyanis olyan információkat tartalmaz, amelyekkel mások hozzáférhetnek a fiókjához.
@@ -104,8 +114,10 @@ Az alkalmazás közzétételéhez az Azure-ban először le kell töltenie a kö
 ### <a name="publish-the-application"></a>Az alkalmazás közzététele
 A közzétételhez futtassa a következő parancsokat:
 
-      $ServiceName = "NodeHelloWorld" + $(Get-Date -Format ('ddhhmm'))
-    Publish-AzureServiceProject -ServiceName $ServiceName  -Location "East US" -Launch
+```powershell
+$ServiceName = "NodeHelloWorld" + $(Get-Date -Format ('ddhhmm'))
+Publish-AzureServiceProject -ServiceName $ServiceName  -Location "East US" -Launch
+```
 
 * A **-ServiceName** megadja a központi telepítés nevét. Ennek egyedi névnek kell lennie, máskülönben a közzétételi folyamat meghiúsul. A **Get-Date** parancs hozzátold egy dátum/idő sztringet, amely egyedivé teheti a nevet.
 * A **-Location** megadja az adatközpontot, amelyben az alkalmazás üzemel. Az elérhető adatközpontok listájáért használja a **Get-AzureLocation** parancsmagot.
@@ -136,14 +148,18 @@ A **Publish-AzureServiceProject**-parancsmag az alábbi lépéseket végzi el:
 
 1. Állítsa le az előző szakaszban létrehozott szolgáltatástelepítést a Windows PowerShell-ablakban az alábbi parancsmag használatával:
 
-       Stop-AzureService
+    ```powershell
+    Stop-AzureService
+    ```
 
    A szolgáltatás leállítása eltarthat néhány percig. Miután a szolgáltatás leállt, kap egy üzenetet, amely tájékoztatja a leállásról.
 
    ![A Stop-AzureService parancs állapota][The status of the Stop-AzureService command]
 2. A szolgáltatás törléséhez hívja meg a következő parancsot:
 
-       Remove-AzureService
+    ```powershell
+    Remove-AzureService
+    ```
 
    Ha a rendszer rákérdez, írja be az **Y** karaktert a szolgáltatás törléséhez.
 

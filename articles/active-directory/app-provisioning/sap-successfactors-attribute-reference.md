@@ -12,10 +12,9 @@ ms.date: 12/06/2019
 ms.author: kenwith
 ms.reviewer: celested
 ms.openlocfilehash: 25541b76dda55db1ec26f4d8e3ec63573a47e7b1
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/15/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84781548"
 ---
 # <a name="sap-successfactors-attribute-reference"></a>SAP SuccessFactors-attribútumok referenciája
@@ -128,7 +127,7 @@ Az alábbi táblázat az alapértelmezett attribútum-hozzárendelést tartalmaz
 | 5  | PerPersonal                            | lastName                 | sn                                      | NA                                                                                           |
 | 6  | Felhasználó                                   | addressLine1             | streetAddress                           | NA                                                                                           |
 | 7  | Felhasználó                                   | city                     | l                                       | NA                                                                                           |
-| 8  | Felhasználó                                   | ország                  | Co                                      | NA                                                                                           |
+| 8  | Felhasználó                                   | ország                  | co                                      | NA                                                                                           |
 | 9  | Felhasználó                                   | state                    | st                                      | NA                                                                                           |
 | 10 | Felhasználó                                   | felhasználónév                 | samAccountName                          | NA                                                                                           |
 | 11 | Felhasználó                                   | Irányítószám                  | Irányítószám                              | NA                                                                                           |

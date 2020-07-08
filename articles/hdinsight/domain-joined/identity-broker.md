@@ -7,12 +7,11 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: aa778aa395d013bd644f69886ea5ebc2399e6f54
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
-ms.translationtype: MT
+ms.openlocfilehash: 1bea8adbdb39d2ce83cfe7821ef052fdc1f1d512
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84265250"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921330"
 ---
 # <a name="use-id-broker-preview-for-credential-management"></a>Az ID Broker (előzetes verzió) használata a hitelesítő adatok kezeléséhez
 
@@ -89,6 +88,8 @@ Ha új szerepkört ad hozzá a `idbrokernode` következő attribútumokkal a sab
 ## <a name="tool-integration"></a>Eszköz-integráció
 
 A HDInsight [IntelliJ beépülő modul](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-intellij-tool-plugin#integrate-with-hdinsight-identity-broker-hib) a OAuth támogatásához frissül. Ezt a beépülő modult használhatja a fürthöz való kapcsolódáshoz és a feladatok elküldéséhez.
+
+A VS Code-hoz készült [Spark &-struktúra eszközeivel](https://docs.microsoft.com/azure/hdinsight/hdinsight-for-vscode) a notebook kihasználása és a feladatok elküldése is felhasználható.
 
 ## <a name="ssh-access-without-a-password-hash-in-azure-ad-ds"></a>SSH-hozzáférés jelszó-kivonat nélkül az Azure-ban AD DS
 

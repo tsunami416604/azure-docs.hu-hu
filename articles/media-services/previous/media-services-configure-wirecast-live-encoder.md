@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.reviewer: cenkdin;anilmur
-ms.openlocfilehash: 8e3705aaecb0760513f0605aece89b7ffc0044a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: f5ca4496b9de25d6e95f37076f679eacff28af81
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81641649"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954969"
 ---
 # <a name="use-the-wirecast-encoder-to-send-a-single-bitrate-live-stream"></a>Egyetlen bitráta élő stream küldése a Wirecast Encoder használatával 
 > [!div class="op_single_selector"]
@@ -102,7 +101,7 @@ Ebben az oktatóanyagban a következő kimeneti beállítások használatosak. A
 
     Nevezze el a beállításkészletet, és keresse meg a következő ajánlott beállításokat:
 
-    **Videóinak**
+    **Videó**
 
    * Kódoló: MainConcept H. 264
    * Képkockák másodpercenként: 30
@@ -132,7 +131,7 @@ Ebben az oktatóanyagban a következő kimeneti beállítások használatosak. A
 
     ![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast5.png)
 
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
 2. A fő **Wirecast** képernyőn ellenőrizze, hogy a videó és hang bemeneti forrásai készen állnak-e, majd kattintson a bal felső sarokban található **stream** elemre.
 
     ![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast7.png)
@@ -147,7 +146,7 @@ Ebben az oktatóanyagban a következő kimeneti beállítások használatosak. A
 
 Navigáljon a AMSE eszközhöz, és kattintson a jobb gombbal a tesztelni kívánt csatornára. A menüben vigye az egérmutatót **az előnézet lejátszásához** , és válassza a **Azure Media Player**lehetőséget.  
 
-    ![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast8.png)
+![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast8.png)
 
 Ha az adatfolyam megjelenik a lejátszóban, a kódoló megfelelően konfigurálva van az AMS-hez való kapcsolódásra.
 

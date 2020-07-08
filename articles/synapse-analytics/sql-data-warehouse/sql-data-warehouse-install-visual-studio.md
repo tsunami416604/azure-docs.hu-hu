@@ -12,12 +12,11 @@ ms.subservice: sql-dw
 ms.date: 05/11/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: df24206f4e6ff06be6d7d50ff45c41b60a70b616
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
-ms.translationtype: MT
+ms.openlocfilehash: e18a3628a2fbb9eee248851f2295000fd1f82532
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85211867"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027290"
 ---
 # <a name="getting-started-with-visual-studio-2019"></a>Bevezetés a Visual Studio 2019 használatába
 
@@ -44,6 +43,7 @@ Előfordulhat, hogy a szinapszis SQL-hez tartozó szolgáltatás kiadásai nem t
   - [Támogatási jegy vagy szavazás](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/39040057-ssdt-row-level-security) beküldése a támogatott funkció beszerzéséhez.
 - [Dinamikus adatmaszkolás](/sql/relational-databases/security/dynamic-data-masking?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest#defining-a-dynamic-data-mask)
    - [Támogatási jegy vagy szavazás](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/39040048-ssdt-support-dynamic-data-masking) beküldése a támogatott funkció beszerzéséhez.
+- [Azonosító oszlopot](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql-identity-property?view=sql-server-ver15) tartalmazó táblák
 
 ## <a name="next-steps"></a>További lépések
 

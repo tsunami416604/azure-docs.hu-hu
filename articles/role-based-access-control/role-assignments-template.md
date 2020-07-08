@@ -14,10 +14,9 @@ ms.date: 05/26/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: e26f2ed498b8bfcf6b1518ea34815efb75a8eabe
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85392454"
 ---
 # <a name="add-azure-role-assignments-using-azure-resource-manager-templates"></a>Azure-beli szerepkör-hozzárendelések hozzáadása Azure Resource Manager-sablonok használatával
@@ -363,12 +362,12 @@ Az alábbi példa a közreműködői szerepkör hozzárendelését mutatja be eg
 
 Az Azure-RBAC az Azure-erőforrásokhoz való hozzáférés eltávolításához távolítsa el a szerepkör-hozzárendelést. Nem lehet eltávolítani egy szerepkör-hozzárendelést sablon használatával. A szerepkör-hozzárendelés eltávolításához más eszközöket kell használnia, például:
 
-- [Azure Portal](role-assignments-portal.md#remove-a-role-assignment)
+- [Azure Portalra](role-assignments-portal.md#remove-a-role-assignment)
 - [Azure PowerShell](role-assignments-powershell.md#remove-a-role-assignment)
 - [Azure CLI](role-assignments-cli.md#remove-a-role-assignment)
 - [REST API](role-assignments-rest.md#remove-a-role-assignment)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Rövid útmutató: Azure Resource Manager-sablon létrehozása és üzembe helyezése az Azure Portalon](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)
 - [Az Azure Resource Manager-sablonok struktúrája és szintaxisa](../azure-resource-manager/templates/template-syntax.md)

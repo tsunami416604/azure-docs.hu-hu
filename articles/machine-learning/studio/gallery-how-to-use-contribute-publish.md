@@ -11,10 +11,9 @@ ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
 ms.openlocfilehash: cf483dadb9e27020095329d948698807a14012af
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84709028"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Erőforrások megosztása és felderítése a Azure AI Gallery
@@ -160,7 +159,7 @@ Segíthet másoknak egy olyan **oktatóanyag** megírásában, amely ismerteti a
    > [!TIP]
    > Ha azt szeretné, hogy a dokumentációja még a nyilvánosan elérhetővé tétel előtt is megfelelő legyen, először közzéteheti a kísérletet a **listán**. Később módosíthatja a láthatósági beállítást **nyilvánosra** a kísérlet részletei oldalon. Vegye figyelembe, hogy miután megtörtént egy kísérlet **nyilvánosra** állítása, később nem módosítható a **listára**.
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 Az Ön hozzájárulása már Azure AI Galleryban van. Az Ön hozzájárulásai az **elemek** lap fiók lapján jelennek meg.
 

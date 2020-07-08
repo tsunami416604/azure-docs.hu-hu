@@ -4,10 +4,9 @@ description: Ismerje meg, hogyan állíthatja be a tevékenységek naplóit és 
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 976d8a7127438164c8b807b6f14d3ae877f44b65
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85322452"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Diagnosztikai naplók beállítása az Azure-eseményközpontokhoz
@@ -42,7 +41,7 @@ A diagnosztikai naplók alapértelmezés szerint le vannak tiltva. A diagnosztik
 
 Event Hubs a következő kategóriákhoz tartozó diagnosztikai naplókat rögzíti:
 
-| Kategória | Leírás | 
+| Kategória | Description | 
 | -------- | ----------- | 
 | Archiválási naplók | Adatokat rögzít [Event Hubs rögzítési](event-hubs-capture-overview.md) műveletekről, pontosabban a rögzítési hibákkal kapcsolatos naplókat. |
 | Operatív naplók | Rögzítse az Azure Event Hubs-névtéren végrehajtott összes felügyeleti műveletet. Az adatműveletek nem kerülnek rögzítésre, mert az Azure Event Hubson végrehajtott nagy mennyiségű adatművelet miatt. |
@@ -59,7 +58,7 @@ Az összes napló JavaScript Object Notation (JSON) formátumban van tárolva. M
 
 Az Archive log JSON-karakterláncok az alábbi táblázatban felsorolt elemeket tartalmazzák:
 
-Name (Név) | Leírás
+Name | Description
 ------- | -------
 Feladatnév | A sikertelen feladat leírása
 Tevékenységazonosító | A nyomon követéshez használt belső azonosító
@@ -97,7 +96,7 @@ A következő kód egy példa egy archivált log JSON-karakterláncra:
 
 Az operatív napló JSON-karakterláncai az alábbi táblázatban felsorolt elemeket tartalmazzák:
 
-Name (Név) | Leírás
+Name | Description
 ------- | -------
 Tevékenységazonosító | Belső azonosító, követési célokra használatos |
 EventName | Művelet neve |
@@ -105,7 +104,7 @@ resourceId | Erőforrás-azonosító Azure Resource Manager |
 SubscriptionId | Előfizetés azonosítója |
 EventTimeString | Működési idő |
 EventProperties | Művelet tulajdonságai |
-status | Művelet állapota |
+Állapot | Művelet állapota |
 Hívó | A művelet hívója (Azure Portal vagy felügyeleti ügyfél) |
 Kategória | OperationalLogs |
 
@@ -129,7 +128,7 @@ Example:
 ## <a name="autoscale-logs-schema"></a>Naplók autoskálázása séma
 Az autoscale log JSON az alábbi táblázatban felsorolt elemeket tartalmazza:
 
-| Name (Név) | Leírás |
+| Name | Description |
 | ---- | ----------- | 
 | TrackingId | Belső azonosító, amely nyomkövetési célokra szolgál |
 | ResourceId | Azure Resource Manager erőforrás-azonosító. |
@@ -148,7 +147,7 @@ Az autoscale log JSON az alábbi táblázatban felsorolt elemeket tartalmazza:
 ## <a name="kafka-coordinator-logs-schema"></a>A Kafka-koordinátor naplói sémája
 A Kafka-koordinátor log JSON a következő táblázatban felsorolt elemeket tartalmazza:
 
-| Name (Név) | Leírás |
+| Name | Description |
 | ---- | ----------- | 
 | Kérelemazonosító | A kérelem azonosítója, amely nyomkövetési célokra szolgál |
 | ResourceId | Erőforrás-azonosító Azure Resource Manager |
@@ -176,7 +175,7 @@ A Kafka-koordinátor log JSON a következő táblázatban felsorolt elemeket tar
 ## <a name="kafka-user-error-logs-schema"></a>Kafka felhasználói hiba naplóinak sémája
 A Kafka felhasználói hibanapló JSON a következő táblázatban felsorolt elemeket tartalmazza:
 
-| Name (Név) | Leírás |
+| Name | Description |
 | ---- | ----------- |
 | TrackingId | Nyomkövetési azonosító, amely nyomkövetési célokra szolgál. |
 | Namespacename tulajdonság | Névtér neve |
@@ -191,7 +190,7 @@ A Kafka felhasználói hibanapló JSON a következő táblázatban felsorolt ele
 
 Event Hubs Virtual Network (VNet) kapcsolati esemény JSON az alábbi táblázatban felsorolt elemeket tartalmazza:
 
-| Name (Név) | Leírás |
+| Name | Description |
 | ---  | ----------- | 
 | SubscriptionId | Azure-előfizetés azonosítója |
 | Namespacename tulajdonság | Névtér neve |
@@ -219,7 +218,7 @@ Event Hubs Virtual Network (VNet) kapcsolati esemény JSON az alábbi táblázat
 ## <a name="customer-managed-key-user-logs"></a>Ügyfél által felügyelt kulcsfontosságú felhasználói naplók
 Az ügyfél által felügyelt kulcs felhasználói napló JSON a következő táblázatban felsorolt elemeket tartalmazza:
 
-| Name (Név) | Leírás |
+| Name | Description |
 | ---- | ----------- | 
 | Kategória | Az üzenet kategóriájának típusa A következő értékek egyike: **hiba** és **információ** |
 | ResourceId | Belső erőforrás-azonosító, amely tartalmazza az Azure-előfizetés AZONOSÍTÓját és a névtér nevét |

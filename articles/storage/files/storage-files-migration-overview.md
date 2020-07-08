@@ -8,10 +8,9 @@ ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
 ms.openlocfilehash: 512688345c03ea9d5da0e4933cd6a794eaaf597b
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84660758"
 ---
 # <a name="migrate-to-azure-file-shares"></a>Migrálás Azure-fájlmegosztásokba
@@ -144,7 +143,7 @@ Az eszköz használatával perspektívát hozhat létre [Azure file Sync közpon
 
 Az eszköz tesztelt verziója a 4.4.1-es verzió. Kompatibilis a Felhőbeli rétegbeli fájlokkal. Az eszköz a normál működés közben nem idézi elő a rétegekből származó fájlok felidézését.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 1. Hozzon létre egy tervet, amely az Azure-fájlmegosztás (csak felhőalapú vagy hibrid) telepítését kívánja használni.
 1. Tekintse át az elérhető áttelepítési útmutatók listáját, és keresse meg az Azure-fájlmegosztás forrására és üzembe helyezésére vonatkozó részletes útmutatót.

@@ -12,10 +12,9 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 5cc8bae0f0245f5c4b45ca0cd446582b04788c21
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81758753"
 ---
 # <a name="403004-devicemaximumqueuedepthexceeded"></a>403004 DeviceMaximumQueueDepthExceeded
@@ -30,7 +29,7 @@ A felhőből az eszközre irányuló üzenetek küldésére tett kísérlet sor�
 
 A mögöttes ok az, hogy az eszköz várólistán lévő száma meghaladja a [várólista korlátját (50)](./iot-hub-devguide-quotas-throttling.md#other-limits).
 
-Ennek a korlátnak a legvalószínűbb oka az, hogy a HTTPS használatával fogadja az üzenetet, ami folyamatos lekérdezéseket eredményez a használatával `ReceiveAsync`, ami IoT hub a kérés szabályozását.
+Ennek a korlátnak a legvalószínűbb oka az, hogy a HTTPS használatával fogadja az üzenetet, ami folyamatos lekérdezéseket eredményez a használatával `ReceiveAsync` , ami IoT hub a kérés szabályozását.
 
 ## <a name="solution"></a>Megoldás
 

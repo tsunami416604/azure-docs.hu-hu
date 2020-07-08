@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 12/10/2019
 ms.author: guybo
 ms.openlocfilehash: fd6d17709cc3e5e9f6bb89ed7480fcd9ee80fd97
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81759385"
 ---
 # <a name="prepare-an-oracle-linux-virtual-machine-for-azure"></a>Oracle Linux virtuális gép előkészítése az Azure-hoz
@@ -27,7 +26,7 @@ Ez a cikk azt feltételezi, hogy már telepített egy Oracle Linux operációs r
 * A 2.6.37-nál korábbi Linux kernel verziók nem támogatják a NUMA használatát a Hyper-V-n nagyobb méretű virtuálisgép-méretekkel. Ez a probléma elsősorban a régebbi, Red Hat 2.6.32 kernelt használó disztribúciókat érinti, és a Oracle Linux 6,6-es és újabb verzióiban lett javítva
 * Ne állítson be swap-partíciót az operációsrendszer-lemezen. A Linux-ügynök úgy konfigurálható, hogy lapozófájlt hozzon létre az ideiglenes erőforrás lemezén.  Erről további információt az alábbi lépésekben találhat.
 * Az Azure-ban az összes virtuális merevlemeznek 1 MB-ra igazított virtuális mérettel kell rendelkeznie. Nyers lemezről VHD-re való konvertáláskor gondoskodnia kell arról, hogy a nyers lemez mérete a konverzió előtt egy 1MB többszöröse legyen. További információért lásd a [Linux telepítési megjegyzéseit](create-upload-generic.md#general-linux-installation-notes) .
-* Győződjön meg arról, `Addons` hogy az adattár engedélyezve van. Szerkessze a `/etc/yum.repos.d/public-yum-ol6.repo`fájlt (Oracle Linux 6) `/etc/yum.repos.d/public-yum-ol7.repo`vagy (Oracle Linux 7), és módosítsa a `enabled=0` sort `enabled=1` a következőre: **[ol6_addons]** vagy **[ol7_addons]** .
+* Győződjön meg arról, hogy az `Addons` adattár engedélyezve van. Szerkessze a fájlt `/etc/yum.repos.d/public-yum-ol6.repo` (Oracle Linux 6) vagy `/etc/yum.repos.d/public-yum-ol7.repo` (Oracle Linux 7), és módosítsa a sort a következőre `enabled=0` `enabled=1` : **[ol6_addons]** vagy **[ol7_addons]** .
 
 ## <a name="oracle-linux-64-and-later"></a>Oracle Linux 6,4 és újabb verziók
 Az Azure-ban való futtatáshoz a virtuális gép operációs rendszerében meghatározott konfigurációs lépéseket kell végrehajtania.
@@ -39,11 +38,11 @@ Az Azure-ban való futtatáshoz a virtuális gép operációs rendszerében megh
         # sudo rpm -e --nodeps NetworkManager
    
     **Megjegyzés:** Ha a csomag még nincs telepítve, akkor a parancs hibaüzenettel meghiúsul. Ez a várható eredmény.
-4. Hozzon létre egy **hálózat** nevű fájlt `/etc/sysconfig/` a könyvtárban, amely a következő szöveget tartalmazza:
+4. Hozzon létre egy **hálózat** nevű fájlt a `/etc/sysconfig/` könyvtárban, amely a következő szöveget tartalmazza:
    
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
-5. Hozzon létre egy **ifcfg-eth0** nevű fájlt `/etc/sysconfig/network-scripts/` a könyvtárban, amely a következő szöveget tartalmazza:
+5. Hozzon létre egy **ifcfg-eth0** nevű fájlt a `/etc/sysconfig/network-scripts/` könyvtárban, amely a következő szöveget tartalmazza:
    
         DEVICE=eth0
         ONBOOT=yes
@@ -74,7 +73,7 @@ Az Azure-ban való futtatáshoz a virtuális gép operációs rendszerében megh
    
    A grafikus és a csendes rendszerindítás nem hasznos olyan felhőalapú környezetben, ahol az összes naplót el szeretné juttatni a soros portra.
    
-   Ha `crashkernel` szükséges, a beállítás meghagyható, de vegye figyelembe, hogy ez a paraméter a virtuális gépen rendelkezésre álló memória mennyiségét legfeljebb 128 MB-kal csökkenti, ami problémát okozhat a kisebb virtuálisgép-méretekben.
+   `crashkernel`Ha szükséges, a beállítás meghagyható, de vegye figyelembe, hogy ez a paraméter a virtuális gépen rendelkezésre álló memória mennyiségét legfeljebb 128 MB-kal csökkenti, ami problémát okozhat a kisebb virtuálisgép-méretekben.
 10. Győződjön meg arról, hogy az SSH-kiszolgáló telepítése és konfigurálása a rendszerindítás indításakor történik.  Ez általában az alapértelmezett.
 11. Telepítse az Azure Linux-ügynököt a következő parancs futtatásával. A legújabb verzió a 2.0.15.
     
@@ -112,11 +111,11 @@ Egy Oracle Linux 7 virtuális gép Azure-hoz való előkészítése nagyon hason
 
 1. A Hyper-V kezelőjében válassza ki a virtuális gépet.
 2. Kattintson a **Kapcsolódás** elemre a virtuális gép konzoljának megnyitásához.
-3. Hozzon létre egy **hálózat** nevű fájlt `/etc/sysconfig/` a könyvtárban, amely a következő szöveget tartalmazza:
+3. Hozzon létre egy **hálózat** nevű fájlt a `/etc/sysconfig/` könyvtárban, amely a következő szöveget tartalmazza:
    
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
-4. Hozzon létre egy **ifcfg-eth0** nevű fájlt `/etc/sysconfig/network-scripts/` a könyvtárban, amely a következő szöveget tartalmazza:
+4. Hozzon létre egy **ifcfg-eth0** nevű fájlt a `/etc/sysconfig/network-scripts/` könyvtárban, amely a következő szöveget tartalmazza:
    
         DEVICE=eth0
         ONBOOT=yes
@@ -138,7 +137,7 @@ Egy Oracle Linux 7 virtuális gép Azure-hoz való előkészítése nagyon hason
    
         # sudo yum clean all
         # sudo yum -y update
-9. Módosítsa a rendszermag rendszerindítási sorát a grub-konfigurációban, hogy további kernel-paramétereket is tartalmazzon az Azure-hoz. Ehhez nyissa meg a "/etc/default/grub" kifejezést egy szövegszerkesztőben, és `GRUB_CMDLINE_LINUX` szerkessze a paramétert, például:
+9. Módosítsa a rendszermag rendszerindítási sorát a grub-konfigurációban, hogy további kernel-paramétereket is tartalmazzon az Azure-hoz. Ehhez nyissa meg a "/etc/default/grub" kifejezést egy szövegszerkesztőben, és szerkessze a `GRUB_CMDLINE_LINUX` paramétert, például:
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
@@ -148,7 +147,7 @@ Egy Oracle Linux 7 virtuális gép Azure-hoz való előkészítése nagyon hason
    
    A grafikus és a csendes rendszerindítás nem hasznos olyan felhőalapú környezetben, ahol az összes naplót el szeretné juttatni a soros portra.
    
-   Ha `crashkernel` szükséges, a beállítás meghagyható, de vegye figyelembe, hogy ez a paraméter a virtuális gépen rendelkezésre álló memória mennyiségét legfeljebb 128 MB-kal csökkenti, ami problémát okozhat a kisebb virtuálisgép-méretekben.
+   `crashkernel`Ha szükséges, a beállítás meghagyható, de vegye figyelembe, hogy ez a paraméter a virtuális gépen rendelkezésre álló memória mennyiségét legfeljebb 128 MB-kal csökkenti, ami problémát okozhat a kisebb virtuálisgép-méretekben.
 10. Miután befejezte a "/etc/default/grub" szerkesztését, futtassa a következő parancsot a grub-konfiguráció újraépítéséhez:
     
         # sudo grub2-mkconfig -o /boot/grub2/grub.cfg

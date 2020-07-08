@@ -9,7 +9,7 @@ editor: ''
 ms.assetid: 7cbe4337-bb77-4ee0-b254-3e368be06db7
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
@@ -17,12 +17,11 @@ ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c335a4d30846f7c1b4dbd6b6aedc4d100a9b43a
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
-ms.translationtype: MT
+ms.openlocfilehash: 5e1ac0033b7ed2de90ece481cd02d64970ff5f9f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74014290"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608109"
 ---
 # <a name="troubleshoot-missing-data-in-the-azure-active-directory-activity-logs"></a>Hibaelhárítás: Hiányzó adatok az Azure Active Directory-tevékenységnaplókban 
 
@@ -38,10 +37,10 @@ Végrehajtottam bizonyos műveleteket az Azure Portalon, és arra számítottam,
 
 A műveletek nem jelennek meg azonnal a tevékenységnaplókban. Az alábbi táblázat a tevékenységnaplók késési számait sorolja fel. 
 
-| Jelentés | &nbsp; | Késés (P95) | Késés (P99) |
-|--------|--------|---------------|---------------|
-| Címtárnaplózás | &nbsp; | 2 perc | 5 perc |
-| Bejelentkezési tevékenység | &nbsp; | 2 perc | 5 perc | 
+| Jelentés | Késés (P95) | Késés (P99) |
+|--------|---------------|---------------|
+| Címtárnaplózás | 2 perc | 5 perc |
+| Bejelentkezési tevékenység | 2 perc | 5 perc |
 
 ### <a name="resolution"></a>Megoldás:
 
@@ -59,10 +58,10 @@ Nemrég bejelentkeztem az Azure Portalra, és arra számítottam, hogy látom ez
 
 A műveletek nem jelennek meg azonnal a tevékenységnaplókban. Az alábbi táblázat a tevékenységnaplók késési számait sorolja fel. 
 
-| Jelentés | &nbsp; | Késés (P95) | Késés (P99) |
-|--------|--------|---------------|---------------|
-| Címtárnaplózás | &nbsp; | 2 perc | 5 perc |
-| Bejelentkezési tevékenység | &nbsp; | 2 perc | 5 perc | 
+| Jelentés | Késés (P95) | Késés (P99) |
+|--------|---------------|---------------|
+| Címtárnaplózás | 2 perc | 5 perc |
+| Bejelentkezési tevékenység 2 perc | 5 perc |
 
 ### <a name="resolution"></a>Megoldás:
 
@@ -72,7 +71,7 @@ Várjon, hogy a műveletek úgy 15 perc és két óra közötti időtartam eltel
 
 ### <a name="symptoms"></a>Probléma
 
-Nem jelenik meg 30 napnál több bejelentkezési és auditadat az Azure Portalról. Hogy miért? 
+Nem jelenik meg 30 napnál több bejelentkezési és auditadat az Azure Portalról. Miért? 
 
  ![Jelentéskészítés](./media/troubleshoot-missing-audit-data/03.png)
 
@@ -80,10 +79,10 @@ Nem jelenik meg 30 napnál több bejelentkezési és auditadat az Azure Portalr�
 
 A licencétől függően az Azure Active Directory-műveletek az alábbi időtartamokig tárolják a tevékenységjelentéseket:
 
-| Jelentés           | &nbsp; |  Azure AD Free | Prémium szintű Azure AD P1 | Prémium szintű Azure AD P2 |
-| ---              | ----   |  ---           | ---                 | ---                 |
-| Címtárnaplózás  | &nbsp; |   7 nap     | 30 nap             | 30 nap             |
-| Bejelentkezési tevékenységek | &nbsp; | Nem érhető el. A saját bejelentkezéseit 7 napig érheti el az egyedi felhasználói profil panelről | 30 nap | 30 nap             |
+| Jelentés           | Azure AD Free | Prémium szintű Azure AD P1 | Prémium szintű Azure AD P2 |
+| ---              | ---           | ---                 | ---                 |
+| Címtárnaplózás  |  7 nap       | 30 nap             | 30 nap             |
+| Bejelentkezési tevékenységek | Nem érhető el. A saját bejelentkezéseit 7 napig érheti el az egyedi felhasználói profil panelről | 30 nap | 30 nap             |
 
 További információk: [Az Azure Active Directory jelentésmegőrzési házirendje](reference-reports-data-retention.md).  
 

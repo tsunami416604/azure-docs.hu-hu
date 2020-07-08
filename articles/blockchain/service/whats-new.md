@@ -1,15 +1,14 @@
 ---
 title: Újdonságok Kibocsátási megjegyzések – Azure Blockchain Service
 description: Ismerje meg az Azure Blockchain szolgáltatás újdonságait, például a legújabb kibocsátási megjegyzéseket, a verziókat, az ismert problémákat és a közelgő változásokat.
-ms.date: 06/03/2020
+ms.date: 06/30/2020
 ms.topic: conceptual
 ms.reviewer: ravastra
-ms.openlocfilehash: c5316aa387de28fe1a78b336eb2e9e010c624b02
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
-ms.translationtype: MT
+ms.openlocfilehash: 80ece6cb6bb81b7ce168da997603e17d1238171b
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84435428"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921895"
 ---
 # <a name="whats-new-in-azure-blockchain-service"></a>Újdonságok az Azure Blockchain szolgáltatásban?
 
@@ -23,6 +22,25 @@ Az Azure Blockchain szolgáltatás folyamatosan fejleszti a fejlesztéseket. A l
 
 ---
 
+## <a name="june-2020"></a>2020. június
+
+### <a name="version-upgrades"></a>Verziófrissítések
+
+- A kvórum verziója a 2.6.0-re frissül. A 2.6.0-es verzióban aláírt privát tranzakciókat is küldhet. A privát tranzakciók küldésével kapcsolatos további információkért tekintse meg a [KVÓRUM API dokumentációját](https://docs.goquorum.com/en/latest/Getting%20Started/api/).
+- A Tessera verziója a 0.10.5-re frissül.
+
+### <a name="contract-size-and-transaction-size-increased-to-128-kb"></a>A szerződés mérete és a tranzakció mérete 128 KB-ra nőtt
+
+Típus: konfiguráció módosítása
+
+A szerződés mérete (MaxCodeSize) 128 KB-ra nőtt, így nagyobb méretű intelligens szerződések helyezhetők üzembe. Emellett a tranzakció mérete (txnSizeLimit) 128 KB-ra nőtt. A konfigurációs változások az Azure Blockchain szolgáltatásban az 19 2020. június után létrehozott új konzorciumokra vonatkoznak.
+
+### <a name="trietimeout-value-reduced"></a>TrieTimeout érték csökkentve
+
+Típus: konfiguráció módosítása
+
+A TrieTimeout érték csökkentve lett, hogy a memóriában tárolt állapot gyakrabban legyen lemezre írva. Az alacsonyabb érték azt jelenti, hogy a csomópontok gyorsabb helyreállítását biztosítják egy csomópont összeomlásakor előforduló ritka esetekben.
+
 ## <a name="may-2020"></a>2020. május
 
 ### <a name="version-upgrades"></a>Verziófrissítések
@@ -33,17 +51,24 @@ Az Azure Blockchain szolgáltatás folyamatosan fejleszti a fejlesztéseket. A l
 
 ### <a name="azure-blockchain-service-supports-sending-rawprivate-transactions"></a>Az Azure Blockchain szolgáltatás támogatja a rawPrivate-tranzakciók küldését
 
-**Írja be a következőt:** Vonás
+Típus: funkció
 
 Az ügyfél a fiókon kívül is aláírhat privát tranzakciókat a csomóponton.
 
 ### <a name="two-phase-member-provisioning"></a>Kétfázisú tag kiépítés
 
-**Írja be a következőt:** Javítása
+Típus: fejlesztés
 
 Két fázis segít optimalizálni az olyan forgatókönyveket, amelyekben egy tag egy hosszú, meglévő konzorciumban jön létre. A tagsági infrastruktúra az első fázisban van kiépítve. A második fázisban a tag szinkronizálva van a blockchain. A kétfázisú kiépítés segít elkerülni a tagoknak az időtúllépések miatti sikertelen létrehozását.
 
 ## <a name="known-issues"></a>Ismert problémák
+
+### <a name="ethestimategas-function-throws-exception-in-quorum-v260"></a>az ETH. estimateGas függvény kivételt jelez a kvórum v 2.6.0-ben
+
+A kvórum v 2.6.0-ben az *ETH. estimateGas* függvény meghívása anélkül, hogy a további *érték* paraméter megadása miatt a *metódus kezelője összeomlott* . A kvórum csapatának értesítése megtörtént, és a javítás várhatóan július 2020. A javítás elérhetővé tételéhez a következő megkerülő megoldásokat használhatja:
+
+- Kerülje az *ETH. estimateGas* használatát, mivel ez hatással lehet a teljesítményre. További információ az ETH. estimateGas teljesítménnyel kapcsolatos problémákról: az [ETH meghívása. a estimateGas függvény csökkenti a teljesítményt](#calling-ethestimategas-function-reduces-performance). Adja meg a gáz értékét minden egyes tranzakcióhoz. A legtöbb kódtár az ETH. estimateGas-t hívja meg, ha nincs megadva olyan gáz értéke, amely a kvórum v 2.6.0 összeomlását okozza.
+- Ha az *ETH. estimateGas*meghívására van szüksége, a kvórum csapata azt javasolja, hogy megkerülő megoldásként adja át a további paraméter *értékét* *0* -ként.
 
 ### <a name="mining-stops-if-fewer-than-four-validator-nodes"></a>A bányászat leáll, ha kevesebb mint négy érvényesítő csomópont
 
@@ -89,11 +114,11 @@ Az Azure Blockchain szolgáltatás összeomlás esetén újraindítja a Tesserat
 
 Ha nagy mennyiségű privát tranzakciót küld, használja a *standard* szintet. A fogalmak fejlesztéséhez, teszteléséhez és bizonyításához *használja az alapszintű* csomagot. Az alapszintű és a standard szintű díjszabás a tag létrehozása után történő módosítása nem támogatott.
 
-### <a name="calling-ethestimate-gas-function-reduces-performance"></a>Az ETH meghívása
+### <a name="calling-ethestimategas-function-reduces-performance"></a>Az ETH. estimateGas függvény meghívása csökkenti a teljesítményt
 
-Az *ETH* meghívása többször is csökkenti a tranzakciók másodpercenkénti számát. Ne használja az *ETH. költségbecslés* Gas függvényt az egyes tranzakciók beküldéséhez. Az *ETH. becslési* függvény a memória intenzív.
+Az *ETH. estimateGas* függvény többszöri meghívása csökkenti a tranzakciók másodpercenkénti számát. Az összes tranzakció beküldéséhez ne használjon *ETH. estimateGas* függvényt. Az *ETH. estimateGas* függvény a memória-igényes.
 
-Ha lehetséges, használjon egy konzervatív gáz értéket a tranzakciók elküldéséhez, és csökkentse az *ETH. becslés*használatát.
+Ha lehetséges, használjon egy konzervatív gáz értéket a tranzakciók elküldéséhez, és csökkentse az *ETH. estimateGas*használatát.
 
 ### <a name="unbounded-loops-in-smart-contracts-reduces-performance"></a>Az intelligens szerződések nem kötött hurkoi csökkentik a teljesítményt
 

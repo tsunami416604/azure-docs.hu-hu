@@ -1,18 +1,17 @@
 ---
-title: Helyi folyamat használata a Kubernetes és a Visual Studio Code (előzetes verzió) használatával
+title: Helyi folyamat és Kubernetes használata a Visual Studio Code-dal (előzetes verzió)
 services: azure-dev-spaces
 ms.date: 06/02/2020
 ms.topic: conceptual
 description: Ismerje meg, hogyan használható a helyi folyamat a Kubernetes a fejlesztői számítógép Kubernetes-fürthöz való összekapcsolásához az Azure dev Spaces használatával
 keywords: Helyi folyamat a Kubernetes, az Azure dev Spaces, a dev Spaces, a Docker, a Kubernetes, az Azure, az AK, az Azure Kubernetes Service, a containers
 ms.openlocfilehash: 23a94528ffa4e9e412f472349ea26d1a14003616
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84316739"
 ---
-# <a name="use-local-process-with-kubernetes-with-visual-studio-code-preview"></a>Helyi folyamat használata a Kubernetes és a Visual Studio Code (előzetes verzió) használatával
+# <a name="use-local-process-with-kubernetes-with-visual-studio-code-preview"></a>Helyi folyamat és Kubernetes használata a Visual Studio Code-dal (előzetes verzió)
 
 A Kubernetes helyi folyamata lehetővé teszi a kód futtatását és hibakeresését a fejlesztői számítógépen, miközben továbbra is csatlakozik a Kubernetes-fürthöz a többi alkalmazással vagy szolgáltatással. Ha például nagyméretű, több függő szolgáltatásokkal és adatbázisokkal rendelkező, nagy üzemi architektúrával rendelkezik, a függőségek replikálása a fejlesztői számítógépen nehéz lehet. Emellett a belső hurkok fejlesztése során a kód a Kubernetes-fürthöz való létrehozása és üzembe helyezése is lassú, időigényes és nehéz a hibakeresővel való használatra.
 
@@ -130,13 +129,13 @@ A fejlesztői számítógép akkor csatlakozik, ha az állapotsor narancssárga 
 ![Fejlesztői számítógép csatlakoztatva](../media/local-process-kubernetes-vs-code/development-computer-connected.png)
 
 > [!NOTE]
-> A subesquent indításakor nem fog megjelenni a szolgáltatás neve, portja vagy indítási feladata. Ezek az értékek a *. vscode/Tasks. JSON*fájlban tárolódnak.
+> A subesquent indításakor nem fog megjelenni a szolgáltatás neve, portja vagy indítási feladata. Ezeket az értékeket a *. vscode/tasks.json tárolja a*rendszer.
 
 A fejlesztői számítógép csatlakoztatása után a forgalom a cserélni kívánt szolgáltatáshoz irányítja át a fejlesztési számítógépét.
 
 ## <a name="set-a-break-point"></a>Töréspont beállítása
 
-Nyissa meg a [Server. js fájlt][server-js-breakpoint] , és kattintson a 233. sorban a kurzorra. Állítsa be a töréspontot az *F9 billentyű* lenyomásával, vagy kattintson a *Futtatás* , majd a *töréspont váltása*gombra
+Nyissa meg [server.js][server-js-breakpoint] , és kattintson a 233. sorban a kurzorra. Állítsa be a töréspontot az *F9 billentyű* lenyomásával, vagy kattintson a *Futtatás* , majd a *töréspont váltása*gombra
 
 Nyissa meg a minta alkalmazást a nyilvános URL-cím megnyitásával. Válassza az *Aurelia Briggs (ügyfél)* lehetőséget felhasználóként, majd válassza ki a bérelni kívánt kerékpárt. Figyelje meg, hogy a kerékpár képe nem töltődik be. Térjen vissza a Visual Studio Code-ba, és figyelje meg, hogy ki van emelve a 233. sor. A megadott töréspont szüneteltette a szolgáltatást a 233. sorban. A szolgáltatás folytatásához nyomja le az *F5 billentyűt* , vagy kattintson a *Futtatás* , majd a *Folytatás*gombra. Térjen vissza a böngészőhöz, és ellenőrizze, hogy megjelenik-e a bike helyőrző képe.
 

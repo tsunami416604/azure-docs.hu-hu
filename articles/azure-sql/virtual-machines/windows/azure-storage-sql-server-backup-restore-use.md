@@ -13,10 +13,9 @@ ms.workload: iaas-sql-server
 ms.date: 01/31/2017
 ms.author: mikeray
 ms.openlocfilehash: d697f9edf8d5e57f051c23eaa2807704b2f7771e
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84669194"
 ---
 # <a name="use-azure-storage-for-sql-server-backup-and-restore"></a>Az Azure Storage használata SQL Server biztonsági mentéshez és visszaállításhoz
@@ -51,7 +50,7 @@ A következő Azure-összetevők az Azure Blob Storage-ba történő biztonsági
 | --- | --- |
 | **Storage-fiók** |A Storage-fiók az összes tárolási szolgáltatás kiindulási pontja. Az Azure Blob Storage eléréséhez először hozzon létre egy Azure Storage-fiókot. Az Azure Blob Storage szolgáltatással kapcsolatos további információkért lásd: [Az Azure Blob Storage használata](https://azure.microsoft.com/develop/net/how-to-guides/blob-storage/). |
 | **Tároló** |A tároló Blobok egy csoportját biztosítja, és korlátlan számú blob tárolására képes. SQL Server biztonsági másolat Azure Blob Storage-tárolóba való írásához legalább a létrehozott gyökér-tárolóval kell rendelkeznie. |
-| **BLOB** |Bármilyen típusú és méretű fájl. A Blobok a következő URL-formátummal érhetők el: **https://[Storage account]. blob. Core. Windows. net/[Container]/[blob]**. További információ a lapok Blobokról: a [blokk-és Blobok ismertetése](https://msdn.microsoft.com/library/azure/ee691964.aspx) |
+| **Blob** |Bármilyen típusú és méretű fájl. A Blobok a következő URL-formátummal érhetők el: **https://[Storage account]. blob. Core. Windows. net/[Container]/[blob]**. További információ a lapok Blobokról: a [blokk-és Blobok ismertetése](https://msdn.microsoft.com/library/azure/ee691964.aspx) |
 
 ## <a name="sql-server-components"></a>Összetevők SQL Server
 Az alábbi SQL Server összetevőket használja az Azure Blob Storage-ba történő biztonsági mentéshez.
@@ -66,7 +65,7 @@ Az alábbi SQL Server összetevőket használja az Azure Blob Storage-ba törté
 > 
 > 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 1. Ha még nem rendelkezik Azure-fiókkal, hozzon létre egyet. Ha kiértékeli az Azure-t, vegye figyelembe az [ingyenes próbaverziót](https://azure.microsoft.com/free/).
 2. Ezután folytassa a következő oktatóanyagok egyikét, amely végigvezeti a Storage-fiók létrehozásán és a visszaállításon.
    

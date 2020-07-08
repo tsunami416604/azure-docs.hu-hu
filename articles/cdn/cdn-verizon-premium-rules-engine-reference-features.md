@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 06/02/2020
 ms.author: allensu
 ms.openlocfilehash: 0ea4f167b992ccfbc4156ac06c8f636d2ef4a355
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84343200"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-features"></a>Azure CDN a Verizon Premium Rules Engine funkcióival
@@ -33,13 +32,13 @@ Az elérhető szolgáltatások típusai a következők:
 * [Forrás](#origin)
 * [Speciális](#specialty)
 * [URL-cím](#url)
-* [Web Application Firewall (Webalkalmazási tűzfal)](#waf)
+* [Webalkalmazási tűzfal](#waf)
 
 ### <a name="access"></a><a name="access"></a>Access
 
 Ezek a funkciók a tartalmakhoz való hozzáférés szabályozására szolgálnak.
 
-| Name       | Cél                                                           |
+| Name       | Szerep                                                           |
 |------------|-------------------------------------------------------------------|
 | [Hozzáférés megtagadása (403)](https://docs.vdms.com/cdn/Content/HRE/F/Deny-Access-403.htm) | Meghatározza, hogy az összes kérés visszautasítva van-e egy 403 Tiltott válasz esetén. |
 | [Jogkivonat-hitelesítés](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth.htm) | Meghatározza, hogy a rendszer a jogkivonat-alapú hitelesítést alkalmazza-e a kérelemre. |
@@ -53,7 +52,7 @@ Ezek a funkciók a tartalmakhoz való hozzáférés szabályozására szolgálna
 
 Ezek a funkciók úgy vannak kialakítva, hogy testre szabják a tartalom gyorsítótárazásának idejét és módját.
 
-| Name       | Cél                                                           |
+| Name       | Szerep                                                           |
 |------------|-------------------------------------------------------------------|
 | [Sávszélesség-paraméterek](https://docs.vdms.com/cdn/Content/HRE/F/Bandwidth-Parameters.htm) | Meghatározza, hogy a sávszélesség-szabályozási paraméterek (azaz ec_rate és ec_prebuf) aktívak-e. |
 | [Sávszélesség-szabályozás](https://docs.vdms.com/cdn/Content/HRE/F/Bandwidth-Throttling.htm) | A peremhálózati kiszolgálók által biztosított válasz sávszélességének szabályozása. |
@@ -92,7 +91,7 @@ A Megjegyzés funkció lehetővé teszi, hogy egy Megjegyzés egy szabályon bel
 
 Ezek a funkciók a kérelemből vagy válaszból származó fejlécek hozzáadására, módosítására és törlésére szolgálnak.
 
-| Name       | Cél                                                           |
+| Name       | Szerep                                                           |
 |------------|-------------------------------------------------------------------|
 | [Életkor válaszának fejléce](https://docs.vdms.com/cdn/Content/HRE/F/Age-Response-Header.htm) | Meghatározza, hogy a rendszer a kérelmezőnek küldött válaszban tartalmazza-e az életkor válaszának fejlécét. |
 | [Hibakeresési gyorsítótár válaszának fejlécei](https://docs.vdms.com/cdn/Content/HRE/F/Debug-Cache-Response-Headers.htm) | Meghatározza, hogy a válasz tartalmazhatja-e az [X-EC-debug válasz fejlécét](https://docs.vdms.com/cdn/Content/Knowledge_Base/X_EC_Debug.htm) , amely információt nyújt a kért eszköz gyorsítótár-házirendjéről. |
@@ -106,7 +105,7 @@ Ezek a funkciók a kérelemből vagy válaszból származó fejlécek hozzáadá
 
 Ezek a funkciók úgy vannak kialakítva, hogy testre szabják a nyers naplófájlokban tárolt adatfájlokat.
 
-| Name       | Cél                                                           |
+| Name       | Szerep                                                           |
 |------------|-------------------------------------------------------------------|
 | [Egyéni napló mezője 1](https://docs.vdms.com/cdn/Content/HRE/F/Custom-Log-Field-1.htm) | Meghatározza a nyers naplófájl egyéni napló mezőjéhez hozzárendelni kívánt formátumot és tartalmat. |
 | [Napló lekérdezési karakterlánca](https://docs.vdms.com/cdn/Content/HRE/F/Log-Query-String.htm) | Meghatározza, hogy a rendszer a lekérdezési karakterláncot a hozzáférési naplók URL-címével együtt tárolja-e. |
@@ -117,7 +116,7 @@ Ezek a funkciók úgy vannak kialakítva, hogy testre szabják a nyers naplófá
 
 Ezek a funkciók határozzák meg, hogy egy kérelem a Edge-optimalizáló által biztosított optimalizálásokra fog-e esni.
 
-| Name       | Cél                                                           |
+| Name       | Szerep                                                           |
 |------------|-------------------------------------------------------------------|
 | [Edge-optimalizáló](https://docs.vdms.com/cdn/Content/HRE/F/Edge-Optimizer.htm) | Meghatározza, hogy alkalmazható-e az Edge-optimalizáló egy kérelemre. |
 | [Edge-optimalizáló – konfiguráció példánya](https://docs.vdms.com/cdn/Content/HRE/F/Edge-Optimizer-Instantiate-Configuration.htm) | Egy helyhez társított Edge-optimalizáló konfigurációjának példánya vagy aktiválása. |
@@ -128,7 +127,7 @@ Ezek a funkciók határozzák meg, hogy egy kérelem a Edge-optimalizáló álta
 
 Ezek a funkciók úgy vannak kialakítva, hogy a CDN hogyan kommunikáljon a forrás-kiszolgálóval.
 
-| Name       | Cél                                                           |
+| Name       | Szerep                                                           |
 |------------|-------------------------------------------------------------------|
 | [Életben tartási kérelmek maximális száma](https://docs.vdms.com/cdn/Content/HRE/F/Maximum-Keep-Alive-Requests.htm) | A Keep-Alive kapcsolatra vonatkozó kérelmek maximális számát határozza meg a bezárás előtt. |
 | [Proxy speciális fejlécei](https://docs.vdms.com/cdn/Content/HRE/F/Proxy-Special-Headers.htm) | Meghatározza azon [CDN-specifikus kérelmek fejléceit](https://docs.vdms.com/cdn/Content/Knowledge_Base/Request-Format.htm#RequestHeaders) , amelyek egy peremhálózati kiszolgálóról a forrás-kiszolgálóra lesznek továbbítva. |
@@ -139,7 +138,7 @@ Ezek a funkciók úgy vannak kialakítva, hogy a CDN hogyan kommunikáljon a for
 
 Ezek a funkciók olyan speciális funkciókat biztosítanak, amelyeket csak a speciális felhasználók használhatnak.
 
-| Name       | Cél                                                           |
+| Name       | Szerep                                                           |
 |------------|-------------------------------------------------------------------|
 | [Gyorsítótárazható HTTP-metódusok](https://docs.vdms.com/cdn/Content/HRE/F/Cacheable-HTTP-Methods.htm) | Meghatározza a hálózaton gyorsítótárazható további HTTP-metódusok készletét. |
 | [Gyorsítótárazható kérelem törzsének mérete](https://docs.vdms.com/cdn/Content/HRE/F/Cacheable-Request-Body-Size.htm) | Meghatározza azt a küszöbértéket, amely meghatározza, hogy a POST válasz gyorsítótárazható-e. |
@@ -153,7 +152,7 @@ Ezek a funkciók olyan speciális funkciókat biztosítanak, amelyeket csak a sp
 
 Ezek a funkciók lehetővé teszik a kérés átirányítását vagy átírását egy másik URL-címre.
 
-| Name       | Cél                                                           |
+| Name       | Szerep                                                           |
 |------------|-------------------------------------------------------------------|
 | [Átirányítások követése](https://docs.vdms.com/cdn/Content/HRE/F/Follow-Redirects.htm) | Meghatározza, hogy a kérések átirányíthatók-e az ügyfél-kiszolgáló által visszaadott Location fejlécben megadott állomásnévre. |
 | [URL-átirányítás](https://docs.vdms.com/cdn/Content/HRE/F/URL-Redirect.htm) | Átirányítja a kéréseket a Location fejléc használatával. |
@@ -161,7 +160,7 @@ Ezek a funkciók lehetővé teszik a kérés átirányítását vagy átírásá
 
 **[Vissza a tetejére](#top)**
 
-### <a name="web-application-firewall"></a><a name="waf"></a>Web Application Firewall (Webalkalmazási tűzfal)
+### <a name="web-application-firewall"></a><a name="waf"></a>Webalkalmazási tűzfal
 
 A [webalkalmazási tűzfal](https://docs.vdms.com/cdn/Content/HRE/F/Web_Application_Firewall.htm) szolgáltatás azt határozza meg, hogy a rendszer a webalkalmazási tűzfal által beérkező kéréseket fogja-e átvizsgálni.
 
@@ -169,7 +168,7 @@ A [webalkalmazási tűzfal](https://docs.vdms.com/cdn/Content/HRE/F/Web_Applicat
 
 A legújabb funkciókért tekintse meg a [Verizon Rules Engine dokumentációját](https://docs.vdms.com/cdn/index.html#Quick_References/HRE_QR.htm#Actions).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Szabályok motor referenciája](cdn-verizon-premium-rules-engine-reference.md)
 - [Szabálymotor feltételes kifejezései](cdn-verizon-premium-rules-engine-reference-conditional-expressions.md)

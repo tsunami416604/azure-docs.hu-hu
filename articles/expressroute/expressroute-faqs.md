@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: jaredro
 ms.openlocfilehash: c9b109fe12b709649adaa05d62b3d1255605986e
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84987301"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – Gyakori kérdések
@@ -295,7 +294,7 @@ A ExpressRoute Premium a következő funkciók gyűjteménye:
 * Nagyobb számú virtuális hálózatok és ExpressRoute Global Reach kapcsolat, amely engedélyezhető egy ExpressRoute-áramkörön (az alapértelmezett érték 10). További információ: [ExpressRoute-korlátok](#limits) tábla.
 * Csatlakozás az Office 365-hoz
 * Globális kapcsolat a Microsoft Core hálózaton keresztül. Most már összekapcsolhat egy VNet az egyik geopolitikai régióban egy másik régióban lévő ExpressRoute-áramkörrel.<br>
-    **Példák**
+    **Példák:**
 
     *  Az Európa nyugati régiójában létrehozott VNet egy Szilícium-völgyben létrehozott ExpressRoute-áramkörhöz csatolhatja. 
     *  A Microsoft-társak a többi geopolitikai régió előtagjait is meghirdetik, így például az SQL Azure Nyugat-Európában, a Szilícium-völgyben található áramkörről.

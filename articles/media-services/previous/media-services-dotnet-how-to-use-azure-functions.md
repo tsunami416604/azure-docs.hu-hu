@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 618acae10b874eb5ebd5b6da7fe081368528dbd8
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84712496"
 ---
 # <a name="develop-azure-functions-with-media-services"></a>Azure Functions fejlesztése Media Services
@@ -64,11 +63,11 @@ Miután telepítette a Function alkalmazást, a **App Services** Azure functions
 2. Válassza ki a **C#** nyelvét és az **adatfeldolgozási** forgatókönyvet.
 3. Válassza a **BlobTrigger** -sablon lehetőséget. Ez a függvény akkor aktiválódik, amikor egy blob fel van töltve a **bemeneti** tárolóba. A **bemeneti** nevet a rendszer az **elérési úton**adja meg a következő lépésben.
 
-    ![fájlokat](./media/media-services-azure-functions/media-services-azure-functions004.png)
+    ![fájlok](./media/media-services-azure-functions/media-services-azure-functions004.png)
 
 4. Miután kiválasztotta a **BlobTrigger**-t, néhány további vezérlő jelenik meg az oldalon.
 
-    ![fájlokat](./media/media-services-azure-functions/media-services-azure-functions005.png)
+    ![fájlok](./media/media-services-azure-functions/media-services-azure-functions005.png)
 
 4. Kattintson a **Létrehozás** lehetőségre. 
 
@@ -76,7 +75,7 @@ Miután telepítette a Function alkalmazást, a **App Services** Azure functions
 
 Az Azure-függvény az ebben a szakaszban ismertetett kódrészletekhez és egyéb fájlokhoz van társítva. Ha a Azure Portal használatával hoz létre egy függvényt, **function.jsbe** és **futtatni. CSX** jönnek létre. Fel kell vennie vagy fel kell töltenie egy **project.js** fájlt. A szakasz további része röviden ismerteti az egyes fájlokat, és megjeleníti a definíciókat.
 
-![fájlokat](./media/media-services-azure-functions/media-services-azure-functions003.png)
+![fájlok](./media/media-services-azure-functions/media-services-azure-functions003.png)
 
 ### <a name="functionjson"></a>function.json
 

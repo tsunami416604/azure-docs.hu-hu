@@ -7,10 +7,9 @@ ms.topic: how-to
 ms.date: 04/23/2020
 ms.author: v-erkel
 ms.openlocfilehash: 4c3ef79806d29b188eb2738919bf912cfedc8ef1
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85513871"
 ---
 # <a name="add-storage-targets"></a>Céltárak hozzáadása
@@ -157,7 +156,7 @@ Ez a táblázat a használati modell eltéréseit foglalja össze:
 | 15%-nál nagyobb írások | Olvasás/írás | Soha | 1 óra |
 | Az ügyfelek megkerülik a gyorsítótárat | Olvasás | 30 másodperc | None |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A tárolási célok létrehozása után vegye figyelembe a következő feladatok egyikét:
 

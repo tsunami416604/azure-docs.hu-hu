@@ -13,12 +13,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/29/2020
 ms.author: mathoma
-ms.openlocfilehash: 0d3e7e7de6d8f044355a43eb870420ad121ed61f
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.openlocfilehash: 93819332def05022272eabc130e0f2240938f244
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343693"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955505"
 ---
 # <a name="configure-a-workgroup-availability-group"></a>Munkacsoport rendelkezésre állási csoportjának konfigurálása 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -104,7 +103,7 @@ new-itemproperty -path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\
 
 ## <a name="create-the-failover-cluster"></a>A feladatátvevő fürt létrehozása
 
-Ebben a lépésben a feladatátvevő fürtöt fogja létrehozni. Ha nem ismeri ezeket a lépéseket, követheti őket a [feladatátvevő fürt oktatóanyagában](failover-cluster-instance-storage-spaces-direct-manually-configure.md#step-2-configure-the-windows-server-failover-cluster-with-storage-spaces-direct).
+Ebben a lépésben a feladatátvevő fürtöt fogja létrehozni. Ha nem ismeri ezeket a lépéseket, követheti őket a [feladatátvevő fürt oktatóanyagában](failover-cluster-instance-storage-spaces-direct-manually-configure.md).
 
 Jelentős eltérések az oktatóanyag és a munkacsoporthoz tartozó fürt esetében elvégzendő teendők között:
 - Törölje a **tárolót**, és **közvetlen tárolóhelyek** a fürt érvényesítésének futtatásakor. 
@@ -130,7 +129,7 @@ A fürt létrehozása után rendeljen hozzá egy statikus fürt IP-címét. Ehhe
 
 ## <a name="create-a-cloud-witness"></a>Felhőbeli tanúsító létrehozása 
 
-Ebben a lépésben konfigurálja a tanúsító Felhőbeli megosztást. Ha még nem ismeri a lépéseket, tekintse meg a [feladatátvevő fürt oktatóanyagát](failover-cluster-instance-storage-spaces-direct-manually-configure.md#create-a-cloud-witness). 
+Ebben a lépésben konfigurálja a tanúsító Felhőbeli megosztást. Ha nem ismeri a lépéseket, tekintse meg a [Felhőbeli tanúsító üzembe helyezése feladatátvevő fürthöz](/windows-server/failover-clustering/deploy-cloud-witness)című témakört. 
 
 ## <a name="enable-the-availability-group-feature"></a>A rendelkezésre állási csoport funkciójának engedélyezése 
 
@@ -289,7 +288,7 @@ Ebben a lépésben konfigurálja a rendelkezésre állási csoportot, és adja h
 Ebben az utolsó lépésben konfigurálja a terheléselosztó-t a [Azure Portal](availability-group-load-balancer-portal-configure.md) vagy a [PowerShell](availability-group-listener-powershell-configure.md)használatával.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A rendelkezésre állási csoport konfigurálásához az [az SQL VM CLI](availability-group-az-cli-configure.md) -t is használhatja. 
 

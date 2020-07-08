@@ -10,10 +10,9 @@ ms.date: 07/11/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: 7f4489b3073462a93319886ee5560ed5a6660111
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84659963"
 ---
 # <a name="create-a-snapshot"></a>Pillanatkép létrehozása 
@@ -68,7 +67,7 @@ az snapshot list \
 9. Kattintson a **Létrehozás** lehetőségre.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
  Hozzon létre egy virtuális gépet egy pillanatképből egy felügyelt lemez létrehozásával a pillanatképből, majd csatlakoztassa az új felügyelt lemezt az operációsrendszer-lemezként. További információ: [virtuális gép létrehozása pillanatkép-](./../scripts/virtual-machines-linux-cli-sample-create-vm-from-snapshot.md?toc=%2fcli%2fmodule%2ftoc.json) parancsfájlból.
 

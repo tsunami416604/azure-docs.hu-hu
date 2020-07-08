@@ -5,12 +5,11 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: bf5821a0781b5208096a0c02058cf2239a99e7d6
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
-ms.translationtype: MT
+ms.openlocfilehash: 35d408c636e20aef9495e72bc8535e0d7a99431e
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85367852"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955268"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools használata
 
@@ -35,7 +34,7 @@ A Azure Functions Core Tools három verziója létezik. A használt verzió a he
 
 + **1. x verzió**: a Azure functions futtatókörnyezet 1. x verzióját támogatja. Az eszközök ezen verziója csak Windows rendszerű számítógépeken támogatott, és egy NPM- [csomagból](https://www.npmjs.com/package/azure-functions-core-tools)van telepítve.
 
-+ [**2. x/3. x verzió**](#v2): [a Azure functions futtatókörnyezet 2. x vagy 3. x verzióját](functions-versions.md)támogatja. Ezek a verziók támogatják a Windows, a [MacOS](/azure/azure-functions/functions-run-local?tabs=macos#v2)és a [Linux](/azure/azure-functions/functions-run-local?tabs=linux#v2) [rendszert](/azure/azure-functions/functions-run-local?tabs=windows#v2), és platform-specifikus csomagkezelő vagy NPM használatával telepíthetők.
++ [**3. x/2. x verzió**](#v2): [a Azure functions futtatókörnyezet 3. x vagy 2. x verzióját](functions-versions.md)támogatja. Ezek a verziók támogatják a Windows, a [MacOS](/azure/azure-functions/functions-run-local?tabs=macos#v2)és a [Linux](/azure/azure-functions/functions-run-local?tabs=linux#v2) [rendszert](/azure/azure-functions/functions-run-local?tabs=windows#v2), és platform-specifikus csomagkezelő vagy NPM használatával telepíthetők.
 
 Ha másként nincs jelezve, a cikkben szereplő példák a 3. x verzióra vonatkoznak.
 
@@ -46,9 +45,9 @@ Ha másként nincs jelezve, a cikkben szereplő példák a 3. x verzióra vonatk
 >[!IMPORTANT]
 >Az Azure [CLI](/cli/azure/install-azure-cli) -t helyileg kell telepíteni ahhoz, hogy közzé lehessen tenni az Azure-ban Azure functions Core Tools.  
 
-### <a name="version-2x-and-3x"></a><a name="v2"></a>2. x és 3. x verzió
+### <a name="version-3x-and-2x"></a><a name="v2"></a>3. x és 2. x verzió
 
-Az eszközök 2. x/3. x verziója a .NET Core-ra épülő Azure Functions futtatókörnyezetet használja. Ez a verzió a .NET Core összes platformján támogatott, beleértve a Windows, a [MacOS](/azure/azure-functions/functions-run-local?tabs=macos#v2)és a [Linux](/azure/azure-functions/functions-run-local?tabs=linux#v2) [rendszert](/azure/azure-functions/functions-run-local?tabs=windows#v2)is. 
+Az eszközök 3. x/2. x verziója a .NET Core-ra épülő Azure Functions futtatókörnyezetet használja. Ez a verzió a .NET Core összes platformján támogatott, beleértve a Windows, a [MacOS](/azure/azure-functions/functions-run-local?tabs=macos#v2)és a [Linux](/azure/azure-functions/functions-run-local?tabs=linux#v2) [rendszert](/azure/azure-functions/functions-run-local?tabs=windows#v2)is. 
 
 > [!IMPORTANT]
 > A .NET Core SDK telepítési követelményeit kihagyhatja a [bővítmények]használatával.
@@ -58,26 +57,26 @@ Az eszközök 2. x/3. x verziója a .NET Core-ra épülő Azure Functions futtat
 A következő lépések a NPM segítségével telepítik a Windows rendszerhez tartozó alapvető eszközöket. A [csokit](https://chocolatey.org/)is használhatja. További információ: [alapvető eszközök – fontos](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows)információk.
 
 1. Telepítse a [Node.jst ], amely tartalmazza a NPM.
-    - Az eszközök 2. x verziójának használata esetén csak Node.js 8,5-es és újabb verziók támogatottak.
     - Az eszközök 3. x verziójában csak Node.js 10 és újabb verziók támogatottak.
+    - Az eszközök 2. x verziójának használata esetén csak Node.js 8,5-es és újabb verziók támogatottak.
 
 1. Telepítse a Core Tools csomagot:
 
-    ##### <a name="v2x"></a>v2. x
-
-    ```cmd
-    npm install -g azure-functions-core-tools
-    ```
-
-    ##### <a name="v3x"></a>v3. x
+    ##### <a name="v3x-recommended"></a>v3. x (ajánlott)
 
     ```cmd
     npm install -g azure-functions-core-tools@3
     ```
 
+    ##### <a name="v2x"></a>v2. x
+
+    ```cmd
+    npm install -g azure-functions-core-tools@2
+    ```
+
    A NPM letöltése és telepítése eltarthat néhány percig.
 
-1. Ha nem tervezi a [bővítmények]használatát, telepítse a [Windowshoz készült .net Core 2. x SDK](https://www.microsoft.com/net/download/windows)-t.
+1. Ha nem tervezi a [bővítmények](functions-bindings-register.md#extension-bundles)használatát, telepítse a [Windowshoz készült .net Core 3. x SDK](https://dotnet.microsoft.com/download)-t.
 
 # <a name="macos"></a>[macOS](#tab/macos)
 
@@ -87,14 +86,7 @@ A következő lépések a Homebrew-t használják a fő eszközök macOS rendsze
 
 1. Telepítse a Core Tools csomagot:
 
-    ##### <a name="v2x"></a>v2. x
-
-    ```bash
-    brew tap azure/functions
-    brew install azure-functions-core-tools
-    ```
-
-    ##### <a name="v3x"></a>v3. x
+    ##### <a name="v3x-recommended"></a>v3. x (ajánlott)
 
     ```bash
     brew tap azure/functions
@@ -102,6 +94,15 @@ A következő lépések a Homebrew-t használják a fő eszközök macOS rendsze
     # if upgrading on a machine that has 2.x installed
     brew link --overwrite azure-functions-core-tools@3
     ```
+    
+    ##### <a name="v2x"></a>v2. x
+
+    ```bash
+    brew tap azure/functions
+    brew install azure-functions-core-tools@2
+    ```
+    
+1. Ha nem tervezi a [bővítmények](functions-bindings-register.md#extension-bundles)használatát, telepítse a [.net Core 3. x SDK-t a MacOS rendszerhez](https://dotnet.microsoft.com/download).
 
 # <a name="linux"></a>[Linux](#tab/linux)
 
@@ -148,11 +149,19 @@ Az alábbi [lépések segítségével telepítheti az alapvető](https://wiki.de
 
 1. Telepítse a Core Tools csomagot:
 
+    ##### <a name="v3x-recommended"></a>v3. x (ajánlott)
     ```bash
-    sudo apt-get install azure-functions-core-tools
+    sudo apt-get update
+    sudo apt-get install azure-functions-core-tools-3
+    ```
+    
+    ##### <a name="v2x"></a>v2. x
+    ```bash
+    sudo apt-get update
+    sudo apt-get install azure-functions-core-tools-2
     ```
 
-1. Ha nem tervezi a [bővítmények]használatát, telepítse [a .net Core 2. x SDK-t a Linux rendszerhez](https://www.microsoft.com/net/download/linux).
+1. Ha nem tervezi a [bővítmények](functions-bindings-register.md#extension-bundles)használatát, telepítse [a .net Core 3. x SDK-t a Linux rendszerhez](https://dotnet.microsoft.com/download).
 
 ---
 
@@ -160,7 +169,7 @@ Az alábbi [lépések segítségével telepítheti az alapvető](https://wiki.de
 
 A functions projekt könyvtára tartalmazza a és a [local.settings.js](#local-settings-file) [host.js](functions-host-json.md) fájlokat, valamint az egyes függvények kódját tartalmazó almappákat is. Ez a könyvtár egyenértékű egy Azure-beli Function alkalmazással. A functions mappa struktúrájával kapcsolatos további tudnivalókért tekintse meg a [Azure functions fejlesztői útmutató](functions-reference.md#folder-structure)című témakört.
 
-A 2. x verzióhoz az inicializáláskor ki kell választania a projekt alapértelmezett nyelvét. A 2. x verzióban minden funkció hozzáadva az alapértelmezett nyelvi sablonokat. Az 1. x verzióban az egyes függvények létrehozásakor minden alkalommal meg kell adnia a nyelvet.
+A 3. x/2. x verzióhoz az inicializáláskor ki kell választania egy alapértelmezett nyelvet a projekthez. A 3. x/2. x verzióban minden funkció hozzáadva az alapértelmezett nyelvi sablonokat. Az 1. x verzióban az egyes függvények létrehozásakor minden alkalommal meg kell adnia a nyelvet.
 
 A terminál ablakban vagy egy parancssorban futtassa a következő parancsot a projekt és a helyi git-tárház létrehozásához:
 
@@ -169,7 +178,7 @@ func init MyFunctionProj
 ```
 
 Amikor megadja a projekt nevét, létrejön egy új, a névvel ellátott mappa, amely inicializálva van. Ellenkező esetben az aktuális mappa inicializálása megtörtént.  
-A 2. x verzióban a parancs futtatásakor ki kell választania egy futtatókörnyezetet a projekthez. 
+A 3. x/2. x verzióban a parancs futtatásakor ki kell választania egy futtatókörnyezetet a projekthez. 
 
 <pre>
 Select a worker runtime:
@@ -192,7 +201,7 @@ Writing C:\myfunctions\myMyFunctionProj\.vscode\extensions.json
 Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 </pre>
 
-`func init`a a következő beállításokat támogatja, amelyek csak a 2. x verziójúak, hacsak másként nincs jelezve:
+`func init`a a következő beállításokat támogatja, amelyek a 3. x/2. x-only, kivéve, ha másként jelezzük:
 
 | Beállítás     | Description                            |
 | ------------ | -------------------------------------- |
@@ -203,7 +212,7 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 | **`--force`** | A projekt inicializálása akkor is, ha vannak meglévő fájlok a projektben. Ez a beállítás felülírja a meglévő fájlokat ugyanazzal a névvel. A Project mappában található egyéb fájlok nem érintettek. |
 | **`--java`**  | Egy Java- [projekt](functions-reference-java.md)inicializálása. |
 | **`--javascript`**<br/>**`--node`**  | Egy JavaScript- [projekt](functions-reference-node.md)inicializálása. |
-| **`--no-source-control`**<br/>**`-n`** | Megakadályozza a git-tárház alapértelmezett létrehozását az 1. x verzióban. A 2. x verzióban a git-tárház alapértelmezés szerint nincs létrehozva. |
+| **`--no-source-control`**<br/>**`-n`** | Megakadályozza a git-tárház alapértelmezett létrehozását az 1. x verzióban. A 3. x/2. x verzióban a git-tárház alapértelmezés szerint nincs létrehozva. |
 | **`--powershell`**  | Egy PowerShell- [projekt](functions-reference-powershell.md)inicializálása. |
 | **`--python`**  | Egy Python- [projekt](functions-reference-python.md)inicializálása. |
 | **`--source-control`** | Meghatározza, hogy a git-tárház létrejött-e. Alapértelmezés szerint a tárház nem jön létre. Amikor `true` létrejön egy adattár. |
@@ -211,7 +220,7 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 | **`--worker-runtime`** | Beállítja a projekt nyelvi futtatókörnyezetét. A támogatott értékek a következők:,,, `csharp` `dotnet` `java` `javascript` , `node` (JavaScript), `powershell` , `python` és `typescript` . Ha nincs beállítva, a rendszer arra kéri, hogy válassza ki a futtatókörnyezetet az inicializálás során. |
 
 > [!IMPORTANT]
-> Alapértelmezés szerint a Core Tools 2. x verziója a .NET-futtatókörnyezethez [C#-szintű projektként](functions-dotnet-class-library.md) (. csproj) hoz létre Function app-projekteket. Ezek a C#-projektek, amelyek a Visual Studióval vagy a Visual Studio Code-ban használhatók, a tesztelés során és az Azure-ba való közzétételkor vannak lefordítva. Ha ehelyett ugyanazt a C# parancsfájl-(. CSX) fájlt szeretné létrehozni és használni, amelyet az 1. x verzióban és a portálon hozott létre, akkor a `--csx` függvények létrehozásakor és telepítésekor meg kell adnia a paramétert.
+> Alapértelmezés szerint a Core Tools 3. x/2. x verziója a .NET futtatókörnyezethez a [C# Class projects](functions-dotnet-class-library.md) (. csproj) használatával hoz létre Function app-projekteket. Ezek a C#-projektek, amelyek a Visual Studióval vagy a Visual Studio Code-ban használhatók, a tesztelés során és az Azure-ba való közzétételkor vannak lefordítva. Ha ehelyett ugyanazt a C# parancsfájl-(. CSX) fájlt szeretné létrehozni és használni, amelyet az 1. x verzióban és a portálon hozott létre, akkor a `--csx` függvények létrehozásakor és telepítésekor meg kell adnia a paramétert.
 
 [!INCLUDE [functions-core-tools-install-extension](../../includes/functions-core-tools-install-extension.md)]
 
@@ -267,7 +276,7 @@ Függvény létrehozásához futtassa a következő parancsot:
 func new
 ```
 
-A 2. x verzióban a futtatáskor `func new` a rendszer kéri, hogy válasszon egy sablont a Function app alapértelmezett nyelvén, majd a rendszer kéri, hogy válasszon egy nevet a függvénynek. Az 1. x verzióban a rendszer azt is kéri, hogy válassza ki a nyelvet.
+A 3. x/2. x verzióban a futtatáskor a `func new` rendszer kéri, hogy válasszon egy sablont a Function app alapértelmezett nyelvén, majd a rendszer kéri, hogy válasszon egy nevet a függvénynek. Az 1. x verzióban a rendszer azt is kéri, hogy válassza ki a nyelvet.
 
 <pre>
 Select a language: Select a template:
@@ -297,8 +306,8 @@ Ezeket a beállításokat a paranccsal is megadhatja a következő argumentumok 
 
 | Argumentum     | Description                            |
 | ------------------------------------------ | -------------------------------------- |
-| **`--csx`** | (2. x verzió) Ugyanazokat a C#-szkripteket (. CSX) hozza létre, amelyek az 1. x verzióban és a portálon használatosak. |
-| **`--language`**, **`-l`**| A sablon programozási nyelve, például C#, F # vagy JavaScript. Ez a beállítás az 1. x verzióban szükséges. A 2. x verzióban ne használja ezt a kapcsolót, vagy válasszon olyan nyelvet, amely megfelel a munkavégző futtatókörnyezetnek. |
+| **`--csx`** | (3. x/2. x verzió) Ugyanazokat a C#-szkripteket (. CSX) hozza létre, amelyek az 1. x verzióban és a portálon használatosak. |
+| **`--language`**, **`-l`**| A sablon programozási nyelve, például C#, F # vagy JavaScript. Ez a beállítás az 1. x verzióban szükséges. A 3. x/2. x verzióban ne használja ezt a kapcsolót, vagy válasszon olyan nyelvet, amely megfelel a munkavégző futtatókörnyezetnek. |
 | **`--name`**, **`-n`** | A függvény neve. |
 | **`--template`**, **`-t`** | A `func templates list` parancs használatával megtekintheti az elérhető sablonok teljes listáját az egyes támogatott nyelvekhez.   |
 
@@ -395,7 +404,9 @@ A tesztelési funkciókkal kapcsolatos általánosabb információkért lásd: [
 
 A következő végpontot hívja meg helyileg a HTTP és a webhook által aktivált függvények futtatásához:
 
-    http://localhost:{port}/api/{function_name}
+```http
+http://localhost:{port}/api/{function_name}
+```
 
 Győződjön meg arról, hogy ugyanazt a kiszolgálónevet és portot használja, amelyet a functions-gazdagép figyel. Ez a függvény gazdagépének indításakor generált kimenetben jelenik meg. Ezt az URL-címet bármely, az trigger által támogatott HTTP-módszerrel meghívhatja.
 
@@ -429,7 +440,9 @@ Szükség esetén a POST kérelem törzsében is elvégezheti a tesztelési cél
 
 A nem HTTP-függvények elindításához a következő rendszergazdai végpontot kell meghívni:
 
-    http://localhost:{port}/admin/functions/{function_name}
+```http
+http://localhost:{port}/admin/functions/{function_name}
+```
 
 Ahhoz, hogy egy függvény rendszergazdai végpontján át lehessen adni a tesztelési feladatokat, meg kell adnia a POST kérelem üzenet törzsében lévő összes adatát. Az üzenet törzsének a következő JSON-formátummal kell rendelkeznie:
 
@@ -494,17 +507,17 @@ func azure functionapp publish <FunctionAppName>
 Ez a parancs egy meglévő Function alkalmazásba tesz közzé az Azure-ban. Hibaüzenet jelenik meg, ha olyan közzétételi kísérletet próbál végrehajtani, `<FunctionAppName>` amely nem létezik az előfizetésben. Ha szeretné megtudni, hogyan hozhat létre egy Function alkalmazást a parancssorból vagy a terminál ablakból az Azure CLI használatával, tekintse meg [a Függvényalkalmazás létrehozása kiszolgáló nélküli végrehajtáshoz](./scripts/functions-cli-create-serverless.md)című témakört. Alapértelmezés szerint ez a parancs [távoli buildet](functions-deployment-technologies.md#remote-build) használ, és üzembe helyezi az alkalmazást [a központi telepítési csomagból való futtatásra](run-functions-from-deployment-package.md). Az ajánlott telepítési mód letiltásához használja a `--nozip` kapcsolót.
 
 >[!IMPORTANT]
-> Ha a Azure Portalban hoz létre egy Function alkalmazást, a függvény alapértelmezés szerint a Function Runtime 2. x verzióját használja. Ha azt szeretné, hogy a Function app a futtatókörnyezet 1. x verzióját használja, kövesse az [1. x verzió futtatásának](functions-versions.md#creating-1x-apps)utasításait.
+> Ha a Azure Portalban hoz létre egy Function alkalmazást, a függvény alapértelmezés szerint a Function Runtime 3. x verzióját használja. Ha azt szeretné, hogy a Function app a futtatókörnyezet 1. x verzióját használja, kövesse az [1. x verzió futtatásának](functions-versions.md#creating-1x-apps)utasításait.
 > Egy meglévő függvényt tartalmazó Function alkalmazás futásidejű verziója nem módosítható.
 
-A következő közzétételi beállítások mindkét verzióra érvényesek: 1. x és 2. x.
+A 3. x, 2. x és 1. x verziók esetében a következő közzétételi beállítások érvényesek:
 
 | Beállítás     | Description                            |
 | ------------ | -------------------------------------- |
 | **`--publish-local-settings -i`** |  A beállítások közzététele az Azure-ban local.settings.js, ha a beállítás már létezik, a rendszer megkéri a felülírását. Ha a Microsoft Azure Storage Emulator használja, először módosítsa az alkalmazás beállításait egy [tényleges tárolási kapcsolatban](#get-your-storage-connection-strings). |
 | **`--overwrite-settings -y`** | A használatakor a rendszer letiltja az Alkalmazásbeállítások felülírására vonatkozó kérést `--publish-local-settings -i` .|
 
-A következő közzétételi beállítások csak a 2. x verzióban támogatottak:
+A következő közzétételi beállítások csak a 3. x és 2. x verzióban támogatottak:
 
 | Beállítás     | Description                            |
 | ------------ | -------------------------------------- |
@@ -560,7 +573,7 @@ Megtekintheti a függvények által a helyi számítógépen lévő parancssori 
 Az ilyen típusú folyamatos átviteli naplókhoz a Application Insights integrációjának engedélyezése szükséges a Function alkalmazáshoz.   
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtudhatja, hogyan fejlesztheti, tesztelheti és teheti közzé Azure Functions a Azure Functions Core Tools [Microsoft Learning modul](https://docs.microsoft.com/learn/modules/develop-test-deploy-azure-functions-with-core-tools/) használatával Azure functions Core Tools [nyílt forráskódú, és a githubon üzemeltethető](https://github.com/azure/azure-functions-cli).  
 Egy hiba vagy szolgáltatás kérésének megkereséséhez [Nyisson meg egy GitHub-problémát](https://github.com/azure/azure-functions-cli/issues).
@@ -568,7 +581,7 @@ Egy hiba vagy szolgáltatás kérésének megkereséséhez [Nyisson meg egy GitH
 <!-- LINKS -->
 
 [Azure Functions Core Tools]: https://www.npmjs.com/package/azure-functions-core-tools
-[Azure Portal]: https://portal.azure.com 
+[Azure Portalra]: https://portal.azure.com 
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows
 [`FUNCTIONS_WORKER_RUNTIME`]: functions-app-settings.md#functions_worker_runtime
 [AzureWebJobsStorage]: functions-app-settings.md#azurewebjobsstorage

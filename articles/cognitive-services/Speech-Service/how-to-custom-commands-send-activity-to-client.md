@@ -10,12 +10,11 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 0a3e3455615006c0e93cf32eebcdaedac9960a79
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
-ms.translationtype: MT
+ms.openlocfilehash: 520b38f4c733e7bf28a2a06429ad14d016c5bd28
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307733"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027613"
 ---
 # <a name="send-custom-commands-activity-to-client-application"></a>Egyéni parancsok tevékenység küldése ügyfélalkalmazás számára
 
@@ -28,7 +27,7 @@ A következő feladatokat hajtja végre:
 
 ## <a name="prerequisites"></a>Előfeltételek
 > [!div class = "checklist"]
-> * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
+> * A [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) -es vagy újabb verziója. Ez az útmutató a Visual Studio 2019-et használja
 > * Egy Azure-előfizetési kulcs a Speech Service-hez: [egyszeri](get-started.md) letöltés vagy létrehozás a [Azure Portal](https://portal.azure.com)
 > * Egy korábban [létrehozott egyéni parancsok alkalmazás](quickstart-custom-commands-application.md)
 > * Egy Speech SDK-kompatibilis ügyfélalkalmazás: [útmutató: integrálás egy ügyfélalkalmazás használatával a SPEECH SDK-val](./how-to-custom-commands-setup-speech-sdk.md)
@@ -46,7 +45,7 @@ A következő feladatokat hajtja végre:
      "device": "{SubjectDevice}"
    }
    ```
-1. Kattintson a **Mentés** gombra egy új szabály létrehozásához a küldési tevékenység művelettel
+1. Kattintson a **Save (Mentés** ) gombra egy új szabály létrehozásához egy küldési tevékenység művelettel, a **betanítással** és a módosítás **közzétételével**
 
    > [!div class="mx-imgBorder"]
    > ![Tevékenység-befejezési szabály küldése](media/custom-commands/send-activity-to-client-completion-rules.png)
@@ -55,9 +54,12 @@ A következő feladatokat hajtja végre:
 
 [Útmutató: az ügyfélalkalmazás beállítása a SPEECH SDK-val (előzetes verzió)](./how-to-custom-commands-setup-speech-sdk.md), a Speech SDK-val létrehozott UWP-ügyfélalkalmazás olyan parancsokat kezelt, mint például a `turn on the tv` , `turn off the fan` . Néhány vizualizáció hozzáadásával megtekintheti a parancsok eredményét.
 
-Címkézett mezők hozzáadása vagy **kikapcsolása** szöveggel **a következő** XML-kód hozzáadásával`MainPage.xaml`
+Ha **be** -vagy **kikapcsolt**szöveggel rendelkező címkével ellátott mezőket szeretne felvenni, adja hozzá a következő XML-blokkot a StackPanel `MainPage.xaml` .
 
 ```xml
+<StackPanel Orientation="Vertical" H......>
+......
+</StackPanel>
 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="20">
     <Grid x:Name="Grid_TV" Margin="50, 0" Width="100" Height="100" Background="LightBlue">
         <StackPanel>
@@ -72,6 +74,7 @@ Címkézett mezők hozzáadása vagy **kikapcsolása** szöveggel **a következ�
         </StackPanel>
     </Grid>
 </StackPanel>
+<MediaElement ....../>
 ```
 
 ### <a name="add-reference-libraries"></a>Hivatkozási kódtárak hozzáadása
@@ -79,15 +82,21 @@ Címkézett mezők hozzáadása vagy **kikapcsolása** szöveggel **a következ�
 Mivel létrehozott egy JSON-adattartalmat, a deszerializálás kezeléséhez hozzá kell adnia egy hivatkozást a [JSON.net](https://www.newtonsoft.com/json) -könyvtárhoz.
 
 1. A jobb ügyfél a megoldás.
-1. Válassza **a megoldás NuGet-csomagok kezelése**lehetőséget, majd válassza a **telepítés** elemet. 
-1. Keresse **megNewtonsoft.jsa** frissítés listán, frissítse a **Microsoft. NETCore. UniversalWindowsPlatform** a legújabb verzióra
+1. Válassza **a megoldás NuGet-csomagok kezelése**lehetőséget, majd kattintson a **Tallózás gombra** . 
+1. Ha már telepített **Newtonsoft.jsa-on**, győződjön meg arról, hogy a verziószáma legalább 12.0.3. Ha nem, lépjen a **NuGet-csomagok kezelése a megoldáshoz-frissítésekhez**, és keressen rá **Newtonsoft.jsa** frissítéshez. Ez az útmutató a 12.0.3 verzióját használja.
 
-> [!div class="mx-imgBorder"]
-> ![Tevékenység-adattartalom küldése](media/custom-commands/send-activity-to-client-json-nuget.png)
+    > [!div class="mx-imgBorder"]
+    > ![Tevékenység-adattartalom küldése](media/custom-commands/send-activity-to-client-json-nuget.png)
+
+1. Győződjön meg arról is, hogy a **Microsoft. NETCore. UniversalWindowsPlatform** NuGet-csomag legalább 6.2.10. Ez az útmutató a 6.2.10 verzióját használja.
 
 A "Főoldal. XAML. cs" elemnél adja hozzá a következőt:
-- `using Newtonsoft.Json;` 
-- `using Windows.ApplicationModel.Core;`
+
+```C#
+using Newtonsoft.Json; 
+using Windows.ApplicationModel.Core;
+using Windows.UI.Core;
+```
 
 ### <a name="handle-the-received-payload"></a>A fogadott tartalom kezelése
 

@@ -16,10 +16,9 @@ ms.date: 10/18/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: f320ee7c6bab77c64215a0576852f1d895be157b
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84668781"
 ---
 # <a name="performance-guidelines-for-sql-server-on-azure-virtual-machines"></a>Teljesítményre vonatkozó irányelvek az Azure-beli SQL Server Virtual Machines
@@ -194,7 +193,7 @@ Ha tárolóhelyeket használ, amikor csomópontokat ad hozzá a fürthöz a **j�
 
 Ha tárolóhelyeket használ, és nem törli **az összes megfelelő tároló hozzáadása a fürthöz**lehetőséget, a Windows leválasztja a virtuális lemezeket a fürtözési folyamat során. Ennek eredményeképpen azok nem jelennek meg a Lemezkezelés eszközben vagy az Intézőben, amíg a tárolóhelyek el nem lesznek távolítva a fürtből, és nem kapcsolódnak újra a PowerShell használatával. A tárolóhelyek több lemezt is csoportosítanak a Storage-készletekbe. További információ: [tárolóhelyek](/windows-server/storage/storage-spaces/overview).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a tárolásról és a teljesítményről: [Az Azure-beli SQL Server tárolási konfigurációs irányelvei Virtual Machines](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/09/25/storage-configuration-guidelines-for-sql-server-on-azure-vm/)
 

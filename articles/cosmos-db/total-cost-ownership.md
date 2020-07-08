@@ -7,22 +7,21 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: ac9e3fd4fec8ab2fe9f0c93d46489e67feebe88d
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
-ms.translationtype: MT
+ms.openlocfilehash: 0955cc8722c2a2b559935341cfd7e87bac6e4d3e
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85116264"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954655"
 ---
 # <a name="total-cost-of-ownership-tco-with-azure-cosmos-db"></a>Teljes tulajdonlási költség (TCO) Azure Cosmos DB
 
 Az Azure Cosmos DB részletes, több-bérlős működésre és erőforrás-szabályozásra lett tervezve. Ez lehetővé teszi, hogy az Azure Cosmos DB jelentősen alacsonyabb költségekkel működjön, és így a felhasználók pénzt takaríthassanak meg. Jelenleg az Azure Cosmos DB több mint 280 ügyfél általi számítási feladatot támogat gépenként, miközben ennek sűrűsége folyamatosan nő, valamint több ezret egy fürtön belül. Elosztja az ügyfél általi számítási feladatok replikáit egy adott fürt különböző gépei, valamint egy adatközpont több fürtje között a terheléskiegyenlítés érdekében. További információt [a Azure Cosmos db: globálisan elosztott adatbázisok határának](https://azure.microsoft.com/blog/azure-cosmos-db-pushing-the-frontier-of-globally-distributed-databases/)leküldésével foglalkozó témakörben talál. Az erőforrás-szabályozás, a több-bérlős és az Azure-infrastruktúrával való natív integráció miatt a Azure Cosmos DB átlagosan 4 – 6-szor olcsóbb, mint a MongoDB, Cassandra vagy más, IaaS-on futó OSS-NoSQL, és akár 10-szer olcsóbb, mint a helyszínen futó adatbázismotor. Tekintse meg a [NoSQL-adatbázis felhőalapú szolgáltatásának teljes költsége (nem) tulajdonjogát](https://documentdbportalstorage.blob.core.windows.net/papers/11.15.2017/NoSQL%20TCO%20paper.pdf).
 
-Az OSS NoSQL adatbázis-megoldásai, például az Apache Cassandra, a MongoDB, a HBase, a motorok helyszíni használatra készültek. Felügyelt szolgáltatásként való felkínálás esetén a kiépített fürtök kezeléséhez és a figyelés támogatásához a bérlői adatbázissal egyenértékű Resource Manager-sablon felel meg. Az OSS NoSQL architektúrák jelentős működési terhelést igényelnek, és a szakértelmet nehéz és költséges lehet megtalálni. Másfelől Azure Cosmos DB egy teljes körűen felügyelt felhőalapú szolgáltatás, amely lehetővé teszi a fejlesztők számára, hogy az adatbázis-infrastruktúra kezelése és karbantartása helyett az üzleti innovációra összpontosítsanak. 
+Az OSS NoSQL adatbázis-megoldásai, például az Apache Cassandra, a MongoDB, a HBase, a motorok helyszíni használatra készültek. Felügyelt szolgáltatásként való felkínálás esetén a kiépített fürtök kezeléséhez és a figyelés támogatásához a bérlői adatbázissal egyenértékű Resource Manager-sablon felel meg. Az OSS NoSQL architektúrák jelentős működési terhelést igényelnek, és a szakértelmet nehéz és költséges lehet megtalálni. Másfelől Azure Cosmos DB egy teljes körűen felügyelt felhőalapú szolgáltatás, amely lehetővé teszi a fejlesztők számára, hogy az adatbázis-infrastruktúra kezelése és karbantartása helyett az üzleti innovációra összpontosítsanak.
 
 A natív adatbázis-szolgáltatás Azure Cosmos DBával ellentétben az OSS NoSQL adatbázis-motorokat nem az erőforrás-szabályozással vagy a részletes, az alapvető építészeti alapelveknek megfelelően építettük. Az OSS NoSQL-adatbázis-kezelők, például a Cassandra és a MongoDB, alapvető feltételezést tesznek, hogy a virtuális gép azon erőforrásai, amelyen futnak, elérhetők. Az adatbázis-hajtóművek sok esetben nem működhetnek, ha az erőforrások mennyisége egy bizonyos küszöbérték alá esik. Kisméretű virtuálisgép-példányok esetében például a gyártó által javasolt konfigurációk is elérhetők, amelyek általában nagyobb méretű virtuális gépeket javasolnak. Így nem üzemeltethető OSS-NoSQL vagy bármely más helyszíni adatbázismotor, és elérhetővé teheti azt egy olyan fogyasztáson alapuló díjszabási modell használatával, mint a kérelmek másodpercenkénti száma vagy a felhasznált tárterület.
 
-## <a name="total-cost-of-ownership-of-azure-cosmos-db"></a>Azure Cosmos DB teljes tulajdonlási költsége 
+## <a name="total-cost-of-ownership-of-azure-cosmos-db"></a>Azure Cosmos DB teljes tulajdonlási költsége
 
 A Azure Cosmos DB kiszolgáló nélküli kiépítési modellje kiküszöböli az adatbázis-infrastruktúra túlzott kiépítésének szükségességét. A Azure Cosmos DB erőforrások speciális konfigurációk vagy licencelési igények nélkül érhetők el. Ennek eredményeképpen a Azure Cosmos DB által támogatott alkalmazások az OSS NoSQL-adatbázisokhoz képest akár 70%-os teljes tulajdonlási díjat is futtathatnak. A valós idejű példákért tekintse meg az [ügyfelek használati eseteit](https://customers.microsoft.com/en-us/search?sq=Cosmos%20DB&ff=&p=0&so=story_publish_date%20desc). A Azure Cosmos DB díjszabási modell egyéb előnyei a következők:
 

@@ -1,5 +1,5 @@
 ---
-title: A Twin gráf kezelése kapcsolatokkal
+title: Ikergráf kezelése kapcsolatokkal
 titleSuffix: Azure Digital Twins
 description: Megtudhatja, hogyan kezelheti a digitális ikrek gráfját úgy, hogy összekapcsolja őket a kapcsolatokkal.
 author: baanders
@@ -8,10 +8,9 @@ ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: bfdf1263ccee78b57ccf79c63efcc01d95dd13c6
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85392250"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>Digitális ikrek gráfjának kezelése kapcsolatok használatával
@@ -230,12 +229,12 @@ Vegye figyelembe a következő adattáblázatot, amely leírja a létrehozandó 
 | Modell    | ID | Szülő | Kapcsolat neve | Egyéb adatszolgáltatások |
 | --- | --- | --- | --- | --- |
 | padló    | Floor01 | | | … |
-| szoba    | Room10 | Floor01 | tartalmazza a következőt: | … |
-| szoba    | Room11 | Floor01 | tartalmazza a következőt: | … |
-| szoba    | Room12 | Floor01 | tartalmazza a következőt: | … |
+| szoba    | Room10 | Floor01 | tartalmazza | … |
+| szoba    | Room11 | Floor01 | tartalmazza | … |
+| szoba    | Room12 | Floor01 | tartalmazza | … |
 | padló    | Floor02 | | | … |
-| szoba    | Room21 | Floor02 | tartalmazza a következőt: | … |
-| szoba    | Room22 | Floor02 | tartalmazza a következőt: | … |
+| szoba    | Room21 | Floor02 | tartalmazza | … |
+| szoba    | Room22 | Floor02 | tartalmazza | … |
 
 A következő kód a [Microsoft Graph API](https://docs.microsoft.com/graph/overview) -t használja a számolótáblák beolvasásához és az eredményekből származó Azure digitális Twins Twin gráf létrehozásához.
 
@@ -301,7 +300,7 @@ foreach (JsonElement row in data.RootElement.EnumerateArray())
 
 Az ikrek és kapcsolataik az Azure Digital Twins CLI használatával is kezelhetők. A parancsok a következő [útmutatóban találhatók: az Azure digitális Twins parancssori](how-to-use-cli.md)felületének használata.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tudnivalók az Azure Digital Twins Twin Graph lekérdezéséről:
 * [Fogalmak: lekérdezési nyelv](concepts-query-language.md)

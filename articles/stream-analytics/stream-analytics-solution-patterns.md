@@ -7,12 +7,11 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: 3b95863c1ae53bd0642aec356f55aba1faf8ef09
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: 49c83fab54b7188c3a3838f3162e71d8495989dd
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79535782"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037511"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Az Azure Stream Analytics megoldásmintái
 
@@ -30,13 +29,13 @@ Ez a megoldási minta az eseményforrás legalacsonyabb késését kínálja a b
 
 ## <a name="use-sql-for-dashboard"></a>Az SQL használata az irányítópulton
 
-A Power BI irányítópult alacsony késést biztosít, de nem használható teljes értékű Power BI-jelentések készítéséhez. Az általános jelentéskészítési minta az, hogy először egy SQL-adatbázisba exportálja az adatokat. Ezután használja a Power BI SQL-összekötőjét, hogy lekérdezze az SQL-t a legfrissebb adatértékekhez.
+A Power BI irányítópult alacsony késést biztosít, de nem használható teljes értékű Power BI-jelentések készítéséhez. Az általános jelentéskészítési minta az, hogy az adatokat SQL Database először kiírja. Ezután használja a Power BI SQL-összekötőjét, hogy lekérdezze az SQL-t a legfrissebb adatértékekhez.
 
 ![ASA SQL-irányítópult](media/stream-analytics-solution-patterns/sqldashboard.png)
 
-Az SQL Database használata nagyobb rugalmasságot biztosít, de valamivel nagyobb késéssel jár. Ez a megoldás optimális olyan feladatokhoz, amelyeknél a késési követelmények egy másodpercnél nagyobbak. Ezzel a módszerrel maximalizálhatja Power BI képességeit, hogy további szeleteket és kockákat tartalmazzon a jelentésekhez, és sokkal több vizualizációs lehetőséget biztosítson. Más irányítópult-megoldások, például a tabló használatának rugalmassága is megszerezhető.
+A SQL Database használata nagyobb rugalmasságot biztosít, de valamivel nagyobb késéssel jár. Ez a megoldás optimális olyan feladatokhoz, amelyeknél a késési követelmények egy másodpercnél nagyobbak. Ezzel a módszerrel maximalizálhatja Power BI képességeit, hogy további szeleteket és kockákat tartalmazzon a jelentésekhez, és sokkal több vizualizációs lehetőséget biztosítson. Más irányítópult-megoldások, például a tabló használatának rugalmassága is megszerezhető.
 
-Az SQL nem a nagy átviteli sebességű adattár. Azure Stream Analytics SQL-adatbázisának maximális átviteli sebessége jelenleg 24 MB/s. Ha a megoldásban szereplő eseményforrás magasabb sebességű adatokat hoz létre, akkor a kimeneti sebesség csökkentése érdekében az SQL-re kell használnia a Stream Analytics feldolgozási logikáját. A szűrés, az ablakos összesítések, az időbeli illesztések és az analitikai függvények is használhatók. Az SQL-re irányuló kimeneti sebesség tovább optimalizálható a [Azure stream Analytics kimenet Azure SQL Databasera](stream-analytics-sql-output-perf.md)című témakörben ismertetett technikák használatával.
+Az SQL nem a nagy átviteli sebességű adattár. A Azure Stream Analytics SQL Database maximális átviteli sebessége jelenleg körülbelül 24 MB/s. Ha a megoldásban szereplő eseményforrás magasabb sebességű adatokat hoz létre, akkor a kimeneti sebesség csökkentése érdekében az SQL-re kell használnia a Stream Analytics feldolgozási logikáját. A szűrés, az ablakos összesítések, az időbeli illesztések és az analitikai függvények is használhatók. Az SQL-re irányuló kimeneti sebesség tovább optimalizálható a [Azure stream Analytics kimenet Azure SQL Databasera](stream-analytics-sql-output-perf.md)című témakörben ismertetett technikák használatával.
 
 ## <a name="incorporate-real-time-insights-into-your-application-with-event-messaging"></a>Valós idejű betekintést nyerhet az alkalmazásba az Event Messaging használatával
 
@@ -72,7 +71,7 @@ Ez a minta javítja a rendszerek rugalmasságát és kezelhetőségét. Azonban 
 
 ## <a name="use-reference-data-for-application-customization"></a>Referenciák használata az alkalmazások testreszabásához
 
-A Azure Stream Analytics hivatkozási adatszolgáltatása kifejezetten a végfelhasználói testreszabáshoz készült, például a riasztási küszöbérték, a feldolgozási szabályok és a [geofences](geospatial-scenarios.md). Az alkalmazási réteg elfogadhatja a paraméterek változásait, és tárolhatja őket egy SQL-adatbázisban. A Stream Analytics-feladatokban rendszeresen lekérdezéseket végeznek az adatbázis változásairól, és a testreszabási paramétereket elérhetővé teszik egy hivatkozással való összekapcsolással. Az alkalmazások testreszabásával kapcsolatos tudnivalókat lásd: [SQL-referenciák](sql-reference-data.md) és [hivatkozási adatok csatlakoztatása](/stream-analytics-query/reference-data-join-azure-stream-analytics).
+A Azure Stream Analytics hivatkozási adatszolgáltatása kifejezetten a végfelhasználói testreszabáshoz készült, például a riasztási küszöbérték, a feldolgozási szabályok és a [geofences](geospatial-scenarios.md). Az alkalmazási réteg fogadhatja a paraméterek változásait, és tárolhatja azokat SQL Databaseban. A Stream Analytics-feladatokban rendszeresen lekérdezéseket végeznek az adatbázis változásairól, és a testreszabási paramétereket elérhetővé teszik egy hivatkozással való összekapcsolással. Az alkalmazások testreszabásával kapcsolatos tudnivalókat lásd: [SQL-referenciák](sql-reference-data.md) és [hivatkozási adatok csatlakoztatása](/stream-analytics-query/reference-data-join-azure-stream-analytics).
 
 Ez a minta olyan szabályok motorjának megvalósítására is használható, amelyekben a szabályok küszöbértékei a hivatkozási adatok alapján vannak meghatározva. További információ a szabályokról: [konfigurálható küszöbérték-alapú szabályok feldolgozása Azure stream Analyticsban](stream-analytics-threshold-based-rules.md).
 
@@ -106,7 +105,7 @@ A legtöbb adatelemzési és elemzési tevékenység továbbra is offline állap
 
 ## <a name="use-reference-data-for-enrichment"></a>Referenciák használata a dúsításhoz
 
-Az adatgazdagítás gyakran az ETL-motorok követelménye. Azure Stream Analytics támogatja az adatok dúsítását az SQL Database és az Azure Blob Storage [-ból származó adatokkal](stream-analytics-use-reference-data.md) . Az adatgyűjtést a Azure Data Lake és SQL Data Warehouseban egyaránt megteheti.
+Az adatgazdagítás gyakran az ETL-motorok követelménye. Azure Stream Analytics támogatja a SQL Database és az Azure Blob Storage [-ból származó adatokkal való](stream-analytics-use-reference-data.md) gazdagodás támogatását. Az adatgyűjtést a Azure Data Lake és SQL Data Warehouseban egyaránt megteheti.
 
 ![ASA offline elemzés az adatgazdagítás használatával](media/stream-analytics-solution-patterns/offlineanalytics.png)
 

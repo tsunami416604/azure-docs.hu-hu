@@ -4,10 +4,9 @@ description: Ismerteti, hogyan használható a függőségi elemzés az értéke
 ms.topic: conceptual
 ms.date: 06/14/2020
 ms.openlocfilehash: ff563668666207f35fa2ea796d6c909a59df245f
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/15/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84771342"
 ---
 # <a name="dependency-analysis"></a>Függőségek elemzése
