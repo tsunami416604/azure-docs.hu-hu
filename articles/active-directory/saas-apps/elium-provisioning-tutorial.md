@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 08/19/2019
 ms.author: Zhchia
 ms.openlocfilehash: a3e1c936d46e0d9b0ad3b98dafeda7df0b4a23db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77058464"
 ---
 # <a name="tutorial-configure-elium-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Elium konfigurálása
@@ -55,7 +54,7 @@ Amikor Elium rendel hozzá egy felhasználóhoz, ki kell választania egy érvé
 
 Az Azure AD-vel való automatikus Elium konfigurálása előtt engedélyeznie kell a rendszer számára a tartományok közötti Identitáskezelés-felügyelet (SCIM) létesítését a Elium-on. Kövesse az alábbi lépéseket:
 
-1. Jelentkezzen be a Elium-be, és lépjen a **saját profil** > **Beállítások menüpontra**.
+1. Jelentkezzen be a Elium-be, és lépjen a **saját profil**  >  **Beállítások menüpontra**.
 
     ![Beállítások menüelem a Elium](media/Elium-provisioning-tutorial/setting.png)
 
@@ -112,7 +111,7 @@ Az Azure AD-beli Elium automatikus felhasználó-kiépítés konfigurálásához
 
     ![Automatikus beállítás a kiépítési mód esetében](common/provisioning-automatic.png)
 
-1. A **rendszergazdai hitelesítő adatok** szakaszban adja ** \<meg a\>tenantURL/scim/v2** a **bérlői URL-cím** mezőben. (A **tenantURL** a Elium felügyeleti konzolról korábban beolvasott érték.) Írja be a Elium **titkos jogkivonat** értékét is a **titkos jogkivonat** mezőbe. Végül kattintson a **kapcsolat tesztelése** elemre annak ellenőrzéséhez, hogy az Azure ad tud-e csatlakozni a Elium. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Elium-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
+1. A **rendszergazdai hitelesítő adatok** szakaszban írja be a ** \<tenantURL\> /scim/v2** értéket a **bérlői URL-cím** mezőbe. (A **tenantURL** a Elium felügyeleti konzolról korábban beolvasott érték.) Írja be a Elium **titkos jogkivonat** értékét is a **titkos jogkivonat** mezőbe. Végül kattintson a **kapcsolat tesztelése** elemre annak ellenőrzéséhez, hogy az Azure ad tud-e csatlakozni a Elium. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Elium-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
     ![A bérlői URL-cím és a titkos jogkivonat mezői a rendszergazdai hitelesítő adatokban](common/provisioning-testconnection-tenanturltoken.png)
 

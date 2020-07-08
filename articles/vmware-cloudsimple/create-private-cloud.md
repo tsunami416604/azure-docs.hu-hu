@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 4f700ac34b6c6e2a651366bee7dd1785c608064f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77024789"
 ---
 # <a name="create-a-cloudsimple-private-cloud"></a>CloudSimple saját felhő létrehozása
@@ -71,7 +70,7 @@ Nyissa meg a [CloudSimple portált](access-cloudsimple-portal.md).
 
 11. Kattintson **a Tovább gombra: Áttekintés és létrehozás**.
 12. Tekintse át a beállításokat. Ha módosítania kell a beállításokat, kattintson az **előző**gombra.
-13. Kattintson a **Létrehozás**gombra.
+13. Kattintson a **Létrehozás** lehetőségre.
 
 Elindul a felhőalapú kiépítési folyamat. A privát felhő üzembe helyezése akár két óráig is eltarthat.
 

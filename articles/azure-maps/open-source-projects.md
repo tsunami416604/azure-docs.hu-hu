@@ -10,10 +10,9 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: 5782f07167f72be2ea7b148ad1b0a61d8cb710e2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77048898"
 ---
 # <a name="azure-maps-community---open-source-projects"></a>Azure Maps Közösség – nyílt forráskódú projektek
@@ -22,7 +21,7 @@ Ezeket a nyílt forráskódú, Közösség által vezérelt kezdeményezéseket 
 
 A következő lista a legnépszerűbb Azure Maps nyílt forráskódú projekteket és mintákat sorolja fel.
 
-| Projekt neve | Leírás |
+| Projekt neve | Description |
 |-|-|
 | [Azure Maps kód mintái](https://github.com/Azure-Samples/AzureMapsCodeSamples) | A webalapú alkalmazások Azure Maps használatára szolgáló mintakód-gyűjtemény. |
 | [Azure Maps gov Cloud Code-minták](https://github.com/Azure-Samples/AzureMapsCodeSamples) | Mintakód-gyűjtemény, amely a Azure Maps Azure Government felhőben való használatára. |

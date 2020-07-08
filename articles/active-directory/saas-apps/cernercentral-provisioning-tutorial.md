@@ -16,10 +16,9 @@ ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5ed04d8fdcc2d79c66e2ebc53c737c78664e4621
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77058316"
 ---
 # <a name="tutorial-configure-cerner-central-for-automatic-user-provisioning"></a>Oktatóanyag: a Cerner központi beállítása a felhasználók automatikus üzembe helyezéséhez
@@ -85,7 +84,7 @@ Ahhoz, hogy felhasználói fiókokat lehessen kiépíteni a Cerner Central szolg
 
    * Éleshttps://cernercentral.com/system-accounts/
 
-4. Végül meg kell adnia a felhasználói beosztási tartomány azonosítóit a Cerner-ben a homokozó és a termelési környezet számára a konfiguráció befejezéséhez. További információ a beszerzésével kapcsolatban: https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+SCIM. 
+4. Végül meg kell adnia a felhasználói beosztási tartomány azonosítóit a Cerner-ben a homokozó és a termelési környezet számára a konfiguráció befejezéséhez. További információ a beszerzésével kapcsolatban: https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+SCIM . 
 
 5. Most már beállíthatja, hogy az Azure AD felhasználói fiókokat hozzon létre a Cerner-ben. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és keresse meg a **Azure Active Directory > vállalati alkalmazások > minden alkalmazás** szakaszban.
 
@@ -123,7 +122,7 @@ Ezzel elindítja a felhasználók és csoportok szakaszban a Cerner Centralhoz r
 
 Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 * [Cerner Central: személyazonossági adatok közzététele az Azure AD-vel](https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+Azure+AD)
 * [Oktatóanyag: a Cerner Central konfigurálása egyszeri bejelentkezéshez Azure Active Directory](cernercentral-tutorial.md)

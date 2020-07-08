@@ -4,10 +4,9 @@ description: Azure Load Balancer konfigurálása az Azure Service Fabric-fürth�
 ms.topic: conceptual
 ms.date: 12/06/2017
 ms.openlocfilehash: f4599b2e0174381ab7df04aeeb33db7e3ee60f26
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77025384"
 ---
 # <a name="open-ports-for-a-service-fabric-cluster"></a>Service Fabric-fürt portjainak megnyitása
@@ -21,7 +20,7 @@ Amikor üzembe helyezte a Service Fabric-fürtöt az Azure-ban, a terheléselosz
 
 ## <a name="configure-service-fabric"></a>A Service Fabric konfigurálása
 
-Az Service Fabric Application **ServiceManifest. XML** konfigurációs fájl határozza meg az alkalmazás által használni kívánt végpontokat. Miután a konfigurációs fájlt frissítette egy végpont definiálásához, frissítenie kell a terheléselosztó számára, hogy elérhető legyen (vagy egy másik) port. A Service Fabric-végpont létrehozásával kapcsolatos további információkért lásd: [végpont beállítása](service-fabric-service-manifest-resources.md).
+A Service Fabric alkalmazás **ServiceManifest.xml** konfigurációs fájl határozza meg az alkalmazás által használni kívánt végpontokat. Miután a konfigurációs fájlt frissítette egy végpont definiálásához, frissítenie kell a terheléselosztó számára, hogy elérhető legyen (vagy egy másik) port. A Service Fabric-végpont létrehozásával kapcsolatos további információkért lásd: [végpont beállítása](service-fabric-service-manifest-resources.md).
 
 ## <a name="create-a-load-balancer-rule"></a>Terheléselosztási szabály létrehozása
 
@@ -93,7 +92,7 @@ $lb.LoadBalancingRules.Add($lbrule)
 $lb | Set-AzLoadBalancer
 ```
 
-A `New-AzLoadBalancerRuleConfig` parancshoz tartozó érték `-FrontendPort` azt a portot jelöli, amelyet a terheléselosztó a külső kapcsolatok számára tesz `-BackendPort` elérhetővé, és azt a portot jelöli, amelyen a Service Fabric-alkalmazás figyeli a szolgáltatást.
+A `New-AzLoadBalancerRuleConfig` parancshoz tartozó érték azt a `-FrontendPort` portot jelöli, amelyet a terheléselosztó a külső kapcsolatok számára tesz elérhetővé, és `-BackendPort` azt a portot jelöli, amelyen a Service Fabric-alkalmazás figyeli a szolgáltatást.
 
 >[!NOTE]
 >A terheléselosztó PowerShell-lel történő létrehozásával kapcsolatos további információkért lásd: [Load Balancer létrehozása a PowerShell](../load-balancer/load-balancer-get-started-ilb-arm-ps.md)-lel.

@@ -9,13 +9,12 @@ ms.service: iot-central
 services: iot-central
 manager: timlt
 ms.openlocfilehash: 3cf88b4d3c4c74493235d2997db4d464bb055b81
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77023752"
 ---
-# <a name="summary-of-customer-data-request-features"></a>A vásárlói adatkérések funkcióinak összefoglalása
+# <a name="summary-of-customer-data-request-features"></a>Az ügyféladat-kérési funkciók összegzése
 
 Az Azure IoT Central egy teljes körűen felügyelt, eszközök internetes hálózata (IoT) szoftveres megoldás, amely megkönnyíti a IoT-eszközök összekapcsolását, figyelését és felügyeletét nagy méretekben, mélyreható elemzéseket készíthet a IoT-adatokból, és tájékozott műveleteket végezhet.
 

@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 1/10/2020
 ms.author: sutalasi
 ms.openlocfilehash: deef7bfdbc28d744cb81da59d3ffc13a1abee54d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77048614"
 ---
 # <a name="set-up-disaster-recovery-of-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>A Hyper-V virtuális gépek vész-helyreállításának beállítása másodlagos helyre a PowerShell használatával (Resource Manager)
@@ -89,7 +88,7 @@ Győződjön meg arról, hogy Azure PowerShell készen áll:
    $vault = New-AzRecoveryServicesVault -Name #vaultname -ResourceGroupName #ResourceGroupName -Location #location
    ```
 
-   A tároló objektumot a `Get-AzRecoveryServicesVault` parancsmag használatával lehet lekérni, miután létrehozta azt.
+   A tároló objektumot a parancsmag használatával lehet lekérni, miután létrehozta azt `Get-AzRecoveryServicesVault` .
 
 ## <a name="set-the-vault-context"></a>A tár környezetének beállítása
 
@@ -210,7 +209,7 @@ A művelet befejezésének ellenőrzéséhez kövesse a [tevékenység figyelés
 
 ##  <a name="configure-network-mapping"></a>Hálózatleképezés konfigurálása
 
-1. Ezzel a paranccsal lekérheti a kiszolgálókat az aktuális tárolóhoz. A parancs a `$Servers` tömb változóban tárolja a site Recovery kiszolgálókat.
+1. Ezzel a paranccsal lekérheti a kiszolgálókat az aktuális tárolóhoz. A parancs a tömb változóban tárolja a Site Recovery kiszolgálókat `$Servers` .
 
    ```azurepowershell
    $Servers = Get-AzRecoveryServicesAsrFabric
@@ -227,7 +226,7 @@ A művelet befejezésének ellenőrzéséhez kövesse a [tevékenység figyelés
    > [!NOTE]
    > A forrás Virtual Machine Manager kiszolgáló lehet az első vagy második a kiszolgáló tömbben. Győződjön meg arról, hogy Virtual Machine Manager a kiszolgálók neveit, és megfelelően kéri le a hálózatokat.
 
-1. Ez a parancsmag létrehoz egy leképezést az elsődleges hálózat és a helyreállítási hálózat között. Az első elemeként megadja az elsődleges hálózatot `$PrimaryNetworks`. A helyreállítási hálózatot a első elemeként adja meg `$RecoveryNetworks`.
+1. Ez a parancsmag létrehoz egy leképezést az elsődleges hálózat és a helyreállítási hálózat között. Az első elemeként megadja az elsődleges hálózatot `$PrimaryNetworks` . A helyreállítási hálózatot a első elemeként adja meg `$RecoveryNetworks` .
 
    ```azurepowershell
    New-AzRecoveryServicesAsrNetworkMapping -PrimaryNetwork $PrimaryNetworks[0] -RecoveryNetwork $RecoveryNetworks[0]
@@ -259,9 +258,9 @@ Miután a kiszolgálók, a felhők és a hálózatok megfelelően vannak konfigu
 > Ha a CMK-kompatibilis felügyelt lemezeket az Azure-ban szeretné replikálni, hajtsa végre a következő lépéseket az az PowerShell 3.3.0-től kezdődően:
 >
 > 1. Feladatátvétel engedélyezése a felügyelt lemezeken a virtuális gép tulajdonságainak frissítésével
-> 1. A következő `Get-AzRecoveryServicesAsrReplicationProtectedItem` parancsmaggal kérheti le a védett elemek LEMEZének azonosítóját:
-> 1. Hozzon létre egy szótár `New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"` objektumot a parancsmag használatával, amely tartalmazza a lemezes titkosítási készlethez tartozó lemez-azonosító hozzárendelését. Ezeket a lemezes titkosítási csoportokat előre létre kell hoznia a célként megadott régióban.
-> 1. Frissítse a virtuális gép tulajdonságait `Set-AzRecoveryServicesAsrReplicationProtectedItem` a parancsmag használatával a **DiskIdToDiskEncryptionSetMap** paraméterben található szótár objektum átadásával.
+> 1. A `Get-AzRecoveryServicesAsrReplicationProtectedItem` következő parancsmaggal kérheti le a védett elemek lemezének azonosítóját:
+> 1. Hozzon létre egy szótár objektumot a `New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"` parancsmag használatával, amely tartalmazza a lemezes titkosítási készlethez tartozó lemez-azonosító hozzárendelését. Ezeket a lemezes titkosítási csoportokat előre létre kell hoznia a célként megadott régióban.
+> 1. Frissítse a virtuális gép tulajdonságait a `Set-AzRecoveryServicesAsrReplicationProtectedItem` parancsmag használatával a **DiskIdToDiskEncryptionSetMap** paraméterben található szótár objektum átadásával.
 
 ## <a name="run-a-test-failover"></a>Feladatátvételi teszt futtatása
 

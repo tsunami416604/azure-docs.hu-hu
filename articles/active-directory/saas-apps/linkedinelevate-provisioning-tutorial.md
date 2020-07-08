@@ -16,10 +16,9 @@ ms.date: 03/28/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fa0a26eaeac431ed2c78c5bd938bbbe7dff14e0e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77057413"
 ---
 # <a name="tutorial-configure-linkedin-elevate-for-automatic-user-provisioning"></a>Oktatóanyag: a LinkedIn jogosultságszint-emelésének beállítása a felhasználók automatikus üzembe helyezéséhez
@@ -66,7 +65,7 @@ Az első lépés a LinkedIn hozzáférési jogkivonatának beolvasása. Ha Ön v
 
 1. Jelentkezzen be a Account Center webhelyre.
 
-2. Válassza **a &gt; rendszergazdai rendszergazdai beállítások** lehetőséget.
+2. Válassza a **rendszergazdai &gt; rendszergazdai beállítások** lehetőséget.
 
 3. A bal oldali oldalsávon kattintson a **speciális integrációk** elemre. A rendszer átirányítja a fiók központját.
 
@@ -98,7 +97,7 @@ Az első lépés a LinkedIn hozzáférési jogkivonatának beolvasása. Ha Ön v
 
 11. Adja meg a következő mezőket a **rendszergazdai hitelesítő adatok** területen:
 
-    * A **bérlői URL-cím** mezőben `https://api.linkedin.com`adja meg a értéket.
+    * A **bérlői URL-cím** mezőben adja meg a értéket `https://api.linkedin.com` .
 
     * A **titkos jogkivonat** mezőben adja meg az 1. lépésben létrehozott hozzáférési jogkivonatot, majd kattintson a **kapcsolat tesztelése** elemre.
 

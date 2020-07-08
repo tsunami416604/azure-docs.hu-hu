@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 638b60bd3612fa25350ecef0a738fea75c2f53d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77020641"
 ---
 # <a name="configure-vsan-encryption-for-cloudsimple-private-cloud"></a>VSAN-titkosítás konfigurálása a CloudSimple privát felhőhöz
@@ -78,8 +77,8 @@ Ha HyTrust-vezérlő fürtöt szeretne üzembe helyezni a virtuális hálózat A
 3. Telepítse a kezdeti távvezérlési csomópontot a lemezképből az Azure Marketplace-en.  Használja a generált kulcspár nyilvános kulcsát, és válassza a **NSG-hytrust** lehetőséget a kulcstartó csomóponthoz tartozó hálózati biztonsági csoportként.
 4. Alakítsa át a vezérlő magánhálózati IP-címét statikus IP-címmé.
 5. SSH-t a kulcstartó virtuális géphez a nyilvános IP-címe és a korábban említett kulcspár titkos kulcsa használatával.
-6. Amikor a rendszer rákérdez az SSH- `No` rendszerhéjra, válassza a csomópont beállítása kezdeti vezérlő csomópontként lehetőséget.
-7. További vezérlő-csomópontok hozzáadásához ismételje meg az eljárás 3-5. `Yes` lépéseit, és válassza ki, hogy mikor kér be egy meglévő fürthöz való hozzáadást.
+6. Amikor a rendszer rákérdez az SSH-rendszerhéjra, válassza a `No` csomópont beállítása kezdeti vezérlő csomópontként lehetőséget.
+7. További vezérlő-csomópontok hozzáadásához ismételje meg az eljárás 3-5. lépéseit, és válassza ki `Yes` , hogy mikor kér be egy meglévő fürthöz való hozzáadást.
 
 ### <a name="hytrust-webui-configure-the-kmip-server"></a>HyTrust WebUI: a KMIP-kiszolgáló konfigurálása
 
@@ -98,7 +97,7 @@ A vCenter-ben nyissa meg a **fürt > konfigurálja** és válassza a vSAN **ált
 
 ![VSAN titkosítás engedélyezése és KMS-fürt konfigurálása a vCenter-ben](media/vsan-config02.png)
 
-## <a name="references"></a>Referencia
+## <a name="references"></a>Hivatkozások
 
 ### <a name="azure"></a>Azure
 

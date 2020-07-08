@@ -17,10 +17,9 @@ ms.author: arvinh
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: abeac030db419f7fb7d561df5dcd407684f20ca2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77058907"
 ---
 # <a name="tutorial-configure-asana-for-automatic-user-provisioning"></a>Oktatóanyag: a felhasználók automatikus üzembe helyezésének beállítása
@@ -59,7 +58,7 @@ Ez a szakasz végigvezeti az Azure AD-nek a felhasználói fiókok kiépítési 
 
 ### <a name="to-configure-automatic-user-account-provisioning-to-asana-in-azure-ad"></a>A felhasználói fiókok automatikus kiépítés beállítása az Azure AD-ben
 
-1. A [Azure Portal](https://portal.azure.com)keresse meg a **Azure Active Directory** > **vállalati alkalmazások** > **minden alkalmazás** szakaszt.
+1. A [Azure Portal](https://portal.azure.com)keresse meg a **Azure Active Directory**  >  **vállalati alkalmazások**  >  **minden alkalmazás** szakaszt.
 
 1. Ha az egyszeri bejelentkezéshez már beállította a (z)-t, keressen rá a legördülő menüben a Keresés mező használatával. Ellenkező esetben válassza a **Hozzáadás** lehetőséget, és keresse meg **a következőt: az Application** Galleryben. A keresési eredmények **közül válassza ki a legördülő listát** , és adja hozzá az alkalmazások listájához.
 
@@ -99,7 +98,7 @@ A kezdeti szinkronizálás mostantól elindul a **felhasználók** szakaszban a 
 
 Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentés a felhasználói fiókok automatikus üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséről.
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

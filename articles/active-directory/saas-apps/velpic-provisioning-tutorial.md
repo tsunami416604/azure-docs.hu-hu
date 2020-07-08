@@ -17,10 +17,9 @@ ms.date: 03/27/2019
 ms.author: zhchia
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9b7a6c2c9b7ecb0b160f7481d95f7682f3f7a109
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77064121"
 ---
 # <a name="tutorial-configuring-velpic-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Velpic konfigurálása
@@ -71,7 +70,7 @@ Ez a szakasz végigvezeti az Azure AD-nek a Velpic felhasználói fiók létesí
 
     ![Velpic kiépítés](./media/velpic-provisioning-tutorial/Velpic1.png)
 
-5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a **bérlői URL-címet&Velpic titkos jogkivonatát** . (Ezek az értékek a Velpic-fiókban találhatók: az**integrációs** > **beépülő modul** > **scim** **kezelése** > )
+5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a **bérlői URL-címet&Velpic titkos jogkivonatát** . (Ezek az értékek a Velpic-fiókban találhatók: **kezelés**  >  **Integráció**  >  **Beépülő modul**  >  **Scim**)
 
     ![Engedélyezési értékek](./media/velpic-provisioning-tutorial/Velpic2.png)
 
@@ -93,7 +92,7 @@ Ezzel elindítja a felhasználók és csoportok szakaszban Velpic rendelt felhas
 
 Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 236527a9889879f872ef8c3867a7ec3c1b1ba0a3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77057521"
 ---
 # <a name="tutorial-configure-keeper-password-manager--digital-vault-for-automatic-user-provisioning"></a>Oktatóanyag: a Keeper Password Manager & digitális tároló beállítása a felhasználók automatikus üzembe helyezéséhez
@@ -167,7 +166,7 @@ Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további informáci
 * A Keeper Password Manager & Digital Vaultnak **e-maileket** és **felhasználóneveket** kell megadnia ugyanazzal a forrással, mivel bármelyik attribútum frissítései módosítják a másik értéket.
 * A Keeper Password Manager & Digital Vault nem támogatja a felhasználók törlését, csak a tiltást. A letiltott felhasználók a Keeper felügyeleti konzol felhasználói felületén zárolva jelennek meg.
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
 ms.openlocfilehash: 3d1bb0bcbc0df98d7a884004cf96fe9810589185
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77058110"
 ---
 # <a name="tutorial-configure-druva-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Druva konfigurálása
@@ -60,7 +59,7 @@ Az Azure AD-vel való automatikus Druva konfigurálása előtt engedélyeznie ke
 
     ![Druva felügyeleti konzol](media/druva-provisioning-tutorial/menubar.png)
 
-2. Navigáljon a**központi telepítések** > **felhasználóinak** **kezeléséhez** > .
+2. Navigáljon **Manage**a  >  **központi telepítések**  >  **felhasználóinak**kezeléséhez.
 
     ![Druva-SCIM hozzáadása](media/druva-provisioning-tutorial/manage.png)
 
@@ -160,7 +159,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 * A Druva kötelező attribútumként kell eltöltenie az **e-maileket** . 
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 * [A vállalati alkalmazások felhasználói fiókok üzembe](../app-provisioning/configure-automatic-user-provisioning-portal.md)helyezésének kezelése.
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

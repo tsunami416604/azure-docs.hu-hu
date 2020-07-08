@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 3262841efb9109b1de24fe501ea0a7bea0dd612d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77025129"
 ---
 # <a name="back-up-workload-vms-on-cloudsimple-private-cloud-using-veeam-br"></a>Munkaterhelési virtuális gépek biztonsági mentése a CloudSimple privát felhőben a Veeam B&R használatával
@@ -136,7 +135,7 @@ Hozzon létre tűzfalszabályok között a felügyeleti alhálózat és a tartal
 
 A következő táblázat a portok listáját tartalmazza.
 
-| Ikon | Leírás | Ikon | Leírás |
+| Ikon | Description | Ikon | Description |
 | ------------ | ------------- | ------------ | ------------- |
 | Biztonsági mentési kiszolgáló  | vCenter  | HTTPS/TCP  | 443 |
 | Biztonsági mentési kiszolgáló <br> *A Veeam biztonsági mentési & replikációs összetevőinek telepítéséhez szükséges* | Biztonsági mentési proxy  | TCP/UDP  | 135, 137 – 139 és 445 |
@@ -196,7 +195,7 @@ Csatlakoztathatja a virtuális hálózatot a privát felhőhöz az [Azure Virtua
 
 1. Hozzon létre egy általános célú Storage-fiókot (GPv2) a standard típusú és egy blob-tárolóhoz a Microsoft video [első lépések Azure Storage](https://azure.microsoft.com/resources/videos/get-started-with-azure-storage)-ban leírtak szerint.
 2. Hozzon létre egy Azure Storage-tárolót a [tároló létrehozása](https://docs.microsoft.com/rest/api/storageservices/create-container) hivatkozásban leírtak szerint.
-2. Töltse le `azcopy` a Linux parancssori segédprogramját a Microsofttól. A következő parancsokat használhatja a bash-rendszerhéjban a CentOS 7,5-ben.
+2. Töltse le a `azcopy` Linux parancssori segédprogramját a Microsofttól. A következő parancsokat használhatja a bash-rendszerhéjban a CentOS 7,5-ben.
 
     ```
     wget -O azcopy.tar.gz https://aka.ms/downloadazcopylinux64
@@ -260,7 +259,7 @@ Hozzon létre egy tűzfalszabály használatával, amely lehetővé teszi, hogy 
 
 A jogosultságok megszüntetéséhez tekintse meg a [jogosultságok dekiterjesztését](escalate-private-cloud-privileges.md#de-escalate-privileges)ismertető témakört.
 
-## <a name="references"></a>Referencia
+## <a name="references"></a>Hivatkozások
 
 ### <a name="cloudsimple-references"></a>CloudSimple-referenciák
 

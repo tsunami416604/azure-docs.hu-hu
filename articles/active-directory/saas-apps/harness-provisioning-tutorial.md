@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 10/29/2019
 ms.author: Zhchia
 ms.openlocfilehash: 518d86fff04a23f1c1e63c44c53485b99f30637d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77057838"
 ---
 # <a name="tutorial-configure-harness-for-automatic-user-provisioning"></a>Oktatóanyag: a felhasználói kiépítés automatikus kihasználásának beállítása
@@ -53,7 +52,7 @@ Az automatikus felhasználó-kiépítés konfigurálása és engedélyezése el�
 
 ## <a name="set-up-harness-for-provisioning"></a>Kihasználás beállítása a kiépítés számára
 
-1. Jelentkezzen be a [hám felügyeleti konzolba](https://app.harness.io/#/login), majd lépjen a **folyamatos biztonsági** > **hozzáférés kezelése szolgáltatáshoz**.
+1. Jelentkezzen be a [hám felügyeleti konzolba](https://app.harness.io/#/login), majd lépjen a **folyamatos biztonsági**  >  **hozzáférés kezelése szolgáltatáshoz**.
 
     ![Hám felügyeleti konzol](media/harness-provisioning-tutorial/admin.png)
 
@@ -86,7 +85,7 @@ Az Azure AD-vel való automatikus felhasználó-kiépítés előtt az Azure AD-a
 
     ![A "Azure Active Directory" gomb](common/select-azuread.png)
 
-1. Válassza a **vállalati alkalmazások** > **minden alkalmazás**lehetőséget.
+1. Válassza a **vállalati alkalmazások**  >  **minden alkalmazás**lehetőséget.
 
     ![A "minden alkalmazás" hivatkozás](common/enterprise-applications.png)
 
@@ -110,7 +109,7 @@ Ez a szakasz végigvezeti az Azure AD üzembe helyezési szolgáltatás konfigur
 
 Az Azure AD-ben az automatikus felhasználó-kiépítés konfigurálásához tegye a következőket:
 
-1. A [Azure Portal](https://portal.azure.com)válassza a **vállalati alkalmazások** > **minden alkalmazás**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com)válassza a **vállalati alkalmazások**  >  **minden alkalmazás**lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -130,7 +129,7 @@ Az Azure AD-ben az automatikus felhasználó-kiépítés konfigurálásához teg
 
     ![Bérlői URL + token](common/provisioning-testconnection-tenanturltoken.png)
  
-   a. A **bérlői URL-cím** mezőbe **`https://app.harness.io/gateway/api/scim/account/XCPzWkCIQ46ypIu2DeT7yw`** írja be a értéket.  
+   a. A **bérlői URL-cím** mezőbe írja be a értéket **`https://app.harness.io/gateway/api/scim/account/XCPzWkCIQ46ypIu2DeT7yw`** .  
    b. A **titkos jogkivonat** mezőbe írja be az scim-hitelesítési jogkivonat értékét, amelyet a (z) "a kiépítés a kiépítés beállítása" szakasz 6. lépésében mentett.  
    c. Válassza a **kapcsolat tesztelése** lehetőséget annak biztosításához, hogy az Azure ad képes legyen csatlakozni a hám-hez. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a fiókja *rendszergazdai* jogosultságokkal rendelkezik, majd próbálkozzon újra.
 
@@ -174,7 +173,7 @@ Ez a művelet elindítja a kiépített felhasználók vagy csoportok kezdeti szi
 
 További információ az Azure AD-kiépítési naplók olvasásához: [jelentés a felhasználói fiókok automatikus üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséről.
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
