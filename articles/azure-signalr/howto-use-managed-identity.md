@@ -1,87 +1,81 @@
 ---
 title: Felügyelt identitások az Azure Signaler szolgáltatásban
-description: Ismerje meg, hogyan működnek a felügyelt identitások az Azure Signaler szolgáltatásban, hogyan konfigurálható a felügyelt identitások kiszolgáló nélküli helyzetekben való használatára.
+description: Ismerje meg, hogyan működnek a felügyelt identitások az Azure Signaler szolgáltatásban, és hogyan használhatók felügyelt identitások kiszolgáló nélküli forgatókönyvekben.
 author: chenyl
 ms.service: signalr
 ms.topic: article
 ms.date: 06/8/2020
 ms.author: chenyl
-ms.openlocfilehash: 8e122be74d623c7f1ea5576a5fe527dfa538d1d1
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: abe7503e7eb73d533ae901af21de001960173fb0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84988659"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559405"
 ---
-# <a name="how-to-use-managed-identities-for-azure-signalr-service"></a>Felügyelt identitások használata az Azure Signaler szolgáltatásban
+# <a name="managed-identities-for-azure-signalr-service"></a>Felügyelt identitások az Azure Signaler szolgáltatáshoz
 
-Ez a témakör bemutatja, hogyan hozhat létre felügyelt identitást az Azure Signaler szolgáltatáshoz, és hogyan használhatja azt kiszolgáló nélküli forgatókönyvekben.
+Ez a cikk bemutatja, hogyan hozhat létre felügyelt identitást az Azure Signaler szolgáltatáshoz, és hogyan használhatja azt kiszolgáló nélküli forgatókönyvekben.
 
 > [!Important] 
-> Az Azure Signaler szolgáltatás csak egy felügyelt identitást tud támogatni. Ez azt jelenti, hogy a rendszerhez hozzárendelt identitást vagy egy felhasználó által hozzárendelt identitást is hozzáadhat. 
+> Az Azure Signaler szolgáltatás csak egy felügyelt identitást tud támogatni. Ez azt jelenti, hogy a rendszerhez hozzárendelt identitást vagy felhasználó által hozzárendelt identitást adhat hozzá. 
 
 ## <a name="add-a-system-assigned-identity"></a>Rendszerhez rendelt identitás hozzáadása
 
-### <a name="using-the-azure-portal"></a>Az Azure Portal használata
+A Azure Portal felügyelt identitásának beállításához először létre kell hoznia egy Azure Signal Service-példányt, majd engedélyeznie kell a szolgáltatást.
 
-Ha felügyelt identitást szeretne beállítani a portálon, először hozzon létre egy szignáló szolgáltatást a szokásos módon, majd engedélyezze a szolgáltatást.
-
-1. A szokásos módon hozzon létre egy Signaler szolgáltatást a portálon. Navigáljon a portálon.
+1. A szokásos módon hozzon létre egy Azure Signaler Service-példányt a portálon. Tallózással keresse meg a portálon.
 
 2. Válassza az **identitás**lehetőséget.
 
-4. A **rendszerhez rendelt** lapon váltson az **állapot** bekapcsolva **értékre**. Kattintson a **Save** (Mentés) gombra.
+4. A **rendszerhez rendelt** lapon váltson az **állapot** bekapcsolva **értékre**. Kattintson a **Mentés** gombra.
 
     :::image type="content" source="media/signalr-howto-use-managed-identity/system-identity-portal.png" alt-text="Rendszerhez rendelt identitás hozzáadása a portálon":::
 
 ## <a name="add-a-user-assigned-identity"></a>Felhasználó által hozzárendelt identitás hozzáadása
 
-A felhasználó által hozzárendelt identitással rendelkező szignáló szolgáltatás létrehozásához létre kell hoznia az identitást, majd hozzá kell adnia annak erőforrás-azonosítóját a szolgáltatáshoz.
-
-### <a name="using-the-azure-portal"></a>Az Azure Portal használata
-
-Először létre kell hoznia egy felhasználó által hozzárendelt identitás-erőforrást.
+A felhasználó által hozzárendelt identitással rendelkező Azure Signaler szolgáltatás-példány létrehozásához létre kell hoznia az identitást, majd hozzá kell adnia annak erőforrás-azonosítóját a szolgáltatáshoz.
 
 1. Hozzon létre egy felhasználó által hozzárendelt felügyelt identitási erőforrást az [utasításoknak](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md#create-a-user-assigned-managed-identity)megfelelően.
 
-2. A szokásos módon hozzon létre egy Signaler szolgáltatást a portálon. Navigáljon a portálon.
+2. A szokásos módon hozzon létre egy Azure Signaler Service-példányt a portálon. Tallózással keresse meg a portálon.
 
 3. Válassza az **identitás**lehetőséget.
 
-4. A **felhasználó által hozzárendelt** lapon kattintson a **Hozzáadás**gombra.
+4. A **felhasználó által hozzárendelt** lapon válassza a **Hozzáadás**lehetőséget.
 
-5. Keresse meg a korábban létrehozott identitást, és válassza ki. Kattintson a **Hozzáadás** parancsra.
+5. Keresse meg a korábban létrehozott identitást, és válassza ki. Válassza a **Hozzáadás** elemet.
 
-    :::image type="content" source="media/signalr-howto-use-managed-identity/user-identity-portal.png" alt-text="Felhasználó-assigened identitás hozzáadása a portálon":::
+    :::image type="content" source="media/signalr-howto-use-managed-identity/user-identity-portal.png" alt-text="Felhasználó által hozzárendelt identitás hozzáadása a portálon":::
 
-## <a name="use-managed-identity-in-serverless-scenarios"></a>Felügyelt identitás használata kiszolgáló nélküli forgatókönyvekben
+## <a name="use-a-managed-identity-in-serverless-scenarios"></a>Felügyelt identitás használata kiszolgáló nélküli forgatókönyvekben
 
-Mivel a Signaler szolgáltatás egy teljes körűen felügyelt szolgáltatás, ezért nem használhatja a felügyelt identitást a jogkivonatok manuális lekéréséhez. Ehelyett a Signaler szolgáltatás a hozzáférési token beszerzéséhez beállított felügyelt identitást használja, és `Authorization` egy felsőbb rétegbeli kérelemben a fejlécre van beállítva, kiszolgáló nélküli forgatókönyvekben.
+Az Azure Signaler szolgáltatás egy teljes körűen felügyelt szolgáltatás, ezért nem használhat felügyelt identitást a jogkivonatok manuális lekéréséhez. Ehelyett az Azure Signaler szolgáltatás a hozzáférési token beszerzéséhez beállított felügyelt identitást használja. A szolgáltatás ezután a hozzáférési jogkivonatot egy `Authorization` felsőbb rétegbeli kérelemben lévő fejlécbe állítja be kiszolgáló nélküli forgatókönyvekben.
 
 ### <a name="enable-managed-identity-authentication-in-upstream-settings"></a>Felügyelt identitás hitelesítésének engedélyezése a felsőbb rétegbeli beállításokban
 
-1. Rendszerhez rendelt identitás vagy felhasználó által hozzárendelt identitás hozzáadása
+1. Rendszerhez rendelt identitás vagy felhasználó által hozzárendelt identitás hozzáadása.
 
-2. Konfigurálja a felsőbb rétegbeli beállításokat, és használja az *ManagedIdentity* -t *hitelesítési* beállításokként. Megtudhatja, hogyan hozhat létre felsőbb szintű beállításokat hitelesítéssel a [felsőbb rétegbeli beállításokban](concept-upstream.md#create-upstream-settings).
+2. Konfigurálja a felsőbb rétegbeli beállításokat, és használja az **ManagedIdentity** -t **hitelesítési** beállításokként. A felsőbb rétegbeli beállítások hitelesítéssel történő létrehozásával kapcsolatos további információkért lásd: [felsőbb rétegbeli beállítások](concept-upstream.md).
 
-3. A felügyelt identitás-hitelesítés beállításainál megadhatja a cél *erőforrást*. Az *erőforrás* a `aud` beszerzett hozzáférési jogkivonatban lesz jogcím, amely az ellenőrzés részeként használható a felsőbb rétegbeli végpontokban. Az *erőforrás* a következők egyike lehet
+3. A felügyelt identitás hitelesítési beállításai **erőforrás**esetében megadhatja a cél erőforrást. Az erőforrás a `aud` beszerzett hozzáférési jogkivonat jogcíme lesz, amely a felsőbb rétegbeli végpontok érvényesítésének részeként használható. Az erőforrás a következők egyike lehet:
     - Üres
     - Az egyszerű szolgáltatásnév alkalmazás-(ügyfél-) azonosítója
     - Az egyszerű szolgáltatásnév alkalmazásspecifikus AZONOSÍTÓjának URI-ja
-    - Az Azure-szolgáltatások erőforrás-azonosítói: [Az Azure-szolgáltatások erőforrás-azonosítója](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities#azure-services-that-support-azure-ad-authentication)
+    - [Azure-szolgáltatás erőforrás-azonosítója](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities#azure-services-that-support-azure-ad-authentication)
 
     > [!NOTE]
-    > Ha a hozzáférési jogkivonatot a szolgáltatásában saját maga érvényesíti, kiválaszthatja az egyik *erőforrás* -formátumot is. Ha biztosítani szeretné, hogy az *erőforrás* a *hitelesítési* beállításokban és az érvényesítés konzisztens legyen. Ha az adatsík RBAC használja, akkor a szolgáltató által igényelt *erőforrást* kell használnia.
+    > Ha a szolgáltatásban saját maga érvényesít egy hozzáférési jogkivonatot, kiválaszthatja az egyik erőforrás-formátumot is. Győződjön meg arról, hogy az **erőforrás** -érték a **hitelesítési** beállításokban és az érvényesítés konzisztens. Ha szerepköralapú hozzáférés-vezérlést (RBAC) használ egy adatsíkon, akkor a szolgáltató által igényelt erőforrást kell használnia.
 
-### <a name="validate-access-token"></a>Hozzáférési jogkivonat ellenőrzése
+### <a name="validate-access-tokens"></a>Hozzáférési tokenek ellenőrzése
 
-A `Authorization` fejlécben található jogkivonat a [Microsoft Identity platform hozzáférési jogkivonata](https://docs.microsoft.com/azure/active-directory/develop/access-tokens#validating-tokens).
+A fejlécben szereplő jogkivonat a `Authorization` [Microsoft Identity platform hozzáférési jogkivonata](https://docs.microsoft.com/azure/active-directory/develop/access-tokens#validating-tokens).
 
-A hozzáférési jogkivonatok érvényesítéséhez az alkalmazásnak ellenőriznie kell a célközönséget és az aláírási jogkivonatokat is. Ezeket érvényesíteni kell az OpenID-felderítési dokumentum értékeivel. A dokumentum bérlőtől független verziója például a következő helyen található: [https://login.microsoftonline.com/common/.well-known/openid-configuration](https://login.microsoftonline.com/common/.well-known/openid-configuration) .
+A hozzáférési jogkivonatok érvényesítéséhez az alkalmazásnak ellenőriznie kell a célközönséget és az aláíró jogkivonatokat is. Ezeket érvényesíteni kell az OpenID-felderítési dokumentum értékeivel. Tekintse meg például a [dokumentum bérlői független verzióját](https://login.microsoftonline.com/common/.well-known/openid-configuration).
 
-Az Azure AD-alapú middleware beépített funkciókat biztosít a hozzáférési jogkivonatok érvényesítéséhez, és böngészhet a [minták](https://docs.microsoft.com/azure/active-directory/develop/sample-v2-code) között, és megkeresheti az Ön által választott nyelven.
+A Azure Active Directory (Azure AD) middleware beépített képességekkel rendelkezik a hozzáférési jogkivonatok érvényesítéséhez. A [minták](https://docs.microsoft.com/azure/active-directory/develop/sample-v2-code) között böngészhet, és megkeresheti az Ön által választott nyelven.
 
-Olyan kódtárakat és kódokat biztosítunk, amelyek bemutatják a jogkivonat-érvényesítés kezelését. Az alábbi információk azokra a felhasználókra vonatkoznak, akik meg szeretnék ismerni a mögöttes folyamatot. A JWT ellenőrzéséhez több harmadik féltől származó nyílt forráskódú kódtár is rendelkezésre áll – legalább egy lehetőség van a szinte minden platformra és nyelvre. További információ az Azure AD hitelesítési könyvtárairól és a kódokról: [v 2.0 hitelesítési kódtárak](https://docs.microsoft.com/azure/active-directory/develop/reference-v2-libraries).
+Olyan kódtárakat és kódokat biztosítunk, amelyek bemutatják a jogkivonat-érvényesítés kezelését. A JSON Web Token (JWT) érvényesítéséhez több nyílt forráskódú partneri függvénytár is elérhető. Szinte minden platformhoz és nyelvhez legalább egy lehetőség van. További információ az Azure AD-hitelesítési könyvtárakról és a mintakód-mintákról: [Microsoft Identity platform Authentication librarys](https://docs.microsoft.com/azure/active-directory/develop/reference-v2-libraries).
 
 ## <a name="next-steps"></a>További lépések
 

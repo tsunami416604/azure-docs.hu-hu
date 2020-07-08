@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/07/2018
 ms.author: liydu
-ms.openlocfilehash: dc4ff35ff04680e8635d54c25212c8ae639ae472
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 464e2c14fa238160ca198b9f1c8a9808e70933f9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60779835"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85560966"
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>Shake, Shake for a tweet – Twitter-üzenet beolvasása Azure Functions
 
@@ -50,13 +50,13 @@ Először nyissa meg a Project mappát.
 ### <a name="open-the-arduino-examples-folder"></a>Az Arduino-példák mappa megnyitása
 
 Bontsa ki a bal oldali **ARDUINO-példák** szakaszt, és keresse meg a **PÉLDÁKAT a MXCHIP AZ3166 > AzureIoT**, és válassza a **ShakeShake**lehetőséget. Megnyílik egy új VS Code ablak, amely megjeleníti a projekt mappáját. Ha nem látja a MXCHIP AZ3166 szakaszt, győződjön meg arról, hogy az eszköz megfelelően van csatlakoztatva, és indítsa újra a Visual Studio Code-ot.  
-a ![mini-Solution példák](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/vscode_examples.png)
+a ![ mini-Solution példák](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/vscode_examples.png)
 
-A minta projektet a parancs palettáról is megnyithatja. Kattintson `Ctrl+Shift+P` (MacOS: `Cmd+Shift+P`) a parancs paletta megnyitásához, írja be az **Arduino**parancsot, majd keresse meg és válassza ki az **Arduino: példák**elemet.
+A minta projektet a parancs palettáról is megnyithatja. Kattintson `Ctrl+Shift+P` (MacOS: `Cmd+Shift+P` ) a parancs paletta megnyitásához, írja be az **Arduino**parancsot, majd keresse meg és válassza ki az **Arduino: példák**elemet.
 
 ## <a name="provision-azure-services"></a>Azure-szolgáltatások kiépítése
 
-A megoldás ablakban futtassa a `Ctrl+P` (z) (MacOS:) `Cmd+P`feladatot a következő `task cloud-provision`megadásával:.
+A megoldás ablakban futtassa a `Ctrl+P` (z) (MacOS:) feladatot a következő `Cmd+P` megadásával: `task cloud-provision` .
 
 A VS Code terminalban egy interaktív parancssor végigvezeti a szükséges Azure-szolgáltatások kiépítési folyamatán:
 
@@ -67,17 +67,17 @@ A VS Code terminalban egy interaktív parancssor végigvezeti a szükséges Azur
  
 ## <a name="modify-the-hashtag"></a>A #hashtag módosítása
 
-Nyissa meg `ShakeShake.ino` és keresse meg a következő kódrészletet:
+Nyissa meg és keresse meg a következő `ShakeShake.ino` kódrészletet:
 
 ```cpp
 static const char* iot_event = "{\"topic\":\"iot\"}";
 ```
 
-Cserélje le a `iot` karakterláncot a kapcsos zárójelek között a kívánt hashtagre. A fejlesztői készlet később egy véletlenszerű tweetet kér le, amely tartalmazza az ebben a lépésben megadott hashtag-t.
+Cserélje le a karakterláncot `iot` a kapcsos zárójelek között a kívánt hashtagre. A fejlesztői készlet később egy véletlenszerű tweetet kér le, amely tartalmazza az ebben a lépésben megadott hashtag-t.
 
 ## <a name="deploy-azure-functions"></a>Az Azure Functions üzembe helyezése
 
-A `Ctrl+P` futtatásához használja `Cmd+P`a (MacOS `task cloud-deploy` :) parancsot a Azure functions kód üzembe helyezésének megkezdéséhez:
+A `Ctrl+P` futtatásához használja a (MacOS: `Cmd+P` ) parancsot a `task cloud-deploy` Azure functions kód üzembe helyezésének megkezdéséhez:
 
 ![Felhőbeli üzembe helyezés](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/cloud-deploy.png)
 
@@ -90,7 +90,7 @@ Ezután hozza létre és töltse fel az eszköz kódját.
 
 ### <a name="windows"></a>Windows
 
-1. A `Ctrl+P` futtatásához `task device-upload`használja a parancsot.
+1. `Ctrl+P`A futtatásához használja a parancsot `task device-upload` .
 
 2. A terminál felszólítja a konfigurációs mód megadására. Ehhez tegye a következőket:
 
@@ -106,7 +106,7 @@ Ezután hozza létre és töltse fel az eszköz kódját.
 
    Tartsa lenyomva az A gombot, majd nyomja le és szabadítsa fel az Alaphelyzetbe állítás gombot. A képernyő "Configuration" (konfiguráció) értéket jelenít meg.
 
-2. `Cmd+P` A futtatásával `task device-upload` állítsa be a `task cloud-provision` lépésből beolvasott kapcsolódási karakterláncot.
+2. A `Cmd+P` futtatásával `task device-upload` állítsa be a lépésből beolvasott kapcsolódási karakterláncot `task cloud-provision` .
 
 ### <a name="verify-upload-and-run"></a>Ellenőrzés, feltöltés és Futtatás
 
@@ -196,8 +196,6 @@ Vagy a kód futtatásakor az alkalmazás újraindítását okozó visszavert jel
 2. A [Azure Portal](https://portal.azure.com/)keresse meg a létrehozott Azure functions alkalmazást, és indítsa újra:
 
    ![Azure-Function-újraindítás](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/azure-function-restart.png)
-
-### <a name="feedback"></a>Visszajelzés
 
 Ha más problémákat tapasztal, tekintse meg a [IoT fejlesztői készlet GYIK](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) -et, vagy vegye fel velünk a kapcsolatot az alábbi csatornákon keresztül:
 

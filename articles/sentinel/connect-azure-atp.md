@@ -1,6 +1,6 @@
 ---
 title: Azure ATP-adatkapcsolatok összekötése az Azure Sentinel szolgáltatással | Microsoft Docs
-description: Ismerje meg, hogyan csatlakoztathatók az Azure ATP-beli adatközpontok az Azure Sentinelhez.
+description: Megtudhatja, hogyan továbbíthatja a naplókat az Azure Advanced Threat Protection (ATP) szolgáltatásból egyetlen kattintással az Azure Sentinelbe.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 387d04cbbb125006efcc4efc53a02015fe3f5919
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f58c38ccfa234752a80c05c300d245c6c9e97cf0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77588586"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559178"
 ---
 # <a name="connect-data-from-azure-advanced-threat-protection-atp"></a>Adatok összekapcsolása az Azure komplex veszélyforrások elleni védelemből (ATP)
 

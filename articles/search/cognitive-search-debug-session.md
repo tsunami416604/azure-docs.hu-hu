@@ -8,12 +8,12 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 6c658053afcaff99249e5d20ca2dc5a14037470b
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: edce8f3460e92eef4f6665b1b38a61582d6841ad
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85510857"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85560373"
 ---
 # <a name="debug-sessions-in-azure-cognitive-search"></a>Hibakeresési munkamenetek az Azure Cognitive Search
 
@@ -90,7 +90,7 @@ Ez az ablak megjeleníti az összes olyan hibát és figyelmeztetést, amelyet a
 
 A hibakeresési sesisons az összes általánosan elérhető adatforrással, az AMD legtöbb előzetes verziójú adatforrásával működnek. A Cosmos DB MongoDB API (előzetes verzió) és Cassandra API (előzetes verzió) jelenleg nem támogatott.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megértette a hibakeresési munkamenetek elemeit, próbálja ki az oktatóanyagot gyakorlati tapasztalatokra.
 

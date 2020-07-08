@@ -8,12 +8,12 @@ ms.author: jlembicz
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ca2bc66c755da2011cc7016f37b194caa6200d9a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 344b3bb30c9a92046a5fbd13c35b0efc7e6f3a23
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72793594"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85560840"
 ---
 # <a name="how-to-create-an-index-for-multiple-languages-in-azure-cognitive-search"></a>Index létrehozása több nyelvhez az Azure-ban Cognitive Search
 
@@ -44,7 +44,7 @@ Miután kiválasztotta a Language Analyzert egy mezőhöz, a rendszer az adott m
 
 Ha a lekérdezést kiállító ügynök nyelve ismert, a keresési kérelem hatóköre egy adott mezőre is kiterjed a **searchFields** lekérdezési paraméter használatával. A következő lekérdezés csak a lengyel nyelvű leírásban lesz kibocsátva:
 
-`https://[service name].search.windows.net/indexes/[index name]/docs?search=darmowy&searchFields=PolishContent&api-version=2019-05-06`
+`https://[service name].search.windows.net/indexes/[index name]/docs?search=darmowy&searchFields=PolishContent&api-version=2020-06-30`
 
 Az indexet lekérdezheti a portálról, a [**keresési ablak**](search-explorer.md) használatával beillesztheti a fent láthatóhoz hasonló lekérdezést.
 
@@ -61,7 +61,7 @@ Előfordulhat, hogy a lekérdezést kiállító ügynök nyelve nem ismert, ebbe
       }
     ]
 
-`https://[service name].search.windows.net/indexes/[index name]/docs?search=Microsoft&scoringProfile=englishFirst&api-version=2019-05-06`
+`https://[service name].search.windows.net/indexes/[index name]/docs?search=Microsoft&scoringProfile=englishFirst&api-version=2020-06-30`
 
 ## <a name="next-steps"></a>További lépések
 

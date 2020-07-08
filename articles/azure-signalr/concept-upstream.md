@@ -1,86 +1,90 @@
 ---
 title: Felsőbb rétegbeli beállítások az Azure Signaler szolgáltatásban
-description: A felsőbb rétegbeli üzenetek felső beállításainak és protokolljának bemutatása
+description: Ismerje meg a felsőbb rétegbeli üzenetek felsőbb rétegbeli beállításainak és protokolljainak bevezetését.
 author: chenyl
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.author: chenyl
-ms.openlocfilehash: 7434e8796ddcd89968a0ffa0328a823d635f51c9
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: be7736d0c90d1c384e15e8c7dee29d016b052dbd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84988665"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559435"
 ---
 # <a name="upstream-settings"></a>Felsőbb rétegbeli beállítások
 
-A felsőbb rétegbeli funkció lehetővé teszi, hogy a Signaler szolgáltatás üzeneteket és kapcsolódási eseményeket küldjön a végpontok számára kiszolgáló nélküli módban. A felsőbb réteg használatával kiszolgáló nélküli módban hívható meg a hub metódusa az ügyfelektől, és engedélyezheti a végpontok számára, hogy értesítést kapjanak, amikor az ügyfélkapcsolatok csatlakoztatva vannak vagy le vannak választva.
+A felsőbb rétegbeli funkció lehetővé teszi, hogy az Azure Signaler szolgáltatás üzeneteket és kapcsolódási eseményeket küldjön a végpontok számára kiszolgáló nélküli módban. A felsőbb réteg használatával kiszolgáló nélküli módban hívhat meg központi metódust az ügyfelektől, és engedélyezheti, hogy a végpontok értesítést kapjanak az ügyfélkapcsolatok csatlakoztatása vagy leválasztása esetén.
 
 > [!NOTE]
 > Csak a kiszolgáló nélküli mód konfigurálhatja a felsőbb rétegbeli beállításokat.
 
-## <a name="upstream-settings-details"></a>Felsőbb rétegbeli beállítások részletei
+## <a name="details-of-upstream-settings"></a>A felsőbb rétegbeli beállítások részletei
 
-A felsőbb rétegbeli beállítások a rendelés bizalmas elemeinek listájából állnak. Mindegyik elem egy-ból áll `URL Template` , amely megadja, hogy az üzenetek hová legyenek elküldve, egy készletbe `Rules` és egy `Authentication` konfigurációba. Ha a megadott esemény bekövetkezik, a rendszer egy-egy sorrendben ellenőrzi az elemeket, `Rules` és az üzeneteket a rendszer az első megfelelő elem felsőbb rétegbeli URL-címére küldi.
+A felsőbb rétegbeli beállítások az Order-szenzitív elemek listáját tartalmazzák. Minden elem a következőkből áll:
+
+* URL-sablon, amely megadja, hogy az üzenetek hová legyenek küldve.
+* Szabályok halmaza.
+* Hitelesítési konfigurációk. 
+
+Ha a megadott esemény bekövetkezik, egy elem szabályait egyenként kell ellenőrizni a sorrendben. Az üzenetek az első megfelelő elemek felsőbb rétegbeli URL-címére lesznek küldve.
 
 ### <a name="url-template-settings"></a>URL-sablon beállításai
 
-Az URL-cím a különböző mintázatok támogatásához paraméterekkel is rendelkezhet. Három előre definiált paraméter létezik:
+A különböző mintázatok támogatásához parametrizálja az URL-címet. Három előre definiált paraméter létezik:
 
-|Előre definiált paraméter|Leírás|
+|Előre definiált paraméter|Description|
 |---------|---------|
-|hub| A hub a jelző fogalma. A hub elkülönítési egység, a felhasználók és az üzenetek kézbesítésének hatóköre egy hubhoz van korlátozva.|
-|Kategória| A kategória a következő értékek egyike lehet: <ul><li>**kapcsolatok**: kapcsolat élettartamának eseményei. Akkor aktiválódik, amikor egy ügyfélkapcsolat csatlakoztatva van vagy le van választva. A *csatlakoztatott* és a *leválasztott* eseményeket is beleértve</li><li>**üzenetek**: akkor aktiválódik, amikor az ügyfelek meghívja a hub metódust. Beleértve az összes többi eseményt, kivéve a *kapcsolatok* kategóriájában lévőket</li></ul>|
-|esemény| Az *üzenetek* kategória esetében az esemény az a *cél* , amely az ügyfelek által küldött [Meghívási üzenetben](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding) szerepel. A *kapcsolatok* kategória esetében csak a *csatlakoztatott* és a *leválasztott* kapcsolat van használatban.|
+|hub| A hub az Azure Signaler szolgáltatás fogalma. A hub elkülönítési egység. A felhasználók és az üzenetek kézbesítési köre korlátozott egy hubhoz.|
+|Kategória| A kategória a következő értékek egyike lehet: <ul><li>**kapcsolatok**: kapcsolat élettartamának eseményei. Az ügyfél kapcsolata csatlakoztatva van vagy le van választva. Ide tartozik a csatlakoztatott és a leválasztott események is.</li><li>**üzenetek**: akkor aktiválódik, amikor az ügyfelek egy központi metódust hív meg. Minden egyéb eseményt tartalmaz, kivéve a **kapcsolatok** kategóriájában lévőket.</li></ul>|
+|esemény| Az **üzenetek** kategória esetében az esemény a cél egy [Meghívási üzenetben](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding) , amelyet az ügyfelek küldenek. A kapcsolatok kategória esetében csak a *csatlakoztatott* és a *leválasztott* **kapcsolat** van használatban.|
 
-Ezek az előre definiált paraméterek használhatók a `URL Pattern` és a paraméterekben a felsőbb rétegbeli URL-cím kiértékelése során megadott értékkel. Például 
+Ezeket az előre definiált paramétereket az URL-mintában lehet használni. A felsőbb rétegbeli URL-cím kiértékelése során a paraméterek egy megadott értékkel lesznek lecserélve. Például: 
 ```
 http://host.com/{hub}/api/{category}/{event}
 ```
-Ha a "chat" hub-kapcsolat csatlakoztatva van, a rendszer üzenetet küld az URL-címre:
+Ha a "chat" hub-kapcsolat csatlakoztatva van, a rendszer üzenetet küld a következő URL-címre:
 ```
 http://host.com/chat/api/connections/connected
 ```
-Ha a hub egyik ügyfele `chat` meghívja a hub metódust `broadcast` , a rendszer üzenetet küld az URL-címre:
+Ha a "chat" hub egyik ügyfele meghívja a hub metódust `broadcast` , a rendszer egy üzenetet küld a következő URL-címre:
 ```
 http://host.com/chat/api/messages/broadcast
 ```
 
-### <a name="rules-settings"></a>Szabályok beállításai
+### <a name="rule-settings"></a>Szabály beállításai
 
-A *központi szabályokra*, a *kategóriákra* és az *események szabályaira* vonatkozó szabályokat külön is megadhat. Az egyeztetési szabály három formátumot támogat. Példaként tekintse meg az *események szabályait* :
-- Használja a csillag (*) karaktert az események egyeztetéséhez.
-- A felhasználó vesszővel (,) csatlakozhat több eseményhez. Például megfelel a `connected, disconnected` *csatlakoztatott* és a *leválasztott*eseményeknek.
-- A teljes esemény nevét használja az eseménynek megfelelően. Például megfelel a `connected` *csatlakoztatott* eseménynek.
+Megadhatja a *központi szabályok*, a *Kategóriák*és az *események szabályait* külön-külön. Az egyeztetési szabály három formátumot támogat. Példaként vegyen fel az események szabályait:
+- Használjon csillag (*) karaktert az események egyeztetéséhez.
+- Több esemény csatlakoztatásához használjon vesszőt (,). Például `connected, disconnected` megfelel a csatlakoztatott és a leválasztott eseményeknek.
+- A teljes esemény nevét használja az eseménynek megfelelően. Például `connected` megfelel a csatlakoztatott eseménynek.
 
 ### <a name="authentication-settings"></a>Hitelesítési beállítások
 
-Az egyes felsőbb rétegbeli beállítási elemek *hitelesítését* külön is konfigurálhatja. A konfigurált *hitelesítéskor*a rendszer egy tokent állít be a felsőbb rétegbeli üzenet *hitelesítési* fejlécében. Jelenlegi, a Signaler szolgáltatás a következő hitelesítési típust támogatja
-- Nincs
-- ManagedIdentity
+Az egyes felsőbb rétegbeli beállítási elemek hitelesítését külön is konfigurálhatja. A hitelesítés konfigurálásakor a jogkivonat a `Authentication` felsőbb rétegbeli üzenet fejlécében van beállítva. Jelenleg az Azure Signaler szolgáltatás a következő hitelesítési típusokat támogatja:
+- `None`
+- `ManagedIdentity`
 
-A *ManagedIdentity*kiválasztása után előre engedélyeznie kell a felügyelt identitást a Signaler szolgáltatásban, és opcionálisan meg kell adnia egy *erőforrást*. További információ: a [felügyelt identitások használata az Azure signaler szolgáltatáshoz](howto-use-managed-identity.md) .
+Ha kiválasztja `ManagedIdentity` , a felügyelt identitást előre kell engedélyeznie az Azure signaler szolgáltatásban, és opcionálisan meg kell adnia egy erőforrást. További részletekért lásd: [felügyelt identitások az Azure signaler szolgáltatáshoz](howto-use-managed-identity.md) .
 
-## <a name="create-upstream-settings"></a>Felsőbb rétegbeli beállítások létrehozása
-
-### <a name="create-upstream-settings-via-azure-portal"></a>Felsőbb rétegbeli beállítások létrehozása Azure Portal használatával
+## <a name="create-upstream-settings-via-the-azure-portal"></a>Felsőbb rétegbeli beállítások létrehozása a Azure Portal használatával
 
 1. Nyissa meg az Azure Signaler szolgáltatást.
-2. Kattintson a nyájas *beállításokra* , és váltson a *szolgáltatás módba* a *kiszolgáló*nélküli értékre. A *felsőbb rétegbeli beállítások* az alábbiak szerint jelennek meg:
+2. Válassza a **Beállítások** és a **szolgáltatás mód** váltása **kiszolgáló**nélkülire lehetőséget. A felsőbb rétegbeli beállítások a következőket fogják megjelenni:
 
     :::image type="content" source="media/concept-upstream/upstream-portal.png" alt-text="Felsőbb rétegbeli beállítások":::
 
-3. Töltse ki az URL-címeket a *felsőbb rétegbeli URL-mintába*, majd a beállítások, például a *hub-szabályok* az alapértelmezett értéket fogják megjeleníteni.
-4. Az olyan beállítások megadásához, mint például a *hub-szabályok*, az *események szabályai*, a *Kategória szabályai* és a *felsőbb rétegbeli hitelesítés*, kattintson a *hub-szabályok*értékére. Olyan oldal, amely lehetővé teszi a beállítások szerkesztését, ahogy az alábbi ábrán látható:
+3. URL-címek hozzáadása a **felsőbb rétegbeli URL-minta**alatt. Ezután a beállítások, például a **hub-szabályok** az alapértelmezett értéket fogják megjeleníteni.
+4. A **hub-szabályok**, az **események**, a **Kategória-szabályok**és a **felsőbb rétegbeli hitelesítés**beállításainak megadásához válassza ki a **hub-szabályok**értékét. Megjelenik egy olyan oldal, amely lehetővé teszi a beállítások szerkesztését:
 
     :::image type="content" source="media/concept-upstream/upstream-detail-portal.png" alt-text="Felsőbb rétegbeli beállítások":::
 
-5. A *felsőbb rétegbeli hitelesítés*beállításához először engedélyezze a felügyelt identitást, majd válassza a *felügyelt identitás használata* a *felsőbb rétegbeli hitelesítés*alatt lehetőséget. Az igényeknek megfelelően az *Auth erőforrás-azonosító*területen bármelyik lehetőség közül választhat. A részletekért lásd: [a felügyelt identitás engedélyezése](howto-use-managed-identity.md) .
+5. A **felsőbb rétegbeli hitelesítés**beállításához először engedélyezze a felügyelt identitást. Ezután válassza a **felügyelt identitás használata**lehetőséget. Az igényeknek megfelelően az **Auth erőforrás-azonosító**területen bármelyik lehetőség közül választhat. További részletekért lásd: [felügyelt identitások az Azure signaler szolgáltatáshoz](howto-use-managed-identity.md) .
 
-### <a name="create-upstream-settings-via-arm-template"></a>Felsőbb rétegbeli beállítások létrehozása ARM-sablon használatával
+## <a name="create-upstream-settings-via-resource-manager-template"></a>Felsőbb rétegbeli beállítások létrehozása Resource Manager-sablon használatával
 
-A felsőbb rétegbeli beállítások [Resource Manager-sablonnal](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview)történő létrehozásához állítsa be a tulajdonságot `upstream` a `properties` tulajdonságban. Az alábbi kódrészletek bemutatják, hogyan állíthatja be a `upstream` tulajdonságot a felsőbb rétegbeli beállítások létrehozásához és frissítéséhez.
+A felsőbb rétegbeli beállítások [Azure Resource Manager sablon](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview)használatával történő létrehozásához állítsa be a tulajdonságot `upstream` a `properties` tulajdonságban. Az alábbi kódrészletből megtudhatja, hogyan állíthatja be a `upstream` tulajdonságot a felsőbb rétegbeli beállítások létrehozásához és frissítéséhez.
 
 ```JSON
 {
@@ -105,9 +109,9 @@ A felsőbb rétegbeli beállítások [Resource Manager-sablonnal](https://docs.m
 }
 ```
 
-## <a name="signalr-serverless-protocol"></a>A jelző kiszolgáló nélküli protokollja
+## <a name="serverless-protocols"></a>Kiszolgáló nélküli protokollok
 
-A signaler szolgáltatás üzeneteket küld a következő protokollokat követő végpontoknak.
+Az Azure Signaler szolgáltatás üzeneteket küld a következő protokollokat követő végpontoknak.
 
 ### <a name="method"></a>Metódus
 
@@ -115,17 +119,17 @@ POST
 
 ### <a name="request-header"></a>Kérelem fejléce
 
-|Name |Leírás|
+|Name |Description|
 |---------|---------|
-|X-ASRS-kapcsolatazonosító |Az Ügyfélkapcsolat azonosítója|
-|X-ASRS – hub |Az a hub, amelyhez az Ügyfélkapcsolat tartozik|
-|X-ASRS – kategória |Az a kategória, amelyhez az üzenet tartozik|
-|X-ASRS-Event |Az az esemény, amelyhez az üzenet tartozik|
-|X-ASRS – aláírás |Az érvényesítéshez használt HMAC. Részletekért lásd az [aláírást](#signature) .|
-|X-ASRS-User-jogcím |Az Ügyfélkapcsolat jogcímeinek egy csoportja|
-|X-ASRS-User-ID |Az üzenetet küldő ügyfél felhasználói identitása|
-|X-ASRS – ügyfél – lekérdezés |A kérés lekérdezése, amikor az ügyfelek csatlakoznak a szolgáltatáshoz|
-|Hitelesítés |Nem kötelező jogkivonat a *ManagedIdentity* használatakor |
+|X-ASRS-kapcsolatazonosító |Az ügyfélkapcsolathoz tartozó kapcsolatazonosító.|
+|X-ASRS – hub |Az az elosztó, amelyhez az Ügyfélkapcsolat tartozik.|
+|X-ASRS – kategória |Az a kategória, amelyhez az üzenet tartozik.|
+|X-ASRS-Event |Az az esemény, amelyhez az üzenet tartozik.|
+|X-ASRS – aláírás |Az érvényesítéshez használt kivonatoló üzenet-hitelesítési kód (HMAC). Részletekért lásd az [aláírást](#signature) .|
+|X-ASRS-User-jogcím |Az Ügyfélkapcsolat jogcímeinek egy csoportja.|
+|X-ASRS-User-ID |Az üzenetet küldő ügyfél felhasználói identitása.|
+|X-ASRS – ügyfél – lekérdezés |A kérés lekérdezése, amikor az ügyfelek csatlakoznak a szolgáltatáshoz.|
+|Hitelesítés |Egy választható jogkivonat a használatakor `ManagedIdentity` . |
 
 ### <a name="request-body"></a>A kérés törzse
 
@@ -137,28 +141,28 @@ Content-Type: Application/JSON
 
 Content-Type:`application/json`
 
-|Name  |Típus  |Leírás  |
+|Name  |Típus  |Description  |
 |---------|---------|---------|
-|Hiba |sztring |A kapcsolatok lezárult hibaüzenete. Üres, ha a kapcsolatok hiba nélkül zárulnak|
+|Hiba |sztring |Egy lezárt kapcsolatok hibaüzenete. Üres, ha a kapcsolatok hiba nélkül zárulnak.|
 
 #### <a name="invocation-message"></a>Meghívási üzenet
 
 Content-Type: `application/json` vagy`application/x-msgpack`
 
-|Name  |Típus  |Leírás  |
+|Name  |Típus  |Description  |
 |---------|---------|---------|
-|InvocationId |sztring | Egy választható sztring egy Meghívási üzenetet jelöl. Részletek keresése a [hívásokban](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocations).|
-|Cél |sztring | Ugyanaz, mint a [Meghívási üzenetben](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding)megjelenő *esemény* és a *cél* . |
-|Argumentumok |Objektum tömbje |A célhelyen hivatkozott metódusra alkalmazandó argumentumokat tartalmazó tömb. |
+|InvocationId |sztring | Egy Meghívási üzenetet jelölő, nem kötelező karakterlánc. Részletek keresése a [hívásokban](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocations).|
+|Cél |sztring | Ugyanaz, mint a [Meghívási üzenetben](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding)szereplő esemény és a cél. |
+|Argumentumok |Objektum tömbje |Egy tömb, amely a alkalmazásban hivatkozott metódusra alkalmazandó argumentumokat tartalmaz `Target` . |
 
 ### <a name="signature"></a>Aláírás
 
-A szolgáltatás a `X-ASRS-Connection-Id` kulcsként az elsődleges hozzáférési kulcs és a másodlagos elérési kulcs használatával kiszámítja az érték sha256 kódját `HMAC` , és beállítja azt a `X-ASRS-Signature` fejlécben, amikor http-kéréseket küld a felsőbb rétegnek:
+A szolgáltatás a `X-ASRS-Connection-Id` kulcsként az elsődleges hozzáférési kulcsot és a másodlagos elérési kulcsot is használja az értékhez tartozó sha256-kód kiszámításához `HMAC` . A szolgáltatás a fejlécbe állítja be, `X-ASRS-Signature` Amikor http-kéréseket hoz létre a felsőbb rétegbe:
 ```
 Hex_encoded(HMAC_SHA256(accessKey, connection-id))
 ```
 
 ## <a name="next-steps"></a>További lépések
 
-- [Felügyelt identitások használata az Azure Signaler szolgáltatásban](howto-use-managed-identity.md)
+- [Felügyelt identitások az Azure Signaler szolgáltatáshoz](howto-use-managed-identity.md)
 - [Az Azure Functions fejlesztése és konfigurálása az Azure SignalR szolgáltatással](signalr-concept-serverless-development-config.md)

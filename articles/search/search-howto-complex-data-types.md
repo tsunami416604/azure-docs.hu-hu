@@ -9,31 +9,31 @@ tags: complex data types; compound data types; aggregate data types
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2edd62825de08becf22f2f953a63a7f89f55e0a6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9fe61cf2a53b8e128a6cb58465cbb4785faa89d2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79283055"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85562040"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-cognitive-search"></a>Összetett adattípusok modellezése az Azure-ban Cognitive Search
 
 Az Azure Cognitive Search indexek feltöltéséhez használt külső adatkészletek számos alakzatban származhatnak. Esetenként hierarchikus vagy beágyazott alstruktúrákat is tartalmaznak. A példák több címet is tartalmazhatnak egyetlen ügyfél számára, több színt és méretet egyetlen SKU számára, egyetlen könyv több szerzője és így tovább. A modellezési feltételekben ezeket a struktúrákat *összetett*, *összetett*, *összetett*vagy *aggregált* adattípusoknak is nevezzük. Az Azure Cognitive Search az ehhez a koncepcióhoz használt kifejezés **összetett típusú**. Az Azure Cognitive Search az összetett típusok modellezése **összetett mezők**használatával történik. A komplex mező olyan mező, amely bármilyen adattípusú gyermekeket (almezőket) tartalmaz, beleértve a más összetett típusokat is. Ez hasonló módon működik, mint a strukturált adattípusok programozási nyelven.
 
-Az összetett mezők a dokumentumban szereplő egyetlen objektumot vagy objektumok tömbjét jelölik, az adattípustól függően. A Type típusú `Edm.ComplexType` mezők egyetlen objektumot jelölnek, míg a `Collection(Edm.ComplexType)` típusú mezők objektumok tömbjét jelölik.
+Az összetett mezők a dokumentumban szereplő egyetlen objektumot vagy objektumok tömbjét jelölik, az adattípustól függően. A Type típusú mezők `Edm.ComplexType` egyetlen objektumot jelölnek, míg a típusú mezők `Collection(Edm.ComplexType)` objektumok tömbjét jelölik.
 
 Az Azure Cognitive Search natív módon támogatja az összetett típusokat és gyűjteményeket. Ezek a típusok lehetővé teszik szinte bármilyen JSON-struktúra modellezését egy Azure Cognitive Search indexben. Az Azure Cognitive Search API-k előző verzióiban csak a lapos sorok importálhatók. A legújabb verzióban az index mostantól alaposabban megközelítheti a forrásadatokat. Más szóval, ha a forrásadatok összetett típusokkal rendelkeznek, az indexnek lehetnek összetett típusai is.
 
 Első lépésként javasoljuk a [Hotel adatkészletét](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/README.md), amelyet betölthet a Azure Portal **adatimportálás** varázslójával. A varázsló összetett típusokat észlel a forrásban, és az észlelt struktúrák alapján javasol egy index sémát.
 
 > [!Note]
-> Az összetett típusok támogatása általánosan elérhető a alkalmazásban `api-version=2019-05-06`. 
+> Az összetett típusok támogatása általánosan elérhetővé vált a-től kezdődően `api-version=2019-05-06` . 
 >
 > Ha a keresési megoldás az összevont adatkészletek korábbi megkerülő megoldásaira épül egy gyűjteményben, módosítsa az indexet úgy, hogy az a legújabb API-verzióban támogatott összetett típusokat tartalmazzon. Az API-verziók frissítésével kapcsolatos további információkért lásd: [frissítés a legújabb REST API verzióra](search-api-migration.md) , vagy [frissítsen a legújabb .net SDK-verzióra](search-dotnet-sdk-migration-version-9.md).
 
 ## <a name="example-of-a-complex-structure"></a>Példa összetett szerkezetre
 
-A következő JSON-dokumentum egyszerű mezőkből és összetett mezőkből áll. Az összetett mezők, például `Address` a `Rooms`és a, rendelkeznek almezővel. `Address`az adott almezőhöz tartozó értékek egyetlen halmaza, mivel ez a dokumentum egyetlen objektuma. Ezzel szemben az `Rooms` almezőinek több halmaza van, egyet a gyűjtemény minden objektumához.
+A következő JSON-dokumentum egyszerű mezőkből és összetett mezőkből áll. Az összetett mezők, például a `Address` és a `Rooms` , rendelkeznek almezővel. `Address`az adott almezőhöz tartozó értékek egyetlen halmaza, mivel ez a dokumentum egyetlen objektuma. Ezzel szemben `Rooms` az almezőinek több halmaza van, egyet a gyűjtemény minden objektumához.
 
 ```json
 {
@@ -97,13 +97,13 @@ Az általános mezőkre vonatkozó összes [újraindexelő szabály](search-howt
 
 ### <a name="structural-updates-to-the-definition"></a>A definíció szerkezeti frissítései
 
-Új almezőket bármikor hozzáadhat egy összetett mezőhöz anélkül, hogy szükség lenne az index újraépítésére. Például, ha a "Irányítószám" `Address` vagy "kényelmi" értékre való felvétel engedélyezve `Rooms` van, ugyanúgy, mint a felső szintű mező hozzáadása egy indexhez. A meglévő dokumentumok NULL értékkel rendelkeznek az új mezőkhöz, amíg az adatok frissítésével explicit módon fel nem tölti ezeket a mezőket.
+Új almezőket bármikor hozzáadhat egy összetett mezőhöz anélkül, hogy szükség lenne az index újraépítésére. Például, ha a "Irányítószám" vagy "kényelmi" értékre való felvétel `Address` `Rooms` engedélyezve van, ugyanúgy, mint a felső szintű mező hozzáadása egy indexhez. A meglévő dokumentumok NULL értékkel rendelkeznek az új mezőkhöz, amíg az adatok frissítésével explicit módon fel nem tölti ezeket a mezőket.
 
 Figyelje meg, hogy egy összetett típuson belül minden almező rendelkezik egy típussal, és rendelkezhet attribútumokkal, mint a legfelső szintű mezők
 
 ### <a name="data-updates"></a>Adatfrissítések
 
-Az indexben lévő meglévő dokumentumok frissítése a `upload` művelettel ugyanúgy működik, mint az összetett és az egyszerű mezők esetében – az összes mezőt lecseréli a rendszer. Azonban ( `merge` vagy `mergeOrUpload` egy meglévő dokumentumra alkalmazva) nem ugyanaz, mint az összes mezőnél. A `merge` nem támogatja a gyűjteményben lévő elemek egyesítését. Ez a korlátozás egyszerű típusok és összetett gyűjtemények gyűjteményei esetében létezik. Egy gyűjtemény frissítéséhez le kell kérnie a teljes gyűjtemény értékét, végre kell hajtania a módosításokat, majd tartalmaznia kell az új gyűjteményt az index API-kérelemben.
+Az indexben lévő meglévő dokumentumok frissítése a `upload` művelettel ugyanúgy működik, mint az összetett és az egyszerű mezők esetében – az összes mezőt lecseréli a rendszer. Azonban `merge` (vagy `mergeOrUpload` egy meglévő dokumentumra alkalmazva) nem ugyanaz, mint az összes mezőnél. `merge`A nem támogatja a gyűjteményben lévő elemek egyesítését. Ez a korlátozás egyszerű típusok és összetett gyűjtemények gyűjteményei esetében létezik. Egy gyűjtemény frissítéséhez le kell kérnie a teljes gyűjtemény értékét, végre kell hajtania a módosításokat, majd tartalmaznia kell az új gyűjteményt az index API-kérelemben.
 
 ## <a name="searching-complex-fields"></a>Összetett mezők keresése
 
@@ -117,11 +117,11 @@ Az ehhez hasonló lekérdezések nem *korrelálnak* a teljes szöveges keresésh
 
 ## <a name="selecting-complex-fields"></a>Összetett mezők kijelölése
 
-A `$select` paraméter használatával kiválaszthatja, hogy mely mezőket adja vissza a rendszer a keresési eredmények között. Ha ezt a paramétert szeretné használni egy összetett mező adott almezőinek kiválasztásához, akkor a szülő mezőt és az almezőt perjel`/`() karakterrel elválasztva adja meg.
+A `$select` paraméter használatával kiválaszthatja, hogy mely mezőket adja vissza a rendszer a keresési eredmények között. Ha ezt a paramétert szeretné használni egy összetett mező adott almezőinek kiválasztásához, akkor a szülő mezőt és az almezőt perjel () karakterrel elválasztva adja meg `/` .
 
     $select=HotelName, Address/City, Rooms/BaseRate
 
-Ha a keresési eredmények között szeretné, a mezőket beolvasható értékként kell megjelölni az indexben. Egy `$select` utasításban csak a beolvasható megjelölt mezők használhatók.
+Ha a keresési eredmények között szeretné, a mezőket beolvasható értékként kell megjelölni az indexben. Egy utasításban csak a beolvasható megjelölt mezők használhatók `$select` .
 
 ## <a name="filter-facet-and-sort-complex-fields"></a>Összetett mezők szűrése, aspektusa és rendezése
 
@@ -129,9 +129,9 @@ A szűréshez és a mezőkben végzett keresésekhez használt [OData-elérési�
 
 ### <a name="faceting-sub-fields"></a>Metszeti almezők
 
-Bármely almező kijelölhető, ha nem vagy `Edm.GeographyPoint` `Collection(Edm.GeographyPoint)`típusú.
+Bármely almező kijelölhető, ha nem `Edm.GeographyPoint` vagy típusú `Collection(Edm.GeographyPoint)` .
 
-A dimenzió eredményeiben visszaadott dokumentumok számát a rendszer kiszámítja a szülő dokumentum (a szálloda) számára, nem pedig az aldokumentumok egy összetett gyűjteményben (szobákban). Tegyük fel például, hogy egy szálloda 20 "Suite" típusú szobát tartalmaz. Mivel ez a dimenziós paraméter `facet=Rooms/Type`, a dimenziók száma egy a szálloda számára, nem 20 a helyiségek számára.
+A dimenzió eredményeiben visszaadott dokumentumok számát a rendszer kiszámítja a szülő dokumentum (a szálloda) számára, nem pedig az aldokumentumok egy összetett gyűjteményben (szobákban). Tegyük fel például, hogy egy szálloda 20 "Suite" típusú szobát tartalmaz. Mivel ez a dimenziós paraméter `facet=Rooms/Type` , a dimenziók száma egy a szálloda számára, nem 20 a helyiségek számára.
 
 ### <a name="sorting-complex-fields"></a>Összetett mezők rendezése
 
@@ -145,11 +145,11 @@ A szűrő kifejezésben a komplex mezők almezőire is hivatkozhat. Egyszerűen 
 
     $filter=Address/Country eq 'Canada'
 
-Egy összetett gyűjtemény mező szűréséhez használhat **lambda kifejezést** a [ `any` `all` és a operátorral](search-query-odata-collection-operators.md). Ebben az esetben a lambda kifejezés **tartomány változója** egy olyan objektum, amely almezőket tartalmaz. Ezeket az alárendelt mezőket a standard OData Path szintaxissal tekintheti meg. A következő szűrő például az összes olyan szállodát visszaküldi, amely legalább egy deluxe szobával és az összes nem dohányzó szobával rendelkezik:
+Egy összetett gyűjtemény mező szűréséhez használhat **lambda kifejezést** a [ `any` és a `all` operátorral](search-query-odata-collection-operators.md). Ebben az esetben a lambda kifejezés **tartomány változója** egy olyan objektum, amely almezőket tartalmaz. Ezeket az alárendelt mezőket a standard OData Path szintaxissal tekintheti meg. A következő szűrő például az összes olyan szállodát visszaküldi, amely legalább egy deluxe szobával és az összes nem dohányzó szobával rendelkezik:
 
     $filter=Rooms/any(room: room/Type eq 'Deluxe Room') and Rooms/all(room: not room/SmokingAllowed)
 
-A legfelső szintű egyszerű mezőkhöz hasonlóan a komplex mezők egyszerű almezői csak akkor szerepelhetnek a szűrőkben, ha az **filterable** index definíciójában a szűrhető `true` attribútum van beállítva. További információ: [create index API Reference](/rest/api/searchservice/create-index).
+A legfelső szintű egyszerű mezőkhöz hasonlóan a komplex mezők egyszerű almezői csak akkor szerepelhetnek a szűrőkben, ha az index definíciójában a **szűrhető** attribútum van beállítva `true` . További információ: [create index API Reference](/rest/api/searchservice/create-index).
 
 ## <a name="next-steps"></a>További lépések
 

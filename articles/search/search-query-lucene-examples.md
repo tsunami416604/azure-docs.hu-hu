@@ -9,12 +9,12 @@ tags: Lucene query analyzer syntax
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: bc691299f38d562aee5c08a89e10372331663f8e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c344d7bd7007dfbea366ea597ec622e35bf1e2eb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81262808"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85561769"
 ---
 # <a name="use-the-full-lucene-search-syntax-advanced-queries-in-azure-cognitive-search"></a>A "teljes" Lucene keresési szintaxis használata (speciális lekérdezések az Azure Cognitive Searchban)
 
@@ -34,9 +34,9 @@ A GET-ben a HTTP-kérelem kiadásához szükséges Poster vagy azzal egyenérté
 
 ### <a name="set-the-request-header"></a>A kérelem fejlécének beállítása
 
-1. A kérelem fejlécében állítsa be a **Content-Type értéket a következőre** : `application/json`.
+1. A kérelem fejlécében állítsa be a **Content-Type értéket a következőre** : `application/json` .
 
-2. Adjon hozzá egy **API-kulcsot**, és állítsa be a következő sztringre: `252044BE3886FE4A8E3BAA4F595114BB`. Ez egy lekérdezési kulcs a NYC-feladatok indexét futtató sandbox Search szolgáltatáshoz.
+2. Adjon hozzá egy **API-kulcsot**, és állítsa be a következő sztringre: `252044BE3886FE4A8E3BAA4F595114BB` . Ez egy lekérdezési kulcs a NYC-feladatok indexét futtató sandbox Search szolgáltatáshoz.
 
 A kérelem fejlécének megadását követően újra felhasználhatja azt a jelen cikk összes lekérdezéséhez, csak a **Search =** sztringet felcserélve. 
 
@@ -53,7 +53,7 @@ Az URL-összeállítás a következő elemekből áll:
 + **`https://azs-playground.search.windows.net/`** Az Azure Cognitive Search fejlesztői csapata által karbantartott sandbox keresési szolgáltatás. 
 + **`indexes/nycjobs/`** a New York Jobs index a szolgáltatás indexek gyűjteményében. A kéréshez a szolgáltatás nevét és indexét is meg kell adni.
 + **`docs`** az összes kereshető tartalmat tartalmazó dokumentumok gyűjteménye. A kérelem fejlécében megadott lekérdezési API-kulcs csak olyan olvasási műveleteken működik, amelyek a dokumentumok gyűjteményét célozzák meg.
-+ **`api-version=2019-05-06`** Beállítja az API-verziót, amely minden kérelem esetében kötelező paraméter.
++ **`api-version=2020-06-30`** Beállítja az API-verziót, amely minden kérelem esetében kötelező paraméter.
 + **`search=*`** a lekérdezési karakterlánc, amely a kezdeti lekérdezésben null értékű, és az első 50 eredményt adja vissza (alapértelmezés szerint).
 
 ## <a name="send-your-first-query"></a>Az első lekérdezés elküldése
@@ -63,10 +63,10 @@ Ellenőrzési lépésként illessze be a következő kérelmet a GET mezőbe, é
 Illessze be ezt az URL-címet egy REST-ügyfélbe érvényesítési lépésként, és tekintse meg a dokumentum szerkezetét.
 
   ```http
-  https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=*
+  https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&search=*
   ```
 
-A lekérdezési karakterlánc **`search=*`**() nem meghatározott keresés, amely egyenértékű null vagy üres kereséssel. Ez a legegyszerűbb keresési lehetőség.
+A lekérdezési karakterlánc ( **`search=*`** ) nem meghatározott keresés, amely egyenértékű null vagy üres kereséssel. Ez a legegyszerűbb keresési lehetőség.
 
 Opcionálisan hozzáadhatja **`$count=true`** az URL-címet a keresési feltételeknek megfelelő dokumentumok számának visszaadásához. Üres keresési sztring esetén ez az indexben található összes dokumentum (körülbelül 2800 a NYC-feladatok esetében).
 
@@ -75,7 +75,7 @@ Opcionálisan hozzáadhatja **`$count=true`** az URL-címet a keresési feltéte
 Adja hozzá a **queryType = Full** parancsot a teljes lekérdezési szintaxis meghívásához, felülbírálva az alapértelmezett egyszerű lekérdezési szintaxist. 
 
 ```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&search=*
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&search=*
 ```
 
 A cikkben szereplő összes példa megadja a **queryType = teljes** keresési paramétert, amely azt jelzi, hogy a teljes szintaxist a Lucene lekérdezés-elemzője kezeli. 
@@ -101,12 +101,12 @@ search=*&searchFields=business_title, posting_type&$select=business_title, posti
 A vesszők utáni szóközök nem kötelezőek.
 
 > [!Tip]
-> Ha az alkalmazás kódjából REST API használ, ne felejtsen el URL-kódolású paramétereket `$select` ( `searchFields`például és).
+> Ha az alkalmazás kódjából REST API használ, ne felejtsen el URL-kódolású paramétereket (például `$select` és `searchFields` ).
 
 ### <a name="full-url"></a>Teljes URL-cím
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&search=*&searchFields=business_title&$select=business_title
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&search=*&searchFields=business_title&$select=business_title
 ```
 
 A lekérdezésre adott válasznak az alábbi képernyőképhez hasonlóan kell kinéznie.
@@ -134,7 +134,7 @@ $select=business_title, posting_type&search=business_title:(senior NOT junior) A
 ### <a name="full-url"></a>Teljes URL-cím
 
 ```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&$select=business_title&search=business_title:(senior NOT junior)
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&$select=business_title&search=business_title:(senior NOT junior)
 ```
 
   ![Poster-minta válasz](media/search-query-lucene-examples/intrafieldfilter.png)
@@ -145,16 +145,16 @@ A **mezőnév: searchExpression** szintaxissal megadhat egy mezőhöz tartozó k
 - `state:("New York" OR "New Jersey")`
 - `business_title:(senior NOT junior) AND posting_type:external`
 
-Ügyeljen arra, hogy az idézőjelek között több karakterláncot is helyezzen el, ha azt szeretné, hogy mindkét sztring egyetlen entitásként legyen kiértékelve, mivel ebben az esetben `state` két különböző helyet keres a mezőben. Győződjön meg arról is, hogy az operátor olyan tőkésített, ahogyan a nem és a és a is látható.
+Ügyeljen arra, hogy az idézőjelek között több karakterláncot is helyezzen el, ha azt szeretné, hogy mindkét sztring egyetlen entitásként legyen kiértékelve, mivel ebben az esetben két különböző helyet keres a `state` mezőben. Győződjön meg arról is, hogy az operátor olyan tőkésített, ahogyan a nem és a és a is látható.
 
 A **mezőnév: searchExpression** mezőben megadott mezőnek kereshető mezőnek kell lennie. További részletekért lásd: [create index (Azure Cognitive Search REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index) .
 
 > [!NOTE]
-> A fenti példában nem volt szükség a `searchFields` paraméter használatára, mert a lekérdezés egyes részeihez explicit módon meg van adva a mező neve. Azonban továbbra is használhatja a `searchFields` paramétert, ha olyan lekérdezést szeretne futtatni, amelyben bizonyos részek hatóköre egy adott mezőre vonatkozik, a REST pedig több mezőre is vonatkozhat. `search=business_title:(senior NOT junior) AND external&searchFields=posting_type` Például a lekérdezés csak `senior NOT junior` a `business_title` mezőhöz igazodik, míg a "külső" értékkel egyezik a `posting_type` mezővel. A Mezőnév mezőben megadott mezőnév **: a searchExpression** mindig elsőbbséget élvez a `searchFields` paraméterrel szemben, ezért ebben a példában nem kell belefoglalni `business_title` a `searchFields` paraméterbe.
+> A fenti példában nem volt szükség a paraméter használatára, `searchFields` mert a lekérdezés egyes részeihez explicit módon meg van adva a mező neve. Azonban továbbra is használhatja a `searchFields` paramétert, ha olyan lekérdezést szeretne futtatni, amelyben bizonyos részek hatóköre egy adott mezőre vonatkozik, a REST pedig több mezőre is vonatkozhat. Például a lekérdezés `search=business_title:(senior NOT junior) AND external&searchFields=posting_type` `senior NOT junior` csak a `business_title` mezőhöz igazodik, míg a "külső" értékkel egyezik a `posting_type` mezővel. A Mezőnév mezőben megadott mezőnév **: a searchExpression** mindig elsőbbséget élvez a `searchFields` paraméterrel szemben, ezért ebben a példában nem kell belefoglalni `business_title` a `searchFields` paraméterbe.
 
 ## <a name="example-3-fuzzy-search"></a>3. példa: fuzzy keresés
 
-A teljes Lucene szintaxisa támogatja a zavaros keresést, és a hasonló szerkezettel rendelkező feltételek egyeztetését is. A zavaros kereséshez fűzze hozzá a tilde `~` szimbólumot egyetlen szó végén egy opcionális paraméterrel, egy 0 és 2 közötti értéket, amely megadja a szerkesztési távolságot. Például `blue~` a kék, `blue~1` a blues és a ragasztó is visszatérhet.
+A teljes Lucene szintaxisa támogatja a zavaros keresést, és a hasonló szerkezettel rendelkező feltételek egyeztetését is. A zavaros kereséshez fűzze hozzá a tilde `~` szimbólumot egyetlen szó végén egy opcionális paraméterrel, egy 0 és 2 közötti értéket, amely megadja a szerkesztési távolságot. Például a `blue~` `blue~1` kék, a blues és a ragasztó is visszatérhet.
 
 ### <a name="search-expression"></a>Kifejezés keresése
 
@@ -174,7 +174,7 @@ searchFields=business_title&$select=business_title&search=business_title:asosiat
 Ez a lekérdezés a "hozzárendelés" kifejezéssel rendelkező feladatokat keresi meg (szándékosan hibásan írt):
 
 ```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:asosiate~
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:asosiate~
 ```
   ![Fuzzy keresési válasz](media/search-query-lucene-examples/fuzzysearch.png)
 
@@ -197,14 +197,14 @@ searchFields=business_title&$select=business_title&search=business_title:%22seni
 Ebben a lekérdezésben a "vezető elemző" kifejezéssel rendelkező feladatok esetében, ha az elválasztó karakter nem több, mint egy szó:
 
 ```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:%22senior%20analyst%22~1
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:%22senior%20analyst%22~1
 ```
   ![Közelségi lekérdezés](media/search-query-lucene-examples/proximity-before.png)
 
 Próbálkozzon újra a "vezető elemző" kifejezés közötti szavak eltávolításával. Figyelje meg, hogy a lekérdezés 8 dokumentumot ad vissza, az előző lekérdezés esetében pedig 10.
 
 ```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:%22senior%20analyst%22~0
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:%22senior%20analyst%22~0
 ```
 
 ## <a name="example-5-term-boosting"></a>5. példa: a kifejezés fokozása
@@ -215,16 +215,16 @@ A kifejezés növelése arra utal, hogy a dokumentum rangsorolása magasabb, ha 
 Ebben az "előtt" lekérdezésben keressen feladatokat a *számítógép-elemző* kifejezéssel, és figyelje meg, hogy a *számítógépek és az* *elemzők*között nincs találat, de a *számítógép* -feladatok még a találatok elején vannak.
 
 ```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:computer%20analyst
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:computer%20analyst
 ```
   ![Kiemelési idő](media/search-query-lucene-examples/termboostingbefore.png)
 
 Az "After" lekérdezésben ismételje meg a keresést, ez az idő fokozza az eredményeket az *elemző* kifejezéssel a *számítógép* kifejezése alatt, ha a két szó nem létezik. 
 
 ```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:computer%20analyst%5e2
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:computer%20analyst%5e2
 ```
-A fenti lekérdezés egy olvasható verziója `search=business_title:computer analyst^2`. Egy működőképes lekérdezés esetén a `^2` kódolása a következőként történik: `%5E2`, ami nehezebben látható.
+A fenti lekérdezés egy olvasható verziója `search=business_title:computer analyst^2` . Egy működőképes lekérdezés esetén a `^2` kódolása a következőként történik `%5E2` :, ami nehezebben látható.
 
   ![Kiemelési időszak](media/search-query-lucene-examples/termboostingafter.png)
 
@@ -247,10 +247,10 @@ searchFields=business_title&$select=business_title&search=business_title:/(Sen|J
 
 ### <a name="full-url"></a>Teljes URL-cím
 
-Ebben a lekérdezésben keressen olyan feladatokat, amelyek a Senior vagy a Junior kifejezéssel rendelkeznek: `search=business_title:/(Sen|Jun)ior/`.
+Ebben a lekérdezésben keressen olyan feladatokat, amelyek a Senior vagy a Junior kifejezéssel rendelkeznek: `search=business_title:/(Sen|Jun)ior/` .
 
 ```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:/(Sen|Jun)ior/
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:/(Sen|Jun)ior/
 ```
 
   ![Regex-lekérdezés](media/search-query-lucene-examples/regex.png)
@@ -260,7 +260,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 >
 
 ## <a name="example-7-wildcard-search"></a>7. példa: helyettesítő karakteres keresés
-Az általánosan felismerhető szintaxist használhatja több (\*) vagy szimpla (?) karakteres helyettesítő karakteres kereséshez. Vegye figyelembe, hogy a Lucene-lekérdezés elemzője egyetlen kifejezéssel támogatja a szimbólumok használatát, nem pedig egy kifejezést.
+Az általánosan felismerhető szintaxist használhatja több ( \* ) vagy szimpla (?) karakteres helyettesítő karakteres kereséshez. Vegye figyelembe, hogy a Lucene-lekérdezés elemzője egyetlen kifejezéssel támogatja a szimbólumok használatát, nem pedig egy kifejezést.
 
 ### <a name="search-expression"></a>Kifejezés keresése
 
@@ -273,7 +273,7 @@ searchFields=business_title&$select=business_title&search=business_title:prog*
 Ebben a lekérdezésben keressen olyan feladatokat, amelyek tartalmazzák a "PROG" előtagot, amely magában foglalja az üzleti címeket a programozási és programozói feltételekkel. Nem használhat * vagy? a szimbólum a keresés első karaktere.
 
 ```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:prog*
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:prog*
 ```
   ![Helyettesítő karakteres lekérdezés](media/search-query-lucene-examples/wildcard.png)
 

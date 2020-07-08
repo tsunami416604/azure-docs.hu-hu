@@ -1,6 +1,6 @@
 ---
 title: Az Office 365-naplók összekapcsolhatók az Azure Sentinel szolgáltatással | Microsoft Docs
-description: Ismerje meg, hogyan csatlakoztathatók az Office 365-es adatszolgáltatások az Azure Sentinelhez.
+description: Ismerje meg, hogyan használhatja az Office 365 log Connectort az Exchange-és SharePoint-alapú folyamatos felhasználói és rendszergazdai tevékenységekkel kapcsolatos információkra, beleértve a OneDrive is.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2020
 ms.author: yelevin
-ms.openlocfilehash: bcd00247486faeea47ef4a4a43fa1df5420321e6
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 180b25f80bd27caea20b1c17cd84fda38c172e0f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248940"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559348"
 ---
 # <a name="connect-office-365-logs-to-azure-sentinel"></a>Az Office 365-naplók összekapcsolhatók az Azure Sentinel-vel
 

@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
-ms.topic: how-to
+ms.topic: troubleshooting
 ms.date: 06/14/2019
 ms.author: alkohli
-ms.openlocfilehash: e06cf07809d3eca208fc18f4ee6022538400d315
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 7b49752eeca6a3600830d71a029b6d93c9390b13
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84610593"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85560057"
 ---
 # <a name="troubleshoot-disk-unlocking-issues-in-azure-data-box-disk"></a>Hibák elhárítása a lemezek Azure Data Box Diskban való feloldásával kapcsolatban
 
@@ -51,7 +51,7 @@ Ez a szakasz részletesen ismerteti a Data Box Disk üzembe helyezése során fe
 
 A BitLocker párbeszédablakban használta a jelszót, és a BitLocker zárolásának feloldása párbeszédpanelen megpróbálta feloldani a lemez zárolását. Ez nem fog működni.
 
-**Felbontás**
+**Resolution** (Osztás)
 
 A Data Box lemezek zárolásának feloldásához a Data Box Disk-feloldási eszközt kell használnia, és meg kell adnia a jelszót a Azure Portal. További információt a következő [oktatóanyagban olvashat: kicsomagolás, kapcsolódás és zárolás feloldása Azure Data Box Disk](data-box-disk-deploy-set-up.md#connect-to-disks-and-get-the-passkey).
  
@@ -65,12 +65,12 @@ A következő hibaüzenet jelenhet meg a naplófájlban, és nem oldható fel va
  
 Ez azt jelzi, hogy a Windows PowerShell megfelelő verziója valószínűleg hiányzik a Windows-ügyfélen.
 
-**Felbontás**
+**Resolution** (Osztás)
 
 Telepítheti a [Windows PowerShell v 5,0](https://www.microsoft.com/download/details.aspx?id=54616) -et, és újrapróbálkozhat a művelettel.
  
 Ha továbbra sem tudja feloldani a kötetek zárolását, másolja a naplófájlokat a Data Box Disk-feloldási eszközt tartalmazó mappából, és [vegye fel a kapcsolatot Microsoft ügyfélszolgálata](data-box-disk-contact-microsoft-support.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Útmutató az [érvényesítési problémák elhárításához](data-box-disk-troubleshoot.md).

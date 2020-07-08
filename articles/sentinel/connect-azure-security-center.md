@@ -1,6 +1,6 @@
 ---
 title: Azure Security Center-adatkapcsolatok összekötése az Azure Sentinel szolgáltatással
-description: Megtudhatja, hogyan csatlakoztatható Azure Security Center-adatkapcsolat az Azure Sentinelhez.
+description: Ismerje meg, hogyan csatlakoztathatók a riasztások a Azure Security Center (ASC) standard csomagból, és hogyan továbbíthatók az Azure Sentinelbe.
 author: yelevin
 manager: rkarlin
 ms.assetid: d28c2264-2dce-42e1-b096-b5a234ff858a
@@ -9,12 +9,12 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 3d4b22196598d971c49f0364038b74ba81c73805
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.openlocfilehash: 2fc7744600a9652ad43fd0aae8d886dc94acd58f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85374797"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559159"
 ---
 # <a name="connect-data-from-azure-security-center-asc"></a>Adatok összekötése Azure Security Centerról (ASC)
 
@@ -38,7 +38,7 @@ Az Azure Sentinel lehetővé teszi a riasztások összekapcsolását [Azure Secu
 
 1. Ha a Log Analytics vonatkozó sémát szeretné használni a Azure Security Center riasztásokhoz, keresse meg a **SecurityAlert**.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebből a dokumentumból megtanulta, hogyan csatlakozhat Azure Security Center az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
 - Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).

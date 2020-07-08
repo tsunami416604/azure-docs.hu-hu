@@ -1,6 +1,6 @@
 ---
 title: A Barracuda-adatkapcsolatok és az Azure Sentinel összekötése Microsoft Docs
-description: Megtudhatja, hogyan csatlakoztathatók a Barracuda-adatszolgáltatások az Azure Sentinelhez.
+description: Ismerje meg, hogy a Barracuda Web Application Firewall (WAF) összekötővel hogyan csatlakoztathatók a Barracuda-naplók az Azure Sentinel használatával.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 4e87bb57e6bdfea6307a166383da9dea187eea4f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f28243be6b4f998e8bdea0ce02da3ceedde23e02
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77588484"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559116"
 ---
 # <a name="connect-your-barracuda-appliance"></a>A Barracuda-berendezés összekötése 
 

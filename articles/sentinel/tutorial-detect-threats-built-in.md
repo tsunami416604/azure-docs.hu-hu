@@ -1,6 +1,6 @@
 ---
 title: Riasztások vizsgálata az Azure Sentinel szolgáltatással | Microsoft Docs
-description: Ebből az oktatóanyagból megtudhatja, hogyan vizsgálja ki a riasztásokat az Azure Sentinel használatával.
+description: Megtudhatja, hogyan használhatja a beépített Azure Threat Detection-sablonokat, amelyek értesítik, ha valamilyen gyanús esemény történik.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: df855aa768fdeb279482b8407259be1a644322d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2d1ef885ea36e2eee7fd30268fd7b1f4609a70bc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77585203"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85560039"
 ---
 # <a name="tutorial-detect-threats-out-of-the-box"></a>Oktatóanyag: fenyegetések észlelése – beépített
 
@@ -29,7 +29,7 @@ ms.locfileid: "77585203"
 > Ez a szolgáltatás szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott.
 > További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Miután [csatlakoztatta az adatforrásokat](quickstart-onboard.md) az Azure Sentinel szolgáltatáshoz, értesítést szeretne kapni, ha valamilyen gyanús esemény történik. Ennek lehetővé tételéhez az Azure Sentinel beépített sablonokat is biztosít Önnek a rendelkezésére. Ezeket a sablonokat az ismert fenyegetések, a gyakori támadási vektorok és a gyanús tevékenység-eszkalációs láncok alapján a Microsoft biztonsági szakértői és elemzői alkották. A sablonok engedélyezése után a rendszer automatikusan megkeresi azokat a tevékenységeket, amelyek gyanúsak a környezetében. Számos sablon testreszabható a tevékenységek kereséséhez, illetve kiszűréséhez az igényeinek megfelelően. A sablonok által generált riasztások olyan incidenseket hoznak létre, amelyeket a környezetben rendelhet hozzá és vizsgálhat meg.
+Miután [csatlakoztatta az adatforrásokat](quickstart-onboard.md)   Az Azure Sentinel szolgáltatáshoz, értesítést szeretne kapni, ha valamilyen gyanús esemény történik. Ennek lehetővé tételéhez az Azure Sentinel beépített sablonokat is biztosít Önnek a rendelkezésére. Ezeket a sablonokat az ismert fenyegetések, a gyakori támadási vektorok és a gyanús tevékenység-eszkalációs láncok alapján a Microsoft biztonsági szakértői és elemzői alkották. A sablonok engedélyezése után a rendszer automatikusan megkeresi azokat a tevékenységeket, amelyek gyanúsak a környezetében. Számos sablon testreszabható a tevékenységek kereséséhez, illetve kiszűréséhez az igényeinek megfelelően. A sablonok által generált riasztások olyan incidenseket hoznak létre, amelyeket a környezetben rendelhet hozzá és vizsgálhat meg.
 
 Ez az oktatóanyag segítséget nyújt a fenyegetések észleléséhez az Azure Sentinel használatával:
 

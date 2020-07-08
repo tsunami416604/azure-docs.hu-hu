@@ -4,15 +4,15 @@ description: Ismerje meg, hogyan hozhat létre és fogadhat ügyfeleinek vezető
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: article
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 6234719216c7ef40df99a26153d7677f7a747f55
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 89b73fd98ca773668d2eb53892d0c21397e9abf3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800934"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559585"
 ---
 # <a name="customer-leads-from-your-commercial-marketplace-offer"></a>A kereskedelmi piactér ajánlatának ügyfelei
 
@@ -87,10 +87,12 @@ Az ügyfél adatait több mezőn keresztül küldik el. Az alábbi példa egy é
 
 ## <a name="best-practices-for-lead-management"></a>Ajánlott eljárások az érdeklődők felügyeletéhez
 
+Íme néhány javaslat az értékesítési cikluson keresztüli vezetéshez:
+
 - **Folyamat**: adjon meg egy egyértelmű értékesítési folyamatot, a mérföldköveket, az elemzést és a csoport törlését.
 - **Minősítés**: az előfeltételek meghatározása, amely azt jelzi, hogy egy érdeklődő teljesen minősített-e. Győződjön meg arról, hogy az értékesítési vagy a marketing képviselői körültekintően vezetnek be, mielőtt a teljes értékesítési folyamaton átveszik őket.
-- **Követés**: ne felejtsen nyomon követni. A tipikus tranzakció várhatóan 5 – 12 követő hívást igényel.
-- **Ápolás**: táplálja az érdeklődőket, hogy minél magasabb haszonkulcsot kapjon.
+- **Utólagos követés**: ne feledkezzen meg 24 órán belül. Közvetlenül az ügyfél üzembe helyezése után azonnal elérhetővé válik a CRM-ben. e-mailben elküldheti őket, miközben még mindig melegek. Kérje a telefonhívás ütemezését, hogy jobban megértse, ha a termék jó megoldás a problémára. A tipikus tranzakció várhatóan számos követő hívást igényel.
+- **Ápolás**: táplálja az érdeklődőket, hogy minél magasabb haszonkulcsot kapjon. Jelentkezzen be, de ne bombázza őket. Javasoljuk, hogy legalább néhány alkalommal küldje el az e-maileket, mielőtt bezárná őket; Ne adja meg az első kísérlet után. Ne feledje, hogy ezek az ügyfelek közvetlenül a termékkel foglalkoznak, és időt vesznek igénybe az ingyenes próbaverzióban; nagyszerű kilátások.
 
 ## <a name="common-questions-about-lead-management"></a>Az érdeklődők felügyeletével kapcsolatos gyakori kérdések
 
@@ -161,6 +163,6 @@ Ha a kérdés nem válaszol, lépjen kapcsolatba Microsoft ügyfélszolgálata a
 
 Nyissa meg az ajánlatát a partner Centerben, és nyissa meg az **ajánlat beállítása** lapot > az **érdeklődői felügyelet**  >  **szerkesztése**lehetőséget. Frissítse a **kapcsolattartási e-mail** mezőben szereplő e-mail-címeket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A technikai beállítás bevezetését követően az aktuális értékesítési és marketing stratégia és működési folyamatok részeként építse be ezeket az érdeklődőket. Fontos, hogy jobban megértse a teljes értékesítési folyamatot, és szeretne szorosan együttműködni Önnel, hogy kiváló minőségű érdeklődőket és elegendő adatmennyiséget biztosítson a siker érdekében. Örömmel vesszük visszajelzését arról, hogy miként optimalizálható és növelhető az érdeklődők számára elérhető további információk, amelyek segítenek az ügyfelek sikerességében. Tudassa velünk, ha szeretne [visszajelzést](mailto:AzureMarketOnboard@microsoft.com) küldeni, és javaslatokat tesz arra, hogy az értékesítési csapat sikeresebb legyen a kereskedelmi piactéren.

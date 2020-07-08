@@ -7,12 +7,12 @@ ms.service: azure-cdn
 ms.topic: article
 ms.date: 06/22/2020
 ms.author: allensu
-ms.openlocfilehash: 5cb053a87293a4309a393bd9e0e76bf0d881dd71
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 6260a4b78197329e020bebaa3bc08db5ad792086
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85322176"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559313"
 ---
 # <a name="standard-rules-engine-reference-for-azure-cdn"></a>A Standard szabálymotor referenciája az Azure CDN-hez
 
@@ -36,6 +36,13 @@ Mindegyik szabály legfeljebb tíz egyeztetési feltételt és öt műveletet ta
 
 Ebben a korlátban egy alapértelmezett *globális szabály*szerepel. A globális szabály nem rendelkezik egyező feltételekkel; a globális szabályokban definiált műveletek mindig aktiválva lesznek.
 
+## <a name="limits-and-pricing"></a>Korlátozások és díjszabás 
+
+Minden Azure CDN végpont legfeljebb 25 szabályt tartalmazhat. Mindegyik szabály legfeljebb tíz egyeztetési feltételt és öt műveletet tartalmazhat. A Rules Engine díjszabása az alábbi dimenziókat követi: 
+- Szabályok: $1/szabály/hó 
+- Feldolgozott kérelmek: $0,60/millió requets
+- Az első 5 szabály továbbra is ingyenes marad
+
 ## <a name="syntax"></a>Syntax
 
 A speciális karakterek kezelése egy szabályban attól függően változik, hogy a különböző feltételek és műveletek milyen módon kezelik a szöveges értékeket. Az egyeztetési feltételnek vagy műveletnek a következő módszerek egyikével lehet szöveget értelmezni:
@@ -54,7 +61,7 @@ A százalékos aláírás az URL-kódolás (például:) jelzésére szolgál `%2
 
 A helyettesítő karakterként értelmezett szöveg a speciális karakterek további jelentését rendeli hozzá. A következő táblázat ismerteti, hogyan történik a speciális karakterek értelmezése a szabványos szabályok motorban:
 
-Karakter | Leírás
+Karakter | Description
 ----------|------------
 \ | A program fordított perjelet használ a táblázatban megadott karakterek bármelyikének megmeneküléséhez. Meg kell adni egy fordított perjelet közvetlenül a kikerülő különleges karakter előtt. Az alábbi szintaxis például megmenekül egy csillaggal:`\*`
 % | A százalékos aláírás az URL-kódolás (például:) jelzésére szolgál `%20` .
