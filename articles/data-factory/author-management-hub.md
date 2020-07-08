@@ -10,10 +10,9 @@ ms.author: daperlov
 manager: anandsub
 ms.date: 06/02/2020
 ms.openlocfilehash: 308d19fde78edacebb168b8d4e459169338acc41
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84346044"
 ---
 # <a name="management-hub-in-azure-data-factory"></a>Felügyeleti központ Azure Data Factory
@@ -46,7 +45,7 @@ Megtekintheti és szerkesztheti a beállított git-tárház beállításait a fe
 
 ### <a name="parameterization-template"></a>Paraméterezés-sablon
 
-Ha szeretné felülbírálni a létrehozott Resource Manager-sablon paramétereit az együttműködési ág közzétételekor, létrehozhat vagy szerkeszthet egyéni paramétereket tartalmazó fájlt. További információért olvassa el [az egyéni paraméterek használata a Resource Manager-sablonban](continuous-integration-deployment.md#use-custom-parameters-with-the-resource-manager-template)című témakört. A paraméterezés-sablon csak git-tárházban végzett munka esetén érhető el. Ha a *ARM-template-Parameters-definition. JSON* fájl nem létezik a munkaterületen, akkor az alapértelmezett sablon szerkesztésével lesz létrehozva.
+Ha szeretné felülbírálni a létrehozott Resource Manager-sablon paramétereit az együttműködési ág közzétételekor, létrehozhat vagy szerkeszthet egyéni paramétereket tartalmazó fájlt. További információért olvassa el [az egyéni paraméterek használata a Resource Manager-sablonban](continuous-integration-deployment.md#use-custom-parameters-with-the-resource-manager-template)című témakört. A paraméterezés-sablon csak git-tárházban végzett munka esetén érhető el. Ha a *arm-template-parameters-definition.js* fájl nem létezik a munkaterületen, az alapértelmezett sablon szerkesztésével létrejön.
 
 ![Egyéni paraméterek kezelése](media/author-management-hub/management-hub-custom-parameters.png)
 
@@ -58,7 +57,7 @@ Az eseményindítók határozzák meg, hogy a folyamat mikor fusson. Az esemény
 
 ![Egyéni paraméterek kezelése](media/author-management-hub/management-hub-triggers.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtudhatja, hogyan [konfigurálhat git-tárházat](source-control.md) az ADF-hez
 

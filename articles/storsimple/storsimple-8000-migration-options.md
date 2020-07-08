@@ -14,10 +14,9 @@ ms.workload: NA
 ms.date: 04/15/2019
 ms.author: alkohli
 ms.openlocfilehash: 181f5433de6653c8b6a2cda085f04e21c64082b9
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85514650"
 ---
 # <a name="options-to-migrate-data-from-storsimple-5000-7000-series"></a>Adatmigrálási lehetőségek a StorSimple 5000-7000-es sorozatból 
@@ -125,6 +124,6 @@ A. Az adatok áttelepítésének ideje az adatok mennyiségétől és a kiválas
 A. A StorSimple 8000 sorozat támogatási dátumának vége [itt](https://support.microsoft.com/lifecycle/search?alpha=Azure%20StorSimple%208000%20Series)jelenik meg.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
  - [Adatok migrálása StorSimple 5000-7000-sorozatból egy 8000 sorozatú eszközre](storsimple-8000-migrate-from-5000-7000.md).
  - [Adatok migrálása StorSimple 5000-7000-sorozatból Azure File Sync](storsimple-5000-7000-afs-migration.md)

@@ -8,12 +8,11 @@ ms.author: anfeldma
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: b24c0b045bc7d894496a59eda00f0e8835ea6a8d
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
-ms.translationtype: MT
+ms.openlocfilehash: 0eb5d9cd86be05e5ad69bc9543231987e3c1dd2c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84887368"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85799265"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Az Azure Cosmos DB .NET SDK használatakor felmerülő hibák diagnosztizálása és elhárítása
 
@@ -87,7 +86,7 @@ Ennek a késésnek több oka lehet:
 
 ### <a name="azure-snat-pat-port-exhaustion"></a><a name="snat"></a>Az Azure SNAT (PAT) portjának kimerülése
 
-Ha az alkalmazás [nyilvános IP-cím nélküli Azure-Virtual Machines](../load-balancer/load-balancer-outbound-connections.md#defaultsnat)van telepítve, alapértelmezés szerint az [Azure SNAT-portok](../load-balancer/load-balancer-outbound-connections.md#preallocatedports) kapcsolatot létesít a virtuális gépen kívüli végpontokkal. A virtuális gépről a Azure Cosmos DB végpont számára engedélyezett kapcsolatok számát az [Azure SNAT konfigurációja](../load-balancer/load-balancer-outbound-connections.md#preallocatedports)korlátozza. Ez a helyzet a kapcsolat szabályozásához, a kapcsolat bezárásához vagy a fent említett [kérelmek időtúllépéséhez](#request-timeouts)vezethet.
+Ha az alkalmazás [nyilvános IP-cím nélküli Azure-Virtual Machines](../load-balancer/load-balancer-outbound-connections.md)van telepítve, alapértelmezés szerint az [Azure SNAT-portok](../load-balancer/load-balancer-outbound-connections.md#preallocatedports) kapcsolatot létesít a virtuális gépen kívüli végpontokkal. A virtuális gépről a Azure Cosmos DB végpont számára engedélyezett kapcsolatok számát az [Azure SNAT konfigurációja](../load-balancer/load-balancer-outbound-connections.md#preallocatedports)korlátozza. Ez a helyzet a kapcsolat szabályozásához, a kapcsolat bezárásához vagy a fent említett [kérelmek időtúllépéséhez](#request-timeouts)vezethet.
 
  Az Azure SNAT-portokat csak akkor használja a rendszer, ha a virtuális gép magánhálózati IP-címmel csatlakozik egy nyilvános IP-címhez. Az Azure SNAT-korlátozás elkerülése érdekében két Áthidaló megoldás létezik (ha már egyetlen ügyfél-példányt használ a teljes alkalmazásban):
 
@@ -109,16 +108,16 @@ A [lekérdezési metrikák](sql-api-query-metrics.md) segítenek meghatározni, 
 * Ha a háttérbeli lekérdezés lassú, próbálkozzon [a lekérdezés optimalizálásával](optimize-cost-queries.md) , és tekintse meg az aktuális [indexelési házirendet](index-overview.md) 
 
 ### <a name="http-401-the-mac-signature-found-in-the-http-request-is-not-the-same-as-the-computed-signature"></a>HTTP 401: a HTTP-kérelemben található MAC-aláírás nem egyezik meg a számított aláírással
-Ha a következő 401 hibaüzenetet kapta: "a HTTP-kérelemben található MAC-aláírás nem egyezik meg a számított aláírással." ezt a következő forgatókönyvek okozhatják.
+Ha a következő 401-es hibaüzenetet kapta: „A HTTP-kérelemben található MAC-aláírás nem egyezik meg a kiszámított aláírással.”, ezt a következő forgatókönyvek okozhatják.
 
-1. A kulcsot elforgatták, és nem az [ajánlott eljárásokat](secure-access-to-data.md#key-rotation)követték. Általában ez a helyzet. Cosmos DB fiók kulcsának elforgatása eltarthat néhány másodperctől akár napokig is, az Cosmos DB fiók méretétől függően.
-   1. 401 a MAC-aláírás röviddel a kulcs elforgatása után következik be, és végül leáll a módosítás nélkül. 
-1. A kulcs helytelenül van konfigurálva az alkalmazásban, így a kulcs nem egyezik meg a fiókkal.
-   1. 401 MAC-aláírási probléma konzisztens lesz, és az összes hívás esetén megtörténik
+1. Lecserélődött a kulcs, és a kulcsrotáció során nem követték az [ajánlott eljárásokat](secure-access-to-data.md#key-rotation). Általában ez a probléma kiváltó oka. A Cosmos DB-fiókkulcs rotációja néhány másodperctől akár több napig is tarthat, a Cosmos DB-fiók méretétől függően.
+   1. A kulcs lecserélődése után rövid időn belül megjelenik a MAC-aláírással kapcsolatos 401-es hiba, és végül magától megszűnik. 
+1. A kulcs helytelenül van konfigurálva az alkalmazásban, így nem egyezik a fiókkal.
+   1. A 401-es MAC-aláírási probléma az összes hívásnál jelentkezik
 1. Az alkalmazás csak [olvasható kulcsokat](secure-access-to-data.md#master-keys) használ az írási műveletekhez.
-   1. 401 MAC-aláírási probléma csak akkor fordulhat elő, ha az alkalmazás írási kéréseket végez, de az olvasási kérések sikeresek lesznek.
-1. Létezik egy versenyhelyzet a tároló létrehozásával. Egy alkalmazás-példány megpróbál hozzáférni a tárolóhoz a tároló létrehozása után. A leggyakoribb példa erre, ha az alkalmazás fut, és a tároló törlődik, és az alkalmazás futása során ugyanazzal a névvel jön létre. Az SDK megpróbálja használni az új tárolót, de a tároló létrehozása még folyamatban van, így nem rendelkezik a kulcsokkal.
-   1. 401 MAC-aláírási probléma röviddel a tároló létrehozása után következik be, és csak a tároló létrehozása után történik meg.
+   1. 401-es MAC-aláírási probléma csak akkor fordul elő, ha az alkalmazás írási kéréseket végez. Az olvasási kérések sikeresek lesznek.
+1. A tárolók létrehozásakor versenyhelyzet áll fenn. Egy alkalmazáspéldány megpróbál hozzáférni a tárolóhoz, még mielőtt a tároló létrehozása befejeződne. Ez leggyakrabban akkor fordul elő, ha az alkalmazás fut, és ezalatt törlik a tárolót, majd ugyanazzal a névvel újból létrehozzák. Az SDK megpróbálja használni az új tárolót, de a tároló létrehozása még folyamatban van, így még nem rendelkezik a kulcsokkal.
+   1. A 401-es MAC-aláírási probléma röviddel a tároló létrehozása után és csak a tároló létrehozásának befejezéséig jelentkezik.
  
  ### <a name="http-error-400-the-size-of-the-request-headers-is-too-long"></a>400-es HTTP-hiba. A kérések fejlécének mérete túl hosszú.
  A fejléc mérete nagyra nőtt, és meghaladja a maximálisan megengedett méretet. A legújabb SDK-t mindig ajánlott használni. Ügyeljen arra, hogy legalább a [3. x](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/changelog.md) vagy [2. x](https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/changelog.md)verziót használja, amely hozzáadja a fejléc méretének nyomon követését a kivételt jelző üzenethez.

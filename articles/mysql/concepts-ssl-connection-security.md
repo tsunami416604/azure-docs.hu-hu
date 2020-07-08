@@ -7,10 +7,9 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 06/02/2020
 ms.openlocfilehash: 2421f8a9396b47d04db35a7cad843f6baa6f6177
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84416103"
 ---
 # <a name="ssltls-connectivity-in-azure-database-for-mysql"></a>SSL/TLS-kapcsolat a Azure Database for MySQL
@@ -52,7 +51,7 @@ Ha például a TLS 1,0-es minimális beállítás értéke a TLS, azt jelenti, h
 
 Ha meg szeretné tudni, hogyan állíthatja be a TLS-beállítást a Azure Database for MySQLhoz, tekintse meg a [TLS-beállítás konfigurálását](howto-tls-configurations.md)ismertető témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure Database for MySQLhoz tartozó kapcsolatok kódtárai](concepts-connection-libraries.md)
 - Ismerje meg, hogyan [konfigurálhatja az SSL](howto-configure-ssl.md) -t

@@ -11,10 +11,9 @@ ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.openlocfilehash: 9502194b2020723801469b511f46d3e806290ba5
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85213992"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage-redundancia

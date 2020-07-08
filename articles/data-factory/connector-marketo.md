@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.date: 06/04/2020
 ms.author: jingwang
 ms.openlocfilehash: 08f117e2fc4939eee1458c0807cac5a292785608
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84669868"
 ---
 # <a name="copy-data-from-marketo-using-azure-data-factory-preview"></a>Adatok másolása a Marketo a Azure Data Factory használatával (előzetes verzió)
@@ -60,7 +59,7 @@ A Marketo társított szolgáltatás a következő tulajdonságokat támogatja:
 | useHostVerification | Megadja, hogy szükséges-e az állomásnév a kiszolgáló tanúsítványában, hogy egyezzen a kiszolgáló állomásneve a TLS-kapcsolaton keresztüli csatlakozáskor. Az alapértelmezett érték az igaz.  | No |
 | usePeerVerification | Megadja, hogy a rendszer ellenőrizze-e a kiszolgáló identitását TLS-kapcsolaton keresztül. Az alapértelmezett érték az igaz.  | No |
 
-**Például**
+**Példa:**
 
 ```json
 {
@@ -120,7 +119,7 @@ Az adatok Marketo való másolásához állítsa a forrás típusát a másolás
 | típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **MarketoSource** | Yes |
 | lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Példa: `"SELECT * FROM Activitiy_Types"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
 
-**Például**
+**Példa:**
 
 ```json
 "activities":[
@@ -157,5 +156,5 @@ Az adatok Marketo való másolásához állítsa a forrás típusát a másolás
 A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A Azure Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

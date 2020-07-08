@@ -5,10 +5,9 @@ services: container-service
 ms.topic: article
 ms.date: 06/03/2019
 ms.openlocfilehash: d025bcddfdee25cddac311ac9a201b7f3afebd22
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84416851"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Az Azure CNI hálózatkezelés konfigurálása az Azure Kubernetes szolgáltatásban (ak)
@@ -63,7 +62,7 @@ A hüvelyek maximális száma egy AK-fürtben 250. A *kubenet* és az *Azure CNI
 | -- | :--: | :--: | -- |
 | Azure CLI | 110 | 30 | Igen (legfeljebb 250) |
 | Resource Manager-sablon | 110 | 30 | Igen (legfeljebb 250) |
-| Portál | 110 | 30 | Nem |
+| Portál | 110 | 30 | No |
 
 ### <a name="configure-maximum---new-clusters"></a>Maximális – új fürtök konfigurálása
 
@@ -171,7 +170,7 @@ Az alábbi kérdések és válaszok az **Azure CNI** hálózati konfigurációra
 
   Nem ajánlott, de ez a konfiguráció lehetséges. A szolgáltatási címtartomány a virtuális IP-címek (VIP) készlete, amelyet a Kubernetes a fürt belső szolgáltatásaihoz rendel hozzá. Az Azure hálózatkezelésének nincs láthatósága a Kubernetes-fürt szolgáltatási IP-címének tartományán. A fürt szolgáltatási címtartomány láthatóságának hiánya miatt később létrehozhat egy új alhálózatot a fürt virtuális hálózatában, amely átfedésben van a szolgáltatási címtartomány használatával. Ha átfedés történik, a Kubernetes hozzárendelhet egy olyan IP-címet, amelyet már egy másik erőforrás használ az alhálózatban, ami kiszámíthatatlan működést vagy hibát okoz. Annak biztosításával, hogy a fürt virtuális hálózatán kívüli címtartományt használjon, elkerülheti ezt az átfedési kockázatot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a hálózatkezelésről az AK-ban a következő cikkekben található:
 

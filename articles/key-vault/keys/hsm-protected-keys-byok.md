@@ -11,10 +11,9 @@ ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: ambapat
 ms.openlocfilehash: 52214d42467dfa86b5e085a660a9416904b7de59
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84416698"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault-byok"></a>HSM-védelemmel ellátott kulcsok importálása a Key Vaultba (BYOK)
@@ -68,7 +67,7 @@ A következő táblázat a BYOK használatának előfeltételeit sorolja fel Azu
 
 ## <a name="supported-key-types"></a>Támogatott kulcsok típusai
 
-|Kulcs neve|Kulcs típusa|Kulcs mérete|Forrás|Leírás|
+|Kulcs neve|Kulcs típusa|Kulcs mérete|Forrás|Description|
 |---|---|---|---|---|
 |Key Exchange-kulcs (KEK)|RSA| 2 048 bites<br />3 072 bites<br />4 096 bites|Azure Key Vault HSM|HSM-alapú RSA-kulcspár generálása Azure Key Vault|
 |Célként megadott kulcs|RSA|2 048 bites<br />3 072 bites<br />4 096 bites|Szállítói HSM|A Azure Key Vault HSM-re továbbítandó kulcs|
@@ -131,7 +130,7 @@ az keyvault key import --vault-name ContosoKeyVaultHSM --name ContosoFirstHSMkey
 
 Ha a feltöltés sikeres, az Azure CLI megjeleníti az importált kulcs tulajdonságait.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ezt a HSM-védelemmel ellátott kulcsot már használhatja a kulcstartóban. További információkért tekintse meg [ezt az árat és a szolgáltatás összehasonlítását](https://azure.microsoft.com/pricing/details/key-vault/).
 

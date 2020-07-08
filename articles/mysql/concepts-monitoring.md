@@ -7,10 +7,9 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 06/25/2020
 ms.openlocfilehash: 803437cc45fce9ab850682cf4725c0bf0d21bed6
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85414113"
 ---
 # <a name="monitoring-in-azure-database-for-mysql"></a>Figyelés Azure Database for MySQL
@@ -22,7 +21,7 @@ Minden Azure-metrika egyperces gyakorisággal rendelkezik, és minden metrika 30
 ### <a name="list-of-metrics"></a>Metrikák listája
 Ezek a metrikák a Azure Database for MySQL számára érhetők el:
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Leírás|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Description|
 |---|---|---|---|
 |cpu_percent|CPU-százalék|Százalék|A használatban lévő CPU százalékos aránya.|
 |memory_percent|Memória százaléka|Százalék|A használatban lévő memória százalékos aránya.|

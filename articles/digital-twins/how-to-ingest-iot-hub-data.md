@@ -7,17 +7,13 @@ ms.author: cschorm
 ms.date: 3/17/2020
 ms.topic: how-to
 ms.service: digital-twins
-ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 4d2b849df7371815a120e59cfff3d8bc7596b1ed
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.openlocfilehash: 351f7ed131d545d2aa83df753cac3f26e76e4ccb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84725851"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>IoT Hub telemetria betöltése az Azure digitális Twinsba
-
-[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Az Azure digitális Twins a IoT-eszközökről és más forrásokból származó adatokon alapul. Az Azure Digital Twins szolgáltatásban használható eszköz-adatforrások közös forrása [IoT hub](../iot-hub/about-iot-hub.md).
 

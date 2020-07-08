@@ -4,10 +4,9 @@ description: Az Service Bus-ügyfél diagnosztika és a végpontok közötti nyo
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 6138d3d6424364f28f55f81044768acb894bc651
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85340724"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Elosztott nyomkövetés és korreláció Service Bus üzenetkezelésen keresztül
@@ -20,7 +19,7 @@ Amikor egy gyártó üzenetet küld egy várólistán keresztül, általában eg
 Microsoft Azure Service Bus üzenetkezelés olyan adattartalom-tulajdonságokat adott meg, amelyeket a gyártóknak és a felhasználóknak az ilyen nyomkövetési környezet továbbítására kell használniuk.
 A protokoll a [http korrelációs protokollon](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)alapul.
 
-| Tulajdonság neve        | Leírás                                                 |
+| Tulajdonság neve        | Description                                                 |
 |----------------------|-------------------------------------------------------------|
 |  Diagnosztikai azonosító       | Egy külső hívás egyedi azonosítója a termelőről a várólistára. A logika, a szempontok és a formátum érdekében olvassa el a [HTTP protokollon keresztüli kérelem-azonosítót](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#request-id) . |
 |  Korreláció – környezet | A műveleti környezet, amelyet a rendszer a művelet-feldolgozásban részt vevő összes szolgáltatás között propagál. További információ: [korrelációs környezet a http protokollban](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#correlation-context) |

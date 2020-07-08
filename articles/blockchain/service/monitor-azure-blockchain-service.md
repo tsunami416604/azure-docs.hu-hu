@@ -5,10 +5,9 @@ ms.date: 01/08/2020
 ms.topic: how-to
 ms.reviewer: v-umha
 ms.openlocfilehash: 9d5b3cb02f6e4cd0804dc7fb15a4eacc8370bb99
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85214043"
 ---
 # <a name="monitor-azure-blockchain-service-through-azure-monitor"></a>Az Azure Blockchain szolgáltatás monitorozása Azure Monitor  
@@ -79,7 +78,7 @@ Minden erőforrás-napló egy legfelső szintű közös sémát használ a block
 A következő táblázat az Azure Blockchain-proxy naplófájljainak tulajdonságait sorolja fel Azure Monitor-naplókba vagy Azure Storage-ba gyűjtve.  
 
 
-| Tulajdonság neve  | Leírás |
+| Tulajdonság neve  | Description |
 |:---|:---|
 | time | A művelet bekövetkeztekor megadott dátum és idő (UTC). |
 | resourceID  | Az Azure Blockchain Service-erőforrás, amely számára engedélyezve vannak a naplók.  |
@@ -105,7 +104,7 @@ A következő táblázat az Azure Blockchain-proxy naplófájljainak tulajdonsá
 Az alábbi táblázat az Azure Blockchain-alkalmazások naplóihoz tartozó tulajdonságokat sorolja fel.
 
 
-| Tulajdonság neve  | Leírás |
+| Tulajdonság neve  | Description |
 |:---|:---|
 | time | A művelet bekövetkeztekor megadott dátum és idő (UTC). |
 | resourceID  | Az Azure Blockchain Service-erőforrás, amely számára engedélyezve vannak a naplók.|
@@ -131,7 +130,7 @@ Az összes Azure Monitor támogatott mérőszám (beleértve az Azure Blockchain
 A következő táblázat az Azure Blockchain-szolgáltatás Blockchain-erőforrásához összegyűjtött mérőszámok listáját tartalmazza.
 
 
-| Metrika neve | Unit (Egység)  |  Összesítés típusa| Leírás   |
+| Metrika neve | Unit (Egység)  |  Összesítés típusa| Description   |
 |---|---|---|---|
 | Függőben lévő tranzakciók   | Darabszám  |  Átlag | A bányászra váró tranzakciók száma.   |
 | Feldolgozott blokkok   | Darabszám  | Összeg  |  Az egyes időintervallumokban feldolgozott blokkok száma. Jelenleg a blokk mérete 5 másodperc, ezért egy percen belül minden egyes csomópont 5 perc alatt feldolgozza 12 blokkot és 60 blokkot.   |
@@ -143,7 +142,7 @@ A következő táblázat az Azure Blockchain-szolgáltatás Blockchain-erőforr�
 A következő táblázat felsorolja az Azure Blockchain-szolgáltatási tag erőforrásához összegyűjtött különböző kapcsolatok mérőszámait. Ezek az NGINX proxy metrikái.
 
 
-| Metrika neve | Unit (Egység)  |  Összesítés típusa| Leírás |
+| Metrika neve | Unit (Egység)  |  Összesítés típusa| Description |
 |---|---|---|---|
 | Elfogadott kapcsolatok   | Darabszám  |  Összeg | Az elfogadott ügyfélkapcsolatok teljes száma.   |
 | Aktív kapcsolatok  | Darabszám  | Átlag  |  Az aktív ügyfélkapcsolatok aktuális száma, beleértve a várakozási kapcsolatokat.    |
@@ -156,7 +155,7 @@ A következő táblázat felsorolja az Azure Blockchain-szolgáltatási tag erő
 A következő táblázat felsorolja az Azure Blockchain-tag erőforrásának egyes csomópontjain összegyűjtött teljesítménymutatókat.  
 
 
-| Metrika neve | Unit (Egység)  |  Összesítés típusa| Leírás   |
+| Metrika neve | Unit (Egység)  |  Összesítés típusa| Description   |
 |---|---|---|---|
 | CPU-használat százaléka   | Százalék  |  Max | A CPU-használat százalékos aránya.     |
 | IO olvasási bájtok   | Kilobájtban   | Összeg  |  Az IO olvasási bájtjainak összege az blockchain-tag erőforrásának összes csomópontján.      |

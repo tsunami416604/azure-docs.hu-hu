@@ -8,10 +8,9 @@ ms.date: 06/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 23e98c40420a5f1ed9b048d5530eacfe5eedfb32
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85413977"
 ---
 # <a name="cloud-tiering-overview"></a>A felhőalapú rétegek áttekintése
@@ -118,7 +117,7 @@ Több módon is ellenőrizhető, hogy a fájl az Azure-fájlmegosztás szintjér
    *  **Keresse meg a fájl attribútumait a fájlban.**
      Kattintson a jobb gombbal egy fájlra, lépjen a **részletek**menüpontra, majd görgessen le az **attribútumok** tulajdonsághoz. A rétegű fájlok a következő attribútumokkal vannak beállítva:     
         
-        | Attribútum betűjele | Attribútum | Meghatározás |
+        | Attribútum betűjele | Attribútum | Definíció |
         |:----------------:|-----------|------------|
         | A | Archívum | Azt jelzi, hogy a fájlt biztonsági mentési szoftverrel kell biztonsági másolatot készíteni. Ez az attribútum mindig be van állítva, függetlenül attól, hogy a fájl többszintes vagy teljes mértékben a lemezen van-e tárolva. |
         | P | Ritka fájl | Azt jelzi, hogy a fájl ritka fájl. A ritka fájlok olyan speciális fájltípusok, amelyeket az NTFS biztosít a hatékony használatra, ha a lemezen lévő fájl többnyire üres. A Azure File Sync ritka fájlokat használ, mivel a fájlok teljes mértékben, vagy részben visszahívásra kerülnek. A teljes mértékben többrétegű fájlokban a fájl stream a felhőben tárolódik. Egy részben visszanevezett fájlban a fájl egy része már lemezen van. Ha egy fájl teljesen visszahívásra kerül a lemezre, Azure File Sync átalakítja egy ritka fájlból egy normál fájlba. Ez az attribútum csak a Windows Server 2016-es és régebbi verzióra van beállítva.|

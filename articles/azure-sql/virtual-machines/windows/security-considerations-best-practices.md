@@ -15,10 +15,9 @@ ms.date: 03/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 4421b30d672cc026a033febb34b8b31afa0ef3c7
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84668808"
 ---
 # <a name="security-considerations-for-sql-server-on-azure-virtual-machines"></a>Az Azure-beli SQL Server biztonsági szempontjai Virtual Machines
@@ -106,7 +105,7 @@ A helyszíni biztonsági gyakorlatokkal kapcsolatos további információkért t
 A virtuális gépek biztonságával kapcsolatos további információkért lásd a [Virtual Machines biztonsági áttekintése](/azure/security/fundamentals/virtual-machines-overview)című témakört.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha a teljesítményre vonatkozó ajánlott eljárások is érdeklik, tekintse [meg az Azure Virtual Machines SQL Server teljesítményével kapcsolatos ajánlott eljárásokat](performance-guidelines-best-practices.md)ismertető témakört.
 

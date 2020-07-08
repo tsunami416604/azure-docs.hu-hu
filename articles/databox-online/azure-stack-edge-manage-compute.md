@@ -9,10 +9,9 @@ ms.topic: how-to
 ms.date: 05/20/2019
 ms.author: alkohli
 ms.openlocfilehash: 9d34bd1750b798407b493dcde01b04118d66a2d5
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84339824"
 ---
 # <a name="manage-compute-on-your-azure-stack-edge"></a>Számítások kezelése az Azure Stack Edge-ben
@@ -129,6 +128,6 @@ Az eszközhöz tartozó hozzáférési kulcsok szinkronizálásához hajtsa vég
 
 3. A szinkronizálást követően zárja be a párbeszédpanelt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerje meg, hogyan [kezelheti az Edge számítási hálózatot Azure Portal használatával](azure-stack-edge-extend-compute-access-modules.md).

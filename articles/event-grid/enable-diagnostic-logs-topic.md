@@ -8,10 +8,9 @@ ms.topic: how-to
 ms.date: 06/10/2020
 ms.author: spelluru
 ms.openlocfilehash: 253d1fb933c32735f68cf6a2d471a7687caf5301
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84670159"
 ---
 #  <a name="enable-diagnostic-logs-for-azure-event-grid-topics-or-domains"></a>Diagnosztikai naplók engedélyezése az Azure Event Grid-témakörökhöz vagy-tartományokhoz
@@ -110,5 +109,5 @@ A diagnosztikai beállítások lehetővé teszik Event Grid felhasználók szám
     }
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A naplózási sémával és a témakörök vagy tartományok diagnosztikai naplóival kapcsolatos egyéb fogalmi információkkal kapcsolatban lásd: [diagnosztikai naplók](diagnostic-logs.md).

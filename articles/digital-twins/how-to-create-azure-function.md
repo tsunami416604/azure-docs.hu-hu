@@ -7,17 +7,13 @@ ms.author: cschorm
 ms.date: 3/17/2020
 ms.topic: how-to
 ms.service: digital-twins
-ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 51e2560a7ad8d62965474082633d4cb66c1d6592
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.openlocfilehash: 3b416e6ccb035ede06a360c2697a9b20ca417d98
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84725902"
 ---
 # <a name="connect-azure-functions-apps-for-processing-data"></a>Azure Functions alkalmazások összekötése az adatfeldolgozáshoz
-
-[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Az [**előzetes verzióban**](concepts-route-events.md) az adatok alapján a digitális ikrek frissítése a számítási erőforrásokon keresztül történik, például [Azure functions](../azure-functions/functions-overview.md). Lehetséges, hogy egy Azure-függvény a következőre válaszul egy digitális Twin-et frissít:
 * az eszköz telemetria érkező adatok IoT Hub

@@ -13,10 +13,9 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 05/18/2019
 ms.openlocfilehash: 992ad40d343fcc85b6c7c8fe0ed8b083a5b08238
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84344509"
 ---
 # <a name="long-term-retention---azure-sql-database-and-azure-sql-managed-instance"></a>Hosszú távú adatmegőrzés – Azure SQL Database és az Azure SQL felügyelt példánya
@@ -96,7 +95,7 @@ Ha meg szeretné tudni, hogyan konfigurálhatja a hosszú távú adatmegőrzést
 
 Ha egy adatbázist szeretne visszaállítani a LTR-tárolóból, kiválaszthatja az időbélyeg alapján egy adott biztonsági mentést. Az adatbázis az eredeti adatbázissal megegyező előfizetéshez tartozó meglévő kiszolgálókra állítható vissza. Ha szeretné megtudni, hogyan állíthatja vissza az adatbázist egy LTR biztonsági másolatból, a Azure Portal vagy a PowerShell használatával, tekintse meg a [Azure SQL Database hosszú távú biztonsági mentés kezelése](long-term-backup-retention-configure.md)című témakört. A kérelemben adja meg azt az állapotot, amelyet a LTR for SQL felügyelt példányának korlátozott nyilvános előzetes verziójában szeretne regisztrálni.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Mivel az adatbázis biztonsági mentései védik az adatokat a véletlen sérüléstől vagy törléstől, fontos szerepet játszanak az üzletmenet folytonossága és a vész-helyreállítási stratégia. SQL Database az üzletmenet-folytonossági megoldásokkal kapcsolatos további információkért lásd: az [üzletmenet folytonosságának áttekintése](business-continuity-high-availability-disaster-recover-hadr-overview.md).
  

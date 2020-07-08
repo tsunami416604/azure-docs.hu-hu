@@ -12,10 +12,9 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.openlocfilehash: fb8c25a49aa4cacc09ba6cd51cc859c4db036ec6
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84670004"
 ---
 # <a name="azure-data-factory---naming-rules"></a>Azure Data Factory – elnevezési szabályok
@@ -31,5 +30,5 @@ Az alábbi táblázat a Data Factory összetevők elnevezési szabályait tartal
 | Integration Runtime |Egyedi a-ben egy adatelőállítóban. A nevek nem megkülönböztetik a kis-és nagybetűket. |<ul><li>Az Integration Runtime neve csak betűket, számokat és kötőjel (-) karaktert tartalmazhat.</li><li>Az első és az utolsó karakternek betűnek vagy számnak kell lennie. Minden kötőjel (-) karaktert közvetlenül előtt kell megadni, majd betűvel vagy számmal kell kiegészíteni.</li><li>Egymást követő kötőjelek nem engedélyezettek az integrációs modul nevében. </li></ul> |
 | Erőforráscsoport |Egyedi a Microsoft Azure között. A nevek nem megkülönböztetik a kis-és nagybetűket. | További információ: [Azure elnevezési szabályok és korlátozások](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#resource-naming). |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ismerje meg, hogyan hozhat létre adatgyárat a gyors üzembe helyezési útmutató lépéseit követve [: hozzon létre egy adatfeldolgozási](quickstart-create-data-factory-powershell.md) cikket. 

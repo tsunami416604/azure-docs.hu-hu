@@ -15,10 +15,9 @@ ms.workload: na
 ms.date: 03/14/2019
 ms.author: alkohli
 ms.openlocfilehash: a2d4aa8845472812cf1874b380c6cbf1e91e2149
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85514736"
 ---
 # <a name="migrate-subscriptions-and-storage-accounts-associated-with-storsimple-device-manager-service"></a>A StorSimple Eszközkezelő szolgáltatáshoz társított előfizetések és Storage-fiókok migrálása
@@ -44,7 +43,7 @@ Előfordulhat, hogy át kell helyeznie a StorSimple szolgáltatást egy új regi
 | Egy StorSimple szolgáltatás az egyik Azure-adatközpontból a másikba? | Nem | Igen |Nincs, manuális folyamat  |<li>Az adatáttelepítés a StorSimple-eszközről.</li><li>A gyári beállítások visszaállításával az eszközön minden helyi adat törlődik.</li><li>Regisztrálja az eszközt az új előfizetéssel egy új StorSimple Eszközkezelő szolgáltatáshoz.</li><li>Telepítse újra az adatátvitelt az eszközre.|
 | Egy Azure-adatközpontból egy másikba tartozó Storage-fiók? | Nem |Igen  |Nincs, manuális folyamat  | Ugyanaz, mint a fenti.|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [StorSimple Eszközkezelő szolgáltatás üzembe helyezése](storsimple-8000-manage-service.md)
 * [A StorSimple 8000 Series eszköz üzembe helyezése Azure Portal](storsimple-8000-deployment-walkthrough-u2.md)

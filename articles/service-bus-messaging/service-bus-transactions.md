@@ -4,10 +4,9 @@ description: Ez a cikk áttekintést nyújt a tranzakciók feldolgozásáról é
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 90ee3e4f7cd6465d6297406d1d28d4ea34f88ac4
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85340500"
 ---
 # <a name="overview-of-service-bus-transaction-processing"></a>A tranzakciók feldolgozásának Service Bus áttekintése

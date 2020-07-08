@@ -12,10 +12,9 @@ ms.date: 11/22/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
 ms.openlocfilehash: 09ecaf327b2030a77f8a91d99f291cebb0281235
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/15/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84781599"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>A Cloud HR-alkalmazás megtervezése Azure Active Directory a felhasználók üzembe helyezéséhez
@@ -73,7 +72,7 @@ A HR-alapú IT-kiépítés ezen funkciója a következő jelentős üzleti előn
 - **Címek megfelelősége és szabályozása:** Az Azure AD támogatja a natív naplókat a forrás-és a célként megadott alkalmazások által végrehajtott felhasználói kiépítési kérelmek esetében. A naplózás segítségével nyomon követheti, hogy ki férhet hozzá az alkalmazásokhoz egyetlen képernyőről.
 - **Kezelés díja:** Az automatikus kiépítés csökkenti a költségeket, és elkerüli a manuális kiépítés során felmerülő eredménytelenség és emberi hibák elkerülését. Ez csökkenti a régi és elavult platformok használatával az idő múlásával létrehozott, egyéni fejlesztésű felhasználói megoldások igényét.
 
-### <a name="licensing"></a>Licencelés
+### <a name="licensing"></a>Licencek
 
 Ha a Cloud HR-alkalmazást az Azure AD-beli felhasználók kiépítéséhez szeretné konfigurálni, érvényes [prémium szintű Azure ad licencre](https://azure.microsoft.com/pricing/details/active-directory/) és licencre van szükség a Cloud HR-alkalmazáshoz, például a munkanapokhoz vagy a SuccessFactors.
 
@@ -90,7 +89,7 @@ Emellett érvényes prémium szintű Azure AD P1 vagy magasabb szintű előfizet
 
 ### <a name="training-resources"></a>Erőforrások betanítása
 
-| **Forrásanyagok** | **Hivatkozás és leírás** |
+| **Erőforrások** | **Hivatkozás és leírás** |
 |:-|:-|
 | Videók | [Mi a felhasználók üzembe helyezése az aktív Azure-címtárban?](https://youtu.be/_ZjARPpI6NI) |
 | | [A felhasználók üzembe helyezésének központi telepítése az Active Directory Azure-címtárban](https://youtu.be/pKzyts6kfrw) |

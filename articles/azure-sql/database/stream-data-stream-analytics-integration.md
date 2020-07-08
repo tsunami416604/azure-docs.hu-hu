@@ -12,10 +12,9 @@ ms.author: ajetasi
 ms.reviewer: sstein
 ms.date: 11/04/2019
 ms.openlocfilehash: 90d3507a8867ad3556891f6001f0e15ebda8c4f4
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84345359"
 ---
 # <a name="stream-data-into-azure-sql-database-using-azure-stream-analytics-integration-preview"></a>Adatfolyam-továbbítás Azure SQL Database Azure Stream Analytics Integration (előzetes verzió)
@@ -122,7 +121,7 @@ Az cikkben ismertetett lépések elvégzéséhez az alábbi erőforrásokra lesz
 
      ![Stream Analytics-feladatok](./media/stream-data-stream-analytics-integration/jobs.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure Stream Analytics dokumentációja](https://docs.microsoft.com/azure/stream-analytics/)
 - [Az Azure Stream Analytics megoldásmintái](../../stream-analytics/stream-analytics-solution-patterns.md)

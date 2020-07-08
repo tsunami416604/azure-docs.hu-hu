@@ -7,10 +7,9 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 06/25/2020
 ms.openlocfilehash: 708b243d9db16ee8454b4bc0f5c136b9f4399916
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85413195"
 ---
 # <a name="monitoring-in-azure-database-for-mariadb"></a>Figyelés Azure Database for MariaDB
@@ -24,7 +23,7 @@ Részletes útmutatást a [riasztások beállítása](howto-alert-metric.md)cím
 ### <a name="list-of-metrics"></a>Metrikák listája
 Ezek a metrikák a Azure Database for MariaDB számára érhetők el:
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Leírás|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Description|
 |---|---|---|---|
 |cpu_percent|CPU-százalék|Százalék|A használatban lévő CPU százalékos aránya.|
 |memory_percent|Memória százaléka|Százalék|A használatban lévő memória százalékos aránya.|

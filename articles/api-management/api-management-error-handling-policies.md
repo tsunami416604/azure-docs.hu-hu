@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
 ms.openlocfilehash: 0bc4792b44ccff23a141460c3521d684801c4567
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84674261"
 ---
 # <a name="error-handling-in-api-management-policies"></a>Hibakezelés az API Management-szabályzatokban
@@ -183,7 +182,7 @@ a jogosulatlan kérések küldése a következő választ eredményezi:
 
 ![Jogosulatlan hiba válasza](media/api-management-error-handling-policies/error-response.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a házirendek használatáról:
 

@@ -9,14 +9,13 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/10/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 7e79156e6e9f1283dfc7b8801820e3335f31afa9
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.openlocfilehash: c86f98fb20af2cd5ac969867cabfdc5dcb62db54
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84734299"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039891"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services biztonsági naplózásának engedélyezése
 
@@ -159,11 +158,11 @@ AADDomainServicesAccountManagement
 
 ### <a name="sample-query-2"></a>2. minta lekérdezés
 
-Az összes fiókzárolási esemény (*4740*) megtekintése a 2020. február 3. között, 9 órakor és 2020. február 10. között a dátum és idő szerint növekvő sorrendbe rendezve:
+Tekintse meg az összes fiókzárolási eseményt (*4740*) a 2020. június 3. között, 9 órakor és 2020. június 10. között a dátum és idő szerint növekvő sorrendbe rendezve:
 
 ```Kusto
 AADDomainServicesAccountManagement
-| where TimeGenerated >= datetime(2020-02-03 09:00) and TimeGenerated <= datetime(2020-02-10)
+| where TimeGenerated >= datetime(2020-06-03 09:00) and TimeGenerated <= datetime(2020-06-10)
 | where OperationName has "4740"
 | sort by TimeGenerated asc
 ```
@@ -217,7 +216,7 @@ Az Azure AD DS biztonsági naplózása a hagyományos AD DS tartományvezérlők
 
 A következő naplózási események kategóriák érhetők el:
 
-| Naplózási kategória neve | Leírás |
+| Naplózási kategória neve | Description |
 |:---|:---|
 | Fiók bejelentkezése|A naplózási kísérletekkel egy tartományvezérlőn vagy egy helyi biztonsági fiókkezelő (SAM) fiók adatai hitelesíthetők.</p>A bejelentkezési és kijelentkezési szabályzat beállításai és eseményei nyomon követik az adott számítógép elérésére tett kísérleteket. Az ebben a kategóriában található beállítások és események a használt fiók-adatbázisra összpontosítanak. Ez a kategória a következő alkategóriákat tartalmazza:<ul><li>[Hitelesítő adatok érvényesítésének naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-credential-validation)</li><li>[Kerberos hitelesítési szolgáltatás naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-kerberos-authentication-service)</li><li>[A Kerberos szolgáltatás jegyműveleteinek naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-kerberos-service-ticket-operations)</li><li>[Egyéb bejelentkezési/kijelentkezési események naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-logonlogoff-events)</li></ul>|
 | Fiókkezelés|A felhasználói és számítógépfiókok és csoportok változásainak naplózása. Ez a kategória a következő alkategóriákat tartalmazza:<ul><li>[Alkalmazáscsoport felügyeletének naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-application-group-management)</li><li>[Számítógépes fiókok felügyeletének naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-computer-account-management)</li><li>[Terjesztési csoportok felügyeletének naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-distribution-group-management)</li><li>[Más fiókok felügyeletének naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-account-management-events)</li><li>[Biztonsági csoportok felügyeletének naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-security-group-management)</li><li>[Felhasználói fiókok felügyeletének naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-user-account-management)</li></ul>|
@@ -237,10 +236,10 @@ A következő naplózási események kategóriák érhetők el:
 |:---|:---|
 |Fiók bejelentkezési biztonsága|4767, 4774, 4775, 4776, 4777|
 |Fiókkezelés biztonsága|4720, 4722, 4723, 4724, 4725, 4726, 4727, 4728, 4729, 4730, 4731, 4732, 4733, 4734, 4735, 4737, 4738, 4740, 4741, 4742, 4743, 4754, 4755, 4756, 4757, 4758, 4764, 4765, 4766, 4780, 4781 és 4782|
-|Részletek követése biztonság|Nincs|
+|Részletek követése biztonság|None|
 |DS-hozzáférés biztonsága|5136, 5137, 5138, 5139, 5141|
 |Bejelentkezés – biztonság|4624, 4625, 4634, 4647, 4648, 4672, 4675, 4964|
-|Objektum-hozzáférés biztonsága|Nincs|
+|Objektum-hozzáférés biztonsága|None|
 |Házirend-módosítási biztonság|4670, 4703, 4704, 4705, 4706, 4707, 4713, 4715, 4716, 4717, 4718, 4719, 4739, 4864, 4865, 4866, 4867, 4904, 4906, 4911, 4912|
 |Biztonsági jogosultságok használata|4985|
 |Rendszerbiztonság|4612, 4621|

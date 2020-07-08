@@ -7,17 +7,13 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 8788dcc1ec09580aa0da7c68665433dfe4a1d563
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.openlocfilehash: 93043874db6076b26d0fefe447db7acd83547442
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84725584"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Az Azure Digital Twins Twin gráf lekérdezése
-
-[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Ez a cikk részletesen bemutatja, hogyan használhatja az [Azure Digital Twins Query Store nyelvet](concepts-query-language.md) , hogy lekérdezze a [Twin Graphot](concepts-twins-graph.md) az információkhoz. A Graph-lekérdezéseket az Azure Digital Twins [**lekérdezési API**](how-to-use-apis-sdks.md)-k használatával futtathatja.
 

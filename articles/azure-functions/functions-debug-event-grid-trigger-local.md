@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 10/18/2018
 ms.author: cshoe
 ms.openlocfilehash: bfb502e42e41ac530851766db87bcebf3c94c371
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85340861"
 ---
 # <a name="azure-function-event-grid-trigger-local-debugging"></a>Az Azure Function Event Grid helyi hibakeresést indít
@@ -101,7 +100,7 @@ Miután a Event Grid felismerte, hogy a rendszer feltölt egy új fájlt a Stora
 
 ![Ngrok elindítása](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-breakpoint.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 A cikkben létrehozott erőforrások törléséhez törölje a tároló-fiókban található **teszt** tárolót.
 

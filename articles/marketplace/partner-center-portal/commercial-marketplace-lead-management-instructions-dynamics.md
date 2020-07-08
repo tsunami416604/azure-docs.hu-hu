@@ -7,12 +7,11 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 65139e0842679f59733c34be838d4aad7f3c63e4
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: MT
+ms.openlocfilehash: 555002284b2665a357a28319a400710d66be4604
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847946"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957239"
 ---
 # <a name="configure-lead-management-for-dynamics-365-customer-engagement"></a>Az érdeklődők felügyeletének konfigurálása a Dynamics 365 Customer engagement szolgáltatáshoz
 
@@ -60,7 +59,7 @@ Ha érdeklődőket szeretne írni a Dynamics 365 Customer engagement-példányba
 A szolgáltatásfiók létrehozásához és az engedélyek hozzárendeléséhez kövesse az alábbi lépéseket. Azure Active Directory vagy Office 365-et is használhat.
 
 >[!NOTE]
->Ugorjon a megfelelő utasításokra a kiválasztott hitelesítési lehetőség alapján. Lásd: [Azure Active Directory](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics#azure-active-directory) vagy [Office 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics#office-365).
+>Ugorjon a megfelelő utasításokra a kiválasztott hitelesítési lehetőség alapján. Lásd: [Azure Active Directory](#azure-active-directory) vagy [Office 365](#office-365).
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 

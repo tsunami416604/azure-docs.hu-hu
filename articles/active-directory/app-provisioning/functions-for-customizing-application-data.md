@@ -11,10 +11,9 @@ ms.topic: how-to
 ms.date: 02/05/2020
 ms.author: kenwith
 ms.openlocfilehash: 47f0502226e4227c6b94920da6f040004beb41f1
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/15/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84781667"
 ---
 # <a name="how-to-write-expressions-for-attribute-mappings-in-azure-ad"></a>Útmutató: kifejezések írása az attribútum-hozzárendelésekhez az Azure AD-ben
@@ -71,7 +70,7 @@ Más szóval a 0 értéket adja vissza minden esetben, kivéve, ha mindkét para
 | **érték1** |Kötelező |num |Numerikus érték, amelynek AND'ed kell lennie a érték2|
 | **érték2** |Kötelező |num |Numerikus érték, amelynek AND'ed kell lennie a érték1|
 
-**Például**<br>
+**Példa:**<br>
 BitAnd (&HF, &HF7)                                                                                
 11110111 és 00000111 = 00000111 Szóval a BitAnd 7 értéket ad vissza, a 00000111 bináris értékét
 
@@ -87,7 +86,7 @@ BitAnd (&HF, &HF7)
 | --- | --- | --- | --- |
 | **kifejezés** |Kötelező | kifejezés | Bármely érvényes kifejezés |
 
-**Például**<br>
+**Példa:**<br>
 CBool ([attribute1] = [attribute2])                                                                    
 Igaz értéket ad vissza, ha mindkét attribútum ugyanazzal az értékkel rendelkezik.
 
@@ -116,7 +115,7 @@ Igaz értéket ad vissza, ha mindkét attribútum ugyanazzal az értékkel rende
 | --- | --- | --- | --- |
 | **forrás** |Kötelező |Sztring |Az alap 64-re konvertálandó karakterlánc|
 
-**Például**<br>
+**Példa:**<br>
 ConvertToBase64 ("Helló világ!")                                                                                                        
 A "SABlAGwAbABvACAAdwBvAHIAbABkACEA" értéket adja vissza
 
@@ -132,7 +131,7 @@ A "SABlAGwAbABvACAAdwBvAHIAbABkACEA" értéket adja vissza
 | --- | --- | --- | --- |
 | **forrás** |Kötelező |Sztring |Az UTF8 hexadecimális értékre konvertálandó karakterlánc|
 
-**Például**<br>
+**Példa:**<br>
 ConvertToUTF8Hex ("Helló világ!")                                                                                                         
 48656C6C6F20776F726C6421 visszaadása
 
@@ -160,7 +159,7 @@ ConvertToUTF8Hex ("Helló világ!")
 | --- | --- | --- | --- |
 | **érték** |Kötelező | numerikus, hivatkozás vagy logikai | Számérték, hivatkozási attribútum vagy logikai érték lehet. |
 
-**Például**<br>
+**Példa:**<br>
 CStr ([DN])                                                            
 A "CN = Joe, DC = contoso, DC = com" értéket adja vissza.
 
@@ -176,7 +175,7 @@ A "CN = Joe, DC = contoso, DC = com" értéket adja vissza.
 | --- | --- | --- | --- |
 | **érték** |Kötelező | Dátum | A DateTime típusúra konvertálandó AD-dátum |
 
-**Például**<br>
+**Példa:**<br>
 DateFromNum ([lastLogonTimestamp])                                                                                                   
 DateFromNum(129699324000000000)                                                            
 A 2012-01-01 23:00:00-et jelölő DateTime értéket ad vissza.
@@ -215,7 +214,7 @@ A 2012-01-01 23:00:00-et jelölő DateTime értéket ad vissza.
 | **valueIfTrue** |Kötelező |Változó vagy karakterlánc | Ha a feltétel igaz értéket ad vissza, a visszaadott érték. |
 | **valueIfFalse** |Kötelező |Változó vagy karakterlánc |Ha a feltétel hamis értéket ad vissza, a visszaadott érték.|
 
-**Például**<br>
+**Példa:**<br>
 IIF ([ország] = "USA", [ország], [részleg])
 
 ---
@@ -233,7 +232,7 @@ IIF ([ország] = "USA", [ország], [részleg])
 | **Start** |Választható |Egész szám |A kiindulási pozíció a karakterlánc megkereséséhez|
 | **compareType** |Választható |Enumeráció |VbTextCompare vagy vbBinaryCompare lehet |
 
-**Például**<br>
+**Példa:**<br>
 ("A gyors barna Róka", "gyors")                                                                             
 Evalues – 5
 
@@ -252,7 +251,7 @@ VbBinaryCompare ("ismétlődő", "e", 3,)
 | --- | --- | --- | --- |
 | **kifejezés** |Kötelező |kifejezés |Kiértékelni kívánt kifejezés |
 
-**Például**<br>
+**Példa:**<br>
 IsNull ([displayName])                                                                                                
 Igaz értéket ad vissza, ha az attribútum nincs jelen.
 
@@ -269,7 +268,7 @@ A függvény inverzének neve IsPresent.
 | --- | --- | --- | --- |
 | **kifejezés** |Kötelező |kifejezés |Kiértékelni kívánt kifejezés |
 
-**Például**<br>
+**Példa:**<br>
 IsNullOrEmpty ([displayName])                                               
 Igaz értéket ad vissza, ha az attribútum nincs jelen, vagy üres karakterlánc
 
@@ -285,7 +284,7 @@ Igaz értéket ad vissza, ha az attribútum nincs jelen, vagy üres karakterlán
 | --- | --- | --- | --- |
 | **kifejezés** |Kötelező |kifejezés |Kiértékelni kívánt kifejezés |
 
-**Például**<br>
+**Példa:**<br>
 Switch (IsPresent ([directManager]), [directManager], IsPresent ([skiplevelManager]), [skiplevelManager], IsPresent ([rendező]), [Director])
 
 ---
@@ -313,7 +312,7 @@ Switch (IsPresent ([directManager]), [directManager], IsPresent ([skiplevelManag
 | **attribútum** |Kötelező |Attribútum |Keresendő többértékű attribútum |
 | **index** |Kötelező |Egész szám | Index a Többértékű karakterlánc egyik elemébe|
 
-**Például**<br>
+**Példa:**<br>
 Elem ([proxyAddresses], 1)
 
 ---
@@ -347,7 +346,7 @@ Ha a sztring kevesebb karaktert tartalmaz a numChars megadott számnál, akkor a
 | **Sztring** |Kötelező |Attribútum | A karakterlánc, amelyből karaktereket kell visszaadni |
 | **NumChars** |Kötelező |Egész szám | Egy szám, amely a sztring elejétől (balra) való visszatéréshez szükséges karakterek számát azonosítja.|
 
-**Például**<br>
+**Példa:**<br>
 Left ("John Doe", 3)                                                            
 A "Joh" értéket adja vissza
 
@@ -401,7 +400,7 @@ A "Joh" értéket adja vissza
 | --- | --- | --- | --- |
 | **érték** |Kötelező | Sztring | A dátum és idő karakterlánca támogatott formátumban. Támogatott formátumok: https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx . |
 
-**Például**<br>
+**Példa:**<br>
 * Példa munkanapokra <br>
   Feltételezve, hogy a *ContractEndDate* attribútumot szeretné leképezni a munkaterületről, amely a *2020-12-31-08:00* érték *ACCOUNTEXPIRES* mezőjében szerepel az ad-ben, itt látható, hogyan használhatja ezt a függvényt, és módosíthatja az időzóna-eltolást a területi beállításnak megfelelően. 
   `NumFromDate(Join("", FormatDateTime([ContractEndDate], "yyyy-MM-ddzzz", "yyyy-MM-dd"), "T23:59:59-08:00"))`
@@ -423,7 +422,7 @@ A "Joh" értéket adja vissza
 | --- | --- | --- | --- |
 | **attribútum** |Kötelező |Többértékű attribútum |Több értékkel rendelkező attribútum, amelyből duplikált elemek lesznek eltávolítva|
 
-**Például**<br>
+**Példa:**<br>
 RemoveDuplicates ([proxyAddresses])                                                                                                       
 Egy megtisztított proxyAddress attribútumot ad vissza, amelyben az összes duplikált érték el lett távolítva
 
@@ -579,7 +578,7 @@ Ha a karakterlánc kevesebb, mint szám szót tartalmaz, vagy a sztring nem tart
 | **WordNumber** |Kötelező | Egész szám | Az a szám, amelyből vissza kell adni a Word-számot|
 | **határolójelek** |Kötelező |Sztring| A szavak azonosításához használandó elválasztó karakter (eke) t jelölő sztring|
 
-**Például**<br>
+**Példa:**<br>
 Word ("a gyors barna Róka", 3, "")                                                                                       
 A "barna" értéket adja vissza.
 

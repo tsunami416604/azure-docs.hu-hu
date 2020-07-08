@@ -12,10 +12,9 @@ ms.date: 06/03/2020
 ms.author: curtand
 ms.reviewer: olhaun
 ms.openlocfilehash: 4b2d79b24263a848d146bbbe8d42f23ec28f49b8
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84415882"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>Jelentkezzen be a fiókjába a Microsoft Authenticator alkalmazás használatával
@@ -115,7 +114,7 @@ A munkahelyi vagy iskolai vagy személyes fiókba való bejelentkezéshez szüks
 | Miért nem használhatok több munkahelyi vagy iskolai fiókot a telefonos bejelentkezéshez? | A telefont egyetlen munkahelyi vagy iskolai fiókhoz kell regisztrálni. Ha egy másik munkahelyi vagy iskolai fiókhoz szeretné bekapcsolni a telefonos bejelentkezést, akkor a **Beállítások** lapon törölni kell a fiókját az eszközről. |
 | Be tudok jelentkezni a számítógépre a telefonom használatával? | A számítógép esetében javasoljuk, hogy jelentkezzen be a Windows Hello használatával a Windows 10 rendszeren. A Windows Hello lehetővé teszi az arc, az ujjlenyomat vagy a PIN-kód használatát a bejelentkezéshez. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ha nem sikerül beszereznie a személyes Microsoft-fiók ellenőrzési kódját, tekintse meg az **ellenőrző kód problémáinak elhárítása** című szakaszt a [Microsoft-fiók biztonsági adatok & ellenőrző kódok](https://support.microsoft.com/help/12428/microsoft-account-security-info-verification-codes) című cikkben.
 

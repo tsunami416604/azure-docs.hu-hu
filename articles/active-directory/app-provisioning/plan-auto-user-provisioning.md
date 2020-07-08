@@ -12,10 +12,9 @@ ms.date: 10/17/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
 ms.openlocfilehash: dd5248996661be6d4ace81afd7ab942ab70eb4ff
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/15/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84781633"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Automatikus felhasználóátadást használó üzembe helyezés tervezése
@@ -42,7 +41,7 @@ Az automatikus felhasználó-kiépítés engedélyezésének fő előnyei a köv
 
 * **Csökkentse a költségeket**. Az automatikus felhasználó-kiépítés csökkenti a költségeket azáltal, hogy elkerüli a hatékonyságot és az emberi hibát a manuális kiépítés során. Ez csökkenti az egyéni fejlesztésű felhasználói megoldások, parancsfájlok és naplók igényét.
 
-### <a name="licensing"></a>Licencelés
+### <a name="licensing"></a>Licencek
 
 Az Azure AD bármely alkalmazás önkiszolgáló integrálását teszi lehetővé az alkalmazás-katalógus menüjében található sablonok használatával. A licencekre vonatkozó követelmények teljes listáját az [Azure ad licencelési lapján](https://azure.microsoft.com/pricing/details/active-directory/)tekintheti meg.
 
@@ -66,7 +65,7 @@ Ez a cikk a következő kifejezéseket használja:
 
 ### <a name="training-resources"></a>Erőforrások betanítása
 
-| További források| Hivatkozás és leírás |
+| Erőforrások| Hivatkozás és leírás |
 | - | - |
 | Igény szerinti webináriumok| [Vállalati alkalmazások kezelése az Azure AD-vel](https://info.microsoft.com/CO-AZUREPLAT-WBNR-FY18-03Mar-06-ManageYourEnterpriseApplicationsOption1-MCW0004438_02OnDemandRegistration-ForminBody.html)<br>Ismerje meg, hogyan segítheti az Azure AD az egyszeri bejelentkezést a vállalati SaaS-alkalmazásokhoz és a hozzáférés szabályozására vonatkozó ajánlott eljárásokhoz. |
 | Videók| [Mi a felhasználók üzembe helyezése az aktív Azure-címtárban?](https://youtu.be/_ZjARPpI6NI) <br> [A felhasználók üzembe helyezésének központi telepítése az Active Directory Azure-címtárban](https://youtu.be/pKzyts6kfrw) <br> [A Salesforce integrálása az Azure AD-vel: a felhasználók üzembe helyezésének automatizálása](https://azure.microsoft.com/resources/videos/integrating-salesforce-with-azure-ad-how-to-automate-user-provisioning/) |
@@ -318,7 +317,7 @@ A kiépítés során esetlegesen felmerülő problémák elhárításához tekin
 
 * [Azure AD Connect kiépítési ügynök: verziók kiadásának előzményei](provisioning-agent-release-version-history.md)
 
-#### <a name="resources"></a>További források
+#### <a name="resources"></a>Erőforrások
 
 * [Termékkel kapcsolatos visszajelzés küldése](https://feedback.azure.com/forums/169401-azure-active-directory)
 

@@ -12,10 +12,9 @@ ms.reviewer: jmartens
 ms.date: 03/05/2020
 ms.custom: contperfq4, tracking-python
 ms.openlocfilehash: 13ce9204ad09d2ecb4b149cf50696aa73d927314
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85214366"
 ---
 # <a name="troubleshoot-docker-deployment-of-models-with-azure-kubernetes-service-and-azure-container-instances"></a>Az Azure Kubernetes Service-szel és Azure Container Instances-mel kapcsolatos modellek Docker-telepítésének hibáinak megoldása 

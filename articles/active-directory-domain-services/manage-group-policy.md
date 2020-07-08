@@ -8,14 +8,13 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/09/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: e48c9ae3ff9697faa6c652794df78deb52e94a73
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.openlocfilehash: d9738d3abfdf30e133ae241c497823be349d25da
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84734656"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040078"
 ---
 # <a name="administer-group-policy-in-an-azure-active-directory-domain-services-managed-domain"></a>Csoportházirend felügyelete Azure Active Directory Domain Services felügyelt tartományban
 
@@ -24,8 +23,6 @@ Azure Active Directory Domain Services (Azure AD DS) felhasználói és számít
 Hibrid környezetben a helyszíni AD DS környezetekben konfigurált csoportházirendek nem szinkronizálhatók az Azure AD DS. Az Azure AD DSban található felhasználók vagy számítógépek konfigurációs beállításainak megadásához szerkessze az egyik alapértelmezett csoportházirend-objektumot, vagy hozzon létre egy egyéni GPO-t.
 
 Ez a cikk bemutatja, hogyan telepítheti a Csoportházirend felügyeleti eszközöket, és hogyan szerkesztheti a beépített csoportházirend-objektumokat, és hogyan hozhat létre egyéni csoportházirend-objektumokat.
-
-[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="before-you-begin"></a>Előkészületek
 

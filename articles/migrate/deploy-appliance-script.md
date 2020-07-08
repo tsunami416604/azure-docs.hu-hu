@@ -4,10 +4,9 @@ description: Megtudhatja, hogyan állíthat be egy Azure Migrate készüléket p
 ms.topic: article
 ms.date: 04/16/2020
 ms.openlocfilehash: d5603aaef0a1c3e784f455777302c23e6724fbe7
-ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85052469"
 ---
 # <a name="set-up-an-appliance-with-a-script"></a>Berendezés beállítása parancsfájlsal
@@ -61,7 +60,7 @@ A szkript a következőket teszi:
 
 - Ügynököket és webalkalmazásokat telepít.
 - Telepíti a Windows-szerepköröket, beleértve a Windows aktiválási szolgáltatást, az IIS-t és a PowerShell ISE-t.
-- Letölti és telepíti az IIS újraírható modulját. [További információ](https://www.microsoft.com/download/details.aspx?id=7435).
+- Letölti és telepíti az IIS újraírható modulját. [További információk](https://www.microsoft.com/download/details.aspx?id=7435).
 - Egy beállításkulcs (HKLM) frissítése a Azure Migrate állandó beállításaival.
 - A a következőképpen hozza létre a naplófájlokat és a konfigurációs fájlokat:
     - **Konfigurációs fájlok**:%ProgramData%\Microsoft Azure\Config
@@ -108,7 +107,7 @@ A szkript a következőket teszi:
 
 - Ügynököket és webalkalmazásokat telepít.
 - Telepíti a Windows-szerepköröket, beleértve a Windows aktiválási szolgáltatást, az IIS-t és a PowerShell ISE-t.
-- Letölti és telepíti az IIS újraírható modulját. [További információ](https://www.microsoft.com/download/details.aspx?id=7435).
+- Letölti és telepíti az IIS újraírható modulját. [További információk](https://www.microsoft.com/download/details.aspx?id=7435).
 - Egy beállításkulcs (HKLM) frissítése a Azure Migrate állandó beállításaival.
 - A a következőképpen hozza létre a naplófájlokat és a konfigurációs fájlokat:
     - **Konfigurációs fájlok**:%ProgramData%\Microsoft Azure\Config

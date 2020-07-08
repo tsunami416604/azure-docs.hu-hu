@@ -8,16 +8,15 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: ffc8e1919350c9a14cb53bd243af66fdfa839d04
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
-ms.translationtype: MT
+ms.openlocfilehash: 3099c73849a63ebf490d026db95cedfd1278d735
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85373454"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957579"
 ---
 # <a name="create-a-managed-service-offer"></a>Felügyelt szolgáltatásra vonatkozó ajánlat létrehozása
 
-A felügyelt szolgáltatás segítséget nyújt az [Azure Lighthouse](../../lighthouse/overview.md) -forgatókönyvek engedélyezéséhez. Ha egy ügyfél felügyelt szolgáltatási ajánlatot fogad, akkor az Azure-beli [delegált erőforrás-kezelésre](../../lighthouse/concepts/azure-delegated-resource-management.md)képes erőforrásokat bevezetni. A Kezdés előtt [hozzon létre egy kereskedelmi Piactéri fiókot a partner Centerben](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) , ha még nem tette meg. Győződjön meg róla, hogy a fiókja regisztrálva van a kereskedelmi piactér programban.
+A felügyelt szolgáltatás segítséget nyújt az [Azure Lighthouse](../../lighthouse/overview.md) -forgatókönyvek engedélyezéséhez. Ha egy ügyfél felügyelt szolgáltatási ajánlatot fogad, akkor az Azure-beli [delegált erőforrás-kezelésre](../../lighthouse/concepts/azure-delegated-resource-management.md)képes erőforrásokat bevezetni. A Kezdés előtt [hozzon létre egy kereskedelmi Piactéri fiókot a partner Centerben](create-account.md) , ha még nem tette meg. Győződjön meg róla, hogy a fiókja regisztrálva van a kereskedelmi piactér programban.
 
 A felügyelt szolgáltatások ajánlatának közzétételéhez [ezüst vagy arany szintű Cloud platform kompetenciával](https://partner.microsoft.com/membership/cloud-platform-competency) kell rendelkeznie, vagy [Azure szakértői MSP](https://partner.microsoft.com/membership/azure-expert-msp) -nek kell lennie.
 
@@ -162,7 +161,7 @@ Opcionálisan akár öt videót is hozzáadhat az ajánlat bemutatásához. Ezek
 
 #### <a name="additional-marketplace-listing-resources"></a>További erőforrások listázása a piactéren
 
-- [Ajánlott eljárások a piactér ajánlati listáihoz](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
+- [Ajánlott eljárások a piactér ajánlati listáihoz](../gtm-offer-listing-best-practices.md)
 
 A folytatás előtt válassza a **Piszkozat mentése** lehetőséget.
 
@@ -264,7 +263,7 @@ Amikor egy ügyfél üzembe helyezi az ajánlatot, az Azure-beli [delegált erő
 
 Bármikor [közzéteheti az ajánlat frissített verzióját](update-existing-offer.md) . Előfordulhat például, hogy új szerepkör-definíciót szeretne hozzáadni egy korábban közzétett ajánlathoz. Ha így tesz, a már hozzáadott ügyfelek egy ikont láthatnak a Azure Portal [**szolgáltatók**](../../lighthouse/how-to/view-manage-service-providers.md) lapján, amely lehetővé teszi, hogy a frissítés elérhető legyen. Minden ügyfél áttekintheti a módosításokat, és eldöntheti, hogy szeretné-e frissíteni az új verzióra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Meglévő ajánlat frissítése a kereskedelmi piactéren](./update-existing-offer.md)
 - [További tudnivalók az Azure Lighthouse-ról](../../lighthouse/overview.md)

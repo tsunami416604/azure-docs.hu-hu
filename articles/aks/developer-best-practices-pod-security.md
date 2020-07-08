@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: zarhoads
 ms.openlocfilehash: 3a62dcbbec90ec73ded722a6efbbd5907fb21f9f
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84674040"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások a pod Security számára az Azure Kubernetes szolgáltatásban (ak)
@@ -103,7 +102,7 @@ A Key Vault a titkokat, például a hitelesítő adatokat, a Storage-fiók kulcs
 
 A Secrets Store-ban található Azure Key Vault a 1,16-es vagy újabb Kubernetes-verziót használó Linux-csomópontokhoz és hüvelyekhez használható. A Windows-csomópontok és a hüvelyek esetében a 1,18-es vagy újabb Kubernetes-verzió szükséges.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez a cikk a hüvely biztonságossá tételére koncentrál. Ezen területek némelyikének megvalósításához tekintse meg a következő cikkeket:
 

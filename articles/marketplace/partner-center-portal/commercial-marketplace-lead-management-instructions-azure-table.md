@@ -7,12 +7,11 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: c115859c24b2c26ab2c221c4fdc35cb442d652b1
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: MT
+ms.openlocfilehash: fb53b0fe28f48f5f240e470aa5256ac1c277686e
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848014"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957341"
 ---
 # <a name="use-azure-table-storage-to-manage-commercial-marketplace-leads"></a>Az Azure Table Storage használata a kereskedelmi Piactéri érdeklődők felügyeletéhez
 
@@ -26,11 +25,11 @@ Ha az Ügyfélkapcsolat-kezelési (CRM) rendszer nincs kifejezetten támogatva a
 
     1. Válassza az **+ erőforrás létrehozása** lehetőséget a bal oldali menüsorban. Megjelenik az **új** ablaktábla a jobb oldalon.
     1. Válassza a **tároló** lehetőséget az **új** ablaktáblán. Megjelenik egy **Kiemelt** lista a jobb oldalon.
-    1. A fiók létrehozásának megkezdéséhez válassza a **Storage-fiók** lehetőséget. Kövesse a Storage- [fiók létrehozása](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)című témakör utasításait.
+    1. A fiók létrehozásának megkezdéséhez válassza a **Storage-fiók** lehetőséget. Kövesse a Storage- [fiók létrehozása](../../storage/common/storage-quickstart-create-account.md?tabs=azure-portal)című témakör utasításait.
 
         ![Azure Storage-fiók létrehozásának lépései](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-create.png)
 
-        További információ a Storage-fiókokról: gyors [útmutató](https://docs.microsoft.com/azure/storage/). További információ a Storage díjszabásáról: [Storage díjszabása](https://azure.microsoft.com/pricing/details/storage/).
+        További információ a Storage-fiókokról: gyors [útmutató](../../storage/index.yml). További információ a Storage díjszabásáról: [Storage díjszabása](https://azure.microsoft.com/pricing/details/storage/).
 
 1. Várjon, amíg megtörténik a Storage-fiók üzembe helyezése. Ez a folyamat általában néhány percet vesz igénybe. 
 
@@ -71,7 +70,7 @@ A példa létrehoz egy folyamatot, amely automatikusan értesítő e-mailt küld
 
    ![Saját folyamatok + ütemezett – üresről](./media/commercial-marketplace-lead-management-instructions-azure-table/ms-flow-scheduled-from-blank.png)
 
-1. Az **ütemezett folyamat létrehozása** ablakban az **ismétlődéshez**válassza az **1** értéket az intervallum és az **óra** értéknél. Adja meg a folyamat nevét is, ha szeretné. Kattintson a **Létrehozás** gombra.
+1. Az **ütemezett folyamat létrehozása** ablakban az **ismétlődéshez**válassza az **1** értéket az intervallum és az **óra** értéknél. Adja meg a folyamat nevét is, ha szeretné. Válassza a **Létrehozás** lehetőséget.
 
    >[!NOTE]
    >Bár ez a példa egy órás időközt használ, kiválaszthatja az üzleti igényeinek leginkább megfelelő intervallumot és gyakoriságot.
@@ -107,7 +106,7 @@ A példa létrehoz egy folyamatot, amely automatikusan értesítő e-mailt küld
 
    A **Létrehozás**gombra kattintva megjelenik az **entitások beolvasása** ablak. Itt válassza a **Speciális beállítások megjelenítése**lehetőséget, és adja meg a következő mezők adatait:
 
-   * **Tábla**: válassza ki a tábla nevét ( [tábla létrehozása](#create-a-table-in-your-storage-account)). Az alábbi képen látható, hogy mikor van kiválasztva a "marketplaceleads" tábla erre a példára.
+   * **Tábla**: válassza ki a tábla nevét ( [tábla létrehozása](#create-a-table-in-your-storage-account)). Az alábbi képen látható, hogy mikor `marketplaceleads` van kiválasztva a táblázat a példához.
 
      ![Entitások beolvasása ablak](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities.png)
 

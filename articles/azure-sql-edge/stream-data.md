@@ -10,10 +10,9 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
 ms.openlocfilehash: 866c74fbdfcfcef7cbb7d6cddb360c4265a2f776
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84669613"
 ---
 # <a name="data-streaming-in-azure-sql-edge-preview"></a>Adatfolyamok az Azure SQL Edge-ben (előzetes verzió)
@@ -66,7 +65,7 @@ A következő korlátozások és korlátozások érvényesek a T-SQL streamingre
 - Egy adott időpontban csak egy folyamatos átviteli feladatok lehetnek aktívak. A már futó feladatokat le kell állítani egy másik feladat elindítása előtt.
 - A folyamatos átviteli feladatok végrehajtása egyetlen szálból áll. Ha a folyamatos átviteli feladatok több lekérdezést is tartalmaznak, a rendszer a lekérdezéseket soros sorrendben értékeli ki.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Stream Analytics-feladatok létrehozása az Azure SQL Edge-ben (előzetes verzió)](create-stream-analytics-job.md)
 - [A stream-feladatokhoz társított metaadatok megtekintése az Azure SQL Edge-ben (előzetes verzió)](streaming-catalog-views.md)

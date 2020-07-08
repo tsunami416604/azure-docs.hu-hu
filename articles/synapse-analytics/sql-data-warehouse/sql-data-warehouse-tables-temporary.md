@@ -11,10 +11,9 @@ ms.date: 04/01/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.openlocfilehash: 61cc351470c0446b58d83d2d7f9c998d959c3649
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85414402"
 ---
 # <a name="temporary-tables-in-synapse-sql-pool"></a>Ideiglenes táblák a szinapszis SQL-készletben
@@ -37,7 +36,7 @@ Az SQL Pool-erőforrásban az ideiglenes táblák teljesítménybeli előnyt biz
 
 ### <a name="create-a-temporary-table"></a>Ideiglenes tábla létrehozása
 
-Az ideiglenes táblákat a táblanév előtaggal való előállításával hozza létre a rendszer `#` .  Példa:
+Az ideiglenes táblákat a táblanév előtaggal való előállításával hozza létre a rendszer `#` .  Például:
 
 ```sql
 CREATE TABLE #stats_ddl

@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.date: 06/10/2020
 ms.author: jingwang
 ms.openlocfilehash: ac9dff4b16d8ba1b346a2827f3b5487dbf97392e
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84669834"
 ---
 # <a name="copy-data-from-sybase-using-azure-data-factory"></a>Adatok másolása Sybase használatával Azure Data Factory
@@ -69,7 +68,7 @@ A Sybase társított szolgáltatás a következő tulajdonságokat támogatja:
 | jelszó | Adja meg a felhasználónévhez megadott felhasználói fiókhoz tartozó jelszót. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). |Yes |
 | Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . A saját üzemeltetésű Integration Runtime az [Előfeltételek](#prerequisites)szakaszban említettek szerint kell megadni. |Yes |
 
-**Például**
+**Példa:**
 
 ```json
 {
@@ -137,7 +136,7 @@ A Sybase adatainak másolásához a másolási tevékenység **forrása** szakas
 | típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **SybaseSource** | Yes |
 | lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Példa: `"SELECT * FROM MyTable"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
 
-**Például**
+**Példa:**
 
 ```json
 "activities":[
@@ -183,5 +182,5 @@ A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevék
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A Azure Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

@@ -8,10 +8,9 @@ ms.date: 01/02/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 1da688dfb00b26ca6b561d5aa0fb548c221381c5
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85514579"
 ---
 # <a name="connect-remotely-to-your-storsimple-8000-series-device"></a>Távoli kapcsolódás a StorSimple 8000 Series eszközhöz
@@ -236,7 +235,7 @@ Hajtsa végre az alábbi eljárást azon a számítógépen, amelyről a távoli
    
     ![PowerShell-távelérés a HTTPS és a TLS használatával](./media/storsimple-remote-connect/HCS_PSRemotingUsingHTTPSAndSSL.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ a [Windows PowerShell a StorSimple-eszköz felügyeletéhez való használatáról](storsimple-8000-windows-powershell-administration.md).
 * További információ [a StorSimple Eszközkezelő szolgáltatás a StorSimple-eszköz felügyeletéhez való használatáról](storsimple-8000-manager-service-administration.md).

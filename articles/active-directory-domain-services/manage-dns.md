@@ -8,14 +8,13 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/16/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 7841db3138af2f8cb1efc03508b9e7c0bdb71324
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.openlocfilehash: b48fb62532402338fdf53cd6f9b15bac812c3c2c
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84734639"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040214"
 ---
 # <a name="administer-dns-and-create-conditional-forwarders-in-an-azure-active-directory-domain-services-managed-domain"></a>DNS felügyelete és feltételes továbbítók létrehozása Azure Active Directory Domain Services felügyelt tartományban
 
@@ -23,7 +22,7 @@ A Azure Active Directory Domain Services (Azure AD DS) egyik kulcsfontosságú �
 
 A saját alkalmazások és szolgáltatások futtatásakor előfordulhat, hogy DNS-rekordokat kell létrehoznia a tartományhoz nem csatlakoztatott gépekhez, konfigurálnia kell a terheléselosztó virtuális IP-címeit, vagy külső DNS-továbbítókat kell beállítania. Az *HRE DC-rendszergazdák* csoportba tartozó felhasználók DNS-rendszergazdai jogosultságokat kapnak az Azure AD DS felügyelt tartományhoz, és létrehozhatnak és szerkeszthetnek egyéni DNS-rekordokat.
 
-Hibrid környezetben a más DNS-névterekben konfigurált DNS-zónák és-rekordok, például a helyszíni AD DS környezetek nem szinkronizálhatók az Azure AD DS. Más DNS-névtérben lévő nevesített erőforrások feloldásához hozzon létre és használjon olyan feltételes továbbítókat, amelyek a környezetében meglévő DNS-kiszolgálókra mutatnak.
+Hibrid környezetben a más DNS-névterekben (például helyszíni AD DS környezetben) konfigurált DNS-zónák és-rekordok nem szinkronizálhatók a felügyelt tartományba. Más DNS-névtérben lévő nevesített erőforrások feloldásához hozzon létre és használjon olyan feltételes továbbítókat, amelyek a környezetében meglévő DNS-kiszolgálókra mutatnak.
 
 Ez a cikk bemutatja, hogyan telepítheti a DNS-kiszolgálói eszközöket, majd a DNS-konzollal kezelheti a rekordokat, és hogyan hozhat létre feltételes továbbítókat az Azure AD DSban.
 
@@ -45,7 +44,7 @@ A cikk elvégzéséhez a következő erőforrásokra és jogosultságokra van sz
 
 ## <a name="install-dns-server-tools"></a>DNS-kiszolgálói eszközök telepítése
 
-Az Azure AD DS DNS-rekordjainak létrehozásához és módosításához telepítenie kell a DNS-kiszolgáló eszközeit. Ezek az eszközök a Windows Server szolgáltatásként is telepíthetők. A felügyeleti eszközök Windows-ügyfélre történő telepítésével kapcsolatos további információkért lásd: install [Távoli kiszolgálófelügyelet eszközei (RSAT)][install-rsat].
+A felügyelt tartományokban lévő DNS-rekordok létrehozásához és módosításához telepítenie kell a DNS-kiszolgáló eszközeit. Ezek az eszközök a Windows Server szolgáltatásként is telepíthetők. A felügyeleti eszközök Windows-ügyfélre történő telepítésével kapcsolatos további információkért lásd: install [Távoli kiszolgálófelügyelet eszközei (RSAT)][install-rsat].
 
 1. Jelentkezzen be a felügyeleti virtuális gépre. A Azure Portal használatával történő kapcsolódás lépéseiért lásd: [Kapcsolódás Windows Server rendszerű virtuális géphez][connect-windows-server-vm].
 1. Ha a **Kiszolgálókezelő** alapértelmezés szerint nem nyílik meg, amikor bejelentkezik a virtuális gépre, válassza a **Start** menüt, majd a **Kiszolgálókezelő**elemet.
@@ -58,7 +57,7 @@ Az Azure AD DS DNS-rekordjainak létrehozásához és módosításához telepít
 
     ![Válassza a DNS-kiszolgáló eszközeinek telepítését az elérhető szerepkör-felügyeleti eszközök listájáról](./media/manage-dns/install-dns-tools.png)
 
-1. A **jóváhagyás** lapon válassza a **telepítés**lehetőséget. A dnsGroup házirend-kezelési eszközeinek telepítése akár egy-két percet is igénybe vehet.
+1. A **jóváhagyás** lapon válassza a **telepítés**lehetőséget. A DNS-kiszolgálói eszközök telepítéséhez egy-két percet is igénybe vehet.
 1. A szolgáltatás telepítésének befejezése után a **Bezárás** gombra kattintva lépjen ki a **szerepkörök és szolgáltatások hozzáadása** varázslóból.
 
 ## <a name="open-the-dns-management-console-to-administer-dns"></a>A DNS-kezelő konzol megnyitása a DNS felügyeletéhez
@@ -82,7 +81,7 @@ A DNS-kiszolgálói eszközök telepítése után a felügyelt tartományon fel�
 
 ## <a name="create-conditional-forwarders"></a>Feltételes továbbítók létrehozása
 
-Az Azure AD DS DNS-zónának csak a felügyelt tartomány zónáját és rekordjait kell tartalmaznia. Ne hozzon létre további zónákat az Azure AD DSban más DNS-névterekben található nevesített erőforrások feloldásához. Ehelyett a felügyelt tartomány feltételes továbbítói segítségével adja meg, hogy a DNS-kiszolgáló hová szeretné feloldani az adott erőforráshoz tartozó címeket.
+Az Azure AD DS DNS-zónának csak a felügyelt tartomány zónáját és rekordjait kell tartalmaznia. Ne hozzon létre további zónákat a felügyelt tartományban a más DNS-névterekben található nevesített erőforrások feloldásához. Ehelyett a felügyelt tartomány feltételes továbbítói segítségével adja meg, hogy a DNS-kiszolgáló hová szeretné feloldani az adott erőforráshoz tartozó címeket.
 
 A feltételes továbbító egy olyan konfigurációs lehetőség a DNS-kiszolgálón, amely lehetővé teszi egy DNS-tartomány, például a *contoso.com*megadását a lekérdezések továbbításához. Ahelyett, hogy a helyi DNS-kiszolgáló megpróbálja feloldani az adott tartományban lévő rekordok lekérdezéseit, a DNS-lekérdezések továbbítása az adott tartományhoz beállított DNS-re történik. Ez a konfiguráció biztosítja a megfelelő DNS-rekordok visszaadását, mivel nem hoz létre olyan helyi DNS-zónát, amely duplikált rekordokkal rendelkezik a felügyelt tartományban, hogy azok tükrözzék ezeket az erőforrásokat.
 

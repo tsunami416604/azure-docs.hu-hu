@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: cabd3f7693c6b6b86bf0324bdafdfe1377d1ece8
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84711884"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>A VMware virtuális gépek és fizikai kiszolgálók másodlagos helyre való vész-helyreállításának támogatási mátrixa
@@ -86,7 +85,7 @@ Vendég virtuális gép – több hálózati adapter | Igen
 **Storage (gazdagép)** | **Támogatott** 
 --- | --- 
 NFS | Yes 
-SMB 3.0 | N/A 
+SMB 3.0 | N.A. 
 SAN (ISCSI) | Yes 
 Több elérési út (MPIO) | Yes 
 
@@ -95,8 +94,8 @@ Több elérési út (MPIO) | Yes
 **Konfigurálás** | **Támogatott** 
 --- | --- 
 VMDK | Yes 
-VHD/VHDX | N/A 
-2. generációs VM | N/A 
+VHD/VHDX | N.A. 
+2. generációs VM | N.A. 
 Megosztott fürtözött lemez | Yes 
 Titkosított lemez | No 
 UEFI| Yes 
@@ -108,7 +107,7 @@ Kötet szalagos lemezzel > 1 TB<br/><br/> LVM | Yes
 Tárolóhelyek | No 
 Lemez gyors hozzáadása/eltávolítása | Yes 
 Lemez kizárása | Yes 
-Több elérési út (MPIO) | N/A 
+Több elérési út (MPIO) | N.A. 
 
 ## <a name="vaults"></a>Tárolók
 
@@ -124,7 +123,7 @@ A mobilitási szolgáltatás koordinálja a helyszíni VMware-kiszolgálók, a f
 | **Frissítés** | **Részletek** |
 | --- | --- |
 |Felderítő frissítések | A Scout frissítései összegző jellegűek. <br/><br/> A legújabb Scout [-frissítések megismerése és letöltése](vmware-physical-secondary-disaster-recovery.md#updates) |
-|Összetevő frissítései | A Scout frissítései tartalmazzák az összes összetevő frissítéseit, beleértve az RX-kiszolgálót, a konfigurációs kiszolgálót, a folyamat-és fő célkiszolgáló, a vContinuum-kiszolgálók és a használni kívánt forráskiszolgáló-kiszolgálókat.<br/><br/> [További információ](vmware-physical-secondary-disaster-recovery.md#download-and-install-component-updates).|
+|Összetevő frissítései | A Scout frissítései tartalmazzák az összes összetevő frissítéseit, beleértve az RX-kiszolgálót, a konfigurációs kiszolgálót, a folyamat-és fő célkiszolgáló, a vContinuum-kiszolgálók és a használni kívánt forráskiszolgáló-kiszolgálókat.<br/><br/> [További információk](vmware-physical-secondary-disaster-recovery.md#download-and-install-component-updates).|
 
 
 ## <a name="next-steps"></a>További lépések

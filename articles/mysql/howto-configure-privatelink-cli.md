@@ -7,10 +7,9 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.openlocfilehash: d99cb634278e141bc156357feb686198f713b198
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84673632"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-cli"></a>Azure Database for MySQL magánhálózati hivatkozás létrehozása és kezelése a parancssori felület használatával
@@ -191,7 +190,7 @@ Ha már nincs rá szükség, az az Group delete paranccsal eltávolíthatja az e
 az group delete --name myResourceGroup --yes 
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - További információ az [Azure Private Endpoint szolgáltatásról](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)
 
 <!-- Link references, to text, Within this same GitHub repo. -->

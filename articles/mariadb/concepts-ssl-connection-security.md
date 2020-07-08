@@ -7,10 +7,9 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 06/02/2020
 ms.openlocfilehash: 4111b0b01690097535412205b60619172e2c100a
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84416655"
 ---
 # <a name="ssltls-connectivity-in-azure-database-for-mariadb"></a>SSL/TLS-kapcsolat a Azure Database for MariaDB
@@ -50,7 +49,7 @@ Ha például a TLS 1,0-es minimális beállítás értéke a TLS, azt jelenti, h
 
 Ha meg szeretné tudni, hogyan állíthatja be a TLS-beállítást a Azure Database for MariaDBhoz, tekintse meg a [TLS-beállítás konfigurálását](howto-tls-configurations.md)ismertető témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - További információ a [kiszolgáló tűzfalszabályok szabályairól](concepts-firewall-rules.md)
 - Ismerje meg, hogyan [konfigurálhatja az SSL](howto-configure-ssl.md) -t
 - Útmutató a [TLS konfigurálásához](howto-tls-configurations.md)

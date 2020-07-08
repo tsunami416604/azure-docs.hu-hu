@@ -14,10 +14,9 @@ ms.date: 08/12/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 40c851e5ff5fc83ccf6b6d67e319bb97bd860bd5
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84669103"
 ---
 # <a name="run-sql-server-vm-on-an-azure-dedicated-host"></a>SQL Server VM futtatása egy dedikált Azure-gazdagépen 
@@ -33,7 +32,7 @@ Az [Azure dedikált gazdagép](/azure/virtual-machines/windows/dedicated-hosts) 
 - A virtuális gépek méretezési csoportjai jelenleg nem támogatottak a dedikált gazdagépeken.
 - A következő virtuálisgép-sorozatok támogatottak: DSv3 és ESv3. 
 
-## <a name="licensing"></a>Licencelés
+## <a name="licensing"></a>Licencek
 
 Két különböző licencelési lehetőség közül választhat, ha a SQL Server VM egy Azure dedikált gazdagépen helyezi el. 
 

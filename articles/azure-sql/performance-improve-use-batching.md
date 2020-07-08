@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: genemi
 ms.date: 01/25/2019
 ms.openlocfilehash: 01e1c63a4cfea367a0f721ac33986abade8b5b35
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84343829"
 ---
 # <a name="how-to-use-batching-to-improve-azure-sql-database-and-azure-sql-managed-instance-application-performance"></a>A kötegelt feldolgozás használata az Azure SQL Database és az Azure SQL felügyelt példányok alkalmazásának teljesítményének növeléséhez
@@ -212,7 +211,7 @@ A tábla értékű paraméterekkel kapcsolatos további információkért lásd:
 
 ### <a name="sql-bulk-copy"></a>SQL tömeges másolás
 
-Az SQL tömeges másolás egy másik módszer, amellyel nagy mennyiségű adattal lehet beszúrni a céladatbázisbe. A .NET-alkalmazások használhatják a **SqlBulkCopy** osztályt a tömeges beszúrási műveletek végrehajtásához. A **SqlBulkCopy** hasonló a parancssori eszközhöz, a **BCP. exe fájlhoz**vagy a Transact-SQL-utasításhoz, **bulk INSERT**. A következő mintakód bemutatja, hogyan lehet tömegesen másolni a forrás **DataTable**, Table, a Destination (sajáttábla) táblába a sorokat.
+Az SQL tömeges másolás egy másik módszer, amellyel nagy mennyiségű adattal lehet beszúrni a céladatbázisbe. A .NET-alkalmazások használhatják a **SqlBulkCopy** osztályt a tömeges beszúrási műveletek végrehajtásához. A **SqlBulkCopy** a parancssori eszközhöz, **Bcp.exehoz **vagy a Transact-SQL-utasításhoz hasonlóan működik, **bulk INSERT**. A következő mintakód bemutatja, hogyan lehet tömegesen másolni a forrás **DataTable**, Table, a Destination (sajáttábla) táblába a sorokat.
 
 ```csharp
 using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
@@ -666,6 +665,6 @@ Az alábbi lista összefoglalja a cikkben tárgyalt kötegelt javaslatokat:
 * Kerülje az egyetlen táblán működő kötegek párhuzamos végrehajtását egyetlen adatbázisban. Ha úgy dönt, hogy egyetlen köteget oszt szét több munkavégző szál között, futtasson teszteket a szálak ideális számának megállapításához. Egy meghatározatlan küszöbérték után több szál csökkenti a teljesítményt, és nem növeli.
 * További forgatókönyvek esetén érdemes lehet a méret és az idő pufferelését figyelembe venni a Batch-feladatok végrehajtásához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez a cikk arra összpontosít, hogy miként javítható az alkalmazások teljesítménye és méretezhetősége az adatbázis-létrehozással kapcsolatos tervezési és kódolási technikákban. Ez azonban csak egy tényező a teljes stratégiában. A teljesítmény és a méretezhetőség javítása érdekében tekintse meg az [adatbázis teljesítményével kapcsolatos útmutatást](database/performance-guidance.md) , valamint [a rugalmas készletek árának és teljesítményének szempontjait](database/elastic-pool-overview.md).

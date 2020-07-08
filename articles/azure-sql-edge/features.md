@@ -10,10 +10,9 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
 ms.openlocfilehash: 34d2ba05b00ab92066bc7fa3ccd0b7b2aa59e15c
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84669637"
 ---
 # <a name="supported-features-of-azure-sql-edge-preview"></a>Az Azure SQL Edge támogatott funkciói (előzetes verzió) 
@@ -108,7 +107,7 @@ Az alábbi lista az Azure SQL Edge által jelenleg nem támogatott Linux-funkci�
 | &nbsp; | Distributed Replay. |
 | **Kezelhetőség** | SQL Server segédprogram-vezérlő pont. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure SQL Edge üzembe helyezése](deploy-portal.md)
 - [Az Azure SQL Edge konfigurálása](configure.md)

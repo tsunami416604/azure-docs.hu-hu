@@ -11,10 +11,9 @@ ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: rohink
 ms.openlocfilehash: d84c4a9af366e9032604aef5531742eb790bb571
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84711680"
 ---
 # <a name="enable-resource-logging-in-azure-traffic-manager"></a>Erőforrás-naplózás engedélyezése az Azure-ban Traffic Manager
@@ -72,7 +71,7 @@ Az alábbi táblázat az Azure Traffic Manager-profil erőforrásához tartozó 
 |----|----|---|---|
 |**Mező neve**|**Mező típusa**|**Definíció**|**Példa**|
 |Végpontneve|Sztring|Annak az Traffic Manager végpontnak a neve, amelynek az állapotát rögzíti a rendszer.|*myPrimaryEndpoint*|
-|status|Sztring|A kipróbált Traffic Manager végpont állapota. Az állapot lehet akár **felfelé** , akár **lefelé**is.|**Fel**|
+|Állapot|Sztring|A kipróbált Traffic Manager végpont állapota. Az állapot lehet akár **felfelé** , akár **lefelé**is.|**Fel**|
 |||||
 
 ## <a name="next-steps"></a>További lépések

@@ -14,10 +14,9 @@ ms.date: 06/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: d7a487b105c8edc34d9427de3b8ca6738da1855a
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84672102"
 ---
 # <a name="available-skus-for-hli"></a>HLI-hez elérhető termékváltozatok
@@ -42,7 +41,7 @@ Az Azure (nagyméretű példányok) szolgáltatás 4. változatán alapuló SAP 
 
 [SAP HANA a HANA Large instances listához tartozó hitelesített SKU](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) -ket, például:
 
-| SAP-megoldás | Modell | Memory (Memória) | Tárolás | Rendelkezésre állás |
+| SAP-megoldás | Modell | Memory (Memória) | Storage | Rendelkezésre állás |
 | --- | --- | --- | --- | --- |
 | [OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2185), [OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2265) | SAP HANA az Azure S96<br /> – 2 x Intel® Xeon® processzor E7 – 8890 v4 <br /> 48 CPU-magok és 96 CPU-szálak |  768 GB |  3,0 TB | Elérhető |
 | [OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2186), [OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2269) | SAP HANA az Azure S224<br /> – 4 x Intel® Xeon® Platinum 8276 processzor <br /> 112 CPU-magok és 224 CPU-szálak |  3,0 TB |  6,3 TB | Elérhető |
@@ -72,7 +71,7 @@ Sok esetben ezek az ügyfél-specifikus kiszolgálói konfigurációk több mem�
 
 Emellett a következő nagyméretű standard SKU-t, de az SAP-t még nem minősítette, elérhetők és a Microsoft árlista a vásárláshoz:
 
- | Modell | Teljes memória | Memória DRAM | Memória Optane | Tárolás | Rendelkezésre állás |
+ | Modell | Teljes memória | Memória DRAM | Memória Optane | Storage | Rendelkezésre állás |
 | --- | --- | --- | --- | --- | --- |
 | SAP HANA az Azure S224oo<br /> – 4 x Intel® Xeon® Platinum 8276 processzor <br /> 112 CPU-magok és 224 CPU-szálak | 4,5 TB |  1,5 TB |  3,0 TB | 8,4 TB | Elérhető |
 | SAP HANA az Azure S224om<br /> – 4 x Intel® Xeon® Platinum 8276 processzor <br /> 112 CPU-magok és 224 CPU-szálak | 6,0 TB |  3,0 TB |  3,0 TB | 10,5 TB | Elérhető |

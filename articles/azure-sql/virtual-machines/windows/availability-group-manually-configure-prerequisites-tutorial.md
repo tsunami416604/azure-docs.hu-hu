@@ -15,10 +15,9 @@ ms.date: 03/29/2018
 ms.author: mikeray
 ms.custom: seo-lt-2019
 ms.openlocfilehash: b72e894b7280a2d3e0fa978125e53ae79b2d20e3
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84669358"
 ---
 # <a name="prerequisites-for-creating-always-on-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Always On rendelkezésre állási csoportok létrehozásának előfeltételei az Azure-beli SQL Serveron Virtual Machines
@@ -54,7 +53,7 @@ Rendelkeznie kell Azure-fiókkal. [Megnyithat egy ingyenes Azure-fiókot](https:
    ![Erőforráscsoport](./media/availability-group-manually-configure-prerequisites-tutorial-/01-resourcegroupsymbol.png)
 
 4. Válassza az **erőforráscsoport**lehetőséget.
-5. Kattintson a **Létrehozás** gombra.
+5. Válassza a **Létrehozás** lehetőséget.
 6. Az **erőforráscsoport neve**alatt adja meg az erőforráscsoport nevét. Írja be például az **SQL-ha-RG**értéket.
 7. Ha több Azure-előfizetéssel rendelkezik, ellenőrizze, hogy az előfizetés az Azure-előfizetés, amelyben létre kívánja hozni a rendelkezésre állási csoportot.
 8. Válasszon ki egy helyet. A hely az az Azure-régió, ahol létre szeretné hozni a rendelkezésre állási csoportot. Ez a cikk egy Azure-beli hely összes erőforrását felépíti.
@@ -99,7 +98,7 @@ A virtuális hálózat létrehozása a Azure Portalban:
 
    A példa az alhálózati név **rendszergazdáját**használja. Ez az alhálózat a tartományvezérlők számára érhető el.
 
-5. Kattintson a **Létrehozás** gombra.
+5. Válassza a **Létrehozás** lehetőséget.
 
    ![A virtuális hálózat konfigurálása](./media/availability-group-manually-configure-prerequisites-tutorial-/06-configurevirtualnetwork.png)
 
@@ -232,7 +231,7 @@ A következő lépésekben konfigurálja az **ad-Primary-DC** gépet a Corp.cont
     ![Szerepkörök hozzáadása párbeszédpanel](./media/availability-group-manually-configure-prerequisites-tutorial-/23-addroles.png)
 
 7. Kattintson a **Tovább gombra** , amíg el nem éri a **megerősítő** szakaszt. Jelölje be a **célkiszolgáló automatikus újraindítása, ha szükséges** jelölőnégyzetet.
-8. Válassza az **Install** (Telepítés) lehetőséget.
+8. Válassza a **Telepítés** gombot.
 9. A szolgáltatások telepítésének befejezését követően térjen vissza a **Kiszolgálókezelő** irányítópultra.
 10. Válassza az új **AD DS** lehetőséget a bal oldali ablaktáblán.
 11. A sárga figyelmeztető sávban válassza a **továbbiak** hivatkozást.
@@ -248,7 +247,7 @@ A következő lépésekben konfigurálja az **ad-Primary-DC** gépet a Corp.cont
     | **Tartományvezérlő beállításai** |**Címtárszolgáltatások helyreállító módjának jelszava** = contoso! 0000<br/>**Jelszó megerősítése** = contoso! 0000 |
 
 14. A **tovább** gombra kattintva megtekintheti a varázsló többi lapját. Az **Előfeltételek ellenőrzése** lapon győződjön meg arról, hogy a következő üzenet jelenik meg: az **összes előfeltétel-ellenőrzés sikeresen átadva**. Áttekintheti a vonatkozó figyelmeztető üzeneteket, de lehetséges, hogy folytathatja a telepítést.
-15. Válassza az **Install** (Telepítés) lehetőséget. Az **ad-Primary-DC** virtuális gép automatikusan újraindul.
+15. Válassza a **Telepítés** gombot. Az **ad-Primary-DC** virtuális gép automatikusan újraindul.
 
 ### <a name="note-the-ip-address-of-the-primary-domain-controller"></a>Jegyezze fel az elsődleges tartományvezérlő IP-címét.
 
@@ -554,6 +553,6 @@ Hozzon létre egy fiókot a rendszerfiókhoz, és adja meg a megfelelő engedél
    GO 
    ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [SQL Server always on rendelkezésre állási csoport létrehozása az Azure-ban Virtual Machines](availability-group-manually-configure-tutorial.md)
