@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: robinsh
 ms.openlocfilehash: 60d0ef30a1c7d948a9e837a8bc37c76ace415545
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82024965"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-cli"></a>Az eszközök és modulok automatikus IoT az Azure CLI használatával
@@ -79,7 +78,7 @@ A célként megadott tartalom-és metrikai lekérdezések JSON-dokumentumokként
 }
 ```
 
-Az automatikus modulok konfigurációi ugyanúgy működnek, mint a `moduleContent` `deviceContent`helyett.
+Az automatikus modulok konfigurációi ugyanúgy működnek, mint `moduleContent` a helyett `deviceContent` .
 
 ```json
 {
@@ -105,7 +104,7 @@ Példa a metrikus lekérdezésekre:
 }
 ```
 
-A modulok metrikai lekérdezései hasonlóak az eszközök lekérdezéséhez is, de a `moduleId` következőhöz választott: `devices.modules`. Például: 
+A modulok metrikai lekérdezései hasonlóak az eszközök lekérdezéséhez is, de a következőhöz választott: `moduleId` `devices.modules` . Például: 
 
 ```json
 {
@@ -128,7 +127,7 @@ Konfiguráció létrehozásához használja a következő parancsot:
      --metrics [metric queries]
 ```
 
-* --**config-ID** – az IoT hub-ban létrehozandó konfiguráció neve. Adjon egy egyedi nevet a konfigurációnak, amely akár 128 kisbetűt is tartalmazhat. Kerülje a szóközöket, és a következő `& ^ [ ] { } \ | " < > /`érvénytelen karaktereket:.
+* --**config-ID** – az IoT hub-ban létrehozandó konfiguráció neve. Adjon egy egyedi nevet a konfigurációnak, amely akár 128 kisbetűt is tartalmazhat. Kerülje a szóközöket, és a következő érvénytelen karaktereket: `& ^ [ ] { } \ | " < > /` .
 
 * --**címkék** – a konfiguráció nyomon követéséhez címkéket adhat hozzá. A címkék név, érték párok, amelyek leírják az üzemelő példányt. Példa: `HostPlatform, Linux` vagy `Version, 3.0.1`
 
@@ -172,11 +171,11 @@ az iot hub configuration show-metric --config-id [configuration id] \
 
 * --**config-ID** – az IoT hub-ban található központi telepítés neve.
 
-* --**metrika – azonosító** – annak a metrikának a neve, amelyre vonatkozóan meg szeretné jeleníteni az eszköz-azonosítók vagy a modul-azonosítók listáját, például `appliedCount`:.
+* --**metrika – azonosító** – annak a metrikának a neve, amelyre vonatkozóan meg szeretné jeleníteni az eszköz-azonosítók vagy a modul-azonosítók listáját, például: `appliedCount` .
 
-* --a központi telepítés létezését biztosító IoT **hub neve.** A hubhoz a jelenlegi előfizetésben kell lennie. Váltson a kívánt előfizetésre a paranccsal `az account set -s [subscription name]`.
+* --a központi telepítés létezését biztosító IoT **hub neve.** A hubhoz a jelenlegi előfizetésben kell lennie. Váltson a kívánt előfizetésre a paranccsal `az account set -s [subscription name]` .
 
-* --**metrikus típus** – a metrika típusa lehet `system` vagy. `user`  A rendszer mérőszámai `targetedCount` a `appliedCount`és a. Minden más metrika felhasználói metrika.
+* --**metrikus típus** – a metrika típusa lehet `system` vagy `user` .  A rendszer mérőszámai a `targetedCount` és a `appliedCount` . Minden más metrika felhasználói metrika.
 
 ## <a name="modify-a-configuration"></a>Konfiguráció módosítása
 
@@ -199,7 +198,7 @@ az iot hub configuration update --config-id [configuration id] \
 
 * --**config-ID** – az IoT hub-ban található konfiguráció neve.
 
-* --az IoT **hub neve,** amelyben a konfiguráció létezik. A hubhoz a jelenlegi előfizetésben kell lennie. Váltson a kívánt előfizetésre a paranccsal `az account set -s [subscription name]`.
+* --az IoT **hub neve,** amelyben a konfiguráció létezik. A hubhoz a jelenlegi előfizetésben kell lennie. Váltson a kívánt előfizetésre a paranccsal `az account set -s [subscription name]` .
 
 * --**állítsa be** egy tulajdonság frissítését a konfigurációban. A következő tulajdonságokat frissítheti:
 
@@ -222,7 +221,7 @@ az iot hub configuration delete --config-id [configuration id] \
 
 * --**config-ID** – az IoT hub-ban található konfiguráció neve.
 
-* --az IoT **hub neve,** amelyben a konfiguráció létezik. A hubhoz a jelenlegi előfizetésben kell lennie. Váltson a kívánt előfizetésre a paranccsal `az account set -s [subscription name]`.
+* --az IoT **hub neve,** amelyben a konfiguráció létezik. A hubhoz a jelenlegi előfizetésben kell lennie. Váltson a kívánt előfizetésre a paranccsal `az account set -s [subscription name]` .
 
 ## <a name="next-steps"></a>További lépések
 

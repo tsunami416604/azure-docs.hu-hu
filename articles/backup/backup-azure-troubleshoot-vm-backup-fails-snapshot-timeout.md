@@ -6,10 +6,9 @@ ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
 ms.openlocfilehash: 3ee84c0c868f47dca1aee0401865563a326df3db
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82864402"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup hibával kapcsolatos hibák elhárítása: az ügynökkel vagy bővítménnyel kapcsolatos problémák
@@ -45,7 +44,7 @@ Miután regisztrálta és beütemezte a virtuális gépet a Azure Backup szolgá
 
 **4. ok: [a virtuális gép – ügynök konfigurációs beállításai nincsenek beállítva (Linux rendszerű virtuális gépek esetén)](#vm-agent-configuration-options-are-not-set-for-linux-vms)**
 
-**5. ok: [az Application Control megoldás blokkolja a IaaSBcdrExtension. exe fájlt.](#application-control-solution-is-blocking-iaasbcdrextensionexe)**
+**5. ok: [az alkalmazás-ellenőrzési megoldás blokkolja IaaSBcdrExtension.exe](#application-control-solution-is-blocking-iaasbcdrextensionexe)**
 
 ## <a name="usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state"></a>UserErrorVmProvisioningStateFailed – a virtuális gép sikertelen kiépítési állapotban van
 
@@ -70,7 +69,7 @@ Ez a hiba akkor fordul elő, ha az egyik bővítmény hibája a virtuális gépe
 Javasolt művelet:<br>
 A probléma megoldásához távolítsa el a virtuális gép erőforráscsoport zárolását, majd próbálja megismételni a műveletet a tisztítás elindításához.
 > [!NOTE]
-> A Backup szolgáltatás egy külön erőforráscsoportot hoz létre, mint a virtuális gép erőforráscsoport, amely a helyreállítási pontok gyűjtését tárolja. Javasoljuk, hogy ne zárolja a Backup szolgáltatás általi használatra létrehozott erőforráscsoportot. A Backup szolgáltatás által létrehozott erőforráscsoport elnevezési formátuma a következőket eredményezi`<Geo>`:`<number>` AzureBackupRG_ _ például: AzureBackupRG_northeurope_1
+> A Backup szolgáltatás egy külön erőforráscsoportot hoz létre, mint a virtuális gép erőforráscsoport, amely a helyreállítási pontok gyűjtését tárolja. Javasoljuk, hogy ne zárolja a Backup szolgáltatás általi használatra létrehozott erőforráscsoportot. A Backup szolgáltatás által létrehozott erőforráscsoport elnevezési formátuma a következőket eredményezi: AzureBackupRG_ `<Geo>` _ `<number>` például: AzureBackupRG_northeurope_1
 
 **1. lépés: [a zárolás eltávolítása a visszaállítási pont erőforráscsoporthoz](#remove_lock_from_the_recovery_point_resource_group)** <br>
 **2. lépés: a [visszaállítási pontok gyűjtésének tisztítása](#clean_up_restore_point_collection)**<br>
@@ -205,13 +204,13 @@ Ha a waagent részletes naplózásra van szüksége, kövesse az alábbi lépés
 A konfigurációs fájl (/etc/waagent.conf) szabályozza a waagent műveleteit. Konfigurációs fájl beállításai **bővítmények. az engedélyezés** értékének az **y** és a **kiépítés** beállításnak kell lennie. az ügynököt úgy kell beállítani, hogy a biztonsági mentés **automatikusan** működjön.
 A VM-Agent konfigurációs fájl beállításainak teljes listáját lásd:<https://github.com/Azure/WALinuxAgent#configuration-file-options>
 
-### <a name="application-control-solution-is-blocking-iaasbcdrextensionexe"></a>Az alkalmazás-ellenőrzési megoldás blokkolja a IaaSBcdrExtension. exe fájlt.
+### <a name="application-control-solution-is-blocking-iaasbcdrextensionexe"></a>Az alkalmazás-ellenőrzési megoldás blokkolja IaaSBcdrExtension.exe
 
-Ha [applockert](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/applocker/what-is-applocker) (vagy más alkalmazás-vezérlési megoldást) futtat, és a szabályok a közzétevő vagy az elérési út alapján működnek, a **IaaSBcdrExtension. exe** végrehajtható fájl futtatását is megakadályozhatja.
+Ha [applockert](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/applocker/what-is-applocker) (vagy más alkalmazás-vezérlési megoldást) futtat, és a szabályok közzétevők vagy elérési utak, akkor előfordulhat, hogy letiltják a **IaaSBcdrExtension.exe** végrehajtható fájl futtatását.
 
 #### <a name="solution"></a>Megoldás
 
-Zárja ki `/var/lib` a Path vagy a **IaaSBcdrExtension. exe** végrehajtható fájlt az applockerből (vagy más alkalmazás-vezérlő szoftverből)
+Zárja ki az `/var/lib` AppLocker (vagy más alkalmazás-vezérlő szoftver) elérési útját vagy **IaaSBcdrExtension.exe** végrehajtható fájlt.
 
 ### <a name="the-snapshot-status-cant-be-retrieved-or-a-snapshot-cant-be-taken"></a><a name="the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>Nem lehet lekérdezni a pillanatkép állapotát, vagy nem lehet pillanatképet készíteni
 
@@ -229,7 +228,7 @@ A következő feltételek miatt előfordulhat, hogy a pillanatkép-feladat meghi
 ### <a name="remove-lock-from-the-recovery-point-resource-group"></a><a name="remove_lock_from_the_recovery_point_resource_group"></a>A helyreállítási pont erőforráscsoporthoz tartozó zárolás eltávolítása
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Lépjen a **minden erőforrás lehetőségre**, és válassza a visszaállítási pont gyűjteménye erőforráscsoportot a következő`<Geo>`formátumban`<number>`AzureBackupRG_ _.
+2. Lépjen a **minden erőforrás lehetőségre**, és válassza a visszaállítási pont gyűjteménye erőforráscsoportot a következő formátumban AzureBackupRG_ `<Geo>` _ `<number>` .
 3. A zárolások megjelenítéséhez a **Beállítások** szakaszban válassza a **zárolások** lehetőséget.
 4. A zárolás eltávolításához válassza a három pontot, majd kattintson a **Törlés**gombra.
 
@@ -258,12 +257,12 @@ A zárolás eltávolítását követően indítson el egy igény szerinti bizton
 Ha manuálisan szeretné törölni a visszaállítási pontok gyűjteményét, amely az erőforráscsoport zárolása miatt nem törlődik, próbálkozzon a következő lépésekkel:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. A **központi** menüben kattintson a **minden erőforrás**lehetőségre, válassza ki az erőforráscsoportot a következő formátumban AzureBackupRG_`<Geo>`_`<number>` , ahol a virtuális gép található.
+2. A **központi** menüben kattintson a **minden erőforrás**lehetőségre, válassza ki az erőforráscsoportot a következő formátumban AzureBackupRG_ `<Geo>` _ `<number>` , ahol a virtuális gép található.
 
     ![Zárolás törlése](./media/backup-azure-arm-vms-prepare/resource-group.png)
 
 3. Kattintson az erőforráscsoport elemre, és megjelenik az **Áttekintés** panel.
-4. Válassza a **rejtett típusok megjelenítése** lehetőséget az összes rejtett erőforrás megjelenítéséhez. Válassza ki a visszaállítási pontok gyűjteményeit a következő`<VMName>`formátumban`<number>`AzureBackupRG_ _.
+4. Válassza a **rejtett típusok megjelenítése** lehetőséget az összes rejtett erőforrás megjelenítéséhez. Válassza ki a visszaállítási pontok gyűjteményeit a következő formátumban AzureBackupRG_ `<VMName>` _ `<number>` .
 
     ![Zárolás törlése](./media/backup-azure-arm-vms-prepare/restore-point-collection.png)
 

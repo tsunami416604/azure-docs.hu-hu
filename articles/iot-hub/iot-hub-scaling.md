@@ -12,10 +12,9 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 4b18878cfc5c75bf27fd46cbceaa06e0b6053ddd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81759624"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Egy adott megoldáshoz leginkább megfelelő IoT Hub-szint kiválasztása
@@ -46,11 +45,11 @@ Egy adott rétegen belül csak egy [kiadást](https://azure.microsoft.com/pricin
 | [HTTP-, AMQP-és MQTT-protokollok](iot-hub-devguide-protocols.md) | Igen | Igen |
 | [Eszköz kiépítési szolgáltatása](../iot-dps/about-iot-dps.md) | Igen | Igen |
 | [Monitorozás és diagnosztika](iot-hub-monitor-resource-health.md) | Igen | Igen |
-| [A felhőből az eszközre irányuló üzenetküldés](iot-hub-devguide-c2d-guidance.md) |   | Igen |
-| [Eszközök](iot-hub-devguide-device-twins.md), ikrek, [modulok](iot-hub-devguide-module-twins.md) [és eszközkezelés](iot-hub-device-management-overview.md) |   | Igen |
-| [Eszköz streamek (előzetes verzió)](iot-hub-device-streams-overview.md) |   | Igen |
-| [Azure IoT Edge](../iot-edge/about-iot-edge.md) |   | Igen |
-| [IoT Plug and Play előzetes verzió](../iot-pnp/overview-iot-plug-and-play.md) |   | Igen |
+| [A felhőből az eszközre irányuló üzenetküldés](iot-hub-devguide-c2d-guidance.md) |   | Yes |
+| [Eszközök](iot-hub-devguide-device-twins.md), ikrek, [modulok](iot-hub-devguide-module-twins.md) [és eszközkezelés](iot-hub-device-management-overview.md) |   | Yes |
+| [Eszköz streamek (előzetes verzió)](iot-hub-device-streams-overview.md) |   | Yes |
+| [Azure IoT Edge](../iot-edge/about-iot-edge.md) |   | Yes |
+| [IoT Plug and Play előzetes verzió](../iot-pnp/overview-iot-plug-and-play.md) |   | Yes |
 
 A IoT Hub ingyenes szintet is biztosít teszteléshez és értékeléshez. Rendelkezik a standard csomag összes képességével, de korlátozott üzenetküldési támogatással. Az ingyenes szintről nem lehet alapszintű vagy standard szintűre frissíteni.
 
@@ -89,23 +88,23 @@ Az alapszintű és a standard szintű IoT Hub által támogatott képességek k�
 | [Eszköz eseményének küldése](https://docs.microsoft.com/rest/api/iothub/device/senddeviceevent) | Igen | Igen |
 | Modul küldése esemény | Csak AMQP és MQTT | Csak AMQP és MQTT |
 | [Fájlfeltöltés állapotának frissítése](https://docs.microsoft.com/rest/api/iothub/device/updatefileuploadstatus) | Igen | Igen |
-| [Tömeges eszköz művelete](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/bulkdevicecrud) | Igen, a IoT Edge képességek kivételével | Igen |
+| [Tömeges eszköz művelete](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/bulkdevicecrud) | Igen, a IoT Edge képességek kivételével | Yes |
 | [Importálási exportálási feladat megszakítása](https://docs.microsoft.com/rest/api/iothub/service/jobclient/cancelimportexportjob) | Igen | Igen |
 | [Importálási exportálási feladatok létrehozása](https://docs.microsoft.com/rest/api/iothub/service/jobclient/createimportexportjob) | Igen | Igen |
 | [Importálási exportálási feladatok beolvasása](https://docs.microsoft.com/rest/api/iothub/service/jobclient/getimportexportjob) | Igen | Igen |
 | [Importálási exportálási feladatok beolvasása](https://docs.microsoft.com/rest/api/iothub/service/jobclient/getimportexportjobs) | Igen | Igen |
-| [Parancssori várólista kiürítése](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/purgecommandqueue) |   | Igen |
-| [Eszköz dupla beolvasása](https://docs.microsoft.com/rest/api/iothub/service/twin/getdevicetwin) |   | Igen |
-| [Dupla modul beolvasása](https://docs.microsoft.com/rest/api/iothub/service/twin/getmoduletwin) |   | Igen |
-| [Eszköz metódusának meghívása](https://docs.microsoft.com/rest/api/iothub/service/devicemethod/invokedevicemethod) |   | Igen |
-| [Eszköz dupla frissítése](https://docs.microsoft.com/rest/api/iothub/service/twin/updatedevicetwin) |   | Igen |
-| [Modul frissítése – Twin](https://docs.microsoft.com/rest/api/iothub/service/twin/updatemoduletwin) |   | Igen |
-| [Eszköz kötött értesítésének elhagyása](https://docs.microsoft.com/rest/api/iothub/device/abandondeviceboundnotification) |   | Igen |
-| [Eszköz kötött értesítésének befejezése](https://docs.microsoft.com/rest/api/iothub/device/completedeviceboundnotification) |   | Igen |
-| [Feladat megszakítása](https://docs.microsoft.com/rest/api/iothub/service/jobclient/canceljob) |   | Igen |
-| [Feladat létrehozása](https://docs.microsoft.com/rest/api/iothub/service/jobclient/createjob) |   | Igen |
-| [Feladatok beolvasása](https://docs.microsoft.com/rest/api/iothub/service/jobclient/getjob) |   | Igen |
-| [Lekérdezési feladatok](https://docs.microsoft.com/rest/api/iothub/service/jobclient/queryjobs) |   | Igen |
+| [Parancssori várólista kiürítése](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/purgecommandqueue) |   | Yes |
+| [Eszköz dupla beolvasása](https://docs.microsoft.com/rest/api/iothub/service/twin/getdevicetwin) |   | Yes |
+| [Dupla modul beolvasása](https://docs.microsoft.com/rest/api/iothub/service/twin/getmoduletwin) |   | Yes |
+| [Eszköz metódusának meghívása](https://docs.microsoft.com/rest/api/iothub/service/devicemethod/invokedevicemethod) |   | Yes |
+| [Eszköz dupla frissítése](https://docs.microsoft.com/rest/api/iothub/service/twin/updatedevicetwin) |   | Yes |
+| [Modul frissítése – Twin](https://docs.microsoft.com/rest/api/iothub/service/twin/updatemoduletwin) |   | Yes |
+| [Eszköz kötött értesítésének elhagyása](https://docs.microsoft.com/rest/api/iothub/device/abandondeviceboundnotification) |   | Yes |
+| [Eszköz kötött értesítésének befejezése](https://docs.microsoft.com/rest/api/iothub/device/completedeviceboundnotification) |   | Yes |
+| [Feladat megszakítása](https://docs.microsoft.com/rest/api/iothub/service/jobclient/canceljob) |   | Yes |
+| [Feladat létrehozása](https://docs.microsoft.com/rest/api/iothub/service/jobclient/createjob) |   | Yes |
+| [Feladatok beolvasása](https://docs.microsoft.com/rest/api/iothub/service/jobclient/getjob) |   | Yes |
+| [Lekérdezési feladatok](https://docs.microsoft.com/rest/api/iothub/service/jobclient/queryjobs) |   | Yes |
 
 ## <a name="message-throughput"></a>Üzenet átviteli sebessége
 

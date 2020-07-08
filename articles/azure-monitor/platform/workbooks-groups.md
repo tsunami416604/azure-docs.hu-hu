@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: lagayhar
 ms.openlocfilehash: b6377cdcdb5816426eba62fdbef79eeb42659dcc
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82892081"
 ---
 # <a name="how-to-use-groups-in-workbooks"></a>Csoportok használata munkafüzeteknél
@@ -22,7 +21,7 @@ A munkafüzetben lévő cikkcsoportok lehetővé teszik, hogy logikailag csoport
 
 A munkafüzetek csoportjai több dolog esetében hasznosak:
 
-- Elrendezés
+- Layout
   - Azokban az esetekben, amikor az elemeket függőlegesen szeretné szervezni, létrehozhat olyan elemek csoportjait, amelyek mindegyike összesítve lesz, és a csoport stílusát úgy állítja be, hogy az egyes elemek százalékos szélessége ne legyen a százalékban megadva.
 - Láthatóság
   - Olyan helyzetekben, ahol sok elemet szeretne elrejteni/megjeleníteni, beállíthatja az elemek teljes csoportjának láthatóságát az egyes elemek láthatósági beállításainak megadása helyett. Ez hasznos lehet a lapokat használó sablonokban, mivel a lap tartalmaként egy csoportot is használhat, a teljes csoport pedig elrejthető/megjeleníthető a kijelölt lapon beállított paraméterek alapján.
@@ -114,21 +113,21 @@ Ha a második sablon betöltődik a csoportba, az ismétlődő paraméterek ki l
 Vegyünk egy olyan csoport sablonját, amely a tetején két paraméterrel rendelkezik.
 
 - `TimeRange`– a Time Range paraméter.
-- `FilterB`-egy szöveges paraméter, vegye figyelembe, hogy `Filter` nem a legfelső sablonhoz hasonló.
+- `FilterB`-egy szöveges paraméter, vegye figyelembe, hogy nem `Filter` a legfelső sablonhoz hasonló.
 
 ![A Group elemek szerkesztése a paraméterek eredményével egyesítve](./media/workbooks-groups/groups-wont-merge-away.png)
 
-Ha a csoport item's-sablonja be van töltve `TimeRange` , a paraméter ki lesz egyesítve a csoportból. Ezután a munkafüzetben a kezdeti paraméterek `TimeRange` és a (z `Filter`), valamint a csoport paraméterének lépései csak a következők lesznek:`FilterB`
+Ha a csoport item's-sablonja be van töltve, a `TimeRange` paraméter ki lesz egyesítve a csoportból. Ezután a munkafüzetben a kezdeti paraméterek és a (z) `TimeRange` `Filter` , valamint a csoport paraméterének lépései csak a következők lesznek:`FilterB`
 
 ![a nem egyesítésre kerülő paraméterek eredménye](./media/workbooks-groups/groups-wont-merge-away-result.png)
 
-Ha a betöltött sablon tartalmazott `TimeRange` és `Filter` (a `FilterB`helyett), akkor az eredményül kapott munkafüzetnek szerepelnie kell egy paraméterekkel rendelkező lépésnek, és egy csoportnak, amely csak a szöveg lépését adja meg.
+Ha a betöltött sablon tartalmazott `TimeRange` és `Filter` (a helyett `FilterB` ), akkor az eredményül kapott munkafüzetnek szerepelnie kell egy paraméterekkel rendelkező lépésnek, és egy csoportnak, amely csak a szöveg lépését adja meg.
 
 ## <a name="how-to-split-a-large-template-into-many-templates"></a>Nagyméretű sablon felosztása számos sablonba
 
 A teljesítmény javítása érdekében hasznos lehet egy nagyméretű sablon több kisebb sablonba való bontása, amely valamilyen tartalmat lusta vagy igény szerint betölt a felhasználótól. Így a kezdeti terhelés gyorsabb lesz, mivel a legfelső szintű sablon sokkal kisebb lehet.
 
-A sablonok részekre bontásakor a sablonnak több sablonra (alsablonokra) kell bontania, amelyek mindegyike külön működik. Ha tehát a legfelső szintű sablon egy `TimeRange` olyan paraméterrel rendelkezik, amelyet más lépések is használnak, akkor az alsablonnak rendelkeznie kell egy, a pontos névvel rendelkező paramétert meghatározó paraméterrel. Ez lehetővé teszi, hogy az alsablonok egymástól függetlenül működjenek, és lehetővé teszi, hogy a csoportok nagyobb sablonjain belül is betöltsenek.
+A sablonok részekre bontásakor a sablonnak több sablonra (alsablonokra) kell bontania, amelyek mindegyike külön működik. Ha tehát a legfelső szintű sablon egy olyan `TimeRange` paraméterrel rendelkezik, amelyet más lépések is használnak, akkor az alsablonnak rendelkeznie kell egy, a pontos névvel rendelkező paramétert meghatározó paraméterrel. Ez lehetővé teszi, hogy az alsablonok egymástól függetlenül működjenek, és lehetővé teszi, hogy a csoportok nagyobb sablonjain belül is betöltsenek.
 
 Nagyobb sablon több alsablonba való bekapcsolásához:
 

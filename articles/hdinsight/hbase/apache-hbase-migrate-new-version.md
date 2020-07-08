@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
 ms.openlocfilehash: d7fb7b6b409a4e24be97ee61fc7ba1f0c0a93202
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82792632"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>Apache HBase-fürt migrálása egy új verzióra
@@ -176,7 +175,7 @@ Az Apache HBase-fürt Azure HDInsight való frissítéséhez hajtsa végre a kö
 
 1. Annak ellenőrzéséhez, hogy a memstore lévő legutóbbi összes érték ki van-e ürítve, futtassa újra az előző parancsfájlt.
 
-1. Jelentkezzen be az [Apache Ambari](https://ambari.apache.org/) a régi fürtön`https://OLDCLUSTERNAME.azurehdidnsight.net`(), és állítsa le a HBase szolgáltatásokat. Amikor a rendszer felszólítja, hogy erősítse meg a szolgáltatások leállítását, jelölje be a HBase karbantartási módjának bekapcsolására szolgáló jelölőnégyzetet. További információ a Ambari-hez való csatlakozásról és a használatával kapcsolatban: [HDInsight-fürtök kezelése a Ambari webes felületének használatával](../hdinsight-hadoop-manage-ambari.md).
+1. Jelentkezzen be az [Apache Ambari](https://ambari.apache.org/) a régi fürtön ( `https://OLDCLUSTERNAME.azurehdidnsight.net` ), és állítsa le a HBase szolgáltatásokat. Amikor a rendszer felszólítja, hogy erősítse meg a szolgáltatások leállítását, jelölje be a HBase karbantartási módjának bekapcsolására szolgáló jelölőnégyzetet. További információ a Ambari-hez való csatlakozásról és a használatával kapcsolatban: [HDInsight-fürtök kezelése a Ambari webes felületének használatával](../hdinsight-hadoop-manage-ambari.md).
 
     ![A Ambari-ben kattintson a szolgáltatások > HBase > leállítás a szolgáltatási műveletek alatt elemre.](./media/apache-hbase-migrate-new-version/stop-hbase-services1.png)
 
@@ -195,9 +194,9 @@ Az Apache HBase-fürt Azure HDInsight való frissítéséhez hajtsa végre a kö
     ![A Ambari módosítsa a HBase rootdir tartozó tároló nevét.](./media/apache-hbase-migrate-new-version/change-container-name-for-hbase-rootdir.png)
 
 1. Ha a HDInsight 3,6-et 4,0-re frissíti, kövesse az alábbi lépéseket, ellenkező esetben ugorjon a 10. lépésre:
-    1. Indítsa újra az összes szükséges szolgáltatást a Ambari-ben a **szolgáltatások** > **újraindítása**lehetőség kiválasztásával.
+    1. Indítsa újra az összes szükséges szolgáltatást a Ambari-ben a **szolgáltatások**  >  **újraindítása**lehetőség kiválasztásával.
     1. Állítsa le a HBase szolgáltatást.
-    1. SSH-t a Zookeeper csomóponthoz, és [zkCli](https://github.com/go-zkcli/zkcli) hajtsa `rmr /hbase-unsecure` végre a zkCli parancsot, hogy eltávolítsa a HBase gyökérszintű znode a Zookeeper.
+    1. SSH-t a Zookeeper csomóponthoz, és hajtsa végre a [zkCli](https://github.com/go-zkcli/zkcli) parancsot, `rmr /hbase-unsecure` hogy eltávolítsa a HBase gyökérszintű znode a Zookeeper.
     1. Indítsa újra a HBase.
 
 1. Ha a 4,0-es verzión kívül más HDInsight is frissít, kövesse az alábbi lépéseket:
@@ -220,4 +219,4 @@ Az [Apache HBase](https://hbase.apache.org/) és a HDInsight-fürtök frissíté
 * [HDInsight-fürt frissítése újabb verzióra](../hdinsight-upgrade-cluster.md)
 * [Azure-HDInsight monitorozása és kezelése az Apache Ambari webes felhasználói felületén](../hdinsight-hadoop-manage-ambari.md)
 * [Összetevők és verziók Apache Hadoop](../hdinsight-component-versioning.md)
-* [Apache-HBase optimalizálása](../optimize-hbase-ambari.md)
+* [Az Apache HBase optimalizálása](../optimize-hbase-ambari.md)

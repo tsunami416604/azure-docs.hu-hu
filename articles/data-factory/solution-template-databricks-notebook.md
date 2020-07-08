@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/27/2020
 ms.openlocfilehash: 2503c26ac0348739bbf117c3538af797833ce8b8
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82857641"
 ---
 # <a name="transformation-with-azure-databricks"></a>Átalakítás az Azure Databricks szolgáltatással
@@ -47,8 +46,8 @@ Az egyszerűség kedvéért az oktatóanyagban szereplő sablon nem hoz létre �
 **Átalakítási** jegyzetfüzet importálása a Databricks-munkaterületre:
 
 1. Jelentkezzen be Azure Databricks munkaterületére, majd válassza az **Importálás**lehetőséget.
-       ![A munkaterületek](media/solution-template-Databricks-notebook/import-notebook.png) importálására szolgáló menüparancsok a munkaterület elérési útjának különbözőek lehetnek, de később is megjegyezhető.
-1. Válassza **az Importálás innen: URL**lehetőséget. A szövegmezőbe írja be `https://adflabstaging1.blob.core.windows.net/share/Transformations.html`a szöveget.
+       ![A munkaterületek importálására szolgáló menüparancsok a ](media/solution-template-Databricks-notebook/import-notebook.png) munkaterület elérési útjának különbözőek lehetnek, de később is megjegyezhető.
+1. Válassza **az Importálás innen: URL**lehetőséget. A szövegmezőbe írja be a szöveget `https://adflabstaging1.blob.core.windows.net/share/Transformations.html` .
 
    ![Jegyzetfüzetek importálásának kiválasztása](media/solution-template-Databricks-notebook/import-from-url.png)
 
@@ -56,7 +55,7 @@ Az egyszerűség kedvéért az oktatóanyagban szereplő sablon nem hoz létre �
 
    Az importált jegyzetfüzetben lépjen az **5. parancsra** az alábbi kódrészletben látható módon.
 
-   - Cserélje `<storage name>`le `<access key>` a és a értékét a saját Storage-kapcsolatok adataira.
+   - Cserélje le `<storage name>` a és a értékét `<access key>` a saját Storage-kapcsolatok adataira.
    - Használja a Storage-fiókot a `sinkdata` tárolóval.
 
     ```python
@@ -90,7 +89,7 @@ Az egyszerűség kedvéért az oktatóanyagban szereplő sablon nem hoz létre �
 
     !["Generált" gomb](media/solution-template-Databricks-notebook/generate-new-token.png)
 
-   *Mentse a hozzáférési jogkivonatot* későbbi használatra a Databricks társított szolgáltatás létrehozásához. A hozzáférési jogkivonat valahogy így néz `dapi32db32cbb4w6eee18b7d87e45exxxxxx`ki.
+   *Mentse a hozzáférési jogkivonatot* későbbi használatra a Databricks társított szolgáltatás létrehozásához. A hozzáférési jogkivonat valahogy így néz ki `dapi32db32cbb4w6eee18b7d87e45exxxxxx` .
 
 ## <a name="how-to-use-this-template"></a>A sablon használata
 
@@ -126,19 +125,19 @@ Az egyszerűség kedvéért az oktatóanyagban szereplő sablon nem hoz létre �
 
 Az új folyamat során a legtöbb beállítás automatikusan be van állítva az alapértelmezett értékekkel. Tekintse át a folyamat konfigurációit, és végezze el a szükséges módosításokat.
 
-1. Az **érvényesítési** tevékenység **rendelkezésre állása jelzőben**ellenőrizze, hogy a forrás **adatkészlet** értéke `SourceAvailabilityDataset` a korábban létrehozott értékre van-e állítva.
+1. Az **érvényesítési** tevékenység **rendelkezésre állása jelzőben**ellenőrizze, hogy a forrás **adatkészlet** értéke a korábban létrehozott értékre van-e állítva `SourceAvailabilityDataset` .
 
    ![Forrás adatkészlet értéke](media/solution-template-Databricks-notebook/validation-settings.png)
 
 1. Az **Adatmásolási** tevékenység **fájl – blob**elemnél keresse meg a **forrás** és **a** fogadó lapokat. Szükség esetén módosítsa a beállításokat.
 
-   - **Forrás** lap ![forrás lapja](media/solution-template-Databricks-notebook/copy-source-settings.png)
+   - **Forrás** lap ![ forrás lapja](media/solution-template-Databricks-notebook/copy-source-settings.png)
 
-   - Fogadó lap ![ **fogadójának lapja**](media/solution-template-Databricks-notebook/copy-sink-settings.png)
+   - **Sink** Fogadó lap fogadójának ![ lapja](media/solution-template-Databricks-notebook/copy-sink-settings.png)
 
 1. A **Jegyzetfüzet** tevékenység- **átalakítás**területén szükség szerint tekintse át és frissítse az elérési utakat és beállításokat.
 
-   A **Databricks társított szolgáltatásnak** előre ki kell töltenie egy előző lépésben megadott értékkel, ahogy az látható ![: a Databricks társított szolgáltatás feltöltésének értéke](media/solution-template-Databricks-notebook/notebook-activity.png)
+   A **Databricks társított szolgáltatásnak** előre ki kell töltenie egy előző lépésben megadott értékkel, ahogy az látható: ![ a Databricks társított szolgáltatás feltöltésének értéke](media/solution-template-Databricks-notebook/notebook-activity.png)
 
    A **Jegyzetfüzet** beállításainak ellenõrzése:
   
@@ -150,7 +149,7 @@ Az új folyamat során a legtöbb beállítás automatikusan be van állítva az
 
        ![Alapparaméterek](media/solution-template-Databricks-notebook/base-parameters.png)
 
-1. Ellenőrizze, hogy a **folyamat paramétereinek** megfelelnek-e a következő képernyőképen láthatók: ![folyamat paraméterei](media/solution-template-Databricks-notebook/pipeline-parameters.png)
+1. Ellenőrizze, hogy a **folyamat paramétereinek** megfelelnek-e a következő képernyőképen láthatók: ![ folyamat paraméterei](media/solution-template-Databricks-notebook/pipeline-parameters.png)
 
 1. Kapcsolódjon az adatkészletekhez.
 
@@ -167,9 +166,9 @@ Az új folyamat során a legtöbb beállítás automatikusan be van állítva az
 
    - **DestinationFilesDataset** – az adatgyűjtés célhelyére másolhatja az Adatmásolást. Használja a következő értékeket:
 
-     - **Társított szolgáltatás** - `sinkBlob_LS`, amelyet az előző lépésben hozott létre.
+     - **Társított szolgáltatás**  -  `sinkBlob_LS` , amelyet az előző lépésben hozott létre.
 
-     - **Fájl elérési útja** - `sinkdata/staged_sink`
+     - **Fájl elérési útja**  -  `sinkdata/staged_sink`
 
        ![A társított szolgáltatás és a fájl elérési útjának kijelölése a DestinationFilesDataset](media/solution-template-Databricks-notebook/destination-dataset.png)
 

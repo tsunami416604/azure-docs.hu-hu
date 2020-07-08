@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: spelluru
 ms.openlocfilehash: fb3479271733ee218da8a842956f3a8996e07f61
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82892016"
 ---
 # <a name="track-asynchronous-azure-operations"></a>Aszinkron Azure-műveletek nyomon követése
@@ -39,7 +38,7 @@ Az aszinkron REST-műveletek adja vissza a fejléc értékeit, amelyek segítsé
 
 Azonban nem minden aszinkron művelet adja vissza ezeket az értékeket. Előfordulhat például, hogy ki kell értékelnie az Azure-AsyncOperation fejléc értékét egy művelethez, és egy másik műveletnél a Location fejléc értékét. 
 
-A fejléc értékeinek lekérése a kérelem fejlécének bármely értékének lekérése esetén. A C# nyelvben például lekéri a fejléc értékét egy `HttpWebResponse` nevű `response` objektumból a következő kóddal:
+A fejléc értékeinek lekérése a kérelem fejlécének bármely értékének lekérése esetén. A C# nyelvben például lekéri a fejléc értékét egy `HttpWebResponse` nevű objektumból `response` a következő kóddal:
 
 ```cs
 response.Headers.GetValues("Azure-AsyncOperation").GetValue(0)
@@ -69,11 +68,11 @@ A művelettől kapott válasz törzse információkat tartalmaz a műveletről. 
 }
 ```
 
-A `status` rendszer csak az összes válasz eredményét adja vissza. A rendszer a hiba objektumot adja vissza, ha az állapot meghiúsul vagy meg lett szakítva. Az összes többi érték nem kötelező; Ezért a kapott válasz a példától eltérő lehet.
+`status`A rendszer csak az összes válasz eredményét adja vissza. A rendszer a hiba objektumot adja vissza, ha az állapot meghiúsul vagy meg lett szakítva. Az összes többi érték nem kötelező; Ezért a kapott válasz a példától eltérő lehet.
 
 ## <a name="provisioningstate-values"></a>provisioningState-értékek
 
-Az erőforrások létrehozására, frissítésére vagy törlésére (PUT, javítás, törlés) vonatkozó műveletek általában `provisioningState` értéket adnak vissza. Egy művelet befejezését követően a következő három érték egyikét adja vissza: 
+Az erőforrások létrehozására, frissítésére vagy törlésére (PUT, javítás, törlés) vonatkozó műveletek általában értéket adnak vissza `provisioningState` . Egy művelet befejezését követően a következő három érték egyikét adja vissza: 
 
 * Sikeres
 * Sikertelen

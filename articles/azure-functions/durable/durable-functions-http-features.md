@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 1ffa116f6877b58d54c22f918b4e83574b85860c
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82800719"
 ---
 # <a name="http-features"></a>HTTP-funkciók
@@ -41,23 +40,23 @@ A Durable Functions bővítmény által elérhető beépített HTTP API-k teljes
 
 A koordináló [ügyfél-kötés](durable-functions-bindings.md#orchestration-client) olyan API-kat tesz elérhetővé, amelyekkel kényelmes http-válasz hasznos adatokat lehet elérni. Létrehozhat például egy olyan választ, amely egy adott előkészítési példányhoz tartozó felügyeleti API-kra mutató hivatkozásokat tartalmaz. Az alábbi példák egy HTTP-trigger függvényt mutatnak be, amely bemutatja, hogyan használhatja ezt az API-t egy új előkészítési példányhoz:
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpStart.cs)]
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-**index. js**
+**index.js**
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/HttpStart/index.js)]
 
-**function. JSON**
+**function.jsbekapcsolva**
 
 [!code-json[Main](~/samples-durable-functions/samples/javascript/HttpStart/function.json)]
 
 ---
 
-A Orchestrator függvény elindítása a korábban bemutatott HTTP-trigger függvények használatával bármely HTTP-ügyfél használatával megtehető. A következő cURL-parancs elindít egy nevű `DoWork`Orchestrator-függvényt:
+A Orchestrator függvény elindítása a korábban bemutatott HTTP-trigger függvények használatával bármely HTTP-ügyfél használatával megtehető. A következő cURL-parancs elindít egy nevű Orchestrator-függvényt `DoWork` :
 
 ```bash
 curl -X POST https://localhost:7071/orchestrators/DoWork -H "Content-Length: 0" -i
@@ -80,7 +79,7 @@ Retry-After: 10
 }
 ```
 
-Az előző példában az egyes mezők vége egy beépített HTTP API `Uri` -nak felel meg. Ezekkel az API-kkal kezelheti a cél-előkészítési példányt.
+Az előző példában az egyes mezők vége `Uri` egy beépített http API-nak felel meg. Ezekkel az API-kkal kezelheti a cél-előkészítési példányt.
 
 > [!NOTE]
 > A webhook URL-címeinek formátuma attól függ, hogy a Azure Functions gazdagép melyik verzióját futtatja. Az előző példa a Azure Functions 2,0 gazdagépre mutat.
@@ -114,7 +113,7 @@ A Durable Functions 2,0-től kezdődően a koordinálások natív módon haszná
 
 A következő mintakód egy Orchestrator függvényt mutat be, amely egy kimenő HTTP-kérést tesz:
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("CheckSiteAvailable")]
@@ -172,7 +171,7 @@ A Durable Functions natív módon támogatja a Azure Active Directory (Azure AD)
 
 A következő kód egy .NET Orchestrator-függvény példája. A függvény hitelesített hívásokat kezdeményez a virtuális gépek újraindításához a Azure Resource Manager [Virtual machines REST API](https://docs.microsoft.com/rest/api/compute/virtualmachines)használatával.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("RestartVm")]
@@ -224,7 +223,7 @@ module.exports = df.orchestrator(function*(context) {
 
 ---
 
-Az előző példában a `tokenSource` paraméter a [Azure Resource Manager](../../azure-resource-manager/management/overview.md)Azure ad-jogkivonatok beszerzésére van konfigurálva. A jogkivonatokat az erőforrás-URI `https://management.core.windows.net`azonosítja. A példa azt feltételezi, hogy az aktuális Function alkalmazás helyileg fut, vagy felügyelt identitású Function alkalmazásként lett telepítve. A rendszer feltételezi, hogy a helyi identitás vagy a felügyelt identitás jogosult a virtuális gépek kezelésére a megadott `myRG`erőforráscsoporthoz.
+Az előző példában a paraméter a `tokenSource` [Azure Resource Manager](../../azure-resource-manager/management/overview.md)Azure ad-jogkivonatok beszerzésére van konfigurálva. A jogkivonatokat az erőforrás-URI azonosítja `https://management.core.windows.net` . A példa azt feltételezi, hogy az aktuális Function alkalmazás helyileg fut, vagy felügyelt identitású Function alkalmazásként lett telepítve. A rendszer feltételezi, hogy a helyi identitás vagy a felügyelt identitás jogosult a virtuális gépek kezelésére a megadott erőforráscsoporthoz `myRG` .
 
 Futásidőben a konfigurált jogkivonat-forrás automatikusan egy OAuth 2,0 hozzáférési tokent ad vissza. A forrás Ezután hozzáadja a jogkivonatot tulajdonosi jogkivonatként a kimenő kérelem engedélyezési fejlécébe. Ez a modell a következő okok miatt javítja az engedélyezési fejlécek manuális hozzáadását a HTTP-kérelmekhez:
 

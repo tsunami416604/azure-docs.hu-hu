@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: lagayhar
 ms.openlocfilehash: 58a2657f6b9aee101384146c4ebb43023953bfcb
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82892211"
 ---
 # <a name="how-to-use-jsonpath-to-transform-json-data-in-workbooks"></a>JSON-adatfájlok átalakítása a JSONPath használatával a munkafüzetekbe
@@ -27,7 +26,7 @@ A JSONPath-átalakítás használatával a munkafüzet szerzője táblázatos st
 ## <a name="using-jsonpath"></a>A JSONPath használata
 
 1. Az eszköztár *szerkesztése* elemre kattintva váltson át a munkafüzet szerkesztési módjára.
-2. A Hozzáadás*lekérdezés* hozzáadása hivatkozásra kattintva hozzáadhat egy lekérdezés vezérlőelemet a munkafüzethez. *Add* > 
+2. *A Hozzáadás*  >  *lekérdezés* hozzáadása hivatkozásra kattintva hozzáadhat egy lekérdezés vezérlőelemet a munkafüzethez.
 3. Válassza ki az adatforrást *JSON*-ként.
 4. A JSON-szerkesztő használatával adja meg a következő JSON-kódrészletet
     ```json
@@ -69,7 +68,7 @@ Tegyük fel, hogy a fenti JSON-objektumot az áruház leltárának ábrázolása
 1. Válassza ki az *eredmény beállítások* lapot, és az eredmény formátumát állítsa a *JSON-útvonalra*.
 2. Alkalmazza a következő JSON-elérésiút-beállításokat:
 
-    JSON-elérésiút táblázata: `$.store.books`. Ez a mező a tábla gyökerének elérési útját jelöli. Ebben az esetben az áruház könyvének leltárát kell figyelni. A tábla elérési útja a JSON-t a könyv adataira szűri.
+    JSON-elérésiút táblázata: `$.store.books` . Ez a mező a tábla gyökerének elérési útját jelöli. Ebben az esetben az áruház könyvének leltárát kell figyelni. A tábla elérési útja a JSON-t a könyv adataira szűri.
 
    | Oszlopok azonosítói | Oszlop JSON-elérési útja |
    |:-----------|:-----------------|

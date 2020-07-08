@@ -1,5 +1,5 @@
 ---
-title: A gépi tanulási folyamatok megismétlése és fejlődése
+title: Gépi tanulási folyamatok ismétlése és fejlesztése
 titleSuffix: Azure Machine Learning
 description: Minták, gyakorlatok és tippek a gyors fejlesztéshez
 services: machine-learning
@@ -10,13 +10,12 @@ ms.author: laobri
 author: lobrien
 ms.date: 05/01/2020
 ms.openlocfilehash: 2ea353469ed111eebb591aa6ba86c652683cc2f0
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82858196"
 ---
-# <a name="iterating-and-evolving-machine-learning-pipelines"></a>A gépi tanulási folyamatok megismétlése és fejlődése
+# <a name="iterating-and-evolving-machine-learning-pipelines"></a>Gépi tanulási folyamatok ismétlése és fejlesztése
 
 Azure Machine Learning folyamatok hatékony módszert biztosítanak a kódok modularize, az eredmények újbóli felhasználására és a számítási erőforrások optimalizálására. Íme néhány gyakorlati tipp és eljárás a folyamatok használatáról.
 
@@ -30,7 +29,7 @@ Az első lépésekhez több lehetőség is rendelkezésre áll, ha az új folyam
 
 ## <a name="how-do-you-modularize-pipeline-code"></a>Hogyan modularize a folyamat kódja? 
 
-A modulok és `ModuleStep` az osztály nagyszerű lehetőséget biztosít a ml-kódok modularize. Azt azonban szem előtt kell tartani, hogy a folyamat lépései közötti váltás mérhetetlenül drágább, mint a függvények hívása. A kérdés, amit meg kell kérnie, nem annyira "ezek a függvények és adatok koncepcionálisan eltérőek, mint a többi szakaszban?" de szeretném, hogy a függvények és az adatok külön fejlődnek? vagy a számítás költséges, és felhasználható a kimenet? További információ: thisn'tebook [modul létrehozása, ModuleVersion és azok használata egy folyamatba a ModuleStep használatával](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-how-to-use-modulestep.ipynb).
+A modulok és az `ModuleStep` osztály nagyszerű lehetőséget biztosít a ml-kódok modularize. Azt azonban szem előtt kell tartani, hogy a folyamat lépései közötti váltás mérhetetlenül drágább, mint a függvények hívása. A kérdés, amit meg kell kérnie, nem annyira "ezek a függvények és adatok koncepcionálisan eltérőek, mint a többi szakaszban?" de szeretném, hogy a függvények és az adatok külön fejlődnek? vagy a számítás költséges, és felhasználható a kimenet? További információ: thisn'tebook [modul létrehozása, ModuleVersion és azok használata egy folyamatba a ModuleStep használatával](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-how-to-use-modulestep.ipynb).
 
 Ahogy korábban már említettük, az adatok előkészítésének a képzésből való elválasztása gyakran egy ilyen lehetőség. Előfordulhat, hogy az adatelőkészítés bonyolult és időigényes, ezért a folyamatot külön folyamat lépéseire lehet bontani. Egyéb lehetőségek közé tartozik a képzés utáni tesztelés és elemzés. 
 

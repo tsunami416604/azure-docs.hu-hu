@@ -14,10 +14,9 @@ ms.tgt_pltfrm: vm-linux
 ms.date: 05/05/2020
 ms.author: kaib
 ms.openlocfilehash: d6605aa77cfa746f60fc3b23e120267a2614f7b1
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82864681"
 ---
 # <a name="chroot-environment-in-a-linux-rescue-vm"></a>Kromát-környezet Linux rendszerű mentési virtuális gépen
@@ -36,7 +35,7 @@ Ez a cikk azt ismerteti, hogyan lehet elhárítani a kromát-környezetet a virt
 
       `#sudo su -`
 
-   1. Keresse meg a lemezt `dmesg` a használatával (az új lemez felderítéséhez használt módszer változhat). Az alábbi példa a **dmesg-et** használja az **SCSI** -lemezek szűrésére:
+   1. Keresse meg a lemezt a használatával `dmesg` (az új lemez felderítéséhez használt módszer változhat). Az alábbi példa a **dmesg-et** használja az **SCSI** -lemezek szűrésére:
 
       `dmesg | grep SCSI`
 
@@ -84,7 +83,7 @@ Ez a cikk azt ismerteti, hogyan lehet elhárítani a kromát-környezetet a virt
       ```
 
       > [!NOTE]
-      > Ha ezt a hibaüzenetet `unable to unmount /rescue`kapja, adja hozzá az-l kapcsolót a umount parancshoz.
+      > Ha ezt a hibaüzenetet kapja `unable to unmount /rescue` , adja hozzá az-l kapcsolót a umount parancshoz.
       >
       > Például: `umount -l /rescue`
 
@@ -103,7 +102,7 @@ Ez a cikk azt ismerteti, hogyan lehet elhárítani a kromát-környezetet a virt
 
       `#sudo su -`
 
-   1. Keresse meg a lemezt `dmesg` a használatával (az új lemez felderítéséhez használt módszer változhat). Az alábbi példa a **dmesg-et** használja az **SCSI** -lemezek szűrésére:
+   1. Keresse meg a lemezt a használatával `dmesg` (az új lemez felderítéséhez használt módszer változhat). Az alábbi példa a **dmesg-et** használja az **SCSI** -lemezek szűrésére:
 
       `dmesg | grep SCSI`
 
@@ -151,7 +150,7 @@ Ez a cikk azt ismerteti, hogyan lehet elhárítani a kromát-környezetet a virt
       ```
 
       > [!NOTE]
-      > Ha ezt a hibaüzenetet `unable to unmount /rescue`kapja, adja hozzá az-l kapcsolót a umount parancshoz.
+      > Ha ezt a hibaüzenetet kapja `unable to unmount /rescue` , adja hozzá az-l kapcsolót a umount parancshoz.
       >
       > Például: `umount -l /rescue`
 
@@ -173,7 +172,7 @@ Ez a cikk azt ismerteti, hogyan lehet elhárítani a kromát-környezetet a virt
 
       `#sudo su -`
 
-   1. Keresse meg a lemezt `dmesg` a használatával (az új lemez felderítéséhez használt módszer változhat). Az alábbi példa a **dmesg-et** használja az **SCSI** -lemezek szűrésére:
+   1. Keresse meg a lemezt a használatával `dmesg` (az új lemez felderítéséhez használt módszer változhat). Az alábbi példa a **dmesg-et** használja az **SCSI** -lemezek szűrésére:
 
       `dmesg | grep SCSI`
 
@@ -195,7 +194,7 @@ Ez a cikk azt ismerteti, hogyan lehet elhárítani a kromát-környezetet a virt
       #lvscan
       ```
 
-   1. Az LVM `lsblk` -nevek beolvasásához használja a parancsot:
+   1. `lsblk`Az LVM-nevek beolvasásához használja a parancsot:
 
       ```
       [user@myvm ~]$ lsblk
@@ -264,7 +263,7 @@ Ez a cikk azt ismerteti, hogyan lehet elhárítani a kromát-környezetet a virt
       ```
 
       > [!NOTE]
-      > Ha ezt a hibaüzenetet `unable to unmount /rescue`kapja, adja hozzá az-l kapcsolót a umount parancshoz.
+      > Ha ezt a hibaüzenetet kapja `unable to unmount /rescue` , adja hozzá az-l kapcsolót a umount parancshoz.
       >
       > Például: `umount -l /rescue`
 
@@ -286,7 +285,7 @@ Ez a cikk azt ismerteti, hogyan lehet elhárítani a kromát-környezetet a virt
 
       `#sudo su -`
 
-   1. Keresse meg a lemezt `dmesg` a használatával (az új lemez felderítéséhez használt módszer változhat). Az alábbi példa a **dmesg-et** használja az **SCSI** -lemezek szűrésére:
+   1. Keresse meg a lemezt a használatával `dmesg` (az új lemez felderítéséhez használt módszer változhat). Az alábbi példa a **dmesg-et** használja az **SCSI** -lemezek szűrésére:
 
       `dmesg | grep SCSI`
 
@@ -308,7 +307,7 @@ Ez a cikk azt ismerteti, hogyan lehet elhárítani a kromát-környezetet a virt
       #lvscan
       ```
 
-   1. Az LVM `lsblk` -nevek beolvasásához használja a parancsot:
+   1. `lsblk`Az LVM-nevek beolvasásához használja a parancsot:
 
       ```
       [user@myvm ~]$ lsblk
@@ -374,7 +373,7 @@ Ez a cikk azt ismerteti, hogyan lehet elhárítani a kromát-környezetet a virt
       ```
 
       > [!NOTE]
-      > Ha ezt a hibaüzenetet `unable to unmount /rescue`kapja, adja hozzá az-l kapcsolót a umount parancshoz.
+      > Ha ezt a hibaüzenetet kapja `unable to unmount /rescue` , adja hozzá az-l kapcsolót a umount parancshoz.
       >
       > Például: `umount -l /rescue`
 
@@ -393,7 +392,7 @@ Ez a cikk azt ismerteti, hogyan lehet elhárítani a kromát-környezetet a virt
 
       `#sudo su -`
 
-   1. Keresse meg a lemezt `dmesg` a használatával (az új lemez felderítéséhez használt módszer változhat). Az alábbi példa a **dmesg-et** használja az **SCSI** -lemezek szűrésére:
+   1. Keresse meg a lemezt a használatával `dmesg` (az új lemez felderítéséhez használt módszer változhat). Az alábbi példa a **dmesg-et** használja az **SCSI** -lemezek szűrésére:
 
       `dmesg | grep SCSI`
 
@@ -443,7 +442,7 @@ Ez a cikk azt ismerteti, hogyan lehet elhárítani a kromát-környezetet a virt
       ```
 
       > [!NOTE]
-      > Ha ezt a hibaüzenetet `unable to unmount /rescue`kapja, adja hozzá az-l kapcsolót a umount parancshoz.
+      > Ha ezt a hibaüzenetet kapja `unable to unmount /rescue` , adja hozzá az-l kapcsolót a umount parancshoz.
       >
       > Például: `umount -l /rescue`
 
@@ -462,7 +461,7 @@ Ez a cikk azt ismerteti, hogyan lehet elhárítani a kromát-környezetet a virt
 
       `#sudo su -`
 
-   1. Keresse meg a lemezt `dmesg` a használatával (az új lemez felderítéséhez használt módszer változhat). Az alábbi példa a **dmesg-et** használja az **SCSI** -lemezek szűrésére:
+   1. Keresse meg a lemezt a használatával `dmesg` (az új lemez felderítéséhez használt módszer változhat). Az alábbi példa a **dmesg-et** használja az **SCSI** -lemezek szűrésére:
 
       `dmesg | grep SCSI`
 
@@ -512,7 +511,7 @@ Ez a cikk azt ismerteti, hogyan lehet elhárítani a kromát-környezetet a virt
       ```
 
       > [!NOTE]
-      > Ha ezt a hibaüzenetet `unable to unmount /rescue`kapja, adja hozzá az-l kapcsolót a umount parancshoz.
+      > Ha ezt a hibaüzenetet kapja `unable to unmount /rescue` , adja hozzá az-l kapcsolót a umount parancshoz.
       >
       > Például: `umount -l /rescue`
 

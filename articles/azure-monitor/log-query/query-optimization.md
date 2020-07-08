@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
 ms.openlocfilehash: 9ae0aec6b87a746ed1f141dcf98f599acd20ab3a
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82864249"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Naplók optimalizálása Azure Monitorban
@@ -112,7 +111,7 @@ Heartbeat
 
 Míg egyes aggregációs parancsok, például a [Max ()](/azure/kusto/query/max-aggfunction), a [Sum ()](/azure/kusto/query/sum-aggfunction), a [Count ()](/azure/kusto/query/count-aggfunction)és az [AVG ()](/azure/kusto/query/avg-aggfunction) az alacsony CPU-hatást okoznak a logikájuk miatt, más összetettebbek, és olyan becsléseket tartalmaznak, amelyek lehetővé teszik a hatékony végrehajtást. Például a [DCount ()](/azure/kusto/query/dcount-aggfunction) a HyperLogLog algoritmus használatával közelíti meg a nagy adathalmazok különböző számú adatát az egyes értékek tényleges számbavétele nélkül. a percentilis függvények hasonló közelítéseket végeznek a legközelebbi rangsorú percentilis algoritmus használatával. A parancsok közül több olyan választható paramétereket is tartalmaz, amelyek csökkentik a hatásukat. Például a [makeset ()](/azure/kusto/query/makeset-aggfunction) függvény nem kötelező paraméterrel határozhatja meg a maximálisan megengedett méretet, ami jelentősen befolyásolja a processzort és a memóriát.
 
-A [Csatlakozás](/azure/kusto/query/joinoperator?pivots=azuremonitor) és a parancsok [összefoglalása](/azure/kusto/query/summarizeoperator) magas CPU-kihasználtságot okozhat, ha nagy mennyiségű adathalmazt dolgoz fel. Az összetettségük közvetlenül kapcsolódik a lehetséges értékek számához, amelyet az Összefoglalásként vagy illesztési attribútumokként használt `by` oszlopok közül a függvénynek nevezünk. *cardinality* A JOIN és az összefoglalás ismertetését és optimalizálását a dokumentációs cikkek és optimalizálási tippek című cikkben találja.
+A [Csatlakozás](/azure/kusto/query/joinoperator?pivots=azuremonitor) és a parancsok [összefoglalása](/azure/kusto/query/summarizeoperator) magas CPU-kihasználtságot okozhat, ha nagy mennyiségű adathalmazt dolgoz fel. Az összetettségük közvetlenül kapcsolódik a lehetséges értékek számához, amelyet az *cardinality* `by` Összefoglalásként vagy illesztési attribútumokként használt oszlopok közül a függvénynek nevezünk. A JOIN és az összefoglalás ismertetését és optimalizálását a dokumentációs cikkek és optimalizálási tippek című cikkben találja.
 
 Például a következő lekérdezések pontosan ugyanazt az eredményt eredményezik, mivel a **CounterPath** mindig egy-az-egyhez van leképezve a **CounterName** és a **ObjectName**. A második egy hatékonyabb, mivel az összesítési dimenzió kisebb:
 
@@ -180,7 +179,7 @@ Azure Monitor naplókban a **TimeGenerated** oszlop használható az adatindexel
 
 ### <a name="avoid-unnecessary-use-of-search-and-union-operators"></a>A keresési és a Union operátorok szükségtelen használatának elkerülése
 
-Egy másik tényező, amely növeli a feldolgozott adatmennyiséget, nagy számú tábla használata. Ez általában akkor fordul `search *` elő `union *` , ha a és a parancsokat használja. Ezek a parancsok kényszerítik a rendszertől a munkaterület összes táblájából származó adatok kiértékelését és vizsgálatát. Bizonyos esetekben előfordulhat, hogy több száz tábla található a munkaterületen. Próbálja meg a lehető legnagyobb mértékben elkerülni a "keresés *" vagy bármilyen keresés használatát anélkül, hogy egy adott táblára kellene azt használni.
+Egy másik tényező, amely növeli a feldolgozott adatmennyiséget, nagy számú tábla használata. Ez általában akkor fordul elő, ha a `search *` és a `union *` parancsokat használja. Ezek a parancsok kényszerítik a rendszertől a munkaterület összes táblájából származó adatok kiértékelését és vizsgálatát. Bizonyos esetekben előfordulhat, hogy több száz tábla található a munkaterületen. Próbálja meg a lehető legnagyobb mértékben elkerülni a "keresés *" vagy bármilyen keresés használatát anélkül, hogy egy adott táblára kellene azt használni.
 
 Például a következő lekérdezések pontosan ugyanazt az eredményt eredményezik, de az utolsó a leghatékonyabb:
 
@@ -204,7 +203,7 @@ Perf
 
 ### <a name="add-early-filters-to-the-query"></a>Korai szűrők hozzáadása a lekérdezéshez
 
-Az adatmennyiség csökkentésének egy másik módja, [Ha](/azure/kusto/query/whereoperator) a lekérdezésben korai feltételek vannak. Az Azure Adatkezelő platform egy olyan gyorsítótárat tartalmaz, amely lehetővé teszi, hogy mely partíciók tartalmazzák az adott feltételhez kapcsolódó adatokat. Ha például egy lekérdezés tartalmazza `where EventID == 4624` , akkor a lekérdezés csak olyan csomópontokra terjeszthető, amelyek a megfelelő eseményekkel rendelkező partíciókat kezelik.
+Az adatmennyiség csökkentésének egy másik módja, [Ha](/azure/kusto/query/whereoperator) a lekérdezésben korai feltételek vannak. Az Azure Adatkezelő platform egy olyan gyorsítótárat tartalmaz, amely lehetővé teszi, hogy mely partíciók tartalmazzák az adott feltételhez kapcsolódó adatokat. Ha például egy lekérdezés tartalmazza, `where EventID == 4624` akkor a lekérdezés csak olyan csomópontokra terjeszthető, amelyek a megfelelő eseményekkel rendelkező partíciókat kezelik.
 
 A következő példában a lekérdezések pontosan ugyanazt az eredményt eredményezik, a második pedig hatékonyabb:
 

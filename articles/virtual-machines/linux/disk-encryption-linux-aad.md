@@ -9,10 +9,9 @@ ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
 ms.openlocfilehash: 2ce3afb533aa33b88b15510eacc88c0884811cc6
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82792598"
 ---
 # <a name="enable-azure-disk-encryption-with-azure-ad-on-linux-vms-previous-release"></a>Azure Disk Encryption engedélyezése az Azure AD-vel Linux rendszerű virtuális gépeken (korábbi kiadás)
@@ -146,7 +145,7 @@ Az alábbi táblázat az Azure AD ügyfél-azonosítót használó meglévő vag
 | --- | --- |
 | AADClientID | Az Azure AD-alkalmazás ügyfél-azonosítója, amely jogosult a Key vaultba írni a titkos kulcsokat. |
 | AADClientSecret | Az Azure AD-alkalmazás azon titkos kulcsa, amely a Key vaultba való titkos kódok írásához szükséges engedélyekkel rendelkezik. |
-| keyVaultName | Annak a kulcstárolónak a neve, amelyre a kulcsot fel kell tölteni. Az Azure CLI-parancs `az keyvault show --name "MySecureVault" --query KVresourceGroup`használatával kérheti le. |
+| keyVaultName | Annak a kulcstárolónak a neve, amelyre a kulcsot fel kell tölteni. Az Azure CLI-parancs használatával kérheti le `az keyvault show --name "MySecureVault" --query KVresourceGroup` . |
 |  keyEncryptionKeyURL | A generált kulcs titkosításához használt kulcs titkosítási kulcsának URL-címe. Ez a paraméter nem kötelező, ha a **UseExistingKek** legördülő listában a **nokek** lehetőséget választja. Ha a **UseExistingKek** legördülő listában a **KEK** elemet választja, meg kell adnia a _keyEncryptionKeyURL_ értéket. |
 | volumeType | A titkosítási művelet végrehajtásához használt kötet típusa. Az érvényes támogatott értékek az _operációs rendszer_ vagy _az összes_. (Lásd a támogatott Linux-disztribúciókat és az operációs rendszer és az adatlemezek verzióját a korábbi előfeltételek szakaszban.) |
 | sequenceVersion | A BitLocker-művelet szekvenciális verziója. Minden alkalommal növelje ezt a verziószámot, amikor egy lemezes titkosítási műveletet hajt végre ugyanazon a virtuális gépen. |

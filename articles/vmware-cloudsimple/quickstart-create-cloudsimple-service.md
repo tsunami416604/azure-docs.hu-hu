@@ -10,10 +10,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: d7c137a75c0a021aa8bca3aec23da6c4d1ada300
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81868015"
 ---
 # <a name="quickstart---create-azure-vmware-solution-by-cloudsimple-service"></a>Rövid útmutató – Azure VMware-megoldás létrehozása a CloudSimple szolgáltatással
@@ -82,7 +81,7 @@ Ha a CloudSimple saját felhőalapú környezete számára szeretné beállítan
 11. Válassza ki a kiépíteni kívánt csomópontok számát.
 12. Válassza a **felülvizsgálat + létrehozás**lehetőséget.
 13. Tekintse át a beállításokat. A beállítások módosításához kattintson az **előző**gombra.
-14. Kattintson a **Létrehozás** gombra.
+14. Válassza a **Létrehozás** lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 

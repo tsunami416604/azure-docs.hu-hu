@@ -8,10 +8,9 @@ ms.date: 05/05/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: b60cf34e8efed2ed63b6e35cfaf7445edb701610
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82838501"
 ---
 # <a name="frequently-asked-questions-about-analysis-services-network-connectivity"></a>Analysis Services hálózati kapcsolattal kapcsolatos gyakori kérdések
@@ -41,7 +40,7 @@ A **Válasz** -Azure Analysis Services nem használ rögzített IP-címeket vagy
 ## <a name="azure-apps-with-ip-address"></a>Azure-alkalmazások IP-címmel
 
 **Kérdés** : egy Azure-alapú alkalmazást (például Azure Functions, Azure Data Factory) használok egy menet KÖZBENi IP-címmel. Hogyan kezelhetem a Azure Analysis Services tűzfalszabályok, hogy dinamikusan engedélyezzék az alkalmazás végrehajtásának IP-címét?   
-A **Válasz** – Azure Analysis Services nem támogatja a magánhálózati, a virtuális hálózatok vagy a szolgáltatás címkéit. Vannak olyan nyílt forráskódú megoldások (például https://github.com/mathwro/Scripts/blob/master/Azure/AllowAzure-AnalysisServer.ps1) az ügyfélalkalmazás IP-címének észlelése, valamint a tűzfalszabályok automatikus és ideiglenes frissítése).
+A **Válasz** – Azure Analysis Services nem támogatja a magánhálózati, a virtuális hálózatok vagy a szolgáltatás címkéit. Vannak olyan nyílt forráskódú megoldások (például az https://github.com/mathwro/Scripts/blob/master/Azure/AllowAzure-AnalysisServer.ps1) ügyfélalkalmazás IP-címének észlelése, valamint a tűzfalszabályok automatikus és ideiglenes frissítése).
 
 
 ## <a name="next-steps"></a>További lépések

@@ -8,10 +8,9 @@ ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: cynthn
 ms.openlocfilehash: 6651ae21694022be86d8db08737c609aed3df569
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81870270"
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>Több hálózati adapterrel rendelkező Windows rendszerű virtuális gép létrehozása és kezelése
@@ -75,7 +74,7 @@ $myNic2 = New-AzNetworkInterface -ResourceGroupName "myResourceGroup" `
 ### <a name="create-the-virtual-machine"></a>A virtuális gép létrehozása
 Most kezdje el létrehozni a virtuális gép konfigurációját. Minden virtuálisgép-mérethez tartozik egy korlát a virtuális géphez adható hálózati adapterek teljes számára. További információ: [Windowsos virtuális gépek méretei](sizes.md).
 
-1. Állítsa a virtuális gép hitelesítő adatait `$cred` a változóra a következőképpen:
+1. Állítsa a virtuális gép hitelesítő adatait a `$cred` változóra a következőképpen:
 
     ```powershell
     $cred = Get-Credential
@@ -152,7 +151,7 @@ Ha virtuális NIC-t szeretne hozzáadni egy meglévő virtuális GÉPHEZ, szabad
     ```
 
     ### <a name="primary-virtual-nics"></a>Elsődleges virtuális hálózati adapterek
-    Egy több hálózati adapterrel rendelkező virtuális gép egyik hálózati adapterének elsődlegesnek kell lennie. Ha a virtuális gép egyik meglévő virtuális hálózati adaptere már elsődlegesként van beállítva, akkor kihagyhatja ezt a lépést. Az alábbi példa azt feltételezi, hogy két virtuális hálózati adapter van jelen a virtuális gépen, és az első hálózati adaptert`[0]`() elsődlegesként szeretné hozzáadni:
+    Egy több hálózati adapterrel rendelkező virtuális gép egyik hálózati adapterének elsődlegesnek kell lennie. Ha a virtuális gép egyik meglévő virtuális hálózati adaptere már elsődlegesként van beállítva, akkor kihagyhatja ezt a lépést. Az alábbi példa azt feltételezi, hogy két virtuális hálózati adapter van jelen a virtuális gépen, és az első hálózati adaptert ( `[0]` ) elsődlegesként szeretné hozzáadni:
         
     ```powershell
     # List existing NICs on the VM and find which one is primary
@@ -198,7 +197,7 @@ Ha egy virtuális hálózati adaptert szeretne eltávolítani egy meglévő virt
     $nicId = (Get-AzNetworkInterface -ResourceGroupName "myResourceGroup" -Name "myNic3").Id   
     ```
 
-4. Távolítsa el a hálózati adaptert a [Remove-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/remove-azvmnetworkinterface) , majd frissítse a virtuális gépet a [Update-AzVm](https://docs.microsoft.com/powershell/module/az.compute/update-azvm). Az alábbi példa eltávolítja a *myNic3* az előző `$nicId` lépésben kapott módon:
+4. Távolítsa el a hálózati adaptert a [Remove-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/remove-azvmnetworkinterface) , majd frissítse a virtuális gépet a [Update-AzVm](https://docs.microsoft.com/powershell/module/az.compute/update-azvm). Az alábbi példa eltávolítja a *myNic3* `$nicId` az előző lépésben kapott módon:
 
     ```powershell
     Remove-AzVMNetworkInterface -VM $vm -NetworkInterfaceIDs $nicId | `
@@ -249,7 +248,7 @@ Az Azure egy alapértelmezett átjárót rendel hozzá a virtuális géphez csat
  
     Ebben a példában a **Microsoft Hyper-V hálózati Adapter #4** (Interface 7) a másodlagos hálózati adapter, amelyhez nincs hozzárendelve alapértelmezett átjáró.
 
-2. A parancssorból futtassa a `ipconfig` parancsot, és ellenőrizze, hogy melyik IP-cím van hozzárendelve a másodlagos hálózati adapterhez. Ebben a példában a 192.168.2.4 a 7. felülethez van rendelve. A másodlagos hálózati adapterhez nem érkezik alapértelmezett átjáró-címet.
+2. A parancssorból futtassa a parancsot, `ipconfig` és ellenőrizze, hogy melyik IP-cím van hozzárendelve a másodlagos hálózati adapterhez. Ebben a példában a 192.168.2.4 a 7. felülethez van rendelve. A másodlagos hálózati adapterhez nem érkezik alapértelmezett átjáró-címet.
 
 3. Ha a másodlagos hálózati adapter alhálózatán kívüli címekre irányuló összes forgalmat át szeretné irányítani az alhálózathoz tartozó átjáróra, futtassa a következő parancsot:
 
@@ -275,7 +274,7 @@ Az Azure egy alapértelmezett átjárót rendel hozzá a virtuális géphez csat
       netsh advfirewall firewall add rule name=Allow-ping protocol=icmpv4 dir=in action=allow
       ```
   
-5. Ha ellenőrizni szeretné, hogy a hozzáadott útvonal szerepel-e az útválasztási `route print` táblában, írja be a parancsot, amely az alábbi szöveghez hasonló kimenetet ad vissza:
+5. Ha ellenőrizni szeretné, hogy a hozzáadott útvonal szerepel-e az útválasztási táblában, írja be a `route print` parancsot, amely az alábbi szöveghez hasonló kimenetet ad vissza:
 
     ```
     ===========================================================================

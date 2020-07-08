@@ -17,10 +17,9 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: e6334659d41ba201cfdde190ccc9bfa0d58009e3
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82891201"
 ---
 # <a name="deploy-and-manage-notification-hubs-using-powershell"></a>Értesítési központok üzembe helyezése és kezelése a PowerShell-lel
@@ -34,7 +33,7 @@ Ez a cikk bemutatja, hogyan használható az Azure Notification Hubs létrehozá
 
 Ha új Service Bus-névteret is létre kell hoznia az értesítési központok számára, olvassa el a [Service Bus kezelése a PowerShell használatával](../service-bus-messaging/service-bus-powershell-how-to-provision.md)című témakört.
 
-Az értesítések központjának felügyeletét nem támogatja közvetlenül a Azure PowerShellhoz tartozó parancsmagok. A PowerShell legjobb megközelítése a Microsoft. Azure. NotificationHubs. dll szerelvényre való hivatkozás. A szerelvény elosztása a [Microsoft Azure Notification Hubs NuGet csomaggal](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)történik.
+Az értesítések központjának felügyeletét nem támogatja közvetlenül a Azure PowerShellhoz tartozó parancsmagok. A PowerShell legjobb megközelítése az Microsoft.Azure.NotificationHubs.dll szerelvényre való hivatkozás. A szerelvény elosztása a [Microsoft Azure Notification Hubs NuGet csomaggal](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)történik.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -46,11 +45,11 @@ Az értesítések központjának felügyeletét nem támogatja közvetlenül a A
 
 Az Azure Notification Hubs kezelése még nem része a Azure PowerShell PowerShell-parancsmagjai. Az értesítési központok kiépítéséhez használhatja a [Microsoft Azure Notification Hubs NuGet csomagban](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)megadott .net-ügyfelet.
 
-Először is győződjön meg arról, hogy a parancsfájl megkeresi a **Microsoft. Azure. NotificationHubs. dll** szerelvényt, amely NuGet-csomagként van telepítve egy Visual Studio-projektben. Ahhoz, hogy rugalmas legyen, a parancsfájl a következő lépéseket hajtja végre:
+Először győződjön meg arról, hogy a szkript megtalálja a **Microsoft.Azure.NotificationHubs.dll** szerelvényt, amely NuGet-csomagként van telepítve egy Visual Studio-projektben. Ahhoz, hogy rugalmas legyen, a parancsfájl a következő lépéseket hajtja végre:
 
 1. Meghatározza a meghívásának elérési útját.
-2. Áthalad az elérési úton, amíg meg nem `packages`találja a nevű mappát. Ez a mappa akkor jön létre, amikor NuGet-csomagokat telepít a Visual Studio-projektekhez.
-3. Rekurzív módon megkeresi egy nevű `packages` `Microsoft.Azure.NotificationHubs.dll`szerelvény mappáját.
+2. Áthalad az elérési úton, amíg meg nem találja a nevű mappát `packages` . Ez a mappa akkor jön létre, amikor NuGet-csomagokat telepít a Visual Studio-projektekhez.
+3. Rekurzív módon megkeresi `packages` egy nevű szerelvény mappáját `Microsoft.Azure.NotificationHubs.dll` .
 4. A szerelvényre hivatkozik, hogy a típusok később is elérhetők legyenek.
 
 A lépéseket egy PowerShell-parancsfájlban hajtja végre:
@@ -78,7 +77,7 @@ catch [System.Exception]
 
 Notification Hubs kiépítéséhez hozza létre a [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager?view=azure-dotnet) osztály egy példányát az SDK-ból.
 
-A Azure PowerShellhoz mellékelt [Get-AzureSBAuthorizationRule] parancsmaggal kérhet le egy olyan engedélyezési szabályt, amely a kapcsolódási karakterlánc biztosítására szolgál. A `NamespaceManager` példányra mutató hivatkozás a `$NamespaceManager` változóban van tárolva. `$NamespaceManager`egy értesítési központ kiépítésére szolgál.
+A Azure PowerShellhoz mellékelt [Get-AzureSBAuthorizationRule] parancsmaggal kérhet le egy olyan engedélyezési szabályt, amely a kapcsolódási karakterlánc biztosítására szolgál. A `NamespaceManager` példányra mutató hivatkozás a változóban van tárolva `$NamespaceManager` . `$NamespaceManager`egy értesítési központ kiépítésére szolgál.
 
 ``` powershell
 $sbr = Get-AzureSBAuthorizationRule -Namespace $Namespace
@@ -101,8 +100,8 @@ A szkript ezen részében négy helyi változót kell beállítania.
 
 Ezek a változók a névtérhez való kapcsolódáshoz és egy új értesítési központ létrehozásához vannak konfigurálva, amely a Windows Notification Services (WNS) WNS hitelesítő adataival rendelkező Windows-alkalmazások kezelésére szolgál. További információ a csomag biztonsági azonosítójának és titkos kulcsának beszerzéséről: [Első lépések Notification Hubs](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) oktatóanyaggal.
 
-- A szkript az `NamespaceManager` objektum használatával ellenőrizze, hogy az értesítési központ `$Path` létezik-e.
-- Ha nem létezik, a parancsfájl WNS hitelesítő `NotificationHubDescription` adatokkal jön létre, és átadja a `NamespaceManager` Class `CreateNotificationHub` metódusnak.
+- A szkript az objektum használatával `NamespaceManager` ellenőrizze, hogy az értesítési központ létezik-e `$Path` .
+- Ha nem létezik, a parancsfájl `NotificationHubDescription` WNS hitelesítő adatokkal jön létre, és átadja a `NamespaceManager` Class `CreateNotificationHub` metódusnak.
 
 ``` powershell
 $Namespace = "<Enter your namespace>"

@@ -9,10 +9,9 @@ ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
 ms.openlocfilehash: cc9f3b54d427a30b587d8335f6ce9b013f407374
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82792564"
 ---
 # <a name="azure-disk-encryption-with-azure-ad-previous-release"></a>Azure Disk Encryption az Azure AD-vel (előző kiadás)
@@ -30,7 +29,7 @@ Az ezekben a fejezetekben található információk a következők maradnak:
 ## <a name="networking-and-group-policy"></a>Hálózatkezelés és Csoportházirend
 
 Ha engedélyezni szeretné a Azure Disk Encryption funkciót a régebbi HRE paraméter szintaxisával, az infrastruktúra (IaaS) virtuális gépeknek meg kell felelniük a következő hálózati végpontok konfigurációs követelményeinek: 
-  - Ahhoz, hogy jogkivonatot kapjon a kulcstartóhoz való kapcsolódáshoz, a IaaS virtuális gépnek képesnek kell lennie csatlakozni egy \[Azure\]ad-végponthoz (login.microsoftonline.com).
+  - Ahhoz, hogy jogkivonatot kapjon a kulcstartóhoz való kapcsolódáshoz, a IaaS virtuális gépnek képesnek kell lennie csatlakozni egy Azure AD-végponthoz ( \[ login.microsoftonline.com \] ).
   - A titkosítási kulcsok a kulcstartóba való írásához a IaaS virtuális gépnek csatlakoznia kell a Key Vault-végponthoz.
   - A IaaS virtuális gépnek képesnek kell lennie csatlakozni egy Azure Storage-végponthoz, amely az Azure-bővítmény adattárát és a VHD-fájlokat tároló Azure Storage-fiókot tartalmazza.
   -  Ha a biztonsági házirend korlátozza az Azure-beli virtuális gépekről az internetre való hozzáférést, az előző URI-t megoldhatja, és konfigurálhat egy adott szabályt, hogy engedélyezze a kimenő kapcsolatot az IP-címekkel. További információ: [Azure Key Vault tűzfal mögött](../../key-vault/general/access-behind-firewall.md).
@@ -48,7 +47,7 @@ Ha engedélyezni szeretné a Azure Disk Encryption funkciót a régebbi HRE para
 ### <a name="group-policy"></a>Csoportházirend
  - A Azure Disk Encryption megoldás a BitLocker külső kulcstartót használja a Windows IaaS virtuális gépekhez. A tartományhoz csatlakoztatott virtuális gépek esetében ne küldjön le olyan csoportházirendeket, amelyek kikényszerítik a TPM-védőket. További információ a **BitLocker kompatibilis TPM nélküli engedélyezése**beállításának Csoportházirendáról: a [BitLocker csoportházirend referenciája](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#bkmk-unlockpol1).
 
-- Az egyéni Csoportházirend rendelkező, tartományhoz csatlakoztatott virtuális gépeken a BitLocker-házirendnek tartalmaznia kell a következő beállítást: a [BitLocker helyreállítási adatok felhasználói tárolójának konfigurálása – > engedélyezi a 256 bites helyreállítási kulcsot](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings). Azure Disk Encryption sikertelen, ha a BitLocker egyéni Csoportházirend beállításai nem kompatibilisek. A megfelelő házirend-beállítással nem rendelkező gépeken alkalmazza az új házirendet, kényszerítse az új házirend frissítését (gpupdate. exe/Force), majd indítsa újra, ha szükséges. 
+- Az egyéni Csoportházirend rendelkező, tartományhoz csatlakoztatott virtuális gépeken a BitLocker-házirendnek tartalmaznia kell a következő beállítást: a [BitLocker helyreállítási adatok felhasználói tárolójának konfigurálása – > engedélyezi a 256 bites helyreállítási kulcsot](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings). Azure Disk Encryption sikertelen, ha a BitLocker egyéni Csoportházirend beállításai nem kompatibilisek. A megfelelő házirend-beállítással nem rendelkező gépeken alkalmazza az új házirendet, kényszerítse az új házirendet a frissítésre (gpupdate.exe/Force), majd indítsa újra, ha szükséges. 
 
 ## <a name="encryption-key-storage-requirements"></a>Titkosítási kulcs tárolási követelményei 
 

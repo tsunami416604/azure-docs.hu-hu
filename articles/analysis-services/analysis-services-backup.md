@@ -8,10 +8,9 @@ ms.date: 05/05/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: aa98a13b84e89c90e29525fb6743ac33faf1d917
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82871302"
 ---
 # <a name="backup-and-restore"></a>Biztonsági mentés és visszaállítás
@@ -40,7 +39,7 @@ A biztonsági mentés előtt konfigurálnia kell a kiszolgáló tárolási beál
 
 2.  Kattintson az **engedélyezve**elemre, majd a **tárolási beállítások**elemre.
 
-    ![Bekapcsolás](./media/analysis-services-backup/aas-backup-enable.png)
+    ![Engedélyezés](./media/analysis-services-backup/aas-backup-enable.png)
 
 3. Válassza ki a Storage-fiókot, vagy hozzon létre egy újat.
 
@@ -58,7 +57,7 @@ A biztonsági mentés előtt konfigurálnia kell a kiszolgáló tárolási beál
 
 1. A SSMS kattintson a jobb gombbal egy adatbázisra, > **biztonsági mentést**.
 
-2. A **biztonsági mentési adatbázis** > **biztonságimásolat-fájljában**kattintson a **Tallózás**gombra.
+2. A **biztonsági mentési adatbázis**  >  **biztonságimásolat-fájljában**kattintson a **Tallózás**gombra.
 
 3. A **fájl mentése másként** párbeszédpanelen ellenőrizze a mappa elérési útját, majd írja be a biztonságimásolat-fájl nevét. 
 

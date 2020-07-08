@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
 ms.openlocfilehash: 0c8739dff39490f14b613af483f769ac031c1bd9
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82792377"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>Gyakori kérdések a csatlakoztatott Factory megoldás-gyorsító szolgáltatásról
@@ -42,9 +41,9 @@ A Microsoft az OPC UA-t választotta, mivel ez egy nyílt, nem védett platform,
 
 Az IP-cím hozzáadására két lehetőség áll rendelkezésre:
 
-* Használja a PowerShell- `Simulation/Factory/Add-SimulationPublicIp.ps1` szkriptet a [tárházban](https://github.com/Azure/azure-iot-connected-factory). Adja át a központi telepítési nevet paraméterként. Helyi központi telepítéshez használja `<your username>ConnFactoryLocal`a következőt:. A szkript kinyomtatja a virtuális gép IP-címét.
+* Használja a PowerShell-szkriptet `Simulation/Factory/Add-SimulationPublicIp.ps1` a [tárházban](https://github.com/Azure/azure-iot-connected-factory). Adja át a központi telepítési nevet paraméterként. Helyi központi telepítéshez használja a következőt: `<your username>ConnFactoryLocal` . A szkript kinyomtatja a virtuális gép IP-címét.
 
-* A Azure Portal keresse meg a telepítéshez tartozó erőforráscsoportot. A helyi telepítés kivételével az erőforráscsoport a következő névvel van megadva: megoldás vagy központi telepítési név. A Build parancsfájlt használó helyi telepítéshez az erőforráscsoport neve `<your username>ConnFactoryLocal`. Most adjon hozzá egy új **nyilvános IP-cím** erőforrást az erőforráscsoporthoz.
+* A Azure Portal keresse meg a telepítéshez tartozó erőforráscsoportot. A helyi telepítés kivételével az erőforráscsoport a következő névvel van megadva: megoldás vagy központi telepítési név. A Build parancsfájlt használó helyi telepítéshez az erőforráscsoport neve `<your username>ConnFactoryLocal` . Most adjon hozzá egy új **nyilvános IP-cím** erőforrást az erőforráscsoporthoz.
 
 > [!NOTE]
 > Mindkét esetben ügyeljen arra, hogy a legújabb javításokat az [Ubuntu webhelyének](https://wiki.ubuntu.com/Security/Upgrades)utasításait követve telepítse. Tartsa naprakészen a telepítést mindaddig, amíg a virtuális gép nyilvános IP-címen keresztül elérhető.
@@ -53,28 +52,28 @@ Az IP-cím hozzáadására két lehetőség áll rendelkezésre:
 
 Az IP-cím eltávolítására két lehetőség áll rendelkezésre:
 
-* Használja az [adattár](https://github.com/Azure/azure-iot-connected-factory)PowerShell-parancsfájljának szimuláció/Factory/Remove-SimulationPublicIp. ps1 eszközét. Adja át a központi telepítési nevet paraméterként. Helyi központi telepítéshez használja `<your username>ConnFactoryLocal`a következőt:. A szkript kinyomtatja a virtuális gép IP-címét.
+* Használja a [tárház](https://github.com/Azure/azure-iot-connected-factory)PowerShell-parancsfájl szimulációját/gyárát/Remove-SimulationPublicIp.ps1. Adja át a központi telepítési nevet paraméterként. Helyi központi telepítéshez használja a következőt: `<your username>ConnFactoryLocal` . A szkript kinyomtatja a virtuális gép IP-címét.
 
-* A Azure Portal keresse meg a telepítéshez tartozó erőforráscsoportot. A helyi telepítés kivételével az erőforráscsoport a következő névvel van megadva: megoldás vagy központi telepítési név. A Build parancsfájlt használó helyi telepítéshez az erőforráscsoport neve `<your username>ConnFactoryLocal`. Most távolítsa el a **nyilvános IP-cím** erőforrást az erőforráscsoporthoz.
+* A Azure Portal keresse meg a telepítéshez tartozó erőforráscsoportot. A helyi telepítés kivételével az erőforráscsoport a következő névvel van megadva: megoldás vagy központi telepítési név. A Build parancsfájlt használó helyi telepítéshez az erőforráscsoport neve `<your username>ConnFactoryLocal` . Most távolítsa el a **nyilvános IP-cím** erőforrást az erőforráscsoporthoz.
 
 ### <a name="how-do-i-sign-in-to-the-simulation-vm"></a>Hogyan bejelentkezni a szimulációs virtuális gépre?
 
-A szimulációs virtuális gépre való bejelentkezés csak akkor támogatott, ha a `build.ps1` [tárházban](https://github.com/Azure/azure-iot-connected-factory)lévő PowerShell-parancsfájl használatával telepítette a megoldást.
+A szimulációs virtuális gépre való bejelentkezés csak akkor támogatott, ha a tárházban lévő PowerShell-parancsfájl használatával telepítette a megoldást `build.ps1` . [repository](https://github.com/Azure/azure-iot-connected-factory)
 
 Ha a www.azureiotsolutions.com-ből telepítette a megoldást, nem tud bejelentkezni a virtuális gépre. Nem lehet bejelentkezni, mert a jelszó véletlenszerűen lett létrehozva, és nem állítható vissza.
 
 1. Adjon hozzá egy nyilvános IP-címet a virtuális géphez. Lásd: [Hogyan nyilvános IP-cím hozzáadása a szimulációs virtuális géphez?](#how-do-i-remove-the-public-ip-address-to-the-simulation-vm)
 1. Hozzon létre egy SSH-munkamenetet a virtuális géphez a virtuális gép IP-címének használatával.
-1. A használandó Felhasználónév a következő: `docker`.
+1. A használandó Felhasználónév a következő: `docker` .
 1. A használandó jelszó az üzembe helyezéshez használt verziótól függ:
-    * A Build. ps1 parancsfájllal üzembe helyezett, 2017. június 1. előtti megoldások esetén a jelszó a `Passw0rd`következő:.
-    * A Build. ps1 parancsfájllal üzembe helyezett, 2017. június 1. után telepített megoldásokért keresse meg a jelszót a `<name of your deployment>.config.user` fájlban. A jelszót a **VmAdminPassword** -beállítás tárolja. A jelszót véletlenszerűen hozza létre a rendszer a telepítés során, kivéve, ha `build.ps1` a parancsfájl paraméterrel adja meg`-VmAdminPassword`
+    * A build.ps1 parancsfájllal a 2017. június 1. előtt üzembe helyezett megoldások esetében a jelszó a következő: `Passw0rd` .
+    * A build.ps1 parancsfájllal, a 2017. június 1. után üzembe helyezett megoldások esetében a fájl jelszava található `<name of your deployment>.config.user` . A jelszót a **VmAdminPassword** -beállítás tárolja. A jelszót véletlenszerűen hozza létre a rendszer a telepítés során, kivéve, ha a `build.ps1` parancsfájl paraméterrel adja meg`-VmAdminPassword`
 
 ### <a name="how-do-i-stop-and-start-all-docker-processes-in-the-simulation-vm"></a>Hogyan állítsa le és indítsa el az összes Docker-folyamatot a szimulációs virtuális gépen?
 
 1. Jelentkezzen be a szimulációs virtuális gépre. Lásd: [Hogyan bejelentkezés a szimulációs virtuális gépre?](#how-do-i-sign-in-to-the-simulation-vm)
-1. A következő futtatásával ellenőrizhető, hogy mely tárolók aktívak: `docker ps`.
-1. Az összes szimulációs tároló leállításához futtassa `./stopsimulation`a következőt:.
+1. A következő futtatásával ellenőrizhető, hogy mely tárolók aktívak: `docker ps` .
+1. Az összes szimulációs tároló leállításához futtassa a következőt: `./stopsimulation` .
 1. Az összes szimulációs tároló elindítása:
     * Exportáljon egy **IOTHUB_CONNECTIONSTRING**nevű rendszerhéj-változót. Használja az **IotHubOwnerConnectionString** beállítás értékét a `<name of your deployment>.config.user` fájlban. Például:
 
@@ -86,7 +85,7 @@ Ha a www.azureiotsolutions.com-ből telepítette a megoldást, nem tud bejelentk
 
 ### <a name="how-do-i-update-the-simulation-in-the-vm"></a>Hogyan frissíteni a szimulációt a virtuális gépen?
 
-Ha módosította a szimulációt, az `build.ps1` `updatedimulation` paranccsal használhatja az [adattár](https://github.com/Azure/azure-iot-connected-factory) PowerShell-parancsfájlját. Ez a szkript létrehozza az összes szimulációs összetevőt, leállítja a szimulációt a virtuális gépen, feltölti, telepíti és elindítja azokat.
+Ha módosította a szimulációt, az paranccsal használhatja az adattár PowerShell-parancsfájlját `build.ps1` [repository](https://github.com/Azure/azure-iot-connected-factory) `updatedimulation` . Ez a szkript létrehozza az összes szimulációs összetevőt, leállítja a szimulációt a virtuális gépen, feltölti, telepíti és elindítja azokat.
 
 ### <a name="how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution"></a>Hogyan a megoldás által használt IoT hub-beli kapcsolatok sztringjét?
 
@@ -115,7 +114,7 @@ Az Azure CLI-eszköz [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csh
 
 ### <a name="how-can-i-get-log-data-from-the-simulation-components"></a>Hogyan szerezhetők be a szimulációs összetevőkből származó adatok?
 
-A szimulációs napló összes összetevője a naplófájlokban. Ezek a fájlok a virtuális gépen találhatók a mappában `home/docker/Logs`. A naplók beolvasásához használhatja a [tárházban](https://github.com/Azure/azure-iot-connected-factory)található PowerShell `Simulation/Factory/Get-SimulationLogs.ps1` -szkriptet.
+A szimulációs napló összes összetevője a naplófájlokban. Ezek a fájlok a virtuális gépen találhatók a mappában `home/docker/Logs` . A naplók beolvasásához használhatja a `Simulation/Factory/Get-SimulationLogs.ps1` [tárházban](https://github.com/Azure/azure-iot-connected-factory)található PowerShell-szkriptet.
 
 A szkriptnek be kell jelentkeznie a virtuális gépre. Előfordulhat, hogy meg kell adnia a bejelentkezéshez szükséges hitelesítő adatokat. Lásd: [Hogyan bejelentkezés a szimulációs virtuális gépre?](#how-do-i-sign-in-to-the-simulation-vm) a hitelesítő adatok megkereséséhez.
 
@@ -144,7 +143,7 @@ Ha interaktív leképezést szeretne engedélyezni a csatlakoztatott gyári mego
 
 A [www.azureiotsolutions.com](https://www.azureiotsolutions.com)-ből való üzembe helyezéskor a telepítési folyamat hozzáadja az Azure Maps fiókot a megoldás-gyorsító szolgáltatásokat tartalmazó erőforráscsoporthoz.
 
-A csatlakoztatott Factory GitHub- `build.ps1` tárház parancsfájl használatával történő üzembe helyezése során állítsa be a `$env:MapApiQueryKey` környezeti változót a létrehozási ablakban a [Azure Maps-fiók kulcsaként](../azure-maps/how-to-manage-account-keys.md). Az interaktív térkép automatikusan engedélyezve lesz.
+A csatlakoztatott Factory GitHub-tárház parancsfájl használatával történő üzembe helyezése során `build.ps1` állítsa be a környezeti változót `$env:MapApiQueryKey` a létrehozási ablakban a [Azure Maps-fiók kulcsaként](../azure-maps/how-to-manage-account-keys.md). Az interaktív térkép automatikusan engedélyezve lesz.
 
 Az üzembe helyezés után hozzáadhat egy Azure Maps-fiókhoz tartozó kulcsot is a megoldás-gyorsító szolgáltatáshoz. Navigáljon a Azure Portal, és nyissa meg a App Service erőforrást a csatlakoztatott gyár üzemelő példányában. Navigáljon az **Alkalmazásbeállítások elemre**, ahol megtalálhatja a szakasz **alkalmazásának beállításait**. Állítsa a **MapApiQueryKey** a [Azure Maps-fiók kulcsára](../azure-maps/how-to-manage-account-keys.md). Mentse a beállításokat, majd navigáljon az **áttekintéshez** , és indítsa újra a app Service.
 
@@ -158,17 +157,17 @@ Lásd: [a Azure Maps-fiók és-kulcsok kezelése](../azure-maps/how-to-manage-ac
 
 ### <a name="how-do-enable-the-interactive-map-while-debugging-locally"></a>Hogyan engedélyezhető az interaktív térkép a helyi hibakeresés során?
 
-Ha a `MapApiQueryKey` helyi hibakeresés során engedélyezni szeretné az interaktív leképezést, állítsa be a beállítás értékét a fájlokban `local.user.config` és `<yourdeploymentname>.user.config` a központi telepítés gyökerében a korábban átmásolt **QueryKey** értékére.
+Ha a helyi hibakeresés során engedélyezni szeretné az interaktív leképezést, állítsa be a beállítás értékét a `MapApiQueryKey` fájlokban `local.user.config` és a `<yourdeploymentname>.user.config` központi telepítés gyökerében a korábban átmásolt **QueryKey** értékére.
 
 ### <a name="how-do-i-use-a-different-image-at-the-home-page-of-my-dashboard"></a>Hogyan az irányítópult kezdőlapján egy másik rendszerképet használok?
 
-Ha módosítani szeretné a statikus képet, amely az irányítópult kezdőlapját mutatja, cserélje le a `WebApp\Content\img\world.jpg`rendszerképet. Ezután építse újra a WebAppot, és telepítse újra.
+Ha módosítani szeretné a statikus képet, amely az irányítópult kezdőlapját mutatja, cserélje le a rendszerképet `WebApp\Content\img\world.jpg` . Ezután építse újra a WebAppot, és telepítse újra.
 
 ### <a name="how-do-i-use-non-opc-ua-devices-with-connected-factory"></a>Hogyan nem OPC UA-eszközöket használ a csatlakoztatott gyárral?
 
 Telemetria-adatok küldése nem OPC UA-eszközökről a csatlakoztatott gyárba:
 
-1. [Konfigurálja az új állomást](iot-accelerators-connected-factory-configure.md) a `ContosoTopologyDescription.json` fájlban lévő csatlakoztatott gyári topológiában.
+1. [Konfigurálja az új állomást a fájlban lévő csatlakoztatott gyári topológiában](iot-accelerators-connected-factory-configure.md) `ContosoTopologyDescription.json` .
 
 1. A telemetria-adatot a csatlakoztatott gyári kompatibilis JSON-formátumban kell betölteni:
 

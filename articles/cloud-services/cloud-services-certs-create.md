@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
 ms.openlocfilehash: cf2106302064df5ede02d18f253436047a5d33d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82024608"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Azure Cloud Services – tanúsítványok áttekintése
@@ -60,9 +59,9 @@ A rendelkezésre álló bármely eszköz használatával létrehozhat egy önal�
 * Legalább 2048 bites titkosítás.
 * **Csak a szolgáltatás tanúsítványa**: az ügyféloldali tanúsítványnak a *személyes* tanúsítványtárolóban kell lennie.
 
-A Windowson, a `makecert.exe` segédprogramon vagy az IIS-ben kétféleképpen hozhat létre tanúsítványokat.
+A Windowson, a segédprogramon vagy az IIS-ben kétféleképpen hozhat létre tanúsítványokat `makecert.exe` .
 
-### <a name="makecertexe"></a>MakeCert. exe
+### <a name="makecertexe"></a>Makecert.exe
 Ez a segédprogram elavult, és már nem dokumentálva van. További információt [ebben az MSDN-cikkben](/windows/desktop/SecCrypto/makecert)talál.
 
 ### <a name="powershell"></a>PowerShell

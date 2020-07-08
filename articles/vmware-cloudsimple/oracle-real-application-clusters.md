@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: f657e18d7185d6b3c63ac8f1424da9d36d4189e9
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82793040"
 ---
 # <a name="optimize-your-cloudsimple-private-cloud-for-installing-oracle-rac"></a>Optimalizálja CloudSimple saját Felhőjét az Oracle RAC telepítéséhez
@@ -44,16 +43,16 @@ Az Oracle RAC virtuális gépek több lemezzel rendelkeznek, amelyek adott függ
 
 A következő példa az alábbi táblázatban definiált lemezeket használja.
 
-| Lemez                                      | Cél                                       | Megosztott lemez |
+| Lemez                                      | Szerep                                       | Megosztott lemez |
 |-------------------------------------------|-----------------------------------------------|-------------|
 | Operációs rendszer                                        | Operációsrendszer-lemez                         | No          |
 | RÁCS                                      | Az Oracle Grid szoftver telepítési helye     | No          |
 | ADATBÁZIS                                  | Az Oracle Database szoftver telepítési helye | No          |
 | ORAHOME                                   | Az Oracle Database bináris fájljainak alaphelye    | No          |
-| DATA1, DATA2, DATA3, DATA4                | Az Oracle-adatbázisfájlok tárolására szolgáló lemez   | Igen         |
-| REDO1, REDO2, REDO3, REDO4, REDO5, REDO6  | Naplófájlok visszaállítása                                | Igen         |
-| OCR1, OCR2, OCR3, OCR4, OCR5              | Szavazó lemezek                                  | Igen         |
-| FRA1, FRA2                                | Gyors helyreállítási területek lemezei                      | Igen         |
+| DATA1, DATA2, DATA3, DATA4                | Az Oracle-adatbázisfájlok tárolására szolgáló lemez   | Yes         |
+| REDO1, REDO2, REDO3, REDO4, REDO5, REDO6  | Naplófájlok visszaállítása                                | Yes         |
+| OCR1, OCR2, OCR3, OCR4, OCR5              | Szavazó lemezek                                  | Yes         |
+| FRA1, FRA2                                | Gyors helyreállítási területek lemezei                      | Yes         |
 
 ![Oracle virtuális gép lemezének konfigurációja](media/oracle-vmdk.png)
 
@@ -174,8 +173,8 @@ a vSAN-szabályzatok meghatározzák a virtuálisgép-lemezeken tárolt adattár
 3. A bal oldali menüben válassza ki a virtuálisgép- **tárolási házirendek** elemet, majd válassza **a virtuális gép tárolási házirendjének létrehozása**lehetőséget.
 4. Írjon be egy értelmes nevet a Szabályzathoz, majd kattintson a **tovább**gombra.
 5. A **házirend szerkezete** szakaszban válassza a **vSAN-tárolás szabályainak engedélyezése** lehetőséget, és kattintson a **tovább**gombra.
-6. A **vSAN** > **rendelkezésre állása** szakaszban válassza a **nincs lehetőséget** a hely vész-tűréshatára elemnél. Az elviselni kívánt meghibásodások esetén válassza ki a **RAID-tükrözés** lehetőséget a kívánt pénzügyi tranzakcióhoz.
-    ![vSAN beállításai](media/oracle-rac-storage-wizard-vsan.png).
+6. A **vSAN**  >  **rendelkezésre állása** szakaszban válassza a **nincs lehetőséget** a hely vész-tűréshatára elemnél. Az elviselni kívánt meghibásodások esetén válassza ki a **RAID-tükrözés** lehetőséget a kívánt pénzügyi tranzakcióhoz.
+    ![vSAN beállításai ](media/oracle-rac-storage-wizard-vsan.png) .
 7. A **speciális** szakaszban válassza ki a csíkozott lemezek számát. Az objektum területének foglalásához válassza a **vastag kiosztott**lehetőséget. Jelölje be az **objektum ellenőrzőösszegének letiltása**jelölőnégyzetet. Kattintson a **tovább**gombra.
 8. Kövesse a képernyőn megjelenő utasításokat a kompatibilis vSAN-adattárolók listájának megtekintéséhez, tekintse át a beállításokat, és fejezze be a telepítést.
 
@@ -247,11 +246,11 @@ A virtuális gépek közötti affinitási szabályok biztosítják, hogy a virtu
 2. Jelentkezzen be a privát felhő vSphere-ügyfelébe.
 3. Az vSphere-ügyfélen válassza ki azt a fürtöt, amelyen az Oracle virtuális gépek telepítve vannak, majd kattintson a **Konfigurálás**gombra.
 4. A konfigurálás területen válassza a **virtuális gép/gazda csoportok**lehetőséget.
-5. Kattintson **+** a elemre.
+5. Kattintson a elemre **+** .
 6. Adjon hozzá egy virtuálisgép-csoportot. Válassza ki a virtuálisgép- **csoportot** típusként. Adja meg a csoport nevét. Válassza ki a virtuális gépeket, majd kattintson az **OK** gombra a csoport létrehozásához.
 6. Adjon hozzá egy gazda csoportot. Válassza ki a **gazda csoportot** típusként. Adja meg a csoport nevét. Válassza ki azokat a gazdagépeket, amelyeken a virtuális gépek futni fognak, majd kattintson az **OK** gombra a csoport létrehozásához.
 7. Szabály létrehozásához kattintson a **virtuális gép/gazdagép szabályai**elemre.
-8. Kattintson **+** a elemre.
+8. Kattintson a elemre **+** .
 9. Adja meg a szabály nevét, és jelölje be az **Engedélyezés**gombot.
 10. A szabály típusa beállításnál válassza a **Virtual Machines a gazdagéphez**lehetőséget.
 11. Válassza ki az Oracle-alapú virtuális gépeket tartalmazó virtuálisgép-csoportot.
@@ -259,7 +258,7 @@ A virtuális gépek közötti affinitási szabályok biztosítják, hogy a virtu
 13. Válassza ki a létrehozott gazda csoportot.
 14. A szabály létrehozásához kattintson az **OK** gombra.
 
-## <a name="references"></a>Referencia
+## <a name="references"></a>Hivatkozások
 
 * [Tudnivalók a vSAN-szabályzatokról](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.virtualsan.doc/GUID-08911FD3-2462-4C1C-AE81-0D4DBC8F7990.html)
 * [VMware multi-Writer attribútum megosztott VMDK](https://docs.vmware.com/en/VMware-Cloud-on-AWS/solutions/VMware-Cloud-on-AWS.df6735f8b729fee463802083d46fdc75/GUID-A7642A82B3D6C5F7806DB40A3F2766D9.html)

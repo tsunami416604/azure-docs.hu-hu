@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 9b6265bed138960a3839091ed1593413fc85710a
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82858592"
 ---
 # <a name="troubleshoot-your-iot-edge-device"></a>A IoT Edge eszköz hibáinak megoldása
@@ -26,7 +25,7 @@ Az első lépés a IoT Edge hibaelhárításakor a `check` parancs használata, 
 >[!NOTE]
 >A hibaelhárítási eszköz nem tudja futtatni a kapcsolati ellenőrzéseket, ha a IoT Edge-eszköz proxykiszolgáló mögött van.
 
-A `check` parancsot a következőképpen futtathatja, vagy belefoglalhatja `--help` a jelzőt a lehetőségek teljes listájának megjelenítéséhez:
+A parancsot a következőképpen futtathatja `check` , vagy belefoglalhatja a `--help` jelzőt a lehetőségek teljes listájának megjelenítéséhez:
 
 Linux rendszeren:
 
@@ -50,9 +49,9 @@ További információ az eszköz által futtatott diagnosztikai ellenőrzésekr�
 
 ## <a name="gather-debug-information-with-support-bundle-command"></a>Hibakeresési adatok összegyűjtése a "support-Bundle" paranccsal
 
-Ha IoT Edge-eszközről kell összegyűjtenie a naplókat, a legkényelmesebb módszer a `support-bundle` parancs használata. Alapértelmezés szerint ez a parancs a modult, IoT Edge a Security Manager és a Container Engine `iotedge check` -naplókat, a JSON-kimenetet és más hasznos hibakeresési információkat gyűjt. Egyetlen fájlba tömöríti őket, így könnyen megosztható. A `support-bundle` parancs a [kiadási 1.0.9](https://github.com/Azure/azure-iotedge/releases/tag/1.0.9) és újabb verziókban érhető el.
+Ha IoT Edge-eszközről kell összegyűjtenie a naplókat, a legkényelmesebb módszer a `support-bundle` parancs használata. Alapértelmezés szerint ez a parancs a modult, IoT Edge a Security Manager és a Container Engine-naplókat, a `iotedge check` JSON-kimenetet és más hasznos hibakeresési információkat gyűjt. Egyetlen fájlba tömöríti őket, így könnyen megosztható. A `support-bundle` parancs a [kiadási 1.0.9](https://github.com/Azure/azure-iotedge/releases/tag/1.0.9) és újabb verziókban érhető el.
 
-Futtassa a `support-bundle` parancsot a `--since` jelzővel annak megadásához, hogy a múltban mennyi ideig szeretné lekérni a naplókat. Például `6h` az utolsó hat óra óta az elmúlt hat órában `6d` `6m` , az elmúlt hat percben és így tovább. A beállítások `--help` teljes listájának megjelenítéséhez adja meg a jelzőt.
+Futtassa a `support-bundle` parancsot a `--since` jelzővel annak megadásához, hogy a múltban mennyi ideig szeretné lekérni a naplókat. Például az utolsó hat óra óta az elmúlt hat órában, az elmúlt hat `6h` `6d` `6m` percben és így tovább. A `--help` beállítások teljes listájának megjelenítéséhez adja meg a jelzőt.
 
 Linux rendszeren:
 
@@ -67,11 +66,11 @@ iotedge support-bundle --since 6h
 ```
 
 > [!WARNING]
-> A parancs kimenete tartalmazhatja a `support-bundle` gazdagép, az eszköz és a modul nevét, a modulok által naplózott adatokat stb. Kérjük, vegye figyelembe, hogy ha a kimenetet egy nyilvános fórumon osztja meg.
+> A parancs kimenete `support-bundle` tartalmazhatja a gazdagép, az eszköz és a modul nevét, a modulok által naplózott adatokat stb. Kérjük, vegye figyelembe, hogy ha a kimenetet egy nyilvános fórumon osztja meg.
 
 ## <a name="check-your-iot-edge-version"></a>A IoT Edge verziójának keresése
 
-Ha a IoT Edge egy régebbi verzióját futtatja, a frissítés megoldhatja a problémát. Az `iotedge check` eszköz ellenőrzi, hogy a IoT Edge biztonsági démon a legújabb verzió-e, de nem ellenőrzi az IoT Edge hub és az ügynök moduljainak verzióját. Az eszközön futó futásidejű modulok verziójának vizsgálatához használja a parancsokat és `iotedge logs edgeAgent` `iotedge logs edgeHub`a parancsot. A verziószámot a rendszer a naplókban deklarálja a modul indításakor.
+Ha a IoT Edge egy régebbi verzióját futtatja, a frissítés megoldhatja a problémát. Az `iotedge check` eszköz ellenőrzi, hogy a IoT Edge biztonsági démon a legújabb verzió-e, de nem ellenőrzi az IoT Edge hub és az ügynök moduljainak verzióját. Az eszközön futó futásidejű modulok verziójának vizsgálatához használja a parancsokat és a `iotedge logs edgeAgent` parancsot `iotedge logs edgeHub` . A verziószámot a rendszer a naplókban deklarálja a modul indításakor.
 
 Az eszköz frissítésével kapcsolatos utasításokért tekintse meg [a IoT Edge biztonsági démon és futtatókörnyezet frissítése](how-to-update-iot-edge.md)című témakört.
 
@@ -195,7 +194,7 @@ iotedge logs <container name>
 
 ## <a name="view-the-messages-going-through-the-iot-edge-hub"></a>Az IoT Edge hub-on keresztül haladó üzenetek megtekintése
 
-Megtekintheti az IoT Edge hub-on keresztül megjelenő üzeneteket, és bepillantást nyerhet a részletes naplókból a futásidejű tárolóból. A részletes naplók ezen tárolók bekapcsolásához állítsa `RuntimeLogLevel` be a YAML konfigurációs fájlját. A fájl megnyitása:
+Megtekintheti az IoT Edge hub-on keresztül megjelenő üzeneteket, és bepillantást nyerhet a részletes naplókból a futásidejű tárolóból. A részletes naplók ezen tárolók bekapcsolásához állítsa be a `RuntimeLogLevel` YAML konfigurációs fájlját. A fájl megnyitása:
 
 Linux rendszeren:
 
@@ -255,7 +254,7 @@ Azure IoT Edge lehetővé teszi a helyszíni kiszolgálóról az Azure-felhőbe 
 
 Míg a IoT Edge továbbfejlesztett konfigurációt biztosít Azure IoT Edge futtatókörnyezet és a telepített modulok biztonságossá tételéhez, továbbra is függ a mögöttes gépről és hálózati konfigurációtól. Ezért fontos, hogy a megfelelő hálózati és tűzfalszabályok a Felhőbeli kommunikáció biztonságos peremén legyenek beállítva. A következő táblázat használható a konfigurációs tűzfalszabályok azon alapuló kiszolgálókon való konfigurálásához, amelyeken a Azure IoT Edge Runtime fut:
 
-|Protocol (Protokoll)|Port|Bejövő|Kimenő|Útmutatás|
+|Protokoll|Port|Bejövő|Kimenő|Útmutató|
 |--|--|--|--|--|
 |MQTT|8883|Letiltva (alapértelmezett)|Letiltva (alapértelmezett)|<ul> <li>Konfigurálja a kimenő (kimenő) t, ha a MQTT kommunikációs protokollként való használatakor megnyitható.<li>a IoT Edge nem támogatja a MQTT használatát. 1883 <li>A bejövő (bejövő) kapcsolatokat le kell tiltani.</ul>|
 |AMQP|5671|Letiltva (alapértelmezett)|Megnyitás (alapértelmezett)|<ul> <li>Az IoT Edge alapértelmezett kommunikációs protokollja. <li> Úgy kell konfigurálni, hogy nyitva legyen, ha Azure IoT Edge nincs más támogatott protokollhoz konfigurálva, vagy a AMQP a kívánt kommunikációs protokoll.<li>a IoT Edge nem támogatja a AMQP használatát. 5672<li>A port letiltása, ha a Azure IoT Edge egy másik IoT Hub támogatott protokollt használ.<li>A bejövő (bejövő) kapcsolatokat le kell tiltani.</ul></ul>|

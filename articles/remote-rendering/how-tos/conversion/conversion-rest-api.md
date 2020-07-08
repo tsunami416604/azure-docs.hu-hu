@@ -6,10 +6,9 @@ ms.author: flborn
 ms.date: 02/04/2020
 ms.topic: how-to
 ms.openlocfilehash: 0a0feb6b638cb6e3a74fcd30baea5e8a04375699
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82857801"
 ---
 # <a name="use-the-model-conversion-rest-api"></a>A modellátalakító REST API használata
@@ -45,7 +44,7 @@ Az átalakítási szolgáltatás három REST API végpontot biztosít a követke
 ### <a name="start-conversion-using-a-linked-storage-account"></a>Konverzió indítása társított Storage-fiók használatával
 Az Azure-beli távoli renderelési fióknak hozzáféréssel kell rendelkeznie a megadott Storage-fiókhoz a Storage- [fiókok összekapcsolásának](../create-an-account.md#link-storage-accounts)lépésein követve.
 
-| Végpont | Módszer |
+| Végpont | Metódus |
 |-----------|:-----------|
 | /v1/accounts/**accountID**/Conversions/Create | POST |
 
@@ -75,7 +74,7 @@ Egy JSON-dokumentumba csomagolt, folyamatban lévő konverzió AZONOSÍTÓját a
 ### <a name="start-conversion-using-provided-shared-access-signatures"></a>Konverzió indítása a megadott megosztott hozzáférési aláírásokkal
 Ha az ARR-fiók nincs csatolva a Storage-fiókhoz, ez a REST-felület lehetővé teszi, hogy *megosztott hozzáférési aláírásokkal (SAS)* biztosítson hozzáférést.
 
-| Végpont | Módszer |
+| Végpont | Metódus |
 |-----------|:-----------|
 | /v1/accounts/**accountID**/Conversions/createWithSharedAccessSignature | POST |
 
@@ -114,7 +113,7 @@ A kérés törzse megegyezik a fenti REST-hívás létrehozásakor, de a bemenet
 A fenti REST-hívások egyikével megkezdett folyamatos konverzió állapota a következő felületen kérdezhető le:
 
 
-| Végpont | Módszer |
+| Végpont | Metódus |
 |-----------|:-----------|
 | /v1/accounts/**accountID**/Conversions/**conversionId** | GET |
 

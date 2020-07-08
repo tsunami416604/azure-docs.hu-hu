@@ -9,10 +9,9 @@ ms.workload: infrastructure-services
 ms.date: 05/09/2016
 ms.author: markscu
 ms.openlocfilehash: d34481587fd48e2eddfd268c39f6bc4f7c4e0c76
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81869423"
 ---
 # <a name="create-matlab-distributed-computing-server-clusters-on-azure-vms"></a>MATLAB Distributed Computing Server-fürtök létrehozása Azure-beli virtuális gépeken
@@ -47,7 +46,7 @@ Ha Azure-beli virtuális gépeket szeretne használni a MATLAB Distributed Compu
    * Használja a megadott PowerShell-parancsfájlt, vagy a gyors üzembe helyezési sablonnal hozzon létre egy fürtöt az alap VM-rendszerképből.   
    * A fürtöket a megadott PowerShell-parancsfájl segítségével kezelheti, amely lehetővé teszi fürtök listázását, szüneteltetését, folytatását és törlését.
 
-## <a name="cluster-configurations"></a>Fürtkonfiguráció
+## <a name="cluster-configurations"></a>Fürtkonfigurációk
 Jelenleg a fürt létrehozására szolgáló parancsfájl és sablon lehetővé teszi, hogy egyetlen MATLAB elosztott számítástechnikai kiszolgálói topológiát hozzon létre. Ha szeretné, hozzon létre egy vagy több további fürtöt, és minden egyes fürt eltérő virtuálisgép-méretekkel rendelkezik, és így tovább.
 
 ### <a name="matlab-client-and-cluster-in-azure"></a>MATLAB-ügyfél és-fürt az Azure-ban

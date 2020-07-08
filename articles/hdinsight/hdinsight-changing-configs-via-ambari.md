@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/04/2020
 ms.openlocfilehash: a819c3a57efdc0ae87cf969fd7471818c51895f6
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82793159"
 ---
 # <a name="optimize-clusters-with-apache-ambari-in-azure-hdinsight"></a>Fürtök optimalizálása Apache Ambari az Azure HDInsight
@@ -21,7 +20,7 @@ A HDInsight Apache Hadoop fürtöket biztosít nagyméretű adatfeldolgozási al
 
 A Ambari webes felhasználói felületének bevezetését lásd: [HDInsight-fürtök kezelése az Apache Ambari Web UI használatával](hdinsight-hadoop-manage-ambari.md)
 
-Jelentkezzen be a Ambari `https://CLUSTERNAME.azurehdidnsight.net` -ba a fürt hitelesítő adataival. A kezdeti képernyő egy áttekintő irányítópultot jelenít meg.
+Jelentkezzen be a Ambari-ba a `https://CLUSTERNAME.azurehdidnsight.net` fürt hitelesítő adataival. A kezdeti képernyő egy áttekintő irányítópultot jelenít meg.
 
 ![Az Apache Ambari felhasználói irányítópultja megjelenik](./media/hdinsight-changing-configs-via-ambari/apache-ambari-dashboard.png)
 
@@ -63,6 +62,6 @@ Az NameNode Java-halom méretének módosítása:
 
 * [HDInsight-fürtök kezelése az Apache Ambari webes FELÜLETtel](hdinsight-hadoop-manage-ambari.md)
 * [Apache Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md)
-* [Apache-HBase optimalizálása](./optimize-hbase-ambari.md)
-* [Apache Hive optimalizálása](./optimize-hive-ambari.md)
-* [Apache Pig optimalizálása](./optimize-pig-ambari.md)
+* [Az Apache HBase optimalizálása](./optimize-hbase-ambari.md)
+* [Az Apache Hive optimalizálása](./optimize-hive-ambari.md)
+* [Az Apache Pig optimalizálása](./optimize-pig-ambari.md)

@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/09/2018
 ms.author: dekapur
 ms.openlocfilehash: 5921fc9038e53f34e23f6fd97111c71b29699dc5
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82793142"
 ---
 # <a name="upgrade-the-service-fabric-version-that-runs-on-your-cluster"></a>A fürtön futó Service Fabric verziójának frissítése 
@@ -26,7 +25,7 @@ A fürtöt csak akkor frissítheti az új verzióra, ha éles stílusú csomópo
 Két különálló munkafolyamat képes frissíteni a fürtöt a legújabb verzióra vagy egy támogatott Service Fabric-verzióra. Az egyik munkafolyamat olyan fürtökhöz tartozik, amelyeknek a kapcsolata automatikusan letölti a legújabb verziót. A másik munkafolyamat olyan fürtök esetében használható, amelyek nem rendelkeznek a legújabb Service Fabric verzió letöltéséhez szükséges kapcsolattal.
 
 ## <a name="enable-auto-upgrade-of-the-service-fabric-version-of-your-cluster"></a>A fürt Service Fabric verziójának automatikus verziófrissítésének engedélyezése
-Ha úgy szeretné beállítani a fürtöt, hogy letöltse Service Fabric frissítéseit, amikor a Microsoft `fabricClusterAutoupgradeEnabled` új verziót szabadít fel, állítsa *igaz*értékre a fürt konfigurációját. Ha az Service Fabric támogatott verzióját szeretné manuálisan kiválasztani, amelyet a fürtnek be szeretne állítani, állítsa a `fabricClusterAutoupgradeEnabled` fürt konfigurációját *hamis*értékre.
+Ha úgy szeretné beállítani a fürtöt, hogy letöltse Service Fabric frissítéseit, amikor a Microsoft új verziót szabadít fel, állítsa igaz értékre a `fabricClusterAutoupgradeEnabled` fürt konfigurációját. *true* Ha az Service Fabric támogatott verzióját szeretné manuálisan kiválasztani, amelyet a fürtnek be szeretne állítani, állítsa a `fabricClusterAutoupgradeEnabled` fürt konfigurációját *hamis*értékre.
 
 ## <a name="upgrade-clusters-that-have-connectivity-to-download-the-latest-code-and-configuration"></a>A legújabb kód és konfiguráció letöltésére szolgáló kapcsolattal rendelkező fürtök frissítése
 Ezekkel a lépésekkel frissítheti a fürtöt egy támogatott verzióra, ha a fürtcsomópontok internetkapcsolattal rendelkeznek a [Microsoft letöltőközpontból](https://download.microsoft.com).
@@ -94,7 +93,7 @@ Ezekkel a lépésekkel frissítheti a fürtöt egy támogatott verzióra, ha a f
 >
 
 ### <a name="auto-provisioning-vs-manual-provisioning"></a>Automatikus kiépítés és manuális kiépítés
-A legújabb kód verziójának automatikus letöltésének és regisztrálásának engedélyezéséhez állítsa be a Service Fabric Update szolgáltatást. Útmutatásért lásd: *tools\servicefabricupdateservice.zip\ Readme_InstructionsAndHowTos. txt* az [önálló csomagban](service-fabric-cluster-standalone-package-contents.md).
+A legújabb kód verziójának automatikus letöltésének és regisztrálásának engedélyezéséhez állítsa be a Service Fabric Update szolgáltatást. Útmutatásért lásd: *Tools\ServiceFabricUpdateService.zip\Readme_InstructionsAndHowTos.txt* az [önálló csomagban](service-fabric-cluster-standalone-package-contents.md).
 
 A manuális folyamathoz kövesse az alábbi utasításokat.
 

@@ -14,10 +14,9 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: 533f287693ca8aac76a3233674d95f3f49d4ae22
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82857174"
 ---
 # <a name="design-secure-applications-on-azure"></a>Biztonságos alkalmazások tervezése az Azure-ban
@@ -27,7 +26,7 @@ Ebben a cikkben a következő SDL-fázisokat tárgyaljuk:
 
 - Képzés
 - Követelmények
-- Kialakítás
+- Tervezés
 
 ## <a name="training"></a>Képzés
 Mielőtt megkezdené a felhőalapú alkalmazás fejlesztését, szánjon időt az Azure biztonságának és adatvédelmének megismerésére. Ennek a lépésnek a segítségével csökkentheti a kihasználható biztonsági rések számát és súlyosságát az alkalmazásban. Az állandóan változó fenyegetést jelentő tájképre való megfelelő reagálásra készen áll.
@@ -97,7 +96,7 @@ Azonban azt is [feltételezi, hogy a rendszer megszegi a](https://docs.microsoft
 
   - Hogyan lehet helyreállítani a támadásokat, például az adatszivárgást vagy a módosítást?
 
-## <a name="design"></a>Kialakítás
+## <a name="design"></a>Tervezés
 
 A tervezési fázis kritikus fontosságú a tervezési és funkcionális specifikációkkal kapcsolatos ajánlott eljárások kialakításához. Emellett kritikus fontosságú a kockázatkezelési feladatok elvégzésében is, amelyek segítenek enyhíteni a teljes projekt biztonsági és adatvédelmi problémáit.
 
@@ -128,7 +127,7 @@ Kihasználhatja a fejlett hibakeresési képességekkel és beépített Azure-t�
 
 A Microsoft számos különböző [nyelvet, keretrendszert és eszközt](https://docs.microsoft.com/azure/index?pivot=sdkstools&panel=sdkstools-all) kínál az Azure-beli alkalmazások fejlesztéséhez. Ilyen például az [Azure .net-és .net Core-fejlesztőknek](https://docs.microsoft.com/dotnet/azure/). Az általunk kínált nyelvekhez és keretrendszerekhez rövid útmutatók, oktatóanyagok és API-referenciák találhatók, amelyek segítenek a gyors kezdésben.
 
-Az Azure számos szolgáltatást kínál, amelyekkel webhelyeket és webalkalmazásokat futtathat. Ezek a szolgáltatások lehetővé teszik a fejlesztést kedvenc nyelvén, legyen az .NET, .NET Core, Java, Ruby, Node. js, PHP vagy Python.
+Az Azure számos szolgáltatást kínál, amelyekkel webhelyeket és webalkalmazásokat futtathat. Ezek a szolgáltatások lehetővé teszik a fejlesztést kedvenc nyelvén, legyen az .NET, .NET Core, Java, Ruby, Node.js, PHP vagy Python.
 [Azure App Service Web Apps](../../app-service/overview.md) (Web Apps) egyike ezeknek a szolgáltatásoknak.
 
 Web Apps a Microsoft Azure erejét hozzáadja az alkalmazáshoz. Ez magában foglalja a biztonságot, a terheléselosztást, az automatikus skálázást és az automatizált felügyeletet. Emellett kihasználhatja Web Apps DevOps funkcióit, például a csomagkezelő, az átmeneti környezetek, az egyéni tartományok, az SSL/TLS-tanúsítványok és az Azure DevOps, a GitHub, a Docker hub és más források folyamatos üzembe helyezését.
@@ -151,7 +150,7 @@ A veszélyforrások modellezési folyamatának elősegítése érdekében az [SD
 
 Az alkalmazások tervezésének modellezése és a [Stride](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy) -fenyegetések számbavétele – a hamisítás, a hamisítás, a Megtagadás, az információk közzététele, a szolgáltatásmegtagadás és a jogosultsági szint megemelése – az összes megbízhatósági határ tekintetében hatékony módszert jelent a tervezési hibák kifogására a korai fázisban. A következő táblázat felsorolja a Stride-fenyegetéseket, és példákat tartalmaz az Azure által biztosított szolgáltatások használatára. Ezek a enyhítések nem fognak működni minden helyzetben.
 
-| Threat | Biztonsági tulajdonság | Az Azure platform lehetséges enyhítése |
+| Fenyegetés | Biztonsági tulajdonság | Az Azure platform lehetséges enyhítése |
 | ---------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Hamisítás               | Hitelesítés        | [HTTPS-kapcsolatok megkövetelése](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.1&tabs=visual-studio). |
 | Illetéktelen módosításának              | Integritás             | Ellenőrizze az SSL/TLS-tanúsítványokat. Az SSL/TLS protokollt használó alkalmazásoknak teljes mértékben ellenőriznie kell azon entitások X. 509 tanúsítványait, amelyekhez csatlakoznak. [A x509-tanúsítványok kezeléséhez](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-certificates)használjon Azure Key Vault tanúsítványokat. |

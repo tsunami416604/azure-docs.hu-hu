@@ -10,10 +10,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: a2fe7daf1476f19f6a6eea83174342fa1273fe14
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81867964"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>Rövid útmutató – privát felhőalapú környezet konfigurálása
@@ -58,7 +57,7 @@ A privát felhők kezelése a CloudSimple-portálon keresztül történik. Sajá
 
 11. Kattintson **a Tovább gombra: Áttekintés és létrehozás**.
 12. Tekintse át a beállításokat. Ha módosítania kell a beállításokat, kattintson az **előző**gombra.
-13. Kattintson a **Létrehozás**gombra.
+13. Kattintson a **Létrehozás** lehetőségre.
 
 Elindul a felhőalapú kiépítési folyamat.  A privát felhő üzembe helyezése akár két óráig is eltarthat.
 
@@ -114,7 +113,7 @@ A CloudSimple a számítógépről való csatlakozáshoz VPN-ügyfél szüksége
 1. Indítsa el a CloudSimple portált, és válassza a **hálózat**lehetőséget.
 2. Válassza a **VPN Gateway**lehetőséget.
 3. A VPN-átjárók listájában kattintson a pont – hely VPN-átjáróra.
-4. Válassza a **Felhasználók** lehetőséget.
+4. Válassza a **felhasználók**lehetőséget.
 5. Kattintson **a saját VPN-konfiguráció letöltése**elemre.
 
     ![VPN-konfiguráció letöltése](media/download-p2s-vpn-configuration.png)

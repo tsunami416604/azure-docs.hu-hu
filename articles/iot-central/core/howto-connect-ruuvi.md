@@ -11,10 +11,9 @@ ms.author: avneets
 author: avneet723
 ms.date: 11/27/2019
 ms.openlocfilehash: 93e4d3d0bed9090573d2b6ee87a29b86ccd72e42
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81758951"
 ---
 # <a name="connect-a-ruuvitag-sensor-to-your-azure-iot-central-application"></a>RuuviTag-érzékelő összekötése az Azure IoT Central-alkalmazással
@@ -45,8 +44,8 @@ Ahhoz, hogy egy RuuviTag-érzékelőt beillesszen az Azure IoT Central Applicati
 
 RuuviTag-sablon hozzáadása:
 
-1. Navigáljon a bal oldali ablaktáblán található ***eszközök*** panelre, majd válassza a ![ **+ új**: új](./media/howto-connect-ruuvi/devicetemplate-new.png) sablon létrehozása lehetőséget, amely lehetővé teszi ***egyéni sablon létrehozását*** vagy ***előre konfigurált sablon használatát*** .
-1. Válassza ki a RuuviTag az előre konfigurált eszközök listájából az alább látható módon: válassza a RuuviTag ![-eszköz sablonja lehetőséget.](./media/howto-connect-ruuvi/devicetemplate-preconfigured.png)
+1. Navigáljon a bal oldali ablaktáblán található ***eszközök*** panelre, majd válassza a **+ új**: ![ új sablon létrehozása lehetőséget, amely ](./media/howto-connect-ruuvi/devicetemplate-new.png) lehetővé teszi ***egyéni sablon létrehozását*** vagy ***előre konfigurált sablon használatát*** .
+1. Válassza ki a RuuviTag az előre konfigurált eszközök listájából az alább látható módon: ![ válassza a RuuviTag-eszköz sablonja lehetőséget.](./media/howto-connect-ruuvi/devicetemplate-preconfigured.png)
 1. A ***Tovább gombra*** kattintva folytassa a következő lépéssel.
 1. A következő képernyőn válassza a ***Létrehozás*** elemet a C500-eszköz sablonjának a IoT Central alkalmazásba való beléptetéséhez.
 
@@ -72,7 +71,7 @@ Szimulált RuuviTag létrehozása:
 1. Válassza az **+ új**lehetőséget.
 1. Adjon meg egy egyedi **azonosítót** és egy felhasználóbarát **eszköznév**.  
 1. Engedélyezze a **szimulált** beállítást.
-1. Kattintson a **Létrehozás** gombra.  
+1. Válassza a **Létrehozás** lehetőséget.  
 
 ## <a name="next-steps"></a>Következő lépések
 

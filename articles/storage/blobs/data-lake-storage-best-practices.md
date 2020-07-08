@@ -9,10 +9,9 @@ ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: sachins
 ms.openlocfilehash: 79c4f051318113ebe0c7e0085539d2f24405b4f9
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82857882"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen2"></a>Ajánlott eljárások Azure Data Lake Storage Gen2 használatához
@@ -39,7 +38,7 @@ Azure Active Directory egyszerű szolgáltatásokat általában olyan szolgálta
 
 ### <a name="enable-the-data-lake-storage-gen2-firewall-with-azure-service-access"></a>A Data Lake Storage Gen2 tűzfal engedélyezése az Azure-szolgáltatás elérésével
 
-Data Lake Storage Gen2 támogatja a tűzfal bekapcsolásának lehetőségét, és csak az Azure-szolgáltatásokhoz való hozzáférést korlátozza, ami a külső támadások vektorának korlátozására ajánlott. A tűzfal engedélyezhető a Azure Portal > lévő Storage-fiókon **a tűzfal****engedélyezése (bekapcsolva)** > beállítással az**Azure-szolgáltatások elérésének engedélyezése** lehetőséggel.
+Data Lake Storage Gen2 támogatja a tűzfal bekapcsolásának lehetőségét, és csak az Azure-szolgáltatásokhoz való hozzáférést korlátozza, ami a külső támadások vektorának korlátozására ajánlott. A tűzfal engedélyezhető a Azure Portal lévő Storage-fiókon **a tűzfal**  >  **engedélyezése (bekapcsolva)**  >  beállítással az**Azure-szolgáltatások elérésének engedélyezése** lehetőséggel.
 
 Ha Azure Databricks szeretné elérni a Storage-fiókját, telepítse Azure Databricks a virtuális hálózatra, majd adja hozzá a virtuális hálózatot a tűzfalhoz. Lásd: [Azure Storage-tűzfalak és virtuális hálózatok konfigurálása](https://docs.microsoft.com/azure/storage/common/storage-network-security).
 

@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
 ms.openlocfilehash: f1bce0a95b672bb23767fce3d5d092221ccd8321
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82858339"
 ---
 # <a name="visualize-apache-hive-data-with-microsoft-power-bi-using-odbc-in-azure-hdinsight"></a>Apache Hive-adatok vizualizálása a Microsoft Power BI-jal és ODBC-vel az Azure HDInsightban
@@ -46,7 +45,7 @@ A **hivesampletable** -struktúra tábla minden HDInsight-fürtöt tartalmaz.
 
 1. Indítsa el a Power BI Desktopot.
 
-1. A felső menüben navigáljon a **Kezdőlap** >  > **adatok beolvasása****továbbiak...** elemre.
+1. A felső menüben navigáljon a **Kezdőlap**  >  **adatok beolvasása**  >  **továbbiak...** elemre.
 
     ![Az HDInsight Excel Power BI megnyitása](./media/apache-hadoop-connect-hive-power-bi/hdinsight-power-bi-open-odbc.png)
 

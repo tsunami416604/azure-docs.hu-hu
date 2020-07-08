@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
 ms.openlocfilehash: b6b32f9eadc6677bad591f4040981c4c95bf1f76
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82871243"
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-azure-monitor"></a>Az SQL-környezet optimalizálása a SQL Server Health-ellenőrzési megoldással Azure Monitor
@@ -38,7 +37,7 @@ A megoldás hozzáadása és az értékelés befejezése után a fókusz terüle
 * Log Analytics munkaterület az SQL Health-ellenőrzési megoldás az Azure Marketplace-en való hozzáadásához a Azure Portalban. A megoldás telepítéséhez rendszergazdának vagy közreműködőnek kell lennie az Azure-előfizetésben.
 
   > [!NOTE]
-  > A megoldás hozzáadása után a rendszer hozzáadja a AdvisorAssessment. exe fájlt az ügynökökkel rendelkező kiszolgálókhoz. A rendszer beolvassa és elküldi a konfigurációs adatfeldolgozást a felhőben lévő Azure Monitorba. A felhőszolgáltatás egy logikát alkalmaz a kapott adatokon, és rögzíti azokat.
+  > A megoldás hozzáadása után a AdvisorAssessment.exe fájl hozzá lesz adva a-ügynökökkel rendelkező kiszolgálókhoz. A rendszer beolvassa és elküldi a konfigurációs adatfeldolgozást a felhőben lévő Azure Monitorba. A felhőszolgáltatás egy logikát alkalmaz a kapott adatokon, és rögzíti azokat.
   >
   >
 
@@ -177,8 +176,8 @@ Ha olyan javaslatok vannak, amelyeket figyelmen kívül szeretne hagyni, létreh
 
 3. Válassza ki a figyelmen kívül hagyni kívánt ajánlásokat. A következő eljárásban a RecommendationId értékeit fogja használni.
 
-### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>IgnoreRecommendations. txt szövegfájl létrehozása és használata
-1. Hozzon létre egy IgnoreRecommendations. txt nevű fájlt.
+### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>IgnoreRecommendations.txt szövegfájl létrehozása és használata
+1. Hozzon létre egy IgnoreRecommendations.txt nevű fájlt.
 2. Illessze be vagy írja be az egyes RecommendationId minden olyan javaslathoz, amelyet szeretne figyelmen kívül hagyni Azure Monitor külön sorban, majd mentse és zárjuk be a fájlt.
 3. Helyezze a fájlt a következő mappába az összes olyan számítógépen, amelyen Azure Monitor szeretné figyelmen kívül hagyni a javaslatokat.
    * A Microsoft monitoring agenttel rendelkező számítógépeken (közvetlenül vagy Operations Manageron keresztül csatlakoztatott) – *SYSTEMDRIVE*: \Program Files\Microsoft monitoring Agent\Agent
@@ -192,7 +191,7 @@ Ha olyan javaslatok vannak, amelyeket figyelmen kívül szeretne hagyni, létreh
     ```
     SQLAssessmentRecommendation | where RecommendationResult == "Ignored" | sort by Computer asc | project Computer, RecommendationId, Recommendation
     ```
-3. Ha később úgy dönt, hogy szeretné látni a figyelmen kívül hagyott javaslatokat, távolítsa el az összes IgnoreRecommendations. txt fájlt, vagy távolítsa el a RecommendationIDs.
+3. Ha később úgy dönt, hogy szeretné megtekinteni a figyelmen kívül hagyott javaslatokat, távolítson el minden IgnoreRecommendations.txt fájlt, vagy távolítsa el a RecommendationIDs.
 
 ## <a name="sql-health-check-solution-faq"></a>Az SQL Health Check megoldás – gyakori kérdések
 
@@ -226,7 +225,7 @@ Az eredmények az Excel programba exportálhatók további áttekintés céljáb
 
 *Mi az adatgyűjtés folyamatának neve?*
 
-* AdvisorAssessment. exe
+* AdvisorAssessment.exe
 
 *Mennyi időt vesz igénybe az adatok gyűjtése?*
 

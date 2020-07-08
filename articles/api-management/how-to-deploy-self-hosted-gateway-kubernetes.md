@@ -10,10 +10,9 @@ ms.topic: article
 ms.author: apimpm
 ms.date: 04/23/2020
 ms.openlocfilehash: 38cfab8a3b73eeef28249f53bd2f5c56e26b21a1
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82854107"
 ---
 # <a name="deploy-a-self-hosted-gateway-to-kubernetes"></a>Saját üzemeltetésű átjáró üzembe helyezése Kubernetesben
@@ -57,8 +56,8 @@ Ez a cikk az Azure-API Management saját üzemeltetésű átjáró-összetevőj�
     ![Átjáró állapota](media/how-to-deploy-self-hosted-gateway-kubernetes/status.png)
 
 > [!TIP]
-> A <code>kubectl logs deployment/<gateway-name></code> parancs futtatásával megtekintheti a naplókat egy véletlenszerűen kiválasztott Pod-ból, ha egynél több van.
-> Futtassa <code>kubectl logs -h</code> a parancsot a parancssori kapcsolók teljes készletéhez, például egy adott Pod vagy tároló naplóinak megtekintéséhez.
+> A parancs futtatásával <code>kubectl logs deployment/<gateway-name></code> megtekintheti a naplókat egy véletlenszerűen kiválasztott Pod-ból, ha egynél több van.
+> Futtassa a <code>kubectl logs -h</code> parancsot a parancssori kapcsolók teljes készletéhez, például egy adott Pod vagy tároló naplóinak megtekintéséhez.
 
 ## <a name="production-deployment-considerations"></a>Éles üzembe helyezési megfontolások
 
@@ -110,7 +109,7 @@ A Kubernetes-névfeloldással kapcsolatos további tudnivalókért tekintse meg 
 ### <a name="configuration-backup"></a>Konfiguráció biztonsági mentése
 Ha szeretne többet megtudni a saját üzemeltetésű átjárók működéséről egy ideiglenes Azure-kapcsolat kimaradása esetén, tekintse meg a saját üzemeltetésű [átjárók áttekintése](self-hosted-gateway-overview.md#connectivity-to-azure)című témakört.
 
-Konfigurálja a helyi tárolási kötetet a saját üzemeltetésű átjáró-tárolóhoz, így a legújabb letöltött konfiguráció biztonsági másolata is maradhat. Ha a kapcsolat nem érhető el, a tárolási kötet újraindításkor használhatja a biztonsági másolatot. A kötet csatlakoztatási útvonalának <code>/apim/config</code>kötelezőnek kell lennie. Tekintse meg a [githubon](https://github.com/Azure/api-management-self-hosted-gateway/blob/master/examples/self-hosted-gateway-with-configuration-backup.yaml)látható példát.
+Konfigurálja a helyi tárolási kötetet a saját üzemeltetésű átjáró-tárolóhoz, így a legújabb letöltött konfiguráció biztonsági másolata is maradhat. Ha a kapcsolat nem érhető el, a tárolási kötet újraindításkor használhatja a biztonsági másolatot. A kötet csatlakoztatási útvonalának kötelezőnek kell lennie <code>/apim/config</code> . Tekintse meg a [githubon](https://github.com/Azure/api-management-self-hosted-gateway/blob/master/examples/self-hosted-gateway-with-configuration-backup.yaml)látható példát.
 A Kubernetes-beli tárolással kapcsolatos további tudnivalókért tekintse meg a [Kubernetes webhelyét](https://kubernetes.io/docs/concepts/storage/volumes/).
 
 ### <a name="local-logs-and-metrics"></a>Helyi naplók és mérőszámok

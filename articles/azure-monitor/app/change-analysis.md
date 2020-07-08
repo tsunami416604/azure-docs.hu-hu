@@ -6,10 +6,9 @@ author: cawams
 ms.author: cawa
 ms.date: 05/04/2020
 ms.openlocfilehash: c287a2315f2b2319a6873ce84ee0e4e48bec8444
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82836774"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Alkalmazás-módosítási elemzés (előzetes verzió) használata Azure Monitor
@@ -79,7 +78,7 @@ Egy erőforrásra kattintva megtekintheti az összes módosítást. Ha szükség
 
 ![Képernyőkép a változás részleteiről](./media/change-analysis/change-details.png)
 
-Bármilyen visszajelzést a panelen vagy e-mailben changeanalysisteam@microsoft.coma visszajelzés küldése gombra kattintva használhat.
+Bármilyen visszajelzést a panelen vagy e-mailben a visszajelzés küldése gombra kattintva használhat changeanalysisteam@microsoft.com .
 
 ![Képernyőkép – visszajelzés gomb a Change Analysis panelen](./media/change-analysis/change-analysis-feedback.png)
 
@@ -109,7 +108,7 @@ Az Application Change Analysis egy önálló detektor a webalkalmazásban a prob
 
     ![Képernyőfelvétel: a Change Analysis felhasználói felületének engedélyezése](./media/change-analysis/change-analysis-on.png)
 
-5. A Change Analysis szolgáltatás eléréséhez válassza a **diagnosztizálás és megoldás problémák** > **rendelkezésre állása és a teljesítménybeli** > **alkalmazások összeomlása**lehetőséget. Ekkor megjelenik egy gráf, amely összefoglalja a változások típusát a változások részleteivel együtt. Alapértelmezés szerint az elmúlt 24 órában történt változások segítenek az azonnali problémák megoldásában.
+5. A Change Analysis szolgáltatás eléréséhez válassza a **diagnosztizálás és megoldás problémák**  >  **rendelkezésre állása és a teljesítménybeli**  >  **alkalmazások összeomlása**lehetőséget. Ekkor megjelenik egy gráf, amely összefoglalja a változások típusát a változások részleteivel együtt. Alapértelmezés szerint az elmúlt 24 órában történt változások segítenek az azonnali problémák megoldásában.
 
      ![Képernyőkép a Change diff nézetről](./media/change-analysis/change-view.png)
 
