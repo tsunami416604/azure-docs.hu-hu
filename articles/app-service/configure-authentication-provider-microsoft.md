@@ -8,10 +8,9 @@ ms.custom:
 - seodec18
 - fasttrack-edit
 ms.openlocfilehash: 68af882bf240b354bdad1afe322135c048576ed4
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83772836"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-microsoft-account-login"></a>A App Service vagy Azure Functions alkalmazás konfigurálása a Microsoft-fiók bejelentkezési használatára
@@ -28,7 +27,7 @@ Ebből a témakörből megtudhatja, hogyan konfigurálhatja Azure App Service va
 1. Lépjen [**Alkalmazásregisztrációk**](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) a Azure Portal. Ha szükséges, jelentkezzen be a Microsoft-fiók.
 1. Válassza az **új regisztráció**lehetőséget, majd adja meg az alkalmazás nevét.
 1. A **támogatott fióktípus**területen válassza a **fiókok bármely szervezeti címtárban (bármely Azure ad-címtár – több-bérlő) és a személyes Microsoft-fiókok (például Skype, Xbox) lehetőséget.**
-1. Az **átirányítási URI**-k területen válassza a Web lehetőséget, majd írja be a **következőt**: `https://<app-domain-name>/.auth/login/aad/callback` . Cserélje le az * \< app-domain-name>nevet* az alkalmazás tartománynevére.  Például: `https://contoso.azurewebsites.net/.auth/login/aad/callback`. Ügyeljen arra, hogy az URL-címben a HTTPS-sémát használja.
+1. Az **átirányítási URI**-k területen válassza a Web lehetőséget, majd írja be a **következőt**: `https://<app-domain-name>/.auth/login/aad/callback` . Cserélje le a *\<app-domain-name>* nevet az alkalmazás tartománynevére.  Például: `https://contoso.azurewebsites.net/.auth/login/aad/callback`. Ügyeljen arra, hogy az URL-címben a HTTPS-sémát használja.
 
 1. Kattintson a **Register** (Regisztrálás) elemre.
 1. Másolja az **alkalmazás (ügyfél) azonosítóját**. Erre később még szüksége lesz.
@@ -63,4 +62,4 @@ Most már készen áll a Microsoft-fiók használatára a hitelesítéshez az al
 <!-- URLs. -->
 
 [My Applications]: https://go.microsoft.com/fwlink/p/?LinkId=262039
-[Azure Portal]: https://portal.azure.com/
+[Azure Portalra]: https://portal.azure.com/

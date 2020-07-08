@@ -1,5 +1,5 @@
 ---
-title: Fejlesztői útmutató Azure Active Directory feltételes hozzáféréshez
+title: Fejlesztői útmutató az Azure Active Directory feltételes hozzáféréséhez
 titleSuffix: Microsoft identity platform
 description: Fejlesztői útmutató és forgatókönyvek az Azure AD feltételes hozzáféréshez és a Microsoft Identity platformhoz.
 services: active-directory
@@ -15,17 +15,16 @@ ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
 ms.openlocfilehash: 6b31a03a6367c9c6f2025c1544b59c95b3f69175
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83771077"
 ---
-# <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Fejlesztői útmutató Azure Active Directory feltételes hozzáféréshez
+# <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Fejlesztői útmutató az Azure Active Directory feltételes hozzáféréséhez
 
 Azure Active Directory (Azure AD) feltételes hozzáférési funkciója számos módszert kínál az alkalmazás biztonságossá tételéhez és a szolgáltatások védelméhez. A feltételes hozzáférés lehetővé teszi a fejlesztők és a nagyvállalatok számára, hogy számos módon védik a szolgáltatásokat, többek között:
 
-* [Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)
+* [Többtényezős hitelesítés](../authentication/concept-mfa-howitworks.md)
 * Csak az Intune-ban regisztrált eszközök hozzáférésének engedélyezése adott szolgáltatásokhoz
 * Felhasználói helyszínek és IP-címtartományok korlátozása
 
@@ -49,7 +48,7 @@ Az alábbi forgatókönyvek a feltételes hozzáférés "kihívásai" kezelésé
 
 * A folyamaton kívüli folyamatot végrehajtó alkalmazások
 * Több szolgáltatáshoz/erőforráshoz hozzáférő alkalmazások
-* MSAL. js-t használó egyoldalas alkalmazások
+* Egylapos alkalmazások MSAL.js használatával
 * Erőforrás meghívása Web Apps
 
 A feltételes hozzáférési szabályzatok alkalmazhatók az alkalmazásra, de az alkalmazáshoz hozzáférő webes API-ra is alkalmazhatók. A feltételes hozzáférési szabályzat konfigurálásával kapcsolatos további tudnivalókért tekintse meg a következőt: gyors útmutató: többtényezős hitelesítés [megkövetelése adott alkalmazásokhoz Azure Active Directory feltételes hozzáféréssel](../conditional-access/app-based-mfa.md).
@@ -101,7 +100,7 @@ A következő információk csak a feltételes hozzáférési forgatókönyvekbe
 
 * A folyamaton kívüli folyamatot végrehajtó alkalmazások
 * Több szolgáltatáshoz/erőforráshoz hozzáférő alkalmazások
-* MSAL. js-t használó egyoldalas alkalmazások
+* Egylapos alkalmazások MSAL.js használatával
 
 Az alábbi fejezetek az összetettebb általános forgatókönyveket tárgyalják. Az alapszintű működési elv a feltételes hozzáférési házirendek kiértékelése, amikor a rendszer a jogkivonatot arra a szolgáltatásra kéri, amelyhez feltételes hozzáférési szabályzat van alkalmazva.
 
@@ -150,11 +149,11 @@ claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
 
 Ha az alkalmazás a MSAL könyvtárat használja, a jogkivonat beszerzésének sikertelensége mindig interaktív módon próbálkozik újra. Ha ez az interaktív kérelem bekövetkezik, a végfelhasználónak lehetősége van a feltételes hozzáférés betartására. Ez csak akkor igaz, ha a kérelem olyan, `AcquireTokenSilentAsync` vagy `PromptBehavior.Never` ebben az esetben, amikor az alkalmazásnak interaktív kérelmet kell elvégeznie ```AcquireToken``` ahhoz, hogy a végfelhasználó a szabályzatnak való megfelelést lehetővé tegye.
 
-## <a name="scenario-single-page-app-spa-using-msaljs"></a>Forgatókönyv: egyoldalas alkalmazás (SPA) a MSAL. js használatával
+## <a name="scenario-single-page-app-spa-using-msaljs"></a>Forgatókönyv: egyoldalas alkalmazás (SPA) MSAL.js használatával
 
-Ebben a forgatókönyvben bemutatjuk, mi történik, ha egy egyoldalas alkalmazást (SPA) használunk a MSAL. js használatával egy feltételes hozzáférésű védett webes API meghívásához. Ez egy egyszerű architektúra, de van néhány olyan árnyalata, amelyet figyelembe kell venni a feltételes hozzáféréshez való fejlesztés során.
+Ebben a forgatókönyvben bemutatjuk az esetet, amikor egy egyoldalas alkalmazást (SPA) használunk MSAL.js használatával a feltételes hozzáférésű védett webes API meghívásához. Ez egy egyszerű architektúra, de van néhány olyan árnyalata, amelyet figyelembe kell venni a feltételes hozzáféréshez való fejlesztés során.
 
-A MSAL. js fájlban van néhány olyan függvény, amely tokeneket szerez be: `loginPopup()` ,, `acquireTokenSilent(...)` `acquireTokenPopup(…)` és `acquireTokenRedirect(…)` .
+MSAL.jsban van néhány olyan függvény, amely tokeneket szerez be: `loginPopup()` , `acquireTokenSilent(...)` , `acquireTokenPopup(…)` és `acquireTokenRedirect(…)` .
 
 * `loginPopup()`egy interaktív bejelentkezési kéréssel szerzi be az azonosító jogkivonatot, de nem kap hozzáférési jogkivonatokat bármely szolgáltatáshoz (beleértve a feltételes hozzáférésű védett webes API-t).
 * `acquireTokenSilent(…)`Ezután egy hozzáférési jogkivonat csendes beszerzésére használható, ami azt jelenti, hogy nem jeleníti meg a felhasználói felületet semmilyen körülmények között.
@@ -176,9 +175,9 @@ error_description=AADSTS50076: Due to a configuration change made by your admini
 
 Az alkalmazásnak meg kell fognia a következőt: `error=interaction_required` . Az alkalmazás ezt követően `acquireTokenPopup()` vagy `acquireTokenRedirect()` ugyanazon az erőforráson is használható. A felhasználónak egy többtényezős hitelesítést kell végeznie. Miután a felhasználó befejezte a többtényezős hitelesítést, az alkalmazás egy friss hozzáférési jogkivonatot bocsát ki a kért erőforráshoz.
 
-Ha szeretné kipróbálni ezt a forgatókönyvet, tekintse [meg a JS Spa-t a kód nevében](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/a2b257381b410c765ee01ecb611aa6f98c099eb1/2.%20Web%20API%20now%20calls%20Microsoft%20Graph/README.md). Ez a mintakód azt a feltételes hozzáférési házirendet és webes API-t használja, amelyet korábban regisztrált a JS SPA használatával a forgatókönyv bemutatásához. Bemutatja, hogyan kezelheti megfelelően a jogcímek kihívását, és hogyan szerezhet be egy olyan hozzáférési jogkivonatot, amelyet a webes API-hoz használhat. Alternatív megoldásként kiválaszthatja az általános [szögletes. js-kód mintáját](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2) , amely útmutatást nyújt egy szögletes fürdőhöz
+Ha szeretné kipróbálni ezt a forgatókönyvet, tekintse [meg a JS Spa-t a kód nevében](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/a2b257381b410c765ee01ecb611aa6f98c099eb1/2.%20Web%20API%20now%20calls%20Microsoft%20Graph/README.md). Ez a mintakód azt a feltételes hozzáférési házirendet és webes API-t használja, amelyet korábban regisztrált a JS SPA használatával a forgatókönyv bemutatásához. Bemutatja, hogyan kezelheti megfelelően a jogcímek kihívását, és hogyan szerezhet be egy olyan hozzáférési jogkivonatot, amelyet a webes API-hoz használhat. Alternatív megoldásként az általános [Angular.js kódot](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2) is kiválaszthatja egy szögletes fürdőre vonatkozó útmutatásért
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 * A képességekkel kapcsolatos további tudnivalókért tekintse meg a [feltételes hozzáférés Azure Active Directoryban](/azure/active-directory/conditional-access/overview)című témakört.
 * További Azure AD-programkódok: [minták](sample-v2-code.md).

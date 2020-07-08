@@ -12,13 +12,12 @@ manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3ccd51bd69c982aeae25dbf52d1e5d076542cf35
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83771196"
 ---
-# <a name="what-is-a-primary-refresh-token"></a>Mi az elsődleges frissítési jogkivonat?
+# <a name="what-is-a-primary-refresh-token"></a>Mi az az elsődleges frissítési jogkivonat?
 
 Az elsődleges frissítési jogkivonat (PRT) a Windows 10, iOS és Android rendszerű eszközökön az Azure AD-hitelesítés legfontosabb összetevője. Ez egy olyan JSON Web Token (JWT), amelyet kifejezetten a Microsoft első féltől származó token-közvetítőknek bocsátottak ki, hogy az egyszeri bejelentkezést (SSO) engedélyezzék az adott eszközökön használt alkalmazások között. Ez a cikk részletesen ismerteti, hogyan történik a PRT kibocsátása, használata és védelme a Windows 10-es eszközökön.
 
@@ -145,7 +144,7 @@ A következő diagramok illusztrálják a PRT-ket kiállító és megújítási,
 > [!NOTE]
 > Az Azure AD-hez csatlakoztatott eszközökön ez az Exchange szinkron módon történik, mielőtt a felhasználó be tudja jelentkezni a Windows rendszerbe. A hibrid Azure AD-hez csatlakoztatott eszközökön a helyszíni Active Directory az elsődleges szolgáltató. Így a felhasználó csak a TGT beolvasására vár, amíg a PRT-kiadás aszinkron módon történik. Ez a forgatókönyv nem vonatkozik az Azure AD-beli regisztrált eszközökre, mivel a bejelentkezés nem Azure AD-beli hitelesítő adatokat használ.
 
-| Lépés | Leírás |
+| Lépés | Description |
 | :---: | --- |
 | A | A felhasználó a bejelentkezési felhasználói felületen írja be a jelszavát. A LogonUI átadja a hitelesítő adatokat egy Auth-pufferben az LSA-nak, ami viszont belsőleg továbbítja a CloudAP. A CloudAP továbbítja ezt a kérést a CloudAP beépülő modulnak. |
 | B | A CloudAP beépülő modul egy tartományi felderítési kérelmet kezdeményez a felhasználó identitás-szolgáltatójának azonosításához. Ha a felhasználó bérlője rendelkezik összevonási szolgáltatói beállítással, az Azure AD az összevonási szolgáltató metaadat-(MEX-) végpontját adja vissza. Ha nem, az Azure AD azt adja vissza, hogy a felhasználó felügyeli az Azure AD-vel való hitelesítést. |
@@ -158,7 +157,7 @@ A következő diagramok illusztrálják a PRT-ket kiállító és megújítási,
 
 ![PRT-megújítás a későbbi bejelentkezésekben](./media/concept-primary-refresh-token/prt-renewal-subsequent-logons.png)
 
-| Lépés | Leírás |
+| Lépés | Description |
 | :---: | --- |
 | A | A felhasználó a bejelentkezési felhasználói felületen írja be a jelszavát. A LogonUI átadja a hitelesítő adatokat egy Auth-pufferben az LSA-nak, ami viszont belsőleg továbbítja a CloudAP. A CloudAP továbbítja ezt a kérést a CloudAP beépülő modulnak. |
 | B | Ha a felhasználó korábban bejelentkezett a felhasználóba, a Windows megkezdi a gyorsítótárazott bejelentkezést, és ellenőrzi a hitelesítő adatokat, hogy naplózza a felhasználót a alkalmazásban. A CloudAP beépülő modul 4 óránként aszinkron módon megújítja a PRT-megújítást. |
@@ -172,7 +171,7 @@ A következő diagramok illusztrálják a PRT-ket kiállító és megújítási,
 
 ![PRT-használat az alkalmazás-jogkivonat-kérelmek során](./media/concept-primary-refresh-token/prt-usage-app-token-requests.png)
 
-| Lépés | Leírás |
+| Lépés | Description |
 | :---: | --- |
 | A | Az alkalmazások (például az Outlook, a OneNote stb.) egy jogkivonat-kérelmet kezdeményeznek a WAM számára. A WAM ezt követően kéri az Azure AD WAM beépülő modult a jogkivonat-kérelem kiszolgálására. |
 | B | Ha az alkalmazás frissítési jogkivonata már elérhető, az Azure AD WAM beépülő modul használatával kérhet hozzáférési tokent. Az eszközök kötésének igazolásához a WAM beépülő modul a munkamenet-kulccsal aláírja a kérést. Az Azure AD érvényesíti a munkamenetkulcsot, és kiadja a hozzáférési jogkivonatot és egy új frissítési jogkivonatot az alkalmazáshoz, amelyet a munkamenetkulcs titkosít. A WAM beépülő modul kéri a Cloud AP beépülő modult, hogy visszafejtse a jogkivonatokat, ami viszont azt kéri, hogy a TPM a munkamenetkulcs használatával legyen visszafejtve, ami a WAM beépülő modult is beolvassa Ezután a WAM beépülő modul csak a hozzáférési jogkivonatot biztosítja az alkalmazásnak, miközben újra titkosítja a frissítési tokent a DPAPI, és a saját gyorsítótárában tárolja azokat.  |
@@ -184,7 +183,7 @@ A következő diagramok illusztrálják a PRT-ket kiállító és megújítási,
 
 ![Böngészőalapú egyszeri bejelentkezés a PRT használatával](./media/concept-primary-refresh-token/browser-sso-using-prt.png)
 
-| Lépés | Leírás |
+| Lépés | Description |
 | :---: | --- |
 | A | A felhasználó hitelesítő adataival bejelentkezik a Windowsba a PRT beszerzéséhez. Miután a felhasználó megnyitta a böngészőt, a böngésző (vagy a bővítmény) betölti az URL-címeket a beállításjegyzékből. |
 | B | Amikor egy felhasználó megnyit egy Azure AD bejelentkezési URL-címet, a böngésző vagy a bővítmény érvényesíti az URL-címet a beállításjegyzékből beszerzett adatokkal. Ha egyeznek, a böngésző meghívja a natív ügyfél-gazdagépet a jogkivonat lekéréséhez. |

@@ -4,10 +4,9 @@ description: A különböző erőforrásokhoz való közvetlen telemetria fejles
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.openlocfilehash: 187d84b29e42aa3264417dd66e66c3886b17e92a
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83773700"
 ---
 # <a name="how-many-application-insights-resources-should-i-deploy"></a>Hány Application Insights erőforrást kell üzembe helyezni
@@ -45,7 +44,7 @@ Annak érdekében, hogy könnyebb legyen módosítani a rendszerállapotkulcsot,
 
 Állítsa be a kulcsot egy inicializálási metódusban, például global.aspx.cs egy ASP.NET-szolgáltatásban:
 
-*C #*
+*C#*
 
     protected void Application_Start()
     {
@@ -108,7 +107,7 @@ Az alkalmazás verzió tulajdonságának beállítása több különböző móds
     </DeploymentEvent>
 
     ```
-* [ASP.NET] A BuildInfo. config automatikus előállítása az MSBuild-ben. Ehhez adjon hozzá néhány sort a `.csproj` fájlhoz:
+* [ASP.NET] BuildInfo.config automatikus előállítása az MSBuild-ben. Ehhez adjon hozzá néhány sort a `.csproj` fájlhoz:
 
     ```XML
 
@@ -117,7 +116,7 @@ Az alkalmazás verzió tulajdonságának beállítása több különböző móds
     </PropertyGroup>
     ```
 
-    Ez létrehoz egy *yourProjectName*nevű fájlt. BuildInfo. config. a közzétételi folyamat átnevezi a BuildInfo. config névre.
+    Ez létrehoz egy *yourProjectName*.BuildInfo.config nevű fájlt. A közzétételi folyamat átnevezi a BuildInfo.configra.
 
     A Build címke helyőrzőt (AutoGen_...) tartalmaz a Visual Studióval való kiépítés során. Az MSBuild-sel azonban a megfelelő verziószámmal vannak feltöltve.
 
