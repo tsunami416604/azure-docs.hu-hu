@@ -60,8 +60,6 @@
       href: ddos-best-practices.md
     - name: Értékhiányos DNS és altartomány-átvétel
       href: subdomain-takeover.md
-    - name: A DDoS Protection biztonsági alapkonfigurációja
-      href: ddos-protection-security-baseline.md
     - name: Biztonságos hibrid hálózati architektúra
       href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
 - name: IaaS-biztonság

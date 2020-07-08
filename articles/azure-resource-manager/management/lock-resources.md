@@ -3,12 +3,12 @@ title: Erőforrások zárolása a módosítások megakadályozása érdekében
 description: Megakadályozhatja, hogy a felhasználók a kritikus Azure-erőforrások frissítését vagy törlését az összes felhasználó és szerepkör zárolásának alkalmazásával.
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: e9591c8b32808c3b11eb478b7f52a171cefc587d
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.openlocfilehash: 7fe735cf523758f51fd9d6751de8507b2af46737
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84975605"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057585"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Erőforrások zárolása a váratlan módosítások megelőzése érdekében
 
@@ -226,22 +226,26 @@ az lock delete --ids $lockid
 
 ## <a name="rest-api"></a>REST API
 
-A telepített erőforrásokat zárolhatja a [felügyeleti zárolások Rest APIával](https://docs.microsoft.com/rest/api/resources/managementlocks). A REST API lehetővé teszi zárolások létrehozását és törlését, valamint a meglévő zárolásokkal kapcsolatos információk lekérését.
+A telepített erőforrásokat zárolhatja a [felügyeleti zárolások Rest APIával](/rest/api/resources/managementlocks). A REST API lehetővé teszi zárolások létrehozását és törlését, valamint a meglévő zárolásokkal kapcsolatos információk lekérését.
 
 Zárolás létrehozásához futtassa a következő parancsot:
 
-    PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/locks/{lock-name}?api-version={api-version}
+```http
+PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/locks/{lock-name}?api-version={api-version}
+```
 
 A hatókör lehet előfizetés, erőforráscsoport vagy erőforrás. A zárolási név a zárolás meghívásához szükséges. Az API-Version esetében használja az **2016-09-01**-es verziót.
 
 A kérelemben adjon meg egy JSON-objektumot, amely meghatározza a zárolás tulajdonságait.
 
-    {
-      "properties": {
-        "level": "CanNotDelete",
-        "notes": "Optional text notes."
-      }
-    }
+```json
+{
+  "properties": {
+  "level": "CanNotDelete",
+  "notes": "Optional text notes."
+  }
+}
+```
 
 ## <a name="next-steps"></a>További lépések
 

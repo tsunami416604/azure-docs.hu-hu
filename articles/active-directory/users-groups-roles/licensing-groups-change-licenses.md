@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 11/08/2019
+ms.date: 07/07/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47546ae5ae964d1ed915ee42b1a2cafec58a805a
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 94c0d1efa83af53804be89a9e86f4cafd5bc0ae0
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84727636"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057755"
 ---
 # <a name="change-license-assignments-for-a-user-or-group-in-azure-active-directory"></a>Felhasználóra vagy csoportra vonatkozó licenc-hozzárendelések módosítása Azure Active Directory
 
@@ -49,7 +49,7 @@ Ha úgy látja, hogy egyes jelölőnégyzetek nem érhetők el, a **licenc-hozz�
 1. Válassza ki **Azure Active Directory**  >  **felhasználók**elemet, majd nyissa meg egy felhasználó **profil** lapját.
 1. Válassza a **licencek**lehetőséget.
 1. Válassza a **hozzárendelések** lehetőséget a felhasználó vagy csoport licenc-hozzárendelésének szerkesztéséhez. A **hozzárendelések** lap a licenc-hozzárendelési ütközések feloldására szolgál.
-1. Jelölje be az Office 366 E3 jelölőnégyzetét, és győződjön meg arról, hogy legalább a felhasználóhoz rendelt összes E1 szolgáltatás ki van választva.
+1. Jelölje be az Office 365 E3 jelölőnégyzetét, és győződjön meg arról, hogy legalább a felhasználóhoz rendelt összes E1 szolgáltatás ki van választva.
 1. Törölje az Office 365 E1 jelölőnégyzet jelölését.
 
     ![a licenc-hozzárendelések lapja, amely az Office 365 E1 és az Office 365 E3 jelölésű felhasználóra mutat](media/licensing-groups-change-licenses/update-user-license-assignments.png)
@@ -64,7 +64,7 @@ Az Azure AD az új licenceket alkalmazza, és egyszerre eltávolítja a régi li
 1. Válassza ki **Azure Active Directory**  >  **csoportokat**, majd nyissa meg egy csoport **Áttekintés** lapját.
 1. Válassza a **licencek**lehetőséget.
 1. Kattintson a **hozzárendelések** parancsra a felhasználó vagy csoport licenc-hozzárendelésének szerkesztéséhez.
-1. Jelölje be az Office 366 E3 jelölőnégyzetét. A szolgáltatás folytonosságának fenntartása érdekében válassza ki az összes olyan E1-szolgáltatást, amely már hozzá van rendelve a felhasználóhoz.
+1. Jelölje be az Office 365 E3 jelölőnégyzetét. A szolgáltatás folytonosságának fenntartása érdekében válassza ki az összes olyan E1-szolgáltatást, amely már hozzá van rendelve a felhasználóhoz.
 1. Törölje az Office 365 E1 jelölőnégyzet jelölését.
 
     ![Válassza a hozzárendelések parancsot egy felhasználói vagy csoportos licencek oldalon.](media/licensing-groups-change-licenses/update-group-license-assignments.png)

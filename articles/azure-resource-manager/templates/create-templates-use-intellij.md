@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan hozhatja létre első Azure Resource Manager-sa
 ms.devlang: java
 ms.date: 08/01/2019
 ms.topic: conceptual
-ms.openlocfilehash: a5015a018f905b4353afd6bf25a48a2d942b3b97
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fa09fbe8d239bbe10c0762d3aad7e19df23a9044
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80153352"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057449"
 ---
 # <a name="create-and-deploy-arm-templates-by-using-the-intellij-idea"></a>ARM-sablonok létrehozása és üzembe helyezése a IntelliJ IDEA használatával
 
@@ -86,4 +86,4 @@ Ennek a cikknek a fő témája a IntelliJ IDEA használata egy meglévő sablon 
 > [Kezdő szintű oktatóanyagok](./template-tutorial-create-first-template.md)
 
 > [!div class="nextstepaction"]
-> [A Java megnyitása az Azure fejlesztői központban](https://docs.microsoft.com/azure/java)
+> [A Java megnyitása az Azure fejlesztői központban](/azure/java)

@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: jgao
-ms.openlocfilehash: 0f01da074423a45b30e6c386852e88798e55938b
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: a6788651928b631d9298867a140f29b273f14734
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84888798"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057551"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>Azure Resource Manager erőforráscsoportok kezelése a Azure Portal használatával
 
@@ -45,7 +45,7 @@ Az erőforráscsoport erőforrásokra vonatkozó metaadatokat tárol. Ezért ha 
 
      ![erőforráscsoport létrehozása](./media/manage-resource-groups-portal/manage-resource-groups-create-group.png)
 5. Válassza a **felülvizsgálat + létrehozás** lehetőséget
-6. Kattintson a **Létrehozás** gombra. Egy erőforráscsoport létrehozása eltarthat néhány másodpercig.
+6. Válassza a **Létrehozás** lehetőséget. Egy erőforráscsoport létrehozása eltarthat néhány másodpercig.
 7. A felső menüben válassza a **frissítés** lehetőséget az erőforráscsoport listájának frissítéséhez, majd válassza ki az újonnan létrehozott erőforráscsoportot a megnyitásához. Vagy válassza a felül az **értesítés**(harang ikon) lehetőséget, majd válassza az **Ugrás az erőforrás-csoportba** lehetőséget az újonnan létrehozott erőforráscsoport megnyitásához.
 
     ![erőforrás-csoport megugrása](./media/manage-resource-groups-portal/manage-resource-groups-add-group-go-to-resource-group.png)
@@ -111,5 +111,5 @@ A [szerepköralapú hozzáférés-vezérlés (RBAC)](../../role-based-access-con
 
 - Azure Resource Manager megismeréséhez tekintse meg a [Azure Resource Manager áttekintése](overview.md)című témakört.
 - A Resource Manager-sablon szintaxisának megismeréséhez tekintse meg [Azure Resource Manager sablonok struktúrájának és szintaxisának megismerése](../templates/template-syntax.md)című témakört.
-- A sablonok fejlesztésének megismeréséhez tekintse meg az útmutató [lépésről lépésre szóló oktatóanyagokat](/azure/azure-resource-manager/).
+- A sablonok fejlesztésének megismeréséhez tekintse meg az útmutató [lépésről lépésre szóló oktatóanyagokat](../index.yml).
 - A Azure Resource Manager sablon sémáinak megtekintéséhez lásd: [sablon-hivatkozás](/azure/templates/).

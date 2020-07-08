@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 06/26/2020
 ms.reviewer: andalmia
 ms.author: banders
-ms.openlocfilehash: f477def85db2d3def30f732dd5a7f8af49eda4b3
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: 18c6e9aac220d7e76a82a2abded6840db931f2d1
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85483754"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057721"
 ---
 # <a name="programmatically-create-azure-subscriptions-preview"></a>Azure-előfizetések programozott létrehozása (előzetes verzió)
 
@@ -150,7 +150,7 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 }
 ```
 
-| Elem neve  | Kötelező | Típus   | Leírás                                                                                               |
+| Elem neve  | Kötelező | Típus   | Description                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `displayName` | No      | Sztring | Az előfizetés megjelenített neve. Ha nincs megadva, az ajánlat neve (például "Microsoft Azure Enterprise") van beállítva.                                 |
 | `offerType`   | Yes      | Sztring | Az előfizetés ajánlata. Az EA két lehetőségét az [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (éles használat) és az [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (dev/test) használatára kell [bekapcsolni az EA Portal használatával](https://ea.azure.com/helpdocs/DevOrTestOffer).                |
@@ -168,7 +168,7 @@ Futtassa a [New-AzSubscription](/powershell/module/az.subscription) parancsot az
 New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -EnrollmentAccountObjectId <enrollmentAccountObjectId> -OwnerObjectId <userObjectId1>,<servicePrincipalObjectId>
 ```
 
-| Elem neve  | Kötelező | Típus   | Leírás                                                                                               |
+| Elem neve  | Kötelező | Típus   | Description                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `Name` | No      | Sztring | Az előfizetés megjelenített neve. Ha nincs megadva, az ajánlat neve (például "Microsoft Azure Enterprise") van beállítva.                                 |
 | `OfferType`   | Yes      | Sztring | Az előfizetés ajánlata. Az EA két lehetőségét az [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (éles használat) és az [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (dev/test) használatára kell [bekapcsolni az EA Portal használatával](https://ea.azure.com/helpdocs/DevOrTestOffer).                |
@@ -189,7 +189,7 @@ Futtassa az az [Account Create](/cli/azure/ext/subscription/account?view=azure-c
 az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscription" --enrollment-account-object-id "<enrollmentAccountObjectId>" --owner-object-id "<userObjectId>","<servicePrincipalObjectId>"
 ```
 
-| Elem neve  | Kötelező | Típus   | Leírás                                                                                               |
+| Elem neve  | Kötelező | Típus   | Description                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `display-name` | No      | Sztring | Az előfizetés megjelenített neve. Ha nincs megadva, az ajánlat neve (például "Microsoft Azure Enterprise") van beállítva.                                 |
 | `offer-type`   | Yes      | Sztring | Az előfizetés ajánlata. Az EA két lehetőségét az [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (éles használat) és az [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (dev/test) használatára kell [bekapcsolni az EA Portal használatával](https://ea.azure.com/helpdocs/DevOrTestOffer).                |
@@ -340,7 +340,7 @@ POST https://management.azure.com<invoiceSectionId>/providers/Microsoft.Subscrip
 
 ```
 
-| Elem neve  | Kötelező | Típus   | Leírás                                                                                               |
+| Elem neve  | Kötelező | Típus   | Description                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `displayName` | Yes      | Sztring | Az előfizetés megjelenített neve.|
 | `billingProfileId`   | Yes      | Sztring | Az előfizetés díjainak számlázására szolgáló számlázási profil azonosítója.  |
@@ -355,7 +355,7 @@ A válaszban egy objektumot kell visszakapnia a `subscriptionCreationResult` fig
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-Ahhoz, hogy előfizetést hozzon létre a számlázási fiókjához, globális rendszergazdai vagy rendszergazdai ügynök szerepkörrel kell rendelkeznie a szervezet felhőalapú megoldás-szolgáltatói fiókjában. További információ: [partner-központ – felhasználói szerepkörök és engedélyek kiosztása](https://docs.microsoft.com/partner-center/permissions-overview).
+Ahhoz, hogy előfizetést hozzon létre a számlázási fiókjához, globális rendszergazdai vagy rendszergazdai ügynök szerepkörrel kell rendelkeznie a szervezet felhőalapú megoldás-szolgáltatói fiókjában. További információ: [partner-központ – felhasználói szerepkörök és engedélyek kiosztása](/partner-center/permissions-overview).
 
 Az alábbi példa a REST API-k használatát mutatja be. A PowerShell és az Azure CLI jelenleg nem támogatottak.
 
@@ -505,7 +505,7 @@ POST https://management.azure.com<customerId>/providers/Microsoft.Subscription/c
 }'
 ```
 
-| Elem neve  | Kötelező | Típus   | Leírás                                                                                               |
+| Elem neve  | Kötelező | Típus   | Description                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `displayName` | Yes      | Sztring | Az előfizetés megjelenített neve.|
 | `skuId` | Yes      | Sztring | Az Azure-csomag SKU-azonosítója. *0,001* használata Microsoft Azure csomag típusú előfizetésekhez |

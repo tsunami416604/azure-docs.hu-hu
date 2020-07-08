@@ -4,12 +4,12 @@ description: Ez a cikk a Azure Site Recoveryekkel kapcsolatos népszerű által�
 ms.topic: conceptual
 ms.date: 1/24/2020
 ms.author: raynew
-ms.openlocfilehash: dd3b9b8eca4f1eab66f8982b22be5941d082b229
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 9eceb9643a5e8f8eab6b68bb04b322a099b715f3
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85506174"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057432"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Általános kérdések a Azure Site Recovery
 
@@ -22,11 +22,16 @@ Ez a cikk a Azure Site Recoveryokkal kapcsolatos gyakori kérdéseket foglalja �
 ## <a name="general"></a>Általános kérdések
 
 ### <a name="what-does-site-recovery-do"></a>Mire való a Site Recovery?
-Site Recovery az üzletmenet-folytonossági és a vész-helyreállítási (BCDR-) stratégiához járul hozzá azáltal, hogy az Azure-beli virtuális gépeket a régiók, a helyszíni virtuális gépek és a fizikai kiszolgálók között az Azure-ba, a helyszíni gépeket pedig másodlagos adatközpontba irányítja és automatizálja. [További információ](site-recovery-overview.md).
+
+Site Recovery az üzletmenet-folytonossági és a vész-helyreállítási (BCDR-) stratégiához járul hozzá azáltal, hogy az Azure-beli virtuális gépeket a régiók, a helyszíni virtuális gépek és a fizikai kiszolgálók között az Azure-ba, a helyszíni gépeket pedig másodlagos adatközpontba irányítja és automatizálja. [További információk](site-recovery-overview.md).
 
 ### <a name="can-i-protect-a-virtual-machine-that-has-a-docker-disk"></a>Biztosítható a Docker-lemezzel rendelkező virtuális gépek elleni védelem?
 
 Nem, ez egy nem támogatott forgatókönyv.
+
+### <a name="what-does-site-recovery-do-to-ensure-data-integrity"></a>Mit tesz Site Recovery az adatok integritásának biztosításához?
+
+Az adatok integritásának biztosítása érdekében a Site Recovery különböző intézkedéseket tett. A HTTPS protokoll használatával biztonságos kapcsolat jön az összes szolgáltatás között. Ez gondoskodik arról, hogy a kártevők és a külső entitások ne tudják meghamisítani az adatvédelmet. Egy másik mérték ellenőrzőösszegeket használ. A forrás és a cél közötti adatátvitelt a közöttük lévő adatok számítási ellenőrzőösszegei végzik. Ez biztosítja, hogy az átvitt adatforgalom konzisztens legyen.
 
 ## <a name="service-providers"></a>Szolgáltatók
 
@@ -233,7 +238,7 @@ Igen. A Linux operációs rendszer Azure Site Recovery támogatja az alkalmazás
 ## <a name="failover"></a>Feladatátvétel
 ### <a name="if-im-failing-over-to-azure-how-do-i-access-the-azure-vms-after-failover"></a>Ha az Azure-ban nem végeztem el az Azure-t, hogyan férhetnek hozzá az Azure-beli virtuális gépekhez a feladatátvétel után?
 
-Az Azure virtuális gépeket biztonságos internetkapcsolaton keresztül, helyek közötti VPN-en keresztül, vagy Azure ExpressRoute segítségével érheti el. A csatlakozáshoz több dolgot is elő kell készíteni. [További információ](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
+Az Azure virtuális gépeket biztonságos internetkapcsolaton keresztül, helyek közötti VPN-en keresztül, vagy Azure ExpressRoute segítségével érheti el. A csatlakozáshoz több dolgot is elő kell készíteni. [További információk](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
 
 
 ### <a name="if-i-fail-over-to-azure-how-does-azure-make-sure-my-data-is-resilient"></a>Ha az Azure-t átadja az Azure-nak, hogyan gondoskodik róla, hogy az adataim rugalmasak legyenek?

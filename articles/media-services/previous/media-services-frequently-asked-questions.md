@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 67c7955316d4c9670509affb478813df0768f261
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 73b24de0e66ca8fbe2097f7da39b64aaea8b1ac4
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832554"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057993"
 ---
 # <a name="media-services-v2-frequently-asked-questions"></a>Media Services v2 – gyakori kérdések
 
@@ -66,18 +66,20 @@ K: Hogyan lehet elforgatni egy videót a kódolási folyamat során?
 
 A: a [Media Encoder standard](media-services-dotnet-encode-with-media-encoder-standard.md) a rotációt az 90/180/270-as szögek alapján támogatja. Az alapértelmezett viselkedés az "automatikus", amely a bejövő MP4/MOV-fájlban lévő rotációs metaadatok észlelésére és kompenzálására szolgál. Adja meg a következő **források** elemet az [itt](media-services-mes-presets-overview.md)definiált JSON-előállítók egyikéhez:
 
-    "Version": 1.0,
-    "Sources": [
-    {
-      "Streams": [],
-      "Filters": {
-        "Rotation": "90"
-      }
-    }
-    ],
-    "Codecs": [
+```json
+"Version": 1.0,
+"Sources": [
+{
+  "Streams": [],
+  "Filters": {
+    "Rotation": "90"
+  }
+}
+],
+"Codecs": [
 
-    ...
+...
+```
 
 
 ## <a name="media-services-learning-paths"></a>A Media Services tanulási útvonalai

@@ -3,12 +3,12 @@ title: A Resource Manager-alapú és a klasszikus üzemi modell
 description: A cikk a Resource Manager-alapú és a klasszikus (vagy szolgáltatásfelügyeleti) üzemi modellek közötti különbségeket ismerteti.
 ms.topic: conceptual
 ms.date: 02/06/2020
-ms.openlocfilehash: a2deddfff595feee429aa1be942e2f4651700f54
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 9e44128da9b6e180bd2857f4574c0b384fdffef2
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84763788"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057568"
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Az Azure Resource Manager-alapú és a klasszikus üzemelő példányok: Az üzemi modellek és az erőforrások állapotának ismertetése
 
@@ -125,7 +125,7 @@ Ha készen áll az erőforrások áttelepítésére a klasszikus üzembe helyez�
 1. [Részletes műszaki útmutató a klasszikusból az Azure Resource Manager-alapú üzemi modellbe történő, platform által támogatott migrálásról](../../virtual-machines/windows/migration-classic-resource-manager-deep-dive.md)
 2. [Az IaaS-erőforrások klasszikusból Azure Resource Manager-alapú környezetbe való, platform által támogatott migrálása](../../virtual-machines/windows/migration-classic-resource-manager-overview.md)
 3. [IaaS-erőforrások migrálása a klasszikusból Resource Manager-alapú környezetbe az Azure PowerShell használatával](../../virtual-machines/windows/migration-classic-resource-manager-ps.md)
-4. [IaaS-erőforrások migrálása a klasszikusból Resource Manager-alapú környezetbe az Azure CLI használatával](../../virtual-machines/virtual-machines-linux-cli-migration-classic-resource-manager.md)
+4. [IaaS-erőforrások migrálása a klasszikusból Resource Manager-alapú környezetbe az Azure CLI használatával](../../virtual-machines/linux/migration-classic-resource-manager-cli.md)
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
@@ -152,4 +152,3 @@ Az alapszintű sablonok átfogó készlete [Azure Resource Manager Gyorsindítá
 ## <a name="next-steps"></a>További lépések
 
 * A sablonok üzembe helyezésével kapcsolatos parancsokért lásd [az alkalmazások Azure Resource Manager-sablonnal történő üzembe helyezését](../templates/deploy-powershell.md) ismertető szakaszt.
-

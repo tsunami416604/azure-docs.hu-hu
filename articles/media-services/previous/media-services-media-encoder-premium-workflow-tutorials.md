@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: christoc
 ms.reviewer: xpouyat; juliako
-ms.openlocfilehash: 1ab70d56bd3def58d0e814035070cf027a88cd3d
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 67d3591a22ba68c0ddb5c4e2b467e133ef20102b
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84712428"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057466"
 ---
 # <a name="advanced-media-encoder-premium-workflow-tutorials"></a>Speciális oktatóanyagok a Media Encoder Premium-munkafolyamathoz
 ## <a name="overview"></a>Áttekintés
@@ -187,7 +187,7 @@ Ha azt szeretné, hogy a munkafolyamat automatikusan meghatározza a kimeneti f�
 
 A kifejezés-szerkesztő lehetővé teszi bármely literál érték megadását egy vagy több változóval együtt. A változók a dollár előjelével kezdődnek. A $ Key megnyomása után a szerkesztő egy legördülő listát jelenít meg a választható változók közül. Ebben az esetben a kimeneti könyvtár változó és az alap bemeneti fájl neve változó kombinációját fogjuk használni:
 
-    ${ROOT_outputWriteDirectory}\\${ROOT_sourceFileBaseName}.MP4
+`${ROOT_outputWriteDirectory}\\${ROOT_sourceFileBaseName}.MP4`
 
 ![Kitöltött kifejezés-szerkesztő](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-expression-editor.png)
 
@@ -265,16 +265,16 @@ Egynél több fájl van hozzáadva a kimeneti eszközhöz. Ehhez meg kell győz�
 
 A fájl kimenetének elnevezése a tervezőben kifejezésekkel vezérelhető. Nyissa meg a tulajdonság ablaktáblát a kimeneti összetevők egyikéhez, és nyissa meg a fájl tulajdonsághoz tartozó kifejezés-szerkesztőt. Az első kimeneti fájl a következő kifejezésen keresztül lett konfigurálva (lásd az oktatóanyagot, amely a [MXF-ról egyetlen sávszélességű MP4-kimenetre mutat](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4)):
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}.MP4`
 
 Ez azt jelenti, hogy a fájlnevet két változó határozza meg: a beírandó kimeneti könyvtár és a forrásfájl alapneve. Az előző a munkafolyamat gyökerének egyik tulajdonsága, az utóbbit pedig a bejövő fájl határozza meg. A kimeneti könyvtár a helyi teszteléshez használatos. ezt a tulajdonságot a munkafolyamat-motor felülbírálja, ha a munkafolyamatot az Azure Media Services felhőalapú adathordozó-processzora hajtja végre.
 Ahhoz, hogy mindkét kimeneti fájl konzisztens kimeneti nevet adjon, módosítsa az első fájl elnevezési kifejezését a következőre:
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_640x360_1.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_640x360_1.MP4`
 
 a második a következő:
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_960x540_2.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_960x540_2.MP4`
 
 Hozzon létre egy köztes tesztet, és győződjön meg arról, hogy az MP4 kimeneti fájlok megfelelően lettek létrehozva.
 
@@ -287,7 +287,7 @@ Ahogy később látni fogjuk, amikor létrehozunk egy. ISM-fájlt, amely az MP4-
 
 Hozzon létre egy harmadik kimeneti összetevőt a kimenő adatfolyam a muxer-ből való kimenetéhez, és konfigurálja a fájl elnevezési kifejezést a következőként:
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_128kbps_audio.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_128kbps_audio.MP4`
 
 ![Audio muxer fájl kimenetének létrehozása](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-audio-muxer-creating-file-output.png)
 
@@ -319,7 +319,7 @@ A manifest-fájl létrehozása a MP4's az "AMS manifest Writer" nevű összetev�
 
 A többi kimeneti összetevőhöz hasonlóan a. ISM fájl kimeneti nevét is konfigurálja kifejezéssel:
 
-    ${ROOT_outputWriteDirectory}\\${ROOT_sourceFileBaseName}_manifest.ism
+`${ROOT_outputWriteDirectory}\\${ROOT_sourceFileBaseName}_manifest.ism`
 
 A befejezett munkafolyamat az alábbihoz hasonlóan néz ki:
 
@@ -342,11 +342,11 @@ Az előző munkafolyamatban egy egyszerű kifejezést adtunk meg a kimeneti fáj
 
 A fájl kimeneti összetevője például az első videofájl esetében a következő kifejezéssel van konfigurálva:
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_640x360_1.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_640x360_1.MP4`
 
 A második kimeneti videóhoz hasonlóan a következő kifejezés is van:
 
-    ${ROOT_outputWriteDirectory}\\${ROOT_sourceFileBaseName}_960x540_2.MP4
+`${ROOT_outputWriteDirectory}\\${ROOT_sourceFileBaseName}_960x540_2.MP4`
 
 Nem lenne tisztább, kevésbé gyakori hibák, és kényelmesebb, ha el lehetne távolítani néhány ilyen ismétlődést, és inkább konfigurálható a dolgok? Szerencsére az is lehetséges, hogy a tervező kifejezési képességei a munkafolyamatok gyökerében egyéni tulajdonságok létrehozására való képességgel bővülnek, és egy további kényelmi réteget is biztosítunk.
 
@@ -391,7 +391,7 @@ A három érték bármelyikének módosítása szintén újrakonfigurálja és m
 ### <a name="have-generated-output-file-names-rely-on-published-property-values"></a><a id="MXF_to__multibitrate_MP4_output_files"></a>A létrehozott kimeneti fájlnevek a közzétett tulajdonságértékek alapján vannak felhasználva
 A generált fájlnevek rögzítjük helyett most már megváltoztathatjuk a fájl kimeneti összetevőinek fájlnevét, hogy a diagram gyökerében közzétett bitráta-tulajdonságokat használják. Az első kimeneti fájltól kezdve keresse meg a fájl tulajdonságot, és szerkessze a kifejezést:
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_${ROOT_video1bitrate}kbps.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_${ROOT_video1bitrate}kbps.MP4`
 
 A kifejezésben szereplő különböző paraméterek elérhetők és megadhatók úgy, hogy a kifejezés ablakban a billentyűzeten a dollár-bejelentkezést is elérhetik. Az elérhető paraméterek egyike a korábban közzétett video1bitrate-tulajdonság.
 
@@ -401,11 +401,11 @@ A kifejezésben szereplő különböző paraméterek elérhetők és megadhatók
 
 Végezze el ugyanezt a fájl kimenetét a második videóban:
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_${ROOT_video2bitrate}kbps.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_${ROOT_video2bitrate}kbps.MP4`
 
 és a csak hangfájlok kimenetéhez:
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_${ROOT_audio1bitrate}bps_audio.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_${ROOT_audio1bitrate}bps_audio.MP4`
 
 Ha most módosítjuk a videó-vagy hangfájlok sebességét, a rendszer újrakonfigurálja a megfelelő kódolót, és az összes automatikus átviteli sebesség-alapú fájl neve konvenciót tiszteletben tartja.
 
@@ -462,11 +462,11 @@ Az MP4-videóktól eltérően a JPG kódoló összetevő több fájlt is kiküld
 
 *A jelenet keresési JPG-fájljának írója*
 
-Konfigurálja a kimeneti mappa elérési útja tulajdonságát a (z) $ {ROOT_outputWriteDirectory} kifejezéssel.
+Konfigurálja a kimeneti mappa elérési útja tulajdonságát a kifejezéssel:`${ROOT_outputWriteDirectory}`
 
 és a fájlnév előtag tulajdonsága a alábbiakkal:
 
-    ${ROOT_sourceFileBaseName}_thumb_
+`${ROOT_sourceFileBaseName}_thumb_`
 
 Az előtag meghatározza, hogy a miniatűr fájlok hogyan legyenek elnevezve. Ezek utótagja egy szám, amely jelzi a hüvelykujj pozícióját a streamben.
 
@@ -551,11 +551,11 @@ Most nyissa meg a vágási tulajdonságokat a hangformázó formátumból, és �
 
 A Hangvágás indítási ideje:
 
-    ${ROOT_TrimmingStartTime}
+`${ROOT_TrimmingStartTime}`
 
 és a befejezési idejére:
 
-    ${ROOT_TrimmingEndTime}
+`${ROOT_TrimmingEndTime}`
 
 ### <a name="finished-workflow"></a><a id="time_based_trim_finish"></a>Befejezett munkafolyamat
 ![Befejezett munkafolyamat](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-finished-workflow-time-base-trimming.png)
@@ -591,7 +591,7 @@ A szkriptek a Java platformmal való kompatibilitást megtartó, egy dinamikusan
 
 Írj egy egyszerű Hello World-szkriptet a realizeScript kontextusában. Adja meg a következőt a szerkesztőben:
 
-    node.log("hello world");
+`node.log("hello world");`
 
 Most futtasson egy helyi tesztet. A futtatást követően vizsgálja meg a naplók tulajdonságot a parancsfájlt tartalmazó összetevő rendszer lapján.
 
