@@ -9,12 +9,11 @@ ms.date: 05/01/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: 31c285b8130e7df549ae9f3bb7f1e30cd8a0546c
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
-ms.translationtype: MT
+ms.openlocfilehash: 12df9566dd3ddfedd1f4553ad8877258d840858c
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84432671"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960214"
 ---
 # <a name="azure-storage-monitoring-data-reference"></a>Az Azure Storage figyelési adatreferenciája
 
@@ -67,7 +66,7 @@ Ez a táblázat a [várólista-tároló metrikáit](https://docs.microsoft.com/a
 | ------------------- | ----------------- |
 | QueueCapacity | A Storage-fiók által használt üzenetsor-tároló mennyisége. <br/><br/> Egység: bájtok <br/> Összesítés típusa: átlag <br/> Érték példa: 1024 |
 | QueueCount   | A Storage-fiókban lévő várólisták száma. <br/><br/> Egység: darabszám <br/> Összesítés típusa: átlag <br/> Érték példa: 1024 |
-| QueueMessageCount | A nem lejárt üzenetsor-üzenetek száma a Storage-fiókban. <br/><br/>Egység: darabszám <br/> Összesítés típusa: átlag <br/> Érték példa: 1024 |
+| QueueMessageCount | A tárolási fiók Queue szolgáltatásban lévő üzenetsor-üzenetek hozzávetőleges száma. <br/><br/>Egység: darabszám <br/> Összesítés típusa: átlag <br/> Érték példa: 1024 |
 
 #### <a name="file-storage"></a>File Storage
 
@@ -100,7 +99,7 @@ Az Azure Storage a következő tranzakciós mérőszámokat biztosítja Azure Mo
 
 Az Azure Storage a Azure Monitor metrikáinak következő dimenzióit támogatja.
 
-| Dimenzió neve | Leírás |
+| Dimenzió neve | Description |
 | ------------------- | ----------------- |
 | **BlobType** | A blob típusa csak a blob-metrikák esetében. A támogatott értékek a következők: **BlockBlob**, **PageBlob**és **Azure Data Lake Storage**. A hozzáfűző blobot a BlockBlob tartalmazza. |
 | **BlobTier** | Az Azure Storage különböző hozzáférési szinteket kínál, amelyek lehetővé teszik a blob-objektumok-adattárolást a legköltséghatékonyabb módon. További információ az [Azure Storage blob-szintjéről](../blobs/storage-blob-storage-tiers.md). A támogatott értékek a következők: <br/> <li>**Gyors**: gyors elérésű szint</li> <li>**Cool**: lassú szint</li> <li>**Archive**: archiválási szint</li> <li>**Premium**: prémium szint a blob blokkhoz</li> <li>**P4/P6/P10/P15/P20/P30/P40/P50/P60**: szintű prémium oldal blob</li> <li>**Standard**: a standard oldal blobjának típusa</li> <li>Nem **rétegű**: az általános célú v1-es Storage-fiók típusa</li> |
@@ -273,7 +272,7 @@ A következő táblázat felsorolja az Azure Storage-beli erőforrás-naplók tu
 |**smbCommandMajor UInt32** | Érték a **SMB2_HEADER. parancsban**. Jelenleg ez egy 0 és 18 közötti szám. Például:`0x6` |
 |**smbCommandMinor** | A **SmbCommandMajor**alosztálya, ahol szükséges. Például:`DirectoryCloseAndDelete` |
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 - Az Azure Storage figyelésének leírását lásd: az [Azure Storage figyelése](monitor-storage.md) .
 - Az Azure-erőforrások figyelésével kapcsolatos részletekért lásd: az [Azure-erőforrások figyelése Azure monitorokkal](../../azure-monitor/insights/monitor-azure-resource.md) .

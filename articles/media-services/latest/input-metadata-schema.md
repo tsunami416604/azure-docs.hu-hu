@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 04/14/2020
 ms.author: juliako
 ms.openlocfilehash: 40e61061878c8aec6bad353bfd0c5f2f4178ce14
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85095587"
 ---
 # <a name="input-metadata"></a>Bemeneti metaadatok 
@@ -41,7 +40,7 @@ A kódolási feladatokhoz tartozó AssetFile-elemek gyűjteményét tartalmazza.
 > 
 > 
 
-| Name  | Leírás |
+| Name  | Description |
 | --- | --- | 
 | **VideoTracks**|Az egyes fizikai adatfájlok tartalmazhatnak nulla vagy több, a megfelelő tároló formátumba felhasználható videókat. További információ: [VideoTracks](#videotracks). |
 | **AudioTracks**|Az egyes fizikai adatfájlok tartalmazhatnak nulla vagy több, a megfelelő tároló formátumba felhasználható hangsávot. További információ: [AudioTracks](#audiotracks) |
@@ -63,7 +62,7 @@ A kódolási feladatokhoz tartozó AssetFile-elemek gyűjteményét tartalmazza.
 
 ## <a name="videotracks"></a>VideoTracks
 
-| Name |  | Leírás |
+| Name |  | Description |
 | --- | --- |
 | **FourCC**<br />Kötelező |Az FFmpeg által jelentett video codec FourCC-kód.<br /><br />Például: `"FourCC": "avc1"` |
 | **Profil** |A Video Track profilja. <br /><br />Például: `"Profile": "Main"`|
@@ -90,7 +89,7 @@ A kódolási feladatokhoz tartozó AssetFile-elemek gyűjteményét tartalmazza.
 
 ## <a name="audiotracks"></a>AudioTracks
 
-| Name  | Leírás |
+| Name  | Description |
 | --- | --- | 
 | **SampleFormat** |Minta formátuma <br /><br />Például: `"SampleFormat": "fltp"`|
 | **ChannelLayout** |Csatorna elrendezése <br /><br />Például: `"ChannelLayout": "stereo"`|
@@ -108,7 +107,7 @@ A kódolási feladatokhoz tartozó AssetFile-elemek gyűjteményét tartalmazza.
 
 ## <a name="metadata"></a>Metaadatok
 
-| Name | Leírás |
+| Name | Description |
 | --- | --- |
 | **kulcs**<br />Kötelező |A kulcs/érték párokban található kulcs. |
 | **érték**<br /> Kötelező |A kulcs/érték párokban szereplő érték. |

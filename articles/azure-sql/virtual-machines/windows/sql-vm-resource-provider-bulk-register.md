@@ -13,12 +13,11 @@ ms.workload: iaas-sql-server
 ms.date: 10/21/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: d7ce3a19ddb5f14e53a8821cf070500f8e3eb061
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.openlocfilehash: 58f2b1828bcc63ce11c234847bc20f90944aba18
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84338441"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960384"
 ---
 # <a name="register-multiple-sql-virtual-machines-in-azure-with-the-sql-vm-resource-provider"></a>Több SQL virtuális gép regisztrálása az Azure-ban az SQL VM erőforrás-szolgáltatóval
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -35,7 +34,7 @@ További információ az erőforrás-szolgáltatóról: [SQL VM erőforrás-szol
 
 A SQL Server VM erőforrás-szolgáltatóval való regisztrálásához a következőkre lesz szüksége: 
 
-- Olyan [Azure-előfizetés](https://azure.microsoft.com/free/) , amely [regisztrálva van az erőforrás-szolgáltatónál](sql-vm-resource-provider-register.md#register-a-subscription-with-the-resource-provider) , és nem regisztrált SQL Server virtuális gépeket tartalmaz. 
+- Olyan [Azure-előfizetés](https://azure.microsoft.com/free/) , amely [regisztrálva van az erőforrás-szolgáltatónál](sql-vm-resource-provider-register.md#register-subscription-with-rp) , és nem regisztrált SQL Server virtuális gépeket tartalmaz. 
 - A virtuális gépek regisztrálásához használt ügyfél-hitelesítő adatok a következő RBAC-szerepkörök bármelyikében léteznek: **virtuális gép közreműködői**, **közreműködő**vagy **tulajdonos**. 
 - Az az [PowerShell](/powershell/azure/new-azureps-module-az)legújabb verziója. 
 - Az az [. SqlVirtualMachine](https://www.powershellgallery.com/packages/Az.SqlVirtualMachine/0.1.0)legújabb verziója.

@@ -4,10 +4,9 @@ description: Leírja a Azure Resource Manager-sablonban használandó függvény
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.openlocfilehash: f79fa3420420a2ff440c3228f227cc71436b4a1c
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85099256"
 ---
 # <a name="resource-functions-for-arm-templates"></a>Az ARM-sablonokhoz tartozó Resource functions
@@ -34,7 +33,7 @@ A [bővítmény erőforrásának](../management/extension-resource-types.md)erő
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
 | resourceId |Yes |sztring |Annak az erőforrásnak az erőforrás-azonosítója, amelyre a bővítmény erőforrása vonatkozik. |
 | resourceType |Yes |sztring |Az erőforrás típusa, beleértve az erőforrás-szolgáltatói névteret. |
@@ -112,7 +111,7 @@ A függvény szintaxisa a lista műveleteinek nevével változik. Minden impleme
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
 | resourceName vagy resourceIdentifier |Yes |sztring |Az erőforrás egyedi azonosítója. |
 | apiVersion |Yes |sztring |Az erőforrás-futtatókörnyezet állapotának API-verziója. Általában az **éééé-hh-nn**formátumban kell megadni. |
@@ -323,7 +322,7 @@ Egy erőforrás-szolgáltatóval és annak támogatott erőforrásaival kapcsola
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
 | providerNamespace |Yes |sztring |A szolgáltató névtere |
 | resourceType |No |sztring |Az erőforrás típusa a megadott névtéren belül. |
@@ -398,7 +397,7 @@ Egy erőforrás futásidejű állapotát jelképező objektumot ad vissza.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
 | resourceName vagy resourceIdentifier |Yes |sztring |Egy erőforrás neve vagy egyedi azonosítója. Ha az aktuális sablonban lévő erőforrásra hivatkozik, csak az erőforrás nevét adja meg paraméterként. Ha egy korábban központilag telepített erőforrásra hivatkozik, vagy ha az erőforrás neve nem egyértelmű, adja meg az erőforrás-azonosítót. |
 | apiVersion |No |sztring |A megadott erőforrás API-verziója. **Ezt a paramétert akkor kell megadni, ha az erőforrás nincs kiépítve ugyanazon a sablonon belül.** Általában az **éééé-hh-nn**formátumban kell megadni. Az erőforrás érvényes API-verzióihoz lásd: [sablon-hivatkozás](/azure/templates/). |
@@ -721,7 +720,7 @@ Egy erőforrás egyedi azonosítóját adja vissza. Ezt a függvényt akkor hasz
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |No |karakterlánc (GUID formátumban) |Az alapértelmezett érték az aktuális előfizetés. Akkor adja meg ezt az értéket, ha egy másik előfizetésben le kell kérnie egy erőforrást. Csak akkor adja meg ezt az értéket, ha egy erőforráscsoport vagy előfizetés hatókörére telepíti. |
 | resourceGroupName |No |sztring |Az alapértelmezett érték az aktuális erőforráscsoport. Akkor adja meg ezt az értéket, ha egy másik erőforráscsoport erőforrását le kell kérnie. Csak akkor adja meg ezt az értéket, ha egy erőforráscsoport hatókörére telepíti. |
@@ -917,7 +916,7 @@ Az előfizetési szinten üzembe helyezett erőforrás egyedi azonosítóját ad
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |No |karakterlánc (GUID formátumban) |Az alapértelmezett érték az aktuális előfizetés. Akkor adja meg ezt az értéket, ha egy másik előfizetésben le kell kérnie egy erőforrást. |
 | resourceType |Yes |sztring |Az erőforrás típusa, beleértve az erőforrás-szolgáltatói névteret. |
@@ -999,7 +998,7 @@ A bérlői szinten üzembe helyezett erőforrás egyedi azonosítóját adja vis
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
 | resourceType |Yes |sztring |Az erőforrás típusa, beleértve az erőforrás-szolgáltatói névteret. |
 | resourceName1 |Yes |sztring |Az erőforrás neve. |

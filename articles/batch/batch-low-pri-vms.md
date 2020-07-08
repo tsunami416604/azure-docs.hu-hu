@@ -5,12 +5,11 @@ author: mscurrell
 ms.topic: how-to
 ms.date: 03/19/2020
 ms.custom: seodec18
-ms.openlocfilehash: 90cd6476992eed30abbe9faca5cc66405aa40079
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
-ms.translationtype: MT
+ms.openlocfilehash: 48350a684844ca0e1624826afeca8e0b9ab36f3b
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780193"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85959993"
 ---
 # <a name="use-low-priority-vms-with-batch"></a>Alacsony prioritású virtuális gépek használata a Batch szolgáltatással
 
@@ -23,11 +22,11 @@ Az alacsony prioritású virtuális gépek használatának kompromisszuma az, ho
 Az alacsony prioritású virtuális gépeket a dedikált virtuális gépekhez képest jelentősen csökkentett áron kínáljuk. A díjszabás részleteiért lásd: [Batch-díjszabás](https://azure.microsoft.com/pricing/details/batch/).
 
 > [!NOTE]
-> Az [egypéldányos virtuális gépekhez](https://docs.microsoft.com/azure/virtual-machines/linux/spot-vms) és a virtuálisgép- [méretezési csoportokhoz](https://docs.microsoft.com/azure/virtual-machine-scale-sets/use-spot)mostantól elérhetők a [helyszíni virtuális gépek](https://azure.microsoft.com/pricing/spot/) . A helyszíni virtuális gépek az alacsony prioritású virtuális gépek fejlődése, azonban a díjszabásban különböznek, és a helyszíni virtuális gépek kiosztásakor a választható maximális árat is megadhatja.
+> Az [egypéldányos virtuális gépekhez](../virtual-machines/linux/spot-vms.md) és a virtuálisgép- [méretezési csoportokhoz](../virtual-machine-scale-sets/use-spot.md)mostantól elérhetők a [helyszíni virtuális gépek](https://azure.microsoft.com/pricing/spot/) . A helyszíni virtuális gépek az alacsony prioritású virtuális gépek fejlődése, azonban a díjszabásban különböznek, és a helyszíni virtuális gépek kiosztásakor a választható maximális árat is megadhatja.
 >
-> Azure Batch készletek az általánosan elérhető néhány hónapon belül elkezdik támogatni a helyszíni virtuális gépeket, a [Batch API-k és eszközök](https://docs.microsoft.com/azure/batch/batch-apis-tools)új verzióival. A helyszíni virtuális gépek támogatásának engedélyezése után az alacsony prioritású virtuális gépek elavultak lesznek, így a jelenlegi API-k és az eszközök verziószáma legalább 12 hónapig érvényes lesz, hogy elegendő idő álljon rendelkezésre a helyszíni virtuális gépekre való áttelepítéshez. 
+> Azure Batch készletek az általánosan elérhető néhány hónapon belül elkezdik támogatni a helyszíni virtuális gépeket, a [Batch API-k és eszközök](./batch-apis-tools.md)új verzióival. A helyszíni virtuális gépek támogatásának engedélyezése után az alacsony prioritású virtuális gépek elavultak lesznek, így a jelenlegi API-k és az eszközök verziószáma legalább 12 hónapig érvényes lesz, hogy elegendő idő álljon rendelkezésre a helyszíni virtuális gépekre való áttelepítéshez. 
 >
-> A [Cloud Service-konfigurációs](https://docs.microsoft.com/rest/api/batchservice/pool/add#cloudserviceconfiguration) készletek nem támogatják a helyszíni virtuális gépeket. A helyszíni virtuális gépek használatához a Cloud Service-készleteket át kell telepíteni a [virtuálisgép-konfigurációs](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration) készletekbe.
+> A [Cloud Service-konfigurációs](/rest/api/batchservice/pool/add#cloudserviceconfiguration) készletek nem támogatják a helyszíni virtuális gépeket. A helyszíni virtuális gépek használatához a Cloud Service-készleteket át kell telepíteni a [virtuálisgép-konfigurációs](/rest/api/batchservice/pool/add#virtualmachineconfiguration) készletekbe.
 
 ## <a name="use-cases-for-low-priority-vms"></a>Alacsony prioritású virtuális gépekre vonatkozó esetek használata
 
@@ -144,7 +143,7 @@ A készlet autoskálázási képlete az alacsony prioritású virtuális gépeke
 -   Lekérheti a szolgáltatás által definiált változó értékét **$PreemptedNodeCount**. 
     Ez a változó visszaadja a csomópontok számát a előzik állapotban, és lehetővé teszi a dedikált csomópontok számának vertikális fel-vagy leskálázását a nem elérhető előzik-csomópontok számától függően.
 
-## <a name="jobs-and-tasks"></a>Feladatok és feladatok
+## <a name="jobs-and-tasks"></a>Feladatok és tevékenységek
 
 A feladatokhoz és a feladatokhoz kevés további konfiguráció szükséges az alacsony prioritású csomópontok számára; az egyetlen támogatás a következő:
 
