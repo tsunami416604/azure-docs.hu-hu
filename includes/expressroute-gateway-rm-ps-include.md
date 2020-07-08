@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -9,10 +9,10 @@ ms.date: 02/21/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 922ac7eb6cb9676af65700a6a2fe7fbae35a0dc5
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67179652"
 ---
 A feladat lépései a következő konfigurációs hivatkozási listán szereplő értékek alapján VNet használnak. Ezen a listán a további beállítások és nevek is szerepelnek. Ezt a listát nem használjuk közvetlenül a lépések egyikében sem, de a listában szereplő értékek alapján is hozzáadhatunk változókat. A listát a hivatkozásként való használatra másolhatja, és az értékeket saját értékre cserélheti.
