@@ -14,10 +14,9 @@ ms.workload: infrastructure
 ms.date: 03/16/2020
 ms.author: borisb
 ms.openlocfilehash: 70556cbbfefd6ad22ef96ee16065209031ea456c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81683756"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>Közvetlen kapcsolat beállítása az Azure és az Oracle Cloud Infrastructure között  
@@ -66,7 +65,7 @@ Az alábbi képen az összekapcsolással kapcsolatos magas szintű áttekintés 
     * A **szolgáltatói szolgáltatás kulcsában**illessze be a ExpressRoute szolgáltatás kulcsát.
     * Az első/30 magánhálózati IP-címtartomány kifaragva az **elsődleges BGP IP-címére** és a **másodlagos BGP IP** -címéhez tartozó második/30 magánhálózati IP-címtartomány használatára.
         * Rendelje hozzá a két tartomány első használható címét az Oracle BGP IP-címéhez (elsődleges és másodlagos) és a második címet az ügyfél BGP IP-címéhez (FastConnect perspektívából). Az első használható IP-cím a/30 címtartomány második IP-címe (az első IP-cím a Microsoft számára van fenntartva).
-    * Kattintson a **Létrehozás**gombra.
+    * Kattintson a **Létrehozás** lehetőségre.
 1. A FastConnect a dinamikus útválasztási átjárón keresztül, az útválasztási táblázat használatával kapcsolja össze a virtuális felhőalapú hálózattal.
 1. Navigáljon az Azure-hoz, és ellenőrizze, hogy a ExpressRoute áramkör **szolgáltatói állapota** **kiépítve** értékre változott-e, és hogy van-e kiépítve egy **Azure Private** típusú társ. Ez a következő lépések előfeltétele.
 

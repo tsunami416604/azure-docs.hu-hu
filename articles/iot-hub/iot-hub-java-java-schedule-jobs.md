@@ -11,10 +11,9 @@ ms.topic: conceptual
 ms.date: 08/16/2019
 ms.custom: mqtt
 ms.openlocfilehash: 5e3f4f4aedb0bc3fb1f8ea11001b08daa57aafc1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81732488"
 ---
 # <a name="schedule-and-broadcast-jobs-java"></a>Feladatok ütemezett és szórása (Java)
@@ -98,7 +97,7 @@ Az alkalmazás létrehozása:
 
 3. A parancssorban navigáljon az **ütemezett feladatok** mappára.
 
-4. Egy szövegszerkesztővel nyissa meg a **Pom. XML** fájlt az **Schedule-Jobs** mappában, és adja hozzá a következő függőséget a **függőségek** csomóponthoz. Ezzel a függőséggel használhatja az **IOT-Service-Client** csomagot az alkalmazásban az IOT hub használatával folytatott kommunikációhoz:
+4. Egy szövegszerkesztővel nyissa meg a **pom.xml** fájlt az **Schedule-Jobs** mappában, és adja hozzá a következő függőséget a **függőségek** csomóponthoz. Ezzel a függőséggel használhatja az **IOT-Service-Client** csomagot az alkalmazásban az IOT hub használatával folytatott kommunikációhoz:
 
     ```xml
     <dependency>
@@ -152,7 +151,7 @@ Az alkalmazás létrehozása:
     import java.util.UUID;
     ```
 
-9. Adja hozzá a következő osztályszintű változókat az **App** osztályhoz. Cserélje `{youriothubconnectionstring}` le a szót a IoT hub-beli, a korábban a [IoT hub-kapcsolatok karakterláncának lekérése](#get-the-iot-hub-connection-string)során bemásolt elérési karakterlánccá:
+9. Adja hozzá a következő osztályszintű változókat az **App** osztályhoz. Cserélje le a `{youriothubconnectionstring}` szót a IoT hub-beli, a korábban a [IoT hub-kapcsolatok karakterláncának lekérése](#get-the-iot-hub-connection-string)során bemásolt elérési karakterlánccá:
 
     ```java
     public static final String iotHubConnectionString = "{youriothubconnectionstring}";
@@ -261,7 +260,7 @@ Az alkalmazás létrehozása:
     }
     ```
 
-14. Frissítse a **fő** metódus aláírását, hogy tartalmazza `throws` a következő záradékot:
+14. Frissítse a **fő** metódus aláírását, hogy tartalmazza a következő `throws` záradékot:
 
     ```java
     public static void main( String[] args ) throws Exception
@@ -314,7 +313,7 @@ Ebben a szakaszban egy Java-konzol alkalmazást hoz létre, amely kezeli a IoT H
 
 2. A parancssorban navigáljon a **szimulált eszköz** mappájához.
 
-3. Egy szövegszerkesztővel nyissa meg a **Pom. XML** fájlt a **szimulált-Device** mappában, és adja hozzá a következő függőségeket a **függőségek** csomóponthoz. Ez a függőség lehetővé teszi, hogy a **IOT-Device-Client** csomagot használja az alkalmazásban az IOT hub-vel való kommunikációhoz:
+3. Egy szövegszerkesztővel nyissa meg a **szimulált eszköz** mappában található **pom.xml** fájlt, és adja hozzá a következő függőségeket a **függőségek** csomóponthoz. Ez a függőség lehetővé teszi, hogy a **IOT-Device-Client** csomagot használja az alkalmazásban az IOT hub-vel való kommunikációhoz:
 
     ```xml
     <dependency>
@@ -370,7 +369,7 @@ Ebben a szakaszban egy Java-konzol alkalmazást hoz létre, amely kezeli a IoT H
     import java.util.Scanner;
     ```
 
-9. Adja hozzá a következő osztályszintű változókat az **App** osztályhoz. Cserélje `{yourdeviceconnectionstring}` le a szöveget a korábban az [új eszköz regisztrálása az IoT hub-ben](#register-a-new-device-in-the-iot-hub) részben átmásolt eszköz-csatlakoztatási sztringre:
+9. Adja hozzá a következő osztályszintű változókat az **App** osztályhoz. Cserélje le a szöveget a `{yourdeviceconnectionstring}` korábban az [új eszköz regisztrálása az IoT hub-ben](#register-a-new-device-in-the-iot-hub) részben átmásolt eszköz-csatlakoztatási sztringre:
 
     ```java
     private static String connString = "{yourdeviceconnectionstring}";
@@ -428,7 +427,7 @@ Ebben a szakaszban egy Java-konzol alkalmazást hoz létre, amely kezeli a IoT H
     }
     ```
 
-13. Frissítse a **fő** metódus aláírását, hogy tartalmazza `throws` a következő záradékot:
+13. Frissítse a **fő** metódus aláírását, hogy tartalmazza a következő `throws` záradékot:
 
     ```java
     public static void main( String[] args ) throws IOException, URISyntaxException
@@ -502,7 +501,7 @@ Most már készen áll a konzolon futó alkalmazások futtatására.
 
    ![Az eszköz ügyfele elindul](./media/iot-hub-java-java-schedule-jobs/device-app-1.png)
 
-2. A `schedule-jobs` mappában a parancssorban futtassa a következő parancsot a **Schedule-Jobs** szolgáltatás alkalmazás futtatásához két feladat futtatásához. Az első beállítja a kívánt tulajdonságértékek értékét, a második pedig a közvetlen metódust hívja:
+2. A mappában a parancssorban `schedule-jobs` futtassa a következő parancsot a **Schedule-Jobs** szolgáltatás alkalmazás futtatásához két feladat futtatásához. Az első beállítja a kívánt tulajdonságértékek értékét, a második pedig a közvetlen metódust hívja:
 
    ```cmd\sh
    mvn exec:java -Dexec.mainClass="com.mycompany.app.App"

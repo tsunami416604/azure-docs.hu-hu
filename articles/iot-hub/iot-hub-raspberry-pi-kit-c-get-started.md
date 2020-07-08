@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 02/14/2019
 ms.author: wesmc
 ms.openlocfilehash: 03f9d58cab725335b0f4090ac1a7289c32c0af7f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81640549"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>Málna PI összekötése az Azure IoT Hub (C)
@@ -117,9 +116,9 @@ Készítse elő a microSD-kártyát a Raspbian-rendszerkép telepítéséhez.
 
 ### <a name="enable-ssh-and-spi"></a>SSH és SPI engedélyezése
 
-1. Kapcsolja össze a PI-t a figyelőhöz, a billentyűzethez és az egérhez, majd indítsa `pi` el a PI-t `raspberry` , majd jelentkezzen be a Raspbian a Felhasználónév és a jelszó használatával.
+1. Kapcsolja össze a PI-t a figyelőhöz, a billentyűzethez és az egérhez, majd indítsa el a PI-t, majd jelentkezzen be a Raspbian a `pi` Felhasználónév és `raspberry` a jelszó használatával.
  
-2. Kattintson a málna ikonra > **Beállítások** > **málna PI konfiguráció**.
+2. Kattintson a málna ikonra > **Beállítások**  >  **málna PI konfiguráció**.
 
    ![A Raspbian beállítások menü](./media/iot-hub-raspberry-pi-kit-c-get-started/1-raspbian-preferences-menu.png)
 
@@ -178,9 +177,9 @@ Kapcsolja be a PI-t a Micro USB-kábel és a tápegység használatával. Az Eth
 
    **Mac-és Ubuntu-felhasználók**
 
-   Használja a beépített SSH-ügyfelet Ubuntu vagy macOS rendszeren. Előfordulhat, hogy a PI `ssh pi@<ip address of pi>` SSH-n keresztüli összekapcsolásához futtatnia kell a parancsot.
+   Használja a beépített SSH-ügyfelet Ubuntu vagy macOS rendszeren. Előfordulhat, hogy a `ssh pi@<ip address of pi>` PI SSH-n keresztüli összekapcsolásához futtatnia kell a parancsot.
    > [!NOTE]
-   > Az alapértelmezett Felhasználónév a `pi` , a jelszó pedig `raspberry`.
+   > Az alapértelmezett Felhasználónév a `pi` , a jelszó pedig `raspberry` .
 
 
 ### <a name="configure-the-sample-application"></a>A mintaalkalmazás konfigurálása

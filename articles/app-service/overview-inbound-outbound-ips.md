@@ -5,10 +5,9 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.custom: seodec18
 ms.openlocfilehash: 8bcd80fde95e467513590f3ed09b1dadd2646aee
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81537627"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Bejövő és kimenő IP-címek Azure App Service
@@ -43,7 +42,7 @@ A kibővített példányok számától függetlenül az egyes alkalmazások mega
 
 Az alkalmazáshoz tartozó kimenő IP-címek készlete megváltozik, amikor az alsó**szint (Alapszintű**, **standard**és **prémium**) és a **prémium v2** szint között méretezi az alkalmazást.
 
-Az alkalmazás által használható kimenő IP-címek készletét az árképzési szintektől függetlenül, a `possibleOutboundIpAddresses` tulajdonság vagy a Azure Portal **Tulajdonságok** PANELJÉNEK **további kimenő IP-címek** mezőjében találja. Lásd: [kimenő IP](#find-outbound-ips)-címek keresése.
+Az alkalmazás által használható kimenő IP-címek készletét az árképzési szintektől függetlenül, a `possibleOutboundIpAddresses` tulajdonság vagy a Azure Portal **Tulajdonságok** paneljének **további kimenő IP-címek** mezőjében találja. Lásd: [kimenő IP](#find-outbound-ips)-címek keresése.
 
 ## <a name="find-outbound-ips"></a>Kimenő IP-címek keresése
 

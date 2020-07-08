@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 1198d3cc7ccc0013e7c894488027d8e162470247
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81677602"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>A csoportos adatelemzési folyamat működés közben – egy Azure HDInsight Hadoop-fürt használata 1 TB-os adatkészleten
@@ -75,13 +74,13 @@ A [Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/) adat
 
 A **letöltéshez** kattintson a Tovább gombra, hogy többet tudjon meg az adatkészletről és annak rendelkezésre állásáról.
 
-Az adat egy [Azure Blob Storage](../../storage/blobs/storage-dotnet-how-to-use-blobs.md) -helyen található: wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/. Az "wasb" az Azure Blob Storage helyére utal.
+Az adat egy [Azure Blob Storage](../../storage/blobs/storage-dotnet-how-to-use-blobs.md) -helyen található: wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/ . Az "wasb" az Azure Blob Storage helyére utal.
 
 1. Az Azure Blob Storage-ban tárolt adattárolók három almappából állnak a kibontott adatsorokból.
 
-   1. Az almappa *nyers/darabszám/* az első 21 nap adat – a 00 napról\_a\_20 napra
-   2. Az almappa *nyers/betanítása/* egynapos adat, 21.\_nap
-   3. Az almappa *nyers/teszt/* két napos adatból áll, a\_22. és\_a 23. nap
+   1. Az almappa *nyers/darabszám/* az első 21 nap adat – a 00 napról a \_ 20 napra \_
+   2. Az almappa *nyers/betanítása/* egynapos adat, 21. nap \_
+   3. Az almappa *nyers/teszt/* két napos adatból áll, a \_ 22. és a 23. nap \_
 2. A nyers gzip-adatok a fő mappában ( *RAW/* as day_NN. gz) is elérhetők, ahol az NN a 00 és 23 közötti értékre mutat.
 
 A jelen útmutató későbbi részében a kaptárak létrehozásakor a további, a helyi letöltéseket nem igénylő adatelérést, megismerést és modellezést is elmagyarázhatja.
@@ -115,9 +114,9 @@ Miután a struktúra REPL megjelenik egy "kaptár >" jellel, egyszerűen kivágj
 
 A következő kód létrehozza a "criteo" adatbázist, majd négy táblát hoz létre:
 
-* egy *táblázat a* \_00 –\_20. napon, a
-* a 21. napra\_épülő, *a vonat adatkészletként használandó táblázat*
-* két tábla, amely a\_22. és a\_23. napon alapuló *tesztelési adatkészletekhez használható* .
+* egy *táblázat a* \_ 00 – 20. napon \_ , a
+* a 21. napra épülő, *a vonat adatkészletként használandó táblázat* \_
+* két tábla, amely a 22. és a 23. napon alapuló *tesztelési adatkészletekhez használható* \_ \_ .
 
 Ossza szét a teszt adatkészletet két különböző táblára, mert az egyik nap a nyaralás. A cél annak megállapítása, hogy a modell képes-e a nyaralás és a nem szünnap közötti különbségek észlelésére a kattintások díjszabása alapján.
 
@@ -222,7 +221,7 @@ A szokásos módon a következő parancs kiadásával is meghívhatja a parancsf
 
         hive -f C:\temp\sample_hive_count_criteo_test_day_22_table_examples.hql
 
-Végül megvizsgálja a tesztelési adatkészletben a 23. napon\_alapuló tesztelési példák számát.
+Végül megvizsgálja a tesztelési adatkészletben a 23. napon alapuló tesztelési példák számát \_ .
 
 A parancs ehhez hasonlóan jelenik meg (lásd: [sample&#95;kaptár&#95;count&#95;criteo&#95;test&#95;day&#95;23&#95;példák. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_count_criteo_test_day_23_examples.hql)):
 
@@ -247,7 +246,7 @@ Ez a címke eloszlását eredményezi:
 A pozitív feliratok százalékos aránya körülbelül 3,3% (az eredeti adatkészlettel összhangban).
 
 ### <a name="histogram-distributions-of-some-numeric-variables-in-the-train-dataset"></a>Néhány numerikus változó hisztogram eloszlása a vonat adatkészletében
-A kaptár natív "hisztogram\_numerikus" függvényével megtudhatja, hogy a numerikus változók eloszlása milyen módon néz ki. Itt látható a [minta&#95;struktúra&#95;criteo&#95;hisztogram&#95;numerikus. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_histogram_numeric.hql):
+A kaptár natív "hisztogram \_ numerikus" függvényével megtudhatja, hogy a numerikus változók eloszlása milyen módon néz ki. Itt látható a [minta&#95;struktúra&#95;criteo&#95;hisztogram&#95;numerikus. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_histogram_numeric.hql):
 
         SELECT CAST(hist.x as int) as bin_center, CAST(hist.y as bigint) as bin_height FROM
             (SELECT
@@ -284,7 +283,7 @@ Ez a következőket eredményezi:
 Az oldalirányú nézet – a struktúra kibontása a struktúrában úgy szolgálja ki, hogy a szokásos lista helyett egy SQL-szerű kimenetet hozzon létre. Ebben a táblázatban az első oszlop a bin központnak felel meg, a második pedig a raktárhely gyakorisága.
 
 ### <a name="approximate-percentiles-of-some-numeric-variables-in-the-train-dataset"></a>Néhány numerikus változó hozzávetőleges százalékos értéke a vonat adatkészletében
-A numerikus változók esetében is a hozzávetőleges százalékos érték kiszámítása. A kaptár natív "percentilis\_kb" értéke a számunkra. A [minta&#95;struktúra&#95;criteo&#95;hozzávetőleges&#95;percentilis. a HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_approximate_percentiles.hql) a következők:
+A numerikus változók esetében is a hozzávetőleges százalékos érték kiszámítása. A kaptár natív "percentilis \_ kb" értéke a számunkra. A [minta&#95;struktúra&#95;criteo&#95;hozzávetőleges&#95;percentilis. a HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_approximate_percentiles.hql) a következők:
 
         SELECT MIN(Col2) AS Col2_min, PERCENTILE_APPROX(Col2, 0.1) AS Col2_01, PERCENTILE_APPROX(Col2, 0.3) AS Col2_03, PERCENTILE_APPROX(Col2, 0.5) AS Col2_median, PERCENTILE_APPROX(Col2, 0.8) AS Col2_08, MAX(Col2) AS Col2_max FROM criteo.criteo_train;
 
@@ -365,7 +364,7 @@ A következő hozamok:
         Time taken: 12.22 seconds
         Time taken: 298.98 seconds
 
-A szkript [minta&#95;struktúra&#95;criteo&#95;felbontáscsökkentéséhez&#95;teszt&#95;nap&#95;22&#95;adatkészlet. a HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_downsample_test_day_22_dataset.hql) végzi a tesztelési adatokat,\_22. nap:
+A szkript [minta&#95;struktúra&#95;criteo&#95;felbontáscsökkentéséhez&#95;teszt&#95;nap&#95;22&#95;adatkészlet. a HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_downsample_test_day_22_dataset.hql) végzi a tesztelési adatokat, \_ 22. nap:
 
         --- Now for test data (day_22)
 
@@ -383,7 +382,7 @@ A következő hozamok:
         Time taken: 317.66 seconds
 
 
-Végül a szkript [minta&#95;struktúra&#95;criteo&#95;felbontáscsökkentéséhez&#95;teszt&#95;nap&#95;23&#95;adatkészlet. a HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_downsample_test_day_23_dataset.hql) végzi a tesztelési adatokat, 23\_. nap:
+Végül a szkript [minta&#95;struktúra&#95;criteo&#95;felbontáscsökkentéséhez&#95;teszt&#95;nap&#95;23&#95;adatkészlet. a HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_downsample_test_day_23_dataset.hql) végzi a tesztelési adatokat, \_ 23. nap:
 
         --- Finally test data day_23
         CREATE TABLE criteo.criteo_test_day_23_downsample_1perc (
@@ -424,7 +423,7 @@ Azure Machine Learning modell-létrehozási folyamata az alábbi lépéseket kö
 Most már készen áll a modellek Azure Machine Learning Studióban való létrehozására. A rendszer a fürtben található kaptár-táblákként menti a levett mintául szolgáló adatkészleteket. Az adatelemzéshez használja az Azure Machine Learning **adatimportálási** modult. A fürt Storage-fiókjához való hozzáféréshez szükséges hitelesítő adatokat a következő cikkben találhatja meg.
 
 ### <a name="step-1-get-data-from-hive-tables-into-azure-machine-learning-using-the-import-data-module-and-select-it-for-a-machine-learning-experiment"></a><a name="step1"></a>1. lépés: adatok beolvasása a kaptár tábláiból Azure Machine Learning az adatok importálása modul használatával, majd kiválaszthatja a Machine learning-kísérletekhez
-Először válassza ki a **+ új** -> **kísérletből** -> álló**üres kísérletet**. Ezután a bal felső sarokban található **keresőmezőbe** írja be az "adatok importálása" kifejezést. Húzza az **adatimportálási** modult a kísérleti vászonra (a képernyő középső részére), és használja a modult az adateléréshez.
+Először válassza ki a **+ új**  ->  **kísérletből**álló  ->  **üres kísérletet**. Ezután a bal felső sarokban található **keresőmezőbe** írja be az "adatok importálása" kifejezést. Húzza az **adatimportálási** modult a kísérleti vászonra (a képernyő középső részére), és használja a modult az adateléréshez.
 
 Így néz ki az adatok **importálása** , miközben az adatok beolvasása a kaptár táblából történik:
 
@@ -433,8 +432,8 @@ Először válassza ki a **+ új** -> **kísérletből** -> álló**üres kísé
 Az **adatimportálási** modul esetében a grafikában megadott paraméterek értékei csak a szükséges értékekre mutatnak. Íme néhány általános útmutató az **adatimportálási** modul paramétereinek kitöltéséhez.
 
 1. Az **adatforrás** "kaptár-lekérdezés" választása
-2. A **struktúra adatbázisának lekérdezése** mezőben\_egy egyszerű kijelölés * az adatbázis\_neve <. a\_tábla\_neve> – elég.
-3. **Hcatalog-kiszolgáló URI-ja**: Ha a fürt "ABC", akkor ez egyszerűen: https\/:/ABC.azurehdinsight.net
+2. A **struktúra adatbázisának lekérdezése** mezőben egy egyszerű kijelölés * az \_ adatbázis neve <\_ . a \_ tábla \_ neve> – elég.
+3. **Hcatalog-kiszolgáló URI-ja**: Ha a fürt "ABC", akkor ez egyszerűen: https: \/ /ABC.azurehdinsight.net
 4. **Hadoop felhasználói fiók neve**: a fürt üzembe helyezésének időpontjában kiválasztott Felhasználónév. (Nem a távelérés felhasználóneve!)
 5. **Hadoop felhasználói fiók jelszava**: a fürt üzembe helyezésének időpontjában kiválasztott Felhasználónév jelszava. (Nem a távelérés jelszava!)
 6. **Kimeneti adatokat tároló hely**: válassza az "Azure" lehetőséget.
@@ -477,8 +476,8 @@ A nagyméretű adathalmazok néhány kategorikus funkciójának több millió eg
 ##### <a name="building-counting-transforms"></a>Számlálási átalakítások kiépítése
 A Count-funkciók létrehozásához használja a Azure Machine Learningban elérhető, **számlálási transzformációs** modult. A modul így néz ki:
 
-![Számlálási átalakító modul tulajdonságainak](./media/hive-criteo-walkthrough/e0eqKtZ.png)
-![összeállítása számlálási átalakító modul](./media/hive-criteo-walkthrough/OdDN0vw.png)
+![Számlálási átalakító modul tulajdonságainak összeállítása ](./media/hive-criteo-walkthrough/e0eqKtZ.png)
+ ![ számlálási átalakító modul](./media/hive-criteo-walkthrough/OdDN0vw.png)
 
 > [!IMPORTANT]
 > Az **oszlopok számlálása** mezőben adja meg azokat az oszlopokat, amelyeknek a számát szeretné elvégezni. Ezek jellemzően a nagy dimenziós kategorikus oszlopok. Ne feledje, hogy a Criteo adatkészletének 26 kategorikus oszlopa van: a Col15 és a Col40 között. Itt számoljon mindet, és adja meg az indexeit (15 – 40 vesszővel elválasztva, az ábrán látható módon).
@@ -518,7 +517,7 @@ A második R-szkript kiegyensúlyozza a pozitív és negatív osztályok (1. és
 
 ![Második R-parancsfájl](./media/hive-criteo-walkthrough/91wvcwN.png)
 
-Ebben az egyszerű R-szkriptben a "\_POS\_negatív arány" a pozitív és a negatív osztályok közötti egyensúly beállítására szolgál. Ez azért fontos, mert az osztályok adategyensúlyhiányának javítása általában a besorolási problémákra vonatkozó teljesítménybeli előnyökkel jár, ha az osztály eloszlása elferdítve van (ebben az esetben ne felejtse el, hogy 3,3% pozitív osztály és 96,7% negatív osztály).
+Ebben az egyszerű R-szkriptben a "POS \_ negatív \_ arány" a pozitív és a negatív osztályok közötti egyensúly beállítására szolgál. Ez azért fontos, mert az osztályok adategyensúlyhiányának javítása általában a besorolási problémákra vonatkozó teljesítménybeli előnyökkel jár, ha az osztály eloszlása elferdítve van (ebben az esetben ne felejtse el, hogy 3,3% pozitív osztály és 96,7% negatív osztály).
 
 ##### <a name="applying-the-count-transformation-on-our-data"></a>Az adatgyűjtési szám átalakításának alkalmazása
 Végezetül az **átalakítási** modul alkalmazása lehetőségre kattintva alkalmazhatja a Count átalakításokat a vonaton és a tesztelési adatkészleteken. Ez a modul a mentett Count átalakítót egy bemenetként, a vonat vagy a tesztelési adatkészletek közül a másik bemenetként, az adatokat pedig a Count funkcióval adja vissza. Itt látható:

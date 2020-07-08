@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: junhan
 ms.openlocfilehash: d85e0e967dd802a77ccbc11b884d7a9f2891524d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81688094"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-for-azure-iot-hub-device-management"></a>A Visual Studio Code-hoz készült Azure IoT Tools használata az Azure IoT Hub-eszközök felügyeletéhez
@@ -48,7 +47,7 @@ A Visual Studio Code-hoz készült Azure IoT Tools futtatása különböző fel�
 * Aktív Azure-előfizetés.
 * Az előfizetéshez tartozó Azure IoT hub.
 * [Visual Studio Code](https://code.visualstudio.com/)
-* A VS Code-hoz készült [Azure IoT-eszközök](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) , illetve az URL-cím másolása és`vscode:extension/vsciot-vscode.azure-iot-tools`beillesztése egy böngészőablakba:.
+* A VS Code-hoz készült [Azure IoT-eszközök](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) , illetve az URL-cím másolása és beillesztése egy böngészőablakba: `vscode:extension/vsciot-vscode.azure-iot-tools` .
 
 ## <a name="sign-in-to-access-your-iot-hub"></a>Jelentkezzen be az IoT hub eléréséhez
 
@@ -71,19 +70,19 @@ A Visual Studio Code-hoz készült Azure IoT Tools futtatása különböző fel�
 
 2. Adja meg a metódus nevét és a hasznos adatokat a beviteli mezőben.
 
-3. Az eredmények a **kimenet** > **Azure IoT hub** nézetben jelennek meg.
+3. Az eredmények a **kimenet**  >  **Azure IoT hub** nézetben jelennek meg.
 
 ## <a name="read-device-twin"></a>Írásvédett eszköz – Twin
 
 1. Kattintson a jobb gombbal az eszközre, és válassza az **eszközök dupla szerkesztése**lehetőséget. 
 
-2. Az **Azure-IOT-Device-Twin. JSON** fájl megnyitható az eszköz Twin tartalmával.
+2. A rendszer egy **azure-iot-device-twin.jst nyit meg** a fájlon a Twin eszköz tartalmával.
 
 ## <a name="update-device-twin"></a>Eszköz dupla frissítése
 
 1. Végezze el a **címkék** vagy a **Tulajdonságok. kívánt** mező szerkesztését.
 
-2. Kattintson a jobb gombbal az **Azure-IOT-Device-Twin. JSON** fájlra.
+2. Kattintson a jobb gombbal a fájl **azure-iot-device-twin.js** .
 
 3. Válassza az **eszköz Twin frissítése** lehetőséget az eszköz dupla frissítéséhez.
 
@@ -95,7 +94,7 @@ Az alábbi lépéseket követve küldhet üzenetet az IoT hub-ról az eszközre:
 
 2. Adja meg az üzenetet a beviteli mezőben.
 
-3. Az eredmények a **kimenet** > **Azure IoT hub** nézetben jelennek meg.
+3. Az eredmények a **kimenet**  >  **Azure IoT hub** nézetben jelennek meg.
 
 ## <a name="next-steps"></a>További lépések
 

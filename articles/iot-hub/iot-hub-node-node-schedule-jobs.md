@@ -1,6 +1,6 @@
 ---
 title: Feladatok ütemezhetnek az Azure IoT Hub (node) segítségével | Microsoft Docs
-description: Azure IoT Hub-feladatok ütemezésének beütemezés közvetlen metódus több eszközön való meghívásához. A Node. js-hez készült Azure IoT SDK-k segítségével megvalósíthatja a szimulált eszköz alkalmazásait és egy szolgáltatási alkalmazást a feladatok futtatásához.
+description: Azure IoT Hub-feladatok ütemezésének beütemezés közvetlen metódus több eszközön való meghívásához. A Node.js Azure IoT SDK-k segítségével implementálhatja a szimulált eszköz alkalmazásait és egy szolgáltatási alkalmazást a feladatok futtatásához.
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -11,13 +11,12 @@ ms.topic: conceptual
 ms.date: 08/16/2019
 ms.custom: mqtt
 ms.openlocfilehash: d7f9ce37ad85d39388eea90af263f59ce312a6b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81732270"
 ---
-# <a name="schedule-and-broadcast-jobs-nodejs"></a>Feladatok ütemezett és szórása (node. js)
+# <a name="schedule-and-broadcast-jobs-nodejs"></a>Feladatok ütemezett és szórása (Node.js)
 
 [!INCLUDE [iot-hub-selector-schedule-jobs](../../includes/iot-hub-selector-schedule-jobs.md)]
 
@@ -39,19 +38,19 @@ További információk a következő cikkekben felsorolt lehetőségekről:
 
 Ez az oktatóanyag a következőket mutatja be:
 
-* Hozzon létre egy olyan, a Node. js által szimulált eszköz alkalmazást, amely közvetlen metódussal rendelkezik, amely lehetővé teszi a **lockDoor**, amelyet a megoldás hátterében hívhat meg.
+* Hozzon létre egy Node.js szimulált eszköz alkalmazást, amely közvetlen metódussal rendelkezik, amely lehetővé teszi a **lockDoor**, amelyet a megoldás hátterében hívhat meg.
 
-* Hozzon létre egy Node. js-konzol alkalmazást, amely meghívja a **lockDoor** Direct metódust a szimulált eszköz alkalmazásban egy feladattal, és a kívánt tulajdonságokat egy eszköz feladattal frissíti.
+* Hozzon létre egy Node.js Console-alkalmazást, amely egy feladatot használva meghívja a **lockDoor** Direct metódust a szimulált eszköz alkalmazásban, és frissíti a kívánt tulajdonságokat egy eszköz feladataival.
 
-Az oktatóanyag végén két Node. js-alkalmazás található:
+Az oktatóanyag végén két Node.js alkalmazást használhat:
 
-* **simDevice. js**, amely az IoT hubhoz csatlakozik az eszköz identitásával, és egy **lockDoor** Direct metódust kap.
+* **simDevice.js**, amely az eszköz identitásával csatlakozik az IoT hubhoz, és egy **lockDoor** Direct metódust kap.
 
-* **scheduleJobService. js**, amely egy közvetlen metódust hív meg a szimulált eszköz alkalmazásban, és feladatokkal frissíti az eszközhöz tartozó dupla kívánt tulajdonságokat.
+* **scheduleJobService.js**, amely közvetlen metódust hív meg a szimulált eszköz alkalmazásban, és feladatokkal frissíti az eszköz két kívánt tulajdonságát.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Node. js 10.0. x vagy újabb verzió. [A fejlesztési környezet előkészítése](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) ismerteti, hogyan telepítheti a Node. js-t ehhez az oktatóanyaghoz Windows vagy Linux rendszeren.
+* Node.js 10.0. x vagy újabb verzió. [A fejlesztési környezet előkészítése](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) leírja, hogyan telepítheti a Windows vagy Linux rendszerhez készült Node.js az oktatóanyaghoz.
 
 * Aktív Azure-fiók. (Ha nincs fiókja, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) néhány perc alatt.)
 
@@ -67,9 +66,9 @@ Az oktatóanyag végén két Node. js-alkalmazás található:
 
 ## <a name="create-a-simulated-device-app"></a>Szimulált eszközalkalmazás létrehozása
 
-Ebben a szakaszban egy Node. js-konzol alkalmazást hoz létre, amely a felhő által meghívott közvetlen metódusra válaszol, amely egy szimulált **lockDoor** metódust indít el.
+Ebben a szakaszban egy olyan Node.js Console-alkalmazást hoz létre, amely a felhő által meghívott közvetlen metódusra válaszol, amely egy szimulált **lockDoor** metódust indít el.
 
-1. Hozzon létre egy új, **simDevice**nevű üres mappát.  A **simDevice** mappában hozzon létre egy Package. JSON fájlt a következő parancs parancssorba való beírásával.  Fogadja el az összes alapértelmezett beállítást:
+1. Hozzon létre egy új, **simDevice**nevű üres mappát.  A **simDevice** mappában hozzon létre egy package.jsfájlt a következő parancs futtatásával a parancssorban.  Fogadja el az összes alapértelmezett beállítást:
 
    ```console
    npm init
@@ -81,9 +80,9 @@ Ebben a szakaszban egy Node. js-konzol alkalmazást hoz létre, amely a felhő �
    npm install azure-iot-device azure-iot-device-mqtt --save
    ```
 
-3. Egy szövegszerkesztővel hozzon létre egy új **simDevice. js** fájlt a **simDevice** mappában.
+3. Egy szövegszerkesztővel hozzon létre egy új **simDevice.js** fájlt a **simDevice** mappában.
 
-4. Adja hozzá a következő "require" utasítást a **simDevice. js** fájl elejéhez:
+4. Adja hozzá a következő "require" utasítást a **simDevice.js** fájl elejéhez:
 
     ```javascript
     'use strict';
@@ -92,7 +91,7 @@ Ebben a szakaszban egy Node. js-konzol alkalmazást hoz létre, amely a felhő �
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     ```
 
-5. Adjon hozzá egy **connectionString** változót, és ezzel hozzon létre egy **Ügyfél** példányt. Cserélje le `{yourDeviceConnectionString}` a helyőrző értékét a korábban átmásolt eszköz-összekapcsolási sztringre.
+5. Adjon hozzá egy **connectionString** változót, és ezzel hozzon létre egy **Ügyfél** példányt. Cserélje le a `{yourDeviceConnectionString}` helyőrző értékét a korábban átmásolt eszköz-összekapcsolási sztringre.
 
     ```javascript
     var connectionString = '{yourDeviceConnectionString}';
@@ -130,7 +129,7 @@ Ebben a szakaszban egy Node. js-konzol alkalmazást hoz létre, amely a felhő �
    });
    ```
 
-8. Mentse és zárjuk be a **simDevice. js** fájlt.
+8. Mentse és zárjuk be a **simDevice.js** fájlt.
 
 > [!NOTE]
 > Az egyszerűség kedvéért ez az oktatóanyag nem valósít meg semmilyen újrapróbálkozási házirendet. Az éles kódban az újrapróbálkozási szabályzatokat (például egy exponenciális leállítási) kell megvalósítani, ahogy azt a cikkben is ismertetjük, az [átmeneti hibák kezelésére](/azure/architecture/best-practices/transient-faults).
@@ -144,9 +143,9 @@ Ebben a szakaszban egy Node. js-konzol alkalmazást hoz létre, amely a felhő �
 
 ## <a name="schedule-jobs-for-calling-a-direct-method-and-updating-a-device-twins-properties"></a>Feladatok ütemezhetnek közvetlen metódus hívásához és az eszközök Twin tulajdonságainak frissítéséhez
 
-Ebben a szakaszban egy Node. js-konzol alkalmazást hoz létre, amely egy közvetlen metódus használatával kezdeményez egy távoli **lockDoor** az eszközön, és frissíti az eszköz Twin tulajdonságait.
+Ebben a szakaszban egy olyan Node.js Console-alkalmazást hoz létre, amely egy közvetlen metódus használatával kezdeményez egy távoli **lockDoor** az eszközön, és frissíti az eszköz Twin tulajdonságait.
 
-1. Hozzon létre egy új, **scheduleJobService**nevű üres mappát.  A **scheduleJobService** mappában hozzon létre egy Package. JSON fájlt a következő parancs parancssorba való beírásával.  Fogadja el az összes alapértelmezett beállítást:
+1. Hozzon létre egy új, **scheduleJobService**nevű üres mappát.  A **scheduleJobService** mappában hozzon létre egy package.jsfájlt a következő parancs futtatásával a parancssorban.  Fogadja el az összes alapértelmezett beállítást:
 
     ```console
     npm init
@@ -158,9 +157,9 @@ Ebben a szakaszban egy Node. js-konzol alkalmazást hoz létre, amely egy közve
     npm install azure-iothub uuid --save
     ```
 
-3. Egy szövegszerkesztővel hozzon létre egy új **scheduleJobService. js** fájlt a **scheduleJobService** mappában.
+3. Egy szövegszerkesztővel hozzon létre egy új **scheduleJobService.js** fájlt a **scheduleJobService** mappában.
 
-4. Adja hozzá a következő "require" utasítást a **scheduleJobService. js** fájl elejéhez:
+4. Adja hozzá a következő "require" utasítást a **scheduleJobService.js** fájl elejéhez:
 
     ```javascript
     'use strict';
@@ -169,7 +168,7 @@ Ebben a szakaszban egy Node. js-konzol alkalmazást hoz létre, amely egy közve
     var JobClient = require('azure-iothub').JobClient;
     ```
 
-5. Adja hozzá a következő változó deklarációkat. A `{iothubconnectionstring}` helyőrző értékét cserélje le az [IoT hub-kapcsolatok karakterláncának beolvasása](#get-the-iot-hub-connection-string)elemre. Ha a **myDeviceId**eltérő eszközt regisztrált, ne felejtse el módosítani a lekérdezési feltételben.
+5. Adja hozzá a következő változó deklarációkat. A helyőrző értékét cserélje le az `{iothubconnectionstring}` [IoT hub-kapcsolatok karakterláncának beolvasása](#get-the-iot-hub-connection-string)elemre. Ha a **myDeviceId**eltérő eszközt regisztrált, ne felejtse el módosítani a lekérdezési feltételben.
 
     ```javascript
     var connectionString = '{iothubconnectionstring}';
@@ -266,7 +265,7 @@ Ebben a szakaszban egy Node. js-konzol alkalmazást hoz létre, amely egy közve
     });
     ```
 
-9. Mentse és zárjuk be a **scheduleJobService. js** fájlt.
+9. Mentse és zárjuk be a **scheduleJobService.js** fájlt.
 
 ## <a name="run-the-applications"></a>Az alkalmazások futtatása
 

@@ -11,10 +11,9 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.custom: mqtt
 ms.openlocfilehash: 75d89b54bae6eb8166d44e08ea020a0da67ad20c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81732562"
 ---
 # <a name="get-started-with-device-management-java"></a>Ismerkedés az eszközkezelés (Java) szolgáltatással
@@ -98,7 +97,7 @@ Ez a konzol-alkalmazás csatlakozik a IoT Hubhoz, hogy meghívja a közvetlen me
 
 3. A parancssorban navigáljon a **trigger-reboot** mappára.
 
-4. Egy szövegszerkesztővel nyissa meg a **Pom. XML** fájlt a **trigger-reboot** mappában, és adja hozzá a következő függőséget a **függőségek** csomóponthoz. Ezzel a függőséggel használhatja az IOT-Service-Client csomagot az alkalmazásban az IoT hub használatával folytatott kommunikációhoz:
+4. Egy szövegszerkesztővel nyissa meg a **pom.xml** fájlt a **trigger-reboot** mappában, és adja hozzá a következő függőséget a **függőségek** csomóponthoz. Ezzel a függőséggel használhatja az IOT-Service-Client csomagot az alkalmazásban az IoT hub használatával folytatott kommunikációhoz:
 
     ```xml
     <dependency>
@@ -149,7 +148,7 @@ Ez a konzol-alkalmazás csatlakozik a IoT Hubhoz, hogy meghívja a közvetlen me
     import java.util.concurrent.ExecutorService;
     ```
 
-9. Adja hozzá a következő osztályszintű változókat az **App** osztályhoz. Cserélje `{youriothubconnectionstring}` le a (z) helyére a korábban átmásolt IoT hub-kapcsolatok karakterláncát a [IoT hub-kapcsolatok karakterláncának lekérése](#get-the-iot-hub-connection-string):
+9. Adja hozzá a következő osztályszintű változókat az **App** osztályhoz. Cserélje le a (z) helyére `{youriothubconnectionstring}` a korábban átmásolt IoT hub-kapcsolatok karakterláncát a [IoT hub-kapcsolatok karakterláncának lekérése](#get-the-iot-hub-connection-string):
 
     ```java
     public static final String iotHubConnectionString = "{youriothubconnectionstring}";
@@ -249,7 +248,7 @@ Ebben a szakaszban egy Java-konzol alkalmazást hoz létre, amely egy eszközt s
 
 2. A parancssorban navigáljon a **szimulált eszköz** mappájához.
 
-3. Egy szövegszerkesztővel nyissa meg a **Pom. XML** fájlt a **szimulált-Device** mappában, és adja hozzá a következő függőséget a **függőségek** csomóponthoz. Ezzel a függőséggel használhatja az IOT-Service-Client csomagot az alkalmazásban az IoT hub használatával folytatott kommunikációhoz:
+3. Egy szövegszerkesztővel nyissa meg a **szimulált eszköz** mappában található **pom.xml** fájlt, és adja hozzá a következő függőséget a **függőségek** csomóponthoz. Ezzel a függőséggel használhatja az IOT-Service-Client csomagot az alkalmazásban az IoT hub használatával folytatott kommunikációhoz:
 
     ```xml
     <dependency>
@@ -308,7 +307,7 @@ Ebben a szakaszban egy Java-konzol alkalmazást hoz létre, amely egy eszközt s
     import java.util.HashSet;
     ```
 
-9. Adja hozzá a következő osztályszintű változókat az **App** osztályhoz. Cserélje `{yourdeviceconnectionstring}` le az eszközt az [új eszköz regisztrálása az IoT hub-ben](#register-a-new-device-in-the-iot-hub) című szakaszban leírt eszköz-csatlakoztatási karakterláncra:
+9. Adja hozzá a következő osztályszintű változókat az **App** osztályhoz. Cserélje le az `{yourdeviceconnectionstring}` eszközt az [új eszköz regisztrálása az IoT hub-ben](#register-a-new-device-in-the-iot-hub) című szakaszban leírt eszköz-csatlakoztatási karakterláncra:
 
     ```java
     private static final int METHOD_SUCCESS = 200;

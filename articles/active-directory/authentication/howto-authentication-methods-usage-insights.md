@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 053b052abf6f23c385dc7447639aa40b6c2c58a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81680188"
 ---
 # <a name="authentication-methods-usage--insights-preview"></a>Hitelesítési módszerek használati &i adatok (előzetes verzió)
@@ -38,12 +37,12 @@ A használat és az információk eléréséhez nincs szükség további licence
 A hitelesítési módszer használatának és az információknak a elérése:
 
 1. Keresse fel az [Azure Portalt](https://portal.azure.com).
-1. Keresse meg **Azure Active Directory** > **jelszó-visszaállítási** > **használati &-információkat**.
+1. Keresse meg **Azure Active Directory**  >  **jelszó-visszaállítási**  >  **használati &-információkat**.
 1. A **regisztrációs** vagy **használati** áttekintésekben dönthet úgy, hogy az előre szűrt jelentéseket az igényeinek megfelelően szűri.
 
 ![Használat & információk áttekintése](./media/howto-authentication-methods-usage-insights/usage-insights-overview.png)
 
-A használat & az adatok közvetlen eléréséhez nyissa meg [https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade](https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade)a következőt:. Ez a hivatkozás a regisztráció áttekintését fogja elérni.
+A használat & az adatok közvetlen eléréséhez nyissa meg a következőt: [https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade](https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade) . Ez a hivatkozás a regisztráció áttekintését fogja elérni.
 
 A regisztrált felhasználók, a felhasználók és a felhasználók számára kompatibilis csempék a következő regisztrációs adatait jelenítik meg a felhasználók számára:
 
@@ -65,7 +64,7 @@ Ha a **regisztrált felhasználók**, a **felhasználók**vagy a **felhasználó
 
 A regisztráció részletei jelentés az alábbi információkat jeleníti meg az egyes felhasználókra vonatkozóan:
 
-- Name (Név)
+- Name
 - Felhasználónév
 - Regisztrációs állapot (összes, regisztrált, nincs regisztrálva)
 - Engedélyezett állapot (mind, engedélyezve, nincs engedélyezve)
@@ -80,7 +79,7 @@ Ha a regisztrációra kattint, vagy alaphelyzetbe állítja a diagramokat, a ren
 
 A részletek visszaállítása jelentés az elmúlt 30 nap regisztrációs és alaphelyzetbe állítási eseményeit jeleníti meg, beleértve a következőket:
 
-- Name (Név)
+- Name
 - Felhasználónév
 - Szolgáltatás (összes, regisztráció, alaphelyzetbe állítás)
 - Hitelesítési módszer (alkalmazás-értesítés, alkalmazás kódja, telefonhívás, Office-hívás, SMS, E-mail, biztonsági kérdések)

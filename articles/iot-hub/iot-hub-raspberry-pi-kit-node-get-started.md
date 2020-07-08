@@ -1,5 +1,5 @@
 ---
-title: A málna PI összekötése az Azure IoT Hub a felhőben (node. js)
+title: A málna PI és az Azure IoT Hub összekötése a felhőben (Node.js)
 description: Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be és kapcsolja össze a málna PI-t az Azure IoT Hub for málna PI használatával az Azure Cloud platformba való adatküldéshez.
 author: wesmc7777
 manager: eliotgra
@@ -11,13 +11,12 @@ ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: wesmc
 ms.openlocfilehash: 3175956e35603cc4ad3a938f3d316c0af8f2d227
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81640534"
 ---
-# <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>Málna PI összekötése az Azure IoT Hub (node. js)
+# <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>Málna PI összekötése az Azure IoT Hub (Node.js)
 
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
@@ -51,7 +50,7 @@ Még nem rendelkezik csomaggal? Próbálja ki a [málna PI online szimulátort](
 
 * Egy málna pi 2 vagy málna PI 3 tábla.
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+* Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 * A PI-hoz csatlakozó figyelő, USB-billentyűzet és-egér.
 
@@ -118,7 +117,7 @@ Készítse elő a microSD-kártyát a Raspbian-rendszerkép telepítéséhez.
 
 2. Indítsa el a PI-t, majd jelentkezzen be a Raspbian `pi` felhasználónévvel és `raspberry` jelszóként.
 
-3. Kattintson a málna ikonra > **Beállítások** > **málna PI konfiguráció**.
+3. Kattintson a málna ikonra > **Beállítások**  >  **málna PI konfiguráció**.
 
    ![A Raspbian beállítások menü](./media/iot-hub-raspberry-pi-kit-node-get-started/1-raspbian-preferences-menu.png)
 
@@ -179,20 +178,20 @@ Kapcsolja be a PI-t a Micro USB-kábel és a tápegység használatával. Az Eth
 
    **Mac-és Ubuntu-felhasználók**
 
-   Használja a beépített SSH-ügyfelet Ubuntu vagy macOS rendszeren. Előfordulhat, hogy a PI `ssh pi@<ip address of pi>` SSH-n keresztüli összekapcsolásához futtatnia kell a parancsot.
+   Használja a beépített SSH-ügyfelet Ubuntu vagy macOS rendszeren. Előfordulhat, hogy a `ssh pi@<ip address of pi>` PI SSH-n keresztüli összekapcsolásához futtatnia kell a parancsot.
 
    > [!NOTE]
-   > Az alapértelmezett Felhasználónév a `pi` és a jelszó `raspberry`.
+   > Az alapértelmezett Felhasználónév a `pi` és a jelszó `raspberry` .
 
-2. Telepítse a Node. js-t és a NPM a PI-re.
+2. Telepítse a Node.js és a NPM a PI-re.
 
-   Először vizsgálja meg a Node. js-verziót.
+   Először vizsgálja meg a Node.js verzióját.
 
    ```bash
    node -v
    ```
 
-   Ha a verzió alacsonyabb, mint 10. x, vagy ha nincs Node. js a PI-ben, telepítse a legújabb verziót.
+   Ha a verzió alacsonyabb, mint 10. x, vagy ha nincs Node.js a PI-ben, telepítse a legújabb verziót.
 
    ```bash
    curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash
@@ -225,11 +224,11 @@ Kapcsolja be a PI-t a Micro USB-kábel és a tápegység használatával. Az Eth
 
    ![Konfigurációs fájl](./media/iot-hub-raspberry-pi-kit-node-get-started/6-config-file.png)
 
-   A fájlban két elem is konfigurálható. Az első a `interval`, amely meghatározza a felhőbe küldött üzenetek közötti időtartamot (ezredmásodpercben). A második a `simulatedData`, amely egy logikai érték, amely azt jelzi, hogy szimulált érzékelőt használ-e, vagy sem.
+   A fájlban két elem is konfigurálható. Az első a `interval` , amely meghatározza a felhőbe küldött üzenetek közötti időtartamot (ezredmásodpercben). A második a `simulatedData` , amely egy logikai érték, amely azt jelzi, hogy szimulált érzékelőt használ-e, vagy sem.
 
-   Ha **nem rendelkezik az érzékelővel**, állítsa be `simulatedData` úgy `true` az értéket, hogy a minta alkalmazás szimulált szenzor-adattípust hozzon létre és használjon.
+   Ha **nem rendelkezik az érzékelővel**, állítsa be `simulatedData` úgy az értéket, `true` hogy a minta alkalmazás szimulált szenzor-adattípust hozzon létre és használjon.
 
-   *Megjegyzés: az oktatóanyagban használt I2C-címnek alapértelmezés szerint 0x77 kell lennie. A konfigurációtól függően előfordulhat, hogy 0x76: Ha I2C hibába ütközik, próbálja meg módosítani az értéket 118-re, és ellenőrizze, hogy az jobban működik-e. Ha szeretné megtekinteni, hogy az érzékelő milyen címeket `sudo i2cdetect -y 1` használ, futtassa a t a málna PI-ben lévő rendszerhéjban.*
+   *Megjegyzés: az oktatóanyagban használt I2C-címnek alapértelmezés szerint 0x77 kell lennie. A konfigurációtól függően előfordulhat, hogy 0x76: Ha I2C hibába ütközik, próbálja meg módosítani az értéket 118-re, és ellenőrizze, hogy az jobban működik-e. Ha szeretné megtekinteni, hogy az érzékelő milyen címeket használ, futtassa a t a `sudo i2cdetect -y 1` málna PI-ben lévő rendszerhéjban.*
 
 2. Mentse és zárja be a Control-O > írja be a > Control-X szöveget.
 

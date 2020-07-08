@@ -15,10 +15,9 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: borisb
 ms.openlocfilehash: aa65b789d02c60ef6042aa62e1c138c0e1bd7224
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81676903"
 ---
 # <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>Az Oracle ASM beállítása Azure Linux rendszerű virtuális gépen  
@@ -60,7 +59,7 @@ Az alábbi példa egy myVM nevű virtuális gépet hoz létre, amely egy Standar
     --data-disk-sizes-gb 50 50 50 50
    ```
 
-A virtuális gép létrehozása után az Azure CLI az alábbi példához hasonló információkat jelenít meg. Jegyezze fel `publicIpAddress`a értékét. Ennek a címnek a használatával férhet hozzá a virtuális géphez.
+A virtuális gép létrehozása után az Azure CLI az alábbi példához hasonló információkat jelenít meg. Jegyezze fel a értékét `publicIpAddress` . Ennek a címnek a használatával férhet hozzá a virtuális géphez.
 
    ```output
    {
@@ -77,7 +76,7 @@ A virtuális gép létrehozása után az Azure CLI az alábbi példához hasonl�
 
 ### <a name="connect-to-the-vm"></a>Kapcsolódás a virtuális géphez
 
-Ha SSH-munkamenetet szeretne létrehozni a virtuális géppel, és további beállításokat konfigurál, használja a következő parancsot. Cserélje le az IP-címet `publicIpAddress` a virtuális gép értékére.
+Ha SSH-munkamenetet szeretne létrehozni a virtuális géppel, és további beállításokat konfigurál, használja a következő parancsot. Cserélje le az IP-címet a `publicIpAddress` virtuális gép értékére.
 
 ```bash
 ssh <publicIpAddress>
@@ -202,15 +201,15 @@ Ebben az oktatóanyagban az alapértelmezett felhasználó a *Grid* , és az ala
    - *n* új partícióhoz
    - *p* az elsődleges partícióhoz
    - *1* az első partíció kiválasztásához
-   - az `enter` alapértelmezett első henger megnyomása
-   - az `enter` alapértelmezett utolsó henger megnyomása
+   - `enter`az alapértelmezett első henger megnyomása
+   - `enter`az alapértelmezett utolsó henger megnyomása
    - nyomja meg a *w* billentyűt a partíciós tábla módosításainak írásához  
 
    ```bash
    fdisk /dev/sdc
    ```
    
-   A fent megadott válaszok használatával a `fdisk` parancs kimenetének a következőhöz hasonlóan kell kinéznie:
+   A fent megadott válaszok használatával a parancs kimenetének a `fdisk` következőhöz hasonlóan kell kinéznie:
 
    ```output
    Device contains not a valid DOS partition table, or Sun, SGI or OSF disklabel
@@ -246,7 +245,7 @@ Ebben az oktatóanyagban az alapértelmezett felhasználó a *Grid* , és az ala
    Syncing disks.
    ```
 
-4. Ismételje meg `fdisk` az előző `/dev/sdd`parancsot `/dev/sde`, és `/dev/sdf`.
+4. Ismételje meg az előző `fdisk` parancsot `/dev/sdd` , `/dev/sde` és `/dev/sdf` .
 
 5. A lemez konfigurációjának ellenõrzése:
 
@@ -385,31 +384,31 @@ Az Oracle Grid Infrastructure szoftver letöltéséhez és előkészítéséhez 
    sudo chown -R grid:oinstall /opt/grid
    ```
 
-6. A beállított swap-terület frissítése. Az Oracle Grid-összetevőkön legalább 6,8 GB-nyi lapozófájl szükséges a rács telepítéséhez. Az Azure-ban Oracle Linux rendszerképeknél az alapértelmezett lapozófájl-méret csak 2048 MB. A frissített beállítások érvénybe léptetéséhez növelje `ResourceDisk.SwapSizeMB` a `/etc/waagent.conf` fájlt, majd indítsa újra a WALinuxAgent szolgáltatást. Mivel ez egy írásvédett fájl, meg kell változtatnia a fájl engedélyeit az írási hozzáférés engedélyezéséhez.
+6. A beállított swap-terület frissítése. Az Oracle Grid-összetevőkön legalább 6,8 GB-nyi lapozófájl szükséges a rács telepítéséhez. Az Azure-ban Oracle Linux rendszerképeknél az alapértelmezett lapozófájl-méret csak 2048 MB. A `ResourceDisk.SwapSizeMB` `/etc/waagent.conf` frissített beállítások érvénybe léptetéséhez növelje a fájlt, majd indítsa újra a WALinuxAgent szolgáltatást. Mivel ez egy írásvédett fájl, meg kell változtatnia a fájl engedélyeit az írási hozzáférés engedélyezéséhez.
 
    ```bash
    sudo chmod 777 /etc/waagent.conf  
    vi /etc/waagent.conf
    ```
 
-   Keresse meg `ResourceDisk.SwapSizeMB` és módosítsa az értéket a **8192**értékre. A beszúrási mód megadásához meg `insert` kell adnia a értéket, írja be a következőt: `esc` **8192** , majd nyomja meg a gombot a parancs módba való visszatéréshez. A módosítások írásához és a fájl bezárásához írja be `:wq` a következőt: és nyomja meg a gombot `enter`.
+   Keresse meg `ResourceDisk.SwapSizeMB` és módosítsa az értéket a **8192**értékre. A `insert` beszúrási mód megadásához meg kell adnia a értéket, írja be a következőt: **8192** , majd nyomja meg a gombot a `esc` parancs módba való visszatéréshez. A módosítások írásához és a fájl bezárásához írja be a következőt: `:wq` és nyomja meg a gombot `enter` .
    
    > [!NOTE]
-   > Azt javasoljuk, hogy mindig használja `WALinuxAgent` a swap-terület konfigurálását úgy, hogy az mindig a helyi ideiglenes lemezen (ideiglenes lemez) legyen létrehozva a legjobb teljesítmény érdekében. További információ: [swap-fájl hozzáadása a Linux Azure Virtual Machines](https://support.microsoft.com/en-us/help/4010058/how-to-add-a-swap-file-in-linux-azure-virtual-machines)szolgáltatásban.
+   > Azt javasoljuk, hogy mindig használja a `WALinuxAgent` swap-terület konfigurálását úgy, hogy az mindig a helyi ideiglenes lemezen (ideiglenes lemez) legyen létrehozva a legjobb teljesítmény érdekében. További információ: [swap-fájl hozzáadása a Linux Azure Virtual Machines](https://support.microsoft.com/en-us/help/4010058/how-to-add-a-swap-file-in-linux-azure-virtual-machines)szolgáltatásban.
 
 ## <a name="prepare-your-local-client-and-vm-to-run-x11"></a>Készítse elő a helyi ügyfelet és a virtuális gépet az X11 futtatásához
 Az Oracle ASM konfigurálásához grafikus felület szükséges a telepítés és a konfiguráció végrehajtásához. Az X11 protokollt használjuk a telepítés megkönnyítésére. Ha olyan (Mac vagy Linux rendszerű) ügyfélszoftvert használ, amelyen már engedélyezve van és konfigurálva van az X11 funkció, akkor kihagyhatja ezt a konfigurációt és a telepítőt kizárólag a Windows rendszerű gépekre. 
 
 1. [Töltse le a PuTTY](https://www.putty.org/) -t, és [töltse le a Xming](https://xming.en.softonic.com/) a Windows rendszerű számítógépére. A folytatás előtt el kell végeznie mindkét alkalmazás telepítésének befejezését az alapértelmezett értékekkel.
 
-2. A PuTTY telepítése után nyisson meg egy parancssort, váltson a PuTTY mappára (például C:\Program Files\PuTTY), és futtassa `puttygen.exe` a parancsot a kulcs létrehozásához.
+2. A PuTTY telepítése után nyisson meg egy parancssort, váltson a PuTTY mappára (például C:\Program Files\PuTTY), és futtassa a parancsot a `puttygen.exe` kulcs létrehozásához.
 
 3. A PuTTY Key Generatorban:
    
    1. Egy kulcs létrehozásához kattintson a `Generate` gombra.
    2. Másolja a kulcs tartalmát (CTRL + C).
    3. Kattintson a(z) `Save private key` gombra.
-   4. Hagyja figyelmen kívül a kulcs jelszavas védelmével kapcsolatos figyelmeztetést, majd válassza `OK`a lehetőséget.
+   4. Hagyja figyelmen kívül a kulcs jelszavas védelmével kapcsolatos figyelmeztetést, majd válassza a lehetőséget `OK` .
 
    ![A PuTTY Key Generator képernyőképe](./media/oracle-asm/puttykeygen.png)
 
@@ -424,18 +423,18 @@ Az Oracle ASM konfigurálásához grafikus felület szükséges a telepítés é
 5. Hozzon létre egy `authorized_keys` nevű fájlt. Illessze be a kulcs tartalmát a fájlban, majd mentse a fájlt.
 
    > [!NOTE]
-   > A kulcsnak tartalmaznia kell a `ssh-rsa`karakterláncot. Emellett a kulcs tartalmának egysoros szövegnek kell lennie.
+   > A kulcsnak tartalmaznia kell a karakterláncot `ssh-rsa` . Emellett a kulcs tartalmának egysoros szövegnek kell lennie.
    >  
 
-6. Az ügyfél rendszeren indítsa el a PuTTY-t. A **Kategória** ablaktáblán válassza a **Kapcsolódás** > **SSH** > -**hitelesítés**lehetőséget. A **hitelesítő fájl titkos kulcsa** mezőben keresse meg a korábban létrehozott kulcsot.
+6. Az ügyfél rendszeren indítsa el a PuTTY-t. A **Kategória** ablaktáblán válassza a **Kapcsolódás**  >  **SSH**-  >  **hitelesítés**lehetőséget. A **hitelesítő fájl titkos kulcsa** mezőben keresse meg a korábban létrehozott kulcsot.
 
    ![Az SSH-hitelesítési lehetőségek képernyőképe](./media/oracle-asm/setprivatekey.png)
 
-7. A **Kategória** ablaktáblán lépjen a **Kapcsolódás** > **SSH** > **X11-hez**. Jelölje be az **X11 továbbításának engedélyezése** jelölőnégyzetet.
+7. A **Kategória** ablaktáblán lépjen a **Kapcsolódás**  >  **SSH**  >  **X11-hez**. Jelölje be az **X11 továbbításának engedélyezése** jelölőnégyzetet.
 
    ![Képernyőkép az SSH X11 továbbítási lehetőségeiről](./media/oracle-asm/enablex11.png)
 
-8. A **Kategória** ablaktáblán lépjen a **munkamenet**elemre. Adja meg az Oracle ASM `<publicIPaddress>` virtuális gép nevét az állomásnév párbeszédpanelen, majd adja meg az `Saved Session` új nevet, majd kattintson `Save`a be gombra.  A mentés után kattintson a `open` be gombra az Oracle ASM-beli virtuális géphez való kapcsolódáshoz.  Amikor először kapcsolódik, a rendszer figyelmezteti, hogy a távoli rendszer nem gyorsítótárazza a beállításjegyzékben. A hozzáadásához és a folytatáshoz kattintson a `yes` tovább gombra.
+8. A **Kategória** ablaktáblán lépjen a **munkamenet**elemre. Adja meg az Oracle ASM virtuális gép `<publicIPaddress>` nevét az állomásnév párbeszédpanelen, majd adja meg az új `Saved Session` nevet, majd kattintson a be gombra `Save` .  A mentés után kattintson a be gombra az `open` Oracle ASM-beli virtuális géphez való kapcsolódáshoz.  Amikor először kapcsolódik, a rendszer figyelmezteti, hogy a távoli rendszer nem gyorsítótárazza a beállításjegyzékben. A `yes` hozzáadásához és a folytatáshoz kattintson a Tovább gombra.
 
    ![Képernyőfelvétel a PuTTY munkamenet lehetőségeiről](./media/oracle-asm/puttysession.png)
 
@@ -478,7 +477,7 @@ Az Oracle Grid-infrastruktúra telepítéséhez hajtsa végre a következő lép
 
 8. A **telepítési hely megadása** lapon használja az alapértelmezett beállításokat. Kattintson `next` a folytatáshoz.
 
-9. A **Leltár létrehozása** lapon módosítsa a leltári könyvtárat a következőre: `/u01/app/grid/oraInventory`. Kattintson `next` a folytatáshoz.
+9. A **Leltár létrehozása** lapon módosítsa a leltári könyvtárat a következőre: `/u01/app/grid/oraInventory` . Kattintson `next` a folytatáshoz.
 
    ![Képernyőkép a telepítő leltár létrehozása oldaláról](./media/oracle-asm/install08.png)
 
@@ -488,21 +487,21 @@ Az Oracle Grid-infrastruktúra telepítéséhez hajtsa végre a következő lép
 
 11. Az **Előfeltételek ellenőrzésének végrehajtása** lapon a jelenlegi telepítés hibákkal meghiúsul. Ez egy várt viselkedés. Válassza a(z) `Fix & Check Again` lehetőséget.
 
-12. A **parancsfájl kijavítása** párbeszédpanelen kattintson a `OK`elemre.
+12. A **parancsfájl kijavítása** párbeszédpanelen kattintson a elemre `OK` .
 
-13. Az **Összefoglalás** lapon tekintse át a kiválasztott beállításokat, majd kattintson a `Install`elemre.
+13. Az **Összefoglalás** lapon tekintse át a kiválasztott beállításokat, majd kattintson a elemre `Install` .
 
     ![A telepítő összegző oldalának képernyőképe](./media/oracle-asm/install12.png)
 
 14. Megjelenik egy figyelmeztető párbeszédpanel, amely tájékoztatja, hogy a konfigurációs parancsfájlokat Kiemelt felhasználóként kell futtatni. Kattintson `Yes` a folytatáshoz.
 
-15. A **Befejezés** lapon kattintson `Close` a gombra a telepítés befejezéséhez.
+15. A **Befejezés** lapon kattintson a gombra `Close` a telepítés befejezéséhez.
 
 ## <a name="set-up-your-oracle-asm-installation"></a>Az Oracle ASM telepítésének beállítása
 
 Az Oracle ASM telepítésének beállításához hajtsa végre a következő lépéseket:
 
-1. Győződjön meg arról, hogy továbbra is be van jelentkezve **rácsként**az X11-munkamenetből. Előfordulhat, hogy el kell `enter` érnie a terminál újrakezdését. Ezután indítsa el az Oracle automatizált tároló-felügyeleti konfigurációs segédjét:
+1. Győződjön meg arról, hogy továbbra is be van jelentkezve **rácsként**az X11-munkamenetből. Előfordulhat, hogy el kell érnie a terminál újrakezdését `enter` . Ezután indítsa el az Oracle automatizált tároló-felügyeleti konfigurációs segédjét:
 
    ```bash
    cd /u01/app/grid/product/12.1.0/grid/bin
@@ -511,19 +510,19 @@ Az Oracle ASM telepítésének beállításához hajtsa végre a következő lé
 
    Megnyílik az Oracle ASM konfigurációs segéd.
 
-2. Az **ASM: lemez csoportok konfigurálása** párbeszédpanelen kattintson a gombra, majd `Create` kattintson a elemre `Show Advanced Options`.
+2. Az **ASM: lemez csoportok konfigurálása** párbeszédpanelen kattintson a `Create` gombra, majd kattintson a elemre `Show Advanced Options` .
 
 3. A **lemezcsoport létrehozása** párbeszédpanelen:
 
    - Adja meg a lemez csoportjának **nevét.**
    - A **tag lemezek kiválasztása**területen válassza a **ORCL_DATA** és **ORCL_DATA1**lehetőséget.
    - A **foglalási egység mérete**területen válassza a **4**lehetőséget.
-   - Kattintson `ok` ide a lemez csoport létrehozásához.
-   - Kattintson `ok` ide a megerősítő ablak bezárásához.
+   - Kattintson ide `ok` a lemez csoport létrehozásához.
+   - Kattintson ide `ok` a megerősítő ablak bezárásához.
 
    ![A lemezcsoport létrehozása párbeszédpanel képernyőképe](./media/oracle-asm/asm02.png)
 
-4. Az **ASM: lemez csoportok konfigurálása** párbeszédpanelen kattintson a gombra, majd `Create` kattintson a elemre `Show Advanced Options`.
+4. Az **ASM: lemez csoportok konfigurálása** párbeszédpanelen kattintson a `Create` gombra, majd kattintson a elemre `Show Advanced Options` .
 
 5. A **lemezcsoport létrehozása** párbeszédpanelen:
 
@@ -531,8 +530,8 @@ Az Oracle ASM telepítésének beállításához hajtsa végre a következő lé
    - A **redundancia**területen válassza a **külső (nincs)** lehetőséget.
    - A **tag lemezek kiválasztása**területen válassza a **ORCL_FRA**lehetőséget.
    - A **foglalási egység mérete**területen válassza a **4**lehetőséget.
-   - Kattintson `ok` ide a lemez csoport létrehozásához.
-   - Kattintson `ok` ide a megerősítő ablak bezárásához.
+   - Kattintson ide `ok` a lemez csoport létrehozásához.
+   - Kattintson ide `ok` a megerősítő ablak bezárásához.
 
    ![A lemezcsoport létrehozása párbeszédpanel képernyőképe](./media/oracle-asm/asm04.png)
 
@@ -554,7 +553,7 @@ Az Oracle Database szoftver már telepítve van az Azure Marketplace-rendszerké
 
    Megnyílik az adatbázis-konfigurációs segéd.
 
-2. Az **adatbázis-művelet** lapon kattintson a `Create Database`elemre.
+2. Az **adatbázis-művelet** lapon kattintson a elemre `Create Database` .
 
 3. A **létrehozási mód** lapon:
 
@@ -563,14 +562,14 @@ Az Oracle Database szoftver már telepítve van az Azure Marketplace-rendszerké
    - Az **adatbázisfájlok helyéhez**használja az alapértelmezett ASM javasolt helyet.
    - A **gyors helyreállítási területen**használja az alapértelmezett ASM javasolt helyet.
    - írja be a **rendszergazdai jelszót** , és **erősítse meg a jelszót**.
-   - Győződjön `create as container database` meg róla, hogy be van jelölve.
+   - Győződjön meg róla `create as container database` , hogy be van jelölve.
    - írjon be egy `pluggable database name` értéket.
 
-4. Az **Összefoglalás** lapon tekintse át a kiválasztott beállításokat, majd kattintson `Finish` az adatbázis létrehozásához.
+4. Az **Összefoglalás** lapon tekintse át a kiválasztott beállításokat, majd kattintson az `Finish` adatbázis létrehozásához.
 
    ![Az Összefoglalás lap képernyőképe](./media/oracle-asm/createdb03.png)
 
-5. Az adatbázis létrejött. A **Befejezés** lapon lehetősége van arra, hogy feloldja a további fiókokat az adatbázis használatához és a jelszavak megváltoztatásához. Ha ezt szeretné tenni, válassza a **jelszó-kezelés** lehetőséget – máskülönben kattintson `close`a gombra.
+5. Az adatbázis létrejött. A **Befejezés** lapon lehetősége van arra, hogy feloldja a további fiókokat az adatbázis használatához és a jelszavak megváltoztatásához. Ha ezt szeretné tenni, válassza a **jelszó-kezelés** lehetőséget – máskülönben kattintson a gombra `close` .
 
 ## <a name="delete-the-vm"></a>A virtuális gép törlése
 

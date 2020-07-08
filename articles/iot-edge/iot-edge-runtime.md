@@ -12,10 +12,9 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: ef31bd74c73aa081c32031b71392f69a1ca14f75
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81730910"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>A Azure IoT Edge futtatókörnyezet és az architektúrájának ismertetése
@@ -73,7 +72,7 @@ Ha üzenetet szeretne kapni, regisztráljon egy olyan visszahívást, amely egy 
    await client.SetInputMessageHandlerAsync("input1", messageProcessor, userContext);
    ```
 
-A ModuleClient osztályról és a hozzá tartozó kommunikációs módszerekről további információt az előnyben részesített SDK-nyelv API-referenciája tartalmaz: [C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet), [C](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h), [Python](https://docs.microsoft.com/python/api/azure-iot-device/azure.iot.device.iothubmoduleclient?view=azure-python), [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.moduleclient?view=azure-java-stable)vagy [Node. js](https://docs.microsoft.com/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest).
+A ModuleClient osztályról és a hozzá tartozó kommunikációs módszerekről további információt az előnyben részesített SDK-nyelv API-referenciája tartalmaz: [C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet), [C](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h), [Python](https://docs.microsoft.com/python/api/azure-iot-device/azure.iot.device.iothubmoduleclient?view=azure-python), [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.moduleclient?view=azure-java-stable)vagy [Node.js](https://docs.microsoft.com/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest).
 
 A megoldás fejlesztői feladata azoknak a szabályoknak a meghatározása, amelyek meghatározzák, hogy IoT Edge hub hogyan továbbít üzeneteket a modulok között. Az útválasztási szabályok a felhőben vannak meghatározva, és leküldve IoT Edge hubhoz a moduljában. A IoT Hub útvonalakhoz tartozó szintaxis a Azure IoT Edge moduljai közötti útvonalak definiálására szolgál. További információkért lásd: [modulok központi telepítése és útvonalak létrehozása IoT Edgeban](module-composition.md).
 
@@ -87,7 +86,7 @@ A [IoT Edge biztonsági démon](iot-edge-security-manager.md) elindítja a IoT E
 
 Az üzembe helyezési jegyzék minden eleme tartalmaz konkrét információkat egy modulról, és a IoT Edge ügynök használja a modul életciklusának szabályozására. A további érdekes tulajdonságok a következők:
 
-* **Settings. rendszerkép** – a IoT Edge ügynök által a modul elindításához használt tároló képe. A IoT Edge-ügynököt a tároló-beállításjegyzék hitelesítő adataival kell konfigurálni, ha a képet jelszó védi. A tároló-beállításjegyzék hitelesítő adatai távolról konfigurálhatók az üzembe helyezési jegyzékben vagy maga a IoT Edge eszközön a IoT Edge program `config.yaml` mappában található fájl frissítésével.
+* **Settings. rendszerkép** – a IoT Edge ügynök által a modul elindításához használt tároló képe. A IoT Edge-ügynököt a tároló-beállításjegyzék hitelesítő adataival kell konfigurálni, ha a képet jelszó védi. A tároló-beállításjegyzék hitelesítő adatai távolról konfigurálhatók az üzembe helyezési jegyzékben vagy maga a IoT Edge eszközön a `config.yaml` IoT Edge program mappában található fájl frissítésével.
 * **Settings. createOptions** – a modul tárolójának indításakor közvetlenül a Moby Container Daemon-hoz átadott karakterlánc. Az ebben a tulajdonságban található beállítások megadása lehetővé teszi olyan speciális konfigurációk használatát, mint a port továbbítása vagy a kötetek csatlakoztatása egy modul tárolójába.  
 * **status (állapot** ) – az a állapot, amelyben a IoT Edge ügynök elhelyezi a modult. Ez az érték általában a *futtatásra* van beállítva, mivel a legtöbb felhasználó szeretné, hogy a IoT Edge ügynök azonnal elindítsa az összes modult az eszközön. Azonban megadhatja a leállítani kívánt modul kezdeti állapotát, és megvárhatja, hogy a jövőbeli idő alapján a IoT Edge ügynök elindítson egy modult.A IoT Edge ügynök az egyes modulok állapotát a felhőbe jelenti a jelentett tulajdonságok között. A kívánt tulajdonság és a jelentett tulajdonság közötti különbség egy helytelenül viselkedő eszköz jelzője. A támogatott állapotok a következők:
 

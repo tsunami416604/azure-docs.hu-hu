@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 05/04/2016
 ms.author: mimckitt
 ms.openlocfilehash: df1f5e1c21c28fa8c1fcdef6b2278fb92014a3b1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81272559"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-web-role-on-azure"></a>Telefonhívás kezdeményezése a Twilio használatával webes szerepkörben az Azure-ban
@@ -28,7 +27,7 @@ Ez az útmutató bemutatja, hogyan használható a Twilio az Azure-ban üzemelte
 ## <a name="prerequisites"></a><a name="twilio-prereqs"></a>Előfeltételek
 A jelen témakörben található kód használatához a következőket kell tennie:
 
-1. Twilio-fiók és hitelesítési jogkivonat beszerzése a [Twilio-konzolról][twilio_console]. A Twilio megkezdéséhez regisztráljon a következő címen [https://www.twilio.com/try-twilio][try_twilio]:. A díjszabást a következő [https://www.twilio.com/pricing][twilio_pricing]címen értékelheti:. További információ a Twilio által biztosított API-ról: [https://www.twilio.com/voice/api][twilio_api].
+1. Twilio-fiók és hitelesítési jogkivonat beszerzése a [Twilio-konzolról][twilio_console]. A Twilio megkezdéséhez regisztráljon a következő címen: [https://www.twilio.com/try-twilio][try_twilio] . A díjszabást a következő címen értékelheti: [https://www.twilio.com/pricing][twilio_pricing] . További információ a Twilio által biztosított API-ról: [https://www.twilio.com/voice/api][twilio_api] .
 2. Adja hozzá a *Twilio .net-függvénytárat* a webes szerepkörhöz. Lásd: **a Twilio-kódtárak hozzáadása a webes szerepkör-projekthez**, a témakör későbbi részében.
 
 Ismernie kell egy alapszintű [webes szerepkör][azure_webroles_get_started]létrehozását az Azure-ban.
@@ -70,7 +69,7 @@ A következő kód bemutatja, hogyan hozhat létre webes űrlapot a felhasznál�
 ```
 
 ## <a name="how-to-create-the-code-to-make-the-call"></a><a id="howtocreatecode"></a>Útmutató: a hívás létrehozásához szükséges kód létrehozása
-A következő kód, amely akkor lesz meghívva, amikor a felhasználó befejezi az űrlapot, létrehozza a hívási üzenetet, és létrehozza a hívást. Ebben a példában a kód az űrlapon lévő gomb OnClick eseménykezelőjában fut. (Használja a Twilio-fiókját és a hitelesítési jogkivonatot az alábbi `accountSID` kódhoz `authToken` megadott helyőrző értékek helyett.)
+A következő kód, amely akkor lesz meghívva, amikor a felhasználó befejezi az űrlapot, létrehozza a hívási üzenetet, és létrehozza a hívást. Ebben a példában a kód az űrlapon lévő gomb OnClick eseménykezelőjában fut. (Használja a Twilio-fiókját és a hitelesítési jogkivonatot az alábbi kódhoz megadott helyőrző értékek helyett `accountSID` `authToken` .)
 
 ```csharp
 using System;
@@ -147,15 +146,15 @@ A rendszer meghívja a hívást, és megjeleníti a Twilio-végpontot, az API-ve
 
 ![Azure-hívási válasz a Twilio és a ASP.NET használatával][twilio_dotnet_basic_form_output]
 
-További információ a TwiML a következő címen érhető [https://www.twilio.com/docs/api/twiml][twiml]el:. A Say &lt;&gt; and other Twilio utasítással kapcsolatos további információk a következő címen [https://www.twilio.com/docs/api/twiml/say][twilio_say]találhatók:.
+További információ a TwiML a következő címen érhető el: [https://www.twilio.com/docs/api/twiml][twiml] . A &lt; Say &gt; and other Twilio utasítással kapcsolatos további információk a következő címen találhatók: [https://www.twilio.com/docs/api/twiml/say][twilio_say] .
 
 ## <a name="next-steps"></a><a id="nextsteps"></a>További lépések
 Ez a kód olyan alapszintű funkciókat mutat be, amelyek az Azure-ban egy ASP.NET webes szerepkör Twilio használatával rendelkeznek. Mielőtt éles környezetben üzembe helyezi az Azure-t, érdemes lehet további hibakezelés vagy más funkciókat hozzáadnia. Például:
 
 * Webes űrlap helyett használhatja az Azure Blob Storage-t vagy egy Azure SQL Database példányt a telefonszámok és a hívás szövegének tárolására. További információ a Blobok Azure-beli használatáról: [Az Azure Blob Storage szolgáltatás használata a .net-ben][howto_blob_storage_dotnet]. További információ a SQL Database használatáról: a [Azure SQL Database használata .NET-alkalmazásokban][howto_sql_azure_dotnet].
 * A paranccsal `RoleEnvironment.getConfigurationSettings` lekérheti a Twilio-fiók azonosítóját és a hitelesítési tokent a központi telepítés konfigurációs beállításaiból, nem pedig az űrlapon lévő értékek rögzített kódolásával. További információ az `RoleEnvironment` osztályról: [Microsoft. WindowsAzure. ServiceRuntime névtér][azure_runtime_ref_dotnet].
-* Olvassa el a Twilio biztonsági irányelveit a következő címen: [https://www.twilio.com/docs/security][twilio_docs_security].
-* További információ a Twilio- [https://www.twilio.com/docs][twilio_docs]ről:.
+* Olvassa el a Twilio biztonsági irányelveit a következő címen: [https://www.twilio.com/docs/security][twilio_docs_security] .
+* További információ a Twilio-ről: [https://www.twilio.com/docs][twilio_docs] .
 
 ## <a name="see-also"></a><a name="seealso"></a>Lásd még
 * [A Twilio használata a hang-és SMS-funkciókhoz az Azure-ban](twilio-dotnet-how-to-use-for-voice-sms.md)

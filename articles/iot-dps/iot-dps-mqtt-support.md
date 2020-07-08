@@ -11,10 +11,9 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 213fc3412a2dfad77946e52a355a30774d6860c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81680679"
 ---
 # <a name="communicate-with-your-dps-using-the-mqtt-protocol"></a>Kommunikáció a DPS használatával a MQTT protokollal
@@ -44,11 +43,11 @@ Ha egy eszköz nem tudja használni az eszköz SDK-kat, akkor továbbra is csatl
 
 * A **ClientId** mezőben használja a **regisztrációban**.
 
-* A **Felhasználónév** mezőben használja `{idScope}/registrations/{registration_id}/api-version=2019-03-31`a nevet, ahol `{idScope}` a a DPS [idScope](https://docs.microsoft.com/azure/iot-dps/concepts-device#id-scope) .
+* A **Felhasználónév** mezőben használja a nevet `{idScope}/registrations/{registration_id}/api-version=2019-03-31` , ahol a a `{idScope}` DPS [idScope](https://docs.microsoft.com/azure/iot-dps/concepts-device#id-scope) .
 
 * A **Password (jelszó** ) mezőben használjon sas-tokent. Az SAS-token formátuma megegyezik a HTTPS és a AMQP protokollok esetében is:
 
-  `SharedAccessSignature sr={URL-encoded-resourceURI}&sig={signature-string}&se={expiry}&skn=registration`A resourceURI formátumúnak `{idScope}/registrations/{registration_id}`kell lennie. A szabályzat nevének a ( `registration`z) értéknek kell lennie.
+  `SharedAccessSignature sr={URL-encoded-resourceURI}&sig={signature-string}&se={expiry}&skn=registration`A resourceURI formátumúnak kell lennie `{idScope}/registrations/{registration_id}` . A szabályzat nevének a (z) értéknek kell lennie `registration` .
 
   > [!NOTE]
   > Ha X. 509 tanúsítványalapú hitelesítést használ, az SAS-jogkivonat jelszavai nem szükségesek.
@@ -68,17 +67,17 @@ Ahhoz, hogy az ügyfél közvetlenül használhassa a MQTT protokollt, a TLS 1,2
 
 ## <a name="registering-a-device"></a>Eszköz regisztrálása
 
-Ha a DPS-n keresztül szeretne regisztrálni egy eszközt, az `$dps/registrations/res/#` eszköznek **témakör-szűrőként**kell előfizetnie. A témakör szűrője többszintű helyettesítő karaktert `#` használ, amely lehetővé teszi, hogy az eszköz további tulajdonságokat kapjon a témakör nevében. A `#` DPS nem engedélyezi a vagy `?` helyettesítő karakterek használatát az altémakörök szűréséhez. Mivel a DPS nem általános célú pub-sub üzenetküldési közvetítő, csak a dokumentált témakörök nevét és a témakör szűrőit támogatja.
+Ha a DPS-n keresztül szeretne regisztrálni egy eszközt, az eszköznek `$dps/registrations/res/#` **témakör-szűrőként**kell előfizetnie. A témakör szűrője többszintű helyettesítő karaktert használ, amely `#` lehetővé teszi, hogy az eszköz további tulajdonságokat kapjon a témakör nevében. A DPS nem engedélyezi a `#` vagy `?` helyettesítő karakterek használatát az altémakörök szűréséhez. Mivel a DPS nem általános célú pub-sub üzenetküldési közvetítő, csak a dokumentált témakörök nevét és a témakör szűrőit támogatja.
 
-Az eszköznek közzé kell tennie egy regisztrációs üzenetet a `$dps/registrations/PUT/iotdps-register/?$rid={request_id}` DPS-ben a **témakör neveként**. A hasznos adatoknak JSON formátumban kell tartalmazniuk az [eszköz regisztrációs](https://docs.microsoft.com/rest/api/iot-dps/runtimeregistration/registerdevice#deviceregistration) objektumát.
+Az eszköznek közzé kell tennie egy regisztrációs üzenetet a DPS-ben a `$dps/registrations/PUT/iotdps-register/?$rid={request_id}` **témakör neveként**. A hasznos adatoknak JSON formátumban kell tartalmazniuk az [eszköz regisztrációs](https://docs.microsoft.com/rest/api/iot-dps/runtimeregistration/registerdevice#deviceregistration) objektumát.
 Sikeres forgatókönyv esetén az eszköz választ kap a `$dps/registrations/res/202/?$rid={request_id}&retry-after=x` témakör nevére, ahol az x az újrapróbálkozási érték másodpercben. A válasz hasznos tartalma JSON formátumban fogja tartalmazni a [RegistrationOperationStatus](https://docs.microsoft.com/rest/api/iot-dps/runtimeregistration/registerdevice#registrationoperationstatus) objektumot.
 
 ## <a name="polling-for-registration-operation-status"></a>A regisztrációs művelet állapotának lekérdezése
 
-Az eszköznek rendszeresen le kell kérdezni a szolgáltatást, hogy megkapja az eszköz regisztrációs műveletének eredményét. Feltételezve, hogy az eszköz már előfizetett a `$dps/registrations/res/#` témakörre a fentiekben leírtak szerint, közzétehet egy Get operationstatus `$dps/registrations/GET/iotdps-get-operationstatus/?$rid={request_id}&operationId={operationId}` -üzenetet a témakör nevében. Az üzenetben szereplő műveleti AZONOSÍTÓnak az előző lépésben RegistrationOperationStatus válaszüzenetben kapott értéknek kell lennie. A sikeres esetben a szolgáltatás válaszolni fog a `$dps/registrations/res/200/?$rid={request_id}` témakörre. A válasz hasznos tartalma a RegistrationOperationStatus objektumot fogja tartalmazni. Az eszköznek továbbra is le kell kérdezni a szolgáltatást, ha a válasz kódja 202 az újrapróbálkozási időszakot megegyező késés után. Az eszköz regisztrációs művelete sikeres, ha a szolgáltatás 200 állapotkódot ad vissza.
+Az eszköznek rendszeresen le kell kérdezni a szolgáltatást, hogy megkapja az eszköz regisztrációs műveletének eredményét. Feltételezve, hogy az eszköz már előfizetett a `$dps/registrations/res/#` témakörre a fentiekben leírtak szerint, közzétehet egy Get operationstatus-üzenetet a `$dps/registrations/GET/iotdps-get-operationstatus/?$rid={request_id}&operationId={operationId}` témakör nevében. Az üzenetben szereplő műveleti AZONOSÍTÓnak az előző lépésben RegistrationOperationStatus válaszüzenetben kapott értéknek kell lennie. A sikeres esetben a szolgáltatás válaszolni fog a `$dps/registrations/res/200/?$rid={request_id}` témakörre. A válasz hasznos tartalma a RegistrationOperationStatus objektumot fogja tartalmazni. Az eszköznek továbbra is le kell kérdezni a szolgáltatást, ha a válasz kódja 202 az újrapróbálkozási időszakot megegyező késés után. Az eszköz regisztrációs művelete sikeres, ha a szolgáltatás 200 állapotkódot ad vissza.
 
 ## <a name="connecting-over-websocket"></a>Csatlakozás WebSocket-kapcsolaton keresztül
-WebSocket-kapcsolaton keresztüli kapcsolódáskor adja meg `mqtt`az alprotokollot. Kövesse az [RFC 6455](https://tools.ietf.org/html/rfc6455)-et.
+WebSocket-kapcsolaton keresztüli kapcsolódáskor adja meg az alprotokollot `mqtt` . Kövesse az [RFC 6455](https://tools.ietf.org/html/rfc6455)-et.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: c804cc8942a40e2f30c980636194daa82e0fb0e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81687325"
 ---
 # <a name="workbook-text-parameters"></a>Munkafüzet szövegének paraméterei
@@ -40,7 +39,7 @@ A munkafüzet a következőképpen fog kinézni, mint az olvasási módban.
 ![Egy szöveges paramétert olvasási módban ábrázoló kép](./media/workbooks-text/text-readmode.png)
 
 ## <a name="referencing-a-text-parameter"></a>Egy szöveges paraméterre hivatkozik
-1. Vegyen fel egy lekérdezés vezérlőelemet a munkafüzetbe úgy `Add query` , hogy kiválasztja a kék hivatkozást, és kiválaszt egy Application Insights erőforrást.
+1. Vegyen fel egy lekérdezés vezérlőelemet a munkafüzetbe úgy, hogy kiválasztja a kék `Add query` hivatkozást, és kiválaszt egy Application Insights erőforrást.
 2. A KQL mezőben adja meg a következő kódrészletet:
     ```kusto
     requests
@@ -60,7 +59,7 @@ A munkafüzet a következőképpen fog kinézni, mint az olvasási módban.
     ![A KQL-ben hivatkozott szöveges paramétert ábrázoló kép](./media/workbooks-text/text-reference.png)
 
 > [!NOTE]
-> A fenti példában az egész `{SlowRequestThreshold}` értéket jelöli. Ha olyan karakterláncot kérdez le, mint például `{ComputerName}` , módosítania kell a Kusto-lekérdezést úgy, hogy `"{ComputerName}"` idézőjeleket adjon hozzá, hogy a paraméter mezőben idézőjelek nélkül fogadja el a bemenetet.
+> A fenti példában az `{SlowRequestThreshold}` egész értéket jelöli. Ha olyan karakterláncot kérdez le, mint például `{ComputerName}` , módosítania kell a Kusto-lekérdezést úgy, hogy idézőjeleket adjon hozzá `"{ComputerName}"` , hogy a paraméter mezőben idézőjelek nélkül fogadja el a bemenetet.
 
 ## <a name="setting-default-values"></a>Alapértelmezett értékek beállítása
 1. Kezdés egy üres munkafüzettel szerkesztési módban.

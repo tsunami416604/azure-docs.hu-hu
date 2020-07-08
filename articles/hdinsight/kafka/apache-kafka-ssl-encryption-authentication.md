@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 05/01/2019
 ms.openlocfilehash: 02b64d77a4fb1af25e1022de3ac8e4775f916d9e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81261771"
 ---
 # <a name="set-up-tls-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>TLS-titkosítás és-hitelesítés beállítása Apache Kafkahoz az Azure HDInsight
@@ -20,7 +19,7 @@ ms.locfileid: "81261771"
 Ez a cikk bemutatja, hogyan állíthat be Transport Layer Security (TLS) titkosítást, korábbi nevén SSL (SSL) titkosítást Apache Kafka ügyfelek és Apache Kafka-ügynökök között. Azt is bemutatja, hogyan állíthatja be az ügyfelek hitelesítését (más néven kétirányú TLS-ként).
 
 > [!Important]
-> Két ügyfél használhatja a Kafka-alkalmazásokhoz: egy Java-ügyfelet és egy konzol-ügyfelet. Csak a Java- `ProducerConsumer.java` ügyfél használhatja a TLS-t mind a gyártó, mind a fogyasztó számára. A konzol termelői ügyfele `console-producer.sh` nem működik a TLS-vel.
+> Két ügyfél használhatja a Kafka-alkalmazásokhoz: egy Java-ügyfelet és egy konzol-ügyfelet. Csak a Java `ProducerConsumer.java` -ügyfél használhatja a TLS-t mind a gyártó, mind a fogyasztó számára. A konzol termelői ügyfele `console-producer.sh` nem működik a TLS-vel.
 
 > [!Note]
 > Az 1,1-es verzióval rendelkező HDInsight Kafka-konzol gyártója nem támogatja az SSL használatát.
@@ -52,7 +51,7 @@ A közvetítő telepítési folyamatának összefoglalása a következő:
 A következő részletes utasításokat követve hajthatja végre a Broker telepítését:
 
 > [!Important]
-> A következő kódrészletekben a wnX a három munkavégző csomópont egyikének rövidítése, `wn0` `wn1` és a vagy `wn2` a megfelelő módon kell helyettesíteni. `WorkerNode0_Name`és `HeadNode0_Name` a megfelelő gépek nevével kell helyettesíteni.
+> A következő kódrészletekben a wnX a három munkavégző csomópont egyikének rövidítése, és a vagy a megfelelő módon kell `wn0` helyettesíteni `wn1` `wn2` . `WorkerNode0_Name`és a `HeadNode0_Name` megfelelő gépek nevével kell helyettesíteni.
 
 1. Hajtsa végre a kezdeti beállítást a 0. fő csomóponton, amely a HDInsight kitölti a hitelesítésszolgáltató (CA) szerepkörét.
 
@@ -133,7 +132,7 @@ A konfiguráció módosításának befejezéséhez hajtsa végre a következő l
 
     ![A Kafka SSL konfigurációs tulajdonságainak szerkesztése a Ambari-ben](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari.png)
 
-1. Az **Egyéni Kafka-Broker** területen állítsa be az **SSL. Client. auth** tulajdonságot a `required`következőre:. Ez a lépés csak akkor szükséges, ha a hitelesítést és a titkosítást állítja be.
+1. Az **Egyéni Kafka-Broker** területen állítsa be az **SSL. Client. auth** tulajdonságot a következőre: `required` . Ez a lépés csak akkor szükséges, ha a hitelesítést és a titkosítást állítja be.
 
     ![A Kafka SSL konfigurációs tulajdonságainak szerkesztése a Ambari-ben](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari2.png)
 
@@ -170,7 +169,7 @@ Ha nincs szüksége a hitelesítésre, a csak a TLS-titkosítás beállításáh
 
 1. Jelentkezzen be a HITELESÍTÉSSZOLGÁLTATÓba (aktív fő csomópont).
 1. Másolja a HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt az ügyfélszámítógépre a HITELESÍTÉSSZOLGÁLTATÓI gépről (wn0).
-1. Jelentkezzen be az ügyfélszámítógépre (hn1), és navigáljon `~/ssl` a mappához.
+1. Jelentkezzen be az ügyfélszámítógépre (hn1), és navigáljon a `~/ssl` mappához.
 1. Importálja a HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt a truststore.
 1. Importálja a HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt a rendszertárolóba.
 
@@ -208,7 +207,7 @@ Ezeket a lépéseket a következő kódrészletekben részletezjük.
     keytool -keystore kafka.client.keystore.jks -alias CARoot -import -file ca-cert -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
     ```
 
-1. Hozza létre a `client-ssl-auth.properties` fájlt az ügyfélgépen (hn1). A következő sorokkal kell rendelkeznie:
+1. Hozza létre a fájlt az `client-ssl-auth.properties` ügyfélgépen (hn1). A következő sorokkal kell rendelkeznie:
 
     ```config
     security.protocol=SSL
@@ -228,7 +227,7 @@ A következő négy lépés összefoglalja az ügyfél telepítésének befejez�
 1. Jelentkezzen be az ügyfélszámítógépre (készenléti fej csomópontja).
 1. Hozzon létre egy Java-tárolót, és szerezzen be egy aláírt tanúsítványt a közvetítő számára. Ezután másolja a tanúsítványt arra a virtuális gépre, amelyen a HITELESÍTÉSSZOLGÁLTATÓ fut.
 1. Váltson át a HITELESÍTÉSSZOLGÁLTATÓI gépre (az aktív fő csomópontra) az ügyféltanúsítvány aláírásához.
-1. Nyissa meg az ügyfélszámítógépet (készenléti fej csomópont), és `~/ssl` navigáljon a mappához. Másolja az aláírt tanúsítványt az ügyfélszámítógépre.
+1. Nyissa meg az ügyfélszámítógépet (készenléti fej csomópont), és navigáljon a `~/ssl` mappához. Másolja az aláírt tanúsítványt az ügyfélszámítógépre.
 
 Az egyes lépések részleteit alább találja.
 
@@ -297,7 +296,7 @@ Az egyes lépések részleteit alább találja.
     keytool -keystore kafka.client.keystore.jks -import -file client-cert-signed -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
     ```
 
-1. Hozzon létre `client-ssl-auth.properties` egy fájlt az ügyfélgépen (hn1). A következő sorokkal kell rendelkeznie:
+1. Hozzon létre egy fájlt `client-ssl-auth.properties` az ügyfélgépen (hn1). A következő sorokkal kell rendelkeznie:
 
     ```bash
     security.protocol=SSL
@@ -323,13 +322,13 @@ Futtassa ezeket a lépéseket az ügyfélszámítógépen.
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --zookeeper <ZOOKEEPER_NODE>:2181 --create --topic topic1 --partitions 2 --replication-factor 2
     ```
 
-1. Indítsa el a konzol gyártóját, és `client-ssl-auth.properties` adja meg az elérési utat a gyártó konfigurációs fájljához.
+1. Indítsa el a konzol gyártóját, és adja meg az elérési utat a `client-ssl-auth.properties` gyártó konfigurációs fájljához.
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --broker-list <FQDN_WORKER_NODE>:9093 --topic topic1 --producer.config ~/ssl/client-ssl-auth.properties
     ```
 
-1. Nyisson meg egy másik SSH-kapcsolódást az ügyfélgépen, és indítsa el a `client-ssl-auth.properties` konzol fogyasztóját, és adja meg az elérési utat a fogyasztó konfigurációs fájljához.
+1. Nyisson meg egy másik SSH-kapcsolódást az ügyfélgépen, és indítsa el a konzol fogyasztóját, és adja meg az elérési utat a `client-ssl-auth.properties` fogyasztó konfigurációs fájljához.
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server <FQDN_WORKER_NODE>:9093 --topic topic1 --consumer.config ~/ssl/client-ssl-auth.properties --from-beginning
@@ -349,7 +348,7 @@ Futtassa ezeket a lépéseket az ügyfélszámítógépen.
     /usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --broker-list <FQDN_WORKER_NODE>:9092 --topic topic1 
     ```
 
-1. Nyisson meg egy másik SSH-kapcsolódást az ügyfélgépen, és indítsa el a `client-ssl-auth.properties` konzol fogyasztóját, és adja meg az elérési utat a fogyasztó konfigurációs fájljához.
+1. Nyisson meg egy másik SSH-kapcsolódást az ügyfélgépen, és indítsa el a konzol fogyasztóját, és adja meg az elérési utat a `client-ssl-auth.properties` fogyasztó konfigurációs fájljához.
 
     ```bash
     $ /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server <FQDN_WORKER_NODE>:9093 --topic topic1 --consumer.config ~/ssl/client-ssl-auth.properties --from-beginning

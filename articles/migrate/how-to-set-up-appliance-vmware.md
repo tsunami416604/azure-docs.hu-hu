@@ -4,10 +4,9 @@ description: Ismerje meg, hogyan állíthat be egy Azure Migrate készüléket a
 ms.topic: article
 ms.date: 04/16/2020
 ms.openlocfilehash: b32c6a9b703e4d341fe353d6b472ea7a18adadf3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81538256"
 ---
 # <a name="set-up-an-appliance-for-vmware-vms"></a>Készülék beállítása VMware virtuális gépekhez
@@ -33,8 +32,8 @@ Ha a készüléket a következő PETESEJT-sablonnal szeretné beállítani:
 
 ## <a name="download-the-ova-template"></a>A petesejtek sablon letöltése
 
-1. Az **áttelepítési célok** > **kiszolgálói** > **Azure Migrate: kiszolgáló értékelése**, kattintson a **felderítés**gombra.
-2. A **felderítési gépeken** > a**gépek virtualizáltak?**, kattintson **az igen, a VMware vSphere hypervisor**lehetőségre.
+1. Az **áttelepítési célok**  >  **kiszolgálói**  >  **Azure Migrate: kiszolgáló értékelése**, kattintson a **felderítés**gombra.
+2. A **felderítési gépeken**a  >  **gépek virtualizáltak?**, kattintson **az igen, a VMware vSphere hypervisor**lehetőségre.
 3. Kattintson a **Letöltés** gombra az .OVA sablonfájl letöltéséhez.
 
   ![A PETESEJT-fájlok letöltésének kiválasztása](./media/tutorial-assess-vmware/download-ova.png)
@@ -55,7 +54,7 @@ A telepítése előtt győződjön meg arról, hogy a petesejtek fájlja biztons
 
 Importálja a letöltött fájlt, és hozzon létre egy virtuális gépet.
 
-1. A vSphere-ügyfél konzolján kattintson a **fájl** > **telepítése OVF sablon**elemre.
+1. A vSphere-ügyfél konzolján kattintson a **fájl**  >  **telepítése OVF sablon**elemre.
 ![OVF-sablon üzembe helyezéséhez használható menüparancsok](./media/tutorial-assess-vmware/deploy-ovf.png)
 
 2. A OVF-sablon központi telepítése varázslóban > **forrás**mezőben határozza meg a petesejt-fájl helyét.
@@ -84,7 +83,7 @@ Győződjön meg arról, hogy a készülék virtuális gépe tud csatlakozni az 
 4. A webalkalmazás-> **Előfeltételek beállítása**lapon tegye a következőket:
     - **Licenc**: fogadja el a licencfeltételeket, és olvassa el a harmadik féltől származó információkat.
     - **Kapcsolat**: az alkalmazás ellenőrzi, hogy a virtuális gép rendelkezik-e internet-hozzáféréssel. Ha a virtuális gép proxyt használ:
-        - Kattintson a proxybeállítások elemre, és írja be a proxy címe és a figyelő portját http://ProxyFQDNaz űrlap http://ProxyIPAddress vagy a **értékre**.
+        - Kattintson a proxybeállítások elemre, és írja be a proxy címe és a figyelő portját az űrlap vagy a **értékre** http://ProxyIPAddress http://ProxyFQDN .
         - Adja meg a hitelesítő adatokat, ha a proxykiszolgáló hitelesítést igényel.
         - Csak a HTTP-proxyk használata támogatott.
     - **Idő szinkronizálása**: az idő ellenőrzése megtörtént. A készüléken az idő, hogy a felderítés megfelelően működjön, szinkronizálva kell lennie az internettel.
@@ -102,7 +101,7 @@ Győződjön meg arról, hogy a készülék virtuális gépe tud csatlakozni az 
 3. A sikeres bejelentkezés után térjen vissza a webalkalmazáshoz.
 2. Válassza ki azt az előfizetést, amelyben a Azure Migrate projektet létrehozták. Ezután válassza ki a projektet.
 3. Adja meg a berendezés nevét. A névnek legalább 14 karakterből kell állnia.
-4. Kattintson a **regisztrálás**gombra.
+4. Kattintson a **Regisztrálás** parancsra.
 
 
 ## <a name="start-continuous-discovery-by-providing-vcenter-server-and-vm-credential"></a>A folyamatos felderítés elindítása a vCenter Server és a virtuális gép hitelesítő adatainak megadásával
@@ -111,7 +110,7 @@ A készüléknek csatlakoznia kell a vCenter Serverhoz a virtuális gépek konfi
 
 ### <a name="specify-vcenter-server-details"></a>A vCenter Server adatainak megadása
 1. A **vCenter Server részletek megadása lapon**adja meg a vCenter Server nevét (FQDN) vagy IP-címét. Meghagyhatja az alapértelmezett portot, vagy megadhat egy egyéni portot, amelyen a vCenter Server figyeli.
-2. A **Felhasználónév** és a **jelszó**mezőben adja meg a írásvédett fiók hitelesítő adatait, amelyet a berendezés a vCenter-kiszolgálón lévő virtuális gépek felderítéséhez használ majd. A felderítést a vCenter-fiókhoz való hozzáférés korlátozásával szűkítheti. [További információ](set-discovery-scope.md).
+2. A **Felhasználónév** és a **jelszó**mezőben adja meg a írásvédett fiók hitelesítő adatait, amelyet a berendezés a vCenter-kiszolgálón lévő virtuális gépek felderítéséhez használ majd. A felderítést a vCenter-fiókhoz való hozzáférés korlátozásával szűkítheti. [További információk](set-discovery-scope.md).
 3. Kattintson a **kapcsolat ellenőrzése** elemre, és győződjön meg arról, hogy a készülék csatlakozhat vCenter Serverhoz.
 
 ### <a name="specify-vm-credentials"></a>Virtuális gép hitelesítő adatainak megadása

@@ -7,10 +7,9 @@ ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
 ms.openlocfilehash: e26215115b4c4484e5e05a2fd94a4d2c6680a4d0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81727163"
 ---
 # <a name="options"></a>Beállítások #
@@ -30,12 +29,12 @@ Végül, ha nem az adattelepítési attribútumot használja a lejátszó beáll
 `amp("vid1", { "controls": true, "autoplay": false });`
 
 > [!NOTE]
-> A konstruktorban lévő beállítások csak az első inicializálásra vannak beállítva a forrás beállítása előtt.  Ha módosítani szeretné a beállításokat ugyanazon a inicializált Azure Media Player elemen, a forrás módosítása előtt frissítenie kell a beállításokat. A JavaScriptben található beállításokat a használatával `myPlayer.options({/*updated options*/});`frissítheti. Vegye figyelembe, hogy a rendszer csak a megváltozott beállításokat érinti, az összes többi korábban beállított beállítás is megmarad.
+> A konstruktorban lévő beállítások csak az első inicializálásra vannak beállítva a forrás beállítása előtt.  Ha módosítani szeretné a beállításokat ugyanazon a inicializált Azure Media Player elemen, a forrás módosítása előtt frissítenie kell a beállításokat. A JavaScriptben található beállításokat a használatával frissítheti `myPlayer.options({/*updated options*/});` . Vegye figyelembe, hogy a rendszer csak a megváltozott beállításokat érinti, az összes többi korábban beállított beállítás is megmarad.
 
 ## <a name="individual-options"></a>Egyéni beállítások ##
 
 > [!NOTE]
->A videó címke attribútumai csak TRUE vagy FALSE (Boolean) lehet, egyszerűen belefoglalhatja az attribútumot (nincs egyenlő előjel) a bekapcsolásához, vagy kizárhatja azt a kikapcsoláshoz. Ha például a vezérlők `<video controls="true" ...>` bekapcsolásához nem megfelelő, `<video controls ...>` akkor a legnagyobb probléma, hogy a rendszer a legtöbbet futtatja, és false értékkel állítja be ezeket az értékeket (pl. Controls = "false"), amely valójában az ellenkezőjét adja meg, és az értéket igaz értékre állítja, mert az attribútum továbbra is szerepel.
+>A videó címke attribútumai csak TRUE vagy FALSE (Boolean) lehet, egyszerűen belefoglalhatja az attribútumot (nincs egyenlő előjel) a bekapcsolásához, vagy kizárhatja azt a kikapcsoláshoz. Ha például a vezérlők bekapcsolásához nem megfelelő `<video controls="true" ...>` , `<video controls ...>` akkor a legnagyobb probléma, hogy a rendszer a legtöbbet futtatja, és false értékkel állítja be ezeket az értékeket (pl. Controls = "false"), amely valójában az ellenkezőjét adja meg, és az értéket igaz értékre állítja, mert az attribútum továbbra is szerepel.
 
 ### <a name="controls"></a>vezérlők ###
 
@@ -79,7 +78,7 @@ További információ a beépülő modulok fejlesztéséről és használatáró
 
 ### <a name="other-options"></a>egyéb beállítások ###
 
-A `<video>` címkén további beállítások is megadhatók a JSON `data-setup` -t használó paraméter használatával.
+A címkén további beállítások is megadhatók a JSON-t `<video>` használó `data-setup` paraméter használatával.
 `<video ... data-setup='{"nativeControlsForTouch": false}'>`
 
 #### <a name="nativecontrolsfortouch"></a>nativeControlsForTouch ####
@@ -92,7 +91,7 @@ Ha ezt a beállítást True video elemre állítja, a rendszer a szülő tárol�
 
 `<video ... data-setup='{"fluid": true}'>`
 
-`fluid`a beállítás felülbírálja a `width` explicit `height` és a beállításokat. Ez a beállítás csak Azure Media Player vagy újabb verzióban `2.0.0` érhető el.
+`fluid`a beállítás felülbírálja `width` a explicit és a `height` beállításokat. Ez a beállítás csak Azure Media Player vagy újabb verzióban érhető el `2.0.0` .
 
 ### <a name="playbackspeed"></a>playbackSpeed ###
 
@@ -101,7 +100,7 @@ Ha ezt a beállítást True video elemre állítja, a rendszer a szülő tárol�
 `<video ... data-setup='{"playbackSpeed": {"enabled": true}}'>`
 
 
-A `playbackSpeed` beállítás egyéb tulajdonságait a [PlaybackSpeedOptions](https://docs.microsoft.com/javascript/api/azuremediaplayer/amp.player.playbackspeedoptions) objektum adja meg.
+A beállítás egyéb tulajdonságait a `playbackSpeed` [PlaybackSpeedOptions](https://docs.microsoft.com/javascript/api/azuremediaplayer/amp.player.playbackspeedoptions) objektum adja meg.
 
 Példa a lejátszási sebesség beállításainak beállítására a JavaScriptben:
 

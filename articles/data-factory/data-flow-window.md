@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/30/2019
 ms.openlocfilehash: 1f440a5877dcefeca8c1baa82fad4299b5ce7bce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81606226"
 ---
 # <a name="azure-data-factory-window-transformation"></a>Azure Data Factory ablak átalakítása
@@ -24,12 +23,12 @@ Az ablak transzformációja az oszlopok ablakos összesítéseit fogja meghatár
 ![Ablak beállításai](media/data-flow/windows1.png "Windows 1")
 
 ## <a name="over"></a>Keresztül
-Állítsa be az oszlopok adatparticionálását az ablak átalakításához. Az SQL ```Partition By``` -EKVIVALENS az SQL-ben az over záradékban található. Ha létre szeretne hozni egy számítást, vagy létre szeretne hozni egy kifejezést a particionáláshoz, akkor az oszlop neve fölé húzva, majd a "számított oszlop" lehetőséget kell választania.
+Állítsa be az oszlopok adatparticionálását az ablak átalakításához. Az SQL-ekvivalens az ```Partition By``` SQL-ben az over záradékban található. Ha létre szeretne hozni egy számítást, vagy létre szeretne hozni egy kifejezést a particionáláshoz, akkor az oszlop neve fölé húzva, majd a "számított oszlop" lehetőséget kell választania.
 
 ![Ablak beállításai](media/data-flow/windows4.png "Windows 4")
 
 ## <a name="sort"></a>Rendezés
-Az over záradék egy másik része a ```Order By```értékét állítja be. Ezzel az adatrendezési sorrendet fogja beállítani. Ebben az oszlopban is létrehozhat egy kifejezést a rendezéshez.
+Az over záradék egy másik része a értékét állítja be ```Order By``` . Ezzel az adatrendezési sorrendet fogja beállítani. Ebben az oszlopban is létrehozhat egy kifejezést a rendezéshez.
 
 ![Ablak beállításai](media/data-flow/windows5.png "Windows 5")
 
@@ -45,7 +44,7 @@ Végül a Kifejezésszerkesztő segítségével definiálhatja azokat az összes
 
 ![Ablak beállításai](media/data-flow/windows7.png "Windows 7")
 
-A kifejezés-szerkesztőben az ADF adatáramlás kifejezésének nyelvén használható összesítési és elemzési függvények teljes listája itt található: https://aka.ms/dataflowexpressions.
+A kifejezés-szerkesztőben az ADF adatáramlás kifejezésének nyelvén használható összesítési és elemzési függvények teljes listája itt található: https://aka.ms/dataflowexpressions .
 
 ## <a name="next-steps"></a>További lépések
 

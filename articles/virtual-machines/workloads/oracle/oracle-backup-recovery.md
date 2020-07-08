@@ -15,10 +15,9 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: borisb
 ms.openlocfilehash: c5f02117d3af7fb411c75d783df82f6008d8104e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81687004"
 ---
 # <a name="back-up-and-recover-an-oracle-database-12c-database-on-an-azure-linux-virtual-machine"></a>Oracle Database 12c-adatbázis biztonsági mentése és helyreállítása Azure-beli linuxos virtuális gépen
@@ -38,7 +37,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy az Azure CLI telepítve van. 
 
 ### <a name="step-2-connect-to-the-vm"></a>2. lépés: Kapcsolódás a virtuális géphez
 
-*   Ha Secure Shell-(SSH-) munkamenetet szeretne létrehozni a virtuális géppel, használja a következő parancsot. Cserélje le az IP-címet és az állomásnév kombinációját `publicIpAddress` a virtuális gép értékére.
+*   Ha Secure Shell-(SSH-) munkamenetet szeretne létrehozni a virtuális géppel, használja a következő parancsot. Cserélje le az IP-címet és az állomásnév kombinációját a `publicIpAddress` virtuális gép értékére.
 
     ```bash
     ssh <publicIpAddress>
@@ -141,7 +140,7 @@ Az alkalmazás-konzisztens biztonsági mentések a Azure Backup új szolgáltat�
 
 1. Töltse le a JSON-fájlt.
 
-    Töltse le a VMSnapshotScriptPluginConfig. https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfigJSON fájlt a alkalmazásból. A fájl tartalma a következőhöz hasonlóan néz ki:
+    VMSnapshotScriptPluginConfig.jsletöltése innen: https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig . A fájl tartalma a következőhöz hasonlóan néz ki:
 
     ```output
     {
@@ -168,11 +167,11 @@ Az alkalmazás-konzisztens biztonsági mentések a Azure Backup új szolgáltat�
 
 3. Másolja a JSON-fájlt.
 
-    Másolja a VMSnapshotScriptPluginConfig. JSON fájlt a/etc/Azure mappába.
+    Másolja VMSnapshotScriptPluginConfig.jst a/etc/Azure mappába.
 
 4. Szerkessze a JSON-fájlt.
 
-    Szerkessze a VMSnapshotScriptPluginConfig. JSON fájlt, hogy `PreScriptLocation` tartalmazza `PostScriptlocation` a és a paramétereket. Például:
+    Szerkessze a fájl VMSnapshotScriptPluginConfig.jsét, hogy tartalmazza a `PreScriptLocation` és a `PostScriptlocation` paramétereket. Például:
 
     ```output
     {

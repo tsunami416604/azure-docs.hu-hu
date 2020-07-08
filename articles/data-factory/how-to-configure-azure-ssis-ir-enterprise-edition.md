@@ -11,10 +11,9 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
 ms.openlocfilehash: a0e35a309fd30a36263b498b6a8e74a312004a99
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81606157"
 ---
 # <a name="provision-enterprise-edition-for-the-azure-ssis-integration-runtime"></a>Enterprise Edition kiépítése a Azure-SSIS Integration Runtime számára
@@ -48,7 +47,7 @@ Ezeknek a szolgáltatásoknak a használatához további összetevőket kell tel
 
 1.  [Azure PowerShell](/powershell/azure/install-az-ps)letöltése és telepítése.
 
-2.  A Azure-SSIS IR PowerShell-lel való kiépítésekor vagy újrakonfigurálásakor a Azure-SSIS IR elindítása előtt futtassa `Set-AzDataFactoryV2IntegrationRuntime` a with **Enterprise** értéket a **kiadás** paraméter értékeként. Íme egy példa a parancsfájlra:
+2.  A Azure-SSIS IR PowerShell-lel való kiépítésekor vagy újrakonfigurálásakor a `Set-AzDataFactoryV2IntegrationRuntime` Azure-SSIS IR elindítása előtt futtassa a with **Enterprise** értéket a **kiadás** paraméter értékeként. Íme egy példa a parancsfájlra:
 
     ```powershell
     $MyAzureSsisIrEdition = "Enterprise"

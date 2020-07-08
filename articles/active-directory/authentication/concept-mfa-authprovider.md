@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bf50a8f58978a010fe3d8228ace8579fcf52eb38
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81309903"
 ---
 # <a name="when-to-use-an-azure-multi-factor-authentication-provider"></a>Mikor kell Azure Multi-Factor Authentication szolgáltatót használni
@@ -48,11 +47,11 @@ Ha az MFA szolgáltató nincs Azure AD-bérlőhöz kapcsolva, vagy új MFA szolg
 > [!CAUTION]
 > A hitelesítési szolgáltató törlésekor nincs megerősítés. A **Törlés** lehetőség kiválasztásával állandó folyamat van.
 
-A hitelesítő szolgáltatók a **Azure Portal** > **Azure Active Directory** > **biztonsági** > **MFA** > -**szolgáltatók**között találhatók. Kattintson a felsorolt szolgáltatók lehetőségre, hogy megtekintse a szolgáltatóhoz társított részleteket és konfigurációkat.
+A hitelesítő szolgáltatók a **Azure Portal**  >  **Azure Active Directory**  >  **biztonsági**  >  **MFA**-  >  **szolgáltatók**között találhatók. Kattintson a felsorolt szolgáltatók lehetőségre, hogy megtekintse a szolgáltatóhoz társított részleteket és konfigurációkat.
 
 A hitelesítési szolgáltató eltávolítása előtt jegyezze fel a szolgáltatóban konfigurált testreszabott beállításokat. Döntse el, hogy mely beállításokat kell áttelepíteni a szolgáltató általános MFA-beállításaiba, és el kell végeznie ezeknek a beállításoknak az áttelepítését. 
 
-A szolgáltatóknak kapcsolódó Azure MFA-kiszolgálókat újra kell aktiválni a **Azure Portal** > **Azure Active Directory** > **biztonsági** > **MFA** > -**kiszolgáló beállításai**között létrehozott hitelesítő adatokkal. Az újraaktiválás előtt a következő fájlokat törölni kell a `\Program Files\Multi-Factor Authentication Server\Data\` címtárból az Azure MFA-kiszolgálókon a környezetben:
+A szolgáltatóknak kapcsolódó Azure MFA-kiszolgálókat újra kell aktiválni a **Azure Portal**  >  **Azure Active Directory**  >  **biztonsági**  >  **MFA**-  >  **kiszolgáló beállításai**között létrehozott hitelesítő adatokkal. Az újraaktiválás előtt a következő fájlokat törölni kell a `\Program Files\Multi-Factor Authentication Server\Data\` címtárból az Azure MFA-kiszolgálókon a környezetben:
 
 - caCert
 - tanúsítvány
@@ -64,7 +63,7 @@ A szolgáltatóknak kapcsolódó Azure MFA-kiszolgálókat újra kell aktiválni
 
 ![Hitelesítési szolgáltató törlése a Azure Portal](./media/concept-mfa-authprovider/authentication-provider-removal.png)
 
-Ha meggyőződött arról, hogy az összes beállítás át lett telepítve, tallózással keresse meg a **Azure Portal** > **Azure Active Directory** > **biztonsági** > **MFA** > -**szolgáltatót** , és válassza a három pontot **...** és válassza a **Törlés**lehetőséget.
+Ha meggyőződött arról, hogy az összes beállítás át lett telepítve, tallózással keresse meg a **Azure Portal**  >  **Azure Active Directory**  >  **biztonsági**  >  **MFA**  >  -**szolgáltatót** , és válassza a három pontot **...** és válassza a **Törlés**lehetőséget.
 
 > [!WARNING]
 > A hitelesítésszolgáltató törlése törli a szolgáltatóhoz társított összes jelentési információt. Előfordulhat, hogy a szolgáltató törlése előtt el szeretné menteni a tevékenységek jelentéseit.

@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 09/12/2019
 ms.author: cynthn
 ms.openlocfilehash: 2e97442d4104f52c1a76ba8cd1d81c99508bb242
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81605189"
 ---
 # <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>A Linux rendszerű virtuális gépekhez való kapcsolódás Távoli asztal telepítése és konfigurálása az Azure-ban
@@ -34,7 +33,7 @@ Ez a cikk egy meglévő Ubuntu 18,04 LTS virtuális gépet igényel az Azure-ban
 ## <a name="install-a-desktop-environment-on-your-linux-vm"></a>Asztali környezet telepítése Linux rendszerű virtuális gépen
 Az Azure-ban a legtöbb Linux rendszerű virtuális gép nem rendelkezik alapértelmezés szerint telepített asztali környezettel. A Linux rendszerű virtuális gépeket általában SSH-kapcsolatokkal, és nem asztali környezettel kezeljük. A Linux különböző asztali környezeteket is választhat. Az asztali környezettől függően egy-két GB lemezterületet is felhasználhat, és 5 – 10 percet is igénybe vehet az összes szükséges csomag telepítéséhez és konfigurálásához.
 
-Az alábbi példa telepíti a Lightweight [Xfce4](https://www.xfce.org/) asztali környezetet egy Ubuntu 18,04 LTS virtuális gépre. A más disztribúciók parancsai némileg eltérőek ( `yum` a Red Hat Enterprise Linux telepítésére és a megfelelő `selinux` szabályok konfigurálására, `zypper` vagy például a (z) rendszerre történő telepítésre használhatók a SUSE használatára).
+Az alábbi példa telepíti a Lightweight [Xfce4](https://www.xfce.org/) asztali környezetet egy Ubuntu 18,04 LTS virtuális gépre. A más disztribúciók parancsai némileg eltérőek (a `yum` Red Hat Enterprise Linux telepítésére és a megfelelő `selinux` szabályok konfigurálására, vagy `zypper` például a (z) rendszerre történő telepítésre HASZNÁLHATÓk a SUSE használatára).
 
 Először SSH-t a virtuális géphez. A következő példa a *myvm.westus.cloudapp.Azure.com* nevű virtuális géphez csatlakozik az *azureuser*felhasználónevével. Saját értékek használata:
 
@@ -106,7 +105,7 @@ Ha a helyi RDP-ügyfél hálózati szintű hitelesítést (NLA) használ, előfo
 
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
-Ha Távoli asztal-ügyféllel nem tud csatlakozni a linuxos virtuális géphez, használja `netstat` a-t a linuxos virtuális gépen annak ellenőrzéséhez, hogy a virtuális gép az alábbi módon figyeli-e az RDP-kapcsolatokat:
+Ha Távoli asztal-ügyféllel nem tud csatlakozni a linuxos virtuális géphez, használja a-t a `netstat` linuxos virtuális gépen annak ellenőrzéséhez, hogy a virtuális gép az alábbi módon figyeli-e az RDP-kapcsolatokat:
 
 ```bash
 sudo netstat -plnt | grep rdp

@@ -8,10 +8,9 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 4/13/2020
 ms.openlocfilehash: 75efdd8ed855fe78651fce5828aacb2384052ae5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81270536"
 ---
 # <a name="configure-and-access-slow-query-logs-by-using-azure-cli"></a>Lassú lekérdezési naplók konfigurálása és elérése az Azure CLI használatával
@@ -24,9 +23,9 @@ A útmutató lépéseinek elvégzéséhez a következőkre lesz szüksége:
 
 ## <a name="configure-logging"></a>Naplózás konfigurálása
 A kiszolgálót úgy is beállíthatja, hogy a következő lépések végrehajtásával hozzáférhessen a MySQL lassú lekérdezési naplóhoz:
-1. Kapcsolja be a lassú lekérdezés naplózását úgy, hogy a **lassú\_lekérdezési\_napló** paraméterét bekapcsolja értékre.
-2. Válassza ki, hová szeretné kiadni a naplókat a naplók **\_kimenetének**használatához. Ha a naplókat a helyi tárolóba és Azure Monitor diagnosztikai naplókba kívánja küldeni, válassza a **fájl**elemet. Naplók csak Azure Monitor naplókba való küldéséhez válassza a **nincs** lehetőséget
-3. Módosítsa a többi paramétert, **például\_a\_hosszú lekérdezési időt** és a **\_lassú\_rendszergazdai\_utasítások naplózását**.
+1. Kapcsolja be a lassú lekérdezés naplózását úgy, hogy a **lassú \_ lekérdezési \_ napló** paraméterét bekapcsolja értékre.
+2. Válassza ki, hová szeretné kiadni a naplókat a naplók ** \_ kimenetének**használatához. Ha a naplókat a helyi tárolóba és Azure Monitor diagnosztikai naplókba kívánja küldeni, válassza a **fájl**elemet. Naplók csak Azure Monitor naplókba való küldéséhez válassza a **nincs** lehetőséget
+3. Módosítsa a többi paramétert, például a **hosszú \_ lekérdezési \_ időt** és a ** \_ lassú \_ rendszergazdai \_ utasítások naplózását**.
 
 Ha meg szeretné tudni, hogyan állíthatja be a paraméterek értékét az Azure CLI-n keresztül, tekintse meg a [kiszolgáló paramétereinek konfigurálása](howto-configure-server-parameters-cli.md)című témakört.
 
@@ -42,7 +41,7 @@ az mariadb server configuration list --resource-group myresourcegroup --server m
 ## <a name="list-logs-for-azure-database-for-mariadb-server"></a>Azure Database for MariaDB-kiszolgáló naplófájljainak listázása
 Ha **log_output** "file"-ra van konfigurálva, közvetlenül a kiszolgáló helyi tárolójából érheti el a naplókat. A kiszolgáló rendelkezésre álló lassú lekérdezési naplófájljainak listázásához futtassa az az [MariaDB Server-logs List](/cli/azure/mariadb/server-logs#az-mariadb-server-logs-list) parancsot.
 
-A kiszolgálói **mydemoserver.MariaDB.database.Azure.com** tartozó naplófájlokat az erőforráscsoport **myresourcegroup**lehet kilistázni. Ezután irányítsa a naplófájlok listáját egy **naplófájlok\_\_listázása. txt**nevű szövegfájlba.
+A kiszolgálói **mydemoserver.MariaDB.database.Azure.com** tartozó naplófájlokat az erőforráscsoport **myresourcegroup**lehet kilistázni. Ezután irányítsa a naplófájlok listáját a naplófájlok ** \_ \_list.txt**nevű szövegfájlba.
 ```azurecli-interactive
 az mariadb server-logs list --resource-group myresourcegroup --server mydemoserver > log_files_list.txt
 ```

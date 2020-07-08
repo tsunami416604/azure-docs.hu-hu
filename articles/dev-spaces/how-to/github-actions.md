@@ -7,10 +7,9 @@ description: Lekéréses kérelem módosításainak áttekintése és tesztelés
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, GitHub-műveletek, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
 manager: gwallace
 ms.openlocfilehash: a83da0ef3958748831eb0eeda1aa5e91efa7ef2e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80637947"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub-műveletek & Azure Kubernetes Service (előzetes verzió)
@@ -109,14 +108,14 @@ Továbbá, ha szeretné, hogy a PR-ban lévő módosítások egy unoka-térben f
 
 ## <a name="create-a-new-branch-for-code-changes"></a>Új ág létrehozása a kód módosításaihoz
 
-Navigáljon `BikeSharingApp/` , és hozzon létre egy *Bike-images*nevű új ágat.
+Navigáljon, `BikeSharingApp/` és hozzon létre egy *Bike-images*nevű új ágat.
 
 ```cmd
 cd dev-spaces/samples/BikeSharingApp/
 git checkout -b bike-images
 ```
 
-A [Bikes/Server. js][bikes-server-js] szerkesztésével távolítsa el a 232-es és a 233-es sorokat:
+[Kerékpárok/server.js][bikes-server-js] szerkesztése a 232 és 233 sorok eltávolításához:
 
 ```javascript
     // Hard code image url *FIX ME*
@@ -131,7 +130,7 @@ A szakasznak így kell kinéznie:
     delete theBike._id;
 ```
 
-Mentse a fájlt, majd `git add` használja `git commit` a és a lehetőséget a módosítások előkészítéséhez.
+Mentse a fájlt, majd használja a és a lehetőséget a `git add` `git commit` módosítások előkészítéséhez.
 
 ```cmd
 git add Bikes/server.js 
@@ -140,7 +139,7 @@ git commit -m "Removing hard coded imageUrl from /bikes/:id route"
 
 ## <a name="push-your-changes"></a>A módosítások leküldése
 
-A `git push` használatával leküldheti az új ágat az elágazó adattárba:
+A használatával `git push` leküldheti az új ágat az elágazó adattárba:
 
 ```cmd
 git push origin bike-images

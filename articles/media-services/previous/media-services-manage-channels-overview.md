@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: f875b4a5c4f1322f4a992dc3738ab1ce6431149d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81641123"
 ---
 # <a name="overview-of-live-streaming-using-media-services"></a>Az élő közvetítés áttekintése Media Services használatával
@@ -74,17 +73,17 @@ Az alábbi táblázat a Media Services által támogatott két csatorna típusá
 
 | Szolgáltatás | Áteresztő csatorna | Standard szintű csatorna |
 | --- | --- | --- |
-| Az egyszeres sávszélességű bemenetek a felhőben több bitrátára vannak kódolva |Nem |Igen |
+| Az egyszeres sávszélességű bemenetek a felhőben több bitrátára vannak kódolva |Nem |Yes |
 | Maximális felbontás, rétegek száma |1080p, 8 réteg, 60 + fps |720p, 6 réteg, 30 fps |
 | Bemeneti protokollok |RTMP, Smooth Streaming |RTMP, Smooth Streaming |
 | Price |Tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/media-services/) , és kattintson az "élő videó" fülre. |Tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/media-services/) |
 | Maximális futási idő |nonstop |8 óra |
-| A beágyazások behelyezésének támogatása |Nem |Igen |
-| Az ad-jelzés támogatása |Nem |Igen |
+| A beágyazások behelyezésének támogatása |Nem |Yes |
+| Az ad-jelzés támogatása |Nem |Yes |
 | Átmenő CEA 608/708 feliratok |Igen |Igen |
-| Nem egységes bemeneti Pallagi Péter támogatása |Igen |Nem – a bemenetnek rögzített 2sec Pallagi Péter kell lennie |
-| Változó képarány bemenetének támogatása |Igen |Nem – a bemenetnek rögzített képkockasebességnek kell lennie.<br/>A kisebb variációk a nagy teljesítményű jeleneteknél, például a mozgásban vannak. A kódoló azonban nem tudja eldobni a 10 képkockát/másodpercet. |
-| Csatornák automatikus kikapcsolása a bemeneti adatcsatorna elvesztésekor |Nem |12 óra elteltével, ha nincs futó program |
+| Nem egységes bemeneti Pallagi Péter támogatása |Yes |Nem – a bemenetnek rögzített 2sec Pallagi Péter kell lennie |
+| Változó képarány bemenetének támogatása |Yes |Nem – a bemenetnek rögzített képkockasebességnek kell lennie.<br/>A kisebb variációk a nagy teljesítményű jeleneteknél, például a mozgásban vannak. A kódoló azonban nem tudja eldobni a 10 képkockát/másodpercet. |
+| Csatornák automatikus kikapcsolása a bemeneti adatcsatorna elvesztésekor |No |12 óra elteltével, ha nincs futó program |
 
 ## <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders-pass-through"></a>Helyszíni kódolóktól többféle sávszélességű adatfolyamot fogadó (áteresztő) csatornák használata
 
@@ -153,7 +152,7 @@ Az alábbi táblázat azt mutatja be, hogy a csatorna állapotai hogyan képezhe
 | Indítás |Indítás |Nem (átmeneti állapot) |
 | Fut |Kész (nincs futó program)<br/>vagy<br/>Streaming (legalább egy futó program) |IGEN |
 | Leállítás |Leállítás |Nem (átmeneti állapot) |
-| Leállítva |Leállítva |Nem |
+| Leállítva |Leállítva |No |
 
 ## <a name="media-services-learning-paths"></a>A Media Services tanulási útvonalai
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

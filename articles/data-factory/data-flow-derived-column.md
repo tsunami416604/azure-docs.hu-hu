@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/15/2019
 ms.openlocfilehash: 38ec2d4619f47bf9fc4d1815cb6e9990cef72dcf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81606506"
 ---
 # <a name="derived-column-transformation-in-mapping-data-flow"></a>Származtatott oszlop átalakítása a leképezési adatfolyamban
@@ -42,7 +41,7 @@ Az összetett típusok az adatforgalomban való kezelésével kapcsolatos továb
 
 ## <a name="data-flow-script"></a>Adatfolyamszkript
 
-### <a name="syntax"></a>Szintaxis
+### <a name="syntax"></a>Syntax
 
 ```
 <incomingStream>
@@ -59,7 +58,7 @@ Az összetett típusok az adatforgalomban való kezelésével kapcsolatos továb
 
 ### <a name="example"></a>Példa
 
-Az alábbi példa egy nevű `CleanData` származtatott oszlop, amely egy bejövő adatfolyamot `MoviesYear` használ, és két származtatott oszlopot hoz létre. Az első származtatott oszlop a minősítés `Rating` értékének egész típusként való lecserélése az oszlopra. A második származtatott oszlop egy minta, amely minden olyan oszlopnak megfelel, amelynek a neve "Movies" karakterrel kezdődik. Minden egyező oszlop esetében egy olyan oszlopot `movie` hoz létre, amely megegyezik az "movie_" előtaggal ellátott egyező oszlop értékével. 
+Az alábbi példa egy nevű származtatott oszlop `CleanData` , amely egy bejövő adatfolyamot használ `MoviesYear` , és két származtatott oszlopot hoz létre. Az első származtatott oszlop a `Rating` minősítés értékének egész típusként való lecserélése az oszlopra. A második származtatott oszlop egy minta, amely minden olyan oszlopnak megfelel, amelynek a neve "Movies" karakterrel kezdődik. Minden egyező oszlop esetében egy olyan oszlopot hoz létre, `movie` amely megegyezik az "movie_" előtaggal ellátott egyező oszlop értékével. 
 
 Az Data Factory UX-ben ez az átalakítás az alábbi képhez hasonlóan néz ki:
 

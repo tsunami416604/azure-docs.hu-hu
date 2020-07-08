@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 04/16/2020
 ms.openlocfilehash: 01dd8422658aa0c8982733e48782efd27c1bf5be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81617848"
 ---
 # <a name="how-to-upgrade-the-azure-monitor-for-vms-dependency-agent"></a>A Azure Monitor for VMs függőségi ügynök frissítése
@@ -29,7 +28,7 @@ A Windows és a Linux rendszerhez készült függőségi ügynök a központi te
 
 ## <a name="upgrade-windows-agent"></a>Windows-ügynök frissítése 
 
-Ha a Windows rendszerű virtuális gépen lévő ügynököt a függőségi ügynök virtuálisgép-bővítményével nem telepített legújabb verzióra szeretné frissíteni, akkor a parancssorból, parancsfájlból vagy más automatizálási megoldásból vagy a InstallDependencyAgent-Windows. exe telepítővarázslójának használatával kell futtatnia.  
+Ha a Windows rendszerű virtuális gépen lévő ügynököt a függőségi ügynök virtuálisgép-bővítményével nem telepített legújabb verzióra szeretné frissíteni, akkor a parancssorból, a parancsfájlból vagy más automatizálási megoldásból, vagy a InstallDependencyAgent-Windows.exe telepítővarázsló használatával kell futtatnia.  
 
 A Windows-ügynök legújabb verzióját [innen](https://aka.ms/dependencyagentwindows)töltheti le.
 
@@ -37,7 +36,7 @@ A Windows-ügynök legújabb verzióját [innen](https://aka.ms/dependencyagentw
 
 1. Jelentkezzen be a számítógépre egy rendszergazdai jogosultságokkal rendelkező fiókkal.
 
-2. A telepítővarázsló elindításához futtassa a **InstallDependencyAgent-Windows. exe fájlt** .
+2. **InstallDependencyAgent-Windows.exe** végrehajtása a telepítővarázsló elindításához.
    
 3. A **Dependency Agent telepítővarázsló** segítségével távolítsa el a függőségi ügynök előző verzióját, majd telepítse a legújabb verziót.
 
@@ -64,7 +63,7 @@ A [Linux-ügynök legújabb verzióját innen töltheti](https://aka.ms/dependen
 
 1. Jelentkezzen be a számítógépre egy rendszergazdai jogosultságokkal rendelkező fiókkal.
 
-2. Futtassa a következő parancsot root`sh InstallDependencyAgent-Linux64.bin -s`-ként. 
+2. Futtassa a következő parancsot root-ként `sh InstallDependencyAgent-Linux64.bin -s` . 
 
 Ha a függőségi ügynök nem indul el, ellenőrizze a naplókat a hibák részletes ismertetéséhez. Linux-ügynökök esetén a */var/opt/Microsoft/Dependency-Agent/log*a naplózási könyvtár. 
 

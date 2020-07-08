@@ -8,10 +8,9 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.openlocfilehash: 0442c701f39fd3e84361ad0201aaf8d1840d8851
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81606285"
 ---
 # <a name="mapping-data-flow-transformation-overview"></a>Az adatfolyam-átalakítás megfeleltetésének áttekintése
@@ -20,7 +19,7 @@ ms.locfileid: "81606285"
 
 Alább látható a leképezési folyamat által jelenleg támogatott átalakítások listája. A konfiguráció részleteinek megismeréséhez kattintson az egyes átalakításokra.
 
-| Name (Név) | Kategória | Leírás |
+| Name | Kategória | Description |
 | ---- | -------- | ----------- |
 | [Összesítés](data-flow-aggregate.md) | Séma-módosító | Definiáljon különböző típusú összesítéseket, például a SUM, a MIN, a MAX és a COUNT értéket meglévő vagy számított oszlopok szerint csoportosítva. | 
 | [Sor módosítása](data-flow-alter-row.md) | Sor módosítója | Sorok beszúrási, törlési, frissítési és upsert beállítása. |

@@ -7,10 +7,9 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 4/13/2020
 ms.openlocfilehash: ffd4ab463080001dbab5b0ed9ece69c4b5f91382
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81272083"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mariadb"></a>Lassú lekérdezési naplók a Azure Database for MariaDB
@@ -19,7 +18,7 @@ Azure Database for MariaDB a lassú lekérdezési napló elérhető a felhaszná
 A lassú lekérdezési naplóval kapcsolatos további információkért tekintse meg a [lassú lekérdezési napló](https://mariadb.com/kb/en/library/slow-query-log-overview/)MariaDB dokumentációját.
 
 ## <a name="configure-slow-query-logging"></a>Lassú lekérdezések naplózásának konfigurálása
-Alapértelmezés szerint a lassú lekérdezési napló le van tiltva. Az engedélyezéséhez állítsa `slow_query_log` be ÉRTÉKre a következőre:. Ez a Azure Portal vagy az Azure CLI használatával engedélyezhető. 
+Alapértelmezés szerint a lassú lekérdezési napló le van tiltva. Az engedélyezéséhez állítsa be értékre a következőre: `slow_query_log` . Ez a Azure Portal vagy az Azure CLI használatával engedélyezhető. 
 
 Az egyéb paraméterek a következők:
 
@@ -27,16 +26,16 @@ Az egyéb paraméterek a következők:
 - **log_slow_admin_statements**: Ha a on olyan felügyeleti utasítások is szerepelnek, mint például a ALTER_TABLE és a ANALYZE_TABLE a slow_query_logba írt utasításokban.
 - **log_queries_not_using_indexes**: meghatározza, hogy az indexeket nem használó lekérdezések naplózva vannak-e a slow_query_log
 - **log_throttle_queries_not_using_indexes**: Ez a paraméter korlátozza a lassú lekérdezési naplóba írható nem indexelt lekérdezések számát. Ez a paraméter akkor lép életbe, amikor a log_queries_not_using_indexes be van állítva.
-- **log_output**: Ha a "fájl", lehetővé teszi a lassú lekérdezési napló írását a helyi kiszolgáló tárterületére és a diagnosztikai naplók Azure Monitorére. Ha "nincs", a lassú lekérdezési napló csak Azure Monitor diagnosztikai naplókba lesz írva. 
+- **log_output**: Ha a "fájl", lehetővé teszi a lassú lekérdezési napló írását a helyi kiszolgáló tárterületére és a diagnosztikai naplók Azure Monitorére. Ha „Nincs”, a lassú lekérdezési napló csak az Azure Monitor Diagnostics Logsban lesz rögzítve. 
 
 > [!IMPORTANT]
-> Ha a táblák nincsenek indexelve, a `log_queries_not_using_indexes` és `log_throttle_queries_not_using_indexes` a paraméterek beállítása hatással lehet a MariaDB teljesítményre, mivel a nem indexelt táblákon futó összes lekérdezés a lassú lekérdezési naplóba kerül.<br><br>
+> Ha a táblák nincsenek indexelve, a `log_queries_not_using_indexes` és a `log_throttle_queries_not_using_indexes` Paraméterek beállítása hatással lehet a MariaDB teljesítményre, mivel a nem indexelt táblákon futó összes lekérdezés a lassú lekérdezési naplóba kerül.<br><br>
 > Ha hosszabb ideig szeretné naplózni a lassú lekérdezéseket, javasolt a "None" értékre állítani `log_output` . Ha a "file" értékre van állítva, a rendszer a helyi kiszolgáló tárolóba írja a naplókat, és hatással lehet a MariaDB teljesítményére. 
 
 A lassú lekérdezési napló paramétereinek teljes leírását a MariaDB [lassú lekérdezési napló dokumentációjában](https://mariadb.com/kb/en/library/slow-query-log-overview/) találja.
 
 ## <a name="access-slow-query-logs"></a>Lassú lekérdezési naplók elérése
-Két lehetőség van a lassú lekérdezési naplók elérésére Azure Database for MariaDB: helyi kiszolgáló tárolóban vagy Azure Monitor diagnosztikai naplókban. Ez a `log_output` paraméter használatával állítható be.
+Két lehetőség van a lassú lekérdezési naplók elérésére Azure Database for MariaDB: helyi kiszolgáló tárolóban vagy Azure Monitor diagnosztikai naplókban. Ez a paraméter használatával állítható be `log_output` .
 
 A helyi kiszolgáló tárolásához a Azure Portal vagy az Azure CLI használatával lekérheti és letöltheti a lassú lekérdezési naplókat. A Azure Portalban navigáljon a kiszolgálóhoz a Azure Portal. A **figyelés** fejléc alatt válassza ki a **kiszolgálói naplók** lapot. Az Azure CLI-vel kapcsolatos további információkért lásd: [kiszolgálók naplófájljainak konfigurálása és elérése az Azure CLI használatával](howto-configure-server-logs-cli.md). 
 
@@ -84,7 +83,7 @@ Az alábbi táblázat az egyes naplókat ismerteti. A kimeneti módszertől füg
 | `\_ResourceId` | Erőforrás URI-ja |
 
 > [!Note]
-> A `sql_text`esetében a rendszer csonkolja a naplót, ha az meghaladja a 2048 karaktert.
+> A esetében a rendszer `sql_text` csonkolja a naplót, ha az meghaladja a 2048 karaktert.
 
 ## <a name="analyze-logs-in-azure-monitor-logs"></a>Naplók elemzése Azure Monitor naplókban
 

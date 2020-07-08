@@ -4,10 +4,9 @@ description: Ez a cikk az Azure-beli virtuális gépeken futó SQL Server adatb�
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.openlocfilehash: 14e3a4797fe60a3d1857f1e6d947fa0c669bdcfe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81537304"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Biztonsági másolattal rendelkező SQL Server-adatbázisok kezelése és monitorozása
@@ -142,7 +141,7 @@ Módosítsa a szabályzatot a biztonsági mentés gyakoriságának vagy a megőr
 > [!NOTE]
 > A megőrzési időtartam változásai visszamenőlegesen lesznek alkalmazva az újakon kívül az összes korábbi helyreállítási pontra.
 
-A tároló irányítópultján lépjen a**biztonsági mentési házirendek** **kezelése** > elemre, és válassza ki a szerkeszteni kívánt szabályzatot.
+A tároló irányítópultján lépjen a **Manage**  >  **biztonsági mentési házirendek** kezelése elemre, és válassza ki a szerkeszteni kívánt szabályzatot.
 
   ![Biztonsági mentési szabályzat kezelése](./media/backup-azure-sql-database/modify-backup-policy.png)
 

@@ -1,6 +1,6 @@
 ---
-title: A málna PI és a távoli monitorozási megoldás összekötése – Node. js – Azure | Microsoft Docs
-description: Leírja, hogyan csatlakoztatható egy málna PI-eszköz a távoli figyelési megoldáshoz a Node. js-ben írt alkalmazás használatával.
+title: Málna PI összekötése távoli figyelési megoldással – Node.js – Azure | Microsoft Docs
+description: Azt ismerteti, hogyan csatlakoztathatók a málna PI-eszközök a távoli figyelési megoldási gyorsító eszközhöz Node.jsban írt alkalmazás használatával.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -10,17 +10,16 @@ ms.date: 01/24/2018
 ms.author: dobett
 ms.custom: mqtt
 ms.openlocfilehash: 9335c45688752ea41801e988157740f4170cfcb4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81683942"
 ---
-# <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>A málna PI-eszköz csatlakoztatása a távoli figyelési megoldáshoz (node. js)
+# <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>A málna PI-eszköz csatlakoztatása a távoli figyelési megoldáshoz (Node.js)
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-Ebből az oktatóanyagból megtudhatja, hogyan csatlakoztatható valódi eszköz a távoli figyelési megoldáshoz. Ebben az oktatóanyagban a Node. js-t használja, amely a minimális erőforrás-korlátozásokkal rendelkező környezetek számára megfelelő megoldás.
+Ebből az oktatóanyagból megtudhatja, hogyan csatlakoztatható valódi eszköz a távoli figyelési megoldáshoz. Ebben az oktatóanyagban a Node.js-t használja, ami jó megoldás a minimális erőforrás-korlátozásokkal rendelkező környezetekhez.
 
 Ha inkább egy eszközt szeretne szimulálni, tekintse meg [az új szimulált eszköz létrehozását és tesztelését](iot-accelerators-remote-monitoring-create-simulated-device.md)ismertető témakört.
 
@@ -44,9 +43,9 @@ Az asztali gépen szükség van az SSH-ügyfélre, hogy távolról hozzáférhes
 
 ### <a name="required-raspberry-pi-software"></a>Szükséges málna PI szoftver
 
-Ha még nem tette meg, telepítse a Node. js-verziót 4.0.0 vagy újabb verzióra a málna PI-on. A következő lépések bemutatják, hogyan telepítheti a Node. js v6-ot a málna PI-re:
+Ha még nem tette meg, telepítse Node.js 4.0.0 vagy újabb verziót a málna PI-ra. A következő lépések bemutatják, hogyan telepítheti Node.js v6-ot a málna PI-re:
 
-1. Kapcsolódjon az málna PI-hez `ssh`a használatával. További információ: [SSH (Secure Shell)](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md) a [málna PI webhelyén](https://www.raspberrypi.org/).
+1. Kapcsolódjon az málna PI-hez a használatával `ssh` . További információ: [SSH (Secure Shell)](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md) a [málna PI webhelyén](https://www.raspberrypi.org/).
 
 1. A következő parancs használatával frissítheti a málna PI-t:
 
@@ -54,7 +53,7 @@ Ha még nem tette meg, telepítse a Node. js-verziót 4.0.0 vagy újabb verziór
     sudo apt-get update
     ```
 
-1. A következő parancsokkal távolítsa el a Node. js összes meglévő telepítését a málna PI-ből:
+1. A következő parancsokkal távolítsa el a Node.js meglévő telepítését a málna PI-ből:
 
     ```sh
     sudo apt-get remove nodered -y
@@ -62,24 +61,24 @@ Ha még nem tette meg, telepítse a Node. js-verziót 4.0.0 vagy újabb verziór
     sudo apt-get remove npm  -y
     ```
 
-1. Használja a következő parancsot a Node. js v6 letöltéséhez és telepítéséhez a málna PI-re:
+1. A következő parancs használatával töltse le és telepítse a Node.js v6-ot a málna PI-re:
 
     ```sh
     curl -sL https://deb.nodesource.com/setup_6.x | sudo bash -
     sudo apt-get install nodejs npm
     ```
 
-1. A következő parancs használatával ellenőrizheti, hogy a Node. js v 6.11.4 sikeresen telepítette-e:
+1. A következő parancs használatával ellenőrizheti, hogy sikeresen telepítette-e Node.js v 6.11.4:
 
     ```sh
     node --version
     ```
 
-## <a name="create-a-nodejs-solution"></a>Node. js-megoldás létrehozása
+## <a name="create-a-nodejs-solution"></a>Node.js megoldás létrehozása
 
-Végezze el a következő lépéseket `ssh` a málna PI-val létesített kapcsolódás használatával:
+Végezze el a következő lépéseket a `ssh` málna PI-val létesített kapcsolódás használatával:
 
-1. Hozzon létre egy `remotemonitoring` nevű mappát a Home mappában a málna PI-ben. Navigáljon a parancssorba a következő mappába:
+1. Hozzon létre egy nevű mappát `remotemonitoring` a Home mappában a málna PI-ben. Navigáljon a parancssorba a következő mappába:
 
     ```sh
     cd ~
@@ -93,9 +92,9 @@ Végezze el a következő lépéseket `ssh` a málna PI-val létesített kapcsol
     npm install async azure-iot-device azure-iot-device-mqtt
     ```
 
-1. A `remotemonitoring` mappában hozzon létre egy **remote_monitoring. js**nevű fájlt. Nyissa meg ezt a fájlt egy szövegszerkesztőben. A málna PI-ban használhatja a vagy `nano` `vi` a text szerkesztőt.
+1. A `remotemonitoring` mappában hozzon létre egy **remote_monitoring.js**nevű fájlt. Nyissa meg ezt a fájlt egy szövegszerkesztőben. A málna PI-ban használhatja a `nano` vagy a `vi` text szerkesztőt.
 
-1. A **remote_monitoring. js** fájlban adja hozzá a következő `require` utasításokat:
+1. A **remote_monitoring.js** fájlban adja hozzá a következő `require` utasításokat:
 
     ```javascript
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
@@ -104,7 +103,7 @@ Végezze el a következő lépéseket `ssh` a málna PI-val létesített kapcsol
     var async = require('async');
     ```
 
-1. Adja hozzá a következő változódeklarációkat az `require` utasítások után. Cserélje le a helyőrző `{device connection string}` értékét a távoli figyelési megoldásban kiépített eszközre feljegyzett értékre:
+1. Adja hozzá a következő változódeklarációkat az `require` utasítások után. Cserélje le a helyőrző értékét a `{device connection string}` távoli figyelési megoldásban kiépített eszközre feljegyzett értékre:
 
     ```javascript
     var connectionString = '{device connection string}';
@@ -385,7 +384,7 @@ Végezze el a következő lépéseket `ssh` a málna PI-val létesített kapcsol
       });
       ```
 
-1. Mentse a módosításokat a **remote_monitoring. js** fájlba.
+1. Mentse a módosításokat a **remote_monitoring.js** fájlba.
 
 1. A minta alkalmazás indításához futtassa a következő parancsot a parancssorban a málna PI-ben:
 

@@ -7,10 +7,9 @@ ms.topic: article
 ms.date: 10/19/2016
 ms.author: rclaus
 ms.openlocfilehash: 0910b31685aa408c319b40ea23782b11724b6237
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81641713"
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>DNS-névfeloldási lehetőségek Linux rendszerű virtuális gépekhez az Azure-ban
@@ -29,7 +28,7 @@ Az alábbi táblázat a forgatókönyveket és a hozzájuk tartozó névfeloldá
 | Névfeloldás a különböző virtuális hálózatokban lévő szerepkör-példányok vagy virtuális gépek között |Ügyfél által felügyelt DNS-kiszolgálók, amelyek a virtuális hálózatok közötti lekérdezéseket továbbítják az Azure (DNS-proxy) általi feloldáshoz. Lásd: [névfeloldás a saját DNS-kiszolgáló használatával](#name-resolution-using-your-own-dns-server). |Csak FQDN |
 | Helyszíni számítógépek és szolgáltatások neveinek feloldása szerepkör-példányokból vagy virtuális gépekből az Azure-ban |Ügyfél által felügyelt DNS-kiszolgálók (például helyszíni tartományvezérlő, helyi írásvédett tartományvezérlő vagy a zónaletöltés használatával szinkronizált másodlagos DNS-kiszolgáló). Lásd: [névfeloldás a saját DNS-kiszolgáló használatával](#name-resolution-using-your-own-dns-server). |Csak FQDN |
 | Azure-beli gazdagépek feloldása helyszíni számítógépekről |Továbbítja a lekérdezéseket egy ügyfél által felügyelt DNS-proxykiszolgálóhoz a megfelelő virtuális hálózaton. A proxykiszolgáló lekérdezéseket továbbít az Azure-nak a feloldáshoz. Lásd: [névfeloldás a saját DNS-kiszolgáló használatával](#name-resolution-using-your-own-dns-server). |Csak FQDN |
-| Fordított DNS belső IP-címekhez |[Névfeloldás saját DNS-kiszolgáló használatával](#name-resolution-using-your-own-dns-server) |n/a |
+| Fordított DNS belső IP-címekhez |[Névfeloldás saját DNS-kiszolgáló használatával](#name-resolution-using-your-own-dns-server) |n.a. |
 
 ## <a name="name-resolution-that-azure-provides"></a>Az Azure által biztosított névfeloldás
 A nyilvános DNS-nevek feloldásával együtt az Azure belső névfeloldást biztosít a virtuális gépek és az azonos virtuális hálózatban lévő szerepkör-példányok számára. A Azure Resource Manageron alapuló virtuális hálózatok esetében a DNS-utótag konzisztens a virtuális hálózaton belül; a teljes tartománynév nem szükséges. A DNS-neveket mindkét hálózati adapterhez (NIC) és virtuális géphez is hozzá lehet rendelni. Bár az Azure által biztosított névfeloldás nem igényel konfigurálást, az összes telepítési forgatókönyv esetében nem megfelelő választás az előző táblázatban látható módon.
@@ -119,7 +118,7 @@ A DNS-továbbítás a virtuális hálózatok közötti DNS-feloldást is lehető
 
 Ha az Azure által biztosított névfeloldást használ, a belső DNS-utótagot a rendszer DHCP használatával adja meg az egyes virtuális gépek számára. Ha saját névfeloldási megoldást használ, ezt az utótagot a rendszer nem adja meg a virtuális gépek számára, mert az utótag más DNS-architektúrákkal is ütközik. Ha a gépeket teljes tartománynévvel vagy a virtuális gépek utótagjának konfigurálásával szeretné megtekinteni, a PowerShell vagy az API használatával határozhatja meg az utótagot:
 
-* Azure Resource Manager által felügyelt virtuális hálózatok esetében az utótag a [hálózati kártya](https://msdn.microsoft.com/library/azure/mt163668.aspx) erőforrásán keresztül érhető el. A `azure network public-ip show <resource group> <pip name>` parancs futtatásával is megjelenítheti a nyilvános IP-cím részleteit, beleértve a hálózati adapter teljes tartománynevét is.
+* Azure Resource Manager által felügyelt virtuális hálózatok esetében az utótag a [hálózati kártya](https://msdn.microsoft.com/library/azure/mt163668.aspx) erőforrásán keresztül érhető el. A parancs futtatásával is `azure network public-ip show <resource group> <pip name>` megjelenítheti a nyilvános IP-cím részleteit, beleértve a hálózati adapter teljes tartománynevét is.
 
 Ha az Azure-ba irányuló lekérdezések továbbítása nem felel meg az igényeinek, meg kell adnia a saját DNS-megoldását.  A DNS-megoldásnak a következőket kell tennie:
 

@@ -7,10 +7,9 @@ ms.reviewer: deli, logicappspm
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.openlocfilehash: fbfd52065bc0522668488492de2181f252f86a4e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81272678"
 ---
 # <a name="handle-throttling-problems-429---too-many-requests-errors-in-azure-logic-apps"></a>Szabályozási problémák kezelése (429 – "túl sok kérés" hiba) a Azure Logic Apps
@@ -97,11 +96,11 @@ A szabályozás ezen a szinten való kezeléséhez a következő lehetőségek k
 
   Tegyük fel például, hogy a logikai alkalmazás táblázatokat kap egy SQL Server adatbázisból, majd lekéri az egyes táblák sorait. A feldolgozandó sorok száma alapján több kapcsolatot is használhat, és **mindegyik** hurkohoz több kapcsolat is használható, hogy a sorok teljes számát a feldolgozásra kisebb készletekre ossza. Ez a **forgatókönyv két hurkot használ a sorok** teljes számának felosztásához. Az első **minden** hurokhoz egy kifejezést használ, amely az első felet kapja meg. Az **egyes** hurkok másik kifejezése egy másik kifejezést használ, amely a második felet kapja, például:<p>
 
-    * 1. kifejezés: `take()` a függvény egy gyűjtemény elejét kapja. További információ: [ **`take()`** függvény](workflow-definition-language-functions-reference.md#take).
+    * 1. kifejezés: a `take()` függvény egy gyűjtemény elejét kapja. További információ: [ **`take()`** függvény](workflow-definition-language-functions-reference.md#take).
 
       `@take(collection-or-array-name, div(length(collection-or-array-name), 2))`
 
-    * 2. kifejezés: `skip()` a függvény eltávolítja a gyűjtemény elejét, és az összes többi elemet visszaadja. További információ: [ **`skip()`** függvény](workflow-definition-language-functions-reference.md#skip).
+    * 2. kifejezés: a `skip()` függvény eltávolítja a gyűjtemény elejét, és az összes többi elemet visszaadja. További információ: [ **`skip()`** függvény](workflow-definition-language-functions-reference.md#skip).
 
       `@skip(collection-or-array-name, div(length(collection-or-array-name), 2))`
 
@@ -164,9 +163,9 @@ A szabályozás ezen a szinten való kezeléséhez a következő lehetőségek k
 
 * A lekérdezési verziók helyett használja az eseményindítók és műveletek webhook-verzióit.
 
-  Hogy miért? A lekérdezési trigger a cél szolgáltatást vagy a rendszer adott időközönként történő ellenőrzését is folytatja. Egy nagyon gyakori intervallum, például a másodpercenként, létrehozhat szabályozási problémákat. Egy webhook-eseményindító vagy-művelet (például a [http-webhook](../connectors/connectors-native-webhook.md)) csak egyetlen hívást hoz létre a cél szolgáltatás vagy a rendszer számára, amely az előfizetés időpontjában történik, és azt kéri, hogy a cél csak akkor jelezze az eseményindítót vagy műveletet, ha az esemény történik. Így az triggernek vagy a műveletnek nem kell folyamatosan ellenőriznie a célhelyet.
+  Miért? A lekérdezési trigger a cél szolgáltatást vagy a rendszer adott időközönként történő ellenőrzését is folytatja. Egy nagyon gyakori intervallum, például a másodpercenként, létrehozhat szabályozási problémákat. Egy webhook-eseményindító vagy-művelet (például a [http-webhook](../connectors/connectors-native-webhook.md)) csak egyetlen hívást hoz létre a cél szolgáltatás vagy a rendszer számára, amely az előfizetés időpontjában történik, és azt kéri, hogy a cél csak akkor jelezze az eseményindítót vagy műveletet, ha az esemény történik. Így az triggernek vagy a műveletnek nem kell folyamatosan ellenőriznie a célhelyet.
   
-  Így ha a cél szolgáltatás vagy a rendszer támogatja a webhookokat, vagy egy olyan összekötőt biztosít, amely webhook-verziót tartalmaz, akkor ez a lehetőség jobb, mint a lekérdezési verzió használata. A webhook-eseményindítók és-műveletek azonosításához ellenőrizze, `ApiConnectionWebhook` hogy rendelkeznek-e a típussal, vagy hogy nem igénylik az ismétlődés megadását. További információ: [APIConnectionWebhook trigger](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-trigger) és [APIConnectionWebhook művelet](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-action).
+  Így ha a cél szolgáltatás vagy a rendszer támogatja a webhookokat, vagy egy olyan összekötőt biztosít, amely webhook-verziót tartalmaz, akkor ez a lehetőség jobb, mint a lekérdezési verzió használata. A webhook-eseményindítók és-műveletek azonosításához ellenőrizze, hogy rendelkeznek-e a `ApiConnectionWebhook` típussal, vagy hogy nem igénylik az ismétlődés megadását. További információ: [APIConnectionWebhook trigger](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-trigger) és [APIConnectionWebhook művelet](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-action).
 
 ## <a name="next-steps"></a>További lépések
 

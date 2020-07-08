@@ -16,10 +16,9 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
 ms.openlocfilehash: bbea0accc79cafb6fea3f1438a71250dc02f4d62
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81311011"
 ---
 # <a name="access-your-security-data"></a>Hozzáférés a biztonsági adataihoz
@@ -66,9 +65,9 @@ SecurityAlert
 | take 3
 ```
 
-| TimeGenerated           | IoTHubId                                                                                                       | DeviceId      | AlertSeverity | DisplayName                           | Leírás                                             | Extendedproperties példányt paraméterként                                                                                                                                                             |
+| TimeGenerated           | IoTHubId                                                                                                       | DeviceId      | AlertSeverity | DisplayName                           | Description                                             | Extendedproperties példányt paraméterként                                                                                                                                                             |
 |-------------------------|----------------------------------------------------------------------------------------------------------------|---------------|---------------|---------------------------------------|---------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 2018-11 – 18T18:10:29.000 | /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Magasság          | A találgatásos támadás sikeres volt           | A találgatásos támadás az eszközön sikeres volt.        |    {"Teljes forrás címe": "[\"10.165.12.18:\"]", "user Names": "\"\"[]", "DeviceID": "IoT-Device-Linux"}                                                                       |
+| 2018-11 – 18T18:10:29.000 | /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Magasság          | A találgatásos támadás sikeres volt           | A találgatásos támadás az eszközön sikeres volt.        |    {"Teljes forrás címe": "[ \" 10.165.12.18: \" ]", "user Names": "[ \" \" ]", "DeviceID": "IoT-Device-Linux"}                                                                       |
 | 2018-11 – 19T12:40:31.000 | /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Magasság          | Sikeres helyi bejelentkezés az eszközön      | Az eszköz sikeres helyi bejelentkezést észlelt     | {"Távoli címe": "?", "távoli port": "", "helyi port": "", "login shell": "/bin/Su", "bejelentkezési folyamat azonosítója": "28207", "Felhasználónév": "támadó", "DeviceId": "IoT-Device-Linux"} |
 | 2018-11 – 19T12:40:31.000 | /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Magasság          | Sikertelen helyi bejelentkezési kísérlet az eszközön  | A rendszer sikertelen helyi bejelentkezési kísérletet észlelt az eszközön. |    {"Távoli címe": "?", "távoli port": "", "helyi port": "", "login shell": "/bin/Su", "bejelentkezési folyamat azonosítója": "22644", "Felhasználónév": "támadó", "DeviceId": "IoT-Device-Linux"} |
 
@@ -146,10 +145,10 @@ SecurityRecommendation
 | take 2
 ```
 
-| TimeGenerated | IoTHubId | DeviceId | RecommendationSeverity | RecommendationState | RecommendationDisplayName | Leírás | RecommendationAdditionalData |
+| TimeGenerated | IoTHubId | DeviceId | RecommendationSeverity | RecommendationState | RecommendationDisplayName | Description | RecommendationAdditionalData |
 |---------------|----------|----------|------------------------|---------------------|---------------------------|-------------|------------------------------|
-| 2019-03-22T10:21:06.060 |    /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Közepes | Aktív | A bemeneti láncban található engedékeny tűzfalszabályok találhatók | A rendszer olyan szabályt észlelt a tűzfalon, amely az IP-címek vagy portok széles tartományára vonatkozó megengedő mintát tartalmaz | {"Szabályok": "[{\"SourceAddress\":\"\",\"SourcePort\":\"\",\"DestinationAddress\":\"\",\"DestinationPort\":\"1337\"}]"} |
-| 2019-03-22T10:50:27.237 | /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Közepes | Aktív | A bemeneti láncban található engedékeny tűzfalszabályok találhatók | A rendszer olyan szabályt észlelt a tűzfalon, amely az IP-címek vagy portok széles tartományára vonatkozó megengedő mintát tartalmaz | {"Szabályok": "[{\"SourceAddress\":\"\",\"SourcePort\":\"\",\"DestinationAddress\":\"\",\"DestinationPort\":\"1337\"}]"} |
+| 2019-03-22T10:21:06.060 |    /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Közepes | Aktív | A bemeneti láncban található engedékeny tűzfalszabályok találhatók | A rendszer olyan szabályt észlelt a tűzfalon, amely az IP-címek vagy portok széles tartományára vonatkozó megengedő mintát tartalmaz | {"Szabályok": "[{ \" SourceAddress \" : \" \" , \" SourcePort \" : \" \" , \" DestinationAddress \" : \" \" , \" DestinationPort \" : \" 1337 \" }]"} |
+| 2019-03-22T10:50:27.237 | /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Közepes | Aktív | A bemeneti láncban található engedékeny tűzfalszabályok találhatók | A rendszer olyan szabályt észlelt a tűzfalon, amely az IP-címek vagy portok széles tartományára vonatkozó megengedő mintát tartalmaz | {"Szabályok": "[{ \" SourceAddress \" : \" \" , \" SourcePort \" : \" \" , \" DestinationAddress \" : \" \" , \" DestinationPort \" : \" 1337 \" }]"} |
 
 ### <a name="device-summary"></a>Eszköz összefoglalása
 

@@ -4,10 +4,9 @@ description: Stream Analytics a Application Insightsból exportált adatok folya
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.openlocfilehash: 15d1efa3a632024429d41f27fc23c569cd85bec2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81536879"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Stream Analytics használata az exportált adatok feldolgozásához Application Insights
@@ -107,7 +106,7 @@ Ebben a példában:
 > 
 
 ## <a name="add-new-output"></a>Új kimenet hozzáadása
-Most válassza ki a feladatot, > **kimenet** > **hozzáadása**elemet.
+Most válassza ki a feladatot, > **kimenet**  >  **hozzáadása**elemet.
 
 ![](./media/export-stream-analytics/SA006.png)
 

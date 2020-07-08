@@ -13,10 +13,9 @@ manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 04/15/2020
 ms.openlocfilehash: 4cb5b84f3889dcf4e0f28d525afb42cfeac5b54c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81605495"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>Saját üzemeltetésű IR konfigurálása proxyként egy Azure-SSIS IRhoz Azure Data Factory
@@ -58,7 +57,7 @@ Ha még nem tette meg, hozzon létre egy Azure Blob Storage-társított szolgál
 - A **hitelesítési módszer**beállításnál válassza a **fiók kulcsa**, **sas URI**vagy **egyszerű szolgáltatásnév**lehetőséget.  
 
     >[!TIP]
-    >Ha az **egyszerű szolgáltatásnév** módszert választja, adja meg az egyszerű szolgáltatásnév számára a *tárolási blob adatközreműködői* szerepkört. További információkért tekintse meg az [Azure Blob Storage-összekötőt](connector-azure-blob-storage.md#linked-service-properties).
+    >Ha az **egyszerű szolgáltatásnév** módszert választja, adja meg az egyszerű szolgáltatásnév számára a *tárolási blob adatközreműködői*   szerepkört. További információkért tekintse meg az [Azure Blob Storage-összekötőt](connector-azure-blob-storage.md#linked-service-properties).
 
 ![Az Azure Blob Storage-hoz társított szolgáltatás előkészítése előkészítéshez](media/self-hosted-integration-runtime-proxy-ssis/shir-azure-blob-storage-linked-service.png)
 
@@ -118,7 +117,7 @@ Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
 
 ## <a name="enable-ssis-packages-to-connect-by-proxy"></a>SSIS-csomagok engedélyezése proxy alapján való csatlakozásra
 
-A legújabb SSDT a Visual studióhoz készült SSIS projects bővítménnyel vagy egy önálló telepítővel olyan új `ConnectByProxy` tulajdonságot talál, amely az OLEDB vagy a Flat file kapcsolatkezelő szolgáltatásban lett hozzáadva.
+A legújabb SSDT a Visual studióhoz készült SSIS projects bővítménnyel vagy egy önálló telepítővel olyan új tulajdonságot talál, `ConnectByProxy` amely az OLEDB vagy a Flat file kapcsolatkezelő szolgáltatásban lett hozzáadva.
 * [A SSDT letöltése a SSIS projects bővítménnyel a Visual studióhoz](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects)
 * [Az önálló telepítő letöltése](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017#ssdt-for-vs-2017-standalone-installer)   
 
@@ -135,11 +134,11 @@ Ezt a tulajdonságot akkor is engedélyezheti, ha meglévő csomagokat futtat, a
   
   ![ConnectByProxy property3 engedélyezése](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssis-activity.png)
 
-- **B. lehetőség:** Telepítse újra a csomagokat tartalmazó projektet a SSIS IR-ben való futtatáshoz. Ezután engedélyezheti a tulajdonságot a tulajdonság elérési útjának `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]`megadásával, és beállíthatja, hogy a tulajdonság felülbírálja a **csomag** előugró ablakának **speciális** lapján a csomagok *SSMS való* futtatásakor.
+- **B. lehetőség:** Telepítse újra a csomagokat tartalmazó projektet a SSIS IR-ben való futtatáshoz. Ezután engedélyezheti a tulajdonságot a tulajdonság elérési útjának megadásával, és beállíthatja, hogy a tulajdonság `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]` felülbírálja a **csomag** előugró ablakának **speciális** lapján a csomagok SSMS *való* futtatásakor.
 
   ![ConnectByProxy property4 engedélyezése](media/self-hosted-integration-runtime-proxy-ssis/shir-advanced-tab-ssms.png)
 
-  A tulajdonságot úgy is engedélyezheti `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]`, ha a tulajdonság elérési útját adja meg, és az *igaz* értéket adja meg a tulajdonság felülbírálásához a SSIS- [csomag végrehajtása tevékenységben](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity) , amikor csomagokat futtat Data Factory folyamatokban. **Property Overrides**
+  A tulajdonságot úgy is engedélyezheti, ha a tulajdonság elérési útját `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]` adja meg, és az *igaz* értéket adja meg **Property Overrides** a tulajdonság felülbírálásához a [SSIS-csomag végrehajtása tevékenységben](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity) , amikor csomagokat futtat Data Factory folyamatokban.
   
   ![ConnectByProxy property5 engedélyezése](media/self-hosted-integration-runtime-proxy-ssis/shir-property-overrides-tab-ssis-activity.png)
 
@@ -153,7 +152,7 @@ A saját üzemeltetésű integrációs modulban megtalálhatja a futásidejű na
 
 Ha a saját üzemeltetésű integrációs modul előkészítési feladatai Windows-hitelesítést igényelnek, [konfigurálja a SSIS-csomagokat, hogy ugyanazt a Windows-hitelesítést használják](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth?view=sql-server-ver15). 
 
-Az előkészítési feladatok a saját üzemeltetésű IR-szolgáltatásfiók (alapértelmezés szerint*NT SERVICE\DIAHostService*) szerint lesznek megnyitva, és az adattárak a Windows-hitelesítési fiókkal lesznek elérhetők. Mindkét fiókhoz szükség van bizonyos biztonsági házirendek hozzárendelésére. A saját üzemeltetésű IR-gépen lépjen a **helyi biztonsági házirend** > **helyi házirendek** > **felhasználói jogok kiosztása**elemre, majd tegye a következőket:
+Az előkészítési feladatok a saját üzemeltetésű IR-szolgáltatásfiók (alapértelmezés szerint*NT SERVICE\DIAHostService*) szerint lesznek megnyitva, és az adattárak a Windows-hitelesítési fiókkal lesznek elérhetők. Mindkét fiókhoz szükség van bizonyos biztonsági házirendek hozzárendelésére. A saját üzemeltetésű IR-gépen lépjen a **helyi biztonsági házirend**  >  **helyi házirendek**  >  **felhasználói jogok kiosztása**elemre, majd tegye a következőket:
 
 1. Rendeljen hozzá *egy folyamathoz tartozó memória-kvótát* , és *cserélje le a folyamat szintű jogkivonat* -szabályzatokat a saját üzemeltetésű IR-szolgáltatásfiók. Ez automatikusan megtörténik, amikor telepíti a saját üzemeltetésű integrációs modult az alapértelmezett szolgáltatásfiók-fiókkal. Ha nem, akkor manuálisan rendelje hozzá ezeket a házirendeket. Ha más szolgáltatásfiókot használ, ugyanazt a szabályzatot rendeli hozzá.
 
@@ -165,7 +164,7 @@ A saját üzemeltetésű IR-ben futtatott első előkészítési feladatok szám
 
 A Azure-SSIS IR futó második előkészítési feladatot nem külön számlázjuk, de a futó Azure-SSIS IR a [Azure-SSIS IR árképzési](https://azure.microsoft.com/pricing/details/data-factory/ssis/) cikkben megadott módon kell fizetni.
 
-## <a name="enabling-tls-12"></a>A TLS 1,2 engedélyezése
+## <a name="enabling-tls-12"></a>A TLS 1.2 engedélyezése
 
 Ha erős titkosítást/biztonságosabb hálózati protokollt (TLS 1,2) kell használnia, és le kell tiltania a régebbi SSL/TLS-verziókat a saját üzemeltetésű integrációs modulban, letöltheti és futtathatja a nyilvános előzetes tároló *CustomSetupScript/UserScenarios/TLS 1,2* mappájában található *Main. cmd* parancsfájlt.  A [Azure Storage Explorer](https://storageexplorer.com/)használatával a következő sas URI azonosító megadásával csatlakozhat a nyilvános előzetes tárolóhoz:
 

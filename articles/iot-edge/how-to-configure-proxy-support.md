@@ -9,10 +9,9 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp
 ms.openlocfilehash: 270e6a0173ed0088ff5d37c989947f5272634200
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81687200"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>IoT Edge-eszköz konfigurálása proxykiszolgálón keresztüli kommunikációra
@@ -53,7 +52,7 @@ A proxy URL-címei a következő formátumot végzik el: **protokoll**://**proxy
 
 * A **protokoll** http vagy HTTPS. A Docker-démon bármely protokollt használhat a tároló beállításjegyzék-beállításaitól függően, de a IoT Edge démon és a futásidejű tárolók mindig HTTP-vel csatlakozhatnak a proxyhoz.
 
-* A **proxy_host** a proxykiszolgáló címe. Ha a proxykiszolgáló hitelesítést igényel, a proxykiszolgáló részeként megadhatja a hitelesítő adatait a következő formátumban: **felhasználó**:**Password**\@**proxy_host**.
+* A **proxy_host** a proxykiszolgáló címe. Ha a proxykiszolgáló hitelesítést igényel, a proxykiszolgáló részeként megadhatja a hitelesítő adatait a következő formátumban: **felhasználó**:**Password** \@ **proxy_host**.
 
 * A **proxy_port** az a hálózati port, amelyen a proxy válaszol a hálózati forgalomra.
 
@@ -69,7 +68,7 @@ Ha Linux rendszerű eszközön telepíti a IoT Edge futtatókörnyezetet, konfig
 
 Ha Windows rendszerű eszközön telepíti a IoT Edge futtatókörnyezetet, kétszer kell megadnia a proxykiszolgálót. Az első csatlakozás letölti a telepítő parancsfájlt, a második pedig a telepítés során a szükséges összetevők letöltéséhez. A proxybeállításokat a Windows beállításaiban konfigurálhatja, vagy közvetlenül a PowerShell-parancsokban is megadhatja a proxy adatait.
 
-Az alábbi lépések a Windows telepítésének példáját szemléltetik a `-proxy` következő argumentum használatával:
+Az alábbi lépések a Windows telepítésének példáját szemléltetik a következő `-proxy` argumentum használatával:
 
 1. A meghívó-webkérési parancsnak proxy-információra van szüksége a telepítési parancsfájl eléréséhez. Ezután az Deploy-IoTEdge parancsnak szüksége van a proxy adataira a telepítési fájlok letöltéséhez.
 
@@ -83,7 +82,7 @@ Az alábbi lépések a Windows telepítésének példáját szemléltetik a `-pr
    . {Invoke-WebRequest -proxy <proxy URL> -useb aka.ms/iotedge-win} | Invoke-Expression; Initialize-IoTEdge
    ```
 
-Ha az URL-címben nem szereplő proxykiszolgáló esetében bonyolult hitelesítő adatokkal rendelkezik, használja a `-ProxyCredential` paramétert a következőn belül `-InvokeWebRequestParameters`:. Például:
+Ha az URL-címben nem szereplő proxykiszolgáló esetében bonyolult hitelesítő adatokkal rendelkezik, használja a paramétert a következőn `-ProxyCredential` belül: `-InvokeWebRequestParameters` . Példa:
 
 ```powershell
 $proxyCredential = (Get-Credential).GetNetworkCredential()
@@ -122,7 +121,7 @@ Nyisson meg egy szerkesztőt a terminálon a IoT Edge démon konfigurálásához
 sudo systemctl edit iotedge
 ```
 
-Adja meg a következő szöveget, és cserélje ** \<le a proxy URL-címét>** a proxykiszolgáló címére és portjára. Ezután mentse és lépjen ki.
+Adja meg a következő szöveget, **\<proxy URL>** és cserélje le a proxykiszolgáló-címe és a port elemre. Ezután mentse és lépjen ki.
 
 ```ini
 [Service]
@@ -149,7 +148,7 @@ systemctl show --property=Environment iotedge
 
 #### <a name="windows"></a>Windows
 
-Nyisson meg egy PowerShell-ablakot rendszergazdaként, és futtassa a következő parancsot a beállításjegyzék új környezeti változóval való szerkesztéséhez. Cserélje le ** \<a proxy URL-** címét a proxy-kiszolgáló címére és portjára>.
+Nyisson meg egy PowerShell-ablakot rendszergazdaként, és futtassa a következő parancsot a beállításjegyzék új környezeti változóval való szerkesztéséhez. Cserélje le a helyére a **\<proxy url>** proxykiszolgáló-címe és portját.
 
 ```powershell
 reg add HKLM\SYSTEM\CurrentControlSet\Services\iotedge /v Environment /t REG_MULTI_SZ /d https_proxy=<proxy URL>

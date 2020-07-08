@@ -4,10 +4,9 @@ description: Projektek keresése, létrehozása, kezelése és törlése Azure M
 ms.topic: how-to
 ms.date: 04/19/2020
 ms.openlocfilehash: f5079ed979d98f2c6f0c654c860c6f176f366497
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81676394"
 ---
 # <a name="create-and-manage-azure-migrate-projects"></a>Azure Migrate-projektek létrehozása és kezelése
@@ -78,8 +77,8 @@ Vegye figyelembe:
 
 1. Tallózással keresse meg a projekthez csatolt Log Analytics munkaterületet.
 
-    - Ha nem törölte a Azure Migrate projektet, a munkaterületre mutató hivatkozást az **Essentials** > -**kiszolgáló értékelése**területen találja.
-       ![LA munkaterület](./media/create-manage-projects/loganalytics-workspace.png).
+    - Ha nem törölte a Azure Migrate projektet, a munkaterületre mutató hivatkozást az **Essentials**-  >  **kiszolgáló értékelése**területen találja.
+       ![LA munkaterület ](./media/create-manage-projects/loganalytics-workspace.png) .
        
     - Ha már törölte a Azure Migrate projektet, válassza ki az **erőforráscsoportok** elemet a Azure Portal bal oldali ablaktábláján, és keresse meg a munkaterületet.
        

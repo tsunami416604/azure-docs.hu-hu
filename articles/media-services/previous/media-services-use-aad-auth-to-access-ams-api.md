@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 8e1aeaf105ce371e965b433ac78e2b257f4bc18b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81682048"
 ---
 # <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Az Azure Media Services API hozzáférése Azure AD-hitelesítéssel  
@@ -79,13 +78,13 @@ Az előző ábrán a számok kronológiai sorrendben jelölik a kérelmek folyam
        A bérlő adatai a Azure Portalból kérhetők le. Vigye a kurzort a bejelentkezett felhasználó nevére a jobb felső sarokban.
    * Media Services erőforrás URI-ja. 
 
-       Ez az URI ugyanaz az Azure-környezetben található Media Services-fiókoknál (például https:\//Rest.Media.Azure.net).
+       Ez az URI ugyanaz az Azure-környezetben található Media Services-fiókoknál (például https: \/ /Rest.Media.Azure.net).
 
    * Media Services (natív) alkalmazás ügyfél-azonosítója.
    * Media Services (natív) alkalmazás átirányítási URI-ja.
    * A REST Media Services erőforrás-URI-ja.
         
-       Az URI a REST API végpontot jelöli (például https://test03.restv2.westus.media.azure.net/api/):.
+       Az URI a REST API végpontot jelöli (például: https://test03.restv2.westus.media.azure.net/api/) .
 
      A paraméterek értékeinek lekéréséhez lásd: [a Azure Portal használata az Azure ad-hitelesítési beállítások eléréséhez](media-services-portal-get-started-with-aad.md) a felhasználói hitelesítési lehetőség használatával.
 
@@ -121,11 +120,11 @@ Az előző ábrán a számok kronológiai sorrendben jelölik a kérelmek folyam
        A bérlő adatai a Azure Portalból kérhetők le. Vigye a kurzort a bejelentkezett felhasználó nevére a jobb felső sarokban.
    * Media Services erőforrás URI-ja. 
 
-       Ez az URI ugyanaz az Azure-környezetben található Media Services-fiókok esetében (például https:\//Rest.Media.Azure.net).
+       Ez az URI ugyanaz az Azure-környezetben található Media Services-fiókok esetében (például https: \/ /Rest.Media.Azure.net).
 
    * A REST Media Services erőforrás-URI-ja.
 
-       Az URI a REST API végpontot jelöli (például https://test03.restv2.westus.media.azure.net/api/):.
+       Az URI a REST API végpontot jelöli (például: https://test03.restv2.westus.media.azure.net/api/) .
 
    * Azure AD-alkalmazás értékei: az ügyfél-azonosító és az ügyfél titka.
     
@@ -145,7 +144,7 @@ Kivétel: "a távoli kiszolgáló a következő hibát adta vissza: (401) nem en
 
 Megoldás: a Media Services REST-kérelem sikeres végrehajtásához a hívó felhasználónak közreműködőnek vagy tulajdonosi szerepkörnek kell lennie abban a Media Services-fiókban, amelyhez hozzáférni próbál. További információ: [hozzáférés-vezérlés](media-services-use-aad-auth-to-access-ams-api.md#access-control) szakasz.
 
-## <a name="resources"></a>További források
+## <a name="resources"></a>Erőforrások
 
 A következő cikkek az Azure AD-hitelesítési fogalmak áttekintését ismertetik: 
 

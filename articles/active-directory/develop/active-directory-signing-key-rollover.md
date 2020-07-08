@@ -13,10 +13,9 @@ ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.openlocfilehash: e0a38eb03df3d1da64172842fb6eca3cd762f9cd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81537236"
 ---
 # <a name="signing-key-rollover-in-azure-active-directory"></a>A kulcsok átváltásának aláírása Azure Active Directory
@@ -37,7 +36,7 @@ Az alkalmazás által kezelt kulcsok átállításának módja az olyan változ�
 * [Az Azure App Services használatával létrehozott webalkalmazások/API-k védik az erőforrásokat](#appservices)
 * [Webalkalmazások/API-k az erőforrások védelme .NET OWIN OpenID Connect, WS-fed vagy WindowsAzureActiveDirectoryBearerAuthentication middleware használatával](#owin)
 * [Webalkalmazások/API-k az erőforrások védelme .NET Core OpenID Connect vagy JwtBearerAuthentication middleware használatával](#owincore)
-* [Az erőforrásokat a Node. js Passporttal védő webalkalmazások/API-k – Azure-ad modul](#passport)
+* [Webalkalmazások/API-k az erőforrások védelme Node.js Passport használatával – Azure-ad modul](#passport)
 * [A Visual Studio 2015-es vagy újabb verziójával létrehozott webalkalmazások és API-k az erőforrásokat védik](#vs2015)
 * [Az erőforrásokat védő és a Visual Studio 2013-mel létrehozott webalkalmazások](#vs2013)
 * Az erőforrásokat védő webes API-k és a Visual Studio 2013
@@ -110,10 +109,10 @@ app.UseJwtBearerAuthentication(
      });
 ```
 
-### <a name="web-applications--apis-protecting-resources-using-nodejs-passport-azure-ad-module"></a><a name="passport"></a>Az erőforrásokat a Node. js Passporttal védő webalkalmazások/API-k – Azure-ad modul
-Ha az alkalmazás a Node. js Passport-ad modult használja, akkor már rendelkezik a kulcs átváltásának automatikus kezeléséhez szükséges logikával.
+### <a name="web-applications--apis-protecting-resources-using-nodejs-passport-azure-ad-module"></a><a name="passport"></a>Webalkalmazások/API-k az erőforrások védelme Node.js Passport használatával – Azure-ad modul
+Ha az alkalmazás a Node.js Passport-ad modult használja, akkor már rendelkezik a kulcs átváltásának automatikus kezelésére szolgáló szükséges logikával.
 
-A következő kódrészletet az alkalmazás app. js fájljában megkeresve ellenőrizheti, hogy az alkalmazás Passport-ad-e.
+A következő kódrészlet megkeresésével ellenőrizheti, hogy az alkalmazás Passport-ad-e az alkalmazás app.js
 
 ```
 var OIDCStrategy = require('passport-azure-ad').OIDCStrategy;
@@ -129,7 +128,7 @@ Ha az alkalmazás egy webalkalmazás-sablonnal lett létrehozva a Visual Studio 
 Ha manuálisan adta meg a hitelesítést a megoldáshoz, előfordulhat, hogy az alkalmazás nem rendelkezik a szükséges kulcs-átváltási logikával. Saját magának kell megírnia, vagy követnie kell a [webalkalmazások/API-k lépéseit más könyvtárak használatával vagy a támogatott protokollok manuális megvalósításával](#other).
 
 ### <a name="web-applications-protecting-resources-and-created-with-visual-studio-2013"></a><a name="vs2013"></a>Az erőforrásokat védő és a Visual Studio 2013-mel létrehozott webalkalmazások
-Ha az alkalmazás egy webalkalmazás-sablonnal lett létrehozva a Visual Studio 2013-ben, és kiválasztotta a **szervezeti fiókokat** a **change Authentication (hitelesítés módosítása** ) menüből, akkor már rendelkezik a Key rollover automatikus kezeléséhez szükséges logikával. Ez a logika tárolja a szervezet egyedi azonosítóját és az aláíró kulcs információit a projekthez társított két adatbázis-táblában. Az adatbázishoz tartozó kapcsolati karakterláncot a projekt web. config fájljában találja.
+Ha az alkalmazás egy webalkalmazás-sablonnal lett létrehozva a Visual Studio 2013-ben, és kiválasztotta a **szervezeti fiókokat** a **change Authentication (hitelesítés módosítása** ) menüből, akkor már rendelkezik a Key rollover automatikus kezeléséhez szükséges logikával. Ez a logika tárolja a szervezet egyedi azonosítóját és az aláíró kulcs információit a projekthez társított két adatbázis-táblában. A projekt Web.config fájljában található adatbázishoz tartozó kapcsolatok karakterlánca megtalálható.
 
 Ha manuálisan adta meg a hitelesítést a megoldáshoz, előfordulhat, hogy az alkalmazás nem rendelkezik a szükséges kulcs-átváltási logikával. Saját magának kell megírnia, vagy követnie kell a [webalkalmazások/API-k lépéseit más könyvtárak használatával vagy a támogatott protokollok manuális megvalósításával.](#other)
 
@@ -239,7 +238,7 @@ namespace JWTValidation
 ```
 
 ### <a name="web-applications-protecting-resources-and-created-with-visual-studio-2012"></a><a name="vs2012"></a>Az erőforrásokat védő és a Visual Studio 2012-mel létrehozott webalkalmazások
-Ha az alkalmazása a Visual Studio 2012-ben készült, valószínűleg az identitás-és elérési eszközt használta az alkalmazás konfigurálásához. Az is valószínű, hogy a [kibocsátói név érvényesítése (VINR) bejegyzést](https://msdn.microsoft.com/library/dn205067.aspx)használja. A VINR feladata a megbízható identitás-szolgáltatók (Azure AD) adatainak és az általuk kiállított jogkivonatok érvényesítéséhez használt kulcsok fenntartásáért felelős. A VINR megkönnyíti a web. config fájlban tárolt legfontosabb információk automatikus frissítését, ha letölti a címtárhoz társított legújabb összevonási metaadat-dokumentumot, ellenőrzi, hogy a konfiguráció elavult-e a legújabb dokumentummal, és szükség szerint frissítse az alkalmazást az új kulcs használatára.
+Ha az alkalmazása a Visual Studio 2012-ben készült, valószínűleg az identitás-és elérési eszközt használta az alkalmazás konfigurálásához. Az is valószínű, hogy a [kibocsátói név érvényesítése (VINR) bejegyzést](https://msdn.microsoft.com/library/dn205067.aspx)használja. A VINR feladata a megbízható identitás-szolgáltatók (Azure AD) adatainak és az általuk kiállított jogkivonatok érvényesítéséhez használt kulcsok fenntartásáért felelős. A VINR emellett megkönnyíti a Web.config fájlban tárolt kulcsok automatikus frissítését a címtárhoz társított legújabb összevonási metaadat-dokumentum letöltésével, amely ellenőrzi, hogy a konfiguráció elavult-e a legújabb dokumentummal, és szükség szerint frissítse az alkalmazást az új kulcs használatára.
 
 Ha az alkalmazást a Microsoft által biztosított bármely kód-minta vagy bemutató-dokumentáció használatával hozta létre, akkor a projektben már szerepel a kulcs átváltási logikája. Megfigyelheti, hogy az alábbi kód már létezik a projektben. Ha az alkalmazás még nem rendelkezik ezzel a logikával, kövesse az alábbi lépéseket a hozzáadásához és annak ellenőrzéséhez, hogy megfelelően működik-e.
 
@@ -269,11 +268,11 @@ Ha az alkalmazást a Microsoft által biztosított bármely kód-minta vagy bemu
    }
    ```
 
-Ha követte ezeket a lépéseket, az alkalmazás Web. config frissítése az összevonási metaadatok dokumentumának legújabb adataival történik, beleértve a legújabb kulcsokat is. Ez a frissítés minden alkalommal bekövetkezik, amikor az alkalmazáskészlet újraindul az IIS-ben. Alapértelmezés szerint az IIS 29 óránként úgy van beállítva, hogy újrahasznosítsa az alkalmazásokat.
+Ha követte ezeket a lépéseket, az alkalmazás Web.config frissülni fog az összevonási metaadatokat tartalmazó dokumentum legfrissebb adataival, beleértve a legújabb kulcsokat is. Ez a frissítés minden alkalommal bekövetkezik, amikor az alkalmazáskészlet újraindul az IIS-ben. Alapértelmezés szerint az IIS 29 óránként úgy van beállítva, hogy újrahasznosítsa az alkalmazásokat.
 
 Kövesse az alábbi lépéseket annak ellenőrzéséhez, hogy a kulcs átváltási logikája működik-e.
 
-1. Miután meggyőződött róla, hogy az alkalmazás a fenti kódot használja, nyissa meg a **web. config** fájlt, és navigáljon a ** \<issuerNameRegistry>** blokkhoz, amely kifejezetten a következő néhány sort keresi:
+1. Miután meggyőződött róla, hogy az alkalmazás a fenti kódot használja, nyissa meg a **Web.config** fájlt, és navigáljon a **\<issuerNameRegistry>** blokkhoz, amely kifejezetten a következő néhány sort keresi:
    ```
    <issuerNameRegistry type="System.IdentityModel.Tokens.ValidatingIssuerNameRegistry, System.IdentityModel.Tokens.ValidatingIssuerNameRegistry">
         <authority name="https://sts.windows.net/ec4187af-07da-4f01-b18f-64c2f5abecea/">
@@ -281,7 +280,7 @@ Kövesse az alábbi lépéseket annak ellenőrzéséhez, hogy a kulcs átváltá
             <add thumbprint="3A38FA984E8560F19AADC9F86FE9594BB6AD049B" />
           </keys>
    ```
-2. Az ** \<ujjlenyomat hozzáadása = "" >** a beállításnál módosítsa az ujjlenyomat értékét úgy, hogy az egyik karaktert egy másikra cseréli. Mentse a **Web.config** fájlt.
+2. A **\<add thumbprint="">** beállításban módosítsa az ujjlenyomat értékét úgy, hogy az egyik karaktert egy másikra cseréli. Mentse a **Web.config** fájlt.
 3. Hozza létre az alkalmazást, majd futtassa. Ha elvégezheti a bejelentkezési folyamatot, az alkalmazás sikeresen frissíti a kulcsot, ha letölti a szükséges információkat a címtár összevonási metaadat-dokumentumból. Ha problémába ütközik a bejelentkezés során, győződjön meg arról, hogy az alkalmazásban történt módosítások a [Bejelentkezés hozzáadása a webalkalmazáshoz az Azure ad](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) -vel című cikkben olvashatók, illetve a következő mintakód-minta letöltése és vizsgálata: [több-bérlős felhőalapú alkalmazás a Azure Active Directory](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b).
 
 ### <a name="web-applications-protecting-resources-and-created-with-visual-studio-2008-or-2010-and-windows-identity-foundation-wif-v10-for-net-35"></a><a name="vs2010"></a>Az erőforrásokat védő webalkalmazások és a Visual Studio 2008 vagy 2010 és a Windows Identity Foundation (WIF) 1.0-s verziójának használata a .NET 3,5-hoz

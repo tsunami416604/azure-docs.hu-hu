@@ -6,21 +6,20 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
 ms.openlocfilehash: 4cfa136585611e81a4060c5544d5dc464b32f12c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81537440"
 ---
 # <a name="get-started-with-azure-monitor-application-insights-agent-for-on-premises-servers"></a>Ismerkedés a Azure Monitor Application Insights-ügynökkel a helyszíni kiszolgálók esetében
 
 Ez a cikk a legtöbb környezetben várhatóan használható gyors üzembe helyezési parancsokat tartalmazza.
 Az utasítások a frissítések terjesztésének PowerShell-galéria függenek.
-Ezek a parancsok támogatják a `-Proxy` PowerShell-paramétert.
+Ezek a parancsok támogatják a PowerShell- `-Proxy` paramétert.
 
 A parancsok magyarázatát, a testreszabási utasításokat és a hibaelhárítással kapcsolatos információkat a [részletes utasításokban](status-monitor-v2-detailed-instructions.md)találja.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="download-and-install-via-powershell-gallery"></a>Letöltés és telepítés PowerShell-galéria használatával
 

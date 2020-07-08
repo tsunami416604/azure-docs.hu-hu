@@ -9,10 +9,9 @@ ms.tgt_pltfrm: arduino
 ms.date: 01/18/2019
 ms.author: junhan
 ms.openlocfilehash: 31a5d55d1067b9dd946c1667118d0bde5ee3d59e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81682504"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>A Visual Studio Code-hoz készült Azure IoT Tools használata üzenetek küldéséhez és fogadásához az eszköz és a IoT Hub között
@@ -64,7 +63,7 @@ Az eszközről az IoT hubhoz küldött üzenetek figyeléséhez kövesse az alá
 
 1. Kattintson a jobb gombbal az eszközre, és válassza a **figyelés beépített esemény végpontjának elindítása**lehetőséget.
 
-2. A figyelt üzenetek megjelennek a **kimenet** > **Azure IoT hub** nézetben.
+2. A figyelt üzenetek megjelennek a **kimenet**  >  **Azure IoT hub** nézetben.
 
 3. A figyelés leállításához kattintson a jobb gombbal a **kimenet** nézetre, és válassza a **beépített esemény-végpont figyelésének leállítása**lehetőséget.
 
@@ -76,7 +75,7 @@ Az alábbi lépéseket követve küldhet üzenetet az IoT hub-ról az eszközre:
 
 2. Adja meg az üzenetet a beviteli mezőben.
 
-3. Az eredmények a **kimenet** > **Azure IoT hub** nézetben jelennek meg.
+3. Az eredmények a **kimenet**  >  **Azure IoT hub** nézetben jelennek meg.
 
 ## <a name="next-steps"></a>További lépések
 

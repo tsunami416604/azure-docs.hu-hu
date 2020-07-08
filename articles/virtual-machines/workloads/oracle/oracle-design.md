@@ -15,10 +15,9 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: borisb
 ms.openlocfilehash: ad446180b3bd864c5b6df808e6e4efac7d6c1c65
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81687540"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Oracle-adatbázis tervezése és implementálása az Azure-ban
@@ -146,7 +145,7 @@ A hálózati sávszélességre vonatkozó követelmények alapján különböző
 - A gyorsabb hálózati teljesítmény érdekében a Virtual Machinest [gyorsított hálózatkezeléssel](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli) használhatja.
 - Bizonyos linuxos distrubutions esetében érdemes lehet a [Trim/leképezésének megszüntetése támogatásának](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm#trimunmap-support)engedélyezése.
 - Telepítse az [Oracle Enterprise Managert](https://www.oracle.com/technetwork/oem/enterprise-manager/overview/index.html) egy különálló virtuális gépre.
-- Alapértelmezés szerint a hatalmas lapok nincsenek engedélyezve a Linuxon. Érdemes lehet hatalmas lapokat engedélyezni `use_large_pages = ONLY` és beállítani a Oracle db. Ez segíthet a teljesítmény növelésében. További információt [itt](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/refrn/USE_LARGE_PAGES.html#GUID-1B0F4D27-8222-439E-A01D-E50758C88390)találhat.
+- Alapértelmezés szerint a hatalmas lapok nincsenek engedélyezve a Linuxon. Érdemes lehet hatalmas lapokat engedélyezni és beállítani `use_large_pages = ONLY` a Oracle db. Ez segíthet a teljesítmény növelésében. További információt [itt](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/refrn/USE_LARGE_PAGES.html#GUID-1B0F4D27-8222-439E-A01D-E50758C88390)találhat.
 
 ### <a name="disk-types-and-configurations"></a>Lemezek típusai és konfigurációi
 
