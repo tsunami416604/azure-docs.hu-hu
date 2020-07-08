@@ -5,10 +5,10 @@ ms.date: 03/30/2020
 ms.topic: how-to
 ms.reviewer: ravastra
 ms.openlocfilehash: b7b897f35cb864e2a1fa904bbb3ec13b56986598
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85200460"
 ---
 # <a name="configure-blockchain-data-manager-using-azure-cli"></a>A Blockchain Data Manager konfigurálása az Azure CLI-vel
@@ -79,7 +79,7 @@ JSON-konfiguráció – példa Blockchain Manager-példány létrehozására az 
 }
 ```
 
-| Elem | Leírás |
+| Elem | Description |
 |---------|-------------|
 | location | Az a régió, ahol a figyelő erőforrást létre kell hozni |
 | properties | A figyelők erőforrásának létrehozásakor beállítani kívánt tulajdonságok |
@@ -147,7 +147,7 @@ Konfiguráció JSON-példa egy bemeneti erőforrás létrehozásához az *USA ke
 }
 ```
 
-| Elem | Leírás |
+| Elem | Description |
 |---------|-------------|
 | location | Az a régió, ahol a bemeneti erőforrást létre kell hozni. |
 | inputType | Az Azure Blockchain-szolgáltatás tagjának főkönyvi típusa. Jelenleg a **Ethereum** támogatott. |
@@ -219,7 +219,7 @@ Konfigurációs JSON-példa: hozzon létre egy kimeneti erőforrást az *USA kel
 }
 ```
 
-| Elem | Leírás |
+| Elem | Description |
 |---------|-------------|
 | location | Az a régió, ahol a kimeneti erőforrást létre kívánja hozni. |
 | outputType | A kimenet típusa. Jelenleg a **EventGrid** támogatott. |
@@ -301,7 +301,7 @@ Konfigurációs JSON-példa egy alkalmazás-erőforrás létrehozására az *USA
 }
 ```
 
-| Elem | Leírás |
+| Elem | Description |
 |---------|-------------|
 | location | A régió, ahol az alkalmazás-erőforrást létre kell hozni. |
 | artifactType | Az alkalmazás típusa. Jelenleg a **EthereumSmartContract** támogatott. |

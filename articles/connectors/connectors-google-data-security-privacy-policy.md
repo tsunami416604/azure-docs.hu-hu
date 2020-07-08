@@ -7,10 +7,10 @@ ms.reviewer: divswa, logicappspm
 ms.topic: conceptual
 ms.date: 06/05/2020
 ms.openlocfilehash: 384335898c7cd6b379c6107152b49e9931cf513a
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85194972"
 ---
 # <a name="data-security-and-privacy-policies-for-google-connectors-in-azure-logic-apps"></a>Adatbiztonsági és adatvédelmi szabályzatok a Google-összekötők számára Azure Logic Apps
@@ -98,7 +98,7 @@ Az ügyfél-azonosító és az ügyfél titkos kódjának a Gmail-triggerben vag
 
    ![Adja meg a kapcsolatok adatait](./media/connectors-google-data-security-privacy-policy/authentication-type-bring-your-own.png)
 
-   | Tulajdonság | Érték | Leírás |
+   | Tulajdonság | Érték | Description |
    |----------|-------|-------------|
    | **Hitelesítés típusa** | **Saját alkalmazás használata** | Azt határozza meg, hogy a hitelesítéshez saját ügyfélalkalmazás fog használni. |
    | **Ügyfél-azonosító** | <*ügyfél-azonosító*> | A Google-ügyfélalkalmazás ügyfél-azonosítója |

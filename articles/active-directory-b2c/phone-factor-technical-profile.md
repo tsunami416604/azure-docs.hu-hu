@@ -12,10 +12,10 @@ ms.date: 03/31/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 10d5fda526c41704381bb544bdfd0589063c1d15
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85203860"
 ---
 # <a name="define-a-phone-factor-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>A telefonos faktor technikai profiljának definiálása egy Azure Active Directory B2C egyéni házirendben
@@ -57,7 +57,7 @@ A InputClaimsTransformations elem tartalmazhat olyan bemeneti jogcím-átalakít
 
 A Szabályzattípushoz elemnek tartalmaznia kell a következő jogcímeket. A jogcím nevét a telefonos faktor technikai profilban definiált névre is leképezheti. 
 
-|  Adattípus| Kötelező | Leírás |
+|  Adattípus| Kötelező | Description |
 | --------- | -------- | ----------- | 
 | sztring| Yes | A felhasználó egyedi azonosítója. A jogcím nevét vagy PartnerClaimType kell beállítani `UserId` . Ez a jogcím nem tartalmazhat személyes azonosításra alkalmas adatokat.|
 | sztring| Yes | A jogcím-típusok listája. Minden jogcím egy telefonszámot tartalmaz. Ha a bemeneti jogcímek bármelyike nem tartalmaz telefonszámot, a rendszer megkéri a felhasználót, hogy regisztrálja és ellenőrizze az új telefonszámot. Az érvényesített telefonszámot kimeneti jogcímként adja vissza a rendszer. Ha a bemeneti jogcímek egyike telefonszámot tartalmaz, a rendszer megkéri a felhasználót, hogy ellenőrizze. Ha több bemeneti jogcím is tartalmaz telefonszámot, a rendszer megkéri a felhasználót, hogy válasszon ki és ellenőrizze a telefonszámok egyikét. |

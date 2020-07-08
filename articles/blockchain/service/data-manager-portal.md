@@ -5,10 +5,10 @@ ms.date: 03/30/2020
 ms.topic: how-to
 ms.reviewer: ravastra
 ms.openlocfilehash: a151c28d31bf0bb7f21185fb161315d42f9563d8
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85200681"
 ---
 # <a name="configure-blockchain-data-manager-using-the-azure-portal"></a>A Blockchain Data Manager konfigurálása az Azure Portallal
@@ -40,7 +40,7 @@ A kimenő kapcsolatok a blockchain adatokat küldenek Azure Event Grid. A péld�
 
     Adja meg a következő részleteket:
 
-    Beállítás | Leírás
+    Beállítás | Description
     --------|------------
     Name | Adjon egyedi nevet a csatlakoztatott Blockchain Data Manager. A Blockchain Data Manager neve kisbetűket és számokat tartalmazhat, és legfeljebb 20 karakter hosszúságú lehet.
     Tranzakciós csomópont | Válasszon tranzakciós csomópontot. Csak az olvasási hozzáféréssel rendelkező tranzakciós csomópontok jelennek meg.
@@ -108,7 +108,7 @@ A Blockchain Data Manager megköveteli, hogy a szerződési ABI és a bytecode f
 
     ![Storage-fiók tárolójának létrehozása](./media/data-manager-portal/create-container.png)
 
-    | Mező | Leírás |
+    | Mező | Description |
     |-------|-------------|
     | Name  | Nevezze el a tárolót. Például: *smartcontract* |
     | Nyilvános hozzáférés szintje | *Privát kiválasztása (névtelen hozzáférés nélkül)* |
@@ -144,7 +144,7 @@ Az egyes Blobok esetében egy közös hozzáférési aláírás létrehozása.
 
     Adja meg a blockchain-alkalmazás nevét és az intelligens szerződési ABI és bytecode URL-eket.
 
-    Beállítás | Leírás
+    Beállítás | Description
     --------|------------
     Name | Adjon meg egy egyedi nevet a nyomon követett blockchain-alkalmazás számára.
     Egyezményes ABI | A szerződéses ABI-fájl URL-címének elérési útja. További információkért lásd: [egyezményes ABI és bytecode URL-cím létrehozása](#create-contract-abi-and-bytecode-url).

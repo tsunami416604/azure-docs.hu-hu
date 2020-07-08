@@ -11,10 +11,10 @@ ms.date: 03/05/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: d02bc8d97b65f4ea2c2585201654899a63d3229b
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85201361"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
@@ -48,7 +48,7 @@ A **claimType** elem a következő attribútumot tartalmazza:
 
 A **claimType** elem a következő elemeket tartalmazza:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | ----------- |
 | DisplayName | 1:1 | A különböző képernyőkön lévő felhasználók számára megjelenő cím. Az érték [honosítható](localization.md). |
 | DataType | 1:1 | A jogcím típusa. |
@@ -84,7 +84,7 @@ Az **adattípus** elem a következő értékeket támogatja:
 
 A **DefaultPartnerClaimTypes** a következő elemet tartalmazhatja:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | ----------- |
 | Protokoll | 1: n | A protokollok listája az alapértelmezett partneri jogcím típusának nevével. |
 
@@ -171,7 +171,7 @@ A **korlátozási** elem a következő attribútumot is tartalmazhatja:
 
 A **korlátozási** elem a következő elemeket tartalmazza:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | ----------- |
 | Enumerálás | 1: n | A felhasználó felhasználói felületének elérhető beállításai, amelyek kiválaszthatják a jogcímek, például a legördülő lista értékét. |
 | Mintázat | 1:1 | A használandó reguláris kifejezés. |
@@ -243,7 +243,7 @@ A Azure AD B2C számos felhasználói beviteli típust támogat, például a sz�
 
 A **UserInputType** elem elérhető felhasználói bemeneti típusok:
 
-| UserInputType | Támogatott ClaimType | Leírás |
+| UserInputType | Támogatott ClaimType | Description |
 | --------- | -------- | ----------- |
 |CheckboxMultiSelect| `string` |Többszörös kijelölés legördülő lista A jogcím értéke a kijelölt értékek vesszővel elválasztó karakterláncában jelenik meg. |
 |DateTimeDropdown | `date`, `dateTime` |Legördülő menüből kiválaszthatja a napot, a hónapot és az évet. |

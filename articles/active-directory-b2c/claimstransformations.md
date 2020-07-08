@@ -11,10 +11,10 @@ ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 37d9bd78a80ac52d2a790537bf47e33807720349
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85202959"
 ---
 # <a name="claimstransformations"></a>ClaimsTransformations
@@ -59,7 +59,7 @@ A **ClaimsTransformation** elem a következő elemeket tartalmazza:
 ```
 
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | -------- | ----------- |
 | Szabályzattípushoz | 0:1 | Azoknak a **InputClaim** -elemeknek a listája, amelyek a jogcím-átalakításhoz bemenetként bevitt jogcímeket határozzák meg. Ezen elemek mindegyike egy, a szabályzat ClaimsSchema szakaszában már definiált ClaimType mutató hivatkozást tartalmaz. |
 | InputParameters | 0:1 | A jogcím-átalakításhoz bemenetként megadott **InputParameter** -elemek listája.
@@ -69,7 +69,7 @@ A **ClaimsTransformation** elem a következő elemeket tartalmazza:
 
 A **szabályzattípushoz** elem a következő elemet tartalmazza:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | ----------- |
 | InputClaim | 1: n | Egy várt bemeneti jogcím típusa. |
 
@@ -86,7 +86,7 @@ A **InputClaim** elem a következő attribútumokat tartalmazza:
 
 A **InputParameters** elem a következő elemet tartalmazza:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | ----------- |
 | InputParameter | 1: n | Egy várt bemeneti paraméter. |
 
@@ -102,7 +102,7 @@ A **InputParameters** elem a következő elemet tartalmazza:
 
 A **OutputClaims** elem a következő elemet tartalmazza:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | ----------- |
 | OutputClaim | 0: n | A várt kimeneti jogcím típusa. |
 

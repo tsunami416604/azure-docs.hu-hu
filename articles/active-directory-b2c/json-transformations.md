@@ -12,10 +12,10 @@ ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 37df1a052a58271c239b8b3bcaa4808ab7c355f0
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85204370"
 ---
 # <a name="json-claims-transformations"></a>JSON-jogcímek átalakítása
@@ -230,7 +230,7 @@ A JSON-adatok első elemének beolvasása.
 | Item | TransformationClaimType | Adattípus | Jegyzetek |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputJson | sztring | A jogcím-átalakítás által az elemnek a JSON-adatokból való beolvasásához használt ClaimTypes. |
-| OutputClaim | key | sztring | Az első elem kulcsa a JSON-ben. |
+| OutputClaim | kulcs | sztring | Az első elem kulcsa a JSON-ben. |
 | OutputClaim | value | sztring | Az első elem értéke a JSON-ban. |
 
 A következő példában a jogcím-átalakítás kibontja az első elemet (Utónév) a JSON-adatokból.

@@ -9,10 +9,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: beb48b90afd54b044eb6d0ceaff32b53ebfcdc34
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85205968"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>Log Analytics használata a diagnosztikai szolgáltatáshoz
@@ -68,7 +68,7 @@ Ezeket a parancsmagokat minden olyan bérlőhöz futtatnia kell, amelyhez Log An
 
 Ha elkészült, a rendszer a diagnosztikai eseményeket a Log Analytics elküldi.
 
-## <a name="example-queries"></a>Példák lekérdezésekre
+## <a name="example-queries"></a>Példa a lekérdezésekre
 
 Az alábbi példák azt mutatják be, hogy a diagnosztikai szolgáltatás hogyan készít jelentést a rendszer leggyakoribb tevékenységeiről:
 

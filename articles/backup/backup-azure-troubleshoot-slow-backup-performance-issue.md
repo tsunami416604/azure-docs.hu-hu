@@ -5,10 +5,10 @@ ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.openlocfilehash: d65eca685748499f52a990c7ac588bf44cbbba31
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85194025"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Az Azure Backup-fájlok és -mappák lassú biztonsági mentésének hibaelhárítása
@@ -48,7 +48,7 @@ A Windows a [teljesítmény figyelője](https://techcommunity.microsoft.com/t5/a
 
 Íme néhány teljesítményszámlálók és tartományok, amelyek hasznosak lehetnek a szűk keresztmetszetek optimális biztonsági mentéshez való diagnosztizálásában.
 
-| Számláló | status |
+| Számláló | Állapot |
 | --- | --- |
 | Logikai lemez (fizikai lemez) –% tétlen |* 100% üresjárati állapot: 50% Idle = kifogástalan</br>* 49% üresjáratban 20% tétlen = figyelmeztetés vagy figyelő</br>* 19% üresjáratban 0% tétlen = kritikus vagy a spec |
 | Logikai lemez (fizikai lemez) –% AVG. lemez olvasása vagy írása (mp) |* 0,001 MS – 0,015 MS = kifogástalan</br>* 0,015 MS – 0,025 MS = figyelmeztetés vagy figyelő</br>* 0,026 MS vagy több = kritikus vagy nem a spec |
