@@ -15,10 +15,9 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 7d2e4274e6feaebac6536eed2f8a99d251cd5ceb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77162565"
 ---
 # <a name="perform-live-streaming-using-media-services-to-create-multi-bitrate-streams-with-azure-portal"></a>Élő adatfolyam-továbbítás Media Services használatával többszörös átviteli sebességű streameket hozhat létre a Azure Portal  
@@ -183,7 +182,7 @@ Ha már leállította és törölte is az eseményt, a felhasználók igény sze
 
 Az eszközök kezeléséhez válassza a **beállítás** lehetőséget, majd kattintson az **eszközök**elemre.
 
-![Eszközök](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-assets.png)
+![Objektumok](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-assets.png)
 
 ## <a name="considerations"></a>Megfontolandó szempontok
 * Jelenleg az élő stream maximális javasolt időtartama 8 óra. Ha ennél tovább futó csatornára van szüksége, lépjen velünk kapcsolatba az amshelp@microsoft.com e-mail-címen.

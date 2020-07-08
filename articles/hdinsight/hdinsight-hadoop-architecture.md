@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/07/2020
 ms.openlocfilehash: 3feacd94558ba275c81469827993aef106ae633c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77162208"
 ---
 # <a name="apache-hadoop-architecture-in-hdinsight"></a>Apache Hadoop-architektúra a HDInsightban
@@ -66,7 +65,7 @@ Ha törölni szeretne egy fájlt a Storage-fiókból, tekintse meg a következő
 
 ## <a name="trash-purging"></a>Kukába ürítése
 
-Az `fs.trash.interval` **HDFS** > **Advanced Core-hely** tulajdonságának az alapértelmezett értéken `0` kell maradnia, mert nem kell a helyi fájlrendszerben tárolt adatait tárolnia. Ez az érték nem befolyásolja a távoli tárolási fiókokat (WASB, ADLS GEN1, ABFS)
+Az `fs.trash.interval` **HDFS**  >  **Advanced Core-hely** tulajdonságának az alapértelmezett értéken kell maradnia `0` , mert nem kell a helyi fájlrendszerben tárolt adatait tárolnia. Ez az érték nem befolyásolja a távoli tárolási fiókokat (WASB, ADLS GEN1, ABFS)
 
 ## <a name="next-steps"></a>További lépések
 

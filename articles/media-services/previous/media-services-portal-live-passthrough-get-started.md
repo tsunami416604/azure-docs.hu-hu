@@ -15,10 +15,9 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: a83d6ae2e3ed13f0d03e0fdc87a3b45a4119ba88
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77162752"
 ---
 # <a name="perform-live-streaming-with-on-premises-encoders-using-azure-portal"></a>Élő stream továbbítása helyszíni kódolókkal Azure Portal használatával
@@ -150,7 +149,7 @@ Ha már leállította és törölte is az eseményt, a felhasználók igény sze
 
 Az eszközök kezeléséhez válassza a **beállítás** lehetőséget, majd kattintson az **eszközök**elemre.
 
-![Eszközök](./media/media-services-portal-passthrough-get-started/media-services-assets.png)
+![Objektumok](./media/media-services-portal-passthrough-get-started/media-services-assets.png)
 
 ## <a name="next-step"></a>Következő lépés
 Tekintse át a Media Services képzési terveket.

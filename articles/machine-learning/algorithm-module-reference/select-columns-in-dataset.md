@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
 ms.openlocfilehash: 714148815fa4ff543ecbf86ab21e8d51fe775543
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77153774"
 ---
 # <a name="select-columns-in-dataset-module"></a>Oszlopok kiválasztása az adatkészlet modulban
@@ -40,7 +39,7 @@ A modulban több lehetőség is van az oszlopok név szerinti kiválasztására:
 
     Ha már kitöltött adatkészlet van csatlakoztatva, akkor megjelenik az elérhető oszlopok listája. Ha egyetlen oszlop sem jelenik meg, előfordulhat, hogy az oszlopok listájának megtekintéséhez felsőbb rétegbeli modulokat kell futtatnia.
 
-    A lista szűréséhez írja be a kifejezést a keresőmezőbe. Ha például beírja a betűt `w` a keresőmezőbe, a rendszer szűri a listát a betűt `w`tartalmazó oszlopnevek megjelenítéséhez.
+    A lista szűréséhez írja be a kifejezést a keresőmezőbe. Ha például beírja a betűt `w` a keresőmezőbe, a rendszer szűri a listát a betűt tartalmazó oszlopnevek megjelenítéséhez `w` .
 
     Jelölje ki az oszlopokat, és kattintson a jobbra mutató nyílra a kijelölt oszlopok a jobb oldali ablaktáblán a listára való áthelyezéséhez.
 
@@ -79,7 +78,7 @@ A **kezdete** beállítás határozza meg a kiindulási pontot, és fontos az er
 
 + Ha a **nincs oszlop** lehetőséget választja, az oszlopok listája üresen elindul. Ezután megadhatja az oszlopok listához való *hozzáadásának* feltételeit. 
 
-    Ha több szabályt alkalmaz, minden feltétel **adalékanyag**. Tegyük fel például, hogy nem oszlopokat ad meg, majd hozzáad egy szabályt az összes numerikus oszlop beolvasásához. Az autó árát tartalmazó adatkészletben 16 oszlopot eredményez. Ezután kattintson a jelre egy **+** új feltétel hozzáadásához, majd válassza a **minden szolgáltatás belefoglalása**lehetőséget. Az eredményül kapott adatkészlet tartalmazza az összes numerikus oszlopot, valamint az összes funkció oszlopát, beleértve a karakterlánc-funkciók egyes oszlopait is.
+    Ha több szabályt alkalmaz, minden feltétel **adalékanyag**. Tegyük fel például, hogy nem oszlopokat ad meg, majd hozzáad egy szabályt az összes numerikus oszlop beolvasásához. Az autó árát tartalmazó adatkészletben 16 oszlopot eredményez. Ezután kattintson a **+** jelre egy új feltétel hozzáadásához, majd válassza a **minden szolgáltatás belefoglalása**lehetőséget. Az eredményül kapott adatkészlet tartalmazza az összes numerikus oszlopot, valamint az összes funkció oszlopát, beleértve a karakterlánc-funkciók egyes oszlopait is.
 
 ### <a name="choose-by-column-index"></a>Oszlopos index választása
 
@@ -87,7 +86,7 @@ Az oszlop indexe az oszlopnak az eredeti adatkészleten belüli sorrendjére hiv
 
 + Az oszlopok egymás után sorszámozással kezdődnek, 1-től kezdődően.  
 + Egy sor oszlop beszerzéséhez használjon kötőjelet. 
-+ A nyílt végű specifikációk ( `1-` például `-3` vagy) nem engedélyezettek.
++ A nyílt végű specifikációk (például `1-` vagy `-3` ) nem engedélyezettek.
 + Ismétlődő index-értékek (vagy oszlopnevek) nem engedélyezettek, és hibát okozhatnak.
 
 Tegyük fel például, hogy az adatkészletnek legalább nyolc oszlopa van, az alábbi példák bármelyikét beillesztheti több nem összefüggő oszlop visszaküldéséhez: 
@@ -96,7 +95,7 @@ Tegyük fel például, hogy az adatkészletnek legalább nyolc oszlopa van, az a
 + `1,3-8`
 + `1,3-6,4` 
 
-az utolsó példa nem eredményez hibát; azonban az oszlop `4`egyetlen példányát adja vissza.
+az utolsó példa nem eredményez hibát; azonban az oszlop egyetlen példányát adja vissza `4` .
 
 
 

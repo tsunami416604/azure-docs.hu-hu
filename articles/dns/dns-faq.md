@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 6/15/2019
 ms.author: rohink
 ms.openlocfilehash: 76b19cfb3c00a26d81eab81f67d8e156a520f377
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77121724"
 ---
 # <a name="azure-dns-faq"></a>Azure DNS GYIK
@@ -42,7 +41,7 @@ További információ: [Azure DNS SLA oldal](https://azure.microsoft.com/support
 
 A tartomány a tartománynévrendszer egyedi neve. Például: contoso.com.
 
-Az egyes tartományokhoz tartozó DNS-rekordok üzemeltetése DNS-zónákban történik. A tartomány contoso.com például több DNS-rekordot is tartalmazhat. A rekordok tartalmazhatnak mail.contoso.com a levelezési kiszolgálóhoz és a webhelyekhez tartozó www\.-contoso.com is. Ezek a rekordok a DNS-zóna contoso.com futnak.
+Az egyes tartományokhoz tartozó DNS-rekordok üzemeltetése DNS-zónákban történik. A tartomány contoso.com például több DNS-rekordot is tartalmazhat. A rekordok tartalmazhatnak mail.contoso.com a levelezési kiszolgálóhoz és a \. webhelyekhez tartozó www-contoso.com is. Ezek a rekordok a DNS-zóna contoso.com futnak.
 
 A tartománynév *csak egy név*. A DNS-zónák olyan adatforrások, amelyek egy tartománynév DNS-rekordjait tartalmazzák. Az Azure DNS használatával DNS-zónákat üzemeltethet, és kezelheti a tartomány DNS-rekordjait az Azure felületén. Emellett DNS-névkiszolgálók számára is lehetővé teszi az internetről érkező DNS-lekérdezések megválaszolását.
 
@@ -96,7 +95,7 @@ Igen. A Azure DNS támogatja a TXT-rekordhalmazok kiterjesztett ASCII-kódolási
 
 Például megadhat egy karakterláncot egy olyan TXT-rekord értékeként, amelynek a kiterjesztett ASCII-karaktere \ 128. Példa: "abcd\128efgh." A Azure DNS a karakter bájt értékét használja, amely 128, belső ábrázolásban. A DNS-feloldás időpontjában ez a bájt érték lesz visszaadva a válaszban. Azt is vegye figyelembe, hogy az "ABC" és a "\ 097 \ 098 \ 099" a megoldáshoz hasonlóan felcserélhető. 
 
-A TXT-rekordokhoz tartozó [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt) Zone file Master Format Escape-szabályokat követjük. Például mostantól `\` az RFC-ben mindent megmenekül. Ha a TXT `A\B` -rekord értékeként a értéket adta meg, akkor az csak `AB`a következőképpen jelenik meg és oldható fel. Ha szeretné, hogy a TXT-rekord felbontásban legyen `A\B` , `\` újra kell menekülnie. Példaként válassza `A\\B`a lehetőséget.
+A TXT-rekordokhoz tartozó [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt) Zone file Master Format Escape-szabályokat követjük. Például `\` mostantól az RFC-ben mindent megmenekül. Ha `A\B` a TXT-rekord értékeként a értéket adta meg, akkor az csak a következőképpen jelenik meg és oldható fel `AB` . Ha szeretné, hogy a TXT-rekord `A\B` felbontásban legyen, újra kell menekülnie `\` . Példaként válassza a lehetőséget `A\\B` .
 
 Ez a támogatás jelenleg nem érhető el a Azure Portalból létrehozott TXT-rekordokhoz.
 

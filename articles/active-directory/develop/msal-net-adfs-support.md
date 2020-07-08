@@ -14,10 +14,9 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 15af18177cea217612a4d5276d130abe02d339f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77160760"
 ---
 # <a name="active-directory-federation-services-support-in-msalnet"></a>Active Directory összevonási szolgáltatások (AD FS) támogatás a MSAL.NET-ben
@@ -35,7 +34,7 @@ A MSAL.NET támogatja az Azure AD-hez való csatlakozást, amely a felügyelt fe
 Az ebben az esetben [használt szolgáltató a](msal-client-application-configuration.md#authority) szokásos hatóság (szolgáltatói állomásnév + bérlő, közös vagy szervezet).
 
 ### <a name="acquiring-a-token-interactively"></a>Token interaktív beszerzése
-A `AcquireTokenInteractive` metódus meghívásakor a felhasználói élmény általában:
+A metódus meghívásakor `AcquireTokenInteractive` a felhasználói élmény általában:
 
 1. A felhasználó megadja a fiók AZONOSÍTÓját.
 2. Az Azure AD röviden megjeleníti a "saját szervezet lapja" üzenetet.
@@ -44,10 +43,10 @@ A `AcquireTokenInteractive` metódus meghívásakor a felhasználói élmény á
 Az összevont forgatókönyvben támogatott AD FS verziók a következők: AD FS v2, AD FS v3 (Windows Server 2012 R2) és AD FS v4 (AD FS 2016).
 
 ### <a name="acquiring-a-token-using-acquiretokenbyintegratedauthentication-or-acquiretokenbyusernamepassword"></a>Token beszerzése a AcquireTokenByIntegratedAuthentication vagy a AcquireTokenByUsernamePassword használatával
-Ha a `AcquireTokenByIntegratedAuthentication` (z) vagy `AcquireTokenByUsernamePassword` metódusok használatával szerez be tokent, a MSAL.net az identitás szolgáltatóját a Felhasználónév alapján kapja meg.  A MSAL.NET [SAML 1,1-tokent](reference-saml-tokens.md) kap az identitás-szolgáltatóval való kapcsolatfelvétel után.  A MSAL.NET ezt követően az SAML-jogkivonatot az Azure AD-nek felhasználói kijelentésként (a [folyamathoz](msal-authentication-flows.md#on-behalf-of)hasonlóan) adja vissza egy JWT visszaszerzéséhez.
+Ha a (z) vagy metódusok használatával szerez be tokent `AcquireTokenByIntegratedAuthentication` `AcquireTokenByUsernamePassword` , a MSAL.net az identitás szolgáltatóját a Felhasználónév alapján kapja meg.  A MSAL.NET [SAML 1,1-tokent](reference-saml-tokens.md) kap az identitás-szolgáltatóval való kapcsolatfelvétel után.  A MSAL.NET ezt követően az SAML-jogkivonatot az Azure AD-nek felhasználói kijelentésként (a [folyamathoz](msal-authentication-flows.md#on-behalf-of)hasonlóan) adja vissza egy JWT visszaszerzéséhez.
 
 ## <a name="msal-connects-directly-to-ad-fs"></a>A MSAL közvetlenül csatlakozik AD FS
-A MSAL.NET támogatja a AD FS 2019-hez való csatlakozást, amely a nyitott azonosító csatlakozásnak megfelelő, és ismeri a PKCE és a hatóköröket. Ehhez a támogatáshoz a [4490481](https://support.microsoft.com/en-us/help/4490481/windows-10-update-kb4490481) -es szervizcsomagot kell alkalmazni a Windows Serverre. Közvetlenül a AD FShoz való csatlakozáskor az alkalmazás létrehozásához használni kívánt szolgáltató a következőhöz hasonló: `https://mysite.contoso.com/adfs/`.
+A MSAL.NET támogatja a AD FS 2019-hez való csatlakozást, amely a nyitott azonosító csatlakozásnak megfelelő, és ismeri a PKCE és a hatóköröket. Ehhez a támogatáshoz a [4490481](https://support.microsoft.com/en-us/help/4490481/windows-10-update-kb4490481) -es szervizcsomagot kell alkalmazni a Windows Serverre. Közvetlenül a AD FShoz való csatlakozáskor az alkalmazás létrehozásához használni kívánt szolgáltató a következőhöz hasonló: `https://mysite.contoso.com/adfs/` .
 
 Jelenleg nincsenek a közvetlen kapcsolódást támogató csomagok:
 

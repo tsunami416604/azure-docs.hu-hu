@@ -10,10 +10,9 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 12655d2ceb4a1124376d9bddf82194472c98ebb9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77086648"
 ---
 # <a name="persist-state-in-linux"></a>Állapot megőrzése Linuxon
@@ -25,7 +24,7 @@ Alapértelmezés szerint a rendszer csak a metaadatokat őrzi meg, az események
 Ez a cikk azokat a lépéseket ismerteti, amelyekkel üzembe helyezheti a Event Grid modult a Linux rendszerű üzemelő példányokban.
 
 > [!NOTE]
->Az Event Grid modul alacsony jogosultsági szintű felhasználóként fut UID `2000` és Name néven. `eventgriduser`
+>Az Event Grid modul alacsony jogosultsági szintű felhasználóként fut UID `2000` és Name néven `eventgriduser` .
 
 ## <a name="persistence-via-volume-mount"></a>Adatmegőrzés a Volume Mount használatával
 
@@ -105,7 +104,7 @@ A Docker-kötetek helyett lehetősége van a gazdagép-mappák csatlakoztatásá
    sudo chown eventgriduser:eventgriduser -hR <your-directory-name-here>
    ```
 
-    Például:
+    Példa:
 
     ```sh
     sudo chown eventgriduser:eventgriduser -hR /myhostdir
@@ -123,7 +122,7 @@ A Docker-kötetek helyett lehetősége van a gazdagép-mappák csatlakoztatásá
     }
     ```
 
-    Például:
+    Példa:
 
     ```json
     {
@@ -170,7 +169,7 @@ Fontos tudnivalók a megőrzött eseményekről:
 * Az esemény-megőrzés a létrehozáskor egy esemény-előfizetésen van konfigurálva, és az esemény-előfizetés létrehozása után nem módosítható. Az események megőrzésének váltásához törölnie kell, majd újra létre kell hoznia az esemény-előfizetést.
 * A megőrzött események szinte mindig lassabbak, mint a memóriabeli műveletekben, azonban a sebességbeli különbség nagymértékben függ a meghajtó jellemzőitől. A gyorsaság és a megbízhatóság közötti kompromisszum minden üzenetkezelő rendszerhez alkalmazkodik, de általában nagy léptékben észlelhető.
 
-Ha engedélyezni szeretné az események megőrzését egy esemény- `persistencePolicy` előfizetésben, állítsa a `true`következőre:
+Ha engedélyezni szeretné az események megőrzését egy esemény-előfizetésben, állítsa a következőre `persistencePolicy` `true` :
 
  ```json
         {
