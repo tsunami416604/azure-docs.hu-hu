@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: a64aaca97c9df61d795c82d64e6048d6f9ae032f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76906080"
 ---
 # <a name="sfctl-is"></a>sfctl értéke
@@ -17,7 +16,7 @@ Parancsok lekérdezése és küldése az infrastruktúra-szolgáltatásnak.
 
 ## <a name="commands"></a>Parancsok
 
-|Parancs|Leírás|
+|Parancs|Description|
 | --- | --- |
 | command | Egy rendszergazdai parancsot hív meg a megadott infrastruktúra-szolgáltatási példányon. |
 | lekérdezés | Egy írásvédett lekérdezést hív meg a megadott infrastruktúra-szolgáltatási példányon. |
@@ -29,20 +28,20 @@ Azon fürtök esetében, amelyeken az infrastruktúra-szolgáltatás egy vagy t�
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Leírás|
+|Argumentum|Description|
 | --- | --- |
 | --Command [kötelező] | A meghívni kívánt parancs szövege. A parancs tartalma infrastruktúra-specifikus. |
-| --Service-ID | Az infrastruktúra-szolgáltatás identitása. <br><br> Ez az infrastruktúra-szolgáltatás teljes neve a "Fabric\:" URI-séma nélkül. Ez a paraméter csak azon fürt esetében szükséges, amelynél az infrastruktúra-szolgáltatás egynél több példánya fut. |
-| --időtúllépés-t | Alapértelmezett\: 60. |
+| --Service-ID | Az infrastruktúra-szolgáltatás identitása. <br><br> Ez az infrastruktúra-szolgáltatás teljes neve a "Fabric \: " URI-séma nélkül. Ez a paraméter csak azon fürt esetében szükséges, amelynél az infrastruktúra-szolgáltatás egynél több példánya fut. |
+| --időtúllépés-t | Alapértelmezett \: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Leírás|
+|Argumentum|Description|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --output-o | Kimeneti formátum.  Engedélyezett értékek: \: JSON, jsonc, Table, TSV.  Alapértelmezett \: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca \:További információkat és példákat a http//jmespath.org/című témakörben talál. |
 | --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
 ## <a name="sfctl-is-query"></a>sfctl lekérdezés
@@ -52,20 +51,20 @@ Azon fürtök esetében, amelyeken az infrastruktúra-szolgáltatás egy vagy t�
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Leírás|
+|Argumentum|Description|
 | --- | --- |
 | --Command [kötelező] | A meghívni kívánt parancs szövege. A parancs tartalma infrastruktúra-specifikus. |
-| --Service-ID | Az infrastruktúra-szolgáltatás identitása. <br><br> Ez az infrastruktúra-szolgáltatás teljes neve a "Fabric\:" URI-séma nélkül. Ez a paraméter csak azon fürt esetében szükséges, amelynél az infrastruktúra-szolgáltatás egynél több példánya fut. |
-| --időtúllépés-t | Alapértelmezett\: 60. |
+| --Service-ID | Az infrastruktúra-szolgáltatás identitása. <br><br> Ez az infrastruktúra-szolgáltatás teljes neve a "Fabric \: " URI-séma nélkül. Ez a paraméter csak azon fürt esetében szükséges, amelynél az infrastruktúra-szolgáltatás egynél több példánya fut. |
+| --időtúllépés-t | Alapértelmezett \: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Leírás|
+|Argumentum|Description|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --output-o | Kimeneti formátum.  Engedélyezett értékek: \: JSON, jsonc, Table, TSV.  Alapértelmezett \: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca \:További információkat és példákat a http//jmespath.org/című témakörben talál. |
 | --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
 

@@ -9,52 +9,51 @@ ms.topic: article
 ms.date: 08/13/2019
 ms.author: alkohli
 ms.openlocfilehash: db6e2eadbf19d78a203a4d4ba6111ad88430b192
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68985945"
 ---
 # <a name="safely-install-and-operate-your-azure-data-box"></a>A Azure Data Box biztonságos telepítése és működtetése
-![Figyelmeztető ikon](./media/data-box-safety/warning_icon.png)
-![olvassa el a biztonsági](./media/data-box-safety/read_safety_and_health_information_icon.png) értesítés ikonját **, olvassa el a biztonsági és egészségvédelmi információkat**
+![Figyelmeztető ikon ](./media/data-box-safety/warning_icon.png)
+ ![ olvassa el a biztonsági értesítés ikonját ](./media/data-box-safety/read_safety_and_health_information_icon.png) **, olvassa el a biztonsági és egészségvédelmi információkat**
 
 A Azure Data Box használata előtt olvassa el az ebben a cikkben található összes biztonsági információt. Az utasítások követésének elmulasztása tüzet, áramütést vagy más sérüléseket eredményezhet, illetve a tulajdonságok károsodását okozhatja.
 
 ## <a name="safety-icon-conventions"></a>Biztonsági ikon konvenciói
 Itt láthatja azokat az ikonokat, amelyekkel megtekintheti a Data Box beállításakor és futtatásakor betartandó biztonsági óvintézkedéseket.
 
-| Ikon | Leírás |
+| Ikon | Description |
 |:--- |:--- |
-| ![Veszélyforrás ikon](./media/data-box-safety/warning_icon.png) **veszélye!** |Olyan veszélyes helyzetet jelez, amely – ha nem kerül elkerülésre – halált vagy súlyos sérülést eredményezhet. Ezt a jelet a legszélsőségesebb helyzetekre kell korlátozni. |
-| ![Figyelmeztetés ikon](./media/data-box-safety/warning_icon.png) **Figyelmeztetés!** |Olyan veszélyes helyzetet jelez, amely – ha nem kerül elkerülésre – halált vagy súlyos sérülést eredményezhet. |
-| ![Figyelmeztető ikon](./media/data-box-safety/warning_icon.png) **CAUTION!** figyelmeztetése |Olyan veszélyes helyzetet jelez, amely – ha nem kerül elkerülésre – kisebb vagy mérsékelt sérülést eredményezhet. |
-| ![Értesítés ikonjának](./media/data-box-safety/notice_icon.png) **megjegyzése:** |A fontosnak tartott információkat jelöli, de nem kapcsolódik a veszélyforráshoz. |
-| ![Elektromos áramütés ikon](./media/data-box-safety/electrical_shock_hazard_icon.png) áramütési **kockázat** |Magas feszültségű. |
-| ![Nagy súly ikon](./media/data-box-safety/heavy_weight_hazard_icon.png) **nagy súlya** | |
-| ![Nincs felhasználó által szervizelhető rész](./media/data-box-safety/no_user_serviceable_parts_icon.png) ikonja **nem rendelkezik felhasználó által szervizelhető részekkel** |A megfelelő képzés hiányában ne legyen hozzáférés. |
-| ![Biztonsági értesítés ikonjának](./media/data-box-safety/read_safety_and_health_information_icon.png) beolvasása – **első lépések** | |
-| ![Tipp kockázati ikon](./media/data-box-safety/tip_hazard_icon.png) **Tipp – kockázat** | |
+| ![Veszélyforrás ikon ](./media/data-box-safety/warning_icon.png) **veszélye!** |Olyan veszélyes helyzetet jelez, amely – ha nem kerül elkerülésre – halált vagy súlyos sérülést eredményezhet. Ezt a jelet a legszélsőségesebb helyzetekre kell korlátozni. |
+| ![Figyelmeztetés ikon ](./media/data-box-safety/warning_icon.png) **Figyelmeztetés!** |Olyan veszélyes helyzetet jelez, amely – ha nem kerül elkerülésre – halált vagy súlyos sérülést eredményezhet. |
+| ![Figyelmeztető ikon ](./media/data-box-safety/warning_icon.png) **CAUTION!** figyelmeztetése |Olyan veszélyes helyzetet jelez, amely – ha nem kerül elkerülésre – kisebb vagy mérsékelt sérülést eredményezhet. |
+| ![Értesítés ikonjának ](./media/data-box-safety/notice_icon.png) **megjegyzése:** |A fontosnak tartott információkat jelöli, de nem kapcsolódik a veszélyforráshoz. |
+| ![Elektromos áramütés ikon áramütési ](./media/data-box-safety/electrical_shock_hazard_icon.png) **kockázat** |Magas feszültségű. |
+| ![Nagy súly ikon ](./media/data-box-safety/heavy_weight_hazard_icon.png) **nagy súlya** | |
+| ![Nincs felhasználó által szervizelhető rész ikonja ](./media/data-box-safety/no_user_serviceable_parts_icon.png) **nem rendelkezik felhasználó által szervizelhető részekkel** |A megfelelő képzés hiányában ne legyen hozzáférés. |
+| ![Biztonsági értesítés ikonjának beolvasása – ](./media/data-box-safety/read_safety_and_health_information_icon.png) **első lépések** | |
+| ![Tipp kockázati ikon ](./media/data-box-safety/tip_hazard_icon.png) **Tipp – kockázat** | |
 
 ## <a name="handling-precautions"></a>Óvintézkedések feldolgozása
 
-![Figyelmeztető ikon](./media/data-box-safety/warning_icon.png) ![áramütés ikonja](./media/data-box-safety/electrical_shock_hazard_icon.png)![nem rendelkezik a felhasználó által szervizelhető](./media/data-box-safety/no_user_serviceable_parts_icon.png) **részek ikonjának figyelmeztetésével** 
+![Figyelmeztető ikon ](./media/data-box-safety/warning_icon.png) ![ áramütés ikonja ](./media/data-box-safety/electrical_shock_hazard_icon.png)![ nem rendelkezik a felhasználó által szervizelhető részek ikonjának ](./media/data-box-safety/no_user_serviceable_parts_icon.png) **CAUTION** figyelmeztetésével 
 
 * A *kapott* eszköz bevizsgálása károkért. Ha az eszköz bekerítése sérült, [forduljon a Microsoft ügyfélszolgálatahoz](data-box-disk-contact-microsoft-support.md) , és szerezzen be egy cserét. Ne kísérelje meg az eszköz üzemeltetését. 
 * Az eszköz illetéktelen hozzáférést biztosító csavarokkal van ellátva. Ha azt gyanítja, hogy az eszköz meghibásodik, [forduljon a Microsoft ügyfélszolgálatahoz](data-box-disk-contact-microsoft-support.md) , és szerezzen be egy cserét. Ne kísérelje meg az eszköz kiszolgálását. 
 * Az eszköz nem tartalmaz felhasználó által szervizelhető részt. A veszélyes feszültség, a jelenlegi és az energia szintje belül van. Ne nyissa meg. Az eszköz visszaküldése a Microsoftnak a karbantartáshoz.
 
-![Figyelmeztetés ikon](./media/data-box-safety/warning_icon.png) ![nagy súly ikon](./media/data-box-safety/heavy_weight_hazard_icon.png) **Figyelmeztetés!** 
+![Figyelmeztetés ikon ](./media/data-box-safety/warning_icon.png) ![ nagy súly ikon ](./media/data-box-safety/heavy_weight_hazard_icon.png) **Figyelmeztetés!** 
 
 * Egy teljesen konfigurált ház súlya 22,7 kg (50 lbs) lehet. Ne próbálja meg önállóan feloldani.
 * A ház áthelyezése előtt mindig győződjön meg arról, hogy két személy áll rendelkezésre a súlyozás kezelésére. Ügyeljen arra, hogy a súlyozást megkísérlő egyik személy is fenntartsa a sérüléseket.
 
 
-![Figyelmeztetés ikon](./media/data-box-safety/warning_icon.png) ![tipp kockázati ikon](./media/data-box-safety/tip_hazard_icon.png) **Figyelmeztetés!**
+![Figyelmeztetés ikon ](./media/data-box-safety/warning_icon.png) ![ Tipp kockázati ikon ](./media/data-box-safety/tip_hazard_icon.png) **Figyelmeztetés!**
 * Helyezze az eszközt egy sima, kemény és stabil felületen, hogy elkerülje a lehetséges tip-veszélyforrást.
 * Az állványra csatlakoztatott berendezések nem használhatók polcok vagy munkaterületek számára. Ne helyezze a Data Box az állványra szerelt berendezések fölé. Ha bármilyen betöltési típust hozzáad egy kiterjesztett állványhoz csatlakoztatott egységhez, létrehozhat egy lehetséges tipp-veszélyforrást, amely sérülést, halált vagy kárt okozhat.
 
-![Figyelmeztetés ikon](./media/data-box-safety/warning_icon.png) **Figyelmeztetés!**
+![Figyelmeztetés ikon ](./media/data-box-safety/warning_icon.png) **Figyelmeztetés!**
 
 * Állítsa be az eszközt olyan munkaterületen, amely lehetővé teszi az eszköz megfelelő légforgalmának biztosítását.
 * Az eszközt egy hőmérséklet által vezérelt fedett területre kell telepíteni, amely mentes a vezető szennyezőanyagok, és lehetővé teszi az eszközön a megfelelő légáramlást.
@@ -63,7 +62,7 @@ Itt láthatja azokat az ikonokat, amelyekkel megtekintheti a Data Box beállít�
 
 ## <a name="electrical-precautions"></a>Elektromos óvintézkedések
 
-![Figyelmeztető ikon](./media/data-box-safety/warning_icon.png) ![áramütés ikonja](./media/data-box-safety/electrical_shock_hazard_icon.png) **Figyelmeztetés!**
+![Figyelmeztető ikon ](./media/data-box-safety/warning_icon.png) ![ áramütés ikonja ](./media/data-box-safety/electrical_shock_hazard_icon.png) **Figyelmeztetés!**
 
 * Biztonságos elektromos földi csatlakozást biztosít a tápkábelhez. Az AC-kábel egy három vezetékes földelő csatlakozóval (egy földelt PIN-kóddal rendelkező csatlakozóval) rendelkezik. Ez a beépülő modul csak egy megalapozott hálózati konnektorhoz illeszkedik. Ne győzje le a földelő PIN-kód célját.
 * Mivel a tápkábel csatlakoztatása a fő leválasztási eszköz, győződjön meg arról, hogy a szoftvercsatorna-kimenetek az eszköz közelében találhatók, és könnyen elérhetők.
@@ -81,12 +80,12 @@ Itt láthatja azokat az ikonokat, amelyekkel megtekintheti a Data Box beállít�
     - Jelenlegi: 6 A, maximum
     - Gyakoriság: 50 Hz – 60 Hz
 
-![Figyelmeztető ikon](./media/data-box-safety/warning_icon.png) figyelmeztetése **:**
+![Figyelmeztető ikon figyelmeztetése ](./media/data-box-safety/warning_icon.png) **:**
 
 * Ez az eszköz érme cella akkumulátorokat tartalmaz. Ne kísérelje meg az eszköz kiszolgálását. Az eszközön lévő elemek nem a felhasználó által szervizelhető. 
 * **Csak a szolgáltatási munkatársak esetében**: a robbanás kockázata, ha az akkumulátort helytelen típus váltja fel. A használt elemek használata az utasításoknak megfelelően.
 
-![Értesítés ikonjának](./media/data-box-safety/notice_icon.png) **megjegyzése:**
+![Értesítés ikonjának ](./media/data-box-safety/notice_icon.png) **megjegyzése:**
 
 Az eszköz megfelelő működéséhez és a termékek károsodásának megakadályozásához:
 
@@ -108,13 +107,13 @@ Az eszköz a következő:
 
 Az elektromos ellátási minősítések esetében tekintse meg az egységhez megadott eszköz minősítési címkét. 
 
-![Értesítés ikonjának](./media/data-box-safety/notice_icon.png) **megjegyzése:** 
+![Értesítés ikonjának ](./media/data-box-safety/notice_icon.png) **megjegyzése:** 
 
 Az eszközön a Microsoft által kifejezetten nem jóváhagyott módosításokat vagy módosításokat érvénytelenítheti a felhasználó hatósága az eszköz üzemeltetéséhez.
 
 **Kanada és USA:**
 
-![Értesítés ikonjának](./media/data-box-safety/notice_icon.png) **megjegyzése:** 
+![Értesítés ikonjának ](./media/data-box-safety/notice_icon.png) **megjegyzése:** 
 
 A rendszer tesztelte a készüléket, és úgy találta, hogy megfelel az "a" osztályú digitális eszköz korlátainak, az FCC-szabályok 15. részének megfelelően. Ezek a korlátok úgy vannak kialakítva, hogy ésszerű védelmet biztosítanak a káros interferenciák ellen, ha a berendezés kereskedelmi környezetben üzemel. Ez a berendezés a rádiófrekvenciás energia előállítására, felhasználására és kisugárzására szolgál, és ha nincs telepítve és használatban a használati utasítással összhangban, a rádiófrekvenciás kommunikáció káros hatással lehet. A berendezésnek a lakossági környezetben való működése valószínűleg káros interferencia okoz, amely esetben a felhasználónak a saját költségén kell kijavítania a beavatkozást.
 
@@ -134,7 +133,7 @@ Kanada: (800) 933-4750
 
 [Az EU megfelelőségi nyilatkozatának másolatának kérése](mailto:CSI_Compliance@microsoft.com).
 
-![Figyelmeztetés ikon](./media/data-box-safety/warning_icon.png) **Figyelmeztetés:** 
+![Figyelmeztetés ikon ](./media/data-box-safety/warning_icon.png) **Figyelmeztetés:** 
 
 Ez egy termék osztálya. Belföldi környezetben Ez a termék a rádiófrekvenciás interferencia okozhatja, amely esetben a felhasználónak szükség lehet a megfelelő intézkedések meghozatalára.
 
@@ -142,7 +141,7 @@ Ez egy termék osztálya. Belföldi környezetben Ez a termék a rádiófrekvenc
 
 ![Akkumulátor kivezetésének ikonja](./media/data-box-safety/battery_disposal_icon.png)
 
-A termékre vagy annak elemeire vagy csomagolására vonatkozó szimbólum azt jelenti, hogy a terméket és a benne található elemeket nem szabad a háztartási hulladékból ártalmatlanítani. Ehelyett az Ön felelőssége, hogy ezt átadja a megfelelő gyűjtési pontnak az elemek és az elektromos és elektronikus berendezések újrahasznosításához. Ez a különálló gyűjtemény és újrahasznosítás segíti a természeti erőforrások megőrzését, és megelőzheti az emberi egészségre és a környezetre vonatkozó lehetséges negatív következményeket a veszélyes anyagok lehetséges jelenléte miatt az akkumulátorok és az elektromos és elektronikus berendezések esetében, amelyeket a nem megfelelő ártalmatlanítás okozhat. Ha többet szeretne megtudni az akkumulátorok és az elektromos és elektronikus hulladékok eltávolításának helyéről, forduljon a helyi városi/helyhatósági irodához, a háztartási hulladék-ártalmatlanítási szolgáltatáshoz, illetve a terméket megvásárló áruházhoz. Az WEEE-ről további információért forduljon a *erecycle\@Microsoft.com* .
+A termékre vagy annak elemeire vagy csomagolására vonatkozó szimbólum azt jelenti, hogy a terméket és a benne található elemeket nem szabad a háztartási hulladékból ártalmatlanítani. Ehelyett az Ön felelőssége, hogy ezt átadja a megfelelő gyűjtési pontnak az elemek és az elektromos és elektronikus berendezések újrahasznosításához. Ez a különálló gyűjtemény és újrahasznosítás segíti a természeti erőforrások megőrzését, és megelőzheti az emberi egészségre és a környezetre vonatkozó lehetséges negatív következményeket a veszélyes anyagok lehetséges jelenléte miatt az akkumulátorok és az elektromos és elektronikus berendezések esetében, amelyeket a nem megfelelő ártalmatlanítás okozhat. Ha többet szeretne megtudni az akkumulátorok és az elektromos és elektronikus hulladékok eltávolításának helyéről, forduljon a helyi városi/helyhatósági irodához, a háztartási hulladék-ártalmatlanítási szolgáltatáshoz, illetve a terméket megvásárló áruházhoz. Az WEEE-ről további információért forduljon a *erecycle \@ Microsoft.com* .
 
 Ez a termék érme cella akkumulátort (IES) tartalmaz.
 

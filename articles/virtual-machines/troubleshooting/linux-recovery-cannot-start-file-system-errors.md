@@ -15,10 +15,9 @@ ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
 ms.openlocfilehash: 455cb1e0067217be6edcf665e8c07e8fcd684ab5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76842401"
 ---
 # <a name="troubleshoot-linux-vm-starting-issues-due-to-file-system-errors"></a>Linux rendszerű virtuális gép hibáinak elhárítása fájlrendszerbeli hibák miatt
@@ -29,7 +28,7 @@ A Secure Shell (SSH) használatával nem lehet csatlakozni az Azure Linux rendsz
 
 A következő példák a lehetséges hibákra mutatnak.
 
-### <a name="example-1"></a>1. példa 
+### <a name="example-1"></a>1\. példa 
 
 ```
 Checking all file systems.
@@ -39,7 +38,7 @@ Checking all file systems.
 /dev/sda1: UNEXPECTED INCONSISTENCY; RUN fsck MANUALLY
 ```
 
-### <a name="example-2"></a>2. példa
+### <a name="example-2"></a>2\. példa
 
 ```
 EXT4-fs (sda1): INFO: recovery required on readonly filesystem
@@ -48,7 +47,7 @@ EXT4-fs warning (device sda1): ext4_clear_journal_err:4531: Filesystem error rec
 EXT4-fs warning (device sda1): ext4_clear_journal_err:4532: Making fs in need of filesystem check.
 ```
 
-### <a name="example-3"></a>3. példa
+### <a name="example-3"></a>3\. példa
 
 ```
 [  14.252404] EXT4-fs (sda1): Couldn’t remount RDWR because of unprocessed orphan inode list.  Please unmount/remount instead

@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 3e398ff8a1a0a28fd9d0650a7c9d18ba04817d33
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76906015"
 ---
 # <a name="sfctl-mesh-gateway"></a>sfctl mesh átjárója
@@ -17,7 +16,7 @@ Rácsvonal-átjáró erőforrásainak beolvasása és törlése.
 
 ## <a name="commands"></a>Parancsok
 
-|Parancs|Leírás|
+|Parancs|Description|
 | --- | --- |
 | delete | Az átjáró erőforrásának törlése. |
 | lista | Felsorolja az összes átjáró erőforrását. |
@@ -30,18 +29,18 @@ Törli a névvel azonosított átjáró-erőforrást.
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Leírás|
+|Argumentum|Description|
 | --- | --- |
 | --Name-n [kötelező] | Az átjáró erőforrásának neve. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Leírás|
+|Argumentum|Description|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --output-o | Kimeneti formátum.  Engedélyezett értékek: \: JSON, jsonc, Table, TSV.  Alapértelmezett \: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca \:További információkat és példákat a http//jmespath.org/című témakörben talál. |
 | --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
 ## <a name="sfctl-mesh-gateway-list"></a>sfctl Mesh-átjárók listája
@@ -51,12 +50,12 @@ Az adott erőforráscsoport összes átjáró-erőforrásával kapcsolatos infor
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Leírás|
+|Argumentum|Description|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --output-o | Kimeneti formátum.  Engedélyezett értékek: \: JSON, jsonc, Table, TSV.  Alapértelmezett \: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca \:További információkat és példákat a http//jmespath.org/című témakörben talál. |
 | --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
 ## <a name="sfctl-mesh-gateway-show"></a>sfctl Mesh Gateway show
@@ -66,18 +65,18 @@ Az átjáró-erőforrással kapcsolatos információk beolvasása a megadott né
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Leírás|
+|Argumentum|Description|
 | --- | --- |
 | --Name-n [kötelező] | Az átjáró erőforrásának neve. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Leírás|
+|Argumentum|Description|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --output-o | Kimeneti formátum.  Engedélyezett értékek: \: JSON, jsonc, Table, TSV.  Alapértelmezett \: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca \:További információkat és példákat a http//jmespath.org/című témakörben talál. |
 | --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
 

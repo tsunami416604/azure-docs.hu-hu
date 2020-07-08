@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 9aa0b6795508cb94200c486df092b867c1086316
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76905993"
 ---
 # <a name="sfctl-mesh-network"></a>sfctl mesh hálózata
@@ -17,7 +16,7 @@ Háló hálózati erőforrásainak beolvasása és törlése.
 
 ## <a name="commands"></a>Parancsok
 
-|Parancs|Leírás|
+|Parancs|Description|
 | --- | --- |
 | delete | A hálózati erőforrás törlése. |
 | lista | Felsorolja az összes hálózati erőforrást. |
@@ -30,18 +29,18 @@ Törli a névvel azonosított hálózati erőforrást.
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Leírás|
+|Argumentum|Description|
 | --- | --- |
 | --Name-n [kötelező] | A hálózat neve. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Leírás|
+|Argumentum|Description|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --output-o | Kimeneti formátum.  Engedélyezett értékek: \: JSON, jsonc, Table, TSV.  Alapértelmezett \: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca \:További információkat és példákat a http//jmespath.org/című témakörben talál. |
 | --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
 ## <a name="sfctl-mesh-network-list"></a>sfctl Mesh hálózat listája
@@ -51,12 +50,12 @@ Egy adott erőforráscsoport összes hálózati erőforrásával kapcsolatos inf
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Leírás|
+|Argumentum|Description|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --output-o | Kimeneti formátum.  Engedélyezett értékek: \: JSON, jsonc, Table, TSV.  Alapértelmezett \: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca \:További információkat és példákat a http//jmespath.org/című témakörben talál. |
 | --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
 ## <a name="sfctl-mesh-network-show"></a>sfctl Mesh Network show
@@ -66,18 +65,18 @@ A megadott nevű hálózati erőforrással kapcsolatos információk beolvasása
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Leírás|
+|Argumentum|Description|
 | --- | --- |
 | --Name-n [kötelező] | A hálózat neve. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Leírás|
+|Argumentum|Description|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --output-o | Kimeneti formátum.  Engedélyezett értékek: \: JSON, jsonc, Table, TSV.  Alapértelmezett \: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca \:További információkat és példákat a http//jmespath.org/című témakörben talál. |
 | --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
 

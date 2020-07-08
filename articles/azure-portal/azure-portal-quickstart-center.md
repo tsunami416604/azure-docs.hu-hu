@@ -1,5 +1,5 @@
 ---
-title: Ismerkedés az Azure Gyorsindítás központjával
+title: Ismerkedés az Azure Gyorskonfigurálási központ használatával
 description: Az Azure gyors üzembe helyezési szolgáltatásával megismerheti az Azure-t. Megtudhatja, hogyan állíthatja be, telepítheti át és újíthatja meg.
 services: azure-portal
 keywords: ''
@@ -10,13 +10,12 @@ ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
 ms.openlocfilehash: 21dd43b5179d0752699bb56b51a2c08976aa037b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76900687"
 ---
-# <a name="get-started-with-the-azure-quickstart-center"></a>Ismerkedés az Azure Gyorsindítás központjával
+# <a name="get-started-with-the-azure-quickstart-center"></a>Ismerkedés az Azure Gyorskonfigurálási központ használatával
 
 Az Azure gyors üzembe helyezési központja a Azure Portal számára elérhető, és mindenki számára elérhetővé válik, akik javítani szeretnék az Azure ismereteit. Az Azure-ban új szervezetek számára a felhőalapú környezet bevezetésének és beállításának leggyorsabb módja.
 
@@ -36,7 +35,7 @@ Az Azure Gyorsindítás központ három lehetőséggel rendelkezik az első lép
 
 1. A Azure Portal menüben válassza a **minden szolgáltatás** lehetőséget.
 
-1. Válassza az **általános** > **Gyorsindítás központot**.
+1. Válassza az **általános**  >  **Gyorsindítás központot**.
 
 Tekintse meg ezt a videót az Azure Gyorsindítás központ által elvégezhető Részletes információkért:
 > [!VIDEO https://www.youtube.com/embed/0bSA7RXrbAg]

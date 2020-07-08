@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: b2fe3a7995cdd88a8f63d0d865e72e9f161cf9d7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76905965"
 ---
 # <a name="sfctl-mesh-secretvalue"></a>sfctl mesh titkos kódjának értéke
@@ -17,7 +16,7 @@ Háló secretvalue erőforrásainak beolvasása és törlése.
 
 ## <a name="commands"></a>Parancsok
 
-|Parancs|Leírás|
+|Parancs|Description|
 | --- | --- |
 | delete | Törli a névvel ellátott titkos erőforrás megadott értékét. |
 | lista | A megadott titkos erőforrás összes értékének listázása. |
@@ -30,19 +29,19 @@ Törli a név alapján azonosított titkos érték erőforrást. Az erőforrás 
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Leírás|
+|Argumentum|Description|
 | --- | --- |
 | --Secret-Name-n [kötelező] | A titkos erőforrás neve. |
 | --Version-v [kötelező] | A titkos verzió neve. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Leírás|
+|Argumentum|Description|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --output-o | Kimeneti formátum.  Engedélyezett értékek: \: JSON, jsonc, Table, TSV.  Alapértelmezett \: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca \:További információkat és példákat a http//jmespath.org/című témakörben talál. |
 | --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
 ## <a name="sfctl-mesh-secretvalue-list"></a>sfctl Mesh secretvalue listája
@@ -52,18 +51,18 @@ Információk beolvasása a megadott titkos erőforrás minden titkos érték er
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Leírás|
+|Argumentum|Description|
 | --- | --- |
 | --Secret-Name-n [kötelező] | A titkos erőforrás neve. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Leírás|
+|Argumentum|Description|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --output-o | Kimeneti formátum.  Engedélyezett értékek: \: JSON, jsonc, Table, TSV.  Alapértelmezett \: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca \:További információkat és példákat a http//jmespath.org/című témakörben talál. |
 | --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
 ## <a name="sfctl-mesh-secretvalue-show"></a>sfctl Mesh secretvalue show
@@ -71,7 +70,7 @@ A titkos erőforrás megadott értékét listázza.
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Leírás|
+|Argumentum|Description|
 | --- | --- |
 | --Secret-Name-n [kötelező] | A titkos erőforrás neve. |
 | --Version-v [kötelező] | A titkos verzió neve. |
@@ -79,12 +78,12 @@ A titkos erőforrás megadott értékét listázza.
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Leírás|
+|Argumentum|Description|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --output-o | Kimeneti formátum.  Engedélyezett értékek: \: JSON, jsonc, Table, TSV.  Alapértelmezett \: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca \:További információkat és példákat a http//jmespath.org/című témakörben talál. |
 | --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
 

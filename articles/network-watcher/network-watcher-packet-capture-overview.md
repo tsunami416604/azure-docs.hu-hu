@@ -12,10 +12,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 1f17463125cead64bd58a2d07e53eee4d3cfcd70
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76840808"
 ---
 # <a name="introduction-to-variable-packet-capture-in-azure-network-watcher"></a>Az Azure Network Watcher változó csomagjainak rögzítésének bemutatása
@@ -25,7 +24,7 @@ Network Watcher változó csomagok rögzítése lehetővé teszi a csomagok rög
 A csomagok rögzítése olyan virtuálisgép-bővítmény, amely Network Watcheron keresztül távolról elindult. Ez a funkció megkönnyíti a csomagok manuális futtatásának terhét a kívánt virtuális gépen, amely értékes időt takarít meg. A csomagok rögzítése a portál, a PowerShell, a CLI vagy a REST API segítségével indítható el. A csomagok rögzítésének elindításának egyik példája a virtuális gépekkel kapcsolatos riasztások. A rögzítési munkamenethez szűrőket biztosít a figyelni kívánt forgalom rögzítésének biztosításához. A szűrők 5 rekordos (protokoll, helyi IP-cím, távoli IP-cím, helyi port és távoli port) adatain alapulnak. A rögzített adattároló a helyi lemezen vagy egy tárolási blobban tárolódik. Régiónként legfeljebb 10 csomag-rögzítési munkamenet érhető el. Ez a korlát csak a munkamenetekre vonatkozik, és nem vonatkozik a mentett csomag-rögzítési fájlokra helyileg a virtuális gépen vagy egy Storage-fiókban.
 
 > [!IMPORTANT]
-> A csomagok rögzítése a virtuálisgép-bővítményt `AzureNetworkWatcherExtension`igényli. A bővítmény Windows rendszerű virtuális gépen való telepítéséhez látogasson el az [azure Network Watcher Agent virtuálisgép-bővítmény a Windows](../virtual-machines/windows/extensions-nwa.md) rendszerhez és a Linux rendszerű virtuális gépekhez látogasson el az [Azure Network Watcher Agent virtuálisgép-bővítménye Linuxra](../virtual-machines/linux/extensions-nwa.md).
+> A csomagok rögzítése a virtuálisgép-bővítményt igényli `AzureNetworkWatcherExtension` . A bővítmény Windows rendszerű virtuális gépen való telepítéséhez látogasson el az [azure Network Watcher Agent virtuálisgép-bővítmény a Windows](../virtual-machines/windows/extensions-nwa.md) rendszerhez és a Linux rendszerű virtuális gépekhez látogasson el az [Azure Network Watcher Agent virtuálisgép-bővítménye Linuxra](../virtual-machines/linux/extensions-nwa.md).
 
 Ha csökkenteni szeretné a rögzített adatokat, csak a kívánt információkra, a következő lehetőségek állnak rendelkezésre a csomagok rögzítési munkamenetéhez:
 
@@ -41,7 +40,7 @@ Ha csökkenteni szeretné a rögzített adatokat, csak a kívánt információkr
 
 |Tulajdonság|Leírás|
 |---|---|
-|**Protocol (Protokoll)** | A csomagok rögzítésének szűrésére szolgáló protokoll. Az elérhető értékek a TCP, az UDP és az összes.|
+|**Protokoll** | A csomagok rögzítésének szűrésére szolgáló protokoll. Az elérhető értékek a TCP, az UDP és az összes.|
 |**Helyi IP-cím** | Ez az érték a csomagok rögzítését olyan csomagokra szűri, amelyekben a helyi IP-cím megfelel ennek a szűrő értéknek.|
 |**Helyi port** | Ez az érték szűri a csomagok rögzítését azokra a csomagokat, amelyeken a helyi port megfelel ennek a szűrő értéknek.|
 |**Távoli IP-cím** | Ez az érték szűri a csomagok rögzítését olyan csomagokat, amelyeken a távoli IP-cím megfelel ennek a szűrő értéknek.|

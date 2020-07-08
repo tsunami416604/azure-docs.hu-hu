@@ -15,10 +15,9 @@ ms.workload: TBD
 ms.date: 07/10/2017
 ms.author: timlt
 ms.openlocfilehash: 2a6650cac975c575415a329361da00d4fbfcaa9d
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68965117"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000 sorozat: hibrid felhőalapú tárolási megoldás
@@ -210,10 +209,10 @@ Az alábbi táblázat a támogatott StorSimple-számítási feladatok összefogl
 
 | Forgatókönyv | Számítási feladat | Támogatott | Korlátozások | Verzió |
 | --- | --- | --- | --- | --- |
-| Együttműködés |Fájlmegosztás |Igen | |Az összes verzió |
-| Együttműködés |Elosztott fájlmegosztás |Igen | |Az összes verzió |
+| Együttműködés |Fájlmegosztás |Yes | |Az összes verzió |
+| Együttműködés |Elosztott fájlmegosztás |Yes | |Az összes verzió |
 | Együttműködés |SharePoint |Igen* |Csak helyileg rögzített kötetekkel támogatott |2. frissítés és újabb |
-| Archiválási |Egyszerű fájl archiválása |Igen | |Az összes verzió |
+| Archiválási |Egyszerű fájl archiválása |Yes | |Az összes verzió |
 | Virtualizáció |Virtual machines (Virtuális gépek) |Igen* |Csak helyileg rögzített kötetekkel támogatott |2. frissítés és újabb |
 | Adatbázis |SQL |Igen* |Csak helyileg rögzített kötetekkel támogatott |2. frissítés és újabb |
 | Videó-megfigyelés |Videó-megfigyelés |Igen* |Csak akkor támogatott, ha a StorSimple-eszköz csak erre a számítási feladatra van dedikált |2. frissítés és újabb |
@@ -237,7 +236,7 @@ A következő lista a StorSimple által támogatott infrastruktúra-összetevők
 
 | Forgatókönyv | Számítási feladat | Támogatott | Korlátozások | Verzió |
 | --- | --- | --- | --- | --- |
-| Általános kérdések |Express Route |Igen | |Az összes verzió |
+| Általános kérdések |Express Route |Yes | |Az összes verzió |
 | Általános kérdések |DataCore FC |Igen* |Támogatott a DataCore SANsymphony |Az összes verzió |
 | Általános kérdések |DFSR |Igen* |Csak helyileg rögzített kötetekkel támogatott |Az összes verzió |
 | Általános kérdések |Indexelés |Igen* |A többszintes kötetek esetében csak a metaadatok indexelése támogatott (nincs adat).<br>A helyileg rögzített kötetek esetében a teljes indexelés támogatott. |Az összes verzió |
@@ -258,7 +257,7 @@ A következő lista felsorolja azokat a szoftvereket, amelyeket a StorSimple a m
 A Microsoft Azure StorSimple-megoldás üzembe helyezése előtt javasoljuk, hogy tekintse át a következő feltételeket és definíciókat.
 
 ### <a name="key-terms-and-definitions"></a>A legfontosabb feltételek és definíciók
-| Kifejezés (betűszó vagy rövidítés) | Leírás |
+| Kifejezés (betűszó vagy rövidítés) | Description |
 | --- | --- |
 | hozzáférés-vezérlési rekord (ACR) |A Microsoft Azure StorSimple eszközön lévő kötethez társított rekord, amely meghatározza, hogy mely gazdagépek csatlakozhatnak hozzá. A meghatározás a StorSimple-eszközhöz csatlakozó gazdagépek (ACR-ben található) iSCSI minősített nevén (IQN) alapul. |
 | AES-256 |256 bites Advanced Encryption Standard (AES) algoritmus a felhőbe irányuló és onnan áthelyezett adatok titkosításához. |

@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 12/09/2019
 ms.custom: sfrev
 ms.openlocfilehash: 9bd6e6a0a22f7568760f014897fd28ff47e9450b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76934978"
 ---
 # <a name="configure-repository-credentials-for-your-application-to-download-container-images"></a>Az alkalmazás adattárbeli hitelesítő adatainak konfigurálása a tároló lemezképének letöltéséhez
@@ -35,7 +34,7 @@ A tanúsítványokkal és a titkosítási szemantikagal kapcsolatos további inf
 
 Service Fabric lehetővé teszi a teljes fürtre kiterjedő hitelesítő adatok konfigurálását, amelyek az alkalmazások alapértelmezett tárházbeli hitelesítő adataiként használhatók.
 
-Ez a funkció engedélyezhető vagy letiltható úgy `UseDefaultRepositoryCredentials` , hogy `ContainerHostPolicies` hozzáadja az attribútumot a ApplicationManifest `true` . `false` XML fájlhoz a vagy a értékkel.
+Ez a funkció engedélyezhető vagy letiltható úgy, `UseDefaultRepositoryCredentials` hogy az attribútumot a ( `ContainerHostPolicies` ApplicationManifest.xml `true` `false` ) értékkel együtt adja hozzá a következőhöz:.
 
 ```xml
 <ServiceManifestImport>
@@ -49,14 +48,14 @@ Ez a funkció engedélyezhető vagy letiltható úgy `UseDefaultRepositoryCreden
 </ServiceManifestImport>
 ```
 
-A Service Fabric ezután az alapértelmezett adattár hitelesítő adatait használja, amelyek a `Hosting` szakasz ClusterManifest adhatók meg.  Ha `UseDefaultRepositoryCredentials` a `true`értéke, Service Fabric beolvassa a következő értékeket a ClusterManifest:
+A Service Fabric ezután az alapértelmezett adattár hitelesítő adatait használja, amelyek a szakasz ClusterManifest adhatók meg `Hosting` .  Ha `UseDefaultRepositoryCredentials` a értéke `true` , Service Fabric beolvassa a következő értékeket a ClusterManifest:
 
 * DefaultContainerRepositoryAccountName (karakterlánc)
 * DefaultContainerRepositoryPassword (karakterlánc)
 * IsDefaultContainerRepositoryPasswordEncrypted (bool)
 * DefaultContainerRepositoryPasswordType (karakterlánc)
 
-Itt látható egy példa arra, hogy mit lehet hozzáadni a `Hosting` ClusterManifestTemplate. JSON fájl szakaszához. A `Hosting` szakasz a fürt létrehozásakor vagy később is hozzáadható a konfiguráció frissítéséhez. További információ: az [azure Service Fabric-fürt beállításainak módosítása](service-fabric-cluster-fabric-settings.md) és az [Azure Service Fabric alkalmazás-titkok kezelése](service-fabric-application-secret-management.md)
+Itt látható egy példa arra, hogy mire lehet felvenni a `Hosting` fájl ClusterManifestTemplate.jsszakaszának részében. A `Hosting` szakasz a fürt létrehozásakor vagy később is hozzáadható a konfiguráció frissítéséhez. További információ: az [azure Service Fabric-fürt beállításainak módosítása](service-fabric-cluster-fabric-settings.md) és az [Azure Service Fabric alkalmazás-titkok kezelése](service-fabric-application-secret-management.md)
 
 ```json
 "fabricSettings": [
@@ -101,7 +100,7 @@ Service Fabric támogatja a tokenek használatát hitelesítő adatként a táro
 
     ![VM-tag hozzáadása az ACR-hez](./media/configure-container-repository-credentials/configure-container-repository-credentials-vmss-identity.png)
 
-3. Ezután módosítsa az alkalmazás jegyzékfájlját. A `ContainerHostPolicies` szakaszban adja hozzá az attribútumot `‘UseTokenAuthenticationCredentials=”true”`.
+3. Ezután módosítsa az alkalmazás jegyzékfájlját. A `ContainerHostPolicies` szakaszban adja hozzá az attribútumot `‘UseTokenAuthenticationCredentials=”true”` .
 
     ```xml
       <ServiceManifestImport>
@@ -116,7 +115,7 @@ Service Fabric támogatja a tokenek használatát hitelesítő adatként a táro
     ```
 
     > [!NOTE]
-    > A True `UseDefaultRepositoryCredentials` (igaz `UseTokenAuthenticationCredentials` ) érték TRUE (igaz) értékre van állítva az üzembe helyezés során.
+    > A True ( `UseDefaultRepositoryCredentials` igaz) érték TRUE (igaz) értékre van állítva az `UseTokenAuthenticationCredentials` üzembe helyezés során.
 
 ## <a name="next-steps"></a>További lépések
 

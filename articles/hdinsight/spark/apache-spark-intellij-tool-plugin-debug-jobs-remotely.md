@@ -9,10 +9,9 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.openlocfilehash: 393356bd8604f6e7622acd778817681aad31f1f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76935027"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-apache-spark-applications-remotely-in-hdinsight-through-vpn"></a>Apache Spark-alkalmazások távoli hibakeresése a HDInsight a VPN-en keresztül a Azure Toolkit for IntelliJ használatával
@@ -29,13 +28,13 @@ Ez a cikk részletes útmutatást nyújt arról, hogyan használhatók a Azure T
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Azure-előfizetés**. További információkért lásd az [Azure ingyenes próbaverziójának beszerzését](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)ismertető témakört.
+* **Egy Azure-előfizetés**. További információkért lásd az [Azure ingyenes próbaverziójának beszerzését](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)ismertető témakört.
 * **Egy Apache Spark-fürt a HDInsight-ben**. További útmutatásért lásd: [Apache Spark-fürt létrehozása az Azure HDInsightban](apache-spark-jupyter-spark-sql.md).
 * **Oracle Java Development Kit**. Telepítheti az [Oracle webhelyéről](https://aka.ms/azure-jdks).
 * **INTELLIJ ötlet**. Ez a cikk a 2017,1-es verziót használja. A [JetBrains webhelyről](https://www.jetbrains.com/idea/download/)telepítheti.
 * **Azure Toolkit for IntelliJ HDInsight eszközei**. A IntelliJ HDInsight eszközei a Azure Toolkit for IntelliJ részeként érhetők el. Az Azure Toolkit telepítésével kapcsolatos utasításokért lásd: [install Azure Toolkit for IntelliJ](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-installation).
 * **Jelentkezzen be az Azure-előfizetésbe a INTELLIJ Idea-ból**. [Apache Spark alkalmazások HDInsight-fürthöz való létrehozásához kövesse az Azure Toolkit for IntelliJ használata](apache-spark-intellij-tool-plugin.md)című részben leírt utasításokat.
-* **Kivételt megkerülő megoldás**. Előfordulhat, hogy a Windows rendszerű számítógépeken a Spark Scala alkalmazás a távoli hibakereséshez való futtatásakor kivételt tapasztal. Ezt a kivételt a [Spark-2356](https://issues.apache.org/jira/browse/SPARK-2356) ismerteti, és egy hiányzó WinUtils. exe fájl okozza a Windowsban. A hiba megkerüléséhez le kell töltenie a [Winutils. exe fájlt](https://github.com/steveloughran/winutils) egy olyan helyre, mint például a **C:\WinUtils\bin**. Vegyen fel egy **HADOOP_HOME** környezeti változót, majd állítsa a változó értékét **C\WinUtils**értékre.
+* **Kivételt megkerülő megoldás**. Előfordulhat, hogy a Windows rendszerű számítógépeken a Spark Scala alkalmazás a távoli hibakereséshez való futtatásakor kivételt tapasztal. Ezt a kivételt a [Spark-2356](https://issues.apache.org/jira/browse/SPARK-2356) ismerteti, és a Windows rendszer hiányzó WinUtils.exe fájlja miatt következik be. A hiba megkerüléséhez le kell töltenie [Winutils.exet](https://github.com/steveloughran/winutils) egy olyan helyre, mint például a **C:\WinUtils\bin**. Vegyen fel egy **HADOOP_HOME** környezeti változót, majd állítsa a változó értékét **C\WinUtils**értékre.
 
 ## <a name="step-1-create-an-azure-virtual-network"></a>1. lépés: Azure-beli virtuális hálózat létrehozása
 
@@ -98,9 +97,9 @@ Azt javasoljuk, hogy hozzon létre egy Apache Spark-fürtöt az Azure HDInsight,
 
     ![A IntelliJ IDEA új projekt sablonjának kiválasztása](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-hdi-scala-app.png)
 
-    a. Válassza a **HDInsight** > **Spark on HDInsight (Scala)** lehetőséget.
+    a. Válassza **HDInsight**  >  **a HDInsight Spark on HDInsight (Scala)** lehetőséget.
 
-    b. Kattintson a **Tovább** gombra.
+    b. Válassza a **Tovább** lehetőséget.
 1. A következő **új projekt** párbeszédpanelen tegye a következőket, majd kattintson a **Befejezés gombra**:
 
     - Adja meg a projekt nevét és helyét.
@@ -115,7 +114,7 @@ Azt javasoljuk, hogy hozzon létre egy Apache Spark-fürtöt az Azure HDInsight,
 
     a. A **File** (Fájl) menüben válassza a **Project Structure** (Projektstruktúra) lehetőséget.
 
-    b. A **projekt szerkezete** **párbeszédpanelen válassza az összetevők elemet a létrehozott** alapértelmezett összetevő megtekintéséhez. Saját összetevőt is létrehozhat a plusz jelre (**+**) kattintva.
+    b. A **projekt szerkezete** **párbeszédpanelen válassza az összetevők elemet a létrehozott** alapértelmezett összetevő megtekintéséhez. Saját összetevőt is létrehozhat a plusz jelre ( **+** ) kattintva.
 
    ![IntelliJ IDEA-összetevők létrehozása jar](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-default-artifact.png)
 
@@ -123,7 +122,7 @@ Azt javasoljuk, hogy hozzon létre egy Apache Spark-fürtöt az Azure HDInsight,
 
     a. Kattintson a jobb gombbal a projekt nevére a projekt fájában, majd válassza a **modul beállításainak megnyitása**lehetőséget.
 
-    b. A **projekt szerkezete** párbeszédpanelen válassza a **könyvtárak**lehetőséget, válassza ki a (**+**) szimbólumot, majd válassza ki **a mavenből**lehetőséget.
+    b. A **projekt szerkezete** párbeszédpanelen válassza a **könyvtárak**lehetőséget, válassza ki a ( **+** ) szimbólumot, majd válassza ki **a mavenből**lehetőséget.
 
     ![IntelliJ IDEA letöltési könyvtár](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-add-library.png)
 
@@ -132,20 +131,20 @@ Azt javasoljuk, hogy hozzon létre egy Apache Spark-fürtöt az Azure HDInsight,
    * `org.scalatest:scalatest_2.10:2.2.1`
    * `org.apache.hadoop:hadoop-azure:2.7.1`
 
-1. `core-site.xml` Másolja `yarn-site.xml` a csomópontot a fürt fő csomópontjára, és adja hozzá őket a projekthez. A fájlok másolásához használja az alábbi parancsokat. A [Cygwin](https://cygwin.com/install.html) használatával a következő `scp` parancsok futtatásával másolhatja a fájlokat a fürt fő csomópontjairól:
+1. Másolja `yarn-site.xml` a `core-site.xml` csomópontot a fürt fő csomópontjára, és adja hozzá őket a projekthez. A fájlok másolásához használja az alábbi parancsokat. A [Cygwin](https://cygwin.com/install.html) használatával a következő parancsok futtatásával `scp` másolhatja a fájlokat a fürt fő csomópontjairól:
 
     ```bash
     scp <ssh user name>@<headnode IP address or host name>://etc/hadoop/conf/core-site.xml .
     ```
 
-    Mivel már hozzáadta a fürt fő csomópontjának IP-címét és a gazdagépekhez tartozó gazdagépeket az asztalon, a következő módon `scp` használhatjuk a parancsokat:
+    Mivel már hozzáadta a fürt fő csomópontjának IP-címét és a gazdagépekhez tartozó gazdagépeket az asztalon, a következő módon használhatjuk a `scp` parancsokat:
 
     ```bash
     scp sshuser@nitinp:/etc/hadoop/conf/core-site.xml .
     scp sshuser@nitinp:/etc/hadoop/conf/yarn-site.xml .
     ```
 
-    Ha ezeket a fájlokat hozzá szeretné adni a projekthez, másolja őket a **/src** mappába a projekt fájában, `<your project directory>\src`például:.
+    Ha ezeket a fájlokat hozzá szeretné adni a projekthez, másolja őket a **/src** mappába a projekt fájában, például: `<your project directory>\src` .
 
 1. Frissítse a `core-site.xml` fájlt a következő módosítások elvégzéséhez:
 
@@ -158,7 +157,7 @@ Azt javasoljuk, hogy hozzon létre egy Apache Spark-fürtöt az Azure HDInsight,
     </property>
     ```
 
-   b. Távolítsa el a következő `core-site.xml`bejegyzéseket a alkalmazásból:
+   b. Távolítsa el a következő bejegyzéseket a alkalmazásból `core-site.xml` :
 
     ```xml
     <property>
@@ -187,7 +186,7 @@ Azt javasoljuk, hogy hozzon létre egy Apache Spark-fürtöt az Azure HDInsight,
 
     ![IntelliJ IDEA új Scala-osztály létrehozása](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-spark-scala-code-object.png)
 
-1. A `MyClusterAppMain.scala` fájlban illessze be a következő kódot. Ez a kód létrehozza a Spark-környezetet, `executeJob` és egy metódust nyit meg az `SparkSample` objektumból.
+1. A `MyClusterAppMain.scala` fájlban illessze be a következő kódot. Ez a kód létrehozza a Spark-környezetet, és egy `executeJob` metódust nyit meg az `SparkSample` objektumból.
 
     ```scala
     import org.apache.spark.{SparkConf, SparkContext}
@@ -205,7 +204,7 @@ Azt javasoljuk, hogy hozzon létre egy Apache Spark-fürtöt az Azure HDInsight,
     }
     ```
 
-1. Ismételje meg a 8. és a 9. lépést egy `*SparkSample`új, nevű Scala-objektum hozzáadásához. Adja hozzá a következő kódot ehhez az osztályhoz. Ez a kód beolvassa az adatokat a HVAC. csv fájlból (az összes HDInsight Spark-fürtben elérhető). Lekéri azokat a sorokat, amelyek csak egy számjegytel rendelkeznek a CSV-fájl hetedik oszlopában, majd a kimenetet a fürt alapértelmezett **/HVACOut** alá írja.
+1. Ismételje meg a 8. és a 9. lépést egy új, nevű Scala-objektum hozzáadásához `*SparkSample` . Adja hozzá a következő kódot ehhez az osztályhoz. Ez a kód beolvassa az adatokat a HVAC.csvból (az összes HDInsight Spark-fürtben elérhető). Lekéri azokat a sorokat, amelyek csak egy számjegytel rendelkeznek a CSV-fájl hetedik oszlopában, majd a kimenetet a fürt alapértelmezett **/HVACOut** alá írja.
 
     ```scala
     import org.apache.spark.SparkContext
@@ -226,7 +225,7 @@ Azt javasoljuk, hogy hozzon létre egy Apache Spark-fürtöt az Azure HDInsight,
     }
     ```
 
-1. A 8. és a 9. lépést megismételve `RemoteClusterDebugging`adjon hozzá egy új, nevű osztályt. Ez az osztály megvalósítja az alkalmazások hibakereséséhez használt Spark test keretrendszert. Adja hozzá a következő kódot a `RemoteClusterDebugging` osztályhoz:
+1. A 8. és a 9. lépést megismételve adjon hozzá egy új, nevű osztályt `RemoteClusterDebugging` . Ez az osztály megvalósítja az alkalmazások hibakereséséhez használt Spark test keretrendszert. Adja hozzá a következő kódot a `RemoteClusterDebugging` osztályhoz:
 
     ```scala
         import org.apache.spark.{SparkConf, SparkContext}
@@ -252,10 +251,10 @@ Azt javasoljuk, hogy hozzon létre egy Apache Spark-fürtöt az Azure HDInsight,
 
      Néhány fontos Tudnivaló:
 
-      * A `.set("spark.yarn.jar", "wasb:///hdp/apps/2.4.2.0-258/spark-assembly-1.6.1.2.4.2.0-258-hadoop2.7.1.2.4.2.0-258.jar")`esetében ellenőrizze, hogy a Spark Assembly jar elérhető-e a fürt tárterületén a megadott elérési úton.
-      * A `setJars`esetében válassza ki azt a helyet, ahol az összetevő jar létrejött. Általában ez `<Your IntelliJ project directory>\out\<project name>_DefaultArtifact\default_artifact.jar`.
+      * A esetében `.set("spark.yarn.jar", "wasb:///hdp/apps/2.4.2.0-258/spark-assembly-1.6.1.2.4.2.0-258-hadoop2.7.1.2.4.2.0-258.jar")` ellenőrizze, hogy a Spark Assembly jar elérhető-e a fürt tárterületén a megadott elérési úton.
+      * A esetében `setJars` válassza ki azt a helyet, ahol az összetevő jar létrejött. Általában ez `<Your IntelliJ project directory>\out\<project name>_DefaultArtifact\default_artifact.jar` .
 
-1. A`*RemoteClusterDebugging` osztályban kattintson a jobb gombbal a `test` kulcsszóra, majd válassza a **RemoteClusterDebugging-konfiguráció létrehozása**lehetőséget.
+1. A `*RemoteClusterDebugging` osztályban kattintson a jobb gombbal a `test` kulcsszóra, majd válassza a **RemoteClusterDebugging-konfiguráció létrehozása**lehetőséget.
 
     ![IntelliJ IDEA távoli konfiguráció létrehozása](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-remote-config.png)
 
@@ -269,7 +268,7 @@ Azt javasoljuk, hogy hozzon létre egy Apache Spark-fürtöt az Azure HDInsight,
 
 ## <a name="step-5-run-the-application-in-debug-mode"></a>5. lépés: az alkalmazás futtatása hibakeresési módban
 
-1. A IntelliJ IDEA projektben nyissa `SparkSample.scala` meg és hozzon létre egy `val rdd1`töréspontot a mellett. A **töréspont létrehozása** az előugró menüben válassza a **sor a függvény executeJob**lehetőséget.
+1. A IntelliJ IDEA projektben nyissa meg `SparkSample.scala` és hozzon létre egy töréspontot a mellett `val rdd1` . A **töréspont létrehozása** az előugró menüben válassza a **sor a függvény executeJob**lehetőséget.
 
     ![IntelliJ-ötlet – töréspont hozzáadása](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-create-breakpoint.png)
 
@@ -281,11 +280,11 @@ Azt javasoljuk, hogy hozzon létre egy Apache Spark-fürtöt az Azure HDInsight,
 
     ![IntelliJ IDEA – a hibakereső lap megtekintése](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-debugger-tab.png)
 
-1. Az óra hozzáadásához válassza a (**+**) ikont.
+1. Az óra hozzáadásához válassza a ( **+** ) ikont.
 
     ![IntelliJ hibakeresése – Add-Watch-változó](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-add-watch-variable.png)
 
-    Ebben a példában az alkalmazás a változó `rdd1` létrehozása előtt megszakadt. A Watch használatával láthatjuk a változó `rdd`első öt sorát. Nyomja le az **Enter** billentyűt.
+    Ebben a példában az alkalmazás a változó létrehozása előtt megszakadt `rdd1` . A Watch használatával láthatjuk a változó első öt sorát `rdd` . Nyomja le az **Enter** billentyűt.
 
     ![A program hibakeresési módban futtatja a IntelliJ](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-add-watch-variable-value.png)
 

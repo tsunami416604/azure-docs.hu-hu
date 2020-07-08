@@ -10,17 +10,16 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 908bc941ee7379de067621e10adf5fd6ee6df559
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76841810"
 ---
 # <a name="configure-event-grid-api-protocols"></a>Event Grid API-protokollok konfigurálása
 
 Ez az útmutató példákat mutat be egy Event Grid modul lehetséges protokoll-konfigurációjáról. A Event Grid modul az API-t teszi elérhetővé felügyeleti és futtatókörnyezeti műveleteihez. A következő táblázat rögzíti a protokollokat és a portokat.
 
-| Protocol (Protokoll) | Port | Leírás |
+| Protokoll | Port | Description |
 | ---------------- | ------------ | ------------ |
 | HTTP | 5888 | Alapértelmezés szerint ki van kapcsolva. Csak tesztelés során hasznos. Éles számítási feladatokhoz nem alkalmas.
 | HTTPS | 4438 | Alapértelmezett

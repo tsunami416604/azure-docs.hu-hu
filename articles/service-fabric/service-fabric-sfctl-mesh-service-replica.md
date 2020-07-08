@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: ac604ec0a854964746ef34627b054e853662265f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76905953"
 ---
 # <a name="sfctl-mesh-service-replica"></a>sfctl mesh szolgáltatásreplika
@@ -17,7 +16,7 @@ A replika adatainak beolvasása és az adott szolgáltatás replikáinak listáz
 
 ## <a name="commands"></a>Parancsok
 
-|Parancs|Leírás|
+|Parancs|Description|
 | --- | --- |
 | lista | A szolgáltatás összes replikáját listázza. |
 | megjelenítés | Egy alkalmazás szolgáltatásának adott replikájának beolvasása. |
@@ -29,19 +28,19 @@ Lekéri egy szolgáltatás összes replikájának adatait. Az információk köz
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Leírás|
+|Argumentum|Description|
 | --- | --- |
 | --App-Name--Application-Name [kötelező] | Az alkalmazás neve. |
 | – szolgáltatásnév [kötelező] | A szolgáltatás neve. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Leírás|
+|Argumentum|Description|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --output-o | Kimeneti formátum.  Engedélyezett értékek: \: JSON, jsonc, Table, TSV.  Alapértelmezett \: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca \:További információkat és példákat a http//jmespath.org/című témakörben talál. |
 | --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
 ## <a name="sfctl-mesh-service-replica-show"></a>sfctl Mesh Service – replika megjelenítés
@@ -51,7 +50,7 @@ Lekéri a szolgáltatás replikájának adatait a megadott névvel. Az informác
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Leírás|
+|Argumentum|Description|
 | --- | --- |
 | --App-Name--Application-Name [kötelező] | Az alkalmazás neve. |
 | --Name-n [kötelező] | A szolgáltatás replikájának neve. |
@@ -59,12 +58,12 @@ Lekéri a szolgáltatás replikájának adatait a megadott névvel. Az informác
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Leírás|
+|Argumentum|Description|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --output-o | Kimeneti formátum.  Engedélyezett értékek: \: JSON, jsonc, Table, TSV.  Alapértelmezett \: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca \:További információkat és példákat a http//jmespath.org/című témakörben talál. |
 | --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
 

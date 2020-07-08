@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/23/2020
 ms.openlocfilehash: f7861ae4980f13fbd87780ab2d26fa3376f33532
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76776195"
 ---
 # <a name="scenario-unable-to-read-apache-yarn-log-in-azure-hdinsight"></a>Forgatókönyv: nem sikerült beolvasni az Apache-beli fonal-naplót az Azure HDInsight
@@ -28,17 +27,17 @@ java.io.IOException: Not a valid BCFile.
 
 ## <a name="cause"></a>Ok
 
-Az Apache-beli fonal-napló `IndexFile` formátumba van összesítve, amelyet a fájl-elemző nem támogat.
+Az Apache-beli fonal-napló formátumba van összesítve `IndexFile` , amelyet a fájl-elemző nem támogat.
 
 ## <a name="resolution"></a>Megoldás:
 
-1. Egy webböngészőből nyissa meg `https://CLUSTERNAME.azurehdinsight.net`a következőt:, ahol `CLUSTERNAME` a a fürt neve.
+1. Egy webböngészőből nyissa meg a következőt: `https://CLUSTERNAME.azurehdinsight.net` , ahol a a `CLUSTERNAME` fürt neve.
 
-1. A Ambari felhasználói felületén navigáljon a **YARN** > **Configs** > **speciális** > **speciális fonál-helyhez**.
+1. A Ambari felhasználói felületén navigáljon **a**  >  **Configs**  >  **speciális**  >  **speciális fonál-helyhez**.
 
-1. A WASB Storage esetében: az alapértelmezett értéke `yarn.log-aggregation.file-formats` a `IndexedFormat,TFile`(z). Módosítsa az értéket a `TFile`következőre:.
+1. A WASB Storage esetében: az alapértelmezett értéke a (z `yarn.log-aggregation.file-formats` `IndexedFormat,TFile` ). Módosítsa az értéket a következőre: `TFile` .
 
-1. A ADLS Storage esetében: az alapértelmezett értéke `yarn.nodemanager.log-aggregation.compression-type` a `gz`(z). Módosítsa az értéket a `none`következőre:.
+1. A ADLS Storage esetében: az alapértelmezett értéke a (z `yarn.nodemanager.log-aggregation.compression-type` `gz` ). Módosítsa az értéket a következőre: `none` .
 
 1. Mentse a módosítást, és indítsa újra az összes érintett szolgáltatást.
 

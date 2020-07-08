@@ -10,10 +10,9 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 7df283b12a0d04d2b785c13a2f12b03115581e79
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76841712"
 ---
 # <a name="delivery-and-retry"></a>Teljesítés és újrapróbálkozás
@@ -29,7 +28,7 @@ Egy üzenet kézbesítése után a Event Grid legfeljebb 60 másodpercet vár a 
 
 Két előre konfigurált várólista van, amelyek meghatározzák azt az ütemezést, amelyen az újrapróbálkozási kísérlet történik. Ezek a következők:
 
-| Ütemezés | Leírás |
+| Ütemezés | Description |
 | ---------| ------------ |
 | 1 perc | Az itt bekövetkező üzenetek percenként próbálkoznak.
 | 10 perc | Az itt megjelenő üzeneteket 10 percenként kísérli meg a rendszer.
@@ -54,7 +53,7 @@ Egy esemény el lesz dobva, ha az újrapróbálkozási szabályzat korlátai bá
 
 Két tulajdonság létezik: `brokers__defaultMaxDeliveryAttempts` és `broker__defaultEventTimeToLiveInSeconds` a Event Grid központi telepítés részeként konfigurálható, amely az összes előfizető újrapróbálkozási szabályzatának alapértelmezett értékeit szabályozza.
 
-| Tulajdonság neve | Leírás |
+| Tulajdonság neve | Description |
 | ---------------- | ------------ |
 | `broker__defaultMaxDeliveryAttempts` | Egy eseményt kézbesítő kísérletek maximális száma. Alapértelmezett érték: 30.
 | `broker__defaultEventTimeToLiveInSeconds` | Az esemény ÉLETTARTAMa másodpercben, amely után az esemény el lesz dobva, ha nem érkezik meg. Alapértelmezett érték: **7200** másodperc

@@ -9,10 +9,9 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/01/2020
 ms.openlocfilehash: bccf69362279afd9e8148b20b61ff3ea9b472a03
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76906971"
 ---
 # <a name="create-schemas-for-tracking-as2-messages-in-azure-logic-apps"></a>Sémák létrehozása az AS2-üzenetek követéséhez Azure Logic Apps
@@ -52,27 +51,27 @@ Ha segítségre van szüksége a vállalatok közötti (B2B) tranzakciók sikere
 }
 ```
 
-| Tulajdonság | Kötelező | Típus | Leírás |
+| Tulajdonság | Kötelező | Típus | Description |
 |----------|----------|------|-------------|
-| senderPartnerName | Nem | Sztring | AS2-üzenet küldője partnerének neve |
-| receiverPartnerName | Nem | Sztring | AS2-üzenet fogadójának partnere neve |
-| as2To | Igen | Sztring | AS2-üzenet fogadójának neve az AS2-üzenet fejlécében |
-| as2From | Igen | Sztring | AS2-üzenet feladójának neve az AS2-üzenet fejlécében |
-| agreementName | Nem | Sztring | Az AS2-egyezmény neve, amelybe az üzenetek fel lesznek oldva |
-| irány | Igen | Sztring | Az üzenet folyamatának iránya, amely `receive` vagy vagy`send` |
-| messageId | Nem | Sztring | AS2-üzenet azonosítója az AS2-üzenet fejlécében |
-| dispositionType | Nem | Sztring | Üzenet-törlési értesítés (MDN) – típus értéke |
-| fileName | Nem | Sztring | A fájl neve az AS2-üzenet fejlécében |
-| isMessageFailed | Igen | Logikai | Az AS2-üzenet sikertelen volt-e |
-| isMessageSigned | Igen | Logikai | Az AS2-üzenet aláírása |
-| isMessageEncrypted | Igen | Logikai | Azt jelzi, hogy az AS2-üzenet titkosított-e |
-| isMessageCompressed | Igen | Logikai | Azt jelzi, hogy az AS2-üzenet tömörítve lett-e |
-| correlationMessageId | Nem | Sztring | AS2-üzenet azonosítója az üzenetek MDNs-vel való korrelációhoz |
-| incomingHeaders | Nem | JToken szótár | Bejövő AS2-üzenetek fejlécének részletei |
-| outgoingHeaders | Nem | JToken szótár | Kimenő AS2-üzenetek fejlécének részletei |
-| isNrrEnabled | Igen | Logikai | Azt határozza meg, hogy az alapértelmezett értéket kell-e használni, ha az érték nem ismert |
-| isMdnExpected | Igen | Logikai | Azt határozza meg, hogy az alapértelmezett értéket kell-e használni, ha az érték nem ismert |
-| mdnType | Igen | Felsorolás | Megengedett értékek: `NotConfigured`, `Sync`és`Async` |
+| senderPartnerName | No | Sztring | AS2-üzenet küldője partnerének neve |
+| receiverPartnerName | No | Sztring | AS2-üzenet fogadójának partnere neve |
+| as2To | Yes | Sztring | AS2-üzenet fogadójának neve az AS2-üzenet fejlécében |
+| as2From | Yes | Sztring | AS2-üzenet feladójának neve az AS2-üzenet fejlécében |
+| agreementName | No | Sztring | Az AS2-egyezmény neve, amelybe az üzenetek fel lesznek oldva |
+| irány | Yes | Sztring | Az üzenet folyamatának iránya, amely `receive` vagy vagy`send` |
+| messageId | No | Sztring | AS2-üzenet azonosítója az AS2-üzenet fejlécében |
+| dispositionType | No | Sztring | Üzenet-törlési értesítés (MDN) – típus értéke |
+| fileName | No | Sztring | A fájl neve az AS2-üzenet fejlécében |
+| isMessageFailed | Yes | Logikai | Az AS2-üzenet sikertelen volt-e |
+| isMessageSigned | Yes | Logikai | Az AS2-üzenet aláírása |
+| isMessageEncrypted | Yes | Logikai | Azt jelzi, hogy az AS2-üzenet titkosított-e |
+| isMessageCompressed | Yes | Logikai | Azt jelzi, hogy az AS2-üzenet tömörítve lett-e |
+| correlationMessageId | No | Sztring | AS2-üzenet azonosítója az üzenetek MDNs-vel való korrelációhoz |
+| incomingHeaders | No | JToken szótár | Bejövő AS2-üzenetek fejlécének részletei |
+| outgoingHeaders | No | JToken szótár | Kimenő AS2-üzenetek fejlécének részletei |
+| isNrrEnabled | Yes | Logikai | Azt határozza meg, hogy az alapértelmezett értéket kell-e használni, ha az érték nem ismert |
+| isMdnExpected | Yes | Logikai | Azt határozza meg, hogy az alapértelmezett értéket kell-e használni, ha az érték nem ismert |
+| mdnType | Yes | Enumeráció | Megengedett értékek: `NotConfigured` , `Sync` és`Async` |
 |||||
 
 ## <a name="as2-mdn-tracking-schema"></a>AS2 MDN-követési séma
@@ -105,25 +104,25 @@ Ha segítségre van szüksége a vállalatok közötti (B2B) tranzakciók sikere
 }
 ```
 
-| Tulajdonság | Kötelező | Típus | Leírás |
+| Tulajdonság | Kötelező | Típus | Description |
 |----------|----------|------|-------------|
-| senderPartnerName | Nem | Sztring | AS2-üzenet küldője partnerének neve |
-| receiverPartnerName | Nem | Sztring | AS2-üzenet fogadójának partnere neve |
-| as2To | Igen | Sztring | Az AS2-üzenetet fogadó partner neve |
-| as2From | Igen | Sztring | Az AS2-üzenetet küldő partner neve |
-| agreementName | Nem | Sztring | Az AS2-egyezmény neve, amelybe az üzenetek fel lesznek oldva |
-| irány | Igen | Sztring | Az üzenet folyamatának iránya, amely `receive` vagy vagy`send` |
-| messageId | Nem | Sztring | AS2-üzenet azonosítója |
-| originalMessageId | Nem | Sztring | AS2 eredeti üzenet azonosítója |
-| dispositionType | Nem | Sztring | MDN-törlési típus értéke |
-| isMessageFailed | Igen | Logikai | Az AS2-üzenet sikertelen volt-e |
-| isMessageSigned | Igen | Logikai | Az AS2-üzenet aláírása |
-| isNrrEnabled | Igen | Logikai | Azt határozza meg, hogy az alapértelmezett értéket kell-e használni, ha az érték nem ismert |
-| statusCode | Igen | Felsorolás | Megengedett értékek: `Accepted`, `Rejected`és`AcceptedWithErrors` |
-| micVerificationStatus | Igen | Felsorolás | Megengedett értékek:`NotApplicable`, `Succeeded`és`Failed` |
-| correlationMessageId | Nem | Sztring | Korrelációs azonosító, amely a MDN konfigurált eredeti üzenet azonosítója |
-| incomingHeaders | Nem | JToken szótár | Bejövő üzenetek fejlécének részletei |
-| outgoingHeaders | Nem | JToken szótár | Kimenő üzenetek fejlécének részletei |
+| senderPartnerName | No | Sztring | AS2-üzenet küldője partnerének neve |
+| receiverPartnerName | No | Sztring | AS2-üzenet fogadójának partnere neve |
+| as2To | Yes | Sztring | Az AS2-üzenetet fogadó partner neve |
+| as2From | Yes | Sztring | Az AS2-üzenetet küldő partner neve |
+| agreementName | No | Sztring | Az AS2-egyezmény neve, amelybe az üzenetek fel lesznek oldva |
+| irány | Yes | Sztring | Az üzenet folyamatának iránya, amely `receive` vagy vagy`send` |
+| messageId | No | Sztring | AS2-üzenet azonosítója |
+| originalMessageId | No | Sztring | AS2 eredeti üzenet azonosítója |
+| dispositionType | No | Sztring | MDN-törlési típus értéke |
+| isMessageFailed | Yes | Logikai | Az AS2-üzenet sikertelen volt-e |
+| isMessageSigned | Yes | Logikai | Az AS2-üzenet aláírása |
+| isNrrEnabled | Yes | Logikai | Azt határozza meg, hogy az alapértelmezett értéket kell-e használni, ha az érték nem ismert |
+| statusCode | Yes | Enumeráció | Megengedett értékek: `Accepted` , `Rejected` és`AcceptedWithErrors` |
+| micVerificationStatus | Yes | Enumeráció | Megengedett értékek: `NotApplicable` , `Succeeded` és`Failed` |
+| correlationMessageId | No | Sztring | Korrelációs azonosító, amely a MDN konfigurált eredeti üzenet azonosítója |
+| incomingHeaders | No | JToken szótár | Bejövő üzenetek fejlécének részletei |
+| outgoingHeaders | No | JToken szótár | Kimenő üzenetek fejlécének részletei |
 |||||
 
 ## <a name="b2b-protocol-tracking-schemas"></a>B2B protokoll-követési sémák

@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 98054060210f55803d6e2811e1f494fd3ff00e48
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76838258"
 ---
 # <a name="how-to-process-and-extract-information-from-images-in-ai-enrichment-scenarios"></a>Információk feldolgozása és kinyerése a képekből mesterséges intelligencia-gazdagító forgatókönyvekben
@@ -29,7 +28,7 @@ A dokumentum repedésének részeként új indexelő konfigurációs paramétere
 
 A képnormalizálás nem kapcsolható ki. A képeken ismétlődő képességek normalizált képeket várnak. A képnormalizálás indexelésének engedélyezéséhez az szükséges, hogy egy készségkészlet csatolva legyen ehhez az indexelő.
 
-| Konfigurációs paraméter | Leírás |
+| Konfigurációs paraméter | Description |
 |--------------------|-------------|
 | imageAction   | A "None" értékre van állítva, ha a rendszer nem hajt végre műveletet a beágyazott képek vagy képfájlok előfordulásakor. <br/>A "generateNormalizedImages" értékre állítva a normalizált képek tömbjét hozza létre a dokumentum repedésének részeként.<br/>Állítsa "generateNormalizedImagePerPage" értékre, ha normalizált képekből álló tömböt hoz létre, ahol az adatforrásban található PDF-fájlok esetében minden oldal egy kimeneti képhez jelenik meg.  A funkció ugyanaz, mint a nem PDF fájltípusok esetében a "generateNormalizedImages".<br/>Minden olyan lehetőség esetében, amely nem "None", a rendszer a képeket a *normalized_images* mezőben teszi elérhetővé. <br/>Az alapértelmezett érték a "None". Ez a konfiguráció csak a blob-adatforrásokra vonatkozik, ha a "dataToExtract" tulajdonság értéke "contentAndMetadata". <br/>Egy adott dokumentumból legfeljebb 1000 lemezkép lesz kinyerve. Ha a dokumentumban több mint 1000 kép található, akkor a rendszer kinyeri az első 1000, és egy figyelmeztetést fog generálni. |
 |  normalizedImageMaxWidth | A generált normalizált képek maximális szélessége (képpontban). Az alapértelmezett érték 2000. A maximálisan engedélyezett érték 10000. | 
@@ -38,7 +37,7 @@ A képnormalizálás nem kapcsolható ki. A képeken ismétlődő képességek n
 > [!NOTE]
 > Ha a *imageAction* tulajdonságot a "None" értékre állítja, a *parsingMode* tulajdonság nem állítható be a "default" értéktől eltérő értékre.  Az indexelő konfigurációjában csak az alábbi két tulajdonság egyikét állíthatja be nem alapértelmezett értékre.
 
-Állítsa a **parsingMode** paramétert `json` (az egyes Blobok egyetlen dokumentumként való indexeléséhez `jsonArray` ), vagy (ha a Blobok JSON-tömböket tartalmaznak, és egy tömb minden eleméhez külön dokumentumként kell kezelni őket).
+Állítsa a **parsingMode** paramétert `json` (az egyes Blobok egyetlen dokumentumként való indexeléséhez), vagy `jsonArray` (ha a Blobok JSON-tömböket tartalmaznak, és egy tömb minden eleméhez külön dokumentumként kell kezelni őket).
 
 A normalizált képek maximális szélességének és magasságának 2000 képpont alapértéke az [OCR-képesség](cognitive-search-skill-ocr.md) és a [képelemzési képesség](cognitive-search-skill-image-analysis.md)által támogatott maximális méretektől függ. Az [OCR-képesség](cognitive-search-skill-ocr.md) legfeljebb 4200-es szélességet és magasságot támogat a nem angol nyelvű és a 10000 angol nyelv esetén.  Ha csökkenti a maximális korlátot, a feldolgozás a készségkészlet-definíciótól és a dokumentumok nyelvétől függően meghiúsulhat a nagyobb rendszerképeken. 
 
@@ -60,9 +59,9 @@ A imageAction az alábbi módon adhatja meg az [Indexelő definíciójában](htt
 
 Ha a *imageAction* egy másik értékre van állítva, akkor az új *normalized_images* mező képek tömbjét fogja tartalmazni. Mindegyik rendszerkép egy összetett típus, amely a következő tagokkal rendelkezik:
 
-| Rendszerkép tagja       | Leírás                             |
+| Rendszerkép tagja       | Description                             |
 |--------------------|-----------------------------------------|
-| data               | A normalizált képfájl BASE64 kódolású karakterlánca JPEG formátumban.   |
+| adatok               | A normalizált képfájl BASE64 kódolású karakterlánca JPEG formátumban.   |
 | szélesség              | A normalizált képek szélessége képpontban megadva |
 | magasság             | A normalizált képek magassága képpontban megadva |
 | originalWidth      | A rendszerkép eredeti szélessége a normalizálás előtt. |
@@ -91,7 +90,7 @@ Ha a *imageAction* egy másik értékre van állítva, akkor az új *normalized_
 
 Két beépített kognitív képességgel rendelkezik, amelyek bemenetként készítenek képeket: [OCR](cognitive-search-skill-ocr.md) és [Image Analysis](cognitive-search-skill-image-analysis.md). 
 
-Jelenleg ezek a képességek csak a dokumentum csinos lépése által generált képekkel működnek. Így az egyetlen támogatott bemenet `"/document/normalized_images"`.
+Jelenleg ezek a képességek csak a dokumentum csinos lépése által generált képekkel működnek. Így az egyetlen támogatott bemenet `"/document/normalized_images"` .
 
 ### <a name="image-analysis-skill"></a>Rendszerkép-elemzési képesség
 
@@ -106,7 +105,7 @@ Az [OCR-képesség](cognitive-search-skill-ocr.md) a képfájlok, például a jp
 Egy gyakori forgatókönyvben egyetlen karakterláncot kell létrehozni, amely az összes fájl tartalmát, a szöveg és a képforrás szövegét is tartalmazza a következő lépések végrehajtásával:  
 
 1. [Normalized_images kinyerése](#get-normalized-images)
-1. OCR-képesség `"/document/normalized_images"` futtatása bemenetként
+1. OCR-képesség futtatása `"/document/normalized_images"` bemenetként
 1. Egyesítse a képek szöveges ábrázolását a fájlból kinyert nyers szöveggel. A [szöveg egyesítése](cognitive-search-skill-textmerger.md) képességgel összevonhatja a szöveges adattömböket egyetlen nagy sztringbe.
 
 A következő példában a készségkészlet létrehoz egy *merged_text* mezőt, amely a dokumentum szöveges tartalmát tartalmazza. Emellett magában foglalja az egyes beágyazott képek OCRed szövegét is. 

@@ -9,10 +9,9 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/01/2020
 ms.openlocfilehash: c82f9cbfaf2e23ddaa5e4b05f4aac4795d3e16a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76903052"
 ---
 # <a name="create-custom-tracking-schemas-that-monitor-end-to-end-workflows-in-azure-logic-a"></a>A végpontok közötti munkafolyamatokat figyelő egyéni követési sémák létrehozása az Azure Logic A-ben
@@ -51,22 +50,22 @@ A Azure Logic Apps beépített nyomon követésével engedélyezheti a munkafoly
 }
 ```
 
-| Tulajdonság | Kötelező | Típus | Leírás |
+| Tulajdonság | Kötelező | Típus | Description |
 |----------|----------|------|-------------|
-| Forrás típusa | Igen | Sztring | A futtatási forrás típusa a következő megengedett értékekkel `Microsoft.Logic/workflows`:,`custom` |
-| source | Igen | Karakterlánc-vagy JToken | Ha a forrástípus `Microsoft.Logic/workflows`, a forrás adatainak követniük kell ezt a sémát. Ha a forrás típusa `custom`, a séma egy JToken. |
-| systemId | Igen | Sztring | Logic app-rendszerazonosító |
-| runId | Igen | Sztring | Logikai alkalmazás futtatásának azonosítója |
-| operationName | Igen | Sztring | A művelet neve, például művelet vagy trigger |
-| repeatItemScopeName | Igen | Sztring | Elem nevének ismétlése, ha a művelet egy `foreach`vagy `until` hurokon belül van |
-| repeatItemIndex | Igen | Egész szám | Azt jelzi, hogy a művelet egy `foreach` vagy `until` hurkon belül van, és az ismétlődő elem indexe. |
-| trackingId | Nem | Sztring | Nyomkövetési azonosító az üzenetek korrelációja érdekében |
-| correlationId | Nem | Sztring | Az üzenetek korrelációs azonosítója |
-| ügyfélkérelem | Nem | Sztring | Az ügyfél feltöltheti ezt a tulajdonságot az üzenetek korrelációja érdekében |
-| eventLevel | Igen | Sztring | Az esemény szintje |
-| eventTime | Igen | DateTime | Az esemény időpontja UTC formátumban: *éééé-hh-NNTóó: PP: mm. 00000Z* |
-| Rekordtípus | Igen | Sztring | A nyomkövetési rekord típusa csak az alábbi megengedett értékkel:`custom` |
-| rekord | Igen | JToken | Egyéni bejegyzéstípus csak JToken formátumban |
+| Forrás típusa | Yes | Sztring | A futtatási forrás típusa a következő megengedett értékekkel: `Microsoft.Logic/workflows` ,`custom` |
+| source | Yes | Karakterlánc-vagy JToken | Ha a forrástípus `Microsoft.Logic/workflows` , a forrás adatainak követniük kell ezt a sémát. Ha a forrás típusa `custom` , a séma egy JToken. |
+| systemId | Yes | Sztring | Logic app-rendszerazonosító |
+| runId | Yes | Sztring | Logikai alkalmazás futtatásának azonosítója |
+| operationName | Yes | Sztring | A művelet neve, például művelet vagy trigger |
+| repeatItemScopeName | Yes | Sztring | Elem nevének ismétlése, ha a művelet egy `foreach` vagy `until` hurokon belül van |
+| repeatItemIndex | Yes | Egész szám | Azt jelzi, hogy a művelet egy `foreach` vagy `until` hurkon belül van, és az ismétlődő elem indexe. |
+| trackingId | No | Sztring | Nyomkövetési azonosító az üzenetek korrelációja érdekében |
+| correlationId | No | Sztring | Az üzenetek korrelációs azonosítója |
+| ügyfélkérelem | No | Sztring | Az ügyfél feltöltheti ezt a tulajdonságot az üzenetek korrelációja érdekében |
+| eventLevel | Yes | Sztring | Az esemény szintje |
+| eventTime | Yes | DateTime | Az esemény időpontja UTC formátumban: *éééé-hh-NNTóó: PP: mm. 00000Z* |
+| Rekordtípus | Yes | Sztring | A nyomkövetési rekord típusa csak az alábbi megengedett értékkel:`custom` |
+| rekord | Yes | JToken | Egyéni bejegyzéstípus csak JToken formátumban |
 |||||
 
 ## <a name="b2b-protocol-tracking-schemas"></a>B2B protokoll-követési sémák

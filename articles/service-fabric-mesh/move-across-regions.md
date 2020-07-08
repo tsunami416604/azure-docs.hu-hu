@@ -7,10 +7,9 @@ ms.topic: how-to
 ms.date: 01/14/2020
 ms.custom: subject-moving-resources
 ms.openlocfilehash: 376808a6d8f61d4dc03d17061323a473d48053a6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76908162"
 ---
 # <a name="move-a-service-fabric-mesh-application-to-another-azure-region"></a>Service Fabric Mesh-alkalmazás áthelyezése egy másik Azure-régióba
@@ -22,7 +21,7 @@ Ez a cikk azt ismerteti, hogyan helyezheti át a Service Fabric Mesh-alkalmazás
 ## <a name="prerequisites"></a>Előfeltételek
 
 * A beáramlási vezérlő (például [Application Gateway](https://docs.microsoft.com/azure/application-gateway/)), hogy közvetítőként szolgáljon az ügyfelek és a Service Fabric Mesh alkalmazás közötti adatforgalom továbbításához
-* Service Fabric Mesh (előzetes verzió) elérhetősége a cél Azure-`westus`régióban `eastus`(, `westeurope`, vagy)
+* Service Fabric Mesh (előzetes verzió) elérhetősége a cél Azure-régióban ( `westus` , `eastus` , vagy `westeurope` )
 
 ## <a name="prepare"></a>Előkészítés
 

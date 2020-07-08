@@ -15,10 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 09/19/2016
 ms.author: rohink
 ms.openlocfilehash: c497209e456ff838786edaa19e46ebc5c1858d5f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76938860"
 ---
 # <a name="create-dns-zones-and-record-sets-using-the-net-sdk"></a>DNS-zónák és-rekordhalmazok létrehozása a .NET SDK használatával
@@ -34,7 +33,7 @@ Az Azure-erőforrásokhoz való programozott hozzáférést általában a saját
 3. Az Azure RBAC használatával adja meg a "DNS-zóna közreműködői" jogosultságokat az erőforráscsoporthoz (a következő[módon](../role-based-access-control/role-assignments-portal.md):.)
 4. Ha a Azure DNS SDK-minta projektet használja, szerkessze a "program. cs" fájlt a következőképpen:
 
-   * Szúrja be a (más `tenantId`néven `clientId` fiókazonosító) helyes értékeit (szolgáltatásnév) `secret` , és `subscriptionId` az 1. lépésben használt módon.
+   * Szúrja be a ( `tenantId` `clientId` más néven fiókazonosító) helyes értékeit `secret` (szolgáltatásnév), és az `subscriptionId` 1. lépésben használt módon.
    * Adja meg a 2. lépésben kiválasztott erőforráscsoport-nevet.
    * Adja meg a választott DNS-zóna nevét.
 
@@ -60,7 +59,7 @@ using Microsoft.Azure.Management.Dns.Models;
 
 ## <a name="initialize-the-dns-management-client"></a>A DNS-kezelő ügyfél inicializálása
 
-A `DnsManagementClient` a DNS-zónák és-rekordhalmazok kezeléséhez szükséges metódusokat és tulajdonságokat tartalmazza.  A következő kód bejelentkezik a egyszerű szolgáltatásnév fiókjába, és `DnsManagementClient` létrehoz egy objektumot.
+A a `DnsManagementClient` DNS-zónák és-rekordhalmazok kezeléséhez szükséges metódusokat és tulajdonságokat tartalmazza.  A következő kód bejelentkezik a egyszerű szolgáltatásnév fiókjába, és létrehoz egy `DnsManagementClient` objektumot.
 
 ```cs
 // Build the service credentials and DNS management client
@@ -73,7 +72,7 @@ dnsClient.SubscriptionId = subscriptionId;
 
 DNS-zóna létrehozásához először a "Zone" objektum jön létre, amely tartalmazza a DNS-zóna paramétereit. Mivel a DNS-zónák nincsenek egy adott régióhoz kapcsolva, a hely a "Global" értékre van állítva. Ebben a példában egy [Azure Resource Manager "tag"](https://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/) is hozzá van adva a zónához.
 
-Ha a zónát ténylegesen szeretné létrehozni vagy frissíteni Azure DNSban, a rendszer a zóna paramétereit tartalmazó zónát `DnsManagementClient.Zones.CreateOrUpdateAsyc` adja át a metódusnak.
+Ha a zónát ténylegesen szeretné létrehozni vagy frissíteni Azure DNSban, a rendszer a zóna paramétereit tartalmazó zónát adja át a `DnsManagementClient.Zones.CreateOrUpdateAsyc` metódusnak.
 
 > [!NOTE]
 > A DnsManagementClient három működési módot támogat: szinkron ("CreateOrUpdate"), aszinkron ("CreateOrUpdateAsync"), vagy aszinkron módon a HTTP-válaszhoz való hozzáféréssel ("CreateOrUpdateWithHttpMessagesAsync").  Az alkalmazás igényeitől függően bármelyik mód közül választhat.
@@ -99,7 +98,7 @@ var dnsZone = await dnsClient.Zones.CreateOrUpdateAsync(resourceGroupName, zoneN
 
 A DNS-rekordok rekordhalmazként vannak kezelve. A rekordhalmaz a zónán belüli azonos nevű és bejegyzéstípusú rekordok halmaza.  A rekordazonosító neve a zóna nevéhez képest nem a teljesen minősített DNS-név.
 
-Rekordhalmaz létrehozásához vagy frissítéséhez létre kell hozni és át kell `DnsManagementClient.RecordSets.CreateOrUpdateAsync`adni egy "Recordset" paraméter-objektumot. A DNS-zónákhoz hasonlóan három működési mód van: szinkron ("CreateOrUpdate"), aszinkron ("CreateOrUpdateAsync") vagy aszinkron, a HTTP-válaszhoz való hozzáféréssel ("CreateOrUpdateWithHttpMessagesAsync").
+Rekordhalmaz létrehozásához vagy frissítéséhez létre kell hozni és át kell adni egy "RecordSet" paraméter-objektumot `DnsManagementClient.RecordSets.CreateOrUpdateAsync` . A DNS-zónákhoz hasonlóan három működési mód van: szinkron ("CreateOrUpdate"), aszinkron ("CreateOrUpdateAsync") vagy aszinkron, a HTTP-válaszhoz való hozzáféréssel ("CreateOrUpdateWithHttpMessagesAsync").
 
 A DNS-zónákhoz hasonlóan a rekordhalmazok műveletei támogatják az optimista párhuzamosságot is.  Ebben a példában, mivel nincs megadva a "If-Match" és a "If-None-Match" érték, a rendszer mindig létrehozza a rekordot.  Ez a hívás felülírja a DNS-zónában található azonos nevű és bejegyzéstípusú meglévő rekordot.
 

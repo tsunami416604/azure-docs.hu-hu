@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/23/2020
 ms.openlocfilehash: adcdafbc07fa0a8cc6970ab227b52aee798b084f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76776234"
 ---
 # <a name="scenario-cluster-creation-fails-with-domainnotfound-error-in-azure-hdinsight"></a>Forgatókönyv: a fürt létrehozása DomainNotFound hibával meghiúsul az Azure HDInsight
@@ -20,7 +19,7 @@ Ez a cikk az Azure HDInsight-fürtökkel való interakció során felmerülő pr
 
 ## <a name="issue"></a>Probléma
 
-A HDI Secure (Enterprise Security Package) fürt létrehozása nem `DomainNotFound` sikerül, hibaüzenet jelenik meg.
+A HDI Secure (Enterprise Security Package) fürt létrehozása nem sikerül, `DomainNotFound` hibaüzenet jelenik meg.
 
 ## <a name="cause"></a>Ok
 

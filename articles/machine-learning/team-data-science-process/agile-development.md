@@ -11,10 +11,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: c097c14406349d973e905fadb806cc159d9b16d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76722101"
 ---
 # <a name="agile-development-of-data-science-projects"></a>Az adatelemzési projektek gyors fejlesztése
@@ -39,7 +38,7 @@ A TDSP Sprint tervezési keretrendszere négy gyakran használt *munkaelem* -tí
 
 Itt láthatók a munkaelem-típusok definíciói:
 
-- **Funkció**: a szolgáltatás a projekt bevonásának felel meg. Az ügyféllel különböző funkciók különböznek egymástól, és érdemes a projekt különböző fázisait különböző Funkciókként figyelembe venni. Ha olyan sémát választ, mint például a * \<CLIENTNAME\<>-EngagementName>* a szolgáltatások elnevezéséhez, egyszerűen felismerheti a projekt kontextusát, és magától a nevektől is elvégezheti a részvételt.
+- **Funkció**: a szolgáltatás a projekt bevonásának felel meg. Az ügyféllel különböző funkciók különböznek egymástól, és érdemes a projekt különböző fázisait különböző Funkciókként figyelembe venni. Ha olyan sémát választ, mint például a *\<ClientName>-\<EngagementName>* szolgáltatások elnevezése, egyszerűen felismerheti a projekt kontextusát, és maguktól a nevekből is elvégezheti a kapcsolódást.
   
 - **Felhasználói történet**: a felhasználói történetek olyan munkaelemek, amelyek a funkciók végpontok közötti befejezéséhez szükségesek. A felhasználói történetek például a következők:
   - Adatok lekérése 
@@ -72,7 +71,7 @@ Az Azure-táblák Sprint-tervezésével kapcsolatos további információkért l
 
 A projekt és a projekt kódjának tárházának létrehozása után hozzáadhat egy funkciót a várakozó fájlok számára a projekt munkájának ábrázolásához.
 
-1. A projekt lapon válassza a bal oldali navigációs**sávon a** **táblákat** > . 
+1. A projekt lapon válassza **Boards**  >  **Backlogs** a bal oldali navigációs sávon a táblákat. 
    
 1. A **várakozó** fájlok lapon, ha a felső sávban a munkaelem típusa a **történetek**, a legördülő menüben válassza a **funkciók**lehetőséget. Ezután válassza az **új munkaelem lehetőséget.**
    
@@ -112,7 +111,7 @@ A szolgáltatás alatt felhasználói történeteket adhat hozzá a projekt vég
 
 A feladatok az egyes felhasználói történetek végrehajtásához szükséges részletes lépések. Egy felhasználói történet összes feladatának befejezése után a felhasználói történetet is el kell végezni. 
 
-Ha feladatot szeretne felvenni egy felhasználói szövegegységbe, jelölje **+** be a felhasználói szövegegység elem melletti gombot, és válassza a **feladat**elemet. Adja meg a címet és az egyéb információkat a feladatban.
+Ha feladatot szeretne felvenni egy felhasználói szövegegységbe, jelölje be a **+** felhasználói szövegegység elem melletti gombot, és válassza a **feladat**elemet. Adja meg a címet és az egyéb információkat a feladatban.
 
 ![Feladat hozzáadása egy felhasználói történethez](./media/agile-development/7-sprint-add-task.png)
 
@@ -183,7 +182,7 @@ Az adatelemzési folyamat sablonja segítségével TDSP-projekteket hozhat létr
    
    ![TDSP-projekt létrehozása](./media/agile-development/15-newproject.png)
    
-1. Az újonnan létrehozott projektben válassza a bal oldali navigációs**sávon a** **táblákat** > .
+1. Az újonnan létrehozott projektben válassza **Boards**  >  **Backlogs** a bal oldali navigációs sávon a táblákat.
    
 1. A TDSP-projektek láthatóvá tételéhez válassza a **csoport beállításainak konfigurálása** ikont. A **Beállítások** képernyőn jelölje be a **TDSP-projektek** jelölőnégyzetet, majd kattintson a **Mentés és bezárás**gombra.
    
@@ -195,7 +194,7 @@ Az adatelemzési folyamat sablonja segítségével TDSP-projekteket hozhat létr
    
    ![Adatelemzési projekt munkaelemének létrehozása](./media/agile-development/17-dsworkitems0.png)
    
-1. Ha munkaelemet szeretne felvenni a TDSP projekt alá, **+** válassza ki a projekt melletti elemet, majd válassza ki a létrehozandó munkaelem típusát. 
+1. Ha munkaelemet szeretne felvenni a TDSP projekt alá, válassza ki a **+** projekt melletti elemet, majd válassza ki a létrehozandó munkaelem típusát. 
    
    ![Adatelemzési munkaelem típusának kiválasztása](./media/agile-development/17-dsworkitems1.png)
    

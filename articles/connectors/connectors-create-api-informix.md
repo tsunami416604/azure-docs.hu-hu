@@ -10,10 +10,9 @@ ms.topic: article
 ms.date: 01/07/2020
 tags: connectors
 ms.openlocfilehash: dccb715c974037b4e3080f3e51576feae34c03df
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76757968"
 ---
 # <a name="manage-ibm-informix-database-resources-by-using-azure-logic-apps"></a>IBM Informix-adatbázis-erőforrások kezelése Azure Logic Apps használatával
@@ -39,7 +38,7 @@ Ebből a témakörből megtudhatja, hogyan használhatja az összekötőt egy lo
 
 1. Válassza ki az **új lépés**lehetőséget arra a lépésre, ahol az Informix-műveletet hozzá szeretné adni.
 
-   A meglévő lépések közötti művelet hozzáadásához vigye az egeret a csatlakozás nyíl fölé. Válassza ki a megjelenő pluszjelet (**+**), majd válassza a **művelet hozzáadása**lehetőséget.
+   A meglévő lépések közötti művelet hozzáadásához vigye az egeret a csatlakozás nyíl fölé. Válassza ki a **+** megjelenő pluszjelet (), majd válassza a **művelet hozzáadása**lehetőséget.
 
 1. A keresőmezőbe írja be `informix` szűrőként a kifejezést. A műveletek listából válassza ki a kívánt műveletet, például:
 
@@ -58,14 +57,14 @@ Ebből a témakörből megtudhatja, hogyan használhatja az összekötőt egy lo
 
 1. Adja meg a kiválasztott művelet adatait:
 
-   | Műveletek | Leírás | Tulajdonságok és leírások |
+   | Műveletek | Description | Tulajdonságok és leírások |
    |--------|-------------|-----------------------------|
    | **Táblák beolvasása** | Adatbázis-táblák listázása Informix CALL utasítás futtatásával. | None |
-   | **Sorok beolvasása** | A megadott táblában lévő összes sor beolvasása egy Informix `SELECT *` -utasítás futtatásával. | **Táblázat neve**: a kívánt Informix-tábla neve <p><p>Ha további tulajdonságokat szeretne hozzáadni ehhez a művelethez, válassza ki őket az **új paraméter hozzáadása** listából. További információ: az [összekötő hivatkozási témája](/connectors/informix/). |
-   | **Sor beolvasása** | Sor beolvasása a megadott táblából egy Informix `SELECT WHERE` -utasítás futtatásával. | - **Táblázat neve**: a kívánt Informix-tábla neve <br>- **Sor azonosítója**: a sor egyedi azonosítója, például`9999` |
-   | **Sor beszúrása** | Adjon hozzá egy sort a megadott Informix-táblához egy Informix `INSERT` -utasítás futtatásával. | - **Táblázat neve**: a kívánt Informix-tábla neve <br>- **elem**: a hozzáadandó értékekkel rendelkező sor |
-   | **Sor frissítése** | Egy sor módosítása a megadott Informix-táblában egy Informix `UPDATE` -utasítás futtatásával. | - **Táblázat neve**: a kívánt Informix-tábla neve <br>- **Sor azonosítója**: a frissítendő sor egyedi azonosítója, például`9999` <br>- **Sor**: a frissített értékekkel rendelkező sor, például`102` |
-   | **Sor törlése** | Sor eltávolítása a megadott Informix-táblából Informix `DELETE` -utasítás futtatásával. | - **Táblázat neve**: a kívánt Informix-tábla neve <br>- **Sor azonosítója**: a törlendő sor egyedi azonosítója, például`9999` |
+   | **Sorok beolvasása** | A megadott táblában lévő összes sor beolvasása egy Informix- `SELECT *` utasítás futtatásával. | **Táblázat neve**: a kívánt Informix-tábla neve <p><p>Ha további tulajdonságokat szeretne hozzáadni ehhez a művelethez, válassza ki őket az **új paraméter hozzáadása** listából. További információ: az [összekötő hivatkozási témája](/connectors/informix/). |
+   | **Sor beolvasása** | Sor beolvasása a megadott táblából egy Informix- `SELECT WHERE` utasítás futtatásával. | - **Táblázat neve**: a kívánt Informix-tábla neve <br>- **Sor azonosítója**: a sor egyedi azonosítója, például`9999` |
+   | **Sor beszúrása** | Adjon hozzá egy sort a megadott Informix-táblához egy Informix-utasítás futtatásával `INSERT` . | - **Táblázat neve**: a kívánt Informix-tábla neve <br>- **elem**: a hozzáadandó értékekkel rendelkező sor |
+   | **Sor frissítése** | Egy sor módosítása a megadott Informix-táblában egy Informix-utasítás futtatásával `UPDATE` . | - **Táblázat neve**: a kívánt Informix-tábla neve <br>- **Sor azonosítója**: a frissítendő sor egyedi azonosítója, például`9999` <br>- **Sor**: a frissített értékekkel rendelkező sor, például`102` |
+   | **Sor törlése** | Sor eltávolítása a megadott Informix-táblából Informix-utasítás futtatásával `DELETE` . | - **Táblázat neve**: a kívánt Informix-tábla neve <br>- **Sor azonosítója**: a törlendő sor egyedi azonosítója, például`9999` |
    ||||
 
 1. Mentse a logikai alkalmazást. Most [tesztelje a logikai alkalmazást](#test-logic-app) , vagy folytassa a logikai alkalmazás létrehozásával.
@@ -78,14 +77,14 @@ Ebből a témakörből megtudhatja, hogyan használhatja az összekötőt egy lo
 
 1. Adja meg a kapcsolatok adatait, majd válassza a **Létrehozás**lehetőséget.
 
-   | Tulajdonság | JSON-tulajdonság | Kötelező | Példaérték | Leírás |
+   | Tulajdonság | JSON-tulajdonság | Kötelező | Példaérték | Description |
    |----------|---------------|----------|---------------|-------------|
-   | Kapcsolat neve | `name` | Igen | `informix-demo-connection` | Az Informix-adatbázishoz való kapcsolódáshoz használandó név |
-   | Kiszolgáló | `server` | Igen | Felhő`informixdemo.cloudapp.net:9089` <br>-Helyszíni:`informixdemo:9089` | Az IPv4-vagy IPv6-formátumú TCP/IP-cím vagy alias, amelyet egy kettőspont és egy TCP/IP-portszám követ |
-   | Adatbázis | `database` | Igen | `nwind` | A DRDA-kapcsolatok adatbázisának neve (RDBNAM) vagy az Informix-adatbázis neve (dbname). Az Informix 128 bájtos karakterláncot fogad el. |
+   | Kapcsolat neve | `name` | Yes | `informix-demo-connection` | Az Informix-adatbázishoz való kapcsolódáshoz használandó név |
+   | Kiszolgáló | `server` | Yes | Felhő`informixdemo.cloudapp.net:9089` <br>-Helyszíni:`informixdemo:9089` | Az IPv4-vagy IPv6-formátumú TCP/IP-cím vagy alias, amelyet egy kettőspont és egy TCP/IP-portszám követ |
+   | Adatbázis | `database` | Yes | `nwind` | A DRDA-kapcsolatok adatbázisának neve (RDBNAM) vagy az Informix-adatbázis neve (dbname). Az Informix 128 bájtos karakterláncot fogad el. |
    | Hitelesítés | `authentication` | Csak helyszíni | **Alapszintű** vagy **Windows** (Kerberos) | Az Informix-adatbázis által igényelt hitelesítési típus. Ez a tulajdonság csak akkor jelenik meg, ha **a csatlakozás helyszíni adatátjárón keresztül**lehetőséget választja. |
-   | Felhasználónév | `username` | Nem | <*adatbázis – felhasználó neve*> | Az adatbázis felhasználóneve |
-   | Jelszó | `password` | Nem | <*adatbázis – jelszó*> | Az adatbázis jelszava |
+   | Felhasználónév | `username` | No | <*adatbázis – felhasználó neve*> | Az adatbázis felhasználóneve |
+   | Jelszó | `password` | No | <*adatbázis – jelszó*> | Az adatbázis jelszava |
    | Átjáró | `gateway` | Csak helyszíni | – <*Azure-előfizetés*> <br>-<*Azure-helyszíni-adatátjáró-erőforrás*> | Az Azure-előfizetés és az Azure-Erőforrás neve a Azure Portalban létrehozott helyszíni adatátjáróhoz. Az **átjáró** tulajdonság és az alárendelt tulajdonságok csak akkor jelennek meg, ha **a csatlakozás helyszíni adatátjárón keresztül**lehetőséget választja. |
    ||||||
 
@@ -107,7 +106,7 @@ Ebből a témakörből megtudhatja, hogyan használhatja az összekötőt egy lo
 
 1. A Logic app Designer eszköztárán válassza a **Futtatás**lehetőséget. A logikai alkalmazás futtatása után megtekintheti a futtatási kimeneteket.
 
-1. A logikai alkalmazás menüjében válassza az **Áttekintés**lehetőséget. Az Áttekintés ablaktábla **Összefoglalás** > **futtatása előzmények**területén válassza ki a legutóbbi futtatást.
+1. A logikai alkalmazás menüjében válassza az **Áttekintés**lehetőséget. Az Áttekintés ablaktábla **Összefoglalás**  >  **futtatása előzmények**területén válassza ki a legutóbbi futtatást.
 
 1. A **logikai alkalmazás futtatása**területen válassza a **Futtatás részletek**lehetőséget.
 

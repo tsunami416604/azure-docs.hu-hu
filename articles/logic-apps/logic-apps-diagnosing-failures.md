@@ -7,10 +7,9 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/31/2020
 ms.openlocfilehash: 1f83f13564a64a0d9d8a5e0144ca95af6a769d6c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76905087"
 ---
 # <a name="troubleshoot-and-diagnose-workflow-failures-in-azure-logic-apps"></a>A munkafolyamatok hibáinak elhárítása és diagnosztizálása az Azure Logic Appsben
@@ -31,7 +30,7 @@ Az egyes logikai alkalmazások futtatása trigger-kísérlettel kezdődik, így 
 
    Az trigger bemenetei közé tartoznak az indító által várt adatok, és a munkafolyamat indításához szükségesek. Ezeknek az adatoknak a megtekintésével megállapíthatja, hogy helyesek-e az trigger bemenetei, és hogy teljesül-e a feltétel, hogy a munkafolyamat folytatódhat-e.
 
-   Az itt látható tulajdonsághoz például helytelen az `feedUrl` RSS-hírcsatorna értéke:
+   Az `feedUrl` itt látható tulajdonsághoz például helytelen az RSS-hírcsatorna értéke:
 
    ![Hibákra vonatkozó trigger-bemenetek áttekintése](./media/logic-apps-diagnosing-failures/review-trigger-inputs-for-errors.png)
 

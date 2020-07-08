@@ -7,13 +7,12 @@ ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 01/30/2020
 ms.openlocfilehash: e9ba5a516293eb72a715dc9d0df7db4d5a4ea3c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76907980"
 ---
-# <a name="set-up-azure-monitor-logs-and-collect-diagnostics-data-for-b2b-messages-in-azure-logic-apps"></a>Azure Monitor naplók beállítása és diagnosztikai adatok összegyűjtése a B2B-üzenetekhez Azure Logic Apps
+# <a name="set-up-azure-monitor-logs-and-collect-diagnostics-data-for-b2b-messages-in-azure-logic-apps"></a>Azure Monitor-naplók beállítása és diagnosztikai adatok begyűjtése a B2B-üzenetekre vonatkozóan az Azure Logic Appsben
 
 Miután beállította a VÁLLALATKÖZI kommunikációt a kereskedelmi partnerek között az integrációs fiókban, ezek a partnerek olyan protokollok használatával válthatnak be üzeneteket, mint az AS2, a X12 és a EDIFACT. Annak ellenőrzését, hogy a kommunikáció a várt módon működik-e, beállíthat [Azure monitor naplókat](../azure-monitor/platform/data-platform-logs.md) az integrációs fiókjához. [Azure monitor](../azure-monitor/overview.md) segít a felhő és a helyszíni környezetek monitorozásában, így könnyebben megtarthatja a rendelkezésre állást és a teljesítményt. Azure Monitor naplók használatával rögzítheti és tárolhatja a futtatókörnyezet adatait és eseményeit, például az események aktiválását, az események futtatását és a műveleti eseményeket egy [log Analytics munkaterületen](../azure-monitor/platform/resource-logs-collect-workspace.md). Az üzenetek esetében a naplózás a következő információkat is gyűjti:
 
@@ -44,7 +43,7 @@ Ez a cikk bemutatja, hogyan engedélyezheti az integrációs fiók Azure Monitor
 
 Mielőtt Azure Monitor naplók nyomon követhetik a logikai alkalmazás B2B-üzeneteit, adja hozzá a **Logic apps B2B** megoldást a log Analytics munkaterülethez.
 
-1. A [Azure Portal](https://portal.azure.com)keresési mezőjébe írja be `log analytics workspaces`a kifejezést, majd válassza **log Analytics munkaterületek**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com)keresési mezőjébe írja be a kifejezést `log analytics workspaces` , majd válassza **log Analytics munkaterületek**lehetőséget.
 
    !["Log Analytics munkaterületek" kiválasztása](./media/monitor-b2b-messages-log-analytics/find-select-log-analytics-workspaces.png)
 
@@ -52,7 +51,7 @@ Mielőtt Azure Monitor naplók nyomon követhetik a logikai alkalmazás B2B-üze
 
    ![Log Analytics munkaterület kiválasztása](./media/monitor-b2b-messages-log-analytics/select-log-analytics-workspace.png)
 
-1. Az Áttekintés ablaktáblán, az **első lépések a log Analytics** > a**figyelési megoldások konfigurálása**területen válassza a **megoldások megtekintése**lehetőséget.
+1. Az Áttekintés ablaktáblán, az **első lépések a log Analytics**a  >  **figyelési megoldások konfigurálása**területen válassza a **megoldások megtekintése**lehetőséget.
 
    ![Az Áttekintés panelen válassza a "megoldások megtekintése" lehetőséget.](./media/monitor-b2b-messages-log-analytics/log-analytics-workspace.png)
 
@@ -60,7 +59,7 @@ Mielőtt Azure Monitor naplók nyomon követhetik a logikai alkalmazás B2B-üze
 
    ![Az Áttekintés panelen új megoldás hozzáadása](./media/monitor-b2b-messages-log-analytics/add-logic-apps-management-solution.png)
 
-1. A **piactér** megnyitása után a keresőmezőbe írja be `logic apps b2b`a kifejezést, majd válassza a **Logic apps B2B**lehetőséget.
+1. A **piactér** megnyitása után a keresőmezőbe írja be a kifejezést `logic apps b2b` , majd válassza a **Logic apps B2B**lehetőséget.
 
    ![A piactéren válassza a "Logic Apps kezelés" lehetőséget.](./media/monitor-b2b-messages-log-analytics/select-logic-apps-b2b-solution.png)
 
@@ -116,7 +115,7 @@ A logikai alkalmazás futtatása után megtekintheti a Log Analytics munkaterül
 
 1. A [Azure Portal](https://portal.azure.com) keresőmezőben keresse meg és nyissa meg log Analytics munkaterületét.
 
-1. A munkaterület menüjében válassza a **munkaterület összefoglalása** > **Logic apps B2B**elemet.
+1. A munkaterület menüjében válassza a **munkaterület összefoglalása**  >  **Logic apps B2B**elemet.
 
    ![Munkaterület összegzése panel](./media/monitor-b2b-messages-log-analytics/b2b-overview-messages-summary.png)
 

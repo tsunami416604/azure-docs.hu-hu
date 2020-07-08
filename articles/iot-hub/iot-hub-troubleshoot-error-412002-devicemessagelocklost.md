@@ -9,10 +9,9 @@ ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
 ms.openlocfilehash: 66461b23432a3e8b7ae4ad1fdc078fba9ca05646
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76960762"
 ---
 # <a name="412002-devicemessagelocklost"></a>412002 DeviceMessageLockLost
@@ -25,7 +24,7 @@ A felhőből az eszközre irányuló üzenetek küldésére tett kísérlet sor�
 
 ## <a name="cause"></a>Ok
 
-Ha egy eszköz egy felhőből az eszközre irányuló üzenetet kap a sorból (például a használatával [`ReceiveAsync()`](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync?view=azure-dotnet)), az üzenetet IoT hub zárolja a zárolási időkorlát időtartamára egy percen belül. Ha az eszköz a zárolási időkorlát lejárta után megpróbálja befejezni az üzenetet, IoT Hub eldönti ezt a kivételt.
+Ha egy eszköz egy felhőből az eszközre irányuló üzenetet kap a sorból (például a használatával [`ReceiveAsync()`](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync?view=azure-dotnet) ), az üzenetet IoT hub zárolja a zárolási időkorlát időtartamára egy percen belül. Ha az eszköz a zárolási időkorlát lejárta után megpróbálja befejezni az üzenetet, IoT Hub eldönti ezt a kivételt.
 
 ## <a name="solution"></a>Megoldás
 

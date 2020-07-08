@@ -16,10 +16,9 @@ ms.workload: na
 ms.date: 05/31/2019
 ms.author: TomSh
 ms.openlocfilehash: 61afad1d9994fd703bd8df047d1861baddeae997
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76845344"
 ---
 # <a name="azure-security-technical-capabilities"></a>Az Azure biztonságtechnikai képességei
@@ -410,7 +409,7 @@ Ezzel a módszerrel különböző forrásokból is összevonhatja az adatait, í
 
 A Security Center a potenciális biztonsági hiányosságok azonosítása érdekében elemzi az Azure-erőforrások biztonsági állapotát. A javaslatok listája végigvezeti Önt a szükséges szabályozási folyamatok konfigurálásának folyamatán.
 
-Példák erre vonatkozóan:
+Példák:
 
 - Kártevőirtók kiépítése a kártékony szoftverek azonosításához és eltávolításához
 
@@ -438,7 +437,7 @@ A [Azure monitor](../../azure-monitor/overview.md) az adott típusú erőforrás
 
 A Felhőbeli alkalmazások számos mozgó részből összetettek. A figyelési szolgáltatással biztosítható, hogy az alkalmazás kifogástalan állapotban maradjon. Emellett segít elhárítani a lehetséges problémákat vagy a múltbeli hibák elhárítását.
 
-![Azure Monitor](./media/technical-capabilities/azure-security-technical-capabilities-fig10.png) emellett a figyelési adatok segítségével mélyebb elemzéseket nyerhet az alkalmazásról. Ezzel az ismerettel javíthatja az alkalmazások teljesítményét vagy karbantartását, vagy automatizálhatja azokat a műveleteket, amelyek egyébként manuális beavatkozást igényelnek.
+![Azure Monitor ](./media/technical-capabilities/azure-security-technical-capabilities-fig10.png) emellett a figyelési adatok segítségével mélyebb elemzéseket nyerhet az alkalmazásról. Ezzel az ismerettel javíthatja az alkalmazások teljesítményét vagy karbantartását, vagy automatizálhatja azokat a műveleteket, amelyek egyébként manuális beavatkozást igényelnek.
 
 A hálózati biztonság naplózása létfontosságú a hálózati sebezhetőségek észleléséhez, valamint az informatikai biztonsági és szabályozási irányítási modell megfelelőségének biztosításához. A biztonsági csoport nézetben lekérheti a konfigurált hálózati biztonsági csoport és biztonsági szabályok, valamint a hatályos biztonsági szabályok beolvasását. Az alkalmazott szabályok listájának használatával meghatározhatja a nyitott és az SS hálózati biztonsági rést tartalmazó portokat.
 
@@ -452,7 +451,7 @@ A [Storage Analytics](https://docs.microsoft.com/rest/api/storageservices/filese
 
 ### <a name="application-insights"></a>Application Insights
 
-A [Application Insights](../../azure-monitor/app/app-insights-overview.md) egy bővíthető Application Performance Management-(APM-) szolgáltatás, amely több platformon is használható webfejlesztőknek. Az élő webalkalmazásának figyelésére használhatja. Automatikusan felismeri a teljesítményanomáliákat. Hatékony elemzési eszközöket tartalmaz, amelyek segítségével diagnosztizálhatja a problémákat, és megtudhatja, hogy a felhasználók milyen műveleteket végeznek az alkalmazással. Úgy tervezték, hogy használatával folyamatosan javíthassa a teljesítményt és a használhatóságot. Számos platformon használható, többek között a .NET, a Node. js és a Java EE, a helyszínen vagy a felhőben üzemeltetett alkalmazások esetében. Integrálva van a devOps-folyamattal, és a kapcsolódási pontok különböző fejlesztői eszközökhöz vannak társítva.
+A [Application Insights](../../azure-monitor/app/app-insights-overview.md) egy bővíthető Application Performance Management-(APM-) szolgáltatás, amely több platformon is használható webfejlesztőknek. Az élő webalkalmazásának figyelésére használhatja. Automatikusan felismeri a teljesítményanomáliákat. Hatékony elemzési eszközöket tartalmaz, amelyek segítségével diagnosztizálhatja a problémákat, és megtudhatja, hogy a felhasználók milyen műveleteket végeznek az alkalmazással. Úgy tervezték, hogy használatával folyamatosan javíthassa a teljesítményt és a használhatóságot. Számos platformon használható, többek között a .NET, a Node.js és a Java EE, a helyszínen vagy a felhőben üzemeltetett alkalmazások esetében. Integrálva van a devOps-folyamattal, és a kapcsolódási pontok különböző fejlesztői eszközökhöz vannak társítva.
 
 A szolgáltatás az alábbiakat figyeli:
 

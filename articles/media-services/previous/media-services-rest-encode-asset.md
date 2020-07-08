@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 6854400f2152a5952a7b24dbd860d7ad4bfc943d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76774919"
 ---
 # <a name="how-to-encode-an-asset-by-using-media-encoder-standard"></a>Eszköz kódolása Media Encoder Standard használatával
@@ -101,7 +100,7 @@ Az alábbi példa bemutatja, hogyan állíthatja be a assetName attribútumot:
 * Az JobInputAsset vagy JobOutputAsset-re átadott Value paraméter az adott eszköz indexének értékét jelöli. A tényleges eszközök a InputMediaAssets és a OutputMediaAssets navigációs tulajdonságaiban vannak definiálva a feladatok entitásának definíciójában.
 * Mivel Media Services a OData v3-ra épül, a InputMediaAssets és a OutputMediaAssets navigációs tulajdonság gyűjteményében lévő egyedi eszközökre a "__metadata: URI" név-érték párok hivatkoznak.
 * A InputMediaAssets egy vagy több olyan eszközre mutat, amelyet a Media Services hozott létre. A OutputMediaAssets a rendszer hozza létre. Nem hivatkoznak meglévő eszközre.
-* A OutputMediaAssets a assetName attribútummal lehet elnevezni. Ha ez az attribútum nem található, akkor a OutputMediaAsset neve megegyezik az `<outputAsset>` elem belső szöveges értékével, vagy a feladatnév értékének vagy a feladattípus értékének (abban az esetben, ha nincs megadva a Name tulajdonság) utótagja. Ha például a assetName értéket állítja be a "Sample" értékre, akkor a OutputMediaAsset Name tulajdonság értéke "Sample". Ha azonban nem állított be értéket a assetName, de a feladatot "NewJob" értékre állította, akkor a OutputMediaAsset neve "JobOutputAsset (Value) _NewJob."
+* A OutputMediaAssets a assetName attribútummal lehet elnevezni. Ha ez az attribútum nem található, akkor a OutputMediaAsset neve megegyezik az elem belső szöveges értékével, vagy a feladatnév értékének `<outputAsset>` vagy a feladattípus értékének (abban az esetben, ha nincs megadva a Name tulajdonság) utótagja. Ha például a assetName értéket állítja be a "Sample" értékre, akkor a OutputMediaAsset Name tulajdonság értéke "Sample". Ha azonban nem állított be értéket a assetName, de a feladatot "NewJob" értékre állította, akkor a OutputMediaAsset neve "JobOutputAsset (Value) _NewJob."
 
 ## <a name="create-a-job-with-chained-tasks"></a>Feladat létrehozása láncolt feladatokkal
 Számos alkalmazási helyzetben a fejlesztők több feldolgozási feladatot kívánnak létrehozni. Media Services több láncolt feladat is létrehozható. Mindegyik feladat különböző feldolgozási lépéseket hajt végre, és különböző adathordozó-processzorokat használhat. A láncolt feladatok kikapcsolhatják az adategységeket az egyik feladatból a másikba, és a feladatok lineáris sorát hajtják végre az adategységen. Egy adott feladatban végrehajtott feladatok azonban nem szükségesek a sorozatban. Láncolt feladat létrehozásakor a láncolt **ITask** objektumok egyetlen **IJob** -objektumban jönnek létre.

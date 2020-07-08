@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: alkohli
 ms.openlocfilehash: 9456d975ffb6d7726166f9badbcb8fe0ccbe5256
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68965359"
 ---
 # <a name="compare-storsimple-with-azure-file-sync-and-data-box-edge-data-transfer-options"></a>A StorSimple összehasonlítása az Azure File Synckel és a Data Box Edge adatátviteli lehetőségeivel 
@@ -33,7 +32,7 @@ Ez a dokumentum áttekintést nyújt a helyszíni adatátviteli lehetőségekrő
 |Peremhálózati számítás     |Nem érhető el |Nem érhető el |Támogatja a futó tárolókat Azure IoT Edge    |
 |Űrlap tényező      |Fizikai eszköz   |A Windows Serverre telepített ügynök |Fizikai eszköz   |
 |Hardver         |A Microsoft által a szolgáltatás részeként biztosított fizikai eszköz | Ügyfél által megadott |A Microsoft által a szolgáltatás részeként biztosított fizikai eszköz  |
-|Adatformátum      |Egyéni formátum   |Fájlok         |Blobok vagy fájlok    |
+|Adatformátum      |Egyéni formátum   |Files         |Blobok vagy fájlok    |
 |Protokolltámogatás |iSCSI          |SMB, NFS    | SMB vagy NFS      |
 |Díjszabás          |[StorSimple](https://azure.microsoft.com/pricing/details/storsimple/) |[Azure File Sync](https://azure.microsoft.com/pricing/details/storage/files/)  |[Data Box Edge](https://azure.microsoft.com/pricing/details/storage/databox/edge/)  |
 

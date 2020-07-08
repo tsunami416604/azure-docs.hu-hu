@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
 ms.openlocfilehash: 0718ebc3612f53f1c2cc279096dd92de69bb5ef6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76963852"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>Azure Recovery Services biztonsági mentési szabályzatok létrehozása REST API használatával
@@ -23,16 +22,16 @@ Azure Backup szabályzat létrehozásához vagy frissítéséhez használja a k�
 PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupPolicies/{policyName}?api-version=2019-05-13
 ```
 
-A `{policyName}` és `{vaultName}` az URI-ban van megadva. A kérés törzsében további információk is megtalálhatók.
+A `{policyName}` és az `{vaultName}` URI-ban van megadva. A kérés törzsében további információk is megtalálhatók.
 
 ## <a name="create-the-request-body"></a>A kérelem törzsének létrehozása
 
 Ha például az Azure virtuális gép biztonsági mentésére vonatkozó szabályzatot szeretne létrehozni, az alábbiakban a kérelem törzsének összetevői láthatók.
 
-|Name (Név)  |Kötelező  |Típus  |Leírás  |
+|Name  |Kötelező  |Típus  |Description  |
 |---------|---------|---------|---------|
 |properties     |   True (Igaz)      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource tulajdonságai        |
-|címkét     |         | Objektum        |  Erőforráscímkék       |
+|tags     |         | Objektum        |  Erőforráscímkék       |
 
 A kérelem törzsében található definíciók teljes listájáért tekintse meg a [biztonsági mentési szabályzat REST API dokumentumát](/rest/api/backup/protectionpolicies/createorupdate).
 
@@ -137,7 +136,7 @@ A biztonsági mentési szabályzat létrehozása/frissítése [aszinkron művele
 
 Két választ ad vissza: 202 (elfogadva) egy másik művelet létrehozásakor, majd 200 (OK), amikor a művelet befejeződik.
 
-|Name (Név)  |Típus  |Leírás  |
+|Name  |Típus  |Description  |
 |---------|---------|---------|
 |200 OK     |    [Védelem PolicyResource](/rest/api/backup/protectionpolicies/createorupdate#protectionpolicyresource)     |  OK       |
 |202 elfogadva     |         |     Elfogadva    |

@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 07/31/2019
 ms.author: apimpm
 ms.openlocfilehash: 6054c595bca26dc2a0432c53369a60a61e3efde0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76841863"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Az Azure API Management használata belső virtuális hálózattal
@@ -63,7 +62,7 @@ A belső virtuális hálózat API Management szolgáltatása a [belső terhelés
 
 4. Kattintson a **Mentés** gombra.
 
-Az üzembe helyezés sikeres végrehajtása után az Áttekintés panelen látnia kell a API Management szolgáltatás **magánhálózati** virtuális IP-címét és **nyilvános** virtuális IP-címét. A **magánhálózati** virtuális IP-cím egy elosztott terhelésű IP-cím a API Management delegált alhálózaton `gateway`belül `portal`, `management` amelyen `scm` keresztül a végpontok elérhetők. A **nyilvános** virtuális IP-cím **csak** a 3443-es porton `management` keresztüli végpontra irányuló vezérlési sík forgalmára szolgál, és a [ApiManagement][ServiceTags] servicetag is zárolható.
+Az üzembe helyezés sikeres végrehajtása után az Áttekintés panelen látnia kell a API Management szolgáltatás **magánhálózati** virtuális IP-címét és **nyilvános** virtuális IP-címét. A **magánhálózati** virtuális IP-cím egy elosztott terhelésű IP-cím a API Management delegált alhálózaton belül, amelyen keresztül a `gateway` `portal` `management` `scm` végpontok elérhetők. A **nyilvános** virtuális IP-cím **csak** a `management` 3443-es porton keresztüli végpontra irányuló vezérlési sík forgalmára szolgál, és a [ApiManagement][ServiceTags] servicetag is zárolható.
 
 ![Irányítópult API Management konfigurált belső virtuális hálózattal][api-management-internal-vnet-dashboard]
 
@@ -125,7 +124,7 @@ Ha egy virtuális hálózatban egyéni DNS-kiszolgálót használ, létrehozhat 
 ## <a name="routing"></a><a name="routing"> </a> Útválasztás
 
 * Az alhálózat tartományának elosztott terhelésű *magánhálózati* virtuális IP-címe le lesz foglalva, és a virtuális hálózatról a API Management szolgáltatási végpontok elérésére szolgál. Ez a *magánhálózati* IP-cím a Azure Portal szolgáltatásának áttekintés paneljén található. Ezt a címeket regisztrálni kell a virtuális hálózat által használt DNS-kiszolgálókkal.
-* Egy elosztott terhelésű *nyilvános* IP-cím (VIP) is le lesz foglalva, hogy hozzáférést biztosítson a felügyeleti szolgáltatási végponthoz a 3443-es porton keresztül. Ez a *nyilvános* IP-cím a Azure Portal szolgáltatásának áttekintés paneljén található. A *nyilvános* IP-címet csak a 3443-es porton keresztül `management` a végpont felé irányuló vezérlési síkon lehet használni, és zárolható a [ApiManagement][ServiceTags] servicetag.
+* Egy elosztott terhelésű *nyilvános* IP-cím (VIP) is le lesz foglalva, hogy hozzáférést biztosítson a felügyeleti szolgáltatási végponthoz a 3443-es porton keresztül. Ez a *nyilvános* IP-cím a Azure Portal szolgáltatásának áttekintés paneljén található. A *nyilvános* IP-címet csak a 3443-es porton keresztül a végpont felé irányuló vezérlési síkon lehet használni `management` , és zárolható a [ApiManagement][ServiceTags] servicetag.
 * Az alhálózat IP-tartományból (DIP) származó IP-címek a szolgáltatásban lévő egyes virtuális gépekhez lesznek rendelve, és a rendszer a virtuális hálózaton belüli erőforrásokhoz való hozzáférést fogja használni. A virtuális hálózaton kívüli erőforrások eléréséhez nyilvános IP-címet (VIP) kell használni. Ha az IP-korlátozási listát a virtuális hálózaton belüli erőforrások védelmére használja, akkor a szolgáltatáshoz való hozzáférés engedélyezéséhez vagy korlátozásához meg kell adni az alhálózat teljes tartományát, ahol a API Management szolgáltatás telepítve van.
 * Az elosztott terhelésű nyilvános és magánhálózati IP-címek a Azure Portal áttekintés paneljén találhatók.
 * A nyilvános és a privát hozzáféréshez hozzárendelt IP-címek megváltozhatnak, ha a szolgáltatás el lett távolítva, majd visszakerül a virtuális hálózatba. Ha ez történik, előfordulhat, hogy frissítenie kell a DNS-regisztrációkat, az útválasztási szabályokat és az IP-korlátozási listát a virtuális hálózaton belül.

@@ -10,10 +10,9 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: d0034810ff86de2a40e275ca54a2f0f9cbc856c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76844700"
 ---
 # <a name="tutorial-forward-events-to-iothub"></a>Oktatóanyag: események továbbítása a IoTHub
@@ -40,7 +39,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 Egy esemény kiadójaként létre kell hoznia egy Event Grid-témakört. A témakör egy olyan végpontra hivatkozik, ahol a közzétevők küldhetnek eseményeket.
 
-1. Hozza létre a topic4. JSON fájlt a következő tartalommal. A hasznos adatokkal kapcsolatos részletekért tekintse meg az [API-dokumentációt](api.md) .
+1. Hozzon létre topic4.jsa következő tartalommal. A hasznos adatokkal kapcsolatos részletekért tekintse meg az [API-dokumentációt](api.md) .
 
    ```json
     {
@@ -84,7 +83,7 @@ Az előfizetők regisztrálhatnak a témakörben közzétett eseményekre. Ha b�
 
 [!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
-1. Hozza létre a subscription4. JSON fájlt az alábbi tartalommal. A hasznos adatokkal kapcsolatos részletekért tekintse meg az [API dokumentációját](api.md) .
+1. Hozzon létre subscription4.jsaz alábbi tartalommal. A hasznos adatokkal kapcsolatos részletekért tekintse meg az [API dokumentációját](api.md) .
 
    ```json
     {
@@ -100,7 +99,7 @@ Az előfizetők regisztrálhatnak a témakörben közzétett eseményekre. Ha b�
    ```
 
    >[!NOTE]
-   > A `endpointType` azt adja meg, hogy `edgeHub`az előfizető. A `outputName` meghatározza azt a kimenetet, amelyen a Event Grid modul továbbítja az ehhez az előfizetéshez tartozó eseményeket a edgeHub. A fenti előfizetésnek megfelelő események például a következőre lesznek írva `/messages/modules/eventgridmodule/outputs/sampleSub4`:.
+   > A `endpointType` azt adja meg, hogy az előfizető `edgeHub` . A `outputName` meghatározza azt a kimenetet, amelyen a Event Grid modul továbbítja az ehhez az előfizetéshez tartozó eseményeket a edgeHub. A fenti előfizetésnek megfelelő események például a következőre lesznek írva: `/messages/modules/eventgridmodule/outputs/sampleSub4` .
 2. A következő parancs futtatásával hozza létre az előfizetést. Az 200-es HTTP-állapotkódot vissza kell adni.
 
     ```sh
@@ -147,7 +146,7 @@ Frissítse az Edge hub útvonalát az esemény-előfizetés eseményeinek továb
   "fromEventGridToIoTHub":"FROM /messages/modules/eventgridmodule/outputs/sampleSub4 INTO $upstream"
   ```
 
-  Például:
+  Példa:
 
   ```json
   {
@@ -168,7 +167,7 @@ Tekintse meg a [IoT hub útválasztási oktatóanyagot](../../iot-hub/tutorial-r
 
 ## <a name="publish-an-event"></a>Esemény közzététele
 
-1. Hozza létre a event4. JSON fájlt a következő tartalommal. A hasznos adatokkal kapcsolatos részletekért tekintse meg az [API-dokumentációt](api.md) .
+1. Hozzon létre event4.jsa következő tartalommal. A hasznos adatokkal kapcsolatos részletekért tekintse meg az [API-dokumentációt](api.md) .
 
     ```json
         [

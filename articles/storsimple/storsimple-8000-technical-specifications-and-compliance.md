@@ -15,10 +15,9 @@ ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.openlocfilehash: 061194422a8c1bc449dbef0c4f04bb8e1db10dea
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68965288"
 ---
 # <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>A StorSimple-eszköz műszaki specifikációi és megfelelőségi adatai
@@ -38,12 +37,12 @@ A EBOD-kamra 580 W PCM-et használ, és az elsődleges kamra 764 W PCM-t haszná
 | Specifikáció | 580 W PCM (EBOD) | 764 W PCM (elsődleges) |
 | --- | --- | --- |
 | Maximális kimeneti teljesítmény |580 W |764 |
-| Frequency |50/60 Hz |50/60 Hz |
+| Gyakoriság |50/60 Hz |50/60 Hz |
 | Feszültség-tartomány kiválasztása |Automatikus hatókör: 90 – 264 V AC, 47/63 Hz |Automatikus hatókör: 90-264 V AC, 47/63 Hz |
 | Maximális inrush-áramerősség |20 A |20 A |
 | Teljesítménytényező javítása |>95%-os névleges bemeneti feszültség |>95%-os névleges bemeneti feszültség |
 | Harmonikus |Megfelel a EN61000-3-2 |Megfelel a EN61000-3-2 |
-| Kimenet |5V-os \@ készenléti feszültség 2,0 A |5V-os \@ készenléti feszültség 2,7 A |
+| Kimenet |5V-os készenléti feszültség \@ 2,0 A |5V-os készenléti feszültség \@ 2,7 A |
 | + 5V \@ 42 A |+ 5V \@ 40 A | |
 | + 12V \@ 38 A |+ 12V \@ 38 A | |
 | Gyors csatlakoztatás |Igen |Igen |

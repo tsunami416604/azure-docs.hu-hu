@@ -13,10 +13,9 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: amverma
 ms.openlocfilehash: a4cd74c9c85ee7413cde9f0fb4cf3ffb54c9b3d0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76906744"
 ---
 # <a name="hc-series-virtual-machine-overview"></a>A HC sorozatú virtuális gépek áttekintése
@@ -58,10 +57,10 @@ Az alábbi ábrán az Azure Hypervisort és a HC-sorozatú virtuális gép szám
 | További keretrendszerek       | Egyesített kommunikáció X, libfabric, PGAS |
 | Azure Storage-támogatás       | STD + prémium (max. 4 lemez) |
 | Operációs rendszer támogatása a CSATOLÓJÁHOZ nincs SR RDMA   | CentOS/RHEL 7.6 +, SLES 12 SP4 +, WinServer 2016 + |
-| Azure CycleCloud-támogatás    | Igen                         |
+| Azure CycleCloud-támogatás    | Yes                         |
 | Azure Batch támogatás         | Igen                         |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ az Azure-beli [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc) és [Windows rendszerhez](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc) készült HPC VM-méretekről.
 

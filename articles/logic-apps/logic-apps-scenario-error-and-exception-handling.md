@@ -8,13 +8,12 @@ ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 07/29/2016
 ms.openlocfilehash: 1bb6e28c9dcae01f3233178706d2a24156fa509a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76902699"
 ---
-# <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>Forgatókönyv: kivételek és hibák naplózása a Logic apps esetében
+# <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>Forgatókönyv: Kivételkezelés és hibanaplózás a logikai alkalmazásokhoz kapcsolódóan
 
 Ez a forgatókönyv azt ismerteti, hogyan bővíthető egy logikai alkalmazás a kivételek kezelésének jobb támogatásához. A következő kérdésre adott válasz: "a Azure Logic Apps támogatási kivétel és a hibakezelés?"
 
@@ -426,7 +425,7 @@ A nyílt forráskódú Azure Logic Apps kivételek kezelésére szolgáló API-a
 * **LogController** Naplóbejegyzés (dokumentum) beszúrása egy Azure Cosmos DB gyűjteménybe.
 
 > [!TIP]
-> Mindkét vezérlő műveleteket `async Task<dynamic>` használ, lehetővé téve a műveletek futtatását futásidőben, így a művelet törzsében létrehozhatja a Azure Cosmos db sémát. 
+> Mindkét vezérlő `async Task<dynamic>` műveleteket használ, lehetővé téve a műveletek futtatását futásidőben, így a művelet törzsében létrehozhatja a Azure Cosmos db sémát. 
 > 
 
 Azure Cosmos DB összes dokumentumának egyedi AZONOSÍTÓval kell rendelkeznie. Használunk `PatientId` , és hozzáadunk egy időbélyeget, amely egy Unix timestamp értékre (Double) lett konvertálva. Lerövidítjük az értéket a tört érték eltávolításához.

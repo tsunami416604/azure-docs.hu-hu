@@ -17,10 +17,9 @@ ms.date: 03/20/2019
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ace8d170a5ba48c00775c3b376df8bb70a337d5d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76897033"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: Version History (Az Azure AD Connect Health verzióelőzményei)
@@ -109,7 +108,7 @@ A szinkronizálás Azure AD Connect Health integrálva van Azure AD Connect tele
   1. Gyorsjavítás az ügynök memóriájának kezeléséhez és a kapcsolódó riasztásokhoz, kifejezetten a 3.0.244.0 verzióhoz
 
 
-## <a name="may-2018"></a>2018. május
+## <a name="may-2018"></a>2018. máj.
 **Ügynök frissítése:**
 * AD DS-ügynök Azure AD Connect Health (verzió: 3.0.244.0)
   1. Ügynök adatvédelem fejlesztése  
