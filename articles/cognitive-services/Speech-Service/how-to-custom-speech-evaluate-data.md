@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 27229d36dbe9592b6ad6fc2740f7714f99fd6857
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: cadbe79bbe0af2b5cebacb3d0c7c4e910fc7dbb8
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84629059"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856826"
 ---
 # <a name="evaluate-custom-speech-accuracy"></a>A Custom Speech pontosságának értékelése
 
@@ -23,7 +23,7 @@ Ebből a dokumentumból megtudhatja, hogyan mérhető a Microsoft beszédfelisme
 
 ## <a name="what-is-word-error-rate-wer"></a>Mi az a Word Error Rate (WER)?
 
-A modell pontosságának méréséhez használt iparági szabvány a *Word Error Rate* (WER). A WER megszámolja az elismerés során azonosított helytelen szavak számát, majd az emberi címkével ellátott átiratban szereplő szavak teljes számával elosztja. Végezetül ezt a számot 100%-kal kell megszorozni a WER kiszámításához.
+A modell pontosságának méréséhez használt iparági szabvány a *Word Error Rate* (WER). A WER megszámolja az elismerés során azonosított helytelen szavak számát, majd az emberi címkével ellátott átiratban szereplő szavak teljes számát (N). Végezetül ezt a számot 100%-kal kell megszorozni a WER kiszámításához.
 
 ![WER-képlet](./media/custom-speech/custom-speech-wer-formula.png)
 
@@ -64,7 +64,7 @@ A teszt sikeres létrehozása után összehasonlíthatja az eredményeket egymá
 
 A teszt befejezése után az állapot változása *sikeres*volt, a tesztben szereplő mindkét modellhez meg kell adni egy wer-számot. Kattintson a teszt nevére a tesztelési részletek oldal megtekintéséhez. Ez a részletes lap felsorolja az adatkészlet összes hosszúságú kimondott szöveg, amely a két modell felismerési eredményét jelzi a beküldött adatkészlet átírása mellett. Az egymás melletti összehasonlítások megvizsgálása érdekében különböző típusú hibákat válthat ki, beleértve a beszúrást, a törlést és a helyettesítést is. Ha az egyes oszlopokban figyeli a hangot, és összehasonlítja a felismerés eredményét, amely az emberi címkével ellátott átírást és az eredményeket mutatja két beszéd – szöveg modell esetében, eldöntheti, hogy melyik modell megfelel az igényeinek, és további képzésre és tökéletesítésekre van szükség.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A modell betanítása](how-to-custom-speech-train-model.md)
 * [A modell üzembe helyezése](how-to-custom-speech-deploy-model.md)

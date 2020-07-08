@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: diberry
-ms.openlocfilehash: 42717b1e9b4ba12c2fe42dbd13ef44223ef2ba43
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: c8480557d0f27594fa369e4e2451a5d0fe7ad3cc
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220212"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856736"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Cognitive Services és gépi tanulás
 
@@ -22,7 +22,7 @@ A Cognitive Services gépi tanulási képességeket biztosít olyan általános 
 
 [Cognitive Services](welcome.md) a szolgáltatások egy csoportja, amelyek mindegyike különböző, általánosított előrejelző képességeket támogat. A szolgáltatások különböző kategóriákba vannak osztva, így könnyebben megtalálhatja a megfelelő szolgáltatást. 
 
-|Szolgáltatáskategória|Cél|
+|Szolgáltatáskategória|Szerep|
 |--|--|
 |[Döntés](https://azure.microsoft.com/services/cognitive-services/directory/decision/)|Olyan alkalmazásokat hozhat létre, amelyek javaslatokat jelenítenek meg a megalapozott és hatékony döntéshozatalhoz.|
 |[Nyelv](https://azure.microsoft.com/services/cognitive-services/directory/lang/)|Engedélyezheti alkalmazásai számára a természetes nyelv előre beépített szkriptekkel történő feldolgozását, kiértékelheti a hangulatot, valamint megtudhatja, hogyan ismerheti fel, hogy mit szeretnének a felhasználók.|
@@ -73,7 +73,7 @@ A Cognitive Services szolgáltatások csoportjaként a betanított modellhez sem
 
 ### <a name="no-additional-training-data-required"></a>Nincs szükség további betanítási adatgyűjtésre
 
-A teljesen betanított modellt biztosító szolgáltatások _fekete dobozként_is kezelhetők. Nem kell tudnia, hogyan működnek, vagy milyen módon használták őket a betanításhoz. Az adatai egy teljes körűen betanított modellbe kerülnek, így előrejelzést kaphat. 
+A teljesen betanított modellt biztosító szolgáltatások _átlátszatlan dobozként_is kezelhetők. Nem kell tudnia, hogyan működnek, vagy milyen módon használták őket a betanításhoz. Az adatai egy teljes körűen betanított modellbe kerülnek, így előrejelzést kaphat. 
 
 ### <a name="some-or-all-training-data-required"></a>Néhány vagy az összes szükséges betanítási érték
 
@@ -91,12 +91,12 @@ A következő adattípusok kategorizálják az egyes szolgáltatásokat, amelyek
 
 |Kognitív szolgáltatás|Nincs szükség betanítási adatgyűjtésre|Megadhat egy vagy több betanítási adatkészletet|Valós idejű vagy közel valós idejű adatgyűjtés|
 |--|--|--|--|
-|[Anomaly Detector](./Anomaly-Detector/overview.md)|x|x|x|
+|[Anomáliadetektor](./Anomaly-Detector/overview.md)|x|x|x|
 |Bing kereső |x|||
-|[Számítógépes látástechnológia](./Computer-vision/Home.md)|x|||
-|[Tartalommoderátor](./Content-Moderator/overview.md)|x||x|
+|[Computer Vision](./Computer-vision/Home.md)|x|||
+|[Content Moderator](./Content-Moderator/overview.md)|x||x|
 |[Custom Vision](./Custom-Vision-Service/home.md)||x||
-|[Arcfelismerés](./Face/Overview.md)|x|x||
+|[Face](./Face/Overview.md)|x|x||
 |[Form Recognizer](./form-recognizer/overview.md)||x||
 |[Modern olvasó](./immersive-reader/overview.md)|x|||
 |[Ink Recognizer](./Ink-recognizer/overview.md)|x|x||
@@ -106,9 +106,9 @@ A következő adattípusok kategorizálják az egyes szolgáltatásokat, amelyek
 |[Beszélő felismerő](./speaker-recognition/home.md)||x||
 |[Beszédfelismerési szöveg – beszéd (TTS)](speech-service/text-to-speech.md)|x|x||
 |[Beszéd-beszéd – szöveg (STT)](speech-service/speech-to-text.md)|x|x||
-|[Beszédfordítás](speech-service/speech-translation.md)|x|||
-|[Szövegelemzés](./text-analytics/overview.md)|x|||
-|[Fordító](./translator/translator-info-overview.md)|x|||
+|[Speech Translation](speech-service/speech-translation.md)|x|||
+|[Text Analytics](./text-analytics/overview.md)|x|||
+|[Translator](./translator/translator-info-overview.md)|x|||
 |[Translator-Custom Translator](./translator/custom-translator/overview.md)||x||
 
 * A megszemélyesítő csak a szolgáltatás által gyűjtött betanítási adatokat igényli (valós időben működik) a szabályzat és az adatok kiértékeléséhez. A személyre szabott beállításhoz nincs szükség nagyméretű korábbi adatkészletekre a kezdeti vagy a kötegelt képzéshez. 
@@ -131,7 +131,7 @@ Más gépi tanulási eszközökhöz exportált modelleket biztosító Cognitive 
 |--|--|
 |[Custom Vision](./custom-vision-service/home.md)|[Exportálás](./Custom-Vision-Service/export-model-python.md) az Androidhoz készült Tensorflow, CoreML for IOS11, ONNX for Windows ml|
 
-## <a name="learn-more"></a>Részletek
+## <a name="learn-more"></a>Tudjon meg többet
 
 * [Architektúra-útmutató – Mik a gépi tanulási termékek a Microsoftnál?](https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning)
 * [Gépi tanulás – a Deep learning és a Machine learning bemutatása](../machine-learning/concept-deep-learning-vs-machine-learning.md)

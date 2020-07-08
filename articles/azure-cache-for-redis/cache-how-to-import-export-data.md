@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/31/2017
 ms.author: yegu
-ms.openlocfilehash: 29ad5ca6c9058b88a539c7a3bb8ace4d9a65083a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 84abbe8d9958bf41768f3706a700ae0ecad6b44f
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79278089"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856994"
 ---
 # <a name="import-and-export-data-in-azure-cache-for-redis"></a>Az Azure cache-ben lévő Redis importálása és exportálása
 Az import/export egy Azure cache a Redis adatkezelési művelethez, amely lehetővé teszi az adatok importálását az Azure cache-be a Redis, vagy exportálja az Azure cache-ből a Redis-be adatok exportálását egy Azure cache for Redis Database (RDB) pillanatkép importálásával és exportálásával egy Azure Storage-fiókban található blobba.
@@ -124,11 +124,11 @@ Az Azure cache for Redis támogatja a RDB importálását a RDB 7-es verziójáv
 Igen, és a fürtözött gyorsítótár és a nem fürtözött gyorsítótár közötti importálás/exportálás is elvégezhető. Mivel a Redis-fürt [csak a 0 adatbázis használatát támogatja](cache-how-to-premium-clustering.md#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering), a 0-tól eltérő adatbázisokban lévő összes adattal nem kerül importálásra. A fürtözött gyorsítótár-adatmennyiség importálásakor a kulcsok a fürt szegmensei között lesznek elosztva.
 
 ### <a name="how-does-importexport-work-with-a-custom-databases-setting"></a>Hogyan működik az Importálás/exportálás egyéni adatbázis-beállításokkal?
-Bizonyos díjszabási [szintek eltérőek](cache-configure.md#databases), ezért a rendszer az importálás során némi megfontolást végez, ha egyéni értéket konfigurált a beállításhoz a `databases` gyorsítótár létrehozásakor.
+Bizonyos díjszabási [szintek eltérőek](cache-configure.md#databases), ezért a rendszer az importálás során némi megfontolást végez, ha egyéni értéket konfigurált a `databases` beállításhoz a gyorsítótár létrehozásakor.
 
-* Ha olyan díjszabási csomagba importál, amely `databases` alacsonyabb korláttal rendelkezik, mint az exportált csomagra vonatkozó szintet:
-  * Ha az alapértelmezett értéket használja `databases`, amely az összes díjszabási csomag esetében 16, az adatvesztés nem történik meg.
-  * Ha olyan egyéni számot használ, `databases` amely az importálandó csomag korlátain belül esik, akkor a rendszer nem vesz fel adatvesztést.
+* Ha olyan díjszabási csomagba importál, `databases` amely alacsonyabb korláttal rendelkezik, mint az exportált csomagra vonatkozó szintet:
+  * Ha az alapértelmezett értéket használja `databases` , amely az összes díjszabási csomag esetében 16, az adatvesztés nem történik meg.
+  * Ha olyan egyéni számot használ, amely az `databases` importálandó csomag korlátain belül esik, akkor a rendszer nem vesz fel adatvesztést.
   * Ha az exportált adatok olyan adatbázisban találhatók, amely túllépi az új csomag korlátait, a magasabb adatbázisokból származó adatok nem lesznek importálva.
 
 ### <a name="how-is-importexport-different-from-redis-persistence"></a>Miben különbözik az Importálás/exportálás a Redis-megőrzéstől?
@@ -142,7 +142,9 @@ Igen, a PowerShell-utasításokért lásd: [Azure cache importálása a Redis](c
 ### <a name="i-received-a-timeout-error-during-my-importexport-operation-what-does-it-mean"></a>Időtúllépési hiba érkezett az importálási/exportálási művelet során. Mit jelent?
 Ha a művelet megkezdése előtt továbbra is 15 percnél hosszabb ideig marad az **importálási** vagy **exportálási** panel, hibaüzenet jelenik meg az alábbi példához hasonló hibaüzenettel:
 
-    The request to import data into cache 'contoso55' failed with status 'error' and error 'One of the SAS URIs provided could not be used for the following reason: The SAS token end time (se) must be at least 1 hour from now and the start time (st), if given, must be at least 15 minutes in the past.
+```output
+The request to import data into cache 'contoso55' failed with status 'error' and error 'One of the SAS URIs provided could not be used for the following reason: The SAS token end time (se) must be at least 1 hour from now and the start time (st), if given, must be at least 15 minutes in the past.
+```
 
 Ennek megoldásához indítsa el az importálási vagy exportálási műveletet 15 perc elteltével.
 

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: cherylmc
-ms.openlocfilehash: ef2fd40db422c459ca966e802344ef45f7ec01de
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 3393c661240ae5619597256a6691ae43608d622b
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74072118"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856713"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-nat"></a>Útválasztó-konfigurációs minták a NAT beállításához és kezeléséhez
 
@@ -30,59 +30,71 @@ Ez az oldal NAT-konfigurációs mintákat biztosít a Cisco ASA és a Juniper SR
 
 ## <a name="cisco-asa-firewalls"></a>Cisco ASA-tűzfalak
 ### <a name="pat-configuration-for-traffic-from-customer-network-to-microsoft"></a>PAT-konfiguráció az ügyfél-hálózatról a Microsoft felé irányuló forgalomhoz
-    object network MSFT-PAT
-      range <SNAT-START-IP> <SNAT-END-IP>
+
+```console
+object network MSFT-PAT
+  range <SNAT-START-IP> <SNAT-END-IP>
 
 
-    object-group network MSFT-Range
-      network-object <IP> <Subnet_Mask>
+object-group network MSFT-Range
+  network-object <IP> <Subnet_Mask>
 
-    object-group network on-prem-range-1
-      network-object <IP> <Subnet-Mask>
+object-group network on-prem-range-1
+  network-object <IP> <Subnet-Mask>
 
-    object-group network on-prem-range-2
-      network-object <IP> <Subnet-Mask>
+object-group network on-prem-range-2
+  network-object <IP> <Subnet-Mask>
 
-    object-group network on-prem
-      network-object object on-prem-range-1
-      network-object object on-prem-range-2
+object-group network on-prem
+  network-object object on-prem-range-1
+  network-object object on-prem-range-2
 
-    nat (outside,inside) source dynamic on-prem pat-pool MSFT-PAT destination static MSFT-Range MSFT-Range
+nat (outside,inside) source dynamic on-prem pat-pool MSFT-PAT destination static MSFT-Range MSFT-Range
+```
 
 ### <a name="pat-configuration-for-traffic-from-microsoft-to-customer-network"></a>A Microsofttól az ügyfél felé irányuló forgalom PAT-konfigurációja
 
 **Felületek és irányok:**
 
-    Source Interface (where the traffic enters the ASA): inside
-    Destination Interface (where the traffic exits the ASA): outside
+Forrás felület (ahol a forgalom belép az ASA-ba): a célhelyen belüli felületen (ahol a forgalom kilép az ASA-ből): kívülről
 
 **Configuration**
 
 NAT-készlet:
 
-    object network outbound-PAT
-        host <NAT-IP>
+```console
+object network outbound-PAT
+    host <NAT-IP>
+```
 
 Célkiszolgáló:
 
-    object network Customer-Network
-        network-object <IP> <Subnet-Mask>
+```console
+object network Customer-Network
+    network-object <IP> <Subnet-Mask>
+```
 
-Az ügyfél IP-címeihez tartozó objektumosztály
+Az ügyfél IP-címeihez tartozó objektumosztály:
 
-    object-group network MSFT-Network-1
-        network-object <MSFT-IP> <Subnet-Mask>
+```console
+object-group network MSFT-Network-1
+    network-object <MSFT-IP> <Subnet-Mask>
 
-    object-group network MSFT-PAT-Networks
-        network-object object MSFT-Network-1
+object-group network MSFT-PAT-Networks
+    network-object object MSFT-Network-1
+```
 
 NAT-parancsok:
 
-    nat (inside,outside) source dynamic MSFT-PAT-Networks pat-pool outbound-PAT destination static Customer-Network Customer-Network
+```console
+nat (inside,outside) source dynamic MSFT-PAT-Networks pat-pool outbound-PAT destination static Customer-Network Customer-Network
+```
 
 
 ## <a name="juniper-srx-series-routers"></a>Juniper SRX sorozatú útválasztók
 ### <a name="1-create-redundant-ethernet-interfaces-for-the-cluster"></a>1. redundáns Ethernet-felületek létrehozása a fürthöz
+
+```console
     interfaces {
         reth0 {
             description "To Internal Network";
@@ -112,17 +124,50 @@ NAT-parancsok:
             }
         }
     }
-
+```
 
 ### <a name="2-create-two-security-zones"></a>2. hozzon létre két biztonsági zónát
 * Megbízhatósági zóna a belső hálózat és a nem megbízható zónák számára a külső hálózatokra néző peremhálózati útválasztók esetében
 * Megfelelő felületek kiosztása a zónákhoz
 * Szolgáltatások engedélyezése a felületeken
 
-    biztonság {Zones {biztonság – zóna megbízhatóság {gazdagép – bejövő forgalom {System-Services {ping;                   } protokoll {BGP;                   }} felületek {reth 0.100;               }} biztonság – zóna nem megbízható {gazdagép – bejövő forgalom {System-Services {ping;                   } protokoll {BGP;                   }} felületek {reth 1.100;               }           }       }   }
+```console
+    security {
+        zones {
+            security-zone Trust {
+                host-inbound-traffic {
+                    system-services {
+                        ping;
+                    }
+                    protocols {
+                        bgp;
+                    }
+                }
+                interfaces {
+                    reth0.100;
+                }
+            }
+            security-zone Untrust {
+                host-inbound-traffic {
+                    system-services {
+                        ping;
+                    }
+                    protocols {
+                        bgp;
+                    }
+                }
+                interfaces {
+                    reth1.100;
+                }
+            }
+        }
+    }
+```
 
 
 ### <a name="3-create-security-policies-between-zones"></a>3. biztonsági szabályzatok létrehozása zónák között
+
+```console
     security {
         policies {
             from-zone Trust to-zone Untrust {
@@ -151,12 +196,13 @@ NAT-parancsok:
             }
         }
     }
-
+```
 
 ### <a name="4-configure-nat-policies"></a>4. NAT-házirendek konfigurálása
 * Hozzon létre két NAT-készletet. Az egyik a Microsoft felé irányuló, illetve a Microsoft által az ügyfélnek kimenő NAT-forgalomra lesz felhasználva.
 * Szabályok létrehozása a hálózati címfordításhoz a megfelelő forgalomhoz
-  
+
+```console
        security {
            nat {
                source {
@@ -211,11 +257,14 @@ NAT-parancsok:
                }
            }
        }
+```
 
 ### <a name="5-configure-bgp-to-advertise-selective-prefixes-in-each-direction"></a>5. Állítsa be a BGP-t, hogy az egyes irányokban külön előtagokat Hirdessen
 Tekintse át a mintákat az [útválasztási konfigurációs minták](expressroute-config-samples-routing.md) oldalon.
 
 ### <a name="6-create-policies"></a>6. szabályzatok létrehozása
+
+```console
     routing-options {
                   autonomous-system <Customer-ASN>;
     }
@@ -309,6 +358,7 @@ Tekintse át a mintákat az [útválasztási konfigurációs minták](expressrou
             }
         }
     }
+```
 
 ## <a name="next-steps"></a>További lépések
 További részletek: [ExpressRoute FAQ](expressroute-faqs.md) (ExpressRoute – gyakori kérdések).

@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: jlian
-ms.openlocfilehash: bf193859c140001def83a18ca7965d9cbd312b02
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.openlocfilehash: 32ff08c62e53384b64981e1c40a3485b17a8ce11
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84907533"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85918755"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>IoT Hub a magánhálózati és felügyelt identitású virtuális hálózatok támogatása
 
@@ -69,8 +69,8 @@ A [beépített Event hub-kompatibilis végpont](iot-hub-devguide-messages-read-b
 A IoT Hub [IP-szűrője](iot-hub-ip-filtering.md) nem szabályozza a nyilvános hozzáférést a beépített végponthoz. Az IoT hub nyilvános hálózati hozzáférésének teljes blokkolásához a következőket kell tennie: 
 
 1. Magánhálózati végpont-hozzáférés konfigurálása IoT Hubhoz
-1. Nyilvános hálózati hozzáférés kikapcsolása IP-szűrő használatával az összes IP-cím letiltásához
-1. Kapcsolja ki a beépített Event hub-végpontot úgy, [hogy az Útválasztás beállításával nem küldi el az adatküldést](iot-hub-devguide-messages-d2c.md)
+1. A [nyilvános hálózati hozzáférés kikapcsolása](iot-hub-public-network-access.md) vagy az IP-szűrő használata az összes IP-cím blokkolásához
+1. Állítsa le a beépített Event hub-végpontot úgy, [hogy az Útválasztás beállításával nem küldi el az adatküldést](iot-hub-devguide-messages-d2c.md)
 1. A [tartalék útvonal](iot-hub-devguide-messages-d2c.md#fallback-route) kikapcsolása
 1. A kimenő forgalom konfigurálása más Azure-erőforrásokhoz [megbízható Microsoft-szolgáltatás](#egress-connectivity-from-iot-hub-to-other-azure-resources) használatával
 

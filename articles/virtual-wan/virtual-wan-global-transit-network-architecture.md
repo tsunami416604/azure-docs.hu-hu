@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 1cd5ead1604f47f07aa9d517f679850fcea8d897
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.openlocfilehash: 78656b4789ea03601bc12579c391292e2f9ead9a
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84753300"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856370"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>Globális átviteli hálózati architektúra és virtuális WAN
 
@@ -47,7 +47,7 @@ Az Azure Virtual WAN architektúrában a virtuális WAN-hubok az Azure-régiókb
 
 Létrehozhat egy virtuális WAN-t úgy, hogy létrehoz egy virtuális WAN-központot a régiójában, amely a legnagyobb számú küllőt (ágakat, virtuális hálózatok, felhasználókat) és a más régiókban lévő küllőket csatlakoztatja a hubhoz. Ez jó megoldás, ha egy nagyvállalati lábnyom főleg egy régióban, néhány távoli küllővel.  
   
-## <a name="hub-to-hub-connectivity-preview"></a><a name="hubtohub"></a>Központ – központ kapcsolat (előzetes verzió)
+## <a name="hub-to-hub-connectivity"></a><a name="hubtohub"></a>Központ – központ kapcsolat
 
 A vállalati Felhőbeli lábnyom több Felhőbeli régióra is kiterjed, és az optimális (késés-Wise) a felhőnek a fizikai helyükhöz és a felhasználókhoz legközelebb eső régióból való elérésére szolgál. A globális átviteli hálózati architektúra egyik kulcsfontosságú alapelve a régiók közötti kapcsolat engedélyezése a Felhőbeli és a helyszíni hálózati végpontok között. Ez azt jelenti, hogy egy adott régióban a felhőhöz csatlakoztatott ágakból érkező forgalom egy másik régióban is elérheti az [Azure globális hálózata](https://azure.microsoft.com/global-infrastructure/global-network/)által engedélyezett, a csomópontok közötti kapcsolatot használó régiókat vagy VNet.
 

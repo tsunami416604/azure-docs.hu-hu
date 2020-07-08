@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 06/13/2018
-ms.openlocfilehash: 4a0e5b0c18264e1f7a98e81bcdfd56a7159235da
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4f200457bd327a6f2ce74794bb28dd16c38e6fdd
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81010919"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856315"
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>A Redis-fürtözés konfigurálása prémium szintű Azure cache-Redis
 A Redis készült Azure cache különböző gyorsítótár-ajánlatokat tartalmaz, amelyek rugalmasságot biztosítanak a gyorsítótár méretének és funkcióinak, beleértve a prémium szintű funkciókat, például a fürtözést, az adatmegőrzést és a virtuális hálózatok támogatását. Ez a cikk azt ismerteti, hogyan konfigurálható a fürtözés a prémium szintű Azure cache-ben a Redis-példányhoz.
@@ -98,7 +98,7 @@ Az alábbi lista az Azure cache szolgáltatással történő Redis-fürtözésse
 ### <a name="how-are-keys-distributed-in-a-cluster"></a>Hogyan történik a kulcsok elosztása a fürtben?
 A Redis- [kulcsok terjesztési modellje](https://redis.io/topics/cluster-spec#keys-distribution-model) dokumentációja: a kulcs területe 16384 bővítőhelyre van bontva. Az egyes kulcsok kivonatolása és hozzárendelése az egyik ilyen tárolóhelyhez történik, amelyek a fürt csomópontjai között oszlanak meg. Beállíthatja, hogy a kulcs melyik részét használja a rendszer a kivonattal annak biztosítására, hogy több kulcs is ugyanabban a szegmensben legyen a kivonatoló címkék használatával.
 
-* Kivonatoló címkével ellátott kulcsok – ha a kulcs bármely része be `{` van zárva a és `}`a rendszerbe, akkor a kulcs kivonatának meghatározásakor a rendszer csak a kulcs egy részét használja kivonatként. A következő 3 kulcs például ugyanabban a szegmensben található `{key}1`:, `{key}2`, és `{key}3` mivel csak a név `key` része kerül kivonatolásra. A kulcsok kivonatoló címke specifikációinak teljes listáját lásd: [kulcsok kivonatának](https://redis.io/topics/cluster-spec#keys-hash-tags)címkéje.
+* Kivonatoló címkével ellátott kulcsok – ha a kulcs bármely része be van zárva a és a rendszerbe, akkor a kulcs `{` `}` kivonatának meghatározásakor a rendszer csak a kulcs egy részét használja kivonatként. A következő 3 kulcs például ugyanabban a szegmensben található: `{key}1` , `{key}2` , és `{key}3` mivel csak a `key` név része kerül kivonatolásra. A kulcsok kivonatoló címke specifikációinak teljes listáját lásd: [kulcsok kivonatának](https://redis.io/topics/cluster-spec#keys-hash-tags)címkéje.
 * Kivonatoló címke nélküli kulcsok – a rendszer a teljes kulcs nevét használja a kivonatoláshoz. Ez statisztikailag egyenletes eloszlást eredményez a gyorsítótár szegmensei között.
 
 A legjobb teljesítmény és átviteli sebesség érdekében javasoljuk, hogy egyenletesen osztja el a kulcsokat. Ha kivonatoló címkével rendelkező kulcsokat használ, akkor az alkalmazás feladata annak biztosítása, hogy a kulcsok egyenletesen legyenek elosztva.
@@ -123,17 +123,19 @@ A Redis-fürtszolgáltatási protokollhoz minden ügyfélnek hozzá kell kapcsol
 A gyorsítótárhoz a fürtözést nem engedélyező gyorsítótárhoz való csatlakozáskor használt [végpontok](cache-configure.md#properties), [portok](cache-configure.md#properties)és [kulcsok](cache-configure.md#access-keys) használatával csatlakozhat. A Redis kezeli a fürtözést a háttérben, így nem kell az ügyféltől kezelnie.
 
 ### <a name="can-i-directly-connect-to-the-individual-shards-of-my-cache"></a>Csatlakozhatok közvetlenül a gyorsítótár egyedi szegmenséhez?
-A fürtözési protokoll megköveteli, hogy az ügyfél a megfelelő szegmensű kapcsolatokat hozza létre. Így az ügyfélnek megfelelően kell ezt megtennie Önnek. Ez azt jelenti, hogy az egyes szegmensek egy elsődleges/replika gyorsítótár pár, a közösen gyorsítótár-példányként ismertek. A Redis-CLI segédprogrammal csatlakozhat ezekhez a gyorsítótár-példányokhoz a GitHubon a Redis-tárház [instabil](https://redis.io/download) ágában. Ez a verzió alapszintű támogatást valósít meg a `-c` kapcsolóval való elinduláskor. További információkért lásd: a [fürtön való lejátszás](https://redis.io/topics/cluster-tutorial#playing-with-the-cluster) a [https://redis.io](https://redis.io) Redis- [fürt oktatóanyagában](https://redis.io/topics/cluster-tutorial).
+A fürtözési protokoll megköveteli, hogy az ügyfél a megfelelő szegmensű kapcsolatokat hozza létre. Így az ügyfélnek megfelelően kell ezt megtennie Önnek. Ez azt jelenti, hogy az egyes szegmensek egy elsődleges/replika gyorsítótár pár, a közösen gyorsítótár-példányként ismertek. A Redis-CLI segédprogrammal csatlakozhat ezekhez a gyorsítótár-példányokhoz a GitHubon a Redis-tárház [instabil](https://redis.io/download) ágában. Ez a verzió alapszintű támogatást valósít meg a kapcsolóval való elinduláskor `-c` . További információkért lásd: a [fürtön való lejátszás](https://redis.io/topics/cluster-tutorial#playing-with-the-cluster) a [https://redis.io](https://redis.io) Redis- [fürt oktatóanyagában](https://redis.io/topics/cluster-tutorial).
 
 Nem TLS esetén használja az alábbi parancsokat.
 
-    Redis-cli.exe –h <<cachename>> -p 13000 (to connect to instance 0)
-    Redis-cli.exe –h <<cachename>> -p 13001 (to connect to instance 1)
-    Redis-cli.exe –h <<cachename>> -p 13002 (to connect to instance 2)
-    ...
-    Redis-cli.exe –h <<cachename>> -p 1300N (to connect to instance N)
+```bash
+Redis-cli.exe –h <<cachename>> -p 13000 (to connect to instance 0)
+Redis-cli.exe –h <<cachename>> -p 13001 (to connect to instance 1)
+Redis-cli.exe –h <<cachename>> -p 13002 (to connect to instance 2)
+...
+Redis-cli.exe –h <<cachename>> -p 1300N (to connect to instance N)
+```
 
-A TLS esetében cserélje `1300N` a `1500N`értéket a következőre:.
+A TLS esetében cserélje a értéket a következőre: `1300N` `1500N` .
 
 ### <a name="can-i-configure-clustering-for-a-previously-created-cache"></a>Beállíthat fürtszolgáltatást egy korábban létrehozott gyorsítótárhoz?
 Igen. Először ellenőrizze, hogy a gyorsítótár prémium szintű-e, ha nem. Ezután meg kell tudnia tekinteni a fürtkonfiguráció beállításait, beleértve a fürt engedélyezésének lehetőségét is. A fürt méretét a gyorsítótár létrehozása után, vagy a fürtözés első alkalommal történő engedélyezése után módosíthatja.

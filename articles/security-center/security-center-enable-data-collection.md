@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: memildin
-ms.openlocfilehash: 843cd74c85c619dbbd2b11a32fccf75d030b5613
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: be212de7a24b416ad4e5dc08998ba1147c6f3753
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83772964"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855925"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Adatgyűjtés az Azure Security Centerben
 A Security Center adatokat gyűjt az Azure-beli virtuális gépekről (VM), a virtuálisgép-méretezési csoportokról, a IaaS-tárolók és a nem Azure-beli (beleértve a helyszíni) számítógépekről a biztonsági rések és fenyegetések figyeléséhez. Az adatok gyűjtése a Log Analytics ügynök használatával történik, amely beolvassa a különböző biztonsággal kapcsolatos konfigurációkat és eseménynaplókat a gépről, és az adatokat a munkaterületre másolja az elemzéshez. Ilyenek például a következők: az operációs rendszer típusa és verziója, az operációs rendszer naplói (Windows-eseménynaplók), a futó folyamatok, a gép neve, az IP-címek és a bejelentkezett felhasználó.
@@ -199,7 +199,7 @@ Ha a konfigurált munkaterület egy felhasználói munkaterület (nem Security C
 <br>
 Linux rendszerű gépek esetén az ügynök többsoros vezérlése még nem támogatott – ezért ha egy meglévő ügynök telepítését észleli, az automatikus kiépítés nem történik meg, és a gép konfigurációja nem módosul.
 <br>
-A 2019-03-17 előtti Security Center előfizetésekben lévő meglévő gépek esetében a rendszer nem telepíti a Log Analytics ügynök bővítményt, és a gép nem lesz hatással. Ezen gépek esetében tekintse meg a "figyelési ügynök állapotával kapcsolatos problémák megoldása a gépeken" című javaslatot az ügynök telepítési problémáinak megoldásához ezeken a gépeken.
+Az előfizetésekben lévő, a 2019. március 17. előtt Security Center, a meglévő ügynök észlelése után a Log Analytics ügynök bővítmény nem lesz telepítve, és a gép nem lesz hatással. Ezen gépek esetében tekintse meg a "figyelési ügynök állapotával kapcsolatos problémák megoldása a gépeken" című javaslatot az ügynök telepítési problémáinak megoldásához ezeken a gépeken.
 
   
 - System Center Operations Manager ügynök telepítve van a gépen<br>
@@ -237,58 +237,44 @@ Több módon is telepítheti a Log Analytics-ügynököt manuálisan. A manuáli
 ### <a name="operations-management-suite-vm-extension-deployment"></a>Operations Management Suite virtuálisgép-bővítmény üzembe helyezése 
 
 Manuálisan is telepítheti a Log Analytics-ügynököt, így Security Center a virtuális gépekről gyűjthet biztonsági adatokat, és javaslatokat és riasztásokat is biztosíthat.
-1. Válassza az automatikus kiépítés – kikapcsolás lehetőséget.
-2. Hozzon létre egy munkaterületet, és állítsa be azt a munkaterülethez tartozó árképzési szintet, amelyet a Log Analytics-ügynököt kíván beállítani:
 
-   a.  A Security Center főmenüjében válassza a **biztonsági szabályzat**elemet.
-     
-   b.  Válassza ki azt a munkaterületet, amelyben össze kívánja kapcsolni az ügynököt. Győződjön meg arról, hogy a munkaterület ugyanahhoz az előfizetéshez tartozik, amelyet Security Center használ, és hogy rendelkezik írási/olvasási engedéllyel a munkaterületen.
-       ![Munkaterület kiválasztása][8]
-3. Állítsa be az árképzési szintet.
-   ![Árképzési szintek kiválasztása][9] 
-   >[!NOTE]
-   >Ha a munkaterülethez már engedélyezve van egy **biztonsági** vagy **SecurityCenterFree** megoldás, a díjszabás automatikusan be lesz állítva. 
+1. Az automatikus kiépítés letiltása.
+
+1. Szükség esetén létrehozhat egy munkaterületet.
+
+1. Állítsa be azt a munkaterületet, amelyen a Log Analytics-ügynököt a standard díjszabási szinthez telepíti:
+
+    1. A Security Center menüjében válassza a **díjszabás & beállítások**lehetőséget.
+
+    1. Állítsa be azt a munkaterületet, amelyre telepíteni kívánja az ügynököt. Győződjön meg arról, hogy a munkaterület ugyanahhoz az előfizetéshez tartozik, amelyet Security Center használ, és hogy rendelkezik írási/olvasási engedéllyel a munkaterületen.
+
+    1. Állítsa be a standard díjszabási szintet, majd kattintson a **Mentés**gombra.
+
+        ![Munkaterület beállítása a standard díjszabási szinthez](.\media\security-center-enable-data-collection\workspace-to-standard-tier.gif)
+
+       >[!NOTE]
+       >Ha a munkaterülethez már engedélyezve van egy **biztonsági** vagy **SecurityCenterFree** megoldás, a díjszabás automatikusan be lesz állítva. 
    > 
 
-4. Ha az ügynököket egy Resource Manager-sablonnal szeretné telepíteni az új virtuális gépeken, telepítse a OMS virtuálisgép-bővítményt:
+1. Ha az ügynököket egy Resource Manager-sablonnal szeretné telepíteni az új virtuális gépeken, telepítse a Log Analytics-ügynököt:
 
-   a.  [Telepítse a Windowshoz készült OMS virtuálisgép-bővítményt](../virtual-machines/extensions/oms-windows.md)
+   a.  [A Windows Log Analytics ügynökének telepítése](../virtual-machines/extensions/oms-windows.md)
     
-   b.  [A OMS virtuálisgép-bővítmény telepítése Linuxra](../virtual-machines/extensions/oms-linux.md)
-5. A bővítmények meglévő virtuális gépeken való üzembe helyezéséhez kövesse az [adatok gyűjtése az Azure Virtual Machinesról](../azure-monitor/learn/quick-collect-azurevm.md)című témakör utasításait.
+   b.  [A Linux rendszerhez készült Log Analytics-ügynök telepítése](../virtual-machines/extensions/oms-linux.md)
+
+1. A bővítmények meglévő virtuális gépeken való üzembe helyezéséhez kövesse az [adatok gyűjtése az Azure Virtual Machinesról](../azure-monitor/learn/quick-collect-azurevm.md)című témakör utasításait.
 
    > [!NOTE]
    > Az **esemény-és teljesítményadatokat gyűjtő** szakasz nem kötelező.
    >
-6. Ha a PowerShellt a bővítmény üzembe helyezéséhez szeretné használni, használja a következő PowerShell-példát:
-   
-   [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-   
-   1. Lépjen a **log Analyticsra** , és kattintson a **Speciális beállítások**elemre.
-    
-      ![A log Analytics beállítása][11]
 
-   2. Másolja ki a **munkaterület azonosítója** és az **elsődleges kulcs**értékét.
-  
-      ![Értékek másolása][12]
+1. Ha a PowerShellt a bővítmény üzembe helyezéséhez szeretné használni, használja a Virtual Machines dokumentációjának utasításait:
 
-   3. Töltse fel a nyilvános konfigurációt és a privát konfigurációt a következő értékekkel:
-     
-           $PublicConf = @{
-               "workspaceId"= "<WorkspaceID value>"
-           }
- 
-           $PrivateConf = @{
-               "workspaceKey"= "<Primary key value>"
-           }
+    - [Windowsos gépek esetén](https://docs.microsoft.com/azure/virtual-machines/extensions/oms-windows?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#powershell-deployment)
 
-      - Windows rendszerű virtuális gépen történő telepítéskor:
-        
-            Set-AzVMExtension -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -Name "MicrosoftMonitoringAgent" -Publisher "Microsoft.EnterpriseCloud.Monitoring" -ExtensionType "MicrosoftMonitoringAgent" -TypeHandlerVersion '1.0' -Location $vm.Location -settings $PublicConf -ProtectedSettingString $PrivateConf -ForceRerun True 
-    
-      - Linux rendszerű virtuális gépen történő telepítéskor:
-        
-            Set-AzVMExtension -ResourceGroupName $vm1.ResourceGroupName -VMName $vm1.Name -Name "OmsAgentForLinux" -Publisher "Microsoft.EnterpriseCloud.Monitoring" -ExtensionType "OmsAgentForLinux" -TypeHandlerVersion '1.0' -Location $vm.Location -Settingstring $PublicConf -ProtectedSettingString $PrivateConf -ForceRerun True`
+    - [Linuxos gépek esetén](https://docs.microsoft.com/azure/virtual-machines/extensions/oms-linux?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#azure-cli-deployment)
+
+
 
 > [!NOTE]
 > A Security Center PowerShell használatával történő előkészítésével kapcsolatos útmutatásért lásd: [a Azure Security Center bevezetésének automatizálása a PowerShell használatával](security-center-powershell-onboarding.md).

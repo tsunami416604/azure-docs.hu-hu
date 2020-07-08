@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.openlocfilehash: 2821ee637b2562b5287dd3d59cf943b3dcb7ef97
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dae829336c5328bec4b620217c34c69fa5931b3a
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81010885"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856850"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>A prémium szintű Azure cache Virtual Network támogatásának konfigurálása a Redis-hez
 A Redis készült Azure cache különböző gyorsítótár-ajánlatokat tartalmaz, amelyek rugalmasságot biztosítanak a gyorsítótár méretének és funkcióinak, beleértve a prémium szintű funkciókat, például a fürtözést, az adatmegőrzést és a virtuális hálózatok támogatását. A VNet a felhőben található magánhálózat. Ha egy Azure cache for Redis-példány VNet van konfigurálva, nem nyilvánosan címezhető, és csak a VNet lévő virtuális gépekről és alkalmazásokról érhető el. Ez a cikk bemutatja, hogyan konfigurálhatja a virtuális hálózatok támogatását egy prémium szintű Azure cache-hez a Redis-példányhoz.
@@ -59,24 +59,26 @@ A gyorsítótár létrehozása után megtekintheti a VNet konfigurációját, ha
 
 Ha egy VNet használatakor szeretne csatlakozni az Azure cache-hez a Redis-példányhoz, adja meg a gyorsítótár állomásnevét a kapcsolati karakterláncban a következő példában látható módon:
 
-    private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
-    {
-        return ConnectionMultiplexer.Connect("contoso5premium.redis.cache.windows.net,abortConnect=false,ssl=true,password=password");
-    });
+```csharp
+private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
+{
+    return ConnectionMultiplexer.Connect("contoso5premium.redis.cache.windows.net,abortConnect=false,ssl=true,password=password");
+});
 
-    public static ConnectionMultiplexer Connection
+public static ConnectionMultiplexer Connection
+{
+    get
     {
-        get
-        {
-            return lazyConnection.Value;
-        }
+        return lazyConnection.Value;
     }
+}
+```
 
 ## <a name="azure-cache-for-redis-vnet-faq"></a>Azure cache a Redis VNet – gyakori kérdések
 Az alábbi lista az Azure cache Redis skálázási szolgáltatásával kapcsolatos gyakori kérdésekre adott válaszokat tartalmazza.
 
 * Melyek az Azure cache-vel kapcsolatos gyakori hibák a Redis és a virtuális hálózatok esetében?
-* [Hogyan tudom ellenőrizni, hogy működik-e a gyorsítótáram egy virtuális hálózaton?](#how-can-i-verify-that-my-cache-is-working-in-a-vnet)
+* [Hogyan tudom ellenőrizni, hogy a gyorsítótár működik-e egy VNET?](#how-can-i-verify-that-my-cache-is-working-in-a-vnet)
 * Amikor megpróbálok csatlakozni az Azure-gyorsítótárhoz a Redis egy VNET, miért kapok hibaüzenetet arról, hogy a távoli tanúsítvány érvénytelen?
 * [Használhatom a virtuális hálózatok standard vagy alapszintű gyorsítótárral?](#can-i-use-vnets-with-a-standard-or-basic-cache)
 * Miért nem sikerül létrehozni egy Azure cache-t a Redis-hez egyes alhálózatokban, de másokat nem?
@@ -98,7 +100,7 @@ Ha a Redis tartozó Azure cache-t egy VNet üzemelteti, a rendszer a következő
 
 Kilenc kimenő portra vonatkozó követelmény van. Az ezekben a tartományokban lévő kimenő kérelmek vagy más olyan szolgáltatásoknak vannak kihagyva, amelyek szükségesek a gyorsítótár működéséhez vagy a belső Redis-alhálózathoz a csomópontok közötti kommunikációhoz. Földrajzi replikálás esetén további kimenő követelmények is léteznek az elsődleges és másodlagos gyorsítótár alhálózatai közötti kommunikációhoz.
 
-| Port(ok) | Irány | Átviteli protokoll | Cél | Helyi IP-cím | Távoli IP-cím |
+| Port(ok) | Irány | Átviteli protokoll | Szerep | Helyi IP-cím | Távoli IP-cím |
 | --- | --- | --- | --- | --- | --- |
 | 80, 443 |Kimenő |TCP |Redis-függőségek az Azure Storage-ban/PKI-ben (Internet) | (Redis alhálózat) |* |
 | 443 | Kimenő | TCP | Redis függőség Azure Key Vault | (Redis alhálózat) | <sup>1</sup> . AzureKeyVault |
@@ -124,15 +126,15 @@ Ha az Azure Virtual Networks gyorsítótárai között replikáció használ, ve
 
 Nyolc bejövő porttartomány-követelmény van. Az ezekben a tartományokban lévő bejövő kérelmek vagy más, ugyanazon a VNET üzemeltetett, vagy a Redis alhálózaton belüli kommunikációban lévő szolgáltatásokból érkeznek be.
 
-| Port(ok) | Irány | Átviteli protokoll | Cél | Helyi IP-cím | Távoli IP-cím |
+| Port(ok) | Irány | Átviteli protokoll | Szerep | Helyi IP-cím | Távoli IP-cím |
 | --- | --- | --- | --- | --- | --- |
 | 6379, 6380 |Bejövő |TCP |Redis-alapú ügyfél-kommunikáció, Azure-terheléselosztás | (Redis alhálózat) | (Redis alhálózat), Virtual Network, Azure Load Balancer <sup>1</sup> |
 | 8443 |Bejövő |TCP |Belső kommunikáció a Redis | (Redis alhálózat) |(Redis alhálózat) |
-| 8500 |Bejövő |TCP/UDP |Azure-terheléselosztás | (Redis alhálózat) |Azure Load Balancer |
+| 8500 |Bejövő |TCP/UDP |Azure-beli terheléselosztás | (Redis alhálózat) |Azure Load Balancer |
 | 10221-10231 |Bejövő |TCP |Belső kommunikáció a Redis | (Redis alhálózat) |(Redis alhálózat), Azure Load Balancer |
 | 13000-13999 |Bejövő |TCP |Ügyfél-kommunikáció Redis-fürtökkel, Azure-terheléselosztás | (Redis alhálózat) |Virtual Network, Azure Load Balancer |
 | 15000-15999 |Bejövő |TCP |Ügyfél-kommunikáció Redis-fürtökkel, Azure terheléselosztás és geo-replikáció | (Redis alhálózat) |Virtual Network, Azure Load Balancer, (Geo-replika társ alhálózat) |
-| 16001 |Bejövő |TCP/UDP |Azure-terheléselosztás | (Redis alhálózat) |Azure Load Balancer |
+| 16001 |Bejövő |TCP/UDP |Azure-beli terheléselosztás | (Redis alhálózat) |Azure Load Balancer |
 | 20226 |Bejövő |TCP |Belső kommunikáció a Redis | (Redis alhálózat) |(Redis alhálózat) |
 
 <sup>1</sup> a NSG szabályok létrehozásához használhatja a "AzureLoadBalancer" (Resource Manager) (vagy a klasszikus) "AZURE_LOADBALANCER" nevű szolgáltatási címkét is.
@@ -146,7 +148,7 @@ Az Azure cache hálózati kapcsolati követelményei olyan Redis esetében fordu
 * A virtuális hálózat DNS-konfigurációjának képesnek kell lennie a korábbi pontokban említett összes végpont és tartomány feloldására. Ezek a DNS-követelmények teljesíthetők az érvényes DNS-infrastruktúra konfigurálásának és karbantartásának biztosításával a virtuális hálózat számára.
 * Kimenő hálózati kapcsolat a következő DNS-tartományokban megoldott Azure monitoring-végpontokkal: shoebox2-black.shoebox2.metrics.nsatc.net, north-prod2.prod2.metrics.nsatc.net, azglobal-black.azglobal.metrics.nsatc.net, shoebox2-red.shoebox2.metrics.nsatc.net, east-prod2.prod2.metrics.nsatc.net, azglobal-red.azglobal.metrics.nsatc.net.
 
-### <a name="how-can-i-verify-that-my-cache-is-working-in-a-vnet"></a>Hogyan tudom ellenőrizni, hogy működik-e a gyorsítótáram egy virtuális hálózaton?
+### <a name="how-can-i-verify-that-my-cache-is-working-in-a-vnet"></a>Hogyan tudom ellenőrizni, hogy a gyorsítótár működik-e egy VNET?
 
 >[!IMPORTANT]
 >Amikor egy VNET üzemeltetett Redis-példányhoz csatlakozik egy Azure-gyorsítótárhoz, a gyorsítótár-ügyfeleknek ugyanabban a VNET kell lenniük, vagy olyan VNET kell lenniük, amelynek VNET-társítása engedélyezve van ugyanazon az Azure-régión belül. A globális virtuális társhálózatok létesítése jelenleg nem támogatott. Ez magában foglalja az alkalmazások tesztelését vagy a diagnosztikai pingelési eszközöket. Függetlenül attól, hogy az ügyfélalkalmazás hol található, a hálózati biztonsági csoportokat úgy kell konfigurálni, hogy az ügyfél hálózati forgalma elérje a Redis-példányt.
@@ -180,7 +182,7 @@ Kerülje a következő kapcsolódási karakterlánchoz hasonló IP-cím használ
 
 `10.128.2.84:6380,password=xxxxxxxxxxxxxxxxxxxx,ssl=True,abortConnect=False`
 
-Ha nem tudja feloldani a DNS-nevet, egyes ügyféloldali kódtárak olyan konfigurációs beállításokat `sslHost` tartalmaznak, mint amelyeket a StackExchange. Redis ügyfél biztosít. Ez lehetővé teszi a tanúsítvány-ellenőrzéshez használt állomásnév felülbírálását. Például:
+Ha nem tudja feloldani a DNS-nevet, egyes ügyféloldali kódtárak olyan konfigurációs beállításokat tartalmaznak, mint `sslHost` amelyeket a StackExchange. Redis ügyfél biztosít. Ez lehetővé teszi a tanúsítvány-ellenőrzéshez használt állomásnév felülbírálását. Például:
 
 `10.128.2.84:6380,password=xxxxxxxxxxxxxxxxxxxx,ssl=True,abortConnect=False;sslHost=[mycachename].redis.windows.net`
 

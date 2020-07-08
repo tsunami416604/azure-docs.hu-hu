@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 06/15/2020
 ms.author: danis
-ms.openlocfilehash: c16343b412cd9164df84ea140e9bc5368890cc3e
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: bebf4967d96177038aba64be59d43f49458b82be
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85298973"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920191"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Cloud-init támogatás az Azure-beli virtuális gépekhez
 Ez a cikk ismerteti a [Cloud-init](https://cloudinit.readthedocs.io) számára elérhető támogatást a virtuális gép (VM) vagy virtuálisgép-méretezési csoportok konfigurálásához az Azure üzembe helyezési idején. Ezek a Cloud-init konfigurációk az első rendszerindítás során futnak az Azure-erőforrások kiépítése után.  
@@ -46,38 +46,52 @@ A Cloud-init két fázisban érhető el az Azure-beli támogatott Linux-disztrib
 | Közzétevő/verzió | Ajánlat | Termékváltozat | Verzió | rendszerkép-felhő – init Ready | Cloud-init csomag támogatása az Azure-ban|
 |:--- |:--- |:--- |:--- |:--- |:--- |
 |RedHat 7,6 |RHEL |7-RAW-CI |7.6.2019072418 |igen | igen – a csomag verziószámának támogatása: *18.2-1. el7_6.2*|
-|RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 | Igen (vegye figyelembe, hogy ez egy előnézeti kép, és ha az összes RHEL 7,7-lemezkép támogatja a Cloud-init-et, akkor ez a 2020. szeptember 1-től lesz eltávolítva) | igen – a csomag verziójának támogatása: *18,5 -6. el7*|
+|RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 | Igen (Megjegyzés: ez egy előnézeti kép, **és nem** használható többé, ezért ez a 2020. szeptember 1-től lesz eltávolítva) | N.A. |
 |RedHat 7,7 (Gen1)|RHEL |7.7 | 7.7.2020051912 | igen | igen – a csomag verziójának támogatása: *18,5 -6. el7*|
 |RedHat 7,7 (Gen2)|RHEL | 77 – Gen2 | 7.7.2020051913 | igen | igen – a csomag verziójának támogatása: *18,5 -6. el7*|
 |RedHat 7,7 (Gen1)|RHEL |7 – LVM | 7.7.2020051921 | igen | igen – a csomag verziójának támogatása: *18,5 -6. el7*|
 |RedHat 7,7 (Gen2)|RHEL | 7lvm – Gen2 | 7.7.2020051922  | igen | igen – a csomag verziójának támogatása: *18,5 -6. el7*|
 |RedHat 7,7 (Gen1) |RHEL – BYOS | RHEL – lvm77 | 7.7.20200416 | igen  | igen – a csomag verziójának támogatása: *18,5 -6. el7*|
-|RedHat 8,1 (Gen1) |RHEL |8,1 – CI |8.1.2020042511 | Igen (vegye figyelembe, hogy ez egy előnézeti kép, és ha az összes RHEL 8,1-lemezkép támogatja a Cloud-init-et, akkor ez a 2020 augusztus 1-től lesz eltávolítva) | Nem, ETA a teljes támogatásért 2020. június|
-|RedHat 8,1 (Gen2) |RHEL |81 – CI-Gen2 |8.1.2020042524 | Igen (vegye figyelembe, hogy ez egy előnézeti kép, és ha az összes RHEL 8,1-lemezkép támogatja a Cloud-init-et, akkor ez a 2020 augusztus 1-től lesz eltávolítva) | Nem, ETA a teljes támogatásért 2020. június |
+|RedHat 8,1 (Gen1) |RHEL |8,1 – CI |8.1.2020042511 | Igen (Megjegyzés: ez egy előnézeti kép, és ha az összes RHEL 8,1-lemezkép támogatja a Cloud-init-et, akkor a rendszer eltávolítja az 2020. augusztus 1-től) | Nem, ETA a teljes támogatásért 2020. június|
+|RedHat 8,1 (Gen2) |RHEL |81 – CI-Gen2 |8.1.2020042524 | Igen (Megjegyzés: ez egy előnézeti kép, és ha az összes RHEL 8,1-lemezkép támogatja a Cloud-init-et, akkor a rendszer eltávolítja az 2020. augusztus 1-től) | Nem, ETA a teljes támogatásért 2020. június |
 
-RedHat: a RHEL 7,8 és a 8,2 (Gen1 és Gen2) lemezképek a Cloud-init használatával lettek kiépítve.
+* Az összes RedHat: RHEL 7,8 és 8,2 (Gen1 és Gen2) lemezkép a Cloud-init használatával lett kiépítve.
 
 ### <a name="centos"></a>CentOS
 
 | Közzétevő/verzió | Ajánlat | Termékváltozat | Verzió | rendszerkép-felhő – init Ready | Cloud-init csomag támogatása az Azure-ban|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|OpenLogic 7,7 |CentOS |7-CI |7.7.20190920 |Igen (vegye figyelembe, hogy ez egy előnézeti kép, és ha az összes CentOS 7,7-lemezkép támogatja a Cloud-init-t, akkor ez a 2020. szeptember 1-től lesz eltávolítva) | igen – a csomag verziójának támogatása:`18.5-3.el7.centos`|
+|OpenLogic 7,7 |CentOS |7-CI |7.7.20190920 |Igen (Megjegyzés: ez egy előnézeti kép, **és nem** használható többé, ezért ez a 2020. szeptember 1-től lesz eltávolítva) | N.A. |
+|OpenLogic 7,7 |CentOS | 7.7 |7.7.2020062400 |igen | igen – a csomag verziójának támogatása:`18.5-6.el7.centos.5`|
+|OpenLogic 7,7 (Gen2) |CentOS | 7_7 – Gen2 |7.7.2020062401 |igen | igen – a csomag verziójának támogatása:`18.5-6.el7.centos.5`|
+|OpenLogic 7,7 |CentOS – HPC | 7.7 |7.6.2020062600 |igen | igen – a csomag verziójának támogatása:`18.5-6.el7.centos.5`|
+|OpenLogic 7,7 (Gen2) |CentOS – HPC | 7_7 – Gen2 |7.6.2020062601 |igen | igen – a csomag verziójának támogatása:`18.5-6.el7.centos.5`|
+|OpenLogic 8,1 |CentOS | 8_1 |8.1.2020062400 |igen | igen – a csomag verziójának támogatása:`18.5-7.el8_1.1`|
+|OpenLogic 8,1 (Gen2) |CentOS | 8_1 – Gen2 |8.1.2020062401 |igen | igen – a csomag verziójának támogatása:`18.5-7.el8_1.1`|
+|OpenLogic 8,1 |CentOS – HPC | 8_1 |8.1.2020062400 |igen | igen – a csomag verziójának támogatása:`18.5-7.el8_1.1`|
+|OpenLogic 8,1 (Gen2) |CentOS-HPC: 8_1-Gen2 | 8_1 – Gen2 |8.1.2020062401 |igen | igen – a csomag verziójának támogatása:`18.5-7.el8_1.1`|
 
-* CentOS 7,7 lemezképek, amelyek a Cloud-init engedélyezve lesznek, itt frissíthető itt: 2020. június 
-* A CentOS 7,8 lemezképek a Cloud-init használatával lettek kiépítve.
-
+* Minden OpenLogic: CentOS 7,8 és 8,2 (Gen1 és Gen2) lemezképek kiépítve a Cloud-init használatával.
 
 ### <a name="oracle"></a>Oracle
 
 | Közzétevő/verzió | Ajánlat | Termékváltozat | Verzió | rendszerkép-felhő – init Ready | Cloud-init csomag támogatása az Azure-ban|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|Oracle 7,7 |Oracle – Linux |77 – CI |7.7.01| előzetes rendszerkép (Megjegyzés: ez egy előzetes rendszerkép, és az összes Oracle 7,7-lemezkép támogatja a Cloud-2020 init-t | nem, az előzetes verzióban a csomag a következőket eredményezi: *18,5-3.0.1. el7*
+|Oracle 7,7 |Oracle – Linux |77 – CI |7.7.01| előzetes rendszerkép (Megjegyzés: ez egy előzetes rendszerkép, és az összes Oracle 7,7-lemezkép támogatja a Cloud-2020 init használatát | nem, az előzetes verzióban a csomag a következőket eredményezi: *18,5-3.0.1. el7*
 
 ### <a name="suse-sles"></a>SUSE SLES
-| Közzétevő/verzió | Ajánlat | Termékváltozat | Verzió | rendszerkép-felhő – init Ready | Cloud-init csomag támogatása az Azure-ban|
-|:--- |:--- |:--- |:--- |:--- |:--- |
-|SUSE SLES 15 SP1 |SUSE |SLES-15 – SP1 – alapszintű |Cloud-init – előzetes verzió| Részletekért lásd a [SUSE Cloud-init blogját](https://suse.com/c/clout-init-coming-to-suse-images-in-azure/) . | Nem, előzetes verzióban. |
-|SUSE SLES 15 SP1 |SUSE |SLES-15 – SP1 – alapszintű |Gen2 – Cloud-init – előzetes verzió| Részletekért lásd a [SUSE Cloud-init blogját](https://suse.com/c/clout-init-coming-to-suse-images-in-azure/) . | Nem, előzetes verzióban. |
+Ezek a SLES-lemezképek a Cloud-init használatával lettek kiépítve, a Gen2 lemezkép változatait is frissítették.
+* SUSE: SLES-15-SP1-{Basic/BYOS/HPC/HPC-BYOS/chost-BYOS}: gen1:2020.06.10
+* SUSE: SLES-SAP-15-SP1: gen1:2020.06.10
+* SUSE: SLES-SAP-15-SP1-BYOS: gen1:2020.06.10
+* SUSE: Manager-proxy-4-BYOS: gen1:2020.06.10
+* SUSE: Manager-Server-4-BYOS: gen1:2020.06.10
+* SUSE: SLES-{BYOS/SAP/SAP-BYOS}: 15:2020.06.10
+* SUSE: SLES-12-SP5: gen1:2020.06.10
+* SUSE: SLES-12-SP5 {-BYOS/Basic/HPC-BYOS/HPC}: gen1:2020.06.10
+* SUSE: SLES-{BYOS/SAP/SAP-BYOS}: 12-SP4:2020.06.10
+* SUSE: SLES-{BYOS/SAP/SAP-BYOS}: 12-SP3:2020.06.10
+* SUSE: SLES-{BYOS/SAP/SAP-BYOS}: 12-SP2:2020.06.10
 
 
 ### <a name="debian"></a>Debian

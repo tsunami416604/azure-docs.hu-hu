@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 9b99f7fa88dc933c32077d273221d8551270529c
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: d04a5c0e53e9a5db8bba03a5a9e9d95b87a8b5a3
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85508571"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855679"
 ---
 # <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-data-lake-storage-gen1"></a>Az Azure import/export szolgáltatás használata az adatkapcsolat nélküli másoláshoz az Data Lake Storage Gen1
 
@@ -31,17 +31,16 @@ Mielőtt elkezdené, a következőkkel kell rendelkeznie:
 
 Az import/export szolgáltatás használata előtt bontsa az adatfájlt úgy, hogy az átkerüljön a **200 GB-nál kisebb méretű másolatokra** . Az importálási eszköz nem működik a 200 GB-nál nagyobb méretű fájlokkal. Ebben a cikkben a fájlt a 100 GB-nyi méretű darabokra bontottuk. Ezt a [Cygwin](https://cygwin.com/install.html)használatával teheti meg. A Cygwin támogatja a Linux-parancsokat. Ebben az esetben használja a következő parancsot:
 
-    split -b 100m 319GB.tsv
+```console
+split -b 100m 319GB.tsv
+```
 
 A felosztott művelet a következő neveket tartalmazó fájlokat hozza létre.
 
-    319GB.tsv-part-aa
-
-    319GB.tsv-part-ab
-
-    319GB.tsv-part-ac
-
-    319GB.tsv-part-ad
+* *319GB. TSV – rész – AA*
+* *319GB. TSV – rész – AB*
+* *319GB. TSV – rész – AC*
+* *319GB. TSV – rész – ad*
 
 ## <a name="get-disks-ready-with-data"></a>Lemezek beolvasása az adatfeldolgozással
 
@@ -219,7 +218,7 @@ Register-AzResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
 Join-AzDataLakeStoreItem -AccountName "<adlsg1_account_name" -Paths "/importeddatafeb8job/319GB.tsv-part-aa","/importeddatafeb8job/319GB.tsv-part-ab", "/importeddatafeb8job/319GB.tsv-part-ac", "/importeddatafeb8job/319GB.tsv-part-ad" -Destination "/importeddatafeb8job/MergedFile.csv"
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az adatok védelme az 1. generációs Data Lake Storage-ban](data-lake-store-secure-data.md)
 * [Azure Data Lake Analytics használata a Data Lake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md)

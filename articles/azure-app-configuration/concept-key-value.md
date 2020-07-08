@@ -6,12 +6,12 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
-ms.openlocfilehash: 0b83a35d912c97ae25bc2d69d076e8eae8ca490f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b8f8bda52be63a4176411855dd9ff9919e9e31f5
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77523604"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856686"
 ---
 # <a name="keys-and-values"></a>Kulcsok és értékek
 
@@ -19,25 +19,29 @@ Az Azure-alkalmazás konfigurációja kulcs-érték párokként tárolja a konfi
 
 ## <a name="keys"></a>Kulcsok
 
-A kulcsok azonosítóként szolgálnak a kulcs-érték párokhoz, és a megfelelő értékek tárolására és lekérésére használatosak. Gyakori eljárás a kulcsok hierarchikus névtérbe rendezése egy karakter elválasztójának használatával, például `/` vagy. `:` Az alkalmazáshoz legjobban illeszkedő konvenciót használjon. Az alkalmazás konfigurációja a kulcsokat teljes egészében kezeli. Nem elemzi a kulcsokat, hogy megtudja, hogyan épülnek fel a nevük, és hogyan kényszerítenek rájuk.
+A kulcsok azonosítóként szolgálnak a kulcs-érték párokhoz, és a megfelelő értékek tárolására és lekérésére használatosak. Gyakori eljárás a kulcsok hierarchikus névtérbe rendezése egy karakter elválasztójának használatával, például `/` vagy `:` . Az alkalmazáshoz legjobban illeszkedő konvenciót használjon. Az alkalmazás konfigurációja a kulcsokat teljes egészében kezeli. Nem elemzi a kulcsokat, hogy megtudja, hogyan épülnek fel a nevük, és hogyan kényszerítenek rájuk.
 
 Íme két példa a hierarchiában strukturált kulcsnévre:
 
 * A Component Services alapján
 
+```aspx
         AppName:Service1:ApiEndpoint
         AppName:Service2:ApiEndpoint
+```
 
 * Központi telepítési régiók alapján
 
+```aspx
         AppName:Region1:DbEndpoint
         AppName:Region2:DbEndpoint
+```
 
-A konfigurációs adatok alkalmazás-keretrendszereken belüli használata bizonyos elnevezési sémákat határozhat meg a kulcsok értékeihez. A Java Spring Cloud Framework például olyan erőforrásokat határoz `Environment` meg, amelyek a Spring Application beállításait adják meg.  Ezek az *alkalmazás nevét* és *profilját*tartalmazó változók paraméterei. A tavaszi felhőhöz kapcsolódó konfigurációs adatok kulcsai általában a két elem elválasztó karakterrel kezdődnek.
+A konfigurációs adatok alkalmazás-keretrendszereken belüli használata bizonyos elnevezési sémákat határozhat meg a kulcsok értékeihez. A Java Spring Cloud Framework például olyan erőforrásokat határoz meg, `Environment` amelyek a Spring Application beállításait adják meg.  Ezek az *alkalmazás nevét* és *profilját*tartalmazó változók paraméterei. A tavaszi felhőhöz kapcsolódó konfigurációs adatok kulcsai általában a két elem elválasztó karakterrel kezdődnek.
 
 Az alkalmazás konfigurációjában tárolt kulcsok kis-és nagybetűket megkülönböztető, Unicode-alapú karakterláncok. Az *App1* és a *App1* kulcsok eltérnek az alkalmazás konfigurációs tárolójában. Ne feledje, hogy ha a konfigurációs beállításokat egy alkalmazáson belül használja, mert egyes keretrendszerek kis-és nagybetűk nélkül kezelik a konfigurációs kulcsokat. A kulcsok megkülönböztetésére nem ajánlott a Case használata.
 
-A kulcsok neveiben bármilyen Unicode-karaktert használhat, `*` `,`a, a és `\`a kivételével.  Ha fel kell vennie a fenntartott karakterek egyikét, a használatával `\{Reserved Character}`kell elmenekülnie. 
+A kulcsok neveiben bármilyen Unicode-karaktert használhat, a, a és a kivételével `*` `,` `\` .  Ha fel kell vennie a fenntartott karakterek egyikét, a használatával kell elmenekülnie `\{Reserved Character}` . 
 
 A kulcs-érték párokban egy összesített méretkorlát 10 KB. Ez a korlát a kulcs, a hozzá tartozó érték és az összes hozzá tartozó opcionális attribútum összes karakterét tartalmazza. Ezen a korláton belül számos hierarchikus szintet is megadhat a kulcsokhoz.
 
@@ -53,23 +57,25 @@ Az alkalmazások konfigurációjában többféleképpen rendezheti a kulcsokat. 
 
 ### <a name="label-keys"></a>Címkék kulcsai
 
-Az alkalmazás konfigurációjában a kulcs értékei opcionálisan rendelkezhetnek Label attribútummal is. A címkék használatával a kulcs értékeit ugyanazzal a kulccsal lehet megkülönböztetni. Az *a* és *B* címkével ellátott *App1* két különálló kulcsot alkotnak az alkalmazás konfigurációs tárolójában. Alapértelmezés szerint a kulcs értéke nem rendelkezik címkével. Ha címkével nem rendelkező kulcsot szeretne explicit módon hivatkozni, `\0` használja a (URL- `%00`cím) értéket.
+Az alkalmazás konfigurációjában a kulcs értékei opcionálisan rendelkezhetnek Label attribútummal is. A címkék használatával a kulcs értékeit ugyanazzal a kulccsal lehet megkülönböztetni. Az *a* és *B* címkével ellátott *App1* két különálló kulcsot alkotnak az alkalmazás konfigurációs tárolójában. Alapértelmezés szerint a kulcs értéke nem rendelkezik címkével. Ha címkével nem rendelkező kulcsot szeretne explicit módon hivatkozni, használja a `\0` (URL-cím `%00` ) értéket.
 
 A Label kényelmes módszert biztosít a kulcsok változatának létrehozásához. A címkék gyakori használata több környezet megadására szolgál ugyanahhoz a kulcshoz:
 
+```aspx
     Key = AppName:DbEndpoint & Label = Test
     Key = AppName:DbEndpoint & Label = Staging
     Key = AppName:DbEndpoint & Label = Production
+```
 
 ### <a name="version-key-values"></a>Verzió kulcsának értékei
 
 Az alkalmazás konfigurációja nem a kulcs értékeit automatikusan. Használjon címkéket úgy, hogy a kulcs értékének több verzióját hozza létre. Megadhat például egy alkalmazás verziószámát vagy egy git commit ID-t a címkékben egy adott szoftver-összeállításhoz társított kulcsok azonosításához.
 
-A címkéken bármilyen Unicode-karaktert használhat, `*` `,`a, a és `\`a kivételével. Ezek a karakterek le vannak foglalva. Egy fenntartott karakter belefoglalásához a használatával `\{Reserved Character}`kell elmenekülnie.
+A címkéken bármilyen Unicode-karaktert használhat, a, a és a kivételével `*` `,` `\` . Ezek a karakterek le vannak foglalva. Egy fenntartott karakter belefoglalásához a használatával kell elmenekülnie `\{Reserved Character}` .
 
 ### <a name="query-key-values"></a>Lekérdezési kulcs értékei
 
-Minden egyes kulcs értékét egyedileg azonosítják a kulcsa, valamint egy címke, amely lehet `null`. A kulcsok értékeit egy minta megadásával kérdezheti le. Az alkalmazás konfigurációs tárolója visszaadja az összes olyan kulcs értéket, amely megfelel a mintának, valamint a hozzájuk tartozó értékeknek és attribútumoknak. Az alkalmazás konfigurálásához REST API hívásokban használja az alábbi főbb mintákat:
+Minden egyes kulcs értékét egyedileg azonosítják a kulcsa, valamint egy címke, amely lehet `null` . A kulcsok értékeit egy minta megadásával kérdezheti le. Az alkalmazás konfigurációs tárolója visszaadja az összes olyan kulcs értéket, amely megfelel a mintának, valamint a hozzájuk tartozó értékeknek és attribútumoknak. Az alkalmazás konfigurálásához REST API hívásokban használja az alábbi főbb mintákat:
 
 | Kulcs | |
 |---|---|

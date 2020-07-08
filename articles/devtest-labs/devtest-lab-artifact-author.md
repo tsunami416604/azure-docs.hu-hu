@@ -3,12 +3,12 @@ title: Egyéni összetevők létrehozása a DevTest Labs virtuális géphez | Mi
 description: Ismerje meg, hogyan hozhat létre saját összetevőket a Azure DevTest Labs használatával.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: f33b6da3354dc3caf9376f249b802d324aa3148c
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: 775908749f52c71eeaf97eef25e3787f9b6794fc
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85482955"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85857014"
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>Egyéni összetevők létrehozása a DevTest Labs virtuális géphez
 
@@ -24,25 +24,27 @@ Az alkalmazások üzembe helyezéséhez és beállításához a virtuális gép 
 ## <a name="artifact-definition-file-format"></a>Összetevő-definíció fájlformátuma
 A következő példa egy definíciós fájl alapszerkezetét alkotó szakaszt mutatja be:
 
-    {
-      "$schema": "https://raw.githubusercontent.com/Azure/azure-devtestlab/master/schemas/2016-11-28/dtlArtifacts.json",
-      "title": "",
-      "description": "",
-      "iconUri": "",
-      "targetOsType": "",
-      "parameters": {
-        "<parameterName>": {
-          "type": "",
-          "displayName": "",
-          "description": ""
-        }
-      },
-      "runCommand": {
-        "commandToExecute": ""
+```json
+  {
+    "$schema": "https://raw.githubusercontent.com/Azure/azure-devtestlab/master/schemas/2016-11-28/dtlArtifacts.json",
+    "title": "",
+    "description": "",
+    "iconUri": "",
+    "targetOsType": "",
+    "parameters": {
+      "<parameterName>": {
+        "type": "",
+        "displayName": "",
+        "description": ""
       }
+    },
+    "runCommand": {
+      "commandToExecute": ""
     }
+  }
+```
 
-| Elem neve | Kötelező? | Leírás |
+| Elem neve | Kötelező? | Description |
 | --- | --- | --- |
 | $schema |No |A JSON-séma fájljának helye. A JSON-sémafájl segítségével tesztelheti a definíciós fájl érvényességét. |
 | cím |Yes |A laborban megjelenő összetevő neve. |
@@ -57,15 +59,17 @@ A definíciós fájl parameters (paraméterek) részében adja meg, hogy a felha
 
 Paraméterek definiálásához használja az alábbi struktúrát:
 
-    "parameters": {
-      "<parameterName>": {
-        "type": "<type-of-parameter-value>",
-        "displayName": "<display-name-of-parameter>",
-        "description": "<description-of-parameter>"
-      }
+```json
+  "parameters": {
+    "<parameterName>": {
+      "type": "<type-of-parameter-value>",
+      "displayName": "<display-name-of-parameter>",
+      "description": "<description-of-parameter>"
     }
+  }
+```
 
-| Elem neve | Kötelező? | Leírás |
+| Elem neve | Kötelező? | Description |
 | --- | --- | --- |
 | típus |Yes |A paraméter értékének típusa. Az engedélyezett típusok listáját az alábbi listában tekintheti meg. |
 | displayName |Yes |A tesztkörnyezetben a felhasználó számára megjelenített paraméter neve. |
@@ -115,12 +119,14 @@ Az alábbi lista a gyakori függvényeket tartalmazza:
 
 Az alábbi példa bemutatja, hogyan használhatók kifejezések és függvények egy érték létrehozásához:
 
-    runCommand": {
-        "commandToExecute": "[concat('powershell.exe -ExecutionPolicy bypass \"& ./startChocolatey.ps1'
-    , ' -RawPackagesList ', parameters('packages')
-    , ' -Username ', parameters('installUsername')
-    , ' -Password ', parameters('installPassword'))]"
-    }
+```json
+  runCommand": {
+      "commandToExecute": "[concat('powershell.exe -ExecutionPolicy bypass \"& ./startChocolatey.ps1'
+  , ' -RawPackagesList ', parameters('packages')
+  , ' -Username ', parameters('installUsername')
+  , ' -Password ', parameters('installPassword'))]"
+  }
+```
 
 ## <a name="create-a-custom-artifact"></a>Egyéni összetevő létrehozása
 

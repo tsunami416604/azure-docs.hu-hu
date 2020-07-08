@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: f5a6180fa939699f752678271fbddfb8328a1afe
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: c83323ff7b951892b96d49f3173c022592aac331
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84883929"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920168"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Ismerkedés az Azure CDN-fejlesztéssel
 > [!div class="op_single_selector"]
@@ -44,7 +44,9 @@ Most, hogy létrehozott egy erőforráscsoportot a CDN-profilokhoz, és az Azure
 
 Hozzon létre egy mappát az alkalmazás tárolásához.  A konzolon az aktuális elérési úton lévő Node.js eszközökkel állítsa be az aktuális helyet az új mappára, és a következő végrehajtásával inicializálja a projektet:
 
-    npm init
+```console
+npm init
+```
 
 Ekkor a projekt inicializálására vonatkozó kérdések sora jelenik meg.  A **belépési pont**esetében ez az oktatóanyag *app.jst *használ.  Az alábbi példában megtekintheti az egyéb döntéseket.
 
@@ -52,8 +54,10 @@ Ekkor a projekt inicializálására vonatkozó kérdések sora jelenik meg.  A *
 
 A projekt most már inicializálva van egy *packages.jsval a* fájlon.  A projektünk NPM-csomagokban található Azure-kódtárakat fog használni.  Az Azure-ügyfél futtatókörnyezetét az Node.js (MS-Rest-Azure) és a Azure CDN ügyféloldali Node.js kódtár (Azure-ARM-CD) használatával fogjuk használni.  Vegyük fel a projektbe a függőségeket.
 
-    npm install --save ms-rest-azure
-    npm install --save azure-arm-cdn
+```console
+npm install --save ms-rest-azure
+npm install --save azure-arm-cdn
+```
 
 A csomagok telepítésének befejezése után a fájl *package.js* a következőhöz hasonlóan kell kinéznie (a verziószámok eltérőek lehetnek):
 

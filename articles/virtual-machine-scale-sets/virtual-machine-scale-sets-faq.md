@@ -6,15 +6,15 @@ ms.author: mimckitt
 ms.topic: conceptual
 ms.service: virtual-machine-scale-sets
 ms.subservice: faq
-ms.date: 05/24/2019
+ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: a3074fdd10ef960a1c0b58b973d57da14d888af4
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: cf58b62001ce5d193e3a06973215d82138ad4b59
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83200160"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855588"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure Virtual Machine Scale Sets – gyakori kérdések
 
@@ -224,17 +224,17 @@ Linuxos virtuális gép létrehozásakor egyszerű szövegként is megadhat SSH 
 }
 ```
 
-linuxConfiguration elem neve | Kötelező | Típus | Leírás
+linuxConfiguration elem neve | Kötelező | Típus | Description
 --- | --- | --- | ---
-SSH | Nem | Gyűjtemény | Megadja egy Linux operációs rendszer SSH-kulcsának konfigurációját
-path | Igen | Sztring | Megadja a Linux-fájl elérési útját, ahol az SSH-kulcsokat vagy a tanúsítványokat kell elhelyezni
-alapértékek | Igen | Sztring | Base64 kódolású nyilvános SSH-kulcsot ad meg
+SSH | No | Gyűjtemény | Megadja egy Linux operációs rendszer SSH-kulcsának konfigurációját
+path | Yes | Sztring | Megadja a Linux-fájl elérési útját, ahol az SSH-kulcsokat vagy a tanúsítványokat kell elhelyezni
+alapértékek | Yes | Sztring | Base64 kódolású nyilvános SSH-kulcsot ad meg
 
 Példaként tekintse meg [a 101-VM-Sshkey GitHub](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json)rövid útmutatójának sablonját.
 
 ### <a name="when-i-run-update-azvmss-after-adding-more-than-one-certificate-from-the-same-key-vault-i-see-the-following-message"></a>Ha `Update-AzVmss` ugyanazon kulcstartóból egynél több tanúsítvány hozzáadását követően futtatok, a következő üzenet jelenik meg:
 
->Update-AzVmss: a titkos lista a/Subscriptions/ \< saját előfizetés-azonosító>/resourcegroups/Internal-RG-dev/Providers/Microsoft.keyvault/Vaults/Internal-keyvault-dev ismétlődő példányait tartalmazza, ami nem engedélyezett.
+>Update-AzVmss: a titkos lista a/Subscriptions//ResourceGroups/Internal-RG-dev/Providers/Microsoft.KeyVault/Vaults/Internal-keyvault-dev ismétlődő példányait tartalmazza \<my-subscription-id> , ami nem engedélyezett.
 
 Ez akkor fordulhat elő, ha ugyanazt a tárat próbálja újra felvenni a meglévő forrás-tárolóhoz tartozó új tár tanúsítványának használata helyett. A `Add-AzVmssSecret` parancs nem működik megfelelően, ha további titkos kulcsokat ad hozzá.
 
@@ -338,7 +338,7 @@ További információkért lásd: [Microsoft Adatvédelmi központ](https://www.
 
 Igen. A [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi) és a [Windows rendszerhez](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi)készült Azure gyorsindítási sablonokban néhány példát láthat az MSI-sablonokra.
 
-## <a name="deleting"></a>Törlése
+## <a name="deleting"></a>Törlés
 
 ### <a name="will-the-locks-i-set-in-place-on-virtual-machine-scale-set-instances-be-respected-when-deleting-instances"></a>Figyelembe veszik a virtuálisgép-méretezési csoport példányain beállított zárolásokat a példányok törlésekor?
 
@@ -671,7 +671,7 @@ A rendszerindítási diagnosztika bekapcsolásához először hozzon létre egy 
 }
 ```
 
-Új virtuális gép létrehozásakor a virtuális gép InstanceView tulajdonsága a képernyőkép részleteit jeleníti meg, és így tovább. Például:
+Új virtuális gép létrehozásakor a virtuális gép InstanceView tulajdonsága a képernyőkép részleteit jeleníti meg, és így tovább. Íme egy példa:
 
 ```json
 "bootDiagnostics": {

@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Az Azure arc-kompatibilis fürtkonfiguráció GitOps használata (előzetes verzió)
 keywords: GitOps, Kubernetes, K8s, Azure, arc, Azure Kubernetes szolgáltatás, tárolók
-ms.openlocfilehash: 954c77503e8adacc4cd27b25b68b50cac1f80458
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 890b35aac33a6fa207a71d76143997a1b93116bf
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779713"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856983"
 ---
 # <a name="use-gitops-for-an-azure-arc-enabled--configuration-preview"></a>GitOps használata Azure-beli arc-kompatibilis konfigurációhoz (előzetes verzió)
 
@@ -99,14 +99,14 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 Itt láthatók a--adattár-URL paraméter értékeként támogatott forgatókönyvek.
 
-| Forgatókönyv | Formátum | Leírás |
+| Forgatókönyv | Formátum | Description |
 | ------------- | ------------- | ------------- |
 | Privát GitHub-tárház – SSH | git@github.com:username/repo | A Flux által generált SSH-kulcspár.  A felhasználónak hozzá kell adnia a nyilvános kulcsot a GitHub-fiókhoz üzembe helyezési kulcsként. |
 | Nyilvános GitHub-tárház | `http://github.com/username/repo`vagy git://github.com/username/repo   | Nyilvános git-tárház  |
 
 Ezeket a forgatókönyveket a Flux támogatja, de még nem sourceControlConfiguration. 
 
-| Forgatókönyv | Formátum | Leírás |
+| Forgatókönyv | Formátum | Description |
 | ------------- | ------------- | ------------- |
 | Privát GitHub-adattár – HTTPS | `https://github.com/username/repo` | A Flux nem állít elő SSH-kulcspárt.  [Utasítások](https://docs.fluxcd.io/en/1.17.0/guides/use-git-https.html) |
 | Privát git-gazdagép | user@githost:path/to/repo | [Utasítások](https://docs.fluxcd.io/en/1.18.0/guides/use-private-git-host.html) |
@@ -129,7 +129,7 @@ A konfiguráció létrehozásához a következő néhány további paramétert k
 
 A-operátor-params támogatott beállításai
 
-| Beállítás | Leírás |
+| Beállítás | Description |
 | ------------- | ------------- |
 | --git-ág  | A git-tárház Kubernetes-jegyzékekhez használt ága. Az alapértelmezett érték a "Master". |
 | – git – elérési út  | Relatív elérési út a git-tárházon belül a Flux számára a Kubernetes-jegyzékek megkereséséhez. |
@@ -167,7 +167,7 @@ Vegye figyelembe, hogy az `sourceControlConfiguration` erőforrás a megfelelős
 Command group 'k8sconfiguration' is in preview. It may be changed/removed in a future release.
 {
   "complianceStatus": {
-    "complianceState": "Compliant",
+    "complianceState": "Installed",
     "lastConfigApplied": "2019-12-05T05:34:41.481000",
     "message": "...",
     "messageLevel": "3"
@@ -201,8 +201,8 @@ A `sourceControlConfiguration` létrehozása után néhány dolog a motorháztet
 A kiépítési folyamat során a `sourceControlConfiguration` átkerül néhány állapotba. A folyamat figyelése a `az k8sconfiguration show ...` fenti paranccsal:
 
 1. `complianceStatus` -> `Pending`: a kezdeti és a folyamatban lévő állapotot jelöli.
-1. `complianceStatus` -> `Compliant`: sikerült `config-agent` konfigurálni a fürtöt, és `flux` hiba nélkül üzembe helyezheti a telepítést
-1. `complianceStatus` -> `Noncompliant`: `config-agent` hiba történt az üzembe helyezés során `flux` , a részleteknek elérhetőnek kell lenniük a `complianceStatus.message` Válasz törzsében.
+1. `complianceStatus` -> `Installed`: sikerült `config-agent` konfigurálni a fürtöt, és `flux` hiba nélkül üzembe helyezheti a telepítést
+1. `complianceStatus` -> `Failed`: `config-agent` hiba történt az üzembe helyezés során `flux` , a részleteknek elérhetőnek kell lenniük a `complianceStatus.message` Válasz törzsében.
 
 ## <a name="apply-configuration-from-a-private-git-repository"></a>Konfiguráció alkalmazása privát git-tárházból
 
