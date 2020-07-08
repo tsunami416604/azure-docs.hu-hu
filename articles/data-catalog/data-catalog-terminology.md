@@ -7,10 +7,9 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: d6c813dec3922334f7462b1226ea22371fd5f43b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68736292"
 ---
 # <a name="azure-data-catalog-terminology"></a>Azure Data Catalog terminológia
@@ -50,7 +49,7 @@ Az adategység leíró metaadatai tartalmazhatják az adategységhez vagy az ada
 * Az adatforráshoz való hozzáféréshez használható identitás-és hozzáférés-kezelési eszköz (például Microsoft Identity Manager) URL-címe.
 * Egy ingyenes szöveges bejegyzés, amely leírja, hogy a felhasználók hogyan férhetnek hozzá az adatforráshoz.
 
-## <a name="preview"></a>Előzetes verzió
+## <a name="preview"></a>Előnézet
 
 A Azure Data Catalog egy előzetes verziója legfeljebb 20 rekordot tartalmaz, amelyeket a rendszer a regisztráció során kinyerheti az adatforrásból, és a katalógusban tárolhatja az adategység metaadatainak használatával. Az előzetes verzió segíthet az adategységeket felderítő felhasználók számára, hogy jobban megértsék a funkcióját és célját. Más szóval a mintaadatok meglátása értékesebb lehet, mint az oszlopnevek és az adattípusok.
 Az előzetes verziók csak táblák és nézetek esetén támogatottak, és a felhasználónak explicit módon ki kell választania a regisztráció során.

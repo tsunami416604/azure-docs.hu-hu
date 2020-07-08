@@ -16,10 +16,9 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: 68535f70507e7a81d217f4148314a3d76ec832ea
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68727201"
 ---
 # <a name="azure-information-system-components-and-boundaries"></a>Azure Information System-összetevők és-határok
@@ -47,7 +46,7 @@ Az adatközpont fürtökre van osztva. A fürtök az FC szintjén elkülönítik
 
 ### <a name="hardware-inventory"></a>Hardverleltár
 
-Az FC előkészíti az Azure hardverek és hálózati eszközök leltárát a rendszerindítási konfigurációs folyamat során. Az Azure éles környezetbe belépő új hardver-és hálózati összetevőknek a rendszerindítási konfigurációs folyamattal kell rendelkezniük. Az FC feladata az adatközpont. xml konfigurációs fájljában felsorolt teljes leltár kezelése.
+Az FC előkészíti az Azure hardverek és hálózati eszközök leltárát a rendszerindítási konfigurációs folyamat során. Az Azure éles környezetbe belépő új hardver-és hálózati összetevőknek a rendszerindítási konfigurációs folyamattal kell rendelkezniük. Az FC felelős a datacenter.xml konfigurációs fájlban felsorolt teljes leltár kezeléséért.
 
 ### <a name="fc-managed-operating-system-images"></a>Az FC által felügyelt operációsrendszer-lemezképek
 
@@ -97,7 +96,7 @@ A Microsoft alkalmazottai (vagy alvállalkozói) belső felhasználóknak tekint
 | Azure üzembe helyezési mérnökök | Belső | Ügyféladatok elérése | Platform-összetevők, szoftverek és ütemezett konfigurációs változások üzembe helyezése és frissítése az Azure-támogatásban. | Igény szerinti hozzáférés a környezethez, korlátozott állandó hozzáférés a nem ügyfél-rendszerekhez. |
 | Azure-ügyfél kimaradásának támogatása (bérlő) | Belső | Ügyféladatok elérése | A platform leállásait és hibáit az egyes számítási bérlők és az Azure-fiókok hibakeresésével és diagnosztizálásával diagnosztizálhatja. Hibák elemzése. A platformon vagy az ügyfélen kritikus fontosságú javításokat hajthat, és technikai javításokat hajthat meg a támogatáson keresztül. | Igény szerinti hozzáférés a környezethez, korlátozott állandó hozzáférés a nem ügyfél-rendszerekhez. |
 | Azure Live site Engineers (monitorozási mérnökök) és incidens | Belső | Ügyféladatok elérése | A platform állapotának diagnosztizálása és enyhítése diagnosztikai eszközökkel. Javíthatja a kötetek illesztőprogramjainak javításait, kihasználhatja az kimaradásokból származó elemeket, és segítheti a leállás-visszaállítási műveleteket. | Igény szerinti hozzáférés a környezethez, korlátozott állandó hozzáférés a nem ügyfél-rendszerekhez. |
-|Azure-ügyfelek | Külső | N/A | N/A | N/A |
+|Azure-ügyfelek | Külső | N.A. | N.A. | N.A. |
 
 Az Azure egyedi azonosítókat használ a szervezeti felhasználók és ügyfelek (vagy a szervezeti felhasználók nevében eljáró folyamatok) hitelesítéséhez. Ez az Azure-környezet részét képező összes eszközre és eszközre vonatkozik.
 

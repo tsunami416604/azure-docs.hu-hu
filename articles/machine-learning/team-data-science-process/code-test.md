@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=weig, previous-ms.author=weig
 ms.openlocfilehash: 9612114bb368898ccf31b2c8692869b84544b652
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76721994"
 ---
 # <a name="data-science-code-testing-on-azure-with-the-team-data-science-process-and-azure-devops-services"></a>Adatelemzési kód tesztelése az Azure-ban a csoportos adatelemzési folyamattal és az Azure DevOps Services szolgáltatással
@@ -128,7 +127,7 @@ A következő lépésekkel állíthatja be és futtathatja a kód tesztelését 
     
     ![Létrehozás és ügynök kiválasztása](./media/code-test/select_agent.PNG)
 
-    e. Válassza **+** ki a bal oldali ablaktáblán, hogy felvegyen egy feladatot ehhez a Build fázishoz. Mivel a Python-szkript **test1.py** az összes ellenőrzés végrehajtásához futtatjuk, ez a feladat egy PowerShell-parancsot használ a Python-kód futtatásához.
+    e. Válassza ki **+** a bal oldali ablaktáblán, hogy felvegyen egy feladatot ehhez a Build fázishoz. Mivel a Python-szkript **test1.py** az összes ellenőrzés végrehajtásához futtatjuk, ez a feladat egy PowerShell-parancsot használ a Python-kód futtatásához.
     
     !["Feladatok hozzáadása" ablaktábla a PowerShell-lel kijelölve](./media/code-test/add_task_powershell.PNG)
 
@@ -138,7 +137,7 @@ A következő lépésekkel állíthatja be és futtathatja a kód tesztelését 
     
     ![PowerShell-részletek](./media/code-test/powershell_scripts.PNG)
 
-    g. Válassza a **mentés & üzenetsor** lehetőséget a Build folyamatának befejezéséhez.
+    : Válassza a **mentés & üzenetsor** lehetőséget a Build folyamatának befejezéséhez.
 
     !["& üzenetsor mentése" gomb](./media/code-test/save_and_queue_build_definition.PNG)
 
@@ -154,7 +153,7 @@ Ha a riasztások megfelelően vannak beállítva, értesítést fog kapni e-mail
 * Az adatelemzési forgatókönyvek esetében lásd: az [UCI bevétel-előrejelző tárháza](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) , amely konkrét példákat tartalmaz az egységek tesztelésére.
 * Kövesse az előző vázlatot és példákat a saját adatelemzési projektjeiben lévő UCI bevétel-előrejelzési forgatókönyvből.
 
-## <a name="references"></a>Referencia
+## <a name="references"></a>Hivatkozások
 * [Csoportos adatelemzési folyamat](https://aka.ms/tdsp)
 * [Visual Studio-tesztelési eszközök](https://www.visualstudio.com/vs/features/testing-tools/)
 * [Azure DevOps-tesztelési erőforrások](https://www.visualstudio.com/team-services/)

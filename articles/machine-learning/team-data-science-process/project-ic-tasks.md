@@ -11,10 +11,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: d9942c31b63de77196b8b51b88376cb8ef74b990
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76721251"
 ---
 # <a name="tasks-for-an-individual-contributor-in-the-team-data-science-process"></a>A csoportos adatelemzési folyamat egyes közreműködői által feldolgozható feladatok
@@ -55,7 +54,7 @@ A Tárházak klónozása és a tartalom módosítása a helyi gépen vagy DSVM, 
 
 Ha helyileg kívánja dolgozni a tárházait, és a változtatásokat a megosztott csapat és a projekt adattárházában küldi el, először másolja vagy *klónozottan* másolja a tárházat a helyi gépre. 
 
-1. Az Azure DevOps nyissa meg a csapat projekt-összefoglalás lapját a *https\//\<: kiszolgáló neve>\</szervezet neve>\</csapat neve>*, például **https:\//dev.Azure.com/DataScienceUnit/MyTeam**.
+1. Az Azure DevOps nyissa meg a csapat projekt-összefoglalás oldalát *https: \/ / \<server name> / \<organization name> / \<team name> *, például **https: \/ /dev.Azure.com/DataScienceUnit/MyTeam**.
    
 1. Válassza a **repók** lehetőséget a bal oldali navigációs menüben, majd az oldal tetején válassza ki a klónozott tárházat.
    

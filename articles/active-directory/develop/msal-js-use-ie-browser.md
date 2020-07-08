@@ -1,7 +1,7 @@
 ---
-title: Problémák az Internet Explorerben (MSAL. js) | Azure
+title: Problémák az Internet Explorerben (MSAL.js) | Azure
 titleSuffix: Microsoft identity platform
-description: Használja az Internet Explorer böngészőt a JavaScripthez készült Microsoft Authentication Library (MSAL. js) használatával.
+description: Használja az Internet Explorer böngészőben a JavaScripthez készült Microsoft hitelesítési függvénytárat (MSAL.js).
 services: active-directory
 author: navyasric
 manager: CelesteDG
@@ -14,18 +14,17 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: c4f3c4153e1404a5576427be7ef218f5a669387e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76695857"
 ---
-# <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-msaljs"></a>Az Internet Explorer és a Microsoft Edge böngészők ismert problémái (MSAL. js)
+# <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-msaljs"></a>Az Internet Explorer és a Microsoft Edge böngészők ismert problémái (MSAL.js)
 
-A javascripthez készült Microsoft Authentication Library (MSAL. js) JavaScript- [ES5](https://fr.wikipedia.org/wiki/ECMAScript#ECMAScript_Edition_5_.28ES5.29) jön létre, hogy az Internet Explorerben is futtatható legyen. Van azonban néhány tudnivaló.
+A javascripthez készült Microsoft Authentication Library (MSAL.js) JavaScript- [ES5](https://fr.wikipedia.org/wiki/ECMAScript#ECMAScript_Edition_5_.28ES5.29) jön létre, hogy az az Internet Explorerben is futtatható legyen. Van azonban néhány tudnivaló.
 
 ## <a name="run-an-app-in-internet-explorer"></a>Alkalmazás futtatása az Internet Explorerben
-Ha az Internet Explorerben futtatható alkalmazásokban szeretné használni a MSAL. js fájlt, akkor a MSAL. js parancsfájlra való hivatkozás előtt hozzá kell adnia egy hivatkozást egy ígérethez.
+Ha MSAL.jst szeretne használni az Internet Explorerben futtatható alkalmazásokban, a MSAL.js parancsfájlra való hivatkozás előtt hozzá kell adnia egy hivatkozást egy ígérethez.
 
 ```html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.4/bluebird.min.js" class="pre"></script>
@@ -39,9 +38,9 @@ Ennek az az oka, hogy az Internet Explorer nem támogatja natív módon a JavaSc
 Az alkalmazás éles környezetben történő üzembe helyezése (például az Azure web Appsben) általában jól működik, ha a végfelhasználó elfogadta a felugró ablakokat. Az Internet Explorer 11 böngészőben teszteltük.
 
 ### <a name="running-locally"></a>Helyileg futtatva
-Ha az Internet Explorerben futtató alkalmazást helyileg szeretné futtatni és hibakeresést végezni, a következő szempontokat kell figyelembe vennie (tegyük fel, hogy az alkalmazást a következőképpen *http://localhost:1234*szeretné futtatni):
+Ha az Internet Explorerben futtató alkalmazást helyileg szeretné futtatni és hibakeresést végezni, a következő szempontokat kell figyelembe vennie (tegyük fel, hogy az alkalmazást a következőképpen szeretné futtatni *http://localhost:1234* ):
 
-- Az Internet Explorer "védett mód" nevű biztonsági mechanizmussal rendelkezik, amely megakadályozza, hogy a MSAL. js megfelelően működjön. A jelenségek között a bejelentkezés után a rendszer átirányítja a lapot http://localhost:1234/null.
+- Az Internet Explorer "védett mód" nevű biztonsági mechanizmussal rendelkezik, amely megakadályozza, hogy a MSAL.js megfelelően működjön. A jelenségek között a bejelentkezés után a rendszer átirányítja a lapot http://localhost:1234/null .
 
 - Az alkalmazás helyi futtatásához és hibakereséséhez le kell tiltania ezt a "védett módot". Ehhez:
 
@@ -51,7 +50,7 @@ Ha az Internet Explorerben futtató alkalmazást helyileg szeretné futtatni és
     1. Indítsa újra az Internet Explorert.
     1. Az alkalmazás futtatása és hibakeresése.
 
-Ha elkészült, állítsa vissza az Internet Explorer biztonsági beállításait.  Válassza a **Beállítások** -> **Internetbeállítások** -> **biztonsági** -> **alaphelyzetbe állítása az összes zónát alapértelmezett szintre**lehetőséget.
+Ha elkészült, állítsa vissza az Internet Explorer biztonsági beállításait.  Válassza a **Beállítások**  ->  **Internetbeállítások**  ->  **biztonsági**  ->  **alaphelyzetbe állítása az összes zónát alapértelmezett szintre**lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
-További információ a [MSAL. js az Internet Explorerben való használatakor felmerülő ismert problémákról](msal-js-use-ie-browser.md).
+További információ az [MSAL.js az Internet Explorerben való használatakor ismert problémákról](msal-js-use-ie-browser.md).

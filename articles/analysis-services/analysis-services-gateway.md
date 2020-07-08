@@ -8,10 +8,9 @@ ms.date: 01/21/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 648646b6f973762245c344cd2629a874a219b170
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76310152"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>Csatlakozás helyszíni adatforrásokhoz helyszíni adatátjáróval
@@ -58,7 +57,7 @@ Előfordulhat, hogy az adatterületének IP-címeit is meg kell adnia a tűzfalo
 
 A következő az átjáró által használt teljes tartománynevek.
 
-| Tartománynevek | Kimenő portok | Leírás |
+| Tartománynevek | Kimenő portok | Description |
 | --- | --- | --- |
 | *.powerbi.com |80 |A telepítő letöltéséhez használt HTTP-cím. |
 | *.powerbi.com |443 |HTTPS |
@@ -75,7 +74,7 @@ A következő az átjáró által használt teljes tartománynevek.
 
 ### <a name="forcing-https-communication-with-azure-service-bus"></a><a name="force-https"></a>HTTPS-kommunikáció kényszerítése az Azure Service Bus felé
 
-Az átjárót úgy kényszerítheti, hogy a közvetlen TCP helyett HTTPS használatával kommunikáljon Azure Service Busekkel. Ez azonban nagy mértékben csökkentheti a teljesítményt. Módosítsa a *Microsoft. PowerBI. DataMovement. pipeline. GatewayCore. dll. config* fájlt úgy, `AutoDetect` hogy `Https`az értéket a értékre módosítja. Ez a fájl általában a *C:\Program Files\On-premises adatátjáróban*található.
+Az átjárót úgy kényszerítheti, hogy a közvetlen TCP helyett HTTPS használatával kommunikáljon Azure Service Busekkel. Ez azonban nagy mértékben csökkentheti a teljesítményt. Módosíthatja a *Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config* fájlt úgy, hogy módosítja a értékét a következőre: `AutoDetect` `Https` . Ez a fájl általában a *C:\Program Files\On-premises adatátjáróban*található.
 
 ```
 <setting name="ServiceBusSystemConnectivityModeString" serializeAs="String">
@@ -87,7 +86,7 @@ Az átjárót úgy kényszerítheti, hogy a közvetlen TCP helyett HTTPS haszná
 
 A következő cikkek tartalmazzák a helyszíni adatátjáró általános tartalmát, amely az átjáró által támogatott összes szolgáltatásra vonatkozik:
 
-* [Helyszíni adatátjáró – gyakori kérdések](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)   
+* [Helyszíni adatátjáró – GYIK](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)   
 * [A helyszíni adatátjáró alkalmazás használata](https://docs.microsoft.com/data-integration/gateway/service-gateway-app)   
 * [Bérlőszintű felügyelet](https://docs.microsoft.com/data-integration/gateway/service-gateway-tenant-level-admin)
 * [Proxybeállítások konfigurálása](https://docs.microsoft.com/data-integration/gateway/service-gateway-proxy)   

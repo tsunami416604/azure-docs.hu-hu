@@ -12,10 +12,9 @@ ms.topic: article
 tags: connectors
 ms.date: 01/14/2020
 ms.openlocfilehash: ecb1049d64197f2a60438df7eedfb244907f7327
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76046291"
 ---
 # <a name="deploy-and-manage-azure-container-instances-by-using-azure-logic-apps"></a>Azure Container Instances üzembe helyezése és kezelése Azure Logic Apps használatával
@@ -51,10 +50,10 @@ Ha most ismerkedik a Logic apps szolgáltatással, tekintse át [a mi az Azure L
 
    * Az utolsó lépésben, amelyben hozzá szeretne adni egy műveletet, válassza az **új lépés**lehetőséget. 
 
-     – vagy –
+     -vagy-
 
    * A művelethez hozzáadni kívánt lépések között vigye az egérmutatót a lépések közötti nyíl fölé. 
-   Válassza ki a megjelenő pluszjelet (**+**), majd válassza a **művelet hozzáadása**lehetőséget.
+   Válassza ki a **+** megjelenő pluszjelet (), majd válassza a **művelet hozzáadása**lehetőséget.
 
 1. A keresőmezőbe írja be szűrőként a "Container instance" kifejezést. A műveletek listán válassza ki az Azure Container instance Connector kívánt műveletét.
 

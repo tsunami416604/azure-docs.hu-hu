@@ -11,10 +11,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 4a4d3a1480a852218e698862a509c4af45e49eb8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76714410"
 ---
 # <a name="project-lead-tasks-in-the-team-data-science-process"></a>Projekt-érdeklődői feladatok a csoportos adatelemzési folyamatban
@@ -57,7 +56,7 @@ A Tárházak klónozásához és a tartalmak módosításához a helyi gépen va
 
 Projekt Tárház létrehozása a csapat **MyTeam** -projektben:
 
-1. Nyissa meg a csapat projekt **-Összefoglalás** lapját a *https\//\<: kiszolgálónév>\</szervezet neve>\</csapat neve>*, például **https:\//dev.Azure.com/DataScienceUnit/MyTeam**, és válassza a **reposs** elemet a bal oldali navigációs sávon. 
+1. Nyissa meg a csapat projekt- **Összefoglalás** lapját *https \/ / \<server name> / \<organization name> / \<team name> :*, például **https: \/ /dev.Azure.com/DataScienceUnit/MyTeam**, és válassza a bal oldali navigációs menüben a **repók** lehetőséget. 
    
 1. Válassza ki az adattár nevét az oldal tetején, majd válassza az **új tárház** lehetőséget a legördülő menüből.
    
@@ -83,7 +82,7 @@ A Project-tárház feltöltése a Team template-tárház tartalmával:
    
    ![Importálás kiválasztása](./media/project-lead-tasks/project-leads-5-create-project-repo-4.png)
    
-1. A **git-tárház importálása** párbeszédpanelen válassza a **git** lehetőséget a **forrás típusaként**, majd adja meg a **TeamTemplate** -tárház URL-címét a **klónozási URL-cím**alatt. Az URL-cím *https\//\<: kiszolgálónév>/\<szervezet neve>/\<csapat neve>/_git/\<Team template adattár neve>*. Például: **https:\//dev.Azure.com/DataScienceUnit/MyTeam/_git/TeamTemplate**. 
+1. A **git-tárház importálása** párbeszédpanelen válassza a **git** lehetőséget a **forrás típusaként**, majd adja meg a **TeamTemplate** -tárház URL-címét a **klónozási URL-cím**alatt. Az URL-cím *https: \/ / \<server name> / \<organization name> / \<team name> /_git \<team template repository name> /*. Például: **https: \/ /dev.Azure.com/DataScienceUnit/MyTeam/_git/TeamTemplate**. 
    
 1. Kattintson az **Importálás** gombra. A Team template-tárház tartalmát a rendszer importálja a projekt adattárba. 
    

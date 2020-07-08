@@ -9,17 +9,16 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/15/2020
 ms.openlocfilehash: e50510f2420d69be37af584a2648a794e1561ee3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76157050"
 ---
 # <a name="run-mapreduce-jobs-using-hdinsight-net-sdk"></a>MapReduce feladatok futtatása HDInsight .NET SDK segítségével
 
 [!INCLUDE [mapreduce-selector](../../../includes/hdinsight-selector-use-mapreduce.md)]
 
-Ismerje meg, hogyan küldhet MapReduce-feladatokat a HDInsight .NET SDK-val. A HDInsight-fürtök egy jar-fájllal rendelkeznek, néhány MapReduce-mintával. A jar-fájl `/example/jars/hadoop-mapreduce-examples.jar`.  A minták egyike a **WordCount**. WordCount-feladatok elküldéséhez C#-konzol alkalmazást fejleszthet.  A művelet beolvassa a `/example/data/gutenberg/davinci.txt` fájlt, és kiírja az `/example/data/davinciwordcount`eredményeket a következőre:.  Ha újra szeretné futtatni az alkalmazást, meg kell tisztítania a kimeneti mappát.
+Ismerje meg, hogyan küldhet MapReduce-feladatokat a HDInsight .NET SDK-val. A HDInsight-fürtök egy jar-fájllal rendelkeznek, néhány MapReduce-mintával. A jar-fájl `/example/jars/hadoop-mapreduce-examples.jar` .  A minták egyike a **WordCount**. WordCount-feladatok elküldéséhez C#-konzol alkalmazást fejleszthet.  A művelet beolvassa a `/example/data/gutenberg/davinci.txt` fájlt, és kiírja az eredményeket a következőre: `/example/data/davinciwordcount` .  Ha újra szeretné futtatni az alkalmazást, meg kell tisztítania a kimeneti mappát.
 
 > [!NOTE]  
 > A cikkben szereplő lépéseket Windows-ügyfélről kell végrehajtani. A Linux, OS X vagy UNIX rendszerű ügyfél a kaptárral való használatához való használatáról a cikk tetején látható Tab választót használhatja.
@@ -36,13 +35,13 @@ A HDInsight .NET SDK .NET-ügyfélszoftvereket biztosít, amelyek megkönnyítik
 
 1. Indítsa el a Visual studiót, és hozzon létre egy C# konzolos alkalmazást.
 
-1. Lépjen az **eszközök** > **NuGet Package** > Manager**csomagkezelő konzolra** , és írja be a következő parancsot:
+1. Lépjen az **eszközök**  >  **NuGet Package**Manager  >  **csomagkezelő konzolra** , és írja be a következő parancsot:
 
     ```   
     Install-Package Microsoft.Azure.Management.HDInsight.Job
     ```
 
-1. Másolja az alábbi kódot a **program.cs**. `existingClusterName`Ezután szerkessze a kódot a következő értékek megadásával `existingClusterPassword`: `defaultStorageAccountName`, `defaultStorageAccountKey`,, `defaultStorageContainerName`és.
+1. Másolja az alábbi kódot a **program.cs**. Ezután szerkessze a kódot a következő értékek megadásával:,,, `existingClusterName` `existingClusterPassword` `defaultStorageAccountName` `defaultStorageAccountKey` és `defaultStorageContainerName` .
 
     ```csharp
     using System.Collections.Generic;
@@ -163,9 +162,9 @@ A HDInsight .NET SDK .NET-ügyfélszoftvereket biztosít, amelyek megkönnyítik
 
 1. Az alkalmazás futtatásához nyomja le az **F5** billentyűt.
 
-A művelet ismételt futtatásához módosítania kell a feladatok kimeneti mappájának nevét a mintában `/example/data/davinciwordcount`.
+A művelet ismételt futtatásához módosítania kell a feladatok kimeneti mappájának nevét a mintában `/example/data/davinciwordcount` .
 
-Amikor a feladatok sikeresen befejeződik, az alkalmazás kinyomtatja a kimeneti fájl `part-r-00000`tartalmát.
+Amikor a feladatok sikeresen befejeződik, az alkalmazás kinyomtatja a kimeneti fájl tartalmát `part-r-00000` .
 
 ## <a name="next-steps"></a>További lépések
 

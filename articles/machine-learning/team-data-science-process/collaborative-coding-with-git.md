@@ -11,10 +11,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 0708e395eff90ff5b889c05f0fd5e7a98205c5bc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76721897"
 ---
 # <a name="collaborative-coding-with-git"></a>Együttműködésen alapuló kódolás a Gittel
@@ -39,7 +38,7 @@ Létrehozhat egy új ágat is a következő git bash-parancs használatával Win
 git checkout -b <new branch name> <base branch name>
 
 ```
-Ha nem ad meg \<alapág-nevet>, az új ág a következőn `master`alapul:. 
+Ha nem ad meg \<base branch name> , az új ág a következőn alapul: `master` . 
 
 A munkaágra való váltáshoz futtassa a következő parancsot: 
 
@@ -47,7 +46,7 @@ A munkaágra való váltáshoz futtassa a következő parancsot:
 git checkout <working branch name>
 ```
 
-A munkaágra való váltás után megkezdheti a kód vagy a dokumentációs összetevők fejlesztését a munkaelem befejezéséhez. A `git checkout master` futó kapcsolók visszaállnak a `master` ágra.
+A munkaágra való váltás után megkezdheti a kód vagy a dokumentációs összetevők fejlesztését a munkaelem befejezéséhez. A futó kapcsolók visszaállnak `git checkout master` a `master` ágra.
 
 Célszerű létrehozni egy git ágat minden egyes felhasználói történet munkaelemhez. Ezután az egyes feladatok munkaelemekhez a felhasználói történet ág alapján hozhat létre ágat. Rendezze az ágakat egy olyan hierarchiában, amely a felhasználói történet – feladat kapcsolatnak felel meg, ha több ember dolgozik ugyanazon projekt különböző felhasználói történetén, vagy ugyanazon felhasználói történet különböző feladataiban. Az ütközések csökkentése érdekében az egyes csapattagok egy másik ág, illetve más kódok vagy egyéb összetevők esetében is dolgozhatnak egy adott ág megosztásakor. 
 
@@ -76,7 +75,7 @@ git push origin script
 
 Egy vagy több véglegesítés és leküldés után, amikor készen áll a jelenlegi munkaág alapágra való egyesítésére, létrehozhat és elküldhet egy *pull-kérelmet* az Azure reposban. 
 
-Az Azure DevOps-projekt főoldaláról válassza a bal oldali navigációs menüben a **Repos** > **pull-kérések** lehetőséget. Ezután válassza ki az **új pull-kérés** gombok egyikét, vagy a **pull-kérelem létrehozása** hivatkozást.
+Az Azure DevOps-projekt főoldaláról válassza a bal oldali navigációs menüben a **Repos**  >  **pull-kérések** lehetőséget. Ezután válassza ki az **új pull-kérés** gombok egyikét, vagy a **pull-kérelem létrehozása** hivatkozást.
 
 ![6](./media/collaborative-coding-with-git/6-spring-create-pull-request.png)
 
@@ -98,7 +97,7 @@ Győződjön meg arról, hogy a kérelem **készként**van megjelölve.
 
 ![11](./media/collaborative-coding-with-git/11-spring-merge-pullrequest.png)
 
-Ha a bal oldali navigációs sávon visszavált a **repóba** , láthatja, hogy az `script` ág törlése óta átváltotta a fő ágat.
+Ha a bal oldali navigációs sávon visszavált a **repóba** , láthatja, hogy az ág törlése óta átváltotta a fő ágat `script` .
 
 ![12](./media/collaborative-coding-with-git/12-spring-branch-deleted.png)
 

@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 0877161f8d668141c8efb7c06b10643bf209341f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76262962"
 ---
 # <a name="handling-external-events-in-durable-functions-azure-functions"></a>Külső események Durable Functionsban való feldolgozása (Azure Functions)
@@ -20,9 +19,9 @@ A Orchestrator függvények megvárhatják és megfigyelheti a külső eseménye
 
 ## <a name="wait-for-events"></a>Várakozás az eseményekre
 
-A `WaitForExternalEvent` koordináló `waitForExternalEvent` [eseményindító kötésének](durable-functions-bindings.md#orchestration-trigger) (.net) és (JavaScript) metódusai lehetővé teszik, hogy egy Orchestrator függvény aszinkron módon várjon, és figyelje a külső eseményt. A Listening Orchestrator függvény deklarálja az esemény *nevét* és a fogadni kívánt *adatok alakját* .
+A koordináló `WaitForExternalEvent` `waitForExternalEvent` [eseményindító kötésének](durable-functions-bindings.md#orchestration-trigger) (.net) és (JavaScript) metódusai lehetővé teszik, hogy egy Orchestrator függvény aszinkron módon várjon, és figyelje a külső eseményt. A Listening Orchestrator függvény deklarálja az esemény *nevét* és a fogadni kívánt *adatok alakját* .
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("BudgetApproval")]
@@ -42,7 +41,7 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> Az előző C#-kód Durable Functions 2. x. Durable Functions 1. x esetén a helyett a `DurableOrchestrationContext` `IDurableOrchestrationContext`értéket kell használnia. A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
+> Az előző C#-kód Durable Functions 2. x. Durable Functions 1. x esetén a helyett a értéket kell használnia `DurableOrchestrationContext` `IDurableOrchestrationContext` . A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -65,7 +64,7 @@ Az előző példa egy adott eseményt figyel, és a fogadásakor végrehajtja a 
 
 Egyszerre több eseményt is megfigyelheti, például az alábbi példához hasonlóan, amely a három lehetséges esemény értesítésének egyikét várja.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("Select")]
@@ -93,7 +92,7 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> Az előző C#-kód Durable Functions 2. x. Durable Functions 1. x esetén a helyett a `DurableOrchestrationContext` `IDurableOrchestrationContext`értéket kell használnia. A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
+> Az előző C#-kód Durable Functions 2. x. Durable Functions 1. x esetén a helyett a értéket kell használnia `DurableOrchestrationContext` `IDurableOrchestrationContext` . A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -120,7 +119,7 @@ module.exports = df.orchestrator(function*(context) {
 
 Az előző példa a több esemény *bármelyikét* figyeli. Az *összes* eseményre várni is lehet.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("NewBuildingPermit")]
@@ -141,9 +140,9 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> Az előző kód Durable Functions 2. x. Durable Functions 1. x esetén a helyett a `DurableOrchestrationContext` `IDurableOrchestrationContext`értéket kell használnia. A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
+> Az előző kód Durable Functions 2. x. Durable Functions 1. x esetén a helyett a értéket kell használnia `DurableOrchestrationContext` `IDurableOrchestrationContext` . A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
 
-A .NET-ben, ha az esemény adattartalma nem konvertálható a `T`várt típusba, kivétel keletkezik.
+A .NET-ben, ha az esemény adattartalma nem konvertálható a várt típusba `T` , kivétel keletkezik.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -169,15 +168,15 @@ module.exports = df.orchestrator(function*(context) {
 `WaitForExternalEvent`határozatlan ideig vár néhány bemenetre.  A Function alkalmazás a várakozás közben biztonságosan eltávolítható a memóriából. Ha és ha egy esemény érkezik ehhez a beszerelési példányhoz, a rendszer automatikusan felébreszti az eseményt, és azonnal feldolgozza azt.
 
 > [!NOTE]
-> Ha a Function alkalmazás a használati tervet használja, akkor nem számítunk fel számlázási díjat, amikor egy Orchestrator-függvény a `WaitForExternalEvent` (.net) vagy `waitForExternalEvent` (JavaScript) feladatra vár, függetlenül attól, hogy mennyi ideig vár.
+> Ha a Function alkalmazás a használati tervet használja, akkor nem számítunk fel számlázási díjat, amikor egy Orchestrator-függvény a `WaitForExternalEvent` (.net) vagy (JavaScript) feladatra vár, függetlenül attól `waitForExternalEvent` , hogy mennyi ideig vár.
 
 ## <a name="send-events"></a>Események küldése
 
-A `RaiseEventAsync` koordinációs [ügyfél kötésének](durable-functions-bindings.md#orchestration-client) (.net) vagy `WaitForExternalEvent` `waitForExternalEvent` `raiseEvent` (JavaScript) metódusa elküldi a (.net) vagy a (JavaScript) által várt eseményeket.  A `RaiseEventAsync` metódus a *EventName* és a *eventData* paraméterként veszi igénybe. Az eseménynek JSON-szerializálható kell lennie.
+A `RaiseEventAsync` `raiseEvent` koordinációs [ügyfél kötésének](durable-functions-bindings.md#orchestration-client) (.net) vagy (JavaScript) metódusa elküldi a `WaitForExternalEvent` (.net) vagy a `waitForExternalEvent` (JavaScript) által várt eseményeket.  A `RaiseEventAsync` metódus a *eventName* és a *eventData* paraméterként veszi igénybe. Az eseménynek JSON-szerializálható kell lennie.
 
 Az alábbi példa egy üzenetsor által aktivált függvényt mutat be, amely a "jóváhagyás" eseményt küld egy Orchestrator függvény példányára. Az előkészítési példány azonosítója az üzenetsor-üzenet törzsében található.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("ApprovalQueueProcessor")]
@@ -190,7 +189,7 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> Az előző C#-kód Durable Functions 2. x. Durable Functions 1. x esetén `OrchestrationClient` az attribútum helyett `DurableClient` attribútumot kell használnia, és a `DurableOrchestrationClient` paraméter típusát kell használnia a helyett. `IDurableOrchestrationClient` A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
+> Az előző C#-kód Durable Functions 2. x. Durable Functions 1. x esetén az attribútum `OrchestrationClient` helyett attribútumot kell használnia `DurableClient` , és a paraméter típusát kell használnia a `DurableOrchestrationClient` helyett `IDurableOrchestrationClient` . A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 

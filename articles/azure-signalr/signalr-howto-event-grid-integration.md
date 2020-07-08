@@ -8,17 +8,16 @@ ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: chenyl
 ms.openlocfilehash: a76c9aaabf984723e2b60a7cd42425c9b29c916a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76710829"
 ---
 # <a name="how-to-send-events-from-azure-signalr-service-to-event-grid"></a>Események küldése az Azure SignalR Service-ből az Event Gridbe
 
 A Azure Event Grid egy teljes körűen felügyelt esemény-útválasztási szolgáltatás, amely a pub-sub modell használatával egységes esemény-felhasználást biztosít. Ebben az útmutatóban az Azure CLI használatával hozzon létre egy Azure Signaler szolgáltatást, fizessen elő a kapcsolódási eseményekre, majd helyezzen üzembe egy minta webalkalmazást az események fogadásához. Végezetül kapcsolódhat és leválaszthat, és megtekintheti az esemény hasznos adatait a minta alkalmazásban.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot][azure-account] .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot][azure-account].
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -141,7 +140,7 @@ Az előfizetés befejezésekor a következőhöz hasonló kimenetnek kell megjel
 
 ## <a name="trigger-registry-events"></a>Beállításjegyzék-események kiváltása
 
-Váltson a szolgáltatás módba, `Serverless Mode` és állítson be egy ügyfélkapcsolatot a Signaler szolgáltatáshoz. A kiszolgáló nélküli [mintát](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/Serverless) hivatkozásként is elvégezheti.
+Váltson a szolgáltatás módba, `Serverless Mode` és állítson be egy ügyfélkapcsolatot a signaler szolgáltatáshoz. A kiszolgáló nélküli [mintát](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/Serverless) hivatkozásként is elvégezheti.
 
 ```bash
 git clone git@github.com:aspnet/AzureSignalR-samples.git
@@ -162,7 +161,7 @@ dotnet run
 
 ## <a name="view-registry-events"></a>Beállításjegyzék-események megtekintése
 
-Ezzel csatlakoztatta a-ügyfelet a Signaler szolgáltatáshoz. Navigáljon a Event Grid Viewer webalkalmazáshoz, és egy `ClientConnectionConnected` eseményt kell megjelennie. Ha leállítja az ügyfelet, akkor egy `ClientConnectionDisconnected` eseményt is láthat.
+Ezzel csatlakoztatta a-ügyfelet a Signaler szolgáltatáshoz. Navigáljon a Event Grid Viewer webalkalmazáshoz, és egy eseményt kell megjelennie `ClientConnectionConnected` . Ha leállítja az ügyfelet, akkor egy eseményt is láthat `ClientConnectionDisconnected` .
 
 <!-- LINKS - External -->
 [azure-account]: https://azure.microsoft.com/free/?WT.mc_id=A261C142F

@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/16/2019
 ms.openlocfilehash: 916c54c3739d1164e4e9c1db67aa1f4e0dbd0c6c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76157791"
 ---
 # <a name="migrate-azure-hdinsight-36-apache-storm-to-hdinsight-40-apache-spark"></a>Telepítse át az Azure HDInsight 3,6 Apache Storm HDInsight 4,0 Apache Spark
@@ -39,7 +38,7 @@ Az Apache Storm különböző szinteken biztosít garantált üzenetfeldolgozás
 |---|---|---|---|
 |**Esemény-feldolgozási garancia**|Legalább egyszer <br> Pontosan egyszer (Trident) |[Pontosan egyszer](https://spark.apache.org/docs/latest/streaming-programming-guide.html)|[Pontosan egyszer](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html)|
 |**Feldolgozási modell**|Valós idejű <br> Micro batch (Trident) |Micro batch |Micro batch |
-|**Esemény időpontjának támogatása**|[Igen](https://storm.apache.org/releases/2.0.0/Windowing.html)|Nem|[Igen](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html)|
+|**Esemény időpontjának támogatása**|[Igen](https://storm.apache.org/releases/2.0.0/Windowing.html)|No|[Igen](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html)|
 |**Nyelvek**|Java stb.|Scala, Java, Python|Python, R, Scala, Java, SQL|
 
 ### <a name="spark-streaming-vs-spark-structured-streaming"></a>Spark streaming vs Spark strukturált streaming
@@ -57,7 +56,7 @@ A Storm olyan modellt biztosít, amely minden egyes eseményt feldolgoz. Ez azt 
 
 A Storm-topológiák több összetevőből állnak, amelyek egy irányított aciklikus gráfba (DAG) vannak rendezve. Az adatáramlás a gráf összetevői között zajlik. Minden összetevőbe egy vagy több stream érkezik be, valamint egy vagy több streamet sugároz.
 
-|Összetevő |Leírás |
+|Összetevő |Description |
 |---|---|
 |Spout|Az adathalmazt egy topológiába hozza. Egy vagy több streamet sugároznak a topológiába.|
 |Bolt|A kiöntő vagy más boltokból kibocsátott adatfolyamokat használja fel. A boltok opcionálisan streameket is sugározhatnak a topológiába. A boltok felelősek az adatok külső szolgáltatásokba vagy tárolókba, például HDFS-, Kafka- vagy HBase-tárolókba történő kiírásáért.|
@@ -67,7 +66,7 @@ A Storm-topológiák több összetevőből állnak, amelyek egy irányított aci
 
 A Storm a következő három démonból áll, amelyek megőrzik a Storm-fürt működését.
 
-|Démon |Leírás |
+|Démon |Description |
 |---|---|
 |Nimbus|A Hadoop JobTracker hasonlóan a kód a fürt körének terjesztése, valamint a feladatok gépekhez és a hibák figyeléséhez való hozzárendelésének feladata.|
 |Zookeeper|A fürt koordinálásához használatos.|

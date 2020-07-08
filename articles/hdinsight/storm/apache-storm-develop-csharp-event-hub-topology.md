@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/14/2020
 ms.openlocfilehash: 85b7093df99127b690c51e8f2f28d18e3f5f3c95
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75981643"
 ---
 # <a name="process-events-from-azure-event-hubs-with-apache-storm-on-hdinsight-c"></a>Események feldolgozása az Azure Event Hubs és az Apache Storm on HDInsight (C#) használatával
@@ -35,7 +34,7 @@ A C#-topológiák a .NET 4,5-es megcélzására is alkalmasak.
 
 ## <a name="how-to-work-with-event-hubs"></a>A Event Hubs használata
 
-A Microsoft olyan Java-összetevőket biztosít, amelyek használatával a Storm-topológiából Event Hubs lehet kommunikálni. Az ezen összetevők HDInsight 3,6 kompatibilis verzióját tartalmazó Java Archive-(JAR-) fájl megtalálható a következő helyen: [https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar](https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar).
+A Microsoft olyan Java-összetevőket biztosít, amelyek használatával a Storm-topológiából Event Hubs lehet kommunikálni. Az ezen összetevők HDInsight 3,6 kompatibilis verzióját tartalmazó Java Archive-(JAR-) fájl megtalálható a következő helyen: [https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar](https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar) .
 
 > [!IMPORTANT]  
 > Az összetevők Java nyelven íródnak, így a C#-topológiából egyszerűen használhatók.
@@ -113,9 +112,9 @@ Az ebben a cikkben létrehozott projekt teljes verzióját letöltheti a [github
 
 ## <a name="download-the-event-hubs-components"></a>A Event Hubs-összetevők letöltése
 
-Töltse le a Event Hubs kiöntő és a [https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar](https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar)bolt összetevőt innen:.
+Töltse le a Event Hubs kiöntő és a bolt összetevőt innen: [https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar](https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar) .
 
-Hozzon létre egy `eventhubspout`nevű könyvtárat, és mentse a fájlt a könyvtárba.
+Hozzon létre egy nevű könyvtárat `eventhubspout` , és mentse a fájlt a könyvtárba.
 
 ## <a name="configure-event-hubs"></a>Event Hubs konfigurálása
 
@@ -123,7 +122,7 @@ Event Hubs a példa adatforrása. Használja a [Event Hubs első lépéseinek](.
 
 1. Az Event hub létrehozása után tekintse meg a **EventHub** beállításait a Azure Portalban, és válassza a **megosztott hozzáférési házirendek**elemet. Válassza a **+ Hozzáadás** lehetőséget a következő szabályzatok létrehozásához:
 
-   | Name (Név) | Engedélyek |
+   | Name | Engedélyek |
    | --- | --- |
    | író |Küldés |
    | olvasó |Figyelés |
@@ -138,7 +137,7 @@ Event Hubs a példa adatforrása. Használja a [Event Hubs első lépéseinek](.
 
 2. Töltse le a megoldást a [eventhub-Storm-Hybrid-](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub)ból.
 
-3. Nyissa meg a **EventHubExample. SLN**. A **EventHubWriter** projektben nyissa meg az **app. config** fájlt. Használja a korábban konfigurált Event hub információit a következő kulcsok értékének kitöltéséhez:
+3. Nyissa meg a **EventHubExample. SLN**. A **EventHubWriter** projektben nyissa meg a **App.config** fájlt. Használja a korábban konfigurált Event hub információit a következő kulcsok értékének kitöltéséhez:
 
    | Kulcs | Érték |
    | --- | --- |
@@ -148,13 +147,13 @@ Event Hubs a példa adatforrása. Használja a [Event Hubs első lépéseinek](.
    | EventHubName |Az Event hub neve. |
    | EventHubPartitionCount |Az Event hub partícióinak száma. |
 
-4. Mentse és zárda be az **app. config** fájlt.
+4. Mentse és zárjuk be a **App.config** fájlt.
 
 ## <a name="configure-the-eventhubreader"></a>A EventHubReader konfigurálása
 
 1. Nyissa meg a **EventHubReader** projektet.
 
-2. Nyissa meg az **app. config** fájlt a **EventHubReader**. Használja a korábban konfigurált Event hub információit a következő kulcsok értékének kitöltéséhez:
+2. Nyissa meg a **EventHubReader** **App.config** -fájlját. Használja a korábban konfigurált Event hub információit a következő kulcsok értékének kitöltéséhez:
 
    | Kulcs | Érték |
    | --- | --- |
@@ -164,7 +163,7 @@ Event Hubs a példa adatforrása. Használja a [Event Hubs első lépéseinek](.
    | EventHubName |Az Event hub neve. |
    | EventHubPartitionCount |Az Event hub partícióinak száma. |
 
-3. Mentse és zárda be az **app. config** fájlt.
+3. Mentse és zárjuk be a **App.config** fájlt.
 
 ## <a name="deploy-the-topologies"></a>A topológiák üzembe helyezése
 

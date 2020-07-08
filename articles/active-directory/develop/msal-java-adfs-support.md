@@ -14,10 +14,9 @@ ms.author: sagonzal
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: 3d834a8d1524595304c22fed9897094622dfd93f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76696214"
 ---
 # <a name="active-directory-federation-services-support-in-msal-for-java"></a>Active Directory összevonási szolgáltatások (AD FS) támogatás a MSAL Javához
@@ -32,7 +31,7 @@ Az ebben az esetben [használt szolgáltató a](msal-client-application-configur
 
 ## <a name="acquire-a-token-interactively-for-a-federated-user"></a>Jogkivonat interaktív beszerzése egy összevont felhasználó számára
 
-A (z `ConfidentialClientApplication.AcquireToken()` ) `PublicClientApplication.AcquireToken()` vagy `AuthorizationCodeParameters` a `DeviceCodeParameters`vagy a (z) hívásakor a felhasználói élmény általában:
+A (z `ConfidentialClientApplication.AcquireToken()` `PublicClientApplication.AcquireToken()` ) vagy a vagy a (z) hívásakor `AuthorizationCodeParameters` `DeviceCodeParameters` a felhasználói élmény általában:
 
 1. A felhasználó megadja a fiók AZONOSÍTÓját.
 2. Az Azure AD röviden megjeleníti a "a szervezet oldalát", a felhasználó pedig átirányítja az identitás-szolgáltató bejelentkezési lapjára. A bejelentkezési oldal általában a szervezet emblémájának megfelelően van testreszabva.
@@ -44,7 +43,7 @@ Az összevont forgatókönyvben támogatott AD FS verziók a következők:
 
 ## <a name="acquire-a-token-via-username-and-password"></a>Token beszerzése Felhasználónév és jelszó használatával
 
-Ha `ConfidentialClientApplication.AcquireToken()` a vagy `PublicClientApplication.AcquireToken()` a vagy `IntegratedWindowsAuthenticationParameters` `UsernamePasswordParameters`a használatával szerez be tokent, a MSAL for Java beolvassa az identitás-szolgáltatót a Felhasználónév alapján. A MSAL for Java egy [SAML 1,1 token](reference-saml-tokens.md) -tokent kap az identitás-szolgáltatótól, amelyet aztán az Azure ad-nek ad vissza, amely visszaadja a JSON web token (JWT).
+Ha a vagy a vagy a használatával szerez be tokent `ConfidentialClientApplication.AcquireToken()` `PublicClientApplication.AcquireToken()` , a MSAL for Java beolvassa `IntegratedWindowsAuthenticationParameters` `UsernamePasswordParameters` az identitás-szolgáltatót a Felhasználónév alapján. A MSAL for Java egy [SAML 1,1 token](reference-saml-tokens.md) -tokent kap az identitás-szolgáltatótól, amelyet aztán az Azure ad-nek ad vissza, amely visszaadja a JSON web token (JWT).
 
 ## <a name="next-steps"></a>További lépések
 

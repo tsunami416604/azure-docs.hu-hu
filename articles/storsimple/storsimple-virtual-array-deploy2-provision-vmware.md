@@ -9,10 +9,9 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 5f5ded3faec3a080022eea70de2cca5d27529c4d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76272097"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-vmware"></a>StorSimple virtuális tömb üzembe helyezése VMware-ben
@@ -95,7 +94,7 @@ A következő lépések végrehajtásával helyezzen üzembe egy virtuális eszk
 7. Megjelenik a **Datastore Browser** (Adattártallózó) ablak.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image6.png)
-8. Az eszköztáron kattintson ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image7.png) az ikonra egy új mappa létrehozásához. Adja meg a mappa nevét, és jegyezze fel. Ezt a mappanevet fogja használni később, amikor létrehoz egy virtuális gépet (ajánlott eljárás). Kattintson az **OK** gombra.
+8. Az eszköztáron kattintson az ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image7.png) ikonra egy új mappa létrehozásához. Adja meg a mappa nevét, és jegyezze fel. Ezt a mappanevet fogja használni később, amikor létrehoz egy virtuális gépet (ajánlott eljárás). Kattintson az **OK** gombra.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image8.png)
 9. Az új mappa megjelenik a **Datastore Browser** (Adattártallózó) bal oldali panelén.

@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: kgremban
 ms.openlocfilehash: 23fbbd87230ea0a0147dc9d90c77729f4d531e98
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76511144"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>Modbus TCP-eszközök csatlakoztatása IoT Edge Device Gateway-átjárón keresztül
@@ -33,7 +32,7 @@ A cikk azt feltételezi, hogy Modbus TCP protokollt használ. További informác
 
 ## <a name="prepare-a-modbus-container"></a>Modbus-tároló előkészítése
 
-Ha tesztelni kívánja a Modbus-átjáró funkcionalitását, a Microsoft rendelkezik egy mintamodullal, amelyet használhat. A modult az Azure Marketplace-en, a [Modbus](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot.edge-modbus?tab=Overview)-ban vagy a rendszerkép URI- `mcr.microsoft.com/azureiotedge/modbus:1.0`ja segítségével érheti el.
+Ha tesztelni kívánja a Modbus-átjáró funkcionalitását, a Microsoft rendelkezik egy mintamodullal, amelyet használhat. A modult az Azure Marketplace-en, a [Modbus](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot.edge-modbus?tab=Overview)-ban vagy a rendszerkép URI-ja segítségével érheti el `mcr.microsoft.com/azureiotedge/modbus:1.0` .
 
 Ha saját maga szeretné létrehozni a modult, és testre szeretné szabni a környezetében, akkor a GitHubon van egy nyílt forráskódú [Azure IoT Edge Modbus modul](https://github.com/Azure/iot-edge-modbus) -projekt. Kövesse a projektben található útmutatót saját tárolórendszerkép létrehozásához. A tárolók rendszerképének létrehozásával kapcsolatban lásd [: C#-modulok fejlesztése a Visual Studióban](how-to-visual-studio-develop-csharp-module.md) , illetve [modulok fejlesztése a Visual Studio Code-ban](how-to-vs-code-develop-module.md). Ezek a cikkek útmutatást nyújtanak az új modulok létrehozásához és a tároló-lemezképek beállításjegyzékbe való közzétételéhez.
 
@@ -54,7 +53,7 @@ Ez a szakasz végigvezeti a Microsoft minta-Modbus moduljának a IoT Edge eszkö
    3. A modul automatikusan konfigurálva van a IoT Hubhoz, és megjelenik a IoT Edge modulok listájában. Az útvonalak is automatikusan konfigurálva vannak. Válassza az **Áttekintés + létrehozás** lehetőséget.
    4. Tekintse át a központi telepítési jegyzéket, és válassza a **Létrehozás**lehetőséget.
 
-5. Válassza ki a Modbus modult `ModbusTCPModule`, majd a listából, és válassza ki a **modul Twin beállítások** lapot. A modulhoz tartozó, dupla kívánt tulajdonságok esetében a szükséges JSON automatikusan ki van töltve.
+5. Válassza ki a Modbus modult, `ModbusTCPModule` majd a listából, és válassza ki a **modul Twin beállítások** lapot. A modulhoz tartozó, dupla kívánt tulajdonságok esetében a szükséges JSON automatikusan ki van töltve.
 
 6. Keresse meg a **SlaveConnection** tulajdonságot a JSON-ban, és állítsa be az értékét a Modbus-eszköz IPv4-címeként.
 

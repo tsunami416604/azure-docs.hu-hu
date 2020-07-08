@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 06/10/2019
 ms.author: juliako
 ms.openlocfilehash: c39aded55fe36cb130459a4f6f119f872b1adbc4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76514323"
 ---
 # <a name="subclip-a-video-when-encoding-with-media-services---rest"></a>Videó kivágása Media Services-REST kódolással
@@ -39,7 +38,7 @@ A jelen témakörben ismertetett lépések végrehajtásához a következőket k
 
 ## <a name="create-a-subclipping-job"></a>Kivágási feladatok létrehozása
 
-1. A letöltött Poster-gyűjteményben válassza az **átalakítások és feladatok** -> **létrehozási feladat az alárendelt levágással**lehetőséget.
+1. A letöltött Poster-gyűjteményben válassza az **átalakítások és feladatok**  ->  **létrehozási feladat az alárendelt levágással**lehetőséget.
     
     A **put** -kérés így néz ki:
     

@@ -17,10 +17,9 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 0104547a432f7f78d74731e11926bcd82088cef7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76264033"
 ---
 # <a name="enterprise-push-architectural-guidance"></a>Útmutató a vállalati leküldési architektúrákhoz
@@ -234,7 +233,7 @@ A teljes mintakód a [Notification hub-mintáknál]érhető el. Három összetev
 
     ![][3]
 
-    g. Konfigurálja úgy a feladatot, hogy "folyamatosan fusson", hogy amikor bejelentkezik a [Azure Portalba] , a következőhöz hasonlóan kell megjelennie:
+    : Konfigurálja úgy a feladatot, hogy "folyamatosan fusson", hogy amikor bejelentkezik a [Azure Portalba] , a következőhöz hasonlóan kell megjelennie:
 
     ![][4]
 
@@ -244,7 +243,7 @@ A teljes mintakód a [Notification hub-mintáknál]érhető el. Három összetev
 
     b. Győződjön meg arról, hogy az alkalmazás engedélyezve van a Toast-értesítések fogadásához.
 
-    c. Győződjön meg arról, hogy a következő Notification Hubs regisztrációs kódot hívja meg az alkalmazás indításakor (a és `HubName` `DefaultListenSharedAccessSignature` az értékek lecserélése után:
+    c. Győződjön meg arról, hogy a következő Notification Hubs regisztrációs kódot hívja meg az alkalmazás indításakor (a és az értékek lecserélése után `HubName` `DefaultListenSharedAccessSignature` :
 
     ```csharp
     private async void InitNotificationsAsync()
@@ -291,4 +290,4 @@ A teljes mintakód a [Notification hub-mintáknál]érhető el. Három összetev
 [Service Bus pub/sub programozás]: https://azure.microsoft.com/documentation/articles/service-bus-dotnet-how-to-use-topics-subscriptions/
 [Azure-Webjobs]: ../app-service/webjobs-create.md
 [Notification Hubs – univerzális Windows-oktatóanyag]: https://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
-[Azure Portal]: https://portal.azure.com/
+[Azure Portalra]: https://portal.azure.com/

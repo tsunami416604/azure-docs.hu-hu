@@ -14,17 +14,16 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: juliako
 ms.openlocfilehash: f8fe1b13db6473e80f0d7cdc638b775a0c8062c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76513501"
 ---
 # <a name="migrate-from-azure-media-encoder-to-media-encoder-standard"></a>Áttelepítés Azure Media Encoderról Media Encoder Standard
 
 Ez a cikk azt ismerteti, hogyan lehet áttelepíteni a régi Azure Media Encoder (AME) adathordozó-processzorról (amely kivonásra kerül) a Media Encoder Standard Media Processor szolgáltatásba. A nyugdíjazási dátumokért tekintse meg ezt a [régi összetevőket](legacy-components.md) ismertető témakört.
 
-A fájlok az AME-val való kódolásakor az ügyfelek általában egy megnevezett `H264 Adaptive Bitrate MP4 Set 1080p`előre definiált karakterláncot használnak, például:. A Migrálás érdekében a kódot frissíteni kell, hogy a **Media Encoder standard** adathordozó-processzort a ame helyett használja, és az egyik egyenértékű [rendszer-előállítson](media-services-mes-presets-overview.md) , például `H264 Multiple Bitrate 1080p`:. 
+A fájlok az AME-val való kódolásakor az ügyfelek általában egy megnevezett előre definiált karakterláncot használnak, például: `H264 Adaptive Bitrate MP4 Set 1080p` . A Migrálás érdekében a kódot frissíteni kell, hogy a **Media Encoder standard** adathordozó-processzort a ame helyett használja, és az egyik egyenértékű [rendszer-előállítson](media-services-mes-presets-overview.md) , például: `H264 Multiple Bitrate 1080p` . 
 
 ## <a name="migrating-to-media-encoder-standard"></a>Áttelepítés Media Encoder Standardre
 

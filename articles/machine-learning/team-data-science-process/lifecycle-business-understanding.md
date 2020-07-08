@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: a7aaed519f8f97a9be77a263568aeed5257c16d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76710332"
 ---
 # <a name="the-business-understanding-stage-of-the-team-data-science-process-lifecycle"></a>A csoportos adatelemzési folyamat életciklusának üzleti megértési szakasza
@@ -74,7 +73,7 @@ Azonosítsa azokat az adatforrásokat, amelyek ismert példákat tartalmaznak az
 
 Előfordulhat például, hogy a meglévő rendszereknek további típusú adatokat kell összegyűjteniük és naplóznia a probléma megoldásához és a projekt céljainak eléréséhez. Ebben az esetben előfordulhat, hogy külső adatforrásokat szeretne keresni, vagy frissítenie kell a rendszereket az új adatok gyűjtéséhez.
 
-## <a name="artifacts"></a>Összetevők
+## <a name="artifacts"></a>Artifacts
 Ebben a szakaszban a következő termékek szerepelnek:
 
    * [Charter-dokumentum](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Charter.md): a TDSP-projekt szerkezetének definíciójában szabványos sablon szerepel. A charter dokumentum egy élő dokumentum. A sablon frissítése a projekt során az új felfedezések és az üzleti követelmények változása révén végezhető el. A legfontosabb, hogy megismételje a dokumentumot, és részletesebben adja meg a felderítési folyamat előrehaladását. Tartsa meg az ügyfelet és a többi érintett felet a módosítások elvégzésében, és egyértelműen tájékoztassa a módosításokat.  

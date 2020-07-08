@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
 ms.openlocfilehash: 38144d5df04427a82989b78843466ecd55386196
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76312260"
 ---
 # <a name="evaluate-recommender"></a>Ajánló értékelése
@@ -65,7 +64,7 @@ A prediktív minősítések kiértékelése során a pontszámmal rendelkező ad
 -   A harmadik oszlop a megfelelő felhasználói elemek minősítéseit tartalmazza.  
   
 > [!IMPORTANT] 
-> A sikeres értékeléshez az oszlopnevek a következőknek kell `User`lenniük `Item`:, `Rating`és, illetve.  
+> A sikeres értékeléshez az oszlopnevek a következőknek kell lenniük:, `User` `Item` és `Rating` , illetve.  
   
 A kiértékeléshez az ajánló összehasonlítja a "alapvető igazság" adatkészletben szereplő minősítéseket a pontozásos adatkészlet előrejelzett minősítésével. Ezután kiszámítja az átlagos abszolút hibát (MAE) és a legfelső szintű, négyzetes hibát (GYÖKÁTLAGOS).
 
@@ -81,7 +80,7 @@ Amikor kiértékeli az elemek javaslatait, használjon egy pontozásos adatkész
 Az adatkészlet csatlakoztatása előtt azt javasoljuk, hogy rendezze az adatkészletet úgy, hogy a legfontosabb elemek először is megtörténjenek.  
 
 > [!IMPORTANT] 
-> Az ajánló működésének kiértékeléséhez az oszlopnevek a következőknek `User`kell `Item 1`lenniük `Item 2` `Item 3` :,, stb.  
+> Az ajánló működésének kiértékeléséhez az oszlopnevek a következőknek kell lenniük:,, stb `User` `Item 1` `Item 2` `Item 3` .  
   
 Az ajánló kiértékelésével kiszámítja a normalizált diszkontált összesített nyereség (NDCG) átlagát, és visszaadja a kimeneti adatkészletben.  
   

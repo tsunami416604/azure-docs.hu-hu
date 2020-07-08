@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: raynew
 ms.openlocfilehash: aa9d776df50306ab1705426c923413b5a5d545a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68717350"
 ---
 # <a name="monitor-site-recovery"></a>A Site Recovery monitorozása
@@ -51,7 +50,7 @@ A **replikált elemekben**figyelje a tárolóban lévő összes olyan gép álla
 Kifogástalan | A replikáció általában folyamatban van. A rendszer nem észlel hibát vagy figyelmeztetési tüneteket.
 Figyelmeztetés | A rendszer egy vagy több olyan figyelmeztetési tünetet észlel, amely hatással lehet a replikációra.
 Kritikus | Egy vagy több kritikus replikációs hiba tünetei észlelhetők.<br/><br/> Ezek a hibák általában a replikálás során beragadtak, vagy az adatváltozási sebességnek megfelelően nem haladnak előre.
-Nem alkalmazható | Azok a kiszolgálók, amelyeknek jelenleg nem várható a replikálásuk. Ilyenek lehetnek a feladatátvétel alatt álló gépek.
+Nem értelmezhető | Azok a kiszolgálók, amelyeknek jelenleg nem várható a replikálásuk. Ilyenek lehetnek a feladatátvétel alatt álló gépek.
 
 ## <a name="monitor-test-failovers"></a>Feladatátvételi teszt figyelése
 
@@ -64,7 +63,7 @@ A **feladatátvételi teszt sikeressége**során figyelje a tárolóban lévő g
 --- | ---
 Tesztelés javasolt | Azok a gépek, amelyeknek nincs feladatátvételi tesztje, mivel a védelem engedélyezve volt.
 Sikeresen elvégezve | Gépek sikeres feladatátvételi teszttel.
-Nem alkalmazható | Azok a gépek, amelyek jelenleg nem jogosultak feladatátvételi tesztre. A feladatátvételt nem igénylő gépek például a kezdeti replikálási/tesztelési feladatátvétel/feladatátvétel folyamatban van.
+Nem értelmezhető | Azok a gépek, amelyek jelenleg nem jogosultak feladatátvételi tesztre. A feladatátvételt nem igénylő gépek például a kezdeti replikálási/tesztelési feladatátvétel/feladatátvétel folyamatban van.
 
 ## <a name="monitor-configuration-issues"></a>Konfigurációs problémák figyelése
 
@@ -109,12 +108,12 @@ Az **infrastruktúra nézetben**figyelje a replikációban részt vevő infrastr
 
     **Forgatókönyv** | **Állapot**  | **Elérhető a nézet?**
     --- |--- | ---
-    **Replikáció a helyszíni helyek között** | Minden állam | Nem 
-    **Azure-beli virtuális gépek Azure-régiók közötti replikációja**  | Replikáció engedélyezve/kezdeti replikálás folyamatban | Igen
-    **Azure-beli virtuális gépek Azure-régiók közötti replikációja** | Feladatátvétel/feladat-visszavétel | Nem   
-    **VMware–Azure replikálás** | Replikáció engedélyezve/kezdeti replikálás folyamatban | Igen     
-    **VMware–Azure replikálás** | Feladatátvétel/feladatátvétel meghiúsult | Nem      
-    **Hyper-V–Azure replikálás** | Feladatátvétel/feladatátvétel meghiúsult | Nem
+    **Replikáció a helyszíni helyek között** | Minden állam | No 
+    **Azure-beli virtuális gépek Azure-régiók közötti replikációja**  | Replikáció engedélyezve/kezdeti replikálás folyamatban | Yes
+    **Azure-beli virtuális gépek Azure-régiók közötti replikációja** | Feladatátvétel/feladat-visszavétel | No   
+    **VMware–Azure replikálás** | Replikáció engedélyezve/kezdeti replikálás folyamatban | Yes     
+    **VMware–Azure replikálás** | Feladatátvétel/feladatátvétel meghiúsult | No      
+    **Hyper-V–Azure replikálás** | Feladatátvétel/feladatátvétel meghiúsult | No
 
 - Egy replikáló gép infrastruktúra-nézetének megtekintéséhez a tároló menüjében kattintson a **replikált elemek**elemre, és válasszon egy kiszolgálót.  
 

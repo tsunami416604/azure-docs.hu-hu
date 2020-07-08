@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: c926aac3ea4360793ff52b616a55dc6198357c8a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76721778"
 ---
 # <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>Hadoop-fürtben lévő adatszolgáltatások létrehozása struktúra-lekérdezések használatával
@@ -79,7 +78,7 @@ A bináris besorolásban a nem numerikus kategorikus változókat numerikus funk
             group by <column_name1>, <column_name2>
             )b
 
-Ebben a példában a változók `smooth_param1` és `smooth_param2` az adatokból kiszámított kockázati értékek simítására vannak beállítva. A kockázatok az-INF és az INF közötti tartománnyal rendelkeznek. A kockázati > 0 azt jelzi, hogy a cél értéke 1, nagyobb, mint 0,5.
+Ebben a példában a változók `smooth_param1` és az `smooth_param2` adatokból kiszámított kockázati értékek simítására vannak beállítva. A kockázatok az-INF és az INF közötti tartománnyal rendelkeznek. A kockázati > 0 azt jelzi, hogy a cél értéke 1, nagyobb, mint 0,5.
 
 A kockázati tábla kiszámítását követően a felhasználók a kockázati táblához csatlakozva kockázati értékeket rendelhetnek egy táblához. A struktúra-csatlakozás lekérdezése az előző szakaszban lett megadva.
 
@@ -89,14 +88,14 @@ A kaptár UDF-készletet tartalmaz a DateTime mezők feldolgozásához. A kaptá
         select day(<datetime field>), month(<datetime field>)
         from <databasename>.<tablename>;
 
-Ez a struktúra-lekérdezés feltételezi, hogy a * \<datetime mező>* alapértelmezett datetime formátumban van.
+Ez a kaptár-lekérdezés feltételezi, hogy az *\<datetime field>* alapértelmezett datetime formátumban van.
 
 Ha egy datetime mező nem az alapértelmezett formátumban van, akkor először a dátum és idő típusú mezőt kell konvertálnia a UNIX-időbélyegre, majd a UNIX-időbélyeget egy alapértelmezett formátumú datetime karakterlánccá kell alakítania. Ha a DateTime alapértelmezett formátumban van, a felhasználók a beágyazott datetime UDF alkalmazhatják a funkciók kinyeréséhez.
 
         select from_unixtime(unix_timestamp(<datetime field>,'<pattern of the datetime field>'))
         from <databasename>.<tablename>;
 
-Ebben a lekérdezésben, ha a * \<datetime mező>* mint például a *03/26/2015 12:04:39*, akkor a (z) * \<> datetime mező mintájának* kell lennie. `'MM/dd/yyyy HH:mm:ss'` A teszteléshez a felhasználók futtathatnak
+Ebben a lekérdezésben, ha a *\<datetime field>* minta például a *03/26/2015 12:04:39*, akkor * \<pattern of the datetime field> * a következőnek kell lennie: `'MM/dd/yyyy HH:mm:ss'` . A teszteléshez a felhasználók futtathatnak
 
         select from_unixtime(unix_timestamp('05/15/2015 09:32:10','MM/dd/yyyy HH:mm:ss'))
         from hivesampletable limit 1;
@@ -112,7 +111,7 @@ Ha a kaptár tábla olyan szövegmezővel rendelkezik, amely szóközökből ál
 ### <a name="calculate-distances-between-sets-of-gps-coordinates"></a><a name="hive-gpsdistance"></a>Távolságok kiszámítása a GPS-koordináták készletei között
 Az ebben a szakaszban megadott lekérdezés közvetlenül alkalmazható a New York-i taxis-adatra. A lekérdezés célja, hogy bemutassa, hogyan alkalmazhat egy beágyazott matematikai függvényt a kaptárban funkciók létrehozásához.
 
-A lekérdezésben használt mezők a felvételi és lemorzsolódási helyeinek GPS-koordinátái, a pickup *\_hosszúsága*, a *pickup\_szélesség*, a *lemorzsolódási\_hosszúság*és a *lemorzsolódási\_szélesség*. A felvételi és lemorzsolódási koordináták közötti közvetlen távolságot kiszámító lekérdezések a következők:
+A lekérdezésben használt mezők a felvételi és lemorzsolódási helyeinek GPS-koordinátái, a pickup * \_ hosszúsága*, a *pickup \_ szélesség*, a *lemorzsolódási \_ hosszúság*és a *lemorzsolódási \_ szélesség*. A felvételi és lemorzsolódási koordináták közötti közvetlen távolságot kiszámító lekérdezések a következők:
 
         set R=3959;
         set pi=radians(180);
@@ -130,7 +129,7 @@ A lekérdezésben használt mezők a felvételi és lemorzsolódási helyeinek G
         and dropoff_latitude between 30 and 90
         limit 10;
 
-A két GPS-koordináták közötti távolságot kiszámító matematikai egyenletek megtalálhatók a (z) Peter Lapisu által készített <a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">Movable Type Scripts</a> webhelyen. Ebben a JavaScriptben a függvény `toRad()` csak *lat_or_lon*PI/180, amely a fok és a radián közötti értéket alakítja át. Itt *lat_or_lon* a szélesség vagy a hosszúság. Mivel a kaptár nem adja meg a `atan2`függvényt, de a `atan`függvényt `atan2` biztosítja, a függvényt a fenti struktúra lekérdezésében a `atan` <a href="https://en.wikipedia.org/wiki/Atan2" target="_blank">wikipedia</a>által megadott definíció használatával valósítja meg.
+A két GPS-koordináták közötti távolságot kiszámító matematikai egyenletek megtalálhatók a (z) Peter Lapisu által készített <a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">Movable Type Scripts</a> webhelyen. Ebben a JavaScriptben a függvény `toRad()` csak *lat_or_lon*PI/180, amely a fok és a radián közötti értéket alakítja át. Itt *lat_or_lon* a szélesség vagy a hosszúság. Mivel a kaptár nem adja meg a függvényt `atan2` , de a függvényt biztosítja `atan` , a `atan2` függvényt a `atan` fenti struktúra lekérdezésében a <a href="https://en.wikipedia.org/wiki/Atan2" target="_blank">wikipedia</a>által megadott definíció használatával valósítja meg.
 
 ![Munkaterület létrehozása](./media/create-features-hive/atan2new.png)
 

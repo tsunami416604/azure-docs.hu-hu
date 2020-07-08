@@ -4,10 +4,9 @@ description: Ebből a cikkből megtudhatja, hogyan készíthet biztonsági ment�
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.openlocfilehash: 72d6e5657add3e815bb0d77fadbdbc716712bee5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76705445"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>Azure-beli virtuális gép biztonsági mentése a virtuális gép beállításaiból
@@ -56,7 +55,7 @@ Az Azure-beli virtuális gépek biztonsági mentéséhez Azure Backup telepít e
 8. A konfigurációs folyamat nyomon követhető a portál értesítéseiben.
 9. A feladatok befejezése után a virtuális gép menüjében kattintson a **biztonsági mentés**elemre. A lapon látható a virtuális gép biztonsági mentési állapota, a helyreállítási pontokra vonatkozó információk, a futó feladatok és a kiadott riasztások.
 
-   ![Biztonsági mentés állapota](./media/backup-azure-vms-first-look-arm/backup-item-view-update.png)
+   ![Biztonsági másolat állapota](./media/backup-azure-vms-first-look-arm/backup-item-view-update.png)
 
 10. A biztonsági mentés engedélyezése után a rendszer egy kezdeti biztonsági mentést futtat. A kezdeti biztonsági mentést azonnal elindíthatja, vagy megvárhatja, amíg a biztonsági mentési ütemezésnek megfelelően elindul.
     - A kezdeti biztonsági mentés befejezéséig a **legutóbbi biztonsági mentés állapota** **Figyelmeztetés (kezdeti biztonsági mentés függőben)**.
@@ -64,7 +63,7 @@ Az Azure-beli virtuális gépek biztonsági mentéséhez Azure Backup telepít e
 
 ## <a name="run-a-backup-immediately"></a>Biztonsági mentés azonnali futtatása
 
-1. A biztonsági mentés azonnali futtatásához a virtuális gép menüjében kattintson a **biztonsági** > Mentés**most**lehetőségre.
+1. A biztonsági mentés azonnali futtatásához a virtuális gép menüjében kattintson a **biztonsági**Mentés  >  **most**lehetőségre.
 
     ![Biztonsági mentés futtatása](./media/backup-azure-vms-first-look-arm/backup-now-update.png)
 

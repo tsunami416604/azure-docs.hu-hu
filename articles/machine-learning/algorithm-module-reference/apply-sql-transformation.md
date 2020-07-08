@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
 ms.openlocfilehash: 2e44a4861e2522b766aab9c7151d76c471dd2d8c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76314538"
 ---
 # <a name="apply-sql-transformation"></a>SQL-átalakítás alkalmazása
@@ -33,7 +32,7 @@ Az SQL-transzformációs modul alkalmazásával a következőket végezheti el:
 
 ## <a name="how-to-configure-apply-sql-transformation"></a>Az SQL-transzformáció alkalmazásának konfigurálása  
 
-A modul bemenetként akár három adatkészletet is igénybe vehet. Ha az egyes bemeneti portokhoz kapcsolódó adatkészletekre hivatkozik, akkor a és `t1` `t2` `t3`a nevet kell használnia. A tábla száma a bemeneti port indexét jelzi.  
+A modul bemenetként akár három adatkészletet is igénybe vehet. Ha az egyes bemeneti portokhoz kapcsolódó adatkészletekre hivatkozik, akkor a és a nevet kell használnia `t1` `t2` `t3` . A tábla száma a bemeneti port indexét jelzi.  
   
 A fennmaradó paraméter egy SQL-lekérdezés, amely az SQLite szintaxist használja. Ha több sort ír be az **SQL-parancsfájl** szövegmezőbe, használjon pontosvesszőt az egyes utasítások megszakításához. Ellenkező esetben a sortörések szóközökre lesznek konvertálva.  
 
@@ -45,7 +44,7 @@ Ez a szakasz megvalósítási részleteket, tippeket és válaszokat tartalmaz a
 
 -   Az 1. porton mindig szükség van egy bemenetre.  
   
--   Szóközt vagy más speciális karaktereket tartalmazó oszlopok azonosítói esetén az oszlop azonosítóját szögletes zárójelben vagy dupla idézőjelben kell megadni, amikor a vagy `SELECT` `WHERE` a záradékban lévő oszlopra hivatkozik.  
+-   Szóközt vagy más speciális karaktereket tartalmazó oszlopok azonosítói esetén az oszlop azonosítóját szögletes zárójelben vagy dupla idézőjelben kell megadni, amikor a vagy a záradékban lévő oszlopra hivatkozik `SELECT` `WHERE` .  
   
 ### <a name="unsupported-statements"></a>Nem támogatott utasítások  
 
@@ -53,11 +52,11 @@ Bár az SQLite az ANSI SQL standard nagy részét is támogatja, nem tartalmazza
   
 - A SQLite az értékek dinamikus beírását használja ahelyett, hogy egy típust egy oszlophoz társítson, mint a legtöbb kapcsolódó adatbázis-rendszerben. Ez gyenge módon van beírva, és lehetővé teszi az implicit típus-átalakítást.  
   
-- `LEFT OUTER JOIN`implementálva van, de `RIGHT OUTER JOIN` nem `FULL OUTER JOIN`vagy.  
+- `LEFT OUTER JOIN`implementálva van, de nem `RIGHT OUTER JOIN` vagy `FULL OUTER JOIN` .  
 
-- A paranccsal és `RENAME TABLE` `ADD COLUMN` a `ALTER TABLE` utasításokkal is használható, de más záradékok nem támogatottak, például `DROP COLUMN`: `ALTER COLUMN`, és `ADD CONSTRAINT`.  
+- `RENAME TABLE` `ADD COLUMN` A paranccsal és a utasításokkal is használható `ALTER TABLE` , de más záradékok nem támogatottak, például: `DROP COLUMN` , `ALTER COLUMN` és `ADD CONSTRAINT` .  
   
-- Létrehozhat egy nézetet SQLite-n belül, de ezt követően a nézetek csak olvashatók. Nézeten nem hajtható `DELETE`végre `INSERT`, vagy `UPDATE` utasítás. Létrehozhat azonban egy olyan eseményindítót, amely a (z) vagy `DELETE`a `INSERT`(z `UPDATE` ) vagy a (z) rendszerre irányuló kísérletet hajt végre, és az eseményindító törzsében más műveleteket is végrehajt.  
+- Létrehozhat egy nézetet SQLite-n belül, de ezt követően a nézetek csak olvashatók. Nézeten nem hajtható végre `DELETE` , `INSERT` vagy `UPDATE` utasítás. Létrehozhat azonban egy olyan eseményindítót, amely a (z) vagy a (z) vagy a (z) rendszerre irányuló kísérletet `DELETE` `INSERT` `UPDATE` hajt végre, és az eseményindító törzsében más műveleteket is végrehajt.  
   
 
 A hivatalos SQLite webhelyen elérhető nem támogatott függvények listája mellett a következő wiki a többi nem támogatott funkció listáját tartalmazza: [SQLite –](http://www2.sqlite.org/cvstrac/wiki?p=UnsupportedSql) nem támogatott SQL  

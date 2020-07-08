@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 9409f14b20684afa1a39d45e663ff316f405cc97
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76717926"
 ---
 # <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Skálázható adatelemzés a Azure Data Lake használatával: teljes körű útmutató
@@ -131,7 +130,7 @@ A (z) "trip_fare" CSV tartalmazza az egyes utazások díjait, például a fizet�
        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6
        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5
 
-Az utazáshoz\_és az utazáshoz\_való csatlakozás egyedi kulcsa a következő három mezőből áll: medalion,\_Hack License és\_pickup DateTime. A nyers CSV-fájlok egy Azure Storage-blobból érhetők el. Az ehhez az illesztéshez tartozó U-SQL-szkript a [JOIN Trip és a fare Tables](#join) szakaszban található.
+Az utazáshoz és az utazáshoz való csatlakozás egyedi kulcsa \_ \_ a következő három mezőből áll: medalion, Hack \_ License és pickup \_ DateTime. A nyers CSV-fájlok egy Azure Storage-blobból érhetők el. Az ehhez az illesztéshez tartozó U-SQL-szkript a [JOIN Trip és a fare Tables](#join) szakaszban található.
 
 ## <a name="process-data-with-u-sql"></a>Adatfeldolgozás az U-SQL-sel
 Az ebben a szakaszban bemutatott adatfeldolgozási feladatok közé tartozik az adatok beolvasása, a minőség ellenőrzése, a vizsgálat és a mintavételezés. Az utazáshoz és a viteldíj-táblákhoz való csatlakozás is megjelenik. Az utolsó szakaszban egy U-SQL-parancsfájl futtatására szolgáló feladatot láthat a Azure Portal. Az egyes alszakaszokra mutató hivatkozások:
@@ -158,7 +157,7 @@ A U-SQL futtatásához nyissa meg a Visual studiót, kattintson a **file--> New-
 
 ### <a name="data-ingestion-read-in-data-from-public-blob"></a><a name="ingest"></a>Adatfeldolgozás: adatok beolvasása nyilvános blobból
 
-Az Azure blobban található adatok helyét a rendszer a **\_wasb://Container\@name blob\_Storage\_-fiók\_Name.blob.Core.Windows.net/blob_name** hivatkozik, és a **extracters. csv ()** használatával is kinyerhető. Helyettesítse be a saját tároló nevét és a Storage-fiók nevét a\_következő\@parancsfájlokban\_a\_tároló neve blob\_Storage-fiók nevéhez a wasb-címben. Mivel a fájlnevek formátuma azonos, lehetséges, hogy a **Trip\_\_\{\*\}. csv** fájlt használja mind a 12-es elérési úton.
+Az Azure blobban található adathelyeket a rendszer a **wasb://Container \_ név \@ blob storage- \_ \_ fiók \_ name.blob.core.windows.net/blob_name** hivatkozik, és a **Extractors.Csv ()** használatával kinyerhető. Helyettesítse be a saját tároló nevét és a Storage-fiók nevét a következő parancsfájlokban a tároló \_ neve \@ blob \_ Storage \_ \_ -fiók nevéhez a wasb-címben. Mivel a fájlnevek formátuma azonos, lehetséges, hogy a **Trip \_ \_ \{ \* \} . csv** fájlt használja mind a 12-es elérési úton.
 
     ///Read in Trip data
     @trip0 =
@@ -181,7 +180,7 @@ Az Azure blobban található adatok helyét a rendszer a **\_wasb://Container\@n
     FROM "wasb://container_name@blob_storage_account_name.blob.core.windows.net/nyctaxitrip/trip_data_{*}.csv"
     USING Extractors.Csv();
 
-Mivel az első sorban vannak fejlécek, el kell távolítania a fejléceket, és módosítania kell az oszlopok típusait. Mentheti a feldolgozott adatAzure Data Lake Storaget a **swebhdfs://data_lake_storage_name. azuredatalakestorage. net/folder_name/file_name**_ vagy az Azure Blob Storage-fiókkal a **wasb://container_name\@blob_storage_account_name. blob. Core. Windows. net/blob_name**használatával.
+Mivel az első sorban vannak fejlécek, el kell távolítania a fejléceket, és módosítania kell az oszlopok típusait. Mentheti a feldolgozott adatAzure Data Lake Storaget a **swebhdfs://data_lake_storage_name. azuredatalakestorage. net/folder_name/file_name**_ vagy az Azure Blob Storage-fiókkal a **wasb://container_name \@ blob_storage_account_name. blob. Core. windows. net/blob_name**használatával.
 
     // change data types
     @trip =
@@ -569,7 +568,7 @@ Itt létrehozhat egy bináris besorolási modellt, amely azt jelzi, hogy egy ado
 ### <a name="build-web-service-api-and-consume-it-in-python"></a>Webszolgáltatási API létrehozása és felhasználása a Pythonban
 A gépi tanulási modellt a létrehozása után szeretné működővé tenni. A bináris logisztikai modellt példaként használjuk. Győződjön meg arról, hogy a scikit-Learn verzió a helyi gépen 0.15.1 (Azure Machine Learning Studio már legalább ezen a verziónál).
 
-* Keresse meg a munkaterület hitelesítő adatait Azure Machine Learning Studio (klasszikus) beállítások közül. A Azure Machine learning Studio kattintson a **Beállítások** --> **név** --> **engedélyezési jogkivonatok**elemre.
+* Keresse meg a munkaterület hitelesítő adatait Azure Machine Learning Studio (klasszikus) beállítások közül. A Azure Machine learning Studio kattintson a **Beállítások**  -->  **név**  -->  **engedélyezési jogkivonatok**elemre.
 
     ![C3 csomag](./media/data-lake-walkthrough/c3-workspace-id.PNG)
 
@@ -612,7 +611,7 @@ Hozzon létre egy HDInsight-fürtöt (Linux) a [Azure Portal](https://portal.azu
  ![18](./media/data-lake-walkthrough/18-create_HDI_cluster.PNG)
 
 ### <a name="create-hive-table-in-hdinsight"></a>Kaptár-tábla létrehozása a HDInsight-ben
-Most létre kell hoznia a HDInsight-fürtben a Azure Machine Learning Studioban (Klasszikusban) használni kívánt kaptár-táblákat az előző lépésben Azure Data Lake Storage tárolt adataival. Nyissa meg a létrehozott HDInsight-fürtöt. Kattintson a **Beállítások** --> **Tulajdonságok** --> **fürt HRE identitás** --> **ADLS hozzáférés**elemre, győződjön meg arról, hogy a listában hozzá van adva a Azure Data Lake Storage fiókja olvasási, írási és végrehajtási jogosultságokkal.
+Most létre kell hoznia a HDInsight-fürtben a Azure Machine Learning Studioban (Klasszikusban) használni kívánt kaptár-táblákat az előző lépésben Azure Data Lake Storage tárolt adataival. Nyissa meg a létrehozott HDInsight-fürtöt. Kattintson a **Beállítások**  -->  **Tulajdonságok**  -->  **fürt HRE identitás**  -->  **ADLS hozzáférés**elemre, győződjön meg arról, hogy a listában hozzá van adva a Azure Data Lake Storage fiókja olvasási, írási és végrehajtási jogosultságokkal.
 
  ![19](./media/data-lake-walkthrough/19-HDI-cluster-add-ADLS.PNG)
 
@@ -675,7 +674,7 @@ Az alábbi ábrán látható egy példa arra, hogy egy bináris besorolási kís
 
  ![24](./media/data-lake-walkthrough/24-AML-exp.PNG)
 
-A kísérlet létrehozása után kattintson a **webszolgáltatás** --> **prediktív webszolgáltatás** beállítása elemre.
+A kísérlet létrehozása után kattintson a **webszolgáltatás**  -->  **prediktív webszolgáltatás** beállítása elemre.
 
  ![25](./media/data-lake-walkthrough/25-AML-exp-deploy.PNG)
 

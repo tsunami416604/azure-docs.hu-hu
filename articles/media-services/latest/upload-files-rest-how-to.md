@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
 ms.openlocfilehash: 38d46978e37ead59deb17a86f643df041452e497
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76705768"
 ---
 # <a name="upload-files-into-a-media-services-v3-account-using-rest"></a>Fájlok feltöltése egy Media Services v3-fiókba REST használatával
@@ -35,14 +34,14 @@ A jelen témakörben ismertetett lépések végrehajtásához a következőket k
     
     Ügyeljen arra, hogy kövesse az [Azure ad-token beszerzése](media-rest-apis-with-postman.md#get-azure-ad-token)című témakör utolsó lépését. 
 
-## <a name="create-an-asset"></a>Eszköz létrehozása
+## <a name="create-an-asset"></a>Adategység létrehozása
 
 Ebből a szakaszból megtudhatja, hogyan hozhat létre új eszközt.
 
-1. Válassza az **eszközök** -> **Létrehozás vagy az eszköz frissítése**lehetőséget.
+1. Válassza **Assets**  ->  **az eszközök létrehozás vagy az eszköz frissítése**lehetőséget.
 2. Kattintson a **Küldés** gombra.
 
-    ![Eszköz létrehozása](./media/upload-files/postman-create-asset.png)
+    ![Adategység létrehozása](./media/upload-files/postman-create-asset.png)
 
 Ekkor megjelenik a **Válasz** az újonnan létrehozott objektumra vonatkozó információkkal.
 
@@ -50,7 +49,7 @@ Ekkor megjelenik a **Válasz** az újonnan létrehozott objektumra vonatkozó in
 
 Ez a szakasz bemutatja, hogyan szerezhet be egy SAS URL-címet, amelyet a létrehozott eszközhöz generáltak. A SAS URL-cím írási és olvasási engedéllyel lett létrehozva, és a digitális fájlok az objektum tárolóba való feltöltésére használható.
 
-1. Válassza az **eszközök** -> lehetőséget**az eszköz URL-címeinek listázásához**.
+1. Válassza az **eszközök**lehetőséget  ->  **az eszköz URL-címeinek listázásához**.
 2. Kattintson a **Küldés** gombra.
 
     ![Fájl feltöltése](./media/upload-files/postman-create-sas-locator.png)

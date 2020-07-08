@@ -7,10 +7,9 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.openlocfilehash: a82d2317314c79a82fe80c5a25afc950fb728815
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76155196"
 ---
 # <a name="azure-database-for-mysql-server-firewall-rules"></a>Azure Database for MySQL kiszolgálói tűzfalszabályok
@@ -64,7 +63,7 @@ Vegye figyelembe a következő szempontokat, amikor a MySQL-kiszolgáló szolgá
 
    * Állítson be statikus IP-címeket az ügyfélszámítógépei számára, majd adja meg az IP-címeket tűzfalszabályokként.
 
-* **Úgy tűnik, hogy a kiszolgáló IP-címe nyilvános:** A Azure Database for MySQL-kiszolgálóval létesített kapcsolatok egy nyilvánosan elérhető Azure-átjárón keresztül irányíthatók. A kiszolgáló tényleges IP-címét azonban tűzfal védi. További információért látogasson el a [kapcsolati architektúra című cikkben](concepts-connectivity-architecture.md). 
+* **Úgy tűnik, hogy a kiszolgáló IP-címe nyilvános:** A Azure Database for MySQL-kiszolgálóval létesített kapcsolatok egy nyilvánosan elérhető Azure-átjárón keresztül irányíthatók. A kiszolgáló tényleges IP-címét azonban tűzfal védi. További információért tekintse meg a [kapcsolati architektúráról szóló cikket](concepts-connectivity-architecture.md). 
 
 ## <a name="next-steps"></a>További lépések
 

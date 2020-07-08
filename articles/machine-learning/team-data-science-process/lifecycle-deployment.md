@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 1138c95274c769186a9a29aa4d35517e378baeae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76720486"
 ---
 # <a name="deployment-stage-of-the-team-data-science-process-lifecycle"></a>A csoportos adatelemzési folyamat életciklusának üzembe helyezési szakasza
@@ -52,7 +51,7 @@ Miután jól teljesített modelleket tartalmazó készletet használ, működőv
 
 Azure Machine Learning webszolgáltatással történő operacionalizálási kapcsolatos példákért tekintse meg a [Azure Machine learning webszolgáltatás üzembe helyezése](../studio/deploy-a-machine-learning-web-service.md)című témakört. Az ajánlott eljárás az üzemi modellbe való telemetria és monitorozás, valamint az üzembe helyezett adatfolyamatok létrehozása. Ez a gyakorlat segítséget nyújt a rendszerállapot-jelentéskészítés és a hibaelhárítás során.  
 
-## <a name="artifacts"></a>Összetevők
+## <a name="artifacts"></a>Artifacts
 
 * Állapot-irányítópult, amely a rendszerállapotot és a kulcs metrikáit jeleníti meg
 * Végső modellezési jelentés az üzembe helyezés részleteivel

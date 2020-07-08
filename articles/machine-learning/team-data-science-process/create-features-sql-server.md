@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 58fa98005d7d89e84404d99cf4f55e456fd91f21
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76721744"
 ---
 # <a name="create-features-for-data-in-sql-server-using-sql-and-python"></a>Funkciók létrehozása az adatokhoz az SQL Serveren SQL és Python használatával
@@ -63,7 +62,7 @@ Az alábbi példa azt szemlélteti, hogyan hozhatók dobozolni-funkciók a doboz
 ### <a name="rolling-out-the-features-from-a-single-column"></a><a name="sql-featurerollout"></a>A funkciók kimutatása egyetlen oszlopból
 Ebben a szakaszban bemutatjuk, hogyan hozhatja ki egy tábla egyetlen oszlopát további funkciók létrehozásához. A példa azt feltételezi, hogy a táblázatban a szélesség vagy hosszúság oszlop szerepel, amelyből a szolgáltatásokat kívánja előállítani.
 
-Íme egy rövid ismertető a szélességi és a hosszúsági hely adatainak áttekintéséről (a StackOverflow `https://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude`-ből származnak). Íme néhány hasznos tudnivaló arról, hogy a szolgáltatások a mezőből való létrehozása előtt hogyan kell megismerni a helyadatok adatait:
+Íme egy rövid ismertető a szélességi és a hosszúsági hely adatainak áttekintéséről (a StackOverflow-ből származnak `https://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude` ). Íme néhány hasznos tudnivaló arról, hogy a szolgáltatások a mezőből való létrehozása előtt hogyan kell megismerni a helyadatok adatait:
 
 * A jel azt jelzi, hogy a világ északi vagy déli régiója, illetve Kelet-vagy nyugati régiója.
 * A nullától eltérő száz számjegy azt jelzi, hogy a földrajzi szélesség nem lesz használatban.
@@ -76,7 +75,7 @@ Ebben a szakaszban bemutatjuk, hogyan hozhatja ki egy tábla egyetlen oszlopát 
 * Az ötödik tizedes tört érték 1,1 m-re van beállítva: megkülönbözteti a fákat egymástól. Az ehhez a szinthez tartozó pontosságot a kereskedelmi GPS-egységekkel csak különbözeti korrekcióval lehet megvalósítani.
 * A hatodik tizedes tört érték 0,11 m-re van korlátozva: ezt a szintet részletesen, a Tájképek kialakításához, az utak létrehozásához használhatja. A gleccserek és a folyók forgalmának nyomon követéséhez elég jó legyen. Ezt a célt úgy érheti el, ha a GPS-szel, például a differentially korrigált GPS-sel kapcsolatos fáradságos mértékeket használ.
 
-A tartózkodási hely adatai a régió, a hely és a város információinak elválasztásával is featurized. Ha egyszer is meghívhat egy REST-végpontot, például a Bing Maps `https://msdn.microsoft.com/library/ff701710.aspx` API-t (lásd: a régió/kerület információinak beszerzése).
+A tartózkodási hely adatai a régió, a hely és a város információinak elválasztásával is featurized. Ha egyszer is meghívhat egy REST-végpontot, például a Bing Maps API-t (lásd: `https://msdn.microsoft.com/library/ff701710.aspx` a régió/kerület információinak beszerzése).
 
     select
         <location_columnname>

@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 01/16/2020
 ms.openlocfilehash: a37a8bb45c11d5b74f3059a153806e3d083cf452
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76311954"
 ---
 # <a name="develop-java-mapreduce-programs-for-apache-hadoop-on-hdinsight"></a>Java MapReduce-programok fejlesztése a HDInsight Apache Hadoop
@@ -50,7 +49,7 @@ cd C:\HDI
     * src\main\java\org\apache\hadoop\examples: az alkalmazás kódját tartalmazza.
     * src\test\java\org\apache\hadoop\examples: az alkalmazáshoz tartozó teszteket tartalmazza.
 
-1. Távolítsa el a generált példa kódját. Törölje a generált teszt-és alkalmazásfájl `AppTest.java`-fájlokat `App.java` , és írja be az alábbi parancsokat:
+1. Távolítsa el a generált példa kódját. Törölje a generált teszt-és alkalmazásfájl-fájlokat `AppTest.java` , és `App.java` írja be az alábbi parancsokat:
 
     ```cmd
     cd wordcountjava
@@ -60,7 +59,7 @@ cd C:\HDI
 
 ## <a name="update-the-project-object-model"></a>A projekt-objektum modell frissítése
 
-A Pom. xml fájl teljes referenciáját lásd: https://maven.apache.org/pom.html. A `pom.xml` megnyitásához írja be az alábbi parancsot:
+A pom.xml fájl teljes hivatkozását a következő témakörben tekintheti meg: https://maven.apache.org/pom.html . A megnyitásához `pom.xml` írja be az alábbi parancsot:
 
 ```cmd
 notepad pom.xml
@@ -68,7 +67,7 @@ notepad pom.xml
 
 ### <a name="add-dependencies"></a>Függőségek hozzáadása
 
-A `pom.xml`alkalmazásban adja hozzá a következő szöveget `<dependencies>` a szakaszhoz:
+A alkalmazásban `pom.xml` adja hozzá a következő szöveget a `<dependencies>` szakaszhoz:
 
 ```xml
 <dependency>
@@ -91,7 +90,7 @@ A `pom.xml`alkalmazásban adja hozzá a következő szöveget `<dependencies>` a
 </dependency>
 ```
 
-Ez határozza meg a szükséges kódtárakat &lt;(\>a artifactId belül) egy adott verzióval &lt;(\>a verzióban felsorolva). A fordítás ideje alatt ezek a függőségek az alapértelmezett Maven-tárházból tölthetők le. További információkért a [Maven-tárház keresésében](https://search.maven.org/#artifactdetails%7Corg.apache.hadoop%7Chadoop-mapreduce-examples%7C2.5.1%7Cjar) olvashat.
+Ez határozza meg a szükséges kódtárakat (a &lt; artifactId belül \> ) egy adott verzióval (a verzióban felsorolva) &lt; \> . A fordítás ideje alatt ezek a függőségek az alapértelmezett Maven-tárházból tölthetők le. További információkért a [Maven-tárház keresésében](https://search.maven.org/#artifactdetails%7Corg.apache.hadoop%7Chadoop-mapreduce-examples%7C2.5.1%7Cjar) olvashat.
 
 A `<scope>provided</scope>` Maven azt jelzi, hogy ezek a függőségek nem tölthetők be az alkalmazásba, mivel a HDInsight-fürt futási időben megadja őket.
 
@@ -102,7 +101,7 @@ A `<scope>provided</scope>` Maven azt jelzi, hogy ezek a függőségek nem tölt
 
 A Maven beépülő moduljai lehetővé teszik a projekt összeállítási szakaszainak testreszabását. Ez a szakasz beépülő modulok, erőforrások és egyéb Build-konfigurációs beállítások hozzáadására szolgál.
 
-Adja hozzá a következő kódot a `pom.xml` fájlhoz, majd mentse és zárjuk be a fájlt. Ennek a szövegnek a `<project>...</project>` címkén belül kell lennie a fájlban, például `</dependencies>` a `</project>`és a között.
+Adja hozzá a következő kódot a `pom.xml` fájlhoz, majd mentse és zárjuk be a fájlt. Ennek a szövegnek a címkén belül kell lennie a `<project>...</project>` fájlban, például a és a között `</dependencies>` `</project>` .
 
 ```xml
 <build>
@@ -147,7 +146,7 @@ Mentse a `pom.xml` fájlt.
 
 ## <a name="create-the-mapreduce-application"></a>A MapReduce alkalmazás létrehozása
 
-1. Új fájl `WordCount.java`létrehozásához és megnyitásához írja be az alábbi parancsot. Új fájl létrehozásához válassza az **Igen** lehetőséget.
+1. Új fájl létrehozásához és megnyitásához írja be az alábbi parancsot `WordCount.java` . Új fájl létrehozásához válassza az **Igen** lehetőséget.
 
     ```cmd
     notepad src\main\java\org\apache\hadoop\examples\WordCount.java
@@ -226,7 +225,7 @@ Mentse a `pom.xml` fájlt.
     }
     ```
 
-    Figyelje meg, hogy a `org.apache.hadoop.examples` csomag neve, az osztály `WordCount`neve pedig. Ezeket a neveket a MapReduce-feladatok elküldésekor használja.
+    Figyelje meg, hogy a csomag neve, `org.apache.hadoop.examples` az osztály neve pedig `WordCount` . Ezeket a neveket a MapReduce-feladatok elküldésekor használja.
 
 ## <a name="build-and-package-the-application"></a>Az alkalmazás létrehozása és becsomagolása
 
@@ -238,7 +237,7 @@ mvn clean package
 
 Ez a parancs törli az előző Build-összetevőket, letölti a még nem telepített függőségeket, majd felépíti és csomagolja ki az alkalmazást.
 
-A parancs befejeződése után a `wordcountjava/target` könyvtár tartalmaz egy nevű `wordcountjava-1.0-SNAPSHOT.jar`fájlt.
+A parancs befejeződése után a `wordcountjava/target` könyvtár tartalmaz egy nevű fájlt `wordcountjava-1.0-SNAPSHOT.jar` .
 
 > [!NOTE]
 > A `wordcountjava-1.0-SNAPSHOT.jar` fájl egy uberjar, amely nem csak a WordCount feladatot tartalmazza, hanem olyan függőségeket is, amelyeket a feladatoknak futásidőben kell megadniuk.
@@ -247,13 +246,13 @@ A parancs befejeződése után a `wordcountjava/target` könyvtár tartalmaz egy
 
 A következő lépésekkel `scp` másolhatja a jar-t az Apache HBase elsődleges fő csomópontjára a HDInsight-fürtön. A `ssh` parancs ezután csatlakozik a fürthöz, és a példát közvetlenül a fő csomóponton futtatja.
 
-1. Töltse fel a jar-t a fürtbe. Cserélje `CLUSTERNAME` le a értéket a HDInsight-fürt nevére, majd írja be a következő parancsot:
+1. Töltse fel a jar-t a fürtbe. Cserélje le a `CLUSTERNAME` értéket a HDInsight-fürt nevére, majd írja be a következő parancsot:
 
     ```cmd
     scp target/wordcountjava-1.0-SNAPSHOT.jar sshuser@CLUSTERNAME-ssh.azurehdinsight.net:
     ```
 
-1. Kapcsolódjon a fürthöz. Cserélje `CLUSTERNAME` le a értéket a HDInsight-fürt nevére, majd írja be a következő parancsot:
+1. Kapcsolódjon a fürthöz. Cserélje le a `CLUSTERNAME` értéket a HDInsight-fürt nevére, majd írja be a következő parancsot:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
@@ -265,7 +264,7 @@ A következő lépésekkel `scp` másolhatja a jar-t az Apache HBase elsődleges
    yarn jar wordcountjava-1.0-SNAPSHOT.jar org.apache.hadoop.examples.WordCount /example/data/gutenberg/davinci.txt /example/data/wordcountout
    ```
 
-    Ez a parancs elindítja a WordCount MapReduce alkalmazást. A bemeneti fájl `/example/data/gutenberg/davinci.txt`a és a kimeneti könyvtár `/example/data/wordcountout`. A bemeneti fájl és a kimenet is a fürt alapértelmezett tárolójában tárolódik.
+    Ez a parancs elindítja a WordCount MapReduce alkalmazást. A bemeneti fájl a `/example/data/gutenberg/davinci.txt` és a kimeneti könyvtár `/example/data/wordcountout` . A bemeneti fájl és a kimenet is a fürt alapértelmezett tárolójában tárolódik.
 
 1. A feladatok befejezése után a következő paranccsal tekintheti meg az eredményeket:
 

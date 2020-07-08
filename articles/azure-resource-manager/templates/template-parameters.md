@@ -4,10 +4,9 @@ description: Ismerteti, hogyan lehet paramétereket definiálni egy Azure Resour
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.openlocfilehash: 89c6984c587e8dae59c1825a99d4f8da1c06dafb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76122423"
 ---
 # <a name="parameters-in-azure-resource-manager-templates"></a>Paraméterek Azure Resource Manager sablonokban
@@ -152,7 +151,7 @@ Az objektum tulajdonságaira az dot operátor használatával hivatkozhat.
 
 Az alábbi példák a paraméterek használatának forgatókönyveit mutatják be.
 
-|Sablon  |Leírás  |
+|Sablon  |Description  |
 |---------|---------|
 |[az alapértelmezett értékek függvényeit tartalmazó paraméterek](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterswithfunctions.json) | Bemutatja, hogyan használható a Template functions a paraméterek alapértelmezett értékeinek definiálásához. A sablon nem telepít semmilyen erőforrást. Paraméterek értékeit állítja össze, és visszaadja ezeket az értékeket. |
 |[paraméter objektum](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterobject.json) | Egy paraméter objektumának használatát mutatja be. A sablon nem telepít semmilyen erőforrást. Paraméterek értékeit állítja össze, és visszaadja ezeket az értékeket. |

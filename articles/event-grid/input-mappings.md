@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: e8077068a265d659cf6009eb7762188637c373d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76721659"
 ---
 # <a name="map-custom-fields-to-event-grid-schema"></a>Egyéni mezők leképezése Event Grid-sémára
@@ -47,9 +46,9 @@ Egyéni témakör létrehozásakor adja meg, hogyan kívánja leképezni a mező
 
 * A **bemeneti séma** értéke határozza meg a séma típusát. Az elérhető lehetőségek a CloudEvents séma, az egyéni esemény sémája vagy a Event Grid séma. Az alapértelmezett érték Event Grid séma. Ha egyéni leképezést hoz létre a séma és az Event Grid-séma között, használja az egyéni esemény sémáját. Ha az események a CloudEvents sémában vannak, használja a Cloudevents sémát.
 
-* Az **alapértelmezett értékek leképezése** tulajdonság a Event Grid séma mezőinek alapértelmezett értékeit adja meg. Megadhatja a, `subject` `eventtype`a és `dataversion`az alapértelmezett értékeit. Ezt a paramétert általában akkor használja, ha az egyéni séma nem tartalmaz olyan mezőt, amely megfelel az adott három mező egyikének. Megadhatja például, hogy az adatverzió mindig **1,0**-re legyen állítva.
+* Az **alapértelmezett értékek leképezése** tulajdonság a Event Grid séma mezőinek alapértelmezett értékeit adja meg. Megadhatja a, a és az alapértelmezett értékeit `subject` `eventtype` `dataversion` . Ezt a paramétert általában akkor használja, ha az egyéni séma nem tartalmaz olyan mezőt, amely megfelel az adott három mező egyikének. Megadhatja például, hogy az adatverzió mindig **1,0**-re legyen állítva.
 
-* A **leképezési mezők** érték leképezi a sémában található mezőket az Event Grid sémába. Az értékeket szóközzel tagolt kulcs/érték párokban kell megadni. A kulcsnév esetében használja az Event Grid mező nevét. Az értéknél használja a mező nevét. A `id`, `topic` `eventtime` `dataversion`,,, és rendszerhez is használhatja a kulcs nevét. `subject` `eventtype`
+* A **leképezési mezők** érték leképezi a sémában található mezőket az Event Grid sémába. Az értékeket szóközzel tagolt kulcs/érték párokban kell megadni. A kulcsnév esetében használja az Event Grid mező nevét. Az értéknél használja a mező nevét. A,,,, és rendszerhez is használhatja a kulcs nevét `id` `topic` `eventtime` `subject` `eventtype` `dataversion` .
 
 Egyéni témakör az Azure CLI-vel való létrehozásához használja a következőt:
 

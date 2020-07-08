@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 06/22/2017
 ms.author: vturecek
 ms.openlocfilehash: 2a331715d4e4538cfdda8d958ff549a81b627b79
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76028553"
 ---
 # <a name="service-fabric-with-azure-api-management-overview"></a>Service Fabric és Azure API Management – áttekintés
@@ -39,7 +38,7 @@ Ebben az esetben a webes felhasználói felületet továbbra is egy webszolgált
 
 ## <a name="application-scenarios"></a>Alkalmazáshasználati helyzetek
 
-A Service Fabric szolgáltatásai lehetnek állapot nélküliek vagy állapotok, és a három séma egyikével particionálva lehetnek: egyszeres, int-64 tartomány és névvel ellátott. A szolgáltatás végpontjának feloldásához egy adott szolgáltatási példány egy adott partícióját kell azonosítani. Egy szolgáltatás végpontjának feloldásakor a szolgáltatás példányának nevét (például: `fabric:/myapp/myservice`), valamint a szolgáltatás adott partícióját is meg kell adni, kivéve az egyedi partíciók esetében.
+A Service Fabric szolgáltatásai lehetnek állapot nélküliek vagy állapotok, és a három séma egyikével particionálva lehetnek: egyszeres, int-64 tartomány és névvel ellátott. A szolgáltatás végpontjának feloldásához egy adott szolgáltatási példány egy adott partícióját kell azonosítani. Egy szolgáltatás végpontjának feloldásakor a szolgáltatás példányának nevét (például:), valamint a `fabric:/myapp/myservice` szolgáltatás adott partícióját is meg kell adni, kivéve az egyedi partíciók esetében.
 
 Az Azure API Management az állapot nélküli szolgáltatások, az állapot-nyilvántartó szolgáltatások és a particionálási sémák bármilyen kombinációjával használható.
 
@@ -47,9 +46,9 @@ Az Azure API Management az állapot nélküli szolgáltatások, az állapot-nyil
 
 A legegyszerűbb esetben a rendszer továbbítja a forgalmat egy állapot nélküli szolgáltatási példányra. Ennek eléréséhez egy API Management művelet egy olyan Service Fabric háttérbeli bejövő feldolgozási szabályzatot tartalmaz, amely egy adott állapot nélküli Service-példányhoz van leképezve a Service Fabric háttérbe. A szolgáltatásnak küldött kérelmeket a szolgáltatás egy véletlenszerűen kiválasztott példánya továbbítja.
 
-**Például**
+**Példa**
 
-A következő forgatókönyvben egy Service Fabric alkalmazás tartalmaz egy nevű `fabric:/app/fooservice`állapot nélküli szolgáltatást, amely egy belső http API-t tesz elérhetővé. A szolgáltatás példányának neve jól ismert, és a API Management bejövő feldolgozási házirendben közvetlenül is kódolható. 
+A következő forgatókönyvben egy Service Fabric alkalmazás tartalmaz egy nevű állapot nélküli szolgáltatást `fabric:/app/fooservice` , amely egy belső http API-t tesz elérhetővé. A szolgáltatás példányának neve jól ismert, és a API Management bejövő feldolgozási házirendben közvetlenül is kódolható. 
 
 ![Service Fabric az Azure API Management topológia áttekintése][sf-apim-static-stateless]
 
@@ -57,11 +56,11 @@ A következő forgatókönyvben egy Service Fabric alkalmazás tartalmaz egy nev
 
 Az állapot nélküli szolgáltatási forgatókönyvhöz hasonlóan a forgalom is továbbítható egy állapot-nyilvántartó szolgáltatási példányba. Ebben az esetben egy API Management művelet egy olyan Service Fabric háttérbeli bejövő feldolgozási szabályzatot tartalmaz, amely egy adott *állapot-nyilvántartó* példány egy adott partíciójának egy kérését képezi le. Az egyes kérések hozzárendelésére szolgáló partíciót lambda módszerrel kell kiszámítani a bejövő HTTP-kérésből származó bizonyos adatokkal, például az URL-cím elérési útjában szereplő értékkel. A házirend úgy konfigurálható, hogy csak az elsődleges replikára, vagy az olvasási műveletek véletlenszerű replikára küldje a kérelmeket.
 
-**Például**
+**Példa**
 
-A következő forgatókönyvben a Service Fabric alkalmazás egy nevű `fabric:/app/userservice` particionált állapot-nyilvántartó szolgáltatást tartalmaz, amely egy belső http API-t tesz elérhetővé. A szolgáltatás példányának neve jól ismert, és a API Management bejövő feldolgozási házirendben közvetlenül is kódolható.  
+A következő forgatókönyvben a Service Fabric alkalmazás egy nevű particionált állapot-nyilvántartó szolgáltatást tartalmaz, `fabric:/app/userservice` amely egy belső http API-t tesz elérhetővé. A szolgáltatás példányának neve jól ismert, és a API Management bejövő feldolgozási házirendben közvetlenül is kódolható.  
 
-A szolgáltatás particionálva van a Int64 partíciós séma használatával két partícióval és egy, a `Int64.MinValue` - `Int64.MaxValue`ra kiterjedő kulcs tartománnyal. A háttérrendszer-házirend kiszámítja az adott tartományon belüli partíciós kulcsot `id` úgy, hogy az URL-kérelem útvonalán megadott értéket egy 64 bites egész számra konvertálja, de a partíciós kulcs kiszámításához itt bármely algoritmus használható. 
+A szolgáltatás particionálva van a Int64 partíciós séma használatával két partícióval és egy, a-ra kiterjedő kulcs tartománnyal `Int64.MinValue` `Int64.MaxValue` . A háttérrendszer-házirend kiszámítja az adott tartományon belüli partíciós kulcsot úgy, hogy az `id` URL-kérelem útvonalán megadott értéket egy 64 bites egész számra konvertálja, de a partíciós kulcs kiszámításához itt bármely algoritmus használható. 
 
 ![Service Fabric az Azure API Management topológia áttekintése][sf-apim-static-stateful]
 
@@ -71,7 +70,7 @@ A fejlettebb forgatókönyvekben olyan API Management műveletet határozhat meg
 
 Ennek eléréséhez egy API Management művelet egy olyan Service Fabric háttérrel rendelkező bejövő feldolgozási szabályzatot tartalmaz, amely a bejövő HTTP-kérelemből beolvasott értékek alapján leképezi a Service Fabric háttér nélküli szolgáltatási példányát. A szolgáltatásnak küldött kéréseket a szolgáltatás egy véletlenszerűen kiválasztott példánya továbbítja.
 
-**Például**
+**Példa**
 
 Ebben a példában egy új állapot nélküli szolgáltatási példány jön létre a dinamikusan generált névvel rendelkező alkalmazás minden felhasználója számára a következő képlet használatával:
 
@@ -79,8 +78,8 @@ Ebben a példában egy új állapot nélküli szolgáltatási példány jön lé
 
   Minden szolgáltatás egyedi névvel rendelkezik, de a nevek nem ismertek, mert a szolgáltatások felhasználói vagy rendszergazdai bevitelre válaszul jönnek létre, ezért nem lehet a APIM-házirendekben vagy útválasztási szabályokban rögzített módon kódolni. Ehelyett annak a szolgáltatásnak a neve jelenik meg, amelyre a kérést küldeni kívánja a háttér-házirend definíciójában az `name` URL-kérelem elérési útján megadott érték alapján. Például:
 
-  - A szolgáltatás példányára irányuló kérelem `/api/users/foo` átirányítva`fabric:/app/users/foo`
-  - A szolgáltatás példányára irányuló kérelem `/api/users/bar` átirányítva`fabric:/app/users/bar`
+  - A `/api/users/foo` szolgáltatás példányára irányuló kérelem átirányítva`fabric:/app/users/foo`
+  - A `/api/users/bar` szolgáltatás példányára irányuló kérelem átirányítva`fabric:/app/users/bar`
 
 ![Service Fabric az Azure API Management topológia áttekintése][sf-apim-dynamic-stateless]
 
@@ -90,7 +89,7 @@ Az állapot nélküli szolgáltatás példájának megfelelően egy API Manageme
 
 Ennek eléréséhez egy API Management művelet egy olyan Service Fabric háttérbeli bejövő feldolgozási szabályzatot tartalmaz, amely a bejövő HTTP-kérelemből beolvasott értékek alapján leképez egy állapot-nyilvántartó szolgáltatási példányt a Service Fabric háttérbe. Az adott szolgáltatási példányra vonatkozó kérések leképezése mellett a kérést a szolgáltatási példányon belül egy adott partícióra is lehet hozzárendelni, és opcionálisan az elsődleges replikára vagy a partíción belüli másodlagos replikára is.
 
-**Például**
+**Példa**
 
 Ebben a példában egy új állapot-nyilvántartó szolgáltatási példány jön létre az alkalmazás minden felhasználója számára egy dinamikusan generált névvel a következő képlet használatával:
 
@@ -98,10 +97,10 @@ Ebben a példában egy új állapot-nyilvántartó szolgáltatási példány jö
 
   Minden szolgáltatás egyedi névvel rendelkezik, de a nevek nem ismertek, mert a szolgáltatások felhasználói vagy rendszergazdai bevitelre válaszul jönnek létre, ezért nem lehet a APIM-házirendekben vagy útválasztási szabályokban rögzített módon kódolni. Ehelyett annak a szolgáltatásnak a neve jelenik meg, amelyre a kérést küldeni kívánja a háttér-házirend definíciójában az `name` URL-kérelem elérési útjának megadott érték alapján. Például:
 
-  - A szolgáltatás példányára irányuló kérelem `/api/users/foo` átirányítva`fabric:/app/users/foo`
-  - A szolgáltatás példányára irányuló kérelem `/api/users/bar` átirányítva`fabric:/app/users/bar`
+  - A `/api/users/foo` szolgáltatás példányára irányuló kérelem átirányítva`fabric:/app/users/foo`
+  - A `/api/users/bar` szolgáltatás példányára irányuló kérelem átirányítva`fabric:/app/users/bar`
 
-A Int64 partíciós séma két partícióval és egy, a rendszerre kiterjedő kulcstároló `Int64.MinValue` használatával is particionálva van `Int64.MaxValue`. A háttérrendszer-házirend kiszámítja az adott tartományon belüli partíciós kulcsot `id` úgy, hogy az URL-kérelem útvonalán megadott értéket egy 64 bites egész számra konvertálja, de a partíciós kulcs kiszámításához itt bármely algoritmus használható. 
+A Int64 partíciós séma két partícióval és egy, a rendszerre kiterjedő kulcstároló használatával is particionálva `Int64.MinValue` van `Int64.MaxValue` . A háttérrendszer-házirend kiszámítja az adott tartományon belüli partíciós kulcsot úgy, hogy az `id` URL-kérelem útvonalán megadott értéket egy 64 bites egész számra konvertálja, de a partíciós kulcs kiszámításához itt bármely algoritmus használható. 
 
 ![Service Fabric az Azure API Management topológia áttekintése][sf-apim-dynamic-stateful]
 

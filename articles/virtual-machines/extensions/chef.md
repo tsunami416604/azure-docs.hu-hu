@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 09/21/2018
 ms.author: akjosh
 ms.openlocfilehash: a21b8f2fea7433e9f65fd790321a28ea47a38c79
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76544718"
 ---
 # <a name="chef-vm-extension-for-linux-and-windows"></a>Chef VM-bővítmény Linux és Windows rendszerekhez
@@ -36,7 +35,7 @@ A Chef virtuálisgép-bővítmény megköveteli, hogy a célként megadott virtu
 
 ## <a name="extension-schema"></a>Bővítményséma
 
-A következő JSON a Chef virtuálisgép-bővítmény sémáját mutatja be. A kiterjesztéshez legalább a Chef-kiszolgáló URL-címére, az érvényesítési ügyfél nevére és a Chef-kiszolgáló érvényesítési kulcsára van szükség; Ezek az értékek a [Chef automatizálása](https://azuremarketplace.microsoft.com/marketplace/apps/chef-software.chef-automate) vagy egy önálló [Chef-kiszolgáló](https://downloads.chef.io/chef-server)telepítésekor letöltött Starter-Kit. zip `knife.rb` fájlban találhatók. Mivel az ellenőrző kulcsot bizalmas adatokként kell kezelni, azt a **protectedsettingsfromkeyvault** elem alatt kell konfigurálni, ami azt jelenti, hogy csak a célként megadott virtuális gépen lesz visszafejtve.
+A következő JSON a Chef virtuálisgép-bővítmény sémáját mutatja be. A kiterjesztéshez legalább a Chef-kiszolgáló URL-címére, az érvényesítési ügyfél nevére és a Chef-kiszolgáló érvényesítési kulcsára van szükség; Ezek az értékek a `knife.rb` [Chef-automatizálás](https://azuremarketplace.microsoft.com/marketplace/apps/chef-software.chef-automate) vagy egy önálló [Chef-kiszolgáló](https://downloads.chef.io/chef-server)telepítésekor letöltött starter-kit.zip fájlban találhatók. Mivel az ellenőrző kulcsot bizalmas adatokként kell kezelni, azt a **protectedsettingsfromkeyvault** elem alatt kell konfigurálni, ami azt jelenti, hogy csak a célként megadott virtuális gépen lesz visszafejtve.
 
 ```json
 {
@@ -67,16 +66,16 @@ A következő JSON a Chef virtuálisgép-bővítmény sémáját mutatja be. A k
 
 ### <a name="core-property-values"></a>Alapvető tulajdonságok értékei
 
-| Name (Név) | Érték/példa | Adattípus
+| Name | Érték/példa | Adattípus
 | ---- | ---- | ----
 | apiVersion | `2017-12-01` | karakterlánc (dátum) |
 | közzétevő | `Chef.Bootstrap.WindowsAzure` | sztring |
-| type | `LinuxChefClient`(Linux), `ChefClient` (Windows) | sztring |
+| típus | `LinuxChefClient`(Linux), `ChefClient` (Windows) | sztring |
 | typeHandlerVersion | `1210.13` | karakterlánc (dupla) |
 
 ### <a name="settings"></a>Beállítások
 
-| Name (Név) | Érték/példa | Adattípus | Kötelező?
+| Name | Érték/példa | Adattípus | Kötelező?
 | ---- | ---- | ---- | ----
 | beállítások/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | karakterlánc (URL) | I |
 | beállítások/bootstrap_options/validation_client_name | `myorg-validator` | sztring | I |
@@ -84,7 +83,7 @@ A következő JSON a Chef virtuálisgép-bővítmény sémáját mutatja be. A k
 
 ### <a name="protected-settings"></a>Védett beállítások
 
-| Name (Név) | Példa | Adattípus | Kötelező?
+| Name | Példa | Adattípus | Kötelező?
 | ---- | ---- | ---- | ---- |
 | Protectedsettingsfromkeyvault/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | sztring | I |
 
@@ -146,7 +145,7 @@ C:\Packages\Plugins\Chef.Bootstrap.WindowsAzure.ChefClient\
 
 ### <a name="error-codes-and-their-meanings"></a>Hibakódok és jelentéseik
 
-| Hibakód | Jelentés | Lehetséges művelet |
+| Hibakód | Értelmezés | Lehetséges művelet |
 | :---: | --- | --- |
 | 51 | Ez a bővítmény nem támogatott a virtuális gép operációs rendszerében | |
 
