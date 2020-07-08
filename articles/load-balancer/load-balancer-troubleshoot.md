@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2020
 ms.author: allensu
-ms.openlocfilehash: 2211747d274282429ed24c7b16ce64230a0674ea
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
-ms.translationtype: MT
+ms.openlocfilehash: 1cfe27fd5c63bc4c1436982212b91e07f54aedb5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84808461"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85801920"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Az Azure Load Balancer hibaelhárítása
 
@@ -136,7 +135,7 @@ Ha a folyamat önmagára mutat, a kimenő folyamat úgy tűnik, hogy a virtuáli
 
 Ennek a forgatókönyvnek a tünete átmeneti kapcsolati időtúllépés, amikor a folyamat visszatér ugyanarra a háttérre, amely a folyamatból származik. Gyakori megkerülő megoldások közé tartozik a belső Load Balancer mögötti proxy réteg beszúrása, valamint a közvetlen kiszolgáló Return (DSR) stílusú szabályok használata. További információ: [Azure Load Balancer több előtérbeli felülete](load-balancer-multivip-overview.md).
 
-A belső Load Balancer bármely harmadik féltől származó proxyval egyesítheti, vagy használhat belső [Application Gateway](../application-gateway/application-gateway-introduction.md) a proxy forgatókönyvekhez HTTP/HTTPS használatával. Habár a probléma megoldásához nyilvános Load Balancer is használható, az eredményül kapott forgatókönyv a [SNAT kimerülését](load-balancer-outbound-connections.md#snat)eredményezi. Kerülje ezt a második megközelítést, ha körültekintően nem felügyelt.
+A belső Load Balancer bármely harmadik féltől származó proxyval egyesítheti, vagy használhat belső [Application Gateway](../application-gateway/application-gateway-introduction.md) a proxy forgatókönyvekhez HTTP/HTTPS használatával. Habár a probléma megoldásához nyilvános Load Balancer is használható, az eredményül kapott forgatókönyv a [SNAT kimerülését](load-balancer-outbound-connections.md)eredményezi. Kerülje ezt a második megközelítést, ha körültekintően nem felügyelt.
 
 ## <a name="symptom-cannot-change-backend-port-for-existing-lb-rule-of-a-load-balancer-which-has-vm-scale-set-deployed-in-the-backend-pool"></a>Tünet: nem módosítható a háttér-port egy olyan terheléselosztó meglévő LB-szabályához, amely a háttér-készletben üzembe helyezett virtuálisgép-méretezési csoporttal rendelkezik. 
 ### <a name="cause--the-backend-port-cannot-be-modified-for-a-load-balancing-rule-thats-used-by-a-health-probe-for-load-balancer-referenced-by-vm-scale-set"></a>Ok: a háttér-port nem módosítható olyan terheléselosztási szabály esetében, amelyet egy, a virtuálisgép-méretezési csoport által hivatkozott Load Balancer számára használ.

@@ -13,10 +13,9 @@ ms.workload: identity
 ms.date: 04/30/2020
 ms.author: rolyon
 ms.openlocfilehash: a7be51cfceee3bb445b085efd780463c8b6f49be
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/15/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84791197"
 ---
 # <a name="create-or-update-azure-custom-roles-using-the-azure-portal"></a>Egyéni Azure-szerepkörök létrehozása vagy frissítése az Azure Portalon
@@ -33,7 +32,7 @@ Egyéni szerepkörök létrehozásához a következőkre lesz szüksége:
 
 Az Azure-ban több ezer engedély található, amelyeket esetleg belefoglalhat az egyéni szerepkörbe. Az alábbi négy módszer segítségével határozhatja meg az egyéni szerepkörhöz hozzáadni kívánt engedélyeket:
 
-| Metódus | Leírás |
+| Metódus | Description |
 | --- | --- |
 | Megtekintheti a meglévő szerepköröket | Megtekintheti a meglévő szerepköröket, hogy megtudja, milyen engedélyek vannak használatban. További információ: [Azure beépített szerepkörök](built-in-roles.md). |
 | Engedélyek keresése kulcsszó alapján | Ha a Azure Portal használatával hoz létre egyéni szerepkört, az engedélyek kulcsszava alapján is megkereshetők. Megkeresheti például a *virtuális gépet* vagy a *Számlázási* engedélyeket. Ezt a keresési funkciót a [4. lépés: engedélyek című szakasza](#step-4-permissions)tárgyalja. |

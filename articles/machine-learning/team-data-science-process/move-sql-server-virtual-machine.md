@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: be1abe415955b52cbd639faef703e5c2fbd257b6
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84194372"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>Adatok áthelyezés SQL Server-kiszolgálóra Azure-beli virtuális gépeken
@@ -209,7 +208,7 @@ Alább látható az adatbázis biztonsági mentési/visszaállítási lehetősé
 
 ![SQL Server importálási eszköz][1]
 
-## <a name="resources"></a>További források
+## <a name="resources"></a>Erőforrások
 [Adatbázis migrálása SQL Server Azure-beli virtuális gépen](../../azure-sql/virtual-machines/windows/migrate-to-vm-from-sql-server.md)
 
 [Az SQL Server használata az Azure Virtual Machinesben – áttekintés](../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)

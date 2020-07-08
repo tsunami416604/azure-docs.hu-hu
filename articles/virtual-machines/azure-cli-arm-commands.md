@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 04/18/2017
 ms.author: cynthn
 ms.openlocfilehash: a3e5fd1a6934d246463e3fd5ad24db7079ca088d
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84678426"
 ---
 # <a name="azure-classic-cli-commands"></a>Klasszikus Azure CLI-parancsok 
@@ -1519,7 +1518,7 @@ Paraméter beállításai:
 
     provider unregister [options] <namespace>
 
-## <a name="resources"></a>Források
+## <a name="resources"></a>Erőforrások
 **Erőforrás-csoport létrehozása**
 
     resource create [options] <resource-group> <name> <resource-type> <location> <api-version>

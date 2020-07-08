@@ -4,10 +4,9 @@ description: Megtudhatja, hogyan fejlesztheti és tesztelheti Azure Functions a 
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.openlocfilehash: 459162c277a9510297580a99acb8a88b0702a290
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84732470"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Azure Functions fejlesztése a Visual Studio Code használatával
@@ -92,7 +91,7 @@ A Project sablon létrehoz egy projektet a választott nyelven, és telepíti a 
 
 A nyelvtől függően ezek a többi fájl is létrejön:
 
-# <a name="c"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[C#\#](#tab/csharp)
 
 * A függvényt megvalósító [HttpExample.cs-függvénytár-fájl](functions-dotnet-class-library.md#functions-class-library-project) .
 
@@ -124,7 +123,7 @@ Ezen a ponton adhat hozzá bemeneti és kimeneti kötéseket a függvényhez a [
 
 A HTTP-és időzítő-eseményindítók kivételével a kötések a kiterjesztési csomagokban vannak implementálva. Telepítenie kell a kiterjesztési csomagokat a szükséges eseményindítók és kötések számára. A kötési bővítmények telepítésének folyamata a projekt nyelvétől függ.
 
-# <a name="c"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[C#\#](#tab/csharp)
 
 A terminál ablakban futtassa a [DotNet-csomag hozzáadása](/dotnet/core/tools/dotnet-add-package) parancsot a projektben szükséges kiterjesztési csomagok telepítéséhez. A következő parancs telepíti az Azure Storage bővítményt, amely a blob, a várólista és a Table Storage kötéseit valósítja meg.
 
@@ -144,7 +143,7 @@ Hozzáadhat egy új függvényt egy meglévő projekthez az előre meghatározot
 
 A művelet eredménye a projekt nyelvétől függ:
 
-# <a name="c"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[C#\#](#tab/csharp)
 
 A rendszer új C#-függvénytárat (. cs) ad hozzá a projekthez.
 
@@ -160,7 +159,7 @@ A függvényt kiterjesztheti a bemeneti és kimeneti kötések hozzáadásával.
 
 Az alábbi példák egy nevű Storage-várólistához csatlakoznak `outqueue` , ahol a Storage-fiók kapcsolati karakterlánca a `MyStorageConnection` local.settings.jsalkalmazás beállításában van beállítva.
 
-# <a name="c"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[C#\#](#tab/csharp)
 
 A Function metódus frissítésével adja hozzá a következő paramétert a `Run` metódus-definícióhoz:
 
@@ -186,7 +185,7 @@ A Visual Studio Code lehetővé teszi function.jskötések hozzáadását a fáj
 
 A következő példa arra kéri, hogy adjon meg egy új tárolási kimeneti kötést:
 
-| Kérdés | Érték | Leírás |
+| Kérdés | Érték | Description |
 | -------- | ----- | ----------- |
 | **Kötési irány kiválasztása** | `out` | A kötés kimeneti kötés. |
 | **Kötés kijelölése iránysal** | `Azure Queue Storage` | A kötés egy Azure Storage-várólista kötése. |
@@ -250,7 +249,7 @@ A következő lépésekkel teheti közzé a projektjét a speciális létrehozá
 
 1. Az utasításokat követve adja meg a következő információkat:
 
-    | Kérdés | Érték | Leírás |
+    | Kérdés | Érték | Description |
     | ------ | ----- | ----------- |
     | Function app kiválasztása az Azure-ban | Új függvényalkalmazás létrehozása az Azure-ban | A következő üzenetben írjon be egy globálisan egyedi nevet, amely azonosítja az új Function alkalmazást, majd válassza az ENTER billentyűt. A függvényalkalmazás nevéhez használható érvényes karakterek a következők: `a-z`, `0-9` és `-`. |
     | Operációs rendszer kiválasztása | Windows | A Function alkalmazás Windows rendszeren fut. |
@@ -409,7 +408,7 @@ A fenti lépések elvégzése után a mögöttes alapeszközökre irányuló hí
 
 A Azure Functions bővítmény egy hasznos grafikus felületet biztosít az Azure-beli Function apps-alkalmazásokkal való interakcióhoz. Ugyanez a funkció a Command paletta (F1) parancsként is elérhető. Ezek a Azure Functions parancsok elérhetők:
 
-|Azure Functions parancs  | Leírás  |
+|Azure Functions parancs  | Description  |
 |---------|---------|
 |**Új beállítások hozzáadása**  |  Létrehoz egy új Alkalmazásbeállítás-beállítást az Azure-ban. További információ: [Alkalmazásbeállítások közzététele](#publish-application-settings). Előfordulhat, hogy a [beállítást a helyi beállításokra is le kell töltenie](#download-settings-from-azure). |
 | **Központi telepítési forrás konfigurálása** | A Function alkalmazást az Azure-ban csatlakoztatja egy helyi git-tárházhoz. További információ: [Azure functions folyamatos üzembe helyezése](functions-continuous-deployment.md). |

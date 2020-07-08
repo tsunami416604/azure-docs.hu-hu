@@ -7,15 +7,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/04/2020
 ms.openlocfilehash: 20b0bcfe5043d4767199c36796fa1123ed779363
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/15/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84791146"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-with-autoscale-throughput"></a>Azure Cosmos-tárolók és-adatbázisok létrehozása az autoscale átviteli sebességgel
 
-Azure Cosmos DB lehetővé teszi a standard (manuális) vagy az automatikus skálázási átviteli sebesség beállítását az adatbázisokon és a tárolókban. Ez a cikk az autoscale kiépített átviteli sebességének előnyeit és felhasználási eseteit ismerteti. 
+Az Azure Cosmos DB segítségével standard módon (manuálisan) megadott és automatikus skálázással kiosztott átviteli sebességet is beállíthat az adatbázisokhoz és a tárolókhoz. Ez a cikk az automatikus skálázással kiosztott átviteli sebesség előnyeit és használati eseteit ismerteti. 
 
 Az autoscale kiépített átviteli sebessége kiválóan alkalmas olyan kritikus fontosságú számítási feladatokhoz, amelyek változó vagy kiszámíthatatlan forgalmi mintákkal rendelkeznek, és nagy teljesítményű és méretezhető SLA-kat igényelnek. 
 
@@ -63,11 +62,11 @@ A [Azure Portal](how-to-provision-autoscale-throughput.md#enable-autoscale-on-ex
 
 ## <a name="throughput-and-storage-limits-for-autoscale"></a><a id="autoscale-limits"></a>Átviteli sebesség és tárolási korlátok az autoskálázáshoz
 
-Bármely érték esetén `Tmax` az adatbázis vagy a tároló a teljes összeget tárolhatja `0.01 * Tmax GB` . Ezen mennyiségű tárterület elérésekor a maximális RU/s érték automatikusan növekedni fog az új tárolási érték alapján, és nincs hatással az alkalmazásra. 
+Bármely érték esetén `Tmax` az adatbázis vagy a tároló a teljes összeget tárolhatja `0.01 * Tmax GB` . Ennek elérésekor a maximális RU/s érték automatikusan növekedni fog a tárterület új értékének megfelelően, és ez nincs hatással az alkalmazásra. 
 
-Ha például a 50 000 RU/s maximális RU/s értékkel kezdődik (a 5000-50 000 RU/s közötti skálák), akár 500 GB-nyi adat tárolására is képes. Ha túllépi a 500 GB-ot – például a Storage mostantól 600 GB, az új maximális RU/s érték 60 000 RU/s (a 6000-60 000 RU/s-k közötti skálán).
+Ha például 50 000-es maximális RU/s értékkel kezdett (a skálázás 5000 és 50 000 RU/s között történik), akkor legfeljebb 500 GB adatot tárolhat. Ha túllépi az 500 GB-ot (például a tárterület 600 GB), az új maximális RU/s érték 60 000 lesz (a skálázás 6000 és 60 000 RU/s között történik).
 
-Ha az adatbázis-szint átviteli sebességét használja az autoscale értékkel, akkor az első 25 tárolóban megoszthatja az 4000-as (400 – 4000 RU/s közötti skálát), ha nem lépi túl a 40 GB tárterületet. További információért tekintse meg ezt a [dokumentációt](autoscale-faq.md#can-i-change-the-max-rus-on-the-database-or-container) .
+Ha adatbázisszintű átviteli sebességét használ automatikus skálázással, akkor az első 25 tároló legfeljebb 4000 RU/s automatikus skálázású RU/s értéken osztozhat (a skálázás 400 és 4000 RU/s között történik), amíg a tárterület mérete nem haladja meg a 40 GB-ot. További információért tekintse meg ezt a [dokumentációt](autoscale-faq.md#can-i-change-the-max-rus-on-the-database-or-container) .
 
 ## <a name="comparison--containers-configured-with-manual-vs-autoscale-throughput"></a>Összehasonlítás – manuális és automatikus skálázási átviteli sebességgel konfigurált tárolók
 További részletekért tekintse meg ezt a [dokumentációt](how-to-choose-offer.md) a standard (manuális) és az automatikus skálázási teljesítmény választásához.  

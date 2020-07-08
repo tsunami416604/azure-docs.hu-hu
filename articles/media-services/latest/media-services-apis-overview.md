@@ -14,10 +14,9 @@ ms.date: 10/21/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 7ea74c85af062ce00dbccf8a486ce39cbd524bb0
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85515069"
 ---
 # <a name="develop-with-media-services-v3-apis"></a>Fejlesztés Media Services V3 API-kkal
@@ -118,7 +117,7 @@ Egy adott élő esemény vagy bármely hozzá tartozó élő kimenet esetében c
 > [!NOTE]
 > A Azure Media Services v3 SDK-k nem garantáltak, hogy a szál biztonságos legyen. Többszálas alkalmazások fejlesztésekor saját szál-szinkronizálási logikát kell hozzáadnia az ügyfél védeleméhez, vagy a szálon egy új AzureMediaServicesClient objektumot kell használnia. Ügyeljen arra, hogy a kód által az ügyfélnek (például egy .NET-HttpClient-példány) származó opcionális objektumok által bevezetett többszálas problémák is körültekintőek legyenek.
 
-|SDK|Referencia|
+|SDK|Hivatkozás|
 |---|---|
 |[.NET SDK](https://aka.ms/ams-v3-dotnet-sdk)|[.NET-referencia](https://aka.ms/ams-v3-dotnet-ref)|
 |[Java SDK](https://aka.ms/ams-v3-java-sdk)|[Java-referencia](https://aka.ms/ams-v3-java-ref)|
@@ -150,7 +149,7 @@ Tekintse meg a [Azure Media Services közösségi](media-services-community.md) 
 
 Az összes szükséges érték beszerzéséhez tekintse meg a következőt: [hozzáférés Azure Media Services API](access-api-cli-how-to.md)-hoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Kapcsolódás Media Services Javával](configure-connect-java-howto.md)
 * [Kapcsolódás Media Services a .NET-tel](configure-connect-dotnet-howto.md)

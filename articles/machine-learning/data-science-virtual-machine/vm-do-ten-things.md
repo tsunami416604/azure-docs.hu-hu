@@ -10,12 +10,11 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: f59ee4a21581310a0729079cd25afa1c683071cd
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.openlocfilehash: 7d9aced42efefc8651605be44f0091b2f4f2815e
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84552710"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85959279"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Tíz dolog, amit elvégezhet a Windows Data Science Virtual Machine
 
@@ -132,7 +131,7 @@ IrisPredictor(3,2,3,4)
 ### <a name="build-and-operationalize-r-models"></a>R-modellek létrehozása és működővé tenni
 A Data Science Virtual Machinera vagy máshová épített R-modelleket olyan módon helyezheti üzembe, amely a Pythonhoz hasonló módon történik a Azure Machine Learning. A lépések a következők:
 
-1. Hozzon létre egy Settings. JSON fájlt a munkaterület-azonosító és a hitelesítési jogkivonat megadásához. 
+1. Hozzon létre egy settings.jsa fájlon a munkaterület-azonosító és a hitelesítési jogkivonat megadásához. 
 2. Írjon egy burkolót a modell előrejelzési függvényéhez.
 3. Hívja ```publishWebService``` meg a Azure Machine learning könyvtárat, hogy átadja a függvény burkolójának.  
 
@@ -140,9 +139,9 @@ A következő eljárás és kódrészletek használatával beállíthatja, létr
 
 #### <a name="set-up"></a>Beállítás
 
-Hozzon létre egy Settings. JSON fájlt egy, a saját kezdőkönyvtár alatt megnevezett könyvtárban ```.azureml``` . Adja meg a paramétereket a Azure Machine Learning munkaterületen.
+Hozzon létre egy settings.jsfájlt a saját kezdőkönyvtár ```.azureml``` alatt nevű könyvtárban. Adja meg a paramétereket a Azure Machine Learning munkaterületen.
 
-A Settings. JSON fájl szerkezete:
+A következő settings.jsa fájl struktúráján:
 
 ```json
 {"workspace":{
@@ -249,7 +248,9 @@ A DSVM a parancssorban és a grafikus felhasználói felületen is betöltődik 
 
 Ha egy GitHub-tárházból szeretne kódot letölteni, használja a ```git clone``` parancsot. Például a Microsoft által az aktuális könyvtárba közzétett adatelemzési tárház letöltéséhez futtassa a következő parancsot a git Bashben:
 
-    git clone https://github.com/Azure/DataScienceVM.git
+```bash
+git clone https://github.com/Azure/DataScienceVM.git
+```
 
 A Visual Studióban ugyanezt a klónozási műveletet végezheti el. Az alábbi képernyőfelvételen a git-és GitHub-eszközök a Visual Studióban való elérését mutatja be:
 
@@ -267,7 +268,7 @@ Az Azure Blob Storage egy megbízható, gazdaságos felhőalapú tárolási szol
 
    ![Képernyőfelvétel a Storage-fiók létrehozási folyamatáról a Azure Portal](./media/vm-do-ten-things/create-azure-blob.png)
 
-* Ellenőrizze, hogy a parancssori AzCopy eszköz előre van-e telepítve: ```C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy.exe``` . A azcopy. exe fájlt tartalmazó könyvtár már a PATH környezeti változóban van, így az eszköz futtatásakor nem lehet beírni a teljes parancs elérési útját. A AzCopy eszközzel kapcsolatos további információkért tekintse meg a [AzCopy dokumentációját](../../storage/common/storage-use-azcopy.md).
+* Ellenőrizze, hogy a parancssori AzCopy eszköz előre van-e telepítve: ```C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy.exe``` . A azcopy.exet tartalmazó könyvtár már a PATH környezeti változóban van, így az eszköz futtatásakor nem lehet beírni a teljes parancs elérési útját. A AzCopy eszközzel kapcsolatos további információkért tekintse meg a [AzCopy dokumentációját](../../storage/common/storage-use-azcopy.md).
 * Indítsa el a Azure Storage Explorer eszközt. A [Storage Explorer weboldaláról](https://storageexplorer.com/)tölthető le. 
 
    ![A Storage-fiók elérésének Azure Storage Explorer képernyőképe](./media/vm-do-ten-things/AzureStorageExplorer_v4.png)
@@ -276,7 +277,9 @@ Az Azure Blob Storage egy megbízható, gazdaságos felhőalapú tárolási szol
 
 Ha az adatátvitelt a helyi fájlok és a blob Storage között szeretné áthelyezni, a parancssorban vagy a PowerShellben is használhatja a AzCopy-t:
 
-    AzCopy /Source:C:\myfolder /Dest:https://<mystorageaccount>.blob.core.windows.net/<mycontainer> /DestKey:<storage account key> /Pattern:abc.txt
+```powershell
+AzCopy /Source:C:\myfolder /Dest:https://<mystorageaccount>.blob.core.windows.net/<mycontainer> /DestKey:<storage account key> /Pattern:abc.txt
+```
 
 Cserélje le a **C:\MyFolder** -t a fájl tárolásának elérési útjára, a **mystorageaccount** a blob Storage-fiók nevével, a **mycontainer** és a **Storage-fiók kulcsát** a blob Storage-hozzáférési kulcsával. A Storage-fiók hitelesítő adatait a [Azure Portalban](https://portal.azure.com)találja.
 
@@ -437,7 +440,7 @@ Miután elküldte a lekérdezést a kiszolgálónak, a diagram megjeleníti a fe
 
 Az adatkészletnek a Azure Data Lakeba való betöltését követően a [U-SQL nyelv](../../data-lake-analytics/data-lake-analytics-u-sql-get-started.md) használatával kérdezheti le és vizsgálhatja meg az adatokat. Az U-SQL nyelv a T-SQL-hez hasonló, de a C# néhány funkcióját kombinálja, hogy a felhasználók egyéni modulokat és felhasználó által definiált függvényeket tudjanak írni. A szkripteket az előző lépésben használhatja.
 
-Miután elküldte a lekérdezést a kiszolgálónak, tripdata_summary. A CSV a Azure Data Lake Explorerben jelenik meg. Az adatmegjelenítést úgy is megtekintheti, hogy a jobb gombbal a fájlra kattint.
+Miután elküldte a lekérdezést a kiszolgálónak, tripdata_summary.CSV megjelenik Azure Data Lake Explorerben. Az adatmegjelenítést úgy is megtekintheti, hogy a jobb gombbal a fájlra kattint.
 
 ![Képernyőfelvétel a CSV-fájlról Data Lake Explorerben](./media/vm-do-ten-things/USQL_create_summary.png)
 
@@ -458,7 +461,7 @@ A következő előfeltételek végrehajtásával érheti el Azure Cosmos DB a DS
 1. A Azure Cosmos DB Python SDK már telepítve van a DSVM. A frissítéséhez futtassa a ```pip install pydocumentdb --upgrade``` parancsot a parancssorból.
 2. Hozzon létre egy Azure Cosmos DB fiókot és adatbázist a [Azure Portal](https://portal.azure.com).
 3. Töltse le a Azure Cosmos DB adatáttelepítési eszközt a [Microsoft letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=53595) , és bontsa ki a kívánt könyvtárat.
-4. Egy [nyilvános blobban](https://data.humdata.org/dataset/a60ac839-920d-435a-bf7d-25855602699d/resource/7234d067-2d74-449a-9c61-22ae6d98d928/download/volcano.json) tárolt JSON-adatok (vulkáni adatok) importálása Azure Cosmos DBba az áttelepítési eszközhöz a következő parancs-paraméterekkel. (Használja a dtui. exe fájlt abban a könyvtárban, ahol a Azure Cosmos DB adatáttelepítési eszközt telepítette.) Adja meg a forrás és a cél helyét a következő paraméterekkel:
+4. Egy [nyilvános blobban](https://data.humdata.org/dataset/a60ac839-920d-435a-bf7d-25855602699d/resource/7234d067-2d74-449a-9c61-22ae6d98d928/download/volcano.json) tárolt JSON-adatok (vulkáni adatok) importálása Azure Cosmos DBba az áttelepítési eszközhöz a következő parancs-paraméterekkel. (Használja dtui.exe azon a könyvtáron, amelyre a Azure Cosmos DB adatáttelepítési eszközt telepítette.) Adja meg a forrás és a cél helyét a következő paraméterekkel:
    
     `/s:JsonFile /s.Files:https://data.humdata.org/dataset/a60ac839-920d-435a-bf7d-25855602699d/resource/7234d067-2d74-449a-9c61-22ae6d98d928/download/volcano.json /t:DocumentDBBulk /t.ConnectionString:AccountEndpoint=https://[DocDBAccountName].documents.azure.com:443/;AccountKey=[[KEY];Database=volcano /t.Collection:volcano1`
 

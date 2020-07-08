@@ -4,10 +4,9 @@ description: A Azure Container Instances által támogatott YAML-fájlra mutató
 ms.topic: article
 ms.date: 08/12/2019
 ms.openlocfilehash: be78c7d498187486a1502da17faa2b8faa5a0982
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84730526"
 ---
 # <a name="yaml-reference-azure-container-instances"></a>YAML-hivatkozás: Azure Container Instances

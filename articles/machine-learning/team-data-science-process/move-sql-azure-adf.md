@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: a484a6c9a55eac4d166a711a9eae7990c4305cb4
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84194407"
 ---
 # <a name="move-data-from-a-sql-server-database-to-sql-database-with-azure-data-factory"></a>Adatok áthelyezése SQL Server-adatbázisból a SQL Databaseba Azure Data Factory
@@ -61,7 +60,7 @@ Ez az oktatóanyag feltételezi, hogy rendelkezik a következővel:
 >
 
 ## <a name="upload-the-data-to-your-sql-server-instance"></a><a name="upload-data"></a>Az adatok feltöltése a SQL Server-példányba
-A [New York-i taxi-adatkészletet](https://chriswhong.com/open-data/foil_nyc_taxi/) használjuk az áttelepítési folyamat bemutatására. A New York-i taxi adatkészlete az Azure Blob Storage [NYC](https://www.andresmh.com/nyctaxitrips/)-beli, a Poston megjelenő módon érhető el. Az adatoknak két fájlja van, a trip_data. csv fájl, amely tartalmazza az utazás részleteit, valamint a trip_far. csv fájlt, amely tartalmazza az egyes utazásokhoz fizetett viteldíj részleteit. Ezen fájlok mintáját és leírását a [New York-i taxis adatkészletének leírásában](sql-walkthrough.md#dataset)ismertetjük.
+A [New York-i taxi-adatkészletet](https://chriswhong.com/open-data/foil_nyc_taxi/) használjuk az áttelepítési folyamat bemutatására. A New York-i taxi adatkészlete az Azure Blob Storage [NYC](https://www.andresmh.com/nyctaxitrips/)-beli, a Poston megjelenő módon érhető el. Az adatoknak két fájlja van, a trip_data.csv fájl, amely tartalmazza az utazás részleteit, valamint a trip_far.csv fájlt, amely az egyes utakra fizetett viteldíj részleteit tartalmazza. Ezen fájlok mintáját és leírását a [New York-i taxis adatkészletének leírásában](sql-walkthrough.md#dataset)ismertetjük.
 
 Az itt megadott eljárást a saját adataihoz igazíthatja, vagy a New York-i taxi-adatkészletben leírt lépéseket követve hajthatja végre. Ha fel szeretné tölteni a New York-i taxi-adatkészletet a SQL Server-adatbázisába, kövesse az [adatok tömeges importálása SQL Server-adatbázisba](sql-walkthrough.md#dbload)című szakaszban ismertetett eljárást.
 
@@ -138,7 +137,7 @@ A SQL Server tábla definíciója a következő JSON-fájlban van megadva:
 
 Az oszlopnevek nem szerepelnek itt. Az oszlopnevek kiválasztásához adja meg azokat itt is (a részletekért tekintse meg az [ADF dokumentációs](../../data-factory/copy-activity-overview.md) témakört.
 
-Másolja a táblázat JSON-definícióját egy *onpremtabledef. JSON* nevű fájlba, és mentse egy ismert helyre (itt feltételezzük, hogy *C:\temp\onpremtabledef.JSON*). Hozza létre a táblát az ADF-ben a következő Azure PowerShell parancsmaggal:
+Másolja a táblázat JSON-definícióját egy *onpremtabledef.js* fájl nevű fájlba, és mentse azt egy ismert helyre (ezt feltételezi, hogy *C:\temp\onpremtabledef.jsbe*). Hozza létre a táblát az ADF-ben a következő Azure PowerShell parancsmaggal:
 
     New-AzureDataFactoryTable -ResourceGroupName ADFdsprg -DataFactoryName ADFdsp –File C:\temp\onpremtabledef.json
 
@@ -171,7 +170,7 @@ A kimeneti blob helyéhez tartozó táblázat definíciója a következő (ez k�
 }
 ```
 
-Másolja a táblázat JSON-definícióját egy *bloboutputtabledef. JSON* nevű fájlba, és mentse egy ismert helyre (itt feltételezzük, hogy *C:\temp\bloboutputtabledef.JSON*). Hozza létre a táblát az ADF-ben a következő Azure PowerShell parancsmaggal:
+Másolja a táblázat JSON-definícióját egy *bloboutputtabledef.js* fájl nevű fájlba, és mentse azt egy ismert helyre (ezt feltételezi, hogy *C:\temp\bloboutputtabledef.jsbe*). Hozza létre a táblát az ADF-ben a következő Azure PowerShell parancsmaggal:
 
     New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\bloboutputtabledef.json
 
@@ -203,7 +202,7 @@ A SQL Azure kimenetéhez tartozó táblázat definíciója a következő (ez a s
 }
 ```
 
-Másolja a táblázat JSON-definícióját egy *tulajdonsága azuresqltable. JSON* nevű fájlba, és mentse egy ismert helyre (itt feltételezzük, hogy *C:\temp\AzureSqlTable.JSON*). Hozza létre a táblát az ADF-ben a következő Azure PowerShell parancsmaggal:
+Másolja a táblázat JSON-definícióját egy *AzureSqlTable.js* fájl nevű fájlba, és mentse azt egy ismert helyre (ezt feltételezi, hogy *C:\temp\AzureSqlTable.jsbe*). Hozza létre a táblát az ADF-ben a következő Azure PowerShell parancsmaggal:
 
     New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\AzureSqlTable.json
 
@@ -288,7 +287,7 @@ A korábban megadott táblázat-definíciók használatával az ADF-hez tartozó
 }
 ```
 
-Másolja a folyamat JSON-definícióját egy *pipelinedef. JSON* nevű fájlba, és mentse egy ismert helyre (itt feltételezzük, hogy *C:\temp\pipelinedef.JSON*). Hozza létre a folyamatot az ADF-ben a következő Azure PowerShell parancsmaggal:
+Másolja a folyamat JSON-definícióját egy *pipelinedef.js* fájl nevű fájlba, és mentse azt egy ismert helyre (ezt feltételezi, hogy *C:\temp\pipelinedef.jsbe*). Hozza létre a folyamatot az ADF-ben a következő Azure PowerShell parancsmaggal:
 
     New-AzureDataFactoryPipeline  -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\pipelinedef.json
 

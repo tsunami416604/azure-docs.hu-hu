@@ -8,12 +8,11 @@ ms.topic: include
 ms.date: 06/22/2020
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: fe223030b98f95036f01cf69babdeb8a9a84dc2d
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
-ms.translationtype: MT
+ms.openlocfilehash: b317c2a43352a750d4700fad56d5f7d741b2cc7d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85242068"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85805703"
 ---
 | Erőforrás | Korlát |
 | --- | --- |
@@ -23,7 +22,7 @@ ms.locfileid: "85242068"
 |Minimális AzureFirewallSubnet-méret |/26|
 |Porttartomány a hálózat és az alkalmazás szabályaiban|1 - 65535|
 |Nyilvános IP-címek|250 maximális érték. Az összes nyilvános IP-cím használható DNAT-szabályokban, és mind hozzájárulnak az elérhető SNAT-portokhoz.|
-|IP-címek az IP-csoportokban|50 IP-csoport vagy kevesebb: a maximális 5000 egyedi IP-cím minden tűzfal-példány esetében.<br>51 – 100 IP-csoportok: 500 egyedi IP-cím minden tűzfal-példány esetében.<br><br>További információ: [IP-csoportok (előzetes verzió) Azure Firewall](../articles/firewall/ip-groups.md#ip-address-limits)
+|IP-címek az IP-csoportokban|Tűzfalon legfeljebb 100 IP-csoport adható meg.<br>Az egyes IP-csoportokban legfeljebb 5000 egyedi IP-cím vagy IP-előtag adható meg.<br><br>További információ: [IP-csoportok Azure Firewall](../articles/firewall/ip-groups.md#ip-address-limits).
 |Útválasztási táblázat|Alapértelmezés szerint a AzureFirewallSubnet 0.0.0.0/0 útvonalon van, és az NextHopType érték van beállítva az **internethez**.<br><br>Azure Firewall közvetlen internetkapcsolattal kell rendelkeznie. Ha a AzureFirewallSubnet a BGP-n keresztül tanulja meg a helyszíni hálózat alapértelmezett útvonalát, akkor a közvetlen internetkapcsolat **fenntartása érdekében egy** 0.0.0.0/0 UDR kell megadnia a **NextHopType** értékkel. Alapértelmezés szerint a Azure Firewall nem támogatja a kényszerített bújtatást egy helyszíni hálózatra.<br><br>Ha azonban a konfiguráció kényszerített bújtatást igényel egy helyszíni hálózathoz, a Microsoft eseti alapon fogja támogatni azt. Forduljon az ügyfélszolgálathoz, és tekintse át az esetet. Ha elfogadják, engedélyezzük az előfizetését, és gondoskodni kell a tűzfal internetkapcsolatának fenntartásáról.|
 
 <sup>1</sup> Ha meg kell emelnie ezeket a korlátokat, forduljon az Azure ügyfélszolgálatához.

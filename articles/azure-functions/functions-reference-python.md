@@ -5,10 +5,9 @@ ms.topic: article
 ms.date: 12/13/2019
 ms.custom: tracking-python
 ms.openlocfilehash: 26da89628360783e4507c83c3aeaddfc2b0510b7
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84730747"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python fejlesztői útmutató
@@ -251,7 +250,7 @@ def main(req):
 
 További naplózási módszerek érhetők el, amelyek lehetővé teszik a konzolra való írást különböző nyomkövetési szinteken:
 
-| Metódus                 | Leírás                                |
+| Metódus                 | Description                                |
 | ---------------------- | ------------------------------------------ |
 | **`critical(_message_)`**   | KRITIKUS szintű üzenetet ír a gyökérszintű naplózó számára.  |
 | **`error(_message_)`**   | A legfelső szintű naplózó üzenetbe írja a Level hibát.    |

@@ -11,10 +11,9 @@ ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.openlocfilehash: c640adb0758c8dfd9dcdae3e26fd023afd5499f7
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85252270"
 ---
 # <a name="azure-powershell-samples-for-azure-data-factory"></a>Azure PowerShell minták a Azure Data Factory
@@ -25,7 +24,7 @@ A következő táblázat hivatkozásokat tartalmaz a Azure Data Factory Azure Po
 
 | |  |
 |---|---|
-|**Adatok másolása**||
+|**Adatmásolás**||
 |[Blobok másolása egy mappából az Azure-Blob Storage egy másik mappájába](scripts/copy-azure-blob-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Ez a PowerShell-parancsfájl blobokat másol egy Azure-beli mappából Blob Storage egy másik mappába, amely ugyanabban a Blob Storage. |
 |[Adatok másolása SQL Serverból az Azure-ba Blob Storage](scripts/hybrid-copy-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Ez a PowerShell-parancsfájl egy SQL Server adatbázisból másol át egy Azure Blob Storage-ba. |
 |[Tömeges másolás](scripts/bulk-copy-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Ez a példa a PowerShell-szkript egy Azure SQL-adattárházba Azure SQL Database egy adatbázisában lévő több táblázat adatait másolja át. |

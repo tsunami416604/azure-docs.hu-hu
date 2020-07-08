@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c5fe1bf294c34afc2f7e0e0aa911dc05597ab9df
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85252780"
 ---
 # <a name="deploy-a-secure-azure-managed-workstation"></a>Biztonságos, Azure által felügyelt munkaállomás üzembe helyezése
@@ -61,7 +60,7 @@ A biztonságos munkaállomás-rendszergazdai fiók létrehozásakor a fiók elé
 
 A többtényezős hitelesítés megkövetelése legalább a rendszergazdák számára. Lásd: [FELHŐALAPÚ MFA üzembe helyezése](../authentication/howto-mfa-getstarted.md) a megvalósítási útmutatóban.
 
-### <a name="azure-ad-users-and-groups"></a>Azure AD-felhasználók és-csoportok
+### <a name="azure-ad-users-and-groups"></a>Azure AD-felhasználók és -csoportok
 
 1. A Azure Portal keresse meg **Azure Active Directory**  >  **felhasználók**  >  **új felhasználó**elemet.
 1. Hozza létre az eszköz rendszergazdáját a [felhasználói oktatóanyag létrehozása](/Intune/quickstart-create-user)című témakör lépéseit követve.
@@ -71,7 +70,7 @@ A többtényezős hitelesítés megkövetelése legalább a rendszergazdák szá
    * **Felhasználónév** - `secure-ws-admin@identityitpro.com`
    * **Címtárbeli szerepkör**  -  **Korlátozott rendszergazda** , és válassza ki az **Intune rendszergazdai** szerepkört.
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 Ezután két csoportot hoz létre: munkaállomás-felhasználók és munkaállomás-eszközök.
 
@@ -86,14 +85,14 @@ A Azure Portal keresse meg **Azure Active Directory**  >  **csoportok**  >  **ú
 
 1. Adja hozzá a biztonságos munkaállomás rendszergazda felhasználóját:`secure-ws-admin@identityitpro.com`
 1. Hozzáadhat más felhasználókat is, akik a biztonságos munkaállomásokat kezelik.
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 1. A munkaállomás-eszközök csoportban adja meg a következőt:
 
    * **Csoport típusa** – biztonság
    * **Csoport neve** – biztonságos munkaállomások
    * **Tagság típusa** – hozzárendelve
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 ### <a name="azure-ad-device-configuration"></a>Azure AD-eszköz konfigurációja
 
@@ -200,7 +199,7 @@ Az Azure Portalon:
    * Késleltetett újraindítási emlékeztető (nap) – **3**
    * Függőben lévő újraindítások határidejének megadása (nap) – **3**
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 1. A **hozzárendelések** lapon adja hozzá a **biztonságos munkaállomások** csoportot.
 
 Windows Update házirendekkel kapcsolatos további információkért lásd: [házirend CSP-Update](/windows/client-management/mdm/policy-csp-update).
@@ -231,7 +230,7 @@ A megoldás megerősítésének sikeres befejezéséhez töltse le és hajtsa v�
 
 | Profil | Letöltési hely | Filename |
 | --- | --- | --- |
-| Alacsony biztonság | N/A | N/A |
+| Alacsony biztonság | N.A. | N.A. |
 | Fokozott biztonság | https://aka.ms/securedworkstationgit | Enhanced-Workstation-Windows10-(1809). ps1 |
 | Magas biztonság | https://aka.ms/securedworkstationgit | HighSecurityWorkstation-Windows10-(1809). ps1 |
 | Specializált | https://github.com/pelarsen/IntunePowerShellAutomation | DeviceConfiguration_NCSC-Windows10 (1803) SecurityBaseline.ps1 |
@@ -342,7 +341,7 @@ A Microsoft Scripting Center [SetDesktopBackground.ps1](https://gallery.technet.
 1. Válassza a **Konfigurálás** lehetőséget.
    1. **A parancsfájl futtatásának beállítása a bejelentkezett hitelesítő adatokkal** **Igen**értékre.
    1. Válassza az **OK** lehetőséget.
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 1. Válassza a **hozzárendelések**  >  **csoportok lehetőséget**.
    1. Adja hozzá a biztonsági csoport **biztonságos munkaállomásait**.
    1. Kattintson a **Mentés** gombra.
@@ -429,7 +428,7 @@ Az MMA-ügynök üzembe helyezése az Intune PowerShell-parancsfájllal
 1. Válassza a **Konfigurálás** lehetőséget.
    1. **A parancsfájl futtatásának beállítása a bejelentkezett hitelesítő adatokkal** **Igen**értékre.
    1. Válassza az **OK** lehetőséget.
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 1. Válassza a **hozzárendelések**  >  **csoportok lehetőséget**.
    1. Adja hozzá a biztonsági csoport **biztonságos munkaállomásait**.
    1. Kattintson a **Mentés** gombra.
@@ -443,7 +442,7 @@ Ezután be kell állítania Log Analytics az új naplók fogadásához
    * "Microsoft-Windows-AppLocker/MSI és script" > a **tájékoztató** kijelölésének kiválasztása
    * "Microsoft-Windows-AppLocker/csomagolt alkalmazás – központi telepítés" **> kijelölésének** kikapcsolása
    * "Microsoft-Windows-AppLocker/csomagolt alkalmazás – végrehajtás" **> kijelölésének** kikapcsolása
-1. Kattintson a **Mentés** gombra
+1. Válassza a **Mentés** lehetőséget.
 
 Az alkalmazás naplózása a kiválasztott Log Analytics munkaterületen lesz elérhető.
 

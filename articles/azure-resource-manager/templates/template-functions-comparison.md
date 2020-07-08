@@ -4,10 +4,9 @@ description: A Azure Resource Manager-sablonban az értékek összehasonlítás�
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: 01d66f43cf73dcc9228118db5a9b6149b19ee66d
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84677831"
 ---
 # <a name="comparison-functions-for-arm-templates"></a>ARM-sablonok összehasonlító függvények
@@ -93,7 +92,7 @@ Az előző példában az alapértelmezett értékekkel rendelkező kimenet a kö
 | stringOutput | Sztring | alapértelmezett |
 | intOutput | Int | 1 |
 | objectOutput | Objektum | {"első": "default"} |
-| arrayOutput | Tömb | 1 |
+| arrayOutput | Tömb |  [1] |
 | emptyOutput | Logikai | True (Igaz) |
 
 ## <a name="equals"></a>egyenlő
@@ -489,6 +488,6 @@ Az előző példában az alapértelmezett értékekkel rendelkező kimenet a kö
 | checkInts | Logikai | True (Igaz) |
 | checkStrings | Logikai | False (Hamis) |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Egy Azure Resource Manager sablonban található részekről az [ARM-sablonok szerkezetének és szintaxisának megismerését](template-syntax.md)ismertető cikk nyújt tájékoztatást.

@@ -16,10 +16,9 @@ ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 2f835c270930734bf9963a7c7c3168b873eddaf6
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/15/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84791911"
 ---
 # <a name="list-azure-deny-assignments-using-the-rest-api"></a>Azure-beli megtagadási hozzárendelések listázása a REST API használatával
@@ -80,7 +79,7 @@ A megtagadási hozzárendeléssel kapcsolatos információk lekéréséhez a kö
 1. Cserélje le a *{Filter}* helyére azt a feltételt, amelyet alkalmazni szeretne a megtagadási hozzárendelések listájának szűréséhez.
 
     > [!div class="mx-tableFixed"]
-    > | Szűrés | Leírás |
+    > | Szűrés | Description |
     > | --- | --- |
     > | (nincs szűrő) | Felsorolja az összes megtagadási hozzárendelést a (z) felett, és a megadott hatókör alá esik. |
     > | `$filter=atScope()` | Felsorolja a csak a megadott hatókörhöz és a fentiekhez tartozó megtagadási hozzárendeléseket. A nem tartalmazza a megtagadási hozzárendeléseket alhatókörben. |
@@ -102,7 +101,7 @@ A megtagadási hozzárendeléssel kapcsolatos információk lekéréséhez a kö
 1. Cserélje le a *{Filter}* helyére azt a feltételt, amelyet alkalmazni szeretne a megtagadási hozzárendelések listájának szűréséhez. Szűrő szükséges.
 
     > [!div class="mx-tableFixed"]
-    > | Szűrés | Leírás |
+    > | Szűrés | Description |
     > | --- | --- |
     > | `$filter=atScope()` | Csak a gyökérszintű hatókörhöz tartozó megtagadási hozzárendelések listázása. A nem tartalmazza a megtagadási hozzárendeléseket alhatókörben. |
     > | `$filter=denyAssignmentName+eq+'{deny-assignment-name}'` | A megadott nevű megtagadási hozzárendelések listázása. |

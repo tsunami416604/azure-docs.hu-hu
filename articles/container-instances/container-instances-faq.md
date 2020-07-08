@@ -4,12 +4,11 @@ description: A Azure Container Instances szolgáltatással kapcsolatos gyakori k
 author: dkkapur
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: 64dcd3da42083401d7086c1db6f3f930beb9a76d
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
-ms.translationtype: MT
+ms.openlocfilehash: 21643ccfb6bb256e29114435ccb39a009d1b8dae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84447781"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85806601"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>Gyakori kérdések a Azure Container Instances
 
@@ -27,7 +26,7 @@ A tároló lemezképének mérete befolyásolja, hogy mennyi ideig tart a üzemb
 
 Mivel az üzembe helyezési idők egyik fő tényezője a képméret, a méret csökkentésének módját kell keresni. Távolítsa el a nem szükséges rétegeket, vagy csökkentse a képen látható rétegek méretét (egy világosabb alap operációsrendszer-rendszerkép kiválasztásával). Ha például Linux-tárolókat futtat, érdemes lehet a teljes Ubuntu-kiszolgáló helyett az Alpine-t használni alaprendszerképként. Hasonlóképpen, a Windows-tárolók esetén használjon Nano Server Base-rendszerképet, ha lehetséges. 
 
-Azt is ellenőriznie kell, hogy az Azure Container images szolgáltatásban milyen előre gyorsítótárazott lemezképek vannak felsorolva a [gyorsítótárazott lemezképek](/rest/api/container-instances/listcachedimages) API-n keresztül. Előfordulhat, hogy ki lehet kapcsolni egy képréteget az egyik előre gyorsítótárazott rendszerképhez. 
+Azt is ellenőriznie kell, hogy az Azure Container images szolgáltatásban milyen előre gyorsítótárazott lemezképek vannak felsorolva a [gyorsítótárazott lemezképek](/rest/api/container-instances/location/listcachedimages) API-n keresztül. Előfordulhat, hogy ki lehet kapcsolni egy képréteget az egyik előre gyorsítótárazott rendszerképhez. 
 
 A tároló indítási idejének csökkentésével kapcsolatos részletesebb [útmutatásért](container-instances-troubleshooting.md#container-takes-a-long-time-to-start) lásd:.
 
@@ -101,7 +100,7 @@ A tároló csoport időtartamát a rendszer az első tároló rendszerképének 
 
 A mérőműszer leállítása a teljes tároló csoport leállítása után leáll. Ha a tároló csoport egyik tárolója fut, akkor az erőforrásokat abban az esetben tartjuk, ha újra el szeretné indítani a tárolókat. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [További](container-instances-overview.md) információ a Azure Container Instancesról.
 * Azure Container Instances [gyakori problémáinak elhárítása](container-instances-troubleshooting.md) .

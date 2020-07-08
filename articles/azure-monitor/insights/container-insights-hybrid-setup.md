@@ -2,13 +2,12 @@
 title: Hibrid Kubernetes-fürtök konfigurálása a Azure Monitor for containers szolgáltatásban | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan konfigurálható Azure Monitor a tárolók számára Azure Stack vagy más környezetben üzemeltetett Kubernetes-fürtök figyelésére.
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: 063da61c28a67f26d03c7072c0587fdae679d28f
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
-ms.translationtype: MT
+ms.date: 06/30/2020
+ms.openlocfilehash: c7a92476fca2bc61d51ab518c22ff0c436fb78f4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85261001"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85801461"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>Hibrid Kubernetes-fürtök konfigurálása Azure Monitor tárolók számára
 
@@ -16,7 +15,7 @@ A tárolók Azure Monitor széles körű monitorozási élményt biztosítanak a
 
 ## <a name="supported-configurations"></a>Támogatott konfigurációk
 
-A következőt hivatalosan támogatja a tárolók Azure Monitor.
+A következő konfigurációk hivatalosan támogatottak a tárolók Azure Monitor.
 
 - Környezetben
 
@@ -38,7 +37,7 @@ A következőt hivatalosan támogatja a tárolók Azure Monitor.
 
 Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik a következőkkel:
 
-- Egy Log Analytics-munkaterület.
+- [Log Analytics munkaterület](../platform/design-logs-deployment.md).
 
     A tárolók Azure Monitor Log Analytics munkaterületet támogatnak az Azure [Products By Region régióban](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)felsorolt régiókban. Saját munkaterület létrehozásához [Azure Resource Manager](../platform/template-workspace-configuration.md), a [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)vagy a [Azure Portal](../learn/quick-create-workspace.md)használatával hozható létre.
 
@@ -46,7 +45,9 @@ Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik a következőkkel
     >Az azonos nevű fürttel rendelkező több fürt figyelésének engedélyezése ugyanahhoz a Log Analytics-munkaterülethez nem támogatott. A fürt nevének egyedinek kell lennie.
     >
 
-- Tagja a **log Analytics közreműködő szerepkörnek** a tárolók figyelésének engedélyezéséhez. A Log Analytics munkaterület elérésének szabályozásával kapcsolatos további információkért lásd: a [munkaterület hozzáférésének kezelése és a naplózási adatok](../platform/manage-access.md)
+- Tagja a **log Analytics közreműködő szerepkörnek** a tárolók figyelésének engedélyezéséhez. További információ a Log Analytics munkaterület hozzáférésének szabályozásáról: a [munkaterület hozzáférésének kezelése és az adatok naplózása](../platform/manage-access.md).
+
+- A figyelési adat megtekintéséhez [*log Analytics olvasó*](../platform/manage-access.md#manage-access-using-azure-permissions) szerepkörrel kell rendelkeznie a log Analytics munkaterületen, amely a tárolók Azure monitorhoz van konfigurálva.
 
 - A [Helm-ügyfél](https://helm.sh/docs/using_helm/) a megadott Kubernetes-fürthöz tartozó tárolók diagramjának Azure monitor bevezetéséhez.
 
@@ -248,46 +249,58 @@ A következő lépésekkel azonosíthatja a Log Analytics munkaterület teljes e
 
        A figyelés engedélyezése után körülbelül 15 percet is igénybe vehet, mielőtt megtekintheti a fürthöz tartozó állapot mérőszámait.
 
-## <a name="install-the-chart"></a>A diagram telepítése
+## <a name="install-the-helm-chart"></a>A HELM diagram telepítése
+
+Ebben a szakaszban az Azure Monitor tárolók számára telepíti a tároló ügynököt. A továbblépés előtt meg kell határoznia a `omsagent.secret.wsid` paraméterhez szükséges munkaterület-azonosítót és a paraméterhez szükséges elsődleges kulcsot `omsagent.secret.key` . Ezeket az információkat a következő lépések végrehajtásával azonosíthatja, majd a parancs futtatásával telepítheti az ügynököt a HELM diagram használatával.
+
+1. Futtassa a következő parancsot a munkaterület AZONOSÍTÓjának azonosításához:
+
+    `az monitor log-analytics workspace list --resource-group <resourceGroupName>`
+
+    A kimenetben keresse meg a munkaterület nevét **a mezőnév alatt, majd**másolja a log Analytics munkaterület munkaterület-azonosítóját a **Vevőkód**mező alá.
+
+2. Futtassa a következő parancsot a munkaterület elsődleges kulcsának azonosításához:
+
+    `az monitor log-analytics workspace get-shared-keys --resource-group <resourceGroupName> --workspace-name <logAnalyticsWorkspaceName>`
+
+    A kimenetben keresse meg az elsődleges kulcsot a **primarySharedKey**mezőben, majd másolja az értéket.
 
 >[!NOTE]
->A következő parancsok csak a Helm 2-es verziójára érvényesek. A paraméter használata `--name` nem alkalmazható a Helm 3-as verziójára.
-
-A HELM diagram engedélyezéséhez tegye a következőket:
+>A következő parancsok csak a Helm 2-es verziójára érvényesek. A paraméter használata `--name` nem alkalmazható a Helm 3-as verziójára. 
 
 >[!NOTE]
 >Ha a Kubernetes-fürt proxykiszolgálón keresztül kommunikál, konfigurálja a paramétert a `omsagent.proxy` proxykiszolgáló URL-címével. Ha a fürt nem a proxykiszolgálón keresztül kommunikál, akkor nem kell megadnia ezt a paramétert. További információ: proxy- [végpont konfigurálása](#configure-proxy-endpoint) a cikk későbbi részében.
 
-1. Adja hozzá az Azure-diagramok tárházát a helyi listához a következő parancs futtatásával:
+3. Adja hozzá az Azure-diagramok tárházát a helyi listához a következő parancs futtatásával:
 
     ```
     helm repo add incubator https://kubernetes-charts-incubator.storage.googleapis.com/
     ````
 
-2. A következő parancs futtatásával telepítse a diagramot:
+4. A következő parancs futtatásával telepítse a diagramot:
 
     ```
     $ helm install --name myrelease-1 \
-    --set omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterName=<my_prod_cluster> incubator/azuremonitor-containers
+    --set omsagent.secret.wsid=<logAnalyticsWorkspaceId>,omsagent.secret.key=<logAnalyticsWorkspaceKey>,omsagent.env.clusterName=<my_prod_cluster> incubator/azuremonitor-containers
     ```
 
     Ha a Log Analytics munkaterület az Azure China 21Vianet található, futtassa a következő parancsot:
 
     ```
     $ helm install --name myrelease-1 \
-     --set omsagent.domain=opinsights.azure.cn,omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterName=<your_cluster_name> incubator/azuremonitor-containers
+     --set omsagent.domain=opinsights.azure.cn,omsagent.secret.wsid=<logAnalyticsWorkspaceId>,omsagent.secret.key=<logAnalyticsWorkspaceKey>,omsagent.env.clusterName=<your_cluster_name> incubator/azuremonitor-containers
     ```
 
     Ha az Log Analytics munkaterület az Azure US Governmentben van, futtassa a következő parancsot:
 
     ```
     $ helm install --name myrelease-1 \
-    --set omsagent.domain=opinsights.azure.us,omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterName=<your_cluster_name> incubator/azuremonitor-containers
+    --set omsagent.domain=opinsights.azure.us,omsagent.secret.wsid=<logAnalyticsWorkspaceId>,omsagent.secret.key=<logAnalyticsWorkspaceKey>,omsagent.env.clusterName=<your_cluster_name> incubator/azuremonitor-containers
     ```
 
 ### <a name="enable-the-helm-chart-using-the-api-model"></a>A Helm diagram engedélyezése az API-modell használatával
 
-Megadhat egy addont az AK-motor fürt specifikációjának JSON-fájljában (más néven API-modellként). Ebben az addon-ben adja meg az Log Analytics-munkaterület Base64 kódolású verzióját `WorkspaceGUID` és a `WorkspaceKey` begyűjtött megfigyelési adatokat tároló munkaterületet.
+Megadhat egy addont az AK-motor fürt specifikációjának JSON-fájljában (más néven API-modellként). Ebben az addon-ben adja meg az Log Analytics-munkaterület Base64 kódolású verzióját `WorkspaceGUID` és a `WorkspaceKey` begyűjtött megfigyelési adatokat tároló munkaterületet. Az `WorkspaceGUID` előző szakaszban található és az `WorkspaceKey` 1. és a 2. lépést is megtalálhatja.
 
 Az Azure Stack hub-fürt támogatott API-definíciói a következő példában találhatók: [kubernetes-container-monitoring_existing_workspace_id_and_key.js](https://github.com/Azure/aks-engine/blob/master/examples/addons/container-monitoring/kubernetes-container-monitoring_existing_workspace_id_and_key.json). Pontosabban keresse meg az **addons** tulajdonságot a **kubernetesConfig**-ben:
 
@@ -299,7 +312,7 @@ Az Azure Stack hub-fürt támogatott API-definíciói a következő példában t
              "name": "container-monitoring",
              "enabled": true,
              "config": {
-               "workspaceGuid": "<Azure Log Analytics Workspace Guid in Base-64 encoded>",
+               "workspaceGuid": "<Azure Log Analytics Workspace Id in Base-64 encoded>",
                "workspaceKey": "<Azure Log Analytics Workspace Key in Base-64 encoded>"
              }
            }

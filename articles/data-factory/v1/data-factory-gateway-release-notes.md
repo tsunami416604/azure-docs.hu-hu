@@ -12,10 +12,9 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 405beb5cb8c2e74951aa54ba371be04d290ad3a2
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84194467"
 ---
 # <a name="release-notes-for-data-management-gateway"></a>Az adatkezelési átjáró kibocsátási megjegyzései
@@ -26,7 +25,7 @@ A modern Adatintegráció egyik kihívása a helyszíni és a felhőbe irányul�
 
 A adatkezelés-átjáróval és annak használatával kapcsolatos részletes információkért tekintse meg a következő cikkeket:
 
-*  [Adatkezelési átjáró](data-factory-data-management-gateway.md)
+*  [Átjáró adatkezelés](data-factory-data-management-gateway.md)
 *  [Az adatáthelyezés a helyszíni és a felhő között Azure Data Factory használatával](data-factory-move-data-between-onprem-and-cloud.md)
 
 

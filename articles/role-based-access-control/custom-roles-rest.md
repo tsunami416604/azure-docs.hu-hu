@@ -16,10 +16,9 @@ ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: b459f44308827308c28687db3c3fc33df470ea8d
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/15/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84790188"
 ---
 # <a name="create-or-update-azure-custom-roles-using-the-rest-api"></a>Egyéni Azure-szerepkörök létrehozása vagy frissítése a REST API használatával
@@ -44,7 +43,7 @@ A címtárban lévő összes egyéni szerepkör listázásához használja a [sz
 1. Cserélje le a *{Filter}* értéket a szerepkör típusára.
 
     > [!div class="mx-tableFixed"]
-    > | Szűrés | Leírás |
+    > | Szűrés | Description |
     > | --- | --- |
     > | `$filter=type+eq+'CustomRole'` | Szűrés a CustomRole típusa alapján |
 
@@ -71,7 +70,7 @@ Egy hatókörben lévő egyéni szerepkörök listázásához használja a [szer
 1. Cserélje le a *{Filter}* értéket a szerepkör típusára.
 
     > [!div class="mx-tableFixed"]
-    > | Szűrés | Leírás |
+    > | Szűrés | Description |
     > | --- | --- |
     > | `$filter=type+eq+'CustomRole'` | Szűrés a CustomRole típusa alapján |
 
@@ -98,7 +97,7 @@ Ha a megjelenített nevével szeretne információt kapni egy egyéni szerepkör
 1. Cserélje le a *{Filter}* helyére a szerepkör megjelenített nevét.
 
     > [!div class="mx-tableFixed"]
-    > | Szűrés | Leírás |
+    > | Szűrés | Description |
     > | --- | --- |
     > | `$filter=roleName+eq+'{roleDisplayName}'` | Használja a szerepkör pontos megjelenítendő neve URL-kódolású formáját. Például:`$filter=roleName+eq+'Virtual%20Machine%20Contributor'` |
 

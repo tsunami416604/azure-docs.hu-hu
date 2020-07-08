@@ -9,10 +9,9 @@ ms.date: 04/21/2020
 ms.author: robinsh
 ms.custom: amqp
 ms.openlocfilehash: d00e3dc5e43eb6978f6835ac4b7d101e4a42a226
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/15/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84792021"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Az Azure IoT Hub állapotának monitorozása és a problémák gyorsan diagnosztizálása
@@ -348,7 +347,7 @@ IoT Hub rögzíti ezt a naplót, ha egy érvényes nyomkövetési tulajdonságok
 
 Itt `durationMs` nem számítja ki a számítást, mert előfordulhat, hogy a IoT hub órája nem szinkronizálható az eszköz órájával, így az időtartam kiszámítása félrevezető lehet. Az `properties` eszközről a felhőbe irányuló késések rögzítése érdekében a szakasz időbélyegei alapján javasolt a logikát írni.
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Típus | Description |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **messageSize** | Egész szám | Az eszközről a felhőbe irányuló üzenet mérete bájtban |
 | **deviceId** | ASCII 7 bites alfanumerikus karakterek karakterlánca | Az eszköz identitása |
@@ -382,7 +381,7 @@ IoT Hub rögzíti ezt a naplót, ha az érvényes nyomkövetési tulajdonságoka
 
 A `properties` szakaszban ez a napló további információkat tartalmaz az üzenetek beérkezéséről.
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Típus | Description |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **isRoutingEnabled** | Sztring | Igaz vagy hamis érték esetén azt jelzi, hogy engedélyezve van-e az üzenet-útválasztás a IoT Hub |
 | **parentSpanId** | Sztring | A fölérendelt üzenet [span-azonosítója](https://w3c.github.io/trace-context/#parent-id) , amely ebben az esetben a D2C-üzenet nyomkövetése lenne |
@@ -414,7 +413,7 @@ IoT Hub rögzíti ezt a naplót, ha az [Útválasztás](iot-hub-devguide-message
 
 A `properties` szakaszban ez a napló további információkat tartalmaz az üzenetek beérkezéséről.
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Típus | Description |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **Végpontneve** | Sztring | Az útválasztási végpont neve |
 | **endpointType** | Sztring | Az útválasztási végpont típusa |

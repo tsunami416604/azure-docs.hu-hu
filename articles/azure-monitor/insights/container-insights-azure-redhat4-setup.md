@@ -2,13 +2,12 @@
 title: Az Azure Red Hat OpenShift v4. x konfigurálása az Azure Monitor for containers szolgáltatással | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan konfigurálhatja a Kubernetes-fürtök figyelését az Azure Red Hat OpenShift 4-es vagy újabb verziójában üzemeltetett Azure Monitor.
 ms.topic: conceptual
-ms.date: 06/15/2020
-ms.openlocfilehash: 7eee7ba6ba01679f72d1249058e4101b38d8461d
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
-ms.translationtype: MT
+ms.date: 06/30/2020
+ms.openlocfilehash: 49097d96ecf58d7c5bf7d1a60ff01fc7182587c6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85508010"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85801478"
 ---
 # <a name="configure-azure-red-hat-openshift-v4x-with-azure-monitor-for-containers"></a>Az Azure Red Hat OpenShift v4. x konfigurálása Azure Monitor for containers szolgáltatással
 
@@ -39,6 +38,10 @@ A tárolók Azure Monitor támogatja az Azure Red Hat OpenShift v4. x figyelés�
 
 - A [Kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) parancssori eszköz
 
+- [Log Analytics munkaterület](../platform/design-logs-deployment.md).
+
+    A tárolók Azure Monitor Log Analytics munkaterületet támogatnak az Azure [Products By Region régióban](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)felsorolt régiókban. Saját munkaterület létrehozásához [Azure Resource Manager](../platform/template-workspace-configuration.md), a [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)vagy a [Azure Portal](../learn/quick-create-workspace.md)használatával hozható létre.
+
 - A tárolók Azure Monitor szolgáltatásainak engedélyezéséhez és eléréséhez legalább egy Azure- *közreműködő* szerepkörrel kell rendelkeznie az Azure-előfizetésben, valamint egy [*log Analytics közreműködő*](../platform/manage-access.md#manage-access-using-azure-permissions) szerepkört a log Analytics munkaterületen, amely a tárolók Azure monitor van konfigurálva.
 
 - A figyelési adat megtekintéséhez [*log Analytics olvasó*](../platform/manage-access.md#manage-access-using-azure-permissions) szerepkörrel kell rendelkeznie a log Analytics munkaterületen, amely a tárolók Azure monitorhoz van konfigurálva.
@@ -55,17 +58,27 @@ Ha engedélyezni szeretné az Azure-ban a megadott bash-parancsfájllal üzembe 
 
 1. Töltse le és mentse a helyi mappába a parancsfájlt, amely a következő parancs futtatásával konfigurálja a fürtöt a figyelési bővítménnyel:
 
-    `curl -LO https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/docs/aroV4/onboarding_azuremonitor_for_containers.sh.`
+    `curl -o enable-monitoring.sh -L https://aka.ms/enable-monitoring-bash-script`
 
-1. A fürt *Kube-környezetének* azonosításához a fürthöz való sikeres *oC-bejelentkezés* után futtassa a következő parancsot:
+1. A fürt *kubeContext* azonosításához futtassa a következő parancsokat.
 
-    `kubectl config current-context`
-    
+    ```
+    adminUserName=$(az aro list-credentials -g $clusterResourceGroup -n $clusterName --query 'kubeadminUsername' -o tsv)
+    adminPassword=$(az aro list-credentials -g $clusterResourceGroup -n $clusterName --query 'kubeadminPassword' -o tsv)
+    apiServer=$(az aro show -g $clusterResourceGroup -n $clusterName --query apiserverProfile.url -o tsv)
+    oc login $apiServer -u $adminUserName -p $adminPassword
+    # openshift project name for azure monitor for containers
+    openshiftProjectName="azure-monitor-for-containers"
+    oc new-project $openshiftProjectName
+    # get the kube config context
+    kubeContext=$(oc config current-context)
+    ```
+
 1. Másolja az értéket későbbi használatra.
 
 ### <a name="integrate-with-an-existing-workspace"></a>Integrálás meglévő munkaterülettel
 
-Ebben a szakaszban engedélyezheti a fürt figyelését a korábban letöltött bash-szkript használatával. Egy meglévő Log Analytics munkaterülettel való integrációhoz először adja meg a paraméterhez szükséges Log Analytics munkaterület teljes erőforrás-AZONOSÍTÓját `workspaceResourceId` , majd futtassa a parancsot, hogy engedélyezze a figyelési bővítményt a megadott munkaterületen. 
+Ebben a szakaszban engedélyezheti a fürt figyelését a korábban letöltött bash-szkript használatával. Egy meglévő Log Analytics munkaterülettel való integrációhoz először adja meg a paraméterhez szükséges Log Analytics munkaterület teljes erőforrás-AZONOSÍTÓját `logAnalyticsWorkspaceResourceId` , majd futtassa a parancsot, hogy engedélyezze a figyelési bővítményt a megadott munkaterületen.
 
 Ha nem rendelkezik a megadható munkaterülettel, ugorjon az [integrálás az alapértelmezett munkaterülettel](#integrate-with-the-default-workspace) szakaszra, és hagyja, hogy a szkript létrehoz egy új munkaterületet.
 
@@ -99,49 +112,58 @@ Ha nem rendelkezik a megadható munkaterülettel, ugorjon az [integrálás az al
 
 1. A kimenetben keresse meg a munkaterület nevét, majd másolja az adott Log Analytics munkaterület teljes erőforrás-AZONOSÍTÓját a mező **azonosítója**alá.
 
-1. A figyelés engedélyezéséhez futtassa a következő parancsot. Cserélje le a és a `azureAroV4ResourceId` paraméterek értékeit `workspaceResourceId` . 
+1. A figyelés engedélyezéséhez futtassa a következő parancsot. Cserélje le a `azureAroV4ClusterResourceId` , `logAnalyticsWorkspaceResourceId` , és paraméterek értékeit `kubeContext` .
 
-    `bash onboarding_azuremonitor_for_containers.sh <kube-context> <azureAroV4ResourceId> <workspaceResourceId>`
+    ```bash
+    export azureAroV4ClusterResourceId=“/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.RedHatOpenShift/OpenShiftClusters/<clusterName>”
+    export logAnalyticsWorkspaceResourceId=“/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/microsoft.operationalinsights/workspaces/<workspaceName>”
+    export kubeContext="<kubeContext name of your ARO v4 cluster>"  
+    ```
 
     Példa:
 
-    `bash onboarding_azuremonitor_for_containers.sh MyK8sTestCluster /subscriptions/0fb60ef2-03cc-4290-b595-e71108e8f4ce/resourceGroups/test-aro-v4-rg/providers/Microsoft.RedHatOpenShift/OpenShiftClusters/test-aro-v4 /subscriptions/0fb60ef2-03cc-4290-b595-e71108e8f4ce/resourcegroups/test-la-workspace-rg/providers/microsoft.operationalinsights/workspaces/test-la-workspace`
+    `bash enable-monitoring.sh --resource-id $azureAroV4ClusterResourceId --kube-context $kubeContext --workspace-id $logAnalyticsWorkspaceResourceId`
 
 A figyelés engedélyezése után körülbelül 15 percet is igénybe vehet, mielőtt megtekintheti a fürthöz tartozó állapot-mérőszámokat.
 
 ### <a name="integrate-with-the-default-workspace"></a>Integrálás az alapértelmezett munkaterülettel
 
-Ebben a szakaszban a letöltött bash-szkript használatával engedélyezheti az Azure Red Hat OpenShift v4. x fürt figyelését. 
+Ebben a szakaszban a letöltött bash-szkript használatával engedélyezheti az Azure Red Hat OpenShift v4. x fürt figyelését.
 
-Ebben a példában nem kell előzetesen létrehoznia vagy megadnia egy meglévő munkaterületet. Ez a parancs leegyszerűsíti a folyamatot azáltal, hogy létrehoz egy alapértelmezett munkaterületet a fürt előfizetésének alapértelmezett erőforrás-csoportjában, ha még nem létezik a régióban. 
+Ebben a példában nem kell előzetesen létrehoznia vagy megadnia egy meglévő munkaterületet. Ez a parancs leegyszerűsíti a folyamatot azáltal, hogy létrehoz egy alapértelmezett munkaterületet a fürt előfizetésének alapértelmezett erőforrás-csoportjában, ha még nem létezik a régióban.
 
 A létrehozott alapértelmezett munkaterület a *alapértelmezettmunkaterület \<GUID> - \<Region> *formátuma.  
 
-`bash onboarding_azuremonitor_for_containers.sh <kube-context> <azureAroV4ResourceId>`
+Cserélje le a és a `azureAroV4ClusterResourceId` paraméterek értékeit `kubeContext` .
 
-Példa:
+```bash
+export azureAroV4ClusterResourceId=“/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.RedHatOpenShift/OpenShiftClusters/<clusterName>”
+export kubeContext="<kubeContext name of your ARO v4 cluster>"
+```
 
-`bash onboarding_azuremonitor_for_containers.sh MyK8sTestCluster /subscriptions/0fb60ef2-03cc-4290-b595-e71108e8f4ce/resourceGroups/test-aro-v4-rg/providers/Microsoft.RedHatOpenShift/OpenShiftClusters/test-aro-v4`
+Például:
+
+`bash enable-monitoring.sh --resource-id $azureAroV4ClusterResourceId --kube-context $kubeContext`
 
 A figyelés engedélyezése után körülbelül 15 percet is igénybe vehet, mielőtt megtekintheti a fürthöz tartozó állapot mérőszámait.
 
-### <a name="from-the-azure-portal"></a>Az Azure Portalról
+### <a name="enable-monitoring-from-the-azure-portal"></a>A Azure Portal figyelésének engedélyezése
 
-A tárolók Azure Monitor több fürtből álló nézete kiemeli az Azure Red Hat OpenShift-fürtöket, amelyeken a **nem figyelt fürtök** lapon nincs engedélyezve a figyelés. A fürt melletti **Engedélyezés** lehetőség nem kezdeményezi a figyelés bevezetését a portálról. A rendszer átirányítja erre a cikkre, hogy manuálisan engedélyezze a figyelést a jelen cikk korábbi részében ismertetett lépések követésével.
+A tárolók Azure Monitor több fürtből álló nézete kiemeli az Azure Red Hat OpenShift-fürtöket, amelyek nem rendelkeznek figyeléssel a nem **figyelt fürtök** lapon. A fürt melletti **Engedélyezés** lehetőség nem kezdeményezi a figyelés bevezetését a portálról. A rendszer átirányítja erre a cikkre, hogy manuálisan engedélyezze a figyelést a jelen cikk korábbi részében ismertetett lépések követésével.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-1. A bal oldali ablaktáblán vagy a kezdőlapon válassza a **Azure monitor**lehetőséget. 
+1. A bal oldali ablaktáblán vagy a kezdőlapon válassza a **Azure monitor**lehetőséget.
 
 1. Az **áttekintések** szakaszban válassza a **tárolók**lehetőséget.
 
-1. A **figyelő-tárolók** lapon válassza a **nem figyelt fürtök**lehetőséget.
+1. A **figyelő-tárolók** lapon válassza a nem **figyelt fürtök**lehetőséget.
 
-1. A nem figyelt fürtök listájában jelölje ki a fürtöt, majd válassza az **Engedélyezés**lehetőséget. 
+1. A nem figyelt fürtök listájában jelölje ki a fürtöt, majd válassza az **Engedélyezés**lehetőséget.
 
     A lista eredményeit a **fürt típusa** oszlopban található **ARO** érték megkeresésével azonosíthatja. Miután kiválasztotta az **Engedélyezés**lehetőséget, a rendszer átirányítja erre a cikkre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Most, hogy engedélyezte a figyelést, hogy összegyűjtse a RedHat OpenShift 4. x-es verzióját és a rajtuk futó munkaterheléseket, megtudhatja, [hogyan használhatja](container-insights-analyze.md) a Azure monitor for containers szolgáltatást.
 

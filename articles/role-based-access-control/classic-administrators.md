@@ -15,10 +15,9 @@ ms.date: 01/22/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 298ec15700537f2368ef33ead267e85f5f22bfd7
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/15/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84791792"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Klasszikus Azure-előfizetés rendszergazdái
@@ -27,7 +26,7 @@ A Microsoft azt javasolja, hogy az Azure szerepköralapú hozzáférés-vezérl�
 
 Ez a cikk a társ-rendszergazda és a szolgáltatás-rendszergazdai szerepkörök hozzáadását és módosítását, valamint a fiók rendszergazdájának megtekintését ismerteti.
 
-## <a name="add-a-co-administrator"></a>Társ-rendszergazda hozzáadása
+## <a name="add-a-co-administrator"></a>Társadminisztrátor hozzáadása
 
 > [!TIP]
 > Csak akkor kell hozzáadnia egy társ-rendszergazdát, ha a felhasználónak az [Azure Service Management PowerShell-modul](https://docs.microsoft.com/powershell/module/servicemanagement/azure)használatával kell kezelnie a klasszikus Azure-telepítést. Ha a felhasználó csak a klasszikus erőforrások kezeléséhez használja a Azure Portal, nem kell hozzáadnia a felhasználó klasszikus rendszergazdáját.

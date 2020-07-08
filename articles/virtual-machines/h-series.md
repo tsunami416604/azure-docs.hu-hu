@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 03/10/2020
 ms.author: jushiman
 ms.openlocfilehash: f79dcb8886985d60a1ed82e1a77d231cf7d3ad24
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84678681"
 ---
 # <a name="h-series"></a>H-sorozat
@@ -96,6 +95,6 @@ Az Azure Marketplace számos Linux-disztribúcióval rendelkezik, amelyek támog
 - [Nagy teljesítményű számítás](sizes-hpc.md)
 - [Előző generációk](sizes-previous-gen.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.

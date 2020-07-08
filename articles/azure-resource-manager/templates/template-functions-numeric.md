@@ -4,10 +4,9 @@ description: A Azure Resource Manager-sablonban a számokkal való munkához has
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: 00b44d971a487a0bbec27f3fc2d0746cedd6f874
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84677916"
 ---
 # <a name="numeric-functions-for-arm-templates"></a>ARM-sablonok numerikus függvények
@@ -563,7 +562,7 @@ Az előző példában az alapértelmezett értékekkel rendelkező kimenet a kö
 | ---- | ---- | ----- |
 | aleredmény | Int | 4 |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Egy Azure Resource Manager sablonban található részekről az [ARM-sablonok szerkezetének és szintaxisának megismerését](template-syntax.md)ismertető cikk nyújt tájékoztatást.
 * Ha egy adott típusú erőforrás létrehozásakor meghatározott számú alkalommal szeretné megismételni a problémát, tekintse meg a [Azure Resource Manager erőforrások több példányának létrehozása](copy-resources.md)című témakört.

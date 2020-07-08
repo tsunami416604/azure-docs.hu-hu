@@ -4,10 +4,9 @@ description: Bemutatja, hogyan lehet átadni egy titkos kulcsot a Key vaultból 
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.openlocfilehash: eb57e680090a38a5be725daa7b3a118039aa35f6
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84677865"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>A Azure Key Vault használata a biztonságos paraméterek értékének átadására az üzembe helyezés során
@@ -373,7 +372,7 @@ A következő sablon dinamikusan létrehozza a Key Vault-azonosítót, és param
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A Key vaultokkal kapcsolatos általános információkért lásd: [Mi az Azure Key Vault?](../../key-vault/general/overview.md)
 - A legfontosabb titkokra hivatkozó példákat itt talál: [Key Vault példák](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples).

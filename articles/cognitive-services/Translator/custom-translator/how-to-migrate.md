@@ -9,12 +9,11 @@ ms.subservice: translator-text
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: face605d756d2107c04b3df0c072602ac91d147d
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
-ms.translationtype: MT
+ms.openlocfilehash: 02e6d776dbb47ee8e30409f6b8adc5a61fc5fe52
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83992895"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958922"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Központi munkaterület és projektek áttelepíthetők az egyéni Fordítóba
 
@@ -134,14 +133,14 @@ Ez a táblázat a Microsoft Translator hub és az egyéni fordító funkcióit h
 |:-----|:----:|:----:|
 |Testreszabási funkció állapota    | Általános elérhetőség    | Általános elérhetőség |
 | Szöveges API-verzió    | 2. verzió     | V3  |
-| SMT testreszabása    | Igen    | Nem |
-| NMT testreszabása    | Nem    | Igen |
-| Új Unified Speech Services testreszabása    | Nem    | Igen |
+| SMT testreszabása    | Yes    | Nem |
+| NMT testreszabása    | Nem    | Yes |
+| Új Unified Speech Services testreszabása    | Nem    | Yes |
 | Nincs nyomkövetés | Igen | Igen |
 
 ## <a name="new-languages"></a>Új nyelvek
 
-Ha Ön egy Közösség vagy szervezet, amely a Microsoft Translator új nyelvi rendszerének létrehozásán dolgozik, további információkért tekintse meg a [custommt@microsoft.com](mailto:custommt@microsoft.com) következőt:.
+Ha Ön olyan Közösség vagy szervezet, amely a fordító új nyelvi rendszerének létrehozására dolgozik, további információkért tekintse meg a [custommt@microsoft.com](mailto:custommt@microsoft.com) következőt:.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -5,10 +5,9 @@ services: container-service
 ms.topic: article
 ms.date: 07/18/2019
 ms.openlocfilehash: e87470e577f4d2613b43cc02755ccc2d500c0ef8
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84730016"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Fürt automatikus méretezése az alkalmazások igényeinek kielégítéséhez az Azure Kubernetes szolgáltatásban (ak)
@@ -107,7 +106,7 @@ Figyelje az alkalmazások és szolgáltatások teljesítményét, és állítsa 
 
 A fürt autoskálázásának részletesebb adatait úgy is konfigurálhatja, hogy módosítja a teljes fürtre kiterjedő autoskálázási profil alapértelmezett értékeit. Egy leskálázási esemény például akkor fordul elő, ha a csomópontok 10 perc elteltével vannak kihasználva. Ha 15 percenként futtatott munkaterhelésekkel rendelkezett, érdemes lehet módosítani az autoskálázási profilt úgy, hogy a használatban lévő csomópontok között 15 vagy 20 percet is igénybe vehet. Ha engedélyezi a fürt automéretezőjét, a rendszer az alapértelmezett profilt használja, kivéve, ha eltérő beállításokat ad meg. A fürt autoskálázási profilja a következő beállításokat tudja frissíteni:
 
-| Beállítás                          | Leírás                                                                              | Alapértelmezett érték |
+| Beállítás                          | Description                                                                              | Alapértelmezett érték |
 |----------------------------------|------------------------------------------------------------------------------------------|---------------|
 | vizsgálat – intervallum                    | A fürt fel-vagy leskálázásának újraértékelésének gyakorisága                                    | 10 másodperc    |
 | vertikális leskálázás – késleltetés utáni Hozzáadás       | A vertikális felskálázást követő kiértékelés utáni időtartam                               | 10 perc    |

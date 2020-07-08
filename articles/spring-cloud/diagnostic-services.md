@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: brendm
 ms.openlocfilehash: 57850b45820ec259337a8ad5b67bfebfd6762c24
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/15/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84790585"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>Naplók és mérőszámok elemzése diagnosztikai beállításokkal
@@ -28,7 +27,7 @@ Válassza ki a figyelni kívánt naplózási kategóriát és metrikai kategóri
 
 ## <a name="logs"></a>Naplók
 
-|Napló | Leírás |
+|Napló | Description |
 |----|----|
 | **ApplicationConsole** | Az összes felhasználói alkalmazás konzoljának naplója. |
 | **SystemLogs** | Jelenleg csak a [Spring Cloud config Server](https://cloud.spring.io/spring-cloud-config/reference/html/#_spring_cloud_config_server) naplózza ezt a kategóriát. |

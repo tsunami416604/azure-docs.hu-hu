@@ -9,10 +9,9 @@ ms.date: 03/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.openlocfilehash: 4f5be29dd42b03e86abb2be392ea42f875536fb5
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84193522"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Hozzáférés-vezérlés a 2. generációs Azure Data Lake Storage-ben
@@ -123,12 +122,12 @@ Az Data Lake Storage Gen2 által használt POSIX stílusú modellben az elemhez 
 
 A következő táblázat felsorolja azokat a gyakori forgatókönyveket, amelyekkel megtudhatja, hogy mely engedélyek szükségesek bizonyos műveletek elvégzéséhez egy Storage-fiókon.
 
-|    Művelet             |    /    | Oregon | Portland | A. txt fájl     |
+|    Művelet             |    /    | Oregon | Portland | Data.txt     |
 |--------------------------|---------|----------|-----------|--------------|
-| Az adatgyűjtés. txt fájl olvasása            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
-| Hozzáfűzés az adat. txt fájlhoz       |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
-| A. txt fájl törlése          |   `--X`   |   `--X`    |  `-WX`      | `---`          |
-| Adatfájl létrehozása. txt          |   `--X`   |   `--X`    |  `-WX`      | `---`          |
+| Olvasási Data.txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
+| Hozzáfűzés Data.txt       |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
+| Data.txt törlése          |   `--X`   |   `--X`    |  `-WX`      | `---`          |
+| Data.txt létrehozása          |   `--X`   |   `--X`    |  `-WX`      | `---`          |
 | Listáját                   |   `R-X`   |   `---`    |  `---`      | `---`          |
 | /Oregon/listázása           |   `--X`   |   `R-X`    |  `---`      | `---`          |
 | /Oregon/Portland/listázása  |   `--X`   |   `--X`    |  `R-X`      | `---`          |

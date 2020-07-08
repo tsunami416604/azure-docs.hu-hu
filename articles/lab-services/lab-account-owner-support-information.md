@@ -4,10 +4,9 @@ description: Azt ismerteti, hogyan állíthatja be a labor-fiók tulajdonosa a t
 ms.date: 06/26/2020
 ms.topic: how-to
 ms.openlocfilehash: 17456f61352b1e26a33c042b27faa2d3aa44d73a
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85445083"
 ---
 # <a name="set-up-support-information-lab-account-owner-in-azure-lab-services"></a>Támogatási információk beállítása (labor-fiók tulajdonosa Azure Lab Services)
@@ -21,7 +20,7 @@ A támogatási információk a következők:
 - További utasítások 
 
 ## <a name="specify-support-information"></a>Támogatási információk meghatározása
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be [Azure Portalba](https://portal.azure.com).
 2. A keresési sávon írja be a **labor Services**kifejezést, majd a keresési eredmények között válassza a **labor Services** elemet. 
 3. Válassza ki a labor-fiókját a labor-fiókok listájából. 
 4. Váltson a **belső támogatás** lapra, hajtsa végre a következő lépéseket:

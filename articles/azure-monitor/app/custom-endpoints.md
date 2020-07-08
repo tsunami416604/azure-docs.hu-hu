@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 07/26/2019
 ms.custom: references_regions
 ms.openlocfilehash: d0c9467497a8bd108d37a340d2cdbb887061e3a6
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84194835"
 ---
 # <a name="application-insights-overriding-default-endpoints"></a>Application Insights felülbírálja az alapértelmezett végpontokat
@@ -25,7 +24,7 @@ Ha Application Insightsről szeretne adatokat küldeni bizonyos régiókba, fel�
 # <a name="net"></a>[.NET](#tab/net)
 
 > [!NOTE]
-> Az applicationinsights. config fájlt automatikusan felülírja a rendszer, amikor egy SDK-frissítést hajt végre. Az SDK-frissítés végrehajtása után mindenképpen adja meg újra a régió-specifikus végpontok értékeit.
+> A applicationinsights.config fájl automatikusan felül lesz írva, amikor egy SDK-frissítést hajt végre. Az SDK-frissítés végrehajtása után mindenképpen adja meg újra a régió-specifikus végpontok értékeit.
 
 ```xml
 <ApplicationInsights>
@@ -49,7 +48,7 @@ Ha Application Insightsről szeretne adatokat küldeni bizonyos régiókba, fel�
 
 # <a name="net-core"></a>[.NET Core](#tab/netcore)
 
-Módosítsa a appSettings. JSON fájlt a projektben az alábbiak szerint a fő végpont beállításához:
+Módosítsa a projekt appsettings.jsfájlját a következő módon a fő végpont beállításához:
 
 ```json
 "ApplicationInsights": {
@@ -83,7 +82,7 @@ Név: `APPLICATIONINSIGHTS_CONNECTION_STRING` érték:`Connection String Value`
 
 # <a name="java"></a>[Java](#tab/java)
 
-Módosítsa a applicationinsights. xml fájlt az alapértelmezett végponti címek módosításához.
+Módosítsa az applicationinsights.xml fájlt az alapértelmezett végponti címnek a módosításához.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>

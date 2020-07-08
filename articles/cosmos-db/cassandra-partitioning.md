@@ -7,12 +7,11 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 566be788066db54f827bb4d6e46f0d832755ce26
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
-ms.translationtype: MT
+ms.openlocfilehash: 5f159ffcea0aa88f354ae503be96a5c571c10adb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85115671"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85806832"
 ---
 # <a name="partitioning-in-azure-cosmos-db-cassandra-api"></a>Particionálás Azure Cosmos DB Cassandra API
 
@@ -27,7 +26,7 @@ A fejlesztői szempontból a particionálás ugyanúgy viselkedik, mint a Azure 
 
 Azure Cosmos DB minden olyan gépet, amelyen a partíciók tárolódnak, [fizikai partíciónak](partition-data.md#physical-partitions)nevezzük. A fizikai partíció hasonlít a virtuális géphez. dedikált számítási egység vagy fizikai erőforrások halmaza. Az ezen számítási egységen tárolt összes partíciót a Azure Cosmos DB [logikai partíciójának](partition-data.md#logical-partitions) nevezzük. Ha már ismeri az Apache Cassandra-t, úgy gondolhatja, hogy a logikai partíciók ugyanúgy jelennek meg, ahogy a Cassandra-ben lévő normál partíciókat gondolja. 
 
-Az Apache Cassandra 100 MB-os korlátot javasol a partíciókban tárolható adatmennyiségek méretére. A Azure Cosmos DB Cassandra API akár 20 GB-nyi logikai partíción, akár fizikai partíción 50 GB. Azure Cosmos DB az Apache Cassandratől eltérően a fizikai partícióban rendelkezésre álló számítási kapacitás a kérelmek [egységei](request-units.md)nevű egyetlen metrika használatával van kifejezve, amely lehetővé teszi, hogy a terhelést a másodpercenkénti kérések (olvasási vagy írási), illetve a magok, a memória vagy a IOPS alapján is meggondolja. Így a kapacitás megtervezése még több egyenesen előre elvégezhető, miután megértette az egyes kérések költségeit. Az egyes fizikai partíciók legfeljebb 10000 RUs mennyiségű számítási lehetőséggel rendelkezhetnek. A méretezhetőségi lehetőségekkel kapcsolatos további információkért tekintse meg a cikket a [rugalmas méretezés](manage-scale-cassandra.md) Cassandra APIban című cikkből. 
+Az Apache Cassandra 100 MB-os korlátot javasol a partíciókban tárolható adatmennyiségek méretére. A Azure Cosmos DB Cassandra API akár 20 GB-nyi logikai partíción, illetve fizikai partíción akár 30 GB-onként is használható. Azure Cosmos DB az Apache Cassandratől eltérően a fizikai partícióban rendelkezésre álló számítási kapacitás a kérelmek [egységei](request-units.md)nevű egyetlen metrika használatával van kifejezve, amely lehetővé teszi, hogy a terhelést a másodpercenkénti kérések (olvasási vagy írási), illetve a magok, a memória vagy a IOPS alapján is meggondolja. Így a kapacitás megtervezése még több egyenesen előre elvégezhető, miután megértette az egyes kérések költségeit. Az egyes fizikai partíciók legfeljebb 10000 RUs mennyiségű számítási lehetőséggel rendelkezhetnek. A méretezhetőségi lehetőségekkel kapcsolatos további információkért tekintse meg a cikket a [rugalmas méretezés](manage-scale-cassandra.md) Cassandra APIban című cikkből. 
 
 Azure Cosmos DB minden fizikai partíció replikák, más néven replika-készletből áll, és partíciók legalább 4 replikával rendelkeznek. Ez ellentétben áll az Apache Cassandra-vel, ahol az 1 replikációs tényező beállítása lehetséges. Ez azonban alacsony rendelkezésre állást eredményez, ha az egyetlen csomópont, amelyen az adat leáll. Cassandra API mindig a 4-es replikációs tényező (3 kvórum). A Azure Cosmos DB automatikusan kezeli a replikákat, és ezeket az Apache Cassandra különböző eszközeivel kell karbantartani. 
 

@@ -4,10 +4,9 @@ description: A Azure Resource Manager-sablonban a logikai értékek meghatároz�
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: 8fe1c00240fc24c3c1454b118f9e0d9a9d54fe4e
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84677389"
 ---
 # <a name="logical-functions-for-arm-templates"></a>Az ARM-sablonok logikai funkciói
@@ -356,7 +355,7 @@ Az előző példa kimenete a következő:
 | orExampleOutput | Logikai | True (Igaz) |
 | notExampleOutput | Logikai | False (Hamis) |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Egy Azure Resource Manager sablonban található részekről az [ARM-sablonok szerkezetének és szintaxisának megismerését](template-syntax.md)ismertető cikk nyújt tájékoztatást.
 
