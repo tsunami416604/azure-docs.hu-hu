@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 05/26/2020
 ms.author: victorh
 ms.openlocfilehash: 5e0cb1a5c5c115aa1aaf9697e19631e2142853a3
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84808068"
 ---
 # <a name="configure-tls-termination-with-key-vault-certificates-using-azure-powershell"></a>A TLS-megszakítás konfigurálása Key Vault tanúsítványokkal a Azure PowerShell használatával

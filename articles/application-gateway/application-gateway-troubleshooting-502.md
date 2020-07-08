@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 11/16/2019
 ms.author: amsriva
 ms.openlocfilehash: 1b0abe998540c4fcc0a9b83f6d1175e18a560871
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84808160"
 ---
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>Hibás átjárókkal kapcsolatos hibák elhárítása az Application Gatewayben
@@ -82,7 +82,7 @@ Az Application Gateway-példányok üzembe helyezésekor automatikusan beállít
 
 A következő táblázat felsorolja az alapértelmezett állapot-mintavételhez társított értékeket:
 
-| Mintavételi tulajdonság | Érték | Leírás |
+| Mintavételi tulajdonság | Érték | Description |
 | --- | --- | --- |
 | Mintavételi URL-cím |`http://127.0.0.1/` |URL-cím elérési útja |
 | Intervallum |30 |Mintavételi időköz (másodperc) |
@@ -106,7 +106,7 @@ Az egyéni állapotú tesztek további rugalmasságot tesznek lehetővé az alap
 
 A következő további tulajdonságokat adja hozzá a rendszer:
 
-| Mintavételi tulajdonság | Leírás |
+| Mintavételi tulajdonság | Description |
 | --- | --- |
 | Name |A mintavétel neve. Ez a név szolgál a mintavételre a háttérbeli HTTP-beállításokban. |
 | Protokoll |A mintavétel küldéséhez használt protokoll. A mintavétel a háttérbeli HTTP-beállításokban definiált protokollt használja. |

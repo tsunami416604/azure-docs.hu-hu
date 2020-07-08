@@ -11,10 +11,10 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.openlocfilehash: 7f16902a779fdb7c86fb7506711d2bce77ca9d05
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84809221"
 ---
 # <a name="determine-which-azure-storage-encryption-key-model-is-in-use-for-the-storage-account"></a>A Storage-fiókhoz használt Azure Storage titkosítási kulcs modelljének meghatározása
@@ -32,7 +32,7 @@ A titkosítási kulcsokkal kapcsolatos további információkért lásd: [Az Azu
 
 Az alábbi módszerek egyikével meghatározhatja, hogy a Storage-fiók Microsoft által felügyelt kulcsokat vagy az ügyfél által felügyelt kulcsokat használja-e a titkosításhoz.
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portalra](#tab/portal)
 
 A következő lépésekkel ellenőrizheti a Storage-fiók titkosítási modelljét a Azure Portal használatával:
 

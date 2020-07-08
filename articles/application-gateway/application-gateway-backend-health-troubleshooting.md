@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 06/09/2020
 ms.author: surmb
 ms.openlocfilehash: b5524d0612bf8f5d69979a8392f664e417c5f98d
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84808192"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>A Application Gateway háttérbeli állapotával kapcsolatos problémák elhárítása
@@ -109,7 +109,7 @@ Az időtúllépési érték növeléséhez kövesse az alábbi lépéseket:
 
 **OK:** Ha a háttér-készlet IP-cím/FQDN vagy App Service típusú, Application Gateway a tartománynévrendszer (DNS) (egyéni vagy Azure alapértelmezett) által megadott teljes tartománynév IP-címére lesz feloldva, és megpróbál csatlakozni a kiszolgálóhoz a HTTP-beállításokban említett TCP-porton. Ha azonban ez az üzenet jelenik meg, azt javasolja, hogy Application Gateway nem tudta sikeresen feloldani a megadott teljes tartománynév IP-címét.
 
-**Megoldás:**
+**Felbontás**
 
 1.  Ellenőrizze, hogy a háttér-készletben megadott teljes tartománynév helyes-e, és hogy a nyilvános tartomány-e, majd próbálja meg feloldani a helyi gépről.
 

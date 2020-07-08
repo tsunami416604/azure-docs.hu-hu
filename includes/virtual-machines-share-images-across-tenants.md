@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
@@ -9,10 +9,10 @@ ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: f74d4cbc17e49345534a37e9e6612a36e19be295
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73903709"
 ---
 Ha azonban az Azure-bérlőn kívül szeretné megosztani a lemezképeket, akkor a megosztás megkönnyítéséhez létre kell hoznia egy alkalmazás-regisztrálást.  Az alkalmazások regisztrálásával összetettebb megosztási forgatókönyvek is engedélyezhetők, például a következő esetekben: 
@@ -28,7 +28,7 @@ Hozzon létre egy alkalmazás-regisztrációt, amelyet mindkét bérlő használ
 1. Az oldal tetején található menüben válassza az **új regisztráció** lehetőséget.
 1. A **név**mezőbe írja be a következőt: *myGalleryApp*.
 1. A **támogatott fióktípus**területen válassza a **fiókok lehetőséget bármely szervezeti címtárban és személyes Microsoft-fiókban**.
-1. Az **átirányítási URI**mezőbe *https://www.microsoft.com* írja be a nevet, majd válassza a **regisztráció**lehetőséget. Az alkalmazás regisztrációjának létrehozása után megnyílik az áttekintő oldal.
+1. Az **átirányítási URI**mezőbe írja be a nevet, *https://www.microsoft.com* majd válassza a **regisztráció**lehetőséget. Az alkalmazás regisztrációjának létrehozása után megnyílik az áttekintő oldal.
 1. Az Áttekintés lapon másolja az **alkalmazás (ügyfél) azonosítóját** , és mentse a alkalmazást később.   
 1. Válassza a **tanúsítványok & titkok**lehetőséget, majd válassza az **új ügyfél titka**lehetőséget.
 1. A **Leírás**mezőbe írja be a *megosztott rendszerkép-katalógus több-bérlős alkalmazás titkos kulcsát*.
@@ -46,7 +46,7 @@ Adja meg az alkalmazás regisztrációjának engedélyét a megosztott képtára
 
 ## <a name="give-tenant-2-access"></a>2. bérlői hozzáférés biztosítása
 
-Adja meg a bérlő 2 hozzáférését az alkalmazáshoz egy böngésző használatával történő bejelentkezés kérésével. Cserélje le * \<a Tenant2 ID>* a bérlői azonosítóra annak a bérlőnek a bérlői azonosítójával, amelyhez meg szeretné osztani a rendszerkép-katalógust. Cserélje le * \<az alkalmazás (ügyfél) azonosítóját>* a létrehozott alkalmazás-regisztráció alkalmazás-azonosítójával. Ha végzett a kihelyezéssel, illessze be az URL-címet egy böngészőben, és kövesse a bejelentkezési utasításokat a 2. Bérlőbe való bejelentkezéshez.
+Adja meg a bérlő 2 hozzáférését az alkalmazáshoz egy böngésző használatával történő bejelentkezés kérésével. A helyére írja be annak a *\<Tenant2 ID>* bérlőnek a bérlői azonosítóját, amelyhez a képtárat meg szeretné osztani. A helyére írja be a létrehozott alkalmazás- *\<Application (client) ID>* regisztráció alkalmazás-azonosítóját. Ha végzett a kihelyezéssel, illessze be az URL-címet egy böngészőben, és kövesse a bejelentkezési utasításokat a 2. Bérlőbe való bejelentkezéshez.
 
 ```
 https://login.microsoftonline.com/<Tenant 2 ID>/oauth2/authorize?client_id=<Application (client) ID>&response_type=code&redirect_uri=https%3A%2F%2Fwww.microsoft.com%2F 

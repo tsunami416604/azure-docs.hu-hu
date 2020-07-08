@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.openlocfilehash: 6d0392cd8e94ba8a9026f557b90e740fbed7f50c
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84809096"
 ---
 # <a name="check-the-encryption-status-of-a-blob"></a>BLOB titkosítási állapotának keresése
@@ -26,7 +26,7 @@ Ez a cikk bemutatja, hogyan lehet megállapítani, hogy egy adott blob titkosít
 
 A Azure Portal, a PowerShell vagy az Azure CLI használatával állapítsa meg, hogy a blob kódolás nélkül titkosítva van-e.
 
-### <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+### <a name="azure-portal"></a>[Azure Portalra](#tab/portal)
 
 A Azure Portal használatával ellenőrizheti, hogy a blob titkosított-e, kövesse az alábbi lépéseket:
 

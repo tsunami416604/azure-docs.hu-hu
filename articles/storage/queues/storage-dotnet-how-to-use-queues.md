@@ -9,10 +9,10 @@ ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.openlocfilehash: b0415542d737fa2ab926eb572855dce5ef81690e
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84808833"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>Az Azure Queue Storage használatának első lépései a .NET-keretrendszerrel
@@ -50,9 +50,9 @@ Hozzon létre egy új Windows-konzolalkalmazást a Visual Studióban. A követke
 1. Válassza a **fájl**  >  **új**  >  **projekt** lehetőséget.
 2. **Platform**  >  **Windows** kiválasztása
 3. Válassza a **Console App (.NET Framework)** (Konzolalkalmazás (.NET keretrendszer) lehetőséget
-4. Válassza a **tovább** lehetőséget
+4. Kattintson a **Tovább** gombra.
 5. A **projekt neve** mezőben adja meg az alkalmazás nevét
-6. **Létrehozás** kiválasztása
+6. Kattintson a **Létrehozás** elemre.
 
 Az oktatóanyagban szereplő összes példa a konzol alkalmazás **program.cs** fájljának **Main ()** metódusához adható hozzá.
 

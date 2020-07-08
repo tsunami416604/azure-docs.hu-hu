@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: allensu
 ms.openlocfilehash: 3b5aedb20bc7a8d2aa6f3aa3d8691a71af4cd3a2
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84808370"
 ---
 # <a name="get-load-balancer-usage-metrics-using-the-rest-api"></a>Load Balancer használati metrikák beszerzése a REST API használatával
@@ -42,7 +42,7 @@ A következő fejlécek megadása kötelező:
 
 ### <a name="uri-parameters"></a>URI-paraméterek
 
-| Name | Leírás |
+| Name | Description |
 | :--- | :---------- |
 | subscriptionId | Az Azure-előfizetést azonosító előfizetés azonosítója. Ha több előfizetéssel rendelkezik, tekintse meg [a több előfizetés használata](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)című témakört. |
 | resourceGroupName | Az erőforrást tartalmazó erőforráscsoport neve. Ezt az értéket a Azure Resource Manager API-ból, a CLI-ből vagy a portálról szerezheti be. |
