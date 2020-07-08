@@ -8,21 +8,22 @@ ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 05/14/2020
 ms.subservice: blobs
-ms.openlocfilehash: f3dc7a051021c75c7e1ed6904096c43a27c3e05e
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: e2dcc070baa94ecf1ea27100fd49d4cde1dac637
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465898"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833346"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Statikus webhely üzemeltetése az Azure Storage-ban
 
 A statikus tartalom (HTML-, CSS-, JavaScript-és képfájlok) közvetlenül egy *$web*nevű tárolóból is kiszolgálható. A tartalom Azure Storage-ban való üzemeltetése lehetővé teszi, hogy olyan kiszolgáló nélküli architektúrákat használjon, amelyek a [Azure functions](/azure/azure-functions/functions-overview) és más platformként nyújtott szolgáltatásokat is tartalmazzák.
 
-[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 > [!NOTE]
 > Ha a hely kiszolgálóoldali kódból függ, használja a [Azure app Service](/azure/app-service/overview) helyet.
+Mindenképpen hozzon létre egy általános célú v2-es standard Storage-fiókot. A statikus webhelyek semmilyen más típusú Storage-fiókban nem érhetők el.
 
 ## <a name="setting-up-a-static-website"></a>Statikus webhely beállítása
 
@@ -46,7 +47,7 @@ A következő eszközök bármelyikével feltöltheti a tartalmakat a **$web** t
 > * [AzCopy](../common/storage-use-azcopy-v10.md)
 > * [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
 > * [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/)
-> * [Visual Studio Code-bővítmény](/azure/javascript/tutorial-vscode-static-website-node-01)
+> * [Visual Studio Code-bővítmény](/azure/developer/javascript/tutorial-vscode-static-website-node-01)
 
 ## <a name="viewing-content"></a>Tartalom megtekintése
 
@@ -63,11 +64,11 @@ A hely URL-címe tartalmaz egy regionális kódot. Például az URL-cím `https:
 
 Habár a kódnak az URL-címben kell maradnia, csak belső használatra szolgál, és semmilyen más módon nem kell ezt a kódot használnia.
 
-A statikus webhelyek üzemeltetésének engedélyezésekor megadott index-dokumentum akkor jelenik meg, amikor a felhasználók megnyitják a helyet, és nem határoznak meg konkrét fájlt (például: `https://contosoblobaccount.z22.web.core.windows.net` ).  
+A statikus webhelyek üzemeltetésének engedélyezésekor megadott index-dokumentum akkor jelenik meg, amikor a felhasználók megnyitják a helyet, és nem határoznak meg konkrét fájlt (például: `https://contosoblobaccount.z22.web.core.windows.net` ).
 
 ### <a name="secondary-endpoints"></a>Másodlagos végpontok
 
-Ha [a redundanciát egy másodlagos régióban](../common/storage-redundancy.md#redundancy-in-a-secondary-region)állítja be, akkor a webhely tartalmát másodlagos végpont használatával is elérheti. Mivel az adatreplikációt a másodlagos régiókba aszinkron módon replikálja a rendszer, a másodlagos végponton elérhető fájlok nem mindig szinkronban vannak az elsődleges végponton elérhető fájlokkal. 
+Ha [a redundanciát egy másodlagos régióban](../common/storage-redundancy.md#redundancy-in-a-secondary-region)állítja be, akkor a webhely tartalmát másodlagos végpont használatával is elérheti. Mivel az adatreplikációt a másodlagos régiókba aszinkron módon replikálja a rendszer, a másodlagos végponton elérhető fájlok nem mindig szinkronban vannak az elsődleges végponton elérhető fájlokkal.
 
 ## <a name="impact-of-the-setting-the-public-access-level-of-the-web-container"></a>A webes tároló nyilvános hozzáférési szintjének beállításának hatása
 
@@ -85,11 +86,11 @@ Az elsődleges blob Service-végponthoz való nyilvános hozzáférés azonban `
 
 ## <a name="mapping-a-custom-domain-to-a-static-website-url"></a>Egyéni tartomány leképezése statikus webhely URL-címére
 
-A statikus webhelyet egyéni tartományon keresztül is elérhetővé teheti. 
+A statikus webhelyet egyéni tartományon keresztül is elérhetővé teheti.
 
 Könnyebben engedélyezhető a HTTP-hozzáférés az egyéni tartományhoz, mivel az Azure Storage natív módon támogatja azt. A HTTPS engedélyezéséhez Azure CDN kell használnia, mivel az Azure Storage még nem támogatja natív módon a HTTPS-t az egyéni tartományokkal. részletes útmutatásért lásd: [egyéni tartomány leképezése Azure Blob Storage végpontra](storage-custom-domain-name.md) .
 
-Ha a Storage-fiók úgy van konfigurálva, hogy [biztonságos átvitelt igényel](../common/storage-require-secure-transfer.md) a HTTPS protokollon keresztül, akkor a felhasználóknak a https-végpontot kell használniuk. 
+Ha a Storage-fiók úgy van konfigurálva, hogy [biztonságos átvitelt igényel](../common/storage-require-secure-transfer.md) a HTTPS protokollon keresztül, akkor a felhasználóknak a https-végpontot kell használniuk.
 
 > [!TIP]
 > Érdemes lehet tartományt üzemeltetni az Azure-ban. További információ: [tartomány üzemeltetése Azure DNSban](../../dns/dns-delegate-domain-azure-dns.md).
@@ -110,7 +111,7 @@ A metrikák a statikus webhelyek oldalain is engedélyezhetők. A metrikák enge
 
 A mérőszámok statikus webhely oldalain való engedélyezéséhez tekintse [meg a metrikák engedélyezése statikus webhelyeken](storage-blob-static-website-how-to.md#metrics)című témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Statikus webhely üzemeltetése az Azure Storage-ban](storage-blob-static-website-how-to.md)
 * [Egyéni tartomány leképezése egy Azure Blob Storage-végpontra](storage-custom-domain-name.md)

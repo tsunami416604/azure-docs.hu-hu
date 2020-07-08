@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/26/2020
 ms.subservice: alerts
-ms.openlocfilehash: 65c2e3dbe7cb99c9b7c6e1a84178fd28d5013a69
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 8e917d279d8de3dbe6de540a4ea1ef8cec1b6ffc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85507942"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830060"
 ---
 # <a name="how-to-update-alert-rules-or-action-rules-when-their-target-resource-moves-to-a-different-azure-region"></a>Riasztási szabályok vagy műveleti szabályok frissítése, ha a célként megadott erőforrás egy másik Azure-régióba kerül át
 
@@ -68,6 +68,8 @@ Ha a hatókörben lévő erőforrások **közül csak néhány** lett áthelyezv
 ### <a name="identifying-rules-associated-with-a-moved-resource-from-the-azure-portal"></a>Az áthelyezett erőforrásokhoz társított szabályok azonosítása a Azure Portal
 
 - **Riasztási szabályok esetén** – navigáljon a riasztások > a riasztási szabályok kezelése > szűrés a tartalmazó előfizetés és az áthelyezett erőforrás alapján.
+> [!NOTE]
+> A műveletnapló riasztási szabályai nem támogatják ezt a folyamatot. A műveletnapló riasztási szabályának hatókörét nem lehet frissíteni, és egy másik előfizetésben lévő erőforrásra mutat. Ehelyett létrehozhat egy új szabályt, amely a régit váltja fel.
 
 - **A műveleti szabályok esetében** – navigáljon a riasztások > a műveletek kezelése > műveleti szabályok (előzetes verzió) > a szűrést a tartalmazó előfizetés és az áthelyezett erőforrás alapján.
 
@@ -108,6 +110,6 @@ Ha a hatókörben lévő erőforrások **közül csak néhány** lett áthelyezv
 2.  A szabály hatókörének frissítése közvetlenül ([metrikus riasztások](https://docs.microsoft.com/cli/azure/monitor/metrics/alert#az-monitor-metrics-alert-update), [műveletnapló riasztásai](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert/scope))
 3.  Szükség esetén két szabályra osztható (amelyek a fentiekben leírtak szerint a metrikus riasztások bizonyos eseteire vonatkoznak).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a [Riasztási értesítések](alerts-troubleshoot.md), a [metrikus riasztások](alerts-troubleshoot-metric.md)és a [naplózási riasztások](alerts-troubleshoot-log.md)egyéb problémáinak kijavításáról. 

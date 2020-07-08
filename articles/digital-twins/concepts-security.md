@@ -7,17 +7,14 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 1a54ec54823d8d002344e26f97db7043433f6da0
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 0f1f9e17646c4432d9c1103b3c579fc6bb0d2f13
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84736849"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833164"
 ---
 # <a name="secure-azure-digital-twins-with-role-based-access-control"></a>Biztonságos Azure-beli digitális Twins szerepköralapú hozzáférés-vezérléssel
-
-[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 A biztonság érdekében az Azure Digital Twins pontos hozzáférés-vezérlést tesz lehetővé az üzembe helyezés meghatározott adatai, erőforrásai és műveletei számára. Ez egy, a **szerepköralapú hozzáférés-vezérlés (RBAC)** nevű részletes szerepkör és az engedélyek kezelési stratégiája segítségével történik. Az Azure-hoz készült RBAC általános elveiről [itt](../role-based-access-control/overview.md)olvashat.
 
@@ -51,6 +48,9 @@ A felügyelt identitások esetében az Azure platform kezeli ezt a futásidejű 
 Az Azure az alábbi beépített RBAC-szerepköröket biztosítja az Azure digitális Twins-erőforrásokhoz való hozzáférés engedélyezéséhez:
 * Azure digitális ikrek tulajdonosa (előzetes verzió) – ezt a szerepkört használva teljes hozzáférést biztosíthat az Azure digitális Twins-erőforrásaihoz.
 * Azure digitális ikrek olvasója (előzetes verzió) – Ez a szerepkör csak olvasási hozzáférést biztosít az Azure digitális Twins erőforrásaihoz.
+
+> [!TIP]
+> Az Azure digitális Twins-olvasó (előzetes verzió) szerepkör mostantól támogatja a böngészési kapcsolatokat is.
 
 A beépített szerepkörök meghatározásával kapcsolatos további információkért lásd: a szerepkör- [definíciók megismerése](../role-based-access-control/role-definitions.md) az Azure RBAC dokumentációjában. Az egyéni RBAC-szerepkörök létrehozásával kapcsolatos információkért lásd: [Egyéni szerepkörök az Azure-erőforrásokhoz](../role-based-access-control/custom-roles.md).
 

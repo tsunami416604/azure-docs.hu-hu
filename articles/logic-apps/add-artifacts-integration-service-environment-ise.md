@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: 58d2efd0c61045739930ce36ba317b1aa6a40ce8
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: a4811bcb47120ba37337c73604e33826d9affcbb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84686001"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830026"
 ---
 # <a name="add-resources-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Erőforrások hozzáadása az integrációs szolgáltatási környezethez (ISE) Azure Logic Apps
 
@@ -26,7 +26,7 @@ Az [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtua
 
 * A logikai alkalmazások futtatásához létrehozott ISE. Ha nem rendelkezik ISE-vel, [először hozzon létre egy ISE](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)-t.
 
-* Az ISE-ben központilag telepített erőforrások létrehozásához, hozzáadásához vagy frissítéséhez hozzá kell rendelnie a tulajdonosi vagy közreműködői szerepkört az ISE-hez, vagy ha rendelkezik az ISE-hez társított Azure-előfizetéssel vagy Azure-erőforráscsoport-hozzáféréssel. Azok számára, akik nem rendelkeznek tulajdonossal, közreműködővel vagy örökölt engedélyekkel, hozzá lehet rendelni a integrációs szolgáltatási környezet közreműködő szerepkört vagy integrációs szolgáltatási környezet fejlesztői szerepkört. További információ a szerepköralapú hozzáférés-vezérlésről (RBAC): [Mi az Azure-erőforrások szerepköralapú hozzáférés-vezérlése (RBAC)](../role-based-access-control/overview.md)?
+* Az ISE-ben központilag telepített erőforrások létrehozásához, hozzáadásához vagy frissítéséhez hozzá kell rendelnie a tulajdonosi vagy közreműködői szerepkört az ISE-hez, vagy ha rendelkezik az ISE-hez társított Azure-előfizetéssel vagy Azure-erőforráscsoport-hozzáféréssel. Azok számára, akik nem rendelkeznek tulajdonossal, közreműködővel vagy örökölt engedélyekkel, hozzá lehet rendelni a integrációs szolgáltatási környezet közreműködő szerepkört vagy integrációs szolgáltatási környezet fejlesztői szerepkört. További információ: [Mi az az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/overview.md)?
 
 <a name="create-logic-apps-environment"></a>
 
@@ -101,7 +101,7 @@ Azok a Microsoft által felügyelt összekötők, amelyek az ISE létrehozása u
 
    ![Felügyelt összekötők megtekintése](./media/add-artifacts-integration-service-environment-ise/ise-view-managed-connectors.png)
 
-1. Az **új felügyelt összekötő hozzáadása** panelen nyissa meg az **összekötő keresése** listát. Válassza ki a használni kívánt ISE-összekötőt, de még nincs telepítve az ISE-ben. Kattintson a **Létrehozás** gombra.
+1. Az **új felügyelt összekötő hozzáadása** panelen nyissa meg az **összekötő keresése** listát. Válassza ki a használni kívánt ISE-összekötőt, de még nincs telepítve az ISE-ben. Válassza a **Létrehozás** lehetőséget.
 
    ![Válassza ki az ISE-ben telepíteni kívánt ISE-összekötőt](./media/add-artifacts-integration-service-environment-ise/add-managed-connector.png)
 

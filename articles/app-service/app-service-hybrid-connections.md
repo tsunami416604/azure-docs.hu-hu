@@ -7,14 +7,14 @@ ms.topic: article
 ms.date: 06/08/2020
 ms.author: ccompy
 ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: 07fc4fbf9305cb2688bae6356f44b80bb6a6c115
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.openlocfilehash: d55d1c0d72f0122472813fc6e79ba021e8b86e89
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488154"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85831250"
 ---
-# <a name="azure-app-service-hybrid-connections"></a>Azure App Service Hibrid kapcsolatok
+# <a name="azure-app-service-hybrid-connections"></a>Az Azure App Service hibrid kapcsolatai
 
 Hibrid kapcsolatok a szolgáltatás az Azure-ban és egy Azure App Service szolgáltatásban is. Szolgáltatásként a App Service-ban használt alkalmazások és képességek túlmutatnak. Ha többet szeretne megtudni a Hibrid kapcsolatokről és azok használatáról App Servicen kívül, tekintse meg a [Azure Relay hibrid kapcsolatok][HCService]című témakört.
 
@@ -117,7 +117,7 @@ A Hibrid kapcsolatok szolgáltatáshoz a hibrid kapcsolati végpontot üzemeltet
 
 Ez az eszköz a Windows Server 2012-es és újabb verzióin fut. A HCM szolgáltatásként fut, és az 443-as porton csatlakozik a kimenő Azure Relayhoz.  
 
-A HCM telepítése után a HybridConnectionManagerUi. exe futtatásával használhatja az eszköz felhasználói felületét. Ez a fájl a hibridkapcsolat-kezelő telepítési könyvtárában található. A Windows 10-es verzióban egyszerűen kereshet *hibridkapcsolat-kezelő felhasználói felületet* is a keresőmezőbe.  
+A HCM telepítése után HybridConnectionManagerUi.exe futtathatja az eszköz felhasználói felületének használatát. Ez a fájl a hibridkapcsolat-kezelő telepítési könyvtárában található. A Windows 10-es verzióban egyszerűen kereshet *hibridkapcsolat-kezelő felhasználói felületet* is a keresőmezőbe.  
 
 ![Képernyőkép a hibridkapcsolat-kezelőról][7]
 
@@ -168,26 +168,30 @@ Az hibridkapcsolat-kezelő rendszeres időközönként frissülnek a problémák
 
 A Hibrid kapcsolatok Azure CLI-támogatással rendelkezik. A megadott parancsok mind az alkalmazás, mind a App Servicei csomag szintjén működnek.  Az alkalmazás szintű parancsok a következők:
 
-    az webapp hybrid-connection
+```azurecli
+az webapp hybrid-connection
 
-    Group
-        az webapp hybrid-connection : Methods that list, add and remove hybrid-connections from webapps.
-            This command group is in preview. It may be changed/removed in a future release.
-    Commands:
-        add    : Add a hybrid-connection to a webapp.
-        list   : List the hybrid-connections on a webapp.
-        remove : Remove a hybrid-connection from a webapp.
+Group
+    az webapp hybrid-connection : Methods that list, add and remove hybrid-connections from webapps.
+        This command group is in preview. It may be changed/removed in a future release.
+Commands:
+    add    : Add a hybrid-connection to a webapp.
+    list   : List the hybrid-connections on a webapp.
+    remove : Remove a hybrid-connection from a webapp.
+```
 
 A App Service díjcsomag parancsaival beállíthatja, hogy a rendszer melyik kulcsot fogja használni az adott hibrid kapcsolatok esetében. Minden hibrid kapcsolatban két kulcs van beállítva, amely egy elsődleges és egy másodlagos. Az alábbi parancsokkal használhatja az elsődleges vagy a másodlagos kulcsot. Ez lehetővé teszi a kulcsok váltását, ha rendszeresen szeretné újragenerálni a kulcsokat. 
 
-    az appservice hybrid-connection --help
+```azurecli
+az appservice hybrid-connection --help
 
-    Group
-        az appservice hybrid-connection : A method that sets the key a hybrid-connection uses.
-            This command group is in preview. It may be changed/removed in a future release.
-    Commands:
-        set-key : Set the key that all apps in an appservice plan use to connect to the hybrid-
-                  connections in that appservice plan.
+Group
+    az appservice hybrid-connection : A method that sets the key a hybrid-connection uses.
+        This command group is in preview. It may be changed/removed in a future release.
+Commands:
+    set-key : Set the key that all apps in an appservice plan use to connect to the hybrid-
+                connections in that appservice plan.
+```
 
 ## <a name="secure-your-hybrid-connections"></a>A Hibrid kapcsolatok biztonságossá tétele ##
 

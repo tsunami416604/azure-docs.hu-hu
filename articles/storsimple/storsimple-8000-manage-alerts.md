@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 03/14/2019
 ms.author: alkohli
-ms.openlocfilehash: 4956c511f67fc5929eef2e39797cbe93b5b1d73e
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 36f416183bd44180bee59142714e924e0ac8fefe
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85515514"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830043"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>A StorSimple-riasztások megtekintése és kezelése a StorSimple Eszközkezelő szolgáltatással
 
@@ -120,6 +120,7 @@ Az alábbi táblázatok felsorolják az esetlegesen felmerülő Microsoft Azure 
 * [Teljesítmény-riasztások](#performance-alerts)
 * [Biztonsági riasztások](#security-alerts)
 * [Támogatási csomagra vonatkozó riasztások](#support-package-alerts)
+* [Bekerítési környezet riasztásai](#enclosure-environment-alerts)
 
 ### <a name="cloud-connectivity-alerts"></a>Felhőalapú csatlakozási riasztások
 
@@ -225,6 +226,6 @@ Ha a Felhőbeli kapcsolat nem sikerül a StorSimple éles eszközén, akkor az e
 |:--- |:--- |:--- |
 | A hardver-összetevő környezeti hőmérséklet-érzékelője nem sikerült állapotot jelez.  | Ház típusa: fő ház | Ez a riasztás akkor aktiválódik, ha a StorSimple körüli környezeti környezet egy elfogadható tartomány fölé esik. Győződjön meg róla, hogy az adatközpontban az AC-szellőzőn kívül a környezeti környezet vagy a légáram található. Ha a hőmérséklet visszatér a normál értékre, a rendszer automatikusan törli a riasztást egy kis idő elteltével. Ha a probléma továbbra is fennáll, forduljon a Microsoft támogatási szolgálatához.   |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a [StorSimple hibákról és az eszközök telepítési problémáinak elhárításáról](storsimple-8000-troubleshoot-deployment.md).

@@ -5,12 +5,12 @@ ms.assetid: bc497d71-75e7-47b1-babd-a060a664adca
 ms.topic: how-to
 ms.date: 04/28/2020
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: c16bd728fe81796d671762615ec8dc4ad6e1d87d
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: c7dc18d8186d7262154cc0718bb6ad77ebbb5d2e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83123749"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85829839"
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>Azure Cosmos DB által aktivált függvény létrehozása
 
@@ -62,7 +62,7 @@ Ezután létrehozhat egy függvényt az új függvényalkalmazásban.
     | **Adatbázis neve** | Feladatok | A figyelni kívánt gyűjteményt tartalmazó adatbázis neve. |
     | **Gyűjtemény neve** | Elemek | A figyelni kívánt gyűjtemény neve. |
     | **Gyűjtemény neve bérletekhez** | leases | A bérletek tárolására szolgáló gyűjtemény neve. |
-    | **Címbérlet-gyűjtemény létrehozása, ha nem létezik** | Igen | Ellenőrzi a címbérleti gyűjtemény létezését, és automatikusan létrehozza azt. |
+    | **Címbérlet-gyűjtemény létrehozása, ha nem létezik** | Yes | Ellenőrzi a címbérleti gyűjtemény létezését, és automatikusan létrehozza azt. |
 
     :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/functions-cosmosdb-trigger-settings.png" alt-text="Az Azure Cosmos DB-eseményindító létrehozása":::
 
@@ -115,11 +115,13 @@ Ha a függvény kötésében megadott tároló létezik, akkor tesztelheti a fü
 
 1. Cserélje le az új elem tartalmát a következő tartalomra, majd válassza a **Mentés**lehetőséget.
 
-        {
-            "id": "task1",
-            "category": "general",
-            "description": "some task"
-        }
+    ```yaml
+    {
+        "id": "task1",
+        "category": "general",
+        "description": "some task"
+    }
+    ```
 
 1. Váltson a böngészőben az első lapra, amely tartalmazza a függvényt a portálon. Bontsa ki a függvénynaplókat, és ellenőrizze, hogy az új dokumentum aktiválta-e a függvényt. Meggyőződhet arról, hogy a `task1` dokumentumazonosító értéke a naplókba lett írva. 
 

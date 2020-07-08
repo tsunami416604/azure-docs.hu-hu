@@ -16,12 +16,12 @@ ms.date: 10/20/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04f523a2615892268d56c167a682987453dc997c
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: f0c8134cdb72f8bff74fa68dff81fc9d6f1f5ccc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85359738"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830451"
 ---
 # <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>Az Office 365 és Azure Active Directory összevonási tanúsítványainak megújítása
 ## <a name="overview"></a>Áttekintés
@@ -62,7 +62,9 @@ Az Azure AD megkísérli az összevonási metaadatok figyelését, és frissíti
 ### <a name="step-1-check-the-autocertificaterollover-state"></a>1. lépés: a Autocertificaterollover beállítást állapotának keresése
 A AD FS-kiszolgálón nyissa meg a PowerShellt. Győződjön meg arról, hogy a Autocertificaterollover beállítást értéke TRUE (igaz).
 
-    Get-Adfsproperties
+```azurepowershell-interactive
+Get-Adfsproperties
+```
 
 ![Autocertificaterollover beállítást](./media/how-to-connect-fed-o365-certs/autocertrollover.png)
 
@@ -78,16 +80,22 @@ A AD FS-kiszolgálón nyissa meg a MSOnline PowerShell-parancssort, és kapcsol�
 > 
 >
 
-    Install-Module MSOnline
+```azurepowershell-interactive
+Install-Module MSOnline
+```
 
 Kapcsolódjon az Azure AD-hez a MSOnline PowerShell-modul használatával.
 
-    Import-Module MSOnline
-    Connect-MsolService
+```azurepowershell-interactive
+Import-Module MSOnline
+Connect-MsolService
+```
 
 Tekintse át a AD FS és az Azure AD-megbízhatóság tulajdonságaiban konfigurált tanúsítványokat a megadott tartományhoz.
 
-    Get-MsolFederationProperty -DomainName <domain.name> | FL Source, TokenSigningCertificate
+```azurepowershell-interactive
+Get-MsolFederationProperty -DomainName <domain.name> | FL Source, TokenSigningCertificate
+```
 
 ![Get-MsolFederationProperty](./media/how-to-connect-fed-o365-certs/certsync.png)
 

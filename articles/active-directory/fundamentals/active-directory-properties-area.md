@@ -7,18 +7,18 @@ manager: daveba
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/17/2018
 ms.author: ajburnle
 ms.reviewer: bpham
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 343671c1d9ee82950a9822648f9831588da7e9f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 03a8d1f3e541d61d515b28bf56964c0add3b390e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80876184"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830638"
 ---
 # <a name="add-your-organizations-privacy-info-using-azure-active-directory"></a>A szervezet adatvédelmi adatainak hozzáadása a Azure Active Directory használatával
 Ez a cikk azt ismerteti, hogyan adhat hozzá egy bérlői rendszergazda az adatvédelemmel kapcsolatos adatokat egy szervezet Azure Active Directory (Azure AD) bérlőhöz a Azure Portal keresztül.
@@ -32,15 +32,15 @@ A szervezet adatvédelmi információit az Azure AD **Tulajdonságok** terület�
 
 ### <a name="to-access-the-properties-area-and-add-your-privacy-information"></a>A tulajdonságok részhez való hozzáféréshez és az adatvédelmi adatok hozzáadásához
 
-1.    Jelentkezzen be a Azure Portal bérlői rendszergazdaként.
+1. Jelentkezzen be a Azure Portal bérlői rendszergazdaként.
 
-2.    A bal oldali navigációs sávon válassza a **Azure Active Directory**lehetőséget, majd válassza a **Tulajdonságok**lehetőséget.
+2. A bal oldali navigációs sávon válassza a **Azure Active Directory**lehetőséget, majd válassza a **Tulajdonságok**lehetőséget.
 
     Megjelenik a **Tulajdonságok** rész.
 
     ![Az Azure AD-tulajdonságok az adatvédelmi információs területeket kiemelve](media/active-directory-properties-area/properties-area.png)
 
-3.    Adja meg az alkalmazottak adatvédelmi adatait:
+3. Adja meg az alkalmazottak adatvédelmi adatait:
 
     - **Technikai kapcsolattartó.** Írja be annak a személynek az e-mail-címét, akit a szervezeten belüli technikai támogatáshoz szeretne felvenni.
     
@@ -49,11 +49,11 @@ A szervezet adatvédelmi információit az Azure AD **Tulajdonságok** terület�
     - **Adatvédelmi nyilatkozat URL-címe.** Írja be a szervezet dokumentumára mutató hivatkozást, amely leírja, hogyan kezeli a szervezet a belső és a külső vendég adatvédelmét.
 
         >[!Important]
-        >Ha nem tartalmazza a saját adatvédelmi nyilatkozatát vagy az Ön adatvédelmi kapcsolattartóját, a külső vendégek a **felülvizsgálati engedélyek** mezőben megjelenő szöveget is láthatják, ** <és a szervezet _neve_> nem adta meg a használati feltételekre mutató hivatkozásokat**. A vendég felhasználó például akkor látja ezt az üzenetet, amikor meghívót kap egy szervezetnek a B2B-együttműködésen keresztüli elérésére.
+        >Ha nem tartalmazza a saját adatvédelmi nyilatkozatát vagy az Ön adatvédelmi kapcsolattartóját, a külső vendégek a **felülvizsgálati engedélyek** mezőben megjelenő szöveget is láthatják, és a szervezet ** < _neve_> nem adta meg a használati feltételekre mutató hivatkozásokat**. A vendég felhasználó például akkor látja ezt az üzenetet, amikor meghívót kap egy szervezetnek a B2B-együttműködésen keresztüli elérésére.
 
         ![B2B Collaboration felülvizsgálati engedélyek Box üzenettel](media/active-directory-properties-area/active-directory-no-privacy-statement-or-contact.png)
 
-4.    Kattintson a **Mentés** gombra.
+4. Kattintson a **Mentés** gombra.
 
 ## <a name="next-steps"></a>További lépések
 - [Azure Active Directory B2B együttműködés meghívásának beváltása](../b2b/redemption-experience.md)

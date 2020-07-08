@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 03/31/2020
 ms.author: ccompy
 ms.custom: seodec18, references_regions
-ms.openlocfilehash: 937f84d1b918eb7b9f38a62caef5dea7cede6d4d
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.openlocfilehash: 8e63c0678967a21a6b2763574e594a1a6c2ba25b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85367886"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85832984"
 ---
 # <a name="locking-down-an-app-service-environment"></a>App Service Environment zárolása
 
@@ -96,8 +96,10 @@ A Application Gateway használata csupán egy példa arra, hogyan konfigurálhat
 
 Azure Firewall küldhet naplókat az Azure Storage-ba, az Event hub-ba vagy a Azure Monitor naplókba. Az alkalmazás bármely támogatott célhoz való integrálásához lépjen a Azure Firewall-portálra > a diagnosztikai naplókat, és engedélyezze a kívánt célhelyhez tartozó naplókat. Ha integrálja Azure Monitor-naplókat, akkor a Azure Firewallba érkező forgalom naplózása látható. A megtagadott forgalom megjelenítéséhez nyissa meg a Log Analytics munkaterület-portálon > naplókat, és adjon meg egy lekérdezést, például: 
 
-    AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
- 
+```kusto
+AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
+```
+
 Ha nem ismeri az összes alkalmazás-függőséget, akkor hasznos, ha a Azure Firewall Azure Monitor naplókkal való integrációja során először működik. További tudnivalókat Azure Monitor naplók [elemzése a naplófájlok elemzéséről Azure monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview).
  
 ## <a name="dependencies"></a>Függőségek

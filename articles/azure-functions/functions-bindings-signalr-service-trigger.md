@@ -5,12 +5,12 @@ author: chenyl
 ms.topic: reference
 ms.date: 05/11/2020
 ms.author: chenyl
-ms.openlocfilehash: 4f68a3c8bb70c720f9d0c1870ead723b7b4c179c
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: c2ad9b6c4410a62d5652050406e05be4cde5fab0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84457448"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830706"
 ---
 # <a name="signalr-service-trigger-binding-for-azure-functions"></a>A signaler szolgáltatás triggerének kötése Azure Functions
 
@@ -67,9 +67,9 @@ public static async Task Run([SignalRTrigger("SignalRTest", "messages", "SendMes
 
 # <a name="c-script"></a>[C#-parancsfájl](#tab/csharp-script)
 
-Itt a *function. JSON* fájlban található kötési adat:
+Itt található a fájlban lévő *function.js* lévő kötési érték:
 
-Példa a function. JSON fájlra:
+Példa function.jsa következőn:
 
 ```json
 {
@@ -101,9 +101,9 @@ public static void Run(InvocationContext invocation, string message, ILogger log
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Itt a *function. JSON* fájlban található kötési adat:
+Itt található a fájlban lévő *function.js* lévő kötési érték:
 
-Példa a function. JSON fájlra:
+Példa function.jsa következőn:
 
 ```json
 {
@@ -130,9 +130,9 @@ module.exports = function (context, invocation) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Itt a *function. JSON* fájlban található kötési adat:
+Itt található a fájlban lévő *function.js* lévő kötési érték:
 
-Példa a function. JSON fájlra:
+Példa function.jsa következőn:
 
 ```json
 {
@@ -166,9 +166,9 @@ def main(invocation) -> None:
 
 ### <a name="signalrtrigger"></a>SignalRTrigger
 
-Az alábbi táblázat a *function. JSON* fájlban és az attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti `SignalRTrigger` .
+Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `SignalRTrigger` .
 
-|function. JSON-tulajdonság | Attribútum tulajdonsága |Description|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
 |**típusa**| n.a. | Értékre kell állítani `SignalRTrigger` .|
 |**direction**| n.a. | Értékre kell állítani `in` .|
@@ -222,14 +222,16 @@ A paraméter kötése esetén a sorrend számít. A használata esetén `Paramet
 
 Az Azure Function létrehoz egy URL-címet a jelző szolgáltatás triggerének kötéséhez, és a következőképpen van formázva:
 
-    https://<APP_NAME>.azurewebsites.net/runtime/webhooks/signalr?code=<API_KEY>
+```http
+https://<APP_NAME>.azurewebsites.net/runtime/webhooks/signalr?code=<API_KEY>
+```
 
 Az az `API_KEY` Azure Function által generált. A `API_KEY` from Azure Portal a signaler szolgáltatás-trigger kötésének használatakor kérheti le.
 :::image type="content" source="media/functions-bindings-signalr-service/signalr-keys.png" alt-text="API-kulcs":::
 
 Ezt az URL-címet a `UrlTemplate` signaler szolgáltatás felsőbb rétegbeli beállításainál kell beállítania.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az Azure Functions fejlesztése és konfigurálása az Azure SignalR szolgáltatással](../azure-signalr/signalr-concept-serverless-development-config.md)
 * [A signaler szolgáltatás Triggerének kötési mintája](https://github.com/Azure/azure-functions-signalrservice-extension/tree/dev/samples/bidirectional-chat)

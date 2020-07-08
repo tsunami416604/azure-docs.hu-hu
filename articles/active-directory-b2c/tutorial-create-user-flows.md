@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/07/2019
+ms.date: 07/01/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2d9fb98da40602837eee57914036742994b4eb9c
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 63c15b13134f17cd2e1d0bf7b8d11a168dca5b2a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85385059"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85829955"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>Oktatóanyag: felhasználói folyamatok létrehozása Azure Active Directory B2C
 
@@ -46,7 +46,7 @@ A regisztrációs és bejelentkezési felhasználói folyamat egyetlen konfigur�
     ![B2C-bérlő, címtár és előfizetés panel, Azure Portal](./media/tutorial-create-user-flows/directory-subscription-pane.png)
 
 1. A Azure Portal keresse meg és válassza a **Azure ad B2C**lehetőséget.
-1. A **házirendek**területen válassza a **felhasználói folyamatok (házirendek)** lehetőséget, majd válassza az **új felhasználói folyamat**elemet.
+1. A **házirendek**területen válassza a **felhasználói folyamatok**lehetőséget, majd válassza az **új felhasználói folyamat**elemet.
 
     ![Felhasználói folyamatok lap a portálon új felhasználói folyamat gomb kiemelve](./media/tutorial-create-user-flows/signup-signin-user-flow.png)
 
@@ -82,7 +82,7 @@ A regisztrációs és bejelentkezési felhasználói folyamat egyetlen konfigur�
 
 Ha engedélyezni szeretné a felhasználók számára a profil szerkesztését az alkalmazásban, használja a felhasználói folyamatokat szerkesztő profilt.
 
-1. A Azure AD B2C bérlő áttekintése lapon válassza a **felhasználói folyamatok (házirendek)** lehetőséget, majd válassza az **új felhasználói folyamat**elemet.
+1. A Azure AD B2C bérlő áttekintése lap menüjében válassza a **felhasználói folyamatok**lehetőséget, majd válassza az **új felhasználói folyamat**elemet.
 1. Válassza ki a **profilt szerkesztő** felhasználói folyamatot az **ajánlott** lapon.
 1. Adja meg a felhasználói folyamat **nevét** . Például: *profileediting1*.
 1. Az **Identity Providers**esetében válassza a **helyi fiók bejelentkezési**lehetőséget.
@@ -100,7 +100,7 @@ Ha engedélyezni szeretné a felhasználók számára a profil szerkesztését a
 
 Ha engedélyezni szeretné, hogy az alkalmazás felhasználói visszaállítsa a jelszavukat, jelszó-visszaállítási felhasználói folyamatot kell használnia.
 
-1. A Azure AD B2C bérlő áttekintő menüjében válassza a **felhasználói folyamatok (házirendek)** lehetőséget, majd válassza az **új felhasználói folyamat**elemet.
+1. A Azure AD B2C bérlő áttekintő menüjében válassza a **felhasználói folyamatok**lehetőséget, majd válassza az **új felhasználói folyamat**elemet.
 1. Válassza a **jelszó alaphelyzetbe állítása** felhasználói folyamat lehetőséget az **ajánlott** lapon.
 1. Adja meg a felhasználói folyamat **nevét** . Például: *passwordreset1*.
 1. Az **Identity Providers**esetében engedélyezze a **jelszó alaphelyzetbe állítását e-mail-cím használatával**.
@@ -115,7 +115,7 @@ Ha engedélyezni szeretné, hogy az alkalmazás felhasználói visszaállítsa a
 1. Kattintson a **felhasználói folyamat futtatása**elemre, ellenőrizze a korábban létrehozott fiók e-mail-címét, majd válassza a **Folytatás**lehetőséget.
 1. Most lehetősége van a felhasználó jelszavának módosítására. Módosítsa a jelszót, és válassza a **Folytatás**lehetőséget. A rendszer visszaküldi a tokent, `https://jwt.ms` és megjelenik Önnek.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta, hogyan végezheti el a következőket:
 

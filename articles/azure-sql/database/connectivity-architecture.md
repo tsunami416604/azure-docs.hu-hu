@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 06/26/2020
-ms.openlocfilehash: fceac1a5852c0be767ffc375ad9ec5de033f17b7
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 3d8bf23dcb9bfc390b9e165bcf38bf8feea5135f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85506769"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833672"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-connectivity-architecture"></a>Azure SQL Database és az Azure szinapszis Analytics kapcsolati architektúrája
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -78,10 +78,10 @@ A forgalom áttelepítésének részletei az egyes régiókban lévő új átjá
 | --- | --- |
 | Ausztrália középső régiója    | 20.36.105.0 |
 | Ausztráliai Central2   | 20.36.113.0 |
-| Kelet-Ausztrália       | 13.75.149.87, 40.79.161.1 |
+| Kelet-Ausztrália       | 13.75.149.87, 40.79.161.1, 13.70.112.9 |
 | Délkelet-Ausztrália | 191.239.192.109, 13.73.109.251 |
 | Dél-Brazília         | 104.41.11.5, 191.233.200.14 |
-| Közép-Kanada       | 40.85.224.249      |
+| Közép-Kanada       | 40.85.224.249, 52.246.152.0, 20.38.144.1 |
 | Kelet-Kanada          | 40.86.226.166      |
 | USA középső régiója           | 13.67.215.62, 52.182.137.15, 23.99.160.139, 104.208.16.96, 104.208.21.1 |
 | Kelet-Kína           | 139.219.130.35     |
@@ -102,7 +102,7 @@ A forgalom áttelepítésének részletei az egyes régiókban lévő új átjá
 | Dél-Korea középső régiója        | 52.231.32.42       |
 | Dél-Korea déli régiója          | 52.231.200.86      |
 | USA északi középső régiója     | 23.96.178.199, 23.98.55.75, 52.162.104.33 |
-| Észak-Európa         | 40.113.93.91, 191.235.193.75, 52.138.224.1 |
+| Észak-Európa         | 40.113.93.91, 191.235.193.75, 52.138.224.1, 13.74.104.113 |
 | Kelet-Norvégia          | 51.120.96.0        |
 | Norvégia nyugati régiója          | 51.120.216.0       |
 | Dél-Afrika északi régiója   | 102.133.152.0      |
@@ -118,10 +118,10 @@ A forgalom áttelepítésének részletei az egyes régiókban lévő új átjá
 | USA nyugati középső régiója      | 13.78.145.25       |
 | Nyugat-Európa          | 40.68.37.158, 191.237.232.75, 104.40.168.105  |
 | USA nyugati régiója              | 104.42.238.205, 23.99.34.75, 13.86.216.196   |
-| USA nyugati régiója, 2.            | 13.66.226.202      |
+| USA nyugati régiója, 2.            | 13.66.226.202, 40.78.240.8  |
 |                      |                    |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A kiszolgálók Azure SQL Database-kapcsolódási házirendjének módosításáról további információt a [Conn-Policy](https://docs.microsoft.com/cli/azure/sql/server/conn-policy)című témakörben talál.
 - A ADO.NET 4,5-as vagy újabb verziót használó ügyfelek Azure SQL Database-kapcsolatainak működéséről további információért lásd: [a 1433-nál nagyobb portok a ADO.NET 4,5](adonet-v12-develop-direct-route-ports.md)-ban.

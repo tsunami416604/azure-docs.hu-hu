@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: troubleshooting
 ms.date: 10/16/2019
 ms.author: charwen
-ms.openlocfilehash: ab4cc288f2a505baaa8f3a70db0a1fe76fb20c96
-ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
+ms.openlocfilehash: f3c142491363f30513877ae4368f291430aa3675
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84744068"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85831930"
 ---
 # <a name="troubleshoot-azure-bastion"></a>Az Azure Bastion hibaelhárítása
 
@@ -28,7 +28,7 @@ Ez a cikk bemutatja, hogyan lehet elhárítani az Azure Bastion-t.
 2. A diagnosztikai naplózás és egyebek – a AzureCloud a 443-es kimenő forgalom (a szolgáltatási címkén belüli regionális címkék még nem támogatottak.)
 3. Cél virtuális gép – 3389-es és 22-es VirtualNetwork
 
-A NSG-szabályokra például a gyors útmutató [sablonjában](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azure-bastion)van lehetőség.
+A NSG-szabályokra például a gyors útmutató [sablonjában](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azure-bastion-nsg)van lehetőség.
 További információ: [NSG útmutató az Azure Bastion-hez](bastion-nsg.md).
 
 ## <a name="unable-to-use-my-ssh-key-with-azure-bastion"></a><a name="sshkey"></a>Az SSH-kulcs nem használható az Azure Bastion használatával

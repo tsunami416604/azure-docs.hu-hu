@@ -3,18 +3,18 @@ title: Jupyter-jegyzetfüzetek létrehozása és klónozása – Azure Notebooks
 description: Azure Notebooks az előzetes verziójú projektek jegyzetfüzetek és kapcsolódó fájlok gyűjteményét kezelik, amelyekkel új vagy klónozást hozhat létre más forrásokból.
 ms.topic: how-to
 ms.date: 02/25/2019
-ms.openlocfilehash: b29ff336c09a3bbf05a57c8a3a503b1875b76e54
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: e1321afc2ce294c8a39ba8d55574e2ca949f632e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84710388"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85831284"
 ---
 # <a name="create-and-clone-projects-in-azure-notebooks-preview"></a>Projektek létrehozása és klónozása Azure Notebooks előzetes verzióban
 
-Azure Notebooks a Jupyter-jegyzetfüzeteket és a kapcsolódó fájlokat a *projektek*nevű logikai csoportba rendezi. Először hozzon létre egy projektet tárolóként, majd hozzon létre vagy klónozott több jegyzetfüzetet egy másik projektfájl mellett egy mappán belül. (Ezt a folyamatot az [oktatóanyag](tutorial-create-run-jupyter-notebook.md)mutatja be.)
-
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
+Azure Notebooks a Jupyter-jegyzetfüzeteket és a kapcsolódó fájlokat a *projektek*nevű logikai csoportba rendezi. Először hozzon létre egy projektet tárolóként, majd hozzon létre vagy klónozott több jegyzetfüzetet egy másik projektfájl mellett egy mappán belül. (Ezt a folyamatot az [oktatóanyag](tutorial-create-run-jupyter-notebook.md)mutatja be.)
 
 A projektek metaadatokat és egyéb konfigurációs beállításokat is fenntartanak, amelyek hatással vannak arra a kiszolgálóra, amelyen a jegyzetfüzetek futnak, beleértve az egyéni telepítési lépéseket és a csomagok telepítését. További információ: [projektek kezelése és konfigurálása](configure-manage-azure-notebooks-projects.md).
 
@@ -26,7 +26,7 @@ A **saját projektek** irányítópultja a következő címen `https://notebooks
 
 Az irányítópulton elvégezhető műveletek attól függnek, hogy a felhasználói azonosítót birtokló fiókkal jelentkezett-e be:
 
-| Parancs | Elérhető a következőhöz | Leírás |
+| Parancs | Elérhető a következőhöz | Description |
 | --- | --- | --- |
 | **Futtatás** | Tulajdonos | Elindítja a Project kiszolgálót, és megnyitja a projekt mappáját a Jupyter. (Gyakrabban navigáljon először a projekt mappájába, majd indítson el egy jegyzetfüzetet innen.) |
 | **Letöltés** | Bárki | A kiválasztott projekt másolatának letöltése ZIP-fájlként. |
@@ -57,7 +57,7 @@ Ha nem rendelkezik Azure Notebooks-projekttel, létrehozhat egy hivatkozást, am
 
 Ha az **+ új projekt** parancsot használja, Azure Notebooks megjeleníti az **új projekt létrehozása** előugró ablakban. Ebben az előugró ablakban adja meg a következő adatokat, majd válassza a **Létrehozás**lehetőséget:
 
-| Mező | Leírás |
+| Mező | Description |
 | --- | --- |
 | Projektnév | A projekt felhasználóbarát neve, amelyet a Azure Notebooks a megjelenítési célokra használ. Például: "My notebook Project". |
 | Projektazonosító | Egy egyéni azonosító, amely a projekt megosztásához használt URL-cím részévé válik (az űrlap `https://notebooks.azure.com/<user_id>/projects/<project_id>` ). Ez az azonosító csak betűket, számokat és kötőjeleket használhat, legfeljebb 30 karakterből állhat, és nem lehet [foglalt projekt-azonosító](#reserved-project-ids). Ha nem tudja biztosan, hogy mit kell használni, a közös konvenció a projekt nevének olyan kisbetűs verzióját használja, amelyben a szóközök kötőjelbe vannak bekapcsolva, például "My-notebook-Project" (ha szükséges a hosszhoz). |
@@ -84,7 +84,7 @@ Mivel a projekt-azonosító egy projekt URL-címéhez is tartozik, az ad blocker
 
 A teljes nyilvános GitHub-tárházat könnyedén importálhatja projektként, beleértve az összes adatés *readme.MD* fájlt is. Használja a **GitHub** -tárház feltöltése parancsot, adja meg a következő adatokat az előugró ablakban, majd válassza az **Importálás**lehetőséget:
 
-| Mező | Leírás |
+| Mező | Description |
 | --- | --- |
 | GitHub-adattár | A github.com lévő forrás adattár neve. Ha például az Azure-beli Cognitive Services Jupyter-jegyzetfüzeteit szeretné klónozott [https://github.com/Microsoft/cognitive-services-notebooks](https://github.com/Microsoft/cognitive-services-notebooks) , írja be a következőt: "Microsoft/kognitív-Services-Notebooks".  |
 | Rekurzív klónozás | A GitHub-adattárak több gyermek tárházat is tartalmazhatnak. Akkor adja meg ezt a beállítást, ha a szülő tárházat és annak összes gyermekét szeretné klónozott módon megtekinteni. Mivel lehetséges, hogy egy tárház sok gyermeket tartalmaz, hagyja üresen ezt a lehetőséget, ha nem tudja, hogy szüksége van rá. |

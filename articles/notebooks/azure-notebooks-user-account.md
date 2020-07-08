@@ -3,22 +3,22 @@ title: Bejelentkezés Azure Notebooks előzetes verzióra
 description: A Azure Notebooks felhasználói fiókjának konfigurálása Microsoft-fiók vagy munkahelyi/iskolai fiók használatával.
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 2a19803ec0a621b981fa9198766c58376ba50534
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: 929a21785b5b48c81c2d2016874feed61021d3c0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85125838"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85832185"
 ---
 # <a name="your-user-account-for-azure-notebooks-preview"></a>Azure Notebooks előzetes verziójának felhasználói fiókja
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 A Azure Notebooks a felhasználói fiókkal való bejelentkezéssel vagy anélkül is használhatja:
 
 - Bejelentkezés nélkül létrehozhat és futtathat jegyzetfüzeteket, de nem tudja megőrizni a jegyzetfüzeteket és az adatfájlokat a projektek részeként. Azok a felhasználók, akik egy Azure-jegyzetfüzetre mutató hivatkozást kapnak, így nem kell bejelentkezniük a jegyzetfüzetbe.
 - Ha bejelentkezett, Azure Notebooks megőrzi az összes projektet a fiókjával. A bejelentkezett felhasználóknak olyan felhasználói AZONOSÍTÓjuk is van, amely lehetővé teszi, hogy másokkal is megosszák a projektjeiket és a jegyzetfüzeteket.
 - Ha a Azure Notebookshez használt fiók egy Azure-előfizetéshez is társítva van, akkor további előnyökkel jár, mint például a jegyzetfüzetek futtatása nagyobb teljesítményű kiszolgálókon, privát jegyzetfüzetek létrehozása és engedélyek engedélyezése a jegyzetfüzetekhez az egyes felhasználók számára.
-
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 Az Azure Notebooksba való bejelentkezéshez Microsoft-fiókra vagy munkahelyi vagy iskolai fiókra van szükség. A rendszer a jegyzetfüzetek oldal jobb felső sarkában található **Bejelentkezés** parancs kiválasztásakor kéri a fiókját:
 

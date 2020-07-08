@@ -5,16 +5,16 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: 45a7de4f19b663823a5eff7ba4f352992c3aaf0d
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.openlocfilehash: 1f08d6b8a2ce2381c3bc85891a292ac05561cf34
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85374202"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85832559"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Kódtesztelési stratégiák az Azure Functions szolgáltatásban
 
-Ez a cikk bemutatja, hogyan hozhatók létre automatizált tesztek a Azure Functionshoz. 
+Ez a cikk bemutatja, hogyan hozhatók létre automatizált tesztek a Azure Functionshoz.
 
 Az összes kód tesztelése ajánlott, azonban a legjobb eredményeket a függvény logikájának becsomagolásával és a függvényen kívüli tesztek létrehozásával érheti el. Az absztrakt logika el korlátozza a függvények kódjait, és lehetővé teszi, hogy a függvény kizárólag az egyéb osztályok vagy modulok hívására legyen felelős. Ez a cikk azonban azt mutatja be, hogyan hozhatók létre automatizált tesztek a HTTP és az időzítő által aktivált függvények esetében.
 
@@ -38,7 +38,7 @@ A környezet beállításához hozzon létre egy Function és test alkalmazást.
 1. [Hozzon létre egy új functions-alkalmazást](./functions-create-first-azure-function.md) , és nevezze el a **függvényeket**
 2. [Hozzon létre egy http-függvényt a sablonból](./functions-create-first-azure-function.md) , és nevezze el **MyHttpTrigger**.
 3. [Hozzon létre egy időzítő függvényt a sablonból](./functions-create-scheduled-function.md) , és nevezze el **MyTimerTrigger**.
-4. [Hozzon létre egy XUnit teszt alkalmazást](https://xunit.github.io/docs/getting-started-dotnet-core) a megoldásban, és nevezze el a **functions.** tests nevet. 
+4. [Hozzon létre egy XUnit teszt alkalmazást](https://xunit.github.io/docs/getting-started-dotnet-core) a megoldásban, és nevezze el a **functions.** tests nevet.
 5. A NuGet használata a tesztelési alkalmazásból a [Microsoft. AspNetCore. MVC](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/) -re mutató hivatkozás hozzáadásához
 6. [Hivatkozzon a *functions* alkalmazásra](https://docs.microsoft.com/visualstudio/ide/managing-references-in-a-project?view=vs-2017) a *functions. tesztek* alkalmazásban.
 
@@ -127,7 +127,7 @@ namespace Functions.Tests
 }
 ```
 
-Ez az enumerálás meghatározza a tesztek által használt naplózó típusát. 
+Ez az enumerálás meghatározza a tesztek által használt naplózó típusát.
 
 Most hozzon létre egy új osztályt a *functions. tesztek* **TestFactory.cs** nevű projektben, és adja meg a következő kódot:
 
@@ -314,7 +314,7 @@ module.exports = {
 
 Ez a modul implementálja a `IsPastDue` tulajdonságot, hogy az egy hamis időzítő példány legyen. Az időzítő konfigurációk, például a NCRONTAB-kifejezések nem szükségesek itt, mivel a teszt-hám egyszerűen hívja meg a függvényt közvetlenül az eredmény teszteléséhez.
 
-Ezután a VS Code functions bővítmény használatával [hozzon létre egy új JavaScript http-függvényt](/azure/javascript/tutorial-vscode-serverless-node-01) , és nevezze el *HttpTrigger*. A függvény létrehozása után adjon hozzá egy új fájlt a **index.test.js**nevű mappában, és adja hozzá a következő kódot:
+Ezután a VS Code functions bővítmény használatával [hozzon létre egy új JavaScript http-függvényt](/azure/developer/javascript/tutorial-vscode-serverless-node-01) , és nevezze el *HttpTrigger*. A függvény létrehozása után adjon hozzá egy új fájlt a **index.test.js**nevű mappában, és adja hozzá a következő kódot:
 
 ```javascript
 const httpFunction = require('./index');
@@ -380,7 +380,7 @@ A tesztek hibakereséséhez adja hozzá a következő konfigurációt a *launch.
 
 Ezután állítson be egy töréspontot a tesztben, és nyomja le az **F5**billentyűt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerte, hogyan írhat automatizált teszteket a függvények számára, folytassa ezeket az erőforrásokat:
 
