@@ -3,12 +3,12 @@ title: Áthelyezési hibák elhárítása
 description: Az erőforrások új erőforráscsoporthoz vagy előfizetésbe való áthelyezéséhez használja a Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: 5a65f7daa0f5e3b1c8c6ddfdbecc0ff7d53e5afd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 60e4ffb2b79fcce85fa4b316e68e191eb14f8bf0
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75891272"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055084"
 ---
 # <a name="troubleshoot-moving-azure-resources-to-new-resource-group-or-subscription"></a>Azure-erőforrások új erőforráscsoportba vagy előfizetésbe való áthelyezésének hibakeresése
 
@@ -18,8 +18,8 @@ Ez a cikk javaslatokat nyújt az erőforrások áthelyezésekor felmerülő prob
 
 Ha valóban frissíteni szeretné az Azure-előfizetését (például az ingyenesről az utólagos elszámolású váltásra), akkor konvertálnia kell az előfizetést.
 
-* Az ingyenes próbaverzió frissítését lásd: [ingyenes próbaverzió frissítése vagy Microsoft Imagine Azure-előfizetés](../../billing/billing-upgrade-azure-subscription.md)utólagos elszámolású.
-* Az utólagos elszámolású fiók módosításához lásd: [Az Azure utólagos elszámolású előfizetés módosítása egy másik ajánlatra](../../billing/billing-how-to-switch-azure-offer.md).
+* Az ingyenes próbaverzió frissítését lásd: [ingyenes próbaverzió frissítése vagy Microsoft Imagine Azure-előfizetés](../../cost-management-billing/manage/upgrade-azure-subscription.md)utólagos elszámolású.
+* Az utólagos elszámolású fiók módosításához lásd: [Az Azure utólagos elszámolású előfizetés módosítása egy másik ajánlatra](../../cost-management-billing/manage/switch-azure-offer.md).
 
 Ha nem tudja konvertálni az előfizetést, [hozzon létre egy Azure-támogatási kérést](../../azure-portal/supportability/how-to-create-azure-support-request.md). Válassza az **előfizetés kezelése** lehetőséget a probléma típusához.
 
@@ -32,7 +32,7 @@ Egyes szolgáltatások az erőforrások áthelyezésekor további szempontokat i
 * [Klasszikus üzemi modell](./move-limitations/classic-model-move-limitations.md)
 * [Hálózat](./move-limitations/networking-move-limitations.md)
 * [Recovery Services](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)
-* [Virtuális gépek](./move-limitations/virtual-machines-move-limitations.md)
+* [Virtual Machines](./move-limitations/virtual-machines-move-limitations.md)
 
 ## <a name="large-requests"></a>Nagyméretű kérelmek
 

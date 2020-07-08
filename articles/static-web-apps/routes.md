@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: e6c38f3bc695db0e27547e434a81f95fa556e84b
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: bde0db179216426c4279e5b03b416a04176430bb
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85295998"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056786"
 ---
 # <a name="routes-in-azure-static-web-apps-preview"></a>Útvonalak az Azure statikus Web Apps előzetes verziójában
 
@@ -37,7 +37,7 @@ A következő táblázat felsorolja a megfelelő helyet, amellyel a _routes.jsa_
 |Keretrendszer/könyvtár | Hely  |
 |---------|----------|
 | Angular | _eszközök_   |
-| Reagálni   | _nyilvános_  |
+| React   | _nyilvános_  |
 | Karcsú  | _nyilvános_   |
 | Vue     | _nyilvános_ |
 
@@ -157,7 +157,7 @@ Előfordulhat, hogy a felhasználók számos különböző szituációba ütköz
 
 A következő táblázat az elérhető platform-hibák felülbírálásait sorolja fel:
 
-| Hiba típusa  | HTTP-állapotkód | Leírás |
+| Hiba típusa  | HTTP-állapotkód | Description |
 |---------|---------|---------|
 | `NotFound` | 404  | Nem található lap a kiszolgálón. |
 | `Unauthenticated` | 401 | A felhasználó nincs bejelentkezve egy [hitelesítési szolgáltatóval](authentication-authorization.md). |
@@ -166,6 +166,53 @@ A következő táblázat az elérhető platform-hibák felülbírálásait sorol
 | `Unauthorized_MissingRoles` | 401 | A felhasználó nem tagja egy szükséges szerepkörnek. |
 | `Unauthorized_TooManyUsers` | 401 | A hely elérte a felhasználók maximális számát, és a kiszolgáló korlátozza a további kiegészítéseket. Ez a hiba az ügyfél számára érhető el, mert nincs korlátozva a létrehozható [meghívások](authentication-authorization.md) száma, és egyes felhasználók soha nem fogadják el a meghívót.|
 | `Unauthorized_Unknown` | 401 | Ismeretlen hiba történt a felhasználó hitelesítése közben. Ennek a hibának az egyik oka az lehet, hogy a felhasználó nem ismerhető fel, mert nem engedélyezte az alkalmazáshoz való hozzájárulásukat.|
+
+## <a name="custom-mime-types"></a>Egyéni MIME-típusok
+
+A `mimeTypes` tömbvel megegyező szinten felsorolt objektum `routes` lehetővé teszi a [MIME-típusok](https://developer.mozilla.org/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types) kiterjesztésekkel való társítását.
+
+```json
+{
+    "routes": [],
+    "mimeTypes": {
+        "custom": "text/html"
+    }
+}
+```
+
+A fenti példában a kiterjesztéssel rendelkező összes fájl `.custom` a MIME-típussal lesz kézbesítve `text/html` .
+
+A következő szempontok fontosak a MIME-típusok használatakor:
+
+- A kulcsok értéke nem lehet null vagy üres, vagy 50 karakternél hosszabb.
+- Az értékek nem lehetnek null értékűek vagy üresek, vagy több mint 1000 karakterből állhatnak.
+
+## <a name="default-headers"></a>Alapértelmezett fejlécek
+
+A `defaultHeaders` tömbvel megegyező szinten felsorolt objektum `routes` lehetővé teszi a [Válasz fejlécek](https://developer.mozilla.org/docs/Web/HTTP/Headers)hozzáadását, módosítását és eltávolítását.
+
+Egy fejléc értékének megadása vagy módosítása a fejlécet adja meg vagy módosítja. Ha üres értéket ad meg, azzal eltávolítja a fejlécet az ügyfélnek.
+
+```json
+{
+    "routes": [],
+    "defaultHeaders": {
+      "content-security-policy": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'",
+      "cache-control": "must-revalidate, max-age=6000",
+      "x-dns-prefetch-control": ""
+    }
+}
+```
+
+A fenti példában egy új fejléc kerül `content-security-policy` hozzáadásra, a `cache-control` módosítja a kiszolgáló alapértelmezett értékét, és a `x-dns-prefectch-control` fejléc el lesz távolítva.
+
+A következő szempontok fontosak a fejlécek használatakor:
+
+- A kulcsok nem lehetnek null értékűek vagy üresek.
+- Null vagy üres érték esetén a rendszer eltávolítja a fejlécet a feldolgozásból.
+- A kulcsok vagy az értékek nem haladhatják meg a 8 000 karaktert.
+- A definiált fejlécek minden kérelemmel együtt lesznek kézbesítve.
+- A _routes.jsban_ definiált fejlécek csak statikus tartalomra vonatkoznak. A függvény kódjában testreszabhatja az API-végpontok válaszának fejléceit.
 
 ## <a name="example-route-file"></a>Példa az útválasztási fájlra
 
@@ -222,24 +269,33 @@ Az alábbi példa bemutatja, hogyan hozhat létre a statikus tartalomra és API-
       "statusCode": "302",
       "serve": "/login"
     }
-  ]
+  ],
+  "defaultHeaders": {
+    "content-security-policy": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'"
+  },
+  "mimeTypes": {
+      "custom": "text/html"
+  }
 }
 ```
 
 Az alábbi példák azt írják le, mi történik, ha egy kérelem megfelel egy szabálynak.
 
-|Kérelmek...  | Eredmény... |
-|---------|---------|---------|
+| Kérelmek... | Eredmény... |
+|--|--|--|
 | _/Profile_ | A hitelesített felhasználók kiszolgálják a _/profile/index.html_ fájlt. Nem hitelesített felhasználók átirányítva a _belépési_értékre. |
 | _/admin/reports_ | A _rendszergazdák_ szerepkörben lévő hitelesített felhasználók a _/Admin/Reports/index.html_ fájlban lesznek kézbesítve. A _rendszergazdák_ szerepkörben nem szereplő hitelesített felhasználók a<sup>2</sup>. 401 hibát szolgálják fel. Nem hitelesített felhasználók átirányítva a _belépési_értékre. |
 | _/api/admin_ | A _rendszergazdák_ szerepkörbe tartozó hitelesített felhasználóktól érkező kéréseket a rendszer ELKÜLDI az API-nak. A _rendszergazdák_ szerepkörbe nem tartozó hitelesített felhasználók és a nem hitelesített felhasználók 401-es hibát szolgáltatnak. |
 | _/customers/contoso_ | Azok a hitelesített felhasználók, akik a _rendszergazdákhoz_ vagy az _ügyfelekhez tartozó \_ contoso_ -szerepkörökhöz tartoznak, a _/Customers/contoso/index.html_ <sup>2</sup>. fájlba kerülnek. A _rendszergazdák_ vagy az _ügyfelek \_ contoso_ szerepköreiben nem szereplő hitelesített felhasználók 401-es hibát szolgáltatnak. Nem hitelesített felhasználók átirányítva a _belépési_értékre. |
-| _/Belépés View_     | A nem hitelesített felhasználók a GitHub használatával hitelesíthetők. |
-| _/.auth/login/twitter_     | A Twitter-engedélyezés le van tiltva. A kiszolgáló 404-as hibával válaszol. |
-| _/logout_     | A felhasználók ki vannak jelentkezve bármely hitelesítési szolgáltatóból. |
+| _/Belépés View_ | A nem hitelesített felhasználók a GitHub használatával hitelesíthetők. |
+| _/.auth/login/twitter_ | A Twitter-engedélyezés le van tiltva. A kiszolgáló 404-as hibával válaszol. |
+| _/logout_ | A felhasználók ki vannak jelentkezve bármely hitelesítési szolgáltatóból. |
 | _/calendar/2020/01_ | A böngésző a _/calendar.html_ fájlt kézbesíti. |
 | _/specials_ | A böngésző átirányítja a _/Deals_. |
-| _/unknown-folder_     | A _/custom-404.html_ fájl kézbesítve. |
+| _/unknown-folder_ | A _/custom-404.html_ fájl kézbesítve. |
+| `.custom`Kiterjesztésű fájlok | A `text/html` MIME-típussal szolgál |
+
+- Az összes válasz tartalmazza a `content-security-policy` fejléceket, amelyeknek értéke `default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'` .
 
 <sup>1</sup> az API functions esetében az útválasztási szabályok csak az [átirányításokat](#redirects) támogatják, és [a szerepkörökkel biztosítják az útvonalak védelmét](#securing-routes-with-roles).
 

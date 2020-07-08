@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: 459a34d104e01dca2cdf997c6aedd6f54f3adbaa
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: f7295515b75ba7e26454f8b6ce6e0d660657ec4e
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84677678"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055239"
 ---
 # <a name="develop-arm-templates-for-cloud-consistency"></a>ARM-sablonok fejlesztése a felhő konzisztenciájához
 
@@ -574,7 +574,7 @@ Ugyanezek a módosítások is alkalmaznak [adatlemezeket](../../virtual-machines
 
 ### <a name="verify-that-vm-extensions-are-available-in-azure-stack"></a>Győződjön meg arról, hogy a virtuálisgép-bővítmények elérhetők a Azure Stack
 
-A felhő konzisztenciájának egy másik szempontja a [virtuálisgép-bővítmények használata a virtuális gépeken](../../virtual-machines/windows/extensions-features.md) belüli erőforrások konfigurálására. Nem minden virtuálisgép-bővítmény érhető el Azure Stackban. A sablon megadhatja a virtuálisgép-bővítményhez dedikált erőforrásokat, függőségeket és feltételeket hozhat létre a sablonon belül.
+A felhő konzisztenciájának egy másik szempontja a [virtuálisgép-bővítmények használata a virtuális gépeken](../../virtual-machines/extensions/features-windows.md) belüli erőforrások konfigurálására. Nem minden virtuálisgép-bővítmény érhető el Azure Stackban. A sablon megadhatja a virtuálisgép-bővítményhez dedikált erőforrásokat, függőségeket és feltételeket hozhat létre a sablonon belül.
 
 Ha például Microsoft SQL Server rendszert futtató virtuális gépet szeretne konfigurálni, akkor a virtuálisgép-bővítmény a sablon központi telepítésének részeként konfigurálhatja a SQL Server. Vegye figyelembe, hogy mi történik, ha a központi telepítési sablon egy SQL Server-t futtató virtuális gépen található adatbázis létrehozásához konfigurált alkalmazáskiszolgáló is tartalmaz. Emellett az alkalmazás-kiszolgálók virtuálisgép-bővítményének használatával is konfigurálhatja az alkalmazáskiszolgáló függőségét az SQL Server VM-bővítmény erőforrásának sikeres visszaadásához. Ez a megközelítés biztosítja, hogy a SQL Server rendszert futtató virtuális gép konfigurálva legyen, és elérhető legyen, ha az alkalmazáskiszolgáló arra utasítja, hogy hozza létre az adatbázist.
 
@@ -665,7 +665,7 @@ A teszteléshez és automatizáláshoz vegye figyelembe a következő tippeket:
 * Vegye figyelembe, hogy egyes tesztek a Azure Resource Manager csatlakoztatása nélkül is elvégezhetők. Mások, például a sablonok tesztelésének megkövetelése, hogy a Resource Manager olyan műveleteket végezzen, amelyeken nem végezhető el a kapcsolat nélküli üzemmód.
 * Egy központi telepítési sablon az érvényesítési API-val való tesztelése nem egyenlő a tényleges telepítéssel. Emellett akkor is, ha egy helyi fájlból telepít egy sablont, a sablonban lévő beágyazott sablonokra mutató hivatkozásokat közvetlenül a Resource Manager kéri le, és a virtuálisgép-bővítmények által hivatkozott összetevők lekérése a telepített virtuális gépen futó virtuálisgép-ügynök által történik.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Azure Resource Manager a sablonra vonatkozó megfontolások](/azure-stack/user/azure-stack-develop-templates)
 * [Ajánlott eljárások ARM-sablonokhoz](template-syntax.md)

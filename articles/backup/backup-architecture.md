@@ -3,12 +3,12 @@ title: Az architektúra áttekintése
 description: Áttekintést nyújt a Azure Backup szolgáltatás által használt architektúráról, összetevőkről és folyamatokról.
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: b093c6702bb26fe537622727fe1b623141bf4160
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 26f10f96cac412854f4bb0f732a0aec7f595c8ae
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84707923"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055256"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Architektúra és összetevők Azure Backup
 
@@ -44,8 +44,8 @@ Recovery Services-tárolók a következő funkciókkal rendelkeznek:
 - Megfigyelheti a tárolóban lévő biztonsági másolati elemeket, beleértve az Azure-beli virtuális gépeket és a helyszíni gépeket is.
 - A tár hozzáférését az Azure [szerepköralapú hozzáférés-vezérléssel (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)kezelheti.
 - Megadhatja, hogyan replikálja a rendszer a tárolóban lévő adattárakat:
-  - **Helyileg redundáns tárolás (LRS)**: az adatközpontok meghibásodása elleni védelem érdekében a LRS-t használhatja. A LRS replikálja az adatmennyiséget egy tárolási méretezési egységbe. [További információ](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs).
-  - **Geo-redundáns tárolás (GRS)**: az egész régióra kiterjedő kimaradások elleni védelemhez használhatja a GRS. A GRS egy másodlagos régióba replikálja az adatait. [További információ](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs).
+  - **Helyileg redundáns tárolás (LRS)**: az adatközpontok meghibásodása elleni védelem érdekében a LRS-t használhatja. A LRS replikálja az adatmennyiséget egy tárolási méretezési egységbe. [További információk](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs).
+  - **Geo-redundáns tárolás (GRS)**: az egész régióra kiterjedő kimaradások elleni védelemhez használhatja a GRS. A GRS egy másodlagos régióba replikálja az adatait. [További információk](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs).
   - Recovery Services tárolók alapértelmezés szerint a GRS használják.
 
 ## <a name="backup-agents"></a>Biztonsági mentési ügynökök
@@ -105,9 +105,7 @@ Deduplikált lemezek biztonsági mentése | | | ![Részlegesen][yellow]<br/><br/
 ## <a name="backup-policy-essentials"></a>Biztonsági mentési szabályzat alapjai
 
 - A biztonsági mentési szabályzatot tárolóként hozza létre a rendszer.
-- Biztonsági mentési szabályzat hozható létre a következő számítási feladatok biztonsági mentéséhez
-  - Azure VM
-  - SQL az Azure-beli virtuális gépen
+- Biztonsági mentési szabályzat hozható létre a következő számítási feladatok biztonsági mentéséhez: Azure-beli virtuális gépek, SQL Azure-beli virtuális gépeken, Azure-beli virtuális gépek és Azure-fájlmegosztás SAP HANA. A fájlok és mappák biztonsági mentésének szabályzata a Mars-ügynök használatával van megadva a MARS-konzolon.
   - Azure-fájlmegosztás
 - Egy szabályzat több erőforráshoz is hozzárendelhető. Az Azure-beli virtuális gépek biztonsági mentési szabályzata számos Azure-beli virtuális gép biztosítására használható.
 - A szabályzat két összetevőből áll
@@ -115,9 +113,12 @@ Deduplikált lemezek biztonsági mentése | | | ![Részlegesen][yellow]<br/><br/
   - Megőrzöttség: az egyes biztonsági másolatok megőrzésének idejére.
 - Az ütemterv "napi" vagy "hetente" is definiálható egy adott időpontra.
 - A megőrzés a "napi", a "hetente", a "havi", az "éves" biztonsági mentési pontok esetében adható meg.
-- a "hetente" a hét egy adott napján egy biztonsági mentésre utal, a "havonta" a hónap egy adott napján történő biztonsági mentést, az "éves" pedig az év adott napján biztonsági mentést jelent.
-- A "havi", "éves" biztonsági mentési pontok megőrzése "LongTermRetention".
-- A tároló létrehozásakor a rendszer létrehoz egy "DefaultPolicy" nevű Azure-beli virtuális gép biztonsági mentésére vonatkozó szabályzatot is, amely az Azure-beli virtuális gépek biztonsági mentéséhez használható.
+  - a "Weekly" a hét egy adott napján biztonsági mentésre utal.
+  - a "havi" a hónap egy adott napján biztonsági mentést jelent.
+  - az "éves" az év egy adott napján biztonsági mentésre utal.
+- A "havi", "éves" biztonsági mentési pontok megőrzését hosszú távú megőrzésnek (LTR) nevezzük.
+- Tároló létrehozásakor a rendszer létrehoz egy "DefaultPolicy", és az erőforrások biztonsági mentésére is használható.
+- A biztonsági mentési szabályzat megőrzési időszakában bekövetkezett változások visszamenőlegesen lesznek alkalmazva az összes korábbi helyreállítási pontra az újakon kívül.
 
 ## <a name="architecture-built-in-azure-vm-backup"></a>Architektúra: beépített Azure-beli virtuális gépek biztonsági mentése
 

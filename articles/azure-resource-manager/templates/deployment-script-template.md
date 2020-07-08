@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 06/25/2020
 ms.author: jgao
-ms.openlocfilehash: e3d0c3493039a1c4cda2bec0d949e610321f6c57
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.openlocfilehash: b3de286bbf4513d252b42304cdc667877c72f6da
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85373811"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057415"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Telepítési parancsfájlok használata a sablonokban (előzetes verzió)
 
@@ -74,10 +74,10 @@ Az üzembe helyezési parancsfájl erőforrása csak azokon a régiókban érhet
 
   ---
 
-- **Azure PowerShell** vagy az **Azure CLI**. A támogatott Azure PowerShell verziók listáját [itt](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list)találja: a támogatott Azure CLI-verziók listáját [itt](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list)találja.
+- **Azure PowerShell** vagy az **Azure CLI**. Tekintse meg a [támogatott Azure PowerShell verziók](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list)listáját. Tekintse meg a [támogatott Azure CLI-verziók](https://mcr.microsoft.com/v2/azure-cli/tags/list)listáját.
 
     >[!IMPORTANT]
-    > A telepítési parancsfájl a Microsoft Container Registry (MCR) által elérhető CLI-rendszerképeket használja. Egy hónapot vesz igénybe, hogy az üzembe helyezési parancsfájlhoz tartozó CLI-rendszerképet hitelesítse. Ne használja a 30 napon belül kiadott CLI-verziókat. A képek kiadási dátumait az [Azure CLI kibocsátási megjegyzései](https://docs.microsoft.com/cli/azure/release-notes-azure-cli?view=azure-cli-latest)című témakörben találja. Ha nem támogatott verziót használ, a hibaüzenet felsorolja a támogatott verziókat.
+    > A telepítési parancsfájl a Microsoft Container Registry (MCR) által elérhető CLI-rendszerképeket használja. Egy hónapot vesz igénybe, hogy az üzembe helyezési parancsfájlhoz tartozó CLI-rendszerképet hitelesítse. Ne használja a 30 napon belül kiadott CLI-verziókat. A képek kiadási dátumait az [Azure CLI kibocsátási megjegyzései](/cli/azure/release-notes-azure-cli?view=azure-cli-latest)című témakörben találja. Ha nem támogatott verziót használ, a hibaüzenet felsorolja a támogatott verziókat.
 
     A sablonok telepítéséhez nincs szükség ezekre a verziókra. Ezek a verziók azonban az üzembe helyezési parancsfájlok helyi teszteléséhez szükségesek. Lásd: [a Azure PowerShell modul telepítése](/powershell/azure/install-az-ps). Előre konfigurált Docker-rendszerképet használhat.  Lásd: a [fejlesztési környezet konfigurálása](#configure-development-environment).
 
@@ -147,7 +147,7 @@ Tulajdonság értékének részletei:
 
     Ha az argumentumok Escape-karaktereket tartalmaznak, a [JsonEscaper](https://www.jsonescaper.com/) használatával megduplázhatja a karaktereket. Illessze be az eredeti Escape-karakterláncot az eszközbe, majd válassza a **Escape**lehetőséget.  Az eszköz egy dupla Escape-karakterláncot ad vissza. Az előző minta sablonban például a következő argumentum: **-name \\ "John Dole \\ "**.  Az Escape **-karakterlánc neve \\ \\ \\ "John Dole \\ \\ \\ "**.
 
-    Ha argumentumként egy ARM-sablon típusú paramétert szeretne átadni, alakítsa át az objektumot egy sztringre a [karakterlánc ()](./template-functions-string.md#string) függvény használatával, majd a [replace ()](./template-functions-string.md#replace) függvény használatával cserélje le a ** \\ "** into ** \\ \\ \\ "** karakterláncot. Példa:
+    Ha argumentumként egy ARM-sablon típusú paramétert szeretne átadni, alakítsa át az objektumot egy sztringre a [karakterlánc ()](./template-functions-string.md#string) függvény használatával, majd a [replace ()](./template-functions-string.md#replace) függvény használatával cserélje le a ** \\ "** into ** \\ \\ \\ "** karakterláncot. Például:
 
     ```json
     replace(string(parameters('tables')), '\"', '\\\"')
@@ -203,7 +203,7 @@ A kimenet a következőképpen fog kinézni:
 
 ## <a name="use-external-scripts"></a>Külső parancsfájlok használata
 
-A beágyazott parancsfájlok mellett külső parancsfájlokat is használhat. Csak a **ps1** fájlnévkiterjesztéssel rendelkező elsődleges PowerShell-parancsfájlok támogatottak. A CLI-parancsfájlok esetében az elsődleges parancsfájlok rendelkezhetnek kiterjesztéssel (vagy kiterjesztés nélkül), feltéve, hogy a parancsfájlok érvényes bash-parancsfájlok. A külső parancsfájlok használatához cserélje le a parancsot a következőre: `scriptContent` `primaryScriptUri` . Példa:
+A beágyazott parancsfájlok mellett külső parancsfájlokat is használhat. Csak a **ps1** fájlnévkiterjesztéssel rendelkező elsődleges PowerShell-parancsfájlok támogatottak. A CLI-parancsfájlok esetében az elsődleges parancsfájlok rendelkezhetnek kiterjesztéssel (vagy kiterjesztés nélkül), feltéve, hogy a parancsfájlok érvényes bash-parancsfájlok. A külső parancsfájlok használatához cserélje le a parancsot a következőre: `scriptContent` `primaryScriptUri` . Például:
 
 ```json
 "primaryScriptURI": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.ps1",
@@ -288,7 +288,7 @@ Meglévő Storage-fiók megadásához adja hozzá a következő JSON-t a tulajdo
 ```
 
 - **storageAccountName**: adja meg a Storage-fiók nevét.
-- **storageAccountKey "**: a Storage-fiók kulcsainak egyikét kell megadnia. A [`listKeys()`](./template-functions-resource.md#listkeys) kulcs lekéréséhez használhatja a függvényt. Példa:
+- **storageAccountKey "**: a Storage-fiók kulcsainak egyikét kell megadnia. A [`listKeys()`](./template-functions-resource.md#listkeys) kulcs lekéréséhez használhatja a függvényt. Például:
 
     ```json
     "storageAccountSettings": {
@@ -601,7 +601,7 @@ A fájlmegosztást úgy is be kell állítania, hogy csatlakoztassa a könyvtár
 
 A parancsfájl sikeres tesztelése után a sablonban használható üzembe helyezési parancsfájlként.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta, hogyan használhatja a telepítési parancsfájlokat. Útmutató az üzembe helyezési parancsfájlhoz:
 

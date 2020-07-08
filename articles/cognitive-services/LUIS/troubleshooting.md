@@ -4,12 +4,12 @@ description: Ez a cikk a Language Understanding (LUIS) kapcsolatos gyakori kérd
 ms.topic: troubleshooting
 ms.date: 05/06/2020
 ms.author: diberry
-ms.openlocfilehash: 15f2cf3c06e56656efd68d472cabd1da52c375cc
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: b45f3c43e70502b2734696a66d2a497c2213d1b9
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343540"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86054845"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding – Gyakori kérdések (GYIK)
 
@@ -43,7 +43,7 @@ Igen, érdemes betanítani a **nincs** szándékot több hosszúságú kimondott
 Lásd a [Bing Spell Check API v7](luis-tutorial-bing-spellcheck.md) oktatóanyagot. LUIS kikényszeríti a Bing Spell Check API v7 által kiszabott korlátokat.
 
 ### <a name="how-do-i-edit-my-luis-app-programmatically"></a>Hogyan a LUIS-alkalmazás programozással való szerkesztését?
-Ha programozott módon szeretné szerkeszteni a LUIS alkalmazást, használja az [authoring API](https://go.microsoft.com/fwlink/?linkid=2092087)-t. A szerzői API meghívásával kapcsolatos példákért tekintse meg a [Luis authoring API meghívása](./get-started-get-model-rest-apis.md) és [a Luis-alkalmazás programozott módon történő létrehozásával](./luis-tutorial-node-import-utterances-csv.md) foglalkozó témakört. A szerzői API használatához a létrehozási [kulcsot](luis-concept-keys.md#azure-resources-for-luis) kell használnia a végponti kulcs helyett. A programozott szerzői műveletek másodpercenként legfeljebb 1 000 000 hívást tesznek lehetővé, és másodpercenként öt tranzakciót biztosítanak. A LUIS használatával használt kulcsokról további információt a [kulcsok kezelése](./luis-concept-keys.md)című témakörben talál.
+Ha programozott módon szeretné szerkeszteni a LUIS alkalmazást, használja az [authoring API](https://go.microsoft.com/fwlink/?linkid=2092087)-t. Lásd: a [Luis authoring API meghívása](./get-started-get-model-rest-apis.md) és [a Luis-alkalmazás programozott módon történő létrehozása Node.jshasználatával](./luis-tutorial-node-import-utterances-csv.md) , példákkal a szerzői API meghívására. A szerzői API használatához a létrehozási [kulcsot](luis-how-to-azure-subscription.md#azure-resources-for-luis) kell használnia a végponti kulcs helyett. A programozott szerzői műveletek másodpercenként legfeljebb 1 000 000 hívást tesznek lehetővé, és másodpercenként öt tranzakciót biztosítanak. A LUIS használatával használt kulcsokról további információt a [kulcsok kezelése](./luis-how-to-azure-subscription.md)című témakörben talál.
 
 ### <a name="where-is-the-pattern-feature-that-provided-regular-expression-matching"></a>Hol található a reguláris kifejezésnek megfelelő minta funkció?
 Az előző **minta funkció** jelenleg elavult, **[mintázatok](luis-concept-patterns.md)** helyett.
@@ -123,7 +123,7 @@ További tippekért tekintse át az [ajánlott eljárásokat](luis-concept-best-
 LUIS [tokenizes](luis-glossary.md#token) a [kultúrán](luis-language-support.md#tokenization)alapuló Kimondás. Az eredeti érték és a jogkivonat-érték is elérhető az [kinyeréshez](luis-concept-data-extraction.md#tokenized-entity-returned).
 
 ### <a name="how-do-i-create-and-assign-a-luis-endpoint-key"></a>Hogyan LUIS Endpoint-kulcsot létrehozni és hozzárendelni?
-[Hozza létre a végponti kulcsot](luis-how-to-azure-subscription.md) az Azure-ban a [szolgáltatási](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) szinthez. [Rendelje hozzá a kulcsot](luis-how-to-azure-subscription.md) az **[Azure-erőforrások](luis-how-to-azure-subscription.md)** lapon. Ehhez a művelethez nem tartozik megfelelő API. Ezt követően módosítania kell a HTTP-kérést a végpontra [az új Endpoint kulcs használatához](luis-concept-keys.md).
+[Hozza létre a végponti kulcsot](luis-how-to-azure-subscription.md) az Azure-ban a [szolgáltatási](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) szinthez. [Rendelje hozzá a kulcsot](luis-how-to-azure-subscription.md) az **[Azure-erőforrások](luis-how-to-azure-subscription.md)** lapon. Ehhez a művelethez nem tartozik megfelelő API. Ezt követően módosítania kell a HTTP-kérést a végpontra [az új Endpoint kulcs használatához](luis-how-to-azure-subscription.md).
 
 ### <a name="how-do-i-interpret-luis-scores"></a>Hogyan a LUIS pontszámok értelmezését?
 A rendszeren a legmagasabb pontozási szándékot kell használnia, függetlenül annak értékétől. Például az alábbi pontszám 0,5 (kevesebb, mint 50%) nem feltétlenül jelenti azt, hogy LUIS alacsony megbízhatósággal rendelkezik. A további betanítási [adatmennyiséggel növelheti a](luis-concept-prediction-score.md) legvalószínűbb szándékot.
@@ -144,10 +144,10 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 ```
 
 ### <a name="my-luis-app-was-working-yesterday-but-today-im-getting-403-errors-i-didnt-change-the-app-how-do-i-fix-it"></a>A LUIS-alkalmazásom tegnap dolgoztam, de ma 403-es hiba történt. Nem módosítottam az alkalmazást. Hogyan lehet kijavítani a hibát?
-Az alábbi [útmutatást](#how-do-i-create-and-assign-a-luis-endpoint-key) követve hozzon létre egy Luis-végponti kulcsot, és rendelje hozzá az alkalmazáshoz. Ezután az [új Endpoint kulcs használatához](luis-concept-keys.md)módosítania kell az ügyfélalkalmazás http-kérelmét a végpontra. Ha egy másik régióban hozott létre egy új erőforrást, módosítsa a HTTP-ügyfél kérelmének régióját is.
+Az alábbi [útmutatást](#how-do-i-create-and-assign-a-luis-endpoint-key) követve hozzon létre egy Luis-végponti kulcsot, és rendelje hozzá az alkalmazáshoz. Ezután az [új Endpoint kulcs használatához](luis-how-to-azure-subscription.md)módosítania kell az ügyfélalkalmazás http-kérelmét a végpontra. Ha egy másik régióban hozott létre egy új erőforrást, módosítsa a HTTP-ügyfél kérelmének régióját is.
 
 ### <a name="how-do-i-secure-my-luis-endpoint"></a>Hogyan biztonságos My LUIS-végpontom?
-Lásd: [a végpont biztonságossá tétele](luis-concept-keys.md#securing-the-endpoint).
+Lásd: [a végpont biztonságossá tétele](luis-how-to-azure-subscription.md#securing-the-endpoint).
 
 ## <a name="working-within-luis-limits"></a>A LUIS-korlátokon belül működik
 
@@ -206,7 +206,7 @@ Ha az alkalmazás már a LUIS általánosan elérhetővé vált (GA), az előfiz
 
 ### <a name="how-do-i-know-what-key-i-need-where-i-get-it-and-what-i-do-with-it"></a>Hogyan tudja, milyen kulcsra van szükségem, hol kapok, és mit csinálok?
 
-További információ a szerzői műveletek és az előrejelzési futtatókörnyezet kulcsa közötti különbségekről: [szerzői és lekérdezési előrejelzési végpont kulcsai a Luis-ben](luis-concept-keys.md) .
+További információ a szerzői műveletek és az előrejelzési futtatókörnyezet kulcsa közötti különbségekről: [szerzői és lekérdezési előrejelzési végpont kulcsai a Luis-ben](luis-how-to-azure-subscription.md) .
 
 ### <a name="i-got-an-error-about-being-out-of-quota-how-do-i-fix-it"></a>Hiba történt a kvóta lejártakor. Hogyan lehet kijavítani a hibát?
 
@@ -301,7 +301,7 @@ A [beszédfelismerési](https://docs.microsoft.com/bot-framework/bot-service-man
 
 ### <a name="how-do-i-programmatically-get-the-luis-region-of-a-resource"></a>Hogyan programozott módon beszerezhet egy erőforrás LUIS régióját?
 
-A LUIS minta használatával programozott módon [keresheti meg a régiót](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/find-region) C# vagy Node. js használatával.
+A LUIS minta használatával programozott módon [keresheti meg a régiót](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/find-region) C# vagy Node.Js használatával.
 
 ## <a name="luis-service"></a>LUIS szolgáltatás
 
@@ -329,7 +329,7 @@ Videók:
 
 * [Az Azure társalgási AI használata az üzlet méretezésére a következő generáció számára](https://www.youtube.com/watch?v=_k97jd-csuk&feature=youtu.be)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A LUIS-vel kapcsolatos további tudnivalókért tekintse meg a következő forrásokat:
 * [A LUIS-mel kapcsolatos kérdések Stack Overflow](https://stackoverflow.com/questions/tagged/luis)

@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan lehet elhárítani a Azure Ba
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/15/2019
-ms.openlocfilehash: 1d1397519b39ffbc439cdd0d3e78d9b553ea302e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb9e5cf48f960a70c6a699df1163089eb4e8bc31
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82598011"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056603"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>A Microsoft Azure Recovery Services-(MARS-) ügynök hibáinak megoldása
 
@@ -165,6 +165,25 @@ Set-ExecutionPolicy Unrestricted
 Hiba | Lehetséges okok | Ajánlott műveletek
 --- | --- | ---
 Az aktuális művelet végrehajtása sikertelen volt, mert egy belső szolgáltatáshiba "az erőforrás nincs kiépítve a szolgáltatási bélyegzőben". Némi idő elteltével próbálja megismételni a műveletet. (AZONOSÍTÓ: 230006) | A védett kiszolgáló át lett nevezve. | <li> Nevezze vissza a kiszolgálót az eredeti névre a tárolóban regisztráltként. <br> <li> Regisztrálja újra a kiszolgálót a tárolóba az új névvel.
+
+## <a name="job-could-not-be-started-as-another-job-was-in-progress"></a>A feladatot nem lehetett elindítani, mert folyamatban van egy másik feladata
+
+Ha a **Mars-konzol**feladat-előzményeiben figyelmeztető üzenet jelenik meg  >  **Job history**, a "feladat nem indítható el, mert egy másik feladat folyamatban volt", ezt a Feladatütemező által aktivált feladat duplikált példánya okozhatja.
+
+![A feladatot nem lehetett elindítani, mert folyamatban van egy másik feladata](./media/backup-azure-mars-troubleshoot/job-could-not-be-started.png)
+
+A probléma megoldása:
+
+1. Indítsa el a Feladatütemező beépülő modult a *taskschd. msc* parancs beírásával a futtatási ablakban
+1. A bal oldali ablaktáblában navigáljon a Feladatütemező **könyvtár**  ->  **Microsoft**  ->  **OnlineBackup**.
+1. A könyvtár minden feladatához kattintson duplán a feladatra a tulajdonságok megnyitásához, majd hajtsa végre a következő lépéseket:
+    1. Váltson a **Beállítások** lapra.
+
+         ![Beállítások lap](./media/backup-azure-mars-troubleshoot/settings-tab.png)
+
+    1. Módosítsa a beállítást **, ha a feladat már fut, majd alkalmazza a következő szabályt**. Válassza **a ne indítson el új példányt**lehetőséget.
+
+         ![Módosítsa a szabályt úgy, hogy ne indítsa el az új példányt](./media/backup-azure-mars-troubleshoot/change-rule.png)
 
 ## <a name="troubleshoot-restore-problems"></a>Visszaállítási problémák elhárítása
 

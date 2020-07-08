@@ -3,12 +3,12 @@ title: Sablonok csatolása az üzembe helyezéshez
 description: Azt ismerteti, hogyan használhatók a Azure Resource Manager sablonban található csatolt sablonok a moduláris sablonok megoldásához. Bemutatja, hogyan adhatók át a paraméterek értékei, meghatározhatók egy paraméterérték és dinamikusan létrehozott URL-címek.
 ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: d8e9617fca38ca2b1f16ba2c6c1599e3663347e7
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.openlocfilehash: 1b63ebc62a944b43aef3b777dd7d285369356c29
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85445185"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056684"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Kapcsolt és beágyazott sablonok használata Azure-erőforrások üzembe helyezésekor
 
@@ -16,7 +16,7 @@ ms.locfileid: "85445185"
 
 Kis-és közepes megoldások esetében az egyetlen sablon könnyebben érthető és karbantartható. Egyetlen fájlban láthatja az összes erőforrást és értéket. A speciális forgatókönyvek esetében a csatolt sablonok lehetővé teszik a megoldás megkeresését a célként megadott összetevőkre. Ezeket a sablonokat könnyedén újra felhasználhatja más forgatókönyvek esetében is.
 
-Oktatóanyagért lásd [: csatolt Azure Resource Manager sablonok létrehozása](template-tutorial-create-linked-templates.md).
+Oktatóanyagért lásd [: csatolt Azure Resource Manager sablonok létrehozása](./deployment-tutorial-linked-template.md).
 
 > [!NOTE]
 > Csatolt vagy beágyazott sablonok esetében csak [növekményes](deployment-modes.md) telepítési módot használhat.
@@ -785,7 +785,7 @@ az deployment group create --resource-group ExampleGroup --template-uri $url?$to
 
 Az alábbi példák a csatolt sablonok gyakori használatát mutatják be.
 
-|Fő sablon  |Csatolt sablon |Leírás  |
+|Fő sablon  |Csatolt sablon |Description  |
 |---------|---------| ---------|
 |["Helló világ!" alkalmazás](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworldparent.json) |[csatolt sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworld.json) | Karakterláncot ad vissza csatolt sablonból. |
 |[Load Balancer nyilvános IP-címmel](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) |[csatolt sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) |A társított sablonból származó nyilvános IP-címet adja vissza, és beállítja a terheléselosztó értékét. |
@@ -793,7 +793,7 @@ Az alábbi példák a csatolt sablonok gyakori használatát mutatják be.
 
 ## <a name="next-steps"></a>További lépések
 
-* Az oktatóanyagot a következő témakörben tekintheti meg [: oktatóanyag: csatolt Azure Resource Manager-sablonok létrehozása](template-tutorial-create-linked-templates.md).
+* Az oktatóanyagot a következő témakörben tekintheti meg [: oktatóanyag: csatolt Azure Resource Manager-sablonok létrehozása](./deployment-tutorial-linked-template.md).
 * Az erőforrások telepítési sorrendjének definiálásával kapcsolatos további információkért lásd: [függőségek meghatározása Azure Resource Manager sablonokban](define-resource-dependency.md).
 * Ha meg szeretné tudni, hogyan határozhat meg egy erőforrást, de több példányt is létrehozhat, tekintse meg az [erőforrások több példányának létrehozása Azure Resource Manager](copy-resources.md).
 * A sablonok Storage-fiókban való beállításával és az SAS-token létrehozásával kapcsolatos lépésekért lásd: [erőforrások üzembe helyezése Resource manager Azure PowerShell-sablonokkal és](deploy-powershell.md) [az erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure CLI-vel](deploy-cli.md).

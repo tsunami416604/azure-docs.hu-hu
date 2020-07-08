@@ -3,12 +3,12 @@ title: Erőforrások telepítése több előfizetés & erőforráscsoporthoz
 description: Bemutatja, hogyan célozhat meg több Azure-előfizetést és erőforráscsoportot az üzembe helyezés során.
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 2ef68dcb933075833c323d973b023cdaee61bd2f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 34de1d9df53d61d849ffbb81a57b468020bc3b65
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650638"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057381"
 ---
 # <a name="deploy-azure-resources-across-subscriptions-or-resource-groups"></a>Azure-erőforrások üzembe helyezése előfizetések vagy erőforráscsoportok között
 
@@ -25,7 +25,7 @@ Egy olyan erőforráscsoport célzásához, amely nem azonos a fölérendelt sab
 
 Ha nem határozza meg az előfizetés-azonosítót vagy az erőforráscsoportot, a rendszer az előfizetést és az erőforráscsoportot használja a fölérendelt sablonból. Az összes erőforráscsoport léteznie kell az üzemelő példány futtatása előtt.
 
-A sablont telepítő fióknak engedéllyel kell rendelkeznie a megadott előfizetés-AZONOSÍTÓhoz való üzembe helyezéshez. Ha a megadott előfizetés egy másik Azure Active Directory-bérlőn létezik, a [vendég felhasználókat hozzá kell adnia egy másik címtárból](../../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md).
+A sablont telepítő fióknak engedéllyel kell rendelkeznie a megadott előfizetés-AZONOSÍTÓhoz való üzembe helyezéshez. Ha a megadott előfizetés egy másik Azure Active Directory-bérlőn létezik, a [vendég felhasználókat hozzá kell adnia egy másik címtárból](../../active-directory/b2b/what-is-b2b.md).
 
 A következő példa két Storage-fiókot telepít. A rendszer az első Storage-fiókot telepíti a telepítési műveletben megadott erőforráscsoporthoz. A második Storage-fiók a (z) és a (z) paraméterben megadott erőforráscsoporthoz van telepítve `secondResourceGroup` `secondSubscriptionID` :
 
@@ -129,7 +129,7 @@ Az alábbi táblázat azt mutatja, hogy a függvények feloldhatók-e a szülő 
 | ------------- | ----- | ---------- |
 | beágyazott        | külső (alapértelmezett) | Szülő erőforráscsoport |
 | beágyazott        | belső | Alerőforrás-csoport |
-| csatolt        | N/A   | Alerőforrás-csoport |
+| csatolt        | N.A.   | Alerőforrás-csoport |
 
 A következő [példában a sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crossresourcegroupproperties.json) látható:
 

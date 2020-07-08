@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: f1aed6b1c03a2b83e3b4fd91f1106614adb5a701
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: d1f534b801ec3a71e891bf654628f9e49fc04b0d
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344390"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055630"
 ---
 # <a name="add-contributors-to-your-app"></a>Közreműködők hozzáadása az alkalmazáshoz
 
@@ -94,9 +94,9 @@ Ha a bérlői rendszergazda csak bizonyos felhasználók számára szeretne LUIS
 További információ az Azure Active Directory-felhasználókról és-engedélyekről:
 * [Alkalmazás korlátozása](../../active-directory/develop/howto-restrict-your-app-to-a-set-of-users.md) felhasználói csoportra
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Megtudhatja [, hogyan használhatja a verzióit](luis-how-to-manage-versions.md) az alkalmazás életciklusának szabályozására.
-* Ismerje meg az adott erőforrással kapcsolatos fogalmakat, például a [szerzői erőforrást](luis-concept-keys.md#authoring-key) és a [közreműködőket](luis-concept-keys.md#contributions-from-other-authors) .
+* Ismerje meg az adott erőforrással kapcsolatos fogalmakat, például a [szerzői erőforrást](luis-how-to-azure-subscription.md#authoring-key) és a [közreműködőket](luis-how-to-azure-subscription.md#contributions-from-other-authors) .
 * Útmutató szerzői és futtatókörnyezeti erőforrások [létrehozásához](luis-how-to-azure-subscription.md)
 * Migrálás az új [szerzői erőforrásba](luis-migration-authoring.md)

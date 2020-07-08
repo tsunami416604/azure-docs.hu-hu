@@ -13,16 +13,16 @@ ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d04953789dc3fc864dd2809783b0d214a91738f
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 249cdbef6214eb8c66da841d9eae817bcf794996
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85983118"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055392"
 ---
 # <a name="quickstart-view-the-list-of-applications-that-are-using-your-azure-active-directory-azure-ad-tenant-for-identity-management"></a>Rövid útmutató: a Azure Active Directory (Azure AD) bérlőt használó alkalmazások listájának megtekintése
 
-Az Azure AD használatának első lépései a szervezet által használt alkalmazásokhoz tartozó identitás-és engedélyezési felügyeleti (IAM) rendszerként. Ebben a rövid útmutatóban megtekintheti az alkalmazásokat, más néven alkalmazásokat, amelyek már be vannak állítva az Azure AD-bérlő használatára az identitás-szolgáltatóként.
+Az Azure AD használatának első lépései a szervezet által használt alkalmazások identitás-és hozzáférés-kezelési (IAM) rendszereként. Ebben a rövid útmutatóban megtekintheti az alkalmazásokat, más néven alkalmazásokat, amelyek már be vannak állítva az Azure AD-bérlő használatára az identitás-szolgáltatóként.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -72,7 +72,7 @@ Egy adott alkalmazás megkeresése:
 
 Ebben a rövid útmutatóban megtanulta, hogyan tekintheti meg az alkalmazásokat az Azure AD-bérlőben. Megtanulta, hogyan szűrheti az alkalmazások listáját az alkalmazás típusa, állapota és láthatósága alapján. Emellett azt is megtanulta, hogyan kereshet meg egy adott alkalmazást.
 
-- [Alkalmazás hozzáadása](add-application-portal.md)
+- [Alkalmazás felvétele](add-application-portal.md)
 - [Alkalmazás konfigurálása](add-application-portal-configure.md)
 - [Egyszeri bejelentkezés beállítása](add-application-portal-setup-sso.md)
 - [Alkalmazás törlése](delete-application-portal.md)

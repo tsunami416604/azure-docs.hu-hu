@@ -4,16 +4,16 @@ description: Ismerteti, Hogyan oldhatók fel a gyakori hibák, amikor erőforrá
 tags: top-support-issue
 ms.topic: troubleshooting
 ms.date: 06/25/2020
-ms.openlocfilehash: 77a1359f81df1df9508e942ff6fa1f73ece51ca8
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 9914cf8267624cd05db860e7dd8eb8d8c5831f7e
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391230"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055664"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Gyakori Azure-beli üzembe helyezési hibák elhárítása az Azure Resource Managerrel
 
-Ez a cikk néhány gyakori Azure-telepítési hibát ismertet, és információt nyújt a hibák megoldásához. Ha nem találja a telepítési hiba hibakódját, tekintse meg a [hibakód keresése](#find-error-code)című témakört.
+Ez a cikk néhány gyakori Azure-telepítési hibát ismertet, és információt nyújt a hibák megoldásához. Ha nem találja az üzembehelyezési hiba hibakódját, tekintse meg [a hibakód megkeresését](#find-error-code) segítő témakört.
 
 Ha egy hibakódra vonatkozó információt keres, és ez a cikk nem tartalmaz információt, tudassa velünk. A lap alján elhagyhatja a visszajelzést. A visszajelzéseket a GitHub-problémák követik nyomon.
 
@@ -25,7 +25,7 @@ Ha egy hibakódra vonatkozó információt keres, és ez a cikk nem tartalmaz in
 | ---------- | ---------- | ---------------- |
 | AccountNameInvalid | Kövesse a Storage-fiókok elnevezési korlátozásait. | [A Storage-fiók nevének feloldása](error-storage-account-name.md) |
 | AccountPropertyCannotBeSet | Keresse meg a rendelkezésre álló Storage-fiók tulajdonságait. | [storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
-| AllocationFailed | A fürt vagy a régió nem rendelkezik elérhető erőforrásokkal, vagy nem támogatja a kért virtuálisgép-méretet. Ismételje meg a kérést később, vagy igényeljen egy másik virtuálisgép-méretet. | A Linux, a [kiépítési és a foglalási problémák](../../virtual-machines/windows/troubleshoot-deployment-new-vm.md) kiosztása [és lefoglalása](../../virtual-machines/linux/troubleshoot-deployment-new-vm.md)a Windows rendszerhez és a foglalási [hibák elhárítása](../../virtual-machines/troubleshooting/allocation-failure.md)|
+| AllocationFailed | A fürt vagy a régió nem rendelkezik elérhető erőforrásokkal, vagy nem támogatja a kért virtuálisgép-méretet. Ismételje meg a kérést később, vagy igényeljen egy másik virtuálisgép-méretet. | A Linux, a [kiépítési és a foglalási problémák](../../virtual-machines/troubleshooting/troubleshoot-deployment-new-vm-windows.md) kiosztása [és lefoglalása](../../virtual-machines/troubleshooting/troubleshoot-deployment-new-vm-linux.md)a Windows rendszerhez és a foglalási [hibák elhárítása](../../virtual-machines/troubleshooting/allocation-failure.md)|
 | AnotherOperationInProgress | Várjon, amíg az egyidejű művelet befejeződik. | |
 | AuthorizationFailed | A fiók vagy az egyszerű szolgáltatásnév nem rendelkezik megfelelő hozzáféréssel az üzemelő példány befejezéséhez. Győződjön meg arról, hogy a fiókja a szerepkörhöz tartozik, valamint a központi telepítési hatókörhöz való hozzáférése.<br><br>Ez a hiba akkor jelenhet meg, ha egy szükséges erőforrás-szolgáltató nincs regisztrálva. | [Azure szerepköralapú Access Control](../../role-based-access-control/role-assignments-portal.md)<br><br>[Regisztráció feloldása](error-register-resource-provider.md) |
 | BadRequest | Olyan központi telepítési értékeket küldtünk, amelyek nem egyeznek a Resource Manager által várttal. A hibaelhárítással kapcsolatos segítségért olvassa el a belső állapotjelző üzenetet. | A [sablon referenciája](/azure/templates/) és a [támogatott helyszínek](resource-location.md) |
@@ -246,7 +246,7 @@ Bizonyos esetekben a sablon egy részének teszteléséhez a legegyszerűbb mód
 
 Vagy tegyük fel, hogy olyan központi telepítési hibákat észlel, amelyeket úgy gondol, hogy a nem megfelelően beállított függőségekhez kapcsolódik. A sablon teszteléséhez bontsa ki az egyszerűsített sablonokat. Először hozzon létre egy sablont, amely csak egyetlen erőforrást telepít (például egy SQL Server). Ha biztos benne, hogy megfelelően definiálta az erőforrást, adjon hozzá egy erőforrást, amely attól függ (például egy SQL Database). Ha a két erőforrás megfelelően van definiálva, vegyen fel más függő erőforrásokat (például naplózási házirendeket). Az egyes tesztelési környezetek között törölje az erőforráscsoportot, hogy ellenőrizze a függőségek megfelelő tesztelését.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A hibaelhárítással kapcsolatos oktatóanyagért lásd [: oktatóanyag: Resource Manager-sablonok központi telepítésének hibaelhárítása](template-tutorial-troubleshoot.md)
 * További információ a naplózási műveletekről: [műveletek naplózása a Resource Managerrel](../management/view-activity-logs.md).

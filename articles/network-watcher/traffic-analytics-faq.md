@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: damendo
-ms.openlocfilehash: 2402e72d2ef9fcda46f2f40bff48759262ee30e0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 87b4f0573fbcc73573c508a7f8e39acadcfa05af
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82189045"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056480"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Traffic Analytics gyakori kérdések
 
@@ -264,7 +264,7 @@ A Traffic Analytics nem rendelkezik beépített támogatással a riasztásokhoz.
 - A riasztás létrehozásához kattintson az "új riasztási szabály" elemre.
 - A riasztás létrehozásához tekintse meg a [riasztások dokumentációját](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log)
 
-## <a name="how-do-i-check-which-vms-are-receiving-most-on-premise-traffic"></a>Hogyan annak ellenőrzését, hogy mely virtuális gépek kapják meg a legtöbb helyi forgalmat
+## <a name="how-do-i-check-which-vms-are-receiving-most-on-premises-traffic"></a>Hogyan annak ellenőrzését, hogy mely virtuális gépek kapják meg a legtöbb helyszíni forgalmat?
 
             AzureNetworkAnalytics_CL
             | where SubType_s == "FlowLog" and FlowType_s == "S2S" 
@@ -288,7 +288,7 @@ A Traffic Analytics nem rendelkezik beépített támogatással a riasztásokhoz.
 
 Az idő használati formátuma: éééé-hh-nn 00:00:00
 
-## <a name="how-do-i-check-standard-deviation-in-traffic-recieved-by-my-vms-from-on-premise-machines"></a>Hogyan a virtuális gépekről a helyszíni gépekről fogadott forgalom szórásának ellenőrzéséhez
+## <a name="how-do-i-check-standard-deviation-in-traffic-received-by-my-vms-from-on-premises-machines"></a>Hogyan a virtuális gépek által a helyszíni gépekről fogadott forgalom szórásának ellenőrzését?
 
             AzureNetworkAnalytics_CL
             | where SubType_s == "FlowLog" and FlowType_s == "S2S" 
@@ -309,7 +309,7 @@ IP-címek esetén:
             | extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + OutboundBytes_d
             | summarize deviation = stdev(traffic)  by IP
             
-## <a name="how-do-i-check-which-ports-are-reachable-or-bocked-between-ip-pairs-with-nsg-rules"></a>Hogyan a NSG-szabályokkal rendelkező IP-párok között elérhető portok
+## <a name="how-do-i-check-which-ports-are-reachable-or-blocked-between-ip-pairs-with-nsg-rules"></a>Hogyan, hogy mely portok érhetők el (vagy le vannak tiltva) az IP-párok között NSG-szabályokkal?
 
             AzureNetworkAnalytics_CL
             | where SubType_s == "FlowLog" and TimeGenerated between (startTime .. endTime)
@@ -347,7 +347,7 @@ A földrajzi Térkép oldal két fő szakaszt tartalmaz:
 ### <a name="keyboard-navigation-at-any-stage"></a>Billentyűzet-navigáció bármely fázisban
     
 - `Esc`a kibontott kijelölés összecsukása.
-- A `Up arrow` kulcs ugyanazokat a műveleteket hajtja végre, mint a `Esc` . A `Down arrow` kulcs ugyanazokat a műveleteket hajtja végre, mint a `Enter` .
+- A `Up-arrow` kulcs ugyanazokat a műveleteket hajtja végre, mint a `Esc` . A `Down arrow` kulcs ugyanazokat a műveleteket hajtja végre, mint a `Enter` .
 - A nagyításhoz és a kicsinyítéshez használja a `Shift+Plus` következőt: `Shift+Minus` .
 
 ## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-virtual-network-topology-view"></a>Hogyan lehet navigálni a virtuális hálózati topológia nézetben a billentyűzet használatával?

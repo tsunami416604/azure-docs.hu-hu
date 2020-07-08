@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: edea04e15fe5b844654f250a22a05a753f0df123
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 63b3def9c37f53ebf68642faf3f45cee6602bbe5
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836396"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057296"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure Media Services kibocsátási megjegyzések
 
@@ -32,7 +32,7 @@ Szeretnénk hallani ügyfeleinktől, hogy az Ön által érintett problémák me
 ## <a name="known-issues"></a><a id="issues"/>Ismert problémák
 ### <a name="media-services-general-issues"></a><a id="general_issues"/>Általános problémák Media Services
 
-| Probléma | Leírás |
+| Probléma | Description |
 | --- | --- |
 | A REST APIban több gyakori HTTP-fejléc sincs megadva. |Ha a REST API használatával fejleszt Media Services alkalmazásokat, úgy találja, hogy a HTTP-fejléc néhány gyakori mezője (beleértve az ügyfél-kérelem-azonosító, a kérelem-azonosító és a RETURN-CLIENT-Request-ID) nem támogatott. A fejlécek egy jövőbeli frissítésben lesznek hozzáadva. |
 | Százalék – a kódolás nem engedélyezett. |A Media Services a IAssetFile.Name tulajdonság értékét használja a streaming tartalom URL-címeinek létrehozásakor (például: `http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters` ). Emiatt a százalékos kódolás nem engedélyezett. A Name (név) tulajdonság értéke nem lehet a következő [százalék-kódolásra fenntartott karakterek](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)egyike:! * ' ();: @ &= + $,/?% # [] ". Emellett a fájlnévkiterjesztés csak egy "." lehet. |
@@ -90,7 +90,7 @@ Mostantól használhatja a Media Servicest a web VTT miniatűr sprite létrehoz�
 
 A legújabb szervizcsomaggal a szolgáltatás által visszaadott hibaüzenetek kisebb formázási módosításai vannak, ha a feladatok meghiúsulnak, ami azt jelzi, hogy a két vagy több sorba van bontva.
 
-## <a name="may-2018"></a>2018. május 
+## <a name="may-2018"></a>2018. máj. 
 
 A 2018. május 12. után az élő csatornák már nem támogatják az RTP/MPEG-2 Transport stream betöltési protokollt. Telepítse át a következőt: RTP/MPEG-2 – RTMP vagy darabolt MP4 (Smooth Streaming) betöltési protokollok.
 
@@ -191,12 +191,14 @@ Mostantól a Media Services használatával dinamikusan titkosíthatja HTTP Live
 ## <a name="february-2016-release"></a><a id="feb_changes16"></a>Február 2016 kiadás
 A .NET-hez készült Media Services SDK (3.5.3) legújabb verziója a Google Widevine kapcsolatos hibajavítást tartalmaz. Nem lehetett újra felhasználni a AssetDeliveryPolicy-t több, a Widevine-mel titkosított eszközre. A hibajavítás részeként a következő tulajdonságot adta hozzá az SDK: WidevineBaseLicenseAcquisitionUrl.
 
-    Dictionary<AssetDeliveryPolicyConfigurationKey, string> assetDeliveryPolicyConfiguration =
-        new Dictionary<AssetDeliveryPolicyConfigurationKey, string>
-    {
-        {AssetDeliveryPolicyConfigurationKey.WidevineBaseLicenseAcquisitionUrl,"http://testurl"},
+```csharp
+Dictionary<AssetDeliveryPolicyConfigurationKey, string> assetDeliveryPolicyConfiguration =
+    new Dictionary<AssetDeliveryPolicyConfigurationKey, string>
+{
+    {AssetDeliveryPolicyConfigurationKey.WidevineBaseLicenseAcquisitionUrl,"http://testurl"},
 
-    };
+};
+```
 
 ## <a name="january-2016-release"></a><a id="jan_changes_16"></a>Január 2016 kiadás
 A kódoláshoz fenntartott egységek át lettek nevezve a kódolók neveivel való összetévesztés csökkentése érdekében.
@@ -323,7 +325,9 @@ A Media Services .NET SDK már verziója 3.1.0.1.
 
 Ez a kiadás a Microsoft. WindowsAzure. MediaServices. Client. ContentKeyAuthorization. TokenRestrictionTemplate konstruktort elavultként jelölte meg. Az új konstruktor a TokenType argumentumként veszi igénybe.
 
-    TokenRestrictionTemplate template = new TokenRestrictionTemplate(TokenType.SWT);
+```csharp
+TokenRestrictionTemplate template = new TokenRestrictionTemplate(TokenType.SWT);
+```
 
 
 ## <a name="december-2014-release"></a><a id="december_changes_14"></a>2014. decemberi kiadás
@@ -502,8 +506,8 @@ Az alábbi módosítások a június 2013 Media Services SDK kiadásában találh
     * Microsoft. WindowsAzure. MediaServices. Client. IJobNotificationSubscription típus
     * Microsoft. WindowsAzure. MediaServices. Client. NotificationEndPointCollection típus
     * Microsoft. WindowsAzure. MediaServices. Client. NotificationEndPointType típus
-* Függőség a Storage ügyféloldali SDK 2,0 (Microsoft. WindowsAzure. StorageClient. dll)
-* Függőség a OData 5,5-től (Microsoft. OData. dll)
+* Függőség a Storage ügyféloldali SDK 2,0 (Microsoft.WindowsAzure.StorageClient.dll)
+* Függőség a OData 5,5 (Microsoft.Data.OData.dll)
 
 ## <a name="december-2012-release"></a><a id="december_changes_12"></a>2012. decemberi kiadás
 ### <a name="media-services-net-sdk-changes"></a><a name="dec_12_dotnet_changes"></a>.NET SDK-változások Media Services
@@ -527,7 +531,7 @@ Javítások a november 2012 SDK-ban talált problémákhoz:
 ## <a name="november-2012-release"></a><a id="november_changes_12"></a>November 2012 kiadás
 Az ebben a szakaszban említett módosítások a november 2012 (Version 2.0.0.0) SDK-ban is frissültek. Előfordulhat, hogy ezek a módosítások a június 2012 előzetes verziójú SDK kiadásához írt kódokat módosítják vagy átírják.
 
-* Eszközök
+* Objektumok
   
     * A IAsset. Create (assetName) az *egyetlen* eszköz-létrehozási függvény. A IAsset. Create fájl már nem tölt fel fájlokat a metódus hívásának részeként. IAssetFile használata a feltöltéshez.
     * A IAsset. publish metódus és a AssetState. publish enumerálás értéke el lett távolítva a Services SDK-ból. Az ezen az értéken alapuló kódokat újra kell írni.

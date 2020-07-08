@@ -1,6 +1,6 @@
 ---
 title: Alkalmazások kezelése az Azure Active Directoryban | Microsoft Docs
-description: Áttekintés a Azure Active Directory (AD) használatáról a Felhőbeli és a helyszíni alkalmazásokhoz használt identitás-és engedélyezési felügyeleti (IAM) rendszerként.
+description: Áttekintés a Azure Active Directory (AD) használatáról identitás-és hozzáférés-kezelési (IAM) rendszerként a Felhőbeli és a helyszíni alkalmazásokhoz.
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -12,16 +12,16 @@ ms.date: 07/01/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d69da3f1e9a505d14974a7a3089acca0e17c713
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 9aae292d97457ebe1d36a839b779b9233037ea60
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85549540"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055205"
 ---
 # <a name="what-is-application-management"></a>Mi az alkalmazáskezelés?
 
-Az Azure AD egy identitás-és engedélyezési felügyeleti (IAM) rendszer. Egyetlen helyet biztosít a digitális identitásokkal kapcsolatos információk tárolásához. A szoftveralkalmazások úgy konfigurálhatók, hogy az Azure AD-t használják a felhasználói adatok tárolásának helyeként. 
+Az Azure AD egy identitás-és hozzáférés-kezelési (IAM) rendszer. Egyetlen helyet biztosít a digitális identitásokkal kapcsolatos információk tárolásához. A szoftveralkalmazások úgy konfigurálhatók, hogy az Azure AD-t használják a felhasználói adatok tárolásának helyeként. 
 
 Az Azure AD-t úgy kell konfigurálni, hogy integrálható legyen az alkalmazással. Más szóval tudnia kell, hogy mely alkalmazások használják identitási rendszerként. Az Azure AD-t az alkalmazások felügyeletének és kezelésének folyamata is ismert.
 
@@ -29,12 +29,12 @@ Az alkalmazásokat a Azure Active Directory portál kezelés szakaszában talál
 
 ![A vállalati alkalmazások lehetőség az Azure AD-portál kezelés szakaszában.](media/what-is-application-management/enterprise-applications-in-nav.png)
 
-## <a name="what-is-an-identity-and-authorization-management-iam-system"></a>Mi az az identitás-és engedélyezési felügyeleti (IAM) rendszer?
+## <a name="what-is-an-identity-and-access-management-iam-system"></a>Mi az identitás-és hozzáférés-kezelési (IAM) rendszer?
 Az alkalmazás egy olyan szoftver, amely valamilyen célra használatos. A legtöbb alkalmazásnál a felhasználóknak be kell jelentkezniük ahhoz, hogy az alkalmazás testre szabott élményt nyújtson az adott felhasználó számára. Más szóval az alkalmazásnak ismernie kell a felhasználó identitását az alkalmazás használatával. Mivel tudja, milyen funkciókat ajánl fel vagy távolíthat el a felhasználó számára.
 
 Ha minden alkalmazás külön nyomon követheti a felhasználókat, az eredmény az összes alkalmazáshoz tartozó különböző felhasználónevek és bejelentkezések silója lesz. Egy alkalmazás nem tud semmit a többi alkalmazás felhasználóival kapcsolatban.
 
-A központosított identitásrendszer ezt a problémát úgy oldja meg, hogy egyetlen helyet biztosít a felhasználói adatok tárolására, amelyeket az összes alkalmazás használhat. Ezek a rendszerek identitás-és engedélyezési felügyeleti (IAM) rendszerek néven ismertek. Az Azure Active Directory a Microsoft Cloud-hoz készült IAM rendszer.
+A központosított identitásrendszer ezt a problémát úgy oldja meg, hogy egyetlen helyet biztosít a felhasználói adatok tárolására, amelyeket az összes alkalmazás használhat. Ezeket a rendszereket identitás-és hozzáférés-kezelési (IAM) rendszereknek nevezzük. Az Azure Active Directory a Microsoft Cloud-hoz készült IAM rendszer.
 
 >[!TIP]
 >A IAM rendszer egyetlen helyet biztosít a felhasználói identitások nyomon követéséhez. Az Azure AD a Microsoft Cloud-hoz készült IAM rendszer.

@@ -41,10 +41,14 @@
       href: ../../automation/security-baseline.md
     - name: Az Azure Cache for Redis biztonsági alapkonfigurációja
       href: ../../azure-cache-for-redis/security-baseline.md
+    - name: Az Azure Policy biztonsági alapkonfigurációja
+      href: ../../governance/policy/concepts/azure-security-benchmark-baseline.md
     - name: A Backup biztonsági alapkonfigurációja
       href: ../../backup/security-baseline.md
     - name: A Batch biztonsági alapkonfigurációja
       href: ../../batch/security-baseline.md
+    - name: A Cognitive Services biztonsági alapkonfigurációja
+      href: ../../cognitive-services/security-baseline.md
     - name: A Container Instances biztonsági alapkonfigurációja
       href: ../../container-instances/security-baseline.md
     - name: A Container Registry biztonsági alapkonfigurációja
@@ -53,7 +57,7 @@
       href: ../../cosmos-db/security-baseline.md
     - name: Az Ügyfélszéf biztonsági alapkonfigurációja
       href: ../fundamentals/customer-lockbox-security-baseline.md
-    - name: A DataBox biztonsági alapkonfigurációja
+    - name: A Data Box biztonsági alapkonfigurációja
       href: ../../databox/security-baseline.md
     - name: A Data Explorer biztonsági alapkonfigurációja
       href: /azure/data-explorer/security-baseline
@@ -87,3 +91,5 @@
       href: ../../stream-analytics/security-baseline.md
     - name: A Storage biztonsági alapkonfigurációja
       href: ../../storage/common/security-baseline.md
+    - name: A Synapse Analytics biztonsági alapkonfigurációja
+      href: ../../synapse-analytics/security-baseline.md

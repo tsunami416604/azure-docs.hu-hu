@@ -3,18 +3,19 @@ title: Szerzői és futtatókörnyezeti kulcsok használata – LUIS
 description: Ha először használja a Language Understanding (LUIS), nem kell létrehoznia authoring-kulcsot. Ha közzé szeretné tenni az alkalmazást, majd használja a futásidejű végpontját, létre kell hoznia és hozzá kell rendelnie a futásidejű kulcsot az alkalmazáshoz.
 services: cognitive-services
 ms.topic: how-to
-ms.date: 06/26/2020
-ms.openlocfilehash: 5f6d62a63ea5ae0d3e4ca5913d6e7834ba07692a
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.date: 07/07/2020
+ms.openlocfilehash: 7cc53e7105ba08ad33e02775fcfb0791c6cf1310
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85560433"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055766"
 ---
 # <a name="create-luis-resources"></a>LUIS-erőforrások létrehozása
 
 A szerzői és lekérdezési előrejelzési futtatókörnyezet erőforrásai hitelesítést biztosítanak a LUIS-alkalmazás és az előrejelzési végpont számára.
 
+<a name="azure-resources-for-luis"></a>
 <a name="programmatic-key" ></a>
 <a name="endpoint-key"></a>
 <a name="authoring-key"></a>
@@ -23,7 +24,7 @@ A szerzői és lekérdezési előrejelzési futtatókörnyezet erőforrásai hit
 
 A LUIS három típusú Azure-erőforrást és egy nem Azure-erőforrást is lehetővé tesz:
 
-|Kulcs|Cél|Kognitív szolgáltatás`kind`|Kognitív szolgáltatás`type`|
+|Kulcs|Szerep|Kognitív szolgáltatás`kind`|Kognitív szolgáltatás`type`|
 |--|--|--|--|
 |Szerzői kulcs|A szerzői műveletek, a képzés, a közzététel és a tesztelés segítségével hozzáférhetnek az alkalmazáshoz, és kezelhetik azokat. Hozzon létre egy LUIS authoring-kulcsot, ha a LUIS-alkalmazásokat programozott módon szeretné létrehozni.<br><br>A kulcs célja, `LUIS.Authoring` hogy lehetővé tegye a következőket:<br>* programozott módon felügyelheti Language Understanding alkalmazásokat és modelleket, beleértve a képzést és a közzétételt<br> * a szerzői erőforrásra vonatkozó engedélyek vezérlése [a közreműködő szerepkörhöz](#contributions-from-other-authors)rendelt személyek hozzárendelésével.|`LUIS.Authoring`|`Cognitive Services`|
 |Lekérdezés-előrejelzési kulcs| Lekérdezés-előrejelzési végponti kérelmek. Hozzon létre egy LUIS-előrejelzési kulcsot, mielőtt az ügyfélalkalmazás a kezdő erőforrás által biztosított 1 000-kérelmeknél újabb előrejelzéseket kér. |`LUIS`|`Cognitive Services`|
@@ -38,7 +39,7 @@ Fontos, hogy LUIS-alkalmazásokat hozzon létre azokon a [régiókban](luis-refe
 
 Az Azure-erőforrás, például a LUIS, az erőforrást tartalmazó előfizetés tulajdonosa.
 
-Egy erőforrás tulajdonjogának átadásához a szervezeti egység a következőkre képes:
+Egy erőforrás tulajdonjogának átadásához a következők közül választhat:
 * Az előfizetés [tulajdonjogának](../../cost-management-billing/manage/billing-subscription-transfer.md) átruházása
 * Exportálja a LUIS alkalmazást fájlként, majd importálja az alkalmazást egy másik előfizetésre. Az Exportálás a LUIS portál **saját alkalmazások** lapján érhető el.
 
@@ -70,6 +71,8 @@ Még nem telepített alkalmazások esetén: a kulcs alaphelyzetbe áll a LUIS-po
 
 Az Azure-kulcsok újragenerálása a Azure Portal a **kulcsok** lapon.
 
+
+<a name="securing-the-endpoint"></a>
 
 ## <a name="app-ownership-access-and-security"></a>Alkalmazások tulajdonlása, hozzáférése és biztonsága
 
@@ -158,11 +161,10 @@ Megadhatja, hogy ki láthatja a LUIS előrejelzési futtatókörnyezet végpontj
 1. Ha elkészült az erőforrás-kiválasztási folyamattal, [hozzon létre egy új alkalmazást](luis-how-to-start-new-app.md#create-new-app-in-luis).
 
 
-## <a name="create-azure-resources"></a>Azure-erőforrások létrehozása
-
+<a name="create-azure-resources"></a>
 <a name="create-resources-in-the-azure-portal"></a>
 
-[!INCLUDE [Create LUIS resource in Azure Portal](includes/create-luis-resource.md)]
+[!INCLUDE [Create LUIS resource in Azure portal](includes/create-luis-resource.md)]
 
 ### <a name="create-resources-in-azure-cli"></a>Erőforrások létrehozása az Azure CLI-ben
 

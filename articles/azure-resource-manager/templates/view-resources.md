@@ -3,12 +3,12 @@ title: Erőforrás-tulajdonságok felderítése
 description: Az erőforrás-tulajdonságok keresésének módját ismerteti.
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: 6e00ee875d9b0f7fadf27a44c55920872c815045
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: 75c089ac9d0ca08c788fea1ac9011f018ef0195e
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84668559"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057075"
 ---
 # <a name="discover-resource-properties"></a>Erőforrás-tulajdonságok felderítése
 
@@ -16,7 +16,7 @@ A Resource Manager-sablonok létrehozása előtt meg kell ismernie, hogy milyen 
 
 ## <a name="find-resource-provider-namespaces"></a>Erőforrás-szolgáltatói névterek keresése
 
-Az ARM-sablonban lévő erőforrások erőforrás-szolgáltatói névtérrel és erőforrás-típussal vannak meghatározva. Például a Microsoft. Storage/storageAccounts a Storage-fiók erőforrástípus teljes neve. A Microsoft. Storage a névtér. Ha még nem ismeri a használni kívánt erőforrástípusok névtereit, tekintse meg az [Azure-szolgáltatások erőforrás-szolgáltatóit](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-services-resource-providers)ismertető témakört.
+Az ARM-sablonban lévő erőforrások erőforrás-szolgáltatói névtérrel és erőforrás-típussal vannak meghatározva. Például a Microsoft. Storage/storageAccounts a Storage-fiók erőforrástípus teljes neve. A Microsoft. Storage a névtér. Ha még nem ismeri a használni kívánt erőforrástípusok névtereit, tekintse meg az [Azure-szolgáltatások erőforrás-szolgáltatóit](../management/azure-services-resource-providers.md)ismertető témakört.
 
 ![Resource Manager erőforrás-szolgáltató névterének leképezése](./media/view-resources/resource-provider-namespace-and-azure-service-mapping.png)
 
@@ -114,6 +114,6 @@ Annak bemutatásához, hogyan kérhető le a séma adatai az eszköz használat�
 
     ![Azure Portal erőforrás-kezelő Storage-fiók SKU](./media/view-resources/azure-portal-resource-explorer-sku.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta, hogyan keresheti meg a sablon sémájának adatait. A Resource Manager-sablonok létrehozásával kapcsolatos további tudnivalókért tekintse meg [az ARM-sablonok szerkezetének és szintaxisának megismerését](./template-syntax.md)ismertető témakört.

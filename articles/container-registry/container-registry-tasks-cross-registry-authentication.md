@@ -2,13 +2,13 @@
 title: Több beállításjegyzékbeli hitelesítés az ACR-feladatból
 description: Egy Azure Container Registry feladat (ACR-feladat) konfigurálása az Azure-erőforrások felügyelt identitásának használatával való hozzáféréshez egy másik privát Azure Container registryhez
 ms.topic: article
-ms.date: 01/14/2020
-ms.openlocfilehash: 47b2a50784cf56b089fea0981e5a06d581b8ba3a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 07/06/2020
+ms.openlocfilehash: 8b961a2ff6a795f03798cc6f6a7d303391036ef8
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76842493"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057355"
 ---
 # <a name="cross-registry-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>Több beállításjegyzékbeli hitelesítés egy ACR-feladatban egy Azure által felügyelt identitás használatával 
 
@@ -39,11 +39,12 @@ Ha még nem rendelkezik a szükséges Azure Container-nyilvántartásokkal, teki
 
 ## <a name="prepare-base-registry"></a>Alapszintű beállításjegyzék előkészítése
 
-Először hozzon létre egy munkakönyvtárat, majd hozzon létre egy Docker nevű fájlt az alábbi tartalommal. Ez az egyszerű példa egy Node. js-alapú alaprendszerképet hoz létre egy nyilvános rendszerképből a Docker hub-ban.
+Először hozzon létre egy munkakönyvtárat, majd hozzon létre egy Docker nevű fájlt az alábbi tartalommal. Ez az egyszerű példa egy Node.js alaprendszerképet hoz létre egy nyilvános rendszerképből a Docker hub-ban.
     
 ```bash
 echo FROM node:9-alpine > Dockerfile
 ```
+
 Az aktuális könyvtárban futtassa az az [ACR Build][az-acr-build] parancsot az alaprendszerkép kiépítéséhez és az alap beállításjegyzékbe való leküldéséhez. A gyakorlatban a szervezet egy másik csapata vagy folyamata is megtarthatja az alap beállításjegyzéket.
     
 ```azurecli
@@ -52,7 +53,7 @@ az acr build --image baseimages/node:9-alpine --registry mybaseregistry --file D
 
 ## <a name="define-task-steps-in-yaml-file"></a>Feladat lépéseinek meghatározása a YAML fájlban
 
-A példa [többlépéses feladatának](container-registry-tasks-multi-step.md) lépései egy [YAML-fájlban](container-registry-tasks-reference-yaml.md)vannak meghatározva. Hozzon létre egy `helloworldtask.yaml` nevű fájlt a helyi munkakönyvtárban, és illessze be a következő tartalmakat. Frissítse az értékét `REGISTRY_NAME` a Build lépésben az alapszintű beállításjegyzék kiszolgálójának nevével.
+A példa [többlépéses feladatának](container-registry-tasks-multi-step.md) lépései egy [YAML-fájlban](container-registry-tasks-reference-yaml.md)vannak meghatározva. Hozzon létre egy nevű fájlt `helloworldtask.yaml` a helyi munkakönyvtárban, és illessze be a következő tartalmakat. Frissítse az értékét a `REGISTRY_NAME` Build lépésben az alapszintű beállításjegyzék kiszolgálójának nevével.
 
 ```yml
 version: v1.1.0
@@ -62,7 +63,7 @@ steps:
   - push: ["$Registry/hello-world:$ID"]
 ```
 
-A Build lépés az `Dockerfile-app` [Azure-Samples/ACR-Build-HelloWorld-Node](https://github.com/Azure-Samples/acr-build-helloworld-node.git) adattár fájlját használja egy rendszerkép létrehozásához. A `--build-arg` az alapszintű rendszerkép lekérésére hivatkozik az alapadatbázisra. A sikeres létrehozást követően a rendszer leküldi a rendszerképet a feladat futtatásához használt beállításjegyzékbe.
+A Build lépés az `Dockerfile-app` [Azure-Samples/ACR-Build-HelloWorld-Node](https://github.com/Azure-Samples/acr-build-helloworld-node.git) adattár fájlját használja egy rendszerkép létrehozásához. A az alapszintű `--build-arg` rendszerkép lekérésére hivatkozik az alapadatbázisra. A sikeres létrehozást követően a rendszer leküldi a rendszerképet a feladat futtatásához használt beállításjegyzékbe.
 
 ## <a name="option-1-create-task-with-user-assigned-identity"></a>1. lehetőség: feladat létrehozása felhasználó által hozzárendelt identitással
 
@@ -72,7 +73,7 @@ Az ebben a szakaszban szereplő lépések egy feladatot hoznak létre, és enged
 
 ### <a name="create-task"></a>Feladat létrehozása
 
-Hozza létre a feladat *helloworldtask* a következő az [ACR Task Create][az-acr-task-create] parancs végrehajtásával. A feladat forráskód-környezet nélkül fut, és a parancs a munkakönyvtárban `helloworldtask.yaml` található fájlra hivatkozik. A `--assign-identity` paraméter átadja a felhasználó által hozzárendelt identitás erőforrás-azonosítóját. 
+Hozza létre a feladat *helloworldtask* a következő az [ACR Task Create][az-acr-task-create] parancs végrehajtásával. A feladat forráskód-környezet nélkül fut, és a parancs a `helloworldtask.yaml` munkakönyvtárban található fájlra hivatkozik. A `--assign-identity` paraméter átadja a felhasználó által hozzárendelt identitás erőforrás-azonosítóját. 
 
 ```azurecli
 az acr task create \
@@ -85,13 +86,34 @@ az acr task create \
 
 [!INCLUDE [container-registry-tasks-user-id-properties](../../includes/container-registry-tasks-user-id-properties.md)]
 
+### <a name="give-identity-pull-permissions-to-the-base-registry"></a>Identitás-lekérési engedélyek megadása az alap beállításjegyzékhez
+
+Ebben a szakaszban adja meg a felügyelt identitás engedélyeit az alapszintű beállításjegyzékből való lekéréshez, *mybaseregistry*.
+
+Használja az az [ACR show][az-acr-show] parancsot az alapszintű beállításjegyzék erőforrás-azonosítójának lekéréséhez és egy változóban való tárolásához:
+
+```azurecli
+baseregID=$(az acr show --name mybaseregistry --query id --output tsv)
+```
+
+Az az [szerepkör-hozzárendelés létrehozási][az-role-assignment-create] parancs használatával rendelje hozzá a `acrpull` szerepkört az alap beállításjegyzékhez. Ez a szerepkör csak a lemezképek beállításjegyzékből való lekéréséhez rendelkezik jogosultságokkal.
+
+```azurecli
+az role assignment create \
+  --assignee $principalID \
+  --scope $baseregID \
+  --role acrpull
+```
+
+Folytassa a [cél beállításjegyzékbeli hitelesítő adatok hozzáadásával a feladathoz](#add-target-registry-credentials-to-task).
+
 ## <a name="option-2-create-task-with-system-assigned-identity"></a>2. lehetőség: feladat létrehozása rendszer által hozzárendelt identitással
 
 Az ebben a szakaszban szereplő lépések egy feladatot hoznak létre, és engedélyezik a rendszer által hozzárendelt identitást. Ha inkább egy felhasználó által hozzárendelt identitást szeretne engedélyezni, tekintse meg az [1. lehetőség: feladat létrehozása felhasználó által hozzárendelt identitással](#option-1-create-task-with-user-assigned-identity)című témakört. 
 
 ### <a name="create-task"></a>Feladat létrehozása
 
-Hozza létre a feladat *helloworldtask* a következő az [ACR Task Create][az-acr-task-create] parancs végrehajtásával. A feladat forráskód-környezet nélkül fut, és a parancs a munkakönyvtárban `helloworldtask.yaml` található fájlra hivatkozik. Az `--assign-identity` érték nélküli paraméter lehetővé teszi a rendszer által hozzárendelt identitást a feladatban. 
+Hozza létre a feladat *helloworldtask* a következő az [ACR Task Create][az-acr-task-create] parancs végrehajtásával. A feladat forráskód-környezet nélkül fut, és a parancs a `helloworldtask.yaml` munkakönyvtárban található fájlra hivatkozik. Az `--assign-identity` érték nélküli paraméter lehetővé teszi a rendszer által hozzárendelt identitást a feladatban. 
 
 ```azurecli
 az acr task create \
@@ -103,7 +125,7 @@ az acr task create \
 ```
 [!INCLUDE [container-registry-tasks-system-id-properties](../../includes/container-registry-tasks-system-id-properties.md)]
 
-## <a name="give-identity-pull-permissions-to-the-base-registry"></a>Identitás-lekérési engedélyek megadása az alap beállításjegyzékhez
+### <a name="give-identity-pull-permissions-to-the-base-registry"></a>Identitás-lekérési engedélyek megadása az alap beállításjegyzékhez
 
 Ebben a szakaszban adja meg a felügyelt identitás engedélyeit az alapszintű beállításjegyzékből való lekéréshez, *mybaseregistry*.
 
@@ -113,7 +135,7 @@ Használja az az [ACR show][az-acr-show] parancsot az alapszintű beállításje
 baseregID=$(az acr show --name mybaseregistry --query id --output tsv)
 ```
 
-Az az [szerepkör-hozzárendelés létrehozási][az-role-assignment-create] parancs használatával rendelje hozzá `acrpull` a szerepkört az alap beállításjegyzékhez. Ez a szerepkör csak a lemezképek beállításjegyzékből való lekéréséhez rendelkezik jogosultságokkal.
+Az az [szerepkör-hozzárendelés létrehozási][az-role-assignment-create] parancs használatával rendelje hozzá a `acrpull` szerepkört az alap beállításjegyzékhez. Ez a szerepkör csak a lemezképek beállításjegyzékből való lekéréséhez rendelkezik jogosultságokkal.
 
 ```azurecli
 az role assignment create \
@@ -124,7 +146,7 @@ az role assignment create \
 
 ## <a name="add-target-registry-credentials-to-task"></a>Cél beállításjegyzékbeli hitelesítő adatok hozzáadása a feladathoz
 
-Most használja az az [ACR Task hitelesítőadat Add][az-acr-task-credential-add] paranccsal, hogy a feladat az identitás hitelesítő adataival hitelesítse magát az alapszintű beállításjegyzék használatával. Futtassa a parancsot a feladatban engedélyezett felügyelt identitás típusának megfelelően. Ha engedélyezte a felhasználó által hozzárendelt identitást `--use-identity` , adja át az identitás ügyfél-azonosítóját. Ha engedélyezve van egy rendszerhez rendelt identitás, pass `--use-identity [system]`.
+Most használja az az [ACR Task hitelesítőadat Add][az-acr-task-credential-add] paranccsal, hogy a feladat az identitás hitelesítő adataival hitelesítse magát az alapszintű beállításjegyzék használatával. Futtassa a parancsot a feladatban engedélyezett felügyelt identitás típusának megfelelően. Ha engedélyezte a felhasználó által hozzárendelt identitást, adja át az `--use-identity` identitás ügyfél-azonosítóját. Ha engedélyezve van egy rendszerhez rendelt identitás, pass `--use-identity [system]` .
 
 ```azurecli
 # Add credentials for user-assigned identity to the task

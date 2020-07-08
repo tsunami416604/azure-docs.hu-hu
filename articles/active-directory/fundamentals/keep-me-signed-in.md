@@ -5,19 +5,19 @@ services: active-directory
 author: CelesteDG
 manager: daveba
 ms.service: active-directory
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 06/05/2020
 ms.author: celested
 ms.reviewer: asteen, jlu, hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a82f81888828cb5edd42c37a6e8b2c2ee51fe603
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: fd24e6847dbf02bc7efe5d9e6ea02043879f720b
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85339564"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86054712"
 ---
 # <a name="configure-the-stay-signed-in-prompt-for-azure-ad-accounts"></a>Konfigurálja a "Stay bejelentkezve?" Azure AD-fiókok bekérése
 
@@ -55,7 +55,18 @@ A bejelentkezési hibával kapcsolatos részletek a következőképpen jelennek 
 
 :::image type="content" source="./media/keep-me-signed-in/kmsi-sign-ins-log-entry.png" alt-text="Példa bejelentkezési naplóbejegyzést a Keep Me bejelentkezett megszakítással":::
 
-Leállíthatja a felhasználókat, hogy meglássák a megszakítást úgy, **hogy a Megjelenítés lehetőséget** úgy állítja be, hogy a **nem** értékre legyen állítva a speciális védjegyezési beállításokban.
+Leállíthatja a felhasználókat, hogy meglássák a megszakítást úgy, **hogy a Megjelenítés lehetőséget** úgy állítja be, hogy a **nem** értékre legyen állítva a speciális védjegyezési beállításokban. Ez letiltja az Azure AD-címtár összes felhasználójának KMSI-kérését.
+
+A feltételes hozzáférés állandó böngésző-munkamenet vezérlőelemeit is használhatja annak megakadályozása érdekében, hogy a felhasználók láthatják a KMSI-kérést. Ez a beállítás lehetővé teszi, hogy letiltsa a KMSI-kérést a felhasználók (például a globális rendszergazdák) felhasználói csoportja számára, anélkül, hogy ez befolyásolná a címtárban található többi felhasználó bejelentkezési viselkedését. További információ: [felhasználói bejelentkezés gyakorisága](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-session-lifetime). 
+
+Annak biztosítása érdekében, hogy a KMSI-kérés csak akkor jelenjen meg, ha a felhasználó számára hasznos, a KMSI-kérés szándékosan nem jelenik meg a következő helyzetekben:
+
+* A felhasználó zökkenőmentes SSO és integrált Windows-hitelesítés (IWA) használatával jelentkezik be
+* A felhasználó Active Directory összevonási szolgáltatások (AD FS)on és IWA keresztül jelentkezik be
+* A felhasználó a bérlő egyik vendége
+* A felhasználó kockázati pontszáma magas
+* Bejelentkezés a felhasználó vagy a rendszergazda beleegyező folyamata során történik
+* Az állandó böngésző munkamenet-vezérlése feltételes hozzáférési szabályzatban van konfigurálva
 
 ## <a name="next-steps"></a>További lépések
 

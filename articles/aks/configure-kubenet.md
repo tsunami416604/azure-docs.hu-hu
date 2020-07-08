@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 8a101235f8e7aaeff455732b5c048cbc81c20079
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 983005e815061f65907fc54aa6a3dfec1771b3f0
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85079045"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055494"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Kubenet hálózatkezelés használata saját IP-címtartományok az Azure Kubernetes szolgáltatásban (ak)
 
@@ -40,7 +40,7 @@ Szüksége lesz az Azure CLI-verzió 2.0.65 vagy újabb verziójára, és konfig
 
 Számos környezetben meghatározta a lefoglalt IP-címtartományok virtuális hálózatait és alhálózatait. Ezek a virtuális hálózati erőforrások több szolgáltatás és alkalmazás támogatására szolgálnak. A hálózati kapcsolat biztosításához az AK-fürtök a *kubenet* (alapszintű Hálózatkezelés) vagy az Azure CNI (*speciális hálózatkezelés*) használatát teszik lehetővé.
 
-A *kubenet*csak a csomópontok kapnak IP-címet a virtuális hálózat alhálózatában. A hüvelyek nem tudnak közvetlenül kommunikálni egymással. Ehelyett a rendszer a felhasználó által megadott útválasztást (UDR) és az IP-továbbítást használja a hüvelyek közötti kapcsolathoz a csomópontok között. A hüvelyt olyan szolgáltatás mögött is üzembe helyezheti, amely egy hozzárendelt IP-címet kap, és az alkalmazás számára az adatforgalom terheléselosztását végzi. Az alábbi ábra azt mutatja, hogy az AK-csomópontok Hogyan kapják meg az IP-címet a virtuális hálózati alhálózatban, a hüvelyek kivételével:
+A *kubenet*csak a csomópontok kapnak IP-címet a virtuális hálózat alhálózatában. A hüvelyek nem tudnak közvetlenül kommunikálni egymással. Ehelyett a rendszer a felhasználó által megadott útválasztást (UDR) és az IP-továbbítást használja a hüvelyek közötti kapcsolathoz a csomópontok között. Alapértelmezés szerint a UDR és az IP-továbbítási konfigurációt az AK szolgáltatás hozza létre és tartja karban, de a [saját útválasztási táblázatot is használhatja az egyéni útvonalak kezeléséhez][byo-subnet-route-table]. A hüvelyt olyan szolgáltatás mögött is üzembe helyezheti, amely egy hozzárendelt IP-címet kap, és az alkalmazás számára az adatforgalom terheléselosztását végzi. Az alábbi ábra azt mutatja, hogy az AK-csomópontok Hogyan kapják meg az IP-címet a virtuális hálózati alhálózatban, a hüvelyek kivételével:
 
 ![Kubenet hálózati modell egy AK-fürttel](media/use-kubenet/kubenet-overview.png)
 
@@ -84,7 +84,7 @@ Az *Azure CNI* használata:
 
 - Rendelkezésre áll az IP-címtartomány.
 - A pod-kommunikáció nagy része a fürtön kívüli erőforrások.
-- Nem szeretné kezelni a UDR.
+- Nem szeretné kezelni a felhasználó által megadott útvonalakat a pod-kapcsolathoz.
 - Szükség van egy olyan speciális szolgáltatásra, mint a virtuális csomópontok vagy az Azure hálózati házirendje.  A [tarka hálózati házirendek][calico-network-policies]használata.
 
 További információ a használni kívánt hálózati modell eldöntéséhez: [hálózati modellek összehasonlítása és a támogatási hatókörük][network-comparisons].
@@ -139,10 +139,10 @@ VNET_ID=$(az network vnet show --resource-group myResourceGroup --name myAKSVnet
 SUBNET_ID=$(az network vnet subnet show --resource-group myResourceGroup --vnet-name myAKSVnet --name myAKSSubnet --query id -o tsv)
 ```
 
-Most rendeljen hozzá egy egyszerű szolgáltatásnevet a virtuális hálózathoz tartozó AK-fürt *közreműködői* engedélyeihez az az [role hozzárendelés Create][az-role-assignment-create] parancs használatával. Adja meg a sajátját az *\<appId>* előző parancs kimenetében látható módon az egyszerű szolgáltatás létrehozásához:
+Most rendeljen hozzá egy egyszerű szolgáltatásnevet az AK-fürt *hálózati közreműködői* számára a virtuális hálózaton az az [role hozzárendelés Create][az-role-assignment-create] paranccsal. Adja meg a sajátját az *\<appId>* előző parancs kimenetében látható módon az egyszerű szolgáltatás létrehozásához:
 
 ```azurecli-interactive
-az role assignment create --assignee <appId> --scope $VNET_ID --role Contributor
+az role assignment create --assignee <appId> --scope $VNET_ID --role "Network Contributor"
 ```
 
 ## <a name="create-an-aks-cluster-in-the-virtual-network"></a>AK-fürt létrehozása a virtuális hálózaton
@@ -253,6 +253,7 @@ A meglévő virtuális hálózati alhálózatba üzembe helyezett AK-fürttel mo
 [az-network-vnet-subnet-show]: /cli/azure/network/vnet/subnet#az-network-vnet-subnet-show
 [az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
 [az-aks-create]: /cli/azure/aks#az-aks-create
+[byo-subnet-route-table]: #bring-your-own-subnet-and-route-table-with-kubenet
 [develop-helm]: quickstart-helm.md
 [use-helm]: kubernetes-helm.md
 [virtual-nodes]: virtual-nodes-cli.md
