@@ -4,13 +4,12 @@ description: Riasztás létrehozása Azure Portal használatával, amely értes�
 ms.topic: conceptual
 ms.date: 6/23/2020
 ms.openlocfilehash: 2ba7597283ed254b8c03e8ea58c3c7b1257250ee
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85218037"
 ---
-# <a name="configure-resource-health-alerts-using-azure-portal"></a>Erőforrás-állapotra vonatkozó riasztások konfigurálása Azure Portal használatával
+# <a name="configure-resource-health-alerts-using-azure-portal"></a>Resource Health-riasztások konfigurálása az Azure Portal használatával
 
 Ebből a cikkből megtudhatja, hogyan állíthatja be a műveletnapló riasztásait az erőforrás-állapotra vonatkozó értesítésekhez a Azure Portal használatával.
 
@@ -77,4 +76,4 @@ Service Health riasztások létrehozása:
 
 * [Riasztások konfigurálása Service Healthhoz](../azure-monitor/platform/alerts-activity-log-service-notifications.md) 
 * [Azure Activity log esemény sémája](../azure-monitor/platform/activity-log-schema.md)
-* [Erőforrás-állapotra vonatkozó riasztások konfigurálása Resource Manager-sablonok használatával](https://docs.microsoft.com/azure/service-health/resource-health-alert-arm-template-guide)
+* [Resource Health-riasztások konfigurálása Resource Manager-sablonok használatával](https://docs.microsoft.com/azure/service-health/resource-health-alert-arm-template-guide)

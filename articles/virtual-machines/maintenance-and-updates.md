@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 05/22/2020
 ms.author: shants
 ms.openlocfilehash: 3caf8b63cbd86338bbef653e9be9916907578627
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84675879"
 ---
 # <a name="maintenance-for-virtual-machines-in-azure"></a>Az Azure-ban futó virtuális gépek karbantartása
@@ -97,6 +96,6 @@ A rendelkezésre állási zónák egy tartalék tartomány és egy frissítési 
 
 Az infrastruktúra minden egyes frissítése zónán kívüli zónában, egyetlen régióban található. Az üzembe helyezés azonban 1. zónaban is elvégezhető, és a különböző üzemelő példányok 2. zónan is elérhetők lesznek. A központi telepítések nincsenek szerializálva. Egyetlen központi telepítés azonban egyszerre csak egy zónát mutat be a kockázat csökkentése érdekében.
 
-## <a name="next-steps"></a>Következő lépések 
+## <a name="next-steps"></a>További lépések 
 
 Az [Azure CLI](maintenance-notifications-cli.md), [Azure PowerShell](maintenance-notifications-powershell.md) vagy a [portál](maintenance-notifications-portal.md) használatával felügyelheti a tervezett karbantartást. 

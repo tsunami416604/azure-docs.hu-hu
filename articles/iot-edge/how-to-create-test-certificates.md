@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: e2ded81c3525de6f9c49d774594c73f9da2b5696
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84430660"
 ---
 # <a name="create-demo-certificates-to-test-iot-edge-device-features"></a>Bemutató-tanúsítványok létrehozása IoT Edge eszköz funkcióinak teszteléséhez
@@ -53,11 +52,11 @@ Ha bemutató tanúsítványokat szeretne létrehozni egy Windows-eszközön, tel
 #### <a name="install-openssl"></a>OpenSSL telepítése
 
 Telepítse a Windows rendszerhez készült OpenSSL-t arra a gépre, amelyet a tanúsítványok létrehozásához használ.
-Ha már telepítve van az OpenSSL a Windows-eszközön, kihagyhatja ezt a lépést, de gondoskodhat arról, hogy az OpenSSL. exe elérhető legyen a PATH környezeti változóban.
+Ha már telepítve van az OpenSSL a Windows-eszközön, akkor kihagyhatja ezt a lépést, de gondoskodhat arról, hogy a openssl.exe elérhető legyen a PATH környezeti változóban.
 
 Az OpenSSL több módon is telepíthető, többek között a következő lehetőségek közül:
 
-* **Egyszerűbb:** Töltse le és telepítse a [harmadik féltől származó OpenSSL bináris fájlokat](https://wiki.openssl.org/index.php/Binaries), például az [OpenSSL-ből a SourceForge-on](https://sourceforge.net/projects/openssl/). Adja hozzá az OpenSSL. exe fájl teljes elérési útját a PATH környezeti változóhoz.
+* **Egyszerűbb:** Töltse le és telepítse a [harmadik féltől származó OpenSSL bináris fájlokat](https://wiki.openssl.org/index.php/Binaries), például az [OpenSSL-ből a SourceForge-on](https://sourceforge.net/projects/openssl/). Adja hozzá a openssl.exe teljes elérési útját a PATH környezeti változóhoz.
 
 * **Ajánlott:** Töltse le az OpenSSL forráskódját, és saját kezűleg vagy a [vcpkg](https://github.com/Microsoft/vcpkg)-n keresztül hozza létre a bináris fájlokat a gépen. Az alább felsorolt utasítások segítségével letöltheti a forráskódot, lefordíthatja és telepítheti az OpenSSL-t a Windows rendszerű gépén, egyszerű lépésekkel vcpkg.
 
@@ -69,7 +68,7 @@ Az OpenSSL több módon is telepíthető, többek között a következő lehető
       .\vcpkg install openssl:x64-windows
       ```
 
-   3. Adja hozzá a `<vcpkg path>\installed\x64-windows\tools\openssl` PATH környezeti változóhoz, hogy az OpenSSL. exe fájl elérhető legyen a híváshoz.
+   3. Adja hozzá a `<vcpkg path>\installed\x64-windows\tools\openssl` PATH környezeti változóhoz, hogy a openssl.exe fájl elérhető legyen a meghíváshoz.
 
 #### <a name="prepare-scripts-in-powershell"></a>Parancsfájlok előkészítése a PowerShellben
 

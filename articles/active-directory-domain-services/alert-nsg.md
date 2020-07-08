@@ -9,18 +9,17 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 09/19/2019
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 6d0cde3d3615350658a06cf118ff38cebf8952c9
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.openlocfilehash: 584c03dc798bc21ddd5538e58d0f9047c55c5372
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84735013"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040452"
 ---
 # <a name="known-issues-network-configuration-alerts-in-azure-active-directory-domain-services"></a>Ismert problémák: hálózati konfigurációval kapcsolatos riasztások Azure Active Directory Domain Services
 
-Ahhoz, hogy az alkalmazások és szolgáltatások megfelelően kommunikáljanak a Azure Active Directory Domain Servicesokkal (Azure AD DS), a forgalom áramlásának engedélyezése érdekében a megadott hálózati portoknak nyitva kell lenniük. Az Azure-ban hálózati biztonsági csoportok használatával szabályozhatja a forgalom áramlását. Egy Azure AD DS felügyelt tartomány állapota riasztást jelenít meg, ha a szükséges hálózati biztonsági csoportra vonatkozó szabályok nincsenek érvényben.
+Ahhoz, hogy az alkalmazások és a szolgáltatások megfelelően kommunikáljanak egy Azure Active Directory Domain Services (Azure AD DS) felügyelt tartománnyal, bizonyos hálózati portoknak nyitva kell lenniük, hogy lehetővé tegyék a forgalom áramlását. Az Azure-ban hálózati biztonsági csoportok használatával szabályozhatja a forgalom áramlását. Egy Azure AD DS felügyelt tartomány állapota riasztást jelenít meg, ha a szükséges hálózati biztonsági csoportra vonatkozó szabályok nincsenek érvényben.
 
 Ez a cikk segít megérteni és elhárítani a hálózati biztonsági csoport konfigurációs problémáinak gyakori riasztásait.
 
@@ -34,7 +33,7 @@ A hálózati biztonsági csoportra vonatkozó szabályok érvénytelenek az Azur
 
 ## <a name="default-security-rules"></a>Alapértelmezett biztonsági szabályok
 
-A rendszer a következő alapértelmezett bejövő és kimenő biztonsági szabályokat alkalmazza a felügyelt tartomány hálózati biztonsági csoportjára. Ezek a szabályok megőrzik az Azure AD DS védelmét, és lehetővé teszik az Azure platform számára a felügyelt tartomány figyelését, kezelését és frissítését. A [biztonságos LDAP konfigurálása][configure-ldaps]esetén további szabályt is használhat, amely engedélyezi a bejövő forgalmat.
+A rendszer a következő alapértelmezett bejövő és kimenő biztonsági szabályokat alkalmazza a felügyelt tartomány hálózati biztonsági csoportjára. Ezek a szabályok megőrzik az Azure AD DS védelmét, és lehetővé teszik az Azure platform számára a felügyelt tartomány figyelését, kezelését és frissítését.
 
 ### <a name="inbound-security-rules"></a>Bejövő biztonsági szabály
 
@@ -46,6 +45,9 @@ A rendszer a következő alapértelmezett bejövő és kimenő biztonsági szab�
 | 65000    | AllVnetInBound | Bármelyik | Bármelyik | VirtualNetwork | VirtualNetwork | Engedélyezés |
 | 65001    | AllowAzureLoadBalancerInBound | Bármelyik | Bármelyik | AzureLoadBalancer | Bármelyik | Engedélyezés |
 | 65500    | DenyAllInBound | Bármelyik | Bármelyik | Bármelyik | Bármelyik | Megtagadás |
+
+> [!NOTE]
+> A [biztonságos LDAP konfigurálása][configure-ldaps]esetén további szabályt is használhat, amely engedélyezi a bejövő forgalmat. Ez a további szabály a megfelelő LDAP-kommunikációhoz szükséges.
 
 ### <a name="outbound-security-rules"></a>Kimenő biztonsági szabályok
 

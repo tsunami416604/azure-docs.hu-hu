@@ -11,10 +11,9 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: kenwith
 ms.openlocfilehash: 1e858f1141ade52a1872d8a9822f515796d9182c
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/15/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84781956"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Attribútum-alapú alkalmazás-kiépítés hatóköri szűrőkkel
@@ -116,7 +115,7 @@ A hatóköri szűrők az egyes Azure AD-beli felhasználói létesítési össze
 
 
 ## <a name="common-scoping-filters"></a>Gyakori hatókörű szűrők
-| Cél attribútum| Operátor | Érték | Leírás|
+| Cél attribútum| Művelet | Érték | Description|
 |----|----|----|----|
 |userPrincipalName|REGEX EGYEZÉS|.\*@domain.com |Minden olyan felhasználó, aki rendelkezik a tartománnyal rendelkező userPrincipal, a @domain.com kiépítés hatóköre lesz|
 |userPrincipalName|NEM REGEX EGYEZÉS|.\*@domain.com|Minden olyan felhasználó, aki rendelkezik a tartománnyal rendelkező userPrincipal, ki lesz a @domain.com kiépítés hatóköre|
