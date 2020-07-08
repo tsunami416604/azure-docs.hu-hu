@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 01/21/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: ea8492ff5a25eb72b0a842c4da82ed78c89863f8
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 7642a32ce69dbbbb5ddebbe56b74f3202b2e6422
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84733823"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039568"
 ---
 # <a name="common-errors-and-troubleshooting-steps-for-azure-active-directory-domain-services"></a>Gyakori hibák és hibaelhárítási lépések a Azure Active Directory Domain Services
 
@@ -28,7 +28,7 @@ Ez a cikk az Azure AD DS gyakori problémáinak hibaelhárítási lépéseit ism
 
 Ha problémába ütközik az Azure AD DS engedélyezésekor, tekintse át a következő gyakori hibákat és lépéseket a megoldásához:
 
-| **Példa hibaüzenet** | **Felbontás** |
+| **Példa hibaüzenet** | **Resolution** (Osztás) |
 | --- |:--- |
 | *A aaddscontoso.com név már használatban van ezen a hálózaton. Olyan nevet adjon meg, amely nincs használatban.* |[Tartománynév-ütközés a virtuális hálózaton](troubleshoot.md#domain-name-conflict) |
 | *Nem lehet engedélyezni a tartományi szolgáltatásokat ebben az Azure AD-bérlőben. A szolgáltatás nem rendelkezik megfelelő engedélyekkel a (z) "Azure AD Domain Services Sync" nevű alkalmazáshoz. Törölje a "Azure AD Domain Services Sync" nevű alkalmazást, majd próbálja meg engedélyezni az Azure AD-bérlő tartományi szolgáltatásait.* |[A tartományi szolgáltatások nem rendelkeznek megfelelő engedélyekkel a Azure AD Domain Services Sync alkalmazáshoz](troubleshoot.md#inadequate-permissions) |
@@ -41,7 +41,7 @@ Ha problémába ütközik az Azure AD DS engedélyezésekor, tekintse át a köv
 
 *A aaddscontoso.com név már használatban van ezen a hálózaton. Olyan nevet adjon meg, amely nincs használatban.*
 
-**Felbontás**
+**Resolution** (Osztás)
 
 Győződjön meg arról, hogy nem rendelkezik olyan meglévő AD DS-környezettel, amelynek azonos a tartományneve ugyanazon a tartományon, vagy egy egyenrangú virtuális hálózaton. Előfordulhat például, hogy rendelkezik egy *aaddscontoso.com* nevű AD DS tartománnyal, amely Azure-beli virtuális gépeken fut. Ha olyan Azure AD DS felügyelt tartományt próbál engedélyezni, amelynek a *aaddscontoso.com* ugyanaz a tartományneve a virtuális hálózaton, a kért művelet meghiúsul.
 
@@ -53,7 +53,7 @@ Ezt a hibát az okozza, hogy a virtuális hálózaton lévő tartománynév ütk
 
 *Nem lehet engedélyezni a tartományi szolgáltatásokat ebben az Azure AD-bérlőben. A szolgáltatás nem rendelkezik megfelelő engedélyekkel a (z) "Azure AD Domain Services Sync" nevű alkalmazáshoz. Törölje a "Azure AD Domain Services Sync" nevű alkalmazást, majd próbálja meg engedélyezni az Azure AD-bérlő tartományi szolgáltatásait.*
 
-**Felbontás**
+**Resolution** (Osztás)
 
 Ellenőrizze, hogy van-e *Azure ad Domain Services Sync* nevű alkalmazás az Azure ad-címtárban. Ha az alkalmazás létezik, törölje, majd próbálkozzon újra az Azure AD DS engedélyezéséhez. Ha egy meglévő alkalmazást szeretne megkeresni, és szükség esetén törölni szeretné, hajtsa végre a következő lépéseket:
 
@@ -68,7 +68,7 @@ Ellenőrizze, hogy van-e *Azure ad Domain Services Sync* nevű alkalmazás az Az
 
 *Nem lehet engedélyezni a tartományi szolgáltatásokat ebben az Azure AD-bérlőben. Az Azure AD-bérlőben található tartományi szolgáltatások alkalmazás nem rendelkezik a tartományi szolgáltatások engedélyezéséhez szükséges engedélyekkel. Törölje az alkalmazást az alkalmazás-azonosító d87dcbc6-a371-462e-88e3-28ad15ec4e64, majd próbálja meg engedélyezni az Azure AD-bérlő tartományi szolgáltatásait.*
 
-**Felbontás**
+**Resolution** (Osztás)
 
 Ellenőrizze, hogy rendelkezik-e egy *AzureActiveDirectoryDomainControllerServices* nevű meglévő alkalmazással az Azure ad-címtárban található *d87dcbc6-a371-462e-88e3-28ad15ec4e64* alkalmazás-azonosítójával. Ha az alkalmazás létezik, törölje, majd próbálja újra az Azure AD DS engedélyezéséhez.
 
@@ -112,7 +112,7 @@ if ($sp -ne $null)
 
 *Nem lehet engedélyezni a tartományi szolgáltatásokat ebben az Azure AD-bérlőben. Az Microsoft Azure AD alkalmazás le van tiltva az Azure AD-bérlőben. Engedélyezze az alkalmazást az 00000002-0000-0000-C000-000000000000 alkalmazás-azonosítóval, majd próbálja meg engedélyezni az Azure AD-bérlő tartományi szolgáltatásait.*
 
-**Felbontás**
+**Resolution** (Osztás)
 
 Ellenőrizze, hogy a *00000002-0000-0000-C000-000000000000*azonosítójú alkalmazást letiltotta-e. Ez az alkalmazás a Microsoft Azure AD alkalmazás, és Graph API hozzáférést biztosít az Azure AD-bérlőhöz. Az Azure AD-bérlő szinkronizálásához engedélyezni kell az alkalmazást.
 
@@ -137,15 +137,15 @@ Ha az Azure AD-bérlő egy vagy több felhasználója nem tud bejelentkezni a fe
     
       * Telepítette vagy frissítette a ( [Azure ad Connect) legújabb javasolt kiadását](https://www.microsoft.com/download/details.aspx?id=47594).
       * Úgy konfigurálta a Azure AD Connectt, hogy [teljes szinkronizálást végezzen][hybrid-phs].
-      * A címtár méretétől függően eltarthat egy ideig, amíg a felhasználói fiókok és a hitelesítőadat-kivonatok elérhetők lesznek az Azure AD DSban. Győződjön meg arról, hogy elég hosszú ideig vár a felügyelt tartományon való hitelesítés megkísérlése előtt.
-      * Ha a probléma az előző lépések ellenőrzése után is fennáll, próbálja meg újraindítani a *Microsoft Azure ad Sync szolgáltatást*. A Azure AD Connect-kiszolgálóról nyisson meg egy parancssort, és futtassa a következő parancsokat:
+      * A címtár méretétől függően eltarthat egy ideig, amíg a felhasználói fiókok és a hitelesítő adatok kivonatai elérhetők lesznek a felügyelt tartományban. Győződjön meg arról, hogy elég hosszú ideig vár a felügyelt tartományon való hitelesítés megkísérlése előtt.
+      * Ha a probléma az előző lépések ellenőrzése után is fennáll, próbálja meg újraindítani a *Microsoft Azure ad Sync szolgáltatást*. Nyisson meg egy parancssort a Azure AD Connect-kiszolgálóról, majd futtassa a következő parancsokat:
     
         ```console
         net stop 'Microsoft Azure AD Sync'
         net start 'Microsoft Azure AD Sync'
         ```
 
-    * **Csak felhőalapú fiókok**: Ha az érintett felhasználói fiók csak felhőalapú felhasználói fiók, akkor győződjön meg arról, hogy a [felhasználó az Azure AD DS engedélyezése után megváltoztatta a jelszavát][cloud-only-passwords]. Ez a jelszó-visszaállítás a szükséges hitelesítő adatok kivonatait okozza a Azure AD Domain Services létrehozásához.
+    * **Csak felhőalapú fiókok**: Ha az érintett felhasználói fiók csak felhőalapú felhasználói fiók, akkor győződjön meg arról, hogy a [felhasználó az Azure AD DS engedélyezése után megváltoztatta a jelszavát][cloud-only-passwords]. Ez a jelszó-visszaállítás a felügyelt tartományhoz szükséges hitelesítőadat-kivonatok generálását okozza.
 
 * **Ellenőrizze, hogy a felhasználói fiók aktív-e**: alapértelmezés szerint a felügyelt tartományon 2 percen belül öt érvénytelen jelszóval próbálkozik a felhasználói fiók 30 percen belüli zárolása miatt. A felhasználó nem tud bejelentkezni, amíg a fiók ki van zárva. 30 perc elteltével a felhasználói fiók automatikusan fel lesz oldva.
   * A felügyelt tartomány jelszavas próbálkozásai érvénytelenek, az Azure AD-ben nem zárhatók ki a felhasználói fiókok. A felhasználói fiók csak a felügyelt tartományon belül van zárolva. A felügyeleti [virtuális gép][management-vm]használatával, az Azure ad-ben nem, az *Active Directory felügyeleti konzolon (ADAC)* keresse meg a felhasználói fiók állapotát.

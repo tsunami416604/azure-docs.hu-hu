@@ -5,14 +5,14 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/03/2019
-ms.openlocfilehash: c393eb782c2ff16eb5b3e5967b39938dfe2f1534
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0c03eb9d30d204cbfb7fcd8971dd84f2ba5a7737
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75426468"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039177"
 ---
 # <a name="how-to-start-an-azure-stream-analytics-job"></a>Azure Stream Analytics-feladatok indítása
 
@@ -54,7 +54,7 @@ Start-AzStreamAnalyticsJob `
 
 Három lehetőség áll rendelkezésre a **OutputStartMode**: *JobStartTime*, *CustomTime*és *LastOutputEventTime*. Ha ez a tulajdonság hiányzik, az alapértelmezett érték a *JobStartTime*. A fenti beállításokkal kapcsolatos további információkért lásd a fenti lépéseket.
 
-A `Start-AzStreamAnalyitcsJob` parancsmaggal kapcsolatos további információkért tekintse meg a [Start-AzStreamAnalyticsJob referenciát](/powershell/module/az.streamanalytics/start-azstreamanalyticsjob).
+A parancsmaggal kapcsolatos további információkért `Start-AzStreamAnalyitcsJob` tekintse meg a [Start-AzStreamAnalyticsJob referenciát](/powershell/module/az.streamanalytics/start-azstreamanalyticsjob).
 
 ## <a name="next-steps"></a>További lépések
 

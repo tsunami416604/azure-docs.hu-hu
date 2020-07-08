@@ -11,12 +11,12 @@ ms.date: 02/04/2019
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: b2ae3aa77383888c320ed58e03e73b2e306feeba
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 44755ab13b95db1ffec8183d00a4054e291c5a50
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85213771"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039024"
 ---
 # <a name="troubleshooting-synapse-sql-in-azure-synapse-analytics"></a>A szinapszis SQL hibaelhárítása Az Azure szinapszis Analyticsben
 
@@ -28,7 +28,7 @@ Ez a cikk a szinapszis SQL általános hibaelhárítási problémáit sorolja fe
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | Az „NT AUTHORITY\ANONYMOUS LOGON” felhasználó bejelentkezése nem sikerült. (Microsoft SQL Server, hiba: 18456) | Ez a hiba akkor fordul elő, amikor egy Azure AD-felhasználó megpróbál csatlakozni a Master adatbázishoz, de nem rendelkezik a főkiszolgálóval.  A probléma megoldásához adja meg azt az SQL-készletet, amelyhez csatlakozni szeretne, vagy adja hozzá a felhasználót a Master adatbázishoz.  További részletekért tekintse meg a [Biztonság áttekintése](sql-data-warehouse-overview-manage-security.md) című cikket. |
 | A „MyUserName” kiszolgálói tag a jelenlegi biztonsági környezetben nem tud hozzáférni a „master” adatbázishoz. Nem lehet megnyitni a felhasználói alapértelmezett adatbázist. A bejelentkezés sikertelen volt. A következő felhasználó bejelentkezése nem sikerült: „MyUserName”. (Microsoft SQL Server, hiba: 916) | Ez a hiba akkor fordul elő, amikor egy Azure AD-felhasználó megpróbál csatlakozni a Master adatbázishoz, de nem rendelkezik a főkiszolgálóval.  A probléma megoldásához adja meg azt az SQL-készletet, amelyhez csatlakozni szeretne, vagy adja hozzá a felhasználót a Master adatbázishoz.  További részletekért tekintse meg a [Biztonság áttekintése](sql-data-warehouse-overview-manage-security.md) című cikket. |
-| CTAIP hiba                                                  | Ez a hiba akkor fordulhat elő, ha az SQL Server főadatbázisán egy bejelentkezési azonosítót hoztak létre, de nem az SQL Database-ben.  Ha ezt a hibát tapasztalja, tekintse meg a [biztonsági áttekintést ismertető](sql-data-warehouse-overview-manage-security.md) cikket.  Ez a cikk azt ismerteti, hogyan hozható létre egy bejelentkezés és egy felhasználó a főkiszolgálón, majd hogyan hozható létre felhasználó az SQL Database-ben. |
+| CTAIP hiba                                                  | Ez a hiba akkor fordulhat elő, ha a SQL Database Master adatbázisban létrehozott egy bejelentkezési azonosítót, de nem az adott SQL-adatbázisban.  Ha ezt a hibát tapasztalja, tekintse meg a [biztonsági áttekintést ismertető](sql-data-warehouse-overview-manage-security.md) cikket.  Ez a cikk bemutatja, hogyan hozhat létre egy felhasználónevet és egy felhasználót a Master adatbázisban, majd hogyan hozhat létre felhasználót egy SQL-adatbázisban. |
 | Tűzfal blokkolja                                          | Az SQL-készleteket tűzfalak védik, hogy csak az ismert IP-címek férhessenek hozzá egy adatbázishoz. Alapértelmezés szerint a tűzfalak biztonságosak, ami azt jelenti, hogy a kapcsolat megkezdése előtt explicit módon engedélyeznie kell és meg kell adnia az IP-címet vagy a címtartományt.  A tűzfal hozzáférésre való konfigurálásához kövesse a [kiszolgáló tűzfal-hozzáférés konfigurálása az ügyfél IP](create-data-warehouse-portal.md) -címére című témakör lépéseit a [létesítési utasításokban](create-data-warehouse-portal.md). |
 | Nem lehet kapcsolatot létesíteni az eszközzel vagy az illesztőprogrammal                           | A szinapszis SQL Pool a [SSMS](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [a SSDT for Visual Studio](sql-data-warehouse-install-visual-studio.md)vagy a [Sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md) használatát javasolja az adatai lekérdezéséhez. További információ az illesztőprogramokról és az Azure Szinapszishoz való csatlakozásról: [Az Azure szinapszis-illesztőprogramok](sql-data-warehouse-connection-strings.md) és [Az Azure szinapszis-cikkek csatlakoztatása](sql-data-warehouse-connect-overview.md) . |
 

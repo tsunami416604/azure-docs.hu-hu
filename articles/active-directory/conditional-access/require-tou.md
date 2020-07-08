@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3dd1b4cf554e773f49a15ac5cedcbcc5b3e710b9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 34cc8154660db8afcd5859d45ccfd622bc7ca88f
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74380105"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039823"
 ---
 # <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>Rövid útmutató: a használati feltételek elfogadásának megkövetelése a felhőalapú alkalmazások elérése előtt
 
@@ -29,7 +29,7 @@ Ez a rövid útmutató bemutatja, hogyan konfigurálhat egy olyan [Azure ad felt
 
 ![Szabályzat létrehozása](./media/require-tou/5555.png)
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -54,7 +54,7 @@ Ez a szakasz a minta felhasználási feltételek létrehozásának lépéseit is
 **A használati feltételek létrehozása:**
 
 1. A Microsoft Wordben hozzon létre egy új dokumentumot.
-1. Írja be a **saját használati feltételeket**, majd mentse a dokumentumot a számítógépen **mytou. pdf**néven.
+1. Írja be a **saját használati feltételeket**, majd mentse a dokumentumot a számítógépen **mytou.pdf**.
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) globális rendszergazdaként, biztonsági rendszergazdaként vagy feltételes hozzáférési rendszergazdaként.
 1. A Azure Portal a bal oldali navigációs sávon kattintson az **Azure Active Directory**elemre.
 
@@ -82,7 +82,7 @@ Ez a szakasz a minta felhasználási feltételek létrehozásának lépéseit is
    1. **Nyelvként**válassza az **angol**nyelvet.
    1. Ahogy a felhasználók a használati **feltételek kibontását kérik**, válassza **a be**lehetőséget.
    1. A **feltételes hozzáférési házirend-sablonokkal való betartatáshoz**válassza az **egyéni házirend**elemet.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ## <a name="create-your-conditional-access-policy"></a>Feltételes hozzáférési szabályzat létrehozása
 
@@ -105,7 +105,7 @@ A házirendben állítsa be a következőket:
 
 1. Az **új** lap **név** szövegmezőbe írja be a következőt: az **Isabella kötelező felhasználási**helyének megadása.
 
-   ![Name (Név)](./media/require-tou/71.png)
+   ![Name](./media/require-tou/71.png)
 
 1. A **hozzárendelés** szakaszban kattintson a **felhasználók és csoportok**elemre.
 
@@ -139,14 +139,14 @@ A házirendben állítsa be a következőket:
 
    ![Engedély](./media/require-tou/111.png)
 
-   1. Válassza a **hozzáférés engedélyezése**lehetőséget.
+   1. Válassza a **Hozzáférés biztosítása** lehetőséget.
    1. Válassza **a saját felhasználási**feltételek lehetőséget.
    1. Kattintson a **Kiválasztás** gombra.
 1. A **házirend engedélyezése** szakaszban kattintson **a be**gombra.
 
    ![Szabályzat engedélyezése](./media/require-tou/18.png)
 
-1. Kattintson a **Létrehozás**gombra.
+1. Kattintson a **Létrehozás** lehetőségre.
 
 ## <a name="evaluate-a-simulated-sign-in"></a>Szimulált bejelentkezés kiértékelése
 
@@ -193,7 +193,7 @@ A szabályzat teszteléséhez próbáljon meg bejelentkezni a [Azure Portalba](h
 
 ![Használati feltételek](./media/require-tou/57.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs rá szükség, törölje a teszt felhasználót és a feltételes hozzáférési szabályzatot:
 
@@ -209,5 +209,4 @@ Ha már nincs rá szükség, törölje a teszt felhasználót és a feltételes 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Többtényezős hitelesítés megkövetelése adott alkalmazásokban](app-based-mfa.md)
-> [a munkamenet-kockázat észlelésekor](app-sign-in-risk.md)
+> [MFA megkövetelése adott alkalmazásokhoz](app-based-mfa.md)

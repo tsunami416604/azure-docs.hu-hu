@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 10/02/2019
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 07006de016ba956c02cbd5f527417df3bdc2f723
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 4a472f0d1e31faea6b62eec004543b42e6add4fe
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84734044"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039687"
 ---
 # <a name="troubleshoot-domain-join-problems-with-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services felügyelt tartományhoz való csatlakozással kapcsolatos problémák elhárítása
 
@@ -30,16 +30,16 @@ Amikor megpróbál csatlakozni egy virtuális géphez (VM), vagy egy alkalmazás
 
 Ha a virtuális gép nem találja a felügyelt tartományt, általában hálózati kapcsolatok vagy konfigurációs problémák vannak. A probléma megkereséséhez és megoldásához tekintse át a következő hibaelhárítási lépéseket:
 
-1. Győződjön meg arról, hogy a virtuális gép ugyanahhoz a virtuális géphez van csatlakoztatva, vagy egy olyan, az Azure AD DS számára engedélyezett virtuális hálózathoz csatlakozik. Ha nem, a virtuális gép nem találja és nem tud csatlakozni a tartományhoz a csatlakozáshoz.
+1. Győződjön meg arról, hogy a virtuális gép felügyelt tartományhoz van csatlakoztatva, vagy egy társ virtuális hálózat. Ha nem, a virtuális gép nem találja és nem tud csatlakozni a tartományhoz a csatlakozáshoz.
     * Ha a virtuális gép nem csatlakozik ugyanahhoz a virtuális hálózathoz, győződjön meg arról, hogy a virtuális hálózati társ-vagy VPN-kapcsolat *aktív* vagy *csatlakoztatva* van, hogy a forgalom megfelelően működjön.
 1. Próbálja meg pingelni a tartományt a felügyelt tartomány tartományneve (például `ping aaddscontoso.com` ) használatával.
     * Ha a pingelési válasz sikertelen, próbálja meg pingelni a tartomány IP-címeit a portál áttekintés lapján a felügyelt tartományhoz, például: `ping 10.0.0.4` .
-    * Ha sikeresen Pingeli az IP-címet, de a tartományt nem, a DNS helytelenül van konfigurálva. Győződjön meg arról, hogy konfigurálta a felügyelt tartomány DNS-kiszolgálóit a virtuális hálózathoz.
+    * Ha sikeresen Pingeli az IP-címet, de a tartományt nem, a DNS helytelenül van konfigurálva. Győződjön meg arról, hogy [konfigurálta a felügyelt tartomány DNS-kiszolgálóit a virtuális hálózathoz][configure-dns].
 1. Próbálja meg kiüríteni a DNS-feloldó gyorsítótárát a virtuális gépen, például: `ipconfig /flushdns` .
 
 ### <a name="network-security-group-nsg-configuration"></a>Hálózati biztonsági csoport (NSG) konfigurációja
 
-Felügyelt tartomány létrehozásakor a rendszer a sikeres tartományi művelethez is létrehoz egy hálózati biztonsági csoportot a megfelelő szabályokkal. Ha további hálózati biztonsági csoportokra vonatkozó szabályokat szerkeszt vagy hoz létre, előfordulhat, hogy véletlenül letiltja az Azure AD DS számára szükséges portokat a kapcsolódási és hitelesítési szolgáltatások biztosításához. Ezek a hálózati biztonsági csoportokra vonatkozó szabályok olyan problémákat okozhatnak, mint például a jelszó-szinkronizálás nem fejeződik be, a felhasználók nem tudnak bejelentkezni, vagy a tartományhoz való csatlakozással kapcsolatos problémák.
+Felügyelt tartomány létrehozásakor a rendszer a sikeres tartományi művelethez is létrehoz egy hálózati biztonsági csoportot a megfelelő szabályokkal. Ha további hálózati biztonsági csoportokra vonatkozó szabályokat szerkeszt vagy hoz létre, előfordulhat, hogy véletlenül letiltja a kapcsolódási és hitelesítési szolgáltatások biztosításához szükséges portokat az Azure AD DS számára. Ezek a hálózati biztonsági csoportokra vonatkozó szabályok olyan problémákat okozhatnak, mint például a jelszó-szinkronizálás nem fejeződik be, a felhasználók nem tudnak bejelentkezni, vagy a tartományhoz való csatlakozással kapcsolatos problémák.
 
 Ha továbbra is fennáll a kapcsolódási problémák, tekintse át a következő hibaelhárítási lépéseket:
 
@@ -53,7 +53,7 @@ Ha olyan párbeszédpanelt kap, amely hitelesítő adatokat kér a felügyelt ta
 
 A hitelesítő adatokkal kapcsolatos problémák elhárításához tekintse át a következő hibaelhárítási lépéseket:
 
-1. Próbálja meg az UPN formátumot használni a hitelesítő adatok megadásához, például: `dee@aaddscontoso.onmicrosoft.com` . Győződjön meg arról, hogy az UPN helyesen van konfigurálva az Azure AD-ben.
+1. Próbálja meg az UPN formátumot használni a hitelesítő adatok megadásához, például: `dee@contoso.onmicrosoft.com` . Győződjön meg arról, hogy az UPN helyesen van konfigurálva az Azure AD-ben.
     * Előfordulhat, hogy a fiókhoz tartozó *sAMAccountName* automatikusan létrejön, ha több felhasználó rendelkezik UGYANAZZAL az UPN-előtaggal a bérlőben, vagy ha az UPN-előtag túl hosszú. Ezért előfordulhat, hogy a fiók *sAMAccountName* -formátuma eltér a helyszíni tartományban várttól vagy használattól.
 1. Próbáljon meg egy olyan felhasználói fiók hitelesítő adatait használni, amely a felügyelt tartomány részét képezi, hogy a virtuális gépeket a felügyelt tartományhoz csatlakoztassa.
 1. Győződjön meg arról, hogy [engedélyezte a jelszó-szinkronizálást][enable-password-sync] , és elég sokáig várt a jelszó-szinkronizálás kezdeti befejezéséhez.
@@ -68,6 +68,7 @@ Ha továbbra sem sikerül a virtuális gép csatlakoztatása a felügyelt tartom
 [enable-password-sync]: tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds
 [network-ports]: network-considerations.md#network-security-groups-and-required-ports
 [azure-ad-support]: ../active-directory/fundamentals/active-directory-troubleshooting-support-howto.md
+[configure-dns]: tutorial-create-instance.md#update-dns-settings-for-the-azure-virtual-network
 
 <!-- EXTERNAL LINKS -->
 [join-authentication-issues]: /previous-versions/windows/it-pro/windows-2000-server/cc961817(v=technet.10)

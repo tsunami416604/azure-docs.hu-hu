@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 1afe92720997ede327f098b9a435d00842ae201e
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 862b3056445bddb358e6485ce5fec4de4d53eace
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85322136"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039279"
 ---
 # <a name="connect-to-and-index-azure-sql-content-using-an-azure-cognitive-search-indexer"></a>Azure SQL-tartalomhoz való kapcsolódás és indexelés Azure Cognitive Search indexelő használatával
 
@@ -62,7 +62,7 @@ Az adatokhoz kapcsolódó számos tényezőtől függően előfordulhat, hogy az
 1. Adatforrás létrehozása:
 
    ```
-    POST https://myservice.search.windows.net/datasources?api-version=2019-05-06
+    POST https://myservice.search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: admin-key
 
@@ -80,8 +80,8 @@ Az adatokhoz kapcsolódó számos tényezőtől függően előfordulhat, hogy az
 
 3. Hozza létre az indexet úgy, hogy megadja a nevét, és hivatkozik az adatforrásra és a célként megadott indexre:
 
-    ```
-    POST https://myservice.search.windows.net/indexers?api-version=2019-05-06
+   ```
+    POST https://myservice.search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: admin-key
 
@@ -90,12 +90,14 @@ Az adatokhoz kapcsolódó számos tényezőtől függően előfordulhat, hogy az
         "dataSourceName" : "myazuresqldatasource",
         "targetIndexName" : "target index name"
     }
-    ```
+   ```
 
 Az ily módon létrehozott indexelő nem rendelkezik ütemtervtel. A létrehozáskor automatikusan lefut. A **Run indexelő** kérelem használatával bármikor futtathatja azt:
 
-    POST https://myservice.search.windows.net/indexers/myindexer/run?api-version=2019-05-06
+```
+    POST https://myservice.search.windows.net/indexers/myindexer/run?api-version=2020-06-30
     api-key: admin-key
+```
 
 Testreszabhatja az indexelő viselkedésének számos aspektusát, például a köteg méretét, valamint azt, hogy hány dokumentumot lehet kihagyni az indexelő végrehajtásának sikertelensége előtt. További információ: [create indexelő API](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer).
 
@@ -103,11 +105,14 @@ Előfordulhat, hogy engedélyezni kell az Azure-szolgáltatások számára az ad
 
 Az indexelő állapot és a végrehajtási előzmények (az indexelt elemek, a hibák stb. száma) figyeléséhez használjon **Indexelő állapotra** vonatkozó kérelmet:
 
-    GET https://myservice.search.windows.net/indexers/myindexer/status?api-version=2019-05-06
+```
+    GET https://myservice.search.windows.net/indexers/myindexer/status?api-version=2020-06-30
     api-key: admin-key
+```
 
 A válasznak a következőhöz hasonlóan kell kinéznie:
 
+```
     {
         "\@odata.context":"https://myservice.search.windows.net/$metadata#Microsoft.Azure.Search.V2015_02_28.IndexerExecutionInfo",
         "status":"running",
@@ -138,6 +143,7 @@ A válasznak a következőhöz hasonlóan kell kinéznie:
             ... earlier history items
         ]
     }
+```
 
 A végrehajtási előzmények akár 50 a legutóbb befejezett végrehajtásokat, amelyek fordított időrendi sorrendben vannak rendezve (így a legutolsó végrehajtás a válaszban).
 A válaszról további információt talál az [Indexelő állapotának lekérése](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status) című témakörben.
@@ -145,7 +151,8 @@ A válaszról további információt talál az [Indexelő állapotának lekéré
 ## <a name="run-indexers-on-a-schedule"></a>Indexelő futtatása ütemterv szerint
 Az indexelő úgy is rendezhető, hogy rendszeres időközönként fusson. Ehhez adja hozzá a **Schedule** tulajdonságot az indexelő létrehozásakor vagy frissítésekor. Az alábbi példa egy PUT-kérelmet mutat be az indexelő frissítéséhez:
 
-    PUT https://myservice.search.windows.net/indexers/myindexer?api-version=2019-05-06
+```
+    PUT https://myservice.search.windows.net/indexers/myindexer?api-version=2020-06-30
     Content-Type: application/json
     api-key: admin-key
 
@@ -154,6 +161,7 @@ Az indexelő úgy is rendezhető, hogy rendszeres időközönként fusson. Ehhez
         "targetIndexName" : "target index name",
         "schedule" : { "interval" : "PT10M", "startTime" : "2015-01-01T00:00:00Z" }
     }
+```
 
 Az **intervallum** paraméter megadása kötelező. Az intervallum a két egymást követő indexelő végrehajtásának kezdete közötti időpontra utal. A legkisebb megengedett intervallum 5 perc; a leghosszabb egy nap. A fájlnak XSD "dayTimeDuration" értéknek kell lennie (az [ISO 8601 időtartam](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) értékének korlátozott részhalmaza). A minta ehhez a következő: `P(nD)(T(nH)(nM))` . Példák: `PT15M` 15 percenként, `PT2H` minden 2 órában.
 
@@ -181,6 +189,7 @@ Ha az SQL-adatbázis támogatja a [változások követését](https://docs.micro
 
 A szabályzat használatához a következőhöz hasonló adatforrást kell létrehoznia vagy frissítenie:
 
+```
     {
         "name" : "myazuresqldatasource",
         "type" : "azuresql",
@@ -190,6 +199,7 @@ A szabályzat használatához a következőhöz hasonló adatforrást kell létr
            "@odata.type" : "#Microsoft.Azure.Search.SqlIntegratedChangeTrackingPolicy"
       }
     }
+```
 
 Az SQL integrált módosítás-követési szabályzatának használatakor ne határozzon meg külön adattörlési észlelési házirendet – ez a házirend beépített támogatást biztosít a Törölt sorok azonosításához. Ahhoz azonban, hogy a rendszer automatikusan észlelje a törléseket, a keresési indexben szereplő dokumentum kulcsának meg kell egyeznie az SQL-tábla elsődleges kulcsával. 
 
@@ -216,6 +226,7 @@ Ez a változás-észlelési szabályzat egy "magas vízjelek" oszlopra támaszko
 
 Ha magas vízjelekre vonatkozó szabályzatot szeretne használni, hozza létre vagy frissítse az adatforrást, például:
 
+```
     {
         "name" : "myazuresqldatasource",
         "type" : "azuresql",
@@ -226,6 +237,7 @@ Ha magas vízjelekre vonatkozó szabályzatot szeretne használni, hozza létre 
            "highWaterMarkColumnName" : "[a rowversion or last_updated column name]"
       }
     }
+```
 
 > [!WARNING]
 > Ha a forrástábla nem rendelkezik indextel a magas vízjel oszlopban, az SQL indexelő által használt lekérdezések időtúllépést okozhatnak. A `ORDER BY [High Water Mark Column]` záradéknak különösen szüksége van egy indexre, hogy hatékonyan fusson, ha a tábla sok sort tartalmaz.
@@ -243,11 +255,13 @@ Ha [ROWVERSION](https://docs.microsoft.com/sql/t-sql/data-types/rowversion-trans
 
 A funkció engedélyezéséhez hozza létre vagy frissítse az indexelő a következő konfigurációval:
 
+```
     {
       ... other indexer definition properties
      "parameters" : {
             "configuration" : { "convertHighWaterMarkToRowVersion" : true } }
     }
+```
 
 <a name="queryTimeout"></a>
 
@@ -255,11 +269,13 @@ A funkció engedélyezéséhez hozza létre vagy frissítse az indexelő a köve
 
 Ha időtúllépési hibák merülnek fel, az `queryTimeout` Indexelő konfigurációs beállításával állíthatja be a lekérdezés időtúllépését az alapértelmezett 5 perces időkorlátnál magasabb értékre. Ha például 10 percre szeretné beállítani az időkorlátot, akkor a következő konfigurációval hozza létre vagy frissítse az indexelő:
 
+```
     {
       ... other indexer definition properties
      "parameters" : {
             "configuration" : { "queryTimeout" : "00:10:00" } }
     }
+```
 
 <a name="disableOrderByHighWaterMarkColumn"></a>
 
@@ -267,11 +283,13 @@ Ha időtúllépési hibák merülnek fel, az `queryTimeout` Indexelő konfigurá
 
 Le is tilthatja a `ORDER BY [High Water Mark Column]` záradékot. Ez azonban nem ajánlott, mert ha az indexelő végrehajtása egy hiba miatt megszakad, az indexelő újra kell feldolgoznia az összes sort, ha később fut, akkor is, ha az indexelő már majdnem az összes sort feldolgozta a megszakított időpontig. A záradék letiltásához `ORDER BY` használja az `disableOrderByHighWaterMarkColumn` Indexelő definíciójában a következő beállítást:  
 
+```
     {
      ... other indexer definition properties
      "parameters" : {
             "configuration" : { "disableOrderByHighWaterMarkColumn" : true } }
     }
+```
 
 ### <a name="soft-delete-column-deletion-detection-policy"></a>Törlési törlési házirend az oszlop törléséhez
 Ha a sorok törlődnek a forrástábla közül, valószínűleg törölni kívánja ezeket a sorokat a keresési indexből is. Ha az SQL integrált módosítás-követési szabályzatát használja, az Ön számára is gondot kell fordítania. A magas vízjelek változás-követési szabályzata azonban nem segít a törölt sorokban. Mi a teendő?
@@ -280,6 +298,7 @@ Ha a sorok fizikailag el lettek távolítva a táblából, az Azure Cognitive Se
 
 A Soft-delete eljárás használatakor az adatforrás létrehozásakor vagy frissítésekor a következőképpen adhatja meg a helyreállítható törlési szabályzatot:
 
+```
     {
         …,
         "dataDeletionDetectionPolicy" : {
@@ -288,6 +307,7 @@ A Soft-delete eljárás használatakor az adatforrás létrehozásakor vagy fris
            "softDeleteMarkerValue" : "[the value that indicates that a row is deleted]"
         }
     }
+```
 
 A **softDeleteMarkerValue** karakterláncnak kell lennie – a tényleges érték karakterlánc-ábrázolását kell használnia. Ha például van egy egész oszlop, ahol a Törölt sorok az 1 értékkel vannak megjelölve, használja a következőt: `"1"` . Ha van egy olyan bites oszlopa, ahol a Törölt sorok a true értékkel vannak megjelölve, használja a literál karakterláncot `True` `true` , vagy az eset nem számít.
 
@@ -305,24 +325,26 @@ A **softDeleteMarkerValue** karakterláncnak kell lennie – a tényleges érté
 | idő adattípusúra, datetime, datetime2, Date, DateTimeOffset |EDM. DateTimeOffset, EDM. String | |
 | uniqueidentifer |Edm.String | |
 | földrajz |Edm.GeographyPoint |Csak a SRID 4326 (amely az alapértelmezett) típusú földrajzi példányok támogatottak |
-| ROWVERSION |N/A |A sorcsoport oszlopai nem tárolhatók a keresési indexben, de használhatók a változások követéséhez |
-| idő, TimeSpan, bináris, varbinary, rendszerkép, XML, geometria, CLR-beli típusok |N/A |Nem támogatott |
+| ROWVERSION |N.A. |A sorcsoport oszlopai nem tárolhatók a keresési indexben, de használhatók a változások követéséhez |
+| idő, TimeSpan, bináris, varbinary, rendszerkép, XML, geometria, CLR-beli típusok |N.A. |Nem támogatott |
 
 ## <a name="configuration-settings"></a>Konfigurációs beállítások
 Az SQL indexelő számos konfigurációs beállítást tesz elérhetővé:
 
-| Beállítás | Adattípus | Cél | Alapértelmezett érték |
+| Beállítás | Adattípus | Szerep | Alapértelmezett érték |
 | --- | --- | --- | --- |
 | queryTimeout |sztring |Az SQL-lekérdezés végrehajtásának időtúllépését állítja be |5 perc ("00:05:00") |
 | disableOrderByHighWaterMarkColumn |logikai |Azt eredményezi, hogy a magas vízjelzési házirend által használt SQL-lekérdezés kihagyja a ORDER BY záradékot. Lásd: [magas vízjelek szabályzata](#HighWaterMarkPolicy) |hamis |
 
 Ezek a beállítások az `parameters.configuration` Indexelő definíciójában található objektumban használatosak. Ha például a lekérdezés időtúllépését 10 percre szeretné beállítani, akkor a következő konfigurációval hozza létre vagy frissítse az indexelő:
 
+```
     {
       ... other indexer definition properties
      "parameters" : {
             "configuration" : { "queryTimeout" : "00:10:00" } }
     }
+```
 
 ## <a name="faq"></a>GYIK
 
@@ -352,13 +374,13 @@ Attól függ. Egy tábla vagy nézet teljes indexeléséhez használhat másodla
 
 A növekményes indexeléshez az Azure Cognitive Search két változás-észlelési házirendet támogat: az SQL integrált változások nyomon követését és a magas vízjeleket.
 
-Írásvédett replikák esetén az SQL Database nem támogatja az integrált változások követését. Ezért magas vízjelekre vonatkozó házirendet kell használnia. 
+Írásvédett replikák esetén a SQL Database nem támogatja az integrált változások követését. Ezért magas vízjelekre vonatkozó házirendet kell használnia. 
 
 Standard Javaslatunk a ROWVERSION adattípusának használata a magas vízjelek oszlophoz. A ROWVERSION használata azonban a `MIN_ACTIVE_ROWVERSION` függvényre támaszkodik, amely csak olvasható replikák esetén nem támogatott. Ezért az indexelő egy elsődleges replikára kell irányítani, ha a ROWVERSION-t használja.
 
 Ha a ROWVERSION csak olvasható replikán kísérli meg használni, a következő hibaüzenet jelenik meg: 
 
-    "Using a rowversion column for change tracking is not supported on secondary (read-only) availability replicas. Please update the datasource and specify a connection to the primary availability replica.Current database 'Updateability' property is 'READ_ONLY'".
+"A Change Tracking ROWVERSION oszlopának használata nem támogatott a másodlagos (írásvédett) rendelkezésre állási replikák esetében. Frissítse az adatforrást, és adjon meg egy kapcsolódást az elsődleges rendelkezésre állási replikához. Az aktuális adatbázis "frissítés" tulajdonsága "READ_ONLY".
 
 **K: használhatok egy másik, nem ROWVERSION oszlopot a magas vízjelek változásának nyomon követéséhez?**
 

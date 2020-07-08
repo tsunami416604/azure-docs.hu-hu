@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 2df36d80aea34da1693cecde524d239abd2bb04a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8c5e384e85861cdced3ed6dbe60733128b499407
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82100243"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039007"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>LUIS Docker-tárolók telepítése és futtatása
 
@@ -26,16 +26,16 @@ A következő videó bemutatja, hogyan használhatja ezt a tárolót.
 
 [![Cognitive Services tárolók bemutatója](./media/luis-container-how-to/luis-containers-demo-video-still.png)](https://aka.ms/luis-container-demo)
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A LUIS-tároló futtatásához vegye figyelembe a következő előfeltételeket:
 
-|Kötelező|Cél|
+|Kötelező|Szerep|
 |--|--|
 |Docker-motor| A Docker-motornak telepítve kell lennie a [gazdagépen](#the-host-computer). A Docker csomagokat biztosít a Docker-környezet konfigurálásához [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) és [Linux](https://docs.docker.com/engine/installation/#supported-platforms) rendszereken. A Docker és a tárolók alapszintű ismertetéséért lásd a [Docker felhasználói útmutatóját](https://docs.docker.com/engine/docker-overview/).<br><br> A Docker-t úgy kell konfigurálni, hogy lehetővé tegye a tárolók számára az Azure-ba való kapcsolódást és a számlázási információk küldését. <br><br> **Windows rendszeren a**Docker-t is konfigurálni kell a Linux-tárolók támogatásához.<br><br>|
-|A Docker ismerete | Alapvető ismeretekkel kell rendelkeznie a Docker-fogalmakról, például a kibocsátásiegység-forgalmi jegyzékekről, a adattárakról, a tárolók és a `docker` tárolók lemezképéről, valamint az alapszintű parancsokról.|
+|A Docker ismerete | Alapvető ismeretekkel kell rendelkeznie a Docker-fogalmakról, például a kibocsátásiegység-forgalmi jegyzékekről, a adattárakról, a tárolók és a tárolók lemezképéről, valamint az alapszintű `docker` parancsokról.|
 |Azure `Cognitive Services` -erőforrás és Luis [csomagolt alkalmazás](luis-how-to-start-new-app.md) fájlja |A tároló használatához a következőket kell tennie:<br><br>* Egy _Cognitive Services_ Azure-erőforrás és a kapcsolódó számlázási kulcs a számlázási végpont URI-ja. Mindkét érték elérhető az erőforrás áttekintés és kulcsok oldalain, és a tároló indításához szükséges. <br>* Egy betanított vagy közzétett alkalmazás, amely csatlakoztatott bemenetként van csomagolva a tárolóhoz a hozzá tartozó alkalmazás-AZONOSÍTÓval. A csomagolt fájlt a LUIS portálról vagy a szerzői API-k használatával szerezheti be. Ha a [szerzői API](#authoring-apis-for-package-file)-kkal becsomagolta a Luis csomagolási alkalmazást, a _szerzői kulcsra_is szüksége lesz.<br><br>Ezek a követelmények a parancssori argumentumok átadására szolgálnak a következő változókra:<br><br>**{AUTHORING_KEY}**: ezzel a kulccsal lekérheti a csomagolt alkalmazást a felhőben található Luis szolgáltatásból, és feltöltheti a lekérdezési naplókat a felhőbe. A formátum `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.<br><br>**{APP_ID}**: ez az azonosító az alkalmazás kiválasztására szolgál. A formátum `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`.<br><br>**{API_KEY}**: Ez a kulcs a tároló elindítására szolgál. A végpont kulcsa két helyen található. Az első az _Cognitive Services_ erőforrás kulcsai listán szereplő Azure Portal. A végpont kulcsa a LUIS portálon is elérhető a kulcsok és a végpont beállításai lapon. Ne használja az alapszintű kulcsot.<br><br>**{ENDPOINT_URI}**: az Áttekintés lapon megadott végpont.<br><br>A [szerzői kulcs és a végpont kulcsa](luis-limits.md#key-limits) eltérő célokat szolgál. Ne használja szinonimaként. |
 
 [!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
@@ -62,17 +62,17 @@ Ez a tároló a beállítások minimális és ajánlott értékeit támogatja:
 * Minden mag legalább 2,6 gigahertz (GHz) vagy gyorsabb lehet.
 * TPS – tranzakció/másodperc
 
-Az alap és a memória a `--cpus` `docker run` parancs `--memory` részeként használt és beállításoknak felel meg.
+Az alap és a memória a `--cpus` `--memory` parancs részeként használt és beállításoknak felel meg `docker run` .
 
 ## <a name="get-the-container-image-with-docker-pull"></a>A tároló rendszerképének beolvasása a`docker pull`
 
-A [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) paranccsal töltheti le az `mcr.microsoft.com/azure-cognitive-services/luis` adattárból a tároló képét:
+A [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) paranccsal töltheti le az adattárból a tároló képét `mcr.microsoft.com/azure-cognitive-services/luis` :
 
 ```
 docker pull mcr.microsoft.com/azure-cognitive-services/luis:latest
 ```
 
-Az elérhető címkék teljes leírását, például az előző `latest` parancsban használt információt lásd: [Luis](https://go.microsoft.com/fwlink/?linkid=2043204) on Docker hub.
+Az elérhető címkék teljes leírását, például `latest` az előző parancsban használt információt lásd: [Luis](https://go.microsoft.com/fwlink/?linkid=2043204) on Docker hub.
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
@@ -89,7 +89,7 @@ Miután a tároló a [gazdagépen](#the-host-computer)található, a következő
 1. Ha végzett a tárolóval, [importálja a végponti naplókat](#import-the-endpoint-logs-for-active-learning) a Luis-portál kimeneti csatlakoztatásáról, és [állítsa le](#stop-the-container) a tárolót.
 1. Az alkalmazás fejlesztéséhez használja a LUIS Portal [aktív tanulását](luis-how-to-review-endpoint-utterances.md) a **végpontok áttekintése hosszúságú kimondott szöveg** oldalon.
 
-A tárolóban futó alkalmazás nem módosítható. A tárolóban lévő alkalmazás módosításakor [a Luis-portálon](https://www.luis.ai) , vagy a Luis [authoring API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f)-k használatával módosítania kell az alkalmazást a Luis szolgáltatásban. Ezután végezze el a betanítást és/vagy közzétételt, majd töltsön le egy új csomagot, majd futtassa újra a tárolót.
+A tárolóban futó alkalmazás nem módosítható. Az alkalmazás tárolóban való [módosításához a Luis-portálon](https://www.luis.ai) , vagy a Luis [authoring API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f)-k használatával kell módosítania az alkalmazást a Luis szolgáltatásban. Ezután végezze el a betanítást és/vagy közzétételt, majd töltsön le egy új csomagot, majd futtassa újra a tárolót.
 
 A tárolón belüli LUIS-alkalmazás nem exportálható vissza a LUIS szolgáltatásba. Csak a lekérdezési naplók tölthetők fel.
 
@@ -97,7 +97,7 @@ A tárolón belüli LUIS-alkalmazás nem exportálható vissza a LUIS szolgálta
 
 A LUIS-tárolónak egy betanított vagy közzétett LUIS-alkalmazást kell megadnia a felhasználói hosszúságú kimondott szöveg előrejelzési lekérdezései megválaszolásához. A LUIS-alkalmazás beszerzéséhez használja a betanított vagy a közzétett csomag API-t.
 
-Az alapértelmezett hely az a `input` alkönyvtár, amelyben a `docker run` parancsot futtatja.
+Az alapértelmezett hely az a `input` alkönyvtár, amelyben a parancsot futtatja `docker run` .
 
 Helyezze a csomagfájl egy könyvtárba, és hivatkozzon erre a könyvtárra a Docker-tároló futtatásakor bemeneti csatlakoztatásként.
 
@@ -109,7 +109,7 @@ A bemeneti csatlakoztatási könyvtár az alkalmazás **éles**, **előkészít�
 |--|--|--|--|
 |Verziószámmal|LETÖLTÉS, KÖZZÉTÉTEL|Csak tároló|`{APP_ID}_v{APP_VERSION}.gz`|
 |Előkészítés|LETÖLTÉS, KÖZZÉTÉTEL|Azure és Container|`{APP_ID}_STAGING.gz`|
-|Production|LETÖLTÉS, KÖZZÉTÉTEL|Azure és Container|`{APP_ID}_PRODUCTION.gz`|
+|Éles környezet|LETÖLTÉS, KÖZZÉTÉTEL|Azure és Container|`{APP_ID}_PRODUCTION.gz`|
 
 > [!IMPORTANT]
 > Ne nevezze át, módosítsa, írja felül vagy bontsa ki a LUIS-csomagok fájljait.
@@ -120,7 +120,7 @@ A LUIS-alkalmazás csomagolása előtt a következőkkel kell rendelkeznie:
 
 |Csomagolási követelmények|Részletek|
 |--|--|
-|Azure- _Cognitive Services_ erőforrás-példány|A támogatott régiók a következők:<br><br>USA nyugati régiója (`westus`)<br>Nyugat-Európa`westeurope`()<br>Kelet-Ausztrália (`australiaeast`)|
+|Azure- _Cognitive Services_ erőforrás-példány|A támogatott régiók a következők:<br><br>USA nyugati régiója ( `westus` )<br>Nyugat-Európa ( `westeurope` )<br>Kelet-Ausztrália ( `australiaeast` )|
 |Betanított vagy közzétett LUIS-alkalmazás|Nem [támogatott függőségek][unsupported-dependencies]nélkül. |
 |Hozzáférés a [gazdaszámítógép](#the-host-computer)fájlrendszeréhez |A gazdaszámítógépnek engedélyeznie kell egy [bemeneti csatlakoztatást](luis-container-configuration.md#mount-settings).|
 
@@ -196,9 +196,9 @@ A verzióval ellátott csomag letöltéséhez tekintse meg az [API dokumentáci�
 
 ## <a name="run-the-container-with-docker-run"></a>A tároló futtatása a`docker run`
 
-A tároló futtatásához használja a [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) parancsot. A `{ENDPOINT_URI}` és `{API_KEY}` értékek beszerzésével kapcsolatos részletekért tekintse meg a [szükséges paraméterek összegyűjtését](#gathering-required-parameters) ismertető témakört.
+A tároló futtatásához használja a [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) parancsot. A és értékek beszerzésével kapcsolatos részletekért tekintse meg a [szükséges paraméterek összegyűjtését](#gathering-required-parameters) ismertető témakört `{ENDPOINT_URI}` `{API_KEY}` .
 
-[Examples](luis-container-configuration.md#example-docker-run-commands) A `docker run` parancs például elérhető.
+[Examples](luis-container-configuration.md#example-docker-run-commands) A parancs például `docker run` elérhető.
 
 ```console
 docker run --rm -it -p 5000:5000 ^
@@ -212,9 +212,9 @@ Billing={ENDPOINT_URI} ^
 ApiKey={API_KEY}
 ```
 
-* Ez a példa a `C:` meghajtón lévő könyvtárat használja, hogy elkerülje az engedélyek ütközését a Windowson. Ha egy adott könyvtárat kell használnia bemeneti könyvtárként, előfordulhat, hogy meg kell adnia a Docker szolgáltatás engedélyét.
+* Ez a példa a meghajtón lévő könyvtárat használja `C:` , hogy elkerülje az engedélyek ütközését a Windowson. Ha egy adott könyvtárat kell használnia bemeneti könyvtárként, előfordulhat, hogy meg kell adnia a Docker szolgáltatás engedélyét.
 * Ne módosítsa az argumentumok sorrendjét, hacsak nem ismeri a Docker-tárolókat.
-* Ha más operációs rendszert használ, használja a megfelelő konzolt/terminált, a csatlakoztatások mappájának szintaxisát, valamint a rendszer vonal folytatási karakterét. Ezek a példák egy sor folytatási karakterrel `^`rendelkező Windows-konzolt feltételeznek. Mivel a tároló egy Linux operációs rendszer, a cél csatlakoztatása a Linux-stílusú mappa szintaxisát használja.
+* Ha más operációs rendszert használ, használja a megfelelő konzolt/terminált, a csatlakoztatások mappájának szintaxisát, valamint a rendszer vonal folytatási karakterét. Ezek a példák egy sor folytatási karakterrel rendelkező Windows-konzolt feltételeznek `^` . Mivel a tároló egy Linux operációs rendszer, a cél csatlakoztatása a Linux-stílusú mappa szintaxisát használja.
 
 A parancs a következőket hajtja végre:
 
@@ -228,8 +228,8 @@ A parancs a következőket hajtja végre:
 További [példák](luis-container-configuration.md#example-docker-run-commands) a `docker run` parancsra.
 
 > [!IMPORTANT]
-> A `Eula`tároló `Billing`futtatásához `ApiKey` meg kell adni a, a és a beállításokat. Ellenkező esetben a tároló nem indul el.  További információ: [számlázás](#billing).
-> A ApiKey értéke a LUIS portál **Azure Resources** lapján található `Cognitive Services` **kulcs** , amely az Azure Resource Keys oldalon is elérhető.
+> A `Eula` , a `Billing` és a `ApiKey` beállításokat meg kell adni a tároló futtatásához; egyéb esetben a tároló nem indul el.  További információ: [számlázás](#billing).
+> A ApiKey értéke a LUIS portál **Azure Resources** lapján található **kulcs** , amely az Azure `Cognitive Services` Resource Keys oldalon is elérhető.
 
 [!INCLUDE [Running multiple containers on the same host](../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
 
@@ -241,7 +241,7 @@ Az API v2 és [v3](luis-migration-api-v3.md) verziója is elérhető a tárolób
 
 A tároló REST-alapú lekérdezés-előrejelzési végpont API-kat biztosít. A közzétett (átmeneti vagy éles) alkalmazások végpontjai _eltérő_ útvonalon rendelkeznek, mint a verziószámok a verzióval ellátott alkalmazások esetében.
 
-A tároló API `http://localhost:5000`-k esetében használja a gazdagépet.
+A tároló API-k esetében használja a gazdagépet `http://localhost:5000` .
 
 # <a name="v3-prediction-endpoint"></a>[V3 előrejelzési végpont](#tab/v3)
 
@@ -252,7 +252,7 @@ A tároló API `http://localhost:5000`-k esetében használja a gazdagépet.
 
 A lekérdezési paraméterek a lekérdezési válaszban megadhatják, hogy hogyan és mit ad vissza:
 
-|Lekérdezési paraméter|Típus|Cél|
+|Lekérdezési paraméter|Típus|Szerep|
 |--|--|--|
 |`query`|sztring|A felhasználó megnyilatkozása.|
 |`verbose`|logikai|Logikai érték, amely azt jelzi, hogy az összes metaadatot vissza kell-e adni az előre jelzett modellekhez. Az alapértelmezett érték a false (hamis).|
@@ -268,7 +268,7 @@ A lekérdezési paraméterek a lekérdezési válaszban megadhatják, hogy hogya
 
 A lekérdezési paraméterek a lekérdezési válaszban megadhatják, hogy hogyan és mit ad vissza:
 
-|Lekérdezési paraméter|Típus|Cél|
+|Lekérdezési paraméter|Típus|Szerep|
 |--|--|--|
 |`q`|sztring|A felhasználó megnyilatkozása.|
 |`timezoneOffset`|szám|A timezoneOffset lehetővé teszi az előre elkészített entitások datetimeV2 által használt [időzóna módosítását](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) .|
@@ -294,7 +294,7 @@ curl -G \
 "http://localhost:5000/luis/v3.0/apps/{APP_ID}/slots/production/predict"
 ```
 
-Az **átmeneti** környezet lekérdezéséhez cserélje le `production` az útvonalat a következőre: `staging`
+Az **átmeneti** környezet lekérdezéséhez cserélje le az útvonalat a `production` következőre `staging` :
 
 `http://localhost:5000/luis/v3.0/apps/{APP_ID}/slots/staging/predict`
 
@@ -334,7 +334,7 @@ A verzió neve legfeljebb 10 karakterből állhat, és csak az URL-címekben eng
 
 ## <a name="import-the-endpoint-logs-for-active-learning"></a>Az aktív tanuláshoz tartozó végponti naplók importálása
 
-Ha a LUIS-tárolóhoz kimeneti csatlakoztatás van megadva, a rendszer az App Query naplófájljait a kimeneti könyvtárba menti, `{INSTANCE_ID}` ahol a a tároló azonosítója. Az alkalmazás-lekérdezési napló tartalmazza a LUIS-tárolóba küldött egyes előrejelzési lekérdezések lekérdezését, válaszát és időbélyegét.
+Ha a LUIS-tárolóhoz kimeneti csatlakoztatás van megadva, a rendszer az App Query naplófájljait a kimeneti könyvtárba menti, ahol `{INSTANCE_ID}` a a tároló azonosítója. Az alkalmazás-lekérdezési napló tartalmazza a LUIS-tárolóba küldött egyes előrejelzési lekérdezések lekérdezését, válaszát és időbélyegét.
 
 A következő helyen a tároló naplófájljainak beágyazott címtár-szerkezete látható.
 ```

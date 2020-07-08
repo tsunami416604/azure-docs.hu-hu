@@ -5,14 +5,14 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/29/2019
-ms.openlocfilehash: b9a855a89a37cde0be3c30b2428c32db361aa2e8
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e00ab059c68d7a3f2288d94894199773cab63ac5
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021687"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039296"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job"></a>Azure Stream Analytics feladatokhoz tartozó SQL Database hivatkozási adatainak használata
 
@@ -69,7 +69,7 @@ A következő lépésekkel adhatja hozzá a Azure SQL Databaset a Visual Studio 
 
 ### <a name="create-a-sql-database-table"></a>SQL Database tábla létrehozása
 
-A SQL Server Management Studio használatával hozzon létre egy táblázatot a hivatkozási adatai tárolásához. A részletekért lásd: [az első Azure SQL Database-adatbázis megtervezése a SSMS használatával](../azure-sql/database/design-first-database-tutorial.md) .
+A SQL Server Management Studio használatával hozzon létre egy táblázatot a hivatkozási adatai tárolásához. A részletekért lásd: [az első Azure SQL Database megtervezése a SSMS használatával](../azure-sql/database/design-first-database-tutorial.md) .
 
 Az alábbi példában a következő utasításban használt példában szereplő táblázat jött létre:
 
@@ -99,13 +99,13 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
 
    ![Új Stream Analytics bevitel a Visual Studióban](./media/sql-reference-data/stream-analytics-vs-input.png)
 
-2. Kattintson duplán a **megoldáskezelő**a **input. JSON** fájlra.
+2. Kattintson duplán a **Input.js** elemre a **megoldáskezelő**.
 
 3. Töltse ki a **stream Analytics bemeneti konfigurációját**. Válassza ki az adatbázis nevét, a kiszolgáló nevét, a frissítés típusát és a frissítési gyakoriságot. A frissítési gyakoriságot a formátumban kell megadni `DD:HH:MM` .
 
    ![Stream Analytics bemeneti konfiguráció a Visual Studióban](./media/sql-reference-data/stream-analytics-vs-input-config.png)
 
-   Ha a "végrehajtás csak egyszer" vagy a "végrehajtás rendszeresen" lehetőséget választja, a rendszer egy **[bemeneti alias]** nevű SQL Codebehind fájlt hoz létre. a Snapshot. SQL a **bemeneti. JSON** fájl csomópont alatt jön létre a projektben.
+   Ha a "végrehajtás csak egyszer" vagy a "végrehajtás rendszeresen" lehetőséget választja, a rendszer egy **[bemeneti alias]** nevű SQL Codebehind fájlt hoz létre a projektben a **Input.js** fájl csomóponton.
 
    ![A Visual Studio mögötti bemeneti kód](./media/sql-reference-data/once-or-periodically-codebehind.png)
 
@@ -115,11 +115,11 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
 
 4. Nyissa meg az SQL-fájlt a szerkesztőben, és írja be az SQL-lekérdezést.
 
-5. Ha a Visual Studio 2019-at használja, és telepítette SQL Server adateszközöket, a **végrehajtás**gombra kattintva tesztelheti a lekérdezést. A varázsló ablaka az SQL-adatbázishoz való kapcsolódáshoz nyújt segítséget, a lekérdezési eredmény pedig az alul található ablakban fog megjelenni.
+5. Ha a Visual Studio 2019-at használja, és telepítette SQL Server adateszközöket, a **végrehajtás**gombra kattintva tesztelheti a lekérdezést. A varázsló ablakában megjelenik a SQL Databasehoz való kapcsolódás, és a lekérdezés eredménye a lenti ablakban jelenik meg.
 
 ### <a name="specify-storage-account"></a>Storage-fiók meghatározása
 
-Nyissa meg az **JobConfig. JSON** fájlt, és határozza meg az SQL-referenciák pillanatképeit tároló Storage-fiókot.
+Nyissa meg **JobConfig.jsa** (z) lehetőséget, hogy megadja a Storage-FIÓKOT az SQL-hivatkozási Pillanatképek tárolására.
 
    ![Stream Analytics feladatok konfigurálása a Visual Studióban](./media/sql-reference-data/stream-analytics-job-config.png)
 
@@ -147,7 +147,7 @@ A különbözeti lekérdezés használatakor a rendszer [Azure SQL Database idei
    ```
 2. A pillanatkép-lekérdezés szerzője. 
 
-   A ** \@ snapshotTime** paraméter használatával utasítsa a stream Analytics futtatókörnyezetet az SQL Database ideiglenes táblából származó, a rendszeridőben érvényes hivatkozási adatok beszerzésére. Ha nem adja meg ezt a paramétert, akkor egy pontatlan alapszintű hivatkozási adat beszerzésére van szükség az órajel-eltérések miatt. Alább látható egy példa a teljes pillanatkép-lekérdezésre:
+   A ** \@ snapshotTime** paraméter használatával utasítsa a stream Analytics futtatókörnyezetet, hogy a rendszeridőben érvényes SQL Database ideiglenes táblából származó hivatkozási adatkészletet szerezze be. Ha nem adja meg ezt a paramétert, akkor egy pontatlan alapszintű hivatkozási adat beszerzésére van szükség az órajel-eltérések miatt. Alább látható egy példa a teljes pillanatkép-lekérdezésre:
    ```SQL
       SELECT DeviceId, GroupDeviceId, [Description]
       FROM dbo.DeviceTemporal
@@ -156,7 +156,7 @@ A különbözeti lekérdezés használatakor a rendszer [Azure SQL Database idei
  
 2. A különbözeti lekérdezés szerzője. 
    
-   Ez a lekérdezés lekérdezi az SQL-adatbázis összes olyan sorát, amelyet a rendszer a kezdési időpontban, a ** \@ deltaStartTime**, valamint a befejezési idő ** \@ deltaEndTime**belül beszúrt vagy törölt. A különbözeti lekérdezésnek a pillanatkép-lekérdezéssel megegyező oszlopokat, valamint az oszlop **_műveletét_** kell visszaadnia. Ez az oszlop határozza meg, hogy a sor be van-e beszúrva vagy törölve a ** \@ deltaStartTime** és a ** \@ deltaEndTime**között. Az eredményül kapott sorok **1** -ként vannak megjelölve, ha a rekordok be lettek helyezve, vagy **2** Ha törölve lettek. A lekérdezésnek hozzá kell adnia egy **vízjelet** is a SQL Server oldalról, hogy a különbözeti időszak összes frissítése megfelelően rögzítve legyen. A **vízjel** nélküli különbözeti lekérdezés helytelen hivatkozási adatkészletet eredményezhet.  
+   Ez a lekérdezés lekérdezi a SQL Database összes olyan sorát, amelyeket a rendszer a kezdési időpontban, a ** \@ deltaStartTime**és a befejezési idő ** \@ deltaEndTime**belül beszúrt vagy törölt. A különbözeti lekérdezésnek a pillanatkép-lekérdezéssel megegyező oszlopokat, valamint az oszlop **_műveletét_** kell visszaadnia. Ez az oszlop határozza meg, hogy a sor be van-e beszúrva vagy törölve a ** \@ deltaStartTime** és a ** \@ deltaEndTime**között. Az eredményül kapott sorok **1** -ként vannak megjelölve, ha a rekordok be lettek helyezve, vagy **2** Ha törölve lettek. A lekérdezésnek hozzá kell adnia egy **vízjelet** is a SQL Server oldalról, hogy a különbözeti időszak összes frissítése megfelelően rögzítve legyen. A **vízjel** nélküli különbözeti lekérdezés helytelen hivatkozási adatkészletet eredményezhet.  
 
    A frissített rekordok esetében az időbeli táblázat a beszúrási és törlési művelet rögzítésével végzi a könyvelést. A Stream Analytics futtatókörnyezet Ezután alkalmazza a különbözeti lekérdezés eredményét az előző pillanatképre, hogy a hivatkozási adatok naprakészek maradjanak. A különbözeti lekérdezés példája a következő:
 
@@ -183,12 +183,12 @@ A Stream Analytics-feladatokban nem használhatók további [díjszabási egysé
 
 **Hogyan tudja, hogy a rendszer az SQL DB-ből kérdezi le, és felhasználja a Azure Stream Analytics feladatokban?**
 
-A logikai név alapján két mérőszám van szűrve (a metrikák Azure Portalon), amelyet az SQL Database-alapú adatbevitel állapotának figyelésére használhat.
+A logikai név alapján két mérőszám van szűrve (a metrikák Azure Portal alatt), amelyek segítségével figyelheti a SQL Database-hivatkozás adatbevitelének állapotát.
 
-   * InputEvents: Ez a metrika az SQL Database-alapú hivatkozási adatkészletből betöltött rekordok számát méri.
+   * InputEvents: Ez a metrika a SQL Database hivatkozási adatkészletből betöltött rekordok számát méri.
    * InputEventBytes: Ez a metrika a Stream Analytics feladathoz tartozó memóriában betöltött hivatkozási adatok pillanatképének méretét méri. 
 
-Mindkét metrika kombinációja felhasználható annak a következtetésére, hogy a művelet lekérdezi az SQL Database-t, és beolvassa a hivatkozási adatkészletet, majd betölti azt a memóriába.
+Mindkét metrika kombinációja felhasználható annak a megállapítására, hogy a feladatnak van-e lekérdezése SQL Database a hivatkozási adathalmaz beolvasásához, majd a memóriába való betöltéséhez.
 
 **Szükség van-e a Azure SQL Database speciális típusára?**
 
@@ -198,7 +198,7 @@ Azure Stream Analytics bármilyen típusú Azure SQL Databasevel működni fog. 
 
 A Stream Analytics garantáltan pontosan egyszer dolgozza fel az eseményeket, és legalább egyszer kézbesíti az eseményeket. Azokban az esetekben, amikor az átmeneti problémák hatással vannak a feladatra, az állapot visszaállításához kis mennyiségű visszajátszás szükséges. A visszajátszás engedélyezéséhez az szükséges, hogy a pillanatképek egy Azure Storage-fiókban legyenek tárolva. Az ellenőrzőpontok újrajátszása szolgáltatással kapcsolatos további információkért lásd: [ellenőrzőpontok és Replay fogalmak Azure stream Analytics feladatokban](stream-analytics-concepts-checkpoint-replay.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A Stream Analytics-keresések hivatkozási adatainak használata](stream-analytics-use-reference-data.md)
 * [Gyors útmutató: Stream Analytics-feladat létrehozása a Visual Studio Azure Stream Analytics eszközeinek használatával](stream-analytics-quick-create-vs.md)

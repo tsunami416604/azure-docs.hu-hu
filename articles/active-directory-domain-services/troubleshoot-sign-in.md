@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 10/02/2019
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 9b85859e6294fa24731bc13e9edd5fe2610e8fb6
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: d48c5f94de7aa663f618401e13fdc19777d42095
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84733959"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039653"
 ---
 # <a name="troubleshoot-account-sign-in-problems-with-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services felügyelt tartományhoz tartozó bejelentkezési problémák elhárítása
 
@@ -30,11 +30,11 @@ Egy olyan felhasználói fiók leggyakoribb oka, amely nem tud bejelentkezni egy
 
 ## <a name="account-isnt-synchronized-into-azure-ad-ds-yet"></a>A fiók még nincs szinkronizálva az Azure AD DS
 
-A címtár méretétől függően eltarthat egy ideig, amíg a felhasználói fiókok és a hitelesítőadat-kivonatok elérhetők lesznek az Azure AD DSban. Nagyméretű könyvtárak esetén ez az Azure AD-ből származó első egyirányú szinkronizálás néhány órát és akár két napot is igénybe vehet. Győződjön meg arról, hogy elég sokáig vár a hitelesítés újrapróbálkozása előtt.
+A címtár méretétől függően eltarthat egy ideig, amíg a felhasználói fiókok és a hitelesítő adatok kivonatai elérhetők lesznek a felügyelt tartományokban. Nagyméretű könyvtárak esetén ez az Azure AD-ből származó első egyirányú szinkronizálás néhány órát és akár két napot is igénybe vehet. Győződjön meg arról, hogy elég sokáig vár a hitelesítés újrapróbálkozása előtt.
 
 Olyan hibrid környezetek esetén, amelyeket a felhasználó Azure AD Connect a helyszíni címtáradatok Azure AD-ba való szinkronizálására, győződjön meg arról, hogy a Azure AD Connect legújabb verzióját futtatja, és az [azure AD DS engedélyezése után teljes szinkronizálást konfigurált Azure ad Connect][azure-ad-connect-phs]. Ha letiltja az Azure AD DS, majd újra engedélyezi, kövesse az alábbi lépéseket.
 
-Ha továbbra is problémákba ütközik a Azure AD Connect használatával nem szinkronizált fiókok esetében, indítsa újra a Azure AD-szinkronizáló szolgáltatást. Nyisson meg egy parancssori ablakot a Azure AD Connect telepített számítógépen, és futtassa a következő parancsokat:
+Ha továbbra is problémákba ütközik a Azure AD Connect használatával nem szinkronizált fiókok esetében, indítsa újra a Azure AD-szinkronizáló szolgáltatást. Nyisson meg egy parancssori ablakot a Azure AD Connect telepített számítógépen, majd futtassa a következő parancsokat:
 
 ```console
 net stop 'Microsoft Azure AD Sync'
@@ -47,7 +47,7 @@ Az Azure AD az NTLM-vagy Kerberos-hitelesítéshez szükséges formátumban nem 
 
 ### <a name="hybrid-environments-with-on-premises-synchronization"></a>Hibrid környezetek helyszíni szinkronizálással
 
-A helyszíni AD DS-környezetből Azure AD Connectt használó hibrid környezetek esetén helyileg létrehozhatja és szinkronizálhatja a szükséges NTLM-vagy Kerberos-jelszó kivonatait az Azure AD-ben. A felügyelt tartomány létrehozása után [engedélyezze a jelszó-kivonatok szinkronizálását Azure Active Directory Domain Services][azure-ad-connect-phs]. A jelszó-kivonat szinkronizációs lépése nélkül nem tud bejelentkezni egy fiókba az Azure AD DS használatával. Ha letiltja az Azure AD DS, majd újra engedélyezi, ezeket a lépéseket újra végre kell hajtania.
+A helyszíni AD DS-környezetből Azure AD Connectt használó hibrid környezetek esetén helyileg létrehozhatja és szinkronizálhatja a szükséges NTLM-vagy Kerberos-jelszó kivonatait az Azure AD-ben. A felügyelt tartomány létrehozása után [engedélyezze a jelszó-kivonatok szinkronizálását Azure Active Directory Domain Services][azure-ad-connect-phs]. A jelszó-kivonatolási szinkronizálás lépésének befejezése nélkül nem tud bejelentkezni a fiókba a felügyelt tartomány használatával. Ha letiltja az Azure AD DS, majd újra engedélyezi, ezeket a lépéseket újra végre kell hajtania.
 
 További információkért lásd: [a jelszó-kivonatolási szinkronizálás működése az Azure ad DSban][phs-process].
 
@@ -64,7 +64,7 @@ A helyszíni szinkronizálás nélküli felügyelt tartományoknak, csak az Azur
 
 ## <a name="the-account-is-locked-out"></a>A fiók ki van zárva
 
-Az Azure AD DSban lévő felhasználói fiók ki van zárva, ha a sikertelen bejelentkezési kísérletek meghatározott küszöbértéke teljesül. Ez a fiókzárolási viselkedés úgy lett kialakítva, hogy megvédje a nem kötelezően kikényszerített, automatikus digitális támadásra utaló kísérleteket.
+Egy felügyelt tartomány felhasználói fiókja zárolva van, ha a sikertelen bejelentkezési kísérletek meghatározott küszöbértéke teljesül. Ez a fiókzárolási viselkedés úgy lett kialakítva, hogy megvédje a nem kötelezően kikényszerített, automatikus digitális támadásra utaló kísérleteket.
 
 Alapértelmezés szerint, ha 2 percen belül 5 hibás jelszóval próbálkozik, a fiók 30 percig ki lesz zárva.
 

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 9a1a652c19d624d6faf941de84bcf74dd8613152
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 10eec1527fb0ac5109822da398642613219771f6
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84734249"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039840"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-active-directory-domain-services-managed-domain"></a>Az objektumok és a hitelesítő adatok szinkronizálása egy Azure Active Directory Domain Services felügyelt tartományban
 
@@ -61,15 +61,17 @@ Az alábbi táblázat azt szemlélteti, hogy az Azure AD-beli felhasználói obj
 |:--- |:--- |
 | accountEnabled |userAccountControl (beállítja vagy törli a ACCOUNT_DISABLED bit) |
 | city |l |
-| ország |Co |
+| ország |co |
 | Részleg |Részleg |
 | displayName |displayName |
+| employeedId |Alkalmazottkód |
 | Érték facsimiletelephonenumber |Érték facsimiletelephonenumber |
 | givenName |givenName |
 | Beosztás |cím |
 | Levelezés |Levelezés |
 | mailNickname |msDS-AzureADMailNickname |
 | mailNickname |SAMAccountName (esetenként automatikusan létrehozott) |
+| manager |manager |
 | mobil |mobil |
 | ObjectId |msDS-AzureADObjectId |
 | onPremiseSecurityIdentifier |sidHistory |
@@ -77,6 +79,7 @@ Az alábbi táblázat azt szemlélteti, hogy az Azure AD-beli felhasználói obj
 | physicalDeliveryOfficeName |physicalDeliveryOfficeName |
 | Irányítószám |Irányítószám |
 | preferredLanguage |preferredLanguage |
+| proxyAddresses | proxyAddresses |
 | state |st |
 | streetAddress |streetAddress |
 | surname |sn |
@@ -95,6 +98,7 @@ Az alábbi táblázat azt szemlélteti, hogy az Azure AD-beli csoport objektumai
 | mailNickname |msDS-AzureADMailNickname |
 | ObjectId |msDS-AzureADObjectId |
 | onPremiseSecurityIdentifier |sidHistory |
+| proxyAddresses | proxyAddresses |
 | securityEnabled |groupType |
 
 ## <a name="synchronization-from-on-premises-ad-ds-to-azure-ad-and-azure-ad-ds"></a>Helyszíni AD DS szinkronizálása az Azure AD-be és az Azure-ba AD DS
