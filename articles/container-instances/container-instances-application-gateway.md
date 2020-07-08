@@ -4,10 +4,9 @@ description: Hozzon létre egy tároló csoportot egy virtuális hálózatban, �
 ms.topic: article
 ms.date: 03/16/2020
 ms.openlocfilehash: a27cf20b7d04fedb0b9e0ab408de24d37f2935c7
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84299162"
 ---
 # <a name="expose-a-static-ip-address-for-a-container-group"></a>Statikus IP-cím közzététele egy tároló csoport számára
@@ -71,7 +70,7 @@ az network public-ip create \
 
 A következő az [Container Create][az-container-create] paranccsal hozzon létre egy tároló csoportot az előző lépésben konfigurált virtuális hálózaton. 
 
-A csoport a *myACISubnet* alhálózaton van üzembe helyezve, és a *appcontainer* nevű egyetlen példányt tartalmaz, amely lekéri a `aci-helloworld` lemezképet. Ahogy az a dokumentáció más cikkeiben is látható, ez a rendszerkép egy, a Node. js-ben írt kisméretű webalkalmazást csomagol, amely egy statikus HTML-oldalt szolgál ki. 
+A csoport a *myACISubnet* alhálózaton van üzembe helyezve, és a *appcontainer* nevű egyetlen példányt tartalmaz, amely lekéri a `aci-helloworld` lemezképet. Ahogy az a dokumentáció más cikkeiben is látható, ez a rendszerkép egy olyan Node.js írt kisméretű webalkalmazást csomagol, amely egy statikus HTML-oldalt szolgál ki. 
 
 ```azurecli
 az container create \

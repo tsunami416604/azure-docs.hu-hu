@@ -13,10 +13,9 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: dabaecfd31ac9ec6250e7b482fde7699a13df044
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84266593"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD-hitelesítési és-engedélyezési hibakódok
@@ -60,7 +59,7 @@ Itt látható egy példa a hibaüzenetre:
 
 A `error` mezőnek több lehetséges értéke van – tekintse át a protokoll dokumentációs hivatkozásait és a OAuth 2,0 specifikációkat, hogy többet tudjon meg az adott hibákról (például `authorization_pending` az [eszköz kódjának folyamatában](v2-oauth2-device-code.md)), és hogyan reagáljon rájuk.  Néhány gyakori érték itt látható:
 
-| Hibakód         | Leírás        | Ügyfél művelete    |
+| Hibakód         | Description        | Ügyfél művelete    |
 |--------------------|--------------------|------------------|
 | `invalid_request`  | Protokollhiba, például hiányzó kötelező paraméter. | Javítsa ki és küldje el újra a kérelmet.|
 | `invalid_grant`    | Bizonyos hitelesítési anyagok (Auth-kód, frissítési token, hozzáférési jogkivonat, PKCE Challenge) érvénytelenek voltak, nem elemezhető, hiányzik vagy egyéb módon használhatatlan | Új engedélyezési kód beszerzéséhez próbáljon ki egy új kérelmet a `/authorize` végponthoz.  Érdemes áttekinteni és érvényesíteni az alkalmazás által használt protokollokat. |
@@ -78,7 +77,7 @@ Keresse meg a visszaadott hibakód numerikus részét.  Ha például a "AADSTS16
 
 ## <a name="aadsts-error-codes"></a>AADSTS-hibakódok
 
-| Hiba | Leírás |
+| Hiba | Description |
 |---|---|
 | AADSTS16000 | SelectUserAccount – ez az Azure AD által kiváltott megszakítás, ami olyan felhasználói felületet eredményez, amely lehetővé teszi a felhasználó számára, hogy több érvényes SSO-munkamenet közül válasszon. Ez a hiba meglehetősen gyakori, és ha meg van adva, visszatérhet az alkalmazáshoz `prompt=none` . |
 | AADSTS16001 | UserAccountSelectionInvalid – ez a hiba akkor jelenik meg, ha a felhasználó egy olyan csempére kattint, amelyet a munkamenetben a logika elutasította. Ha aktiválódik, ez a hiba lehetővé teszi a felhasználó számára a helyreállítást a csempék/munkamenetek frissített listájából, vagy egy másik fiók kiválasztásával. Ez a hiba a kód hibája vagy a versenyhelyzet miatt fordulhat elő. |
@@ -308,7 +307,7 @@ Keresse meg a visszaadott hibakód numerikus részét.  Ha például a "AADSTS16
 | AADSTS221000 | DeviceOnlyTokensNotSupportedByResource – az erőforrás nincs konfigurálva csak eszköz-tokenek fogadására. |
 | AADSTS240001 | BulkAADJTokenUnauthorized – a felhasználónak nincs engedélye az eszközök regisztrálására az Azure AD-ben. |
 | AADSTS240002 | RequiredClaimIsMissing – a id_token nem használható `urn:ietf:params:oauth:grant-type:jwt-bearer` támogatásként.|
-| AADSTS530032 | BlockedByConditionalAccessOnSecurityPolicy – a bérlői rendszergazda olyan biztonsági szabályzatot állított be, amely blokkolja ezt a kérelmet. Ellenőrizze a bérlő szintjén definiált biztonsági házirendeket annak megállapításához, hogy a kérés megfelel-e a szabályzat követelményeinek. |
+| AADSTS530032 | BlockedByConditionalAccessOnSecurityPolicy – a bérlői rendszergazda olyan biztonsági szabályzatot állított be, amely blokkolja ezt a kérelmet. Ellenőrizze a bérlő szintjén definiált biztonsági szabályzatokat annak megállapításához, hogy a kérés megfelel-e a szabályzatkövetelményeknek. |
 | AADSTS700016 | UnauthorizedClient_DoesNotMatchRequest – az alkalmazás nem található a címtárban/bérlőben. Ez akkor fordulhat elő, ha az alkalmazást nem a bérlő rendszergazdája telepítette, vagy nem fogadta el egy felhasználó sem a bérlőben. Előfordulhat, hogy helytelenül konfigurálta az alkalmazás azonosítóját, vagy rossz bérlőre küldte a hitelesítési kérést. |
 | AADSTS700020 | InteractionRequired – a hozzáférési engedélyhez interakció szükséges. |
 | AADSTS700022 | InvalidMultipleResourcesScope – a bemeneti paraméter hatóköréhez megadott érték érvénytelen, mert egynél több erőforrást tartalmaz. |

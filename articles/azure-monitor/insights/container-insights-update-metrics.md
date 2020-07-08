@@ -4,10 +4,9 @@ description: Ez a cikk azt ismerteti, hogyan frissítheti Azure Monitor a tárol
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.openlocfilehash: d299fc5e6b0c41188fac1fa19bb66387263c12e9
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84298261"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>A tárolókhoz készült Azure Monitor frissítése a metrikák engedélyezéséhez
@@ -90,7 +89,7 @@ A következő lépésekkel frissítheti az előfizetéséhez tartozó adott für
 
 A következő lépések végrehajtásával frissítheti az előfizetésben lévő összes fürtöt a Azure PowerShell használatával.
 
-1. [Töltse le](https://github.com/microsoft/OMS-docker/blob/ci_feature_prod/docs/aks/mdmonboarding/mdm_onboarding_atscale.ps1) a **mdm_onboarding_atscale. ps1** szkriptet, és mentse egy helyi mappába a GitHub-adattárból.
+1. [Töltse le](https://github.com/microsoft/OMS-docker/blob/ci_feature_prod/docs/aks/mdmonboarding/mdm_onboarding_atscale.ps1) a **mdm_onboarding_atscale.ps1** -szkriptet, és mentse egy helyi mappába a GitHub-adattárból.
 2. Futtassa a következő parancsot a Azure PowerShell használatával.  Szerkessze a **subscriptionId** értékét az AK-fürt **AK-áttekintés** oldalának értékével.
 
     ```powershell
@@ -106,7 +105,7 @@ A következő lépések végrehajtásával frissítheti az előfizetésben lév�
 
 A következő lépések végrehajtásával frissítheti egy adott fürtöt a Azure PowerShell használatával.
 
-1. [Töltse le](https://github.com/microsoft/OMS-docker/blob/ci_feature_prod/docs/aks/mdmonboarding/mdm_onboarding.ps1) a **mdm_onboarding. ps1** szkriptet, és mentse egy helyi mappába a GitHub-adattárból.
+1. [Töltse le](https://github.com/microsoft/OMS-docker/blob/ci_feature_prod/docs/aks/mdmonboarding/mdm_onboarding.ps1) a **mdm_onboarding.ps1** -szkriptet, és mentse egy helyi mappába a GitHub-adattárból.
 
 2. Futtassa a következő parancsot a Azure PowerShell használatával. Szerkessze a **subscriptionId**, a **ResourceGroupName**és a **clusterName** értékeit az AK-fürt **AK-áttekintés** lapján található értékek használatával.
 

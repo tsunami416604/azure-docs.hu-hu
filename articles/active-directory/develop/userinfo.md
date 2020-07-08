@@ -14,10 +14,9 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: 08386e2c54a45fe4a6e35ce6d7ebb51145827a6d
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84268533"
 ---
 # <a name="microsoft-identity-platform-userinfo-endpoint"></a>Microsoft Identity platform UserInfo-végpont
@@ -48,7 +47,7 @@ A UserInfo API meghívásához használja az alábbi [OIDC-engedélyeket](v2-per
 |:--------------------|:---------------------------------------------------------|
 |Delegált (munkahelyi vagy iskolai fiók) | OpenID (kötelező), profil, e-mail |
 |Delegált (személyes Microsoft-fiók) | OpenID (kötelező), profil, e-mail |
-|Alkalmazás | Nem alkalmazható |
+|Alkalmazás | Nem értelmezhető |
 
 > [!TIP]
 > Másolja ezt az URL-címet a böngészőjében, és szerezzen be egy tokent a UserInfo-végponthoz, valamint egy [azonosító jogkivonatot](id-tokens.md) , és cserélje le az ügyfél-azonosítót és az ÁTirányítási URI-t. Vegye figyelembe, hogy csak az OpenID vagy Graph hatókörökhöz kér hatókört, és semmi mást sem.  Erre azért van szükség, mert az ugyanazon jogkivonat-kérelemben szereplő két különböző erőforráshoz nem kérhet engedélyeket.

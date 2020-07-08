@@ -6,10 +6,9 @@ ms.topic: conceptual
 description: Ismerteti azokat a folyamatokat, amelyekkel a Power Azure dev Spaces
 keywords: Azure dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók
 ms.openlocfilehash: dca9f1246a093471cd9538d010bf78116be1b3c7
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84307367"
 ---
 # <a name="how-azure-dev-spaces-works"></a>Az Azure Dev Spaces működése
@@ -22,13 +21,13 @@ Az Azure dev Spaces számos lehetőséget kínál a Kubernetes-alkalmazások gyo
 
 Az Azure dev Spaces szolgáltatás csökkenti a Kubernetes-alkalmazás fejlesztését, tesztelését és iterációját az AK-fürt környezetében. Ez a csökkentési erőfeszítések lehetővé teszik a fejlesztők számára, hogy alkalmazásaikat üzleti logikára összpontosítsanak, és nem konfigurálja a szolgáltatásaikat a Kubernetes-ben való futtatásra.
 
-### <a name="local-process-with-kubernetes"></a>Helyi folyamat Kubernetes
+### <a name="local-process-with-kubernetes"></a>Helyi folyamat a Kubernetesszel
 
 A Kubernetes helyi folyamatával összekapcsolhatja a fejlesztői számítógépet a Kubernetes-fürttel, így a kódot futtathatja és hibakeresést végezhet a fejlesztői számítógépen, mintha a fürtön futna. Az Azure dev Spaces átirányítja a forgalmat a csatlakoztatott fürt között úgy, hogy egy olyan Pod-t futtat a fürtön, amely távoli ügynökként működik a fejlesztői számítógép és a fürt közötti forgalom átirányításához. Ez a forgalom átirányítása lehetővé teszi a fürtön futó fejlesztői számítógép és szolgáltatások programkódjának a kommunikációt, mintha ugyanabban a fürtben lennének. A fejlesztői számítógép Kubernetes-fürthöz való csatlakoztatásával kapcsolatos további információkért tekintse meg a [helyi folyamat és a Kubernetes működése][how-it-works-local-process-kubernetes]című témakört.
 
 ### <a name="run-your-code-in-aks"></a>A kód futtatása AK-ban
 
-Amellett, hogy átirányítja a forgalmat a fejlesztői számítógép és az AK-fürt között, az Azure dev Spaces használatával konfigurálhatja és gyorsan futtathatja a kódot az AK-ban. A Visual Studióban, a Visual Studio Code-ban vagy az Azure dev Spaces CLI-vel az Azure dev Spaces feltölti a kódot a fürtbe, majd felépíti és futtatja azt. Az Azure dev Spaces képes intelligensen szinkronizálni a kód módosításait, és újraindítani a szolgáltatást, hogy szükség szerint tükrözze a módosításokat. A kód futtatásakor a rendszer a naplókat és a HTTP-nyomkövetéseket adatfolyamként továbbítja az ügyfélnek, így nyomon követheti a folyamat előrehaladását, és diagnosztizálhatja az esetleges problémákat. Használhatja az Azure dev Spaces szolgáltatást is, hogy a hibakeresőt a Visual Studióban és a Visual Studio Code-ban a Java, a Node. js és a .NET Core szolgáltatásokhoz csatolja. További információkért lásd: [projekt előkészítése az Azure dev Spaces működéséhez][how-it-works-prep], [Hogyan működik a kód az Azure dev Spaces][how-it-works-up]szolgáltatással, és [Hogyan működik a kód távoli hibakeresése az Azure dev Spaces][how-it-works-remote-debugging]szolgáltatással.
+Amellett, hogy átirányítja a forgalmat a fejlesztői számítógép és az AK-fürt között, az Azure dev Spaces használatával konfigurálhatja és gyorsan futtathatja a kódot az AK-ban. A Visual Studióban, a Visual Studio Code-ban vagy az Azure dev Spaces CLI-vel az Azure dev Spaces feltölti a kódot a fürtbe, majd felépíti és futtatja azt. Az Azure dev Spaces képes intelligensen szinkronizálni a kód módosításait, és újraindítani a szolgáltatást, hogy szükség szerint tükrözze a módosításokat. A kód futtatásakor a rendszer a naplókat és a HTTP-nyomkövetéseket adatfolyamként továbbítja az ügyfélnek, így nyomon követheti a folyamat előrehaladását, és diagnosztizálhatja az esetleges problémákat. Használhatja az Azure dev Spaces szolgáltatást is, hogy a hibakeresőt a Visual Studióban és a Visual Studio Code-ban a Java, a Node.js és a .NET Core szolgáltatásokhoz csatolja. További információkért lásd: [projekt előkészítése az Azure dev Spaces működéséhez][how-it-works-prep], [Hogyan működik a kód az Azure dev Spaces][how-it-works-up]szolgáltatással, és [Hogyan működik a kód távoli hibakeresése az Azure dev Spaces][how-it-works-remote-debugging]szolgáltatással.
 
 ## <a name="team-development"></a>Csoportos fejlesztés
 

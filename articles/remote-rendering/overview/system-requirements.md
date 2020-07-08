@@ -1,18 +1,17 @@
 ---
-title: Rendszerkövetelmények
+title: System requirements (Rendszerkövetelmények)
 description: Az Azure távoli renderelés rendszerkövetelményeit sorolja fel
 author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: article
 ms.openlocfilehash: 9754636063e29592595ee57d09164ae1134341a1
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84300606"
 ---
-# <a name="system-requirements"></a>Rendszerkövetelmények
+# <a name="system-requirements"></a>System requirements (Rendszerkövetelmények)
 
 > [!IMPORTANT]
 > Az **Azure távoli renderelés** jelenleg nyilvános előzetes verzióban érhető el.

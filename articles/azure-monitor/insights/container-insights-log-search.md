@@ -4,10 +4,9 @@ description: A tárolók Azure Monitor a metrikákat és a naplózási adatokat 
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.openlocfilehash: 392aac8f81ac3894fca8b6f70570834a5af16ade
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84298303"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-containers"></a>Naplók lekérdezése Azure Monitorról tárolók számára
@@ -26,7 +25,7 @@ A következő táblázatban a Azure Monitor által a tárolók által gyűjtött
 | Tároló-csomópont leltározása | Kube API | `ContainerNodeInventory`| TimeGenerated, számítógép, ClassName_s, DockerVersion_s, OperatingSystem_s, Volume_s, Network_s, NodeRole_s, OrchestratorType_s, InstanceID_g, SourceSystem|
 | Hüvelyek leltározása egy Kubernetes-fürtben | Kube API | `KubePodInventory` | TimeGenerated, Computer, ClusterId, ContainerCreationTimeStamp, PodUid, PodCreationTimeStamp, ContainerRestartCount, PodRestartCount, PodStartTime, ContainerStartTime, szolgáltatásnév, ControllerKind, ControllerName, tároló állapota:, ContainerStatusReason, ContainerID, ContainerName, név, PodLabel, névtér, PodStatus, ClusterName, képe, SourceSystem |
 | Kubernetes-fürt csomópontjainak leltára | Kube API | `KubeNodeInventory` | TimeGenerated, számítógép, ClusterName, ClusterId, LastTransitionTimeReady, címkék, állapot, KubeletVersion, KubeProxyVersion, CreationTimeStamp, SourceSystem | 
-| Kubernetes események | Kube API | `KubeEvents` | TimeGenerated, számítógép, ClusterId_s, FirstSeen_t, LastSeen_t, Count_d, ObjectKind_s, Namespace_s, Name_s, Reason_s, Type_s, TimeGenerated_s, SourceComponent_s, ClusterName_s, üzenet, SourceSystem | 
+| Kubernetes-események | Kube API | `KubeEvents` | TimeGenerated, számítógép, ClusterId_s, FirstSeen_t, LastSeen_t, Count_d, ObjectKind_s, Namespace_s, Name_s, Reason_s, Type_s, TimeGenerated_s, SourceComponent_s, ClusterName_s, üzenet, SourceSystem | 
 | Szolgáltatások a Kubernetes-fürtben | Kube API | `KubeServices` | TimeGenerated, ServiceName_s, Namespace_s, SelectorLabels_s, ClusterId_s, ClusterName_s, ClusterIP_s, ServiceType_s, SourceSystem | 
 | A Kubernetes-fürt csomópontjainak teljesítmény-mérőszámai || A Teljesítményfigyelő &#124;, ahol a ObjectName = = "K8SNode" | Számítógép, ObjectName, CounterName &#40;cpuAllocatableBytes, memoryAllocatableBytes, cpuCapacityNanoCores, memoryCapacityBytes, memoryRssBytes, cpuUsageNanoCores, memoryWorkingsetBytes, restartTimeEpoch&#41;, kártyabirtokos számlájának megterhelését, TimeGenerated, CounterPath, SourceSystem | 
 | A Kubernetes-fürthöz tartozó tárolók teljesítmény-mérőszámai || A Teljesítményfigyelő &#124;, ahol a ObjectName = = "K8SContainer" | CounterName &#40; cpuRequestNanoCores, memoryRequestBytes, cpuLimitNanoCores, memoryWorkingSetBytes, restartTimeEpoch, cpuUsageNanoCores, memoryRssBytes&#41;, kártyabirtokos számlájának megterhelését, TimeGenerated, CounterPath, SourceSystem | 
@@ -48,7 +47,7 @@ A tároló a munkaterületre továbbított kimenetet naplózza STDOUT és STDERR
 
 Gyakran hasznos olyan lekérdezéseket létrehozni, amelyek egy példával vagy kettővel kezdődnek, majd az igényeinek megfelelően módosítják őket. A fejlettebb lekérdezések létrehozásához a következő példa-lekérdezésekkel lehet kísérletezni:
 
-| Lekérdezés | Leírás | 
+| Lekérdezés | Description | 
 |-------|-------------|
 | ContainerInventory<br> &#124; Project számítógép, név, rendszerkép, ImageTag, ContainerState, CreatedTime, StartedTime, FinishedTime<br> &#124; renderelési táblázat | Egy tároló életciklus-információinak listázása| 
 | KubeEvents_CL<br> &#124;, ahol nem (IsEmpty (Namespace_s))<br> &#124; rendezés TimeGenerated desc szerint<br> &#124; renderelési táblázat | Kubernetes események|

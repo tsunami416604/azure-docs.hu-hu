@@ -8,10 +8,9 @@ ms.date: 05/27/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 3897ef75be34d4413e06dc5459739baec3afdcec
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84267999"
 ---
 # <a name="azure-security-baseline-for-container-instances"></a>Container Instances Azure biztonsági alapterve
@@ -101,7 +100,7 @@ További információ: az [Azure biztonsági alaptervek áttekintése](https://d
 
 Az Ön által választott tűzfal-megoldás üzembe helyezésével azonosíthatja és/vagy megtagadhatja a kártékony forgalmat.
 
-* [Azure Piactér](https://azuremarketplace.microsoft.com/marketplace/?term=Firewall)
+* [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/?term=Firewall)
 
 * [Azure Firewall üzembe helyezése](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
 

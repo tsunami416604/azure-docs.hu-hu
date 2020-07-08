@@ -4,10 +4,9 @@ description: A Media Graph lehetővé teszi annak meghatározását, hogy az ada
 ms.topic: conceptual
 ms.date: 05/01/2020
 ms.openlocfilehash: 02e960e917a059afdb0d688c7429d27d8e8a48eb
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84300807"
 ---
 # <a name="media-graph"></a>Médiagrafikon

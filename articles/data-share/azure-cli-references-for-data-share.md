@@ -10,10 +10,9 @@ ms.topic: reference
 ms.date: 05/27/2020
 ms.author: dbradish
 ms.openlocfilehash: 404022b13f44174e4b647f0430a58fac5eeb81df
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84300618"
 ---
 # <a name="azure-cli-for-azure-data-share"></a>Azure CLI az Azure-beli adatmegosztáshoz
@@ -24,7 +23,7 @@ Az Azure parancssori felülete ([Azure CLI](/cli/azure/what-is-azure-cli)) az Az
 
 Az Azure-beli adatmegosztás összes Azure CLI-parancsa jelenleg az Azure CLI-hez készült.  A bővítmények lehetővé teszi a kísérleti és az előzetes kiadású parancsok elérését.  További információ a bővítmények [használatáról az Azure CLI-vel](/cli/azure/azure-cli-extensions-overview).
 
-|Azure CLI-dokumentáció |Leírás
+|Azure CLI-dokumentáció |Description
 |-|-|-|
 | [az DataShare](/cli/azure/ext/datashare/datashare) | Minden, az Azure-adatmegosztást kezelő parancs.
 | [az DataShare Account](/cli/azure/ext/datashare/datashare/account) | Az Azure-beli adatmegosztási fiókok kezelésére szolgáló parancsok.

@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: bec5e68b334cada7f83c5dbeb9ba50203835d770
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84265318"
 ---
 # <a name="how-to-use-the-microsoft-smooth-streaming-plugin-for-the-adobe-open-source-media-framework"></a>A Microsoft Smooth Streaming beépülő modul használata az Adobe nyílt forráskódú adathordozó-keretrendszerhez  
@@ -334,7 +333,7 @@ A OSMF dinamikus beépülő moduljának Smooth Streaming kompatibilis a [Strobe 
 2. Az src beállítása Smooth Streaming forrásra (például http: \/ /devplatem.vo.msecnd.net/Sintel/Sintel_H264.ISM/manifest) 
 3. Végezze el a kívánt konfigurációs módosításokat, és kattintson az előnézet és frissítés elemre.
    
-   **Megjegyzés** A tartalom webkiszolgálójának érvényes crossdomain. XML fájlra van szüksége. 
+   **Megjegyzés** A tartalmi webkiszolgálónak érvényes crossdomain.xmlra van szüksége. 
 4. Másolja és illessze be a kódot egy egyszerű HTML-lapra a kedvenc szövegszerkesztő használatával, például a következő példában:
 
         <html>

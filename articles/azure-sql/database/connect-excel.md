@@ -13,10 +13,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
 ms.openlocfilehash: e0a413847142ee516a06f924dd058578047fb3a8
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84267511"
 ---
 # <a name="connect-excel-to-a-database-in-azure-sql-database-or-azure-sql-managed-instance-and-create-a-report"></a>Az Excel csatolása Azure SQL Database vagy Azure SQL felügyelt példányban található adatbázishoz, és jelentés létrehozása
@@ -80,10 +79,10 @@ Ha véglegesen szeretné menteni a kapcsolat részleteit, létrehozhat egy. odc-
 
       ![Új kapcsolatok párbeszédpanel](./media/connect-excel/new-connection.png)
 
-2. Az **adatkapcsolatok varázslóban**adja meg a kiszolgáló nevét és a SQL Database hitelesítő adatait. Kattintson a **Tovább** gombra.
+2. Az **adatkapcsolatok varázslóban**adja meg a kiszolgáló nevét és a SQL Database hitelesítő adatait. Válassza a **Tovább** lehetőséget.
    1. Válassza ki azt az adatbázist, amely az adatait tartalmazza a legördülő listából.
    2. Válassza ki azt a táblát vagy nézetet, amelyre kíváncsi. VGetAllCategories választottunk.
-   3. Kattintson a **Tovább** gombra.
+   3. Válassza a **Tovább** lehetőséget.
 
       ![Adatkapcsolatok varázsló](./media/connect-excel/data-connection-wizard.png)
 

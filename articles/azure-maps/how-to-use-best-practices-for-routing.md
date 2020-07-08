@@ -9,10 +9,9 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 24fa4c48f6ca03e4049483a9acfff067d5a6a736
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84266695"
 ---
 # <a name="best-practices-for-azure-maps-route-service"></a>Ajánlott eljárások Azure Maps Route Service-hez
@@ -73,7 +72,7 @@ Az útvonal számítási **travelTimeInSeconds** értéke a forgalom miatti kés
 
 Ha a kérelemben a **computeTravelTimeFor = all** paramétert adja meg, akkor a válasz összefoglaló eleme a következő mezőket fogja tartalmazni, beleértve a korábbi forgalmi feltételeket:
 
-| Elem | Leírás|
+| Elem | Description|
 | :--- | :--- |
 | noTrafficTravelTimeInSeconds | A becsült utazási idő, ha a forgalmi körülmények miatt nem jár késés az útvonalon, például a torlódás miatt |
 | historicTrafficTravelTimeInSeconds | Becsült utazási idő kiszámítása időfüggő korábbi forgalmi adatok alapján |
@@ -323,7 +322,7 @@ Az alábbi kép egy példát mutat be alternatív útvonalak megjelenítésére 
 
 ## <a name="use-the-routing-service-in-a-web-app"></a>Az útválasztási szolgáltatás használata egy webalkalmazásban
 
-A Azure Maps web SDK egy [szolgáltatási modult](https://docs.microsoft.com/javascript/api/azure-maps-rest/?view=azure-maps-typescript-latest)biztosít. Ez a modul egy segítő könyvtár, amely megkönnyíti a Azure Maps REST API-k használatát webes vagy Node. js-alkalmazásokban JavaScript vagy írógéppel használatával. A szolgáltatás modul a visszaadott útvonalak megjelenítéséhez használható a térképen. A modul automatikusan meghatározza, hogy melyik API-t használja a GET és a POST kérésekhez.
+A Azure Maps web SDK egy [szolgáltatási modult](https://docs.microsoft.com/javascript/api/azure-maps-rest/?view=azure-maps-typescript-latest)biztosít. Ez a modul egy segítő könyvtár, amely megkönnyíti a Azure Maps REST API-k használatát a web-és Node.js-alkalmazásokban JavaScript vagy írógéppel használatával. A szolgáltatás modul a visszaadott útvonalak megjelenítéséhez használható a térképen. A modul automatikusan meghatározza, hogy melyik API-t használja a GET és a POST kérésekhez.
 
 ## <a name="next-steps"></a>További lépések
 

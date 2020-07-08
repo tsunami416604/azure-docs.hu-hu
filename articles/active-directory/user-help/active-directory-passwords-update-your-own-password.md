@@ -12,10 +12,9 @@ ms.topic: end-user-help
 ms.date: 05/28/2020
 ms.author: curtand
 ms.openlocfilehash: 58ec2c00e75b12d6010b106ca7daed0da234bf1d
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84266117"
 ---
 # <a name="reset-your-work-or-school-password-using-security-info"></a>Munkahelyi vagy iskolai jelszavának alaphelyzetbe állítása biztonsági adatok használatával
@@ -155,7 +154,7 @@ Ha a rendszergazda bekapcsolta a funkciót, megtekintheti a **jelszó alaphelyze
 
 Íme néhány gyakori hiba eset és megoldásuk:
 
-|Probléma|Leírás|Megoldás|
+|Probléma|Description|Megoldás|
 | --- | --- | --- |
 |Ha megpróbálom módosítani a jelszavam, hibaüzenetet kapok. |A jelszó olyan szót, kifejezést vagy mintázatot tartalmaz, amely könnyen kitalálhatja a jelszavát.| Próbálkozzon újra egy erősebb jelszó használatával.|
 |A felhasználói azonosító megadását követően egy, a "forduljon a rendszergazdához" nevű oldalra ugorjon.|A Microsoft azt állapította meg, hogy a felhasználói fiók jelszavát a rendszergazda felügyeli a helyszíni környezetben. Ennek eredményeképpen nem állíthatja alaphelyzetbe a jelszavát a "nem lehet hozzáférni a fiókhoz" hivatkozással. |További segítségért forduljon a rendszergazdához.|

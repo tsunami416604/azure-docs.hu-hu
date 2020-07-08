@@ -15,10 +15,9 @@ ms.topic: troubleshooting
 ms.date: 06/01/2020
 ms.author: v-miegge
 ms.openlocfilehash: dea09b1ac29db99e1c52a31a605007fa4129e8ea
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84300525"
 ---
 # <a name="troubleshoot-boot-error---disk-read-error-occurred"></a>Rendszerindítási hiba – hiba történt a lemez olvasásakor
@@ -29,7 +28,7 @@ Ez a cikk olyan problémák megoldását ismerteti, amelyekben a lemez nem olvas
 
 Ha [rendszerindítási diagnosztikát](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) használ a virtuális gép képernyőképének megtekintéséhez, látni fogja, hogy a képernyőképen megjelenik a "lemezes olvasási hiba történt" üzenet. Az újraindításhoz nyomja le a Ctrl+Alt+Del billentyűkombinációt.”
 
-   ![Hibaüzenet: lemezes olvasási hiba történt. Az újraindításhoz nyomja le a Ctrl+Alt+Del billentyűkombinációt.](./media/disk-read-error-occurred/1.png)
+   ![Hibaüzenet: lemezes olvasási hiba történt. Indítsa újra a CTRL + ALT + DEL billentyűkombinációt.](./media/disk-read-error-occurred/1.png)
 
 ## <a name="cause"></a>Ok
 
@@ -58,7 +57,7 @@ Ez a hibaüzenet azt jelzi, hogy a lemez szerkezete sérült, és nem olvasható
 
 Az 1. generációs virtuális gépeknek először ellenőriznie kell, hogy a BCD-tárolót birtokló operációsrendszer-partíció **aktívként**van-e megjelölve. Ha 2. generációs virtuális géppel rendelkezik, ugorjon előre a [lemezpartíció kijavítása](#fix-the-disk-partition)érdekében, mivel a későbbi generációban az állapot jelzője elavult volt.
 
-1. Nyisson meg egy rendszergazda jogú parancssort (Cmd. exe).
+1. Nyisson meg egy rendszergazda jogú parancssort (cmd.exe).
 1. Adja meg a **DiskPart** eszközt a **DiskPart** eszköz elindításához.
 1. Írja be a **lemez listázása** lehetőséget a rendszerlemezek listázásához és a csatlakoztatott operációs rendszer virtuális merevlemezének (VHD) azonosításához.
 1. Ha a csatlakoztatott operációs rendszer VHD-je található, írja be a **sel Disk #** értéket a lemez kiválasztásához. Tekintse meg az alábbi ábrát egy példához, ahol az 1. lemez a csatolt operációs rendszer VHD-je.
@@ -86,7 +85,7 @@ Az 1. generációs virtuális gépeknek először ellenőriznie kell, hogy a BCD
 
 ### <a name="fix-the-disk-partition"></a>A lemezpartíció kijavítása
 
-1. Nyisson meg egy rendszergazda jogú parancssort (Cmd. exe).
+1. Nyisson meg egy rendszergazda jogú parancssort (cmd.exe).
 1. A következő parancs használatával futtassa a **chkdsk** parancsot a lemez (ek) ben, és végezzen hibajavításokat:
 
    `chkdsk <DRIVE LETTER>: /f`

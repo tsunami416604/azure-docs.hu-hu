@@ -4,10 +4,9 @@ description: Ez a témakör a IoT Edge élő videó-elemzési moduljának kettő
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: a342c59b35c7ebb4b6021163da76bdd3e0d449c3
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84266814"
 ---
 # <a name="module-twin-json-schema"></a>Modul Twin JSON-sémája
@@ -23,23 +22,23 @@ Ez a témakör a IoT Edge élő videó-elemzési moduljának kettős JSON-sémá
 
 A IoT Edge Live Video Analytics a következő modul két tulajdonságát teszi elérhetővé: 
 
-|Tulajdonság |Kötelező |Dinamikus |Leírás |
+|Tulajdonság |Kötelező |Dinamikus |Description |
 |---|---|---|---|
-|applicationDataDirectory |Igen |Nem |Egy csatlakoztatott kötet elérési útja a konfiguráció megőrzése érdekében. |
-|azureMediaServicesArmId |Igen |Nem |A Media Services fiók egyedi Azure-erőforrás-kezelési azonosítója.|
-|aadTenantId |Igen |Nem |Ügyfél Azure AD-bérlő azonosítója.|
+|applicationDataDirectory |Yes |No |Egy csatlakoztatott kötet elérési útja a konfiguráció megőrzése érdekében. |
+|azureMediaServicesArmId |Yes |No |A Media Services fiók egyedi Azure-erőforrás-kezelési azonosítója.|
+|aadTenantId |Yes |No |Ügyfél Azure AD-bérlő azonosítója.|
 |aadServicePrincipalAppId |Igen |Igen |Az ügyfél létrehozta az Azure AD-AppId.|
-|aadServicePrincipalCertificate |igen<sup>*</sup>  |Igen |Az ügyfél létrehozta az Azure AD AppId tanúsítványát.|
-|aadServicePrincipalPassword |igen<sup>*</sup>  |Igen |Az ügyfél létrehozta az Azure AD AppId jelszavát.|
+|aadServicePrincipalCertificate |igen<sup>*</sup>  |Yes |Az ügyfél létrehozta az Azure AD AppId tanúsítványát.|
+|aadServicePrincipalPassword |igen<sup>*</sup>  |Yes |Az ügyfél létrehozta az Azure AD AppId jelszavát.|
 |aadEndpoint |Nem |Nem |Felhő-specifikus Azure AD-végpont. <br/>Alapértelmezett`https://login.microsoftonline.com` |
 |aadResourceId |Nem |Nem |Felhő-specifikus Azure AD-célközönség/erőforrás-azonosító <br/>Alapértelmezett`https://management.core.windows.net/` |
 |armEndpoint |Nem |Nem |Felhő-specifikus Azure-erőforrás kezelése végpont. <br/>Alapértelmezett`https://management.azure.com/` |
-|diagnosticsLevel |Nem |Igen |Események részletessége: <br/>Információ & # x02758; Figyelmeztetés & # x02758; Hiba & # x02758; Kritikus & # x02758; NEz egy |
-|diagnosticsEventsOutputName |Nem |Igen |Központi kimenet diagnosztikai eseményekhez. <br/>(Az üres érték azt jelenti, hogy a diagnosztika nincs közzétéve.)|
-|operationalEventsOutputName|Nem|Igen|Az operatív események központi kimenete.<br/>(Az üres érték azt jelenti, hogy az operatív események nincsenek közzétéve)
-|Naplózási szint|Nem|Igen|Az alábbiak valamelyikének telepítve kell lennie: <br/>& # x000B7; Részletes<br/>& # x000B7; Információ (alapértelmezett)<br/>& # x000B7; Figyelmeztetés<br/>& # x000B7; Hiba<br/>& # x000B7; NEz egy|
-|logCategories|Nem|Igen|A következők vesszővel tagolt listája: alkalmazás, MediaPipeline, események <br/>Alapértelmezett: alkalmazás, események|
-|debugLogsDirectory|Nem|Igen|Hibakeresési naplók könyvtára. Ha a rendszer a jelenleg létrehozott naplókat állítja elő, a rendszer letiltja a hibakeresési naplókat.
+|diagnosticsLevel |No |Yes |Események részletessége: <br/>Információ & # x02758; Figyelmeztetés & # x02758; Hiba & # x02758; Kritikus & # x02758; NEz egy |
+|diagnosticsEventsOutputName |No |Yes |Központi kimenet diagnosztikai eseményekhez. <br/>(Az üres érték azt jelenti, hogy a diagnosztika nincs közzétéve.)|
+|operationalEventsOutputName|No|Yes|Az operatív események központi kimenete.<br/>(Az üres érték azt jelenti, hogy az operatív események nincsenek közzétéve)
+|Naplózási szint|No|Yes|Az alábbiak valamelyikének telepítve kell lennie: <br/>& # x000B7; Részletes<br/>& # x000B7; Információ (alapértelmezett)<br/>& # x000B7; Figyelmeztetés<br/>& # x000B7; Hiba<br/>& # x000B7; NEz egy|
+|logCategories|No|Yes|A következők vesszővel tagolt listája: alkalmazás, MediaPipeline, események <br/>Alapértelmezett: alkalmazás, események|
+|debugLogsDirectory|No|Yes|Hibakeresési naplók könyvtára. Ha a rendszer a jelenleg létrehozott naplókat állítja elő, a rendszer letiltja a hibakeresési naplókat.
 
 <sup>*</sup>Az egyszerű szolgáltatás tanúsítványát vagy jelszavát kell megadnia. 
 

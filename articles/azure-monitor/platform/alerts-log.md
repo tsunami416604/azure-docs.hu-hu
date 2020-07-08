@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.subservice: alerts
 ms.openlocfilehash: 85aaefa12f0cef21e3a367700d1a4899a75e8a90
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84298469"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Naplózási riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával
@@ -207,7 +206,7 @@ Az alábbi példa az [ütemezett lekérdezési szabályok létrehozásán](https
 
 ```
 
-A fenti JSON-minta menthető a (Say) sampleScheduledQueryRule. JSON néven, és a [Azure Resource Manager Azure Portal](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)használatával is üzembe helyezhető.
+A fenti JSON-minta menthető a (z) sampleScheduledQueryRule.jsa (z) és a (z) [Azure Portal Azure Resource Manager](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)használatával.
 
 
 ### <a name="log-alert-with-cross-resource-query-using-azure-resource-template"></a>Riasztás naplózása az erőforrások közötti lekérdezéssel az Azure Resource template használatával
@@ -304,7 +303,7 @@ A következő példa az [ütemezett lekérdezési szabályok létrehozásán](ht
 > [!IMPORTANT]
 > Ha a naplózási riasztásban több erőforrást használó lekérdezést használ, a [authorizedResources](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate#source) használata kötelező, és a felhasználónak hozzáféréssel kell rendelkeznie a megadott erőforrások listájához.
 
-A fenti JSON-minta menthető a (Say) sampleScheduledQueryRule. JSON néven, és a [Azure Resource Manager Azure Portal](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)használatával is üzembe helyezhető.
+A fenti JSON-minta menthető a (z) sampleScheduledQueryRule.jsa (z) és a (z) [Azure Portal Azure Resource Manager](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)használatával.
 
 ## <a name="managing-log-alerts-using-powershell"></a>A naplózási riasztások kezelése a PowerShell használatával
 
@@ -353,7 +352,7 @@ Azure Monitor – az [ütemezett lekérdezési szabályok API](https://docs.micr
 > [!NOTE]
 > Log Analytics esetén a naplózási riasztások a régi [log Analytics a riasztási API](api-alerts.md) -val és a [log Analytics mentett keresések és riasztások](../insights/solutions-resources-searches-alerts.md) örökölt sablonjaival is kezelhetők. Az új ScheduledQueryRules API alapértelmezés szerinti részletes használatával kapcsolatos további információkért lásd: [váltás új API-ra log Analytics riasztások](alerts-log-api-switch.md)esetén.
 
-A naplózási riasztások jelenleg nem rendelkeznek dedikált CLI-parancsokkal. az alábbi ábrán látható módon azonban Azure Resource Manager CLI-paranccsal használhatja a korábban (sampleScheduledQueryRule. JSON) nevű minta-erőforrást az erőforrás-sablon szakaszban:
+A naplózási riasztások jelenleg nem rendelkeznek dedikált CLI-parancsokkal. az alábbi ábrán látható módon azonban Azure Resource Manager CLI-paranccsal használhatja az erőforrás-sablonban korábban megjelenő minta-erőforrás sablonját (sampleScheduledQueryRule.js):
 
 ```azurecli
 az group deployment create --resource-group contosoRG --template-file sampleScheduledQueryRule.json

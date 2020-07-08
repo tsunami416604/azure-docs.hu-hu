@@ -9,10 +9,9 @@ ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
 ms.openlocfilehash: 038d9ff39f388d1ef7b09b951c09dbe3420858b7
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84298227"
 ---
 # <a name="use-visual-studio-and-visual-studio-code-to-build-iot-plug-and-play-devices"></a>A Visual Studio és a Visual Studio Code használata IoT Plug and Play-eszközök létrehozásához
@@ -69,7 +68,7 @@ A Code Generator megpróbálja használni a helyi mappában található DCM és 
 
 A kód létrehozása után a bővítmény megnyílik egy új VS Code-ablak a kóddal. Ha olyan létrehozott fájlt nyit meg, mint a **Main. c**, akkor előfordulhat, hogy az IntelliSense azt jelenti, hogy nem tudja megnyitni a c SDK-forrásfájlokat. Az IntelliSense és a kód helyes navigálásának engedélyezéséhez kövesse az alábbi lépéseket a C SDK-forrás felvételéhez:
 
-1. A VS Code-ban a **CTRL + SHIFT + P** billentyűkombinációval nyissa meg a parancssort, írja be és válassza a **C/C++: Edit configurations (JSON)** parancsot a **c_cpp_properties. JSON** fájl megnyitásához.
+1. A VS Code-ban a **CTRL + SHIFT + P** billentyűkombinációval nyissa meg a parancssort, írja be és válassza a **C/C++: Edit configurations (JSON)** parancsot a **c_cpp_properties.js** fájlhoz való megnyitásához.
 
 1. Adja hozzá az eszköz SDK elérési útját a `includePath` szakaszhoz:
 

@@ -12,10 +12,9 @@ ms.date: 07/24/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 29a82c1aed4ea79673b4019270a334eac722bc96
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84295422"
 ---
 # <a name="application-types-that-can-be-used-in-active-directory-b2c"></a>Active Directory B2C használható alkalmazások típusai
@@ -42,7 +41,7 @@ Ezek a lépések némileg eltérőek lehetnek az Ön által felépített alkalma
 
 ## <a name="web-applications"></a>Webalkalmazások
 
-A kiszolgálón üzemeltetett és böngészőn keresztül elérhető webalkalmazásokhoz (beleértve a .NET, a PHP, a Java, a Ruby, a Python és a Node. js fájlt) Azure AD B2C támogatja az [OpenID connectet](protocols-overview.md) az összes felhasználói élményhez. Az OpenID Connect Azure AD B2C implementációjában a webalkalmazás felhasználói élményt kezdeményez a hitelesítési kérések Azure AD-be való kibocsátásával. A kérés eredménye egy `id_token`. Ez a biztonsági jogkivonat tartalmazza a felhasználó identitását. Ezenfelül jogcímek formájában információkat nyújt a felhasználóról is:
+A kiszolgálón futtatott és böngészőn keresztül elérhető webalkalmazásokhoz (beleértve a .NET, a PHP, a Java, a Ruby, a Python és a Node.js) a Azure AD B2C támogatja az [OpenID connectet](protocols-overview.md) az összes felhasználói élményhez. Az OpenID Connect Azure AD B2C implementációjában a webalkalmazás felhasználói élményt kezdeményez a hitelesítési kérések Azure AD-be való kibocsátásával. A kérés eredménye egy `id_token`. Ez a biztonsági jogkivonat tartalmazza a felhasználó identitását. Ezenfelül jogcímek formájában információkat nyújt a felhasználóról is:
 
 ```json
 // Partial raw id_token
