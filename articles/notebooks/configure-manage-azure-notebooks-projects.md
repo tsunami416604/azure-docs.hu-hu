@@ -4,18 +4,18 @@ description: Megtudhatja, hogyan kezelheti a projekt metaadatait, a projektfájl
 ms.topic: how-to
 ms.date: 02/28/2020
 ms.custom: tracking-python
-ms.openlocfilehash: df64c9d90252c31118b66943b6a182319e3f1cc2
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 53acf7c916b402e291b9779948579761e79179ef
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84554308"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85834080"
 ---
 # <a name="manage-and-configure-projects-in-azure-notebooks-preview"></a><a id="manage-and-configure-projects" />Projektek kezelése és konfigurálása Azure Notebooks előzetes verzióban
 
-Azure Notebooks előzetes verzióban a projekt lényegében a mögöttes linuxos virtuális gép konfigurációja, amelyben a Jupyter-jegyzetfüzetek futnak, valamint egy fájl mappájával és a leíró metaadatokkal. 
-
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
+Azure Notebooks előzetes verzióban a projekt lényegében a mögöttes linuxos virtuális gép konfigurációja, amelyben a Jupyter-jegyzetfüzetek futnak, valamint egy fájl mappájával és a leíró metaadatokkal. 
 
 A Azure Notebooks a projekt irányítópultja lehetővé teszi a fájlok kezelését, és egyéb módon konfigurálja a projekt jellemzőit:
 
@@ -38,7 +38,7 @@ Alapértelmezés szerint a projektek az **ingyenes számítási** szinten futnak
 
 A projekt irányítópultján válassza a **projekt beállításai**lehetőséget, majd válassza az **információ** fület, amely tartalmazza a projekt metaadatait a következő táblázatban leírtak szerint. Bármikor módosíthatja a projekt metaadatait.
 
-| Beállítás | Leírás |
+| Beállítás | Description |
 | --- | --- |
 | Projektnév | A projekt felhasználóbarát neve, amelyet a Azure Notebooks a megjelenítési célokra használ. Például: ""Helló világ!"alkalmazás a Pythonban". |
 | Projektazonosító | Egy egyéni azonosító, amely a projekt megosztásához használt URL-cím részévé válik. Ez az azonosító csak betűket, számokat és kötőjeleket használhat, legfeljebb 30 karakterből állhat, és nem lehet [foglalt projekt-azonosító](create-clone-jupyter-notebooks.md#reserved-project-ids). Ha nem tudja biztosan, hogy mit kell használni, a közös konvenció a projekt nevének olyan kisbetűs verzióját használja, amelyben a szóközök kötőjelbe vannak bekapcsolva, például "My-notebook-Project" (ha szükséges a hosszhoz). |
@@ -57,7 +57,7 @@ A projekt irányítópultja a projekt mappa rendszerének tartalmát jeleníti m
 
 Az **+ új** parancs (billentyűparancs: n) új fájlokat vagy mappákat hoz létre. A parancs használatakor először válassza ki a létrehozandó elem típusát:
 
-| Elemtípus | Leírás | Parancs viselkedése |
+| Elemtípus | Description | Parancs viselkedése |
 | --- | --- | --- |
 | **Jegyzetfüzet** | Egy Jupyter notebook | Megjeleníti azt a felugró ablakot, amelyben megadja a notebook fájlnevét és nyelvét. |
 | **Mappa** | Egy almappa | Létrehoz egy szerkesztési mezőt a projekt fájljának listájában, amelyben megadja a mappa nevét. |
@@ -127,7 +127,7 @@ Lépés hozzáadásához először válassza a **+ Hozzáadás**lehetőséget, m
 
 Az Ön által megadott adatok a választott művelet típusától függenek:
 
-- **Követelmények. txt**: a második legördülő listában válasszon ki egy, a projektben már szereplő *követelmény. txt* fájlt. Ezután válasszon ki egy Python-verziót a megjelenő harmadik legördülő listából. A *követelmények. txt* fájl használatával Azure Notebooks `pip install -r` a *követelmények. txt* fájllal futtatja a notebook-kiszolgáló indításakor. Nem kell explicit módon telepítenie a csomagokat a notebookon belülről.
+- **Requirements.txt**: a második legördülő listában válasszon ki egy olyan *requirements.txt* fájlt, amely már szerepel a projektben. Ezután válasszon ki egy Python-verziót a megjelenő harmadik legördülő listából. Egy *requirements.txt* fájl használatával Azure Notebooks `pip install -r` a *requirements.txt* fájllal fut a jegyzetfüzet-kiszolgáló indításakor. Nem kell explicit módon telepítenie a csomagokat a notebookon belülről.
 
 - **Rendszerhéj-parancsfájl**: a második legördülő listában válasszon ki egy bash rendszerhéj-parancsfájlt a projektben (jellemzően egy *. sh* kiterjesztésű fájl), amely a környezet inicializálásához futtatni kívánt parancsokat tartalmazza.
 
@@ -187,7 +187,7 @@ A parancsot egy Python-jegyzetfüzetben található kód cellából is használh
 !cat .nb.log
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Útmutató: Project-adatfájlok használata](work-with-project-data-files.md)
 - [Felhőbeli adatok elérése egy jegyzetfüzetben](access-data-resources-jupyter-notebooks.md)

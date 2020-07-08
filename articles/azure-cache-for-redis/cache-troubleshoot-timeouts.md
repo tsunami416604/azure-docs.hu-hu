@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
-ms.openlocfilehash: c38854c8967d9cc4a5f8a58f7e068d5bfa556639
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: a5c5c80aaba083b0f65ac0dab41350765a8f5631
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85314062"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833757"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-timeouts"></a>Azure Cache for Redis-időtúllépések hibaelhárítása
 
@@ -32,7 +32,9 @@ A Redis készült Azure cache rendszeresen frissíti a kiszolgáló szoftverét 
 
 A StackExchange. Redis egy nevű konfigurációs beállítást használ a `synctimeout` 1000 MS alapértelmezett értékkel rendelkező szinkron műveletekhez. Ha egy szinkron hívás nem fejeződött be ebben az időszakban, a StackExchange. Redis ügyfél időtúllépési hibát jelez az alábbi példához hasonló módon:
 
+```output
     System.TimeoutException: Timeout performing MGET 2728cc84-58ae-406b-8ec8-3f962419f641, inst: 1,mgr: Inactive, queue: 73, qu=6, qs=67, qc=0, wr=1/1, in=0/0 IOCP: (Busy=6, Free=999, Min=2,Max=1000), WORKER (Busy=7,Free=8184,Min=2,Max=8191)
+```
 
 Ez a hibaüzenet olyan metrikákat tartalmaz, amelyek segíthetnek a probléma okának és lehetséges megoldásának kimutatása érdekében. A következő táblázat a hibaüzenetek metrikáinak részleteit tartalmazza.
 
@@ -73,7 +75,10 @@ A lehetséges kiváltó okok kivizsgálásához a következő lépéseket haszn�
 
     Erősen ajánlott, hogy a gyorsítótár és az ügyfél ugyanabban az Azure-régióban legyen. Ha olyan forgatókönyvvel rendelkezik, amely több régióra kiterjedő hívásokat is tartalmaz, az `synctimeout` alapértelmezett 1000-MS intervallumnál magasabb értéket kell beállítania a `synctimeout` kapcsolódási karakterláncban szereplő tulajdonsággal. Az alábbi példa egy, a StackExchange. Redis által biztosított, a Redis-hez készült, 2000-es ms-os adatforrást tartalmazó karakterláncot jelenít meg. `synctimeout`
 
-        synctimeout=2000,cachename.redis.cache.windows.net,abortConnect=false,ssl=true,password=...
+    ```output
+    synctimeout=2000,cachename.redis.cache.windows.net,abortConnect=false,ssl=true,password=...
+    ```
+
 1. Győződjön meg arról, hogy a [StackExchange. Redis NuGet-csomag](https://www.nuget.org/packages/StackExchange.Redis/)legújabb verzióját használja. A kódban folyamatosan rögzített hibák teszik hatékonyabbá az időtúllépéseket, így a legújabb verzió fontos.
 1. Ha a kérések sávszélesség-korlátozásokkal vannak elfoglalva a kiszolgálón vagy az ügyfélen, a végrehajtásuk tovább tart, és időtúllépéseket okozhat. Ha szeretné megtudni, hogy az időtúllépés a kiszolgáló hálózati sávszélessége miatt van-e, tekintse meg a [kiszolgálóoldali sávszélesség korlátozását](cache-troubleshoot-server.md#server-side-bandwidth-limitation). Ha szeretné megtudni, hogy az időtúllépés az ügyfél hálózati sávszélessége miatt van-e, tekintse meg az [ügyféloldali sávszélesség korlátozását](cache-troubleshoot-client.md#client-side-bandwidth-limitation).
 1. Lekérdezi a PROCESSZORt a kiszolgálón vagy az ügyfélen?

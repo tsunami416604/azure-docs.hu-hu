@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: 44b9b060be7ec707444ddf409848be1a16addb83
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 14da272ce5ce7c078719909345961f6ddf57f37b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85298616"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833791"
 ---
 # <a name="azure-functions-http-trigger"></a>HTTP-trigger Azure Functions
 
@@ -480,7 +480,7 @@ Teljes példaként tekintse meg az [trigger példáját](#example).
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `HttpTrigger` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
 | **típusa** | n.a.| Kötelező – a következőre kell beállítani: `httpTrigger` . |
 | **direction** | n.a.| Kötelező – a következőre kell beállítani: `in` . |
@@ -498,7 +498,9 @@ Az trigger típusú bemeneti típust `HttpRequest` vagy egyéni típusként dekl
 
 Alapértelmezés szerint a HTTP-triggerekhez tartozó függvény létrehozásakor a függvény címezhető az űrlap egy útvonalával:
 
-    http://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>
+```http
+http://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>
+```
 
 Ezt az útvonalat a `route` http-trigger bemeneti kötésének opcionális tulajdonságával is testreszabhatja. A fájl következő *function.js* például a `route` http-triggerek tulajdonságát definiálja:
 
@@ -766,7 +768,9 @@ A [Kulcskezelő API](https://github.com/Azure/azure-functions-host/wiki/Key-mana
 
 A legtöbb HTTP-trigger sablonhoz API-kulcs szükséges a kérelemben. Így a HTTP-kérelem általában a következő URL-címhez hasonlít:
 
-    https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?code=<API_KEY>
+```http
+https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?code=<API_KEY>
+```
 
 A kulcs egy nevű lekérdezési karakterlánc-változóban is szerepelhet `code` , a fentiek szerint. Egy HTTP-fejlécben is szerepelhet `x-functions-key` . A kulcs értéke lehet a függvényhez definiált bármelyik funkcióbillentyű, vagy bármely gazdagép kulcsa.
 
@@ -809,6 +813,14 @@ A webhook-engedélyezést a webhook fogadó összetevője kezeli, amely a HTTP-t
 
 * **Lekérdezési karakterlánc**: a szolgáltató átadja a kulcs nevét a `clientid` lekérdezési karakterlánc paraméterében (például `https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?clientid=<KEY_NAME>` ).
 * **Kérelem fejléce**: a szolgáltató átadja a kulcs nevét a `x-functions-clientid` fejlécben.
+
+## <a name="content-types"></a>Tartalomtípusok
+
+A bináris és az űrlapadatok nem C # függvénybe való átadásához a megfelelő Content-type fejlécet kell használnia. A támogatott tartalomtípusok `octet-stream` a bináris adattípusok és a [többrészes típusok](https://www.iana.org/assignments/media-types/media-types.xhtml#multipart)esetében is használhatók.
+
+### <a name="known-issues"></a>Ismert problémák
+
+A nem C # függvények esetében a Content-Type értékkel küldött kérések a `image/jpeg` `string` függvénynek átadott értéket eredményeznek. Ilyen esetekben az értéket manuálisan is átalakíthatja `string` egy byte-tömbre a nyers bináris értékek eléréséhez.
 
 ## <a name="limits"></a>Korlátok
 

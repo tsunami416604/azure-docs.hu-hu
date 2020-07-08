@@ -1,21 +1,21 @@
 ---
 author: rothja
-ms.service: cost-management-billing
+ms.service: app-service
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: 2a9e9d79328a7bf5c3ff85ea5a8e8a594d68c4cf
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: be87d2af698bb71573952943b5ddc3f0910a3333
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74224448"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85838757"
 ---
-| Szint | Ingyenes | Basic | Standard |
+| Szint | Ingyenes | Alapszintű | Standard |
 | --- | --- | --- | --- |
 | API-hívások |500 000 |1 500 000 egységenként |15 000 000 egységenként |
 | Aktív eszközök |500 |Korlátlan |Korlátlan |
-| Méretezés |N/A |Legfeljebb 6 egység |Korlátlan számú egység |
+| Méretezés |N.A. |Legfeljebb 6 egység |Korlátlan számú egység |
 | Leküldéses értesítések |Azure Notification Hubs ingyenes csomag, akár 1 000 000 leküldés |Notification Hubs alapszintű csomag, akár 10 000 000 leküldés |Notification Hubs standard szintű csomag, akár 10 000 000 leküldés |
 | Valós idejű üzenetkezelés/<br/>Webes szoftvercsatornák |Korlátozott |350/mobil szolgáltatás |Korlátlan |
 | Offline szinkronizálások |Korlátozott |Tartalmazza |Tartalmazza |

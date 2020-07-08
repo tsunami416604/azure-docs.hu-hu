@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: de56ba1281d0f20c8be838fa1bc9ebc24905b26c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79260370"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85846905"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>Azure Data Factory folyamatok monitorozása és kezelése a figyelési és felügyeleti alkalmazás használatával
 > [!div class="op_single_selector"]
@@ -159,7 +159,7 @@ A tevékenység-Windows a következő állapotok egyike lehet:
 
 <table>
 <tr>
-    <th align="left">status</th><th align="left">Részállapot</th><th align="left">Leírás</th>
+    <th align="left">Állapot</th><th align="left">Részállapot</th><th align="left">Description</th>
 </tr>
 <tr>
     <td rowspan="8">Várakozás</td><td>ScheduleTime</td><td>A tevékenység ablak futtatásának ideje.</td>
@@ -177,7 +177,7 @@ A tevékenység-Windows a következő állapotok egyike lehet:
 <td>ActivityResume</td><td>A tevékenység szüneteltetve van, és nem futtathatja a tevékenység ablakait egészen addig, amíg újra nem fut.</td>
 </tr>
 <tr>
-<td>Retry</td><td>A tevékenység végrehajtásának újrapróbálása folyamatban van.</td>
+<td>Ismét</td><td>A tevékenység végrehajtásának újrapróbálása folyamatban van.</td>
 </tr>
 <tr>
 <td>Ellenőrzés</td><td>Az érvényesítés még nincs elindítva.</td>
@@ -286,7 +286,7 @@ A szűrők törléséhez használhatja ugyanezt az előugró ablakot. Ha töröl
 
 ## <a name="perform-batch-actions"></a>Batch-műveletek végrehajtása
 ### <a name="rerun-selected-activity-windows"></a>Kijelölt tevékenységek újrafuttatása Windows
-Válassza ki a tevékenység ablakát, kattintson az első parancssáv gombján látható lefelé mutató nyílra, **és válassza az** / újrafuttatás az újrafuttatással a**folyamaton**keresztül lehetőséget. Ha kiválasztja az **Újrafuttatás a felfelé a folyamaton** lehetőséget, akkor az összes felsőbb rétegbeli tevékenység ablakát is Újrafuttatja.
+Válassza ki a tevékenység ablakát, kattintson az első parancssáv gombján látható lefelé mutató nyílra, **és válassza az**újrafuttatás az újrafuttatással a  /  **folyamaton**keresztül lehetőséget. Ha kiválasztja az **Újrafuttatás a felfelé a folyamaton** lehetőséget, akkor az összes felsőbb rétegbeli tevékenység ablakát is Újrafuttatja.
     ![Tevékenység ablakának újrafuttatása](./media/data-factory-monitor-manage-app/ReRunSlice.png)
 
 A listában több tevékenység ablak is kijelölhető, majd újra futtathatja őket. Előfordulhat, hogy a tevékenység ablakait az állapot alapján kell szűrni (például: **sikertelen**) –, majd újra kell futtatnia a sikertelen tevékenység időpontját, miután kijavította a tevékenység Windows-meghibásodását okozó problémát. Tekintse meg a következő szakaszt, amely részletesen ismerteti a listában szereplő tevékenységek Windows rendszerbeli szűrését.  

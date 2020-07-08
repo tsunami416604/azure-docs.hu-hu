@@ -1,15 +1,15 @@
 ---
 author: rothja
-ms.service: cost-management-billing
+ms.service: data-lake-analytics
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: 2f6cdda71c89041d954d8dbaf34a1fd874c5849a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 978131a6cdc27849ff1e9b922d37854f35ff374a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80334590"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85838737"
 ---
 A Azure Data Lake Analytics egyszerűvé teszi az elosztott infrastruktúra és az összetett kód kezelésének bonyolult feladatát. A szolgáltatás dinamikusan kiépíti az erőforrásokat, és használhatja az több exabájt elemzéséhez. Ha a művelet befejeződik, a rendszer automatikusan lekéri az erőforrásokat. Csak a felhasznált feldolgozási teljesítményért kell fizetnie. A tárolt adatok méretének vagy a felhasznált számítási mennyiségnek a növelésével vagy csökkentésével nem kell újraírnia a kódot. Az előfizetés alapértelmezett korlátainak előléptetéséhez forduljon az ügyfélszolgálathoz.
 

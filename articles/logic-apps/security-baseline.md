@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: a33d3e8b330f5ee8549f536bbfba958d96d8e59b
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: a37f57bc12e5756b493bb009268beb067e7faaab
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85255970"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833978"
 ---
 # <a name="azure-security-baseline-for-logic-apps"></a>Logic Apps Azure biztonsági alapterve
 
@@ -238,7 +238,7 @@ A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshe
 
 ### <a name="22-configure-central-security-log-management"></a>2,2: a központi biztonsági naplók felügyeletének konfigurálása
 
-**Útmutató**: a logikai alkalmazásokkal kapcsolatos részletes hibakeresési információk a futtatókörnyezetben való futtatásához beállíthatja és használhatja Azure monitor naplókat a futásidejű adatok és események adatainak, például az események aktiválásának, az események futtatásának és a műveleti eseményeknek a log Analytics munkaterületen való rögzítéséhez és tárolásához. Azure Monitor segít a felhő és a helyszíni környezetek monitorozásában, így könnyebben megtarthatja a rendelkezésre állást és a teljesítményt. Azure Monitor naplók használatával olyan napló-lekérdezéseket hozhat létre, amelyek segítenek az információk gyűjtésében és áttekintésében. A diagnosztikai adatait más Azure-szolgáltatásokkal is használhatja, mint például az Azure Storage és az Azure Event Hubs.
+**Útmutató**: a logikai alkalmazásokkal kapcsolatos részletes hibakeresési információk a futtatókörnyezetben való futtatásához beállíthatja és használhatja Azure monitor naplókat a futásidejű adatok és események adatainak, például az események aktiválásának, az események futtatásának és a műveleti eseményeknek a log Analytics munkaterületen való rögzítéséhez és tárolásához. Az Azure Monitor segít monitorozni a felhőt és a helyszíni környezeteket, így egyszerűbb fenntartani ezek rendelkezésre állását és teljesítményét. Azure Monitor naplók használatával olyan napló-lekérdezéseket hozhat létre, amelyek segítenek az információk gyűjtésében és áttekintésében. A diagnosztikai adatait más Azure-szolgáltatásokkal is használhatja, mint például az Azure Storage és az Azure Event Hubs.
 
 Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel vagy egy harmadik féltől származó SIEM-et.
 
@@ -254,7 +254,7 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel va
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2,3: az Azure-erőforrások naplózásának engedélyezése
 
-**Útmutató**: a logikai alkalmazásokkal kapcsolatos részletes hibakeresési információk a futtatókörnyezetben való futtatásához beállíthatja és használhatja Azure monitor naplókat a futásidejű adatok és események adatainak, például az események aktiválásának, az események futtatásának és a műveleti eseményeknek a log Analytics munkaterületen való rögzítéséhez és tárolásához. Azure Monitor segít a felhő és a helyszíni környezetek monitorozásában, így könnyebben megtarthatja a rendelkezésre állást és a teljesítményt. Azure Monitor naplók használatával olyan napló-lekérdezéseket hozhat létre, amelyek segítenek az információk gyűjtésében és áttekintésében. A diagnosztikai adatait más Azure-szolgáltatásokkal is használhatja, mint például az Azure Storage és az Azure Event Hubs.
+**Útmutató**: a logikai alkalmazásokkal kapcsolatos részletes hibakeresési információk a futtatókörnyezetben való futtatásához beállíthatja és használhatja Azure monitor naplókat a futásidejű adatok és események adatainak, például az események aktiválásának, az események futtatásának és a műveleti eseményeknek a log Analytics munkaterületen való rögzítéséhez és tárolásához. Az Azure Monitor segít monitorozni a felhőt és a helyszíni környezeteket, így egyszerűbb fenntartani ezek rendelkezésre állását és teljesítményét. Azure Monitor naplók használatával olyan napló-lekérdezéseket hozhat létre, amelyek segítenek az információk gyűjtésében és áttekintésében. A diagnosztikai adatait más Azure-szolgáltatásokkal is használhatja, mint például az Azure Storage és az Azure Event Hubs.
 
 Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel vagy egy harmadik féltől származó SIEM-et.
 
@@ -358,7 +358,7 @@ Alternatív megoldásként engedélyezheti és elvégezheti a fedélzeti adatfel
 
 **Útmutató**: a Azure Active Directory (ad) beépített szerepkörökkel rendelkezik, amelyeket explicit módon kell hozzárendelni, és lekérdezhető. Az Azure AD PowerShell-modullal ad hoc lekérdezéseket hajthat végre a felügyeleti csoportok tagjait futtató fiókok felderítéséhez.
 
-A Azure Active Directory (Azure AD) által védett egyéb erőforrások egyszerű eléréséhez és az identitás bejelentkezés nélküli hitelesítéséhez a logikai alkalmazás felügyelt identitást (korábban Managed Service Identity vagy MSI) is használhat a hitelesítő adatok és a titkos kódok helyett. Az Azure kezeli ezt az identitást, és segít a hitelesítő adatok biztonságossá tételében, mert nem kell a titkokat megadnia vagy elforgatnia.
+A Azure Active Directory (Azure AD) által védett egyéb erőforrások egyszerű eléréséhez és az identitás bejelentkezés nélküli hitelesítéséhez a logikai alkalmazás felügyelt identitást (korábban Managed Service Identity vagy MSI) is használhat a hitelesítő adatok és a titkos kódok helyett. Az Azure kezeli Ön helyett ezt az identitást, és segít biztonságban tartani az Ön hitelesítő adatait, mivel így nincs szükség titkos kulcsok megadására és rendszeres módosítására.
 
 A logikai alkalmazás minden kérelem végpontja közös hozzáférési aláírással (SAS) rendelkezik a végpont URL-címében. Ha egy kérelem-alapú trigger végpontjának URL-címét megosztja más felekkel, létrehozhat olyan visszahívási URL-címeket, amelyek meghatározott kulcsokat használnak, és lejárati dátummal rendelkeznek. Így zökkenőmentesen válthat kulcsokat, vagy korlátozhatja a hozzáférést a logikai alkalmazás aktiválására egy adott TimeSpan alapján.
 
@@ -483,9 +483,9 @@ Emellett a logikai alkalmazás minden kérelem végpontja közös hozzáférési
 
 **Útmutató**: Azure Active Directory (ad) használata központi hitelesítési és engedélyezési rendszerként a Azure Logic apps példányokhoz. Az Azure AD az adatok védelme érdekében erős titkosítást használ a nyugalmi és a továbbítási adatokhoz. Az Azure AD emellett a felhasználó hitelesítő adatainak a sók, a kivonatok és a biztonságos tárolását is tartalmazza.
 
-Ha a Logic Apps támogatja a támogatást, a felügyelt identitással könnyedén hozzáférhet az Azure Active Directory (Azure AD) által védett egyéb erőforrásokhoz, és a hitelesítő adatok és a titkos kódok helyett hitelesítheti az identitását. Az Azure kezeli ezt az identitást, és segít a hitelesítő adatok biztonságossá tételében, mert nem kell a titkokat megadnia vagy elforgatnia.
+Ha a Logic Apps támogatja a támogatást, a felügyelt identitással könnyedén hozzáférhet az Azure Active Directory (Azure AD) által védett egyéb erőforrásokhoz, és a hitelesítő adatok és a titkos kódok helyett hitelesítheti az identitását. Az Azure kezeli Ön helyett ezt az identitást, és segít biztonságban tartani az Ön hitelesítő adatait, mivel így nincs szükség titkos kulcsok megadására és rendszeres módosítására.
 
-Azure Logic Apps a rendszer által hozzárendelt és felhasználó által hozzárendelt felügyelt identitásokat is támogatja. A logikai alkalmazás a rendszerhez hozzárendelt identitást vagy egyetlen felhasználó által hozzárendelt identitást is használhat, amely a logikai alkalmazások egy csoportján belül megosztható, de nem mindkettő. Jelenleg csak az adott beépített eseményindítók és műveletek támogatják a felügyelt identitásokat, nem felügyelt összekötőket és kapcsolatokat, például:
+Azure Logic Apps a rendszer által hozzárendelt és felhasználó által hozzárendelt felügyelt identitásokat is támogatja. A logikai alkalmazások rendszer vagy felhasználó által hozzárendelt identitást is használhatnak, amely megosztható a logikai alkalmazások egy csoportján belül. Mindkét típusú identitás azonban nem használható. Jelenleg csak az adott beépített eseményindítók és műveletek támogatják a felügyelt identitásokat, nem felügyelt összekötőket és kapcsolatokat, például:
 - HTTP
 - Azure Functions
 - Azure API Management
@@ -573,7 +573,7 @@ Azon logikai alkalmazások esetében, amelyeknek közvetlen hozzáférésre van 
 
 Az ISE létrehozásakor dönthet úgy, hogy belső vagy külső hozzáférési végpontokat használ. A kiválasztott beállítás határozza meg, hogy az ISE-beli Logic apps-beli kérelem vagy webhook-eseményindítók fogadhatnak-e hívásokat a virtuális hálózaton kívülről is.
 
-Emellett különálló előfizetések és felügyeleti csoportok használatával különítse el az elkülönítést az egyes biztonsági tartományokhoz, például a környezeti típusokhoz és az adatérzékeny szintekhez. Korlátozhatja az alkalmazásaihoz és a vállalati környezetekhez igénybe veheti az Azure-erőforrásokhoz való hozzáférés szintjét. Az Azure-erőforrásokhoz való hozzáférést Azure Active Directory szerepköralapú hozzáférés-vezérlés segítségével szabályozhatja.
+Emellett különálló előfizetések és felügyeleti csoportok használatával különítse el az elkülönítést az egyes biztonsági tartományokhoz, például a környezeti típusokhoz és az adatérzékeny szintekhez. Korlátozhatja az alkalmazásaihoz és a vállalati környezetekhez igénybe veheti az Azure-erőforrásokhoz való hozzáférés szintjét. Az Azure-erőforrásokhoz való hozzáférést az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) segítségével szabályozhatja.
 
 * [Logic Apps-összekötők ismertetése](https://docs.microsoft.com/azure/connectors/apis-list)
 
@@ -615,7 +615,7 @@ Kövesse Azure Security Center a inaktív adatok titkosítására és az átvite
 
 * [Bejövő HTTPS-kérések fogadása és válasza Azure Logic Apps](https://docs.microsoft.com/azure/connectors/connectors-native-reqres#tls-support)
 
-* [Szolgáltatási végpontok hívása HTTP vagy HTTPS protokollon keresztül Azure Logic Apps](https://docs.microsoft.com/azure/connectors/connectors-native-http#tls-support)
+* [Szolgáltatásvégpontok HTTP-n vagy HTTPS-en keresztül történő meghívása az Azure Logic Appsből](https://docs.microsoft.com/azure/connectors/connectors-native-http#tls-support)
 
 * [A titkosítás ismertetése az Azure-ban](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit)
 
@@ -1049,7 +1049,7 @@ Ha integrációs szolgáltatási környezetet (ISE) hoz létre a logikai alkalma
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7,12: az identitások biztonságos és automatikus kezelése
 
-**Útmutató**: a Azure Active Directory (Azure ad) által védett egyéb erőforrások egyszerű elérése és az identitás hitelesítése bejelentkezés nélkül – a logikai alkalmazás a hitelesítő adatok és a titkos kódok helyett felügyelt identitást (korábban Managed Service Identity vagy msi) is használhat. Az Azure kezeli ezt az identitást, és segít a hitelesítő adatok biztonságossá tételében, mert nem kell a titkokat megadnia vagy elforgatnia.
+**Útmutató**: a Azure Active Directory (Azure ad) által védett egyéb erőforrások egyszerű elérése és az identitás hitelesítése bejelentkezés nélkül – a logikai alkalmazás a hitelesítő adatok és a titkos kódok helyett felügyelt identitást (korábban Managed Service Identity vagy msi) is használhat. Az Azure kezeli Ön helyett ezt az identitást, és segít biztonságban tartani az Ön hitelesítő adatait, mivel így nincs szükség titkos kulcsok megadására és rendszeres módosítására.
 
 Jelenleg csak az adott beépített eseményindítók és műveletek támogatják a felügyelt identitásokat, nem felügyelt összekötőket és kapcsolatokat, például:
 - HTTP
