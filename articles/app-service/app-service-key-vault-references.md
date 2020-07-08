@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 6ce11e806c514aa4a2074d120cb64ecdce222528
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 5b76c940066539995dbefa76d503b5412ce0c359
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84735608"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85557917"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>Key Vault referenciák használata App Service és Azure Functions
 
@@ -38,7 +38,7 @@ A Key Vault titkainak beolvasásához létre kell hoznia egy tárolót, és enge
 A Key Vault hivatkozás az űrlapra mutat `@Microsoft.KeyVault({referenceString})` , ahol a `{referenceString}` a következő lehetőségek egyikével helyettesíti:
 
 > [!div class="mx-tdBreakAll"]
-> | Hivatkozási sztring                                                            | Leírás                                                                                                                                                                                 |
+> | Hivatkozási sztring                                                            | Description                                                                                                                                                                                 |
 > |-----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | SecretUri =_SecretUri_                                                       | A **SecretUri** az Key Vault titkos kulcsa teljes adatsík URI-ja, beleértve a verziószámot is, például:https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931  |
 > | VaultName =_VaultName_; SecretName =_SecretName_; Titkoskulcsverziója =_titkoskulcsverziója_ | A **VaultName** meg kell egyeznie a Key Vault erőforrás nevével. A **SecretName** a célként megadott titkos kód nevének kell lennie. A **titkoskulcsverziója** a használni kívánt titkos kulcs verziószámának kell lennie. |
@@ -72,7 +72,7 @@ Ha Key Vault hivatkozást szeretne használni egy alkalmazás-beállításhoz, �
 
 Az erőforrás-telepítések Azure Resource Manager sablonokon keresztüli automatizálásakor előfordulhat, hogy a funkció működéséhez egy adott sorrendben kell sorba rendeznie a függőségeket. Fontos megjegyezni, hogy az alkalmazás beállításait saját erőforrásként kell meghatároznia ahelyett, hogy egy tulajdonságot kellene használnia `siteConfig` a hely definíciójában. Ennek az az oka, hogy a helyet először meg kell határozni, hogy a rendszer által hozzárendelt identitás létre legyen hozva, és a hozzáférési házirendben is használható legyen.
 
-A psuedo-sablon például a következőhöz hasonló lehet:
+Egy Function alkalmazáshoz tartozó példa pszeudo-sablon a következőhöz hasonló lehet:
 
 ```json
 {

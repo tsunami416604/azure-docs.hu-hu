@@ -6,18 +6,17 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: sngun
-ms.openlocfilehash: 2d9e9ed1a65265a119f59edee7da1b8f244e2f7f
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: dace7fb291cef24ad8b48a0791b2fadca22fa71b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85112735"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85556054"
 ---
 # <a name="retiring-the-s1-s2-and-s3-performance-levels"></a>Az S1, S2 és S3 teljesítményszintek kivonása
 
 > [!IMPORTANT] 
 > A cikkben ismertetett S1, S2 és S3 szintű teljesítményszint megszűnik, és az új Azure Cosmos DB fiókok esetében már nem érhetők el.
->
 
 Ez a cikk az S1, az S2 és az S3 teljesítményszint áttekintését tartalmazza, és bemutatja, hogyan telepíthetők át az ezeket a teljesítményadatokat használó gyűjtemények egy particionált gyűjteményekbe. A cikk elolvasása után a következő kérdésekre tud válaszolni:
 
@@ -43,7 +42,7 @@ Az S1, S2 és S3 teljesítményszint nem nyújt rugalmasságot a standard Azure 
 
 Az alábbi táblázat összehasonlítja az egypartíciós gyűjtemények, a particionált gyűjtemények, valamint az S1, S2 és S3 teljesítményszint esetében elérhető átviteli sebességet és tárolási lehetőségeket. Példa az USA 2. keleti régiójára:
 
-|   |Particionált gyűjtemény|Egyetlen partíciós gyűjtemény|S1|S2|S3|
+| Kvóta neve  |Particionált gyűjtemény|Egyetlen partíciós gyűjtemény|S1|S2|S3|
 |---|---|---|---|---|---|
 |Maximális átviteli sebesség|Korlátlan|10K RU/s|250 RU/s|1 K RU/s|2,5 K RU/s|
 |Minimális átviteli sebesség|2,5 K RU/s|400 RU/s|250 RU/s|1 K RU/s|2,5 K RU/s|

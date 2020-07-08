@@ -8,23 +8,16 @@ ms.topic: conceptual
 author: j-martens
 ms.author: jmartens
 ms.date: 06/11/2020
-ms.openlocfilehash: d870cb8d90573ab0c9661804aa1dd17b64d1600d
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: 173ff8b638c40773ca2c4bdac5021f2ea4b84549
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84982628"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555532"
 ---
 # <a name="enterprise-and-basic-editions-of-azure-machine-learning"></a>A Azure Machine Learning nagyvállalati és alapszintű kiadásai 
 
 Azure Machine Learning két, a gépi tanulási igényeihez igazított kiadást kínál. Ezek a kiadások határozzák meg, hogy mely gépi tanulási eszközök érhetők el a fejlesztők és az adatszakértők számára a munkaterületről.
-
-<br/>
-<br/>
-
-| Alapszintű kiadás | Enterprise Edition                 |
-|------------------------------------------------------------------------------------|-----------|
-|Kiváló: <br/>+ nyílt forráskódú fejlesztés <br/>+ Felhőbeli skálázás<br/>+ kód – első élmény <br/><br/>Az alapszintű munkaterületek lehetővé teszik a Azure Machine Learning használatának folytatását, és csak az ML-folyamat során [felhasznált Azure-erőforrásokért kell fizetni](concept-plan-manage-cost.md) . |Az összes alapszintű kiadás, valamint:<br/>+ a Studio webes felülete <br/>+ biztonságos, átfogó ML életciklus-kezelés <br/>+ minden képzettségi szinthez<br/><br/>Az Enterprise Edition-munkaterületek csak az Azure-beli felhasználásra lesznek felszámítva, miközben a kiadás előzetes verzióban érhető el. |
 
 ## <a name="choose-an-edition"></a>Kiadás kiválasztása
 
@@ -111,7 +104,6 @@ Megtudhatja, hogyan [frissíthet egy alapszintű munkaterületet nagyvállalati 
 | A Batch-következtetések                                                                  | Mind                     |
 | FPGA-alapú Hardware Accelerated Models                                             | Mind                     |
 | Modell profilkészítése                                                                    | Mind                     |
-| A felhasználói felület ismertetése                                                               | Csak Enterprise Edition |
 
 <br/>
 <br/>

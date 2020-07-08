@@ -12,12 +12,12 @@ ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9691ecb8d742952ba4364dcda2b62c3829f79d60
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: cbefcec884fcf179c182cd50efeb58a0fc357378
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84760320"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555121"
 ---
 # <a name="add-an-unlisted-non-gallery-application-to-your-azure-ad-organization"></a>Lista nélküli (nem katalógusos) alkalmazás hozzáadása az Azure AD-szervezethez
 
@@ -54,7 +54,7 @@ Ez a cikk azt ismerteti, hogyan adhat hozzá egy nem katalógusos alkalmazást a
    >* Az **alkalmazásproxy konfigurálása a helyi alkalmazásokhoz való biztonságos távoli hozzáféréshez** megnyitja az Azure ad Application proxy és összekötők konfigurációs lapját.
    >* Az **Azure ad-vel való integrációhoz használt alkalmazás regisztrálása** megnyitja a **Alkalmazásregisztrációk** lapot. Ez a beállítás általában OpenID Connect-alkalmazásokhoz használatos.
 
-7. Kattintson a **Létrehozás** gombra. Megnyílik az alkalmazás **áttekintő** lapja.
+7. Válassza a **Létrehozás** lehetőséget. Megnyílik az alkalmazás **áttekintő** lapja.
 
 ## <a name="configure-user-sign-in-properties"></a>Felhasználó bejelentkezési tulajdonságainak konfigurálása
 
@@ -70,7 +70,7 @@ Ez a cikk azt ismerteti, hogyan adhat hozzá egy nem katalógusos alkalmazást a
 
       Működés **hozzárendelt** felhasználók esetében:
 
-       | Alkalmazás tulajdonságainak beállításai | | | Felhasználói élmény – hozzárendelt felhasználók | |
+       | Alkalmazás tulajdonsága | Alkalmazás tulajdonsága | Alkalmazás tulajdonsága | Felhasználói élmény – hozzárendelt felhasználók | Felhasználói élmény – hozzárendelt felhasználók |
        |---|---|---|---|---|
        | Engedélyezett a felhasználók számára a bejelentkezés? | Felhasználó-hozzárendelés szükséges? | Felhasználók számára látható? | Bejelentkezhetnek a hozzárendelt felhasználók? | Látható az alkalmazás a hozzárendelt felhasználók számára?* |
        | igen | igen | igen | igen | igen  |
@@ -84,7 +84,7 @@ Ez a cikk azt ismerteti, hogyan adhat hozzá egy nem katalógusos alkalmazást a
 
       Működés **nem hozzárendelt** felhasználók esetében:
 
-       | Alkalmazás tulajdonságainak beállításai | | | Felhasználói élmény – nem hozzárendelt felhasználók | |
+       | Alkalmazás tulajdonsága | Alkalmazás tulajdonsága | Alkalmazás tulajdonsága | Felhasználói élmény – nem hozzárendelt felhasználók | Felhasználói élmény – nem hozzárendelt felhasználók |
        |---|---|---|---|---|
        | Engedélyezve van a felhasználók számára a bejelentkezés? | Felhasználó-hozzárendelés szükséges? | Felhasználók számára látható? | Bejelentkezhetnek a nem hozzárendelt felhasználók? | Látható az alkalmazás a nem hozzárendelt felhasználók számára?* |
        | igen | igen | igen | nem  | nem   |

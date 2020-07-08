@@ -1,6 +1,6 @@
 ---
 title: Adatforrások összekötése az Azure Sentinel szolgáltatással | Microsoft Docs
-description: Ismerje meg, hogyan csatlakoztathatók az adatforrások az Azure Sentinelhez.
+description: Ismerje meg, hogyan csatlakoztathatók az adatforrások, például a Microsoft Threat Protection, a Microsoft 365 és az Office 365, az Azure AD, az ATP és a Cloud App Security az Azure Sentinelhez.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: yelevin
-ms.openlocfilehash: 3ff031cb9e4dd45de180eca4b726aa47f0fd52e1
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.openlocfilehash: a2b9c1602ead56b35c46508ef4d414145eb07432
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85367290"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555513"
 ---
 # <a name="connect-data-sources"></a>Adatforrások csatlakoztatása
 
@@ -67,7 +67,7 @@ Az Azure Sentinel a következő adatkapcsolási módszereket támogatja:
     - [Citrix Analytics (Security)](connect-citrix-analytics.md)
     - [F5 BIG-IP](connect-f5-big-ip.md)
     - [Forcepoint DLP](connect-forcepoint-dlp.md)
-    - [Peremhálózati 81-naplók](connect-perimeter-81-logs.md)
+    - [Perimeter 81-naplók](connect-perimeter-81-logs.md)
     - [Squadra Technologies secRMM](connect-squadra-secrmm.md)
     - [Symantec ICDX](connect-symantec.md)
     - [Zimperium](connect-zimperium-mtd.md)
@@ -80,7 +80,7 @@ Az Azure Sentinel a következő adatkapcsolási módszereket támogatja:
     Az Azure Sentinel-ügynök, amely valójában a Log Analytics ügynök, átalakítja a CEF formátumú naplókat olyan formátumba, amelyet a Log Analytics betölt. A készülék típusától függően az ügynök közvetlenül a készülékre, vagy egy dedikált Linux-alapú napló-továbbítóra van telepítve. A Linux-ügynök a syslog démontól érkező eseményeket fogad UDP-n keresztül, de ha egy Linux rendszerű gépen nagy mennyiségű syslog-eseményt kell gyűjteni, a rendszer a syslog démonból az ügynököt és onnan Log Analytics.
 
     - **Tűzfalak, proxyk és végpontok:**
-        - [AI Vectra észlelése](connect-ai-vectra-detect.md)
+        - [AI Vectra Detect](connect-ai-vectra-detect.md)
         - [Ellenőrzőpont](connect-checkpoint.md)
         - [Cisco ASA](connect-cisco.md)
         - [ExtraHop Reveal(x)](connect-extrahop.md)
@@ -147,7 +147,7 @@ Azt is megteheti, hogy manuálisan telepítheti az ügynököt egy meglévő Azu
 | Barracuda_CL | [A Barracuda csatlakoztatása](connect-barracuda.md) | &#10003; | |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az Azure Sentinel megkezdéséhez szüksége lesz egy előfizetésre Microsoft Azure. Ha nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes próbaverzióra](https://azure.microsoft.com/free/).
 - Ismerje meg, hogyan hozhatja be [adatait az Azure sentinelbe](quickstart-onboard.md), és hogyan tekintheti [meg az adatait és a lehetséges fenyegetéseket](quickstart-get-visibility.md).

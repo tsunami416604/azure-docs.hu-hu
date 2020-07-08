@@ -1,6 +1,6 @@
 ---
 title: A Windows biztonsági eseményeinek összekötése az Azure Sentinel szolgáltatással | Microsoft Docs
-description: Ismerje meg, hogyan csatlakoztathatók a Windows biztonsági események az Azure Sentinel szolgáltatáshoz.
+description: Ismerje meg, hogy a biztonsági események összekötővel hogyan továbbíthatja a Windows rendszerű rendszerek összes biztonsági eseményét az Azure Sentinel-munkaterületre. 
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/22/2020
 ms.author: yelevin
-ms.openlocfilehash: 30055ba1befc68d015e3e3162d8db11a2916f3d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8da05da1b4aa9966b7743bc38b09d1c4b34c8cc8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80124962"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555713"
 ---
 # <a name="connect-windows-security-events"></a>A Windows biztonsági eseményeinek csatlakoztatása 
 
@@ -81,7 +81,7 @@ Windowsos biztonsági események összegyűjtése az Azure Sentinelben:
 
 1. Kattintson a **Frissítés** parancsra.
 
-1. Ha a Windows biztonsági eseményeihez a Log Analytics vonatkozó sémát szeretné használni `SecurityEvent` , írja be a következőt a lekérdezési ablakba:.
+1. Ha a Windows biztonsági eseményeihez a Log Analytics vonatkozó sémát szeretné használni, írja be a következőt `SecurityEvent` a lekérdezési ablakba:.
 
 ## <a name="validate-connectivity"></a>Kapcsolat ellenőrzése
 

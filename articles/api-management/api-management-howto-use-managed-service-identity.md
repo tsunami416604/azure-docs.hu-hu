@@ -1,6 +1,6 @@
 ---
 title: Felügyelt identitások használata az Azure API Managementban | Microsoft Docs
-description: Ismerje meg, hogyan használhatók a felügyelt identitások a API Management
+description: Megtudhatja, hogyan hozhat létre rendszerszintű és felhasználó által hozzárendelt identitásokat a API Managementban a Azure Portal, a PowerShell és egy Resource Manager-sablon használatával.
 services: api-management
 documentationcenter: ''
 author: miaojiang
@@ -11,44 +11,44 @@ ms.workload: integration
 ms.topic: article
 ms.date: 06/12/2020
 ms.author: apimpm
-ms.openlocfilehash: 028b26537c9fe8a976dbc68a4776b2ea4101d811
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: 8a7fa295bdc8881c0c1ba58c95872a9380231b81
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84789409"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85558030"
 ---
 # <a name="use-managed-identities-in-azure-api-management"></a>Felügyelt identitások használata az Azure-ban API Management
 
-Ez a cikk bemutatja, hogyan hozhat létre felügyelt identitást egy API Management-példányhoz, és hogyan férhet hozzá más erőforrásokhoz. Azure Active Directory (Azure AD) által generált felügyelt identitás lehetővé teszi, hogy a API Management-példány könnyen és biztonságosan hozzáférhessen más Azure AD-védelemmel ellátott erőforrásokhoz, például a Azure Key Vaulthoz. Ezt az identitást az Azure felügyeli, és nem igényli semmilyen titok kiépítését és elforgatását. A felügyelt identitásokkal kapcsolatos további információkért lásd: [Mi az Azure-erőforrások felügyelt identitása](../active-directory/managed-identities-azure-resources/overview.md).
+Ez a cikk bemutatja, hogyan hozhat létre felügyelt identitást egy Azure API Management-példányhoz, és hogyan férhet hozzá más erőforrásokhoz. Azure Active Directory (Azure AD) által generált felügyelt identitás lehetővé teszi, hogy a API Management-példány könnyen és biztonságosan hozzáférhessen más Azure AD-védelemmel ellátott erőforrásokhoz, például a Azure Key Vaulthoz. Az Azure kezeli ezt az identitást, így nem kell semmilyen titkot kiépíteni vagy elforgatnia. A felügyelt identitásokkal kapcsolatos további információkért lásd: [Mi az Azure-erőforrások felügyelt identitása?](../active-directory/managed-identities-azure-resources/overview.md).
 
-Egy API Management-példány két típusú identitást biztosíthat:
+API Management-példányhoz két típusú identitást adhat meg:
 
-- A **rendszer által hozzárendelt identitás** a szolgáltatáshoz van kötve, és törlődik, ha a szolgáltatás törölve van. A szolgáltatásnak csak egy rendszerhez rendelt identitása lehet.
-- A **felhasználó által hozzárendelt identitás** egy önálló Azure-erőforrás, amelyet hozzá lehet rendelni a szolgáltatáshoz. A szolgáltatás több felhasználó által hozzárendelt identitással (*) is rendelkezhet.
+- A *rendszer által hozzárendelt identitás* a szolgáltatáshoz van kötve, és törlődik, ha a szolgáltatás törölve van. A szolgáltatásnak csak egy rendszerhez rendelt identitása lehet.
+- A *felhasználó által hozzárendelt identitás* egy önálló Azure-erőforrás, amelyet hozzá lehet rendelni a szolgáltatáshoz. A szolgáltatás több felhasználó által hozzárendelt identitással rendelkezhet.
 
-## <a name="create-a-system-assigned-managed-identity-for-an-api-management-instance"></a>Rendszerhez rendelt felügyelt identitás létrehozása API Management-példányhoz
+## <a name="create-a-system-assigned-managed-identity"></a>Rendszerhez rendelt felügyelt identitás létrehozása
 
-### <a name="using-the-azure-portal"></a>Az Azure Portal használata
+### <a name="azure-portal"></a>Azure Portal
 
-Ha felügyelt identitást szeretne beállítani a portálon, először létre kell hoznia egy API Management példányt a szokásos módon, majd engedélyeznie kell a szolgáltatást.
+A Azure Portal felügyelt identitásának beállításához először létre kell hoznia egy API Management példányt, majd engedélyeznie kell a szolgáltatást.
 
-1. A szokásos módon hozzon létre egy API Management példányt a portálon. Navigáljon a portálon.
+1. A szokásos módon hozzon létre egy API Management példányt a portálon. Tallózással keresse meg a portálon.
 2. Válassza a **felügyelt identitások**lehetőséget.
-3. A **rendszerhez rendelt** lapon váltson az **állapot** bekapcsolva **értékre**. Kattintson a **Save** (Mentés) gombra.
+3. A **rendszerhez rendelt** lapon váltson az **állapot** bekapcsolva **értékre**. Kattintson a **Mentés** gombra.
 
-    :::image type="content" source="./media/api-management-msi/enable-system-msi.png" alt-text="A rendszer által hozzárendelt felügyelt identitás engedélyezése." border="true":::
+    :::image type="content" source="./media/api-management-msi/enable-system-msi.png" alt-text="A rendszer által hozzárendelt felügyelt identitás engedélyezésének kiválasztása" border="true":::
 
 
-### <a name="using-azure-powershell"></a>Az Azure PowerShell használata
+### <a name="azure-powershell"></a>Azure PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 A következő lépések végigvezetik egy API Management példány létrehozásán és az identitás Azure PowerShell használatával történő hozzárendelésének lépésein. 
 
-1. Szükség esetén telepítse a Azure PowerShell a [Azure PowerShell útmutatóban](/powershell/azure/install-az-ps)található utasításokkal, majd futtassa a parancsot az `Connect-AzAccount` Azure-hoz való kapcsolódáshoz.
+1. Ha szükséges, telepítse Azure PowerShell a [Azure PowerShell útmutató](/powershell/azure/install-az-ps)utasításait követve. Ezután futtassa a parancsot `Connect-AzAccount` Az Azure-beli kapcsolatok létrehozásához.
 
-2. Hozzon létre egy API Management példányt a Azure PowerShell használatával. További példák a API Management-példánnyal való Azure PowerShell használatáról: [API Management PowerShell-minták](powershell-samples.md):
+2. A példány létrehozásához használja a következő kódot. További példák a Azure PowerShell API Management-példánnyal való használatáról: [API Management PowerShell-minták](powershell-samples.md).
 
     ```azurepowershell-interactive
     # Create a resource group.
@@ -58,7 +58,7 @@ A következő lépések végigvezetik egy API Management példány létrehozás�
     New-AzApiManagement -ResourceGroupName $resourceGroupName -Name consumptionskuservice -Location $location -Sku Consumption -Organization contoso -AdminEmail contoso@contoso.com -SystemAssignedIdentity
     ```
 
-3. Frissítés és meglévő példány létrehozása az identitás létrehozásához:
+3. Meglévő példány frissítése az identitás létrehozásához:
 
     ```azurepowershell-interactive
     # Get an API Management instance
@@ -68,7 +68,7 @@ A következő lépések végigvezetik egy API Management példány létrehozás�
     Set-AzApiManagement -InputObject $apimService -SystemAssignedIdentity
     ```
 
-### <a name="using-the-azure-resource-manager-template"></a>A Azure Resource Manager sablon használata
+### <a name="azure-resource-manager-template"></a>Azure Resource Manager-sablon
 
 A következő tulajdonságot az erőforrás-definícióban is létrehozhatja az identitással rendelkező API Management-példányt:
 
@@ -78,7 +78,7 @@ A következő tulajdonságot az erőforrás-definícióban is létrehozhatja az 
 }
 ```
 
-Ez azt jelzi, hogy az Azure létrehozza és kezeli az API Management-példány identitását.
+Ez a tulajdonság azt jelzi, hogy az Azure létrehozza és kezeli az API Management példány identitását.
 
 A teljes Azure Resource Manager sablon például a következőhöz hasonló lehet:
 
@@ -117,22 +117,22 @@ A példány létrehozásakor a következő tulajdonságokkal rendelkezik:
 }
 ```
 
-A tenantId tulajdonság azt határozza meg, hogy az identitás melyik Azure AD-bérlőhöz tartozik. A principalId a példány új identitásának egyedi azonosítója. Az Azure AD-n belül az egyszerű szolgáltatásnév neve megegyezik a API Management példányával.
+A `tenantId` tulajdonság azonosítja, hogy az identitás melyik Azure ad-bérlőhöz tartozik. A `principalId` tulajdonság a példány új identitásának egyedi azonosítója. Az Azure AD-n belül az egyszerű szolgáltatásnév neve megegyezik a API Management példányával.
 
 
 > [!NOTE]
-> Egy API Management-példányhoz a rendszerhez hozzárendelt és felhasználó által hozzárendelt identitások is tartozhatnak egyszerre. Ebben az esetben a tulajdonság a következő: `type``SystemAssigned,UserAssigned`
+> Egy API Management-példányhoz a rendszerhez hozzárendelt és felhasználó által hozzárendelt identitások is tartozhatnak egyszerre. Ebben az esetben a tulajdonság a következő `type` lesz: `SystemAssigned,UserAssigned` .
 
-### <a name="scenarios-supported"></a>Támogatott forgatókönyvek
+### <a name="supported-scenarios"></a>Támogatott esetek
 
 #### <a name="obtain-a-custom-tlsssl-certificate-for-the-api-management-instance-from-azure-key-vault"></a><a name="use-ssl-tls-certificate-from-azure-key-vault"></a>Egyéni TLS/SSL-tanúsítvány beszerzése a API Management-példányhoz Azure Key Vault
-Egy API Management szolgáltatás rendszer által hozzárendelt identitása használható a Azure Key Vault tárolt egyéni TLS/SSL-tanúsítványok lekéréséhez. Ezeket a tanúsítványokat API Management-példányban lévő egyéni tartományokhoz lehet hozzárendelni.
+API Management példány rendszerhez rendelt identitásával lekérheti a Azure Key Vault tárolt egyéni TLS/SSL-tanúsítványokat. Ezeket a tanúsítványokat az API Management-példányban lévő egyéni tartományokhoz rendelheti hozzá. A következő szempontokat vegye figyelembe:
 
-1. A titkos kód tartalomtípusának az *Application/x-PKCS12/pfx-profil*kell lennie.
-2. A Key Vault tanúsítvány titkos végpontját kell használni, amely a tényleges titkot tartalmazza.
+- A titkos kód tartalomtípusának az *Application/x-PKCS12/pfx-profil*kell lennie.
+- Használja az Key Vault-tanúsítvány titkos végpontját, amely tartalmazza a titkos kulcsot.
 
 > [!Important]
-> Ha nincs megadva a tanúsítvány objektum-verziója, API Management automatikusan beolvassa a tanúsítvány újabb verzióját, miután Key Vault 4 órán belül feltöltötte azt.
+> Ha nem adja meg a tanúsítvány objektumának verzióját, akkor a API Management a tanúsítvány újabb verzióját a Key Vault frissítése után négy órán belül automatikusan beolvassa.
 
 Az alábbi példa egy Azure Resource Manager sablont mutat be, amely a következő lépéseket tartalmazza:
 
@@ -192,7 +192,7 @@ Az alábbi példa egy Azure Resource Manager sablont mutat be, amely a következ
         "keyVaultIdToCertificate": {
             "type": "string",
             "metadata": {
-                "description": "Reference to the KeyVault certificate. https://contoso.vault.azure.net/secrets/contosogatewaycertificate."
+                "description": "Reference to the Key Vault certificate. https://contoso.vault.azure.net/secrets/contosogatewaycertificate."
             }
         }
     },
@@ -262,36 +262,36 @@ Az alábbi példa egy Azure Resource Manager sablont mutat be, amely a következ
 }
 ```
 
-#### <a name="authenticate-using-api-management-identity-to-the-backend"></a>Hitelesítés API Management identitás használatával a háttérbe
+#### <a name="authenticate-to-the-back-end-by-using-an-api-management-identity"></a>Hitelesítés a háttérben API Management identitás használatával
 
-A rendszer által hozzárendelt identitás használatával hitelesíthető a háttérrendszer a [hitelesítéssel felügyelt identitás](api-management-authentication-policies.md#ManagedIdentity) -házirenddel.
+A rendszer által hozzárendelt identitás használatával a [hitelesítéssel felügyelt identitásra](api-management-authentication-policies.md#ManagedIdentity) vonatkozó házirend segítségével végezheti el a hitelesítést a háttérben.
 
 
-## <a name="create-a-user-assigned-managed-identity-for-an-api-management-instance"></a>Felhasználó által hozzárendelt felügyelt identitás létrehozása API Management-példányhoz
+## <a name="create-a-user-assigned-managed-identity"></a>Felhasználó által hozzárendelt felügyelt identitás létrehozása
 
 > [!NOTE]
-> Egy API Management példány legfeljebb 10 felhasználó által hozzárendelt felügyelt identitással társítható.
+> API Management-példányt társíthat legfeljebb 10 felhasználó által hozzárendelt felügyelt identitással.
 
-### <a name="using-the-azure-portal"></a>Az Azure Portal használata
+### <a name="azure-portal"></a>Azure Portal
 
-Ha felügyelt identitást szeretne beállítani a portálon, először létre kell hoznia egy API Management példányt a szokásos módon, majd engedélyeznie kell a szolgáltatást.
+Ha felügyelt identitást szeretne beállítani a portálon, először létre kell hoznia egy API Management példányt, majd engedélyeznie kell a szolgáltatást.
 
-1. A szokásos módon hozzon létre egy API Management példányt a portálon. Navigáljon a portálon.
+1. A szokásos módon hozzon létre egy API Management példányt a portálon. Tallózással keresse meg a portálon.
 2. Válassza a **felügyelt identitások**lehetőséget.
-3. A **felhasználó által hozzárendelt** lapon kattintson a **Hozzáadás**gombra.
-4. Keresse meg a korábban létrehozott identitást, és válassza ki. Kattintson a **Hozzáadás** parancsra.
+3. A **felhasználó által hozzárendelt** lapon válassza a **Hozzáadás**lehetőséget.
+4. Keresse meg a korábban létrehozott identitást, és válassza ki. Válassza a **Hozzáadás** elemet.
 
-   :::image type="content" source="./media/api-management-msi/enable-user-assigned-msi.png" alt-text="A felhasználóhoz rendelt felügyelt identitás engedélyezése." border="true":::
+   :::image type="content" source="./media/api-management-msi/enable-user-assigned-msi.png" alt-text="Felhasználó által hozzárendelt felügyelt identitás engedélyezésének kiválasztása" border="true":::
 
-### <a name="using-azure-powershell"></a>Az Azure PowerShell használata
+### <a name="azure-powershell"></a>Azure PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 A következő lépések végigvezetik egy API Management példány létrehozásán és az identitás Azure PowerShell használatával történő hozzárendelésének lépésein. 
 
-1. Szükség esetén telepítse a Azure PowerShell a [Azure PowerShell útmutatóban](/powershell/azure/install-az-ps)található utasításokkal, majd futtassa a parancsot az `Connect-AzAccount` Azure-hoz való kapcsolódáshoz.
+1. Ha szükséges, telepítse a Azure PowerShellt a [Azure PowerShell útmutató](/powershell/azure/install-az-ps)utasításai alapján. Ezután futtassa a parancsot `Connect-AzAccount` Az Azure-beli kapcsolatok létrehozásához.
 
-2. Hozzon létre egy API Management példányt a Azure PowerShell használatával. További példák a API Management-példánnyal való Azure PowerShell használatáról: [API Management PowerShell-minták](powershell-samples.md):
+2. A példány létrehozásához használja a következő kódot. További példák a Azure PowerShell API Management-példánnyal való használatáról: [API Management PowerShell-minták](powershell-samples.md).
 
     ```azurepowershell-interactive
     # Create a resource group.
@@ -306,7 +306,7 @@ A következő lépések végigvezetik egy API Management példány létrehozás�
     New-AzApiManagement -ResourceGroupName $resourceGroupName -Location $location -Name $apiManagementName -Organization contoso -AdminEmail admin@contoso.com -Sku Consumption -UserAssignedIdentity $userIdentities
     ```
 
-3. Frissítse és meglévő szolgáltatást, hogy identitást rendeljen a szolgáltatáshoz.
+3. Meglévő szolgáltatás frissítése identitás hozzárendeléséhez a szolgáltatáshoz:
 
     ```azurepowershell-interactive
     # Get an API Management instance
@@ -320,7 +320,7 @@ A következő lépések végigvezetik egy API Management példány létrehozás�
     Set-AzApiManagement -InputObject $apimService -UserAssignedIdentity $userIdentities
     ```
 
-### <a name="using-the-azure-resource-manager-template"></a>A Azure Resource Manager sablon használata
+### <a name="azure-resource-manager-template"></a>Azure Resource Manager-sablon
 
 A következő tulajdonságot az erőforrás-definícióban is létrehozhatja az identitással rendelkező API Management-példányt:
 
@@ -382,25 +382,25 @@ A szolgáltatás létrehozása után a következő tulajdonságokkal rendelkezik
 }
 ```
 
-A principalId az Azure AD-felügyelethez használt identitás egyedi azonosítója. A clientId az alkalmazás új identitásának egyedi azonosítója, amely a futásidejű hívásokban használandó identitás megadására szolgál.
+A `principalId` tulajdonság az Azure ad-felügyelethez használt identitás egyedi azonosítója. A `clientId` tulajdonság az alkalmazás új identitásának egyedi azonosítója, amely a futásidejű hívások során használandó identitás megadására szolgál.
 
 > [!NOTE]
-> Egy API Management-példányhoz a rendszerhez hozzárendelt és felhasználó által hozzárendelt identitások is tartozhatnak egyszerre. Ebben az esetben a tulajdonság a következő: `type``SystemAssigned,UserAssigned`
+> Egy API Management-példányhoz a rendszerhez hozzárendelt és felhasználó által hozzárendelt identitások is tartozhatnak egyszerre. Ebben az esetben a tulajdonság a következő `type` lesz: `SystemAssigned,UserAssigned` .
 
-### <a name="scenarios-supported"></a>Támogatott forgatókönyvek
+### <a name="supported-scenarios"></a>Támogatott esetek
 
-#### <a name="authenticate-using-user-assigned-identity-to-the-backend"></a>Hitelesítés felhasználó által hozzárendelt identitással a háttérrendszer használatával
+#### <a name="authenticate-to-the-back-end-by-using-a-user-assigned-identity"></a>Hitelesítés a háttérben a felhasználó által hozzárendelt identitás használatával
 
-A felhasználó által hozzárendelt identitás használatával a [hitelesítéssel felügyelt identitás](api-management-authentication-policies.md#ManagedIdentity) -házirenddel végezheti el a hitelesítést a háttérbe.
+A felhasználó által hozzárendelt identitás használatával a [hitelesítéssel felügyelt identitás](api-management-authentication-policies.md#ManagedIdentity) -házirenddel végezheti el a hitelesítést a háttérben.
 
 
 ## <a name="remove-an-identity"></a><a name="remove"></a>Identitás eltávolítása
 
-A rendszer által hozzárendelt identitás eltávolításához tiltsa le a szolgáltatást a portálon vagy a Azure Resource Manager sablonnal ugyanúgy, ahogyan azt létrehozták. A felhasználó által hozzárendelt identitások egyenként eltávolíthatók. Az összes identitás eltávolításához állítsa az identitás típusát "None" értékre.
+A rendszer által hozzárendelt identitást úgy távolíthatja el, ha letiltja a szolgáltatást a portálon vagy a Azure Resource Manager sablonon, ahogyan azt létrehozták. A felhasználó által hozzárendelt identitások egyenként eltávolíthatók. Az összes identitás eltávolításához állítsa az identitás típusát a következőre: `"None"` .
 
 A rendszer által hozzárendelt identitások eltávolítása az Azure AD-ből is törölve lesz. A rendszer által hozzárendelt identitások automatikusan törlődnek az Azure AD-ből, ha a API Management példányt törlik.
 
-Ha Azure Resource Manager sablon használatával szeretné eltávolítani az összes identitást, frissítse ezt a szakaszt:
+Ha a Azure Resource Manager sablonnal szeretné eltávolítani az összes identitást, frissítse ezt a szakaszt:
 
 ```json
 "identity": {
@@ -409,13 +409,14 @@ Ha Azure Resource Manager sablon használatával szeretné eltávolítani az ös
 ```
 
 > [!Important]
-> Ha egy API Management-példány egyéni SSL-tanúsítvánnyal van konfigurálva a kulcstartóból, és kísérlet történt a felügyelt identitás letiltására, a kérelem sikertelen.
-> Az ügyfél letilthatja önmagát, ha átvált Azure Key Vault tanúsítványról a beágyazott kódolt tanúsítvány biztosításához, majd letiltja a felügyelt identitást. Lásd az [egyéni tartomány konfigurálása](configure-custom-domain.md) című témakört.
+> Ha egy API Management-példány egyéni SSL-tanúsítvánnyal van konfigurálva Key Vault és megpróbál letiltani egy felügyelt identitást, a kérelem sikertelen lesz.
+>
+> A blokkolás feloldásához váltson át egy Azure Key Vault-tanúsítványról egy beágyazott kódolt tanúsítványra, majd tiltsa le a felügyelt identitást. További információ: [Egyéni tartománynév konfigurálása](configure-custom-domain.md).
 
 ## <a name="next-steps"></a>További lépések
 
 További információ az Azure-erőforrások felügyelt identitásáról:
 
-* [Az Azure-erőforrások felügyelt identitásai](../active-directory/managed-identities-azure-resources/overview.md)
+* [Mik azok az Azure-erőforrások felügyelt identitásai?](../active-directory/managed-identities-azure-resources/overview.md)
 * [Azure Resource Manager-sablonok](https://github.com/Azure/azure-quickstart-templates)
 * [Hitelesítés felügyelt identitással egy házirendben](./api-management-authentication-policies.md#ManagedIdentity)

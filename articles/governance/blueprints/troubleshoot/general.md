@@ -1,14 +1,14 @@
 ---
 title: Gyakori hibák elhárítása
 description: Ismerje meg, hogyan lehet elhárítani a tervezetek létrehozásával, hozzárendelésével és eltávolításával kapcsolatos problémákat, például a szabályzat megsértését és a terv paramétereinek funkcióit.
-ms.date: 01/15/2020
+ms.date: 06/29/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 7306e344a479008a87164a954c4444d375950b0b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d1dcd88fd6f7a9ab5035a5977ab5d50f3e6caf54
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76157083"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85557519"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Az Azure-tervezetekkel kapcsolatos hibák elhárítása
 
@@ -55,11 +55,11 @@ A függvények feldolgozására szolgáló tervrajzi paramétereket a rendszer a
 
 #### <a name="cause"></a>Ok
 
-Egy függvényt (például `[resourceGroup().tags.myTag]`) használó tervrajzi paraméter átadása az összetevőnek a dinamikus függvény helyett a tárgyban beállított függvény feldolgozott eredményét eredményezi.
+Egy függvényt (például) használó tervrajzi paraméter átadása az `[resourceGroup().tags.myTag]` összetevőnek a dinamikus függvény helyett a tárgyban beállított függvény feldolgozott eredményét eredményezi.
 
 #### <a name="resolution"></a>Megoldás:
 
-Egy függvény paraméterként való átadásához escape a teljes karakterláncot `[` oly módon, hogy a terv paramétere hasonlítson. `[[resourceGroup().tags.myTag]` Az escape-karakter olyan tervrajzokat okoz, amelyek az értéket karakterláncként kezelik a terv feldolgozásakor. A tervrajzok ezután elhelyezik a függvényt az adott összetevőn, ami lehetővé teszi, hogy a várt módon dinamikus legyen. További információ: [szintaxis és kifejezések Azure Resource Manager sablonokban](../../../azure-resource-manager/templates/template-expressions.md).
+Egy függvény paraméterként való átadásához escape a teljes karakterláncot `[` oly módon, hogy a terv paramétere hasonlítson `[[resourceGroup().tags.myTag]` . Az escape-karakter olyan tervrajzokat okoz, amelyek az értéket karakterláncként kezelik a terv feldolgozásakor. A tervrajzok ezután elhelyezik a függvényt az adott összetevőn, ami lehetővé teszi, hogy a várt módon dinamikus legyen. További információ: [szintaxis és kifejezések Azure Resource Manager sablonokban](../../../azure-resource-manager/templates/template-expressions.md).
 
 ## <a name="delete-errors"></a>Törlési hibák
 
@@ -82,5 +82,5 @@ A nem terminálos állapotú terv-hozzárendelések egy _6 órás_ időkorlát u
 Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
 
 - Választ kaphat az Azure-szakértőktől az [Azure-fórumokon](https://azure.microsoft.com/support/forums/).
-- Az Azure [@AzureSupport](https://twitter.com/azuresupport) -Közösség a megfelelő erőforrásokhoz való csatlakoztatásával, a hivatalos Microsoft Azure fiókkal csatlakozhat a felhasználói élmény fokozásához: válaszok, támogatás és szakértők.
+- Az [@AzureSupport](https://twitter.com/azuresupport) Azure-Közösség a megfelelő erőforrásokhoz való csatlakoztatásával, a hivatalos Microsoft Azure fiókkal csatlakozhat a felhasználói élmény fokozásához: válaszok, támogatás és szakértők.
 - Ha további segítségre van szüksége, egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése**lehetőséget.

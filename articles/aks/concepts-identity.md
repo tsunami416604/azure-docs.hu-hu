@@ -4,12 +4,12 @@ description: Ismerje meg az Azure Kubernetes szolgáltatás (ak) hozzáférésé
 services: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
-ms.openlocfilehash: e4945535417f7d8d33308121267ba97e1f835e13
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: ffb3f0a7aee63f8b655e7056ee870de80c2f814e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84690421"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85558175"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Hozzáférési és identitás-beállítások az Azure Kubernetes Service (AKS) szolgáltatáshoz
 
@@ -67,6 +67,9 @@ Ha a szerepkörök úgy vannak meghatározva, hogy engedélyeket adjanak az erő
 A szerepkör-kötések egy adott névtér szerepköreinek hozzárendelésére szolgálnak. Ez a megközelítés lehetővé teszi, hogy logikailag elkülönítse egyetlen AK-beli fürtöt, és a felhasználók csak a hozzárendelt névtérben lévő alkalmazás-erőforrásokat tudják elérni. Ha a szerepköröket a teljes fürtön kell megkötnie, vagy egy adott névtéren kívüli fürt erőforrásaira van szüksége, használhatja a *ClusterRoleBindings*.
 
 A ClusterRoleBinding ugyanúgy működik, mint a szerepkörök felhasználókhoz való kötése, de a teljes fürtön lévő erőforrásokra, nem pedig egy adott névtérre is alkalmazhatók. Ez a megközelítés lehetővé teszi, hogy a rendszergazdák vagy a támogatási mérnökök hozzáférjenek az AK-fürt összes erőforrásához.
+
+> [!NOTE]
+> A Microsoft támogatási szolgálata által végrehajtott összes művelet felhasználói beleegyezett a név ["szerkesztés"](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) szerepkörének beépített Kubernetes `aks-support-rolebinding` . Ebben az AK-beli szerepkör-támogatásban engedélyezve van a fürtkonfiguráció és az erőforrások szerkesztése a fürtökkel kapcsolatos problémák elhárításához és diagnosztizálásához, de a szerepkör nem módosíthatja az engedélyeket, és nem hozhat létre szerepköröket vagy szerepkör-kötéseket. A szerepkör-hozzáférés csak az aktív támogatási jegyek esetében engedélyezett az igény szerinti (JIT) hozzáféréssel. Tudjon meg többet az [AK-támogatási szabályzatokról](support-policies.md).
 
 ## <a name="next-steps"></a>További lépések
 

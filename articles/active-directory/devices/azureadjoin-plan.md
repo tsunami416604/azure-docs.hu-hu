@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17e6660548084d64fce38617ba4e80ccf197f3d3
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: d43e6e89faa8eca720e3aeafc873af1a18b9753b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85253069"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555018"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Útmutató: az Azure AD JOIN megvalósításának megtervezése
 
@@ -32,15 +32,14 @@ Ez a cikk azt feltételezi, hogy ismeri a [Azure Active Directory eszköz-felüg
 
 Az Azure AD JOIN megvalósításának megtervezéséhez Ismerkedjen meg a következővel:
 
-|   |   |
-|---|---|
-|![Jelölőnégyzet][1]|Forgatókönyvek áttekintése|
-|![Jelölőnégyzet][1]|Az identitás-infrastruktúra áttekintése|
-|![Jelölőnégyzet][1]|Az eszközök kezelésének felmérése|
-|![Jelölőnégyzet][1]|Az alkalmazásokkal és erőforrásokkal kapcsolatos megfontolások ismertetése|
-|![Jelölőnégyzet][1]|A kiépítési lehetőségek megismerése|
-|![Jelölőnégyzet][1]|Vállalati állapot barangolásának konfigurálása|
-|![Jelölőnégyzet][1]|Feltételes hozzáférés konfigurálása|
+> [!div class="checklist"]
+> - Forgatókönyvek áttekintése
+> - Az identitás-infrastruktúra áttekintése
+> - Az eszközök kezelésének felmérése
+> - Az alkalmazásokkal és erőforrásokkal kapcsolatos megfontolások ismertetése
+> - A kiépítési lehetőségek megismerése
+> - Vállalati állapot barangolásának konfigurálása
+> - Feltételes hozzáférés konfigurálása
 
 ## <a name="review-your-scenarios"></a>Forgatókönyvek áttekintése 
 
@@ -197,7 +196,7 @@ Az Azure AD JOIN a következő módszerekkel építhető ki:
  
 A következő három megközelítés összehasonlítása 
  
-|   | Önkiszolgáló telepítés | Windows Autopilot | Csoportos regisztráció |
+| Elem | Önkiszolgáló telepítés | Windows Autopilot | Csoportos regisztráció |
 | --- | --- | --- | --- |
 | Felhasználói beavatkozás szükséges a beállításhoz | Igen | Igen | Nem |
 | INFORMATIKAI erőfeszítés megkövetelése | Nem | Igen | Igen |

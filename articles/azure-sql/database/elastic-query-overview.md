@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 12/05/2019
-ms.openlocfilehash: 9069ec574af54c5c44efac5a6a9df1da62053219
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 0497356e536632d179f4f64a6a9df8551a7a1897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195095"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85557866"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Azure SQL Database rugalmas lekérdezés áttekintése (előzetes verzió)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -148,7 +148,7 @@ A rugalmas lekérdezés a Azure SQL Database díja részét képezi. Vegye figye
 * A külső táblákon lévő oszlopok statisztikái jelenleg nem támogatottak. A tábla statisztikái támogatottak, de manuálisan kell létrehozni.
 * A rugalmas lekérdezés csak Azure SQL Databaseekkel működik. SQL Server példány lekérdezéséhez nem használható.
 
-## <a name="feedback"></a>Visszajelzés
+## <a name="share-your-feedback"></a>Ossza meg velünk véleményét
 
 Ossza meg velünk a tapasztalatait rugalmas lekérdezésekkel az alábbi MSDN-fórumokon, illetve a Stack Overflowon. A szolgáltatással kapcsolatos visszajelzések (hibák, durva élek, szolgáltatások hiányosságainak) iránt érdeklődünk.
 

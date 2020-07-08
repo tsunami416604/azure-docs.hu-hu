@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf05532f81d70d4d7b09de2ccbf9807273a85330
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 38f3a6d9cea1aa1ebcb76f61882dcf2615dc4832
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83799593"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85554650"
 ---
 # <a name="overview-of-azure-multi-factor-authentication-for-your-organization"></a>A szervezethez tartozó Azure-Multi-Factor Authentication áttekintése
 
@@ -53,14 +53,14 @@ Biztosítja a legerősebb biztonsági helyzetet és a jobb felhasználói élmé
 
 ## <a name="authentication-methods"></a>Hitelesítési módszerek
 
-|   | Alapértelmezett biztonsági szabályok | Minden egyéb módszer |
+| Metódus | Alapértelmezett biztonsági szabályok | Minden egyéb módszer |
 | --- | --- | --- |
 | Értesítés a Mobile App használatával | X | X |
 | Ellenőrző kód a Mobile App vagy a Hardware tokenből |   | X |
 | SMS-üzenet a telefonra |   | X |
 | Telefonos hívás |   | X |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az első lépésekhez tekintse meg az oktatóanyagot a [felhasználói bejelentkezési események biztonságossá tételéhez az Azure multi-Factor Authentication](../authentication/tutorial-enable-azure-mfa.md)használatával.
 

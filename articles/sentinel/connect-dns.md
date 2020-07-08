@@ -1,6 +1,6 @@
 ---
 title: DNS-adatkapcsolatok összekötése az Azure Sentinelben | Microsoft Docs
-description: Ismerje meg, hogyan csatlakoztathatók a DNS-adatkészletek az Azure Sentinelben.
+description: Ismerje meg, hogy a Windows rendszeren futó bármely tartománynév-kiszolgálót (DNS) a DNS-gépen lévő ügynök telepítésével kapcsolódjon az Azure Sentinelhez.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: yelevin
-ms.openlocfilehash: 6d43b82ecd13ac5e082d270ee44ce61fef763d2c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a88696ba69fdf53f5c7e15d174b126d69f4230ea
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77588314"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555437"
 ---
 # <a name="connect-your-domain-name-server"></a>A tartománynév-kiszolgáló összekötése
 
@@ -43,10 +43,10 @@ A következő táblázat ismerteti a megoldás által támogatott csatlakoztatot
 
 | **Csatlakoztatott forrás** | **Támogatás** | **Leírás** |
 | --- | --- | --- |
-| [Windows-ügynökök](../azure-monitor/platform/agent-windows.md) | Igen | A megoldás DNS-információkat gyűjt a Windows-ügynököktől. |
-| [Linux-ügynökök](../azure-monitor/learn/quick-collect-linux-computer.md) | Nem | A megoldás nem gyűjt DNS-adatokat a közvetlen Linux-ügynököktől. |
-| [System Center Operations Manage felügyeleti csoport](../azure-monitor/platform/om-agents.md) | Igen | A megoldás a DNS-információkat a csatlakoztatott Operations Manager felügyeleti csoportban lévő ügynököktől gyűjti. Nem szükséges közvetlen kapcsolódás a Operations Manager ügynöktől a Azure Monitorhoz. Az adatok továbbítása a felügyeleti csoportból a Log Analytics munkaterületre történik. |
-| [Azure Storage-fiók](../azure-monitor/platform/collect-azure-metrics-logs.md) | Nem | A megoldás nem használja az Azure Storage-t. |
+| [Windows-ügynökök](../azure-monitor/platform/agent-windows.md) | Yes | A megoldás DNS-információkat gyűjt a Windows-ügynököktől. |
+| [Linux-ügynökök](../azure-monitor/learn/quick-collect-linux-computer.md) | No | A megoldás nem gyűjt DNS-adatokat a közvetlen Linux-ügynököktől. |
+| [System Center Operations Manage felügyeleti csoport](../azure-monitor/platform/om-agents.md) | Yes | A megoldás a DNS-információkat a csatlakoztatott Operations Manager felügyeleti csoportban lévő ügynököktől gyűjti. Nem szükséges közvetlen kapcsolódás a Operations Manager ügynöktől a Azure Monitorhoz. Az adatok továbbítása a felügyeleti csoportból a Log Analytics munkaterületre történik. |
+| [Azure Storage-fiók](../azure-monitor/platform/collect-azure-metrics-logs.md) | No | A megoldás nem használja az Azure Storage-t. |
 
 ### <a name="data-collection-details"></a>Adatgyűjtés részletei
 

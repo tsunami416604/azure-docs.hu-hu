@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: bd89e3366fbaa60109be9ef3552970936f0a6715
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 4714fbb5d9f08e0b02dbc8f6cb32845642911e51
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85080560"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85556296"
 ---
 # <a name="how-to-use-azure-cognitive-search-from-a-net-application"></a>Az Azure Cognitive Search használata .NET-alkalmazásokból
 
@@ -38,7 +38,7 @@ A különböző ügyféloldali kódtárak olyan osztályokat határoznak meg, mi
 
 Ha visszajelzést szeretne küldeni az SDK jövőbeli frissítéséről, tekintse meg a [Visszajelzés oldalt](https://feedback.azure.com/forums/263029-azure-search/) , vagy hozzon létre egy problémát a [githubon](https://github.com/azure/azure-sdk-for-net/issues) , és nevezze el az "Azure Cognitive Search" kifejezést a probléma címében.
 
-A .NET SDK az `2019-05-06` [Azure Cognitive Search REST API](https://docs.microsoft.com/rest/api/searchservice/)verzióját támogatja. Ebben a verzióban az Azure-Blobok indexelése során az [összetett típusok](search-howto-complex-data-types.md), az [AI](cognitive-search-concept-intro.md)-bővítés, az [automatikus kiegészítés](https://docs.microsoft.com/rest/api/searchservice/autocomplete)és a [JsonLines-elemzési mód](search-howto-index-json-blobs.md) támogatása szerepel. 
+Az `2019-05-06` [Azure Cognitive Search REST API](https://docs.microsoft.com/rest/api/searchservice/).net SDK-példánya. Ebben a verzióban az Azure-Blobok indexelése során az [összetett típusok](search-howto-complex-data-types.md), az [AI](cognitive-search-concept-intro.md)-bővítés, az [automatikus kiegészítés](https://docs.microsoft.com/rest/api/searchservice/autocomplete)és a [JsonLines-elemzési mód](search-howto-index-json-blobs.md) támogatása szerepel. 
 
 Ez az SDK nem támogatja a [felügyeleti műveleteket](https://docs.microsoft.com/rest/api/searchmanagement/) , például a keresési szolgáltatások létrehozását és méretezését, valamint az API-kulcsok kezelését. Ha a keresési erőforrásokat egy .NET-alkalmazásból szeretné kezelni, használhatja az [Azure Cognitive Search .net Management SDK](https://aka.ms/search-mgmt-sdk)-t.
 

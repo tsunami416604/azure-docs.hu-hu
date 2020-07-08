@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22ab3e7403069ed1b579631b88c2ac2c41191ecd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bf21f2ea5aacb36f3a76034e99b748bf4c6c363b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181324"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85554771"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Útmutató: a hibrid Azure Active Directory JOIN implementációjának megtervezése
 
@@ -41,13 +41,12 @@ Ez a cikk azt feltételezi, hogy ismeri a [Azure Active Directory eszköz-identi
 
 A hibrid Azure AD-megvalósítás megtervezéséhez Ismerkedjen meg a következővel:
 
-|   |   |
-| --- | --- |
-| ![Jelölőnégyzet][1] | Támogatott eszközök áttekintése |
-| ![Jelölőnégyzet][1] | Tekintse át a tudni kívánt dolgokat |
-| ![Jelölőnégyzet][1] | Hibrid Azure AD-csatlakozás ellenőrzött ellenőrzésének áttekintése |
-| ![Jelölőnégyzet][1] | Válassza ki a forgatókönyvet az identitás-infrastruktúra alapján |
-| ![Jelölőnégyzet][1] | A hibrid Azure AD-csatlakozás helyszíni AD UPN-támogatásának áttekintése |
+> [!div class="checklist"]
+> - Támogatott eszközök áttekintése
+> - Tekintse át a tudni kívánt dolgokat
+> - Hibrid Azure AD-csatlakozás ellenőrzött ellenőrzésének áttekintése
+> - Válassza ki a forgatókönyvet az identitás-infrastruktúra alapján
+> - A hibrid Azure AD-csatlakozás helyszíni AD UPN-támogatásának áttekintése
 
 ## <a name="review-supported-devices"></a>Támogatott eszközök áttekintése
 
@@ -136,7 +135,7 @@ Az összevont környezetnek rendelkeznie kell egy olyan identitás-szolgáltató
   `/adfs/services/trust/13/certificatemixed` 
 
 > [!WARNING] 
-> Az **ADFS/Services/Trust/2005/windowstransport** , vagy az **ADFS/Services/Trust/13/windowstransport** beállítást csak intranetes végpontként kell engedélyezni, és a webalkalmazás-proxyn keresztül nem szabad az extranet felé irányuló végpontok számára elérhetővé tenni. Ha többet szeretne megtudni a WS-Trust Windows-végpontok letiltásáról, tekintse meg a következőt: [ws-Trust Windows-végpontok letiltása a proxyn](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). Láthatja, hogy mely végpontok vannak engedélyezve a AD FS felügyeleti konzolon a **szolgáltatási** > **végpontok**alatt.
+> Az **ADFS/Services/Trust/2005/windowstransport** , vagy az **ADFS/Services/Trust/13/windowstransport** beállítást csak intranetes végpontként kell engedélyezni, és a webalkalmazás-proxyn keresztül nem szabad az extranet felé irányuló végpontok számára elérhetővé tenni. Ha többet szeretne megtudni a WS-Trust Windows-végpontok letiltásáról, tekintse meg a következőt: [ws-Trust Windows-végpontok letiltása a proxyn](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). Láthatja, hogy mely végpontok vannak engedélyezve a AD FS felügyeleti konzolon a **szolgáltatási**  >  **végpontok**alatt.
 
 > [!NOTE]
 > Az Azure AD nem támogatja a felügyelt tartományokban található intelligens kártyákat vagy tanúsítványokat.
@@ -160,18 +159,18 @@ Előfordulhat, hogy a helyszíni AD-felhasználók UPN-felhasználónevei eltér
 
 Az alábbi táblázat részletesen ismerteti ezen helyszíni AD UPN-ket a Windows 10 hibrid Azure AD JOIN szolgáltatásban
 
-| A helyszíni AD UPN típusa | Alkalmazási tartomány típusa | Windows 10 verzió | Leírás |
+| A helyszíni AD UPN típusa | Alkalmazási tartomány típusa | Windows 10 verzió | Description |
 | ----- | ----- | ----- | ----- |
 | Irányítható | Összevont | 1703-es kiadásból | Általánosan elérhető |
 | Nem irányítható | Összevont | 1803-es kiadásból | Általánosan elérhető |
-| Irányítható | Kezelt | 1803-es kiadásból | Általánosan elérhető, az Azure AD SSPR a Windows lockscreen nem támogatott |
-| Nem irányítható | Kezelt | Nem támogatott | |
+| Irányítható | Felügyelt | 1803-es kiadásból | Általánosan elérhető, az Azure AD SSPR a Windows lockscreen nem támogatott |
+| Nem irányítható | Felügyelt | Nem támogatott | |
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Hibrid Azure Active Directory illesztés konfigurálása összevont környezethez](hybrid-azuread-join-federated-domains.md)
-> [hibrid Azure Active Directory csatlakozás konfigurálása felügyelt környezethez](hybrid-azuread-join-managed-domains.md)
+> [Hibrid Azure Active Directory csatlakozás konfigurálása összevont környezethez](hybrid-azuread-join-federated-domains.md) 
+>  [Hibrid Azure Active Directory csatlakozás konfigurálása felügyelt környezethez](hybrid-azuread-join-managed-domains.md)
 
 <!--Image references-->
 [1]: ./media/hybrid-azuread-join-plan/12.png

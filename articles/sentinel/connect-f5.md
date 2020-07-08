@@ -1,6 +1,6 @@
 ---
 title: Az F5 ASM-adatbázis összekötése az Azure Sentinel szolgáltatással | Microsoft Docs
-description: Ismerje meg, hogyan csatlakoztathatók az F5 ASM-beli adatközpontok az Azure Sentinelhez.
+description: Ismerje meg, hogyan hívhatja le az F5 ASM-naplókat az Azure Sentinel szolgáltatásba az F5 ASM adatösszekötő használatával. Megtekintheti az F5-es ASM-adatlemezeket, riasztásokat hozhat létre, és javíthatja a vizsgálatot.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/20/2020
 ms.author: yelevin
-ms.openlocfilehash: bee8ec9b6532042659d54d590a29d49e7ce07c92
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 63e20467750e9a4b0c85de33180d4fa51831e59b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715834"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555422"
 ---
 # <a name="connect-f5-asm-to-azure-sentinel"></a>Az F5 ASM és az Azure Sentinel összekötése
 
@@ -40,7 +40,7 @@ Ez a cikk azt ismerteti, hogyan használható az F5 ASM adatösszekötő az F5 A
 1. Folytassa a [3. lépéssel: a kapcsolat ellenőrzése](connect-cef-verify.md).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebből a dokumentumból megtanulta, hogyan csatlakoztatható az F5 ASM az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
 - Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats.md).

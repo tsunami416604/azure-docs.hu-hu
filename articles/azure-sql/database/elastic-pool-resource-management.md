@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: carlrab
-ms.date: 03/13/2019
-ms.openlocfilehash: 1db8eeecf411ae219474029e09cb866aaf0d5bbe
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 06/29/2020
+ms.openlocfilehash: d35b4691bcf6e40edd57d4caeae00e18a8298925
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84045724"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85558881"
 ---
 # <a name="resource-management-in-dense-elastic-pools"></a>Erőforrás-kezelés sűrű rugalmas készletekben
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -52,7 +52,7 @@ Ahhoz, hogy a teljesítmény romlása elkerülhető legyen az erőforrás-tartal
 
 Azure SQL Database több mérőszámot biztosít, amelyek az ilyen típusú figyelés szempontjából relevánsak. Az egyes mérőszámok ajánlott átlagos értéke meghaladja az erőforrás-tartalmat a készletben, és a korábban említett műveletek egyikével kell foglalkoznia.
 
-|Metrika neve|Leírás|Ajánlott átlagos érték|
+|Metrika neve|Description|Ajánlott átlagos érték|
 |----------|--------------------------------|------------|
 |`avg_instance_cpu_percent`|A rugalmas készlethez társított SQL-folyamat CPU-kihasználtsága az alapul szolgáló operációs rendszer által mért módon. Minden adatbázis [sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database?view=azuresqldb-current) nézetében, valamint az adatbázis [sys. elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) nézetében érhető el `master` . Ezt a metrikát a Azure Monitor is kibocsátja, ahol a [neve](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserverselasticpools) `sqlserver_process_core_percent` , és Azure Portal megtekinthető. Ez az érték azonos a rugalmas készletben lévő összes adatbázis esetében.|70% alá. Előfordulhat, hogy az alkalmi rövid tüskék akár 90%-ot is elfogadhatónak tartanak.|
 |`max_worker_percent`|[Munkavégző szál]( https://docs.microsoft.com/sql/relational-databases/thread-and-task-architecture-guide) kihasználtsága. A készlet minden adatbázisához, valamint magához a készlethez van megadva. A munkaszálak száma az adatbázis szintjén és a készlet szintjén eltérő korlátozásokkal jár, ezért a mérőszám mindkét szinten történő figyelése ajánlott. Minden adatbázis [sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database?view=azuresqldb-current) nézetében, valamint az adatbázis [sys. elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) nézetében érhető el `master` . Ezt a metrikát a Azure Monitor is kibocsátja, ahol a [neve](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserverselasticpools) `workers_percent` , és Azure Portal megtekinthető.|80% alá. Az akár 100%-os tüskék miatt a kapcsolódási kísérletek és a lekérdezések sikertelenek lesznek.|
@@ -60,12 +60,12 @@ Azure SQL Database több mérőszámot biztosít, amelyek az ilyen típusú figy
 |`avg_log_write_percent`|Adatforgalom kihasználtsága a tranzakciónapló írási IO-írásához. A készlet minden adatbázisához, valamint magához a készlethez van megadva. Az adatbázis szintjén különböző korlátozások vonatkoznak a naplózási teljesítményre, és a készlet szintjén, ezért a mérőszám mindkét szinten történő figyelése ajánlott. Minden adatbázis [sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) nézetében, valamint az adatbázis [sys. elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) nézetében érhető el `master` . Ezt a metrikát a Azure Monitor is kibocsátja, ahol a [neve](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserverselasticpools) `log_write_percent` , és Azure Portal megtekinthető. Ha ez a metrika eléri a 100%-ot, az adatbázis összes módosítása (INSERT, UPDATE, DELETE, MERGE utasítások, SELECT... INTO, BULK INSERT stb.) lassabb lesz.|90% alá. Előfordulhat, hogy az alkalmi rövid tüskék akár 100%-ot is elfogadhatónak tartanak.|
 |`oom_per_second`|A memórián kívüli (bácsi) hibák aránya egy rugalmas készletben, amely a memória nyomásának jelzője. Elérhető a [sys. dm_resource_governor_resource_pools_history_ex](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-resource-governor-resource-pools-history-ex-azure-sql-database?view=azuresqldb-current) nézetben. A mérőszám kiszámításához tekintse meg a minta lekérdezés [példáit](#examples) .|0|
 |`avg_storage_percent`|Tárterület kihasználtsága a rugalmas készlet szintjén. Az adatbázis [sys. elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) nézetében érhető el `master` . Ezt a metrikát a Azure Monitor is kibocsátja, ahol a [neve](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserverselasticpools) `storage_percent` , és Azure Portal megtekinthető.|80% alá. Az Adatnövekedés nélküli készletek esetében 100%-ot tud megközelíteni.|
-|`tempdb_log_used_percent`|A tranzakciós napló területének kihasználtsága az `tempdb` adatbázisban. Annak ellenére, hogy az egyik adatbázisban létrehozott ideiglenes objektumok nem láthatók ugyanabban a rugalmas készletben lévő más adatbázisokban, `tempdb` egy megosztott erőforrás az azonos készletben található összes adatbázishoz. Egy hosszú ideig futó vagy tétlen tranzakció, amely a `tempdb` készlet egyik adatbázisából indult el, a tranzakciónapló nagy részét felhasználhatja, és hibákat okozhat az ugyanabban a készletben lévő más adatbázisokban lévő lekérdezésekben. Elérhető a [sys. dm_db_log_space_usage](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-log-space-usage-transact-sql) nézetben. Ez a metrika Azure Monitor is kibocsátható, és Azure Portal megtekinthető. Tekintse át a minta lekérdezés [példáit](#examples) a metrika aktuális értékének visszaküldéséhez.|50% alá. Az alkalmi tüskék akár 80%-ot is elfogadhatók.|
+|`tempdb_log_used_percent`|A tranzakciós napló területének kihasználtsága az `tempdb` adatbázisban. Annak ellenére, hogy az egyik adatbázisban létrehozott ideiglenes objektumok nem láthatók ugyanabban a rugalmas készletben lévő más adatbázisokban, `tempdb` egy megosztott erőforrás az azonos készletben található összes adatbázishoz. A készlet egyik adatbázisából indított, hosszú ideig futó vagy árva tranzakció a `tempdb` tranzakciónapló nagy részét felhasználhatja, és hibákat okozhat az ugyanabban a készletben lévő más adatbázisokban lévő lekérdezésekben. A [sys. dm_db_log_space_usage](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-log-space-usage-transact-sql) és a [sys. database_files](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-database-files-transact-sql) nézetekből származtatva. Ez a metrika Azure Monitor is kibocsátható, és Azure Portal megtekinthető. Tekintse át a minta lekérdezés [példáit](#examples) a metrika aktuális értékének visszaküldéséhez.|50% alá. Az alkalmi tüskék akár 80%-ot is elfogadhatók.|
 |||
 
 Ezen mérőszámok mellett Azure SQL Database olyan nézetet biztosít, amely a tényleges erőforrás-irányítási korlátokat adja vissza, valamint olyan további nézeteket, amelyek erőforrás-kihasználtsági statisztikát adnak vissza az erőforráskészlet szintjén, valamint a munkaterhelés csoport szintjén.
 
-|Nézet neve|Leírás|  
+|Nézet neve|Description|  
 |-----------------|--------------------------------|  
 |[sys. dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database)|Az erőforrás-irányítási mechanizmusok által az aktuális adatbázisban vagy rugalmas készletben használt aktuális konfigurációs és kapacitási beállítások visszaadása.|
 |[sys. dm_resource_governor_resource_pools](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-resource-governor-resource-pools-transact-sql)|Az aktuális erőforráskészlet-állapottal, az erőforráskészlet aktuális konfigurációjával és a halmozott erőforráskészlet statisztikájának adatait adja vissza.|
@@ -114,11 +114,17 @@ ORDER BY pool_id;
 
 ### <a name="monitoring-tempdb-log-space-utilization"></a>A `tempdb` naplózási terület kihasználtságának figyelése
 
-Ez a lekérdezés a metrika aktuális értékét adja vissza `tempdb_log_used_percent` . Ez a lekérdezés egy rugalmas készlet bármely adatbázisában végrehajtható.
+Ez a lekérdezés a metrika aktuális értékét adja vissza `tempdb_log_used_percent` , amely a tranzakciós napló relatív kihasználtságát mutatja a `tempdb` maximálisan megengedett mérethez képest. Ez a lekérdezés egy rugalmas készlet bármely adatbázisában végrehajtható.
 
 ```sql
-SELECT used_log_space_in_percent AS tempdb_log_used_percent
-FROM tempdb.sys.dm_db_log_space_usage;
+SELECT (lsu.used_log_space_in_bytes / df.log_max_size_bytes) * 100 AS tempdb_log_space_used_percent
+FROM tempdb.sys.dm_db_log_space_usage AS lsu
+CROSS JOIN (
+           SELECT SUM(CAST(max_size AS bigint)) * 8 * 1024. AS log_max_size_bytes
+           FROM tempdb.sys.database_files
+           WHERE type_desc = N'LOG'
+           ) AS df
+;
 ```
 
 ## <a name="next-steps"></a>További lépések

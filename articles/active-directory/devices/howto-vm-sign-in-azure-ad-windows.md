@@ -12,21 +12,19 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 700e8f2ae29ad41ceaecf58c3ffde4a27725c25c
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 152f7ab6ccb9f01c7fe70553501c8cf8afa1c650
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85252797"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85554894"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Bejelentkezés az Azure-beli Windows rendszerű virtuális gépre Azure Active Directory hitelesítéssel (előzetes verzió)
 
 A szervezetek mostantól Azure Active Directory (AD) hitelesítést használhatnak a **Windows Server 2019 Datacenter Edition** vagy **Windows 10 1809** vagy újabb rendszert futtató Azure-beli virtuális gépek (VM-EK) számára. Az Azure AD használatával a virtuális gépek hitelesítése lehetővé teszi a házirendek központi felügyeletét és betartatását. Az olyan eszközök, mint az Azure szerepköralapú Access Control (RBAC) és az Azure AD feltételes hozzáférése lehetővé teszi, hogy ki férhet hozzá a virtuális géphez. Ebből a cikkből megtudhatja, hogyan hozhat létre és konfigurálhat egy Windows Server 2019 rendszerű virtuális gépet az Azure AD-hitelesítés használatához.
 
-|     |
-| --- |
-| Az Azure AD-bejelentkezés az Azure-beli Windows rendszerű virtuális gépek nyilvános előzetes verziója Azure Active Directory. További információ az előzetes verziókról: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
-|     |
+> [!NOTE]
+> Az Azure AD-bejelentkezés az Azure-beli Windows rendszerű virtuális gépek nyilvános előzetes verziója Azure Active Directory. További információ az előzetes verziókról: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Az Azure AD-hitelesítés használatának számos előnye van az Azure-beli Windows rendszerű virtuális gépekre való bejelentkezéshez, beleértve a következőket:
 

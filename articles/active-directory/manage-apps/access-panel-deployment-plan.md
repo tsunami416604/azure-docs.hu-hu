@@ -15,12 +15,12 @@ ms.date: 09/27/2019
 ms.author: kenwith
 ms.reviewer: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aeffcfc919a6aeeae61ed79286d613d72c6b183c
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 8b8a74c85b63e3a532e49136ba3b33437d907694
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84761170"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555306"
 ---
 # <a name="plan-an-azure-active-directory-access-panel-deployment"></a>Azure Active Directory-hozzáférési panel üzembe helyezésének megtervezése
 
@@ -63,7 +63,7 @@ A hozzáférési panel ingyenes, és nincs szükség alapszintű licencek haszn�
 
 * [Csoport alapú tagság](https://docs.microsoft.com/azure/active-directory/active-directory-manage-groups)
 
-* [Önkiszolgáló jelszó-visszaállítás](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr)
+* [Új jelszó önkiszolgáló kérése](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr)
 
 * [Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)
 
@@ -81,7 +81,7 @@ A projekt megkezdése előtt végezze el a következő előfeltételeket:
 
 A következő táblázat a hozzáférési panel központi telepítésének legfontosabb használati eseteit ismerteti:
 
-| Terület| Leírás |
+| Terület| Description |
 | - | - |
 | Access| A hozzáférési panel portál a vállalati hálózaton belüli vállalati és személyes eszközökről érhető el. |
 |Access | A hozzáférési panel portál a vállalati hálózaton kívüli vállalati eszközökről érhető el. |
@@ -261,7 +261,7 @@ Az önkiszolgáló csoporttagság megtervezéséhez döntse el, hogy engedélyez
 
 Az Azure AD olyan [jelentéseket biztosít, amelyek technikai és üzleti ismereteket kínálnak](https://azure.microsoft.com/documentation/articles/active-directory-view-access-usage-reports/). Az üzleti és műszaki alkalmazások tulajdonosai együttműködve vehetik igénybe ezeket a jelentéseket, és rendszeres időközönként használhatják azokat. A következő táblázat néhány példát mutat be a tipikus jelentéskészítési forgatókönyvekre.
 
-|   | A kockázatok kezelése| Termelékenység növelése| Cégirányítás és megfelelőség |
+| Példa | A kockázatok kezelése| Termelékenység növelése| Cégirányítás és megfelelőség |
 |  - |- | - | - |
 | Jelentéstípusok|  Alkalmazás-engedélyek és-használat| Fiók létesítési tevékenysége| Tekintse át, ki fér hozzá az alkalmazásokhoz |
 | Lehetséges műveletek| Hozzáférés naplózása; engedélyek visszavonása| Kiépítési hibák szervizelése| Hozzáférés visszavonása |
@@ -338,11 +338,11 @@ A legkevesebb Kiemelt szerepkört kell használnia a szükséges feladatok végr
 
 | Szerepek| Szerepkörök| Azure AD-szerepkör  |
 | - | -| -|
-| Segélyszolgálat rendszergazdája| 1. szintű támogatás| Nincs |
+| Segélyszolgálat rendszergazdája| 1. szintű támogatás| None |
 | Identity admin| Konfigurálás és hibakeresés az Azure AD-t érintő problémák esetén| Globális rendszergazda |
-| Alkalmazás-rendszergazda| Felhasználói igazolás az alkalmazásban, az engedélyekkel rendelkező felhasználók konfigurációja| Nincs |
+| Alkalmazás-rendszergazda| Felhasználói igazolás az alkalmazásban, az engedélyekkel rendelkező felhasználók konfigurációja| None |
 | Infrastruktúra-rendszergazdák| Tanúsítvány-átváltási tulajdonos| Globális rendszergazda |
-| Üzleti tulajdonos/érintett fél| Felhasználói igazolás az alkalmazásban, az engedélyekkel rendelkező felhasználók konfigurációja| Nincs |
+| Üzleti tulajdonos/érintett fél| Felhasználói igazolás az alkalmazásban, az engedélyekkel rendelkező felhasználók konfigurációja| None |
 
 A [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) segítségével kezelheti a szerepköröket, hogy további naplózási, vezérlési és hozzáférési felülvizsgálatot biztosítson a címtár-jogosultságokkal rendelkező felhasználók számára.
 

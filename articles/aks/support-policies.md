@@ -6,12 +6,12 @@ author: jnoller
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: jenoller
-ms.openlocfilehash: 147fc33d068909fa892023ec00cfc2827203607f
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 775992d090b951c8de6fce36377dc91d6e017399
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85389938"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85558088"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Támogatási szabályzatok az Azure Kubernetes Service-hez
 
@@ -50,6 +50,9 @@ Mivel a feldolgozó csomópontok érzékenyek, a Microsoft nagy gondossággal go
 ## <a name="aks-support-coverage"></a>AK-támogatás lefedettsége
 
 A Microsoft technikai támogatást nyújt a következőkhöz:
+
+> [!NOTE]
+> A Microsoft támogatási szolgálata által végrehajtott összes művelet felhasználói beleegyezett a név ["szerkesztés"](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) szerepkörének beépített Kubernetes `aks-support-rolebinding` . Ebben az AK-beli szerepkör-támogatásban engedélyezve van a fürtkonfiguráció és az erőforrások szerkesztése a fürtökkel kapcsolatos problémák elhárításához és diagnosztizálásához, de a szerepkör nem módosíthatja az engedélyeket, és nem hozhat létre szerepköröket vagy szerepkör-kötéseket. A szerepkör-hozzáférés csak az aktív támogatási jegyek esetében engedélyezett az igény szerinti (JIT) hozzáféréssel.
 
 * A Kubernetes szolgáltatás által biztosított és támogatott összes Kubernetes-összetevő, például az API-kiszolgáló kapcsolata.
 * A Kubernetes Control Plant-szolgáltatások (Kubernetes főcsomópontok, API-kiszolgáló, etcd és Kube-DNS) felügyelete, üzemidő, QoS és műveletei.

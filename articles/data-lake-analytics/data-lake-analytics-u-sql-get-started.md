@@ -9,15 +9,16 @@ ms.assetid: 57143396-ab86-47dd-b6f8-613ba28c28d2
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/23/2017
-ms.openlocfilehash: 8130679dcc519cecd25abf43902c003ad8047df3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: df217f302cd9f989fbabce009f00996d17fe284c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71672825"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555680"
 ---
 # <a name="get-started-with-u-sql-in-azure-data-lake-analytics"></a>Ismerkedés az U-SQL Azure Data Lake Analytics
-Az U-SQL egy olyan nyelv, amely a deklaratív SQL-t a kényszerített C# használatával kombinálva lehetővé teszi az adatfeldolgozást bármilyen méretben. A U-SQL skálázható, elosztott lekérdezési funkciója révén hatékonyan elemezheti az adatátviteli tárolókat, például a Azure SQL Database. A U-SQL használatával strukturálatlan adatmennyiséget dolgozhat fel az egyéni logikai és UDF olvasására és beszúrására szolgáló séma alkalmazásával. Emellett a U-SQL olyan bővíthetőséget is tartalmaz, amely részletesen szabályozza a méretezést. 
+
+Az U-SQL egy olyan nyelv, amely a deklaratív SQL-t a kényszerített C# használatával kombinálva lehetővé teszi az adatfeldolgozást bármilyen méretben. A U-SQL skálázható, elosztott lekérdezési funkciója révén hatékonyan elemezheti az adatátviteli tárolókat, például a Azure SQL Database. A U-SQL használatával strukturálatlan adatmennyiséget dolgozhat fel az egyéni logikai és UDF olvasására és beszúrására szolgáló séma alkalmazásával. Emellett a U-SQL olyan bővíthetőséget is tartalmaz, amely részletesen szabályozza a méretezést.
 
 ## <a name="learning-resources"></a>Tanulási források
 
@@ -33,7 +34,7 @@ Mielőtt átugorja a dokumentumban található U-SQL-mintákat, olvassa el és f
 
 A következő U-SQL-szkript egyszerű, és lehetővé teszi a U-SQL nyelv számos aspektusának megismerését.
 
-```
+```usql
 @searchlog =
     EXTRACT UserId          int,
             Start           DateTime,
@@ -45,17 +46,18 @@ A következő U-SQL-szkript egyszerű, és lehetővé teszi a U-SQL nyelv számo
     FROM "/Samples/Data/SearchLog.tsv"
     USING Extractors.Tsv();
 
-OUTPUT @searchlog   
+OUTPUT @searchlog
     TO "/output/SearchLog-first-u-sql.csv"
     USING Outputters.Csv();
 ```
 
-Ez a parancsfájl nem rendelkezik átalakítási lépésekkel. Beolvassa a nevű `SearchLog.tsv`forrásfájlt, schematizes, és visszaírja a sorhalmazt egy SearchLog-First-u-SQL. csv nevű fájlba.
+Ez a parancsfájl nem rendelkezik átalakítási lépésekkel. Beolvassa a nevű forrásfájlt `SearchLog.tsv` , schematizes, és visszaírja a sorhalmazt egy SearchLog-first-u-sql.csv nevű fájlba.
 
-Figyelje meg a `Duration` mező adattípusa melletti kérdőjelet. Ez azt jelenti, `Duration` hogy a mező értéke null lehet.
+Figyelje meg a mező adattípusa melletti kérdőjelet `Duration` . Ez azt jelenti, hogy a `Duration` mező értéke null lehet.
 
 ### <a name="key-concepts"></a>Fő fogalmak
-* **Sorhalmaz változói**: a sorhalmazt előállító összes lekérdezési kifejezés hozzárendelhető egy változóhoz. A U-SQL a T-SQL változó elnevezési mintáját (`@searchlog`például) követi a parancsfájlban.
+
+* **Sorhalmaz változói**: a sorhalmazt előállító összes lekérdezési kifejezés hozzárendelhető egy változóhoz. A U-SQL a T-SQL változó elnevezési mintáját ( `@searchlog` például) követi a parancsfájlban.
 * A **kinyerési** kulcsszó beolvassa az adatokat egy fájlból, és az olvasáskor meghatározza a sémát. `Extractors.Tsv`a egy beépített U-SQL-kivonó a tabulátorral tagolt fájlokhoz. Egyéni kiállítók fejlesztése is megtehető.
 * A **kimenet** egy sorhalmazból egy fájlba írja az adatokat. `Outputters.Csv()`a egy beépített U-SQL-leválasztó, vesszővel tagolt értékű fájl létrehozásához. Egyéni előállítók is fejleszthetők.
 
@@ -63,167 +65,169 @@ Figyelje meg a `Duration` mező adattípusa melletti kérdőjelet. Ez azt jelent
 
 A kinyerési és a kimeneti utasítások fájlelérési utakat használnak. A fájlelérési utak értéke lehet abszolút vagy relatív:
 
-A fájl abszolút elérési útja a következő nevű `mystore`Data Lake Store fájlra hivatkozik:
+A fájl abszolút elérési útja a következő nevű Data Lake Store fájlra hivatkozik `mystore` :
 
-    adl://mystore.azuredatalakestore.net/Samples/Data/SearchLog.tsv
+```usql
+adl://mystore.azuredatalakestore.net/Samples/Data/SearchLog.tsv
+```
 
-Az alábbi elérési út a `"/"`következővel kezdődik:. Az alapértelmezett Data Lake Store fiókban található fájlra hivatkozik:
+Az alábbi elérési út a következővel kezdődik: `"/"` . Az alapértelmezett Data Lake Store fiókban található fájlra hivatkozik:
 
-    /output/SearchLog-first-u-sql.csv
+```usql
+/output/SearchLog-first-u-sql.csv
+```
 
 ## <a name="use-scalar-variables"></a>Skaláris változók használata
 
 Skaláris változókat is használhat, hogy egyszerűbbé tegye a parancsfájlok karbantartását. Az előző U-SQL-szkript a következőképpen is írható:
 
-    DECLARE @in  string = "/Samples/Data/SearchLog.tsv";
-    DECLARE @out string = "/output/SearchLog-scalar-variables.csv";
-
-    @searchlog =
-        EXTRACT UserId          int,
-                Start           DateTime,
-                Region          string,
-                Query           string,
-                Duration        int?,
-                Urls            string,
-                ClickedUrls     string
-        FROM @in
-        USING Extractors.Tsv();
-
-    OUTPUT @searchlog   
-        TO @out
-        USING Outputters.Csv();
+```usql
+DECLARE @in  string = "/Samples/Data/SearchLog.tsv";
+DECLARE @out string = "/output/SearchLog-scalar-variables.csv";
+@searchlog =
+    EXTRACT UserId          int,
+            Start           DateTime,
+            Region          string,
+            Query           string,
+            Duration        int?,
+            Urls            string,
+            ClickedUrls     string
+    FROM @in
+    USING Extractors.Tsv();
+OUTPUT @searchlog
+    TO @out
+    USING Outputters.Csv();
+```
 
 ## <a name="transform-rowsets"></a>Sorhalmazok átalakítása
 
 A sorhalmazok átalakításához használja a **Select parancsot** :
 
-    @searchlog =
-        EXTRACT UserId          int,
-                Start           DateTime,
-                Region          string,
-                Query           string,
-                Duration        int?,
-                Urls            string,
-                ClickedUrls     string
-        FROM "/Samples/Data/SearchLog.tsv"
-        USING Extractors.Tsv();
-
-    @rs1 =
-        SELECT Start, Region, Duration
-        FROM @searchlog
-    WHERE Region == "en-gb";
-
-    OUTPUT @rs1   
-        TO "/output/SearchLog-transform-rowsets.csv"
-        USING Outputters.Csv();
+```usql
+@searchlog =
+    EXTRACT UserId          int,
+            Start           DateTime,
+            Region          string,
+            Query           string,
+            Duration        int?,
+            Urls            string,
+            ClickedUrls     string
+    FROM "/Samples/Data/SearchLog.tsv"
+    USING Extractors.Tsv();
+@rs1 =
+    SELECT Start, Region, Duration
+    FROM @searchlog
+WHERE Region == "en-gb";
+OUTPUT @rs1
+    TO "/output/SearchLog-transform-rowsets.csv"
+    USING Outputters.Csv();
+```
 
 A WHERE záradék [C# logikai kifejezést](/dotnet/csharp/language-reference/operators/index)használ. A C# kifejezés nyelvével saját kifejezéseit és funkcióit is elvégezheti. Akár összetettebb szűrést is végrehajthat, ha azokat a logikai (and) és a (leválasztási) műveletekkel kombinálja.
 
 A következő parancsfájl a DateTime. Parse () metódust és egy-egy társítást használ.
 
-    @searchlog =
-        EXTRACT UserId          int,
-                Start           DateTime,
-                Region          string,
-                Query           string,
-                Duration        int?,
-                Urls            string,
-                ClickedUrls     string
-        FROM "/Samples/Data/SearchLog.tsv"
-        USING Extractors.Tsv();
-
-    @rs1 =
-        SELECT Start, Region, Duration
-        FROM @searchlog
-    WHERE Region == "en-gb";
-
-    @rs1 =
-        SELECT Start, Region, Duration
-        FROM @rs1
-        WHERE Start >= DateTime.Parse("2012/02/16") AND Start <= DateTime.Parse("2012/02/17");
-
-    OUTPUT @rs1   
-        TO "/output/SearchLog-transform-datetime.csv"
-        USING Outputters.Csv();
+```usql
+@searchlog =
+    EXTRACT UserId          int,
+            Start           DateTime,
+            Region          string,
+            Query           string,
+            Duration        int?,
+            Urls            string,
+            ClickedUrls     string
+    FROM "/Samples/Data/SearchLog.tsv"
+    USING Extractors.Tsv();
+@rs1 =
+    SELECT Start, Region, Duration
+    FROM @searchlog
+WHERE Region == "en-gb";
+@rs1 =
+    SELECT Start, Region, Duration
+    FROM @rs1
+    WHERE Start >= DateTime.Parse("2012/02/16") AND Start <= DateTime.Parse("2012/02/17");
+OUTPUT @rs1
+    TO "/output/SearchLog-transform-datetime.csv"
+    USING Outputters.Csv();
+```
 
  >[!NOTE]
  >A második lekérdezés az első sorhalmaz eredményén működik, amely a két szűrő összetett kombinációját hozza létre. A változók neve is felhasználható, a nevek pedig lexikálisan vannak kiválasztva.
 
 ## <a name="aggregate-rowsets"></a>Összesített sorhalmazok
+
 Az U-SQL a megszokott SORRENDet, CSOPORTOSÍTÁSt és összesítéseket biztosít.
 
 A következő lekérdezés megkeresi a teljes időtartamot régiónként, majd az első öt időtartamot jeleníti meg sorrendben.
 
 Az U-SQL-sorhalmazok nem őrzik meg a következő lekérdezés sorrendjét. Így a kimenet megrendeléséhez hozzá kell adnia a SORRENDet a kimeneti utasításhoz:
 
-    DECLARE @outpref string = "/output/Searchlog-aggregation";
-    DECLARE @out1    string = @outpref+"_agg.csv";
-    DECLARE @out2    string = @outpref+"_top5agg.csv";
-
-    @searchlog =
-        EXTRACT UserId          int,
-                Start           DateTime,
-                Region          string,
-                Query           string,
-                Duration        int?,
-                Urls            string,
-                ClickedUrls     string
-        FROM "/Samples/Data/SearchLog.tsv"
-        USING Extractors.Tsv();
-
-    @rs1 =
-        SELECT
-            Region,
-            SUM(Duration) AS TotalDuration
-        FROM @searchlog
-    GROUP BY Region;
-
-    @res =
-        SELECT *
-        FROM @rs1
-        ORDER BY TotalDuration DESC
-        FETCH 5 ROWS;
-
-    OUTPUT @rs1
-        TO @out1
-        ORDER BY TotalDuration DESC
-        USING Outputters.Csv();
-
-    OUTPUT @res
-        TO @out2
-        ORDER BY TotalDuration DESC
-        USING Outputters.Csv();
+```usql
+DECLARE @outpref string = "/output/Searchlog-aggregation";
+DECLARE @out1    string = @outpref+"_agg.csv";
+DECLARE @out2    string = @outpref+"_top5agg.csv";
+@searchlog =
+    EXTRACT UserId          int,
+            Start           DateTime,
+            Region          string,
+            Query           string,
+            Duration        int?,
+            Urls            string,
+            ClickedUrls     string
+    FROM "/Samples/Data/SearchLog.tsv"
+    USING Extractors.Tsv();
+@rs1 =
+    SELECT
+        Region,
+        SUM(Duration) AS TotalDuration
+    FROM @searchlog
+GROUP BY Region;
+@res =
+    SELECT *
+    FROM @rs1
+    ORDER BY TotalDuration DESC
+    FETCH 5 ROWS;
+OUTPUT @rs1
+    TO @out1
+    ORDER BY TotalDuration DESC
+    USING Outputters.Csv();
+OUTPUT @res
+    TO @out2
+    ORDER BY TotalDuration DESC
+    USING Outputters.Csv();
+```
 
 Az U-SQL ORDER BY záradék használatához a FETCH záradékot kell használni egy SELECT kifejezésben.
 
 A U-SQL HAVING záradék használatával korlátozhatja a kimenetet olyan csoportokra, amelyek megfelelnek a HAVING feltételnek:
 
-    @searchlog =
-        EXTRACT UserId          int,
-                Start           DateTime,
-                Region          string,
-                Query           string,
-                Duration        int?,
-                Urls            string,
-                ClickedUrls     string
-        FROM "/Samples/Data/SearchLog.tsv"
-        USING Extractors.Tsv();
-
-    @res =
-        SELECT
-            Region,
-            SUM(Duration) AS TotalDuration
-        FROM @searchlog
-        GROUP BY Region
-        HAVING SUM(Duration) > 200;
-
-    OUTPUT @res
-        TO "/output/Searchlog-having.csv"
-        ORDER BY TotalDuration DESC
-        USING Outputters.Csv();
+```usql
+@searchlog =
+    EXTRACT UserId          int,
+            Start           DateTime,
+            Region          string,
+            Query           string,
+            Duration        int?,
+            Urls            string,
+            ClickedUrls     string
+    FROM "/Samples/Data/SearchLog.tsv"
+    USING Extractors.Tsv();
+@res =
+    SELECT
+        Region,
+        SUM(Duration) AS TotalDuration
+    FROM @searchlog
+    GROUP BY Region
+    HAVING SUM(Duration) > 200;
+OUTPUT @res
+    TO "/output/Searchlog-having.csv"
+    ORDER BY TotalDuration DESC
+    USING Outputters.Csv();
+```
 
 A speciális összesítési forgatókönyvek esetében tekintse meg a U-SQL-dokumentációt az [aggregált, analitikus és hivatkozási függvények](/u-sql/built-in-functions) esetében.
 
 ## <a name="next-steps"></a>További lépések
+
 * [A Microsoft Azure Data Lake Analytics áttekintése](data-lake-analytics-overview.md)
 * [U-SQL-szkriptek fejlesztése a Data Lake Tools for Visual Studio használatával](data-lake-analytics-data-lake-tools-get-started.md)

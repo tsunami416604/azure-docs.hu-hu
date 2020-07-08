@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
-ms.topic: how-to
+ms.topic: troubleshooting
 ms.date: 04/30/2020
 ms.author: alkohli
-ms.openlocfilehash: 461c5b1603a4c06e680aab671238a1c8ccd5dacd
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 3aa48f42c767a8f1fb1c7bf0ad78fef8b8af1594
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84609080"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85558546"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>Azure Data Box és Azure Data Box Heavy kapcsolatos problémák elhárítása
 
@@ -23,12 +23,12 @@ Ez a cikk részletesen ismerteti, hogyan lehet elhárítani a Azure Data Box vag
 
 A Data Box és Data Box Heavy hibáit a következőképpen összegzi:
 
-| Hiba kategóriája *        | Leírás        | Javasolt művelet    |
+| Hiba kategóriája *        | Description        | Javasolt művelet    |
 |----------------------------------------------|---------|--------------------------------------|
-| Tároló vagy megosztás neve | A tároló vagy a megosztás neve nem követi az Azure elnevezési szabályait.  |Töltse le a hibák listáját. <br> Nevezze át a tárolókat vagy a megosztásokat. [További információ](#container-or-share-name-errors).  |
-| Tároló vagy megosztási méretkorlát | A tárolókban vagy megosztásokban lévő teljes adatmennyiség meghaladja az Azure-korlátot.   |Töltse le a hibák listáját. <br> Csökkentse a tárolóban vagy megosztásban lévő összesített adatmennyiséget. [További információ](#container-or-share-size-limit-errors).|
-| Objektum vagy fájlméret korlátja | A tárolókban vagy megosztásokban lévő objektum vagy fájlok mérete meghaladja az Azure-korlátot.|Töltse le a hibák listáját. <br> Csökkentse a fájl méretét a tárolóban vagy a megosztásban. [További információ](#object-or-file-size-limit-errors). |    
-| Adattípusok vagy fájltípusok | Az adatformátum vagy a fájl típusa nem támogatott. |Töltse le a hibák listáját. <br> Az oldal Blobok vagy a felügyelt lemezek esetében ügyeljen arra, hogy az adat 512 – bájt igazított legyen, és az előre létrehozott mappákba legyen másolva. [További információ](#data-or-file-type-errors). |
+| Tároló vagy megosztás neve | A tároló vagy a megosztás neve nem követi az Azure elnevezési szabályait.  |Töltse le a hibák listáját. <br> Nevezze át a tárolókat vagy a megosztásokat. [További információk](#container-or-share-name-errors).  |
+| Tároló vagy megosztási méretkorlát | A tárolókban vagy megosztásokban lévő teljes adatmennyiség meghaladja az Azure-korlátot.   |Töltse le a hibák listáját. <br> Csökkentse a tárolóban vagy megosztásban lévő összesített adatmennyiséget. [További információk](#container-or-share-size-limit-errors).|
+| Objektum vagy fájlméret korlátja | A tárolókban vagy megosztásokban lévő objektum vagy fájlok mérete meghaladja az Azure-korlátot.|Töltse le a hibák listáját. <br> Csökkentse a fájl méretét a tárolóban vagy a megosztásban. [További információk](#object-or-file-size-limit-errors). |    
+| Adattípusok vagy fájltípusok | Az adatformátum vagy a fájl típusa nem támogatott. |Töltse le a hibák listáját. <br> Az oldal Blobok vagy a felügyelt lemezek esetében ügyeljen arra, hogy az adat 512 – bájt igazított legyen, és az előre létrehozott mappákba legyen másolva. [További információk](#data-or-file-type-errors). |
 | Nem kritikus blob-vagy fájl-hibák  | A blob-vagy fájlnevek nem követik az Azure elnevezési szabályait, vagy a fájl típusa nem támogatott. | Előfordulhat, hogy ezek a Blobok vagy fájlok nem másolhatók, vagy a nevek változhatnak. [További információ a hibák kijavításáról](#non-critical-blob-or-file-errors). |
 
 \*Az első négy hiba kategóriája kritikus hibák, és a szállítás előkészítése előtt meg kell oldani.
@@ -254,6 +254,6 @@ További információ: az Azure elnevezési konvenciói a Blobok neveihez és f�
 További információ: [Másolás felügyelt lemezekre](data-box-deploy-copy-data-from-vhds.md#connect-to-data-box).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A [blob Storage rendszerkövetelményeinek Data Box](data-box-system-requirements-rest.md)megismerése.

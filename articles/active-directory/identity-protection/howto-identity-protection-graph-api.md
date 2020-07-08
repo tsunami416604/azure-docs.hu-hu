@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: how-to
-ms.date: 10/18/2019
+ms.date: 06/29/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 324737611d2d05411012050fcf7140bee48d35b0
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 2f5e5a4075705e43dc0ac37181bf33b078013177
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85505834"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555229"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>A Azure Active Directory Identity Protection és a Microsoft Graph első lépései
 
@@ -30,113 +30,56 @@ Microsoft Graph a Microsoft Unified API-végpontja és a [Azure Active Directory
 
 Az Identity Protection-adatok elérésének négy lépése van Microsoft Graph:
 
-1. A tartománynév beolvasása.
-2. Hozzon létre egy új alkalmazás-regisztrációt. 
-3. Használja ezt a titkot és néhány további információt a Microsoft Graph hitelesítéséhez, ahol hitelesítési jogkivonatot kap. 
-4. Ezzel a jogkivonattal kérheti az API-végpontra irányuló kéréseket, és visszanyerheti az Identity Protection adatait.
+- [Tartománynév lekérése](#retrieve-your-domain-name)
+- [Új alkalmazás regisztrációjának létrehozása](#create-a-new-app-registration)
+- [API-engedélyek konfigurálása](#configure-api-permissions)
+- [Érvényes hitelesítő adat konfigurálása](#configure-a-valid-credential)
 
-A Kezdés előtt a következőkre lesz szüksége:
+### <a name="retrieve-your-domain-name"></a>Tartománynév lekérése 
 
-* Rendszergazdai jogosultságok az alkalmazás létrehozásához az Azure AD-ben
-* A bérlő tartományának neve (például contoso.onmicrosoft.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).  
+1. Tallózással keresse meg **Azure Active Directory**  >  **Egyéni tartományneveket**. 
+1. Jegyezze fel a `.onmicrosoft.com` tartományt, és ezt az információt egy későbbi lépésben kell megadnia.
 
-## <a name="retrieve-your-domain-name"></a>Tartománynév lekérése 
+### <a name="create-a-new-app-registration"></a>Új alkalmazás regisztrációjának létrehozása
 
-1. [Jelentkezzen](https://portal.azure.com) be a Azure Portal rendszergazdaként. 
-1. A bal oldali navigációs panelen kattintson a **Active Directory**elemre. 
-
-   ![Alkalmazás létrehozása](./media/howto-identity-protection-graph-api/41.png)
-
-1. A **kezelés** szakaszban kattintson a **Tulajdonságok**elemre.
-
-   ![Alkalmazás létrehozása](./media/howto-identity-protection-graph-api/42.png)
-
-1. Másolja a tartománynevet.
-
-## <a name="create-a-new-app-registration"></a>Új alkalmazás regisztrációjának létrehozása
-
-1. A **Active Directory** oldalon, a **kezelés** szakaszban kattintson az **Alkalmazásregisztrációk**elemre.
-
-   ![Alkalmazás létrehozása](./media/howto-identity-protection-graph-api/42.png)
-
-1. A felső menüben kattintson az **új alkalmazás regisztrálása**elemre.
-
-   ![Alkalmazás létrehozása](./media/howto-identity-protection-graph-api/43.png)
-
+1. A Azure Portal tallózással keresse meg **Azure Active Directory**  >  **Alkalmazásregisztrációk**.
+1. Válassza az **új regisztráció**lehetőséget.
 1. A **Létrehozás** oldalon hajtsa végre a következő lépéseket:
-
-   ![Alkalmazás létrehozása](./media/howto-identity-protection-graph-api/44.png)
-
-   1. A **név** szövegmezőbe írja be az alkalmazás nevét (például: Azure ad Risk Detection API-alkalmazás).
-
-   1. **Írja be**a következőt: **webalkalmazás és/vagy webes API**.
-
-   1. A **bejelentkezési URL** szövegmezőbe írja be a következőt: `http://localhost` .
-
-   1. Kattintson a **Létrehozás** lehetőségre.
-1. A **Beállítások** oldal megnyitásához az alkalmazások listában kattintson az újonnan létrehozott alkalmazás-regisztráció elemre. 
+   1. A **név** szövegmezőbe írja be az alkalmazás nevét (például: Azure ad kockázati észlelési API).
+   1. A **támogatott fiókok típusai**területen válassza ki az API-kat használó fiókok típusát.
+   1. Kattintson a **Register** (Regisztrálás) elemre.
 1. Másolja ki az **alkalmazás azonosítóját**.
 
-## <a name="grant-your-application-permission-to-use-the-api"></a>A API használatának engedélyezése az alkalmazás számára
+### <a name="configure-api-permissions"></a>API-engedélyek konfigurálása
 
-1. A **Beállítások** lapon kattintson a **szükséges engedélyek**elemre.
-
-   ![Alkalmazás létrehozása](./media/howto-identity-protection-graph-api/15.png)
-
-1. A **szükséges engedélyek** lapon, a felső eszköztáron kattintson a **Hozzáadás**gombra.
-
-   ![Alkalmazás létrehozása](./media/howto-identity-protection-graph-api/16.png)
-
+1. A létrehozott **alkalmazásból** válassza az **API-engedélyek**lehetőséget.
+1. A **konfigurált engedélyek** lapon, a felső eszköztáron kattintson az **engedély hozzáadása**lehetőségre.
 1. Az **API-hozzáférés hozzáadása** lapon kattintson **az API kiválasztása**lehetőségre.
-
-   ![Alkalmazás létrehozása](./media/howto-identity-protection-graph-api/17.png)
-
 1. Az **API kiválasztása** lapon válassza a **Microsoft Graph**lehetőséget, majd kattintson a **kiválasztás**gombra.
+1. Az **API-engedélyek kérése** oldalon: 
+   1. Válassza ki az **alkalmazás engedélyeit**.
+   1. Jelölje be a és a melletti jelölőnégyzeteket `IdentityRiskEvent.Read.All` `IdentityRiskyUser.Read.All` .
+   1. Válassza az **engedélyek hozzáadása**lehetőséget.
+1. Válassza **a rendszergazdai jóváhagyás megadása a tartományhoz** lehetőséget. 
 
-   ![Alkalmazás létrehozása](./media/howto-identity-protection-graph-api/18.png)
+### <a name="configure-a-valid-credential"></a>Érvényes hitelesítő adat konfigurálása
 
-1. Az **API-hozzáférés hozzáadása** lapon kattintson az **engedélyek kiválasztása**elemre.
+1. A létrehozott **alkalmazásból** válassza a **tanúsítványok & Secrets**elemet.
+1. Az **ügyfél**titkos kulcsa területen válassza az **új ügyfél titka**lehetőséget.
+   1. Adja meg az ügyfél titkos **leírását** , és állítsa be a lejárati időszakot a szervezeti szabályzatok szerint.
+   1. Válassza a **Hozzáadás** elemet.
 
-   ![Alkalmazás létrehozása](./media/howto-identity-protection-graph-api/19.png)
-
-1. A **hozzáférés engedélyezése** lapon kattintson az **összes identitás kockázati információinak olvasása**elemre, majd a **kiválasztás**elemre.
-
-   ![Alkalmazás létrehozása](./media/howto-identity-protection-graph-api/20.png)
-
-1. Az **API-hozzáférés hozzáadása** lapon kattintson a **kész**gombra.
-
-   ![Alkalmazás létrehozása](./media/howto-identity-protection-graph-api/21.png)
-
-1. A **szükséges engedélyek** lapon kattintson az **engedélyek megadása**elemre, majd az **Igen**gombra.
-
-   ![Alkalmazás létrehozása](./media/howto-identity-protection-graph-api/22.png)
-
-## <a name="get-an-access-key"></a>Hívóbetű lekérése
-
-1. A **Beállítások** lapon kattintson a **kulcsok**elemre.
-
-   ![Alkalmazás létrehozása](./media/howto-identity-protection-graph-api/23.png)
-
-1. A **kulcsok** oldalon hajtsa végre a következő lépéseket:
-
-   ![Alkalmazás létrehozása](./media/howto-identity-protection-graph-api/24.png)
-
-   1. A **kulcs leírása** szövegmezőbe írja be a leírást (például az *Azure ad kockázati észlelése*).
-   1. Az **időtartam**beállításnál válassza **az 1 év**lehetőséget.
-   1. Kattintson a **Save** (Mentés) gombra.
-   1. Másolja a kulcs értékét, majd illessze be egy biztonságos helyre.   
-   
    > [!NOTE]
    > Ha elveszíti ezt a kulcsot, térjen vissza ehhez a szakaszhoz, és hozzon létre egy új kulcsot. Titkos kulcs megtartása: bárki, aki hozzáfér az adataihoz.
-   > 
 
 ## <a name="authenticate-to-microsoft-graph-and-query-the-identity-risk-detections-api"></a>Hitelesítés Microsoft Graph és az identitás kockázati észlelése API lekérdezése
 
 Ezen a ponton a következőket kell tennie:
 
 - A bérlő tartományának neve
-- Az ügyfél azonosítója 
-- A kulcs 
+- Az alkalmazás (ügyfél) azonosítója 
+- Az ügyfél titka vagy tanúsítványa 
 
 A hitelesítéshez küldjön post-kérést a `https://login.microsoft.com` következő paraméterekkel a törzsben:
 
@@ -145,7 +88,7 @@ A hitelesítéshez küldjön post-kérést a `https://login.microsoft.com` köve
 - client_id:\<your client ID\>
 - client_secret:\<your key\>
 
-Ha ez sikeres, a rendszer egy hitelesítési jogkivonatot ad vissza.  
+Ha ez sikeres, a kérelem egy hitelesítési jogkivonatot ad vissza.  
 Az API meghívásához hozzon létre egy fejlécet a következő paraméterrel:
 
 ```
@@ -154,9 +97,11 @@ Az API meghívásához hozzon létre egy fejlécet a következő paraméterrel:
 
 A hitelesítés során megkeresheti a jogkivonat típusát és a hozzáférési jogkivonatot a visszaadott jogkivonatban.
 
-Küldje el ezt a fejlécet kérelemként a következő API URL-címre:`https://graph.microsoft.com/beta/identityRiskEvents`
+Küldje el ezt a fejlécet kérelemként a következő API URL-címre:`https://graph.microsoft.com/v1.0/identityProtection/riskDetections`
 
 A válasz, ha a sikeres, az identitások kockázatának észlelése és a hozzájuk kapcsolódó adatok OData JSON formátumban való gyűjteménye, amely elemezhető és kezelhető, ahogy az illik.
+
+### <a name="sample"></a>Sample
 
 Az alábbi mintakód a PowerShell használatával történő hitelesítéshez és az API meghívásához.  
 Csak adja hozzá az ügyfél-azonosítót, a titkos kulcsot és a bérlői tartományt.
@@ -177,7 +122,7 @@ Csak adja hozzá az ügyfél-azonosítót, a titkos kulcsot és a bérlői tarto
     if ($oauth.access_token -ne $null) {
         $headerParams = @{'Authorization'="$($oauth.token_type) $($oauth.access_token)"}
 
-        $url = "https://graph.microsoft.com/beta/identityRiskEvents"
+        $url = "https://graph.microsoft.com/v1.0/identityProtection/riskDetections"
         Write-Output $url
 
         $myReport = (Invoke-WebRequest -UseBasicParsing -Headers $headerParams -Uri $url)
@@ -211,7 +156,7 @@ Annak megismeréséhez, hogy a szervezete milyen hatással van az Identity Prote
 GET https://graph.microsoft.com/v1.0/identityProtection/riskyUsers?$filter=riskDetail eq 'userPassedMFADrivenByRiskBasedPolicy'
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Gratulálunk, most elkészítette az első hívását Microsoft Graph!  
 Most már lekérdezheti az identitások kockázati észleléseit, és használhatja az adatok megjelenítését.

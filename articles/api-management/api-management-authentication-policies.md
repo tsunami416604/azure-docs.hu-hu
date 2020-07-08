@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/12/2020
 ms.author: apimpm
-ms.openlocfilehash: 8a92540ff2c57ff5c1aa827237a7341aecc1592b
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: 70f1e4414888ceb8fb04fd92dc954d1a7c06dcb4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84789259"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85557982"
 ---
 # <a name="api-management-authentication-policies"></a>API Management-hitelesítési szabályzatok
 Ez a témakör az alábbi API Management szabályzatokra mutató hivatkozást tartalmaz. A házirendek hozzáadásával és konfigurálásával kapcsolatos információkért lásd: [szabályzatok API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -48,16 +48,16 @@ Ez a témakör az alábbi API Management szabályzatokra mutató hivatkozást ta
 
 ### <a name="elements"></a>Elemek
 
-|Name|Leírás|Kötelező|
+|Name|Description|Kötelező|
 |----------|-----------------|--------------|
 |hitelesítés – alapszintű|Gyökérelem.|Yes|
 
 ### <a name="attributes"></a>Attribútumok
 
-|Name|Leírás|Kötelező|Alapértelmezett|
+|Name|Description|Kötelező|Alapértelmezett|
 |----------|-----------------|--------------|-------------|
-|felhasználónév|Megadja az alapszintű hitelesítő adat felhasználónevét.|Yes|N/A|
-|jelszó|Megadja az alapszintű hitelesítő adat jelszavát.|Yes|N/A|
+|felhasználónév|Megadja az alapszintű hitelesítő adat felhasználónevét.|Yes|N.A.|
+|jelszó|Megadja az alapszintű hitelesítő adat jelszavát.|Yes|N.A.|
 
 ### <a name="usage"></a>Használat
  Ez a szabályzat a következő házirend- [részekben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörökben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)használható.
@@ -97,18 +97,18 @@ Ebben a példában az ügyféltanúsítvány a szabályzatban van beállítva, �
 
 ### <a name="elements"></a>Elemek  
   
-|Name|Leírás|Kötelező|  
+|Name|Description|Kötelező|  
 |----------|-----------------|--------------|  
 |hitelesítés – tanúsítvány|Gyökérelem.|Yes|  
   
 ### <a name="attributes"></a>Attribútumok  
   
-|Name|Leírás|Kötelező|Alapértelmezett|  
+|Name|Description|Kötelező|Alapértelmezett|  
 |----------|-----------------|--------------|-------------|  
-|ujjlenyomat|Az ügyféltanúsítvány ujjlenyomata.|`thumbprint`Vagy `certificate-id` kell lennie.|N/A|
-|tanúsítvány-azonosító|A tanúsítvány erőforrásának neve.|`thumbprint`Vagy `certificate-id` kell lennie.|N/A|
-|body (Törzs)|Ügyfél-tanúsítvány bájt tömbként.|No|N/A|
-|jelszó|Az ügyféltanúsítvány jelszava.|Akkor használatos, ha a ben megadott tanúsítvány `body` jelszavas védelemmel van ellátva.|N/A|
+|ujjlenyomat|Az ügyféltanúsítvány ujjlenyomata.|`thumbprint`Vagy `certificate-id` kell lennie.|N.A.|
+|tanúsítvány-azonosító|A tanúsítvány erőforrásának neve.|`thumbprint`Vagy `certificate-id` kell lennie.|N.A.|
+|body (Törzs)|Ügyfél-tanúsítvány bájt tömbként.|No|N.A.|
+|jelszó|Az ügyféltanúsítvány jelszava.|Akkor használatos, ha a ben megadott tanúsítvány `body` jelszavas védelemmel van ellátva.|N.A.|
   
 ### <a name="usage"></a>Használat  
  Ez a szabályzat a következő házirend- [részekben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörökben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)használható.  
@@ -140,7 +140,7 @@ A rendszer által hozzárendelt identitás és a több felhasználó által hozz
 <authentication-managed-identity resource="https://vault.azure.net"/> <!--Azure Key Vault-->
 ```
 ```xml  
-<authentication-managed-identity resource="https://servicebus.azure.net/"/> <!--Azure Service Busr-->
+<authentication-managed-identity resource="https://servicebus.azure.net/"/> <!--Azure Service Bus-->
 ```
 ```xml  
 <authentication-managed-identity resource="https://storage.azure.com/"/> <!--Azure Blob Storage-->
@@ -174,17 +174,17 @@ A rendszer által hozzárendelt identitás és a több felhasználó által hozz
 
 ### <a name="elements"></a>Elemek  
   
-|Name|Leírás|Kötelező|  
+|Name|Description|Kötelező|  
 |----------|-----------------|--------------|  
 |hitelesítés – felügyelt – identitás |Gyökérelem.|Yes|  
   
 ### <a name="attributes"></a>Attribútumok  
   
-|Name|Leírás|Kötelező|Alapértelmezett|  
+|Name|Description|Kötelező|Alapértelmezett|  
 |----------|-----------------|--------------|-------------|  
-|erőforrás|Sztring. A célként megadott webes API (biztonságos erőforrás) alkalmazás-azonosítója Azure Active Directoryban.|Yes|N/A|
+|erőforrás|Sztring. A célként megadott webes API (biztonságos erőforrás) alkalmazás-azonosítója Azure Active Directoryban.|Yes|N.A.|
 |ügyfél-azonosító|Sztring. A felhasználó által hozzárendelt identitás alkalmazás-azonosítója Azure Active Directoryban.|No|rendszer által hozzárendelt identitás|
-|output-token-változó-neve|Sztring. Annak a környezeti változónak a neve, amely a jogkivonat értékét objektum típusúként fogja fogadni `string` . |No|N/A|  
+|output-token-változó-neve|Sztring. Annak a környezeti változónak a neve, amely a jogkivonat értékét objektum típusúként fogja fogadni `string` . |No|N.A.|  
 |Mellőzés – hiba|Logikai. Ha a értékre `true` van állítva, akkor a házirend-folyamat akkor is végre fog hajtani, ha nem kapott hozzáférési jogkivonatot.|No|hamis|  
   
 ### <a name="usage"></a>Használat  

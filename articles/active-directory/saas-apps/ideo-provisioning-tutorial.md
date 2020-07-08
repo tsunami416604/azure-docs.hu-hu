@@ -15,83 +15,64 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2019
 ms.author: Zhchia
-ms.openlocfilehash: f5f163109d648a4fc021b41325c6d585a5a7a3e7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2de7bb81726bcb4aa1943b3f1816d6171f6ac97d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77057566"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85554608"
 ---
 # <a name="tutorial-configure-ideo-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés IDEO konfigurálása
 
-Az oktatóanyag célja annak bemutatása, hogy milyen lépéseket kell végrehajtani a IDEO és a Azure Active Directory (Azure AD) szolgáltatásban az Azure AD konfigurálásához, hogy a felhasználók és/vagy csoportok automatikusan kiépítsék és kiépítsék a IDEO.
+Az oktatóanyag célja annak bemutatása, hogy milyen lépéseket kell végrehajtani a IDEO és a Azure Active Directory (Azure AD) szolgáltatásban az Azure AD konfigurálásához, hogy a felhasználók és/vagy csoportok automatikusan kiépítsék és kiépítsék a IDEO. A szolgáltatás működésének, működésének és gyakori kérdéseinek részletes ismertetését lásd: a felhasználók üzembe helyezésének [automatizálása és az SaaS-alkalmazások kiépítése Azure Active Directory használatával](../app-provisioning/user-provisioning.md).
 
 > [!NOTE]
-> Ez az oktatóanyag az Azure AD-beli felhasználói kiépítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás működésének, működésének és gyakori kérdéseinek részletes ismertetését lásd: a felhasználók üzembe helyezésének [automatizálása és az SaaS-alkalmazások kiépítése Azure Active Directory használatával](../app-provisioning/user-provisioning.md).
->
 > Ez az összekötő jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók általános Microsoft Azure használati feltételeivel kapcsolatos további információkért tekintse meg a [Microsoft Azure-előnézetek kiegészítő használati feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+
+## <a name="capabilities-supported"></a>Támogatott képességek
+> [!div class="checklist"]
+> * Felhasználók létrehozása a IDEO-ben
+> * Felhasználók eltávolítása a IDEO-ben, ha már nincs szükség hozzáférésre
+> * Felhasználói attribútumok szinkronizálása az Azure AD és a IDEO között
+> * Csoportok és csoporttagságok kiépítése a IDEO-ben
+> * Egyszeri bejelentkezés a IDEO-be (ajánlott)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételekkel:
 
-* Azure AD-bérlő
+* [Egy Azure ad-bérlő](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant).
+* Egy Azure AD-beli felhasználói fiók, amely [jogosult](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) a kiépítés konfigurálására (például alkalmazás-rendszergazda, felhőalapú alkalmazás-rendszergazda, alkalmazás tulajdonosa vagy globális rendszergazda).
 * [IDEO-bérlő](https://www.shape.space/product/pricing)
 * Felhasználói fiók a IDEO-on | Alakzat rendszergazdai engedélyekkel.
 
-## <a name="assign-users-to-ideo"></a>Felhasználók IDEO rendelése
 
-Azure Active Directory a hozzárendelések nevű koncepció használatával határozza meg, hogy mely felhasználók kapnak hozzáférést a kiválasztott alkalmazásokhoz. Az automatikus felhasználó-kiépítés kontextusában csak az Azure AD-alkalmazáshoz hozzárendelt felhasználók és/vagy csoportok lesznek szinkronizálva.
+## <a name="step-1-plan-your-provisioning-deployment"></a>1. lépés A kiépítési üzembe helyezés megtervezése
+1. A kiépítési [szolgáltatás működésének](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)megismerése.
+2. Határozza meg, hogy kik lesznek a [kiépítés hatókörében](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts).
+3. Határozza meg, hogy az [Azure ad és a IDEO között milyen adatleképezést kell leképezni](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes). 
 
-A felhasználók automatikus üzembe helyezésének konfigurálása és engedélyezése előtt döntse el, hogy az Azure AD mely felhasználóinak és/vagy csoportjai számára szükséges a IDEO való hozzáférés. Miután eldöntötte, ezeket a felhasználókat és/vagy csoportokat hozzárendelheti a IDEO az alábbi utasításokat követve:
-
-* [Felhasználó vagy csoport társítása vállalati alkalmazáshoz](../manage-apps/assign-user-or-group-access-portal.md)
-
-### <a name="important-tips-for-assigning-users-to-ideo"></a>Fontos Tippek a felhasználók IDEO való hozzárendeléséhez
-
-* Azt javasoljuk, hogy egyetlen Azure AD-felhasználó legyen hozzárendelve a IDEO-hoz az automatikus felhasználó-kiépítési konfiguráció teszteléséhez. Később további felhasználókat és/vagy csoportokat is hozzá lehet rendelni.
-
-* Amikor IDEO rendel hozzá egy felhasználóhoz, a hozzárendelés párbeszédpanelen ki kell választania bármely érvényes alkalmazásspecifikus szerepkört (ha elérhető). Az **alapértelmezett hozzáférési** szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítés alól.
-
-## <a name="set-up-ideo-for-provisioning"></a>IDEO beállítása a kiépítés számára
+## <a name="step-2-configure-ideo-to-support-provisioning-with-azure-ad"></a>2. lépés IDEO konfigurálása az Azure AD-vel való kiépítés támogatásához
 
 Az Azure AD-vel való automatikus IDEO konfigurálása előtt le kell kérnie néhány kiépítési információt a IDEO-ből.
 
-1. A **Secret tokenhez** forduljon a IDEO támogatási productsupport@ideo.comcsapatához. Ez az érték a IDEO alkalmazás üzembe helyezés lapjának **titkos jogkivonat** mezőjében jelenik meg a Azure Portal. 
+* A **Secret tokenhez** forduljon a IDEO támogatási csapatához productsupport@ideo.com . Ez az érték a IDEO alkalmazás üzembe helyezés lapjának **titkos jogkivonat** mezőjében jelenik meg a Azure Portal. 
 
-## <a name="add-ideo-from-the-gallery"></a>IDEO hozzáadása a gyűjteményből
+## <a name="step-3-add-ideo-from-the-azure-ad-application-gallery"></a>3. lépés IDEO hozzáadása az Azure AD Application Galleryből
 
-Az Azure AD-vel való automatikus IDEO konfigurálásához hozzá kell adnia a IDEO az Azure AD Application Gallery-ből a felügyelt SaaS-alkalmazások listájához.
+Vegyen fel IDEO az Azure AD-alkalmazás-katalógusból a IDEO való kiépítés kezelésének megkezdéséhez. Ha korábban már beállította a IDEO az SSO-hoz, használhatja ugyanazt az alkalmazást. Javasoljuk azonban, hogy hozzon létre egy külön alkalmazást, amikor először teszteli az integrációt. További információ az alkalmazások a katalógusból való hozzáadásáról [.](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>4. lépés Annak meghatározása, hogy ki lesz a kiépítés hatóköre 
 
-    ![A Azure Active Directory gomb](common/select-azuread.png)
+Az Azure AD kiépítési szolgáltatása lehetővé teszi az alkalmazáshoz való hozzárendelés és a felhasználó/csoport attribútumai alapján kiépített hatókör kiosztását. Ha úgy dönt, hogy a hatókör ki lesz kiépítve az alkalmazáshoz a hozzárendelés alapján, a következő [lépésekkel](../manage-apps/assign-user-or-group-access-portal.md) rendelhet hozzá felhasználókat és csoportokat az alkalmazáshoz. Ha olyan hatókört választ ki, amely kizárólag a felhasználó vagy csoport attribútumai alapján lesz kiépítve, az [itt](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)leírtak szerint használhat egy hatókör-szűrőt. 
 
-2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
+* Felhasználók és csoportok IDEO való hozzárendeléséhez ki kell választania az **alapértelmezett hozzáféréstől**eltérő szerepkört. Az alapértelmezett hozzáférési szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítés alól, és a kiépítési naplók nem jogosultak arra, hogy ne legyenek ténylegesen feltüntetve. Ha az alkalmazás egyetlen szerepköre az alapértelmezett hozzáférési szerepkör, akkor a további szerepkörök hozzáadásához [frissítheti az alkalmazás-jegyzékfájlt](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) . 
 
-    ![A vállalati alkalmazások panel](common/enterprise-applications.png)
+* Kis kezdés. Tesztelje a felhasználókat és a csoportokat egy kis készlettel, mielőtt mindenki számára elérhetővé tenné. Ha a kiépítés hatóköre a hozzárendelt felhasználókhoz és csoportokhoz van beállítva, ezt úgy szabályozhatja, hogy egy vagy két felhasználót vagy csoportot rendel az alkalmazáshoz. Ha a hatókör minden felhasználóra és csoportra van beállítva, megadhat egy [attribútum-alapú hatókör-szűrőt](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts). 
 
-3. Új alkalmazás hozzáadásához kattintson a panel tetején található **új alkalmazás** gombra.
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
-
-4. A keresőmezőbe írja be a **IDEO**kifejezést, majd az eredmények panelen kattintson a **IDEO** elemre. 
-
-    ![IDEO az eredmények listájában](common/search-new-app.png)
-
-5. Válassza ki a **IDEO (regisztráció)** gombot, amely átirányítja Önt a IDEO bejelentkezési oldalára. 
-
-    ![IDEO OIDC hozzáadása](media/ideo-provisioning-tutorial/signup.png)
-
-6. Mivel a IDEO egy OpenIDConnect-alkalmazás, a Microsoft munkahelyi fiókjával való bejelentkezéshez válassza a IDEO lehetőséget.
-
-    ![IDEO OIDC-bejelentkezés](media/ideo-provisioning-tutorial/login.png)
-
-7. Sikeres hitelesítés után fogadja el a jóváhagyást kérő lapot. Az alkalmazás ezután automatikusan hozzáadódik a bérlőhöz, és a rendszer átirányítja a IDEO-fiókjába.
-
-    ![IDEO OIDc-beleegyezett](media/ideo-provisioning-tutorial/consent.png)
-
-## <a name="configure-automatic-user-provisioning-to-ideo"></a>Automatikus felhasználó-kiépítés beállítása a IDEO 
+## <a name="step-5-configure-automatic-user-provisioning-to-ideo"></a>5. lépés Automatikus felhasználó-kiépítés beállítása a IDEO 
 
 Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy az Azure AD-ben felhasználói és/vagy IDEO alapuló felhasználókat és/vagy csoportokat hozzon létre, frissítsen és tiltsa le.
 
@@ -113,7 +94,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Kiépítés lap](common/provisioning-automatic.png)
 
-5. A **rendszergazdai hitelesítő adatok** szakaszban adja `https://profile.ideo.com/api/scim/v2` meg a **bérlői URL-címet**. Adja meg azt az értéket, amelyet a IDEO támogatási csapatának beolvasott a **titkos jogkivonatban**. Kattintson a **kapcsolat tesztelése** lehetőségre, hogy az Azure ad képes legyen csatlakozni a IDEO. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a IDEO-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
+5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a **scim 2,0 alap URL-címet és a hozzáférési jogkivonat** azon értékeit, amelyeket a rendszer a **bérlői URL-cím** és a **titkos jogkivonat** mezőiben a IDEO támogatási csapatának korábban lekért. Kattintson a **kapcsolat tesztelése** lehetőségre, hogy az Azure ad képes legyen csatlakozni a IDEO. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a IDEO-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
     ![Bérlői URL + token](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -125,31 +106,53 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a IDEO**lehetőséget.
 
-    ![IDEO felhasználói leképezések](media/ideo-provisioning-tutorial/usermappings.png)
-
 9. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban található IDEO. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a IDEO felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-    ![IDEO felhasználói attribútumai](media/ideo-provisioning-tutorial/userattributes.png)
+   |Attribútum|Típus|
+   |---|---|
+   |userName (Felhasználónév)|Sztring|
+   |e-mailek [type EQ "work"]. Value|Sztring|
+   |Active|Logikai|
+   |név. givenName|Sztring|
+   |név. familyName|Sztring|
 
-10. A hatóköri szűrők konfigurálásához tekintse meg az alábbi utasításokat a [hatókör szűrője oktatóanyagban](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+10. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása a IDEO**lehetőséget.
+   
+11. Tekintse át az Azure AD-ből szinkronizált IDEO az **attribútum-hozzárendelés** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a IDEO tartozó csoportok egyeztetésére szolgálnak a frissítési műveletekhez. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-11. Az Azure AD-kiépítési szolgáltatás IDEO való engedélyezéséhez módosítsa a **kiépítési állapotot** **a** **Beállítások** szakaszban.
+      |Attribútum|Típus|
+      |---|---|
+      |displayName|Sztring|
+      |tagok|Hivatkozás|
 
-    ![Kiépítés állapota bekapcsolva](media/ideo-provisioning-tutorial/groupmappings.png)
+12. A hatóköri szűrők konfigurálásához tekintse meg az alábbi utasításokat a [hatókör szűrője oktatóanyagban](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
-12. Adja meg a IDEO kiépíteni kívánt felhasználókat és/vagy csoportokat a **Settings (beállítások** ) szakasz **hatókörében** a kívánt értékek kiválasztásával.
+13. Az Azure AD-kiépítési szolgáltatás IDEO való engedélyezéséhez módosítsa a **kiépítési állapotot** **a** **Beállítások** szakaszban.
 
-    ![Kiépítési hatókör](media/ideo-provisioning-tutorial/groupattributes.png)
+    ![Kiépítés állapota bekapcsolva](common/provisioning-toggle-on.png)
 
-13. Ha készen áll a létesítésre, kattintson a **Mentés**gombra.
+14. Adja meg a IDEO kiépíteni kívánt felhasználókat és/vagy csoportokat a **Settings (beállítások** ) szakasz **hatókörében** a kívánt értékek kiválasztásával.
+
+    ![Kiépítési hatókör](common/provisioning-scope.png)
+
+15. Ha készen áll a létesítésre, kattintson a **Mentés**gombra.
 
     ![Kiépítési konfiguráció mentése](common/provisioning-configuration-save.png)
 
-Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghatározott összes felhasználó és/vagy csoport kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg az Azure AD kiépítési szolgáltatás fut. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenységre mutató hivatkozásokat, amelyek az Azure ad-kiépítési szolgáltatás által a IDEO-on végrehajtott összes műveletet ismertetik.
+Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghatározott összes felhasználó és/vagy csoport kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg az Azure AD kiépítési szolgáltatás fut. 
 
-Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
+## <a name="step-6-monitor-your-deployment"></a>6. lépés Az üzemelő példány figyelése
+Miután konfigurálta az üzembe helyezést, a következő erőforrásokkal figyelheti az üzemelő példányt:
 
-## <a name="additional-resources"></a>További háttéranyagok
+1. A [kiépítési naplók](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) segítségével határozza meg, hogy mely felhasználók lettek sikeresen kiépítve vagy sikertelenül
+2. Ellenőrizze a [folyamatjelző sáv](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) állapotát a kiépítési ciklus állapotának megtekintéséhez és a Befejezés befejezéséhez.
+3. Ha úgy tűnik, hogy a kiépítési konfiguráció sérült állapotban van, az alkalmazás Karanténba kerül. További információ a karanténba [helyezett állapotokról](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).  
+
+## <a name="change-log"></a>Változási napló
+
+* 06/15/2020 – a támogatási műveletek a PUT helyett a csoportok esetében is használhatók.
+
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

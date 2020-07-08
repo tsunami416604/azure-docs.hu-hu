@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 04/29/2020
 ms.author: sukumari
 ms.reviewer: azmetadatadev
-ms.openlocfilehash: f638b332eae5cd85e1cb6aae9c6bd8eb4ad44848
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: e720be86c6505c2ddebaca91eeefa08e38170cbf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84886199"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85558603"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure-példány metaadatainak szolgáltatása
 
@@ -24,7 +24,8 @@ Az Azure Instance Metadata Service (IMDS) információt nyújt a jelenleg futó 
 Ezen információk közé tartozik a SKU, a Storage, a hálózati konfigurációk és a közelgő karbantartási események. Az elérhető adatok teljes listáját lásd: [metadata API](#metadata-apis)-k.
 Instance Metadata Service a virtuális gép és a virtuálisgép-méretezési csoport példányai esetében is elérhető. Csak [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/)használatával létrehozott/kezelt virtuális gépek futtatására használható.
 
-Az Azure Instance Metadata Service egy jól ismert, nem irányítható IP-címen () elérhető REST-végpont `169.254.169.254` , amely csak a virtuális gépről érhető el.
+Az Azure IMDS egy olyan REST-végpont, amely egy jól ismert, nem irányítható IP-címen () érhető el `169.254.169.254` , csak a virtuális gépen belülről érhető el. A virtuális gép és a IMDS közötti kommunikáció soha nem hagyja el a gazdagépet.
+Ajánlott a HTTP-ügyfeleket a virtuális gépen lévő webproxyk megkerülésére a IMDS lekérdezése során, és `169.254.169.254` ugyanazokat a szolgáltatásokkal kezelni [`168.63.129.16`](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16) .
 
 ## <a name="security"></a>Biztonság
 
@@ -46,7 +47,7 @@ Az alábbi mintakód egy példány összes metaadatának beolvasására szolgál
 **Kérés**
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2019-06-01"
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance?api-version=2019-06-01"
 ```
 
 **Válasz**
@@ -180,7 +181,7 @@ API | Alapértelmezett adatformátum | Egyéb formátumok
 A nem alapértelmezett válasz formátumának eléréséhez a kérelemben a kért formátumot lekérdezési karakterlánc paraméterként kell megadni. Például:
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-08-01&format=text"
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance?api-version=2017-08-01&format=text"
 ```
 
 > [!NOTE]
@@ -204,7 +205,7 @@ Ha nincs megadva verzió, a rendszer egy hibaüzenetet ad vissza a legújabb tá
 **Kérés**
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance"
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance"
 ```
 
 **Válasz**
@@ -224,7 +225,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance"
 
 Metadata Service több, különböző adatforrásokat jelképező API-t tartalmaz.
 
-API | Leírás | Verzió bevezetése
+API | Description | Verzió bevezetése
 ----|-------------|-----------------------
 /attested | [Igazolt](#attested-data) információ | 2018-10-01
 /identity | Lásd: [hozzáférési jogkivonat beszerzése](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) | 2018-02-01
@@ -235,7 +236,7 @@ API | Leírás | Verzió bevezetése
 
 A példány API elérhetővé teszi a virtuálisgép-példányok fontos metaadatait, beleértve a virtuális gépet, a hálózatot és a tárolót. A következő kategóriák érhetők el példányon/számításon keresztül:
 
-Adatok | Leírás | Verzió bevezetése
+Adatok | Description | Verzió bevezetése
 -----|-------------|-----------------------
 azEnvironment | Az Azure-környezet, amelyben a virtuális gép fut | 2018-10-01
 customData | Ez a funkció jelenleg le van tiltva. Ezt a dokumentációt akkor fogjuk frissíteni, amikor elérhetővé válik | 2019-02-01
@@ -270,7 +271,7 @@ Szolgáltatóként szükség lehet a szoftvert futtató virtuális gépek szám�
 **Kérés**
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/vmId?api-version=2017-08-01&format=text"
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/vmId?api-version=2017-08-01&format=text"
 ```
 
 **Válasz**
@@ -288,7 +289,7 @@ Ezeket az adatlekérdezéseket közvetlenül a Instance Metadata Service kereszt
 **Kérés**
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/platformFaultDomain?api-version=2017-08-01&format=text"
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/platformFaultDomain?api-version=2017-08-01&format=text"
 ```
 
 **Válasz**
@@ -304,7 +305,7 @@ Szolgáltatóként olyan támogatási hívást kaphat, amelyben további inform�
 **Kérés**
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-version=2019-06-01"
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute?api-version=2019-06-01"
 ```
 
 **Válasz**
@@ -404,7 +405,7 @@ Az Azure számos szuverén felhővel rendelkezik, mint például a [Azure Govern
 **Kérés**
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/azEnvironment?api-version=2018-10-01&format=text"
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/azEnvironment?api-version=2018-10-01&format=text"
 ```
 
 **Válasz**
@@ -426,7 +427,7 @@ A felhő és az Azure-környezet értékei az alábbiakban láthatók.
 
 A hálózati metaadatok a példány API részét képezik. A következő hálózati kategóriák érhetők el a példány/hálózat végponton keresztül.
 
-Adatok | Leírás | Verzió bevezetése
+Adatok | Description | Verzió bevezetése
 -----|-------------|-----------------------
 IPv4/Privateipaddress tulajdonságot | A virtuális gép helyi IPv4-címe | 2017-04-02
 IPv4/publicIpAddress | A virtuális gép nyilvános IPv4-címe | 2017-04-02
@@ -443,7 +444,7 @@ macAddress | VM MAC-címe | 2017-04-02
 **Kérés**
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance/network?api-version=2017-08-01"
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/network?api-version=2017-08-01"
 ```
 
 **Válasz**
@@ -482,7 +483,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/network?api-vers
 #### <a name="sample-2-retrieving-public-ip-address"></a>2. minta: nyilvános IP-cím beolvasása
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance/network/interface/0/ipv4/ipAddress/0/publicIpAddress?api-version=2017-08-01&format=text"
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/network/interface/0/ipv4/ipAddress/0/publicIpAddress?api-version=2017-08-01&format=text"
 ```
 
 ## <a name="storage-metadata"></a>Tárolási metaadatok
@@ -494,7 +495,7 @@ A virtuális gépek tárolási profilja három kategóriára oszlik: képhivatko
 
 A képhivatkozási objektum a következő információkat tartalmazza az operációsrendszer-lemezképpel kapcsolatban:
 
-Adatok    | Leírás
+Adatok    | Description
 --------|-----------------
 id      | Erőforrás-azonosító
 offer   | A platform vagy a piactér rendszerképének ajánlata
@@ -504,7 +505,7 @@ version | A platform vagy a piactér rendszerképének verziója
 
 Az operációsrendszer-lemez objektum a következő információkat tartalmazza a virtuális gép által használt operációsrendszer-lemezről:
 
-Adatok    | Leírás
+Adatok    | Description
 --------|-----------------
 gyorsítótárazás | Gyorsítótárazási követelmények
 createOption | Információk a virtuális gép létrehozásáról
@@ -519,7 +520,7 @@ writeAcceleratorEnabled | Azt jelzi, hogy engedélyezve van-e a writeAccelerator
 
 Az adatlemezek tömb tartalmazza a virtuális géphez csatolt adatlemezek listáját. Minden adatlemez-objektum a következő információkat tartalmazza:
 
-Adatok    | Leírás
+Adatok    | Description
 --------|-----------------
 gyorsítótárazás | Gyorsítótárazási követelmények
 createOption | Információk a virtuális gép létrehozásáról
@@ -538,7 +539,7 @@ Az alábbi példa bemutatja, hogyan lehet lekérdezni a virtuális gép tárolá
 **Kérés**
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/storageProfile?api-version=2019-06-01"
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/storageProfile?api-version=2019-06-01"
 ```
 
 **Válasz**
@@ -610,7 +611,7 @@ Előfordulhat, hogy az Azure-beli virtuális gépen a címkék logikailag rendsz
 **Kérés**
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/tags?api-version=2018-10-01&format=text"
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/tags?api-version=2018-10-01&format=text"
 ```
 
 **Válasz**
@@ -624,7 +625,7 @@ A `tags` mező egy olyan karakterlánc, amelynek a címkéi pontosvesszővel van
 **Kérés**
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/tagsList?api-version=2019-06-04"
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/tagsList?api-version=2019-06-04"
 ```
 
 **Válasz**
@@ -658,7 +659,7 @@ Instance Metadata Service által kiszolgált forgatókönyv része a garancia ar
 **Kérés**
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/attested/document?api-version=2018-10-01&nonce=1234567890"
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/attested/document?api-version=2018-10-01&nonce=1234567890"
 ```
 
 Az API-Version kötelező mező. Tekintse át a támogatott API-verziók [használati szakaszát](#usage) .
@@ -681,7 +682,7 @@ Az alkalom egy opcionális 10 számjegyű karakterlánc. Ha nincs megadva, a IMD
 Az aláírási blob a dokumentum [PKCS7](https://aka.ms/pkcs7) aláírt verziója. Tartalmazza az aláíráshoz használt tanúsítványt, valamint a virtuális gép részleteit, például a vmId, az SKU, az alkalom, a subscriptionId, az időbélyeg a dokumentum létrehozásához és lejáratához, valamint a rendszerképre vonatkozó terv információit. A csomag adatai csak az Azure Marketplace-lemezképek esetében vannak kitöltve. A tanúsítvány kinyerhető a válaszból, és annak ellenőrzésére szolgál, hogy a válasz érvényes-e, és az Azure-ból származik-e.
 A dokumentum a következő mezőket tartalmazza:
 
-Adatok | Leírás
+Adatok | Description
 -----|------------
 egyszeri | Egy karakterlánc, amely opcionálisan megadható a kérelemben. Ha nem adta meg a megadott időpontot, a rendszer az aktuális UTC-időbélyeget használja.
 csomag | Az [Azure Marketplace-rendszerkép terve](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan). A csomag azonosítóját (név), a termék rendszerképét vagy az ajánlatot (terméket) és a közzétevő azonosítóját (kiadó) tartalmazza.
@@ -702,7 +703,7 @@ A piactér-szállítók biztosítani szeretnék, hogy a szoftverük csak az Azur
 
 ```bash
 # Get the signature
-curl --silent -H Metadata:True http://169.254.169.254/metadata/attested/document?api-version=2019-04-30 | jq -r '.["signature"]' > signature
+curl --silent -H Metadata:True --noproxy "*" "http://169.254.169.254/metadata/attested/document?api-version=2019-04-30" | jq -r '.["signature"]' > signature
 # Decode the signature
 base64 -d signature > decodedsignature
 # Get PKCS7 format

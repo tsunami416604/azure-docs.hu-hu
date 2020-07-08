@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e662d2c6d7939756dee6eb25ca62fef171b7d6d0
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 7263d6a73a78b4b804cddd77f979898008ebadd6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "67109334"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555382"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>Hibrid identitás-bevezetési stratégia definiálása
 Ebben a feladatban megadhatja a hibrid identitás-bevezetési stratégiát a hibrid személyazonossági megoldáshoz, hogy megfeleljenek a következő cikkben tárgyalt üzleti követelményeknek:
@@ -63,7 +63,7 @@ A használt stratégia a felhasználó bejelentkezési élményét fogja diktál
 
 **Doman-csatlakoztatott és magánhálózati alkalmazások**:
 
-|  | Szinkronizált identitás | Federated Identity |
+| Alkalmazás | Szinkronizált identitás | Federated Identity |
 | --- | --- | --- |
 | Böngészők |Űrlapalapú hitelesítés |egyszeri bejelentkezés, esetenként a szervezet AZONOSÍTÓjának megadásához szükséges |
 | Outlook |Hitelesítő adatok bekérése |Hitelesítő adatok bekérése |
@@ -73,7 +73,7 @@ A használt stratégia a felhasználó bejelentkezési élményét fogja diktál
 
 **Külső vagy nem megbízható források**:
 
-|  | Szinkronizált identitás | Federated Identity |
+| Alkalmazás | Szinkronizált identitás | Federated Identity |
 | --- | --- | --- |
 | Böngészők |Űrlapalapú hitelesítés |Űrlapalapú hitelesítés |
 | Outlook, Skype vállalati verzió (Lync), OneDrive for Business, Office-előfizetés |Hitelesítő adatok bekérése |Hitelesítő adatok bekérése |
@@ -111,7 +111,7 @@ Az évek során több szinkronizálási eszköz is létezett és használatban v
 ### <a name="supported-topologies"></a>Támogatott topológiák
 A szinkronizálási stratégia definiálásakor meg kell határozni a használni kívánt topológiát. A 2. lépésben meghatározott információktól függően meghatározhatja, hogy melyik topológiát kell használni. Az egyetlen erdő, egyetlen Azure AD-topológia a leggyakoribb, és egyetlen Active Directory erdőből és egyetlen Azure AD-példányból áll.  Ez a forgatókönyvek többségében lesz felhasználva, és a várt topológia a Azure AD Connect Express telepítésekor az alábbi ábrán látható módon.
 
-![Az egyerdős támogatott topológiák](./media/plan-hybrid-identity-design-considerations/single-forest.png) esetében gyakori, hogy a nagyméretű és még kisebb szervezetek több erdőt is tartalmazhatnak, ahogy az 5. ábrán is látható.
+![Az ](./media/plan-hybrid-identity-design-considerations/single-forest.png) egyerdős támogatott topológiák esetében gyakori, hogy a nagyméretű és még kisebb szervezetek több erdőt is tartalmazhatnak, ahogy az 5. ábrán is látható.
 
 > [!NOTE]
 > További információ a különböző helyszíni és Azure AD-topológiákkal kapcsolatban: Azure AD Connect Sync olvassa el a [Azure ad Connect topológiáit](plan-connect-topologies.md)ismertető cikket.
@@ -158,7 +158,7 @@ Ehhez az alábbiaknak igaznak kell lenniük:
 * Egy DNS-tartomány csak egyetlen Azure AD-címtárban regisztrálható, így a helyszíni AD felhasználói UPN-nek külön névtereket kell használnia
 * Az Azure AD egy példányában lévő felhasználók csak a példányból származó felhasználókat láthatják.  A többi példányban nem jelennek meg a felhasználók.
 * Csak az egyik Azure AD-címtár engedélyezheti az Exchange Hybrid szolgáltatást a helyszíni AD-vel
-* A kölcsönös kizárólagosság a visszaírásra is vonatkozik.  Ez lehetővé teszi, hogy néhány írási visszavonási funkció ne legyen támogatva ehhez a topológiához, mivel ezek egyetlen helyszíni konfigurációt feltételeznek.  Az érintett műveletek közé tartoznak az alábbiak:
+* A kölcsönös kizárólagosság a visszaírásra is vonatkozik.  Ez lehetővé teszi, hogy néhány írási visszavonási funkció ne legyen támogatva ehhez a topológiához, mivel ezek egyetlen helyszíni konfigurációt feltételeznek.  Ide tartoznak az alábbiak:
   * Csoportos írás – visszaállítás az alapértelmezett konfigurációval
   * Eszköz visszaírása
 
