@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 12/20/2018
 ms.openlocfilehash: 8033e64924b5faa1cfdc9c04cdd8711850185dca
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84195466"
 ---
 # <a name="data-sync-agent-for-sql-data-sync"></a>SQL-adatszinkronizálás adatszinkronizálási ügynök
@@ -194,7 +193,7 @@ Miután létrehozta vagy újból létrehozta az ügynök kulcsát, megpróbálja
   1. Nyissa meg a SqlAzureDataSyncAgent alkalmazást.
   1. Válassza a **küldési ügynök kulcsa**lehetőséget.
   1. A rendelkezésre álló helyen illessze be a kulcsot a vágólapról.
-  1. Kattintson az **OK** gombra.
+  1. Válassza az **OK** lehetőséget.
   1. A program lezárása.
 
 ### <a name="the-client-agent-cant-be-deleted-from-the-portal-if-its-associated-on-premises-database-is-unreachable"></a><a name="agent-delete"></a>Az ügyfél ügynöke nem törölhető a portálról, ha a hozzá tartozó helyszíni adatbázis nem érhető el

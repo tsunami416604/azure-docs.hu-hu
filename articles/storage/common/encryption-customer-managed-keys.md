@@ -11,10 +11,9 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.openlocfilehash: 5dedd70b51361936808724ef70b96cdf9cfa13f5
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85515405"
 ---
 # <a name="use-customer-managed-keys-with-azure-key-vault-to-manage-azure-storage-encryption"></a>Ügyfél által felügyelt kulcsok használata Azure Key Vault az Azure Storage-titkosítás kezeléséhez
@@ -108,7 +107,7 @@ Az ügyfél által felügyelt kulcsokhoz való hozzáférés visszavonásához h
 
 Az ügyfél által felügyelt kulcsok az Azure Managed Disks titkosításának kezelésére is használhatók. Az ügyfél által felügyelt kulcsok eltérően működnek a felügyelt lemezeken, mint az Azure Storage-erőforrások esetében. További információkért lásd: az Azure Managed [Disks szolgáltatás kiszolgálóoldali titkosítása](../../virtual-machines/windows/disk-encryption.md) a Windows rendszerhez vagy az [Azure Managed Disks](../../virtual-machines/linux/disk-encryption.md) for Linux szolgáltatás kiszolgálóoldali titkosítása.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Ügyfél által felügyelt kulcsok konfigurálása Key Vault Azure Storage-titkosításhoz a Azure Portal](storage-encryption-keys-portal.md)
 - [Ügyfél által felügyelt kulcsok konfigurálása Key Vault Azure Storage-titkosításhoz a PowerShell-lel](storage-encryption-keys-powershell.md)

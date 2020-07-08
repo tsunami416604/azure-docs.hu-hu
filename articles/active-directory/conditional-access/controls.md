@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4d926d027b59a225d76f6a73ab3ee4ec09b595e5
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85253307"
 ---
 # <a name="custom-controls-preview"></a>Egyéni vezérlők (előzetes verzió)
@@ -33,11 +32,11 @@ Másolja a JSON-adatforrást, majd illessze be a kapcsolódó szövegmezőbe. Ne
 
 Az egyéni vezérlő létrehozásának lehetősége a **feltételes hozzáférés** lap **kezelés** szakaszában található.
 
-![Szabályozás](./media/controls/82.png)
+![Vezérlés](./media/controls/82.png)
 
 Az **új egyéni vezérlő**elemre kattintva megnyílik egy panel, amely a vezérlőelem JSON-adataihoz tartozó szövegmezővel rendelkezik.  
 
-![Szabályozás](./media/controls/81.png)
+![Vezérlés](./media/controls/81.png)
 
 ## <a name="deleting-custom-controls"></a>Egyéni vezérlők törlése
 

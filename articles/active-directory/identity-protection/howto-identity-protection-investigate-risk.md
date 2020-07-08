@@ -12,13 +12,12 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3610fa5ea442e5ccb15255d8a1ddcee211871aeb
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84463943"
 ---
-# <a name="how-to-investigate-risk"></a>Útmutató: a kockázat vizsgálata
+# <a name="how-to-investigate-risk"></a>Útmutató: Kockázat vizsgálata
 
 Az Identity Protection három jelentéssel rendelkező szervezeteket biztosít, amelyek segítségével megvizsgálhatja az identitás kockázatait a környezetében. Ezek a jelentések a **kockázatos felhasználók**, a **kockázatos bejelentkezések**és a **kockázati észlelések**. Az események vizsgálata kulcsfontosságú a biztonsági stratégiában található gyenge pontok jobb megismerése és azonosítása érdekében.
 
@@ -91,7 +90,7 @@ A kockázati észlelések jelentés által biztosított információkkal a rends
 
 A rendszergazdák ezután dönthetnek úgy, hogy visszatérnek a felhasználó kockázati vagy bejelentkezési jelentéséhez, hogy a gyűjtött információk alapján hajtsák végre a műveleteket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A kockázatok enyhítésére rendelkezésre álló szabályzatok](concept-identity-protection-policies.md)
 

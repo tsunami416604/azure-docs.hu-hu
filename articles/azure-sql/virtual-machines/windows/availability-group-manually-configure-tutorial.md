@@ -14,12 +14,11 @@ ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 574e2e1647ecf33fb05600407163c96247b6ce41
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
-ms.translationtype: MT
+ms.openlocfilehash: 0b98838441325245b3f4322a32eb5e2376557313
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391043"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960741"
 ---
 # <a name="tutorial-configure-a-sql-server-availability-group-on-azure-virtual-machines-manually"></a>Oktatóanyag: SQL Server rendelkezésre állási csoport konfigurálása az Azure Virtual Machines-on manuálisan
 
@@ -39,15 +38,15 @@ Az oktatóanyag feltételezi, hogy rendelkezik SQL Server always on rendelkezés
 
 A következő táblázat felsorolja azokat az előfeltételeket, amelyeket el kell végeznie az oktatóanyag megkezdése előtt:
 
-|  |Követelmény |Description |
+| Követelmény |Description |
 |----- |----- |----- |
-|![Square](./media/availability-group-manually-configure-tutorial/square.png) | Két SQL Server példány | – Azure-beli rendelkezésre állási csoport <br/> -Egyetlen tartományban <br/> -A feladatátvételi fürtszolgáltatás telepített funkciója |
-|![Square](./media/availability-group-manually-configure-tutorial/square.png)| Windows Server | Fájlmegosztás a tanúsító fürthöz |  
-|![Square](./media/availability-group-manually-configure-tutorial/square.png)|SQL Server szolgáltatásfiók | Tartományi fiók |
-|![Square](./media/availability-group-manually-configure-tutorial/square.png)|SQL Server Agent szolgáltatásfiók | Tartományi fiók |  
-|![Square](./media/availability-group-manually-configure-tutorial/square.png)|A tűzfal portjai nyitva vannak | -SQL Server: **1433** az alapértelmezett példányhoz <br/> – Adatbázis-tükrözési végpont: **5022** vagy bármely elérhető port <br/> -Rendelkezésre állási csoport terheléselosztó IP-címe állapotának mintavétele: **59999** vagy bármely elérhető port <br/> – A fürt alapvető terheléselosztó IP-címe állapotának mintavétele: **58888** vagy bármely elérhető port |
-|![Square](./media/availability-group-manually-configure-tutorial/square.png)|Feladatátvételi fürtszolgáltatás hozzáadása | Mindkét SQL Server példánynak szüksége van erre a szolgáltatásra |
-|![Square](./media/availability-group-manually-configure-tutorial/square.png)|Telepítési tartományi fiók | -Helyi rendszergazda az egyes SQL Servereken <br/> -SQL Server sysadmin (rendszergazda) rögzített kiszolgálói szerepkör tagja SQL Server egyes példányaihoz  |
+|![Square ](./media/availability-group-manually-configure-tutorial/square.png) **Two SQL Server instances**    | – Azure-beli rendelkezésre állási csoport <br/> -Egyetlen tartományban <br/> -A feladatátvételi fürtszolgáltatás telepített funkciója |
+|![Square ](./media/availability-group-manually-configure-tutorial/square.png) **Windows Server**    | Fájlmegosztás a tanúsító fürthöz |  
+|![Square ](./media/availability-group-manually-configure-tutorial/square.png) **SQL Server-szolgáltatásfiók**    | Tartományi fiók |
+|![Square ](./media/availability-group-manually-configure-tutorial/square.png) **SQL Server Agent-szolgáltatásfiók**    | Tartományi fiók |  
+|![A szögletes ](./media/availability-group-manually-configure-tutorial/square.png) **tűzfal portjai nyitva** vannak    | -SQL Server: **1433** az alapértelmezett példányhoz <br/> – Adatbázis-tükrözési végpont: **5022** vagy bármely elérhető port <br/> -Rendelkezésre állási csoport terheléselosztó IP-címe állapotának mintavétele: **59999** vagy bármely elérhető port <br/> – A fürt alapvető terheléselosztó IP-címe állapotának mintavétele: **58888** vagy bármely elérhető port |
+|![A ](./media/availability-group-manually-configure-tutorial/square.png) **feladatátvételi fürtszolgáltatás hozzáadása funkció**    | Mindkét SQL Server példánynak szüksége van erre a szolgáltatásra |
+|![Négyzetes ](./media/availability-group-manually-configure-tutorial/square.png) **telepítési tartományi fiók**    | -Helyi rendszergazda az egyes SQL Servereken <br/> -SQL Server sysadmin (rendszergazda) rögzített kiszolgálói szerepkör tagja SQL Server egyes példányaihoz  |
 
 
 Az oktatóanyag megkezdése előtt be kell [fejeznie az Always On rendelkezésre állási csoportok létrehozásához szükséges előfeltételeket az Azure Virtual Machinesban](availability-group-manually-configure-prerequisites-tutorial.md). Ha ezek az előfeltételek már befejeződtek, ugorjon a [fürt létrehozása](#CreateCluster)lehetőségre.
@@ -87,7 +86,7 @@ Az előfeltételek befejezését követően az első lépés egy Windows Server 
 ### <a name="set-the-windows-server-failover-cluster-ip-address"></a>A Windows Server feladatátvételi fürt IP-címének beállítása
 
   > [!NOTE]
-  > A Windows Server 2019 rendszeren a fürt egy **elosztott kiszolgálónevet** hoz létre a **fürt hálózati neve**helyett. Ha a Windows Server 2019-et használja, ugorja át az oktatóanyagban szereplő, a fürt alapvető nevére vonatkozó lépéseket. Fürt hálózati nevét a [PowerShell](failover-cluster-instance-storage-spaces-direct-manually-configure.md#windows-server-2019)használatával hozhatja létre. További információért tekintse át a következőt [: fürt hálózati objektuma](https://blogs.windows.com/windowsexperience/2018/08/14/announcing-windows-server-2019-insider-preview-build-17733/#W0YAxO8BfwBRbkzG.97) . 
+  > A Windows Server 2019 rendszeren a fürt egy **elosztott kiszolgálónevet** hoz létre a **fürt hálózati neve**helyett. Ha a Windows Server 2019-et használja, ugorja át az oktatóanyagban szereplő, a fürt alapvető nevére vonatkozó lépéseket. Fürt hálózati nevét a [PowerShell](failover-cluster-instance-storage-spaces-direct-manually-configure.md#create-failover-cluster)használatával hozhatja létre. További információért tekintse át a következőt [: fürt hálózati objektuma](https://blogs.windows.com/windowsexperience/2018/08/14/announcing-windows-server-2019-insider-preview-build-17733/#W0YAxO8BfwBRbkzG.97) . 
 
 1. A **Feladatátvevőfürt-kezelőban**görgessen le a **fürt alapvető erőforrásai** elemre, és bontsa ki a fürt részleteit. A **hibás** állapotú **nevet** és az **IP-cím** erőforrásait is látnia kell. Az IP-cím erőforrás nem hozható online állapotba, mert a fürt ugyanahhoz az IP-címhez van hozzárendelve, mint maga a gép, ezért ez egy duplikált cím.
 
@@ -367,7 +366,7 @@ Az Azure-ban a terheléselosztó lehet standard Load Balancer vagy egy alapszint
 
    ![Rendelkezésre állási csoport a Feladatátvevőfürt-kezelő](./media/availability-group-manually-configure-tutorial/82-azureloadbalancer.png)
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 1. Konfigurálja a terheléselosztó következő paramétereit.
 
    | Beállítás | Mező |
@@ -538,6 +537,6 @@ Az SQLCMD-kapcsolat automatikusan csatlakozik a SQL Server-példányhoz, amely a
 > Győződjön meg arról, hogy a megadott port meg van nyitva a tűzfalon mindkét SQL Server-kiszolgálón. Mindkét kiszolgálónak szüksége van egy bejövő szabályra a használt TCP-porthoz. További információ: [Tűzfalszabály hozzáadása vagy szerkesztése](https://technet.microsoft.com/library/cc753558.aspx).
 >
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Adjon hozzá egy IP-címet egy terheléselosztó számára egy második rendelkezésre állási csoport számára](availability-group-listener-powershell-configure.md#Add-IP).

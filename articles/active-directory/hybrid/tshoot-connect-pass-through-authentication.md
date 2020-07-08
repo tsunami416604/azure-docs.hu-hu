@@ -17,10 +17,9 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 36844c3c2fcfdbf016b3e2d148345e9ce31ea2b4
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85356151"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Az Azure Active Directory átmenő hitelesítésének hibaelhárítása
@@ -44,7 +43,7 @@ Győződjön meg arról, hogy az átmenő hitelesítés funkció továbbra is **
 
 Ha a felhasználó nem tud bejelentkezni az átmenő hitelesítés használatával, akkor az Azure AD bejelentkezési képernyőjén a következő, felhasználó által megjelenített hibák egyike jelenhet meg: 
 
-|Hiba|Leírás|Megoldás:
+|Hiba|Description|Megoldás:
 | --- | --- | ---
 |AADSTS80001|Nem lehet csatlakozni a Active Directory|Győződjön meg arról, hogy az ügynök-kiszolgálók ugyanahhoz az AD-erdőhöz tartoznak, mint azok a felhasználók, akiknek a jelszavát érvényesíteni kell, és képesek csatlakozni a Active Directoryhoz.  
 |AADSTS8002|Időtúllépés történt a Active Directoryhoz való csatlakozáskor|Győződjön meg arról, hogy a Active Directory elérhető, és válaszol az ügynökök kéréseire.

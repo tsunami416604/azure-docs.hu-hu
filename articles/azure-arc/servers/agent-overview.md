@@ -6,14 +6,13 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 06/16/2020
+ms.date: 07/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3b49682b2ece20266b3a051091d3784cc3e8bcca
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
-ms.translationtype: MT
+ms.openlocfilehash: 74ac991eb40864aeb4ac42d4774d9ab61fb14c36
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84976421"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807672"
 ---
 # <a name="overview-of-azure-arc-for-servers-agent"></a>Az Azure arc for Servers Agent áttekintése
 
@@ -26,6 +25,12 @@ Az Azure-beli csatlakoztatott gépi ügynök csomag több olyan logikai összete
 * A hibrid példány metaadatainak szolgáltatása (HIMDS) kezeli az Azure-hoz és a csatlakoztatott gép Azure-identitásához való kapcsolódást.
 
 * A vendég konfigurációs ügynök a vendég házirend-és a vendég-konfigurációs funkciókat biztosítja, például annak felmérését, hogy a gép megfelel-e a szükséges házirendeknek.
+
+    A leválasztott gép Azure Policy [vendég konfigurációjának](../../governance/policy/concepts/guest-configuration.md) következő viselkedését vegye figyelembe:
+
+    * A leválasztott gépeket megcélozó vendég-konfigurációs házirend-hozzárendelés nem érinti.
+    * A vendég-hozzárendelést a rendszer 14 napig helyileg tárolja. A 14 napos időszakon belül, ha a csatlakoztatott számítógép ügynöke újracsatlakozik a szolgáltatáshoz, a rendszer újraalkalmazza a házirend-hozzárendeléseket.
+    * A hozzárendelések 14 nap után törlődnek, és a 14 napos időszak után nem lesznek hozzárendelve a géphez.
 
 * A bővítmény ügynöke kezeli a virtuálisgép-bővítményeket, beleértve a telepítést, az eltávolítást és a frissítést. A bővítmények az Azure-ból tölthetők le, és a mappába kerülnek a `%SystemDrive%\AzureConnectedMachineAgent\ExtensionService\downloads` Windowsban, és a Linux rendszerhez `/opt/GC_Ext/downloads` . Windows rendszeren a bővítmény a következő elérési útra van telepítve, `%SystemDrive%\Packages\Plugins\<extension>` és Linux rendszeren a bővítmény telepítve van `/var/lib/waagent/<extension>` .
 
@@ -54,7 +59,7 @@ A Windowshoz készült csatlakoztatott számítógép-ügynök telepítése utá
 
 * A telepítés során a következő telepítési mappák jönnek létre.
 
-    |Mappa |Leírás |
+    |Mappa |Description |
     |-------|------------|
     |C:\Program Files\AzureConnectedMachineAgent |Az ügynök által támogatott fájlokat tartalmazó alapértelmezett telepítési útvonal.|
     |%ProgramData%\AzureConnectedMachineAgent |Az ügynök konfigurációs fájljait tartalmazza.|
@@ -66,21 +71,21 @@ A Windowshoz készült csatlakoztatott számítógép-ügynök telepítése utá
 
 * Az ügynök telepítése során a következő Windows-szolgáltatások jönnek létre a célszámítógépen.
 
-    |Szolgáltatásnév |Megjelenített név |Folyamatnév |Leírás |
+    |Szolgáltatásnév |Megjelenített név |Folyamatnév |Description |
     |-------------|-------------|-------------|------------|
     |himds |Azure Hybrid Instance Metadata Service |himds.exe |Ez a szolgáltatás implementálja az Azure-példány metaadatainak szolgáltatását (IMDS) az Azure-hoz és a csatlakoztatott gép Azure-identitásához való csatlakozás kezeléséhez.|
     |DscService |Vendég konfigurációs szolgáltatás |dsc_service.exe |Ez az Azure-ban a kívánt State Configuration (DSC v2) kód, amely a vendég házirend megvalósítására szolgál.|
 
 * Az ügynök telepítése során az alábbi környezeti változók jönnek létre.
 
-    |Name |Alapértelmezett érték |Leírás |
+    |Name |Alapértelmezett érték |Description |
     |-----|--------------|------------|
     |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
     |IMDS_ENDPOINT |http://localhost:40342 ||
 
 * Több naplófájl is elérhető a hibaelhárításhoz. Ezeket a következő táblázat ismerteti.
 
-    |Napló |Leírás |
+    |Napló |Description |
     |----|------------|
     |%ProgramData%\AzureConnectedMachineAgent\Log\himds.log |Az ügynökök (HIMDS) szolgáltatás és az Azure interakciójának adatait rögzíti.|
     |%ProgramData%\AzureConnectedMachineAgent\Log\azcmagent.log |A azcmagent eszköz parancsainak kimenetét tartalmazza a részletes (-v) argumentum használatakor.|
@@ -105,7 +110,7 @@ A Linux rendszerhez készült csatlakoztatott gépi ügynök telepítése után 
 
 * A telepítés során a következő telepítési mappák jönnek létre.
 
-    |Mappa |Leírás |
+    |Mappa |Description |
     |-------|------------|
     |/var/opt/azcmagent/ |Az ügynök által támogatott fájlokat tartalmazó alapértelmezett telepítési útvonal.|
     |/opt/azcmagent/ |
@@ -117,14 +122,14 @@ A Linux rendszerhez készült csatlakoztatott gépi ügynök telepítése után 
 
 * Az ügynök telepítése során a következő démonok jönnek létre a célszámítógépen.
 
-    |Szolgáltatásnév |Megjelenített név |Folyamatnév |Leírás |
+    |Szolgáltatásnév |Megjelenített név |Folyamatnév |Description |
     |-------------|-------------|-------------|------------|
     |himdsd. Service |Azure Hybrid Instance Metadata Service |/opt/azcmagent/bin/himds |Ez a szolgáltatás implementálja az Azure-példány metaadatainak szolgáltatását (IMDS) az Azure-hoz és a csatlakoztatott gép Azure-identitásához való csatlakozás kezeléséhez.|
     |DSCD. Service |Vendég konfigurációs szolgáltatás |/opt/DSC/dsc_linux_service |Ez az Azure-ban a kívánt State Configuration (DSC v2) kód, amely a vendég házirend megvalósítására szolgál.|
 
 * Több naplófájl is elérhető a hibaelhárításhoz. Ezeket a következő táblázat ismerteti.
 
-    |Napló |Leírás |
+    |Napló |Description |
     |----|------------|
     |/var/opt/azcmagent/log/himds.log |Az ügynökök (HIMDS) szolgáltatás és az Azure interakciójának adatait rögzíti.|
     |/var/opt/azcmagent/log/azcmagent.log |A azcmagent eszköz parancsainak kimenetét tartalmazza a részletes (-v) argumentum használatakor.|
@@ -135,7 +140,7 @@ A Linux rendszerhez készült csatlakoztatott gépi ügynök telepítése után 
 
 * Az ügynök telepítése során az alábbi környezeti változók jönnek létre. Ezek a változók a ben vannak beállítva `/lib/systemd/system.conf.d/azcmagent.conf` .
 
-    |Name |Alapértelmezett érték |Leírás |
+    |Name |Alapértelmezett érték |Description |
     |-----|--------------|------------|
     |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
     |IMDS_ENDPOINT |http://localhost:40342 ||
@@ -194,7 +199,7 @@ Szolgáltatás címkéi:
 
 URLs
 
-| Ügynök erőforrása | Leírás |
+| Ügynök erőforrása | Description |
 |---------|---------|
 |management.azure.com|Azure Resource Manager|
 |login.windows.net|Azure Active Directory|
@@ -239,7 +244,7 @@ Az erőforrás-szolgáltatókat a Azure Portal is regisztrálhatja a [Azure Port
 
 A hibrid környezetben az Azure-ban közvetlenül csatlakoztatható gépek a követelményektől függően különböző módszerekkel végezhetők el. Az alábbi táblázat az egyes módszereket ismerteti, amelyek alapján meghatározhatja, hogy melyik a legmegfelelőbb a szervezet számára.
 
-| Metódus | Leírás |
+| Metódus | Description |
 |--------|-------------|
 | Interaktív módon | Manuálisan telepítse az ügynököt egy vagy több gépen a [gépek Azure Portal-ból való összekapcsolása](onboard-portal.md)című témakör lépéseit követve.<br> A Azure Portal létrehozhat egy parancsfájlt, és végrehajthatja azt a gépen, hogy automatizálja az ügynök telepítésének és konfigurálásának lépéseit.|
 | Skálán | Telepítse és konfigurálja az ügynököt több gépen a [számítógépek összekapcsolását követően egy egyszerű szolgáltatásnév használatával](onboard-service-principal.md).<br> Ez a metódus létrehoz egy egyszerű szolgáltatást, amely nem interaktív módon csatlakozik a gépekhez.|

@@ -7,10 +7,9 @@ ms.topic: how-to
 ms.date: 10/30/2019
 ms.author: rohogue
 ms.openlocfilehash: 374f3106ec42233cd5309c2773b05e3c96bbf98e
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85515489"
 ---
 # <a name="use-azure-hpc-cache-with-azure-netapp-files"></a>Az Azure HPC cache használata Azure NetApp Files
@@ -88,7 +87,7 @@ Nincsenek különleges korlátozások a virtuális névtér elérési útjaihoz 
 
 Az ügyfélszámítógépeknek csatlakoztatnia kell a gyorsítótárat a Azure NetApp Files kötetek közvetlen csatlakoztatása helyett. Kövesse az [Azure HPC cache csatlakoztatása](hpc-cache-mount.md)című témakör utasításait.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ a [Azure NetApp Files](../azure-netapp-files/index.yml) beállításáról és használatáról
 * Az Azure HPC cache-rendszer Azure NetApp Files használatára való megtervezéséhez és beállításához [forduljon az ügyfélszolgálathoz](hpc-cache-support-ticket.md).

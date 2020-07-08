@@ -4,10 +4,9 @@ description: Bevezetés SQL Server adatbázisok biztonsági mentésére az Azure
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.openlocfilehash: f6a612bc56d1fa6b70ac89ed48f28d1ae48da2e6
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84195777"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>SQL Server biztonsági mentése az Azure-ba DPM számítási feladatokkal
@@ -60,7 +59,7 @@ SQL Server-adatbázisok védelméhez az Azure-ban először hozzon létre egy bi
    >
    >
 
-1. Kattintson a **Tovább** gombra. A DPM megjeleníti a rendelkezésre álló teljes tárolóhelyet. Emellett megjeleníti a lemezterület lehetséges kihasználtságát is.
+1. Válassza a **Tovább** lehetőséget. A DPM megjeleníti a rendelkezésre álló teljes tárolóhelyet. Emellett megjeleníti a lemezterület lehetséges kihasználtságát is.
 
     ![Lemez kiosztásának beállítása](./media/backup-azure-backup-sql/pg-storage.png)
 
@@ -148,7 +147,7 @@ Védett entitás, például SQL Server adatbázis helyreállítása az Azure-bó
 1. Kattintson a jobb gombbal az adatbázis nevére, és válassza a **helyreállítás**lehetőséget.
 
     ![Adatbázis helyreállítása az Azure-ból](./media/backup-azure-backup-sql/sqlbackup-recover.png)
-1. A DPM a helyreállítási pont részleteit jeleníti meg. Kattintson a **Tovább** gombra. Az adatbázis felülírásához válassza a helyreállítás típust a **SQL Server eredeti példányára**. Ezután válassza a **tovább**lehetőséget.
+1. A DPM a helyreállítási pont részleteit jeleníti meg. Válassza a **Tovább** lehetőséget. Az adatbázis felülírásához válassza a helyreállítás típust a **SQL Server eredeti példányára**. Ezután válassza a **tovább**lehetőséget.
 
     ![Adatbázis helyreállítása az eredeti helyükre](./media/backup-azure-backup-sql/sqlbackup-recoveroriginal.png)
 

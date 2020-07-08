@@ -4,27 +4,26 @@ description: Növelje a teljesítményt a lekérdezések szűrésével, amikor a
 ms.topic: how-to
 ms.date: 06/18/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7034b910f7ddfe07b27ee9c2939fb8ee6531c9ca
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
-ms.translationtype: MT
+ms.openlocfilehash: bcf99dbc55d708af70a28155a3f98c20003e51f7
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85299466"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960605"
 ---
 # <a name="create-queries-to-list-batch-resources-efficiently"></a>Lekérdezések létrehozása a Batch-erőforrások hatékony listázásához
 
 Szinte minden batch-alkalmazásnak valamilyen típusú figyelést vagy más műveletet kell végrehajtania, amely gyakran rendszeres időközönként lekérdezi a Batch szolgáltatást. Ha például meg szeretné állapítani, hogy vannak-e a feladatokban egy várólistára helyezett feladat, akkor a feladat minden feladatához le kell kérnie az összes feladatot. A készletben lévő csomópontok állapotának meghatározásához a készlet minden csomópontján be kell szereznie az adatait. Ez a cikk bemutatja, hogyan hajthatja végre az ilyen lekérdezéseket a leghatékonyabb módon.
 
-A Azure Batch alkalmazás teljesítményének növeléséhez csökkentse a szolgáltatás által visszaadott adatok mennyiségét, amikor a [Batch .net](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch) -kódtár segítségével lekérdezi a feladatokat, a feladatokat, a számítási csomópontokat és az egyéb erőforrásokat.
+A Azure Batch alkalmazás teljesítményének növeléséhez csökkentse a szolgáltatás által visszaadott adatok mennyiségét, amikor a [Batch .net](/dotnet/api/microsoft.azure.batch) -kódtár segítségével lekérdezi a feladatokat, a feladatokat, a számítási csomópontokat és az egyéb erőforrásokat.
 
 > [!NOTE]
-> A Batch szolgáltatás API-támogatást biztosít a feladatok feladatainak számlálására, valamint a számítási csomópontok számlálására a Batch-készletben. Ezeknek a listáknak a lekérése helyett a [feladatok beolvasása](https://docs.microsoft.com/rest/api/batchservice/job/gettaskcounts) és a [lista készlet csomópontok számlálása](https://docs.microsoft.com/rest/api/batchservice/account/listpoolnodecounts) műveletekkel hívható meg. Ezek a műveletek hatékonyabbak, mint a lista lekérdezése, de több korlátozott információt adnak vissza, amelyek esetleg nem mindig naprakészek. További információ: a [feladatok és a számítási csomópontok állapot szerinti számlálása](batch-get-resource-counts.md).
+> A Batch szolgáltatás API-támogatást biztosít a feladatok feladatainak számlálására, valamint a számítási csomópontok számlálására a Batch-készletben. Ezeknek a listáknak a lekérése helyett a [feladatok beolvasása](/rest/api/batchservice/job/gettaskcounts) és a [lista készlet csomópontok számlálása](/rest/api/batchservice/account/listpoolnodecounts) műveletekkel hívható meg. Ezek a műveletek hatékonyabbak, mint a lista lekérdezése, de több korlátozott információt adnak vissza, amelyek esetleg nem mindig naprakészek. További információ: a [feladatok és a számítási csomópontok állapot szerinti számlálása](batch-get-resource-counts.md).
 
 ## <a name="specify-a-detail-level"></a>Részletességi szint meghatározása
 
 Az éles batch-alkalmazásokban a feladatok, feladatok és számítási csomópontok több ezren is megadhatók. Amikor információt kér ezekről az erőforrásokról, egy potenciálisan nagy mennyiségű adatnak "át kell haladnia a drótot" a Batch szolgáltatásból az alkalmazásba az egyes lekérdezéseken. A lekérdezés által visszaadott elemek számának és típusának korlátozásával növelheti a lekérdezések sebességét, és így az alkalmazás teljesítménye is.
 
-Ez a [Batch .net](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch) API-kódrészlet *felsorolja a feladatokhoz* társított összes feladatot, valamint az egyes feladatok *összes* tulajdonságát:
+Ez a [Batch .net](/dotnet/api/microsoft.azure.batch) API-kódrészlet *felsorolja a feladatokhoz* társított összes feladatot, valamint az egyes feladatok *összes* tulajdonságát:
 
 ```csharp
 // Get a collection of all of the tasks and all of their properties for job-001
@@ -32,7 +31,7 @@ IPagedEnumerable<CloudTask> allTasks =
     batchClient.JobOperations.ListTasks("job-001");
 ```
 
-Ha azonban a lekérdezéshez egy "részletességi szintet" alkalmaz, egy sokkal hatékonyabb lista-lekérdezést is végrehajthat. Ezt úgy teheti meg, hogy egy [ODATADetailLevel](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.odatadetaillevel) objektumot biztosít a [JobOperations. ListTasks](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.joboperations) metódusnak. Ez a kódrészlet csak a Befejezett feladatok AZONOSÍTÓját, parancssorát és számítási csomópontjának információit adja vissza:
+Ha azonban a lekérdezéshez egy "részletességi szintet" alkalmaz, egy sokkal hatékonyabb lista-lekérdezést is végrehajthat. Ezt úgy teheti meg, hogy egy [ODATADetailLevel](/dotnet/api/microsoft.azure.batch.odatadetaillevel) objektumot biztosít a [JobOperations. ListTasks](/dotnet/api/microsoft.azure.batch.joboperations) metódusnak. Ez a kódrészlet csak a Befejezett feladatok AZONOSÍTÓját, parancssorát és számítási csomópontjának információit adja vissza:
 
 ```csharp
 // Configure an ODATADetailLevel specifying a subset of tasks and
@@ -53,7 +52,7 @@ Ebben a példában, ha több ezer feladat van a feladatban, a második lekérdez
 
 ## <a name="filter-select-and-expand"></a>Szűrés, kijelölés és Kibontás
 
-A [Batch .net](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch) és a [Batch Rest](https://docs.microsoft.com/rest/api/batchservice/) API-k lehetővé teszik a listában visszaadott elemek számának, valamint a visszaadott adatok mennyiségének csökkentését. Ehhez adja meg a **szűrés**, a **kiválasztás**és a **karakterláncok kibontása** a listák lekérdezésének végrehajtásakor lehetőséget.
+A [Batch .net](/dotnet/api/microsoft.azure.batch) és a [Batch Rest](/rest/api/batchservice/) API-k lehetővé teszik a listában visszaadott elemek számának, valamint a visszaadott adatok mennyiségének csökkentését. Ehhez adja meg a **szűrés**, a **kiválasztás**és a **karakterláncok kibontása** a listák lekérdezésének végrehajtásakor lehetőséget.
 
 ### <a name="filter"></a>Szűrés
 
@@ -84,7 +83,7 @@ Ez a példa a karakterlánc kibontásával meghatározza, hogy a statisztikai ad
 
 ### <a name="rules-for-filter-select-and-expand-strings"></a>A szűrésre, kiválasztásra és a karakterláncok kibontására vonatkozó szabályok
 
-- A Filter, a Select és a Expand karakterláncban szereplő tulajdonságok nevei a [Batch Rest](https://docs.microsoft.com/rest/api/batchservice/) API-ban is megjelennek, még akkor is, ha a [Batch .net](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch) vagy egy másik batch SDK-t használ.
+- A Filter, a Select és a Expand karakterláncban szereplő tulajdonságok nevei a [Batch Rest](/rest/api/batchservice/) API-ban is megjelennek, még akkor is, ha a [Batch .net](/dotnet/api/microsoft.azure.batch) vagy egy másik batch SDK-t használ.
 - Az összes tulajdonságnév megkülönbözteti a kis-és nagybetűket, de a tulajdonságértékek a kis-és nagybetűk megkülönböztetése.
 - A dátum/idő karakterláncok két formátum egyike lehet, és előtte kell lennie `DateTime` .
   
@@ -95,11 +94,11 @@ Ez a példa a karakterlánc kibontásával meghatározza, hogy a statisztikai ad
 
 ## <a name="efficient-querying-in-batch-net"></a>Hatékony lekérdezés a Batch .NET-ben
 
-A [Batch .net](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch) API-n belül a [ODATADetailLevel](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.odatadetaillevel) osztály a szűrők megadására, a kiválasztására és a karakterláncok kibontására szolgál a műveletek listázásához. A ODataDetailLevel osztály három nyilvános karakterlánc-tulajdonságot tartalmaz, amelyek megadhatók a konstruktorban, vagy közvetlenül az objektumon is megadhatók. Ezután a ODataDetailLevel objektumot paraméterként adja át a különböző lista-műveletekhez, például a [ListPools](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations), a [ListJobs](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.joboperations)és a [ListTasks](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.joboperations).
+A [Batch .net](/dotnet/api/microsoft.azure.batch) API-n belül a [ODATADetailLevel](/dotnet/api/microsoft.azure.batch.odatadetaillevel) osztály a szűrők megadására, a kiválasztására és a karakterláncok kibontására szolgál a műveletek listázásához. A ODataDetailLevel osztály három nyilvános karakterlánc-tulajdonságot tartalmaz, amelyek megadhatók a konstruktorban, vagy közvetlenül az objektumon is megadhatók. Ezután a ODataDetailLevel objektumot paraméterként adja át a különböző lista-műveletekhez, például a [ListPools](/dotnet/api/microsoft.azure.batch.pooloperations), a [ListJobs](/dotnet/api/microsoft.azure.batch.joboperations)és a [ListTasks](/dotnet/api/microsoft.azure.batch.joboperations).
 
-- [ODATADetailLevel. FilterClause](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.odatadetaillevel.filterclause): korlátozza a visszaadott elemek számát.
-- [ODATADetailLevel. SelectClause](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.odatadetaillevel.selectclause): adja meg, hogy mely tulajdonságértékek legyenek visszaadva az egyes elemeknél.
-- [ODATADetailLevel. ExpandClause](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.odatadetaillevel.expandclause): egyetlen API-hívásban lévő összes elemre vonatkozó adatok lekérése az egyes elemek külön hívása helyett.
+- [ODATADetailLevel. FilterClause](/dotnet/api/microsoft.azure.batch.odatadetaillevel.filterclause): korlátozza a visszaadott elemek számát.
+- [ODATADetailLevel. SelectClause](/dotnet/api/microsoft.azure.batch.odatadetaillevel.selectclause): adja meg, hogy mely tulajdonságértékek legyenek visszaadva az egyes elemeknél.
+- [ODATADetailLevel. ExpandClause](/dotnet/api/microsoft.azure.batch.odatadetaillevel.expandclause): egyetlen API-hívásban lévő összes elemre vonatkozó adatok lekérése az egyes elemek külön hívása helyett.
 
 A következő kódrészlet a Batch .NET API használatával hatékonyan kérdezi le a Batch szolgáltatást egy adott készlet statisztikájában. Ebben az esetben a Batch-felhasználónak tesztelési és üzemi készletek is vannak. A test Pool-azonosítók "test" előtaggal vannak ellátva, és a termelési készlet azonosítói a "Prod" előtaggal vannak ellátva. A kódrészletben a *myBatchClient* a [BatchClient](/dotnet/api/microsoft.azure.batch.batchclient) osztály megfelelően inicializált példánya.
 
@@ -130,7 +129,7 @@ List<CloudPool> testPools =
 ```
 
 > [!TIP]
-> A Select és Expand záradékokkal konfigurált [ODATADetailLevel](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.odatadetaillevel) -példányok is átadhatók a megfelelő Get metódusoknak (például [PoolOperations. GetPool)](/dotnet/api/microsoft.azure.batch.pooloperations.getpool#Microsoft_Azure_Batch_PoolOperations_GetPool_System_String_Microsoft_Azure_Batch_DetailLevel_System_Collections_Generic_IEnumerable_Microsoft_Azure_Batch_BatchClientBehavior__)a visszaadott adatmennyiség korlátozása érdekében.
+> A Select és Expand záradékokkal konfigurált [ODATADetailLevel](/dotnet/api/microsoft.azure.batch.odatadetaillevel) -példányok is átadhatók a megfelelő Get metódusoknak (például [PoolOperations. GetPool)](/dotnet/api/microsoft.azure.batch.pooloperations.getpool#Microsoft_Azure_Batch_PoolOperations_GetPool_System_String_Microsoft_Azure_Batch_DetailLevel_System_Collections_Generic_IEnumerable_Microsoft_Azure_Batch_BatchClientBehavior__)a visszaadott adatmennyiség korlátozása érdekében.
 
 ## <a name="batch-rest-to-net-api-mappings"></a>Batch – REST – .NET API-hozzárendelések
 
@@ -138,39 +137,39 @@ A szűrőben, a Select és a Expand karakterláncban szereplő tulajdonságok ne
 
 ### <a name="mappings-for-filter-strings"></a>Szűrési karakterláncok megfeleltetése
 
-- **.Net-lista módszerei**: ebben az oszlopban található összes .NET API-metódus egy [ODATADetailLevel](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.odatadetaillevel) objektumot fogad el paraméterként.
-- **Rest-listákra vonatkozó kérelmek**: az ebben az oszlopban található összes REST API-oldal tartalmaz egy táblázatot, amely meghatározza a *szűrő* sztringekben engedélyezett tulajdonságokat és műveleteket. Ezeket a tulajdonságokat és műveleteket a [ODATADetailLevel. FilterClause](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.odatadetaillevel.filterclause) karakterlánc összeállításakor használhatja.
+- **.Net-lista módszerei**: ebben az oszlopban található összes .NET API-metódus egy [ODATADetailLevel](/dotnet/api/microsoft.azure.batch.odatadetaillevel) objektumot fogad el paraméterként.
+- **Rest-listákra vonatkozó kérelmek**: az ebben az oszlopban található összes REST API-oldal tartalmaz egy táblázatot, amely meghatározza a *szűrő* sztringekben engedélyezett tulajdonságokat és műveleteket. Ezeket a tulajdonságokat és műveleteket a [ODATADetailLevel. FilterClause](/dotnet/api/microsoft.azure.batch.odatadetaillevel.filterclause) karakterlánc összeállításakor használhatja.
 
 | .NET-lista módszerei | REST-lista kérései |
 | --- | --- |
-| [CertificateOperations. ListCertificates](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.certificateoperations) |[Fiókban lévő tanúsítványok listázása](https://docs.microsoft.com/rest/api/batchservice/certificate/list) |
-| [CloudTask. ListNodeFiles](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudtask) |[Feladathoz társított fájlok listázása](https://docs.microsoft.com/rest/api/batchservice/file/listfromtask) |
-| [JobOperations. ListJobPreparationAndReleaseTaskStatus](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.joboperations) |[Feladathoz tartozó feladat-előkészítési és feladat-kiadási feladatok állapotának listázása](https://docs.microsoft.com/rest/api/batchservice/job/listpreparationandreleasetaskstatus) |
-| [JobOperations. ListJobs](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.joboperations) |[A fiókban lévő feladatok listázása](https://docs.microsoft.com/rest/api/batchservice/job/list) |
-| [JobOperations. ListNodeFiles](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.joboperations) |[Csomóponton található fájlok listázása](https://docs.microsoft.com/rest/api/batchservice/file/listfromcomputenode) |
-| [JobOperations. ListTasks](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.joboperations) |[Feladathoz társított feladatok listázása](https://docs.microsoft.com/rest/api/batchservice/task/list) |
-| [JobScheduleOperations.ListJobSchedules](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.jobscheduleoperations) |[A fiókban lévő feladatok ütemtervének listázása](https://docs.microsoft.com/rest/api/batchservice/jobschedule/list) |
-| [JobScheduleOperations.ListJobs](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.jobscheduleoperations) |[A feladatütemezés által hozzárendelt feladatok listázása](https://docs.microsoft.com/rest/api/batchservice/job/listfromjobschedule) |
-| [PoolOperations. ListComputeNodes](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations) |[A készletben lévő számítási csomópontok listázása](https://docs.microsoft.com/rest/api/batchservice/computenode/list) |
-| [PoolOperations. ListPools](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations) |[A fiókban lévő készletek listázása](https://docs.microsoft.com/rest/api/batchservice/pool/list) |
+| [CertificateOperations. ListCertificates](/dotnet/api/microsoft.azure.batch.certificateoperations) |[Fiókban lévő tanúsítványok listázása](/rest/api/batchservice/certificate/list) |
+| [CloudTask. ListNodeFiles](/dotnet/api/microsoft.azure.batch.cloudtask) |[Feladathoz társított fájlok listázása](/rest/api/batchservice/file/listfromtask) |
+| [JobOperations. ListJobPreparationAndReleaseTaskStatus](/dotnet/api/microsoft.azure.batch.joboperations) |[Feladathoz tartozó feladat-előkészítési és feladat-kiadási feladatok állapotának listázása](/rest/api/batchservice/job/listpreparationandreleasetaskstatus) |
+| [JobOperations. ListJobs](/dotnet/api/microsoft.azure.batch.joboperations) |[A fiókban lévő feladatok listázása](/rest/api/batchservice/job/list) |
+| [JobOperations. ListNodeFiles](/dotnet/api/microsoft.azure.batch.joboperations) |[Csomóponton található fájlok listázása](/rest/api/batchservice/file/listfromcomputenode) |
+| [JobOperations. ListTasks](/dotnet/api/microsoft.azure.batch.joboperations) |[Feladathoz társított feladatok listázása](/rest/api/batchservice/task/list) |
+| [JobScheduleOperations.ListJobSchedules](/dotnet/api/microsoft.azure.batch.jobscheduleoperations) |[A fiókban lévő feladatok ütemtervének listázása](/rest/api/batchservice/jobschedule/list) |
+| [JobScheduleOperations.ListJobs](/dotnet/api/microsoft.azure.batch.jobscheduleoperations) |[A feladatütemezés által hozzárendelt feladatok listázása](/rest/api/batchservice/job/listfromjobschedule) |
+| [PoolOperations. ListComputeNodes](/dotnet/api/microsoft.azure.batch.pooloperations) |[A készletben lévő számítási csomópontok listázása](/rest/api/batchservice/computenode/list) |
+| [PoolOperations. ListPools](/dotnet/api/microsoft.azure.batch.pooloperations) |[A fiókban lévő készletek listázása](/rest/api/batchservice/pool/list) |
 
 ### <a name="mappings-for-select-strings"></a>A kiválasztott karakterláncok megfeleltetése
 
 - **Batch .net-típusok**: Batch .NET API-típusok.
-- **REST API entitások**: ebben az oszlopban minden oldal egy vagy több olyan táblát tartalmaz, amely a típus REST API tulajdonságának nevét listázza. Ezeket a tulajdonságokat a *Select* sztringek összeállításakor használja a rendszer. Ugyanezeket a tulajdonságokat kell használni, amikor [ODATADetailLevel. SelectClause](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.odatadetaillevel.selectclause) karakterláncot hoz létre.
+- **REST API entitások**: ebben az oszlopban minden oldal egy vagy több olyan táblát tartalmaz, amely a típus REST API tulajdonságának nevét listázza. Ezeket a tulajdonságokat a *Select* sztringek összeállításakor használja a rendszer. Ugyanezeket a tulajdonságokat kell használni, amikor [ODATADetailLevel. SelectClause](/dotnet/api/microsoft.azure.batch.odatadetaillevel.selectclause) karakterláncot hoz létre.
 
 | Batch .NET-típusok | Entitások REST API |
 | --- | --- |
-| [Tanúsítvány](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.certificate) |[Tanúsítvány adatainak beolvasása](https://docs.microsoft.com/rest/api/batchservice/certificate/get) |
-| [CloudJob](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudjob) |[Feladattal kapcsolatos információk lekérése](https://docs.microsoft.com/rest/api/batchservice/job/get) |
-| [CloudJobSchedule](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudjobschedule) |[Feladatütemezés adatainak beolvasása](https://docs.microsoft.com/rest/api/batchservice/jobschedule/get) |
-| [ComputeNode](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.computenode) |[Csomópont adatainak beolvasása](https://docs.microsoft.com/rest/api/batchservice/computenode/get) |
-| [CloudPool](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool) |[Készlet adatainak beolvasása](https://docs.microsoft.com/rest/api/batchservice/pool/get) |
-| [CloudTask](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudtask) |[Feladat adatainak beolvasása](https://docs.microsoft.com/rest/api/batchservice/task/get) |
+| [Tanúsítvány](/dotnet/api/microsoft.azure.batch.certificate) |[Tanúsítvány adatainak beolvasása](/rest/api/batchservice/certificate/get) |
+| [CloudJob](/dotnet/api/microsoft.azure.batch.cloudjob) |[Feladattal kapcsolatos információk lekérése](/rest/api/batchservice/job/get) |
+| [CloudJobSchedule](/dotnet/api/microsoft.azure.batch.cloudjobschedule) |[Feladatütemezés adatainak beolvasása](/rest/api/batchservice/jobschedule/get) |
+| [ComputeNode](/dotnet/api/microsoft.azure.batch.computenode) |[Csomópont adatainak beolvasása](/rest/api/batchservice/computenode/get) |
+| [CloudPool](/dotnet/api/microsoft.azure.batch.cloudpool) |[Készlet adatainak beolvasása](/rest/api/batchservice/pool/get) |
+| [CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask) |[Feladat adatainak beolvasása](/rest/api/batchservice/task/get) |
 
 ## <a name="example-construct-a-filter-string"></a>Példa: szűrő sztring létrehozása
 
-Amikor [ODATADetailLevel. FilterClause](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.odatadetaillevel.filterclause)-hoz hoz létre egy szűrő sztringet, tekintse meg a fenti táblázatot a "szűrési karakterláncok leképezése" alatt, és keresse meg az REST API dokumentációs oldalát, amely megfelel a végrehajtani kívánt lista műveletnek. A szűrhető tulajdonságokat és a támogatott operátorokat a lap első MultiRow táblázatában találja. Ha szeretné lekérdezni az összes olyan feladatot, amelynek kilépési kódja nem nulla, például egy adott feladathoz [társított feladat](https://docs.microsoft.com/rest/api/batchservice/task/list) meghatározza a megfelelő tulajdonság-karakterláncot és a megengedett operátorokat:
+Amikor [ODATADetailLevel. FilterClause](/dotnet/api/microsoft.azure.batch.odatadetaillevel.filterclause)-hoz hoz létre egy szűrő sztringet, tekintse meg a fenti táblázatot a "szűrési karakterláncok leképezése" alatt, és keresse meg az REST API dokumentációs oldalát, amely megfelel a végrehajtani kívánt lista műveletnek. A szűrhető tulajdonságokat és a támogatott operátorokat a lap első MultiRow táblázatában találja. Ha szeretné lekérdezni az összes olyan feladatot, amelynek kilépési kódja nem nulla, például egy adott feladathoz [társított feladat](/rest/api/batchservice/task/list) meghatározza a megfelelő tulajdonság-karakterláncot és a megengedett operátorokat:
 
 | Tulajdonság | Engedélyezett műveletek | Típus |
 |:--- |:--- |:--- |
@@ -182,7 +181,7 @@ Amikor [ODATADetailLevel. FilterClause](https://docs.microsoft.com/dotnet/api/mi
 
 ## <a name="example-construct-a-select-string"></a>Példa: válasszon ki egy Select sztringet
 
-A [ODATADetailLevel. SelectClause](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.odatadetaillevel.selectclause)létrehozásához tekintse meg a fenti táblázatot a "Select Strings (hozzárendelések a kiválasztott karakterláncok számára)" szakaszban, és navigáljon a REST API oldalra, amely megfelel a listán szereplő entitás típusának. A kiválasztható tulajdonságokat és a támogatott operátorokat a lap első MultiRow táblázatában találja. Ha például csak az azonosítót és a parancssort szeretné lekérdezni a listában szereplő egyes feladatokhoz, a következő sorok szerepelnek a megfelelő táblázatban a [feladattal kapcsolatos információk lekéréséhez](https://docs.microsoft.com/rest/api/batchservice/task/get):
+A [ODATADetailLevel. SelectClause](/dotnet/api/microsoft.azure.batch.odatadetaillevel.selectclause)létrehozásához tekintse meg a fenti táblázatot a "Select Strings (hozzárendelések a kiválasztott karakterláncok számára)" szakaszban, és navigáljon a REST API oldalra, amely megfelel a listán szereplő entitás típusának. A kiválasztható tulajdonságokat és a támogatott operátorokat a lap első MultiRow táblázatában találja. Ha például csak az azonosítót és a parancssort szeretné lekérdezni a listában szereplő egyes feladatokhoz, a következő sorok szerepelnek a megfelelő táblázatban a [feladattal kapcsolatos információk lekéréséhez](/rest/api/batchservice/task/get):
 
 | Tulajdonság | Típus | Jegyzetek |
 |:--- |:--- |:--- |
@@ -197,7 +196,7 @@ A Select sztring, amely csak az azonosítót és a parancssort tartalmazza, és 
 
 ### <a name="efficient-list-queries-code-sample"></a>Hatékony lista lekérdezési kódjának mintája
 
-A [EfficientListQueries](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp/ArticleProjects/EfficientListQueries) -minta projekt a githubon azt mutatja be, hogy a lista lekérdezése milyen hatékony hatással lehet egy alkalmazás teljesítményére. Ez a C# konzol alkalmazás nagy számú feladatot hoz létre és tesz hozzá egy feladathoz. Ezután több hívást kezdeményez a [JobOperations. ListTasks](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.joboperations) metódushoz, és átadja a különböző tulajdonság-értékekkel konfigurált [ODATADetailLevel](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.odatadetaillevel) -objektumokat a visszaadott adatok mennyiségének a megváltoztatásához. A következőhöz hasonló kimenetet hoz létre:
+A [EfficientListQueries](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp/ArticleProjects/EfficientListQueries) -minta projekt a githubon azt mutatja be, hogy a lista lekérdezése milyen hatékony hatással lehet egy alkalmazás teljesítményére. Ez a C# konzol alkalmazás nagy számú feladatot hoz létre és tesz hozzá egy feladathoz. Ezután több hívást kezdeményez a [JobOperations. ListTasks](/dotnet/api/microsoft.azure.batch.joboperations) metódushoz, és átadja a különböző tulajdonság-értékekkel konfigurált [ODATADetailLevel](/dotnet/api/microsoft.azure.batch.odatadetaillevel) -objektumokat a visszaadott adatok mennyiségének a megváltoztatásához. A következőhöz hasonló kimenetet hoz létre:
 
 ```
 Adding 5000 tasks to job jobEffQuery...
@@ -244,53 +243,53 @@ internal static ODATADetailLevel OnlyChangedAfter(DateTime time)
 - Megtudhatja, hogyan [figyelheti a Batch-megoldásokat a feladatok és a csomópontok állapot szerinti számlálásával](batch-get-resource-counts.md)
 
 
-[api_net]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch
-[api_net_listjobs]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.joboperations.listjobs.aspx
-[api_rest]: https://docs.microsoft.com/rest/api/batchservice/
+[api_net]: /dotnet/api/microsoft.azure.batch
+[api_net_listjobs]: /dotnet/api/microsoft.azure.batch.joboperations
+[api_rest]: /rest/api/batchservice/
 [batch_metrics]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchMetrics
 [efficient_query_sample]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/EfficientListQueries
 [github_samples]: https://github.com/Azure/azure-batch-samples
-[odata]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.odatadetaillevel.aspx
-[odata_ctor]: https://msdn.microsoft.com/library/azure/dn866178.aspx
-[odata_expand]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.odatadetaillevel.expandclause.aspx
-[odata_filter]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.odatadetaillevel.filterclause.aspx
-[odata_select]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.odatadetaillevel.selectclause.aspx
+[odata]: /dotnet/api/microsoft.azure.batch.odatadetaillevel
+[odata_ctor]: /dotnet/api/microsoft.azure.batch.odatadetaillevel
+[odata_expand]: /dotnet/api/microsoft.azure.batch.odatadetaillevel
+[odata_filter]: /dotnet/api/microsoft.azure.batch.odatadetaillevel
+[odata_select]: /dotnet/api/microsoft.azure.batch.odatadetaillevel
 
-[net_list_certs]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.certificateoperations.listcertificates.aspx
-[net_list_compute_nodes]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.listcomputenodes.aspx
-[net_list_job_schedules]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.jobscheduleoperations.listjobschedules.aspx
-[net_list_jobprep_status]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.joboperations.listjobpreparationandreleasetaskstatus.aspx
-[net_list_jobs]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.joboperations.listjobs.aspx
-[net_list_nodefiles]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.joboperations.listnodefiles.aspx
-[net_list_pools]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.listpools.aspx
-[net_list_schedule_jobs]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.jobscheduleoperations.listjobs.aspx
-[net_list_task_files]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.listnodefiles.aspx
-[net_list_tasks]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.joboperations.listtasks.aspx
+[net_list_certs]: /dotnet/api/microsoft.azure.batch.certificateoperations
+[net_list_compute_nodes]: /dotnet/api/microsoft.azure.batch.pooloperations
+[net_list_job_schedules]: /dotnet/api/microsoft.azure.batch.jobscheduleoperations
+[net_list_jobprep_status]: /dotnet/api/microsoft.azure.batch.joboperations
+[net_list_jobs]: /dotnet/api/microsoft.azure.batch.joboperations
+[net_list_nodefiles]: /dotnet/api/microsoft.azure.batch.joboperations
+[net_list_pools]: /dotnet/api/microsoft.azure.batch.pooloperations
+[net_list_schedule_jobs]: /dotnet/api/microsoft.azure.batch.jobscheduleoperations
+[net_list_task_files]: /dotnet/api/microsoft.azure.batch.cloudtask
+[net_list_tasks]: /dotnet/api/microsoft.azure.batch.joboperations
 
-[rest_list_certs]: https://msdn.microsoft.com/library/azure/dn820154.aspx
-[rest_list_compute_nodes]: https://msdn.microsoft.com/library/azure/dn820159.aspx
-[rest_list_job_schedules]: https://msdn.microsoft.com/library/azure/mt282174.aspx
-[rest_list_jobprep_status]: https://msdn.microsoft.com/library/azure/mt282170.aspx
-[rest_list_jobs]: https://msdn.microsoft.com/library/azure/dn820117.aspx
-[rest_list_nodefiles]: https://msdn.microsoft.com/library/azure/dn820151.aspx
-[rest_list_pools]: https://msdn.microsoft.com/library/azure/dn820101.aspx
-[rest_list_schedule_jobs]: https://msdn.microsoft.com/library/azure/mt282169.aspx
-[rest_list_task_files]: https://msdn.microsoft.com/library/azure/dn820142.aspx
-[rest_list_tasks]: https://msdn.microsoft.com/library/azure/dn820187.aspx
+[rest_list_certs]: /rest/api/batchservice/certificate/list
+[rest_list_compute_nodes]: /rest/api/batchservice/computenode/list
+[rest_list_job_schedules]: /rest/api/batchservice/jobschedule/list
+[rest_list_jobprep_status]: /rest/api/batchservice/job/listpreparationandreleasetaskstatus
+[rest_list_jobs]: /rest/api/batchservice/job/list
+[rest_list_nodefiles]: /rest/api/batchservice/file/listfromcomputenode
+[rest_list_pools]: /rest/api/batchservice/pool/list
+[rest_list_schedule_jobs]: /rest/api/batchservice/job/listfromjobschedule
+[rest_list_task_files]: /rest/api/batchservice/file/listfromtask
+[rest_list_tasks]: /rest/api/batchservice/task/list
 
-[rest_get_cert]: https://msdn.microsoft.com/library/azure/dn820176.aspx
-[rest_get_job]: https://msdn.microsoft.com/library/azure/dn820106.aspx
-[rest_get_node]: https://msdn.microsoft.com/library/azure/dn820168.aspx
-[rest_get_pool]: https://msdn.microsoft.com/library/azure/dn820165.aspx
-[rest_get_schedule]: https://msdn.microsoft.com/library/azure/mt282171.aspx
-[rest_get_task]: https://msdn.microsoft.com/library/azure/dn820133.aspx
+[rest_get_cert]: /rest/api/batchservice/certificate/get
+[rest_get_job]: /rest/api/batchservice/job/get
+[rest_get_node]: /rest/api/batchservice/computenode/get
+[rest_get_pool]: /rest/api/batchservice/pool/get
+[rest_get_schedule]: /rest/api/batchservice/jobschedule/get
+[rest_get_task]: /rest/api/batchservice/task/get
 
-[net_cert]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.certificate.aspx
-[net_job]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudjob.aspx
-[net_node]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.computenode.aspx
-[net_pool]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.aspx
-[net_schedule]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudjobschedule.aspx
-[net_task]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.aspx
+[net_cert]: /dotnet/api/microsoft.azure.batch.certificate
+[net_job]: /dotnet/api/microsoft.azure.batch.cloudjob
+[net_node]: /dotnet/api/microsoft.azure.batch.computenode
+[net_pool]: /dotnet/api/microsoft.azure.batch.cloudpool
+[net_schedule]: /dotnet/api/microsoft.azure.batch.cloudjobschedule
+[net_task]: /dotnet/api/microsoft.azure.batch.cloudtask
 
 [rest_get_task_counts]: /rest/api/batchservice/get-the-task-counts-for-a-job
 [rest_get_node_counts]: /rest/api/batchservice/account/listpoolnodecounts

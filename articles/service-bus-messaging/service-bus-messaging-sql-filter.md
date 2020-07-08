@@ -4,10 +4,9 @@ description: Ez a cikk a SQLFilter nyelvtani adatait ismerteti. A SqlFilter az S
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 8412dea583ae119b30976e53d4751411b45339a4
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85341599"
 ---
 # <a name="sqlfilter-syntax"></a>SQLFilter-szintaxis
@@ -182,7 +181,7 @@ A logikai konstansokat a **true** vagy a **false**kulcsszó jelöli. Az értéke
 
 A karakterlánc-konstansok szimpla idézőjelek közé vannak lefoglalva, és tartalmaznak bármilyen érvényes Unicode-karaktert. Egy karakterlánc-konstansba ágyazott idézőjelek két szimpla idézőjelet jelölnek.  
   
-## <a name="function"></a>függvény  
+## <a name="function"></a>A  függvény  
   
 ```  
 <function> :=  

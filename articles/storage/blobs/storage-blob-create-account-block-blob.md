@@ -9,10 +9,9 @@ ms.date: 05/10/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: 31a7048c263d7231fe827ad5a1c927c5cb3e2f6d
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84463569"
 ---
 # <a name="create-a-blockblobstorage-account"></a>BlockBlobStorage-fiók létrehozása
@@ -26,7 +25,7 @@ A BlockBlobStorage-fiókokkal kapcsolatos további információkért lásd: az [
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
@@ -127,7 +126,7 @@ Ha BlockBlobStorage-fiókot szeretne létrehozni a Azure Portalban, kövesse az 
 
 8. A Storage-fiók beállításainak áttekintéséhez válassza a **felülvizsgálat + létrehozás** elemet.
 
-9. Kattintson a **Létrehozás** gombra.
+9. Válassza a **Létrehozás** lehetőséget.
 
 ## <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
@@ -205,7 +204,7 @@ Ha az Azure CLI használatával szeretne blokk-blob-fiókot létrehozni, elősz�
    
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A Storage-fiókokkal kapcsolatos további információkért lásd: az [Azure Storage-fiók áttekintése](https://docs.microsoft.com/azure/storage/common/storage-account-overview).
 

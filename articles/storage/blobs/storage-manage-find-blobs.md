@@ -9,10 +9,9 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: hux
 ms.openlocfilehash: 637bdb02cd9fc5296c74633bbfa381e62673a4bf
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85355658"
 ---
 # <a name="manage-and-find-data-on-azure-blob-storage-with-blob-index-preview"></a>Azure Blob Storage-beli adatkezelés és-keresés a blob-Indextel (előzetes verzió)
@@ -130,7 +129,7 @@ Az alábbi táblázatban a feltételes műveletek összes érvényes operátora 
 |     <      |  Kisebb, mint    | "Age" < "32" |
 |     <=     |  Kisebb vagy egyenlő mint  | "Cég" <= "contoso" |
 |    AND     |  Logikai és  | "Rang" >= "010" és "Rank" < "100" |
-|     OR     |  Logikai vagy   | "Status" = "kész" vagy "priority" >= "05" |
+|     VAGY     |  Logikai vagy   | "Status" = "kész" vagy "priority" >= "05" |
 
 > [!NOTE]
 > Két további operátor létezik, nem egyenlő és logikai vagy, amelyek a blob művelet feltételes x-MS-if-Tags fejlécében engedélyezettek, de nem léteznek a FindBlobsByTags műveletben.

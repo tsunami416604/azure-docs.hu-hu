@@ -9,12 +9,11 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 03/10/2020
-ms.openlocfilehash: 30e2ec47e2b9b3a95acb5b79800ce64ba11e757d
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
-ms.translationtype: MT
+ms.openlocfilehash: 4f1e8602c55329f88460921446ebaa05ed640e39
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85317887"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86041761"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning kibocsátási megjegyzések
 
@@ -22,6 +21,59 @@ Ebben a cikkben megismerheti Azure Machine Learning kiadásait.  A teljes SDK-hi
 
 Az ismert hibák és a megkerülő megoldások megismeréséhez tekintse meg [az ismert problémák listáját](resource-known-issues.md) .
 
+## <a name="2020-07-06"></a>2020-07-06
+
+### <a name="azure-machine-learning-sdk-for-python-v190"></a>Azure Machine Learning SDK a Python v 1.9.0
+
++ **Hibajavítások és javítások**
+  + **azureml-automl-core**
+    + Lecserélte a get_model_path () AZUREML_MODEL_DIR környezeti változót a AutoML automatikusan generált pontozási parancsfájlban. A telemetria is hozzáadta a hibák követéséhez az init () során.
+    + A AutoMLConfig részeként való megadásának lehetősége eltávolítva `enable_cache`
+    + Kijavítva egy hiba, amelyben a futtatások sikertelenek lehetnek a szolgáltatási hibákkal az adott előrejelzési futtatások során
+    + Továbbfejlesztett hibakezelés az egyes modellek körül`get_output`
+    + A fitted_model. Fit (X, y) meghívása az y Transformerrel való besoroláshoz
+    + Engedélyezett továbbítási kitöltési imputált a forcasting feladatokhoz
+    + Egy új ForecastingParameters osztály lesz használatban az előrejelzési paraméterek dict formátuma helyett
+    + A cél késésének továbbfejlesztett automatikus észlelése
+    + A több csomópontos, több GPU-val elosztott featurization korlátozott rendelkezésre állásának hozzáadása a BERT
+  + **azureml-automl-runtime**
+    + A próféta mostantól a multiplikatív helyett a szezonális modellezést is támogatja.
+    + Kijavítottuk azt a problémát, amikor rövid gabonák vannak, amelyek a hosszú szemektől eltérő gyakorisággal rendelkeznek a sikertelen futtatások miatt.
+  + **azureml-automl-DNN-vízió**
+    + A rendszer/GPU-statisztika és a naplózási átlagok gyűjtése a képzéshez és a pontozáshoz
+  + **azureml – megterhelés – Mir**
+    + Az Enable-app-reinsights jelző támogatása a ManagedInferencing-ben
+  + **azureml-core**
+    + A paraméterének érvényesítése ezen API-k számára az érvényesítés kihagyása, ha az adatforrás nem érhető el az aktuális számításból.
+      + TabularDataset. time_before (end_time, include_boundary = true, validate = true)
+      + TabularDataset. time_after (start_time, include_boundary = true, validate = true)
+      + TabularDataset. time_recent (time_delta, include_boundary = true, validate = true)
+      + TabularDataset. time_between (start_time, end_time, include_boundary = true, validate = true)
+    + Új keretrendszer-szűrési támogatás a modell listához, és hozzáadott NCD automl-minta a jegyzetfüzet-vissza
+    + Az adattár. register_azure_blob_container és az adattár. register_azure_file_share (csak az SAS-tokent támogató beállítások) esetében frissítettük a szövegmezőhöz tartozó doc-karakterláncokat, `sas_token` hogy tartalmazzák a szokásos olvasási és írási forgatókönyvek minimális engedélyeinek követelményeit.
+    + _With_auth params elavult a WS. get_mlflow_tracking_uri ()
+  + **azureml-mlflow**
+    + Helyi file://-modellek üzembe helyezésének támogatása a AzureML-MLflow
+    + _With_auth params elavult a WS. get_mlflow_tracking_uri ()
+  + **azureml-opendatasets**
+    + A közelmúltban közzétett Covid-19 követési adatkészletek mostantól elérhetők az SDK-val
+  + **azureml-pipeline-core**
+    + Kijelentkezési figyelmeztetés, ha a "azureml-Defaults" nem szerepel a pip-függőség részeként
+    + Javítsa a Megjegyzés megjelenítését.
+    + Az idézőjeles sortörések támogatása a tagolt fájlok PipelineOutputFileDataset való elemzésekor.
+    + A PipelineDataset osztály elavult. További információ: https://aka.ms/dataset-deprecation. Ismerje meg, hogyan használhatja az adatkészletet a folyamatokkal kapcsolatban: https://aka.ms/pipeline-with-dataset .
+  + **azureml – folyamat – lépések**
+    + Azureml – folyamat – lépések.
+    +  Támogatás hozzáadva a ParallelRunConfig-hez a felhasználók számára a `load_yaml()` konfiguráció többi részével vagy egy külön fájlban való definiálásához.
+  + **azureml-Train-automl-Client**.
+    + A AutoMLConfig részeként való megadásának lehetősége eltávolítva `enable_cache`
+  + **azureml-train-automl-runtime**
+    + A több csomópontos, több GPU-val elosztott featurization korlátozott rendelkezésre állása a BERT-mel.
+    + Az ADB-alapú automatizált gépi tanulási folyamatokban a nem kompatibilis csomagok esetében hozzáadott hibakezelés.
+  + **azureml-widgets**
+    + A azureml-widgetek dokumentum-frissítései.
+
+  
 ## <a name="2020-06-22"></a>2020-06-22
 
 ### <a name="azure-machine-learning-sdk-for-python-v180"></a>Azure Machine Learning SDK a Python v 1.8.0-hoz
@@ -58,7 +110,7 @@ Az ismert hibák és a megkerülő megoldások megismeréséhez tekintse meg [az
     + A Parquet-fájlok adatkészletének betöltése to_spark_dataframe mostantól gyorsabb, és támogatja az összes Parquet és Spark SQL-adattípust.
     + Támogatja az init-tároló naplóinak beolvasását.
     + A AutoML-futtatások mostantól a párhuzamos futtatási lépés alárendelt futtatásaként vannak megjelölve.
-  + **azureml-datadrift**
+  + **azureml – datadrift**
     + A azureml-untribal-notebook csomag dokumentációjának fejlesztése.
   + **azureml-dataprep**
     + A Parquet-fájlok adatkészletének betöltése to_spark_dataframe mostantól gyorsabb, és támogatja az összes Parquet és Spark SQL-adattípust.
@@ -74,7 +126,7 @@ Az ismert hibák és a megkerülő megoldások megismeréséhez tekintse meg [az
     + A frissített `PipelineDataset` dokumentációja egyértelművé teszi, hogy ez egy belső osztály.
     + A ParallelRunStep-frissítések több értéket is elfogadnak egy argumentumhoz, például: "--group_column_names", "Col1", "Col2", "Col3"
     + A köztes adathasználatra vonatkozó passthru_automl_config-követelmény el lett távolítva a AutoMLStep a folyamatokban.
-  + **azureml-pipeline-steps**
+  + **azureml – folyamat – lépések**
     + A azureml-pipeline-Steps csomag dokumentációjának fejlesztései.
     + A köztes adathasználatra vonatkozó passthru_automl_config-követelmény el lett távolítva a AutoMLStep a folyamatokban.
   + **azureml-telemetry**
@@ -84,7 +136,7 @@ Az ismert hibák és a megkerülő megoldások megismeréséhez tekintse meg [az
     + A felhasználók mostantól engedélyezhetik a stack Ensemble-iterációt a idősor-feladatokhoz, amely figyelmezteti, hogy potenciálisan overfit.
     + AutoML-futtatási viselkedés módosítása a UserErrorException növeléséhez, ha a szolgáltatás felhasználói hibát jelez
     + Egy olyan hibát javít, amely miatt a azureml_automl. log naplófájl nem hozható létre, vagy hiányoznak a naplók, amikor AutoML kísérletet végez egy távoli számítási célra.
-    + A kiegyensúlyozatlan osztályokkal rendelkező besorolási adatkészletek esetében a súlyozást alkalmazzuk, ha a szolgáltatás Sweeper úgy találja, hogy jobb, mint az alapterv
+    + A kiegyensúlyozatlan osztályokkal rendelkező besorolási adatkészletek esetében a súlyozást alkalmazzuk, ha a szolgáltatás Sweeper azt határozza meg, hogy az altípusos adatok esetében a súlyozás a besorolási feladat teljesítményét egy bizonyos küszöbérték alapján javítja.
     + A AutoML-futtatások mostantól a párhuzamos futtatási lépés alárendelt futtatásaként vannak megjelölve.
   + **azureml-train-automl-runtime**
     + AutoML-futtatási viselkedés módosítása a UserErrorException növeléséhez, ha a szolgáltatás felhasználói hibát jelez
@@ -141,7 +193,7 @@ Az ismert hibák és a megkerülő megoldások megismeréséhez tekintse meg [az
   + **azureml-pipeline-core**
     + Ez a módosítás lehetővé teszi, hogy a felhasználó opcionális runconfig adjon meg a moduleVersion a modul meghívásakor. Publish_python_script.
     + A Node-fiók engedélyezése lehet egy ParallelRunStep a azureml. pipeline folyamatban. lépések
-  + **azureml – folyamat – lépések**
+  + **azureml-pipeline-steps**
     + Ez a módosítás lehetővé teszi, hogy a felhasználó opcionális runconfig adjon meg a moduleVersion a modul meghívásakor. Publish_python_script.
   + **azureml-train-automl-client**
     + Több nyelv támogatása a Deep learning transzformátor-modellekhez, például a BERT in automatizált ML-ben.
@@ -175,8 +227,8 @@ Az ismert hibák és a megkerülő megoldások megismeréséhez tekintse meg [az
       + Az process_count_per_node alapértelmezett értéke 1 értékre változik. A jobb teljesítmény érdekében a felhasználónak be kell hangolnia ezt az értéket. Ajánlott eljárás a GPU vagy a CPU-csomópontok számának beállítása.
       + A ParallelRunStep nem szúr be csomagokat, a felhasználónak tartalmaznia kell a **azureml** és a **azureml-adatelőkészítés [pandák, Fuse]** csomagokat a környezeti definícióban. Ha egyéni Docker-rendszerképet használ a user_managed_dependencies, akkor a felhasználónak telepítenie kell a Conda a képre.
       
-+ **Változtatások megszakítása**
-  + **azureml-pipeline-steps**
++ **Kompatibilitástörő változások**
+  + **azureml – folyamat – lépések**
     + A azureml. dprep. adatfolyam használata a AutoMLConfig érvényes bemeneti típusaként elavult.
   + **azureml-train-automl-client**
     + A azureml. dprep. adatfolyam használata a AutoMLConfig érvényes bemeneti típusaként elavult.
@@ -236,7 +288,7 @@ Az ismert hibák és a megkerülő megoldások megismeréséhez tekintse meg [az
   + **azureml-pipeline-core**
     + Gyors javítás azon ParallelRunStep, ahol a YAML-be való betöltés megszakadt
     + A ParallelRunStep általánosan elérhetővé vált – azureml... a folyamat. a lépések elavult figyelmeztetéssel rendelkeznek, és a azureml. pipeline. Steps verzióra kerülnek. lépések – az új funkciók a következők: 1. Adatkészletek a PipelineParameter 2. Új paraméter: run_max_retry 3. Konfigurálható append_row kimeneti fájl neve
-  + **azureml – folyamat – lépések**
+  + **azureml-pipeline-steps**
     + Az elavult azureml. dprep. adatfolyam érvényes típusú a bemeneti adatokhoz.
     + Gyors javítás azon ParallelRunStep, ahol a YAML-be való betöltés megszakadt
     + A ParallelRunStep általánosan elérhetővé vált – azureml... a folyamat. a lépések elavult figyelmeztetéssel rendelkeznek, és a azureml. pipeline. Steps verzióra kerülnek. lépések – az új funkciók a következők:
@@ -367,7 +419,7 @@ Mostantól közvetlenül a Azure Machine Learning Studio webes felületén belü
 
 A Studio alkalmazásban a következő webalapú szerzői eszközöket érheti el:
     
-| Webalapú eszköz  |     Leírás  | Kiadás | 
+| Webalapú eszköz  |     Description  | Kiadás | 
 |---|---|---|
 | Azure ML Studio notebookok   |     A notebook-fájlok első, osztályon belüli létrehozása és az Azure ML Python SDK-ban elérhető összes művelet támogatása. | Alapszintű & Enterprise  |   
 
@@ -379,7 +431,7 @@ A Studio alkalmazásban a következő webalapú szerzői eszközöket érheti el
   + A AmlCompute-fürtök mostantól támogatják a felügyelt identitás beállítását a fürtön a kiépítés időpontjában. Csak adja meg, hogy a rendszer által hozzárendelt identitást vagy felhasználó által hozzárendelt identitást szeretne-e használni, és az utóbbi esetében egy Identitásazonosítója ad át. Ezután beállíthatja a különböző erőforrásokhoz, például a tároláshoz vagy az ACR-hez való hozzáféréshez szükséges engedélyeket oly módon, hogy a számítási adatok biztonságosan hozzáférhessenek az adatokhoz, a AmlCompute által jelenleg használt jogkivonat-alapú megközelítés helyett. A paraméterekkel kapcsolatos további információkért tekintse meg az SDK-referenciát.
   
 
-+ **Változtatások megszakítása**
++ **Kompatibilitástörő változások**
   + A AmlCompute-fürtök a futtatáson alapuló létrehozást támogató előzetes szolgáltatást támogatnak, amely két hét alatt elavulttá válik. A Amlcompute osztály használatával továbbra is állandó számítási célokat hozhat létre, de a "Amlcompute" azonosító megadásának konkrét megközelítését a közeljövőben nem fogja támogatni a rendszer a futtatási konfigurációban. 
 
 + **Hibajavítások és javítások**
@@ -394,7 +446,7 @@ A Studio alkalmazásban a következő webalapú szerzői eszközöket érheti el
     + A rendszer felső korlátot adott hozzá a fájl méretéhez a feltöltött magyarázatokon a vizualizációs adathoz.
   + **azureml-train-automl-client**
     + A label_column_name & weight_column_name paramétereinek explicit ellenőrzése a AutoMLConfig karakterlánc típusúra.
-  + **azureml-contrib-pipeline-steps**
+  + **azureml – egytörzsű folyamatok – lépések**
     + A ParallelRunStep mostantól támogatja az adatkészletet a pipeline paraméterként. A felhasználó létrehozhatja a folyamatokat a minta adatkészlettel, és az új folyamat futtatásához azonos típusú (fájl-vagy táblázatos) bemeneti adatkészletet is módosíthat.
 
   
@@ -450,7 +502,7 @@ A Studio alkalmazásban a következő webalapú szerzői eszközöket érheti el
 
 ### <a name="azure-machine-learning-sdk-for-python-v120"></a>Azure Machine Learning SDK a Python v 1.2.0
 
-+ **Változtatások megszakítása**
++ **Kompatibilitástörő változások**
   + A Python 2,7 támogatásának eldobása
 
 + **Hibajavítások és javítások**
@@ -485,7 +537,7 @@ A Studio alkalmazásban a következő webalapú szerzői eszközöket érheti el
   + **Python 2,7**
     + A Python 2,7 támogatásának utolsó verziója
 
-+ **Változtatások megszakítása**
++ **Kompatibilitástörő változások**
   + **Szemantikai verziószámozás 2.0.0**
     + Az 1,1-es verziótól kezdődően az Azure ML Python SDK a szemantikai verziószámozási 2.0.0 alkalmazza. [Itt olvashat bővebben](https://semver.org/). Minden további verzió új számozási sémát és szemantikai verziószámozási szerződést fog követni. 
 
@@ -552,7 +604,7 @@ A Studio alkalmazásban a következő webalapú szerzői eszközöket érheti el
     + A pipeline batch pontozási jegyzetfüzet mostantól a ParallelRunStep-t használja
     + Kijavítva egy hiba, ahol a PythonScriptStep-eredmények helytelenül újra felhasználhatók az argumentumok listájának módosításakor
     + Az oszlopok típusának beállítása a parse_ * metódusok meghívásakor`PipelineOutputFileDataset`
-  + **azureml-pipeline-steps**
+  + **azureml – folyamat – lépések**
     + Áthelyezte a `AutoMLStep` `azureml-pipeline-steps` csomagot a csomagba. A belül elavult `AutoMLStep` `azureml-train-automl-runtime` .
     + Dokumentáció hozzáadva példa az adatkészlethez PythonScriptStep-bemenetként
   + **azureml-tensorboard**
@@ -593,9 +645,9 @@ A Studio alkalmazásban a következő webalapú szerzői eszközöket érheti el
     +  Elavult üzeneteket adott hozzá a régi profilkészítési munkafolyamathoz. Rögzített profilkészítési CPU-és memória-korlátok
   + **azureml-interpret**
     + azureml frissítése – értelmezés az értelmezéshez – Community 0,6. *
-  + **azureml – mlflow**
+  + **azureml-mlflow**
     + Adja hozzá a szuverén felhők támogatását a azureml. mlflow
-  + **azureml-pipeline-steps**
+  + **azureml – folyamat – lépések**
     + Áthelyezte a elemet a következőre: `AutoMLStep` `azureml-pipeline-steps package` . A belül elavult `AutoMLStep` `azureml-train-automl-runtime` .
   + **azureml-train-automl-client**
     + Kijavított egy hibát, amelyben bizonyos csomagok a távoli futtatások helytelen verzióiban telepíthetők.
@@ -648,7 +700,7 @@ A Studio alkalmazásban a következő webalapú szerzői eszközöket érheti el
 
 ### <a name="azure-machine-learning-sdk-for-python-v110rc0-pre-release"></a>Azure Machine Learning SDK for Python v 1.1.0 RC0 (előzetes verzió)
 
-+ **Változtatások megszakítása**
++ **Kompatibilitástörő változások**
   + **Szemantikai verziószámozás 2.0.0**
     + Az 1,1-es verziótól kezdődően az Azure ML Python SDK a szemantikai verziószámozási 2.0.0 alkalmazza. [Itt olvashat bővebben](https://semver.org/). Minden további verzió új számozási sémát és szemantikai verziószámozási szerződést fog követni. 
   
@@ -662,7 +714,7 @@ A Studio alkalmazásban a következő webalapú szerzői eszközöket érheti el
     + Frissített azureml – az értelmezéstől függ a közösségi 0.5.0
   + **azureml-pipeline-core**
     + Kijavítva egy hiba, ahol a PythonScriptStep-eredmények helytelenül újra felhasználhatók az argumentumok listájának módosításakor
-  + **azureml-pipeline-steps**
+  + **azureml – folyamat – lépések**
     + Dokumentáció hozzáadva példa az adatkészlethez PythonScriptStep-bemenetként
   + **azureml-contrib-pipeline-steps**
     + A ParallelRunConfig átadott paraméterek felülírása a folyamat paramétereinek átadásával lehetséges. Az új folyamat paraméterei támogatottak aml_mini_batch_size, aml_error_threshold, aml_logging_level, aml_run_invocation_timeout (aml_node_count és aml_process_count_per_node már a korábbi kiadás részét képezik).
@@ -778,7 +830,7 @@ A Studio alkalmazásban a következő webalapú szerzői eszközöket érheti el
 
 ### <a name="azure-machine-learning-sdk-for-python-v1076"></a>Azure Machine Learning SDK a Python v 1.0.76
 
-+ **Változtatások megszakítása**
++ **Kompatibilitástörő változások**
   + Azureml – AutoML frissítési problémák
     + Frissítés a azureml-Train-automl>= 1.0.76 from azureml-automl<1.0.76 részleges telepítéseket okozhat, ami miatt egyes AutoML-importálások sikertelenek lesznek. Ennek megoldásához futtassa a következő helyen található telepítési parancsfájlt: https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/automl_setup.cmd . Vagy ha közvetlenül a pip-et használja, a következőket teheti:
       + "pip install--upgrade azureml-Train-automl"
@@ -879,7 +931,7 @@ A studióból betaníthatja, tesztelheti, üzembe helyezheti és kezelheti Azure
 
 A Studio alkalmazásban a következő webalapú szerzői eszközöket érheti el:
 
-| Webalapú eszköz | Leírás | Kiadás |
+| Webalapú eszköz | Description | Kiadás |
 |-|-|-|
 | Notebook VM (előzetes verzió) | Teljes körűen felügyelt felhőalapú munkaállomás | Alapszintű & Enterprise |
 | [Automatikus gépi tanulás](tutorial-first-experiment-automated-ml.md) (előzetes verzió) | Nincs programkód a gépi tanulási modellek fejlesztésének automatizálásához | Enterprise |
@@ -1089,7 +1141,7 @@ A Azure Machine Learning mostantól a Event Grid erőforrás-szolgáltatója, a 
         all_first_experiments = Experiment.list(workspace, name="First Experiment", view_type="ALL")
         ```
     + A környezet támogatása a modell üzembe helyezéséhez és a szolgáltatás frissítéséhez.
-  + **[azureml – datadrift](https://docs.microsoft.com/python/api/azureml-datadrift)**
+  + **[azureml-datadrift](https://docs.microsoft.com/python/api/azureml-datadrift)**
     + A [DataDriftDetector](https://docs.microsoft.com/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector.datadriftdetector) osztály show attribútuma nem támogatja többé a következő opcionális argumentumot: "with_details". A show attribútum csak az adateltolódási együtthatót és a szolgáltatás oszlopainak adateltolódási hozzájárulását mutatja.
     + A DataDriftDetector függvény [get_output] https://docs.microsoft.com/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector.datadriftdetector#get-output-start-time-none--end-time-none--run-id-none-) viselkedésének változásai:
       + A (z) start_time bemeneti paraméter nem kötelező, hanem end_time opcionális.
@@ -1180,7 +1232,7 @@ Frissült az [Új munkaterület-portál](https://ml.azure.com) Experiment (kís�
     + A magyarázatot megadó tulajdonság hozzáadva a MimicWrapper-hez, amely lehetővé teszi az alapul szolgáló MimicExplainer beszerzését.
   + **azureml-pipeline-core**
     + Hozzáadott jegyzetfüzet a modul, a ModuleVersion és a ModuleStep leírásához
-  + **azureml-pipeline-steps**
+  + **azureml – folyamat – lépések**
     + A RScriptStep hozzáadva a pénzmosás-folyamaton keresztüli R-szkriptek támogatásához.
     + A AzureBatchStep olyan rögzített metaadat-paramétereket elemez, amely a következő hibaüzenetet okozta: "a SubscriptionId paraméterhez megadott hozzárendelés nincs megadva."
   + **azureml-Train-automl**
@@ -1188,7 +1240,7 @@ Frissült az [Új munkaterület-portál](https://ml.azure.com) Experiment (kís�
     + Elavult üzenet hozzáadva a explain_model () és a retrieve_model_explanations () rendszerhez
   + **[azureml-pipeline-core](https://docs.microsoft.com/python/api/azureml-pipeline-core)**
     + Egy [jegyzetfüzetet](https://aka.ms/pl-modulestep) adott hozzá a következő [modul](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.module(class))leírásához: [ModuleVersion és [ModuleStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.modulestep).
-  + **[azureml-pipeline-steps](https://docs.microsoft.com/python/api/azureml-pipeline-steps)**
+  + **[azureml – folyamat – lépések](https://docs.microsoft.com/python/api/azureml-pipeline-steps)**
     + A [RScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.rscriptstep) hozzáadva a pénzmosás-folyamaton keresztüli R-szkriptek támogatásához.
     + A (z) [AzureBatchStep, amely a következő hibaüzenetet okozta: "a (z) SubscriptionId paraméter nem lett megadva.
   + **[azureml-Train-automl](/python/api/azureml-train-automl-runtime/)**
@@ -1717,7 +1769,7 @@ Javítottunk egy olyan változást, amely javítja a teljesítményt, mivel a Az
     + Jupyter-jegyzetfüzet küldése futtatásként. [API-referenciák dokumentációja](https://docs.microsoft.com/python/api/azureml-contrib-notebook/azureml.contrib.notebook?view=azure-ml-py)
     + Az [adatdrift-detektor](https://docs.microsoft.com/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector(class)) nyilvános előzetes verziója azureml-datadrift csomagon keresztül ([például jegyzetfüzetek](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/monitor-models/data-drift)). Az adateltolódás az egyik legfontosabb ok, ahol a modell pontossága az idő múlásával csökken. Ez akkor történik meg, ha az éles modellbe való kiszolgált adatok eltérnek a modell által betanított adatoktól. A pénzmosás-adatdrift detektor segítségével az ügyfél figyelheti az adateltolódást, és riasztást küld, ha a rendszer a drift észlelését észleli
 
-+ **Változtatások megszakítása**
++ **Kompatibilitástörő változások**
 
 + **Hibajavítások és javítások**
   + A RunConfiguration betöltési és a mentési funkció támogatja a teljes elérési út megadását a korábbi működéshez szükséges teljes biztonsági mentéssel.
@@ -1885,7 +1937,7 @@ Megjegyzés: az adatprep Python SDK többé nem lesz telepítve `numpy` és `pan
   + Mostantól a pivot átalakítót is használhatja.
     + Útmutató: [pivot notebook](https://aka.ms/aml-data-prep-pivot-nb)
   + Mostantól reguláris kifejezéseket is használhat natív függvényekben.
-    + Angol nyelvű Példák:
+    + Példák:
       + `dflow.filter(dprep.RegEx('pattern').is_match(dflow['column_name']))`
       + `dflow.assert_value('column_name', dprep.RegEx('pattern').is_match(dprep.value))`
   + Mostantól használhatja `to_upper`   `to_lower`   a kifejezést és a függvényeket a kifejezés nyelvén.
@@ -1945,7 +1997,7 @@ Megjegyzés: az adatprep Python SDK többé nem lesz telepítve `numpy` és `pan
 
 ### <a name="azure-machine-learning-data-prep-sdk-v110"></a>Azure Machine Learning adat-előkészítési SDK v 1.1.0
 
-+ **Változtatások megszakítása**
++ **Kompatibilitástörő változások**
   + Az adat-előkészítő csomag fogalma elavult, és már nem támogatott. Ahelyett, hogy egy csomagban több adatfolyamok is megmaradjon, külön adatfolyamok maradhat.
     + Útmutató: [adatfolyamok-jegyzetfüzet megnyitása és mentése](https://aka.ms/aml-data-prep-open-save-dataflows-nb)
 
@@ -2130,7 +2182,7 @@ Azure Machine Learning a számításokat a Pythonban, Azure Portal vagy a paranc
 > Javasoljuk, hogy hozzon létre egy új munkaterületet Azure Machine Learning számítás használatához. Távoli esély van arra, hogy a felhasználók egy meglévő munkaterületről próbálnak létrehozni Azure Machine Learning számítást, és ez hibát jelez. A munkaterületen lévő meglévő számítások továbbra is nem érintik a munkát.
 
 ### <a name="azure-machine-learning-sdk-for-python-v102"></a>Azure Machine Learning SDK a Python v 1.0.2-hez
-+ **Változtatások megszakítása**
++ **Kompatibilitástörő változások**
   + Ezzel a kiadással eltávolítjuk a virtuális gépek Azure Machine Learningból való létrehozásának támogatását. Továbbra is csatlakoztathat meglévő Felhőbeli virtuális gépet vagy távoli helyszíni kiszolgálót.
   + Emellett a BatchAI támogatását is eltávolítja, amelyek mindegyikét Azure Machine Learning számításon keresztül kell támogatni.
 
@@ -2150,7 +2202,7 @@ Azure Machine Learning a számításokat a Pythonban, Azure Portal vagy a paranc
 <!--+ **Bugs fixed**-->
 
 ### <a name="azure-machine-learning-data-prep-sdk-v052"></a>Azure Machine Learning adat-előkészítési SDK v 0.5.2
-+ **Változtatások megszakítása**
++ **Kompatibilitástörő változások**
   * `SummaryFunction.N`átnevezve: `SummaryFunction.Count` .
 
 + **Hibajavítások**
@@ -2188,7 +2240,7 @@ Azure Machine Learning a számításokat a Pythonban, Azure Portal vagy a paranc
 
 ### <a name="azure-machine-learning-sdk-for-python-v0180"></a>Azure Machine Learning SDK a Python v 0.1.80
 
-+ **Változtatások megszakítása**
++ **Kompatibilitástörő változások**
   * a *azureml. Train. Widgets* névtér át lett helyezve a *azureml. Widgets*-re.
   * a *azureml. Core. számítás. AmlCompute* a következő osztályokat elavult: *azureml.core.compute.BatchAICompute* és *azureml. Core. számítás. DSVMCompute*. A későbbi kiadásokban az utóbbi osztály el lesz távolítva. A AmlCompute osztálynak egyszerűbb definíciója van, és egyszerűen csak egy vm_sizere és a max_nodesra van szüksége, és a fürt automatikusan a 0 értékről a max_nodesre méretezi, amikor egy feladatot elküldenek. A [mintául szolgáló jegyzetfüzetek](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training) frissítve lettek ezzel az információval, és használati példákat kell megadni. Reméljük, hogy ezt az egyszerűsítést és a sok izgalmas funkciót egy későbbi kiadásban szeretné megtekinteni!
 
@@ -2229,7 +2281,7 @@ A Azure Machine Learning Azure Portal a következő frissítésekkel rendelkezik
 
 ### <a name="azure-machine-learning-sdk-for-python-v0174"></a>Azure Machine Learning SDK a Python v 0.1.74
 
-+ **Változtatások megszakítása**
++ **Kompatibilitástörő változások**
   * * A munkaterület. compute_targets, az adattárolók, a kísérletek, a képek, a modellek és a *webszolgáltatások* a metódusok helyett tulajdonságok. Például cserélje le a *munkaterület. compute_targets ()* *munkaterületre. compute_targets*.
   * A *Run. get_context* a *Run. get_submitted_run*elavult. Az utóbbi metódus el lesz távolítva a következő kiadásokban.
   * A *PipelineData* osztály most datastore_name helyett paraméterként egy adattár-objektumot vár. Hasonlóképpen, a *folyamat* default_datastore_name helyett a default_datastore is elfogadja.
@@ -2279,7 +2331,7 @@ A [0.1.65 verzió](https://pypi.org/project/azureml-sdk/0.1.65) új funkciókat,
 
 Az ismert hibák és a megkerülő megoldások megismeréséhez tekintse meg [az ismert problémák listáját](resource-known-issues.md) .
 
-+ **Változtatások megszakítása**
++ **Kompatibilitástörő változások**
   * Munkaterület. kísérletek, munkaterület. modellek, munkaterület. compute_targets, munkaterület. images, munkaterület. web_services visszatérési szótár, korábban visszaadott lista. Lásd: [azureml. Core. Workspace](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py) API-dokumentáció.
 
   * Az automatizált Machine Learning az elsődleges mérőszámokból származó normalizált középértékes hibát eltávolította.
@@ -2311,7 +2363,7 @@ Az ismert hibák és a megkerülő megoldások megismeréséhez tekintse meg [az
   * Eltávolított további index-logikát.
   * Eltávolított szűrő a get_output API-ból.
 
-+ **Folyamatok**
++ **Pipelines**
   * A () metódust hozzáadta egy folyamathoz, amely közvetlenül a végrehajtás megkövetelése nélkül teszi közzé a folyamatot.
   * A rendszer hozzáadta a PipelineRun. get_pipeline_runs () metódust a közzétett folyamatból generált folyamat-futtatások beolvasásához.
 

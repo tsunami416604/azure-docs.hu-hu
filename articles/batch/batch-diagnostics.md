@@ -4,12 +4,11 @@ description: A diagnosztikai napló eseményeinek rögzítése és elemzése Azu
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: bd8265d18f618980af466e193b41cfcc03999c47
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
-ms.translationtype: MT
+ms.openlocfilehash: 6e10a4fc6cd13854682f094274c975931b056365
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220347"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960724"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Batch-metrikák, riasztások és naplók a diagnosztika kiértékeléséhez és figyeléséhez
  
@@ -70,7 +69,7 @@ Metrikai riasztás konfigurálása a Azure Portalban:
 
 A metrikai riasztások létrehozásával kapcsolatos további információkért lásd: a [metrikai riasztások működésének megértése Azure monitor és a](../azure-monitor/platform/alerts-metric-overview.md) [metrikai riasztások létrehozása, megtekintése és kezelése Azure monitor használatával](../azure-monitor/platform/alerts-metric.md).
 
-A Azure Monitor [REST API](https://docs.microsoft.com/rest/api/monitor/)használatával is konfigurálhat közel valós idejű riasztást. További információ: [a Microsoft Azure riasztások áttekintése](../azure-monitor/platform/alerts-overview.md). A feladatok, a feladatok vagy a készletekre vonatkozó információk a riasztásokban való felvételéhez tekintse meg az [Azure monitor riasztásokkal rendelkező eseményekre adott válaszokban](../azure-monitor/learn/tutorial-response.md)lévő keresési lekérdezéseket ismertető témakört.
+A Azure Monitor [REST API](/rest/api/monitor/)használatával is konfigurálhat közel valós idejű riasztást. További információ: [a Microsoft Azure riasztások áttekintése](../azure-monitor/platform/alerts-overview.md). A feladatok, a feladatok vagy a készletekre vonatkozó információk a riasztásokban való felvételéhez tekintse meg az [Azure monitor riasztásokkal rendelkező eseményekre adott válaszokban](../azure-monitor/learn/tutorial-response.md)lévő keresési lekérdezéseket ismertető témakört.
 
 ## <a name="batch-diagnostics"></a>Batch-diagnosztika
 

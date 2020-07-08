@@ -16,12 +16,11 @@ ms.date: 03/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69eb19686598de103b1c2f3e97ad35be2c427beb
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
-ms.translationtype: MT
+ms.openlocfilehash: dbc9e5a9187f9ef16ea03cfa6c97e438c2b26c99
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85356372"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807604"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>A jelszókivonat szinkronizálásának hibaelhárítása Azure AD Connect-szinkronizálással
 
@@ -288,12 +287,15 @@ Ha egyéni telepítést használt, manuálisan állítsa be az engedélyeket a k
 6. Elérhetők a tartományvezérlők Azure AD Connect? Ha a csatlakozási kiszolgáló nem tud csatlakozni az összes tartományvezérlőhöz, konfigurálja a **csak az előnyben részesített tartományvezérlőt**.  
     
     ![Active Directory-összekötő által használt tartományvezérlő](./media/tshoot-connect-password-hash-synchronization/preferreddc.png)  
-    
+
 7. Lépjen vissza a **synchronization Service Managerra** , és **konfigurálja a címtárpartíciót**. 
  
 8. Válassza ki a tartományt a címtárpartíciók **kijelölése**területen, jelölje be a **csak az előnyben részesített tartományvezérlők használata** jelölőnégyzetet, majd kattintson a **Konfigurálás**elemre. 
 
 9. A listában adja meg, hogy a csatlakoztatott tartományvezérlők a jelszó-szinkronizálást használják. Ugyanez a lista az importáláshoz és az exportáláshoz is használatos. Hajtsa végre ezeket a lépéseket az összes tartományban.
+
+> [!NOTE]
+> A módosítások alkalmazásához indítsa újra a **Microsoft Azure ad Sync** (AdSync) szolgáltatást.
 
 10. Ha a parancsfájl azt mutatja, hogy nincs szívverés, futtassa a parancsfájlt az [összes jelszó teljes szinkronizálásának elindításával](#trigger-a-full-sync-of-all-passwords).
 

@@ -4,10 +4,9 @@ description: Ez a cikk a Azure Service Bus entitások (várólisták, témakör�
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: 707fbec4317b4c34349e04895f9c6a0bdf4f1b47
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85341515"
 ---
 # <a name="authenticate-and-authorize-an-application-with-azure-active-directory-to-access-azure-service-bus-entities"></a>Alkalmazás hitelesítése és engedélyezése Azure Active Directory használatával Azure Service Bus entitások eléréséhez
@@ -93,7 +92,7 @@ Az Azure AD használatának első lépése Service Bus entitások engedélyezés
 
 A következő képek a webalkalmazások regisztrálásának lépéseit mutatják be:
 
-![Egy alkalmazás regisztrálása](./media/authenticate-application/app-registrations-register.png)
+![Alkalmazás regisztrálása](./media/authenticate-application/app-registrations-register.png)
 
 > [!Note]
 > Ha natív alkalmazásként regisztrálja az alkalmazást, megadhat bármely érvényes URI-t az átirányítási URI-hoz. Natív alkalmazások esetén ennek az értéknek nem kell valódi URL-címnek lennie. Webalkalmazások esetén az átirányítási URI azonosítónak érvényes URI-nak kell lennie, mert meghatározza azt az URL-címet, amelyhez a tokenek meg vannak határozva.

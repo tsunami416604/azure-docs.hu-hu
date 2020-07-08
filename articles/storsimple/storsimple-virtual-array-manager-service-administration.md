@@ -15,10 +15,9 @@ ms.workload: na
 ms.date: 12/1/2016
 ms.author: alkohli
 ms.openlocfilehash: d7c7cf335336cc552adaf5d9490bc58d64b0cdc9
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85515434"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-virtual-array"></a>A StorSimple Eszközkezelő szolgáltatás használata a StorSimple virtuális tömb felügyeletéhez
@@ -76,6 +75,6 @@ Az egyes munkafolyamatokkal kapcsolatos további információkért kattintson a 
 > 
 > 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A webes felhasználói felületről és annak használatáról a [StorSimple webes felhasználói felületének használata a StorSimple virtuális tömb felügyeletéhez](storsimple-ova-web-ui-admin.md)című témakörben olvashat bővebben.
 

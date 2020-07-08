@@ -7,10 +7,9 @@ ms.topic: how-to
 ms.date: 04/15/2020
 ms.author: v-erkel
 ms.openlocfilehash: fb3e4fd4935afc4869e50ccbc35c53333d43b1df
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85515522"
 ---
 # <a name="mount-the-azure-hpc-cache"></a>Az Azure HPC Cache csatlakoztatása
@@ -135,6 +134,6 @@ A virtuális névtér elérési útjai az egyes tárolási cél részletek lapj�
 
 ![a tárolási cél részletes oldalának képernyőképe (fejléc "frissítési tárolási cél"). A tábla virtuális névtér elérési útja oszlopában található egy kiemelési mező](media/hpc-cache-view-namespace-paths.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ha adatokat szeretne áthelyezni a gyorsítótár tárolási céljaira, olvassa el az [új Azure Blob Storage feltöltése](hpc-cache-ingest.md)című cikkét.

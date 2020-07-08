@@ -11,10 +11,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/12/2020
 ms.openlocfilehash: 2edf2b61f46e3638af3c2291932a6ab1c1cf23e3
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85100904"
 ---
 # <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>Az Azure Blob Storage-ban lévő Adatmásolás és-átalakítás Azure Data Factory használatával
@@ -88,7 +87,7 @@ A Data Factory a következő tulajdonságokat támogatja a Storage-fiók kulcsos
 >[!NOTE]
 >Ha a "AzureStorage" típusú társított szolgáltatást használja, a rendszer továbbra is támogatja. Javasoljuk azonban, hogy az új "AzureBlobStorage" társított szolgáltatástípus-típust használja tovább.
 
-**Például**
+**Példa:**
 
 ```json
 {
@@ -155,7 +154,7 @@ A Data Factory a következő tulajdonságokat támogatja a közös hozzáférés
 >[!NOTE]
 >Ha a "AzureStorage" típusú társított szolgáltatást használja, a rendszer továbbra is támogatja. Javasoljuk azonban, hogy az új "AzureBlobStorage" társított szolgáltatástípus-típust használja tovább.
 
-**Például**
+**Példa:**
 
 ```json
 {
@@ -242,7 +241,7 @@ Ezek a tulajdonságok egy Azure Blob Storage-beli társított szolgáltatás ese
 >[!NOTE]
 >Az egyszerű szolgáltatás hitelesítését csak a "AzureBlobStorage" típusú társított szolgáltatás támogatja, nem az előző "AzureStorage" type társított szolgáltatás.
 
-**Például**
+**Példa:**
 
 ```json
 {
@@ -293,7 +292,7 @@ Ezek a tulajdonságok egy Azure Blob Storage-beli társított szolgáltatás ese
 > [!NOTE]
 > Az Azure erőforrás-hitelesítés felügyelt identitásait csak az "AzureBlobStorage" típusú társított szolgáltatás támogatja, nem az előző "AzureStorage" type társított szolgáltatás.
 
-**Például**
+**Példa:**
 
 ```json
 {
@@ -326,7 +325,7 @@ A következő tulajdonságok támogatottak az Azure Blob Storage `location` -ban
 | folderPath | A mappa elérési útja az adott tárolóban. Ha helyettesítő karaktert szeretne használni a mappa szűréséhez, hagyja ki ezt a beállítást, és a tevékenység forrásának beállításainál válassza ki azt. | No       |
 | fileName   | A fájl neve a megadott tárolóban és a mappa elérési útja alatt. Ha helyettesítő karaktereket szeretne használni a fájlok szűréséhez, hagyja ki ezt a beállítást, és határozza meg, hogy a tevékenység forrásának beállításaiban. | No       |
 
-**Például**
+**Példa:**
 
 ```json
 {
@@ -382,7 +381,7 @@ A következő tulajdonságok támogatottak az Azure Blob Storage `storeSettings`
 > [!NOTE]
 > A Parquet/tagolt szöveges formátum esetében a következő szakaszban említett másolási tevékenység forrásának **BlobSource** -típusa továbbra is támogatott a visszamenőleges kompatibilitás érdekében. Javasoljuk, hogy az új modellt addig használja, amíg a Data Factory authoring felhasználói felülete be nem vált az új típusok létrehozásához.
 
-**Például**
+**Példa:**
 
 ```json
 "activities":[
@@ -436,7 +435,7 @@ Az Azure Blob Storage-ban a következő tulajdonságok támogatottak a `storeSet
 | blockSizeInMB | Határozza meg a blokk méretét (megabájtban), amely a Blobok adatírására szolgál. További [információ a blokkos blobokról](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs). <br/>Az engedélyezett érték *4 MB és 100 MB között*van. <br/>Alapértelmezés szerint a Data Factory automatikusan meghatározza a blokk méretét a forrás-áruház típusa és adatai alapján. A blob Storage-ba való nem bináris másolás esetén az alapértelmezett blokkolási méret 100 MB, így a mérete (legfeljebb) 4,95 TB adat lehet. Nem lehet optimális, ha az adatai nem nagyméretűak, különösen akkor, ha a saját üzemeltetésű integrációs modult olyan gyenge hálózati kapcsolatokkal használja, amelyek működési időtúllépést vagy teljesítménnyel kapcsolatos problémákat okoznak. Explicit módon megadhatja a blokk méretét, miközben biztosítja, hogy `blockSizeInMB*50000` az adattároláshoz elég nagy legyen. Ellenkező esetben a másolási tevékenység futtatása sikertelen lesz. | No |
 | maxConcurrentConnections | A tárterület egyidejű kapcsolatainak száma. Csak akkor kell megadni, ha az adattárban való egyidejű kapcsolatokat szeretné korlátozni. | No       |
 
-**Például**
+**Példa:**
 
 ```json
 "activities":[
@@ -627,7 +626,7 @@ A tulajdonságok részleteinek megismeréséhez tekintse meg a [törlési tevék
 >[!TIP]
 >A mappában található összes blob másolásához csak a **folderPath** kell megadni.<br>Ha egyetlen blobot szeretne másolni egy adott névvel, adja meg a **folderPath** és a **fájlnévhez tartozó fájlnevet** .<br>Ha egy mappában lévő Blobok egy részhalmazát szeretné másolni, akkor a **folderPath** és a **fájlnevet** helyettesítő karakteres szűrővel kell megadnia. 
 
-**Például**
+**Példa:**
 
 ```json
 {
@@ -665,7 +664,7 @@ A tulajdonságok részleteinek megismeréséhez tekintse meg a [törlési tevék
 | rekurzív | Azt jelzi, hogy az adatok rekurzív módon olvashatók-e az almappákból, vagy csak a megadott mappából. Vegye figyelembe, hogy ha a **rekurzív** értéke **true (igaz** ), a fogadó pedig egy fájl alapú tároló, a fogadó nem másolja vagy hozza létre az üres mappát vagy almappát.<br/>Az engedélyezett értékek: **true** (alapértelmezett) és **false (hamis**). | No |
 | maxConcurrentConnections | A tárterület egyidejű kapcsolatainak száma. Csak akkor kell megadni, ha az adattárban való egyidejű kapcsolatokat szeretné korlátozni. | No |
 
-**Például**
+**Példa:**
 
 ```json
 "activities":[
@@ -705,7 +704,7 @@ A tulajdonságok részleteinek megismeréséhez tekintse meg a [törlési tevék
 | copyBehavior | Meghatározza a másolási viselkedést, ha a forrás fájl-alapú adattárból származó fájlok.<br/><br/>Az engedélyezett értékek a következők:<br/><b>-PreserveHierarchy (alapértelmezett)</b>: megőrzi a fájl-hierarchiát a célmappában. A forrásfájl a forrás mappájához relatív elérési útja megegyezik a célfájl relatív elérési útjával.<br/><b>-FlattenHierarchy</b>: a forrás mappából származó összes fájl a célmappa első szintjén van. A célként megadott fájlok automatikusan generált névvel rendelkeznek. <br/><b>-MergeFiles</b>: az összes fájlt egyesíti a forrás mappájából egy fájlba. Ha meg van adva a fájl vagy a blob neve, az egyesített fájl neve a megadott név. Ellenkező esetben ez egy automatikusan létrehozott fájl neve. | No |
 | maxConcurrentConnections | A tárterület egyidejű kapcsolatainak száma. Csak akkor kell megadni, ha az adattárban való egyidejű kapcsolatokat szeretné korlátozni. | No |
 
-**Például**
+**Példa:**
 
 ```json
 "activities":[

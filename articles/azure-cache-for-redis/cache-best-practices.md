@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: joncole
 ms.openlocfilehash: 6a1dddfbcdbf2bd49586238872db15f1da5d7ce1
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84457303"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Ajánlott eljárások az Azure Cache for Redis használatához 
@@ -69,7 +68,7 @@ Sajnos nincs egyszerű válasz.  Minden alkalmazásnak el kell döntenie, hogy m
 Ha szeretné tesztelni, hogyan működik a kód a hibák között, érdemes lehet az [Újraindítás funkciót](cache-administration.md#reboot)használni. Az újraindítás lehetővé teszi, hogy megtekintse, hogyan befolyásolja a kapcsolódási visszavertség az alkalmazást.
 
 ## <a name="performance-testing"></a>Teljesítménytesztelés
- * **Kezdés a használatával `redis-benchmark.exe` ** a saját Perf-tesztek írása előtt a lehetséges átviteli sebesség/késés érdekében.  Redis – a teljesítményteszt dokumentációja [itt található](https://redis.io/topics/benchmarks).  Vegye figyelembe, hogy a Redis-benchmark nem támogatja a TLS-t, ezért a teszt futtatása előtt [engedélyeznie kell a nem TLS portot a portálon](cache-configure.md#access-ports) .  [Itt található a Redis-benchmark. exe Windows-kompatibilis verziója.](https://github.com/MSOpenTech/redis/releases)
+ * **Kezdés a használatával `redis-benchmark.exe` ** a saját Perf-tesztek írása előtt a lehetséges átviteli sebesség/késés érdekében.  Redis – a teljesítményteszt dokumentációja [itt található](https://redis.io/topics/benchmarks).  Vegye figyelembe, hogy a Redis-benchmark nem támogatja a TLS-t, ezért a teszt futtatása előtt [engedélyeznie kell a nem TLS portot a portálon](cache-configure.md#access-ports) .  [A redis-benchmark.exe Windows-kompatibilis verziója itt található](https://github.com/MSOpenTech/redis/releases)
  * A teszteléshez használt ügyfél virtuális gépnek **ugyanabban a régióban** kell lennie, mint a Redis cache-példánynak.
  * **Azt javasoljuk** , hogy a Dv2 virtuálisgép-sorozatokat az ügyfélhez hasonlóan használja, mivel ezek a hardverek jobbak, és a lehető legjobb eredményeket fogják biztosítani.
  * Győződjön meg arról, hogy az ügyfél által használt virtuális gép rendelkezik **legalább annyi számítási és sávszélességgel* , mint a tesztelt gyorsítótár. 
@@ -83,10 +82,10 @@ Ha szeretné tesztelni, hogyan működik a kód a hibák között, érdemes lehe
  
 ### <a name="redis-benchmark-examples"></a>Redis – teljesítményteszt-példák
 **Tesztelés előtti beállítás**: Készítse elő a gyorsítótár-példányt az alább felsorolt késési és átviteli sebesség-tesztelési parancsokhoz szükséges adatokkal.
-> Redis-benchmark. exe-h yourcache.redis.cache.windows.net-a yourAccesskey-t SET-n 10-d 1024 
+> redis-benchmark.exe-h yourcache.redis.cache.windows.net-yourAccesskey-t SET-n 10-d 1024 
 
 **A késés tesztelése**: a Get-kérések tesztelése egy 1k hasznos adat használatával.
-> Redis-benchmark. exe-h yourcache.redis.cache.windows.net-a yourAccesskey-t GET-d 1024-P 50-c 4
+> redis-benchmark.exe-h yourcache.redis.cache.windows.net-yourAccesskey-t GET-d 1024-P 50-c 4
 
 **Az átviteli sebesség tesztelése:** A folyamattal rendelkező GET-kérések 1k hasznos adatokkal rendelkeznek.
-> Redis-benchmark. exe-h yourcache.redis.cache.windows.net-a yourAccesskey-t GET-n 1000000-d 1024-P 50-c 50
+> redis-benchmark.exe-h yourcache.redis.cache.windows.net-a yourAccesskey-t GET-n 1000000-d 1024-P 50-c 50

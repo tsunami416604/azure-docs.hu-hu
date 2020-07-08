@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 06335798addadcd8591625e25ed2eafe8469ae48
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84463960"
 ---
 # <a name="remediate-risks-and-unblock-users"></a>Kockázatok szervizelése és a felhasználók blokkolásának feloldása
@@ -89,6 +88,6 @@ A bejelentkezési kockázaton alapuló fiókok blokkolásának feloldásához a 
 1. **A felhasználó kizárása a szabályzatból** – ha úgy gondolja, hogy a bejelentkezési szabályzat jelenlegi konfigurációja problémákat okoz bizonyos felhasználók számára, kizárhatja a felhasználókat. További információ [: a kockázatkezelési házirendek konfigurálása és engedélyezése](howto-identity-protection-configure-risk-policies.md#exclusions)című cikk kizárásai.
 1. **Házirend letiltása** – ha úgy gondolja, hogy a házirend-konfiguráció az összes felhasználónál problémát okoz, letilthatja a szabályzatot. További információt a [kockázatkezelési házirendek konfigurálása és engedélyezése](howto-identity-protection-configure-risk-policies.md)című cikkben talál.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Azure AD Identity Protection áttekintéséhez tekintse meg a [Azure ad Identity Protection áttekintését](overview-identity-protection.md).

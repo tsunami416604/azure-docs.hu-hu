@@ -12,10 +12,9 @@ ms.date: 05/19/2020
 ms.author: kenwith
 ms.reviewer: luleon
 ms.openlocfilehash: 50ee9e3c22c885931e2586f65ba2fa3353fccfeb
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85355845"
 ---
 # <a name="automate-saml-based-sso-app-configuration-with-microsoft-graph-api"></a>SAML-alapú SSO-alkalmazások konfigurációjának automatizálása Microsoft Graph API-val
@@ -596,7 +595,7 @@ HTTP/1.1 204
 
 Rendelje hozzá a következő felhasználót az egyszerű szolgáltatáshoz, és rendelje hozzá a AWS_Role1. 
 
-| Name (Név)  | ID  |
+| Name  | ID  |
 |---------|---------|
 | Felhasználói azonosító (principalId) | 6cad4079-4e79-4a3f-9efb-ea30a14bdb26 |
 | Típus (principalType) | Felhasználó |

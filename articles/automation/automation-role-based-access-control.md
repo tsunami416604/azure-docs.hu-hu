@@ -7,10 +7,9 @@ ms.subservice: shared-capabilities
 ms.date: 05/17/2018
 ms.topic: conceptual
 ms.openlocfilehash: ac05d5b4eb8dd9d7a39f56ec6efae4831f00c623
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85100003"
 ---
 # <a name="manage-role-permissions-and-security"></a>Szerepköri engedélyek és biztonság kezelése
@@ -43,7 +42,7 @@ A következő táblázatok ismertetik az egyes szerepkörökhöz adott engedély
 
 A tulajdonosok mindent kezelhetnek, beleértve a hozzáférést is. A következő táblázat a szerepkörhöz megadott engedélyeket tartalmazza:
 
-|Műveletek|Leírás|
+|Műveletek|Description|
 |---|---|
 |Microsoft. Automation/automationAccounts/|Minden típusú erőforrás létrehozása és kezelése.|
 

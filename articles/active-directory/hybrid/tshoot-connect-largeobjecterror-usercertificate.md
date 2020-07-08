@@ -18,10 +18,9 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 82c66231bcbdcaeb5371838291f1e6998f9f8bd7
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85356168"
 ---
 # <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Azure AD Connect Sync: a userCertificate attribútum által okozott LargeObject hibák kezelésére
@@ -105,7 +104,7 @@ Egy meglévő szinkronizálási szabálynak kell lennie, amely engedélyezve van
 7. A Szerkesztés képernyőn válassza a hatókör- **szűrő** lapot.
 8. Jegyezze fel a hatókör-szűrő konfigurációját. Ha a OOB szinkronizálási szabályt használja, akkor pontosan **egy két záradékot tartalmazó hatókör-szűrő csoportnak**kell lennie, beleértve a következőket:
 
-    | Attribútum | Operátor | Érték |
+    | Attribútum | Művelet | Érték |
     | --- | --- | --- |
     | sourceObjectType | EGYENLŐ | Felhasználó |
     | cloudMastered | NOTEQUAL | True (Igaz) |
@@ -117,8 +116,8 @@ Az új szinkronizálási szabálynak ugyanazzal a **hatókör-szűrővel** és *
 
     | Attribútum | Érték | Részletek |
     | --- | --- | --- |
-    | Name (Név) | *Adjon meg egy nevet* | Például *: "out to HRE – egyéni felülbírálás a userCertificate"* |
-    | Leírás | *Adja meg a leírást* | Például: *"Ha a userCertificate attribútum több mint 15 értékkel rendelkezik, akkor a null értéket exportálja."* |
+    | Name | *Adjon meg egy nevet* | Például *: "out to HRE – egyéni felülbírálás a userCertificate"* |
+    | Description | *Adja meg a leírást* | Például: *"Ha a userCertificate attribútum több mint 15 értékkel rendelkezik, akkor a null értéket exportálja."* |
     | Csatlakoztatott rendszerek | *Válassza ki az Azure AD-összekötőt* |
     | Csatlakoztatott rendszerobjektum típusa | **felhasználói** | |
     | Metaverse objektum típusa | **személy** | |
@@ -131,7 +130,7 @@ Az új szinkronizálási szabálynak ugyanazzal a **hatókör-szűrővel** és *
 
     | Attribútum | Érték |
     | --- | --- |
-    | Tördelés típusa |**Kifejezés** |
+    | Tördelés típusa |**Expression** |
     | Cél attribútum |**userCertificate** |
     | Forrás attribútum |*Használja a következő kifejezést*:`IIF(IsNullOrEmpty([userCertificate]), NULL, IIF((Count([userCertificate])> 15),AuthoritativeNull,[userCertificate]))` |
     

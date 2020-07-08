@@ -4,10 +4,9 @@ description: Ez a cikk a SQLRuleAction szintaxisát ismerteti. A műveletek olya
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 61fa6e046b4d4a0ba91bf8608c846755026d07ec
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85341578"
 ---
 # <a name="sqlruleaction-syntax-reference-for-azure-service-bus"></a>Azure Service Bus SQLRuleAction szintaxisának referenciája
@@ -186,7 +185,7 @@ A logikai konstansok a kulcsszavak vagy a alapján jelennek meg `TRUE` `FALSE` .
   
 A karakterlánc-konstansok szimpla idézőjelek közé vannak lefoglalva, és tartalmaznak bármilyen érvényes Unicode-karaktert. Egy karakterlánc-konstansba ágyazott idézőjelek két szimpla idézőjelet jelölnek.  
   
-## <a name="function"></a>függvény  
+## <a name="function"></a>A  függvény  
   
 ```  
 <function> :=  
