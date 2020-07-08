@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: dc1599fc0c2f8c55c709ab674c10dd53c8d8dc04
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84887703"
 ---
 # <a name="analyze-edge-node-performance-in-microsoft-azure-cdn"></a>Az élcsomópontok teljesítményének elemzése a Microsoft Azure CDN szolgáltatásban
@@ -84,7 +84,7 @@ A metrikák célja annak megállapítása, hogy javul-e a gyorsítótár hatéko
   * Csökkentett működési költségek.
 * Továbbfejlesztett adattovábbítási gyorsítás, mivel a további kérések közvetlenül a CDN-ből lesznek kézbesítve.
 
-| Mező | Leírás |
+| Mező | Description |
 | --- | --- |
 | Gyorsítótár-hatékonyság |A gyorsítótárból kiszolgált adatok százalékos arányát jelzi. Ez a mérőszám azt méri, hogy a kért tartalom gyorsítótárazott verziójának kiszolgálása közvetlenül a CDN-ből (Edge-kiszolgálók) a kérelmezőknek (pl. webböngésző) |
 | Találatok aránya |A gyorsítótárból kiszolgált kérelmek százalékos arányát jelzi. Ez a mérőszám azt méri, hogy a kért tartalom gyorsítótárazott verziójának kiszolgálása közvetlenül a CDN-ből (Edge-kiszolgálók) a kérelmezőknek (például a webböngészőbe). |
@@ -102,7 +102,7 @@ Ezen mérőszámok célja, hogy betekintést nyújtson a következő költségk�
 > 
 > 
 
-| Mező | Leírás |
+| Mező | Description |
 | --- | --- |
 | Ave bájt kimenő |Megadja a CDN (Edge-kiszolgálók) által a kérelmezőnek (például webböngészőnek) kiszolgált kérelmekhez továbbított bájtok átlagos számát. |
 | Nincs gyorsítótár-konfigurációs bájtok aránya |Megadja a CDN (Edge-kiszolgálók) által a kérelmezőnek (például a webböngészőnek) kiszolgált forgalom százalékos arányát, amelyet a rendszer a gyorsítótár megkerülése funkció miatt nem gyorsítótáraz. |
@@ -114,7 +114,7 @@ Ezen mérőszámok célja, hogy betekintést nyújtson a következő költségk�
 #### <a name="performance-metrics"></a>Teljesítmény-metrikák
 Ezen mérőszámok célja, hogy nyomon kövessék a forgalom általános CDN-teljesítményét.
 
-| Mező | Leírás |
+| Mező | Description |
 | --- | --- |
 | Adatátviteli sebesség |Azt az átlagos sebességet jelzi, amikor a tartalmat a CDN-ből egy kérelmezőnek adták át. |
 | Időtartam |Azt jelzi, hogy az átlagos idő ezredmásodpercben egy eszköz kézbesítése egy kérelmező számára (pl. webböngésző). |
@@ -126,7 +126,7 @@ Ezen mérőszámok célja, hogy nyomon kövessék a forgalom általános CDN-tel
 #### <a name="secure-traffic-metrics"></a>Biztonságos forgalmi metrikák
 Ezen mérőszámok célja, hogy nyomon kövessék a CDN teljesítményét a HTTPS-forgalomhoz.
 
-| Mező | Leírás |
+| Mező | Description |
 | --- | --- |
 | Biztonságos gyorsítótár hatékonysága |A gyorsítótárból kiszolgált HTTPS-kérelmekhez továbbított adatok százalékos arányát jelzi. Ez a mérőszám azt méri, hogy a kért tartalom gyorsítótárazott verziójának kiszolgálása közvetlenül a CDN-ből (Edge-kiszolgálók) a kérelmezőknek (például a webböngészőnek) a HTTPS protokollon keresztül. |
 | Biztonságos átvitel sebessége |Azt az átlagos sebességet jelzi, amely alapján a rendszer átvitte a tartalmat a CDN-ből (az Edge-kiszolgálókról) a kérelmezőknek (például webkiszolgálóknak) a HTTPS protokollon keresztül. |

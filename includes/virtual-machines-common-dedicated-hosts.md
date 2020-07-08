@@ -9,10 +9,10 @@ ms.date: 03/10/2020
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 7cf03de2efdb1026934985c225a2a9eecbfbb5a1
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84902713"
 ---
 ## <a name="limitations"></a>Korlátozások
@@ -113,7 +113,7 @@ A méretek és a hardver típusok régiónként eltérőek. További informáci�
 
 Az Azure figyeli és kezeli a gazdagépek állapotát. A következő állapotok lesznek visszaadva a gazdagép lekérdezésekor:
 
-| Állapot   | Leírás       |
+| Állapot   | Description       |
 |----------|----------------|
 | Gazdagép elérhető     | A gazdagépen nincsenek ismert problémák.   |
 | A vizsgálat alatt álló gazdagép  | Problémák léptek fel a gazdagépen, amit keresünk. Ez egy átmeneti állapot szükséges ahhoz, hogy az Azure kipróbálja és azonosítani tudja az azonosított probléma hatókörét és alapvető okát. A gazdagépen futó virtuális gépek befolyásolhatják a működését. |

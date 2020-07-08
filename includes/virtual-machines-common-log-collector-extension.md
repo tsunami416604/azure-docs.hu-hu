@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 09c4420647043fccc408631fec75854667923721
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74085247"
 ---
 A Microsoft Azure Cloud Service-szolgáltatással kapcsolatos problémák diagnosztizálásához a szolgáltatás naplófájljait a virtuális gépeken kell összegyűjtenie, amikor a probléma felmerül. Igény szerint használhatja a AzureLogCollector-bővítményt a naplók egy vagy több virtuális gépről (a webes szerepkörökből és a feldolgozói szerepkörökből) történő egyszeri gyűjtéséhez, és átviheti az összegyűjtött fájlokat egy Azure Storage-fiókba – mindezt anélkül, hogy távolról be kellene jelentkeznie bármelyik virtuális gépre.
@@ -33,7 +33,7 @@ A gyűjtési módokban további adatgyűjtési mappák is megadhatók a követke
 
 * **Name (név**): a gyűjtemény neve, amelyet a zip-fájlban található almappa neve használ az összegyűjtött fájlokkal.
 * **Hely**: az a virtuális gépen lévő mappa elérési útja, ahol a gyűjteni kívánt fájlok találhatók.
-* **SearchPattern**: a gyűjtött fájlok neveinek mintája. Az alapértelmezett érték\*: ""
+* **SearchPattern**: a gyűjtött fájlok neveinek mintája. Az alapértelmezett érték: " \* "
 * **Rekurzív**: Ha a gyűjteni kívánt fájlok rekurzívan találhatók a megadott helyen.
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -129,7 +129,7 @@ A következő két lépés egyikével adhatja hozzá a AzureLogCollector egy fel
    ```
 
    > [!NOTE]
-   > A token `%roleroot%` használatával megadhatja a szerepkör gyökerének meghajtóját, mivel nem rögzített meghajtót használ.
+   > A token használatával `%roleroot%` megadhatja a szerepkör gyökerének meghajtóját, mivel nem rögzített meghajtót használ.
    > 
    > 
 4. Adja meg az Azure Storage-fiók nevét és kulcsát, ahová az összegyűjtött fájlok fel lesznek töltve.
@@ -139,7 +139,7 @@ A következő két lépés egyikével adhatja hozzá a AzureLogCollector egy fel
    $StorageAccountKey  = 'YourStorageAccountKey'
    ```
 
-5. Hívja meg a SetAzureServiceLogCollector. ps1 (a cikk végén találhatót) az alábbiak szerint, hogy engedélyezze a AzureLogCollector-bővítményt a felhőalapú szolgáltatásokhoz. A végrehajtás befejeződése után megkeresheti a feltöltött fájlt a`https://YourStorageAccountName.blob.core.windows.net/vmlogs`
+5. Hívja meg a SetAzureServiceLogCollector.ps1 (a cikk végén található) az alábbiak szerint, hogy engedélyezze a AzureLogCollector bővítményt a felhőalapú szolgáltatásokhoz. A végrehajtás befejeződése után megkeresheti a feltöltött fájlt a`https://YourStorageAccountName.blob.core.windows.net/vmlogs`
 
    ```powershell
    .\SetAzureServiceLogCollector.ps1 -ServiceName YourCloudServiceName  -Roles $roles  -Instances $instances –Mode $mode -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey -AdditionDataLocationList $AdditionalDataList
@@ -231,7 +231,7 @@ Azure PowerShell az előfizetéséhez való kapcsolódáshoz kövesse az utasít
    $StorageAccountKey  = 'YourStorageAccountKey'
    ```
 
-3. Hívja meg a SetAzureVMLogCollector. ps1 (a cikk végén találhatót) az alábbiak szerint, hogy engedélyezze a AzureLogCollector-bővítményt a felhőalapú szolgáltatásokhoz. A végrehajtás befejeződése után megkeresheti a feltöltött fájlt a`https://YourStorageAccountName.blob.core.windows.net/vmlogs`
+3. Hívja meg a SetAzureVMLogCollector.ps1 (a cikk végén található) az alábbiak szerint, hogy engedélyezze a AzureLogCollector bővítményt a felhőalapú szolgáltatásokhoz. A végrehajtás befejeződése után megkeresheti a feltöltött fájlt a`https://YourStorageAccountName.blob.core.windows.net/vmlogs`
 
 A következő a parancsfájlnak átadott paraméterek definíciója. (Ezt az alábbi táblázat is másolja.)
 
@@ -276,7 +276,7 @@ param (
   ```
 
 ## <a name="extention-powershell-script-files"></a>Kiterjesztési PowerShell-parancsfájlok fájljai
-### <a name="setazureservicelogcollectorps1"></a>SetAzureServiceLogCollector. ps1
+### <a name="setazureservicelogcollectorps1"></a>SetAzureServiceLogCollector.ps1
 
 ```powershell
 [CmdletBinding(SupportsShouldProcess = $true)]
@@ -385,7 +385,7 @@ $SasUri = $SasUri + "&restype=container&comp=list"
 Write-Output "The container for uploaded file can be accessed using this link:`r`n$sasuri"
 ```
 
-### <a name="setazurevmlogcollectorps1"></a>SetAzureVMLogCollector. ps1
+### <a name="setazurevmlogcollectorps1"></a>SetAzureVMLogCollector.ps1
 
 ```powershell
 [CmdletBinding(SupportsShouldProcess = $true)]

@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 05/01/2018
 ms.author: allensu
 ms.openlocfilehash: 22ec4058d9485858489162af223bb6d6c381797e
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84887654"
 ---
 # <a name="large-file-download-optimization-with-azure-cdn"></a>Nagyméretű fájlok letöltésének optimalizálása Azure CDN
@@ -111,7 +111,7 @@ A nagyméretű fájlok optimalizálása az általános webes kézbesítéstől e
 |    | Általános web | Nagyméretű fájlok optimalizálása 
 --- | --- | --- 
 Gyorsítótárazás: pozitív <br> HTTP 200, 203, 300, <br> 301, 302 és 410 | 7 nap |1 nap  
-Gyorsítótárazás: negatív <br> HTTP 204, 305, 404, <br> és 405 | Nincs | 1 másodperc 
+Gyorsítótárazás: negatív <br> HTTP 204, 305, 404, <br> és 405 | None | 1 másodperc 
 
 ### <a name="deal-with-origin-failure"></a>A származási hiba kezelése
 

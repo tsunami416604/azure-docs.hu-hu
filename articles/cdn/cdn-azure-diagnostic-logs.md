@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 06/06/2018
 ms.author: allensu
 ms.openlocfilehash: 2c432b28250dca382f69a992de73d633b5ea45b8
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84883993"
 ---
 # <a name="azure-diagnostic-logs"></a>Azure diagnosztikai naplók
@@ -189,7 +189,7 @@ Az alapvető elemzési naplók óránként jönnek létre, és az adatok gyűjt�
 
 **Mezők leírása:**
 
-|Érték|Leírás|
+|Érték|Description|
 |-------|---------|
 |Előfizetés azonosítója    |Az Azure-előfizetés azonosítója GUID formátumban.|
 |Erőforráscsoport neve |Azon erőforráscsoport neve, amelyhez a CDN-erőforrások tartoznak.|
@@ -445,7 +445,7 @@ Példa tulajdonságai:
 
 * [Azure-beli diagnosztikai naplók](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
 * [Core Analytics Azure CDN kiegészítő portálon keresztül](https://docs.microsoft.com/azure/cdn/cdn-analyze-usage-patterns)
-* [Azure Monitor-naplók](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)
+* [Naplók Azure Monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)
 * [Azure Log Analytics REST API](https://docs.microsoft.com/rest/api/loganalytics)
 
 

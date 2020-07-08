@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 03/23/2020
 ms.author: sohamnc
 ms.openlocfilehash: a2522eba17574246ab99a0d47a42f128d5f61ace
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84888635"
 ---
 # <a name="azure-cdn-http-raw-logs"></a>HTTP nyers naplók Azure CDN

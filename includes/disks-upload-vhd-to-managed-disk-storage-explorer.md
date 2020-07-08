@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -9,10 +9,10 @@ ms.date: 09/25/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 5104c3b4446a8d3747ce7cc1648ef05dd117eb3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74013772"
 ---
 Storage Explorer 1.10.0 lehetővé teszi a felhasználók számára a felügyelt lemezek feltöltését, letöltését és másolását, valamint Pillanatképek készítését. Ezen további képességek miatt a Storage Explorer segítségével áttelepítheti az adatait a helyszínről az Azure-ba, és áttelepítheti az adatait az Azure-régiók között.
@@ -42,7 +42,7 @@ Ha a Storage Explorer nem csatlakozik az Azure-hoz, nem fogja tudni használni a
 
 1. Válassza ki az előfizetést a listából, majd kattintson az **Alkalmaz** gombra.
 
-    ![Válassza ki előfizetését.](media/disks-upload-vhd-to-managed-disk-storage-explorer/select-subscription.png)
+    ![Az előfizetés kiválasztása](media/disks-upload-vhd-to-managed-disk-storage-explorer/select-subscription.png)
 
 ## <a name="upload-a-managed-disk-from-an-on-prem-vhd"></a>Felügyelt lemez feltöltése helyszíni VHD-ből
 
@@ -120,7 +120,7 @@ A Storage Explorer segítségével a különböző régiókban lévő, vagy azok
 
     ![Pillanatkép létrehozása](media/disks-upload-vhd-to-managed-disk-storage-explorer/create-snapshot-button.png)
 
-1. A **pillanatkép létrehozása**lapon adja meg a pillanatkép nevét, valamint azt az erőforráscsoportot, amelyben létre kívánja hozni. Ezután válassza a **Létrehozás**lehetőséget.
+1. A **pillanatkép létrehozása**lapon adja meg a pillanatkép nevét, valamint azt az erőforráscsoportot, amelyben létre kívánja hozni. Ezután kattintson a **Létrehozás** elemre.
 
     ![Pillanatkép létrehozása párbeszédpanel](media/disks-upload-vhd-to-managed-disk-storage-explorer/create-snapshot-dialog.png)
 

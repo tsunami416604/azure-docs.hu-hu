@@ -15,13 +15,13 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: c06af1cc7f068070954669fc4ec269c9e679f278
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84886056"
 ---
-# <a name="analyze-usage-statistics-with-azure-cdn-advanced-http-reports"></a>Használati statisztikák elemzése Azure CDN Advanced HTTP-jelentésekkel
+# <a name="analyze-usage-statistics-with-azure-cdn-advanced-http-reports"></a>Használati statisztikák elemzése az Azure CDN speciális HTTP-jelentéseivel
 ## <a name="overview"></a>Áttekintés
 Ez a dokumentum a speciális HTTP-jelentéskészítést ismerteti Microsoft Azure CDN-ben. Ezek a jelentések részletes információkat biztosítanak a CDN-tevékenységről.
 
@@ -48,7 +48,7 @@ Az egyes régiók részletes forgalmi és sávszélesség-információi közvetl
 
 Az alábbiakban egy rövid leírást talál az egyes Térkép alapú földrajzi jelentésekhez.
 
-| Jelentés neve | Leírás |
+| Jelentés neve | Description |
 | --- | --- |
 | Globális Térkép |Ez a jelentés lehetővé teszi a CDN-tartalom globális igényének megtekintését. Az egyes országok/régiók színkóddal rendelkeznek a világ térképén, hogy jelezze az adott régióból származó találatok százalékos arányát. |
 | Egyesült Államok Térkép |Ez a jelentés lehetővé teszi, hogy megtekintse a CDN-tartalom iránti igényt a Egyesült Államokban. Az egyes állapotok színkódoltak ezen a térképen, hogy jelezze az adott régióból származó találatok százalékos arányát. |
@@ -71,7 +71,7 @@ A sávdiagram létrehozásához használt összes adattal megtekintheti a diagra
 
 Az alábbi jelentések mindkét típusához rövid leírást kell megadnia.
 
-| Jelentés neve | Leírás |
+| Jelentés neve | Description |
 | --- | --- |
 | Legnépszerűbb városok |Ez a jelentés az adott régióból származó találatok számának megfelelően rangsorolja a városokat. |
 | Leggyakoribb országok |Ez a jelentés az adott országból/régióból származó találatok száma szerint rangsorolja az országokat és a régiókat. |

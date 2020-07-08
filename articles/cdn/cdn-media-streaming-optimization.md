@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 05/01/2018
 ms.author: allensu
 ms.openlocfilehash: 1f8dc5ef89c70cebce1d59fc389300b30dc828f6
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84887605"
 ---
 # <a name="media-streaming-optimization-with-azure-cdn"></a>Médiaadatfolyam-továbbítás optimalizálása Azure CDN 
@@ -87,7 +87,7 @@ A rövid negatív gyorsítótárazási idő hasznos a forrás kiszervezésében,
 |   | Általános webes kézbesítés | Általános médiaadatfolyam-továbbítás | Igény szerinti video-adatfolyam  
 --- | --- | --- | ---
 Gyorsítótárazás: pozitív <br> HTTP 200, 203, 300, <br> 301, 302 és 410 | 7 nap |365 nap | 365 nap   
-Gyorsítótárazás: negatív <br> HTTP 204, 305, 404, <br> és 405 | Nincs | 1 másodperc | 1 másodperc
+Gyorsítótárazás: negatív <br> HTTP 204, 305, 404, <br> és 405 | None | 1 másodperc | 1 másodperc
  
 ### <a name="deal-with-origin-failure"></a>A származási hiba kezelése  
 

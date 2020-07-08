@@ -10,10 +10,10 @@ ms.date: 06/16/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: 9cb9f1a33c37487f4bfb1419d45d4e42a862d815
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84888119"
 ---
 # <a name="configure-object-replication-for-block-blobs-preview"></a>Objektumok replikálásának konfigurálása a blokk Blobok számára (előzetes verzió)
@@ -36,7 +36,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy regisztrált a következő sz
 - [BLOB verziószámozása (előzetes verzió)](versioning-overview.md)
 - [A hírcsatorna-támogatás módosítása az Azure Blob Storage (előzetes verzió)](storage-blob-change-feed.md)
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portalra](#tab/portal)
 
 Mielőtt az objektum-replikálást konfigurálja a Azure Portalban, hozza létre a forrás-és a cél tárolókat a megfelelő Storage-fiókjaiban, ha még nem léteznek. Emellett engedélyezte a blob verziószámozását, és megváltoztathatja a forrás fiókon a hírcsatornát, és engedélyezheti a blob verziószámozását a célhelyen.
 
@@ -234,7 +234,7 @@ az storage account or-policy show --resource-group <resource-group> \
 
 A replikációs házirend és a hozzá tartozó szabályok eltávolításához használja a Azure Portal, a PowerShell vagy a parancssori felületet.
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portalra](#tab/portal)
 
 Ha el szeretné távolítani egy replikációs házirendet a Azure Portalban, kövesse az alábbi lépéseket:
 
