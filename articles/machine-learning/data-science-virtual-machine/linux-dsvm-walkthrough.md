@@ -10,10 +10,9 @@ ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 04/02/2020
 ms.openlocfilehash: dec9d7d6f4676c3550bb6c0be79e25d907e5b3da
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83682474"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Adatelemzés Linux-Data Science Virtual Machine az Azure-ban
@@ -223,14 +222,14 @@ A keretrendszeren alapuló minták mellett átfogó útmutatók is elérhetők. 
 
 A többi szakaszban bemutatjuk, hogyan használhatja a Linux DSVM telepített eszközöket. A következő eszközöket tárgyaljuk:
 
-* Xgboost
+* XGBoost
 * Python
 * JupyterHub
 * Rattle
 * PostgreSQL és mókus SQL
 * Adattárház SQL Server
 
-### <a name="xgboost"></a>Xgboost
+### <a name="xgboost"></a>XGBoost
 
 A [XGBoost](https://xgboost.readthedocs.org/en/latest/) gyorsan és precízen növelt faszerkezetes megvalósítást biztosít.
 
@@ -313,7 +312,7 @@ predictSpam.service(1, 1, 1)
 
 ### <a name="jupyterhub"></a>JupyterHub
 
-A DSVM anaconda-eloszlása egy Jupyter Notebook, egy többplatformos környezettel rendelkezik a Python, az R vagy a Julia-kód és-elemzés megosztásához. A Jupyter Notebook a JupyterHub keresztül érhető el. A bejelentkezéshez használja a helyi Linux-felhasználónevet és-jelszót a https:// \< DSVM DNS-neve vagy IP-címe \> : 8000/. A JupyterHub összes konfigurációs fájlja megtalálható a/etc/jupyterhub.
+A DSVM anaconda-eloszlása egy Jupyter Notebook, egy többplatformos környezettel rendelkezik a Python, az R vagy a Julia-kód és-elemzés megosztásához. A Jupyter Notebook a JupyterHub keresztül érhető el. Jelentkezzen be a helyi Linux-felhasználónevével és-jelszavával a következő címen \<DSVM DNS name or IP address\> : https://: 8000/. A JupyterHub összes konfigurációs fájlja megtalálható a/etc/jupyterhub.
 
 > [!NOTE]
 > Ha a Python Package Managert (a paranccsal) szeretné használni a `pip` jelenlegi kernel egyik Jupyter Notebookjában, használja ezt a parancsot a Code (kód) cellában:

@@ -13,10 +13,9 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 656841fc8e62e81318ffd568069c0664192b1747
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84764893"
 ---
 # <a name="cookie-settings-for-accessing-on-premises-applications-in-azure-active-directory"></a>Cookie-beállítások a helyszíni alkalmazások eléréséhez Azure Active Directory
@@ -27,7 +26,7 @@ Azure Active Directory (Azure AD) hozzáféréssel és munkamenet-cookie-kkal re
 
 Az [alkalmazásproxy](application-proxy.md) a következő hozzáférési és munkamenet-cookie-beállításokat használja.
 
-| Cookie-beállítás | Alapértelmezett | Leírás | Javaslatok |
+| Cookie-beállítás | Alapértelmezett | Description | Javaslatok |
 | -------------- | ------- | ----------- | --------------- |
 | Csak HTTP-cookie használata | **Nem** | **Igen** , lehetővé teszi, hogy az alkalmazásproxy tartalmazza a HTTPOnly jelzőt a http-válasz fejlécekben. Ez a jelző további biztonsági előnyöket biztosít, például megakadályozza az ügyféloldali parancsfájlok (CSS) használatát a cookie-k másolásával vagy módosításával.<br></br><br></br>Mielőtt támogatjuk a csak HTTP-beállítást, az alkalmazásproxy titkosított és továbbított sütiket egy biztonságos TLS-csatornán keresztül a módosítás elleni védelem érdekében. | A további biztonsági előnyök miatt használja az **Igen** lehetőséget.<br></br><br></br>**Nem** használható olyan ügyfelek vagy felhasználói ügynökök számára, akiknek hozzáférésre van szükségük a munkamenet cookie-hoz. Például a **nem** érték használata olyan RDP-vagy MTSC-ügyfél esetén, amely az alkalmazásproxy használatával csatlakozik egy távoli asztali átjáró-kiszolgálóhoz.|
 | Biztonságos cookie használata | **Nem** | **Igen** , lehetővé teszi, hogy az alkalmazásproxy tartalmazza a biztonságos jelölőt a http-válasz fejlécekben. A biztonságos cookie-k biztonságosabbá teszi a cookie-kat egy TLS-védelemmel ellátott csatornán keresztül, például a HTTPS-en keresztül. Ez megakadályozza, hogy a cookie-k a cookie-k egyszerű szövegben való továbbítása miatt ne legyenek megfigyelhetők a jogosulatlan felektől. | A további biztonsági előnyök miatt használja az **Igen** lehetőséget.|

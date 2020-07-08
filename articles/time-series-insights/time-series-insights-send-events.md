@@ -11,12 +11,11 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/11/2020
 ms.custom: seodec18
-ms.openlocfilehash: c3c7f59ecb3a06d80012917e2da4425a899859d7
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.openlocfilehash: dd7a74ff775e6e07d1c32ed198ff028765fce45d
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84698835"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037290"
 ---
 # <a name="send-events-to-a-time-series-insights-environment-by-using-an-event-hub"></a>Események küldése egy Time Series Insights-környezetbe az Event hub használatával
 
@@ -55,13 +54,13 @@ Ez a cikk bemutatja, hogyan hozhat létre és konfigurálhat egy Event hub-t az 
 
 ## <a name="add-a-time-series-insights-instance"></a>Time Series Insights példány hozzáadása
 
-A Time Series Insights-frissítés példányokkal adja hozzá a környezetfüggő adatbevitelt a bejövő telemetria-adatértékekhez. Az adatai egy **Idősorozat-azonosító**használatával csatlakoznak a lekérdezési időponthoz. A jelen cikk későbbi részében használt minta szélmalmok projekt **idősorozat-azonosítója** `id` . Ha többet szeretne megtudni a Time Series Insight instances és az **idősorozat-azonosítóról**, olvassa el a [Time Series-modelleket](./time-series-insights-update-tsm.md).
+A Time Series Insights-frissítés példányokkal adja hozzá a környezetfüggő adatbevitelt a bejövő telemetria-adatértékekhez. Az adatai egy **Idősorozat-azonosító**használatával csatlakoznak a lekérdezési időponthoz. A jelen cikk későbbi részében használt minta szélmalmok projekt **idősorozat-azonosítója** `id` . Ha többet szeretne megtudni a Time Series Insight instances és az **idősorozat-azonosítóról**, olvassa el a [Time Series-modelleket](./concepts-model-overview.md).
 
 ### <a name="create-a-time-series-insights-event-source"></a>Time Series Insights eseményforrás létrehozása
 
 1. Ha még nem hozott létre egy eseményforrás, hajtsa végre az [eseményforrás létrehozásához](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub)szükséges lépéseket.
 
-1. Állítsa be a értékét `timeSeriesId` . Ha többet szeretne megtudni az **idősorozat-azonosítóról**, olvassa el a [Time Series-modelleket](./time-series-insights-update-tsm.md).
+1. Állítsa be a értékét `timeSeriesId` . Ha többet szeretne megtudni az **idősorozat-azonosítóról**, olvassa el a [Time Series-modelleket](./concepts-model-overview.md).
 
 ### <a name="push-events-to-windmills-sample"></a>Leküldéses események a szélmalmok mintába
 

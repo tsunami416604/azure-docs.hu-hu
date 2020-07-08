@@ -8,10 +8,9 @@ ms.topic: how-to
 ms.date: 06/12/2020
 ms.author: cherylmc
 ms.openlocfilehash: f22f81d69d746764af43d9167874aabedbd56f51
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84765441"
 ---
 # <a name="create-expressroute-direct-using-the-azure-portal"></a>Közvetlen ExpressRoute létrehozása a Azure Portal használatával
@@ -56,7 +55,7 @@ A ExpressRoute Direct szolgáltatással közvetlenül kapcsolódhat a Microsoft 
 
     :::image type="content" source="./media/how-to-expressroute-direct-portal/validate.png" alt-text="Áttekintés és létrehozás":::
 
-1. Kattintson a **Létrehozás** gombra. Megjelenik egy üzenet, amely tájékoztatja, hogy a telepítés folyamatban van. Az állapot ekkor megjelenik ezen a lapon az erőforrások létrehozásakor. 
+1. Válassza a **Létrehozás** lehetőséget. Megjelenik egy üzenet, amely tájékoztatja, hogy a telepítés folyamatban van. Az állapot ekkor megjelenik ezen a lapon az erőforrások létrehozásakor. 
 
 ## <a name="2-change-admin-state-of-links"></a><a name="state"></a>2. a hivatkozások rendszergazdai állapotának módosítása
 
@@ -100,7 +99,7 @@ Az alábbi lépések segítségével ExpressRoute-áramkört hozhat létre a Exp
 
    :::image type="content" source="./media/how-to-expressroute-direct-portal/review.png" alt-text="Áttekintés és létrehozás":::
 
-1. Kattintson a **Létrehozás** gombra. Megjelenik egy üzenet, amely tájékoztatja, hogy a telepítés folyamatban van. Az állapot ekkor megjelenik ezen a lapon az erőforrások létrehozásakor. 
+1. Válassza a **Létrehozás** lehetőséget. Megjelenik egy üzenet, amely tájékoztatja, hogy a telepítés folyamatban van. Az állapot ekkor megjelenik ezen a lapon az erőforrások létrehozásakor. 
 
 ## <a name="next-steps"></a>További lépések
 

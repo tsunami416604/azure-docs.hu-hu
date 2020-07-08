@@ -8,12 +8,11 @@ ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: 2c153d818136c5d8804dae72004dfaf17fd1bf7a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: eec5de7521c98e8147a8439844fd2a2a6b1bd2bc
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73494536"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037494"
 ---
 # <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>Ismert problémák a Apache Spark-fürtön a HDInsight-on
 
@@ -30,13 +29,17 @@ A probléma megkerüléséhez kövesse az alábbi eljárást:
 
 2. Futtassa a következő parancsot a Livy-on keresztül indított interaktív feladatok alkalmazás-azonosítóinak megkereséséhez.
 
-        yarn application –list
+   ```bash
+   yarn application –list
+   ```
 
     Az alapértelmezett feladatok neve Livy, ha a feladatok olyan interaktív Livy-munkamenettel kezdődtek, amelyben nincsenek megadva explicit nevek. A [Jupyter notebook](https://jupyter.org/)által elindított Livy-munkamenethez a feladatok neve a következővel kezdődik: `remotesparkmagics_*` .
 
 3. Futtassa a következő parancsot a feladatok leöléséhez.
 
-        yarn application –kill <Application ID>
+   ```bash
+   yarn application –kill <Application ID>
+   ```
 
 Elindul az új feladatok futtatása.
 
@@ -115,7 +118,7 @@ Ha a Spark-fürt erőforrás-kifogyott, a Jupyter-jegyzetfüzetben található S
 
 2. Indítsa újra az elindítani próbált jegyzetfüzetet. Elegendő erőforrást kell elérhetőnek lennie ahhoz, hogy most létrehozza a munkamenetet.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 * [Overview: Apache Spark on Azure HDInsight (Áttekintés: Apache Spark on Azure HDInsight)](apache-spark-overview.md)
 

@@ -13,10 +13,9 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 41c29e55f04f9edf06ba375ad4539e5fb3f82c18
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81733418"
 ---
 # <a name="send-messages-from-the-cloud-to-your-device-with-iot-hub-net"></a>Üzenetek küldése a felhőből az eszközre IoT Hub (.NET) használatával
@@ -80,7 +79,7 @@ Ebben a szakaszban a [telemetria küldése az eszközről az IoT hub](quickstart
     }
    ```
 
-1. Adja hozzá a következő metódust a **Main** metódushoz, közvetlenül `Console.ReadLine()` a sor előtt:
+1. Adja hozzá a következő metódust a **Main** metódushoz, közvetlenül a `Console.ReadLine()` sor előtt:
 
    ```csharp
    ReceiveC2dAsync();
@@ -88,7 +87,7 @@ Ebben a szakaszban a [telemetria küldése az eszközről az IoT hub](quickstart
 
 A `ReceiveAsync` metódus aszinkron módon visszaadja a kapott üzenetet, amikor az eszköz megkapja azt. Egy megadható időtúllépési időszak után *Null* értéket ad vissza. Ebben a példában az alapértelmezett érték egy perc. Ha az alkalmazás *Null értéket*kap, akkor továbbra is várnia kell az új üzeneteket. Ez a követelmény a `if (receivedMessage == null) continue` sor oka.
 
-Az üzenet sikeres `CompleteAsync()` feldolgozását IoT hub értesítési hívás. Az üzenet biztonságosan eltávolítható az eszköz várólistáról. Ha valami történt, amely meggátolta, hogy az eszköz nem teljesíti az üzenet feldolgozását, IoT Hub a szolgáltatás újra elérhetővé válik. Az *idempotens*logikának kell lennie az eszköz alkalmazásában, hogy ugyanazt az üzenetet kapja többször is ugyanez az eredmény.
+Az `CompleteAsync()` üzenet sikeres feldolgozását IoT hub értesítési hívás. Az üzenet biztonságosan eltávolítható az eszköz várólistáról. Ha valami történt, amely meggátolta, hogy az eszköz nem teljesíti az üzenet feldolgozását, IoT Hub a szolgáltatás újra elérhetővé válik. Az *idempotens*logikának kell lennie az eszköz alkalmazásában, hogy ugyanazt az üzenetet kapja többször is ugyanez az eredmény.
 
 Egy alkalmazás átmenetileg is kihagyhat egy üzenetet, ami azt eredményezi, hogy a IoT hub a jövőbeli felhasználás érdekében megőrzi az üzenetet a várólistában. Vagy az alkalmazás elutasíthat egy üzenetet, amely véglegesen eltávolítja az üzenetet a várólistából. A felhőből az eszközre irányuló üzenetek életciklusával kapcsolatos további információkért lásd: [D2C és C2D-üzenetküldés a IoT hub használatával](iot-hub-devguide-messaging.md).
 
@@ -106,7 +105,7 @@ Ebben a cikkben egy háttér-szolgáltatást hoz létre a felhőből az eszközr
 
 Most ír egy .NET-konzol alkalmazást, amely a felhőből az eszközre irányuló üzeneteket küld az eszköz alkalmazásnak.
 
-1. Az aktuális Visual Studio-megoldásban válassza a **fájl** > **új** > **projekt**lehetőséget. Az **új projekt létrehozása**területen válassza a **konzol alkalmazás (.NET-keretrendszer)** lehetőséget, majd kattintson a **tovább**gombra.
+1. Az aktuális Visual Studio-megoldásban válassza a **fájl**  >  **új**  >  **projekt**lehetőséget. Az **új projekt létrehozása**területen válassza a **konzol alkalmazás (.NET-keretrendszer)** lehetőséget, majd kattintson a **tovább**gombra.
 
 1. Nevezze el a projekt *SendCloudToDevice*. A **megoldás**területen válassza a **Hozzáadás a megoldáshoz** lehetőséget, és fogadja el a .NET-keretrendszer legújabb verzióját. A projekt létrehozásához válassza a **Létrehozás** lehetőséget.
 
@@ -118,7 +117,7 @@ Most ír egy .NET-konzol alkalmazást, amely a felhőből az eszközre irányul�
 
    Ez a lépés letölti, telepíti és hozzáadja az [Azure IoT Service SDK NuGet csomagra](https://www.nuget.org/packages/Microsoft.Azure.Devices/)mutató hivatkozást.
 
-1. Adja hozzá a `using` következő utasítást a **program.cs** fájl elejéhez.
+1. Adja hozzá a következő `using` utasítást a **program.cs** fájl elejéhez.
 
    ``` csharp
    using Microsoft.Azure.Devices;
@@ -142,7 +141,7 @@ Most ír egy .NET-konzol alkalmazást, amely a felhőből az eszközre irányul�
    }
    ```
 
-   Ez a metódus egy új, `myFirstDevice`a felhőből az eszközre irányuló üzenetet küld az eszköznek a következő azonosítóval:. Ezt a paramétert csak akkor módosítsa, ha módosította a [telemetria küldése az eszközről egy IoT hubhoz](quickstart-send-telemetry-dotnet.md).
+   Ez a metódus egy új, a felhőből az eszközre irányuló üzenetet küld az eszköznek a következő AZONOSÍTÓval: `myFirstDevice` . Ezt a paramétert csak akkor módosítsa, ha módosította a [telemetria küldése az eszközről egy IoT hubhoz](quickstart-send-telemetry-dotnet.md).
 
 1. Végül adja hozzá a következő sorokat a **Main** metódushoz.
 
@@ -158,7 +157,7 @@ Most ír egy .NET-konzol alkalmazást, amely a felhőből az eszközre irányul�
 
 1. A Solutions Explorerben kattintson a jobb gombbal a megoldásra, majd válassza az **indítási projektek beállítása**lehetőséget.
 
-1. Az **Általános tulajdonságok** > **indítási projekt**területen válassza a **több indítási projekt**elemet, majd válassza a **ReadDeviceToCloudMessages**, a **SimulatedDevice**és a **SendCloudToDevice** **indítási** műveletét. A módosítások mentéséhez kattintson az **OK** gombra.
+1. Az **Általános tulajdonságok**  >  **indítási projekt**területen válassza a **több indítási projekt**elemet, majd válassza a **ReadDeviceToCloudMessages**, a **SimulatedDevice**és a **SendCloudToDevice** **indítási** műveletét. A módosítások mentéséhez kattintson az **OK** gombra.
 
 1. Nyomja le az **F5**billentyűt. Mindhárom alkalmazásnak el kell indulnia. Válassza ki a **SendCloudToDevice** Windowst, majd nyomja le az **ENTER**billentyűt. Ekkor meg kell jelennie az eszköz által fogadott üzenetnek.
 
@@ -195,13 +194,13 @@ Ebben a szakaszban a **SendCloudToDevice** alkalmazást úgy módosítja, hogy v
 
     Megjegyzés: Ez a fogadási minta ugyanaz, mint a felhőből az eszközre irányuló üzenetek fogadása az eszköz alkalmazásból.
 
-1. Adja hozzá a következő sort a **Main** metódushoz, közvetlenül `serviceClient = ServiceClient.CreateFromConnectionString(connectionString)`utána.
+1. Adja hozzá a következő sort a **Main** metódushoz, közvetlenül utána `serviceClient = ServiceClient.CreateFromConnectionString(connectionString)` .
 
    ``` csharp
    ReceiveFeedbackAsync();
    ```
 
-1. Ha visszajelzést szeretne küldeni a felhőből az eszközre irányuló üzenet kézbesítéséről, meg kell adnia egy tulajdonságot a **SendCloudToDeviceMessageAsync** metódusban. Adja hozzá a következő sort a `var commandMessage = new Message(...);` sor után jobbra.
+1. Ha visszajelzést szeretne küldeni a felhőből az eszközre irányuló üzenet kézbesítéséről, meg kell adnia egy tulajdonságot a **SendCloudToDeviceMessageAsync** metódusban. Adja hozzá a következő sort a sor után jobbra `var commandMessage = new Message(...);` .
 
    ``` csharp
    commandMessage.Ack = DeliveryAcknowledgement.Full;

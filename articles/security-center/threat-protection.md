@@ -8,14 +8,13 @@ manager: rkarlin
 ms.assetid: 33c45447-3181-4b75-aa8e-c517e76cd50d
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 03/15/2020
+ms.date: 06/30/2020
 ms.author: memildin
-ms.openlocfilehash: 2e563cd0f9a8a25e57312494f1313f895c3b4628
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
-ms.translationtype: MT
+ms.openlocfilehash: f5218b2346b6ddebcee87a0e24f4924deafdb0f2
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267154"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037188"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Fenyegetésvédelem az Azure Security Centerben
 
@@ -106,36 +105,18 @@ App Service csomagokkal kapcsolatos további információkért lásd: [app Servi
 
 
 
-## <a name="threat-protection-for-azure-containers"></a>Veszélyforrások elleni védelem Azure-tárolók esetén<a name="azure-containers"></a>
+## <a name="threat-protection-for-containers"></a>Veszélyforrások elleni védelem tárolók esetén<a name="azure-containers"></a>
 
-> [!NOTE]
-> Ez a szolgáltatás jelenleg nem érhető el az Azure governmentben és a szuverén Felhőbeli régiókban.
+### <a name="availability"></a>Rendelkezésre állás
 
-A Security Center valós idejű veszélyforrások elleni védelmet biztosít a tároló környezetek számára, és riasztásokat hoz létre a gyanús tevékenységekhez. Ezen adatok alapján gyorsan elháríthatja a biztonsági problémákat, és javíthatja tárolói védelmét.
+- Kiadási állapot: **általánosan elérhető**
+- Szükséges szerepkörök: a **biztonsági rendszergazda** figyelmen kívül hagyhatja a riasztásokat. A **biztonsági olvasó** megtekintheti az eredményeket.
+- Felhők<br>
+    ✔ Kereskedelmi felhők<br>
+    ✘ US Gov<br>
+    ✘ China gov, egyéb gov
 
-A Security Center különböző szinteken biztosítja a veszélyforrások elleni védelmet: 
-
-* A **gazdagép szintjének** Security Center ügynöke (a standard szinten érhető el, a részletek [díjszabása](security-center-pricing.md) ) figyeli a Linuxot a gyanús tevékenységekhez. Az ügynök riasztásokat küld a csomópontból vagy a rajta futó tárolóból származó gyanús tevékenységekről. Ilyen tevékenység például a webrendszerhéj-észlelés és a kapcsolat ismert gyanús IP-címekkel.
-
-    Az ügynök a tároló-specifikus elemzéseket figyeli, így mélyebb betekintést nyújt a tároló-környezet biztonságára. Riasztásokat indít az eseményekhez, például a privilegizált tárolók létrehozásához, az API-kiszolgálókhoz való gyanús hozzáféréshez, valamint a Secure Shell-(SSH-) kiszolgálókhoz, amelyek egy Docker-tárolón belül futnak.
-
-    >[!IMPORTANT]
-    > Ha úgy dönt, hogy nem telepíti az ügynököket a gazdagépekre, a fenyegetések elleni védelem előnyeinek és biztonsági riasztásoknak csak egy részhalmazát fogja kapni. A hálózati elemzéssel és a rosszindulatú kiszolgálókkal folytatott kommunikációval kapcsolatos riasztásokat továbbra is megkapja.
-
-    A gazda szintű riasztások listáját a [riasztások hivatkozási táblázata](alerts-reference.md#alerts-containerhost)tartalmazza.
-
-
-* Az AK-alapú **fürt szintjén**a fenyegetések elleni védelem a Kubernetes naplózási naplóinak elemzésén alapul. Az **ügynök** nélküli figyelés engedélyezéséhez adja hozzá az előfizetéshez a Kubernetes lehetőséget a **díjszabási & beállítások** lapon (lásd a [díjszabást](security-center-pricing.md)). A riasztások ezen a szinten történő létrehozásához Security Center figyeli az AK által felügyelt szolgáltatásokat az AK által beolvasott naplók használatával. Az ezen a szinten található események közé tartoznak például az elérhető Kubernetes-irányítópultok, a magas jogosultsági szintű szerepkörök létrehozása és a bizalmas csatlakoztatások létrehozása.
-
-    >[!NOTE]
-    > A Security Center biztonsági riasztásokat hoz létre az Azure Kubernetes szolgáltatás műveleteihez, illetve a Kubernetes beállítás engedélyezése után előforduló központi telepítések esetén az előfizetési beállításokban. 
-
-    Az AK-beli fürt szintű riasztások listáját a [riasztások hivatkozási táblázata](alerts-reference.md#alerts-akscluster)tartalmazza.
-
-Emellett a biztonsági kutatók globális csapata folyamatosan figyeli a fenyegetés tájképét. A felderített tároló-specifikus riasztásokat és biztonsági réseket adják hozzá.
-
-> [!TIP]
-> A tárolói riasztások szimulálása a [blogbejegyzés](https://techcommunity.microsoft.com/t5/azure-security-center/how-to-demonstrate-the-new-containers-features-in-azure-security/ba-p/1011270)utasításait követve végezhető el.
+[!INCLUDE [AKS in ASC threat protection](../../includes/security-center-azure-kubernetes-threat-protection.md)]
 
 
 
@@ -150,7 +131,7 @@ A Azure SQL Database komplex veszélyforrások elleni védelme olyan rendellenes
 
 A riasztások akkor jelennek meg, ha gyanús adatbázis-tevékenységek, potenciális sebezhetőségek vagy SQL-injektálási támadások, valamint rendellenes adatbázis-hozzáférés és lekérdezési minták vannak.
 
-A Azure SQL Database és az SQL komplex veszélyforrások elleni védelme az Azure SQL Database-adatbázisokat Azure SQL Database, a felügyelt példányokat, a Azure SQL Data Warehouse-adatbázisokat és az Virtual Machines Azure-beli SQL-kiszolgálókat tartalmazó speciális SQL-alapú biztonsági képességek [(ADS)](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security) egységes csomag részét képezi.
+A Azure SQL Database és az SQL komplex veszélyforrások elleni védelme a speciális SQL biztonsági képességek [(ADS)](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security) egységes csomag részét képezi, amely a Azure SQL Database, az Azure SQL felügyelt példányaira, a Azure SQL Data Warehouse adatbázisokra és az Azure Virtual Machines SQL-kiszolgálóira terjed ki.
 
 További információkért lásd:
 
@@ -162,15 +143,44 @@ További információkért lásd:
 
 ## <a name="threat-protection-for-azure-storage"></a>Veszélyforrások elleni védelem az Azure Storage-ban<a name="azure-storage"></a>
 
-Az Azure Storage komplex veszélyforrások elleni védelme szokatlan és potenciálisan ártalmas kísérleteket észlel a Storage-fiókok eléréséhez vagy kiaknázásához. Ez a védelmi réteg lehetővé teszi a fenyegetések kezelését anélkül, hogy biztonsági szakértőnek kellene lennie, és segít a biztonsági monitorozási rendszerek kezelésében. 
+### <a name="availability"></a>Rendelkezésre állás
 
-A biztonsági riasztások akkor aktiválódnak, ha a rendszer gyanús tevékenységeket észlel a Storage-fiókban, vagy rendellenes viselkedést észlel. A gyanús tevékenységek tartalmazhatják a kártevőket tartalmazó Blobok feltöltését is. A rendellenes viselkedési riasztások közé tartozik a hozzáférési minta módosítása a Storage-fiókban.
+- Kiadás állapota:
+    - [Blob Storage](https://azure.microsoft.com/services/storage/blobs/) (általánosan elérhető)
+    - [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (előzetes verzió)
+    - [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) (előzetes verzió)
+- Felhők<br>
+    ✔ Kereskedelmi felhők<br>
+    ✔ US Gov<br>
+    ✘ China gov, egyéb gov
+
+### <a name="whats-protected"></a>Mi a védett?
+
+Az Azure Storage veszélyforrások elleni védelme észleli az Azure Storage-fiókok potenciálisan káros tevékenységeit. Az Ön adatai védetté tehetik, hogy blob-tárolóként, fájlmegosztásként vagy adattavakként vannak tárolva.
+
+Ez a védelmi réteg lehetővé teszi a fenyegetések kezelését *anélkül* , hogy biztonsági szakértőnek kellene lennie, és segít a biztonsági monitorozási rendszerek kezelésében.
+
+A Storage-fiókok védettek 
+
+### <a name="what-kind-of-alerts-does-threat-protection-for-azure-storage-provide"></a>Milyen típusú riasztásokat biztosít a fenyegetések elleni védelem az Azure Storage-ban?
+
+A biztonsági riasztások akkor aktiválódnak, ha:
+
+- **Gyanús tevékenység** – például a Storage-fiók sikeresen elérhető a Tor aktív kilépési csomópontjának nevezett IP-címről.
+- **Rendellenes viselkedés** – például a hozzáférési minta módosítása egy Storage-fiókra
+- **Lehetséges kártevők feltöltése** – a kivonatoló hírnevének elemzése azt jelzi, hogy egy feltöltött fájl kártevőket tartalmaz
 
 A riasztások tartalmazzák az azokat kiváltó incidens részleteit, valamint a fenyegetések kivizsgálásával és szervizelésével kapcsolatos javaslatokat.
 
-Az Azure Storage veszélyforrások elleni védelme jelenleg csak [blob Storage](https://azure.microsoft.com/services/storage/blobs/)esetében érhető el. 
+### <a name="what-is-hash-reputation-analysis-for-malware"></a>Mi a kivonatoló hírnevének elemzése kártevők számára?
 
-Ez a szolgáltatás a nyilvános felhőkben és az USA kormányzati felhőkben is elérhető, de nem más szuverén vagy Azure Government Felhőbeli régió. 
+Annak megállapításához, hogy a feltöltött fájl gyanús-e, a fenyegetések elleni védelem az Azure Storage-ban a [Microsoft Threat Intelligence](https://go.microsoft.com/fwlink/?linkid=2128684)által támogatott kivonat-felismerési elemzést használ. A veszélyforrások elleni védelem eszközei nem ellenőrzik a feltöltött fájlokat, hanem megvizsgálják a tárolási naplókat, és összehasonlítják az újonnan feltöltött fájlok kivonatait az ismert vírusok, trójaiak, kémprogramok és ransomware esetében. 
+
+Ha egy fájl gyanúja szerint kártevőt tartalmaz, Security Center riasztást jelenít meg, és opcionálisan e-mailben is elküldheti a tároló tulajdonosának jóváhagyását a gyanús fájl törléséhez. Ha be szeretné állítani a fájlok automatikus eltávolítását, amely alapján a kivonatoló hírnevének elemzése a kártevőket tartalmazza, a Munkafolyamat-automatizálás üzembe helyezésével [aktiválhatja azokat a riasztásokat, amelyek "a Storage-fiókba feltöltött lehetséges kártevőket" tartalmaznak](https://techcommunity.microsoft.com/t5/azure-security-center/how-to-respond-to-potential-malware-uploaded-to-azure-storage/ba-p/1452005).
+
+
+
+### <a name="next-steps"></a>További lépések 
 
 A díjszabással kapcsolatos részletekért, beleértve az ingyenes 30 napos próbaverziót is, tekintse meg a [Azure Security Center díjszabási oldalát](https://azure.microsoft.com/pricing/details/security-center/).
 
@@ -178,9 +188,13 @@ További információkért lásd:
 
 * [A komplex veszélyforrások elleni védelem engedélyezése az Azure Storage-ban](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection)
 * [Az Azure Storage veszélyforrások elleni védelmi értesítéseinek listája](alerts-reference.md#alerts-azurestorage)
+* [A Microsoft fenyegetés-felderítési képességei](https://go.microsoft.com/fwlink/?linkid=2128684)
 
 > [!TIP]
-> Az Azure Storage-riasztásokat az [ebben a blogbejegyzésben](https://techcommunity.microsoft.com/t5/azure-security-center/validating-atp-for-azure-storage-detections-in-azure-security/ba-p/1068131)található utasításokat követve szimulálhatja.
+> A tárolási riasztások szimulálása a [blogbejegyzés](https://techcommunity.microsoft.com/t5/azure-security-center/validating-atp-for-azure-storage-detections-in-azure-security/ba-p/1068131)utasításait követve végezhető el.
+
+
+
 
 
 
@@ -228,14 +242,17 @@ A Azure Resource Manager (előzetes verzió) riasztások listáját a [riasztás
 >[!NOTE]
 > Az előző elemzések közül több Microsoft Cloud App Security van. Ezen elemzések kihasználása érdekében aktiválni kell egy Cloud App Security licencet. Ha Cloud App Security licenccel rendelkezik, ezek a riasztások alapértelmezés szerint engedélyezve vannak. A riasztások letiltása:
 >
-> 1. A **Security Center** panelen válassza a **biztonsági házirend**elemet. A módosítani kívánt előfizetés esetében válassza a **beállítások szerkesztése**lehetőséget.
-> 2. Válassza a **veszélyforrások észlelése**lehetőséget.
-> 3. Az **integráció engedélyezése**területen törölje a jelet a **Microsoft Cloud app Security az adatai elérésének engedélyezése**jelölőnégyzetből, majd válassza a **Mentés**lehetőséget.
+> 1. A Security Center menüjében válassza a **díjszabás & beállítások**lehetőséget.
+> 1. Válassza ki a módosítani kívánt előfizetést.
+> 1. Válassza a **veszélyforrások észlelése**lehetőséget.
+> 1. Törölje a **Microsoft Cloud app Security az adataim elérésének engedélyezése**jelölőnégyzet jelölését, majd válassza a **Mentés**lehetőséget.
 
 >[!NOTE]
 >Security Center a biztonsággal kapcsolatos ügyféladatokat ugyanabban a földrajzi régióban tárolja, mint az erőforrása. Ha a Microsoft még nem telepített Security Center az erőforrás geo-ban, akkor az a Egyesült Államok tárolja azokat. Ha Cloud App Security engedélyezve van, a rendszer ezeket az adatokat a Cloud App Security földrajzi hely szabályainak megfelelően tárolja. További információkért lásd: [adattároló a nem regionális szolgáltatásokhoz](https://azuredatacentermap.azurewebsites.net/).
 
+1. Állítsa be azt a munkaterületet, amelyre telepíteni kívánja az ügynököt. Győződjön meg arról, hogy a munkaterület ugyanahhoz az előfizetéshez tartozik, amelyet Security Center használ, és hogy rendelkezik írási/olvasási engedéllyel a munkaterületen.
 
+1. Állítsa be a standard díjszabási szintet, majd kattintson a **Mentés**gombra.
 
 
 

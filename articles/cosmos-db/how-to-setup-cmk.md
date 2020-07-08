@@ -6,12 +6,11 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: thweiss
-ms.openlocfilehash: 229c1307559c0bd452e95a4f833bc68b66bc6299
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
-ms.translationtype: MT
+ms.openlocfilehash: 443e037f89508b0fc3b01ba90f884c139f4c64be
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85261307"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027773"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Konfigurálja a felhasználó által kezelt kulcsokat az Azure Cosmos-fiókjához az Azure Key Vaulttal
 
@@ -28,7 +27,7 @@ Az ügyfél által felügyelt kulcsokat a [Azure Key Vaultban](../key-vault/gene
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/), nyissa meg az Azure-előfizetését, és válassza az **erőforrás-szolgáltatók** lehetőséget a **Beállítások** lapon:
 
-   !["Erőforrás-szolgáltatók" bejegyzés a bal oldali menüben](./media/how-to-setup-cmk/portal-rp.png)
+   :::image type="content" source="./media/how-to-setup-cmk/portal-rp.png" alt-text="Erőforrás-szolgáltatói bejegyzés a bal oldali menüben":::
 
 1. Keresse meg a **Microsoft.DocumentDB** erőforrás-szolgáltatót. Ellenőrizze, hogy az erőforrás-szolgáltató már regisztráltként van-e megjelölve. Ha nem, válassza ki az erőforrás-szolgáltatót, és válassza a **regisztráció**lehetőséget:
 
@@ -51,7 +50,7 @@ Ha meglévő Azure Key Vault példányt használ, ellenőrizheti, hogy ezek a tu
 
 1. A Azure Portal lépjen a titkosítási kulcsok üzemeltetéséhez használni kívánt Azure Key Vault-példányra. A bal oldali menüben válassza a **hozzáférési szabályzatok** lehetőséget:
 
-   !["Hozzáférési szabályzatok" a bal oldali menüben](./media/how-to-setup-cmk/portal-akv-ap.png)
+   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-ap.png" alt-text="Hozzáférési szabályzatok a bal oldali menüben":::
 
 1. Válassza a **+ hozzáférési házirend hozzáadása**lehetőséget.
 
@@ -69,7 +68,7 @@ Ha meglévő Azure Key Vault példányt használ, ellenőrizheti, hogy ezek a tu
 
 1. A Azure Portal lépjen a titkosítási kulcsok üzemeltetéséhez használni kívánt Azure Key Vault-példányra. Ezután válassza a bal oldali menü **kulcsok** elemét:
 
-   !["Keys" bejegyzés a bal oldali menüben](./media/how-to-setup-cmk/portal-akv-keys.png)
+   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-keys.png" alt-text="Kulcsok bejegyzése a bal oldali menüben":::
 
 1. Válassza a **Létrehozás/importálás**lehetőséget, adja meg az új kulcs nevét, és válasszon ki egy RSA-kulcs méretét. Legalább 3072 ajánlott a legjobb biztonság érdekében. Ezután válassza a **Létrehozás**elemet:
 

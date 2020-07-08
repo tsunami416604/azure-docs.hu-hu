@@ -4,10 +4,9 @@ description: A Azure Backup Server használatával biztonsági mentést készít
 ms.topic: conceptual
 ms.date: 06/07/2020
 ms.openlocfilehash: 8b9257c1d175c350df06f9421b31a9e7b8e2bb80
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84657943"
 ---
 # <a name="back-up-a-sharepoint-farm-on-azure-stack"></a>SharePoint-farm biztonsági mentése Azure Stack
@@ -257,7 +256,7 @@ Az alábbi eljárás egy kiszolgálófarm példáját használja két előtér-w
 
 1. Ha végrehajtotta a 6. lépést, most eltávolíthatja a kötetet a védelmi csoportból.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Tekintse meg a [biztonsági másolat fájljait és az alkalmazásról](backup-mabs-files-applications-azure-stack.md) szóló cikket.
 * A [biztonsági mentési SQL Server Azure stack](backup-mabs-sql-azure-stack.md) cikkben talál.

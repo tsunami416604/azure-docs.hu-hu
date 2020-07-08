@@ -15,10 +15,9 @@ ms.workload: na
 ms.date: 05/31/2017
 ms.author: alkohli
 ms.openlocfilehash: 9f92a6277765447cbc1a9b12f06c3ec49548f4d1
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85513454"
 ---
 # <a name="use-the-storsimple-manager-service-to-manage-access-control-records"></a>A hozzáférés-vezérlési rekordok kezelése a StorSimple Manager szolgáltatással
@@ -127,7 +126,7 @@ Egy hozzáférés-vezérlési rekord törléséhez hajtsa végre a következő l
 
     ![Hozzáférés-vezérlési rekordok keresése](./media/storsimple-8000-manage-acrs/deleteacr5.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További információ a [StorSimple-kötetek kezeléséről](storsimple-8000-manage-volumes-u2.md).
 * További információ [a StorSimple Manager szolgáltatás a StorSimple-eszköz felügyeletéhez való használatáról](storsimple-8000-manager-service-administration.md).
 

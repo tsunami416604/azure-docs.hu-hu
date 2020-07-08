@@ -7,18 +7,17 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/24/2020
 ms.author: ajburnle
 ms.reviewer: kexia
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 388c40867c21390c3de8a033a1bfa08eb95bd602
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
-ms.translationtype: MT
+ms.openlocfilehash: 14e1e84fa96b1e6b686d039abedd38e080b5720e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85367410"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85603910"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Arculat hozzáadása a szervezet Azure Active Directory bejelentkezési lapjához
 A szervezet emblémájának és egyéni színsémáinak használatával egységes megjelenést és működést biztosíthat a Azure Active Directory (Azure AD) bejelentkezési oldalain. A bejelentkezési oldalai akkor jelennek meg, amikor a felhasználók bejelentkeznek a szervezet web-alapú alkalmazásaiba, például az Office 365-be, amely az Azure AD-t használja az identitás-szolgáltatóként.

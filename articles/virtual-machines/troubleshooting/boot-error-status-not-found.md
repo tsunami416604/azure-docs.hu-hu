@@ -15,10 +15,9 @@ ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: v-miegge
 ms.openlocfilehash: 817f9e362e639cbb8f0cc79607c376c0e8216ec7
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83664990"
 ---
 # <a name="troubleshoot-windows-boot-manager-error----0xc0000225-status-not-found"></a>A Windows rendszerindítási kezelőjével kapcsolatos hiba – 0xC0000225 "állapot nem található"
@@ -108,11 +107,11 @@ A beállításjegyzék-struktúra sérülésének oka a következő lehet:
 1. Kattintson a jobb gombbal a fájlra, válassza a **Tulajdonságok parancsot**, majd válassza a **részletek** lapot a fájl információinak megtekintéséhez.
    1. Jegyezze fel a fájl verzióját, ahogy az alábbi képen is látható:
 
-      ![A "CNG. sys" fájlhoz tartozó Properties (Tulajdonságok) ablak, ahol a fájl verziója ki van emelve.](./media/troubleshoot-boot-error-status-not-found/5.png)
+      ![A "cng.sys" fájlhoz tartozó Tulajdonságok ablak, a fájl verziószáma kiemelve.](./media/troubleshoot-boot-error-status-not-found/5.png)
 
-1. Nevezze át a fájlt **< bináris fájlra. SYS >. Old**, **< bináris fájl cseréje. A SYS >** a fájl nevével.
+1. Nevezze át a fájlt **< BINARY.SYS >. Old**névre, és cserélje le **< BINARY.SYS >** a fájl nevére.
 
-   A fenti lépésben szereplő rendszerkép esetében a **CNG. sys** fájlt átnevezi a **CNG. sys. Old** fájlra.
+   A fenti lépésben szereplő rendszerképet a fájl **cng.sys** átnevezi **cng.sys. old névre.**
 
    > [!NOTE]
    > Ha megpróbálja átnevezni a fájlt, és "a fájl sérült, és nem olvasható" üzenetet kap, forduljon a [támogatási szolgálathoz](https://azure.microsoft.com/support/create-ticket/), mivel ez a megoldás nem fog működni.
@@ -127,7 +126,7 @@ A beállításjegyzék-struktúra sérülésének oka a következő lehet:
 
       Ez a parancs felsorolja a fájl összes olyan verzióját, amelyen a gép található, így megadhatja az adott összetevő elérési útját.
       
-      A **dir CNG. sys** például átnevezi a **dir CNG. sys/s nevet.**
+      Például a **dir cng.sys** átnevezi a **dir parancsot cng.sys/s**
 
    1. Válassza ki a fájl legújabb verzióját a listáról (vagy bármely más előnyben részesített), és másolja a fájlt a **Windows\System32** mappába az előző elérési út és a következő parancs használatával:
 
@@ -136,9 +135,9 @@ A beállításjegyzék-struktúra sérülésének oka a következő lehet:
       > [!NOTE]
       > Ha a legújabb bináris fájl nem működött, próbálkozzon egy olyan verzióval, amely az egyik, vagy amelyről biztos, hogy rendelkezik egy stabil fájllal, például egy, a javítás előtti verzióval.
 
-      Ha például a keresett bináris **fájl a cmimcext. sys**, a hibás meghajtó az **F:** meghajtó, és csak a legújabb verziót futtatja, akkor a következő képet láthatja, ahol egy lekérdezés a parancssorban `dir cmim* /s` megkeresi a cmimcext. sys fájl legújabb verzióját.
+      Ha például a keresett bináris fájl **cmimcext.sys**, akkor a hibás meghajtó az **F:** meghajtó, és a legújabb verzióra való keresés futtatásakor a következő képet fogja látni, ahol a parancssorban található lekérdezés `dir cmim* /s` megkeresi a cmimcext.sys fájl legújabb verzióját.
 
-      ![A "dir cmim */s" parancs parancssorában található lekérdezés a cmimcext. sys fájl legújabb verziójának megkereséséhez.](./media/troubleshoot-boot-error-status-not-found/6.png)
+      ![A "dir cmim */s" parancs parancssorában található lekérdezés a cmimcext.sys fájl legújabb verziójának megkereséséhez.](./media/troubleshoot-boot-error-status-not-found/6.png)
 
       A fenti ábrán a lekérdezés a **C:** helyen lett elvégezve, míg a meghajtó betűjele a hibás meghajtó, **F:**, amely a javítási virtuális gépen ADATlemezként csatolt operációsrendszer-lemez.
 

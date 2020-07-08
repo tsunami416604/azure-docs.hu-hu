@@ -11,10 +11,9 @@ ms.author: denzilr
 ms.reviewer: sstein
 ms.date: 10/18/2019
 ms.openlocfilehash: 7bd2b404627e21a80fc41a4561300d7252d1519c
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84324392"
 ---
 # <a name="sql-hyperscale-performance-troubleshooting-diagnostics"></a>SQL nagy kapacitású Performance hibaelhárítási diagnosztika
@@ -28,7 +27,7 @@ Minden Azure SQL Database szolgáltatási szinten a naplózási [ráta irányít
 
 A következő várakozási típusok (a [sys. dm_os_wait_statsban](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql/)) azt ismertetik, hogy miért szabályozható a naplózási sebesség az elsődleges számítási replika esetén:
 
-|Várakozás típusa    |Leírás                         |
+|Várakozás típusa    |Description                         |
 |-------------          |------------------------------------|
 |RBIO_RG_STORAGE        | Akkor következik be, amikor a nagy kapacitású-adatbázis elsődleges számítási csomópontjának napló-generálási sebessége a kiszolgáló (k) késleltetett naplójának használata miatt van szabályozva.         |
 |RBIO_RG_DESTAGE        | Akkor következik be, amikor a nagy kapacitású-adatbázis számítási csomópontjának naplójának generálási arányát a rendszer a hosszú távú napló-tárolás késleltetett naplózása miatt szabályozza.         |

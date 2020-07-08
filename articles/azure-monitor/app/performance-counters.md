@@ -4,10 +4,9 @@ description: A rendszer és az egyéni .NET-teljesítményszámlálók figyelés
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.openlocfilehash: 274e02c484c091cbb13ac2cf69bf99672f579f33
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83701478"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Rendszerteljesítmény-számlálók a Application Insightsban
@@ -41,9 +40,9 @@ Ha a használni kívánt teljesítményszámláló nem szerepel a metrikák list
     `Get-Counter -ListSet *`
 
     (Lásd: [`Get-Counter`](https://technet.microsoft.com/library/hh849685.aspx) .)
-2. Nyissa meg a ApplicationInsights. config fájlt.
+2. Nyissa meg ApplicationInsights.config.
 
-   * Ha a fejlesztés során Application Insightst adott hozzá az alkalmazáshoz, szerkessze a ApplicationInsights. config fájlt a projektben, majd telepítse újra a kiszolgálókra.
+   * Ha a fejlesztés során Application Insightst adott hozzá az alkalmazáshoz, szerkessze ApplicationInsights.config a projektben, majd telepítse újra a kiszolgálókra.
 3. A Performance Collector direktíva szerkesztése:
 
     ```XML
@@ -149,7 +148,7 @@ A teljesítményszámlálók támogatása ASP.NET Core korlátozott:
 ## <a name="alerts"></a>Riasztások
 Más mérőszámokhoz hasonlóan [riasztást is beállíthat](../../azure-monitor/platform/alerts-log.md) , amely figyelmezteti, ha a teljesítményszámláló a megadott korláton kívül esik. Nyissa meg a riasztások ablaktáblát, és kattintson a riasztás hozzáadása lehetőségre.
 
-## <a name="next-steps"></a><a name="next"></a>Következő lépések
+## <a name="next-steps"></a><a name="next"></a>További lépések
 
 * [Függőségek nyomon követése](../../azure-monitor/app/asp-net-dependencies.md)
 * [Kivétel követése](../../azure-monitor/app/asp-net-exceptions.md)
