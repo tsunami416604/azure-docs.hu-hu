@@ -14,10 +14,9 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 01/28/2019
 ms.openlocfilehash: 855a050afa14144f8963f24398c6b7b3939ef562
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80656468"
 ---
 # <a name="change-pricing-tier-of-an-azure-notification-hubs-namespace"></a>Azure Notification hub-névtér árképzési szintjeinek módosítása
@@ -42,7 +41,7 @@ A következő eljárás azt mutatja be, hogyan változtatható meg a névtér d�
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Válassza a **minden szolgáltatás** lehetőséget a bal oldali menüben.
-3. Válassza az **értesítési központ névterek** lehetőséget a **eszközök internetes hálózata** szakaszban. Ha a csillag (`*`) lehetőséget választja a szöveg mellett, a rendszer hozzáadja a bal oldali navigációs sávra a **Kedvencek**alatt. Ez segít a névterek oldal gyorsabb elérésében. Miután hozzáadta a KEDVENCekhez, válassza az **értesítési központ névterek**lehetőséget.
+3. Válassza az **értesítési központ névterek** lehetőséget a **eszközök internetes hálózata** szakaszban. Ha a csillag () lehetőséget választja a `*` szöveg mellett, a rendszer hozzáadja a bal oldali navigációs sávra a **Kedvencek**alatt. Ez segít a névterek oldal gyorsabb elérésében. Miután hozzáadta a KEDVENCekhez, válassza az **értesítési központ névterek**lehetőséget.
 
     ![Minden szolgáltatás – > értesítési központ névterei](./media/change-pricing-tier/all-services-nhub.png)
 

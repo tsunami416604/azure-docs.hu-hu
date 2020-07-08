@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
 ms.openlocfilehash: 0392a05df485b45b1244f4542ed55af1837dca3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79477510"
 ---
 # <a name="partition-and-sample-module"></a>Partíció és minta modul
@@ -75,7 +74,7 @@ Ez a beállítás támogatja az egyszerű véletlenszerű mintavételezést vagy
 
 1. **Mintavételezési sebesség**: adjon meg egy 0 és 1 közötti értéket. Ez az érték határozza meg a forrás adatkészletből a kimeneti adatkészletbe foglalandó sorok százalékos arányát.
 
-   Ha például csak az eredeti adatkészlet felét szeretné használni, adja meg `0.5` , hogy a mintavételezési sebesség 50% legyen.
+   Ha például csak az eredeti adatkészlet felét szeretné használni, adja meg, hogy `0.5` a mintavételezési sebesség 50% legyen.
 
    A bemeneti adatkészlet sorait a rendszer a megadott arány szerint rendezi és szelektíven helyezi el a kimeneti adatkészletben.
 

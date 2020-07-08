@@ -13,10 +13,9 @@ ms.reviewer: michmcla
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fceaa203944074b0c3fcf5cb6254f1e87ac16cba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79480980"
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Címtár-integráció az Azure MFA-kiszolgáló és az Active Directory között
@@ -35,7 +34,7 @@ Alapértelmezés szerint az Azure Multi-Factor Authentication-(MFA-) kiszolgál�
 > [!NOTE]
 > A címtár-integráció nem garantált, hogy a Active Directory tartományi szolgáltatásokon kívüli címtárakkal is működjön.
 
-| Szolgáltatás | Leírás |
+| Szolgáltatás | Description |
 | --- | --- |
 | Active Directory használata |Válassza az Active Directory használata beállítást, ha az Active Directoryt szeretné alkalmazni importáláshoz és szinkronizáláshoz.  Ez az alapértelmezett beállítás. <br>Megjegyzés: Az Active Directory-integráció megfelelő működéséhez csatlakoztatnia kell a számítógépet egy tartományhoz, és be kell jelentkeznie egy tartományfiókkal. |
 | Megbízható tartományok belefoglalása |Jelölje be a **Megbízható tartományok belefoglalása** jelölőnégyzetet, hogy az ügynök az aktuális tartomány által megbízhatónak tartott tartományokhoz, az erdőben egy másik tartományhoz vagy erdőszintű megbízhatósággal rendelkező tartományokhoz csatlakozzon.  Amikor nem a megbízható tartományokból importál vagy szinkronizál felhasználókat, törölje a jelölőnégyzet jelölését a teljesítmény növeléséhez.  Alapértelmezés szerint be van jelölve. |
@@ -45,7 +44,7 @@ Alapértelmezés szerint az Azure Multi-Factor Authentication-(MFA-) kiszolgál�
 
 A következő táblázat az LDAP-konfigurációs beállításokat ismerteti.
 
-| Szolgáltatás | Leírás |
+| Szolgáltatás | Description |
 | --- | --- |
 | Kiszolgáló |Megadhatja az LDAP-címtárat futtató kiszolgáló állomásnevét vagy IP-címét.  Tartalékkiszolgálót is megadhat pontosvesszővel elválasztva. <br>Megjegyzés: Ha a kötési típus SSL (TLS), a teljes állomásnév megadása kötelező. |
 | Alap DN |Megadhatja az alap címtárobjektum megkülönböztető nevét, ahonnan az összes címtárlekérdezés indul.  Például dc=abc,dc=com. |
@@ -76,11 +75,11 @@ Az attribútumokat manuálisan is megadhatja, és nem kell egyezniük az attrib�
 
 ![A címtár-integrációs attribútumok testreszabása az MFA-kiszolgálón](./media/howto-mfaserver-dir-ad/dirint3.png)
 
-| Szolgáltatás | Leírás |
+| Szolgáltatás | Description |
 | --- | --- |
 | Egyedi azonosító |Megadhatja a tároló-, biztonságicsoport- és felhasználórekordok egyedi azonosítójaként szolgáló attribútum nevét.  Az Active Directoryban ez általában az objectGUID. Egyéb LDAP-megvalósításokban az entryUUID vagy valami ehhez hasonló is előfordulhat.  Az alapértelmezett érték az objectGUID. |
 | Egyedi azonosító típusa |Válassza ki az egyedi azonosító attribútum típusát.  Az Active Directoryban az objectGUID attribútum típusa GUID. Egyéb LDAP-megvalósításokban az ASCII bájttömb vagy Sztring típusok is előfordulhatnak.  Az alapértelmezett érték a GUID. <br><br>Fontos, hogy ezt a típust helyesen adja meg, mivel a rendszer a szinkronizált elemekre az egyedi azonosítójuk alapján hivatkozik. Az objektumok a címtárban közvetlenül az egyedi azonosítótípusuk segítségével kereshetők meg.  Ha a típust Sztringre állítja, miközben a címtár valójában ASCII-karakterek bájttömbjeként tárolja az értéket, a szinkronizálás nem fog megfelelően működni. |
-| Megkülönböztető név |Megadhatja azon attribútum nevét, amely az egyes rekordok megkülönböztető nevét tartalmazza.  Active Directoryban ez általában a distinguishedName. Egyéb LDAP-megvalósításokban az entryDN vagy valami ehhez hasonló is előfordulhat.  Az alapértelmezett érték a distinguishedName. <br><br>Ha a csak a megkülönböztető nevet tartalmazó attribútum nem létezik, akkor a ADS Path attribútum használható.  Az elérési út „LDAP://\<server\>/” részét a rendszer automatikusan leválasztja, csak az objektum megkülönböztető nevét hagyja meg. |
+| Megkülönböztető név |Megadhatja azon attribútum nevét, amely az egyes rekordok megkülönböztető nevét tartalmazza.  Active Directoryban ez általában a distinguishedName. Egyéb LDAP-megvalósításokban az entryDN vagy valami ehhez hasonló is előfordulhat.  Az alapértelmezett érték a distinguishedName. <br><br>Ha a csak a megkülönböztető nevet tartalmazó attribútum nem létezik, akkor a ADS Path attribútum használható.  Az \<server\> elérési út "LDAP:///" részét a rendszer automatikusan levágja, így csak az objektum megkülönböztető neve marad. |
 | Tárolónév |Megadhatja azon attribútum nevét, amely a nevet egy tárolórekordban tárolja.  Az attribútum értéke megjelenik a tárolóhierarchiában az Active Directoryból való importáláskor vagy szinkronizált elemek hozzáadásakor.  Az alapértelmezett érték a name. <br><br>Ha a különböző tárolók különböző attribútumokat használnak a neveikhez, akkor az egyes tárolónév-attribútumokat pontosvesszővel válassza el.  A rendszer a tárolóobjektumokban található első tárolónév-attribútumot használja az objektumok nevének megjelenítéséhez. |
 | Biztonsági csoport neve |Megadhatja azon attribútum nevét, amely a nevet egy biztonságicsoport-rekordban tárolja.  Az attribútum értéke megjelenik a Biztonsági csoport listában az Active Directoryból való importáláskor vagy szinkronizált elemek hozzáadásakor.  Az alapértelmezett érték a name. |
 | Felhasználónév |Megadhatja azon attribútum nevét, amely a felhasználónevet egy felhasználórekordban tárolja.  A rendszer az attribútum értékét a Multi-Factor Auth-kiszolgáló felhasználóneveként használja fel.  Egy második attribútumot is megadhat tartalékként.  A második attribútumot a rendszer csak akkor használja, ha az első attribútum nem tartalmaz értéket a felhasználóhoz.  Az alapértelmezett érték a userPrincipalName és az sAMAccountName. |
@@ -88,7 +87,7 @@ Az attribútumokat manuálisan is megadhatja, és nem kell egyezniük az attrib�
 | Vezetéknév |Megadhatja azon attribútum nevét, amely a vezetéknevet egy felhasználórekordban tárolja.  Az alapértelmezett érték az sn. |
 | E-mail-cím |Megadhatja azon attribútum nevét, amely az e-mail-címet egy felhasználórekordban tárolja.  A rendszer a megadott e-mail-címre üdvözlő és tájékoztató e-maileket küld a felhasználónak.  Az alapértelmezett érték a mail. |
 | Felhasználói csoport |Megadhatja azon attribútum nevét, amely a felhasználói csoportot egy felhasználórekordban tárolja.  A felhasználói csoportokkal szűrheti a felhasználókat az ügynökben és a jelentésekben a Multi-Factor Auth-kiszolgáló felügyeleti portálján. |
-| Leírás |Megadhatja azon attribútum nevét, amely a leírást egy felhasználórekordban tárolja.  A leírás csak keresésekhez használható.  Az alapértelmezett érték a description. |
+| Description |Megadhatja azon attribútum nevét, amely a leírást egy felhasználórekordban tárolja.  A leírás csak keresésekhez használható.  Az alapértelmezett érték a description. |
 | Telefonhívás nyelve |Megadhatja azon attribútum nevét, amely a felhasználóhoz intézett hanghívásokhoz használt nyelv rövid nevét tartalmazza. |
 | Szöveges üzenetek nyelve |Megadhatja azon attribútum nevét, amely a felhasználónak küldött SMS szöveges üzenetekhez használt nyelv rövid nevét tartalmazza. |
 | Mobilalkalmazások nyelve |Megadhatja azon attribútum nevét, amely a felhasználónak küldött telefonos alkalmazásbeli szöveges üzenetekhez használt nyelv rövid nevét tartalmazza. |
@@ -121,7 +120,7 @@ Ha az LDAP-címtár támogatja a DirSync vezérlőt és ahhoz van konfigurálva,
 
 Az alábbi táblázat további információkat tartalmaz a Szinkronizálás lap egyes beállításairól.
 
-| Szolgáltatás | Leírás |
+| Szolgáltatás | Description |
 | --- | --- |
 | Active Directory-szinkronizálás engedélyezése |Ha be van jelölve, a Multi-Factor Auth-kiszolgáló szolgáltatás rendszeres időközönként lekérdezi a változásokat az Active Directoryból. <br><br>Megjegyzés: Legalább egy szinkronizált elemet hozzá kell adni és egy Szinkronizálás most műveletet végre kell hajtani, mielőtt a Multi-Factor Auth-kiszolgáló szolgáltatás elkezdené a változások feldolgozását. |
 | Szinkronizálás gyakorisága |Megadhatja azt az időtartamot, amennyit a Multi-Factor Auth-kiszolgáló szolgáltatás vár a változások lekérdezése és feldolgozása között. <br><br> Megjegyzés: A megadott időköz az egyes ciklusok kezdete között eltelt idő.  Ha a feldolgozási idő meghaladja az időközt, a szolgáltatás azonnal ismét elindítja a lekérdezést. |

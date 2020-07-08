@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: brendm
 ms.openlocfilehash: 2e29f6a75b303518ac34ecf9b570bd7638cf0c3a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79471030"
 ---
 # <a name="set-up-a-staging-environment-in-azure-spring-cloud"></a>Átmeneti környezet beállítása az Azure Spring Cloud-ban
@@ -67,10 +66,10 @@ Nyissa meg a szolgáltatási példányt a Azure Portalban, és válassza a **kö
 
 >[!TIP]
 > * Győződjön meg arról, hogy a tesztelési végpont perjel (/) karakterrel végződik, hogy a CSS-fájl megfelelően van-e betöltve.  
-> * Ha a böngésző megköveteli a bejelentkezési hitelesítő adatok megadását a lap megtekintéséhez, használja az [URL-címet](https://www.urldecoder.org/) a teszt végpont dekódolásához. Az URL-cím dekódolása egy URL-címet\<ad vissza "\<https://username>\<: password> @ cluster-Name>. test.azureapps.IO/Gateway/Green" formátumban.  Ezt az űrlapot használhatja a végpont eléréséhez.
+> * Ha a böngésző megköveteli a bejelentkezési hitelesítő adatok megadását a lap megtekintéséhez, használja az [URL-címet](https://www.urldecoder.org/) a teszt végpont dekódolásához. Az URL-cím dekódolása egy "https:// \<username> : \<password> @ \<cluster-name> . test.azureapps.IO/Gateway/Green" formátumú URL-címet ad vissza.  Ezt az űrlapot használhatja a végpont eléréséhez.
 
 >[!NOTE]    
-> A konfigurációs kiszolgáló beállításai az átmeneti környezetre és a termelésre egyaránt érvényesek. Ha például az alkalmazás-átjáró környezeti elérési útját`server.servlet.context-path`() a konfigurációs kiszolgálón a *somepath*értékre állítja, a zöld telepítés elérési útja "https://\<username>:\<password> @\<cluster-Name>. test.azureapps.IO/Gateway/Green/somepath/...".
+> A konfigurációs kiszolgáló beállításai az átmeneti környezetre és a termelésre egyaránt érvényesek. Ha például az alkalmazás-átjáró környezeti elérési útját ( `server.servlet.context-path` ) a konfigurációs kiszolgálón a *somepath*értékre állítja, a zöld telepítés elérési útja a "https:// \<username> : \<password> @ \<cluster-name> . test.azureapps.IO/Gateway/Green/somepath/..." értékre változik.
  
  Ha ezen a ponton látogatja meg a nyilvános alkalmazás-átjárót, az új módosítás nélkül látnia kell a régi oldalt.
     

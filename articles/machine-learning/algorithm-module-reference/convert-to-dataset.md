@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
 ms.openlocfilehash: fd45db779b7a828d247f09cae38f90fc20d12c16
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79456590"
 ---
 # <a name="convert-to-dataset"></a>Átalakítás adathalmazzá
@@ -46,9 +45,9 @@ Azt javasoljuk, hogy a [metaadatok szerkesztése](edit-metadata.md) modul haszn�
     - **ReplaceValues**: ezzel a beállítással egyetlen pontos értéket adhat meg, amelyet más pontos értékkel kell helyettesíteni. A hiányzó értékeket vagy egyéni értékeket a **replace** metódus beállításával helyettesítheti:
 
       - **Hiányzik**: válassza ezt a lehetőséget a hiányzó értékek lecserélése a bemeneti adatkészletben. Az **új érték**mezőben adja meg a hiányzó értékeket a értékkel lecserélő értéket.
-      - **Egyéni**: válassza ezt a lehetőséget, ha az egyéni értékeket a bemeneti adatkészletben szeretné lecserélni. **Egyéni érték**esetén adja meg a keresett értéket. Ha például az adatok a hiányzó értékek helyőrzőként `obs` használt sztringjét tartalmazzák, akkor adja meg `obs`a következőt:. Az **új érték**mezőben adja meg az új értéket az eredeti sztring helyett.
+      - **Egyéni**: válassza ezt a lehetőséget, ha az egyéni értékeket a bemeneti adatkészletben szeretné lecserélni. **Egyéni érték**esetén adja meg a keresett értéket. Ha például az adatok a `obs` hiányzó értékek helyőrzőként használt sztringjét tartalmazzák, akkor adja meg a következőt: `obs` . Az **új érték**mezőben adja meg az új értéket az eredeti sztring helyett.
   
-    Vegye figyelembe, hogy a **ReplaceValues** művelet csak a pontos egyezésekre vonatkozik. Például a következő sztringek nem lesznek érintettek: `obs.`, `obsolete`.  
+    Vegye figyelembe, hogy a **ReplaceValues** művelet csak a pontos egyezésekre vonatkozik. Például a következő sztringek nem lesznek érintettek: `obs.` , `obsolete` .  
  
   
 5.  A folyamat elküldése.  

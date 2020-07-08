@@ -13,10 +13,9 @@ ms.topic: article
 ms.date: 07/01/2019
 ms.author: juliako
 ms.openlocfilehash: 72aa0762d001c28b21d5e27ed8f6f9d099f62bfb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79499839"
 ---
 # <a name="azure-storage-accounts"></a>Azure Storage-fiókok
@@ -32,7 +31,7 @@ Javasoljuk, hogy a GPv2 használja, így kihasználhatja a legújabb funkciókat
 > [!NOTE]
 > Csak a gyors elérési szint támogatott a Azure Media Serviceshoz való használathoz, bár a többi hozzáférési réteg is használható a tárolási költségek csökkentéséhez a nem aktívan használt tartalmak esetében.
 
-Különböző SKU-ket is választhat a Storage-fiókhoz. További információ: Storage- [fiókok](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest). Ha a Storage-fiókokkal szeretne kísérletezni, `--sku Standard_LRS`használja a következőt:. Ha azonban az SKU-t éles környezetben választotta, érdemes figyelembe `--sku Standard_RAGRS`vennie, amely az üzletmenet folytonosságát biztosító földrajzi replikációt biztosít.
+Különböző SKU-ket is választhat a Storage-fiókhoz. További információ: Storage- [fiókok](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest). Ha a Storage-fiókokkal szeretne kísérletezni, használja a következőt: `--sku Standard_LRS` . Ha azonban az SKU-t éles környezetben választotta, érdemes figyelembe vennie `--sku Standard_RAGRS` , amely az üzletmenet folytonosságát biztosító földrajzi replikációt biztosít.
 
 ## <a name="assets-in-a-storage-account"></a>A Storage-fiókban lévő eszközök
 
@@ -45,7 +44,7 @@ A Media Services v3-as verziójában a Storage API-k segítségével tölthet fe
 
 Az adategységek védelméhez az eszközöket a tárolási oldal titkosításával kell titkosítani. A következő táblázat bemutatja, hogyan működik a tárolási oldal titkosítása Media Services v3-ban:
 
-|Titkosítási beállítás|Leírás|Media Services v3|
+|Titkosítási beállítás|Description|Media Services v3|
 |---|---|---|
 |Media Services Storage-titkosítás| AES-256 titkosítás, Media Services által felügyelt kulcs. |Nem támogatott. <sup>(1)</sup>|
 |[Tárolási szolgáltatás titkosítása inaktív adatok esetén](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Az Azure Storage által kínált kiszolgálóoldali titkosítás, amelyet az Azure vagy az ügyfél kezel.|Támogatott.|

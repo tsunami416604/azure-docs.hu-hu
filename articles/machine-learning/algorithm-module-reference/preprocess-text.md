@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/01/2019
 ms.openlocfilehash: 6e4d4c8f798418e090caeba091dec33c71f0458f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79477493"
 ---
 # <a name="preprocess-text"></a>Szöveg előfeldolgozása
@@ -51,7 +50,7 @@ Az **előfeldolgozó szöveges** modul jelenleg csak az angol nyelvet támogatja
 
 1. **Mondatok észlelése**: akkor válassza ezt a lehetőséget, ha azt szeretné, hogy a modul az elemzés végrehajtásakor beillesszen egy mondathoz tartozó határt.
 
-    Ez a modul három cső karakterből `|||` álló sorozatot használ a lezáró mondat megjelenítéséhez.
+    Ez a modul három cső karakterből álló sorozatot használ `|||` a lezáró mondat megjelenítéséhez.
 
 1. Az opcionális keresési és lecserélési műveleteket reguláris kifejezésekkel hajthatja végre.
 
@@ -70,18 +69,18 @@ Az **előfeldolgozó szöveges** modul jelenleg csak az angol nyelvet támogatja
     
     * **Duplikált karakterek eltávolítása**: Ha ezt a beállítást választja, akkor a több mint kétszeresére ismétlődő sorokban távolítsa el a felesleges karaktereket. Például az "AAAAA" karakterláncot az "AA" értékre kell csökkenteni.
     
-    * **E-mail-címek eltávolítása**: ezzel a beállítással távolíthatja el `<string>@<string>`a formátum tetszőleges sorszámát.  
-    * **URL-címek eltávolítása**: akkor válassza ezt a lehetőséget, ha el szeretné távolítani az alábbi URL `http`- `https`előtagokat tartalmazó sorozatot:,, `ftp`,`www`
+    * **E-mail-címek eltávolítása**: ezzel a beállítással távolíthatja el a formátum tetszőleges sorszámát `<string>@<string>` .  
+    * **URL-címek eltávolítása**: akkor válassza ezt a lehetőséget, ha el szeretné távolítani az alábbi URL-előtagokat tartalmazó sorozatot: `http` , `https` , `ftp` ,`www`
     
 1. Művelet-összevonások **kibontása**: Ez a beállítás csak olyan nyelvekre vonatkozik, amelyek művelet-összevonásokat használnak; jelenleg csak angol nyelven érhető el. 
 
     A beállítás kiválasztásával például lecserélheti a *"nem maradok"* kifejezést a *"ne*maradjon ott" kifejezésre.
 
-1. **Fordított perjelek normalizálása a perjelhez**: válassza ezt a lehetőséget, `\\` ha `/`a összes példányát le szeretné képezni.
+1. **Fordított perjelek normalizálása a perjelhez**: válassza ezt a lehetőséget, ha a összes példányát le `\\` szeretné képezni `/` .
 
-1. **Tokenek felosztása speciális karaktereknél**: akkor válassza ezt a lehetőséget, ha a szavakat olyan karaktereken `&`szeretné `-`megszüntetni, mint például, stb. Ez a beállítás a speciális karaktereket is csökkentheti, ha kétszer ismétlődik. 
+1. **Tokenek felosztása speciális karaktereknél**: akkor válassza ezt a lehetőséget, ha a szavakat olyan karaktereken szeretné megszüntetni, mint például `&` , stb `-` . Ez a beállítás a speciális karaktereket is csökkentheti, ha kétszer ismétlődik. 
 
-    A karakterlánc `MS---WORD` például három tokenre `MS` `-`, a, és `WORD`elemre lesz elválasztva.
+    A karakterlánc például három tokenre, a, és elemre `MS---WORD` lesz elválasztva `MS` `-` `WORD` .
 
 1. A folyamat elküldése.
 

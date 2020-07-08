@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 01/03/2020
 ms.openlocfilehash: 292496c4d458621213fe62105149ac845d78891e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79479586"
 ---
 # <a name="hdinsight-sdk-for-go-preview"></a>HDInsight SDK for go (előzetes verzió)
@@ -36,7 +35,7 @@ A GOPATH-helyről futtassa a következőt:`go get github.com/Azure/azure-sdk-for
 
 ## <a name="authentication"></a>Hitelesítés
 
-Az SDK-t először hitelesítenie kell az Azure-előfizetésével.  Az alábbi példát követve hozzon létre egy szolgáltatásnevet, és használja hitelesítésre. Ennek elvégzése után az a egy `ClustersClient`példánya lesz, amely számos funkciót tartalmaz (az alábbi részekben ismertetett), amelyek felügyeleti műveletek végrehajtásához használhatók.
+Az SDK-t először hitelesítenie kell az Azure-előfizetésével.  Az alábbi példát követve hozzon létre egy szolgáltatásnevet, és használja hitelesítésre. Ennek elvégzése után az a egy példánya lesz `ClustersClient` , amely számos funkciót tartalmaz (az alábbi részekben ismertetett), amelyek felügyeleti műveletek végrehajtásához használhatók.
 
 > [!NOTE]  
 > Az alábbi példán kívül más módszerekkel is elvégezheti a hitelesítést, amelyek esetleg jobban illeszkednek az igényeihez. Az összes függvényt itt találja: [a hitelesítési függvények a go nyelvhez készült Azure SDK](https://docs.microsoft.com/azure/go/azure-sdk-go-authorization)
@@ -100,7 +99,7 @@ Az egyszerű szolgáltatásnév adatai JSON-ként jelennek meg.
 }
 ```
 
-`TENANT_ID`Másolja az alábbi kódrészletet, és töltse `CLIENT_ID`ki `CLIENT_SECRET`a, `SUBSCRIPTION_ID` ,, és karakterláncokat a JSON-ből, amelyet a parancs futtatása után adott vissza az egyszerű szolgáltatásnév létrehozásához.
+Másolja az alábbi kódrészletet, és töltse ki a,,, `TENANT_ID` `CLIENT_ID` `CLIENT_SECRET` és `SUBSCRIPTION_ID` karakterláncokat a JSON-ből, amelyet a parancs futtatása után adott vissza az egyszerű szolgáltatásnév létrehozásához.
 
 ```golang
 package main
@@ -136,11 +135,11 @@ func main() {
 ## <a name="cluster-management"></a>Fürtkezelés
 
 > [!NOTE]  
-> Ez a szakasz feltételezi, hogy már hitelesítette és `ClusterClient` létrehozta a példányt, és tárolja azt `client`egy nevű változóban. A hitelesítéshez és a `ClusterClient` beszerzéséhez a fenti hitelesítési szakaszban talál útmutatást.
+> Ez a szakasz feltételezi, hogy már hitelesítette és létrehozta a `ClusterClient` példányt, és tárolja azt egy nevű változóban `client` . A hitelesítéshez és a beszerzéséhez `ClusterClient` a fenti hitelesítési szakaszban talál útmutatást.
 
 ### <a name="create-a-cluster"></a>Fürt létrehozása
 
-A meghívásával `client.Create()`új fürtöt hozhat létre. 
+A meghívásával új fürtöt hozhat létre `client.Create()` . 
 
 #### <a name="example"></a>Példa
 
@@ -263,7 +262,7 @@ client.Get(context.Background(), "<Resource Group Name>", "<Cluster Name>")
 
 #### <a name="example"></a>Példa
 
-Ezzel `get` ellenőrizheti, hogy sikeresen létrehozta-e a fürtöt.
+Ezzel ellenőrizheti `get` , hogy sikeresen létrehozta-e a fürtöt.
 
 ```golang
 cluster, err := client.Get(context.Background(), resourceGroupName, clusterName)
@@ -296,7 +295,7 @@ client.ListByResourceGroup("<Resource Group Name>")
 ```
 
 > [!NOTE]  
-> `List()` Mindkettőt `ListByResourceGroup()` és egy `ClusterListResultPage` struct-t ad vissza. A következő oldal beszerzéséhez hívhatja `Next()`a következőt:. Ez csak `ClusterListResultPage.NotDone()` akkor ismételhető meg, `false`ha a visszaadja az alábbi példában látható módon.
+> Mindkettőt `List()` és `ListByResourceGroup()` egy struct-t ad vissza `ClusterListResultPage` . A következő oldal beszerzéséhez hívhatja a következőt: `Next()` . Ez csak akkor ismételhető `ClusterListResultPage.NotDone()` `false` meg, ha a visszaadja az alábbi példában látható módon.
 
 #### <a name="example"></a>Példa
 
@@ -352,7 +351,7 @@ client.Resize(context.Background(), "<Resource Group Name>", "<Cluster Name>", h
 
 A HDInsight Management SDK a fürtök figyelésének kezelésére is használható az Operations Management Suite (OMS) használatával.
 
-Hasonlóan ahhoz, ahogy a `ClusterClient` felügyeleti műveletekhez létrehozott, létre kell hoznia egy `ExtensionClient` , a figyelési műveletekhez használni kívánt műveletet. A fenti hitelesítési szakasz befejezése után a következőhöz `ExtensionClient` hasonló módon hozhat létre:
+Hasonlóan ahhoz, ahogy a `ClusterClient` felügyeleti műveletekhez létrehozott, létre kell hoznia egy, a `ExtensionClient` figyelési műveletekhez használni kívánt műveletet. A fenti hitelesítési szakasz befejezése után a következőhöz hasonló módon hozhat létre `ExtensionClient` :
 
 ```golang
 extClient := hdi.NewExtensionsClient(SUBSCRIPTION_ID)
@@ -360,7 +359,7 @@ extClient.Authorizer, _ = credentials.Authorizer()
 ```
 
 > [!NOTE]  
-> Az alábbi figyelési példák feltételezik, hogy már `ExtensionClient` inicializálta `extClient` a nevűt `Authorizer` , és beállította a fentebb látható módon.
+> Az alábbi figyelési példák feltételezik, hogy már inicializálta a `ExtensionClient` nevűt `extClient` , és beállította a `Authorizer` fentebb látható módon.
 
 ### <a name="enable-oms-monitoring"></a>OMS-figyelés engedélyezése
 
@@ -405,7 +404,7 @@ var scriptAction1 = hdi.RuntimeScriptAction{Name: to.StringPtr("<Script Name>"),
 client.ExecuteScriptActions(context.Background(), "<Resource Group Name>", "<Cluster Name>", hdi.ExecuteScriptActionParameters{PersistOnSuccess: to.BoolPtr(true), ScriptActions: &[]hdi.RuntimeScriptAction{scriptAction1}}) //add more RuntimeScriptActions to the list to execute multiple scripts
 ```
 
-A "parancsfájl törlése művelet" és a "megőrzött parancsfájl-műveletek listázása" művelet esetén létre kell hoznia egy `ScriptActionsClient`, a felügyeleti műveletekhez való használathoz hasonlóan. `ClusterClient` Miután elvégezte a fenti hitelesítési szakaszt, a `ScriptActionsClient` következőhöz hasonló módon hozhat létre:
+A "parancsfájl törlése művelet" és a "megőrzött parancsfájl-műveletek listázása" művelet esetén létre kell hoznia egy `ScriptActionsClient` , a `ClusterClient` felügyeleti műveletekhez való használathoz hasonlóan. Miután elvégezte a fenti hitelesítési szakaszt, a következőhöz hasonló módon hozhat létre `ScriptActionsClient` :
 
 ```golang
 scriptActionsClient := hdi.NewScriptActionsClient(SUBSCRIPTION_ID)
@@ -413,7 +412,7 @@ scriptActionsClient.Authorizer, _ = credentials.Authorizer()
 ```
 
 > [!NOTE]  
-> Az alábbi parancsfájl-műveletek feltételezik, hogy már inicializálta `ScriptActionsClient` a `scriptActionsClient` hívott nevet, `Authorizer` és beállította a fentebb látható módon.
+> Az alábbi parancsfájl-műveletek feltételezik, hogy már inicializálta a hívott nevet, `ScriptActionsClient` `scriptActionsClient` és beállította a `Authorizer` fentebb látható módon.
 
 ### <a name="delete-script-action"></a>Parancsfájl-művelet törlése
 
@@ -426,7 +425,7 @@ scriptActionsClient.Delete(context.Background(), "<Resource Group Name>", "<Clus
 ### <a name="list-persisted-script-actions"></a>Megőrzött parancsfájl-műveletek listázása
 
 > [!NOTE]  
-> Mindkettő `ListByCluster()` egy `ScriptActionsListPage` struct-t ad vissza. A következő oldal beszerzéséhez hívhatja `Next()`a következőt:. Ez csak `ClusterListResultPage.NotDone()` akkor ismételhető meg, `false`ha a visszaadja az alábbi példában látható módon.
+> Mindkettő `ListByCluster()` egy struct-t ad vissza `ScriptActionsListPage` . A következő oldal beszerzéséhez hívhatja a következőt: `Next()` . Ez csak akkor ismételhető `ClusterListResultPage.NotDone()` `false` meg, ha a visszaadja az alábbi példában látható módon.
 
 A megadott fürt összes megőrzött parancsfájl-műveletének listázása:
 ```golang
@@ -453,7 +452,7 @@ for (page.NotDone()) {
 
 ### <a name="list-all-scripts-execution-history"></a>Az összes parancsfájl végrehajtási előzményeinek listázása
 
-Ehhez a művelethez létre kell hoznia egy `ScriptExecutionHistoryClient`-t, hasonlóan ahhoz, `ClusterClient` ahogyan a a felügyeleti műveletekhez való használatra készült. Miután elvégezte a fenti hitelesítési szakaszt, a `ScriptActionsClient` következőhöz hasonló módon hozhat létre:
+Ehhez a művelethez létre kell hoznia egy `ScriptExecutionHistoryClient` -t, hasonlóan ahhoz, ahogyan a `ClusterClient` a felügyeleti műveletekhez való használatra készült. Miután elvégezte a fenti hitelesítési szakaszt, a következőhöz hasonló módon hozhat létre `ScriptActionsClient` :
 
 ```golang
 scriptExecutionHistoryClient := hdi.NewScriptExecutionHistoryClient(SUBSCRIPTION_ID)
@@ -461,7 +460,7 @@ scriptExecutionHistoryClient.Authorizer, _ = credentials.Authorizer()
 ```
 
 > [!NOTE]  
-> Az alábbi feltételezések azt feltételezik, hogy már `ScriptExecutionHistoryClient` inicializálta a hívását `scriptExecutionHistoryClient` , és a fentebb látható `Authorizer` módon beállította azt.
+> Az alábbi feltételezések azt feltételezik, hogy már inicializálta a `ScriptExecutionHistoryClient` hívását `scriptExecutionHistoryClient` , és a `Authorizer` fentebb látható módon beállította azt.
 
 A megadott fürt összes parancsfájl-végrehajtási előzményeinek listázása:
 

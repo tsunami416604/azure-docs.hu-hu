@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 02/28/2020
 ms.openlocfilehash: f7dc7b520cba2bbf2351d93795a1a26b3b5124be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79471353"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Mi a Apache Hive és a HiveQL az Azure HDInsight?
@@ -23,7 +22,7 @@ A struktúra lehetővé teszi a nagy strukturálatlan adatmennyiségek struktúr
 
 A HDInsight többféle típusú fürtöt biztosít, amelyek meghatározott számítási feladatokhoz vannak hangolva. A következő típusú fürtök leggyakrabban a kaptár-lekérdezésekhez használatosak:
 
-|Fürt típusa |Leírás|
+|Fürt típusa |Description|
 |---|---|
 |Interaktív lekérdezés|Hadoop-fürt, amely [kis késleltetésű analitikai feldolgozási (LLAP)](https://cwiki.apache.org/confluence/display/Hive/LLAP) funkciókat biztosít az interaktív lekérdezések válaszideje érdekében. További információ: az [interaktív lekérdezés elindítása a HDInsight](../interactive-query/apache-interactive-query-get-started.md) dokumentumban.|
 |Hadoop|Hadoop-fürt, amely a kötegelt feldolgozási feladatokhoz van beállítva. További információ: [Start with apache Hadoop in HDInsight](../hadoop/apache-hadoop-linux-tutorial-get-started.md) Document.|
@@ -66,13 +65,13 @@ STORED AS TEXTFILE LOCATION '/example/data/';
 
 A kaptár az egyéni **szerializáló/deszerializáló (SerDe)** használatát is támogatja összetett vagy szabálytalanul strukturált adatként. További információ: [Egyéni JSON-SerDe használata HDInsight](https://web.archive.org/web/20190217104719/https://blogs.msdn.microsoft.com/bigdatasupport/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight/) -dokumentummal.
 
-A kaptár által támogatott fájlformátumokkal kapcsolatos további információkért tekintse meg a [nyelvi kézikönyvet (https://cwiki.apache.org/confluence/display/Hive/LanguageManual) ](https://cwiki.apache.org/confluence/display/Hive/LanguageManual)
+A kaptár által támogatott fájlformátumokkal kapcsolatos további információkért tekintse meg a [nyelvi kézikönyvet ( https://cwiki.apache.org/confluence/display/Hive/LanguageManual) ](https://cwiki.apache.org/confluence/display/Hive/LanguageManual)
 
 ### <a name="hive-internal-tables-vs-external-tables"></a>Belső táblák és külső táblák struktúrája
 
 A struktúra két típusú táblát hozhat létre:
 
-* __Belső__: a rendszer a struktúra adattárházában tárolja az adattárolási adatraktárat. Az adatraktár a fürt alapértelmezett `/hive/warehouse/` tárolójában található.
+* __Belső__: a rendszer a struktúra adattárházában tárolja az adattárolási adatraktárat. Az adatraktár a `/hive/warehouse/` fürt alapértelmezett tárolójában található.
 
     Belső táblák használata, ha a következő feltételek valamelyike teljesül:
 
@@ -106,7 +105,7 @@ A struktúra a **felhasználó által definiált függvények (UDF)** használat
 
 ## <a name="example-data"></a>Példaadatok
 
-A kaptár on HDInsight előre be van töltve egy nevű `hivesampletable`belső táblával. A HDInsight olyan adatkészleteket is biztosít, amelyek a kaptár használatával használhatók. Ezeket az adatkészleteket a és `/example/data` `/HdiSamples` a címtárakban tárolja a rendszer. Ezek a könyvtárak a fürt alapértelmezett tárolójában találhatók.
+A kaptár on HDInsight előre be van töltve egy nevű belső táblával `hivesampletable` . A HDInsight olyan adatkészleteket is biztosít, amelyek a kaptár használatával használhatók. Ezeket az adatkészleteket a `/example/data` és a `/HdiSamples` címtárakban tárolja a rendszer. Ezek a könyvtárak a fürt alapértelmezett tárolójában találhatók.
 
 ## <a name="example-hive-query"></a>Példa a kaptár lekérdezésére
 
@@ -131,12 +130,12 @@ SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs
 
 Az előző példában a HiveQL utasítások a következő műveleteket hajtják végre:
 
-|Nyilatkozat |Leírás |
+|Nyilatkozat |Description |
 |---|---|
 |TÁBLÁZAT ELDOBÁSA|Ha a tábla már létezik, törölje.|
 |KÜLSŐ TÁBLA LÉTREHOZÁSA|Létrehoz egy új **külső** táblát a kaptárban. A külső táblák csak a struktúra tábla definícióját tárolják. Az adatmező az eredeti helyen és az eredeti formátumban marad.|
 |SOR FORMÁTUMA|Azt jelzi, hogyan történik az adat formázása. Ebben az esetben az egyes naplók mezői szóközzel vannak elválasztva.|
-|TEXTFILE HELYEN TÁROLVA|Azt jelzi, hogy a struktúra hol tárolja az `example/data` adattárolást (a könyvtárat), és hogy a szövegként van tárolva. Az adatfájlok egy fájlban lehetnek, vagy a címtárban található több fájl között is elterjedhetnek.|
+|TEXTFILE HELYEN TÁROLVA|Azt jelzi, hogy a struktúra hol tárolja az adattárolást (a `example/data` könyvtárat), és hogy a szövegként van tárolva. Az adatfájlok egy fájlban lehetnek, vagy a címtárban található több fájl között is elterjedhetnek.|
 |SELECT|Kiválasztja az összes olyan sor számát, ahol a **T4** oszlop tartalmazza a **[hiba]** értéket. Ez az utasítás **3** értéket ad vissza, mert három sor tartalmazza ezt az értéket.|
 |INPUT__FILE__NAME például: "%. log"|A struktúra megpróbálja alkalmazni a sémát a címtárban található összes fájlra. Ebben az esetben a könyvtár olyan fájlokat tartalmaz, amelyek nem egyeznek a sémával. Ha meg szeretné akadályozni, hogy az eredmények ne kerüljenek az adatokba, ez az utasítás azt ismerteti, hogy a kaptár csak a. log fájlban végződő fájlokból tér vissza.|
 
@@ -164,7 +163,7 @@ SELECT t1, t2, t3, t4, t5, t6, t7
 
 Ezek az utasítások a következő műveleteket hajtják végre:
 
-|Nyilatkozat |Leírás |
+|Nyilatkozat |Description |
 |---|---|
 |CREATE TABLE, HA NEM LÉTEZIK|Ha a tábla nem létezik, hozza létre. Mivel a **külső** kulcsszó nincs használatban, az utasítás belső táblát hoz létre. A rendszer a struktúra adattárházában tárolja a táblázatot, és a struktúra teljes mértékben kezeli.|
 |ORK-KÉNT TÁROLVA|Az adatok az optimalizált sorok oszlopos (ORK) formátumban vannak tárolva. Az ork kiválóan optimalizált és hatékony formátum a kaptárak adatok tárolására.|

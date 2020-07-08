@@ -8,13 +8,12 @@ ms.topic: conceptual
 ms.date: 12/15/2019
 tags: connectors
 ms.openlocfilehash: 5b61b51e79c71736e18aaa63ab032c05c512c8d7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80656336"
 ---
-# <a name="create-monitor-and-manage-ftp-files-by-using-azure-logic-apps"></a>FTP-fájlok létrehozása, figyelése és kezelése Azure Logic Apps használatával
+# <a name="create-monitor-and-manage-ftp-files-by-using-azure-logic-apps"></a>FTP-fájlok létrehozása, monitorozása és kezelése az Azure Logic Appsszel
 
 A Azure Logic Apps és az FTP-összekötővel olyan automatizált feladatokat és munkafolyamatokat hozhat létre, amelyek fájlok létrehozására, figyelésére, küldésére és fogadására használhatók a fiókjában egy FTP-kiszolgálón, más műveletekkel együtt, például:
 
@@ -45,8 +44,8 @@ Az FTP-eseményindítók az FTP fájlrendszer lekérdezésével és a legutóbbi
 
 | SFTP-ügyfél | Műveletek |
 |-------------|--------|
-| WinSCP | Ugrás a **Beállítások** > **Beállítások** > **átvitel** > **Edit**szerkesztési > **megőrzési időbélyegének** > **letiltása** |
-| Filezillát | Ugrás az **Transfer** >  > **átvitt fájlok adatmegőrzési időbélyegére –****Letiltás** |
+| WinSCP | Ugrás a **Beállítások**  >  **Beállítások**  >  **átvitel**  >  **szerkesztési**  >  **megőrzési időbélyegének**  >  **letiltása** |
+| Filezillát | Ugrás az **Transfer**  >  **átvitt fájlok adatmegőrzési időbélyegére –**  >  **Letiltás** |
 |||
 
 Ha egy trigger új fájlt talál, az trigger ellenőrzi, hogy az új fájl elkészült-e, és nem részlegesen van-e írva. Előfordulhat például, hogy egy fájl változása folyamatban van, amikor az trigger ellenőrzi a fájlkiszolgálón. Egy részlegesen megírt fájl visszaadásának elkerüléséhez az trigger megállapítja a legutóbbi módosításokat tartalmazó fájl időbélyegét, de nem adja vissza azonnal a fájlt. Az trigger csak akkor adja vissza a fájlt, ha újra kérdezi le a kiszolgálót. Előfordulhat, hogy ez a viselkedés egy késleltetést okoz, amely akár kétszer is meghaladhatja az aktiválás lekérdezési időközét.
@@ -69,13 +68,13 @@ Ha egy trigger új fájlt talál, az trigger ellenőrzi, hogy az új fájl elké
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és nyissa meg a logikai alkalmazást a Logic app Designerben.
 
-1. Üres logikai alkalmazások esetén a keresőmezőbe írja be `ftp` a szűrőt. Az **Eseményindítók** listából válassza ki a kívánt eseményindítót.
+1. Üres logikai alkalmazások esetén a keresőmezőbe írja be a `ftp` szűrőt. Az **Eseményindítók** listából válassza ki a kívánt eseményindítót.
 
-   – vagy –
+   -vagy-
 
    Meglévő logikai alkalmazások esetében az utolsó lépésben, amelyhez műveletet szeretne hozzáadni, válassza az **új lépés**, majd a **művelet hozzáadása**lehetőséget. A keresőmezőbe írja be `ftp` szűrőként a kifejezést. A **műveletek** listából válassza ki a kívánt műveletet.
 
-   A lépések közötti művelet hozzáadásához vigye a mutatót a lépések közötti nyíl fölé. Válassza ki a megjelenő pluszjelet (**+**), majd válassza a **művelet hozzáadása**lehetőséget.
+   A lépések közötti művelet hozzáadásához vigye a mutatót a lépések közötti nyíl fölé. Válassza ki a **+** megjelenő pluszjelet (), majd válassza a **művelet hozzáadása**lehetőséget.
 
 1. Adja meg a kapcsolatok adatait, és válassza a **Létrehozás**lehetőséget.
 
@@ -95,7 +94,7 @@ Ezzel a triggerrel például megfigyelheti az új, az ügyfelek rendeléseit le�
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és nyissa meg a logikai alkalmazást a Logic app Designerben, ha már nincs megnyitva.
 
-1. Üres logikai alkalmazások esetén a keresőmezőbe írja be `ftp` a szűrőt. Az eseményindítók listájában válassza ki ezt az eseményindítót: **Ha egy iktatott vagy módosított (csak tulajdonságok)**
+1. Üres logikai alkalmazások esetén a keresőmezőbe írja be a `ftp` szűrőt. Az eseményindítók listájában válassza ki ezt az eseményindítót: **Ha egy iktatott vagy módosított (csak tulajdonságok)**
 
    ![FTP-trigger keresése és kiválasztása](./media/connectors-create-api-ftp/select-ftp-trigger-logic-app.png)
 
@@ -105,7 +104,7 @@ Ezzel a triggerrel például megfigyelheti az új, az ügyfelek rendeléseit le�
 
    ![FTP-kiszolgálóhoz való kapcsolódás létrehozása](./media/connectors-create-api-ftp/create-ftp-connection-trigger.png)
 
-1. A **mappa** mezőben válassza a mappa ikont, hogy megjelenjen a lista. Az új vagy szerkesztett fájlokhoz figyelni kívánt mappa megkereséséhez válassza a derékszög nyilat (**>**), tallózással keresse meg a mappát, majd válassza ki a mappát.
+1. A **mappa** mezőben válassza a mappa ikont, hogy megjelenjen a lista. Az új vagy szerkesztett fájlokhoz figyelni kívánt mappa megkereséséhez válassza a derékszög nyilat ( **>** ), tallózással keresse meg a mappát, majd válassza ki a mappát.
 
    ![A figyelni kívánt mappa megkeresése és kiválasztása](./media/connectors-create-api-ftp/select-folder-ftp-trigger.png)
 

@@ -13,13 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/05/2018
 ms.openlocfilehash: cffa5677c5531f3887639c049998523d7d07586a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79455562"
 ---
-# <a name="check-resource-usage-against-limits"></a>Az erőforrás-használat korlátainak keresése
+# <a name="check-resource-usage-against-limits"></a>Erőforrás-használat összevetése a korlátokkal
 
 Ebből a cikkből megtudhatja, hogyan tekintheti meg az előfizetésében üzembe helyezett egyes hálózati erőforrástípusok számát, valamint az [előfizetési korlátokat](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fnetworking%2ftoc.json#networking-limits) . Az erőforrás-használat korlátainak megtekintésére való képesség hasznos lehet az aktuális használat nyomon követéséhez és a jövőbeli használat megtervezéséhez. A használat nyomon követéséhez használhatja az [Azure Portalt](#azure-portal), a [PowerShellt](#powershell)vagy az [Azure CLI](#azure-cli) -t.
 
@@ -46,7 +45,7 @@ Ebből a cikkből megtudhatja, hogyan tekintheti meg az előfizetésében üzemb
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Az alábbi parancsokat futtathatja a [Azure Cloud Shell](https://shell.azure.com/powershell), vagy futtathatja a PowerShellt a számítógépről. A Azure Cloud Shell egy ingyenes interaktív rendszerhéj. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Ha a PowerShellt a számítógépről futtatja, szüksége lesz a Azure PowerShell modulra, a 1.0.0 vagy újabb verzióra. Futtassa `Get-Module -ListAvailable Az` a parancsot a számítógépen, és keresse meg a telepített verziót. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor is futtatnia `Login-AzAccount` kell az Azure-ba való bejelentkezéshez.
+Az alábbi parancsokat futtathatja a [Azure Cloud Shell](https://shell.azure.com/powershell), vagy futtathatja a PowerShellt a számítógépről. A Azure Cloud Shell egy ingyenes interaktív rendszerhéj. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Ha a PowerShellt a számítógépről futtatja, szüksége lesz a Azure PowerShell modulra, a 1.0.0 vagy újabb verzióra. Futtassa a parancsot a `Get-Module -ListAvailable Az` számítógépen, és keresse meg a telepített verziót. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor is futtatnia kell az Azure-ba való `Login-AzAccount` bejelentkezéshez.
 
 A [Get-AzNetworkUsage](https://docs.microsoft.com/powershell/module/az.network/get-aznetworkusage)használatával megtekintheti a korlátozásokat. A következő példa beolvassa azokat az erőforrásokat, amelyekben legalább egy erőforrás üzembe van helyezve az USA keleti régiójában:
 
@@ -71,7 +70,7 @@ Network Watchers                   1     1
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Ha az Azure parancssori felület (CLI) parancsait használja a jelen cikkben található feladatok elvégzéséhez, futtassa a [Azure Cloud Shell](https://shell.azure.com/bash)parancsait, vagy a CLI-t a számítógépről futtatva. Ehhez a cikkhez az Azure CLI 2.0.32 vagy újabb verziójára van szükség. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket. Ha helyileg futtatja az Azure CLI-t, az Azure-ba `az login` való bejelentkezéshez is futnia kell.
+Ha az Azure parancssori felület (CLI) parancsait használja a jelen cikkben található feladatok elvégzéséhez, futtassa a [Azure Cloud Shell](https://shell.azure.com/bash)parancsait, vagy a CLI-t a számítógépről futtatva. Ehhez a cikkhez az Azure CLI 2.0.32 vagy újabb verziójára van szükség. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket. Ha helyileg futtatja az Azure CLI-t, az Azure-ba való bejelentkezéshez is futnia kell `az login` .
 
 Az az [Network List-](/cli/azure/network?view=azure-cli-latest#az-network-list-usages)relimits használatával megtekintheti a korlátozásokat. Az alábbi példa az USA keleti régiójában található erőforrások használatát kéri le:
 

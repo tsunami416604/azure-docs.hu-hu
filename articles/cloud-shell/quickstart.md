@@ -11,10 +11,9 @@ ms.topic: article
 ms.date: 03/12/2018
 ms.author: damaerte
 ms.openlocfilehash: 58d795a5aee79e4149864a79a923ce34950b31d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79458069"
 ---
 # <a name="quickstart-for-bash-in-azure-cloud-shell"></a>A bash gyors üzembe helyezése Azure Cloud Shell
@@ -35,7 +34,7 @@ Ez a dokumentum részletesen ismerteti, hogyan használható a bash a [Azure Por
 > A rendszer minden munkamenetben automatikusan hitelesíti az Azure CLI-t.
 
 ### <a name="select-the-bash-environment"></a>Bash-környezet kiválasztása
-Győződjön meg arról, hogy a környezet legördülő menüje a rendszerhéj ablakának bal oldali `Bash`részén látható. <br>
+Győződjön meg arról, hogy a környezet legördülő menüje a rendszerhéj ablakának bal oldali részén látható `Bash` . <br>
 ![](media/quickstart/env-selector.png)
 
 ### <a name="set-your-subscription"></a>Előfizetés beállítása
@@ -50,7 +49,7 @@ az account set --subscription 'my-subscription-name'
 ```
 
 > [!TIP]
-> Az előfizetést a későbbi munkamenetek esetén is `/home/<user>/.azure/azureProfile.json`megjegyezjük.
+> Az előfizetést a későbbi munkamenetek esetén is megjegyezjük `/home/<user>/.azure/azureProfile.json` .
 
 ### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 Hozzon létre egy új erőforráscsoportot a "MyRG" nevű WestUS.
@@ -66,16 +65,16 @@ az vm create -n myVM -g MyRG --image UbuntuLTS --generate-ssh-keys
 ```
 
 > [!NOTE]
-> A `--generate-ssh-keys` használata arra utasítja az Azure CLI-t, hogy nyilvános és titkos kulcsokat hozzon `$Home` létre és ÁLLÍTSON be a virtuális gépen és a címtárban. Alapértelmezés szerint a kulcsok a `/home/<user>/.ssh/id_rsa` és `/home/<user>/.ssh/id_rsa.pub`a Cloud Shell kerülnek. A `.ssh` mappát a rendszer a csatolt fájlmegosztás 5 GB-os rendszerképében őrzi meg `$Home`.
+> A használata `--generate-ssh-keys` arra utasítja az Azure CLI-t, hogy nyilvános és titkos kulcsokat hozzon létre és állítson be a virtuális gépen és a `$Home` címtárban. Alapértelmezés szerint a kulcsok a és a Cloud Shell `/home/<user>/.ssh/id_rsa` kerülnek `/home/<user>/.ssh/id_rsa.pub` . A `.ssh` mappát a rendszer a csatolt fájlmegosztás 5 GB-os rendszerképében őrzi meg `$Home` .
 
-A virtuális gépen lévő felhasználóneve a Cloud Shell ($User@Azure:) által használt Felhasználónév.
+A virtuális gépen lévő felhasználóneve a Cloud Shell ($) által használt Felhasználónév User@Azure: .
 
 ### <a name="ssh-into-your-linux-vm"></a>SSH-t a linuxos virtuális gépre
 1. Keresse meg a virtuális gép nevét a Azure Portal keresési sávjában.
 2. Kattintson a "kapcsolódás" gombra a virtuális gép nevének és nyilvános IP-címének lekéréséhez. <br>
    ![](media/quickstart/sshcmd-copy.png)
 
-3. SSH-t a virtuális gépre `ssh` a cmd fájllal.
+3. SSH-t a virtuális gépre a `ssh` cmd fájllal.
    ```
    ssh username@ipaddress
    ```

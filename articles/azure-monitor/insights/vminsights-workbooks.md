@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
 ms.openlocfilehash: a6ab126c3a5b0d2a82b17fac42dcc9e20f6aba3f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79480453"
 ---
 # <a name="create-interactive-reports-azure-monitor-for-vms-with-workbooks"></a>Interaktív jelentések létrehozása (Azure Monitor virtuális gépekhez) munkafüzetek használatával
@@ -26,7 +25,7 @@ A munkafüzetek hasznosak a következő forgatókönyvekhez:
 
 A következő táblázat összefoglalja azokat a munkafüzeteket, amelyeket a Azure Monitor for VMs tartalmaz a kezdéshez.
 
-| Munkafüzet | Leírás | Hatókör |
+| Munkafüzet | Description | Hatókör |
 |----------|-------------|-------|
 | Teljesítmény | A Top N List és Diagrams nézet testreszabható verzióját jeleníti meg egyetlen munkafüzetben, amely az összes engedélyezett Log Analytics teljesítményszámlálókat kihasználja.| Skálán |
 | Teljesítményszámlálók | Felső N diagramos nézet a teljesítményszámlálók széles készletében. | Skálán |
@@ -100,7 +99,7 @@ Adatok befoglalása más Log Analytics munkaterületekről vagy egy adott Applic
 
 ### <a name="advanced-analytic-query-settings"></a>Speciális analitikus lekérdezési beállítások
 
-Mindegyik szakasz saját speciális beállításokat tartalmaz, amelyek a **Paraméterek hozzáadása** gomb jobb oldalán ![található beállítások munkafüzetek szakasz szerkesztési](media/vminsights-workbooks/006-settings.png) vezérlők ikonján keresztül érhetők el.
+Mindegyik szakasz saját speciális beállításokat tartalmaz, amelyek a ![ ](media/vminsights-workbooks/006-settings.png) **Paraméterek hozzáadása** gomb jobb oldalán található beállítások munkafüzetek szakasz szerkesztési vezérlők ikonján keresztül érhetők el.
 
 ![Azure Monitor for VMs munkafüzetek szakasz szerkesztési vezérlői](media/vminsights-workbooks/007-settings-expanded.png)
 
@@ -147,7 +146,7 @@ Itt látható egy példa arra, hogy a virtuális gép adatai egy munkafüzetbe k
 
 A munkafüzet-paraméterek lehetővé teszik az értékek módosítását a munkafüzetben anélkül, hogy manuálisan kellene szerkeszteni a lekérdezési vagy szöveges szakaszt. Ez megszünteti az alapul szolgáló analitikai lekérdezési nyelv megismerésének követelményét, és nagy mértékben kiterjeszti a munkafüzet-alapú jelentéskészítés lehetséges célközönségét.
 
-A paraméterek értékei a lekérdezés, a szöveg vagy más paraméterek részekben vannak lecserélve, ha a paraméter nevét kapcsos zárójelben adja ``{parameterName}``meg, például:. A paraméterek nevei a hasonló szabályokra korlátozódnak JavaScript-azonosítóként, alfabetikus karakterként vagy aláhúzásként, amelyet alfanumerikus karakterek vagy aláhúzások követnek. Az **a1** például engedélyezve van, de az **1a** nem engedélyezett.
+A paraméterek értékei a lekérdezés, a szöveg vagy más paraméterek részekben vannak lecserélve, ha a paraméter nevét kapcsos zárójelben adja meg, például: ``{parameterName}`` . A paraméterek nevei a hasonló szabályokra korlátozódnak JavaScript-azonosítóként, alfabetikus karakterként vagy aláhúzásként, amelyet alfanumerikus karakterek vagy aláhúzások követnek. Az **a1** például engedélyezve van, de az **1a** nem engedélyezett.
 
 A paraméterek lineárisak, a munkafüzetek elejétől kezdve, és a későbbi lépésekig áramlanak.  A munkafüzet későbbi részében deklarált paraméterek felülbírálják a korábban bejelentett paramétereket. Ez azt is lehetővé teszi, hogy a lekérdezéseket használó paraméterek hozzáférjenek a korábban definiált paraméterek értékeihez. A paraméter lépésein belül a paraméterek is lineárisak, balról jobbra, ahol a jobb oldali paraméterek az adott lépésben korábban bejelentett paraméterektől függően változhatnak.
  

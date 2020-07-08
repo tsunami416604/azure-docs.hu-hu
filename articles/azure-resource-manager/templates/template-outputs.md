@@ -4,10 +4,9 @@ description: Ismerteti, hogyan lehet kimeneti értékeket definiálni egy Azure 
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.openlocfilehash: 203bfc66e9515ef14a5fe1315ef5b9ee07075041
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79460024"
 ---
 # <a name="outputs-in-azure-resource-manager-template"></a>Kimenetek Azure Resource Manager sablonban
@@ -79,7 +78,7 @@ Az alábbi példa bemutatja, hogyan állíthatja be az IP-címet egy terhelésel
 }
 ```
 
-[Beágyazott sablon](linked-templates.md#nested-template)kimenetek `reference` szakaszában nem használhatja a függvényt. Egy beágyazott sablonban lévő üzembe helyezett erőforrás értékeinek visszaküldéséhez alakítsa át a beágyazott sablont egy csatolt sablonba.
+`reference` [Beágyazott sablon](linked-templates.md#nested-template)kimenetek szakaszában nem használhatja a függvényt. Egy beágyazott sablonban lévő üzembe helyezett erőforrás értékeinek visszaküldéséhez alakítsa át a beágyazott sablont egy csatolt sablonba.
 
 ## <a name="get-output-values"></a>Kimeneti értékek beolvasása
 
@@ -110,7 +109,7 @@ az deployment group show \
 
 Az alábbi példák a kimenetek használatának forgatókönyveit mutatják be.
 
-|Sablon  |Leírás  |
+|Sablon  |Description  |
 |---------|---------|
 |[Változók másolása](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | Összetett változókat hoz létre, és megjeleníti ezeket az értékeket. Nem helyez üzembe semmilyen erőforrást. |
 |[Nyilvános IP-cím](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) | Létrehoz egy nyilvános IP-címet, és kiírja az erőforrás-azonosítót. |

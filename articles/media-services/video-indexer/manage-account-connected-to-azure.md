@@ -11,10 +11,9 @@ ms.topic: article
 ms.date: 12/16/2019
 ms.author: juliako
 ms.openlocfilehash: 5b9ec1c04dd90af9d9380a1f4d30386c8f9cc3ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79499668"
 ---
 # <a name="manage-a-video-indexer-account-connected-to-azure"></a>Az Azure-hoz csatlakoztatott Video Indexer-fiók kezelése
@@ -54,12 +53,12 @@ Ha a fióknak valamilyen módosításra van szüksége, a **Beállítások** lap
 
 A [video Indexer](https://www.videoindexer.ai/) lap **kapcsolatok frissítése Azure Media Services** párbeszédpanelén a rendszer megkéri, hogy adja meg a következő beállítások értékeit:
 
-|Beállítás|Leírás|
+|Beállítás|Description|
 |---|---|
 |Azure-előfizetés azonosítója|Az előfizetés-azonosító a Azure Portalból kérhető le. A bal oldali panelen kattintson a **minden szolgáltatás** elemre, és keressen rá az "előfizetések" kifejezésre. Válassza az **előfizetések** lehetőséget, majd válassza ki a kívánt azonosítót az előfizetések listájából.|
 |Azure Media Services erőforráscsoport neve|Azon erőforráscsoport neve, amelyben létrehozta a Media Services fiókot.|
-|Alkalmazásazonosító|Az ehhez a Video Indexer-fiókhoz létrehozott Azure AD-alkalmazás azonosítója (a megadott Media Services fiókhoz tartozó engedélyekkel). <br/><br/>Az alkalmazás AZONOSÍTÓjának beszerzéséhez navigáljon Azure Portal. A Media Services fiók alatt válassza ki a fiókját, és lépjen az **API-hozzáférés**elemre. Válassza a **Kapcsolódás az Media Services API-hoz az egyszerű** -> szolgáltatásnév**Azure ad alkalmazás**lehetőséget. Másolja ki a megfelelő paramétereket.|
-|Alkalmazás kulcsa|A fent megadott Media Services-fiókhoz társított Azure AD-alkalmazás kulcsa. <br/><br/>Az alkalmazás kulcsának beszerzéséhez navigáljon Azure Portal. A Media Services fiók alatt válassza ki a fiókját, és lépjen az **API-hozzáférés**elemre. Válassza **a Kapcsolódás az Media Services API-hoz lehetőséget az** -> **alkalmazás** -> -**tanúsítványok & titkok**kezelése szolgáltatással. Másolja ki a megfelelő paramétereket.|
+|Alkalmazásazonosító|Az ehhez a Video Indexer-fiókhoz létrehozott Azure AD-alkalmazás azonosítója (a megadott Media Services fiókhoz tartozó engedélyekkel). <br/><br/>Az alkalmazás AZONOSÍTÓjának beszerzéséhez navigáljon Azure Portal. A Media Services fiók alatt válassza ki a fiókját, és lépjen az **API-hozzáférés**elemre. Válassza a **Kapcsolódás az Media Services API-hoz az egyszerű szolgáltatásnév**  ->  **Azure ad alkalmazás**lehetőséget. Másolja ki a megfelelő paramétereket.|
+|Alkalmazás kulcsa|A fent megadott Media Services-fiókhoz társított Azure AD-alkalmazás kulcsa. <br/><br/>Az alkalmazás kulcsának beszerzéséhez navigáljon Azure Portal. A Media Services fiók alatt válassza ki a fiókját, és lépjen az **API-hozzáférés**elemre. Válassza a **Kapcsolódás az Media Services API-hoz lehetőséget az**  ->  **alkalmazás**-  ->  **tanúsítványok & titkok**kezelése szolgáltatással. Másolja ki a megfelelő paramétereket.|
 
 ## <a name="autoscale-reserved-units"></a>Fenntartott egységek méretezése
 
@@ -75,7 +74,7 @@ Ha a fióknak valamilyen módosításra van szüksége, a **Beállítások** lap
 
 * EventGrid
 
-    Regisztrálnia kell a EventGrid erőforrás-szolgáltatót a Azure Portal használatával. A [Azure Portal](https://portal.azure.com/)lépjen az **előfizetések** > [előfizetés] > **ResourceProviders** > **Microsoft. EventGrid**elemre. Ha nincs **regisztrálva** állapotban, válassza a **regisztráció**lehetőséget. A regisztráció néhány percet vesz igénybe.
+    Regisztrálnia kell a EventGrid erőforrás-szolgáltatót a Azure Portal használatával. A [Azure Portal](https://portal.azure.com/)lépjen az **előfizetések** > [előfizetés] > **ResourceProviders**  >  **Microsoft. EventGrid**elemre. Ha nincs **regisztrálva** állapotban, válassza a **regisztráció**lehetőséget. A regisztráció néhány percet vesz igénybe.
 
 * Streamvégpont
 

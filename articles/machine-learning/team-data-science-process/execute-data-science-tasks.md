@@ -11,10 +11,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: e69a03cd142fdbcc5864ee38a4843e1c2e44a124
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79477153"
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>Adatelemzési feladatok végrehajtása: feltárás, modellezés és üzembe helyezés
@@ -23,7 +22,7 @@ A tipikus adatelemzési feladatok közé tartozik az adatok feltárása, modelle
 
 - [Azure Machine Learning](../index.yml)
 - [SQL-Server ML-szolgáltatásokkal](https://docs.microsoft.com/sql/advanced-analytics/r/r-services)
-- [Microsoft Machine Learning Server](https://docs.microsoft.com/machine-learning-server/what-is-machine-learning-server)
+- [Microsoft Machine Learning-kiszolgáló](https://docs.microsoft.com/machine-learning-server/what-is-machine-learning-server)
 
 
 ## <a name="1--exploration"></a>1. <a name='DataQualityReportUtility-1'></a> feltárás 
@@ -76,7 +75,7 @@ Több modell létrehozása után általában a modellek regisztrálásához és 
 1. [Azure Machine Learning – modell-kezelési szolgáltatás](../index.yml)
 2. [ModelDB az MIT](http://modeldb.csail.mit.edu:3000/projects) 
 3. [SQL-kiszolgáló modell-felügyeleti rendszerként](https://blogs.technet.microsoft.com/dataplatforminsider/2016/10/17/sql-server-as-a-machine-learning-model-management-system/)
-4. [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
+4. [Microsoft Machine Learning-kiszolgáló](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
 
 ## <a name="3--deployment"></a>3. <a name='Deployment-3'></a> üzembe helyezés
 
@@ -88,7 +87,7 @@ A modellek éles környezetben való üzembe helyezéséhez különböző megkö
 
 - [Modell üzembe helyezése Azure Machine Learning](../how-to-deploy-and-where.md)
 - [Modell üzembe helyezése az SQL-Serverben](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
-- [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
+- [Microsoft Machine Learning-kiszolgáló](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
 
 > [!NOTE]
 > Az üzembe helyezés előtt az egyiknek biztosítania kell, hogy a modell pontozásának késése elég alacsony legyen az éles környezetben való használathoz.

@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
 ms.openlocfilehash: 2b4d6939aa1db4b8321c792898ed421c0d16cc99
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79456743"
 ---
 # <a name="apply-math-operation"></a>Matematikai művelet alkalmazása
@@ -32,11 +31,11 @@ A művelet definiálása és a folyamat futtatása után a rendszer hozzáadja a
 
 Keresse meg a szükséges műveletet ezekben a kategóriákban:  
 
-- [Basic](#basic-math-operations)  
+- [Alapszintű](#basic-math-operations)  
   
      Az **alapszintű** kategóriába tartozó függvények egyetlen érték vagy oszlop értékének módosítására használhatók. Előfordulhat például, hogy egy adott oszlopban az összes szám abszolút értékét kapja meg, vagy kiszámítja az egyes értékek négyzetes gyökerét egy adott oszlopban.  
   
--   [Összehasonlítás](#comparison-operations)  
+-   [Összehasonlítása](#comparison-operations)  
   
       Az **összehasonlítás kategóriába tartozó függvények** mindegyike az összehasonlításhoz használatos: a két oszlopban lévő értékek párok közötti összehasonlítását, illetve az egyes értékek adott konstanshoz való összehasonlítását is elvégezheti. Az oszlopok összehasonlításával például megállapíthatja, hogy az értékek megegyeznek-e két adatkészletben. Vagy használhat állandót is, például a maximálisan megengedett értéket, hogy kiugró értékeket keressen egy numerikus oszlopban.  
   
@@ -72,7 +71,7 @@ A modul minden példánya egyszerre csak egy típusú műveletet tud végrehajta
 1.  Válasszon ki egy vagy több olyan oszlopot, amelyen végre szeretné hajtani a számítást.   
   
     - Bármely kiválasztott oszlopnak numerikus adattípusnak kell lennie. 
-    - Az adattartománynak érvényesnek kell lennie a kiválasztott matematikai művelethez. Ellenkező esetben hiba vagy NaN (nem szám) eredmény jelenhet meg. Például az ln (-1,0) érvénytelen művelet, és a következő értéket eredményezi: `NaN`.
+    - Az adattartománynak érvényesnek kell lennie a kiválasztott matematikai művelethez. Ellenkező esetben hiba vagy NaN (nem szám) eredmény jelenhet meg. Például az ln (-1,0) érvénytelen művelet, és a következő értéket eredményezi: `NaN` .
   
 1.  Kattintson a **category (kategória** ) elemre a végrehajtandó matematikai művelet **típusának** kiválasztásához.
     
@@ -142,7 +141,7 @@ Az **oszlop beállítása**területen válassza ki azt az oszlopot, amely a kite
 
 A **Exp2** esetében megadhat egy második argumentum x értéket, amely lehet konstans vagy más oszlop is. A **második argumentum típusa mezőben**adja meg, hogy az x szorzót állandóként vagy egy oszlopban lévő értékként adja meg.  
 
-Ha például kijelöl egy oszlopot a szorzó és a kitevő {0,1,2,3,4,5} értékével együtt, a függvény {0, 2, 8, 24, 64 160) értéket ad vissza.  
+Ha például kijelöl egy oszlopot a {0,1,2,3,4,5} szorzó és a kitevő értékével együtt, a függvény {0, 2, 8, 24, 64 160) értéket ad vissza.  
 
 ### <a name="expminus1"></a>ExpMinus1 
 
@@ -257,8 +256,8 @@ Művelet|Num1|Num2|Eredmény oszlop|Eredmény értéke|
 |Szorzás|1|5|Több (Num2_Num1)|5|
 |Kivonás|1|5|Kivonás (Num2_Num1)|4|
 |Kivonás|0|1|Kivonás (Num2_Num1)|0|
-|Osztás|1|5|Osztás (Num2_Num1)|5|
-|Osztás|0|1|Osztás (Num2_Num1)|Végtelen|
+|Részleg|1|5|Osztás (Num2_Num1)|5|
+|Részleg|0|1|Osztás (Num2_Num1)|Végtelen|
 
 ### <a name="add"></a>Hozzáadás
 

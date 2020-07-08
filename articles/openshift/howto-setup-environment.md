@@ -8,10 +8,9 @@ ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: container-service
 ms.openlocfilehash: e7396ce9fbed46688d59b582f246e5454d063fb3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79477034"
 ---
 # <a name="set-up-your-azure-red-hat-openshift-dev-environment"></a>Az Azure Red Hat OpenShift fejlesztői környezetének beállítása
@@ -19,7 +18,7 @@ ms.locfileid: "79477034"
 Microsoft Azure Red Hat OpenShift-alkalmazások létrehozásához és futtatásához a következőket kell tennie:
 
 * Telepítse az Azure CLI 2.0.65 (vagy újabb) verzióját (vagy használja a Azure Cloud Shell).
-* Regisztráljon a szolgáltatáshoz és a `AROGA` társított erőforrás-szolgáltatóhoz.
+* Regisztráljon a `AROGA` szolgáltatáshoz és a társított erőforrás-szolgáltatóhoz.
 * Hozzon létre egy Azure Active Directory (Azure AD) bérlőt.
 * Hozzon létre egy Azure AD-alkalmazásobjektumet.
 * Hozzon létre egy Azure AD-felhasználót.
@@ -34,7 +33,7 @@ Az Azure Red Hat OpenShift az Azure CLI 2.0.65 vagy újabb verzióját igényli.
 az --version
 ```
 
-A kimenet első sora a CLI verzióját fogja tartalmazni, például `azure-cli (2.0.65)`:.
+A kimenet első sora a CLI verzióját fogja tartalmazni, például: `azure-cli (2.0.65)` .
 
 Az alábbi utasításokat követve [telepítheti az Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) -t, ha új telepítésre vagy frissítésre van szüksége.
 
@@ -42,7 +41,7 @@ Másik lehetőségként használhatja a [Azure Cloud Shell](https://docs.microso
 
 ## <a name="register-providers-and-features"></a>Szolgáltatók és szolgáltatások regisztrálása
 
-Az `Microsoft.ContainerService AROGA` első Azure `Microsoft.Solutions`Red `Microsoft.Compute`hat `Microsoft.Storage`OpenShift `Microsoft.KeyVault` - `Microsoft.Network` fürt üzembe helyezése előtt manuálisan regisztrálni kell a szolgáltatást, a, és a szolgáltatót az előfizetésben.
+Az `Microsoft.ContainerService AROGA` `Microsoft.Solutions` `Microsoft.Compute` `Microsoft.Storage` `Microsoft.KeyVault` `Microsoft.Network` első Azure Red Hat OpenShift-fürt üzembe helyezése előtt manuálisan regisztrálni kell a szolgáltatást, a, és a szolgáltatót az előfizetésben.
 
 A szolgáltatók és szolgáltatások manuális regisztrálásához kövesse az alábbi utasításokat egy bash-rendszerhéjból, ha telepítette a CLI-t, vagy a Azure Portal Azure Cloud Shell (bash) munkamenetből:
 

@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
 ms.openlocfilehash: ed6d9e86143c3a5d6c97c4bd92a07c258bbd1bbc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79477459"
 ---
 # <a name="smote"></a>SMOTE
@@ -42,10 +41,10 @@ Az esetek számának növeléséhez a következő módon állíthatja be a **arc
 
 ||0. osztály|1. osztály|összesen|  
 |-|-------------|-------------|-----------|  
-|Eredeti adatkészlet<br /><br /> (a **arcul ütötte-értékkel** = **egyenértékű)**|570<br /><br /> 76%|178<br /><br /> 24|748|  
-|**Arcul ütötte százalék** = **100**|570<br /><br /> 62%|356<br /><br /> 38%|926|  
-|**Arcul ütötte százalék** = **200**|570<br /><br /> 52%|534<br /><br /> 48%|1 104|  
-|**Arcul ütötte százalék** = **300**|570<br /><br /> 44%|712<br /><br /> 56%|1 282|  
+|Eredeti adatkészlet<br /><br /> (a **arcul ütötte százalékos értékkel**  =  egyenértékű **0**)|570<br /><br /> 76%|178<br /><br /> 24|748|  
+|**Arcul ütötte százalékos aránya**  =  **100**|570<br /><br /> 62%|356<br /><br /> 38%|926|  
+|**Arcul ütötte százalékos aránya**  =  **200**|570<br /><br /> 52%|534<br /><br /> 48%|1 104|  
+|**Arcul ütötte százalékos aránya**  =  **300**|570<br /><br /> 44%|712<br /><br /> 56%|1 282|  
   
 > [!WARNING]
 > Az esetek számának növelése a ARCUL ütötte használatával nem garantált, hogy pontosabb modelleket hozzon létre. Próbálja ki a csővezetékeket különböző százalékokkal, különböző szolgáltatásokkal, valamint a legközelebbi szomszédok különböző számával, hogy megtekintse, hogyan befolyásolja a modell az esetek hozzáadását.  

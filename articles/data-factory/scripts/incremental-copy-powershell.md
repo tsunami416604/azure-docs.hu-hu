@@ -11,10 +11,9 @@ ms.topic: article
 ms.custom: seo-lt-2019
 ms.date: 03/12/2020
 ms.openlocfilehash: 1919f89d2e39981effe14c1203446f8f9d930f41
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79462489"
 ---
 # <a name="powershell-script---incrementally-load-data-by-using-azure-data-factory"></a>PowerShell-parancsfájl – az adatgyűjtés növekményes betöltése a Azure Data Factory használatával
@@ -51,7 +50,7 @@ Remove-AzDataFactoryV2 -Name $dataFactoryName -ResourceGroupName $resourceGroupN
 
 Ez a szkript a következő parancsokat használja: 
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [Set-AzDataFactoryV2](/powershell/module/az.datafactory/set-Azdatafactoryv2) | Adat-előállító létrehozása |

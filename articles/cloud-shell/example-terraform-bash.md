@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 11/15/2017
 ms.author: tarcher
 ms.openlocfilehash: 8bacadd8941131f608411e61cc15c120c1b2bc60
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79458154"
 ---
 # <a name="deploy-with-terraform-from-bash-in-azure-cloud-shell"></a>Üzembe helyezés a Terraform a Bashből Azure Cloud Shell
@@ -62,7 +61,7 @@ resource "azurerm_resource_group" "myterraformgroup" {
 Mentse a fájlt, és lépjen ki a szövegszerkesztőből.
 
 ### <a name="terraform-init"></a>Terraform init
-Kezdje a futtatásával `terraform init`.
+Kezdje a futtatásával `terraform init` .
 
 ```
 justin@Azure:~$ terraform init
@@ -93,7 +92,7 @@ commands will detect it and remind you to do so if necessary.
 A [Terraform init parancs](https://www.terraform.io/docs/commands/init.html) a Terraform konfigurációs fájljait tartalmazó munkakönyvtár inicializálására szolgál. A `terraform init` parancs az első parancs, amelyet egy új Terraform-konfiguráció megírása vagy egy meglévő verzió-vezérlőelem klónozása után kell futtatni. A parancs többször is futtatható.
 
 ### <a name="terraform-plan"></a>Terraform plan
-Tekintse meg a Terraform-sablon által a használatával létrehozandó `terraform plan`erőforrásokat.
+Tekintse meg a Terraform-sablon által a használatával létrehozandó erőforrásokat `terraform plan` .
 
 ```
 justin@Azure:~$ terraform plan
@@ -129,7 +128,7 @@ can't guarantee that exactly these actions will be performed if
 A [terraform plan parancs](https://www.terraform.io/docs/commands/plan.html) egy végrehajtási tervet hoz létre. A Terraform csak akkor végez frissítést, ha nincs explicit módon letiltva, majd meghatározza, hogy milyen műveletek szükségesek a konfigurációs fájlokban megadott kívánt állapot eléréséhez. A csomag a-out használatával menthető, majd a Terraform alkalmazásban elérhetővé teheti, hogy csak az előre tervezett műveletek legyenek végrehajtva.
 
 ### <a name="terraform-apply"></a>Terraform apply
-Az Azure-erőforrások kiépítése az-val `terraform apply`.
+Az Azure-erőforrások kiépítése az-val `terraform apply` .
 
 ```
 justin@Azure:~$ terraform apply
@@ -145,7 +144,7 @@ Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 A [Terraform Apply parancs](https://www.terraform.io/docs/commands/apply.html) a konfiguráció kívánt állapotának eléréséhez szükséges módosítások alkalmazására szolgál.
 
 ### <a name="verify-deployment-with-azure-cli"></a>Az Azure CLI-vel való üzembe helyezés ellenőrzése
-A `az group show -n myRgName` futtatásával ellenőrizze, hogy az erőforrás sikeresen kiépítve lett-e.
+A futtatásával `az group show -n myRgName` ellenőrizze, hogy az erőforrás sikeresen kiépítve lett-e.
 
 ```azurecli-interactive
 az group show -n myRgName

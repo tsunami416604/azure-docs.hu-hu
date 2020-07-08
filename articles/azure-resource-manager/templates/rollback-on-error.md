@@ -4,10 +4,9 @@ description: Azt határozza meg, hogy egy sikertelen központi telepítés vissz
 ms.topic: conceptual
 ms.date: 10/04/2019
 ms.openlocfilehash: 206c794996f58a4c5b6982c551ae50128ed4f5eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79460143"
 ---
 # <a name="rollback-on-error-to-successful-deployment"></a>Hiba visszaállítása a sikeres központi telepítéshez
@@ -24,7 +23,7 @@ Ha ezt a beállítást szeretné használni, a központi telepítéseknek egyedi
 
 ## <a name="powershell"></a>PowerShell
 
-Az utolsó sikeres központi telepítés újbóli üzembe helyezéséhez `-RollbackToLastDeployment` adja hozzá a paramétert jelzőként.
+Az utolsó sikeres központi telepítés újbóli üzembe helyezéséhez adja hozzá a `-RollbackToLastDeployment` paramétert jelzőként.
 
 ```azurepowershell-interactive
 New-AzResourceGroupDeployment -Name ExampleDeployment02 `
@@ -33,7 +32,7 @@ New-AzResourceGroupDeployment -Name ExampleDeployment02 `
   -RollbackToLastDeployment
 ```
 
-Egy adott központi telepítés újbóli üzembe helyezéséhez `-RollBackDeploymentName` használja a paramétert, és adja meg a központi telepítés nevét. A megadott központi telepítésnek sikeresnek kell lennie.
+Egy adott központi telepítés újbóli üzembe helyezéséhez használja a `-RollBackDeploymentName` paramétert, és adja meg a központi telepítés nevét. A megadott központi telepítésnek sikeresnek kell lennie.
 
 ```azurepowershell-interactive
 New-AzResourceGroupDeployment -Name ExampleDeployment02 `
@@ -44,7 +43,7 @@ New-AzResourceGroupDeployment -Name ExampleDeployment02 `
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Az utolsó sikeres központi telepítés újbóli üzembe helyezéséhez `--rollback-on-error` adja hozzá a paramétert jelzőként.
+Az utolsó sikeres központi telepítés újbóli üzembe helyezéséhez adja hozzá a `--rollback-on-error` paramétert jelzőként.
 
 ```azurecli-interactive
 az deployment group create \
@@ -55,7 +54,7 @@ az deployment group create \
   --rollback-on-error
 ```
 
-Egy adott központi telepítés újbóli üzembe helyezéséhez `--rollback-on-error` használja a paramétert, és adja meg a központi telepítés nevét. A megadott központi telepítésnek sikeresnek kell lennie.
+Egy adott központi telepítés újbóli üzembe helyezéséhez használja a `--rollback-on-error` paramétert, és adja meg a központi telepítés nevét. A megadott központi telepítésnek sikeresnek kell lennie.
 
 ```azurecli-interactive
 az deployment group create \

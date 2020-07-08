@@ -7,10 +7,9 @@ ms.date: 01/03/2019
 ms.author: tomfitz
 ms.custom: seodec18
 ms.openlocfilehash: 0a282a412823207e5f662441158000e8c6121796
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80637928"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>Útmutató webalkalmazások üzembe helyezéséhez Azure Resource Manager sablonok használatával
@@ -45,7 +44,7 @@ Az erőforrásokat a következő sorrendben helyezheti üzembe:
 
 **4. szintű**
 * App Service tanúsítvány – függ a forrás vezérlőelemtől vagy a MSDeploy, ha van ilyen. Ellenkező esetben a webalkalmazástól függ.
-* Konfigurációs beállítások (kapcsolati karakterláncok, web. config értékek, Alkalmazásbeállítások) – függ a forrás vezérlőelemtől vagy a MSDeploy, ha van ilyen. Ellenkező esetben a webalkalmazástól függ.
+* Konfigurációs beállítások (kapcsolatok sztringek, web.config értékek, Alkalmazásbeállítások) – függ a forrás-vagy a MSDeploy, ha van ilyen. Ellenkező esetben a webalkalmazástól függ.
 
 **5. szintű**
 * Állomásnév-kötések – a tanúsítványtól függ, ha van. Ellenkező esetben egy magasabb szintű erőforrástól függ.
@@ -90,7 +89,7 @@ Ha a Resource Manager-sablon MSDeploy használ, a telepítési hibaüzenetek neh
 
 1. Nyissa meg a hely [kudu-konzolját](https://github.com/projectkudu/kudu/wiki/Kudu-console).
 2. Tallózással keresse meg a mappát a következő címen: D:\home\LogFiles\SiteExtensions\MSDeploy.
-3. Keresse meg a appManagerStatus. XML és a appManagerLog. xml fájlt. Az első fájl naplózza az állapotot. A második fájl a hibával kapcsolatos információkat naplózza. Ha a hiba nem egyértelmű, akkor azt is megteheti, ha segítséget kér a [fórumon](https://docs.microsoft.com/answers/topics/azure-webapps.html).
+3. Keresse meg a appManagerStatus.xml és appManagerLog.xml fájlokat. Az első fájl naplózza az állapotot. A második fájl a hibával kapcsolatos információkat naplózza. Ha a hiba nem egyértelmű, akkor azt is megteheti, ha segítséget kér a [fórumon](https://docs.microsoft.com/answers/topics/azure-webapps.html).
 
 ## <a name="choose-a-unique-web-app-name"></a>Egyedi webalkalmazás nevének kiválasztása
 
@@ -127,7 +126,7 @@ A tanúsítvány feltöltéséhez a Key Vault válassza a **tanúsítványok** ,
 
 ![Tanúsítvány importálása](media/web-sites-rm-template-guidance/import-certificate.png)
 
-A sablonban adja meg a tanúsítvány nevét `keyVaultSecretName`.
+A sablonban adja meg a tanúsítvány nevét `keyVaultSecretName` .
 
 Példaként lásd: [webalkalmazás-tanúsítvány üzembe helyezése Key Vault titkos kulcsból, és az SSL-kötés létrehozásához használja](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-certificate-from-key-vault).
 
