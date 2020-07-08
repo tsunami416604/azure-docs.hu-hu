@@ -9,12 +9,12 @@ ms.date: 05/19/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring
-ms.openlocfilehash: 3ede22b5af942c3f0c0cd88d86b56a625c7656c0
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 9810d29750e7c741c84b11b296099a37d67fc595
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267613"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955165"
 ---
 # <a name="monitor-azure-storage"></a>Az Azure Storage figyelése
 
@@ -78,11 +78,13 @@ Az összes többi sikertelen névtelen kérelmet nem naplózza a rendszer. A nap
 
 A platform metrikáit és a tevékenység naplóját a rendszer automatikusan gyűjti, de diagnosztikai beállítást kell létrehoznia az erőforrás-naplók összegyűjtéséhez vagy a Azure Monitoron kívüli továbbításához. A diagnosztikai beállításoknak a Azure Portal, az Azure CLI vagy a PowerShell használatával történő létrehozásával kapcsolatban lásd: [diagnosztikai beállítás létrehozása a platform-naplók és-metrikák gyűjtéséhez az Azure-ban](../../azure-monitor/platform/diagnostic-settings.md).
 
-Ha diagnosztikai beállítást hoz létre, válassza ki azt a tárterületet, amelyhez engedélyezni szeretné a naplókat, például blob, üzenetsor, tábla vagy fájl. Ha a diagnosztikai beállítást a Azure Portal hozza létre, kiválaszthatja az erőforrást egy listából. Ha a PowerShellt vagy az Azure CLI-t használja, akkor a tárolási típus erőforrás-AZONOSÍTÓját kell használnia. A Azure Portal erőforrás-AZONOSÍTÓját a Storage-fiók **tulajdonságlapjának** megnyitásával érheti el.
+Ha diagnosztikai beállítást hoz létre, válassza ki azt a tárterületet, amelyhez engedélyezni szeretné a naplókat, például blob, üzenetsor, tábla vagy fájl. Data Lake Storage Gen2 nem jelenik meg tárolási típusként. Ennek az az oka, hogy Data Lake Storage Gen2 a blob Storage számára elérhető képességek halmaza. 
+
+Ha a diagnosztikai beállítást a Azure Portal hozza létre, kiválaszthatja az erőforrást egy listából. Ha a PowerShellt vagy az Azure CLI-t használja, akkor a tárolási típus erőforrás-AZONOSÍTÓját kell használnia. A Azure Portal erőforrás-AZONOSÍTÓját a Storage-fiók **tulajdonságlapjának** megnyitásával érheti el.
 
 Meg kell adnia azoknak a műveleteknek a kategóriáit is, amelyekhez naplókat kíván gyűjteni. Az Azure Storage kategóriái az alábbi táblázatban láthatók.
 
-| Kategória | Leírás |
+| Kategória | Description |
 |:---|:---|
 | StorageRead | Olvasási műveletek a blobokon. |
 | StorageWrite | Írási műveletek a blobokon. |
@@ -325,7 +327,7 @@ A naplók úgy jelennek meg, mint a cél Storage-fiókban lévő tárolóban tá
 
 Az Event hub-nak küldött naplók nem fájlként vannak tárolva, de ellenőrizheti, hogy az Event hub kapott-e naplózási adatokat. A Azure Portal nyissa meg az Event hub eszközt, és ellenőrizze, hogy a **Bejövő üzenetek** száma nagyobb-e nullánál. 
 
-![Naplók](media/monitor-storage/event-hub-log.png)
+![Auditnaplók](media/monitor-storage/event-hub-log.png)
 
 A biztonsági információkkal és az események kezelésével és figyelési eszközeivel elérheti és beolvashatja az Event hub-nak elküldett naplózási adatokat. További információ: Mit tehetek [az Event hub-ba küldött figyelési adatokkal?](https://docs.microsoft.com/azure/azure-monitor/platform/stream-monitoring-data-event-hubs#what-can-i-do-with-the-monitoring-data-being-sent-to-my-event-hub).
 
@@ -343,6 +345,8 @@ Az adattárolás ezekben a táblázatokban történik.
 |StorageFileLogs | A fájlmegosztás tevékenységeit leíró naplók. |
 |StorageQueueLogs | A várólistákban tevékenységet leíró naplók.|
 |StorageTableLogs| A táblákban tevékenységet leíró naplók.|
+
+A Data Lake Storage Gen2 naplói nem jelennek meg egy dedikált táblában. Ennek oka, hogy Data Lake Storage Gen2 nem szolgáltatás. Ez a funkció egy blob Storage-fiókban is engedélyezhető. Ha engedélyezte ezeket a képességeket, a naplók továbbra is megjelennek a StorageBlobLogs táblában. 
 
 ### <a name="azure-storage-log-analytics-queries-in-azure-monitor"></a>Azure Storage Log Analytics-lekérdezések Azure Monitor
 

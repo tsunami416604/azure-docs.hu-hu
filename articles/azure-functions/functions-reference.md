@@ -4,12 +4,12 @@ description: Ismerkedjen meg az Azure-ban a függvények fejlesztéséhez szüks
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 10/12/2017
-ms.openlocfilehash: b6af3d7ab1fdd35391c9a189162c57dfb259f2d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9a3c0643f4fc965ff64106758320aeb445aaf9ae
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81405356"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921744"
 ---
 # <a name="azure-functions-developer-guide"></a>Azure Functions – fejlesztői útmutató
 Azure Functions az egyes függvények a használt nyelvtől vagy kötéstől függetlenül megosztanak néhány alapvető műszaki fogalmat és összetevőt. Mielőtt beolvassa az adott nyelvre vagy kötésre vonatkozó tanulási adatokat, olvassa el ezt az áttekintést, amely az összesre vonatkozik.
@@ -17,9 +17,9 @@ Azure Functions az egyes függvények a használt nyelvtől vagy kötéstől fü
 Ez a cikk azt feltételezi, hogy már elolvasta a [Azure functions áttekintését](functions-overview.md).
 
 ## <a name="function-code"></a>Függvény kódja
-A *függvény* a Azure functions elsődleges fogalma. A függvény két fontos darabot tartalmaz: a kódot, amely különböző nyelveken, valamint néhány konfigurációban, a function. JSON fájlban is megírható. A lefordított nyelvek esetében ez a konfigurációs fájl automatikusan létrejön a kódban szereplő jegyzetekből. A programozási nyelvek esetében saját magának kell megadnia a konfigurációs fájlt.
+A *függvény* a Azure functions elsődleges fogalma. A függvény két fontos darabot tartalmaz – a kódot, amely különböző nyelveken írható, és néhány konfigurációban a fájl function.jsis. A lefordított nyelvek esetében ez a konfigurációs fájl automatikusan létrejön a kódban szereplő jegyzetekből. A programozási nyelvek esetében saját magának kell megadnia a konfigurációs fájlt.
 
-A function. JSON fájl határozza meg a függvény triggerét, kötéseit és egyéb konfigurációs beállításait. Minden függvényhez egy, és csakis egy trigger tartozik. A futtatókörnyezet ezt a konfigurációs fájlt használja a figyelni kívánt események meghatározásához, valamint az adatoknak a függvény végrehajtásának és az adatok visszaadásának módját. A következő példa egy function. JSON fájlt mutat be.
+A fájl function.jsa függvény triggerét, kötéseit és egyéb konfigurációs beállításait határozza meg. Minden függvényhez egy, és csakis egy trigger tartozik. A futtatókörnyezet ezt a konfigurációs fájlt használja a figyelni kívánt események meghatározásához, valamint az adatoknak a függvény végrehajtásának és az adatok visszaadásának módját. A következő példában a fájl function.jslátható.
 
 ```json
 {
@@ -55,10 +55,10 @@ A Function alkalmazás végrehajtási környezetet biztosít az Azure-ban, amely
 ## <a name="folder-structure"></a>Mappa szerkezete
 [!INCLUDE [functions-folder-structure](../../includes/functions-folder-structure.md)]
 
-A fenti az alapértelmezett (és ajánlott) mappa szerkezete egy Function alkalmazáshoz. Ha módosítani szeretné egy függvény kódjának helyét, módosítsa a `scriptFile` _function. JSON_ fájl szakaszát. Javasoljuk továbbá, hogy a [csomag központi](deployment-zip-push.md) telepítését a projekt Azure-beli Function-alkalmazásba történő üzembe helyezéséhez használja. Meglévő eszközöket is használhat, például a [folyamatos integrációt és üzembe helyezést](functions-continuous-deployment.md) , valamint az Azure-DevOps.
+A fenti az alapértelmezett (és ajánlott) mappa szerkezete egy Function alkalmazáshoz. Ha módosítani szeretné egy függvény kódjának helyét, módosítsa a `scriptFile` _function.js_ fájljának a szakaszát. Javasoljuk továbbá, hogy a [csomag központi](deployment-zip-push.md) telepítését a projekt Azure-beli Function-alkalmazásba történő üzembe helyezéséhez használja. Meglévő eszközöket is használhat, például a [folyamatos integrációt és üzembe helyezést](functions-continuous-deployment.md) , valamint az Azure-DevOps.
 
 > [!NOTE]
-> Ha manuálisan telepíti a csomagot, ügyeljen arra, hogy a _gazdagép. JSON_ fájlját és a függvény mappáit közvetlenül `wwwroot` a mappába telepítse. Ne adja meg a `wwwroot` mappát a központi telepítések között. Ellenkező esetben a `wwwroot\wwwroot` mappákkal végződik.
+> Ha manuálisan helyez üzembe egy csomagot, ügyeljen arra, hogy a _host.jsa_ fájl-és a függvény mappáiban közvetlenül a `wwwroot` mappára telepítse. Ne adja meg a `wwwroot` mappát a központi telepítések között. Ellenkező esetben a `wwwroot\wwwroot` mappákkal végződik.
 
 #### <a name="use-local-tools-and-publishing"></a>Helyi eszközök használata és közzététel
 A Function apps különböző eszközökkel, például a [Visual Studióval](./functions-develop-vs.md), a [Visual Studio Code](functions-create-first-function-vs-code.md), a [IntelliJ](./functions-create-maven-intellij.md), az [Eclipse](./functions-create-maven-eclipse.md)és a [Azure functions Core Tools](./functions-develop-local.md)használatával hozhatók létre és tehetők közzé. További információ: [code and test Azure functions helyileg](./functions-develop-local.md).
@@ -66,14 +66,14 @@ A Function apps különböző eszközökkel, például a [Visual Studióval](./f
 <!--NOTE: I've removed documentation on FTP, because it does not sync triggers on the consumption plan --glenga -->
 
 ## <a name="how-to-edit-functions-in-the-azure-portal"></a><a id="fileupdate"></a>Függvények szerkesztése a Azure Portalban
-A Azure Portal beépített functions-szerkesztő lehetővé teszi a kód és a *function. JSON* fájl közvetlen beépítését. Ez csak kis-és nagymértékű módosítások esetén ajánlott, a legjobb megoldás az, ha egy helyi fejlesztési eszközt használ, például a VS Code-ot.
+A Azure Portal beépített functions-szerkesztő lehetővé teszi a kód és a *function.js* közvetlen beágyazott fájlként való frissítését. Ez csak kis-és nagymértékű módosítások esetén ajánlott, a legjobb megoldás az, ha egy helyi fejlesztési eszközt használ, például a VS Code-ot.
 
 ## <a name="parallel-execution"></a>Párhuzamos végrehajtás
 Ha több kiváltó esemény is gyorsabb, mint egy egyszálas függvény futtatókörnyezete, akkor a futtatókörnyezet párhuzamosan többször is meghívhatja a függvényt.  Ha egy Function alkalmazás használja a használati [üzemeltetési csomagot](functions-scale.md#how-the-consumption-and-premium-plans-work), akkor a Function alkalmazás automatikusan felskálázásra kerül.  A Function alkalmazás minden példánya, függetlenül attól, hogy az alkalmazás fut-e a használati üzemeltetési csomagon vagy egy normál [app Service üzemeltetési csomagon](../app-service/overview-hosting-plans.md), az egyidejű függvények párhuzamos használatát több szálon is feldolgozhatja.  Az egyes functions-példányokban az egyidejű függvények maximális száma a használt trigger típusától, valamint a Function alkalmazásban a más függvények által használt erőforrásoktól függően változhat.
 
 ## <a name="functions-runtime-versioning"></a>Függvények futtatókörnyezetének verziószámozása
 
-A functions futtatókörnyezet verzióját az `FUNCTIONS_EXTENSION_VERSION` Alkalmazásbeállítások használatával állíthatja be. A "~ 3" érték például azt jelzi, hogy a függvényalkalmazás a 3. x verziót fogja használni főverzióként. A Function apps minden új alverzióra frissül, amint azok megjelentek. További információt, többek között a Function app pontos verziójának megtekintését lásd: [Azure functions futtatókörnyezet verzióinak megcélzása](set-runtime-version.md).
+A functions futtatókörnyezet verzióját az Alkalmazásbeállítások használatával állíthatja be `FUNCTIONS_EXTENSION_VERSION` . Például a "~ 3" érték azt jelzi, hogy a Function alkalmazás a 3. x verziót fogja használni főverzióként. A Function apps minden új alverzióra frissül, amint azok megjelentek. További információt, többek között a Function app pontos verziójának megtekintését lásd: [Azure functions futtatókörnyezet verzióinak megcélzása](set-runtime-version.md).
 
 ## <a name="repositories"></a>Adattárak
 A Azure Functions kódja nyílt forráskódú, és a GitHub-adattárakban tárolódik:
@@ -102,4 +102,4 @@ További információkért lásd a következőket:
 * [Az Azure Functions helyi kódolása és tesztelése](./functions-develop-local.md)
 * [Ajánlott eljárások Azure Functions](functions-best-practices.md)
 * [Azure Functions C# – fejlesztői dokumentáció](functions-dotnet-class-library.md)
-* [Azure Functions Node. js – fejlesztői segédlet](functions-reference-node.md)
+* [Azure Functions Node.js fejlesztői referenciája](functions-reference-node.md)

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/22/2018
-ms.openlocfilehash: b4840ed30eb1f6dc8d6e6cef47da17807f9644d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4f4b914fe5851df0928df9ccc41ca3b20c5d3469
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77658574"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955955"
 ---
 # <a name="filters-in-azure-monitor-views"></a>Szűrők Azure Monitor nézetekben
 A [Azure monitor nézetben](view-designer.md) lévő **szűrők** lehetővé teszik a felhasználók számára, hogy egy adott tulajdonság értékét a nézet módosítása nélkül szűrhetik.  Például engedélyezheti a nézet felhasználói számára, hogy csak egy adott számítógépről vagy számítógépekről származó adatokra szűrje a nézetet.  Egyetlen nézetben több szűrőt is létrehozhat, így a felhasználók több tulajdonság alapján szűrhetők.  Ez a cikk azt ismerteti, hogyan használható egy szűrő, és hogyan adhat hozzá egyet egyéni nézethez.
@@ -21,7 +21,7 @@ Kattintson a nézet tetején látható dátum időtartományra a legördülő li
 
 ![Példa szűrésre](media/view-designer-filters/filters-example-time.png)
 
-**+** A gombra kattintva hozzáadhat egy szűrőt a nézethez definiált egyéni szűrők használatával. Válasszon egy értéket a szűrőhöz a legördülő listából, vagy írjon be egy értéket. A gombra kattintva folytassa a **+** szűrők hozzáadását. 
+A gombra kattintva **+** hozzáadhat egy szűrőt a nézethez definiált egyéni szűrők használatával. Válasszon egy értéket a szűrőhöz a legördülő listából, vagy írjon be egy értéket. A gombra kattintva folytassa a szűrők hozzáadását **+** . 
 
 
 ![Példa szűrésre](media/view-designer-filters/filters-example-custom.png)
@@ -37,7 +37,7 @@ Hozzon létre egy szűrőt a **szűrők** lapról a [nézet szerkesztésekor](vi
 
 A következő táblázat a szűrők beállításait ismerteti.
 
-| Beállítás | Leírás |
+| Beállítás | Description |
 |:---|:---|
 | Mezőnév | A szűréshez használt mező neve.  Ennek a mezőnek egyeznie kell az összesítő mezővel az **értékek lekérdezéséhez**. |
 | Értékek lekérdezése | A felhasználó számára a szűrő legördülő listájának feltöltéséhez futtatandó lekérdezés.  A lekérdezésnek [összegzést](/azure/kusto/query/summarizeoperator) vagy [megkülönböztetést](/azure/kusto/query/distinctoperator) kell használnia egy adott mező egyedi értékeinek megadásához, és meg kell egyeznie a **mező nevével**.  A [Rendezés](/azure/kusto/query/sortoperator) lehetőséggel rendezheti a felhasználó számára megjelenített értékeket. |
@@ -61,15 +61,19 @@ Ahhoz, hogy egy szűrő bármilyen hatással legyen, módosítania kell a nézet
 
 Egy lekérdezésben a szűrő értékének szintaxisa a következő: 
 
-    where ${filter name}  
+`where ${filter name}`  
 
 Ha például a nézet olyan lekérdezést tartalmaz, amely eseményeket ad vissza, és a _számítógépek_nevű szűrőt használja, a következő lekérdezést használhatja.
 
-    Event | where ${Computers} | summarize count() by EventLevelName
+```kusto
+Event | where ${Computers} | summarize count() by EventLevelName
+```
 
 Ha egy súlyosság nevű másik szűrőt adott hozzá, akkor a következő lekérdezéssel mindkét szűrőt használhatja.
 
-    Event | where ${Computers} | where ${Severity} | summarize count() by EventLevelName
+```kusto
+Event | where ${Computers} | where ${Severity} | summarize count() by EventLevelName
+```
 
 ## <a name="next-steps"></a>További lépések
 * További információ az egyéni nézetbe felvehető [vizualizációs részekről](view-designer-parts.md) .

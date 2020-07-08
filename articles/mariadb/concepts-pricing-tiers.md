@@ -6,18 +6,18 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 6/9/2020
-ms.openlocfilehash: 95891e35d2f30bfceb6282c6d9b3f9e7e21b3df8
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 7ded54e0116e6c6e58c0ca8019942dfaaaa88480
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84660870"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954194"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Árképzési szintek Azure Database for MariaDB
 
 A Azure Database for MariaDB-kiszolgálót a három különböző díjszabási szint egyikében hozhatja létre: alapszintű, általános célú és memória optimalizálva. Az árképzési csomagokat a virtuális mag olyan számítási mennyisége különbözteti meg, amely kiépíthető, memóriát virtuális mag, valamint az adatok tárolására szolgáló tárolási technológiát. Az összes erőforrást a MariaDB-kiszolgáló szintjén kell kiépíteni. A kiszolgálók egy vagy több adatbázissal rendelkezhetnek.
 
-|    | **Alapszintű** | **általános célú** | **Memória optimalizálva** |
+| Erőforrás | **Alapszintű** | **általános célú** | **Memória optimalizálva** |
 |:---|:----------|:--------------------|:---------------------|
 | Számítási generáció | 5. gen |5. gen | 5. gen |
 | Virtuális mag | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
@@ -43,7 +43,7 @@ A számítási erőforrások virtuális mag-ként vannak megadva, amely az alapu
 
 Az Ön által kiépített tárterület a Azure Database for MariaDB-kiszolgáló számára elérhető tárolási kapacitás mennyisége. A tároló az adatbázisfájlok, az ideiglenes fájlok, a tranzakciós naplók és a MariaDB-kiszolgáló naplóihoz használható. A kiépített tárterület teljes mennyisége határozza meg a kiszolgáló számára elérhető I/O-kapacitást is.
 
-|    | **Alapszintű** | **általános célú** | **Memória optimalizálva** |
+| Tárolási attribútumok   | Alapszintű | Általános célú | Memóriaoptimalizált |
 |:---|:----------|:--------------------|:---------------------|
 | Tárolási típus | Alapszintű tárterület | általános célú Storage | általános célú Storage |
 | Tárterület mérete | 5 GB – 1 TB | 5 GB – 4 TB | 5 GB – 4 TB |
@@ -63,7 +63,7 @@ Az I/O-használatot a Azure Portal vagy az Azure CLI-parancsok használatával f
 
 A tárolási korlátokat a általános célú és a memória optimalizált szintjein növeljük. Az előzetes verzióra engedélyező újonnan létrehozott kiszolgálók legfeljebb 16 TB tárhellyel rendelkezhetnek. A IOPS-skála 3:1-ig terjedő arányban 20 000 IOPS. A jelenlegi általánosan elérhető tárolóhoz hasonlóan további tárolókapacitást is hozzáadhat a kiszolgáló létrehozása után, és lehetővé teszi, hogy a rendszer automatikusan növelje a tárterületet a számítási feladatok tárolási feladatainak megfelelően.
 
-|              | **általános célú** | **Memória optimalizálva** |
+| Tárolási attribútumok | Általános célú | Memóriaoptimalizált |
 |:-------------|:--------------------|:---------------------|
 | Tárolási típus | Azure-Premium Storage | Azure-Premium Storage |
 | Tárterület mérete | 32 GB – 16 TB| 32 – 16 TB |
@@ -109,7 +109,7 @@ A tárterület skálázása és a biztonsági mentés megőrzési időtartamána
 
 A legfrissebb díjszabási információkért tekintse meg a szolgáltatás [díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/mariadb/). A kívánt konfiguráció költségének megtekintéséhez a [Azure Portal](https://portal.azure.com/#create/Microsoft.MariaDBServer) a kiválasztott beállítások alapján megjeleníti a havi költséget a **díjszabási szintek** lapon. Ha még nem rendelkezik Azure-előfizetéssel, az Azure díjszabási kalkulátor használatával megbecsülheti a becsült árat. Az [Azure díjszabási kalkulátor](https://azure.microsoft.com/pricing/calculator/) webhelyén válassza az **elemek hozzáadása**, majd az **adatbázisok** kategóriát, és **Azure Database for MariaDB** a beállítások testreszabásához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Ismerje meg a [szolgáltatási korlátozásokat](concepts-limits.md).
 - Megtudhatja, hogyan [hozhat létre MariaDB-kiszolgálót a Azure Portalban](quickstart-create-mariadb-server-database-using-azure-portal.md).
 

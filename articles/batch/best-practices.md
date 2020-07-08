@@ -3,12 +3,12 @@ title: Ajánlott eljárások
 description: Ismerje meg az ajánlott eljárásokat és hasznos tippeket a Azure Batch megoldás fejlesztéséhez.
 ms.date: 06/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: d91804b91b50ee1ba4015456438c9f153ed12ada
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 7a66fb383195a7de347b5e6ce83ad89fa3706e96
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85201718"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954149"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch ajánlott eljárások
 
@@ -29,12 +29,12 @@ A [készletek](nodes-and-pools.md#pools) a Batch szolgáltatásban a feladatok v
     Az egyes csomópontok nem garantáltak, hogy mindig elérhetők legyenek. Habár a nem gyakori, a hardverhiba, az operációsrendszer-frissítések és más problémák egy állomása az egyes csomópontok offline állapotba helyezését eredményezheti. Ha a Batch-munkafolyamathoz determinisztikus szükséges, a garantált előrehaladást kell biztosítania, több csomóponttal rendelkező készleteket kell kiosztania.
 
 - **Ne használja újra az erőforrásnevek nevét.**
-    A Batch-erőforrások (feladatok, készletek stb.) gyakran jönnek, és idővel eltérhetnek. Például hétfőn is létrehozhat egy készletet, törölheti azt keddre, majd csütörtökön létrehoz egy másik készletet. Minden létrehozott új erőforráshoz egyedi nevet kell adni, amelyet korábban még nem használt. Ezt egy GUID használatával végezheti el (akár a teljes erőforrás neve, akár a részeként), vagy beágyazhatja az erőforrásnak az erőforrás nevében történő létrehozását. A Batch támogatja a [DisplayName](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.jobspecification.displayname?view=azure-dotnet)paramétert, amely egy adott erőforrás számára elérhetővé teheti az erőforrásokat, még akkor is, ha a tényleges erőforrás-azonosító olyan dolog, amely nem az emberi barát. Az egyedi nevek használata megkönnyíti az Ön számára, hogy megkülönböztesse az adott erőforrást a naplókban és a mérőszámokban. Emellett a kétértelműség is törlődik, ha az erőforráshoz nem kell támogatási esetet benyújtani.
+    A Batch-erőforrások (feladatok, készletek stb.) gyakran jönnek, és idővel eltérhetnek. Például hétfőn is létrehozhat egy készletet, törölheti azt keddre, majd csütörtökön létrehoz egy másik készletet. Minden létrehozott új erőforráshoz egyedi nevet kell adni, amelyet korábban még nem használt. Ezt egy GUID használatával végezheti el (akár a teljes erőforrás neve, akár a részeként), vagy beágyazhatja az erőforrásnak az erőforrás nevében történő létrehozását. A Batch támogatja a [DisplayName](/dotnet/api/microsoft.azure.batch.jobspecification.displayname?view=azure-dotnet)paramétert, amely egy adott erőforrás számára elérhetővé teheti az erőforrásokat, még akkor is, ha a tényleges erőforrás-azonosító olyan dolog, amely nem az emberi barát. Az egyedi nevek használata megkönnyíti az Ön számára, hogy megkülönböztesse az adott erőforrást a naplókban és a mérőszámokban. Emellett a kétértelműség is törlődik, ha az erőforráshoz nem kell támogatási esetet benyújtani.
 
 - **Folytonosság a készlet karbantartása és meghibásodása közben.**
     A legjobb megoldás, ha a feladatok dinamikusan használják a készleteket. Ha a feladatok minden esetben ugyanazt a készletet használják, akkor a feladatok nem fognak futni, ha valami nem stimmel a készlettel. Ez különösen fontos az időérzékeny számítási feladatokhoz. Ennek kijavításához válasszon ki vagy hozzon létre egy készletet dinamikusan, amikor az egyes feladatokat ütemezi, vagy ha úgy szeretné felülbírálni a készlet nevét, hogy el tudja kerülni a nem megfelelő állapotú készletet.
 
-- **Üzletmenet-folytonosság a készlet karbantartása és meghibásodása során** Számos lehetséges ok miatt előfordulhat, hogy a készlet nem növekszik a kívánt méretre, például a belső hibákra, a kapacitás korlátozására stb. Emiatt készen kell állnia arra, hogy a feladatokat egy másik készletben (lehetőleg egy másik virtuálisgép-mérettel) lehessen átcélozni, ha szükséges, a Batch ezt a [UpdateJob](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.protocol.joboperationsextensions.update?view=azure-dotnet)-on keresztül támogatja. Kerülje a statikus készlet AZONOSÍTÓjának használatát azzal a várakozással, hogy soha nem lesz törölve, és soha nem változik.
+- **Üzletmenet-folytonosság a készlet karbantartása és meghibásodása során** Számos lehetséges ok miatt előfordulhat, hogy a készlet nem növekszik a kívánt méretre, például a belső hibákra, a kapacitás korlátozására stb. Emiatt készen kell állnia arra, hogy a feladatokat egy másik készletben (lehetőleg egy másik virtuálisgép-mérettel) lehessen átcélozni, ha szükséges, a Batch ezt a [UpdateJob](/dotnet/api/microsoft.azure.batch.protocol.joboperationsextensions.update?view=azure-dotnet)-on keresztül támogatja. Kerülje a statikus készlet AZONOSÍTÓjának használatát azzal a várakozással, hogy soha nem lesz törölve, és soha nem változik.
 
 ### <a name="pool-lifetime-and-billing"></a>Készlet élettartama és számlázása
 
@@ -75,7 +75,7 @@ Ezért ügyeljen arra, hogy ne tervezzen olyan batch-megoldást, amelynek több 
 
 A Batch-feladatok határozatlan élettartammal rendelkeznek, amíg nem törlik a rendszerből. Az állapota azt jelzi, hogy képes-e további feladatokat fogadni az ütemezéshez, vagy sem.
 
-A feladatok nem helyezhetők automatikusan befejezett állapotba, kivéve, ha explicit módon megszakították. Ezt a [onAllTasksComplete](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.common.onalltaskscomplete?view=azure-dotnet) tulajdonság vagy a [maxWallClockTime](https://docs.microsoft.com/rest/api/batchservice/job/add#jobconstraints)automatikusan aktiválhatja.
+A feladatok nem helyezhetők automatikusan befejezett állapotba, kivéve, ha explicit módon megszakították. Ezt a [onAllTasksComplete](/dotnet/api/microsoft.azure.batch.common.onalltaskscomplete?view=azure-dotnet) tulajdonság vagy a [maxWallClockTime](/rest/api/batchservice/job/add#jobconstraints)automatikusan aktiválhatja.
 
 Az alapértelmezett [aktív feladatok és a feladatok ütemezett kvótája](batch-quota-limit.md#resource-quotas). A Befejezett állapotú feladatok és feladatok Ütemtervei nem számítanak bele a kvótába.
 
@@ -91,13 +91,13 @@ A Batch integrált támogatást nyújt az Azure Storage-hoz az adatok [OutputFil
 
 ### <a name="manage-task-lifetime"></a>Feladat élettartamának kezelése
 
-Törölje a feladatokat, ha már nincs rájuk szükség, vagy állítson be egy [retentionTime](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.taskconstraints.retentiontime?view=azure-dotnet) -feladatra vonatkozó korlátozást. Ha `retentionTime` be van állítva, a Batch automatikusan törli a feladat által a lejáratkor használt lemezterületet `retentionTime` .
+Törölje a feladatokat, ha már nincs rájuk szükség, vagy állítson be egy [retentionTime](/dotnet/api/microsoft.azure.batch.taskconstraints.retentiontime?view=azure-dotnet) -feladatra vonatkozó korlátozást. Ha `retentionTime` be van állítva, a Batch automatikusan törli a feladat által a lejáratkor használt lemezterületet `retentionTime` .
 
 A tevékenységek törlése két dolgot hajt végre. Gondoskodik arról, hogy a feladatban ne legyenek felépítve feladatok, ami megnehezíti a kívánt feladat lekérdezését vagy megtalálását (mivel a befejezett feladatokon keresztül kell szűrnie). Emellett megtisztítja a kapcsolódó tevékenységadatok a csomóponton (a megadott `retentionTime` érték még nem lett kijelölve). Ezzel biztosíthatja, hogy a csomópontok ne töltsenek fel a feladattal kapcsolatos adatokkal, és elfogyjon a szabad lemezterület.
 
 ### <a name="submit-large-numbers-of-tasks-in-collection"></a>Nagy számú feladat elküldése a gyűjteményben
 
-A feladatokat egyedi alapon vagy gyűjteményekben lehet beküldeni. A feladatok tömeges beküldése a terhelés és a beküldési idő csökkentése érdekében akár 100 [gyűjteményben](https://docs.microsoft.com/rest/api/batchservice/task/addcollection) is elvégezhető.
+A feladatokat egyedi alapon vagy gyűjteményekben lehet beküldeni. A feladatok tömeges beküldése a terhelés és a beküldési idő csökkentése érdekében akár 100 [gyűjteményben](/rest/api/batchservice/task/addcollection) is elvégezhető.
 
 ### <a name="set-max-tasks-per-node-appropriately"></a>Feladatok maximális száma a csomóponton megfelelően
 
@@ -105,7 +105,7 @@ A Batch támogatja a csomópontokon lévő feladatok túllépését (több felad
 
 ### <a name="design-for-retries-and-re-execution"></a>Újrapróbálkozások és újbóli végrehajtás tervezése
 
-A Batch automatikusan újrapróbálkozik a feladatokat. Az újrapróbálkozások két típusa létezik: a felhasználó által vezérelt és a belső. A felhasználó által vezérelt újrapróbálkozásokat a tevékenység [maxTaskRetryCount](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.taskconstraints.maxtaskretrycount?view=azure-dotnet)adja meg. Ha a feladatban megadott program nem nulla kilépési kóddal kilép, a feladat újra próbálkozik a értékével `maxTaskRetryCount` .
+A Batch automatikusan újrapróbálkozik a feladatokat. Az újrapróbálkozások két típusa létezik: a felhasználó által vezérelt és a belső. A felhasználó által vezérelt újrapróbálkozásokat a tevékenység [maxTaskRetryCount](/dotnet/api/microsoft.azure.batch.taskconstraints.maxtaskretrycount?view=azure-dotnet)adja meg. Ha a feladatban megadott program nem nulla kilépési kóddal kilép, a feladat újra próbálkozik a értékével `maxTaskRetryCount` .
 
 Bár ritka, a feladat a számítási csomópont meghibásodása miatt újra próbálkozhat, például nem lehet frissíteni a belső állapotot vagy a csomópont meghibásodását a feladat futása közben. A feladat újra próbálkozik ugyanazon a számítási csomóponton, ha lehetséges, akár egy belső korláttal, mielőtt felveszi a feladatot, és elhalasztja, hogy a Batch által átütemezett feladatot, esetleg egy másik számítási csomóponton.
 
@@ -159,7 +159,7 @@ Azure Batch fiókok nem helyezhetők át közvetlenül egyik régióból a mási
 
 Miután feltöltötte a sablont az új régióba, újra létre kell hoznia a tanúsítványokat, a feladatok ütemterveit és az alkalmazáscsomag-csomagokat. A módosítások elvégzéséhez és a Batch-fiók áthelyezésének befejezéséhez ne felejtse el törölni az eredeti batch-fiókot vagy erőforráscsoportot.
 
-A Resource Managerrel és a sablonokkal kapcsolatos további információkért tekintse meg a rövid útmutató [: Azure Resource Manager sablonok létrehozása és telepítése a Azure Portal használatával](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)című témakört.
+A Resource Managerrel és a sablonokkal kapcsolatos további információkért tekintse meg a rövid útmutató [: Azure Resource Manager sablonok létrehozása és telepítése a Azure Portal használatával](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)című témakört.
 
 ## <a name="connectivity"></a>Kapcsolatok
 
@@ -180,7 +180,7 @@ Ha a kérések 5xx HTTP-válaszokat kapnak, és a válaszban szerepel a "kapcsol
 
 ### <a name="retry-requests-automatically"></a>Újrapróbálkozási kérelmek automatikusan
 
-Győződjön meg arról, hogy a Batch szolgáltatás ügyfelei megfelelő újrapróbálkozási szabályzatokkal rendelkeznek a kérések automatikus újrapróbálkozásához, még a normál működés során, és nem kizárólag a szolgáltatás karbantartási időszakai alatt. Az újrapróbálkozási szabályzatoknak legalább 5 perces intervallumot kell kiterjedniük. Az automatikus újrapróbálkozási képességek különböző batch SDK-k, például a [.net RetryPolicyProvider osztály](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.retrypolicyprovider?view=azure-dotnet)számára érhetők el.
+Győződjön meg arról, hogy a Batch szolgáltatás ügyfelei megfelelő újrapróbálkozási szabályzatokkal rendelkeznek a kérések automatikus újrapróbálkozásához, még a normál működés során, és nem kizárólag a szolgáltatás karbantartási időszakai alatt. Az újrapróbálkozási szabályzatoknak legalább 5 perces intervallumot kell kiterjedniük. Az automatikus újrapróbálkozási képességek különböző batch SDK-k, például a [.net RetryPolicyProvider osztály](/dotnet/api/microsoft.azure.batch.retrypolicyprovider?view=azure-dotnet)számára érhetők el.
 
 ### <a name="static-public-ip-addresses"></a>Statikus nyilvános IP-címek
 

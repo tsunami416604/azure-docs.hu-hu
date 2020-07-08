@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: c8d32a6434db0fad18b9fe7c2d6e2117795eb651
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 60d75a23609e962547c8c753086e9bef1d4c84eb
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80476741"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85956593"
 ---
 # <a name="deliver-content-to-customers"></a>Tartalom továbbítása az ügyfeleknek
 Ha streaming-vagy igény szerinti tartalmat továbbít az ügyfeleknek, a cél az, hogy magas színvonalú videót nyújtson különféle eszközökhöz különböző hálózati körülmények között.
@@ -92,22 +92,22 @@ Csak akkor továbbíthatja a TLS-t, ha a streaming végpontot, amelyről a tarta
 ### <a name="mpeg-dash-format"></a>MPEG-DASH formátum
 {stream végpontjának neve-Media Services fiók neve}.streaming.mediaservices.windows.net/{kereső azonosítója}/{fájlnév}.ism/Manifest(format=mpd-time-csf)
 
-http:\//testendpoint-testaccount.streaming.Mediaservices.Windows.net/fecebb23-46F6-490d-8b70-203e86b0df58/BigBuckBunny.ISM/manifest (Format = mpd-Time-CSF)
+http: \/ /testendpoint-testaccount.streaming.Mediaservices.Windows.net/fecebb23-46F6-490d-8b70-203e86b0df58/BigBuckBunny.ISM/manifest (Format = mpd-Time-CSF)
 
 ### <a name="apple-http-live-streaming-hls-v4-format"></a>Apple HTTP Live Streaming (HLS) v4 formátum
 {stream végpontjának neve-Media Services fiók neve}.streaming.mediaservices.windows.net/{kereső azonosítója}/{fájlnév}.ism/Manifest(format=m3u8-aapl)
 
-http:\//testendpoint-testaccount.streaming.Mediaservices.Windows.net/fecebb23-46F6-490d-8b70-203e86b0df58/BigBuckBunny.ISM/manifest (Format = m3u8-AAPL)
+http: \/ /testendpoint-testaccount.streaming.Mediaservices.Windows.net/fecebb23-46F6-490d-8b70-203e86b0df58/BigBuckBunny.ISM/manifest (Format = m3u8-AAPL)
 
 ### <a name="apple-http-live-streaming-hls-v3-format"></a>Apple HTTP Live Streaming (HLS) v3 formátum
 {streaming Endpoint Name-Media Services-fiók neve}. streaming. Mediaservices. Windows. net/{kereső azonosítója} ISM/manifest (Format = m3u8-AAPL-v3)
 
-http:\//testendpoint-testaccount.streaming.Mediaservices.Windows.net/fecebb23-46F6-490d-8b70-203e86b0df58/BigBuckBunny.ISM/manifest (Format = m3u8-AAPL-v3)
+http: \/ /testendpoint-testaccount.streaming.Mediaservices.Windows.net/fecebb23-46F6-490d-8b70-203e86b0df58/BigBuckBunny.ISM/manifest (Format = m3u8-AAPL-v3)
 
 ### <a name="apple-http-live-streaming-hls-format-with-audio-only-filter"></a>Apple HTTP Live Streaming (HLS) formátum csak hang szűrővel
 Alapértelmezés szerint a HLS jegyzékfájl tartalmazza a csak hangként megadott számokat. Ez a mobil hálózatok Apple Store-tanúsítványához szükséges. Ebben az esetben, ha az ügyfél nem rendelkezik elegendő sávszélességgel, vagy egy 2G-kapcsolaton keresztül csatlakozik, a lejátszás csak hangalapúra vált. Ez lehetővé teszi a tartalom folyamatos átvitelét pufferelés nélkül, de nincs videó. Bizonyos esetekben előfordulhat, hogy a lejátszó pufferelése előnyben részesített a csak hangon. Ha el szeretné távolítani a csak hangalapú nyomon követési sávot, az URL-címhez adja hozzá a **csak hang = FALSE értéket** .
 
-http:\//testendpoint-testaccount.streaming.Mediaservices.Windows.net/fecebb23-46F6-490d-8b70-203e86b0df58/BigBuckBunny.ISM/manifest (Format = m3u8-AAPL-v3, csak hang = hamis)
+http: \/ /testendpoint-testaccount.streaming.Mediaservices.Windows.net/fecebb23-46F6-490d-8b70-203e86b0df58/BigBuckBunny.ISM/manifest (Format = m3u8-AAPL-v3, csak hang = hamis)
 
 További információkért lásd: [dinamikus jegyzékfájl-összeállítás támogatása és HLS kimenete további funkciók](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/).
 
@@ -116,21 +116,21 @@ További információkért lásd: [dinamikus jegyzékfájl-összeállítás tám
 
 Példa:
 
-http:\//testendpoint-testaccount.streaming.Mediaservices.Windows.net/fecebb23-46F6-490d-8b70-203e86b0df58/BigBuckBunny.ISM/manifest
+http: \/ /testendpoint-testaccount.streaming.Mediaservices.Windows.net/fecebb23-46F6-490d-8b70-203e86b0df58/BigBuckBunny.ISM/manifest
 
 ### <a name="smooth-streaming-20-manifest-legacy-manifest"></a><a id="fmp4_v20"></a>Smooth Streaming 2,0 manifest (örökölt jegyzékfájl)
 Alapértelmezés szerint Smooth Streaming jegyzékfájl formátuma az ismétlés címkét (r-tag) tartalmazza. Bizonyos játékosok azonban nem támogatják az r-címkét. Az ezekkel a játékosokkal rendelkező ügyfelek használhatnak olyan formátumot, amely letiltja az r-címkét:
 
 {streaming Endpoint Name-Media Services-fiók neve}. streaming. Mediaservices. Windows. net/{kereső azonosítója} ISM/manifest (Format = FMP4-V20)
 
-    http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=fmp4-v20)
+`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=fmp4-v20)`
 
 ## <a name="progressive-download"></a>Progresszív letöltés
 A progresszív letöltéssel a teljes fájl letöltése előtt elindíthatja az adathordozók lejátszását. Az. ISM * (ismv, ISMA, ismt vagy ISMC) fájlok nem tölthetők le fokozatosan.
 
 A tartalom fokozatos letöltéséhez használja a lokátor OnDemandOrigin típusát. A következő példa a lokátor OnDemandOrigin-típusán alapuló URL-címet jeleníti meg:
 
-    http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4
+`http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4`
 
 A progresszív letöltéshez vissza kell fejtenie a forrás-szolgáltatásból adatfolyamként továbbítani kívánt összes Storage-titkosítású eszközt.
 
@@ -139,7 +139,7 @@ Ha szeretné letölteni a tartalmat egy ügyfél-eszközre, létre kell hoznia e
 
 A következő példa a SAS-lokátoron alapuló URL-címet jeleníti meg:
 
-    https://test001.blob.core.windows.net/asset-ca7a4c3f-9eb5-4fd8-a898-459cb17761bd/BigBuckBunny.mp4?sv=2012-02-12&se=2014-05-03T01%3A23%3A50Z&sr=c&si=7c093e7c-7dab-45b4-beb4-2bfdff764bb5&sig=msEHP90c6JHXEOtTyIWqD7xio91GtVg0UIzjdpFscHk%3D
+`https://test001.blob.core.windows.net/asset-ca7a4c3f-9eb5-4fd8-a898-459cb17761bd/BigBuckBunny.mp4?sv=2012-02-12&se=2014-05-03T01%3A23%3A50Z&sr=c&si=7c093e7c-7dab-45b4-beb4-2bfdff764bb5&sig=msEHP90c6JHXEOtTyIWqD7xio91GtVg0UIzjdpFscHk%3D`
 
 A következő szempontokat kell figyelembe venni:
 
@@ -157,27 +157,30 @@ A streaming-végpont olyan folyamatos átviteli szolgáltatást jelent, amely k�
 ### <a name="changes-to-smooth-streaming-manifest-version"></a>Smooth Streaming jegyzékfájl verziójának módosításai
 A júliusi 2016-es kiadás előtt – ha a Media Encoder Standard, Media Encoder Premium Workflow vagy a korábbi Azure Media Encodereket a dinamikus csomagolás használatával továbbították, akkor a visszaadott Smooth Streaming jegyzékfájl megfelel a 2,0-es verziónak. Az 2,0-es verzióban a töredékek időtartama nem használja az úgynevezett REPEAT ("r") címkéket. Például:
 
-
-    <?xml version="1.0" encoding="UTF-8"?>
-    <SmoothStreamingMedia MajorVersion="2" MinorVersion="0" Duration="8000" TimeScale="1000">
-        <StreamIndex Chunks="4" Type="video" Url="QualityLevels({bitrate})/Fragments(video={start time})" QualityLevels="3" Subtype="" Name="video" TimeScale="1000">
-            <QualityLevel Index="0" Bitrate="1000000" FourCC="AVC1" MaxWidth="640" MaxHeight="360" CodecPrivateData="00000001674D4029965201405FF2E02A100000030010000003032E0A000F42400040167F18E3050007A12000200B3F8C70ED0B16890000000168EB7352" />
-            <c t="0" d="2000" n="0" />
-            <c d="2000" />
-            <c d="2000" />
-            <c d="2000" />
-        </StreamIndex>
-    </SmoothStreamingMedia>
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<SmoothStreamingMedia MajorVersion="2" MinorVersion="0" Duration="8000" TimeScale="1000">
+    <StreamIndex Chunks="4" Type="video" Url="QualityLevels({bitrate})/Fragments(video={start time})" QualityLevels="3" Subtype="" Name="video" TimeScale="1000">
+        <QualityLevel Index="0" Bitrate="1000000" FourCC="AVC1" MaxWidth="640" MaxHeight="360" CodecPrivateData="00000001674D4029965201405FF2E02A100000030010000003032E0A000F42400040167F18E3050007A12000200B3F8C70ED0B16890000000168EB7352" />
+        <c t="0" d="2000" n="0" />
+        <c d="2000" />
+        <c d="2000" />
+        <c d="2000" />
+    </StreamIndex>
+</SmoothStreamingMedia>
+```
 
 A júliusi 2016-es kiadásban a generált Smooth Streaming jegyzékfájl az 2,2-es verzióra vonatkozik, és a töredékek időtartamát használja az ismételt címkék használatával. Például:
 
-    <?xml version="1.0" encoding="UTF-8"?>
-    <SmoothStreamingMedia MajorVersion="2" MinorVersion="2" Duration="8000" TimeScale="1000">
-        <StreamIndex Chunks="4" Type="video" Url="QualityLevels({bitrate})/Fragments(video={start time})" QualityLevels="3" Subtype="" Name="video" TimeScale="1000">
-            <QualityLevel Index="0" Bitrate="1000000" FourCC="AVC1" MaxWidth="640" MaxHeight="360" CodecPrivateData="00000001674D4029965201405FF2E02A100000030010000003032E0A000F42400040167F18E3050007A12000200B3F8C70ED0B16890000000168EB7352" />
-            <c t="0" d="2000" r="4" />
-        </StreamIndex>
-    </SmoothStreamingMedia>
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<SmoothStreamingMedia MajorVersion="2" MinorVersion="2" Duration="8000" TimeScale="1000">
+    <StreamIndex Chunks="4" Type="video" Url="QualityLevels({bitrate})/Fragments(video={start time})" QualityLevels="3" Subtype="" Name="video" TimeScale="1000">
+        <QualityLevel Index="0" Bitrate="1000000" FourCC="AVC1" MaxWidth="640" MaxHeight="360" CodecPrivateData="00000001674D4029965201405FF2E02A100000030010000003032E0A000F42400040167F18E3050007A12000200B3F8C70ED0B16890000000168EB7352" />
+        <c t="0" d="2000" r="4" />
+    </StreamIndex>
+</SmoothStreamingMedia>
+```
 
 Előfordulhat, hogy az örökölt Smooth Streaming ügyfelek némelyike nem támogatja az Ismétlési címkéket, és nem fogja betölteni a jegyzékfájlt. A probléma megoldásához használhatja a Legacy manifest Format paramétert **(Format = FMP4-V20)** , vagy frissítheti az ügyfelet a legújabb verzióra, amely támogatja az ismételt címkéket. További információ: [Smooth Streaming 2,0](media-services-deliver-content-overview.md#fmp4_v20).
 

@@ -3,12 +3,12 @@ title: A fizikai kiszolgáló értékelésének támogatása Azure Migrate
 description: Tudnivalók a fizikai kiszolgálók értékelésének támogatásáról Azure Migrate Server Assessment szolgáltatással
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: e60dc12b1f710fe771b90352872eb7113951a65d
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 1ceea394bd46f6ca239393f0e8367a028cd578f0
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85080505"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955352"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>A fizikai kiszolgáló értékelésének támogatási mátrixa 
 
@@ -25,7 +25,7 @@ A fizikai kiszolgálók értékeléséhez létre kell hoznia egy Azure Migrate p
 **Értékelési korlátok** | Akár 35 000 fizikai kiszolgálót is felfedezheti és felderítheti egyetlen [Azure Migrate projektben](migrate-support-matrix.md#azure-migrate-projects).
 **Projekt korlátai** | Egy Azure-előfizetésben több projektet is létrehozhat. A fizikai kiszolgálókon kívül egy projekt is tartalmazhatja a VMware virtuális gépeket és a Hyper-V virtuális gépeket, az egyes alkalmazásokra vonatkozó értékelési korlátokig.
 **Felfedezés** | A Azure Migrate berendezés akár 1000 fizikai kiszolgálót is képes észlelni.
-**Assessment** | Egyetlen csoportban legfeljebb 35 000 gépet adhat hozzá.<br/><br/> Egyetlen értékeléssel akár 35 000 gépet is megvizsgálhat.
+**Értékelés** | Egyetlen csoportban legfeljebb 35 000 gépet adhat hozzá.<br/><br/> Egyetlen értékeléssel akár 35 000 gépet is megvizsgálhat.
 
 [További](concepts-assessment-calculation.md) információ az értékelésekről.
 
@@ -34,8 +34,8 @@ A fizikai kiszolgálók értékeléséhez létre kell hoznia egy Azure Migrate p
 | **Támogatás**                | **Részletek**               
 | :-------------------       | :------------------- |
 | **Fizikai kiszolgáló üzembe helyezése**       | A fizikai kiszolgáló önálló vagy fürtben is üzembe helyezhető. |
-| **Engedélyek**           | **Windows:** A felderíteni kívánt Windows-kiszolgálókon tartományi rendszergazdának vagy helyi rendszergazdának kell lennie. A felhasználói fiókot hozzá kell adni a következő csoportokhoz: távfelügyeleti felhasználók, Teljesítményfigyelő felhasználók és Teljesítménynapló felhasználói. <br/><br/> **Linux:** Szüksége lesz egy rendszergazdai fiókra a felderíteni kívánt Linux-kiszolgálókon. |
-| **Operációs rendszer** | Az összes operációs rendszer kiértékelése áttelepítésre végezhető. |
+| **Engedélyek**           | **Windows:** A felderíteni kívánt Windows-kiszolgálókon tartományi rendszergazdának kell lennie. A felhasználói fiókot hozzá kell adni a következő csoportokhoz: távfelügyeleti felhasználók, Teljesítményfigyelő felhasználók és Teljesítménynapló felhasználói. <br/><br/> **Linux:** Szüksége lesz egy rendszergazdai fiókra a felderíteni kívánt Linux-kiszolgálókon. |
+| **Operációs rendszer** | A Windows Server 2003 és a SUSE Linux kivételével az összes operációs rendszer kiértékelése áttelepítésre lehetséges. |
 
 
 ## <a name="azure-migrate-appliance-requirements"></a>Azure Migrate-berendezés követelményei

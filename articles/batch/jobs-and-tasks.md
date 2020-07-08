@@ -3,12 +3,12 @@ title: Feladatok és feladatok a Azure Batchban
 description: Ismerje meg a feladatokat és a feladatokat, valamint azt, hogyan használják őket egy Azure Batch munkafolyamatban fejlesztési szempontból.
 ms.topic: conceptual
 ms.date: 05/12/2020
-ms.openlocfilehash: aeffd05a26066675ca320ab4b3c3c09e6807e6df
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 5120b76f34e81c2ceeba88767a656b5ee0d40c2f
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83791077"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955369"
 ---
 # <a name="jobs-and-tasks-in-azure-batch"></a>Feladatok és feladatok a Azure Batchban
 
@@ -22,7 +22,7 @@ A feladatok azt a [készletet](nodes-and-pools.md#pools) határozzák meg, amely
 
 ### <a name="job-priority"></a>A feladatok prioritása
 
-Az Ön által létrehozott feladatokhoz választható feladat-prioritást rendelhet. A Batch szolgáltatás a feladat prioritási értékével határozza meg a feladatütemezés sorrendjét a fiókokon belül (ez nem tévesztendő össze az [ütemezett feladatokkal](#scheduled-jobs)). A prioritási értékek –1000 és 1000 közöttiek, ahol a –1000 a legalacsonyabb prioritás, az 1000 pedig a legmagasabb. A feladatok prioritásának frissítése a [Feladat tulajdonságainak frissítése](https://docs.microsoft.com/rest/api/batchservice/job/update) művelettel (Batch REST) vagy a [CloudJob.Priority](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudjob) tulajdonság (Batch .NET) módosításával lehetséges.
+Az Ön által létrehozott feladatokhoz választható feladat-prioritást rendelhet. A Batch szolgáltatás a feladat prioritási értékével határozza meg a feladatütemezés sorrendjét a fiókokon belül (ez nem tévesztendő össze az [ütemezett feladatokkal](#scheduled-jobs)). A prioritási értékek –1000 és 1000 közöttiek, ahol a –1000 a legalacsonyabb prioritás, az 1000 pedig a legmagasabb. A feladatok prioritásának frissítése a [Feladat tulajdonságainak frissítése](/rest/api/batchservice/job/update) művelettel (Batch REST) vagy a [CloudJob.Priority](/dotnet/api/microsoft.azure.batch.cloudjob) tulajdonság (Batch .NET) módosításával lehetséges.
 
 Egy adott fiókban a magasabb prioritású feladatok élveznek elsőbbséget az ütemezésben az alacsonyabb prioritású feladatokkal szemben. Egy fiók magasabb prioritási értékű feladatai nem élveznek elsőbbséget egy másik fiók alacsonyabb prioritási értékű másik feladatával szemben. Ezek azonban nem előzik meg a már futó alacsonyabb prioritású feladat tevékenységeit.
 
@@ -39,13 +39,13 @@ A feladatok korlátozásai segítségével korlátokat szabhat a feladatokhoz:
 
 Tevékenységeket az ügyfélalkalmazás is adhat a feladatokhoz, vagy megadhat egy [feladatkezelői tevékenységet](#job-manager-task) is. A feladatkezelői tevékenységek tartalmazzák a feladatok tevékenységeinek létrehozásához szükséges információkat, és a készlet egyik számítási csomópontján futnak. A Feladatkezelő feladatot kifejezetten a Batch kezeli. a rendszer azonnal várólistára helyezi a feladatot, ha az nem sikerül. A feladatütemezés által létrehozott feladatok esetében szükség van egy Feladatkezelő-feladatra [, mert](#scheduled-jobs)ez az egyetlen módszer a feladatok definiálására a feladat példányainak létrehozása előtt.
 
-Alapértelmezés szerint a feladatok akkor is aktív állapotban maradnak, ha már a hozzájuk tartozó összes tevékenység lefutott. Ezt módosíthatja, és beállíthatja, hogy a rendszer automatikusan megszüntesse a feladatot, amikor az ahhoz tartozó összes tevékenység befejeződött. Állítsa a feladat **onAllTasksComplete** tulajdonságát ([OnAllTasksComplete](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudjob) a Batch .NET-ben) a *terminatejob* értékre, ha azt szeretné, hogy a rendszer automatikusan megszüntesse a feladatot, amikor a hozzá tartozó összes tevékenység befejezett állapotba kerül.
+Alapértelmezés szerint a feladatok akkor is aktív állapotban maradnak, ha már a hozzájuk tartozó összes tevékenység lefutott. Ezt módosíthatja, és beállíthatja, hogy a rendszer automatikusan megszüntesse a feladatot, amikor az ahhoz tartozó összes tevékenység befejeződött. Állítsa a feladat **onAllTasksComplete** tulajdonságát ([OnAllTasksComplete](/dotnet/api/microsoft.azure.batch.cloudjob) a Batch .NET-ben) a *terminatejob* értékre, ha azt szeretné, hogy a rendszer automatikusan megszüntesse a feladatot, amikor a hozzá tartozó összes tevékenység befejezett állapotba kerül.
 
 A Batch szolgáltatás olyan feladatot tekint, amely *nem* teljesíti az összes feladatot. Ezért ezt a funkciót általában egy [feladatkezelői tevékenységgel](#job-manager-task) használjuk. Ha feladatkezelő nélkül szeretné használni az automatikus feladatmegszüntetési funkciót, először állítsa az új feladat **onAllTasksComplete** tulajdonságát a *noaction* értékre, és csak akkor állítsa be a *terminatejob* értéket, ha már az összes kívánt tevékenységet hozzáadta a feladathoz.
 
 ### <a name="scheduled-jobs"></a>Ütemezett feladatok
 
-A [Feladatütemezéssel](https://docs.microsoft.com/rest/api/batchservice/jobschedule) rendszeresen előforduló feladatokat ütemezhet a Batch szolgáltatásban. A feladatütemezés meghatározza, mikor fussanak a feladatok, és tartalmazza a futtatandó feladatok specifikációit. Megadhatja az ütemezés időtartamát (mennyi ideig és mikor van érvényben az ütemezés), valamint azt, hogy a rendszer milyen gyakran hozza létre a feladatokat az ütemezett időszakban.
+A [Feladatütemezéssel](/rest/api/batchservice/jobschedule) rendszeresen előforduló feladatokat ütemezhet a Batch szolgáltatásban. A feladatütemezés meghatározza, mikor fussanak a feladatok, és tartalmazza a futtatandó feladatok specifikációit. Megadhatja az ütemezés időtartamát (mennyi ideig és mikor van érvényben az ütemezés), valamint azt, hogy a rendszer milyen gyakran hozza létre a feladatokat az ütemezett időszakban.
 
 ## <a name="tasks"></a>Feladatok
 
@@ -153,11 +153,11 @@ További részletekért tekintse meg az [Azure-batch-Samples](https://github.com
 
 ### <a name="environment-settings-for-tasks"></a>Környezeti beállítások tevékenységekhez
 
-A Batch-szolgáltatás által végrehajtott minden egyes feladat hozzáférhet azokhoz a környezeti változókhoz, amelyeket a számítási csomópontokon beállít. Ez magában foglalja a Batch szolgáltatás által definiált környezeti változókat (a[szolgáltatás által definiált](https://docs.microsoft.com/azure/batch/batch-compute-node-environment-variables) és a feladatokhoz definiálható egyéni környezeti változókat is). A tevékenységek által végrehajtott alkalmazások és parancsfájlok a végrehajtás során szintén elérik ezeket a környezeti változókat.
+A Batch-szolgáltatás által végrehajtott minden egyes feladat hozzáférhet azokhoz a környezeti változókhoz, amelyeket a számítási csomópontokon beállít. Ez magában foglalja a Batch szolgáltatás által definiált környezeti változókat (a[szolgáltatás által definiált](./batch-compute-node-environment-variables.md) és a feladatokhoz definiálható egyéni környezeti változókat is). A tevékenységek által végrehajtott alkalmazások és parancsfájlok a végrehajtás során szintén elérik ezeket a környezeti változókat.
 
-Az egyéni környezeti változókat a tevékenységek és a feladatok szintjén is megadhatja: ehhez töltse ki a kívánt elemek *környezeti beállítások* tulajdonságait. További részletekért tekintse meg a [feladat hozzáadása egy feladathoz](https://docs.microsoft.com/rest/api/batchservice/task/add?)] műveletet (batch REST API) vagy a [CloudTask. EnvironmentSettings](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudtask) és a [CloudJob. CommonEnvironmentSettings](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudjob) tulajdonságot a Batch .net-ben.
+Az egyéni környezeti változókat a tevékenységek és a feladatok szintjén is megadhatja: ehhez töltse ki a kívánt elemek *környezeti beállítások* tulajdonságait. További részletekért tekintse meg a [feladat hozzáadása egy feladathoz](/rest/api/batchservice/task/add?)] műveletet (batch REST API) vagy a [CloudTask. EnvironmentSettings](/dotnet/api/microsoft.azure.batch.cloudtask) és a [CloudJob. CommonEnvironmentSettings](/dotnet/api/microsoft.azure.batch.cloudjob) tulajdonságot a Batch .net-ben.
 
-Az ügyfélalkalmazás vagy szolgáltatás a [Get information about a task](https://docs.microsoft.com/rest/api/batchservice/task/get) (Tevékenység információinak lekérése) művelet (Batch REST) segítségével, vagy a [CloudTask.EnvironmentSettings](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudtask) tulajdonság (Batch .NET) elérésével képes beszerezni a tevékenység (szolgáltatás által meghatározott és egyéni) környezeti változóit. A számítási csomóponton végrehajtott folyamatok például a közismert `%VARIABLE_NAME%` (Windows) vagy a `$VARIABLE_NAME` (Linux) szintaxis segítségével képesek elérni ezeket és más környezeti változókat a csomóponton.
+Az ügyfélalkalmazás vagy szolgáltatás a [Get information about a task](/rest/api/batchservice/task/get) (Tevékenység információinak lekérése) művelet (Batch REST) segítségével, vagy a [CloudTask.EnvironmentSettings](/dotnet/api/microsoft.azure.batch.cloudtask) tulajdonság (Batch .NET) elérésével képes beszerezni a tevékenység (szolgáltatás által meghatározott és egyéni) környezeti változóit. A számítási csomóponton végrehajtott folyamatok például a közismert `%VARIABLE_NAME%` (Windows) vagy a `$VARIABLE_NAME` (Linux) szintaxis segítségével képesek elérni ezeket és más környezeti változókat a csomóponton.
 
 Az összes szolgáltatás által definiált környezeti változót tartalmazó teljes listát megtalálja a [Számítási csomópont környezeti változói](batch-compute-node-environment-variables.md) című részben.
 

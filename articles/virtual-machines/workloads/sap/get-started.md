@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/24/2020
+ms.date: 07/04/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fd170d505286d57f383af50da282e120167fe499
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.openlocfilehash: 6f2462e9bba909099ea3bb2910e26596427c0a4e
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85367359"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954298"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Az Azure használata az SAP munkaterhelés-forgatókönyvek üzemeltetéséhez és futtatásához
 
@@ -55,14 +55,6 @@ A dokumentumok egy sorozata az Azure-ban (nagyméretű példányokon), vagy röv
 
 ## <a name="sap-hana-on-azure-virtual-machines"></a>SAP HANA Azure-beli virtuális gépeken
 A dokumentáció ezen szakasza a SAP HANA különböző szempontjait ismerteti. Előfeltételként ismernie kell az Azure legfontosabb szolgáltatásait, amelyek az Azure IaaS általános szolgáltatásait biztosítják. Ezért az Azure számítási, tárolási és hálózatkezelési ismereteire van szüksége. Ezeknek a témaköröknek a kezelése az SAP NetWeaver-hez kapcsolódó [Azure tervezési útmutatóban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide)történik. 
-
-Az Azure-beli HANA-ról további információt a következő cikkekben és alcikkeiben talál:
-
-- [SAP HANA infrastruktúrakonfigurációk és -műveletek az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations)
-- [SAP HANA magas rendelkezésre állás az Azure Virtual Machines szolgáltatásban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-overview)
-- [SAP HANA magas rendelkezésre állása Azure-beli virtuális gépeken](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability)
-- [Biztonsági mentési útmutató Azure-beli virtuális gépek SAP HANAához](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide)
-
 
  
 
@@ -112,6 +104,8 @@ Az Azure-szolgáltatások SAP-összetevőkbe való integrálásával kapcsolatos
 
 ## <a name="change-log"></a>Módosítási napló
 
+- 7/04/2020: az [Azure monitor for SAP Solutions (előzetes verzió)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/azure-monitor-overview) kiadása
+- 07/01/2020: kevésbé költséges tárolási konfigurációra utal, amely az Azure Premium Storage burst funkcióján alapul, [SAP HANA Azure-beli virtuális gépek tárolási konfigurációinak](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) dokumentálása 
 - 06/24/2020: változás a [pacemaker beállítása a SLES az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) az új továbbfejlesztett Azure kerítés-ügynök és az Azure kerítési ügynökön alapuló eszközök rugalmasabb STONITH-konfigurációjának kiadásához 
 - 06/24/2020: változás a [pacemaker beállítása a RHEL az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker) a rugalmasabb STONITH-konfiguráció felszabadításához
 - 06/23/2020: az [azure Virtual Machines tervezésének és megvalósításának változásai az SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide) útmutatóban és az [Azure Storage-típusok](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage) bevezetése az SAP számítási feladatok útmutatójában

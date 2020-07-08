@@ -11,12 +11,12 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 05/25/2018
 ms.reviewer: jmartens, mldocs
-ms.openlocfilehash: 429ba2ae44788430bfa9d308b8de5daff25954d0
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 6bf0d889d70272988c9d2b243ae255f9654656bd
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84711170"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955590"
 ---
 # <a name="view-and-delete-in-product-user-data-from-azure-ai-gallery"></a>Terméken belüli felhasználói adatok megtekintése és törlése Azure AI Gallery
 
@@ -45,11 +45,13 @@ A katalógusra adott válaszokat JSON formátumban adja vissza a rendszer.
 ### <a name="get-an-author-id"></a>Szerző AZONOSÍTÓjának beolvasása
 A Szerző azonosítója a Azure AI Gallery való közzétételkor használt e-mail-cím alapján történik. Nem változik:
 
-1.    Jelentkezzen be [Azure AI Galleryba](https://gallery.azure.ai/).
-2.    Kattintson a profil képre a jobb felső sarokban, majd a fiók nevét a profil oldal betöltéséhez.
-3.    A címsorban található URL-cím a következő alfanumerikus azonosítót jeleníti meg `authorId=` . Például az URL-címhez:`https://gallery.azure.ai/Home/Author?authorId=99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
-        
-    Szerző azonosítója:`99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
+1. Jelentkezzen be [Azure AI Galleryba](https://gallery.azure.ai/).
+2. Kattintson a profil képre a jobb felső sarokban, majd a fiók nevét a profil oldal betöltéséhez.
+3. A címsorban található URL-cím a következő alfanumerikus azonosítót jeleníti meg `authorId=` . Például a következő URL-címhez: \
+    `https://gallery.azure.ai/Home/Author?authorId=99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
+
+    Szerző azonosítója: \
+    `99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
 
 ### <a name="get-your-access-token"></a>Hozzáférési jogkivonat beszerzése
 
@@ -67,16 +69,17 @@ Hozzáférési jogkivonat beszerzéséhez meg kell vizsgálnia `DataLabAccessTok
 ### <a name="view-user-information"></a>Felhasználói adatok megtekintése
 Az előző lépésekben kapott szerzői azonosító használatával tekintse meg a felhasználói profil információit a `[AuthorId]` következő URL-cím lecserélése után:
 
-    https://catalog.cortanaanalytics.com/users/[AuthorID]
+`https://catalog.cortanaanalytics.com/users/[AuthorID]`
 
 Például ez az URL-kérelem:
-    
-    https://catalog.cortanaanalytics.com/users/99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA
+
+`https://catalog.cortanaanalytics.com/users/99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
 
 Egy választ ad vissza, például:
 
-    {"entities_count":9,"contribution_score":86.351575190956922,"scored_at":"2018-05-07T14:30:25.9305671+00:00","contributed_at":"2018-05-07T14:26:55.0381756+00:00","created_at":"2017-12-15T00:49:15.6733094+00:00","updated_at":"2017-12-15T00:49:15.6733094+00:00","name":"First Last","slugs":["First-Last"],"tenant_id":"14b2744cf8d6418c87ffddc3f3127242","community_id":"9502630827244d60a1214f250e3bbca7","id":"99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA","_links":{"self":"https://catalog.azureml.net/tenants/14b2744cf8d6418c87ffddc3f3127242/communities/9502630827244d60a1214f250e3bbca7/users/99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA"},"etag":"\"2100d185-0000-0000-0000-5af063010000\""}
-
+```json
+{"entities_count":9,"contribution_score":86.351575190956922,"scored_at":"2018-05-07T14:30:25.9305671+00:00","contributed_at":"2018-05-07T14:26:55.0381756+00:00","created_at":"2017-12-15T00:49:15.6733094+00:00","updated_at":"2017-12-15T00:49:15.6733094+00:00","name":"First Last","slugs":["First-Last"],"tenant_id":"14b2744cf8d6418c87ffddc3f3127242","community_id":"9502630827244d60a1214f250e3bbca7","id":"99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA","_links":{"self":"https://catalog.azureml.net/tenants/14b2744cf8d6418c87ffddc3f3127242/communities/9502630827244d60a1214f250e3bbca7/users/99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA"},"etag":"\"2100d185-0000-0000-0000-5af063010000\""}
+```
 
 ### <a name="view-public-entities"></a>Nyilvános entitások megtekintése
 
@@ -84,11 +87,11 @@ A katalógus API a közzétett entitásokkal kapcsolatos adatokat tárolja a Azu
 
 A közzétett entitások megtekintéséhez látogasson el a következő URL-címre, és cserélje le `[AuthorId]` a kifejezést a [Szerző azonosítójának beolvasása](#get-an-author-id) elemre.
 
-    https://catalog.cortanaanalytics.com/entities?$filter=author/id eq '[AuthorId]'
+`https://catalog.cortanaanalytics.com/entities?$filter=author/id eq '[AuthorId]'`
 
 Például:
 
-    https://catalog.cortanaanalytics.com/entities?$filter=author/id eq '99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA'
+`https://catalog.cortanaanalytics.com/entities?$filter=author/id eq '99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA'`
 
 ### <a name="view-unlisted-and-public-entities"></a>Nem listázott és nyilvános entitások megtekintése
 

@@ -9,12 +9,12 @@ ms.custom: tracking-python
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: 4c4ac1d332c4348941963b90d25aefb4fdf30ce4
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 34b4bbd9c2ed088aca10801c22c5f189264fdb1f
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560223"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955539"
 ---
 # <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>Hivatkozás: Ubuntu (Linux) Data Science Virtual Machine
 
@@ -263,8 +263,10 @@ A virtuális gép olyan gépi tanulási eszközöket és algoritmusokat tartalma
 * **Python**: a anaconda Python a gépi tanulási algoritmusokkal, például a Scikit-Learn csomaggal rendelkezik. A parancs használatával más kódtárakat is telepíthet `pip install` .
 * **LightGBM**: gyors, elosztott, nagy teljesítményű színátmenet-növelő keretrendszer döntési fa algoritmusok alapján.
 * **R**: a gépi tanulási függvények széles tárháza érhető el az r-hez. az előre telepített kódtárak közé tartozik az LM, a GLM, a randomForest és a rpart. A következő parancs futtatásával más kódtárakat is telepíthet:
-  
-        install.packages(<lib name>)
+
+    ```r
+    install.packages(<lib name>)
+    ```
 
 Íme néhány további információ a lista első három gépi tanulási eszközéről.
 
@@ -344,6 +346,6 @@ Ekkor megnyílik egy grafikus felület, amely fülekből áll. A következő rö
 
 Kiléphet a csörgő és az R lehetőségből. Most már módosíthatja a generált R-szkriptet. Használhatja a parancsfájlt is, és bármikor futtathatja, hogy megismételje a csörgő felhasználói felületen végzett összes műveletet. Különösen az R-ben kezdőknek, így gyorsan elvégezheti az elemzést és a gépi tanulást egy egyszerű grafikus felületen, az R-ben pedig automatikusan generálhat kódot a módosításhoz vagy a megismeréshez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További kérdései vannak? Hozzon létre egy [támogatási jegyet](https://azure.microsoft.com/support/create-ticket/).

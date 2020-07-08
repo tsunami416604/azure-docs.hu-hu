@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
-ms.openlocfilehash: 059816284e39c65bb772bd02f066d73da624722f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 87348899a70d45fbfbce805bf2169f9f5e4e3f3e
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74887764"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85956763"
 ---
 # <a name="crop-videos-with-media-encoder-standard"></a>Videók körülvágása a Media Encoder Standarddel  
 
@@ -43,89 +43,91 @@ A ábrán látható példában:
 5. A kódolás szakaszban a kérdés, hogy három réteget hoz létre, a 1440x1080, a 960x720 és a 480x360 felbontása
 
 ### <a name="json-preset"></a>JSON-készlet
+
+```json
+{
+  "Version": 1.0,
+  "Sources": [
     {
-      "Version": 1.0,
-      "Sources": [
-        {
-          "Streams": [],
-          "Filters": {
-            "Crop": {
-                "X": 240,
-                "Y": 0,
-                "Width": 1440,
-                "Height": 1080
-            }
-          },
-          "Pad": true
+      "Streams": [],
+      "Filters": {
+        "Crop": {
+          "X": 240,
+          "Y": 0,
+          "Width": 1440,
+          "Height": 1080
         }
-      ],
-      "Codecs": [
+      },
+      "Pad": true
+    }
+  ],
+  "Codecs": [
+    {
+      "KeyFrameInterval": "00:00:02",
+      "H264Layers": [
         {
-          "KeyFrameInterval": "00:00:02",
-          "H264Layers": [
-            {
-              "Profile": "Auto",
-              "Level": "auto",
-              "Bitrate": 3400,
-              "MaxBitrate": 3400,
-              "BufferWindow": "00:00:05",
-              "Width": 1440,
-              "Height": 1080,
-              "BFrames": 3,
-              "ReferenceFrames": 3,
-              "AdaptiveBFrame": true,
-              "Type": "H264Layer",
-              "FrameRate": "0/1"
-            },
-            {
-              "Profile": "Auto",
-              "Level": "auto",
-              "Bitrate": 2250,
-              "MaxBitrate": 2250,
-              "BufferWindow": "00:00:05",
-              "Width": 960,
-              "Height": 720,
-              "BFrames": 3,
-              "ReferenceFrames": 3,
-              "AdaptiveBFrame": true,
-              "Type": "H264Layer",
-              "FrameRate": "0/1"
-            },
-            {
-              "Profile": "Auto",
-              "Level": "auto",
-              "Bitrate": 1250,
-              "MaxBitrate": 1250,
-              "BufferWindow": "00:00:05",
-              "Width": 480,
-              "Height": 360,
-              "BFrames": 3,
-              "ReferenceFrames": 3,
-              "AdaptiveBFrame": true,
-              "Type": "H264Layer",
-              "FrameRate": "0/1"
-            }
-          ],
-          "Type": "H264Video"
+          "Profile": "Auto",
+          "Level": "auto",
+          "Bitrate": 3400,
+          "MaxBitrate": 3400,
+          "BufferWindow": "00:00:05",
+          "Width": 1440,
+          "Height": 1080,
+          "BFrames": 3,
+          "ReferenceFrames": 3,
+          "AdaptiveBFrame": true,
+          "Type": "H264Layer",
+          "FrameRate": "0/1"
         },
         {
-          "Profile": "AACLC",
-          "Channels": 2,
-          "SamplingRate": 48000,
-          "Bitrate": 128,
-          "Type": "AACAudio"
+          "Profile": "Auto",
+          "Level": "auto",
+          "Bitrate": 2250,
+          "MaxBitrate": 2250,
+          "BufferWindow": "00:00:05",
+          "Width": 960,
+          "Height": 720,
+          "BFrames": 3,
+          "ReferenceFrames": 3,
+          "AdaptiveBFrame": true,
+          "Type": "H264Layer",
+          "FrameRate": "0/1"
+        },
+        {
+          "Profile": "Auto",
+          "Level": "auto",
+          "Bitrate": 1250,
+          "MaxBitrate": 1250,
+          "BufferWindow": "00:00:05",
+          "Width": 480,
+          "Height": 360,
+          "BFrames": 3,
+          "ReferenceFrames": 3,
+          "AdaptiveBFrame": true,
+          "Type": "H264Layer",
+          "FrameRate": "0/1"
         }
       ],
-      "Outputs": [
-        {
-          "FileName": "{Basename}_{Width}x{Height}_{VideoBitrate}.mp4",
-          "Format": {
-            "Type": "MP4Format"
-          }
-        }
-      ]
+      "Type": "H264Video"
+    },
+    {
+      "Profile": "AACLC",
+      "Channels": 2,
+      "SamplingRate": 48000,
+      "Bitrate": 128,
+      "Type": "AACAudio"
     }
-
+  ],
+  "Outputs": [
+    {
+      "FileName": "{Basename}_{Width}x{Height}_{VideoBitrate}.mp4",
+      "Format": {
+        "Type": "MP4Format"
+      }
+    }
+  ]
+}
+```
 
 ## <a name="restrictions-on-cropping"></a>A levágás korlátozásai
 A levágási funkció manuális. A bemeneti videót egy megfelelő szerkesztési eszközbe kell betölteni, amely lehetővé teszi az érdekes keretek kiválasztását, a kurzort a kivágási négyszög eltolásának meghatározásához, hogy meghatározza az adott videóhoz hangolt kódolási beállításkészletet stb. Ez a funkció nem teszi lehetővé a következő műveleteket: a fekete postafiók/pillarbox szegélyének automatikus észlelése és eltávolítása a bemeneti videóban.

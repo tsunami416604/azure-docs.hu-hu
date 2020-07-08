@@ -4,15 +4,15 @@ description: Ez a cikk a Azure Cosmos DB globális elosztásával kapcsolatos te
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 07/02/2020
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 161927e02782a294165b0304c259a63f8336067c
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 7e315a7366793d355967f777cbc1dda0f9277087
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118134"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955913"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---under-the-hood"></a>Globális Adatterjesztés a Azure Cosmos DB-ben – a motorháztető alatt
 

@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 03/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: dd4d6e1632ba858e709f6d463a6da4779314e64d
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 0a25301bac125cd95b975a5ba1fc0cce47b56abd
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262021"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954094"
 ---
 # <a name="connect-a-mongodb-application-to-azure-cosmos-db"></a>MongoDB-alkalmazás csatlakoztatása az Azure Cosmos DB-hez
 
@@ -37,7 +37,7 @@ Ez az oktatóanyag két módszert ismertet a kapcsolati sztringgel kapcsolatos i
 4. Válassza ki a platformot (**.net**, **Node.js**, **MongoDB Shell**, **Java**, **Python**). Ha nem látja a felsorolt illesztőprogramot vagy eszközt, ne aggódjon – a további kapcsolatok kódrészleteit folyamatosan dokumentáljuk. Kérjük, írja le alább, hogy mit szeretne látni. Ha szeretné megismerni a saját kapcsolatok kiépítésének módját, olvassa el [a fiók kapcsolódási karakterláncával kapcsolatos információkat](#get-the-mongodb-connection-string-to-customize).
 5. Másolja és illessze be a kódrészletet a MongoDB alkalmazásba.
 
-    ![Gyors üzembe helyezés panel](./media/connect-mongodb-account/QuickStartBlade.png)
+    :::image type="content" source="./media/connect-mongodb-account/QuickStartBlade.png" alt-text="Gyors üzembe helyezés panel":::
 
 ## <a name="get-the-mongodb-connection-string-to-customize"></a>A MongoDB-kapcsolatok karakterláncának beolvasása a testreszabáshoz
 
@@ -51,13 +51,11 @@ Ez az oktatóanyag két módszert ismertet a kapcsolati sztringgel kapcsolatos i
 ## <a name="connection-string-requirements"></a>A kapcsolatok karakterláncának követelményei
 
 > [!Important]
-> Azure Cosmos DB szigorú biztonsági követelményekkel és szabványokkal rendelkezik. Azure Cosmos DB fiókoknak hitelesítésre és biztonságos kommunikációra van szükségük *TLS protokollon*keresztül. 
->
->
+> Azure Cosmos DB szigorú biztonsági követelményekkel és szabványokkal rendelkezik. Azure Cosmos DB fiókoknak hitelesítésre és biztonságos kommunikációra van szükségük *TLS protokollon*keresztül.
 
 A Azure Cosmos DB támogatja a szabványos MongoDB-kapcsolati karakterlánc URI-formátumát, néhány konkrét követelménysel: a Azure Cosmos DB fiókoknak hitelesítésre és biztonságos kommunikációra van szükség a TLS protokollon keresztül. Tehát a kapcsolatok karakterláncának formátuma a következőket teszi:
 
-    mongodb://username:password@host:port/[database]?ssl=true
+`mongodb://username:password@host:port/[database]?ssl=true`
 
 A karakterlánc értékei a korábban látható **kapcsolatok karakterlánc** paneljén érhetők el:
 
@@ -70,7 +68,7 @@ A karakterlánc értékei a korábban látható **kapcsolatok karakterlánc** pa
 
 Tegyük fel például, hogy a fiók megjelenik a **kapcsolatok karakterlánca** panelen. Érvényes a kapcsolatok karakterlánca:
 
-    mongodb://contoso123:0Fc3IolnL12312asdfawejunASDF@asdfYXX2t8a97kghVcUzcDv98hawelufhawefafnoQRGwNj2nMPL1Y9qsIr9Srdw==@contoso123.documents.azure.com:10255/mydatabase?ssl=true
+`mongodb://contoso123:0Fc3IolnL12312asdfawejunASDF@asdfYXX2t8a97kghVcUzcDv98hawelufhawefafnoQRGwNj2nMPL1Y9qsIr9Srdw==@contoso123.documents.azure.com:10255/mydatabase?ssl=true`
 
 ## <a name="next-steps"></a>További lépések
 

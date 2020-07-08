@@ -1,7 +1,7 @@
 ---
-title: Szöveg olvasása képekből és dokumentumokból – Computer Vision
+title: Optikai karakterfelismerés (OCR) – Computer Vision
 titleSuffix: Azure Cognitive Services
-description: Az optikai karakterfelismeréssel (OCR) és szöveggel kapcsolatos fogalmak a képekből és dokumentumokból a Computer Vision API használatával nyomtatott és kézírásos szövegekhez.
+description: Az optikai karakterfelismeréssel (OCR) kapcsolatos fogalmak a képekből és dokumentumokból nyomtatott és kézzel írott szöveggel a Computer Vision API használatával.
 services: cognitive-services
 author: msbbonsu
 manager: netahw
@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 06/23/2020
 ms.author: t-bebon
 ms.custom: seodec18
-ms.openlocfilehash: 416a7edfdcd7e7915aa7886a8f53cf822b43fe93
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: d1c642a660b24cfc54c9c4308b8956582e13d50a
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85560809"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954740"
 ---
-# <a name="read-text-from-images-and-documents"></a>Szöveg beolvasása képekből és dokumentumokból
+# <a name="optical-character-recognition-ocr"></a>Optikai karakterfelismerés (OCR)
 
 A Computer Vision olyan új, mélyreható, optikai karakterfelismerési (OCR) képességeket tartalmaz, amelyek kinyerik a nyomtatott vagy a kézírásos szöveget a képekből és a PDF-dokumentumokból. Computer Vision kinyeri az analóg dokumentumokból (képekből, beolvasott dokumentumokból) és a digitalizált dokumentumokból származó szöveget. Szöveget is kinyerheti a képekből a vadonban, például a lemezekről vagy a sorozatszámokkal rendelkező tárolók, valamint a dokumentumok – számlák, számlák, pénzügyi jelentések, cikkek és egyebek között. Ez az OCR funkció a felhőben vagy a helyszínen (tárolókban) felügyelt szolgáltatás részeként érhető el. Emellett támogatja a virtuális hálózatokat és a magánhálózati végpontokat a vállalati szintű megfelelőségi és adatvédelmi igények kielégítése érdekében.
 

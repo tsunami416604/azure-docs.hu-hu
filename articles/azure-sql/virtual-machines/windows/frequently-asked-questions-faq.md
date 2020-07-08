@@ -13,21 +13,21 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: c0302c8bac483979211b2ec7cb91c8a70b69cb9b
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: 7a44e9c6b0545bce83f17c3bf85149d4ebe95dc1
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84669019"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955675"
 ---
-# <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Windowsos, Azure-beli virtuális gépeken futó SQL Serverrel kapcsolatos gyakori kérdések
+# <a name="frequently-asked-questions-for-sql-server-on-azure-vms"></a>Gyakori kérdések az Azure-beli virtuális gépek SQL Serveréről
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 > [!div class="op_single_selector"]
 > * [Windows](frequently-asked-questions-faq.md)
 > * [Linux](../linux/frequently-asked-questions-faq.md)
 
-Ez a cikk az [Azure-beli Windows Virtual Machines (VM) SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)futtatásával kapcsolatos leggyakoribb kérdésekre ad választ.
+Ez a cikk a [Windows Azure Virtual Machines (VM) SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)futtatásával kapcsolatos leggyakoribb kérdésekre ad választ.
 
 [!INCLUDE [support-disclaimer](../../../../includes/support-disclaimer.md)]
 
@@ -85,7 +85,7 @@ Ez a cikk az [Azure-beli Windows Virtual Machines (VM) SQL Server](https://azure
 
    Először hozzon létre egy SQL Server példánnyal rendelkező Azure-beli virtuális gépet. Ezután telepítse át a helyszíni adatbázisait erre a példányra. Az adatáttelepítési stratégiákat lásd: [SQL Server adatbázis áttelepítése egy Azure-beli virtuális gépen SQL Server](migrate-to-vm-from-sql-server.md).
 
-## <a name="licensing"></a>Licencelés
+## <a name="licensing"></a>Licencek
 
 1. **Hogyan telepíthetem az SQL Server egy licencelt példányát egy Azure-beli virtuális gépen?**
 
@@ -204,7 +204,7 @@ Ez a cikk az [Azure-beli Windows Virtual Machines (VM) SQL Server](https://azure
   
    
 
-## <a name="general"></a>Általános
+## <a name="general"></a>Általános kérdések
 
 1. **Az Azure-beli virtuális gépeken támogatottak-e SQL Server feladatátvevő fürt példányai (a)?**
 
@@ -225,7 +225,7 @@ Ez a cikk az [Azure-beli Windows Virtual Machines (VM) SQL Server](https://azure
    
     Igen. A helyi DTC SQL Server 2016 SP2 és újabb rendszereken támogatott. Az Always On rendelkezésre állási csoportok használatakor azonban meg kell vizsgálni az alkalmazásokat, mivel a feladatátvétel során a repülés során végzett tranzakciók sikertelenek lesznek, és újra kell próbálkozni. A fürtözött DTC a Windows Server 2019-től kezdődően érhető el. 
 
-## <a name="resources"></a>Források
+## <a name="resources"></a>Erőforrások
 
 **Windows rendszerű virtuális gépek**:
 

@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/19/2020
-ms.openlocfilehash: cfe35f81526a729092edf522f693ccd18494d1ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 023b731216605746e838306ce1ab69ebe8c6c6fd
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137824"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955777"
 ---
 # <a name="multiclass-boosted-decision-tree"></a>Többosztályos súlyozott döntési fa
 
@@ -40,21 +40,21 @@ Az ilyen típusú modellt a [Train modellel](././train-model.md)is betaníthatja
 
 1. A **kihagyott levelek maximális száma a fa** korlátaiban a bármely fában létrehozható terminál-csomópontok (levelek) maximális száma.
     
-        By increasing this value, you potentially increase the size of the tree and achieve higher precision, at the risk of overfitting and longer training time.
+    Ennek az értéknek a növelésével növelheti a fa méretét, és nagyobb pontosságot érhet el, ha a túlilleszkedés és a hosszabb betanítási idő fennáll.
   
 1. A **mintavételek minimális száma a levél csomópontjaiban** azt jelzi, hogy hány esetben szükséges a terminál csomópont (levél) létrehozása a fában.  
 
-         By increasing this value, you increase the threshold for creating new rules. For example, with the default value of 1, even a single case can cause a new rule to be created. If you increase the value to 5, the training data would have to contain at least five cases that meet the same conditions.
+    Az érték növelésével növelheti az új szabályok létrehozásának küszöbértékét. Ha például az alapértelmezett érték 1, akkor akár egyetlen esetben is létrehozhat egy új szabályt. Ha az értéket 5-re emeli, a betanítási adatmennyiségnek legalább öt olyan esetet kellene tartalmaznia, amelyek megfelelnek ugyanazoknak a feltételeknek.
 
 1. A **tanulási ráta** meghatározza a lépés méretét a tanulás során. Adjon meg egy 0 és 1 közötti számot.
 
-         The learning rate determines how fast or slow the learner converges on an optimal solution. If the step size is too large, you might overshoot the optimal solution. If the step size is too small, training takes longer to converge on the best solution.
+    A tanulási arány határozza meg, hogy a tanuló milyen gyorsan vagy lassabban konvergál az optimális megoldáson. Ha a lépés mérete túl nagy, lehet, hogy az optimális megoldást is lelövi. Ha a lépés mérete túl kicsi, a képzés továbbra is a legjobb megoldáshoz közeledik.
 
 1. A **felépített fák száma** azt jelzi, hogy hány döntési fát kell létrehozni az Ensemble-ban. További döntési fák létrehozásával lehetőség van jobb lefedettségre, de a képzési idő növekedni fog.
 
 1. A **véletlenszerű számú magok** opcionálisan nem negatív egész számot állítanak be a véletlenszerű mag értékeként való használatra. A vetőmagok megadásával biztosítható az azonos adatokkal és paraméterekkel rendelkező futtatások közötti reprodukálhatóság.  
 
-         The random seed is set by default to 42. Successive runs using different random seeds can have different results.
+    A véletlenszerű mag beállítása alapértelmezés szerint 42. A különböző véletlenszerű magok használatával végzett egymást követő futtatások eltérő eredménnyel rendelkezhetnek.
 
 1. A modell betanítása:
 
