@@ -1,18 +1,18 @@
 ---
 title: Cloud Solution Provider – Microsoft kereskedelmi piactér
 description: Ismerje meg, hogyan értékesítheti ajánlatait a kereskedelmi piactéren a Microsoft Cloud Solution Provider (CSP) program partneri csatornáján keresztül.
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 04/16/2020
-ms.author: dsindona
-ms.openlocfilehash: 633656af72790c7dfebeee567713875ce0d609b4
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: d6c3af312717627a1719c5f1029ae638e7d4f827
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964209"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86104435"
 ---
 # <a name="cloud-solution-provider-program"></a>Cloud Solution Provider program
 
@@ -189,7 +189,7 @@ Ha a Cloud Partner Portal a CSP-csatornát választotta, a kiadónak olyan URL-c
 
 ![Cloud Partner Portal CSP-biztosíték információi](media/marketplace-publishers-guide/cpp-csp-information.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Látogasson el az [Azure Marketplace és a AppSource kiadói útmutatóba](marketplace-publishers-guide.md).
 

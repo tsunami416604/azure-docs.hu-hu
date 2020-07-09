@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: wachegha
-ms.openlocfilehash: e3cb45ee2cfa299a482391d59359b40baea0feb5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd4f57350e97ad38c2c78aec29b1e51d775e8a02
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85517337"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86104112"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>API hozzáadása az Azure statikus Web Apps előzetes verziójához Azure Functions
 
@@ -72,20 +72,20 @@ A Visual Studio Code egy Azure Functions projektet hoz létre egy HTTP által ak
 
 Az alkalmazás mostantól az alábbi példához hasonló projekt-szerkezettel rendelkezik.
 
-    ```files
-    ├── api
-    │   ├── GetMessage
-    │   │   ├── function.json
-    │   │   ├── index.js
-    │   │   └── sample.dat
-    │   ├── host.json
-    │   ├── local.settings.json
-    │   ├── package.json
-    │   └── proxies.json
-    ├── index.html
-    ├── readme.md
-    └── styles.css
-    ```
+```files
+├── api
+│   ├── GetMessage
+│   │   ├── function.json
+│   │   ├── index.js
+│   │   └── sample.dat
+│   ├── host.json
+│   ├── local.settings.json
+│   ├── package.json
+│   └── proxies.json
+├── index.html
+├── readme.md
+└── styles.css
+```
 
 Ezután módosítsa a `GetMessage` függvényt, hogy egy üzenetet ad vissza az előtérben.
 
@@ -269,7 +269,7 @@ Ha nem szeretné tovább használni ezt az alkalmazást, a következő lépések
 1. Írja be a **myResourceGroup** szöveget a szövegmezőbe
 1. Válassza a **Törlés** elemet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Alkalmazásbeállítások konfigurálása](./application-settings.md)

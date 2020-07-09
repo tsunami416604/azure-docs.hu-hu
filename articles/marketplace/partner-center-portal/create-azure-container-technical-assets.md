@@ -1,17 +1,18 @@
 ---
 title: Az Azure Container által kínált technikai fogalmak – Microsoft kereskedelmi piactér
 description: Technikai erőforrások és irányelvek a tárolók Azure Marketplace-en való konfigurálásának megkönnyítéséhez.
-author: anbene
-ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: anbene
+ms.author: mingshen
 ms.date: 04/09/2020
-ms.openlocfilehash: 8f32313529da965573a6c9884daee678e3bc64cc
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: da0fa53567e5c58db8e8394ef5562255d8a7142d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85958599"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86104266"
 ---
 # <a name="create-an-azure-container-offer"></a>Azure Container-ajánlat létrehozása
 
@@ -57,6 +58,6 @@ További információkért tekintse meg a következő oktatóanyagokat:
 - [Oktatóanyag: tároló-rendszerkép létrehozása a Azure Container Instances való üzembe helyezéshez](../../container-instances/container-instances-tutorial-prepare-app.md)
 - [Oktatóanyag: tároló-lemezképek létrehozása és üzembe helyezése a felhőben Azure Container Registry feladatokkal](../../container-registry/container-registry-tutorial-quick-task.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Hozza létre a tároló ajánlatát](create-azure-container-offer.md).

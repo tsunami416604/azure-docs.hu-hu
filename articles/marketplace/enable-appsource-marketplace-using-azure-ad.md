@@ -1,17 +1,18 @@
 ---
 title: A Microsoft kereskedelmi Marketplace-ajánlatának integrálása a Azure Active Directory
 description: A Azure Active Directory használatával hitelesítheti Microsoft AppSource és az Azure Marketplace ajánlatait.
-author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 04/15/2020
-ms.author: dsindona
-ms.openlocfilehash: e2fff55fd9161aa41411dcb1abbf8ae0c1bae49c
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: eab7b556dc45d03bf440a3bc63aa6bf2d799face
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85957834"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103623"
 ---
 # <a name="integrate-your-commercial-marketplace-listing-with-azure-active-directory"></a>A kereskedelmi Marketplace-lista integrálása a Azure Active Directory
 
@@ -34,10 +35,10 @@ A különböző kereskedelmi Piactéri [lehetőségek és az ajánlattételi tí
 | :------------------- | :-------------------|:-------------------|:-------------------|:-------------------|
 | Virtuális gép | N.A. | Nem | Nem | Nem |
 | Azure-alkalmazások (megoldás-sablon)  | N.A. | N.A. | N.A. | N.A. |
-| Felügyelt alkalmazások  | N.A. | N.A. | N.A. | No |
-| SaaS  | No | Igen | Igen | Igen |
-| Containers  | N.A. | N.A. | N.A. | No |
-| Tanácsadási szolgáltatások  | No | N.A. | N.A. | N.A. |
+| Felügyelt alkalmazások  | N.A. | N.A. | N.A. | Nem |
+| SaaS  | Nem | Igen | Igen | Igen |
+| Containers  | N.A. | N.A. | N.A. | Nem |
+| Tanácsadási szolgáltatások  | Nem | N.A. | N.A. | N.A. |
 
 További információ a SaaS-technikai követelményekről: [SaaS-alkalmazások ajánlat közzétételi útmutatója](marketplace-saas-applications-technical-publishing-guide.md).
 
@@ -83,7 +84,7 @@ Az Azure AD használata a következő műveletek egyikének támogatásához has
 - Felhasználónkénti tesztelési meghajtó fejlesztése.
 - Hozzon létre egy több-bérlős minta bemutató alkalmazást, amely egyszeri bejelentkezést használ.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha még nem tette meg, 
 

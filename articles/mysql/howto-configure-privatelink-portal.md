@@ -4,14 +4,14 @@ description: Megtudhatja, hogyan konfigurálhatja a Azure Database for MySQLhoz 
 author: kummanish
 ms.author: manishku
 ms.service: mysql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: b4ac25d6fca78962e9da4f7dd79476b8e8b9c2d5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5547c78007d38788d71e84f8fbf3ca8b60dc1576
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738260"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86101749"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-portal"></a>Azure Database for MySQL privát hivatkozás létrehozása és kezelése a portál használatával
 
@@ -237,7 +237,7 @@ A **myVm**létrehozása után az alábbi módon csatlakozhat az internetről:
     |SSL|Válassza a **kötelező**lehetőséget.|
     ||
 
-5. Kattintson a Csatlakozás gombra.
+5. Válassza a Csatlakozás lehetőséget.
 
 6. A bal oldali menüben lévő adatbázisok tallózása.
 
@@ -252,7 +252,7 @@ Ha végzett a magánhálózati végpont, a MySQL-kiszolgáló és a virtuális g
 2. Válassza az **Erőforráscsoport törlése** elemet.
 3. Írja be **a myResourceGroup nevet az erőforráscsoport neveként** , majd válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az útmutatóban létrehozott egy virtuális GÉPET egy virtuális hálózaton, egy Azure Database for MySQLt és egy privát végpontot a privát eléréshez. Az internetről csatlakozik egy virtuális géphez, és biztonságosan kommunikál a MySQL-kiszolgálóval a privát hivatkozás használatával. További információ a privát végpontokról: [Mi az az Azure Private Endpoint](https://docs.microsoft.com/azure/private-link/private-endpoint-overview).
 

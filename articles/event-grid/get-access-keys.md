@@ -1,17 +1,14 @@
 ---
 title: Event Grid erőforrás elérési kulcsának lekérése
 description: Ez a cikk egy Event Grid témakör vagy tartomány elérési kulcsának lekérését ismerteti
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: how-to
-ms.date: 06/25/2020
-ms.author: spelluru
-ms.openlocfilehash: 75ab09de40a4305ebd215985f2f9f181bfd69a24
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: e5694fe0b5f22f7f76285c344627005ea727ae3c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85414882"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105863"
 ---
 # <a name="get-access-keys-for-event-grid-resources-topics-or-domains"></a>Hozzáférési kulcsok beolvasása Event Grid erőforrásokhoz (témakörök vagy tartományok)
 A hozzáférési kulcsok használatával hitelesítheti az alkalmazás közzétételi eseményeit Azure Event Grid erőforrásokra (témakörökre és tartományokra). Javasoljuk, hogy rendszeresen újragenerálja a kulcsokat, és biztonságosan tárolja őket. A szolgáltatás két hozzáférési kulccsal rendelkezik, így az egyik kulccsal kezelheti a kapcsolatokat, miközben újragenerálja a másikat.
@@ -49,5 +46,5 @@ Az [az eventgrid domain Key List](/cli/azure/eventgrid/domain/key?view=azure-cli
 az eventgrid domain key list --resource-group <RESOURCE GROUP NAME> --name <DOMAIN NAME>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse meg a következő cikket: [közzétételi ügyfelek hitelesítése](security-authenticate-publishing-clients.md). 

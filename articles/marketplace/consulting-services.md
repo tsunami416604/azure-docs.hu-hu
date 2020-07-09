@@ -1,17 +1,16 @@
 ---
 title: Tanácsadási szolgáltatások a Microsoft kereskedelmi piactéren
 description: Ez a cikk a Microsoft AppSource és az Azure Marketplace-en elérhető új tanácsadási szolgáltatási ajánlatok támogathatósági feltételeit és közzétételi követelményeit ismerteti.
-author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.author: dsindona
-ms.openlocfilehash: 1267225f6b8557efc7ce36a973daef0a46aaba2d
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 4a45239836779fc83aa2e3927c6e3ff752c87182
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85957987"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103755"
 ---
 # <a name="consulting-service-offers"></a>Tanácsadási szolgáltatás ajánlatok
 
@@ -168,7 +167,7 @@ A partner Centerben a [Markdown](/contribute/markdown-reference)használatával 
 * Minden címsor után adjon hozzá sortörést.
 * **Félkövér** formázáshoz adjon hozzá egy dupla csillagot ( \* \* ) szóköz nélkül egy szó vagy egy sorozat elejéhez és végéhez (például írja be a \* \* tartalmat a \* \* Word **tartalmának**formázásához).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha még nem tette meg, Ismerje meg, hogyan [növelheti Felhőbeli üzletét az Azure Marketplace-szel](https://azuremarketplace.microsoft.com/sell).
 

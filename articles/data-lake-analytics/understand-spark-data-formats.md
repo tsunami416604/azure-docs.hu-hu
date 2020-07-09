@@ -5,14 +5,15 @@ author: guyhay
 ms.author: guyhay
 ms.reviewer: jasonh
 ms.service: data-lake-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: understand-apache-spark-data-formats
 ms.date: 01/31/2019
-ms.openlocfilehash: 36f39503ca32f1ee4b422ae7b1cf9abf48716f07
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ed929b9dd6d262d63554ef3df59d3e3806dd28dc
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73648440"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86106424"
 ---
 # <a name="understand-differences-between-u-sql-and-spark-data-formats"></a>Az U-SQL és a Spark adatformátumai közötti különbségek ismertetése
 
@@ -45,7 +46,7 @@ Az átalakítást követően a [Azure Data Lake Storage Gen1 fájlban tárolt ad
 - Az adatszervezet (particionálás) U-SQL-táblák két szintű particionálást biztosítanak. A külső szint ( `PARTITIONED BY` ) értéke és leképezése elsősorban a kaptár/Spark particionálási sémában, a mappa-hierarchiák használatával. Biztosítania kell, hogy a null értékek a megfelelő mappába legyenek leképezve. A `DISTRIBUTED BY` U-SQL belső szintje 4 terjesztési sémát kínál: ciklikus multiplexelés, tartomány, kivonat és közvetlen kivonat.
     A kaptár/Spark táblák csak az U-SQL-nél eltérő kivonatoló függvényt használnak az érték particionálásához vagy a kivonatoló particionáláshoz. Ha a U-SQL-tábla adatait adja meg, valószínűleg csak a Spark érték particionálásához lesz képes leképezni, és a végső Spark-lekérdezésektől függően szükség lehet az adatelrendezés további finomhangolására.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A Spark Code-fogalmak megismerése U-SQL-fejlesztőknek](understand-spark-code-concepts.md)
 - [Frissítse big data Analytics-megoldásait Azure Data Lake Storage Gen1ról Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-upgrade.md)

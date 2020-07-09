@@ -8,11 +8,12 @@ ms.topic: how-to
 ms.date: 04/08/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: cbff2cbed37a4cff91116596f1c20dc3d170cae2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a88cf9981d4f3a69a503c9caa56be1b5f35029f6
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513484"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105183"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Az Azure Import/Export szolgáltatás használata az adatok Azure Filesba történő importálásához
 
@@ -94,15 +95,15 @@ A meghajtók előkészítéséhez végezze el a következő lépéseket.
 
 5. Az `PrepImport` adatlemezre másolással és előkészítéssel megadhatja az adatátvitelt. Ahhoz, hogy az első másolási munkamenet a címtárakat és/vagy fájlokat egy új másolási munkamenettel másolja, futtassa a következő parancsot:
 
-       ```
-       .\WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> [/logdir:<LogDirectory>] [/sk:<StorageAccountKey>] [/silentmode] [/InitialDriveSet:<driveset.csv>] DataSet:<dataset.csv>
-       ```
+    ```cmd
+    .\WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> [/logdir:<LogDirectory>] [/sk:<StorageAccountKey>] [/silentmode] [/InitialDriveSet:<driveset.csv>] DataSet:<dataset.csv>
+    ```
 
    Alább látható egy importálási példa.
 
-       ```
-       .\WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#1  /sk:************* /InitialDriveSet:driveset.csv /DataSet:dataset.csv /logdir:C:\logs
-       ```
+    ```cmd
+    .\WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#1  /sk:************* /InitialDriveSet:driveset.csv /DataSet:dataset.csv /logdir:C:\logs
+    ```
 
 6. A (z) paraméterrel megadott nevű naplófájl jön `/j:` létre a parancssor minden futtatásához. Minden előkészíteni kívánt meghajtóhoz tartozik egy naplófájl, amelyet az importálási feladatok létrehozásakor fel kell tölteni. A rendszer nem dolgozza fel a naplófájlok nélküli meghajtókat.
 
@@ -179,32 +180,32 @@ A feladatot nyomon követheti befejezésre. A feladatok befejezése után ellen�
 
 Ha a további másolási munkameneteket a *InitialDriveset. csv* fájlban megadott lemezmeghajtók között szeretné megadni, adjon meg egy új driveset *. csv* fájlt, és adja meg a paraméter értékét `AdditionalDriveSet` . Használja **ugyanazt a naplófájl** -nevet, és adjon meg egy **új munkamenet-azonosítót**. A AdditionalDriveset CSV-fájl formátuma megegyezik a InitialDriveSet formátumával.
 
-    ```
-    WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> /AdditionalDriveSet:<driveset.csv>
-    ```
+```cmd
+WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> /AdditionalDriveSet:<driveset.csv>
+```
 
 Alább látható egy importálási példa.
 
-    ```
-    WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#3  /AdditionalDriveSet:driveset-2.csv
-    ```
+```cmd
+WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#3  /AdditionalDriveSet:driveset-2.csv
+```
 
 
 Ha további adatfájlokat szeretne hozzáadni ugyanahhoz a driveset, használja a PrepImport parancsot a további másolási munkamenetek számára további fájlok/könyvtár másolásához.
 
 Ha a későbbi másolási munkameneteket a *InitialDriveset.csv* fájlban megadott merevlemez-meghajtókra szeretné másolni, adja meg **ugyanazt a naplónevet** , és adjon meg egy **új munkamenet-azonosítót**. nincs szükség a Storage-fiók kulcsainak megadására.
 
-    ```
-    WAImportExport PrepImport /j:<JournalFile> /id:<SessionId> /j:<JournalFile> /id:<SessionId> [/logdir:<LogDirectory>] DataSet:<dataset.csv>
-    ```
+```cmd
+WAImportExport PrepImport /j:<JournalFile> /id:<SessionId> /j:<JournalFile> /id:<SessionId> [/logdir:<LogDirectory>] DataSet:<dataset.csv>
+```
 
 Alább látható egy importálási példa.
 
-    ```
-    WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2  /DataSet:dataset-2.csv
-    ```
+```cmd
+WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2  /DataSet:dataset-2.csv
+```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A feladatok és a meghajtó állapotának megtekintése](storage-import-export-view-drive-status.md)
 * [Importálási/exportálási követelmények áttekintése](storage-import-export-requirements.md)

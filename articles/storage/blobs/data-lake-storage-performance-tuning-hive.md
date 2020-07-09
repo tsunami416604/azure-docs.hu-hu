@@ -8,11 +8,12 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 9a54565f320ae45a4a8297a40027c5e6b3b25202
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 522f9215a0b66c5e6bec5abf41e45489efec19ac
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84465966"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86106311"
 ---
 # <a name="tune-performance-hive-hdinsight--azure-data-lake-storage-gen2"></a>Teljesítmény hangolása: struktúra, HDInsight & Azure Data Lake Storage Gen2
 
@@ -56,17 +57,18 @@ Az I/O-igényes munkaterhelések a TEZ-tároló méretének csökkentésével t�
 
 A futó vagy párhuzamos feladatok egyidejű számát a rendszer a FONALak teljes memóriája alapján fogja megkötni.  A FONALas tárolók száma határozza meg, hogy hány egyidejű feladat futhat.  Ha a szál memóriáját szeretné megkeresni egy csomóponton, nyissa meg a Ambari.  Navigáljon a FONALhoz, és tekintse meg a konfigurációk lapot.  Ebben az ablakban a szál memóriája jelenik meg.  
 
-        Total YARN memory = nodes * YARN memory per node
-        # of YARN containers = Total YARN memory / Tez container size
+- Összes fonal memóriája = csomópontok * FONÁL memória/csomópont
+- \#of fonal-tárolók = a fonal teljes memóriája/TEZ-tároló mérete
+
 A Data Lake Storage Gen2 használatával javíthatja a teljesítményt, hogy a lehető legnagyobb mértékben növelje a párhuzamosságot.  A TEZ automatikusan kiszámítja a létrehozandó feladatok számát, így nem kell azt beállítania.   
 
 ## <a name="example-calculation"></a>Példa a számításra
 
 Tegyük fel, hogy 8 csomópontos D14-fürtöt tartalmaz.  
 
-    Total YARN memory = nodes * YARN memory per node
-    Total YARN memory = 8 nodes * 96GB = 768GB
-    # of YARN containers = 768GB / 3072MB = 256
+- Összes fonal memóriája = csomópontok * FONÁL memória/csomópont
+- Összes szál memóriája = 8 csomópont * 96GB = 768GB
+- \#FONALas tárolók esetén = 768GB/3072MB = 256
 
 ## <a name="further-information-on-hive-tuning"></a>További információ a kaptár hangolásáról
 

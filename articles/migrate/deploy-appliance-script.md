@@ -3,15 +3,16 @@ title: Azure Migrate berendezés beállítása parancsfájlokkal
 description: Megtudhatja, hogyan állíthat be egy Azure Migrate készüléket parancsfájl használatával
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: d5603aaef0a1c3e784f455777302c23e6724fbe7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 47b6b35e62d484b4d7a33f6a53796c59e01817fe
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85052469"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86102446"
 ---
 # <a name="set-up-an-appliance-with-a-script"></a>Berendezés beállítása parancsfájlsal
 
-Ez a cikk a VMware virtuális gépek és a Hyper-V virtuális gépek értékeléséhez/áttelepítéséhez [Azure Migrate berendezés](deploy-appliance.md) létrehozásához nyújt segítséget. Parancsfájl futtatásával létrehozhat egy berendezést, és ellenőrizheti, hogy tud-e csatlakozni az Azure-hoz. 
+Ez a cikk a VMware virtuális gépek és a Hyper-V virtuális gépek értékeléséhez/áttelepítéséhez [Azure Migrate berendezés](./migrate-appliance-architecture.md) létrehozásához nyújt segítséget. Parancsfájl futtatásával létrehozhat egy berendezést, és ellenőrizheti, hogy tud-e csatlakozni az Azure-hoz. 
 
 A készüléket a VMware és a Hyper-V virtuális gépekhez parancsfájl használatával, vagy a Azure Portalból letöltött sablon használatával telepítheti. A szkriptek használata akkor hasznos, ha nem tud virtuális gépet létrehozni a letöltött sablonnal.
 
@@ -126,7 +127,7 @@ A szkript futtatása:
 
 Győződjön meg arról, hogy a készülék képes csatlakozni a [nyilvános](migrate-appliance.md#public-cloud-urls) felhőhöz tartozó Azure URL-címekhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A készülék üzembe helyezése után először be kell állítania, majd regisztrálnia kell a Azure Migrate projektben.
 

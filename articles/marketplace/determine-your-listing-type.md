@@ -1,18 +1,18 @@
 ---
 title: A közzétételi lehetőség meghatározása – Microsoft kereskedelmi piactér
 description: Ez a cikk az ajánlatok Microsoft AppSource és az Azure Marketplace-en való közzétételének támogathatósági feltételeit és követelményeit ismerteti.
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 06/22/2020
-ms.author: dsindona
-ms.openlocfilehash: 457ff90c21fee2b569fa24d90fffc6ce80cdf969
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 3d8692d3180e4164bff544f71a1216097a390773
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027103"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103653"
 ---
 # <a name="determine-your-publishing-option"></a>A közzétételi beállítások meghatározása
 
@@ -72,7 +72,7 @@ A rendelkezésre álló közzétételi lehetőségek különböző ügyfél-öss
 > [!Note]
 > A Transact Publishing lehetőség használatakor fontos megérteni a díjszabást, a számlázást, a számlázást és a kifizetési szempontokat az ajánlat típusának kiválasztása és az ajánlat létrehozása előtt. További információért tekintse át a [kereskedelmi Piactéri Transact-képességeket](./marketplace-commercial-transaction-capabilities-and-considerations.md)ismertető cikket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A közzétételi lehetőség [kiválasztása után kiválaszthatja az](./publisher-guide-by-offer-type.md) ajánlat bemutatására használni kívánt ajánlat típusát.
 - Az ajánlat kiválasztásának és konfigurálásának véglegesítéséhez tekintse át a támogathatósági követelményeket a közzétételi beállítások az ajánlat típusa szerint szakaszban.

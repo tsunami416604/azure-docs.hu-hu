@@ -4,13 +4,14 @@ description: Ismerje meg, hogyan csatlakozhat és végezhet hitelesítést felü
 author: lfittl-msft
 ms.author: lufittl
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/19/2020
-ms.openlocfilehash: 01a27a9c98c1c429cdc381ba0c1e9ef4186c9e7a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ec9e53ecaa95f6407a00c149abb6ed7e4a671d74
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83664724"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86102293"
 ---
 # <a name="connect-with-managed-identity-to-azure-database-for-postgresql"></a>Kapcsolódás felügyelt identitással Azure Database for PostgreSQL
 
@@ -195,6 +196,6 @@ Connected!
 Postgres version: PostgreSQL 11.6, compiled by Visual C++ build 1800, 64-bit
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tekintse át a [Azure Active Directory hitelesítéssel](concepts-aad-authentication.md) kapcsolatos általános fogalmakat Azure Database for PostgreSQL

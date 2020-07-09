@@ -1,37 +1,37 @@
 ---
 title: Bérlők, szerepkörök és felhasználók az Azure Lighthouse-forgatókönyvekben
 description: Megismerheti Azure Active Directory bérlők, a felhasználók és a szerepkörök fogalmait, valamint azt, hogy miként használhatók az Azure Lighthouse-forgatókönyvekben.
-ms.date: 04/03/2020
+ms.date: 07/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7ed5af18efbb0f5b97dcab20093cc45e8bed1d03
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6bcfd1603469ba27971fffa8e7c46f0f696bb6a2
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82144920"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105387"
 ---
 # <a name="tenants-roles-and-users-in-azure-lighthouse-scenarios"></a>Bérlők, szerepkörök és felhasználók az Azure Lighthouse-forgatókönyvekben
 
-Az Azure-beli [delegált erőforrás-kezeléshez szükséges ügyfelek bevezetéséhez](azure-delegated-resource-management.md)fontos tisztában lennie azzal, hogyan működnek a Azure Active Directory (Azure ad) bérlők, a felhasználók és a szerepkörök, valamint hogyan használhatók az Azure Lighthouse-forgatókönyvekben.
+Az [Azure Lighthouse](../overview.md)-ügyfelek beléptetése előtt fontos megérteni, hogyan működnek a Azure Active Directory (Azure ad) bérlők, a felhasználók és a szerepkörök, valamint hogyan használhatók az Azure Lighthouse-forgatókönyvekben.
 
-A *bérlő* az Azure ad dedikált és megbízható példánya. Az egyes bérlők általában egyetlen szervezetnek felelnek meg. Az Azure-beli delegált erőforrás-kezelés lehetővé teszi az erőforrások logikai kivetítését az egyik bérlőről egy másik bérlőre. Ez lehetővé teszi a bérlők felügyeletét (például egy szolgáltatóhoz tartozót) a delegált erőforrások elérésére az ügyfél bérlője számára, vagy lehetővé teszi, hogy [több Bérlővel rendelkező vállalatok központosítsák a felügyeleti műveleteiket](enterprise.md).
+A *bérlő* az Azure ad dedikált és megbízható példánya. Az egyes bérlők általában egyetlen szervezetnek felelnek meg. Az Azure-beli [delegált erőforrás-kezelés](azure-delegated-resource-management.md) lehetővé teszi az erőforrások logikai kivetítését az egyik bérlőről egy másik bérlőre. Ez lehetővé teszi a bérlők felügyeletét (például egy szolgáltatóhoz tartozót) a delegált erőforrások elérésére az ügyfél bérlője számára, vagy lehetővé teszi, hogy [több Bérlővel rendelkező vállalatok központosítsák a felügyeleti műveleteiket](enterprise.md).
 
 Ahhoz, hogy ez a logikai leképezés elérhető legyen, előfizetést (vagy egy vagy több, előfizetésen belüli erőforráscsoportot) kell előkészíteni az ügyfél bérlője *számára az* Azure-beli delegált erőforrás-kezeléshez. Ez a [bevezetési folyamat Azure Resource Manager-sablonokkal](../how-to/onboard-customer.md) vagy [nyilvános vagy privát ajánlat Azure Marketplace-en való közzétételével](../how-to/publish-managed-services-offers.md)végezhető el.
 
 Bármelyik bevezetési módszert választja, meg kell adnia az *engedélyeket*. Az egyes engedélyek egy felhasználói fiókot határoznak meg a bérlők kezelése szolgáltatásban, amely hozzáfér a delegált erőforrásokhoz, valamint egy beépített szerepkört, amely megadja, hogy az egyes felhasználók milyen engedélyeket kapnak ezekhez az erőforrásokhoz.
 
-## <a name="role-support-for-azure-delegated-resource-management"></a>Szerepkör-támogatás az Azure-beli delegált erőforrás-kezeléshez
+## <a name="role-support-for-azure-lighthouse"></a>Szerepkör-támogatás az Azure Lighthouse-hoz
 
 Az engedélyezés meghatározásakor minden felhasználói fiókhoz hozzá kell rendelni a [szerepköralapú hozzáférés-vezérlés (RBAC) beépített szerepköreinek](../../role-based-access-control/built-in-roles.md)egyikét. Az egyéni szerepkörök és a [klasszikus előfizetés-rendszergazdai szerepkörök](../../role-based-access-control/classic-administrators.md) nem támogatottak.
 
-Az Azure-beli delegált erőforrás-kezelés jelenleg az összes [beépített szerepkört](../../role-based-access-control/built-in-roles.md) támogatja, a következő kivételekkel:
+Az Azure Lighthouse jelenleg minden [beépített szerepkört](../../role-based-access-control/built-in-roles.md) támogat, a következő kivételekkel:
 
 - A [tulajdonosi](../../role-based-access-control/built-in-roles.md#owner) szerepkör nem támogatott.
 - A [DataActions](../../role-based-access-control/role-definitions.md#dataactions) engedéllyel rendelkező beépített szerepkörök nem támogatottak.
 - A [felhasználói hozzáférés rendszergazdai](../../role-based-access-control/built-in-roles.md#user-access-administrator) beépített szerepköre támogatott, de csak azzal a korlátozott céllal, [hogy szerepköröket rendeljen hozzá egy felügyelt identitáshoz az ügyfél bérlője](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant)számára. Ehhez a szerepkörhöz általában nem érvényesek más engedélyek. Ha megad egy felhasználót a szerepkörhöz, meg kell adnia azokat a beépített szerepkör (eke) t, amelyeket a felhasználó a felügyelt identitásokhoz hozzárendelhet.
 
 > [!NOTE]
-> Miután hozzáadta a megfelelő új beépített szerepkört az Azure-hoz, hozzá lehet rendelni [egy ügyfelet Azure Resource Manager-sablonok használatával](../how-to/onboard-customer.md). A [felügyelt szolgáltatásokra vonatkozó ajánlat közzétételekor](../how-to/publish-managed-services-offers.md)előfordulhat, hogy az újonnan hozzáadott szerepkör Cloud Partner Portal elérhetővé válik.
+> Miután hozzáadta az új megfelelő beépített szerepkört az Azure-hoz, hozzárendelheti az [ügyfelet Azure Resource Manager-sablonok használatával](../how-to/onboard-customer.md). A [felügyelt szolgáltatásokra vonatkozó ajánlat közzétételekor](../how-to/publish-managed-services-offers.md)előfordulhat, hogy az újonnan hozzáadott szerepkör Cloud Partner Portal elérhetővé válik.
 
 ## <a name="best-practices-for-defining-users-and-roles"></a>Ajánlott eljárások felhasználók és szerepkörök definiálásához
 
@@ -45,7 +45,7 @@ Az engedélyek létrehozásakor javasoljuk a következő ajánlott eljárásokat
 > [!IMPORTANT]
 > Az Azure AD-csoport engedélyeinek hozzáadásához a **csoport típusának** **biztonsági** és nem **Office 365**-nek kell lennie. Ez a beállítás a csoport létrehozásakor van kiválasztva. További információkért lásd: [alapszintű csoport létrehozása és Tagok hozzáadása Azure Active Directory használatával](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Ismerje meg [Az Azure-beli delegált erőforrás-kezelés ajánlott biztonsági eljárásait](recommended-security-practices.md).
-- Az ügyfeleket az Azure-beli delegált erőforrás-kezeléshez [Azure Resource Manager sablonok használatával](../how-to/onboard-customer.md) vagy [egy magán-vagy nyilvános felügyelt szolgáltatás Azure Marketplace-re való közzétételével](../how-to/publish-managed-services-offers.md)teheti közzé.
+- Ismerje meg [Az Azure Lighthouse ajánlott biztonsági eljárásait](recommended-security-practices.md).
+- Az ügyfeleket az Azure világítótoronyba [Azure Resource Manager sablonok használatával](../how-to/onboard-customer.md) vagy [egy magán-vagy nyilvános felügyelt szolgáltatás Azure Marketplace-re való közzétételével](../how-to/publish-managed-services-offers.md)teheti közzé.

@@ -1,20 +1,14 @@
 ---
 title: 'Gyors útmutató: blob Storage-események küldése a webes végpontnak – portál'
 description: 'Gyors útmutató: Azure Event Grid és Azure Portal használatával hozzon létre blob Storage-fiókot, és regisztrálja az eseményeit. Küldje el az eseményeket egy webhookba.'
-services: event-grid
-keywords: ''
-author: spelluru
-ms.author: spelluru
-ms.date: 06/02/2020
+ms.date: 07/07/2020
 ms.topic: quickstart
-ms.service: event-grid
-ms.custom: seodec18
-ms.openlocfilehash: 8c1627b0a9ae37f7d784c49613eb14b0c851b9b1
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: fe942a4daa877088bd354352aa994e4e283f9be5
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84457048"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103636"
 ---
 # <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>Gyors útmutató: blob Storage-események átirányítása webes végpontra a Azure Portal
 
@@ -28,7 +22,7 @@ A folyamat végén látni fogja, hogy a rendszer elküldte az eseményadatokat a
 
 ## <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Jelentkezzen be [Azure Portalba](https://portal.azure.com/).
 
 1. Blob Storage létrehozásához kattintson az **Erőforrás létrehozása** elemre. 
 
@@ -137,7 +131,7 @@ A Blob Storage-hoz egy eseményt egy fájl feltöltésével aktiválhat. A fájl
 
    ![BLOB létrehozott esemény](./media/blob-event-quickstart-portal/blob-created-event.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha tovább kívánja használni az eseményt, akkor ne törölje a cikkben létrehozott erőforrásokat. Ellenkező esetben törölje a cikkben létrehozott erőforrásokat.
 

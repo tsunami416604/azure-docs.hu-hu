@@ -1,20 +1,14 @@
 ---
 title: BLOB Storage-események küldése webes végpontnak – sablon
 description: A blob Storage-fiók létrehozásához használja a Azure Event Grid és egy Azure Resource Manager sablont, és fizessen elő eseményeket. Küldje el az eseményeket egy webhookba. "
-services: event-grid
-keywords: ''
-author: spelluru
-ms.author: spelluru
-ms.date: 06/03/2020
+ms.date: 07/07/2020
 ms.topic: quickstart
-ms.service: event-grid
-ms.custom: subject-armqs
-ms.openlocfilehash: 2d7991a00bedf49147b7a6015b5a5e0ce8892ac3
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: 603d6bf11f2ec6988d52e69817bddf2fd3ccf3b3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85479861"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103313"
 ---
 # <a name="route-blob-storage-events-to-web-endpoint-by-using-an-arm-template"></a>BLOB Storage-események átirányítása a webes végpontba ARM-sablon használatával
 
@@ -83,16 +77,16 @@ Amikor feltölti a fájlt az Azure Blob Storage-ba, Event Grid üzenetet küld a
 
 ![Eredmények megtekintése](./media/blob-event-quickstart-portal/view-results.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs rá szükség, [törölje az erőforráscsoportot](../azure-resource-manager/management/delete-resource-group.md?tabs=azure-portal#delete-resource-group
 ).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Azure Resource Manager-sablonokkal kapcsolatos további információkért tekintse meg a következő cikkeket:
 
 * [Azure Resource Manager dokumentáció](/azure/azure-resource-manager)
 * [Erőforrások definiálása Azure Resource Manager-sablonokban](/azure/templates/)
-* [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/)
+* [Azure Gyorsindítás sablonok](https://azure.microsoft.com/resources/templates/)
 * [Azure Event Grid sablonok](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Eventgrid).

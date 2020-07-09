@@ -1,18 +1,18 @@
 ---
 title: Kezdőlap létrehozása az Azure Marketplace-en | Azure
 description: Megtudhatja, hogyan hozhat létre kezdőlapot az Azure Marketplace-en és Microsoft AppSource az alkalmazások és szolgáltatások közzétevői számára.
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: vikrambmsft
+ms.author: vikramb
 ms.date: 06/04/2018
-ms.author: dsindona
-ms.openlocfilehash: 0952c1d4b6955ff20f06afc6eaded18fbd105708
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b7f80910e19348dfa3540f141424205a7531f5e7
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80387801"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86102820"
 ---
 # <a name="build-your-landing-page"></a>Kezdőlap létrehozása
 
@@ -48,7 +48,7 @@ Ha elkészült egy kampányválasz, hozza létre a kezdőlapot a piactéren. A k
 | **A megfelelő terméknév és kulcsszavak elhelyezése a "fold felett"** | A felhasználók görgetésével megtekintheti a bemutatott terméket vagy megoldást. |
 | **A Brand képképekkel ellenőrizheti a megoldást a Microsoft branding irányelveinek, például az Azure Certified minősítésnek megfelelően** | A nem jóváhagyott Microsoft Brand-képek használata. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 *   További információ az Azure Certified jelvényről: [Microsoft Azure Certified irányelvek](https://azure.microsoft.com/support/legal/marketplace/certified-guidelines).
 *   A branding szolgáltatással kapcsolatos további forrásokat a [Brand Central](https://microsoft.sharepoint.com/teams/brandcentral)című témakörben talál.

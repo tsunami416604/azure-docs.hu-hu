@@ -4,13 +4,14 @@ description: Megtudhatja, hogyan konfigurálhatja a nyilvános hálózati hozzá
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 4dff2321414721dbd415b468e59aea0ab4b3acee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b51a79027ce834190a4fae5d893e47f2be16abf7
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79375121"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86102191"
 ---
 # <a name="deny-public-network-access-in-azure-database-for-postgresql-single-server-using-azure-portal"></a>Nyilvános hálózati hozzáférés megtagadása Azure Database for PostgreSQL egy kiszolgálón Azure Portal használatával
 
@@ -40,6 +41,6 @@ Az alábbi lépéseket követve beállíthatja a PostgreSQL egyetlen kiszolgál�
 
     ![Azure Database for PostgreSQL egyetlen kiszolgáló megtagadja a hálózati hozzáférés sikerességét](./media/howto-deny-public-network-access/deny-public-network-access-success.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Útmutató [riasztások létrehozásához mérőszámokon](howto-alert-on-metric.md).

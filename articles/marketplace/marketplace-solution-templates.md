@@ -1,18 +1,18 @@
 ---
 title: Közzétételi útmutató az Azure-alkalmazások megoldási sablonjaihoz – Azure Marketplace
 description: Ez a cikk ismerteti az Azure Marketplace-en elérhető megoldási sablonok közzétételének követelményeit.
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: msjogarrig
+ms.author: jogarrig
 ms.date: 04/22/2020
-ms.author: dsindona
-ms.openlocfilehash: 4d395aa68c579b8e1271f4225ba57fa5f9932246
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 9933e2fd170f8d2fd2f3b483670f184d0cd5eeb5
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963784"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103058"
 ---
 # <a name="publishing-guide-for-azure-applications-solution-template-offers"></a>Közzétételi útmutató az Azure Applications megoldás sablonjának ajánlatai
 
@@ -34,7 +34,7 @@ A művelet meghívása, amelyet az ügyfél az ajánlat típusának *tekint.*
 | Ügyfelek általi használat nyomon követése | Az Azure Marketplace-en közzétett összes megoldási sablonban engedélyezni kell az ügyfél-használati jóváírást. További információ az ügyfél-használati feladatokról és annak engedélyezéséről: az [Azure-partneri ügyfél használati](./azure-partner-customer-usage-attribution.md)feladatának megállapítása.  |
 | Felügyelt lemezek használata | A [Managed Disks](../virtual-machines/windows/managed-disks-overview.md) az alapértelmezett beállítás az Azure-beli infrastruktúra-(IaaS-) virtuális gépek megőrzött lemezei számára. A megoldási sablonokban felügyelt lemezeket kell használnia. <ul><li>A megoldási sablonok frissítéséhez kövesse a [felügyelt lemezek használata Azure Resource Manager-sablonokban](../virtual-machines/windows/using-managed-disks-template-deployments.md)című témakör útmutatását, és használja a megadott [mintákat](https://github.com/Azure/azure-quickstart-templates).<br><br> </li><li>Ha a virtuális merevlemezt képként szeretné közzétenni az Azure Marketplace-en, a következő módszerek egyikével importálja a felügyelt lemezek mögöttes VHD-jét egy Storage-fiókba:<ul><li>[Azure PowerShell](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-vhd.md) </li> <li> [Az Azure CLI](../virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-managed-disks-vhd.md) </li> </ul></ul> |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha még nem tette meg, Ismerje meg, hogyan [növelheti Felhőbeli üzletét az Azure Marketplace-szel](https://azuremarketplace.microsoft.com/sell).
 

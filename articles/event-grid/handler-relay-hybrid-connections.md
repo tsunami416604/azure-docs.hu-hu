@@ -1,17 +1,14 @@
 ---
 title: Hibrid kapcsolat továbbítása Azure Event Grid események eseménykezelőként
 description: Ismerteti, hogyan használhatók Azure Relay hibrid kapcsolatok Azure Event Grid események eseménykezelői.
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/11/2020
-ms.author: spelluru
-ms.openlocfilehash: 04fbc7b739fa8ea7b08a3341c2f78244c445e721
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 38233a2e103600f07837ce9a1ad8d63fe7e4fb99
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83800889"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105711"
 ---
 # <a name="relay-hybrid-connection-as-an-event-handler-for-azure-event-grid-events"></a>Hibrid kapcsolat továbbítása Azure Event Grid események eseménykezelőként
 Az eseménykezelő az a hely, ahol az esemény elküldése történik. A kezelő további műveletet hajt végre az esemény feldolgozásához. Számos Azure-szolgáltatás automatikusan van konfigurálva az események kezelésére, és **Azure Relay** az egyikük. 
@@ -44,5 +41,5 @@ Tekintse meg a következő oktatóanyagot, amely egy Azure Relay hibrid kapcsola
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A támogatott eseménykezelők listáját az [eseménykezelők](event-handlers.md) című cikkben tekintheti meg. 

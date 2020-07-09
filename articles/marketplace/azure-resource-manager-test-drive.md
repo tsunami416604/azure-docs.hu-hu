@@ -1,18 +1,16 @@
 ---
 title: A tesztelési meghajtók típusai, a Microsoft kereskedelmi piactér
 description: A kereskedelmi piactéren található tesztelési meghajtók típusai
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 06/19/2020
-ms.author: dsindona
-ms.openlocfilehash: a2d12a372f773a4a389ea7e7f2b3d2811ba889d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 401ffaaa0fa8c8e298a3a1891d93f2c9039d7820
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85801223"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86102939"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager tesztelési meghajtó
 
@@ -70,7 +68,7 @@ A paraméterekhez bármilyen érvényes nevet használhat; a test Drive felismer
 
 ### <a name="accepted-parameter-metadata-types"></a>Elfogadott paraméterek metaadatainak típusai
 
-| Metaadat típusa   | Paraméter típusa  | Description     | Minta értéke    |
+| Metaadat típusa   | Paraméter típusa  | Leírás     | Minta értéke    |
 |---|---|---|---|
 | **BaseUri**     | sztring          | A központi telepítési csomag alap URI-ja| `https:\//\<\..\>.blob.core.windows.net/\<\..\>` |
 | **username**    | sztring          | Új véletlenszerű Felhasználónév.| admin68876      |
@@ -351,7 +349,7 @@ Ne törölje az ügyfelek számára kiépített tesztvezetés-példányokat. a t
 
 Ha már elégedett az előzetes verzió ajánlatával, itt az ideje, hogy **éljünk**! Végső felülvizsgálati folyamattal ellenőrizheti a teljes végpontok közötti élményt. Ha elutasítjuk az ajánlatot, elküldjük Önnek az ajánlat mérnöki kapcsolattartóját, amely elmagyarázza, mit kell rögzíteni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha követte az ajánlat a partner Centerben való létrehozásához szükséges utasításokat, a vissza nyílra kattintva térjen vissza ehhez a témakörhöz.
 - További információ a tesztelési meghajtók egyéb típusairól: [Mi a test Drive?](what-is-test-drive.md).

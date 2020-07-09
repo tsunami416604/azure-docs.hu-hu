@@ -9,12 +9,12 @@ ms.author: mlearned
 description: Azure arc-kompatibilis Kubernetes-fürt összekapcsolása az Azure arc szolgáltatással
 keywords: Kubernetes, arc, Azure, K8s, tárolók
 ms.custom: references_regions
-ms.openlocfilehash: ec77609e5ee30cd3451c52635e530eb7153bc9a0
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: 1a186ac3bf2297de5ffc7ff478ba9b4350dae4c8
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85341388"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86104281"
 ---
 # <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Azure arc-kompatibilis Kubernetes-fürt összekapcsolása (előzetes verzió)
 
@@ -30,7 +30,7 @@ Győződjön meg arról, hogy az alábbi követelmények állnak készen:
 * Szüksége lesz egy kubeconfig-fájlra a fürt és a fürt rendszergazdai szerepkörének eléréséhez a fürtön az arc-kompatibilis Kubernetes-ügynökök telepítéséhez.
 * A (z) és a (z) paranccsal használt felhasználónak vagy szolgáltatásnak " `az login` `az connectedk8s connect` READ" és "Write" engedélyekkel kell rendelkeznie a "Microsoft. Kubernetes/connectedclusters" erőforrástípus számára. Az "Azure-Kubernetes bevezetéséhez" szerepkör, amelynek az engedélyei használhatók az Azure CLI-vel való bevezetéshez használt felhasználó vagy szolgáltatásnév szerepkör-hozzárendeléseihez.
 * A connectedk8s-bővítmény használatával a fürt bevezetéséhez a Helm 3 szükséges. [Telepítse a Helm 3 legújabb kiadását](https://helm.sh/docs/intro/install) , hogy megfeleljen ennek a követelménynek.
-* Az Azure CLI-hez készült Kubernetes CLI-bővítmények telepítéséhez az Azure CLI 2.3-s verziója szükséges. [Telepítse az Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) -t vagy frissítsen a legújabb verzióra, és győződjön meg arról, hogy az Azure CLI 2.3-as vagy újabb verziója van.
+* Az Azure CLI-hez készült Kubernetes CLI-bővítmények telepítéséhez az Azure CLI 2.3-s verziója szükséges. [Telepítse az Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) -t vagy frissítsen a legújabb verzióra, és győződjön meg arról, hogy az Azure CLI 2.3-as vagy újabb verziója van.
 * Az arc-kompatibilis Kubernetes CLI-bővítményeinek telepítése:
   
   Telepítse a `connectedk8s` bővítményt, amely segít a Kubernetes-fürtök az Azure-hoz való összekapcsolásában:
@@ -226,7 +226,7 @@ Az Azure arc-kompatibilis Kubernetes néhány ügynököt (operátort) tartalmaz
   az connectedk8s delete --name AzureArcTest1 --resource-group AzureArcTest
   ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [GitOps használata csatlakoztatott fürtben](./use-gitops-connected-cluster.md)
 * [A fürt konfigurációjának szabályozása Azure Policy használatával](./use-azure-policy.md)

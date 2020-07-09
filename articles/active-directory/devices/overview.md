@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba0630474224c34eb96429cd7592028362e03381
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7c25d5ee7ed730747317ea52286174968eb0e2fd
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82024438"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103704"
 ---
 # <a name="what-is-a-device-identity"></a>Mi az az eszközidentitás?
 
@@ -45,7 +45,7 @@ Az eszköz Azure AD-ben való beszerzéséhez több lehetőség közül választ
 - **Azure AD-hez csatlakoztatva**
    - Az Azure AD-hez csatlakoztatott eszközök egy szervezet tulajdonában állnak, és az adott szervezethez tartozó Azure AD-fiókkal jelentkeznek be. Csak a felhőben vannak.
       - Windows 10 
-      - Windows Server 2019 (a Server Core nem támogatott)
+      - [Windows Server 2019 Virtual Machines fut az Azure-ban] (./howto-vm-sign-in-azure-ad-windows.md) (A Server Core nem támogatott)
 - **csatlakozik a Hibrid Azure AD-hez**
    - A hibrid Azure AD-hez csatlakoztatott eszközök egy szervezet tulajdonában állnak, és az adott szervezethez tartozó Azure AD-fiókkal jelentkeznek be. A felhőben és a helyszínen vannak.
       - Windows 7, 8,1 vagy 10
@@ -97,7 +97,7 @@ Az eszközök Identitáskezelés az Azure AD-ben a következőket teheti:
 
 [!INCLUDE [Active Directory P1 license](../../../includes/active-directory-p1-license.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az [Azure ad regisztrált eszközeiről](concept-azure-ad-register.md)
 - További információ az [Azure ad-hez csatlakoztatott eszközökről](concept-azure-ad-join.md)

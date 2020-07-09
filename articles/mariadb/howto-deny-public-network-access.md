@@ -4,13 +4,14 @@ description: Megtudhatja, hogyan konfigurálhatja a nyilvános hálózati hozzá
 author: kummanish
 ms.author: manishku
 ms.service: mariadb
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 87b6033e486e9009573436628d0183c8a022aced
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f33dbfa0b96d7f6d85443005ff7e8b1a780c75a0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79375238"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86104384"
 ---
 # <a name="deny-public-network-access-in-azure-database-for-mariadb-using-azure-portal"></a>Nyilvános hálózati hozzáférés megtagadása Azure Database for MariaDB a Azure Portal használatával
 
@@ -40,6 +41,6 @@ Az alábbi lépéseket követve állíthatja be, hogy a MariaDB-kiszolgáló meg
 
     ![Azure Database for MariaDB a hálózati hozzáférés megtagadása sikeres](./media/howto-deny-public-network-access/deny-public-network-access-success.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Útmutató [riasztások létrehozásához mérőszámokon](howto-alert-metric.md).

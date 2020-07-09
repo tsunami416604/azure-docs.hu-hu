@@ -1,21 +1,14 @@
 ---
 title: Azure Media Services Event Grid forrásként
 description: A Media Services eseményekhez megadott tulajdonságokat ismerteti Azure Event Grid
-services: media-services
-documentationcenter: ''
-author: spelluru
-editor: ''
-ms.service: event-grid
-ms.workload: ''
 ms.topic: conceptual
-ms.date: 02/25/2020
-ms.author: spelluru
-ms.openlocfilehash: d5d50bbde927efd4aee0cedd69486a52ab8c328b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: c1c5953cae7364131eefcec97d3375404c85e963
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81394331"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105931"
 ---
 # <a name="azure-media-services-as-an-event-grid-source"></a>Azure Media Services Event Grid forrásként
 
@@ -663,11 +656,11 @@ Egy esemény a következő legfelső szintű adattal rendelkezik:
 | dataVersion | sztring | Az adatobjektum sémaverziója. A sémaverziót a közzétevő határozza meg. |
 | metadataVersion | sztring | Az esemény metaadatok sémaverziója. A legfelső szintű tulajdonságokra az Event Grid határozza meg a sémát. Az értéket az Event Grid adja meg. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Regisztrálja a feladatok állapotának változási eseményeit](../media-services/latest/job-state-events-cli-how-to.md)
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 - [A Media Service-eseményeket tartalmazó EventGrid .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/)
 - [Media Services események definíciói](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/eventgrid/data-plane/Microsoft.Media/stable/2018-01-01/MediaServices.json)

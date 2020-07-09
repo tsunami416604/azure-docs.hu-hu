@@ -1,17 +1,14 @@
 ---
 title: Események közzététele esemény-tartományokkal Azure Event Grid
 description: Bemutatja, hogyan kezelheti a témakörök nagy csoportjait a Azure Event Gridban, és hogyan teheti közzé az eseményeket az esemény-tartományok használatával.
-services: event-grid
-author: femila
-ms.service: event-grid
-ms.author: femila
 ms.topic: conceptual
-ms.date: 10/22/2019
-ms.openlocfilehash: 10a0b138c702d4e4d09608c42959c68e97790f81
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 30a77d98fdb0d5bfd5169174999a0a08742adfd8
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84560991"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105561"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>Témakörök kezelése és események közzététele az Event Domain használatával
 
@@ -211,6 +208,6 @@ Get-AzureRmEventGridDomainKey `
 
 Ezt követően pedig kedvenc metódusával teheti közzé az eseményeket a Event Grid tartományában.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ az Event-tartományok magas szintű fogalmakról és azok hasznos okairól: az esemény- [tartományok fogalmi áttekintése](event-domains.md).

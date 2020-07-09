@@ -3,16 +3,16 @@ title: Azure Sentinel-munkaterületek kezelése nagy méretekben
 description: Ismerje meg, hogyan kezelheti hatékonyan az Azure Sentinelt a delegált felhasználói erőforrásokon.
 ms.date: 06/17/2020
 ms.topic: how-to
-ms.openlocfilehash: bca5b6fdc84fa5a7a5553fe64c0218c5f0b44aa6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 70810ca54c62e73d5dec76495eb5179b84db60fe
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85269069"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105268"
 ---
 # <a name="manage-azure-sentinel-workspaces-at-scale"></a>Azure Sentinel-munkaterületek kezelése nagy méretekben
 
-Szolgáltatóként több ügyfél-bérlőt is felkészített az Azure-beli delegált erőforrás-kezeléshez. Az Azure Lighthouse lehetővé teszi a szolgáltatók számára, hogy egyszerre több Azure Active Directory (Azure AD) bérlőre kiterjedő műveleteket hajtsanak végre, így hatékonyabbá téve a felügyeleti feladatokat.
+Szolgáltatóként több ügyfél-bérlőt is felkészített az [Azure világítótoronyba](../overview.md). Az Azure Lighthouse lehetővé teszi a szolgáltatók számára, hogy egyszerre több Azure Active Directory (Azure AD) bérlőre kiterjedő műveleteket hajtsanak végre, így hatékonyabbá téve a felügyeleti feladatokat.
 
 Az Azure Sentinel biztonsági elemzési és veszélyforrási intelligenciát biztosít, így egyetlen megoldást nyújt a riasztások észlelésére, a fenyegetések láthatóságára, a proaktív vadászatra és a fenyegetésekre való reagálásra. Az Azure Lighthouse használatával több Azure Sentinel-munkaterületet is kezelhet a bérlők között a skálán. Ez olyan forgatókönyveket tesz lehetővé, mint például a lekérdezések futtatása több munkaterületen, illetve munkafüzetek létrehozása a csatlakoztatott adatforrásokból származó adatok megjelenítéséhez és figyeléséhez. Az IP-címek, például a lekérdezések és a forgatókönyvek megmaradnak a kezelő bérlőben, de az ügyfél-bérlők biztonsági felügyeletét is elvégezheti.
 
@@ -35,7 +35,7 @@ Ez a központi telepítési modell a következő előnyökkel jár:
 
 ## <a name="granular-role-based-access-control-rbac"></a>Részletes szerepköralapú hozzáférés-vezérlés (RBAC)
 
-A MSSP által kezelt összes ügyfél-előfizetést [Az Azure-beli delegált erőforrás-kezeléshez](onboard-customer.md)kell bevezetni. Ez lehetővé teszi a bérlők számára, hogy az ügyfél-bérlők számára üzembe helyezett Azure Sentinel-munkaterületeken felügyeleti műveleteket férhessenek hozzá és végezzenek el.
+Minden ügyfél-előfizetést, amelyet egy MSSP fog kezelni, be kell készíteni [Az Azure világítótoronyba](onboard-customer.md). Ez lehetővé teszi a bérlők számára, hogy az ügyfél-bérlők számára üzembe helyezett Azure Sentinel-munkaterületeken felügyeleti műveleteket férhessenek hozzá és végezzenek el.
 
 Az engedélyek létrehozásakor az Azure Sentinel beépített szerepköreit hozzárendelheti a felhasználókhoz, csoportokhoz vagy egyszerű szolgáltatásokhoz a kezelő bérlőben:
 
@@ -76,7 +76,7 @@ Az Automation használatával több Azure Sentinel-munkaterület is kezelhető, 
 
 Vegye figyelembe, hogy egyes funkciók [jelenleg nem támogatottak több munkaterületen](../../sentinel/extend-sentinel-across-workspaces-tenants.md#whats-not-supported-across-workspaces).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az [Azure sentinelről](../../sentinel/overview.md).
 - Tekintse át az [Azure Sentinel díjszabási oldalát](https://azure.microsoft.com/pricing/details/azure-sentinel/).

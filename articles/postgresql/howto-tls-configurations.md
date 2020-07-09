@@ -4,13 +4,14 @@ description: Ismerje meg, hogyan állíthatja be a TLS-konfigurációt a Azure D
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/02/2020
-ms.openlocfilehash: ed5d46bbb5a520ee28013210ba44045ad59c2cc2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4cf491a27fbe53a5f5bf0e8351e5bb684b3492f1
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84705692"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86101987"
 ---
 # <a name="configuring-tls-settings-in-azure-database-for-postgresql-single---server-using-azure-portal"></a>A TLS-beállítások konfigurálása Azure Database for PostgreSQL egykiszolgálós Azure Portal használatával
 
@@ -42,6 +43,6 @@ A PostgreSQL minimális TLS-verziójának beállításához kövesse az alábbi 
 
     ![Azure Database for PostgreSQL – egy kiszolgáló TLS-konfigurációja sikeres](./media/howto-tls-configurations/setting-tls-value-success.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Útmutató [riasztások létrehozásához mérőszámokon](howto-alert-on-metric.md)

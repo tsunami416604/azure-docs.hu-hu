@@ -1,17 +1,18 @@
 ---
 title: Szoftverek vásárlása a AppSource-on | Azure piactér
 description: A szoftver megvásárlásának lépései a AppSource-on | Az Azure Marketplace-en.
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 03/20/2020
-ms.openlocfilehash: 0271bd08e01cdbd442e64db0c04184995f7d8d09
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: e3faad025a794b0ae9905fa73b090b55799f3279
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85958446"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103038"
 ---
 # <a name="how-to-purchase-software-on-microsoft-appsource"></a>Szoftverek vásárlása Microsoft AppSource
 
@@ -62,6 +63,6 @@ Egy támogatási jegyet a Microsoft 365 felügyeleti központon keresztül [kül
 
 Üzleti termékek esetén [forduljon az ügyfélszolgálathoz](https://docs.microsoft.com/office365/admin/contact-support-for-business-products?view=o365-worldwide&tabs=phone).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információért tekintse meg a [kereskedelmi piactér dokumentációját](partner-center-portal/commercial-marketplace-overview.md) .

@@ -3,11 +3,12 @@ title: A Windows Server 2003-kiszolgálók előkészítése a Azure Migrate val�
 description: Megtudhatja, hogyan készítheti elő a Windows Server 2003-kiszolgálókat Azure Migrate használatával történő áttelepítésre.
 ms.topic: how-to
 ms.date: 05/27/2020
-ms.openlocfilehash: 33519764b138c7711e6c03a85aa33ec6f936a748
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e33742d59972d491c1efb8d0f1453c1226d4625
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84172283"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103942"
 ---
 # <a name="prepare-windows-server-2003-machines-for-migration"></a>Windows Server 2003 rendszerű gépek előkészítése áttelepítésre
 
@@ -24,7 +25,7 @@ Ez a cikk a Windows Server 2003 rendszert futtató gépek előkészítését ism
 
 Az áttelepítés előtt ellenőrizze, hogy telepítve van-e a Hyper-V integrációs szolgáltatások, majd szükség esetén telepítse azt.
 
-1. Az [alábbi útmutatást](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#turn-an-integration-service-on-or-off-using-hyper-v-manager) követve ellenőrizhető, hogy telepítve van-e.
+1. Az [alábbi útmutatást](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#turn-an-integration-service-on-or-off-using-hyper-v-manager) követve ellenőrizhető, hogy telepítve van-e.
 2. Ha nincs telepítve, jelentkezzen be egy Windows Server 2012 R2/Windows Server 2012 rendszerű gépre a Hyper-V szerepkörrel.
 3. Navigáljon a telepítési fájlhoz a **C:\Windows\System32\vmguest.ISO**címen, és csatlakoztassa a fájlt.
 2. Másolja a telepítési mappát a Windows Server 2003 rendszerű gépre, és telepítse az integrációs szolgáltatásokat.
@@ -43,7 +44,7 @@ Az áttelepítés előtt ellenőrizze, hogy telepítve van-e a Hyper-V integrác
 9. A szkript futtatása és a Hyper-V integrációs szolgáltatások az Azure-beli virtuális gépen való telepítése után eltávolíthatja a parancsfájlt az indításból.
 10. A telepítést követően meghagyhatja az alapértelmezett beállításokat az integrációs szolgáltatásokban. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át a [VMware](migrate-support-matrix-vmware-migration.md) és a [Hyper-V](migrate-support-matrix-hyper-v-migration.md) virtuális gépek áttelepítési követelményeit.
 - Telepítse át a [VMware](server-migrate-overview.md) és a [Hyper-V](tutorial-migrate-hyper-v.md) virtuális gépeket.

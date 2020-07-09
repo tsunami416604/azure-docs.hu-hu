@@ -16,12 +16,12 @@ ms.date: 05/01/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f5cf9487f6f10ce661009e5e504be51a098b7e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1aca245592bef98bc5d0cff3268d5b6496d2220
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357392"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103551"
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Az Azure AD Connect szinkronizálása: ütemező
 Ez a témakör a Azure AD Connect Sync (Sync Engine) beépített feladatütemezőjét ismerteti.
@@ -39,6 +39,10 @@ Az ütemező feladata két feladat:
 * **Karbantartási feladatok**. Új kulcsok és tanúsítványok megújítása a jelszó-visszaállításhoz és az eszköz regisztrációs szolgáltatásához (DRS). A régi bejegyzések kiürítése az operatív naplóban.
 
 Maga az ütemező mindig fut, de úgy is konfigurálható, hogy csak egy vagy több feladatot futtasson. Ha például saját szinkronizálási ciklusra van szüksége, letilthatja ezt a feladatot az ütemező alkalmazásban, de továbbra is futtathatja a karbantartási feladatot.
+
+>[!IMPORTANT]
+>Meg kell győződnie arról, hogy a szinkronizálási ciklus legalább 7 naponta fut. Ha ezt elmulasztja, szinkronizálási problémák léphetnek fel, ami megköveteli, hogy teljes szinkronizálást futtasson a megoldáshoz.
+
 
 ## <a name="scheduler-configuration"></a>Ütemező konfigurálása
 Az aktuális konfigurációs beállítások megtekintéséhez nyissa meg a PowerShellt, és futtassa a parancsot `Get-ADSyncScheduler` . A következőhöz hasonló képet mutat:
@@ -204,7 +208,7 @@ A fenti képen az első sor olyan állapotból származik, amelyben a Szinkroniz
 ## <a name="scheduler-and-installation-wizard"></a>Ütemező és telepítővarázsló
 A telepítővarázsló indításakor az ütemező átmenetileg fel lesz függesztve. Ennek a viselkedésnek az az oka, hogy a konfiguráció módosításait feltételezi, és ezek a beállítások nem alkalmazhatók, ha a Szinkronizáló motor aktívan fut. Ezért ne hagyja meg a telepítővarázsló megnyitását, mert leállítja a szinkronizációs motort a szinkronizálási műveletek végrehajtásával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a [Azure ad Connect szinkronizálási](how-to-connect-sync-whatis.md) konfigurációról.
 
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

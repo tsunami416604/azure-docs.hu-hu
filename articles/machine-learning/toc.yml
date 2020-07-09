@@ -324,7 +324,7 @@
           href: how-to-use-secrets-in-runs.md
         - name: Megerősítő tanulás
           href: how-to-use-reinforcement-learning.md
-    - name: Gépi tanulás automatizálása
+    - name: Automatizált gépi tanulás
       displayName: 'automl, auto ml'
       items:
         - name: Automatizált gépi tanulás használata (Python)

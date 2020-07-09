@@ -1,18 +1,14 @@
 ---
 title: Azure-előfizetés Event Grid forrásként
 description: Az előfizetési eseményekhez megadott tulajdonságokat ismerteti Azure Event Grid
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: reference
-ms.date: 04/09/2020
-ms.author: spelluru
-ms.openlocfilehash: fa88fe4e05ac968588a65d67a2f075bcae48ba7a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 72b1a73bf418b417cd29f88063781e7b45979998
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81393229"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105897"
 ---
 # <a name="azure-subscription-as-an-event-grid-source"></a>Azure-előfizetés Event Grid-forrásként
 
@@ -269,7 +265,7 @@ Az adatobjektum a következő tulajdonságokkal rendelkezik:
 | [Azure CLI: Feliratkozás az Azure-előfizetés eseményeire](./scripts/event-grid-cli-azure-subscription.md) |Parancsfájl, amely Event Grid-előfizetést hoz létre egy Azure-előfizetéshez, és eseményeket küld egy webhooknak. |
 | [PowerShell: Feliratkozás az Azure-előfizetés eseményeire](./scripts/event-grid-powershell-azure-subscription.md)| Parancsfájl, amely Event Grid-előfizetést hoz létre egy Azure-előfizetéshez, és eseményeket küld egy webhooknak. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Azure Event Grid bemutatása: [Mi az Event Grid?](overview.md)
 * Azure Event Grid-előfizetés létrehozásával kapcsolatos további információkért lásd: [Event Grid előfizetés sémája](subscription-creation-schema.md).

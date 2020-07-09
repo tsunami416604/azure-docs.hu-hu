@@ -3,11 +3,12 @@ title: Azure Migrate előkészítése ISV-eszközzel vagy-mozgatóval való egy�
 description: Ez a cikk azt ismerteti, hogyan lehet előkészíteni a Azure Migratet egy ISV-eszközzel vagy-mozgatóval való együttműködésre, majd az eszköz használatának megkezdésére.
 ms.topic: how-to
 ms.date: 06/10/2020
-ms.openlocfilehash: d414c3db92315f7ca1b60bf43fa35b7880c34ccf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ed7652cb34705bac56a79b5c30e6bda3dac69af0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84770373"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103925"
 ---
 # <a name="prepare-to-work-with-an-isv-tool-or-movere"></a>Felkészülés az ISV-eszköz vagy a mozgató tevékenységre
 
@@ -35,7 +36,7 @@ Az Azure-előfizetésében a fióknak **Microsoft. Authorization/*/Write** hozz�
 1. Az Azure Portalon nyissa meg az **Előfizetések** oldalt.
 2. Válassza ki az adott előfizetést. Ha nem látja, válassza a **globális előfizetések szűrőt**. 
 3. Válassza **a saját engedélyek**lehetőséget. Ezután **kattintson ide az előfizetés teljes hozzáférés részleteinek megtekintéséhez**.
-4. A **szerepkör-hozzárendelések**  >  **nézetben**tekintse át az engedélyeket. Ha a fiókja nem rendelkezik jogosultságokkal, kérje meg az előfizetés rendszergazdáját, hogy vegye fel a [felhasználót a felhasználói hozzáférés rendszergazdai](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator) szerepkörbe vagy a [tulajdonos](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) szerepkörbe.
+4. A **szerepkör-hozzárendelések**  >  **nézetben**tekintse át az engedélyeket. Ha a fiókja nem rendelkezik jogosultságokkal, kérje meg az előfizetés rendszergazdáját, hogy vegye fel a [felhasználót a felhasználói hozzáférés rendszergazdai](../role-based-access-control/built-in-roles.md#user-access-administrator) szerepkörbe vagy a [tulajdonos](../role-based-access-control/built-in-roles.md#owner) szerepkörbe.
 
 ## <a name="allow-access-to-urls"></a>URL-címek elérésének engedélyezése
 
@@ -55,7 +56,7 @@ management.azure.com | Azure Resource Manager hívásokat kezdeményez a Azure M
 1. Ha még nem rendelkezik licenccel vagy ingyenes próbaverzióval az eszközhöz, a Azure Migrate eszköz bejegyzésében, a **regisztráció**területen válassza a **továbbiak**lehetőséget.
 2. Az eszközben kövesse az utasításokat az eszközről a Azure Migrate projekthez való hivatkozáshoz, és az adatok Azure Migrateba való küldéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Kövesse az ISV vagy a mozgató utasításait az adatok Azure Migrate való elküldéséhez.
 

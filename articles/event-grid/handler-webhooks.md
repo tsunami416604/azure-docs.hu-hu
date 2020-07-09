@@ -1,17 +1,14 @@
 ---
 title: Webhookok Azure Event Grid események eseménykezelői
 description: Ismerteti, hogyan használhatók a webhookok Azure Event Grid eseményekhez tartozó eseménykezelőként. Azure Automation a runbookok és a Logic apps az eseménykezelők webhookok használatával történő használatát támogatja.
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/11/2020
-ms.author: spelluru
-ms.openlocfilehash: d29cf1819d844a8ba5446feeeb725307523fce1b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 3dc75b15c55c82b6164e77f0ac93a87bced94a64
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83800546"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105608"
 ---
 # <a name="webhooks-automation-runbooks-logic-apps-as-event-handlers-for-azure-event-grid-events"></a>Webhookok, Automation-runbookok, Logic Apps Azure Event Grid események eseménykezelői
 Az eseménykezelő az a hely, ahol az esemény elküldése történik. A kezelő további műveletet hajt végre az esemény feldolgozásához. Számos Azure-szolgáltatás automatikusan az események kezelésére van konfigurálva. Az események kezelésére bármilyen webhookot is használhat. A webhookot nem kell az Azure-ban üzemeltetni az események kezeléséhez. A Event Grid csak a HTTPS webhook-végpontokat támogatja.
@@ -68,5 +65,5 @@ A **Logic apps** használatával üzleti folyamatokat valósíthat meg Event Gri
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A támogatott eseménykezelők listáját az [eseménykezelők](event-handlers.md) című cikkben tekintheti meg. 

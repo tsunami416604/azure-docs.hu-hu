@@ -4,13 +4,14 @@ description: Ismerje meg, hogyan kezelheti az olvasási replikákat Azure Databa
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: c7d55a7b10f0c874fd84f32db1dcf21fb60c231f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8e148a3dac8435a08c0f1735cd35d06c700e1e84
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84636635"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86106628"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>Olvasási replikák létrehozása és kezelése Azure Database for PostgreSQL – egyetlen kiszolgálón a Azure Portal
 
@@ -183,6 +184,6 @@ A **replika késésének** mérőszáma az utolsó visszajátszott tranzakció �
  
 3. Az **összesítéshez**válassza a **Max**lehetőséget. 
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ [az olvasási replikákkal kapcsolatban Azure Database for PostgreSQL](concepts-read-replicas.md).
 * Ismerje meg, hogyan [hozhat létre és kezelhet olvasási replikákat az Azure CLI-ben és a REST APIban](howto-read-replicas-cli.md).

@@ -1,18 +1,14 @@
 ---
 title: Azure-erőforráscsoport Event Grid forrásaként
 description: Az erőforráscsoportok eseményeihez megadott tulajdonságokat ismerteti Azure Event Grid
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/09/2020
-ms.author: spelluru
-ms.openlocfilehash: fb52b54eb32a119a463b59e4d4f2ab30096886fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: ed01bfdb67d9b8a3dd5875ec3fd8c6edf8922520
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81393252"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105914"
 ---
 # <a name="azure-resource-group-as-an-event-grid-source"></a>Azure-erőforráscsoport Event Grid forrásaként
 
@@ -271,7 +267,7 @@ Az adatobjektum a következő tulajdonságokkal rendelkezik:
 | [PowerShell: előfizetés egy erőforráscsoport eseményeire és egy erőforrás szűrésére](./scripts/event-grid-powershell-resource-group-filter.md) | Egy erőforráscsoport eseményeire előfizetett minta-parancsfájl, amely egy adott erőforráshoz tartozó eseményeket szűri. |
 | [Resource Manager-sablon: erőforrás-előfizetés](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-resource-events-to-webhook) | Feliratkozik az Azure-előfizetésekre vagy-csoportokra vonatkozó eseményekre. Eseményeket küld egy webhooknak. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Azure Event Grid bemutatása: [Mi az Event Grid?](overview.md)
 * Azure Event Grid-előfizetés létrehozásával kapcsolatos további információkért lásd: [Event Grid előfizetés sémája](subscription-creation-schema.md).

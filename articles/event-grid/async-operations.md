@@ -1,19 +1,16 @@
 ---
-title: Aszinkron műveletek állapota
-description: Útmutatás az aszinkron műveletek nyomon követéséhez az Azure-ban. Megjeleníti a hosszan futó művelet állapotának lekéréséhez használt értékeket.
-services: event-grid
-author: spelluru
-ms.service: event-grid
+title: Event Grid aszinkron műveletek állapota
+description: Útmutatás Event Grid aszinkron műveletek nyomon követéséhez az Azure-ban. Megjeleníti a hosszan futó művelet állapotának lekéréséhez használt értékeket.
 ms.topic: conceptual
-ms.date: 04/30/2020
-ms.author: spelluru
-ms.openlocfilehash: fb3479271733ee218da8a842956f3a8996e07f61
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 621490a9f56e88baaf343c1c2a072ab84aa7d3ef
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82892016"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103330"
 ---
-# <a name="track-asynchronous-azure-operations"></a>Aszinkron Azure-műveletek nyomon követése
+# <a name="track-event-grid-asynchronous-azure-operations"></a>Az aszinkron Azure-műveletek nyomon követése Event Grid
 Bizonyos Azure REST-műveletek aszinkron módon futnak, mert a művelet nem hajtható végre gyorsan. Ez a cikk bemutatja, hogyan követheti nyomon az aszinkron műveletek állapotát a válaszban visszaadott értékek alapján.  
 
 ## <a name="status-codes-for-asynchronous-operations"></a>Az aszinkron műveletekhez tartozó állapotkódok
@@ -185,7 +182,7 @@ https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft
 
 Ha a kérelem még fut, a 202 állapotkódot kapja meg. Ha a kérelem befejeződött, a kapott állapotkód 200, a válasz törzse pedig a létrehozott Storage-fiók tulajdonságait tartalmazza.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az egyes REST-műveletekkel kapcsolatos dokumentációért lásd: [REST API dokumentáció](/rest/api/).
 * A sablonok Resource Manager-REST API használatával történő telepítésével kapcsolatos információkért lásd: [erőforrások üzembe helyezése Resource Manager-sablonokkal és Resource Manager-Rest APIokkal](../azure-resource-manager/templates/deploy-rest.md).

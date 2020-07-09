@@ -1,19 +1,16 @@
 ---
-title: Azure Event Grid használata a CloudEvents-sémában lévő eseményekkel
+title: CloudEvents v 1.0 séma Azure Event Grid
 description: Ismerteti, hogyan használható a CloudEvents séma a Azure Event Grid eseményeihez. A szolgáltatás támogatja a felhőalapú események JSON-implementációjában lévő eseményeket.
-services: event-grid
-author: femila
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/21/2020
-ms.author: femila
-ms.openlocfilehash: 57827b1c5a43a3408d374e8bddb7b91113b2929a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 1c6085c0397f23d44cf11d43a3e1da71f0e728bb
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84560696"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103075"
 ---
-# <a name="cloudevents-v10-schema-with-event-grid"></a>CloudEvents v 1.0 séma Event Grid
+# <a name="cloudevents-v10-schema-with-azure-event-grid"></a>CloudEvents v 1.0 séma Azure Event Grid
 
 Az [alapértelmezett esemény sémáján](event-schema.md)kívül Azure Event Grid natív módon támogatja a [CloudEvents v 1.0](https://github.com/cloudevents/spec/blob/v1.0/json-format.md) és a [http protokoll kötésének](https://github.com/cloudevents/spec/blob/v1.0/http-protocol-binding.md)JSON-implementációjában lévő eseményeket. A [CloudEvents](https://cloudevents.io/) egy [nyílt specifikáció](https://github.com/cloudevents/spec/blob/v1.0/spec.md) az események leírásához.
 
@@ -70,5 +67,5 @@ A CloudEvents-sémában lévő események bemenetéhez és kimenetéhez Event Gr
 
 Az összes esemény sémája esetében a Event Grid érvényesítést igényel az Event Grid-témakörre való közzétételkor és az esemény-előfizetés létrehozásakor. További információ: [Event Grid biztonság és hitelesítés](security-authentication.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Lásd: [a CloudEvents 1.0-s verziójának használata Event Grid használatával](cloudevents-schema.md).  

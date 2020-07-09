@@ -8,11 +8,12 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 02/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: 45a61b5bc6f1082b84bf94db7e8ad5ce49ec068f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ac6a00efa7db848e4c05703c81ba835fbf5f77e3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83648068"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103789"
 ---
 # <a name="connect-hybrid-machines-to-azure-at-scale"></a>Hibrid gépek összekötése az Azure-on nagy méretekben
 
@@ -85,7 +86,7 @@ Az alábbi beállításokkal konfigurálhatja az `azcmagent` egyszerű szolgált
 * `location`: Tekintse meg a [támogatott Azure-régiókat](overview.md#supported-regions). Ez a hely lehet azonos vagy eltérő, mint az erőforráscsoport helye.
 * `resource-name`: (Nem*kötelező*) a helyszíni gép Azure-beli erőforrás-ábrázolásához használatos. Ha nem megadja ezt az értéket, a rendszer a gép állomásnevét használja.
 
-A parancssori eszközzel kapcsolatos további információkért tekintse meg `azcmagent` a [Azcmagent-hivatkozás](azcmagent-reference.md)áttekintését.
+A parancssori eszközzel kapcsolatos további információkért tekintse meg `azcmagent` a [Azcmagent-hivatkozás](./manage-agent.md)áttekintését.
 
 ### <a name="windows-installation-script"></a>Windows telepítési parancsfájl
 
@@ -134,7 +135,7 @@ Miután telepítette az ügynököt, és úgy konfigurálja, hogy az Azure arc f
 
 ![Sikeres kiszolgálói kapcsolatok](./media/onboard-portal/arc-for-servers-successful-onboard.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan kezelheti a gépet [Azure Policy](../../governance/policy/overview.md)használatával, például a virtuális gép [vendég konfigurációjában](../../governance/policy/concepts/guest-configuration.md), ellenőrizheti, hogy a gép a várt log Analytics munkaterületről jelent-e jelentést, lehetővé teszi a figyelést a virtuális [gépekkel Azure monitor](../../azure-monitor/insights/vminsights-enable-at-scale-policy.md)és sok más további műveletet.
 

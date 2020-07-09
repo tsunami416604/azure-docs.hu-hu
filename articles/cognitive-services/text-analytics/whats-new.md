@@ -8,18 +8,35 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 06/03/2020
+ms.date: 07/07/2020
 ms.author: aahi
-ms.openlocfilehash: 7ab886b65e665bdd38e2461e49fa051213602f0e
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 3d9fb7f3fa01c06cc778e4062dd1d136e9c6e342
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84462794"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103398"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>A Text Analytics API újdonságai.
 
 A Text Analytics API frissítése folyamatosan történik. Ha naprakészen szeretne maradni a legutóbbi fejleményekkel, ez a cikk az új kiadásokkal és szolgáltatásokkal kapcsolatos információkat tartalmaz.
+
+## <a name="july-2020"></a>2020. július
+
+### <a name="text-analytics-for-health-container-public-gated-preview"></a>Text Analytics az állapotfigyelő szolgáltatás nyilvános előnézetéhez
+
+A Text Analytics for Health Container mostantól nyilvános, megnyitható előzetes verzióban érhető el, amely lehetővé teszi az adatok kinyerését a nem strukturált angol nyelvű szövegből olyan klinikai dokumentumokban, mint például a betegek bevitele, az orvos megjegyzései, a kutatási dokumentumok és a mentesítési összefoglalók. Jelenleg nem számítunk fel díjat a Text Analytics állapotának az állapotfigyelő tároló használata esetén. 
+
+A tároló a következő funkciókat kínálja:
+
+* Megnevezett entitások felismerése
+* Kapcsolatok kibontása
+* Entitás összekapcsolása
+* Negáció
+
+
+> [!div class="nextstepaction"]
+> [További információ a Text Analytics az állapotfigyelő tárolóról](how-tos/text-analytics-for-health.md)
 
 ## <a name="may-2020"></a>2020. május
 
@@ -61,9 +78,6 @@ A JSON-válaszban a következő tulajdonságok nevei módosultak, ahol lehetség
 ### <a name="text-analytics-api-v31-public-preview"></a>Text Analytics API v 3.1 nyilvános előzetes verzió
    * Új Hangulatelemzés funkció – [vélemény bányászata](how-tos/text-analytics-how-to-sentiment-analysis.md#opinion-mining)
    * Új [személyes ( `PII` ) tartományi szűrő](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) a védett állapotra vonatkozó információkhoz ( `PHI` ).
-   * Új személyes ( `PII` ) Kategóriák:
-      * Betegségek nemzetközi osztályozása (ICD-9-CM)
-      * Betegségek nemzetközi osztályozása (ICD-10-CM)
 
 > [!div class="nextstepaction"]
 > [További információ a Text Analytics API v 3.1 előzetes verziójáról](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-1/operations/Languages)
@@ -75,7 +89,7 @@ A JSON-válaszban a következő tulajdonságok nevei módosultak, ahol lehetség
 Az [egységes Azure SDK kiadás](https://techcommunity.microsoft.com/t5/azure-sdk/january-2020-unified-azure-sdk-release/ba-p/1097290)részeként a Text Analytics API v3 SDK mostantól elérhető nyilvános előzetes verzióként a következő programozási nyelvekhez:
    * [C#](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk?tabs=version-3&pivots=programming-language-csharp)
    * [Python](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk?tabs=version-3&pivots=programming-language-python)
-   * [JavaScript (node. js)](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk?tabs=version-3&pivots=programming-language-javascript)
+   * [JavaScript (Node.js)](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk?tabs=version-3&pivots=programming-language-javascript)
    * [Java](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk?tabs=version-3&pivots=programming-language-java)
    
    > [!div class="nextstepaction"]

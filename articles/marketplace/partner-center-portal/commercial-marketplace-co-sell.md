@@ -1,17 +1,18 @@
 ---
 title: Közös értékesítés lehetősége a partner Centerben | Azure piactér
 description: Az ajánlat közös értékesítés lapján megjelenő információkat a Microsoft értékesítési csapatai fogják használni, hogy az ügyfelek igényeinek megfelelő kiértékelése során többet tudjanak megtudni a megoldásról.
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: palanis-MSFT
+ms.author: palanis
 ms.date: 05/12/2020
-ms.openlocfilehash: c8265f641afb4164f26b8b2663b9f904f95b2b67
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 529988ce456b9017d700880d55b349fa93e15f96
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83201451"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86104231"
 ---
 # <a name="co-sell-option-in-partner-center"></a>Együttes értékesítési lehetőség a Partnerközpontban
 
@@ -100,6 +101,6 @@ Exportálhatja egy ajánlat névjegyeinek meglévő listáját is, majd módosí
 
 * *Államok/tartományok (nem kötelező):*  A sablon kitöltésekor használja az XX-XX formátumot az [Államok/tartományok táblában](./commercial-marketplace-co-sell-states.md)felsoroltak szerint.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ: [értékesítés a Microsofttal](https://partner.microsoft.com/membership/sell-with-microsoft).

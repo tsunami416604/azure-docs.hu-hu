@@ -4,14 +4,14 @@ description: Ismerje meg, hogyan állíthatja be és kezelheti az infrastruktúr
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/30/2020
-ms.openlocfilehash: 2eb1c196e73644eeefa77d66562dc2a55d6f221a
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 6612fe38adcd3c8002dd4a11122b5bb2e797a4dd
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86034855"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86102174"
 ---
 # <a name="infrastructure-double-encryption-for-azure-database-for-postgresql"></a>Infrastruktúra kettős titkosítása Azure Database for PostgreSQL
 
@@ -58,7 +58,7 @@ A következő példa létrehoz egy PostgreSQL 11 kiszolgálót az USA nyugati r�
 az postgres server create --resource-group myresourcegroup --name mydemoserver  --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen4_2 --version 11 --infrastructure-encryption >Enabled/Disabled>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További tudnivalók az adattitkosításról: [Azure Database for PostgreSQL adatinfrastruktúra kettős titkosítása](concepts-Infrastructure-double-encryption.md).
 

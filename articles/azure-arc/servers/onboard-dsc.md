@@ -8,15 +8,16 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 03/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1fb64463b0372202adb04c2deb304c389c7773b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f3dee468764f27d930081b5a3cd415c48bb79c0d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79164682"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86104010"
 ---
 # <a name="how-to-install-the-connected-machine-agent-using-windows-powershell-dsc"></a>A csatlakoztatott gép ügynökének telepítése a Windows PowerShell DSC használatával
 
-A [Windows PowerShell desired State Configuration](https://docs.microsoft.com/powershell/scripting/dsc/getting-started/winGettingStarted?view=powershell-7) (DSC) használatával automatizálhatja a szoftverek telepítését és konfigurációját a Windows rendszerű számítógépeken. Ez a cikk azt ismerteti, hogyan telepítheti a DSC-t az Azure arc for Servers Connected Machine Agent használatára a hibrid Windows rendszerű gépeken.
+A [Windows PowerShell desired State Configuration](/powershell/scripting/dsc/getting-started/winGettingStarted?view=powershell-7) (DSC) használatával automatizálhatja a szoftverek telepítését és konfigurációját a Windows rendszerű számítógépeken. Ez a cikk azt ismerteti, hogyan telepítheti a DSC-t az Azure arc for Servers Connected Machine Agent használatára a hibrid Windows rendszerű gépeken.
 
 ## <a name="requirements"></a>Követelmények
 
@@ -72,7 +73,7 @@ A következő paraméterek a használni kívánt PowerShell-szkripthez adhatók 
 
 1. A PowerShell-konzolon Navigáljon arra a mappára, ahová a `.ps1` fájlt mentette.
 
-2. Futtassa a következő PowerShell-parancsokat a MOF-dokumentum fordításához (a DSC-konfigurációk fordításával kapcsolatos információkért lásd: [DSC-konfigurációk](https://docs.microsoft.com/powershell/scripting/dsc/configurations/configurations?view=powershell-7):
+2. Futtassa a következő PowerShell-parancsokat a MOF-dokumentum fordításához (a DSC-konfigurációk fordításával kapcsolatos információkért lásd: [DSC-konfigurációk](/powershell/scripting/dsc/configurations/configurations?view=powershell-7):
 
     ```powershell
     .\`AzureConnectedMachineAgent.ps1 -TenantId <TenantId GUID> -SubscriptionId <SubscriptionId GUID> -ResourceGroup '<ResourceGroupName>' -Location '<LocationName>' -Tags '<Tag>' -Credential <psCredential>
@@ -86,9 +87,9 @@ Miután telepítette az ügynököt, és úgy konfigurálja, hogy az Azure arc f
 
 Ezt az erőforrást hozzá lehet adni a meglévő DSC-konfigurációkhoz a gép végpontok közötti konfigurációjának ábrázolásához. Előfordulhat például, hogy hozzá szeretné adni ezt az erőforrást egy olyan konfigurációhoz, amely az operációs rendszer biztonságos beállításait állítja be.
 
-A PowerShell-galéria [CompsiteResource](https://www.powershellgallery.com/packages/compositeresource/0.4.0) modulja a konfiguráció [összetett erőforrásának](https://docs.microsoft.com/powershell/scripting/dsc/resources/authoringResourceComposite?view=powershell-7) létrehozásához használható a konfigurációk összekapcsolásának további egyszerűsítése érdekében.
+A PowerShell-galéria [CompsiteResource](https://www.powershellgallery.com/packages/compositeresource/0.4.0) modulja a konfiguráció [összetett erőforrásának](/powershell/scripting/dsc/resources/authoringResourceComposite?view=powershell-7) létrehozásához használható a konfigurációk összekapcsolásának további egyszerűsítése érdekében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan kezelheti a gépet [Azure Policy](../../governance/policy/overview.md)használatával, például a virtuális gép [vendég konfigurációjában](../../governance/policy/concepts/guest-configuration.md), ellenőrizheti, hogy a gép a várt log Analytics munkaterületről jelent-e jelentést, lehetővé teszi a figyelést a virtuális [gépekkel Azure monitor](../../azure-monitor/insights/vminsights-enable-at-scale-policy.md)és sok más további műveletet.
 

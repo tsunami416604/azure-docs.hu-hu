@@ -8,11 +8,12 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: f6cf551b95de8fc7fae83941e5109dfa823213af
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf22ce87ed3d535a7c1bd03a8d7f747bee3ab13a
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84465983"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86106390"
 ---
 # <a name="optimize-azure-data-lake-storage-gen2-for-performance"></a>Azure Data Lake Storage Gen2 optimalizálása a teljesítményhez
 
@@ -64,13 +65,13 @@ A struktúra számítási feladataihoz az idősoros adatok partíciójának mets
 
 Azok a folyamatok, amelyek idősoros adatot töltenek be, gyakran a fájlokhoz és mappákhoz nagyon strukturált elnevezéssel helyezik el a fájljaikat. Az alábbiakban egy gyakori példa látható, hogy a dátum szerint strukturált adatok:
 
-    \DataSet\YYYY\MM\DD\datafile_YYYY_MM_DD.tsv
+*\DataSet\YYYY\MM\DD\ datafile_YYYY_MM_DD. TSV*
 
 Figyelje meg, hogy a DateTime információ a mappák és a fájlnév között is megjelenik.
 
 A dátum és idő esetében az alábbi gyakori minta
 
-    \DataSet\YYYY\MM\DD\HH\mm\datafile_YYYY_MM_DD_HH_mm.tsv
+*\DataSet\YYYY\MM\DD\HH\mm\ datafile_YYYY_MM_DD_HH_mm. TSV*
 
 A mappa és a fájl szervezetének megválasztásakor a nagyobb fájlméretet és az egyes mappákban lévő fájlok ésszerű számú fájljának optimalizálását is érdemes megtenni.
 

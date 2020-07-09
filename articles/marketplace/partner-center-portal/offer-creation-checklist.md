@@ -1,18 +1,16 @@
 ---
 title: SaaS-ajánlat létrehozása ellenőrzőlista a Microsoft kereskedelmi piactéren
 description: Az SaaS-ajánlat létrehozási folyamatában megadható részletek a partner Centerben.
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: b30afd4ef69b9b4ecb49b99f4455bf136a6e6eb2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c56295f1e56e4ba3b6af9caf8ba38ce1f0552eeb
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374406"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86101708"
 ---
 # <a name="saas-offer-creation-checklist-in-partner-center"></a>SaaS-ajánlat létrehozási ellenőrzőlistája a partner Centerben
 
@@ -83,7 +81,7 @@ A tőzsdei oldalon megadhatja, hogy az ügyfelek milyen szövegeket és képeket
 | :---------------- | :-----------| 
 | Name  | Kötelező, Max 50 karakter. |
 | Összefoglalás  | Kötelező, Max 100 karakter. | 
-| Description  | Kötelező, Max 3000 karakter. |
+| Leírás  | Kötelező, Max 3000 karakter. |
 | Első lépések utasítások  | Kötelező, Max 3000 karakter. |
 | Első lépések utasítások  | Kötelező, Max 3000 karakter. |
 | Kulcsszavak keresése  | Nem kötelező, ajánlott, legfeljebb 3 kulcsszó. |
@@ -153,7 +151,7 @@ Csak akkor érhető el, ha kijelöli az ajánlata tesztelésére szolgáló megh
 
 | **Mezőnév**    | **Megjegyzések**   | 
 | :---------------- | :-----------| 
-| Description  | Kötelező. |
+| Leírás  | Kötelező. |
 | Felhasználói manuális név + fájl  | Kötelező, legfeljebb 1 doc. PDF formátumúnak kell lennie. |
 | Videó neve, URL + miniatűr  | Nem kötelező, ajánlott. A miniatűrnek 533 x 324 JPGP vagy PNG formátumúnak kell lennie. A videót a YouTube vagy a Vimeo szolgáltatásban kell tárolni. |
 
@@ -163,6 +161,6 @@ Csak akkor érhető el, ha kijelöli az ajánlata tesztelésére szolgáló megh
 | :---------------- | :-----------| 
 | A minősítéssel kapcsolatos megjegyzések  | Választható. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Új SaaS-ajánlat létrehozása](./create-new-saas-offer.md)
