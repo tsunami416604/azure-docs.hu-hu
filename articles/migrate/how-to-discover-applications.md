@@ -3,11 +3,12 @@ title: Alkalmazások, szerepkörök és szolgáltatások felderítése helyszín
 description: Ismerje meg, hogyan derítheti fel az alkalmazásokat, szerepköröket és szolgáltatásokat a helyszíni kiszolgálókon Azure Migrate Server Assessment használatával.
 ms.topic: article
 ms.date: 06/10/2020
-ms.openlocfilehash: ae00e390bb49f3a54f7f7ce7d6491cf7ee882491
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 535c8ae8c2d6e5d9d175e663a58d47dc76aa0529
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84770509"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118647"
 ---
 # <a name="discover-machine-apps-roles-and-features"></a>Gépi alkalmazások, szerepkörök és szolgáltatások felderítése
 
@@ -76,7 +77,7 @@ Ha a felderítést követően megadták a hitelesítő adatokat az alkalmazás f
 
 Az alkalmazás leltára Excel-formátumban van exportálva és letöltve. Az **alkalmazás leltározási** lapja az összes gépen felderített alkalmazást jeleníti meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Felmérés létrehozása](how-to-create-assessment.md) a felderített kiszolgálókhoz.
-- SQL Server adatbázisok értékelése [Azure Migrate használatával: adatbázis-értékelés](https://docs.microsoft.com/sql/dma/dma-assess-sql-data-estate-to-sqldb?view=sql-server-2017).
+- SQL Server adatbázisok értékelése [Azure Migrate használatával: adatbázis-értékelés](/sql/dma/dma-assess-sql-data-estate-to-sqldb?view=sql-server-2017).

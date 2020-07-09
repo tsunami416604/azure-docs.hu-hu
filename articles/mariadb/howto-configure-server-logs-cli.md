@@ -5,15 +5,17 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 4/13/2020
-ms.openlocfilehash: 75efdd8ed855fe78651fce5828aacb2384052ae5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc4a2e8c3de05a9df136e74a1e0d32956891a175
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81270536"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118494"
 ---
-# <a name="configure-and-access-slow-query-logs-by-using-azure-cli"></a>Lassú lekérdezési naplók konfigurálása és elérése az Azure CLI használatával
+# <a name="configure-and-access-azure-database-for-maria-db-slow-query-logs-by-using-azure-cli"></a>Az Azure Database for Maria DB lassú lekérdezési naplók konfigurálása és elérése az Azure CLI használatával
+
 Az Azure CLI-vel, az Azure parancssori segédprogrammal töltheti le az Azure Database for MariaDB lassú lekérdezési naplókat.
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -53,5 +55,5 @@ A következő példa használatával letöltheti a kiszolgáló **mydemoserver.M
 az mariadb server-logs download --name mysql-slow-mydemoserver-2018110800.log --resource-group myresourcegroup --server mydemoserver
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ [a Azure Database for MariaDB lassú lekérdezési naplóiról](concepts-server-logs.md).

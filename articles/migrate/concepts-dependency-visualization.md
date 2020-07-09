@@ -3,11 +3,12 @@ title: Függőségek elemzése Azure Migrate kiszolgáló értékelése során
 description: Ismerteti, hogyan használható a függőségi elemzés az értékeléshez Azure Migrate Server Assessment használatával.
 ms.topic: conceptual
 ms.date: 06/14/2020
-ms.openlocfilehash: ff563668666207f35fa2ea796d6c909a59df245f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 386a8cefce722c4bff09e2a7fe6d25957630ff61
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84771342"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118800"
 ---
 # <a name="dependency-analysis"></a>Függőségek elemzése
 
@@ -74,7 +75,7 @@ Az ügynök nélküli vizualizáció és az ügynök-alapú vizualizáció köz�
 --- | --- | ---
 **Támogatás** | Csak a VMware virtuális gépek előzetes verziójában. [Tekintse át](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) a támogatott operációs rendszereket. | Általánosan elérhető (GA).
 **Ügynök** | Nincs szükség ügynökökre az elemezni kívánt gépeken. | Az elemezni kívánt helyszíni gépekhez szükséges ügynökök.
-**Log Analytics** | Nem kötelező. | Azure Migrate a függőségi elemzéshez a [Service Map](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map) megoldást használja [Azure monitor naplókban](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) . 
+**Log Analytics** | Nem kötelező. | Azure Migrate a függőségi elemzéshez a [Service Map](../azure-monitor/insights/service-map.md) megoldást használja [Azure monitor naplókban](../azure-monitor/log-query/log-query-overview.md) . 
 **Folyamat** | A TCP-kapcsolatok adatmennyiségét rögzíti. A felderítést követően öt percen belül gyűjti az adatokat. | A gépen telepített Service Map ügynökök adatokat gyűjtenek a TCP-folyamatokról, valamint az egyes folyamatok bejövő/kimenő kapcsolatairól.
 **Adatok** | Forrásoldali gép kiszolgálójának neve, folyamata, alkalmazás neve.<br/><br/> Célszámítógép kiszolgálójának neve, folyamat, alkalmazás neve és port. | Forrásoldali gép kiszolgálójának neve, folyamata, alkalmazás neve.<br/><br/> Célszámítógép kiszolgálójának neve, folyamat, alkalmazás neve és port.<br/><br/> A kapcsolatok száma, a késés és az adatátviteli adatok összegyűjtése és Log Analytics lekérdezések számára elérhetők. 
 **Vizualizáció** | Az önálló kiszolgálók függőségi térképe egy óra és 30 nap közötti időtartamon belül megtekinthető. | Egyetlen kiszolgáló függőségi térképe.<br/><br/> Kiszolgálók egy csoportjának függőségi térképe.<br/><br/>  A Térkép csak egy órán át jeleníthető meg.<br/><br/> Kiszolgálók hozzáadása és eltávolítása a Térkép nézetből.
@@ -82,10 +83,8 @@ Adatexportálás | Az elmúlt 30 nap során az adatletöltés CSV formátumban i
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ügynök-alapú függőségi vizualizáció [beállítása](how-to-create-group-machine-dependencies.md) .
 - [Próbálja ki](how-to-create-group-machine-dependencies-agentless.md) az ügynök nélküli függőségi vizualizációt a VMWare virtuális gépekhez.
 - Tekintse át a függőségi vizualizációval kapcsolatos [gyakori kérdéseket](common-questions-discovery-assessment.md#what-is-dependency-visualization) .
-
-

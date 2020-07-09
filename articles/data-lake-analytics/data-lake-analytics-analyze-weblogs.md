@@ -7,14 +7,14 @@ ms.author: saveenr
 ms.reviewer: jasonwhowell
 ms.assetid: 3a196735-d0d9-4deb-ba68-c4b3f3be8403
 ms.service: data-lake-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/05/2016
-ms.openlocfilehash: 3fbb27c92b6befde04a55bac82edf4256a94088c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 25b84646bd6a95f0409184cccd40c6b7c9a0ef7f
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85551116"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86117440"
 ---
 # <a name="analyze-website-logs-using-azure-data-lake-analytics"></a>Webhelynaplók elemzése az Azure Data Lake Analytics használatával
 Megtudhatja, hogyan elemezheti a webhelyek naplóit a Data Lake Analytics használatával, különösen annak megállapításához, hogy mely hivatkozó hibák léptek fel a webhelyre.
@@ -182,7 +182,7 @@ Hozzáadhat további felhasználó által definiált operátorokat is az alkalma
 3. Kattintson duplán a **UnsuccessfulResponses. log naplófájlra**.
 4. Azt is megteheti, hogy duplán kattint a kimeneti fájlra a feladatok gráf nézetében, hogy közvetlenül a kimenetre navigáljon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Data Lake Analytics különböző eszközökkel való használatának megismeréséhez lásd:
 
 * [Ismerkedés a Data Lake Analytics az Azure Portal használatával](data-lake-analytics-get-started-portal.md)

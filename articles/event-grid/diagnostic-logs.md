@@ -1,18 +1,14 @@
 ---
 title: Azure Event Grid – témakörökhöz vagy tartományokhoz tartozó diagnosztikai naplók
 description: Ez a cikk az Azure Event Grid-témakör vagy egy tartomány diagnosztikai naplóival kapcsolatos elméleti információkat tartalmaz.
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/29/2020
-ms.author: spelluru
-ms.openlocfilehash: 93e7e47cbcc1ab9542ba333b89f7dd655a412489
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: c8f6734d9d43887d0eb0bb90bb08f727732feac3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82630251"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116743"
 ---
 #  <a name="diagnostic-logs-for-azure-event-grid-topicsdomains"></a>Diagnosztikai naplók Azure Event Grid témakörökhöz/tartományokhoz
 A diagnosztikai beállítások lehetővé teszik Event Grid felhasználók számára a **közzétételi és kézbesítési hibák** naplóinak rögzítését vagy megtekintését egy Storage-fiókban, egy Event hub-ban vagy egy log Analytics-munkaterületen. Ez a cikk a naplókhoz és egy példaként szolgáló naplóbejegyzés sémáját ismerteti.
@@ -42,5 +38,5 @@ A diagnosztikai beállítások lehetővé teszik Event Grid felhasználók szám
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha szeretné megtudni, hogyan engedélyezheti a diagnosztikai naplókat a témakörök vagy tartományok számára, olvassa el a [diagnosztikai naplók engedélyezése](enable-diagnostic-logs-topic.md)című témakört.

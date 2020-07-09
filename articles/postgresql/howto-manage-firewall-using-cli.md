@@ -5,13 +5,14 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.devlang: azurecli
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: 4af0fb288961689fb051bab8091c838f793cfcc3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9b2c1021f88eab15a1f8803a4439dc0cb9b6ed97
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74765647"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86117644"
 ---
 # <a name="create-and-manage-firewall-rules-in-azure-database-for-postgresql---single-server-using-azure-cli"></a>Tűzfalszabályok létrehozása és kezelése Azure Database for PostgreSQL – egyetlen kiszolgálón az Azure CLI használatával
 A kiszolgálói szintű tűzfalszabályok használatával felügyelhető egy adott IP-cím vagy IP-címtartomány Azure Database for PostgreSQL-kiszolgálóhoz való hozzáférése. A kényelmes Azure CLI-parancsok használatával létrehozhat, frissíthet, törölhet, listázhat és megjeleníthet tűzfalszabályok a kiszolgáló kezeléséhez. A Azure Database for PostgreSQL tűzfalszabályok áttekintését lásd: [Azure Database for PostgreSQL Server Firewall Rules](concepts-firewall-rules.md).
@@ -77,7 +78,7 @@ az postgres server firewall-rule delete --resource-group myresourcegroup --serve
 ```
 A művelet sikere esetén nincs kimenet. Hiba esetén a rendszer a hibaüzenet szövegét adja vissza.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Ehhez hasonlóan webböngészővel is [létrehozhat és kezelhet Azure Database for PostgreSQL tűzfalszabályok használatát a Azure Portal használatával](howto-manage-firewall-using-portal.md).
 - További információ a [Azure Database for PostgreSQL kiszolgálói tűzfalszabályok](concepts-firewall-rules.md)használatáról.
 - A kiszolgálóhoz való további biztonságos hozzáférés [Virtual Network szolgáltatási végpontok és szabályok létrehozásával és kezelésével az Azure CLI használatával](howto-manage-vnet-using-cli.md).

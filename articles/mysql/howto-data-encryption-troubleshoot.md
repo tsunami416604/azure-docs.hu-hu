@@ -4,13 +4,14 @@ description: Ismerje meg, hogyan lehet elhárítani az adattitkosítást Azure D
 author: kummanish
 ms.author: manishku
 ms.service: mysql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/13/2020
-ms.openlocfilehash: 42956d115590fd322d2851fd546c505a76a851fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8fba55dcca46b313c7b9a847412615215ad57c72
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79297040"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118579"
 ---
 # <a name="troubleshoot-data-encryption-in-azure-database-for-mysql"></a>Azure Database for MySQL adattitkosításának hibáinak megoldása
 
@@ -56,6 +57,6 @@ A következő helytelen konfiguráció a Azure Key Vault kulcsokat használó ad
 - Azonosítsa a kulcstartót, majd nyissa meg a Azure Portal található kulcstartót.
 - Győződjön meg arról, hogy a kulcs URI-ja egy jelen lévő kulcsot azonosít.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Az Azure Portal használatával állíthatja be az adattitkosítást az ügyfél által felügyelt kulccsal Azure Database for MySQL](howto-data-encryption-portal.md)

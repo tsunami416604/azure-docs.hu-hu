@@ -7,15 +7,15 @@ author: tamram
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.date: 04/16/2020
+ms.date: 07/07/2020
 ms.author: tamram
 ms.reviewer: ozgun
-ms.openlocfilehash: f69301bdbc0af9334858940fbfd3d7d0a0a63153
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3069ee020d5f127eb0bdb8cbaf251cd3f3cef8d9
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84807644"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118416"
 ---
 # <a name="configure-advanced-threat-protection-for-azure-storage"></a>Komplex veszélyforrások elleni védelem konfigurálása az Azure Storage-hoz
 
@@ -23,28 +23,19 @@ Az Azure Storage komplex veszélyforrások elleni védelme egy további biztons�
 
 A biztonsági riasztások akkor lépnek életbe, ha a tevékenységben anomáliák vannak. Ezek a biztonsági riasztások integrálva vannak [Azure Security Centerekkel](https://azure.microsoft.com/services/security-center/), és e-mailben is elküldjük az előfizetés-rendszergazdáknak, a gyanús tevékenységek részleteivel és a fenyegetések kivizsgálásával és javításával kapcsolatos ajánlásokkal együtt.
 
-A szolgáltatás betölti az olvasási, írási és törlési kérelmek erőforrás-naplóit, hogy Blob Storage a fenyegetések észlelése érdekében. A komplex veszélyforrások elleni védelemből származó riasztások vizsgálatához a kapcsolódó tárolási tevékenységeket Storage Analytics naplózás használatával tekintheti meg. További információ: a **naplózás konfigurálása** a [Storage-fiók figyelése a Azure Portalban](storage-monitor-storage-account.md#configure-logging).
+A szolgáltatás betölti az olvasási, írási és törlési kérelmek erőforrás-naplóit a blob Storage-ba, illetve Azure Files (előzetes verzió) a veszélyforrások észleléséhez. A komplex veszélyforrások elleni védelemből származó riasztások vizsgálatához a kapcsolódó tárolási tevékenységeket Storage Analytics naplózás használatával tekintheti meg. További információ: a **naplózás konfigurálása** a [Storage-fiók figyelése a Azure Portalban](storage-monitor-storage-account.md#configure-logging).
 
 ## <a name="availability"></a>Rendelkezésre állás
 
-Az Azure Storage komplex veszélyforrások elleni védelme jelenleg csak [blob Storage](https://azure.microsoft.com/services/storage/blobs/)esetében érhető el. A komplex veszélyforrások elleni védelmet támogató fióktípus például az általános célú v2, a blobok és a blob Storage-fiókok. A komplex veszélyforrások elleni védelem a nyilvános felhőkben és az Egyesült Államok kormányzati felhőkben is elérhető, de nem más szuverén vagy Azure Government Felhőbeli régiókban.
+Az Azure Storage komplex veszélyforrások elleni védelme jelenleg blob Storage, Azure Files (előzetes verzió) és Azure Data Lake Storage Gen2 (előzetes verzió) esetén érhető el. A komplex veszélyforrások elleni védelmet támogató fióktípus például az általános célú v2, a blobok és a blob Storage-fiókok. A komplex veszélyforrások elleni védelem a nyilvános felhőkben és az USA kormányzati felhőkben is elérhető, de nem más szuverén vagy Azure Government Felhőbeli régiókban.
+
+Az Azure Blob Storage API-kat és a Data Lake Storage API-kat használó Data Lake Storage támogatási tranzakciókat engedélyező hierarchikus névtereket tartalmazó fiókok. Az Azure-fájlmegosztás támogatja a tranzakciókat az SMB protokollon keresztül.
 
 A díjszabással kapcsolatos részletekért, beleértve az ingyenes 30 napos próbaverziót is, tekintse meg a [Azure Security Center díjszabási oldalát](https://azure.microsoft.com/pricing/details/security-center/).
-
 
 ## <a name="set-up-advanced-threat-protection"></a>Komplex veszélyforrások elleni védelem beállítása
 
 A komplex veszélyforrások elleni védelem a következő szakaszokban ismertetett módon állítható be.
-
-### <a name="portal"></a>[Portál](#tab/azure-portal)
-
-1. Indítsa el a [Azure Portal](https://portal.azure.com/).
-1. Navigáljon az Azure Storage-fiókjához. A **Beállítások**területen válassza a **fokozott biztonság**lehetőséget.
-1. Válassza a **Beállítások** hivatkozást a speciális biztonsági beállítások lapon.
-1. A **fokozott biztonság** beállítása **a**következőre:.
-1. Az új vagy frissített szabályzat mentéséhez kattintson a **Mentés** gombra.
-
-    ![Az Azure Storage komplex veszélyforrások elleni védelem bekapcsolása](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-turn-on.png)
 
 ### <a name="azure-security-center"></a>[Azure Security Center](#tab/azure-security-center)
 
@@ -61,6 +52,16 @@ Amikor előfizet a Azure Security Center Standard csomagra, a komplex veszélyfo
 
     ![ATP engedélyezése Security Center](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-pricing2.png)
 1. Kattintson a **Save** (Mentés) gombra.
+
+### <a name="portal"></a>[Portál](#tab/azure-portal)
+
+1. Indítsa el a [Azure Portal](https://portal.azure.com/).
+1. Navigáljon az Azure Storage-fiókjához. A **Beállítások**területen válassza a **fokozott biztonság**lehetőséget.
+1. Válassza a **Beállítások** hivatkozást a speciális biztonsági beállítások lapon.
+1. A **fokozott biztonság** beállítása **a**következőre:.
+1. Az új vagy frissített szabályzat mentéséhez kattintson a **Mentés** gombra.
+
+    ![Az Azure Storage komplex veszélyforrások elleni védelem bekapcsolása](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-turn-on.png)
 
 ### <a name="template"></a>[Sablon](#tab/template)
 
@@ -125,7 +126,7 @@ Az aktuális biztonsági riasztásokat a Azure Security Center [biztonsági rias
 
 A riasztásokat szokatlan és potenciálisan ártalmas kísérletek generálják a Storage-fiókok eléréséhez vagy kiaknázásához. Az Azure Storage-hoz kapcsolódó riasztások listáját a [Azure Security Center adatszolgáltatásainak veszélyforrások elleni védelme](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-azurestorage) **című rész tartalmazza** .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ az [Azure Storage-fiókok naplóiról](/rest/api/storageservices/About-Storage-Analytics-Logging)
 * További információ a [Azure Security Center](../../security-center/security-center-intro.md)

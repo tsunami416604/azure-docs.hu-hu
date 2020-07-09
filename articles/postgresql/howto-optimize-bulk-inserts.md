@@ -4,13 +4,14 @@ description: Ez a cikk azt ismerteti, hogyan optimalizálható a tömeges beszú
 author: dianaputnam
 ms.author: dianas
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: 4c4bac16917be0064ebb111328753d378d462a2a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4d10f06577738364e3f4a0ea40221d37ebfb31c0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74770135"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116284"
 ---
 # <a name="optimize-bulk-inserts-and-use-transient-data-on-an-azure-database-for-postgresql---single-server"></a>Tömeges beszúrások optimalizálása és átmeneti adatmennyiség használata egy Azure Database for PostgreSQL – egyetlen kiszolgálón 
 Ez a cikk azt ismerteti, hogyan optimalizálható a tömeges beszúrási műveletek és hogyan használhatók az átmeneti adatok egy Azure Database for PostgreSQL kiszolgálón.
@@ -33,7 +34,7 @@ A nem naplózott táblák nem rendelkeznek összeomlás-biztonsággal. Egy nem n
 
 Egyes ügyfelek munkaterhelései körülbelül 15%-os teljesítménybeli javulást tapasztaltak, ha nem naplózott táblákat használtak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse át az átmeneti adatok és a nagyméretű tömeges beszúrások felhasználásának munkaterhelését. Tekintse meg a következő PostgreSQL-dokumentációt:
  
 - [Táblázatos SQL-parancsok létrehozása](https://www.postgresql.org/docs/current/static/sql-createtable.html)

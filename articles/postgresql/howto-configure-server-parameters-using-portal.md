@@ -4,13 +4,14 @@ description: Ez a cikk azt ismerteti, hogyan konfigurálhatja a postgres paramé
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/28/2018
-ms.openlocfilehash: a9d078fe9aab12b9044733d17a1437801d5130a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7a7a98818ba565aad9f2404c77682171514c7573
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74763674"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86117984"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-postgresql---single-server-via-the-azure-portal"></a>Kiszolgáló paramétereinek konfigurálása Azure Database for PostgreSQL – egyetlen kiszolgálón a Azure Portal használatával 
 A Azure Database for PostgreSQL-kiszolgálók konfigurációs paramétereit a Azure Portal használatával listázhatja, megjelenítheti és frissítheti.
@@ -42,7 +43,7 @@ Az útmutató lépéseinek elvégzéséhez a következőkre lesz szüksége:
 8. Ha új értékeket mentett a paraméterek számára, az **összes visszaállítása az alapértelmezett**értékre lehetőség kiválasztásával bármikor visszaállíthatja az alapértelmezett értékeket.
 ![Az összes visszaállítása az alapértelmezett értékre](./media/howto-configure-server-parameters-in-portal/7-reset-to-default-button.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ismerkedjen meg a következőkkel:
 - [A Azure Database for PostgreSQL kiszolgálói paramétereinek áttekintése](concepts-servers.md)
 - [Paraméterek konfigurálása az Azure CLI használatával](howto-configure-server-parameters-using-cli.md)

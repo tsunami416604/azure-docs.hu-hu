@@ -1,17 +1,18 @@
 ---
 title: A kereskedelmi piactér-portáljának áttekintése a Partnerközpontban
 description: További információk a kereskedelmi piactér portálról a partner Centerben, valamint az ajánlatok listázása és értékesítése az Azure Marketplace-en, a AppSource és a Cloud Solution Provider (CSP) programon keresztül.
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 05/19/2020
-ms.openlocfilehash: 2d506656343df6eaa58975bfeb921423c2e3314b
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 676a0471ad4321f37cf6dd854d6d98083723f5de
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954131"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116692"
 ---
 # <a name="overview-of-the-commercial-marketplace-portal-in-partner-center"></a>A kereskedelmi piactér portál áttekintése a partner Centerben
 
@@ -51,7 +52,7 @@ A partner Center Analytics áttekintést nyújt az ajánlatok teljesítményér�
 
 További információ a legújabb és jövőbeli kiadásokról: a [Microsoft kereskedelmi Marketplace-útitervének](../marketplace-roadmap.md)meglátogatása, vagy a [Microsoft partner Közösségen](https://www.microsoftpartnercommunity.com/)belüli beszélgetés.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az új Microsoft-partnereknek, akik érdeklődnek az ajánlat közzétételére a piactéren, tekintse meg [a kereskedelmi piactér fiók létrehozása a partner Centerben](create-account.md)című témakört.
 - Azon meglévő partnerek esetében, akik korábban közzétett ajánlatokat Cloud Partner Portalban, [a kereskedelmi Marketplace-fiókot a partner Centerben kezelheti](manage-account.md).

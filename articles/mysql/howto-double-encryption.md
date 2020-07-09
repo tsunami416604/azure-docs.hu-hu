@@ -4,14 +4,14 @@ description: Ismerje meg, hogyan állíthatja be és kezelheti az infrastruktúr
 author: kummanish
 ms.author: manishku
 ms.service: mysql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/30/2020
-ms.openlocfilehash: 4623791e19ec83446b2978105286b71e6ff1eb1c
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: d3076f2591718931bdab4dba9510d25fe07b2d02
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86034832"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118760"
 ---
 # <a name="infrastructure-double-encryption-for-azure-database-for-mysql"></a>Infrastruktúra kettős titkosítása Azure Database for MySQL
 
@@ -58,6 +58,6 @@ A következő példában az USA nyugati régiójában létrehozunk egy `mydemose
 az mysql server create --resource-group myresourcegroup --name mydemoserver  --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 --version 5.7 --infrastructure-encryption <Enabled/Disabled>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
  További tudnivalók az adattitkosításról: [Azure Database for MySQL adatinfrastruktúra kettős titkosítása](concepts-Infrastructure-double-encryption.md).

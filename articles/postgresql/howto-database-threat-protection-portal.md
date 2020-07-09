@@ -4,13 +4,14 @@ description: A fenyegetések elleni védelem rendellenes adatbázis-tevékenysé
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: 8b7f52ea318432e97a450a54526f6481b14139c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d94170ade3de7e7fc128fe85437db59822694add
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74776143"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86117814"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-postgresql---single-server"></a>Komplex veszélyforrások elleni védelem Azure Database for PostgreSQL – egyetlen kiszolgáló
 
@@ -59,7 +60,7 @@ Kattintson a **biztonsági riasztások** elemre a **veszélyforrások védelme**
 
   ![Veszélyforrások elleni védelem ASC](./media/howto-database-threat-protection-portal/threat-detection-alert-asc.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
 * A díjszabással kapcsolatos további információkért tekintse meg a [Azure Database for PostgreSQL díjszabási oldalát](https://azure.microsoft.com/pricing/details/postgresql/) .  

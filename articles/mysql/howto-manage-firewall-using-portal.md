@@ -4,14 +4,14 @@ description: Azure Database for MySQL tűzfalszabályok létrehozása és kezel�
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: c884e2f5ac43c5df11409621469f13ba892d9191
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 51a9b85f4d19807c9e6d908b3d7944136e109e0f
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85481612"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118732"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-portal"></a>Azure Database for MySQL tűzfalszabályok létrehozása és kezelése a Azure Portal használatával
 A kiszolgálói szintű tűzfalszabályok használatával felügyelhető egy adott IP-címről vagy IP-címről érkező Azure Database for MySQL-kiszolgálóhoz való hozzáférés. 
@@ -55,7 +55,7 @@ Ismételje meg a lépéseket a tűzfalszabályok kezeléséhez.
 * Meglévő szabály törléséhez kattintson a három pontra [...], majd a **Törlés**gombra. Kattintson a **Mentés** gombra a módosítások mentéséhez.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Ehhez hasonlóan parancsfájlokat is [létrehozhat Azure Database for MySQL tűzfalszabályok létrehozásához és kezeléséhez az Azure CLI használatával](howto-manage-firewall-using-cli.md).
 - További biztonságos hozzáférés a kiszolgálóhoz [Virtual Network szolgáltatási végpontok és szabályok létrehozásával és kezelésével a Azure Portal használatával](howto-manage-vnet-using-portal.md).
 - Ha segítségre van a Azure Database for MySQL-kiszolgálóhoz való csatlakozáshoz, tekintse meg a [Azure Database for MySQL kapcsolódási kódtárait](./concepts-connection-libraries.md).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 

@@ -4,14 +4,14 @@ description: Ismerje meg, hogyan ellenőrizheti a Azure Database for PostgreSQL-
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/28/2020
-ms.openlocfilehash: 4672a92ceba5dc52c717f76a705d0fa508ab41fd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: be725c574c54dfc298a900d3c043559d484d1bc7
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82515468"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86117848"
 ---
 # <a name="validating-data-encryption-for-azure-database-for-postgresql"></a>Az Azure Database for PostgreSQL adattitkosításának ellenőrzése
 
@@ -53,6 +53,6 @@ Ebből a cikkből megtudhatja, hogy az adattitkosítás az ügyfél által felü
 
 A [naplózási jelentések](https://servicetrust.microsoft.com) is megtekinthetők, amelyek információkat biztosítanak az adatvédelmi szabványoknak és a jogszabályi követelményeknek való megfelelésről.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az adattitkosításról: [Azure Database for PostgreSQL egykiszolgálós adattitkosítás az ügyfél által felügyelt kulccsal](concepts-data-encryption-postgresql.md).

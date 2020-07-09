@@ -222,12 +222,6 @@
         - name: Állapot-ellenőrzés használata a Deployment Managerben
           displayName: adm
           href: deployment-manager-tutorial-health-check.md
-- name: Példák
-  items:
-    - name: Azure gyorsindítási sablonok
-      href: 'https://azure.microsoft.com/resources/templates/'
-    - name: Sablonminták
-      href: template-samples.md
 - name: Alapelvek
   items:
     - name: Ajánlott eljárások a sablonok használatához
@@ -299,16 +293,6 @@
             - name: Kimenetek
               displayName: 'iteration,copy'
               href: copy-outputs.md
-    - name: Szerkesztőeszközök használata
-      items:
-        - name: VS Code
-          href: use-vs-code-to-create-template.md
-        - name: Visual Studio
-          href: create-visual-studio-deployment-project.md
-        - name: VS üzembehelyezési szkript frissítése az Az modulba
-          href: update-visual-studio-deployment-script.md
-        - name: IntelliJ IDEA
-          href: create-templates-use-intellij.md
     - name: Sablon tulajdonságainak felfedezése
       items:
         - name: Sablon exportálása
@@ -344,6 +328,8 @@
           href: rollback-on-error.md
         - name: Sablon védelme SAS-jogkivonattal
           href: secure-template-with-sas-token.md
+        - name: Üzembehelyezési előzmények megtekintése
+          href: deployment-history.md
     - name: Hatókörön belüli üzembe helyezés
       items:
         - name: Előfizetés
@@ -367,8 +353,14 @@
           href: add-template-to-azure-pipelines.md
         - name: Üzembe helyezés – GitHub-műveletek
           href: deploy-github-actions.md
-    - name: Üzembehelyezési előzmények megtekintése
-      href: deployment-history.md
+    - name: Szerkesztőeszközök használata
+      items:
+        - name: Visual Studio
+          href: create-visual-studio-deployment-project.md
+        - name: VS üzembehelyezési szkript frissítése az Az modulba
+          href: update-visual-studio-deployment-script.md
+        - name: IntelliJ IDEA
+          href: create-templates-use-intellij.md
     - name: Üzemelő példányok hibaelhárítása
       items:
         - name: Üzembehelyezési hibák elhárítása
@@ -441,6 +433,8 @@
       href: /python/api/overview/azure/resources?view=azure-python
 - name: További források
   items:
+    - name: Azure gyorsindítási sablonok
+      href: 'https://azure.microsoft.com/resources/templates/'
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/?category=monitoring-management'
     - name: Díjkalkulátor

@@ -1,18 +1,18 @@
 ---
 title: Ajánlati lista – ajánlott eljárások – Microsoft kereskedelmi piactér
 description: Ismerje meg a Microsoft AppSource és az Azure Marketplace-ajánlatokkal kapcsolatos ajánlott eljárásokat.
-author: anbene
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 07/06/2020
-ms.author: dsindona
-ms.openlocfilehash: 60f9630b58250bdae4c382e61697f7abd53e036d
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 8adffcc6c7ae4af2e33587f75c83430473180203
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027069"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118392"
 ---
 # <a name="offer-listing-best-practices"></a>Ajánlatlistákra vonatkozó ajánlott eljárások
 
@@ -31,7 +31,7 @@ Az ebben a szakaszban található táblázatok a Piactéri ajánlatok létrehoz�
 
 A különböző kirakatok kategóriái és ágazatai a különböző típusú ajánlatokra is érvényesek lesznek.
 
-|  | **Kategóriák <br> kirakat szerint** |  | **AppSource-ágazatok <br>** |
+| Kirakat | Kategóriák <br>kirakat szerint | Kategóriák <br>kirakat szerint | Ágazatok <br> AppSource |
 | :------------------- |:----------------:|:------:|:-------------:|
 | **Ajánlat típusa**   |  **Azure Marketplace**  | **AppSource**  |
 | Azure-alkalmazás | X | |
@@ -61,10 +61,10 @@ Válassza ki az ajánlathoz legjobban illeszkedő kategóriákat és alkategóri
 |**Elemzés** | **Elemzés** |
 | &nbsp;&nbsp;Adatelemzések | &nbsp;&nbsp;Fejlett Analitika  |
 | &nbsp;&nbsp;Adatelemzés |  &nbsp;&nbsp;Vizualizáció & jelentéskészítés |
-| &nbsp;&nbsp;Big-adatmennyiség | **Mesterséges intelligencia és gépi tanulás**  |
+| &nbsp;&nbsp;Big-adatmennyiség | **AI + Machine Learning**  |
 | &nbsp;&nbsp;Prediktív elemzés | &nbsp;&nbsp;AI vállalatoknak |
 | &nbsp;&nbsp;Valós idejű/adatfolyam-elemzés | &nbsp;&nbsp;Bot-alkalmazások |
-| **Mesterséges intelligencia és gépi tanulás** | **Együttműködés** |
+| **AI + Machine Learning** | **Együttműködés** |
 | &nbsp;&nbsp;Bot Service | &nbsp;&nbsp;Kapcsolatfelvétel & személyekkel |
 | &nbsp;&nbsp;Cognitive Services | &nbsp;&nbsp;Értekezletek kezelése |
 | &nbsp;&nbsp;ML szolgáltatás | &nbsp;&nbsp;Hely kialakításának & kezelése |
@@ -74,7 +74,7 @@ Válassza ki az ajánlathoz legjobban illeszkedő kategóriákat és alkategóri
 | &nbsp;&nbsp;Adatelőkészítés | &nbsp;&nbsp;Adózási & naplózása |
 | &nbsp;&nbsp;Tudás bányászata | &nbsp;&nbsp;Jogi |
 | &nbsp;&nbsp;ML-műveletek | &nbsp;&nbsp;Adatok, irányítási & adatvédelem |
-| **Blockchain**  | &nbsp;&nbsp;Állapot & biztonság |
+| **Blokklánc**  | &nbsp;&nbsp;Állapot & biztonság |
 | &nbsp;&nbsp;Alkalmazás-gyorsítók | **Customer Service**  |
 | &nbsp;&nbsp;Egycsomópontos Főkönyv | &nbsp;&nbsp;Kapcsolattartási központ |
 | &nbsp;&nbsp;Több csomópontos Főkönyv | &nbsp;&nbsp;Szembenézés a Face szolgáltatással |
@@ -118,7 +118,7 @@ Válassza ki az ajánlathoz legjobban illeszkedő kategóriákat és alkategóri
 | **& diagnosztika figyelése**  | **Műveleti & ellátási lánc** |
 | **Migrálás**  | &nbsp;&nbsp;Eszköz & üzemi felügyelet |
 | &nbsp;&nbsp;Adatáttelepítés | &nbsp;&nbsp;Kereslet-előrejelzés |
-| **Vegyes valóság**  | &nbsp;&nbsp;Information Management & kapcsolat |
+| **Mixed Reality**  | &nbsp;&nbsp;Information Management & kapcsolat |
 | **Hálózat**  | &nbsp;&nbsp;& jelentéskészítés tervezése, beszerzése |
 | &nbsp;&nbsp;Berendezések kezelői | &nbsp;&nbsp;Minőségi & szolgáltatások kezelése |
 | &nbsp;&nbsp;Connectivity | &nbsp;&nbsp;Értékesítési & rendelés kezelése |
@@ -144,7 +144,7 @@ Válassza ki az ajánlathoz legjobban illeszkedő kategóriákat és alkategóri
 
 Tekintse meg az [útmutató ajánlat típusát](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-overview) , amely részletesen ismerteti, hogy a Transact-funkciók milyen hatással lehetnek az ajánlat megtekintésére és a piactéren elérhető ügyfelek általi vásárlására. Az SaaS-ajánlatok esetében az ajánlat tranzakciós képessége, valamint a kategória kiválasztása határozza meg azt a kirakatot, ahol az ajánlat közzé lesz téve:
 
-| SaaS-ajánlat    |     |          |           |    |    |     | Alkalmazható kirakat |              |
+| SaaS-ajánlat    | SaaS-ajánlat   | SaaS-ajánlat  | SaaS-ajánlat   | SaaS-ajánlat   | SaaS-ajánlat   | SaaS-ajánlat    | Alkalmazható kirakat | Alkalmazható kirakat |
 |:-------------:|:---:|:--------:|:---------:|:--:|:--:|:---:|:---------------------:|:-------------:|
 | Mért számlázás | Bővítmények Microsoft 365 | Kapcsolatfelvétel | Transact (legalább 1 csomag) | Csak privát csomag | Csak nyilvános csomag | Nyilvános & Private-csomagok | AppSource | Azure Piactér |
 |  | X |  |  |  |  |  | X |  |
@@ -217,7 +217,7 @@ A következő példában szereplő URL-cím az előző lekérdezési paramétere
 
 Ha hozzáadja a paramétereket a AppSource URL-címhez, a [partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace/)elemzési irányítópultján ellenőrizheti a kampány hatékonyságát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a [kereskedelmi piactér előnyeiről](./gtm-your-marketplace-benefits.md).
 

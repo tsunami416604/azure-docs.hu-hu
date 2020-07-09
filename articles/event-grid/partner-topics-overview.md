@@ -1,17 +1,14 @@
 ---
 title: Azure Event Grid partnerekkel kapcsolatos témakörök
 description: A harmadik féltől származó Event Grid SaaS-és Pásti-partnerektől származó eseményeket közvetlenül az Azure-szolgáltatásoknak küldheti el Azure Event Grid.
-services: event-grid
-author: femila
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/18/2020
-ms.author: femila
-ms.openlocfilehash: 5327efea8af734c723ba76d1a00b72c08f5c88b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 97829f262a00e2353624b2a3fa9df210518ad3a0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84560275"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86115995"
 ---
 # <a name="partner-topics-in-azure-event-grid-preview"></a>Partneri témakörök Azure Event Grid (előzetes verzió)
 A partneri témakörök segítségével közvetlenül a Azure Event Grid csatlakozhat a harmadik féltől származó eseményekhez. Ez az integráció lehetővé teszi, hogy az Azure-szolgáltatásokból származó eseményekre való előfizetéssel azonos módon fizessen elő a partnerek eseményeire. 
@@ -30,7 +27,7 @@ A partneri témakörök nyilvános előzetes verzióban érhetők el. A nyilván
 ## <a name="how-do-i-become-an-event-grid-partner"></a>Hogyan váljon Event Grid partner?
 Az indítás támogatásához létrehozott infrastruktúra megkönnyíti az új partnerek számára, hogy Event Grid használatával integrálják az eseményekkel kapcsolatos képességeiket. További információkért tekintse meg a partner bevezetési [dokumentációját](partner-onboarding-overview.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Auth0-partneri témakör](auth0-overview.md)
 - [Az Auth0-partneri témakör használata](auth0-how-to.md)

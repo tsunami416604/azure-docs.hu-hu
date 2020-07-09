@@ -1,17 +1,14 @@
 ---
 title: Ügyfelek hitelesítése az eseményeket Event Grid egyéni témakörök vagy tartományok számára
 description: Ez a cikk különböző módszereket ismertet az ügyfelek közzétételi eseményeinek Event Grid egyéni témakörökbe való hitelesítéséhez.
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 06/25/2020
-ms.author: spelluru
-ms.openlocfilehash: 7805c9b9096cb52fcef3dad8eb0bdd9509cbce47
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 1e147830a4b37a8603df8e4ce29953acab2345bd
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85414878"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86115876"
 ---
 # <a name="authenticate-publishing-clients-azure-event-grid"></a>Közzétételi ügyfelek hitelesítése (Azure Event Grid)
 Ez a cikk a **hozzáférési kulcs** vagy a **közös hozzáférésű aláírás (SAS)** token használatával Azure Event Grid témaköröket vagy tartományokat közzétevő ügyfelek hitelesítésével kapcsolatos információkat tartalmaz. A SAS-token használatát javasoljuk, de a kulcsos hitelesítés egyszerű programozást biztosít, és számos meglévő webhook-közzétevővel kompatibilis.  
@@ -82,5 +79,5 @@ aeg-sas-token: r=https%3a%2f%2fmytopic.eventgrid.azure.net%2feventGrid%2fapi%2fe
 Authorization: SharedAccessSignature r=https%3a%2f%2fmytopic.eventgrid.azure.net%2feventGrid%2fapi%2fevent&e=6%2f15%2f2017+6%3a20%3a15+PM&s=XXXXXXXXXXXXX%2fBPjdDLOrc6THPy3tDcGHw1zP4OajQ%3d
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az események kézbesítéséhez az eseménykezelővel való hitelesítés megismeréséhez tekintse meg az [esemény kézbesítésének hitelesítését](security-authentication.md) ismertető témakört. 

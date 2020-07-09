@@ -1,17 +1,14 @@
 ---
 title: Bevezető Azure Event Grid partnerként
 description: Azure Event Grid partneri témakör beírása. Ismerje meg az erőforrás-modellt és a közzétételi folyamatot a partneri témakörökben.
-services: event-grid
-author: femila
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/18/2020
-ms.author: femila
-ms.openlocfilehash: 47576feb7f3e4f2794aa06d52b4f5504c633ce96
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 8003e3e6a28b0e6a05d553be01c171029e244d74
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84560327"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116114"
 ---
 # <a name="onboard-as-an-azure-event-grid-partner"></a>Bevezető Azure Event Grid partnerként
 
@@ -153,7 +150,7 @@ A partnerNamespace-végpontra való közzététel után választ kap. A válasz 
 | Helytelen végpont                 | 404 Nem található         |
 | Tömb vagy esemény meghaladja a méretkorlátot | 413 túl nagy a hasznos adat |
 
-## <a name="references"></a>Hivatkozások
+## <a name="references"></a>Referencia
 
   * [Swagger](https://github.com/ahamad-MS/azure-rest-api-specs/blob/master/specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2020-04-01-preview/EventGrid.json)
   * [ARM-sablon](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/allversions)
@@ -170,7 +167,7 @@ A partnerNamespace-végpontra való közzététel után választ kap. A válasz 
   * [Ugrás](https://github.com/Azure/azure-sdk-for-go)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [A partneri témakörök áttekintése](partner-topics-overview.md)
 - [Partneri témakörök bevezetésének űrlapja](https://aka.ms/gridpartnerform)
 - [Auth0-partneri témakör](auth0-overview.md)

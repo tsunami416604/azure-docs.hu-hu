@@ -2,18 +2,18 @@
 title: Az Azure Marketplace-en elérhető virtuálisgép-ajánlatok közzétételi útmutatója
 description: Ez a cikk ismerteti a virtuális gépek közzétételének követelményeit, valamint az Azure Marketplace-en üzembe helyezett szoftveres ingyenes próbaverziót.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: iqshahmicrosoft
+ms.author: iqshah
 ms.date: 04/15/2020
-ms.author: dsindona
-ms.openlocfilehash: e0f0f0fdb75961f3ea9ed90e1684ff5ecd2a792d
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 2d615e81891d68327b3225138495262d4eab9aa3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85961540"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116726"
 ---
 # <a name="publishing-guide-for-virtual-machine-offers"></a>A virtuális gépekkel kapcsolatos ajánlatok közzétételi útmutatója
 
@@ -59,7 +59,7 @@ Ha virtuális berendezést telepít az ügyfélhez társított előfizetésre, h
 >[!Note]
 >Már elérhető a felhőalapú megoldás-szolgáltató (CSP) Partner Channel-beli aktiválása. Az ajánlat Microsoft CSP-partneri csatornákon keresztüli forgalmazásával kapcsolatos további információkért tekintse meg a [Cloud Solution Providers](./cloud-solution-providers.md)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha még nem tette meg, Ismerje meg, hogyan [növelheti Felhőbeli üzletét az Azure Marketplace-szel](https://azuremarketplace.microsoft.com/sell).
 
