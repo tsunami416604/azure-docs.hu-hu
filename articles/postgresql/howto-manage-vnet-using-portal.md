@@ -4,14 +4,14 @@ description: VNet-szolgáltatási végpontok és szabályok létrehozása és ke
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: 04084aa2a86c6faab40884446d108d49861cf79e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5682213780f6b5c1bbbc02dfa947c48a4d2707de
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82509329"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86112459"
 ---
 # <a name="create-and-manage-vnet-service-endpoints-and-vnet-rules-in-azure-database-for-postgresql---single-server-by-using-the-azure-portal"></a>VNet-szolgáltatási végpontok és VNet-szabályok létrehozása és kezelése Azure Database for PostgreSQL – egyetlen kiszolgálón a Azure Portal használatával
 Virtual Network (VNet) szolgáltatási végpontok és szabályok kiterjesztik a Virtual Network privát címterület-területét a Azure Database for PostgreSQL-kiszolgálóra. Az Azure Database for PostgreSQL VNet szolgáltatásbeli végpontok, például a korlátozások áttekintését lásd: [Azure Database for PostgreSQL Server VNet Service-végpontok](concepts-data-access-and-security-vnet.md). A VNet szolgáltatási végpontok a Azure Database for PostgreSQL összes támogatott régiójában elérhetők.
@@ -56,7 +56,7 @@ Virtual Network (VNet) szolgáltatási végpontok és szabályok kiterjesztik a 
 
    ![VNet szolgáltatás-végpontok engedélyezve és VNet szabály létrehozva](./media/howto-manage-vnet-using-portal/3-vnet-service-endpoints-enabled-vnet-rule-created.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Ehhez hasonlóan parancsfájlt is [engedélyezhet a VNet szolgáltatás végpontjai számára, és létrehozhat egy VNet-szabályt az Azure CLI-vel való Azure Database for PostgreSQLhoz](howto-manage-vnet-using-cli.md).
 - Ha segítségre van a Azure Database for PostgreSQL kiszolgálóhoz való csatlakozáshoz, tekintse meg a [Azure Database for PostgreSQLhoz tartozó kapcsolódási kódtárakat](./concepts-connection-libraries.md) .
 

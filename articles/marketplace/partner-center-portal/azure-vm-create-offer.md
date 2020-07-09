@@ -1,18 +1,18 @@
 ---
 title: Azure-beli virtuális gépek ajánlatának létrehozása az Azure Marketplace-en
 description: Megtudhatja, hogyan hozhat létre virtuálisgép-ajánlatot az Azure Marketplace-en a szükséges SKU-val.
-author: emuench
-ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: emuench
+ms.author: mingshen
 ms.date: 06/17/2020
-ms.openlocfilehash: 499c7e9e4ca4ab5db02c566830738f0ceb07e40d
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: fe53de2c81f9e9df5fd9270951f943b0b3505f1e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85984650"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110980"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>Azure-beli virtuális gépek ajánlatának létrehozása az Azure Marketplace-en
 
@@ -196,7 +196,7 @@ Adja meg az ajánlat rövid leírását, amely az Azure Marketplace keresési er
 
 Adja meg az ajánlatát, hogy megjelenjen az Azure Marketplace keresési eredményei között. Akár 256 karaktert is tartalmazhat.
 
-#### <a name="description"></a>Description
+#### <a name="description"></a>Leírás
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -535,7 +535,7 @@ Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk az A
 4. használati feltételei
 5. Adatvédelmi szabályzat címe (hivatkozás)
 6. Ajánlat neve
-7. Description
+7. Leírás
 8. Hasznos hivatkozások
 9. Képernyőképek/videók
 
@@ -567,7 +567,7 @@ Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk az A
 #### <a name="call-out-descriptions"></a>Lehívási leírások
 
 1. Name
-2. Description
+2. Leírás
 3. Hasznos hivatkozások
 4. Képernyőképek/videók
 

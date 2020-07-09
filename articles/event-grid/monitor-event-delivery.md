@@ -1,19 +1,14 @@
 ---
 title: Azure Event Grid mérőszámok megtekintése és riasztások beállítása
 description: Ez a cikk bemutatja, hogyan tekintheti meg Azure Event Grid témakörök és előfizetések metrikáit, és hogyan hozhat létre riasztásokat a Azure Portal használatával.
-services: event-grid
-author: spelluru
-manager: timlt
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 06/16/2020
-ms.author: spelluru
-ms.openlocfilehash: 75311675ae24f4836ed8f1adb8a7d9802b4d7f0d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 518d34d39e6fbecc408fe9a44d899fe4745d60d0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390601"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114883"
 ---
 # <a name="monitor-event-grid-message-delivery"></a>Figyelő Event Grid üzenet kézbesítése 
 Ez a cikk azt ismerteti, hogyan használható a portál a Event Grid témakörök és előfizetések metrikáinak megjelenítéséhez, valamint riasztások létrehozásához. 
@@ -99,7 +94,7 @@ A támogatott metrikákkal rendelkező diagramokat a **Event Grid témakör** ol
 A metrikákkal kapcsolatos további tudnivalókért tekintse meg a [Azure monitor mérőszámait](../azure-monitor/platform/data-platform-metrics.md)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Lásd az alábbi cikkeket:
 
 - A metrikák és a tevékenységek naplózási műveleteinek létrehozásáról a [riasztások beállítása](set-alerts.md)című témakörben olvashat bővebben.

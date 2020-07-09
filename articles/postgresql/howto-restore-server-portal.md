@@ -4,14 +4,14 @@ description: Ez a cikk azt ismerteti, hogyan állíthatja vissza a kiszolgálót
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 6/30/2020
-ms.openlocfilehash: 056962483fe10e8b6558d2ca0aeb92d1ec970734
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7683d3472d382707de538874035c8448f589bf82
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85831017"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110810"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Kiszolgálók biztonsági mentése és visszaállítása Azure Database for PostgreSQL – egyetlen kiszolgálón a Azure Portal használatával
 
@@ -120,6 +120,6 @@ A földrajzi visszaállítás által létrehozott új kiszolgáló ugyanazzal a 
 A visszaállítás során létrehozott új kiszolgáló nem rendelkezik az eredeti kiszolgálón található tűzfalszabályokkal vagy VNet-szolgáltatásvégpontokkal. Ezeket a szabályokat külön kell beállítani ehhez az új kiszolgálóhoz.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ a szolgáltatás [biztonsági mentéséről](concepts-backup.md).
 - További információ az [üzletmenet-folytonossági](concepts-business-continuity.md) lehetőségekről.

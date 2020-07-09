@@ -1,17 +1,14 @@
 ---
 title: Azure Event Grid található esemény-tartományok
 description: Ez a cikk azt ismerteti, hogyan használhatók az események a különböző üzleti szervezetekhez, ügyfelekhez vagy alkalmazásokhoz tartozó egyéni események forgalmának kezeléséhez.
-services: event-grid
-author: femila
-ms.service: event-grid
-ms.author: femila
 ms.topic: conceptual
-ms.date: 01/21/2020
-ms.openlocfilehash: 11ecf5c2a7bea8a9ef2047bdabcbfd4d844c5a3a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 02529ba770e636021cf9cec4ed555247e1c63d8c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84559512"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114363"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>Az Event Grid témakörök kezeléséhez kapcsolódó események tartományának ismertetése
 
@@ -111,6 +108,6 @@ Az esemény-tartományok ugyanazokat az [üzemeltetési díjszabást](https://az
 
 A műveletek ugyanúgy működnek az esemény-tartományokban, mint az egyéni témakörökben. Az események egy adott esemény tartományba való beáramlása egy művelet, és az eseményekhez tartozó minden kézbesítési kísérlet egy művelet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az események tartományának beállításával, a témakörök létrehozásával, az esemény-előfizetések létrehozásával és az események közzétételével kapcsolatos további tudnivalókért lásd: események [tartományának kezelése](./how-to-event-domains.md).

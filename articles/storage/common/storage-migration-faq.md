@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
-ms.openlocfilehash: 1d8275d11b845df43238dce82beabe89d6464799
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f0272d53c5fc4c565baf5d7105bd6e1b4a0ef535
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84944695"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114601"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Gyakori kérdések az Azure Storage migrálásával kapcsolatban
 
@@ -26,9 +26,11 @@ Ez a cikk az Azure Storage áttelepítésével kapcsolatos gyakori kérdésekre 
 
 A fájlok tárolók közötti másolásához használhatja a AzCopy. Lásd a következő példát:
 
-    AzCopy /Source:https://xxx.blob.core.windows.net/xxx
-    /Dest:https://xxx.blob.core.windows.net/xxx /SourceKey:xxx /DestKey:xxx
-    /S
+```azurepowershell-interactive
+AzCopy /Source:https://xxx.blob.core.windows.net/xxx
+/Dest:https://xxx.blob.core.windows.net/xxx /SourceKey:xxx /DestKey:xxx
+/S
+```
 
 A AzCopy a [blob másolása API](https://docs.microsoft.com/rest/api/storageservices/copy-blob) -t használja a tárolóban lévő egyes fájlok másolásához.  
 
@@ -54,11 +56,15 @@ Használhatja az Azure CLI-t.
 
 - Egyetlen blob letöltése:
 
-      azure storage blob download -k "<Account Key>" -a "<Storage Account Name>" --container "<Blob Container Name>" -b "<Remote File Name>" -d "<Local path where the file will be downloaded to>"
+    ```azurecli-interactive
+    azure storage blob download -k "<Account Key>" -a "<Storage Account Name>" --container "<Blob Container Name>" -b "<Remote File Name>" -d "<Local path where the file will be downloaded to>"
+    ```
 
 - Egyetlen blob feltöltése:
 
-      azure storage blob upload -k "<Account Key>" -a "<Storage Account Name>" --container "<Blob Container Name>" -f "<Local File Name>"
+    ```azurecli-interactive
+    azure storage blob upload -k "<Account Key>" -a "<Storage Account Name>" --container "<Blob Container Name>" -f "<Local File Name>"
+    ```
 
 **Hogyan a blobokat az egyik Storage-fiókból a másikba?**
 
@@ -160,15 +166,19 @@ Kövesse az alábbi lépéseket:
 
     Teljes lemezek másolása a Storage-fiókba:
 
-        AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1
-        /Dest:https://destaccount.blob.core.windows.net/mycontainer2
-        /SourceKey:key1 /DestKey:key2 /S
+    ```azurepowershell-interactive
+    AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1
+    /Dest:https://destaccount.blob.core.windows.net/mycontainer2
+    /SourceKey:key1 /DestKey:key2 /S
+    ```
 
     Csak egy lemez másolásához adja meg a lemez nevét a következő **mintában**:
 
-        AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1
-        /Dest:https://destaccount.blob.core.windows.net/mycontainer2
-        /SourceKey:key1 /DestKey:key2 /Pattern:abc.vhd
+    ```azurepowershell-interactive
+    AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1
+    /Dest:https://destaccount.blob.core.windows.net/mycontainer2
+    /SourceKey:key1 /DestKey:key2 /Pattern:abc.vhd
+    ```
 
 A művelet több órát is igénybe vehet.
 
@@ -190,9 +200,11 @@ Nincs lehetőség a teljes Storage-fiók biztonsági mentésére közvetlenül. 
 
 3.  Futtassa a következő parancsot a tároló áthelyezéséhez. A szöveget a tényleges értékekkel kell helyettesítenie.   
 
-            AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1
-            /Dest:https://destaccount.blob.core.windows.net/mycontainer2
-            /SourceKey:key1 /DestKey:key2 /S
+    ```azurepowershell-interactive
+    AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1
+    /Dest:https://destaccount.blob.core.windows.net/mycontainer2
+    /SourceKey:key1 /DestKey:key2 /S
+    ```
 
     - `/Source`: Adja meg a forrásként szolgáló Storage-fiók URI-JÁT (a tárolóig).  
     - `/Dest`: Adja meg a célként megadott Storage-fiók URI-JÁT (a tárolóig).  

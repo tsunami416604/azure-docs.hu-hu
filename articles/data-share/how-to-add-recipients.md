@@ -4,14 +4,14 @@ description: Megtudhatja, hogyan adhat hozzá címzetteket egy meglévő adatmeg
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/10/2019
-ms.openlocfilehash: 9f49ab3aed60bfbe04ad022070a931461e3f52f5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8188fa4de91dd64589693026f69f7d142751e542
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73490535"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110863"
 ---
 # <a name="how-to-add-a-recipient-to-an-existing-data-share-in-azure-data-share"></a>Címzett hozzáadása meglévő adatmegosztáshoz az Azure-adatmegosztásban
 
@@ -31,5 +31,5 @@ A panel a lap jobb oldalán jelenik meg. Kattintson a **Címzett hozzáadása** 
 
 Kattintson **a Hozzáadás gombra, és küldje el a meghívót**. Az új címzett (ek) meghívói e-maileket küld erre az adatmegosztásra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a [meghívások megosztásra való törléséről](how-to-delete-invitation.md).

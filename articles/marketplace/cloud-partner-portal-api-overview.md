@@ -1,18 +1,16 @@
 ---
 title: Cloud Partner Portal API-hivatkozás – Microsoft kereskedelmi piactér
 description: A, a használatának előfeltételei és a piactér API-műveleteinek listája.
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.author: dsindona
-ms.openlocfilehash: 2f79dea4baaa2589333af4e15aece06c1d86b9c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 56594b41bd0b771d0cb9a2f49611d9b6c6d393db
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85516255"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86113581"
 ---
 # <a name="cloud-partner-portal-api-reference"></a>Cloud Partner Portal API-referencia
 

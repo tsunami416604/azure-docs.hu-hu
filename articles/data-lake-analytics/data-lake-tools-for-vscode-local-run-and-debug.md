@@ -7,14 +7,14 @@ author: jejiang
 ms.author: jejiang
 ms.reviewer: jasonwhowell
 ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/14/2017
-ms.openlocfilehash: e51b5640163546c673a1b0f61da47ccd992f27ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 141be5c2747ae5d0a812b1301b6af7203fe24351
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72030032"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110606"
 ---
 # <a name="run-u-sql-and-debug-locally-in-visual-studio-code"></a>A U-SQL és a hibakeresés helyi futtatása a Visual Studio Code-ban
 Ez a cikk azt ismerteti, hogyan futtathatók a U-SQL-feladatok egy helyi fejlesztési gépen a korai kódolási fázisok felgyorsításához vagy a kód helyi hibakereséséhez a Visual Studio Code-ban. A Visual Studio Code Azure Data Lake eszközével kapcsolatos utasításokért lásd: a [Azure Data Lake Tools használata a Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md)-hoz.
@@ -83,7 +83,7 @@ A helyi hibakeresés végrehajtásához kövesse az alábbi lépéseket:
    ![A Visual Studio Code helyi hibakeresési eredményének Data Lake eszközei](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-local-debug-result.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Az Azure Data Lake Tools for Visual Studio kód használata](data-lake-analytics-data-lake-tools-for-vscode.md)
 * [A U-SQL fejlesztése a Python, az R és a CSharp Azure Data Lake Analytics a VSCode-ben](data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md)
 * [Ismerkedés a Data Lake Analytics a PowerShell használatával](data-lake-analytics-get-started-powershell.md)

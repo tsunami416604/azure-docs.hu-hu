@@ -3,11 +3,12 @@ title: Azure Migrate-projektek létrehozása és kezelése
 description: Projektek keresése, létrehozása, kezelése és törlése Azure Migrateban.
 ms.topic: how-to
 ms.date: 04/19/2020
-ms.openlocfilehash: f5079ed979d98f2c6f0c654c860c6f176f366497
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 644ac5ecab9f5384b446c3b1ebe762a5d06aaf12
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81676394"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86113428"
 ---
 # <a name="create-and-manage-azure-migrate-projects"></a>Azure Migrate-projektek létrehozása és kezelése
 
@@ -82,8 +83,8 @@ Vegye figyelembe:
        
     - Ha már törölte a Azure Migrate projektet, válassza ki az **erőforráscsoportok** elemet a Azure Portal bal oldali ablaktábláján, és keresse meg a munkaterületet.
        
-2. A munkaterület törléséhez [kövesse az utasításokat](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace) .
+2. A munkaterület törléséhez [kövesse az utasításokat](../azure-monitor/platform/delete-workspace.md) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Felmérési](how-to-assess.md) vagy [áttelepítési](how-to-migrate.md) eszközök hozzáadása Azure Migrate projektekhez.

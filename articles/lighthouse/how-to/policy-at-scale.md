@@ -1,17 +1,18 @@
 ---
 title: Azure Policy üzembe helyezése a delegált előfizetések számára nagy léptékben
-description: Ismerje meg, hogy az Azure-beli delegált erőforrás-kezelés lehetővé teszi a szabályzat-definíciók és a házirendek hozzárendelésének telepítését több bérlőn keresztül.
-ms.date: 11/8/2019
+description: Ismerje meg, hogy az Azure Lighthouse hogyan helyezheti üzembe a házirend-definíciót és a házirend-hozzárendelést több bérlő között.
+ms.date: 07/07/2020
 ms.topic: how-to
-ms.openlocfilehash: 0e3af1728b4927874fa599bad256798f39721e22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6d7c6206916f87072f68cc0fe953c8049896cd0b
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84636529"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86111796"
 ---
 # <a name="deploy-azure-policy-to-delegated-subscriptions-at-scale"></a>Azure Policy üzembe helyezése a delegált előfizetések számára nagy léptékben
 
-Szolgáltatóként több ügyfél-bérlőt is felkészített az Azure-beli delegált erőforrás-kezeléshez. Az [Azure Lighthouse](../overview.md) lehetővé teszi a szolgáltatók számára, hogy egyszerre több bérlőn is elvégezzék a műveleteket, így hatékonyabbá téve a felügyeleti feladatokat.
+Szolgáltatóként több ügyfél-bérlőt is felkészített az [Azure világítótoronyba](../overview.md). Az Azure Lighthouse lehetővé teszi a szolgáltatók számára, hogy egyszerre több bérlőn is elvégezzék a műveleteket, így hatékonyabbá téve a felügyeleti feladatokat.
 
 Ebből a témakörből megtudhatja, hogyan használhatók a [Azure Policy](../../governance/policy/index.yml) egy házirend-definíció és egy házirend-hozzárendelés több bérlőn való üzembe helyezésére a PowerShell-parancsok használatával. Ebben a példában a házirend-definíció biztosítja, hogy a rendszer csak HTTPS-forgalmat engedélyezzen a Storage-fiókok biztonságossá tételéhez.
 
@@ -87,7 +88,7 @@ foreach ($ManagedSub in $ManagedSubscriptions)
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A [Azure Policy](../../governance/policy/index.yml)megismerése.
 - További információ a [bérlők közötti felügyeleti élményekről](../concepts/cross-tenant-management-experience.md).

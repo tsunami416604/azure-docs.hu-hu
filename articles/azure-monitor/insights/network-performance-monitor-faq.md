@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: 4c672caaedd3e5cc591659f24c73f54f399c73de
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 191c6d411418229d40b10704ea14d5a536c0d5f7
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85194003"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110623"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor megoldás – gyakori kérdések
 
@@ -100,38 +100,50 @@ Részletes útmutatásért tekintse meg [a riasztások című szakaszt a dokumen
 ### <a name="what-are-the-default-log-analytics-queries-for-alerts"></a>A riasztások alapértelmezett Log Analytics lekérdezései
 Teljesítményfigyelő lekérdezése
 
-    NetworkMonitoring 
-     | where (SubType == "SubNetwork" or SubType == "NetworkPath") 
-     | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy") and RuleName == "<<your rule name>>"
-    
+```kusto
+NetworkMonitoring
+ | where (SubType == "SubNetwork" or SubType == "NetworkPath") 
+ | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy") and RuleName == "<<your rule name>>"
+```
+
 Szolgáltatás-kapcsolódási figyelő lekérdezése
 
-    NetworkMonitoring                 
-     | where (SubType == "EndpointHealth" or SubType == "EndpointPath")
-     | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or ServiceResponseHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy") and TestName == "<<your test name>>"
-    
+```kusto
+NetworkMonitoring
+ | where (SubType == "EndpointHealth" or SubType == "EndpointPath")
+ | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or ServiceResponseHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy") and TestName == "<<your test name>>"
+```
+
 ExpressRoute-figyelő lekérdezések: áramkörök lekérdezése
 
-    NetworkMonitoring
-    | where (SubType == "ERCircuitTotalUtilization") and (UtilizationHealthState == "Unhealthy") and CircuitResourceId == "<<your circuit resource ID>>"
+```kusto
+NetworkMonitoring
+ | where (SubType == "ERCircuitTotalUtilization") and (UtilizationHealthState == "Unhealthy") and CircuitResourceId == "<<your circuit resource ID>>"
+```
 
 Magánhálózati társviszony-létesítés
 
-    NetworkMonitoring 
-     | where (SubType == "ExpressRoutePeering" or SubType == "ERVNetConnectionUtilization" or SubType == "ExpressRoutePath")   
-    | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") and CircuitName == "<<your circuit name>>" and VirtualNetwork == "<<vnet name>>"
+```kusto
+NetworkMonitoring
+ | where (SubType == "ExpressRoutePeering" or SubType == "ERVNetConnectionUtilization" or SubType == "ExpressRoutePath")   
+ | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") and CircuitName == "<<your circuit name>>" and VirtualNetwork == "<<vnet name>>"
+```
 
 Microsoft társviszony-létesítés
 
-    NetworkMonitoring 
-     | where (SubType == "ExpressRoutePeering" or SubType == "ERMSPeeringUtilization" or SubType == "ExpressRoutePath")
-    | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") and CircuitName == ""<<your circuit name>>" and PeeringType == "MicrosoftPeering"
+```kusto
+NetworkMonitoring
+ | where (SubType == "ExpressRoutePeering" or SubType == "ERMSPeeringUtilization" or SubType == "ExpressRoutePath")
+ | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") and CircuitName == ""<<your circuit name>>" and PeeringType == "MicrosoftPeering"
+```
 
-Gyakori lekérdezés   
+Gyakori lekérdezés
 
-    NetworkMonitoring
-    | where (SubType == "ExpressRoutePeering" or SubType == "ERVNetConnectionUtilization" or SubType == "ERMSPeeringUtilization" or SubType == "ExpressRoutePath")
-    | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") 
+```kusto
+NetworkMonitoring
+ | where (SubType == "ExpressRoutePeering" or SubType == "ERVNetConnectionUtilization" or SubType == "ERMSPeeringUtilization" or SubType == "ExpressRoutePath")
+ | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy")
+```
 
 ### <a name="can-npm-monitor-routers-and-servers-as-individual-devices"></a>Az útválasztók és a kiszolgálók önálló eszközökként is NPM?
 A NPM csak az alapul szolgáló hálózati ugrások (kapcsolók, útválasztók, kiszolgálók stb.) IP-címét és állomásnevét azonosítja a forrás és a cél IP-címei között. Emellett meghatározza az azonosított ugrások közötti késést is. Nem figyeli külön a mögöttes ugrásokat.
@@ -147,21 +159,27 @@ Az elsődleges és a másodlagos sávszélesség bejövő és kimenő értékeit
 
 MS-társi szintű információk esetében használja az alábbi lekérdezést a naplóbeli keresésben
 
-    NetworkMonitoring 
-     | where SubType == "ERMSPeeringUtilization"
-     | project  CircuitName,PeeringName,BitsInPerSecond,BitsOutPerSecond 
-    
+```kusto
+NetworkMonitoring
+ | where SubType == "ERMSPeeringUtilization"
+ | project CircuitName,PeeringName,BitsInPerSecond,BitsOutPerSecond 
+```
+
 A privát peering szintű információkhoz használja az alábbi lekérdezést a naplóbeli keresésben
 
-    NetworkMonitoring 
-     | where SubType == "ERVNetConnectionUtilization"
-     | project  CircuitName,PeeringName,BitsInPerSecond,BitsOutPerSecond
-  
+```kusto
+NetworkMonitoring
+ | where SubType == "ERVNetConnectionUtilization"
+ | project CircuitName,PeeringName,BitsInPerSecond,BitsOutPerSecond
+```
+
 Az áramköri szintű információk esetében használja az alábbi lekérdezést a naplóbeli keresésben
 
-    NetworkMonitoring 
-        | where SubType == "ERCircuitTotalUtilization"
-        | project CircuitName, BitsInPerSecond, BitsOutPerSecond
+```kusto
+NetworkMonitoring
+ | where SubType == "ERCircuitTotalUtilization"
+ | project CircuitName, BitsInPerSecond, BitsOutPerSecond
+```
 
 ### <a name="which-regions-are-supported-for-npms-performance-monitor"></a>Mely régiók támogatottak a NPM teljesítményének monitorozásához?
 A NPM a világ bármely részén lévő hálózatok közötti kapcsolat figyelésére a [támogatott régiók](../../azure-monitor/insights/network-performance-monitor.md#supported-regions) egyikében üzemeltetett munkaterületről
@@ -190,10 +208,12 @@ A NPM riasztást küld, ha a forrás és a cél között a végpontok közötti 
 
 A keresendő lekérdezési útvonal sérült:
 
-    NetworkMonitoring 
-    | where ( SubType == "ExpressRoutePath")
-    | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") and          CircuitResourceID =="<your ER circuit ID>" and ConnectionResourceId == "<your ER connection resource id>"
-    | project SubType, LossHealthState, LatencyHealthState, MedianLatency 
+```kusto
+NetworkMonitoring
+ | where ( SubType == "ExpressRoutePath")
+ | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") and CircuitResourceID =="<your ER circuit ID>" and ConnectionResourceId == "<your ER connection resource id>"
+ | project SubType, LossHealthState, LatencyHealthState, MedianLatency
+```
 
 ### <a name="why-does-my-test-show-unhealthy-but-the-topology-does-not"></a>Miért jelenik meg a teszt állapota, de a topológia nem 
 A NPM különböző időközönként figyeli a végpontok közötti adatvesztést, a késést és a topológiát. A veszteséget és a késést 5 másodpercenként, és három percenként összesítjük (a Teljesítményfigyelő és az Express Route monitor esetében), míg a topológia kiszámítása 10 percenként egyszer a traceroute használatával történik. Például 3:44 és 4:04 között a topológia háromszor frissíthető (3:44, 3:54, 4:04), a veszteséget és a késést azonban hét alkalommal frissítik (3:44, 3:47, 3:50, 3:53, 3:56, 3:59, 4:02). A 3:54-at generált topológia a 3:56, 3:59 és 4:02 értéknél kiszámított veszteséget és késést fogja megjeleníteni. Tegyük fel, hogy riasztást kap arról, hogy az ER-áramkör állapota 3:59. Jelentkezzen be a NPM-be, és próbálja meg beállítani a topológiai időt 3:59-re. A NPM a 3:54-kor generált topológiát fogja megjeleníteni. A hálózat utolsó ismert topológiájának megismeréséhez hasonlítsa össze a TimeProcessed (a veszteségek és a késések kiszámításának időpontját) és a TracerouteCompletedTime (a topológia kiszámításának időpontját). 
@@ -277,6 +297,6 @@ A figyeléshez használt csomópontok állapotát a következő nézetből tekin
 ### <a name="can-npm-report-latency-numbers-in-microseconds"></a>NPM a jelentés késési számait a másodpercenként?
 A NPM felkerekíti a késési számokat a felhasználói felületen és ezredmásodpercben. Ugyanazokat az adatokat a rendszer magasabb részletességgel tárolja (esetenként akár négy tizedesjegy is).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a Network Performance Monitorről az [Azure-beli Network Performance monitor megoldásra](../../azure-monitor/insights/network-performance-monitor.md)való hivatkozással.

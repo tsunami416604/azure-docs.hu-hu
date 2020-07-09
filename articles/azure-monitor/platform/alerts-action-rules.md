@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan konfigurálhatja és kezelheti a Azure Monitorb
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.subservice: alerts
-ms.openlocfilehash: 6585890395d7656f239ac3098cd374ecd4757842
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 573567386ba9cbaf8b36440fda5073f899fcdfc7
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80618992"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86112340"
 ---
 # <a name="action-rules-preview"></a>Műveleti szabályok (előzetes verzió)
 
@@ -196,25 +196,28 @@ A Mellőzés mindig elsőbbséget élvez ugyanazon a hatókörön.
 
 ### <a name="what-happens-if-i-have-a-resource-thats-monitored-in-two-separate-action-rules-do-i-get-one-or-two-notifications-for-example-vm2-in-the-following-scenario"></a>Mi történik, ha két külön műveleti szabályban megfigyelt erőforrással rendelkezem? Kapok egy vagy két értesítést? A **VM2** például a következő esetben:
 
-      action rule AR1 defined for VM1 and VM2 with action group AG1
-      action rule AR2 defined for VM2 and VM3 with action group AG1
+   `action rule AR1 defined for VM1 and VM2 with action group AG1`
+
+   `action rule AR2 defined for VM2 and VM3 with action group AG1`
 
 A VM1 és a VM3 összes riasztása esetén a Action Group AG1 egyszer aktiválódik. A **VM2**összes riasztása esetében a műveleti csoport AG1 kétszer aktiválódik, mert a műveleti szabályok nem ismétlik le a műveleteket. 
 
 ### <a name="what-happens-if-i-have-a-resource-monitored-in-two-separate-action-rules-and-one-calls-for-action-while-another-for-suppression-for-example-vm2-in-the-following-scenario"></a>Mi történik, ha egy erőforrást két külön műveleti szabályban figyeltem meg, és egy másikat a művelet közben letiltanak? A **VM2** például a következő esetben:
 
-      action rule AR1 defined for VM1 and VM2 with action group AG1 
-      action rule AR2 defined for VM2 and VM3 with suppression
+   `action rule AR1 defined for VM1 and VM2 with action group AG1`
+
+   `action rule AR2 defined for VM2 and VM3 with suppression`
 
 A VM1 összes riasztása esetén a Action Group AG1 egyszer aktiválódik. A VM2 és a VM3 összes riasztására vonatkozó műveleteket és értesítéseket a rendszer letiltja. 
 
 ### <a name="what-happens-if-i-have-an-alert-rule-and-an-action-rule-defined-for-the-same-resource-calling-different-action-groups-for-example-vm1-in-the-following-scenario"></a>Mi történik, ha a riasztási szabály és az ugyanahhoz az erőforráshoz definiált műveleti szabály különböző műveleti csoportokat hív meg? A **VM1** például a következő esetben:
 
-      alert rule rule1 on VM1 with action group AG2
-      action rule AR1 defined for VM1 with action group AG1 
- 
+   `alert rule rule1 on VM1 with action group AG2`
+
+   `action rule AR1 defined for VM1 with action group AG1`
+
 A VM1 összes riasztása esetén a Action Group AG1 egyszer aktiválódik. Ha a "rule1" riasztási szabályt aktiválták, akkor a AG2 is aktiválódik. A műveleti szabályokban és a riasztási szabályokban definiált műveleti csoportok egymástól függetlenül működnek, és nincs ismétlődés. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [További információ az Azure-beli riasztásokról](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)

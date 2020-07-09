@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 92a8e129188f2790a3e46162b207373b5d6e6ce4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 40bd39299380c400f945585651a7ad99e3eb3fa7
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611356"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114057"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>A Azure Migrate készülék és a felderítés hibáinak megoldása
 
@@ -27,7 +27,7 @@ Ez a cikk segítséget nyújt a [Azure Migrate](migrate-services-overview.md) be
 
 Ha "a megadott jegyzékfájl érvénytelen: érvénytelen OVF manifest-bejegyzés" hibaüzenet jelenik meg, tegye a következőket:
 
-1. Ellenőrizze, hogy a Azure Migrate készülék PETESEJTJEInek fájlja helyesen van-e letöltve a kivonatoló értékének ellenőrzésével. [További információk](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware). Ha a kivonatoló érték nem egyezik, töltse le újra a PETESEJT-fájlt, majd próbálja megismételni a telepítést.
+1. Ellenőrizze, hogy a Azure Migrate készülék PETESEJTJEInek fájlja helyesen van-e letöltve a kivonatoló értékének ellenőrzésével. [További információk](./tutorial-prepare-vmware.md). Ha a kivonatoló érték nem egyezik, töltse le újra a PETESEJT-fájlt, majd próbálja megismételni a telepítést.
 2. Ha a telepítés továbbra is meghiúsul, és a VMware vSphere ügyfél használatával telepíti a OVF-fájlt, próbálja meg telepíteni a vSphere webes ügyfelén keresztül. Ha az üzembe helyezés továbbra is sikertelen, próbálkozzon más böngészővel.
 3. Ha a vSphere webes ügyfélprogramot használja, és vCenter Server 6,5-es vagy 6,7-es számítógépen szeretné telepíteni, próbálja meg közvetlenül telepíteni a PETESEJTeket az ESXi-gazdagépre:
    - Kapcsolódjon közvetlenül az ESXi-gazdagéphez (vCenter Server helyett) a webes ügyféllel (https://<*gazdagép IP-címe*>/UI).
@@ -40,7 +40,7 @@ Ez akkor fordulhat elő, ha a berendezés számítógépe proxy mögött van.
 
 - Győződjön meg arról, hogy megadja az engedélyezési hitelesítő adatokat, ha a proxynak szüksége van rájuk.
 - Ha URL-alapú tűzfal-proxyt használ a kimenő kapcsolatok vezérléséhez, adja hozzá [ezeket az URL-címeket](migrate-appliance.md#url-access) egy engedélyezési listához.
-- Ha elfogó proxyt használ az internethez való csatlakozáshoz, [ezeket a lépéseket követve](https://docs.microsoft.com/azure/migrate/concepts-collector)importálja a tanúsítványt a berendezés virtuális gépén.
+- Ha elfogó proxyt használ az internethez való csatlakozáshoz, [ezeket a lépéseket követve](./migrate-appliance.md)importálja a tanúsítványt a berendezés virtuális gépén.
 
 ## <a name="cant-sign-into-azure-from-the-appliance-web-app"></a>Nem lehet bejelentkezni az Azure-ba a készülék webalkalmazásból
 
@@ -64,7 +64,7 @@ A dátum-és időszinkronizálással (802) kapcsolatos hiba azt jelzi, hogy a ki
 
 Ha ezt a hibaüzenetet kapja, előfordulhat, hogy nem tud csatlakozni a (z) vCenter Server *servername*. com: 9443. A hiba részletei azt jelzik, hogy nem figyelhető végpont, `https://\*servername*.com:9443/sdk` amely fogadja az üzenetet.
 
-- Győződjön meg arról, hogy a készülék legújabb verzióját futtatja-e. Ha nem, frissítse a készüléket a [legújabb verzióra](https://docs.microsoft.com/azure/migrate/concepts-collector).
+- Győződjön meg arról, hogy a készülék legújabb verzióját futtatja-e. Ha nem, frissítse a készüléket a [legújabb verzióra](./migrate-appliance.md).
 - Ha a probléma továbbra is a legújabb verzióban következik be, előfordulhat, hogy a készülék nem tudja feloldani a megadott vCenter Server nevet, vagy a megadott port helytelen lehet. Alapértelmezés szerint, ha a port nincs megadva, a gyűjtő megpróbál csatlakozni a 443-as számú portszámhoz.
 
     1. Pingelje a *servername*. com-t a készülékről.
@@ -77,10 +77,10 @@ Ha ezt a hibaüzenetet kapja, előfordulhat, hogy nem tud csatlakozni a (z) vCen
 
 - 60052-es hiba: "előfordulhat, hogy a készülék nem regisztrálható sikeresen a Azure Migrate projektben", ha a berendezés regisztrálásához használt Azure-fiók nem rendelkezik megfelelő engedélyekkel.
     - Győződjön meg arról, hogy a készülék regisztrálásához használt Azure-beli felhasználói fiók legalább közreműködői engedélyekkel rendelkezik az előfizetésben.
-    - [További](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance---vmware) információ a szükséges Azure-szerepkörökről és-engedélyekről.
+    - [További](./migrate-appliance.md#appliance---vmware) információ a szükséges Azure-szerepkörökről és-engedélyekről.
 - 60039-es hiba: "előfordulhat, hogy a készülék nem regisztrálható sikeresen a Azure Migrate projektben" akkor fordulhat elő, ha a regisztráció sikertelen, mert a berendezés regisztrálásához használt Azure Migrate projekt nem található.
     - A Azure Portalon, és győződjön meg arról, hogy a projekt létezik az erőforráscsoporthoz.
-    - Ha a projekt nem létezik, hozzon létre egy új Azure Migrate projektet az erőforráscsoporthoz, és regisztrálja újra a készüléket. [Ismerje meg, hogyan](https://docs.microsoft.com/azure/migrate/how-to-add-tool-first-time#create-a-project-and-add-a-tool) hozhat létre új projektet.
+    - Ha a projekt nem létezik, hozzon létre egy új Azure Migrate projektet az erőforráscsoporthoz, és regisztrálja újra a készüléket. [Ismerje meg, hogyan](./how-to-add-tool-first-time.md#create-a-project-and-add-a-tool) hozhat létre új projektet.
 
 ## <a name="error-6003060031-key-vault-management-operation-failed"></a>60030/60031-es hiba: a Key Vault felügyeleti művelet sikertelen volt.
 
@@ -88,7 +88,7 @@ Ha a 60030-es vagy a 60031-es hibát kapja, "az Azure Key Vault felügyeleti mű
 - Győződjön meg arról, hogy a készülék regisztrálásához használt Azure-beli felhasználói fiók legalább közreműködői engedélyekkel rendelkezik az előfizetésben.
 - Győződjön meg arról, hogy a fiók rendelkezik hozzáféréssel a hibaüzenetben megadott kulcstartóhoz, majd próbálja megismételni a műveletet.
 - Ha a probléma továbbra is fennáll, forduljon a Microsoft támogatási szolgálatához.
-- [További](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance---vmware) információ a szükséges Azure-szerepkörökről és-engedélyekről.
+- [További](./migrate-appliance.md#appliance---vmware) információ a szükséges Azure-szerepkörökről és-engedélyekről.
 
 ## <a name="error-60028-discovery-couldnt-be-initiated"></a>60028-es hiba: nem sikerült elindítani a felderítést
 
@@ -103,7 +103,7 @@ Ha a 60030-es vagy a 60031-es hibát kapja, "az Azure Key Vault felügyeleti mű
 - Győződjön meg arról, hogy a felderítést kezdeményező felhasználói fiók megegyezik a berendezés regisztrálásához használttal.
 - Adja meg Azure Active Directory alkalmazás hozzáférési engedélyeit ahhoz a felhasználói fiókhoz, amelyhez a felderítési művelet sikertelen.
 - Törölje az Azure Migrate projekthez korábban létrehozott erőforráscsoportot. Hozzon létre egy másik erőforráscsoportot az újraindításhoz.
-- [További](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance---vmware) információ Azure Active Directory alkalmazás engedélyeiről.
+- [További](./migrate-appliance.md#appliance---vmware) információ Azure Active Directory alkalmazás engedélyeiről.
 
 
 ## <a name="error-50004-cant-connect-to-host-or-cluster"></a>50004-es hiba: nem lehet csatlakozni a gazdagéphez vagy a fürthöz
@@ -223,5 +223,5 @@ A szokásos alkalmazás-felderítési hibák a táblázatban vannak összegezve.
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Állítson be egy berendezést a [VMware](how-to-set-up-appliance-vmware.md), a [Hyper-V](how-to-set-up-appliance-hyper-v.md)vagy a [fizikai kiszolgálók](how-to-set-up-appliance-physical.md)számára.

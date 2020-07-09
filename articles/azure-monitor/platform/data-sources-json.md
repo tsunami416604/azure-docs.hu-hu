@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: 49eb3fa22bc9afffb9e93f3152cdc00323b76d41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 407257dbe9fbfa560153d5044263fc4c947cb05c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77662161"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86111932"
 ---
 # <a name="collecting-custom-json-data-sources-with-the-log-analytics-agent-for-linux-in-azure-monitor"></a>Egyéni JSON-adatforrások gyűjtése a Linux rendszerhez készült Log Analytics-ügynökkel Azure Monitor
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
@@ -29,7 +30,7 @@ A JSON-adatok Azure Monitorba való gyűjtéséhez vegyen fel egy, a `oms.api.` 
 
 Például a következő egy különálló konfigurációs fájl `exec-json.conf` a ben `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/` .  Ez a folyékonyan futó beépülő modul használatával `exec` 30 másodpercenként futtat egy cURL-parancsot.  A parancs kimenetét a JSON kimeneti beépülő modulja gyűjti.
 
-```
+```xml
 <source>
   type exec
   command 'curl localhost/json.output'
@@ -51,6 +52,7 @@ Például a következő egy különálló konfigurációs fájl `exec-json.conf`
   retry_wait 30s
 </match>
 ```
+
 Az itt hozzáadott konfigurációs fájlhoz a `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/` következő paranccsal kell megváltoztatnia a tulajdonosát:.
 
 `sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/conf/omsagent.d/exec-json.conf`
@@ -58,7 +60,7 @@ Az itt hozzáadott konfigurációs fájlhoz a `/etc/opt/microsoft/omsagent/<work
 ### <a name="configure-output-plugin"></a>Kimeneti beépülő modul konfigurálása 
 Adja hozzá a következő kimeneti beépülő modul konfigurációját a fő konfigurációhoz a `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf` vagy egy külön konfigurációs fájlban`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/`
 
-```
+```xml
 <match oms.api.**>
   type out_oms_api
   log_level info
@@ -76,18 +78,22 @@ Adja hozzá a következő kimeneti beépülő modul konfigurációját a fő kon
 ### <a name="restart-log-analytics-agent-for-linux"></a>A Linux-ügynök újraindítása Log Analytics
 Indítsa újra a Linux rendszerhez készült Log Analytics Agent ügynököt a következő paranccsal.
 
-    sudo /opt/microsoft/omsagent/bin/service_control restart 
+```console
+sudo /opt/microsoft/omsagent/bin/service_control restart 
+```
 
 ## <a name="output"></a>Kimenet
 Az adatokat a rendszer a Azure Monitor rögzíti `<FLUENTD_TAG>_CL` .
 
 A Azure Monitor egyéni címkéje például a következő `tag oms.api.tomcat` : `tomcat_CL` .  Az ilyen típusú rekordokat a következő napló lekérdezéssel kérheti le.
 
-    Type=tomcat_CL
+```console
+Type=tomcat_CL
+```
 
 A beágyazott JSON-adatforrások támogatottak, de a szülő mező alapján indexelve vannak. Például a következő JSON-adatok szerepelnek a napló lekérdezésében `tag_s : "[{ "a":"1", "b":"2" }]` .
 
-```
+```json
 {
     "tag": [{
         "a":"1",
@@ -97,5 +103,5 @@ A beágyazott JSON-adatforrások támogatottak, de a szülő mező alapján inde
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ az adatforrásokból és megoldásokból gyűjtött adatok elemzéséhez szükséges [naplók lekérdezéséről](../log-query/log-query-overview.md) . 

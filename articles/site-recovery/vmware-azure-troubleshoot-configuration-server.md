@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
-ms.openlocfilehash: 26376c6b20816d2e7302403c8391195e16092fa3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b60a53b05c0d2c80c36c94e27e4d00952b5af954
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85504320"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86113071"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>A konfigurációs kiszolgáló problémáinak elhárítása
 
@@ -162,16 +162,18 @@ A konfigurációs kiszolgáló frissítése meghiúsul, ha bizonyos szolgáltat�
 
 A probléma azonosításához keresse meg a C:\ProgramData\ASRSetupLogs\ CX_TP_InstallLogFile a konfigurációs kiszolgálón. Ha a következő hibákat keresi, a probléma megoldásához kövesse az alábbi lépéseket: 
 
-    2018-06-28 14:28:12.943   Successfully copied php.ini to C:\Temp from C:\thirdparty\php5nts
-    2018-06-28 14:28:12.943   svagents service status - SERVICE_RUNNING
-    2018-06-28 14:28:12.944   Stopping svagents service.
-    2018-06-28 14:31:32.949   Unable to stop svagents service.
-    2018-06-28 14:31:32.949   Stopping svagents service.
-    2018-06-28 14:34:52.960   Unable to stop svagents service.
-    2018-06-28 14:34:52.960   Stopping svagents service.
-    2018-06-28 14:38:12.971   Unable to stop svagents service.
-    2018-06-28 14:38:12.971   Rolling back the install changes.
-    2018-06-28 14:38:12.971   Upgrade has failed.
+```output
+2018-06-28 14:28:12.943   Successfully copied php.ini to C:\Temp from C:\thirdparty\php5nts
+2018-06-28 14:28:12.943   svagents service status - SERVICE_RUNNING
+2018-06-28 14:28:12.944   Stopping svagents service.
+2018-06-28 14:31:32.949   Unable to stop svagents service.
+2018-06-28 14:31:32.949   Stopping svagents service.
+2018-06-28 14:34:52.960   Unable to stop svagents service.
+2018-06-28 14:34:52.960   Stopping svagents service.
+2018-06-28 14:38:12.971   Unable to stop svagents service.
+2018-06-28 14:38:12.971   Rolling back the install changes.
+2018-06-28 14:38:12.971   Upgrade has failed.
+```
 
 A hiba megoldása érdekében:
 
@@ -211,8 +213,10 @@ TCP 192.168.1.40:52739 192.168.1.40:443 SYN_SENT//cserélje le az IP-címet CS I
 
 Ha az MT-ügynök naplóiban az alábbihoz hasonló nyomkövetéseket talál, az MT-ügynök a 443-as porton hibát jelez:
 
-    #~> (11-20-2018 20:31:51):   ERROR  2508 8408 313 FAILED : PostToSVServer with error [at curlwrapper.cpp:CurlWrapper::processCurlResponse:212]   failed to post request: (7) - Couldn't connect to server
-    #~> (11-20-2018 20:31:54):   ERROR  2508 8408 314 FAILED : PostToSVServer with error [at curlwrapper.cpp:CurlWrapper::processCurlResponse:212]   failed to post request: (7) - Couldn't connect to server
+```output
+#~> (11-20-2018 20:31:51):   ERROR  2508 8408 313 FAILED : PostToSVServer with error [at curlwrapper.cpp:CurlWrapper::processCurlResponse:212]   failed to post request: (7) - Couldn't connect to server
+#~> (11-20-2018 20:31:54):   ERROR  2508 8408 314 FAILED : PostToSVServer with error [at curlwrapper.cpp:CurlWrapper::processCurlResponse:212]   failed to post request: (7) - Couldn't connect to server
+```
  
 Ez a hiba akkor fordulhat elő, ha más alkalmazások is a 443-es portot használják, vagy egy tűzfal a portot blokkoló beállítások miatt.
 

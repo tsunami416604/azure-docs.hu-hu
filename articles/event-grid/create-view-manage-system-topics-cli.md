@@ -1,18 +1,14 @@
 ---
 title: Azure Event Grid rendszertémakörök létrehozása, megtekintése és kezelése a parancssori felület használatával
 description: Ez a cikk bemutatja, hogyan hozhat létre, tekinthet meg és törölhet rendszertémaköröket az Azure CLI használatával.
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 06/15/2020
-ms.author: spelluru
-ms.openlocfilehash: d9ba83d12e73b3ebceaee3167cdcf7f27922b686
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 354afb89b145e288f525e40ad700e8f8a67c6dad
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84885239"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86115043"
 ---
 # <a name="create-view-and-manage-event-grid-system-topics-using-azure-cli"></a>Event Grid rendszertémakörök létrehozása, megtekintése és kezelése az Azure CLI használatával
 Ebből a cikkből megtudhatja, hogyan hozhat létre és kezelhet rendszertémaköröket az Azure CLI használatával. A rendszertémakörök áttekintését itt találja: [rendszertémakörök](system-topics.md).
@@ -100,5 +96,5 @@ Egy rendszertémakör törléséhez használja a következő parancsot:
     az eventgrid system-topic delete -g <AZURE RESOURCE GROUP NAME> --name <SYSTEM TOPIC NAME>   
      ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Azure Event Grid által támogatott rendszertémakörökkel és a témakörökkel kapcsolatos további tudnivalókért tekintse meg [Azure Event Grid szakasz rendszertémaköreit](system-topics.md) . 

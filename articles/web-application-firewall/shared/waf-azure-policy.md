@@ -5,14 +5,14 @@ author: tremansdoerfer
 ms.service: web-application-firewall
 services: web-application-firewall
 ms.topic: conceptual
-ms.date: 06/23/2020
+ms.date: 07/07/2020
 ms.author: rimansdo
-ms.openlocfilehash: 4c1fd53eb6ebf1f1aebdfba99b736e26bd6cff2b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 12ad18edbb434bdfaec2ae817ea079a843661ef6
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85306912"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86111344"
 ---
 # <a name="azure-web-application-firewall-and-azure-policy"></a>Azure webalkalmazási tűzfal és Azure Policy
 
@@ -22,9 +22,13 @@ Az Azure webalkalmazási tűzfal (WAF) és a Azure Policy együttes használata 
 
 A WAF-erőforrások kezeléséhez számos beépített Azure-szabályzat található. A szabályzatok és funkcióik részletezése a következő:
 
-1. **Engedélyezni kell a webalkalmazási tűzfalat az Azure bejárati szolgáltatásának vagy Application Gateway**: az Azure bejárati szolgáltatásai és az alkalmazás-átjárók kiértékelése akkor történik meg, ha az erőforrás-létrehozási WAF létezik. A házirendnek három hatása van: naplózás, megtagadás és letiltás. A naplózás nyomon követi, ha egy Azure bejárati szolgáltatás vagy Application Gateway nem rendelkezik WAF, és lehetővé teszi, hogy a felhasználók lássák, milyen Azure bejárati szolgáltatás vagy Application Gateway jelenleg nem felel meg a követelményeknek. A Megtagadás megakadályozza, hogy a rendszer ne hozzon létre Azure bejárati szolgáltatást vagy Application Gateway, ha nincs WAF csatlakoztatva. A Letiltva beállítás kikapcsolja ezt a házirendet.
+1. A **webalkalmazási tűzfalat (WAF) engedélyezni kell az Azure bejárati ajtó szolgáltatásához**: az Azure bejárati szolgáltatásait akkor értékeli ki a rendszer, ha az erőforrás-létrehozási WAF létezik. A házirendnek három hatása van: naplózás, megtagadás és letiltás. A naplózás nyomon követi, ha egy Azure bejárati ajtó szolgáltatás nem rendelkezik WAF, és lehetővé teszi a felhasználók számára, hogy az Azure bejárati ajtó szolgáltatás nem felel meg a követelményeknek. A Megtagadás megakadályozza, hogy az Azure bejárati ajtó szolgáltatás ne hozzon létre egy WAF, ha nincs csatlakoztatva. A Letiltva beállítás kikapcsolja ezt a házirendet.
 
-2. A **webalkalmazási tűzfalnak be kell állítani a Application Gateway és az Azure bejárati ajtó szolgáltatást**: a webalkalmazási tűzfal kiértékelése, hogy milyen módban van, vagy megelőzés vagy észlelés. A szabályzat a webalkalmazási tűzfalak között biztosítja a mód egységességét. A házirendnek három hatása van: naplózás, megtagadás és letiltás. A naplózás nyomon követi, ha egy WAF nem felel meg a megadott módnak. A Megtagadás megakadályozza, hogy a rendszer ne hozzon létre WAF, ha az nem megfelelő módban van. A Letiltva beállítás kikapcsolja ezt a házirendet.
+2. A **webalkalmazási tűzfalat (WAF) engedélyezni kell a Application Gateway esetében**: az Application Gateway kiértékelése akkor történik meg, ha az erőforrás-LÉTREHOZÁShoz WAF van. A házirendnek három hatása van: naplózás, megtagadás és letiltás. A naplózás nyomon követi, ha egy Application Gateway nem rendelkezik WAF, és lehetővé teszi, hogy a felhasználók lássák, milyen Application Gateway nem felel meg a követelményeknek. A Megtagadás megakadályozza, hogy a rendszer ne hozzon létre Application Gateway, ha nincs csatolva WAF. A Letiltva beállítás kikapcsolja ezt a házirendet.
+
+3. **A webalkalmazási tűzfalnak (WAF) a megadott módot kell használnia az Azure bejárati ajtó szolgáltatásához**: az "észlelés" vagy a "megelőzés" üzemmód használatát az Azure-beli előtérben elérhető összes webalkalmazási tűzfalra vonatkozó házirendben aktívnak kell lennie. A házirendnek három hatása van: naplózás, megtagadás és letiltás. A naplózás nyomon követi, ha egy WAF nem felel meg a megadott módnak. A Megtagadás megakadályozza, hogy a rendszer ne hozzon létre WAF, ha az nem megfelelő módban van. A Letiltva beállítás kikapcsolja ezt a házirendet.
+
+4. **A webalkalmazási tűzfalnak (WAF) a megadott Application Gateway módot kell használnia**: az "észlelés" vagy a "megelőzés" üzemmód használatát a Application Gateway összes webalkalmazási tűzfal házirendje esetében aktívnak kell lennie. A házirendnek három hatása van: naplózás, megtagadás és letiltás. A naplózás nyomon követi, ha egy WAF nem felel meg a megadott módnak. A Megtagadás megakadályozza, hogy a rendszer ne hozzon létre WAF, ha az nem megfelelő módban van. A Letiltva beállítás kikapcsolja ezt a házirendet.
 
 
 ## <a name="launch-an-azure-policy"></a>Azure Policy elindítása
@@ -45,7 +49,7 @@ A WAF-erőforrások kezeléséhez számos beépített Azure-szabályzat találha
     2.  **Kizárások**: válassza ki a hatókörből azokat az erőforrásokat, amelyeket ki szeretne zárni a szabályzatból 
     3.  **Házirend-definíció**: válassza ki azokat a Azure Policy, amelyekre alkalmazni kívánja a hatókört a kizárásokkal. Írja be a "webalkalmazási tűzfal" kifejezést a keresőmezőbe a megfelelő webalkalmazási tűzfal Azure Policy kiválasztásához.
 
-![Azure webalkalmazási tűzfal](../media/waf-azure-policy/policy-listings.png)
+![Azure webalkalmazási tűzfal](../media/waf-azure-policy/policy-listing.png)
 
 
 5.  Válassza a **Parameters (paraméterek** ) fület, és frissítse a házirendek paramétereit. A paraméter nevének további tisztázásához vigye a kurzort a paraméter neve melletti információs ikonra a további pontosításhoz.

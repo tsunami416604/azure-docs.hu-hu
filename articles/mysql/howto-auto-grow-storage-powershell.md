@@ -4,14 +4,14 @@ description: Ez a cikk bemutatja, hogyan engedélyezheti az automatikus növeked
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 4/28/2020
-ms.openlocfilehash: c8a19fe338af14f97e0eb191d7b57e840c71e400
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 28dd9296eb0b2b2a014de9aeccf82baad5ef6e2c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82612724"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86112561"
 ---
 # <a name="auto-grow-storage-in-azure-database-for-mysql-server-using-powershell"></a>Tároló automatikus növekedése Azure Database for MySQL-kiszolgálón a PowerShell használatával
 
@@ -50,7 +50,7 @@ $Password = Read-Host -Prompt 'Please enter your password' -AsSecureString
 New-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup -Sku GP_Gen5_2 -StorageAutogrow Enabled -Location westus -AdministratorUsername myadmin -AdministratorLoginPassword $Password
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Olvasási replikák létrehozása és kezelése a Azure Database for MySQL a PowerShell használatával](howto-read-replicas-powershell.md).

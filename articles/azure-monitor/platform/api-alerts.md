@@ -4,11 +4,12 @@ description: A Log Analytics riasztási REST API lehetővé teszi a riasztások 
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 07/29/2018
-ms.openlocfilehash: a85dad2ba638505233e5df769e55fa5bd7b8dafd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4ab2a1369fc4902afec7d62e44ef8e947864167f
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77665000"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86112051"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Riasztási szabályok létrehozása és kezelése a Log Analyticsban REST API 
 
@@ -37,25 +38,29 @@ Tegyük fel például, hogy egy 15 perces időközzel és egy 30 perces TimeSpan
 ### <a name="retrieving-schedules"></a>Ütemtervek beolvasása
 A Get metódussal kérheti le a mentett keresések összes ütemtervét.
 
-    armclient get /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search  ID}/schedules?api-version=2015-03-20
+```powershell
+armclient get /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search  ID}/schedules?api-version=2015-03-20
+```
 
 A Get metódus és egy ütemezett azonosító használatával egy adott ütemtervet kérhet le egy mentett kereséshez.
 
-    armclient get /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Subscription ID}/schedules/{Schedule ID}?api-version=2015-03-20
+```powershell
+armclient get /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Subscription ID}/schedules/{Schedule ID}?api-version=2015-03-20
+```
 
 Az alábbi példa egy ütemezett választ mutat be.
 
 ```json
 {
-    "value": [{
-        "id": "subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/sampleRG/providers/Microsoft.OperationalInsights/workspaces/MyWorkspace/savedSearches/0f0f4853-17f8-4ed1-9a03-8e888b0d16ec/schedules/a17b53ef-bd70-4ca4-9ead-83b00f2024a8",
-        "etag": "W/\"datetime'2016-02-25T20%3A54%3A49.8074679Z'\"",
-        "properties": {
-            "Interval": 15,
-            "QueryTimeSpan": 15,
-            "Enabled": true,
-        }
-    }]
+   "value": [{
+      "id": "subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/sampleRG/providers/Microsoft.OperationalInsights/workspaces/MyWorkspace/savedSearches/0f0f4853-17f8-4ed1-9a03-8e888b0d16ec/schedules/a17b53ef-bd70-4ca4-9ead-83b00f2024a8",
+      "etag": "W/\"datetime'2016-02-25T20%3A54%3A49.8074679Z'\"",
+      "properties": {
+         "Interval": 15,
+         "QueryTimeSpan": 15,
+         "Enabled": true,
+      }
+   }]
 }
 ```
 
@@ -65,21 +70,25 @@ Az alábbi példa egy ütemezett választ mutat be.
 > [!NOTE]
 > A Log Analytics API-val létrehozott összes mentett keresés, ütemterv és művelet neve csak kisbetűs lehet.
 
-    $scheduleJson = "{'properties': { 'Interval': 15, 'QueryTimeSpan':15, 'Enabled':'true' } }"
-    armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/mynewschedule?api-version=2015-03-20 $scheduleJson
+```powershell
+$scheduleJson = "{'properties': { 'Interval': 15, 'QueryTimeSpan':15, 'Enabled':'true' } }"
+armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/mynewschedule?api-version=2015-03-20 $scheduleJson
+```
 
 ### <a name="editing-a-schedule"></a>Ütemterv szerkesztése
 A Put metódust meglévő ütemezett AZONOSÍTÓval használhatja ugyanazon mentett kereséshez az adott ütemterv módosításához; az alábbi példában az ütemterv le van tiltva. A kérelem törzsének tartalmaznia kell az ütemterv *ETAG* .
 
-      $scheduleJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A49.8074679Z'\""','properties': { 'Interval': 15, 'QueryTimeSpan':15, 'Enabled':'false' } }"
-      armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/mynewschedule?api-version=2015-03-20 $scheduleJson
-
+```powershell
+$scheduleJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A49.8074679Z'\""','properties': { 'Interval': 15, 'QueryTimeSpan':15, 'Enabled':'false' } }"
+armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/mynewschedule?api-version=2015-03-20 $scheduleJson
+```
 
 ### <a name="deleting-schedules"></a>Ütemtervek törlése
 Az ütemterv törléséhez használja a DELETE metódust az ütemterv-AZONOSÍTÓval.
 
-    armclient delete /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Subscription ID}/schedules/{Schedule ID}?api-version=2015-03-20
-
+```powershell
+armclient delete /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Subscription ID}/schedules/{Schedule ID}?api-version=2015-03-20
+```
 
 ## <a name="actions"></a>Műveletek
 Egy ütemterv több művelettel is rendelkezhet. Egy művelet egy vagy több folyamatot is meghatározhat, például e-mailek küldését vagy runbook elindítását, vagy meghatározhat egy küszöbértéket, amely meghatározza, hogy egy adott keresési eredmény megfelel-e bizonyos feltételeknek.  Néhány művelet mindkét esetben meghatározza, hogy a rendszer a küszöbérték teljesülése esetén hajtsa végre a folyamatokat.
@@ -96,11 +105,15 @@ Az összes művelet a következő táblázatban található tulajdonságokkal re
 
 A Get metódussal kérheti le az összes műveletet egy adott ütemtervhez.
 
-    armclient get /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search  ID}/schedules/{Schedule ID}/actions?api-version=2015-03-20
+```powershell
+armclient get /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search  ID}/schedules/{Schedule ID}/actions?api-version=2015-03-20
+```
 
 Használja a Get metódust a műveleti AZONOSÍTÓval egy adott művelet ütemezett lekéréséhez.
 
-    armclient get /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Subscription ID}/schedules/{Schedule ID}/actions/{Action ID}?api-version=2015-03-20
+```powershell
+armclient get /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Subscription ID}/schedules/{Schedule ID}/actions/{Action ID}?api-version=2015-03-20
+```
 
 ### <a name="creating-or-editing-actions"></a>Műveletek létrehozása vagy szerkesztése
 Egy új művelet létrehozásához használja a Put metódust egy olyan műveleti AZONOSÍTÓval, amely egyedi az ütemtervben.  Amikor létrehoz egy műveletet a Log Analytics-konzolon, a műveleti AZONOSÍTÓhoz egy GUID azonosító szükséges.
@@ -116,12 +129,14 @@ Az új műveletek létrehozási kérelmi formátuma Művelettípus szerint vált
 
 Művelet törléséhez használja a DELETE metódust a műveleti AZONOSÍTÓval.
 
-    armclient delete /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Subscription ID}/schedules/{Schedule ID}/Actions/{Action ID}?api-version=2015-03-20
+```powershell
+armclient delete /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Subscription ID}/schedules/{Schedule ID}/Actions/{Action ID}?api-version=2015-03-20
+```
 
 ### <a name="alert-actions"></a>Riasztási műveletek
 Az ütemtervnek egy és csak egy riasztási művelettel kell rendelkeznie.  A riasztási műveletekhez a következő táblázat egy vagy több szakaszában található.  Az alábbiakban részletesebben is olvashat.
 
-| Section | Description | Használat |
+| Section | Leírás | Használat |
 |:--- |:--- |:--- |
 | Küszöbérték |A művelet futtatásának feltételei.| Minden riasztáshoz szükséges, az Azure-ra való kiterjesztés előtt vagy után. |
 | Severity |Az aktiváláskor a riasztás osztályozásához használt címke.| Minden riasztáshoz szükséges, az Azure-ra való kiterjesztés előtt vagy után. |
@@ -143,26 +158,32 @@ Vegyünk például egy 15 perces intervallummal rendelkező Event lekérdezést,
 
 A következő példa egy olyan műveletre adott választ, amely csak egy küszöbértéket mutat be.  
 
-    "etag": "W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"",
-    "properties": {
-        "Type": "Alert",
-        "Name": "My threshold action",
-        "Threshold": {
-            "Operator": "gt",
-            "Value": 10
-        },
-        "Version": 1
-    }
+```json
+"etag": "W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"",
+"properties": {
+   "Type": "Alert",
+   "Name": "My threshold action",
+   "Threshold": {
+      "Operator": "gt",
+      "Value": 10
+   },
+   "Version": 1
+}
+```
 
 A Put metódust egyedi műveleti AZONOSÍTÓval használva új küszöbértéket hozhat létre egy ütemezett művelethez.  
 
-    $thresholdJson = "{'properties': { 'Name': 'My Threshold', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
-    armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdJson
+```powershell
+$thresholdJson = "{'properties': { 'Name': 'My Threshold', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
+armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdJson
+```
 
 Egy meglévő műveleti AZONOSÍTÓval rendelkező Put metódus használatával módosíthatja egy ütemezett küszöbérték-műveletet.  A kérelem törzsének tartalmaznia kell a művelet ETAG.
 
-    $thresholdJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'My Threshold', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
-    armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdJson
+```powershell
+$thresholdJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'My Threshold', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
+armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdJson
+```
 
 #### <a name="severity"></a>Severity
 Log Analytics lehetővé teszi a riasztások kategóriákba osztályozását, így könnyebben kezelhető és osztályozható. A riasztás súlyossága definiálva: tájékoztatási, figyelmeztetési és kritikus. Ezek az Azure-riasztások normalizált súlyossági skálájának megfelelően vannak leképezve:
@@ -175,26 +196,33 @@ Log Analytics lehetővé teszi a riasztások kategóriákba osztályozását, í
 
 A következő példa egy olyan műveletre adott választ, amely csak a küszöbértéket és a súlyosságot követi. 
 
-    "etag": "W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"",
-    "properties": {
-        "Type": "Alert",
-        "Name": "My threshold action",
-        "Threshold": {
-            "Operator": "gt",
-            "Value": 10
-        },
-        "Severity": "critical",
-        "Version": 1    }
+```json
+"etag": "W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"",
+"properties": {
+   "Type": "Alert",
+   "Name": "My threshold action",
+   "Threshold": {
+      "Operator": "gt",
+      "Value": 10
+   },
+   "Severity": "critical",
+   "Version": 1
+}
+```
 
 A Put metódust egyedi műveleti AZONOSÍTÓval használva hozzon létre egy új műveletet egy súlyosságú ütemtervhez.  
 
-    $thresholdWithSevJson = "{'properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
-    armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdWithSevJson
+```powershell
+$thresholdWithSevJson = "{'properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
+armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdWithSevJson
+```
 
 Egy meglévő műveleti AZONOSÍTÓval rendelkező Put metódus használatával módosíthatja egy adott ütemterv súlyossági műveletét.  A kérelem törzsének tartalmaznia kell a művelet ETAG.
 
-    $thresholdWithSevJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
-    armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdWithSevJson
+```powershell
+$thresholdWithSevJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
+armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdWithSevJson
+```
 
 #### <a name="suppress"></a>Elnyomják
 A Log Analytics-alapú lekérdezési riasztások minden alkalommal elérik vagy túllépik a küszöbértéket. A lekérdezésben szereplő logika alapján ez riasztást eredményezhet az intervallumok egy adott időpontjában, ezért az értesítések is folyamatosan lesznek elküldve. Az ilyen helyzetek megelőzése érdekében a felhasználó beállíthatja, hogy a letiltási lehetőség arra utasítja a Log Analyticsot, hogy várjon egy meghatározott időtartamra, mielőtt a riasztási szabály második alkalommal bekerül az értesítésbe. Így ha a Mellőzés 30 percre van beállítva, ezt követően a riasztás az első alkalommal fog megjelenni, és az értesítések küldésére van konfigurálva. A riasztási szabályra vonatkozó értesítés ismételt használata azonban 30 percet is igénybe vehet. Az átmeneti időszak alatt a riasztási szabály továbbra is csak a csak az értesítéseket fogja letiltani Log Analytics a megadott időtartamig, függetlenül attól, hogy a riasztási szabály hányszor lett elindítva ebben az időszakban.
@@ -203,29 +231,36 @@ Log Analytics riasztási szabály tulajdonságának letiltása a *szabályozási
 
 A következő példa egy olyan műveletre adott válasz, amely csak a küszöbértéket, a súlyosságot és a letiltási tulajdonságot követi
 
-    "etag": "W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"",
-    "properties": {
-        "Type": "Alert",
-        "Name": "My threshold action",
-        "Threshold": {
-            "Operator": "gt",
-            "Value": 10
-        },
-        "Throttling": {
-          "DurationInMinutes": 30
-        },
-        "Severity": "critical",
-        "Version": 1    }
+```json
+"etag": "W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"",
+"properties": {
+   "Type": "Alert",
+   "Name": "My threshold action",
+   "Threshold": {
+      "Operator": "gt",
+      "Value": 10
+   },
+   "Throttling": {
+   "DurationInMinutes": 30
+   },
+   "Severity": "critical",
+   "Version": 1
+}
+```
 
 A Put metódust egyedi műveleti AZONOSÍTÓval használva hozzon létre egy új műveletet egy súlyosságú ütemtervhez.  
 
-    $AlertSuppressJson = "{'properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Throttling': { 'DurationInMinutes': 30 },'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
-    armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myalert?api-version=2015-03-20 $AlertSuppressJson
+```powershell
+$AlertSuppressJson = "{'properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Throttling': { 'DurationInMinutes': 30 },'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
+armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myalert?api-version=2015-03-20 $AlertSuppressJson
+```
 
 Egy meglévő műveleti AZONOSÍTÓval rendelkező Put metódus használatával módosíthatja egy adott ütemterv súlyossági műveletét.  A kérelem törzsének tartalmaznia kell a művelet ETAG.
 
-    $AlertSuppressJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Throttling': { 'DurationInMinutes': 30 },'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
-    armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myalert?api-version=2015-03-20 $AlertSuppressJson
+```powershell
+$AlertSuppressJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Throttling': { 'DurationInMinutes': 30 },'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
+armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myalert?api-version=2015-03-20 $AlertSuppressJson
+```
 
 #### <a name="action-groups"></a>Műveletcsoportok
 Minden riasztás az Azure-ban, a műveleti csoport használata a műveletek kezelésére szolgáló alapértelmezett mechanizmusként. A műveleti csoport segítségével egyszer adhatja meg a műveleteket, majd a műveleti csoportot több riasztáshoz társíthatja az Azure-on keresztül. Anélkül, hogy szükség lenne rá, hogy ismételten deklarálja ugyanazokat a műveleteket újra és újra. A műveleti csoportok több műveletet is támogatnak – például e-maileket, SMS-t, hanghívást, ITSM, Automation Runbook, webhook URI-t és egyebeket. 
@@ -234,33 +269,39 @@ Azok a felhasználók, akik kibővítették a riasztásokat az Azure-ba, a riasz
 
 Ha a műveleti csoport társítását szeretné hozzáadni egy riasztáshoz, adja meg a műveleti csoport egyedi Azure Resource Manager AZONOSÍTÓját a riasztás definíciójában. Alább látható egy minta illusztráció:
 
-     "etag": "W/\"datetime'2017-12-13T10%3A52%3A21.1697364Z'\"",
-      "properties": {
-        "Type": "Alert",
-        "Name": "test-alert",
-        "Description": "I need to put a description here",
-        "Threshold": {
-          "Operator": "gt",
-          "Value": 12
-        },
-        "AzNsNotification": {
-          "GroupIds": [
-            "/subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup"
-          ]
-        },
-        "Severity": "critical",
-        "Version": 1
-      },
+```json
+"etag": "W/\"datetime'2017-12-13T10%3A52%3A21.1697364Z'\"",
+"properties": {
+   "Type": "Alert",
+   "Name": "test-alert",
+   "Description": "I need to put a description here",
+   "Threshold": {
+      "Operator": "gt",
+      "Value": 12
+   },
+   "AzNsNotification": {
+      "GroupIds": [
+         "/subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup"
+      ]
+   },
+   "Severity": "critical",
+   "Version": 1
+}
+```
 
 A Put metódust egy egyedi műveleti AZONOSÍTÓval társíthatja, hogy egy már meglévő műveleti csoportot rendeljen hozzá egy ütemtervhez.  A következő példa a használati ábrát szemlélteti.
 
-    $AzNsJson = "{'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup']} } }"
-    armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
+```powershell
+$AzNsJson = "{'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup']} } }"
+armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
+```
 
 A Put metódust meglévő műveleti AZONOSÍTÓval használva módosíthatja az ütemtervhez társított műveleti csoportokat.  A kérelem törzsének tartalmaznia kell a művelet ETAG.
 
-    $AzNsJson = "{'etag': 'datetime'2017-12-13T10%3A52%3A21.1697364Z'\"', 'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': { 'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup'] } } }"
-    armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
+```powershell
+$AzNsJson = "{'etag': 'datetime'2017-12-13T10%3A52%3A21.1697364Z'\"', 'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': { 'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup'] } } }"
+armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
+```
 
 #### <a name="customize-actions"></a>Műveletek testreszabása
 Alapértelmezés szerint a műveletek standard sablont és formátumot követve értesítések küldéséhez. A felhasználó azonban testre szabhatja bizonyos műveleteket, még akkor is, ha azokat műveleti csoportok vezérlik. Jelenleg az e-mailek tárgya és a webhook adattartalma is testreszabható.
@@ -268,72 +309,83 @@ Alapértelmezés szerint a műveletek standard sablont és formátumot követve 
 ##### <a name="customize-e-mail-subject-for-action-group"></a>A műveleti csoport E-Mail tárgyának testreszabása
 Alapértelmezés szerint az e-mail-tárgy a riasztások esetében a riasztási értesítés `<AlertName>` a következőhöz: `<WorkspaceName>` . Ez azonban testreszabható, így konkrét szavakat vagy címkéket is használhat, így egyszerűen alkalmazhatja a beérkezett fájlok szűrési szabályait. Az e-mail-fejléc testreszabása részleteit a ActionGroup részleteivel együtt kell elküldeni, ahogy az alábbi példában is látható.
 
-     "etag": "W/\"datetime'2017-12-13T10%3A52%3A21.1697364Z'\"",
-      "properties": {
-        "Type": "Alert",
-        "Name": "test-alert",
-        "Description": "I need to put a description here",
-        "Threshold": {
-          "Operator": "gt",
-          "Value": 12
-        },
-        "AzNsNotification": {
-          "GroupIds": [
-            "/subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup"
-          ],
-          "CustomEmailSubject": "Azure Alert fired"
-        },
-        "Severity": "critical",
-        "Version": 1
-      },
+```json
+"etag": "W/\"datetime'2017-12-13T10%3A52%3A21.1697364Z'\"",
+"properties": {
+   "Type": "Alert",
+   "Name": "test-alert",
+   "Description": "I need to put a description here",
+   "Threshold": {
+      "Operator": "gt",
+      "Value": 12
+   },
+   "AzNsNotification": {
+      "GroupIds": [
+         "/subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup"
+      ],
+      "CustomEmailSubject": "Azure Alert fired"
+   },
+   "Severity": "critical",
+   "Version": 1
+}
+```
 
 A Put metódust egy egyedi műveleti AZONOSÍTÓval társíthatja, hogy a már meglévő műveleti csoportot egy ütemezett testreszabással társítsa.  A következő példa a használati ábrát szemlélteti.
 
-    $AzNsJson = "{'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup'], 'CustomEmailSubject': 'Azure Alert fired'} } }"
-    armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
+```powershell
+$AzNsJson = "{'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup'], 'CustomEmailSubject': 'Azure Alert fired'} } }"
+armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
+```
 
 A Put metódust meglévő műveleti AZONOSÍTÓval használva módosíthatja az ütemtervhez társított műveleti csoportokat.  A kérelem törzsének tartalmaznia kell a művelet ETAG.
 
-    $AzNsJson = "{'etag': 'datetime'2017-12-13T10%3A52%3A21.1697364Z'\"', 'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup']}, 'CustomEmailSubject': 'Azure Alert fired' } }"
-    armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
+```powershell
+$AzNsJson = "{'etag': 'datetime'2017-12-13T10%3A52%3A21.1697364Z'\"', 'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup']}, 'CustomEmailSubject': 'Azure Alert fired' } }"
+armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
+```
 
 ##### <a name="customize-webhook-payload-for-action-group"></a>Webhook-tartalom testreszabása a műveleti csoport számára
 Alapértelmezés szerint a log Analytics műveleti csoportján keresztül továbbított webhook rögzített struktúrával rendelkezik. A JSON-adattartalom azonban az egyes támogatott változók használatával testreszabható, hogy megfeleljen a webhook-végpont követelményeinek. További információ: [webhook művelet a naplózási riasztási szabályokhoz](../../azure-monitor/platform/alerts-log-webhook.md). 
 
 A webhook testreszabása részleteit a ActionGroup részleteivel együtt kell elküldeni, és a rendszer a műveleti csoporton belül megadott összes webhook URI-ra alkalmazza. mint az alábbi példában.
 
-     "etag": "W/\"datetime'2017-12-13T10%3A52%3A21.1697364Z'\"",
-      "properties": {
-        "Type": "Alert",
-        "Name": "test-alert",
-        "Description": "I need to put a description here",
-        "Threshold": {
-          "Operator": "gt",
-          "Value": 12
-        },
-        "AzNsNotification": {
-          "GroupIds": [
-            "/subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup"
-          ],
-          "CustomWebhookPayload": "{\"field1\":\"value1\",\"field2\":\"value2\"}",
-          "CustomEmailSubject": "Azure Alert fired"
-        },
-        "Severity": "critical",
-        "Version": 1
-      },
+```json
+"etag": "W/\"datetime'2017-12-13T10%3A52%3A21.1697364Z'\"",
+"properties": {
+   "Type": "Alert",
+   "Name": "test-alert",
+   "Description": "I need to put a description here",
+   "Threshold": {
+      "Operator": "gt",
+      "Value": 12
+   },
+   "AzNsNotification": {
+      "GroupIds": [
+         "/subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup"
+      ],
+   "CustomWebhookPayload": "{\"field1\":\"value1\",\"field2\":\"value2\"}",
+   "CustomEmailSubject": "Azure Alert fired"
+   },
+   "Severity": "critical",
+   "Version": 1
+},
+```
 
 A Put metódust egy egyedi műveleti AZONOSÍTÓval társíthatja, hogy a már meglévő műveleti csoportot egy ütemezett testreszabással társítsa.  A következő példa a használati ábrát szemlélteti.
 
-    $AzNsJson = "{'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup'], 'CustomEmailSubject': 'Azure Alert fired','CustomWebhookPayload': '{\"field1\":\"value1\",\"field2\":\"value2\"}'} } }"
-    armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
+```powershell
+$AzNsJson = "{'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup'], 'CustomEmailSubject': 'Azure Alert fired','CustomWebhookPayload': '{\"field1\":\"value1\",\"field2\":\"value2\"}'} } }"
+armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
+```
 
 A Put metódust meglévő műveleti AZONOSÍTÓval használva módosíthatja az ütemtervhez társított műveleti csoportokat.  A kérelem törzsének tartalmaznia kell a művelet ETAG.
 
-    $AzNsJson = "{'etag': 'datetime'2017-12-13T10%3A52%3A21.1697364Z'\"', 'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup']}, 'CustomEmailSubject': 'Azure Alert fired','CustomWebhookPayload': '{\"field1\":\"value1\",\"field2\":\"value2\"}' } }"
-    armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
+```powershell
+$AzNsJson = "{'etag': 'datetime'2017-12-13T10%3A52%3A21.1697364Z'\"', 'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup']}, 'CustomEmailSubject': 'Azure Alert fired','CustomWebhookPayload': '{\"field1\":\"value1\",\"field2\":\"value2\"}' } }"
+armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
+```
 
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A [REST API használatával hajthat végre naplóbeli keresést](../../azure-monitor/log-query/log-query-overview.md) a log Analytics.
 * További tudnivalók a [naplózási riasztásokról az Azure monitorban](../../azure-monitor/platform/alerts-unified-log.md)

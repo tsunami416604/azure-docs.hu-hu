@@ -4,14 +4,14 @@ description: Ismerteti, hogyan lehet kibontani egy PostgreSQL-adatbázist egy me
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/24/2019
-ms.openlocfilehash: 90a014e44c728c1881c1fd3d9e189554ed8f44da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b7ecdd110458c64be9890762d515ecebe3d67acd
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82146333"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86112357"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>PostgreSQL-adatbázis migrálása memóriakép és visszaállítás használatával
 A [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) használatával kinyerheti a PostgreSQL-adatbázist egy memóriaképfájl-fájlba, és [Pg_restoreheti](https://www.postgresql.org/docs/current/static/app-pgrestore.html) a PostgreSQL-adatbázis visszaállítását egy pg_dump által létrehozott archív fájlból.
@@ -89,6 +89,6 @@ A meglévő PostgreSQL-adatbázis Azure Database for PostgreSQL szolgáltatásba
 
 Az éles környezetben való használat előtt ne felejtse el tesztelni és érvényesíteni ezeket a parancsokat tesztkörnyezetben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - A PostgreSQL-adatbázis exportálással és importálással történő áttelepítésével kapcsolatban lásd: [a PostgreSQL-adatbázis migrálása az Exportálás és az importálás használatával](howto-migrate-using-export-and-import.md).
 - Az adatbázisok Azure Database for PostgreSQLre való áttelepítésével kapcsolatos további információkért tekintse meg az [adatbázis-áttelepítési útmutatót](https://aka.ms/datamigration).

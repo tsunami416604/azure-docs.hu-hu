@@ -1,20 +1,14 @@
 ---
 title: Azure-IoT Hub Event Grid forrásként
 description: Ez a cikk az Azure IoT Hub eseményeinek tulajdonságait és sémáját ismerteti. Felsorolja a rendelkezésre álló eseménytípus, a példa esemény és az esemény tulajdonságait.
-services: iot-hub
-documentationcenter: ''
-author: spelluru
-editor: ''
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/09/2020
-ms.author: spelluru
-ms.openlocfilehash: f9bf807884ab5592fa320532f3ca10a223081263
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 02ecf8d4df55aa6b4319e40892778f85f94e29a7
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81393327"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86113649"
 ---
 # <a name="azure-iot-hub-as-an-event-grid-source"></a>Azure-IoT Hub Event Grid forrásként
 Ez a cikk az Azure IoT Hub eseményeinek tulajdonságait és sémáját ismerteti. Az események sémáinak bemutatása: [Azure Event Grid Event Schema](event-schema.md). 
@@ -211,7 +205,7 @@ Az **eszköz által létrehozott** és az **eszköz törölte** IoT hub esemény
 | [IoT Hub eseményekre való reagálás Event Grid használatával a műveletek elindításához](../iot-hub/iot-hub-event-grid.md) | A IoT Hub és a Event Grid integrálásának áttekintése. |
 | [Eszköz csatlakoztatott és leválasztott eseményeinek megrendelése](../iot-hub/iot-hub-how-to-order-connection-state-events.md) | Az eszköz kapcsolódási állapotával kapcsolatos események megrendelésének módját mutatja be. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Azure Event Grid bemutatása: [Mi az Event Grid?](overview.md)
 * Ha többet szeretne megtudni a IoT Hub és a Event Grid együttműködéséről, olvassa el a következő témakört: [reagálás a IoT hub eseményekre Event Grid használatával a műveletek elindításához](../iot-hub/iot-hub-event-grid.md).

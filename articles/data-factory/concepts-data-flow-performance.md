@@ -7,12 +7,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 07/06/2020
-ms.openlocfilehash: 1c63568418f21da0556ced0d004e04e7909118fb
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 9f420b37bd44a46d4149e89cf5876d8e8b712581
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042628"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114380"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Adatfolyamatok teljesítményének és hangolási útmutatójának leképezése
 
@@ -35,7 +35,7 @@ A leképezési adatfolyamatok tervezésekor az egyes átalakításokat egységes
 
 ![Adatfolyam-figyelés](media/data-flow/mon003.png "Adatfolyam-figyelő 3")
 
- A folyamat-hibakeresési műveletek esetében körülbelül egy percen belül üzembe helyezési idő szükséges a teljes teljesítmény-számításokban a meleg fürthöz. Az alapértelmezett Azure Integration Runtime inicializálásakor a Felpörgetési idő körülbelül 5 percet is igénybe vehet.
+ A folyamat-hibakeresési műveletek esetében körülbelül egy percen belül üzembe helyezési idő szükséges a teljes teljesítmény-számításokban a meleg fürthöz. Az alapértelmezett Azure Integration Runtime inicializálásakor a Felpörgetési idő körülbelül 4 percet vesz igénybe.
 
 ## <a name="increasing-compute-size-in-azure-integration-runtime"></a>Azure Integration Runtime számítási méretének növelése
 
@@ -55,7 +55,7 @@ Alapértelmezés szerint a hibakeresés bekapcsolása az alapértelmezett Azure 
 
 ### <a name="decrease-cluster-compute-start-up-time-with-ttl"></a>A fürt számítási indítási idejének csökkentése ÉLETTARTAMmal
 
-Az adatáramlás tulajdonságainál az Azure IR egy tulajdonsága, amely lehetővé teszi, hogy a gyári számítási erőforrások készletét elbírja a gyár számára. Ezzel a készlettel szekvenciálisan elküldheti az adatfolyam-tevékenységeket a végrehajtáshoz. A készlet létrehozása után minden további teendő 1-2 percet vesz igénybe, hogy az igény szerinti Spark-fürt végrehajtsa a feladatot. Az erőforráskészlet kezdeti beállítása körülbelül 6 percet vesz igénybe. Itt adhatja meg, hogy mennyi ideig kívánja fenntartani az erőforráskészletet az élettartam (TTL) beállításban.
+Az adatáramlás tulajdonságainál az Azure IR egy tulajdonsága, amely lehetővé teszi, hogy a gyári számítási erőforrások készletét elbírja a gyár számára. Ezzel a készlettel szekvenciálisan elküldheti az adatfolyam-tevékenységeket a végrehajtáshoz. A készlet létrehozása után minden további teendő 1-2 percet vesz igénybe, hogy az igény szerinti Spark-fürt végrehajtsa a feladatot. Az erőforráskészlet kezdeti beállítása körülbelül 4 percet vesz igénybe. Itt adhatja meg, hogy mennyi ideig kívánja fenntartani az erőforráskészletet az élettartam (TTL) beállításban.
 
 ## <a name="optimizing-for-azure-sql-database-and-azure-sql-data-warehouse-synapse"></a>Optimalizálás Azure SQL Database és Azure SQL Data Warehouse szinapszis számára
 
@@ -145,7 +145,7 @@ A helyettesítő karakterek használatával a folyamat csak egy adatfolyam-tevé
 
 Az egyes párhuzamos üzemmódokhoz tartozó folyamat több fürtöt fog elkészíteni a minden végrehajtott adatfolyam-tevékenységhez. Ez nagy számú párhuzamos végrehajtást eredményezhet az Azure-szolgáltatás szabályozásához. Azonban a folyamaton belüli végrehajtási adatfolyamatok használata az egyes szekvenciális készletekhez a folyamatban a szabályozás és az erőforrás-kimerülés elkerülését eredményezi. Ez Data Factory kényszeríti az egyes fájlok egymást követő adatfolyamként történő végrehajtását.
 
-Azt javasoljuk, hogy ha mindegyiket egy adatfolyamattal együtt használja egymás után, akkor a Azure Integration Runtime élettartam beállítását kell használnia. Ennek az az oka, hogy minden fájl a teljes 5 perces fürt indítási idejét veszi fel az iteráción belül.
+Azt javasoljuk, hogy ha mindegyiket egy adatfolyamattal együtt használja egymás után, akkor a Azure Integration Runtime élettartam beállítását kell használnia. Ennek az az oka, hogy minden fájl a teljes 4 perces fürt indítási idejét veszi fel az iteráción belül.
 
 ### <a name="optimizing-for-cosmosdb"></a>Optimalizálás a CosmosDB
 
@@ -167,7 +167,7 @@ A sok illesztési művelettel rendelkező adatforgalomhoz ajánlott konfiguráci
 
 Egy másik illesztési optimalizálás az összekapcsolások összekapcsolása oly módon, hogy elkerülje a Spark tendenciáját a több illesztés megvalósításában. Ha például belefoglalja az illesztési feltételekben szereplő literál értékeket, a Spark azt láthatja, hogy először egy teljes Descartes-szorzatot kell végrehajtania, majd ki kell szűrnie az illesztett értékeket. Ha azonban gondoskodni szeretne arról, hogy az összekapcsolási feltétel mindkét oldalán legyen oszlopos érték, elkerülheti a Spark által okozott Descartes-szorzatot, és javíthatja az illesztések és az adatfolyamatok teljesítményét.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg a teljesítménnyel kapcsolatos egyéb adatfolyam-cikkeket:
 

@@ -8,11 +8,12 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 07/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 74ac991eb40864aeb4ac42d4774d9ab61fb14c36
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e3d3521cfb3d3b0c6659013922ab11fe765af882
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807672"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86111252"
 ---
 # <a name="overview-of-azure-arc-for-servers-agent"></a>Az Azure arc for Servers Agent áttekintése
 
@@ -59,7 +60,7 @@ A Windowshoz készült csatlakoztatott számítógép-ügynök telepítése utá
 
 * A telepítés során a következő telepítési mappák jönnek létre.
 
-    |Mappa |Description |
+    |Mappa |Leírás |
     |-------|------------|
     |C:\Program Files\AzureConnectedMachineAgent |Az ügynök által támogatott fájlokat tartalmazó alapértelmezett telepítési útvonal.|
     |%ProgramData%\AzureConnectedMachineAgent |Az ügynök konfigurációs fájljait tartalmazza.|
@@ -71,21 +72,21 @@ A Windowshoz készült csatlakoztatott számítógép-ügynök telepítése utá
 
 * Az ügynök telepítése során a következő Windows-szolgáltatások jönnek létre a célszámítógépen.
 
-    |Szolgáltatásnév |Megjelenített név |Folyamatnév |Description |
+    |Szolgáltatásnév |Megjelenített név |Folyamatnév |Leírás |
     |-------------|-------------|-------------|------------|
     |himds |Azure Hybrid Instance Metadata Service |himds.exe |Ez a szolgáltatás implementálja az Azure-példány metaadatainak szolgáltatását (IMDS) az Azure-hoz és a csatlakoztatott gép Azure-identitásához való csatlakozás kezeléséhez.|
     |DscService |Vendég konfigurációs szolgáltatás |dsc_service.exe |Ez az Azure-ban a kívánt State Configuration (DSC v2) kód, amely a vendég házirend megvalósítására szolgál.|
 
 * Az ügynök telepítése során az alábbi környezeti változók jönnek létre.
 
-    |Name |Alapértelmezett érték |Description |
+    |Name |Alapértelmezett érték |Leírás |
     |-----|--------------|------------|
     |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
     |IMDS_ENDPOINT |http://localhost:40342 ||
 
 * Több naplófájl is elérhető a hibaelhárításhoz. Ezeket a következő táblázat ismerteti.
 
-    |Napló |Description |
+    |Napló |Leírás |
     |----|------------|
     |%ProgramData%\AzureConnectedMachineAgent\Log\himds.log |Az ügynökök (HIMDS) szolgáltatás és az Azure interakciójának adatait rögzíti.|
     |%ProgramData%\AzureConnectedMachineAgent\Log\azcmagent.log |A azcmagent eszköz parancsainak kimenetét tartalmazza a részletes (-v) argumentum használatakor.|
@@ -110,7 +111,7 @@ A Linux rendszerhez készült csatlakoztatott gépi ügynök telepítése után 
 
 * A telepítés során a következő telepítési mappák jönnek létre.
 
-    |Mappa |Description |
+    |Mappa |Leírás |
     |-------|------------|
     |/var/opt/azcmagent/ |Az ügynök által támogatott fájlokat tartalmazó alapértelmezett telepítési útvonal.|
     |/opt/azcmagent/ |
@@ -122,14 +123,14 @@ A Linux rendszerhez készült csatlakoztatott gépi ügynök telepítése után 
 
 * Az ügynök telepítése során a következő démonok jönnek létre a célszámítógépen.
 
-    |Szolgáltatásnév |Megjelenített név |Folyamatnév |Description |
+    |Szolgáltatásnév |Megjelenített név |Folyamatnév |Leírás |
     |-------------|-------------|-------------|------------|
     |himdsd. Service |Azure Hybrid Instance Metadata Service |/opt/azcmagent/bin/himds |Ez a szolgáltatás implementálja az Azure-példány metaadatainak szolgáltatását (IMDS) az Azure-hoz és a csatlakoztatott gép Azure-identitásához való csatlakozás kezeléséhez.|
     |DSCD. Service |Vendég konfigurációs szolgáltatás |/opt/DSC/dsc_linux_service |Ez az Azure-ban a kívánt State Configuration (DSC v2) kód, amely a vendég házirend megvalósítására szolgál.|
 
 * Több naplófájl is elérhető a hibaelhárításhoz. Ezeket a következő táblázat ismerteti.
 
-    |Napló |Description |
+    |Napló |Leírás |
     |----|------------|
     |/var/opt/azcmagent/log/himds.log |Az ügynökök (HIMDS) szolgáltatás és az Azure interakciójának adatait rögzíti.|
     |/var/opt/azcmagent/log/azcmagent.log |A azcmagent eszköz parancsainak kimenetét tartalmazza a részletes (-v) argumentum használatakor.|
@@ -140,7 +141,7 @@ A Linux rendszerhez készült csatlakoztatott gépi ügynök telepítése után 
 
 * Az ügynök telepítése során az alábbi környezeti változók jönnek létre. Ezek a változók a ben vannak beállítva `/lib/systemd/system.conf.d/azcmagent.conf` .
 
-    |Name |Alapértelmezett érték |Description |
+    |Name |Alapértelmezett érték |Leírás |
     |-----|--------------|------------|
     |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
     |IMDS_ENDPOINT |http://localhost:40342 ||
@@ -184,7 +185,7 @@ Az Azure-ba irányuló adatátvitel biztonságának biztosítása érdekében ha
 |Platform/nyelv | Támogatás | További információ |
 | --- | --- | --- |
 |Linux | A Linux-disztribúciók általában az [OpenSSL](https://www.openssl.org) -t használják a TLS 1,2 támogatásához. | Ellenőrizze az OpenSSL- [changelog](https://www.openssl.org/news/changelog.html) , hogy az OpenSSL verziója támogatott-e.|
-| Windows Server 2012 R2 és újabb | Támogatott, és alapértelmezés szerint engedélyezve van. | Annak megerősítéséhez, hogy továbbra is az [alapértelmezett beállításokat](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)használja.|
+| Windows Server 2012 R2 és újabb | Támogatott, és alapértelmezés szerint engedélyezve van. | Annak megerősítéséhez, hogy továbbra is az [alapértelmezett beállításokat](/windows-server/security/tls/tls-registry-settings)használja.|
 
 ### <a name="networking-configuration"></a>Hálózati konfiguráció
 
@@ -199,7 +200,7 @@ Szolgáltatás címkéi:
 
 URLs
 
-| Ügynök erőforrása | Description |
+| Ügynök erőforrása | Leírás |
 |---------|---------|
 |management.azure.com|Azure Resource Manager|
 |login.windows.net|Azure Active Directory|
@@ -208,7 +209,7 @@ URLs
 |* – agentservice-prod-1.azure-automation.net|Vendégkonfiguráció|
 |*. his.arc.azure.com|Hibrid identitási szolgáltatás|
 
-Az egyes szolgáltatási címkék/régiók IP-címeinek listáját lásd: JSON-fájl – [Azure IP-címtartományok és szolgáltatás-címkék – nyilvános felhő](https://www.microsoft.com/download/details.aspx?id=56519). A Microsoft az egyes Azure-szolgáltatásokat és az általa használt IP-tartományokat tartalmazó heti frissítéseket tesz közzé. További információkért tekintse át a [szolgáltatás címkéit](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
+Az egyes szolgáltatási címkék/régiók IP-címeinek listáját lásd: JSON-fájl – [Azure IP-címtartományok és szolgáltatás-címkék – nyilvános felhő](https://www.microsoft.com/download/details.aspx?id=56519). A Microsoft az egyes Azure-szolgáltatásokat és az általa használt IP-tartományokat tartalmazó heti frissítéseket tesz közzé. További információkért tekintse át a [szolgáltatás címkéit](../../virtual-network/security-overview.md#service-tags).
 
 Az előző táblázatban szereplő URL-címeket a szolgáltatási címke IP-címtartomány információi mellett is meg kell adni, mivel a szolgáltatások többsége jelenleg nem rendelkezik a szolgáltatási címke regisztrálásával. Ennek megfelelően az IP-címek változhatnak. Ha a tűzfal-konfigurációhoz IP-címtartományok szükségesek, akkor a **AzureCloud** szolgáltatás címkét kell használni az összes Azure-szolgáltatás elérésének engedélyezéséhez. Ne tiltsa le ezen URL-címek biztonsági figyelését vagy ellenőrzését, és engedélyezze azokat más internetes forgalomként.
 
@@ -244,12 +245,12 @@ Az erőforrás-szolgáltatókat a Azure Portal is regisztrálhatja a [Azure Port
 
 A hibrid környezetben az Azure-ban közvetlenül csatlakoztatható gépek a követelményektől függően különböző módszerekkel végezhetők el. Az alábbi táblázat az egyes módszereket ismerteti, amelyek alapján meghatározhatja, hogy melyik a legmegfelelőbb a szervezet számára.
 
-| Metódus | Description |
+| Metódus | Leírás |
 |--------|-------------|
 | Interaktív módon | Manuálisan telepítse az ügynököt egy vagy több gépen a [gépek Azure Portal-ból való összekapcsolása](onboard-portal.md)című témakör lépéseit követve.<br> A Azure Portal létrehozhat egy parancsfájlt, és végrehajthatja azt a gépen, hogy automatizálja az ügynök telepítésének és konfigurálásának lépéseit.|
 | Skálán | Telepítse és konfigurálja az ügynököt több gépen a [számítógépek összekapcsolását követően egy egyszerű szolgáltatásnév használatával](onboard-service-principal.md).<br> Ez a metódus létrehoz egy egyszerű szolgáltatást, amely nem interaktív módon csatlakozik a gépekhez.|
 | Skálán | Telepítse és konfigurálja az ügynököt több gépre, a módszert követve a [Windows POWERSHELL DSC használatával](onboard-dsc.md).<br> Ez a metódus egyszerű szolgáltatásnév használatával csatlakozik a gépekhez a PowerShell DSC-vel nem interaktív módon. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha meg szeretné kezdeni a kiszolgálók Azure-ív kiértékelését (előzetes verzió), kövesse a [hibrid gépek az Azure-hoz való összekapcsolását ismertető cikket a Azure Portal](onboard-portal.md).

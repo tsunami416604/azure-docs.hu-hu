@@ -4,14 +4,14 @@ description: Megtudhatja, hogyan adhat hozzá adatkészleteket egy meglévő ada
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/10/2019
-ms.openlocfilehash: 00c96950565b077e65f84e2d8b4977092df5e317
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c4aee1eb268c124586388eacf8c908c20d799bc9
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73490541"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110895"
 ---
 # <a name="how-to-add-datasets-to-an-existing-share-in-azure-data-share"></a>Adatkészletek hozzáadása meglévő megosztáshoz az Azure-beli adatmegosztásban
 
@@ -31,5 +31,5 @@ A jobb oldali panelen válassza ki a hozzáadni kívánt adatkészlet típusát,
 
 Ha az **adatkészletek hozzáadása**gombra kattint, a rendszer hozzáadja az adatkészleteket a megosztáshoz. Megjegyzés: a felhasználóknak el kell indítaniuk a pillanatképet ahhoz, hogy megjelenjenek az új adatkészletek. Ha vannak beállított pillanatkép-beállítások, a felhasználók a következő ütemezett pillanatkép befejeződése után láthatják az új adatkészleteket. A pillanatkép-beállítások konfigurálása nélkül a felhasználónak manuálisan kell elindítania az adatok teljes vagy növekményes másolatát a frissítések fogadásához. A pillanatképekkel kapcsolatos további információkért lásd: [Pillanatképek](terminology.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a [címzettek meglévő adatmegosztáshoz való hozzáadásáról](how-to-add-recipients.md).

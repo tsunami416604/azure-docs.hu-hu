@@ -4,14 +4,14 @@ description: Ez a cikk bemutatja, hogyan engedélyezheti az automatikus növeked
 author: ambhatna
 ms.author: ambhatna
 ms.service: mysql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 44ce852aaf2ed5839650132c6eae95728c27dc5b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd7b9a809421aa33b83902960da2f02d4deabf9a
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80062627"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86113243"
 ---
 # <a name="auto-grow-azure-database-for-mysql-storage-using-the-azure-cli"></a>Azure Database for MySQL tárterület automatikus növelése az Azure CLI használatával
 Ez a cikk azt ismerteti, hogyan konfigurálhat egy Azure Database for MySQL-kiszolgáló tárterületét úgy, hogy az a munkaterhelés befolyásolása nélkül is növekszik.
@@ -41,6 +41,6 @@ A kiszolgáló automatikus növekedésének engedélyezése a tárolóban új ki
 az mysql server create --resource-group myresourcegroup --name mydemoserver  --auto-grow Enabled --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 --version 5.7
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Útmutató [riasztások létrehozásához mérőszámokon](howto-alert-on-metric.md).

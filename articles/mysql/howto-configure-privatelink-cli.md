@@ -4,13 +4,14 @@ description: Ismerje meg, hogyan konfigurálhatja a Azure Database for MySQLhez 
 author: kummanish
 ms.author: manishku
 ms.service: mysql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: d99cb634278e141bc156357feb686198f713b198
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 78634ee7236c8bc0d256bac7eea521e699c0c39d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84673632"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86113271"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-cli"></a>Azure Database for MySQL magánhálózati hivatkozás létrehozása és kezelése a parancssori felület használatával
 
@@ -175,7 +176,7 @@ Kapcsolódjon a virtuális gép *myVm* az internetről a következőképpen:
     | Jelszó | Adja meg a MySQL-kiszolgáló létrehozásakor megadott jelszót. |
     ||
 
-5. Kattintson a Csatlakozás gombra.
+5. Válassza a Csatlakozás lehetőséget.
 
 6. A bal oldali menüben lévő adatbázisok tallózása.
 
@@ -190,7 +191,7 @@ Ha már nincs rá szükség, az az Group delete paranccsal eltávolíthatja az e
 az group delete --name myResourceGroup --yes 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ az [Azure Private Endpoint szolgáltatásról](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)
 
 <!-- Link references, to text, Within this same GitHub repo. -->

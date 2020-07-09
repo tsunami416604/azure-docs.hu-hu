@@ -1,20 +1,14 @@
 ---
 title: 'Gyors útmutató: egyéni események küldése webes végpontra – Event Grid, Azure Portal'
 description: 'Gyors útmutató: Azure Event Grid és Azure Portal használata egyéni témakör közzétételéhez és az adott témakör eseményeire való előfizetéshez. Az eseményeket egy webalkalmazás kezeli.'
-services: event-grid
-keywords: ''
-author: spelluru
-ms.author: spelluru
-ms.date: 06/16/2020
+ms.date: 07/07/2020
 ms.topic: quickstart
-ms.service: event-grid
-ms.custom: seodec18
-ms.openlocfilehash: 70f2277e1094a269b18911cc6bf037c4eb5e4731
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.openlocfilehash: 21c3d043925d328c671de19444b0fed1c6950bf1
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84907732"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86115230"
 ---
 # <a name="quickstart-route-custom-events-to-web-endpoint-with-the-azure-portal-and-event-grid"></a>Gyors útmutató: egyéni események továbbítása webes végponthoz a Azure Portal és Event Grid
 
@@ -29,7 +23,7 @@ Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Ebben a c
 
 Az Event Grid-témakörök egy felhasználó által meghatározott végpontot biztosítanak, amelyben közzéteheti az eseményeket. 
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Jelentkezzen be [Azure Portalba](https://portal.azure.com/).
 2. A témakörben található keresősáv mezőbe írja be **Event Grid témaköröket**, majd válassza a **Event Grid témakörök** elemet a legördülő listából. 
 
     :::image type="content" source="./media/custom-event-quickstart-portal/select-event-grid-topics.png" alt-text="Event Grid témakörök keresése és kiválasztása":::
@@ -197,7 +191,7 @@ Ha tovább kívánja használni az eseményt, akkor ne törölje a cikkben létr
 
     A rendszerképben látható másik erőforráscsoportot a Cloud Shell ablak hozta létre és használta. Ha később nem tervezi használni a Cloud Shell ablakot, törölje azt. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte, hogyan hozhat létre egyéni témaköröket és esemény-előfizetéseket, bővebben is tájékozódhat arról, hogy miben nyújthat segítséget az Event Grid:
 

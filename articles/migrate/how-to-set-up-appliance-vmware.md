@@ -3,11 +3,12 @@ title: Azure Migrate készülék beállítása a VMware-hez
 description: Ismerje meg, hogyan állíthat be egy Azure Migrate készüléket a VMware virtuális gépek felméréséhez és áttelepítéséhez.
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: b32c6a9b703e4d341fe353d6b472ea7a18adadf3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 272481640db739a458a19a2c9383ff45b54974b5
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81538256"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86112816"
 ---
 # <a name="set-up-an-appliance-for-vmware-vms"></a>Készülék beállítása VMware virtuális gépekhez
 
@@ -46,7 +47,7 @@ A telepítése előtt győződjön meg arról, hogy a petesejtek fájlja biztons
 2. Futtassa a következő parancsot a petesejtek kivonatának létrehozásához:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Gyakorlati példa: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3. A készülék legújabb verziójához a generált kivonatnak meg kell egyeznie ezekkel a [beállításokkal](https://docs.microsoft.com/azure/migrate/tutorial-assess-vmware#verify-security).
+3. A készülék legújabb verziójához a generált kivonatnak meg kell egyeznie ezekkel a [beállításokkal](./tutorial-assess-vmware.md#verify-security).
 
 
 
@@ -114,7 +115,7 @@ A készüléknek csatlakoznia kell a vCenter Serverhoz a virtuális gépek konfi
 3. Kattintson a **kapcsolat ellenőrzése** elemre, és győződjön meg arról, hogy a készülék csatlakozhat vCenter Serverhoz.
 
 ### <a name="specify-vm-credentials"></a>Virtuális gép hitelesítő adatainak megadása
-Az alkalmazások, szerepkörök és szolgáltatások felderítéséhez, valamint a virtuális gépek függőségeinek megjelenítéséhez megadhat egy virtuális gép hitelesítő adatait, amely hozzáfér a VMware virtuális gépekhez. Hozzáadhat egy hitelesítő adatot a Windows rendszerű virtuális gépekhez, és egy hitelesítő adatot a linuxos virtuális gépekhez. [További](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware) információ a szükséges hozzáférési jogosultságokról.
+Az alkalmazások, szerepkörök és szolgáltatások felderítéséhez, valamint a virtuális gépek függőségeinek megjelenítéséhez megadhat egy virtuális gép hitelesítő adatait, amely hozzáfér a VMware virtuális gépekhez. Hozzáadhat egy hitelesítő adatot a Windows rendszerű virtuális gépekhez, és egy hitelesítő adatot a linuxos virtuális gépekhez. [További](./migrate-support-matrix-vmware.md) információ a szükséges hozzáférési jogosultságokról.
 
 > [!NOTE]
 > Ez a bemenet nem kötelező, és az alkalmazás-felderítés és az ügynök nélküli függőségi vizualizáció engedélyezéséhez szükséges.
@@ -129,6 +130,6 @@ Miután megadta a vCenter Server és a virtuális gép hitelesítő adatait (nem
 
 Körülbelül 15 percet vesz igénybe, hogy a felderített virtuális gépek metaadatai megjelenjenek a portálon. A telepített alkalmazások, szerepkörök és szolgáltatások felderítése hosszabb időt vesz igénybe, az időtartam a felderített virtuális gépek számától függ. 500 virtuális gépek esetében körülbelül 1 órát vesz igénybe, hogy az alkalmazás leltára megjelenjen a Azure Migrate-portálon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse át a [VMware Assessment](tutorial-assess-vmware.md) és az [ügynök nélküli áttelepítés](tutorial-migrate-vmware.md)oktatóanyagait.

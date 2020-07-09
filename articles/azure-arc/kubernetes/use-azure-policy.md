@@ -8,11 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: A Azure Policy használata a fürt konfigurációjának méretekben történő alkalmazásához
 keywords: Kubernetes, arc, Azure, K8s, tárolók
-ms.openlocfilehash: 4c013fe562d89bff4d1ce9c9f3e832e1b51c70f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 26b291e2a957047361d4f52eeff58cbe8aa8c633
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341368"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86111269"
 ---
 # <a name="use-azure-policy-to-apply-cluster-configurations-at-scale-preview"></a>A Azure Policy használata a fürtök konfigurációjának alkalmazásához (előzetes verzió)
 
@@ -34,7 +35,7 @@ Ha több git-adattárakat használ az igazság forrásaként az egyes fürtökh�
 8. Állítsa be a paraméter értékét, amelyet a rendszer a létrehozásakor használni fog `sourceControlConfiguration` .
 9. Válassza a **Tovább** lehetőséget.
 10. **Szervizelési feladat létrehozásának**engedélyezése.
-11. Gondoskodjon róla, hogy a **felügyelt identitás létrehozása jelölőnégyzet be** legyen jelölve, és hogy az identitás **közreműködői** engedélyekkel rendelkezzen. A szükséges engedélyekkel kapcsolatos további információkért tekintse meg [ezt](https://docs.microsoft.com/azure/governance/policy/assign-policy-portal) a dokumentumot és [a jelen dokumentum megjegyzését](https://docs.microsoft.com/azure/governance/policy/how-to/remediate-resources) .
+11. Gondoskodjon róla, hogy a **felügyelt identitás létrehozása jelölőnégyzet be** legyen jelölve, és hogy az identitás **közreműködői** engedélyekkel rendelkezzen. A szükséges engedélyekkel kapcsolatos további információkért tekintse meg [ezt](../../governance/policy/assign-policy-portal.md) a dokumentumot és [a jelen dokumentum megjegyzését](../../governance/policy/how-to/remediate-resources.md) .
 12. Válassza az **Áttekintés + létrehozás** lehetőséget.
 
 A szabályzat-hozzárendelés létrehozása után minden olyan új `connectedCluster` erőforráshoz (vagy `managedCluster` a telepített GitOps-ügynökkel rendelkező erőforráshoz), amely a hozzárendelés hatókörén belül található, a `sourceControlConfiguration` rendszer alkalmazza. Meglévő fürtök esetében manuálisan kell futtatnia egy szervizelési feladatot. A házirend-hozzárendelés érvénybe léptetése általában 10-20 percet vesz igénybe.
@@ -48,6 +49,6 @@ A szabályzat-hozzárendelés létrehozása után minden olyan új `connectedClu
 5. A **kubectl** használata a fürt lekérdezéséhez: a által létrehozott névtereket és összetevőket kell látnia `sourceControlConfiguration` .
 6. 5 percen belül látnia kell a fürtben a beállított git-tárház jegyzékfájljában leírt összetevőket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Azure Monitor beállítása az arc-kompatibilis Kubernetes-fürtökkel rendelkező tárolók számára](./deploy-azure-monitor-for-containers.md)
+* [Azure Monitor beállítása az arc-kompatibilis Kubernetes-fürtökkel rendelkező tárolók számára](../../azure-monitor/insights/container-insights-enable-arc-enabled-clusters.md)

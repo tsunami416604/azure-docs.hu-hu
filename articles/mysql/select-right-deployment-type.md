@@ -6,11 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 50bcd42189b1bcc945d726277975892f07f1baa1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 827c1954456ee7943c48525919ed411836f610aa
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78255534"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114023"
 ---
 # <a name="choose-the-right-mysql-server-option-in-azure"></a>Válassza ki a megfelelő MySQL-kiszolgáló lehetőséget az Azure-ban
 
@@ -30,7 +31,7 @@ A döntés meghozatalakor vegye figyelembe a következő két lehetőséget:
 
 A fenti lehetőségek közötti fő különbségek a következő táblázatban láthatók:
 
-|            | Azure Database for MySQL | MySQL Azure-beli virtuális gépeken    |
+| Attribútum          | Azure Database for MySQL | MySQL Azure-beli virtuális gépeken    |
 |:-------------------|:-----------------------------|:--------------------|
 | Szolgáltatói szerződés (SLA)                | A 99,99%-os rendelkezésre állást biztosító SLA-t kínál| Akár 99,95%-os rendelkezésre állást biztosít két vagy több példányban ugyanabban a rendelkezésre állási csoporton belül.<br/><br/>99,9%-os rendelkezésre állás egyetlen példányos virtuális géppel Premium Storage használatával.<br/><br/>99,99% a több rendelkezésre állási csoport több példányával rendelkező Availability Zones használatával.<br/><br/>Lásd a [Virtual Machines SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)-t. |
 | Operációs rendszer javítása        | Automatikus  | Ügyfelek által felügyelt |
@@ -48,7 +49,7 @@ A fenti lehetőségek közötti fő különbségek a következő táblázatban l
 
 A MySQL-adatbázisok üzemeltetéséhez több tényező is befolyásolhatja a IaaS-t vagy a kiválasztását.
 
-### <a name="cost"></a>Költségek
+### <a name="cost"></a>Cost
 
 A korlátozott finanszírozás gyakran az elsődleges szempont, amely meghatározza az adatbázisok üzemeltetésének legjobb megoldását. Ez akkor is igaz, ha kevés pénzzel vagy csapattal rendelkezik egy olyan vállalatnál, amely szűk költségvetési megkötések keretében működik. Ez a szakasz a számlázási és licencelési alapismereteket ismerteti az Azure-ban, mivel azok az Azure-beli virtuális gépeken a Azure Database for MySQL és a MySQL
 
@@ -98,7 +99,7 @@ A következő lista az egyes lehetőségek felügyeleti szempontjait ismerteti:
 
   Mivel nincs szükség a bemutató, az alkalmazás és az adatrétegek módosítására, időt és költségvetést takaríthat meg a meglévő megoldás újratervezése során. Ehelyett a megoldások Azure-ba való áttelepítésére és az Azure-platform által igényelt teljesítmény-optimalizálásokra koncentrálhat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Lásd: [Azure Database for MySQL díjszabása](https://azure.microsoft.com/pricing/details/MySQL/).
 * Első lépésként [hozza létre első kiszolgálóját](https://docs.microsoft.com/azure/MySQL/quickstart-create-MySQL-server-database-using-azure-portal).

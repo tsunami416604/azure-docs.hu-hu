@@ -4,14 +4,14 @@ description: Ez a cikk azt ismerteti, hogyan engedélyezheti az automatikus növ
 author: ambhatna
 ms.author: ambhatna
 ms.service: mysql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: ddbcb0143a4f84d9e0f3dc2fedf780fca6637692
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2c028bff80856f7edcb34688ffa5c3320a66ccc9
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80062520"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86112612"
 ---
 # <a name="auto-grow-storage-in-azure-database-for-mysql-using-the-azure-portal"></a>A tároló automatikus növekedése Azure Database for MySQL a Azure Portal használatával
 Ez a cikk azt ismerteti, hogyan konfigurálhat egy Azure Database for MySQL-kiszolgáló tárterületét úgy, hogy az a munkaterhelés befolyásolása nélkül is növekszik.
@@ -40,6 +40,6 @@ A MySQL Server Storage automatikus növekedésének beállításához kövesse a
 
     ![Azure Database for MySQL – az automatikus növekedés sikere](./media/howto-auto-grow-storage-portal/5-auto-grow-success.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Útmutató [riasztások létrehozásához mérőszámokon](howto-alert-on-metric.md).

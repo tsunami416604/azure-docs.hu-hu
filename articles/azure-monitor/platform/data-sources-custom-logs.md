@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/26/2019
-ms.openlocfilehash: 1e889aaef7cd01cd743e8063a8a1dd5138ba9d0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 155c8fc3e7f1e37fe455c8f21d36e090c4fffce3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77670593"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86112000"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Egyéni naplók az Azure Monitorban
 
@@ -73,7 +74,7 @@ Előfordulhat például, hogy egy alkalmazás minden nap létrehoz egy naplófá
 
 A következő táblázat példákat tartalmaz a különböző naplófájlok megadására szolgáló érvényes mintákra.
 
-| Description | Elérési út |
+| Leírás | Elérési út |
 |:--- |:--- |
 | A *c:\logs mappa* összes fájlja. txt kiterjesztéssel a Windows-ügynökön |C:\logs mappa \\ \* . txt |
 | A *c:\logs mappa* összes fájlja a log és a. txt kiterjesztéssel kezdődő névvel a Windows-ügynökön |C:\Logs\log \* . txt |
@@ -127,11 +128,13 @@ Az egyéni naplók egy olyan típussal rendelkeznek, amely tartalmazza a megadot
 ## <a name="sample-walkthrough-of-adding-a-custom-log"></a>Példa egyéni napló hozzáadására
 Az alábbi szakasz végigvezeti egy egyéni napló létrehozásának példáján.  A begyűjtött minta naplója egyetlen bejegyzést tartalmaz minden egyes sorban egy dátummal és időponttal kezdődően, majd vesszővel tagolt mezőket a kód, az állapot és az üzenet számára.  Alább több minta bejegyzés látható.
 
-    2019-08-27 01:34:36 207,Success,Client 05a26a97-272a-4bc9-8f64-269d154b0e39 connected
-    2019-08-27 01:33:33 208,Warning,Client ec53d95c-1c88-41ae-8174-92104212de5d disconnected
-    2019-08-27 01:35:44 209,Success,Transaction 10d65890-b003-48f8-9cfc-9c74b51189c8 succeeded
-    2019-08-27 01:38:22 302,Error,Application could not connect to database
-    2019-08-27 01:31:34 303,Error,Application lost connection to database
+```output
+2019-08-27 01:34:36 207,Success,Client 05a26a97-272a-4bc9-8f64-269d154b0e39 connected
+2019-08-27 01:33:33 208,Warning,Client ec53d95c-1c88-41ae-8174-92104212de5d disconnected
+2019-08-27 01:35:44 209,Success,Transaction 10d65890-b003-48f8-9cfc-9c74b51189c8 succeeded
+2019-08-27 01:38:22 302,Error,Application could not connect to database
+2019-08-27 01:31:34 303,Error,Application lost connection to database
+```
 
 ### <a name="upload-and-parse-a-sample-log"></a>Minta napló feltöltése és elemzése
 A naplófájlok egyikét biztosítjuk, és láthatjuk, hogy milyen események lesznek összegyűjtve.  Ebben az esetben az új sor megfelelő elválasztó karakter.  Ha a napló egyetlen bejegyzése több sorra is terjedhet, akkor az időbélyeg-elválasztót is használni kell.
@@ -166,6 +169,6 @@ A következő alternatív stratégiákat kell figyelembe venni abban az esetben,
 - Egyéni parancsfájl vagy más módszer használatával adatokat írhat a Windows- [eseményekre](data-sources-windows-events.md) vagy a [syslog](data-sources-syslog.md) -re, amelyeket a Azure monitor gyűjt. 
 - Az adatküldés közvetlenül a Azure Monitor a http-adatgyűjtő [API](data-collector-api.md)használatával. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Az egyes importált naplóbejegyzések több tulajdonságba való elemzéséhez tekintse meg a [szöveges adat Azure monitorban](../log-query/parse-text.md) történő elemzését ismertető témakört.
 * További információ az adatforrásokból és megoldásokból gyűjtött adatok elemzéséhez szükséges [naplók lekérdezéséről](../log-query/log-query-overview.md) .

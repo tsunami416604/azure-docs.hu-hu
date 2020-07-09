@@ -1,13 +1,14 @@
 ---
 title: Az Azure Lighthouse nagyvállalati forgatókönyvekben
 description: Az Azure Lighthouse képességeinek használatával egyszerűsítheti a több-bérlős felügyeletet egy olyan vállalaton belül, amely több Azure AD-bérlőt használ.
-ms.date: 09/25/2019
+ms.date: 07/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 91089a6fb1a965191489e87027ef508c7ebe2aa2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9f9a7aa81772a1edda5fd1915918b547a3066455
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75749207"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114142"
 ---
 # <a name="azure-lighthouse-in-enterprise-scenarios"></a>Az Azure Lighthouse nagyvállalati forgatókönyvekben
 
@@ -17,7 +18,7 @@ Az [Azure Lighthouse](../overview.md) leggyakoribb forgatókönyve egy olyan szo
 
 A legtöbb szervezet számára egyszerűbb a felügyelet egyetlen Azure AD-Bérlővel. Az egyik bérlőn belüli összes erőforrás lehetővé teszi a felügyeleti feladatok központosított kezelését a kijelölt felhasználók, felhasználói csoportok vagy az adott bérlőn belüli egyszerű szolgáltatásnév alapján. Ha lehetséges, javasoljuk, hogy egy bérlőt használjon a szervezete számára.
 
-Ugyanakkor előfordulhatnak olyan helyzetek, amikor egy szervezetnek több Azure AD-bérlőt kell fenntartania. Bizonyos esetekben ez ideiglenes helyzet lehet, ahogy a beszerzések megtörténtek, és a hosszú távú bérlői konszolidációs stratégia eltarthat egy ideig. Előfordulhat, hogy egy szervezetnek folyamatosan több bérlőt kell fenntartania (a teljesen független leányvállalatok, földrajzi vagy jogi követelmények miatt stb.). Ha több-bérlős architektúrára van szükség, az Azure-beli delegált erőforrás-kezelés használatával központosíthatja és egyszerűsítheti a felügyeleti műveleteket. A több bérlőből származó előfizetések beállíthatók az Azure-beli [delegált erőforrás-kezeléshez](azure-delegated-resource-management.md), amely lehetővé teszi a kijelölt felhasználók számára, hogy központosított és méretezhető módon hajtsák végre a [bérlők közötti felügyeleti funkciókat](cross-tenant-management-experience.md) .
+Ugyanakkor előfordulhatnak olyan helyzetek, amikor egy szervezetnek több Azure AD-bérlőt kell fenntartania. Bizonyos esetekben ez ideiglenes helyzet lehet, ahogy a beszerzések megtörténtek, és a hosszú távú bérlői konszolidációs stratégia eltarthat egy ideig. Előfordulhat, hogy egy szervezetnek folyamatosan több bérlőt kell fenntartania (a teljesen független leányvállalatok, földrajzi vagy jogi követelmények miatt stb.). Ha több-bérlős architektúrára van szükség, az Azure Lighthouse használatával központosíthatja és egyszerűsítheti a felügyeleti műveleteket. A több bérlőből származó előfizetések beállíthatók az Azure-beli [delegált erőforrás-kezeléshez](azure-delegated-resource-management.md), amely lehetővé teszi a kijelölt felhasználók számára, hogy központosított és méretezhető módon hajtsák végre a [bérlők közötti felügyeleti funkciókat](cross-tenant-management-experience.md) .
 
 ## <a name="tenant-management-architecture"></a>Bérlői felügyeleti architektúra
 
@@ -31,17 +32,17 @@ A szervezet ugyanazt a házirend-definíciót, biztonsági mentési gyakorlatot 
 
 ## <a name="security-and-access-considerations"></a>Biztonsági és hozzáférési megfontolások
 
-A legtöbb nagyvállalati forgatókönyv esetében érdemes egy teljes előfizetést delegálni az Azure-beli delegált erőforrás-kezeléshez, de csak meghatározott erőforráscsoportokat delegálhat egy előfizetésen belül.
+A legtöbb nagyvállalati forgatókönyv esetében érdemes egy teljes előfizetést delegálni az Azure Lighthouse-ra, de csak meghatározott erőforráscsoportokat delegálhat egy előfizetésen belül.
 
 Mindkét esetben ügyeljen arra, hogy [kövesse a legalacsonyabb jogosultsági szint elvét, amikor meghatározza, hogy mely felhasználók férhetnek hozzá az erőforrásokhoz](recommended-security-practices.md#assign-permissions-to-groups-using-the-principle-of-least-privilege). Így biztosíthatja, hogy a felhasználók csak a szükséges feladatok elvégzéséhez szükséges engedélyekkel rendelkezzenek, és csökkentik a véletlen hibák esélyét.
 
-Az Azure Lighthouse és az Azure-beli meghatalmazott erőforrás-kezelés csak logikai kapcsolatokat biztosít a bérlők és a felügyelt bérlők között, és nem fizikailag helyezi át az adatátvitelt és az erőforrásokat. Továbbá a hozzáférés mindig csak egy irányba mutat, a bérlő kezelése a felügyelt bérlők felé.  A kezelő bérlő felhasználói és csoportjai továbbra is használhatják a többtényezős hitelesítést a felügyelt bérlői erőforrásokon végzett felügyeleti műveletek végrehajtásakor.
+Az Azure Lighthouse csak logikai kapcsolatokat biztosít a bérlők és a felügyelt bérlők között, és nem fizikailag helyezi át az adatátvitelt és az erőforrásokat. Továbbá a hozzáférés mindig csak egy irányba mutat, a bérlő kezelése a felügyelt bérlők felé.  A kezelő bérlő felhasználói és csoportjai továbbra is használhatják a többtényezős hitelesítést a felügyelt bérlői erőforrásokon végzett felügyeleti műveletek végrehajtásakor.
 
 A belső vagy külső irányítási és megfelelőségi guardrails rendelkező vállalatok az [Azure-tevékenység naplóit](../../azure-monitor/platform/platform-logs-overview.md) használhatják az átláthatósági követelmények teljesítéséhez. Ha a vállalati bérlők felügyeleti és felügyelt bérlői kapcsolatokat létesítettek, az egyes bérlők felhasználói a naplózott tevékenységek megtekintésével megtekinthetik és láthatják a másik bérlő felhasználói által végrehajtott műveleteket.
 
 ## <a name="onboarding-process-considerations"></a>Előkészítési folyamat szempontjai
 
-Az előfizetések (vagy az előfizetésen belüli erőforráscsoportok) az Azure-beli delegált erőforrás-kezelésbe helyezhetők, akár magántulajdonban, akár nyilvánosan, akár az Azure Marketplace-en közzétett, felügyelt szolgáltatásokon keresztül, akár a Azure Resource Manager-sablonok üzembe helyezésével.
+Az előfizetések (vagy egy előfizetésen belüli erőforráscsoportok) üzembe helyezhetők az Azure Lighthouse szolgáltatásban Azure Resource Manager sablonok telepítésével vagy az Azure Marketplace-en közzétett felügyelt szolgáltatásokon keresztül, akár magántulajdonban, akár nyilvánosan.
 
 Mivel a vállalati felhasználók általában közvetlenül hozzáférhetnek a vállalat bérlői számára, és nincs szükség a felügyeleti ajánlatok értékesítésére vagy előléptetésére, általában gyorsabb és egyszerűbb a Azure Resource Manager-sablonokkal való üzembe helyezés. Noha a [bevezetési útmutatóban](../how-to/onboard-customer.md)a szolgáltatókra és az ügyfelekre is hivatkozunk, a vállalatok ugyanezeket a folyamatokat használhatják.
 
@@ -55,7 +56,7 @@ Például a fent ismertetett példában az A bérlő a szolgáltató bérlője (
 
 Ebben a példában a bérlő a megfelelő engedélyekkel rendelkező felhasználók [megtekinthetik és kezelhetik a delegált erőforrásokat](../how-to/view-manage-customers.md) a Azure Portal **saját ügyfelek** lapján. Hasonlóképpen, a B bérlő és a bérlő C felhasználója a megfelelő engedélyekkel [megtekintheti és kezelheti az a bérlőhöz delegált erőforrásokat](../how-to/view-manage-service-providers.md) a Azure Portal **szolgáltató** lapján.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [bérlők közötti felügyeleti élményekről](cross-tenant-management-experience.md).
 - Megismerheti az [Azure által delegált erőforrás-kezelés](azure-delegated-resource-management.md) részleteit.

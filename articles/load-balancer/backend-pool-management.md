@@ -1,94 +1,167 @@
 ---
 title: Háttérbeli készlet kezelése
-description: Útmutató egy Load Balancer háttér-készletének konfigurálásához
+titleSuffix: Azure Load Balancer
+description: Ismerkedés a Azure Load Balancer háttér-készletének konfigurálásával és kezelésével
 services: load-balancer
-author: erichrt
+author: asudbring
 ms.service: load-balancer
 ms.topic: overview
-ms.date: 07/06/2020
-ms.author: errobin
-ms.openlocfilehash: 6d9700e134a9e3d6c53524d15c8b3503cf5773c7
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 07/07/2020
+ms.author: allensu
+ms.openlocfilehash: 51b00119a5cb7e49a04f02978613678a5144f8b9
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86050186"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86113972"
 ---
 # <a name="backend-pool-management"></a>Háttérbeli készlet kezelése
-A háttér-készlet a Load Balancer alapvető összetevője, amely meghatározza a számítási erőforrások azon csoportját, amely egy adott terheléselosztási szabály forgalmát fogja szolgálni. A háttér-készletek megfelelő konfigurálásával a rendszer a forgalom kiszolgálására jogosult gépek egy csoportját határozza meg. A háttér-készleteket kétféleképpen lehet konfigurálni: hálózati kártya (NIC), valamint egy kombinált IP-cím és Virtual Network (VNET) erőforrás-azonosító. 
+A háttér-készlet a terheléselosztó kritikus összetevője. A háttér-készlet meghatározza azt az erőforrás-csoportot, amely egy adott terheléselosztási szabály forgalmát fogja szolgálni.
 
-Virtual Machines és Virtual Machine Scale Setst érintő legtöbb esetben ajánlott a háttér-készletet a hálózati adapterrel konfigurálni, mivel ez a módszer az erőforrás és a háttér-készlet közötti legközvetlenebb kapcsolatot hozza létre. A tárolók és Kubernetes hüvelyek, amelyek nem rendelkeznek hálózati adapterrel vagy a háttérbeli erőforrások IP-címeinek előfoglalásával kapcsolatos forgatókönyvekhez, a háttér-készletet IP-cím és VNET-azonosító kombináció szerint konfigurálhatja.
+A háttér-készleteket kétféleképpen lehet konfigurálni:
+* Hálózati kártya (NIC)
+* Kombinált IP-cím és Virtual Network (VNET) erőforrás-azonosító
 
-Ha NIC-vagy IP-cím-és VNET-AZONOSÍTÓval konfigurálja a portálon keresztül, a felhasználói felület végigvezeti az egyes lépéseken, és az összes konfigurációs frissítést a háttérbe kerül. A cikk konfigurációs fejezetei a Azure PowerShell, a CLI, a REST API és az ARM-sablonokra összpontosítanak, hogy betekintést kapjanak a háttérbeli készletek struktúrája az egyes konfigurációs beállításokhoz.
+Konfigurálja a háttér-készletet hálózati adapteren keresztül virtuális gépek és virtuálisgép-méretezési csoportok használata esetén. Ez a módszer az erőforrás és a háttér-készlet közötti legközvetlenebb kapcsolatot hozza létre. 
+
+Olyan esetekben, amikor egy hálózati adapter nem érhető el, például tárolók vagy Kubernetes hüvelyek, a háttér-készletet IP-cím és VNET-azonosító kombináció szerint konfigurálja.
+
+A cikk konfigurációs fejezetei a következőkre összpontosítanak:
+
+* Azure PowerShell
+* Azure CLI
+* REST API
+* Azure Resource Manager-sablonok 
+
+Ezek a lépések betekintést nyújtanak a háttérbeli készletek strukturálása céljából az egyes konfigurációs beállításokhoz.
 
 ## <a name="configuring-backend-pool-by-nic"></a>Háttérbeli készlet konfigurálása hálózati adapter alapján
-Amikor hálózati adapteren konfigurálja a háttérrendszer-készletet, fontos szem előtt tartani, hogy a rendszer létrehozza a háttér-készletet a Load Balancer művelet részeként, és a tagokat a hálózati adapter IP-konfigurációs tulajdonságának részeként hozzáadja a háttér-készlethez. Az alábbi példák a háttér-készlet létrehozási és feltöltési műveleteire összpontosítanak a munkafolyamat és a kapcsolat kiemeléséhez.
+A rendszer létrehozza a háttér-készletet a terheléselosztó művelet részeként. A hálózati adapter IP-konfigurációs tulajdonsága a háttérbeli készlet tagjainak hozzáadására szolgál.
+
+Az alábbi példák a háttér-készlet létrehozási és feltöltési műveleteire összpontosítanak a munkafolyamat és a kapcsolat kiemeléséhez.
 
   >[!NOTE] 
   >Fontos megjegyezni, hogy a hálózati adapteren keresztül konfigurált háttér-készletek nem frissíthetők egy művelet részeként a háttér-készleten. A háttérbeli erőforrások hozzáadásának vagy törlésének az erőforrás hálózati adapterén kell történnie.
 
 ### <a name="powershell"></a>PowerShell
-Új háttér-készlet létrehozása: 
-```powershell
-$backendPool = New-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup   -LoadBalancerName $loadBalancerName -BackendAddressPoolName $backendPoolName  
+Új háttér-készlet létrehozása:
+ 
+```azurepowershell-interactive
+$resourceGroup = "myResourceGroup"
+$loadBalancerName = "myLoadBalancer"
+$backendPoolName = "myBackendPool"
+
+$backendPool = 
+New-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -BackendAddressPoolName $backendPoolName  
 ```
 
 Hozzon létre egy új hálózati adaptert, és adja hozzá a háttér-készlethez:
-```powershell
-$nic = New-AzNetworkInterface -ResourceGroupName $rgName -Location $location `
-  -Name 'MyNic' -LoadBalancerBackendAddressPool $bepool -Subnet $vnet.Subnets[0]
+
+```azurepowershell-interactive
+$resourceGroup = "myResourceGroup"
+$loadBalancerName = "myLoadBalancer"
+$backendPoolName = "myBackendPool"
+$nicname = "myNic"
+$location = "eastus"
+$vnetname = <your-vnet-name>
+
+$vnet = 
+Get-AzVirtualNetwork -Name $vnetname -ResourceGroupName $resourceGroup
+
+$nic = 
+New-AzNetworkInterface -ResourceGroupName $resourceGroup -Location $location -Name $nicname -LoadBalancerBackendAddressPool $backendPoolName -Subnet $vnet.Subnets[0]
 ```
 
-A Load Balancer háttér-készlet adatainak beolvasása annak megerősítéséhez, hogy a hálózati adapter hozzá lett adva a háttér-készlethez:
-```powershell
-Get-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup  -LoadBalancerName $loadBalancerName -BackendAddressPoolName $backendPoolName -BackendAddressPool  $bePool  
+A terheléselosztó háttér-készletével kapcsolatos információk beolvasása annak megerősítéséhez, hogy a hálózati adapter hozzá lett adva a háttér-készlethez:
+
+```azurepowershell-interactive
+$resourceGroup = "myResourceGroup"
+$loadBalancerName = "myLoadBalancer"
+$backendPoolName = "myBackendPool"
+
+$lb =
+Get-AzLoadBalancer -ResourceGroupName $res
+Get-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -BackendAddressPoolName $backendPoolName 
 ```
 
 Hozzon létre egy új virtuális gépet, és csatolja a hálózati adaptert a háttér-készletbe való helyezéshez:
-```powershell
+
+```azurepowershell-interactive
 # Create a username and password for the virtual machine
 $cred = Get-Credential
 
 # Create a virtual machine configuration
-$vmConfig = New-AzVMConfig -VMName 'myVM1' -VMSize Standard_DS1_v2 `
- | Set-AzVMOperatingSystem -Windows -ComputerName 'myVM1' -Credential $cred `
- | Set-AzVMSourceImage -PublisherName MicrosoftWindowsServer -Offer WindowsServer -Skus 2019-Datacenter -Version latest `
- | Add-AzVMNetworkInterface -Id $nicVM1.Id
+$vmname = "myVM1"
+$vmsize = "Standard_DS1_v2"
+$pubname = "MicrosoftWindowsServer"
+$nicname = "myNic"
+$off = "WindowsServer"
+$sku = "2019-Datacenter"
+$resourceGroup = "myResourceGroup"
+$location = "eastus"
+
+$nic =
+Get-AzNetworkInterface -Name $nicname -ResourceGroupName $resourceGroup
+
+$vmConfig = 
+New-AzVMConfig -VMName $vmname -VMSize $vmsize | Set-AzVMOperatingSystem -Windows -ComputerName $vmname -Credential $cred | Set-AzVMSourceImage -PublisherName $pubname -Offer $off -Skus $sku -Version latest | Add-AzVMNetworkInterface -Id $nic.Id
  
 # Create a virtual machine using the configuration
-$vm1 = New-AzVM -ResourceGroupName $rgName -Zone 1 -Location $location -VM $vmConfig
+$vm1 = New-AzVM -ResourceGroupName $resourceGroup -Zone 1 -Location $location -VM $vmConfig
 ```
 
-
-  
 ### <a name="cli"></a>parancssori felület
 A háttér-készlet létrehozása:
-```bash
-az network lb address-pool create --resourceGroup myResourceGroup --lb-name myLB --name myBackendPool 
+
+```azurecli-interactive
+az network lb address-pool create \
+--resourceGroup myResourceGroup \
+--lb-name myLB \
+--name myBackendPool 
 ```
 
 Hozzon létre egy új hálózati adaptert, és adja hozzá a háttér-készlethez:
-```bash
-az network nic create --resource-group myResourceGroup --name myNic --vnet-name myVnet --subnet mySubnet --network-security-group myNetworkSecurityGroup --lb-name myLB --lb-address-pools myBackEndPool
+
+```azurecli-interactive
+az network nic create \
+--resource-group myResourceGroup \
+--name myNic \
+--vnet-name myVnet \
+--subnet mySubnet \
+--network-security-group myNetworkSecurityGroup \
+--lb-name myLB \
+--lb-address-pools myBackEndPool
 ```
 
 A háttér-készlet beolvasásával erősítse meg, hogy az IP-cím helyesen lett hozzáadva:
-```bash
-az network lb address-pool show -g MyResourceGroup --lb-name MyLb -n MyBackendPool
+
+```azurecli-interactive
+az network lb address-pool show \
+--resource-group myResourceGroup \
+--lb-name myLb \
+--name myBackendPool
 ```
 
 Hozzon létre egy új virtuális gépet, és csatolja a hálózati adaptert a háttér-készletbe való helyezéshez:
-```bash
-az vm create --resource-group myResourceGroup --name myVM --nics myNic --image UbuntuLTS --admin-username azureuser --generate-ssh-keys
+
+```azurecli-interactive
+az vm create \
+--resource-group myResourceGroup \
+--name myVM \
+--nics myNic \
+--image UbuntuLTS \
+--admin-username azureuser \
+--generate-ssh-keys
 ```
 
 ### <a name="rest-api"></a>REST API
 A háttér-készlet létrehozása:
+
 ```
 PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/loadBalancers/{load-balancer-name}/backendAddressPools/{backend-pool-name}?api-version=2020-05-01
 ```
 
-Hozzon létre egy hálózati adaptert, és adja hozzá a hálózati adapter IP-konfigurációk tulajdonságán keresztül létrehozott háttér-készlethez:
+Hozzon létre egy hálózati adaptert, és adja hozzá azt a háttérrendszer-készlethez, amelyet a hálózati adapter IP-konfigurációk tulajdonságán keresztül hozott létre:
 
 ```
 PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/networkInterfaces/{nic-name}?api-version=2020-05-01
@@ -117,7 +190,7 @@ JSON-kérelem törzse:
 }
 ```
 
-A Load Balancer háttér-készlet adatainak beolvasása annak megerősítéséhez, hogy a hálózati adapter hozzá lett adva a háttér-készlethez:
+A terheléselosztó háttér-készletével kapcsolatos információk beolvasása annak megerősítéséhez, hogy a hálózati adapter hozzá lett adva a háttér-készlethez:
 
 ```
 GET https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name/providers/Microsoft.Network/loadBalancers/{load-balancer-name/backendAddressPools/{backend-pool-name}?api-version=2020-05-01
@@ -172,72 +245,111 @@ JSON-kérelem törzse:
 }
 ```
 
-### <a name="arm-template"></a>ARM-sablon
-Ezt a [GYORSKONFIGURÁLÁS ARM-sablont](https://github.com/Azure/azure-quickstart-templates/tree/master/101-load-balancer-standard-create/) követve helyezzen üzembe egy Load Balancer és Virtual Machines, és adja hozzá a Virtual Machinest a háttér-készlethez a hálózati adapteren keresztül.
+### <a name="resource-manager-template"></a>Resource Manager-sablon
+Ezt a gyors útmutató [Resource Manager-sablont](https://github.com/Azure/azure-quickstart-templates/tree/master/101-load-balancer-standard-create/) követve helyezzen üzembe egy terheléselosztó és virtuális gépet, és adja hozzá a virtuális gépeket a háttér-készlethez a hálózati adapteren keresztül.
 
-## <a name="configuring-backend-pool-by-ip-address-and-virtual-network"></a>A háttérbeli készlet konfigurálása IP-cím és Virtual Network szerint
-Ha terheléselosztást használ a tároló erőforrásaihoz, vagy a háttérbeli készletet egy IP-címtartomány használatával előre kitölti, az IP-cím és a Virtual Network használatával bármely érvényes erőforráshoz átirányíthat, függetlenül attól, hogy van-e hálózati adaptere. Az IP-cím és a VNET konfigurálásakor az összes háttér-készlet kezelése közvetlenül a háttérbeli készlet objektumon történik, az alábbi példákban kiemelten.
+## <a name="configure-backend-pool-by-ip-address-and-virtual-network"></a>Háttérbeli készlet konfigurálása IP-cím és virtuális hálózat alapján
+A tárolókkal vagy egy előre feltöltött, IP-címmel rendelkező háttér-készlettel rendelkező forgatókönyvek esetén használja az IP-címet és a virtuális hálózatot.
+
+Az alábbi példákban látható módon az összes háttérbeli készlet kezelése közvetlenül a háttér-készlet objektumon történik.
 
   >[!IMPORTANT] 
   >Ez a funkció jelenleg előzetes verzióban érhető el, és a következő korlátozásokkal rendelkezik:
   >* A hozzáadott 100 IP-címek korlátozása
-  >* A háttérbeli erőforrásoknak ugyanabban a Virtual Networkban kell lenniük, mint a Load Balancer
-  >* Ez a funkció jelenleg nem támogatott a Portal UX-ben
-  >* Ez csak a standard szintű terheléselosztó esetén érhető el
+  >* A háttérbeli erőforrásoknak ugyanabban a virtuális hálózatban kell lenniük, mint a terheléselosztó
+  >* Ez a funkció jelenleg nem támogatott a Azure Portal
+  >* Csak standard Load Balancer
   
 ### <a name="powershell"></a>PowerShell
-Új háttér-készlet létrehozása: 
-```powershell
-$backendPool = New-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup   -LoadBalancerName $loadBalancerName -BackendAddressPoolName $backendPooName  
+Új háttér-készlet létrehozása:
+
+```azurepowershell-interactive
+$resourceGroup = "myResourceGroup"
+$loadBalancerName = "myLoadBalancer"
+$backendPoolName = "myBackendPool"
+$vnetName = "myVnet"
+$location = "eastus"
+$nicName = "myNic"
+
+$backendPool = 
+New-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -BackendAddressPoolName $backendPoolName  
 ```
 
-A háttérbeli készlet frissítése új IP-címmel a meglévő VNET:  
-```powershell
-$virtualNetwork = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroup 
+Háttérbeli készlet frissítése új IP-címmel meglévő virtuális hálózatról:
  
-$ip1 = New-AzLoadBalancerBackendAddressConfig -IpAddress "10.0.0.5" -Name "TestVNetRef" -VirtualNetwork $virtualNetwork  
+```azurepowershell-interactive
+$virtualNetwork = 
+Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroup 
+ 
+$ip1 = 
+New-AzLoadBalancerBackendAddressConfig -IpAddress "10.0.0.5" -Name "TestVNetRef" -VirtualNetwork $virtualNetwork  
  
 $backendPool.LoadBalancerBackendAddresses.Add($ip1) 
 
-Set-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup  -LoadBalancerName $loadBalancerName -BackendAddressPoolName $backendPoolName -BackendAddressPool  $backendPool  
+Set-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup  -LoadBalancerName $loadBalancerName -BackendAddressPoolName $backendPoolName -BackendAddressPool $backendPool  
 ```
 
-A Load Balancer háttér-készlet adatainak beolvasása annak megerősítéséhez, hogy a háttérbeli címek hozzá legyenek adva a háttér-készlethez:
-```powershell
-Get-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup  -LoadBalancerName $loadBalancerName -BackendAddressPoolName $backendPoolName -BackendAddressPool  $backendPool  
+A terheléselosztó háttér-készletével kapcsolatos információk beolvasása annak ellenőrzéséhez, hogy a háttérbeli címek hozzá vannak-e adva a háttér-készlethez:
+
+```azurepowershell-interactive
+Get-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -BackendAddressPoolName $backendPoolName -BackendAddressPool $backendPool  
 ```
-Hozzon létre egy hálózati adaptert, és vegye fel a háttér-készletbe úgy, hogy az IP-címet a háttérbeli címek egyikére állítja be:
-```
-$nic = New-AzNetworkInterface -ResourceGroupName $rgName -Location $location `
-  -Name 'MyNic' -PrivateIpAddress 10.0.0.4 -Subnet $vnet.Subnets[0]
+Hozzon létre egy hálózati adaptert, és adja hozzá a háttér-készlethez. Állítsa be az IP-címet a háttérbeli címek egyikére:
+
+```azurepowershell-interactive
+$nic = 
+New-AzNetworkInterface -ResourceGroupName $resourceGroup -Location $location -Name $nicName -PrivateIpAddress 10.0.0.4 -Subnet $virtualNetwork.Subnets[0]
 ```
 
 Hozzon létre egy virtuális gépet, és csatlakoztassa a hálózati adaptert egy IP-címmel a háttér-készletben:
-```powershell
+```azurepowershell-interactive
 # Create a username and password for the virtual machine
 $cred = Get-Credential
 
 # Create a virtual machine configuration
-$vmConfig = New-AzVMConfig -VMName 'myVM' -VMSize Standard_DS1_v2 `
- | Set-AzVMOperatingSystem -Windows -ComputerName 'myVM' -Credential $cred `
- | Set-AzVMSourceImage -PublisherName MicrosoftWindowsServer -Offer WindowsServer -Skus 2019-Datacenter -Version latest `
- | Add-AzVMNetworkInterface -Id $nic.Id
- 
+$vmname = "myVM1"
+$vmsize = "Standard_DS1_v2"
+$pubname = "MicrosoftWindowsServer"
+$nicname = "myNic"
+$off = "WindowsServer"
+$sku = "2019-Datacenter"
+$resourceGroup = "myResourceGroup"
+$location = "eastus"
+
+$nic =
+Get-AzNetworkInterface -Name $nicname -ResourceGroupName $resourceGroup
+
+$vmConfig = 
+New-AzVMConfig -VMName $vmname -VMSize $vmsize | Set-AzVMOperatingSystem -Windows -ComputerName $vmname -Credential $cred | Set-AzVMSourceImage -PublisherName $pubname -Offer $off -Skus $sku -Version latest | Add-AzVMNetworkInterface -Id $nic.Id
+
 # Create a virtual machine using the configuration
-$vm = New-AzVM -ResourceGroupName $rgName -Zone 1 -Location $location -VM $vmConfig
+$vm1 = New-AzVM -ResourceGroupName $resourceGroup -Zone 1 -Location $location -VM $vmConfig
 ```
 
 ### <a name="cli"></a>parancssori felület
 A CLI használatával a háttér-készletet parancssori paraméterekkel vagy JSON-konfigurációs fájlon keresztül töltheti fel. 
 
 Hozza létre és töltse fel a háttér-készletet a parancssori paraméterek használatával:
-```bash
-az network lb address-pool create --lb-name myLB --name myBackendPool --vnet {VNET resource ID} --backend-address name=addr1 ip-address=10.0.0.4 --backend-address name=addr2 ip-address=10.0.0.5
+
+```azurecli-interactive
+az network lb address-pool create \
+--resource-group myResourceGroup \
+--lb-name myLB \
+--name myBackendPool \
+--vnet {VNET resource ID} \
+--backend-address name=addr1 ip-address=10.0.0.4 \
+--backend-address name=addr2 ip-address=10.0.0.5
 ```
 
 A háttér-készlet létrehozása és feltöltése JSON-konfigurációs fájl használatával:
-```bash
-az network lb address-pool create --lb-name myLB --name myBackendPool --vnet {VNET resource ID} --backend-address-config-file @config_file.json
+
+```azurecli-interactive
+az network lb address-pool create \
+--resource-group myResourceGroup \
+--lb-name myLB \
+--name myBackendPool \
+--vnet {VNET resource ID} \
+--backend-address-config-file @config_file.json
 ```
 
 JSON-konfigurációs fájl:
@@ -256,13 +368,18 @@ JSON-konfigurációs fájl:
         ]
 ```
 
-A Load Balancer háttér-készlet adatainak beolvasása annak megerősítéséhez, hogy a háttérbeli címek hozzá legyenek adva a háttér-készlethez:
-```bash
-az network lb address-pool show -g MyResourceGroup --lb-name MyLb -n MyBackendPool
+A terheléselosztó háttér-készletével kapcsolatos információk beolvasása annak ellenőrzéséhez, hogy a háttérbeli címek hozzá vannak-e adva a háttér-készlethez:
+
+```azurecli-interactive
+az network lb address-pool show \
+--resource-group myResourceGroup \
+--lb-name MyLb \
+--name MyBackendPool
 ```
 
-Hozzon létre egy hálózati adaptert, és vegye fel a háttér-készletbe úgy, hogy az IP-címet a háttérbeli címek egyikére állítja be:
-```bash
+Hozzon létre egy hálózati adaptert, és adja hozzá a háttér-készlethez. Állítsa be az IP-címet a háttérbeli címek egyikére:
+
+```azurecli-interactive
 az network nic create \
   --resource-group myResourceGroup \
   --name myNic \
@@ -274,7 +391,8 @@ az network nic create \
 ```
 
 Hozzon létre egy virtuális gépet, és csatlakoztassa a hálózati adaptert egy IP-címmel a háttér-készletben:
-```bash
+
+```azurecli-interactive
 az vm create \
   --resource-group myResourceGroup \
   --name myVM \
@@ -286,8 +404,11 @@ az vm create \
 
 ### <a name="rest-api"></a>REST API
 
+Hozza létre a háttér-készletet, és adja meg a háttérbeli címeket egy PUT háttérbeli készletre vonatkozó kérelem használatával. Konfigurálja a háttérbeli címeket a PUT kérelem JSON-törzsében:
 
-Hozza létre a háttér-készletet, és adja meg a háttérbeli címeket egy PUT háttérbeli készletre vonatkozó kérelem használatával. Adja meg a felvenni kívánt háttérbeli címeket a cím neve, az IP-cím és a Virtual Network azonosító használatával a PUT kérelem JSON-törzsében:
+* Név
+* IP-cím
+* Virtuális hálózat azonosítója 
 
 ```
 PUT https://management.azure.com/subscriptions/subid/resourceGroups/testrg/providers/Microsoft.Network/loadBalancers/lb/backendAddressPools/backend?api-version=2020-05-01
@@ -321,12 +442,12 @@ JSON-kérelem törzse:
 }
 ```
 
-A Load Balancer háttér-készlet adatainak beolvasása annak megerősítéséhez, hogy a háttérbeli címek hozzá legyenek adva a háttér-készlethez:
+A terheléselosztó háttér-készletével kapcsolatos információk beolvasása annak ellenőrzéséhez, hogy a háttérbeli címek hozzá vannak-e adva a háttér-készlethez:
 ```
 GET https://management.azure.com/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/loadBalancers/{load-balancer-name}/backendAddressPools/{backend-pool-name}?api-version=2020-05-01
 ```
 
-Hozzon létre egy hálózati adaptert, és vegye fel a háttér-készletbe úgy, hogy az IP-címet a háttérbeli címek egyikére állítja be:
+Hozzon létre egy hálózati adaptert, és adja hozzá a háttér-készlethez. Állítsa be az IP-címet a háttérbeli címek egyikére:
 ```
 PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/networkInterfaces/{nic-name}?api-version=2020-05-01
 ```
@@ -401,8 +522,8 @@ JSON-kérelem törzse:
 }
 ```
 
-### <a name="arm-template"></a>ARM-sablon
-Hozza létre a Load Balancer, a háttér-készletet, és töltse fel a háttérbeli készletet a háttérbeli címekkel:
+### <a name="resource-manager-template"></a>Resource Manager-sablon
+Hozza létre a terheléselosztó, a háttér-készletet, és töltse fel a háttérbeli készletet a háttérbeli címekkel:
 ```
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -719,3 +840,7 @@ Hozzon létre egy virtuális gépet és egy csatlakoztatott hálózati adaptert.
   ]
 }
 ```
+## <a name="next-steps"></a>Következő lépések
+Ebből a cikkből megtudhatta, hogyan Azure Load Balancer végezheti el a háttérrendszer-készlet felügyeletét, és hogyan konfigurálhatja a háttér-készleteket IP-cím és virtuális hálózat alapján.
+
+További információ a [Azure Load Balancerról](load-balancer-overview.md).

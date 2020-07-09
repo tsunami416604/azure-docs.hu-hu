@@ -8,15 +8,15 @@ manager: jhakulin
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 06/08/2020
+ms.date: 07/07/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: c4e9668459856af52ae1a905de8ba76dc36758fd
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 2dd2d3b8564535a64ff961479ed94fc92fb210f5
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086294"
+ms.locfileid: "86112986"
 ---
 # <a name="release-notes"></a>Kibocsátási megjegyzések
 
@@ -24,7 +24,7 @@ ms.locfileid: "86086294"
 
 ### <a name="new-features"></a>Új funkciók
 
-* **NEURÁLIS TTS, 15 új neurális hang**: a neurális TTS-portfólióhoz hozzáadott új hangok az Arab (Egyiptom), a Zariyah Arab (Szaúd-Arábiai), a katalán (spanyolországi), a dán (dániai) Orsi, angol nyelven (India Swara in hindi (India), Colette holland (Hollandia), Zofia lengyel (Lengyelország), Fernanda portugál (portugáliai), Dariya in Russian (Oroszország), Hillevi svéd (svédországi), Achara in thai (Thailand), Iselin norvég (nyelven) (Norvégia), HiuGaai kínai (Hongkong) és HsiaoYu kínai (Tajvan). Az összes [támogatott nyelv](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices)ellenõrzése.  
+* **NEURÁLIS TTS, 15 új neurális hang**: a neurális TTS-portfólióhoz hozzáadott új hangok az `ar-EG` Arab (Egyiptom), a Zariyah `ar-SA` Arab (Szaúd-Arábiai), a `ca-ES` katalán (spanyolországi), a dán ( `da-DK` dániai) Orsi, angol nyelven `es-IN` (India a Noora `fi-FI` finn (finnországi), Swara `hi-IN` hindi (India), Colette `nl-NL` holland (Hollandia), Zofia `pl-PL` lengyel (Lengyelország), Fernanda `pt-PT` portugál (portugáliai), Dariya `ru-RU` orosz (Oroszország), Hillevi `sv-SE` svéd (svédországi), Achara in `th-TH` thai (Thaiföld), HiuGaai `zh-HK` kínai (kantoni, hagyományos) és HsiaoYu `zh-TW` kínai (tajvani mandarin). Az összes [támogatott nyelv](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices)ellenõrzése.  
 
 * **Egyéni hang-és hangvezérelt hangalapú tesztelés a felhasználói élmény egyszerűbbé tétele érdekében**: az új tesztelési funkcióval az egyes nyelvekre optimalizált, előre definiált, az általános és a hangsegéd-forgatókönyveket lefedő tesztelési készlettel automatikusan teszteli a rendszer. Ezeket a teszteket a rendszer gondosan kijelöli és teszteli, hogy tartalmazza a jellemző használati eseteket és a fonémák a nyelven. Emellett a felhasználók továbbra is kiválaszthatják saját tesztelési parancsfájljaik feltöltését a modellek betanításakor.
 
@@ -46,23 +46,23 @@ ms.locfileid: "86086294"
 
 * Továbbfejlesztett TTS-vocoder a jobb hűség és az alacsonyabb késés érdekében.
 
-    * A frissített Elsa (olasz) egy új vocoder, amely a + 0,464 CMOS-t (összehasonlító középértéket) a hangminőségben, a 40%-ban gyorsabb a szintézisben, és 30%-kal csökkenti az első bájt késését. 
-    * Frissített Xiaoxiao a kínai nyelvről az új vocoder, az általános tartományhoz + 0148 CMOS-nyereséggel, + 0,348 a benyújtó stílushoz és + 0,195 a lírai stílushoz. 
+    * Az Elsa- `it-IT` t egy olyan új vocoder frissítette, amely a + 0,464 CMOS-t (összehasonlító átlagot), a hangminőséget, az 40%-ot gyorsabb szintézisben és 30%-kal csökkenti az első bájt késését. 
+    * A Xiaoxiao frissítve lett az `zh-CN` új vocoder, az általános tartomány + 0,348-es verziójával, valamint a lírai stílushoz + 0,195 a + 0148 CMOS-nyereséggel. 
 
 * Frissített `de-DE` és `ja-JP` hangmodellek, hogy a TTS kimenete természetesebb legyen.
     
-    * A legújabb prosody modellezési módszerrel frissített Katja német nyelven, a MOS (mean vélemények pontszáma) nyereség pedig + 0,13. 
-    * Frissített Nanami a Japánban egy új pitch Accent prosody-modellel, a MOS (mean vélemények pontszáma) nyereség + 0,19;  
+    * Frissített Katja a `de-DE` legújabb prosody modellezési módszerrel, a Mos (mean vélemények pontszáma) nyereség + 0,13. 
+    * Frissítve a Nanami `ja-JP` egy új pitch Accent prosody-modellel, a Mos (mean vélemények pontszáma) nyereség + 0,19;  
 
 * Jobb Word szintű kiejtési pontosság 5 nyelven.
 
     | Nyelv | Kiejtési hiba csökkentése |
     |---|---|
-    | en-GB | 51% |
-    | ko-KR | 17 |
-    | pt-BR | 39% |
-    | pt-PT | 77% |
-    | id-ID | 46% |
+    | `en-GB` | 51% |
+    | `ko-KR` | 17 |
+    | `pt-BR` | 39% |
+    | `pt-PT` | 77% |
+    | `id-ID` | 46% |
 
 ### <a name="bug-fixes"></a>Hibajavítások
 
@@ -71,8 +71,8 @@ ms.locfileid: "86086294"
      
     | Nyelv | Bevitel | Fejlesztés utáni kiolvasás |
     |---|---|---|
-    | es-MX | $1,58 | un peso cincuenta y Ocho centavos |
-    | es-ES | $1,58 | un dólar cincuenta y Ocho centavos |
+    | `es-MX` | $1,58 | un peso cincuenta y Ocho centavos |
+    | `es-ES` | $1,58 | un dólar cincuenta y Ocho centavos |
 
     * A negatív pénznem támogatása (például "-€325") a következő területi beállításokban:,,,, `en-US` `en-GB` `fr-FR` `it-IT` `en-AU` , `en-CA` .
 
@@ -217,7 +217,7 @@ Egészségesek maradjanak!
 - JavaScript: további támogatás a `FromHost API` helyszíni tárolók és a szuverén felhők használatának megkönnyítéséhez. [Itt](speech-container-howto.md)találja a dokumentációt.
 - JavaScript: `NODE_TLS_REJECT_UNAUTHORIZED` Köszönjük, hogy hozzájárult a [orgads](https://github.com/orgads). Tekintse meg [a részleteket.](https://github.com/microsoft/cognitive-services-speech-sdk-js/pull/75)
 
-**Kompatibilitástörő változások**
+**Változtatások megszakítása**
 
 - `OpenSSL`frissítve lett a b 1.1.1-es verzióra, és statikusan kapcsolódik a Linux rendszerhez készült Speech SDK Core-könyvtárhoz. Ez akkor fordulhat elő, ha a beérkezett fájlok `OpenSSL` nem lettek telepítve a `/usr/lib/ssl` rendszeren lévő könyvtárba. A probléma megoldásához tekintse meg a Speech SDK [dokumentációját](how-to-configure-openssl-linux.md) .
 - Módosítottuk a C#-tól a-ig visszaadott adattípust, `WordLevelTimingResult.Offset` `int` `long` hogy engedélyezzék a hozzáférést, `WordLevelTimingResults` Ha a beszédfelismerési adatok 2 percnél hosszabbak.
@@ -258,7 +258,7 @@ Egészségesek maradjanak!
 - `KeywordRecognizer`A Windows (UWP), az Android és az iOS támogatása a NuGet-és Unity-csomagokon keresztül
 - Távoli beszélgetési Java API hozzáadva a beszélgetések átírásához aszinkron kötegekben.
 
-**Kompatibilitástörő változások**
+**Változtatások megszakítása**
 
 - A beszélgetési átirat funkciói a névtér alatt lettek áthelyezve `Microsoft.CognitiveServices.Speech.Transcription` .
 - A beszélgetési átirat módszereinek egy része új `Conversation` osztályba kerül.
@@ -565,7 +565,7 @@ A [minta adattárában](https://aka.ms/csspeech/samples)egy új minta lett hozz�
 - Az Objective-C támogatása iOS rendszeren. Tekintse meg [az iOS-hez készült Objective-C](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone-langs/objectivec-ios.md)rövid útmutatót.
 - JavaScript-támogatás a böngészőben. Tekintse meg a [JavaScript](quickstart-js-browser.md)rövid útmutatót.
 
-**Kompatibilitástörő változások**
+**Változtatások megszakítása**
 
 - Ebben a kiadásban számos megszakított változást vezetünk be.
   További részletekért olvassa el [ezt a lapot](https://aka.ms/csspeech/breakingchanges_1_0_0) .
@@ -584,7 +584,7 @@ A [minta adattárában](https://aka.ms/csspeech/samples)egy új minta lett hozz�
 
 - További hibák részletes információinak közzététele a csatlakoztatási hibákról.
 
-**Kompatibilitástörő változások**
+**Változtatások megszakítása**
 
 - Java (Android) esetén a `SpeechFactory.configureNativePlatformBindingWithDefaultCertificate` függvénynek már nincs szüksége elérésiút-paraméterre. A rendszer mostantól automatikusan észleli az elérési utat az összes támogatott platformon.
 - A Java-és C#-beli tulajdonság get-accesser `EndpointUrl` eltávolítása megtörtént.
@@ -613,7 +613,7 @@ A [minta adattárában](https://aka.ms/csspeech/samples)egy új minta lett hozz�
 - A felismerési eredmény több mezőt tartalmaz. Ezek a felismert szöveg és a felismerési állapotot jelképező további értékek (például a kullancsok) és az azokhoz tartozó további értékek (például: és) eltolása `InitialSilenceTimeout` `InitialBabbleTimeout` .
 - Támogatási AuthorizationToken a gyári példányok létrehozásához.
 
-**Kompatibilitástörő változások**
+**Változtatások megszakítása**
 
 - Felismerési események: `NoMatch` az esemény típusa egyesítve lett az `Error` eseménybe.
 - A C# nyelvben lévő SpeechOutputFormat átnevezték, `OutputFormat` hogy a C++ nyelvre legyen igazítva.

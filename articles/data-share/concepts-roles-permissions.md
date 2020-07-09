@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 85b680aafd822b80edf543ca39787848129f1930
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 229d4fd6647a8a1b756fedee2a864d00b9c7de62
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85322047"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110997"
 ---
 # <a name="roles-and-requirements-for-azure-data-share"></a>Az Azure Data Share szerepkörei és követelményei 
 
@@ -30,9 +30,8 @@ Az Azure-adattárból származó adatok megosztásához vagy fogadásához a fel
 
 Az alábbiakban az adatmegosztási erőforrás felügyelt identitásához rendelt szerepkörök összegzése látható:
 
-| |  |  |
-|---|---|---|
 |**Adattár típusa**|**Adatszolgáltató forrásának adattára**|**Adatfogyasztói célként szolgáló adattár**|
+|---|---|---|
 |Azure Blob Storage| Storage blob-Adatolvasó | Storage blob adatközreműködői
 |Azure Data Lake Gen1 | Tulajdonos | Nem támogatott
 |Azure Data Lake Gen2 | Storage blob-Adatolvasó | Storage blob adatközreműködői
@@ -42,9 +41,8 @@ Az alábbiakban az adatmegosztási erőforrás felügyelt identitásához rendel
 
 SQL-alapú megosztás esetén az SQL-felhasználót egy olyan külső szolgáltatóból kell létrehozni, amely az Azure-beli adatmegosztási erőforrással megegyező nevű Azure SQL Databaseban van. Az alábbiakban az SQL-felhasználó által megkövetelt engedélyek összegzése látható.
 
-| |  |  |
-|---|---|---|
 |**SQL Database típusa**|**Adatszolgáltató SQL-felhasználói engedélye**|**Adatfogyasztói SQL-felhasználói engedély**|
+|---|---|---|
 |Azure SQL Database | db_datareader | db_datareader, db_datawriter, db_ddladmin
 |Azure Synapse Analytics (korábban SQL DW) | db_datareader | db_datareader, db_datawriter, db_ddladmin
 |
@@ -100,7 +98,6 @@ Ha először szeretné megtekinteni az Azure-beli adatmegosztási meghívást az
 1. Keressen rá a Microsoft. DataShare kifejezésre.
 1. Kattintson a **Regisztrálás** parancsra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az Azure-beli szerepkörökről – a [szerepkör-definíciók ismertetése](../role-based-access-control/role-definitions.md)
-
