@@ -5,14 +5,14 @@ keywords: PostgreSQL-kapcsolat, kapcsolati karakterlánc, csatlakozási problém
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: c0011889e59470d94e650a19c6713074155c63fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c97e8e0d55a99e0b022bdc6e97edc778d7b6588a
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85106548"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86107597"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL – egyetlen kiszolgáló kapcsolódási problémáinak elhárítása
 
@@ -59,6 +59,6 @@ Ha az alkalmazás tartósan nem tud csatlakozni a Azure Database for PostgreSQLh
 3. Ellenőrizze a kapcsolatok karakterláncát és az egyéb kapcsolatbeállításokat.
 4. Keresse meg a szolgáltatás állapotát az irányítópulton. Ha úgy gondolja, hogy regionális leállás van, tekintse meg az [üzletmenet folytonosságának áttekintése](concepts-business-continuity.md) című témakört, amely az új régióba való helyreállítás lépéseit Azure Database for PostgreSQL.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Database for PostgreSQL átmeneti kapcsolódási hibáinak kezelése](concepts-connectivity.md)

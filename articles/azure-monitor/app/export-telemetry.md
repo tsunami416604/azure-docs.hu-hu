@@ -3,11 +3,12 @@ title: Telemetria folyamatos exportálása a Application Insightsból | Microsof
 description: A diagnosztikai és használati adatok exportálása a Microsoft Azure tárolóba, és onnan tölthető le.
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.openlocfilehash: 91bce217b1b8d7c86c7d75ecd4ce6b698019e169
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8ca2dc30b6e0681b5ee10fa3c77fab15ffb18b1d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84147970"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110215"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Telemetria exportálása az Application Insightsból
 Szeretné megőrizni a telemetria a normál megőrzési időtartamnál hosszabb ideig? Vagy dolgozza fel valamilyen speciális módon? A folyamatos exportálás ideális ehhez. A Application Insights-portálon megjelenített események JSON formátumban exportálhatók Microsoft Azureba. Innen letöltheti az adatait, és bármilyen kódot írhat, amelyet fel kell dolgoznia.  
@@ -57,7 +58,7 @@ A tárolóban lévő adatmennyiség körülbelül egy órával késleltethető.
 
 Az első exportálás befejezése után a következőhöz hasonló struktúra található az Azure Blob Storage-tárolóban: (ez a gyűjtött adatoktól függően változhat.)
 
-|Name | Description |
+|Name | Leírás |
 |:----|:------|
 | [Rendelkezésre állás](export-data-model.md#availability) | Jelentések [rendelkezésre állását ismertető webes tesztek](../../azure-monitor/app/monitor-web-app-availability.md).  |
 | [Esemény](export-data-model.md#events) | A [TrackEvent ()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)által generált egyéni események. 
@@ -107,7 +108,9 @@ A dátum és az idő UTC, és az, amikor a telemetria a tárolóban helyezték e
 
 Az elérési út formája:
 
-    $"{applicationName}_{instrumentationKey}/{type}/{blobDeliveryTimeUtc:yyyy-MM-dd}/{ blobDeliveryTimeUtc:HH}/{blobId}_{blobCreationTimeUtc:yyyyMMdd_HHmmss}.blob"
+```console
+$"{applicationName}_{instrumentationKey}/{type}/{blobDeliveryTimeUtc:yyyy-MM-dd}/{ blobDeliveryTimeUtc:HH}/{blobId}_{blobCreationTimeUtc:yyyyMMdd_HHmmss}.blob"
+```
 
 Ahol
 
@@ -117,37 +120,41 @@ Ahol
 ## <a name="data-format"></a><a name="format"></a>Adatformátum
 * Minden blob egy szövegfájl, amely több "\n"-tagolt sort tartalmaz. Tartalmazza a feldolgozott telemetria körülbelül fél percen belül.
 * Az egyes sorok egy telemetria adatpontot jelölnek, például egy kérés vagy egy oldal nézetet.
-* Minden sor egy formázatlan JSON-dokumentum. Ha szeretné megülni és bámulni, nyissa meg a Visual Studióban, és válassza a Szerkesztés, speciális, fájl formázása lehetőséget:
+* Minden sor egy formázatlan JSON-dokumentum. Ha meg szeretné tekinteni a sorokat, nyissa meg a blobot a Visual Studióban, és válassza a **Edit**  >  **speciális**  >  **formátumú fájl**szerkesztése elemet:
 
-![A telemetria megtekintése megfelelő eszközzel](./media/export-telemetry/06-json.png)
+   ![A telemetria megtekintése megfelelő eszközzel](./media/export-telemetry/06-json.png)
 
 Az időtartamok a kullancsokban vannak, ahol a 10 000-es osztásjelek = 1 ms. Ezek az értékek például 1 MS időpontot jelenítenek meg egy kérésnek a böngészőből való elküldéséhez, 3 MS a fogadáshoz, és 1,8 s a lap felfeldolgozásához a böngészőben:
 
-    "sendRequest": {"value": 10000.0},
-    "receiveRequest": {"value": 30000.0},
-    "clientProcess": {"value": 17970000.0}
+```json
+"sendRequest": {"value": 10000.0},
+"receiveRequest": {"value": 30000.0},
+"clientProcess": {"value": 17970000.0}
+```
 
 [Részletes adatmodell-referenciák a tulajdonságok típusaihoz és értékeihez.](export-data-model.md)
 
 ## <a name="processing-the-data"></a>Az adatfeldolgozás
 Kis léptékben írhat egy kódot, amely lekéri az adatait, beolvashatja azt egy számolótáblába, és így tovább. Például:
 
-    private IEnumerable<T> DeserializeMany<T>(string folderName)
-    {
-      var files = Directory.EnumerateFiles(folderName, "*.blob", SearchOption.AllDirectories);
-      foreach (var file in files)
+```csharp
+private IEnumerable<T> DeserializeMany<T>(string folderName)
+{
+   var files = Directory.EnumerateFiles(folderName, "*.blob", SearchOption.AllDirectories);
+   foreach (var file in files)
+   {
+      using (var fileReader = File.OpenText(file))
       {
-         using (var fileReader = File.OpenText(file))
+         string fileContent = fileReader.ReadToEnd();
+         IEnumerable<string> entities = fileContent.Split('\n').Where(s => !string.IsNullOrWhiteSpace(s));
+         foreach (var entity in entities)
          {
-            string fileContent = fileReader.ReadToEnd();
-            IEnumerable<string> entities = fileContent.Split('\n').Where(s => !string.IsNullOrWhiteSpace(s));
-            foreach (var entity in entities)
-            {
-                yield return JsonConvert.DeserializeObject<T>(entity);
-            }
+            yield return JsonConvert.DeserializeObject<T>(entity);
          }
       }
-    }
+   }
+}
+```
 
 Nagyobb mintakód esetén lásd: [feldolgozói szerepkör használata][exportasa].
 

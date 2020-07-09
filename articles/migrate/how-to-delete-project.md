@@ -6,16 +6,16 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 10/22/2019
 ms.author: raynew
-ms.openlocfilehash: 55842d36cddb2a7851ff5bd7002c20e9873158f5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4fd6285c3d22c8e0bdddbbe47366e6ae9428e7d8
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73512729"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109875"
 ---
 # <a name="delete-an-azure-migrate-project"></a>Azure Migrate-projekt eltávolítása
 
-Ez a cikk egy [Azure Migrate](migrate-overview.md) -projekt törlését ismerteti.
+Ez a cikk egy [Azure Migrate](./migrate-services-overview.md) -projekt törlését ismerteti.
 
 
 ## <a name="before-you-start"></a>Előkészületek
@@ -76,6 +76,6 @@ HyperV * hely | Microsoft. OffAzure/HyperVSites
 "Projektnév"-MigrateVault-* | Recovery Services-tároló
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan adhat hozzá további [értékelési](how-to-assess.md) és [áttelepítési](how-to-migrate.md) eszközöket. 

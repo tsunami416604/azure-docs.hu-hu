@@ -1,17 +1,16 @@
 ---
 title: Azure App Service Event Grid forrásként
 description: Ez a cikk azt ismerteti, hogyan használható a Azure App Service Event Grid eseményforrásként. Ez biztosítja a sémát és az oktatóanyagra és útmutatókra mutató hivatkozásokat.
-services: event-grid
 author: jasonfreeberg
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/11/2020
+ms.date: 07/07/2020
 ms.author: jafreebe
-ms.openlocfilehash: 0a24e8ba84739dbc1b5de5e0546a8fe0d2e826f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2465b2f260ed6c174b762fcf64a71100a148254d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83650705"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86106711"
 ---
 # <a name="azure-app-service-as-an-event-grid-source"></a>Azure App Service Event Grid forrásként
 
@@ -23,7 +22,7 @@ Ez a cikk a Azure App Service eseményeinek tulajdonságait és sémáját ismer
 
 A Azure App Service a következő típusú eseményeket bocsátja ki
 
-|    Eseménytípus                                             |    Description                                                     |
+|    Eseménytípus                                             |    Leírás                                                     |
 |-----------------------------------------------------------|--------------------------------------------------------------------|
 |    Microsoft. Web/Sites. BackupOperationStarted             |    A biztonsági mentés megkezdése után aktiválódik                             |
 |    Microsoft. Web/Sites. BackupOperationCompleted           |    A biztonsági mentés befejezésekor aktiválódik                           |
@@ -46,7 +45,7 @@ A Azure App Service a következő típusú eseményeket bocsátja ki
 Egy esemény indításakor a Event Grid szolgáltatás adatokat küld az eseményről a végpontra való feliratkozáshoz.
 Ez a szakasz egy példát mutat be, hogy az egyes események milyen módon néznek ki. Minden esemény a következő legfelső szintű adattal rendelkezik:
 
-|     Tulajdonság          |     Típus     |     Description                                                                                                                                |
+|     Tulajdonság          |     Típus     |     Leírás                                                                                                                                |
 |-----------------------|--------------|------------------------------------------------------------------------------------------------------------------------------------------------|
 |    témakör              |    sztring    |    Az eseményforrás teljes erőforrás-elérési útja. Ez a mező nem írható. Az értéket az Event Grid adja meg.                                      |
 |    tulajdonos            |    sztring    |    Közzétevő által megadott elérési út az esemény tárgya számára.                                                                                              |
@@ -82,7 +81,7 @@ Ez a szakasz egy példát mutat be, hogy az egyes események milyen módon nézn
 
 Az adatobjektum a következő tulajdonságokat tartalmazza:
 
-|    Tulajdonság                |    Típus      |    Description                                                                                                       |
+|    Tulajdonság                |    Típus      |    Leírás                                                                                                       |
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
 |    appEventTypeDetail      |    objektum    |    Az alkalmazás műveletének részletei                                                                                       |
 |    action                  |    sztring    |    A művelet műveletének típusa                                                                                   |
@@ -120,7 +119,7 @@ Az adatobjektum a következő tulajdonságokat tartalmazza:
 
 Az adatobjektum a következő tulajdonságokat tartalmazza:
 
-|    Tulajdonság                |    Típus      |    Description                                                                                                       |
+|    Tulajdonság                |    Típus      |    Leírás                                                                                                       |
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
 |    appEventTypeDetail      |    objektum    |    Az alkalmazás műveletének részletei                                                                                       |
 |    action                  |    sztring    |    A művelet műveletének típusa                                                                                   |
@@ -158,7 +157,7 @@ Az adatobjektum a következő tulajdonságokat tartalmazza:
 
 Az adatobjektum a következő tulajdonságokat tartalmazza:
 
-|    Tulajdonság                |    Típus      |    Description                                                                                                       |
+|    Tulajdonság                |    Típus      |    Leírás                                                                                                       |
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
 |    appEventTypeDetail      |    objektum    |    Az alkalmazás műveletének részletei                                                                                       |
 |    action                  |    sztring    |    A művelet műveletének típusa                                                                                   |
@@ -197,7 +196,7 @@ Az adatobjektum a következő tulajdonságokat tartalmazza:
 
 Az adatobjektum a következő tulajdonságokat tartalmazza:
 
-|    Tulajdonság                |    Típus      |    Description                                                                                                       |
+|    Tulajdonság                |    Típus      |    Leírás                                                                                                       |
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
 |    appEventTypeDetail      |    objektum    |    Az alkalmazás műveletének részletei                                                                                       |
 |    action                  |    sztring    |    A művelet műveletének típusa                                                                                   |
@@ -235,7 +234,7 @@ Az adatobjektum a következő tulajdonságokat tartalmazza:
 
 Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
-|    Tulajdonság                |    Típus      |    Description                                                                                                       |
+|    Tulajdonság                |    Típus      |    Leírás                                                                                                       |
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
 |    appEventTypeDetail      |    objektum    |    Az alkalmazás műveletének részletei                                                                                       |
 |    action                  |    sztring    |    A művelet műveletének típusa                                                                                   |
@@ -282,7 +281,7 @@ Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
 Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
-|    Tulajdonság                         |    Típus      |    Description                                                                                                       |
+|    Tulajdonság                         |    Típus      |    Leírás                                                                                                       |
 |-------------------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
 |    appServicePlanEventTypeDetail    |    objektum    |    Az App Service-csomag műveletének részletei                                                                          |
 |    stampKind                        |    sztring    |    Olyan környezet, amelyben az App Service-csomag                                                                     |

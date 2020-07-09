@@ -4,14 +4,14 @@ description: Ez a cikk azt ismerteti, hogyan lehet újraindítani egy Azure Data
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 4/28/2020
-ms.openlocfilehash: 935459a398c07d3b4f61c76dec75b083a2354720
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: faefdfb93257521c9c687045c1467c5d2d0f84ab
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82609017"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86107937"
 ---
 # <a name="restart-azure-database-for-mysql-server-using-powershell"></a>Azure Database for MySQL kiszolgáló újraindítása a PowerShell-lel
 
@@ -44,7 +44,7 @@ Indítsa újra a kiszolgálót a következő paranccsal:
 Restart-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Azure Database for MySQL-kiszolgáló létrehozása a PowerShell használatával](quickstart-create-mysql-server-database-using-azure-powershell.md)

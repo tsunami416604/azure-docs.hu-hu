@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: a0cee198f028fd90e04dac15e98d7cd33aee9201
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 79c91fff837e3869eda0f45ce892e63b6611a1d0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79532348"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86107206"
 ---
 # <a name="mariadb-drivers-and-management-tools-compatible-with-azure-database-for-mariadb"></a>A Azure Database for MariaDB-kompatibilis MariaDB-illesztőprogramok és-felügyeleti eszközök
 
@@ -37,7 +37,7 @@ Java | https://downloads.mariadb.org/connector-java/ | 2,1, 2,0, 1,6 | 1.5.5 és
 
 A kompatibilitási előny az adatbázis-felügyeleti eszközökre is kiterjed. A meglévő eszközeinek továbbra is működniük kell Azure Database for MariaDBsal, feltéve, hogy az adatbázis-manipuláció a felhasználói engedélyek határain belül működik. Az alábbi táblázatban három olyan általános adatbázis-felügyeleti eszköz található, amelyet teszteltek, és amelyek kompatibilisek a Azure Database for MariaDB 10,2-vel:
 
-| | **MySQL Workbench 6. x és fel** | **Navicat 12** | **PHPMyAdmin 4. x és fel**
+| Műveletek | **MySQL Workbench 6. x és fel** | **Navicat 12** | **PHPMyAdmin 4. x és fel**
 ---|---|---|---
 Létrehozás, frissítés, olvasás, írás, törlés | X | X | X
 SSL-kapcsolat | X | X | X
@@ -48,6 +48,6 @@ Biztonsági mentés és visszaállítás |  | X |
 Kiszolgáló paramétereinek megjelenítése | X | X | X
 Ügyfélkapcsolatok megjelenítése | X | X | X
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure Database for MariaDB-hez való csatlakozás hibáinak elhárítása](howto-troubleshoot-common-connection-issues.md)

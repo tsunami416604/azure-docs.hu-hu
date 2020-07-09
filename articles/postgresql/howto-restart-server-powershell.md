@@ -4,14 +4,14 @@ description: Ez a cikk azt ismerteti, hogyan lehet újraindítani egy Azure Data
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/08/2020
-ms.openlocfilehash: a46437ae14ae644fb9d63d76a64075cc3ba2e25e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 95a0459dd21eaf69bf0ee2d8f4cd1482d07313bb
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84739965"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86107920"
 ---
 # <a name="restart-azure-database-for-postgresql-server-using-powershell"></a>Azure Database for PostgreSQL kiszolgáló újraindítása a PowerShell-lel
 
@@ -44,7 +44,7 @@ Indítsa újra a kiszolgálót a következő paranccsal:
 Restart-AzPostgreSqlServer -Name mydemoserver -ResourceGroupName myresourcegroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Azure Database for PostgreSQL-kiszolgáló létrehozása a PowerShell használatával](quickstart-create-postgresql-server-database-using-azure-powershell.md)

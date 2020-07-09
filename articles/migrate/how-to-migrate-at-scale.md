@@ -6,17 +6,18 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: snehaa
-ms.openlocfilehash: 317b6e8aa799b7982e9897c6a504d6092491c7ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c354c1c9dfacfcb6bf84f1140b58deca60c1874e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74196360"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109841"
 ---
 # <a name="scale-migration-of-vms"></a>Virtuális gépek áttelepítésének méretezése 
 
 Ebből a cikkből megtudhatja, hogyan használhatók a parancsfájlok a nagy számú virtuális gép (VM) áttelepítéséhez. Az áttelepítés méretezéséhez használja a [Azure site Recovery](../site-recovery/site-recovery-overview.md). 
 
-Site Recovery szkriptek letölthetők a GitHubon található [Azure PowerShell Samples](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-with-site-recovery) -tárházban. A parancsfájlok használatával a VMware, az AWS, a GCP-alapú virtuális gépek és a fizikai kiszolgálók áttelepíthetők az Azure-ban felügyelt lemezekre. Ezeket a parancsfájlokat használhatja a Hyper-V virtuális gépek áttelepítéséhez is, ha fizikai kiszolgálóként telepíti át a virtuális gépeket. A Azure Site Recovery PowerShellt használó [parancsfájlok dokumentálva](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell)vannak.
+Site Recovery szkriptek letölthetők a GitHubon található [Azure PowerShell Samples](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-with-site-recovery) -tárházban. A parancsfájlok használatával a VMware, az AWS, a GCP-alapú virtuális gépek és a fizikai kiszolgálók áttelepíthetők az Azure-ban felügyelt lemezekre. Ezeket a parancsfájlokat használhatja a Hyper-V virtuális gépek áttelepítéséhez is, ha fizikai kiszolgálóként telepíti át a virtuális gépeket. A Azure Site Recovery PowerShellt használó [parancsfájlok dokumentálva](../site-recovery/vmware-azure-disaster-recovery-powershell.md)vannak.
 
 ## <a name="current-limitations"></a>Aktuális korlátozások
 - Támogatás csak a statikus IP-cím megadása a célként megadott virtuális gép elsődleges hálózati adapteréhez
@@ -66,6 +67,6 @@ Miután a CSV elkészült, végrehajthatja a következő lépéseket a helyszín
 ## <a name="how-to-migrate-to-managed-disks"></a>Migrálás a Managed Disks szolgáltatásba
 Alapértelmezés szerint a parancsfájl áttelepíti a virtuális gépeket a felügyelt lemezekre az Azure-ban. Ha a megadott Storage-fiók egy Premium Storage-fiók, a prémium szintű felügyelt lemezek az áttelepítés után jönnek létre. A cache Storage-fiók továbbra is szabványos fiók lehet. Ha a célként megadott Storage-fiók egy szabványos Storage-fiók, a standard lemezeket az áttelepítés után hozza létre a rendszer. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[További](https://docs.microsoft.com/azure/site-recovery/migrate-tutorial-on-premises-azure) információ a kiszolgálók Azure-ba való áttelepítéséről Azure site Recovery használatával
+[További](../site-recovery/migrate-tutorial-on-premises-azure.md) információ a kiszolgálók Azure-ba való áttelepítéséről Azure site Recovery használatával

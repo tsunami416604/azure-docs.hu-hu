@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 06/21/2020
 ms.author: rajosh
-ms.openlocfilehash: a7d22a6a2f7100826c865beec0d1cff09fc39660
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: e80ec71bef8c34331fac076b7b08be48a9571c2e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86043240"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86107699"
 ---
 # <a name="build-migration-plan-with-azure-migrate"></a>Migrálási terv létrehozása az Azure Migrate-tel
 
@@ -24,7 +24,7 @@ Ez a cikk egy rövid útmutatót tartalmaz, amellyel átalakíthatja az Azure-ba
 
 ## <a name="define-the-goals-of-cloud-migration"></a>A Felhőbeli áttelepítés céljainak meghatározása
 
-Az áttelepítési terv kiépítése előtt fontos megérteni és értékelni a [motivációt](https://docs.microsoft.com/azure/cloud-adoption-framework/strategy/motivations) a felhőbe való áttéréshez, amely segíthet a sikeres üzleti eredmények létrehozásában. Az Azure-hoz készült [felhőalapú bevezetési keretrendszer](https://docs.microsoft.com/azure/cloud-adoption-framework) elmagyarázza, hogy különböző triggerek és áttelepítési módszerek használhatók a vállalata számára:  
+Az áttelepítési terv kiépítése előtt fontos megérteni és értékelni a [motivációt](/azure/cloud-adoption-framework/strategy/motivations) a felhőbe való áttéréshez, amely segíthet a sikeres üzleti eredmények létrehozásában. Az Azure-hoz készült [felhőalapú bevezetési keretrendszer](/azure/cloud-adoption-framework) elmagyarázza, hogy különböző triggerek és áttelepítési módszerek használhatók a vállalata számára:  
 
 **Kritikus üzleti események** | **Áttelepítési eredmény**
 --- | ---
@@ -147,7 +147,7 @@ Az áttelepítési terv véglegesítése előtt győződjön meg arról, hogy a 
 
 - Tekintse át az ajánlott Azure-engedélyeket, valamint az áttelepítéshez szükséges kiszolgálói/adatbázis-hozzáférési szerepköröket és az engedélyek modelljét.
 
-- Készítse elő a szervezetét, és győződjön meg arról, hogy a munkaerő igazodik a digitális átalakításhoz. A sikeres szervezeti változások szempontjából elengedhetetlen a Solid Training Foundation. Tekintse meg a [Microsoft Learnon](https://docs.microsoft.com/learn/azure/?ocid=CM_Discovery_Checklist_PDF)elérhető ingyenes képzést, beleértve az Azure alapjaival, a megoldás-architektúrával és a biztonsággal kapcsolatos tanfolyamokat. Ösztönözze csapatát az [Azure-minősítés](https://www.microsoft.com/learning/certification-overview.aspx?ocid=CM_Discovery_Checklist_PDF)megismerésére   is.  
+- Készítse elő a szervezetét, és győződjön meg arról, hogy a munkaerő igazodik a digitális átalakításhoz. A sikeres szervezeti változások szempontjából elengedhetetlen a Solid Training Foundation. Tekintse meg a [Microsoft Learnon](/learn/azure/?ocid=CM_Discovery_Checklist_PDF)elérhető ingyenes képzést, beleértve az Azure alapjaival, a megoldás-architektúrával és a biztonsággal kapcsolatos tanfolyamokat. Ösztönözze csapatát az [Azure-minősítés](https://www.microsoft.com/learning/certification-overview.aspx?ocid=CM_Discovery_Checklist_PDF)megismerésére   is.  
 
 - Ha szükséges, támogatást kaphat a megvalósításhoz. Számos szervezet úgy dönt, hogy külső segítséget nyújt a felhőbe való Migrálás támogatásához. Ha az Azure-ba gyorsan és magabiztosan szeretne áttérni személyre szabott segítséggel, vegye fontolóra egy [Azure-szakértő által felügyelt szolgáltatót](https://www.microsoft.com/solution-providers/search?cacheId=9c2fed4f-f9e2-42fb-8966-4c565f08f11e&ocid=CM_Discovery_Checklist_PDF)   vagy [FastTrack for Azure](https://azure.microsoft.com/programs/azure-fasttrack/?ocid=CM_Discovery_Checklist_PDF).  
 
@@ -162,8 +162,8 @@ Ha készen áll az áttelepítésre, használja a Azure Migrate *kiszolgáló-á
 > [!NOTE]
 > A VMware virtuális gépek esetében a kiszolgáló értékelése a virtuális géphez megadott operációs rendszert használja vCenter Server a vendég operációs rendszer elemzésének kezeléséhez. A VMware-en futó Linux rendszerű virtuális gépek esetében jelenleg nem azonosítja a vendég operációs rendszer pontos kernel-verzióját.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Vizsgálja meg a [felhőalapú migrációs utat](https://docs.microsoft.com/azure/architecture/cloud-adoption/getting-started/migrate)   Az Azure Cloud bevezetési keretrendszerében.
+- Vizsgálja meg a [felhőalapú migrációs utat](/azure/architecture/cloud-adoption/getting-started/migrate)   Az Azure Cloud bevezetési keretrendszerében.
 - A Azure Migrate [első lépései](https://youtu.be/wFfq3YPxYHE) .
 - Hozzon létre egy értékelést a [VMWare virtuális gépek](tutorial-assess-vmware.md) vagy a [Hyper-V virtuális gépek](tutorial-assess-hyper-v.md)számára.

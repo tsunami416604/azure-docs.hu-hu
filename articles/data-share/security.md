@@ -4,13 +4,14 @@ description: Az Azure-adatmegosztás biztonsági áttekintése
 author: jifems
 ms.author: jife
 ms.service: data-share
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/05/2020
-ms.openlocfilehash: e299f63777847c557fc13afb4d36d01c12b3b52a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 10f31b74b461941b15f13e45f90b5fbc408c90fe
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84637122"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86108413"
 ---
 # <a name="security-overview-for-azure-data-share"></a>Az Azure-adatmegosztás biztonsági áttekintése
 
@@ -24,7 +25,7 @@ A hozzáférés-vezérlés beállítható az Azure-beli adatmegosztási erőforr
 
 Az Azure-adatmegosztás felügyelt identitást (korábbi nevén MSI) használ az adatok megosztásához használt adattárakhoz való hozzáféréshez. Az adatszolgáltató és az adatfogyasztó között nincs hitelesítő adatok cseréje. A felügyelt identitással kapcsolatos további információkért tekintse meg az [Azure-erőforrások felügyelt identitásait](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities)ismertető témakört. Az adatok megosztásához szükséges szerepkörökről és engedélyekről a [szerepkörök és követelmények](concepts-roles-permissions.md)című témakörben olvashat bővebben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az adatmegosztás megkezdésének megismeréséhez folytassa az [adatgyűjtés megosztása](share-your-data.md) című oktatóanyagot.
 

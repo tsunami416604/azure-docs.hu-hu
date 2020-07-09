@@ -3,12 +3,12 @@ title: Azure VM-értékelések Azure Migrate Server Assessment-ben
 description: Tudnivalók a Azure Migrate Server Assessment értékeléséről
 ms.topic: conceptual
 ms.date: 05/27/2020
-ms.openlocfilehash: 33051fbcfb792d3fa9734a818d293775486de647
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 52cdd6bb9cb062b5c36e10c67524fa4d266ca6e0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85549950"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86108001"
 ---
 # <a name="azure-vm-assessments-in-azure-migrate-server-assessment"></a>Azure VM-értékelések Azure Migrateban: kiszolgáló értékelése
 
@@ -28,7 +28,7 @@ A Azure Migrate: Server Assessment használatával kétféle értékelést hozha
 **Értékelés típusa** | **Részletek**
 --- | --- 
 **Azure VM** | Értékelések a helyszíni kiszolgálók Azure-beli virtuális gépekre való átköltöztetéséhez. <br/><br/> A helyszíni [VMWare virtuális gépeket](how-to-set-up-appliance-vmware.md), a [Hyper-V virtuális gépeket](how-to-set-up-appliance-hyper-v.md)és a [fizikai kiszolgálókat](how-to-set-up-appliance-physical.md) felhasználhatja az Azure-ba való áttelepítéshez ezzel az értékelési típussal.
-**Azure VMware Solution (AVS)** | A helyszíni kiszolgálók [Azure VMware-megoldásba (AVS)](https://docs.microsoft.com/azure/azure-vmware/introduction)való átköltöztetésének felmérése. <br/><br/> A helyszíni [VMWare virtuális gépeket](how-to-set-up-appliance-vmware.md) az értékelés típusának használatával értékelheti az Azure VMware-megoldásba (AVS) való áttelepítésre. [További információ](concepts-azure-vmware-solution-assessment-calculation.md)
+**Azure VMware Solution (AVS)** | A helyszíni kiszolgálók [Azure VMware-megoldásba (AVS)](../azure-vmware/introduction.md)való átköltöztetésének felmérése. <br/><br/> A helyszíni [VMWare virtuális gépeket](how-to-set-up-appliance-vmware.md) az értékelés típusának használatával értékelheti az Azure VMware-megoldásba (AVS) való áttelepítésre. [További információ](concepts-azure-vmware-solution-assessment-calculation.md)
 
 A kiszolgáló-értékeléssel létrehozott értékelések az adatok időpontra vonatkozó pillanatképei. Az Azure-beli virtuális gépek értékelése a kiszolgálók értékelése során két méretezési feltétel közül választhat:
 
@@ -152,7 +152,7 @@ Tulajdonság | Részletek | Azure-készültségi állapot
 --- | --- | ---
 **Rendszerindítás típusa** | Az Azure a BIOS rendszerindítási típusával támogatja a virtuális gépeket, nem az UEFI-t. | Feltételesen üzemkész, ha a rendszerindítás UEFI típusú.
 **Cores** | Minden gépnek legfeljebb 128 maggal kell rendelkeznie, amely az Azure-beli virtuális gépek által támogatott maximális szám.<br/><br/> Ha rendelkezésre áll a teljesítmény előzményei, Azure Migrate az összehasonlításhoz a felhasznált magokat veszi figyelembe. Ha az értékelési beállítások egy kényelmi tényezőt határoznak meg, a kihasználatlan magok száma megszorozza a komfort tényezővel.<br/><br/> Ha nincsenek teljesítménybeli előzmények, Azure Migrate a lefoglalt magokat a komfort tényező alkalmazása nélkül használja. | Készen áll, ha a magok száma a határértéken belül van
-**RAM** | Az egyes gépek legfeljebb 3 892 GB RAM-mal rendelkezhetnek, ami az Azure M sorozatú Standard_M128m &nbsp; <sup>2</sup> virtuális gép által támogatott maximális méret. [További információk](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).<br/><br/> Ha elérhetők a teljesítmény előzményei, Azure Migrate a felhasznált RAM-ot az összehasonlításhoz. Ha meg van adva egy kényelmi tényező, a kihasznált RAM-ot a komfort faktor megszorozza.<br/><br/> Ha nincsenek előzmények, a lefoglalt RAM-ot a komfort faktor alkalmazása nélkül használja a rendszer.<br/><br/> | Készen áll, ha a RAM mennyisége a határértéken belül van
+**RAM** | Az egyes gépek legfeljebb 3 892 GB RAM-mal rendelkezhetnek, ami az Azure M sorozatú Standard_M128m &nbsp; <sup>2</sup> virtuális gép által támogatott maximális méret. [További információk](../virtual-machines/windows/sizes.md).<br/><br/> Ha elérhetők a teljesítmény előzményei, Azure Migrate a felhasznált RAM-ot az összehasonlításhoz. Ha meg van adva egy kényelmi tényező, a kihasznált RAM-ot a komfort faktor megszorozza.<br/><br/> Ha nincsenek előzmények, a lefoglalt RAM-ot a komfort faktor alkalmazása nélkül használja a rendszer.<br/><br/> | Készen áll, ha a RAM mennyisége a határértéken belül van
 **Storage-lemez** | A lemez lefoglalt mérete nem haladhatja meg a 32 TB-ot. Bár az Azure támogatja az 64 TB-os lemezeket az Azure ultra SSD Disks szolgáltatással, Azure Migrate: a Server Assessment jelenleg a 32 TB-ot ellenőrzi a lemez mérete miatt, mert még nem támogatja ultra SSD. <br/><br/> A géphez csatolt lemezek számának, beleértve az operációsrendszer-lemezt, 65 vagy kevesebbnek kell lennie. | Készen áll, ha a lemez mérete és száma a határértékeken belül van
 **Hálózat** | A gépekhez nem tartozhat több, mint 32 hálózati adapter (NIC). | Készen áll, ha a hálózati adapterek száma a korláton belül van
 
@@ -161,7 +161,7 @@ Tulajdonság | Részletek | Azure-készültségi állapot
 Az Azure-beli virtuális gépek értékeléséhez, valamint a virtuális gép tulajdonságainak áttekintéséhez a kiszolgáló értékelése egy gép vendég operációs rendszerét vizsgálja meg, hogy képes-e futni az Azure-ban.
 
 > [!NOTE]
-> A VMware virtuális gépek vendég-elemzésének kezeléséhez a kiszolgáló értékelése a virtuális gép számára megadott operációs rendszert használja vCenter Serverban. A vCenter Server azonban nem biztosítja a Linux rendszerű virtuális gépek operációs rendszereinek kernel-verzióját. A verzió felderítéséhez be kell állítania az alkalmazás- [felderítést](https://docs.microsoft.com/azure/migrate/how-to-discover-applications). Ezután a készülék felderíti a verziók adatait az App-Discovery beállításakor megadott vendég hitelesítő adatok használatával.
+> A VMware virtuális gépek vendég-elemzésének kezeléséhez a kiszolgáló értékelése a virtuális gép számára megadott operációs rendszert használja vCenter Serverban. A vCenter Server azonban nem biztosítja a Linux rendszerű virtuális gépek operációs rendszereinek kernel-verzióját. A verzió felderítéséhez be kell állítania az alkalmazás- [felderítést](./how-to-discover-applications.md). Ezután a készülék felderíti a verziók adatait az App-Discovery beállításakor megadott vendég hitelesítő adatok használatával.
 
 
 A kiszolgáló értékelése a következő logikát használja az Azure-készültség azonosítására az operációs rendszer alapján:
@@ -175,8 +175,8 @@ Windows Server 2008 R2 minden SPs-vel | Az Azure teljes körű támogatást bizt
 Windows Server 2008 (32 bites és 64 bites) | Az Azure teljes körű támogatást biztosít. | Készen áll az Azure-ra.
 Windows Server 2003 és Windows Server 2003 R2 | Ezek az operációs rendszerek átadták a támogatási dátumokat, és szükségük van egy [egyéni támogatási szerződésre (CSA)](https://aka.ms/WSosstatement) az Azure támogatásához. | Feltételesen készen áll az Azure-ra. Az Azure-ba való Migrálás előtt érdemes frissíteni az operációs rendszert.
 Windows 2000, Windows 98, Windows 95, Windows NT, Windows 3,1 és MS-DOS | Ezek az operációs rendszerek átadták a támogatásuk befejezésének dátumát. Előfordulhat, hogy a gép az Azure-ban indul el, de az Azure nem biztosít operációsrendszer-támogatást. | Feltételesen készen áll az Azure-ra. Javasoljuk, hogy az Azure-ba való Migrálás előtt frissítse az operációs rendszert.
-Windows 7, Windows 8 és Windows 10 | Az Azure [csak a Visual Studio-előfizetések](https://docs.microsoft.com/azure/virtual-machines/windows/client-images) támogatását biztosítja. | Feltételesen készen áll az Azure-ra.
-Windows 10 Pro | Az Azure támogatást nyújt a több- [bérlős üzemeltetési jogosultságokhoz.](https://docs.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment) | Feltételesen készen áll az Azure-ra.
+Windows 7, Windows 8 és Windows 10 | Az Azure [csak a Visual Studio-előfizetések](../virtual-machines/windows/client-images.md) támogatását biztosítja. | Feltételesen készen áll az Azure-ra.
+Windows 10 Pro | Az Azure támogatást nyújt a több- [bérlős üzemeltetési jogosultságokhoz.](../virtual-machines/windows/windows-desktop-multitenant-hosting-deployment.md) | Feltételesen készen áll az Azure-ra.
 Windows Vista és Windows XP Professional | Ezek az operációs rendszerek átadták a támogatásuk befejezésének dátumát. Előfordulhat, hogy a gép az Azure-ban indul el, de az Azure nem biztosít operációsrendszer-támogatást. | Feltételesen készen áll az Azure-ra. Javasoljuk, hogy az Azure-ba való Migrálás előtt frissítse az operációs rendszert.
 Linux | Tekintse meg az Azure által támogatott [Linux operációs rendszereket](../virtual-machines/linux/endorsed-distros.md) . Az Azure-ban más linuxos operációs rendszerek is elindíthatók. Azt javasoljuk azonban, hogy az operációs rendszert egy támogatott verzióra frissítse, mielőtt áttelepíti az Azure-ba. | Készen áll az Azure-ra, ha a verziót jóváhagyták.<br/><br/>Feltételesen üzemkész, ha a verzió nincs támogatva.
 Más operációs rendszerek, például az Oracle Solaris, az Apple macOS és a FreeBSD | Az Azure nem támogatja ezeket az operációs rendszereket. Előfordulhat, hogy a gép az Azure-ban indul el, de az Azure nem biztosít operációsrendszer-támogatást. | Feltételesen készen áll az Azure-ra. Javasoljuk, hogy telepítsen egy támogatott operációs rendszert az Azure-ba való áttelepítés előtt.  
@@ -293,7 +293,7 @@ A méretezési javaslatok befejezése után az Azure-beli virtuális gépek felm
 
 A költségek az értékelési beállításokban megadott pénznemben jelennek meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Tekintse át](best-practices-assessment.md) az értékelések létrehozásával kapcsolatos ajánlott eljárásokat. 
 

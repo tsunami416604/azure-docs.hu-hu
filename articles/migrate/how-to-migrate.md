@@ -3,15 +3,16 @@ title: Áttelepítési eszközök hozzáadása a Azure Migrate
 description: Megtudhatja, hogyan adhat hozzá áttelepítési eszközöket a Azure Migrate.
 ms.topic: article
 ms.date: 04/26/2020
-ms.openlocfilehash: 670341adca7ab2958d43132aab164d7bba0f87d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b6ac8ed64d3f12783cc16f0428874a19d027adf9
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84195826"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109807"
 ---
 # <a name="add-migration-tools"></a>Migrálási eszközök hozzáadása
 
-Ez a cikk bemutatja, hogyan adhat hozzá áttelepítési eszközöket a [Azure Migrate](migrate-overview.md).
+Ez a cikk bemutatja, hogyan adhat hozzá áttelepítési eszközöket a [Azure Migrate](./migrate-services-overview.md).
 
 - Ha szeretne hozzáadni egy áttelepítési eszközt, és még nem állított be Azure Migrate projektet, kövesse ezt a [cikket](how-to-add-tool-first-time.md).
 - Ha egy ISV-eszközt adott hozzá az áttelepítéshez, [kövesse a lépéseket](prepare-isv-movere.md), hogy felkészítse az eszközt.
@@ -62,6 +63,6 @@ Nagy mennyiségű adatok Azure-ba történő átmásolásához rendeljen egy Azu
 2. A **Azure Data Box kiválasztása**lapon adja meg az előfizetését. 
 3. Az átvitel az Azure-ba lesz importálva. Határozza meg az adatforrást és az Azure-régió célhelyét.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A [Hyper-V](tutorial-migrate-hyper-v.md) -vagy [VMware](tutorial-migrate-vmware.md) -alapú virtuális gépekre Azure Migrate kiszolgáló áttelepítését használó áttelepítés kipróbálása.

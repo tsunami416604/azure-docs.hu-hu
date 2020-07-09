@@ -6,14 +6,14 @@ ms.service: data-lake-analytics
 author: yanacai
 ms.author: yanacai
 ms.reviewer: jasonwhowell
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/01/2017
-ms.openlocfilehash: 481b17651afbd2c0e0cf7a683ae0838a7f3fd88f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 58521b16e0f4ff133fd032abd4451f785256bbee
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555592"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110470"
 ---
 # <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>A U-SQL futtatása és tesztelése Azure Data Lake U-SQL SDK-val
 
@@ -65,7 +65,7 @@ A U-SQL-parancsfájlokban relatív elérési utat és helyi abszolút elérési 
 
 Ha a U-SQL-parancsfájlt helyileg futtatja, a rendszer létrehoz egy munkakönyvtárat a fordítás során a jelenlegi futó könyvtár alatt. A fordítási kimeneteken kívül a helyi végrehajtáshoz szükséges futtatókörnyezeti fájlok árnyékolva lesznek a munkakönyvtárba. A munkakönyvtár gyökérkönyvtárának neve "ScopeWorkDir", és a munkakönyvtárban található fájlok a következők:
 
-|Könyvtár/fájl|Könyvtár/fájl|Könyvtár/fájl|Definíció|Description|
+|Könyvtár/fájl|Könyvtár/fájl|Könyvtár/fájl|Definíció|Leírás|
 |--------------|--------------|--------------|----------|-----------|
 |C6A101DDCB470506| | |Futtatókörnyezet-verzió kivonatoló karakterlánca|A helyi végrehajtáshoz szükséges futtatókörnyezeti fájlok árnyékmásolata|
 | |Script_66AE4909AA0ED06C| |Parancsfájl neve + szkript elérési útjának kivonat-karakterlánca|Fordítási kimenetek és végrehajtási lépés naplózása|
@@ -142,7 +142,7 @@ LocalRunHelper run -Script path_to_usql_script.usql [optional_arguments]
 
 A **Futtatás**nem kötelező argumentumai a következők:
 
-|Argumentum|Alapértelmezett érték|Description|
+|Argumentum|Alapértelmezett érték|Leírás|
 |--------|-------------|-----------|
 |– CodeBehind|False (Hamis)|A szkript a. CS kód mögött található.|
 |-CppSDK| |CppSDK könyvtár|
@@ -174,7 +174,7 @@ LocalRunHelper compile -Script path_to_usql_script.usql [optional_arguments]
 
 A **fordítás**nem kötelező argumentumai a következők:
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 |--------|-----------|
 | -CodeBehind [alapértelmezett érték: "false"]|A szkript a. CS kód mögött található.|
 | -CppSDK [alapértelmezett érték: ""]|CppSDK könyvtár|
@@ -219,7 +219,7 @@ LocalRunHelper execute -Algebra path_to_compiled_algebra_file [optional_argument
 
 A **végrehajtás**nem kötelező argumentumai a következők:
 
-|Argumentum|Alapértelmezett érték|Description|
+|Argumentum|Alapértelmezett érték|Leírás|
 |--------|-------------|-----------|
 |– DataRoot | '' |A metaadatok végrehajtásához szükséges adatok gyökerét. Alapértelmezés szerint a **LOCALRUN_DATAROOT** környezeti változót.|
 |-MessageOut | '' |Üzenetek kiírása a konzolon egy fájlba.|
@@ -332,13 +332,13 @@ A LocalRunHelper.exe az U-SQL helyi fordításához, futtatásához stb. program
 
 nyilvános LocalRunHelper ([System. IO. TextWriter messageOutput = null])
 
-|Paraméter|Típus|Description|
+|Paraméter|Típus|Leírás|
 |---------|----|-----------|
 |messageOutput|System. IO. TextWriter|a kimeneti üzenetek esetében állítsa a null értéket a konzol használatához|
 
 ### <a name="properties"></a>Tulajdonságok
 
-|Tulajdonság|Típus|Description|
+|Tulajdonság|Típus|Leírás|
 |--------|----|-----------|
 |AlgebraPath|sztring|Az algebra-fájl elérési útja (az algebra-fájl az egyik fordítási eredmény)|
 |CodeBehindReferences|sztring|Ha a parancsfájl további kódokat tartalmaz a hivatkozások mögött, adja meg a ";" karakterrel elválasztott elérési utakat.|
@@ -363,7 +363,7 @@ nyilvános LocalRunHelper ([System. IO. TextWriter messageOutput = null])
 
 ### <a name="method"></a>Metódus
 
-|Metódus|Description|Visszatérési|Paraméter|
+|Metódus|Leírás|Visszatérési|Paraméter|
 |------|-----------|------|---------|
 |nyilvános Boole DoCompile ()|Az U-SQL-szkript fordítása|Igaz siker esetén| |
 |nyilvános Boole DoExec ()|A lefordított eredmény végrehajtása|Igaz siker esetén| |
@@ -381,7 +381,7 @@ Ellenőrizze a következőket:
 - Győződjön meg arról, hogy rendelkezik x64-környezettel. A Build cél platformnak és a tesztkörnyezetben x64-nek kell lennie, az **1. lépés: C# egység tesztelési projekt és a fenti konfiguráció létrehozása című témakörben** talál.
 - Győződjön meg arról, hogy az összes függőségi fájlt átmásolta a NugetPackage\build\runtime\ a Project Working könyvtárba.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A U-SQL nyelv megismerése: [Get started with Azure Data Lake Analytics U-SQL language](data-lake-analytics-u-sql-get-started.md) (Ismerkedés az Azure Data Lake Analytics U-SQL nyelvével).
 - A diagnosztikai információk naplózásához tekintse meg [a Azure Data Lake Analytics diagnosztikai naplóinak elérését](data-lake-analytics-diagnostic-logs.md)ismertető témakört.

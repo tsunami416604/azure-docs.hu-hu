@@ -1,17 +1,16 @@
 ---
 title: SaaS-teljesítési API-k a Microsoft kereskedelmi piactéren
 description: A bevezetési API-k, amelyek lehetővé teszik a SaaS-ajánlatok integrálását Microsoft AppSource és az Azure piactéren.
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.author: dsindona
-ms.openlocfilehash: 70515ca04e870fa435f8e9f46122a8e0dcb9b588
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 218a0624f7e4adc1aa188dbd62db217bf79202f8
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84691356"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109297"
 ---
 # <a name="saas-fulfillment-apis-in-microsoft-commercial-marketplace"></a>SaaS-teljesítési API-k a Microsoft kereskedelmi piactéren
 
@@ -54,6 +53,6 @@ A CSP-vel kapcsolatos további információkért tekintse meg a következőt: ht
 >[!Note]
 >A SaaS-teljesítési API-k csak a közzétevő háttér-szolgáltatásának meghívására szolgálnak. Az API-kkal való közvetlen integráció nem támogatott a közzétevő weblapján. Csak a szolgáltatás és a szolgáltatás közötti hitelesítési folyamat használható.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha még nem tette meg, regisztráljon az SaaS-alkalmazást a [Azure Portal](https://ms.portal.azure.com) az [Azure ad-alkalmazás regisztrálása](./pc-saas-registration.md)című részben leírtak szerint.  Ezt követően használja az interfész legújabb verzióját a fejlesztéshez: [SaaS beteljesülés API 2-es verziója](./pc-saas-fulfillment-api-v2.md).

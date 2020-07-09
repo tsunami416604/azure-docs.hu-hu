@@ -3,11 +3,12 @@ title: Hogyan... Az Azure Application Insightsban | Microsoft Docs
 description: Gyakori kérdések a Application Insights.
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.openlocfilehash: 9ca5900bc9172b1f4ef9b1a7a660c6936ac38095
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 665d98378fc52e972986111847872ae30701f631
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83701945"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110232"
 ---
 # <a name="how-do-i--in-application-insights"></a>Hogyan tegyem... az Application Insights szolgáltatásban?
 ## <a name="get-an-email-when-"></a>E-mail küldése, ha...
@@ -32,17 +33,23 @@ Tegyük fel, hogy egy adott esemény bekövetkezésekor szeretne e-mailt kapni. 
 
 A riasztások [Egyéni metrikák](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric)esetén is beállíthatók, de nem egyéni események. Írjon be egy kódot a metrika növeléséhez az esemény bekövetkezésekor:
 
-    telemetry.TrackMetric("Alarm", 10);
+```csharp
+telemetry.TrackMetric("Alarm", 10);
+```
 
 vagy:
 
-    var measurements = new Dictionary<string,double>();
-    measurements ["Alarm"] = 10;
-    telemetry.TrackEvent("status", null, measurements);
+```csharp
+var measurements = new Dictionary<string,double>();
+measurements ["Alarm"] = 10;
+telemetry.TrackEvent("status", null, measurements);
+```
 
 Mivel a riasztások két állapottal rendelkeznek, alacsony értéket kell küldenie, amikor a riasztást véget ér:
 
-    telemetry.TrackMetric("Alarm", 0.5);
+```csharp
+telemetry.TrackMetric("Alarm", 0.5);
+```
 
 Diagram létrehozása a [metrika Explorerben](../../azure-monitor/platform/metrics-charts.md) a riasztás megtekintéséhez:
 
@@ -130,9 +137,9 @@ A telemetria a kiszolgálóról történő gyűjtésének és továbbításának
 ### <a name="aspnet-classic-applications"></a>Klasszikus alkalmazások ASP.NET
 
 ```csharp
-    using  Microsoft.ApplicationInsights.Extensibility;
+using  Microsoft.ApplicationInsights.Extensibility;
 
-    TelemetryConfiguration.Active.DisableTelemetry = true;
+TelemetryConfiguration.Active.DisableTelemetry = true;
 ```
 
 ### <a name="other-applications"></a>Egyéb alkalmazások

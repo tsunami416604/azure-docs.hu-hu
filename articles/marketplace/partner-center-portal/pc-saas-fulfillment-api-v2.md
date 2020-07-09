@@ -1,18 +1,16 @@
 ---
 title: SaaS-teljesítési API-k v2 a Microsoft kereskedelmi piactéren
 description: Ismerje meg, hogyan hozhat létre és kezelhet SaaS-ajánlatokat a Microsoft AppSource és az Azure Marketplace-en a teljesítési API-k 2-es verziójának használatával.
-author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 06/10/2020
-ms.author: dsindona
-ms.openlocfilehash: 1a833f86a0d8de3f5b8c83e899a58fa83f3153c4
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: f501e84e988d340ba710e49d30caddbe56006c8a
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963767"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109416"
 ---
 # <a name="saas-fulfillment-apis-version-2-in-microsoft-commercial-marketplace"></a>SaaS-teljesítési API-k 2-es verziója a Microsoft kereskedelmi piactéren
 
@@ -974,7 +972,7 @@ A *terv módosítása*, a *mennyiség módosítása*és a *leiratkozási* művel
 A kiadói támogatási lehetőségekért lásd: [a kereskedelmi piactér program támogatása a partner Centerben](support.md) .
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A piactéren elérhető SaaS-ajánlatok további lehetőségeiért lásd: Marketplace- [mérési szolgáltatás API](marketplace-metering-service-apis.md) -k.
 

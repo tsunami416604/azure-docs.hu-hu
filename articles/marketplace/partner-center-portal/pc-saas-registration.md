@@ -1,18 +1,16 @@
 ---
 title: SaaS-alkalmazás regisztrálása – Azure Marketplace
 description: Ismerje meg, hogyan regisztrálhat egy SaaS-alkalmazást a Azure Portal használatával, és hogyan fogadhat egy Azure Active Directory biztonsági jogkivonatot.
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.author: dsindona
-ms.openlocfilehash: 630dceedcac36cf6d37d54612d73fabe676d74f6
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 85bd6f4192f5c1f47856851ab53521a101340007
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963716"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109263"
 ---
 # <a name="register-a-saas-application"></a>SaaS-alkalmazás regisztrálása
 
@@ -111,6 +109,6 @@ Példa a válaszra:
 
 A `"access_token"` válaszban szereplő mező értéke az, amelyet a rendszer az `<access_token>` összes SaaS-beteljesülés és a Marketplace-mérési API-k meghívásakor ad át engedélyezési paraméterként.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure AD-védelemmel ellátott alkalmazás mostantól használhatja a [SaaS-teljesítési API 2-es verzióját](./pc-saas-fulfillment-api-v2.md).

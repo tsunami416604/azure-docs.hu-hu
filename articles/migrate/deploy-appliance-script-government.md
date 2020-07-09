@@ -3,15 +3,16 @@ title: Azure Migrate berendezés beállítása Azure Government
 description: Megtudhatja, hogyan állíthat be Azure Migrate készüléket a Azure Government
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: c8bcecd7cca78a24d9dbf18e185c9362ed712b43
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f0ebc882646b5ff3f62ddddf91cffc85cb5e0da6
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85052477"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109977"
 ---
 # <a name="set-up-an-appliance-in-azure-government"></a>Berendezés beállítása Azure Government 
 
-Ezt a cikket követve üzembe helyezhet egy [Azure Migrate berendezést](deploy-appliance.md) VMWare virtuális gépek, Hyper-V virtuális gépek és fizikai kiszolgálók számára egy Azure Government-felhőben. Parancsfájl futtatásával hozza létre a készüléket, és ellenőrizze, hogy tud-e csatlakozni az Azure-hoz. Ha a készüléket a nyilvános felhőben szeretné beállítani, kövesse [ezt a cikket](deploy-appliance-script.md).
+Ezt a cikket követve üzembe helyezhet egy [Azure Migrate berendezést](./migrate-appliance-architecture.md) VMWare virtuális gépek, Hyper-V virtuális gépek és fizikai kiszolgálók számára egy Azure Government-felhőben. Parancsfájl futtatásával hozza létre a készüléket, és ellenőrizze, hogy tud-e csatlakozni az Azure-hoz. Ha a készüléket a nyilvános felhőben szeretné beállítani, kövesse [ezt a cikket](deploy-appliance-script.md).
 
 
 > [!NOTE]
@@ -182,7 +183,7 @@ A szkript futtatása:
 
 Győződjön meg arról, hogy a készülék tud csatlakozni az Azure URL-címeihez a [kormányzati felhőkhöz](migrate-appliance.md#government-cloud-urls).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A készülék üzembe helyezése után először be kell állítania, majd regisztrálnia kell a Azure Migrate projektben.
 

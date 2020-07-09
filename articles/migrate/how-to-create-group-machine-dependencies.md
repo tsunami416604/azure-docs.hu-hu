@@ -3,11 +3,12 @@ title: Ügynök-alapú függőségi elemzés beállítása Azure Migrate Server 
 description: Ez a cikk azt ismerteti, hogyan állítható be az ügynök-alapú függőségek elemzése Azure Migrate Server Assessment-ben.
 ms.topic: how-to
 ms.date: 6/09/2020
-ms.openlocfilehash: 1271a45843a3775d4e1444321faad194edad2f23
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1a656ec734ff098dd5835f653010c7f298c13b38
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84770577"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109994"
 ---
 # <a name="set-up-dependency-visualization"></a>Függőségi vizualizáció beállítása
 
@@ -56,7 +57,7 @@ Ez a cikk az ügynök nélküli függőségek elemzésének beállítását isme
 Az összes elemezni kívánt gépen telepítse az ügynököket.
 
 > [!NOTE]
-> System Center Operations Manager 2012 R2 vagy újabb rendszer által figyelt gépek esetében nem kell telepítenie az MMA-ügynököt. A Service Map a Operations Managersal integrálódik. [Kövesse](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites) az integrációs útmutatót.
+> System Center Operations Manager 2012 R2 vagy újabb rendszer által figyelt gépek esetében nem kell telepítenie az MMA-ügynököt. A Service Map a Operations Managersal integrálódik. [Kövesse](../azure-monitor/insights/service-map-scom.md#prerequisites) az integrációs útmutatót.
 
 1. **Azure Migrate: kiszolgáló értékelése**, kattintson a **felderített kiszolgálók**elemre.
 2. Minden olyan géphez, amelyet elemezni szeretne a függőségi vizualizációval, kattintson a **függőségek** oszlopban az **ügynök telepítésének**megkezdése elemre.
@@ -83,7 +84,7 @@ Az ügynök telepítése Windows rendszerű gépre:
 Az ügynököt a parancssorból vagy egy automatizált módszerrel, például Configuration Manager vagy [Intigua](https://www.intigua.com/intigua-for-azure-migration)is telepítheti.
 - [További](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration) információ az MMA-ügynök telepítésével kapcsolatban ezen módszerek használatával.
 - Az MMA-ügynök ezzel a [szkripttel](https://go.microsoft.com/fwlink/?linkid=2104394) is telepíthető.
-- [További](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#supported-windows-operating-systems) információ az MMA által támogatott Windows operációs rendszerekről.
+- [További](../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems) információ az MMA által támogatott Windows operációs rendszerekről.
 
 ### <a name="install-mma-on-a-linux-machine"></a>Az MMA telepítése Linux rendszerű gépen
 
@@ -94,7 +95,7 @@ Az MMA telepítése Linux rendszerű gépre:
 
     ```sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>```
 
-[További](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#supported-linux-operating-systems) információ az MMA által támogatott Linux operációs rendszerek listájáról. 
+[További](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) információ az MMA által támogatott Linux operációs rendszerek listájáról. 
 
 ## <a name="install-the-dependency-agent"></a>A függőségi ügynök telepítése
 
@@ -103,8 +104,8 @@ Az MMA telepítése Linux rendszerű gépre:
 
     ```sh InstallDependencyAgent-Linux64.bin```
 
-- [További](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-enable-hybrid-cloud#installation-script-examples) információ arról, hogyan használhatók a parancsfájlok a függőségi ügynök telepítéséhez.
-- [További](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-enable-overview#supported-operating-systems) információ a függőségi ügynök által támogatott operációs rendszerekről.
+- [További](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples) információ arról, hogyan használhatók a parancsfájlok a függőségi ügynök telepítéséhez.
+- [További](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) információ a függőségi ügynök által támogatott operációs rendszerekről.
 
 
 ## <a name="create-a-group-using-dependency-visualization"></a>Csoport létrehozása függőségi vizualizáció használatával
@@ -161,8 +162,8 @@ Futtasson egy lekérdezést a függőségi értékekhez a következő módon:
 Íme néhány példa a függőségi adatok kinyerésére.
 
 - A lekérdezéseket módosíthatja az előnyben részesített adatpontok kinyeréséhez.
-- [Tekintse át](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records) a függőségi adatrekordok teljes listáját.
-- [Tekintse át](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#sample-log-searches) a további mintavételi lekérdezéseket.
+- [Tekintse át](../azure-monitor/insights/service-map.md#log-analytics-records) a függőségi adatrekordok teljes listáját.
+- [Tekintse át](../azure-monitor/insights/service-map.md#sample-log-searches) a további mintavételi lekérdezéseket.
 
 #### <a name="sample-review-inbound-connections"></a>Minta: bejövő kapcsolatok áttekintése
 
@@ -170,7 +171,7 @@ Egy virtuális gép bejövő kapcsolatainak áttekintése.
 
 - A kapcsolati metrikák (VMConnection) táblában lévő rekordok nem jelölik az egyes fizikai hálózati kapcsolatokat.
 - A fizikai hálózati kapcsolatok több logikai kapcsolatba vannak csoportosítva.
-- [További](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#connections) információ a fizikai hálózati kapcsolatok adatainak összesítéséről a VMConnection-ben.
+- [További](../azure-monitor/insights/service-map.md#connections) információ a fizikai hálózati kapcsolatok adatainak összesítéséről a VMConnection-ben.
 
 ```
 // the machines of interest
@@ -204,7 +205,7 @@ VMConnection
 | summarize sum(BytesSent), sum(BytesReceived) by Computer, Direction, SourceIp, DestinationIp, DestinationPort
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Hozzon létre egy értékelést](how-to-create-assessment.md) egy csoport számára.
 

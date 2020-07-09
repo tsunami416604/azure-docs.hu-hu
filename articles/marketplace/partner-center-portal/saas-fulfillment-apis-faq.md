@@ -1,18 +1,16 @@
 ---
 title: SaaS-teljesítési API – GYIK – Microsoft kereskedelmi piactér
 description: Ismerje meg a Microsoft kereskedelmi piactér integrációs követelményeit, amelyek lehetővé teszik az Azure-ügyfelek számára az SaaS-ajánlatokra való előfizetést.
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: ba746710227cba95dc4c73a910c22bb6cdaae0ed
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 97359083698e92f39ca854972c864ef769bda730
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963750"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109246"
 ---
 # <a name="common-questions-about-saas-fulfillment-apis"></a>SaaS-megvalósítási API-kkal kapcsolatos gyakori kérdések
 
@@ -83,6 +81,6 @@ Az alábbi kódrészlet rögzíti a folyamatot, amikor az Azure-felhasználó le
 
 ![Ügyfél lemondása a Microsoft kirakatában](media/saas-metering-service-integration-flow-e.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Marketplace metering service API-k](./marketplace-metering-service-apis.md)

@@ -1,17 +1,18 @@
 ---
 title: Támogatás kérése a kereskedelmi piactér portálhoz a partner Centerben
 description: Ismerje meg a partner Center támogatási lehetőségeit, beleértve a támogatási kérések beszerzését.
-author: qianw211
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 03/07/2020
-ms.openlocfilehash: a007fe80c7c95305d65819eaa7081a8ff69e1cfc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 01c93c046a78db70a237ddf1d4514938fd4e40ac
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84463688"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109093"
 ---
 # <a name="support-for-the-commercial-marketplace-program-in-partner-center"></a>A kereskedelmi piactér program támogatása a partner Centerben
 
@@ -76,6 +77,6 @@ Ha nem találja a választ a **javasolt megoldásokban**, kattintson a **problé
 
 A nyitott és lezárt jegyek áttekintéséhez nyissa meg a **kereskedelmi piactér** elemet a bal oldali navigációs sávon, majd válassza a **támogatás**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Meglévő ajánlat frissítése a kereskedelmi piactéren](./update-existing-offer.md)

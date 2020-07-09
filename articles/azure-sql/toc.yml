@@ -57,7 +57,11 @@
             - name: Dinamikus adatmaszkolás
               href: database/dynamic-data-masking-overview.md
             - name: SQL-sebezhetőségi felmérés
-              href: database/sql-vulnerability-assessment.md
+              items:
+                - name: SQL-sebezhetőségi felmérés
+                  href: database/sql-vulnerability-assessment.md
+                - name: Sebezhetőségi felmérés szabályai
+                  href: database/sql-database-vulnerability-assessment-rules.md
             - name: 'Bejelentkezések, felhasználói fiókok, szerepkörök és engedélyek'
               href: database/logins-create-manage.md
             - name: Azure AD-hitelesítés
@@ -606,6 +610,9 @@
           href: database/powershell-script-content-guide.md?tabs=single-database
         - name: Azure Resource Manager
           href: database/arm-templates-content-guide.md?tabs=single-database
+        - name: Az Azure Policy beépített elemei
+          displayName: 'samples, policies, definitions'
+          href: ./database/policy-samples.md
         - name: Kódminták
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
 - name: Felügyelt SQL-példány (SQL MI)
@@ -833,6 +840,9 @@
           href: database/powershell-script-content-guide.md?tabs=managed-instance
         - name: Azure Resource Manager
           href: database/arm-templates-content-guide.md?tabs=managed-instance
+        - name: Az Azure Policy beépített elemei
+          displayName: 'samples, policies, definitions'
+          href: ./database/policy-samples.md
         - name: Kódminták
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
 - name: Azure virtuális gépen futó SQL Server
@@ -974,8 +984,6 @@
                       items:
                         - name: DNN létrehozása FCI-hez
                           href: virtual-machines/windows/hadr-distributed-network-name-dnn-configure.md
-                        - name: Funkció együttműködése a DNN-nel
-                          href: virtual-machines/windows/failover-cluster-instance-dnn-interoperability.md
                         - name: Az FCI DNN és az SQL Server funkciói
                           href: virtual-machines/windows/failover-cluster-instance-dnn-interoperability.md
                 - name: Kapcsolat konfigurálása
