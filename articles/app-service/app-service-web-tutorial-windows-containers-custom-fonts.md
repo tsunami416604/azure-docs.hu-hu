@@ -4,18 +4,18 @@ description: Megtudhatja, hogyan telepíthet át egyéni Windows-tárolókat Azu
 ms.topic: tutorial
 ms.date: 10/22/2019
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 8e755c5b9a57eb66fc47364fb2fcdcbe30c2d09e
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 8f2f4f707300e3ebe31f059c65492247befe324a
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85205622"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169952"
 ---
 # <a name="migrate-an-aspnet-app-to-azure-app-service-using-a-windows-container-preview"></a>ASP.NET-alkalmazás áttelepítése az Azure App Service szolgáltatásba egy Windows-tároló (előzetes verzió) használatával
 
 Az [Azure App Service](overview.md) előre meghatározott, IIS-en futó alkalmazáscsoportokat biztosít Windows rendszeren, például az ASP.NET-et vagy a Node.js-t. Az előre konfigurált Windows-környezet letiltja az operációs rendszeren például a rendszergazdai hozzáférést, a szoftvertelepítést vagy a globális szerelvény-gyorsítótár módosítását (lásd [az operációs rendszer Azure App Service-funkcionalitásával foglalkozó részt](operating-system-functionality.md)). Egy egyéni Windows-tároló az App Service-ben való használata lehetővé teszi az alkalmazáshoz szükséges operációs rendszer-módosítások végrehajtását, így egyszerűen áttelepítheti az egyéni operációsrendszer- és szoftverkonfigurációkat igénylő helyszíni alkalmazásokat. Ez az oktatóanyag bemutatja egy Windows betűkészlet-könyvtárba telepített egyéni betűkészletet használó ASP.NET-alkalmazás az App Service-be való áttelepítésének menetét. Egy Visual Studióból származó egyénileg konfigurált Windows-rendszerképet kell üzembe helyeznie az [Azure Container Registryben](https://docs.microsoft.com/azure/container-registry/), majd futtatnia az App Service-ben.
 
-![](media/app-service-web-tutorial-windows-containers-custom-fonts/app-running.png)
+![Megjeleníti a Windows-tárolóban futó webalkalmazást.](media/app-service-web-tutorial-windows-containers-custom-fonts/app-running.png)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -146,7 +146,7 @@ Az **alapvető** beállítások lapon konfigurálja a beállításokat az alább
 
 Az **alapvető beállítások** lap így néz ki:
 
-![](media/app-service-web-tutorial-windows-containers-custom-fonts/configure-app-basics.png)
+![A webalkalmazás konfigurálásához használt alapjai lapot jeleníti meg.](media/app-service-web-tutorial-windows-containers-custom-fonts/configure-app-basics.png)
 
 ### <a name="configure-windows-container"></a>Windows-tároló konfigurálása
 
@@ -156,7 +156,7 @@ A **Docker** lapon konfigurálja az egyéni Windows-tárolót az alábbi táblá
 | ----------------- | ------------ |
 |**Kép forrása**| Azure Container-regisztráció |
 |**Beállításjegyzék**| Válassza ki [a korábban létrehozott beállításjegyzéket](#publish-to-azure-container-registry). |
-|**Kép**| customfontsample |
+|**Rendszerkép**| customfontsample |
 |**Tag**| legújabb |
 
 ### <a name="complete-app-creation"></a>Alkalmazás létrehozásának befejezése
@@ -167,7 +167,7 @@ Kattintson a **Létrehozás** parancsra, majd várjon, amíg az Azure létrehozz
 
 Értesítés jelenik meg, ha az Azure befejezte a művelet végrehajtását.
 
-![](media/app-service-web-tutorial-windows-containers-custom-fonts/portal-create-finished.png)
+![Azt mutatja, hogy az Azure-művelet befejeződött.](media/app-service-web-tutorial-windows-containers-custom-fonts/portal-create-finished.png)
 
 1. Kattintson az **Erőforrás megnyitása** elemre.
 
@@ -175,11 +175,11 @@ Kattintson a **Létrehozás** parancsra, majd várjon, amíg az Azure létrehozz
 
 Egy új böngészőlapon a következő oldal jelenik meg:
 
-![](media/app-service-web-tutorial-windows-containers-custom-fonts/app-starting.png)
+![Megjeleníti a webalkalmazás új böngésző oldalát.](media/app-service-web-tutorial-windows-containers-custom-fonts/app-starting.png)
 
 Várjon néhány percet, és próbálkozzon újra, amíg meg nem jelenik a kezdőlap a várt, gyönyörű betűtípussal:
 
-![](media/app-service-web-tutorial-windows-containers-custom-fonts/app-running.png)
+![Megjeleníti a megadott betűkészlettel rendelkező kezdőlapot.](media/app-service-web-tutorial-windows-containers-custom-fonts/app-running.png)
 
 **Gratulálunk!** Áttelepített egy ASP.NET-alkalmazást az Azure App Service szolgáltatásba egy Windows-tárolóban.
 

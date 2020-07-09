@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: ba5ecc29edbcd69324500e87add846e4395ce0a3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 312723818c4cef82ad6c96b013d7ec81ede276cc
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80067570"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130909"
 ---
 # <a name="prepare-azure-for-on-premises-disaster-recovery-to-azure"></a>Az Azure előkészítése helyszíni vész-helyreállításra az Azure-ba
 
@@ -37,7 +37,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 - Tekintse át a [VMware](vmware-azure-architecture.md), a [Hyper-V](hyper-v-azure-architecture.md)és a [fizikai kiszolgáló](physical-azure-architecture.md) architektúráját a vész-helyreállításhoz.
 - Gyakori kérdések a [VMware](vmware-azure-common-questions.md) -ről és a [Hyper-V-](hyper-v-azure-common-questions.md) ről
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) . Ezután jelentkezzen be a [Azure Portalba](https://portal.azure.com).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/), mielőtt hozzákezd. Ezután jelentkezzen be a [Azure Portalba](https://portal.azure.com).
 
 
 ## <a name="verify-account-permissions"></a>Fiókengedélyek ellenőrzése
@@ -64,7 +64,7 @@ A feladatok végrehajtásához az Ön fiókjának rendelkeznie kell a Virtuális
 
    ![Új tároló létrehozása](./media/tutorial-prepare-azure/new-vault-settings.png)
 
-   Az új tároló ekkor megjelenik az **irányítópult** > **minden erőforrás**és a fő **Recovery Services** -tárolók lapon.
+   Az új tároló ekkor megjelenik az **irányítópult**  >  **minden erőforrás**és a fő **Recovery Services** -tárolók lapon.
 
 ## <a name="set-up-an-azure-network"></a>Azure-hálózat beállítása
 
@@ -79,7 +79,7 @@ A helyszíni gépek replikálódnak az Azure Managed Disks szolgáltatásba. Fel
 7. A **hely**mezőben válassza ki ugyanazt a régiót, mint amelyben a Recovery Services-tárolót létrehozták. Az oktatóanyagban ez **Nyugat-Európa**. A hálózatnak ugyanabban a régióban kell lennie, mint a tárolónak.
 8. A **címtartomány**mezőben adja meg a hálózat tartományát. A **10.1.0.0/24**-et használja, és nem használ alhálózatot.
 9. Elhagyjuk az alapszintű DDoS-védelem alapértelmezett lehetőségeit, a szolgáltatási végpontok nélkül vagy a tűzfalat a hálózaton.
-9. Kattintson a **Létrehozás** gombra.
+9. Válassza a **Létrehozás** lehetőséget.
 
    ![Virtuális hálózat létrehozása](media/tutorial-prepare-azure/create-network.png)
 
@@ -90,8 +90,8 @@ A virtuális hálózat néhány másodperc alatt létrejön. Miután létrejött
 
 ## <a name="next-steps"></a>További lépések
 
-- A VMware vész-helyreállítás esetén [készítse elő a helyszíni VMware-infrastruktúrát](tutorial-prepare-on-premises-vmware.md).
+- A VMware vész-helyreállítás esetén [készítse elő a helyszíni VMware-infrastruktúrát](./vmware-azure-tutorial-prepare-on-premises.md).
 - A Hyper-V vész-helyreállítás esetén [készítse elő a helyszíni Hyper-v-kiszolgálókat](hyper-v-prepare-on-premises-tutorial.md).
 - A fizikai kiszolgáló vész-helyreállításához [állítsa be a konfigurációs kiszolgálót és a forrás-környezetet](physical-azure-disaster-recovery.md)
-- Az Azure Networks [ismertetése](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview).
-- [További információ a](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) felügyelt lemezekről.
+- Az Azure Networks [ismertetése](../virtual-network/virtual-networks-overview.md).
+- [További információ a](../virtual-machines/windows/managed-disks-overview.md) felügyelt lemezekről.

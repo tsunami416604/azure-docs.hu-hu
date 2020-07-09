@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/03/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6f6cb87cf7628c48ce6adf12336c4b712dc0ff9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b31bc86554998295bc97352d28fa3b3d4b330abe
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82202621"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146579"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-jira-by-resolution-gmbh"></a>Oktatóanyag: Azure Active Directory integráció az SAML SSO-nal a JIRA by Solution GmbH által
 
@@ -33,7 +33,7 @@ Az SAML SSO az Azure AD-vel való JIRA általi integrációja a következő elő
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -117,7 +117,7 @@ A következő lépések végrehajtásával konfigurálhatja az egyszeri bejelent
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<server-base-url>/plugins/servlet/samlsso`
 
     > [!NOTE]
-    > Az azonosító, a válasz URL-cím és a bejelentkezési URL-cím mezőbe írja be a ** \<Server-Base-URL>t** a JIRA-példány alap URL-címével. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti. Ha problémája van, vegye fel velünk a kapcsolatot az [SAML SSO-val a JIRA by Solution GmbH ügyfélszolgálati csapatával](https://www.resolution.de/go/support).
+    > Az azonosító, a válasz URL-cím és a bejelentkezési URL-cím helyére írja **\<server-base-url>** be az JIRA-példány alap URL-címét. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti. Ha problémája van, vegye fel velünk a kapcsolatot az [SAML SSO-val a JIRA by Solution GmbH ügyfélszolgálati csapatával](https://www.resolution.de/go/support).
 
 4. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon az **SAML aláíró tanúsítvány** szakaszban töltse le az **összevonási metaadatok XML-fájlját** , és mentse a számítógépre.
 
@@ -219,11 +219,11 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **Britta Simon** **nevet** .
   
-    b. A **Felhasználónév** mezőbe írja be <b>BrittaSimon@contoso.com</b>a nevet.
+    b. A **Felhasználónév** mezőbe írja be a nevet <b>BrittaSimon@contoso.com</b> .
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -275,11 +275,11 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek az S
 
     ![Alkalmazott hozzáadása](./media/samlssojira-tutorial/user4-new.png) 
 
-    a. Az **e-mail cím** szövegmezőbe írja be a felhasználó e-mail-címét <b>BrittaSimon@contoso.com</b>:.
+    a. Az **e-mail cím** szövegmezőbe írja be a felhasználó e-mail-címét: <b>BrittaSimon@contoso.com</b> .
 
     b. A **teljes név** szövegmezőbe írja be a felhasználó teljes nevét: **Britta Simon**.
 
-    c. A **Felhasználónév** szövegmezőbe írja be a felhasználó e-mail-címét <b>BrittaSimon@contoso.com</b>:. 
+    c. A **Felhasználónév** szövegmezőbe írja be a felhasználó e-mail-címét: <b>BrittaSimon@contoso.com</b> . 
 
     d. A **jelszó** szövegmezőbe írja be a felhasználó jelszavát.
 
@@ -291,7 +291,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszt
 
 Ha a hozzáférési panelen a JIRA által használt SAML SSO-ra kattint, automatikusan be kell jelentkeznie az SAML SSO-ba a JIRA by Solution GmbH számára, amelyhez be kell állítania az SSO-t. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-Az egyszeri bejelentkezést is tesztelheti, ha megnyitja a `https://<server-base-url>/plugins/servlet/samlsso`következőt:. Helyettesítse be a ** \<Server-Base-URL-címet>** a JIRA-példány alap URL-címével.
+Az egyszeri bejelentkezést is tesztelheti, ha megnyitja a következőt: `https://<server-base-url>/plugins/servlet/samlsso` . Helyettesítse **\<server-base-url>** be a JIRA-példány alap URL-címét.
 
 
 ## <a name="enable-single-sign-on-redirection-for-jira"></a>Egyszeri bejelentkezéses átirányítás engedélyezése a JIRA
@@ -304,17 +304,19 @@ Az SSO-átirányítás aktiválásához tegye a következőket az **JIRA-példá
 
 1. Nyissa meg az SAML SSO beépülő modul konfigurációs lapját a JIRA-ben.
 1. Kattintson a bal oldali panelen található **átirányítás** elemre.
-![](./media/samlssojira-tutorial/ssore1.png)
+
+   ![A JIRA SAML SingleSignOn beépülő modul konfigurációs oldalának részleges képernyőképe, amely kiemeli az átirányítási hivatkozást a bal oldali navigációs sávon.](./media/samlssojira-tutorial/ssore1.png)
 
 1. Jelölje be az **SSO-átirányítás engedélyezése**jelölőnégyzetet.
-![](./media/samlssojira-tutorial/ssore2.png) 
+
+   ![A JIRA SAML SingleSignOn beépülő modul konfigurációs oldalának részleges képernyőképe, amely kiemeli a kiválasztott "SSO-átirányítás engedélyezése" jelölőnégyzetet.](./media/samlssojira-tutorial/ssore2.png) 
 
 1. Nyomja meg a **Beállítások mentése** gombot a jobb felső sarokban.
 
-A beállítás aktiválása után továbbra is elérheti a Felhasználónév/jelszó kérést, ha az **Nosso engedélyezése** beállítás be `https://\<server-base-url>/login.jsp?nosso`van jelölve. Mint mindig, helyettesítse ** \<be a Server-Base-URL-címet>** az alap URL-címmel.
+A beállítás aktiválása után továbbra is elérheti a Felhasználónév/jelszó kérést, ha az **Nosso engedélyezése** beállítás be van jelölve `https://\<server-base-url>/login.jsp?nosso` . Mint mindig, helyettesítse **\<server-base-url>** be az alap URL-címet.
 
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

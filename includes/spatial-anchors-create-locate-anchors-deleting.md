@@ -1,11 +1,11 @@
 ---
-ms.openlocfilehash: 9e50caeac5c52b9f2309448e2bb0b760f533fb6c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ec78ffd1fbc1f77a7b1e1467df1c2303e7d5daf1
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67178836"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86156645"
 ---
 ## <a name="delete-anchors"></a>Horgonyok törlése
 
-A Felhőbeli térbeli horgonyok törléséhez használja a `DeleteAnchor()` metódust. A horgonyok törlése, ha már nincs használatban, jó gyakorlat, hogy korán belefoglaljuk a fejlesztési folyamatba és a gyakorlatba. Ezzel megtartja az erőforrások tisztítását. Emellett, bár az Azure térbeli horgonyok díjmentesen használhatók, a díjszabás később is változhat. A díjszabással kapcsolatos részletekért tekintse meg a [díjszabási oldalunkat.](https://azure.microsoft.com/pricing/details/spatial-anchors/)
+A Felhőbeli térbeli horgonyok törléséhez használja a `DeleteAnchor()` metódust. A horgonyok törlése, ha már nincs használatban, az Azure-erőforrások takarításának fenntartása érdekében érdemes korán bemutatni a fejlesztési folyamaton és a gyakorlatban. 

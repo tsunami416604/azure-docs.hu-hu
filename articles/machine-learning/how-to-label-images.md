@@ -2,19 +2,20 @@
 title: Képek címkézése egy címkézési projektben
 title.suffix: Azure Machine Learning
 description: Megtudhatja, hogyan használhatja az adatcímkéző eszközöket egy Azure Machine Learning címkézési projektben.
-author: lobrien
-ms.author: laobri
+author: sdgilley
+ms.author: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 04/09/2020
-ms.openlocfilehash: 0421e5ad164c440c1b841cae66e7dafc5deadb81
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 90ef75c704459ca726480e6950ba748162c66b8e
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86025131"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147020"
 ---
-# <a name="tag-images-in-a-labeling-project-preview"></a>Képek címkézése egy címkézési projektben (előzetes verzió)
+# <a name="tag-images-in-a-labeling-project"></a>Képek címkézése egy címkézési projektben 
 
 Miután a projekt rendszergazdája [létrehoz egy címkézési projektet](https://docs.microsoft.com/azure/machine-learning/how-to-create-labeling-projects#create-a-labeling-project) a Azure Machine Learningban, a címkézés eszközzel (nyilvános előzetes verzió) gyorsan elő tudja készíteni a Machine learning projekt adatait. Ez a cikk a következőket ismerteti:
 
@@ -63,7 +64,7 @@ Az Azure lehetővé teszi a **Küldés** gombot, amikor címkézte az összes k�
 
 Miután elküldte a címkéket az adatokhoz, az Azure frissíti a lapot egy új rendszerképekkel a munkahelyi sorból.
 
-### <a name="assisted-machine-learning"></a>Támogatott gépi tanulás 
+### <a name="assisted-machine-learning-preview"></a>Támogatott gépi tanulás (előzetes verzió) 
 
 Előfordulhat, hogy a gépi tanulási algoritmusok aktiválva vannak. Ha ezek az algoritmusok engedélyezve vannak a projektben, a következők jelenhetnek meg:
 
@@ -124,7 +125,7 @@ Az aktuális rendszerkép *összes* határoló mezőjének törléséhez válass
 
 Miután létrehozta a képekhez tartozó határoló mezőket, válassza a **Submit (Küldés** ) lehetőséget a munka mentéséhez, vagy a folyamatban lévő munka nem lesz mentve.
 
-## <a name="finish-up"></a>Befejezés
+## <a name="finish-up"></a>Befejező lépések
 
 Ha címkézett adatok oldalát küldi el, az Azure új címkézetlen adatok hozzárendelését teszi elérhetővé egy munkahelyi várólistából. Ha nem áll rendelkezésre több címkézetlen információ, egy üzenet jelenik meg, amely a portál kezdőlapjára mutató hivatkozással együtt.
 

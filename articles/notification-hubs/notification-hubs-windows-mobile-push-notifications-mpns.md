@@ -18,12 +18,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: db2e583515d948f455e1d2129684f97347a07403
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 2a2db9f7342b984a8c539a345f8e5038caf5ff85
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594933"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170275"
 ---
 # <a name="tutorial-send-push-notifications-to-windows-phone-apps-using-notification-hubs"></a>Oktatóanyag: leküldéses értesítések küldése Windows Phone-telefon alkalmazásoknak Notification Hubs használatával
 
@@ -84,9 +84,12 @@ Ebben a szakaszban egy új Windows Phone-alkalmazást hoz létre, amely regisztr
     ![Visual Studio – NuGet Package Manager (NuGet-csomagkezelő)][20]
 4. Nyissa meg az App.xaml.cs fájlt, majd adja hozzá a következő `using` utasításokat:
 
-        using Microsoft.Phone.Notification;
-        using Microsoft.WindowsAzure.Messaging;
-5. Adja hozzá a következő kódot a `Application_Launching` metódus tetején: `App.xaml.cs`
+    ```csharp
+    using Microsoft.Phone.Notification;
+    using Microsoft.WindowsAzure.Messaging;
+    ```
+
+5. Adja hozzá a következő kódot a metódus tetején `Application_Launching` `App.xaml.cs` :
 
     ```csharp
     private void Application_Launching(object sender, LaunchingEventArgs e)
@@ -116,11 +119,11 @@ Ebben a szakaszban egy új Windows Phone-alkalmazást hoz létre, amely regisztr
    > [!NOTE]
    > Az érték `MyPushChannel` egy olyan index, amely a [HttpNotificationChannel](https://msdn.microsoft.com/library/windows/apps/microsoft.phone.notification.httpnotificationchannel.aspx) -gyűjtemény meglévő csatornájának keresésére szolgál. Amennyiben nem létezik ott ilyen, hozzon létre egy bejegyzést ezen a néven.
 
-    Szúrja be a központ nevét és az előző szakaszban feljegyzett, a kapcsolatok karakterláncát `DefaultListenSharedAccessSignature` .
+    Szúrja be a központ nevét és az `DefaultListenSharedAccessSignature` előző szakaszban feljegyzett, a kapcsolatok karakterláncát.
     Ez a kód lekéri a csatorna URI azonosítóját az alkalmazás számára az MPNS-ből, majd regisztrálja a csatorna URI azonosítóját az értesítési központban. Emellett biztosítja azt, hogy a csatorna URI azonosítója legyen regisztrálva az értesítési központban az alkalmazás minden indításakor.
 
    > [!NOTE]
-   > Ez az oktatóanyag egy bejelentési értesítést küld az eszközre. Csempe-értesítés küldésekor Ehelyett a `BindToShellTile` metódust kell meghívnia a csatornán. A Toast és a csempe értesítések támogatásához hívja a `BindToShellTile` és `BindToShellToast`a-t is.
+   > Ez az oktatóanyag egy bejelentési értesítést küld az eszközre. Csempe-értesítés küldésekor Ehelyett a metódust kell meghívnia a `BindToShellTile` csatornán. A Toast és a csempe értesítések támogatásához hívja a `BindToShellTile` és a-t is `BindToShellToast` .
 
 6. A Megoldáskezelőben bontsa ki a **Tulajdonságok** csomópontot, nyissa meg a `WMAppManifest.xml` fájlt, kattintson a **Képességek** fülre, és jelölje be az **ID_CAP_PUSH_NOTIFICATION** képességet. Az alkalmazás mostantól képes leküldéses értesítések fogadására.
 
@@ -141,7 +144,7 @@ Ebben a szakaszban egy új Windows Phone-alkalmazást hoz létre, amely regisztr
 
     1. A **Platformok** beállításnál válassza a **Windows Phone** lehetőséget.
     2. Az **Értesítés típusa** beállításnál válassza a **Bejelentés** lehetőséget.
-    3. Kattintson a **Küldés** gombra.
+    3. **Küldés** kiválasztása
     4. A művelet **eredményét** az ablak alján található listában láthatja.
 
         ![Tesztküldés ablak](./media/notification-hubs-windows-phone-get-started/test-send-window.png)

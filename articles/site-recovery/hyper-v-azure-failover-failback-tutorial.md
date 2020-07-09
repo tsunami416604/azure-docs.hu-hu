@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/16/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 03826abf6da94859c510f4c127dfce035aa79370
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b46a2ea12a697afde8223cc3595365c1286512c7
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75498172"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132462"
 ---
 # <a name="fail-over-hyper-v-vms-to-azure"></a>Hyper-V virtuális gépek feladatátvétele az Azure-ba
 
@@ -27,8 +27,8 @@ Ez az oktatóanyag azt ismerteti, hogyan hajthat végre feladatátvételt Hyper-
 Ez az oktatóanyag egy sorozat ötödik része. Ez az oktatóanyag feltételezi, hogy elvégezte az előző oktatóanyagok feladatait.    
 
 1. [Az Azure előkészítése](tutorial-prepare-azure.md)
-2. [Helyszíni Hyper-V előkészítése](tutorial-prepare-on-premises-hyper-v.md)
-3. Vészhelyreállítás beállítása [Hyper-V virtuális gépekhez](tutorial-hyper-v-to-azure.md) vagy [System Center VMM-felhőben felügyelt Hyper-V virtuális gépekhez](tutorial-hyper-v-vmm-to-azure.md)
+2. [Helyszíni Hyper-V előkészítése](./hyper-v-prepare-on-premises-tutorial.md)
+3. Vészhelyreállítás beállítása [Hyper-V virtuális gépekhez](./hyper-v-azure-tutorial.md) vagy [System Center VMM-felhőben felügyelt Hyper-V virtuális gépekhez](./hyper-v-vmm-azure-tutorial.md)
 4. [Vészhelyreállítási próba végrehajtása](tutorial-dr-drill-azure.md)
 
 [További](failover-failback-overview.md#types-of-failover) információ a feladatátvétel különböző típusairól. Ha több virtuális gépet szeretne átadni egy helyreállítási tervben, tekintse át [ezt a cikket](site-recovery-failover.md).
@@ -58,7 +58,7 @@ A **Védett elemek** területen kattintson a **Replikált elemek** > VM lehetős
 
 ## <a name="fail-over-to-azure"></a>Feladatátvétel az Azure-ba
 
-1. A **Beállítások** > **replikált elemek**területen kattintson a virtuális gép > **feladatátvétel**elemre.
+1. A **Beállítások**  >  **replikált elemek**területen kattintson a virtuális gép > **feladatátvétel**elemre.
 2. A **Feladatátvétel** területen válassza a **Legújabb** helyreállítási pontot. 
 3. Válassza a **Gép leállítása a feladatátvétel megkezdése előtt** lehetőséget. A Site Recovery a feladatátvitel indítása előtt megkísérli leállítani a forrás virtuális gépeket. A feladatátvételi akkor is folytatódik, ha a leállítás meghiúsul. A feladatátvételi folyamat a **feladatok** lapon követhető.
 4. A feladatátvétel ellenőrzése után kattintson a **Véglegesítés** lehetőségre. Ez törli az összes rendelkezésre álló helyreállítási pontot.

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: b36e4688ebd6e929a56869a6bb191d98b2f1f432
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 6f24a259d2d71aa6599f6dd417d5e9fc99734e99
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84691101"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135658"
 ---
 # <a name="prepare-on-premises-hyper-v-servers-for-disaster-recovery-to-azure"></a>Helyszíni Hyper-V-kiszolgálók előkészítése az Azure-ba irányuló vészhelyreállításhoz
 
@@ -56,12 +56,12 @@ Ha a Hyper-V-gazdagépeket a VMM felügyeli, elő kell készítenie a helyszíni
 
 ### <a name="prepare-vmm-for-network-mapping"></a>VMM előkészítése hálózati leképezéshez
 
-Ha VMM használ, a [hálózati leképezési](site-recovery-network-mapping.md) térképek a helyszíni VMM virtuálisgép-hálózatok és az Azure-beli virtuális hálózatok között vannak. A leképezés biztosítja, hogy az Azure-beli virtuális gépek a megfelelő hálózathoz kapcsolódjanak, amikor a feladatátvétel után jönnek létre.
+Ha VMM használ, a [hálózati leképezési](./hyper-v-vmm-network-mapping.md) térképek a helyszíni VMM virtuálisgép-hálózatok és az Azure-beli virtuális hálózatok között vannak. A leképezés biztosítja, hogy az Azure-beli virtuális gépek a megfelelő hálózathoz kapcsolódjanak, amikor a feladatátvétel után jönnek létre.
 
 Készítse elő a VMM a hálózati megfeleltetéshez a következőképpen:
 
-1. Győződjön meg arról, hogy rendelkezik olyan [VMM logikai hálózattal](https://docs.microsoft.com/system-center/vmm/network-logical) , amely ahhoz a felhőhöz van társítva, amelyben a Hyper-V-gazdagépek találhatók.
-2. Győződjön meg arról, hogy rendelkezik a logikai hálózathoz társított virtuálisgép- [hálózattal](https://docs.microsoft.com/system-center/vmm/network-virtual) .
+1. Győződjön meg arról, hogy rendelkezik olyan [VMM logikai hálózattal](/system-center/vmm/network-logical) , amely ahhoz a felhőhöz van társítva, amelyben a Hyper-V-gazdagépek találhatók.
+2. Győződjön meg arról, hogy rendelkezik a logikai hálózathoz társított virtuálisgép- [hálózattal](/system-center/vmm/network-virtual) .
 3. A VMM-ben kapcsolja össze a virtuális gépeket a virtuálisgép-hálózattal.
 
 ## <a name="verify-internet-access"></a>Internet-hozzáférés ellenőrzése
@@ -86,7 +86,7 @@ Ha a feladatátvételt követően RDP használatával szeretne csatlakozni a Win
 
 1. Ha internetes hozzáférést kíván használni, engedélyezze az RDP-t a helyszíni virtuális gépen a feladatátvétel előtt. Győződjön meg arról, hogy a TCP-és UDP-szabályok hozzá lettek adva a **nyilvános** profilhoz, és az RDP engedélyezve van a **Windows tűzfal**  >  **engedélyezett alkalmazásaiban** az összes profilhoz.
 2. Ha helyek közötti VPN-kapcsolatot kíván használni, engedélyezze az RDP-t a helyszíni gépen. Az RDP-t engedélyezni kell a **Windows tűzfal**  ->  **engedélyezett alkalmazásaiban és szolgáltatásaiban** a **tartományok és magánhálózatok** számára.
-   Ellenőrizze, hogy az operációs rendszer tárolóhálózati szabályzata **OnlineAll** értékre van-e állítva. [További információ](https://support.microsoft.com/kb/3031135). A virtuális gépen nem lehetnek függőben lévő Windows-frissítések a feladatátvétel elindításakor. Ha vannak, akkor nem fog tudni bejelentkezni a virtuális gépre, amíg a frissítés be nem fejeződik.
+   Ellenőrizze, hogy az operációs rendszer tárolóhálózati szabályzata **OnlineAll** értékre van-e állítva. [További információk](https://support.microsoft.com/kb/3031135). A virtuális gépen nem lehetnek függőben lévő Windows-frissítések a feladatátvétel elindításakor. Ha vannak, akkor nem fog tudni bejelentkezni a virtuális gépre, amíg a frissítés be nem fejeződik.
 3. A feladatátvételt követően ellenőrizze a **Rendszerindítási diagnosztika** részt a Windows Azure virtuális gépen a virtuális gép képernyőképének megtekintéséhez. Ha nem sikerül, ellenőrizze, hogy fut-e a virtuális gép, majd tekintse át a [hibaelhárítási tippeket](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
 
 A feladatátvételt követően az Azure-beli virtuális gépeket ugyanazzal az IP-címmel érheti el, mint a replikált helyszíni virtuális gépet, vagy egy másik IP-címet. [További](concepts-on-premises-to-azure-networking.md) információ az IP-címzés feladatátvételhez való beállításáról.
@@ -94,5 +94,5 @@ A feladatátvételt követően az Azure-beli virtuális gépeket ugyanazzal az I
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> Vész [-helyreállítás beállítása az Azure-ba Hyper-V virtuális gépekhez](tutorial-hyper-v-to-azure.md) 
->  Vész [-helyreállítás beállítása az Azure-ba Hyper-V virtuális gépek számára a VMM-felhőkben](tutorial-hyper-v-vmm-to-azure.md)
+> Vész [-helyreállítás beállítása az Azure-ba Hyper-V virtuális gépekhez](./hyper-v-azure-tutorial.md) 
+>  Vész [-helyreállítás beállítása az Azure-ba Hyper-V virtuális gépek számára a VMM-felhőkben](./hyper-v-vmm-azure-tutorial.md)

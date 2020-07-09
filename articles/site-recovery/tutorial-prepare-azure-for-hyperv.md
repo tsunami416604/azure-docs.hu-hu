@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: ef623b95e104b485c6bfc8b2f489afeca436d81e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3be81d104e32946e2bfd7dc76052dad464f95623
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74084176"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130973"
 ---
 # <a name="prepare-azure-resources-for-hyper-v-disaster-recovery"></a>Azure-erőforrások előkészítése a Hyper-V vész-helyreállításhoz
 
@@ -32,7 +32,7 @@ Ez az oktatóanyag bemutatja, hogyan készítheti elő az Azure-összetevőket, 
 > * Hozzon létre egy Recovery Services tárolót, amely a virtuális gépek és egyéb replikációs összetevők metaadatait és konfigurációs adatait tárolja.
 > * Azure-hálózat beállítása. Ha az Azure-beli virtuális gépek a feladatátvételt követően jönnek létre, azok ehhez a hálózathoz csatlakoznak.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) .
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/), mielőtt hozzákezd.
 
 ## <a name="sign-in"></a>Bejelentkezés
 
@@ -52,7 +52,7 @@ A feladatok elvégzéséhez a fiókját hozzá kell rendelni a virtuális gép k
 
 A replikált gépek rendszerképeit egy Azure-tároló tartalmazza. Az Azure-beli virtuális gépek a tárolóból lesznek létrehozva a helyszínről az Azure-ba történő feladatátvétel során. A tárfióknak és a Recovery Services-tárolónak ugyanabban a régióban kell elhelyezkednie.
 
-1. A [Azure Portal](https://portal.azure.com) menüben válassza az **erőforrás** > **Storage** > létrehozása Storage **-fiók – blob, fájl, tábla, üzenetsor**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com) menüben válassza az **erőforrás létrehozása**  >  **Storage**  >  **-fiók – blob, fájl, tábla, üzenetsor**lehetőséget.
 2. A **Tárfiók létrehozása** területen írja be a fiók nevét.  A választott névnek egyedinek kell lennie az Azure-ban, 3 – 24 karakter hosszúnak kell lennie, és csak kisbetűket és számokat használjon. Ebben az oktatóanyagban használja a **contosovmsacct1910171607**-t.
 3. Az **Üzemi modell** mezőben válassza a **Resource Manager** lehetőséget.
 4. A **Fiók típusa**területen válassza a **Storage (általános célú v1)** lehetőséget. Ne válasszon blob-tárolót.
@@ -72,11 +72,11 @@ A replikált gépek rendszerképeit egy Azure-tároló tartalmazza. Az Azure-bel
 1. A **Recovery Services-tároló > neve**mezőben adjon meg egy rövid nevet a tároló azonosításához. Ehhez az oktatóanyaghoz használja a **ContosoVMVault** nevet.
 2. Az **erőforráscsoport**területen válasszon ki egy meglévő erőforráscsoportot, vagy hozzon létre egy újat. Ebben az oktatóanyagban használja a **contosoRG**-t.
 3. A **hely**mezőben válassza ki azt a régiót, ahol a tárolót el szeretné helyezni. Ehhez az oktatóanyaghoz használja a **Nyugat-Európát**.
-4. Ha gyorsan el szeretné érni a tárolót az irányítópultról, válassza a **rögzítés az irányítópulton** > **Létrehozás**lehetőséget.
+4. Ha gyorsan el szeretné érni a tárolót az irányítópultról, válassza a **rögzítés az irányítópulton**  >  **Létrehozás**lehetőséget.
 
 ![Új tároló létrehozása](./media/tutorial-prepare-azure/new-vault-settings.png)
 
-Az új tároló megjelenik az **irányítópult** > **minden erőforrás**és a fő **Recovery Services** -tárolók lapon.
+Az új tároló megjelenik az **irányítópult**  >  **minden erőforrás**és a fő **Recovery Services** -tárolók lapon.
 
 ## <a name="set-up-an-azure-network"></a>Azure-hálózat beállítása
 
@@ -89,7 +89,7 @@ Amikor a feladatátvétel után Azure-beli virtuális gépek jönnek létre a t�
 5. Az **Előfizetés** mezőben válassza ki azt az előfizetést, amelyben létre kívánja hozni a hálózatot.
 6. A **hely**mezőben válassza a **Nyugat-Európa**lehetőséget. A hálózatnak és a Recovery Services-tárolónak ugyanabban a régióban kell elhelyezkednie.
 7. Hagyja meg az alapszintű DDoS-védelem alapértelmezett beállításait, és ne legyenek szolgáltatási végpontok a hálózaton.
-8. Kattintson a **Létrehozás** gombra.
+8. Válassza a **Létrehozás** lehetőséget.
 
 ![Virtuális hálózat létrehozása](media/tutorial-prepare-azure/create-network.png)
 
@@ -98,8 +98,8 @@ A virtuális hálózat néhány másodperc alatt létrejön. Miután létrejött
 ## <a name="useful-links"></a>Hasznos hivatkozások
 
 Ismerkedjen meg a következőkkel:
-- [Azure-hálózatok](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)
-- [Felügyelt lemezek](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview)
+- [Azure-hálózatok](../virtual-network/virtual-networks-overview.md)
+- [Felügyelt lemezek](../virtual-machines/windows/managed-disks-overview.md)
 
 
 

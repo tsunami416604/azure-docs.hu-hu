@@ -1,17 +1,17 @@
 ---
-title: Oktatóanyag – Azure Cosmos DB kötése az Azure Spring Cloud-alkalmazáshoz
-description: Ebből az oktatóanyagból megtudhatja, hogyan köthető Azure Cosmos DB az Azure Spring Cloud-alkalmazáshoz
+title: Egy Azure Cosmos DB kötése az Azure Spring Cloud-alkalmazáshoz
+description: Ismerje meg, hogyan köthető Azure Cosmos DB az Azure Spring Cloud-alkalmazáshoz
 author: bmitchell287
 ms.service: spring-cloud
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 10/06/2019
 ms.author: brendm
-ms.openlocfilehash: 1566b6ab59e858217adcf6818e1d62f851f37eb1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 083c67184c6b039303b29119261a6967306a1447
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76277568"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142223"
 ---
 # <a name="bind-an-azure-cosmos-db-database-to-your-azure-spring-cloud-application"></a>Azure Cosmos DB-adatbázis kötése az Azure Spring Cloud-alkalmazáshoz
 
@@ -30,7 +30,7 @@ Azure Cosmos DB öt különböző API-típust támogat, amelyek támogatják a k
 
 1. Jegyezze fel az adatbázis nevét. Ehhez az eljáráshoz az adatbázis neve **testdb**.
 
-1. Adja hozzá az alábbi függőségek egyikét az Azure Spring Cloud Application Pom. XML fájljához. Válassza ki az API-típusnak megfelelő függőséget.
+1. Adja hozzá az alábbi függőségek egyikét az Azure Spring Cloud-alkalmazás pom.xml-fájljához. Válassza ki az API-típusnak megfelelő függőséget.
 
     * API típusa: Core (SQL)
 
@@ -80,7 +80,7 @@ Azure Cosmos DB öt különböző API-típust támogat, amelyek támogatják a k
       </dependency>
       ```
 
-1. A `az spring-cloud app update` használatával frissítheti az aktuális telepítést, vagy `az spring-cloud app deployment create` a használatával új központi telepítést hozhat létre. Ezek a parancsok vagy az új függőséggel frissítik vagy létrehozzák az alkalmazást.
+1. A használatával `az spring-cloud app update` frissítheti az aktuális telepítést, vagy a használatával `az spring-cloud app deployment create` új központi telepítést hozhat létre. Ezek a parancsok vagy az új függőséggel frissítik vagy létrehozzák az alkalmazást.
 
 1. Lépjen a Azure Portal Azure Spring Cloud Service oldalára. Nyissa meg az **alkalmazás irányítópultját** , és válassza ki a Azure Cosmos DBhoz kötni kívánt alkalmazást. Ez az alkalmazás ugyanaz, mint amelyet az előző lépésben frissített vagy telepített.
 
@@ -95,7 +95,7 @@ Azure Cosmos DB öt különböző API-típust támogat, amelyek támogatják a k
 
 1. Indítsa újra az alkalmazást az alkalmazás lapon az **Újraindítás** lehetőség kiválasztásával.
 
-1. A szolgáltatás megfelelő kötésének biztosításához válassza ki a kötés nevét, és ellenőrizze annak részleteit. Ennek `property` a példának a következőhöz hasonlónak kell lennie:
+1. A szolgáltatás megfelelő kötésének biztosításához válassza ki a kötés nevét, és ellenőrizze annak részleteit. `property`Ennek a példának a következőhöz hasonlónak kell lennie:
 
     ```
     azure.cosmosdb.uri=https://<some account>.documents.azure.com:443
@@ -105,7 +105,4 @@ Azure Cosmos DB öt különböző API-típust támogat, amelyek támogatják a k
 
 ## <a name="next-steps"></a>További lépések
 
-Ebből az oktatóanyagból megtudhatta, hogyan köthető az Azure Spring Cloud-alkalmazás egy Azure Cosmos DB-adatbázishoz. Ha szeretné megtudni, hogyan köthető az alkalmazás egy Azure cache-hez a Redis cache-gyorsítótárhoz, folytassa a következő oktatóanyaggal.
-
-> [!div class="nextstepaction"]
-> [Útmutató az Azure cache Redis cache-hez való kötéséhez](spring-cloud-tutorial-bind-redis.md)
+Ebben a cikkben megtanulta, hogyan köthető az Azure Spring Cloud-alkalmazás egy Azure Cosmos DB adatbázishoz. Ha többet szeretne megtudni az alkalmazásra vonatkozó kötési szolgáltatásokról, tekintse meg a [kötés egy Azure cache-hez a Redis cache-hez](spring-cloud-tutorial-bind-redis.md)című témakört.

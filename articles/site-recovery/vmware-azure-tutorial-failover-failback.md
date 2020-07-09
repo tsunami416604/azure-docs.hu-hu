@@ -5,12 +5,12 @@ ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 12/16/2019
 ms.custom: MVC
-ms.openlocfilehash: 8501bb1a998eb08984a118bfa5d52d1e3f3e4f84
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bf47f08ac555cf60f59ba2b1a84750b6a9e2e0a1
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75498084"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132006"
 ---
 # <a name="fail-over--vmware-vms"></a>Feladatátvétel VMware virtuális gépeken
 
@@ -64,8 +64,8 @@ A tulajdonságok ellenőrzése a következőképpen történik:
 
 ## <a name="run-a-failover-to-azure"></a>Feladatátvétel futtatása az Azure-ban
 
-1. A **Beállítások** > **replikált elemek**területen válassza ki azt a virtuális gépet, amelyen át szeretné adni a **feladatátvételt**, majd válassza a feladatátvétel lehetőséget.
-2. A **Feladatátvétel** területen válassza ki azt a **Helyreállítási pontot**, amelyre a feladatátvételt végezni szeretné. Az alábbi lehetőségek egyikét használhatja:
+1. A **Beállítások**  >  **replikált elemek**területen válassza ki azt a virtuális gépet, amelyen át szeretné adni a **feladatátvételt**, majd válassza a feladatátvétel lehetőséget.
+2. A feladatátvétel területen válassza ki azt a **helyreállítási pontot** , amelyhez át szeretné adni a **feladatátvételt**. Az alábbi lehetőségek egyikét használhatja:
    * **Legújabb**: Ez a lehetőség először feldolgozza a Site Recovery számára küldött összes adatot. Ez a legalacsonyabb helyreállítási időkorlátot (RPO) biztosítja, mivel a feladatátvételt követően létrehozott Azure virtuális gép minden olyan adattal rendelkezik, amelyet a feladatátvétel elindításakor Site Recovery replikált a rendszer.
    * **Legutóbb feldolgozott**: Ez a lehetőség a virtuális gépet a site Recovery által feldolgozott legutóbbi helyreállítási pontra nem tudja átvenni. Ez a beállítás alacsony RTO (helyreállítási idő célkitűzés) biztosít, mivel a feldolgozatlan adatmennyiségek feldolgozása nem történik meg.
    * Az **alkalmazás legújabb konzisztens**beállítása: Ez a beállítás a virtuális gép feladatátvételét a site Recovery által feldolgozott legújabb, alkalmazás-konzisztens helyreállítási pontra hajtja végre.
@@ -87,7 +87,7 @@ Bizonyos esetekben a feladatátvételhez további feldolgozásra van szükség, 
 
 ## <a name="connect-to-failed-over-vm"></a>Kapcsolódás a feladatátvételi virtuális géphez
 
-1. Ha RDP protokoll (RDP) és Secure Shell (SSH) használatával szeretne feladatátvételt létesíteni az Azure-beli virtuális gépeken, [ellenőrizze, hogy teljesülnek-e a követelmények] ((ailover-feladat-visszavétel-áttekintés. MD # kapcsolódás az Azure-hoz-a feladatátvétel után).
+1. Ha RDP protokoll (RDP) és Secure Shell (SSH) használatával szeretne feladatátvételt létesíteni az Azure virtuális gépekkel, [ellenőrizze, hogy teljesülnek-e a követelmények](failover-failback-overview.md#connect-to-azure-after-failover).
 2. A feladatátvétel után lépjen a virtuális gépre, és ellenőrizze, hogy [csatlakozik](../virtual-machines/windows/connect-logon.md) -e hozzá.
 3. Ha a feladatátvételt követően eltérő helyreállítási pontot szeretne használni, használja a **helyreállítási pont módosítása** lehetőséget. Miután a következő lépésben véglegesíti a feladatátvételt, ez a lehetőség többé nem lesz elérhető.
 4. Az ellenőrzés után válassza a **véglegesítés** lehetőséget a virtuális gép helyreállítási pontjának véglegesítéséhez a feladatátvétel után.
@@ -101,5 +101,5 @@ Bizonyos esetekben a feladatátvételhez további feldolgozásra van szükség, 
 A feladatátvételt követően az Azure-beli virtuális gépeket a helyszíni környezetbe újra kell védetté tenni. Ezt követően a virtuális gépek ismételt védelemmel és a helyszíni helyre történő replikálásával visszatérhet az Azure-ból, ha elkészült.
 
 > [!div class="nextstepaction"]
-> [Azure-beli virtuális gépek](vmware-azure-reprotect.md)
-> újravédése feladat[-visszavétel az Azure-ból](vmware-azure-failback.md)
+> [Azure-beli virtuális gépek](vmware-azure-reprotect.md) 
+>  ismételt védetté Feladat [-visszavétel az Azure-ból](vmware-azure-failback.md)

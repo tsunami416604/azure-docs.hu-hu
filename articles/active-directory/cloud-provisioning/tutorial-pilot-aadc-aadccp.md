@@ -11,12 +11,12 @@ ms.date: 05/19/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 835eb66444dd9f4c4da7689196c759621cfef999
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: fd9eff90f144909b9746e85a9c42aae2fdf02ed6
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85360758"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146814"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Kísérleti felhőalapú jogosultságkiosztás meglévő, szinkronizált AD-erdő esetén 
 
@@ -78,7 +78,7 @@ Azure AD Connect szinkronizálás szinkronizálja a helyszíni címtárban bekö
  
  4. A **hatókör-szűrő** lapon adja meg azt a szervezeti egységet vagy biztonsági csoportot, amelyet a próbaüzem alapján ki szeretne kapcsolni.  A szervezeti egység szűréséhez adja hozzá a megkülönböztető név OU részét. Ez a szabály az adott szervezeti egységben lévő összes felhasználóra vonatkozik.  Tehát ha a DN "OU = processzorok, DC = contoso, DC = com" végződéssel végződik, akkor ezt a szűrőt fogja felvenni.  Ezután kattintson a **Tovább** gombra. 
 
-    |Szabály|Attribútum|Operátor|Érték|
+    |Szabály|Attribútum|Művelet|Érték|
     |-----|----|----|-----|
     |Hatóköri szervezeti egység|DN|ENDSWITH|A szervezeti egység megkülönböztető neve.|
     |Hatókör-csoport||ISMEMBEROF|A biztonsági csoport megkülönböztető neve.|
@@ -164,19 +164,19 @@ A kiépítés konfigurálásához kövesse az alábbi lépéseket:
  1. Jelentkezzen be az Azure AD-portálra.
  2. Kattintson **Azure Active Directory**
  3. Kattintson **Azure ad Connect**
- 4. Válassza ki a **kiépítés kezelése (előzetes verzió) lehetőséget.**
- ![](media/how-to-configure/manage1.png)</br>
- 5.  Kattintson az **Új konfiguráció** elemre.
- ![](media/tutorial-single-forest/configure1.png)</br>
+ 4. Válassza a **felügyelet létesítése (előzetes verzió)** 
+  ![ képernyőképet, amely a "kiépítés kezelése (előzetes verzió)" hivatkozást mutatja.](media/how-to-configure/manage1.png)</br>
+ 5.  Az **New Configuration** 
+  ![ Azure ad-kiépítés (előzetes verzió) képernyő új konfiguráció képernyőképére kattintva kiemelve jelenik meg az "új konfiguráció" hivatkozás.](media/tutorial-single-forest/configure1.png)</br>
  6.  A konfiguráció képernyőn adja meg az **értesítő e-mailt**, helyezze át a választót az **engedélyezéshez** , majd kattintson a **Mentés**gombra.
- ![](media/tutorial-single-forest/configure2.png)</br>
+ ![Képernyőkép a konfigurálásról a képernyőn megjelenő értesítő e-mailben és a kijelölés engedélyezése lapon.](media/tutorial-single-forest/configure2.png)</br>
  7. A **Konfigurálás**területen válassza a **minden felhasználó** lehetőséget a konfigurációs szabály hatókörének módosításához.
- ![](media/how-to-configure/scope2.png)</br>
+ ![Képernyőkép a konfigurálás képernyőről "minden felhasználó" lehetőség mellett, a "hatókör felhasználói" elem mellett.](media/how-to-configure/scope2.png)</br>
  8. A jobb oldalon módosítsa a hatókört úgy, hogy az imént létrehozott adott szervezeti egységet tartalmazza: "OU = processzorok, DC = contoso, DC = com".
- ![](media/tutorial-existing-forest/scope2.png)</br>
+ ![Képernyőfelvétel: a hatókör felhasználói képernyő kiemelte a hatókört a létrehozott szervezeti egységre.](media/tutorial-existing-forest/scope2.png)</br>
  9.  Kattintson a **kész** és a **Mentés**gombra.
  10. A hatókört most egy szervezeti egységre kell beállítani. 
- ![](media/tutorial-existing-forest/scope3.png)</br>
+ ![Képernyőkép a configure (Konfigurálás) képernyőről "1 szervezeti egység" a "hatókörű felhasználók" elem mellett.](media/tutorial-existing-forest/scope3.png)</br>
  
 
 ## <a name="verify-users-are-provisioned-by-cloud-provisioning"></a>A felhőalapú kiépítés által kiépített felhasználók ellenőrzése

@@ -1,17 +1,17 @@
 ---
-title: Oktatóanyag – elosztott nyomkövetés használata az Azure Spring Cloud használatával
-description: Ez az oktatóanyag bemutatja, hogyan használható a Spring Cloud elosztott nyomkövetése az Azure Application Insights
+title: Elosztott nyomkövetés használata az Azure Spring Cloud használatával
+description: Ismerje meg, hogyan használhatja a Spring Cloud elosztott nyomkövetését az Azure Application Insights
 author: bmitchell287
 ms.service: spring-cloud
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 10/06/2019
 ms.author: brendm
-ms.openlocfilehash: 0815aa084462d1b829d64cd7c5d6fa7cebf534fc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ccaf58465c1ade0228daea2b535d06fb6168d64f
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78273214"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142121"
 ---
 # <a name="use-distributed-tracing-with-azure-spring-cloud"></a>Elosztott nyomkövetés használata az Azure Spring Cloud használatával
 
@@ -27,7 +27,7 @@ Ebben a cikkben az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag elvégzéséhez olyan Azure Spring Cloud Service-szolgáltatásra van szüksége, amely már üzembe van és fut. Fejezze be a gyors [üzembe helyezési útmutatót az Azure CLI-n keresztül](spring-cloud-quickstart-launch-app-cli.md) az Azure Spring Cloud Service kiépítéséhez és futtatásához.
+A fenti eljárások követéséhez olyan Azure Spring Cloud Service-szolgáltatásra van szükség, amely már üzembe van és fut. Fejezze be a gyors [üzembe helyezési útmutatót az Azure CLI-n keresztül](spring-cloud-quickstart-launch-app-cli.md) az Azure Spring Cloud Service kiépítéséhez és futtatásához.
     
 ## <a name="add-dependencies"></a>Függőségek hozzáadása
 
@@ -39,7 +39,7 @@ Az oktatóanyag elvégzéséhez olyan Azure Spring Cloud Service-szolgáltatásr
 
    A módosítás után a Zipkin küldő küldhet a weben.
 
-1. Ugorja át ezt a lépést, ha követte az [Azure Spring Cloud-alkalmazás előkészítését ismertető útmutatót](spring-cloud-tutorial-prepare-app-deployment.md). Ellenkező esetben lépjen a helyi fejlesztési környezetbe, és szerkessze a Pom. xml fájlt, hogy tartalmazza a következő Spring Cloud Sleuth függőséget:
+1. Ugorja át ezt a lépést, ha követte az [Azure Spring Cloud-alkalmazás előkészítését ismertető útmutatót](spring-cloud-tutorial-prepare-app-deployment.md). Ellenkező esetben lépjen a helyi fejlesztési környezetbe, és szerkessze pom.xml-fájlját, hogy tartalmazza a következő Spring Cloud Sleuth függőséget:
 
     ```xml
     <dependencyManagement>
@@ -102,7 +102,4 @@ A Application Insights az Application Map és a Search függvény mellett biztos
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtanulta, hogyan engedélyezheti és értelmezheti az elosztott nyomkövetést az Azure Spring Cloud-ban. Az alkalmazás Azure Cosmos DB-adatbázishoz való kötésének megismeréséhez folytassa a következő oktatóanyaggal.
-
-> [!div class="nextstepaction"]
-> [Útmutató Azure Cosmos DB adatbázishoz való kötéshez](spring-cloud-tutorial-bind-cosmos.md)
+Ebben a cikkben megtanulta, hogyan engedélyezheti és értelmezheti az elosztott nyomkövetést az Azure Spring Cloud-ban. Az alkalmazásokhoz való kötési szolgáltatásokkal kapcsolatos további tudnivalókért lásd: [Azure Cosmos db adatbázis kötése egy Azure Spring Cloud-alkalmazáshoz](spring-cloud-tutorial-bind-cosmos.md).

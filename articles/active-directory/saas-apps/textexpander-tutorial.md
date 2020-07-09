@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/22/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77bd880bbbc1d600ca21e058993102d69b417f41
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: aecb235006752096c6040066cb9b96fcfa709363
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84764094"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86167249"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-textexpander"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a TextExpander
 
@@ -97,11 +97,11 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A fentiek mellett a TextExpander alkalmazás néhány további attribútumot vár az SAML-válaszban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
     
-    | Name | |  Forrás attribútum|
-    | ---------------| --------------- | --------- |
-    | e-mail | | User. e-mail |
-    | firstName | | User. givenName |
-    | lastName | | felhasználó. vezetéknév |
+    | Name | Forrás attribútum|
+    | ---- | --------------- |
+    | e-mail | User. e-mail |
+    | firstName | User. givenName |
+    | lastName | felhasználó. vezetéknév |
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg az **összevonási metaadatok XML-fájlját** , és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez.
 

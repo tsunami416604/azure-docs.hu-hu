@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: tutorial
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 04/13/2020
-ms.openlocfilehash: 731ab18346ac9f100862174312c2c9950026f1eb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 07/08/2020
+ms.openlocfilehash: 9d85e59e003cffdbe6fe6abe7bb053ae4c574b78
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81272914"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143475"
 ---
 # <a name="set-up-azure-machine-learning-visual-studio-code-extension"></a>A Visual Studio Code-bővítmény Azure Machine Learning beállítása
 
@@ -38,7 +38,7 @@ Eben az oktatóanyagban az alábbi feladatokkal fog megismerkedni:
 1. Nyissa meg a Visual Studio Code-ot.
 1. Válassza a **bővítmények** ikont a **tevékenység sávján** a bővítmények nézet megnyitásához.
 1. A bővítmények nézetben keressen rá a "Azure Machine Learning" kifejezésre.
-1. Válassza az **Install** (Telepítés) lehetőséget.
+1. Válassza a **Telepítés** gombot.
 
     > [!div class="mx-imgBorder"]
     > ![A Azure Machine Learning VS Code bővítmény telepítése](./media/tutorial-setup-vscode-extension/install-aml-vscode-extension.PNG)
@@ -60,7 +60,7 @@ Az erőforrások kiépítéséhez és az Azure-beli számítási feladatok futta
 Most, hogy bejelentkezett az Azure-ba a fiókja hitelesítő adataival, kövesse az ebben a szakaszban ismertetett lépéseket, amelyből megtudhatja, hogyan használható a bővítmény a Machine learning-modellek betanításához.
 
 1. Töltse le és csomagolja [ki a vs Code-eszközöket a AI-tárházba](https://github.com/microsoft/vscode-tools-for-ai/archive/master.zip) bárhol a számítógépen.
-1. Nyissa `mnist-vscode-docs-sample` meg a könyvtárat a Visual Studio Code-ban.
+1. Nyissa meg a `mnist-vscode-docs-sample` könyvtárat a Visual Studio Code-ban.
 1. Válassza ki az **Azure** ikont a tevékenység sávján.
 1. Válassza a **kísérlet futtatása** ikont a Azure Machine learning nézet tetején.
 
@@ -69,27 +69,30 @@ Most, hogy bejelentkezett az Azure-ba a fiókja hitelesítő adataival, kövesse
 
 1. A parancs-paletta kibontásakor kövesse az utasításokat.
 
+    > [!NOTE]
+    > Ha már rendelkezik meglévő Azure Machine Learning erőforrásokkal, tekintse meg a [kísérletek futtatása a vs Code-útmutatóban](./how-to-manage-resources-vscode.md#run-experiment)című témakört.
+
     1. Válassza ki az Azure-előfizetését.
     1. A környezetek listájából válassza az **Conda-függőségek fájl**elemet.
-    1. Nyomja le az **ENTER** billentyűt a Conda-függőségek fájl tallózásához. Ez a fájl tartalmazza a parancsfájl futtatásához szükséges függőségeket. Ebben az esetben a függőségek fájl a `env.yml` `mnist-vscode-docs-sample` könyvtárban található fájl.
-    1. Nyomja le az **ENTER** billentyűt a betanítási parancsfájl tallózásához. Ez a fájl tartalmazza a gépi tanulási modell kódját, amely a kézzel írt számjegyek képeit kategorizálja. Ebben az esetben a modell betanítására szolgáló parancsfájl a `train.py` `mnist-vscode-docs-sample` könyvtáron belül található fájl.
+    1. Nyomja le az **ENTER** billentyűt a Conda-függőségek fájl tallózásához. Ez a fájl tartalmazza a parancsfájl futtatásához szükséges függőségeket. Ebben az esetben a függőségek fájl a `env.yml` könyvtárban található fájl `mnist-vscode-docs-sample` .
+    1. Nyomja le az **ENTER** billentyűt a betanítási parancsfájl tallózásához. Ez a fájl tartalmazza a gépi tanulási modell kódját, amely a kézzel írt számjegyek képeit kategorizálja. Ebben az esetben a modell betanítására szolgáló parancsfájl a `train.py` könyvtáron belül található `mnist-vscode-docs-sample` fájl.
 
 1. Ezen a ponton az alábbihoz hasonló konfigurációs fájl jelenik meg a szövegszerkesztőben. A konfiguráció tartalmazza a betanítási feladatok futtatásához szükséges adatokat, például a kódot tartalmazó fájlt, amely a modell betanítását és az előző lépésben megadott Python-függőségeket tartalmazza.
 
     ```json
     {
-        "workspace": "WS04131142",
-        "resourceGroup": "WS04131142-rg1",
+        "workspace": "WS06271500",
+        "resourceGroup": "WS06271500-rg2",
         "location": "South Central US",
-        "experiment": "WS04131142-exp1",
+        "experiment": "WS06271500-exp1",
         "compute": {
-            "name": "WS04131142-com1",
+            "name": "WS06271500-com1",
             "vmSize": "Standard_D1_v2, Cores: 1; RAM: 3.5GB;"
         },
         "runConfiguration": {
-            "filename": "WS04131142-com1-rc1",
+            "filename": "WS06271500-com1-rc1",
             "environment": {
-                "name": "WS04131142-env1",
+                "name": "WS06271500-env1",
                 "conda_dependencies": [
                     "python=3.6.2",
                     "tensorflow=1.15.0",
@@ -118,7 +121,7 @@ A szkript futtatása több percet is igénybe vehet. A folyamat nyomon követés
 
 1. Válassza ki az **Azure** ikont a tevékenység sávjából.
 1. Bontsa ki az előfizetési csomópontot.
-1. Bontsa ki a jelenleg futó kísérlet csomópontját. Ez a `{workspace}/Experiments/{experiment}` csomóponton belül található, ahol a munkaterület és a kísérlet értékei megegyeznek a konfigurációs fájlban megadott tulajdonságokkal.
+1. Bontsa ki a jelenleg futó kísérlet csomópontját. Ez a csomóponton belül található, `{workspace}/Experiments/{experiment}` ahol a munkaterület és a kísérlet értékei megegyeznek a konfigurációs fájlban megadott tulajdonságokkal.
 1. A kísérlet összes futtatása megjelenik, valamint az állapotuk. A legutóbbi állapot beszerzéséhez kattintson a Azure Machine Learning nézet tetején található frissítés ikonra.
 
     > [!div class="mx-imgBorder"]
@@ -135,7 +138,7 @@ A kísérlet futtatása után a kimenet egy betanított modell. A kimenetek hely
 
 1. Válassza ki azt a helyet, ahová a kimeneteket menteni szeretné.
 1. A rendszer helyileg tölti le a Futtatás nevét tartalmazó mappát. Keresse meg.
-1. A modell fájljai a `outputs/outputs/model` könyvtárban vannak.
+1. A modell fájljai a könyvtárban vannak `outputs/outputs/model` .
 
 ## <a name="next-steps"></a>További lépések
 

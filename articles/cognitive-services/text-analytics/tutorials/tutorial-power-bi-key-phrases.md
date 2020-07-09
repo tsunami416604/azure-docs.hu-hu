@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: tutorial
 ms.date: 12/19/2019
 ms.author: aahi
-ms.openlocfilehash: 2398bfa2ce828e716831cc7ce438bd1c241ca5f8
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 067a0383c90ce42120269ff40f910805dacfd11a
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75378534"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143876"
 ---
 # <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>Oktatóanyag: Power BI integrálása a Text Analytics Cognitive Services-szolgáltatásba
 
@@ -34,7 +34,7 @@ Az oktatóanyag segítségével megtanulhatja a következőket:
 <a name="Prerequisites"></a>
 
 - Microsoft Power BI Desktop. [Töltse le ingyenesen](https://powerbi.microsoft.com/get-started/).
-- Egy Microsoft Azure-fiók. [Kezdjen egy ingyenes próbaidőszakot](https://azure.microsoft.com/free/), vagy [jelentkezzen be](https://portal.azure.com/).
+- Egy Microsoft Azure-fiók. [Hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/) , vagy [Jelentkezzen be](https://portal.azure.com/).
 - Cognitive Services API fiók a Text Analytics API felülettel. Ha még nincs fiókja, [regisztráljon](../../cognitive-services-apis-create-account.md) és használhatja a havi 5000 tranzakciót tartalmazó ingyenes csomagot (lásd [díjszabás](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)) az oktatóanyag befejezéséhez.
 - Kell még a regisztráció során létrejött [Text Analytics hozzáférési kulcs](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource).
 - Ügyfelek megjegyzései. Használhatja [a példaadatokat](https://aka.ms/cogsvc/ta), de a saját adatait is. Az oktatóanyagban azt feltételezzük, hogy a példaadatainkat használja.
@@ -114,7 +114,7 @@ Az új lekérdezés eredetileg `Query1` névvel megjelenik a Lekérdezések list
 Most a **Kezdőlap** menüszalag **Lekérdezés** csoportjának **Speciális szerkesztő** elemére kattintva nyissa meg a Speciális szerkesztő ablakot. Törölje az eredetileg az ablakban lévő kódot, és illessze be a következőt. 
 
 > [!NOTE]
-> Cserélje le az alábbi példás végpontot (amely tartalmazza `<your-custom-subdomain>`) a Text Analytics erőforráshoz generált végponttal. Ezt a végpontot megkeresheti a [Azure Portalba](https://azure.microsoft.com/features/azure-portal/)való bejelentkezéssel, a Text Analytics-előfizetés kiválasztásával, majd a lehetőség kiválasztásával `Quick start`.
+> Cserélje le az alábbi példás végpontot (amely tartalmazza `<your-custom-subdomain>` ) a Text Analytics erőforráshoz generált végponttal. Ezt a végpontot megkeresheti a [Azure Portalba](https://azure.microsoft.com/features/azure-portal/)való bejelentkezéssel, a Text Analytics-előfizetés kiválasztásával, majd a lehetőség kiválasztásával `Quick start` .
 
 
 ```fsharp
@@ -145,7 +145,7 @@ A Power BI Desktopban, a Lekérdezésszerkesztő ablakban váltson vissza a `Fab
 
 Megjelenik az Egyéni függvény hívása párbeszédablak. Az **Új oszlop neve** mezőbe írja be: `keyphrases`. A **Függvénylekérdezésnél** válassza ki a létrehozott, `KeyPhrases` egyéni függvényt.
 
-A párbeszédpanelen új mező jelenik meg, **(nem kötelező) szöveg**. A mezőben azt kell megadnunk, mely oszlop adja a Key Phrases API `text` paraméterének az értékét. (Ne feledje, hogy már rögzítette a és `language` `id` a paraméterek értékeit.) Válassza `Merged` ki (a [korábban](#PreparingData) létrehozott oszlopot a tárgy és az üzenet mezőinek egyesítésével) a legördülő menüből.
+A párbeszédpanelen új mező jelenik meg, **(nem kötelező) szöveg**. A mezőben azt kell megadnunk, mely oszlop adja a Key Phrases API `text` paraméterének az értékét. (Ne feledje, hogy már rögzítette a és a paraméterek értékeit `language` `id` .) Válassza ki `Merged` (a [korábban](#PreparingData) létrehozott oszlopot a tárgy és az üzenet mezőinek egyesítésével) a legördülő menüből.
 
 ![[Egyéni függvény hívása]](../media/tutorials/power-bi/invoke-custom-function.png)
 
@@ -299,4 +299,4 @@ További információk a Text Analytics szolgáltatásról, a Power Query M kép
 > [Power Query M-hivatkozás](https://docs.microsoft.com/powerquery-m/power-query-m-reference)
 
 > [!div class="nextstepaction"]
-> [Power BI-dokumentáció](https://powerbi.microsoft.com/documentation/powerbi-landing-page/)
+> [A Power BI dokumentációja](https://powerbi.microsoft.com/documentation/powerbi-landing-page/)

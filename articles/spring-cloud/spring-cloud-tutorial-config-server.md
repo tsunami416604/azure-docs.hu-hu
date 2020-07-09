@@ -1,26 +1,26 @@
 ---
-title: Oktatóanyag – a konfigurációs kiszolgáló példányának beállítása az Azure Spring Cloud-ban
-description: Ebből az oktatóanyagból megtudhatja, hogyan állíthat be egy Spring Cloud config Server-példányt az Azure Spring Cloud számára a Azure Portal
+title: A konfigurációs kiszolgáló példányának beállítása az Azure Spring Cloud-ban
+description: Megtudhatja, hogyan állíthat be egy Spring Cloud config Server-példányt az Azure Spring Cloud Azure Portal
 ms.service: spring-cloud
-ms.topic: tutorial
+ms.topic: how-to
 ms.author: brendm
 author: bmitchell287
 ms.date: 10/18/2019
-ms.openlocfilehash: 4c8b2e92cd7e88dde434e42971d091db689bfbc9
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: bfce1ce54da9d9e8e7feaa8e8eb5cd676866a1cb
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84791299"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142186"
 ---
-# <a name="tutorial-set-up-a-spring-cloud-config-server-instance-for-your-service"></a>Oktatóanyag: Spring Cloud config Server-példány beállítása a szolgáltatáshoz
+# <a name="set-up-a-spring-cloud-config-server-instance-for-your-service"></a>Egy Spring Cloud config Server-példány beállítása a szolgáltatáshoz
 
 Ez a cikk bemutatja, hogyan csatlakozhat egy Spring Cloud config Server-példányt az Azure Spring Cloud Service-hez.
 
 A Spring Cloud config kiszolgáló-és ügyféloldali támogatást biztosít az elosztott rendszerekben található külső konfigurációhoz. A konfigurációs kiszolgáló példányával központi helyen kezelheti az alkalmazások külső tulajdonságait az összes környezetben. További információ: [Spring Cloud config Server Reference](https://spring.io/projects/spring-cloud-config).
 
 ## <a name="prerequisites"></a>Előfeltételek
-* Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd. 
 * Már üzembe lett helyezve, és futtatja az Azure Spring Cloud Service-t. Azure Spring Cloud-szolgáltatás beállításához és elindításához lásd [: gyors útmutató: Java Spring-alkalmazás elindítása az Azure CLI használatával](spring-cloud-quickstart-launch-app-cli.md).
 
 ## <a name="restriction"></a>Korlátozás
@@ -190,7 +190,4 @@ A konfigurációs fájl mentése után megjelenik az alkalmazás- **konfiguráci
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtanulta, hogyan engedélyezheti és konfigurálhatja a Spring Cloud config Server-példányát. Az alkalmazások kezelésével kapcsolatos további tudnivalókért folytassa az alkalmazás manuális skálázásával foglalkozó oktatóanyaggal.
-
-> [!div class="nextstepaction"]
-> [Oktatóanyag: alkalmazások méretezése az Azure Spring Cloud-ban](spring-cloud-tutorial-scale-manual.md)
+Ebben a cikkben megtanulta, hogyan engedélyezheti és konfigurálhatja a Spring Cloud config Server-példányát. További információ az alkalmazások kezeléséről: [alkalmazások méretezése az Azure Spring Cloud-ban](spring-cloud-tutorial-scale-manual.md).

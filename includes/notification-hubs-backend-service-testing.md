@@ -4,12 +4,12 @@ ms.author: miparker
 ms.date: 06/02/2020
 ms.service: notification-hubs
 ms.topic: include
-ms.openlocfilehash: 72e4318bea7245e440db4c7d95bf7f1f38bbe268
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 5e75c5d5510f596eb7911cae0310e60b6bef67bf
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85081421"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146468"
 ---
 ### <a name="send-a-test-notification"></a>Tesztértesítés küldése
 
@@ -26,9 +26,6 @@ ms.locfileid: "85081421"
    | Kulcs                            | Érték                          |
    | ------------------------------ | ------------------------------ |
    | apikey                         | <your_api_key>                 |
-
-   > [!NOTE]
-   > Ez a **config. local_secrets. cs fájlban** található a **PushDemo** projekten belül.
 
 1. Válassza ki a **törzs** **nyers** beállítását, majd a formázási beállítások listájában válassza a **JSON** lehetőséget, majd adjon meg néhány helyőrző **JSON** -tartalmat:
 

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/17/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89ea2c45e16dfeb63801f70fa4480c0d865a890f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2972af3c94768cc21b53bbf5376826940aee639a
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73160084"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86168864"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform"></a>Oktatóanyag: Azure Active Directory integráció az SAP Cloud platformmal
 
@@ -33,7 +33,7 @@ Az SAP Cloud platform és az Azure AD integrálásával a következő előnyöke
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -114,35 +114,29 @@ Az Azure AD egyszeri bejelentkezés SAP Cloud platformon történő konfigurál�
 
     a. A **bejelentkezési URL** szövegmezőbe írja be a felhasználók által a **SAP Cloud platform** alkalmazásba való bejelentkezéshez használt URL-címet. Ez a védett erőforrás fiókra vonatkozó URL-címe az SAP Cloud platform alkalmazásban. Az URL-cím a következő mintán alapul:`https://<applicationName><accountName>.<landscape host>.ondemand.com/<path_to_protected_resource>`
       
-     >[!NOTE]
-     >Ez az az SAP Cloud platform-alkalmazás URL-címe, amelyhez a felhasználónak hitelesítenie kell magát.
-     > 
+    >[!NOTE]
+    >Ez az az SAP Cloud platform-alkalmazás URL-címe, amelyhez a felhasználónak hitelesítenie kell magát.
+    > 
 
-    | |
-    |--|
-    | `https://<subdomain>.hanatrial.ondemand.com/<instancename>` |
-    | `https://<subdomain>.hana.ondemand.com/<instancename>` |
+    - `https://<subdomain>.hanatrial.ondemand.com/<instancename>`
+    - `https://<subdomain>.hana.ondemand.com/<instancename>`
 
     b. Az **azonosító** szövegmezőben adja meg az SAP Cloud platformhoz tartozó URL-címet az alábbi minták egyikének használatával: 
 
-    | |
-    |--|
-    | `https://hanatrial.ondemand.com/<instancename>` |
-    | `https://hana.ondemand.com/<instancename>` |
-    | `https://us1.hana.ondemand.com/<instancename>` |
-    | `https://ap1.hana.ondemand.com/<instancename>` |
+    - `https://hanatrial.ondemand.com/<instancename>`
+    - `https://hana.ondemand.com/<instancename>`
+    - `https://us1.hana.ondemand.com/<instancename>`
+    - `https://ap1.hana.ondemand.com/<instancename>`
 
     c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:
 
-    | |
-    |--|
-    | `https://<subdomain>.hanatrial.ondemand.com/<instancename>` |
-    | `https://<subdomain>.hana.ondemand.com/<instancename>` |
-    | `https://<subdomain>.us1.hana.ondemand.com/<instancename>` |
-    | `https://<subdomain>.dispatcher.us1.hana.ondemand.com/<instancename>` |
-    | `https://<subdomain>.ap1.hana.ondemand.com/<instancename>` |
-    | `https://<subdomain>.dispatcher.ap1.hana.ondemand.com/<instancename>` |
-    | `https://<subdomain>.dispatcher.hana.ondemand.com/<instancename>` |
+    - `https://<subdomain>.hanatrial.ondemand.com/<instancename>`
+    - `https://<subdomain>.hana.ondemand.com/<instancename>`
+    - `https://<subdomain>.us1.hana.ondemand.com/<instancename>`
+    - `https://<subdomain>.dispatcher.us1.hana.ondemand.com/<instancename>`
+    - `https://<subdomain>.ap1.hana.ondemand.com/<instancename>`
+    - `https://<subdomain>.dispatcher.ap1.hana.ondemand.com/<instancename>`
+    - `https://<subdomain>.dispatcher.hana.ondemand.com/<instancename>`
 
     > [!NOTE] 
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel, azonosítóval és válasz URL-címmel. A bejelentkezési URL-cím és az azonosító megszerzéséhez lépjen kapcsolatba az [SAP Cloud platform ügyfél-támogatási csapatával](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/5dd739823b824b539eee47b7860a00be.html) . A válasz URL-címe a megbízhatósági kezelés szakaszból szerezhető be, amelyet az oktatóanyag későbbi részében ismertetünk.
@@ -153,7 +147,7 @@ Az Azure AD egyszeri bejelentkezés SAP Cloud platformon történő konfigurál�
 
 ### <a name="configure-sap-cloud-platform-single-sign-on"></a>Az SAP Cloud platform egyszeri bejelentkezésének konfigurálása
 
-1. Egy másik böngészőablakban jelentkezzen be az SAP Cloud platform pilótafülkére `https://account.<landscape host>.ondemand.com/cockpit`(például: https://account.hanatrial.ondemand.com/cockpit)).
+1. Egy másik böngészőablakban jelentkezzen be az SAP Cloud platform pilótafülkére `https://account.<landscape host>.ondemand.com/cockpit` (például: https://account.hanatrial.ondemand.com/cockpit) ).
 
 2. Kattintson a **megbízhatóság** fülre.
    
@@ -175,7 +169,7 @@ Az Azure AD egyszeri bejelentkezés SAP Cloud platformon történő konfigurál�
 
     f. **Kényszerített hitelesítésként**válassza a **Letiltva**lehetőséget.
 
-    g. Kattintson a **Save** (Mentés) gombra.
+    : Kattintson a **Mentés** gombra.
 
 4. A **helyi szolgáltató** beállításainak mentése után hajtsa végre a következőt a válasz URL-címének beszerzéséhez:
    
@@ -254,12 +248,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A Felhasználónév mezőbe írja be a **brittasimon\@yourcompanydomain. Extension** **nevet**  
+    b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -307,7 +301,7 @@ Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek az SAP Cloud platformba,
 
     d. Kattintson a **hozzárendelés** elemre a felhasználó szerepkörhöz rendeléséhez.
 
-    e. Kattintson a **Save** (Mentés) gombra.
+    e. Kattintson a **Mentés** gombra.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 

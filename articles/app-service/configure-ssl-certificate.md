@@ -6,14 +6,14 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 9f9fcc0b3d8dfe19961668e77da91bc9f14ff2d1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: be490c5ec11ab4bafcd68731a535483d1803a8c7
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81453897"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146415"
 ---
-# <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>TLS/SSL-tanúsítvány hozzáadása Azure App Service
+# <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>TLS-/SSL-tanúsítvány hozzáadása az Azure App Service-ben
 
 Az [Azure App Service](overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás. Ebből a cikkből megtudhatja, hogyan hozhat létre, tölthet fel vagy importálhat privát tanúsítványt vagy nyilvános tanúsítványt App Serviceba. 
 
@@ -34,7 +34,7 @@ A következő táblázat felsorolja azokat a beállításokat, amelyekkel tanús
 A következő útmutató követése:
 
 - [Hozzon létre egy app Service alkalmazást](/azure/app-service/).
-- Csak az ingyenes tanúsítvány: altartomány hozzárendelése (például `www.contoso.com`) egy CNAME- [rekorddal](app-service-web-tutorial-custom-domain.md#map-a-cname-record)app Service.
+- Csak az ingyenes tanúsítvány: altartomány hozzárendelése (például `www.contoso.com` ) egy [CNAME-rekorddal](app-service-web-tutorial-custom-domain.md#map-a-cname-record)app Service.
 
 ## <a name="private-certificate-requirements"></a>Magánjellegű tanúsítványokra vonatkozó követelmények
 
@@ -64,17 +64,17 @@ Az ingyenes App Service felügyelt tanúsítvány egy kulcsrakész megoldás az 
 - A nem támogatja a helyettesítő tanúsítványokat.
 - A nem támogatja a meztelen tartományokat.
 - Nem exportálható.
-- A nem támogatja az A DNS-rekordokat.
+- A nem támogatja A rekordokat. Az automatikus megújítás például nem működik a rekordokkal.
 
 > [!NOTE]
-> Az ingyenes tanúsítványt a DigiCert bocsátja ki. Egyes legfelső szintű tartományok esetében explicit módon engedélyeznie kell a DigiCert tanúsítvány-kiállítóként, ha létrehoz egy [CAA tartományi rekordot](https://wikipedia.org/wiki/DNS_Certification_Authority_Authorization) a következő értékkel: `0 issue digicert.com`.
+> Az ingyenes tanúsítványt a DigiCert bocsátja ki. Egyes legfelső szintű tartományok esetében explicit módon engedélyeznie kell a DigiCert tanúsítvány-kiállítóként, ha létrehoz egy [CAA tartományi rekordot](https://wikipedia.org/wiki/DNS_Certification_Authority_Authorization) a következő értékkel: `0 issue digicert.com` .
 > 
 
 Ingyenes App Service felügyelt tanúsítvány létrehozása:
 
-A <a href="https://portal.azure.com" target="_blank">Azure Portal</a>bal oldali menüjében válassza az **app Services** > **\<alkalmazás neve>** lehetőséget.
+A <a href="https://portal.azure.com" target="_blank">Azure Portal</a>bal oldali menüjében válassza a app Services lehetőséget **App Services**  >  **\<app-name>** .
 
-Az alkalmazás bal oldali navigációs sávján válassza a **TLS/SSL-beállítások** > **titkos kulcsú tanúsítványok (. pfx)** > **app Service felügyelt tanúsítvány létrehozása**lehetőséget.
+Az alkalmazás bal oldali navigációs sávján válassza a **TLS/SSL**  >  **-Beállítások titkos kulcsú tanúsítványok (. pfx)**  >  **app Service felügyelt tanúsítvány létrehozása**lehetőséget.
 
 ![Ingyenes tanúsítvány létrehozása App Service](./media/configure-ssl-certificate/create-free-cert.png)
 
@@ -115,8 +115,8 @@ A következő táblázat segítséget nyújt a tanúsítvány konfigurálásába
 
 | Beállítás | Leírás |
 |-|-|
-| Name (Név) | A App Service tanúsítvány rövid neve. |
-| Naked domain Host neve | Itt adhatja meg a legfelső szintű tartományt. A kiállított tanúsítvány a *both* legfelső szintű tartományt és az `www` altartományt is védi. A kiállított tanúsítványban a köznapi név mező tartalmazza a gyökértartomány tartományát, a tulajdonos alternatív neve mező pedig a `www` tartományt tartalmazza. Csak az altartományok védelméhez adja meg az altartomány teljes tartománynevét (például: `mysubdomain.contoso.com`).|
+| Name | A App Service tanúsítvány rövid neve. |
+| Naked domain Host neve | Itt adhatja meg a legfelső szintű tartományt. A kiállított tanúsítvány a *both* legfelső szintű tartományt és az `www` altartományt is védi. A kiállított tanúsítványban a köznapi név mező tartalmazza a gyökértartomány tartományát, a tulajdonos alternatív neve mező pedig a `www` tartományt tartalmazza. Csak az altartományok védelméhez adja meg az altartomány teljes tartománynevét (például: `mysubdomain.contoso.com` ).|
 | Előfizetés | Az előfizetés, amely a tanúsítványt fogja tartalmazni. |
 | Erőforráscsoport | Az erőforráscsoport, amely a tanúsítványt fogja tartalmazni. Használhat új erőforráscsoportot, vagy kiválaszthatja ugyanazt az erőforráscsoportot, mint a App Service alkalmazás, például:. |
 | Tanúsítvány SKU | Meghatározza a létrehozandó tanúsítvány típusát, legyen az egy standard tanúsítvány vagy egy [helyettesítő tanúsítvány](https://wikipedia.org/wiki/Wildcard_certificate). |
@@ -126,7 +126,7 @@ A következő táblázat segítséget nyújt a tanúsítvány konfigurálásába
 
 A tanúsítvány megvásárlásának befejeződése után még néhány lépést el kell végeznie a tanúsítvány használatának megkezdése előtt. 
 
-Válassza ki a tanúsítványt a [app Service tanúsítványok](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) lapon, majd kattintson a **tanúsítvány-konfiguráció** > **1. lépés: tároló**elemre.
+Válassza ki a tanúsítványt a [app Service tanúsítványok](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) lapon, majd kattintson a **tanúsítvány-konfiguráció**  >  **1. lépés: tároló**elemre.
 
 ![App Service tanúsítvány Key Vault-tárolójának konfigurálása](./media/configure-ssl-certificate/configure-key-vault.png)
 
@@ -136,7 +136,7 @@ A **Key Vault állapota** lapon kattintson a Key Vault adattár elemre egy új t
 
 | Beállítás | Leírás |
 |-|-|
-| Name (Név) | Egy egyedi név, amely alfanumerikus karaktereket és kötőjeleket tartalmaz. |
+| Name | Egy egyedi név, amely alfanumerikus karaktereket és kötőjeleket tartalmaz. |
 | Erőforráscsoport | Javaslatként válassza ki ugyanazt az erőforráscsoportot, mint a App Service-tanúsítványt. |
 | Hely | Válassza ki ugyanazt a helyet, mint a App Service alkalmazás. |
 | Tarifacsomag | További információ: [Azure Key Vault díjszabása](https://azure.microsoft.com/pricing/details/key-vault/). |
@@ -163,9 +163,9 @@ Válassza ki **app Service ellenőrzést**. Mivel már leképezte a tartományt 
 
 ### <a name="import-certificate-into-app-service"></a>Tanúsítvány importálása App Serviceba
 
-A <a href="https://portal.azure.com" target="_blank">Azure Portal</a>bal oldali menüjében válassza az **app Services** > **\<alkalmazás neve>** lehetőséget.
+A <a href="https://portal.azure.com" target="_blank">Azure Portal</a>bal oldali menüjében válassza a app Services lehetőséget **App Services**  >  **\<app-name>** .
 
-Az alkalmazás bal oldali navigációs sávján válassza a **TLS/SSL-beállítások** > **titkos kulcsú tanúsítványok (. pfx)** > **Importálás app Service-tanúsítvány**elemet.
+Az alkalmazás bal oldali navigációs sávján válassza a **TLS/SSL**  >  **-Beállítások titkos kulcsú tanúsítványok (. pfx)**  >  **Importálás app Service-tanúsítvány**elemet.
 
 ![App Service tanúsítvány importálása App Service](./media/configure-ssl-certificate/import-app-service-cert.png)
 
@@ -183,9 +183,9 @@ Ha a művelet befejeződik, megjelenik a tanúsítvány a **titkos kulcs tanús�
 
 Ha a Azure Key Vault használatával kezeli a tanúsítványokat, a PKCS12/pfx-profil-tanúsítványt Key Vaultból App Service importálhatja, feltéve, hogy [megfelel a követelményeknek](#private-certificate-requirements).
 
-A <a href="https://portal.azure.com" target="_blank">Azure Portal</a>bal oldali menüjében válassza az **app Services** > **\<alkalmazás neve>** lehetőséget.
+A <a href="https://portal.azure.com" target="_blank">Azure Portal</a>bal oldali menüjében válassza a app Services lehetőséget **App Services**  >  **\<app-name>** .
 
-Az alkalmazás bal oldali navigációs sávján válassza a **TLS/SSL-beállítások** > **titkos kulcsú tanúsítványok (. pfx)** > **Key Vault tanúsítvány importálása**lehetőséget.
+Az alkalmazás bal oldali navigációs sávján válassza a **TLS/SSL**  >  **-Beállítások titkos kulcsú tanúsítványok (. pfx)**  >  **Key Vault tanúsítvány importálása**lehetőséget.
 
 ![Key Vault tanúsítvány importálása App Service](./media/configure-ssl-certificate/import-key-vault-cert.png)
 
@@ -239,7 +239,7 @@ Hozzon létre egy _mergedcertificate.crt_ nevű fájlt az egyesített tanúsítv
 
 Exportálja az egyesített TLS/SSL-tanúsítványt annak a titkos kulcsnak a használatával, amelyhez a tanúsítványkérelem létrejött.
 
-Ha OpenSSL használatával hozta létre a tanúsítványkérést, akkor létrehozott egy titkoskulcsfájlt. A tanúsítvány PFX-fájlba exportáláshoz futtassa az alábbi parancsot. Cserélje le a helyőrzők _ &lt;titkos kulcs-fájl>_ és _ &lt;az egyesített-Certificate-file>_ a titkos kulcs és az egyesített tanúsítványfájl elérési útjaira.
+Ha OpenSSL használatával hozta létre a tanúsítványkérést, akkor létrehozott egy titkoskulcsfájlt. A tanúsítvány PFX-fájlba exportáláshoz futtassa az alábbi parancsot. Cserélje le a helyőrzők _ &lt; titkos kulcs-fájl>_ és az _ &lt; egyesített-Certificate-file>_ a titkos kulcs és az egyesített tanúsítványfájl elérési útjaira.
 
 ```bash
 openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-certificate-file>  
@@ -253,9 +253,9 @@ Ha az IIS vagy a _Certreq.exe_ használatával hozta létre a tanúsítványkér
 
 Most már készen áll a tanúsítvány feltöltésére App Service.
 
-A <a href="https://portal.azure.com" target="_blank">Azure Portal</a>bal oldali menüjében válassza az **app Services** > **\<alkalmazás neve>** lehetőséget.
+A <a href="https://portal.azure.com" target="_blank">Azure Portal</a>bal oldali menüjében válassza a app Services lehetőséget **App Services**  >  **\<app-name>** .
 
-Az alkalmazás bal oldali navigációs sávján válassza a **TLS/SSL-beállítások** > **titkos kulcsú tanúsítványok (. pfx)** > **feltöltési tanúsítvány**elemet.
+Az alkalmazás bal oldali navigációs sávján válassza a **TLS/SSL**  >  **-Beállítások titkos kulcsú tanúsítványok (. pfx)**  >  **feltöltési tanúsítvány**elemet.
 
 ![Privát tanúsítvány feltöltése App Service](./media/configure-ssl-certificate/upload-private-cert.png)
 
@@ -273,9 +273,9 @@ Ha a művelet befejeződik, megjelenik a tanúsítvány a **titkos kulcs tanús�
 
 A nyilvános tanúsítványokat *. cer* formátumban támogatja a rendszer. 
 
-A <a href="https://portal.azure.com" target="_blank">Azure Portal</a>bal oldali menüjében válassza az **app Services** > **\<alkalmazás neve>** lehetőséget.
+A <a href="https://portal.azure.com" target="_blank">Azure Portal</a>bal oldali menüjében válassza a app Services lehetőséget **App Services**  >  **\<app-name>** .
 
-Az alkalmazás bal oldali navigációs sávján kattintson a **TLS/SSL** > **-Beállítások nyilvános tanúsítványok (. cer)** > nyilvános**kulcsú tanúsítvány feltöltése**elemre.
+Az alkalmazás bal oldali navigációs sávján kattintson a **TLS/SSL**  >  **-Beállítások nyilvános tanúsítványok (. cer)** nyilvános  >  **kulcsú tanúsítvány feltöltése**elemre.
 
 A **név**mezőben adja meg a tanúsítvány nevét. A **CER-tanúsítvány fájljában**válassza ki a CER-fájlt.
 
@@ -357,7 +357,7 @@ Keresse meg a tanúsítvány zárolását a **delete**zárolási típussal. A jo
 
 ![App Service tanúsítvány zárolásának törlése](./media/configure-ssl-certificate/delete-lock-app-service-cert.png)
 
-Most törölheti a App Service tanúsítványt. A bal oldali navigációs sávon válassza az **Áttekintés** > **Törlés**lehetőséget. A megerősítő párbeszédpanelen írja be a tanúsítvány nevét, majd kattintson az **OK gombra**.
+Most törölheti a App Service tanúsítványt. A bal oldali navigációs sávon válassza az **Áttekintés**  >  **Törlés**lehetőséget. A megerősítő párbeszédpanelen írja be a tanúsítvány nevét, majd kattintson az **OK gombra**.
 
 ## <a name="automate-with-scripts"></a>Automatizálás szkriptekkel
 

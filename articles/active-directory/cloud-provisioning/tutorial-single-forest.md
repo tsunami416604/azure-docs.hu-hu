@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c922b95154f16a199660bcd5e58f792e46eade7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d4fbfe9222971ccd1d28ceaddc91b137c6106e12
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85360605"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146735"
 ---
 # <a name="tutorial-integrate-a-single-forest-with-a-single-azure-ad-tenant"></a>Oktatóanyag: egyetlen erdő integrálása egyetlen Azure AD-Bérlővel
 
@@ -107,14 +107,14 @@ Az ügynök futtatásának ellenőrzéséhez kövesse az alábbi lépéseket:
 1.  Jelentkezzen be az Azure AD-portálra.
 2.  Kattintson **Azure Active Directory**
 3.  Kattintson **Azure ad Connect**
-4.  Válassza ki a **kiépítés kezelése (előzetes verzió) lehetőséget.**
-![](media/how-to-configure/manage1.png)
-5.  Kattintson az **Új konfiguráció** elemre.
-![](media/tutorial-single-forest/configure1.png)
+4.  Válassza a **felügyelet létesítése (előzetes verzió)** 
+ ![ képernyőképet, amely a "kiépítés kezelése (előzetes verzió)" hivatkozást mutatja.](media/how-to-configure/manage1.png)
+5.  Az **New Configuration** 
+ ![ Azure ad-kiépítés (előzetes verzió) képernyő új konfiguráció képernyőképére kattintva kiemelve jelenik meg az "új konfiguráció" hivatkozás.](media/tutorial-single-forest/configure1.png)
 7.  A konfiguráció képernyőn adja meg az **értesítő e-mailt**, helyezze át a választót az **engedélyezéshez** , majd kattintson a **Mentés**gombra.
-![](media/tutorial-single-forest/configure2.png)
+![Képernyőkép a konfigurálásról a képernyőn megjelenő értesítő e-mailben és a kijelölés engedélyezése lapon.](media/tutorial-single-forest/configure2.png)
 1.  A konfigurációs állapotnak most **kifogástalannak**kell lennie.
-![](media/how-to-configure/manage4.png)
+![Képernyőkép az Azure AD-kiépítési (előzetes) képernyőről, amely kifogástalan állapotot mutat.](media/how-to-configure/manage4.png)
 
 ## <a name="verify-users-are-created-and-synchronization-is-occurring"></a>A felhasználók létrehozásának és szinkronizálásának ellenőrzése
 Ekkor ellenőrzi, hogy a helyszíni címtárban lévő felhasználók szinkronizálva lettek-e, és már léteznek-e az Azure AD-bérlőben.  Vegye figyelembe, hogy ez eltarthat néhány óráig.  A felhasználók szinkronizálásának ellenőrzéséhez tegye a következőket.

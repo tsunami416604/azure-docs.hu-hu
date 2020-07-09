@@ -1,21 +1,21 @@
 ---
-title: Leküldéses értesítések küldése a Xamarin. Forms-alkalmazásoknak az Azure Notification Hubs használatával a backend Service segítségével | Microsoft Docs
-description: Ismerje meg, hogyan küldhet értesítéseket az Azure Notification Hubst használó Xamarin. Forms-alkalmazásokhoz a háttérrendszer segítségével.
+title: Leküldéses értesítések küldése az Azure Notification Hubs használatával a háttér-szolgáltatással | Microsoft Docs
+description: Ismerje meg, hogyan küldhet értesítéseket az Azure Notification Hubst használó alkalmazások számára egy háttér-szolgáltatáson keresztül.
 author: mikeparker104
 ms.service: notification-hubs
 ms.topic: tutorial
-ms.date: 06/02/2020
+ms.date: 07/07/2020
 ms.author: miparker
-ms.openlocfilehash: 5175edfd438edb527f6873c87b948f8ff0701cf1
+ms.openlocfilehash: 5fa753a6b8b1284c4f8fcd046f74fabcbae3f8fb
 ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/09/2020
-ms.locfileid: "86166331"
+ms.locfileid: "86171006"
 ---
-# <a name="tutorial-send-push-notifications-to-xamarinforms-apps-using-azure-notification-hubs-via-a-backend-service"></a>Oktatóanyag: leküldéses értesítések küldése a Xamarin. Forms-alkalmazásoknak az Azure Notification Hubs használatával egy háttér-szolgáltatáson keresztül  
+# <a name="tutorial-send-push-notifications-to-flutter-apps-using-azure-notification-hubs-via-a-backend-service"></a>Oktatóanyag: leküldéses értesítések küldése az Azure Notification Hubs használatával a háttér-szolgáltatással  
 
-[![Töltse le ](./media/notification-hubs-backend-service-xamarin-forms/download.png) a mintát a minta letöltéséhez](https://github.com/xamcat/mobcat-samples/tree/master/notification_hub_backend_service)  
+[![Töltse le ](./media/notification-hubs-backend-service-flutter/download.png) a mintát a minta letöltéséhez](https://github.com/xamcat/mobcat-samples/tree/master/notification_hub_backend_service)  
 
 > [!div class="op_single_selector"]
 >
@@ -23,7 +23,7 @@ ms.locfileid: "86166331"
 > * [Flutter](notification-hubs-backend-service-flutter.md)
 > * [React Native](notification-hubs-backend-service-react-native.md)
 
-Ebben az oktatóanyagban az [Azure Notification Hubs](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-push-notification-overview) segítségével leküldheti az értesítéseket egy [Xamarin. Forms](https://dotnet.microsoft.com/apps/xamarin/xamarin-forms) alkalmazásra, amely az **Androidot** és az **iOS**-t célozza  
+Ebben az oktatóanyagban az [Azure Notification Hubs](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-push-notification-overview) használatával leküldheti az értesítéseket az **Android** és az **iOS** [rendszerre](https://flutter.dev) irányuló, az alkalmazásra irányuló alkalmazások számára  
 
 [!INCLUDE [Notification Hubs Backend Service Introduction](../../includes/notification-hubs-backend-service-introduction.md)]
 
@@ -33,7 +33,7 @@ Ez az oktatóanyag végigvezeti a következő lépéseken:
 >
 > * [A leküldéses Notification Services és az Azure Notification Hubs beállítása.](#set-up-push-notification-services-and-azure-notification-hub)
 > * [Hozzon létre egy ASP.NET Core webes API-háttérbeli alkalmazást.](#create-an-aspnet-core-web-api-backend-application)
-> * [Platformfüggetlen Xamarin. Forms-alkalmazás létrehozása.](#create-a-cross-platform-xamarinforms-application)
+> * [Hozzon létre egy platformfüggetlen fellépési alkalmazást.](#create-a-cross-platform-flutter-application)
 > * [A natív Android-projekt konfigurálása leküldéses értesítésekhez.](#configure-the-native-android-project-for-push-notifications)
 > * [A natív iOS-projekt konfigurálása leküldéses értesítésekhez.](#configure-the-native-ios-project-for-push-notifications)
 > * [Tesztelje a megoldást.](#test-the-solution)
@@ -43,7 +43,8 @@ Ez az oktatóanyag végigvezeti a következő lépéseken:
 A lépések elvégzéséhez a következőket kell tennie:
 
 * [Azure-előfizetés](https://portal.azure.com) , ahol erőforrásokat hozhat létre és kezelhet.
-* Egy Mac [Visual Studio for Mac](https://visualstudio.microsoft.com/vs/mac/) telepítve (vagy egy olyan számítógép, amelyen a [Visual Studio 2019](https://visualstudio.microsoft.com/vs) fut a **.net** munkaterhelés használatával).
+* A [dobogós](https://flutter.dev/docs/get-started/install) eszközkészlet (az előfeltételekkel együtt).
+* A [Visual Studio Code](https://code.visualstudio.com) a [felnyíló és a DART beépülő modulok](https://flutter.dev/docs/get-started/editor?tab=vscode) telepítésével.
 * Az alkalmazás futtatásának lehetősége **Android** (fizikai vagy Emulátoros eszközökön) vagy **iOS** rendszeren (csak fizikai eszközökön).
 
 Android esetén a következőket kell tennie:
@@ -55,6 +56,7 @@ IOS esetén a következőket kell tennie:
 * Aktív [Apple fejlesztői fiók](https://developer.apple.com).
 * A [fejlesztői fiókba regisztrált](https://help.apple.com/developer-account/#/dev40df0d9fa) fizikai iOS *-eszköz (iOS 13,0-es vagy újabb verzió)*.
 * A **kulcstartóban** telepített **. P12** [fejlesztési tanúsítvány](https://help.apple.com/developer-account/#/dev04fd06d56) lehetővé teszi, hogy egy [alkalmazást fizikai eszközön futtasson](https://help.apple.com/xcode/mac/current/#/dev5a825a1ca).
+* A [CocoaPods](https://guides.cocoapods.org/using/getting-started.html#installation) a könyvtár függőségeinek kezelésére lett telepítve.
 
 > [!NOTE]
 > Az iOS-szimulátor nem támogatja a távoli értesítéseket, ezért fizikai eszközre van szükség, amikor az iOS-en vizsgálja ezt a mintát. Az oktatóanyag elvégzéséhez azonban nem kell futtatnia az alkalmazást **Androidon** és **iOS** -en is.
@@ -65,9 +67,10 @@ Az első elvekben ismertetett lépéseket a korábbi tapasztalatok nélkül is k
 * [ASP.NET Core](https://docs.microsoft.com/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-3.1)
 * [Azure Notification Hubs](notification-hubs-push-notification-overview.md)
 * [Google Firebase-konzol](https://console.firebase.google.com/u/0/)
-* [Xamarin](https://dotnet.microsoft.com/apps/xamarin) és [Xamarin. Forms](https://dotnet.microsoft.com/apps/xamarin/xamarin-forms)
+* A többplatformos fejlesztéshez a [dobogó](https://flutter.dev) és a [DART](https://dart.dev)
+* [Kotlin](https://kotlinlang.org) és [Swift](https://developer.apple.com/swift) Android-és IOS-alapú natív fejlesztéshez
 
-A megadott lépések a [Visual Studio for Mac](https://visualstudio.microsoft.com/vs/mac/) , de a [Visual Studio 2019](https://visualstudio.microsoft.com/vs)használatával követhető.
+A megadott lépések a [MacOS](https://developer.apple.com/macos)-re vonatkoznak. Az **iOS** -szempontok kihagyása esetén a [Windows](https://www.microsoft.com/windows) mellett is követhető.
 
 ## <a name="set-up-push-notification-services-and-azure-notification-hub"></a>Leküldéses Notification Services és az Azure Notification hub beállítása
 
@@ -85,25 +88,25 @@ Ebben a szakaszban a **[Firebase Cloud Messaging (FCM)](https://firebase.google.
 
 ## <a name="create-an-aspnet-core-web-api-backend-application"></a>ASP.NET Core webes API háttérbeli alkalmazás létrehozása
 
-Ebben a szakaszban a [ASP.net Core webes API](https://dotnet.microsoft.com/apps/aspnet/apis) -hátterét hozza létre az [eszközök regisztrálásának](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-push-notification-registration-management#what-is-device-registration) kezeléséhez és az értesítések Xamarin. Forms Mobile alkalmazásba való küldéséhez.
+Ebben a szakaszban a [ASP.net Core webes API](https://dotnet.microsoft.com/apps/aspnet/apis) -háttérrendszer segítségével kezeli az [eszközök regisztrációját](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-push-notification-registration-management#what-is-device-registration) és az értesítések küldését a bekapcsolódási Mobile alkalmazásba.
 
 [!INCLUDE [Create an ASP.NET Core Web API backend application](../../includes/notification-hubs-backend-service-web-api.md)]
 
-## <a name="create-a-cross-platform-xamarinforms-application"></a>Platformfüggetlen Xamarin. Forms-alkalmazás létrehozása
+## <a name="create-a-cross-platform-flutter-application"></a>Platformfüggetlen fellépési alkalmazás létrehozása
 
-Ebben a szakaszban egy [Xamarin. Forms](https://dotnet.microsoft.com/apps/xamarin/xamarin-forms) Mobile-alkalmazást hozhat létre, amely leküldéses értesítéseket hajt végre platformfüggetlen módon.
+Ebben a szakaszban a leküldéses értesítések többplatformos módon történő megvalósítását szolgáló, összehajtható [mobileszköz-](https://flutter.dev) alkalmazást hozhat létre.
 
 [!INCLUDE [Sample application generic overview](../../includes/notification-hubs-backend-service-sample-app-overview.md)]
 
-[!INCLUDE [Create Xamarin.Forms application](../../includes/notification-hubs-backend-service-sample-app-xamarin-forms.md)]
+[!INCLUDE [Create Flutter application](../../includes/notification-hubs-backend-service-sample-app-flutter.md)]
 
 ## <a name="configure-the-native-android-project-for-push-notifications"></a>A natív Android-projekt konfigurálása leküldéses értesítésekhez
 
-[!INCLUDE [Configure the native Android project](../../includes/notification-hubs-backend-service-configure-xamarin-android.md)]
+[!INCLUDE [Configure the native Android project](../../includes/notification-hubs-backend-service-configure-flutter-android.md)]
 
 ## <a name="configure-the-native-ios-project-for-push-notifications"></a>A natív iOS-projekt konfigurálása leküldéses értesítésekhez
 
-[!INCLUDE [Configure the native iOS project](../../includes/notification-hubs-backend-service-configure-xamarin-ios.md)]
+[!INCLUDE [Configure the native iOS project](../../includes/notification-hubs-backend-service-configure-flutter-ios.md)]
 
 ## <a name="test-the-solution"></a>A megoldás tesztelése
 
@@ -113,7 +116,7 @@ Most tesztelheti az értesítéseket a háttérrendszer használatával.
 
 ## <a name="next-steps"></a>További lépések
 
-Ekkor egy alapszintű Xamarin. Forms-alkalmazásnak kell lennie, amely a háttér-szolgáltatáson keresztül csatlakozik egy értesítési központhoz, és küldhet és fogadhat értesítéseket.
+Most már rendelkeznie kell egy, az értesítési központhoz tartozó alapszintű, háttérrendszer-szolgáltatással, amely értesítések küldésére és fogadására képes.
 
 [!INCLUDE [Next steps](../../includes/notification-hubs-backend-service-next-steps.md)]
 
@@ -124,8 +127,8 @@ Ekkor egy alapszintű Xamarin. Forms-alkalmazásnak kell lennie, amely a hátté
 ## <a name="related-links"></a>Kapcsolódó hivatkozások
 
 * [Az Azure Notification Hubs áttekintése](notification-hubs-push-notification-overview.md)
-* [Visual Studio for Mac telepítése](https://docs.microsoft.com/visualstudio/mac/installation?view=vsmac-2019)
-* [A Xamarin telepítése Windows rendszeren](https://docs.microsoft.com/xamarin/get-started/installation/windows)
+* [A bekapcsolás macOS rendszeren való telepítése](https://flutter.dev/docs/get-started/install/macos)
+* [A Windows operációs rendszer telepítése](https://flutter.dev/docs/get-started/install/windows)
 * [Notification Hubs SDK a háttérbeli műveletekhez](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)
 * [Notification Hubs SDK a GitHubon](https://github.com/Azure/azure-notificationhubs)
 * [Regisztráció az alkalmazás háttérrendszerével](notification-hubs-ios-aspnet-register-user-from-backend-to-push-notification.md)

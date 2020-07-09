@@ -7,15 +7,15 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 3efa8da87ac15495900dd264a9c37143f5e08181
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 7d92311dfa699247995c7ded3e3930e19a9a537a
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84699719"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135462"
 ---
 # <a name="move-azure-vms-into-availability-zones"></a>Azure-beli virtuális gépek áthelyezése rendelkezésre állási zónákba
-Availability Zones az Azure-ban segíti az alkalmazások és az adatok adatközpont-meghibásodások elleni védelmében. Az egyes rendelkezésre állási zónák egy vagy több, önálló áramellátással, hűtéssel, és hálózattal rendelkező adatközpontból állnak. A rugalmasság biztosításához legalább három különálló zónának kell lennie az összes engedélyezett régióban. A régión belüli Availability Zones fizikai elkülönítése segít az adatközpont-hibák elleni védelemben az alkalmazások és az adatok védelme terén. A Availability Zones az Azure a virtuális gépek (VM-EK) rendelkezésre állására vonatkozó, 99,99%-os szolgáltatói szerződést (SLA) biztosít. A Availability Zones a kiválasztott régiókban támogatottak, ahogyan az a [Availability Zones támogató régiókban](https://docs.microsoft.com/azure/availability-zones/az-region)szerepel.
+Availability Zones az Azure-ban segíti az alkalmazások és az adatok adatközpont-meghibásodások elleni védelmében. Az egyes rendelkezésre állási zónák egy vagy több, önálló áramellátással, hűtéssel, és hálózattal rendelkező adatközpontból állnak. A rugalmasság biztosításához legalább három különálló zónának kell lennie az összes engedélyezett régióban. A régión belüli Availability Zones fizikai elkülönítése segít az adatközpont-hibák elleni védelemben az alkalmazások és az adatok védelme terén. A Availability Zones az Azure a virtuális gépek (VM-EK) rendelkezésre állására vonatkozó, 99,99%-os szolgáltatói szerződést (SLA) biztosít. A Availability Zones a kiválasztott régiókban támogatottak, ahogyan az a [Availability Zones támogató régiókban](../availability-zones/az-region.md)szerepel.
 
 Olyan helyzetekben, ahol a virtuális gépek *egyetlen példányban* vannak üzembe helyezve egy adott régióban, és szeretné javítani a rendelkezésre állást azáltal, hogy ezeket a virtuális gépeket egy rendelkezésre állási zónába helyezi, ezt Azure site Recovery használatával teheti meg. Ez a művelet a következő kategóriákba rendezhető:
 
@@ -23,11 +23,11 @@ Olyan helyzetekben, ahol a virtuális gépek *egyetlen példányban* vannak üze
 - Virtuális gépek áthelyezése egy rendelkezésre állási csoportba egy adott régióban lévő Availability Zonesba
 
 > [!IMPORTANT]
-> Jelenleg Azure Site Recovery támogatja a virtuális gépek áthelyezését az egyik régióból a másikba. Csak néhány régión belül támogatja a zónák közötti áthelyezést. [További információ](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery).
+> Jelenleg Azure Site Recovery támogatja a virtuális gépek áthelyezését az egyik régióból a másikba. Csak néhány régión belül támogatja a zónák közötti áthelyezést. [További információk](./azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md).
 
 ## <a name="check-prerequisites"></a>Előfeltételek ellenőrzése
 
-- Győződjön [meg arról,](https://docs.microsoft.com/azure/availability-zones/az-region)hogy a célként megadott régió támogatja-e a Availability Zones. Győződjön meg arról, hogy a [forrás régió és a cél régió kombinációja támogatott](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#region-support). Tájékozott döntést hozhat a megcélzott régióban.
+- Győződjön [meg arról,](../availability-zones/az-region.md)hogy a célként megadott régió támogatja-e a Availability Zones. Győződjön meg arról, hogy a [forrás régió és a cél régió kombinációja támogatott](./azure-to-azure-support-matrix.md#region-support). Tájékozott döntést hozhat a megcélzott régióban.
 - Ismernie kell a [forgatókönyv-architektúrát és az összetevőket](azure-to-azure-architecture.md).
 - Tekintse át a [támogatási korlátokat és követelményeket](azure-to-azure-support-matrix.md) ismertető részt.
 - Győződjön meg a fiók engedélyeiről. Ha most hozta létre az ingyenes Azure-fiókját, akkor Ön az előfizetés rendszergazdája. Ha nem Ön az előfizetés rendszergazdája, akkor a rendszergazdával együttműködve rendelje hozzá a szükséges engedélyeket. A virtuális gép replikálásának engedélyezéséhez, és végül az Azure Site Recovery használatával másolhatja az Adatmásolást a célhelyre, a következőket kell tennie:
@@ -41,7 +41,7 @@ Olyan helyzetekben, ahol a virtuális gépek *egyetlen példányban* vannak üze
 
 ## <a name="prepare-the-source-vms"></a>A forrásként szolgáló virtuális gépek előkészítése
 
-1. A virtuális gépeknek felügyelt lemezeket kell használniuk, ha Site Recovery használatával szeretné áthelyezni őket egy rendelkezésre állási zónába. A nem felügyelt lemezeket használó meglévő Windows-alapú virtuális gépeket átalakíthatja a felügyelt lemezek használatára. Kövesse a [Windows rendszerű virtuális gépek nem felügyelt lemezekről felügyelt lemezekre való konvertálása](https://docs.microsoft.com/azure/virtual-machines/windows/convert-unmanaged-to-managed-disks)című témakör lépéseit. Győződjön meg arról, hogy a rendelkezésre állási csoport *felügyelt*van konfigurálva.
+1. A virtuális gépeknek felügyelt lemezeket kell használniuk, ha Site Recovery használatával szeretné áthelyezni őket egy rendelkezésre állási zónába. A nem felügyelt lemezeket használó meglévő Windows-alapú virtuális gépeket átalakíthatja a felügyelt lemezek használatára. Kövesse a [Windows rendszerű virtuális gépek nem felügyelt lemezekről felügyelt lemezekre való konvertálása](../virtual-machines/windows/convert-unmanaged-to-managed-disks.md)című témakör lépéseit. Győződjön meg arról, hogy a rendelkezésre állási csoport *felügyelt*van konfigurálva.
 2. Győződjön meg arról, hogy az összes legújabb főtanúsítvány megtalálható az áthelyezni kívánt Azure-beli virtuális gépeken. Ha a legújabb főtanúsítványok nem jelennek meg, a célként megadott régióba történő Adatmásolást biztonsági korlátozások miatt nem lehet engedélyezni.
 
 3. A Windows rendszerű virtuális gépek esetében az összes új Windows-frissítést telepíteni kell a virtuális gépen, így a megbízható főtanúsítványok mindegyike megtalálható lesz a számítógépen. A leválasztott környezetekben kövesse a Windows Update és a tanúsítvány frissítési folyamatait a szervezet számára.
@@ -66,16 +66,16 @@ Olyan helyzetekben, ahol a virtuális gépek *egyetlen példányban* vannak üze
 
      A következő dokumentumok azt mutatják be, hogyan hozhatja létre az Ön számára releváns leggyakrabban használt hálózati erőforrásokat a forrásként szolgáló virtuális gép konfigurációja alapján.
 
-    - [Network security groups (Hálózati biztonsági csoportok)](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
-    - [Terheléselosztók](https://docs.microsoft.com/azure/load-balancer)
+    - [Network security groups (Hálózati biztonsági csoportok)](../virtual-network/manage-network-security-group.md)
+    - [Terheléselosztók](../load-balancer/index.yml)
     - [Nyilvános IP-cím](../virtual-network/virtual-network-public-ip-address.md)
     
-   Bármely más hálózati összetevő esetében tekintse meg a hálózatkezelés [dokumentációját](https://docs.microsoft.com/azure/?pivot=products&panel=network).
+   Bármely más hálózati összetevő esetében tekintse meg a hálózatkezelés [dokumentációját](../index.yml?pivot=products&panel=network).
 
     > [!IMPORTANT]
-    > Győződjön meg arról, hogy a célhelyen egy redundáns terheléselosztó van használatban. További információk: [standard Load Balancer és Availability Zones](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones).
+    > Győződjön meg arról, hogy a célhelyen egy redundáns terheléselosztó van használatban. További információk: [standard Load Balancer és Availability Zones](../load-balancer/load-balancer-standard-availability-zones.md).
 
-4. Ha azt szeretné, hogy a célként megadott régióba való Kivágás előtt tesztelje a konfigurációt, manuálisan [hozzon létre nem éles hálózatot](https://docs.microsoft.com/azure/virtual-network/quick-create-portal) a célként megadott régióban. Ezt a megközelítést javasoljuk, mert az éles környezettel való minimális beavatkozást okoz.
+4. Ha azt szeretné, hogy a célként megadott régióba való Kivágás előtt tesztelje a konfigurációt, manuálisan [hozzon létre nem éles hálózatot](../virtual-network/quick-create-portal.md) a célként megadott régióban. Ezt a megközelítést javasoljuk, mert az éles környezettel való minimális beavatkozást okoz.
 
 ## <a name="enable-replication"></a>A replikáció engedélyezése
 A következő lépések végigvezetik a Azure Site Recovery az adatreplikálás engedélyezéséhez a célként megadott régióba, mielőtt végül áthelyezi őket a Availability Zonesba.
@@ -85,7 +85,7 @@ A következő lépések végigvezetik a Azure Site Recovery az adatreplikálás 
 
 1. A Azure Portal válassza a **virtuális gépek**lehetőséget, majd válassza ki azt a virtuális gépet, amelyet át szeretne helyezni Availability Zonesba.
 2. A **Műveletek** részen válassza a **Vészhelyreállítás** elemet.
-3. A vész- **helyreállítási**  >  **célcsoport**konfigurálása területen válassza ki azt a régiót, amelyre a replikálást végzi. Győződjön meg arról, hogy a régió [támogatja](https://docs.microsoft.com/azure/availability-zones/az-region) a Availability Zones.
+3. A vész- **helyreállítási**  >  **célcsoport**konfigurálása területen válassza ki azt a régiót, amelyre a replikálást végzi. Győződjön meg arról, hogy a régió [támogatja](../availability-zones/az-region.md) a Availability Zones.
 
     ![A célként kijelölt régió kiválasztása](media/azure-vms-to-zones/enable-rep-1.PNG)
 
@@ -149,5 +149,3 @@ Ebben az oktatóanyagban megnövelte az Azure-beli virtuális gépek rendelkezé
 
 > [!div class="nextstepaction"]
 > [Vészhelyreállítás beállítása migrálás után](azure-to-azure-quickstart.md)
-
-

@@ -6,14 +6,14 @@ ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 12/29/2019
-ms.openlocfilehash: cf7e075244a83190b83e629ef300a4903b114a6d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0d3fcbbb317ef70687c83ff21e2ab817d89051a6
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77920076"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142464"
 ---
-# <a name="tutorial-monitor-spring-cloud-resources-using-alerts-and-action-groups"></a>Oktatóanyag: tavaszi Felhőbeli erőforrások figyelése riasztások és műveleti csoportok használatával
+# <a name="tutorial-how-to-monitor-spring-cloud-resources-using-alerts-and-action-groups"></a>Oktatóanyag: a Spring Cloud-erőforrások figyelése riasztások és műveleti csoportok használatával
 
 Az Azure Spring Cloud-riasztások támogatják a figyelési erőforrásokat olyan feltételek alapján, mint a rendelkezésre álló tár, a kérelmek sebessége vagy az adatfelhasználás. A riasztások értesítést küldenek, ha a díjszabás vagy a feltételek megfelelnek a megadott specifikációknak.
 
@@ -22,12 +22,9 @@ A riasztási folyamat beállítása két lépésből áll:
 2. Riasztási szabályok beállítása. A szabályok a műveleti csoportokra vonatkozó metrikai mintákat kötik a cél erőforrás, a metrika, a feltétel, az idő összesítése stb. alapján.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Az Azure Spring-követelmények mellett ez az oktatóanyag az alábbi forrásokból is függ.
 
-* Egy üzembe helyezett Azure Spring Cloud-példány.  [A kezdéshez kövesse a gyors](spring-cloud-quickstart-launch-app-cli.md) üzembe helyezési útmutatót.
+Az Azure Spring követelményei mellett az oktatóanyagban szereplő eljárások egy üzembe helyezett Azure Spring Cloud-példánnyal is működnek.  [A kezdéshez kövesse az első](spring-cloud-quickstart-launch-app-cli.md) lépéseket.
 
-* Egy figyelni kívánt Azure-erőforrás. Ez a példa a Spring Cloud-példányt figyeli.
- 
 A következő eljárások inicializálják mindkét **műveleti csoportot** és a **riasztást** a Spring Cloud-példány bal oldali navigációs paneljének **riasztások** lehetőségével. (Az eljárás a Azure Portal **figyelő áttekintés** lapján is elindítható.) 
 
 Navigáljon egy erőforráscsoporthoz a Spring Cloud-példányra. Válassza a **riasztások** lehetőséget a bal oldali ablaktáblán, majd válassza a **műveletek kezelése**lehetőséget:
@@ -109,7 +106,11 @@ A **metrikák** lapról is létrehozhat egy szabályt:
    ![Képernyőkép-portál új riasztási szabálya](media/alerts-action-groups/alerts-5.png)
 
 ## <a name="next-steps"></a>További lépések
-* [Felhasználói portál metrikáinak beállításai](spring-cloud-concept-metrics.md#user-metrics-options)
-* [Műveleti csoportok létrehozása és kezelése a Azure Portal](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
-* [SMS-riasztás viselkedése a műveleti csoportokban](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-sms-behavior)
-* [Oktatóanyag: elosztott nyomkövetés használata az Azure Spring Cloud használatával](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-distributed-tracing)
+
+Ebben az oktatóanyagban megtanulta, hogyan állíthat be riasztásokat és műveleti csoportokat egy Azure Spring Cloud-alkalmazáshoz. A műveleti csoportokról további információt a következő témakörben talál:
+
+> [!div class="nextstepaction"]
+> [Műveleti csoportok létrehozása és kezelése a Azure Portal](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
+
+> [!div class="nextstepaction"]
+> [SMS-riasztás viselkedése a műveleti csoportokban](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-sms-behavior)

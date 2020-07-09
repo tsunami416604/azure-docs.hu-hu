@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/18/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18dc2e4393175751f5ac52d53e0c331c82fce7e8
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: f3740415652407c834ec258730f89e46398a9f79
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078139"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170479"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-shopify-plus"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Shopify Plus szolgáltatással
 
@@ -99,9 +99,9 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A fentieken kívül az Shopify Plus alkalmazás néhány további attribútumot vár az SAML-válaszokban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
 
-    | Name |  |  Forrás attribútum|
-    | ---------------| --------------- | --------- |
-    | e-mail | | User. mail |
+    | Name | Forrás attribútum|
+    | ---- | --------------- |
+    | e-mail | User. mail |
 
 1. Módosítsa a **név azonosítójának** formátumát **állandó**értékre. Válassza ki az **egyedi felhasználói azonosító (név azonosítója)** beállítást, majd válassza ki a **név azonosítójának** formátumát. Válassza az **állandó** lehetőséget ehhez a beállításhoz. Mentse a módosításokat.
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban válassza a másolás gombot az **alkalmazás-összevonási metaadatok URL-címének** másolásához, majd mentse azt a számítógépre.

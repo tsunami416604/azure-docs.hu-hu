@@ -3,12 +3,12 @@ title: Oktatóanyag – SAP HANA adatbázis-visszaállítás az Azure-ban a para
 description: Ebből az oktatóanyagból megtudhatja, hogyan állíthatja vissza az Azure-beli virtuális gépen futó SAP HANA-adatbázisokat egy Azure Backup Recovery Services-tárolóból az Azure CLI használatával.
 ms.topic: tutorial
 ms.date: 12/4/2019
-ms.openlocfilehash: 6dbe0c4382b648506d853feb281c70a8e8401595
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 14e5023bf79e3e20f96c00fdc73f19c8cd095b73
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75472071"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170581"
 ---
 # <a name="tutorial-restore-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Oktatóanyag: SAP HANA-adatbázisok visszaállítása Azure-beli virtuális gépen az Azure CLI használatával
 
@@ -109,10 +109,10 @@ az backup recoveryconfig show --resource-group saphanaResourceGroup \
 A fenti lekérdezésre adott válasz egy olyan helyreállítási konfigurációs objektum lesz, amely a következőképpen néz ki:
 
 ```output
-"{\"restore_mode\": \"OriginalLocation\", \"container_uri\": \" VMAppContainer;Compute;saphanaResourceGroup;saphanaVM \", \"item_uri\": \"SAPHanaDatabase;hxe;hxe\", \"recovery_point_id\": \"DefaultRangeRecoveryPoint\", \"log_point_in_time\": \"28-11-2019-09:53:00\", \"item_type\": \"SAPHana\", \"source_resource_id\": \"/subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/saphanaResourceGroup/providers/Microsoft.Compute/virtualMachines/saphanavm\", \"database_name\": null, \"container_id\": null, \"alternate_directory_paths\": null}"
+{"restore_mode": "AlternateLocation", "container_uri": " VMAppContainer;Compute;saphanaResourceGroup;saphanaVM ", "item_uri": "SAPHanaDatabase;hxe;hxe", "recovery_point_id": "7660777527047692711", "item_type": "SAPHana", "source_resource_id": "/subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/saphanaResourceGroup/providers/Microsoft.Compute/virtualMachines/saphanavm", "database_name": null, "container_id": null, "alternate_directory_paths": null}
 ```
 
-Az adatbázis visszaállításához futtassa az az Restore [Restore-azurewl](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurewl) parancsmagot. A parancs használatához meg kell adni a fenti JSON-kimenetet, amelyet egy *recoveryconfig. JSON*nevű fájlba mentünk.
+Az adatbázis visszaállításához futtassa az az Restore [Restore-azurewl](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurewl) parancsmagot. A parancs használatához meg kell adni a fenti JSON-kimenetet, amelyet egy *recoveryconfig.js*nevű fájlba ment a rendszer.
 
 ```azurecli-interactive
 az backup restore restore-azurewl --resource-group saphanaResourceGroup \
@@ -150,10 +150,10 @@ az backup recoveryconfig show --resource-group saphanaResourceGroup \
 A fenti lekérdezésre adott válasz egy helyreállítási konfigurációs objektum lesz, amely a következőképpen néz ki:
 
 ```output
-"{\"restore_mode\": \"OriginalLocation\", \"container_uri\": \" VMAppContainer;Compute;saphanaResourceGroup;saphanaVM \", \"item_uri\": \"SAPHanaDatabase;hxe;hxe\", \"recovery_point_id\": \"DefaultRangeRecoveryPoint\", \"log_point_in_time\": \"28-11-2019-09:53:00\", \"item_type\": \"SAPHana\", \"source_resource_id\": \"/subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/saphanaResourceGroup/providers/Microsoft.Compute/virtualMachines/saphanavm\", \"database_name\": null, \"container_id\": null, \"alternate_directory_paths\": null}"
+{"restore_mode": "OriginalLocation", "container_uri": " VMAppContainer;Compute;saphanaResourceGroup;saphanaVM ", "item_uri": "SAPHanaDatabase;hxe;hxe", "recovery_point_id": "DefaultRangeRecoveryPoint", "log_point_in_time": "28-11-2019-09:53:00", "item_type": "SAPHana", "source_resource_id": "/subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/saphanaResourceGroup/providers/Microsoft.Compute/virtualMachines/saphanavm", "database_name": null, "container_id": null, "alternate_directory_paths": null}"
 ```
 
-Az adatbázis visszaállításához futtassa az az Restore [Restore-azurewl](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurewl) parancsmagot. A parancs használatához meg kell adni a fenti JSON-kimenetet, amelyet egy *recoveryconfig. JSON*nevű fájlba mentünk.
+Az adatbázis visszaállításához futtassa az az Restore [Restore-azurewl](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurewl) parancsmagot. A parancs használatához meg kell adni a fenti JSON-kimenetet, amelyet egy *recoveryconfig.js*nevű fájlba ment a rendszer.
 
 ```azurecli-interactive
 az backup restore restore-azurewl --resource-group saphanaResourceGroup \
@@ -171,6 +171,177 @@ Name                                  Resource
 ```
 
 A válasz megadja a feladatnév nevét. Ez a feladatnév használható a feladatok állapotának nyomon követésére az az [Backup Job show](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) parancsmag használatával.
+
+## <a name="restore-as-files"></a>Visszaállítás fájlként
+
+Ha egy adatbázis helyett fájlként kívánja visszaállítani a biztonsági mentési adatmennyiséget, a **RestoreAsFiles** -t a visszaállítási módként fogjuk használni. Ezután válassza ki a visszaállítási pontot, amely lehet korábbi időponthoz vagy az előző visszaállítási pontokhoz. Ha a fájlok egy megadott elérési útra lettek kiadva, ezeket a fájlokat bármely olyan SAP HANA-gépre elvégezheti, ahol adatbázisként szeretné visszaállítani őket. Mivel ezeket a fájlokat bármely gépre áthelyezheti, mostantól visszaállíthatja az összes előfizetést és régiót.
+
+Ebben az oktatóanyagban kiválasztjuk az előző időpontot, `28-11-2019-09:53:00` amelyről vissza kell állítani a (z) és a biztonságimásolat-fájlok kiírásának helyét `/home/saphana/restoreasfiles` ugyanazon a SAP HANA kiszolgálón. Ezt a visszaállítási pontot a következő formátumok valamelyikében adhatja meg: **nn-hh-éééé** vagy **nn-hh-éééé-hh: PP: mm**. Ha egy érvényes időpontot szeretne visszaállítani a szolgáltatásra, használja az az [Backup recoverypoint show-log-Chain](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-show-log-chain) parancsmagot, amely felsorolja a nem törött naplózási lánc biztonsági másolatainak intervallumait.
+
+A fenti visszaállítási pont neve és a visszaállítási mód használatával hozzuk létre a helyreállítási konfigurációs objektumot az az [Backup recoveryconfig show](https://docs.microsoft.com/cli/azure/backup/recoveryconfig?view=azure-cli-latest#az-backup-recoveryconfig-show) parancsmag használatával. Nézzük meg, hogy a parancsmag összes többi paramétere mit jelent:
+
+* **– cél-tároló – név** Ez egy olyan SAP HANA-kiszolgáló neve, amely sikeresen regisztrálva van egy Recovery Services-tárolóban, és ugyanabban a régióban található, mint a visszaállítani kívánt adatbázis. Ebben az oktatóanyagban az adatbázist fájlként fogjuk visszaállítani a védett, *hxehost*nevű SAP HANA-kiszolgálóra.
+* **--RP-név** Az időponthoz tartozó visszaállításhoz a visszaállítási pont neve **DefaultRangeRecoveryPoint** lesz.
+
+```azurecli-interactive
+az backup recoveryconfig show --resource-group saphanaResourceGroup \
+    --vault-name saphanaVault \
+    --container-name VMAppContainer;Compute;saphanaResourceGroup;saphanaVM \
+    --item-name saphanadatabase;hxe;hxe \
+    --restore-mode RestoreAsFiles \
+    --log-point-in-time 28-11-2019-09:53:00 \
+    --rp-name DefaultRangeRecoveryPoint \
+    --target-container-name VMAppContainer;Compute;saphanaResourceGroup;saphanaVM \
+    --filepath /home/saphana/restoreasfiles \
+    --output json
+```
+
+A fenti lekérdezésre adott válasz egy helyreállítási konfigurációs objektum lesz, amely a következőképpen néz ki:
+
+```output
+{
+  "alternate_directory_paths": null,
+  "container_id": "/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/saphanaResourceGroup/providers/Microsoft.RecoveryServices/vaults/SAPHANAVault/backupFabrics/Azure/protectionContainers/VMAppContainer;Compute;SAPHANA;hanamachine",
+  "container_uri": "VMAppContainer;compute;saphana;hanamachine",
+  "database_name": null,
+  "filepath": "/home/",
+  "item_type": "SAPHana",
+  "item_uri": "SAPHanaDatabase;hxe;hxe",
+  "log_point_in_time": "04-07-2020-09:53:00",
+  "recovery_mode": "FileRecovery",
+  "recovery_point_id": "DefaultRangeRecoveryPoint",
+  "restore_mode": "AlternateLocation",
+  "source_resource_id": "/subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/saphanaResourceGroup/providers/Microsoft.Compute/virtualMachines/hanamachine"
+}
+```
+
+Most, hogy a-adatbázist fájlként szeretné visszaállítani, futtassa az az Restore [Restore-azurewl](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurewl) parancsmagot. A parancs használatához adja meg a fenti JSON-kimenetet, amely a *recoveryconfig.js*nevű fájlba lesz mentve.
+
+```azurecli-interactive
+az backup restore restore-azurewl --resource-group saphanaResourceGroup \
+    --vault-name saphanaVault \
+    --restore-config recoveryconfig.json \
+    --output json
+```
+
+A kimenet így fog kinézni:
+
+```output
+{
+  "eTag": null,
+  "id": "/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/SAPHANARESOURCEGROUP/providers/Microsoft.RecoveryServices/vaults/SAPHANAVault/backupJobs/608e737e-c001-47ca-8c37-57d909c8a704",
+  "location": null,
+  "name": "608e737e-c001-47ca-8c37-57d909c8a704",
+  "properties": {
+    "actionsInfo": [
+      "Cancellable"
+    ],
+    "activityId": "7ddd3c3a-c0eb-11ea-a5f8-54ee75ec272a",
+    "backupManagementType": "AzureWorkload",
+    "duration": "0:00:01.781847",
+    "endTime": null,
+    "entityFriendlyName": "HXE [hxehost]",
+    "errorDetails": null,
+    "extendedInfo": {
+      "dynamicErrorMessage": null,
+      "propertyBag": {
+        "Job Type": "Restore as files"
+      },
+      "tasksList": [
+        {
+          "status": "InProgress",
+          "taskId": "Transfer data from vault"
+        }
+      ]
+    },
+    "jobType": "AzureWorkloadJob",
+    "operation": "Restore",
+    "startTime": "2020-07-08T07:20:29.336434+00:00",
+    "status": "InProgress",
+    "workloadType": "SAPHanaDatabase"
+  },
+  "resourceGroup": "saphanaResourceGroup",
+  "tags": null,
+  "type": "Microsoft.RecoveryServices/vaults/backupJobs"
+}
+```
+
+A válasz megadja a feladatnév nevét. Ez a feladatnév használható a feladatok állapotának nyomon követésére az az [Backup Job show](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) parancsmag használatával.
+
+A célként megadott tárolóra kimásolt fájlok a következők:
+
+* Adatbázis biztonságimásolat-fájljai
+* Katalógus fájljai
+* JSON-metaadatok fájljai (minden érintett biztonságimásolat-fájlhoz)
+
+A célként megadott elérési úttal megegyező hálózati megosztási elérési út vagy egy csatlakoztatott Azure-fájlmegosztás elérési útja lehetővé teszi, hogy a fájlok könnyebben hozzáférhessenek az azonos hálózatban lévő más gépekhez, illetve az azokhoz csatlakoztatott Azure-fájlmegosztáshoz.
+
+>[!NOTE]
+>Ha vissza szeretné állítani az adatbázis biztonsági másolatának fájljait egy olyan Azure-fájlmegosztás számára, amely a cél regisztrált virtuális gépen van csatlakoztatva, győződjön meg arról, hogy a főfiók rendelkezik írási/olvasási engedéllyel az Azure-fájlmegosztás számára.
+
+A kiválasztott visszaállítási pont (**időpont** vagy **teljes & különbözet**) alapján egy vagy több, a célként megadott elérési úton létrehozott mappa jelenik meg. Az egyik nevű mappa `Data_<date and time of restore>` tartalmazza a teljes és a különbözeti biztonsági mentést, és a nevű másik mappa `Log` tartalmazza a naplók biztonsági másolatait.
+
+Helyezze át ezeket a visszaállított fájlokat arra a SAP HANA kiszolgálóra, amelyen adatbázisként szeretné visszaállítani őket. Ezután kövesse az alábbi lépéseket az adatbázis visszaállításához:
+
+1. Állítsa be az engedélyeket a mappához/könyvtárhoz, ahol a biztonsági mentési fájlokat a következő paranccsal tárolja a rendszer:
+
+    ```bash
+    chown -R <SID>adm:sapsys <directory>
+    ```
+
+1. Futtassa a következő parancsokat`<SID>adm`
+
+    ```bash
+    su - <sid>adm
+    ```
+
+1. A katalógus fájljának előállítása a visszaállításhoz. Bontsa ki a **biztonsági másolat azonosítója** a JSON metaadat-fájljából a teljes biztonsági mentéshez, amelyet később a visszaállítási művelet során fog használni. Győződjön meg arról, hogy a teljes és a naplózott biztonsági mentés különböző mappákban található, és törölje a katalógus fájljait és a JSON-metaadatok fájljait ezekben a mappákban.
+
+    ```bash
+    hdbbackupdiag --generate --dataDir <DataFileDir> --logDirs <LogFilesDir> -d <PathToPlaceCatalogFile>
+    ```
+
+    A fenti parancsban:
+
+    * `<DataFileDir>`– a teljes biztonsági mentést tartalmazó mappa
+    * `<LogFilesDir>`– a napló biztonsági másolatait tartalmazó mappa
+    * `<PathToPlaceCatalogFile>`– az a mappa, ahová a katalógust létre kell hozni
+
+1. Állítsa vissza az újonnan létrehozott katalógusfájlt a HANA studión keresztül, vagy futtassa a HDBSQL-visszaállítási lekérdezést ezzel az újonnan létrehozott katalógussal. Az HDBSQL-lekérdezések az alábbi listában láthatók:
+
+    * Visszaállítás egy adott időpontra:
+
+        Ha új visszaállított adatbázist hoz létre, futtassa a HDBSQL parancsot egy új adatbázis létrehozásához, `<DatabaseName>` majd állítsa le az adatbázist a visszaállításhoz. Ha azonban csak egy meglévő adatbázist állít helyre, futtassa a HDBSQL parancsot az adatbázis leállításához.
+
+        Ezután futtassa a következő parancsot az adatbázis visszaállításához:
+
+        ```hdbsql
+        RECOVER DATABASE FOR <DatabaseName> UNTIL TIMESTAMP '<TimeStamp>' CLEAR LOG USING SOURCE '<DatabaseName@HostName>'  USING CATALOG PATH ('<PathToGeneratedCatalogInStep3>') USING LOG PATH (' <LogFileDir>') USING DATA PATH ('<DataFileDir>') USING BACKUP_ID <BackupIdFromJsonFile> CHECK ACCESS USING FILE
+        ```
+
+        * `<DatabaseName>`– A visszaállítani kívánt új adatbázis vagy meglévő adatbázis neve
+        * `<Timestamp>`– Az időponthoz tartozó visszaállítás pontos időbélyege
+        * `<DatabaseName@HostName>`– Annak az adatbázisnak a neve, amelynek biztonsági másolatát a rendszer a visszaállításhoz használja, valamint a **gazdagép** -vagy SAP HANA-kiszolgáló nevét, amelyen az adatbázis található. A `USING SOURCE <DatabaseName@HostName>` beállítással megadhatja, hogy az adatbiztonsági másolat (visszaállításra használt) egy másik SID vagy nevű adatbázis, mint a cél SAP HANA gép. Így nem kell megadnia a visszatároláshoz ugyanazt a HANA-kiszolgálót, amelyről a biztonsági mentés készült.
+        * `<PathToGeneratedCatalogInStep3>`– A **3. lépésben** létrehozott katalógusfájl elérési útja
+        * `<DataFileDir>`– a teljes biztonsági mentést tartalmazó mappa
+        * `<LogFilesDir>`– a napló biztonsági másolatait tartalmazó mappa
+        * `<BackupIdFromJsonFile>`– a **3. lépésben** kinyert **biztonsági másolat azonosítója**
+
+    * Visszaállítás egy adott teljes vagy különbözeti biztonsági másolatra:
+
+        Ha új visszaállított adatbázist hoz létre, futtassa a HDBSQL parancsot egy új adatbázis létrehozásához, `<DatabaseName>` majd állítsa le az adatbázist a visszaállításhoz. Ha azonban csak egy meglévő adatbázist állít helyre, futtassa a HDBSQL parancsot az adatbázis leállításához:
+
+        ```hdbsql
+        RECOVER DATA FOR <DatabaseName> USING BACKUP_ID <BackupIdFromJsonFile> USING SOURCE '<DatabaseName@HostName>'  USING CATALOG PATH ('<PathToGeneratedCatalogInStep3>') USING DATA PATH ('<DataFileDir>')  CLEAR LOG
+        ```
+
+        * `<DatabaseName>`– a visszaállítani kívánt új adatbázis vagy meglévő adatbázis neve
+        * `<Timestamp>`– az időponthoz tartozó visszaállítás pontos időbélyege
+        * `<DatabaseName@HostName>`– annak az adatbázisnak a neve, amelynek biztonsági másolatát a rendszer a visszaállításhoz használja, valamint a **gazdagép** -vagy SAP HANA-kiszolgáló nevét, amelyen az adatbázis található. A `USING SOURCE <DatabaseName@HostName>` beállítással megadhatja, hogy az adatbiztonsági másolat (visszaállításra használt) egy másik SID vagy nevű adatbázis, mint a cél SAP HANA gép. Ezért nem kell megadnia a visszaállításokat azon a HANA-kiszolgálón, amelyről a biztonsági mentés készült.
+        * `<PathToGeneratedCatalogInStep3>`– a **3. lépésben** létrehozott katalógusfájl elérési útja
+        * `<DataFileDir>`– a teljes biztonsági mentést tartalmazó mappa
+        * `<LogFilesDir>`– a napló biztonsági másolatait tartalmazó mappa
+        * `<BackupIdFromJsonFile>`– a **3. lépésben** kinyert **biztonsági másolat azonosítója**
 
 ## <a name="next-steps"></a>További lépések
 
