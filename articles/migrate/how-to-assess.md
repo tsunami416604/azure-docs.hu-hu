@@ -3,15 +3,16 @@ title: Assessment Tools hozzáadása a Azure Migrate
 description: Megtudhatja, hogyan adhat hozzá értékelési eszközöket a Azure Migrateban.
 ms.topic: how-to
 ms.date: 04/26/2020
-ms.openlocfilehash: 10e8b66575893bc8e63aa94392c872acc04407c4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5151135a57b7c2780485d85299ead5df83ea851e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84195639"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86122115"
 ---
 # <a name="add-assessment-tools"></a>Felmérőeszközök hozzáadása
 
-Ez a cikk azt ismerteti, hogyan adhat hozzá értékelési eszközöket a [Azure Migrateban](migrate-overview.md). 
+Ez a cikk azt ismerteti, hogyan adhat hozzá értékelési eszközöket a [Azure Migrateban](./migrate-services-overview.md). 
 
 - Ha szeretne felvenni egy értékelési eszközt, és még nem rendelkezik Azure Migrate-projekttel, kövesse ezt a [cikket](how-to-add-tool-first-time.md).-
 - Ha felvettek egy ISV-eszközt, vagy az értékeléshez, [kövesse a lépéseket](prepare-isv-movere.md), hogy felkészüljön az eszközre.
@@ -57,6 +58,6 @@ Ez a cikk azt ismerteti, hogyan adhat hozzá értékelési eszközöket a [Azure
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A [VMware](tutorial-prepare-vmware.md) virtuális gépek, a [Hyper-V](tutorial-prepare-hyper-v.md)vagy a [fizikai kiszolgálók](tutorial-prepare-physical.md) Azure Migrate Server Assessment használatával történő értékelésének kipróbálása

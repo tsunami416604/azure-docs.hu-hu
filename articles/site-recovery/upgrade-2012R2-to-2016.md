@@ -8,11 +8,12 @@ ms.topic: conceptual
 ms.service: site-recovery
 ms.date: 12/03/2018
 ms.author: rajanaki
-ms.openlocfilehash: 1d94935db542a0e64754ab8769996fe906f88b46
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eb08ea2e13c4879941b9651cac056ff41ae13052
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73954405"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130830"
 ---
 # <a name="upgrade-windows-server-serversystem-center-2012-r2-vmm-to-windows-servervmm-2016"></a>A Windows Server Server/System Center 2012 R2 VMM frissítése a Windows Serverre/VMM 2016 
 
@@ -53,18 +54,18 @@ A frissítés előtt vegye figyelembe a következőket:
   > A SCVMM 2012 R2 frissítése közben az elosztott kulcskezelő területen válassza a **titkosítási kulcsok Active Directoryban való tárolását**. Gondosan válassza ki a szolgáltatásfiók és az elosztott kulcsok felügyeletének beállításait. A kiválasztástól függően előfordulhat, hogy a titkosított, például a sablonok jelszavai nem lesznek elérhetők a frissítés után, és potenciálisan befolyásolhatják a replikálást Azure Site Recovery
 
 > [!IMPORTANT]
-> Tekintse meg az [Előfeltételek](https://docs.microsoft.com/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#requirements-and-limitations) részletes SCVMM dokumentációját.
+> Tekintse meg az [Előfeltételek](/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#requirements-and-limitations) részletes SCVMM dokumentációját.
 
 ## <a name="windows-server-2012-r2-hosts-which-arent-managed-by-scvmm"></a>A SCVMM által nem felügyelt Windows Server 2012 R2 rendszerű gazdagépek 
-Az alább említett lépések listája a [Hyper-V-gazdagépekről az Azure-ba történő](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-architecture) felhasználói konfigurációra vonatkozik, amelyet a jelen [oktatóanyag](https://docs.microsoft.com/azure/site-recovery/hyper-v-prepare-on-premises-tutorial) követ
+Az alább említett lépések listája a [Hyper-V-gazdagépekről az Azure-ba történő](./hyper-v-azure-architecture.md) felhasználói konfigurációra vonatkozik, amelyet a jelen [oktatóanyag](./hyper-v-prepare-on-premises-tutorial.md) követ
 
 > [!WARNING]
 > Az előfeltételekben említetteknek megfelelően ezek a lépések csak fürtözött környezeti forgatókönyvekre vonatkoznak, és nem önálló Hyper-V-gazdagép-konfigurációra.
 
-1. A [működés közbeni fürt frissítésének](https://docs.microsoft.com/windows-server/failover-clustering/cluster-operating-system-rolling-upgrade#cluster-os-rolling-upgrade-process) végrehajtásához kövesse a lépéseket. a működés közbeni fürt frissítési folyamatának végrehajtásához.
+1. A [működés közbeni fürt frissítésének](/windows-server/failover-clustering/cluster-operating-system-rolling-upgrade#cluster-os-rolling-upgrade-process) végrehajtásához kövesse a lépéseket. a működés közbeni fürt frissítési folyamatának végrehajtásához.
 2. A fürtben bevezetett minden új Windows Server 2016-gazdagép esetében távolítsa el a Windows Server 2012 R2 rendszerű gazdagép hivatkozását a Azure Site Recoveryról a következő, említett lépések [itt] című témakörben leírtak szerint. Ennek a gazdagépnek kell lennie, amelyet úgy döntött, hogy kiüríti & kizárását a fürtből.
 3. Miután az *Update-VMVersion* parancs végrehajtása megtörtént az összes virtuális gépen, a frissítések befejeződtek. 
-4. Az [itt](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-tutorial#set-up-the-source-environment) említett lépéseket követve regisztrálja az új Windows Server 2016-gazdagépet Azure site Recovery. Vegye figyelembe, hogy a Hyper-V-hely már aktív, és csak regisztrálnia kell az új gazdagépet a fürtben. 
+4. Az [itt](./hyper-v-azure-tutorial.md#set-up-the-source-environment) említett lépéseket követve regisztrálja az új Windows Server 2016-gazdagépet Azure site Recovery. Vegye figyelembe, hogy a Hyper-V-hely már aktív, és csak regisztrálnia kell az új gazdagépet a fürtben. 
 5.  Nyissa meg Azure Portal és ellenőrizze a replikált állapotot a Recovery Serviceson belül.
 
 ## <a name="upgrade-windows-server-2012-r2-hosts-managed-by-stand-alone-scvmm-2012-r2-server"></a>Önálló SCVMM 2012 R2-kiszolgáló által felügyelt Windows Server 2012 R2 rendszerű gazdagépek frissítése
@@ -73,17 +74,17 @@ A Windows Server 2012 R2 rendszerű gazdagépek frissítése előtt frissítenie
 **Önálló SCVMM 2012 R2 frissítése SCVMM 2016-re**
 
 1.  Az ASR-szolgáltató eltávolításához navigáljon a Vezérlőpult – > programok – > programok és szolgáltatások – >Microsoft Azure Site Recovery, és kattintson az Eltávolítás elemre.
-2. [A SCVMM adatbázisának megőrzése és az operációs rendszer frissítése](https://docs.microsoft.com/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#back-up-and-upgrade-the-operating-system)
+2. [A SCVMM adatbázisának megőrzése és az operációs rendszer frissítése](/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#back-up-and-upgrade-the-operating-system)
 3. A **Programok eltávolítása**területen válassza a **VMM**  >  **Eltávolítás**elemet. b. Válassza a **szolgáltatások eltávolítása**lehetőséget, majd válassza a V**mm felügyeleti kiszolgáló és a VMM-konzol**elemet. c. Az **adatbázis beállításai**területen válassza az **adatbázis megőrzése**lehetőséget. d. Tekintse át az összegzést, és kattintson az **Eltávolítás**gombra.
 
-4. [A VMM 2016 telepítése](https://docs.microsoft.com/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#install-vmm-2016)
+4. [A VMM 2016 telepítése](/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#install-vmm-2016)
 5. Indítsa el a SCVMM, és tekintse meg az egyes állomások állapotát a **hálók** lapon. a legutóbbi állapot beszerzéséhez kattintson a **frissítés** gombra. A "figyelmet igényel" állapotnak kell megjelennie. 
 17. Telepítse a legújabb [Microsoft Azure site Recovery szolgáltatót](https://aka.ms/downloaddra) a SCVMM.
 16. Telepítse a legújabb [Microsoft Azure Recovery Service-(MARS-) ügynököt](https://aka.ms/latestmarsagent) a fürt minden egyes gazdagépén. A frissítéssel biztosíthatja, hogy a SCVMM képes legyen sikeresen lekérdezni a gazdagépeket.
 
 **Windows Server 2012 R2 rendszerű gazdagépek frissítése Windows Server 2016-re**
 
-1. Kövesse az [itt](https://docs.microsoft.com/windows-server/failover-clustering/cluster-operating-system-rolling-upgrade#cluster-os-rolling-upgrade-process) leírt lépéseket a működés közbeni fürt frissítési folyamatának végrehajtásához. 
+1. Kövesse az [itt](/windows-server/failover-clustering/cluster-operating-system-rolling-upgrade#cluster-os-rolling-upgrade-process) leírt lépéseket a működés közbeni fürt frissítési folyamatának végrehajtásához. 
 2. Miután hozzáadta az új gazdagépet a fürthöz, frissítse a gazdagépet a SCVMM-konzolról, és telepítse a VMM-ügynököt erre a frissített gazdagépre.
 3. Az *Update-VMVersion* végrehajtása a virtuális gépek virtuálisgép-verzióinak frissítéséhez. 
 4.  Nyissa meg Azure Portal és ellenőrizze a Recovery Services-tárolóban lévő virtuális gépek replikált állapotának állapotát. 
@@ -94,7 +95,7 @@ A Windows Server 2012 R2 rendszerű gazdagépek frissítése előtt frissítenie
 **A SCVMM 2012 R2 frissítése a SCVMM 2016-re**
 
 1.  Az ASR-szolgáltató eltávolításához navigáljon a Vezérlőpult – > programok – > programok és szolgáltatások – >Microsoft Azure Site Recovery, és kattintson az Eltávolítás elemre.
-2. Kövesse az [itt](https://docs.microsoft.com/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#upgrade-a-standalone-vmm-server) említett lépéseket a végrehajtani kívánt verziófrissítési mód alapján.
+2. Kövesse az [itt](/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#upgrade-a-standalone-vmm-server) említett lépéseket a végrehajtani kívánt verziófrissítési mód alapján.
 3. Indítsa el a SCVMM konzolt, és tekintse meg az egyes állomások állapotát a **hálók** lapon. a legutóbbi állapot beszerzéséhez kattintson a **frissítés** gombra. A "figyelmet igényel" állapotnak kell megjelennie.
 4. Telepítse a legújabb [Microsoft Azure site Recovery szolgáltatót](https://aka.ms/downloaddra) a SCVMM.
 5. Frissítse a legújabb [Microsoft Azure Recovery Service-(MARS-) ügynököt](https://aka.ms/latestmarsagent) a fürt minden egyes állomásán. A frissítéssel ellenőrizheti, hogy az SC VMM képes-e sikeresen lekérdezni a gazdagépeket.
@@ -102,11 +103,11 @@ A Windows Server 2012 R2 rendszerű gazdagépek frissítése előtt frissítenie
 
 **Windows Server 2012 R2 rendszerű gazdagépek frissítése Windows Server 2016-re**
 
-1. Kövesse az [itt](https://docs.microsoft.com/windows-server/failover-clustering/cluster-operating-system-rolling-upgrade#cluster-os-rolling-upgrade-process) leírt lépéseket a működés közbeni fürt frissítési folyamatának végrehajtásához.
+1. Kövesse az [itt](/windows-server/failover-clustering/cluster-operating-system-rolling-upgrade#cluster-os-rolling-upgrade-process) leírt lépéseket a működés közbeni fürt frissítési folyamatának végrehajtásához.
 2. Miután hozzáadta az új gazdagépet a fürthöz, frissítse a gazdagépet a SCVMM-konzolról, és telepítse a VMM-ügynököt erre a frissített gazdagépre.
 3. Az *Update-VMVersion* végrehajtása a virtuális gépek virtuálisgép-verzióinak frissítéséhez. 
 4.  Nyissa meg Azure Portal és ellenőrizze a Recovery Services-tárolóban lévő virtuális gépek replikált állapotának állapotát. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A gazdagépek frissítését követően [feladatátvételi tesztet](tutorial-dr-drill-azure.md) hajthat végre a replikáció és a vész-helyreállítási állapot ellenőrzéséhez.
 

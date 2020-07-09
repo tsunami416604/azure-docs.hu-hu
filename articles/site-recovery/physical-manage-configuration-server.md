@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
-ms.openlocfilehash: eb7e891c031be5ac01295905d5c3304dc6818737
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff612b7c052ead5658ea4bbfafd7aace51ba3c02
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80478963"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132497"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>A fizikai kiszolgáló vész-helyreállítási konfigurációs kiszolgálójának kezelése
 
@@ -35,8 +35,8 @@ A táblázat összefoglalja a helyszíni konfigurációs kiszolgáló számító
 | Operációs rendszer területi beállítása | Angol (US)|
 | VMware vSphere PowerCLI verziója | Nem kötelező|
 | Windows Server-szerepkörök | Ne engedélyezze ezeket a szerepköröket: <br> - Active Directory tartományi szolgáltatások <br>– Internet Information Services <br> - Hyper-V |
-| Csoportházirendek| Ne engedélyezze ezeket a csoportházirendeket: <br> – A parancssorhoz való hozzáférés letiltása <br> – A beállításjegyzék szerkesztési eszközeihez való hozzáférés megakadályozása <br> – A fájlmellékletek megbízhatósági logikája <br> – A parancsfájlok végrehajtásának bekapcsolása <br> [További információ](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
-| IIS | – Nincs előre meglévő alapértelmezett webhely <br> – [Névtelen hitelesítés](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) engedélyezése <br> – [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) -beállítás engedélyezése  <br> – Nincs már meglévő webhely/alkalmazás a 443-es porton<br>|
+| Csoportházirendek| Ne engedélyezze ezeket a csoportházirendeket: <br> – A parancssorhoz való hozzáférés letiltása <br> – A beállításjegyzék szerkesztési eszközeihez való hozzáférés megakadályozása <br> – A fájlmellékletek megbízhatósági logikája <br> – A parancsfájlok végrehajtásának bekapcsolása <br> [További információ](/previous-versions/windows/it-pro/windows-7/gg176671(v=ws.10))|
+| IIS | – Nincs előre meglévő alapértelmezett webhely <br> – [Névtelen hitelesítés](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731244(v=ws.10)) engedélyezése <br> – [FastCGI](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc753077(v=ws.10)) -beállítás engedélyezése  <br> – Nincs már meglévő webhely/alkalmazás a 443-es porton<br>|
 | Hálózati adapter típusa | VMXNET3 (VMware virtuális gépként való üzembe helyezéskor) |
 | IP-cím típusa | Statikus |
 | Internet-hozzáférés | A kiszolgálónak hozzá kell férnie az alábbi URL-címekhez: <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - `https://management.azure.com` <br> -*. services.visualstudio.com <br> - https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi(a kibővíthető folyamat-kiszolgálók esetében nem szükséges) <br> - time.nist.gov <br> - time.windows.com |
@@ -267,7 +267,7 @@ A kiszolgálót a következőképpen frissítheti:
 
 ## <a name="delete-or-unregister-a-configuration-server-powershell"></a>Konfigurációs kiszolgáló (PowerShell) törlése vagy a regisztráció megszüntetése
 
-1. [Telepítés](https://docs.microsoft.com/powershell/azure/install-Az-ps) Azure PowerShell modul
+1. [Telepítés](/powershell/azure/install-Az-ps) Azure PowerShell modul
 2. Jelentkezzen be az Azure-fiókjába a parancs használatával
     
     `Connect-AzAccount`
@@ -313,7 +313,6 @@ A konfigurációs kiszolgálóknak a 2016. május előtt történő központi te
 ## <a name="common-issues"></a>Gyakori problémák
 [!INCLUDE [site-recovery-vmware-to-azure-install-register-issues](../../includes/site-recovery-vmware-to-azure-install-register-issues.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Tekintse át az oktatóanyagokat a [fizikai kiszolgálók](tutorial-physical-to-azure.md) Azure-ba való vész-helyreállításának beállításához.
-
+Tekintse át az oktatóanyagokat a [fizikai kiszolgálók](./physical-azure-disaster-recovery.md) Azure-ba való vész-helyreállításának beállításához.

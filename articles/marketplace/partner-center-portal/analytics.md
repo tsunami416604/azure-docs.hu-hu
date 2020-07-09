@@ -1,18 +1,18 @@
 ---
 title: Analitika a Microsoft kereskedelmi piactérhez a partner Centerben
 description: Ismerje meg, hogyan érheti el az elemzési jelentéseket az értékesítések figyeléséhez, a teljesítmény értékeléséhez és a Piactéri ajánlatok Microsoft partner Centerben való optimalizálásához.
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: rajap
+ms.author: rajap
 ms.date: 12/11/2019
-ms.openlocfilehash: 0c406efd30e891c8ca69481299801e7309cdff81
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6fd42e7661e04b6eab35e3b076e9c8c2fb55a363
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82744910"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86122013"
 ---
 # <a name="access-analytic-reports-for-the-commercial-marketplace-in-partner-center"></a>A partner Center kereskedelmi piactérről származó analitikai jelentések elérése
 
@@ -25,7 +25,7 @@ A partner Center Analytics eszközeinek eléréséhez nyissa meg az **[elemzés]
 >[!NOTE]
 > Az analitikai terminológia részletes leírását lásd: [a kereskedelmi piactér Analytics szolgáltatással kapcsolatos gyakori kérdések és fogalmak](./faq-terminology.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az ajánlathoz tartozó Piactéri tevékenységet összefoglaló összesített adatok grafikonok, trendek és értékek esetében lásd: [az összefoglaló irányítópult a kereskedelmi piactér elemzésében](./summary-dashboard.md).
 - További információ a megrendelésekről grafikus és letölthető formátumban: [Orders Dashboard a kereskedelmi piactér elemzésében](./orders-dashboard.md).

@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 5209dab5e0934cc98bb1334a1565cc13998a7d2e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d6b912229b1365dd7bd8d466af18d1e81b5aa8e
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84704437"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132148"
 ---
 # <a name="deploy-a-configuration-server"></a>Konfigurációs kiszolgáló üzembe helyezése
 
@@ -38,7 +39,7 @@ A konfigurációs kiszolgáló Azure Site Recovery-szolgáltatásokkal való reg
 1. Alkalmazás létrehozásához a felhasználónak alkalmazás-fejlesztői szerepkörrel kell rendelkeznie.
     - Az ellenőrzéshez jelentkezzen be a Azure Portalba.</br>
     - Lépjen **Azure Active Directory**  >  **szerepkörök és rendszergazdák**lehetőségre.</br>
-    - Ellenőrizze, hogy az alkalmazás fejlesztői szerepköre hozzá van-e rendelve a felhasználóhoz. Ha nem, használja ezt az engedélyt használó felhasználót, vagy forduljon [a rendszergazdához, és engedélyezze az engedélyt](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal#assign-roles).
+    - Ellenőrizze, hogy az alkalmazás fejlesztői szerepköre hozzá van-e rendelve a felhasználóhoz. Ha nem, használja ezt az engedélyt használó felhasználót, vagy forduljon [a rendszergazdához, és engedélyezze az engedélyt](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md#assign-roles).
     
 2. Ha az alkalmazás fejlesztői szerepköre nem rendelhető hozzá, győződjön meg arról, hogy a **felhasználók regisztrálhatják az alkalmazások** jelölőjét **true (igaz** ) értékre állítva, ha a felhasználó identitást hoz létre. Az engedélyek engedélyezése:
     - Jelentkezzen be az Azure portálra.
@@ -48,7 +49,7 @@ A konfigurációs kiszolgáló Azure Site Recovery-szolgáltatásokkal való reg
       ![Azure-AD_application_permission](media/vmware-azure-deploy-configuration-server/AAD_application_permission.png)
 
 > [!NOTE]
-> A Active Directory összevonási szolgáltatások (AD FS) *nem támogatott*. [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)használatával felügyelt fiókot használjon.
+> A Active Directory összevonási szolgáltatások (AD FS) *nem támogatott*. [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)használatával felügyelt fiókot használjon.
 
 ## <a name="download-the-template"></a>A sablon letöltése
 
@@ -192,6 +193,6 @@ Az üzembe helyezési & kapcsolódási problémák megoldásához tekintse meg a
 
 További gyakori kérdések a konfigurációs kiszolgálókról: [konfigurációs kiszolgáló gyakori kérdései](vmware-azure-common-questions.md#configuration-server).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Állítsa be a [VMWare virtuális gépek](vmware-azure-tutorial.md) vész-helyreállítását az Azure-ba.

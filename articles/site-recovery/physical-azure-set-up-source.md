@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/03/2019
 ms.author: ramamill
-ms.openlocfilehash: 902c14211e91a1500c6b50cd790b347e337c4f70
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d2cc3627222bcd8de5a5cb1b5c83b04c5d4ef880
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84699923"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130191"
 ---
 # <a name="set-up-the-configuration-server-for-disaster-recovery-of-physical-servers-to-azure"></a>A konfigurációs kiszolgáló beállítása az Azure-ba irányuló fizikai kiszolgálók vész-helyreállítására
 
@@ -57,7 +58,7 @@ A következő táblázat a konfigurációs kiszolgáló minimális hardver-, szo
 #### <a name="run-azure-site-recovery-unified-setup"></a>Azure Site Recovery egyesített telepítő futtatása
 
 > [!TIP]
-> A konfigurációs kiszolgáló regisztrációja meghiúsul, ha a számítógép rendszeróráján lévő idő több mint öt percen belül helyi idő alatt van. A telepítés megkezdése előtt szinkronizálja a rendszeridőt egy [időkiszolgálóval](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service) .
+> A konfigurációs kiszolgáló regisztrációja meghiúsul, ha a számítógép rendszeróráján lévő idő több mint öt percen belül helyi idő alatt van. A telepítés megkezdése előtt szinkronizálja a rendszeridőt egy [időkiszolgálóval](/windows-server/networking/windows-time-service/windows-time-service-top) .
 
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 
@@ -70,6 +71,6 @@ A következő táblázat a konfigurációs kiszolgáló minimális hardver-, szo
 [!INCLUDE [site-recovery-vmware-to-azure-install-register-issues](../../includes/site-recovery-vmware-to-azure-install-register-issues.md)]
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő lépés magában foglalja [a cél környezet beállítását](physical-azure-set-up-target.md) az Azure-ban.

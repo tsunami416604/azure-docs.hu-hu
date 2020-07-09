@@ -1,18 +1,18 @@
 ---
 title: Microsoft AppSource és az Azure Marketplace összehasonlítása
 description: Ez a cikk a Microsoft kereskedelmi piactérről származó kirakatok – Microsoft AppSource és az Azure Marketplace közötti különbségeket ismerteti.
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 04/14/2020
-ms.author: dsindona
-ms.openlocfilehash: 78d77ce176c07aed22433f29365b2d338ea32c03
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fc0a03871ee3191f24a886cc1b9d7f90e8d54b62
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81414571"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121809"
 ---
 # <a name="comparing-microsoft-appsource-and-azure-marketplace"></a>Microsoft AppSource és az Azure Marketplace összehasonlítása
 
@@ -36,6 +36,6 @@ A következő táblázat ismerteti a kirakat használatának előnyeit:
 | **Több Felhőbeli típus** | Tegye közzé a megoldásokat a nyilvános felhőben és a helyszínen is a következő típusok használatával:<ul> <li>Azure Stack</li> <li>Azure Government</li> <li>Regionális felhők, köztük Kína és Németország</li></ul> | Jelenleg nem támogatja Azure Stack, Azure Government vagy regionális felhők használatát. |
 | **Az ügyfelek kontextusban történő bemutatása** | Tegye elérhetővé megoldását az Azure in-Portal felületén a kontextus szerinti kereséshez. Használja a virtuális gépet és az Azure-alkalmazásokat: megoldási sablon közzétételi beállításai. | Több ügyfelet érhet el a Microsoft-termékek, például a Dynamics 365, a Power BI és az Office 365 alkalmazáson belüli felületén. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tekintse át a [kereskedelmi piactér közzétételi útmutatóját](./marketplace-publishers-guide.md).

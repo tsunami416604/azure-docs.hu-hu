@@ -1,18 +1,16 @@
 ---
 title: Új SaaS-ajánlat létrehozása a Microsoft kereskedelmi piactérről
 description: Új szolgáltatott szoftver (SaaS) ajánlat létrehozása a Microsoft AppSource, az Azure Marketplace-en vagy a Cloud Solution Provider (CSP) programon keresztül, a Microsoft kereskedelmi piactér program használatával a Microsoft partner Centerben.
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 3393fb6e33cbf80db68c49ac31edb54de35bae64
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: a233f3594ace74a6bfeca90ffccfbcb233e5d890
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85980596"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121885"
 ---
 # <a name="create-a-new-saas-offer-in-the-commercial-marketplace"></a>Új SaaS-ajánlat létrehozása a kereskedelmi piactéren
 
@@ -139,7 +137,7 @@ Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk a Mi
 6. Adatvédelmi irányelvek
 7. Ajánlat neve
 8. Összefoglalás
-9. Description
+9. Leírás
 10. Képernyőképek/videók
 11. Dokumentumok
 
@@ -262,7 +260,7 @@ Adja meg a piactéren megjelenítendő adatokat, beleértve az ajánlat és a ma
 - **Kulcsszavak keresése** – adjon meg legfeljebb három olyan keresési kulcsszót, amelyet az ügyfelek az ajánlat megtalálására használhatnak a piactéren.
 - **Első lépéseket ismertető utasítások** (kötelező) – magyarázza el, hogyan konfigurálhatja és indíthatja el az alkalmazás használatát a potenciális ügyfelek számára.  Ez a rövid útmutató a részletesebb online dokumentációra mutató hivatkozásokat is tartalmaz. Ebben a mezőben legfeljebb 3 000 karaktert lehet megadni.
 
-#### <a name="description"></a>Description
+#### <a name="description"></a>Leírás
 
 A mező kitöltése kötelező.
 

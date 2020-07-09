@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: ramamill
-ms.openlocfilehash: ec4d1cfbe0c76c8245c4beeaa7c044d76d917a7a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d73e2776d0d9c86fe0331f9804bfeade3f1de676
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81259796"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131792"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>Tudnivalók a VMware virtuális gépek és a fizikai kiszolgálók mobilitási szolgáltatásáról
 
@@ -128,7 +129,7 @@ A mobilitási szolgáltatás leküldéses telepítése során a következő lép
 
 Beállítás | Részletek
 --- | ---
-Syntax | `UnifiedAgent.exe /Role \<MS/MT> /InstallLocation \<Install Location> /Platform "VmWare" /Silent`
+Szintaxis | `UnifiedAgent.exe /Role \<MS/MT> /InstallLocation \<Install Location> /Platform "VmWare" /Silent`
 Telepítési naplók | `%ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log`
 `/Role` | Kötelező telepítési paraméter. Megadja, hogy kell-e telepíteni a mobilitási szolgáltatást (MS) vagy a fő célt (MT).
 `/InstallLocation`| Nem kötelező megadni. Megadja a mobilitási szolgáltatás telepítési helyét (bármely mappa).
@@ -139,7 +140,7 @@ Telepítési naplók | `%ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log`
 
 Beállítás | Részletek
 --- | ---
-Syntax | `UnifiedAgentConfigurator.exe  /CSEndPoint \<CSIP> /PassphraseFilePath \<PassphraseFilePath>`
+Szintaxis | `UnifiedAgentConfigurator.exe  /CSEndPoint \<CSIP> /PassphraseFilePath \<PassphraseFilePath>`
 Ügynök konfigurációs naplói | `%ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log`
 `/CSEndPoint` | Kötelező paraméter. `<CSIP>`a konfigurációs kiszolgáló IP-címét adja meg. Bármilyen érvényes IP-címet használjon.
 `/PassphraseFilePath` |  Kötelező. A jelszó helye. Használjon bármely érvényes UNC-vagy helyi elérési útvonalat.
@@ -169,7 +170,7 @@ Syntax | `UnifiedAgentConfigurator.exe  /CSEndPoint \<CSIP> /PassphraseFilePath 
 
 Beállítás | Részletek
 --- | ---
-Syntax | `./install -d \<Install Location> -r \<MS/MT> -v VmWare -q`
+Szintaxis | `./install -d \<Install Location> -r \<MS/MT> -v VmWare -q`
 `-r` | Kötelező telepítési paraméter. Megadja, hogy kell-e telepíteni a mobilitási szolgáltatást (MS) vagy a fő célt (MT).
 `-d` | Nem kötelező megadni. Megadja a mobilitási szolgáltatás telepítési helyét: `/usr/local/ASR` .
 `-v` | Kötelező. Meghatározza azt a platformot, amelyen a mobilitási szolgáltatás telepítve van. <br/> **VMware** VMWare virtuális gépekhez/fizikai kiszolgálókhoz. <br/> **Azure** Azure-beli virtuális gépekhez.
@@ -179,14 +180,14 @@ Syntax | `./install -d \<Install Location> -r \<MS/MT> -v VmWare -q`
 
 Beállítás | Részletek
 --- | ---
-Syntax | `cd /usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh -i \<CSIP> -P \<PassphraseFilePath>`
+Szintaxis | `cd /usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh -i \<CSIP> -P \<PassphraseFilePath>`
 `-i` | Kötelező paraméter. `<CSIP>`a konfigurációs kiszolgáló IP-címét adja meg. Bármilyen érvényes IP-címet használjon.
 `-P` |  Kötelező. A fájl teljes elérési útja, amelyben a rendszer menti a jelszót. Bármilyen érvényes mappát használjon.
 
 ## <a name="azure-virtual-machine-agent"></a>Azure-beli virtuálisgép-ügynök
 
-- **Windows rendszerű virtuális gépek**: a mobilitási szolgáltatás telepítője az Azure virtuálisgép- [ügynököt](/azure/virtual-machines/extensions/features-windows#azure-vm-agent) a mobilitási szolgáltatás 9.7.0.0 telepíti. Ez biztosítja, hogy amikor a gép feladatátvételt hajt végre az Azure-ba, az Azure-beli virtuális gép megfelel a virtuálisgép-bővítmények használatára vonatkozó előfeltételnek.
-- **Linux rendszerű virtuális gépek**: a [WALinuxAgent](/azure/virtual-machines/extensions/update-linux-agent) manuálisan kell telepíteni az Azure-beli virtuális gépen a feladatátvételt követően.
+- **Windows rendszerű virtuális gépek**: a mobilitási szolgáltatás telepítője az Azure virtuálisgép- [ügynököt](../virtual-machines/extensions/features-windows.md#azure-vm-agent) a mobilitási szolgáltatás 9.7.0.0 telepíti. Ez biztosítja, hogy amikor a gép feladatátvételt hajt végre az Azure-ba, az Azure-beli virtuális gép megfelel a virtuálisgép-bővítmények használatára vonatkozó előfeltételnek.
+- **Linux rendszerű virtuális gépek**: a [WALinuxAgent](../virtual-machines/extensions/update-linux-agent.md) manuálisan kell telepíteni az Azure-beli virtuális gépen a feladatátvételt követően.
 
 ## <a name="locate-installer-files"></a>Telepítőfájlok megkeresése
 
@@ -211,6 +212,6 @@ Telepítőfájl | Operációs rendszer (csak 64-bit)
 `Microsoft-ASR_UA_version_DEBIAN7-64_GA_date_release.tar.gz` | Debian 7
 `Microsoft-ASR_UA_version_DEBIAN8-64_GA_date_release.tar.gz` | Debian 8
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A mobilitási szolgáltatás leküldéses telepítésének beállítása](vmware-azure-install-mobility-service.md).

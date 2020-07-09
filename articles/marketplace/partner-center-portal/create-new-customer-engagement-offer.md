@@ -1,18 +1,18 @@
 ---
 title: Dynamics 365 létrehozása a Customer engagement & PowerApps ajánlathoz a Microsoft kereskedelmi piactéren
 description: Új Dynamics 365 létrehozása a Customer engagement & PowerApps az Azure Marketplace-en, a AppSource-on vagy a partner centeren keresztül a Cloud Solution Provider (CSP) programon keresztül történő listázásához és értékesítéséhez.
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: navits09
+ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: 26f61f6ba2f8fb4c394bc1ce8ee96dfd955dfb8b
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: e90e45a0c96d8bbd2806a0ab6df70ef83e0cc9f6
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85980656"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121928"
 ---
 # <a name="create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>Dynamics 365 for Customer Engagement- és PowerApps-ajánlat létrehozása
 
@@ -137,7 +137,7 @@ Itt adhatja meg az egyes nyelvekhez/piacokhoz tartozó piactér részleteit, pé
 4. Támogatási címe (hivatkozás)
 5. Használati feltételek címe (hivatkozás)
 6. Ajánlat neve
-7. Description
+7. Leírás
 8. Képernyőképek/videók
 
 ### <a name="name"></a>Name
@@ -148,7 +148,7 @@ Az itt megadott név jelenik meg az ügyfelek számára az ajánlati lista cím�
 
 Adja meg az ajánlat rövid leírását, amely legfeljebb 100 karakter hosszú lehet. Ez a leírás a piactér keresési eredményeiben használható.
 
-### <a name="description"></a>Description
+### <a name="description"></a>Leírás
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 

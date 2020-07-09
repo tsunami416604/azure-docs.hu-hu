@@ -1,18 +1,16 @@
 ---
 title: Azure-beli alkalmazás-ajánlat létrehozása – Microsoft kereskedelmi piactér
 description: Ismerje meg az új Azure-alkalmazás létrehozásának lépéseit és szempontjait a partner Center kereskedelmi piactér portálján. Azure-alkalmazásait az Azure Marketplace-en vagy a Cloud Solution Provider (CSP) programon keresztül is listázhatja vagy értékesítheti.
-author: qianw211
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: cf44e50f7d8cc0dbf94c5313373bbd8080baa176
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: c5371b2d9379ca861addac07de50d7cdf9c34c8b
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85984373"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121970"
 ---
 # <a name="create-an-azure-application-offer"></a>Azure-alkalmazásajánlat létrehozása
 
@@ -188,7 +186,7 @@ Ezen a lapon kezelhetők a kereskedelmi Marketplace-ajánlathoz tartozó másola
 5. Adatvédelmi szabályzat címe (hivatkozás)
 6. Ajánlat neve
 7. Összefoglalás
-8. Description
+8. Leírás
 9. Képernyőképek/videók
 
 <br>Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk a Azure Portalban:
@@ -214,7 +212,7 @@ Adja meg az ajánlat rövid leírását, amely legfeljebb 100 karakter hosszú l
 
 Adja meg az ajánlat hosszabb leírását, amely legfeljebb 256 karakter hosszú lehet. Ez a leírás a keresési eredményekben is használható.
 
-#### <a name="description"></a>Description
+#### <a name="description"></a>Leírás
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -594,6 +592,6 @@ A közzétételi folyamat **manuális érvényesítési** lépése az ajánlat �
 
 Ha a közzétételi lépések közül egy vagy több hibát tartalmaz, javítsa ki azokat az ajánlat ismételt közzététele előtt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Meglévő ajánlat frissítése a kereskedelmi piactéren](./update-existing-offer.md)

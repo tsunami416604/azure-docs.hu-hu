@@ -4,12 +4,12 @@ description: Összefoglalja az Azure-beli virtuális gépek vész-helyreállít�
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: raynew
-ms.openlocfilehash: 5f9774dd65587c364c90d346f17ed508a263c954
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: c729645eadc192dba4d7bb4f2c346d7b9d36434a
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85961271"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132684"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Támogatási mátrix az Azure-beli virtuális gépek Azure-régiók közötti vész-helyreállításához
 
@@ -70,7 +70,7 @@ Ez a táblázat a Site Recovery által a replikálás során használt cache Sto
 --- | --- | ---
 Általános célú v2 Storage-fiókok (gyors és lassú elérésű szint) | Támogatott | A GPv2 használata nem ajánlott, mert a v2 tranzakciós költségei lényegesen magasabbak, mint v1 Storage-fiókok.
 Prémium szintű Storage | Nem támogatott | A költségek optimalizálása érdekében a standard szintű Storage-fiókok használhatók a gyorsítótár-tároláshoz.
-Azure Storage-tűzfalak virtuális hálózatokhoz  | Támogatott | Ha a tűzfalon engedélyezve lévő cache Storage-fiókot vagy a célként megadott Storage-fiókot használja, győződjön meg arról, hogy ["megbízható Microsoft-szolgáltatások engedélyezése"](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).<br></br>Győződjön meg arról is, hogy engedélyezi a hozzáférést a forrás vnet legalább egy alhálózatához.
+Azure Storage-tűzfalak virtuális hálózatokhoz  | Támogatott | Ha a tűzfalon engedélyezve lévő cache Storage-fiókot vagy a célként megadott Storage-fiókot használja, győződjön meg arról, hogy ["megbízható Microsoft-szolgáltatások engedélyezése"](../storage/common/storage-network-security.md#exceptions).<br></br>Győződjön meg arról is, hogy engedélyezi a hozzáférést a forrás vnet legalább egy alhálózatához.
 
 
 ## <a name="replicated-machine-operating-systems"></a>Replikált gépi operációs rendszerek
@@ -229,7 +229,7 @@ GRS | Támogatott |
 RA-GRS | Támogatott |
 ZRS | Nem támogatott |
 Ritka elérésű és gyors tárolás | Nem támogatott | A virtuális gépek lemezei nem támogatottak a ritka és a gyakori tárterületen
-Azure Storage-tűzfalak virtuális hálózatokhoz  | Támogatott | Ha korlátozza a virtuális hálózati hozzáférést a Storage-fiókokhoz, engedélyezze a [megbízható Microsoft-szolgáltatások engedélyezését](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
+Azure Storage-tűzfalak virtuális hálózatokhoz  | Támogatott | Ha korlátozza a virtuális hálózati hozzáférést a Storage-fiókokhoz, engedélyezze a [megbízható Microsoft-szolgáltatások engedélyezését](../storage/common/storage-network-security.md#exceptions).
 Általános célú v2 Storage-fiókok (a gyors és a lassú elérésű szint) | Támogatott | A tranzakciós költségek jelentősen növekednek az általános célú v1 Storage-fiókokkal szemben
 2. generációs (UEFI rendszerindítási) | Támogatott
 NVMe-lemezek | Nem támogatott
@@ -270,10 +270,10 @@ Több IP-cím | Nem támogatott | Ha olyan virtuális gépet hajt végre, amelyn
 Traffic Manager     | Támogatott | A Traffic Manager előre konfigurálható úgy, hogy a forgalmat a rendszer rendszeres időközönként a forrás régiójában lévő végpontra irányítsa, a feladatátvétel esetén pedig a cél régióban lévő végpontra.
 Azure DNS | Támogatott |
 Egyéni DNS    | Támogatott |
-Nem hitelesített proxy | Támogatott | [További információ](site-recovery-azure-to-azure-networking-guidance.md)
+Nem hitelesített proxy | Támogatott | [További információ](./azure-to-azure-about-networking.md)
 Hitelesített proxy | Nem támogatott | Ha a virtuális gép hitelesített proxyt használ a kimenő kapcsolathoz, nem replikálható Azure Site Recovery használatával.
-Helyszíni VPN-helyek közötti kapcsolat<br/><br/>(ExpressRoute vagy anélkül)| Támogatott | Győződjön meg arról, hogy a UDR és a NSG úgy vannak konfigurálva, hogy a Site Recovery forgalom ne legyen átirányítva a helyszíni környezetbe. [További információ](site-recovery-azure-to-azure-networking-guidance.md)
-VNET – VNET-kapcsolatok    | Támogatott | [További információ](site-recovery-azure-to-azure-networking-guidance.md)
+Helyszíni VPN-helyek közötti kapcsolat<br/><br/>(ExpressRoute vagy anélkül)| Támogatott | Győződjön meg arról, hogy a UDR és a NSG úgy vannak konfigurálva, hogy a Site Recovery forgalom ne legyen átirányítva a helyszíni környezetbe. [További információ](./azure-to-azure-about-networking.md)
+VNET – VNET-kapcsolatok    | Támogatott | [További információ](./azure-to-azure-about-networking.md)
 Virtuális hálózati szolgáltatásvégpontok | Támogatott | Ha korlátozza a virtuális hálózati hozzáférést a Storage-fiókokhoz, győződjön meg arról, hogy a megbízható Microsoft-szolgáltatások hozzáférése engedélyezett a Storage-fiókhoz.
 Gyorsított hálózatkezelés | Támogatott | A gyorsított hálózatkezelést engedélyezni kell a forrásoldali virtuális gépen. [További információk](azure-vm-disaster-recovery-with-accelerated-networking.md).
 Palo Alto hálózati berendezés | Nem támogatott | A harmadik féltől származó készülékekkel gyakran a virtuális gépen belüli szolgáltató korlátozza a korlátozásokat. Azure Site Recovery szüksége van az ügynökre, a bővítményekre és a kimenő kapcsolatokra. A készülék azonban nem teszi lehetővé, hogy a kimenő tevékenységek a virtuális gépen belül legyenek konfigurálva.
@@ -281,6 +281,6 @@ IPv6  | Nem támogatott | Az IPv4 és az IPv6 protokollt is tartalmazó vegyes k
 
 
 
-## <a name="next-steps"></a>További lépések
-- Olvassa el az Azure-beli virtuális gépek replikálásához szükséges [hálózatkezelési útmutatót](site-recovery-azure-to-azure-networking-guidance.md) .
-- A vész-helyreállítás üzembe helyezése az Azure-beli [virtuális gépek replikálásával](site-recovery-azure-to-azure.md).
+## <a name="next-steps"></a>Következő lépések
+- Olvassa el az Azure-beli virtuális gépek replikálásához szükséges [hálózatkezelési útmutatót](./azure-to-azure-about-networking.md) .
+- A vész-helyreállítás üzembe helyezése az Azure-beli [virtuális gépek replikálásával](./azure-to-azure-quickstart.md).

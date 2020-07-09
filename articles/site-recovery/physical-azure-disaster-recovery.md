@@ -7,17 +7,18 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 2f92c2b800c6d30cc5f365e6d24925a70d3db55a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c3d4a2120f86a03508b91d4b2dea52e629dc0f79
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84699906"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130176"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Vész-helyreállítás beállítása az Azure-ba helyszíni fizikai kiszolgálók esetén
 
 Az [Azure Site Recovery](site-recovery-overview.md) szolgáltatás a helyszíni számítógépek és az Azure-beli virtuális gépek replikálásának, feladatátvételének és feladat-visszavételének kezelésével és irányításával járul hozzá a vészhelyreállítási stratégia megvalósításához.
 
-Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be a helyszíni fizikai Windows-és Linux-kiszolgálók vész-helyreállítását az Azure-ba. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be a helyszíni fizikai Windows-és Linux-kiszolgálók vész-helyreállítását az Azure-ba. Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Az Azure és a helyszíni előfeltételek beállítása
@@ -118,7 +119,7 @@ Válassza ki, hogy mit szeretne replikálni, és replikálja a következőre:.
 A Kezdés előtt tegye a következőket: 
 
 #### <a name="verify-time-accuracy"></a>Időtartam pontosságának ellenőrzése
-Győződjön meg arról, hogy a konfigurációs kiszolgáló számítógépén a rendszer órája szinkronizálva van egy [időkiszolgálóval](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service). Meg kell egyeznie. Ha legalább 15 perc van hátra, a telepítés sikertelen lehet.
+Győződjön meg arról, hogy a konfigurációs kiszolgáló számítógépén a rendszer órája szinkronizálva van egy [időkiszolgálóval](/windows-server/networking/windows-time-service/windows-time-service-top). Meg kell egyeznie. Ha legalább 15 perc van hátra, a telepítés sikertelen lehet.
 
 #### <a name="verify-connectivity"></a>Kapcsolat ellenőrzése
 Győződjön meg arról, hogy a számítógép a környezet alapján fér hozzá ezekhez az URL-címekhez: 
@@ -184,6 +185,6 @@ Engedélyezze a replikációt az egyes kiszolgálókon.
 
 A hozzáadott kiszolgálók figyeléséhez ellenőrizheti a **konfigurációs kiszolgálók**utolsó felderített idejét a következő  >  **helyen:**. Ha gépeket szeretne felvenni anélkül, hogy az ütemezett felderítési időt kellene várnia, jelölje ki a konfigurációs kiszolgálót (ne kattintson rá), majd kattintson a **frissítés**gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Futtasson vész-helyreállítási részletezést](tutorial-dr-drill-azure.md).

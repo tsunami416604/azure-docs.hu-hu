@@ -7,17 +7,18 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 14c2a9a2ad818cc358535a91f9a6813ec7b91a6f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb690dfb90c0f7b8216368cb6b26a9af7d895d18
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83826281"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130137"
 ---
 # <a name="add-a-vmm-script-to-a-recovery-plan"></a>VMM-parancsfájl hozzáadása helyreállítási tervhez
 
 Ez a cikk bemutatja, hogyan hozhat létre System Center Virtual Machine Manager (VMM) parancsfájlt, és hogyan adhatja hozzá egy helyreállítási tervhez a [Azure site Recoveryban](site-recovery-overview.md).
 
-A cikk alján található megjegyzéseket vagy kérdéseket felteheti, vagy a [Microsoft Q&az Azure Recovery Services kérdéseit](https://docs.microsoft.com/answers/topics/azure-site-recovery.html).
+A cikk alján található megjegyzéseket vagy kérdéseket felteheti, vagy a [Microsoft Q&az Azure Recovery Services kérdéseit](/answers/topics/azure-site-recovery.html).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -37,7 +38,7 @@ A helyreállítási tervekben PowerShell-parancsfájlokat is használhat. Ahhoz,
 
     `Import-Module -Name virtualmachinemanager`
 
-    További információ: Ismerkedés [a Windows PowerShell-lel és a VMM](https://technet.microsoft.com/library/hh875013.aspx).
+    További információ: Ismerkedés [a Windows PowerShell-lel és a VMM](/previous-versions/system-center/system-center-2012-R2/hh875013(v=sc.12)).
 * Győződjön meg arról, hogy legalább egy függvénytár-kiszolgálója van a VMM üzemelő példányában. Alapértelmezés szerint a VMM-kiszolgáló megosztott elérési útja helyileg található a VMM-kiszolgálón. A mappa neve MSCVMMLibrary.
 
   Ha a megosztott kódtár elérési útja távoli (vagy helyi, de nem a MSCVMMLibrary van megosztva), a következőképpen konfigurálja a megosztást a \\ libserver2. contoso. com\share\ használatával példaként:
@@ -50,7 +51,7 @@ A helyreállítási tervekben PowerShell-parancsfájlokat is használhat. Ahhoz,
 
      a. Nyissa meg a **64 bites Windows PowerShell-** konzolt rendszergazdaként.
      
-     b. Adja meg a **Set-ExecutionPolicy mellőzése**értéket. További információ: [a Set-ExecutionPolicy parancsmag használata](https://technet.microsoft.com/library/ee176961.aspx).
+     b. Adja meg a **Set-ExecutionPolicy mellőzése**értéket. További információ: [a Set-ExecutionPolicy parancsmag használata](/previous-versions/windows/it-pro/windows-powershell-1.0/ee176961(v=technet.10)).
 
      > [!IMPORTANT]
      > Set **-ExecutionPolicy kitérő** beállítása csak a 64 bites PowerShell-konzolon. Ha a 32 bites PowerShell-konzolra állítja be, a parancsfájlok nem futnak.
@@ -75,6 +76,6 @@ Miután hozzáadta a virtuális gépeket vagy replikációs csoportokat egy hely
 1. Annak érdekében, hogy a parancsfájl a várt módon működjön, végezzen feladatátvételi tesztet a helyreállítási tervből.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ a [feladatátvételek futtatásáról](site-recovery-failover.md).
 

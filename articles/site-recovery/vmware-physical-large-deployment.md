@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: a3a2317554f02dc1f1198d8019bbfdb50e3cc71c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d991b38c3f72b54f4564dd4847c8532b507286cc
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81409766"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131772"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>A vész-helyreállítási szolgáltatás beállítása a VMware virtuális gépek/fizikai kiszolgálók esetében
 
@@ -85,7 +85,7 @@ Azt szeretnénk, hogy a cél előfizetésben rendelkezésre álló kvóták eleg
 
 **Tevékenység** | **Részletek** | **Művelet**
 --- | --- | ---
-**Magok keresése** | Ha a rendelkezésre álló kvóta magjai nem egyeznek meg a feladatátvétel időpontjában, vagy nem lépik túl a cél teljes számát, a feladatátvétel sikertelen lesz. | VMware virtuális gépek esetén győződjön meg arról, hogy elegendő mag található a cél előfizetésben az Deployment Planner Core javaslat teljesítéséhez.<br/><br/> Fizikai kiszolgálók esetén győződjön meg arról, hogy az Azure magok megfelelnek a manuális becsléseknek.<br/><br/> A kvóták ellenőrzését a Azure Portal > **előfizetésben**kattintson a **használat + kvóták**elemre.<br/><br/> [További](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) információ a kvóták növeléséről.
+**Magok keresése** | Ha a rendelkezésre álló kvóta magjai nem egyeznek meg a feladatátvétel időpontjában, vagy nem lépik túl a cél teljes számát, a feladatátvétel sikertelen lesz. | VMware virtuális gépek esetén győződjön meg arról, hogy elegendő mag található a cél előfizetésben az Deployment Planner Core javaslat teljesítéséhez.<br/><br/> Fizikai kiszolgálók esetén győződjön meg arról, hogy az Azure magok megfelelnek a manuális becsléseknek.<br/><br/> A kvóták ellenőrzését a Azure Portal > **előfizetésben**kattintson a **használat + kvóták**elemre.<br/><br/> [További](../azure-portal/supportability/resource-manager-core-quotas-request.md) információ a kvóták növeléséről.
 **Feladatátvételi korlátok keresése** | A feladatátvételek száma nem haladhatja meg az Site Recovery feladatátvételi korlátot. |  Ha a feladatátvétel túllépi a korlátozásokat, előfizetéseket adhat hozzá, és több előfizetésre is felveheti a feladatokat, vagy növelheti az előfizetések kvótáját. 
 
 
@@ -188,7 +188,7 @@ Miután elindította a virtuális gépek első kötegének replikációját, a k
 1. Rendeljen hozzá egy vész-helyreállítási rendszergazdát a replikált gépek állapotának figyeléséhez.
 2. A replikált elemek és az infrastruktúra [eseményeinek figyelése](site-recovery-monitor-and-troubleshoot.md) .
 3. A kibővíthető folyamat-kiszolgálók [állapotának figyelése](vmware-physical-azure-monitor-process-server.md) .
-4. Regisztráljon az eseményekre vonatkozó [e-mail-értesítések](https://docs.microsoft.com/azure/site-recovery/site-recovery-monitor-and-troubleshoot#subscribe-to-email-notifications) beszerzéséhez a könnyebb monitorozás érdekében.
+4. Regisztráljon az eseményekre vonatkozó [e-mail-értesítések](./site-recovery-monitor-and-troubleshoot.md#subscribe-to-email-notifications) beszerzéséhez a könnyebb monitorozás érdekében.
 5. Végezzen rendszeres vész- [helyreállítási gyakorlatokat](site-recovery-test-failover-to-azure.md), és győződjön meg róla, hogy minden a vártnak megfelelően működik-e.
 
 
@@ -214,11 +214,11 @@ Nagyméretű feladatátvétel futtatásához a következőket javasoljuk:
     - [További](recovery-plan-overview.md) információ a helyreállítási tervekről.
 2. Vegyen fel Azure Automation runbook-szkripteket helyreállítási tervekhez, és automatizálja az Azure-beli manuális feladatokat. A tipikus feladatok közé tartozik a terheléselosztó konfigurálása, a DNS frissítése stb. [További információ](site-recovery-runbook-automation.md)
 2. A feladatátvétel előtt készítse elő a Windows rendszerű gépeket, hogy azok megfeleljenek az Azure-környezetnek. A [feladatátvételi korlátok](#plan-azure-subscriptions-and-quotas) magasabbak azoknál a gépeknél, amelyek megfelelnek a követelményeknek. [További](site-recovery-failover-to-azure-troubleshoot.md#failover-failed-with-error-id-170010) információ a runbookok.
-4.  Indítsa el a feladatátvételt a [Start-AzRecoveryServicesAsrPlannedFailoverJob PowerShell-](https://docs.microsoft.com/powershell/module/az.recoveryservices/start-azrecoveryservicesasrplannedfailoverjob?view=azps-2.0.0&viewFallbackFrom=azps-1.1.0) parancsmaggal és egy helyreállítási tervvel együtt.
+4.  Indítsa el a feladatátvételt a [Start-AzRecoveryServicesAsrPlannedFailoverJob PowerShell-](/powershell/module/az.recoveryservices/start-azrecoveryservicesasrplannedfailoverjob?view=azps-2.0.0&viewFallbackFrom=azps-1.1.0) parancsmaggal és egy helyreállítási tervvel együtt.
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [A Site Recovery monitorozása](site-recovery-monitor-and-troubleshoot.md)

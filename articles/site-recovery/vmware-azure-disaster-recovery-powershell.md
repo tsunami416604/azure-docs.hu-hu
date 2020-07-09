@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.date: 01/10/2020
 ms.topic: conceptual
 ms.author: sutalasi
-ms.openlocfilehash: d2dfaab3d01ea29b0f9ecba1e9d748415bed2edc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de25a3f9df04b09a7337dc889a688a171d98db28
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84704386"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86129906"
 ---
 # <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>A VMware virtuális gépek vész-helyreállításának beállítása az Azure-ba a PowerShell használatával
 
@@ -35,7 +36,7 @@ Az alábbiak végrehajtásának módját ismerheti meg:
 Előkészületek:
 
 - Ismernie kell a [forgatókönyv-architektúrát és az összetevőket](vmware-azure-architecture.md).
-- Minden összetevőre vonatkozóan tekintse át a [támogatási követelményeket](site-recovery-support-matrix-to-azure.md).
+- Minden összetevőre vonatkozóan tekintse át a [támogatási követelményeket](./vmware-physical-azure-support-matrix.md).
 - A Azure PowerShell `Az` modul. Ha Azure PowerShellt kell telepítenie vagy frissítenie, a [Azure PowerShell telepítéséhez és konfigurálásához](/powershell/azure/install-az-ps)kövesse az alábbi útmutatót.
 
 ## <a name="log-into-azure"></a>Jelentkezzen be az Azure-ba
@@ -495,5 +496,5 @@ Ebben a lépésben a virtuális gép Win2K12VM1 egy adott helyreállítási pont
 
 2. A feladatátvétel sikeres végrehajtása után véglegesítheti a feladatátvételi műveletet, és visszaállíthatja a visszirányú replikálást az Azure-ból a helyszíni VMware-helyre.
 
-## <a name="next-steps"></a>További lépések
-További feladatok automatizálása a [Azure site Recovery PowerShell-hivatkozás](https://docs.microsoft.com/powershell/module/Az.RecoveryServices)használatával.
+## <a name="next-steps"></a>Következő lépések
+További feladatok automatizálása a [Azure site Recovery PowerShell-hivatkozás](/powershell/module/Az.RecoveryServices)használatával.

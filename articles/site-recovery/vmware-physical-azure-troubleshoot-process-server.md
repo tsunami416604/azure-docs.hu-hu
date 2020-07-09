@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 7657d614645bb00235db2701773bc15fa260b70d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7679148e195bd67ab5da58636552a684c25c31b0
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83835801"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131982"
 ---
 # <a name="troubleshoot-the-process-server"></a>A folyamat kiszolgálójának hibáinak megoldása
 
@@ -95,7 +96,7 @@ Ha a Process Server nem rendelkezik szívveréssel (hibakód: 806), tegye a köv
 
 ## <a name="step-4-verify-time-sync-on-source-machine"></a>4. lépés: a forrásoldali gépen futó idő szinkronizálásának ellenőrzése
 
-Győződjön meg arról, hogy a replikált gép rendszerdátuma és ideje szinkronban van. [További információ](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time)
+Győződjön meg arról, hogy a replikált gép rendszerdátuma és ideje szinkronban van. [További információ](/windows-server/networking/windows-time-service/accurate-time)
 
 ## <a name="step-5-check-anti-virus-software-on-source-machine"></a>5. lépés: víruskereső szoftver keresése a forrásszámítógépen
 
@@ -104,7 +105,7 @@ Győződjön meg arról, hogy a replikált gépen nem található víruskereső 
 ## <a name="step-6-check-connectivity-from-source-machine"></a>6. lépés: a forrás-számítógép kapcsolatának ellenőrzése
 
 
-1. Ha szükséges, telepítse a [Telnet-ügyfelet](https://technet.microsoft.com/library/cc771275(v=WS.10).aspx) a forrásoldali gépre. Ne használja a ping parancsot.
+1. Ha szükséges, telepítse a [Telnet-ügyfelet](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771275(v=ws.10)) a forrásoldali gépre. Ne használja a ping parancsot.
 2. A forrásoldali gépről Pingelje a HTTPS-porton futó Process Servert a Telnet használatával. Alapértelmezés szerint a 9443 a replikációs forgalom HTTPS-portja.
 
     `telnet <process server IP address> <port>`
@@ -243,9 +244,9 @@ Győződjön meg arról, hogy az IP-cím alapú tűzfal blokkolja-e a hozzáfér
 Növelje meg a folyamat-kiszolgáló és az Azure közötti sávszélességet, és győződjön meg arról, hogy a probléma továbbra is fennáll.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ha további segítségre van szüksége, tegye fel kérdéseit a [Microsoft Q&a Azure site Recovery kérdését](https://docs.microsoft.com/answers/topics/azure-site-recovery.html). 
+Ha további segítségre van szüksége, tegye fel kérdéseit a [Microsoft Q&a Azure site Recovery kérdését](/answers/topics/azure-site-recovery.html). 
 
 [green]: ./media/vmware-physical-azure-troubleshoot-process-server/green.png
 [yellow]: ./media/vmware-physical-azure-troubleshoot-process-server/yellow.png

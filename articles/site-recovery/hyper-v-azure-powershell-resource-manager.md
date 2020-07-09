@@ -6,11 +6,12 @@ manager: rochakm
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: sutalasi
-ms.openlocfilehash: 6499c986bef965848303ee9833fd59f5e3f0889c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a4140a0b22f7ca8164d50cf60fe57c861f826eb4
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710235"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132516"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>Az Azure-ba irányuló vész-helyreállítás beállítása a Hyper-V virtuális gépekhez a PowerShell és a Azure Resource Manager használatával
 
@@ -24,7 +25,7 @@ Ez a cikk a Windows PowerShell és a Azure Resource Manager együttes használat
 
 A Azure PowerShell parancsmagokat biztosít az Azure kezeléséhez a Windows PowerShell használatával. Site Recovery PowerShell-parancsmagok, amelyek a Azure Resource Manager Azure PowerShell érhetők el, segítenek a kiszolgálók védelmében és helyreállításában az Azure-ban.
 
-A cikk használatához nem kell PowerShell-szakértőnek lennie, de meg kell ismernie az alapvető fogalmakat, például a modulokat, a parancsmagokat és a munkameneteket. További információt a [PowerShell dokumentációjában](/powershell) és a [Azure PowerShell és a Azure Resource Manager használatával](../powershell-azure-resource-manager.md)című témakörben talál.
+A cikk használatához nem kell PowerShell-szakértőnek lennie, de meg kell ismernie az alapvető fogalmakat, például a modulokat, a parancsmagokat és a munkameneteket. További információt a [PowerShell dokumentációjában](/powershell) és a [Azure PowerShell és a Azure Resource Manager használatával](../azure-resource-manager/management/manage-resources-powershell.md)című témakörben talál.
 
 > [!NOTE]
 > A Microsoft partnerei a Cloud Solution Provider (CSP) programban konfigurálhatják és kezelhetik az ügyfél-kiszolgálók védelmét a megfelelő CSP-előfizetésekkel (bérlői előfizetések).
@@ -262,6 +263,6 @@ A Kezdés előtt a megadott Storage-fióknak ugyanabban az Azure-régióban kell
    $TFjob = Start-AzRecoveryServicesAsrTestFailoverCleanupJob -ReplicationProtectedItem $rpi -Comment "TFO done"
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [További](/powershell/module/az.recoveryservices) információ a Azure site Recovery Azure Resource Manager PowerShell-parancsmagokkal.

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: dfed398124ca20771e169f6f9e7d08d4d799ee1e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aece41329d6481b8ad15090a834c8758f86abdc2
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80478292"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131334"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>Vész-helyreállítás beállítása többrétegű IIS-alapú webalkalmazáshoz
 
@@ -31,7 +31,7 @@ Ez a cikk azt ismerteti, hogyan lehet védelemmel ellátni egy webalkalmazást I
 Mielőtt elkezdené, győződjön meg arról, hogy tudja, hogyan végezheti el a következő feladatokat:
 
 * [Virtuális gép replikálása az Azure-ba](vmware-azure-tutorial.md)
-* [Helyreállítási hálózat kialakítása](site-recovery-network-design.md)
+* [Helyreállítási hálózat kialakítása](./concepts-on-premises-to-azure-networking.md)
 * [Végezzen feladatátvételi tesztet az Azure-ba](site-recovery-test-failover-to-azure.md)
 * [Feladatátvétel az Azure-ba](site-recovery-failover.md)
 * [Tartományvezérlő replikálása](site-recovery-active-directory.md)
@@ -58,7 +58,7 @@ A cikkben szereplő példák esetében a VMware virtuális gépeket az IIS 7,5-e
 
 ### <a name="source-and-target"></a>Forrás és cél
 
-Eset | Egy másodlagos helyre | Az Azure-ba
+Forgatókönyv | Egy másodlagos helyre | Az Azure-ba
 --- | --- | ---
 Hyper-V | Igen | Igen
 VMware | Igen | Igen
@@ -92,7 +92,7 @@ További információ: [a helyreállítási terv testreszabása](site-recovery-r
 
 
 ### <a name="add-a-script-to-the-recovery-plan"></a>Parancsfájl hozzáadása a helyreállítási tervhez
-Ahhoz, hogy az IIS-webfarm megfelelően működjön, előfordulhat, hogy műveleteket kell végrehajtania az Azure-beli virtuális gépeken feladatátvétel utáni vagy feladatátvételi teszt során. Automatizálhat néhány feladatátvétel utáni műveletet. Frissítheti például a DNS-bejegyzést, módosíthatja a hely kötését, vagy megváltoztathatja a kapcsolati karakterláncot úgy, hogy a megfelelő parancsfájlokat hozzáadja a helyreállítási tervhez. [VMM-parancsfájl hozzáadása helyreállítási tervhez](site-recovery-how-to-add-vmmscript.md) az automatizált feladatok parancsfájl használatával történő beállítását ismerteti.
+Ahhoz, hogy az IIS-webfarm megfelelően működjön, előfordulhat, hogy műveleteket kell végrehajtania az Azure-beli virtuális gépeken feladatátvétel utáni vagy feladatátvételi teszt során. Automatizálhat néhány feladatátvétel utáni műveletet. Frissítheti például a DNS-bejegyzést, módosíthatja a hely kötését, vagy megváltoztathatja a kapcsolati karakterláncot úgy, hogy a megfelelő parancsfájlokat hozzáadja a helyreállítási tervhez. [VMM-parancsfájl hozzáadása helyreállítási tervhez](./hyper-v-vmm-recovery-script.md) az automatizált feladatok parancsfájl használatával történő beállítását ismerteti.
 
 #### <a name="dns-update"></a>DNS-frissítés
 Ha a DNS dinamikus DNS-frissítésre van konfigurálva, a virtuális gépek általában az új IP-címmel frissítik a DNS-t az indításkor. Ha explicit lépést szeretne hozzáadni a DNS-nek a virtuális gépek új IP-címeivel való frissítéséhez, adjon hozzá egy [parancsfájlt a DNS IP-](https://aka.ms/asr-dns-update) címének frissítés utáni feladatátvételi művelete helyreállítási terv csoportjain.  
@@ -158,5 +158,5 @@ További információ: a [feladatátvétel tesztelése az Azure-ban site Recover
 
 További információ: [feladatátvétel site Recoveryban](site-recovery-failover.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ [más alkalmazások replikálásáról](site-recovery-workload.md) site Recovery használatával.

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: rochakm
-ms.openlocfilehash: bbb2ddaa1fb84590f9dec1c84ac4bc87a8e03022
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91aaedba13dfd9c0a3ea06b3460beaa8ead20233
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82738116"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130455"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Az Azure-ról az Azure-ba irányuló virtuális gépek replikációs hibáinak elhárítása
 
@@ -36,7 +36,7 @@ Replication couldn't be enabled for the virtual machine <VmName>.
 
 ### <a name="fix-the-problem"></a>A probléma javítása
 
-Lépjen kapcsolatba az [Azure számlázási támogatási szolgálatával](/azure/azure-portal/supportability/resource-manager-core-quotas-request) , és engedélyezze, hogy előfizetése virtuális gépeket hozzon létre a célhelyen a szükséges méretekben. Ezután próbálja megismételni a sikertelen műveletet.
+Lépjen kapcsolatba az [Azure számlázási támogatási szolgálatával](../azure-portal/supportability/resource-manager-core-quotas-request.md) , és engedélyezze, hogy előfizetése virtuális gépeket hozzon létre a célhelyen a szükséges méretekben. Ezután próbálja megismételni a sikertelen műveletet.
 
 Ha a célhely kapacitása korlátozást tartalmaz, tiltsa le a replikációt az adott helyre. Ezután engedélyezze a replikálást egy másik helyre, ahol az előfizetése elegendő kvótával rendelkezik a szükséges méretű virtuális gépek létrehozásához.
 
@@ -202,7 +202,7 @@ Nem hozhatók összefüggésbe az Office 365-hitelesítés és az Identity IP4-v
 #### <a name="fix-the-problem"></a>A probléma javítása
 
 Azure Site Recovery szükséges az Office 365 IP-tartományokhoz való hozzáférés hitelesítéshez.
-Ha az Azure hálózati biztonsági csoport (NSG) szabályai/tűzfal proxyja segítségével vezérli a kimenő hálózati kapcsolatot a virtuális gépen, ügyeljen arra, hogy [Azure Active Directory (HRE)](/azure/virtual-network/security-overview#service-tags) NSG-szabályt használjon a HRE való hozzáférés engedélyezéséhez. Az IP-cím alapú NSG-szabályok már nem támogatottak.
+Ha az Azure hálózati biztonsági csoport (NSG) szabályai/tűzfal proxyja segítségével vezérli a kimenő hálózati kapcsolatot a virtuális gépen, ügyeljen arra, hogy [Azure Active Directory (HRE)](../virtual-network/security-overview.md#service-tags) NSG-szabályt használjon a HRE való hozzáférés engedélyezéséhez. Az IP-cím alapú NSG-szabályok már nem támogatottak.
 
 ### <a name="issue-3-site-recovery-configuration-failed-151197"></a>3. probléma: Site Recovery konfiguráció nem sikerült (151197)
 
@@ -260,8 +260,8 @@ Azure data disk <DiskName> <DiskURI> with logical unit number <LUN> <LUNValue> w
 
 Győződjön meg arról, hogy az adatlemezek inicializálva vannak, majd próbálja megismételni a műveletet.
 
-- **Windows**: [új lemez csatolása és inicializálása](/azure/virtual-machines/windows/attach-managed-disk-portal).
-- **Linux**: [új adatlemez inicializálása Linuxon](/azure/virtual-machines/linux/add-disk).
+- **Windows**: [új lemez csatolása és inicializálása](../virtual-machines/windows/attach-managed-disk-portal.md).
+- **Linux**: [új adatlemez inicializálása Linuxon](../virtual-machines/linux/add-disk.md).
 
 Ha a probléma továbbra is fennáll, forduljon az ügyfélszolgálathoz.
 
@@ -535,6 +535,6 @@ Ez a probléma akkor fordulhat elő, ha a virtuális gépet korábban védelemme
 
 Törölje a hibaüzenetben azonosított replika lemezt, majd próbálja megismételni a sikertelen védelmi feladatot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Azure-beli virtuális gépek replikálása másik Azure-régióba](azure-to-azure-how-to-enable-replication.md)

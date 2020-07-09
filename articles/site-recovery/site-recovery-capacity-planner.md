@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 843d5da26d6791cea880e5dfb654fe27b74f5d9f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a622179d1e83b41e906a9d276377f5c9474264b9
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73936049"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86129968"
 ---
 # <a name="plan-capacity-for-hyper-v-vm-disaster-recovery"></a>A Hyper-V virtuális gép vész-helyreállítási kapacitásának megtervezése 
 
@@ -38,7 +39,7 @@ Az eszközt két módban is futtathatja:
 ## <a name="before-you-start"></a>Előkészületek
 
 * Gyűjtsön információkat a környezetéről, beleértve a virtuális gépeket, a lemezeket/virtuális gépeket, a tárterületet.
-* A replikált adatforgalom napi változási arányának meghatározása. Töltse le a [Hyper-V kapacitás-tervezési eszközt](https://www.microsoft.com/download/details.aspx?id=39057) a változási arány eléréséhez. [További információ](site-recovery-capacity-planning-for-hyper-v-replication.md) az eszközről. Javasoljuk, hogy az átlagok rögzítése érdekében futtassa az eszközt egy hétre.
+* A replikált adatforgalom napi változási arányának meghatározása. Töltse le a [Hyper-V kapacitás-tervezési eszközt](https://www.microsoft.com/download/details.aspx?id=39057) a változási arány eléréséhez. [További információ](./hyper-v-deployment-planner-overview.md) az eszközről. Javasoljuk, hogy az átlagok rögzítése érdekében futtassa az eszközt egy hétre.
 
 
 ## <a name="run-the-quick-planner"></a>A gyors Planner futtatása
@@ -52,7 +53,7 @@ Az eszközt két módban is futtathatja:
 
    a. A **forgatókönyv kiválasztása**területen válassza a **Hyper-V – Azure** vagy a **VMware/fizikai az Azure-hoz**lehetőséget.
 
-   b. A **napi adatváltozási arány (%)** mezőben adja meg az összegyűjtött adatokat a [Hyper-V kapacitás-tervezési eszköz](site-recovery-capacity-planning-for-hyper-v-replication.md) vagy a [site Recovery Deployment Planner](./site-recovery-deployment-planner.md)használatával.
+   b. A **napi adatváltozási arány (%)** mezőben adja meg az összegyűjtött adatokat a [Hyper-V kapacitás-tervezési eszköz](./hyper-v-deployment-planner-overview.md) vagy a [site Recovery Deployment Planner](./site-recovery-deployment-planner.md)használatával.
 
    c. A **tömörítési** beállítás nem használatos a Hyper-V virtuális gépek Azure-ba történő replikálásakor. A tömörítéshez használjon egy külső gyártótól származó készüléket, például Riverbed.
 
@@ -145,5 +146,5 @@ Az összes adat megadása után válassza **az adatok elküldése a Planner eszk
 
    ![Capacity Planner](./media/site-recovery-capacity-planner/capacity-planner.png)
 
-## <a name="next-steps"></a>További lépések
-[Megtudhatja, hogyan futtathatja](site-recovery-capacity-planning-for-hyper-v-replication.md) a kapacitás-tervezési eszközt.
+## <a name="next-steps"></a>Következő lépések
+[Megtudhatja, hogyan futtathatja](./hyper-v-deployment-planner-overview.md) a kapacitás-tervezési eszközt.

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: mayg
-ms.openlocfilehash: 2cf4f22be2a4407d73fcc7bb340fad647c8aa145
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 528a24bb64aa8d323b5d63a27af0a52ccdf1abb6
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80546519"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132326"
 ---
 # <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>Vész-helyreállítás beállítása a Active Directory és a DNS-hez
 
@@ -25,7 +25,7 @@ Ez a cikk azt ismerteti, hogyan hozható létre vész-helyreállítási megoldá
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Ha az Azure-ba replikálódik, [készítse elő az Azure-erőforrásokat](tutorial-prepare-azure.md), például egy előfizetést, egy Azure-Virtual Network, egy Storage-fiókot és egy Recovery Services-tárolót.
-- Minden összetevőre vonatkozóan tekintse át a [támogatási követelményeket](site-recovery-support-matrix-to-azure.md).
+- Minden összetevőre vonatkozóan tekintse át a [támogatási követelményeket](./vmware-physical-azure-support-matrix.md).
 
 ## <a name="replicate-the-domain-controller"></a>A tartományvezérlő replikálása
 
@@ -206,6 +206,6 @@ Ha a DNS nem ugyanazon a virtuális gépen található, mint a tartományvezérl
    dnscmd /config contoso.com /allowupdate 1
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [További](site-recovery-workload.md) információ a vállalati munkaterhelések Azure site Recoverysal való védelméről.

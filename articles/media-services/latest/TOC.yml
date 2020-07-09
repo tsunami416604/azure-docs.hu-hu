@@ -1,7 +1,5 @@
 - name: Media Services – dokumentáció
   href: ./index.yml
-- name: Az IoT Edge-en futó Live Video Analyticsre történő váltás dokumentációja
-  href: ../live-video-analytics-edge/overview.md
 - name: Áttekintés
   items:
     - name: A Media Services ismertetése

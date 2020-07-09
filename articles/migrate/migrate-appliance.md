@@ -3,12 +3,12 @@ title: Azure Migrate-berendezés
 description: Áttekintést nyújt a kiszolgálók értékeléséhez és áttelepítéséhez használt Azure Migrate készülékről.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: a57ca67c89078143eba42d94e8d96e004200041a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 99b29839028432a6b760265b641d35cdf33ee57f
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85106575"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86122132"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-berendezés
 
@@ -48,7 +48,7 @@ A következő táblázat összefoglalja a VMware Azure Migrate készülékre von
 **Projekt-támogatás** |  Egy készülék egyetlen projekthez is társítható. <br/> Tetszőleges számú berendezés társítható egyetlen projekthez.<br/> 
 **Felderítési korlátok** | A készülékek akár 10 000 VMware virtuális gépet is felfedezhetnek vCenter Serveron.<br/> Egy berendezés egyetlen vCenter Serverhoz tud csatlakozni.
 **PETESEJT-sablon** | Letöltés a portálról vagy a-ból https://aka.ms/migrate/appliance/vmware .<br/><br/> A letöltési méret 10,9 GB.<br/><br/> A letöltött Appliance-sablon egy Windows Server 2016 próbaverziós licenccel rendelkezik, amely 180 napig érvényes. Ha a próbaidőszak le van zárva, javasoljuk, hogy töltsön le és helyezzen üzembe egy új készüléket, vagy aktiválja a készülék virtuális gépe operációs rendszerének licencét.
-**PowerShell-parancsprogram** | Tekintse meg ezt a [cikket](https://docs.microsoft.com/azure/migrate/deploy-appliance-script#set-up-the-appliance-for-vmware).<br/><br/> 
+**PowerShell-parancsprogram** | Tekintse meg ezt a [cikket](./deploy-appliance-script.md#set-up-the-appliance-for-vmware).<br/><br/> 
 **Szoftver/hardver** |  A készüléknek a gépen kell futnia a Windows Server 2016, 32-GB RAM, 8 vCPU, körülbelül 80 GB lemezes tárolás és egy külső virtuális kapcsoló alapján.<br/> A berendezéshez közvetlenül vagy proxyn keresztül kell internet-hozzáférést igényelni.<br/><br/> Ha a készüléket VMware virtuális gépen futtatja, elegendő erőforrásra van szüksége a vCenter Server egy olyan virtuális gép lefoglalásához, amely megfelel a követelményeknek.<br/><br/> Ha a készüléket fizikai gépen futtatja, győződjön meg arról, hogy a Windows Server 2016 rendszert futtat, és megfelel a hardverkövetelmények követelményeinek.
 **VMware-követelmények** | Ha a készüléket VMware virtuális gépként telepíti, akkor azt egy 5,5-es vagy újabb verziót futtató ESXi-gazdagépre kell telepíteni.<br/><br/> vCenter Server fut 5,5, 6,0, 6,5 vagy 6,7.
 **VDDK (ügynök nélküli áttelepítés)** | Ha a készüléket VMware virtuális gépként telepíti, és ügynök nélküli áttelepítést futtat, akkor a VMware vSphere VDDK telepítve kell lennie a készülék virtuális gépén.
@@ -68,7 +68,7 @@ A következő táblázat összefoglalja a VMware Azure Migrate készülékre von
 **Projekt-támogatás** |  Egy készülék egyetlen projekthez is társítható. <br/> Tetszőleges számú berendezés társítható egyetlen projekthez.<br/> 
 **Felderítési korlátok** | Egy készülék legfeljebb 5000 Hyper-V virtuális gépet képes felderíteni.<br/> Egy készülék legfeljebb 300 Hyper-V gazdagéphez tud csatlakozni.
 **VHD-sablon** | Tömörített mappa, beleértve a VHD-t. Letöltés a portálról vagy a-ból https://aka.ms/migrate/appliance/hyperv .<br/><br/> A letöltés mérete 10 GB.<br/><br/> A letöltött Appliance-sablon egy Windows Server 2016 próbaverziós licenccel rendelkezik, amely 180 napig érvényes. Ha a próbaidőszak le van zárva, javasoljuk, hogy töltsön le és helyezzen üzembe egy új készüléket, vagy aktiválja a készülék virtuális gépe operációs rendszerének licencét.
-**PowerShell-parancsprogram** | Tekintse meg ezt a [cikket](https://docs.microsoft.com/azure/migrate/deploy-appliance-script#set-up-the-appliance-for-hyper-v).<br/><br/> 
+**PowerShell-parancsprogram** | Tekintse meg ezt a [cikket](./deploy-appliance-script.md#set-up-the-appliance-for-hyper-v).<br/><br/> 
 **Szoftver/hardver***   |  A készüléknek a gépen kell futnia a Windows Server 2016, 16 GB RAM, 8 vCPU, körülbelül 80 GB lemezes tárterület és egy külső virtuális kapcsoló alapján.<br/> A készüléknek statikus vagy dinamikus IP-címnek kell lennie, és közvetlenül vagy proxyn keresztül kell internet-hozzáférést biztosítania.<br/><br/> Ha a készüléket Hyper-V virtuális gépként futtatja, elegendő erőforrásra van szüksége a Hyper-V-gazdagépen, hogy 16 GB RAM-ot, 8 vCPU, körülbelül 80 GB tárterületet és külső kapcsolót foglaljon le a készülék virtuális géphez.<br/><br/> Ha a készüléket fizikai gépen futtatja, győződjön meg arról, hogy a Windows Server 2016 rendszert futtat, és megfelel a hardverkövetelmények követelményeinek. 
 **Hyper-V követelmények** | Ha a készüléket a VHD sablonnal telepíti, a Azure Migrate által biztosított készülék virtuális gépe a Hyper-V VM 5,0-es verziója.<br/><br/> A Hyper-V-gazdagépen Windows Server 2012 R2 vagy újabb rendszernek kell futnia. 
 **Kivonatoló érték – VHD** | [Ellenőrizze](tutorial-assess-hyper-v.md#verify-security) a VHD-sablon kivonatának értékét.
@@ -522,7 +522,7 @@ Ha valamelyik összetevőnél régebbi verziót futtat, akkor el kell távolíta
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Ismerje meg, hogyan](how-to-set-up-appliance-vmware.md) állíthatja be a készüléket a VMware rendszerhez.
 - [Ismerje meg, hogyan](how-to-set-up-appliance-hyper-v.md) állíthatja be a készüléket a Hyper-V-hez.

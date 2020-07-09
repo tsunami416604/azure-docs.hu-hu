@@ -7,11 +7,12 @@ manager: rochakm
 ms.topic: article
 ms.date: 1/10/2020
 ms.author: sutalasi
-ms.openlocfilehash: deef7bfdbc28d744cb81da59d3ffc13a1abee54d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d7a2d21dcd8c9474bdf068d7940e497333f35115
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77048614"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130222"
 ---
 # <a name="set-up-disaster-recovery-of-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>A Hyper-V virtuális gépek vész-helyreállításának beállítása másodlagos helyre a PowerShell használatával (Resource Manager)
 
@@ -22,9 +23,9 @@ Ez a cikk bemutatja, hogyan automatizálható a System Center Virtual Machine Ma
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Tekintse át [a forgatókönyv-architektúrát és -összetevőket](hyper-v-vmm-architecture.md).
-- Minden összetevőre vonatkozóan tekintse át a [támogatási követelményeket](site-recovery-support-matrix-to-sec-site.md).
-- Győződjön meg arról, hogy a Virtual Machine Manager-kiszolgálók és a Hyper-V-gazdagépek megfelelnek a [támogatási követelményeknek](site-recovery-support-matrix-to-sec-site.md).
-- Győződjön meg arról, hogy a replikálni kívánt virtuális gépek megfelelnek a [replikált gépek támogatásának](site-recovery-support-matrix-to-sec-site.md).
+- Minden összetevőre vonatkozóan tekintse át a [támogatási követelményeket](./vmware-physical-secondary-support-matrix.md).
+- Győződjön meg arról, hogy a Virtual Machine Manager-kiszolgálók és a Hyper-V-gazdagépek megfelelnek a [támogatási követelményeknek](./vmware-physical-secondary-support-matrix.md).
+- Győződjön meg arról, hogy a replikálni kívánt virtuális gépek megfelelnek a [replikált gépek támogatásának](./vmware-physical-secondary-support-matrix.md).
 
 ## <a name="prepare-for-network-mapping"></a>A hálózatleképezés előkészítése
 
@@ -36,10 +37,10 @@ Ez a cikk bemutatja, hogyan automatizálható a System Center Virtual Machine Ma
 
 A Virtual Machine Manager előkészítése a következőképpen történik:
 
-- Győződjön meg arról, hogy rendelkezik [Virtual Machine Manager logikai hálózatokkal](https://docs.microsoft.com/system-center/vmm/network-logical) a forrás és a cél Virtual Machine Manager kiszolgálókon:
+- Győződjön meg arról, hogy rendelkezik [Virtual Machine Manager logikai hálózatokkal](/system-center/vmm/network-logical) a forrás és a cél Virtual Machine Manager kiszolgálókon:
   - A forrásoldali kiszolgálón található logikai hálózatnak ahhoz a forrásfelhőhöz kell tartoznia, amelyikben a Hyper-V gazdagépek találhatók.
   - A céloldali kiszolgálón található logikai hálózatnak a célfelhőhöz kell tartoznia.
-- Győződjön meg arról, hogy rendelkezik virtuálisgép- [hálózatokkal](https://docs.microsoft.com/system-center/vmm/network-virtual) a forrás-és a cél Virtual Machine Manager-kiszolgálókon. A virtuálisgép-hálózatokat minden helyen össze kell kapcsolni a logikai hálózattal.
+- Győződjön meg arról, hogy rendelkezik virtuálisgép- [hálózatokkal](/system-center/vmm/network-virtual) a forrás-és a cél Virtual Machine Manager-kiszolgálókon. A virtuálisgép-hálózatokat minden helyen össze kell kapcsolni a logikai hálózattal.
 - A forrásoldali Hyper-V gazdagépeken található virtuális gépeket a forrásoldali virtuálisgép-hálózathoz kell csatlakoztatni.
 
 ## <a name="prepare-for-powershell"></a>Felkészülés a PowerShellre
@@ -358,6 +359,6 @@ if($isJobLeftForProcessing)
 }While($isJobLeftForProcessing)
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [További](/powershell/module/az.recoveryservices) információ a site Recovery Resource Manager PowerShell-parancsmagokkal.

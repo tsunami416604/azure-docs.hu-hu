@@ -3,12 +3,12 @@ title: Azure Stack virtuális gépek replikálása az Azure-ba Azure Site Recove
 description: Ismerje meg, hogyan állíthatja be a vész-helyreállítást az Azure-ba Azure Stack virtuális gépekre a Azure Site Recovery szolgáltatással.
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: ab35463ca8c3b29e6b4ae8abc781a7081091b214
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 873b9c5efc2a89d3cda1bfe14a7518e6786a6870
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80478512"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131613"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Azure Stack rendszerű virtuális gépek replikálása az Azure-ba
 
@@ -262,7 +262,7 @@ A feladatátvételi teszt futtatása előtt ellenőrizze a gép tulajdonságait,
 2. A **Replikált elemek** ablaktáblában szerepel a virtuális gép információinak összegzése, állapota és a legújabb elérhető helyreállítási pontok. Kattintson a **Tulajdonságok** lehetőségre a további részletek megtekintéséhez.
 3. A **számítás és hálózat**területen módosítsa a beállításokat igény szerint.
 
-    - Módosíthatja az Azure-beli virtuális gép nevét, az erőforráscsoportot, a célként megadott méretet, a [rendelkezésre állási](/azure/virtual-machines/windows/tutorial-availability-sets)csoportot és a felügyelt lemez beállításait.
+    - Módosíthatja az Azure-beli virtuális gép nevét, az erőforráscsoportot, a célként megadott méretet, a [rendelkezésre állási](../virtual-machines/windows/tutorial-availability-sets.md)csoportot és a felügyelt lemez beállításait.
     - Megtekintheti és módosíthatja a hálózati beállításokat is. Ezek közé tartozik a hálózat/alhálózat, amelyhez az Azure-beli virtuális gép csatlakoztatva van a feladatátvétel után, valamint a virtuális géphez hozzárendelt IP-cím.
 1. A **lemezek**területen tekintse meg a virtuális gép operációs rendszerével és adatlemezével kapcsolatos információkat.
 
@@ -339,7 +339,7 @@ Ebben a fázisban a feladat-visszavétel befejeződött.
 
 Ebben a cikkben Azure Stack virtuális gépeket replikált az Azure-ba. A replikáció a helyén egy vész-helyreállítási részletezést futtatott, amely gondoskodik arról, hogy az Azure-beli feladatátvétel az elvárásoknak megfelelően működik. A cikk a teljes feladatátvétel Azure-ba való futtatásának lépéseit is tartalmazza, és visszakerül a Azure Stackra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A feladat-visszavételt követően újra védetté teheti a virtuális gépet, és megkezdheti az Azure-ba való replikálást. ehhez ismételje meg a jelen cikkben ismertetett lépéseket.
 

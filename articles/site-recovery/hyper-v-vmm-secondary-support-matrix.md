@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
-ms.openlocfilehash: 1126a85ed22ee17879767a93ca75dc76dd04b747
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: af7baf413c9054ef3e5bf527851ac06c113cdce7
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74132966"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131174"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>Támogatási mátrix Hyper-V virtuális gépek másodlagos helyre történő vészhelyreállításához
 
@@ -35,8 +36,8 @@ A következő táblázat összefoglalja az operációs rendszerek támogatását
 
 **Windows-verzió** | **Hyper-V (VMM)**
 --- | ---
-Windows Server 2016 | A [Hyper-V által támogatott](https://docs.microsoft.com/windows-server/virtualization/hyper-v/Supported-Windows-guest-operating-systems-for-Hyper-V-on-Windows) bármely vendég operációs rendszer Windows Server 2016 rendszeren 
-Windows Server 2012 R2 | A [Hyper-V által támogatott](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn792027%28v%3dws.11%29) bármely vendég operációs rendszer Windows Server 2012 R2 rendszeren
+Windows Server 2016 | A [Hyper-V által támogatott](/windows-server/virtualization/hyper-v/Supported-Windows-guest-operating-systems-for-Hyper-V-on-Windows) bármely vendég operációs rendszer Windows Server 2016 rendszeren 
+Windows Server 2012 R2 | A [Hyper-V által támogatott](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn792027%28v%3dws.11%29) bármely vendég operációs rendszer Windows Server 2012 R2 rendszeren
 
 ## <a name="linux-machine-storage"></a>Linux rendszerű gép tárterülete
 
@@ -52,14 +53,14 @@ Csak a következő tárterülettel rendelkező Linux rendszerű gépek replikál
 
 **Konfigurálás** | **Támogatott**  
 --- | --- 
-Gazdagép – hálózati adapterek összevonása | Yes 
-Gazdagép – VLAN | Yes 
-Gazdagép – IPv4 | Yes 
-Gazdagép – IPv6 | No 
-Vendég virtuális hálózati adapterek összevonása | No
-Vendég virtuális gép – IPv4 | Yes
-Vendég virtuális gép – IPv6 | No
-Vendég virtuális gép – Windows/Linux – statikus IP-cím | Yes
+Gazdagép – hálózati adapterek összevonása | Igen 
+Gazdagép – VLAN | Igen 
+Gazdagép – IPv4 | Igen 
+Gazdagép – IPv6 | Nem 
+Vendég virtuális hálózati adapterek összevonása | Nem
+Vendég virtuális gép – IPv4 | Igen
+Vendég virtuális gép – IPv6 | Nem
+Vendég virtuális gép – Windows/Linux – statikus IP-cím | Igen
 Vendég virtuális gép – több hálózati adapter | Igen
 
 
@@ -70,9 +71,9 @@ Vendég virtuális gép – több hálózati adapter | Igen
 **Storage (gazdagép)** | **Támogatott**
 --- | --- 
 NFS | N.A.
-SMB 3.0 |  Yes
-SAN (ISCSI) | Yes
-Több elérési út (MPIO) | Yes
+SMB 3.0 |  Igen
+SAN (ISCSI) | Igen
+Több elérési út (MPIO) | Igen
 
 ### <a name="guest-or-physical-server-storage"></a>Vendég vagy fizikai kiszolgáló tárterülete
 
@@ -80,26 +81,26 @@ Több elérési út (MPIO) | Yes
 --- | --- | 
 VMDK |  N.A.
 VHD/VHDX | Igen (legfeljebb 16 lemez)
-2. generációs VM | Yes
-Megosztott fürtözött lemez | No
-Titkosított lemez | No
+2. generációs VM | Igen
+Megosztott fürtözött lemez | Nem
+Titkosított lemez | Nem
 UEFI| N.A.
-NFS | No
-SMB 3.0 | No
+NFS | Nem
+SMB 3.0 | Nem
 RDM | N.A.
-Lemez > 1 TB | Yes
-Kötet szalagos lemezzel > 1 TB<br/><br/> LVM | Yes
-Tárolóhelyek | Yes
-Lemez gyors hozzáadása/eltávolítása | No
-Lemez kizárása | Yes
-Több elérési út (MPIO) | Yes
+Lemez > 1 TB | Igen
+Kötet szalagos lemezzel > 1 TB<br/><br/> LVM | Igen
+Tárolóhelyek | Igen
+Lemez gyors hozzáadása/eltávolítása | Nem
+Lemez kizárása | Igen
+Több elérési út (MPIO) | Igen
 
 ## <a name="vaults"></a>Tárolók
 
 **Művelet** | **Támogatott**
 --- | --- 
-Tárolók áthelyezése az erőforráscsoportok között (vagy az előfizetések között) |  No
-Tárterület, hálózat, Azure-beli virtuális gépek áthelyezése az erőforráscsoportok között (vagy az előfizetések között) | No
+Tárolók áthelyezése az erőforráscsoportok között (vagy az előfizetések között) |  Nem
+Tárterület, hálózat, Azure-beli virtuális gépek áthelyezése az erőforráscsoportok között (vagy az előfizetések között) | Nem
 
 ## <a name="azure-site-recovery-provider"></a>Azure Site Recovery szolgáltató
 
@@ -111,7 +112,6 @@ A szolgáltató koordinálja a VMM-kiszolgálók közötti kommunikációt.
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[VMM-felhőkben lévő Hyper-V virtuális gépek replikálása másodlagos helyre](tutorial-vmm-to-vmm.md)
-
+[VMM-felhőkben lévő Hyper-V virtuális gépek replikálása másodlagos helyre](./hyper-v-vmm-disaster-recovery.md)

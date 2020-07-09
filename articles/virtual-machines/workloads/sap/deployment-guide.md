@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/22/2020
 ms.author: sedusch
-ms.openlocfilehash: 758e79109d6cf0d41e5e5981168b0eed9f9928d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b6a284d13d0d737eca65b2593813b3d1b999cfdf
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361387"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133153"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Azure Virtual Machines üzembe helyezés az SAP NetWeaver-ben
 
@@ -211,6 +211,7 @@ ms.locfileid: "85361387"
 [planning-guide-5.4.2]:planning-guide.md#9789b076-2011-4afa-b2fe-b07a8aba58a1 (Lemezek másolása az Azure Storage-fiókok között)
 [planning-guide-5.5.1]:planning-guide.md#4efec401-91e0-40c0-8e64-f2dceadff646 (VM-/VHD-struktúra SAP-környezetekhez)
 [planning-guide-5.5.3]:planning-guide.md#17e0d543-7e8c-4160-a7da-dd7117a1ad9d (A csatlakoztatott lemezek automatikus csatlakoztatásának beállítása)
+[planning-guide-9.1]:planning-guide.md#6f0a47f3-a289-4090-a053-2521618a28c3 (Azure monitoring megoldás az SAP-hoz)
 [planning-guide-figure-100]:media/virtual-machines-shared-sap-planning-guide/100-single-vm-in-azure.png
 [planning-guide-figure-1300]:media/virtual-machines-shared-sap-planning-guide/1300-ref-config-iaas-for-sap.png
 [planning-guide-figure-1400]:media/virtual-machines-shared-sap-planning-guide/1400-attach-detach-disks.png
@@ -369,7 +370,7 @@ A következő információk ismerete az SAP-méretezéshez:
 
 Az Azure Resource Manager az Azure-előfizetésében lévő összes alkalmazás-erőforrást az erőforráscsoportok használatával kezelheti. További információk: [Azure Resource Manager overview][resource-group-overview] (Az Azure Resource Manager áttekintése).
 
-## <a name="resources"></a>Erőforrások
+## <a name="resources"></a>További források
 
 ### <a name="sap-resources"></a><a name="42ee2bdb-1efc-4ec7-ab31-fe4c22769b94"></a>SAP-erőforrások
 
@@ -913,7 +914,7 @@ A felhasználó által megadott útvonalakkal kapcsolatos további információk
 > Általános támogatási nyilatkozat: mindig nyisson meg egy, az SAP-vel kapcsolatos incidenst a BC-OP-NT-AZR for Windows vagy a BC-OP-LNX-AZR esetében, ha az SAP-hez készült Azure-bővítmény támogatása szükséges.
 > Az SAP-támogatási rendszeren vannak olyan dedikált Microsoft támogatási mérnökök, akik a közös ügyfeleink segítségére vannak.
 
-Ha előkészítette a virtuális gépet az Azure-beli virtuális [gépek üzembe helyezési forgatókönyvei][deployment-guide-3]című témakörben leírtak szerint, az Azure-beli virtuálisgép-ügynök telepítve van a virtuális gépen. A következő lépés az SAP-hez készült Azure-bővítmény üzembe helyezése, amely a globális Azure-adatközpontok Azure Extension adattárában érhető el. További információ: [Azure Virtual Machines tervezés és megvalósítás SAP NetWeaver-hoz] [tervezési-útmutató-9,1].
+Ha előkészítette a virtuális gépet az Azure-beli virtuális [gépek üzembe helyezési forgatókönyvei][deployment-guide-3]című témakörben leírtak szerint, az Azure-beli virtuálisgép-ügynök telepítve van a virtuális gépen. A következő lépés az SAP-hez készült Azure-bővítmény üzembe helyezése, amely a globális Azure-adatközpontok Azure Extension adattárában érhető el. További információ: [Azure Virtual Machines tervezése és implementálása az SAP NetWeaver-][planning-guide-9.1]ban.
 
 Az SAP-hez készült Azure-bővítmény új verziójának kiadása folyamatban van. Az új bővítmény a virtuális gép rendszerhez rendelt identitását használja a csatlakoztatott lemezek, a hálózati adapterek és a virtuális gép adatainak lekérésére. Ahhoz, hogy hozzáférhessenek ezekhez az erőforrásokhoz, a virtuális gép rendszeridentitásának olvasási engedéllyel kell rendelkeznie a virtuális géphez, az operációsrendszer-lemezhez, az adatlemezekhez és a hálózati adapterekhez. Jelenleg a következő esetekben javasoljuk, hogy csak az új bővítményt telepítse:
 

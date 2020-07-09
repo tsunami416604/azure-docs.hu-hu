@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/14/2019
 ms.author: rajanaki
-ms.openlocfilehash: 6ba1568e5fb05954313f50e63364a2e475dfbab7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1b3fdd93902709541f4a22e652c34973158ad9c7
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84195277"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132450"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>A Hyper-V-ről az Azure-ba végzett replikáció és feladatátvétel hibaelhárítása
 
@@ -27,12 +28,12 @@ Ha problémákat tapasztal a Hyper-V virtuális gépek védelmének engedélyez�
 3. Győződjön meg arról, hogy a Hyper-V Virtuálisgép-kezelő szolgáltatás a Hyper-V-gazdagépeken fut.
 4. Keressen olyan problémákat, amelyek megjelennek a Hyper-V-VMMS\Admin a virtuális gépre való bejelentkezéskor. Ez a napló az **alkalmazások és szolgáltatások naplójában**található a  >  **Microsoft**  >  **Windowsban**.
 5. A vendég virtuális gépen ellenőrizze, hogy a WMI engedélyezve van-e és elérhető-e.
-   - [Ismerje meg az](https://blogs.technet.microsoft.com/askperf/2007/06/22/basic-wmi-testing/) alapszintű WMI-tesztelést.
+   - [Ismerje meg az](https://techcommunity.microsoft.com/t5/ask-the-performance-team/bg-p/AskPerf) alapszintű WMI-tesztelést.
    - [Hibakeresés](https://aka.ms/WMiTshooting) WMI.
-   - WMI-parancsfájlokkal és-szolgáltatásokkal kapcsolatos problémák [elhárítása](https://technet.microsoft.com/library/ff406382.aspx#H22) .
+   - WMI-parancsfájlokkal és-szolgáltatásokkal kapcsolatos problémák [elhárítása](/previous-versions/tn-archive/ff406382(v=msdn.10)#H22) .
 6. A vendég virtuális gépen ellenőrizze, hogy az integrációs szolgáltatások legújabb verziója fut-e.
-    - [Győződjön meg arról,](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services) hogy a legújabb verzióval rendelkezik.
-    - [Tartsa](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date) meg Az integrációs szolgáltatások naprakészek.
+    - [Győződjön meg arról,](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services) hogy a legújabb verzióval rendelkezik.
+    - [Tartsa](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date) meg Az integrációs szolgáltatások naprakészek.
     
 ## <a name="replication-issues"></a>Replikációs problémák
 
@@ -65,7 +66,7 @@ A hálózati sávszélesség korlátozásai befolyásolhatják a replikálást. 
 3. A Profiler futtatása után kövesse a [sávszélességgel](hyper-v-deployment-planner-analyze-report.md#recommendations-with-available-bandwidth-as-input) és a [tárolással](hyper-v-deployment-planner-analyze-report.md#vm-storage-placement-recommendation) kapcsolatos javaslatokat.
 4. Az adatváltozások [korlátozásának](hyper-v-deployment-planner-analyze-report.md#azure-site-recovery-limits)ellenõrzése. Ha magas adatváltozást tapasztal egy virtuális gépen, tegye a következőket:
    - Ellenőrizze, hogy a virtuális gép meg van-e jelölve újraszinkronizálásra.
-   - A forgalom forrásának vizsgálatához kövesse az [alábbi lépéseket](https://blogs.technet.microsoft.com/virtualization/2014/02/02/hyper-v-replica-debugging-why-are-very-large-log-files-generated/) .
+   - A forgalom forrásának vizsgálatához kövesse az [alábbi lépéseket](https://techcommunity.microsoft.com/t5/virtualization/bg-p/Virtualization) .
    - A forgalom akkor fordulhat elő, ha a HRL-naplófájlok mérete meghaladja a rendelkezésre álló lemezterület 50%-át. Ha ez a probléma, több tárolóhelyet kell kiépíteni minden olyan virtuális géphez, amelyen a probléma bekövetkezik.
    - Győződjön meg arról, hogy a replikáció nincs szüneteltetve. Ha igen, akkor folytatja a HRL-fájl módosításainak írását, ami hozzájárulhat a méret növeléséhez.
  
@@ -114,8 +115,8 @@ Az alkalmazás-konzisztens pillanatkép a virtuális gépen belüli alkalmazása
         - Számláló: "írási sebesség (bájt/mp)"</br>
         - Ez az adatváltozási arány magas szinten növekszik vagy marad, attól függően, hogy milyen elfoglalt a virtuális gép vagy alkalmazásai.
         - Az átlagos forrás lemez adatváltozása 2 MB/s a standard szintű tároláshoz a Site Recovery számára. [További információ](hyper-v-deployment-planner-analyze-report.md#azure-site-recovery-limits)
-    - Emellett [ellenőrizheti a tárolási skálázhatósági célokat](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets)is.
-8. Győződjön meg arról, hogy ha Linux-alapú kiszolgálót használ, akkor engedélyezte az alkalmazás-konzisztencia használatát. [További információ](https://docs.microsoft.com/azure/site-recovery/site-recovery-faq#replication)
+    - Emellett [ellenőrizheti a tárolási skálázhatósági célokat](../storage/common/scalability-targets-standard-account.md)is.
+8. Győződjön meg arról, hogy ha Linux-alapú kiszolgálót használ, akkor engedélyezte az alkalmazás-konzisztencia használatát. [További információ](./site-recovery-faq.md#replication)
 9. Futtassa a [Deployment Planner](hyper-v-deployment-planner-run.md).
 10. Tekintse át a [hálózati](hyper-v-deployment-planner-analyze-report.md#recommendations-with-available-bandwidth-as-input) és [tárolási](hyper-v-deployment-planner-analyze-report.md#recommendations-with-available-bandwidth-as-input)javaslatokat.
 
@@ -129,7 +130,7 @@ Az alkalmazás-konzisztens pillanatkép a virtuális gépen belüli alkalmazása
 
 2. Ha VSS-pillanatképeket szeretne létrehozni a virtuális géphez, győződjön meg arról, hogy a Hyper-V integrációs szolgáltatások telepítve vannak a virtuális gépen, és hogy a biztonsági mentési (VSS) integrációs szolgáltatás engedélyezve van.
     - Győződjön meg arról, hogy az Integration Services VSS szolgáltatás/démonok futnak a vendégen, és **OK** állapotban vannak.
-    - Ezt egy emelt szintű PowerShell-munkamenetből is megtekintheti a Hyper-V-gazdagépen, a **Get-VMIntegrationService-VMName \<VMName> -Name VSS** paranccsal pedig bejelentkezhet a vendég virtuális gépre. [További információk](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services).
+    - Ezt egy emelt szintű PowerShell-munkamenetből is megtekintheti a Hyper-V-gazdagépen, a **Get-VMIntegrationService-VMName \<VMName> -Name VSS** paranccsal pedig bejelentkezhet a vendég virtuális gépre. [További információk](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services).
     - Győződjön meg arról, hogy a virtuális gépen a biztonsági mentési/VSS-integrációs szolgáltatások futnak és kifogástalan állapotban vannak. Ha nem, indítsa újra ezeket a szolgáltatásokat és a Hyper-v Kötet árnyékmásolata kérelmező szolgáltatást a Hyper-V-gazdagép kiszolgálóján.
 
 ### <a name="common-errors"></a>Gyakori hibák
@@ -137,7 +138,7 @@ Az alkalmazás-konzisztens pillanatkép a virtuális gépen belüli alkalmazása
 **Hibakód** | **Üzenet** | **Részletek**
 --- | --- | ---
 **0x800700EA** | "A Hyper-V nem tudta létrehozni a VSS pillanatkép-készletet a virtuális géphez: további adatok érhetők el. (0x800700EA). A VSS-pillanatkép-készlet létrehozása sikertelen lehet, ha a biztonsági mentési művelet folyamatban van.<br/><br/> A virtuális gép replikálási művelete sikertelen volt: További információ érhető el. " | Ellenőrizze, hogy a virtuális gépen engedélyezve van-e a dinamikus lemez. Ez a funkció nem támogatott.
-**0x80070032** | "A Hyper-V Kötet árnyékmásolata kérelmező nem tudott kapcsolódni a (z) <./VMname> virtuális géphez, mert a verzió nem egyezik a Hyper-V által várt verzióval | Ellenőrizze, hogy telepítve vannak-e a legújabb Windows-frissítések.<br/><br/> [Frissítsen](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date) az integrációs szolgáltatások legújabb verziójára.
+**0x80070032** | "A Hyper-V Kötet árnyékmásolata kérelmező nem tudott kapcsolódni a (z) <./VMname> virtuális géphez, mert a verzió nem egyezik a Hyper-V által várt verzióval | Ellenőrizze, hogy telepítve vannak-e a legújabb Windows-frissítések.<br/><br/> [Frissítsen](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date) az integrációs szolgáltatások legújabb verziójára.
 
 
 
@@ -169,4 +170,3 @@ Ezek az eszközök a speciális hibaelhárításhoz nyújtanak segítséget:
 
 -   A VMM esetében hajtsa végre Site Recovery naplózási gyűjteményt a [support Diagnostics platform (SDP) eszköz](https://social.technet.microsoft.com/wiki/contents/articles/28198.asr-data-collection-and-analysis-using-the-vmm-support-diagnostics-platform-sdp-tool.aspx)használatával.
 -   A Hyper-V VMM nélkül [töltse le ezt az eszközt](https://dcupload.microsoft.com/tools/win7files/DIAG_ASRHyperV_global.DiagCab), és futtassa a Hyper-v-gazdagépen a naplók összegyűjtéséhez.
-

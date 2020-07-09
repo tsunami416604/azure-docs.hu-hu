@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 7/29/2019
 ms.author: mayg
-ms.openlocfilehash: 27678fff1c0322f9755e7726026c73934810d5d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b03ac554ed578633b55ffa2fde4838c691d04d59
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73953345"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132198"
 ---
 # <a name="review-cost-estimations-in-the-vmware-deployment-planner"></a>Becsült költségbecslés a VMware Deployment Planner 
 
@@ -160,5 +161,5 @@ Az Azure Site Recovery Deployment Planner az alábbi pénznemek bármelyikének 
 |SAR|Szaúdi riál (SR)||SEK|Svéd korona (kr)||TWD|Tajvani új dollár (NT$)|
 |TRY|Török líra (TL)||USD| Amerikai dollár ($)||ZAR|Dél-afrikai rand (R)|
 
-## <a name="next-steps"></a>További lépések
-Többet tudhat meg az [Azure-ba migrált VMware virtuális gépek védelméről az Azure Site Recoveryvel](https://docs.microsoft.com/azure/site-recovery/tutorial-vmware-to-azure).
+## <a name="next-steps"></a>Következő lépések
+Többet tudhat meg az [Azure-ba migrált VMware virtuális gépek védelméről az Azure Site Recoveryvel](./vmware-azure-tutorial.md).

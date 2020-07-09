@@ -6,11 +6,12 @@ manager: rochakm
 ms.date: 12/10/2019
 ms.author: mayg
 ms.topic: conceptual
-ms.openlocfilehash: cd54da5ee01206e576157435135065189bfb8035
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c4842172ff181b5cdbe7f6fecf69da8755ae43fa
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75495367"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86129882"
 ---
 # <a name="exclude-disks-from-vmware-vm-replication-to-azure"></a>Lemezek kizárása a VMware VM-replikációból az Azure-ba
 
@@ -41,12 +42,12 @@ A lemezek replikációból való kizárása előtt:
 
 ## <a name="exclude-disks-from-replication"></a>Lemezek kizárása a replikációból
 
-1. Ha [engedélyezi a replikálást](site-recovery-hyper-v-site-to-azure.md) egy VMware virtuális gép számára, a replikálni kívánt virtuális gépek kiválasztása után a **replikálási**  >  **Tulajdonságok**  >  **konfigurálása** tulajdonságlapon tekintse át a **replikálni kívánt lemezeket** . Alapértelmezés szerint az összes lemez ki van választva replikálásra.
+1. Ha [engedélyezi a replikálást](./hyper-v-azure-tutorial.md) egy VMware virtuális gép számára, a replikálni kívánt virtuális gépek kiválasztása után a **replikálási**  >  **Tulajdonságok**  >  **konfigurálása** tulajdonságlapon tekintse át a **replikálni kívánt lemezeket** . Alapértelmezés szerint az összes lemez ki van választva replikálásra.
 2. Ha nem szeretne replikálni egy adott lemezt, a **lemezeken a replikáláshoz** törölje a kizárni kívánt lemezek kijelölését. 
 
     ![Lemezek kizárása a replikációból](./media/vmware-azure-exclude-disk/enable-replication-exclude-disk1.png)
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha sikerült beállítania és elindítani az üzemelő példányt, [ismerkedjen meg részletesebben](failover-failback-overview.md) a feladatátvételi különféle típusaival.

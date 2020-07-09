@@ -1,18 +1,18 @@
 ---
 title: Vezető felügyelet az Azure Blob Storage-ban – Microsoft kereskedelmi piactér
 description: Ismerje meg, hogyan konfigurálhatja az Azure blobot az Microsoft AppSource és az Azure Marketplace-hez készült érdeklődők konfigurálásához
-author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 05/01/2020
-ms.author: dsindona
-ms.openlocfilehash: 471675de58161fc0c0110e2968089da062c6da87
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: e6ad75178bdc8ce7db18555508e2b819f08352f0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960562"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121911"
 ---
 # <a name="use-azure-blob-storage-to-manage-commercial-marketplace-leads"></a>Az Azure Blob Storage használata a kereskedelmi Piactéri érdeklődők felügyeletéhez
 

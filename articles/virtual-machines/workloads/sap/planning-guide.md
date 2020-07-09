@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 06/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1a3b07dadba17f72f6f4c5765787c7122eebaa89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f7947b6c04ade1fd6a5d9032f05cb6ec56e7a1f5
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361404"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132088"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines az SAP NetWeaver tervezése és megvalósítása
 
@@ -353,7 +353,7 @@ A dokumentum teljes egészében a következő kifejezéseket használjuk:
 
 
 
-### <a name="resources"></a><a name="e55d1e22-c2c8-460b-9897-64622a34fdff"></a>Erőforrások
+### <a name="resources"></a><a name="e55d1e22-c2c8-460b-9897-64622a34fdff"></a>További források
 [Itt](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)található az Azure dokumentációjában az SAP-számítási feladatok belépési pontja. Ettől a belépési ponttól kezdve számos cikket talál, amelyek a következő témaköröket fedik le:
 
 - SAP NetWeaver és Business One az Azure-ban
@@ -544,7 +544,7 @@ A Storage-fiókban egy "containers" nevű mappa-fogalmat is használhat, amely b
 
 Az Azure-ban a lemez-/VHD-név a következő elnevezési kapcsolódást követi, amelynek egyedi nevet kell adnia a VHD-nek az Azure-on belül:
 
-    http(s)://<storage account name>.blob.core.windows.net/<container name>/<vhd name>
+`http(s)://<storage account name>.blob.core.windows.net/<container name>/<vhd name>`
 
 A fenti sztringnek egyedi módon kell azonosítania az Azure Storage-ban tárolt lemezt/VHD-t.
 
@@ -999,7 +999,7 @@ Az SAP-alkalmazási réteget támogató SAP-rendszer vagy egy dedikált adatbáz
 
 Az adatlemezek tárolható VHD-fájlként egy Azure Storage-fiókban, és közvetlenül csatlakoztathatók egy virtuális géphez, vagy képként is használhatók. Ebben az esetben a VHD-t egy másik helyre másolja a rendszer, mielőtt csatlakoztatja a virtuális géphez. Az Azure-ban lévő VHD-fájl teljes nevének egyedinek kell lennie az Azure-on belül. Ahogy korábban már említettük, a név egy háromrészes név, amely a következőképpen néz ki:
 
-    http(s)://<storage account name>.blob.core.windows.net/<container name>/<vhd name>
+`http(s)://<storage account name>.blob.core.windows.net/<container name>/<vhd name>`
 
 Az adatlemezek Managed Disks is lehetnek. Ebben az esetben a felügyelt lemez használatával új felügyelt lemez hozható létre a virtuális géphez való csatolás előtt. A felügyelt lemez nevének egyedinek kell lennie az erőforráscsoport területén.
 
@@ -1926,7 +1926,7 @@ A Linuxon az Azure-on futó SAP HA architektúrája alapvetően ugyanaz, mint a 
 
 Az SAP az operációs rendszernek a virtuális gépen való elindítása után azonnal elindíthatja az SAP-példányokat. A pontos lépéseket dokumentálták az SAP Tudásbázis [1909114]-es cikkében. Az SAP azonban nem javasolja, hogy a beállítást többé ne használja, mert a példányok újraindításának sorrendje nincs szabályozva, feltételezve, hogy több virtuális gépnek van érintett vagy több példánya van egy virtuális gépen. Feltételezve, hogy egy virtuális gépen egy SAP Application Server-példány tipikus Azure-forgatókönyve van, és egyetlen virtuális gép esetében az újraindítást követően az Automatikus indítás nem kritikus, és a következő paraméter hozzáadásával engedélyezhető:
 
-    Autostart = 1
+`Autostart = 1`
 
 Az SAP ABAP és/vagy a Java példány indítási profiljába.
 
@@ -2005,7 +2005,7 @@ Az Azure-beli SAP-rendszerek magas rendelkezésre állásának legfontosabb pont
 * Az SAP-párbeszédpanel példányainak biztonsági mentése kevés értelmet, mivel általában gyorsabb az egyszerű párbeszédpanel-példányok újratelepítése.
 * A virtuális gép biztonsági mentése, amely tartalmazza az SAP-rendszer globális könyvtárát, valamint a különböző példányok összes profilját, a Windows biztonsági mentésével, vagy például a Linux-alapú tar-vel kell elvégezni. Mivel a Windows Server 2008 (R2) és a Windows Server 2012 (R2) között különbségek vannak, így könnyebben készíthető biztonsági mentés a legújabb Windows Server-kiadásokkal, javasoljuk, hogy Windows Server 2012 (R2) operációs rendszert futtasson Windows vendég operációs rendszerként.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Olvassa el a cikkeket:
 
 - [Azure Virtual Machines üzembe helyezés az SAP NetWeaver-ben](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/deployment-guide)

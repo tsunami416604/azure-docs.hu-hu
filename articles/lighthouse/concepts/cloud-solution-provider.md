@@ -1,13 +1,14 @@
 ---
 title: A felhőszolgáltatói program megfontolandó szempontjai
 description: A CSP-partnerek esetében az Azure-beli delegált erőforrás-kezelés a részletes engedélyek engedélyezésével segíti a biztonságot és a szabályozást.
-ms.date: 12/18/2019
+ms.date: 07/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 15b66568ae468d772c0fb7141a10e336cd94afc3
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 8dd40c5c4f7131554dcc3249777de9f0d92c35bb
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921611"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131515"
 ---
 # <a name="azure-lighthouse-and-the-cloud-solution-provider-program"></a>Az Azure Lighthouse és a Cloud Solution Provider program
 
@@ -26,19 +27,19 @@ A AOBO esetében a bérlő [rendszergazdai ügynök](/partner-center/permissions
 
 ## <a name="azure-delegated-resource-management"></a>Az Azure által delegált erőforrás-kezelés
 
-Az Azure delegált erőforrás-kezelés használatával különböző csoportokat rendelhet hozzá különböző ügyfelekhez vagy szerepkörökhöz, ahogy az alábbi ábrán is látható. Mivel a felhasználók a megfelelő szintű hozzáféréssel rendelkeznek az Azure-beli delegált erőforrás-kezelésen keresztül, csökkentheti a rendszergazdai ügynök szerepkörrel rendelkező felhasználók számát (és így teljes AOBO-hozzáféréssel rendelkezik). Ez segít a biztonság javításában azáltal, hogy korlátozza az ügyfelek erőforrásainak szükségtelen hozzáférését. Emellett nagyobb rugalmasságot biztosít több ügyfél felügyeletéhez.
+Az Azure Lighthouse használatával különböző csoportokat rendelhet hozzá különböző ügyfelekhez vagy szerepkörökhöz, ahogy az alábbi ábrán is látható. Mivel a felhasználók a megfelelő szintű hozzáféréssel rendelkeznek az Azure-beli delegált erőforrás-kezelésen keresztül, csökkentheti a rendszergazdai ügynök szerepkörrel rendelkező felhasználók számát (és így teljes AOBO-hozzáféréssel rendelkezik). Ez segít a biztonság javításában azáltal, hogy korlátozza az ügyfelek erőforrásainak szükségtelen hozzáférését. Emellett nagyobb rugalmasságot biztosít több ügyfél felügyeletéhez.
 
-A CSP programon keresztül létrehozott előfizetés bevezetése az [előfizetés Azure-beli delegált erőforrás-kezelésre való bevezetésében](../how-to/onboard-customer.md)ismertetett lépéseket követi. A bérlő rendszergazdai ügynök szerepkörrel rendelkező felhasználója elvégezheti ezt a bevezetést.
+A CSP programon keresztül létrehozott előfizetés bevezetése az [előfizetés Azure Lighthouse-be történő](../how-to/onboard-customer.md)bevezetésének lépéseit követi. A bérlő rendszergazdai ügynök szerepkörrel rendelkező felhasználója elvégezheti ezt a bevezetést.
 
 ![Bérlői felügyelet az AOBO és az Azure által delegált erőforrás-kezelés használatával](../media/csp-2.jpg)
 
 > [!NOTE]
-> A [Azure Portal **saját ügyfelek** lapján](../how-to/view-manage-customers.md) már szerepel a **Cloud Solution Provider (előzetes verzió)** szakasz, amely megjeleníti a számlázási adatokat és erőforrásokat a [Microsoft ügyfél-szerződést (MCA) aláírt](/partner-center/confirm-customer-agreement) CSP-ügyfelek számára, és [Az Azure-csomag alatt](/partner-center/azure-plan-get-started)található. További információ: Ismerkedés a [Microsoft partneri szerződés számlázási fiókjával](../../billing/mpa-overview.md).
+> A [Azure Portal **saját ügyfelek** lapján](../how-to/view-manage-customers.md) már szerepel a **Cloud Solution Provider (előzetes verzió)** szakasz, amely megjeleníti a számlázási adatokat és erőforrásokat a [Microsoft ügyfél-szerződést (MCA) aláírt](/partner-center/confirm-customer-agreement) CSP-ügyfelek számára, és [Az Azure-csomag alatt](/partner-center/azure-plan-get-started)található. További információ: Ismerkedés a [Microsoft partneri szerződés számlázási fiókjával](../../cost-management-billing/understand/mpa-overview.md).
 >
 > A CSP-ügyfelek ebben a szakaszban jelenhetnek meg, függetlenül attól, hogy az Azure-beli delegált erőforrás-kezeléshez is bekerültek-e. Ha vannak, akkor az **ügyfelek** szakaszban is megjelennek az ügyfelek [és a delegált erőforrások megtekintése és kezelése](../how-to/view-manage-customers.md)című témakörben leírtak szerint. Hasonlóképpen, a CSP-ügyfélnek nem kell megjelennie az **ügyfelek** **felhőalapú megoldás-szolgáltató (előzetes verzió)** szakaszában, hogy az Azure-beli delegált erőforrás-kezeléshez be lehessen őket készíteni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [bérlők közötti felügyeleti élményekről](cross-tenant-management-experience.md).
-- Ismerje meg, hogyan lehet [előfizetést bevezetni az Azure-beli delegált erőforrás-kezelésbe](../how-to/onboard-customer.md).
+- Ismerje meg, hogyan lehet [előfizetést bevezetni az Azure Lighthouse](../how-to/onboard-customer.md)szolgáltatásba.
 - Tudnivalók a [Cloud Solution Provider programról](/partner-center/csp-overview).

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3c14ff9c4f6d2bc2b1a62d1874d01950d09491c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8512675381f6163e66b6b838e8262dd7d2b12374
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70099820"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130876"
 ---
 # <a name="azure-hana-large-instances-control-through-azure-portal"></a>Az Azure HANA nagyméretű példányok vezérlése az Azure Portalon keresztül
 Ez a dokumentum azt ismerteti, hogyan jelennek meg a [Hana nagyméretű példányai](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) [Azure Portalban](https://portal.azure.com) , és milyen tevékenységek hajthatók végre az Ön számára üzembe helyezett Hana nagyméretű példány-egységekkel Azure Portal használatával. A HANA nagyméretű példányainak láthatósága Azure Portal egy Azure-erőforrás-szolgáltatón keresztül érhető el a HANA nagyméretű példányain, amelyek jelenleg nyilvános előzetes verzióban érhetők el
@@ -31,7 +31,9 @@ Ez a dokumentum azt ismerteti, hogyan jelennek meg a [Hana nagyméretű példán
 ### <a name="register-through-cli-interface"></a>Regisztrálás CLI felületen
 Be kell jelentkeznie az Azure-előfizetésbe, amelyet a HANA nagyméretű példány üzembe helyezéséhez használ az Azure CLI felületén keresztül. A HANA nagyméretű példány-szolgáltatót (újra) a következő paranccsal regisztrálhatja:
     
-    az provider register --namespace Microsoft.HanaOnAzure
+```azurecli
+az provider register --namespace Microsoft.HanaOnAzure
+```
 
 További információ: [Azure-erőforrás-szolgáltatók és-típusok](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services#azure-cli) .
 
@@ -155,7 +157,7 @@ A különböző problémák típusai közül választhatja ki a probléma altíp
 
 A kérdések megválaszolásával és további részletek megadásával a következő lépéssel ellenőrizheti a támogatási kérést és a küldést.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [SAP HANA (nagyméretű példányok) figyelése az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/troubleshooting-monitoring)
 - [HANA-oldali monitorozás és hibaelhárítás](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-monitor-troubleshoot)

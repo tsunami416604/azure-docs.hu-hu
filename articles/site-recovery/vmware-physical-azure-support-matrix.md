@@ -3,12 +3,12 @@ title: Támogatási mátrix a VMware/fizikai vész-helyreállításhoz Azure Sit
 description: Összefoglalja a VMware virtuális gépek és a fizikai kiszolgálók vész-helyreállításának támogatását az Azure-ban Azure Site Recovery használatával.
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: 8e1fd7e839c50458ddcfc9f83d152d7b45cd6672
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: ff99fd1dd1710cd96f6257096b97ae1912a61dc6
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956253"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131879"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>A VMware virtuális gépek és fizikai kiszolgálók Azure-ba való vész-helyreállítási mátrixának támogatása
 
@@ -50,8 +50,8 @@ Operációs rendszer  | Windows Server 2012 R2 vagy Windows Server 2016 asztali 
 Operációs rendszer területi beállítása | Angol (en-us)
 [PowerCLI](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) | A konfigurációs kiszolgáló [9,14](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery) -es vagy újabb verziójához nem szükséges.
 Windows Server-szerepkörök | Ne engedélyezze a Active Directory tartományi szolgáltatások; Internet Information Services (IIS) vagy Hyper-V.
-Csoportházirendek| – A parancssor elérésének tiltása. <br/> – A beállításjegyzék szerkesztési eszközeihez való hozzáférés megakadályozása. <br/> – A fájlmellékletek megbízhatósági logikája. <br/> – A parancsfájlok végrehajtásának bekapcsolása. <br/> - [További információ](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
-IIS | Győződjön meg róla, hogy:<br/><br/> -Nem rendelkezik egy korábban létező alapértelmezett webhellyel <br/> – [Névtelen hitelesítés](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) engedélyezése <br/> – [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) -beállítás engedélyezése  <br/> – Ne hallgassa meg előre meglévő webhelyet/alkalmazást a 443-as porton<br/>
+Csoportházirendek| – A parancssor elérésének tiltása. <br/> – A beállításjegyzék szerkesztési eszközeihez való hozzáférés megakadályozása. <br/> – A fájlmellékletek megbízhatósági logikája. <br/> – A parancsfájlok végrehajtásának bekapcsolása. <br/> - [További információ](/previous-versions/windows/it-pro/windows-7/gg176671(v=ws.10))|
+IIS | Győződjön meg róla, hogy:<br/><br/> -Nem rendelkezik egy korábban létező alapértelmezett webhellyel <br/> – [Névtelen hitelesítés](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731244(v=ws.10)) engedélyezése <br/> – [FastCGI](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc753077(v=ws.10)) -beállítás engedélyezése  <br/> – Ne hallgassa meg előre meglévő webhelyet/alkalmazást a 443-as porton<br/>
 Hálózati adapter típusa | VMXNET3 (VMware virtuális gépként való üzembe helyezéskor)
 IP-cím típusa | Statikus
 Portok | 443 a vezérlési csatorna koordinálásához használatos<br/>9443 adatátvitelhez
@@ -67,7 +67,7 @@ Site Recovery támogatja a támogatott gépen futó munkaterhelések replikálá
 --- | ---
 Számítógép beállításai | Az Azure-ba replikált gépeknek meg kell felelniük az [Azure-követelményeknek](#azure-vm-requirements).
 Gépi munkaterhelés | Site Recovery támogatja a támogatott gépen futó munkaterhelések replikálását. [További információk](https://aka.ms/asr_workload).
-Számítógépnév | Győződjön meg arról, hogy a számítógép megjelenítendő neve nem tartozik az Azure-beli [fenntartott erőforrás-nevekhez](https://docs.microsoft.com/azure/azure-resource-manager/templates/error-reserved-resource-name)<br/><br/> A logikai kötetek neve nem megkülönbözteti a kis-és nagybetűket. Győződjön meg arról, hogy az eszközön nincs két kötet ugyanazzal a névvel. Például: a "voLUME1", a "voLUME1" névvel rendelkező kötetek nem védhetők Azure Site Recoveryon keresztül.
+Számítógépnév | Győződjön meg arról, hogy a számítógép megjelenítendő neve nem tartozik az Azure-beli [fenntartott erőforrás-nevekhez](../azure-resource-manager/templates/error-reserved-resource-name.md)<br/><br/> A logikai kötetek neve nem megkülönbözteti a kis-és nagybetűket. Győződjön meg arról, hogy az eszközön nincs két kötet ugyanazzal a névvel. Például: a "voLUME1", a "voLUME1" névvel rendelkező kötetek nem védhetők Azure Site Recoveryon keresztül.
 
 ### <a name="for-windows"></a>Windows esetén
 
@@ -185,69 +185,69 @@ Vendég/kiszolgáló hálózata több hálózati adapterrel | Igen.
 
 **Összetevő** | **Támogatott**
 --- | ---
-Azure ExpressRoute | Yes
-ILB | Yes
-ELB | Yes
-Azure Traffic Manager | Yes
-Több hálózati adapter | Yes
-Fenntartott IP címe | Yes
-IPv4 | Yes
-Forrás IP-címének megőrzése | Yes
-Azure Virtual Network szolgáltatásbeli végpontok<br/> | Yes
-Gyorsított hálózatkezelés | No
+Azure ExpressRoute | Igen
+ILB | Igen
+ELB | Igen
+Azure Traffic Manager | Igen
+Több hálózati adapter | Igen
+Fenntartott IP címe | Igen
+IPv4 | Igen
+Forrás IP-címének megőrzése | Igen
+Azure Virtual Network szolgáltatásbeli végpontok<br/> | Igen
+Gyorsított hálózatkezelés | Nem
 
 ## <a name="storage"></a>Storage
 **Összetevő** | **Támogatott**
 --- | ---
 Dinamikus lemez | Az operációsrendszer-lemeznek alaplemeznek kell lennie. <br/><br/>Az adatlemezek lehetnek dinamikus lemezek
-Docker-lemez konfigurációja | No
+Docker-lemez konfigurációja | Nem
 NFS-gazdagép | Igen, VMware-hez<br/><br/> Nem a fizikai kiszolgálók esetében
-Gazdagép SAN (iSCSI/FC) | Yes
+Gazdagép SAN (iSCSI/FC) | Igen
 Gazdagép vSAN | Igen, VMware-hez<br/><br/> N/A fizikai kiszolgálókhoz
 Gazdagép többutas (MPIO) | Igen, tesztelték a Microsoft DSM, EMC PowerPath 5,7 SP4, EMC PowerPath DSM for CLARiiON
 Gazdagép virtuális kötetei (VVols) | Igen, VMware-hez<br/><br/> N/A fizikai kiszolgálókhoz
-Vendég/kiszolgáló VMDK | Yes
-Vendég/kiszolgáló megosztott fürtözött lemeze | No
-Vendég/kiszolgáló által titkosított lemez | No
-Vendég/kiszolgáló NFS | No
+Vendég/kiszolgáló VMDK | Igen
+Vendég/kiszolgáló megosztott fürtözött lemeze | Nem
+Vendég/kiszolgáló által titkosított lemez | Nem
+Vendég/kiszolgáló NFS | Nem
 Vendég/kiszolgáló iSCSI | Áttelepítéshez – igen<br/>Vész-helyreállítás esetén az iSCSI a virtuális géphez csatlakoztatott lemezként fogja felvenni a feladat-visszavételt
-Vendég/kiszolgáló SMB 3,0 | No
-Vendég/kiszolgáló RDM | Yes<br/><br/> N/A fizikai kiszolgálókhoz
+Vendég/kiszolgáló SMB 3,0 | Nem
+Vendég/kiszolgáló RDM | Igen<br/><br/> N/A fizikai kiszolgálókhoz
 Vendég/kiszolgáló lemez > 1 TB | Igen, a lemeznek nagyobbnak kell lennie, mint 1024 MB<br/><br/>Akár 8 192 GB a felügyelt lemezekre való replikáláskor (9,26-es verzió)<br></br> Akár 4 095 GB a Storage-fiókokba való replikáláskor
-Vendég/kiszolgáló lemez 4K logikai és 4k fizikai szektor méretével | No
-Vendég/kiszolgáló lemez 4K logikai és 512 bájtos fizikai szektor méretével | No
-Vendég/kiszolgáló kötet szalagos lemezzel >4 TB | Yes
+Vendég/kiszolgáló lemez 4K logikai és 4k fizikai szektor méretével | Nem
+Vendég/kiszolgáló lemez 4K logikai és 512 bájtos fizikai szektor méretével | Nem
+Vendég/kiszolgáló kötet szalagos lemezzel >4 TB | Igen
 Logikai kötet kezelése (LVM)| Sűrű kiépítés – igen <br></br> Dinamikus kiépítés – nem
-Vendég/kiszolgáló – tárolóhelyek | No
-Vendég/kiszolgáló – gyors Hozzáadás/Eltávolítás lemez | No
-Vendég/kiszolgáló – lemez kizárása | Yes
-Vendég/kiszolgáló többutas (MPIO) | No
+Vendég/kiszolgáló – tárolóhelyek | Nem
+Vendég/kiszolgáló – gyors Hozzáadás/Eltávolítás lemez | Nem
+Vendég/kiszolgáló – lemez kizárása | Igen
+Vendég/kiszolgáló többutas (MPIO) | Nem
 Vendég/kiszolgáló GPT-partíciók | Az 37-es [kumulatív frissítés](https://support.microsoft.com/help/4508614/) (a mobilitási szolgáltatás 9,25-es verziója) a következő öt partíciót támogatja:. Korábban négy támogatott volt.
 ReFS | A rugalmas fájlrendszer a mobilitási szolgáltatás 9,23-es vagy újabb verziójával támogatott
-Vendég/kiszolgáló EFI/UEFI rendszerindítás | – A Windows Server 2012-es vagy újabb verzióiban támogatott, a SLES 12 SP4 és a RHEL 8,0 a mobilitási ügynök verziójának 9,30-as verziójával<br/> – A Secure UEFI rendszerindítási típus nem támogatott. [Részletek](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2#on-premises-vs-azure-generation-2-vms)
+Vendég/kiszolgáló EFI/UEFI rendszerindítás | – A Windows Server 2012-es vagy újabb verzióiban támogatott, a SLES 12 SP4 és a RHEL 8,0 a mobilitási ügynök verziójának 9,30-as verziójával<br/> – A Secure UEFI rendszerindítási típus nem támogatott. [Részletek](../virtual-machines/windows/generation-2.md#on-premises-vs-azure-generation-2-vms)
 
 ## <a name="replication-channels"></a>Replikációs csatornák
 
 |**Replikáció típusa**   |**Támogatott**  |
 |---------|---------|
-|Kiszervezett adatátvitel (ODX)    |       No  |
-|Offline előkészítés        |   No      |
-| Azure Data Box | No
+|Kiszervezett adatátvitel (ODX)    |       Nem  |
+|Offline előkészítés        |   Nem      |
+| Azure Data Box | Nem
 
 ## <a name="azure-storage"></a>Azure Storage tárterület
 
 **Összetevő** | **Támogatott**
 --- | ---
-Helyileg redundáns tárolás | Yes
-Georedundáns tárolás | Yes
-Írásvédett georedundáns tárolás (RA-GRS) | Yes
-Ritkán használt tároló | No
-Gyors tárolás| No
-Blokkblobok | No
-Titkosítás – Rest (SSE)| Yes
+Helyileg redundáns tárolás | Igen
+Georedundáns tárolás | Igen
+Írásvédett georedundáns tárolás (RA-GRS) | Igen
+Ritkán használt tároló | Nem
+Gyors tárolás| Nem
+Blokkblobok | Nem
+Titkosítás – Rest (SSE)| Igen
 Titkosítás – Rest (CMK)| Igen (a PowerShell az 3.3.0 modultól kezdődően)
-Prémium szintű Storage | Yes
-Importálási/exportálási szolgáltatás | No
+Prémium szintű Storage | Igen
+Importálási/exportálási szolgáltatás | Nem
 Azure Storage-tűzfalak a virtuális hálózatok | Igen.<br/> A cél Storage/cache Storage-fiókra van konfigurálva (a replikációs adattároláshoz használatos).
 Általános célú v2 Storage-fiókok (gyakori és ritka elérésű szintek) | Igen (a tranzakciós költségek lényegesen magasabbak a v2-höz képest, mint a v1)
 
@@ -255,10 +255,10 @@ Azure Storage-tűzfalak a virtuális hálózatok | Igen.<br/> A cél Storage/cac
 
 **Szolgáltatás** | **Támogatott**
 --- | ---
-Rendelkezésre állási csoportok | Yes
-Rendelkezésre állási zónák | No
-HUB | Yes
-Felügyelt lemezek | Yes
+Rendelkezésre állási csoportok | Igen
+Rendelkezésre állási zónák | Nem
+HUB | Igen
+Felügyelt lemezek | Igen
 
 ## <a name="azure-vm-requirements"></a>Azure virtuálisgép-követelmények
 
@@ -280,7 +280,7 @@ a virtuális gép neve | 1 – 63 karakter.<br/><br/> Csak betűket, számokat �
 
 ## <a name="resource-group-limits"></a>Erőforráscsoport korlátai
 
-Az egyetlen erőforráscsoport által védett virtuális gépek számának megismeréséhez tekintse meg az [előfizetés korlátai és kvótái](/azure/azure-resource-manager/management/azure-subscription-service-limits#resource-group-limits)című cikket.
+Az egyetlen erőforráscsoport által védett virtuális gépek számának megismeréséhez tekintse meg az [előfizetés korlátai és kvótái](../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits)című cikket.
 
 ## <a name="churn-limits"></a>Adatforgalom korlátai
 
@@ -312,10 +312,10 @@ Folyamatkiszolgáló által támogatott napi adatváltozás maximuma | 2 TB
 
 **Művelet** | **Támogatott**
 --- | ---
-Tár áthelyezése az erőforráscsoportok között | No
-Tár áthelyezése az előfizetések között | No
-Tárterület, hálózat, Azure-beli virtuális gépek áthelyezése az erőforráscsoportok között | No
-Helyezze át a tárterületet, a hálózatot és az Azure-beli virtuális gépeket az előfizetések között. | No
+Tár áthelyezése az erőforráscsoportok között | Nem
+Tár áthelyezése az előfizetések között | Nem
+Tárterület, hálózat, Azure-beli virtuális gépek áthelyezése az erőforráscsoportok között | Nem
+Helyezze át a tárterületet, a hálózatot és az Azure-beli virtuális gépeket az előfizetések között. | Nem
 
 
 ## <a name="obtain-latest-components"></a>Legújabb összetevők beszerzése
@@ -328,7 +328,7 @@ Mobility szolgáltatás | A replikálni kívánt VMware virtuális gépen vagy f
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Ismerje meg, hogyan](tutorial-prepare-azure.md) készítheti elő az Azure-t a VMWare virtuális gépek vész-helyreállításához.
 
 [9.32 UR]: https://support.microsoft.com/en-in/help/4538187/update-rollup-44-for-azure-site-recovery

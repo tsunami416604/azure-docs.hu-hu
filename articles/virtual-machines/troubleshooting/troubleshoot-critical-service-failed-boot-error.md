@@ -12,11 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/08/2018
 ms.author: genli
-ms.openlocfilehash: 54ba87b681a055bb46b81ca81d2bcdd103491f27
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c3e76f1a7edffefc8773dfa548773ec0932fae6
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77921453"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86129851"
 ---
 # <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>A Windows egy Azure-beli virtuális gép indításakor a "kritikus szolgáltatás sikertelen" állapotot jeleníti meg a kék képernyőn
 Ez a cikk a "kritikus szolgáltatás nem sikerült" hibát mutatja be, amely akkor fordulhat elő, amikor Windows rendszerű virtuális gépet (VM) indít el Microsoft Azure. Hibaelhárítási lépéseket biztosít a problémák megoldásához. 
@@ -83,11 +84,15 @@ A memóriaképek és a soros konzol engedélyezéséhez futtassa az alábbi szkr
 
 1. A helyreállítási virtuális gépen futtassa a következő parancsot egy rendszergazda jogú parancssorból. Ezzel a paranccsal az érintett operációsrendszer-lemez úgy állítható be, hogy csökkentett módban induljon el a következő rendszerindításkor:
 
-        bcdedit /store <OS DISK you attached>:\boot\bcd /set {default} safeboot minimal
+    ```console
+    bcdedit /store <OS DISK you attached>:\boot\bcd /set {default} safeboot minimal
+    ```
 
     Ha például a csatlakoztatott operációsrendszer-lemez az F meghajtó, futtassa a következő parancsot:
 
-        bcdedit /store F: boot\bcd /set {default} safeboot minimal
+    ```console
+    bcdedit /store F: boot\bcd /set {default} safeboot minimal
+    ```
 
 2. [Válassza le az operációsrendszer-lemezt, majd csatlakoztassa újra az operációsrendszer-lemezt az érintett virtuális géphez](troubleshoot-recovery-disks-portal-windows.md). A virtuális gép biztonságos módba fog indulni. Ha továbbra is tapasztalja a hibát, lépjen a választható lépésre.
 3. Nyissa meg a **Futtatás** mezőt, és futtassa a vezérlőt **az illesztőprogram-ellenőrző** kezelő eszköz elindításához.
@@ -97,7 +102,10 @@ A memóriaképek és a soros konzol engedélyezéséhez futtassa az alábbi szkr
 
 7. Távolítsa el a biztonságos rendszerindítás beállításait:
 
-        bcdedit /store <OS DISK LETTER>:\boot\bcd /deletevalue {default} safeboot
+    ```console
+    bcdedit /store <OS DISK LETTER>:\boot\bcd /deletevalue {default} safeboot
+    ```
+
 8.  Indítsa újra a virtuális gépet. 
 
 ### <a name="optional-analyze-the-dump-logs-in-dump-crash-mode"></a>Nem kötelező: a memóriaképi naplók elemzése a memóriakép összeomlása módban

@@ -5,15 +5,16 @@ author: sideeksh
 manager: rochakm
 ms.topic: troubleshooting
 ms.date: 04/03/2020
-ms.openlocfilehash: c27bf9a29bdb6e75e10fcafc597f40a88f995461
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dc14334668b76ee8cbb81e48abfe1eecf17fa138
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84196088"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130397"
 ---
 # <a name="troubleshoot-replication-in-azure-vm-disaster-recovery"></a>Az Azure-beli virtuális gép vész-helyreállítási replikációjának elhárítása
 
-Ez a cikk az Azure Virtual Machines (VM) egyik régióból egy másik régióba való replikálásának és helyreállításának Azure Site Recovery gyakori problémáit ismerteti. Azt is ismerteti, hogyan lehet elhárítani a gyakori problémákat. További információ a támogatott konfigurációkról: Azure-beli [virtuális gépek replikálásának támogatási mátrixa](site-recovery-support-matrix-azure-to-azure.md).
+Ez a cikk az Azure Virtual Machines (VM) egyik régióból egy másik régióba való replikálásának és helyreállításának Azure Site Recovery gyakori problémáit ismerteti. Azt is ismerteti, hogyan lehet elhárítani a gyakori problémákat. További információ a támogatott konfigurációkról: Azure-beli [virtuális gépek replikálásának támogatási mátrixa](./azure-to-azure-support-matrix.md).
 
 Azure Site Recovery folyamatosan replikálja az adatait a forrás régióból a vész-helyreállítási régióba. Egy összeomlás-konzisztens helyreállítási pontot is létrehoz 5 percenként. Ha Site Recovery nem tud helyreállítási pontokat létrehozni 60 percre, akkor a következő információkat értesíti:
 
@@ -77,7 +78,7 @@ Az adatváltozási arányban előforduló csúcsok időnként adattörésből sz
 
 Site Recovery replikált adatokat küld a gyorsítótár Storage-fiókba. Előfordulhat, hogy a hálózati késés akkor fordul elő, ha egy virtuális gépről a gyorsítótárbeli Storage-fiókba történő feltöltése 3 másodpercnél rövidebb, mint 4 MB.
 
-A késéssel kapcsolatos problémák kereséséhez használja a [AzCopy](/azure/storage/common/storage-use-azcopy). A parancssori segédprogrammal adatok tölthetők fel a virtuális gépről a cache Storage-fiókba. Ha a késés magas, ellenőrizze, hogy egy hálózati virtuális berendezést (NVA) használ-e a virtuális gépek kimenő hálózati forgalmának szabályozására. Előfordulhat, hogy a készülék szabályozva van, ha az összes replikációs forgalom a NVA halad át.
+A késéssel kapcsolatos problémák kereséséhez használja a [AzCopy](../storage/common/storage-use-azcopy-v10.md). A parancssori segédprogrammal adatok tölthetők fel a virtuális gépről a cache Storage-fiókba. Ha a késés magas, ellenőrizze, hogy egy hálózati virtuális berendezést (NVA) használ-e a virtuális gépek kimenő hálózati forgalmának szabályozására. Előfordulhat, hogy a készülék szabályozva van, ha az összes replikációs forgalom a NVA halad át.
 
 Javasoljuk, hogy hozzon létre egy hálózati szolgáltatási végpontot a virtuális hálózaton a "Storage" számára, hogy a replikálási forgalom ne lépjen a NVA. További információ: [hálózati virtuális berendezések konfigurálása](azure-to-azure-about-networking.md#network-virtual-appliance-configuration).
 
@@ -107,7 +108,7 @@ A **javítás módja**: Tekintse meg a SQL Server 2017-as számú [, a 16. össz
 
 ### <a name="app-consistency-not-enabled-on-linux-servers"></a>Az alkalmazás-konzisztencia nincs engedélyezve a Linux-kiszolgálókon
 
-**Javítás** : a Linux operációs rendszer Azure site Recovery támogatja az alkalmazások egyéni parancsfájljait az alkalmazás-konzisztencia számára. Az egyéni parancsfájl előtti és utáni beállításokat a Azure Site Recovery mobilitási ügynök fogja használni az alkalmazás-konzisztencia érdekében. Az [alábbi lépéseket](https://docs.microsoft.com/azure/site-recovery/site-recovery-faq#replication) követve engedélyezheti.
+**Javítás** : a Linux operációs rendszer Azure site Recovery támogatja az alkalmazások egyéni parancsfájljait az alkalmazás-konzisztencia számára. Az egyéni parancsfájl előtti és utáni beállításokat a Azure Site Recovery mobilitási ügynök fogja használni az alkalmazás-konzisztencia érdekében. Az [alábbi lépéseket](./site-recovery-faq.md#replication) követve engedélyezheti.
 
 ### <a name="more-causes-because-of-vss-related-issues"></a>A VSS-vel kapcsolatos problémák több oka is van:
 

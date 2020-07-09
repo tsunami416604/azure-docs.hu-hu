@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.date: 04/01/2020
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: 6547bcf2061213cd01550367171d432900693ea5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 74870d10348421bf726b9bdc58504a74cf4105a9
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80584146"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86129930"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Az Azure-ba történő replikáció engedélyezése VMware virtuális gépekhez
 
@@ -106,9 +106,9 @@ Ezután ellenőrizze a forrás virtuális gép tulajdonságait. Ne feledje, hogy
    :::image type="content" source="./media/vmware-azure-enable-replication/vmproperties.png" alt-text="Számítási és hálózati Tulajdonságok ablak":::
 
    - **Azure-beli virtuális gép neve**: ha szükséges, módosítsa a nevet az Azure-követelmények teljesítéséhez.
-   - **Cél virtuálisgép-méret vagy virtuálisgép-típus**: az alapértelmezett virtuálisgép-méret a lemezes darabszámot, a hálózati adapterek darabszámát, a CPU-mag darabszámát, a memóriát és az elérhető virtuálisgép-szerepkört tartalmazó paraméterek alapján lesz kiválasztva a cél Azure-régióban. Azure Site Recovery kiválasztja az első elérhető virtuálisgép-méretet, amely megfelel az összes feltételnek. A feladatátvétel előtt bármikor kiválaszthat egy másik virtuálisgép-méretet az igényei szerint. A virtuális gép lemezének mérete a forrás lemez méretétől is függ, és csak a feladatátvétel után módosítható. További információk a [Windows rendszerű virtuálisgép-lemezek méretezhetőségére és teljesítményére vonatkozó](/azure/virtual-machines/windows/disk-scalability-targets)IOPS-méretekről és a díjszabásról.
-   - **Erőforráscsoport**: kiválaszthat egy [erőforráscsoportot](/azure/azure-resource-manager/management/overview#resource-groups), amelyből a virtuális gép a feladatátvétel utáni részévé válik. Ez a beállítás a feladatátvétel előtt bármikor módosítható. Ha a feladatátvételt követően áttelepíti a virtuális gépet egy másik erőforráscsoporthoz, az adott virtuális gép védelmi beállításai is megszakadnak.
-   - **Rendelkezésre állási csoport**: kiválaszthatja a [rendelkezésre állási készletet](/azure/virtual-machines/windows/tutorial-availability-sets) , ha a virtuális gépnek egy feladatátvétel utáni résznek kell lennie. A rendelkezésre állási csoport kiválasztásakor tartsa szem előtt a következő információkat:
+   - **Cél virtuálisgép-méret vagy virtuálisgép-típus**: az alapértelmezett virtuálisgép-méret a lemezes darabszámot, a hálózati adapterek darabszámát, a CPU-mag darabszámát, a memóriát és az elérhető virtuálisgép-szerepkört tartalmazó paraméterek alapján lesz kiválasztva a cél Azure-régióban. Azure Site Recovery kiválasztja az első elérhető virtuálisgép-méretet, amely megfelel az összes feltételnek. A feladatátvétel előtt bármikor kiválaszthat egy másik virtuálisgép-méretet az igényei szerint. A virtuális gép lemezének mérete a forrás lemez méretétől is függ, és csak a feladatátvétel után módosítható. További információk a [Windows rendszerű virtuálisgép-lemezek méretezhetőségére és teljesítményére vonatkozó](../virtual-machines/windows/disk-scalability-targets.md)IOPS-méretekről és a díjszabásról.
+   - **Erőforráscsoport**: kiválaszthat egy [erőforráscsoportot](../azure-resource-manager/management/overview.md#resource-groups), amelyből a virtuális gép a feladatátvétel utáni részévé válik. Ez a beállítás a feladatátvétel előtt bármikor módosítható. Ha a feladatátvételt követően áttelepíti a virtuális gépet egy másik erőforráscsoporthoz, az adott virtuális gép védelmi beállításai is megszakadnak.
+   - **Rendelkezésre állási csoport**: kiválaszthatja a [rendelkezésre állási készletet](../virtual-machines/windows/tutorial-availability-sets.md) , ha a virtuális gépnek egy feladatátvétel utáni résznek kell lennie. A rendelkezésre állási csoport kiválasztásakor tartsa szem előtt a következő információkat:
      - Csak a megadott erőforráscsoporthoz tartozó rendelkezésre állási csoportok szerepelnek a felsorolásban.
      - A különböző virtuális hálózatokon lévő virtuális gépek nem lehetnek ugyanannak a rendelkezésre állási csoportnak a részei.
      - Csak azonos méretű virtuális gépek lehetnek egy rendelkezésre állási csoport részei.
@@ -141,7 +141,7 @@ A Microsoft frissítési garanciával rendelkező ügyfelei az Azure-ba migrált
 
 [További](https://azure.microsoft.com/pricing/hybrid-benefit/) információ a Azure Hybrid Benefitról.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután a virtuális gép elérte a védett állapotot, próbálja meg a [feladatátvételt](site-recovery-failover.md) , és győződjön meg arról, hogy az alkalmazás megjelenik az Azure-ban.
 

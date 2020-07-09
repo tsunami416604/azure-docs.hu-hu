@@ -3,11 +3,12 @@ title: A Azure Site Recovery újdonságai
 description: A Azure Site Recovery szolgáltatás új szolgáltatásainak és legújabb frissítéseinek összefoglalása.
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: e0015aa9de51e3cb43473a079d09698fcbeef9a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f774dbd3172199e82509301f520eac4e25deb15b
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84259218"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131084"
 ---
 # <a name="whats-new-in-site-recovery"></a>A Site Recovery újdonságai
 
@@ -21,6 +22,7 @@ Site Recovery-összetevők esetében az N-4 verziót támogatjuk, ahol N a legú
 
 **Frissítés** |  **Egyesített beállítás** | **Konfigurációs kiszolgáló petesejtjei** | **Mobilitási szolgáltatás ügynöke** | **Site Recovery szolgáltató** | **Recovery Services ügynök**
 --- | --- | --- | --- | --- | ---
+[47-es összesítés](https://support.microsoft.com/help/4570609/) | 9.34.5634.1 | 5.1.6100.0 | 9.34.5634.1 | 5.1.6100.0 | 2.0.9183.0
 [46-es összesítés](https://support.microsoft.com/help/4564347/) | 9.33.5598.1 | 5.1.5900.0 | 9.33.5598.1 | 5.1.5900.0 | 2.0.9175.0
 [45-es összesítés](https://support.microsoft.com/help/4550047/) | 9.32.5487.1 | 5.1.5400.0 | 9.32.5487.1 | 5.1.5400.0 | 2.0.9165.0
 [43-es összesítés](https://support.microsoft.com/help/4537047/) | 9.31.5449.1 | 5.1.5300.0 | 9.31.5449.1 | 5.1.5300.0 | 2.0.9165.0
@@ -31,6 +33,17 @@ Site Recovery-összetevők esetében az N-4 verziót támogatjuk, ahol N a legú
 
 > [!NOTE]
 > A 44-es kumulatív frissítés nem jelenik meg a táblázatban, mert nem tartalmazta a Site Recovery szolgáltatók és ügynökök frissítéseit.
+
+## <a name="updates-june-2020"></a>Frissítések (2020. június)
+
+### <a name="update-rollup-47"></a>47-es kumulatív frissítés
+
+A 47-es [kumulatív frissítés](https://support.microsoft.com/help/4570609/update-rollup-47-for-azure-site-recovery) a következő frissítéseket tartalmazza:
+
+**Frissítés** | **Részletek**
+--- | ---
+**Szolgáltatók és ügynökök** | A Site Recovery ügynökök és szolgáltatók frissítései a kumulatív módon részletezve.
+**Hibajavítások/javítások** | Számos javítás és javítás a kumulatív összesítésben.
 
 ## <a name="updates-june-2020"></a>Frissítések (2020. június)
 
@@ -345,8 +358,8 @@ Az ebben a hónapban hozzáadott funkciók összegzése a táblázatban láthat�
 **Szolgáltatás** | **Részletek**
 --- | ---
 **Hálózatleképezés** | Az Azure-beli virtuális gépek vész-helyreállítási folyamata esetén a replikáció engedélyezésekor bármilyen elérhető célszámítógépet is használhat.
-**Standard SSD** | Most már beállíthatja az Azure-beli virtuális gépek vész-helyreállítását [standard SSD lemezek](https://docs.microsoft.com/azure/virtual-machines/windows/disks-standard-ssd)használatával.
-**Tárolóhelyek – Közvetlen** | Az Azure VM-alkalmazásokon futó alkalmazások vész-helyreállítását a magas rendelkezésre állás érdekében [közvetlen tárolóhelyek](https://docs.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-overview) használatával állíthatja be.  A Közvetlen tárolóhelyek (S2D) és a Site Recovery együttes használata átfogó védelmet nyújt az Azure-beli virtuális gépek számítási feladataihoz. A S2D lehetővé teszi a vendég fürtök üzemeltetését az Azure-ban. Ez különösen akkor hasznos, ha egy virtuális gép kritikus alkalmazást (például SAP ASCS Layer, SQL Server vagy kibővített fájlkiszolgáló) üzemeltet.
+**Standard SSD** | Most már beállíthatja az Azure-beli virtuális gépek vész-helyreállítását [standard SSD lemezek](../virtual-machines/windows/disks-types.md#standard-ssd)használatával.
+**Tárolóhelyek – Közvetlen** | Az Azure VM-alkalmazásokon futó alkalmazások vész-helyreállítását a magas rendelkezésre állás érdekében [közvetlen tárolóhelyek](/windows-server/storage/storage-spaces/storage-spaces-direct-overview) használatával állíthatja be.  A Közvetlen tárolóhelyek (S2D) és a Site Recovery együttes használata átfogó védelmet nyújt az Azure-beli virtuális gépek számítási feladataihoz. A S2D lehetővé teszi a vendég fürtök üzemeltetését az Azure-ban. Ez különösen akkor hasznos, ha egy virtuális gép kritikus alkalmazást (például SAP ASCS Layer, SQL Server vagy kibővített fájlkiszolgáló) üzemeltet.
 
 
 ### <a name="vmwarephysical-server-disaster-recovery"></a>VMware/fizikai kiszolgáló – vész-helyreállítás
@@ -364,7 +377,7 @@ Az ebben a hónapban hozzáadott funkciók összegzése a táblázatban láthat�
 
 ### <a name="accelerated-networking-azure-vms"></a>Gyorsított hálózatkezelés (Azure-beli virtuális gépek)
 
-A gyorsított hálózatkezelés lehetővé teszi az egyszintű I/O-virtualizálás (SR-IOV) használatát egy virtuális gépre, és javítja a hálózat teljesítményét. Ha engedélyezi egy Azure-beli virtuális gép replikálását, Site Recovery észleli, hogy engedélyezve van-e a gyorsított hálózat. Ha igen, a feladatátvételt követően Site Recovery automatikusan a gyorsított hálózatkezelést konfigurálja a célként megadott replika Azure virtuális gépen, [Windows](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell#enable-accelerated-networking-on-existing-vms) és [Linux](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli#enable-accelerated-networking-on-existing-vms)rendszereken egyaránt.
+A gyorsított hálózatkezelés lehetővé teszi az egyszintű I/O-virtualizálás (SR-IOV) használatát egy virtuális gépre, és javítja a hálózat teljesítményét. Ha engedélyezi egy Azure-beli virtuális gép replikálását, Site Recovery észleli, hogy engedélyezve van-e a gyorsított hálózat. Ha igen, a feladatátvételt követően Site Recovery automatikusan a gyorsított hálózatkezelést konfigurálja a célként megadott replika Azure virtuális gépen, [Windows](../virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms) és [Linux](../virtual-network/create-vm-accelerated-networking-cli.md#enable-accelerated-networking-on-existing-vms)rendszereken egyaránt.
 
 [További információk](azure-vm-disaster-recovery-with-accelerated-networking.md).
 
@@ -426,7 +439,7 @@ Az ebben a hónapban hozzáadott funkciók összegzése a táblázatban láthat�
 **Linux-támogatás** | Támogatás lett hozzáadva a Oracle Linux 6,8, Oracle Linux 6,9 és Oracle Linux 7,0 a Red hat kompatibilis kernelhez, valamint a nem törhető Enterprise kernel (UEK) 5. kiadásához.
 **Linux rendszerű BRTFS fájlrendszer** | Azure-beli virtuális gépek esetén támogatott.
 **Azure-beli virtuális gépek a rendelkezésre állási zónákban** | Engedélyezheti a replikálást egy másik régióba a rendelkezésre állási zónákban üzembe helyezett Azure-beli virtuális gépek esetében. Mostantól engedélyezheti az Azure-beli virtuális gépek replikálását, és beállíthatja a feladatátvétel célját egyetlen virtuálisgép-példányra, egy rendelkezésre állási csoportba tartozó virtuális gépre vagy egy rendelkezésre állási zónában lévő virtuális gépre. A beállítás nem érinti a replikálást. [Olvassa el](https://azure.microsoft.com/blog/disaster-recovery-of-zone-pinned-azure-virtual-machines-to-another-region/) a bejelentést.
-**Tűzfallal kompatibilis tároló (portál/PowerShell)** | Támogatott a [tűzfalat használó Storage-fiókok](https://docs.microsoft.com/azure/storage/common/storage-network-security)támogatása.<br/><br/> Az Azure-beli virtuális gépeket nem felügyelt lemezekkel replikálhatja a tűzfalat támogató Storage-fiókokba egy másik Azure-régióba a vész-helyreállítás érdekében.<br/><br/> A nem felügyelt lemezekhez a tűzfalat támogató Storage-fiókokat célként tároló fiókokként használhatja.<br/><br/> A Portálon és a PowerShell használatával támogatott.
+**Tűzfallal kompatibilis tároló (portál/PowerShell)** | Támogatott a [tűzfalat használó Storage-fiókok](../storage/common/storage-network-security.md)támogatása.<br/><br/> Az Azure-beli virtuális gépeket nem felügyelt lemezekkel replikálhatja a tűzfalat támogató Storage-fiókokba egy másik Azure-régióba a vész-helyreállítás érdekében.<br/><br/> A nem felügyelt lemezekhez a tűzfalat támogató Storage-fiókokat célként tároló fiókokként használhatja.<br/><br/> A Portálon és a PowerShell használatával támogatott.
 
 ## <a name="updates-december-2018"></a>Frissítések (2018. december)
 
@@ -467,7 +480,7 @@ Az ebben a hónapban hozzáadott funkciók összegzése a táblázatban láthat�
 **Régiós támogatás** | Site Recovery támogatás hozzáadva az Australia Central 1 és az Australia Central 2 rendszerhez.
 **A lemez titkosításának támogatása** | Az Azure AD-alkalmazással titkosított Azure-beli virtuális gépek vész-helyreállításának támogatása Azure Disk Encryption (ADE) titkosítással. [További információk](azure-to-azure-how-to-enable-replication-ade-vms.md).
 **Lemez kizárása** | A nem inicializált lemezek mostantól automatikusan ki vannak zárva az Azure-beli virtuális gépek replikálásakor.
-**Tűzfallal kompatibilis tároló (PowerShell)** | Támogatott a [tűzfalat használó Storage-fiókok](https://docs.microsoft.com/azure/storage/common/storage-network-security)támogatása.<br/><br/> Az Azure-beli virtuális gépeket nem felügyelt lemezekkel replikálhatja a tűzfalat támogató Storage-fiókokba egy másik Azure-régióba a vész-helyreállítás érdekében.<br/><br/> A nem felügyelt lemezekhez a tűzfalat támogató Storage-fiókokat célként tároló fiókokként használhatja.<br/><br/> Csak a PowerShell használatával támogatott.
+**Tűzfallal kompatibilis tároló (PowerShell)** | Támogatott a [tűzfalat használó Storage-fiókok](../storage/common/storage-network-security.md)támogatása.<br/><br/> Az Azure-beli virtuális gépeket nem felügyelt lemezekkel replikálhatja a tűzfalat támogató Storage-fiókokba egy másik Azure-régióba a vész-helyreállítás érdekében.<br/><br/> A nem felügyelt lemezekhez a tűzfalat támogató Storage-fiókokat célként tároló fiókokként használhatja.<br/><br/> Csak a PowerShell használatával támogatott.
 
 
 ### <a name="update-rollup-29"></a>29. kumulatív frissítés
@@ -505,7 +518,7 @@ Az ebben a hónapban hozzáadott funkciók összegzése a táblázatban láthat�
 
 **Szolgáltatás** | **Részletek**
 --- | ---
-**Linux-támogatás** | Támogatás hozzáadva a RedHat Enterprise Linux 6,10, CentOS 6,10.<br/><br/> A Linux-alapú virtuális gépek, amelyek a GUID partíciós tábla (GPT) partíciós stílust használják a régi BIOS-kompatibilitási módban, mostantól támogatottak. További információért tekintse át az Azure-beli virtuális gépekkel kapcsolatos [gyakori kérdéseket](https://docs.microsoft.com/azure/virtual-machines/linux/faq-for-disks) .
+**Linux-támogatás** | Támogatás hozzáadva a RedHat Enterprise Linux 6,10, CentOS 6,10.<br/><br/> A Linux-alapú virtuális gépek, amelyek a GUID partíciós tábla (GPT) partíciós stílust használják a régi BIOS-kompatibilitási módban, mostantól támogatottak. További információért tekintse át az Azure-beli virtuális gépekkel kapcsolatos [gyakori kérdéseket](../virtual-machines/linux/faq-for-disks.md) .
 **Vész-helyreállítási virtuális gépek a Migrálás után** | Az Azure-ba migrált helyszíni VMware virtuális gépek másodlagos régióba való vész-helyreállításának támogatása anélkül, hogy a replikáció engedélyezése előtt el kellene távolítani a mobilitási szolgáltatást a virtuális gépen.
 **Windows Server 2008** | A Windows Server 2008 R2/2008 64-bit és 32-bit rendszert futtató gépek áttelepítésének támogatása.<br/><br/> Csak áttelepítés (replikálás és feladatátvétel). A feladat-visszavétel nem támogatott.
 
@@ -538,6 +551,6 @@ Az ebben a hónapban hozzáadott funkciók összegzése a táblázatban láthat�
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Naprakészen tarthatja frissítéseit az [Azure Updates](https://azure.microsoft.com/updates/?product=site-recovery) oldalon.

@@ -1,18 +1,18 @@
 ---
 title: A Dynamics 365 for Operations ajánlat létrehozása a kereskedelmi piactéren
 description: Új Dynamics 365 for Operations ajánlat létrehozása az Azure Marketplace-en, a AppSource-on vagy a Cloud Solution Provider (CSP) programon keresztül a Microsoft partner Center kereskedelmi piactér portálján.
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: navits09
+ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: 0a2696da70a785fc1da6bfd2c7b0cabae1a89197
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 621d657f527e5307ed3a0b583e4c9171005d4f8c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85980692"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121842"
 ---
 # <a name="create-a-dynamics-365-for-operations-offer"></a>Dynamics 365 for Operations-ajánlat létrehozása
 
@@ -134,7 +134,7 @@ Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk a Mi
 7. Adatvédelmi irányelvek
 8. Ajánlat neve
 9. Képernyőképek/videók
-10. Description
+10. Leírás
 
 ### <a name="name"></a>Name
 
@@ -144,7 +144,7 @@ Az itt megadott név jelenik meg az ügyfelek számára az ajánlati lista cím�
 
 Adja meg az ajánlat rövid leírását, amely legfeljebb 100 karakter hosszú lehet. Ez a leírás a piactér keresési eredményeiben használható.
 
-### <a name="description"></a>Description
+### <a name="description"></a>Leírás
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 

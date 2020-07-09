@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/17/2016
 ms.author: allensu
-ms.openlocfilehash: 29871f53e0f5accd0a6ec9487c43df902b67c980
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: af1c5f988939b1396eb2919f3e7bef05e281665a
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711068"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130758"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-cli"></a>Több IP-cím társítása virtuális gépekhez az Azure CLI használatával
 
@@ -226,11 +227,13 @@ A következő lépések végrehajtásával további magán-és nyilvános IP-cí
 
         Visszaadott kimenet:
     
-            Name        PublicIpAddressId
-            
-            ipconfig1   /subscriptions/[Id]/resourceGroups/myResourceGroup/providers/Microsoft.Network/publicIPAddresses/myPublicIP1
-            IPConfig-2  /subscriptions/[Id]/resourceGroups/myResourceGroup/providers/Microsoft.Network/publicIPAddresses/myPublicIP2
-            IPConfig-3
+        ```output
+        Name        PublicIpAddressId
+        
+        ipconfig1   /subscriptions/[Id]/resourceGroups/myResourceGroup/providers/Microsoft.Network/publicIPAddresses/myPublicIP1
+        IPConfig-2  /subscriptions/[Id]/resourceGroups/myResourceGroup/providers/Microsoft.Network/publicIPAddresses/myPublicIP2
+        IPConfig-3
+        ```
 
         Mivel az *IpConfig-3* **PublicIpAddressId** oszlopa üres a kimenetben, nincs társítva nyilvános IP-cím erőforrás. Hozzáadhat egy meglévő nyilvános IP-cím-erőforrást az IpConfig-3 számára, vagy megadhatja a következő parancsot egy létrehozásához:
 
@@ -263,14 +266,15 @@ A következő lépések végrehajtásával további magán-és nyilvános IP-cí
     ```
 
     Visszaadott kimenet: <br>
-    
-        Name        PrivateIpAddress    PrivateIpAllocationMethod   PublicIpAddressId
-        
-        ipconfig1   10.0.0.4            Static                      /subscriptions/[Id]/resourceGroups/myResourceGroup/providers/Microsoft.Network/publicIPAddresses/myPublicIP1
-        IPConfig-2  10.0.0.5            Static                      /subscriptions/[Id]/resourceGroups/myResourceGroup/providers/Microsoft.Network/publicIPAddresses/myPublicIP2
-        IPConfig-3  10.0.0.6            Static                      /subscriptions/[Id]/resourceGroups/myResourceGroup/providers/Microsoft.Network/publicIPAddresses/myPublicIP3
-    
 
+    ```output
+    Name        PrivateIpAddress    PrivateIpAllocationMethod   PublicIpAddressId
+    
+    ipconfig1   10.0.0.4            Static                      /subscriptions/[Id]/resourceGroups/myResourceGroup/providers/Microsoft.Network/publicIPAddresses/myPublicIP1
+    IPConfig-2  10.0.0.5            Static                      /subscriptions/[Id]/resourceGroups/myResourceGroup/providers/Microsoft.Network/publicIPAddresses/myPublicIP2
+    IPConfig-3  10.0.0.6            Static                      /subscriptions/[Id]/resourceGroups/myResourceGroup/providers/Microsoft.Network/publicIPAddresses/myPublicIP3
+    ```
+    
 4. Adja hozzá a hálózati adapterhez hozzáadott magánhálózati IP-címeket a virtuális gép operációs rendszeréhez az [IP-címek hozzáadása a virtuális gép operációs rendszeréhez](#os-config) című szakasz utasításait követve. Ne adja hozzá a nyilvános IP-címeket az operációs rendszerhez.
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-os-config.md](../../includes/virtual-network-multiple-ip-addresses-os-config.md)]

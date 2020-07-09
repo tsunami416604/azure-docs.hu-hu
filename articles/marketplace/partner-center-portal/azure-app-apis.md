@@ -1,18 +1,16 @@
 ---
 title: A partner Center beküldési API-ját az Azure-alkalmazások előkészítéséhez a Microsoft kereskedelmi piactéren
 description: Ismerje meg, hogy milyen előfeltételeket kell használni a partner Center beküldési API Azure-alkalmazásokhoz való használatához a kereskedelmi piactéren a Microsoft partner Centerben.
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/10/2019
-ms.openlocfilehash: 3d86329313c1b6af1e4723dc64c982f9c81ea86b
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: c8343f0954f02423fc48347911f10cf5b9ddee96
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964974"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121996"
 ---
 # <a name="partner-center-submission-api-to-onboard-azure-apps-in-partner-center"></a>A partner Center beküldési API-ját az Azure Apps szolgáltatásba a partner Centerben
 
@@ -71,7 +69,7 @@ Az Azure AD hozzáférési jogkivonattal metódusokat hívhat a partner Center b
 
 https://apidocs.microsoft.com/services/partneringestion/
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg, hogyan hozhat létre egy Azure-beli [virtuális gép technikai eszközét](create-azure-container-technical-assets.md)
 * Ismerje meg, hogyan hozhat létre [Azure Container-ajánlatot](create-azure-container-offer.md)

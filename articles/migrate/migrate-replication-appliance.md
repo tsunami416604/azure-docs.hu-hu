@@ -3,12 +3,12 @@ title: Azure Migrate replikációs berendezés
 description: Ismerje meg az ügynök-alapú VMWare-áttelepítés Azure Migrate replikációs berendezését.
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: 85641f514fc4367f02901eb1dd394cfa204c3ec4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8149613effc4519638cc9b80f7894874ef3eafe3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81535213"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86122098"
 ---
 # <a name="replication-appliance"></a>Replikációs berendezés
 
@@ -58,8 +58,8 @@ TLS | A TLS 1,2-et engedélyezni kell.
 MySQL | A MySQL-t telepíteni kell a készülékre.<br/> Telepíteni kell a MySQL-t. Manuálisan is telepítheti, vagy Site Recovery telepítheti a készülék telepítése során.
 Egyéb alkalmazások | Ne futtasson más alkalmazásokat a replikációs berendezésen.
 Windows Server-szerepkörök | Ne engedélyezze ezeket a szerepköröket: <br> - Active Directory tartományi szolgáltatások <br>– Internet Information Services <br> - Hyper-V
-Csoportházirendek | Ne engedélyezze ezeket a csoportházirendeket: <br> – A parancssor elérésének tiltása. <br> – A beállításjegyzék szerkesztési eszközeihez való hozzáférés megakadályozása. <br> – A fájlmellékletek megbízhatósági logikája. <br> – A parancsfájlok végrehajtásának bekapcsolása. <br> [További információ](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
-IIS | – Nincs előre meglévő alapértelmezett webhely <br> – Nincs már meglévő webhely/alkalmazás a 443-es porton <br>– [Névtelen hitelesítés](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) engedélyezése <br> – [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) -beállítás engedélyezése
+Csoportházirendek | Ne engedélyezze ezeket a csoportházirendeket: <br> – A parancssor elérésének tiltása. <br> – A beállításjegyzék szerkesztési eszközeihez való hozzáférés megakadályozása. <br> – A fájlmellékletek megbízhatósági logikája. <br> – A parancsfájlok végrehajtásának bekapcsolása. <br> [További információ](/previous-versions/windows/it-pro/windows-7/gg176671(v=ws.10))
+IIS | – Nincs előre meglévő alapértelmezett webhely <br> – Nincs már meglévő webhely/alkalmazás a 443-es porton <br>– [Névtelen hitelesítés](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731244(v=ws.10)) engedélyezése <br> – [FastCGI](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc753077(v=ws.10)) -beállítás engedélyezése
 **Hálózati beállítások** |
 IP-cím típusa | Statikus
 Portok | 443 (vezérlőcsatorna-vezénylés)<br>9443 (Adatátvitel)
@@ -139,7 +139,7 @@ A készüléket manuálisan frissítheti az Azure Migrate hub-ból. Javasoljuk, 
 2. A **konfigurációs kiszolgálók**területen megjelenik egy hivatkozás az **ügynök verziójában** , ha a replikációs berendezés új verziója érhető el. 
 3. Töltse le a telepítőt a replikációs berendezést végző gépre, és telepítse a frissítést. A telepítő észleli a készüléken futó aktuális verziót.
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Ismerje meg, hogyan](tutorial-migrate-vmware-agent.md#set-up-the-replication-appliance) állíthatja be a replikációs berendezést az ügynök-alapú VMWare virtuális gépek áttelepítéséhez.
 - [Ismerje meg, hogyan](tutorial-migrate-physical-virtual-machines.md#set-up-the-replication-appliance) állíthatja be a replikációs berendezést a fizikai kiszolgálók számára.

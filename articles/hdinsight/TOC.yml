@@ -428,8 +428,6 @@
               href: ./spark/apache-spark-troubleshoot-job-fails-noclassdeffounderror.md
             - name: Meghiúsult Apache Spark-feladat – InvalidClassException
               href: ./spark/apache-spark-troubleshoot-job-fails-invalidclassexception.md
-            - name: Lassú Apache Spark-feladatok – listStatus
-              href: ./spark/apache-spark-troubleshoot-job-slowness-liststatus.md
             - name: Lassú Apache Spark-feladatok – tároló
               href: ./spark/apache-spark-troubleshoot-job-slowness-container.md
             - name: IllegalArgumentException kivétel
@@ -723,8 +721,6 @@
               href: ./hbase/hbase-troubleshoot-pegged-cpu-region-server.md
             - name: Időtúllépések „hbase hbck” paranccsal
               href: ./hbase/hbase-troubleshoot-timeouts-hbase-hbck.md
-            - name: Az Apache HBase hibaelhárítása
-              href: ./hbase/apache-troubleshoot-hbase.md
             - name: Az Apache HBase lekérdezésére szolgáló REST API
               href: ./hbase/troubleshoot-rest-api.md
 - name: Interaktív lekérdezés
