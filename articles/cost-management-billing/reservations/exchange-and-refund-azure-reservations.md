@@ -4,14 +4,14 @@ description: Ismerje meg, hogyan cserélheti be vagy térítheti vissza az Azure
 author: yashesvi
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 06/12/2020
+ms.date: 07/01/2020
 ms.author: banders
-ms.openlocfilehash: 3c2f92db1f65a4e9e57ad443a9f000ab3f6567d5
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.openlocfilehash: 4a25bb13bfa5b2e4f13ddf437bcd9577f9602aed
+ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85101033"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85807689"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Az Azure Reservations önkiszolgáló csere- és visszatérítési szolgáltatásai
 
@@ -20,6 +20,9 @@ Az Azure Reservations biztosítja a rugalmasságot a változó igények kielég�
 Az önkiszolgáló csere- és lemondási lehetőség nem érhető el az Egyesült Államok kormányának nagyvállalati szerződésével rendelkező ügyfelei számára. Az Egyesült Államok kormányának (US Government) egyéb előfizetési típusai támogatottak, például a használatalapú fizetés és a Felhőszolgáltató (CSP).
 
 Meglévő foglalások cseréjéhez vagy visszatérítéséhez tulajdonosi hozzáféréssel kell rendelkeznie a foglalási rendeléshez. Elvégezhető [a foglalást kezelő felhasználók hozzáadása vagy módosítása](https://docs.microsoft.com/azure/cost-management-billing/reservations/manage-reserved-vm-instance#add-or-change-users-who-can-manage-a-reservation).
+
+> [!NOTE]
+> A Microsoft jelenleg nem számol fel korai felmondási díjat a foglalásokhoz kapcsolódó visszatérítések után. Előfordulhat, hogy a visszatérítések a jövőben díjkötelesek lesznek. Jelenleg még nem határoztuk meg a díj bevezetésének dátumát.
 
 ## <a name="how-to-exchange-or-refund-an-existing-reservation"></a>Meglévő foglalások cseréje vagy visszatérítése
 
@@ -72,7 +75,7 @@ Az Azure-ban a következő szabályzatok érvényesek a lemondásokra, cserékre
 
 **Visszatérítési szabályzatok**
 
-- A foglalás lemondásáért 12%-os korai felmondási díj számítható fel.
+- Jelenleg nem számítunk fel korai felmondási díjat, de lehetséges, hogy a jövőbeli lemondásokért 12%-os korai felmondási díj lesz felszámítva.
 - A lemondott kötelezettségvállalás teljes összege nem haladhatja meg az 50 000 USD-t az elmúlt 12 hónapra vonatkozóan. Példa: egy hároméves, havi 100 USD összegű, a 18. hónapban visszatérítendő foglalás esetén a lemondott kötelezettségvállalás értéke 1800 USD. A visszatérítés után az új visszatérítési korlát 48 200 USD lesz. Ezen visszatérítéstől számított 365 nap múlva a 48 200 USD korlátot megnöveljük 1800 USD-vel, így az új keret 50 000 USD lesz. Minden más foglaláslemondás ugyanezt a keretet csökkenti, és ugyanez a feltöltési logika érvényesül.
 - A visszatérítést a rendszer a vételár vagy a foglalás jelenlegi ára közül az alacsonyabb összeg alapján számítja ki.
 - A visszatérítéseket csak a foglalásrendelések tulajdonosai dolgozhatják fel. További tudnivalók: [A foglalást kezelő felhasználók hozzáadása vagy módosítása](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).

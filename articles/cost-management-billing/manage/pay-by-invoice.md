@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.author: banders
-ms.openlocfilehash: 8552b6732736d1d10711479639fa45114f8b039b
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 5fb8a9cd5e00bf3a6ebeddaf44a09ac48b94fe7c
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85298004"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849086"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>Azure-előfizetés fizetése számla alapján
 
@@ -42,28 +42,28 @@ Ha számlás fizetésre vált, az azt jelenti, hogy számláját a számlázási
 
 5. Adja meg a következő információkat a **Részletek** mezőben, majd válassza a **Tovább** lehetőséget.
 
-         New or existing customer:
-         If existing, current payment method:
-         Order ID (requesting for invoice option):
-         Account Admins Live ID (or Org ID) (should be company domain):
-         Commerce Account ID:
-         Company Name (as registered under VAT or Government Website):
-         Company Address (as registered under VAT or Government Website):
-         Company Website:
-         Country:
-         TAX ID/ VAT ID:
-         Company Established on (Year):
-         Any prior business with Microsoft:
-         Contact Name:
-         Contact Phone:
-         Contact Email:
-         Justification on why you prefer Invoice option over credit card:
+     Új vagy meglévő ügyfelek:<br>
+     Meglévő ügyfél esetén a jelenlegi fizetési mód:<br>
+     Rendelésazonosító (a számlázási lehetőség igénylése):<br>
+     A fiókadminisztrátor Live ID-azonosítója (vagy szervezeti azonosítója) (vállalati tartományhoz kell tartoznia):<br>
+     Kereskedelmi fiók azonosítója:<br>
+     Vállalat neve (ahogy az áfanyilvántartásban vagy a kormányzati webhelyen szerepel):<br>
+     Vállalat címe (ahogy az áfanyilvántartásban vagy a kormányzati webhelyen szerepel):<br>
+     Vállalat webhelye:<br>
+     Ország:<br>
+     ADÓAZONOSÍTÓ/ ÁFAAZONOSÍTÓ:<br>
+     Vállalat alapításának éve:<br>
+     Korábbi üzleti kapcsolatok a Microsofttal:<br>
+     Kapcsolattartó neve:<br>
+     Kapcsolattartó telefonszáma:<br>
+     Kapcsolattartó e-mail-címe:<br>
+     Indokolja meg, hogy miért a számlázási lehetőséget választja a hitelkártyás fizetés helyett:<br>
 
-         For cores increase, provide the following additional information:
+     A magok számának növelése esetében adja meg az alábbi adatokat is:<br>
 
-         (Old quota) Existing Cores:
-         (New quota) Requested cores:
-         Specific region & series of Subscription:
+     (Régi kvóta) Meglévő magok:<br>
+     (Új kvóta) Kért magok:<br>
+     Adott régió és előfizetések sorozata:<br>
 
     - A **Vállalat neve** és a **Vállalat címe** értékének meg kell egyeznie az Azure-fiókhoz megadott adatokkal. További információkat az adatok megtekintéséről és frissítéséről [az Azure-fiók profiladatainak módosításával](change-azure-account-profile.md) kapcsolatos részben találhat.
     - A hitelkeret jóváhagyása előtt meg kell adnia számlázási kapcsolattartási adatait az Azure Portalon. A kapcsolattartási adatoknak a bérszámfejtési vagy a pénzügyi részleg elérhetőségeit kell tartalmazniuk. A számlázási kapcsolattartási adatok frissítéséhez lépjen az [Azure Fiókközpontba](https://account.azure.com/Profile).

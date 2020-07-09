@@ -41,7 +41,7 @@
       href: ./concepts/managed-applications.md
 - name: Útmutatók
   items:
-    - name: Ügyfél előkészítése az Azure által delegált erőforrás-kezeléshez
+    - name: Ügyfél előkészítése az Azure Lighthouse-hoz
       displayName: resource management
       href: ./how-to/onboard-customer.md
     - name: Felügyelt szolgáltatási ajánlatok közzététele az Azure Marketplace-en

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: a3e66e7f6857361136fb4b7839953790f66b4db5
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 82cdd8519f1e3fce80aaf051d6bc5fc40a9b8be9
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219114"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85959641"
 ---
 ::: zone target="docs"
 
@@ -62,7 +62,7 @@ A blokkblob- és lapblobmegosztások alatti első szintű entitások tárolók, 
 
 Az alábbi táblázat a Data Boxon található megosztások UNC elérési útját és az adatok feltöltéséhez használt Azure Storage elérési útjának URL-címét mutatja. Az Azure Storage elérési útjának végső URL-címe a megosztás UNC elérési útjából származik.
  
-|                   |                                                            |
+|Azure Storage-tárolótípusok  | Data Box-megosztások            |
 |-------------------|--------------------------------------------------------------------------------|
 | Azure-blokkblobok | <li>A megosztások UNC elérési útja: `\\<DeviceIPAddress>\<StorageAccountName_BlockBlob>\<ContainerName>\files\a.txt`</li><li>Az Azure Storage URL-címe: `https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li> |  
 | Azure-lapblobok  | <li>A megosztások UNC elérési útja: `\\<DeviceIPAddres>\<StorageAccountName_PageBlob>\<ContainerName>\files\a.txt`</li><li>Az Azure Storage URL-címe: `https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li>   |  
@@ -70,7 +70,7 @@ Az alábbi táblázat a Data Boxon található megosztások UNC elérési útjá
 
 Ha Windows Server rendszerű gazdagépet használ, kövesse az alábbi lépéseket a Data Boxhoz történő csatlakozáshoz.
 
-1. Az első lépés a hitelesítés elvégzése, majd a munkamenet elindítása. Lépjen a **Connect and copy** (Kapcsolódás és másolás) elemre. Kattintson a **Get credentials** (Hitelesítő adatok beszerzése) lehetőségre a tárfiókhoz társított megosztások hitelesítő adataihoz való hozzáféréshez. 
+1. Az első lépés a hitelesítés elvégzése, majd a munkamenet elindítása. Lépjen a **Connect and copy** (Kapcsolódás és másolás) elemre. Kattintson az **SMB** elemre a tárfiókhoz társított megosztások hozzáférési hitelesítő adatainak lekéréséhez. 
 
     ![Megosztások hitelesítő adatainak beszerzése 1](media/data-box-deploy-copy-data/get-share-credentials1.png)
 
@@ -78,20 +78,20 @@ Ha Windows Server rendszerű gazdagépet használ, kövesse az alábbi lépések
     
     ![Megosztások hitelesítő adatainak beszerzése 1](media/data-box-deploy-copy-data/get-share-credentials2.png)
 
-3. A tárfiókjához (a következő példában *devicemanagertest1*) társított megosztások gazdagépről történő eléréséhez nyisson meg egy parancsablakot. A parancssorba írja be a következőt:
+3. A tárfiókjához (a következő példában *utsac1*) társított megosztások gazdagépről történő eléréséhez nyisson meg egy parancsablakot. A parancssorba írja be a következőt:
 
     `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
 
     Az adatok formátumától függően a megosztások útvonalai a következők:
-    - Azure-blokkblob – `\\10.126.76.172\devicemanagertest1_BlockBlob`
-    - Azure-lapblob – `\\10.126.76.172\devicemanagertest1_PageBlob`
-    - Azure Files – `\\10.126.76.172\devicemanagertest1_AzFile`
+    - Azure-blokkblob – `\\10.126.76.138\utSAC1_202006051000_BlockBlob`
+    - Azure-lapblob – `\\10.126.76.138\utSAC1_202006051000_PageBlob`
+    - Azure Files – `\\10.126.76.138\utSAC1_202006051000_AzFile`
 
 4. Ha a rendszer kéri, adja meg a megosztás jelszavát. A következő példa bemutatja, hogyan kell csatlakozni egy megosztáshoz a fenti parancs használatával.
 
     ```
-    C:\Users\Databoxuser>net use \\10.126.76.172\devicemanagertest1_BlockBlob /u:devicemanagertest1
-    Enter the password for 'devicemanagertest1' to connect to '10.126.76.172':
+    C:\Users\Databoxuser>net use \\10.126.76.138\utSAC1_202006051000_BlockBlob /u:testuser1
+    Enter the password for 'testuser1' to connect to '10.126.76.138':
     The command completed successfully.
     ```
 
@@ -107,7 +107,7 @@ Ha Windows Server rendszerű gazdagépet használ, kövesse az alábbi lépések
     
 Linux-ügyfél használata esetén csatlakoztassa az SMB-megosztást az alábbi parancs használatával. Az alábbi vers paraméter az SMB Linux-gazdagép által támogatott verziója. Az alábbi parancsban adja meg a megfelelő verziót. A Data Box által támogatott SMB-verziókkal kapcsolatban tekintse meg a [Linux-ügyfelek esetében támogatott fájlrendszereket](https://docs.microsoft.com/azure/databox/data-box-system-requirements#supported-file-systems-for-linux-clients) ismertető cikket. 
 
-    `sudo mount -t nfs -o vers=2.1 10.126.76.172:/devicemanagertest1_BlockBlob /home/databoxubuntuhost/databox`
+    `sudo mount -t nfs -o vers=2.1 10.126.76.138:/utSAC1_202006051000_BlockBlob /home/databoxubuntuhost/databox`
 
 ## <a name="copy-data-to-data-box"></a>Adatok másolása a Data Boxra
 
@@ -215,11 +215,23 @@ A teljesítmény optimalizálása érdekében használja a következő Robocopy-
 
 A Robocopy-paranccsal kapcsolatos további információért lásd [a Robocopyt és néhány példát](https://social.technet.microsoft.com/wiki/contents/articles/1073.robocopy-and-a-few-examples.aspx) bemutató témakört.
 
-Nyissa meg a célmappát a másolt fájlok megtekintéséhez és ellenőrzéséhez. Ha hibába ütközik a másolási folyamat során, töltse le a hibafájlokat a hibaelhárításhoz. További információkért lásd: [Az adatok Data Boxra másolása során készült hibanaplók megtekintése](data-box-logs.md#view-error-log-during-data-copy). Az adatok másolása során felmerülő hibák részletes listájáért tekintse meg a [Data Box-problémák elhárításával](data-box-troubleshoot.md) kapcsolatos cikket.
+Ha hiba lép fel a másolási folyamat során, megjelenik erről egy értesítés.
+
+![Csatlakozás és másolás oldal hibáinak letöltése és megtekintése](media/data-box-deploy-copy-data/view-errors-1.png)
+
+Válassza a **Hibalista letöltése** lehetőséget.
+
+![Csatlakozás és másolás oldal hibáinak letöltése és megtekintése](media/data-box-deploy-copy-data/view-errors-2.png)
+
+Nyissa meg a listát a hiba részleteinek megtekintéséhez, majd kattintson a megoldás URL-címére az ajánlott megoldás megtekintéséhez.
+
+![Csatlakozás és másolás oldal hibáinak letöltése és megtekintése](media/data-box-deploy-copy-data/view-errors-3.png)
+
+További információkért lásd: [Az adatok Data Boxra másolása során készült hibanaplók megtekintése](data-box-logs.md#view-error-log-during-data-copy). Az adatok másolása során felmerülő hibák részletes listájáért tekintse meg a [Data Box-problémák elhárításával](data-box-troubleshoot.md) kapcsolatos cikket.
 
 Az adatok integritásának biztosítása érdekében az ellenőrzőösszeg kiszámítására beágyazva, az adatok másolása közben kerül sor. A másolás befejezése után ellenőrizze, hogy mekkora a felhasznált és a szabad tárhely az eszközén.
 
-   ![A szabad és a felhasznált tárhely ellenőrzése az irányítópulton](media/data-box-deploy-copy-data/verify-used-space-dashboard.png)
+![A szabad és a felhasznált tárhely ellenőrzése az irányítópulton](media/data-box-deploy-copy-data/verify-used-space-dashboard.png)
 
 ::: zone-end
 

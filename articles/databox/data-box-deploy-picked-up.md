@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/20/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 03fe40cea5891e87f42f0d6a50eedee80a68f25e
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: efcc5e8f629c8b6ccc903478473b54989c0e9fd6
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83200523"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85959475"
 ---
 ::: zone target="docs"
 
@@ -46,7 +46,7 @@ Ebben az oktatóanyagban az alábbi témaköröket ismerheti meg:
 Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
 - Elvégezte az [Oktatóanyag: Adatok másolása az Azure Data Boxra, majd ellenőrzése](data-box-deploy-copy-data.md) lépéseit. 
-- A másolási feladatok befejeződtek. A szállítás előkészítése nem futtatható, ha másolási feladatok vannak folyamatban.
+- A másolási feladatok befejeződtek, és nem látható hiba a **Csatlakozás és másolás** oldalon. A szállítás előkészítése nem futtatható, ha másolási feladatok vannak folyamatban, vagy hibák láthatók a **Csatlakozás és másolás** oldalon.
 
 ## <a name="prepare-to-ship"></a>A szállítás előkészítése
 

@@ -3,23 +3,25 @@ title: Ismerkedés a partnerek számára készült Azure Cost Management szolgá
 description: Ez a cikk bemutatja, hogyan használják a partnerek az Azure Cost Management funkcióit, és hogyan teszik lehetővé a Cost Managementhez való hozzáférést az ügyfeleik számára.
 author: bandersmsft
 ms.author: banders
-ms.date: 06/08/2020
+ms.date: 07/01/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 08037cbd3723604720a273722bd5dbee3fb79b8e
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 0b0b5eb8ec41eccf99c23b671cef42a9c1bc8859
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84554560"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849863"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Ismerkedés a partnerek számára készült Azure Cost Management szolgáltatással
 
-Az Azure Cost Management natív módon érhető el azon közvetlen partnerek számára, akik előkészítették ügyfeleiket egy Microsoft Ügyfélszerződésre, illetve [vásároltak egy Azure-csomagot](/partner-center/purchase-azure-plan). Ez a cikk ismerteti, hogyan használják a partnerek az [Azure Cost Management](../index.yml) funkcióit az Azure-csomagba tartozó előfizetések költségeinek megtekintéséhez. Azt is bemutatja, miként engedélyezik a partnerek a Cost Managementhez való hozzáférést az ügyfeleik számára.
+Az Azure Cost Management natív módon érhető el azon közvetlen partnerek számára, akik előkészítették ügyfeleiket egy Microsoft Ügyfélszerződésre, illetve [vásároltak egy Azure-csomagot](/partner-center/purchase-azure-plan). Ez a cikk ismerteti, hogyan használják a partnerek az [Azure Cost Management](../index.yml) funkcióit az Azure-csomagba tartozó előfizetések költségeinek megtekintéséhez. Azt is bemutatja, miként engedélyezik a partnerek a Cost Managementhez való, kiskereskedelmi árú hozzáférést az ügyfeleik számára.
 
-Közvetlen partnerek és közvetett szolgáltatók esetén a globális rendszergazda és a közvetett szolgáltató rendszergazdai ügynökei hozzáférhetnek a Cost Managementhez a partnerbérlőben. A viszonteladók és az ügyfelek az ügyfélbérlőben érhetik el a Cost Managementet, illetve tekinthetik meg az előfizetések költségeit, amelyek kiszámítása és megjelenítése kiskereskedelmi ár mellett történik. Az előfizetéshez azonban RBAC-hozzáféréssel kell rendelkezni az ügyfélbérlőben a költségek megtekintéséhez. A szolgáltatónak engedélyeznie kell a költségek láthatóságára vonatkozó szabályzatot az ügyfélbérlő számára.
+Közvetlen partnerek és közvetett szolgáltatók esetén a globális rendszergazda és a rendszergazdai ügynökök hozzáférhetnek a Cost Managementhez a partnerbérlőben, és a számlázott áron kezelhetik a költségeket.
+
+A viszonteladók és az ügyfelek az ügyfélbérlőben érhetik el a Cost Managementet, illetve tekinthetik meg az előfizetések költségeit, amelyek kiszámítása és megjelenítése kiskereskedelmi ár mellett történik. Az előfizetéshez azonban RBAC-hozzáféréssel kell rendelkezni az ügyfélbérlőben a költségek megtekintéséhez. A szolgáltatónak engedélyeznie kell a költségek láthatóságára vonatkozó szabályzatot az ügyfélbérlő számára.
 
 Az ügyfelek a CSP-partnerük által engedélyezett Cost Management-funkciókat használhatják.
 
@@ -33,10 +35,12 @@ A CSP-partnerek a következő célokra használják a Cost Managementet:
 - Blobtárolóba exportálhatják költség- és használati adataikat egy használatalapú fizetéses előfizetéssel.
 
 Itt látható egy példa, amely az összes ügyfélre vonatkozóan mutatja be a költségeket.
-![Az összes ügyfél költségeit bemutató példa](./media/get-started-partners/customer-costs1.png)
+
+[![Az összes ügyfél költségeit bemutató példa](./media/get-started-partners/customer-costs1.png)](./media/get-started-partners/customer-costs1.png#lightbox)
 
 Itt látható egy példa, amely egyetlen ügyfélre vonatkozóan mutatja be a költségeket.
-![Egyetlen ügyfél költségeit bemutató példa](./media/get-started-partners/customer-costs2.png)
+
+[![Egyetlen ügyfél költségeit bemutató példa](./media/get-started-partners/customer-costs2.png)](./media/get-started-partners/customer-costs2.png#lightbox)
 
 Az Azure Cost Managementben elérhető összes funkció a REST API-k esetében is rendelkezésre áll. Az API-k alkalmazásával automatizálhatók a költségkezelési feladatok.
 
@@ -50,8 +54,7 @@ Az Azure Cost Management esetében olvasási hozzáférésre van szükség az Ö
 
 További információ az Azure Cost Managementhez való hozzáférés engedélyezéséről és hozzárendeléséről egy számlázási fiók esetében: [Felhasználói szerepkörök és engedélyek hozzárendelése](/partner-center/permissions-overview). A **globális rendszergazda**  és a **rendszergazdai ügynök** szerepkörök kezelhetik a számlázási fiók költségeit.
 
-Az Azure Cost Managementhez az előfizetési hatókörben történő hozzáféréshez bármely, az előfizetéshez RBAC-hozzáféréssel rendelkező felhasználó megtekintheti a költségeket kiskereskedelmi (használatalapú fizetéses) díjak mellett. Azonban engedélyezni kell a költségek láthatóságára vonatkozó szabályzatot az ügyfélbérlő számára. A támogatott fióktípusok teljes listáját [A Cost Management adatainak értelmezése](understand-cost-mgt-data.md) című részben tekintheti meg.
-
+Az Azure Cost Managementhez az előfizetési hatókörben történő hozzáféréshez bármely, az előfizetéshez RBAC-hozzáféréssel rendelkező felhasználó megtekintheti a költségeket kiskereskedelmi (használatalapú fizetéses) díjak mellett. Azonban engedélyezni kell a [költségek láthatóságára vonatkozó szabályzatot az ügyfélbérlő számára](#enable-the-policy-to-view-azure-usage-charges). A támogatott fióktípusok teljes listáját [A Cost Management adatainak értelmezése](understand-cost-mgt-data.md) című részben tekintheti meg.
 
 ## <a name="how-cost-management-uses-scopes"></a>Hogyan használja a Cost Management a hatóköröket?
 
@@ -110,13 +113,13 @@ Az ügyfél hatókör nem foglalja magában azokat az ügyfeleket, akik a jelenl
 
 Csak a **globális rendszergazda** és a **rendszergazdai ügynök** szerepkörrel rendelkező felhasználók kezelhetik és tekinthetik meg a számlázási fiókokhoz kapcsolódó költségeket, a számlázási profilokat és az ügyfeleket közvetlenül a partner Azure-bérlőjében. További információ a partnerközponti szerepkörökről: [Felhasználói szerepkörök és engedélyek hozzárendelése](/partner-center/permissions-overview).
 
-## <a name="enable-cost-management-in-the-customer-tenant"></a>Költségkezelés engedélyezése az ügyfélbérlőben
+## <a name="enable-cost-management-for-customer-tenant-subscriptions"></a>Költségkezelés engedélyezése az ügyfélbérlő előfizetéséhez
 
-A partnerek engedélyezhetik a Cost Managementhez való hozzáférést, miután az ügyfeleket előkészítették a Microsoft Ügyfélszerződésre. A partnerek ezután engedélyezhetik azt a szabályzatot, amely lehetővé teszi, hogy az ügyfelek megtekintsék a kiskereskedelmi, használatalapú díjszabás alapján felszámított költségeiket. A költségek az ügyfél számlázási pénznemében jelennek meg a RBAC-előfizetés és az erőforráscsoportok hatókörére vonatkozó felhasználásukra vonatkozóan.
+A partnerek engedélyezhetik a Cost Managementhez való hozzáférést, miután az ügyfeleket előkészítették a Microsoft Ügyfélszerződésre. A partnerek ezután engedélyezhetik azt a szabályzatot, amely lehetővé teszi, hogy az ügyfelek megtekintsék az Azure által használt szolgáltatások kiskereskedelmi, használatalapú díjszabás alapján felszámított költségeit. A költségek az ügyfél számlázási pénznemében jelennek meg a RBAC-előfizetés és az erőforráscsoportok hatókörére vonatkozó felhasználásukra vonatkozóan.
 
 Ha a partner engedélyezi a költségek láthatóságára vonatkozó szabályzatot, az előfizetéshez Azure Resource Manager-hozzáféréssel rendelkező minden felhasználó kezelheti és elemezheti a költségeket, használatalapú díjszabás mellett. Így azok a viszonteladók és ügyfelek, akik megfelelő RBAC-hozzáféréssel rendelkeznek az Azure-előfizetésekhez, megtekinthetik a költségeket.
 
-A szabályzattól függetlenül a partnerek akkor is megtekinthetik a költségeket, ha hozzáféréssel rendelkeznek az előfizetéshez és az erőforráscsoporthoz.
+A szabályzattól függetlenül a globális rendszergazdák és a szolgáltató rendszergazdai ügynökei megtekinthetik az előfizetési költségeket, ha hozzáféréssel rendelkeznek az előfizetéshez és az erőforráscsoporthoz.
 
 ### <a name="enable-the-policy-to-view-azure-usage-charges"></a>Engedélyezze a szabályzatot az Azure használati díjainak megtekintéséhez
 
@@ -126,7 +129,7 @@ Jelentkezzen be a partnerbérlőbe az Azure Portalon, és válassza a **Költsé
 
 Az ügyfelek listájában válassza ki azt az ügyfelet, akinek engedélyezni szeretné a költségek megtekintését.
 
-![Válassza ki az ügyfeleket a Cost Managementben](./media/get-started-partners/customer-list.png)
+[![Ügyfelek kiválasztása a Cost Managementben](./media/get-started-partners/customer-list.png)](./media/get-started-partners/customer-list.png#lightbox)
 
 A **Beállítások** területen válassza a **Szabályzatok** elemet.
 
@@ -139,16 +142,17 @@ Ha a szabályzat**Igen** értékre van állítva, az előfizetés az ügyfélbé
 
 Ha a költségek láthatóságára vonatkozó szabályzat engedélyezve van, az összes, előfizetés-felhasználással rendelkező szolgáltatás a használatalapú díjszabás szerint mutatja a költségeket. A foglalások felhasználása a tényleges és az amortizált költségekre vonatkozóan nulla költséggel jelenik meg. A vásárlások és jogosultságok nem konkrét előfizetésekhez vannak társítva. Így a vásárlások nem jelennek meg az előfizetés hatókörében.
 
+### <a name="view-subscription-costs-in-the-customer-tenant"></a>Az előfizetési költségek megtekintése az ügyfélbérlőben
 
-### <a name="view-customer-costs"></a>Ügyfélköltségek megtekintése
+Az előfizetés költségeinek megtekintéséhez lépjen a **Költségkezelés + számlázás** területre az ügyfél Azure-bérlőjében. Válassza a **Költségelemzés** lehetőséget a megfelelő előfizetésnél a költségek áttekintésének elkezdéséhez. Az egyes előfizetések használati költségeit külön is megtekintheti az ügyfélbérlőben.
 
-Az ügyfélbérlő költségeinek megtekintéséhez lépjen a **Költségkezelés + számlázás** területre. Válassza a **Költségelemzés** lehetőséget, és módosítsa a hatókört az ügyfélbérlő előfizetésére a költségek áttekintéséhez.
-
-![Költségelemzés megtekintése ügyfélként ](./media/get-started-partners/customer-tenant-view-cost-analysis.png)
+[![Költségelemzés megtekintése ügyfélként ](./media/get-started-partners/subscription-costs.png)](./media/get-started-partners/subscription-costs.png#lightbox)
 
 A költségelemzés, a költségvetések és a riasztások a használatalapú fizetés díjszabása szerinti költségek mellett érhetők el az előfizetés és az erőforráscsoport RBAC-hatóköreihez.
 
 A fenntartott példányok amortizált nézetei és tényleges költségei nulla díjat mutatnak az RBAC-hatókörben. A fenntartott példányok költségei csak azokban a számlázási hatókörökben jelennek meg, ahol a vásárlások történtek.
+
+A nézetben látható költségek kiszámításához használt kiskereskedelmi árak ugyanazok, amelyeket az Azure-díjkalkulátor minden ügyfélnek megjelenít. A megjelenő költségek nem tartalmazzák az olyan kedvezményeket vagy jóváírásokat, amelyekkel a partnerek rendelkezhetnek. Ezek lehetnek például a partneri jóváírások, a szintkedvezmények vagy a globális szolgáltatási kedvezmények.
 
 ## <a name="analyze-costs-in-cost-analysis"></a>Költségek elemzése a költségelemzésben
 

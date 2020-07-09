@@ -228,6 +228,8 @@
           href: control-kubeconfig-access.md
         - name: Podforgalom biztonságossá tétele hálózati szabályzatokkal
           href: use-network-policies.md
+        - name: Podok biztonságossá tétele az Azure Policyval (előzetes verzió)
+          href: use-pod-security-on-azure-policy.md
         - name: Podbiztonsági szabályzatok használata
           href: use-pod-security-policies.md
         - name: Az API-kiszolgáló engedélyezett IP-címtartományainak megadása
@@ -244,6 +246,8 @@
               href: managed-aad.md
             - name: Az Azure parancssori felületének használata
               href: azure-ad-integration-cli.md
+        - name: Azure RBAC használata Kubernetes-engedélyezéshez (előzetes verzió)
+          href: manage-azure-rbac.md
         - name: Kubernetes RBAC használata Azure AD-integrációval
           href: azure-ad-rbac.md
           maintainContext: true

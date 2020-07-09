@@ -1,152 +1,161 @@
-### YamlMime:Hub
+### YamlMime:Landing
 title: Az Azure Cost Management + Billing dokumentációja
-summary: Az Azure Cost Management and Billing segítségével megértheti az Azure számlázását, kezelheti a fiókját és előfizetéseit, monitorozhatja és szabályozhatja az Azure-költségeket, valamint optimalizálhatja az erőforrások használatát. Megtudhatja, hogyan kezelheti a költségvetéseket, hogyan exportálhatja az adatokat, és hogyan tekintheti át és hajthatja végre a javaslatokat.
+summary: Az Azure Cost Management + Billing segítségével megértheti az Azure számlázását, kezelheti a fiókját és előfizetéseit, monitorozhatja és szabályozhatja az Azure-költségeket, valamint optimalizálhatja az erőforrások használatát. Megtudhatja, hogyan kezelheti a költségvetéseket, hogyan exportálhatja az adatokat, és hogyan tekintheti át és hajthatja végre a javaslatokat.
 metadata:
+  title: Azure Cost Management + Billing
+  description: Az Azure Cost Management + Billing segítségével megértheti az Azure számlázását, kezelheti a fiókját és előfizetéseit, monitorozhatja és szabályozhatja az Azure-költségeket, valamint optimalizálhatja az erőforrások használatát. Megtudhatja, hogyan kezelheti a költségvetéseket, hogyan exportálhatja az adatokat, és hogyan tekintheti át és hajthatja végre a javaslatokat.
   ms.service: cost-management-billing
-  description: Az Azure Cost Management and Billing segítségével megértheti az Azure számlázását, kezelheti a fiókját és előfizetéseit, monitorozhatja és szabályozhatja az Azure-költségeket, valamint optimalizálhatja az erőforrások használatát. Megtudhatja, hogyan kezelheti a költségvetéseket, hogyan exportálhatja az adatokat, és hogyan tekintheti át és hajthatja végre a javaslatokat.
-  ms.topic: hub-page
+  ms.topic: landing-page
+  ms.collection: collection
   author: bandersmsft
   ms.author: banders
-  ms.date: 01/24/2019
-  ms.openlocfilehash: c1fbce7ba94ad097f948a36f93b1f997225c7086
-  ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+  ms.date: 06/01/2020
+  ms.openlocfilehash: 04b52a6aff1a8a24f2aa9988afec60c69c88c138
+  ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 05/25/2020
-  ms.locfileid: "83833602"
-highlightedContent:
-  items:
-  - title: Mi a Cost Management + Billing?
-    itemType: overview
-    url: cost-management-billing-overview.md
-  - title: Költségek kezelése és költségvetések létrehozása
-    itemType: learn
-    url: https://docs.microsoft.com/learn/modules/analyze-costs-create-budgets-azure-cost-management/?WT.mc_id=costmanagementcontent_docsazurebilling_-inproduct-learn
-  - title: A Cost Management ajánlott eljárásai
-    itemType: concept
-    url: ./costs/cost-mgt-best-practices.md
-conceptualContent:
-  items:
-  - title: Ismerkedés az Azure Billing szolgáltatással
+  ms.lasthandoff: 07/08/2020
+  ms.locfileid: "86113394"
+landingContent:
+- title: A költségek elemzése
+  linkLists:
+  - linkListType: overview
     links:
-    - url: ./understand/review-individual-bill.md
-      itemType: tutorial
-      text: Az egyéni számla áttekintése
-    - url: ./understand/review-customer-agreement-bill.md
-      itemType: tutorial
-      text: Az ügyfélszerződéshez tartozó számla áttekintése
-    - url: ./understand/review-partner-agreement-bill.md
-      itemType: tutorial
-      text: A partnerszerződéshez tartozó számla áttekintése
-    - url: ./understand/review-enterprise-agreement-bill.md
-      itemType: tutorial
-      text: A nagyvállalati szerződéshez tartozó számla áttekintése
-    footerLink:
-      text: Részletek
-      url: ./understand/index.yml
-  - title: Ingyenes fiók
+    - text: Mi a Cost Management and Billing?
+      url: cost-management-billing-overview.md
+  - linkListType: get-started
     links:
-    - url: ./manage/create-free-services.md
-      itemType: concept
-      text: Ingyenes szolgáltatások létrehozása
-    - url: ./manage/avoid-charges-free-account.md
-      itemType: concept
-      text: Díjak elkerülése
-    - url: ./manage/check-free-service-usage.md
-      itemType: concept
-      text: Használat ellenőrzése
-    - url: ./manage/upgrade-azure-subscription.md
-      itemType: concept
-      text: Váltás magasabb szintű előfizetésre
-  - title: Az Azure költségeinek és használatának felügyelete
+    - text: Saját tempójában tanulhat
+      url: https://aka.ms/costmgmt/learn
+    - text: Azure Cost Management-videók
+      url: https://www.youtube.com/c/AzureCostManagement
+    - text: Költségelemzés indítása
+      url: costs/quick-acm-cost-analysis.md
+  - linkListType: how-to-guide
     links:
-    - url: ./costs/quick-acm-cost-analysis.md
-      itemType: quickstart
-      text: Költségelemzés indítása
-    - url: ./costs/tutorial-acm-create-budgets.md
-      itemType: tutorial
-      text: Költségvetések létrehozása és kezelése
-    - url: ./costs/tutorial-export-acm-data.md
-      itemType: tutorial
-      text: A költség- és használati adatok exportálása
-    - url: ./costs/tutorial-acm-opt-recommendations.md
-      itemType: tutorial
-      text: A költségmegtakarításra vonatkozó javaslatok végrehajtása
-    - url: ./costs/cost-analysis-common-uses.md
-      itemType: how-to-guide
-      text: Gyakori műveletek költségelemzése
-    footerLink:
-      text: Részletek
-      url: ./costs/index.yml
-  - title: Azure-fiókok és -előfizetések kezelése
+    - text: Gyakori műveletek költségelemzése
+      url: costs/cost-analysis-common-uses.md
+    - text: A költségek elemzése a PowerBI-sablonalkalmazással
+      url: https://docs.microsoft/azure/cost-management-billing/costs/analyze-cost-data-azure-cost-management-power-bi-template-app
+    - text: Kapcsolódás Power BI Desktoppal
+      url: /power-bi/desktop-connect-azure-cost-management
+  - linkListType: tutorial
     links:
-    - url: ./manage/manage-billing-access.md
-      itemType: how-to-guide
-      text: Hozzáférés biztosítása a számlázáshoz
-    - url: ./manage/change-azure-account-profile.md
-      itemType: how-to-guide
-      text: Profil szerkesztése
-    - url: ./manage/resolve-past-due-balance.md
-      itemType: how-to-guide
-      text: Késedelmes egyenleg kezelése
-    - url: ./manage/subscription-disabled.md
-      itemType: how-to-guide
-      text: Előfizetés újraaktiválása
-    - url: ./manage/billing-subscription-transfer.md
-      itemType: how-to-guide
-      text: Tulajdonjogok átadása
-    - url: ./manage/cancel-azure-subscription.md
-      itemType: how-to-guide
-      text: Előfizetés lemondása
-    - url: ./manage/change-credit-card.md
-      itemType: how-to-guide
-      text: Hitelkártya módosítása
-    - url: ./manage/add-change-subscription-administrator.md
-      itemType: how-to-guide
-      text: Rendszergazda módosítása
-    - url: ./manage/create-subscription.md
-      itemType: how-to-guide
-      text: További előfizetések létrehozása
-    footerLink:
-      text: Részletek
-      url: ./manage/index.yml
-  - title: Mentés az Azure Reservations segítségével
+    - text: Az egyéni fiókhoz tartozó számla áttekintése
+      url: understand/review-individual-bill.md
+    - text: A Microsoft-ügyfélszerződéshez tartozó számla áttekintése
+      url: understand/review-customer-agreement-bill.md
+    - text: A nagyvállalati szerződéshez tartozó számla áttekintése
+      url: understand/review-enterprise-agreement-bill.md
+- title: A költségek kezelése
+  linkLists:
+  - linkListType: tutorial
     links:
-    - url: ./reservations/save-compute-costs-reservations.md
-      itemType: concept
-      text: Mi az az Azure Reservations?
-    - url: ./reservations/manage-reserved-vm-instance.md
-      itemType: how-to-guide
-      text: Az Azure Reservations kezelése
-    - url: ./reservations/monthly-payments-reservations.md
-      itemType: how-to-guide
-      text: Foglalás vásárlása havi fizetéssel
-    - url: ./reservations/reservation-renew.md
-      itemType: how-to-guide
-      text: Foglalások megújítása
-    - url: ./reservations/exchange-and-refund-azure-reservations.md
-      itemType: how-to-guide
-      text: Foglalások cseréje és visszatérítése
-    footerLink:
-      text: Részletek
-      url: ./reservations/index.yml
-  - title: Közösségi részvétel
+    - text: Költségvetések létrehozása és kezelése
+      url: costs/tutorial-acm-create-budgets.md
+    - text: A költség- és használati adatok exportálása
+      url: costs/tutorial-export-acm-data.md
+  - linkListType: concept
     links:
-    - url: https://feedback.azure.com/forums/906772-cost-management
-      itemType: how-to-guide
-      text: Cost Management-visszajelzés
-    - url: https://twitter.com/azurecostmgmt
-      itemType: how-to-guide
-      text: A Cost Management a Twitteren
-    - url: https://techcommunity.microsoft.com/t5/forums/searchpage/tab/message?filter=location&q=%22cost%20management%22&location=category:Azure&collapse_discussion=true
-      itemType: how-to-guide
-      text: Az Azure Cost Management szakmai közössége
-    - url: https://feedback.azure.com/forums/170030-signup-and-billing
-      itemType: how-to-guide
-      text: Billing-szolgáltatásfunkció kérése
-    - url: https://techcommunity.microsoft.com/t5/forums/searchpage/tab/message?filter=location&q=%22billing%22&noSynonym=false&location=category:Azure&collapse_discussion=true
-      itemType: how-to-guide
-      text: Az Azure Billing szakmai közössége
-    - url: https://docs.microsoft.com/answers/topics/azure-cost-management.html
-      itemType: how-to-guide
-      text: Kérdés feltétele a Cost Management and Billing fórumában
+    - text: Költségek kezelése automatizálással
+      url: https://docs.microsoft/azure/cost-management-billing/costs/manage-automation
+    - text: A használattal kapcsolatos kifejezések értelmezése
+      url: understand/understand-usage.md
+    - text: A számlában használatos kifejezések értelmezése
+      url: understand/understand-invoice.md
+    - text: Microsoft-ügyfélszerződés – használattal kapcsolatos kifejezések
+      url: understand/mca-understand-your-usage.md
+    - text: Microsoft-ügyfélszerződés – számlával kapcsolatos kifejezések
+      url: understand/mca-understand-your-invoice.md
+  - linkListType: how-to-guide
+    links:
+    - text: Költségriasztások használata
+      url: costs/cost-mgt-alerts-monitor-usage-spending.md
+    - text: Az Azure-számla megtekintése és letöltése
+      url: understand/download-azure-invoice.md
+    - text: Az Azure használati adatainak és díjainak megtekintése és letöltése
+      url: understand/download-azure-daily-usage.md
+    - text: A külső szolgáltatási díjak megtekintése
+      url: understand/understand-azure-marketplace-charges.md
+- title: A költségek optimalizálása
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Az Azure Cost Management ajánlott eljárásai
+      url: costs/cost-mgt-best-practices.md
+    - text: Az Azure Reservations segítségével pénzt takaríthat meg
+      url: reservations/save-compute-costs-reservations.md
+  - linkListType: tutorial
+    links:
+    - text: Javaslatok végrehajtása
+      url: costs/tutorial-acm-opt-recommendations.md
+  - linkListType: how-to-guide
+    links:
+    - text: Váratlan díjak megelőzése
+      url: manage/getting-started.md
+  - linkListType: learn
+    links:
+    - text: Kezdje el optimalizálni a költségeit még ma
+      url: https://azure.microsoft/overview/cost-optimization/
+    - text: A költségek előrejelzése és optimalizálása az Azure környezethez
+      url: https://docs.microsoft/learn/modules/predict-costs-and-optimize-spending/
+    - text: Microsoft Azure Well-Architected Framework – költségoptimalizálás
+      url: https://docs.microsoft/learn/modules/azure-well-architected-cost-optimization/
+- title: Azure Cost Management + Billing konfigurálása
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: A hatókörök ismertetése és használata
+      url: costs/understand-work-scopes.md
+    - text: A Cost Management adatainak értelmezése
+      url: costs/understand-cost-mgt-data.md
+    - text: Nagyvállalati szerződéses szerepkörök az Azure-ban
+      url: manage/understand-ea-roles.md
+    - text: A Microsoft-ügyfélszerződés szerepkörei az Azure-ban
+      url: manage/understand-mca-roles.md
+  - linkListType: how-to-guide
+    links:
+    - text: Hozzáférések hozzárendelése költségkezelési adatokhoz
+      url: costs/assign-access-acm-data.md
+    - text: Számlázási fiókok megtekintése
+      url: manage/view-all-accounts.md
+    - text: További előfizetés létrehozása
+      url: manage/create-subscription.md
+    - text: Hitelkártya módosítása
+      url: manage/change-credit-card.md
+    - text: Rendszergazda módosítása
+      url: manage/add-change-subscription-administrator.md
+    - text: Számlás fizetés
+      url: manage/pay-by-invoice.md
+- title: A Microsoft-ügyfélszerződéses fiókok áttekintése
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: A Microsoft ügyfélszerződés számlázási fiókjai
+      url: understand/mca-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Adózási dokumentumok megtekintése és letöltése
+      url: understand/mca-download-tax-document.md
+    - text: A Microsoft-ügyfélszerződés számlájának kifizetése
+      url: understand/pay-bill.md
+- title: Foglalások vásárlása
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: A megvásárolni kívánt foglalás kiválasztása
+      url: reservations/determine-reservation-purchase.md
+    - text: Foglalások cseréje és visszatérítése
+      url: reservations/exchange-and-refund-azure-reservations.md
+  - linkListType: how-to-guide
+    links:
+    - text: Foglalás vásárlása
+      url: reservations/prepare-buy-reservation.md
+    - text: Foglalások kezelése
+      url: reservations/manage-reserved-vm-instance.md
+    - text: Foglalásvásárlások megtekintése
+      url: reservations/view-purchase-refunds.md
+    - text: Foglalások visszatérítése
+      url: reservations/charge-back-usage.md
+    - text: Foglalások megújítása
+      url: reservations/reservation-renew.md

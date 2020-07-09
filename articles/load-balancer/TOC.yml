@@ -12,18 +12,21 @@
       href: quickstart-load-balancer-standard-public-portal.md
     - name: Load Balancer létrehozása – Azure CLI
       href: quickstart-load-balancer-standard-public-cli.md
-    - name: Load Balancer létrehozása – PowerShell
+    - name: Load Balancer létrehozása – Azure PowerShell
       href: quickstart-create-standard-load-balancer-powershell.md
     - name: Load Balancer létrehozása – ARM-sablon
-      displayName: Resource Manager
       href: quickstart-load-balancer-standard-public-template.md
+    - name: Belső Load Balancer létrehozása – portál
+      href: tutorial-load-balancer-standard-internal-portal.md
+    - name: Belső Load Balancer létrehozása – Azure CLI
+      href: load-balancer-get-started-ilb-arm-cli.md
+    - name: Belső Load Balancer létrehozása – Azure PowerShell
+      href: load-balancer-get-started-ilb-arm-ps.md
+    - name: Belső Load Balancer létrehozása – ARM-sablon
+      href: load-balancer-get-started-ilb-arm-template.md
   expanded: true
 - name: Oktatóanyagok
   items:
-    - name: Virtuális gépek internetes forgalmának terheléselosztása
-      href: tutorial-load-balancer-standard-manage-portal.md
-    - name: Virtuális gépek belső bejövő forgalmának terheléselosztása
-      href: tutorial-load-balancer-standard-internal-portal.md
     - name: Virtuális gépek terheléselosztása rendelkezésre állási zónák között
       href: tutorial-load-balancer-standard-public-zone-redundant-portal.md
     - name: Virtuális gép terheléselosztása adott rendelkezésre állási zónán belül
@@ -78,17 +81,17 @@
           href: configure-vm-scale-set-powershell.md
         - name: Használat meglévő Azure Load Balancerrel – CLI
           href: configure-vm-scale-set-cli.md
-    - name: Egy alapszintű Load Balancer standard szintű Load Balancerre való frissítése
+    - name: Alapszintű Load Balancer frissítése standard változatra
       items:
         - name: Alapszintű nyilvános Load Balancer frissítése
           href: upgrade-basic-standard.md
-        - name: 'Egy alapszintű, belső Load Balancer frissítése – kimenő kapcsolat nélkül'
+        - name: Belső Load Balancer frissítése – kimenő kapcsolat nélkül
           href: upgrade-basicInternal-standard.md
-        - name: 'Egy alapszintű, belső Load Balancer frissítése – kimenő kapcsolattal'
+        - name: Belső Load Balancer frissítése – kimenő kapcsolattal
           href: upgrade-InternalBasic-To-PublicStandard.md
     - name: Kimenő szabályok konfigurálása
       items:
-        - name: Azure Portal
+        - name: Portál
           href: configure-load-balancer-outbound-portal.md
         - name: Azure CLI
           href: configure-load-balancer-outbound-cli.md
@@ -103,35 +106,25 @@
         - name: Azure Resource Manager-sablon
           href: 'https://docs.microsoft.com/azure/virtual-network/ipv6-configure-standard-load-balancer-template-json'
           displayName: ARM
-    - name: Belső Load Balancer konfigurálása
-      items:
-        - name: Azure Portal
-          href: tutorial-load-balancer-standard-internal-portal.md
-        - name: Azure CLI
-          href: load-balancer-get-started-ilb-arm-cli.md
-        - name: Azure PowerShell
-          href: load-balancer-get-started-ilb-arm-ps.md
-        - name: Azure Resource Manager-sablon
-          href: load-balancer-get-started-ilb-arm-template.md
-          displayName: ARM
     - name: TCP üresjárati időkorlát konfigurálása Load Balancer
       href: load-balancer-tcp-idle-timeout.md
     - name: A Load Balancer elosztási módjának konfigurálása
       href: load-balancer-distribution-mode.md
     - name: Több IP-konfiguráció használata
-      href: load-balancer-multiple-ip.md
       items:
+        - name: Portál
+          href: load-balancer-multiple-ip.md
         - name: Azure CLI
           href: load-balancer-multiple-ip-cli.md
         - name: Azure PowerShell
           href: load-balancer-multiple-ip-powershell.md
     - name: Áthelyezés régiók között
       items:
-        - name: Külső terheléselosztó – Portal
+        - name: Nyilvános Load Balancer – portál
           href: move-across-regions-external-load-balancer-portal.md
-        - name: Külső terheléselosztó – PowerShell
+        - name: Nyilvános Load Balancer – PowerShell
           href: move-across-regions-external-load-balancer-powershell.md
-        - name: Belső terheléselosztó – Portal
+        - name: Nyilvános Load Balancer – portál
           href: move-across-regions-internal-load-balancer-portal.md
         - name: Belső terheléselosztó – PowerShell
           href: move-across-regions-internal-load-balancer-powershell.md

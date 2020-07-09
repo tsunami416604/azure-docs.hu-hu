@@ -7,21 +7,21 @@ ms.reviewer: amberb
 tags: billing,top-support-issue
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 07/01/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 633f406d042ce5b8ddde5b28022bdb33fdd70377
-ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
+ms.openlocfilehash: 722d1bca7f983c124c85e6d675f51d29c5357522
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85052160"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85854938"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Azure-előfizetés számlázási tulajdonjogának átadása másik fióknak
 
 Az Azure-előfizetés számlázási tulajdonjogának átadására akkor lehet szükség, ha elhagyja a szervezetet, vagy egy másik fióknak kell küldeni az előfizetésre vonatkozó számlákat. A számlázási tulajdonjog másik fióknak való átadása lehetővé teszi az új fiók rendszergazdái számára a számlázási feladatok végrehajtását. Ilyenek például a fizetési mód megváltoztatása, a díjak megtekintése és az előfizetés lemondása.
 
-Ha meg szeretné tartani a számlázási tulajdonjogot, de módosítani kívánja az előfizetés típusát, tekintse meg [az Azure-előfizetés másik ajánlatra váltását](switch-azure-offer.md) bemutató cikket. Ha szeretné szabályozni, hogy ki kezelheti az előfizetés erőforrásait, tekintse meg [az Azure-erőforrások beépített szerepköreit](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
+Ha meg szeretné tartani a számlázási tulajdonjogot, de módosítani kívánja az előfizetés típusát, tekintse meg [az Azure-előfizetés másik ajánlatra váltását](switch-azure-offer.md) bemutató cikket. Ha szeretné szabályozni, hogy ki férhet hozzá az előfizetés erőforrásaihoz, tekintse meg [az Azure beépített szerepköreit](../../role-based-access-control/built-in-roles.md).
 
 A Nagyvállalati Szerződéssel (EA) rendelkező ügyfelek esetében a vállalati rendszergazdák adhatják át az előfizetések számlázási tulajdonjogát az egyes fiókok között. További információ: [Nagyvállalati Szerződéssel (EA) rendelkező előfizetések számlázási tulajdonjogának átadása](#EA).
 
@@ -45,7 +45,7 @@ A Nagyvállalati Szerződéssel (EA) rendelkező ügyfelek esetében a vállalat
 
     > [!IMPORTANT]
     >
-    > Ha úgy dönt, hogy átadja az előfizetést az új fiók Azure AD-bérlőjére, azzal véglegesen eltávolítja az előfizetés erőforrásainak kezeléséhez szükséges összes [szerepköralapú hozzáférés-vezérlési (RBAC)](../../role-based-access-control/overview.md) hozzárendelést. Csak az új fiók átadási kérelmet elfogadó felhasználójának lesz hozzáférése az előfizetés erőforrásainak kezeléséhez. További információért lásd az [előfizetés egy másik Azure AD-bérlőn lévő felhasználónak történő átadását](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories) ismertető cikket. Másik lehetőségként törölheti az Előfizetés Azure AD-bérlője jelölőnégyzet jelölését, így anélkül adhatja át a számlázási tulajdonjogot az új fiók bérlőjének, hogy áthelyezné az előfizetést. Ha ezt a módszert választja, megtarthatja az Azure-erőforrások kezeléséhez szükséges meglévő RBAC-engedélyeket.
+    > Ha úgy dönt, hogy áthelyezi az előfizetést az új fiók Azure AD-bérlőjére, azzal véglegesen eltávolítja az előfizetés erőforrásainak eléréséhez szükséges összes [Azure-beli szerepkör-hozzárendelést](../../role-based-access-control/role-assignments-portal.md). Csak az új fiók átadási kérelmet elfogadó felhasználójának lesz hozzáférése az előfizetés erőforrásainak kezeléséhez. További információt az [előfizetés másik Azure AD-bérlői fiókra való áthelyezését](#transfer-a-subscription-to-another-azure-ad-tenant-account) ismertető következő szakaszban talál.) Másik lehetőségként törölheti az **Előfizetés Azure AD-bérlője** jelölőnégyzet jelölését, így anélkül adhatja át a számlázási tulajdonjogot az új fiók bérlőjének, hogy áthelyezné az előfizetést. Ha ezt a módszert választja, megtarthatja az Azure-erőforrások eléréséhez szükséges meglévő Azure-beli szerepkör-hozzárendeléseket.
 
     ![Átadási kérelem küldése lap](./media/billing-subscription-transfer/billing-send-transfer-request.PNG)
 
@@ -71,7 +71,7 @@ Amikor regisztrál az Azure-ba, a rendszer létrehoz Önnek egy Azure Active Dir
 
 Amikor új előfizetést hoz létre, az a fiókja Azure AD-bérlőjén lesz tárolva. Ha másoknak kíván hozzáférést biztosítani az előfizetéshez vagy annak erőforrásaihoz, meg kell őket hívnia, hogy csatlakozzanak a bérlőjéhez. Így szabályozhatja az előfizetésekhez és az erőforrásokhoz való hozzáférést.
 
-Amikor az előfizetése számlázási tulajdonjogát egy másik Azure AD-bérlőn lévő fióknak adja át, az előfizetést is áthelyezheti az új fiók bérlőjére. Ha így tesz, akkor az összes korábbi [szerepköralapú hozzáféréssel (RBAC)](../../role-based-access-control/role-assignments-portal.md) rendelkező felhasználó, csoport és szolgáltatásnév elveszíti az előfizetés és az előfizetés erőforrásainak kezeléséhez szükséges hozzáférést. Csak az új fiók átadást elfogadó felhasználójának lesz hozzáférése az erőforrások kezeléséhez. Az új tulajdonosnak [manuálisan kell hozzáadnia ezeket a felhasználókat az előfizetéshez](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal), ha hozzáférést kíván biztosítani az azt elveszítő felhasználónak.
+Amikor az előfizetése számlázási tulajdonjogát egy másik Azure AD-bérlőn lévő fióknak adja át, az előfizetést is áthelyezheti az új fiók bérlőjére. Ha így tesz, akkor az összes korábbi [Azure-beli szerepkör-hozzárendeléssel](../../role-based-access-control/role-assignments-portal.md) rendelkező felhasználó, csoport és szolgáltatásnév elveszíti az előfizetés és az előfizetés erőforrásainak kezeléséhez szükséges hozzáférést. Csak az új fiók átadást elfogadó felhasználójának lesz hozzáférése az erőforrások kezeléséhez. Az új tulajdonosnak manuálisan kell hozzáadnia ezeket a felhasználókat az előfizetéshez, ha hozzáférést kíván biztosítani az azt elveszítő felhasználónak. További információ: [Azure-előfizetés átadása egy másik Azure AD-címtárba (Előzetes verzió)](../../role-based-access-control/transfer-subscription.md).
 
 
 ## <a name="transfer-visual-studio-and-partner-network-subscriptions"></a>Visual Studio- és a Microsoft Partner Network-előfizetések átadása
@@ -89,7 +89,7 @@ A vállalati adminisztrátor átadhatja az előfizetések tulajdonjogát egyik f
 
 Ha elfogadta egy Azure-előfizetés számlázási tulajdonjogát, javasoljuk, hogy tekintse át a következő lépéseket:
 
-1. Tekintse át és frissítse a szolgáltatásadminisztrátori, a társadminisztrátori és az egyéb RBAC-szerepköröket. További információk: [Azure-előfizetés-adminisztrátorok hozzáadása vagy módosítása](add-change-subscription-administrator.md) és [Hozzáférés kezelése az RBAC és az Azure Portal használatával](../../role-based-access-control/role-assignments-portal.md).
+1. Tekintse át és frissítse a szolgáltatásadminisztrátori, a társadminisztrátori és az Azure-beli szerepkör-hozzárendeléseket. További információ: [Azure-beli előfizetés-adminisztrátorok hozzáadása vagy módosítása](add-change-subscription-administrator.md) és [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure Portal használatával](../../role-based-access-control/role-assignments-portal.md).
 1. Frissítse az előfizetés szolgáltatásaihoz tartozó hitelesítő adatokat, például:
    1. Felügyeleti tanúsítványok, amelyek rendszergazdai jogosultságokat biztosítanak a felhasználónak az előfizetés erőforrásaihoz. További információk: [Felügyeleti tanúsítvány létrehozása és feltöltése az Azure szolgáltatáshoz](../../cloud-services/cloud-services-certs-create.md)
    1. A Storage-hoz hasonló szolgáltatások hozzáférési kulcsai. További információkat az [Azure Storage-fiókokkal kapcsolatos tudnivalókat](../../storage/common/storage-create-storage-account.md) ismertető témakörben olvashat.
@@ -142,7 +142,7 @@ Ha nem biztos benne, hogy az adott előfizetésnek ki a fiókadminisztrátora, a
 
 ### <a name="does-everything-transfer-including-resource-groups-vms-disks-and-other-running-services"></a>Minden át lesz helyezve az új fiókba, beleértve az erőforráscsoportokat, a virtuális gépeket, a lemezeket és az egyéb futó szolgáltatásokat?
 
-Az összes erőforrás, például virtuális gép, lemez és webhely át lesz helyezve az új fiókba. Ugyanakkor ha az előfizetést egy másik Azure AD-bérlőben található fiókba helyezi át, az előfizetés [rendszergazdai szerepkörei](add-change-subscription-administrator.md) és [szerepköralapú hozzáférés-vezérlési (RBAC-)](../../role-based-access-control/role-assignments-portal.md) hozzárendelései [nem lesznek átadva](#transfer-a-subscription-to-another-azure-ad-tenant-account). Ezenkívül az [alkalmazásregisztrációkat](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md) és más, bérlőspecifikus szolgáltatásokat sem adja át az előfizetéssel.
+Az összes erőforrás, például virtuális gép, lemez és webhely át lesz helyezve az új fiókba. Ugyanakkor ha az előfizetést egy másik Azure AD-bérlőben található fiókba helyezi át, az előfizetés [rendszergazdai szerepkörei](add-change-subscription-administrator.md) és [Azure-beli szerepkör-hozzárendelései](../../role-based-access-control/role-assignments-portal.md) [nem lesznek áthelyezve](#transfer-a-subscription-to-another-azure-ad-tenant-account). Ezenkívül az [alkalmazásregisztrációkat](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md) és más, bérlőspecifikus szolgáltatásokat sem adja át az előfizetéssel.
 
 ### <a name="can-i-transfer-ownership-to-an-account-in-another-countryregion"></a>Átadhatom a fiók tulajdonjogát egy másik országban vagy régióban található felhasználónak?
 Sajnos az Azure Portalon nem végezhetők országok vagy régiók közötti átviteli műveletek. Az előfizetés országok vagy régiók közötti átviteléhez [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
@@ -152,7 +152,7 @@ Igen, átadhat előfizetéseket a fiókjai között. A fiókjai technikailag ké
 
 ### <a name="does-a-subscription-transfer-result-in-any-service-downtime"></a>Az előfizetés átadása jár valamennyi szolgáltatáskieséssel?
 
-Egy előfizetésnek az ugyanazon Azure AD-bérlőn lévő fiókba való átadása nincs hatással az előfizetésen futó erőforrásokra. A PowerShellben mentett környezeti információk azonban nem frissülnek, ezért előfordulhat, hogy ezeket törölnie kell, vagy módosítania kell a beállításokat. Ha az előfizetést egy másik bérlő fiókjába helyezi át, és úgy dönt, hogy áthelyezi az előfizetést a bérlőre, akkor az összes korábbi, [szerepköralapú hozzáféréssel (RBAC)](../../role-based-access-control/overview.md) rendelkező felhasználó, csoport és szolgáltatásnév elveszíti az előfizetésben lévő erőforrások kezeléséhez való hozzáférést. Emiatt szolgáltatáskiesés fordulhat elő.
+Egy előfizetésnek az ugyanazon Azure AD-bérlőn lévő fiókba való átadása nincs hatással az előfizetésen futó erőforrásokra. A PowerShellben mentett környezeti információk azonban nem frissülnek, ezért előfordulhat, hogy ezeket törölnie kell, vagy módosítania kell a beállításokat. Ha az előfizetést egy másik bérlő fiókjába helyezi át, és úgy dönt, hogy áthelyezi az előfizetést a bérlőre, akkor az összes korábbi, [Azure-beli szerepkör-hozzárendeléssel](../../role-based-access-control/role-assignments-portal.md) rendelkező felhasználó, csoport és szolgáltatásnév elveszíti az előfizetésben lévő erőforrások eléréséhez való hozzáférést. Emiatt szolgáltatáskiesés fordulhat elő.
 
 ### <a name="can-users-in-new-account-access-usage-and-billing-history"></a>Az új fiók felhasználói hozzáférhetnek a használati és számlázási előzményekhez?
 
@@ -173,13 +173,13 @@ Ezek a gyakori kérdések azoknak a felhasználóknak szólnak, akik elfogadják
 
 ### <a name="if-i-take-over-billing-ownership-of-a-subscription-from-another-account-do-users-in-that-account-continue-to-have-access-to-my-resources"></a>Ha átveszem egy előfizetés számlázási tulajdonjogát egy másik fióktól, a szóban forgó fiók felhasználói továbbra is hozzáférhetnek az erőforrásaimhoz?
 
-Igen. Azonban előfordulhat, hogy a [rendszergazdai szerepkörök](add-change-subscription-administrator.md) és a [szerepköralapú hozzáférés-vezérlési (RBAC)](../../role-based-access-control/role-assignments-portal.md) hozzárendelések el lesznek távolítva. A hozzáférés akkor veszik el, ha a fiók az előfizetés bérlőjétől eltérő Azure AD-bérlőn található, és az átadási kérelmet küldő felhasználó áthelyezi az előfizetést az Ön fiókjának bérlőjére. Az előfizetés erőforrásainak kezeléséhez [szerepköralapú hozzáféréssel](../../role-based-access-control/overview.md) rendelkező felhasználók megtekintéséhez végezze el a következő lépéseket:
+Igen. Azonban előfordulhat, hogy a [rendszergazdai szerepkörök](add-change-subscription-administrator.md) és az [Azure-beli szerepkör-hozzárendelések](../../role-based-access-control/role-assignments-portal.md) el lesznek távolítva. A hozzáférés akkor veszik el, ha a fiók az előfizetés bérlőjétől eltérő Azure AD-bérlőn található, és az átadási kérelmet küldő felhasználó áthelyezi az előfizetést az Ön fiókjának bérlőjére. A következő lépésekkel tekintheti meg azokat a felhasználókat, akik Azure-beli szerepkör-hozzárendeléssel rendelkeznek az előfizetés erőforrásaihoz való hozzáféréshez:
 
 1. Nyissa meg [az Azure Portal Előfizetés lapját](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
 1. Válassza ki a megtekinteni kívánt előfizetést, majd a bal oldali panelen válassza a **Hozzáférés-vezérlés (IAM)** elemet.
-1. Válassza a lap tetején található **Szerepkör-hozzárendelések** elemet. A Szerepkör-hozzárendelések oldal felsorolja az összes felhasználót, aki RBAC-hozzáféréssel rendelkezik az előfizetéshez.
+1. Válassza a lap tetején található **Szerepkör-hozzárendelések** elemet. A Szerepkör-hozzárendelések oldal felsorolja az összes felhasználót, aki hozzáféréssel rendelkezik az előfizetéshez.
 
-A [Szerepköralapú hozzáférés-vezérlési (RBAC-)](../../role-based-access-control/role-assignments-portal.md) hozzárendelések átadás során történő eltávolítása esetén is előfordulhat, hogy az eredeti tulajdonosi fiók felhasználói továbbra is hozzáférhetnek az előfizetéshez valamilyen biztonsági mechanizmuson keresztül, például:
+Az [Azure-beli szerepkör-hozzárendeléseknek](../../role-based-access-control/role-assignments-portal.md) az átadás során történő eltávolítása esetén is előfordulhat, hogy az eredeti tulajdonosi fiók felhasználói továbbra is hozzáféréssel rendelkeznek az előfizetéshez más biztonsági mechanizmusokon keresztül, például:
 
 * Felügyeleti tanúsítványok, amelyek rendszergazdai jogosultságokat biztosítanak a felhasználónak az előfizetés erőforrásaihoz. További információért lásd: [Felügyeleti tanúsítvány létrehozása és feltöltése az Azure szolgáltatáshoz](../../cloud-services/cloud-services-certs-create.md).
 * A Storage-hoz hasonló szolgáltatások hozzáférési kulcsai. További információkat az [Azure Storage-fiókokkal kapcsolatos tudnivalókat](../../storage/common/storage-create-storage-account.md) ismertető témakörben olvashat.
@@ -225,4 +225,4 @@ Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatá
 
 ## <a name="next-steps"></a>További lépések
 
-- Tekintse át és frissítse a szolgáltatásadminisztrátori, a társadminisztrátori és az egyéb RBAC-szerepköröket. További információk: [Azure-előfizetés-adminisztrátorok hozzáadása vagy módosítása](add-change-subscription-administrator.md) és [Hozzáférés kezelése az RBAC és az Azure Portal használatával](../../role-based-access-control/role-assignments-portal.md).
+- Tekintse át és frissítse a szolgáltatásadminisztrátori, a társadminisztrátori és az Azure-beli szerepkör-hozzárendeléseket. További információ: [Azure-beli előfizetés-adminisztrátorok hozzáadása vagy módosítása](add-change-subscription-administrator.md) és [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure Portal használatával](../../role-based-access-control/role-assignments-portal.md).

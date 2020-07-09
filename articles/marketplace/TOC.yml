@@ -216,8 +216,8 @@
               href: ./partner-center-portal/commercial-marketplace-co-sell-countries.md
             - name: Államkódok
               href: ./partner-center-portal/commercial-marketplace-co-sell-states.md
-    - name: Közzététel állapota
-      href: ./partner-center-portal/publishing-status.md
+    - name: Felülvizsgálat és közzététel
+      href: review-publish-offer.md
     - name: Létező ajánlatok frissítése
       href: ./partner-center-portal/update-existing-offer.md
     - name: Kedvezmények aktiválása
